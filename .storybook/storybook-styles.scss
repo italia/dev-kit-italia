@@ -6,18 +6,25 @@
   margin: auto;
 }
 
+.docs-story {
+  background-color: #f9f9f9;
+}
+
 .flex {
   display: flex;
   align-items: start;
   padding: 0.3rem 0;
   gap: 0.6rem;
+}
 
-  &.tipologie-buttons {
-    justify-content: center;
+.toc-wrapper {
+  ul {
+    font-size: 0.85rem;
+    line-height: 1.2;
 
-    .flex {
-      flex-direction: column;
-      align-items: center;
+    li.toc-list-item {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
     }
   }
 }
