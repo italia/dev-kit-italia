@@ -4,7 +4,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import '@italia/video';
 import '@italia/button';
-
 import itLang from '../src/locales/it.js';
 import type { ConsentOptions, Track, VideoJSTranslations, Locale } from '../src/types.ts';
 
