@@ -7,6 +7,37 @@
   <script type="module" src="dist/elements.js"></script>
   <!-- <link rel="stylesheet" href="../node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css" /> -->
   <link rel="stylesheet" href="dist/design-web-components.css" />
+
+  <!-- just validate - test -->
+  <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
+  <script>
+
+
+      const validation = new JustValidate('#form');
+
+      const itInput = document.querySelectorAll('it-input');
+      itInput.addEventListener('input-ready', () => {
+        const input = itInput.inputElement;
+        validation.addField(input, [ {
+            rule: 'required',
+            errorMessage: 'Campo obbligatorio justvalidate',
+          },]);
+      });
+
+
+  //   itaInputs.forEach((input)=>{
+  //     validation
+  // .addField(input, [
+  //   {
+  //     rule: 'required',
+  //     errorMessage: 'Campo obbligatorio justvalidate',
+  //   },
+  // ]);
+  //   });
+
+
+
+  </script>
 </head>
 <body>
   <!-- Usa il tuo Web Component -->
@@ -68,8 +99,10 @@
 
             <section>
               <h2>it-input</h2>
-              <it-input id="email" label="E-mail" type="email" support-text="Inserisci la tua email"></it-input>
-              <it-input id="password" label="Password" type="password" minlength="10" suggestions strength-meter></it-input>
+              <form id="form">
+                <it-input id="email" label="E-mail" type="email" support-text="Inserisci la tua email"></it-input>
+                <it-input id="password" label="Password" type="password" minlength="10" suggestions strength-meter></it-input>
+              </form>
             </section>
 
             <section>

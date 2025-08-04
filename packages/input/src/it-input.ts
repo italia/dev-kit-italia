@@ -23,6 +23,11 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
     return true;
   }
 
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' }); // Shadow DOM aperto per permettere validazione dall'esterno
+  }
+
   @property()
   internals = this.attachInternals();
 
@@ -127,6 +132,12 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
     }
   }
 
+  // Getter pubblico per accedere all'input
+  get inputElement() {
+    console.log('get inputelement');
+    return this.shadowRoot?.querySelector('input');
+  }
+
   _handleFormdata(event: FormDataEvent) {
     // Add name and value to the form's submission data if it's not disabled.
     if (!this.disabled) {
@@ -205,6 +216,10 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
     if (this.type === 'password' && this.minlength < 0) {
       this.minlength = 8; // set default minlength for password
     }
+
+    requestAnimationFrame(() => {
+      this.dispatchEvent(new CustomEvent('input-ready', { bubbles: true }));
+    });
   }
 
   // protected override update(changedProperties: Map<string | number | symbol, unknown>): void {
