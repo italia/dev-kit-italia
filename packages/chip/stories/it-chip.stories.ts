@@ -31,7 +31,7 @@ const meta = {
     },
     label: {
       control: 'text',
-      description: 'Testo mostrato all’interno della chip.',
+      description: "Testo mostrato all'interno della chip.",
     },
     href: {
       control: 'text',
@@ -202,7 +202,7 @@ export const VarianteConLink: Story = {
     variant: '',
     href: '#',
   },
-  render: (args) => html`${renderComponent(args)}`,
+  render: () => html` <it-chip label="Etichetta" size="sm" variant="" href="#"></it-chip> `,
 };
 
 export const VariantiColore: Story = {
@@ -217,7 +217,18 @@ Gli stili definiti da Bootstrap Italia utilizzano un naming consistente con Boot
       },
     },
   },
-  render: (args) => html` ${CHIP_VARIANTS.map((v) => renderComponent({ ...args, variant: v }))} `,
+  render: () => html`
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <it-chip label="Etichetta" size="sm" variant="primary"></it-chip>
+      <it-chip label="Etichetta" size="sm" variant="secondary"></it-chip>
+      <it-chip label="Etichetta" size="sm" variant="success"></it-chip>
+      <it-chip label="Etichetta" size="sm" variant="danger"></it-chip>
+      <it-chip label="Etichetta" size="sm" variant="warning"></it-chip>
+      <it-chip label="Etichetta" size="sm" variant="info"></it-chip>
+      <it-chip label="Etichetta" size="sm" variant="light"></it-chip>
+      <it-chip label="Etichetta" size="sm" variant="dark"></it-chip>
+    </div>
+  `,
 };
 export const VariantiColoreLink: Story = {
   name: 'Varianti di colore link',
@@ -231,7 +242,18 @@ export const VariantiColoreLink: Story = {
       },
     },
   },
-  render: (args) => html` ${CHIP_VARIANTS.map((v) => renderComponent({ ...args, variant: v, href: '#' }))} `,
+  render: () => html`
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <it-chip label="Etichetta" size="sm" variant="primary" href="#"></it-chip>
+      <it-chip label="Etichetta" size="sm" variant="secondary" href="#"></it-chip>
+      <it-chip label="Etichetta" size="sm" variant="success" href="#"></it-chip>
+      <it-chip label="Etichetta" size="sm" variant="danger" href="#"></it-chip>
+      <it-chip label="Etichetta" size="sm" variant="warning" href="#"></it-chip>
+      <it-chip label="Etichetta" size="sm" variant="info" href="#"></it-chip>
+      <it-chip label="Etichetta" size="sm" variant="light" href="#"></it-chip>
+      <it-chip label="Etichetta" size="sm" variant="dark" href="#"></it-chip>
+    </div>
+  `,
 };
 
 export const VariantiDimensione: Story = {
@@ -241,19 +263,27 @@ export const VariantiDimensione: Story = {
     variant: '',
     dismissable: true,
   },
-  render: (args) => html`${CHIP_SIZES.map((s) => renderComponent({ ...args, size: s }))}`,
+  render: () => html`
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <it-chip label="Etichetta" size="sm" variant="" dismissable></it-chip>
+      <it-chip label="Etichetta" size="lg" variant="" dismissable></it-chip>
+    </div>
+  `,
 };
 
 export const ChipConChiusura: Story = {
   name: 'Chip con chiusura',
-  render: (params) => html`
-    ${renderComponent({
-      ...params,
-      dismissable: true,
-      conPulsanteDismiss: true,
-      isDisabled: false,
-      id: 'chip-dismissable',
-    })}
+  render: () => html`
+    <it-chip label="Etichetta" size="sm" variant="primary" dismissable id="chip-dismissable">
+      <it-button
+        slot="dismiss-button"
+        icon
+        aria-label="Elimina etichetta"
+        aria-description="Puoi premere per eliminare la chip."
+      >
+        <it-icon name="it-close" size="sm"></it-icon>
+      </it-button>
+    </it-chip>
   `,
   parameters: {
     docs: {
@@ -326,5 +356,17 @@ Aggiungendo l'attributo \`disabled\` si ottiene una chip disabilitata.
       },
     },
   },
-  render: (args) => html`${renderComponent({ ...args, dismissable: true, conPulsanteDismiss: true })}`,
+  render: () => html`
+    <it-chip label="Etichetta" size="sm" variant="primary" dismissable isDisabled>
+      <it-button
+        slot="dismiss-button"
+        icon
+        aria-label="Elimina etichetta"
+        aria-disabled="true"
+        aria-description="Puoi premere per eliminare la chip."
+      >
+        <it-icon name="it-close" size="sm"></it-icon>
+      </it-button>
+    </it-chip>
+  `,
 };
