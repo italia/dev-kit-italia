@@ -37,6 +37,10 @@
   display: none;
 }
 
+[id|='stories'] {
+  display: none;
+}
+
 @media (min-width: 1200px) {
   .sbdocs-video-container {
     min-width: 800px;
