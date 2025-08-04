@@ -141,13 +141,13 @@ export const VariantiColore: Story = {
       ${(['muted', 'emphasis', 'primary'] as const).map((variant) =>
         renderSection({
           variant,
-          inverse: variant === 'primary',
+          inverse: variant !== 'muted',
           content: html`
             <div class="container">
               <h3>Sezione ${variant}</h3>
               <p>
                 Questa sezione usa la variante <code>${variant}</code>
-                ${variant === 'primary' ? "con testo bianco attraverso l'attributo inverse" : ''}
+                ${variant !== 'muted' ? "con testo bianco attraverso l'attributo inverse" : ''}
               </p>
             </div>
           `,
