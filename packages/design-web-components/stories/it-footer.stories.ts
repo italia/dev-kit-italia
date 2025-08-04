@@ -2,6 +2,7 @@ import type { StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import '@italia/icon';
 import '@italia/button';
+import '@italia/input';
 
 const defaultContent = html`
   <footer class="it-footer">
@@ -132,13 +133,16 @@ const defaultContent = html`
             <div class="col-lg-4 col-md-4 mt-2">
               <h4>Newsletter</h4>
               <div class="form-group d-flex gap-1">
-                <input
+                <it-input
+                  slotted
                   type="text"
-                  class="form-control form-control-sm"
                   id="exampleFormGroup"
+                  size="sm"
                   placeholder="Inserisci la tua email"
-                />
-                <it-button type="submit" variant="primary">Iscriviti</it-button>
+                  label-hidden
+                >
+                  <it-button type="submit" variant="primary" slot="append">Iscriviti</it-button>
+                </it-input>
               </div>
             </div>
           </div>
@@ -225,13 +229,17 @@ const smallContent = html` <footer class="it-footer">
           <div class="col-lg-4 col-md-4 mt-2">
             <h4>Newsletter</h4>
             <div class="form-group d-flex gap-1">
-              <input
-                type="text"
-                class="form-control form-control-sm"
-                id="exampleFormGroup"
-                placeholder="Inserisci la tua email"
-              />
-              <it-button type="submit" variant="primary">Iscriviti</button>
+               <it-input
+                  type="text"
+                  id="exampleFormGroup"
+                  size="sm"
+                  placeholder="Inserisci la tua email"
+                  slotted
+                  label-hidden
+                >
+                  <it-button type="submit" variant="primary" slot="append">Iscriviti</button>
+                </it-input>
+
             </div>
           </div>
         </div>
