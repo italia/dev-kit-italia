@@ -51,11 +51,13 @@ const renderVariant = (args, defaultText) => {
       ...args,
       slot: slot ?? defaultText,
     })}
-    ${renderDefault({
-      ...args,
-      slot: slot ?? `${defaultText} outline`,
-      outline: true,
-    })}
+    ${args.variant !== 'link'
+      ? renderDefault({
+          ...args,
+          slot: slot ?? `${defaultText} outline`,
+          outline: true,
+        })
+      : ''}
   </div>`;
 };
 
@@ -301,18 +303,18 @@ export const Tipologie: Story = {
     variant: 'primary',
   },
   render: (params) => html`
-    <div class="flex tipologie-buttons">
-      ${renderDefault({
+    <div class="flex">
+      ${renderComponent({
         ...params,
         slot: `Button - ${params.slot}`,
         type: 'button',
       })}
-      ${renderDefault({
+      ${renderComponent({
         ...params,
         slot: `Submit - ${params.slot}`,
         type: 'submit',
       })}
-      ${renderDefault({
+      ${renderComponent({
         ...params,
         slot: `Reset - ${params.slot}`,
         type: 'reset',
@@ -476,8 +478,8 @@ L’icona può essere posizionata a sinistra o a destra del testo, a seconda del
 Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` per poter avere il contorno circolare.
 <br/><br/>
 #### Dimensione dell'icona
-- Nei pulsanti di dimensione \`lg\` e \`sm\` è necessario passare l'attributo \`size="sm"\` all'icona.
-- Nei pulsaanti di dimensione \`xs\`, è necessario passare l'attributo \`size="xs"\` all'icona .
+- Nei pulsanti di dimensione \`lg\` e \`sm\` è necessario assegnare l'attributo \`size="sm"\` all'icona.
+- Nei pulsanti di dimensione \`xs\`, è necessario passare l'attributo \`size="xs"\` all'icona .
 `,
       },
     },
@@ -531,7 +533,7 @@ Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` pe
       </it-button>
 
       <it-button
-        variant="link"
+        variant="primary"
         size="xs"
         icon
         ?outline="${params.outline}"
