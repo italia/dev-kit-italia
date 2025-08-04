@@ -1,11 +1,15 @@
-import{i as p,x as g,a as h}from"./lit-element-DvQWNfDj.js";import{n as b,o as v,t as y}from"./if-defined-BiCqEb5S.js";function r(e,t,n,i){var c=arguments.length,a=c<3?t:i,l;if(typeof Reflect=="object"&&typeof Reflect.decorate=="function")a=Reflect.decorate(e,t,n,i);else for(var d=e.length-1;d>=0;d--)(l=e[d])&&(a=(c<3?l(a):c>3?l(t,n,a):l(t,n))||a);return c>3&&a&&Object.defineProperty(t,n,a),a}function s(e,t){if(typeof Reflect=="object"&&typeof Reflect.metadata=="function")return Reflect.metadata(e,t)}/**
+import{i as v,x as p,a as g}from"./lit-element-DvQWNfDj.js";import{n as a,o as h,t as y}from"./query-nkdlPDuA.js";/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */const C={CHILD:2},m=e=>(...t)=>({_$litDirective$:e,values:t});class f{constructor(t){}get _$AU(){return this._$AM._$AU}_$AT(t,r,o){this._$Ct=t,this._$AM=r,this._$Ci=o}_$AS(t,r){return this.update(t,r)}update(t,r){return this.render(...r)}}function b(e,t,r,o){var c=arguments.length,s=c<3?t:o,l;if(typeof Reflect=="object"&&typeof Reflect.decorate=="function")s=Reflect.decorate(e,t,r,o);else for(var d=e.length-1;d>=0;d--)(l=e[d])&&(s=(c<3?l(s):c>3?l(t,r,s):l(t,r))||s);return c>3&&s&&Object.defineProperty(t,r,s),s}function i(e,t){if(typeof Reflect=="object"&&typeof Reflect.metadata=="function")return Reflect.metadata(e,t)}/**
  * @license
  *
  * Copyright IBM Corp. 2020, 2022
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
- */var u;(function(e){e.NO_ERROR="",e.ERROR_REQUIRED="required"})(u||(u={}));class m extends h{addFocus(t){}composeClass(...t){let n="";return t.filter(i=>i.length>0).forEach(i=>{n+=` ${i}`}),n.trim()}}var f=p`/***************************** 1 ****************************************/
+ */var u;(function(e){e.NO_ERROR="",e.ERROR_REQUIRED="required"})(u||(u={}));class x extends f{update(t,[r]){const o=t.element;for(const[c,s]of Object.entries(r))s!=null?o.setAttribute(c,s):o.removeAttribute(c);return null}render(t){return null}}const k=m(x);class w{constructor(t){this.tag=t}format(t,r){return[`[${this.tag}] ${r}`]}warn(t){console.warn(...this.format("warn",t))}error(t){console.error(...this.format("error",t))}info(t){console.info(...this.format("info",t))}}class $ extends g{constructor(){super(),this._ariaAttributes={},this.logger=new w(this.tagName.toLowerCase())}generateId(t){return`${t}-${Math.random().toString(36).slice(2)}`}addFocus(t){}composeClass(...t){let r="";return t.filter(o=>o.length>0).forEach(o=>{r+=` ${o}`}),r.trim()}getAriaAttributes(){for(const t of this.getAttributeNames())t.startsWith("aria-")&&(this._ariaAttributes[t]=this.getAttribute(t))}connectedCallback(){var r,o;(r=super.connectedCallback)==null||r.call(this),this.getAriaAttributes();const t=((o=this.id)==null?void 0:o.length)>0?this.id:this.tagName.toLowerCase();this._id=this.generateId(t)}}var _=v`/***************************** 1 ****************************************/
 /***************************** 2 ****************************************/
 /***************************** 1 ****************************************/
 /***************************** 2 ****************************************/
@@ -383,15 +387,15 @@ a.btn-outline-danger:active {
 
 .btn-close-white {
   filter: invert(1) grayscale(100%) brightness(200%);
-}`;let o=class extends m{constructor(){super(...arguments),this._buttonClasses="",this.type="button",this.variant="",this.size="sm",this.outline=!1,this.block=!1,this.disabled=!1,this.icon=!1,this.value="",this.internals=this.attachInternals()}static get formAssociated(){return!0}firstUpdated(t){const n=this.renderRoot.querySelector("button");n&&this.addFocus(n)}updated(){this._buttonClasses=this.composeClass("btn",!this.outline&&this.variant!==""?`btn-${this.variant}`:"",this.outline?`${this.variant?"btn-outline-":""}${this.variant}`:"",this.disabled?"disabled":"",this.size?`btn-${this.size}`:"",this.block?"d-block w-100":"",this.icon?"btn-icon":"")}surfaceSubmitEvent(t){this.form&&(t.preventDefault(),t.stopPropagation(),this.form.requestSubmit())}get form(){return this.internals?this.internals.form:null}connectedCallback(){var t;(t=super.connectedCallback)==null||t.call(this),this.block&&this.classList.add("d-block","w-100")}render(){return g`
+}`;let n=class extends ${constructor(){super(...arguments),this._buttonClasses="",this.type="button",this.variant="",this.size="sm",this.outline=!1,this.block=!1,this.icon=!1,this.value="",this.internals=this.attachInternals()}static get formAssociated(){return!0}firstUpdated(t){const r=this.renderRoot.querySelector("button");r&&this.addFocus(r)}updated(){this._buttonClasses=this.composeClass("btn",!this.outline&&this.variant!==""?`btn-${this.variant}`:"",this.outline?`${this.variant?"btn-outline-":""}${this.variant}`:"","aria-disabled"in this._ariaAttributes?"disabled":"",this.size?`btn-${this.size}`:"",this.block?"d-block w-100":"",this.icon?"btn-icon":"")}surfaceSubmitEvent(t){const r="aria-disabled"in this._ariaAttributes;this.form&&!r&&(t.preventDefault(),t.stopPropagation(),this.form.requestSubmit()),r&&(t.preventDefault(),t.stopPropagation())}get form(){return this.internals?this.internals.form:null}connectedCallback(){var t;(t=super.connectedCallback)==null||t.call(this),this.block&&this.classList.add("d-block","w-100")}render(){return p`
       <button
-        part="${this.variant} ${this.outline?"outline":""}"
+        part="button ${this.variant} ${this.outline?"outline":""}"
         type="${this.type}"
-        disabled=${v(this.disabled||void 0)}
         class="${this._buttonClasses}"
         @click="${this.type==="submit"?this.surfaceSubmitEvent:void 0}"
-        .value="${v(this.value?this.value:void 0)}"
+        .value="${h(this.value?this.value:void 0)}"
+        ${k(this._ariaAttributes)}
       >
         <slot></slot>
       </button>
-    `}};o.styles=f;r([b({type:String}),s("design:type",Object)],o.prototype,"_buttonClasses",void 0);r([b({type:String}),s("design:type",Object)],o.prototype,"type",void 0);r([b({type:String}),s("design:type",String)],o.prototype,"variant",void 0);r([b({type:String}),s("design:type",String)],o.prototype,"size",void 0);r([b({type:Boolean}),s("design:type",Object)],o.prototype,"outline",void 0);r([b({type:Boolean}),s("design:type",Object)],o.prototype,"block",void 0);r([b({type:Boolean}),s("design:type",Object)],o.prototype,"disabled",void 0);r([b({type:Boolean}),s("design:type",Object)],o.prototype,"icon",void 0);r([b({type:String}),s("design:type",Object)],o.prototype,"value",void 0);r([b(),s("design:type",Object)],o.prototype,"internals",void 0);o=r([y("it-button")],o);
+    `}};n.styles=_;b([a({type:String}),i("design:type",Object)],n.prototype,"_buttonClasses",void 0);b([a({type:String}),i("design:type",Object)],n.prototype,"type",void 0);b([a({type:String}),i("design:type",String)],n.prototype,"variant",void 0);b([a({type:String}),i("design:type",String)],n.prototype,"size",void 0);b([a({type:Boolean}),i("design:type",Object)],n.prototype,"outline",void 0);b([a({type:Boolean}),i("design:type",Object)],n.prototype,"block",void 0);b([a({type:Boolean}),i("design:type",Object)],n.prototype,"icon",void 0);b([a({type:String}),i("design:type",Object)],n.prototype,"value",void 0);b([a(),i("design:type",Object)],n.prototype,"internals",void 0);n=b([y("it-button")],n);export{m as e,f as i,C as t};
