@@ -3,6 +3,7 @@ import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '@italia/video';
 import '@italia/button';
+import '@italia/icon';
 import itLang from '../src/locales/it.js';
 import type { ConsentOptions, Track, Translations, Locale } from '../src/types.ts';
 
