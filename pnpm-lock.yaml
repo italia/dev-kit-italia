@@ -261,7 +261,7 @@ importers:
         version: link:../popover
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/67b3a245b219fe6ac17277193caebbd8e4824797
+        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/cdb6bbb33c0111fee4d06fccab870e4dd4cbde15
       lit:
         specifier: 'catalog:'
         version: 3.3.0
@@ -417,7 +417,7 @@ importers:
         version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/67b3a245b219fe6ac17277193caebbd8e4824797
+        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/cdb6bbb33c0111fee4d06fccab870e4dd4cbde15
       lit:
         specifier: 'catalog:'
         version: 3.3.0
