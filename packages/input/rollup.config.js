@@ -5,7 +5,7 @@ import { litScss } from 'rollup-plugin-scss-lit';
  * @type {import('rollup').RollupOptions}
  */
 export default {
-  input: ['src/index.ts', 'src/it-section.ts'],
+  input: ['src/index.ts', 'src/it-input.ts'],
   output: {
     dir: 'dist',
     sourcemap: true,

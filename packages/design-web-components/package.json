@@ -54,9 +54,8 @@
     "@italia/button": "workspace:^",
     "@italia/chip": "workspace:^",
     "@italia/icon": "workspace:^",
-    "@italia/section": "workspace:^",
     "@italia/video": "workspace:^",
-    "@italia/footer": "workspace:^",
+    "@italia/input": "workspace:^",
     "rollup-plugin-copy": "^3.5.0"
   },
   "devDependencies": {

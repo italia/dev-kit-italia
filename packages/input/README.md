@@ -1,21 +1,21 @@
-# \<it-section>
+# \<it-input>
 
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
 ## Installation
 
 ```bash
-npm i it-section
+npm i it-input
 ```
 
 ## Usage
 
 ```html
 <script type="module">
-  import '@italia/it-section';
+  import '@italia/it-input';
 </script>
 
-<it-section></it-section>
+<it-input></it-input>
 ```
 
 ## Linting and formatting
