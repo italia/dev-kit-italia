@@ -207,6 +207,9 @@ importers:
       '@italia/icon':
         specifier: workspace:^
         version: link:../icon
+      '@italia/popover':
+        specifier: workspace:^
+        version: link:../popover
       '@italia/video':
         specifier: workspace:^
         version: link:../video
