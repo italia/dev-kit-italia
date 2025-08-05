@@ -66,7 +66,7 @@ Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del desi
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità e immagini decorative</span></div><p>
       Le immagini fornite tramite l'attributo <code>image</code> sono considerate <strong>decorative</strong>: sono rese con un tag <code>&lt;img&gt;</code> e <code>aria-hidden="true"</code>.
-      In questo modo non vengono annunciate dagli screen reader.</p><p class="pt-2">Il componente imposta inoltre automaticamente <code>aria-labelledby</code> basandosi sul primo titolo (heading) presente nello <code>&lt;slot&gt;</code>.
+      In questo modo non vengono annunciate dagli screen reader.</p><p class="pt-2">
       Assicurati che il contenuto contenga un'intestazione semantica (es. <code>&lt;h2&gt;</code>) per garantire la corretta navigazione assistiva.</p></div></div>
 `,
       },

@@ -36,12 +36,10 @@ export class ItSection extends BaseComponent {
     );
 
     if (!headings.length) {
-      this.logger.warn('No heading found in the slot elements, cannot set aria-labelledby correctly for the section.');
-      return;
+      this.logger.warn(
+        'No heading found in the slot elements, section will not appear as correct role to screen readers.',
+      );
     }
-
-    const firstHeading = headings[0];
-    firstHeading.id = this._id!;
   }
 
   render() {
@@ -55,7 +53,7 @@ export class ItSection extends BaseComponent {
       'white-color': this.inverse,
     };
     return html`
-      <section aria-labelledby="${this._id}" class="${classMap(wrapperClasses)}" part="section">
+      <section class="${classMap(wrapperClasses)}" part="section">
           ${
             this.image
               ? html`
