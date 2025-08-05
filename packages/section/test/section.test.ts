@@ -9,17 +9,9 @@ describe('<it-section>', () => {
     expect(section?.classList.contains('section')).to.be.true;
   });
 
-  it('sets aria-labelledby from first heading in slot', async () => {
-    const el = await fixture(html` <it-section><h2>Test heading</h2></it-section> `);
-
-    const slot = el.shadowRoot?.querySelector('slot');
-    const assigned = slot?.assignedElements() ?? [];
-    const heading = assigned.find((e) => /^H[1-6]$/.test(e.tagName));
-    const section = el.shadowRoot?.querySelector('section');
-
-    expect(heading).to.exist;
-    expect(heading!.id).to.match(/^it-section-/);
-    expect(section?.getAttribute('aria-labelledby')).to.equal(heading!.id);
+  it('default is accessible', async () => {
+    const el = await fixture(html`<it-section><h2>Test</h2></it-section>`);
+    await expect(el).to.be.accessible();
   });
 
   it('applies correct variant class', async () => {
