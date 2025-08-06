@@ -56,6 +56,7 @@ const renderComponent = (params: any) =>
     maxlength="${ifDefined(params.maxlength) || undefined}"
     ?suggestions="${params.suggestions}"
     ?label-hidden="${params.labelHidden}"
+    ?custom-validation="${params.customValidation}"
     translations="${params.translations ? JSON.stringify(params.translations) : nothing}"
     >${ifDefined(params.children || undefined)}</it-input
   >`;
@@ -572,9 +573,9 @@ export const GestioneErrori: Story = {
         <li>il campo non rispetta il pattern: impostando il valore di \`validityPattern\` in \`translations\`</li>
         <li>il campo è troppo corto: impostando il valore di \`validityMinlength\` in \`translations\`</li>
         <li>il campo ha un valore non valido: impostando il valore di \`validityInvalid\` in \`translations\`</li></ul>
-
-        <br/><br/><h4>Validazione esterna</h4>
-        E' inoltre possibile validare il campo esternamente (via js ad esempio), impostando gli attributi \`custom-validation="true"\` e, nel caso il campo non sia valido impostare il messaggio di errore da visualizzare attraverso l'attributo \`validity-message="Messaggio di errore"\`.`,
+        <h4>Validazione esterna</h4>
+        E' inoltre possibile validare il campo esternamente (via js ad esempio, o lato server), impostando l' attributo \`custom-validation="true"\`. In questo modo la validazione di defautl effettuata internamente al componente è disabilitata.
+        <br/>Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo \`validity-message="Messaggio di errore"\`.`,
       },
     },
   },
