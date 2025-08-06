@@ -199,6 +199,51 @@ Nel caso il campo non sia valido, è necessario invalidare il campo impostando i
     </form>`,
 };
 
+export const ValidazioneJS: Story = {
+  ...meta,
+  name: 'Validazione via JS',
+  tags: ['!dev'],
+  parameters: {
+    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
+    docs: {
+      canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
+      description: {
+        story: `
+E' possibile implementare una propria validazione via JS, intercettando gli eventi emessi dai componenti:
+
+\`\`\`js
+ window.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('#form');
+      const all_input = form.querySelectorAll('it-input');
+
+      // evento scatenato quando il web-component ha effettutato il primo render, e l'input è disonibile nel DOM
+      all_input.forEach(input=>{
+        input.addEventListener('input-ready', (event) => {
+          const input = event.detail.el;
+          // il tuo codice qui.
+        });
+      });
+
+      // evento scatenato quando l'input riceve l'evento di 'on-input' (ad esempio, durante l'inserimento di testo da parte dell'utente)
+      all_input.forEach(i=>{
+        i.addEventListener('on-input', (event) => {
+          const input = event.detail.el;
+          // il tuo codice qui.
+        });
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // il tuo codice qui.
+      });
+    });
+\`\`\`
+`,
+      },
+    },
+  },
+  render: () => html`<div class="hide-preview"></div>`,
+};
 export const SingoliCampi: Story = {
   name: 'Tipologie di campi',
   tags: ['!dev'],

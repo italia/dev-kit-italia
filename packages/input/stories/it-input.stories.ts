@@ -620,7 +620,8 @@ document.querySelector('it-input#event-input-example').addEventListener('on-inpu
 });
 \`\`\`
 
-Il componente, emette anche un evento di \`input-ready\` quando l'input è pronto nel DOM:
+Il componente, emette anche un evento di tipo \`input-ready\` quando l'input è pronto e caricato nel DOM:
+
 \`\`\`js
 document.querySelector('it-input#event-input-example').addEventListener('input-ready', (event) => {
   console.log('Input ready:', event);
