@@ -1,0 +1,19 @@
+.it-brand-wrapper it-icon::part(icon) {
+  width: var(--bs-header-brand-size);
+  height: var(--bs-header-brand-size);
+  margin-right: var(--bs-spacing-xxs);
+  fill: var(--bs-header-brand-icon-color);
+}
+
+.it-right-zone .it-socials it-icon::part(icon) {
+  width: var(--bs-icon-size-s);
+  height: var(--bs-icon-size-s);
+  margin-left: var(--bs-spacing-s);
+  fill: var(--bs-header-social-color);
+}
+
+.it-search-wrapper a.rounded-icon it-icon::part(icon) {
+  width: var(--bs-header-search-icon-size);
+  height: var(--bs-header-search-icon-size);
+  fill: var(--bs-header-search-icon-color);
+}

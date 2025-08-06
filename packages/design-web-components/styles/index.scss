@@ -20,9 +20,17 @@
 @import 'bootstrap-italia/src/scss/components/type';
 @import 'bootstrap-italia/src/scss/components/linklist';
 @import 'bootstrap-italia/src/scss/components/dropdown';
+@import 'bootstrap-italia/src/scss/components/nav';
+@import 'bootstrap-italia/src/scss/components/navbar';
+@import 'bootstrap-italia/src/scss/components/header';
+@import 'bootstrap-italia/src/scss/components/headercenter';
+@import 'bootstrap-italia/src/scss/components/headerslim';
+@import 'bootstrap-italia/src/scss/components/megamenu';
+@import 'bootstrap-italia/src/scss/components/buttons';
 
 /*design-web-components global styles*/
 @import '@italia/button/styles/globals';
 @import '@italia/dropdown/styles/globals';
 @import '@italia/icon/styles/globals';
 @import '@italia/video/styles/globals';
+@import './header';
