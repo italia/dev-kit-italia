@@ -30,7 +30,9 @@ describe('<it-input>', () => {
 
   // Validazione personalizzata (setCustomValidity)
   it('should show a custom validity message', async () => {
-    const el = await fixture<ItInput>(html`<it-input validity-message="Errore personalizzato"></it-input>`);
+    const el = await fixture<ItInput>(
+      html`<it-input validity-message="Errore personalizzato" custom-validation></it-input>`,
+    );
     await el.updateComplete;
 
     expect(el.invalid).to.be.true;

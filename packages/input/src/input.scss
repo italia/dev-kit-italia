@@ -61,6 +61,12 @@ $utilities: (
       )
     ),
   'color': map-get($utilities, 'color'),
+  'display': map-merge(
+      map-get($utilities, 'display'),
+      (
+        'values': none,
+      )
+    ),
 );
 @import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
 
