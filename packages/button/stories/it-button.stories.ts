@@ -26,7 +26,7 @@ const renderComponent = (params: ButtonProps, defaultSlot = '') => {
       ?outline="${params.outline}"
       size="${ifDefined(params.size)}"
       ?block="${params.block}"
-      ?aria-disabled="${params.ariaDisabled}"
+      aria-disabled="${ifDefined(params.ariaDisabled ? 'true' : undefined)}"
       ?icon="${params.icon}"
       type="${ifDefined(params.type)}"
       >${slot}</it-button
@@ -478,8 +478,8 @@ L’icona può essere posizionata a sinistra o a destra del testo, a seconda del
 Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` per poter avere il contorno circolare.
 <br/><br/>
 #### Dimensione dell'icona
-- Nei pulsanti di dimensione \`lg\` o default (\`sm\`), è necessario passare l'attributo \`size="sm"\` all'icona.
-- Nei pulsaanti di dimensione \`xs\`, è necessario passare l'attributo \`size="xs"\` all'icona .
+- Nei pulsanti di dimensione \`lg\` o default (\`sm\`), è necessario assegnare l'attributo \`size="sm"\` all'icona.
+- Nei pulsaanti di dimensione \`xs\`, è necessario assegnare l'attributo \`size="xs"\` all'icona .
 `,
       },
     },
@@ -532,7 +532,7 @@ Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` pe
       </it-button>
 
       <it-button
-        variant="link"
+        variant="primary"
         size="xs"
         icon
         ?outline="${params.outline}"
