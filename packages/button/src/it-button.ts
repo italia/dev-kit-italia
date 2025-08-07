@@ -83,6 +83,10 @@ export class ItButton extends BaseComponent {
     if (this.block) {
       this.classList.add('d-block', 'w-100');
     }
+    if (this.variant === 'link') {
+      const label = this._ariaAttributes['aria-label'] ? `${this._ariaAttributes['aria-label']} - ` : '';
+      this._ariaAttributes['aria-label'] = `${label}Pulsante link`;
+    }
   }
 
   // Render the UI as a function of component state
