@@ -222,7 +222,17 @@ export const VariantiColore: Story = {
     docs: {
       description: {
         story: `
-Gli stili definiti da Bootstrap Italia utilizzano un naming consistente con Bootstrap, con alcune personalizzazioni:
+Gli stili definiti da Bootstrap Italia utilizzano un naming consistente con Bootstrap, con alcune personalizzazioni.
+
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
+<p>
+Le classi \`.btn\` e \`.btn-\` conferiscono agli elementi html l’aspetto visivo di un pulsante. Anche elementi \`<a>\` o \`<span>\` possono subire questa trasformazione provocando discrepanza tra ciò che si rappresenta e la funzione semantica dell’elemento.
+<br/>
+Questo può provocare complesse problematiche di accessibilità.
+<br/><br/>
+Dove il click sul pulsante non genera un cambio di pagina utilizzare esclusivamente il componente \`<it-button>\`.
+<br/><br/>
+Qualora non fosse possibile, è necessario applicare in modo appropriato l’attributo \`role="button"\` per trasmetterne lo scopo alle tecnologie assistive.</p></div></div>
 
 #### Note sullo stato disabilitato
 - I pulsanti disabilitati dovranno avere l'attributo \`aria-disabled="true"\` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo \`aria-disabled\` è consigliato usare anche l'attributo \`aria-describedby\` (o un elemento all'interno del bottone con classe \`.sr-only\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
