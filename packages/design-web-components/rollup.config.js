@@ -33,8 +33,7 @@ export default [
       resolve(),
       copy({
         targets: [
-          { src: 'assets/*', dest: 'dist/assets' },
-          // gli assets degli altri packages del monorepo
+          // gli assets di tutti i packages del monorepo
           {
             src: '../*/assets/*',
             dest: 'dist/assets',
