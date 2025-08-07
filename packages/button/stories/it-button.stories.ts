@@ -128,6 +128,7 @@ const meta = {
     icon: {
       control: 'boolean',
       type: 'boolean',
+      description: "Se il pulsante mostra un'icona, è necessario aggiungere questo attributo.",
       table: { defaultValue: { summary: 'false' } },
     },
     slot: {
@@ -395,6 +396,8 @@ export const ConIcona: Story = {
     docs: {
       description: {
         story: `
+E' necessario passare l'attributo \`icon="true"\` (o \`icon=""\`, o semplicemente \`icon\`) a \`<it-button>\` per applicargli gli stili corretti.
+
 L’icona può essere posizionata a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.
 <br/><br/>
 #### Dimensione dell'icona
@@ -491,6 +494,8 @@ export const ConIconaCerchiata: Story = {
     docs: {
       description: {
         story: `
+E' necessario passare l'attributo \`icon="true"\` (o \`icon=""\`, o semplicemente \`icon\`) a \`<it-button>\` per applicargli gli stili corretti.
+
 L’icona può essere posizionata a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.
 Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` per poter avere il contorno circolare.
 <br/><br/>
