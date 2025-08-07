@@ -1,4 +1,4 @@
-import{x as a}from"./lit-element-DvQWNfDj.js";import{o as R}from"./it-icon-DY9IQrvY.js";import"./it-button-Z-M3sUpF.js";import"./iframe-Db0zB2Zp.js";const G=["lg","sm","xs"],M=["primary","secondary","success","danger","warning","link"],t=(n,e="")=>{var o;const i=((o=n.slot)==null?void 0:o.length)>0?n.slot:e;return a`
+import{x as a}from"./lit-element-DvQWNfDj.js";import{o as R}from"./it-icon-CJc4fS0Y.js";import"./it-button-C1sI6co6.js";import"./iframe-Bz4KNzwD.js";const G=["lg","sm","xs"],M=["primary","secondary","success","danger","warning","link"],t=(n,e="")=>{var o;const i=((o=n.slot)==null?void 0:o.length)>0?n.slot:e;return a`
     <it-button
       variant="${n.variant}"
       ?outline="${n.outline}"
@@ -9,14 +9,14 @@ import{x as a}from"./lit-element-DvQWNfDj.js";import{o as R}from"./it-icon-DY9IQ
       type="${n.type}"
       >${i}</it-button
     >
-  `},$=n=>a`
+  `},z=n=>a`
   <div class="flex">
     ${t(n)}
     ${t({...n,ariaDisabled:!0,slot:`${n.slot} disabled`})}
   </div>
 `,s=(n,e)=>{var o;const i=((o=n.slot)==null?void 0:o.length)>0?n.slot:null;return a`<div class="flex p-0">
-    ${$({...n,slot:i??e})}
-    ${n.variant!=="link"?$({...n,slot:i??`${e} outline`,outline:!0}):""}
+    ${z({...n,slot:i??e})}
+    ${n.variant!=="link"?z({...n,slot:i??`${e} outline`,outline:!0}):""}
   </div>`},g=(n,e)=>a`<div class="flex">
     ${t({...n,variant:"primary"},`Primary ${e}`)}
     ${t({...n,variant:"secondary"},`Secondary ${e}`)}
@@ -24,7 +24,23 @@ import{x as a}from"./lit-element-DvQWNfDj.js";import{o as R}from"./it-icon-DY9IQ
 <Description>Pulsante con etichetta di testo o icona che al click inizia un'azione o un evento.</Description>
 
 Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del design-system](https://designers.italia.it/design-system/componenti/buttons/).
-`}}}},r={...v,name:"Esempio interattivo",args:{variant:"primary"},tags:["!autodocs","!dev"],parameters:{docs:{canvas:{sourceState:"shown"}}},render:n=>a` ${t({...n})}`},l={name:"Personalizzazione degli stili",tags:["!dev"],parameters:{viewMode:"docs",docs:{canvas:{hidden:!0,sourceState:"none"},description:{story:"\nPer la personalizzazione degli stili si può usare il selettore `::part` passando il valore `button`. [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).\n"}}},render:()=>a`<div class="hide-preview"></div>`},c={name:"Varianti di colore",args:{slot:""},argTypes:{variant:{table:{disable:!0}},outline:{table:{disable:!0}},ariaDisabled:{table:{disable:!0}}},parameters:{docs:{description:{story:"\nGli stili definiti da Bootstrap Italia utilizzano un naming consistente con Bootstrap, con alcune personalizzazioni:\n\n#### Note sullo stato disabilitato\n- I pulsanti disabilitati dovranno avere l'attributo `aria-disabled=\"true\"` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo `aria-disabled` è consigliato usare anche l'attributo `aria-describedby` (o un elemento all'interno del bottone con classe `.sr-only`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.\n<br/> E' sconsigliato l'uso dell'attributo `disabled`.\n"}}},render:n=>a`
+`}}}},r={...v,name:"Esempio interattivo",args:{variant:"primary"},tags:["!autodocs","!dev"],parameters:{docs:{canvas:{sourceState:"shown"}}},render:n=>a` ${t({...n})}`},l={name:"Personalizzazione degli stili",tags:["!dev"],parameters:{viewMode:"docs",docs:{canvas:{hidden:!0,sourceState:"none"},description:{story:"\nPer la personalizzazione degli stili si può usare il selettore `::part` passando il valore `button`. [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).\n"}}},render:()=>a`<div class="hide-preview"></div>`},c={name:"Varianti di colore",args:{slot:""},argTypes:{variant:{table:{disable:!0}},outline:{table:{disable:!0}},ariaDisabled:{table:{disable:!0}}},parameters:{docs:{description:{story:`
+Gli stili definiti da Bootstrap Italia utilizzano un naming consistente con Bootstrap, con alcune personalizzazioni.
+
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
+<p>
+Le classi \`.btn\` e \`.btn-\` conferiscono agli elementi html l’aspetto visivo di un pulsante. Anche elementi \`<a>\` o \`<span>\` possono subire questa trasformazione provocando discrepanza tra ciò che si rappresenta e la funzione semantica dell’elemento.
+<br/>
+Questo può provocare complesse problematiche di accessibilità.
+<br/><br/>
+Dove il click sul pulsante non genera un cambio di pagina utilizzare esclusivamente il componente \`<it-button>\`.
+<br/><br/>
+Qualora non fosse possibile, è necessario applicare in modo appropriato l’attributo \`role="button"\` per trasmetterne lo scopo alle tecnologie assistive.</p></div></div>
+
+#### Note sullo stato disabilitato
+- I pulsanti disabilitati dovranno avere l'attributo \`aria-disabled="true"\` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo \`aria-disabled\` è consigliato usare anche l'attributo \`aria-describedby\` (o un elemento all'interno del bottone con classe \`.sr-only\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
+<br/> E' sconsigliato l'uso dell'attributo \`disabled\`.
+`}}},render:n=>a`
     ${s({...n,variant:"primary"},"Primary")}
     ${s({...n,variant:"secondary"},"Secondary")}
     ${s({...n,variant:"success"},"Success")}
@@ -57,7 +73,7 @@ visibile), o siano incluse attraverso mezzi alternativi, come testo aggiuntivo n
       ${s({...n,variant:"secondary"},"Secondary")}
       ${s({...n,variant:"link"},"Link")}
     </div>
-  `},b={...v,name:"Con icona",args:{},argTypes:{variant:{table:{disable:!0}},size:{table:{disable:!0}}},parameters:{docs:{description:{story:"\nL’icona può essere posizionata a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.\n<br/><br/>\n#### Dimensione dell'icona\n- Nei pulsanti di dimensione `lg` e `sm` è necessario passare l'attributo `size=\"sm\"` all'icona.\n- Nei pulsaanti di dimensione `xs`, è necessario passare l'attributo `size=\"xs\"` all'icona .\n"}}},render:n=>{var i;const e=((i=n.slot)==null?void 0:i.length)>0?n.slot:null;return a` <div class="flex">
+  `},b={...v,name:"Con icona",args:{},argTypes:{variant:{table:{disable:!0}},size:{table:{disable:!0}}},parameters:{docs:{description:{story:"\nL’icona può essere posizionata a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.\n<br/><br/>\n#### Dimensione dell'icona\n- Nei pulsanti di dimensione `lg` e `sm` è necessario passare l'attributo `size=\"sm\"` all'icona.\n- Nei pulsaanti di dimensione `xs`, è necessario passare l'attributo `size=\"xs\"` all'icona .\n\n#### Allineamento e spaziatura dell’icona\nNel caso si utilizzi un’icona all’interno di un elemento `<it-button>` è necessario inserire il testo del pulsante all’interno di un tag `<span/>` al fine di garantire un perfetto allineamento ed una corretta spaziatura tra l’icona e lo stesso testo.\n"}}},render:n=>{var i;const e=((i=n.slot)==null?void 0:i.length)>0?n.slot:null;return a` <div class="flex">
       <it-button
         variant="success"
         size="lg"
@@ -92,7 +108,7 @@ visibile), o siano incluse attraverso mezzi alternativi, come testo aggiuntivo n
         type="${n.type}"
       >
         <it-icon name="it-star-full" color="white" size="xs"></it-icon>
-        <span>${e??"Pulsante Smal con icona"}</span>
+        <span>${e??"Pulsante Small con icona"}</span>
       </it-button>
 
       <it-button
@@ -167,7 +183,7 @@ visibile), o siano incluse attraverso mezzi alternativi, come testo aggiuntivo n
         </span>
         <span>${e??"Pulsante Extra Small con icona"}</span>
       </it-button>
-    </div>`}};var z,y,k;r.parameters={...r.parameters,docs:{...(z=r.parameters)==null?void 0:z.docs,source:{originalSource:`{
+    </div>`}};var $,y,f;r.parameters={...r.parameters,docs:{...($=r.parameters)==null?void 0:$.docs,source:{originalSource:`{
   ...meta,
   name: 'Esempio interattivo',
   args: {
@@ -184,7 +200,7 @@ visibile), o siano incluse attraverso mezzi alternativi, come testo aggiuntivo n
   render: params => html\` \${renderComponent({
     ...params
   })}\`
-}`,...(k=(y=r.parameters)==null?void 0:y.docs)==null?void 0:k.source}}};var f,x,h;l.parameters={...l.parameters,docs:{...(f=l.parameters)==null?void 0:f.docs,source:{originalSource:`{
+}`,...(f=(y=r.parameters)==null?void 0:y.docs)==null?void 0:f.source}}};var k,h,x;l.parameters={...l.parameters,docs:{...(k=l.parameters)==null?void 0:k.docs,source:{originalSource:`{
   name: 'Personalizzazione degli stili',
   tags: ['!dev'],
   parameters: {
@@ -204,7 +220,7 @@ Per la personalizzazione degli stili si può usare il selettore \\\`::part\\\` p
     }
   },
   render: () => html\`<div class="hide-preview"></div>\`
-}`,...(h=(x=l.parameters)==null?void 0:x.docs)==null?void 0:h.source}}};var S,D,P;c.parameters={...c.parameters,docs:{...(S=c.parameters)==null?void 0:S.docs,source:{originalSource:`{
+}`,...(x=(h=l.parameters)==null?void 0:h.docs)==null?void 0:x.source}}};var S,D,P;c.parameters={...c.parameters,docs:{...(S=c.parameters)==null?void 0:S.docs,source:{originalSource:`{
   name: 'Varianti di colore',
   args: {
     slot: ''
@@ -230,7 +246,17 @@ Per la personalizzazione degli stili si può usare il selettore \\\`::part\\\` p
     docs: {
       description: {
         story: \`
-Gli stili definiti da Bootstrap Italia utilizzano un naming consistente con Bootstrap, con alcune personalizzazioni:
+Gli stili definiti da Bootstrap Italia utilizzano un naming consistente con Bootstrap, con alcune personalizzazioni.
+
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
+<p>
+Le classi \\\`.btn\\\` e \\\`.btn-\\\` conferiscono agli elementi html l’aspetto visivo di un pulsante. Anche elementi \\\`<a>\\\` o \\\`<span>\\\` possono subire questa trasformazione provocando discrepanza tra ciò che si rappresenta e la funzione semantica dell’elemento.
+<br/>
+Questo può provocare complesse problematiche di accessibilità.
+<br/><br/>
+Dove il click sul pulsante non genera un cambio di pagina utilizzare esclusivamente il componente \\\`<it-button>\\\`.
+<br/><br/>
+Qualora non fosse possibile, è necessario applicare in modo appropriato l’attributo \\\`role="button"\\\` per trasmetterne lo scopo alle tecnologie assistive.</p></div></div>
 
 #### Note sullo stato disabilitato
 - I pulsanti disabilitati dovranno avere l'attributo \\\`aria-disabled="true"\\\` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo \\\`aria-disabled\\\` è consigliato usare anche l'attributo \\\`aria-describedby\\\` (o un elemento all'interno del bottone con classe \\\`.sr-only\\\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
@@ -324,7 +350,7 @@ Utilizzando invece l'attributo \\\`block\\\` si ottengono pulsanti che prendono 
   }, 'Secondary Block')}
     </div>
   \`
-}`,...(T=(C=d.parameters)==null?void 0:C.docs)==null?void 0:T.source}}};var w,L,B;u.parameters={...u.parameters,docs:{...(w=u.parameters)==null?void 0:w.docs,source:{originalSource:`{
+}`,...(T=(C=d.parameters)==null?void 0:C.docs)==null?void 0:T.source}}};var L,w,N;u.parameters={...u.parameters,docs:{...(L=u.parameters)==null?void 0:L.docs,source:{originalSource:`{
   ...meta,
   // name: 'Tipologie',
   args: {
@@ -349,7 +375,7 @@ Utilizzando invece l'attributo \\\`block\\\` si ottengono pulsanti che prendono 
   })}
     </div>
   \`
-}`,...(B=(L=u.parameters)==null?void 0:L.docs)==null?void 0:B.source}}};var E,N,I;p.parameters={...p.parameters,docs:{...(E=p.parameters)==null?void 0:E.docs,source:{originalSource:`{
+}`,...(N=(w=u.parameters)==null?void 0:w.docs)==null?void 0:N.source}}};var B,E,I;p.parameters={...p.parameters,docs:{...(B=p.parameters)==null?void 0:B.docs,source:{originalSource:`{
   name: 'Sfondo scuro',
   args: {
     slot: ''
@@ -400,7 +426,7 @@ visibile), o siano incluse attraverso mezzi alternativi, come testo aggiuntivo n
   }, 'Link')}
     </div>
   \`
-}`,...(I=(N=p.parameters)==null?void 0:N.docs)==null?void 0:I.source}}};var A,q,Q;b.parameters={...b.parameters,docs:{...(A=b.parameters)==null?void 0:A.docs,source:{originalSource:`{
+}`,...(I=(E=p.parameters)==null?void 0:E.docs)==null?void 0:I.source}}};var A,Q,q;b.parameters={...b.parameters,docs:{...(A=b.parameters)==null?void 0:A.docs,source:{originalSource:`{
   ...meta,
   name: 'Con icona',
   args: {},
@@ -425,6 +451,9 @@ L’icona può essere posizionata a sinistra o a destra del testo, a seconda del
 #### Dimensione dell'icona
 - Nei pulsanti di dimensione \\\`lg\\\` e \\\`sm\\\` è necessario passare l'attributo \\\`size="sm"\\\` all'icona.
 - Nei pulsaanti di dimensione \\\`xs\\\`, è necessario passare l'attributo \\\`size="xs"\\\` all'icona .
+
+#### Allineamento e spaziatura dell’icona
+Nel caso si utilizzi un’icona all’interno di un elemento \\\`<it-button>\\\` è necessario inserire il testo del pulsante all’interno di un tag \\\`<span/>\\\` al fine di garantire un perfetto allineamento ed una corretta spaziatura tra l’icona e lo stesso testo.
 \`
       }
     }
@@ -466,7 +495,7 @@ L’icona può essere posizionata a sinistra o a destra del testo, a seconda del
         type="\${params.type}"
       >
         <it-icon name="it-star-full" color="white" size="xs"></it-icon>
-        <span>\${slot ?? 'Pulsante Smal con icona'}</span>
+        <span>\${slot ?? 'Pulsante Small con icona'}</span>
       </it-button>
 
       <it-button
@@ -483,7 +512,7 @@ L’icona può essere posizionata a sinistra o a destra del testo, a seconda del
       </it-button>
     </div>\`;
   }
-}`,...(Q=(q=b.parameters)==null?void 0:q.docs)==null?void 0:Q.source}}};var U,_,O;m.parameters={...m.parameters,docs:{...(U=m.parameters)==null?void 0:U.docs,source:{originalSource:`{
+}`,...(q=(Q=b.parameters)==null?void 0:Q.docs)==null?void 0:q.source}}};var U,_,O;m.parameters={...m.parameters,docs:{...(U=m.parameters)==null?void 0:U.docs,source:{originalSource:`{
   ...meta,
   name: 'Con icona cerchiata',
   args: {},

@@ -1,0 +1,1 @@
+const o={parameters:{controls:{matchers:{color:/(background|color)$/i,date:/Date$/i}},docs:{toc:{headingSelector:"h2, h3",ignoreSelector:'h2[id|="stories"], #esempio',title:"Indice"}},options:{storySort:{order:["Welcome","PersonalizzazioneDegliStili","Componenti",["Button","Icon","Video"]]}}}};export{o as default};
