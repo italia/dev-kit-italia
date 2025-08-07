@@ -108,26 +108,43 @@ export class ItIcon extends BaseComponent {
     svgEl.removeAttribute('height');
 
     const classList = this.updateClasses();
-    const _ariaHidden = this.ariaHidden !== null ? this.ariaHidden : 'true';
-    const _role = _ariaHidden === 'true' ? null : (this.role ?? 'img');
+
     svgEl.setAttribute('class', classList);
     svgEl.setAttribute('part', 'icon');
-    svgEl.setAttribute('focusable', 'false');
-    if (_role != null) {
-      svgEl.setAttribute('role', _role);
-    }
-    svgEl.setAttribute('aria-hidden', _ariaHidden);
 
-    svgEl.removeAttribute('aria-labelledby');
-    svgEl.querySelectorAll('title').forEach((t) => t.remove());
+    // Accessibility logic:
+    // - If a `label` is provided:
+    //     - The icon is accessible to assistive technologies.
+    //     - Sets `aria-hidden="false"`.
+    //     - Sets `role="img"` to indicate the SVG is an image.
+    //     - Adds a <title> element with the label text inside the SVG.
+    //     - Sets `aria-labelledby` to reference the <title> for screen readers.
+    // - If no `label` is provided:
+    //     - The icon is treated as decorative and ignored by assistive technologies.
+    //     - Sets `aria-hidden="true".
+    //     - Sets `role="presentation"` to indicate the SVG is purely decorative.
+    //     - Removes any <title> and `aria-labelledby` attributes from the SVG.
+    if (this.label) {
+      svgEl.setAttribute('aria-hidden', 'false');
+      svgEl.setAttribute('role', 'img');
 
-    if (this.label && this.titleId) {
-      const titleEl = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-      titleEl.id = this.titleId;
-      titleEl.textContent = this.label;
-      svgEl.prepend(titleEl);
+      // Remove previous title/aria-labelledby
+      svgEl.removeAttribute('aria-labelledby');
+      svgEl.querySelectorAll('title').forEach((t) => t.remove());
 
-      svgEl.setAttribute('aria-labelledby', this.titleId);
+      // Add title and aria-labelledby for screen readers
+      if (this.titleId) {
+        const titleEl = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+        titleEl.id = this.titleId;
+        titleEl.textContent = this.label;
+        svgEl.prepend(titleEl);
+        svgEl.setAttribute('aria-labelledby', this.titleId);
+      }
+    } else {
+      svgEl.setAttribute('aria-hidden', 'true');
+      svgEl.setAttribute('role', 'presentation');
+      svgEl.removeAttribute('aria-labelledby');
+      svgEl.querySelectorAll('title').forEach((t) => t.remove());
     }
   }
 
