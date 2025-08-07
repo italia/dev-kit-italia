@@ -401,6 +401,9 @@ L’icona può essere posizionata a sinistra o a destra del testo, a seconda del
 #### Dimensione dell'icona
 - Nei pulsanti di dimensione \`lg\` e \`sm\` è necessario passare l'attributo \`size="sm"\` all'icona.
 - Nei pulsaanti di dimensione \`xs\`, è necessario passare l'attributo \`size="xs"\` all'icona .
+
+#### Allineamento e spaziatura dell’icona
+Nel caso si utilizzi un’icona all’interno di un elemento \`<it-button>\` è necessario inserire il testo del pulsante all’interno di un tag \`<span/>\` al fine di garantire un perfetto allineamento ed una corretta spaziatura tra l’icona e lo stesso testo.
 `,
       },
     },
@@ -442,7 +445,7 @@ L’icona può essere posizionata a sinistra o a destra del testo, a seconda del
         type="${params.type}"
       >
         <it-icon name="it-star-full" color="white" size="xs"></it-icon>
-        <span>${slot ?? 'Pulsante Smal con icona'}</span>
+        <span>${slot ?? 'Pulsante Small con icona'}</span>
       </it-button>
 
       <it-button
