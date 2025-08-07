@@ -23,6 +23,11 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
     return true;
   }
 
+  // constructor() {
+  //   super();
+  //   this.attachShadow({ mode: 'open' }); // Shadow DOM aperto per permettere validazione dall'esterno
+  // }
+
   @property()
   internals = this.attachInternals();
 
@@ -31,6 +36,9 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
 
   @property({ type: Boolean, reflect: true }) // from validity mixin
   invalid = false;
+
+  @property({ type: Boolean, reflect: true, attribute: 'custom-validation' }) // from validity mixin
+  customValidation = false;
 
   @property({ type: Boolean, reflect: true }) // from validity mixin
   required = false;
@@ -127,6 +135,11 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
     }
   }
 
+  // Getter pubblico per accedere all'input
+  get inputElement() {
+    return this.shadowRoot?.querySelector('input');
+  }
+
   _handleFormdata(event: FormDataEvent) {
     // Add name and value to the form's submission data if it's not disabled.
     if (!this.disabled) {
@@ -144,8 +157,8 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
     }
 
     this.dispatchEvent(
-      new CustomEvent('input', {
-        detail: { value: input.value },
+      new CustomEvent('on-input', {
+        detail: { value: input.value, el: input },
         bubbles: true,
         composed: true,
       }),
@@ -153,12 +166,15 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
   }
 
   checkValidity() {
-    const inputValid = this._inputElement ? this._inputElement.checkValidity() : true;
-    return this._checkValidity(this.getTranslations(), inputValid);
+    if (!this.customValidation) {
+      const inputValid = this._inputElement ? this._inputElement.checkValidity() : true; // this._inputElement.checkValidity() è la validazione del browser
+      this._checkValidity(this.getTranslations(), inputValid);
+    }
   }
 
   private _handleBlur() {
     this.checkValidity();
+
     this.dispatchEvent(new FocusEvent('blur', { bubbles: true, composed: true }));
   }
 
@@ -172,9 +188,10 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
 
   private _handleChange(e: Event) {
     const input = e.target as HTMLInputElement;
+
     this.dispatchEvent(
       new CustomEvent('change', {
-        detail: { value: input.value },
+        detail: { value: input.value, el: input },
         bubbles: true,
         composed: true,
       }),
@@ -205,6 +222,10 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
     if (this.type === 'password' && this.minlength < 0) {
       this.minlength = 8; // set default minlength for password
     }
+
+    requestAnimationFrame(() => {
+      this.dispatchEvent(new CustomEvent('input-ready', { bubbles: true, detail: { el: this.inputElement } }));
+    });
   }
 
   // protected override update(changedProperties: Map<string | number | symbol, unknown>): void {
@@ -220,9 +241,15 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
   override updated(changedProperties: Map<string | number | symbol, unknown>) {
     super.updated?.(changedProperties);
 
-    if (this.validationText?.length > 0 || this.invalid) {
-      this.internals.setValidity({ customError: this.invalid }, this.validationText);
+    if (this.customValidation) {
       this.setCustomValidity(this.validationText);
+    }
+
+    if (this.invalid) {
+      const message =
+        this.validationText?.length > 0 ? this.validationText : (this.validityMessage ?? 'Campo non valido');
+
+      this.internals.setValidity({ customError: this.invalid }, message);
     }
 
     if (this.passwordStrengthMeter && this.type !== 'password') {

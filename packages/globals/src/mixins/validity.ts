@@ -101,12 +101,20 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
     abstract maxlength: number;
 
     /**
+     * External validation.
+     */
+    abstract customValidation: boolean;
+
+    /**
      * Checks if the value meets the constraints.
      *
      * @returns `true` if the value meets the constraints. `false` otherwise.
      */
-    _checkValidity(translations: Record<string, string>, htmlValidity: boolean = true): boolean {
+    _checkValidity(translations: Record<string, string>, htmlValidity: boolean = true): boolean | undefined {
       // htmlValidity = this.inputElement.checkValidity(); //check browser validity
+      if (this.customValidation) {
+        return undefined;
+      }
       let validity = htmlValidity;
       let message: string = validity
         ? (this._getValidityMessage(VALIDATION_STATUS.NO_ERROR, translations) as string)

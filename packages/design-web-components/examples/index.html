@@ -7,6 +7,84 @@
   <script type="module" src="dist/elements.js"></script>
   <!-- <link rel="stylesheet" href="../node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css" /> -->
   <link rel="stylesheet" href="dist/design-web-components.css" />
+
+  <!-- just validate - test -->
+  <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
+  <script>
+
+    const getItaliaWcParentElement = (el)=>{
+      let current = el;
+      let ret = null;
+      while (current && current !== document) {
+        if (current.tagName?.toLowerCase().includes('it-')) {
+          // Trovato un Web Component
+          ret = current;
+          break;
+        }
+        current = current.getRootNode().host;
+      }
+      return ret;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('#form');
+      const itInput = document.querySelectorAll('#form it-input');
+
+      const validation = new JustValidate(form,{errorLabelCssClass: 'd-none'});
+
+      itInput.forEach(i=>{
+        i.addEventListener('input-ready', ({detail}) => {
+          const input = detail.el;
+          validation.addField(input, [ {
+              rule: 'required',
+              errorMessage: 'Campo obbligatorio justvalidate',
+            }])
+        });
+      });
+      itInput.forEach(i=>{
+        i.addEventListener('input', ({detail}) => {
+          validation.revalidateField(detail.el); // rivalida solo questo campo quando il suo valore cambia
+        });
+      });
+
+      validation.onFail((fields) => {
+         // Rimuovi TUTTI i messaggi creati da JustValidate
+        document.querySelectorAll('.just-validate-error-label').forEach(el => el.remove());
+
+        // aggiorna il Web Component
+        Object.keys(fields).forEach(k => {
+          const f = fields[k];
+          const wc = getItaliaWcParentElement(f.elem);
+          if(wc){
+            wc.validationText = f.errorMessage;
+          }
+        });
+
+      });
+
+
+      form.addEventListener('submit', (e) => {
+        console.log("submit");
+        e.preventDefault();  // blocca submit nativo
+        console.log(validation);
+        validation.refresh(); // resetta lo stato di validazione
+        validation.validate(); // riesegue la validazione
+      });
+
+      validation.onSuccess(() => {
+        console.log("onsuccess");
+        itInput.forEach(i=>{
+          // eslint-disable-next-line no-param-reassign
+          i.validationText = undefined;
+        });
+        //gestire qui il submit della form
+        // fetch('/submit', { method: 'POST', body: ... })
+      })
+    });
+
+
+
+  </script>
 </head>
 <body>
   <!-- Usa il tuo Web Component -->
@@ -68,8 +146,15 @@
 
             <section>
               <h2>it-input</h2>
-              <it-input id="email" label="E-mail" type="email" support-text="Inserisci la tua email"></it-input>
-              <it-input id="password" label="Password" type="password" minlength="10" suggestions strength-meter></it-input>
+              <h3>Input con validazione di default del browser e del componente it-input:</h3>
+              <it-input id="email_default" label="E-mail" type="email" support-text="Inserisci la tua email"></it-input>
+              <br/><br/>
+              <h3>Input in una form con validazione esterna (tramite plugin JustValidate)</h3>
+              <form id="form">
+                <it-input id="email" label="E-mail" type="email" support-text="Inserisci la tua email" custom-validation></it-input>
+                <!-- <it-input id="password"  label="Password" type="password" minlength="10" suggestions strength-meter></it-input> -->
+                <input type="submit"/>
+              </form>
             </section>
 
             <section>

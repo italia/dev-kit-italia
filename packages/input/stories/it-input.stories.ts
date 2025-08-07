@@ -17,6 +17,7 @@ interface InputProps {
   invalid: boolean;
   required: boolean;
   validityMessage: string;
+  customValidation: boolean;
   readonly: boolean;
   plaintext: boolean;
   placeholder: string;
@@ -55,6 +56,7 @@ const renderComponent = (params: any) =>
     maxlength="${ifDefined(params.maxlength) || undefined}"
     ?suggestions="${params.suggestions}"
     ?label-hidden="${params.labelHidden}"
+    ?custom-validation="${params.customValidation}"
     translations="${params.translations ? JSON.stringify(params.translations) : nothing}"
     >${ifDefined(params.children || undefined)}</it-input
   >`;
@@ -73,6 +75,7 @@ const meta = {
     invalid: false,
     required: false,
     validityMessage: '',
+    customValidation: false,
     placeholder: '',
     supportText: '',
     value: '',
@@ -119,6 +122,14 @@ const meta = {
       name: 'validity-message',
       control: 'text',
       description: 'Messaggio che viene mostrato quando il campo è invalido',
+    },
+    customValidation: {
+      name: 'custom-validation',
+      control: 'boolean',
+      type: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
+      description:
+        'Se la validazione del campo è fatta esternamente (lato server o con plugin js), impostare questo attributo a `true`.',
     },
     placeholder: {
       control: 'text',
@@ -557,12 +568,14 @@ export const GestioneErrori: Story = {
     docs: {
       description: {
         story: `Se sono stati impostati uno di questi attributi <ul><li>\`required\`</li><li>\`pattern\`</li><li>\`minlength\`</li></ul> viene effettuata una validazione interna al componente.
-<br/><br/>E' inoltre possibile validare il campo esternamente, impostando l'attributo \`validity-message\` nel caso in cui il campo non sia valido.
  <br/><br/><h4>Personalizzazione dei messaggi di errore</h4>E' possibile personalizzare i messaggi di errore tramite l'attributo \`translations\` a seconda che:
        <ul><li>il campo è required e non è compilato: impostando il valore di \`validityRequired\` in \`translations\`</li>
         <li>il campo non rispetta il pattern: impostando il valore di \`validityPattern\` in \`translations\`</li>
         <li>il campo è troppo corto: impostando il valore di \`validityMinlength\` in \`translations\`</li>
-        <li>il campo ha un valore non valido: impostando il valore di \`validityInvalid\` in \`translations\`</li></ul>`,
+        <li>il campo ha un valore non valido: impostando il valore di \`validityInvalid\` in \`translations\`</li></ul>
+        <h4>Validazione esterna</h4>
+        E' inoltre possibile validare il campo esternamente (via js ad esempio, o lato server), impostando l' attributo \`custom-validation="true"\`. In questo modo la validazione di defautl effettuata internamente al componente è disabilitata.
+        <br/>Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo \`validity-message="Messaggio di errore"\`.`,
       },
     },
   },
@@ -584,6 +597,7 @@ export const GestioneErrori: Story = {
       name: 'external-validation-example',
       id: 'external-validation-example',
       validityMessage: 'Questo campo è obbligatorio!',
+      customValidation: true,
       required: undefined,
     })}
   `,
@@ -595,14 +609,22 @@ export const GestioneEventi: Story = {
   parameters: {
     docs: {
       description: {
-        story: `E' possibile gestire gli eventi di \`input\`, \`blur\`, \`change\`, \`focus\`, \`click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
+        story: `E' possibile gestire gli eventi di \`on-input\`, \`blur\`, \`change\`, \`focus\`, \`click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
         <br/><br/>
         E' sufficiente aggiungere un event listener al componente \`<it-input>\` per intercettare gli eventi desiderati. Ad esempio, per gestire l'evento di input, è possibile utilizzare il seguente codice:
 
 \`\`\`js
-document.querySelector('it-input#event-input-example').addEventListener('input', (event) => {
+document.querySelector('it-input#event-input-example').addEventListener('on-input', (event) => {
   console.log('Input event:', event);
   alert('Input event);
+});
+\`\`\`
+
+Il componente, emette anche un evento di tipo \`input-ready\` quando l'input è pronto e caricato nel DOM:
+
+\`\`\`js
+document.querySelector('it-input#event-input-example').addEventListener('input-ready', (event) => {
+  console.log('Input ready:', event);
 });
 \`\`\`
       `,
@@ -619,9 +641,12 @@ document.querySelector('it-input#event-input-example').addEventListener('input',
   },
   render: (params) => html`
     <script>
-      document.querySelector('it-input#event-input-example').addEventListener('input', (event) => {
+      document.querySelector('it-input#event-input-example').addEventListener('on-input', (event) => {
         console.log('Input event:', event);
         alert('Input event');
+      });
+      document.querySelector('it-input#event-input-example').addEventListener('input-ready', (event) => {
+        console.log('Input ready:', event);
       });
     </script>
     ${renderComponent({
