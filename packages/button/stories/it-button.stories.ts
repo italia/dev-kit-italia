@@ -246,7 +246,8 @@ I pulsanti disabilitati dovranno avere l'attributo \`aria-disabled="true"\` per 
     ${renderVariant({ ...args, variant: 'secondary' }, 'Secondary')}
     ${renderVariant({ ...args, variant: 'success' }, 'Success')}
     ${renderVariant({ ...args, variant: 'danger' }, 'Danger')}
-    ${renderVariant({ ...args, variant: 'warning' }, 'Warning')} ${renderVariant({ ...args, variant: 'link' }, 'Link')}
+    ${renderVariant({ ...args, variant: 'warning' }, 'Warning')}
+    ${renderVariant({ ...args, variant: 'link' }, 'Pulsante link')}
   `,
 };
 
@@ -371,7 +372,7 @@ visibile), o siano incluse attraverso mezzi alternativi, come testo aggiuntivo n
     <div class="bg-dark p-4">
       ${renderVariant({ ...args, variant: 'primary' }, 'Primary')}
       ${renderVariant({ ...args, variant: 'secondary' }, 'Secondary')}
-      ${renderVariant({ ...args, variant: 'link' }, 'Link')}
+      ${renderVariant({ ...args, variant: 'link' }, 'Pulsante link')}
     </div>
   `,
 };
