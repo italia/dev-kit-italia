@@ -1,4 +1,4 @@
-import{i as v,x as p,a as g}from"./lit-element-DvQWNfDj.js";import{n as b,o as h,t as y}from"./it-icon-CQv3pKSF.js";/**
+import{i as v,x as p,a as g}from"./lit-element-DvQWNfDj.js";import{n as b,o as h,t as y}from"./it-icon-qD_xt98t.js";/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause

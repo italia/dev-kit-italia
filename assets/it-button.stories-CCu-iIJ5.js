@@ -1,4 +1,4 @@
-import{x as a}from"./lit-element-DvQWNfDj.js";import{o as R}from"./it-icon-CQv3pKSF.js";import"./it-button-B3RiQpsP.js";import"./iframe-Br-2R-g9.js";const G=["lg","sm","xs"],M=["primary","secondary","success","danger","warning","link"],t=(e,n="")=>{var s;const i=((s=e.slot)==null?void 0:s.length)>0?e.slot:n;return a`
+import{x as a}from"./lit-element-DvQWNfDj.js";import{o as R}from"./it-icon-qD_xt98t.js";import"./it-button-BFJp2t9T.js";import"./iframe-BcsE6lfX.js";const G=["lg","sm","xs"],M=["primary","secondary","success","danger","warning","link"],t=(e,n="")=>{var s;const i=((s=e.slot)==null?void 0:s.length)>0?e.slot:n;return a`
     <it-button
       variant="${e.variant}"
       ?outline="${e.outline}"
@@ -38,7 +38,7 @@ Dove il click sul pulsante non genera un cambio di pagina utilizzare esclusivame
 Qualora non fosse possibile, è necessario applicare in modo appropriato l’attributo \`role="button"\` per trasmetterne lo scopo alle tecnologie assistive.</p></div></div>
 
 #### Note sullo stato disabilitato
-- I pulsanti disabilitati dovranno avere l'attributo \`aria-disabled="true"\` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo \`aria-disabled\` è consigliato usare anche l'attributo \`aria-describedby\` (o un elemento all'interno del bottone con classe \`.sr-only\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
+I pulsanti disabilitati dovranno avere l'attributo \`aria-disabled="true"\` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo \`aria-disabled\` è consigliato usare anche l'attributo \`aria-describedby\` (o un elemento all'interno del bottone con classe \`.sr-only\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
 <br/> E' sconsigliato l'uso dell'attributo \`disabled\`.
 `}}},render:e=>a`
     ${o({...e,variant:"primary"},"Primary")}
@@ -259,7 +259,7 @@ Dove il click sul pulsante non genera un cambio di pagina utilizzare esclusivame
 Qualora non fosse possibile, è necessario applicare in modo appropriato l’attributo \\\`role="button"\\\` per trasmetterne lo scopo alle tecnologie assistive.</p></div></div>
 
 #### Note sullo stato disabilitato
-- I pulsanti disabilitati dovranno avere l'attributo \\\`aria-disabled="true"\\\` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo \\\`aria-disabled\\\` è consigliato usare anche l'attributo \\\`aria-describedby\\\` (o un elemento all'interno del bottone con classe \\\`.sr-only\\\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
+I pulsanti disabilitati dovranno avere l'attributo \\\`aria-disabled="true"\\\` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo \\\`aria-disabled\\\` è consigliato usare anche l'attributo \\\`aria-describedby\\\` (o un elemento all'interno del bottone con classe \\\`.sr-only\\\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
 <br/> E' sconsigliato l'uso dell'attributo \\\`disabled\\\`.
 \`
       }
