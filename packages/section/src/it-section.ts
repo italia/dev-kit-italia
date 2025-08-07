@@ -1,44 +1,108 @@
-import { html, PropertyValues } from 'lit';
-import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
+import { html } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { BaseComponent } from '@italia/globals';
-import styles from './section.scss';
 
 @customElement('it-section')
 export class ItSection extends BaseComponent {
-  static styles = styles;
-
   @property({ type: String }) variant?: 'muted' | 'emphasis' | 'primary';
 
   @property({ type: String }) image = '';
 
   @property({ type: Boolean }) inverse = false;
 
-  @queryAssignedElements({ flatten: true })
-  private assignedElements!: HTMLElement[];
+  private sectionId?: string;
 
-  updated(changedProps: PropertyValues) {
-    super.updated(changedProps);
+  // Light DOM for accessibility - aria-labelledby does not cross shadow boundaries
+  // This allows the component to be accessible while still using Shadow DOM for styling encapsulation
+  createRenderRoot() {
+    return this;
+  }
 
-    // Fallback: se nessuno ha ancora assegnato un ID a un heading
-    const heading =
-      this.assignedElements.find((el) => /^H[1-6]$/.test(el.tagName)) ??
-      this.assignedElements.flatMap((el) => Array.from(el.querySelectorAll('h1, h2, h3, h4, h5, h6')))[0];
+  connectedCallback() {
+    super.connectedCallback?.();
+    this.sectionId = this.generateId('it-section');
+  }
 
-    if (heading && !heading.id) {
-      heading.id = this._id!;
+  updated() {
+    this.organizeContent();
+    this.updateAriaLabelledBy();
+    this.updateInverseClass();
+  }
+
+  private updateInverseClass() {
+    const section = this.querySelector('section');
+    if (!section) return;
+
+    const contentWrapper = section.querySelector('.section-content');
+    if (!contentWrapper) return;
+
+    if (this.inverse) {
+      contentWrapper.classList.add('white-color');
+    } else {
+      contentWrapper.classList.remove('white-color');
     }
   }
 
-  private handleSlotChange() {
-    const headings = this.assignedElements.flatMap((el) =>
-      Array.from(el.querySelectorAll?.('h1, h2, h3, h4, h5, h6') ?? []),
+  private organizeContent() {
+    const section = this.querySelector('section');
+    if (!section) return;
+
+    // Moves all user content into the section-content div
+    const existingContent = section.querySelector('.section-content');
+    if (existingContent) return;
+
+    // Create wrapper for the content
+    const contentWrapper = document.createElement('div');
+    contentWrapper.classList.add('section-content');
+    if (this.inverse) {
+      contentWrapper.classList.add('white-color');
+    }
+
+    // Move all child nodes (except section) into the wrapper
+    const children = Array.from(this.childNodes).filter(
+      (node) => node !== section && node.nodeType === Node.ELEMENT_NODE,
     );
 
-    if (!headings.length) {
-      this.logger.warn(
-        'No heading found in the slot elements, section will not appear as correct role to screen readers.',
-      );
+    children.forEach((child) => {
+      contentWrapper.appendChild(child);
+    });
+
+    // Add wrapper to the section
+    section.appendChild(contentWrapper);
+  }
+
+  private updateAriaLabelledBy() {
+    const section = this.querySelector('section');
+    if (!section) return;
+
+    // Searches for heading in the content area
+    const contentWrapper = section.querySelector('.section-content');
+    const headings = contentWrapper
+      ? contentWrapper.querySelectorAll('h1, h2, h3, h4, h5, h6')
+      : this.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+    let headingId: string | undefined;
+
+    for (const heading of headings) {
+      const el = heading as HTMLElement;
+      if (el.id) {
+        headingId = el.id;
+        break;
+      }
+    }
+
+    // If no heading with ID is found, generate an ID for the first heading
+    if (!headingId && headings.length > 0) {
+      const firstHeading = headings[0] as HTMLElement;
+      headingId = this.generateId('section-heading');
+      firstHeading.id = headingId;
+    }
+
+    if (headingId) {
+      section.setAttribute('aria-labelledby', headingId);
+    } else {
+      section.removeAttribute('aria-labelledby');
     }
   }
 
@@ -48,28 +112,20 @@ export class ItSection extends BaseComponent {
       [`section-${this.variant}`]: Boolean(this.variant),
       'section-image': Boolean(this.image),
     };
-    const contentClasses = {
-      'section-content': true,
-      'white-color': this.inverse,
-    };
-    return html`
-      <section class="${classMap(wrapperClasses)}" part="section">
-          ${
-            this.image
-              ? html`
-                  <div class="img-responsive-wrapper">
-                    <div class="img-responsive">
-                      <div class="img-wrapper">
-                        <img src="${this.image}" alt="" aria-hidden="true" />
-                      </div>
-                    </div>
-                  </div>
-                `
-              : null
-          }
 
-            <div class="${classMap(contentClasses)}"><slot @slotchange=${this.handleSlotChange}></slot></div>
-        </div>
+    return html`
+      <section id="${this.sectionId}" class="${classMap(wrapperClasses)}" part="section">
+        ${this.image
+          ? html`
+              <div class="img-responsive-wrapper">
+                <div class="img-responsive">
+                  <div class="img-wrapper">
+                    <img src="${this.image}" alt="" aria-hidden="true" />
+                  </div>
+                </div>
+              </div>
+            `
+          : null}
       </section>
     `;
   }

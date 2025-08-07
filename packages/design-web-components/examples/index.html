@@ -98,37 +98,32 @@
               <h2>it-icon</h2>
               <it-icon name="it-star-full" color="primary" size="xl" label="stella"></it-icon>
             </it-section>
-            <it-section class="mb-5">
-              <h2>it-chip</h2>
-              <div class="d-flex align-items-center gap-4">
-
-                <it-chip
-                  label="Chip con icona"
-                  dismissable
-                  variant="primary"
-                  size="lg"
-                >
-                <it-icon name="it-star-full" color="primary" slot="icon" size="sm"></it-icon>
-                  <it-button
-                    slot="dismiss-button" aria-label="Dismissable">
-                      <it-icon name="it-close" color="primary" size="sm"></it-icon></it-icon>
-                  </it-button>
-                </it-chip>
-                <it-chip
-                  label="Chip con avatar"
-                  avatar="https://randomuser.me/api/portraits/women/44.jpg"
-                  variant="primary"
-                  size="lg"
-                ></it-chip>
-                <it-chip
-                  label="Disabilitato"
-                  variant="primary"
-                  size="lg"
-                  disabled
-                ></it-chip>
+            <it-section variant="primary" inverse>
+              <div class="container">
+                <div class="row mb-3">
+                  <div class="col-12">
+                    <h2>Sezione di esempio accessibile</h2>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-lg-6 col-xl-4">
+                    <p>
+                      Questo è un esempio di contenuto all’interno di una section. Puoi navigare con VoiceOver e verificare che venga annunciata come regione con titolo.
+                    </p>
+                  </div>
+                  <div class="col-12 col-lg-6 col-xl-4">
+                    <p>
+                      Prova anche a navigare tra le regioni e gli heading usando i comandi suggeriti.
+                    </p>
+                  </div>
+                  <div class="col-12 col-lg-6 col-xl-4">
+                    <p>
+                      Se tutto funziona, il contenuto sarà letto correttamente dopo il titolo della sezione.
+                    </p>
+                  </div>
+                </div>
               </div>
             </it-section>
-
           </div>
         </main>
 </body>

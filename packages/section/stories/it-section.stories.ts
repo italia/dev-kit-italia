@@ -10,7 +10,7 @@ const defaultContent = html`
   <div class="container">
     <div class="row mb-3">
       <div class="col-12">
-        <h2>Morbi fermentum amet</h2>
+        <h2 id="section-heading">Morbi fermentum amet</h2>
       </div>
     </div>
     <div class="row">
@@ -64,7 +64,7 @@ Il componente \`<it-section>\` rappresenta un contenitore visivo per introdurre 
 Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del design-system](https://designers.italia.it/design-system/componenti/sections/)
 
 
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità e immagini decorative</span></div><p>
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità e Shadow DOM</span></div><p>
       Le immagini fornite tramite l'attributo <code>image</code> sono considerate <strong>decorative</strong>: sono rese con un tag <code>&lt;img&gt;</code> e <code>aria-hidden="true"</code>.
       In questo modo non vengono annunciate dagli screen reader.</p><p class="pt-2">
       Assicurati che il contenuto contenga un'intestazione semantica (es. <code>&lt;h2&gt;</code>) per garantire la corretta navigazione assistiva.</p></div></div>
@@ -144,7 +144,7 @@ export const VariantiColore: Story = {
           inverse: variant !== 'muted',
           content: html`
             <div class="container">
-              <h3>Sezione ${variant}</h3>
+              <h3 id="section-heading-${variant}">Sezione ${variant}</h3>
               <p>
                 Questa sezione usa la variante <code>${variant}</code>
                 ${variant !== 'muted' ? "con testo bianco attraverso l'attributo inverse" : ''}
@@ -207,7 +207,7 @@ export const SectionConCard: Story = {
         <div class="container">
           <div class="row">
             <div class="col">
-              <h2 class="mb-4">Morbi fermentum amet</h2>
+              <h2 id="section-heading-card" class="mb-4">Morbi fermentum amet</h2>
             </div>
           </div>
           <div class="row gy-3">
