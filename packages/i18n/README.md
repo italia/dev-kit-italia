@@ -132,7 +132,7 @@ You can use the `LocalizeController` with any library that supports [Lit's React
 ```ts
 import { LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { LocalizeController } from '@itallia/i18n';
+import { LocalizeController } from '@italia/i18n';
 
 @customElement('my-element')
 export class MyElement extends LitElement {
