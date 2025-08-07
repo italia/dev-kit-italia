@@ -404,6 +404,10 @@ L’icona può essere posizionata a sinistra o a destra del testo, a seconda del
 
 #### Allineamento e spaziatura dell’icona
 Nel caso si utilizzi un’icona all’interno di un elemento \`<it-button>\` è necessario inserire il testo del pulsante all’interno di un tag \`<span/>\` al fine di garantire un perfetto allineamento ed una corretta spaziatura tra l’icona e lo stesso testo.
+
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
+<p>
+Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba essere un elemento decorativo, è necessario utilizzare correttamente gli attributi \`label\`, \`role\` e \`aria-hidden\` sul componente \`<it-icon>\`. Per maggiori dettagli visita la [guida dedicata](?path=/docs/componenti-icon--documentazione) al componente \`<it-icon>\`.</p></div></div>
 `,
       },
     },
