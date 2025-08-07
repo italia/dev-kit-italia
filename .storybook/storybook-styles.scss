@@ -6,6 +6,10 @@
   margin: auto;
 }
 
+#storybook-root:has(#header-sb-wrapper) {
+  width: 100%;
+}
+
 .docs-story {
   background-color: #f9f9f9;
 }
@@ -29,7 +33,8 @@
   }
 }
 
-#anchor--componenti-icona--informazioni-utili .sbdocs-preview {
+#anchor--componenti-icona--informazioni-utili .sbdocs-preview,
+#anchor--componenti-header--preview .sbdocs-preview {
   display: none;
 }
 
