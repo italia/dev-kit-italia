@@ -82,7 +82,7 @@ function hasOnlyVersionBump(changelogPath, version) {
  * Aggiunge entry "version bump" ai changelog che ne hanno bisogno
  */
 function addVersionBumpEntries() {
-  console.log('📝 Controllo pacchetti per version bump entries...');
+  console.log('🏷️ Aggiunta entry version bump ai pacchetti senza modifiche...');
 
   const packages = getPublishablePackages();
   let updatedPackages = 0;
@@ -112,7 +112,7 @@ function addVersionBumpEntries() {
   }
 
   if (updatedPackages === 0) {
-    console.log('ℹ️ Nessun pacchetto necessita di version bump entries');
+    console.log('⚠️ Nessun pacchetto necessita di version bump entries');
   } else {
     console.log(`✅ Aggiornati ${updatedPackages} changelog con version bump entries`);
   }
