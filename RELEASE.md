@@ -114,6 +114,39 @@ I pacchetti senza modifiche riceveranno automaticamente:
 
 - `pnpm changeset` - Aggiungi un nuovo changeset
 
+### Rilasci Prerelease
+
+- `pnpm changeset pre enter alpha` - Entra in modalità prerelease (alpha, beta, rc)
+- `pnpm changeset pre exit` - Esce dalla modalità prerelease
+
+## Workflow Prerelease 🧪
+
+Le prerelease permettono di testare modifiche prima del rilascio finale. Supportano versioni come `1.0.0-alpha.1`, `2.0.0-beta.2`, `1.5.0-rc.1`.
+
+### 1. Entrare in Modalità Prerelease
+
+```bash
+pnpm changeset pre enter alpha
+```
+
+Questo comando:
+
+- Configura Changesets per generare versioni prerelease
+- I prossimi rilasci avranno suffissi come `-alpha.1`, `-alpha.2`, ecc.
+
+### 2. Uscire dalla Modalità Prerelease
+
+```bash
+pnpm changeset pre exit
+```
+
+### Caratteristiche delle Prerelease
+
+- ✅ **Pubblicazione NPM**: Vengono pubblicate con tag `next` invece di `latest`
+- ✅ **GitHub Release**: Marchiate automaticamente come "prerelease"
+- ✅ **Changelog**: Supportano la stessa logica di version bump e changelog unificato
+- ✅ **Branch flessibili**: Non richiedono il branch `main` (utile per feature branch)
+
 ## Esempi di Utilizzo
 
 ### Esempio 1: Modifica al Button Component

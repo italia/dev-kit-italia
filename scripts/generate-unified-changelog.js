@@ -102,14 +102,37 @@ function generateUnifiedChangelog() {
     });
   });
 
-  // Ordina le versioni (assumendo versioni semantiche)
+  // Ordina le versioni (assumendo versioni semantiche con supporto prerelease)
   const sortedVersions = Array.from(allVersions).sort((a, b) => {
-    // Parsing semplice delle versioni per ordinamento
+    // Parsing versioni semantiche con supporto prerelease
     const parseVersion = (v) => {
-      const parts = v.split('.').map(Number);
-      return parts[0] * 10000 + parts[1] * 100 + parts[2];
+      const match = v.match(/^(\d+)\.(\d+)\.(\d+)(?:-([a-zA-Z0-9.-]+))?$/);
+      if (!match) return { major: 0, minor: 0, patch: 0, prerelease: null };
+
+      const [, major, minor, patch, prerelease] = match;
+      return {
+        major: parseInt(major, 10),
+        minor: parseInt(minor, 10),
+        patch: parseInt(patch, 10),
+        prerelease: prerelease || null,
+      };
     };
-    return parseVersion(b) - parseVersion(a);
+
+    const versionA = parseVersion(a);
+    const versionB = parseVersion(b);
+
+    // Confronta major.minor.patch
+    if (versionA.major !== versionB.major) return versionB.major - versionA.major;
+    if (versionA.minor !== versionB.minor) return versionB.minor - versionA.minor;
+    if (versionA.patch !== versionB.patch) return versionB.patch - versionA.patch;
+
+    // Gestione prerelease: le versioni release vengono prima delle prerelease
+    if (!versionA.prerelease && versionB.prerelease) return -1;
+    if (versionA.prerelease && !versionB.prerelease) return 1;
+    if (!versionA.prerelease && !versionB.prerelease) return 0;
+
+    // Entrambe sono prerelease, confronta alfabeticamente
+    return versionB.prerelease.localeCompare(versionA.prerelease);
   });
 
   // Genera il contenuto del changelog unificato

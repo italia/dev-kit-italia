@@ -51,7 +51,8 @@ function hasOnlyVersionBump(changelogPath, version) {
   if (!existsSync(changelogPath)) return false;
 
   const content = readFileSync(changelogPath, 'utf8');
-  const versionRegex = new RegExp(`## ${version.replace(/\./g, '\\.')}\\s*\\n([\\s\\S]*?)(?=\\n## |$)`);
+  const escapedVersion = version.replace(/\./g, '\\.');
+  const versionRegex = new RegExp(`## ${escapedVersion}\\s*\\n([\\s\\S]*?)(?=\\n## |$)`);
   const match = content.match(versionRegex);
 
   if (!match) return false;
@@ -87,13 +88,14 @@ function addVersionBumpEntries() {
     if (existsSync(pkg.changelogPath)) {
       const changelogContent = readFileSync(pkg.changelogPath, 'utf8');
 
-      // Trova la prima versione nel changelog
-      const versionMatch = changelogContent.match(/## ([\d.]+)/);
+      // Trova la prima versione nel changelog (supporta prerelease)
+      const versionMatch = changelogContent.match(/## ([\d.]+(?:-[a-zA-Z0-9.-]+)?)/);
       if (versionMatch && hasOnlyVersionBump(pkg.changelogPath, versionMatch[1])) {
         // Sostituisci il contenuto vuoto con version bump
+        const escapedVersion = versionMatch[1].replace(/\./g, '\\.');
         const updatedContent = changelogContent.replace(
           new RegExp(
-            `(## ${versionMatch[1].replace(/\./g, '\\.')}\\s*\\n\\s*(?:### (?:Patch|Minor|Major) Changes\\s*\\n)?)((?:\\s*- Updated dependencies[\\s\\S]*?)?)(\\s*(?=\\n## |$))`,
+            `(## ${escapedVersion}\\s*\\n\\s*(?:### (?:Patch|Minor|Major) Changes\\s*\\n)?)((?:\\s*- Updated dependencies[\\s\\S]*?)?)(\\s*(?=\\n## |$))`,
           ),
           `$1- Aggiornamento della versione\n$2$3`,
         );
