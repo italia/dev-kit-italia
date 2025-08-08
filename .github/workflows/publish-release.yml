@@ -24,11 +24,9 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-      - name: Build packages
-        run: pnpm build
-
       - name: Setup NPM for publishing
         run: |
+          echo "registry=https://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
           echo "provenance=true" >> .npmrc
         env:

@@ -19,7 +19,7 @@ Il processo di rilascio utilizza [Changesets](https://github.com/changesets/chan
 Per ogni modifica ai pacchetti, aggiungi un changeset:
 
 ```bash
-pnpm release:changeset
+pnpm changeset
 ```
 
 Questo comando ti guiderà attraverso:
@@ -28,31 +28,16 @@ Questo comando ti guiderà attraverso:
 - Tipo di cambiamento (major, minor, patch)
 - Descrizione delle modifiche
 
-### 2. Creare un Rilascio
+### 2. Pull Request di Rilascio
 
-Quando sei pronto per rilasciare, assicurati di essere sul branch `main` e che tutto sia committato:
+Changesets creerà, tramite GitHub Actions, una pull request di rilascio quando:
 
-```bash
-pnpm release:create
-```
-
-Questo script:
-
-1. ✅ Verifica che ci siano changesets pendenti
-2. ✅ Controlla di essere sul branch 'main'
-3. ✅ Controlla che non ci siano modifiche non committate
-4. 📝 Aggiorna le versioni di tutti i pacchetti
-5. 🔒 Aggiorna il lockfile
-6. 🔨 Builda tutti i pacchetti
-7. 🏷️ Aggiunge entry "version bump" ai pacchetti senza modifiche
-8. 📝 Genera il changelog unificato (escludendo i version bump)
-9. 💾 Committa le modifiche
-10. 🏷️ Crea un tag Git basato sulla nuova versione
-11. ⬆️ Effettua push delle modifiche e del tag
+- Ci sono changesets non ancora applicati
+- Il branch principale ha nuove modifiche
 
 ### 3. Pubblicazione Automatica
 
-Il push del tag attiverà automaticamente il workflow GitHub Actions `.github/workflows/publish-release.yml` che:
+Quando la pull request di rilascio viene unita, il workflow GitHub Actions:
 
 1. 🔨 Builda tutti i pacchetti
 2. 📦 Pubblica tutti i pacchetti su NPM con certificazione di provenance
@@ -64,10 +49,10 @@ Oltre ai changelog individuali per ogni pacchetto, il sistema genera automaticam
 
 ### Generazione Automatica
 
-Il changelog unificato viene generato automaticamente durante il processo di rilascio (`pnpm release:create`), ma può essere generato manualmente con:
+Il changelog unificato viene generato automaticamente durante il processo di rilascio, ma può essere generato manualmente con:
 
 ```bash
-pnpm release:changelog
+node scripts/generate-unified-changelog.js
 ```
 
 ### Struttura del Changelog Unificato
@@ -77,17 +62,21 @@ pnpm release:changelog
 
 ## 1.2.0
 
-### button
+### `button`
+
+### Patch Changes
 
 - Fix button hover state styling
-- Add support for custom icons
 
-### icon
+### `icon`
+
+### Minor Changes
 
 - Add new calendar icon
-- Update icon sizing system
 
-### video
+### `video`
+
+### Patch Changes
 
 - Fix video player controls on mobile
 
@@ -103,6 +92,7 @@ pnpm release:changelog
 I seguenti pacchetti vengono rilasciati sempre con la stessa versione (configurato in `.changeset/config.json`):
 
 - `@italia/button`
+- `@italia/globals`
 - `@italia/icon`
 - `@italia/video`
 
@@ -117,17 +107,12 @@ I seguenti pacchetti di configurazione sono esclusi dai rilasci:
 
 I pacchetti senza modifiche riceveranno automaticamente:
 
-- **Nei changelog individuali**: Una voce "- Version bump only" per documentare il rilascio
+- **Nei changelog individuali**: Una voce "- Aggiornamento della versione" per documentare il rilascio
 - **Nel changelog unificato**: Vengono automaticamente **esclusi** per mantenere il changelog pulito e focalizzato solo sulle modifiche significative
 
 ## Comandi Disponibili
 
-- `pnpm release:changeset` - Aggiungi un nuovo changeset
-- `pnpm release:version` - Aggiorna solo le versioni (senza commit/tag)
-- `pnpm release:create` - Processo completo di rilascio
-- `pnpm release:changelog` - Genera solo il changelog unificato
-- `pnpm release:version-bump` - Aggiungi entry "version bump" ai pacchetti senza modifiche
-- `pnpm release:publish` - Pubblica i pacchetti localmente (solo per test)
+- `pnpm changeset` - Aggiungi un nuovo changeset
 
 ## Esempi di Utilizzo
 
@@ -135,26 +120,20 @@ I pacchetti senza modifiche riceveranno automaticamente:
 
 ```bash
 # 1. Dopo aver modificato il componente button
-pnpm release:changeset
+pnpm changeset
 # Seleziona: @italia/button
 # Tipo: patch
 # Descrizione: "Fix button hover state styling"
-
-# 2. Quando pronto per rilasciare
-pnpm release:create
 ```
 
-### Esempio 2: Nuova Feature per Multiple Components
+### Esempio 2: Nuova Feature per multipli componenti
 
 ```bash
 # 1. Dopo aver aggiunto una feature che tocca button e icon
-pnpm release:changeset
+pnpm changeset
 # Seleziona: @italia/button, @italia/icon
 # Tipo: minor
 # Descrizione: "Add support for custom icons in buttons"
-
-# 2. Quando pronto per rilasciare
-pnpm release:create
 ```
 
 ## Note Importanti

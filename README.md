@@ -64,9 +64,4 @@ pnpm storybook
 
 Il progetto utilizza [Changesets](https://github.com/changesets/changesets) per gestire i rilasci di tutti i pacchetti. Per informazioni dettagliate, consulta la [documentazione di rilascio](./RELEASE.md).
 
-### Rilascio rapido
-
-1. Aggiungi modifiche: `pnpm release:changeset`
-2. Crea rilascio: `pnpm release:create`
-
 Il workflow GitHub Actions pubblicherà automaticamente tutti i pacchetti su NPM.
