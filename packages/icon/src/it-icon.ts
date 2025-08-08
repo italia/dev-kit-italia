@@ -115,7 +115,7 @@ export class ItIcon extends BaseComponent {
     // Accessibility logic:
     // - If a `label` is provided:
     //     - The icon is accessible to assistive technologies.
-    //     - Sets `aria-hidden="false"`.
+    //     - Remove aria-hidden attribute if it exists
     //     - Sets `role="img"` to indicate the SVG is an image.
     //     - Adds a <title> element with the label text inside the SVG.
     //     - Sets `aria-labelledby` to reference the <title> for screen readers.
@@ -125,7 +125,7 @@ export class ItIcon extends BaseComponent {
     //     - Sets `role="presentation"` to indicate the SVG is purely decorative.
     //     - Removes any <title> and `aria-labelledby` attributes from the SVG.
     if (this.label) {
-      svgEl.setAttribute('aria-hidden', 'false');
+      svgEl.removeAttribute('aria-hidden');
       svgEl.setAttribute('role', 'img');
 
       // Remove previous title/aria-labelledby
