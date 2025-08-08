@@ -26,12 +26,8 @@ function getPublishablePackages() {
       if (existsSync(packageJsonPath)) {
         const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
 
-        // Escludi pacchetti privati o di configurazione
-        if (
-          !packageJson.private &&
-          !packageJson.name.includes('test-config') &&
-          !packageJson.name.includes('typescript-config')
-        ) {
+        // Escludi pacchetti privati
+        if (!packageJson.private) {
           packages.push({
             name: packageJson.name,
             version: packageJson.version,
@@ -63,14 +59,14 @@ function hasOnlyVersionBump(changelogPath, version) {
   const versionContent = match[1].trim();
   // Controlla se contiene solo sezioni vuote o "version bump"
   const hasRealChanges =
-    versionContent.includes('### Patch Changes') &&
-    !versionContent.toLowerCase().includes('version bump') &&
+    /### (?:Patch|Minor|Major) Changes/.test(versionContent) &&
+    !versionContent.toLowerCase().includes('aggiornamento della versione') &&
     versionContent
       .split('\n')
       .some(
         (line) =>
           line.trim() &&
-          !line.includes('### Patch Changes') &&
+          !/### (?:Patch|Minor|Major) Changes/.test(line) &&
           !line.includes('Updated dependencies') &&
           !line.includes('- @'),
       );
@@ -97,14 +93,14 @@ function addVersionBumpEntries() {
         // Sostituisci il contenuto vuoto con version bump
         const updatedContent = changelogContent.replace(
           new RegExp(
-            `(## ${versionMatch[1].replace(/\./g, '\\.')}\\s*\\n\\s*### Patch Changes\\s*\\n)((?:\\s*- Updated dependencies[\\s\\S]*?)?)(\\s*(?=\\n## |$))`,
+            `(## ${versionMatch[1].replace(/\./g, '\\.')}\\s*\\n\\s*(?:### (?:Patch|Minor|Major) Changes\\s*\\n)?)((?:\\s*- Updated dependencies[\\s\\S]*?)?)(\\s*(?=\\n## |$))`,
           ),
-          `$1\n- Version bump only\n$2$3`,
+          `$1- Aggiornamento della versione\n$2$3`,
         );
 
         if (updatedContent !== changelogContent) {
           writeFileSync(pkg.changelogPath, updatedContent);
-          console.log(`✅ Aggiunta entry "version bump" a ${pkg.name}`);
+          console.log(`✅ Aggiunta entry "Aggiornamento della versione" a ${pkg.name}`);
           updatedPackages += 1;
         }
       }

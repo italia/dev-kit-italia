@@ -2,52 +2,52 @@
 /* eslint-disable no-console */
 
 import { execSync } from 'child_process';
-import { readFileSync } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
+// import { readFileSync } from 'fs';
+// import { join, dirname } from 'path';
+// import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const rootDir = join(__dirname, '..');
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
+// const rootDir = join(__dirname, '..');
 
 /**
  * Crea un tag di versione basato sulla versione di un pacchetto rappresentativo
  */
-function createVersionTag() {
-  // Usa la versione del pacchetto button come riferimento (tutti i pacchetti hanno la stessa versione)
-  const packagePath = join(rootDir, 'packages', 'button', 'package.json');
-  const packageJson = JSON.parse(readFileSync(packagePath, 'utf8'));
-  const { version } = packageJson;
-  const tag = `v${version}`;
+// function createVersionTag() {
+//   // Usa la versione del pacchetto button come riferimento (tutti i pacchetti hanno la stessa versione)
+//   const packagePath = join(rootDir, 'packages', 'button', 'package.json');
+//   const packageJson = JSON.parse(readFileSync(packagePath, 'utf8'));
+//   const { version } = packageJson;
+//   const tag = `v${version}`;
 
-  try {
-    // Verifica se il tag esiste già
-    execSync(`git rev-parse ${tag}`, { stdio: 'pipe' });
-    console.log(`❌ Il tag ${tag} esiste già. Sembra che questa versione sia già stata rilasciata.`);
-    process.exit(1);
-  } catch {
-    // Il tag non esiste, procediamo
-  }
+//   try {
+//     // Verifica se il tag esiste già
+//     execSync(`git rev-parse ${tag}`, { stdio: 'pipe' });
+//     console.log(`❌ Il tag ${tag} esiste già. Sembra che questa versione sia già stata rilasciata.`);
+//     process.exit(1);
+//   } catch {
+//     // Il tag non esiste, procediamo
+//   }
 
-  return tag;
-}
+//   return tag;
+// }
 
 /**
  * Controlla se ci sono changeset pendenti
  */
-function hasChangesets() {
-  try {
-    const result = execSync('pnpm exec changeset status --output=json', {
-      encoding: 'utf8',
-      stdio: 'pipe',
-    });
-    const status = JSON.parse(result);
-    return status.changesets && status.changesets.length > 0;
-  } catch (error) {
-    console.log('⚠️ Errore nel controllo dei changeset:', error.message);
-    return false;
-  }
-}
+// function hasChangesets() {
+//   try {
+//     const result = execSync('pnpm exec changeset status --output=json', {
+//       encoding: 'utf8',
+//       stdio: 'pipe',
+//     });
+//     const status = JSON.parse(result);
+//     return status.changesets && status.changesets.length > 0;
+//   } catch (error) {
+//     console.log('⚠️ Errore nel controllo dei changeset:', error.message);
+//     return false;
+//   }
+// }
 
 /**
  * Comando principale di rilascio

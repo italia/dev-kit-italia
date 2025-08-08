@@ -7,10 +7,10 @@
     }
   ],
   "commit": false,
-  "fixed": [["@italia/button", "@italia/icon", "@italia/video"]],
+  "fixed": [["@italia/button", "@italia/globals", "@italia/icon", "@italia/video"]],
   "linked": [],
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": []
+  "ignore": ["@italia/design-web-components"]
 }

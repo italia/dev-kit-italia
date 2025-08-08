@@ -66,7 +66,7 @@ function getPackagesWithChangelogs() {
         const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
         const changelog = parseChangelog(changelogPath);
 
-        if (changelog && changelog.length > 0) {
+        if (!packageJson.private && changelog && changelog.length > 0) {
           packages.push({
             name: packageJson.name,
             displayName: packageJson.name.replace('@italia/', ''),
@@ -124,11 +124,10 @@ function generateUnifiedChangelog() {
     for (const pkg of packages) {
       const versionEntry = pkg.changelog.find((entry) => entry.version === version);
       if (versionEntry && versionEntry.content.trim()) {
-        // Escludi entries che contengono solo "version bump" o varianti simili
+        // Escludi entries che contengono solo "aggiornamento della versione" o varianti simili
         const isVersionBumpOnly =
-          versionEntry.content.toLowerCase().includes('version bump') &&
-          !versionEntry.content.toLowerCase().includes('### patch changes') &&
-          versionEntry.content.split('\n').filter((line) => line.trim() && !line.includes('version bump')).length === 0;
+          versionEntry.content.toLowerCase().includes('aggiornamento della versione') &&
+          !/### (?:patch|minor|major) changes/.test(versionEntry.content.toLowerCase());
 
         if (!isVersionBumpOnly) {
           if (!hasChanges) {
