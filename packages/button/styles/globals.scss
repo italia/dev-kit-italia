@@ -1,3 +1,53 @@
+@import 'bootstrap-italia/src/scss/base/variables';
+// @import 'bootstrap-italia/src/scss/base/mixins/buttons'; //temporaneamente disabilitato in attesa di questa https://github.com/italia/bootstrap-italia/pull/1506
+
+//quando si riabilita l'import di mixins/buttons, questo è da togliere
+@mixin button-variant(
+  $background,
+  $border,
+  $color: color-contrast($background),
+  $hover-background: if(
+      $color == $color-contrast-light,
+      shade-color($background, $btn-hover-bg-shade-amount),
+      tint-color($background, $btn-hover-bg-tint-amount)
+    ),
+  $hover-border: if(
+      $color == $color-contrast-light,
+      shade-color($border, $btn-hover-border-shade-amount),
+      tint-color($border, $btn-hover-border-tint-amount)
+    ),
+  $hover-color: color-contrast($hover-background),
+  $active-background: if(
+      $color == $color-contrast-light,
+      shade-color($background, $btn-active-bg-shade-amount),
+      tint-color($background, $btn-active-bg-tint-amount)
+    ),
+  $active-border: if(
+      $color == $color-contrast-light,
+      shade-color($border, $btn-active-border-shade-amount),
+      tint-color($border, $btn-active-border-tint-amount)
+    ),
+  $active-color: color-contrast($active-background),
+  $disabled-background: $background,
+  $disabled-border: $border,
+  $disabled-color: color-contrast($disabled-background)
+) {
+  --#{$prefix}btn-color: #{$color};
+  --#{$prefix}btn-bg: #{$background};
+  --#{$prefix}btn-border-color: #{$border};
+  --#{$prefix}btn-hover-color: #{$hover-color};
+  --#{$prefix}btn-hover-bg: #{$hover-background};
+  --#{$prefix}btn-hover-border-color: #{$hover-border};
+  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix($color, $border, 15%))};
+  --#{$prefix}btn-active-color: #{$active-color};
+  --#{$prefix}btn-active-bg: #{$active-background};
+  --#{$prefix}btn-active-border-color: #{$active-border};
+  --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
+  --#{$prefix}btn-disabled-color: #{$disabled-color};
+  --#{$prefix}btn-disabled-bg: #{$disabled-background};
+  --#{$prefix}btn-disabled-border-color: #{$disabled-border};
+}
+
 it-button {
   display: inline-block;
   width: auto;
@@ -7,6 +57,7 @@ it-button {
 .bg-dark {
   it-button::part(link) {
     --#{$prefix}btn-text-color: var(--#{$prefix}color-text-inverse);
+
     &:hover,
     &:focus {
       --#{$prefix}color-link-hover: var(--#{$prefix}color-text-inverse);
@@ -14,8 +65,29 @@ it-button {
     }
   }
 
+  // it-button::part(primary) {
+  //   --#{$prefix}btn-text-color: var(--#{$prefix}color-background-primary);
+  //   --#{$prefix}btn-background: var(--#{$prefix}color-background-inverse);
+
+  //   &:hover {
+  //     --#{$prefix}btn-text-color: var(--#{$prefix}color-text);
+  //   }
+  // }
+  it-button::part(primary) {
+    @include button-variant(
+      $background: $white,
+      $border: $primary,
+      $color: $primary,
+      $hover-background: shade-color($white, 15%),
+      $hover-color: $primary,
+      $active-background: shade-color($white, 20%),
+      $active-color: $primary
+    );
+  }
+
   it-button::part(outline) {
     --#{$prefix}btn-outline-border-color: var(--#{$prefix}color-border-inverse);
     --#{$prefix}btn-text-color: var(--#{$prefix}color-text-inverse);
+    --#{$prefix}btn-background: transparent;
   }
 }
