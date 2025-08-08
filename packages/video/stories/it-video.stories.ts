@@ -212,7 +212,7 @@ export const ConTrascrizione: Story = {
               data-bs-toggle="collapse"
               data-bs-target="#transcription4"
               aria-expanded="true"
-              aria-controls="transcription"
+              aria-controls="transcription4"
             >
               Trascrizione
             </button>
