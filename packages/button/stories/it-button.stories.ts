@@ -18,23 +18,23 @@ interface ButtonProps {
 }
 
 // Renderizza il wc it-button di default
-const renderComponent = (params: any, defaultSlot = '') => {
+const renderComponent = (params: ButtonProps, defaultSlot = '') => {
   const slot = params.slot?.length > 0 ? params.slot : defaultSlot;
   return html`
     <it-button
-      variant="${params.variant}"
+      variant="${ifDefined(params.variant)}"
       ?outline="${params.outline}"
-      size="${params.size}"
+      size="${ifDefined(params.size)}"
       ?block="${params.block}"
       aria-disabled="${ifDefined(params.ariaDisabled ? 'true' : undefined)}"
       ?icon="${params.icon}"
-      type="${params.type}"
+      type="${ifDefined(params.type)}"
       >${slot}</it-button
     >
   `;
 };
 
-const renderDefault = (params: any) => html`
+const renderDefault = (params: ButtonProps) => html`
   <div class="flex">
     ${renderComponent(params)}
     ${renderComponent({
@@ -45,7 +45,7 @@ const renderDefault = (params: any) => html`
   </div>
 `;
 
-const renderVariant = (args, defaultText) => {
+const renderVariant = (args: ButtonProps, defaultText: string) => {
   const slot = args.slot?.length > 0 ? args.slot : null;
   return html`<div class="flex p-0">
     ${renderDefault({
@@ -62,7 +62,7 @@ const renderVariant = (args, defaultText) => {
   </div>`;
 };
 
-const renderSizeVariant = (args, defaultText) =>
+const renderSizeVariant = (args: ButtonProps, defaultText: string) =>
   html`<div class="flex">
     ${renderComponent(
       {
@@ -88,7 +88,7 @@ const meta = {
   args: {
     slot: 'Testo del pulsante',
     variant: 'primary',
-    size: 'sm',
+    size: undefined,
     block: false,
     outline: false,
     ariaDisabled: false,
@@ -106,7 +106,6 @@ const meta = {
       control: 'select',
       description: 'Dimensione del pulsante',
       options: BUTTON_SIZES,
-      table: { defaultValue: { summary: 'sm' } },
     },
     block: {
       control: 'boolean',
@@ -129,6 +128,7 @@ const meta = {
     icon: {
       control: 'boolean',
       type: 'boolean',
+      description: "Se il pulsante mostra un'icona, è necessario aggiungere questo attributo.",
       table: { defaultValue: { summary: 'false' } },
     },
     slot: {
@@ -275,7 +275,7 @@ export const VariantiDimensione: Story = {
     docs: {
       description: {
         story: `
-Per ottenere pulsanti di dimensione più grande o più piccola, è sufficiente utilizzare l'attributo \`size\` con i valori \`"lg"\`, \`"sm"\`, \`"xs"\`.
+Per ottenere pulsanti di dimensione più grande o più piccola, è sufficiente utilizzare l'attributo \`size\` con i valori \`lg\` o \`xs\`.
 
 Utilizzando invece l'attributo \`block\` si ottengono pulsanti che prendono tutta l’ampiezza a loro disposizione, a seconda delle dimensioni del loro contenitore.
 `,
@@ -283,7 +283,7 @@ Utilizzando invece l'attributo \`block\` si ottengono pulsanti che prendono tutt
     },
   },
   render: (args) => html`
-    ${renderSizeVariant({ ...args, size: 'lg' }, 'Large')} ${renderSizeVariant({ ...args, size: 'sm' }, 'Small')}
+    ${renderSizeVariant({ ...args, size: 'lg' }, 'Large')} ${renderSizeVariant({ ...args }, 'Default')}
     ${renderSizeVariant({ ...args, size: 'xs' }, 'Extra Small')}
     <div class="flex">
       ${renderComponent(
@@ -397,11 +397,13 @@ export const ConIcona: Story = {
     docs: {
       description: {
         story: `
+E' necessario passare l'attributo \`icon="true"\` (o \`icon=""\`, o semplicemente \`icon\`) a \`<it-button>\` per applicargli gli stili corretti.
+
 L’icona può essere posizionata a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.
 <br/><br/>
 #### Dimensione dell'icona
-- Nei pulsanti di dimensione \`lg\` e \`sm\` è necessario passare l'attributo \`size="sm"\` all'icona.
-- Nei pulsaanti di dimensione \`xs\`, è necessario passare l'attributo \`size="xs"\` all'icona .
+- Nei pulsanti di dimensione \`lg\` o default (\`sm\`), è necessario passare l'attributo \`size="sm"\` all'icona.
+- Nei pulsanti di dimensione \`xs\`, è necessario passare l'attributo \`size="xs"\` all'icona .
 
 #### Allineamento e spaziatura dell’icona
 Nel caso si utilizzi un’icona all’interno di un elemento \`<it-button>\` è necessario inserire il testo del pulsante all’interno di un tag \`<span/>\` al fine di garantire un perfetto allineamento ed una corretta spaziatura tra l’icona e lo stesso testo.
@@ -450,7 +452,7 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         type="${params.type}"
       >
         <it-icon name="it-star-full" color="white" size="xs"></it-icon>
-        <span>${slot ?? 'Pulsante Small con icona'}</span>
+        <span>${slot ?? 'Pulsante Extra Small con icona'}</span>
       </it-button>
 
       <it-button
@@ -463,7 +465,7 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         type="${params.type}"
       >
         <it-icon name="it-star-full" color="primary" size="xs"></it-icon>
-        <span>${slot ?? 'Pulsante Extra Small con icona'}</span>
+        <span>${slot ?? 'Pulsante Link Extra Small con icona'}</span>
       </it-button>
     </div>`;
   },
@@ -493,20 +495,22 @@ export const ConIconaCerchiata: Story = {
     docs: {
       description: {
         story: `
+E' necessario passare l'attributo \`icon="true"\` (o \`icon=""\`, o semplicemente \`icon\`) a \`<it-button>\` per applicargli gli stili corretti.
+
 L’icona può essere posizionata a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.
-Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` per poter avere il contorno circolare.
+<br/>Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` per poter avere il contorno circolare.
 <br/><br/>
 #### Dimensione dell'icona
-- Nei pulsanti di dimensione \`lg\` e \`sm\` è necessario assegnare l'attributo \`size="sm"\` all'icona.
-- Nei pulsanti di dimensione \`xs\`, è necessario passare l'attributo \`size="xs"\` all'icona .
+La dimensione dell'icona deve sempre essere \`xs\`, quindi \`<it-icon>\` deve avere sempre l'attributo \`size="xs"\`.
 `,
       },
     },
   },
   render: (params) => {
     const slot = params.slot?.length > 0 ? params.slot : null;
-    return html` <div class="flex">
+    return html`
       <it-button
+        class="me-2"
         variant="success"
         size="lg"
         icon
@@ -516,14 +520,14 @@ Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` pe
         type="${params.type}"
       >
         <span class="rounded-icon">
-          <it-icon name="it-user" color="success" size="sm"></it-icon>
+          <it-icon name="it-user" color="success" size="xs"></it-icon>
         </span>
         <span>${slot ?? 'Pulsante Large con icona'}</span>
       </it-button>
 
       <it-button
+        class="me-2"
         variant="primary"
-        size="sm"
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
@@ -531,14 +535,14 @@ Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` pe
         type="${params.type}"
       >
         <span class="rounded-icon" size="sm">
-          <it-icon name="it-user" color="primary" size="sm"></it-icon>
+          <it-icon name="it-user" color="primary" size="xs"></it-icon>
         </span>
         <span>${slot ?? 'Pulsante con icona'}</span>
       </it-button>
 
       <it-button
+        class="me-2"
         variant="danger"
-        size="xs"
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
@@ -552,7 +556,8 @@ Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` pe
       </it-button>
 
       <it-button
-        variant="primary"
+        class="me-2"
+        variant="secondary"
         size="xs"
         icon
         ?outline="${params.outline}"
@@ -560,11 +565,11 @@ Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` pe
         ?aria-disabled="${params.ariaDisabled}"
         type="${params.type}"
       >
-        <span class="rounded-icon bg-primary">
-          <it-icon name="it-user" color="white" size="xs"></it-icon>
+        <span class="rounded-icon">
+          <it-icon name="it-user" color="secondary" size="xs"></it-icon>
         </span>
-        <span>${slot ?? 'Pulsante Extra Small con icona'}</span>
+        <span>${slot ?? 'Pulsante Link Extra Small con icona'}</span>
       </it-button>
-    </div>`;
+    `;
   },
 };

@@ -26,7 +26,8 @@
     "test": "turbo run test",
     "storybook:build": "pnpm build && storybook build",
     "storybook:deploy": "pnpm dlx gh-pages -d storybook-static -m 'chore: update documentation [ci skip]' --nojekyll",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "reinstall": "pnpm clean && pnpm install && pnpm build"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",
