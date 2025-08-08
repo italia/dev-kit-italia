@@ -1,8 +1,8 @@
 name: Generate new release
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - 'main'
 permissions:
   contents: write
 jobs:
@@ -42,6 +42,7 @@ jobs:
           title: 'Preparati i pacchetti per il rilascio'
           commit: 'chore: prepared packages for release'
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'
 
