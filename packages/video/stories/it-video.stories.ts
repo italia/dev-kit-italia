@@ -3,6 +3,7 @@ import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '@italia/video';
 import '@italia/button';
+import '@italia/icon';
 import itLang from '../src/locales/it.js';
 import type { ConsentOptions, Track, Translations, Locale } from '../src/types.ts';
 
@@ -211,7 +212,7 @@ export const ConTrascrizione: Story = {
               data-bs-toggle="collapse"
               data-bs-target="#transcription4"
               aria-expanded="true"
-              aria-controls="transcription"
+              aria-controls="transcription4"
             >
               Trascrizione
             </button>

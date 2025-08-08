@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { type Sizes, type Variants, BUTTON_SIZES, BUTTON_VARIANTS } from '../src/types.ts';
 import '@italia/button';
 import '@italia/icon';
@@ -25,7 +26,7 @@ const renderComponent = (params: any, defaultSlot = '') => {
       ?outline="${params.outline}"
       size="${params.size}"
       ?block="${params.block}"
-      ?aria-disabled="${params.ariaDisabled}"
+      aria-disabled="${ifDefined(params.ariaDisabled ? 'true' : undefined)}"
       ?icon="${params.icon}"
       type="${params.type}"
       >${slot}</it-button
@@ -221,10 +222,20 @@ export const VariantiColore: Story = {
     docs: {
       description: {
         story: `
-Gli stili definiti da Bootstrap Italia utilizzano un naming consistente con Bootstrap, con alcune personalizzazioni:
+Gli stili definiti da Bootstrap Italia utilizzano un naming consistente con Bootstrap, con alcune personalizzazioni.
+
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
+<p>
+Le classi \`.btn\` e \`.btn-\` conferiscono agli elementi html l’aspetto visivo di un pulsante. Anche elementi \`<a>\` o \`<span>\` possono subire questa trasformazione provocando discrepanza tra ciò che si rappresenta e la funzione semantica dell’elemento.
+<br/>
+Questo può provocare complesse problematiche di accessibilità.
+<br/><br/>
+Dove il click sul pulsante non genera un cambio di pagina utilizzare esclusivamente il componente \`<it-button>\`.
+<br/><br/>
+Qualora non fosse possibile, è necessario applicare in modo appropriato l’attributo \`role="button"\` per trasmetterne lo scopo alle tecnologie assistive.</p></div></div>
 
 #### Note sullo stato disabilitato
-- I pulsanti disabilitati dovranno avere l'attributo \`aria-disabled="true"\` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo \`aria-disabled\` è consigliato usare anche l'attributo \`aria-describedby\` (o un elemento all'interno del bottone con classe \`.sr-only\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
+I pulsanti disabilitati dovranno avere l'attributo \`aria-disabled="true"\` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo \`aria-disabled\` è consigliato usare anche l'attributo \`aria-describedby\` (o un elemento all'interno del bottone con classe \`.sr-only\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
 <br/> E' sconsigliato l'uso dell'attributo \`disabled\`.
 `,
       },
@@ -235,7 +246,8 @@ Gli stili definiti da Bootstrap Italia utilizzano un naming consistente con Boot
     ${renderVariant({ ...args, variant: 'secondary' }, 'Secondary')}
     ${renderVariant({ ...args, variant: 'success' }, 'Success')}
     ${renderVariant({ ...args, variant: 'danger' }, 'Danger')}
-    ${renderVariant({ ...args, variant: 'warning' }, 'Warning')} ${renderVariant({ ...args, variant: 'link' }, 'Link')}
+    ${renderVariant({ ...args, variant: 'warning' }, 'Warning')}
+    ${renderVariant({ ...args, variant: 'link' }, 'Pulsante link')}
   `,
 };
 
@@ -360,7 +372,7 @@ visibile), o siano incluse attraverso mezzi alternativi, come testo aggiuntivo n
     <div class="bg-dark p-4">
       ${renderVariant({ ...args, variant: 'primary' }, 'Primary')}
       ${renderVariant({ ...args, variant: 'secondary' }, 'Secondary')}
-      ${renderVariant({ ...args, variant: 'link' }, 'Link')}
+      ${renderVariant({ ...args, variant: 'link' }, 'Pulsante link')}
     </div>
   `,
 };
@@ -390,6 +402,13 @@ L’icona può essere posizionata a sinistra o a destra del testo, a seconda del
 #### Dimensione dell'icona
 - Nei pulsanti di dimensione \`lg\` e \`sm\` è necessario passare l'attributo \`size="sm"\` all'icona.
 - Nei pulsaanti di dimensione \`xs\`, è necessario passare l'attributo \`size="xs"\` all'icona .
+
+#### Allineamento e spaziatura dell’icona
+Nel caso si utilizzi un’icona all’interno di un elemento \`<it-button>\` è necessario inserire il testo del pulsante all’interno di un tag \`<span/>\` al fine di garantire un perfetto allineamento ed una corretta spaziatura tra l’icona e lo stesso testo.
+
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
+<p>
+Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba essere un elemento decorativo, è necessario utilizzare correttamente gli attributi \`label\`, \`role\` e \`aria-hidden\` sul componente \`<it-icon>\`. Per maggiori dettagli visita la [guida dedicata](?path=/docs/componenti-icon--documentazione) al componente \`<it-icon>\`.</p></div></div>
 `,
       },
     },
@@ -431,7 +450,7 @@ L’icona può essere posizionata a sinistra o a destra del testo, a seconda del
         type="${params.type}"
       >
         <it-icon name="it-star-full" color="white" size="xs"></it-icon>
-        <span>${slot ?? 'Pulsante Smal con icona'}</span>
+        <span>${slot ?? 'Pulsante Small con icona'}</span>
       </it-button>
 
       <it-button
@@ -478,8 +497,8 @@ L’icona può essere posizionata a sinistra o a destra del testo, a seconda del
 Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` per poter avere il contorno circolare.
 <br/><br/>
 #### Dimensione dell'icona
-- Nei pulsanti di dimensione \`lg\` e \`sm\` è necessario passare l'attributo \`size="sm"\` all'icona.
-- Nei pulsaanti di dimensione \`xs\`, è necessario passare l'attributo \`size="xs"\` all'icona .
+- Nei pulsanti di dimensione \`lg\` e \`sm\` è necessario assegnare l'attributo \`size="sm"\` all'icona.
+- Nei pulsanti di dimensione \`xs\`, è necessario passare l'attributo \`size="xs"\` all'icona .
 `,
       },
     },
@@ -533,7 +552,7 @@ Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` pe
       </it-button>
 
       <it-button
-        variant="link"
+        variant="primary"
         size="xs"
         icon
         ?outline="${params.outline}"
