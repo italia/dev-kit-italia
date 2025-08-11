@@ -24,6 +24,7 @@ describe('<it-input>', () => {
     input.focus();
     input.blur(); // trigger blur e checkValidity
 
+    console.log(el);
     expect(el.invalid).to.be.true;
     expect(el.validityMessage).to.equal('Questo campo è obbligatorio.');
   });
