@@ -1,4 +1,5 @@
-import { BaseComponent, FormMixin, ValidityMixin, setAttributes } from '@italia/globals';
+import { FormMixin, ValidityMixin, VALIDATION_STATUS, setAttributes, BaseLocalizedComponent } from '@italia/globals';
+import { registerTranslation } from '@italia/i18n';
 import { html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -11,22 +12,19 @@ import {
   calcCompletedSuggestions,
 } from './helpers/password.js';
 
-import { DEFAULT_TRANSLATIONS, type InputType, type Sizes, type Suggestion } from './types.js';
-
+import { type InputType, type Sizes, type Suggestion } from './types.js';
+import it from './locales/it.js';
 import styles from './input.scss';
 
+registerTranslation(it);
+
 @customElement('it-input')
-export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
+export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
   static styles = styles;
 
   static get formAssociated() {
     return true;
   }
-
-  // constructor() {
-  //   super();
-  //   this.attachShadow({ mode: 'open' }); // Shadow DOM aperto per permettere validazione dall'esterno
-  // }
 
   @property()
   internals = this.attachInternals();
@@ -89,9 +87,6 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
 
   @property({ type: Number })
   maxlength = -1;
-
-  @property({ type: Object })
-  translations = DEFAULT_TRANSLATIONS;
 
   /**
    * Pattern the `value` must match to be valid
@@ -168,7 +163,15 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
   checkValidity() {
     if (!this.customValidation) {
       const inputValid = this._inputElement ? this._inputElement.checkValidity() : true; // this._inputElement.checkValidity() è la validazione del browser
-      this._checkValidity(this.getTranslations(), inputValid);
+      this._checkValidity(
+        {
+          [VALIDATION_STATUS.INVALID]: this.$t('validityInvalid'),
+          [VALIDATION_STATUS.ERROR_REQUIRED]: this.$t('validityRequired'),
+          [VALIDATION_STATUS.PATTERN]: this.$t('validityPattern'),
+          [VALIDATION_STATUS.MINLENGTH]: this.$t('validityMinlength'),
+        },
+        inputValid,
+      );
     }
   }
 
@@ -271,11 +274,6 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
     }
   }
 
-  private getTranslations(): Record<string, string> {
-    const _t: Record<string, string> = { ...DEFAULT_TRANSLATIONS, ...this.translations };
-    return _t;
-  }
-
   private _togglePasswordVisibility() {
     this._passwordVisible = !this._passwordVisible;
     if (this._inputElement) {
@@ -290,13 +288,33 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
 
   private _getPasswordConfig() {
     return {
-      ...this.getTranslations(),
       minimumLength: this.minlength,
+      showHidePassword: this.$t('showHidePassword'),
+      shortPass: this.$t('shortPass'),
+      badPass: this.$t('badPass'),
+      goodPass: this.$t('goodPass'),
+      strongPass: this.$t('strongPass'),
+      ariaLabelPasswordMeter: this.$t('ariaLabelPasswordMeter'),
+      suggestionsLabel: this.$t('passwordSuggestionsLabel'),
+      suggestionLength: this.$t('passwordSuggestionLength'),
+      suggestionUppercase: this.$t('passwordSuggestionUppercase'),
+      suggestionLowercase: this.$t('passwordSuggestionLowercase'),
+      suggestionNumber: this.$t('passwordSuggestionNumber'),
+      suggestionSpecial: this.$t('passwordSuggestionSpecial'),
+      suggestionFollowed: this.$t('passwordSuggestionFollowed'),
+      suggestionFollowedPlural: this.$t('passwordSuggestionFollowedPlural'),
+      suggestionOf: this.$t('passwordSuggestionOf'),
     };
   }
 
   private _updateStrengthInfos() {
-    let text = scoreText(this._score, this.getTranslations());
+    let text = scoreText(this._score, {
+      shortPass: this.$t('shortPass'),
+      badPass: this.$t('badPass'),
+      goodPass: this.$t('goodPass'),
+      strongPass: this.$t('strongPass'),
+    });
+
     if (suggestionsConfig) {
       const { completedCount, totalCount } = calcCompletedSuggestions(
         suggestionsConfig,
@@ -304,11 +322,9 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
         this._getPasswordConfig(),
       );
       const suggestionOfText =
-        completedCount === 1
-          ? this.getTranslations().suggestionFollowed
-          : this.getTranslations().suggestionFollowedPlural;
+        completedCount === 1 ? this.$t('passwordSuggestionFollowed') : this.$t('passwordSuggestionFollowedPlural');
 
-      text += ` ${completedCount} ${this.getTranslations().suggestionOf} ${totalCount} ${suggestionOfText}.`;
+      text += ` ${completedCount} ${this.$t('passwordSuggestionOf')} ${totalCount} ${suggestionOfText}.`;
     }
     this._strengthInfos = text;
   }
@@ -324,7 +340,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
           aria-checked="${this._passwordVisible}"
           @click="${this._togglePasswordVisibility}"
         >
-          <span class="visually-hidden">${this.getTranslations().showHidePassword}</span>
+          <span class="visually-hidden">${this.$t('showHidePassword')}</span>
           <it-icon
             name="${this._passwordVisible ? 'it-password-visible' : 'it-password-invisible'}"
             size="sm"
@@ -338,7 +354,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
   private _renderSuggestions() {
     return this.suggestions
       ? html`<div class="strength-meter-suggestions small form-text text-muted">
-          <label class="visually-hidden" for="suggestions">${this.getTranslations().suggestionsLabel}</label>
+          <label class="visually-hidden" for="suggestions">${this.$t('passwordSuggestionsLabel')}</label>
           <div class="password-suggestions">
             ${suggestionsConfig.map((sugg: Suggestion) => {
               const isMet = sugg.test(this.value, this._getPasswordConfig());
@@ -347,7 +363,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
                   ${isMet
                     ? html` <svg
                         class="icon icon-xs me-1"
-                        aria-label="${this.getTranslations().suggestionMetLabel}"
+                        aria-label="${this.$t('passwordSuggestionMetLabel')}"
                         viewBox="0 0 24 24"
                         style="width: 1em; height: 1em;"
                       >
@@ -385,7 +401,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseComponent)) {
             aria-valuenow="${perc}"
             aria-valuemin="0"
             aria-valuemax="100"
-            aria-label="${this.getTranslations().ariaLabelPasswordMeter}"
+            aria-label="${this.$t('ariaLabelPasswordMeter')}"
           >
             <div class="row position-absolute w-100 m-0">
               <div class="col-3 border-start border-end border-white"></div>

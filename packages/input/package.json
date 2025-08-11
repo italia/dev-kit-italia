@@ -46,6 +46,7 @@
     "@italia/globals": "workspace:^",
     "@italia/icon": "workspace:^",
     "@italia/button": "workspace:^",
+    "@italia/i18n": "workspace:^",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:"
   },

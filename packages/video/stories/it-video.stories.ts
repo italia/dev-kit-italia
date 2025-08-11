@@ -4,7 +4,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import '@italia/video';
 import '@italia/button';
-import itLang from '../src/locales/it.js';
+import itLang from '../src/locales/videojs/it.js';
+import i18nIT from '../src/locales/it.js';
 import type { ConsentOptions, Track, VideoJSTranslations, Locale } from '../src/types.ts';
 
 interface VideoProps {
@@ -87,7 +88,7 @@ const meta = {
     translations: {
       control: 'object',
       description:
-        'Traduzioni per le diverse lingue. Di base è disponibile solo la lingua it. Usare questa prop per aggiungere le traduzioni in altre lingue. ',
+        'Traduzioni del player per le diverse lingue. Di base è disponibile solo la lingua it. Usare questa prop per aggiungere le traduzioni in altre lingue. ',
     },
     initPlugins: {
       name: 'init-plugins',
@@ -152,7 +153,7 @@ export const ComeUsarlo: Story = {
 Per aggiungere un video, è sufficiente utilizzare il componente \`<it-video />\` ed i relativi attributi per gestirne la sorgente, e le opzioni del video player. - Usa l'attributo \`options\` per passare
 al player le opzioni definite qui [https://videojs.com/guides/options/](https://videojs.com/guides/options/).
 
-- Usa l'attributo \`translations\` per definire le traduzioni diverse dalla lingua italiana, o per
+- Usa l'attributo \`translations\` per definire le traduzioni del player diverse dalla lingua italiana, o per
 sovrascrivere le traduzioni italiane pre-impostate.
 
 ### Font per le icone del player
@@ -446,4 +447,26 @@ I testi e l'icona sono modificabili attraverso il sistema di traduzioni. Vedi la
       type: undefined,
       translations: undefined,
     })}`,
+};
+
+export const I18n: Story = {
+  name: 'i18n',
+  tags: ['!dev'],
+  render: () => html`<div class="hide-preview"></div>`,
+  parameters: {
+    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
+    docs: {
+      description: {
+        story: `
+Oltre all'attributo \`translations\` che permette di modificare le traduzioni interne al player, sono disponibili ulteriori stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+
+\`\`\`js
+const translation = {
+  ${JSON.stringify(i18nIT).replaceAll('{"', '"').replaceAll('",', '",\n\t').replaceAll('"}', '"')}
+}
+\`\`\`
+`,
+      },
+    },
+  },
 };

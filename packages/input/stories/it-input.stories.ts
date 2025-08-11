@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { html, nothing } from 'lit';
+import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { DEFAULT_TRANSLATIONS, INPUT_TYPES, type InputType, INPUT_SIZES, type Sizes } from '../src/types.js';
-
+import { INPUT_TYPES, type InputType, INPUT_SIZES, type Sizes } from '../src/types.js';
+import i18nIT from '../src/locales/it.js';
 import '@italia/icon';
 import '@italia/button';
 import '@italia/input';
@@ -29,7 +29,6 @@ interface InputProps {
   minlength: number;
   maxlength: number;
   suggestions: boolean;
-  translations: Record<string, string>;
   size: Sizes;
 }
 
@@ -57,7 +56,6 @@ const renderComponent = (params: any) =>
     ?suggestions="${params.suggestions}"
     ?label-hidden="${params.labelHidden}"
     ?custom-validation="${params.customValidation}"
-    translations="${params.translations ? JSON.stringify(params.translations) : nothing}"
     >${ifDefined(params.children || undefined)}</it-input
   >`;
 
@@ -88,7 +86,6 @@ const meta = {
     minlength: undefined,
     maxlength: undefined,
     suggestions: false,
-    translations: DEFAULT_TRANSLATIONS,
   },
   argTypes: {
     label: {
@@ -199,10 +196,6 @@ const meta = {
       description: "Se si vogliono mostrare i suggerimenti per l'insderimento di una password sicura.",
       table: { defaultValue: { summary: 'false' } },
     },
-    translations: {
-      control: 'object',
-      description: 'Consente di modificare le traduzioni dei messsaggi generati dal componente.',
-    },
   },
   parameters: {
     docs: {
@@ -243,7 +236,6 @@ export const EsempioInterattivo: Story = {
       label: 'Campo di testo',
       name: 'testo',
       id: 'exampleInputText',
-      translations: undefined,
     })}
     ${renderComponent({
       ...params,
@@ -251,7 +243,6 @@ export const EsempioInterattivo: Story = {
       label: 'Campo email',
       name: 'email',
       id: 'exampleInputEmail',
-      translations: undefined,
     })}
     ${renderComponent({
       ...params,
@@ -259,7 +250,6 @@ export const EsempioInterattivo: Story = {
       label: 'Campo numerico',
       name: 'number',
       id: 'exampleInputNumber',
-      translations: undefined,
     })}
     ${renderComponent({
       ...params,
@@ -267,7 +257,6 @@ export const EsempioInterattivo: Story = {
       label: 'Campo telefonico',
       name: 'telefono',
       id: 'exampleInputTel',
-      translations: undefined,
     })}
     ${renderComponent({
       ...params,
@@ -275,7 +264,6 @@ export const EsempioInterattivo: Story = {
       label: 'Campo orario',
       name: 'orario',
       id: 'exampleInputTime',
-      translations: undefined,
     })}`,
 };
 
@@ -288,7 +276,6 @@ export const Placeholder: Story = {
     label: 'Etichetta',
     name: 'placeholder-example',
     id: 'placeholder-example',
-    translations: undefined,
   },
 
   parameters: {
@@ -317,7 +304,6 @@ export const TestoDiSupporto: Story = {
     name: 'supportText-example',
     id: 'supportText-example',
     supportText: 'Testo di supporto',
-    translations: undefined,
   },
 
   parameters: {
@@ -337,7 +323,7 @@ export const TestoDiSupporto: Story = {
 export const LabelHidden: Story = {
   ...meta,
   name: 'Etichetta nascosta',
-  args: { placeholder: 'Cerca...', label: 'Cerca nel sito', labelHidden: true, translations: undefined },
+  args: { placeholder: 'Cerca...', label: 'Cerca nel sito', labelHidden: true },
 
   parameters: {
     docs: {
@@ -364,7 +350,6 @@ export const IconeOPulsanti: Story = {
     id: 'field-icon-example',
     slotted: true,
     supportText: 'Testo di supporto',
-    translations: undefined,
   },
   parameters: {
     docs: {
@@ -410,7 +395,6 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
   args: {
     type: 'text',
     placeholder: 'Testo segnaposto',
-    translations: undefined,
     slotted: true,
   },
   render: (params) => html`
@@ -459,7 +443,6 @@ export const Disabilitato: Story = {
     name: 'field-disabled-example',
     id: 'field-disabled-example',
     disabled: true,
-    translations: undefined,
   },
   render: (params) => html`
     ${renderComponent({
@@ -508,9 +491,6 @@ export const Password: Story = {
 Nel caso di un campo per la scelta di una nuova password, è possibile abbinare controlli per segnalare quanto la password che si sta inserendo segua alcuni suggerimenti di sicurezza, come la lunghezza minima o l’uso di caratteri speciali, attraverso gli attributi \`strength-meter="true"\` e \`minlength\` per modificare la lunghezza minima richiesta per la password.
 
 Inoltre, è possibile restituire all’utente una lista dei suggerimenti, con indicati quelli che sono stati soddisfatti, attraverso l’attributo \`suggestions="true"\`.
-<br/><br/>
-<h4>Traduzioni</h4>
-Per modificare le traduzioni dei messaggi generati dal componente, è possibile utilizzare l'attributo \`translations\`, che accetta un oggetto JSON con le chiavi corrispondenti ai messaggi da modificare. Le chiavi disponibili sono consultabili nella documentazione degli attributi del componente \`<it-input>\`.
 `,
       },
     },
@@ -520,7 +500,6 @@ Per modificare le traduzioni dei messaggi generati dal componente, è possibile 
     label: 'Campo password',
     supportText: 'Inserisci almeno 8 caratteri e alcuni caratteri speciali.',
     minlength: 8,
-    translations: undefined,
   },
   render: (params) => html`
     ${renderComponent({
@@ -534,7 +513,6 @@ Per modificare le traduzioni dei messaggi generati dal componente, è possibile 
       id: 'field-password-strength-example',
       passwordStrengthMeter: true,
       suggestions: true,
-      translations: { shortPassword: 'Password troppo corta.' },
     })}
   `,
 };
@@ -655,4 +633,26 @@ document.querySelector('it-input#event-input-example').addEventListener('input-r
       ...params,
     })}
   `,
+};
+
+export const I18n: Story = {
+  name: 'i18n',
+  tags: ['!dev'],
+  render: () => html`<div class="hide-preview"></div>`,
+  parameters: {
+    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
+    docs: {
+      description: {
+        story: `
+Per questo componente sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+
+\`\`\`js
+const translation = {
+  ${JSON.stringify(i18nIT).replaceAll('{"', '"').replaceAll('",', '",\n\t').replaceAll('"}', '"')}
+}
+\`\`\`
+`,
+      },
+    },
+  },
 };
