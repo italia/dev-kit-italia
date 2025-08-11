@@ -515,22 +515,24 @@ Per modificare le traduzioni dei messaggi generati dal componente, è possibile 
       },
     },
   },
-  args: { type: 'password', label: 'Campo password' },
+  args: {
+    type: 'password',
+    label: 'Campo password',
+    supportText: 'Inserisci almeno 8 caratteri e alcuni caratteri speciali.',
+    minlength: 8,
+    translations: undefined,
+  },
   render: (params) => html`
     ${renderComponent({
       ...params,
       name: 'field-password-example',
       id: 'field-password-example',
-      supportText: 'Inserisci almeno 8 caratteri e alcuni caratteri speciali.',
-      translations: undefined,
     })}
     ${renderComponent({
       ...params,
       name: 'field-password-strength-example',
       id: 'field-password-strength-example',
-      supportText: 'Inserisci almeno 10 caratteri e alcuni caratteri speciali.',
       passwordStrengthMeter: true,
-      minlength: 10,
       suggestions: true,
       translations: { shortPassword: 'Password troppo corta.' },
     })}
