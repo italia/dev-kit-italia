@@ -53,10 +53,13 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
     _getValidityMessage(state: string, translations: Record<string, string>) {
       return {
         [VALIDATION_STATUS.NO_ERROR]: '',
-        [VALIDATION_STATUS.INVALID]: translations.validityInvalid,
-        [VALIDATION_STATUS.ERROR_REQUIRED]: translations.validityRequired,
-        [VALIDATION_STATUS.PATTERN]: translations.validityPattern,
-        [VALIDATION_STATUS.MINLENGTH]: translations.validityMinlength.replace('{minlength}', this.minlength.toString()),
+        [VALIDATION_STATUS.INVALID]: translations[VALIDATION_STATUS.INVALID],
+        [VALIDATION_STATUS.ERROR_REQUIRED]: translations[VALIDATION_STATUS.ERROR_REQUIRED],
+        [VALIDATION_STATUS.PATTERN]: translations[VALIDATION_STATUS.PATTERN],
+        [VALIDATION_STATUS.MINLENGTH]: translations[VALIDATION_STATUS.MINLENGTH].replace(
+          '{minlength}',
+          this.minlength.toString(),
+        ),
       }[state];
     }
 
