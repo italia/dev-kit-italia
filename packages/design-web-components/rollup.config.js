@@ -51,6 +51,34 @@ export default [
     ],
   },
   {
+    input: 'src/fonts.js',
+    output: {
+      dir: 'dist',
+      sourcemap: true,
+      output: { file: 'design-web-components-fonts.js', format: 'esm' },
+    },
+    plugins: [
+      resolve(),
+      copy({
+        targets: [
+          // gli assets di tutti i packages del monorepo
+          {
+            src: 'assets/fonts/*',
+            dest: 'dist/assets/fonts',
+            //            flatten: true,
+          },
+        ],
+        verbose: true,
+        copyOnce: false,
+        // flatten: false, // Mantiene la struttura interna
+      }),
+      scss({
+        fileName: 'design-web-components-fonts.css',
+        //  outputStyle: 'compressed',
+      }),
+    ],
+  },
+  {
     input: 'elements.ts',
     output: {
       dir: 'dist',
