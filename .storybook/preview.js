@@ -13,7 +13,7 @@ const preview = {
     docs: {
       toc: {
         headingSelector: 'h2, h3',
-        ignoreSelector: 'h2[id|="stories"], #esempio',
+        ignoreSelector: 'h2[id|="stories"], #esempio, .docs-story h2, .docs-story h3',
         title: 'Indice',
       },
     },

@@ -39,11 +39,25 @@ describe('<it-icon>', () => {
     expect(svg?.querySelector('title')).to.not.exist;
   });
 
-  // it('respects role when explicitly set', async () => {
-  //   const el = await fixtureWithDelay<ItIcon>(html`<it-icon name="it-user" role="graphic-symbol"></it-icon>`);
-  //   const svg = el.shadowRoot?.querySelector('svg');
-  //   expect(svg?.getAttribute('role')).to.equal('graphic-symbol');
-  // });
+  it('is decorative by default', async () => {
+    const el = await fixtureWithDelay<ItIcon>(html`<it-icon name="it-star-full"></it-icon>`);
+    const svg = el.shadowRoot?.querySelector('svg');
+    console.log(svg);
+    expect(svg?.getAttribute('aria-hidden')).to.equal('true');
+    expect(svg?.getAttribute('role')).to.equal('presentation');
+    expect(svg?.querySelector('title')).to.be.null;
+    expect(svg?.hasAttribute('aria-labelledby')).to.be.false;
+  });
+
+  it('is accessible when label is set', async () => {
+    const el = await fixtureWithDelay<ItIcon>(html`<it-icon name="it-star-full" label="Stella piena"></it-icon>`);
+    const svg = el.shadowRoot?.querySelector('svg');
+    expect(svg?.getAttribute('aria-hidden')).to.not.exist;
+    expect(svg?.getAttribute('role')).to.equal('img');
+    const title = svg?.querySelector('title');
+    expect(title?.textContent).to.equal('Stella piena');
+    expect(svg?.getAttribute('aria-labelledby')).to.equal(title?.id);
+  });
 
   it('applies size class when size is provided', async () => {
     const el = await fixtureWithDelay<ItIcon>(html`<it-icon name="it-user" size="lg"></it-icon>`);
@@ -70,11 +84,6 @@ describe('<it-icon>', () => {
   it('passes a11y checks with label', async () => {
     const el = await fixtureWithDelay<ItIcon>(html`<it-icon name="it-user" label="Icona utente"></it-icon>`);
     await expect(el).to.be.accessible();
-  });
-
-  it('does not pass a11y checks with overridden aria-hidden and missing label', async () => {
-    const el = await fixtureWithDelay<ItIcon>(html`<it-icon name="it-user" aria-hidden="false"></it-icon>`);
-    await expect(el).to.not.be.accessible();
   });
 
   it('passes a11y checks with overridden aria-hidden and provided label', async () => {
@@ -150,9 +159,8 @@ describe('<it-icon>', () => {
       expect(svg.getAttribute('class')).to.include('icon-lg');
       expect(svg.getAttribute('class')).to.include('icon-padded');
       expect(svg.getAttribute('part')).to.equal('icon');
-      // expect(svg.getAttribute('role')).to.equal('img');
-      expect(svg.getAttribute('focusable')).to.equal('false');
-      expect(svg.getAttribute('aria-hidden')).to.equal('true');
+      expect(svg.getAttribute('role')).to.equal('img');
+      expect(svg.getAttribute('aria-hidden')).to.not.exist;
 
       const title = svg.querySelector('title');
       expect(title?.textContent).to.equal('Custom title');

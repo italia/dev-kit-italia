@@ -1,12 +1,12 @@
 name: Generate new release
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - 'main'
 permissions:
   contents: write
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -24,21 +24,39 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-      - name: Publish package to NPM
-        run: pnpm publish --no-git-checks
+      - name: Setup NPM for publishing
+        run: |
+          echo "registry=https://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+          echo "provenance=true" >> .npmrc
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Changesets version and publish
+        uses: changesets/action@v1
+        id: changesets
+        with:
+          version: 'node scripts/version.js'
+          publish: 'pnpm release'
+          createGithubReleases: false
+          title: 'Preparati i pacchetti per il rilascio'
+          commit: 'chore: prepared packages for release'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'
 
-      - run: pnpm add -w -D extract-changelog-release
-
       - name: Generate Release Body
+        if: steps.changesets.outputs.published == 'true'
         run: pnpm dlx extract-changelog-release > RELEASE_BODY.md
 
-      - uses: ncipollo/release-action@v1
+      - name: Create GitHub Release
+        if: steps.changesets.outputs.published == 'true'
+        uses: ncipollo/release-action@v1
         with:
           bodyFile: 'RELEASE_BODY.md'
           token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: ${{ contains(github.ref_name, '-') }}
       # - name: Publish on gh-pages
       #   run: |
       #     git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git

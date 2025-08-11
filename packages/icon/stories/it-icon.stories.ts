@@ -14,7 +14,6 @@ interface IconProps {
   align?: Alignments;
   padded?: boolean;
   src?: string;
-  role?: string;
 }
 
 const iconNames = Object.keys(registry) as AvailableIcons[];
@@ -29,7 +28,6 @@ const renderComponent = (params: IconProps) => html`
     align=${ifDefined(params.align)}
     ?padded=${params.padded ?? false}
     src=${ifDefined(params.src)}
-    role=${ifDefined(params.role)}
   ></it-icon>
 `;
 
@@ -39,9 +37,8 @@ const meta: Meta<IconProps> = {
   component: 'it-icon',
   args: {
     name: 'it-star-full',
-    label: 'Titolo A11y',
+    label: '',
     align: 'middle',
-    role: 'img',
     padded: false,
   },
   argTypes: {
@@ -54,7 +51,7 @@ const meta: Meta<IconProps> = {
       control: 'select',
       options: ICON_SIZES,
       description: "Dimensione dell'icona: 'xs' | 'sm' | (stringa vuota) | 'lg' | 'xl'",
-      table: { defaultValue: { summary: undefined } },
+      table: { defaultValue: { summary: 'undefined' } },
     },
     align: {
       control: 'select',
@@ -75,11 +72,7 @@ const meta: Meta<IconProps> = {
     label: {
       control: 'text',
       description: 'Testo accessibile per le tecnologie assistive (A11Y)',
-    },
-    role: {
-      control: 'text',
-      description: 'Ruolo accessibile.',
-      table: { defaultValue: { summary: 'img' } },
+      table: { defaultValue: { summary: undefined } },
     },
     src: {
       control: 'text',
@@ -96,8 +89,15 @@ const meta: Meta<IconProps> = {
     docs: {
       description: {
         component: `
+<Description>Componente per l’utilizzo di icone da Bootstrap Italia e/o custom.</Description>
 Il componente \`<it-icon>\` consente di visualizzare una delle icone SVG disponibili nel Design System, usare un icona SVG proprietaria o un icona SVG tramite URL.
 Tutte le icone vengono caricate unicamente in modalià asincrona.
+
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
+<p>
+Di default, le icone sono considerate decorative: il componente aggiunge automaticamente \`role="presentation"\` e \`aria-hidden="true"\` all'elemento SVG, così da essere ignorate dalle tecnologie assistive.\n
+Se invece viene valorizzato l'attributo \`label\`, viene inserito dal componente \`<it-icon>\` un tag \`<title>\` all'interno dell'SVG, corredato da relativo \`aria-labelledBy\` per supportare tecnologie assistive come gli screen reader, oltre a \`role="img"\` e \`aria-hidden="false"\`. \n
+</p></div></div>
 `,
       },
     },
@@ -119,28 +119,6 @@ export const EsempioInterattivo: Story = {
     },
   },
   render: (args) => html`${renderComponent(args)}`,
-};
-
-export const InformazioniUtili: Story = {
-  name: 'Informazioni utili',
-  tags: ['!dev'],
-  parameters: {
-    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
-    docs: {
-      canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
-      description: {
-        story: `
-  <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Trasmettere significato alle tecnologie assistive</span></div>
-<p>
-Il componente garantisce accessibilità di default, e la estende tramite l'attributo \`label\` e gli attributi Aria \`role\` e \`aria-hidden\`. \n
-In presenza di attributo \`label\` valorizzato, viene inserito dal componente \`<it-icon>\` un tag \`<title>\` all'interno dell'SVG, corredato da relativo \`aria-labelledBy\` per supportare tecnologie assistive come gli screen reader. \n
-In quanto icone puramente di presentazione, vengono aggiunti di default \`role="img"\` e \`aria-hidden="true"\` all'icona SVG. \n
-\n\nIn caso di particolari necessità di definizione di ruolo e visibilità e/o uso di icone e SVG esterni, l'utente può comunque sovrascrivere gli attributi \`role\` e \`aria-hidden\`, ma sarà responsabile di rendere accessibile l'icona.</p></div></div>
-`,
-      },
-    },
-  },
-  render: () => html`<div class="hide-preview"></div>`,
 };
 
 export const PersonalizzazioneDegliStili: Story = {
