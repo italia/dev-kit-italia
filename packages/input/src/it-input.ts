@@ -172,6 +172,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
           [VALIDATION_STATUS.ERROR_REQUIRED]: this.$t('validityRequired'),
           [VALIDATION_STATUS.PATTERN]: this.$t('validityPattern'),
           [VALIDATION_STATUS.MINLENGTH]: this.$t('validityMinlength'),
+          [VALIDATION_STATUS.MAXLENGTH]: this.$t('validityMaxlength'),
         },
         inputValid,
       );

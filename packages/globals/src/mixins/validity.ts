@@ -35,6 +35,10 @@ export enum VALIDATION_STATUS {
    * One indicating that the value is shorter than the minimum length.
    */
   MINLENGTH = 'minlength',
+  /**
+   * One indicating that the value is less than the maximum length.
+   */
+  MAXLENGTH = 'maxlength',
 }
 
 /**
@@ -59,6 +63,10 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
         [VALIDATION_STATUS.MINLENGTH]: translations[VALIDATION_STATUS.MINLENGTH].replace(
           '{minlength}',
           this.minlength.toString(),
+        ),
+        [VALIDATION_STATUS.MAXLENGTH]: translations[VALIDATION_STATUS.MAXLENGTH].replace(
+          '{maxlength}',
+          this.maxlength.toString(),
         ),
       }[state];
     }
@@ -128,7 +136,7 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
         ? (this._getValidityMessage(VALIDATION_STATUS.NO_ERROR, translations) as string)
         : (this._getValidityMessage(VALIDATION_STATUS.INVALID, translations) as string);
 
-      if (this.required || (this._value && this.pattern)) {
+      if (this.required || (this._value && (this.pattern || this.minlength > 0 || this.maxlength > 0))) {
         if (this.pattern) {
           const regex = new RegExp(`^${this.pattern}$`, 'u');
           validity = regex.test(this._value.toString());
@@ -136,10 +144,16 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
             message = this._getValidityMessage(VALIDATION_STATUS.PATTERN, translations) as string;
           }
         }
-        if (typeof this.minlength !== 'undefined') {
+        if (typeof this.minlength !== 'undefined' && this.minlength > 0) {
           validity = validity && this._value.toString().length >= this.minlength;
           if (!validity) {
             message = this._getValidityMessage(VALIDATION_STATUS.MINLENGTH, translations) as string;
+          }
+        }
+        if (typeof this.maxlength !== 'undefined' && this.maxlength > 0) {
+          validity = validity && this._value.toString().length <= this.maxlength;
+          if (!validity) {
+            message = this._getValidityMessage(VALIDATION_STATUS.MAXLENGTH, translations) as string;
           }
         }
         if (this.required && !this._value) {
