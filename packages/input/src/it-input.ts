@@ -178,31 +178,9 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
     }
   }
 
-  private _handleBlur() {
-    this._touched = true;
+  override _handleBlur() {
+    super._handleBlur();
     this.checkValidity();
-
-    this.dispatchEvent(new FocusEvent('blur', { bubbles: true, composed: true }));
-  }
-
-  private _handleFocus() {
-    this.dispatchEvent(new FocusEvent('focus', { bubbles: true, composed: true }));
-  }
-
-  private _handleClick() {
-    this.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
-  }
-
-  private _handleChange(e: Event) {
-    const input = e.target as HTMLInputElement;
-
-    this.dispatchEvent(
-      new CustomEvent('change', {
-        detail: { value: input.value, el: input },
-        bubbles: true,
-        composed: true,
-      }),
-    );
   }
 
   override firstUpdated() {

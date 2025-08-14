@@ -162,6 +162,55 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
       this.invalid = Boolean(validityMessage);
       this.validityMessage = validityMessage;
     }
+
+    _handleBlur() {
+      this._touched = true;
+      this.dispatchEvent(new FocusEvent('blur', { bubbles: true, composed: true }));
+    }
+
+    _handleFocus() {
+      this.dispatchEvent(new FocusEvent('focus', { bubbles: true, composed: true }));
+    }
+
+    _handleClick() {
+      this.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
+    }
+
+    _handleChange(e: Event) {
+      const target = e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+      let value: unknown;
+
+      if (target instanceof HTMLInputElement) {
+        switch (target.type) {
+          case 'checkbox':
+          case 'radio':
+            value = target.checked;
+            break;
+          case 'file':
+            value = target.files; // FileList
+            break;
+          default:
+            value = target.value;
+        }
+      } else if (target instanceof HTMLSelectElement) {
+        if (target.multiple) {
+          value = Array.from(target.selectedOptions).map((o) => o.value);
+        } else {
+          value = target.value;
+        }
+      } else {
+        // textarea o altri input con value
+        value = (target as any).value;
+      }
+
+      this.dispatchEvent(
+        new CustomEvent('change', {
+          detail: { value, el: target },
+          bubbles: true,
+          composed: true,
+        }),
+      );
+    }
   }
   return ValidityMixinImpl;
 };
