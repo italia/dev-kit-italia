@@ -106,8 +106,11 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
   @state()
   _value = ''; // from validity mixin
 
+  @state()
+  _touched = false; // from validity mixin
+
   @property({ type: String })
-  public validityMessage: string = '';
+  public validityMessage: string = ''; // from validity mixin
 
   @property({ reflect: true })
   get value() {
@@ -176,6 +179,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
   }
 
   private _handleBlur() {
+    this._touched = true;
     this.checkValidity();
 
     this.dispatchEvent(new FocusEvent('blur', { bubbles: true, composed: true }));
@@ -428,6 +432,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
       this.plaintext ? 'form-control-plaintext' : 'form-control',
       this.size ? `form-control-${this.size}` : '',
       this.invalid ? 'is-invalid' : '',
+      !this.invalid && this._touched ? 'just-validate-success-field' : '',
     );
 
     let inputRender;
@@ -479,18 +484,17 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
       `;
     }
 
-    if (this.validityMessage?.length > 0) {
-      inputRender = html`
-        ${inputRender}
-        <div
-          role="alert"
-          id="invalid-feedback-${this._id}"
-          class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
-        >
-          <span class="visually-hidden">${this.label}: </span>${this.validityMessage}
-        </div>
-      `;
-    }
+    inputRender = html`
+      ${inputRender}
+      <div
+        role="alert"
+        id="invalid-feedback-${this._id}"
+        class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
+        ?hidden=${!(this.validityMessage?.length > 0)}
+      >
+        <span class="visually-hidden">${this.label}: </span>${this.validityMessage}
+      </div>
+    `;
 
     return inputRender;
   }

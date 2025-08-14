@@ -109,6 +109,11 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
     abstract customValidation: boolean;
 
     /**
+     * Field is touched
+     */
+    _touched: boolean = false;
+
+    /**
      * Checks if the value meets the constraints.
      *
      * @returns `true` if the value meets the constraints. `false` otherwise.
