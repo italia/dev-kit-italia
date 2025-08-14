@@ -165,9 +165,7 @@ export const Validazione: Story = {
     docs: {
       description: {
         story: `
-Non c'è una libreria specifica che funziona bene per la validazione dei form con i web-components.
-
-Di base, il componente \`<it-input>\` fornisce la validazione standard del browser a seconda del tipo di campo e/o degli attributi \`minlength\`, \`maxlength\`, \`pattern\` e \`required\`.
+Di base, i componenti che implementano widget utilizzabili nelle form, come ad esempio \`<it-input>\`, forniscono la validazione standard del browser a seconda del tipo di campo e/o degli attributi \`minlength\`, \`maxlength\`, \`pattern\` e \`required\`.
 
 #### Validazione custom
 
