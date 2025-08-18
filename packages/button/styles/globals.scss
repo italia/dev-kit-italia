@@ -7,10 +7,61 @@ it-button {
 .bg-dark {
   it-button::part(link) {
     --#{$prefix}btn-text-color: var(--#{$prefix}color-text-inverse);
+    --#{$prefix}color-link-hover: var(--#{$prefix}color-text-inverse);
   }
 
-  it-button::part(outline) {
+  // primary
+  it-button::part(primary) {
+    --#{$prefix}btn-text-color: var(--#{$prefix}color-text-primary);
+    --#{$prefix}btn-background: var(--#{$prefix}color-background-inverse);
+
+    &:hover {
+      --#{$prefix}btn-background: color-mix(in srgb, var(--#{$prefix}color-background-inverse) 85%, black);
+    }
+
+    &:active {
+      --#{$prefix}btn-background: color-mix(in srgb, var(--#{$prefix}color-background-inverse) 80%, black);
+    }
+  }
+
+  // primary outline
+  it-button[variant='primary'][outline]::part(button) {
+    --#{$prefix}btn-background: transparent;
     --#{$prefix}btn-outline-border-color: var(--#{$prefix}color-border-inverse);
     --#{$prefix}btn-text-color: var(--#{$prefix}color-text-inverse);
+
+    &:hover {
+      --btn-boxshadow-color-darken: color-mix(in srgb, var(--#{$prefix}color-border-inverse) 80%, black);
+      --btn-boxshadow-color-desaturated: color-mix(in srgb, var(--btn-boxshadow-color-darken) 80%, gray);
+      --#{$prefix}btn-outline-border-color: var(
+        --btn-boxshadow-color-desaturated
+      ); //tutto questo equivale a fare color-hover(...)
+    }
+  }
+
+  //secondary
+  it-button::part(secondary) {
+    --#{$prefix}btn-text-color: var(--#{$prefix}color-text-inverse);
+    --#{$prefix}btn-background: var(--#{$prefix}color-background-secondary);
+
+    &:hover,
+    &:active {
+      --#{$prefix}btn-background: color-mix(in srgb, var(--#{$prefix}color-background-secondary) 85%, black);
+    }
+  }
+
+  // secondary outline
+  it-button[variant='secondary'][outline]::part(button) {
+    --#{$prefix}btn-background: transparent;
+    --#{$prefix}btn-text-color: var(--#{$prefix}color-text-inverse);
+
+    &:hover,
+    &:active {
+      --btn-boxshadow-color-darken: color-mix(in srgb, var(--#{$prefix}color-background-secondary) 80%, black);
+      --btn-boxshadow-color-desaturated: color-mix(in srgb, var(--btn-boxshadow-color-darken) 80%, gray);
+      --#{$prefix}btn-outline-border-color: var(
+        --btn-boxshadow-color-desaturated
+      ); //tutto questo equivale a fare color-hover(...)
+    }
   }
 }

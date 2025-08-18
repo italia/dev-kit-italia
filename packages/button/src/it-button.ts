@@ -20,7 +20,7 @@ export class ItButton extends BaseComponent {
   variant: Variants = '';
 
   @property({ type: String })
-  size: Sizes = 'sm';
+  size: Sizes = '';
 
   @property({ type: Boolean })
   outline = false;
@@ -80,10 +80,14 @@ export class ItButton extends BaseComponent {
       'btn-icon': this.icon,
       'd-block w-100': this.block,
     });
+    const part = this.composeClass('button', {
+      [this.variant]: this.variant?.length > 0,
+      outline: this.outline,
+    });
     return html`
       <button
         id=${ifDefined(this.id || undefined)}
-        part="button ${this.variant} ${this.outline ? 'outline' : ''}"
+        part="${part}"
         type="${this.type}"
         class="${classes}"
         @click="${this.type === 'submit' ? this.surfaceSubmitEvent : undefined}"
