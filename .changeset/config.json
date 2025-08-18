@@ -7,7 +7,7 @@
     }
   ],
   "commit": false,
-  "fixed": [["@italia/button", "@italia/globals", "@italia/icon", "@italia/video"]],
+  "fixed": [["@italia/button", "@italia/globals", "@italia/i18n", "@italia/icon", "@italia/video"]],
   "linked": [],
   "access": "public",
   "baseBranch": "main",
