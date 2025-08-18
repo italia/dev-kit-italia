@@ -9,7 +9,10 @@
     "@italia/tabs": "0.0.0",
     "@italia/test-config": "0.0.0",
     "@italia/typescript-config": "0.0.0",
-    "@italia/video": "0.0.0"
+    "@italia/video": "0.0.0",
+    "@italia/i18n": "0.0.0"
   },
-  "changesets": []
+  "changesets": [
+    "legal-tips-invite"
+  ]
 }
