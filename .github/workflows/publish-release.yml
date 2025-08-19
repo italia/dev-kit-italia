@@ -44,11 +44,9 @@ jobs:
           NPM_CONFIG_PROVENANCE: 'true'
 
       - name: Generate Release Body
-        if: steps.changesets.outputs.published == 'true'
         run: pnpm dlx releaselog --format notes ${{ github.ref_name }} > RELEASE_BODY.md
 
       - name: Create GitHub Release
-        if: steps.changesets.outputs.published == 'true'
         uses: ncipollo/release-action@v1
         with:
           bodyFile: 'RELEASE_BODY.md'
