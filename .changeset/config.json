@@ -12,5 +12,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@italia/design-web-components"]
+  "ignore": ["@italia/design-web-components", "@italia/tabs"]
 }
