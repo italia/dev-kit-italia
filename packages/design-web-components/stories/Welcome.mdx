@@ -3,36 +3,89 @@ import { Code } from '@storybook/components';
 
 <Meta title='Welcome' />
 
-<div class='container'>
-  <div class='my-4'>
-    <h1 class='text-center'>Design Web Components</h1>
-    <div class='text-center'>
-      <img src='./logo.png' width='600px' />
-    </div>
-    <div class='text-center mb-4'>
-      Design Web Components è un set di Web components che implementa il Design system .italia e i componenti presenti
-      su <br />
-      [UI Kit Italia](https://github.com/italia/design-ui-kit).
-    </div>
-    <div>
-      Per iniziare, è sufficiente installare il pacchetto <Code>npm</Code> attraverso il seguente comando:
-    </div>
-    <div class='text-center'>
-      <Code>npm install @italia/design-web-components --save</Code>
-    </div>
-    <div>
-      e seguire le istruzioni presenti [sulla pagina GitHub del
-      progetto](https://github.com/italia/design-web-components?tab=readme-ov-file#come-usare-il-kit).
-    </div>
-    <br />
-    <br />
-
-    <div class='small'>
-      Il progetto è distribuito con licenza BSD-3 (consultabile nel file
-      <a href='https://github.com/italia/design-web-components/blob/main/LICENSE'>LICENSE</a>
-      ), un modello ancora più permissivo della classica licenza GPL, in quanto consente di modificare e ridistribuire
-      questo software secondo varie modalità, anche di tipo closed-source.
-    </div>
-
+<div class='mb-4'>
+  <h1 class='visually-hidden'>Design Web Components</h1>
+  <div class='text-center'>
+    <img src='./logo.png' width='500px' alt='Design Web Components' />
+  </div>
+  <div class='text-center mb-4'>
+    Design Web Components è un set di Web components che implementa il Design system .italia e i componenti presenti su{' '}
+    [UI Kit Italia](https://github.com/italia/design-ui-kit).
   </div>
 </div>
+
+Per iniziare, è sufficiente installare il pacchetto `npm` attraverso il seguente comando:
+
+```bash
+npm install @italia/design-web-components --save
+```
+
+e seguire le istruzioni presenti [sulla pagina GitHub del
+progetto](https://github.com/italia/design-web-components?tab=readme-ov-file#come-usare-la-libreria).
+
+Il progetto è distribuito con licenza BSD-3 (consultabile nel file [LICENSE](https://github.com/italia/design-web-components/blob/main/LICENSE)),
+un modello ancora più permissivo della classica licenza GPL, in quanto consente di modificare e ridistribuire
+questo software secondo varie modalità, anche di tipo closed-source.
+
+## Come contribuire 💙
+
+Per installare la libreria e avviare lo Storybook in locale, è necessario avere installato [Node.js](https://nodejs.org/) e [pnpm](https://pnpm.io/).
+
+Per installare le dipendenze:
+
+```sh
+pnpm install
+```
+
+Per avviare lo Storybook in locale:
+
+```sh
+pnpm storybook
+```
+
+### Testare l'integrazione dei Web Components in altri framework JavaScript
+
+Si consiglia di partire creando un progetto di esempio utilizzando il framework desiderato e importando i Web Components da Design Web Components.
+
+```bash
+# Esegui questo comando
+npm create vite@latest test-app
+# Poi segui il prompt!
+```
+
+Dopo aver creato il progetto, è possibile installare Design Web Components come dipendenza:
+
+```bash
+npm install @italia/design-web-components
+```
+
+A questo punto bisogna importare i Web Components nel progetto.
+
+```javascript
+import '@italia/design-web-components/styles.css';
+import '@italia/design-web-components/elements.js';
+
+// Pronti a utilizzare i Web Components!
+return (
+  <div>
+    <it-button ...></it-button>
+  </div>
+)
+```
+
+Come alternativa, è possibile installare i singoli pacchetti dei Web Components. Sarà comunque necessario importare il file CSS generale come mostrato sopra.
+
+```bash
+npm install @italia/button
+```
+
+```javascript
+import '@italia/design-web-components/styles.css';
+import '@italia/button/it-button.js';
+
+return (
+  <div>
+    <it-button ...></it-button>
+  </div>
+)
+```
