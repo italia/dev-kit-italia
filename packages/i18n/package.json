@@ -1,7 +1,7 @@
 {
   "name": "@italia/i18n",
   "description": "Translations utility del Design system .italia",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.0",
   "publishConfig": {
     "access": "public"
   },
@@ -34,7 +34,6 @@
     "analyze": "cem analyze --litelement --exclude dist",
     "build": "rollup --config rollup.config.js",
     "clean": "rimraf node_modules .turbo .rollup.cache dist coverage",
-    "prepublish": "build",
     "lint": "eslint --ext .ts \"src/**/*.ts\" && prettier \"src/**/*.ts\" --check",
     "format": "eslint --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --fix && stylelint \"src/**/*.scss\" --fix && prettier \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --write",
     "test": "wtr --coverage --node-resolve --config web-test-runner.config.js"

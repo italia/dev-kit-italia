@@ -1,8 +1,8 @@
-name: Generate new release
+name: Publish release
 on:
   push:
-    branches:
-      - 'main'
+    tags:
+      - '*'
 
 jobs:
   publish:
@@ -10,7 +10,6 @@ jobs:
     permissions:
       contents: write
       id-token: write
-      pull-requests: write
     steps:
       - uses: actions/checkout@v4
 
@@ -36,22 +35,18 @@ jobs:
         uses: changesets/action@v1
         id: changesets
         with:
-          version: 'node scripts/version.js'
+          version: 'echo "Sono presenti dei changeset, impossibile proseguire." && exit 1'
           publish: 'pnpm release'
           createGithubReleases: false
-          title: 'Preparati i pacchetti per il rilascio'
-          commit: 'chore: prepared packages for release'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'
 
       - name: Generate Release Body
-        if: steps.changesets.outputs.published == 'true'
-        run: pnpm dlx extract-changelog-release > RELEASE_BODY.md
+        run: pnpm dlx releaselog --format notes ${{ github.ref_name }} > RELEASE_BODY.md
 
       - name: Create GitHub Release
-        if: steps.changesets.outputs.published == 'true'
         uses: ncipollo/release-action@v1
         with:
           bodyFile: 'RELEASE_BODY.md'

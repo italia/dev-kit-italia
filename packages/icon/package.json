@@ -1,7 +1,7 @@
 {
   "name": "@italia/icon",
   "description": "Web component it-icon del Design system .italia",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.0",
   "publishConfig": {
     "access": "public"
   },
@@ -39,7 +39,6 @@
     "build:iconset": "node generate-icon-registry.js",
     "build": "pnpm build:iconset && rollup --config rollup.config.js",
     "clean": "rimraf node_modules .turbo .rollup.cache dist coverage",
-    "prepublish": "build",
     "lint": "eslint --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" && prettier \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --check",
     "format": "eslint --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --fix && prettier \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --write",
     "test": "wtr --coverage --node-resolve --config web-test-runner.config.js"

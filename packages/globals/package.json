@@ -1,7 +1,7 @@
 {
   "name": "@italia/globals",
   "description": "Utilities per i Web components del Design System .italia",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.0",
   "publishConfig": {
     "access": "public"
   },
@@ -35,7 +35,6 @@
     "analyze": "cem analyze --litelement --exclude dist",
     "build": "tsc --build tsconfig.build.json",
     "clean": "rimraf node_modules .turbo",
-    "prepublish": "build",
     "lint": "eslint --ext .ts \"src/**/*.ts\" && prettier \"src/**/*.ts\" --check",
     "format": "eslint --ext .ts \"src/**/*.ts\" --fix && prettier \"src/**/*.ts\" --write",
     "test-disabled": "wtr --coverage --node-resolve --config web-test-runner.config.js"
