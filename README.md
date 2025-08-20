@@ -60,7 +60,7 @@ Per avviare lo Storybook in locale:
 pnpm storybook
 ```
 
-## Testare l'integrazione dei Web Components in altri framework JavaScript
+### Testare l'integrazione dei Web Components in altri framework JavaScript
 
 Si consiglia di partire creando un progetto di esempio utilizzando il framework desiderato e importando i Web Components da Design Web Components.
 
