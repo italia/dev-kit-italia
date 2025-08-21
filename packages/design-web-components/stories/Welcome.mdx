@@ -29,7 +29,7 @@ questo software secondo varie modalità, anche di tipo closed-source.
 
 ## Come contribuire 💙
 
-Per installare la libreria e avviare lo Storybook in locale, è necessario avere installato [Node.js](https://nodejs.org/) e [pnpm](https://pnpm.io/).
+Per installare la libreria e avviare Storybook in locale, è necessario avere installato [Node.js](https://nodejs.org/) e [pnpm](https://pnpm.io/).
 
 Per installare le dipendenze:
 
@@ -37,10 +37,26 @@ Per installare le dipendenze:
 pnpm install
 ```
 
-Per avviare lo Storybook in locale:
+Per compilare tutti i componenti:
+
+```sh
+pnpm build
+```
+
+Per avviare Storybook in locale:
 
 ```sh
 pnpm storybook
+```
+
+**Durante lo sviluppo:**
+- Documentazione/Storie e tipi: si aggiornano automaticamente ✨
+- Componenti: puoi ricompilare il solo package modificato
+
+```sh
+# Per esempio, se stai modificando il componente button:
+pnpm build --filter=@italia/button
+# Poi ricarica la pagina del browser
 ```
 
 ### Testare l'integrazione dei Web Components in altri framework JavaScript
