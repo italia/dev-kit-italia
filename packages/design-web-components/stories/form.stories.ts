@@ -264,7 +264,7 @@ Ecco qui un esempio di implementazione della validazione con il plugin [JustVali
     html`<script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
       <script>
         window.addEventListener('DOMContentLoaded', () => {
-          const formEl = document.querySelector('#form');
+          const formEl = document.querySelector('#form-validation-example');
 
           // Inizializziamo JustValidate senza selettore, passando il form element
           const validate = new JustValidate(formEl);
@@ -331,7 +331,7 @@ Ecco qui un esempio di implementazione della validazione con il plugin [JustVali
         });
       </script>
 
-      <form id="form">
+      <form id="form-validation-example">
         <it-input id="nome" name="nome" label="Nome"></it-input>
         <it-input id="cognome" name="cognome" label="Cogome"></it-input>
         <it-input id="email" name="email" label="E-mail" type="email" support-text="Inserisci la tua email"
