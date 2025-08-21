@@ -17,6 +17,7 @@
   }
 
   .arrow {
+    z-index: -1;
     width: var(--bs-dropdown-notch-base-size);
     height: var(--bs-dropdown-notch-base-size);
     border-radius: var(--bs-dropdown-border-radius);

@@ -65,7 +65,7 @@ export class ItPopover extends BaseComponent {
     if (!this._arrowElement) {
       this._arrowElement = document.createElement('div');
       this._arrowElement.className = 'arrow';
-      this._contentElement.appendChild(this._arrowElement);
+      this._contentElement.prepend(this._arrowElement);
     }
   }
 
@@ -81,7 +81,7 @@ export class ItPopover extends BaseComponent {
       computePosition(this._triggerElement, this._contentElement, {
         placement: this.placement,
         middleware: [
-          offset(8),
+          offset(12),
           flip(),
           shift({ padding: 8 }),
           size({
@@ -109,11 +109,11 @@ export class ItPopover extends BaseComponent {
           }[placement.split('-')[0]];
 
           Object.assign(this._arrowElement!.style, {
-            left: arrowX != null ? `${arrowX}px` : '',
+            left: arrowX != null ? '20px' : '',
             top: arrowY != null ? `${arrowY}px` : '',
             right: '',
             bottom: '',
-            [staticSide as string]: '-6px',
+            [staticSide as string]: `-8px`,
             position: 'absolute',
             transform: 'rotate(45deg)',
           });
