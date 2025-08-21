@@ -322,6 +322,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
           role="switch"
           aria-checked="${this._passwordVisible}"
           @click="${this._togglePasswordVisibility}"
+          part="focusable"
         >
           <span class="visually-hidden">${this.$t('showHidePassword')}</span>
           <it-icon
