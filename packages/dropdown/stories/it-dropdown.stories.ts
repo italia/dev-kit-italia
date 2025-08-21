@@ -42,7 +42,7 @@ const meta = {
     alignment: 'bottom-start',
     variant: 'primary',
     size: undefined,
-    role: 'menu',
+    role: undefined,
     dark: false,
     fullWidth: false,
   },
@@ -74,7 +74,10 @@ const meta = {
       control: 'select',
       options: ['sm', 'lg'],
     },
-    role: { control: 'text' },
+    role: {
+      control: 'select',
+      options: ['menu', 'listbox', 'tree', 'grid'],
+    },
     dark: { control: 'boolean' },
     fullWidth: { control: 'boolean' },
   },
@@ -119,7 +122,7 @@ export const Base: Story = {
       alignment=${ifDefined(args.alignment)}
       size=${ifDefined(args.size)}
       variant=${args.variant}
-      role=${args.role}
+      role=${ifDefined(args.role)}
       ?dark=${args.dark}
       ?full-width=${args.fullWidth}
     >

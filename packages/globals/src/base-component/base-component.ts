@@ -21,8 +21,6 @@ export type BaseComponentType = typeof LitElement & Constructor<BaseComponentInt
 export class BaseComponent extends LitElement {
   protected logger: Logger;
 
-  protected _ariaAttributes: Record<string, string> = {}; // tutti gli attributi aria-* passati al Web component
-
   protected composeClass = clsx;
 
   protected _id?: string; // id interno del componente, da usare sui veri elementi HTML
@@ -30,6 +28,16 @@ export class BaseComponent extends LitElement {
   constructor() {
     super();
     this.logger = new Logger(this.tagName.toLowerCase());
+  }
+
+  protected get _ariaAttributes(): Record<string, string> {
+    const attributes: Record<string, string> = {};
+    for (const attr of this.getAttributeNames()) {
+      if (attr.startsWith('aria-')) {
+        attributes[attr] = this.getAttribute(attr)!;
+      }
+    }
+    return attributes;
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -51,18 +59,18 @@ export class BaseComponent extends LitElement {
     return active as HTMLElement | null;
   }
 
-  getAriaAttributes() {
-    for (const attr of this.getAttributeNames()) {
-      if (attr.startsWith('aria-')) {
-        this._ariaAttributes[attr] = this.getAttribute(attr)!;
-      }
-    }
-  }
+  // getAriaAttributes() {
+  //   for (const attr of this.getAttributeNames()) {
+  //     if (attr.startsWith('aria-')) {
+  //       this._ariaAttributes[attr] = this.getAttribute(attr)!;
+  //     }
+  //   }
+  // }
 
   connectedCallback() {
     super.connectedCallback?.();
 
-    this.getAriaAttributes();
+    // this.getAriaAttributes();
 
     // generate internal _id
     const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();

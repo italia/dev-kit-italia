@@ -51,7 +51,7 @@ export class ItDropdownItem extends BaseComponent {
       large: this.large,
     });
 
-    const roleParent = this.closest('it-dropdown')?.getAttribute('role') ?? 'list';
+    const roleParent = this.closest('it-dropdown')?.getAttribute('role') ?? 'menu';
     let roleAttr: string | undefined;
 
     if (roleParent === 'menu') roleAttr = 'menuitem';

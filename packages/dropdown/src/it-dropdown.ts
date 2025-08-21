@@ -1,6 +1,6 @@
 /* eslint-disable lit-a11y/list */
 import { BaseComponent, AriaKeyboardListController } from '@italia/globals';
-import { html, LitElement, PropertyValues } from 'lit';
+import { html, LitElement } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import styles from './dropdown.scss';
@@ -17,7 +17,7 @@ export class ItDropdown extends BaseComponent {
     delegatesFocus: true,
   };
 
-  @property({ type: String }) label = 'Apri menu';
+  @property({ type: String }) label?: string;
 
   @property({ type: Boolean, reflect: true }) disabled = false;
 
@@ -35,8 +35,6 @@ export class ItDropdown extends BaseComponent {
 
   private _buttonId = this.generateId('it-dropdown');
 
-  @query('ul.link-list') private _menuEl!: HTMLUListElement;
-
   @query('slot:not([name])') private _slotEl!: HTMLSlotElement;
 
   private _ariaNav = new AriaKeyboardListController(this);
@@ -48,6 +46,14 @@ export class ItDropdown extends BaseComponent {
   private _onTriggerClick = () => {
     if (this.disabled) return;
     this._popoverOpen = !this._popoverOpen;
+  };
+
+  private _onPopoverOpen = () => {
+    this._popoverOpen = true;
+  };
+
+  private _onPopoverClose = () => {
+    this._popoverOpen = false;
   };
 
   private get _menuItems() {
@@ -113,28 +119,14 @@ export class ItDropdown extends BaseComponent {
     handle();
   };
 
-  protected override updated(changedProps: PropertyValues) {
-    super.updated(changedProps);
-    if (changedProps.has('alignment') || changedProps.has('size') || changedProps.has('variant')) {
-      this._applyAttributes();
-    }
-  }
-
-  private _applyAttributes() {
-    if (!this._triggerEl || !this._menuEl) return;
-
-    if (this.role) this._menuEl.setAttribute('role', this.role);
-
-    const cl = this.composeClass('btn', 'dropdown-toggle', {
-      [`btn-${this.variant}`]: !!this.variant,
-      [`btn-${this.size}`]: !!this.size,
-    });
-    this._triggerEl.className = cl;
-  }
-
   render() {
     return html`
-      <it-popover placement=${this.alignment} ?open=${this._popoverOpen}>
+      <it-popover
+        placement=${this.alignment}
+        @popover-open=${this._onPopoverOpen}
+        @popover-close=${this._onPopoverClose}
+        ?open=${this._popoverOpen}
+      >
         <it-button
           id=${this._buttonId}
           slot="trigger"
@@ -182,7 +174,7 @@ export class ItDropdown extends BaseComponent {
             <slot name="header"></slot>
             <ul
               class="link-list"
-              ?role=${ifDefined(this.role)}
+              role=${this.role || 'menu'}
               @keydown=${this._onKeyDown}
               aria-orientation=${ifDefined(this.fullWidth ? 'horizontal' : undefined)}
             >
@@ -192,5 +184,11 @@ export class ItDropdown extends BaseComponent {
         </div>
       </it-popover>
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'it-dropdown': ItDropdown;
   }
 }
