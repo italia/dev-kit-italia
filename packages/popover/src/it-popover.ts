@@ -69,7 +69,7 @@ export class ItPopover extends BaseComponent {
     }
   }
 
-  private async _show() {
+  private _show() {
     if (!this._triggerElement || !this._contentElement) return;
 
     this._contentElement.style.position = 'absolute';

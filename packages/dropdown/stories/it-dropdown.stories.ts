@@ -9,7 +9,6 @@ import '@italia/popover';
 type DropdownProps = {
   label: string;
   disabled?: boolean;
-  split?: boolean;
   alignment?:
     | 'top'
     | 'right'
@@ -40,7 +39,6 @@ const meta = {
   args: {
     label: 'Apri dropdown',
     disabled: false,
-    split: false,
     alignment: 'bottom-start',
     variant: 'primary',
     size: undefined,
@@ -51,7 +49,6 @@ const meta = {
   argTypes: {
     label: { control: 'text' },
     disabled: { control: 'boolean' },
-    split: { control: 'boolean' },
     alignment: {
       control: 'select',
       options: [
@@ -71,7 +68,7 @@ const meta = {
     },
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'success', 'danger', 'warning', 'light'],
+      options: ['primary', 'secondary', 'success', 'danger', 'warning', 'light', 'link'],
     },
     size: {
       control: 'select',
@@ -105,12 +102,20 @@ Questi menu possono contenere solo voci di menu, voci di menu di caselle di cont
 
 export default meta;
 
+function disabledControls(except?: (keyof (typeof meta)['argTypes'])[]) {
+  return Object.keys(meta.argTypes).reduce<Record<string, { table: { disable: true } }>>((acc, key) => {
+    if (!except?.includes(key as keyof (typeof meta)['argTypes'])) {
+      acc[key] = { table: { disable: true } };
+    }
+    return acc;
+  }, {});
+}
+
 export const Base: Story = {
   render: (args) => html`
     <it-dropdown
       label=${args.label}
       ?disabled=${args.disabled}
-      ?split=${args.split}
       alignment=${ifDefined(args.alignment)}
       size=${ifDefined(args.size)}
       variant=${args.variant}
@@ -161,6 +166,7 @@ export const Varianti: Story = {
     </it-dropdown>
   `,
   decorators: [(Story) => html`<div style="${containerStyle}gap:0.5rem;flex-wrap:wrap;display:flex">${Story()}</div>`],
+  argTypes: { ...disabledControls() },
   parameters: {
     ...meta.parameters,
     docs: {
@@ -207,6 +213,7 @@ export const Direzioni: Story = {
         ${Story()}
       </div>`,
   ],
+  argTypes: { ...disabledControls() },
   parameters: {
     ...meta.parameters,
     docs: {
@@ -237,6 +244,7 @@ export const MenuVociAttive: Story = {
       <it-dropdown-item href="#">Non attivo</it-dropdown-item>
     </it-dropdown>
   `,
+  argTypes: { ...disabledControls(['label', 'variant']) },
   parameters: {
     ...meta.parameters,
     docs: {
@@ -259,6 +267,7 @@ export const MenuDisabilitato: Story = {
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
   `,
+  argTypes: { ...disabledControls(['label', 'variant']) },
   parameters: {
     ...meta.parameters,
     docs: {
@@ -279,6 +288,7 @@ export const MenuVociDisabilitate: Story = {
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
   `,
+  argTypes: { ...disabledControls(['label', 'variant']) },
   parameters: {
     ...meta.parameters,
     docs: {
@@ -300,6 +310,7 @@ export const MenuIntestazioniSeparatori: Story = {
       <it-dropdown-item href="#">Dopo separatore</it-dropdown-item>
     </it-dropdown>
   `,
+  argTypes: { ...disabledControls(['variant']) },
   parameters: {
     ...meta.parameters,
     docs: {
@@ -320,6 +331,7 @@ export const MenuVociGrandi: Story = {
       <it-dropdown-item href="#" large>Grande</it-dropdown-item>
     </it-dropdown>
   `,
+  argTypes: { ...disabledControls(['label', 'variant']) },
   parameters: {
     ...meta.parameters,
     docs: {
@@ -339,7 +351,6 @@ export const MenuATuttaLarghezza: Story = {
     <it-dropdown
       label=${args.label}
       ?disabled=${args.disabled}
-      ?split=${args.split}
       alignment=${ifDefined(args.alignment)}
       size=${ifDefined(args.size)}
       variant=${ifDefined(args.variant)}
@@ -353,6 +364,7 @@ export const MenuATuttaLarghezza: Story = {
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
   `,
+  decorators: [(Story) => html`<div style="${containerStyle}min-width:300px">${Story()}</div>`],
   parameters: {
     ...meta.parameters,
     docs: {
@@ -384,6 +396,7 @@ export const MenuIconaDestra: Story = {
       </it-dropdown-item>
     </it-dropdown>
   `,
+  argTypes: { ...disabledControls(['label', 'variant']) },
   parameters: {
     ...meta.parameters,
     docs: {
@@ -414,6 +427,7 @@ export const MenuIconaSinistra: Story = {
       </it-dropdown-item>
     </it-dropdown>
   `,
+  argTypes: { ...disabledControls(['label', 'variant']) },
   parameters: {
     ...meta.parameters,
     docs: {
@@ -438,6 +452,7 @@ export const MenuScuro: Story = {
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
   `,
+  argTypes: { ...disabledControls(['label', 'variant']) },
   parameters: {
     ...meta.parameters,
     docs: {

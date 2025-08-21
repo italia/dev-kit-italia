@@ -3,7 +3,6 @@ import { BaseComponent, AriaKeyboardListController } from '@italia/globals';
 import { html, LitElement, PropertyValues } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import type { ItPopover } from '@italia/popover';
 import styles from './dropdown.scss';
 
 type Size = 'sm' | 'lg';
@@ -26,8 +25,6 @@ export class ItDropdown extends BaseComponent {
 
   @property({ type: String }) variant?: Variant = 'primary';
 
-  @property({ type: Boolean }) split = false;
-
   @property({ type: String }) alignment: string = 'bottom-start';
 
   @property({ type: Boolean }) dark = false;
@@ -37,8 +34,6 @@ export class ItDropdown extends BaseComponent {
   @state() private _popoverOpen = false;
 
   private _buttonId = this.generateId('it-dropdown');
-
-  @query('it-popover') private _popover!: ItPopover;
 
   @query('ul.link-list') private _menuEl!: HTMLUListElement;
 
@@ -52,17 +47,7 @@ export class ItDropdown extends BaseComponent {
 
   private _onTriggerClick = () => {
     if (this.disabled) return;
-    this._popover.toggle();
-  };
-
-  private _onPopoverOpen = () => {
-    this._popoverOpen = true;
-    this._applyAttributes();
-  };
-
-  private _onPopoverClose = () => {
-    this._popoverOpen = false;
-    this._applyAttributes();
+    this._popoverOpen = !this._popoverOpen;
   };
 
   private get _menuItems() {
@@ -87,10 +72,10 @@ export class ItDropdown extends BaseComponent {
       if (event.shiftKey && currentIndex === 0) {
         this._triggerEl?.focus();
       } else if (event.shiftKey && currentIndex === -1) {
-        this._popover.closePopover();
+        this._popoverOpen = false;
       }
       if (!event.shiftKey && currentIndex === items.length - 1) {
-        this._popover.closePopover();
+        this._popoverOpen = false;
       }
       if (active.ariaDisabled) {
         // as of the day of this implementation, tabbing through disabled items doesn't work natively
@@ -103,24 +88,34 @@ export class ItDropdown extends BaseComponent {
       }
     }
 
-    this._ariaNav.setConfig({
-      getItems: () => items,
-      setActive: (idx) => items[idx]?.focus(),
-      closeMenu: () => this._popover.closePopover(),
-      trigger: this._triggerEl,
-    });
+    const handle = (e?: Event) => {
+      e?.stopPropagation();
+      this._ariaNav.setConfig({
+        getItems: () => items,
+        setActive: (idx) => items[idx]?.focus(),
+        closeMenu: () => {
+          this._popoverOpen = false;
+        },
+        trigger: this._triggerEl,
+      });
 
-    this._ariaNav.handleKeyDown(event);
+      this.removeEventListener('popover-open', handle);
+      this._ariaNav.handleKeyDown(event);
+    };
+
+    if (['ArrowDown', 'ArrowUp'].includes(event.key)) {
+      if (!this._popoverOpen && currentIndex === -1) {
+        this.addEventListener('popover-open', handle);
+        this._popoverOpen = true;
+        return;
+      }
+    }
+    handle();
   };
 
   protected override updated(changedProps: PropertyValues) {
     super.updated(changedProps);
-    if (
-      changedProps.has('alignment') ||
-      changedProps.has('size') ||
-      changedProps.has('variant') ||
-      changedProps.has('split')
-    ) {
+    if (changedProps.has('alignment') || changedProps.has('size') || changedProps.has('variant')) {
       this._applyAttributes();
     }
   }
@@ -130,30 +125,23 @@ export class ItDropdown extends BaseComponent {
 
     if (this.role) this._menuEl.setAttribute('role', this.role);
 
-    const cl = this.composeClass('btn', {
+    const cl = this.composeClass('btn', 'dropdown-toggle', {
       [`btn-${this.variant}`]: !!this.variant,
       [`btn-${this.size}`]: !!this.size,
-      'dropdown-toggle-split': this.split,
-      'dropdown-toggle': !this.split,
     });
     this._triggerEl.className = cl;
   }
 
   render() {
     return html`
-      <it-popover
-        placement=${this.alignment}
-        @popover-open=${this._onPopoverOpen}
-        @popover-close=${this._onPopoverClose}
-      >
+      <it-popover placement=${this.alignment} ?open=${this._popoverOpen}>
         <it-button
           id=${this._buttonId}
           slot="trigger"
-          ?disabled=${this.disabled}
+          aria-disabled="${ifDefined(this.disabled ? 'true' : undefined)}"
           type="button"
           variant=${ifDefined(this.variant)}
           size=${ifDefined(this.size)}
-          ?split=${this.split}
           @click=${this._onTriggerClick}
           @keydown=${this._onKeyDown}
           aria-haspopup="true"
@@ -192,7 +180,12 @@ export class ItDropdown extends BaseComponent {
         >
           <div class="link-list-wrapper">
             <slot name="header"></slot>
-            <ul class="link-list" ?role=${ifDefined(this.role)} @keydown=${this._onKeyDown}>
+            <ul
+              class="link-list"
+              ?role=${ifDefined(this.role)}
+              @keydown=${this._onKeyDown}
+              aria-orientation=${ifDefined(this.fullWidth ? 'horizontal' : undefined)}
+            >
               <slot></slot>
             </ul>
           </div>

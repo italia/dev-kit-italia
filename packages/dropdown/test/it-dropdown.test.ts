@@ -1,3 +1,5 @@
+/// <reference types="mocha"/>
+
 import { fixture, html, expect, oneEvent } from '@open-wc/testing';
 import '@italia/dropdown';
 import '@italia/popover';
@@ -121,7 +123,7 @@ describe('<it-dropdown>', () => {
       const button = el.shadowRoot!.querySelector('it-button')!;
       const menu = el.shadowRoot!.querySelector('.dropdown-menu')!;
 
-      expect(button.hasAttribute('disabled')).to.be.true;
+      expect(button.hasAttribute('aria-disabled')).to.be.true;
 
       button.click();
       await el.updateComplete;
@@ -166,14 +168,6 @@ describe('<it-dropdown>', () => {
         const button = el.shadowRoot!.querySelector('it-button')!;
         expect(button.getAttribute('size')).to.equal(size);
       }
-    });
-
-    it('applies split button style', async () => {
-      const el = await fixture<ItDropdown>(html`<it-dropdown split></it-dropdown>`);
-      await el.updateComplete;
-
-      const button = el.shadowRoot!.querySelector('it-button')!;
-      expect(button.hasAttribute('split')).to.be.true;
     });
   });
 
