@@ -1,5 +1,5 @@
 /* eslint-disable lit-a11y/list */
-import { BaseComponent, AriaKeyboardListController } from '@italia/globals';
+import { BaseComponent, AriaKeyboardListController, A11yMixin } from '@italia/globals';
 import { html, LitElement } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -10,7 +10,7 @@ type Size = 'sm' | 'lg';
 type Variant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light';
 
 @customElement('it-dropdown')
-export class ItDropdown extends BaseComponent {
+export class ItDropdown extends A11yMixin(BaseComponent) {
   static styles = styles;
 
   static override shadowRootOptions = {
@@ -32,7 +32,7 @@ export class ItDropdown extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'full-width' }) fullWidth = false;
 
-  @property({ type: String, attribute: 'role' }) _role: string = 'menu';
+  @property({ type: String, attribute: 'html-role' }) htmlRole: string = 'menu';
 
   @state() private _popoverOpen = false;
 
@@ -71,10 +71,10 @@ export class ItDropdown extends BaseComponent {
       item.dark = this.dark;
       item.fullWidth = this.fullWidth;
 
-      if (this._role === 'menu') item._role = 'menuitem';
-      else if (this._role === 'listbox') item._role = 'option';
-      else if (this._role === 'tree') item._role = 'treeitem';
-      else item._role = undefined;
+      if (this.htmlRole === 'menu') item.htmlRole = 'menuitem';
+      else if (this.htmlRole === 'listbox') item.htmlRole = 'option';
+      else if (this.htmlRole === 'tree') item.htmlRole = 'treeitem';
+      else item.htmlRole = undefined;
     }
   }
 
@@ -188,7 +188,7 @@ export class ItDropdown extends BaseComponent {
             <slot name="header"></slot>
             <ul
               class="link-list"
-              role=${this._role}
+              role=${this.htmlRole}
               @keydown=${this._onKeyDown}
               aria-orientation=${ifDefined(this.fullWidth ? 'horizontal' : undefined)}
             >

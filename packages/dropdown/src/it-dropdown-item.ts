@@ -1,11 +1,11 @@
-import { BaseComponent } from '@italia/globals';
+import { A11yMixin, BaseComponent } from '@italia/globals';
 import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import styles from './dropdown-item.scss';
 
 @customElement('it-dropdown-item')
-export class ItDropdownItem extends BaseComponent {
+export class ItDropdownItem extends A11yMixin(BaseComponent) {
   static styles = styles;
 
   // static override shadowRootOptions = {
@@ -19,8 +19,6 @@ export class ItDropdownItem extends BaseComponent {
 
   @property({ type: String }) href?: string;
 
-  @property({ type: Boolean, reflect: true }) disabled = false;
-
   @property({ type: Boolean, reflect: true }) active = false;
 
   @property({ type: Boolean, reflect: true }) large = false;
@@ -31,14 +29,18 @@ export class ItDropdownItem extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = false;
 
-  @property({ type: String, attribute: 'role', reflect: true }) _role?: string;
-
   public getFocusableElement(): HTMLElement | null {
     return this.shadowRoot?.querySelector('a, button') ?? null;
   }
 
   handlePress(event: KeyboardEvent | MouseEvent) {
     if (this.disabled) event.preventDefault();
+  }
+
+  protected override updated() {
+    if (this.htmlRole && ['menuitem', 'option', 'treeitem'].includes(this.htmlRole)) {
+      this.setAttribute('role', 'none');
+    }
   }
 
   override render() {
@@ -69,7 +71,7 @@ export class ItDropdownItem extends BaseComponent {
           ? html`<a
               class=${linkClasses}
               href=${this.href}
-              role=${ifDefined(this._role)}
+              role=${ifDefined(this.htmlRole)}
               aria-disabled=${ifDefined(this.disabled || undefined)}
               @keydown=${this.handlePress}
               @click=${this.handlePress}
