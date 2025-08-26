@@ -27,7 +27,7 @@ export default [
     output: {
       dir: 'dist',
       sourcemap: true,
-      output: { file: 'design-web-components-styles.js', format: 'esm' },
+      output: { file: 'styles.js', format: 'esm' },
     },
     plugins: [
       resolve(),
@@ -45,8 +45,8 @@ export default [
         // flatten: false, // Mantiene la struttura interna
       }),
       scss({
-        fileName: 'design-web-components.css',
-        //  outputStyle: 'compressed',
+        fileName: 'styles.css',
+        outputStyle: 'compressed',
       }),
     ],
   },
@@ -55,7 +55,7 @@ export default [
     output: {
       dir: 'dist',
       sourcemap: true,
-      output: { file: 'design-web-components-fonts.js', format: 'esm' },
+      output: { file: 'fonts.js', format: 'esm' },
     },
     plugins: [
       resolve(),
@@ -73,8 +73,8 @@ export default [
         // flatten: false, // Mantiene la struttura interna
       }),
       scss({
-        fileName: 'design-web-components-fonts.css',
-        //  outputStyle: 'compressed',
+        fileName: 'fonts.css',
+        outputStyle: 'compressed',
       }),
     ],
   },
