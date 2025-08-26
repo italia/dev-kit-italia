@@ -4,6 +4,7 @@ import { html, LitElement } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import styles from './dropdown.scss';
+import { type ItDropdownItem } from './it-dropdown-item.js';
 
 type Size = 'sm' | 'lg';
 type Variant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light';
@@ -30,6 +31,8 @@ export class ItDropdown extends BaseComponent {
   @property({ type: Boolean }) dark = false;
 
   @property({ type: Boolean, attribute: 'full-width' }) fullWidth = false;
+
+  @property({ type: String, attribute: 'role' }) _role: string = 'menu';
 
   @state() private _popoverOpen = false;
 
@@ -58,18 +61,26 @@ export class ItDropdown extends BaseComponent {
 
   private get _menuItems() {
     if (!this._slotEl) return [];
-    const items = this._slotEl.assignedElements({ flatten: true }).filter((el) => el.tagName === 'IT-DROPDOWN-ITEM');
-    return (
-      items
-        // @ts-expect-error
-        .map((item) => item.getFocusableElement())
-        .filter((el): el is HTMLElement => !!el)
-    );
+    return this._slotEl
+      .assignedElements({ flatten: true })
+      .filter((el) => el.tagName === 'IT-DROPDOWN-ITEM') as ItDropdownItem[];
+  }
+
+  private _setChildrenProperties() {
+    for (const item of this._menuItems) {
+      item.dark = this.dark;
+      item.fullWidth = this.fullWidth;
+
+      if (this._role === 'menu') item._role = 'menuitem';
+      else if (this._role === 'listbox') item._role = 'option';
+      else if (this._role === 'tree') item._role = 'treeitem';
+      else item._role = undefined;
+    }
   }
 
   private _onKeyDown = (event: KeyboardEvent) => {
-    const items = this._menuItems;
-    const active = this.getActiveElement();
+    const items = this._menuItems.map((item) => item.getFocusableElement()).filter((el) => !!el);
+    const active = this.getActiveElement<ItDropdownItem>();
     if (!active) return;
 
     const currentIndex = items.indexOf(active);
@@ -94,8 +105,7 @@ export class ItDropdown extends BaseComponent {
       }
     }
 
-    const handle = (e?: Event) => {
-      e?.stopPropagation();
+    const handle = () => {
       this._ariaNav.setConfig({
         getItems: () => items,
         setActive: (idx) => items[idx]?.focus(),
@@ -118,6 +128,10 @@ export class ItDropdown extends BaseComponent {
     }
     handle();
   };
+
+  protected override updated() {
+    this._setChildrenProperties();
+  }
 
   render() {
     return html`
@@ -174,11 +188,11 @@ export class ItDropdown extends BaseComponent {
             <slot name="header"></slot>
             <ul
               class="link-list"
-              role=${this.role || 'menu'}
+              role=${this._role}
               @keydown=${this._onKeyDown}
               aria-orientation=${ifDefined(this.fullWidth ? 'horizontal' : undefined)}
             >
-              <slot></slot>
+              <slot @slotchange=${this._setChildrenProperties}></slot>
             </ul>
           </div>
         </div>

@@ -51,26 +51,16 @@ export class BaseComponent extends LitElement {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  protected getActiveElement(): HTMLElement | null {
+  protected getActiveElement<T extends HTMLElement>(): T | null {
     let active = document.activeElement;
     while (active && active.shadowRoot && active.shadowRoot.activeElement) {
       active = active.shadowRoot.activeElement;
     }
-    return active as HTMLElement | null;
+    return active as T | null;
   }
 
-  // getAriaAttributes() {
-  //   for (const attr of this.getAttributeNames()) {
-  //     if (attr.startsWith('aria-')) {
-  //       this._ariaAttributes[attr] = this.getAttribute(attr)!;
-  //     }
-  //   }
-  // }
-
   connectedCallback() {
-    super.connectedCallback?.();
-
-    // this.getAriaAttributes();
+    super.connectedCallback();
 
     // generate internal _id
     const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();

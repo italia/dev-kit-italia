@@ -27,6 +27,12 @@ export class ItDropdownItem extends BaseComponent {
 
   @property({ type: Boolean, reflect: true }) separator = false;
 
+  @property({ type: Boolean, reflect: true }) dark = false;
+
+  @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = false;
+
+  @property({ type: String, attribute: 'role', reflect: true }) _role?: string;
+
   public getFocusableElement(): HTMLElement | null {
     return this.shadowRoot?.querySelector('a, button') ?? null;
   }
@@ -41,8 +47,8 @@ export class ItDropdownItem extends BaseComponent {
     }
 
     const itemClasses = this.composeClass({
-      dark: this.closest('it-dropdown')?.hasAttribute('dark'),
-      fw: this.closest('it-dropdown')?.hasAttribute('full-width'),
+      dark: this.dark,
+      fw: this.fullWidth,
     });
 
     const linkClasses = this.composeClass('list-item', 'dropdown-item', {
@@ -50,12 +56,6 @@ export class ItDropdownItem extends BaseComponent {
       active: this.active,
       large: this.large,
     });
-
-    const roleParent = this.closest('it-dropdown')?.getAttribute('role') ?? 'menu';
-    let roleAttr: string | undefined;
-
-    if (roleParent === 'menu') roleAttr = 'menuitem';
-    else if (roleParent === 'listbox') roleAttr = 'option';
 
     const content = html`
       <slot name="prefix"></slot>
@@ -69,7 +69,7 @@ export class ItDropdownItem extends BaseComponent {
           ? html`<a
               class=${linkClasses}
               href=${this.href}
-              role=${ifDefined(roleAttr)}
+              role=${ifDefined(this._role)}
               aria-disabled=${ifDefined(this.disabled || undefined)}
               @keydown=${this.handlePress}
               @click=${this.handlePress}
