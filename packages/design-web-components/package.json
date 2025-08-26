@@ -29,8 +29,7 @@
     "build": "rollup --config rollup.config.js && cp -r dist examples/",
     "clean": "rimraf node_modules .turbo .rollup.cache dist",
     "lint": "eslint --ext .ts \"src/**/*.ts\" && stylelint \"styles/**/*.scss\" && prettier \"src/**/*.ts\" \"styles/**/*.scss\" --check",
-    "format": "eslint --ext .ts \"src/**/*.ts\" --fix && stylelint \"styles/**/*.scss\" --fix && prettier \"src/**/*.ts\" \"styles/**/*.scss\" --write",
-    "prepare": "pnpm build"
+    "format": "eslint --ext .ts \"src/**/*.ts\" --fix && stylelint \"styles/**/*.scss\" --fix && prettier \"src/**/*.ts\" \"styles/**/*.scss\" --write"
   },
   "files": [
     "dist",
