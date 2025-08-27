@@ -24,7 +24,7 @@ type DropdownProps = {
     | 'left-end';
   variant?: string;
   size?: string;
-  htmlRole?: string;
+  itRole?: string;
   dark?: boolean;
   fullWidth?: boolean;
 };
@@ -42,7 +42,7 @@ const meta = {
     alignment: 'bottom-start',
     variant: 'primary',
     size: undefined,
-    htmlRole: undefined,
+    itRole: undefined,
     dark: false,
     fullWidth: false,
   },
@@ -74,7 +74,7 @@ const meta = {
       control: 'select',
       options: ['sm', 'lg'],
     },
-    htmlRole: {
+    itRole: {
       control: 'select',
       options: ['menu', 'listbox', 'tree', 'grid'],
     },
@@ -122,7 +122,7 @@ export const Base: Story = {
       alignment=${ifDefined(args.alignment)}
       size=${ifDefined(args.size)}
       variant=${args.variant}
-      html-role=${ifDefined(args.htmlRole)}
+      it-role=${ifDefined(args.itRole)}
       ?dark=${args.dark}
       ?full-width=${args.fullWidth}
     >
@@ -357,7 +357,7 @@ export const MenuATuttaLarghezza: Story = {
       alignment=${ifDefined(args.alignment)}
       size=${ifDefined(args.size)}
       variant=${ifDefined(args.variant)}
-      html-role=${ifDefined(args.htmlRole)}
+      it-role=${ifDefined(args.itRole)}
       ?dark=${args.dark}
       ?full-width=${args.fullWidth}
       style="width: 100%;"

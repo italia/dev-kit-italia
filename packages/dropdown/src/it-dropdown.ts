@@ -1,5 +1,5 @@
 /* eslint-disable lit-a11y/list */
-import { BaseComponent, AriaKeyboardListController, A11yMixin } from '@italia/globals';
+import { BaseComponent, AriaKeyboardListController } from '@italia/globals';
 import { html, LitElement } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -10,7 +10,7 @@ type Size = 'sm' | 'lg';
 type Variant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light';
 
 @customElement('it-dropdown')
-export class ItDropdown extends A11yMixin(BaseComponent) {
+export class ItDropdown extends BaseComponent {
   static styles = styles;
 
   static override shadowRootOptions = {
@@ -32,7 +32,7 @@ export class ItDropdown extends A11yMixin(BaseComponent) {
 
   @property({ type: Boolean, attribute: 'full-width' }) fullWidth = false;
 
-  @property({ type: String, attribute: 'html-role' }) htmlRole: string = 'menu';
+  @property({ type: String, attribute: 'it-role' }) itRole: string = 'menu';
 
   @state() private _popoverOpen = false;
 
@@ -71,22 +71,24 @@ export class ItDropdown extends A11yMixin(BaseComponent) {
       item.dark = this.dark;
       item.fullWidth = this.fullWidth;
 
-      if (this.htmlRole === 'menu') item.htmlRole = 'menuitem';
-      else if (this.htmlRole === 'listbox') item.htmlRole = 'option';
-      else if (this.htmlRole === 'tree') item.htmlRole = 'treeitem';
-      else item.htmlRole = undefined;
+      if (this.itRole === 'menu') item.itRole = 'menuitem';
+      else if (this.itRole === 'listbox') item.itRole = 'option';
+      else if (this.itRole === 'tree') item.itRole = 'treeitem';
+      else item.itRole = undefined;
     }
   }
 
   private _onKeyDown = (event: KeyboardEvent) => {
     const items = this._menuItems.map((item) => item.getFocusableElement()).filter((el) => !!el);
     const active = this.getActiveElement<ItDropdownItem>();
+    // console.log('onKeyDown ', event.key, ' ', active);
     if (!active) return;
 
     const currentIndex = items.indexOf(active);
 
     if (event.key === 'Tab') {
       if (event.shiftKey && currentIndex === 0) {
+        // console.log('shift+tab ', this._triggerEl);
         this._triggerEl?.focus();
       } else if (event.shiftKey && currentIndex === -1) {
         this._popoverOpen = false;
@@ -110,6 +112,9 @@ export class ItDropdown extends A11yMixin(BaseComponent) {
         getItems: () => items,
         setActive: (idx) => items[idx]?.focus(),
         closeMenu: () => {
+          // console.log('closeMenu ', this._triggerEl);
+          this._triggerEl?.focus();
+          // console.log('active', this.getActiveElement<ItDropdownItem>());
           this._popoverOpen = false;
         },
         trigger: this._triggerEl,
@@ -144,15 +149,14 @@ export class ItDropdown extends A11yMixin(BaseComponent) {
         <it-button
           id=${this._buttonId}
           slot="trigger"
-          aria-disabled="${ifDefined(this.disabled ? 'true' : undefined)}"
+          ?it-aria-disabled="${this.disabled}"
           type="button"
           variant=${ifDefined(this.variant)}
           size=${ifDefined(this.size)}
           @click=${this._onTriggerClick}
           @keydown=${this._onKeyDown}
-          aria-haspopup="true"
-          aria-expanded=${String(this._popoverOpen)}
           class="dropdown-toggle"
+          exportparts="focusable"
         >
           ${this.alignment.startsWith('left')
             ? html`<it-icon
@@ -188,7 +192,7 @@ export class ItDropdown extends A11yMixin(BaseComponent) {
             <slot name="header"></slot>
             <ul
               class="link-list"
-              role=${this.htmlRole}
+              role=${this.itRole}
               @keydown=${this._onKeyDown}
               aria-orientation=${ifDefined(this.fullWidth ? 'horizontal' : undefined)}
             >

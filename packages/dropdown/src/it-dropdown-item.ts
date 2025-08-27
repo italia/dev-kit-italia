@@ -1,11 +1,11 @@
-import { A11yMixin, BaseComponent } from '@italia/globals';
+import { BaseComponent } from '@italia/globals';
 import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import styles from './dropdown-item.scss';
 
 @customElement('it-dropdown-item')
-export class ItDropdownItem extends A11yMixin(BaseComponent) {
+export class ItDropdownItem extends BaseComponent {
   static styles = styles;
 
   // static override shadowRootOptions = {
@@ -29,6 +29,10 @@ export class ItDropdownItem extends A11yMixin(BaseComponent) {
 
   @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = false;
 
+  @property({ type: String, attribute: 'it-role' }) itRole?: string;
+
+  @property({ type: Boolean, reflect: true }) disabled?: boolean;
+
   public getFocusableElement(): HTMLElement | null {
     return this.shadowRoot?.querySelector('a, button') ?? null;
   }
@@ -38,7 +42,7 @@ export class ItDropdownItem extends A11yMixin(BaseComponent) {
   }
 
   protected override updated() {
-    if (this.htmlRole && ['menuitem', 'option', 'treeitem'].includes(this.htmlRole)) {
+    if (this.itRole && ['menuitem', 'option', 'treeitem'].includes(this.itRole)) {
       this.setAttribute('role', 'none');
     }
   }
@@ -70,8 +74,9 @@ export class ItDropdownItem extends A11yMixin(BaseComponent) {
         ${this.href
           ? html`<a
               class=${linkClasses}
+              part="focusable"
               href=${this.href}
-              role=${ifDefined(this.htmlRole)}
+              role=${ifDefined(this.itRole)}
               aria-disabled=${ifDefined(this.disabled || undefined)}
               @keydown=${this.handlePress}
               @click=${this.handlePress}

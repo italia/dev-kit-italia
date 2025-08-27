@@ -33,8 +33,10 @@ export class BaseComponent extends LitElement {
   protected get _ariaAttributes(): Record<string, string> {
     const attributes: Record<string, string> = {};
     for (const attr of this.getAttributeNames()) {
-      if (attr.startsWith('aria-')) {
-        attributes[attr] = this.getAttribute(attr)!;
+      if (attr === 'it-role') {
+        attributes.role = this.getAttribute(attr)!;
+      } else if (attr.startsWith('it-aria-')) {
+        attributes[attr.replace(/^it-/, '')] = this.getAttribute(attr)!;
       }
     }
     return attributes;

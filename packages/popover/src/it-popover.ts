@@ -1,3 +1,4 @@
+import { type ItButton } from '@italia/button';
 import { BaseComponent } from '@italia/globals';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
@@ -18,13 +19,27 @@ export class ItPopover extends BaseComponent {
 
   @query('slot[name="content"]') private _contentSlot!: HTMLSlotElement;
 
-  private _triggerElement!: HTMLElement;
+  private get _triggerElement() {
+    return this._triggerSlot?.assignedElements({ flatten: true })[0] as ItButton | HTMLElement;
+  }
 
-  private _contentElement!: HTMLElement;
+  private get _contentElement() {
+    return this._contentSlot?.assignedElements({ flatten: true })[0] as HTMLElement;
+  }
 
   private _arrowElement?: HTMLElement;
 
   private _cleanup?: () => void;
+
+  private _setChildrenProperties() {
+    if (this._triggerElement && this._triggerElement.tagName === 'IT-BUTTON') {
+      this._triggerElement?.setAttribute('it-aria-haspopup', 'true');
+      (this._triggerElement as ItButton).expanded = this.open;
+    } else {
+      this._triggerElement?.setAttribute('aria-haspopup', 'true');
+      this._triggerElement?.setAttribute('aria-expanded', String(this.open));
+    }
+  }
 
   connectedCallback() {
     super.connectedCallback?.();
@@ -38,17 +53,8 @@ export class ItPopover extends BaseComponent {
   }
 
   updated(changedProps: Map<string, any>) {
+    this._setChildrenProperties();
     if (changedProps.has('open')) {
-      const triggerNodes = this._triggerSlot?.assignedElements({ flatten: true }) ?? [];
-      const contentNodes = this._contentSlot?.assignedElements({ flatten: true }) ?? [];
-
-      this._triggerElement = triggerNodes[0] as HTMLElement;
-      this._contentElement = contentNodes[0] as HTMLElement;
-
-      if (this._triggerElement) {
-        this._triggerElement.setAttribute('aria-expanded', String(this.open));
-      }
-
       if (this.open) {
         this._show();
         this.dispatchEvent(new CustomEvent('popover-open', { bubbles: true, composed: true }));
@@ -157,7 +163,7 @@ export class ItPopover extends BaseComponent {
 
   render() {
     return html`
-      <slot name="trigger" part="trigger"></slot>
+      <slot name="trigger" part="trigger" @slotchange=${this._setChildrenProperties}></slot>
       <slot name="content"></slot>
     `;
   }
