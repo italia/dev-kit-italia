@@ -1,25 +1,4 @@
 it-icon {
-  //  @extend .icon;
-  --bs-it-icon-size: var(--bs-icon-size-m);
-
-  &[size='xl'] {
-    --bs-it-icon-size: var(--bs-icon-size-xl);
-  }
-
-  &[size='lg'] {
-    --bs-it-icon-size: var(--bs-icon-size-l);
-  }
-
-  &[size='sm'] {
-    --bs-it-icon-size: var(--bs-icon-size-sm);
-  }
-
-  &[size='xs'] {
-    --bs-it-icon-size: var(--bs-icon-size-xs);
-  }
-
-  width: var(--bs-it-icon-size);
-  height: var(--bs-it-icon-size);
   line-height: 0;
 }
 

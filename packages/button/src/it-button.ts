@@ -19,22 +19,22 @@ export class ItButton extends BaseComponent {
   @property({ type: String })
   private _buttonClasses = '';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   type = 'button';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   variant: Variants = '';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   size: Sizes = '';
 
-  @property({ type: Boolean })
+  @property({ type: Boolean, reflect: true })
   outline = false;
 
-  @property({ type: Boolean })
+  @property({ type: Boolean, reflect: true })
   block = false;
 
-  @property({ type: Boolean })
+  @property({ type: Boolean, reflect: true })
   icon = false;
 
   @property({ type: String })
