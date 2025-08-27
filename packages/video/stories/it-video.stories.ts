@@ -4,7 +4,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import '@italia/video';
 import '@italia/button';
-import itLang from '../src/locales/it.js';
+import itLang from '../src/locales/videojs/it.js';
+import i18nIT from '../src/locales/it.js';
 import type { ConsentOptions, Track, VideoJSTranslations, Locale } from '../src/types.ts';
 
 interface VideoProps {
@@ -16,7 +17,7 @@ interface VideoProps {
   language?: Locale;
   track?: Track;
   consentOptions?: ConsentOptions;
-  initPluginsName: string;
+  initPlugins: string;
 }
 type Story = StoryObj<VideoProps>;
 
@@ -48,7 +49,7 @@ const meta = {
     consentOptions: {},
     language: 'it',
     translations: { it: itLang as any },
-    initPluginsName: '',
+    initPlugins: '',
   },
   argTypes: {
     src: { control: 'text', description: 'Sorgente del video' },
@@ -69,6 +70,7 @@ const meta = {
         'Tracce per didascalie, sottotitoli, capitoli e descrizioni. Nel campo `kind` è necessario indicare la tipologia di traccia fra <ul><li>captions</li><li>subtitles</li><li>description</li><li>chapters</li><li>metadata</li></ul>',
     },
     consentOptions: {
+      name: 'consent-options',
       control: 'object',
       description:
         'Oggetto per la configurazione del consenso dei cookie. <br/>Di default viene salvata una variabile nel localstorage con lo stesso nome del type del video, ma è possibile personalizzarla passando in `consentOptions` un valore per `consentKey`. <br/>Inoltre, quando viene dato il consenso permanente per i cookie, è possibile personalizzare il comportamento passando in questo oggetto due funzioni specifiche per la gestione della memorizzazione del consenso: `onAccept` e `isAccepted`.',
@@ -86,9 +88,11 @@ const meta = {
     translations: {
       control: 'object',
       description:
-        'Traduzioni per le diverse lingue. Di base è disponibile solo la lingua it. Usare questa prop per aggiungere le traduzioni in altre lingue. ',
+        'Traduzioni del player per le diverse lingue. Di base è disponibile solo la lingua it. Usare questa prop per aggiungere le traduzioni in altre lingue. ',
     },
-    initPluginsName: {
+    initPlugins: {
+      name: 'init-plugins',
+      control: 'text',
       description:
         'Nome della propria funzione presente nella window che verrà invocata da video.js per inizializzare eventuali plugin aggiuntivi definiti dallo sviluppatore.',
     },
@@ -149,7 +153,7 @@ export const ComeUsarlo: Story = {
 Per aggiungere un video, è sufficiente utilizzare il componente \`<it-video />\` ed i relativi attributi per gestirne la sorgente, e le opzioni del video player. - Usa l'attributo \`options\` per passare
 al player le opzioni definite qui [https://videojs.com/guides/options/](https://videojs.com/guides/options/).
 
-- Usa l'attributo \`translations\` per definire le traduzioni diverse dalla lingua italiana, o per
+- Usa l'attributo \`translations\` per definire le traduzioni del player diverse dalla lingua italiana, o per
 sovrascrivere le traduzioni italiane pre-impostate.
 
 ### Font per le icone del player
@@ -443,4 +447,26 @@ I testi e l'icona sono modificabili attraverso il sistema di traduzioni. Vedi la
       type: undefined,
       translations: undefined,
     })}`,
+};
+
+export const I18n: Story = {
+  name: 'i18n',
+  tags: ['!dev'],
+  render: () => html`<div class="hide-preview"></div>`,
+  parameters: {
+    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
+    docs: {
+      description: {
+        story: `
+Oltre all'attributo \`translations\` che permette di modificare le traduzioni interne al player, sono disponibili ulteriori stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+
+\`\`\`js
+const translation = {
+  ${JSON.stringify(i18nIT).replaceAll('{"', '"').replaceAll('",', '",\n\t').replaceAll('"}', '"')}
+}
+\`\`\`
+`,
+      },
+    },
+  },
 };

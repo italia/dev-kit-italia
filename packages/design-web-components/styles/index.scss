@@ -17,8 +17,11 @@
 @import 'bootstrap-italia/src/scss/utilities/icons';
 @import 'bootstrap-italia/src/scss/utilities/colors';
 @import 'bootstrap-italia/src/scss/utilities/text-colors';
-
 @import 'bootstrap-italia/src/scss/components/type';
+@import 'bootstrap-italia/src/scss/components/grid';
+
+@import 'bootstrap-italia/src/scss/forms/forms'; //perchè ci sono delle variabile definite nella :root
+
 @import 'bootstrap-italia/src/scss/components/linklist';
 @import 'bootstrap-italia/src/scss/components/dropdown';
 
@@ -26,4 +29,5 @@
 @import '@italia/button/styles/globals';
 @import '@italia/dropdown/styles/globals';
 @import '@italia/icon/styles/globals';
+@import '@italia/input/styles/globals';
 @import '@italia/video/styles/globals';

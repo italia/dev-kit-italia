@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>Test Web Components</title>
+  <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
   <!-- Importa lo script del tuo Web Component -->
   <!-- <script type="module" src="dist/elements.js"></script> -->
   <script type="module">
-
     import "./dist/elements.js";
 
     registerTranslation({
@@ -24,6 +24,77 @@
   </script>
 
 
+  <!-- just validate -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const formEl = document.querySelector('#form');
+
+      // Inizializziamo JustValidate senza selettore, passando il form element
+      const validate = new JustValidate(formEl);
+
+      // Funzione helper per leggere valore da <it-input>
+      const getItInputValue = (selector) => {
+        const el = formEl.querySelector(selector);
+        return el?.value || ''; // .value dovrebbe essere esposto dal tuo componente
+      };
+
+      // Aggiungiamo regole
+      validate
+        .addField('it-input[id="email"]', [
+          {
+            rule: "required",
+            errorMessage: 'Email obbligatoria',
+          },
+          {
+            validator: () => {
+              const value = getItInputValue('it-input[id="email"]');
+              return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+            },
+            errorMessage: 'Formato email non valido',
+          },
+        ]).addField('it-input[id="messaggio"]', [
+          {
+            validator: () => {
+              const value = getItInputValue('it-input[id="messaggio"]');
+              return value.length>10;
+            },
+            errorMessage: 'Inserire almeno 10 caratteri',
+          },
+        ]);
+
+      validate.onValidate((props) => {
+        const { fields } = props;
+
+        // Rimuovi TUTTI i messaggi creati da JustValidate (questi sono quelli prima del bottone submit)
+        document.querySelectorAll('.just-validate-error-label').forEach(el => el.remove());
+        // aggiorna il Web Component
+        Object.keys(fields).forEach(k => {
+          const f = fields[k];
+          const wc = f.elem;
+          if (wc) {
+            wc.validationText = f.isValid ? '' : f.errorMessage;
+          }
+        });
+      });
+
+      formEl.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (validate.isValid) {
+          console.log('Form valido!');
+          // gestire qui il submit della form
+          // fetch('/submit', { method: 'POST', body: ... })
+        }
+      });
+      // oppure
+      // validate.onSuccess(( event ) => {
+      //  submit della form
+      //   event.currentTarget.submit();
+      // });
+    });
+
+
+
+  </script>
 
   <link rel="stylesheet" href="dist/design-web-components-fonts.css" />
   <!-- <link rel="stylesheet" href="../node_modules/bootstrap-italia/dist/css/bootstrap-italia.min.css" /> -->
@@ -83,6 +154,27 @@
           <h3>Youtube:</h3>
           <it-video src="https://youtu.be/_0j7ZQ67KtY"></it-video>
         </div>
+      </section>
+
+      <section>
+        <h2>it-input</h2>
+        <h3>Input con validazione di default del browser e del componente it-input:</h3>
+        <it-input id="email_default" label="E-mail" type="email" support-text="Inserisci la tua email"></it-input>
+        <it-input id="cap_default" label="CAP" type="text" minlength="5"></it-input>
+        <it-input id="msg2_default" label="Messaggio 2" type="textarea"
+          support-text="Inserisci un commento. Max 10 caratteri" maxlength="11"></it-input>
+        <br /><br />
+        <h3>Input in una form con validazione esterna (tramite plugin JustValidate)</h3>
+        <form id="form">
+          <it-input id="nome" name="nome" label="Nome"></it-input>
+          <it-input id="cognome" name="cognome" label="Cogome"></it-input>
+          <it-input id="email" name="email" label="E-mail" type="email" support-text="Inserisci la tua email"
+            custom-validation></it-input>
+          <it-input id="messaggio" name="messaggio" label="Messaggio" type="textarea"
+            support-text="Inserisci il tuo messaggio" custom-validation></it-input>
+          <!-- <it-input id="password"  label="Password" type="password" minlength="10" suggestions strength-meter></it-input> -->
+          <it-button type="submit" variant="primary" block>Invia</it-button></form>
+        </form>
       </section>
 
     </div>
