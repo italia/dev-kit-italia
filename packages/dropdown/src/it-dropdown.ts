@@ -30,7 +30,7 @@ export class ItDropdown extends BaseComponent {
 
   @property({ type: Boolean }) dark = false;
 
-  @property({ type: Boolean, attribute: 'full-width' }) fullWidth = false;
+  @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = false;
 
   @property({ type: String, attribute: 'it-role' }) itRole: string = 'menu';
 
