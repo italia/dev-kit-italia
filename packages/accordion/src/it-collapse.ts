@@ -20,11 +20,39 @@ export class ItCollapse extends BaseComponent {
 
   connectedCallback() {
     super.connectedCallback?.();
-    // Gli eventi sono gestiti dall'accordion-item, non qui
+    this.addEventListener('click', this.handleClick);
   }
 
   disconnectedCallback() {
+    this.removeEventListener('click', this.handleClick);
     super.disconnectedCallback?.();
+  }
+
+  private handleClick = (e: Event) => {
+    // Verifica se il click è sul trigger o suoi discendenti
+    const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement;
+    const triggerElements = triggerSlot?.assignedElements() || [];
+
+    if (triggerElements.some((el) => el.contains(e.target as Node) || el === e.target)) {
+      e.preventDefault();
+      this.toggle();
+    }
+  };
+
+  async toggle() {
+    this.expanded = !this.expanded;
+
+    // Emetti evento per notificare l'accordion parent
+    this.dispatchEvent(
+      new CustomEvent('collapse-toggle', {
+        detail: {
+          expanded: this.expanded,
+          id: this.contentElement?.id,
+        },
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   firstUpdated() {
@@ -87,7 +115,7 @@ export class ItCollapse extends BaseComponent {
       if (buttonElement && this.contentElement?.id) {
         if (buttonElement.tagName.toLowerCase() === 'it-button') {
           // For it-button, set aria-controls on the component
-          buttonElement.setAttribute('aria-controls', this.contentElement.id);
+          buttonElement.setAttribute('it-aria-controls', this.contentElement.id);
         } else {
           buttonElement.setAttribute('aria-controls', this.contentElement.id);
         }
@@ -105,9 +133,14 @@ export class ItCollapse extends BaseComponent {
     const targetHeight = this.contentElement.scrollHeight;
     this.contentElement.style.height = '0px';
 
-    // Force reflow with layout thrashing (or forced synchronous reflow)
+    // Force reflow and add a small delay for smoother animation
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const _reflow = this.contentElement.offsetHeight;
+    
+    // Piccolo delay per permettere al browser di processare il cambio height
+    await new Promise<void>(resolve => {
+      setTimeout(() => resolve(), 16); // ~1 frame @ 60fps
+    });
 
     // Start animation
     this.contentElement.style.height = `${targetHeight}px`;
@@ -124,13 +157,13 @@ export class ItCollapse extends BaseComponent {
       };
       this.contentElement.addEventListener('transitionend', onTransitionEnd);
 
-      // Fallback timeout
+      // Fallback timeout - aumentiamo per permettere all'animazione CSS di completarsi
       setTimeout(() => {
         this.contentElement.removeEventListener('transitionend', onTransitionEnd);
         this.contentElement.style.height = 'auto';
         this.isAnimating = false;
         resolve();
-      }, 400);
+      }, 500); // Aumentato da 100ms a 500ms per sicurezza
     });
   }
 
@@ -161,12 +194,12 @@ export class ItCollapse extends BaseComponent {
       };
       this.contentElement.addEventListener('transitionend', onTransitionEnd);
 
-      // Fallback timeout
+      // Fallback timeout - aumentiamo per permettere all'animazione CSS di completarsi  
       setTimeout(() => {
         this.contentElement.removeEventListener('transitionend', onTransitionEnd);
         this.isAnimating = false;
         resolve();
-      }, 400);
+      }, 500); // Aumentato da 100ms a 500ms per consistency
     });
   }
 

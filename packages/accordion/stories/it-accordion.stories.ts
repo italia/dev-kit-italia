@@ -10,6 +10,7 @@ interface AccordionProps {
   multiple?: boolean;
   backgroundActive?: boolean;
   backgroundHover?: boolean;
+  leftIcon?: boolean;
 }
 
 interface AccordionItemProps {
@@ -30,6 +31,7 @@ const renderComponent = (params: AccordionProps, items: AccordionItemProps[] = [
     ?multiple="${params.multiple}"
     ?background-active="${params.backgroundActive}"
     ?background-hover="${params.backgroundHover}"
+    ?left-icon="${params.leftIcon}"
   >
     ${items.map((item) => renderAccordionItem(item))}
   </it-accordion>
@@ -62,6 +64,7 @@ const meta: Meta<AccordionProps> = {
     multiple: false,
     backgroundActive: false,
     backgroundHover: false,
+    leftIcon: false,
   },
   argTypes: {
     multiple: {
@@ -77,6 +80,11 @@ const meta: Meta<AccordionProps> = {
     backgroundHover: {
       control: 'boolean',
       description: 'Applica sfondo primario agli header al passaggio del mouse',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    leftIcon: {
+      control: 'boolean',
+      description: 'Mostra icone plus/minus a sinistra invece della freccia a destra (Bootstrap Italia)',
       table: { defaultValue: { summary: 'false' } },
     },
   },
@@ -186,6 +194,38 @@ export const HeadingPersonalizzati: Story = {
       <it-accordion-item label="Heading H4" as="h4"> Contenuto con heading di livello H4 </it-accordion-item>
     </it-accordion>
   `,
+};
+
+export const IconeASinistra: Story = {
+  name: 'Icone a sinistra (Bootstrap Italia)',
+  args: {
+    leftIcon: true,
+    backgroundActive: true,
+  },
+  argTypes: {
+    leftIcon: {
+      table: { disable: true },
+    },
+    backgroundActive: {
+      table: { disable: true },
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Quando l'attributo \`left-icon\` è abilitato, le icone plus/minus vengono mostrate a sinistra del testo invece della freccia a destra. Questa variante è specifica per Bootstrap Italia.
+
+L'icona cambia dinamicamente:
+- ➕ **Plus** quando l'elemento è chiuso
+- ➖ **Minus** quando l'elemento è aperto
+
+Combinato con \`background-active\`, le icone diventano bianche quando l'elemento è attivo per mantenere il giusto contrasto.
+`,
+      },
+    },
+  },
+  render: (args) => renderComponent(args, defaultItems),
 };
 
 export const ContenutiComplessi: Story = {

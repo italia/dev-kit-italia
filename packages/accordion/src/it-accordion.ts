@@ -21,86 +21,76 @@ export class ItAccordion extends BaseComponent {
   @property({ type: Boolean, attribute: 'background-hover', reflect: true })
   backgroundHover = false;
 
+  @property({ type: Boolean, attribute: 'left-icon', reflect: true })
+  leftIcon = false;
+
   private _ariaNav = new AriaKeyboardAccordionController(this);
 
   updated(changedProperties: Map<string | number | symbol, unknown>) {
     super.updated?.(changedProperties);
 
-    // Propaga le proprietà background ai figli quando cambiano
-    if (changedProperties.has('backgroundActive') || changedProperties.has('backgroundHover')) {
-      this.updateChildrenBackgroundProperties();
+    // Propaga le proprietà ai figli quando cambiano
+    if (changedProperties.has('backgroundActive') || changedProperties.has('backgroundHover') || changedProperties.has('leftIcon')) {
+      this.updateChildrenProperties();
     }
   }
 
-  private updateChildrenBackgroundProperties() {
-    this.accordionItems.forEach((item) => {
+  private updateChildrenProperties() {
+    // Usa sia queryAssignedElements che querySelector diretto
+    const items = this.accordionItems?.length 
+      ? this.accordionItems 
+      : Array.from(this.querySelectorAll('it-accordion-item')) as ItAccordionItem[];
+    
+    console.log('updateChildrenProperties:', { 
+      leftIcon: this.leftIcon, 
+      itemsCount: items.length,
+      itemsFromQuery: this.accordionItems?.length || 0,
+      itemsFromSelector: this.querySelectorAll('it-accordion-item').length
+    });
+    
+    items.forEach((item) => {
       item.setParentBackground(this.backgroundActive, this.backgroundHover);
+      item.setParentLeftIcon(this.leftIcon);
     });
   }
 
   connectedCallback() {
     super.connectedCallback?.();
-    this.addEventListener('accordion-toggle', this._onToggleWrapper);
+    this.addEventListener('collapse-toggle', this._onCollapseToggle);
     this.addEventListener('keydown', this._onKeyDown as EventListener);
   }
 
   firstUpdated(changedProperties: Map<string | number | symbol, unknown>) {
     super.firstUpdated?.(changedProperties);
-    // Inizializza le proprietà background sui figli
-    this.updateChildrenBackgroundProperties();
+    // Inizializza le proprietà sui figli
+    this.updateChildrenProperties();
   }
 
   disconnectedCallback(): void {
-    this.removeEventListener('accordion-toggle', this._onToggleWrapper);
+    this.removeEventListener('collapse-toggle', this._onCollapseToggle);
     this.removeEventListener('keydown', this._onKeyDown as EventListener);
     super.disconnectedCallback?.();
   }
 
-  private _onToggleWrapper = (e: Event) => {
-    this._onToggle(e as CustomEvent);
-  };
+  private _onCollapseToggle = (e: Event) => {
+    const customEvent = e as CustomEvent;
+    const { expanded, id: targetId } = customEvent.detail;
 
-  // // eslint-disable-next-line class-methods-use-this
-  // private toggleAccordion(panelRef: HTMLDivElement, triggerRef: HTMLElement) {
-  //   const isOpen = panelRef.classList.toggle('show');
-  //   triggerRef.setAttribute('aria-expanded', String(isOpen));
-  // }
-
-  private async _onToggle(e: CustomEvent) {
-    const targetId = e.detail.id;
-
-    // Wait for any ongoing animations to complete before processing new toggle
-    const animatingItems = this.accordionItems.filter((item) => {
-      const collapseElement = item.shadowRoot?.querySelector('it-collapse') as any;
-      return collapseElement?.isAnimating;
-    });
-
-    if (animatingItems.length > 0) {
-      return; // Skip if any animation is in progress
-    }
-
-    for (const item of this.accordionItems) {
-      const collapseElement = item.shadowRoot?.querySelector('it-collapse') as any;
-      const panelRef = item.shadowRoot?.querySelector<HTMLDivElement>('div.accordion-collapse');
-
-      if (collapseElement && panelRef) {
-        if (!this.multiple) {
-          // Close all other panels if multiple is false
-          if (panelRef.id !== targetId) {
-            if (collapseElement.expanded) {
-              item.setExpanded(false); // Chiudi gli altri pannelli
-            }
-          } else {
-            // Toggle the clicked panel
-            item.setExpanded(!item.isExpanded); // Toggle del pannello cliccato
-          }
-        } else if (this.multiple && panelRef.id === targetId) {
-          // In multiple mode, just toggle the target panel
-          item.setExpanded(!item.isExpanded); // Toggle del pannello target
+    // Se è in single mode e sta per essere espanso, chiudi tutti gli altri
+    if (!this.multiple && expanded) {
+      for (const item of this.accordionItems) {
+        const collapseElement = item.shadowRoot?.querySelector('it-collapse') as any;
+        if (collapseElement && collapseElement.contentElement?.id !== targetId && collapseElement.expanded) {
+          collapseElement.expanded = false;
         }
       }
     }
-  }
+  };
+
+  private _onSlotChange = () => {
+    // Quando cambiano i children, aggiorna le proprietà
+    this.updateChildrenProperties();
+  };
 
   private _onKeyDown(e: KeyboardEvent) {
     // Recupera tutti i trigger degli accordion
@@ -119,7 +109,7 @@ export class ItAccordion extends BaseComponent {
         triggers[idx]?.focus();
       },
       toggle: (id) => {
-        this.dispatchEvent(new CustomEvent('accordion-toggle', { bubbles: true, composed: true, detail: { id } }));
+        // this.dispatchEvent(new CustomEvent('collapse-toggle', { bubbles: true, composed: true, detail: { id } }));
       },
     });
     this._ariaNav.handleKeyDown(e);
@@ -130,11 +120,14 @@ export class ItAccordion extends BaseComponent {
       'accordion',
       this.backgroundActive && 'accordion-background-active',
       this.backgroundHover && 'accordion-background-hover',
+      this.leftIcon && 'accordion-left-icon',
     ]
       .filter(Boolean)
       .join(' ');
 
-    return html`<div class="${classes}" id="${this._id}" part="accordion"><slot></slot></div>`;
+    return html`<div class="${classes}" id="${this._id}" part="accordion">
+      <slot @slotchange="${this._onSlotChange}"></slot>
+    </div>`;
   }
 }
 

@@ -1,3 +1,11 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
+// @import 'bootstrap-italia/src/scss/base/transitions';
+@import 'bootstrap-italia/src/scss/components/type';
+
 :host {
   display: block;
 }
@@ -9,7 +17,7 @@
 .collapse-content {
   overflow: hidden;
   height: 0;
-  transition: height 0.35s ease;
+  @include transition($transition-collapse);
 }
 
 :host([expanded]) .collapse-content {

@@ -32,6 +32,16 @@ export class ItAccordionItem extends BaseComponent {
   public setParentBackground(backgroundActive: boolean, backgroundHover: boolean) {
     this.parentBackgroundActive = backgroundActive;
     this.parentBackgroundHover = backgroundHover;
+    // Aggiorna immediatamente le proprietà CSS e l'icona quando cambiano le proprietà del parent
+    this.updateBackgroundProperties();
+    this.updateAccordionIcon();
+  }
+
+  // Metodo pubblico per impostare la proprietà leftIcon del parent
+  public setParentLeftIcon(leftIcon: boolean) {
+    this.parentLeftIcon = leftIcon;
+    // Forza il re-render quando cambia leftIcon
+    this.requestUpdate();
   }
 
   // Getter per leggere lo stato corrente
@@ -45,6 +55,9 @@ export class ItAccordionItem extends BaseComponent {
 
   @property({ type: Boolean, attribute: false })
   public parentBackgroundHover: boolean = false;
+
+  @property({ type: Boolean, attribute: false })
+  public parentLeftIcon: boolean = false;
 
   protected _panelId = this.generateId('it-accordion-item-content');
 
@@ -78,7 +91,8 @@ export class ItAccordionItem extends BaseComponent {
   }
 
   private updateAccordionIcon() {
-    const iconElement = this.shadowRoot?.querySelector('.accordion-icon');
+    // Gestisce sia l'icona normale che quella left
+    const iconElement = this.shadowRoot?.querySelector('.accordion-icon, .accordion-icon-left');
     const collapseElement = this.shadowRoot?.querySelector('it-collapse') as any;
 
     if (iconElement && collapseElement) {
@@ -87,10 +101,24 @@ export class ItAccordionItem extends BaseComponent {
       } else {
         iconElement.classList.remove('expanded');
       }
+
+      // Per leftIcon, aggiorna anche il nome dell'icona
+      if (this.parentLeftIcon) {
+        (iconElement as any).name = collapseElement.expanded ? 'it-minus' : 'it-plus';
+      }
+
+      // Aggiorna il colore dell'icona in base al background
+      // Se ha background attivo e l'item è espanso, l'icona deve essere bianca
+      if (this.parentBackgroundActive && this._isExpanded) {
+        (iconElement as any).color = 'white';
+      } else {
+        (iconElement as any).color = 'primary';
+      }
     }
   }
 
   private updateBackgroundProperties() {
+    // backgroundActive: applica background solo agli item espansi/attivi
     if (this.parentBackgroundActive && this._isExpanded) {
       this.style.setProperty('--accordion-button-bg', 'var(--bs-color-background-primary)');
       this.style.setProperty('--accordion-button-color', 'var(--bs-color-text-inverse)');
@@ -99,6 +127,7 @@ export class ItAccordionItem extends BaseComponent {
       this.style.removeProperty('--accordion-button-color');
     }
 
+    // backgroundHover: applica background hover a tutti gli item
     if (this.parentBackgroundHover) {
       this.style.setProperty('--accordion-button-hover-bg', 'var(--bs-color-background-primary)');
       this.style.setProperty('--accordion-button-hover-color', 'var(--bs-color-text-inverse)');
@@ -129,7 +158,10 @@ export class ItAccordionItem extends BaseComponent {
     // Ascolta i cambiamenti del collapse
     if (collapseElement) {
       const observer = new MutationObserver(() => {
+        // Sincronizza _isExpanded con lo stato del collapse (unica fonte di verità)
+        this._isExpanded = collapseElement.expanded;
         this.updateAccordionIcon();
+        this.updateBackgroundProperties();
       });
       observer.observe(collapseElement, {
         attributes: true,
@@ -138,45 +170,39 @@ export class ItAccordionItem extends BaseComponent {
     }
   }
 
-  private _dispatchToggle(e: PressEvent) {
-    // Dispatch custom event che bubble fino al padre it-accordion
-    if (isKeyboardEvent(e) && e.key !== 'Enter' && e.key !== ' ') return;
-
-    this.dispatchEvent(
-      new CustomEvent('accordion-toggle', {
-        detail: { id: this._panelId },
-        bubbles: true,
-        composed: true,
-      }),
-    );
-  }
-
   private renderHeading() {
     const buttonClasses = ['accordion-button', this._isExpanded && 'expanded'].filter(Boolean).join(' ');
 
-    const buttonContent = html`<it-button
-      class="${buttonClasses}"
-      type="button"
-      icon
-      @click="${this._dispatchToggle}"
-      @keydown="${this._dispatchToggle}"
-      exportparts="focusable,button"
-    >
-      <span>${this.label}</span>
-      <it-icon name="it-collapse" class="accordion-icon" color="primary"></it-icon>
-    </it-button>`;
+    // Se il parent ha leftIcon=true, usa icone più/meno a sinistra
+    const iconContent = this.parentLeftIcon
+      ? html`<it-icon
+          name="${this._isExpanded ? 'it-minus' : 'it-plus'}"
+          class="accordion-icon-left"
+          color="primary"
+        ></it-icon>`
+      : html`<it-icon name="it-collapse" class="accordion-icon" color="primary"></it-icon>`;
+
+    const buttonContent = this.parentLeftIcon
+      ? html`<it-button class="${buttonClasses}" type="button" icon id="${this._id}" exportparts="focusable,button">
+          ${iconContent}
+          <span>${this.label}</span>
+        </it-button>`
+      : html`<it-button class="${buttonClasses}" type="button" icon id="${this._id}" exportparts="focusable,button">
+          <span>${this.label}</span>
+          ${iconContent}
+        </it-button>`;
 
     switch (this.as) {
       case 'h3':
-        return html`<h3 class="accordion-header" id="${this._id}">${buttonContent}</h3>`;
+        return html`<h3 class="accordion-header">${buttonContent}</h3>`;
       case 'h4':
-        return html`<h4 class="accordion-header" id="${this._id}">${buttonContent}</h4>`;
+        return html`<h4 class="accordion-header">${buttonContent}</h4>`;
       case 'h5':
-        return html`<h5 class="accordion-header" id="${this._id}">${buttonContent}</h5>`;
+        return html`<h5 class="accordion-header">${buttonContent}</h5>`;
       case 'h6':
-        return html`<h6 class="accordion-header" id="${this._id}">${buttonContent}</h6>`;
+        return html`<h6 class="accordion-header">${buttonContent}</h6>`;
       default:
-        return html`<h2 class="accordion-header" id="${this._id}">${buttonContent}</h2>`;
+        return html`<h2 class="accordion-header">${buttonContent}</h2>`;
     }
   }
 
