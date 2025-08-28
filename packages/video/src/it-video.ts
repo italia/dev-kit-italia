@@ -32,7 +32,7 @@ export class ItVideo extends BaseLocalizedComponent {
 
   @property({ type: String }) language = 'it';
 
-  @property({ type: Object }) translations: VideoJSTranslations = { it: itLang };
+  @property({ type: Object, reflect: true }) translations: VideoJSTranslations = { it: itLang };
 
   @property({ type: Array }) track: Track = [];
 
