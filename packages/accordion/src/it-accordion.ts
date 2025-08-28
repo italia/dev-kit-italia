@@ -30,27 +30,25 @@ export class ItAccordion extends BaseComponent {
     super.updated?.(changedProperties);
 
     // Propaga le proprietà ai figli quando cambiano
-    if (changedProperties.has('backgroundActive') || changedProperties.has('backgroundHover') || changedProperties.has('leftIcon')) {
+    if (
+      changedProperties.has('backgroundActive') ||
+      changedProperties.has('backgroundHover') ||
+      changedProperties.has('leftIcon')
+    ) {
       this.updateChildrenProperties();
     }
   }
 
   private updateChildrenProperties() {
-    // Usa sia queryAssignedElements che querySelector diretto
-    const items = this.accordionItems?.length 
-      ? this.accordionItems 
-      : Array.from(this.querySelectorAll('it-accordion-item')) as ItAccordionItem[];
-    
-    console.log('updateChildrenProperties:', { 
-      leftIcon: this.leftIcon, 
-      itemsCount: items.length,
-      itemsFromQuery: this.accordionItems?.length || 0,
-      itemsFromSelector: this.querySelectorAll('it-accordion-item').length
-    });
-    
-    items.forEach((item) => {
+    this.accordionItems.forEach((item) => {
       item.setParentBackground(this.backgroundActive, this.backgroundHover);
       item.setParentLeftIcon(this.leftIcon);
+    });
+  }
+
+  private updateChildrenBackgroundProperties() {
+    this.accordionItems.forEach((item) => {
+      item.setParentBackground(this.backgroundActive, this.backgroundHover);
     });
   }
 
@@ -88,7 +86,7 @@ export class ItAccordion extends BaseComponent {
   };
 
   private _onSlotChange = () => {
-    // Quando cambiano i children, aggiorna le proprietà
+    // Quando cambiano i children, aggiorna tutte le proprietà
     this.updateChildrenProperties();
   };
 
@@ -108,7 +106,7 @@ export class ItAccordion extends BaseComponent {
       setActive: (idx: number) => {
         triggers[idx]?.focus();
       },
-      toggle: (id) => {
+      toggle: () => {
         // this.dispatchEvent(new CustomEvent('collapse-toggle', { bubbles: true, composed: true, detail: { id } }));
       },
     });

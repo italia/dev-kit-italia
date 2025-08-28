@@ -133,14 +133,9 @@ export class ItCollapse extends BaseComponent {
     const targetHeight = this.contentElement.scrollHeight;
     this.contentElement.style.height = '0px';
 
-    // Force reflow and add a small delay for smoother animation
+    // Force reflow with layout thrashing (or forced synchronous reflow)
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const _reflow = this.contentElement.offsetHeight;
-    
-    // Piccolo delay per permettere al browser di processare il cambio height
-    await new Promise<void>(resolve => {
-      setTimeout(() => resolve(), 16); // ~1 frame @ 60fps
-    });
 
     // Start animation
     this.contentElement.style.height = `${targetHeight}px`;
@@ -157,13 +152,13 @@ export class ItCollapse extends BaseComponent {
       };
       this.contentElement.addEventListener('transitionend', onTransitionEnd);
 
-      // Fallback timeout - aumentiamo per permettere all'animazione CSS di completarsi
+      // Fallback timeout
       setTimeout(() => {
         this.contentElement.removeEventListener('transitionend', onTransitionEnd);
         this.contentElement.style.height = 'auto';
         this.isAnimating = false;
         resolve();
-      }, 500); // Aumentato da 100ms a 500ms per sicurezza
+      }, 100);
     });
   }
 
@@ -194,12 +189,12 @@ export class ItCollapse extends BaseComponent {
       };
       this.contentElement.addEventListener('transitionend', onTransitionEnd);
 
-      // Fallback timeout - aumentiamo per permettere all'animazione CSS di completarsi  
+      // // Fallback timeout
       setTimeout(() => {
         this.contentElement.removeEventListener('transitionend', onTransitionEnd);
         this.isAnimating = false;
         resolve();
-      }, 500); // Aumentato da 100ms a 500ms per consistency
+      }, 100);
     });
   }
 

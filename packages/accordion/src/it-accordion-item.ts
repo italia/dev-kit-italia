@@ -3,6 +3,7 @@ import { html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 // import '@italia/icon/it-icon.js';
 // import '@italia/button/it-button.js';
+import { ItIcon } from '@italia/icon';
 import { HeadingLevels, isKeyboardEvent, PressEvent } from './types.js';
 import styles from './accordion.scss';
 
@@ -32,15 +33,11 @@ export class ItAccordionItem extends BaseComponent {
   public setParentBackground(backgroundActive: boolean, backgroundHover: boolean) {
     this.parentBackgroundActive = backgroundActive;
     this.parentBackgroundHover = backgroundHover;
-    // Aggiorna immediatamente le proprietà CSS e l'icona quando cambiano le proprietà del parent
-    this.updateBackgroundProperties();
-    this.updateAccordionIcon();
   }
 
   // Metodo pubblico per impostare la proprietà leftIcon del parent
   public setParentLeftIcon(leftIcon: boolean) {
     this.parentLeftIcon = leftIcon;
-    // Forza il re-render quando cambia leftIcon
     this.requestUpdate();
   }
 
@@ -61,7 +58,7 @@ export class ItAccordionItem extends BaseComponent {
 
   protected _panelId = this.generateId('it-accordion-item-content');
 
-  updated(changedProperties: Map<string | number | symbol, unknown>) {
+  override updated(changedProperties: Map<string | number | symbol, unknown>) {
     super.updated?.(changedProperties);
 
     // Solo se defaultOpen cambia (dovrebbe essere raro), aggiorna lo stato interno
@@ -82,43 +79,45 @@ export class ItAccordionItem extends BaseComponent {
       }
       this.updateAccordionIcon();
       this.updateBackgroundProperties();
+
+      // Aggiungi/rimuovi la classe expanded per il CSS
+      if (this._isExpanded) {
+        this.classList.add('expanded');
+      } else {
+        this.classList.remove('expanded');
+      }
     }
 
     // Se cambiano le proprietà di background del parent, aggiorna le CSS properties
-    if (changedProperties.has('parentBackgroundActive') || changedProperties.has('parentBackgroundHover')) {
+    if (
+      changedProperties.has('parentBackgroundActive') ||
+      changedProperties.has('parentBackgroundHover') ||
+      changedProperties.has('parentLeftIcon')
+    ) {
+      this.updateAccordionIcon();
       this.updateBackgroundProperties();
     }
   }
 
   private updateAccordionIcon() {
     // Gestisce sia l'icona normale che quella left
-    const iconElement = this.shadowRoot?.querySelector('.accordion-icon, .accordion-icon-left');
-    const collapseElement = this.shadowRoot?.querySelector('it-collapse') as any;
+    const iconElement = this.shadowRoot?.querySelector('it-icon') as ItIcon;
+    const collapseElement = this.shadowRoot?.querySelector('it-collapse');
 
     if (iconElement && collapseElement) {
       if (collapseElement.expanded) {
         iconElement.classList.add('expanded');
+        if (this.parentBackgroundActive) iconElement.color = 'white';
       } else {
         iconElement.classList.remove('expanded');
+        if (this.parentBackgroundActive) iconElement.color = 'primary';
       }
 
       // Per leftIcon, aggiorna anche il nome dell'icona
-      if (this.parentLeftIcon) {
-        (iconElement as any).name = collapseElement.expanded ? 'it-minus' : 'it-plus';
-      }
-
-      // Aggiorna il colore dell'icona in base al background
-      // Se ha background attivo e l'item è espanso, l'icona deve essere bianca
-      if (this.parentBackgroundActive && this._isExpanded) {
-        (iconElement as any).color = 'white';
-      } else {
-        (iconElement as any).color = 'primary';
-      }
     }
   }
 
   private updateBackgroundProperties() {
-    // backgroundActive: applica background solo agli item espansi/attivi
     if (this.parentBackgroundActive && this._isExpanded) {
       this.style.setProperty('--accordion-button-bg', 'var(--bs-color-background-primary)');
       this.style.setProperty('--accordion-button-color', 'var(--bs-color-text-inverse)');
@@ -127,7 +126,6 @@ export class ItAccordionItem extends BaseComponent {
       this.style.removeProperty('--accordion-button-color');
     }
 
-    // backgroundHover: applica background hover a tutti gli item
     if (this.parentBackgroundHover) {
       this.style.setProperty('--accordion-button-hover-bg', 'var(--bs-color-background-primary)');
       this.style.setProperty('--accordion-button-hover-color', 'var(--bs-color-text-inverse)');

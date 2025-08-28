@@ -50,6 +50,18 @@ it-button::part(button) {
   }
 }
 
+// Stili per l'icona a sinistra (Bootstrap Italia style)
+.accordion-icon-left {
+  flex-shrink: 0;
+  margin-right: var(--bs-spacing-s, 0.5rem);
+  // Non ha trasformazioni - l'icona cambia da plus a minus direttamente
+}
+
+// Quando l'accordion ha left-icon attivo, nascondi l'icona normale
+.accordion.accordion-left-icon .accordion-icon {
+  display: none;
+}
+
 it-accordion-item {
   display: block;
   width: 100%;
