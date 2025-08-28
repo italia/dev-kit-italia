@@ -79,6 +79,7 @@ npm install @italia/design-web-components
 A questo punto bisogna importare i Web Components nel progetto.
 
 ```javascript
+import '@italia/design-web-components/fonts.css';
 import '@italia/design-web-components/styles.css';
 import '@italia/design-web-components/elements.js';
 
@@ -97,6 +98,7 @@ npm install @italia/button
 ```
 
 ```javascript
+import '@italia/design-web-components/fonts.css';
 import '@italia/design-web-components/styles.css';
 import '@italia/button/it-button.js';
 

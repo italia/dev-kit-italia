@@ -9,21 +9,21 @@ import styles from './icon.scss';
 export class ItIcon extends BaseComponent {
   static styles = styles;
 
-  @property({ type: String }) size?: Sizes;
+  @property({ type: String, reflect: true }) size?: Sizes;
 
   @property({ type: String }) name?: AvailableIcons;
 
-  @property({ type: String }) color?: Colors;
+  @property({ type: String, reflect: true }) color?: Colors;
 
   // @property({ type: String }) background?: Colors;
 
-  @property({ type: String }) align?: Alignments = 'middle';
+  @property({ type: String, reflect: true }) align?: Alignments = 'middle';
 
   @property({ type: String, reflect: true }) label = '';
 
-  @property({ type: Boolean }) padded = false;
+  @property({ type: Boolean, reflect: true }) padded = false;
 
-  @property({ type: String }) src?: string;
+  @property({ type: String, reflect: true }) src?: string;
 
   @state() private svgElement?: HTMLElement;
 

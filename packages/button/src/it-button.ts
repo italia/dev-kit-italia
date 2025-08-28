@@ -15,17 +15,17 @@ export class ItButton extends BaseComponent {
 
   @query('button') private _nativeButton!: HTMLButtonElement;
 
-  @property({ type: String }) type = 'button';
+  @property({ type: String, reflect: true }) type = 'button';
 
-  @property({ type: String }) variant: Variants = '';
+  @property({ type: String, reflect: true }) variant: Variants = '';
 
-  @property({ type: String }) size: Sizes = '';
+  @property({ type: String, reflect: true }) size: Sizes = '';
 
-  @property({ type: Boolean }) outline = false;
+  @property({ type: Boolean, reflect: true }) outline = false;
 
-  @property({ type: Boolean }) block = false;
+  @property({ type: Boolean, reflect: true }) block = false;
 
-  @property({ type: Boolean }) icon = false;
+  @property({ type: Boolean, reflect: true }) icon = false;
 
   @property({ type: String }) value = '';
 

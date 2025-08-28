@@ -1,5 +1,5 @@
 ---
-'@italia/input': major
+'@italia/input': minor
 '@italia/globals': minor
 '@italia/i18n': minor
 '@italia/button': patch
