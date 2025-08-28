@@ -1,0 +1,104 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
+@import 'bootstrap-italia/src/scss/base/transitions';
+@import 'bootstrap-italia/src/scss/components/accordion';
+@import 'bootstrap-italia/src/scss/components/type';
+
+it-button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 0 !important;
+
+  &::after {
+    content: none !important;
+  }
+
+  span {
+    flex: 1;
+  }
+}
+
+it-button::part(button) {
+  display: flex !important;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+  background-color: var(--accordion-button-bg, transparent);
+  color: var(--accordion-button-color, inherit);
+  text-align: left;
+
+  &:hover {
+    background-color: var(--accordion-button-hover-bg, var(--accordion-button-bg, transparent));
+    color: var(--accordion-button-hover-color, var(--accordion-button-color, inherit));
+  }
+}
+
+// Stili per l'icona dell'accordion
+.accordion-icon {
+  flex-shrink: 0;
+  margin-left: auto;
+  transform: scaleY(-1); // Freccia verso il basso di default
+  transition: transform 0.3s ease;
+
+  &.expanded {
+    transform: scaleY(1); // Freccia verso l'alto quando è espanso
+  }
+}
+
+it-accordion-item {
+  display: block;
+  width: 100%;
+}
+
+.accordion-header it-button::part(button):not(.collapsed):after {
+  transform: scaleY(1);
+}
+
+.accordion-header {
+  display: flex;
+}
+
+.accordion-collapse {
+  --collapse-duration: 0.35s;
+  --collapse-target-height: 0px;
+
+  &.collapse:not(.show) {
+    display: none;
+    // animation: cleanup-close var(--collapse-duration) ease forwards;
+  }
+
+  &.collapsing {
+    display: block;
+    overflow: hidden;
+    height: var(--collapse-target-height);
+    transition: height var(--collapse-duration) ease;
+  }
+
+  &.collapse.show {
+    display: block;
+    height: auto;
+    // animation: cleanup-open var(--collapse-duration) ease forwards;
+  }
+
+  // Clean up on transition end
+  &.collapsing.show {
+    height: var(--collapse-target-height);
+  }
+}
+
+// @keyframes cleanup-close {
+//   to {
+//     height: 0;
+//   }
+// }
+
+// @keyframes cleanup-open {
+//   to {
+//     height: auto;
+//   }
+// }

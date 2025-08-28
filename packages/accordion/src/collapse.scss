@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+.collapse-wrapper {
+  width: 100%;
+}
+
+.collapse-content {
+  overflow: hidden;
+  height: 0;
+  transition: height 0.35s ease;
+}
+
+:host([expanded]) .collapse-content {
+  // Height will be managed by JavaScript during animation
+}

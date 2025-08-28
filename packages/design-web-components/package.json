@@ -50,6 +50,7 @@
     "lit-html"
   ],
   "dependencies": {
+    "@italia/accordion": "workspace:^",
     "@italia/button": "workspace:^",
     "@italia/icon": "workspace:^",
     "@italia/video": "workspace:^",
