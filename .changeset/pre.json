@@ -10,9 +10,12 @@
     "@italia/test-config": "0.0.0",
     "@italia/typescript-config": "0.0.0",
     "@italia/video": "0.0.0",
-    "@italia/i18n": "0.0.0"
+    "@italia/i18n": "0.0.0",
+    "@italia/input": "0.0.0"
   },
   "changesets": [
-    "legal-tips-invite"
+    "eight-tips-rest",
+    "legal-tips-invite",
+    "witty-deer-love"
   ]
 }
