@@ -1,5 +1,9 @@
 import { BaseComponent, setAttributes } from '@italia/globals';
+<<<<<<< HEAD
 import { html } from 'lit';
+=======
+import { html, PropertyValues } from 'lit';
+>>>>>>> main
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { type Sizes, type Variants } from './types.js';
@@ -13,19 +17,29 @@ export class ItButton extends BaseComponent {
     return true;
   }
 
-  @query('button') private _nativeButton!: HTMLButtonElement;
+  @query('button')
+  private _nativeButton!: HTMLButtonElement;
 
-  @property({ type: String }) type = 'button';
+  @property({ type: String })
+  private _buttonClasses = '';
 
-  @property({ type: String }) variant: Variants = '';
+  @property({ type: String, reflect: true })
+  type = 'button';
 
-  @property({ type: String }) size: Sizes = '';
+  @property({ type: String, reflect: true })
+  variant: Variants = '';
 
-  @property({ type: Boolean }) outline = false;
+  @property({ type: String, reflect: true })
+  size: Sizes = '';
 
-  @property({ type: Boolean }) block = false;
+  @property({ type: Boolean, reflect: true })
+  outline = false;
 
-  @property({ type: Boolean }) icon = false;
+  @property({ type: Boolean, reflect: true })
+  block = false;
+
+  @property({ type: Boolean, reflect: true })
+  icon = false;
 
   @property({ type: String }) value = '';
 

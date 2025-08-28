@@ -334,8 +334,6 @@ export const IconeDisponibili: Story = {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
           gap: 16px;
-          font-family: 'Titillium Web', sans-serif;
-          font-size: 16px;
         }
 
         .icon-item {

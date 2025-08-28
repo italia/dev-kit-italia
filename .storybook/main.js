@@ -40,6 +40,8 @@ const config = {
 
     // Aggiungi manualmente pacchetti sospetti
     config.optimizeDeps.exclude.push('@storybook/addon-essentials/docs/mdx-react-shim');
+    config.optimizeDeps.exclude.push('@storybook/addon-docs');
+    config.optimizeDeps.exclude.push('@mdx-js/react');
     return config;
   },
 };

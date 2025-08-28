@@ -18,9 +18,27 @@ export enum VALIDATION_STATUS {
   NO_ERROR = '',
 
   /**
+   * One indicating that the value is invalid (generic).
+   */
+  INVALID = 'invalid',
+
+  /**
    * One indicating missing required value.
    */
   ERROR_REQUIRED = 'required',
+  /**
+   * One indicating that the value does not match the pattern.
+   */
+  PATTERN = 'pattern',
+
+  /**
+   * One indicating that the value is shorter than the minimum length.
+   */
+  MINLENGTH = 'minlength',
+  /**
+   * One indicating that the value is less than the maximum length.
+   */
+  MAXLENGTH = 'maxlength',
 }
 
 /**
@@ -36,24 +54,21 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
      * @returns The form validation error mesasages associated with the given status.
      * @protected
      */
-    _getValidityMessage(state: string) {
+    _getValidityMessage(state: string, translations: Record<string, string>) {
       return {
         [VALIDATION_STATUS.NO_ERROR]: '',
-        [VALIDATION_STATUS.ERROR_REQUIRED]: this.requiredValidityMessage,
+        [VALIDATION_STATUS.INVALID]: translations[VALIDATION_STATUS.INVALID],
+        [VALIDATION_STATUS.ERROR_REQUIRED]: translations[VALIDATION_STATUS.ERROR_REQUIRED],
+        [VALIDATION_STATUS.PATTERN]: translations[VALIDATION_STATUS.PATTERN],
+        [VALIDATION_STATUS.MINLENGTH]: translations[VALIDATION_STATUS.MINLENGTH].replace(
+          '{minlength}',
+          this.minlength.toString(),
+        ),
+        [VALIDATION_STATUS.MAXLENGTH]: translations[VALIDATION_STATUS.MAXLENGTH].replace(
+          '{maxlength}',
+          this.maxlength.toString(),
+        ),
       }[state];
-    }
-
-    // Not using TypeScript `protected` due to: microsoft/TypeScript#17744
-    // Using `string` instead of `VALIDATION_STATUS` until we can require TypeScript 3.8
-    /**
-     * Checks if the value meets the constraints.
-     *
-     * @returns `VALIDATION_STATUS.NO_ERROR` if the value meets the constraints. Some other values otherwise.
-     * @protected
-     */
-    _testValidity(): string {
-      const { required, value } = this;
-      return required && !value ? VALIDATION_STATUS.ERROR_REQUIRED : VALIDATION_STATUS.NO_ERROR;
     }
 
     /**
@@ -67,11 +82,6 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
     abstract required: boolean;
 
     /**
-     * The special validity message for `required`.
-     */
-    abstract requiredValidityMessage: string;
-
-    /**
      * The validity message.
      */
     abstract validityMessage: string;
@@ -79,34 +89,82 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
     /**
      * The value.
      */
-    abstract value: string;
+    abstract _value: string;
+
+    /**
+     * The pattern to match to be valid.
+     */
+    abstract pattern?: string;
+
+    /**
+     * `true` if the element is disabled.
+     */
+    abstract disabled: boolean;
+
+    /**
+     * The minimum length of the value.
+     */
+    abstract minlength: number;
+
+    /**
+     * The maximum length of the value.
+     */
+    abstract maxlength: number;
+
+    /**
+     * External validation.
+     */
+    abstract customValidation: boolean;
+
+    /**
+     * Field is touched
+     */
+    _touched: boolean = false;
 
     /**
      * Checks if the value meets the constraints.
-     * Fires cancelable `invalid` event if it doesn't.
      *
      * @returns `true` if the value meets the constraints. `false` otherwise.
      */
-    checkValidity() {
-      const status = this._testValidity();
-      if (status !== VALIDATION_STATUS.NO_ERROR) {
-        if (
-          this.dispatchEvent(
-            new CustomEvent('invalid', {
-              bubbles: false,
-              cancelable: true,
-              composed: false,
-            }),
-          )
-        ) {
-          this.invalid = true;
-          this.validityMessage = this._getValidityMessage(status) as string;
-        }
-        return false;
+    _checkValidity(translations: Record<string, string>, htmlValidity: boolean = true): boolean | undefined {
+      // htmlValidity = this.inputElement.checkValidity(); //check browser validity
+      if (this.customValidation) {
+        return undefined;
       }
-      this.invalid = false;
-      this.validityMessage = '';
-      return true;
+      let validity = htmlValidity;
+      let message: string = validity
+        ? (this._getValidityMessage(VALIDATION_STATUS.NO_ERROR, translations) as string)
+        : (this._getValidityMessage(VALIDATION_STATUS.INVALID, translations) as string);
+
+      if (this.required || (this._value && (this.pattern || this.minlength > 0 || this.maxlength > 0))) {
+        if (this.pattern) {
+          const regex = new RegExp(`^${this.pattern}$`, 'u');
+          validity = regex.test(this._value.toString());
+          if (!validity) {
+            message = this._getValidityMessage(VALIDATION_STATUS.PATTERN, translations) as string;
+          }
+        }
+        if (typeof this.minlength !== 'undefined' && this.minlength > 0) {
+          validity = validity && this._value.toString().length >= this.minlength;
+          if (!validity) {
+            message = this._getValidityMessage(VALIDATION_STATUS.MINLENGTH, translations) as string;
+          }
+        }
+        if (typeof this.maxlength !== 'undefined' && this.maxlength > 0) {
+          validity = validity && this._value.toString().length <= this.maxlength;
+          if (!validity) {
+            message = this._getValidityMessage(VALIDATION_STATUS.MAXLENGTH, translations) as string;
+          }
+        }
+        if (this.required && !this._value) {
+          validity = false;
+          message = this._getValidityMessage(VALIDATION_STATUS.ERROR_REQUIRED, translations) as string;
+        }
+      }
+
+      this.invalid = !validity;
+      this.validityMessage = message;
+      return validity;
     }
 
     /**
@@ -117,6 +175,55 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
     setCustomValidity(validityMessage: string) {
       this.invalid = Boolean(validityMessage);
       this.validityMessage = validityMessage;
+    }
+
+    _handleBlur() {
+      this._touched = true;
+      this.dispatchEvent(new FocusEvent('blur', { bubbles: true, composed: true }));
+    }
+
+    _handleFocus() {
+      this.dispatchEvent(new FocusEvent('focus', { bubbles: true, composed: true }));
+    }
+
+    _handleClick() {
+      this.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
+    }
+
+    _handleChange(e: Event) {
+      const target = e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+      let value: unknown;
+
+      if (target instanceof HTMLInputElement) {
+        switch (target.type) {
+          case 'checkbox':
+          case 'radio':
+            value = target.checked;
+            break;
+          case 'file':
+            value = target.files; // FileList
+            break;
+          default:
+            value = target.value;
+        }
+      } else if (target instanceof HTMLSelectElement) {
+        if (target.multiple) {
+          value = Array.from(target.selectedOptions).map((o) => o.value);
+        } else {
+          value = target.value;
+        }
+      } else {
+        // textarea o altri input con value
+        value = (target as any).value;
+      }
+
+      this.dispatchEvent(
+        new CustomEvent('change', {
+          detail: { value, el: target },
+          bubbles: true,
+          composed: true,
+        }),
+      );
     }
   }
   return ValidityMixinImpl;
