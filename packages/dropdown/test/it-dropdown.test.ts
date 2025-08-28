@@ -1,6 +1,7 @@
 /// <reference types="mocha"/>
 
 import { fixture, html, expect, oneEvent } from '@open-wc/testing';
+import '@italia/button';
 import '@italia/dropdown';
 import '@italia/popover';
 import type { ItDropdown } from '@italia/dropdown';
@@ -9,7 +10,7 @@ describe('<it-dropdown>', () => {
   describe('Accessibility', () => {
     it('is accessible', async () => {
       const el = await fixture<ItDropdown>(
-        html`<it-dropdown>
+        html`<it-dropdown label="Apri menu">
           <it-dropdown-item href="#">Azione 1</it-dropdown-item>
           <it-dropdown-item href="#">Azione 2</it-dropdown-item>
           <it-dropdown-item href="#">Azione 3</it-dropdown-item>
@@ -27,8 +28,8 @@ describe('<it-dropdown>', () => {
       );
       await el.updateComplete;
 
-      const button = el.shadowRoot!.querySelector('it-button')!;
-      expect(button.getAttribute('aria-haspopup')).to.equal('true');
+      const button = el.shadowRoot!.querySelector('it-button')!.shadowRoot!.querySelector('button')!;
+      expect(button.getAttribute('aria-haspopup')).to.equal('menu');
       expect(button.getAttribute('aria-expanded')).to.equal('false');
 
       const menu = el.shadowRoot!.querySelector('.dropdown-menu')!;
@@ -38,26 +39,18 @@ describe('<it-dropdown>', () => {
 
     it('sets correct role attributes based on role property', async () => {
       const el = await fixture<ItDropdown>(
-        html`<it-dropdown role="menu">
+        html`<it-dropdown it-role="tree" label="Test menu">
           <it-dropdown-item href="#">Item 1</it-dropdown-item>
         </it-dropdown>`,
       );
       await el.updateComplete;
 
       const list = el.shadowRoot!.querySelector('ul.link-list')!;
-      expect(list.getAttribute('role')).to.equal('menu');
+      expect(list.getAttribute('role')).to.equal('tree');
     });
   });
 
   describe('Basic functionality', () => {
-    it('renders with default label', async () => {
-      const el = await fixture<ItDropdown>(html`<it-dropdown></it-dropdown>`);
-      await el.updateComplete;
-
-      const button = el.shadowRoot!.querySelector('it-button')!;
-      expect(button.textContent?.trim()).to.include('Apri menu');
-    });
-
     it('renders with custom label', async () => {
       const el = await fixture<ItDropdown>(html`<it-dropdown label="Custom Menu"></it-dropdown>`);
       await el.updateComplete;
@@ -68,7 +61,7 @@ describe('<it-dropdown>', () => {
 
     it('renders dropdown items', async () => {
       const el = await fixture<ItDropdown>(
-        html`<it-dropdown>
+        html`<it-dropdown label="Test menu">
           <it-dropdown-item href="#">Azione 1</it-dropdown-item>
           <it-dropdown-item href="#">Azione 2</it-dropdown-item>
           <it-dropdown-item href="#">Azione 3</it-dropdown-item>
@@ -84,13 +77,13 @@ describe('<it-dropdown>', () => {
   describe('Popover behavior', () => {
     it('toggles popover on trigger click and updates aria-expanded', async () => {
       const el = await fixture<ItDropdown>(
-        html`<it-dropdown>
+        html`<it-dropdown label="Test menu">
           <it-dropdown-item href="#">Azione 1</it-dropdown-item>
         </it-dropdown>`,
       );
       await el.updateComplete;
 
-      const button = el.shadowRoot!.querySelector('it-button')!;
+      const button = el.shadowRoot!.querySelector('it-button')!.shadowRoot!.querySelector('button')!;
       const menu = el.shadowRoot!.querySelector('.dropdown-menu')!;
 
       // Initially closed
@@ -114,13 +107,13 @@ describe('<it-dropdown>', () => {
 
     it('does not open popover when disabled', async () => {
       const el = await fixture<ItDropdown>(
-        html`<it-dropdown disabled>
+        html`<it-dropdown disabled label="Test menu">
           <it-dropdown-item href="#">Azione 1</it-dropdown-item>
         </it-dropdown>`,
       );
       await el.updateComplete;
 
-      const button = el.shadowRoot!.querySelector('it-button')!;
+      const button = el.shadowRoot!.querySelector('it-button')!.shadowRoot!.querySelector('button')!;
       const menu = el.shadowRoot!.querySelector('.dropdown-menu')!;
 
       expect(button.hasAttribute('aria-disabled')).to.be.true;
@@ -135,7 +128,7 @@ describe('<it-dropdown>', () => {
 
   describe('Button variants', () => {
     it('applies primary variant by default', async () => {
-      const el = await fixture<ItDropdown>(html`<it-dropdown></it-dropdown>`);
+      const el = await fixture<ItDropdown>(html`<it-dropdown label="Test menu"></it-dropdown>`);
       await el.updateComplete;
 
       const button = el.shadowRoot!.querySelector('it-button')!;
@@ -147,7 +140,7 @@ describe('<it-dropdown>', () => {
 
       for (const variant of variants) {
         // eslint-disable-next-line no-await-in-loop
-        const el = await fixture<ItDropdown>(html`<it-dropdown variant="${variant}"></it-dropdown>`);
+        const el = await fixture<ItDropdown>(html`<it-dropdown variant="${variant}" label="Test menu"></it-dropdown>`);
         // eslint-disable-next-line no-await-in-loop
         await el.updateComplete;
 
@@ -190,22 +183,6 @@ describe('<it-dropdown>', () => {
 
       const icon = el.shadowRoot!.querySelector('it-icon')!;
       expect(icon.getAttribute('name')).to.equal('it-collapse');
-    });
-
-    it('uses primary color for light variant', async () => {
-      const el = await fixture<ItDropdown>(html`<it-dropdown variant="light"></it-dropdown>`);
-      await el.updateComplete;
-
-      const icon = el.shadowRoot!.querySelector('it-icon')!;
-      expect(icon.getAttribute('color')).to.equal('primary');
-    });
-
-    it('uses white color for non-light variants', async () => {
-      const el = await fixture<ItDropdown>(html`<it-dropdown variant="primary"></it-dropdown>`);
-      await el.updateComplete;
-
-      const icon = el.shadowRoot!.querySelector('it-icon')!;
-      expect(icon.getAttribute('color')).to.equal('white');
     });
   });
 

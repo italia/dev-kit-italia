@@ -41,12 +41,6 @@ export class ItDropdownItem extends BaseComponent {
     if (this.disabled) event.preventDefault();
   }
 
-  protected override updated() {
-    if (this.itRole && ['menuitem', 'option', 'treeitem'].includes(this.itRole)) {
-      this.setAttribute('role', 'none');
-    }
-  }
-
   override render() {
     if (this.separator) {
       return html`<li><span class="divider" role="separator"></span></li>`;
@@ -70,7 +64,12 @@ export class ItDropdownItem extends BaseComponent {
     `;
 
     return html`
-      <li role="none" class=${ifDefined(itemClasses || undefined)}>
+      <li
+        role="${ifDefined(
+          this.itRole === 'menuitem' || this.itRole === 'option' || this.itRole === 'treeitem' ? 'none' : undefined,
+        )}"
+        class=${ifDefined(itemClasses || undefined)}
+      >
         ${this.href
           ? html`<a
               class=${linkClasses}

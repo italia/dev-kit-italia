@@ -33,10 +33,14 @@ export class ItPopover extends BaseComponent {
 
   private _setChildrenProperties() {
     if (this._triggerElement && this._triggerElement.tagName === 'IT-BUTTON') {
-      this._triggerElement?.setAttribute('it-aria-haspopup', 'true');
+      if (!this._triggerElement.hasAttribute('it-aria-haspopup')) {
+        this._triggerElement?.setAttribute('it-aria-haspopup', 'true');
+      }
       (this._triggerElement as ItButton).expanded = this.open;
     } else {
-      this._triggerElement?.setAttribute('aria-haspopup', 'true');
+      if (!this._triggerElement?.hasAttribute('aria-haspopup')) {
+        this._triggerElement?.setAttribute('aria-haspopup', 'true');
+      }
       this._triggerElement?.setAttribute('aria-expanded', String(this.open));
     }
   }

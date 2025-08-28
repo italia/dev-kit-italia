@@ -18,10 +18,10 @@
 
   .arrow {
     z-index: -1;
-    width: var(--bs-dropdown-notch-base-size);
-    height: var(--bs-dropdown-notch-base-size);
-    border-radius: var(--bs-dropdown-border-radius);
-    background-color: var(--bs-dropdown-background);
+    width: var(--#{$prefix}-dropdown-notch-base-size);
+    height: var(--#{$prefix}-dropdown-notch-base-size);
+    border-radius: var(--#{$prefix}-dropdown-border-radius);
+    background-color: var(--#{$prefix}-dropdown-background);
   }
 
   @if $dropdown-padding-y == 0 {
@@ -42,6 +42,8 @@
 :host {
   position: relative;
   display: inline-block;
+
+  --#{$prefix}icon-default: currentColor;
 }
 
 it-button,

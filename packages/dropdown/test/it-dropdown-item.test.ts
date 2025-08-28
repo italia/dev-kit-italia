@@ -1,3 +1,5 @@
+/// <reference types="mocha"/>
+
 import { fixture, html, expect } from '@open-wc/testing';
 import '@italia/dropdown';
 import type { ItDropdown } from '@italia/dropdown';
@@ -140,7 +142,7 @@ describe('<it-dropdown-item>', () => {
   describe('Role attributes', () => {
     it('sets menuitem role when parent has menu role', async () => {
       const dropdown = await fixture<ItDropdown>(
-        html`<it-dropdown role="menu">
+        html`<it-dropdown it-role="menu">
           <it-dropdown-item href="#" id="test-item">Item</it-dropdown-item>
         </it-dropdown>`,
       );
@@ -153,11 +155,24 @@ describe('<it-dropdown-item>', () => {
       expect(link.getAttribute('role')).to.equal('menuitem');
     });
 
+    it('sets treeitem role when parent has tree role', async () => {
+      const dropdown = await fixture<ItDropdown>(
+        html`<it-dropdown it-role="tree">
+          <it-dropdown-item href="#" id="test-item">Item</it-dropdown-item>
+        </it-dropdown>`,
+      );
+      await dropdown.updateComplete;
+
+      const item = dropdown.querySelector('#test-item') as ItDropdownItem;
+      await item.updateComplete;
+
+      const link = item.shadowRoot!.querySelector('a')!;
+      expect(link.getAttribute('role')).to.equal('treeitem');
+    });
+
     it('sets option role when parent has listbox role', async () => {
       const dropdown = await fixture<ItDropdown>(
-        // TODO FIX this
-        // eslint-disable-next-line lit-a11y/accessible-name
-        html`<it-dropdown role="listbox">
+        html`<it-dropdown it-role="listbox">
           <it-dropdown-item href="#" id="test-item">Item</it-dropdown-item>
         </it-dropdown>`,
       );
@@ -172,7 +187,7 @@ describe('<it-dropdown-item>', () => {
 
     it('does not set specific role when parent has list role', async () => {
       const dropdown = await fixture<ItDropdown>(
-        html`<it-dropdown>
+        html`<it-dropdown it-role="list">
           <it-dropdown-item href="#" id="test-item">Item</it-dropdown-item>
         </it-dropdown>`,
       );

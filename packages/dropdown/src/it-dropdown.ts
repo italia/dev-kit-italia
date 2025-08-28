@@ -38,6 +38,8 @@ export class ItDropdown extends BaseComponent {
 
   private _buttonId = this.generateId('it-dropdown');
 
+  private _menuId = this.generateId('it-dropdown-menu');
+
   @query('slot:not([name])') private _slotEl!: HTMLSlotElement;
 
   private _ariaNav = new AriaKeyboardListController(this);
@@ -157,12 +159,13 @@ export class ItDropdown extends BaseComponent {
           @keydown=${this._onKeyDown}
           class="dropdown-toggle"
           exportparts="focusable"
+          it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
+          it-aria-controls=${this._menuId}
         >
           ${this.alignment.startsWith('left')
             ? html`<it-icon
                 name=${this._popoverOpen ? 'it-collapse' : 'it-expand'}
                 class="dropdown-toggle-icon left"
-                color=${this.variant === 'light' ? 'primary' : 'white'}
                 size="sm"
               ></it-icon>`
             : ''}
@@ -174,7 +177,6 @@ export class ItDropdown extends BaseComponent {
                   right: this.alignment.startsWith('right'),
                   top: this.alignment.startsWith('top'),
                 })}
-                color=${this.variant === 'light' ? 'primary' : 'white'}
                 size="sm"
               ></it-icon>`
             : ''}
@@ -191,8 +193,9 @@ export class ItDropdown extends BaseComponent {
           <div class="link-list-wrapper">
             <slot name="header"></slot>
             <ul
+              id=${this._menuId}
               class="link-list"
-              role=${this.itRole}
+              role=${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}
               @keydown=${this._onKeyDown}
               aria-orientation=${ifDefined(this.fullWidth ? 'horizontal' : undefined)}
             >
