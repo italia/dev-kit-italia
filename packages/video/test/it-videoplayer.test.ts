@@ -30,7 +30,7 @@ describe('ItVideo', () => {
     const translations = { en: { 'Play Video': 'Play Video' } };
     const el = await fixture<ItVideo>(
       html`<it-video
-        language="en"
+        lang="en"
         translations="${translations}"
         src="https://vjs.zencdn.net/v/oceans.webm"
         type="video/mp4"

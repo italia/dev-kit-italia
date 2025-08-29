@@ -30,7 +30,8 @@ export class ItVideo extends BaseLocalizedComponent {
 
   @property({ type: Object }) options?: Record<string, unknown> = {}; // https://videojs.com/guides/options/
 
-  @property({ type: String }) language = 'it';
+  @property({ type: String, attribute: 'lang', reflect: true })
+  language = 'it';
 
   @property({ type: Object, reflect: true }) translations: VideoJSTranslations = { it: itLang };
 
@@ -218,6 +219,14 @@ export class ItVideo extends BaseLocalizedComponent {
   firstUpdated() {
     window.VIDEOJS_NO_DYNAMIC_STYLE = true; // Disabilita lo stile dinamico di Video.js
     this.initVideoPlayer();
+  }
+
+  willUpdate(changedProperties: Map<string, any>) {
+    super.willUpdate(changedProperties);
+    const changedLang = changedProperties.has('language');
+    if (changedLang && this.player) {
+      this.player.language(this.language);
+    }
   }
 
   render() {
