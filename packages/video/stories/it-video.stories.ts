@@ -6,7 +6,7 @@ import '@italia/video';
 import '@italia/button';
 import itLang from '../src/locales/videojs/it.js';
 import i18nIT from '../src/locales/it.js';
-import type { ConsentOptions, Track, VideoJSTranslations, Locale } from '../src/types.ts';
+import type { ConsentOptions, Track, VideoJSTranslations } from '../src/types.ts';
 
 interface VideoProps {
   src: string;
@@ -14,7 +14,7 @@ interface VideoProps {
   type?: string;
   options?: object;
   translations?: VideoJSTranslations;
-  language?: Locale;
+  lang?: string;
   track?: Track;
   consentOptions?: ConsentOptions;
   initPlugins: string;
@@ -29,7 +29,7 @@ const renderComponent = (params: any) => html`
     type="${ifDefined(params.type)}"
     options="${params.options ? JSON.stringify(params.options) : nothing}"
     translations="${params.translations ? JSON.stringify(params.translations) : nothing}"
-    language="${ifDefined(params.language)}"
+    lang="${ifDefined(params.lang)}"
     track="${params.track ? JSON.stringify(params.track) : nothing}"
     >${params.slot}</it-video
   >
@@ -47,7 +47,7 @@ const meta = {
     options: undefined,
     track: [],
     consentOptions: {},
-    language: 'it',
+    lang: 'it',
     translations: { it: itLang as any },
     initPlugins: '',
   },
@@ -80,9 +80,10 @@ const meta = {
         },
       },
     },
-    language: {
-      control: 'text',
-      description: "Lingua del player di cui verrano usate le corrispondenti 'transaltions'",
+    lang: {
+      control: 'select',
+      options: ['it', 'en', 'fr', 'de', 'es'],
+      description: "Lingua del player di cui verrano usate le corrispondenti 'translations'",
       table: { defaultValue: { summary: 'it' } },
     },
     translations: {
@@ -445,7 +446,7 @@ I testi e l'icona sono modificabili attraverso il sistema di traduzioni. Vedi la
       ...params,
       src: 'https://youtu.be/_0j7ZQ67KtY',
       type: undefined,
-      translations: undefined,
+      // translations: undefined,
     })}`,
 };
 
