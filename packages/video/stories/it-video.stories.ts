@@ -161,7 +161,7 @@ sovrascrivere le traduzioni italiane pre-impostate.
 Per utilizzare le icone del player, è necessario includere il font \`VideoJS.woff\` nella tua applicazione. Puoi farlo aggiungendo il css compilato di design-web-components nel tuo sorgente HTML:
 
 \`\`\`html
-<link rel="stylesheet" href="design-web-components/dist/design-web-components.css" />
+<link rel="stylesheet" href="design-web-components/dist/styles.css" />
 \`\`\`
 oppure se stai usando SCSS puoi definire il font direttamente nel tuo file SCSS:
 
