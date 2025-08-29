@@ -1,20 +1,49 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { AppRoutes } from './routes';
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="app-header">
+    <div>
+      <a href="https://vite.dev" target="_blank">
+        <img src="/vite.svg" class="logo" alt="Vite logo" />
+      </a>
+      <a href="https://vuejs.org/" target="_blank">
+        <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+      </a>
+    </div>
+    <nav class="app-nav">
+      <router-link v-for="route in AppRoutes" :key="route.path" :to="route.path">
+        {{ route.name }}
+      </router-link>
+    </nav>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <router-view></router-view>
 </template>
 
+<style>
+section {
+  margin: 4rem 0;
+}
+.flex {
+  display: flex;
+  align-items: start;
+  padding: 0.3rem 0;
+  gap: 0.6rem;
+}
+</style>
 <style scoped>
+.app-header {
+  border-bottom: 1px solid currentColor;
+  margin-bottom: 2rem;
+}
+.app-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
