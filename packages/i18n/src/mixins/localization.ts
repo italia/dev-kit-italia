@@ -49,9 +49,9 @@ const LocalizeMixin = <T extends Constructor<ReactiveControllerHost & HTMLElemen
     public localize: LocalizeController = new LocalizeController(this);
 
     // Provide default values to avoid definite assignment errors and avoid decorators
-    dir: string = '';
-
-    lang: string = '';
+    // commentati perchè danno problemi su React.js. Sono attributi nativi, e assegnare un valore di default a react da fastidio
+    // dir: string = '';
+    // lang: string = '';
 
     /**
      * Restituisce tutta l'utility di traduzione
