@@ -31,16 +31,14 @@ const Video = () => {
       'descriptions off': 'Descrizioni disattivate',
       'Audio Track': 'Traccia audio',
       'Volume Level': 'Livello del volume',
-      'You aborted the media playback':
-        'La riproduzione del filmato è stata interrotta.',
+      'You aborted the media playback': 'La riproduzione del filmato è stata interrotta.',
       'A network error caused the media download to fail part-way.':
         'Il download del filmato è stato interrotto a causa di un problema rete.',
       'The media could not be loaded, either because the server or network failed or because the format is not supported.':
         'Il filmato non può essere caricato a causa di un errore nel server o nella rete o perché il formato non viene supportato.',
       'The media playback was aborted due to a corruption problem or because the media used features your browser did not support.':
         'La riproduzione del filmato è stata interrotta a causa di un file danneggiato o per l’utilizzo di impostazioni non supportate dal browser.',
-      'No compatible source was found for this media.':
-        'Non ci sono fonti compatibili per questo filmato.',
+      'No compatible source was found for this media.': 'Non ci sono fonti compatibili per questo filmato.',
       'The media is encrypted and we do not have the keys to decrypt it.':
         'Il contenuto multimediale è criptato e non disponiamo delle chiavi per decifrarlo.',
       'Play Video': 'Riproduci il video',
@@ -50,12 +48,9 @@ const Video = () => {
       'This is a modal window': 'Questa è una finestra di dialogo',
       'This modal can be closed by pressing the Escape key or activating the close button.':
         'Questa finestra di dialogo può essere chiusa premendo sul tasto Esc o attivando il pulsante di chiusura.',
-      ', opens captions settings dialog':
-        ', aprire i parametri della trascrizione dei sottotitoli',
-      ', opens subtitles settings dialog':
-        ', aprire i parametri dei sottotitoli',
-      ', opens descriptions settings dialog':
-        ', aprire i parametri delle descrizioni',
+      ', opens captions settings dialog': ', aprire i parametri della trascrizione dei sottotitoli',
+      ', opens subtitles settings dialog': ', aprire i parametri dei sottotitoli',
+      ', opens descriptions settings dialog': ', aprire i parametri delle descrizioni',
       ', selected': ', selezionato',
       'captions settings': 'Parametri sottotitoli non udenti',
       'subtitles settings': 'Parametri sottotitoli',
@@ -86,11 +81,9 @@ const Video = () => {
       'Monospace Serif': 'Serif monospaziato',
       'Small Caps': 'Maiuscoletto',
       Reset: 'Reinizializza',
-      'restore all settings to the default values':
-        'Ripristina i valori predefiniti per tutti i parametri',
+      'restore all settings to the default values': 'Ripristina i valori predefiniti per tutti i parametri',
       Done: 'Fatto',
-      'Caption Settings Dialog':
-        'Finestra di dialogo dei parametri della trascrizione dei sottotitoli',
+      'Caption Settings Dialog': 'Finestra di dialogo dei parametri della trascrizione dei sottotitoli',
       'Beginning of dialog window. Escape will cancel and close the window.':
         'Inizio della finestra di dialogo. Il tasto Esc annullerà l’operazione e chiuderà la finestra.',
       'End of dialog window.': 'Fine della finestra di dialogo.',
@@ -105,17 +98,12 @@ const Video = () => {
       'Skip backward {1} seconds': 'Indietro {1} secondi',
     },
   };
+
   return (
     <>
       <h1>it-video</h1>
       <div>
-        <it-video
-          src="https://vjs.zencdn.net/v/oceans.webm"
-          poster=""
-          type="video/mp4"
-          translations={translations}
-          language="it"
-        ></it-video>
+        <it-video src='https://vjs.zencdn.net/v/oceans.webm' lang='en'></it-video>
       </div>
       {/* <section>
         <h2>Varianti di colore</h2>
