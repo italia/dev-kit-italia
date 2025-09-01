@@ -12,14 +12,14 @@ const clickHandler = () => {
   <it-button variant="primary" size="sm" type="button"> Testo del pulsante </it-button>
   <section>
     <h2>Varianti di colore</h2>
-    <div className="flex p-0">
-      <div className="flex">
+    <div class="flex p-0">
+      <div class="flex">
         <it-button variant="primary" size="sm" type="button"> Primary </it-button>
 
         <it-button variant="primary" size="sm" aria-disabled="true" type="button"> Primary disabled </it-button>
       </div>
 
-      <div className="flex">
+      <div class="flex">
         <it-button variant="primary" outline="{true}" size="sm" type="button"> Primary outline </it-button>
 
         <it-button variant="primary" outline="{true}" size="sm" aria-disabled="true" type="button">
@@ -27,14 +27,14 @@ const clickHandler = () => {
         </it-button>
       </div>
     </div>
-    <div className="flex p-0">
-      <div className="flex">
+    <div class="flex p-0">
+      <div class="flex">
         <it-button variant="secondary" size="sm" type="button"> Secondary </it-button>
 
         <it-button variant="secondary" size="sm" aria-disabled="true" type="button"> Secondary disabled </it-button>
       </div>
 
-      <div className="flex">
+      <div class="flex">
         <it-button variant="secondary" outline="{true}" size="sm" type="button"> Secondary outline </it-button>
 
         <it-button variant="secondary" outline="{true}" size="sm" aria-disabled="true" type="button">
@@ -42,14 +42,14 @@ const clickHandler = () => {
         </it-button>
       </div>
     </div>
-    <div className="flex p-0">
-      <div className="flex">
+    <div class="flex p-0">
+      <div class="flex">
         <it-button variant="success" size="sm" type="button"> Success </it-button>
 
         <it-button variant="success" size="sm" aria-disabled="true" type="button"> Success disabled </it-button>
       </div>
 
-      <div className="flex">
+      <div class="flex">
         <it-button variant="success" outline="{true}" size="sm" type="button"> Success outline </it-button>
 
         <it-button variant="success" outline="{true}" size="sm" aria-disabled="true" type="button">
@@ -57,14 +57,14 @@ const clickHandler = () => {
         </it-button>
       </div>
     </div>
-    <div className="flex p-0">
-      <div className="flex">
+    <div class="flex p-0">
+      <div class="flex">
         <it-button variant="danger" size="sm" type="button"> Danger </it-button>
 
         <it-button variant="danger" size="sm" aria-disabled="true" type="button"> Danger disabled </it-button>
       </div>
 
-      <div className="flex">
+      <div class="flex">
         <it-button variant="danger" outline="{true}" size="sm" type="button"> Danger outline </it-button>
 
         <it-button variant="danger" outline="{true}" size="sm" aria-disabled="true" type="button">
@@ -72,14 +72,14 @@ const clickHandler = () => {
         </it-button>
       </div>
     </div>
-    <div className="flex p-0">
-      <div className="flex">
+    <div class="flex p-0">
+      <div class="flex">
         <it-button variant="warning" size="sm" type="button"> Warning </it-button>
 
         <it-button variant="warning" size="sm" aria-disabled="true" type="button"> Warning disabled </it-button>
       </div>
 
-      <div className="flex">
+      <div class="flex">
         <it-button variant="warning" outline="{true}" size="sm" type="button"> Warning outline </it-button>
 
         <it-button variant="warning" outline="{true}" size="sm" aria-disabled="true" type="button">
@@ -87,8 +87,8 @@ const clickHandler = () => {
         </it-button>
       </div>
     </div>
-    <div className="flex p-0">
-      <div className="flex">
+    <div class="flex p-0">
+      <div class="flex">
         <it-button variant="link" size="sm" type="button"> Link </it-button>
 
         <it-button variant="link" size="sm" aria-disabled="true" type="button"> Link disabled </it-button>
@@ -97,31 +97,31 @@ const clickHandler = () => {
   </section>
   <section>
     <h2>Varianti di dimensione</h2>
-    <div className="flex">
+    <div class="flex">
       <it-button variant="primary" size="lg" type="button"> Primary Large </it-button>
 
       <it-button variant="secondary" size="lg" type="button"> Secondary Large </it-button>
     </div>
-    <div className="flex">
+    <div class="flex">
       <it-button variant="primary" size="sm" type="button"> Primary Small </it-button>
 
       <it-button variant="secondary" size="sm" type="button"> Secondary Small </it-button>
     </div>
-    <div className="flex">
+    <div class="flex">
       <it-button variant="primary" size="xs" type="button"> Primary Extra Small </it-button>
 
       <it-button variant="secondary" size="xs" type="button"> Secondary Extra Small </it-button>
     </div>
-    <div className="flex">
+    <div class="flex">
       <it-button variant="primary" size="sm" block="{true}" type="button"> Primary Block </it-button>
     </div>
-    <div className="flex">
+    <div class="flex">
       <it-button variant="secondary" size="sm" block="{true}" type="button"> Secondary Block </it-button>
     </div>
   </section>
   <section>
     <h2>Tipologie</h2>
-    <div className="flex">
+    <div class="flex">
       <it-button variant="primary" size="sm" type="button"> Button - Testo del pulsante </it-button>
 
       <it-button variant="primary" size="sm" type="submit"> Submit - Testo del pulsante </it-button>
@@ -131,15 +131,15 @@ const clickHandler = () => {
   </section>
   <section>
     <h2>Sfondo scuro</h2>
-    <div className="bg-dark p-4">
-      <div className="flex p-0">
-        <div className="flex">
+    <div class="bg-dark p-4">
+      <div class="flex p-0">
+        <div class="flex">
           <it-button variant="primary" size="sm" type="button"> Primary </it-button>
 
           <it-button variant="primary" size="sm" aria-disabled="true" type="button"> Primary disabled </it-button>
         </div>
 
-        <div className="flex">
+        <div class="flex">
           <it-button variant="primary" outline="{true}" size="sm" type="button"> Primary outline </it-button>
 
           <it-button variant="primary" outline="{true}" size="sm" aria-disabled="true" type="button">
@@ -147,14 +147,14 @@ const clickHandler = () => {
           </it-button>
         </div>
       </div>
-      <div className="flex p-0">
-        <div className="flex">
+      <div class="flex p-0">
+        <div class="flex">
           <it-button variant="secondary" size="sm" type="button"> Secondary </it-button>
 
           <it-button variant="secondary" size="sm" aria-disabled="true" type="button"> Secondary disabled </it-button>
         </div>
 
-        <div className="flex">
+        <div class="flex">
           <it-button variant="secondary" outline="{true}" size="sm" type="button"> Secondary outline </it-button>
 
           <it-button variant="secondary" outline="{true}" size="sm" aria-disabled="true" type="button">
@@ -162,8 +162,8 @@ const clickHandler = () => {
           </it-button>
         </div>
       </div>
-      <div className="flex p-0">
-        <div className="flex">
+      <div class="flex p-0">
+        <div class="flex">
           <it-button variant="link" size="sm" type="button"> Link </it-button>
 
           <it-button variant="link" size="sm" aria-disabled="true" type="button"> Link disabled </it-button>
@@ -173,7 +173,7 @@ const clickHandler = () => {
   </section>
   <section>
     <h2>Con icona</h2>
-    <div className="flex">
+    <div class="flex">
       <it-button variant="success" size="lg" icon="{true}" type="button">
         <it-icon name="it-star-full" color="white" size="sm"></it-icon>
         <span>Testo del pulsante</span>
@@ -197,30 +197,30 @@ const clickHandler = () => {
   </section>
   <section>
     <h2>Con icona cerchiata</h2>
-    <div className="flex">
-      <it-button className="me-2" variant="success" size="lg" icon="{true}" type="button">
-        <span className="rounded-icon">
+    <div class="flex">
+      <it-button class="me-2" variant="success" size="lg" icon="{true}" type="button">
+        <span class="rounded-icon">
           <it-icon name="it-user" color="success" size="xs"></it-icon>
         </span>
         <span>Testo del pulsante</span>
       </it-button>
 
-      <it-button className="me-2" variant="primary" icon="{true}" type="button">
-        <span className="rounded-icon" size="sm">
+      <it-button class="me-2" variant="primary" icon="{true}" type="button">
+        <span class="rounded-icon" size="sm">
           <it-icon name="it-user" color="primary" size="xs"></it-icon>
         </span>
         <span>Testo del pulsante</span>
       </it-button>
 
-      <it-button className="me-2" variant="danger" icon="{true}" type="button">
-        <span className="rounded-icon">
+      <it-button class="me-2" variant="danger" icon="{true}" type="button">
+        <span class="rounded-icon">
           <it-icon name="it-user" color="danger" size="xs"></it-icon>
         </span>
         <span>Testo del pulsante</span>
       </it-button>
 
-      <it-button className="me-2" variant="secondary" size="xs" icon="{true}" type="button">
-        <span className="rounded-icon">
+      <it-button class="me-2" variant="secondary" size="xs" icon="{true}" type="button">
+        <span class="rounded-icon">
           <it-icon name="it-user" color="secondary" size="xs"></it-icon>
         </span>
         <span>Testo del pulsante</span>

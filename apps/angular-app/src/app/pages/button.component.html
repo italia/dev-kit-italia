@@ -224,9 +224,7 @@
     variant="primary"
     size="sm"
     type="button"
-    on:click={() => {
-      alert('Mi hai cliccato!');
-    }}
+    (click)="onButtonClick($event)"
   >
     Cliccami
   </it-button>

@@ -17,13 +17,13 @@ function App() {
           </a>
         </div>
         <div>Vite + React</div>
-        <div className='app-nav'>
+        <nav className='app-nav'>
           {AppRoutes.map((route) => (
             <Link key={route.path + 'link'} to={route.path}>
               {route.title}
             </Link>
           ))}
-        </div>
+        </nav>
       </div>
       <Routes>
         {AppRoutes.map((route) => (

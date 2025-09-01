@@ -20,6 +20,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "../../packages/design-web-components/",
+                "output": "/assets/design-web-components/"
               }
             ],
             "styles": ["src/styles.css"]

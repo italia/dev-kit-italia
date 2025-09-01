@@ -2,7 +2,7 @@
   <h1>it-video</h1>
 
   <div :style="{ width: '600px' }">
-    <div className="mb-5">
+    <div class="mb-5">
       <it-video src="https://vjs.zencdn.net/v/oceans.webm"></it-video>
     </div>
     <div>

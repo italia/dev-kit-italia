@@ -4,7 +4,7 @@
   <it-icon name="it-star-full" align="middle"></it-icon>
   <section>
     <h2>Varianti di colore</h2>
-    <div className="flex">
+    <div class="flex">
       <it-icon name="it-star-full" label="col primary" color="primary"></it-icon>
 
       <it-icon name="it-star-full" label="col secondary" color="secondary"></it-icon>
@@ -40,7 +40,7 @@
   <section>
     <h2>Varianti di dimensione</h2>
     <div>
-      <div className="flex">
+      <div class="flex">
         <div>
           <it-icon name="it-star-full" size="xs" align="middle"></it-icon>
         </div>
@@ -61,7 +61,7 @@
   </section>
   <section>
     <h2>Varianti di allineamento</h2>
-    <div className="flex">
+    <div class="flex">
       <div>
         <it-icon name="it-star-full" size="lg" label="align top" align="top"></it-icon>
 
@@ -74,7 +74,7 @@
   <section>
     <h2>Spaziatura</h2>
 
-    <div className="flex">
+    <div class="flex">
       <div>
         <it-icon name="it-star-full" size="xs" align="middle" padded="{true}"></it-icon>
       </div>
@@ -102,7 +102,7 @@
   </section>
   <section>
     <h2>SVG esterno</h2>
-    <div className="flex">
+    <div class="flex">
       <it-icon
         size="xl"
         label="Stemma 1"
