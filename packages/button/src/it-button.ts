@@ -68,7 +68,30 @@ export class ItButton extends BaseComponent {
     if (this.form && !disabled) {
       event.preventDefault();
       event.stopPropagation();
-      this.form.requestSubmit();
+
+      let someInvalid = false;
+      // valido ogni campo
+      const itItems = Array.from(this.form.querySelectorAll('*')).filter((el: any) =>
+        el.tagName.toLowerCase().startsWith('it-'),
+      );
+
+      itItems.forEach((itItem: any) => {
+        // Accedi allo Shadow DOM del web component
+        if (itItem.checkValidity) {
+          itItem.checkValidity();
+        }
+        const isValid = itItem?.isValid ? itItem.isValid() : true;
+
+        // Controlla se l'input interno esiste e se non è valido
+        if (!isValid) {
+          someInvalid = true;
+          // eslint-disable-next-line no-console
+          console.error(`Invalid field: [name]=${itItem.name}, [id]=${itItem.id}`);
+        }
+      });
+      if (!someInvalid) {
+        this.form.requestSubmit();
+      }
     }
     if (disabled) {
       event.preventDefault();

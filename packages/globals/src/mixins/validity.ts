@@ -121,6 +121,9 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
      */
     _touched: boolean = false;
 
+    /* Implement your checkValidity fn */
+    abstract checkValidity(): boolean;
+
     /**
      * Checks if the value meets the constraints.
      *
@@ -175,6 +178,10 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
     setCustomValidity(validityMessage: string) {
       this.invalid = Boolean(validityMessage);
       this.validityMessage = validityMessage;
+    }
+
+    isValid() {
+      return this.customValidation ? this.invalid : this.checkValidity();
     }
 
     _handleBlur() {
