@@ -38,7 +38,7 @@ export class ItAccordionItem extends BaseComponent {
   // Metodo pubblico per impostare la proprietà leftIcon del parent
   public setParentLeftIcon(leftIcon: boolean) {
     this.parentLeftIcon = leftIcon;
-    this.requestUpdate();
+    // this.requestUpdate();
   }
 
   // Getter per leggere lo stato corrente
@@ -56,10 +56,8 @@ export class ItAccordionItem extends BaseComponent {
   @property({ type: Boolean, attribute: false })
   public parentLeftIcon: boolean = false;
 
-  protected _panelId = this.generateId('it-accordion-item-content');
-
   override updated(changedProperties: Map<string | number | symbol, unknown>) {
-    super.updated?.(changedProperties);
+    // super.updated?.(changedProperties);
 
     // Solo se defaultOpen cambia (dovrebbe essere raro), aggiorna lo stato interno
     if (changedProperties.has('defaultOpen')) {
@@ -69,23 +67,24 @@ export class ItAccordionItem extends BaseComponent {
         collapseElement.expanded = this._isExpanded;
       }
       this.updateAccordionIcon();
+      this.updateBackgroundProperties();
     }
 
     // Se lo stato interno cambia, aggiorna l'icona e il collapse
     if (changedProperties.has('_isExpanded')) {
-      const collapseElement = this.shadowRoot?.querySelector('it-collapse') as any;
-      if (collapseElement && collapseElement.expanded !== this._isExpanded) {
-        collapseElement.expanded = this._isExpanded;
-      }
+      // const collapseElement = this.shadowRoot?.querySelector('it-collapse') as any;
+      // if (collapseElement && collapseElement.expanded !== this._isExpanded) {
+      //   collapseElement.expanded = this._isExpanded;
+      // }
       this.updateAccordionIcon();
       this.updateBackgroundProperties();
 
       // Aggiungi/rimuovi la classe expanded per il CSS
-      if (this._isExpanded) {
-        this.classList.add('expanded');
-      } else {
-        this.classList.remove('expanded');
-      }
+      // if (this._isExpanded) {
+      //   this.classList.add('expanded');
+      // } else {
+      //   this.classList.remove('expanded');
+      // }
     }
 
     // Se cambiano le proprietà di background del parent, aggiorna le CSS properties
@@ -174,33 +173,34 @@ export class ItAccordionItem extends BaseComponent {
     // Se il parent ha leftIcon=true, usa icone più/meno a sinistra
     const iconContent = this.parentLeftIcon
       ? html`<it-icon
+          size="sm"
           name="${this._isExpanded ? 'it-minus' : 'it-plus'}"
           class="accordion-icon-left"
           color="primary"
         ></it-icon>`
-      : html`<it-icon name="it-collapse" class="accordion-icon" color="primary"></it-icon>`;
+      : html`<it-icon size="sm" name="it-collapse" class="accordion-icon" color="primary"></it-icon>`;
 
     const buttonContent = this.parentLeftIcon
-      ? html`<it-button class="${buttonClasses}" type="button" icon id="${this._id}" exportparts="focusable,button">
+      ? html`<it-button class="${buttonClasses}" type="button" icon exportparts="focusable,button">
           ${iconContent}
           <span>${this.label}</span>
         </it-button>`
-      : html`<it-button class="${buttonClasses}" type="button" icon id="${this._id}" exportparts="focusable,button">
+      : html`<it-button class="${buttonClasses}" type="button" icon exportparts="focusable,button">
           <span>${this.label}</span>
           ${iconContent}
         </it-button>`;
 
     switch (this.as) {
       case 'h3':
-        return html`<h3 class="accordion-header">${buttonContent}</h3>`;
+        return html`<h3 class="accordion-header" slot="trigger">${buttonContent}</h3>`;
       case 'h4':
-        return html`<h4 class="accordion-header">${buttonContent}</h4>`;
+        return html`<h4 class="accordion-header" slot="trigger">${buttonContent}</h4>`;
       case 'h5':
-        return html`<h5 class="accordion-header">${buttonContent}</h5>`;
+        return html`<h5 class="accordion-header" slot="trigger">${buttonContent}</h5>`;
       case 'h6':
-        return html`<h6 class="accordion-header">${buttonContent}</h6>`;
+        return html`<h6 class="accordion-header" slot="trigger">${buttonContent}</h6>`;
       default:
-        return html`<h2 class="accordion-header">${buttonContent}</h2>`;
+        return html`<h2 class="accordion-header" slot="trigger">${buttonContent}</h2>`;
     }
   }
 
@@ -208,15 +208,9 @@ export class ItAccordionItem extends BaseComponent {
     return html` <div class="accordion-item" part="accordion-item">
       <it-collapse ?expanded="${this._isExpanded}">
         <!-- Trigger slot -->
-        <div slot="trigger">${this.renderHeading()}</div>
+        ${this.renderHeading()}
         <!-- Content slot -->
-        <div
-          slot="content"
-          id="${this._panelId}"
-          class="accordion-collapse"
-          role="region"
-          aria-labelledby="${this._id}"
-        >
+        <div slot="content" class="accordion-collapse" role="region">
           <div class="accordion-body">
             <slot></slot>
           </div>

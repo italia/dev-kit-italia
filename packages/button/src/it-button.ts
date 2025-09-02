@@ -1,9 +1,5 @@
 import { BaseComponent, setAttributes } from '@italia/globals';
-<<<<<<< HEAD
 import { html } from 'lit';
-=======
-import { html, PropertyValues } from 'lit';
->>>>>>> main
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { type Sizes, type Variants } from './types.js';

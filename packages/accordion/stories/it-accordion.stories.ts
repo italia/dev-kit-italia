@@ -351,3 +351,46 @@ Applicando proprietà aggiuntive al componente \`it-accordion\` è possibile uti
     </div>
   `,
 };
+
+export const CollapseMultipleTriggers: Story = {
+  name: 'Collapse multipli trigger',
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Tre esempi di \`it-collapse\` con tipi diversi di trigger:
+
+- **it-button**
+- **button** nativo
+- **a[role="button"]** link attivabile come pulsante
+
+Ciascuno gestisce animazione, aria-expanded e preferenze per reduced-motion.
+        `,
+      },
+    },
+  },
+  render: () => html`
+    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 600px;">
+      <it-collapse>
+        <it-button slot="trigger">Trigger con it-button</it-button>
+        <div slot="content" style="padding: 16px; border: 1px solid blue; margin-top: 1rem;">
+          <p>Contenuto del collapse con it-button come trigger.</p>
+        </div>
+      </it-collapse>
+
+      <it-collapse>
+        <button slot="trigger">Trigger con button nativo</button>
+        <div slot="content" style="padding: 16px; border: 1px solid blue; margin-top: 1rem;">
+          <p>Contenuto del collapse con button nativo come trigger.</p>
+        </div>
+      </it-collapse>
+
+      <it-collapse>
+        <a slot="trigger" role="button" href="#">Trigger con a[role="button"]</a>
+        <div slot="content" style="padding: 16px; border: 1px solid blue; margin-top: 1rem;">
+          <p>Contenuto del collapse con a[role="button"] come trigger.</p>
+        </div>
+      </it-collapse>
+    </div>
+  `,
+};
