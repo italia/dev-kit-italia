@@ -71,7 +71,7 @@ export class ItChip extends BaseComponent {
     const classes = {
       chip: true,
       [`chip-${this.size}`]: this.size,
-      [`chip-${this.variant}`]: !!this.variant,
+      [`chip-${this.variant}`]: !!this.variant && !this.isDisabled,
       'chip-disabled': this.isDisabled,
     };
     const content = html`

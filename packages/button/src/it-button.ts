@@ -1,6 +1,6 @@
 import { BaseComponent, setAttributes } from '@italia/globals';
 import { html, PropertyValues } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { type Sizes, type Variants } from './types.js';
 import styles from './button.scss';
@@ -13,25 +13,28 @@ export class ItButton extends BaseComponent {
     return true;
   }
 
+  @query('button')
+  private _nativeButton!: HTMLButtonElement;
+
   @property({ type: String })
   private _buttonClasses = '';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   type = 'button';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   variant: Variants = '';
 
-  @property({ type: String })
-  size: Sizes = 'sm';
+  @property({ type: String, reflect: true })
+  size: Sizes = '';
 
-  @property({ type: Boolean })
+  @property({ type: Boolean, reflect: true })
   outline = false;
 
-  @property({ type: Boolean })
+  @property({ type: Boolean, reflect: true })
   block = false;
 
-  @property({ type: Boolean })
+  @property({ type: Boolean, reflect: true })
   icon = false;
 
   @property({ type: String })
@@ -77,23 +80,39 @@ export class ItButton extends BaseComponent {
     return this.internals ? this.internals.form : null;
   }
 
+  private _onKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      this._nativeButton?.click();
+    }
+  };
+
   connectedCallback(): void {
     super.connectedCallback?.();
 
     if (this.block) {
       this.classList.add('d-block', 'w-100');
     }
-    if (this.variant === 'link') {
-      const label = this._ariaAttributes['aria-label'] ? `${this._ariaAttributes['aria-label']} - ` : '';
-      this._ariaAttributes['aria-label'] = `${label}Pulsante link`;
-    }
+
+    this.addEventListener('keydown', this._onKeyDown);
+  }
+
+  disconnectedCallback(): void {
+    this.removeEventListener('keydown', this._onKeyDown);
+    super.disconnectedCallback?.();
   }
 
   // Render the UI as a function of component state
   override render() {
+    const part = this.composeClass(
+      'button',
+      'focusable',
+      this.variant?.length > 0 ? this.variant : '',
+      this.outline ? 'outline' : '',
+    );
     return html`
       <button
-        part="button ${this.variant} ${this.outline ? 'outline' : ''}"
+        part="${part}"
         type="${this.type}"
         class="${this._buttonClasses}"
         @click="${this.type === 'submit' ? this.surfaceSubmitEvent : undefined}"

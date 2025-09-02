@@ -1,5 +1,6 @@
 {
   "name": "design-web-components",
+  "version": "0.0.0",
   "description": "Web components del Design system .italia",
   "private": true,
   "license": "BSD-3-Clause",
@@ -20,18 +21,20 @@
     "format": "turbo run format",
     "clean": "turbo run clean && rimraf .turbo storybook-static coverage node_modules",
     "prepare": "husky && pnpm test:setup",
-    "release": "turbo run build",
+    "release": "pnpm build && changeset publish",
+    "changeset": "changeset",
     "test:setup": "pnpm exec playwright install",
     "test:setup:ci": "pnpm exec playwright install --with-deps --only-shell",
     "test": "turbo run test",
     "storybook:build": "pnpm build && storybook build",
     "storybook:deploy": "pnpm dlx gh-pages -d storybook-static -m 'chore: update documentation [ci skip]' --nojekyll",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "reinstall": "pnpm clean && pnpm install && pnpm build"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.1",
+    "@changesets/cli": "^2.29.5",
     "@chromatic-com/storybook": "^3.2.6",
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
     "@open-wc/eslint-config": "^12.0.3",
     "@storybook/addon-a11y": "^8.6.14",
     "@storybook/addon-essentials": "^8.6.14",

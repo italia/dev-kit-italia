@@ -9,21 +9,21 @@ import styles from './icon.scss';
 export class ItIcon extends BaseComponent {
   static styles = styles;
 
-  @property({ type: String }) size?: Sizes;
+  @property({ type: String, reflect: true }) size?: Sizes;
 
   @property({ type: String }) name?: AvailableIcons;
 
-  @property({ type: String }) color?: Colors;
+  @property({ type: String, reflect: true }) color?: Colors;
 
   // @property({ type: String }) background?: Colors;
 
-  @property({ type: String }) align?: Alignments = 'middle';
+  @property({ type: String, reflect: true }) align?: Alignments = 'middle';
 
   @property({ type: String, reflect: true }) label = '';
 
-  @property({ type: Boolean }) padded = false;
+  @property({ type: Boolean, reflect: true }) padded = false;
 
-  @property({ type: String }) src?: string;
+  @property({ type: String, reflect: true }) src?: string;
 
   @state() private svgElement?: HTMLElement;
 
@@ -115,7 +115,7 @@ export class ItIcon extends BaseComponent {
     // Accessibility logic:
     // - If a `label` is provided:
     //     - The icon is accessible to assistive technologies.
-    //     - Sets `aria-hidden="false"`.
+    //     - Remove aria-hidden attribute if it exists
     //     - Sets `role="img"` to indicate the SVG is an image.
     //     - Adds a <title> element with the label text inside the SVG.
     //     - Sets `aria-labelledby` to reference the <title> for screen readers.
@@ -125,7 +125,7 @@ export class ItIcon extends BaseComponent {
     //     - Sets `role="presentation"` to indicate the SVG is purely decorative.
     //     - Removes any <title> and `aria-labelledby` attributes from the SVG.
     if (this.label) {
-      svgEl.setAttribute('aria-hidden', 'false');
+      svgEl.removeAttribute('aria-hidden');
       svgEl.setAttribute('role', 'img');
 
       // Remove previous title/aria-labelledby

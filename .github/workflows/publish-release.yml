@@ -1,16 +1,16 @@
-name: Generate new release
+name: Publish release
 on:
   push:
     tags:
-      - 'v*'
-permissions:
-  contents: write
+      - '*'
+
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       id-token: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
 
@@ -24,21 +24,35 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-      - name: Publish package to NPM
-        run: pnpm publish --no-git-checks
+      - name: Setup NPM for publishing
+        run: |
+          echo "registry=https://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+          echo "provenance=true" >> .npmrc
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Changesets version and publish
+        uses: changesets/action@v1
+        id: changesets
+        with:
+          version: 'echo "Sono presenti dei changeset, impossibile proseguire." && exit 1'
+          publish: 'pnpm release'
+          createGithubReleases: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'
 
-      - run: pnpm add -w -D extract-changelog-release
-
       - name: Generate Release Body
-        run: pnpm dlx extract-changelog-release > RELEASE_BODY.md
+        run: pnpm dlx releaselog --format notes ${{ github.ref_name }} > RELEASE_BODY.md
 
-      - uses: ncipollo/release-action@v1
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
         with:
           bodyFile: 'RELEASE_BODY.md'
           token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: ${{ contains(github.ref_name, '-') }}
       # - name: Publish on gh-pages
       #   run: |
       #     git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git

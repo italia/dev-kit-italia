@@ -1,0 +1,124 @@
+#!/usr/bin/env node
+/* eslint-disable no-console */
+
+import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const rootDir = join(__dirname, '..');
+
+/**
+ * Ottiene tutti i pacchetti pubblicabili
+ */
+function getPublishablePackages() {
+  const packagesDir = join(rootDir, 'packages');
+  const packages = [];
+
+  try {
+    const packageDirs = execSync('ls packages/', { cwd: rootDir, encoding: 'utf8' }).trim().split('\n');
+
+    for (const dir of packageDirs) {
+      const packageJsonPath = join(packagesDir, dir, 'package.json');
+
+      if (existsSync(packageJsonPath)) {
+        const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
+
+        // Escludi pacchetti privati
+        if (!packageJson.private) {
+          packages.push({
+            name: packageJson.name,
+            version: packageJson.version,
+            path: join(packagesDir, dir),
+            changelogPath: join(packagesDir, dir, 'CHANGELOG.md'),
+          });
+        }
+      }
+    }
+  } catch (error) {
+    console.log('⚠️ Errore nel leggere i pacchetti:', error.message);
+  }
+
+  return packages;
+}
+
+/**
+ * Controlla se un changelog ha solo entry "version bump" per una versione
+ */
+function hasOnlyVersionBump(changelogPath, version) {
+  if (!existsSync(changelogPath)) return false;
+
+  const content = readFileSync(changelogPath, 'utf8');
+  const escapedVersion = version.replace(/\./g, '\\.');
+  const versionRegex = new RegExp(`## ${escapedVersion}\\s*\\n([\\s\\S]*?)(?=\\n## |$)`);
+  const match = content.match(versionRegex);
+
+  if (!match) return false;
+
+  const versionContent = match[1].trim();
+  // Controlla se contiene solo sezioni vuote o "version bump"
+  const hasRealChanges =
+    /### (?:Patch|Minor|Major) Changes/.test(versionContent) &&
+    !versionContent.toLowerCase().includes('aggiornamento della versione') &&
+    versionContent
+      .split('\n')
+      .some(
+        (line) =>
+          line.trim() &&
+          !/### (?:Patch|Minor|Major) Changes/.test(line) &&
+          !line.includes('Updated dependencies') &&
+          !line.includes('- @'),
+      );
+
+  return !hasRealChanges;
+}
+
+/**
+ * Aggiunge entry "version bump" ai changelog che ne hanno bisogno
+ */
+function addVersionBumpEntries() {
+  console.log('🏷️ Aggiunta entry version bump ai pacchetti senza modifiche...');
+
+  const packages = getPublishablePackages();
+  let updatedPackages = 0;
+
+  for (const pkg of packages) {
+    if (existsSync(pkg.changelogPath)) {
+      const changelogContent = readFileSync(pkg.changelogPath, 'utf8');
+
+      // Trova la prima versione nel changelog (supporta prerelease)
+      const versionMatch = changelogContent.match(/## ([\d.]+(?:-[a-zA-Z0-9.-]+)?)/);
+      if (versionMatch && hasOnlyVersionBump(pkg.changelogPath, versionMatch[1])) {
+        // Sostituisci il contenuto vuoto con version bump
+        const escapedVersion = versionMatch[1].replace(/\./g, '\\.');
+        const updatedContent = changelogContent.replace(
+          new RegExp(
+            `(## ${escapedVersion}\\s*\\n\\s*(?:### (?:Patch|Minor|Major) Changes\\s*\\n)?)((?:\\s*- Updated dependencies[\\s\\S]*?)?)(\\s*(?=\\n## |$))`,
+          ),
+          `$1- Aggiornamento della versione\n$2$3`,
+        );
+
+        if (updatedContent !== changelogContent) {
+          writeFileSync(pkg.changelogPath, updatedContent);
+          console.log(`✅ Aggiunta entry "Aggiornamento della versione" a ${pkg.name}`);
+          updatedPackages += 1;
+        }
+      }
+    }
+  }
+
+  if (updatedPackages === 0) {
+    console.log('⚠️ Nessun pacchetto necessita di version bump entries');
+  } else {
+    console.log(`✅ Aggiornati ${updatedPackages} changelog con version bump entries`);
+  }
+}
+
+// Esegui se chiamato direttamente
+if (import.meta.url === `file://${process.argv[1]}`) {
+  addVersionBumpEntries();
+}
+
+export { addVersionBumpEntries };

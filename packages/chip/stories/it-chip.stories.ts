@@ -1,4 +1,4 @@
-import { html } from 'lit';
+import { html, nothing } from 'lit';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { CHIP_VARIANTS, CHIP_SIZES, type ChipProps } from '../src/types.ts';
@@ -19,8 +19,8 @@ const meta = {
     avatar: '',
     avatarAlt: 'Avatar',
     dismissable: false,
-    conIcona: false,
-    conPulsanteDismiss: false,
+    withIcon: false,
+    withDismissButton: false,
   },
   argTypes: {
     size: {
@@ -63,12 +63,12 @@ const meta = {
       description: `Testo alternativo per l'immagine dell'avatar, utile per l'accessibilità.`,
       table: { defaultValue: { summary: 'Alt avatar' } },
     },
-    conIcona: {
+    withIcon: {
       control: 'boolean',
       description:
         "Simula la presenza di un'icona nella chip. Non è una proprietà del componente, ma serve per mostrare composizioni nel playground interattivo.",
     },
-    conPulsanteDismiss: {
+    withDismissButton: {
       control: 'boolean',
       description:
         'Simula la presenza di un pulsante di rimozione nella chip. Non è una proprietà del componente, ma serve per mostrare composizioni nel playground interattivo.',
@@ -93,15 +93,15 @@ Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del desi
   },
 } satisfies Meta<
   ChipProps & {
-    conIcona?: boolean;
-    conPulsanteDismiss?: boolean;
+    withIcon?: boolean;
+    withDismissButton?: boolean;
   }
 >;
 export default meta;
 type Story = StoryObj<
   ChipProps & {
-    conIcona?: boolean;
-    conPulsanteDismiss?: boolean;
+    withIcon?: boolean;
+    withDismissButton?: boolean;
   }
 >;
 
@@ -143,7 +143,7 @@ const iconTemplate = (color: string) => html`
 
 // Renderizza il wc it-chip di default
 const renderComponent = (params) => {
-  const { avatar, conIcona, label, size, variant, conPulsanteDismiss, dismissable, isDisabled, href, id } = params;
+  const { avatar, withIcon, label, size, variant, withDismissButton, dismissable, isDisabled, href, id } = params;
   return html`
     <it-chip
       label="${label ?? ''}"
@@ -154,10 +154,10 @@ const renderComponent = (params) => {
       href="${ifDefined(href || undefined)}"
       avatar="${ifDefined(avatar || undefined)}"
       ?id="${id}"
+      >${withIcon ? iconTemplate(variant) : nothing}${dismissable && withDismissButton
+        ? dismissTemplate('I am dismissable', isDisabled)
+        : nothing}</it-chip
     >
-      ${conIcona ? iconTemplate(variant) : null}
-      ${dismissable && conPulsanteDismiss ? dismissTemplate('I am dismissable', isDisabled) : null}
-    </it-chip>
   `;
 };
 
@@ -224,9 +224,6 @@ Gli stili definiti da Bootstrap Italia utilizzano un naming consistente con Boot
       <it-chip label="Etichetta" size="sm" variant="success"></it-chip>
       <it-chip label="Etichetta" size="sm" variant="danger"></it-chip>
       <it-chip label="Etichetta" size="sm" variant="warning"></it-chip>
-      <it-chip label="Etichetta" size="sm" variant="info"></it-chip>
-      <it-chip label="Etichetta" size="sm" variant="light"></it-chip>
-      <it-chip label="Etichetta" size="sm" variant="dark"></it-chip>
     </div>
   `,
 };
@@ -249,9 +246,6 @@ export const VariantiColoreLink: Story = {
       <it-chip label="Etichetta" size="sm" variant="success" href="#"></it-chip>
       <it-chip label="Etichetta" size="sm" variant="danger" href="#"></it-chip>
       <it-chip label="Etichetta" size="sm" variant="warning" href="#"></it-chip>
-      <it-chip label="Etichetta" size="sm" variant="info" href="#"></it-chip>
-      <it-chip label="Etichetta" size="sm" variant="light" href="#"></it-chip>
-      <it-chip label="Etichetta" size="sm" variant="dark" href="#"></it-chip>
     </div>
   `,
 };
@@ -279,6 +273,7 @@ export const ChipConChiusura: Story = {
         slot="dismiss-button"
         icon
         aria-label="Elimina etichetta"
+        aria-disabled="true"
         aria-description="Puoi premere per eliminare la chip."
       >
         <it-icon name="it-close" size="sm"></it-icon>
@@ -306,6 +301,7 @@ Il codice JS dell'esempio gestisce la rimozione della chip sia via click che via
     slot="dismiss-button"
     icon
     aria-label="Elimina etichetta"
+    aria-disabled="true"
     aria-description="Puoi premere per eliminare la chip."
   >
     <it-icon name="it-close" size="sm"></it-icon>
@@ -356,8 +352,8 @@ Aggiungendo l'attributo \`disabled\` si ottiene una chip disabilitata.
       },
     },
   },
-  render: () => html`
-    <it-chip label="Etichetta" size="sm" variant="primary" dismissable isDisabled>
+  render: (args) => html`
+    <it-chip label="Etichetta" size="sm" variant="${args.variant}" dismissable isDisabled>
       <it-button
         slot="dismiss-button"
         icon
