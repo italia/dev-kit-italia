@@ -4,7 +4,7 @@ import { customElement, property, queryAssignedElements } from 'lit/decorators.j
 import { classMap } from 'lit/directives/class-map.js';
 import { ChipSize, ChipVariant } from './types.js';
 
-import styles from './it-chip.scss';
+import styles from './chip.scss';
 
 @customElement('it-chip')
 export class ItChip extends BaseComponent {
