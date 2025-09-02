@@ -29,12 +29,7 @@ const renderComponent = (params: ButtonProps, defaultSlot = '') => {
       ?block="${params.block}"
       aria-disabled="${ifDefined(params.ariaDisabled ? 'true' : undefined)}"
       ?icon="${params.icon}"
-<<<<<<< HEAD
-      type="${params.type}"
-      aria-label="${params['aria-label']}"
-=======
       type="${ifDefined(params.type)}"
->>>>>>> main
       >${slot}</it-button
     >
   `;
