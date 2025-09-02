@@ -19,6 +19,8 @@ export class ItCollapse extends BaseComponent {
 
   private isAnimating = false;
 
+  private isInitialized = false;
+
   private animation?: Animation;
 
   private readonly animationDuration = 350; // ms
@@ -37,7 +39,24 @@ export class ItCollapse extends BaseComponent {
     super.disconnectedCallback?.();
   }
 
+  // private handleClick = (e: Event) => {
+  //   // Verifica se il click è sul trigger o suoi discendenti
+  //   const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement;
+  //   const triggerElements = triggerSlot?.assignedElements() || [];
+
+  //   if (triggerElements.some((el) => el.contains(e.target as Node) || el === e.target)) {
+  //     e.preventDefault();
+  //     this.toggle();
+  //   }
+  // };
   private handleClick = (e: Event) => {
+    // Blocca i click durante l'animazione
+    if (this.isAnimating) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+
     // Verifica se il click è sul trigger o suoi discendenti
     const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement;
     const triggerElements = triggerSlot?.assignedElements() || [];
@@ -49,19 +68,64 @@ export class ItCollapse extends BaseComponent {
   };
 
   async toggle() {
+    // this.expanded = !this.expanded;
+
+    // // Emetti evento per notificare l'accordion parent
+    // this.dispatchEvent(
+    //   new CustomEvent('collapse-toggle', {
+    //     detail: {
+    //       expanded: this.expanded,
+    //       id: this.contentElement?.id,
+    //     },
+    //     bubbles: true,
+    //     composed: true,
+    //   }),
+    // );
+    // Blocca toggle durante animazione
+    if (this.isAnimating) return;
+
+    // Solo cambia lo stato - NON sparare evento qui
     this.expanded = !this.expanded;
 
-    // Emetti evento per notificare l'accordion parent
-    this.dispatchEvent(
-      new CustomEvent('collapse-toggle', {
-        detail: {
-          expanded: this.expanded,
-          id: this.contentElement?.id,
-        },
-        bubbles: true,
-        composed: true,
-      }),
-    );
+    // L'evento verrà sparato alla fine dell'animazione
+  }
+
+  private setInitialState() {
+    // if (!this.contentElement) return;
+
+    // this.contentElement.id = this._contentId;
+
+    if (this.expanded) {
+      this.contentElement.style.visibility = 'visible';
+      this.contentElement.style.height = 'auto';
+    } else {
+      this.contentElement.style.visibility = 'hidden';
+      this.contentElement.style.height = '0px';
+    }
+
+    // Dispatch evento iniziale (senza animazione)
+    // this.dispatchEvent(
+    //   new CustomEvent('collapse-toggle', {
+    //     detail: {
+    //       expanded: this.expanded,
+    //       id: this.contentElement?.id,
+    //     },
+    //     bubbles: true,
+    //     composed: true,
+    //   }),
+    // );
+  }
+
+  private cleanupAnimation() {
+    if (this.animation) {
+      try {
+        this.animation.cancel();
+      } catch {
+        /* ignore */
+      }
+      this.animation = undefined;
+    }
+    this.isAnimating = false;
   }
 
   // firstUpdated() {
@@ -77,18 +141,22 @@ export class ItCollapse extends BaseComponent {
   updated(changedProperties: Map<string | number | symbol, unknown>): void {
     // super.updated?.(changedProperties);
     if (changedProperties.has('expanded')) {
+      // Non animare durante l'inizializzazione
+      // if (!this.isInitialized) {
+      //   // this.setInitialState();
+      //   this.isInitialized = true;
+      //   this.updateAriaAttributes();
+      //   return;
+      // }
+
       this.updateAriaAttributes();
-      try {
-        // React to expanded property changes
-        if (!this.isAnimating) {
-          if (this.expanded) {
-            this.performExpand();
-          } else {
-            this.performCollapse();
-          }
+      // React to expanded property changes
+      if (!this.isAnimating) {
+        if (this.expanded) {
+          this.performExpand();
+        } else {
+          this.performCollapse();
         }
-      } catch (error) {
-        // Catch abort animation
       }
     }
   }
@@ -148,112 +216,176 @@ export class ItCollapse extends BaseComponent {
     }
   }
 
+  // private performExpand() {
+  //   if (!this.contentElement) return;
+  //   if (this.animation) {
+  //     try {
+  //       this.animation.cancel();
+  //     } catch {
+  //       /* ignore */
+  //     }
+  //     this.animation = undefined;
+  //   }
+  //   this.isAnimating = true;
+
+  //   this.contentElement.style.visibility = 'visible';
+  //   const startHeight = this.contentElement.offsetHeight;
+  //   const endHeight = this.contentElement.scrollHeight;
+  //   const duration = this.prefersReducedMotion ? 0 : this.animationDuration;
+  //   this.animation = this.contentElement.animate([{ height: `${startHeight}px` }, { height: `${endHeight}px` }], {
+  //     duration,
+  //     easing: 'ease',
+  //   });
+  //   this.animation.finished.then(() => {
+  //     this.contentElement.style.height = 'auto';
+  //     this.animation = undefined;
+  //     this.isAnimating = false;
+  //   });
+
+  //   // if (this.isAnimating) return;
+  //   // this.isAnimating = true;
+  //   // // Get the natural height
+  //   // this.contentElement.style.height = 'auto';
+  //   // const targetHeight = this.contentElement.scrollHeight;
+  //   // this.contentElement.style.height = '0px';
+  //   // // Force reflow with layout thrashing (or forced synchronous reflow)
+  //   // // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  //   // const _reflow = this.contentElement.offsetHeight;
+  //   // // Start animation
+  //   // this.contentElement.style.height = `${targetHeight}px`;
+  //   // // Wait for animation to complete
+  //   // await new Promise<void>((resolve) => {
+  //   //   const onTransitionEnd = (e: TransitionEvent) => {
+  //   //     if (e.target === this.contentElement && e.propertyName === 'height') {
+  //   //       this.contentElement.removeEventListener('transitionend', onTransitionEnd);
+  //   //       this.contentElement.style.height = 'auto';
+  //   //       this.isAnimating = false;
+  //   //       resolve();
+  //   //     }
+  //   //   };
+  //   //   this.contentElement.addEventListener('transitionend', onTransitionEnd);
+  //   //   // Fallback timeout
+  //   //   setTimeout(() => {
+  //   //     this.contentElement.removeEventListener('transitionend', onTransitionEnd);
+  //   //     this.contentElement.style.height = 'auto';
+  //   //     this.isAnimating = false;
+  //   //     resolve();
+  //   //   }, 100);
+  //   // });
+  // }
   private performExpand() {
     if (!this.contentElement) return;
-    if (this.animation) {
-      try {
-        this.animation.cancel();
-      } catch {
-        /* ignore */
-      }
-      this.animation = undefined;
-    }
+
+    this.cleanupAnimation();
     this.isAnimating = true;
 
     this.contentElement.style.visibility = 'visible';
     const startHeight = this.contentElement.offsetHeight;
     const endHeight = this.contentElement.scrollHeight;
     const duration = this.prefersReducedMotion ? 0 : this.animationDuration;
+
     this.animation = this.contentElement.animate([{ height: `${startHeight}px` }, { height: `${endHeight}px` }], {
       duration,
       easing: 'ease',
     });
-    this.animation.finished.then(() => {
-      this.contentElement.style.height = 'auto';
-      this.animation = undefined;
-      this.isAnimating = false;
-    });
 
-    // if (this.isAnimating) return;
-    // this.isAnimating = true;
-    // // Get the natural height
-    // this.contentElement.style.height = 'auto';
-    // const targetHeight = this.contentElement.scrollHeight;
-    // this.contentElement.style.height = '0px';
-    // // Force reflow with layout thrashing (or forced synchronous reflow)
-    // // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    // const _reflow = this.contentElement.offsetHeight;
-    // // Start animation
-    // this.contentElement.style.height = `${targetHeight}px`;
-    // // Wait for animation to complete
-    // await new Promise<void>((resolve) => {
-    //   const onTransitionEnd = (e: TransitionEvent) => {
-    //     if (e.target === this.contentElement && e.propertyName === 'height') {
-    //       this.contentElement.removeEventListener('transitionend', onTransitionEnd);
-    //       this.contentElement.style.height = 'auto';
-    //       this.isAnimating = false;
-    //       resolve();
-    //     }
-    //   };
-    //   this.contentElement.addEventListener('transitionend', onTransitionEnd);
-    //   // Fallback timeout
-    //   setTimeout(() => {
-    //     this.contentElement.removeEventListener('transitionend', onTransitionEnd);
-    //     this.contentElement.style.height = 'auto';
-    //     this.isAnimating = false;
-    //     resolve();
-    //   }, 100);
-    // });
+    this.animation.finished
+      .then(() => {
+        this.contentElement.style.height = 'auto';
+      })
+      .catch(() => {
+        // Animation cancelled
+      })
+      .finally(() => {
+        this.cleanupAnimation();
+
+        // SPARA L'EVENTO SOLO DOPO CHE L'ANIMAZIONE È FINITA
+        this.dispatchEvent(
+          new CustomEvent('collapse-toggle', {
+            detail: {
+              expanded: this.expanded,
+              id: this.contentElement?.id,
+            },
+            bubbles: true,
+            composed: true,
+          }),
+        );
+      });
   }
 
+  // private performCollapse() {
+  //   // if (this.isAnimating) return;
+
+  //   // this.isAnimating = true;
+
+  //   // // Get current height
+  //   // const currentHeight = this.contentElement.scrollHeight;
+  //   // this.contentElement.style.height = `${currentHeight}px`;
+
+  //   // // Force reflow with layout thrashing (or forced synchronous reflow)
+  //   // // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  //   // const _reflow2 = this.contentElement.offsetHeight;
+
+  //   // // Start animation
+  //   // this.contentElement.style.height = '0px';
+
+  //   // // Wait for animation to complete
+  //   // await new Promise<void>((resolve) => {
+  //   //   const onTransitionEnd = (e: TransitionEvent) => {
+  //   //     if (e.target === this.contentElement && e.propertyName === 'height') {
+  //   //       this.contentElement.removeEventListener('transitionend', onTransitionEnd);
+  //   //       this.isAnimating = false;
+  //   //       resolve();
+  //   //     }
+  //   //   };
+  //   //   this.contentElement.addEventListener('transitionend', onTransitionEnd);
+
+  //   //   // // Fallback timeout
+  //   //   setTimeout(() => {
+  //   //     this.contentElement.removeEventListener('transitionend', onTransitionEnd);
+  //   //     this.isAnimating = false;
+  //   //     resolve();
+  //   //   }, 100);
+  //   // });
+  //   if (!this.contentElement) return;
+  //   if (this.animation) {
+  //     try {
+  //       this.animation.cancel();
+  //     } catch {
+  //       /* ignore */
+  //     }
+  //     this.animation = undefined;
+  //   }
+  //   this.isAnimating = true;
+  //   const el = this.contentElement;
+  //   const startHeight = el.scrollHeight; // parte dall’altezza piena
+  //   const endHeight = 0;
+
+  //   const duration = this.prefersReducedMotion ? 0 : this.animationDuration;
+
+  //   el.style.height = `${startHeight}px`;
+
+  //   this.animation = el.animate([{ height: `${startHeight}px` }, { height: `${endHeight}px` }], {
+  //     duration,
+  //     easing: 'ease',
+  //   });
+
+  //   this.animation.finished.then(() => {
+  //     el.style.height = '0px';
+  //     el.style.visibility = 'hidden';
+  //     this.animation = undefined;
+  //     this.isAnimating = false;
+  //   });
+  // }
   private performCollapse() {
-    // if (this.isAnimating) return;
-
-    // this.isAnimating = true;
-
-    // // Get current height
-    // const currentHeight = this.contentElement.scrollHeight;
-    // this.contentElement.style.height = `${currentHeight}px`;
-
-    // // Force reflow with layout thrashing (or forced synchronous reflow)
-    // // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    // const _reflow2 = this.contentElement.offsetHeight;
-
-    // // Start animation
-    // this.contentElement.style.height = '0px';
-
-    // // Wait for animation to complete
-    // await new Promise<void>((resolve) => {
-    //   const onTransitionEnd = (e: TransitionEvent) => {
-    //     if (e.target === this.contentElement && e.propertyName === 'height') {
-    //       this.contentElement.removeEventListener('transitionend', onTransitionEnd);
-    //       this.isAnimating = false;
-    //       resolve();
-    //     }
-    //   };
-    //   this.contentElement.addEventListener('transitionend', onTransitionEnd);
-
-    //   // // Fallback timeout
-    //   setTimeout(() => {
-    //     this.contentElement.removeEventListener('transitionend', onTransitionEnd);
-    //     this.isAnimating = false;
-    //     resolve();
-    //   }, 100);
-    // });
     if (!this.contentElement) return;
-    if (this.animation) {
-      try {
-        this.animation.cancel();
-      } catch {
-        /* ignore */
-      }
-      this.animation = undefined;
-    }
-    this.isAnimating = true;
-    const el = this.contentElement;
-    const startHeight = el.scrollHeight; // parte dall’altezza piena
-    const endHeight = 0;
 
+    this.cleanupAnimation();
+    this.isAnimating = true;
+
+    const el = this.contentElement;
+    const startHeight = el.scrollHeight;
+    const endHeight = 0;
     const duration = this.prefersReducedMotion ? 0 : this.animationDuration;
 
     el.style.height = `${startHeight}px`;
@@ -263,15 +395,32 @@ export class ItCollapse extends BaseComponent {
       easing: 'ease',
     });
 
-    this.animation.finished.then(() => {
-      el.style.height = '0px';
-      el.style.visibility = 'hidden';
-      this.animation = undefined;
-      this.isAnimating = false;
-    });
+    this.animation.finished
+      .then(() => {
+        el.style.height = '0px';
+        el.style.visibility = 'hidden';
+      })
+      .catch(() => {
+        // Animation cancelled
+      })
+      .finally(() => {
+        this.cleanupAnimation();
+
+        // SPARA L'EVENTO SOLO DOPO CHE L'ANIMAZIONE È FINITA
+        this.dispatchEvent(
+          new CustomEvent('collapse-toggle', {
+            detail: {
+              expanded: this.expanded,
+              id: this.contentElement?.id,
+            },
+            bubbles: true,
+            composed: true,
+          }),
+        );
+      });
   }
 
-  private _onSlotChange = () => {
+  private _onTriggerSlotChange = () => {
     // Aggiorna gli attributi ARIA quando il contenuto dello slot cambia
     this.updateAriaAttributes();
   };
@@ -279,8 +428,8 @@ export class ItCollapse extends BaseComponent {
   render() {
     return html`
       <div class="collapse-wrapper">
-        <slot name="trigger" @slotchanged=${this._onSlotChange}></slot>
-        <div class="collapse-content">
+        <slot name="trigger" @slotchange=${this._onTriggerSlotChange}></slot>
+        <div class="collapse-content" part="content">
           <slot name="content"></slot>
         </div>
       </div>

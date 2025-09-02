@@ -46,44 +46,38 @@ export class ItAccordion extends BaseComponent {
     });
   }
 
-  private updateChildrenBackgroundProperties() {
-    this.accordionItems.forEach((item) => {
-      item.setParentBackground(this.backgroundActive, this.backgroundHover);
-    });
-  }
-
   connectedCallback() {
     super.connectedCallback?.();
-    this.addEventListener('collapse-toggle', this._onCollapseToggle);
+    // this.addEventListener('collapse-toggle', this._onCollapseToggle);
     this.addEventListener('keydown', this._onKeyDown as EventListener);
   }
 
-  firstUpdated(changedProperties: Map<string | number | symbol, unknown>) {
+  override firstUpdated(changedProperties: Map<string | number | symbol, unknown>) {
     super.firstUpdated?.(changedProperties);
     // Inizializza le proprietà sui figli
     this.updateChildrenProperties();
   }
 
-  disconnectedCallback(): void {
-    this.removeEventListener('collapse-toggle', this._onCollapseToggle);
+  override disconnectedCallback(): void {
+    // this.removeEventListener('collapse-toggle', this._onCollapseToggle);
     this.removeEventListener('keydown', this._onKeyDown as EventListener);
     super.disconnectedCallback?.();
   }
 
-  private _onCollapseToggle = (e: Event) => {
-    const customEvent = e as CustomEvent;
-    const { expanded, id: targetId } = customEvent.detail;
+  // private _onCollapseToggle = (e: Event) => {
+  //   const customEvent = e as CustomEvent;
+  //   const { expanded, id: targetId } = customEvent.detail;
 
-    // Se è in single mode e sta per essere espanso, chiudi tutti gli altri
-    if (!this.multiple && expanded) {
-      for (const item of this.accordionItems) {
-        const collapseElement = item.shadowRoot?.querySelector('it-collapse') as any;
-        if (collapseElement && collapseElement.contentElement?.id !== targetId && collapseElement.expanded) {
-          collapseElement.expanded = false;
-        }
-      }
-    }
-  };
+  //   // Se è in single mode e sta per essere espanso, chiudi tutti gli altri
+  //   // if (!this.multiple && expanded) {
+  //   //   for (const item of this.accordionItems) {
+  //   //     const collapseElement = item.shadowRoot?.querySelector('it-collapse') as any;
+  //   //     if (collapseElement && collapseElement.contentElement?.id !== targetId && collapseElement.expanded) {
+  //   //       collapseElement.expanded = false;
+  //   //     }
+  //   //   }
+  //   // }
+  // };
 
   private _onSlotChange = () => {
     // Quando cambiano i children, aggiorna tutte le proprietà

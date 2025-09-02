@@ -38,7 +38,6 @@ export class ItAccordionItem extends BaseComponent {
   // Metodo pubblico per impostare la proprietà leftIcon del parent
   public setParentLeftIcon(leftIcon: boolean) {
     this.parentLeftIcon = leftIcon;
-    // this.requestUpdate();
   }
 
   // Getter per leggere lo stato corrente
@@ -134,7 +133,7 @@ export class ItAccordionItem extends BaseComponent {
     }
   }
 
-  firstUpdated(changedProperties: Map<string | number | symbol, unknown>) {
+  override firstUpdated(changedProperties: Map<string | number | symbol, unknown>) {
     super.firstUpdated?.(changedProperties);
 
     // Inizializza lo stato interno dal defaultOpen

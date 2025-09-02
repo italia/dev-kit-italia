@@ -75,33 +75,33 @@ it-accordion-item {
   display: flex;
 }
 
-.accordion-collapse {
-  --collapse-duration: 0.35s;
-  --collapse-target-height: 0px;
+// .accordion-collapse {
+//   --collapse-duration: 0.35s;
+//   --collapse-target-height: 0px;
 
-  &.collapse:not(.show) {
-    display: none;
-    // animation: cleanup-close var(--collapse-duration) ease forwards;
-  }
+//   &.collapse:not(.show) {
+//     display: none;
+//     // animation: cleanup-close var(--collapse-duration) ease forwards;
+//   }
 
-  &.collapsing {
-    display: block;
-    overflow: hidden;
-    height: var(--collapse-target-height);
-    transition: height var(--collapse-duration) ease;
-  }
+//   &.collapsing {
+//     display: block;
+//     overflow: hidden;
+//     height: var(--collapse-target-height);
+//     transition: height var(--collapse-duration) ease;
+//   }
 
-  &.collapse.show {
-    display: block;
-    height: auto;
-    // animation: cleanup-open var(--collapse-duration) ease forwards;
-  }
+//   &.collapse.show {
+//     display: block;
+//     height: auto;
+//     // animation: cleanup-open var(--collapse-duration) ease forwards;
+//   }
 
-  // Clean up on transition end
-  &.collapsing.show {
-    height: var(--collapse-target-height);
-  }
-}
+//   // Clean up on transition end
+//   &.collapsing.show {
+//     height: var(--collapse-target-height);
+//   }
+// }
 
 // @keyframes cleanup-close {
 //   to {
