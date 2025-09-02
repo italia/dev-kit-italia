@@ -14,12 +14,20 @@
   width: 100%;
 }
 
-.collapse-content {
+.collapse-content,
+.collapse-content * {
   overflow: hidden;
   height: 0;
-  @include transition($transition-collapse);
+  // @include transition($transition-collapse);
 }
 
 :host([expanded]) .collapse-content {
   // Height will be managed by JavaScript during animation
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  border-color: var(--bs-accordion-btn-focus-border-color);
+  /* outline: 0; */
+  box-shadow: var(--bs-accordion-btn-focus-box-shadow);
 }

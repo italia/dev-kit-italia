@@ -11,7 +11,8 @@ type ItAccordion = HTMLElement & {
 type ItAccordionItem = HTMLElement & {
   as: string;
   label: string;
-  defaultOpen: boolean;
+  expanded: boolean;
+  defaultOpen: boolean; // Keep for backward compatibility in tests
 };
 
 describe('ItAccordion', () => {
@@ -52,12 +53,11 @@ describe('ItAccordion', () => {
     `);
 
     const item1 = el.querySelector('it-accordion-item') as ItAccordionItem;
-    expect(item1.defaultOpen).to.be.true;
+    expect(item1.expanded).to.be.true; // Changed from defaultOpen to expanded
 
-    // Check that the collapse component is expanded
+    // Check that the component is expanded (since it-accordion-item extends it-collapse)
     await elementUpdated(item1);
-    const collapseElement = item1.shadowRoot?.querySelector('it-collapse');
-    expect(collapseElement?.expanded).to.be.true;
+    expect(item1.expanded).to.be.true;
   });
 
   it('should render correct heading levels', async () => {
@@ -95,12 +95,14 @@ describe('ItAccordion', () => {
     const item = el.querySelector('it-accordion-item') as ItAccordionItem;
     await elementUpdated(item);
 
-    const collapseElement = item.shadowRoot?.querySelector('it-collapse');
+    // Now it-accordion-item is directly it-collapse, so we check the item itself
     const panel = item.shadowRoot?.querySelector('.accordion-collapse');
+    const button = item.shadowRoot?.querySelector('.accordion-button');
 
-    // Check that the collapse component is expanded
-    expect(collapseElement?.expanded).to.equal(true);
+    // Check that the item is expanded
+    expect(item.expanded).to.equal(true);
     expect(panel?.getAttribute('role')).to.equal('region');
+    expect(button?.getAttribute('aria-expanded')).to.equal('true');
   });
 
   it('should dispatch toggle events', async () => {
@@ -116,16 +118,22 @@ describe('ItAccordion', () => {
     let eventFired = false;
     let eventDetail: any = null;
 
-    el.addEventListener('accordion-toggle', (e: Event) => {
+    el.addEventListener('collapse-toggle', (e: Event) => {
       eventFired = true;
       eventDetail = (e as CustomEvent).detail;
     });
 
-    const button = item.shadowRoot?.querySelector('it-button') as HTMLElement;
+    // Now it-accordion-item extends it-collapse, so button is a native button with .accordion-button class
+    const button = item.shadowRoot?.querySelector('.accordion-button') as HTMLElement;
     button.click();
 
+    // Wait for animation to complete (350ms + some margin)
+    await new Promise((resolve) => {
+      setTimeout(resolve, 400);
+    });
+
     expect(eventFired).to.be.true;
-    expect(eventDetail).to.have.property('id');
+    expect(eventDetail).to.have.property('expanded');
   });
 
   it('should handle keyboard navigation', async () => {
@@ -170,12 +178,12 @@ describe('ItAccordion', () => {
     await elementUpdated(item1);
     await elementUpdated(item2);
 
-    // Initially item1 should be open
-    expect(item1.defaultOpen).to.be.true;
-    expect(item2.defaultOpen).to.be.false;
+    // Initially item1 should be open (now using expanded instead of defaultOpen)
+    expect(item1.expanded).to.be.true;
+    expect(item2.expanded).to.be.false;
 
     // Click on item2 should close item1 and open item2
-    const button2 = item2.shadowRoot?.querySelector('it-button') as HTMLElement;
+    const button2 = item2.shadowRoot?.querySelector('.accordion-button') as HTMLElement;
     button2.click();
 
     // Allow time for event processing
@@ -205,12 +213,12 @@ describe('ItAccordion', () => {
     await elementUpdated(item1);
     await elementUpdated(item2);
 
-    // Initially item1 should be open
-    expect(item1.defaultOpen).to.be.true;
-    expect(item2.defaultOpen).to.be.false;
+    // Initially item1 should be open (now using expanded)
+    expect(item1.expanded).to.be.true;
+    expect(item2.expanded).to.be.false;
 
     // Click on item2 should open item2 while keeping item1 open
-    const button2 = item2.shadowRoot?.querySelector('it-button') as HTMLElement;
+    const button2 = item2.shadowRoot?.querySelector('.accordion-button') as HTMLElement;
     button2.click();
 
     // Allow time for event processing
@@ -233,12 +241,12 @@ describe('ItAccordion', () => {
     await elementUpdated(item);
 
     let eventCount = 0;
-    el.addEventListener('accordion-toggle', () => {
+    el.addEventListener('collapse-toggle', () => {
       // eslint-disable-next-line no-plusplus
       eventCount++;
     });
 
-    const button = item.shadowRoot?.querySelector('it-button') as HTMLElement;
+    const button = item.shadowRoot?.querySelector('.accordion-button') as HTMLElement;
 
     // Test Enter key
     const enterEvent = new KeyboardEvent('keydown', {
@@ -248,6 +256,11 @@ describe('ItAccordion', () => {
     });
     button.dispatchEvent(enterEvent);
 
+    // Wait for animation to complete for the first event
+    await new Promise((resolve) => {
+      setTimeout(resolve, 400);
+    });
+
     // Test Space key
     const spaceEvent = new KeyboardEvent('keydown', {
       key: ' ',
@@ -256,9 +269,9 @@ describe('ItAccordion', () => {
     });
     button.dispatchEvent(spaceEvent);
 
-    // Allow time for event processing
+    // Wait for animation to complete for the second event
     await new Promise((resolve) => {
-      setTimeout(resolve, 100);
+      setTimeout(resolve, 400);
     });
 
     expect(eventCount).to.be.greaterThan(0);
@@ -334,8 +347,9 @@ describe('ItAccordionItem', () => {
     const panel2 = el2.shadowRoot?.querySelector('.accordion-collapse')?.id;
 
     expect(panel1).to.not.equal(panel2);
-    expect(panel1).to.include('it-accordion-item-content');
-    expect(panel2).to.include('it-accordion-item-content');
+    // Now it-accordion-item extends it-collapse, so IDs use it-collapse prefix
+    expect(panel1).to.include('it-collapse-content');
+    expect(panel2).to.include('it-collapse-content');
   });
 
   it('should have correct CSS classes based on state', async () => {
@@ -350,11 +364,8 @@ describe('ItAccordionItem', () => {
     await elementUpdated(elClosed);
     await elementUpdated(elOpen);
 
-    const collapseClosed = elClosed.shadowRoot?.querySelector('it-collapse');
-    const collapseOpen = elOpen.shadowRoot?.querySelector('it-collapse');
-
-    // Check that collapse components have the correct expanded state
-    expect(collapseClosed?.expanded).to.be.false;
-    expect(collapseOpen?.expanded).to.be.true;
+    // Now it-accordion-item is directly it-collapse, so check the items themselves
+    expect(elClosed.expanded).to.be.false;
+    expect(elOpen.expanded).to.be.true;
   });
 });

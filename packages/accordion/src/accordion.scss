@@ -7,11 +7,10 @@
 @import 'bootstrap-italia/src/scss/components/accordion';
 @import 'bootstrap-italia/src/scss/components/type';
 
-it-button {
+button {
   display: flex;
   width: 100%;
   align-items: center;
-  padding: 0 !important;
 
   &::after {
     content: none !important;
@@ -22,7 +21,7 @@ it-button {
   }
 }
 
-it-button::part(button) {
+button {
   display: flex !important;
   width: 100%;
   align-items: center;

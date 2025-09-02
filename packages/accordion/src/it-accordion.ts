@@ -41,8 +41,23 @@ export class ItAccordion extends BaseComponent {
 
   private updateChildrenProperties() {
     this.accordionItems.forEach((item) => {
-      item.setParentBackground(this.backgroundActive, this.backgroundHover);
-      item.setParentLeftIcon(this.leftIcon);
+      if (this.backgroundActive) {
+        item.setAttribute('background-active', '');
+      } else {
+        item.removeAttribute('background-active');
+      }
+
+      if (this.backgroundHover) {
+        item.setAttribute('background-hover', '');
+      } else {
+        item.removeAttribute('background-hover');
+      }
+
+      if (this.leftIcon) {
+        item.setAttribute('left-icon', '');
+      } else {
+        item.removeAttribute('left-icon');
+      }
     });
   }
 
@@ -89,8 +104,8 @@ export class ItAccordion extends BaseComponent {
     const triggers: HTMLElement[] = [];
     // Per ogni item, cerca il button nel suo shadow DOM
     for (const item of this.accordionItems) {
-      const trigger = item.shadowRoot?.querySelector<HTMLElement>(':is(h2,h3,h4,h5,h6) it-button');
-      if (trigger) triggers.push(trigger?.shadowRoot?.querySelector('button') as HTMLElement);
+      const trigger = item.shadowRoot?.querySelector<HTMLElement>('button');
+      if (trigger) triggers.push(trigger);
     }
 
     if (!triggers.length) return;

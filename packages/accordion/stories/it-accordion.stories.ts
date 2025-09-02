@@ -22,7 +22,7 @@ interface AccordionItemProps {
 
 const renderAccordionItem = (params: AccordionItemProps) => html`
   <it-accordion-item label="${params.label}" as="${ifDefined(params.as)}" ?default-open="${params.defaultOpen}">
-    ${params.content}
+    <div slot="content">${params.content}</div>
   </it-accordion-item>
 `;
 
@@ -228,65 +228,6 @@ Combinato con \`background-active\`, le icone diventano bianche quando l'element
   render: (args) => renderComponent(args, defaultItems),
 };
 
-export const ContenutiComplessi: Story = {
-  name: 'Contenuti complessi',
-  argTypes: {
-    multiple: {
-      table: { disable: true },
-    },
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Gli elementi accordion possono contenere qualsiasi tipo di contenuto HTML, inclusi elenchi, immagini, bottoni e altri componenti.
-`,
-      },
-    },
-  },
-  render: () => html`
-    <it-accordion>
-      <it-accordion-item label="Elenco" default-open>
-        <ul>
-          <li>Primo elemento</li>
-          <li>Secondo elemento</li>
-          <li>Terzo elemento</li>
-        </ul>
-      </it-accordion-item>
-      <it-accordion-item label="Contenuto misto">
-        <p>Questo accordion contiene diversi tipi di contenuto:</p>
-        <blockquote>"Una citazione di esempio per dimostrare la flessibilità del componente"</blockquote>
-        <p>E anche dei pulsanti:</p>
-        <it-button>Azione primaria</it-button>
-        <it-button variant="secondary">Azione secondaria</it-button>
-      </it-accordion-item>
-      <it-accordion-item label="Tabella">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Cognome</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Mario</td>
-              <td>Rossi</td>
-              <td>mario.rossi@example.com</td>
-            </tr>
-            <tr>
-              <td>Giulia</td>
-              <td>Bianchi</td>
-              <td>giulia.bianchi@example.com</td>
-            </tr>
-          </tbody>
-        </table>
-      </it-accordion-item>
-    </it-accordion>
-  `,
-};
-
 export const SfondoPrimario: Story = {
   name: 'Sfondo primario',
   argTypes: {
@@ -313,17 +254,23 @@ Applicando proprietà aggiuntive al componente \`it-accordion\` è possibile uti
 
       <it-accordion background-active>
         <it-accordion-item label="Elemento Accordion #1" default-open>
-          Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
-          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
-        </it-accordion-item>
+          <p slot="content">
+            Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+            facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
+          </p></it-accordion-item
+        >
         <it-accordion-item label="Elemento Accordion #2">
-          Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
-          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
-        </it-accordion-item>
+          <p slot="content">
+            Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+            facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
+          </p></it-accordion-item
+        >
         <it-accordion-item label="Elemento Accordion #3">
-          Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
-          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
-        </it-accordion-item>
+          <p slot="content">
+            Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+            facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
+          </p></it-accordion-item
+        >
       </it-accordion>
     </div>
 
@@ -336,16 +283,16 @@ Applicando proprietà aggiuntive al componente \`it-accordion\` è possibile uti
 
       <it-accordion background-hover>
         <it-accordion-item label="Elemento Accordion #1" default-open>
-          Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
-          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+          <p slot="content">Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
         </it-accordion-item>
         <it-accordion-item label="Elemento Accordion #2">
-          Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
-          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+          <p slot="content">Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
         </it-accordion-item>
         <it-accordion-item label="Elemento Accordion #3">
-          Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
-          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+          <p slot="content">Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
         </it-accordion-item>
       </it-accordion>
     </div>
