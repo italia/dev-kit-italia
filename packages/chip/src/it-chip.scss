@@ -29,16 +29,6 @@
   --bs-icon-default: var(--bs-icon-disabled);
 }
 
-// Focus border-radius su it-button/button (equivalente a .chip button:focus-visible)
-::slotted(it-button:focus-visible),
-::slotted(button:focus-visible) {
-  border-radius: 50%;
-}
-
-::slotted(it-button) {
-  cursor: pointer !important;
-}
-
 :host([isdisabled]) ::slotted(it-button) {
   cursor: not-allowed !important;
 }

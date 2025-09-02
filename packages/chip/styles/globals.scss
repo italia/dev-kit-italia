@@ -1,8 +1,11 @@
 it-chip it-button::part(button) {
   padding: 0;
-  border: none;
-  background: rgba(0, 0, 0, 0);
+  // border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer !important;
   line-height: 1;
+  --bs-btn-disabled-opacity: 1;
 }
 
 it-chip it-button it-icon::part(icon) {
