@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "",
   "type": "module",
+  "private": true,
   "exports": {
     "./utils": "./utils/index.js",
     "./web-test-runner.config.js": "./web-test-runner.config.js"

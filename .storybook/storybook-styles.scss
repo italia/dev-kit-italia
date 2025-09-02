@@ -15,6 +15,7 @@
   align-items: start;
   padding: 0.3rem 0;
   gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
 .toc-wrapper {
@@ -37,8 +38,37 @@
   display: none;
 }
 
+[id|='stories'] {
+  display: none;
+}
+
 @media (min-width: 1200px) {
   .sbdocs-video-container {
     min-width: 800px;
   }
 }
+
+.docblock-argstable {
+  ul {
+    font-size: 13px;
+  }
+}
+
+.toc-wrapper {
+  ul {
+    font-size: 0.85rem;
+    line-height: 1.2;
+
+    li.toc-list-item {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+  }
+}
+
+/* Forza a capo prima del nome dell'attributo*/
+// .token.attr-name::before {
+//   content: '';
+//   white-space: pre;
+//   display: block;
+// }

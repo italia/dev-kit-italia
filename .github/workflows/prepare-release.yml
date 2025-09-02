@@ -1,0 +1,35 @@
+name: Generate new release
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: '22'
+
+      - name: git config
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+      - name: Changesets version and publish
+        uses: changesets/action@v1
+        id: changesets
+        with:
+          version: 'node scripts/version.js'
+          createGithubReleases: false
+          title: 'Preparati i pacchetti per il rilascio'
+          commit: 'chore: prepared packages for release'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

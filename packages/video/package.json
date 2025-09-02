@@ -1,7 +1,7 @@
 {
   "name": "@italia/video",
   "description": "Web component it-video del Design system .italia",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.1",
   "publishConfig": {
     "access": "public"
   },
@@ -37,7 +37,6 @@
     "analyze": "cem analyze --litelement --exclude dist",
     "build": "rollup --config rollup.config.js",
     "clean": "rimraf node_modules .turbo .rollup.cache dist coverage",
-    "prepublish": "pnpm build",
     "lint": "eslint --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" && stylelint \"src/**/*.scss\" && prettier \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --check",
     "format": "eslint --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --fix && stylelint \"src/**/*.scss\" --fix && prettier \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --write",
     "test": "wtr --coverage --node-resolve --config web-test-runner.config.js"
@@ -46,6 +45,7 @@
     "@italia/button": "workspace:^",
     "@italia/icon": "workspace:^",
     "@italia/globals": "workspace:^",
+    "@italia/i18n": "workspace:^",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:",
     "video.js": "^8.21.0",
@@ -59,6 +59,7 @@
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
+    "rollup-plugin-copy": "^3.5.0",
     "@types/mocha": "catalog:",
     "@web/test-runner": "catalog:",
     "rimraf": "^6.0.1",

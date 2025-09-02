@@ -12,7 +12,8 @@ const preview = {
     },
     docs: {
       toc: {
-        headingSelector: 'h1, h2, h3',
+        headingSelector: 'h2, h3',
+        ignoreSelector: 'h2[id|="stories"], #esempio, .docs-story h2, .docs-story h3',
         title: 'Indice',
       },
     },
@@ -25,3 +26,18 @@ const preview = {
 };
 
 export default preview;
+
+export const decorators = [
+  (Story) => {
+    // Usa un effetto per agire sul documento dell'iframe dopo il mount
+    // Funziona anche con React o senza (a seconda del setup)
+
+    // Questo codice funziona anche senza React
+    setTimeout(() => {
+      if (typeof document !== 'undefined' && document.documentElement) {
+        document.documentElement.lang = 'it'; // Cambia "it" con la lingua desiderata
+      }
+    }, 0); // Lascia tempo all'iframe di caricare
+    return Story();
+  },
+];

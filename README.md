@@ -38,7 +38,7 @@ _⚠️ Attenzione: questo repository e i relativi pacchetti sono in lavorazione
 
 **Design Web Components** è un set di Web components che implementa il Design system .italia e i componenti presenti su [UI Kit Italia](https://github.com/italia/design-ui-kit).
 Per navigare la libreria e visualizzare i componenti, è stato utilizzato [Storybook](https://storybook.js.org/).
-La versione pubblica dello Storybook è disponibile [qui](https://italia.github.io/design-web-components) per l'ultima release stabile pubblicata.
+La documentazione è disponibile [qui](https://italia.github.io/design-web-components) per l'ultima release stabile pubblicata.
 
 ## Come usare la libreria
 
@@ -46,7 +46,7 @@ Per utilizzare Design Web Components come dipendenza in un'app è possibile inst
 
 ## Come contribuire 💙
 
-Per installare la libreria e avviare lo Storybook in locale, è necessario avere installato [Node.js](https://nodejs.org/) e [pnpm](https://pnpm.io/).
+Per installare la libreria e avviare Storybook in locale, è necessario avere installato [Node.js](https://nodejs.org/) e [pnpm](https://pnpm.io/).
 
 Per installare le dipendenze:
 
@@ -54,8 +54,81 @@ Per installare le dipendenze:
 pnpm install
 ```
 
-Per avviare lo Storybook in locale:
+Per compilare tutti i componenti (necessario la prima volta):
+
+```sh
+pnpm build
+```
+
+Per avviare Storybook in locale:
 
 ```sh
 pnpm storybook
 ```
+
+**Durante lo sviluppo:**
+- Documentazione/Storie e tipi: si aggiornano automaticamente ✨
+- Componenti: puoi ricompilare il solo package modificato
+
+```sh
+# Per esempio, se stai modificando il componente button:
+pnpm build --filter=@italia/button
+# Poi ricarica la pagina del browser
+```
+
+**Nota:** È necessario eseguire `pnpm build` prima di avviare Storybook la prima volta per compilare i pacchetti TypeScript in JavaScript.
+
+### Testare l'integrazione dei Web Components in altri framework JavaScript
+
+Si consiglia di partire creando un progetto di esempio utilizzando il framework desiderato e importando i Web Components da Design Web Components.
+
+```bash
+# Esegui questo comando
+npm create vite@latest test-app
+# Poi segui il prompt!
+```
+
+Dopo aver creato il progetto, è possibile installare Design Web Components come dipendenza:
+
+```bash
+npm install @italia/design-web-components
+```
+
+A questo punto bisogna importare i Web Components nel progetto.
+
+```javascript
+import '@italia/design-web-components/fonts.css';
+import '@italia/design-web-components/styles.css';
+import '@italia/design-web-components/elements.js';
+
+// Pronti a utilizzare i Web Components!
+return (
+  <div>
+    <it-button ...></it-button>
+  </div>
+)
+```
+
+Come alternativa, è possibile installare i singoli pacchetti dei Web Components. Sarà comunque necessario importare il file CSS generale come mostrato sopra.
+
+```bash
+npm install @italia/button
+```
+
+```javascript
+import '@italia/design-web-components/fonts.css';
+import '@italia/design-web-components/styles.css';
+import '@italia/button/it-button.js';
+
+return (
+  <div>
+    <it-button ...></it-button>
+  </div>
+)
+```
+
+## Processo di Rilascio 🚀
+
+Il progetto utilizza [Changesets](https://github.com/changesets/changesets) per gestire i rilasci di tutti i pacchetti. Per informazioni dettagliate, consulta la [documentazione di rilascio](./RELEASE.md).
+
+Il workflow GitHub Actions pubblicherà automaticamente tutti i pacchetti su NPM.
