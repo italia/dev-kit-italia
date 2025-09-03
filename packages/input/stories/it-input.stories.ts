@@ -23,7 +23,6 @@ interface InputProps {
   placeholder: string;
   supportText: string;
   value: string;
-  slotted: boolean;
   labelHidden: boolean;
   passwordStrengthMeter: boolean;
   minlength: number;
@@ -49,7 +48,6 @@ const renderComponent = (params: any) =>
     support-text="${ifDefined(params.supportText || undefined)}"
     value="${ifDefined(params.value || undefined)}"
     size="${ifDefined(params.size || undefined)}"
-    ?slotted="${params.slotted}"
     ?strength-meter="${params.passwordStrengthMeter}"
     minlength="${ifDefined(params.minlength) || undefined}"
     maxlength="${ifDefined(params.maxlength) || undefined}"
@@ -80,7 +78,7 @@ const meta = {
     size: undefined,
     readonly: false,
     plaintext: false,
-    slotted: false,
+
     labelHidden: false,
     passwordStrengthMeter: false,
     minlength: undefined,
@@ -158,13 +156,6 @@ const meta = {
       table: { defaultValue: { summary: 'false' } },
       description:
         "Se il campo è readonly, con l'attributo 'plaintext' il campo assume l'aspetto di testo normalizzato.",
-    },
-    slotted: {
-      control: 'boolean',
-      type: 'boolean',
-      description:
-        "Se vengono usati gli slot per mostrare l'icona o il bottone, questo attributo deve avere valore 'true'",
-      table: { defaultValue: { summary: 'false' } },
     },
     labelHidden: {
       name: 'label-hidden',
@@ -348,7 +339,6 @@ export const IconeOPulsanti: Story = {
     label: 'Campo con icona',
     name: 'field-icon-example',
     id: 'field-icon-example',
-    slotted: true,
     supportText: 'Testo di supporto',
   },
   parameters: {
@@ -395,7 +385,6 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
   args: {
     type: 'text',
     placeholder: 'Testo segnaposto',
-    slotted: true,
   },
   render: (params) => html`
     ${renderComponent({
@@ -589,21 +578,21 @@ export const GestioneEventi: Story = {
   parameters: {
     docs: {
       description: {
-        story: `E' possibile gestire gli eventi di \`on-input\`, \`blur\`, \`change\`, \`focus\`, \`click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
+        story: `E' possibile gestire gli eventi di \`it-input\`, \`it-blur\`, \`it-change\`, \`it-focus\`, \`it-click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
         <br/><br/>
         E' sufficiente aggiungere un event listener al componente \`<it-input>\` per intercettare gli eventi desiderati. Ad esempio, per gestire l'evento di input, è possibile utilizzare il seguente codice:
 
 \`\`\`js
-document.querySelector('it-input#event-input-example').addEventListener('on-input', (event) => {
+document.querySelector('it-input#event-input-example').addEventListener('it-input', (event) => {
   console.log('Input event:', event);
   alert('Input event);
 });
 \`\`\`
 
-Il componente, emette anche un evento di tipo \`input-ready\` quando l'input è pronto e caricato nel DOM:
+Il componente, emette anche un evento di tipo \`it-input-ready\` quando l'input è pronto e caricato nel DOM:
 
 \`\`\`js
-document.querySelector('it-input#event-input-example').addEventListener('input-ready', (event) => {
+document.querySelector('it-input#event-input-example').addEventListener('it-input-ready', (event) => {
   console.log('Input ready:', event);
 });
 \`\`\`
@@ -621,11 +610,11 @@ document.querySelector('it-input#event-input-example').addEventListener('input-r
   },
   render: (params) => html`
     <script>
-      document.querySelector('it-input#event-input-example').addEventListener('on-input', (event) => {
+      document.querySelector('it-input#event-input-example').addEventListener('it-input', (event) => {
         console.log('Input event:', event);
         alert('Input event');
       });
-      document.querySelector('it-input#event-input-example').addEventListener('input-ready', (event) => {
+      document.querySelector('it-input#event-input-example').addEventListener('it-input-ready', (event) => {
         console.log('Input ready:', event);
       });
     </script>

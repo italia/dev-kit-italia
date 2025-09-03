@@ -89,7 +89,7 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
     /**
      * The value.
      */
-    abstract _value: string;
+    abstract value: string;
 
     /**
      * The pattern to match to be valid.
@@ -136,27 +136,27 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
         ? (this._getValidityMessage(VALIDATION_STATUS.NO_ERROR, translations) as string)
         : (this._getValidityMessage(VALIDATION_STATUS.INVALID, translations) as string);
 
-      if (this.required || (this._value && (this.pattern || this.minlength > 0 || this.maxlength > 0))) {
+      if (this.required || (this.value && (this.pattern || this.minlength > 0 || this.maxlength > 0))) {
         if (this.pattern) {
           const regex = new RegExp(`^${this.pattern}$`, 'u');
-          validity = regex.test(this._value.toString());
+          validity = regex.test(this.value.toString());
           if (!validity) {
             message = this._getValidityMessage(VALIDATION_STATUS.PATTERN, translations) as string;
           }
         }
         if (typeof this.minlength !== 'undefined' && this.minlength > 0) {
-          validity = validity && this._value.toString().length >= this.minlength;
+          validity = validity && this.value.toString().length >= this.minlength;
           if (!validity) {
             message = this._getValidityMessage(VALIDATION_STATUS.MINLENGTH, translations) as string;
           }
         }
         if (typeof this.maxlength !== 'undefined' && this.maxlength > 0) {
-          validity = validity && this._value.toString().length <= this.maxlength;
+          validity = validity && this.value.toString().length <= this.maxlength;
           if (!validity) {
             message = this._getValidityMessage(VALIDATION_STATUS.MAXLENGTH, translations) as string;
           }
         }
-        if (this.required && !this._value) {
+        if (this.required && !this.value) {
           validity = false;
           message = this._getValidityMessage(VALIDATION_STATUS.ERROR_REQUIRED, translations) as string;
         }
@@ -179,15 +179,15 @@ const ValidityMixin = <T extends Constructor<HTMLElement>>(Base: T) => {
 
     _handleBlur() {
       this._touched = true;
-      this.dispatchEvent(new FocusEvent('blur', { bubbles: true, composed: true }));
+      this.dispatchEvent(new FocusEvent('it-blur', { bubbles: true, composed: true }));
     }
 
     _handleFocus() {
-      this.dispatchEvent(new FocusEvent('focus', { bubbles: true, composed: true }));
+      this.dispatchEvent(new FocusEvent('it-focus', { bubbles: true, composed: true }));
     }
 
     _handleClick() {
-      this.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
+      this.dispatchEvent(new MouseEvent('it-click', { bubbles: true, composed: true }));
     }
 
     _handleChange(e: Event) {

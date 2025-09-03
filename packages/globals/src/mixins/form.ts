@@ -22,13 +22,26 @@ const FormMixin = <TBase extends Constructor<HTMLElement>>(Base: TBase) => {
      *
      * @param event The event.
      */
-    abstract _handleFormdata(event: Event): void;
+
+    abstract name: string;
+
+    abstract disabled: boolean;
+
+    abstract value: any;
+
+    handleFormdata(event: FormDataEvent) {
+      // Add name and value to the form's submission data if it's not disabled.
+      if (!this.disabled) {
+        const { formData } = event;
+        formData.append(this.name, this.value);
+      }
+    }
 
     connectedCallback() {
       // @ts-ignore
       super.connectedCallback();
       if (this.closest('form')) {
-        this.closest('form')?.addEventListener('formdata', this._handleFormdata.bind(this));
+        this.closest('form')?.addEventListener('formdata', this.handleFormdata.bind(this));
       }
     }
 

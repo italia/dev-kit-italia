@@ -1,0 +1,16 @@
+import "./chunk-WDMUDEB6.js";
+
+// ../../packages/design-web-components/dist/it-burger-D9BVNtVP-D9BVNtVP.js
+var svg = `<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<g>
+	<path d="M22,5v1H2V5H22z M2,12.5h20v-1H2V12.5z M2,19h20v-1H2V19z"/>
+</g>
+</svg>
+`;
+export {
+  svg as default
+};
+//# sourceMappingURL=it-burger-D9BVNtVP-D9BVNtVP-I6M3XIES.js.map

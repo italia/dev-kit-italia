@@ -1,0 +1,15 @@
+import "./chunk-WDMUDEB6.js";
+
+// ../../packages/design-web-components/dist/it-flickr-0bB7B4XG-0bB7B4XG.js
+var svg = `<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<circle cx="6.7" cy="12" r="4.7"/>
+<circle cx="17.3" cy="12" r="4.7"/>
+</svg>
+`;
+export {
+  svg as default
+};
+//# sourceMappingURL=it-flickr-0bB7B4XG-0bB7B4XG-W2SBQCR6.js.map

@@ -10,6 +10,9 @@ export {
   BaseComponentType,
   BaseLocalizedComponent,
 } from './base-component/base-component.js';
+
+export { type FormControl } from './form/form-control.js';
+export { formCollections, FormControlControllerOptions, FormControlController } from './form/form-controller.js';
 export { VALIDATION_STATUS } from './mixins/validity.js';
 export { cookies } from './utils/cookies.js';
 export type Constructor<T = {}> = new (...args: any[]) => T;
