@@ -8,11 +8,6 @@ import styles from './dropdown-item.scss';
 export class ItDropdownItem extends BaseComponent {
   static styles = styles;
 
-  // static override shadowRootOptions = {
-  //   ...LitElement.shadowRootOptions,
-  //   delegatesFocus: true,
-  // };
-
   @property({ type: String }) label = '';
 
   @property({ type: String }) value = '';

@@ -83,16 +83,12 @@ export class ItDropdown extends BaseComponent {
   private _onKeyDown = (event: KeyboardEvent) => {
     const items = this._menuItems.map((item) => item.getFocusableElement()).filter((el) => !!el);
     const active = this.getActiveElement<ItDropdownItem>();
-    // console.log('onKeyDown ', event.key, ' ', active);
     if (!active) return;
 
     const currentIndex = items.indexOf(active);
 
     if (event.key === 'Tab') {
-      if (event.shiftKey && currentIndex === 0) {
-        // console.log('shift+tab ', this._triggerEl);
-        this._triggerEl?.focus();
-      } else if (event.shiftKey && currentIndex === -1) {
+      if (event.shiftKey && currentIndex === -1) {
         this._popoverOpen = false;
       }
       if (!event.shiftKey && currentIndex === items.length - 1) {
@@ -114,21 +110,24 @@ export class ItDropdown extends BaseComponent {
         getItems: () => items,
         setActive: (idx) => items[idx]?.focus(),
         closeMenu: () => {
-          // console.log('closeMenu ', this._triggerEl);
-          this._triggerEl?.focus();
-          // console.log('active', this.getActiveElement<ItDropdownItem>());
+          this.addEventListener(
+            'popover-close',
+            () => {
+              this._triggerEl?.focus();
+            },
+            { once: true, capture: true },
+          );
           this._popoverOpen = false;
         },
         trigger: this._triggerEl,
       });
 
-      this.removeEventListener('popover-open', handle);
       this._ariaNav.handleKeyDown(event);
     };
 
     if (['ArrowDown', 'ArrowUp'].includes(event.key)) {
       if (!this._popoverOpen && currentIndex === -1) {
-        this.addEventListener('popover-open', handle);
+        this.addEventListener('popover-open', handle, { once: true });
         this._popoverOpen = true;
         return;
       }
@@ -156,7 +155,7 @@ export class ItDropdown extends BaseComponent {
           variant=${ifDefined(this.variant)}
           size=${ifDefined(this.size)}
           @click=${this._onTriggerClick}
-          @keydown=${this._onKeyDown}
+          @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
           class="dropdown-toggle"
           exportparts="focusable"
           it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
@@ -196,7 +195,7 @@ export class ItDropdown extends BaseComponent {
               id=${this._menuId}
               class="link-list"
               role=${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}
-              @keydown=${this._onKeyDown}
+              @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
               aria-orientation=${ifDefined(this.fullWidth ? 'horizontal' : undefined)}
             >
               <slot @slotchange=${this._setChildrenProperties}></slot>

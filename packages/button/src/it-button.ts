@@ -51,6 +51,10 @@ export class ItButton extends BaseComponent {
     return this.internals ? this.internals.form : null;
   }
 
+  public override focus() {
+    this._nativeButton?.focus();
+  }
+
   private _onKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
