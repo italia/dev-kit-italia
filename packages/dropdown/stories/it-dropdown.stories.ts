@@ -26,7 +26,7 @@ type DropdownProps = {
   size?: string;
   'it-role'?: string;
   dark?: boolean;
-  fullWidth?: boolean;
+  'full-width'?: boolean;
 };
 type Story = StoryObj<DropdownProps>;
 
@@ -39,12 +39,12 @@ const meta = {
   args: {
     label: 'Apri dropdown',
     disabled: false,
-    alignment: 'bottom-start',
+    alignment: undefined,
     variant: 'primary',
     size: undefined,
     'it-role': undefined,
     dark: false,
-    fullWidth: false,
+    'full-width': false,
   },
   argTypes: {
     label: { control: 'text' },
@@ -79,7 +79,7 @@ const meta = {
       options: ['menu', 'list'],
     },
     dark: { control: 'boolean' },
-    fullWidth: { control: 'boolean' },
+    'full-width': { control: 'boolean' },
   },
   decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
   parameters: {
@@ -95,7 +95,8 @@ Per la creazione di un dropdown è necessario utilizzare il componente \`<it-dro
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>Lo standard <a href="https://www.w3.org/TR/wai-aria/">WAI ARIA</a> definisce un widget con proprietà <a href="https://www.w3.org/TR/wai-aria/#menu">\`role="menu"\`</a>, specifica per i menu applicativi con link o azioni.
 Questi menu possono contenere solo voci di menu, voci di menu di caselle di controllo, voci di menu dei pulsanti di opzione, gruppi di pulsanti di opzione e sottomenu.</p>
-<p>Questo componente comprende di base il supporto per la maggior parte delle interazioni standard del menu della tastiera, come la possibilità di spostarsi tra i singoli elementi .list-item usando i tasti freccia, e chiude il menu con il tasto ESC.</p>
+<p>I dropdown di **Design Web Components** sono progettati per essere invece generici e applicabili a una varietà di situazioni. Per questo motivo, il componente \`it-dropdown\` ha come ruolo predefinito il ruolo \`menu\` e gestisce automaticamente il ruolo degli elementi interni, ma gli autori potranno modificare il ruolo del Dropdown generato da questo componente ad una semplice lista impostando l'attributo \`it-role="list"\`.</p>
+<p>Questo componente comprende di base il supporto per la maggior parte delle interazioni standard del menu della tastiera, come la possibilità di spostarsi tra i singoli elementi \`it-dropdown-item\` usando i tasti freccia, e chiude il menu con il tasto ESC.</p>
 </div></div>
 `,
       },
@@ -124,7 +125,7 @@ export const Base: Story = {
       variant=${args.variant}
       it-role=${ifDefined(args['it-role'])}
       ?dark=${args.dark}
-      ?full-width=${args.fullWidth}
+      ?full-width=${args['full-width']}
     >
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item href="#">Azione 2</it-dropdown-item>
@@ -349,7 +350,7 @@ export const MenuVociGrandi: Story = {
 
 export const MenuATuttaLarghezza: Story = {
   name: 'Menu a tutta larghezza',
-  args: { fullWidth: true },
+  args: { 'full-width': true },
   render: (args) => html`
     <it-dropdown
       label=${args.label}
@@ -359,7 +360,7 @@ export const MenuATuttaLarghezza: Story = {
       variant=${ifDefined(args.variant)}
       it-role=${ifDefined(args['it-role'])}
       ?dark=${args.dark}
-      ?full-width=${args.fullWidth}
+      ?full-width=${args['full-width']}
       style="width: 100%;"
     >
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
