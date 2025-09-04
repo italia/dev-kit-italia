@@ -92,14 +92,14 @@ describe('<it-dropdown>', () => {
 
       // Open popover
       button.click();
-      await oneEvent(el.shadowRoot!.querySelector('it-popover')!, 'popover-open');
+      await oneEvent(el.shadowRoot!.querySelector('it-popover')!, 'it-popover-open');
 
       expect(button.getAttribute('aria-expanded')).to.equal('true');
       expect(menu.classList.contains('show')).to.be.true;
 
       // Close popover
       button.click();
-      await oneEvent(el.shadowRoot!.querySelector('it-popover')!, 'popover-close');
+      await oneEvent(el.shadowRoot!.querySelector('it-popover')!, 'it-popover-close');
 
       expect(button.getAttribute('aria-expanded')).to.equal('false');
       expect(menu.classList.contains('show')).to.be.false;
@@ -179,7 +179,7 @@ describe('<it-dropdown>', () => {
 
       const button = el.shadowRoot!.querySelector('it-button')!;
       button.click();
-      await oneEvent(el.shadowRoot!.querySelector('it-popover')!, 'popover-open');
+      await oneEvent(el.shadowRoot!.querySelector('it-popover')!, 'it-popover-open');
 
       const icon = el.shadowRoot!.querySelector('it-icon')!;
       expect(icon.getAttribute('name')).to.equal('it-collapse');
@@ -213,7 +213,7 @@ describe('<it-dropdown>', () => {
       expect(menu.classList.contains('show')).to.be.false;
 
       button.click();
-      await oneEvent(el.shadowRoot!.querySelector('it-popover')!, 'popover-open');
+      await oneEvent(el.shadowRoot!.querySelector('it-popover')!, 'it-popover-open');
 
       expect(menu.classList.contains('show')).to.be.true;
     });

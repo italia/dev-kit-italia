@@ -23,6 +23,7 @@
   "exports": {
     ".": "./dist/src/index.js",
     "./it-dropdown.js": "./dist/src/it-dropdown.js",
+    "./it-dropdown-item.js": "./dist/src/it-dropdown-item.js",
     "./styles/*": "./styles/*"
   },
   "files": [

@@ -1,5 +1,6 @@
 import '@italia/button/it-button.js';
 import '@italia/dropdown/it-dropdown.js';
+import '@italia/dropdown/it-dropdown-item.js';
 import '@italia/icon/it-icon.js';
 import '@italia/input/it-input.js';
 import '@italia/popover/it-popover.js';

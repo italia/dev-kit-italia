@@ -111,7 +111,7 @@ export class ItDropdown extends BaseComponent {
         setActive: (idx) => items[idx]?.focus(),
         closeMenu: () => {
           this.addEventListener(
-            'popover-close',
+            'it-popover-close',
             () => {
               this._triggerEl?.focus();
             },
@@ -127,7 +127,7 @@ export class ItDropdown extends BaseComponent {
 
     if (['ArrowDown', 'ArrowUp'].includes(event.key)) {
       if (!this._popoverOpen && currentIndex === -1) {
-        this.addEventListener('popover-open', handle, { once: true });
+        this.addEventListener('it-popover-open', handle, { once: true });
         this._popoverOpen = true;
         return;
       }
@@ -143,8 +143,8 @@ export class ItDropdown extends BaseComponent {
     return html`
       <it-popover
         placement=${this.alignment}
-        @popover-open=${this._onPopoverOpen}
-        @popover-close=${this._onPopoverClose}
+        @it-popover-open=${this._onPopoverOpen}
+        @it-popover-close=${this._onPopoverClose}
         ?open=${this._popoverOpen}
       >
         <it-button

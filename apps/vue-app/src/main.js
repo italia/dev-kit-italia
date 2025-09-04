@@ -6,7 +6,6 @@ import { registerTranslation } from '@italia/design-web-components/elements.js';
 
 import '@italia/design-web-components/fonts.css';
 import '@italia/design-web-components/styles.css';
-import '@italia/design-web-components/elements.js';
 
 import App from './App.vue';
 import router from './routes.js';

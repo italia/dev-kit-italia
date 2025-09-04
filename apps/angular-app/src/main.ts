@@ -1,8 +1,7 @@
 import { bootstrapApplication } from '@angular/platform-browser';
+import { registerTranslation } from '@italia/design-web-components/elements.js';
 import { appConfig } from './app/app.config';
 import { App } from './app/app';
-
-import { registerTranslation } from '@italia/design-web-components/elements.js';
 
 const it = {
   $code: 'it',
@@ -10,10 +9,6 @@ const it = {
   $dir: 'ltr' as 'ltr',
   showHidePassword: 'Mostra/Nascondi Password (in main.jsx).',
 };
-
-import '@italia/design-web-components/fonts.css';
-import '@italia/design-web-components/styles.css';
-import '@italia/design-web-components/elements.js';
 
 registerTranslation(it);
 

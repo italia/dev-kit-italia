@@ -61,10 +61,10 @@ export class ItPopover extends BaseComponent {
     if (changedProps.has('open')) {
       if (this.open) {
         this._show();
-        this.dispatchEvent(new CustomEvent('popover-open', { bubbles: true, composed: true }));
+        this.dispatchEvent(new CustomEvent('it-popover-open', { bubbles: true, composed: true }));
       } else {
         this._hide();
-        this.dispatchEvent(new CustomEvent('popover-close', { bubbles: true, composed: true }));
+        this.dispatchEvent(new CustomEvent('it-popover-close', { bubbles: true, composed: true }));
       }
     }
   }

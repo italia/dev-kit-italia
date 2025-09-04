@@ -76,6 +76,6 @@
   "types": "./dist/src/index.d.ts",
   "customElements": "custom-elements.json",
   "sideEffects": [
-    "./elements.js"
+    "./dist/elements.js"
   ]
 }
