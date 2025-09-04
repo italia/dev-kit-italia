@@ -1,8 +1,10 @@
 import { mount } from 'svelte';
 import './app.css';
+import { registerTranslation } from '@italia/design-web-components/elements.js';
 import App from './App.svelte';
 
-import { registerTranslation } from '@italia/design-web-components/elements.js';
+import '@italia/design-web-components/fonts.css';
+import '@italia/design-web-components/styles.css';
 
 const it = {
   $code: 'it',
@@ -10,10 +12,6 @@ const it = {
   $dir: 'ltr',
   showHidePassword: 'Mostra/Nascondi Password (in main.jsx).',
 };
-
-import '@italia/design-web-components/fonts.css';
-import '@italia/design-web-components/styles.css';
-import '@italia/design-web-components/elements.js';
 
 registerTranslation(it);
 
