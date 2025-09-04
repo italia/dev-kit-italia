@@ -3,37 +3,61 @@
 @import 'bootstrap-italia/src/scss/base/mixins';
 @import 'bootstrap-italia/src/scss/base/maps';
 
-@import 'bootstrap-italia/src/scss/base/transitions';
 @import 'bootstrap-italia/src/scss/components/accordion';
 @import 'bootstrap-italia/src/scss/components/type';
 
-button {
-  display: flex;
+:host {
+  --bs-accordion-btn-icon-width: 1.5rem;
+}
+:host([background-active]) .accordion-header .accordion-button:not(.collapsed) {
+  background-color: var(--bs-color-background-primary);
+  color: var(--bs-color-text-inverse);
+}
+:host([background-hover]) .accordion-header .accordion-button:hover {
+  background-color: var(--bs-color-background-primary);
+  color: var(--bs-color-text-inverse);
+  it-icon::part(icon) {
+    --bs-icon-primary: var(--bs-color-text-inverse);
+  }
+}
+:host([left-icon]) .accordion-header .accordion-button {
+  justify-content: flex-start;
+}
+it-accordion-item {
+  display: block;
   width: 100%;
+}
+it-icon::part(icon) {
+  width: var(--bs-accordion-btn-icon-width);
+  height: var(--bs-accordion-btn-icon-width);
+  fill: currentColor;
+}
+
+.accordion-button {
+  display: flex !important;
   align-items: center;
+  justify-content: space-between;
+  color: var(--accordion-button-color, inherit);
+  text-align: left;
+  border-radius: 0;
+  --bs-accordion-inner-border-radius: 0;
 
   &::after {
     content: none !important;
   }
+  &:focus-visible {
+    z-index: 3;
+    box-shadow: var(--bs-accordion-btn-focus-box-shadow);
+    border-color: #000 !important;
+    box-shadow:
+      0 0 0 2px var(--bs-color-border-inverse),
+      0 0 0 5px var(--bs-color-outline-focus) !important;
+    outline: 3px solid rgba(0, 0, 0, 0) !important;
+    outline-offset: 3px !important;
+  }
 
   span {
     flex: 1;
-  }
-}
-
-button {
-  display: flex !important;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
-  background-color: var(--accordion-button-bg, transparent);
-  color: var(--accordion-button-color, inherit);
-  text-align: left;
-
-  &:hover {
-    background-color: var(--accordion-button-hover-bg, var(--accordion-button-bg, transparent));
-    color: var(--accordion-button-hover-color, var(--accordion-button-color, inherit));
   }
 }
 
@@ -61,55 +85,9 @@ button {
   display: none;
 }
 
-it-accordion-item {
-  display: block;
-  width: 100%;
-}
-
-.accordion-header it-button::part(button):not(.collapsed):after {
-  transform: scaleY(1);
-}
-
 .accordion-header {
   display: flex;
+  .accordion-button {
+    background-color: unset;
+  }
 }
-
-// .accordion-collapse {
-//   --collapse-duration: 0.35s;
-//   --collapse-target-height: 0px;
-
-//   &.collapse:not(.show) {
-//     display: none;
-//     // animation: cleanup-close var(--collapse-duration) ease forwards;
-//   }
-
-//   &.collapsing {
-//     display: block;
-//     overflow: hidden;
-//     height: var(--collapse-target-height);
-//     transition: height var(--collapse-duration) ease;
-//   }
-
-//   &.collapse.show {
-//     display: block;
-//     height: auto;
-//     // animation: cleanup-open var(--collapse-duration) ease forwards;
-//   }
-
-//   // Clean up on transition end
-//   &.collapsing.show {
-//     height: var(--collapse-target-height);
-//   }
-// }
-
-// @keyframes cleanup-close {
-//   to {
-//     height: 0;
-//   }
-// }
-
-// @keyframes cleanup-open {
-//   to {
-//     height: auto;
-//   }
-// }

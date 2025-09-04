@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { type HeadingLevels } from '../src/types.js';
+import { ACCORDION_MODES, type AccordionMode, type HeadingLevels } from '../src/types.js';
 import '@italia/accordion';
 import '@italia/button';
 import '@italia/icon';
 
 interface AccordionProps {
-  multiple?: boolean;
+  mode?: AccordionMode;
   backgroundActive?: boolean;
   backgroundHover?: boolean;
   leftIcon?: boolean;
@@ -28,7 +28,7 @@ const renderAccordionItem = (params: AccordionItemProps) => html`
 
 const renderComponent = (params: AccordionProps, items: AccordionItemProps[] = []) => html`
   <it-accordion
-    ?multiple="${params.multiple}"
+    mode="${params.mode}"
     ?background-active="${params.backgroundActive}"
     ?background-hover="${params.backgroundHover}"
     ?left-icon="${params.leftIcon}"
@@ -61,16 +61,17 @@ const meta: Meta<AccordionProps> = {
   tags: ['autodocs'],
   component: 'it-accordion',
   args: {
-    multiple: false,
+    mode: 'multiple',
     backgroundActive: false,
     backgroundHover: false,
     leftIcon: false,
   },
   argTypes: {
-    multiple: {
-      control: 'boolean',
-      description: 'Se abilitato, più elementi accordion possono essere aperti contemporaneamente',
-      table: { defaultValue: { summary: 'false' } },
+    mode: {
+      control: 'select',
+      description:
+        "Se impostato a single, solo un elemento dell'accordion può essere aperto contemporaneamente. Il default è multiple.",
+      options: ACCORDION_MODES,
     },
     backgroundActive: {
       control: 'boolean',
@@ -149,13 +150,13 @@ Per la personalizzazione degli stili si possono usare i selettori \`::part\` sui
   render: () => html`<div class="hide-preview"></div>`,
 };
 
-export const ComportamentoMultiplo: Story = {
-  name: 'Comportamento multiplo',
+export const ComportamentSingolo: Story = {
+  name: 'Comportamento singolo',
   args: {
-    multiple: true,
+    mode: 'single',
   },
   argTypes: {
-    multiple: {
+    mode: {
       table: { disable: true },
     },
   },
@@ -163,7 +164,7 @@ export const ComportamentoMultiplo: Story = {
     docs: {
       description: {
         story: `
-Quando l'attributo \`multiple\` è abilitato, più elementi accordion possono essere aperti contemporaneamente. Per default (\`multiple: false\`) solo un elemento può essere aperto alla volta.
+.
 `,
       },
     },
@@ -173,11 +174,7 @@ Quando l'attributo \`multiple\` è abilitato, più elementi accordion possono es
 
 export const HeadingPersonalizzati: Story = {
   name: 'Heading personalizzati',
-  argTypes: {
-    multiple: {
-      table: { disable: true },
-    },
-  },
+  argTypes: {},
   parameters: {
     docs: {
       description: {
@@ -216,9 +213,6 @@ export const IconeASinistra: Story = {
         story: `
 Quando l'attributo \`left-icon\` è abilitato, le icone plus/minus vengono mostrate a sinistra del testo invece della freccia a destra. Questa variante è specifica per Bootstrap Italia.
 
-L'icona cambia dinamicamente:
-- ➕ **Plus** quando l'elemento è chiuso
-- ➖ **Minus** quando l'elemento è aperto
 
 Combinato con \`background-active\`, le icone diventano bianche quando l'elemento è attivo per mantenere il giusto contrasto.
 `,
@@ -231,7 +225,6 @@ Combinato con \`background-active\`, le icone diventano bianche quando l'element
 export const SfondoPrimario: Story = {
   name: 'Sfondo primario',
   argTypes: {
-    multiple: { table: { disable: true } },
     backgroundActive: { table: { disable: true } },
     backgroundHover: { table: { disable: true } },
   },
@@ -257,20 +250,17 @@ Applicando proprietà aggiuntive al componente \`it-accordion\` è possibile uti
           <p slot="content">
             Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
             facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
-          </p></it-accordion-item
-        >
+          </p></it-accordion-item>
         <it-accordion-item label="Elemento Accordion #2">
           <p slot="content">
             Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
             facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
-          </p></it-accordion-item
-        >
+          </p></it-accordion-item>
         <it-accordion-item label="Elemento Accordion #3">
           <p slot="content">
             Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
             facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
-          </p></it-accordion-item
-        >
+          </p></it-accordion-item>
       </it-accordion>
     </div>
 
@@ -333,7 +323,7 @@ Ciascuno gestisce animazione, aria-expanded e preferenze per reduced-motion.
       </it-collapse>
 
       <it-collapse>
-        <a slot="trigger" role="button" href="#">Trigger con a[role="button"]</a>
+        <a slot="trigger" role="button" href="#href">Trigger con a[role="button"]</a>
         <div slot="content" style="padding: 16px; border: 1px solid blue; margin-top: 1rem;">
           <p>Contenuto del collapse con a[role="button"] come trigger.</p>
         </div>

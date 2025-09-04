@@ -3,7 +3,6 @@ import { ReactiveController, ReactiveControllerHost } from 'lit';
 export interface AriaKeyboardAccordionConfig {
   getItems: () => HTMLElement[];
   setActive: (idx: number) => void;
-  toggle: (id: string) => void;
 }
 
 export class AriaKeyboardAccordionController implements ReactiveController {
@@ -58,11 +57,11 @@ export class AriaKeyboardAccordionController implements ReactiveController {
         event.preventDefault();
         if (items.length) this.config.setActive(items.length - 1);
         break;
-      case 'Enter':
-      case ' ':
-        event.preventDefault();
-        this.config.toggle(activeElement?.getAttribute('aria-controls') ?? '');
-        break;
+      // case 'Enter':
+      // case ' ':
+      //   event.preventDefault();
+      //   this.config.toggle(activeElement?.getAttribute('aria-controls') ?? '');
+      //   break;
       default:
         break;
     }

@@ -1,8 +1,10 @@
 import { BaseComponent, AriaKeyboardAccordionController } from '@italia/globals';
 import { html } from 'lit';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
+import type { ItAccordionItem } from './it-accordion-item.js';
+import type { AccordionMode } from './types.js';
 import styles from './accordion.scss';
-import { ItAccordionItem } from './it-accordion-item.js';
+import { ItCollapse } from './it-collapse.js';
 
 @customElement('it-accordion')
 export class ItAccordion extends BaseComponent {
@@ -12,8 +14,8 @@ export class ItAccordion extends BaseComponent {
   @queryAssignedElements({ selector: 'it-accordion-item' })
   private accordionItems!: ItAccordionItem[];
 
-  @property({ type: Boolean, reflect: true })
-  multiple = false;
+  @property({ type: String, reflect: true })
+  mode: AccordionMode = 'multiple';
 
   @property({ type: Boolean, attribute: 'background-active', reflect: true })
   backgroundActive = false;
@@ -26,9 +28,9 @@ export class ItAccordion extends BaseComponent {
 
   private _ariaNav = new AriaKeyboardAccordionController(this);
 
-  updated(changedProperties: Map<string | number | symbol, unknown>) {
-    super.updated?.(changedProperties);
-
+  override updated(changedProperties: Map<string | number | symbol, unknown>) {
+    // super.updated?.(changedProperties);
+    console.log('ItAccordion updated called with', changedProperties.get('mode'), this.mode);
     // Propaga le proprietà ai figli quando cambiano
     if (
       changedProperties.has('backgroundActive') ||
@@ -36,6 +38,19 @@ export class ItAccordion extends BaseComponent {
       changedProperties.has('leftIcon')
     ) {
       this.updateChildrenProperties();
+    }
+    if (changedProperties.has('mode') && this.mode === 'single') {
+      if (this.accordionItems.length) {
+        this.accordionItems.forEach((item) => {
+          if (item.defaultOpen) {
+            // eslint-disable-next-line no-param-reassign
+            item.expanded = true;
+          } else {
+            // eslint-disable-next-line no-param-reassign
+            item.expanded = false;
+          }
+        });
+      }
     }
   }
 
@@ -79,20 +94,19 @@ export class ItAccordion extends BaseComponent {
     super.disconnectedCallback?.();
   }
 
-  // private _onCollapseToggle = (e: Event) => {
-  //   const customEvent = e as CustomEvent;
-  //   const { expanded, id: targetId } = customEvent.detail;
-
-  //   // Se è in single mode e sta per essere espanso, chiudi tutti gli altri
-  //   // if (!this.multiple && expanded) {
-  //   //   for (const item of this.accordionItems) {
-  //   //     const collapseElement = item.shadowRoot?.querySelector('it-collapse') as any;
-  //   //     if (collapseElement && collapseElement.contentElement?.id !== targetId && collapseElement.expanded) {
-  //   //       collapseElement.expanded = false;
-  //   //     }
-  //   //   }
-  //   // }
-  // };
+  private _onCollapseToggle = (e: Event) => {
+    const customEvent = e as CustomEvent;
+    const { expanded } = customEvent.detail;
+    // debugger;
+    // Se è in single mode e sta per essere espanso, chiudi tutti gli altri
+    if (this.mode === 'single' && expanded) {
+      for (const item of this.accordionItems) {
+        if (item !== customEvent.target) {
+          item.expanded = false;
+        }
+      }
+    }
+  };
 
   private _onSlotChange = () => {
     // Quando cambiano i children, aggiorna tutte le proprietà
@@ -107,16 +121,12 @@ export class ItAccordion extends BaseComponent {
       const trigger = item.shadowRoot?.querySelector<HTMLElement>('button');
       if (trigger) triggers.push(trigger);
     }
-
     if (!triggers.length) return;
 
     this._ariaNav.setConfig({
       getItems: () => triggers,
       setActive: (idx: number) => {
         triggers[idx]?.focus();
-      },
-      toggle: () => {
-        // this.dispatchEvent(new CustomEvent('collapse-toggle', { bubbles: true, composed: true, detail: { id } }));
       },
     });
     this._ariaNav.handleKeyDown(e);
@@ -133,7 +143,7 @@ export class ItAccordion extends BaseComponent {
       .join(' ');
 
     return html`<div class="${classes}" id="${this._id}" part="accordion">
-      <slot @slotchange="${this._onSlotChange}"></slot>
+      <slot @slotchange="${this._onSlotChange}" @it-collapse-toggle="${this._onCollapseToggle}"></slot>
     </div>`;
   }
 }

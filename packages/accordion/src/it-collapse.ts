@@ -1,12 +1,19 @@
 import { BaseComponent } from '@italia/globals';
 import { html } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement, property, query, queryAssignedElements } from 'lit/decorators.js';
 import { when } from 'lit/directives/when.js';
+import { unsafeStatic } from 'lit/static-html.js';
 import styles from './collapse.scss';
+import { isKeyboardEvent, isMouseEvent, PressEvent } from './types.js';
 
 @customElement('it-collapse')
 export class ItCollapse extends BaseComponent {
   static styles = styles;
+
+  static override shadowRootOptions = {
+    ...BaseComponent.shadowRootOptions,
+    delegatesFocus: true,
+  };
 
   @property({ type: Boolean, reflect: true })
   expanded = false;
@@ -15,37 +22,30 @@ export class ItCollapse extends BaseComponent {
   label: string = '';
 
   @property()
-  as: string = 'h2';
+  as: string = 'button';
 
-  @property({ type: Boolean, attribute: 'left-icon' })
-  leftIcon = false;
-
-  @property({ type: Boolean, attribute: 'background-active' })
-  backgroundActive = false;
-
-  @property({ type: Boolean, attribute: 'background-hover' })
-  backgroundHover = false;
-
-  @property({ type: Boolean, attribute: 'default-open' })
+  @property({ type: Boolean, attribute: 'default-open', reflect: true })
   defaultOpen = false;
 
   @query('.collapse-content')
-  private contentElement!: HTMLElement;
+  contentElement!: HTMLElement;
 
-  @query('[slot="trigger"]')
-  private triggerElement!: HTMLElement;
+  @queryAssignedElements()
+  private triggerElements!: HTMLElement[];
+
+  get triggerElement(): HTMLElement | null {
+    return this.triggerElements.length > 0 ? this.triggerElements[0] : null;
+  }
 
   private isAnimating = false;
-
-  private isInitialized = false;
 
   private animation?: Animation;
 
   private readonly animationDuration = 350; // ms
 
-  private _triggerId = this.generateId('it-collapse-trigger');
+  protected _triggerId = this.generateId('it-collapse-trigger');
 
-  private _contentId = this.generateId('it-collapse-content');
+  protected _contentId = this.generateId('it-collapse-content');
 
   override connectedCallback() {
     super.connectedCallback?.();
@@ -55,38 +55,26 @@ export class ItCollapse extends BaseComponent {
     }
   }
 
-  // private handleClick = (e: Event) => {
-  //   // Verifica se il click è sul trigger o suoi discendenti
-  //   const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement;
-  //   const triggerElements = triggerSlot?.assignedElements() || [];
-
-  //   if (triggerElements.some((el) => el.contains(e.target as Node) || el === e.target)) {
-  //     e.preventDefault();
-  //     this.toggle();
-  //   }
-  // };
-  private handleClick = (e: Event) => {
-    // Blocca i click durante l'animazione
+  protected handleTriggerAction = (e: PressEvent) => {
     if (this.isAnimating) {
       e.preventDefault();
       e.stopPropagation();
       return;
     }
+    //   // Verifica se il click è sul trigger o suoi discendenti
+    //   const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement;
+    //   const triggerElements = triggerSlot?.assignedElements() || [];
 
-    e.preventDefault();
-    this.toggle();
-  };
-
-  private handleKeyDown = (e: KeyboardEvent) => {
-    // Handle Enter and Space keys for accessibility
-    if (e.key === 'Enter' || e.key === ' ') {
-      // Blocca i keydown durante l'animazione
-      if (this.isAnimating) {
-        e.preventDefault();
-        e.stopPropagation();
-        return;
-      }
-
+    // debugger;
+    // if (!this.triggerElement?.contains(e.target as Node) || this.triggerElement === e.target) {
+    //   e.preventDefault();
+    //   e.stopPropagation();
+    //   return;
+    // }
+    if (isKeyboardEvent(e) && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      this.toggle();
+    } else if (isMouseEvent(e)) {
       e.preventDefault();
       this.toggle();
     }
@@ -98,13 +86,24 @@ export class ItCollapse extends BaseComponent {
 
     const nextValue = !this.expanded;
     this.expanded = nextValue;
-    if (!this.isAnimating) {
-      if (nextValue) {
-        this.performExpand();
-      } else {
-        this.performCollapse();
-      }
-    }
+    this.dispatchEvent(
+      new CustomEvent('it-collapse-toggle', {
+        detail: {
+          expanded: this.expanded,
+          id: this.contentElement?.id,
+        },
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      }),
+    );
+    // if (!this.isAnimating) {
+    //   if (nextValue) {
+    //     this.performExpand();
+    //   } else {
+    //     this.performCollapse();
+    //   }
+    // }
     // L'evento verrà sparato alla fine dell'animazione
   }
 
@@ -150,15 +149,16 @@ export class ItCollapse extends BaseComponent {
     if (changedProperties.has('expanded')) {
       this.updateAriaAttributes();
       this.updateBackgroundStyles();
+      const prev = changedProperties.get('expanded') as boolean | undefined;
 
       // React to expanded property changes
-      // if (!this.isAnimating) {
-      //   if (this.expanded) {
-      //     this.performExpand();
-      //   } else {
-      //     this.performCollapse();
-      //   }
-      // }
+      if (!this.isAnimating && prev !== undefined && prev !== this.expanded) {
+        if (this.expanded) {
+          this.performExpand();
+        } else {
+          this.performCollapse();
+        }
+      }
     }
 
     // Se cambiano le proprietà di background, aggiorna gli stili
@@ -180,22 +180,22 @@ export class ItCollapse extends BaseComponent {
       defaultButton.id = this._triggerId;
     }
 
-    // Aggiorna anche gli stili e le icone
-    this.updateBackgroundStyles();
-
     // // Se abbiamo un trigger slottato, cerca button nativi
-    const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement;
-    const triggerElement = triggerSlot?.assignedElements()?.[0] as HTMLElement;
+    // const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement;
+    // const triggerElement = triggerSlot?.assignedElements()?.[0] as HTMLElement;
 
-    if (triggerElement) {
-      if (triggerElement.tagName.toLowerCase() === 'button' || triggerElement.getAttribute('role') === 'button') {
-        const buttonElement = triggerElement as HTMLElement;
+    if (this.triggerElement) {
+      if (
+        this.triggerElement.tagName.toLowerCase() === 'button' ||
+        this.triggerElement.getAttribute('role') === 'button'
+      ) {
+        const buttonElement = this.triggerElement as HTMLElement;
         buttonElement.id = this._triggerId;
         buttonElement.setAttribute('aria-expanded', String(this.expanded));
         buttonElement.setAttribute('aria-controls', this._contentId);
       } else {
         // Cerca un button all'interno
-        const nestedButton = triggerElement.querySelector('button, [role="button"]') as HTMLElement;
+        const nestedButton = this.triggerElement.querySelector('button, [role="button"]') as HTMLElement;
         if (nestedButton) {
           nestedButton.id = this._triggerId;
           nestedButton.setAttribute('aria-expanded', String(this.expanded));
@@ -203,7 +203,8 @@ export class ItCollapse extends BaseComponent {
         }
       }
     }
-
+    // Aggiorna anche gli stili e le icone di chi implementa questo metodo via estensione
+    this.updateBackgroundStyles();
     // Aggiorna il content - l'ID deve essere sull'elemento accordion-collapse
     // if (this.contentElement) {
     //   this.contentElement.id = this._contentId;
@@ -211,56 +212,8 @@ export class ItCollapse extends BaseComponent {
     // }
   }
 
-  private updateBackgroundStyles() {
-    // Aggiorna CSS custom properties per background
-    const button = this.shadowRoot?.querySelector('.accordion-button') as HTMLElement;
-    if (button) {
-      if (this.backgroundActive && this.expanded) {
-        button.style.setProperty('--accordion-button-bg', 'var(--bs-primary)');
-        button.style.setProperty('--accordion-button-color', 'white');
-      } else {
-        button.style.removeProperty('--accordion-button-bg');
-        button.style.removeProperty('--accordion-button-color');
-      }
-
-      if (this.backgroundHover) {
-        button.style.setProperty('--accordion-button-hover-bg', 'var(--bs-primary-lighter)');
-      } else {
-        button.style.removeProperty('--accordion-button-hover-bg');
-      }
-    }
-
-    // Aggiorna l'icona left se necessario
-    if (this.leftIcon) {
-      const iconElement = this.shadowRoot?.querySelector('.accordion-icon-left') as HTMLElement;
-      if (iconElement) {
-        const iconName = this.expanded ? 'it-minus' : 'it-plus';
-        iconElement.setAttribute('name', iconName);
-
-        if (this.backgroundActive && this.expanded) {
-          iconElement.setAttribute('color', 'white');
-        } else {
-          iconElement.setAttribute('color', 'primary');
-        }
-      }
-    }
-
-    // Aggiorna l'icona normale (chevron)
-    const normalIcon = this.shadowRoot?.querySelector('.accordion-icon') as HTMLElement;
-    if (normalIcon) {
-      if (this.expanded) {
-        normalIcon.classList.add('expanded');
-      } else {
-        normalIcon.classList.remove('expanded');
-      }
-
-      if (this.backgroundActive && this.expanded) {
-        normalIcon.setAttribute('color', 'white');
-      } else {
-        normalIcon.setAttribute('color', 'primary');
-      }
-    }
-  }
+  // eslint-disable-next-line class-methods-use-this
+  protected updateBackgroundStyles() {}
 
   private performExpand() {
     if (!this.contentElement) return;
@@ -293,16 +246,17 @@ export class ItCollapse extends BaseComponent {
         this.cleanupAnimation();
 
         // SPARA L'EVENTO SOLO DOPO CHE L'ANIMAZIONE È FINITA
-        this.dispatchEvent(
-          new CustomEvent('collapse-toggle', {
-            detail: {
-              expanded: this.expanded,
-              id: this.contentElement?.id,
-            },
-            bubbles: true,
-            composed: true,
-          }),
-        );
+        // this.dispatchEvent(
+        //   new CustomEvent('it-collapse-toggle', {
+        //     detail: {
+        //       expanded: this.expanded,
+        //       id: this.contentElement?.id,
+        //     },
+        //     bubbles: true,
+        //     composed: true,
+        //     cancelable: true,
+        //   }),
+        // );
       });
   }
 
@@ -339,16 +293,17 @@ export class ItCollapse extends BaseComponent {
         this.cleanupAnimation();
 
         // SPARA L'EVENTO SOLO DOPO CHE L'ANIMAZIONE È FINITA
-        this.dispatchEvent(
-          new CustomEvent('collapse-toggle', {
-            detail: {
-              expanded: this.expanded,
-              id: this.contentElement?.id,
-            },
-            bubbles: true,
-            composed: true,
-          }),
-        );
+        // this.dispatchEvent(
+        //   new CustomEvent('it-collapse-toggle', {
+        //     detail: {
+        //       expanded: this.expanded,
+        //       id: this.contentElement?.id,
+        //     },
+        //     bubbles: true,
+        //     composed: true,
+        //     cancelable: true,
+        //   }),
+        // );
       });
   }
 
@@ -357,69 +312,53 @@ export class ItCollapse extends BaseComponent {
     this.updateAriaAttributes();
   };
 
-  private renderDefaultTrigger() {
+  protected renderDefaultTrigger() {
     if (!this.label) return null;
 
-    const buttonClasses = ['accordion-button', !this.expanded && 'collapsed'].filter(Boolean).join(' ');
+    const buttonClasses = [!this.expanded && 'collapsed'].filter(Boolean).join(' ');
 
-    // Scegli l'icona in base al tipo e allo stato
-    let iconContent = null;
-    if (this.leftIcon) {
-      const iconName = this.expanded ? 'it-minus' : 'it-plus';
-      iconContent = html`<it-icon size="sm" name="${iconName}" class="accordion-icon-left" color="primary"></it-icon>`;
-    } else {
-      // Icona di default sulla destra (chevron)
-      iconContent = html`<it-icon
-        size="sm"
-        name="it-expand"
-        class="accordion-icon ${this.expanded ? 'expanded' : ''}"
-        color="primary"
-      ></it-icon>`;
-    }
-
-    const buttonContent = this.leftIcon
-      ? html`${iconContent}<span>${this.label}</span>`
-      : html`<span>${this.label}</span>${iconContent}`;
-
-    const buttonElement = html`<button
+    const defaultButtonElement = html`<button
       type="button"
+      part="trigger"
       class="${buttonClasses}"
       aria-expanded="${this.expanded}"
       aria-controls="${this._contentId}"
       id="${this._triggerId}"
-      @click=${this.handleClick}
-      @keydown=${this.handleKeyDown}
+      @click=${this.handleTriggerAction}
+      @keydown=${this.handleTriggerAction}
     >
-      ${buttonContent}
+      ${this.label}
     </button>`;
 
-    switch (this.as) {
-      case 'h3':
-        return html`<h3 class="accordion-header">${buttonElement}</h3>`;
-      case 'h4':
-        return html`<h4 class="accordion-header">${buttonElement}</h4>`;
-      case 'h5':
-        return html`<h5 class="accordion-header">${buttonElement}</h5>`;
-      case 'h6':
-        return html`<h6 class="accordion-header">${buttonElement}</h6>`;
-      default:
-        return html`<h2 class="accordion-header">${buttonElement}</h2>`;
+    if (this.as === 'button') {
+      return defaultButtonElement;
     }
+    const tagName = this.isValidTag(this.as) ? this.as : 'div';
+    const Tag = unsafeStatic(tagName);
+    // eslint-disable-next-line lit/binding-positions, lit/no-invalid-html
+    return html`<${Tag} part="trigger" role="button"  aria-expanded="${this.expanded}" aria-controls="${this._contentId}" id="${this._triggerId}">${this.label}</${Tag}>`;
   }
 
   private hasSlottedTrigger(): boolean {
-    const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement;
-    const assignedElements = triggerSlot?.assignedElements() || [];
-    return assignedElements.length > 0;
+    return !!this.triggerElement;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  private isValidTag(tag: string) {
+    return /^[a-z][a-z0-9-]*$/.test(tag); // semplice validazione
   }
 
   render() {
+    // Nota sull'estensione: quando passi this.renderDefaultTrigger come callback a when
+    // la funzione viene chiamata senza contesto (this viene perso) — devi chiamare il metodo tramite closure
+    // che mantiene il contesto, es. () => this.renderDefaultTrigger().
+    // console.log('render collapse', this.triggerElement);
     const hasCustomTrigger = this.hasSlottedTrigger();
     return html`
       <div class="accordion-item" part="accordion-item">
         <div class="collapse-wrapper">
           ${when(!hasCustomTrigger && this.label, () => this.renderDefaultTrigger())}
-          <slot name="trigger" @slotchange=${this._onTriggerSlotChange}></slot>
+          <slot name="trigger" @slotchange=${this._onTriggerSlotChange} part="trigger"></slot>
           <div
             class="collapse-content"
             part="content"
