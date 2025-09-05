@@ -21,7 +21,7 @@
 }
 
 // Sovrascriviamo il fill per tutte le varianti di icone quando il chip è disabled
-:host([isdisabled]) ::slotted(it-icon) {
+:host([is-disabled]) ::slotted(it-icon) {
   --bs-icon-primary: var(--bs-icon-disabled);
   --bs-icon-secondary: var(--bs-icon-disabled);
   --bs-icon-success: var(--bs-icon-disabled);
@@ -30,6 +30,6 @@
   --bs-icon-default: var(--bs-icon-disabled);
 }
 
-:host([isdisabled]) ::slotted(it-button) {
+:host([is-disabled]) ::slotted(it-button) {
   cursor: not-allowed !important;
 }
