@@ -127,31 +127,86 @@ export const EsempioInterattivo: Story = {
   render: (args) => renderComponent(args, defaultItems),
 };
 
-export const PersonalizzazioneDegliStili: Story = {
-  name: 'Personalizzazione degli stili',
-  tags: ['!dev'],
+export const AccordionItem = {
+  argTypes: {
+    label: {
+      control: 'text',
+      description: "Testo dell'header dell'accordion item",
+      table: { defaultValue: { summary: 'Accordion Item' } },
+    },
+    as: {
+      control: { type: 'select' },
+      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+      description: "Livello di heading per l'header",
+      table: { defaultValue: { summary: 'h2' } },
+    },
+    'default-open': {
+      control: 'boolean',
+      description: "Se true, l'item è aperto di default",
+      table: { defaultValue: { summary: 'false' } },
+    },
+    'background-active': {
+      control: 'boolean',
+      description: "Se true, applica sfondo primario all'header quando attivo",
+      table: { defaultValue: { summary: 'false' } },
+    },
+    'background-hover': {
+      control: 'boolean',
+      description: "Se true, applica sfondo primario all'header al passaggio del mouse",
+      table: { defaultValue: { summary: 'false' } },
+    },
+    'left-icon': {
+      control: 'boolean',
+      description: 'Se true, mostra icone plus/minus a sinistra invece della freccia a destra',
+      table: { defaultValue: { summary: 'false' } },
+    },
+  },
   parameters: {
-    viewMode: 'docs',
     docs: {
-      canvas: { hidden: true, sourceState: 'none' },
       description: {
         story: `
-Per la personalizzazione degli stili si possono usare i selettori \`::part\` sui seguenti elementi:
-- \`::part(accordion)\` per il contenitore principale
-- \`::part(accordion-item)\` per ogni elemento accordion
-- \`::part(button)\` per il pulsante di attivazione
-- \`::part(accordion-content)\` per il contenuto collassabile
+Il componente \`it-accordion-item\` rappresenta un singolo elemento accordion che può essere utilizzato individualmente o all'interno di un contenitore \`it-accordion\`.
 
-[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
-`,
+#### Proprietà
+
+- **\`label\`**: Il testo dell'header dell'accordion item
+- **\`as\`**: Il livello di heading (h1-h6) da utilizzare per l'header
+- **\`default-open\`**: Se true, l'elemento si apre automaticamente
+
+#### Contenuto
+
+Il contenuto dell'accordion item va inserito come slot default (contenuto diretto dell'elemento).
+        `,
       },
     },
   },
-  render: () => html`<div class="hide-preview"></div>`,
+  render: (args: any) => html`
+    <it-accordion-item
+      label="${args.label || 'Accordion Item'}"
+      as="${args.as || 'h2'}"
+      ?default-open="${args['default-open'] || false}"
+      ?background-active="${args['background-active'] || false}"
+      ?background-hover="${args['background-hover'] || false}"
+      ?left-icon="${args['left-icon'] || false}"
+    >
+      <div slot="content">
+        Contenuto dell'accordion item. Questo testo è all'interno dello slot "content". Qui puoi inserire qualsiasi
+        contenuto HTML: paragrafi, liste, immagini, ecc.
+      </div>
+    </it-accordion-item>
+  `,
+  args: {
+    label: 'Accordion Item',
+    as: 'h2',
+    'default-open': false,
+    'background-active': false,
+    'background-hover': false,
+    'left-icon': false,
+  },
 };
 
-export const ComportamentSingolo: Story = {
-  name: 'Comportamento singolo',
+export const Single: Story = {
+  name: 'Modalità esclusiva',
   args: {
     mode: 'single',
   },
@@ -164,7 +219,7 @@ export const ComportamentSingolo: Story = {
     docs: {
       description: {
         story: `
-.
+In modalità single, può essere aperto un solo elemento alla volta. Aprendo un elemento tutti gli altri si chiudono automaticamente.
 `,
       },
     },
@@ -172,29 +227,8 @@ export const ComportamentSingolo: Story = {
   render: (args) => renderComponent(args, defaultItems),
 };
 
-export const HeadingPersonalizzati: Story = {
-  name: 'Heading personalizzati',
-  argTypes: {},
-  parameters: {
-    docs: {
-      description: {
-        story: `
-È possibile configurare il livello di heading per ogni elemento accordion utilizzando l'attributo \`as\`. Questo è importante per mantenere una corretta struttura semantica del documento.
-`,
-      },
-    },
-  },
-  render: () => html`
-    <it-accordion>
-      <it-accordion-item label="Heading H2" as="h2"> Contenuto con heading di livello H2 </it-accordion-item>
-      <it-accordion-item label="Heading H3" as="h3"> Contenuto con heading di livello H3 </it-accordion-item>
-      <it-accordion-item label="Heading H4" as="h4"> Contenuto con heading di livello H4 </it-accordion-item>
-    </it-accordion>
-  `,
-};
-
-export const IconeASinistra: Story = {
-  name: 'Icone a sinistra (Bootstrap Italia)',
+export const IconaASinistra: Story = {
+  name: 'Icona a sinistra',
   args: {
     leftIcon: true,
     backgroundActive: true,
@@ -222,70 +256,79 @@ Combinato con \`background-active\`, le icone diventano bianche quando l'element
   render: (args) => renderComponent(args, defaultItems),
 };
 
-export const SfondoPrimario: Story = {
-  name: 'Sfondo primario',
+export const HeaderAttivi: Story = {
+  name: 'Header attivi',
   argTypes: {
     backgroundActive: { table: { disable: true } },
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Aggiungere la proprietà <code>background-active</code> a <code>it-accordion</code> per ottenere header con sfondo di colore primario quando questi sono attivi e il contenuto relativo è visibile.
+`,
+      },
+    },
+  },
+  render: () => html`
+    <it-accordion background-active>
+      <it-accordion-item label="Elemento Accordion #1" default-open>
+        <div slot="content">
+          Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+        </div>
+      </it-accordion-item>
+      <it-accordion-item label="Elemento Accordion #2">
+        <div slot="content">
+          Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+        </div>
+      </it-accordion-item>
+      <it-accordion-item label="Elemento Accordion #3">
+        <div slot="content">
+          Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+        </div>
+      </it-accordion-item>
+    </it-accordion>
+  `,
+};
+
+export const HoverDegliHeader: Story = {
+  name: 'Hover degli Header',
+  argTypes: {
     backgroundHover: { table: { disable: true } },
   },
   parameters: {
     docs: {
       description: {
         story: `
-Applicando proprietà aggiuntive al componente \`it-accordion\` è possibile utilizzare il colore primario come sfondo degli header.
+Aggiungere la proprietà <code>background-hover</code> a <code>it-accordion</code> per ottenere header con sfondo di colore primario all'hover.
 `,
       },
     },
   },
   render: () => html`
-    <div class="mb-4">
-      <h4>Header attivi</h4>
-      <p>
-        Aggiungere la proprietà <code>background-active</code> a <code>it-accordion</code> per ottenere header con
-        sfondo di colore primario quando questi sono attivi e il contenuto relativo è visibile.
-      </p>
-
-      <it-accordion background-active>
-        <it-accordion-item label="Elemento Accordion #1" default-open>
-          <p slot="content">
-            Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
-            facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
-          </p></it-accordion-item>
-        <it-accordion-item label="Elemento Accordion #2">
-          <p slot="content">
-            Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
-            facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
-          </p></it-accordion-item>
-        <it-accordion-item label="Elemento Accordion #3">
-          <p slot="content">
-            Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
-            facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
-          </p></it-accordion-item>
-      </it-accordion>
-    </div>
-
-    <div class="mb-4">
-      <h4>Hover degli Header</h4>
-      <p>
-        Aggiungere la proprietà <code>background-hover</code> a <code>it-accordion</code> per ottenere header con sfondo
-        di colore primario all'hover.
-      </p>
-
-      <it-accordion background-hover>
-        <it-accordion-item label="Elemento Accordion #1" default-open>
-          <p slot="content">Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
-          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
-        </it-accordion-item>
-        <it-accordion-item label="Elemento Accordion #2">
-          <p slot="content">Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
-          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
-        </it-accordion-item>
-        <it-accordion-item label="Elemento Accordion #3">
-          <p slot="content">Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
-          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.</p>
-        </it-accordion-item>
-      </it-accordion>
-    </div>
+    <it-accordion background-hover>
+      <it-accordion-item label="Elemento Accordion #1" default-open>
+        <div slot="content">
+          Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+        </div>
+      </it-accordion-item>
+      <it-accordion-item label="Elemento Accordion #2">
+        <div slot="content">
+          Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+        </div>
+      </it-accordion-item>
+      <it-accordion-item label="Elemento Accordion #3">
+        <div slot="content">
+          Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+        </div>
+      </it-accordion-item>
+    </it-accordion>
   `,
 };
 
