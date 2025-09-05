@@ -1,4 +1,4 @@
-import { html } from 'lit';
+import { html, nothing } from 'lit';
 import { BaseComponent } from '@italia/globals';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -10,21 +10,23 @@ import styles from './chip.scss';
 export class ItChip extends BaseComponent {
   static styles = styles;
 
-  @property({ type: Boolean }) dismissable = false;
+  @property({ type: Boolean, reflect: true }) dismissable = false;
 
-  @property({ type: String }) size: ChipSize = 'sm';
+  @property({ type: String, reflect: true }) size: ChipSize = 'sm';
 
-  @property({ type: String }) avatar = '';
+  @property({ type: String, reflect: true }) avatar = '';
 
-  @property({ type: String }) avatarAlt = '';
+  @property({ type: String, reflect: true, attribute: 'avatar-alt' }) avatarAlt = '';
 
-  @property({ type: String }) label = '';
+  @property({ type: String, reflect: true }) label = '';
 
-  @property({ type: String }) href = '';
+  @property({ type: String, reflect: true }) href = '';
 
-  @property({ type: String }) variant: ChipVariant = '';
+  @property({ type: String, reflect: true, attribute: 'a11y-description' }) a11yDescription = '';
 
-  @property({ type: Boolean, reflect: true }) isDisabled = false;
+  @property({ type: String, reflect: true }) variant: ChipVariant = '';
+
+  @property({ type: Boolean, reflect: true, attribute: 'is-disabled' }) isDisabled = false;
 
   @queryAssignedElements({ slot: 'dismiss-button', flatten: true })
   closeButton!: HTMLButtonElement[];
@@ -75,6 +77,7 @@ export class ItChip extends BaseComponent {
       'chip-disabled': this.isDisabled,
     };
     const content = html`
+      ${this.a11yDescription ? html`<span class="visually-hidden">${this.a11yDescription}</span>` : nothing}
       <slot name="icon"></slot>
       ${this.avatar
         ? html`<div class="${this.getAvatarClass()}"><img src=${this.avatar} alt="${this.avatarAlt}" /></div>`
@@ -84,7 +87,7 @@ export class ItChip extends BaseComponent {
     `;
 
     return this.href
-      ? html`<a class="${classMap(classes)}" part="chip" href="${this.href}">${content}</a>`
+      ? html`<a class="${classMap(classes)}" part="chip focusable" href="${this.href}">${content}</a>`
       : html`<div class="${classMap(classes)}" part="chip">${content}</div>`;
   }
 }

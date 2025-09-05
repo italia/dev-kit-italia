@@ -18,6 +18,7 @@ const meta = {
     isDisabled: false,
     avatar: '',
     avatarAlt: 'Avatar',
+    a11yDescription: '',
     dismissable: false,
     withIcon: false,
     withDismissButton: false,
@@ -62,6 +63,11 @@ const meta = {
       control: 'text',
       description: `Testo alternativo per l'immagine dell'avatar, utile per l'accessibilità.`,
       table: { defaultValue: { summary: 'Alt avatar' } },
+    },
+    a11yDescription: {
+      control: 'text',
+      description: `Testo descrittivo aggiuntivo per la chip, utile per l'accessibilità. Viene inserito come contenuto visivamente nascosto all'inizio della chip, ad esempio per specificare a che contenuto si fa riferimento, o assegnare una dicitur come "Argomento:".`,
+      table: { defaultValue: { summary: '' } },
     },
     withIcon: {
       control: 'boolean',
@@ -143,16 +149,31 @@ const iconTemplate = (color: string) => html`
 
 // Renderizza il wc it-chip di default
 const renderComponent = (params) => {
-  const { avatar, withIcon, label, size, variant, withDismissButton, dismissable, isDisabled, href, id } = params;
+  const {
+    avatar,
+    avatarAlt,
+    withIcon,
+    label,
+    size,
+    variant,
+    withDismissButton,
+    dismissable,
+    isDisabled,
+    href,
+    id,
+    a11yDescription,
+  } = params;
   return html`
     <it-chip
       label="${label ?? ''}"
       size="${size ?? 'sm'}"
       variant="${variant ?? ''}"
       ?dismissable=${dismissable}
-      ?isDisabled=${isDisabled}
+      ?is-disabled=${isDisabled}
       href="${ifDefined(href || undefined)}"
       avatar="${ifDefined(avatar || undefined)}"
+      avatar-alt="${ifDefined(avatarAlt || undefined)}"
+      a11y-description="${a11yDescription}"
       ?id="${id}"
       >${withIcon ? iconTemplate(variant) : nothing}${dismissable && withDismissButton
         ? dismissTemplate('I am dismissable', isDisabled)
