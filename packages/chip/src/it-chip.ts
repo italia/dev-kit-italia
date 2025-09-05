@@ -46,7 +46,7 @@ export class ItChip extends BaseComponent {
         this.closeButton.forEach((btn) => {
           if (
             (btn.tagName.toLowerCase() === 'it-button' &&
-              !btn.hasAttribute('aria-label') &&
+              !btn.hasAttribute('it-aria-label') &&
               btn.textContent?.trim().length === 0) ||
             (btn.tagName.toLowerCase() === 'button' &&
               !btn.hasAttribute('aria-label') &&

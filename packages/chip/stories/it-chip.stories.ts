@@ -114,9 +114,9 @@ type Story = StoryObj<
 const dismissTemplate = (label = 'Elimina etichetta', disabled = false, description = 'Aria description') => html`
   <it-button
     slot="dismiss-button"
-    aria-label="${label}"
-    aria-disabled="${disabled}"
-    aria-description="${description}"
+    it-aria-label="${label}"
+    it-aria-disabled="${disabled}"
+    it-aria-description="${description}"
     ?icon=${true}
     @click=${(e: Event) => {
       if (disabled) {
@@ -293,9 +293,9 @@ export const ChipConChiusura: Story = {
       <it-button
         slot="dismiss-button"
         icon
-        aria-label="Elimina etichetta"
-        aria-disabled="true"
-        aria-description="Puoi premere per eliminare la chip."
+        it-aria-label="Elimina etichetta"
+        it-aria-disabled="true"
+        it-aria-description="Puoi premere per eliminare la chip."
       >
         <it-icon name="it-close" size="sm"></it-icon>
       </it-button>
@@ -321,9 +321,9 @@ Il codice JS dell'esempio gestisce la rimozione della chip sia via click che via
   <it-button
     slot="dismiss-button"
     icon
-    aria-label="Elimina etichetta"
-    aria-disabled="true"
-    aria-description="Puoi premere per eliminare la chip."
+    it-aria-label="Elimina etichetta"
+    it-aria-disabled="true"
+    it-aria-description="Puoi premere per eliminare la chip."
   >
     <it-icon name="it-close" size="sm"></it-icon>
   </it-button>
@@ -378,9 +378,9 @@ Aggiungendo l'attributo \`disabled\` si ottiene una chip disabilitata.
       <it-button
         slot="dismiss-button"
         icon
-        aria-label="Elimina etichetta"
-        aria-disabled="true"
-        aria-description="Puoi premere per eliminare la chip."
+        it-aria-label="Elimina etichetta"
+        it-aria-disabled="true"
+        it-aria-description="Puoi premere per eliminare la chip."
       >
         <it-icon name="it-close" size="sm"></it-icon>
       </it-button>

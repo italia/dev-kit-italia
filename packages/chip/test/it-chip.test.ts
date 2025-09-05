@@ -15,7 +15,7 @@ describe('it-chip component', () => {
     it('dismissable chip with proper button is accessible', async () => {
       const el = await fixture<ItChip>(html`
         <it-chip label="Dismissable" dismissable>
-          <it-button slot="dismiss-button" icon="true" aria-label="Remove chip">
+          <it-button slot="dismiss-button" icon="true" it-aria-label="Remove chip">
             <it-icon name="it-close" size="sm"></it-icon>
           </it-button>
         </it-chip>
@@ -56,7 +56,7 @@ describe('it-chip component', () => {
         <it-chip
           label="With Avatar"
           avatar="https://randomuser.me/api/portraits/men/46.jpg"
-          avatarAlt="Avatar alt text"
+          avatar-alt="Avatar alt text"
         ></it-chip>
       `);
       const img = el.shadowRoot?.querySelector('img');
@@ -68,8 +68,8 @@ describe('it-chip component', () => {
   describe('disabled state', () => {
     it('adds disabled attributes when disabled', async () => {
       const el = await fixture<ItChip>(html`
-        <it-chip label="Disabled" dismissable isDisabled>
-          <it-button slot="dismiss-button" icon="true" aria-label="Remove" aria-disabled="true">
+        <it-chip label="Disabled" dismissable is-disabled>
+          <it-button slot="dismiss-button" icon="true" it-aria-label="Remove" it-aria-disabled="true">
             <it-icon name="it-close" size="sm"></it-icon>
           </it-button>
         </it-chip>
@@ -79,6 +79,22 @@ describe('it-chip component', () => {
       expect(container).to.exist;
 
       expect(container?.classList.contains('chip-disabled')).to.be.true;
+    });
+  });
+  describe('extra sr label', () => {
+    it('extra sr label is added if a11y-description provided', async () => {
+      const el = await fixture<ItChip>(html`
+        <it-chip label="Disabled" dismissable is-disabled a11y-description="This is a description">
+          <it-button slot="dismiss-button" icon="true" it-aria-label="Remove" it-aria-disabled="true">
+            <it-icon name="it-close" size="sm"></it-icon>
+          </it-button>
+        </it-chip>
+      `);
+
+      const a11yDescription = el.shadowRoot?.querySelector('span.visually-hidden');
+      expect(a11yDescription).to.exist;
+
+      expect(a11yDescription).to.have.trimmed.text('This is a description');
     });
   });
 });

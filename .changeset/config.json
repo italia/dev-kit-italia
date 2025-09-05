@@ -7,10 +7,22 @@
     }
   ],
   "commit": false,
-  "fixed": [["@italia/button", "@italia/globals", "@italia/i18n", "@italia/icon", "@italia/video"]],
+  "fixed": [
+    [
+      "@italia/button",
+      "@italia/design-web-components",
+      "@italia/dropdown",
+      "@italia/globals",
+      "@italia/i18n",
+      "@italia/icon",
+      "@italia/input",
+      "@italia/popover",
+      "@italia/video"
+    ]
+  ],
   "linked": [],
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@italia/design-web-components", "@italia/tabs"]
+  "ignore": ["@italia/tabs"]
 }
