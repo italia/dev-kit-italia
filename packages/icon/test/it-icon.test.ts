@@ -42,7 +42,6 @@ describe('<it-icon>', () => {
   it('is decorative by default', async () => {
     const el = await fixtureWithDelay<ItIcon>(html`<it-icon name="it-star-full"></it-icon>`);
     const svg = el.shadowRoot?.querySelector('svg');
-    console.log(svg);
     expect(svg?.getAttribute('aria-hidden')).to.equal('true');
     expect(svg?.getAttribute('role')).to.equal('presentation');
     expect(svg?.querySelector('title')).to.be.null;

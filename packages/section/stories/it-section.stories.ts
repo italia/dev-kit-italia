@@ -64,10 +64,15 @@ Il componente \`<it-section>\` rappresenta un contenitore visivo per introdurre 
 Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del design-system](https://designers.italia.it/design-system/componenti/sections/)
 
 
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità e Shadow DOM</span></div><p>
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità (Draft)</span></div><p>
+      Il titolo h2 dello snippet è solo indicativo: assicurati che il contenuto contenga un'intestazione semantica per garantire la corretta navigazione assistiva.
+      <br>Il tag it-section contraddistingue una sezione semanticamente riconoscibile, associata all’id del titolo dall’attributo aria-labelledby.
+
+      <br>Gli autori dovrebbero dividere la pagina in sezioni semantiche reali e non per solo scopo decorativo.     <br> Qualora si utilizzino sezioni al solo scopo decorativo sostituire it-section con div ed eliminare l’attributo aria-labelledby.
+      <br><br>
       Le immagini fornite tramite l'attributo <code>image</code> sono considerate <strong>decorative</strong>: sono rese con un tag <code>&lt;img&gt;</code> e <code>aria-hidden="true"</code>.
       In questo modo non vengono annunciate dagli screen reader.</p><p class="pt-2">
-      Assicurati che il contenuto contenga un'intestazione semantica (es. <code>&lt;h2&gt;</code>) per garantire la corretta navigazione assistiva.</p></div></div>
+      </p></div></div>
 `,
       },
     },
@@ -92,7 +97,7 @@ Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del desi
     inverse: {
       control: { type: 'boolean' },
       description:
-        'Inverte il colore del testo (bianco su sfondo scuro), utile per sezioni scure o con immagini di sfondo',
+        'Quando attivo, l’attributo inverse applica il colore bianco ai testi. È utile quando la sezione ha uno sfondo scuro o un’immagine di sfondo, così da garantire il corretto contrasto e la leggibilità dei contenuti.',
       table: { defaultValue: { summary: false } },
     },
   },

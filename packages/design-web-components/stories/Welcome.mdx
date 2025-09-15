@@ -107,5 +107,37 @@ return (
 )
 ```
 
-<h2>Integrazione in React</h2>
-Per il funzionamento corretto dei web components in React, è necessario avere una versione React >= 19.0.0
+### Applicazioni predefinite per il testing (Angular, React, Svelte, Vue)
+
+All'interno di questo progetto, sotto alla cartella `/apps` sono gia disponibili alcune applicazioni create con i framework
+
+- `Angualar`
+- `React`
+- `Svelte`
+- `Vue`
+
+che consentono di testare l'attuale versione della libreria (o del branch corrente) su questi framework.
+
+#### Come testare:
+
+1. compilare sempre la versione corrente della libreria posizionandosi nella root con
+
+```bash
+pnpm build
+```
+
+2. posizionarsi nella cartella del framework che si vuole testare. Ad esempio se vogliamo testare il framework React (oppure Vue, o Svelte):
+
+```bash
+cd apps/react-app
+npm install //per copiare nella node_modules la versione compilata di design-web-components
+npm run dev
+```
+
+Se invece si vuole testare l'app Angular, è necessario avere installato in locale la CLI di Angular e fare:
+
+```bash
+cd apps/angular-app
+npm install //per copiare nella node_modules la versione compilata di design-web-components
+ng serve
+```

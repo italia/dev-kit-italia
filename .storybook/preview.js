@@ -19,7 +19,12 @@ const preview = {
     },
     options: {
       storySort: {
-        order: ['Welcome', 'PersonalizzazioneDegliStili', 'Componenti', ['Button', 'Icon', 'Video']],
+        order: [
+          'Welcome',
+          'PersonalizzazioneDegliStili',
+          'Componenti',
+          ['Button', 'Dropdown', 'Icon', 'Video', 'Form'],
+        ],
       },
     },
   },

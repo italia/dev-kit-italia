@@ -2,8 +2,10 @@ import TrackFocus from './utils/track-focus.js';
 import FormMixin from './mixins/form.js';
 import ValidityMixin from './mixins/validity.js';
 import setAttributes from './directives/setAttributes.js';
+import AriaKeyboardListController from './controllers/aria-keyboard-list-controller.js';
 
-export { TrackFocus, FormMixin, ValidityMixin, setAttributes };
+export { TrackFocus, FormMixin, ValidityMixin, setAttributes, AriaKeyboardListController };
+export type { AriaKeyboardConfig } from './controllers/aria-keyboard-list-controller.js';
 export {
   BaseComponent,
   BaseComponentInterface,
