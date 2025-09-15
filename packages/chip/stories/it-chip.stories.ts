@@ -294,8 +294,18 @@ export const ChipConChiusura: Story = {
         slot="dismiss-button"
         icon
         it-aria-label="Elimina etichetta"
-        it-aria-disabled="true"
         it-aria-description="Puoi premere per eliminare la chip."
+        @click=${(e: Event) => {
+          const chip = (e.currentTarget as HTMLElement).closest('it-chip');
+          if (chip) chip.remove();
+        }}
+        @keydown=${(e: KeyboardEvent) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const chip = (e.currentTarget as HTMLElement).closest('it-chip');
+            if (chip) chip.remove();
+          }
+        }}
       >
         <it-icon name="it-close" size="sm"></it-icon>
       </it-button>
@@ -322,7 +332,6 @@ Il codice JS dell'esempio gestisce la rimozione della chip sia via click che via
     slot="dismiss-button"
     icon
     it-aria-label="Elimina etichetta"
-    it-aria-disabled="true"
     it-aria-description="Puoi premere per eliminare la chip."
   >
     <it-icon name="it-close" size="sm"></it-icon>
@@ -334,11 +343,6 @@ Il codice JS dell'esempio gestisce la rimozione della chip sia via click che via
 
   dismissButtons.forEach((btn) => {
     const removeChip = (e) => {
-      if (btn['aria-disabled']) {
-        e.preventDefault();
-        e.stopPropagation();
-        return;
-      }
       const chip = btn.closest('it-chip');
       if (chip) chip.remove();
     };
@@ -368,22 +372,115 @@ export const ChipDisabilitata: Story = {
     docs: {
       description: {
         story: `
-Aggiungendo l'attributo \`disabled\` si ottiene una chip disabilitata.
+Aggiungendo l'attributo \`is-disabled\` si ottiene una chip disabilitata.
 `,
       },
     },
   },
   render: (args) => html`
-    <it-chip label="Etichetta" size="sm" variant="${args.variant}" dismissable isDisabled>
+    <it-chip label="Etichetta" size="sm" variant="${args.variant}" dismissable is-disabled>
       <it-button
         slot="dismiss-button"
         icon
         it-aria-label="Elimina etichetta"
         it-aria-disabled="true"
-        it-aria-description="Puoi premere per eliminare la chip."
+        it-aria-description="Questa chip è disabilitata e non può essere rimossa."
       >
         <it-icon name="it-close" size="sm"></it-icon>
       </it-button>
     </it-chip>
+  `,
+};
+
+export const ChipConAvatar: Story = {
+  name: 'Chip con avatar',
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Le chip possono includere un avatar utilizzando gli attributi \`avatar\` e \`avatar-alt\`.
+`,
+      },
+    },
+  },
+  render: () => html`
+    <div class="d-flex gap-2 flex-wrap">
+      <it-chip
+        label="Mario Rossi"
+        size="sm"
+        variant="primary"
+        avatar="https://randomuser.me/api/portraits/men/46.jpg"
+        avatar-alt="Mario Rossi"
+        dismissable
+      >
+        <it-button
+          slot="dismiss-button"
+          icon
+          it-aria-label="Rimuovi Mario Rossi"
+          it-aria-description="Puoi premere per rimuovere questo utente."
+        >
+          <it-icon name="it-close" size="sm"></it-icon>
+        </it-button>
+      </it-chip>
+      <it-chip
+        label="Anna Verdi"
+        size="lg"
+        variant="secondary"
+        avatar="https://randomuser.me/api/portraits/women/32.jpg"
+        avatar-alt="Anna Verdi"
+        dismissable
+      >
+        <it-button
+          slot="dismiss-button"
+          icon
+          it-aria-label="Rimuovi Anna Verdi"
+          it-aria-description="Puoi premere per rimuovere questo utente."
+        >
+          <it-icon name="it-close" size="sm"></it-icon>
+        </it-button>
+      </it-chip>
+    </div>
+  `,
+};
+
+export const ChipConIcona: Story = {
+  name: 'Chip con icona',
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Le chip possono includere un'icona utilizzando lo slot \`icon\`.
+`,
+      },
+    },
+  },
+  render: () => html`
+    <div class="d-flex gap-2 flex-wrap">
+      <it-chip label="Download" size="sm" variant="primary" dismissable>
+        <it-icon slot="icon" name="it-download" size="sm"></it-icon>
+        <it-button
+          slot="dismiss-button"
+          icon
+          it-aria-label="Rimuovi download"
+          it-aria-description="Puoi premere per rimuovere questa azione."
+        >
+          <it-icon name="it-close" size="sm"></it-icon>
+        </it-button>
+      </it-chip>
+      <it-chip label="Carica file" size="lg" variant="success" dismissable>
+        <it-icon slot="icon" name="it-upload" size="sm"></it-icon>
+        <it-button
+          slot="dismiss-button"
+          icon
+          it-aria-label="Rimuovi carica file"
+          it-aria-description="Puoi premere per rimuovere questa azione."
+        >
+          <it-icon name="it-close" size="sm"></it-icon>
+        </it-button>
+      </it-chip>
+      <it-chip label="Preferiti" size="sm" variant="warning">
+        <it-icon slot="icon" name="it-star-full" size="sm"></it-icon>
+      </it-chip>
+    </div>
   `,
 };

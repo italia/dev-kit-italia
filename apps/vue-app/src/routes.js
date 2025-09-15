@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import Button from './components/Button.vue';
+import Chip from './components/Chip.vue';
 import Dropdown from './components/Dropdown.vue';
 import Form from './components/Form.vue';
 import Icon from './components/Icon.vue';
@@ -9,6 +10,7 @@ import Video from './components/Video.vue';
 
 const routes = [
   { path: '/button', name: 'Button', component: Button },
+  { path: '/chip', name: 'Chip', component: Chip },
   { path: '/dropdown', name: 'Dropdown', component: Dropdown },
   { path: '/form', name: 'Form', component: Form },
   { path: '/icon', name: 'Icon', component: Icon },
