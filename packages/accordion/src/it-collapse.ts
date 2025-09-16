@@ -6,6 +6,7 @@ import { unsafeStatic } from 'lit/static-html.js';
 import styles from './collapse.scss';
 import { isKeyboardEvent, isMouseEvent, PressEvent } from './types.js';
 
+// TODO: quando si sviluppa collapse come componente standalone, decoupling dalle classi di accordion, e aggiornare il part name
 @customElement('it-collapse')
 export class ItCollapse extends BaseComponent {
   static styles = styles;
@@ -61,16 +62,6 @@ export class ItCollapse extends BaseComponent {
       e.stopPropagation();
       return;
     }
-    //   // Verifica se il click è sul trigger o suoi discendenti
-    //   const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement;
-    //   const triggerElements = triggerSlot?.assignedElements() || [];
-
-    // debugger;
-    // if (!this.triggerElement?.contains(e.target as Node) || this.triggerElement === e.target) {
-    //   e.preventDefault();
-    //   e.stopPropagation();
-    //   return;
-    // }
     if (isKeyboardEvent(e) && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
       this.toggle();
@@ -97,20 +88,10 @@ export class ItCollapse extends BaseComponent {
         cancelable: true,
       }),
     );
-    // if (!this.isAnimating) {
-    //   if (nextValue) {
-    //     this.performExpand();
-    //   } else {
-    //     this.performCollapse();
-    //   }
-    // }
-    // L'evento verrà sparato alla fine dell'animazione
   }
 
   private setInitialState() {
     if (this.contentElement) {
-      // this.contentElement.style.overflow = 'hidden';
-      // this.contentElement.style.height = '0';
       if (this.expanded) {
         this.contentElement.style.height = 'auto';
         this.contentElement.style.visibility = 'visible';
@@ -180,10 +161,6 @@ export class ItCollapse extends BaseComponent {
       defaultButton.id = this._triggerId;
     }
 
-    // // Se abbiamo un trigger slottato, cerca button nativi
-    // const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement;
-    // const triggerElement = triggerSlot?.assignedElements()?.[0] as HTMLElement;
-
     if (this.triggerElement) {
       if (
         this.triggerElement.tagName.toLowerCase() === 'button' ||
@@ -205,11 +182,6 @@ export class ItCollapse extends BaseComponent {
     }
     // Aggiorna anche gli stili e le icone di chi implementa questo metodo via estensione
     this.updateBackgroundStyles();
-    // Aggiorna il content - l'ID deve essere sull'elemento accordion-collapse
-    // if (this.contentElement) {
-    //   this.contentElement.id = this._contentId;
-    //   this.contentElement.setAttribute('aria-labelledby', this._triggerId);
-    // }
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -244,19 +216,6 @@ export class ItCollapse extends BaseComponent {
       })
       .finally(() => {
         this.cleanupAnimation();
-
-        // SPARA L'EVENTO SOLO DOPO CHE L'ANIMAZIONE È FINITA
-        // this.dispatchEvent(
-        //   new CustomEvent('it-collapse-toggle', {
-        //     detail: {
-        //       expanded: this.expanded,
-        //       id: this.contentElement?.id,
-        //     },
-        //     bubbles: true,
-        //     composed: true,
-        //     cancelable: true,
-        //   }),
-        // );
       });
   }
 
@@ -291,19 +250,6 @@ export class ItCollapse extends BaseComponent {
       })
       .finally(() => {
         this.cleanupAnimation();
-
-        // SPARA L'EVENTO SOLO DOPO CHE L'ANIMAZIONE È FINITA
-        // this.dispatchEvent(
-        //   new CustomEvent('it-collapse-toggle', {
-        //     detail: {
-        //       expanded: this.expanded,
-        //       id: this.contentElement?.id,
-        //     },
-        //     bubbles: true,
-        //     composed: true,
-        //     cancelable: true,
-        //   }),
-        // );
       });
   }
 
@@ -352,7 +298,6 @@ export class ItCollapse extends BaseComponent {
     // Nota sull'estensione: quando passi this.renderDefaultTrigger come callback a when
     // la funzione viene chiamata senza contesto (this viene perso) — devi chiamare il metodo tramite closure
     // che mantiene il contesto, es. () => this.renderDefaultTrigger().
-    // console.log('render collapse', this.triggerElement);
     const hasCustomTrigger = this.hasSlottedTrigger();
     return html`
       <div class="accordion-item" part="accordion-item">
