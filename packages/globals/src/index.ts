@@ -15,3 +15,4 @@ export {
 export { VALIDATION_STATUS } from './mixins/validity.js';
 export { cookies } from './utils/cookies.js';
 export type Constructor<T = {}> = new (...args: any[]) => T;
+export { WindowManager, type ScrollCallback, type ScrollState } from './base-component/window-manager.js';
