@@ -307,7 +307,7 @@ export const ChipConChiusura: Story = {
           }
         }}
       >
-        <it-icon name="it-close size="sm"></it-icon>
+        <it-icon name="it-close" size="sm"></it-icon>
       </it-button>
     </it-chip>
   `,
