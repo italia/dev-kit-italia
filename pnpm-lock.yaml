@@ -119,6 +119,9 @@ importers:
       prettier:
         specifier: ^3.3.2
         version: 3.5.3
+      prettier-v2:
+        specifier: npm:prettier@2.8.8
+        version: prettier@2.8.8
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
