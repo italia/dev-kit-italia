@@ -1,6 +1,6 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import { ItCollapse } from '@italia/accordion';
+import { ItCollapse } from './it-collapse.js';
 import styles from './accordion.scss';
 import type { HeadingLevels } from './types.ts';
 
