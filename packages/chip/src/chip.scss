@@ -43,7 +43,7 @@
 }
 
 /* Hover on the chip */
-:host(:hover) ::slotted(it-icon) {
+:host a:hover ::slotted(it-icon) {
   --bs-icon-primary: var(--bs-chip-text-color);
   --bs-icon-secondary: var(--bs-chip-text-color);
   --bs-icon-success: var(--bs-chip-text-color);

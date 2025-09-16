@@ -16,7 +16,7 @@ it-chip it-button it-icon::part(icon) {
   fill: var(--bs-chip-icon-color);
 }
 
-it-chip:hover it-button it-icon::part(icon) {
+it-chip a:hover it-button it-icon::part(icon) {
   fill: var(--bs-chip-text-color);
 }
 
