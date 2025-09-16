@@ -10,6 +10,10 @@
   --bs-accordion-btn-icon-width: 1.5rem;
 }
 
+:host([left-icon]) {
+  --bs-accordion-btn-icon-width: 1.25rem;
+}
+
 :host([background-active]) .accordion-header .accordion-button:not(.collapsed) {
   background-color: var(--bs-color-background-primary);
   color: var(--bs-color-text-inverse);
@@ -49,6 +53,7 @@ it-icon::part(icon) {
   justify-content: space-between;
   border-radius: 0;
   color: var(--accordion-button-color, inherit);
+  font-family: var(--bs-font-sans);
   text-align: left;
   --bs-accordion-inner-border-radius: 0;
 

@@ -1,8 +1,8 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import { ItCollapse } from './it-collapse.js';
+import { ItCollapse } from '@italia/accordion';
 import styles from './accordion.scss';
-import { HeadingLevels } from './types.js';
+import type { HeadingLevels } from './types.ts';
 
 @customElement('it-accordion-item')
 export class ItAccordionItem extends ItCollapse {
@@ -43,9 +43,8 @@ export class ItAccordionItem extends ItCollapse {
     let iconContent = null;
     if (this.leftIcon) {
       const iconName = this.expanded ? 'it-minus' : 'it-plus';
-      iconContent = html`<it-icon size="sm" name="${iconName}" class="accordion-icon-left" color="primary"></it-icon>`;
+      iconContent = html`<it-icon size="xs" name="${iconName}" class="accordion-icon-left" color="primary"></it-icon>`;
     } else {
-      // Icona di default sulla destra (chevron)
       iconContent = html`<it-icon
         size="sm"
         name="it-expand"
@@ -81,24 +80,6 @@ export class ItAccordionItem extends ItCollapse {
   }
 
   protected override updateBackgroundStyles() {
-    // Aggiorna CSS custom properties per background
-    // const button = this.shadowRoot?.querySelector('.accordion-button') as HTMLElement;
-    // if (button) {
-    //   if (this.backgroundActive && this.expanded) {
-    //     button.style.setProperty('--accordion-button-bg', 'var(--bs-primary)');
-    //     button.style.setProperty('--accordion-button-color', 'white');
-    //   } else {
-    //     button.style.removeProperty('--accordion-button-bg');
-    //     button.style.removeProperty('--accordion-button-color');
-    //   }
-
-    //   if (this.backgroundHover) {
-    //     button.style.setProperty('--accordion-button-hover-bg', 'var(--bs-primary-lighter)');
-    //   } else {
-    //     button.style.removeProperty('--accordion-button-hover-bg');
-    //   }
-    // }
-
     // Aggiorna l'icona left se necessario
     if (this.leftIcon) {
       const iconElement = this.shadowRoot?.querySelector('.accordion-icon-left') as HTMLElement;

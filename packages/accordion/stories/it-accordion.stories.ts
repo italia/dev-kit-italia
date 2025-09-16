@@ -141,33 +141,33 @@ export const AccordionItem = {
   argTypes: {
     label: {
       control: 'text',
-      description: "Testo dell'header dell'accordion item",
+      description: "Testo dell'header dell'elemento accordion",
       table: { defaultValue: { summary: 'Accordion Item' } },
     },
     as: {
       control: { type: 'select' },
       options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-      description: "Livello di heading per l'header",
+      description: "Livello di heading per l'header (h1-h6)",
       table: { defaultValue: { summary: 'h2' } },
     },
     'default-open': {
       control: 'boolean',
-      description: "Se true, l'item è aperto di default",
+      description: "Se true, l'elemento è aperto di default (stato iniziale)",
       table: { defaultValue: { summary: 'false' } },
     },
     'background-active': {
       control: 'boolean',
-      description: "Se true, applica sfondo primario all'header quando attivo",
+      description: "Se true, applica uno sfondo primario all'header quando l'elemento è aperto",
       table: { defaultValue: { summary: 'false' } },
     },
     'background-hover': {
       control: 'boolean',
-      description: "Se true, applica sfondo primario all'header al passaggio del mouse",
+      description: "Se true, applica uno sfondo primario all'header al passaggio del mouse",
       table: { defaultValue: { summary: 'false' } },
     },
     'left-icon': {
       control: 'boolean',
-      description: 'Se true, mostra icone plus/minus a sinistra invece della freccia a destra',
+      description: 'Se true, mostra le icone +/- a sinistra invece della freccia a destra',
       table: { defaultValue: { summary: 'false' } },
     },
   },
@@ -393,7 +393,7 @@ export const IconaASinistra: Story = {
     docs: {
       description: {
         story: `
-Quando l'attributo \`left-icon\` è abilitato, lsi ottiene una variante in cui l’icona chevron che indica lo stato di apertura è sostituita da segni meno/più allineati a sinistra del titolo dell’header.
+Quando l'attributo \`left-icon\` è abilitato, si ottiene una variante in cui l’icona chevron che indica lo stato di apertura è sostituita da segni meno/più allineati a sinistra del titolo dell’header.
 `,
       },
     },
