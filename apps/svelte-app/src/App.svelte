@@ -21,6 +21,7 @@
       <a href="#/form">Form</a>
       <a href="#/icon">Icon</a>
       <a href="#/input">Input</a>
+      <a href="#/section">Section</a>
       <a href="#/video">Video</a>
     </nav>
   </div>
