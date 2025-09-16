@@ -5,14 +5,13 @@ import { Code } from '@storybook/components';
 
 <div class="mb-4">
   <h1 class="visually-hidden">Design Web Components</h1>
-  <div class="text-center">
-    <img src="./logo.png" width="500px" alt="Design Web Components" />
+  <div>
+    <img src="./logo.png" width="500px" alt=".italia design web components" />
   </div>
-  <div class="text-center mb-4">
-    Design Web Components è un set di Web components che implementa il Design system .italia e i componenti presenti su{' '}
-    [UI Kit Italia](https://github.com/italia/design-ui-kit).
-  </div>
+  <p class="lead mb-5">Design Web Components è un set di Web components che implementa il Design system .italia e i componenti presenti su [UI Kit Italia](https://github.com/italia/design-ui-kit).</p>
 </div>
+
+## Come iniziare 
 
 Per iniziare, è sufficiente installare il pacchetto `npm` attraverso il seguente comando:
 
@@ -27,7 +26,7 @@ Il progetto è distribuito con licenza BSD-3 (consultabile nel file [LICENSE](ht
 un modello ancora più permissivo della classica licenza GPL, in quanto consente di modificare e ridistribuire
 questo software secondo varie modalità, anche di tipo closed-source.
 
-## Come contribuire 💙
+## Come contribuire
 
 Per installare la libreria e avviare Storybook in locale, è necessario avere installato [Node.js](https://nodejs.org/) e [pnpm](https://pnpm.io/).
 
@@ -60,7 +59,7 @@ pnpm build --filter=@italia/button
 # Poi ricarica la pagina del browser
 ```
 
-### Testare l'integrazione dei Web Components in altri framework JavaScript
+## Testare l'integrazione in altri framework JS
 
 Si consiglia di partire creando un progetto di esempio utilizzando il framework desiderato e importando i Web Components da Design Web Components.
 
@@ -108,16 +107,9 @@ return (
 )
 ```
 
-### Applicazioni predefinite per il testing (Angular, React, Svelte, Vue)
+## Applicazioni predefinite per il testing
 
-All'interno di questo progetto, sotto alla cartella `/apps` sono gia disponibili alcune applicazioni create con i framework
-
-- `Angualar`
-- `React`
-- `Svelte`
-- `Vue`
-
-che consentono di testare l'attuale versione della libreria (o del branch corrente) su questi framework.
+All'interno di questo progetto, sotto alla cartella `/apps` sono gia disponibili alcune applicazioni create con i framework **Angular**, **React**, **Svelte** e **Vue** che consentono di testare l'attuale versione della libreria (o del branch corrente).
 
 #### Come testare:
 
@@ -131,7 +123,7 @@ pnpm build
 
 ```bash
 cd apps/react-app
-npm install //per copiare nella node_modules la versione compilata di design-web-components
+npm install # Per copiare nella node_modules la versione compilata di design-web-components
 npm run dev
 ```
 
@@ -139,6 +131,6 @@ Se invece si vuole testare l'app Angular, è necessario avere installato in loca
 
 ```bash
 cd apps/angular-app
-npm install //per copiare nella node_modules la versione compilata di design-web-components
+npm install # Per copiare nella node_modules la versione compilata di design-web-components
 ng serve
 ```
