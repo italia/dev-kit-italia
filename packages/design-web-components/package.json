@@ -54,6 +54,7 @@
     "@italia/chip": "workspace:^",
     "@italia/dropdown": "workspace:^",
     "@italia/icon": "workspace:^",
+    "@italia/section": "workspace:^",
     "@italia/popover": "workspace:^",
     "@italia/video": "workspace:^",
     "@italia/input": "workspace:^",
