@@ -2,6 +2,7 @@ import { html, nothing } from 'lit';
 import { BaseComponent } from '@italia/globals';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
+import type { ItIcon } from '@italia/icon';
 import { ChipSize, ChipVariant } from './types.js';
 
 import styles from './chip.scss';
@@ -31,8 +32,24 @@ export class ItChip extends BaseComponent {
   @queryAssignedElements({ slot: 'dismiss-button', flatten: true })
   closeButton!: HTMLButtonElement[];
 
+  @queryAssignedElements({ slot: 'icon', flatten: true })
+  icon!: ItIcon[];
+
   private getAvatarClass() {
     return this.composeClass('avatar', this.size === 'lg' ? 'size-sm' : 'size-xs');
+  }
+
+  private updateIcon() {
+    if (this.icon.length) {
+      const icon = this.icon[0];
+
+      if (this.size === 'lg') {
+        icon.size = 'sm';
+      } else {
+        icon.size = 'xs';
+      }
+      icon.color = this.variant ?? '';
+    }
   }
 
   override updated() {
@@ -67,6 +84,7 @@ export class ItChip extends BaseComponent {
           'This negatively impacts accessibility compliance.',
       );
     }
+    this.updateIcon();
   }
 
   render() {

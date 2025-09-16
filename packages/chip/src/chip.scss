@@ -20,7 +20,6 @@
   }
 }
 
-// Sovrascriviamo il fill per tutte le varianti di icone quando il chip è disabled
 :host([is-disabled]) ::slotted(it-icon) {
   --bs-icon-primary: var(--bs-icon-disabled);
   --bs-icon-secondary: var(--bs-icon-disabled);
@@ -30,6 +29,26 @@
   --bs-icon-default: var(--bs-icon-disabled);
 }
 
+:host ::slotted(it-icon) {
+  --bs-icon-default: var(--bs-chip-icon-color);
+}
+
 :host([is-disabled]) ::slotted(it-button) {
   cursor: not-allowed !important;
+}
+
+// Quick fix, bsi styles have wonky vertical alignment
+.chip-label {
+  margin-top: 2px;
+}
+
+/* Hover on the chip */
+:host(:hover) ::slotted(it-icon) {
+  --bs-icon-primary: var(--bs-chip-text-color);
+  --bs-icon-secondary: var(--bs-chip-text-color);
+  --bs-icon-success: var(--bs-chip-text-color);
+  --bs-icon-danger: var(--bs-chip-text-color);
+  --bs-icon-warning: var(--bs-chip-text-color);
+  --bs-icon-default: var(--bs-chip-text-color);
+  --bs-chip-icon-color: var(--bs-chip-text-color);
 }

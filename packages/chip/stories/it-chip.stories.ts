@@ -143,8 +143,8 @@ const dismissTemplate = (label = 'Elimina etichetta', disabled = false, descript
   </it-button>
 `;
 
-const iconTemplate = (color: string) => html`
-  <it-icon slot="icon" name="it-github" size="xs" color=${color}></it-icon>
+const iconTemplate = (color: string, size: string) => html`
+  <it-icon slot="icon" name="it-github" size="${size === 'lg' ? 'sm' : 'xs'}" color=${color}></it-icon>
 `;
 
 // Renderizza il wc it-chip di default
@@ -175,7 +175,7 @@ const renderComponent = (params) => {
       avatar-alt="${ifDefined(avatarAlt || undefined)}"
       a11y-description="${a11yDescription}"
       ?id="${id}"
-      >${withIcon ? iconTemplate(variant) : nothing}${dismissable && withDismissButton
+      >${withIcon ? iconTemplate(variant, size) : nothing}${dismissable && withDismissButton
         ? dismissTemplate('I am dismissable', isDisabled)
         : nothing}</it-chip
     >
@@ -307,7 +307,7 @@ export const ChipConChiusura: Story = {
           }
         }}
       >
-        <it-icon name="it-close" size="sm"></it-icon>
+        <it-icon name="it-close size="sm"></it-icon>
       </it-button>
     </it-chip>
   `,
@@ -321,7 +321,7 @@ export const ChipConChiusura: Story = {
 Questa composizione mostra una chip con funzionalità di chiusura.
 
 La proprietà \`dismissable\` **non aggiunge automaticamente il pulsante**: è responsabilità dell'utilizzatore fornire un \`<it-button>\` con \`slot="dismiss-button"\` e logica di rimozione/logiche di esecuzione.
-
+L'icona di chiusura deve avere dimensione \`sm\` per rispettare il design.
 Il codice JS dell'esempio gestisce la rimozione della chip sia via click che via tastiera (\`Enter\` o \`Spazio\`).
 
 `,
@@ -386,7 +386,7 @@ Aggiungendo l'attributo \`is-disabled\` si ottiene una chip disabilitata.
         it-aria-disabled="true"
         it-aria-description="Questa chip è disabilitata e non può essere rimossa."
       >
-        <it-icon name="it-close" size="sm"></it-icon>
+        <it-icon name="it-close"></it-icon>
       </it-button>
     </it-chip>
   `,
@@ -419,7 +419,7 @@ Le chip possono includere un avatar utilizzando gli attributi \`avatar\` e \`ava
           it-aria-label="Rimuovi Mario Rossi"
           it-aria-description="Puoi premere per rimuovere questo utente."
         >
-          <it-icon name="it-close" size="sm"></it-icon>
+          <it-icon name="it-close"></it-icon>
         </it-button>
       </it-chip>
       <it-chip
@@ -436,7 +436,7 @@ Le chip possono includere un avatar utilizzando gli attributi \`avatar\` e \`ava
           it-aria-label="Rimuovi Anna Verdi"
           it-aria-description="Puoi premere per rimuovere questo utente."
         >
-          <it-icon name="it-close" size="sm"></it-icon>
+          <it-icon name="it-close"></it-icon>
         </it-button>
       </it-chip>
     </div>
@@ -449,7 +449,7 @@ export const ChipConIcona: Story = {
     docs: {
       description: {
         story: `
-Le chip possono includere un'icona utilizzando lo slot \`icon\`.
+Le chip possono includere un'icona utilizzando lo slot \`icon\` con il componente it-icon.
 `,
       },
     },
@@ -457,29 +457,29 @@ Le chip possono includere un'icona utilizzando lo slot \`icon\`.
   render: () => html`
     <div class="d-flex gap-2 flex-wrap">
       <it-chip label="Download" size="sm" variant="primary" dismissable>
-        <it-icon slot="icon" name="it-download" size="sm"></it-icon>
+        <it-icon slot="icon" name="it-download"></it-icon>
         <it-button
           slot="dismiss-button"
           icon
           it-aria-label="Rimuovi download"
           it-aria-description="Puoi premere per rimuovere questa azione."
         >
-          <it-icon name="it-close" size="sm"></it-icon>
+          <it-icon name="it-close"></it-icon>
         </it-button>
       </it-chip>
       <it-chip label="Carica file" size="lg" variant="success" dismissable>
-        <it-icon slot="icon" name="it-upload" size="sm"></it-icon>
+        <it-icon slot="icon" name="it-upload"></it-icon>
         <it-button
           slot="dismiss-button"
           icon
           it-aria-label="Rimuovi carica file"
           it-aria-description="Puoi premere per rimuovere questa azione."
         >
-          <it-icon name="it-close" size="sm"></it-icon>
+          <it-icon name="it-close"></it-icon>
         </it-button>
       </it-chip>
-      <it-chip label="Preferiti" size="sm" variant="warning">
-        <it-icon slot="icon" name="it-star-full" size="sm"></it-icon>
+      <it-chip href="#" label="Preferiti" size="sm" variant="warning">
+        <it-icon slot="icon" name="it-star-full"></it-icon>
       </it-chip>
     </div>
   `,

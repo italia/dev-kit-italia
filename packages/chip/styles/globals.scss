@@ -1,3 +1,7 @@
+it-chip {
+  display: inline-flex;
+}
+
 it-chip it-button::part(button) {
   padding: 0;
   // border: none;
@@ -10,6 +14,10 @@ it-chip it-button::part(button) {
 
 it-chip it-button it-icon::part(icon) {
   fill: var(--bs-chip-icon-color);
+}
+
+it-chip:hover it-button it-icon::part(icon) {
+  fill: var(--bs-chip-text-color);
 }
 
 it-chip it-button it-icon,
