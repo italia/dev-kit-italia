@@ -17,6 +17,7 @@
       "@italia/icon",
       "@italia/input",
       "@italia/popover",
+      "@italia/section",
       "@italia/video"
     ]
   ],
