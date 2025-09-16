@@ -1,11 +1,174 @@
 @import './prism';
 
+/* Importa le variabili di Bootstrap Italia se disponibili */
+/* @import 'bootstrap-italia/src/scss/bootstrap-italia'; */
+
 #storybook-root {
   width: fit-content;
   max-height: 100%;
   box-sizing: border-box;
   padding: 1rem;
   margin: auto;
+}
+
+.sbdocs,
+.sbdocs h1,
+.sbdocs h2,
+.sbdocs h3,
+.sbdocs h4,
+.sbdocs h5,
+.sbdocs h6,
+.sbdocs p,
+.sbdocs description {
+  font-family: 'Titillium Web', sans-serif;
+  /* Font di Bootstrap Italia */
+}
+
+.sbdocs description {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+/* Tipografia Bootstrap Italia per gli heading - valori dal _type.scss */
+.sbdocs h1 {
+  font-size: 2.5rem;
+  /* 40px mobile */
+  line-height: 3rem;
+  /* 48px mobile */
+  letter-spacing: -1px;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.sbdocs h2 {
+  font-size: 2rem;
+  /* 32px mobile */
+  line-height: 2.5rem;
+  /* 40px mobile */
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.sbdocs h3 {
+  font-size: 1.75rem;
+  /* 28px mobile */
+  line-height: 2rem;
+  /* 32px mobile */
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.sbdocs h4 {
+  font-size: 1.5rem;
+  /* 24px mobile */
+  line-height: 2rem;
+  /* 32px mobile */
+  font-weight: 600;
+  margin-bottom: 0.875rem;
+}
+
+.sbdocs h5 {
+  font-size: 1.25rem;
+  /* 20px mobile */
+  line-height: 1.5rem;
+  /* 24px mobile */
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.sbdocs h6 {
+  font-size: 1rem;
+  /* 16px mobile */
+  line-height: 1.5rem;
+  /* 24px mobile */
+  font-weight: 600;
+  margin-bottom: 0.625rem;
+}
+
+/* Breakpoint sm (≥576px) - come definito in BSI */
+@media (min-width: 576px) {
+  .sbdocs h1 {
+    font-size: 3rem;
+    /* 48px desktop */
+    line-height: 3.5rem;
+    /* 56px desktop */
+  }
+
+  .sbdocs h2 {
+    font-size: 2.5rem;
+    /* 40px desktop */
+    line-height: 3rem;
+    /* 48px desktop */
+  }
+
+  .sbdocs h3 {
+    font-size: 2rem;
+    /* 32px desktop */
+    line-height: 2.5rem;
+    /* 40px desktop */
+  }
+
+  .sbdocs h4 {
+    font-size: 1.75rem;
+    /* 28px desktop */
+    line-height: 2rem;
+    /* 32px desktop */
+  }
+
+  .sbdocs h5 {
+    font-size: 1.5rem;
+    /* 24px desktop */
+    line-height: 2rem;
+    /* 32px desktop */
+  }
+
+  .sbdocs h6 {
+    font-size: 1.125rem;
+    /* 18px desktop */
+    /* line-height rimane 1.5rem come mobile */
+  }
+}
+
+.sbdocs h3:first-of-type {
+  margin-top: 20px;
+}
+
+.sbdocs p,
+.sbdocs li:not(.toc-list-item) {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  max-width: 75ch;
+}
+
+.sbdocs .callout { 
+  max-width: 75ch;
+}
+
+.sbdocs li.toc-list-item {
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+
+/* Breakpoint sm per paragrafi - come in BSI */
+@media (min-width: 576px) {
+
+  .sbdocs p,
+  .sbdocs li:not(.toc-list-item) {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+.docblock-source.sb-unstyled {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  pre.prismjs {
+    font-size: 16px;
+    line-height: 1.55;
+  }
 }
 
 .docs-story {
@@ -56,21 +219,9 @@
   }
 }
 
-.toc-wrapper {
-  ul {
-    font-size: 0.85rem;
-    line-height: 1.2;
-
-    li.toc-list-item {
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-    }
-  }
-}
-
-/* Forza a capo prima del nome dell'attributo*/
+/* Forza a capo prima del nome dell'attributo */
 // .token.attr-name::before {
-//   content: '';
-//   white-space: pre;
-//   display: block;
+// content: '';
+// white-space: pre;
+// display: block;
 // }
