@@ -1,4 +1,4 @@
-import{j as t,M as a}from"./index-CbuOBm8d.js";import{useMDXComponents as l}from"./index-C1O2R_IM.js";import"./iframe-CE9jUz7H.js";import"./_commonjsHelpers-CqkleIqs.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";function n(o){const i={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",...l(),...o.components};return t.jsxs(t.Fragment,{children:[t.jsx(a,{title:"Font"}),`
+import{j as t,M as a}from"./index-B3_mrhad.js";import{useMDXComponents as l}from"./index-Cay6A1jk.js";import"./iframe-Cw1PCwZ-.js";import"./_commonjsHelpers-CqkleIqs.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";function n(o){const i={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",...l(),...o.components};return t.jsxs(t.Fragment,{children:[t.jsx(a,{title:"Font"}),`
 `,t.jsx(i.h1,{id:"font",children:"Font"}),`
 `,t.jsx(i.p,{children:"È necessario anche includere i file relativi ai font referenziati nel CSS della libreria. L’inclusione dei font può avviene includendo il bundle fornito dal pacchetto @italia/design-web-components, oppure utilizzando CSS."}),`
 `,t.jsx(i.h2,{id:"via-bundle",children:"Via Bundle"}),`
