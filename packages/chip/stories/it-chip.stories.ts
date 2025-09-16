@@ -386,7 +386,7 @@ Aggiungendo l'attributo \`is-disabled\` si ottiene una chip disabilitata.
         it-aria-disabled="true"
         it-aria-description="Questa chip è disabilitata e non può essere rimossa."
       >
-        <it-icon name="it-close"></it-icon>
+        <it-icon name="it-close" size="sm"></it-icon>
       </it-button>
     </it-chip>
   `,
@@ -419,7 +419,7 @@ Le chip possono includere un avatar utilizzando gli attributi \`avatar\` e \`ava
           it-aria-label="Rimuovi Mario Rossi"
           it-aria-description="Puoi premere per rimuovere questo utente."
         >
-          <it-icon name="it-close"></it-icon>
+          <it-icon name="it-close" size="sm"></it-icon>
         </it-button>
       </it-chip>
       <it-chip
@@ -436,7 +436,7 @@ Le chip possono includere un avatar utilizzando gli attributi \`avatar\` e \`ava
           it-aria-label="Rimuovi Anna Verdi"
           it-aria-description="Puoi premere per rimuovere questo utente."
         >
-          <it-icon name="it-close"></it-icon>
+          <it-icon name="it-close" size="sm"></it-icon>
         </it-button>
       </it-chip>
     </div>
@@ -464,7 +464,7 @@ Le chip possono includere un'icona utilizzando lo slot \`icon\` con il component
           it-aria-label="Rimuovi download"
           it-aria-description="Puoi premere per rimuovere questa azione."
         >
-          <it-icon name="it-close"></it-icon>
+          <it-icon name="it-close" size="sm"></it-icon>
         </it-button>
       </it-chip>
       <it-chip label="Carica file" size="lg" variant="success" dismissable>
@@ -475,7 +475,7 @@ Le chip possono includere un'icona utilizzando lo slot \`icon\` con il component
           it-aria-label="Rimuovi carica file"
           it-aria-description="Puoi premere per rimuovere questa azione."
         >
-          <it-icon name="it-close"></it-icon>
+          <it-icon name="it-close" size="sm"></it-icon>
         </it-button>
       </it-chip>
       <it-chip href="#" label="Preferiti" size="sm" variant="warning">
