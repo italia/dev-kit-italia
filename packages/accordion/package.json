@@ -23,6 +23,8 @@
   "exports": {
     ".": "./dist/src/index.js",
     "./it-accordion.js": "./dist/src/it-accordion.js",
+    "./it-accordion-item.js": "./dist/src/it-accordion-item.js",
+    "./it-collapse.js": "./dist/src/it-collapse.js",
     "./styles/*": "./styles/*"
   },
   "files": [

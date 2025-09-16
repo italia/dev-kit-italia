@@ -13,29 +13,19 @@ export class ItButton extends BaseComponent {
     return true;
   }
 
-  @query('button')
-  private _nativeButton!: HTMLButtonElement;
+  @query('button') private _nativeButton!: HTMLButtonElement;
 
-  @property({ type: String })
-  private _buttonClasses = '';
+  @property({ type: String, reflect: true }) type = 'button';
 
-  @property({ type: String, reflect: true })
-  type = 'button';
+  @property({ type: String, reflect: true }) variant: Variants = '';
 
-  @property({ type: String, reflect: true })
-  variant: Variants = '';
+  @property({ type: String, reflect: true }) size: Sizes = '';
 
-  @property({ type: String, reflect: true })
-  size: Sizes = '';
+  @property({ type: Boolean, reflect: true }) outline = false;
 
-  @property({ type: Boolean, reflect: true })
-  outline = false;
+  @property({ type: Boolean, reflect: true }) block = false;
 
-  @property({ type: Boolean, reflect: true })
-  block = false;
-
-  @property({ type: Boolean, reflect: true })
-  icon = false;
+  @property({ type: Boolean, reflect: true }) icon = false;
 
   @property({ type: String }) value = '';
 
@@ -59,6 +49,10 @@ export class ItButton extends BaseComponent {
 
   get form() {
     return this.internals ? this.internals.form : null;
+  }
+
+  public override focus() {
+    this._nativeButton?.focus();
   }
 
   private _onKeyDown = (e: KeyboardEvent) => {

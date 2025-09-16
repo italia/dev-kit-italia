@@ -1,6 +1,8 @@
 /** @type { import('@storybook/web-components').Preview } */
 import './main.scss';
 import './storybook-styles.scss';
+import prettier from 'prettier-v2';
+import HTMLParser from 'prettier-v2/parser-html';
 
 const preview = {
   parameters: {
@@ -11,6 +13,24 @@ const preview = {
       },
     },
     docs: {
+      source: {
+        // trasforma tutte le preview docs (restituendo il codice HTML formattato)
+        transform: (input) => {
+          if (!input || typeof input !== 'string') return input;
+          const t = input.trim();
+          if (!(t.startsWith('<') || /<\s*it-[a-z0-9-]+/i.test(input))) return input;
+          try {
+            return prettier.format(input, {
+              parser: 'html',
+              plugins: [HTMLParser],
+            });
+          } catch (err) {
+            // eslint-disable-next-line no-console
+            console.warn('Prettier docs.source.transform failed:', err);
+            return input;
+          }
+        },
+      },
       toc: {
         headingSelector: 'h2, h3',
         ignoreSelector: 'h2[id|="stories"], #esempio, .docs-story h2, .docs-story h3',
@@ -19,7 +39,12 @@ const preview = {
     },
     options: {
       storySort: {
-        order: ['Welcome', 'PersonalizzazioneDegliStili', 'Componenti', ['Button', 'Icon', 'Video']],
+        order: [
+          'Welcome',
+          'PersonalizzazioneDegliStili',
+          'Componenti',
+          ['Button', 'Dropdown', 'Icon', 'Video', 'Form'],
+        ],
       },
     },
   },

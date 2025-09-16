@@ -9,24 +9,34 @@
 :host {
   --bs-accordion-btn-icon-width: 1.5rem;
 }
+
 :host([background-active]) .accordion-header .accordion-button:not(.collapsed) {
   background-color: var(--bs-color-background-primary);
   color: var(--bs-color-text-inverse);
 }
+
 :host([background-hover]) .accordion-header .accordion-button:hover {
   background-color: var(--bs-color-background-primary);
   color: var(--bs-color-text-inverse);
+
   it-icon::part(icon) {
     --bs-icon-primary: var(--bs-color-text-inverse);
   }
 }
+
+:host(:not(:first-of-type)) .accordion-item {
+  border-top: 0;
+}
+
 :host([left-icon]) .accordion-header .accordion-button {
   justify-content: flex-start;
 }
+
 it-accordion-item {
   display: block;
   width: 100%;
 }
+
 it-icon::part(icon) {
   width: var(--bs-accordion-btn-icon-width);
   height: var(--bs-accordion-btn-icon-width);
@@ -37,18 +47,19 @@ it-icon::part(icon) {
   display: flex !important;
   align-items: center;
   justify-content: space-between;
+  border-radius: 0;
   color: var(--accordion-button-color, inherit);
   text-align: left;
-  border-radius: 0;
   --bs-accordion-inner-border-radius: 0;
 
   &::after {
     content: none !important;
   }
+
   &:focus-visible {
     z-index: 3;
-    box-shadow: var(--bs-accordion-btn-focus-box-shadow);
     border-color: #000 !important;
+    box-shadow: var(--bs-accordion-btn-focus-box-shadow);
     box-shadow:
       0 0 0 2px var(--bs-color-border-inverse),
       0 0 0 5px var(--bs-color-outline-focus) !important;
@@ -87,6 +98,7 @@ it-icon::part(icon) {
 
 .accordion-header {
   display: flex;
+
   .accordion-button {
     background-color: unset;
   }

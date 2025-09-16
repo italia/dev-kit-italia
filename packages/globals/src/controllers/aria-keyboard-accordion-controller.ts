@@ -48,20 +48,13 @@ export class AriaKeyboardAccordionController implements ReactiveController {
           this.config.setActive(currentIndex < 0 ? items.length - 1 : (currentIndex - 1 + items.length) % items.length);
         break;
       case 'Home':
-        console.log('Home pressed');
         event.preventDefault();
         if (items.length) this.config.setActive(0);
         break;
       case 'End':
-        console.log('End pressed');
         event.preventDefault();
         if (items.length) this.config.setActive(items.length - 1);
         break;
-      // case 'Enter':
-      // case ' ':
-      //   event.preventDefault();
-      //   this.config.toggle(activeElement?.getAttribute('aria-controls') ?? '');
-      //   break;
       default:
         break;
     }

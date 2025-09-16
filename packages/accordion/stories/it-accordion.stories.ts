@@ -66,6 +66,12 @@ const meta: Meta<AccordionProps> = {
     backgroundHover: false,
     leftIcon: false,
   },
+  decorators: [
+    (Story, context) =>
+      context?.parameters?.useMetaDecorator === false
+        ? Story()
+        : html`<div style="min-height:350px;display:flex;align-items:center">${Story()}</div>`,
+  ],
   argTypes: {
     mode: {
       control: 'select',
@@ -92,19 +98,23 @@ const meta: Meta<AccordionProps> = {
   parameters: {
     layout: 'padded',
     docs: {
+      source: { excludeDecorators: true },
       description: {
         component: `
-<Description>Costruisci accordion collassabili verticalmente basati.</Description>
+<Description>Costruisci accordion collassabili verticalmente.</Description>
 Per ottimizzare l'ingombro dei contenuti di una pagina a volte è necessario usare degli elementi richiudibili (in gergo definiti collassabili o collapse), che possono essere attivati indipendentemente l'uno dall'altro oppure in modo esclusivo con l'attivazione di solo un blocco alla volta (in gergo definiti fisarmoniche o accordion).
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>
-L'accordion implementa le specifiche ARIA per garantire piena accessibilità:\n
+L'accordion implementa le specifiche ARIA [WAI-ARIA Authoring Practices 1.1 accordion pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion) per garantire piena accessibilità:\n
 • Navigazione da tastiera con tasti freccia per spostarsi tra gli elementi\n
 • Supporto per <code>Space</code> ed <code>Enter</code> per attivare/disattivare elementi\n
 • Attributi ARIA appropriati per comunicare lo stato agli screen reader\n
 • Heading semantici configurabili per una corretta struttura del documento\n
+• Rispetto delle preferenze di riduzione del movimento definite dall'utente per le animazioni di apertura/chiusura
 </p></div></div>
+### Gruppi di elementi richiudibili
+Gli elementi richiudibili sono molto spesso mostrati in gruppo, tipicamente usati per approfondire voci o argomenti mostrati nelle singole barre cliccabili.
 `,
       },
     },
@@ -161,21 +171,24 @@ export const AccordionItem = {
       table: { defaultValue: { summary: 'false' } },
     },
   },
+  decorators: [(Story) => html`<div style="min-height:150px;display:flex;align-items:center">${Story()}</div>`],
   parameters: {
+    useMetaDecorator: false,
     docs: {
+      source: { excludeDecorators: true },
       description: {
         story: `
-Il componente \`it-accordion-item\` rappresenta un singolo elemento accordion che può essere utilizzato individualmente o all'interno di un contenitore \`it-accordion\`.
+Il componente \`it-accordion-item\` rappresenta un singolo elemento accordion che deve essere utilizzato all'interno di un contenitore \`it-accordion\`.
 
 #### Proprietà
 
 - **\`label\`**: Il testo dell'header dell'accordion item
 - **\`as\`**: Il livello di heading (h1-h6) da utilizzare per l'header
-- **\`default-open\`**: Se true, l'elemento si apre automaticamente
+- **\`default-open\`**: Se true, l'elemento viene mostrato espanso
 
 #### Contenuto
 
-Il contenuto dell'accordion item va inserito come slot default (contenuto diretto dell'elemento).
+Il contenuto dell'accordion item va inserito nello slot content (contenuto dell'elemento).
         `,
       },
     },
@@ -183,7 +196,7 @@ Il contenuto dell'accordion item va inserito come slot default (contenuto dirett
   render: (args: any) => html`
     <it-accordion-item
       label="${args.label || 'Accordion Item'}"
-      as="${args.as || 'h2'}"
+      as="${args.as || 'h4'}"
       ?default-open="${args['default-open'] || false}"
       ?background-active="${args['background-active'] || false}"
       ?background-hover="${args['background-hover'] || false}"
@@ -227,33 +240,64 @@ In modalità single, può essere aperto un solo elemento alla volta. Aprendo un 
   render: (args) => renderComponent(args, defaultItems),
 };
 
-export const IconaASinistra: Story = {
-  name: 'Icona a sinistra',
-  args: {
-    leftIcon: true,
-    backgroundActive: true,
-  },
-  argTypes: {
-    leftIcon: {
-      table: { disable: true },
-    },
-    backgroundActive: {
-      table: { disable: true },
-    },
-  },
+export const AccordionAnnidati: Story = {
+  name: 'Accordion annidati',
+  decorators: [(Story) => html`<div style="min-height:575px;display:flex;align-items:center">${Story()}</div>`],
   parameters: {
+    useMetaDecorator: false,
     docs: {
       description: {
         story: `
-Quando l'attributo \`left-icon\` è abilitato, le icone plus/minus vengono mostrate a sinistra del testo invece della freccia a destra. Questa variante è specifica per Bootstrap Italia.
+Più gruppi di accordion possono essere annidati.
 
-
-Combinato con \`background-active\`, le icone diventano bianche quando l'elemento è attivo per mantenere il giusto contrasto.
-`,
+<div class="callout callout-warning"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità e accordion annidati</span></div>
+<p>
+Utilizzare questo approccio solo quando strettamente necessario: dal punto di vista dell'accessibilità non si tratta di una soluzione ottimale.
+</p></div></div>
+        `,
       },
     },
   },
-  render: (args) => renderComponent(args, defaultItems),
+  render: () =>
+    html` <it-accordion>
+      <it-accordion-item label="Elemento Accordion #1" default-open>
+        <div slot="content">
+          <!-- Accordion annidato -->
+          <it-accordion>
+            <it-accordion-item label="Elemento Accordion annidato #1" as="h3" default-open>
+              <div slot="content">
+                Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+                facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+              </div>
+            </it-accordion-item>
+            <it-accordion-item label="Elemento Accordion annidato #2" as="h3">
+              <div slot="content">
+                Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+                facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+              </div>
+            </it-accordion-item>
+            <it-accordion-item label="Elemento Accordion annidato #3" as="h3">
+              <div slot="content">
+                Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+                facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+              </div>
+            </it-accordion-item>
+          </it-accordion>
+        </div>
+      </it-accordion-item>
+      <it-accordion-item label="Elemento Accordion #2">
+        <div slot="content">
+          Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+        </div>
+      </it-accordion-item>
+      <it-accordion-item label="Elemento Accordion #3">
+        <div slot="content">
+          Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+          facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
+        </div>
+      </it-accordion-item>
+    </it-accordion>`,
 };
 
 export const HeaderAttivi: Story = {
@@ -332,45 +376,70 @@ Aggiungere la proprietà <code>background-hover</code> a <code>it-accordion</cod
   `,
 };
 
-export const CollapseMultipleTriggers: Story = {
-  name: 'Collapse multipli trigger',
+export const IconaASinistra: Story = {
+  name: 'Icona a sinistra',
+  args: {
+    leftIcon: true,
+  },
+  argTypes: {
+    leftIcon: {
+      table: { disable: true },
+    },
+    backgroundActive: {
+      table: { disable: true },
+    },
+  },
   parameters: {
     docs: {
       description: {
         story: `
-Tre esempi di \`it-collapse\` con tipi diversi di trigger:
-
-- **it-button**
-- **button** nativo
-- **a[role="button"]** link attivabile come pulsante
-
-Ciascuno gestisce animazione, aria-expanded e preferenze per reduced-motion.
-        `,
+Quando l'attributo \`left-icon\` è abilitato, lsi ottiene una variante in cui l’icona chevron che indica lo stato di apertura è sostituita da segni meno/più allineati a sinistra del titolo dell’header.
+`,
       },
     },
   },
-  render: () => html`
-    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 600px;">
-      <it-collapse>
-        <it-button slot="trigger">Trigger con it-button</it-button>
-        <div slot="content" style="padding: 16px; border: 1px solid blue; margin-top: 1rem;">
-          <p>Contenuto del collapse con it-button come trigger.</p>
-        </div>
-      </it-collapse>
-
-      <it-collapse>
-        <button slot="trigger">Trigger con button nativo</button>
-        <div slot="content" style="padding: 16px; border: 1px solid blue; margin-top: 1rem;">
-          <p>Contenuto del collapse con button nativo come trigger.</p>
-        </div>
-      </it-collapse>
-
-      <it-collapse>
-        <a slot="trigger" role="button" href="#href">Trigger con a[role="button"]</a>
-        <div slot="content" style="padding: 16px; border: 1px solid blue; margin-top: 1rem;">
-          <p>Contenuto del collapse con a[role="button"] come trigger.</p>
-        </div>
-      </it-collapse>
-    </div>
-  `,
+  render: (args) => renderComponent(args, defaultItems),
 };
+
+// export const CollapseMultipleTriggers: Story = {
+//   name: 'Collapse multipli trigger',
+//   parameters: {
+//     docs: {
+//       description: {
+//         story: `
+// Tre esempi di \`it-collapse\` con tipi diversi di trigger:
+
+// - **it-button**
+// - **button** nativo
+// - **a[role="button"]** link attivabile come pulsante
+
+// Ciascuno gestisce animazione, aria-expanded e preferenze per reduced-motion.
+//         `,
+//       },
+//     },
+//   },
+//   render: () => html`
+//     <div style="display: flex; flex-direction: column; gap: 16px; max-width: 600px;">
+//       <it-collapse>
+//         <it-button slot="trigger">Trigger con it-button</it-button>
+//         <div slot="content" style="padding: 16px; border: 1px solid blue; margin-top: 1rem;">
+//           <p>Contenuto del collapse con it-button come trigger.</p>
+//         </div>
+//       </it-collapse>
+
+//       <it-collapse>
+//         <button slot="trigger">Trigger con button nativo</button>
+//         <div slot="content" style="padding: 16px; border: 1px solid blue; margin-top: 1rem;">
+//           <p>Contenuto del collapse con button nativo come trigger.</p>
+//         </div>
+//       </it-collapse>
+
+//       <it-collapse>
+//         <a slot="trigger" role="button" href="#href">Trigger con a[role="button"]</a>
+//         <div slot="content" style="padding: 16px; border: 1px solid blue; margin-top: 1rem;">
+//           <p>Contenuto del collapse con a[role="button"] come trigger.</p>
+//         </div>
+//       </it-collapse>
+//     </div>
+//   `,
+// };

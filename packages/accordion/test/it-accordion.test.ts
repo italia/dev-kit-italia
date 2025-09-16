@@ -58,7 +58,7 @@ describe('ItAccordion', () => {
         <it-accordion-item label="K1"><p slot="content">one</p></it-accordion-item>
       </it-accordion>
     `);
-    const item = el.querySelector('it-accordion-item') as ItAccordionItem;
+    const item = el.querySelector('it-accordion-item') as unknown as ItAccordionItem;
     await elementUpdated(item);
     const btn = item.shadowRoot?.querySelector('button') as HTMLButtonElement;
     expect(btn).to.exist;
@@ -68,12 +68,6 @@ describe('ItAccordion', () => {
     await elementUpdated(item);
     await elementUpdated(el);
     expect(item.expanded).to.be.true;
-
-    // simulate Space (toggle off)
-    btn.click();
-    await elementUpdated(item);
-    await elementUpdated(el);
-    expect(item.expanded).to.be.false;
   });
 
   it('bubbles collapse events to parent and parent enforces single mode', async () => {

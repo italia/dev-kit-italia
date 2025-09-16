@@ -4,13 +4,11 @@ import { customElement, property, queryAssignedElements } from 'lit/decorators.j
 import type { ItAccordionItem } from './it-accordion-item.js';
 import type { AccordionMode } from './types.js';
 import styles from './accordion.scss';
-import { ItCollapse } from './it-collapse.js';
 
 @customElement('it-accordion')
 export class ItAccordion extends BaseComponent {
   static styles = styles;
 
-  // Ref automatica agli elementi slottati
   @queryAssignedElements({ selector: 'it-accordion-item' })
   private accordionItems!: ItAccordionItem[];
 
@@ -29,8 +27,6 @@ export class ItAccordion extends BaseComponent {
   private _ariaNav = new AriaKeyboardAccordionController(this);
 
   override updated(changedProperties: Map<string | number | symbol, unknown>) {
-    // super.updated?.(changedProperties);
-    console.log('ItAccordion updated called with', changedProperties.get('mode'), this.mode);
     // Propaga le proprietà ai figli quando cambiano
     if (
       changedProperties.has('backgroundActive') ||
@@ -78,7 +74,6 @@ export class ItAccordion extends BaseComponent {
 
   connectedCallback() {
     super.connectedCallback?.();
-    // this.addEventListener('collapse-toggle', this._onCollapseToggle);
     this.addEventListener('keydown', this._onKeyDown as EventListener);
   }
 
@@ -89,7 +84,6 @@ export class ItAccordion extends BaseComponent {
   }
 
   override disconnectedCallback(): void {
-    // this.removeEventListener('collapse-toggle', this._onCollapseToggle);
     this.removeEventListener('keydown', this._onKeyDown as EventListener);
     super.disconnectedCallback?.();
   }
@@ -97,7 +91,6 @@ export class ItAccordion extends BaseComponent {
   private _onCollapseToggle = (e: Event) => {
     const customEvent = e as CustomEvent;
     const { expanded } = customEvent.detail;
-    // debugger;
     // Se è in single mode e sta per essere espanso, chiudi tutti gli altri
     if (this.mode === 'single' && expanded) {
       for (const item of this.accordionItems) {
@@ -114,6 +107,10 @@ export class ItAccordion extends BaseComponent {
   };
 
   private _onKeyDown(e: KeyboardEvent) {
+    // Evita che il keydown di un accordion figlio risalga al padre
+    if (e.target && !this.accordionItems.some((item) => item.contains(e.target as Node))) {
+      return;
+    }
     // Recupera tutti i trigger degli accordion
     const triggers: HTMLElement[] = [];
     // Per ogni item, cerca il button nel suo shadow DOM
@@ -130,6 +127,9 @@ export class ItAccordion extends BaseComponent {
       },
     });
     this._ariaNav.handleKeyDown(e);
+
+    // Blocca la propagazione verso l'accordion padre in caso di accordion annidati
+    e.stopPropagation();
   }
 
   render() {
