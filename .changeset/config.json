@@ -9,6 +9,7 @@
   "commit": false,
   "fixed": [
     [
+      "@italia/accordion",
       "@italia/button",
       "@italia/design-web-components",
       "@italia/dropdown",
