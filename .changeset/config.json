@@ -3,14 +3,14 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "italia/design-web-components"
+      "repo": "italia/dev-kit-italia"
     }
   ],
   "commit": false,
   "fixed": [
     [
       "@italia/button",
-      "@italia/design-web-components",
+      "@italia/dev-kit-italia",
       "@italia/dropdown",
       "@italia/globals",
       "@italia/i18n",

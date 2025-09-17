@@ -136,7 +136,7 @@ function generateUnifiedChangelog() {
   });
 
   // Genera il contenuto del changelog unificato
-  let unifiedContent = '# Design Web Components Changelog\n\n';
+  let unifiedContent = '# Dev Kit Italia Changelog\n\n';
   unifiedContent += 'Questo changelog raccoglie tutte le modifiche di tutti i pacchetti del monorepo.\n\n';
 
   for (const version of sortedVersions) {

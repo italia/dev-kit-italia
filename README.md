@@ -1,9 +1,9 @@
-<h1 align="center">Design Web Components</h1>
+<h1 align="center">Dev Kit Italia</h1>
 
 <p align="center">
   <img src="public/favicons/android-chrome-512x512.png" alt="logo del design system .italia" width="120px" height="auto"/>
   <br>
-  <i>Design Web Components è un toolkit
+  <i>Dev Kit Italia è un toolkit
     <br> che implementa il Design system .italia</i>
   <br>
 </p>
@@ -36,13 +36,13 @@ _⚠️ Attenzione: questo repository e i relativi pacchetti sono in lavorazione
 
 ## Intro
 
-**Design Web Components** è un set di Web components che implementa il Design system .italia e i componenti presenti su [UI Kit Italia](https://github.com/italia/design-ui-kit).
+**Dev Kit Italia** è un set di Web components che implementa il Design system .italia e i componenti presenti su [UI Kit Italia](https://github.com/italia/design-ui-kit).
 Per navigare la libreria e visualizzare i componenti, è stato utilizzato [Storybook](https://storybook.js.org/).
 La documentazione è disponibile [qui](https://italia.github.io/dev-kit-italia) per l'ultima release stabile pubblicata.
 
 ## Come usare la libreria
 
-Per utilizzare Design Web Components come dipendenza in un'app è possibile installarla da [npm](https://www.npmjs.com/~italia).
+Per utilizzare Dev Kit Italia come dipendenza in un'app è possibile installarla da [npm](https://www.npmjs.com/~italia).
 
 ## Come contribuire 💙
 

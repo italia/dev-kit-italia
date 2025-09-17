@@ -2,10 +2,10 @@ import { createApp } from 'vue';
 
 import './style.css';
 
-import { registerTranslation } from '@italia/design-web-components/elements.js';
+import { registerTranslation } from '@italia/dev-kit-italia/elements.js';
 
-import '@italia/design-web-components/fonts.css';
-import '@italia/design-web-components/styles.css';
+import '@italia/dev-kit-italia/fonts.css';
+import '@italia/dev-kit-italia/styles.css';
 
 import App from './App.vue';
 import router from './routes.js';

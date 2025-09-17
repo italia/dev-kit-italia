@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@italia/design-web-components": "file:../../packages/design-web-components",
+    "@italia/dev-kit-italia": "file:../../packages/dev-kit-italia",
     "svelte-spa-router": "^4.0.1"
   },
   "devDependencies": {

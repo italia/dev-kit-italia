@@ -14,7 +14,7 @@ addons.setConfig({
     appBorderRadius: 4,
     appPreviewBg: '#f9f9f9',
 
-    brandTitle: 'Design Web Components',
+    brandTitle: 'Dev Kit Italia',
     brandImage: './logo.png',
   },
 });
