@@ -6,6 +6,7 @@ import HTMLParser from 'prettier-v2/parser-html';
 
 const preview = {
   parameters: {
+    layout: 'centered',
     controls: {
       matchers: {
         color: /(background|color)$/i,
