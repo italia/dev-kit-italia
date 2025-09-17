@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  text-align: center;
+}
+
+.app-header {
+  border-bottom: 1px solid currentColor;
+  margin-bottom: 2rem;
+}
+
+.app-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+section {
+  margin: 4rem 0;
+}
+
+.flex {
+  display: flex;
+  align-items: start;
+  padding: 0.3rem 0;
+  gap: 0.6rem;
+}

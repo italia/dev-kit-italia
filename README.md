@@ -38,7 +38,7 @@ _⚠️ Attenzione: questo repository e i relativi pacchetti sono in lavorazione
 
 **Design Web Components** è un set di Web components che implementa il Design system .italia e i componenti presenti su [UI Kit Italia](https://github.com/italia/design-ui-kit).
 Per navigare la libreria e visualizzare i componenti, è stato utilizzato [Storybook](https://storybook.js.org/).
-La versione pubblica dello Storybook è disponibile [qui](https://italia.github.io/dev-kit-italia) per l'ultima release stabile pubblicata.
+La documentazione è disponibile [qui](https://italia.github.io/dev-kit-italia) per l'ultima release stabile pubblicata.
 
 ## Come usare la libreria
 
@@ -46,7 +46,7 @@ Per utilizzare Design Web Components come dipendenza in un'app è possibile inst
 
 ## Come contribuire 💙
 
-Per installare la libreria e avviare lo Storybook in locale, è necessario avere installato [Node.js](https://nodejs.org/) e [pnpm](https://pnpm.io/).
+Per installare la libreria e avviare Storybook in locale, è necessario avere installato [Node.js](https://nodejs.org/) e [pnpm](https://pnpm.io/).
 
 Per installare le dipendenze:
 
@@ -54,8 +54,39 @@ Per installare le dipendenze:
 pnpm install
 ```
 
-Per avviare lo Storybook in locale:
+Per compilare tutti i componenti (necessario la prima volta):
+
+```sh
+pnpm build
+```
+
+Per avviare Storybook in locale:
 
 ```sh
 pnpm storybook
 ```
+
+**Durante lo sviluppo:**
+
+- Documentazione/Storie e tipi: si aggiornano automaticamente ✨
+- Componenti: puoi ricompilare il solo package modificato
+
+```sh
+# Per esempio, se stai modificando il componente button:
+pnpm build --filter=@italia/button
+# Poi ricarica la pagina del browser
+```
+
+**Nota:** È necessario eseguire `pnpm build` prima di avviare Storybook la prima volta per compilare i pacchetti TypeScript in JavaScript.
+
+### Esempi di integrazione dei Web Components in altri framework JavaScript
+
+Sono disponibili delle applicazioni di esempio che mostrano come integrare i Web Components in diversi framework JavaScript.
+
+Per maggiori dettagli, consulta il file [examples/README.md](./examples/README.md).
+
+## Processo di Rilascio 🚀
+
+Il progetto utilizza [Changesets](https://github.com/changesets/changesets) per gestire i rilasci di tutti i pacchetti. Per informazioni dettagliate, consulta la [documentazione di rilascio](./RELEASE.md).
+
+Il workflow GitHub Actions pubblicherà automaticamente tutti i pacchetti su NPM.

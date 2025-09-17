@@ -9,21 +9,21 @@ import styles from './icon.scss';
 export class ItIcon extends BaseComponent {
   static styles = styles;
 
-  @property({ type: String }) size?: Sizes;
+  @property({ type: String, reflect: true }) size?: Sizes;
 
   @property({ type: String }) name?: AvailableIcons;
 
-  @property({ type: String }) color?: Colors;
+  @property({ type: String, reflect: true }) color?: Colors;
 
   // @property({ type: String }) background?: Colors;
 
-  @property({ type: String }) align?: Alignments = 'middle';
+  @property({ type: String, reflect: true }) align?: Alignments = 'middle';
 
   @property({ type: String, reflect: true }) label = '';
 
-  @property({ type: Boolean }) padded = false;
+  @property({ type: Boolean, reflect: true }) padded = false;
 
-  @property({ type: String }) src?: string;
+  @property({ type: String, reflect: true }) src?: string;
 
   @state() private svgElement?: HTMLElement;
 
@@ -108,26 +108,43 @@ export class ItIcon extends BaseComponent {
     svgEl.removeAttribute('height');
 
     const classList = this.updateClasses();
-    const _ariaHidden = this.ariaHidden !== null ? this.ariaHidden : 'true';
-    const _role = _ariaHidden === 'true' ? null : (this.role ?? 'img');
+
     svgEl.setAttribute('class', classList);
     svgEl.setAttribute('part', 'icon');
-    svgEl.setAttribute('focusable', 'false');
-    if (_role != null) {
-      svgEl.setAttribute('role', _role);
-    }
-    svgEl.setAttribute('aria-hidden', _ariaHidden);
 
-    svgEl.removeAttribute('aria-labelledby');
-    svgEl.querySelectorAll('title').forEach((t) => t.remove());
+    // Accessibility logic:
+    // - If a `label` is provided:
+    //     - The icon is accessible to assistive technologies.
+    //     - Remove aria-hidden attribute if it exists
+    //     - Sets `role="img"` to indicate the SVG is an image.
+    //     - Adds a <title> element with the label text inside the SVG.
+    //     - Sets `aria-labelledby` to reference the <title> for screen readers.
+    // - If no `label` is provided:
+    //     - The icon is treated as decorative and ignored by assistive technologies.
+    //     - Sets `aria-hidden="true".
+    //     - Sets `role="presentation"` to indicate the SVG is purely decorative.
+    //     - Removes any <title> and `aria-labelledby` attributes from the SVG.
+    if (this.label) {
+      svgEl.removeAttribute('aria-hidden');
+      svgEl.setAttribute('role', 'img');
 
-    if (this.label && this.titleId) {
-      const titleEl = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-      titleEl.id = this.titleId;
-      titleEl.textContent = this.label;
-      svgEl.prepend(titleEl);
+      // Remove previous title/aria-labelledby
+      svgEl.removeAttribute('aria-labelledby');
+      svgEl.querySelectorAll('title').forEach((t) => t.remove());
 
-      svgEl.setAttribute('aria-labelledby', this.titleId);
+      // Add title and aria-labelledby for screen readers
+      if (this.titleId) {
+        const titleEl = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+        titleEl.id = this.titleId;
+        titleEl.textContent = this.label;
+        svgEl.prepend(titleEl);
+        svgEl.setAttribute('aria-labelledby', this.titleId);
+      }
+    } else {
+      svgEl.setAttribute('aria-hidden', 'true');
+      svgEl.setAttribute('role', 'presentation');
+      svgEl.removeAttribute('aria-labelledby');
+      svgEl.querySelectorAll('title').forEach((t) => t.remove());
     }
   }
 
@@ -138,14 +155,17 @@ export class ItIcon extends BaseComponent {
   }
 
   private updateClasses() {
-    return this.composeClass(
+    return [
       'icon',
       this.size ? `icon-${this.size}` : '',
       this.color ? `icon-${this.color}` : '',
       // this.background ? `bg-${this.background}` : '',
       this.align ? `align-${this.align}` : '',
       this.padded ? `icon-padded` : '',
-    );
+    ]
+      .filter(Boolean)
+      .join(' ')
+      .trim();
   }
 
   private handleSlotChange() {
