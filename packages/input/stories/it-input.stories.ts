@@ -548,13 +548,13 @@ export const GestioneErrori: Story = {
     docs: {
       description: {
         story: `Se sono stati impostati uno di questi attributi <ul><li>\`required\`</li><li>\`pattern\`</li><li>\`minlength\`</li></ul> viene effettuata una validazione interna al componente.
- <br/><br/><h4>Personalizzazione dei messaggi di errore</h4>E' possibile personalizzare i messaggi di errore tramite l'attributo \`translations\` a seconda che:
+ <br/><br/><h4>Personalizzazione dei messaggi di errore</h4>È possibile personalizzare i messaggi di errore tramite l'attributo \`translations\` a seconda che:
        <ul><li>il campo è required e non è compilato: impostando il valore di \`validityRequired\` in \`translations\`</li>
         <li>il campo non rispetta il pattern: impostando il valore di \`validityPattern\` in \`translations\`</li>
         <li>il campo è troppo corto: impostando il valore di \`validityMinlength\` in \`translations\`</li>
         <li>il campo ha un valore non valido: impostando il valore di \`validityInvalid\` in \`translations\`</li></ul>
         <h4>Validazione esterna</h4>
-        E' inoltre possibile validare il campo esternamente (via js ad esempio, o lato server), impostando l' attributo \`custom-validation="true"\`. In questo modo la validazione di defautl effettuata internamente al componente è disabilitata.
+        È inoltre possibile validare il campo esternamente (via js ad esempio, o lato server), impostando l' attributo \`custom-validation="true"\`. In questo modo la validazione di defautl effettuata internamente al componente è disabilitata.
         <br/>Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo \`validity-message="Messaggio di errore"\`.`,
       },
     },
@@ -589,9 +589,9 @@ export const GestioneEventi: Story = {
   parameters: {
     docs: {
       description: {
-        story: `E' possibile gestire gli eventi di \`on-input\`, \`blur\`, \`change\`, \`focus\`, \`click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
+        story: `È possibile gestire gli eventi di \`on-input\`, \`blur\`, \`change\`, \`focus\`, \`click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
         <br/><br/>
-        E' sufficiente aggiungere un event listener al componente \`<it-input>\` per intercettare gli eventi desiderati. Ad esempio, per gestire l'evento di input, è possibile utilizzare il seguente codice:
+        È sufficiente aggiungere un event listener al componente \`<it-input>\` per intercettare gli eventi desiderati. Ad esempio, per gestire l'evento di input, è possibile utilizzare il seguente codice:
 
 \`\`\`js
 document.querySelector('it-input#event-input-example').addEventListener('on-input', (event) => {

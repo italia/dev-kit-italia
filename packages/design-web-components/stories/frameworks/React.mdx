@@ -20,9 +20,7 @@ import { Code } from '@storybook/components';
 ## Internazionalizzazione
 
 Per gestire l'internazionalizzazione in una applicazione React, è necessario importare `registerTranslations` e registrare le traduzioni.
-Questo può essere fatto:
-
-- nella root dell'applicazione, se le traduzioni sono centralizzate in un unico punto:
+Questo può essere fatto nella root dell'applicazione, se le traduzioni sono centralizzate in un unico punto:
 
 ```jsx
 import { registerTranslation } from '@italia/design-web-components/elements.js';
@@ -47,7 +45,7 @@ createRoot(document.getElementById('root')).render(
 );
 ```
 
-- oppure all'interno dei propri componenti:
+Oppure all'interno dei propri componenti:
 
 ```jsx
 //MyPassword.jsx

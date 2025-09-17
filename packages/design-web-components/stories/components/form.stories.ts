@@ -209,7 +209,7 @@ export const ValidazioneJS: Story = {
       canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
       description: {
         story: `
-E' possibile implementare una propria validazione via JS, intercettando gli eventi emessi dai componenti:
+È possibile implementare una propria validazione via JS, intercettando gli eventi emessi dai componenti:
 
 \`\`\`js
  window.addEventListener('DOMContentLoaded', () => {

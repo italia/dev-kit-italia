@@ -5,7 +5,7 @@ import { Code } from '@storybook/components';
 
 # Internazionalizzazione
 
-L'internazionlizzazione dei componenti si basa sul package indipendente @italia/i18n. L'unica lingua fornita di default è l'Italiano.<br/>
+L'internazionalizzazione dei componenti si basa sul package indipendente @italia/i18n. L'unica lingua fornita di default è l'italiano.<br/>
 Se vi è necessità di avere traduzioni in altre lingue, è compito dello sviluppatore implementarle.
 
 ## Cambio di lingua
@@ -18,7 +18,7 @@ Per cambiare la lingua corrente a livello di sito, è sufficiente modificare l'a
 </html>
 ```
 
-E' inoltre possibile cambiare la lingua solo per una parte dei componenti presenti in pagina, passando l'attributo `lang` ad ogni singolo componente:
+È inoltre possibile cambiare la lingua solo per una parte dei componenti presenti in pagina, passando l'attributo `lang` ad ogni singolo componente:
 
 ```html
 <html lang="it">
@@ -29,9 +29,7 @@ E' inoltre possibile cambiare la lingua solo per una parte dei componenti presen
 </html>
 ```
 
-## Come si usa
-
-### Creazione delle traduzioni
+## Creazione delle traduzioni
 
 Ogni traduzione deve estendere il tipo `Translation` e includere le proprietà meta con il prefisso `$`, più eventuali termini addizionali:
 
@@ -55,9 +53,7 @@ const translation: Translation = {
 export default translation;
 ```
 
-### Definizione delle traduzioni.
-
-Ogni componente che prevede traduzioni, registra le sue traduzioni tramite `registerTranslation`:
+Ogni componente che prevede traduzioni, registra le proprie traduzioni tramite `registerTranslation`:
 
 ```ts
 import { registerTranslation } from '@italia/i18n';
@@ -78,9 +74,7 @@ async function changeLanguage(lang) {
 }
 ```
 
-### Localizzare i componenti
-
-Se si vuole definire un proprio componente, e abilitare su di esso le traduzioni, questo deve estendere `BaseLocalizedComponent` di `@italia/globals`:
+Se si vuole definire e localizzare un proprio componente, e abilitare su di esso le traduzioni, questo deve estendere `BaseLocalizedComponent` di `@italia/globals`:
 
 ```ts
 import { registerTranslation } from '@italia/i18n';
@@ -117,9 +111,9 @@ export class MyElement extends BaseLocalizedComponent {
 }
 ```
 
-### Uso del bundle globale
+## Uso del bundle globale
 
-La libreria di internazionalizzazione è già inclusa nel bundle globale @italia/design-web-components. Pertanto sarà sufficiente fare:
+La libreria di internazionalizzazione è già inclusa nel bundle globale `@italia/design-web-components`. Pertanto sarà sufficiente fare:
 
 ```html
 <html lang="it">
@@ -148,9 +142,9 @@ La libreria di internazionalizzazione è già inclusa nel bundle globale @italia
 </html>
 ```
 
-### Uso di bundle specifici
+## Uso di bundle specifici
 
-Se invece non importi il bundle globale, ma vuoi importare solamente alcuni component nella tua applicazione, puoi fare:
+Se vuoi importare solamente alcuni componenti nella tua applicazione, puoi fare:
 
 ```html
 <html lang="it">

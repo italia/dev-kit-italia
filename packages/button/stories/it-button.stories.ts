@@ -236,7 +236,7 @@ Qualora non fosse possibile, è necessario applicare in modo appropriato l’att
 
 #### Note sullo stato disabilitato
 I pulsanti disabilitati dovranno avere l'attributo \`aria-disabled="true"\` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo \`aria-disabled\` è consigliato usare anche l'attributo \`aria-describedby\` (o un elemento all'interno del bottone con classe \`.sr-only\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
-<br/> E' sconsigliato l'uso dell'attributo \`disabled\`.
+<br/> È sconsigliato l'uso dell'attributo \`disabled\`.
 `,
       },
     },
@@ -397,7 +397,7 @@ export const ConIcona: Story = {
     docs: {
       description: {
         story: `
-E' necessario passare l'attributo \`icon="true"\` (o \`icon=""\`, o semplicemente \`icon\`) a \`<it-button>\` per applicargli gli stili corretti.
+È necessario passare l'attributo \`icon="true"\` (o \`icon=""\`, o semplicemente \`icon\`) a \`<it-button>\` per applicargli gli stili corretti.
 
 L’icona può essere posizionata a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.
 <br/><br/>
@@ -495,7 +495,7 @@ export const ConIconaCerchiata: Story = {
     docs: {
       description: {
         story: `
-E' necessario passare l'attributo \`icon="true"\` (o \`icon=""\`, o semplicemente \`icon\`) a \`<it-button>\` per applicargli gli stili corretti.
+È necessario passare l'attributo \`icon="true"\` (o \`icon=""\`, o semplicemente \`icon\`) a \`<it-button>\` per applicargli gli stili corretti.
 
 L’icona può essere posizionata a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.
 <br/>Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` per poter avere il contorno circolare.

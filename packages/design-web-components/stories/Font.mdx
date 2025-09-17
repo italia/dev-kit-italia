@@ -5,19 +5,19 @@ import { Code } from '@storybook/components';
 
 # Font
 
-È necessario anche includere i file relativi ai font referenziati nel CSS della libreria. L’inclusione dei font può avviene includendo il bundle fornito dal pacchetto @italia/design-web-components, oppure utilizzando CSS.
+È necessario anche includere i file relativi ai caratteri tipografici referenziati nel CSS della libreria. L’inclusione dei font può avvenire includendo il bundle fornito dal pacchetto `@italia/design-web-components`, oppure utilizzando CSS.
 
-## Via Bundle
+## Carica via bundle
 
-E' disponibile il bundle dei font, includibile con:
+È disponibile il bundle dei font, includibile con:
 
 ```html
 <link rel="stylesheet" href="design-web-components/fonts.css" />
 ```
 
-## Via CSS
+## Carica via CSS
 
-E' possibile definire i font via CSS. Per semplicità abbiamo utilizzato la sintassi SCSS in modo da utilizzare una variabile per specificare la path di base dove prendere i font.
+È possibile caricare i font via CSS. Per semplicità abbiamo utilizzato la sintassi SCSS in modo da utilizzare una variabile per specificare il percorso `$font-path` dove trovare i file dei font.
 
 ```css
 $font-path: './assets/fonts';
