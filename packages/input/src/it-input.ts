@@ -58,7 +58,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
   @property({ type: String })
   type: InputType = 'text';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   name = '';
 
   @property({ type: String })
@@ -163,10 +163,10 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
     );
   }
 
-  checkValidity() {
+  checkValidity = (): boolean => {
     if (!this.customValidation) {
       const inputValid = this._inputElement ? this._inputElement.checkValidity() : true; // this._inputElement.checkValidity() è la validazione del browser
-      this._checkValidity(
+      const valid = this._checkValidity(
         {
           [VALIDATION_STATUS.INVALID]: this.$t('validityInvalid'),
           [VALIDATION_STATUS.ERROR_REQUIRED]: this.$t('validityRequired'),
@@ -176,8 +176,10 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
         },
         inputValid,
       );
+      return !!valid;
     }
-  }
+    return true;
+  };
 
   override _handleBlur() {
     super._handleBlur();
@@ -236,6 +238,8 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
         this.validationText?.length > 0 ? this.validationText : (this.validityMessage ?? 'Campo non valido');
 
       this.internals.setValidity({ customError: this.invalid }, message);
+    } else {
+      this.internals.setValidity({});
     }
 
     if (this.passwordStrengthMeter && this.type !== 'password') {
