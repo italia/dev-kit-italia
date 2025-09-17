@@ -1,14 +1,14 @@
 import { Meta } from '@storybook/blocks';
 import { Code } from '@storybook/components';
 
-<Meta title='Welcome' />
+<Meta title="Welcome" />
 
-<div class='mb-4'>
-  <h1 class='visually-hidden'>Design Web Components</h1>
-  <div class='text-center'>
-    <img src='./logo.png' width='500px' alt='Design Web Components' />
+<div class="mb-4">
+  <h1 class="visually-hidden">Design Web Components</h1>
+  <div class="text-center">
+    <img src="./logo.png" width="500px" alt="Design Web Components" />
   </div>
-  <div class='text-center mb-4'>
+  <div class="text-center mb-4">
     Design Web Components è un set di Web components che implementa il Design system .italia e i componenti presenti su{' '}
     [UI Kit Italia](https://github.com/italia/design-ui-kit).
   </div>
@@ -33,27 +33,28 @@ Per installare la libreria e avviare Storybook in locale, è necessario avere in
 
 Per installare le dipendenze:
 
-```sh
+```bash
 pnpm install
 ```
 
 Per compilare tutti i componenti:
 
-```sh
+```bash
 pnpm build
 ```
 
 Per avviare Storybook in locale:
 
-```sh
+```bash
 pnpm storybook
 ```
 
 **Durante lo sviluppo:**
+
 - Documentazione/Storie e tipi: si aggiornano automaticamente ✨
 - Componenti: puoi ricompilare il solo package modificato
 
-```sh
+```bash
 # Per esempio, se stai modificando il componente button:
 pnpm build --filter=@italia/button
 # Poi ricarica la pagina del browser
