@@ -67,6 +67,7 @@ pnpm storybook
 ```
 
 **Durante lo sviluppo:**
+
 - Documentazione/Storie e tipi: si aggiornano automaticamente ✨
 - Componenti: puoi ricompilare il solo package modificato
 
@@ -78,54 +79,11 @@ pnpm build --filter=@italia/button
 
 **Nota:** È necessario eseguire `pnpm build` prima di avviare Storybook la prima volta per compilare i pacchetti TypeScript in JavaScript.
 
-### Testare l'integrazione dei Web Components in altri framework JavaScript
+### Esempi di integrazione dei Web Components in altri framework JavaScript
 
-Si consiglia di partire creando un progetto di esempio utilizzando il framework desiderato e importando i Web Components da Design Web Components.
+Sono disponibili delle applicazioni di esempio che mostrano come integrare i Web Components in diversi framework JavaScript.
 
-```bash
-# Esegui questo comando
-npm create vite@latest test-app
-# Poi segui il prompt!
-```
-
-Dopo aver creato il progetto, è possibile installare Design Web Components come dipendenza:
-
-```bash
-npm install @italia/design-web-components
-```
-
-A questo punto bisogna importare i Web Components nel progetto.
-
-```javascript
-import '@italia/design-web-components/fonts.css';
-import '@italia/design-web-components/styles.css';
-import '@italia/design-web-components/elements.js';
-
-// Pronti a utilizzare i Web Components!
-return (
-  <div>
-    <it-button ...></it-button>
-  </div>
-)
-```
-
-Come alternativa, è possibile installare i singoli pacchetti dei Web Components. Sarà comunque necessario importare il file CSS generale come mostrato sopra.
-
-```bash
-npm install @italia/button
-```
-
-```javascript
-import '@italia/design-web-components/fonts.css';
-import '@italia/design-web-components/styles.css';
-import '@italia/button/it-button.js';
-
-return (
-  <div>
-    <it-button ...></it-button>
-  </div>
-)
-```
+Per maggiori dettagli, consulta il file [examples/README.md](./examples/README.md).
 
 ## Processo di Rilascio 🚀
 
