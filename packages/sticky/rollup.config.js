@@ -20,10 +20,10 @@ export default {
     }),
     litScss({
       minify: process.env.NODE_ENV === 'production',
-      // options: {
-      //   loadPaths: ['node_modules'],
-      //   silenceDeprecations: ['import'],
-      // },
+      options: {
+        loadPaths: ['node_modules'],
+        silenceDeprecations: ['import'],
+      },
     }),
   ],
   external: [/^lit(\/|$)/],

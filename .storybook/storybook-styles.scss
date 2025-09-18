@@ -12,10 +12,10 @@
 
 .flex {
   display: flex;
+  flex-wrap: wrap;
   align-items: start;
   padding: 0.3rem 0;
   gap: 0.6rem;
-  flex-wrap: wrap;
 }
 
 .toc-wrapper {

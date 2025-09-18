@@ -22,7 +22,8 @@
   "types": "./dist/src/index.d.ts",
   "exports": {
     ".": "./dist/src/index.js",
-    "./it-sticky.js": "./dist/src/it-sticky.js"
+    "./it-sticky.js": "./dist/src/it-sticky.js",
+    "./styles/*": "./styles/*"
   },
   "files": [
     "dist/src",
@@ -35,13 +36,14 @@
     "analyze": "cem analyze --litelement --exclude dist",
     "build": "rollup --config rollup.config.js",
     "clean": "rimraf node_modules .turbo .rollup.cache dist coverage",
-    "lint": "eslint --ext .ts \"src/**/*.ts\" \"test/**/*.ts\" && stylelint \"src/**/*.scss\" && prettier \"src/**/*.ts\" \"test/**/*.ts\" --check",
-    "format": "eslint --ext .ts \"src/**/*.ts\" \"test/**/*.ts\" --fix && stylelint \"src/**/*.scss\" --fix && prettier \"src/**/*.ts\" \"test/**/*.ts\" --write",
+    "lint": "eslint --ext .ts \"src/**/*.ts\" \"test/**/*.ts\" && stylelint \"styles/**/*.scss\" && prettier \"src/**/*.ts\" \"test/**/*.ts\" --check",
+    "format": "eslint --ext .ts \"src/**/*.ts\" \"test/**/*.ts\" --fix && stylelint \"styles/**/*.scss\" --fix && prettier \"src/**/*.ts\" \"test/**/*.ts\" --write",
     "test": "wtr --coverage --node-resolve --config web-test-runner.config.js"
   },
   "dependencies": {
-    "lit": "catalog:",
-    "@italia/globals": "workspace:^"
+    "@italia/globals": "workspace:^",
+    "bootstrap-italia": "catalog:",
+    "lit": "catalog:"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.3",

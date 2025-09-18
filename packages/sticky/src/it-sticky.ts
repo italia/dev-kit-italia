@@ -1,14 +1,27 @@
-import { html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { BaseComponent } from '@italia/globals';
-import { StickyController } from './sticky-controller.js';
+import { StickyController, StickyOptions } from './sticky-controller.js';
 
 @customElement('it-sticky')
 export class ItSticky extends BaseComponent {
-  private stickyController = new StickyController(this);
+  @property({ reflect: true, attribute: 'padding-top' }) paddingTop?: StickyOptions['paddingTop'] = 0;
 
-  render() {
-    return html`<div id="${this._id}"></div>`;
+  @property({ reflect: true, attribute: 'sticky-class-name' }) stickyClassName?: StickyOptions['stickyClassName'];
+
+  @property({ reflect: true, attribute: 'position-type' }) positionType?: StickyOptions['positionType'] = 'sticky';
+
+  @property({ reflect: true, type: Boolean }) stackable?: StickyOptions['stackable'] = false;
+
+  _stickyController = new StickyController(this, this);
+
+  protected override updated(): void {
+    if (this.id === '') {
+      this.id = this._id!;
+    }
+    if (this.positionType !== 'fixed' && this.positionType !== 'sticky') {
+      // eslint-disable-next-line no-console
+      console.warn("The supported values for the 'position-type' property are 'fixed' or 'sticky'.");
+    }
   }
 
   createRenderRoot() {
