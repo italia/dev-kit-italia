@@ -15,7 +15,6 @@ addons.setConfig({
     appPreviewBg: '#f9f9f9',
 
     brandTitle: 'Design Web Components',
-    brandUrl: 'https://github.com/italia/design-web-components', // opzionale
     brandImage: './logo.png',
   },
 });
