@@ -22,7 +22,7 @@
   },
   "private": true,
   "dependencies": {
-    "@italia/design-web-components": "file:../../packages/design-web-components",
+    "@italia/dev-kit-italia": "file:../../packages/dev-kit-italia",
     "@angular/common": "^20.2.0",
     "@angular/compiler": "^20.2.0",
     "@angular/core": "^20.2.0",

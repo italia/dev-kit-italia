@@ -1,4 +1,4 @@
-# Esempi di integrazione di Design Web Components su diversi framework JavaScript
+# Esempi di integrazione di Dev Kit Italia su diversi framework JavaScript
 
 ## React, Svelte, Vue
 
@@ -26,4 +26,4 @@ npm start
 
 ## Contenuti di esempio
 
-I contenuti di esempio già esistenti sono repliche degli esempi che si trovano nella [documentazione ufficiale di Design Web Components](https://design-web-components.vercel.app/). Usando questi come esempio è possibile sperimentare l'integrazione dei componenti web in diversi framework JavaScript.
+I contenuti di esempio già esistenti sono repliche degli esempi che si trovano nella [documentazione ufficiale di Dev Kit Italia](https://dev-kit-italia.vercel.app/). Usando questi come esempio è possibile sperimentare l'integrazione dei componenti web in diversi framework JavaScript.

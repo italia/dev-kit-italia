@@ -1,14 +1,14 @@
 import { Meta } from '@storybook/blocks';
 import { Code } from '@storybook/components';
 
-<Meta title='Frameworks/React' />
+<Meta title="Frameworks/React" />
 
 # React
 
-<div class='callout callout-warning'>
-  <div class='callout-inner'>
-    <div class='callout-title'>
-      <span class='text'>Attenzione</span>
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Attenzione</span>
     </div>
     <p>
       Per il funzionamento corretto dei web components in React, è necessario avere una versione
@@ -23,7 +23,7 @@ Per gestire l'internazionalizzazione in una applicazione React, è necessario im
 Questo può essere fatto nella root dell'applicazione, se le traduzioni sono centralizzate in un unico punto:
 
 ```jsx
-import { registerTranslation } from '@italia/design-web-components/elements.js';
+import { registerTranslation } from '@italia/dev-kit-italia/elements.js';
 
 const it = {
   $code: 'it',
@@ -32,9 +32,9 @@ const it = {
   showHidePassword: 'Mostra/Nascondi Password CUSTOM.',
 };
 
-import '@italia/design-web-components/fonts.css';
-import '@italia/design-web-components/styles.css';
-import '@italia/design-web-components/elements.js';
+import '@italia/dev-kit-italia/fonts.css';
+import '@italia/dev-kit-italia/styles.css';
+import '@italia/dev-kit-italia/elements.js';
 
 registerTranslation(it);
 
@@ -51,7 +51,7 @@ Oppure all'interno dei propri componenti:
 //MyPassword.jsx
 
 import React, { useEffect, useState } from 'react';
-import { registerTranslation } from '@italia/design-web-components/elements.js';
+import { registerTranslation } from '@italia/dev-kit-italia/elements.js';
 
 const it = {
   $code: 'it',
@@ -69,13 +69,13 @@ const MyPassword = () => {
 
   return translationsLoaded ? (
     <it-input
-      id='field-password-strength-example'
-      label='Campo password'
-      type='password'
-      name='field-password-strength-example'
-      support-text='Inserisci almeno 8 caratteri e alcuni caratteri speciali.'
+      id="field-password-strength-example"
+      label="Campo password"
+      type="password"
+      name="field-password-strength-example"
+      support-text="Inserisci almeno 8 caratteri e alcuni caratteri speciali."
       strength-meter={true}
-      minlength='8'
+      minlength="8"
       suggestions={true}
     ></it-input>
   ) : (

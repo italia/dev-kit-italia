@@ -1,10 +1,10 @@
 import { mount } from 'svelte';
 import './app.css';
-import { registerTranslation } from '@italia/design-web-components/elements.js';
+import { registerTranslation } from '@italia/dev-kit-italia/elements.js';
 import App from './App.svelte';
 
-import '@italia/design-web-components/fonts.css';
-import '@italia/design-web-components/styles.css';
+import '@italia/dev-kit-italia/fonts.css';
+import '@italia/dev-kit-italia/styles.css';
 
 const it = {
   $code: 'it',

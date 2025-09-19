@@ -14,7 +14,7 @@ export default defineConfig({
     fs: {
       allow: [
         // consenti a Vite di leggere anche da qui
-        resolve(__dirname, '../../packages/design-web-components'),
+        resolve(__dirname, '../../packages/dev-kit-italia'),
         resolve(__dirname),
       ],
     },

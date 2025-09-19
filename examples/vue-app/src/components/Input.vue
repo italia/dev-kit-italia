@@ -1,5 +1,5 @@
 <script setup>
-import { registerTranslation } from '@italia/design-web-components/elements.js';
+import { registerTranslation } from '@italia/dev-kit-italia/elements.js';
 const it = {
   $code: 'it',
   $name: 'Italiano',

@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/blocks';
 import { Code } from '@storybook/components';
 
-<Meta title='i18n - Internazionalizzazione' />
+<Meta title="i18n - Internazionalizzazione" />
 
 # Internazionalizzazione
 
@@ -113,14 +113,14 @@ export class MyElement extends BaseLocalizedComponent {
 
 ## Uso del bundle globale
 
-La libreria di internazionalizzazione è già inclusa nel bundle globale `@italia/design-web-components`. Pertanto sarà sufficiente fare:
+La libreria di internazionalizzazione è già inclusa nel bundle globale `@italia/dev-kit-italia`. Pertanto sarà sufficiente fare:
 
 ```html
 <html lang="it">
   <head>
     ...
     <script type="module">
-      import '@italia/desing-web-components/dist/elements.js';
+      import '@italia/dev-kit-italia/dist/elements.js';
 
       registerTranslation(
         {

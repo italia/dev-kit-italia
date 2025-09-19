@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.jsx';
 
-import { registerTranslation } from '@italia/design-web-components/elements.js';
+import { registerTranslation } from '@italia/dev-kit-italia/elements.js';
 
 const it = {
   $code: 'it',
@@ -12,9 +12,9 @@ const it = {
   showHidePassword: 'Mostra/Nascondi Password (in main.jsx).',
 };
 
-import '@italia/design-web-components/fonts.css';
-import '@italia/design-web-components/styles.css';
-import '@italia/design-web-components/elements.js';
+import '@italia/dev-kit-italia/fonts.css';
+import '@italia/dev-kit-italia/styles.css';
+import '@italia/dev-kit-italia/elements.js';
 
 registerTranslation(it);
 

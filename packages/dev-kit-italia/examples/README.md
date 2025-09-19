@@ -1,6 +1,6 @@
 # Static HTML examples
 
-- Build packages/design-web-components with pnpm build or copy /dist folder from packages/design-web-components
+- Build packages/dev-kit-italia with pnpm build or copy /dist folder from packages/dev-kit-italia
 
 - Move under /examples
   cd /examples
