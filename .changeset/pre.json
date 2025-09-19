@@ -3,7 +3,7 @@
   "tag": "alpha",
   "initialVersions": {
     "@italia/button": "0.0.0",
-    "@italia/design-web-components": "0.0.0",
+    "@italia/dev-kit-italia": "0.0.0",
     "@italia/globals": "0.0.0",
     "@italia/icon": "0.0.0",
     "@italia/tabs": "0.0.0",
@@ -13,9 +13,5 @@
     "@italia/i18n": "0.0.0",
     "@italia/input": "0.0.0"
   },
-  "changesets": [
-    "eight-tips-rest",
-    "legal-tips-invite",
-    "witty-deer-love"
-  ]
+  "changesets": ["eight-tips-rest", "legal-tips-invite", "witty-deer-love"]
 }

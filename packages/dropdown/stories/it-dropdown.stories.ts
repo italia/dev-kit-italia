@@ -95,7 +95,7 @@ Per la creazione di un dropdown è necessario utilizzare il componente \`<it-dro
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>Lo standard <a href="https://www.w3.org/TR/wai-aria/">WAI ARIA</a> definisce un widget con proprietà <a href="https://www.w3.org/TR/wai-aria/#menu">\`role="menu"\`</a>, specifica per i menu applicativi con link o azioni.
 Questi menu possono contenere solo voci di menu, voci di menu di caselle di controllo, voci di menu dei pulsanti di opzione, gruppi di pulsanti di opzione e sottomenu.</p>
-<p>I dropdown di **Design Web Components** sono progettati per essere invece generici e applicabili a una varietà di situazioni. Per questo motivo, il componente \`it-dropdown\` ha come ruolo predefinito il ruolo \`menu\` e gestisce automaticamente il ruolo degli elementi interni, ma gli autori potranno modificare il ruolo del Dropdown generato da questo componente ad una semplice lista impostando l'attributo \`it-role="list"\`.</p>
+<p>I dropdown di **Dev Kit Italia** sono progettati per essere invece generici e applicabili a una varietà di situazioni. Per questo motivo, il componente \`it-dropdown\` ha come ruolo predefinito il ruolo \`menu\` e gestisce automaticamente il ruolo degli elementi interni, ma gli autori potranno modificare il ruolo del Dropdown generato da questo componente ad una semplice lista impostando l'attributo \`it-role="list"\`.</p>
 <p>Questo componente comprende di base il supporto per la maggior parte delle interazioni standard del menu della tastiera, come la possibilità di spostarsi tra i singoli elementi \`it-dropdown-item\` usando i tasti freccia, e chiude il menu con il tasto ESC.</p>
 </div></div>
 `,
