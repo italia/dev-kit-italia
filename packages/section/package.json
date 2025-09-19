@@ -1,7 +1,7 @@
 {
   "name": "@italia/section",
   "description": "Web component it-section del Design system .italia",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.2",
   "publishConfig": {
     "access": "public"
   },
