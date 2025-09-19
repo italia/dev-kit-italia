@@ -71,7 +71,7 @@ Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del desi
         ></it-input>
       </div>
     </form>`},r={...i,name:"Validazione via JS",tags:["!dev"],parameters:{viewMode:"docs",docs:{canvas:{hidden:!0,sourceState:"none"},description:{story:`
-E' possibile implementare una propria validazione via JS, intercettando gli eventi emessi dai componenti:
+È possibile implementare una propria validazione via JS, intercettando gli eventi emessi dai componenti:
 
 \`\`\`js
  window.addEventListener('DOMContentLoaded', () => {
@@ -359,7 +359,7 @@ Nel caso il campo non sia valido, è necessario invalidare il campo impostando i
       // nasconde solo il canvas nella docs page
       description: {
         story: \`
-E' possibile implementare una propria validazione via JS, intercettando gli eventi emessi dai componenti:
+È possibile implementare una propria validazione via JS, intercettando gli eventi emessi dai componenti:
 
 \\\`\\\`\\\`js
  window.addEventListener('DOMContentLoaded', () => {

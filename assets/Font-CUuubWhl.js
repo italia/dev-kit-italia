@@ -1,12 +1,12 @@
-import{j as t,M as a}from"./index-B3_mrhad.js";import{useMDXComponents as l}from"./index-Cay6A1jk.js";import"./iframe-Cw1PCwZ-.js";import"./_commonjsHelpers-CqkleIqs.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";function n(o){const i={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",...l(),...o.components};return t.jsxs(t.Fragment,{children:[t.jsx(a,{title:"Font"}),`
+import{j as t,M as a}from"./index-a6WM3-ks.js";import{useMDXComponents as l}from"./index-C1EbfRbw.js";import"./iframe-BJMmF07V.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";function n(o){const i={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",...l(),...o.components};return t.jsxs(t.Fragment,{children:[t.jsx(a,{title:"Font"}),`
 `,t.jsx(i.h1,{id:"font",children:"Font"}),`
-`,t.jsx(i.p,{children:"È necessario anche includere i file relativi ai font referenziati nel CSS della libreria. L’inclusione dei font può avviene includendo il bundle fornito dal pacchetto @italia/design-web-components, oppure utilizzando CSS."}),`
-`,t.jsx(i.h2,{id:"via-bundle",children:"Via Bundle"}),`
-`,t.jsx(i.p,{children:"E' disponibile il bundle dei font, includibile con:"}),`
-`,t.jsx(i.pre,{children:t.jsx(i.code,{className:"language-html",children:`<link rel="stylesheet" href="design-web-components/fonts.css" />
+`,t.jsxs(i.p,{children:["È necessario anche includere i file relativi ai caratteri tipografici referenziati nel CSS della libreria. L’inclusione dei font può avvenire includendo il bundle fornito dal pacchetto ",t.jsx(i.code,{children:"@italia/dev-kit-italia"}),", oppure utilizzando CSS."]}),`
+`,t.jsx(i.h2,{id:"carica-via-bundle",children:"Carica via bundle"}),`
+`,t.jsx(i.p,{children:"È disponibile il bundle dei font, includibile con:"}),`
+`,t.jsx(i.pre,{children:t.jsx(i.code,{className:"language-html",children:`<link rel="stylesheet" href="dev-kit-italia/fonts.css" />
 `})}),`
-`,t.jsx(i.h2,{id:"via-css",children:"Via CSS"}),`
-`,t.jsx(i.p,{children:"E' possibile definire i font via CSS. Per semplicità abbiamo utilizzato la sintassi SCSS in modo da utilizzare una variabile per specificare la path di base dove prendere i font."}),`
+`,t.jsx(i.h2,{id:"carica-via-css",children:"Carica via CSS"}),`
+`,t.jsxs(i.p,{children:["È possibile caricare i font via CSS. Per semplicità abbiamo utilizzato la sintassi SCSS in modo da utilizzare una variabile per specificare il percorso ",t.jsx(i.code,{children:"$font-path"})," dove trovare i file dei font."]}),`
 `,t.jsx(i.pre,{children:t.jsx(i.code,{className:"language-css",children:`$font-path: './assets/fonts';
 
 /* Titillium+Web:300,400,600,700 */

@@ -2479,7 +2479,7 @@ video::-webkit-media-text-track-display {
 
 :host {
   /*
-    * Regole spostate in design-web-components/styles/index.scss
+    * Regole spostate in dev-kit-italia/styles/index.scss
   display: block;
   min-width: var(--it-videojs-default-width);
   */
@@ -2558,10 +2558,10 @@ al player le opzioni definite qui [https://videojs.com/guides/options/](https://
 sovrascrivere le traduzioni italiane pre-impostate.
 
 ### Font per le icone del player
-Per utilizzare le icone del player, è necessario includere il font \`VideoJS.woff\` nella tua applicazione. Puoi farlo aggiungendo il css compilato di design-web-components nel tuo sorgente HTML:
+Per utilizzare le icone del player, è necessario includere il font \`VideoJS.woff\` nella tua applicazione. Puoi farlo aggiungendo il css compilato di dev-kit-italia nel tuo sorgente HTML:
 
 \`\`\`html
-<link rel="stylesheet" href="design-web-components/dist/styles.css" />
+<link rel="stylesheet" href="dev-kit-italia/dist/styles.css" />
 \`\`\`
 oppure se stai usando SCSS puoi definire il font direttamente nel tuo file SCSS:
 
@@ -2573,7 +2573,7 @@ oppure se stai usando SCSS puoi definire il font direttamente nel tuo file SCSS:
   font-style: normal;
 }
 \`\`\`
-copiando l'asset \`VideoJS.woff\` nella tua cartella assets/fonts (lo puoi copiare dal package design-web-components).
+copiando l'asset \`VideoJS.woff\` nella tua cartella assets/fonts (lo puoi copiare dal package dev-kit-italia).
 
 
 ### Plugin
@@ -2745,10 +2745,10 @@ al player le opzioni definite qui [https://videojs.com/guides/options/](https://
 sovrascrivere le traduzioni italiane pre-impostate.
 
 ### Font per le icone del player
-Per utilizzare le icone del player, è necessario includere il font \\\`VideoJS.woff\\\` nella tua applicazione. Puoi farlo aggiungendo il css compilato di design-web-components nel tuo sorgente HTML:
+Per utilizzare le icone del player, è necessario includere il font \\\`VideoJS.woff\\\` nella tua applicazione. Puoi farlo aggiungendo il css compilato di dev-kit-italia nel tuo sorgente HTML:
 
 \\\`\\\`\\\`html
-<link rel="stylesheet" href="design-web-components/dist/styles.css" />
+<link rel="stylesheet" href="dev-kit-italia/dist/styles.css" />
 \\\`\\\`\\\`
 oppure se stai usando SCSS puoi definire il font direttamente nel tuo file SCSS:
 
@@ -2760,7 +2760,7 @@ oppure se stai usando SCSS puoi definire il font direttamente nel tuo file SCSS:
   font-style: normal;
 }
 \\\`\\\`\\\`
-copiando l'asset \\\`VideoJS.woff\\\` nella tua cartella assets/fonts (lo puoi copiare dal package design-web-components).
+copiando l'asset \\\`VideoJS.woff\\\` nella tua cartella assets/fonts (lo puoi copiare dal package dev-kit-italia).
 
 
 ### Plugin

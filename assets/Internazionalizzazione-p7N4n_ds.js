@@ -1,6 +1,6 @@
-import{j as n,M as l}from"./index-B3_mrhad.js";import{useMDXComponents as a}from"./index-Cay6A1jk.js";import"./iframe-Cw1PCwZ-.js";import"./_commonjsHelpers-CqkleIqs.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";function t(i){const e={code:"code",h1:"h1",h2:"h2",h3:"h3",p:"p",pre:"pre",...a(),...i.components};return n.jsxs(n.Fragment,{children:[n.jsx(l,{title:"i18n - Internazionalizzazione"}),`
+import{j as n,M as l}from"./index-a6WM3-ks.js";import{useMDXComponents as a}from"./index-C1EbfRbw.js";import"./iframe-BJMmF07V.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";function t(i){const e={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",...a(),...i.components};return n.jsxs(n.Fragment,{children:[n.jsx(l,{title:"i18n - Internazionalizzazione"}),`
 `,n.jsx(e.h1,{id:"internazionalizzazione",children:"Internazionalizzazione"}),`
-`,n.jsxs(e.p,{children:["L'internazionlizzazione dei componenti si basa sul package indipendente @italia/i18n. L'unica lingua fornita di default è l'Italiano.",n.jsx("br",{}),`
+`,n.jsxs(e.p,{children:["L'internazionalizzazione dei componenti si basa sul package indipendente @italia/i18n. L'unica lingua fornita di default è l'italiano.",n.jsx("br",{}),`
 Se vi è necessità di avere traduzioni in altre lingue, è compito dello sviluppatore implementarle.`]}),`
 `,n.jsx(e.h2,{id:"cambio-di-lingua",children:"Cambio di lingua"}),`
 `,n.jsxs(e.p,{children:["Per cambiare la lingua corrente a livello di sito, è sufficiente modificare l'attributo ",n.jsx(e.code,{children:"lang"})," sull'elemento ",n.jsx(e.code,{children:"html"}),". Le modifiche a ",n.jsx(e.code,{children:"<html lang>"})," attivano automaticamente l’aggiornamento di tutti i componenti localizzati:"]}),`
@@ -8,7 +8,7 @@ Se vi è necessità di avere traduzioni in altre lingue, è compito dello svilup
   ...
 </html>
 `})}),`
-`,n.jsxs(e.p,{children:["E' inoltre possibile cambiare la lingua solo per una parte dei componenti presenti in pagina, passando l'attributo ",n.jsx(e.code,{children:"lang"})," ad ogni singolo componente:"]}),`
+`,n.jsxs(e.p,{children:["È inoltre possibile cambiare la lingua solo per una parte dei componenti presenti in pagina, passando l'attributo ",n.jsx(e.code,{children:"lang"})," ad ogni singolo componente:"]}),`
 `,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-html",children:`<html lang="it">
   <body>
     <my-element>Questo elemento è in Italiano</my-element>
@@ -16,8 +16,7 @@ Se vi è necessità di avere traduzioni in altre lingue, è compito dello svilup
   </body>
 </html>
 `})}),`
-`,n.jsx(e.h2,{id:"come-si-usa",children:"Come si usa"}),`
-`,n.jsx(e.h3,{id:"creazione-delle-traduzioni",children:"Creazione delle traduzioni"}),`
+`,n.jsx(e.h2,{id:"creazione-delle-traduzioni",children:"Creazione delle traduzioni"}),`
 `,n.jsxs(e.p,{children:["Ogni traduzione deve estendere il tipo ",n.jsx(e.code,{children:"Translation"})," e includere le proprietà meta con il prefisso ",n.jsx(e.code,{children:"$"}),", più eventuali termini addizionali:"]}),`
 `,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-ts",children:`// en.ts
 import type { Translation } from '@italia/i18n';
@@ -37,8 +36,7 @@ const translation: Translation = {
 
 export default translation;
 `})}),`
-`,n.jsx(e.h3,{id:"definizione-delle-traduzioni",children:"Definizione delle traduzioni."}),`
-`,n.jsxs(e.p,{children:["Ogni componente che prevede traduzioni, registra le sue traduzioni tramite ",n.jsx(e.code,{children:"registerTranslation"}),":"]}),`
+`,n.jsxs(e.p,{children:["Ogni componente che prevede traduzioni, registra le proprie traduzioni tramite ",n.jsx(e.code,{children:"registerTranslation"}),":"]}),`
 `,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-ts",children:`import { registerTranslation } from '@italia/i18n';
 import en from './en';
 import es from './es';
@@ -53,8 +51,7 @@ registerTranslation(en, es);
   }
 }
 `})}),`
-`,n.jsx(e.h3,{id:"localizzare-i-componenti",children:"Localizzare i componenti"}),`
-`,n.jsxs(e.p,{children:["Se si vuole definire un proprio componente, e abilitare su di esso le traduzioni, questo deve estendere ",n.jsx(e.code,{children:"BaseLocalizedComponent"})," di ",n.jsx(e.code,{children:"@italia/globals"}),":"]}),`
+`,n.jsxs(e.p,{children:["Se si vuole definire e localizzare un proprio componente, e abilitare su di esso le traduzioni, questo deve estendere ",n.jsx(e.code,{children:"BaseLocalizedComponent"})," di ",n.jsx(e.code,{children:"@italia/globals"}),":"]}),`
 `,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-ts",children:`import { registerTranslation } from '@italia/i18n';
 import { BaseLocalizedComponent } from '@italia/globals';
 import en from '../translations/en';
@@ -88,13 +85,13 @@ export class MyElement extends BaseLocalizedComponent {
   }
 }
 `})}),`
-`,n.jsx(e.h3,{id:"uso-del-bundle-globale",children:"Uso del bundle globale"}),`
-`,n.jsx(e.p,{children:"La libreria di internazionalizzazione è già inclusa nel bundle globale @italia/design-web-components. Pertanto sarà sufficiente fare:"}),`
+`,n.jsx(e.h2,{id:"uso-del-bundle-globale",children:"Uso del bundle globale"}),`
+`,n.jsxs(e.p,{children:["La libreria di internazionalizzazione è già inclusa nel bundle globale ",n.jsx(e.code,{children:"@italia/dev-kit-italia"}),". Pertanto sarà sufficiente fare:"]}),`
 `,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-html",children:`<html lang="it">
   <head>
     ...
     <script type="module">
-      import '@italia/desing-web-components/dist/elements.js';
+      import '@italia/dev-kit-italia/dist/elements.js';
 
       registerTranslation(
         {
@@ -115,8 +112,8 @@ export class MyElement extends BaseLocalizedComponent {
   ...
 </html>
 `})}),`
-`,n.jsx(e.h3,{id:"uso-di-bundle-specifici",children:"Uso di bundle specifici"}),`
-`,n.jsx(e.p,{children:"Se invece non importi il bundle globale, ma vuoi importare solamente alcuni component nella tua applicazione, puoi fare:"}),`
+`,n.jsx(e.h2,{id:"uso-di-bundle-specifici",children:"Uso di bundle specifici"}),`
+`,n.jsx(e.p,{children:"Se vuoi importare solamente alcuni componenti nella tua applicazione, puoi fare:"}),`
 `,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-html",children:`<html lang="it">
   <head>
     ...
