@@ -3,7 +3,7 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "italia/design-web-components"
+      "repo": "italia/dev-kit-italia"
     }
   ],
   "commit": false,
@@ -11,13 +11,14 @@
     [
       "@italia/accordion",
       "@italia/button",
-      "@italia/design-web-components",
+      "@italia/dev-kit-italia",
       "@italia/dropdown",
       "@italia/globals",
       "@italia/i18n",
       "@italia/icon",
       "@italia/input",
       "@italia/popover",
+      "@italia/section",
       "@italia/video"
     ]
   ],

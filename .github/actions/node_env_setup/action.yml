@@ -41,11 +41,7 @@ runs:
 
     - name: Install dependencies
       shell: bash
-      run: pnpm install --frozen-lockfile
-
-    - name: Install playwright browsers
-      shell: bash
-      run: pnpm test:setup:ci
+      run: pnpm install --frozen-lockfile --ignore-scripts
 
 inputs:
   node-version:

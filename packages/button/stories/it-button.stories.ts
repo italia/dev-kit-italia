@@ -8,7 +8,7 @@ import '@italia/icon';
 interface ButtonProps {
   variant: Variants;
   outline: boolean;
-  ariaDisabled: boolean;
+  disabled: boolean;
   slot: string;
   size: Sizes;
   type: string;
@@ -26,7 +26,7 @@ const renderComponent = (params: ButtonProps, defaultSlot = '') => {
       ?outline="${params.outline}"
       size="${ifDefined(params.size)}"
       ?block="${params.block}"
-      aria-disabled="${ifDefined(params.ariaDisabled ? 'true' : undefined)}"
+      ?it-aria-disabled="${ifDefined(params.disabled ? 'true' : undefined)}"
       ?icon="${params.icon}"
       type="${ifDefined(params.type)}"
       >${slot}</it-button
@@ -39,7 +39,7 @@ const renderDefault = (params: ButtonProps) => html`
     ${renderComponent(params)}
     ${renderComponent({
       ...params,
-      ariaDisabled: true,
+      disabled: true,
       slot: `${params.slot} disabled`,
     })}
   </div>
@@ -91,7 +91,7 @@ const meta = {
     size: undefined,
     block: false,
     outline: false,
-    ariaDisabled: false,
+    disabled: false,
     icon: false,
     type: 'button',
     value: '',
@@ -113,10 +113,10 @@ const meta = {
       description: 'Quando abilitato, estende il componente Button fino a prendere tutta la larghezza disponibile',
       table: { defaultValue: { summary: 'false' } },
     },
-    ariaDisabled: {
+    disabled: {
       control: 'boolean',
       type: 'boolean',
-      name: 'aria-disabled',
+      name: 'it-aria-disabled',
       table: { defaultValue: { summary: 'false' } },
     },
     outline: {
@@ -212,7 +212,7 @@ export const VariantiColore: Story = {
         disable: true,
       },
     },
-    ariaDisabled: {
+    disabled: {
       table: {
         disable: true,
       },
@@ -236,7 +236,7 @@ Qualora non fosse possibile, è necessario applicare in modo appropriato l’att
 
 #### Note sullo stato disabilitato
 I pulsanti disabilitati dovranno avere l'attributo \`aria-disabled="true"\` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo \`aria-disabled\` è consigliato usare anche l'attributo \`aria-describedby\` (o un elemento all'interno del bottone con classe \`.sr-only\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
-<br/> E' sconsigliato l'uso dell'attributo \`disabled\`.
+<br/> È sconsigliato l'uso dell'attributo \`disabled\`.
 `,
       },
     },
@@ -349,7 +349,7 @@ export const SfondoScuro: Story = {
         disable: true,
       },
     },
-    ariaDisabled: {
+    disabled: {
       table: {
         disable: true,
       },
@@ -397,7 +397,7 @@ export const ConIcona: Story = {
     docs: {
       description: {
         story: `
-E' necessario passare l'attributo \`icon="true"\` (o \`icon=""\`, o semplicemente \`icon\`) a \`<it-button>\` per applicargli gli stili corretti.
+È necessario passare l'attributo \`icon="true"\` (o \`icon=""\`, o semplicemente \`icon\`) a \`<it-button>\` per applicargli gli stili corretti.
 
 L’icona può essere posizionata a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.
 <br/><br/>
@@ -424,7 +424,7 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?it-aria-disabled="${params.disabled}"
         type="${params.type}"
       >
         <it-icon name="it-star-full" color="white" size="sm"></it-icon>
@@ -436,7 +436,7 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?it-aria-disabled="${params.disabled}"
         type="${params.type}"
       >
         <it-icon name="it-star-full" color="white" size="sm"></it-icon> <span>${slot ?? 'Pulsante con icona'}</span>
@@ -448,7 +448,7 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?it-aria-disabled="${params.disabled}"
         type="${params.type}"
       >
         <it-icon name="it-star-full" color="white" size="xs"></it-icon>
@@ -461,7 +461,7 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?it-aria-disabled="${params.disabled}"
         type="${params.type}"
       >
         <it-icon name="it-star-full" color="primary" size="xs"></it-icon>
@@ -495,7 +495,7 @@ export const ConIconaCerchiata: Story = {
     docs: {
       description: {
         story: `
-E' necessario passare l'attributo \`icon="true"\` (o \`icon=""\`, o semplicemente \`icon\`) a \`<it-button>\` per applicargli gli stili corretti.
+È necessario passare l'attributo \`icon="true"\` (o \`icon=""\`, o semplicemente \`icon\`) a \`<it-button>\` per applicargli gli stili corretti.
 
 L’icona può essere posizionata a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.
 <br/>Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` per poter avere il contorno circolare.
@@ -516,7 +516,7 @@ La dimensione dell'icona deve sempre essere \`xs\`, quindi \`<it-icon>\` deve av
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?it-aria-disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon">
@@ -531,7 +531,7 @@ La dimensione dell'icona deve sempre essere \`xs\`, quindi \`<it-icon>\` deve av
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?it-aria-disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon" size="sm">
@@ -546,7 +546,7 @@ La dimensione dell'icona deve sempre essere \`xs\`, quindi \`<it-icon>\` deve av
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?it-aria-disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon">
@@ -562,7 +562,7 @@ La dimensione dell'icona deve sempre essere \`xs\`, quindi \`<it-icon>\` deve av
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?it-aria-disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon">

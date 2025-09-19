@@ -47,7 +47,7 @@ export class ItAccordionItem extends ItCollapse {
     } else {
       iconContent = html`<it-icon
         size="sm"
-        name="it-expand"
+        name="it-collapse"
         class="accordion-icon ${this.expanded ? 'expanded' : ''}"
         color="primary"
       ></it-icon>`;
