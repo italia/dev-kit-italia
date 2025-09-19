@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+import Accordion from './components/Accordion.vue';
 import Button from './components/Button.vue';
 import Dropdown from './components/Dropdown.vue';
 import Form from './components/Form.vue';
@@ -9,6 +10,7 @@ import Section from './components/Section.vue';
 import Video from './components/Video.vue';
 
 const routes = [
+  { path: '/accordion', name: 'Accordion', component: Accordion },
   { path: '/button', name: 'Button', component: Button },
   { path: '/dropdown', name: 'Dropdown', component: Dropdown },
   { path: '/form', name: 'Form', component: Form },

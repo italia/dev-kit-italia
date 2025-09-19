@@ -9,6 +9,7 @@
   "commit": false,
   "fixed": [
     [
+      "@italia/accordion",
       "@italia/button",
       "@italia/dev-kit-italia",
       "@italia/dropdown",

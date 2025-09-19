@@ -1,0 +1,11 @@
+@import 'bootstrap-italia/src/scss/components/accordion';
+
+it-accordion-item {
+  display: block;
+  width: 100%;
+}
+
+it-accordion it-accordion::part(accordion) {
+  border-right: 1px solid var(--bs-accordion-border-color);
+  border-left: 1px solid var(--bs-accordion-border-color);
+}
