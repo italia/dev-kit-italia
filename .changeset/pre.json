@@ -11,7 +11,20 @@
     "@italia/typescript-config": "0.0.0",
     "@italia/video": "0.0.0",
     "@italia/i18n": "0.0.0",
-    "@italia/input": "0.0.0"
+    "@italia/input": "0.0.0",
+    "@italia/dropdown": "0.0.0",
+    "@italia/popover": "0.0.0",
+    "@italia/section": "0.0.0"
   },
-  "changesets": ["eight-tips-rest", "legal-tips-invite", "witty-deer-love"]
+  "changesets": [
+    "blue-deer-walk",
+    "common-rice-type",
+    "eight-tips-rest",
+    "fast-tables-knock",
+    "legal-tips-invite",
+    "modern-plums-yell",
+    "rotten-turtles-clean",
+    "violet-eagles-scream",
+    "witty-deer-love"
+  ]
 }
