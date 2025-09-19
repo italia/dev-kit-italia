@@ -7,10 +7,14 @@ const meta: Meta = {
   tags: ['!autodocs', '!dev'],
   decorators: [
     (Story, context) => html`
-      ${context.parameters.heading ? html`<h1 style="margin:0 0 2rem 0">${context.parameters.heading}</h1>` : ''}
-      ${context.parameters.description ? html`<p style="margin:0 0 2rem 0">${context.parameters.description}</p>` : ''}
-      <div style="container-type: inline-size;">
-        <div class="container" style="height: 4000px; background: linear-gradient(#eee, #ccc);">${Story()}</div>
+      <div>
+        ${context.parameters.heading ? html`<h1 style="margin:0 0 2rem 0">${context.parameters.heading}</h1>` : ''}
+        ${context.parameters.description
+          ? html`<p style="margin:0 0 2rem 0">${context.parameters.description}</p>`
+          : ''}
+        <div style="container-type: inline-size;">
+          <div class="container" style="height: 4000px; background: linear-gradient(#eee, #ccc);">${Story()}</div>
+        </div>
       </div>
       <style>
         #storybook-root {
@@ -19,6 +23,10 @@ const meta: Meta = {
           align-items: flex-start;
           margin: 0;
           width: 100%;
+        }
+        #root-inner {
+          width: 100%;
+          max-width: 1140px;
         }
         .l-0 {
           left: 0 !important;
@@ -106,6 +114,17 @@ export const PaddedSticky: StoryObj = {
 export const FixedSticky: StoryObj = {
   parameters: {
     heading: 'Esempio componente it-sticky: position-type fixed',
+    description: "Scrollare la pagina per vedere l'effetto sticky",
+  },
+  render: () => html`
+    <it-sticky sticky-class-name="bg-warning w-100 l-0" position-type="fixed" class="w-100 bg-primary p-2 text-white">
+      <div class="w-100">Elemento sticky Fixed</div>
+    </it-sticky>
+  `,
+};
+export const FixedStickyClassname: StoryObj = {
+  parameters: {
+    heading: 'Esempio componente it-sticky: position-type fixed con sticky-class-name',
     description:
       "Scrollare la pagina per vedere l'effetto sticky: vedrai applicate la classi bg-warning w-100 l-0 fornite a sticky-class-name",
   },
@@ -151,35 +170,6 @@ correttamente impilati uno sopra l’altro durante lo scroll.
   },
   render: () => html`
     <div id="wrapper" style="container-type: inline-size; height:100%; transition: width 0.3s; padding:1rem;">
-      <label for="size">Seleziona la larghezza del contenuto:</label>
-      <select
-        id="size"
-        name="size"
-        @change=${(e: Event) => {
-          const target = e.target as HTMLSelectElement;
-          // trova la .container definita nel decorator (il blocco grigio)
-          const outerContainer = document.querySelector('.container') as HTMLElement | null;
-          if (outerContainer) {
-            outerContainer.style.width = `${target.value}px`;
-            // forza reflow per render immediato delle container query
-            outerContainer.getBoundingClientRect();
-          } else {
-            // fallback: imposta il wrapper locale
-            const wrapper = document.getElementById('wrapper') as HTMLDivElement | null;
-            if (wrapper) {
-              wrapper.style.width = `${target.value}px`;
-              wrapper.getBoundingClientRect();
-            }
-          }
-        }}
-      >
-        <option value="1200">1200px</option>
-        <option value="1000">1000px</option>
-        <option value="800">800px</option>
-        <option value="600">600px</option>
-        <option value="400">400px</option>
-      </select>
-
       <div style="padding: 1rem;">
         CSS per il ridimensionamento del contenuto:
         <pre style="background: #333; color: #eee; padding: 1rem; border-radius: 8px; overflow-x: auto;">
@@ -212,6 +202,42 @@ correttamente impilati uno sopra l’altro durante lo scroll.
           </pre
         >
       </div>
+      <it-sticky
+        stackable
+        sticky-class-name="l-0"
+        class="mb-4 p-2 bg-light border"
+        padding-top="16"
+        position-type="fixed"
+      >
+        <label for="size">Seleziona la larghezza del contenuto:</label>
+        <select
+          id="size"
+          name="size"
+          @change=${(e: Event) => {
+            const target = e.target as HTMLSelectElement;
+            // trova la .container definita nel decorator (il blocco grigio)
+            const outerContainer = document.querySelector('.container') as HTMLElement | null;
+            if (outerContainer) {
+              outerContainer.style.width = `${target.value}px`;
+              // forza reflow per render immediato delle container query
+              outerContainer.getBoundingClientRect();
+            } else {
+              // fallback: imposta il wrapper locale
+              const wrapper = document.getElementById('wrapper') as HTMLDivElement | null;
+              if (wrapper) {
+                wrapper.style.width = `${target.value}px`;
+                wrapper.getBoundingClientRect();
+              }
+            }
+          }}
+        >
+          <option value="1200">1200px</option>
+          <option value="1000">1000px</option>
+          <option value="800">800px</option>
+          <option value="600">600px</option>
+          <option value="400">400px</option>
+        </select>
+      </it-sticky>
 
       <it-sticky class="bg-primary p-2 text-white w-100" stackable>
         <div class="resizable-content">Sticky Stackable 1</div>
@@ -225,9 +251,17 @@ correttamente impilati uno sopra l’altro durante lo scroll.
 
       <div style="height: 500px;"></div>
 
-      <it-sticky class="bg-danger p-2 text-white w-100" stackable>
-        <div class="resizable-content">Sticky Stackable 3</div>
+      <it-sticky class="bg-warning p-2 text-white w-100" stackable position-type="fixed" sticky-class-name="l-0">
+        <div class="resizable-content">Another Stackable Sticky 3</div>
       </it-sticky>
+      <it-sticky class="bg-danger p-2 text-white w-100" stackable padding-top="50">
+        <div class="resizable-content">Sticky Stackable padded 1</div>
+      </it-sticky>
+      <div style="height: 500px;"></div>
+      <it-sticky class="bg-dark p-2 text-white w-100" stackable padding-top="100">
+        <div class="resizable-content">Sticky Stackable padded 3</div>
+      </it-sticky>
+      <div style="height: 500px;"></div>
 
       <style>
         .resizable-content {

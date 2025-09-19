@@ -4,6 +4,7 @@ import Form from './pages/Form';
 import Icon from './pages/Icon';
 import Input from './pages/Input';
 import Section from './pages/Section';
+import Sticky from './pages/Sticky';
 import Video from './pages/Video';
 
 export const AppRoutes = [
@@ -13,5 +14,6 @@ export const AppRoutes = [
   { path: '/icon', element: <Icon />, title: 'Icon' },
   { path: '/input', element: <Input />, title: 'Input' },
   { path: '/section', element: <Section />, title: 'Section' },
+  { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];

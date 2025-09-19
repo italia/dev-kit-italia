@@ -12,7 +12,7 @@ export class ItSticky extends BaseComponent {
 
   @property({ reflect: true, type: Boolean }) stackable?: StickyOptions['stackable'] = false;
 
-  _stickyController = new StickyController(this, this);
+  public _stickyController = new StickyController(this, this);
 
   protected override updated(): void {
     if (this.id === '') {

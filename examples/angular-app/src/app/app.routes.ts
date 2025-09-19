@@ -26,6 +26,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/input.component').then((c) => c.InputComponent),
   },
   {
+    path: 'sticky',
+    loadComponent: () => import('./pages/sticky.component').then((c) => c.StickyComponent),
+  },
+  {
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
   },

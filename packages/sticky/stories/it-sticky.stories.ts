@@ -145,7 +145,7 @@ export const CustomClass: Story = {
 Per personalizzare lo stile dell’elemento quando è sticky o fixed, puoi usare la proprietà <code>sticky-class-name</code>:
 tutte le classi CSS che inserisci in questo attributo verranno aggiunte all’elemento quando diventa sticky e rimosse quando torna normale.
 
-È disponibile una <a href="iframe.html?globals=&id=esempi-sticky--fixed-sticky&viewMode=story" target="_blank" rel="noopener">
+È disponibile una <a href="iframe.html?globals=&id=esempi-sticky--fixed-stick-classnamey&viewMode=story" target="_blank" rel="noopener">
   pagina di esempio
 </a> dedicata a questa funzionalità per comprenderne appieno significato ed utilizzo.
         `,
@@ -173,6 +173,53 @@ Se sono presenti più componenti sticky nella pagina, è possibile fare in modo 
 <br> Un'altra <a href="iframe.html?globals=&id=esempi-sticky--stackable-sticky-resize&viewMode=story" target="_blank" rel="noopener">
   pagina di esempio
 </a> mostra invece il comportamento con media query e breakpoint.
+        `,
+      },
+    },
+  },
+};
+
+export const CustomEvents: Story = {
+  name: 'Eventi Custom',
+
+  parameters: {
+    viewMode: 'docs',
+    docs: {
+      canvas: { hidden: true, sourceState: 'none' },
+      description: {
+        story: `
+Il componente <code>it-sticky</code> emette eventi custom per notificare quando un elemento diventa sticky o smette di esserlo:
+
+- <strong>it-sticky-on</strong>: Emesso quando l'elemento diventa sticky
+- <strong>it-sticky-off</strong>: Emesso quando l'elemento smette di essere sticky
+
+##### Proprietà degli eventi:
+
+Entrambi gli eventi hanno le seguenti proprietà:
+- <code>bubbles: true</code> - L'evento si propaga attraverso il DOM
+- <code>composed: true</code> - L'evento attraversa i confini del Shadow DOM
+- <code>cancelable: true</code> - L'evento può essere cancellato
+- <code>detail: { id: string }</code> - Contiene l'ID dell'elemento sticky
+
+##### Esempio di utilizzo:
+
+\`\`\`javascript
+const stickyElement = document.querySelector('it-sticky');
+
+// Ascolta quando diventa sticky
+stickyElement.addEventListener('it-sticky-on', (event) => {
+  console.log('Elemento diventato sticky:', event.detail.id);
+  // Aggiungi logica personalizzata
+});
+
+// Ascolta quando smette di essere sticky
+stickyElement.addEventListener('it-sticky-off', (event) => {
+  console.log('Elemento non più sticky:', event.detail.id);
+  // Aggiungi logica personalizzata
+});
+\`\`\`
+
+\`\`\`
         `,
       },
     },

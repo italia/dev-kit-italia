@@ -6,6 +6,7 @@ import Form from './components/Form.vue';
 import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
 import Section from './components/Section.vue';
+import Sticky from './components/Sticky.vue';
 import Video from './components/Video.vue';
 
 const routes = [
@@ -15,6 +16,7 @@ const routes = [
   { path: '/icon', name: 'Icon', component: Icon },
   { path: '/input', name: 'Input', component: Input },
   { path: '/section', name: 'Section', component: Section },
+  { path: '/sticky', name: 'Sticky', component: Sticky },
   { path: '/video', name: 'Video', component: Video },
 ];
 
