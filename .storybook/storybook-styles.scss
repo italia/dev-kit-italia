@@ -9,7 +9,7 @@
 }
 
 .sbdocs-wrapper {
-  justify-content: start!important;
+  justify-content: start !important;
 }
 
 .sbdocs,
@@ -24,55 +24,56 @@
   font-family: var(--bs-font-sans-serif); /* "Titillium Web", Geneva, Tahoma, sans-serif */
 }
 
-.sbdocs description, p.lead {
-  font-size: var(--bs-lead-font-size)!important; /* 1.25rem mobile, 1.5rem desktop */
-  font-weight: var(--bs-lead-font-weight)!important;
-  line-height: var(--bs-lead-line-height)!important;
-  margin-bottom: 2rem!important;
+.sbdocs description,
+p.lead {
+  margin-bottom: 2rem !important;
+  font-size: var(--bs-lead-font-size) !important; /* 1.25rem mobile, 1.5rem desktop */
+  font-weight: var(--bs-lead-font-weight) !important;
+  line-height: var(--bs-lead-line-height) !important;
 }
 
 /* Tipografia Bootstrap Italia usando variabili CSS native */
 .sbdocs h1 {
+  margin-bottom: 1.5rem;
   font-size: var(--bs-heading-1-font-size); /* Mobile: 40px, Desktop: 48px */
   font-weight: var(--bs-heading-font-weight); /* 700 */
-  line-height: var(--bs-heading-line-height); /* 120% */
   letter-spacing: var(--bs-font-tracking-narrow, -1px);
-  margin-bottom: 1.5rem;
+  line-height: var(--bs-heading-line-height); /* 120% */
 }
 
 .sbdocs h2 {
+  margin-bottom: 1.25rem;
   font-size: var(--bs-heading-2-font-size); /* Mobile: 32px, Desktop: 40px */
   font-weight: var(--bs-heading-font-weight);
   line-height: var(--bs-heading-line-height);
-  margin-bottom: 1.25rem;
 }
 
 .sbdocs h3 {
+  margin-bottom: 1rem;
   font-size: var(--bs-heading-3-font-size); /* Mobile: 28px, Desktop: 32px */
   font-weight: var(--bs-heading-font-weight);
   line-height: var(--bs-heading-line-height);
-  margin-bottom: 1rem;
 }
 
 .sbdocs h4 {
+  margin-bottom: 0.875rem;
   font-size: var(--bs-heading-4-font-size); /* Mobile: 24px, Desktop: 28px */
   font-weight: var(--bs-heading-font-weight-weak); /* 600 */
   line-height: var(--bs-heading-line-height);
-  margin-bottom: 0.875rem;
 }
 
 .sbdocs h5 {
+  margin-bottom: 0.75rem;
   font-size: var(--bs-heading-5-font-size); /* Mobile: 20px, Desktop: 24px */
   font-weight: var(--bs-heading-font-weight-weak);
   line-height: var(--bs-heading-line-height);
-  margin-bottom: 0.75rem;
 }
 
 .sbdocs h6 {
+  margin-bottom: 0.625rem;
   font-size: var(--bs-heading-6-font-size); /* Mobile: 16px, Desktop: 18px */
   font-weight: var(--bs-heading-font-weight-weak);
   line-height: var(--bs-heading-line-height);
-  margin-bottom: 0.625rem;
 }
 
 .sbdocs h3:first-of-type {
@@ -81,10 +82,10 @@
 
 .sbdocs p,
 .sbdocs li:not(.toc-list-item) {
-  font-size: var(--bs-body-font-size); /* Mobile: 16px, Desktop: 18px */
-  line-height: var(--bs-body-line-height); /* 150% */
-  font-weight: var(--bs-body-font-weight); /* 400 */
   max-width: 75ch;
+  font-size: var(--bs-body-font-size); /* Mobile: 16px, Desktop: 18px */
+  font-weight: var(--bs-body-font-weight); /* 400 */
+  line-height: var(--bs-body-line-height); /* 150% */
 }
 
 .sbdocs .callout {
@@ -99,7 +100,7 @@
 .docblock-source.sb-unstyled {
   margin-top: 0;
   margin-bottom: 0;
-  
+
   pre.prismjs {
     font-size: 16px;
     line-height: 1.55;
@@ -115,7 +116,7 @@ div:has(.docblock-argstable) {
 }
 
 table.docblock-argstable {
-  min-width: 960px
+  min-width: 960px;
 }
 
 .flex {
@@ -130,7 +131,7 @@ table.docblock-argstable {
   ul {
     font-size: 0.85rem;
     line-height: 1.2;
-    
+
     li.toc-list-item {
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
@@ -138,7 +139,8 @@ table.docblock-argstable {
   }
 }
 
-#anchor--componenti-icona--informazioni-utili .sbdocs-preview {
+#anchor--componenti-icona--informazioni-utili .sbdocs-preview,
+#anchor--componenti-sticky--custom-events .sbdocs-preview {
   display: none;
 }
 
