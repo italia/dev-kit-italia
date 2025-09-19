@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@italia/design-web-components": "file:../../packages/design-web-components",
+    "@italia/dev-kit-italia": "file:../../packages/dev-kit-italia",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
   },

@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { registerTranslation } from '@italia/design-web-components/elements.js';
+import { registerTranslation } from '@italia/dev-kit-italia/elements.js';
 
 @Component({
   selector: 'app-input',

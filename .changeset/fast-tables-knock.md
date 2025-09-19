@@ -1,5 +1,5 @@
 ---
-'@italia/design-web-components': patch
+'@italia/dev-kit-italia': patch
 '@italia/button': patch
 '@italia/input': patch
 ---
