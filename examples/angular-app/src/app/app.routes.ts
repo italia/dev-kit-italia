@@ -6,6 +6,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/button.component').then((c) => c.ButtonComponent),
   },
   {
+    path: 'chip',
+    loadComponent: () => import('./pages/chip.component').then((c) => c.ChipComponent),
+  },
+  {
     path: 'dropdown',
     loadComponent: () => import('./pages/dropdown.component').then((c) => c.DropdownComponent),
   },

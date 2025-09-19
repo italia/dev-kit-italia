@@ -1,0 +1,54 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@import 'bootstrap-italia/src/scss/components/avatar';
+@import 'bootstrap-italia/src/scss/components/chips';
+
+::slotted(it-icon) {
+  display: inline-flex;
+}
+
+:host {
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--bs-avatar-radius);
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+:host([is-disabled]) ::slotted(it-icon) {
+  --bs-icon-primary: var(--bs-icon-disabled);
+  --bs-icon-secondary: var(--bs-icon-disabled);
+  --bs-icon-success: var(--bs-icon-disabled);
+  --bs-icon-danger: var(--bs-icon-disabled);
+  --bs-icon-warning: var(--bs-icon-disabled);
+  --bs-icon-default: var(--bs-icon-disabled);
+}
+
+:host ::slotted(it-icon) {
+  --bs-icon-default: var(--bs-chip-icon-color);
+}
+
+:host([is-disabled]) ::slotted(it-button) {
+  cursor: not-allowed !important;
+}
+
+// Quick fix, bsi styles have wonky vertical alignment
+.chip-label {
+  margin-top: 2px;
+}
+
+/* Hover on the chip */
+:host a:hover ::slotted(it-icon) {
+  --bs-icon-primary: var(--bs-chip-text-color);
+  --bs-icon-secondary: var(--bs-chip-text-color);
+  --bs-icon-success: var(--bs-chip-text-color);
+  --bs-icon-danger: var(--bs-chip-text-color);
+  --bs-icon-warning: var(--bs-chip-text-color);
+  --bs-icon-default: var(--bs-chip-text-color);
+  --bs-chip-icon-color: var(--bs-chip-text-color);
+}
