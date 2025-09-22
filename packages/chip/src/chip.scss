@@ -37,11 +37,6 @@
   cursor: not-allowed !important;
 }
 
-// Quick fix, bsi styles have wonky vertical alignment
-.chip-label {
-  margin-top: 2px;
-}
-
 /* Hover on the chip */
 :host a:hover ::slotted(it-icon) {
   --bs-icon-primary: var(--bs-chip-text-color);
