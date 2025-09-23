@@ -51,6 +51,7 @@
   ],
   "dependencies": {
     "@italia/button": "workspace:^",
+    "@italia/chip": "workspace:^",
     "@italia/dropdown": "workspace:^",
     "@italia/i18n": "workspace:^",
     "@italia/icon": "workspace:^",
