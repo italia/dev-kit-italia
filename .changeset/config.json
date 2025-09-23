@@ -19,6 +19,7 @@
       "@italia/input",
       "@italia/popover",
       "@italia/section",
+      "@italia/sticky",
       "@italia/video"
     ]
   ],
