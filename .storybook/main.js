@@ -16,6 +16,7 @@ const config = {
     getAbsolutePath('@chromatic-com/storybook'),
     getAbsolutePath('@storybook/blocks'),
     getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('storybook-addon-tag-badges'),
   ],
   framework: {
     name: getAbsolutePath('@storybook/web-components-vite'),

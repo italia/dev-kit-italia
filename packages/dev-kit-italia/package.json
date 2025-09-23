@@ -50,6 +50,7 @@
     "lit-html"
   ],
   "dependencies": {
+    "@italia/avatar": "workspace:^",
     "@italia/button": "workspace:^",
     "@italia/chip": "workspace:^",
     "@italia/dropdown": "workspace:^",

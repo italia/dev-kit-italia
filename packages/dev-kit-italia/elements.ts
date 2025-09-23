@@ -1,5 +1,6 @@
 import '@italia/button/it-button.js';
 import '@italia/chip/it-chip.js';
+import '@italia/avatar/it-avatar.js';
 import '@italia/dropdown/it-dropdown.js';
 import '@italia/dropdown/it-dropdown-item.js';
 import '@italia/icon/it-icon.js';
