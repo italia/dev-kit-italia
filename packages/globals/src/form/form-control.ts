@@ -104,7 +104,7 @@ export class FormControl extends BaseLocalizedComponent {
   }
 
   // Form validation methods
-  public checkValidity(): boolean {
+  protected checkValidity(): boolean {
     const inputValid = this.inputElement ? this.inputElement.checkValidity() : true; // this.inputElement.checkValidity() è la validazione del browser
 
     // override default browser messages
@@ -133,17 +133,17 @@ export class FormControl extends BaseLocalizedComponent {
   }
 
   /** Gets the associated form, if one exists. */
-  getForm(): HTMLFormElement | null {
+  public getForm(): HTMLFormElement | null {
     return this.formControlController.getForm();
   }
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
-  reportValidity() {
+  public reportValidity() {
     return this.inputElement.reportValidity();
   }
 
   /** Sets a custom validation message. Pass an empty string to restore validity. */
-  setCustomValidity(message: string) {
+  protected setCustomValidity(message: string) {
     this.inputElement.setCustomValidity(message);
     this.formControlController.updateValidity();
   }
