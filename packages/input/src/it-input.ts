@@ -1,4 +1,4 @@
-import { setAttributes, BaseLocalizedComponent, FormControlController, FormControl } from '@italia/globals';
+import { setAttributes, FormControl } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
 import { html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
