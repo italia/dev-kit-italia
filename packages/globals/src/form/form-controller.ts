@@ -89,7 +89,7 @@ export class FormControlController implements ReactiveController {
       checkValidity: (input: FormControl) => (typeof input.checkValidity === 'function' ? input.checkValidity() : true),
       setValue: (input, value) => {
         // eslint-disable-next-line no-param-reassign
-        input.value = value;
+        input.value = value as string;
       },
       assumeInteractionOn: ['it-input'],
       ...options,

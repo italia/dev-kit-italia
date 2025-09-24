@@ -1,14 +1,7 @@
-import {
-  FormMixin,
-  ValidityMixin,
-  setAttributes,
-  BaseLocalizedComponent,
-  FormControlController,
-  type FormControl,
-} from '@italia/globals';
+import { setAttributes, BaseLocalizedComponent, FormControlController, FormControl } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
 import { html, nothing } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { when } from 'lit/directives/when.js';
 import { live } from 'lit/directives/live.js';
@@ -27,7 +20,7 @@ import styles from './input.scss';
 registerTranslation(it);
 
 @customElement('it-input')
-export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) implements FormControl {
+export class ItInput extends FormControl {
   static styles = styles;
 
   // TODO: verificare se serve davvero con il fatto che usiamo form-controller
@@ -39,13 +32,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
   @state()
   private _slotAppend: HTMLSlotElement | null = null;
 
-  private readonly formControlController = new FormControlController(this, {
-    assumeInteractionOn: ['it-input', 'it-blur'],
-  });
-
-  @query('.input__control')
-  inputElement!: HTMLInputElement; // from FormControl
-
+  // TODO: verificare se serve davvero con il fatto che usiamo form-controller
   @property()
   internals = this.attachInternals();
 
@@ -55,14 +42,6 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
    */
   @property()
   type: InputType = 'text';
-
-  /** The name of the input, submitted as a name/value pair with form data. */
-  @property() // from FormControl
-  name = '';
-
-  /** The current value of the input, submitted as a name/value pair with form data. */
-  @property({ reflect: true })
-  value = '';
 
   /** The input's size. */
   @property()
@@ -88,29 +67,6 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
   @property({ type: Boolean })
   plaintext = false;
 
-  /** If the input is required. */
-  @property({ type: Boolean, reflect: true }) // from FormControl
-  required = false;
-
-  /** If you implement your custom validation and you won't to trigger default validation */
-  @property({ type: Boolean, reflect: true, attribute: 'custom-validation' })
-  customValidation = false;
-
-  /** If your input is invalid from your custom validition, set this attribute with message validation */
-  @property({ attribute: 'validity-message' })
-  validationText: string = '';
-
-  /**
-   * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
-   * to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
-   * the same document or shadow root for this to work.
-   */
-  @property({ reflect: true, type: String }) form = '';
-
-  /** If the input is disabled. */
-  @property({ type: Boolean }) // from FormControl
-  disabled = false;
-
   /** If the input is read-only. */
   @property({ type: Boolean })
   readonly = false;
@@ -123,30 +79,6 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
   @property({ type: Boolean })
   suggestions = false;
 
-  /** The input's minimum length. */
-  @property({ type: Number })
-  minlength = -1;
-
-  /** The input's maximum length. */
-  @property({ type: Number })
-  maxlength = -1;
-
-  /** The input's minimum value. Only applies to date and number input types. */
-  @property() min: number | string | Date | undefined;
-
-  /** The input's maximum value. Only applies to date and number input types. */
-  @property() max: number | string | Date | undefined;
-
-  /**
-   * Specifies the granularity that the value must adhere to, or the special value `any` which means no stepping is
-   * implied, allowing any numeric value. Only applies to date and number input types.
-   */
-  @property() step: number | 'any' = 'any';
-
-  /** Pattern the `value` must match to be valid */
-  @property()
-  public pattern?: string;
-
   @state()
   private _passwordVisible = false;
 
@@ -156,85 +88,18 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
   @state()
   private _score = 0;
 
-  @state()
-  _touched = false; // from validity mixin
-
   get slotted() {
     return this._slotIcon || this._slotAppend;
   }
 
-  /** Gets the validity state object */
-  get validity() {
-    return this.inputElement.validity;
-  }
-
-  get validationMessage() {
-    return this.inputElement.validationMessage;
-  }
-
-  checkValidity(): boolean {
-    const inputValid = this.inputElement ? this.inputElement.checkValidity() : true; // this.inputElement.checkValidity() è la validazione del browser
-
-    // override default browser messages
-    if (!inputValid && !this.customValidation) {
-      if (this.inputElement.validity.valueMissing) {
-        this.setCustomValidity(this.$t('validityRequired'));
-      } else if (this.inputElement.validity.patternMismatch) {
-        this.setCustomValidity(this.$t('validityPattern'));
-      } else if (this.inputElement.validity.tooShort) {
-        this.setCustomValidity(this.$t('validityMinlength').replace('{minlength}', this.minlength.toString()));
-      } else if (this.inputElement.validity.tooLong) {
-        this.setCustomValidity(this.$t('validityMaxlength').replace('{maxlength}', this.maxlength.toString()));
-      } else {
-        /* nothing. Usa il messaggio di errore della validazione
-        di default del browser per altri errori di validità come:
-        - typeMismatch
-        - rangeUnderflow
-        - rangeOverflow
-        - stepMismatch
-        - badInput */
-      }
-    }
-
-    // this.inputElement.reportValidity(); //mostra l'errore con le tooltip del browser
-    return inputValid;
-  }
-
-  /** Gets the associated form, if one exists. */
-  getForm(): HTMLFormElement | null {
-    return this.formControlController.getForm();
-  }
-
-  /** Checks for validity and shows the browser's validation message if the control is invalid. */
-  reportValidity() {
-    return this.inputElement.reportValidity();
-  }
-
-  /** Sets a custom validation message. Pass an empty string to restore validity. */
-  setCustomValidity(message: string) {
-    this.inputElement.setCustomValidity(message);
-    this.formControlController.updateValidity();
-  }
-
-  handleInput() {
+  override _handleInput() {
     this.value = this.inputElement.value;
 
     if (this.passwordStrengthMeter) {
       this._checkPasswordStrength(this.inputElement.value);
     }
 
-    this.dispatchEvent(
-      new CustomEvent('it-input', {
-        detail: { value: this.inputElement.value, el: this.inputElement },
-        bubbles: true,
-        composed: true,
-      }),
-    );
-  }
-
-  override _handleBlur() {
-    super._handleBlur();
-    this.checkValidity();
+    super._handleInput();
   }
 
   firstUpdated() {
@@ -257,10 +122,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
     if (this.type === 'password' && this.minlength < 0) {
       this.minlength = 8; // set default minlength for password
     }
-
-    requestAnimationFrame(() => {
-      this.dispatchEvent(new CustomEvent('it-input-ready', { bubbles: true, detail: { el: this.inputElement } }));
-    });
+    this._handleReady();
   }
 
   override updated(changedProperties: Map<string | number | symbol, unknown>) {
@@ -453,7 +315,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
     );
 
     const inputClasses = this.composeClass(
-      'input__control',
+      'form__control',
       this.plaintext ? 'form-control-plaintext' : 'form-control',
       this.size ? `form-control-${this.size}` : '',
       invalid ? 'is-invalid' : '',
@@ -469,7 +331,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
           ${setAttributes(this._ariaAttributes)}
           aria-describedby=${ifDefined(ariaDescribedBy || undefined)}
           ?aria-invalid=${invalid}
-          @input="${this.handleInput}"
+          @input="${this._handleInput}"
           @blur=${this._handleBlur}
           @focus=${this._handleFocus}
           @click=${this._handleClick}
@@ -495,7 +357,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
           ${setAttributes(this._ariaAttributes)}
           aria-describedby=${ifDefined(ariaDescribedBy || undefined)}
           ?aria-invalid=${invalid}
-          @input="${this.handleInput}"
+          @input="${this._handleInput}"
           @blur=${this._handleBlur}
           @focus=${this._handleFocus}
           @click=${this._handleClick}
