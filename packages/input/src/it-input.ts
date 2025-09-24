@@ -1,7 +1,6 @@
 import {
   FormMixin,
   ValidityMixin,
-  VALIDATION_STATUS,
   setAttributes,
   BaseLocalizedComponent,
   FormControlController,
@@ -31,6 +30,7 @@ registerTranslation(it);
 export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) implements FormControl {
   static styles = styles;
 
+  // TODO: verificare se serve davvero con il fatto che usiamo form-controller
   static formAssociated = true;
 
   @state()
@@ -57,7 +57,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
   type: InputType = 'text';
 
   /** The name of the input, submitted as a name/value pair with form data. */
-  @property() // from FormMixin
+  @property() // from FormControl
   name = '';
 
   /** The current value of the input, submitted as a name/value pair with form data. */
@@ -88,28 +88,27 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
   @property({ type: Boolean })
   plaintext = false;
 
-  /** If the input is invalid. For external validation */
-  @property({ type: Boolean, reflect: true }) // from validity mixin
-  invalid = false;
-
   /** If the input is required. */
-  @property({ type: Boolean, reflect: true }) // from validity mixin
+  @property({ type: Boolean, reflect: true }) // from FormControl
   required = false;
 
   /** If you implement your custom validation and you won't to trigger default validation */
-  @property({ type: Boolean, reflect: true, attribute: 'custom-validation' }) // from validity mixin
+  @property({ type: Boolean, reflect: true, attribute: 'custom-validation' })
   customValidation = false;
 
   /** If your input is invalid from your custom validition, set this attribute with message validation */
   @property({ attribute: 'validity-message' })
   validationText: string = '';
 
-  /** Validation message from internal validation */
-  @property()
-  public validityMessage: string = ''; // from validity mixin
+  /**
+   * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
+   * to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
+   * the same document or shadow root for this to work.
+   */
+  @property({ reflect: true, type: String }) form = '';
 
   /** If the input is disabled. */
-  @property({ type: Boolean }) // from FormMixin
+  @property({ type: Boolean }) // from FormControl
   disabled = false;
 
   /** If the input is read-only. */
@@ -132,6 +131,18 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
   @property({ type: Number })
   maxlength = -1;
 
+  /** The input's minimum value. Only applies to date and number input types. */
+  @property() min: number | string | Date | undefined;
+
+  /** The input's maximum value. Only applies to date and number input types. */
+  @property() max: number | string | Date | undefined;
+
+  /**
+   * Specifies the granularity that the value must adhere to, or the special value `any` which means no stepping is
+   * implied, allowing any numeric value. Only applies to date and number input types.
+   */
+  @property() step: number | 'any' = 'any';
+
   /** Pattern the `value` must match to be valid */
   @property()
   public pattern?: string;
@@ -152,14 +163,65 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
     return this._slotIcon || this._slotAppend;
   }
 
+  /** Gets the validity state object */
+  get validity() {
+    return this.inputElement.validity;
+  }
+
+  get validationMessage() {
+    return this.inputElement.validationMessage;
+  }
+
+  checkValidity(): boolean {
+    const inputValid = this.inputElement ? this.inputElement.checkValidity() : true; // this.inputElement.checkValidity() è la validazione del browser
+
+    // override default browser messages
+    if (!inputValid && !this.customValidation) {
+      if (this.inputElement.validity.valueMissing) {
+        this.setCustomValidity(this.$t('validityRequired'));
+      } else if (this.inputElement.validity.patternMismatch) {
+        this.setCustomValidity(this.$t('validityPattern'));
+      } else if (this.inputElement.validity.tooShort) {
+        this.setCustomValidity(this.$t('validityMinlength').replace('{minlength}', this.minlength.toString()));
+      } else if (this.inputElement.validity.tooLong) {
+        this.setCustomValidity(this.$t('validityMaxlength').replace('{maxlength}', this.maxlength.toString()));
+      } else {
+        /* nothing. Usa il messaggio di errore della validazione
+        di default del browser per altri errori di validità come:
+        - typeMismatch
+        - rangeUnderflow
+        - rangeOverflow
+        - stepMismatch
+        - badInput */
+      }
+    }
+
+    // this.inputElement.reportValidity(); //mostra l'errore con le tooltip del browser
+    return inputValid;
+  }
+
+  /** Gets the associated form, if one exists. */
+  getForm(): HTMLFormElement | null {
+    return this.formControlController.getForm();
+  }
+
+  /** Checks for validity and shows the browser's validation message if the control is invalid. */
+  reportValidity() {
+    return this.inputElement.reportValidity();
+  }
+
+  /** Sets a custom validation message. Pass an empty string to restore validity. */
+  setCustomValidity(message: string) {
+    this.inputElement.setCustomValidity(message);
+    this.formControlController.updateValidity();
+  }
+
   handleInput() {
     this.value = this.inputElement.value;
 
     if (this.passwordStrengthMeter) {
       this._checkPasswordStrength(this.inputElement.value);
     }
-
-    //  this.formControlController.updateValidity();
 
     this.dispatchEvent(
       new CustomEvent('it-input', {
@@ -168,22 +230,6 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
         composed: true,
       }),
     );
-  }
-
-  checkValidity() {
-    if (!this.customValidation) {
-      const inputValid = this.inputElement ? this.inputElement.checkValidity() : true; // this.inputElement.checkValidity() è la validazione del browser
-      this._checkValidity(
-        {
-          [VALIDATION_STATUS.INVALID]: this.$t('validityInvalid'),
-          [VALIDATION_STATUS.ERROR_REQUIRED]: this.$t('validityRequired'),
-          [VALIDATION_STATUS.PATTERN]: this.$t('validityPattern'),
-          [VALIDATION_STATUS.MINLENGTH]: this.$t('validityMinlength'),
-          [VALIDATION_STATUS.MAXLENGTH]: this.$t('validityMaxlength'),
-        },
-        inputValid,
-      );
-    }
   }
 
   override _handleBlur() {
@@ -224,13 +270,9 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
       this.setCustomValidity(this.validationText);
     }
 
-    if (this.invalid) {
-      const message =
-        this.validationText?.length > 0 ? this.validationText : (this.validityMessage ?? 'Campo non valido');
+    this.formControlController.updateValidity();
 
-      this.internals.setValidity({ customError: this.invalid }, message);
-    }
-
+    // logger
     if (this.passwordStrengthMeter && this.type !== 'password') {
       this.logger.warn(
         "The strength-meter property is enabled, but type isn't password. Please, remove strength-meter property.",
@@ -393,20 +435,29 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
     return nothing;
   }
 
+  private _handleInvalid(event: Event) {
+    this.formControlController.setValidity(false);
+    this.formControlController.emitInvalidEvent(event);
+  }
+
   private _renderInput(supportTextId: string) {
+    const showValidation = this._touched || this.customValidation;
+    const validityMessage = (showValidation ? this.inputElement?.validationMessage : '') ?? '';
+    const invalid = showValidation && this.inputElement?.checkValidity() === false;
+
     const ariaDescribedBy = this.composeClass(
       this.supportText?.length > 0 ? supportTextId : '',
       this.passwordStrengthMeter ? `strengthMeterInfo_${this._id}` : '',
       this._ariaAttributes['aria-describedby']?.length > 0 ? this._ariaAttributes['aria-describedby'] : '',
-      this.validityMessage?.length > 0 ? `invalid-feedback-${this._id}` : '',
+      validityMessage?.length > 0 ? `invalid-feedback-${this._id}` : '',
     );
 
     const inputClasses = this.composeClass(
       'input__control',
       this.plaintext ? 'form-control-plaintext' : 'form-control',
       this.size ? `form-control-${this.size}` : '',
-      this.invalid ? 'is-invalid' : '',
-      !this.invalid && this._touched ? 'just-validate-success-field' : '',
+      invalid ? 'is-invalid' : '',
+      !invalid && this._touched ? 'just-validate-success-field' : '',
     );
 
     let inputRender;
@@ -417,17 +468,21 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
           part="textarea focusable"
           ${setAttributes(this._ariaAttributes)}
           aria-describedby=${ifDefined(ariaDescribedBy || undefined)}
-          ?aria-invalid=${this.invalid}
+          ?aria-invalid=${invalid}
           @input="${this.handleInput}"
           @blur=${this._handleBlur}
           @focus=${this._handleFocus}
           @click=${this._handleClick}
           @change=${this._handleChange}
+          @invalid=${this._handleInvalid}
           id="${this._id}"
           name="${this.name}"
           ?disabled=${this.disabled}
           ?readonly=${this.readonly}
           ?required=${this.required}
+          minlength=${ifDefined(this.minlength)}
+          maxlength=${ifDefined(this.maxlength)}
+          pattern=${ifDefined(this.pattern)}
           .value="${live(this.value)}"
           placeholder=${ifDefined(this.placeholder || undefined)}
           class="${inputClasses}"
@@ -439,18 +494,25 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
           part="input focusable"
           ${setAttributes(this._ariaAttributes)}
           aria-describedby=${ifDefined(ariaDescribedBy || undefined)}
-          ?aria-invalid=${this.invalid}
+          ?aria-invalid=${invalid}
           @input="${this.handleInput}"
           @blur=${this._handleBlur}
           @focus=${this._handleFocus}
           @click=${this._handleClick}
           @change=${this._handleChange}
+          @invalid=${this._handleInvalid}
           type="${this.type}"
           id="${this._id}"
           name="${this.name}"
           ?disabled=${this.disabled}
           ?readonly=${this.readonly}
           ?required=${this.required}
+          minlength=${ifDefined(this.minlength)}
+          maxlength=${ifDefined(this.maxlength)}
+          min=${ifDefined(this.min)}
+          max=${ifDefined(this.max)}
+          step=${ifDefined(this.step as number)}
+          pattern=${ifDefined(this.pattern)}
           .value="${live(this.value)}"
           placeholder=${ifDefined(this.placeholder || undefined)}
           class="${inputClasses}"
@@ -464,9 +526,9 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) im
         role="alert"
         id="invalid-feedback-${this._id}"
         class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
-        ?hidden=${!(this.validityMessage?.length > 0)}
+        ?hidden=${!(validityMessage?.length > 0)}
       >
-        <span class="visually-hidden">${this.label}: </span>${this.validityMessage}
+        <span class="visually-hidden">${this.label}: </span>${validityMessage}
       </div>
     `;
 

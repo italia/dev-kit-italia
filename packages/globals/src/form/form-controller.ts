@@ -13,8 +13,8 @@ export const formCollections: WeakMap<HTMLFormElement, Set<FormControl>> = new W
 // We store a WeakMap of reportValidity() overloads so we can override it when form controls connect to the DOM and
 // restore the original behavior when they disconnect.
 //
-// const reportValidityOverloads: WeakMap<HTMLFormElement, () => boolean> = new WeakMap();
-// const checkValidityOverloads: WeakMap<HTMLFormElement, () => boolean> = new WeakMap();
+const reportValidityOverloads: WeakMap<HTMLFormElement, () => boolean> = new WeakMap();
+const checkValidityOverloads: WeakMap<HTMLFormElement, () => boolean> = new WeakMap();
 
 //
 // We store a Set of controls that users have interacted with. This allows us to determine the interaction state
@@ -34,8 +34,6 @@ export interface FormControlControllerOptions {
   name: (input: FormControl) => string;
   /** A function that returns the form control's current value. */
   value: (input: FormControl) => unknown | unknown[];
-  /** A function that returns the form control's default value. */
-  defaultValue: (input: FormControl) => unknown | unknown[];
   /** A function that returns the form control's current disabled state. If disabled, the value won't be submitted. */
   disabled: (input: FormControl) => boolean;
   // /**
@@ -48,7 +46,7 @@ export interface FormControlControllerOptions {
   //  * A function that maps to the form control's `checkValidity()` function. When the control is invalid, this will return false.
   //  *   this is helpful is you want to check validation without triggering the native browser constraint violation warning.
   //  */
-  // checkValidity: (input: FormControl) => boolean;
+  checkValidity: (input: FormControl) => boolean;
   /** A function that sets the form control's value */
   setValue: (input: FormControl, value: unknown) => void;
   /**
@@ -86,10 +84,9 @@ export class FormControlController implements ReactiveController {
       },
       name: (input) => input.name,
       value: (input) => input.value,
-      defaultValue: (input) => input.defaultValue,
       disabled: (input) => input.disabled ?? false,
       // reportValidity: (input: FormControl) => (typeof input.reportValidity === 'function' ? input.reportValidity() : true),
-      // checkValidity: (input: FormControl) => (typeof input.checkValidity === 'function' ? input.checkValidity() : true),
+      checkValidity: (input: FormControl) => (typeof input.checkValidity === 'function' ? input.checkValidity() : true),
       setValue: (input, value) => {
         // eslint-disable-next-line no-param-reassign
         input.value = value;
@@ -137,9 +134,9 @@ export class FormControlController implements ReactiveController {
       this.attachForm(form);
     }
 
-    // if (this.host.hasUpdated) {
-    //   this.setValidity(this.host.validity.valid);
-    // }
+    if (this.host.hasUpdated) {
+      this.setValidity(this.host.validity.valid);
+    }
   }
 
   private attachForm(form?: HTMLFormElement) {
@@ -158,16 +155,16 @@ export class FormControlController implements ReactiveController {
       this.form.addEventListener('reset', this.handleFormReset);
 
       // Overload the form's reportValidity() method so it looks at FormControl
-      // if (!reportValidityOverloads.has(this.form)) {
-      //   reportValidityOverloads.set(this.form, this.form.reportValidity);
-      //   this.form.reportValidity = () => this.reportFormValidity();
-      // }
+      if (!reportValidityOverloads.has(this.form)) {
+        reportValidityOverloads.set(this.form, this.form.reportValidity);
+        this.form.reportValidity = () => this.reportFormValidity();
+      }
 
       // Overload the form's checkValidity() method so it looks at FormControl
-      // if (!checkValidityOverloads.has(this.form)) {
-      //   checkValidityOverloads.set(this.form, this.form.checkValidity);
-      //   this.form.checkValidity = () => this.checkFormValidity();
-      // }
+      if (!checkValidityOverloads.has(this.form)) {
+        checkValidityOverloads.set(this.form, this.form.checkValidity);
+        this.form.checkValidity = () => this.checkFormValidity();
+      }
     } else {
       this.form = undefined;
     }
@@ -195,15 +192,15 @@ export class FormControlController implements ReactiveController {
       this.form.removeEventListener('reset', this.handleFormReset);
 
       // Remove the overload and restore the original method
-      // if (reportValidityOverloads.has(this.form)) {
-      //   this.form.reportValidity = reportValidityOverloads.get(this.form)!;
-      //   reportValidityOverloads.delete(this.form);
-      // }
+      if (reportValidityOverloads.has(this.form)) {
+        this.form.reportValidity = reportValidityOverloads.get(this.form)!;
+        reportValidityOverloads.delete(this.form);
+      }
 
-      // if (checkValidityOverloads.has(this.form)) {
-      //   this.form.checkValidity = checkValidityOverloads.get(this.form)!;
-      //   checkValidityOverloads.delete(this.form);
-      // }
+      if (checkValidityOverloads.has(this.form)) {
+        this.form.checkValidity = checkValidityOverloads.get(this.form)!;
+        checkValidityOverloads.delete(this.form);
+      }
 
       // So it looks weird here to not always set the form to undefined. But I _think_ if we unattach this.form here,
       // we end up in this fun spot where future validity checks don't have a reference to the form validity handler.
@@ -257,7 +254,7 @@ export class FormControlController implements ReactiveController {
   };
 
   private handleFormReset = () => {
-    this.options.setValue(this.host, this.options.defaultValue(this.host));
+    this.options.setValue(this.host, '');
     this.setUserInteracted(this.host, false);
     interactions.set(this.host, []);
   };
@@ -417,10 +414,10 @@ export class FormControlController implements ReactiveController {
    * Updates the form control's validity based on the current value of `host.validity.valid`. Call this when anything
    * that affects constraint validation changes so the component receives the correct validity states.
    */
-  // updateValidity() {
-  //   const host = this.host;
-  //   this.setValidity(host.validity.valid);
-  // }
+  updateValidity() {
+    const host = this.host;
+    this.setValidity(host.validity.valid);
+  }
 
   /**
    * Dispatches a non-bubbling, cancelable custom event of type `it-invalid`.

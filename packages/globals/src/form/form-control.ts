@@ -5,29 +5,29 @@ export interface FormControl extends BaseComponent {
   name: string;
   value: unknown;
   disabled?: boolean;
-  defaultValue?: unknown;
   defaultChecked?: boolean;
   form?: string;
-
+  customValidation?: boolean; // se true, la validazione nativa del browser non viene eseguita
+  validationText?: string; // messaggio di errore da mostrare in caso di validazione custom
   // internal attributes
   inputElement: HTMLInputElement;
 
-  // // Constraint validation attributes
-  // pattern?: string;
-  // min?: number | string | Date;
-  // max?: number | string | Date;
-  // step?: number | 'any';
+  // Constraint validation attributes
+  pattern?: string;
+  min?: number | string | Date;
+  max?: number | string | Date;
+  step?: number | 'any';
+  minlength?: number;
+  maxlength?: number;
   required?: boolean;
-  // minlength?: number;
-  // maxlength?: number;
 
-  // // Form validation properties
-  // readonly validity: ValidityState;
-  // readonly validationMessage: string;
+  // Form validation properties
+  readonly validity: ValidityState; // getter methods to be implemented
+  readonly validationMessage: string; // getter methods to be implemented
 
   // // Form validation methods
-  // checkValidity: () => boolean;
-  // getForm: () => HTMLFormElement | null;
-  // reportValidity: () => boolean;
-  // setCustomValidity: (message: string) => void;
+  checkValidity: () => boolean;
+  getForm: () => HTMLFormElement | null;
+  reportValidity: () => boolean;
+  setCustomValidity: (message: string) => void;
 }
