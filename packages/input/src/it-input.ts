@@ -23,18 +23,11 @@ registerTranslation(it);
 export class ItInput extends FormControl {
   static styles = styles;
 
-  // TODO: verificare se serve davvero con il fatto che usiamo form-controller
-  static formAssociated = true;
-
   @state()
   private _slotIcon: HTMLSlotElement | null = null;
 
   @state()
   private _slotAppend: HTMLSlotElement | null = null;
-
-  // TODO: verificare se serve davvero con il fatto che usiamo form-controller
-  @property()
-  internals = this.attachInternals();
 
   /**
    * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
@@ -340,6 +333,7 @@ export class ItInput extends FormControl {
           minlength=${ifDefined(this.minlength)}
           maxlength=${ifDefined(this.maxlength)}
           pattern=${ifDefined(this.pattern)}
+          ?formNoValidate=${this.customValidation}
           .value="${live(this.value)}"
           placeholder=${ifDefined(this.placeholder || undefined)}
           class="${inputClasses}"
@@ -370,6 +364,7 @@ export class ItInput extends FormControl {
           max=${ifDefined(this.max)}
           step=${ifDefined(this.step as number)}
           pattern=${ifDefined(this.pattern)}
+          ?formNoValidate=${this.customValidation}
           .value="${live(this.value)}"
           placeholder=${ifDefined(this.placeholder || undefined)}
           class="${inputClasses}"

@@ -7,6 +7,12 @@ export class FormControl extends BaseLocalizedComponent {
     assumeInteractionOn: ['it-input', 'it-blur'],
   });
 
+  // TODO: verificare se serve davvero con il fatto che usiamo form-controller
+  // static formAssociated = true;
+
+  //   @property()
+  // internals = this.attachInternals();
+
   @state()
   _touched = false;
 
@@ -129,9 +135,6 @@ export class FormControl extends BaseLocalizedComponent {
   // Handlers
 
   protected _handleReady() {
-    if (this.customValidation) {
-      this.inputElement.formNoValidate = true;
-    }
     requestAnimationFrame(() => {
       this.dispatchEvent(new CustomEvent('it-input-ready', { bubbles: true, detail: { el: this.inputElement } }));
     });

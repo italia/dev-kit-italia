@@ -1,9 +1,8 @@
 import TrackFocus from './utils/track-focus.js';
-import FormMixin from './mixins/form.js';
 
 import setAttributes from './directives/setAttributes.js';
 
-export { TrackFocus, FormMixin, setAttributes };
+export { TrackFocus, setAttributes };
 export {
   BaseComponent,
   BaseComponentInterface,
