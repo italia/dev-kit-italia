@@ -83,7 +83,7 @@ const Input = () => {
         label="Campo obbligatorio"
         type="text"
         name="required-example"
-        required=""
+        required={true}
         placeholder="Testo segnaposto"
       ></it-input>
       <it-input
