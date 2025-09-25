@@ -93,7 +93,7 @@ const Input = () => {
         name="external-validation-example"
         validity-message="Questo campo è obbligatorio!"
         placeholder="Testo segnaposto"
-        custom-validation=""
+        custom-validation={true}
       ></it-input>
       {/* <section>
         <h2>Varianti di colore</h2>

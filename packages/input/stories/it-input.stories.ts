@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { StoryFormControlMethodAndProps } from '@italia/globals';
 
 import { INPUT_TYPES, type InputType, INPUT_SIZES, type Sizes } from '../src/types.js';
 import i18nIT from '../src/locales/it.js';
+
 import '@italia/icon';
 import '@italia/button';
 import '@italia/input';
@@ -663,6 +665,8 @@ document.querySelector('it-input#event-input-example').addEventListener('it-inpu
     })}
   `,
 };
+
+export const MetodiEPropPubblici: Story = { ...StoryFormControlMethodAndProps, tags: ['!dev'] };
 
 export const I18n: Story = {
   name: 'i18n',
