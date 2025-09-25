@@ -99,7 +99,6 @@ export class FormControlController implements ReactiveController {
 
   hostConnected() {
     const form = this.options.form(this.host);
-    console.log('hostConnected ', form);
     if (form) {
       this.attachForm(form);
     }
@@ -211,7 +210,7 @@ export class FormControlController implements ReactiveController {
   }
 
   private handleFormData = (event: FormDataEvent) => {
-    console.log('handleFormData');
+    // console.log('handleFormData');
     const disabled = this.options.disabled(this.host);
     const name = this.options.name(this.host);
     const value = this.options.value(this.host);
@@ -239,7 +238,7 @@ export class FormControlController implements ReactiveController {
   };
 
   private handleFormSubmit = (event: Event) => {
-    console.log('handleFormSubmit');
+    // console.log('handleFormSubmit');
     const disabled = this.options.disabled(this.host);
     const reportValidity = this.options.reportValidity;
 
@@ -276,7 +275,7 @@ export class FormControlController implements ReactiveController {
   };
 
   private checkFormValidity = () => {
-    console.log('checkFormValidity');
+    // console.log('checkFormValidity');
     //
     // This is very similar to the `reportFormValidity` function, but it does not trigger native constraint validation
     // Allow the user to simply check if the form is valid and handling validity in their own way.
@@ -305,7 +304,7 @@ export class FormControlController implements ReactiveController {
   };
 
   private reportFormValidity = () => {
-    console.log('reportFormValidity');
+    // console.log('reportFormValidity');
     //
     // FormControl work hard to act like regular form controls. They support the Constraint Validation API
     // and its associated methods such as setCustomValidity() and reportValidity(). However, the HTMLFormElement also
@@ -325,7 +324,6 @@ export class FormControlController implements ReactiveController {
 
       for (const element of elements) {
         if (typeof element.reportValidity === 'function') {
-          console.log('reportFormValidity element', element);
           if (!element.reportValidity()) {
             return false;
           }
@@ -348,7 +346,7 @@ export class FormControlController implements ReactiveController {
   }
 
   private doAction(type: 'submit' | 'reset', submitter?: HTMLInputElement | any) {
-    console.log('doaction', type);
+    // console.log('doaction', type);
     if (this.form) {
       const button = document.createElement('button');
       button.type = type;

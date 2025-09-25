@@ -126,7 +126,7 @@ export class FormControl extends BaseLocalizedComponent {
   }
 
   /** Sets a custom validation message. Pass an empty string to restore validity. */
-  protected setCustomValidity(message: string) {
+  public setCustomValidity(message: string) {
     this.inputElement.setCustomValidity(message);
     this.formControlController.updateValidity();
   }
@@ -152,8 +152,8 @@ export class FormControl extends BaseLocalizedComponent {
 
   protected _handleBlur() {
     this._touched = true;
+    this.handleValidationMessages();
     this.dispatchEvent(new FocusEvent('it-blur', { bubbles: true, composed: true }));
-    // this.checkValidity();
   }
 
   protected _handleFocus() {
@@ -237,5 +237,15 @@ export class FormControl extends BaseLocalizedComponent {
         composed: true,
       }),
     );
+  }
+
+  override updated(changedProperties: Map<string | number | symbol, unknown>) {
+    super.updated?.(changedProperties);
+
+    if (this.customValidation) {
+      this.setCustomValidity(this.validationText);
+    }
+
+    this.formControlController.updateValidity();
   }
 }
