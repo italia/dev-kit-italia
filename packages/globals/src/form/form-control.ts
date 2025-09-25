@@ -112,7 +112,6 @@ export class FormControl extends BaseLocalizedComponent {
   // Form validation methods
   public checkValidity(): boolean {
     const inputValid = this.inputElement?.checkValidity() ?? true; // this.inputElement.checkValidity() è la validazione del browser
-    // this.inputElement.reportValidity(); //mostra l'errore con le tooltip del browser
     return inputValid;
   }
 

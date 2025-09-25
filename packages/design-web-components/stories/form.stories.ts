@@ -177,7 +177,7 @@ Nel caso il campo non sia valido, è necessario invalidare il campo impostando i
     },
   },
   render: () =>
-    html` <form>
+    html` <form action="/prova">
       <div class="row">
         <it-input
           class="col-md-6"
@@ -285,7 +285,7 @@ Ecco qui un esempio di implementazione della validazione con il plugin [JustVali
               {
                 validator: () => {
                   const value = getItInputValue('it-input[id="email"]');
-                  return /^[^s@]+@[^s@]+.[^s@]+$/.test(value);
+                  return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
                 },
                 errorMessage: 'Formato email non valido',
               },
