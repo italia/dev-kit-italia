@@ -8,13 +8,13 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/italia/design-web-components.git",
+    "url": "https://github.com/italia/dev-kit-italia.git",
     "directory": "packages/button"
   },
   "author": "Presidenza del Consiglio dei Ministri",
-  "homepage": "https://italia.github.io/design-web-components",
+  "homepage": "https://italia.github.io/dev-kit-italia",
   "bugs": {
-    "url": "https://github.com/italia/design-web-components/issues"
+    "url": "https://github.com/italia/dev-kit-italia/issues"
   },
   "type": "module",
   "main": "./dist/src/index.js",
@@ -40,8 +40,9 @@
     "test-disabled": "wtr --coverage --node-resolve --config web-test-runner.config.js"
   },
   "dependencies": {
-    "lit": "catalog:",
-    "@italia/i18n": "workspace:^"
+    "@italia/i18n": "workspace:^",
+    "clsx": "^2.1.1",
+    "lit": "catalog:"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.3",

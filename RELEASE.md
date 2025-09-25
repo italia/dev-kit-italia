@@ -58,7 +58,7 @@ node scripts/generate-unified-changelog.js
 ### Struttura del Changelog Unificato
 
 ```markdown
-# Design Web Components Changelog
+# Dev Kit Italia Changelog
 
 ## 1.2.0
 

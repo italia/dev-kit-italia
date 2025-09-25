@@ -1,0 +1,207 @@
+<h1>it-dropdown</h1>
+
+<!-- Base -->
+<section>
+  <h2>Base</h2>
+  <it-dropdown label="Dropdown base" variant="primary">
+    <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+    <it-dropdown-item href="#">Azione 2</it-dropdown-item>
+    <it-dropdown-item href="#">Azione 3</it-dropdown-item>
+  </it-dropdown>
+</section>
+
+<!-- Ruolo list -->
+<section>
+  <h2>Ruolo list</h2>
+  <p style="max-width: 620px">
+    Esempio di dropdown con <code>it-role="list"</code> per presentare elementi come semplice elenco invece che
+    come menu applicativo.
+  </p>
+  <it-dropdown label="Elenco azioni" variant="primary" it-role="list">
+    <it-dropdown-item href="#">Elemento 1</it-dropdown-item>
+    <it-dropdown-item href="#">Elemento 2</it-dropdown-item>
+    <it-dropdown-item href="#">Elemento 3</it-dropdown-item>
+  </it-dropdown>
+</section>
+
+<!-- Varianti -->
+<section>
+  <h2>Varianti</h2>
+  <div class="flex p-0">
+    <it-dropdown label="Primario" variant="primary">
+      <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 2</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 3</it-dropdown-item>
+    </it-dropdown>
+
+    <it-dropdown label="Secondario" variant="secondary">
+      <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 2</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 3</it-dropdown-item>
+    </it-dropdown>
+
+    <it-dropdown label="Success" variant="success">
+      <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 2</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 3</it-dropdown-item>
+    </it-dropdown>
+
+    <it-dropdown label="Danger" variant="danger">
+      <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 2</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 3</it-dropdown-item>
+    </it-dropdown>
+  </div>
+</section>
+
+<!-- Direzioni / Alignment -->
+<section>
+  <h2>Direzioni</h2>
+  <div class="flex p-0">
+    <it-dropdown label="Giù" alignment="bottom-start" variant="primary">
+      <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 2</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 3</it-dropdown-item>
+    </it-dropdown>
+
+    <it-dropdown label="Su" alignment="top-start" variant="primary">
+      <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 2</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 3</it-dropdown-item>
+    </it-dropdown>
+
+    <it-dropdown label="Sinistra" alignment="left" variant="primary">
+      <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 2</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 3</it-dropdown-item>
+    </it-dropdown>
+
+    <it-dropdown label="Destra" alignment="right" variant="primary">
+      <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 2</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 3</it-dropdown-item>
+    </it-dropdown>
+  </div>
+</section>
+
+<!-- Menu con voce attiva -->
+<section>
+  <h2>Menu con voci attive</h2>
+  <it-dropdown label="Dropdown" variant="primary">
+    <it-dropdown-item href="#" active>
+      Attivo
+    </it-dropdown-item>
+    <it-dropdown-item href="#">Non attivo</it-dropdown-item>
+    <it-dropdown-item href="#">Non attivo</it-dropdown-item>
+  </it-dropdown>
+</section>
+
+<!-- Menu disabilitato -->
+<section>
+  <h2>Menu disabilitato</h2>
+  <it-dropdown label="Dropdown disabilitato" variant="primary" disabled>
+    <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+    <it-dropdown-item href="#">Azione 2</it-dropdown-item>
+    <it-dropdown-item href="#">Azione 3</it-dropdown-item>
+  </it-dropdown>
+</section>
+
+<!-- Menu con voci disabilitate -->
+<section>
+  <h2>Menu con voci disabilitate</h2>
+  <it-dropdown label="Dropdown" variant="primary">
+    <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+    <it-dropdown-item href="#" disabled>
+      Azione 2 disabilitata
+    </it-dropdown-item>
+    <it-dropdown-item href="#">Azione 3</it-dropdown-item>
+  </it-dropdown>
+</section>
+
+<!-- Menu con intestazioni e separatori -->
+<section>
+  <h2>Menu con intestazioni e separatori</h2>
+  <it-dropdown label="Item con separatore e header" variant="primary">
+    <h4 slot="header" class="link-list-heading dropdown-header">
+      Intestazione
+    </h4>
+    <it-dropdown-item href="#">Prima voce</it-dropdown-item>
+    <it-dropdown-item separator></it-dropdown-item>
+    <it-dropdown-item href="#">Dopo separatore</it-dropdown-item>
+  </it-dropdown>
+</section>
+
+<!-- Menu con voci grandi -->
+<section>
+  <h2>Menu con voci grandi</h2>
+  <it-dropdown label="Dropdown" variant="primary">
+    <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+    <it-dropdown-item href="#">Azione 2</it-dropdown-item>
+    <it-dropdown-item href="#" large>
+      Grande
+    </it-dropdown-item>
+  </it-dropdown>
+</section>
+
+<!-- Menu a tutta larghezza -->
+<section>
+  <h2>Menu a tutta larghezza</h2>
+  <div style="width: 100%; max-width: 420px">
+    <it-dropdown label="Apri dropdown" variant="primary" full-width style="width: 100%">
+      <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 2</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 3</it-dropdown-item>
+    </it-dropdown>
+  </div>
+</section>
+
+<!-- Menu con icona a destra -->
+<section>
+  <h2>Menu con icona a destra</h2>
+  <it-dropdown label="Dropdown" variant="primary">
+    <it-dropdown-item href="#">
+      Azione 1<it-icon slot="suffix" name="it-star-outline" size="sm" color="primary"></it-icon>
+    </it-dropdown-item>
+    <it-dropdown-item href="#">
+      Azione 2<it-icon slot="suffix" name="it-star-outline" size="sm" color="primary"></it-icon>
+    </it-dropdown-item>
+    <it-dropdown-item href="#">
+      Azione 3<it-icon slot="suffix" name="it-star-outline" size="sm" color="primary"></it-icon>
+    </it-dropdown-item>
+  </it-dropdown>
+</section>
+
+<!-- Menu con icona a sinistra -->
+<section>
+  <h2>Menu con icona a sinistra</h2>
+  <it-dropdown label="Dropdown" variant="primary">
+    <it-dropdown-item href="#">
+      <it-icon slot="prefix" name="it-star-outline" size="sm" color="primary"></it-icon>
+      Azione 1
+    </it-dropdown-item>
+    <it-dropdown-item href="#">
+      <it-icon slot="prefix" name="it-star-outline" size="sm" color="primary"></it-icon>
+      Azione 2
+    </it-dropdown-item>
+    <it-dropdown-item href="#">
+      <it-icon slot="prefix" name="it-star-outline" size="sm" color="primary"></it-icon>
+      Azione 3
+    </it-dropdown-item>
+  </it-dropdown>
+</section>
+
+<!-- Menu scuro -->
+<section>
+  <h2>Menu scuro</h2>
+  <div class="p-4 bg-dark" style="display: inline-block">
+    <it-dropdown label="Dropdown" variant="primary" dark>
+      <h4 slot="header" class="link-list-heading dropdown-header">
+        Intestazione
+      </h4>
+      <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 2</it-dropdown-item>
+      <it-dropdown-item separator></it-dropdown-item>
+      <it-dropdown-item href="#">Azione 3</it-dropdown-item>
+    </it-dropdown>
+  </div>
+</section>

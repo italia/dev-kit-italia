@@ -6,7 +6,7 @@ catalog:
   '@types/mocha': '^10.0.10'
   '@web/test-runner': '^0.18.2'
   '@web/test-runner-commands': '^0.9.0'
-  bootstrap-italia: 'github:italia/bootstrap-italia#3f5dafbd16d608fe706780952aeb1f5ae20e447e'
+  bootstrap-italia: 'github:italia/bootstrap-italia#0f995fca74a6cec84d1f272a4e268a4a5a2cc5d7'
   lit: '^3.3.0'
   sass: '^1.89.0'
   typescript: '^5.5.3'

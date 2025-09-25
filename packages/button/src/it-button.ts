@@ -1,5 +1,5 @@
 import { BaseComponent, setAttributes } from '@italia/globals';
-import { html, PropertyValues } from 'lit';
+import { html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { type Sizes, type Variants } from './types.js';
@@ -13,64 +13,35 @@ export class ItButton extends BaseComponent {
     return true;
   }
 
-  @query('button')
-  private _nativeButton!: HTMLButtonElement;
+  @query('button') private _nativeButton!: HTMLButtonElement;
 
-  @property({ type: String })
-  private _buttonClasses = '';
+  @property({ type: String, reflect: true }) type = 'button';
 
-  @property({ type: String, reflect: true })
-  type = 'button';
+  @property({ type: String, reflect: true }) variant: Variants = '';
 
-  @property({ type: String, reflect: true })
-  variant: Variants = '';
+  @property({ type: String, reflect: true }) size: Sizes = '';
 
-  @property({ type: String, reflect: true })
-  size: Sizes = '';
+  @property({ type: Boolean, reflect: true }) outline = false;
 
-  @property({ type: Boolean, reflect: true })
-  outline = false;
+  @property({ type: Boolean, reflect: true }) block = false;
 
-  @property({ type: Boolean, reflect: true })
-  block = false;
+  @property({ type: Boolean, reflect: true }) icon = false;
 
-  @property({ type: Boolean, reflect: true })
-  icon = false;
+  @property({ type: String }) value = '';
 
-  @property({ type: String })
-  value = '';
+  @property() internals = this.attachInternals();
 
-  @property()
-  internals = this.attachInternals();
+  @property({ type: Boolean, reflect: true, attribute: 'it-aria-disabled' }) disabled?: boolean;
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  protected override firstUpdated(_changedProperties: PropertyValues): void {
-    const button = this.renderRoot.querySelector('button');
-    if (button) {
-      this.addFocus(button);
-    }
-  }
-
-  override updated() {
-    this._buttonClasses = this.composeClass(
-      'btn',
-      !this.outline && this.variant !== '' ? `btn-${this.variant}` : '',
-      this.outline ? `${this.variant ? 'btn-outline-' : ''}${this.variant}` : '',
-      'aria-disabled' in this._ariaAttributes ? 'disabled' : '',
-      this.size ? `btn-${this.size}` : '',
-      this.block ? 'd-block w-100' : '',
-      this.icon ? 'btn-icon' : '',
-    );
-  }
+  @property({ type: Boolean, reflect: true, attribute: 'it-aria-expanded' }) expanded?: boolean;
 
   surfaceSubmitEvent(event: any) {
-    const disabled = 'aria-disabled' in this._ariaAttributes;
-    if (this.form && !disabled) {
+    if (this.form && !this.disabled) {
       event.preventDefault();
       event.stopPropagation();
       this.form.requestSubmit();
     }
-    if (disabled) {
+    if (this.disabled) {
       event.preventDefault();
       event.stopPropagation();
     }
@@ -78,6 +49,10 @@ export class ItButton extends BaseComponent {
 
   get form() {
     return this.internals ? this.internals.form : null;
+  }
+
+  public override focus() {
+    this._nativeButton?.focus();
   }
 
   private _onKeyDown = (e: KeyboardEvent) => {
@@ -104,20 +79,29 @@ export class ItButton extends BaseComponent {
 
   // Render the UI as a function of component state
   override render() {
-    const part = this.composeClass(
-      'button',
-      'focusable',
-      this.variant?.length > 0 ? this.variant : '',
-      this.outline ? 'outline' : '',
-    );
+    const classes = this.composeClass('btn', this.className, {
+      [`btn-${this.variant}`]: !!this.variant && !this.outline,
+      [`btn-outline-${this.variant}`]: !!this.variant && this.outline,
+      [`btn-${this.size}`]: !!this.size,
+      disabled: this.disabled,
+      'btn-icon': this.icon,
+      'd-block w-100': this.block,
+    });
+    const part = this.composeClass('button', 'focusable', {
+      [this.variant]: this.variant?.length > 0,
+      outline: this.outline,
+    });
     return html`
       <button
+        id=${ifDefined(this.id || undefined)}
         part="${part}"
         type="${this.type}"
-        class="${this._buttonClasses}"
+        class="${classes}"
         @click="${this.type === 'submit' ? this.surfaceSubmitEvent : undefined}"
         .value="${ifDefined(this.value ? this.value : undefined)}"
         ${setAttributes(this._ariaAttributes)}
+        aria-expanded="${ifDefined(this.expanded !== undefined ? this.expanded : undefined)}"
+        aria-disabled="${ifDefined(this.disabled ? this.disabled : undefined)}"
       >
         <slot></slot>
       </button>
