@@ -111,12 +111,6 @@ export class ItInput extends FormControl {
   override updated(changedProperties: Map<string | number | symbol, unknown>) {
     super.updated?.(changedProperties);
 
-    if (this.customValidation) {
-      this.setCustomValidity(this.validationText);
-    }
-
-    this.formControlController.updateValidity();
-
     // logger
     if (this.passwordStrengthMeter && this.type !== 'password') {
       this.logger.warn(
