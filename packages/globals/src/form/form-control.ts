@@ -96,38 +96,16 @@ export class FormControl extends BaseLocalizedComponent {
 
   /** Gets the validity state object */
   public get validity(): ValidityState {
-    return this.inputElement.validity;
+    return this.inputElement?.validity;
   }
 
   public get validationMessage(): string {
-    return this.inputElement.validationMessage;
+    return this.inputElement?.validationMessage;
   }
 
   // Form validation methods
-  protected checkValidity(): boolean {
-    const inputValid = this.inputElement ? this.inputElement.checkValidity() : true; // this.inputElement.checkValidity() è la validazione del browser
-
-    // override default browser messages
-    if (!inputValid && !this.customValidation) {
-      if (this.inputElement.validity.valueMissing) {
-        this.setCustomValidity(this.$t('validityRequired'));
-      } else if (this.inputElement.validity.patternMismatch) {
-        this.setCustomValidity(this.$t('validityPattern'));
-      } else if (this.inputElement.validity.tooShort) {
-        this.setCustomValidity(this.$t('validityMinlength').replace('{minlength}', this.minlength.toString()));
-      } else if (this.inputElement.validity.tooLong) {
-        this.setCustomValidity(this.$t('validityMaxlength').replace('{maxlength}', this.maxlength.toString()));
-      } else {
-        /* nothing. Usa il messaggio di errore della validazione
-        di default del browser per altri errori di validità come:
-        - typeMismatch
-        - rangeUnderflow
-        - rangeOverflow
-        - stepMismatch
-        - badInput */
-      }
-    }
-
+  public checkValidity(): boolean {
+    const inputValid = this.inputElement?.checkValidity() ?? true; // this.inputElement.checkValidity() è la validazione del browser
     // this.inputElement.reportValidity(); //mostra l'errore con le tooltip del browser
     return inputValid;
   }
@@ -151,12 +129,16 @@ export class FormControl extends BaseLocalizedComponent {
   // Handlers
 
   protected _handleReady() {
+    if (this.customValidation) {
+      this.inputElement.formNoValidate = true;
+    }
     requestAnimationFrame(() => {
       this.dispatchEvent(new CustomEvent('it-input-ready', { bubbles: true, detail: { el: this.inputElement } }));
     });
   }
 
   protected _handleInput() {
+    this.handleValidationMessages();
     this.dispatchEvent(
       new CustomEvent('it-input', {
         detail: { value: this.inputElement.value, el: this.inputElement },
@@ -169,7 +151,7 @@ export class FormControl extends BaseLocalizedComponent {
   protected _handleBlur() {
     this._touched = true;
     this.dispatchEvent(new FocusEvent('it-blur', { bubbles: true, composed: true }));
-    this.checkValidity();
+    // this.checkValidity();
   }
 
   protected _handleFocus() {
@@ -178,6 +160,45 @@ export class FormControl extends BaseLocalizedComponent {
 
   protected _handleClick() {
     this.dispatchEvent(new MouseEvent('it-click', { bubbles: true, composed: true }));
+  }
+
+  /*
+  Override default browser validation messages
+   */
+  private handleValidationMessages() {
+    if (!this.customValidation) {
+      const _v = this.inputElement.validity;
+
+      if (_v.valueMissing) {
+        this.setCustomValidity(this.$t('validityRequired'));
+      } else if (_v.patternMismatch) {
+        this.setCustomValidity(this.$t('validityPattern'));
+      } else if (_v.tooShort) {
+        this.setCustomValidity(this.$t('validityMinlength').replace('{minlength}', this.minlength.toString()));
+      } else if (_v.tooLong) {
+        this.setCustomValidity(this.$t('validityMaxlength').replace('{maxlength}', this.maxlength.toString()));
+      } else {
+        /* nothing. Usa il messaggio di errore della validazione
+        di default del browser per altri errori di validità come:
+        - typeMismatch
+        - rangeUnderflow
+        - rangeOverflow
+        - stepMismatch
+        - badInput */
+
+        const otherConstraintErrors =
+          _v.typeMismatch || _v.rangeUnderflow || _v.rangeOverflow || _v.stepMismatch || _v.badInput;
+
+        if (!otherConstraintErrors) {
+          this.setCustomValidity('');
+        }
+      }
+    }
+  }
+
+  protected _handleInvalid(event: Event) {
+    this.formControlController.setValidity(false);
+    this.formControlController.emitInvalidEvent(event);
   }
 
   protected _handleChange(e: Event) {

@@ -92,16 +92,6 @@ export class ItInput extends FormControl {
     return this._slotIcon || this._slotAppend;
   }
 
-  override _handleInput() {
-    this.value = this.inputElement.value;
-
-    if (this.passwordStrengthMeter) {
-      this._checkPasswordStrength(this.inputElement.value);
-    }
-
-    super._handleInput();
-  }
-
   firstUpdated() {
     // this.addFocus(this.inputElement); //NON serve per il momento perche sfruttiamo :focus-visible. Per gli input focus-visible si attiva anche al click perchè è il browser che lo gestisce
     this._slotIcon = this.querySelector('[slot="icon"]');
@@ -152,6 +142,16 @@ export class ItInput extends FormControl {
         `Label is required to ensure accessibility. Please, define a label for <it-input name="${this.name}" ... /> . Set attribute label-hidden="true" if you don't want to show label.`,
       );
     }
+  }
+
+  override _handleInput() {
+    this.value = this.inputElement.value;
+
+    if (this.passwordStrengthMeter) {
+      this._checkPasswordStrength(this.inputElement.value);
+    }
+
+    super._handleInput();
   }
 
   private _togglePasswordVisibility() {
@@ -297,14 +297,9 @@ export class ItInput extends FormControl {
     return nothing;
   }
 
-  private _handleInvalid(event: Event) {
-    this.formControlController.setValidity(false);
-    this.formControlController.emitInvalidEvent(event);
-  }
-
   private _renderInput(supportTextId: string) {
     const showValidation = this._touched || this.customValidation;
-    const validityMessage = (showValidation ? this.inputElement?.validationMessage : '') ?? '';
+    const validityMessage = (showValidation ? this.validationMessage : '') ?? '';
     const invalid = showValidation && this.inputElement?.checkValidity() === false;
 
     const ariaDescribedBy = this.composeClass(
