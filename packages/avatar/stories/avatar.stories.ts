@@ -7,9 +7,12 @@ import {
   type AvatarPresence,
   type AvatarStatus,
   type AvatarType,
+  type AvatarGroupSize,
+  type AvatarGroupDirection,
 } from '../src/types.js';
 import '@italia/avatar';
 import '@italia/icon';
+import '@italia/dropdown';
 
 interface AvatarProps {
   size: AvatarSize;
@@ -31,38 +34,36 @@ interface AvatarProps {
 
 const AVATAR_SIZES: AvatarSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 const AVATAR_COLORS: AvatarColor[] = ['', 'primary', 'secondary'];
-const AVATAR_TYPES: AvatarType[] = ['image', 'text', 'icon'];
+const AVATAR_TYPES: AvatarType[] = ['', 'image', 'text', 'icon'];
 const AVATAR_PRESENCE: AvatarPresence[] = ['', 'active', 'busy', 'hidden'];
 const AVATAR_STATUS: AvatarStatus[] = ['', 'approved', 'declined', 'notify'];
 
-const renderComponent = (params: Partial<AvatarProps>) => {
-  return html`
-    <it-avatar
-      type="${ifDefined(params.type) || nothing}"
-      size="${ifDefined(params.size) || nothing}"
-      color="${ifDefined(params.color) || nothing}"
-      presence="${ifDefined(params.presence) || nothing}"
-      status="${ifDefined(params.status) || nothing}"
-      src="${ifDefined(params.src) || nothing}"
-      alt="${ifDefined(params.alt) || nothing}"
-      text="${ifDefined(params.text) || nothing}"
-      initials="${ifDefined(params.initials) || nothing}"
-      icon="${ifDefined(params.icon) || nothing}"
-      href="${ifDefined(params.href) || nothing}"
-      avatar-title="${ifDefined(params.avatarTitle) || nothing}"
-      extra-text="${ifDefined(params.extraText) || nothing}"
-      extra-text-tag="${ifDefined(params.extraTextTag) || nothing}"
-      ?extra-text-wrapper="${params.extraTextWrapper}"
-    ></it-avatar>
-  `;
-};
+const renderComponent = (params: Partial<AvatarProps>) => html`
+  <it-avatar
+    type="${ifDefined(params.type) || nothing}"
+    size="${ifDefined(params.size) || nothing}"
+    color="${ifDefined(params.color) || nothing}"
+    presence="${ifDefined(params.presence) || nothing}"
+    status="${ifDefined(params.status) || nothing}"
+    src="${ifDefined(params.src) || nothing}"
+    alt="${ifDefined(params.alt) || nothing}"
+    text="${ifDefined(params.text) || nothing}"
+    initials="${ifDefined(params.initials) || nothing}"
+    icon="${ifDefined(params.icon) || nothing}"
+    href="${ifDefined(params.href) || nothing}"
+    avatar-title="${ifDefined(params.avatarTitle) || nothing}"
+    extra-text="${ifDefined(params.extraText) || nothing}"
+    extra-text-tag="${ifDefined(params.extraTextTag) || nothing}"
+    ?extra-text-wrapper="${params.extraTextWrapper}"
+  ></it-avatar>
+`;
 
 const meta = {
   title: 'Componenti/Avatar',
   component: 'it-avatar',
   tags: ['autodocs', 'alpha', 'new'],
   args: {
-    type: 'image',
+    type: '',
     size: 'md',
     color: '',
     presence: '',
@@ -81,9 +82,10 @@ const meta = {
   argTypes: {
     type: {
       control: 'select',
-      description: "Tipo di contenuto dell'avatar.",
+      description:
+        "Tipo di contenuto dell'avatar. Se vuoto, viene determinato automaticamente: src → image, icon → icon, altrimenti text.",
       options: AVATAR_TYPES,
-      table: { defaultValue: { summary: 'image' } },
+      table: { defaultValue: { summary: 'auto' } },
     },
     size: {
       control: 'select',
@@ -237,7 +239,7 @@ Nel caso di avatar con immagine utilizzare l'attributo \`alt\` dell'immagine ins
     },
   },
   render: () => html`
-    <div class="d-flex align-items-center justify-content-around flex-wrap flex-sm-nowrap">
+    <div class="d-flex align-items-center justify-content-around flex-wrap flex-sm-nowrap gap-4">
       ${renderComponent({
         type: 'image',
         src: 'https://randomuser.me/api/portraits/women/44.jpg',
@@ -306,7 +308,7 @@ Un avatar con testo conterrà uno \`<span>\` per soli screen reader con il nome 
     },
   },
   render: () => html`
-    <div class="d-flex align-items-center justify-content-around flex-wrap flex-sm-nowrap mb-3">
+    <div class="d-flex align-items-center justify-content-around flex-wrap flex-sm-nowrap mb-3 gap-4">
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
@@ -338,7 +340,7 @@ Un avatar con testo conterrà uno \`<span>\` per soli screen reader con il nome 
         size: 'xxl',
       })}
     </div>
-    <div class="d-flex align-items-center justify-content-around flex-wrap flex-sm-nowrap mb-3">
+    <div class="d-flex align-items-center justify-content-around flex-wrap flex-sm-nowrap mb-3 gap-4">
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
@@ -376,7 +378,7 @@ Un avatar con testo conterrà uno \`<span>\` per soli screen reader con il nome 
         size: 'xxl',
       })}
     </div>
-    <div class="d-flex align-items-center justify-content-around flex-wrap flex-sm-nowrap">
+    <div class="d-flex align-items-center justify-content-around flex-wrap flex-sm-nowrap gap-4">
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
@@ -442,40 +444,40 @@ Per gli avatar con icona inserire un testo alternativo: \`<span class="visually-
     },
   },
   render: () => html`
-    <div class="d-flex align-items-center justify-content-around flex-wrap flex-sm-nowrap">
+    <div class="d-flex align-items-center justify-content-around flex-wrap flex-sm-nowrap gap-4">
       ${renderComponent({
         type: 'icon',
-        icon: 'search',
+        icon: 'it-search',
         avatarTitle: 'Cerca',
         size: 'xs',
       })}
       ${renderComponent({
         type: 'icon',
-        icon: 'search',
+        icon: 'it-search',
         avatarTitle: 'Cerca',
         size: 'sm',
       })}
       ${renderComponent({
         type: 'icon',
-        icon: 'search',
+        icon: 'it-search',
         avatarTitle: 'Cerca',
         size: 'md',
       })}
       ${renderComponent({
         type: 'icon',
-        icon: 'search',
+        icon: 'it-search',
         avatarTitle: 'Cerca',
         size: 'lg',
       })}
       ${renderComponent({
         type: 'icon',
-        icon: 'search',
+        icon: 'it-search',
         avatarTitle: 'Cerca',
         size: 'xl',
       })}
       ${renderComponent({
         type: 'icon',
-        icon: 'search',
+        icon: 'it-search',
         avatarTitle: 'Cerca',
         size: 'xxl',
       })}
@@ -542,70 +544,151 @@ export const ComportamentoPresenzaUtente: Story = {
     docs: {
       description: {
         story: `
-Inserendo un \`div\` con classe \`.avatar-presence\` all'interno dell'Avatar si otterrà un indicatore dello stato di presenza dell'utente:
+L'avatar supporta indicatori di presenza dell'utente attraverso l'attributo \`presence\`:
 
 - **Lo stato attivo** si ottiene aggiungendo l'attributo \`presence="active"\`
 - **Lo stato non disponibile** si ottiene aggiungendo l'attributo \`presence="busy"\`
 - **Lo stato invisibile** si ottiene aggiungendo l'attributo \`presence="hidden"\`
 
-Inserire uno \`<span>\` riservato agli screen reader con indicazione della presenza dell'utente: \`<span class="visually-hidden">Presenza: (stato presenza)</span>\`.
+## Personalizzazione con Slot
+
+È possibile personalizzare completamente l'indicatore di presenza usando il **\`slot="presence"\`**:
+
+\`\`\`html
+<it-avatar text="Nome Utente" presence="active">
+  <span slot="presence" class="custom-presence-indicator">
+    <it-icon name="it-check"></it-icon>
+    <span class="visually-hidden">Utente online</span>
+  </span>
+</it-avatar>
+\`\`\`
+
+\`\`\`css
+.custom-presence-indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  /* altri stili personalizzati */
+}
+\`\`\`
+
+Le traduzioni sono gestite automaticamente tramite il sistema @italia/i18n.
 `,
       },
     },
   },
   render: () => html`
-    <div class="d-flex align-items-center gap-4 flex-wrap">
-      <div class="text-center">
-        ${renderComponent({
-          type: 'image',
-          src: 'https://randomuser.me/api/portraits/men/43.jpg',
-          alt: 'Mario Rossi',
-          presence: 'active',
-          size: 'lg',
-        })}
-        <div class="mt-2"><small>Attivo</small></div>
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+      <!-- Esempi standard -->
+      <div>
+        <h4>Presenza standard</h4>
+        <div class="d-flex align-items-center gap-4 flex-wrap">
+          <div class="text-center">
+            ${renderComponent({
+              type: 'image',
+              src: 'https://randomuser.me/api/portraits/men/43.jpg',
+              alt: 'Mario Rossi',
+              presence: 'active',
+              size: 'lg',
+            })}
+            <div class="mt-2"><small>Attivo</small></div>
+          </div>
+          <div class="text-center">
+            ${renderComponent({
+              type: 'image',
+              src: 'https://randomuser.me/api/portraits/women/41.jpg',
+              alt: 'Luisa Neri',
+              presence: 'busy',
+              size: 'lg',
+            })}
+            <div class="mt-2"><small>Non disponibile</small></div>
+          </div>
+          <div class="text-center">
+            ${renderComponent({
+              type: 'image',
+              src: 'https://randomuser.me/api/portraits/men/33.jpg',
+              alt: 'Gioacchino Romani',
+              presence: 'hidden',
+              size: 'lg',
+            })}
+            <div class="mt-2"><small>Invisibile</small></div>
+          </div>
+        </div>
       </div>
-      <div class="text-center">
-        ${renderComponent({
-          type: 'image',
-          src: 'https://randomuser.me/api/portraits/women/41.jpg',
-          alt: 'Luisa Neri',
-          presence: 'busy',
-          size: 'lg',
-        })}
-        <div class="mt-2"><small>Non disponibile</small></div>
-      </div>
-      <div class="text-center">
-        ${renderComponent({
-          type: 'image',
-          src: 'https://randomuser.me/api/portraits/men/33.jpg',
-          alt: 'Gioacchino Romani',
-          presence: 'hidden',
-          size: 'lg',
-        })}
-        <div class="mt-2"><small>Invisibile</small></div>
-      </div>
-      <div class="text-center">
-        ${renderComponent({
-          type: 'text',
-          text: 'Ludovica Galli',
-          color: 'primary',
-          presence: 'busy',
-          size: 'lg',
-        })}
-        <div class="mt-2"><small>Testo + Non disponibile</small></div>
-      </div>
-      <div class="text-center">
-        ${renderComponent({
-          type: 'icon',
-          icon: 'search',
-          avatarTitle: 'Cerca',
-          presence: 'active',
-          size: 'lg',
-        })}
-        <div class="mt-2"><small>Icona + Attivo</small></div>
+
+      <!-- Esempi con slot personalizzati -->
+      <div>
+        <h4>Presenza personalizzata con slot</h4>
+        <div class="d-flex align-items-center gap-4 flex-wrap">
+          <div class="text-center">
+            <it-avatar type="text" text="Marco Bianchi" color="primary" presence="active" size="lg">
+              <span slot="presence" class="custom-presence custom-presence-success">
+                <it-icon name="it-check" size="xs" color="white"></it-icon>
+                <span class="visually-hidden">Utente online e disponibile</span>
+              </span>
+            </it-avatar>
+            <div class="mt-2"><small>Con icona check</small></div>
+          </div>
+
+          <div class="text-center">
+            <it-avatar type="text" text="Sara Verdi" color="secondary" presence="busy" size="lg">
+              <span slot="presence" class="custom-presence custom-presence-danger">
+                !
+                <span class="visually-hidden">Utente occupato, non disturbare</span>
+              </span>
+            </it-avatar>
+            <div class="mt-2"><small>Con testo custom</small></div>
+          </div>
+
+          <div class="text-center">
+            <it-avatar
+              src="https://randomuser.me/api/portraits/women/32.jpg"
+              alt="Anna Rossi"
+              presence="hidden"
+              size="lg"
+            >
+              <span slot="presence" class="custom-presence custom-presence-muted">
+                <it-icon name="it-minus" size="xs" color="white"></it-icon>
+                <span class="visually-hidden">Utente invisibile</span>
+              </span>
+            </it-avatar>
+            <div class="mt-2"><small>Con icona minus</small></div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <style>
+      /* Esempi di classi CSS per personalizzare gli slot presence */
+      .custom-presence {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        border: 2px solid white;
+        border-radius: 50%;
+      }
+
+      .custom-presence-success {
+        background: #28a745;
+      }
+
+      .custom-presence-danger {
+        background: #dc3545;
+        font-size: 10px;
+        font-weight: bold;
+        color: white;
+      }
+
+      .custom-presence-muted {
+        background: #6c757d;
+        opacity: 0.7;
+      }
+    </style>
   `,
 };
 
@@ -618,72 +701,157 @@ export const ComportamentoStatusUtente: Story = {
     docs: {
       description: {
         story: `
-Inserendo un \`div\` con classe \`.avatar-status\` all'interno dell'Avatar si otterrà un indicatore dello stato dell'account utente:
+L'avatar supporta indicatori di stato dell'account attraverso l'attributo \`status\`:
 
 - **Lo stato approvato** si ottiene aggiungendo l'attributo \`status="approved"\`
 - **Lo stato respinto** si ottiene aggiungendo l'attributo \`status="declined"\`
 - **Lo stato notifica** si ottiene aggiungendo l'attributo \`status="notify"\`
 
-#### Accessibilità dello stato
+## Personalizzazione con Slot
 
-Inserire uno \`<span>\` riservato agli screen reader con indicazione dello stato dell'utenza: \`<span class="visually-hidden">Stato: (stato utenza)</span>\`
+È possibile personalizzare completamente l'indicatore di stato usando il **\`slot="status"\`**:
+
+\`\`\`html
+<it-avatar text="Nome Utente" status="approved">
+  <span slot="status" class="custom-status-indicator">
+    <it-icon name="it-check-circle"></it-icon>
+    <span class="visually-hidden">Account verificato</span>
+  </span>
+</it-avatar>
+\`\`\`
+
+\`\`\`css
+.custom-status-indicator {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  /* altri stili personalizzati */
+}
+\`\`\`
+
+#### Accessibilità
+
+Le traduzioni sono gestite automaticamente tramite il sistema @italia/i18n. Ricordarsi sempre di includere testo per screen reader con \`<span class="visually-hidden">\`.
 `,
       },
     },
   },
   render: () => html`
-    <div class="d-flex align-items-center gap-4 flex-wrap">
-      <div class="text-center">
-        ${renderComponent({
-          type: 'image',
-          src: 'https://randomuser.me/api/portraits/men/43.jpg',
-          alt: 'Mario Rossi',
-          status: 'approved',
-          size: 'lg',
-        })}
-        <div class="mt-2"><small>Approvato</small></div>
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+      <!-- Esempi standard -->
+      <div>
+        <h4>Status standard</h4>
+        <div class="d-flex align-items-center gap-4 flex-wrap">
+          <div class="text-center">
+            ${renderComponent({
+              type: 'image',
+              src: 'https://randomuser.me/api/portraits/men/43.jpg',
+              alt: 'Mario Rossi',
+              status: 'approved',
+              size: 'lg',
+            })}
+            <div class="mt-2"><small>Approvato</small></div>
+          </div>
+          <div class="text-center">
+            ${renderComponent({
+              type: 'image',
+              src: 'https://randomuser.me/api/portraits/women/41.jpg',
+              alt: 'Luisa Neri',
+              status: 'declined',
+              size: 'lg',
+            })}
+            <div class="mt-2"><small>Respinto</small></div>
+          </div>
+          <div class="text-center">
+            ${renderComponent({
+              type: 'image',
+              src: 'https://randomuser.me/api/portraits/men/33.jpg',
+              alt: 'Gioacchino Romani',
+              status: 'notify',
+              size: 'lg',
+            })}
+            <div class="mt-2"><small>Notifica</small></div>
+          </div>
+        </div>
       </div>
-      <div class="text-center">
-        ${renderComponent({
-          type: 'image',
-          src: 'https://randomuser.me/api/portraits/women/41.jpg',
-          alt: 'Luisa Neri',
-          status: 'declined',
-          size: 'lg',
-        })}
-        <div class="mt-2"><small>Respinto</small></div>
-      </div>
-      <div class="text-center">
-        ${renderComponent({
-          type: 'image',
-          src: 'https://randomuser.me/api/portraits/men/33.jpg',
-          alt: 'Gioacchino Romani',
-          status: 'notify',
-          size: 'lg',
-        })}
-        <div class="mt-2"><small>Notifica</small></div>
-      </div>
-      <div class="text-center">
-        ${renderComponent({
-          type: 'text',
-          text: 'Ludovica Galli',
-          color: 'secondary',
-          status: 'approved',
-          size: 'lg',
-        })}
-        <div class="mt-2"><small>Testo + Approvato</small></div>
-      </div>
-      <div class="text-center">
-        ${renderComponent({
-          type: 'icon',
-          icon: 'search',
-          avatarTitle: 'Cerca',
-          status: 'declined',
-          size: 'lg',
-        })}
-        <div class="mt-2"><small>Icona + Respinto</small></div>
+
+      <!-- Esempi con slot personalizzati -->
+      <div>
+        <h4>Status personalizzato con slot</h4>
+        <div class="d-flex align-items-center gap-4 flex-wrap">
+          <div class="text-center">
+            <it-avatar type="text" text="Luigi Neri" color="primary" status="approved" size="lg">
+              <span slot="status" class="custom-status custom-status-success">
+                <it-icon name="it-check-circle" size="xs" color="white"></it-icon>
+                <span class="visually-hidden">Account verificato e approvato</span>
+              </span>
+            </it-avatar>
+            <div class="mt-2"><small>Verificato</small></div>
+          </div>
+
+          <div class="text-center">
+            <it-avatar type="text" text="Carla Blu" color="secondary" status="declined" size="lg">
+              <span slot="status" class="custom-status custom-status-danger">
+                <it-icon name="it-close" size="xs" color="white"></it-icon>
+                <span class="visually-hidden">Account sospeso o respinto</span>
+              </span>
+            </it-avatar>
+            <div class="mt-2"><small>Sospeso</small></div>
+          </div>
+
+          <div class="text-center">
+            <it-avatar
+              src="https://randomuser.me/api/portraits/men/25.jpg"
+              alt="Paolo Gialli"
+              status="notify"
+              size="lg"
+            >
+              <span slot="status" class="custom-status custom-status-notify">
+                <span class="notification-dot"></span>
+                <span class="visually-hidden">Nuove notifiche disponibili</span>
+              </span>
+            </it-avatar>
+            <div class="mt-2"><small>Notifiche</small></div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <style>
+      /* Esempi di classi CSS per personalizzare gli slot status */
+      .custom-status {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        width: 24px;
+        height: 24px;
+        border: 2px solid white;
+        border-radius: 50%;
+      }
+
+      .custom-status-success {
+        background: #28a745;
+      }
+
+      .custom-status-danger {
+        background: #dc3545;
+      }
+
+      .custom-status-notify {
+        background: #17a2b8;
+        padding: 2px;
+      }
+
+      .notification-dot {
+        width: 8px;
+        height: 8px;
+        background: white;
+        border-radius: 50%;
+      }
+    </style>
   `,
 };
 
@@ -733,6 +901,289 @@ Per il nome è possibile utilizzare i tag \`h3\` o \`h4\` tramite l'attributo \`
         extraText: '12 MAG 2025',
         extraTextTag: 'time',
       })}
+    </div>
+  `,
+};
+
+export const GruppiAvatarListe: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: `
+## Gruppi Avatar
+
+Per organizzare più avatar in una lista verticale, utilizzare il componente \`it-avatar-group\` con \`direction="vertical"\`.
+
+### Comportamenti
+
+- **vertical** (default): Lista semplice verticale
+- **horizontal**: Layout sovrapposto orizzontale
+
+Il componente propaga automaticamente la dimensione agli avatar contenuti.
+`,
+      },
+    },
+  },
+  render: () => html`
+    <div style="display: flex; gap: 3rem; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 300px;">
+        <h4>Lista Verticale - Dimensione SM</h4>
+        <it-avatar-group size="sm" direction="vertical">
+          <div class="link-list-wrapper">
+            <ul class="link-list">
+              <li>
+                <a class="list-item" href="#">
+                  ${renderComponent({ src: 'https://randomuser.me/api/portraits/men/43.jpg', alt: 'Mario Rossi' })}
+                  <span>Mario Rossi</span>
+                </a>
+              </li>
+              <li>
+                <a class="list-item" href="#">
+                  ${renderComponent({ src: 'https://randomuser.me/api/portraits/women/44.jpg', alt: 'Anna Verdi' })}
+                  <span>Anna Verdi</span>
+                </a>
+              </li>
+              <li>
+                <div class="list-item">
+                  ${renderComponent({ text: 'Sara Ghione', color: 'primary' })}
+                  <span>Sara Ghione</span>
+                </div>
+              </li>
+              <li>
+                <div class="list-item">
+                  ${renderComponent({ icon: 'it-user', avatarTitle: 'Utente generico' })}
+                  <span>Antonio Esposito</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </it-avatar-group>
+      </div>
+
+      <div style="flex: 1; min-width: 300px;">
+        <h4>Lista Verticale - Dimensione MD</h4>
+        <it-avatar-group size="md" direction="vertical">
+          <div class="link-list-wrapper">
+            <ul class="link-list">
+              <li>
+                <a class="list-item" href="#">
+                  ${renderComponent({ src: 'https://randomuser.me/api/portraits/men/32.jpg', alt: 'Luca Bianchi' })}
+                  <span>Luca Bianchi</span>
+                </a>
+              </li>
+              <li>
+                <a class="list-item" href="#">
+                  ${renderComponent({ src: 'https://randomuser.me/api/portraits/women/28.jpg', alt: 'Elena Rossi' })}
+                  <span>Elena Rossi</span>
+                </a>
+              </li>
+              <li>
+                <div class="list-item">
+                  ${renderComponent({ text: 'Marco Neri', color: 'secondary' })}
+                  <span>Marco Neri</span>
+                </div>
+              </li>
+              <li>
+                <div class="list-item">
+                  ${renderComponent({ icon: 'it-search', avatarTitle: 'Cerca' })}
+                  <span>Cerca utenti</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </it-avatar-group>
+      </div>
+    </div>
+  `,
+};
+
+export const AvatarSovrapposti: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: `
+## Avatar Sovrapposti
+
+Per creare un gruppo di avatar sovrapposti, utilizzare \`it-avatar-group\` con \`direction="horizontal"\`.
+
+
+### Dropdown per utenti aggiuntivi
+
+È possibile inserire un dropdown \`it-dropdown\` come ultimo elemento per racchiudere ulteriori avatar:
+
+\`\`\`html
+<ul class="avatar-group-stacked">
+  <li><it-avatar src="..." alt="Utente 1"></it-avatar></li>
+  <li><it-avatar src="..." alt="Utente 2"></it-avatar></li>
+  <li>
+    <it-dropdown label="+4">
+
+      <ul slot="menu" class="dropdown-menu">
+        <li><a class="dropdown-item list-item" href="#">
+          <it-avatar src="..." alt="Utente 3"></it-avatar>
+          <span>Nome Utente</span>
+        </a></li>
+      </ul>
+    </it-dropdown>
+  </li>
+</ul>
+\`\`\`
+`,
+      },
+    },
+  },
+  render: () => html`
+    <div style="display: flex; flex-direction: column; gap: 3rem;">
+      <div>
+        <h4>Avatar Sovrapposti - Dimensione SM</h4>
+        <it-avatar-group size="sm" direction="horizontal">
+          <div class="link-list-wrapper">
+            <ul class="avatar-group-stacked">
+              <li>
+                <it-avatar src="https://randomuser.me/api/portraits/women/44.jpg" alt="Arianna Rossi"></it-avatar>
+              </li>
+              <li><it-avatar src="https://randomuser.me/api/portraits/men/43.jpg" alt="Giulio Neri"></it-avatar></li>
+              <li>
+                <it-avatar src="https://randomuser.me/api/portraits/women/41.jpg" alt="Andrea Gallo"></it-avatar>
+              </li>
+              <li><it-avatar text="Tommaso Sordi" color="primary"></it-avatar></li>
+              <li><it-avatar text="Barbara Tosi" color="secondary"></it-avatar></li>
+              <li><it-avatar icon="it-user" avatar-title="Altri utenti"></it-avatar></li>
+            </ul>
+          </div>
+        </it-avatar-group>
+        <p style="margin-top: 0.5rem; font-size: 14px; color: #666;">
+          <a href="#" style="color: #0066cc; text-decoration: none;">Visualizza altri 8 utenti →</a>
+        </p>
+      </div>
+
+      <div>
+        <h4>Avatar Sovrapposti - Dimensione MD</h4>
+        <it-avatar-group size="md" direction="horizontal">
+          <div class="link-list-wrapper">
+            <ul class="avatar-group-stacked">
+              <li>
+                <it-avatar src="https://randomuser.me/api/portraits/women/44.jpg" alt="Arianna Rossi"></it-avatar>
+              </li>
+              <li><it-avatar src="https://randomuser.me/api/portraits/men/43.jpg" alt="Giulio Neri"></it-avatar></li>
+              <li><it-avatar text="Angelica Mola" color="primary"></it-avatar></li>
+              <li><it-avatar text="Sandro Penna" color="secondary"></it-avatar></li>
+              <li>
+                <it-dropdown label="+4">
+                    <it-dropdown-item href="#">
+                        <it-avatar
+                          src="https://randomuser.me/api/portraits/men/22.jpg"
+                          alt="Roberto Milano"
+                        ></it-avatar>
+                        <span>Roberto Milano</span>
+                      </a>
+                    </it-dropdown-item>
+                    <it-dropdown-item href="#">
+                        <it-avatar text="Giuseppe Verde" color="primary"></it-avatar>
+                        <span>Giuseppe Verde</span>
+                      </a>
+                    </it-dropdown-item>
+                    <it-dropdown-item href="#">
+                        <it-avatar text="Laura Blu" color="secondary"></it-avatar>
+                        <span>Laura Blu</span>
+                      </a>
+                    </it-dropdown-item>
+                    <it-dropdown-item href="#">
+                        <it-avatar icon="it-user" avatar-title="Altri utenti"></it-avatar>
+                        <span>Altri utenti...</span>
+                      </a>
+                    </it-dropdown-item>
+                </it-dropdown>
+              </li>
+            </ul>
+          </div>
+        </it-avatar-group>
+        <p style="margin-top: 0.75rem; font-size: 16px; color: #666;">
+          Clicca su "+4" per visualizzare gli utenti rimanenti
+        </p>
+      </div>
+    </div>
+  `,
+};
+
+export const VariantiDimensione: Story = {
+  name: 'Varianti di dimensione',
+  argTypes: {
+    size: { table: { disable: true } },
+    type: { table: { disable: true } },
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Sono disponibili sei dimensioni diverse per l'avatar: \`xs\`, \`sm\`, \`md\` (default), \`lg\`, \`xl\`, \`xxl\`.
+
+Ogni dimensione mantiene le proporzioni corrette per tutti i tipi di avatar (immagine, testo, icona).
+`,
+      },
+    },
+  },
+  render: () => html`
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+      <!-- Avatar con immagine -->
+      <div>
+        <h4 style="margin-bottom: 1rem;">Avatar con immagine</h4>
+        <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+          ${AVATAR_SIZES.map(
+            (size) => html`
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                ${renderComponent({
+                  type: 'image',
+                  src: 'https://randomuser.me/api/portraits/men/43.jpg',
+                  alt: 'Mario Rossi',
+                  size,
+                })}
+                <small style="font-size: 12px; color: #666;">${size}</small>
+              </div>
+            `,
+          )}
+        </div>
+      </div>
+
+      <!-- Avatar con testo -->
+      <div>
+        <h4 style="margin-bottom: 1rem;">Avatar con testo</h4>
+        <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+          ${AVATAR_SIZES.map(
+            (size) => html`
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                ${renderComponent({
+                  type: 'text',
+                  text: 'Mario Rossi',
+                  color: 'primary',
+                  size,
+                })}
+                <small style="font-size: 12px; color: #666;">${size}</small>
+              </div>
+            `,
+          )}
+        </div>
+      </div>
+
+      <!-- Avatar con icona -->
+      <div>
+        <h4 style="margin-bottom: 1rem;">Avatar con icona</h4>
+        <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+          ${AVATAR_SIZES.map(
+            (size) => html`
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                ${renderComponent({
+                  type: 'icon',
+                  icon: 'search',
+                  avatarTitle: 'Cerca',
+                  size,
+                })}
+                <small style="font-size: 12px; color: #666;">${size}</small>
+              </div>
+            `,
+          )}
+        </div>
+      </div>
     </div>
   `,
 };

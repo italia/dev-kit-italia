@@ -152,6 +152,9 @@ importers:
       '@italia/globals':
         specifier: workspace:*
         version: link:../globals
+      '@italia/i18n':
+        specifier: workspace:*
+        version: link:../i18n
       '@italia/icon':
         specifier: workspace:*
         version: link:../icon
@@ -165,6 +168,9 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.4
+      '@italia/dropdown':
+        specifier: workspace:*
+        version: link:../dropdown
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config
@@ -272,6 +278,9 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.4
+      '@italia/avatar':
+        specifier: workspace:^
+        version: link:../avatar
       '@italia/button':
         specifier: workspace:^
         version: link:../button

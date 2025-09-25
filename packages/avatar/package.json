@@ -44,11 +44,13 @@
   },
   "dependencies": {
     "@italia/globals": "workspace:*",
+    "@italia/i18n": "workspace:*",
     "@italia/icon": "workspace:*",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:"
   },
   "devDependencies": {
+    "@italia/dropdown": "workspace:*",
     "@custom-elements-manifest/analyzer": "^0.10.3",
     "@italia/test-config": "workspace:^",
     "@italia/typescript-config": "workspace:^",

@@ -1,0 +1,42 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/components/avatar';
+@import 'bootstrap-italia/src/scss/components/linklist';
+
+:host {
+  display: block;
+}
+
+:host[direction='horizontal'] {
+  @extend .avatar-group-stacked;
+
+  it-avatar {
+    width: auto;
+    height: auto;
+  }
+}
+
+// Selettori semplici per gli elementi slottati
+::slotted(ul) {
+  padding: 0 !important;
+  list-style-type: none;
+  margin: 0;
+}
+
+// Per avatar-group-stacked (orizzontale)
+::slotted(ul.avatar-group-stacked) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  li {
+    line-height: 0;
+    display: inline-flex;
+
+    &:not(:first-child) {
+      margin-left: -6px;
+    }
+  }
+}

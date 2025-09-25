@@ -6,7 +6,10 @@ export type AvatarPresence = 'active' | 'busy' | 'hidden' | '';
 
 export type AvatarStatus = 'approved' | 'declined' | 'notify' | '';
 
-export type AvatarType = 'image' | 'text' | 'icon';
+export type AvatarType = 'image' | 'text' | 'icon' | '';
+
+export type AvatarGroupSize = 'sm' | 'md';
+export type AvatarGroupDirection = 'vertical' | 'horizontal';
 
 export interface AvatarProps {
   size?: AvatarSize;

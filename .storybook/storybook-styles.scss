@@ -9,7 +9,7 @@
 }
 
 .sbdocs-wrapper {
-  justify-content: start!important;
+  justify-content: start !important;
 }
 
 .sbdocs,
@@ -24,11 +24,12 @@
   font-family: var(--bs-font-sans-serif); /* "Titillium Web", Geneva, Tahoma, sans-serif */
 }
 
-.sbdocs description, p.lead {
-  font-size: var(--bs-lead-font-size)!important; /* 1.25rem mobile, 1.5rem desktop */
-  font-weight: var(--bs-lead-font-weight)!important;
-  line-height: var(--bs-lead-line-height)!important;
-  margin-bottom: 2rem!important;
+.sbdocs description,
+p.lead {
+  font-size: var(--bs-lead-font-size) !important; /* 1.25rem mobile, 1.5rem desktop */
+  font-weight: var(--bs-lead-font-weight) !important;
+  line-height: var(--bs-lead-line-height) !important;
+  margin-bottom: 2rem !important;
 }
 
 /* Tipografia Bootstrap Italia usando variabili CSS native */
@@ -80,7 +81,7 @@
 }
 
 .sbdocs p,
-.sbdocs li:not(.toc-list-item) {
+.sbdocs:not(.sbdocs-preview) li:not(.toc-list-item) {
   font-size: var(--bs-body-font-size); /* Mobile: 16px, Desktop: 18px */
   line-height: var(--bs-body-line-height); /* 150% */
   font-weight: var(--bs-body-font-weight); /* 400 */
@@ -91,7 +92,7 @@
   max-width: 75ch;
 }
 
-.sbdocs li.toc-list-item {
+.sbdocs:not(.sbdocs-preview) li.toc-list-item {
   font-size: 0.85rem;
   line-height: 1.2;
 }
@@ -99,7 +100,7 @@
 .docblock-source.sb-unstyled {
   margin-top: 0;
   margin-bottom: 0;
-  
+
   pre.prismjs {
     font-size: 16px;
     line-height: 1.55;
@@ -115,7 +116,7 @@ div:has(.docblock-argstable) {
 }
 
 table.docblock-argstable {
-  min-width: 960px
+  min-width: 960px;
 }
 
 .flex {
@@ -130,7 +131,7 @@ table.docblock-argstable {
   ul {
     font-size: 0.85rem;
     line-height: 1.2;
-    
+
     li.toc-list-item {
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;

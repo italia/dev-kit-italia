@@ -35,8 +35,9 @@ export class ItChip extends BaseComponent {
   @queryAssignedElements({ slot: 'icon', flatten: true })
   icon!: ItIcon[];
 
-  private getAvatarClass() {
-    return this.composeClass('avatar', this.size === 'lg' ? 'size-sm' : 'size-xs');
+  private getAvatarSize() {
+    // Per chip lg usa avatar sm, per gli altri usa avatar xs
+    return this.size === 'lg' ? 'sm' : 'xs';
   }
 
   private updateIcon() {
@@ -98,7 +99,7 @@ export class ItChip extends BaseComponent {
       ${this.a11yDescription ? html`<span class="visually-hidden">${this.a11yDescription}</span>` : nothing}
       <slot name="icon"></slot>
       ${this.avatar
-        ? html`<div class="${this.getAvatarClass()}"><img src=${this.avatar} alt="${this.avatarAlt}" /></div>`
+        ? html`<it-avatar size="${this.getAvatarSize()}" src="${this.avatar}" alt="${this.avatarAlt}"></it-avatar>`
         : null}
       <span class="chip-label">${this.label}</span>
       <slot name="dismiss-button"></slot>

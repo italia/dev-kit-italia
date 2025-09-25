@@ -51,6 +51,7 @@
     "@custom-elements-manifest/analyzer": "^0.10.3",
     "@italia/test-config": "workspace:^",
     "@italia/typescript-config": "workspace:^",
+    "@italia/avatar": "workspace:^",
     "@italia/button": "workspace:^",
     "@italia/icon": "workspace:^",
     "@open-wc/testing": "catalog:",

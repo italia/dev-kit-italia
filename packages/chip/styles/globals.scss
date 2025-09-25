@@ -1,26 +1,85 @@
+// Anti-FOUC styles for it-chip component
+// SOLO le cose essenziali: dimensioni stabili e shimmer di caricamento
+
+// Dimensioni base per evitare layout shift
 it-chip {
   display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  
+  // Dimensioni default per evitare collasso (size="sm" default)
+  height: 32px;
+  min-width: 60px;
+  padding: 0 12px;
+  
+  // Shimmer di caricamento (solo quando non definito)
+  &:not(:defined) {
+    background-color: #e9ecef;
+    border-radius: 16px;
+    background-image: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255,255,255,0.4) 50%, 
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: chip-fouc-shimmer 1.5s infinite;
+  }
 }
 
-it-chip it-button::part(button) {
-  padding: 0;
-  // border: none;
-  border-radius: 50%;
-  background: transparent;
-  cursor: pointer !important;
-  line-height: 1;
-  --bs-btn-disabled-opacity: 1;
+// Varianti di dimensione (solo le dimensioni, nient'altro)
+it-chip[size="sm"] { 
+  height: 32px; 
+  min-width: 60px;
+  padding: 0 12px;
 }
 
-it-chip it-button it-icon::part(icon) {
-  fill: var(--bs-chip-icon-color);
+it-chip[size="lg"] { 
+  height: 40px; 
+  min-width: 80px;
+  padding: 0 16px;
 }
 
-it-chip a:hover it-button it-icon::part(icon) {
-  fill: var(--bs-chip-text-color);
+// Rimuovi animazione una volta definito il componente
+it-chip:defined {
+  animation: none !important;
+  background-image: none !important;
 }
 
-it-chip it-button it-icon,
-it-chip it-button {
-  display: inline-flex;
+// Stili per i componenti interni post-caricamento
+it-chip:defined {
+  it-button::part(button) {
+    padding: 0;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer !important;
+    line-height: 1;
+    --bs-btn-disabled-opacity: 1;
+  }
+
+  it-button it-icon::part(icon) {
+    fill: var(--bs-chip-icon-color);
+  }
+
+  &:hover it-button it-icon::part(icon) {
+    fill: var(--bs-chip-text-color);
+  }
+
+  it-button it-icon,
+  it-button {
+    display: inline-flex;
+  }
+}
+
+// Animazione shimmer
+@keyframes chip-fouc-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+// Rispetta le preferenze utente
+@media (prefers-reduced-motion: reduce) {
+  it-chip:not(:defined) {
+    animation: none;
+    background-image: none;
+  }
 }

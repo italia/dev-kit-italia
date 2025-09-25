@@ -7,179 +7,28 @@
 @import 'bootstrap-italia/src/scss/components/avatar';
 
 :host {
-  display: inline-block;
+  display: inline-flex;
+  a.avatar,
+  a .avatar {
+    text-decoration: none;
+  }
+  a.avatar:hover,
+  a .avatar:hover {
+    text-decoration: none;
+  }
+}
+it-icon::part(icon) {
+  width: var(--bs-avatar-icon-size);
+  height: var(--bs-avatar-icon-size);
+}
+it-icon {
+  display: inline-flex;
 }
 
-// .avatar {
-//   position: relative;
-//   display: inline-block;
-//   width: var(--it-avatar-size, 40px);
-//   height: var(--it-avatar-size, 40px);
-//   border-radius: 50%;
-//   overflow: hidden;
-//   background-color: var(--it-gray-200, #f5f5f5);
-//   color: var(--it-gray-700, #5a6772);
-//   font-weight: 600;
-//   text-align: center;
-//   line-height: var(--it-avatar-size, 40px);
-//   vertical-align: middle;
-//   text-decoration: none;
-//   font-size: var(--it-avatar-font-size, 14px);
-
-//   img {
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//   }
-
-//   // Size variants
-//   &.size-xs {
-//     --it-avatar-size: 24px;
-//     --it-avatar-font-size: 10px;
-//   }
-
-//   &.size-sm {
-//     --it-avatar-size: 32px;
-//     --it-avatar-font-size: 12px;
-//   }
-
-//   &.size-md {
-//     --it-avatar-size: 40px;
-//     --it-avatar-font-size: 14px;
-//   }
-
-//   &.size-lg {
-//     --it-avatar-size: 48px;
-//     --it-avatar-font-size: 16px;
-//   }
-
-//   &.size-xl {
-//     --it-avatar-size: 56px;
-//     --it-avatar-font-size: 18px;
-//   }
-
-//   &.size-xxl {
-//     --it-avatar-size: 64px;
-//     --it-avatar-font-size: 20px;
-//   }
-
-//   // Color variants
-//   &.avatar-primary {
-//     background-color: var(--it-primary, #0066cc);
-//     color: white;
-//   }
-
-//   &.avatar-secondary {
-//     background-color: var(--it-secondary, #5a6772);
-//     color: white;
-//   }
-// }
-
-// .avatar-presence {
-//   position: absolute;
-//   bottom: 0;
-//   right: 0;
-//   width: 12px;
-//   height: 12px;
-//   border: 2px solid white;
-//   border-radius: 50%;
-//   background-color: var(--it-gray-400, #a0a6af);
-
-//   &.active {
-//     background-color: var(--it-success, #008758);
-//   }
-
-//   &.busy {
-//     background-color: var(--it-warning, #a66200);
-//   }
-
-//   &.hidden {
-//     background-color: var(--it-gray-400, #a0a6af);
-//   }
-// }
-
-// .avatar-status {
-//   position: absolute;
-//   top: -2px;
-//   right: -2px;
-//   width: 16px;
-//   height: 16px;
-//   border: 2px solid white;
-//   border-radius: 50%;
-//   background-color: var(--it-gray-400, #a0a6af);
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   font-size: 8px;
-
-//   &.approved {
-//     background-color: var(--it-success, #008758);
-
-//     &::after {
-//       content: '✓';
-//       color: white;
-//     }
-//   }
-
-//   &.declined {
-//     background-color: var(--it-danger, #d73847);
-
-//     &::after {
-//       content: '✗';
-//       color: white;
-//     }
-//   }
-
-//   &.notify {
-//     background-color: var(--it-warning, #a66200);
-//     animation: pulse 2s infinite;
-//   }
-// }
-
-// .avatar-wrapper {
-//   display: flex;
-//   align-items: center;
-//   gap: 12px;
-
-//   &.avatar-extra-text {
-//     .extra-text {
-//       h3,
-//       h4 {
-//         margin: 0 0 4px 0;
-//         font-size: 16px;
-//         font-weight: 600;
-//         color: var(--it-gray-900, #33383e);
-//       }
-
-//       p,
-//       time {
-//         margin: 0;
-//         font-size: 14px;
-//         color: var(--it-gray-700, #5a6772);
-//       }
-//     }
-//   }
-// }
-
-// // Screen reader only text
-// .visually-hidden {
-//   position: absolute !important;
-//   width: 1px !important;
-//   height: 1px !important;
-//   padding: 0 !important;
-//   margin: -1px !important;
-//   overflow: hidden !important;
-//   clip: rect(0, 0, 0, 0) !important;
-//   white-space: nowrap !important;
-//   border: 0 !important;
-// }
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
+it-icon.presence-icon::part(icon),
+it-icon.status-icon::part(icon) {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2px;
+  stroke: var(--bs-icon-inverse);
 }
