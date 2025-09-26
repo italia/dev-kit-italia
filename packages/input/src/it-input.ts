@@ -397,7 +397,8 @@ export class ItInput extends FormControl {
 
     const showValidation = this._touched || this.customValidation;
     const validityMessage = (showValidation ? this.validationMessage : '') ?? '';
-    const invalid = validityMessage?.length > 0 || (!this.customValidation && !this.inputElement?.checkValidity());
+    const invalid =
+      validityMessage?.length > 0 || (!this.customValidation && this.inputElement?.checkValidity() === false);
 
     const validityMessageRender = html`<div
       role="alert"
