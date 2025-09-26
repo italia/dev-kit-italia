@@ -301,7 +301,7 @@ export class ItInput extends FormControl {
       this.plaintext ? 'form-control-plaintext' : 'form-control',
       this.size ? `form-control-${this.size}` : '',
       invalid ? 'is-invalid' : '',
-      !invalid && this._touched ? 'just-validate-success-field' : '',
+      !invalid && this._touched && !this.readonly ? 'just-validate-success-field' : '',
     );
 
     let inputRender;
