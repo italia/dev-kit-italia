@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../../../../packages/icon/dist/it-minimize-BC87wdS6.js"],
-  "sourcesContent": ["// Auto-generated icon module\nconst svg = `<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg version=\"1.1\" id=\"Livello_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n\t viewBox=\"0 0 24 24\" style=\"enable-background:new 0 0 24 24;\" xml:space=\"preserve\">\n<g>\n\t<polygon points=\"3,15.5 8.5,15.5 8.5,21 7.5,21 7.5,16.5 3,16.5 \t\"/>\n\t<polygon points=\"7.5,7.5 3,7.5 3,8.5 8.5,8.5 8.5,3 7.5,3 \t\"/>\n\t<polygon points=\"15.5,21 16.5,21 16.5,16.5 21,16.5 21,15.5 15.5,15.5 \t\"/>\n\t<polygon points=\"16.5,7.5 16.5,3 15.5,3 15.5,8.5 21,8.5 21,7.5 \t\"/>\n</g>\n</svg>\n`;\n\nexport { svg as default };\n//# sourceMappingURL=it-minimize-BC87wdS6.js.map\n"],
-  "mappings": ";;;AACK,IAAC,MAAM;;;;;;;;;;;;",
-  "names": []
-}
