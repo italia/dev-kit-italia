@@ -20,7 +20,7 @@ export class FormControl extends BaseLocalizedComponent {
   inputElement!: HTMLInputElement; // from FormControl
 
   /** The name of the input, submitted as a name/value pair with form data. */
-  @property() // from FormControl
+  @property({ type: String, reflect: true }) // from FormControl
   name = '';
 
   /** The current value of the input, submitted as a name/value pair with form data. */

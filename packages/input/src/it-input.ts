@@ -33,7 +33,7 @@ export class ItInput extends FormControl {
    * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
    * to `text`.
    */
-  @property()
+  @property({ type: String })
   type: InputType = 'text';
 
   /** The input's size. */
@@ -41,7 +41,7 @@ export class ItInput extends FormControl {
   size?: Sizes;
 
   /** The input's label. */
-  @property()
+  @property({ type: String })
   label = '';
 
   /** If you want label to be hidden. */
@@ -49,7 +49,7 @@ export class ItInput extends FormControl {
   labelHidden = false;
 
   /** Placeholder text to show as a hint when the input is empty. */
-  @property()
+  @property({ type: String })
   placeholder = '';
 
   /** The input's help text. */
