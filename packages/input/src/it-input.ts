@@ -24,7 +24,7 @@ export class ItInput extends FormControl {
   static styles = styles;
 
   @state()
-  private _slotIcon: HTMLSlotElement | null = null;
+  private _slotPrepend: HTMLSlotElement | null = null;
 
   @state()
   private _slotAppend: HTMLSlotElement | null = null;
@@ -39,6 +39,10 @@ export class ItInput extends FormControl {
   /** The input's size. */
   @property()
   size?: Sizes;
+
+  /** If you want number-input to be adaptive in width */
+  @property({ type: Boolean })
+  adaptive = false;
 
   /** The input's label. */
   @property({ type: String })
@@ -82,15 +86,15 @@ export class ItInput extends FormControl {
   private _score = 0;
 
   get slotted() {
-    return this._slotIcon || this._slotAppend;
+    return this._slotPrepend || this._slotAppend;
   }
 
   firstUpdated() {
     // this.addFocus(this.inputElement); //NON serve per il momento perche sfruttiamo :focus-visible. Per gli input focus-visible si attiva anche al click perchè è il browser che lo gestisce
-    this._slotIcon = this.querySelector('[slot="icon"]');
+    this._slotPrepend = this.querySelector('[slot="prepend"]');
     this._slotAppend = this.querySelector('[slot="append"]');
 
-    this._slotIcon?.addEventListener('slotchange', () => {
+    this._slotPrepend?.addEventListener('slotchange', () => {
       this.requestUpdate();
     });
 
@@ -284,11 +288,7 @@ export class ItInput extends FormControl {
     return nothing;
   }
 
-  private _renderInput(supportTextId: string) {
-    const showValidation = this._touched || this.customValidation;
-    const validityMessage = (showValidation ? this.validationMessage : '') ?? '';
-    const invalid = showValidation && this.inputElement?.checkValidity() === false;
-
+  private _renderInput(supportTextId: string, invalid: boolean, validityMessage: string) {
     const ariaDescribedBy = this.composeClass(
       this.supportText?.length > 0 ? supportTextId : '',
       this.passwordStrengthMeter ? `strengthMeterInfo_${this._id}` : '',
@@ -334,6 +334,10 @@ export class ItInput extends FormControl {
         ></textarea>
       `;
     } else {
+      let style = null;
+      if (this.type === 'number' && this.adaptive) {
+        style = `width: calc(${this.value.toString().length}ch + 70px);`;
+      }
       inputRender = html`
         <input
           part="input focusable"
@@ -362,21 +366,22 @@ export class ItInput extends FormControl {
           .value="${live(this.value)}"
           placeholder=${ifDefined(this.placeholder || undefined)}
           class="${inputClasses}"
+          style=${ifDefined(style)}
         />${this._renderTogglePasswordButton()}
       `;
     }
 
-    inputRender = html`
-      ${inputRender}
-      <div
-        role="alert"
-        id="invalid-feedback-${this._id}"
-        class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
-        ?hidden=${!(validityMessage?.length > 0)}
-      >
-        <span class="visually-hidden">${this.label}: </span>${validityMessage}
-      </div>
-    `;
+    // inputRender = html`
+    //   ${inputRender}
+    //   <div
+    //     role="alert"
+    //     id="invalid-feedback-${this._id}"
+    //     class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
+    //     ?hidden=${!(validityMessage?.length > 0)}
+    //   >
+    //     <span class="visually-hidden">${this.label}: </span>${validityMessage}
+    //   </div>
+    // `;
 
     return inputRender;
   }
@@ -390,6 +395,19 @@ export class ItInput extends FormControl {
       () => html` <small class="form-text" id="${supportTextId}">${this.supportText}</small> `,
     )}`;
 
+    const showValidation = this._touched || this.customValidation;
+    const validityMessage = (showValidation ? this.validationMessage : '') ?? '';
+    const invalid = validityMessage?.length > 0 || (!this.customValidation && !this.inputElement?.checkValidity());
+
+    const validityMessageRender = html`<div
+      role="alert"
+      id="invalid-feedback-${this._id}"
+      class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
+      ?hidden=${!(validityMessage?.length > 0)}
+    >
+      <span class="visually-hidden">${this.label}: </span>${validityMessage}
+    </div>`;
+
     return html`
       <div class="form-group" part="input-wrapper">
         <label
@@ -400,19 +418,35 @@ export class ItInput extends FormControl {
         >
 
         ${when(
-          this.slotted,
+          this.slotted || this.type === 'number',
           () =>
-            html` <div class="input-group">
-                <span class="input-group-text">
-                  <slot name="icon" @slotchange=${() => this.requestUpdate()}></slot
-                ></span>
-                ${this._renderInput(supportTextId)}
-                <div class="input-group-append">
-                  <slot name="append" @slotchange=${() => this.requestUpdate()}></slot>
-                </div>
+            html`<div
+                class="${this.composeClass(
+                  'input-group ',
+                  this.type === 'number' ? 'input-number' : '',
+                  this.type === 'number' && this.adaptive ? 'input-number-adaptive' : '',
+                )}"
+              >
+                ${when(
+                  this._slotPrepend,
+                  () =>
+                    html` <span class="input-group-text">
+                      <slot name="prepend" @slotchange=${() => this.requestUpdate()}></slot
+                    ></span>`,
+                )}
+                ${this._renderInput(supportTextId, invalid, validityMessage)}
+                ${when(
+                  this._slotAppend,
+                  () =>
+                    html` <div class="input-group-append">
+                      <slot name="append" @slotchange=${() => this.requestUpdate()}></slot>
+                    </div>`,
+                )}
               </div>
-              ${supportTextRender} ${this._renderpasswordStrengthMeter()}`,
-          () => html` ${this._renderInput(supportTextId)} ${supportTextRender} ${this._renderpasswordStrengthMeter()}`,
+              ${validityMessageRender} ${supportTextRender} ${this._renderpasswordStrengthMeter()}`,
+          () =>
+            html` ${this._renderInput(supportTextId, invalid, validityMessage)} ${validityMessageRender}
+            ${supportTextRender} ${this._renderpasswordStrengthMeter()}`,
         )}
       </div>
     `;

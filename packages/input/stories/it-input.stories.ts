@@ -36,6 +36,7 @@ interface InputProps {
   supportText: string;
   labelHidden: boolean;
   size: Sizes;
+  adaptive: boolean;
 
   strengthMeter: boolean;
   suggestions: boolean;
@@ -66,6 +67,7 @@ const renderComponent = (params: any) =>
     support-text="${ifDefined(params.supportText || undefined)}"
     ?label-hidden="${params.labelHidden}"
     size="${ifDefined(params.size || undefined)}"
+    ?adaptive="${params.adaptive}"
     ?strength-meter="${params.strengthMeter}"
     ?suggestions="${params.suggestions}"
     >${ifDefined(params.children || undefined)}</it-input
@@ -102,6 +104,7 @@ const meta = {
     supportText: '',
     labelHidden: false,
     size: undefined,
+    adaptive: false,
 
     strengthMeter: false,
     suggestions: false,
@@ -215,6 +218,13 @@ const meta = {
       options: INPUT_SIZES,
       description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
       table: { defaultValue: { summary: undefined } },
+    },
+    adaptive: {
+      control: 'boolean',
+      type: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
+      description:
+        'Se il campo è `type="number"`, con l\'attributo `adaptive` il campo assume adatta la sua larghezza al contenuto',
     },
 
     strengthMeter: {
@@ -396,7 +406,7 @@ export const IconeOPulsanti: Story = {
   render: (params) => html`
     ${renderComponent({
       ...params,
-      children: html`<it-icon name="it-pencil" slot="icon" size="sm"></it-icon>
+      children: html`<it-icon name="it-pencil" slot="prepend" size="sm"></it-icon>
         <it-button variant="primary" slot="append">Invio</it-button>`,
     })}
   `,
@@ -437,7 +447,7 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
       name: 'field-big-example',
       id: 'field-big-example',
       size: 'lg',
-      children: html`<it-icon name="it-pencil" slot="icon" size="md"></it-icon>
+      children: html`<it-icon name="it-pencil" slot="prepend" size="md"></it-icon>
         <it-button variant="primary" slot="append">Invio</it-button>`,
     })}
     ${renderComponent({
@@ -446,7 +456,7 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
       name: 'field-sizebase-example',
       id: 'field-sizebase-example',
       placeholder: 'Testo segnaposto',
-      children: html`<it-icon name="it-pencil" slot="icon" size="sm"></it-icon>
+      children: html`<it-icon name="it-pencil" slot="prepend" size="sm"></it-icon>
         <it-button variant="primary" slot="append">Invio</it-button>`,
     })}
     ${renderComponent({
@@ -455,7 +465,7 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
       name: 'field-small-example',
       id: 'field-small-example',
       size: 'sm',
-      children: html`<it-icon name="it-pencil" slot="icon" size="xs"></it-icon>
+      children: html`<it-icon name="it-pencil" slot="prepend" size="xs"></it-icon>
         <it-button variant="primary" slot="append">Invio</it-button>`,
     })}
   `,

@@ -21,6 +21,7 @@ interface InputNumberProps {
   supportText: string;
   value: string;
   size: Sizes;
+  adaptive: boolean;
   min?: number;
   max?: number;
   step?: number;
@@ -46,7 +47,9 @@ const renderNumberInput = (params: any) =>
     placeholder="${ifDefined(params.placeholder || undefined)}"
     support-text="${ifDefined(params.supportText || undefined)}"
     size="${ifDefined(params.size || undefined)}"
-  ></it-input>`;
+    ?adaptive="${params.adaptive}"
+    >${ifDefined(params.children || undefined)}</it-input
+  >`;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
@@ -71,6 +74,7 @@ const meta = {
     placeholder: '',
     supportText: '',
     size: undefined,
+    adaptive: false,
   },
   argTypes: {
     label: {
@@ -152,6 +156,13 @@ const meta = {
       options: INPUT_SIZES,
       description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
       table: { defaultValue: { summary: undefined } },
+    },
+    adaptive: {
+      control: 'boolean',
+      type: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
+      description:
+        'Se il campo è `type="number"`, con l\'attributo `adaptive` il campo assume adatta la sua larghezza al contenuto',
     },
   },
   parameters: {
@@ -261,7 +272,7 @@ export const Valuta: Story = {
     docs: {
       description: {
         story: `
-Per anteporre il simbolo della valuta in Euro, aggiungere la classe \`.input-symbol-label\` all'elemento \`<label>\`.
+Per anteporre il simbolo della valuta (ad esempio in Euro), utilizza lo slot \`prepend\`.
 `,
       },
     },
@@ -272,27 +283,13 @@ Per anteporre il simbolo della valuta in Euro, aggiungere la classe \`.input-sym
     min: 0,
   },
   render: (params) => html`
-    <style>
-      .input-symbol-label::before {
-        content: '€ ';
-        font-weight: normal;
-      }
-    </style>
     ${renderNumberInput({
       ...params,
       label: 'Currency',
       name: 'inputNumberCurrency',
       id: 'inputNumberCurrency',
+      children: html`<span slot="prepend" class="fw-semibold">&euro;</span> `,
     })}
-    <script>
-      // Aggiungi la classe input-symbol-label alla label
-      document.addEventListener('DOMContentLoaded', function () {
-        const label = document.querySelector('label[for="inputNumberCurrency"]');
-        if (label) {
-          label.classList.add('input-symbol-label');
-        }
-      });
-    </script>
   `,
 };
 
@@ -302,7 +299,7 @@ export const Percentuale: Story = {
     docs: {
       description: {
         story: `
-Per anteporre il simbolo percentuale, aggiungere la classe \`.input-symbol-label\` all'elemento \`<label>\`.
+Per anteporre il simbolo percentuale, utilizza lo slot \`prepend\`.
 
 Si consiglia di impostare gli attributi \`min=0\` e \`max="100"\`.
 `,
@@ -316,27 +313,13 @@ Si consiglia di impostare gli attributi \`min=0\` e \`max="100"\`.
     max: 100,
   },
   render: (params) => html`
-    <style>
-      .input-symbol-label-percent::before {
-        content: '% ';
-        font-weight: normal;
-      }
-    </style>
     ${renderNumberInput({
       ...params,
       label: 'Percentage',
       name: 'inputNumberPercent',
       id: 'inputNumberPercent',
+      children: html`<span slot="prepend" class="fw-semibold">%</span> `,
     })}
-    <script>
-      // Aggiungi la classe input-symbol-label alla label
-      document.addEventListener('DOMContentLoaded', function () {
-        const label = document.querySelector('label[for="inputNumberPercent"]');
-        if (label) {
-          label.classList.add('input-symbol-label-percent');
-        }
-      });
-    </script>
   `,
 };
 
@@ -346,7 +329,7 @@ export const Disabilitato: Story = {
     docs: {
       description: {
         story: `
-Per disabilitare un Input number, aggiungere la classe \`.disabled\` al wrapper \`.input-number\`. Aggiungere anche l'attributo \`disabled\` al campo e ai pulsanti.
+Per disabilitare un Input number, aggiungere l'attributo \`disabled\` al componente \`<it-input>\`.
 `,
       },
     },
@@ -371,7 +354,7 @@ export const Readonly: Story = {
     docs: {
       description: {
         story: `
-Per rendere un Input number \`readonly\`, aggiungere l'attributo \`readonly\` al campo e \`disabled\` ai pulsanti.
+Per rendere un Input number \`readonly\`, aggiungere l'attributo \`readonly\` al componente \`<it-input>\`.
 `,
       },
     },
@@ -396,35 +379,21 @@ export const Ridimensionamento: Story = {
     docs: {
       description: {
         story: `
-È possibile far sì che il campo numerico si ridimensioni automaticamente a seconda del valore contenuto in esso. Per ottenere questo comportamento, è sufficiente aggiungere la classe \`input-number-adaptive\`.
+È possibile far sì che il campo numerico si ridimensioni automaticamente a seconda del valore contenuto in esso. Per ottenere questo comportamento, è sufficiente aggiungere l'attributo \`adaptive\` al componente \`<it-input>\`.
 `,
       },
     },
   },
   args: {
     value: '99999',
+    adaptive: true,
   },
   render: (params) => html`
-    <style>
-      .input-number-adaptive {
-        width: auto !important;
-        max-width: fit-content;
-      }
-    </style>
     ${renderNumberInput({
       ...params,
       label: 'Adattivo',
       name: 'inputNumberAdaptive',
       id: 'inputNumberAdaptive',
     })}
-    <script>
-      // Aggiungi la classe input-number-adaptive al wrapper
-      document.addEventListener('DOMContentLoaded', function () {
-        const inputContainer = document.querySelector('#inputNumberAdaptive').shadowRoot?.querySelector('.form-group');
-        if (inputContainer) {
-          inputContainer.classList.add('input-number-adaptive');
-        }
-      });
-    </script>
   `,
 };
