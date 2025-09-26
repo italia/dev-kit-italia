@@ -33,20 +33,19 @@ const renderNumberInput = (params: any) =>
     label="${ifDefined(params.label || undefined)}"
     type="number"
     name="${ifDefined(params.name || undefined)}"
-    ?disabled="${params.disabled}"
-    ?invalid="${params.invalid}"
-    ?required="${params.required}"
-    ?readonly="${params.readonly}"
-    ?plaintext="${params.plaintext}"
-    validity-message="${ifDefined(params.validityMessage || undefined)}"
-    placeholder="${ifDefined(params.placeholder || undefined)}"
-    support-text="${ifDefined(params.supportText || undefined)}"
     value="${ifDefined(params.value || undefined)}"
-    size="${ifDefined(params.size || undefined)}"
+    ?disabled="${params.disabled}"
+    ?custom-validation="${params.customValidation}"
+    validity-message="${ifDefined(params.validityMessage || undefined)}"
     min="${ifDefined(params.min || undefined)}"
     max="${ifDefined(params.max || undefined)}"
     step="${ifDefined(params.step || undefined)}"
-    ?custom-validation="${params.customValidation}"
+    ?required="${params.required}"
+    ?readonly="${params.readonly}"
+    ?plaintext="${params.plaintext}"
+    placeholder="${ifDefined(params.placeholder || undefined)}"
+    support-text="${ifDefined(params.supportText || undefined)}"
+    size="${ifDefined(params.size || undefined)}"
   ></it-input>`;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
@@ -59,20 +58,19 @@ const meta = {
     label: 'Input Number',
     type: 'number',
     name: 'inputNumber',
-    disabled: false,
-    invalid: false,
-    required: false,
-    validityMessage: '',
-    customValidation: false,
-    placeholder: '',
-    supportText: '',
     value: '100',
-    size: undefined,
-    readonly: false,
-    plaintext: false,
+    disabled: false,
+    customValidation: false,
+    validityMessage: '',
     min: undefined,
     max: undefined,
     step: undefined,
+    required: false,
+    readonly: false,
+    plaintext: false,
+    placeholder: '',
+    supportText: '',
+    size: undefined,
   },
   argTypes: {
     label: {
@@ -88,25 +86,14 @@ const meta = {
     name: {
       control: 'text',
     },
+    value: {
+      control: 'text',
+      description: 'Valore del campo',
+    },
     disabled: {
       control: 'boolean',
       type: 'boolean',
       table: { defaultValue: { summary: 'false' } },
-    },
-    invalid: {
-      control: 'boolean',
-      type: 'boolean',
-      table: { defaultValue: { summary: 'false' } },
-    },
-    required: {
-      control: 'boolean',
-      type: 'boolean',
-      table: { defaultValue: { summary: 'false' } },
-    },
-    validityMessage: {
-      name: 'validity-message',
-      control: 'text',
-      description: 'Messaggio che viene mostrato quando il campo è invalido',
     },
     customValidation: {
       name: 'custom-validation',
@@ -116,24 +103,28 @@ const meta = {
       description:
         'Se la validazione del campo è fatta esternamente (lato server o con plugin js), impostare questo attributo a `true`.',
     },
-    placeholder: {
+    validityMessage: {
+      name: 'validity-message',
       control: 'text',
-      description: 'Testo segnaposto',
+      description:
+        "Messaggio da mostrare quando il campo è invalido nel caso di validazione esterna (validazione custom). Se impostato a '' (stringa vuota) il campo viene considerato valido.",
     },
-    supportText: {
-      name: 'support-text',
-      control: 'text',
-      description: 'Testo di supporto',
+    min: {
+      control: 'number',
+      description: 'Valore minimo consentito',
     },
-    value: {
-      control: 'text',
-      description: 'Valore del campo',
+    max: {
+      control: 'number',
+      description: 'Valore massimo consentito',
     },
-    size: {
-      control: 'select',
-      options: INPUT_SIZES,
-      description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
-      table: { defaultValue: { summary: undefined } },
+    step: {
+      control: 'number',
+      description: 'Incremento per ogni step (utilizzato dai pulsanti +/-)',
+    },
+    required: {
+      control: 'boolean',
+      type: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
     },
     readonly: {
       control: 'boolean',
@@ -147,17 +138,20 @@ const meta = {
       description:
         "Se il campo è readonly, con l'attributo 'plaintext' il campo assume l'aspetto di testo normalizzato.",
     },
-    min: {
-      control: 'number',
-      description: 'Valore minimo consentito',
+    placeholder: {
+      control: 'text',
+      description: 'Testo segnaposto',
     },
-    max: {
-      control: 'number',
-      description: 'Valore massimo consentito',
+    supportText: {
+      name: 'support-text',
+      control: 'text',
+      description: 'Testo di supporto',
     },
-    step: {
-      control: 'number',
-      description: 'Incremento per ogni step (utilizzato dai pulsanti +/-)',
+    size: {
+      control: 'select',
+      options: INPUT_SIZES,
+      description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
+      table: { defaultValue: { summary: undefined } },
     },
   },
   parameters: {

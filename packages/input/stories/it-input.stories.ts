@@ -148,7 +148,7 @@ const meta = {
       name: 'validity-message',
       control: 'text',
       description:
-        'Messaggio da mostrare quando il campo è invalido nel caso di validazione esterna (validazione custom)',
+        "Messaggio da mostrare quando il campo è invalido nel caso di validazione esterna (validazione custom). Se impostato a '' (stringa vuota) il campo viene considerato valido.",
     },
     pattern: {
       control: 'text',
@@ -156,15 +156,16 @@ const meta = {
     },
     min: {
       control: 'text',
-      description: 'Valore minimo per un campo di tipo numerico o di tipo data',
+      description: 'Valore minimo consentito per un campo di tipo numerico o di tipo data',
     },
     max: {
       control: 'text',
-      description: 'Valore massimo per un campo di tipo numerico o di tipo data',
+      description: 'Valore massimo consentito per un campo di tipo numerico o di tipo data',
     },
     step: {
       control: 'number',
-      description: 'Granularità del valore, nel caso di input di tipo numerico o di tipo data',
+      description:
+        'Incremento per ogni step (tramite i pulsanti +/-) nel caso di input di tipo numerico o di tipo data',
     },
     minlength: {
       type: 'number',
