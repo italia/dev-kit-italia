@@ -83,7 +83,7 @@ const Input = () => {
         label="Campo obbligatorio"
         type="text"
         name="required-example"
-        required=""
+        required={true}
         placeholder="Testo segnaposto"
       ></it-input>
       <it-input
@@ -93,7 +93,7 @@ const Input = () => {
         name="external-validation-example"
         validity-message="Questo campo è obbligatorio!"
         placeholder="Testo segnaposto"
-        custom-validation=""
+        custom-validation={true}
       ></it-input>
       {/* <section>
         <h2>Varianti di colore</h2>
