@@ -25,5 +25,11 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+.app-header {
+  text-align: center;
+}
+h1 {
   text-align: center;
 }

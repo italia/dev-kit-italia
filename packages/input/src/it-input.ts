@@ -393,18 +393,6 @@ export class ItInput extends FormControl {
       `;
     }
 
-    // inputRender = html`
-    //   ${inputRender}
-    //   <div
-    //     role="alert"
-    //     id="invalid-feedback-${this._id}"
-    //     class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
-    //     ?hidden=${!(validityMessage?.length > 0)}
-    //   >
-    //     <span class="visually-hidden">${this.label}: </span>${validityMessage}
-    //   </div>
-    // `;
-
     return inputRender;
   }
 
@@ -419,7 +407,8 @@ export class ItInput extends FormControl {
 
     const showValidation = this._touched || this.customValidation;
     const validityMessage = (showValidation ? this.validationMessage : '') ?? '';
-    const invalid = validityMessage?.length > 0 || (!this.customValidation && !this.inputElement?.checkValidity());
+    const invalid =
+      validityMessage?.length > 0 || (!this.customValidation && this.inputElement?.checkValidity() === false);
 
     const validityMessageRender = html`<div
       role="alert"
