@@ -206,6 +206,7 @@ export class FormControl extends BaseLocalizedComponent {
   protected _handleChange(e: Event) {
     const target = e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
     let value: unknown;
+    console.log('handleChange', target.value);
 
     if (target instanceof HTMLInputElement) {
       switch (target.type) {

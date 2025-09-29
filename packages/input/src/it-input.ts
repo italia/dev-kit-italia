@@ -200,6 +200,28 @@ export class ItInput extends FormControl {
     this._strengthInfos = text;
   }
 
+  private static _cleanFloat(num: number) {
+    return parseFloat(num.toPrecision(15));
+  }
+
+  private _inputNumberIncDec(v: number) {
+    const step = typeof this.step === 'number' ? this.step : Number(this.step) || 1;
+
+    const value = typeof this.value === 'number' ? this.value : Number(this.value) || 0;
+    const min = typeof this.min === 'number' ? this.min : Number(this.min);
+    const max = typeof this.max === 'number' ? this.max : Number(this.max);
+
+    const _v = v * step;
+
+    const newValue = ItInput._cleanFloat(value + _v);
+
+    if (newValue > max || newValue < min) {
+      // non fare nulla
+    } else {
+      this.value = newValue.toString();
+    }
+  }
+
   private _renderTogglePasswordButton() {
     // Solo se type=password
     if (this.type === 'password') {
@@ -435,6 +457,18 @@ export class ItInput extends FormControl {
                     ></span>`,
                 )}
                 ${this._renderInput(supportTextId, invalid, validityMessage)}
+                ${when(
+                  this.type === 'number',
+                  () =>
+                    html`<span class="input-group-text align-buttons flex-column">
+                      <button class="input-number-add" @click=${() => this._inputNumberIncDec(+1)}>
+                        <span class="visually-hidden">${this.$t('increaseValue')}</span>
+                      </button>
+                      <button class="input-number-sub" @click=${() => this._inputNumberIncDec(-1)}>
+                        <span class="visually-hidden">${this.$t('decreaseValue')}</span>
+                      </button>
+                    </span>`,
+                )}
                 ${when(
                   this._slotAppend,
                   () =>
