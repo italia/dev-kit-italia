@@ -14,9 +14,11 @@
 @import 'bootstrap-italia/src/scss/forms/form-control';
 
 @import 'bootstrap-italia/src/scss/forms/form-password';
-@import 'bootstrap-italia/src/scss/forms/input-group';
-@import 'bootstrap-italia/src/scss/forms/just-validate';
 @import 'bootstrap-italia/src/scss/forms/form-input-number';
+
+@import 'bootstrap-italia/src/scss/forms/input-group';
+
+@import 'bootstrap-italia/src/scss/forms/just-validate';
 
 @import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
 //ovveride utilities: get only needed utilities

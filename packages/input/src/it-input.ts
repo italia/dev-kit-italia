@@ -218,7 +218,14 @@ export class ItInput extends FormControl {
     if (newValue > max || newValue < min) {
       // non fare nulla
     } else {
-      this.value = newValue.toString();
+      const _value = newValue.toString();
+      this.value = _value;
+      this.inputElement.dispatchEvent(new Event('blur', { bubbles: true }));
+      this.inputElement.dispatchEvent(new Event('change', { bubbles: true }));
+      const liveRegion = this.shadowRoot?.querySelector(`#${this._id}-live-region`);
+      if (liveRegion) {
+        liveRegion.textContent = `${_value}`;
+      }
     }
   }
 
@@ -456,6 +463,7 @@ export class ItInput extends FormControl {
                       <button class="input-number-sub" @click=${() => this._inputNumberIncDec(-1)}>
                         <span class="visually-hidden">${this.$t('decreaseValue')}</span>
                       </button>
+                      <div aria-live="polite" class="visually-hidden" id="${this._id}-live-region"></div>
                     </span>`,
                 )}
                 ${when(
