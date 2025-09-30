@@ -28,7 +28,7 @@ export class FormControl extends BaseLocalizedComponent {
   value = '';
 
   /** If the input is disabled. */
-  @property({ type: Boolean }) // from FormControl
+  @property({ type: Boolean, reflect: true }) // from FormControl
   disabled = false;
 
   /**
@@ -76,29 +76,6 @@ export class FormControl extends BaseLocalizedComponent {
   /** If the input is required. */
   @property({ type: Boolean, reflect: true }) // from FormControl
   required = false;
-
-  // Form attributes
-  // name: string;
-  // value: unknown;
-  // disabled?: boolean;
-  // form?: string;
-  // customValidation?: boolean; // se true, la validazione nativa del browser non viene eseguita
-  // validationText?: string; // messaggio di errore da mostrare in caso di validazione custom
-  // internal attributes
-  // inputElement: HTMLInputElement;
-
-  // Constraint validation attributes
-  // pattern?: string;
-  // min?: number | string | Date;
-  // max?: number | string | Date;
-  // step?: number | 'any';
-  // minlength?: number;
-  // maxlength?: number;
-  // required?: boolean;
-
-  // Form validation properties
-  // readonly validity: ValidityState; // getter methods to be implemented
-  // readonly validationMessage: string; // getter methods to be implemented
 
   /** Gets the validity state object */
   public get validity(): ValidityState {

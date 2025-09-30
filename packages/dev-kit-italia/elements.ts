@@ -1,4 +1,5 @@
 import '@italia/button/it-button.js';
+import '@italia/input/it-checkbox.js';
 import '@italia/chip/it-chip.js';
 import '@italia/dropdown/it-dropdown.js';
 import '@italia/dropdown/it-dropdown-item.js';
