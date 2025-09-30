@@ -89,17 +89,37 @@ export class ItChip extends BaseComponent {
   }
 
   render() {
+    const avatarSize = this.getAvatarSize();
+    const avatarHeights = {
+      xs: '1rem',
+      sm: '1.5rem',
+      md: '2.5rem',
+      lg: '3.5rem',
+      xl: '5rem',
+      xxl: '7rem',
+    };
+
+    const avatarHeight = avatarHeights[avatarSize];
+
     const classes = {
       chip: true,
       [`chip-${this.size}`]: this.size,
       [`chip-${this.variant}`]: !!this.variant && !this.isDisabled,
       'chip-disabled': this.isDisabled,
     };
+
     const content = html`
       ${this.a11yDescription ? html`<span class="visually-hidden">${this.a11yDescription}</span>` : nothing}
       <slot name="icon"></slot>
       ${this.avatar
-        ? html`<it-avatar size="${this.getAvatarSize()}" src="${this.avatar}" alt="${this.avatarAlt}"></it-avatar>`
+        ? html`
+            <it-avatar
+              size="${avatarSize}"
+              src="${this.avatar}"
+              alt="${this.avatarAlt}"
+              style="height: ${avatarHeight}"
+            ></it-avatar>
+          `
         : null}
       <span class="chip-label">${this.label}</span>
       <slot name="dismiss-button"></slot>

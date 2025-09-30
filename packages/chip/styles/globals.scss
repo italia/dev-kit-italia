@@ -6,43 +6,35 @@ it-chip {
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
-  
+
   // Dimensioni default per evitare collasso (size="sm" default)
-  height: 32px;
-  min-width: 60px;
+  // height: 32px;
+  // min-width: 60px;
   padding: 0 12px;
-  
+
   // Shimmer di caricamento (solo quando non definito)
-  &:not(:defined) {
-    background-color: #e9ecef;
-    border-radius: 16px;
-    background-image: linear-gradient(90deg, 
-      transparent 0%, 
-      rgba(255,255,255,0.4) 50%, 
-      transparent 100%
-    );
-    background-size: 200% 100%;
-    animation: chip-fouc-shimmer 1.5s infinite;
-  }
+  // &:not(:defined) {
+  //   background-color: #e9ecef;
+  //   border-radius: 16px;
+  //   background-image: linear-gradient(90deg,
+  //     transparent 0%,
+  //     rgba(255,255,255,0.4) 50%,
+  //     transparent 100%
+  //   );
+  //   background-size: 200% 100%;
+  //   animation: chip-fouc-shimmer 1.5s infinite;
+  // }
 }
 
 // Varianti di dimensione (solo le dimensioni, nient'altro)
-it-chip[size="sm"] { 
-  height: 32px; 
-  min-width: 60px;
+it-chip[size='sm'] {
+  height: 32px;
   padding: 0 12px;
 }
 
-it-chip[size="lg"] { 
-  height: 40px; 
-  min-width: 80px;
+it-chip[size='lg'] {
+  height: 40px;
   padding: 0 16px;
-}
-
-// Rimuovi animazione una volta definito il componente
-it-chip:defined {
-  animation: none !important;
-  background-image: none !important;
 }
 
 // Stili per i componenti interni post-caricamento
@@ -67,19 +59,5 @@ it-chip:defined {
   it-button it-icon,
   it-button {
     display: inline-flex;
-  }
-}
-
-// Animazione shimmer
-@keyframes chip-fouc-shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-// Rispetta le preferenze utente
-@media (prefers-reduced-motion: reduce) {
-  it-chip:not(:defined) {
-    animation: none;
-    background-image: none;
   }
 }

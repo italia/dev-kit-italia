@@ -33,4 +33,8 @@ export const routes: Routes = [
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
   },
+  {
+    path: 'avatar',
+    loadComponent: () => import('./pages/avatar.component').then((c) => c.AvatarComponent),
+  },
 ];

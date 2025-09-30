@@ -294,9 +294,9 @@
             <div class="d-flex align-items-center gap-3 mb-3">
               <it-chip label="Chip SM" size="sm" variant="primary"></it-chip>
               <it-chip label="Chip LG" size="lg" variant="secondary"></it-chip>
-              <it-chip label="Chip con Avatar SM" avatar="https://randomuser.me/api/portraits/women/1.jpg" 
+              <it-chip label="Chip con Avatar SM" avatar="https://randomuser.me/api/portraits/women/1.jpg"
                        avatar-alt="Avatar donna" size="sm" variant="primary"></it-chip>
-              <it-chip label="Chip con Avatar LG" avatar="https://randomuser.me/api/portraits/men/2.jpg" 
+              <it-chip label="Chip con Avatar LG" avatar="https://randomuser.me/api/portraits/men/2.jpg"
                        avatar-alt="Avatar uomo" size="lg" variant="secondary"></it-chip>
             </div>
             <small class="text-muted">Ricarica la pagina e osserva se c'è layout shift durante il caricamento</small>
@@ -330,7 +330,7 @@
                   <it-icon name="it-close" color="secondary" size="sm"></it-icon>
                 </it-button>
               </it-chip>
-              <it-chip label="Chip complesso" avatar="https://randomuser.me/api/portraits/women/3.jpg" 
+              <it-chip label="Chip complesso" avatar="https://randomuser.me/api/portraits/women/3.jpg"
                        avatar-alt="Avatar" dismissable variant="primary" size="lg">
                 <it-button slot="dismiss-button" aria-label="Rimuovi chip">
                   <it-icon name="it-close" color="primary" size="sm"></it-icon>
@@ -343,28 +343,85 @@
 
       <section class="my-4">
         <h2>it-avatar - Test Anti-FOUC</h2>
-        <p>Questa sezione testa gli stili anti-FOUC per gli avatar. Gli avatar dovrebbero:</p>
-        <ul>
-          <li>Apparire con dimensioni corrette subito (no layout shift)</li>
-          <li>Mostrare un placeholder durante il caricamento del JS</li>
-          <li>Non interferire con gli stili finali del componente</li>
+        <div style="display: flex; flex-direction: column; gap: 3rem;">
+      <div>
+        <ul class="avatar-group-stacked">
+          <li>
+            <it-avatar size="md" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto profilo" href="#"></it-avatar>
+          </li>
+          <li>
+            <it-avatar size="md" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo" href="#"></it-avatar>
+          </li>
+          <li>
+            <it-avatar size="md" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo" href="#"></it-avatar>
+          </li>
+          </li>
+          <li><it-avatar  text="Sandro Penna" variant="secondary" href="#"></it-avatar></li>
+          <li>
+            <it-avatar size="md" type="dropdown">
+              <it-dropdown label="4+" slot="avatar-dropdown-content" it-aria-label="Altri utenti" variant="secondary">
+                <it-dropdown-item href="#">
+                  <it-avatar src="https://randomuser.me/api/portraits/men/22.jpg" alt="Foto profilo"></it-avatar>
+                  <span>Roberto Milano</span>
+                </it-dropdown-item>
+                <it-dropdown-item href="#">
+                  <it-avatar text="Giuseppe Verde" variant="primary"></it-avatar>
+                  <span>Giuseppe Verde</span>
+                </it-dropdown-item>
+                <it-dropdown-item href="#">
+                  <it-avatar text="Laura Blu" variant="secondary"></it-avatar>
+                  <span>Laura Blu</span>
+                </it-dropdown-item>
+                <it-dropdown-item href="#">
+                  <it-avatar icon="it-user" avatar-title="Altri utenti"></it-avatar>
+                  <span>Altri utenti...</span>
+                </it-dropdown-item>
+              </it-dropdown>
+            </it-avatar>
+          </li>
         </ul>
+      </div>
+    </div>
+     <div style="display: flex; flex-direction: column; gap: 3rem; margin-block: 3rem;">
+      <div>
+        <ul class="avatar-group-stacked">
+          <li>
+            <it-avatar size="sm" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto profilo" href="#"></it-avatar>
+          </li>
+          <li>
+            <it-avatar size="sm" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo" href="#"></it-avatar>
+          </li>
+          <li>
+            <it-avatar size="sm" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo" href="#"></it-avatar>
+          </li>
+          </li>
+          <li><it-avatar size="sm" text="Sandro Penna" variant="secondary" href="#"></it-avatar></li>
+          <li>
+            <it-avatar type="dropdown" size="sm">
+              <it-dropdown label="4+" slot="avatar-dropdown-content" it-aria-label="Altri utenti" variant="secondary">
+                <it-dropdown-item href="#">
+                  <it-avatar src="https://randomuser.me/api/portraits/men/22.jpg" alt="Foto profilo"></it-avatar>
+                  <span>Roberto Milano</span>
+                </it-dropdown-item>
+                <it-dropdown-item href="#">
+                  <it-avatar text="Giuseppe Verde" variant="primary"></it-avatar>
+                  <span>Giuseppe Verde</span>
+                </it-dropdown-item>
+                <it-dropdown-item href="#">
+                  <it-avatar text="Laura Blu" variant="secondary"></it-avatar>
+                  <span>Laura Blu</span>
+                </it-dropdown-item>
+                <it-dropdown-item href="#">
+                  <it-avatar icon="it-user" avatar-title="Altri utenti"></it-avatar>
+                  <span>Altri utenti...</span>
+                </it-dropdown-item>
+              </it-dropdown>
+            </it-avatar>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-        <div class="row mb-4">
-          <div class="col-12">
-            <h3>Test dimensioni anti-FOUC</h3>
-            <p>Ogni avatar dovrebbe mantenere le dimensioni corrette anche prima del caricamento JS:</p>
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <it-avatar size="xs" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Avatar XS"></it-avatar>
-              <it-avatar size="sm" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar SM"></it-avatar>
-              <it-avatar size="md" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Avatar MD"></it-avatar>
-              <it-avatar size="lg" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Avatar LG"></it-avatar>
-              <it-avatar size="xl" src="https://randomuser.me/api/portraits/women/33.jpg" alt="Avatar XL"></it-avatar>
-              <it-avatar size="xxl" src="https://randomuser.me/api/portraits/men/23.jpg" alt="Avatar XXL"></it-avatar>
-            </div>
-            <small class="text-muted">Ricarica la pagina e osserva se c'è layout shift durante il caricamento</small>
-          </div>
-        </div>
 
         <div class="row mb-4">
           <div class="col-12">
@@ -444,7 +501,6 @@
         </form>
       </section>
 
-    </div>
   </main>
 </body>
 

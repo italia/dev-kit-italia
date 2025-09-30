@@ -34,8 +34,6 @@ const config = {
       silenceDeprecations: ['import', 'global-builtin', 'function-units', 'color-functions', 'mixed-decls'],
     };
 
-    console.log('OptimizeDeps include:', config.optimizeDeps?.include);
-    console.log('OptimizeDeps exclude:', config.optimizeDeps?.exclude);
     config.optimizeDeps ??= {};
     config.optimizeDeps.exclude ??= [];
 
@@ -43,6 +41,7 @@ const config = {
     config.optimizeDeps.exclude.push('@storybook/addon-essentials/docs/mdx-react-shim');
     config.optimizeDeps.exclude.push('@storybook/addon-docs');
     config.optimizeDeps.exclude.push('@mdx-js/react');
+
     return config;
   },
 };

@@ -149,14 +149,17 @@ importers:
 
   packages/avatar:
     dependencies:
+      '@italia/dropdown':
+        specifier: workspace:^
+        version: link:../dropdown
       '@italia/globals':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../globals
       '@italia/i18n':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../i18n
       '@italia/icon':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
@@ -168,9 +171,6 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.4
-      '@italia/dropdown':
-        specifier: workspace:*
-        version: link:../dropdown
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config
@@ -265,6 +265,9 @@ importers:
 
   packages/chip:
     dependencies:
+      '@italia/avatar':
+        specifier: workspace:^
+        version: link:../avatar
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
@@ -278,9 +281,6 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.4
-      '@italia/avatar':
-        specifier: workspace:^
-        version: link:../avatar
       '@italia/button':
         specifier: workspace:^
         version: link:../button
@@ -454,6 +454,9 @@ importers:
 
   packages/globals:
     dependencies:
+      '@floating-ui/dom':
+        specifier: ^1.7.1
+        version: 1.7.1
       '@italia/i18n':
         specifier: workspace:^
         version: link:../i18n

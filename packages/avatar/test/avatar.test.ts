@@ -1,4 +1,4 @@
-import { expect, fixture, html, waitUntil } from '@open-wc/testing';
+import { expect, fixture, html } from '@open-wc/testing';
 import type { ItAvatar } from '@italia/avatar';
 import '@italia/avatar';
 
@@ -39,27 +39,23 @@ describe('ItAvatar', () => {
       const el = await fixture<ItAvatar>(html`
         <it-avatar src="https://example.com/avatar.jpg" alt="John Doe"></it-avatar>
       `);
-      
+
       const img = el.shadowRoot?.querySelector('img');
       expect(img).to.exist;
       expect(img?.src).to.equal('https://example.com/avatar.jpg');
     });
 
     it('detects icon type when icon is provided', async () => {
-      const el = await fixture<ItAvatar>(html`
-        <it-avatar icon="search" avatar-title="Search"></it-avatar>
-      `);
-      
+      const el = await fixture<ItAvatar>(html` <it-avatar icon="search" avatar-title="Search"></it-avatar> `);
+
       const icon = el.shadowRoot?.querySelector('it-icon');
       expect(icon).to.exist;
       expect(icon?.getAttribute('name')).to.equal('search');
     });
 
     it('detects text type when neither src nor icon are provided', async () => {
-      const el = await fixture<ItAvatar>(html`
-        <it-avatar text="John Doe"></it-avatar>
-      `);
-      
+      const el = await fixture<ItAvatar>(html` <it-avatar text="John Doe"></it-avatar> `);
+
       expect(el.shadowRoot?.textContent).to.include('JD');
     });
 
@@ -67,7 +63,7 @@ describe('ItAvatar', () => {
       const el = await fixture<ItAvatar>(html`
         <it-avatar src="https://example.com/avatar.jpg" icon="search" alt="John Doe"></it-avatar>
       `);
-      
+
       const img = el.shadowRoot?.querySelector('img');
       const icon = el.shadowRoot?.querySelector('it-icon');
       expect(img).to.exist;
@@ -81,31 +77,29 @@ describe('ItAvatar', () => {
       const el = await fixture<ItAvatar>(html`
         <it-avatar src="https://invalid-url.com/not-found.jpg" alt="John Doe"></it-avatar>
       `);
-      
+
       // Simula errore di caricamento immagine
       const img = el.shadowRoot?.querySelector('img');
       if (img) {
         img.dispatchEvent(new Event('error'));
         await el.updateComplete;
       }
-      
+
       // Dovrebbe mostrare le iniziali
       const textElement = el.shadowRoot?.querySelector('p[aria-hidden="true"]');
       expect(textElement?.textContent).to.equal('JD');
     });
 
     it('generates initials from alt text when image fails', async () => {
-      const el = await fixture<ItAvatar>(html`
-        <it-avatar src="invalid-url" alt="Maria Rossi"></it-avatar>
-      `);
-      
+      const el = await fixture<ItAvatar>(html` <it-avatar src="invalid-url" alt="Maria Rossi"></it-avatar> `);
+
       // Simula errore di caricamento
       const img = el.shadowRoot?.querySelector('img');
       if (img) {
         img.dispatchEvent(new Event('error'));
         await el.updateComplete;
       }
-      
+
       const textElement = el.shadowRoot?.querySelector('p[aria-hidden="true"]');
       expect(textElement?.textContent).to.equal('MR');
     });
@@ -149,8 +143,8 @@ describe('ItAvatar', () => {
     expect(avatar?.classList.contains('size-lg')).to.be.true;
   });
 
-  it('applies color classes correctly', async () => {
-    const el = await fixture<ItAvatar>(html` <it-avatar color="primary"></it-avatar> `);
+  it('applies variant classes correctly', async () => {
+    const el = await fixture<ItAvatar>(html` <it-avatar variant="primary"></it-avatar> `);
 
     const avatar = el.shadowRoot?.querySelector('.avatar');
     expect(avatar?.classList.contains('avatar-primary')).to.be.true;
@@ -180,16 +174,46 @@ describe('ItAvatar', () => {
     expect(link?.href).to.include('/profile');
   });
 
-  it('renders extra text wrapper', async () => {
+  it('renders extra text slot', async () => {
     const el = await fixture<ItAvatar>(html`
-      <it-avatar extra-text-wrapper text="John Doe" extra-text="15 SET 2025" extra-text-tag="time"></it-avatar>
+      <it-avatar text="John Doe">
+        <time slot="extra-text">15 SET 2025</time>
+      </it-avatar>
     `);
 
-    const wrapper = el.shadowRoot?.querySelector('.avatar-wrapper');
-    expect(wrapper).to.exist;
-    expect(wrapper?.classList.contains('avatar-extra-text')).to.be.true;
+    // Verifica che il contenuto dello slot sia accessibile
+    const slottedContent = el.querySelector('time[slot="extra-text"]');
+    expect(slottedContent).to.exist;
+    expect(slottedContent?.textContent).to.equal('15 SET 2025');
+  });
 
-    const extraText = el.shadowRoot?.querySelector('.extra-text');
-    expect(extraText).to.exist;
+  it('renders custom presence slot', async () => {
+    const el = await fixture<ItAvatar>(html`
+      <it-avatar text="John Doe" presence="active">
+        <span slot="presence" class="custom-presence">Online</span>
+      </it-avatar>
+    `);
+
+    const presenceSlot = el.shadowRoot?.querySelector('slot[name="presence"]');
+    expect(presenceSlot).to.exist;
+
+    const customPresence = el.querySelector('span[slot="presence"]');
+    expect(customPresence).to.exist;
+    expect(customPresence?.textContent).to.equal('Online');
+  });
+
+  it('renders custom status slot', async () => {
+    const el = await fixture<ItAvatar>(html`
+      <it-avatar text="John Doe" status="approved">
+        <span slot="status" class="custom-status">Verified</span>
+      </it-avatar>
+    `);
+
+    const statusSlot = el.shadowRoot?.querySelector('slot[name="status"]');
+    expect(statusSlot).to.exist;
+
+    const customStatus = el.querySelector('span[slot="status"]');
+    expect(customStatus).to.exist;
+    expect(customStatus?.textContent).to.equal('Verified');
   });
 });

@@ -1,5 +1,5 @@
 import { BaseLocalizedComponent } from '@italia/globals';
-import { html, nothing, PropertyValues } from 'lit';
+import { html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -17,9 +17,14 @@ registerTranslation(en);
 export class ItAvatar extends BaseLocalizedComponent {
   static styles = styles;
 
+  static override shadowRootOptions = {
+    ...BaseLocalizedComponent.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   @property({ type: String, reflect: true }) size: AvatarSize = 'md';
 
-  @property({ type: String, reflect: true }) color: AvatarColor = '';
+  @property({ type: String, reflect: true }) variant: AvatarColor = '';
 
   @property({ type: String, reflect: true }) presence: AvatarPresence = '';
 
@@ -33,8 +38,6 @@ export class ItAvatar extends BaseLocalizedComponent {
 
   @property({ type: String, reflect: true }) text = '';
 
-  @property({ type: String, reflect: true }) initials = '';
-
   @property({ type: String, reflect: true }) icon = '';
 
   private _imageLoadError = false;
@@ -43,17 +46,15 @@ export class ItAvatar extends BaseLocalizedComponent {
 
   @property({ type: String, reflect: true, attribute: 'avatar-title' }) avatarTitle = '';
 
-  @property({ type: String, reflect: true, attribute: 'extra-text' }) extraText = '';
-
-  @property({ type: String, reflect: true, attribute: 'extra-text-tag' }) extraTextTag: 'h3' | 'h4' | 'p' | 'time' =
-    'h4';
-
-  @property({ type: Boolean, reflect: true, attribute: 'extra-text-wrapper' }) extraTextWrapper = false;
-
-  // GETTER PUBBLICO USABILE DAL GROUP PER SAPERE SE LA SIZE È STATA IMPOSTATA ESPPLICITAMENTE
-  // (fallback a hasAttribute: mantiene il comportamento storico)
   get __hasExplicitSize(): boolean {
     return this.hasAttribute('size');
+  }
+
+  override get focusElement(): HTMLElement | null {
+    // Se c'è un link, usa quello
+    const link = this.shadowRoot?.querySelector('a.avatar');
+    if (link) return link as HTMLElement;
+    return null;
   }
 
   private getAutoType(): AvatarType {
@@ -76,10 +77,6 @@ export class ItAvatar extends BaseLocalizedComponent {
   }
 
   private getInitials(): string {
-    if (this.initials) {
-      return this.initials;
-    }
-
     if (this.text) {
       const words = this.text.trim().split(/\s+/);
       if (this.size === 'xs' || this.size === 'sm') {
@@ -109,11 +106,22 @@ export class ItAvatar extends BaseLocalizedComponent {
     );
   }
 
+  private getAvatarWrapperClasses() {
+    return classMap({
+      avatar: true,
+      [`size-${this.size}`]: !!this.size,
+      [`avatar-${this.variant}`]: !!this.variant,
+      'avatar-extra-text': this.hasExtraTextContent,
+      'avatar-dropdown': this.type === 'dropdown',
+    });
+  }
+
   private getAvatarClasses() {
     return classMap({
       avatar: true,
       [`size-${this.size}`]: !!this.size,
-      [`avatar-${this.color}`]: !!this.color,
+      [`avatar-${this.variant}`]: !!this.variant,
+      'avatar-dropdown': this.type === 'dropdown',
     });
   }
 
@@ -154,14 +162,12 @@ export class ItAvatar extends BaseLocalizedComponent {
     }
 
     return html`
-      <slot name="presence">
-        <div class="${this.getPresenceClasses()}">
-          ${presenceIcon
-            ? html`<it-icon name="${presenceIcon}" size="xs" color="white" class="presence-icon"></it-icon>`
-            : nothing}
-          <span class="visually-hidden">${presenceLabel}: ${presenceText}</span>
-        </div>
-      </slot>
+      <div class="${this.getPresenceClasses()}">
+        ${presenceIcon
+          ? html`<it-icon name="${presenceIcon}" size="xs" variant="white" class="presence-icon"></it-icon>`
+          : nothing}
+        <span class="visually-hidden">${presenceLabel}: ${presenceText}</span>
+      </div>
     `;
   }
 
@@ -188,14 +194,12 @@ export class ItAvatar extends BaseLocalizedComponent {
     }
 
     return html`
-      <slot name="status">
-        <div class="${this.getStatusClasses()}">
-          ${statusIcon
-            ? html`<it-icon name="${statusIcon}" size="xs" color="white" class="status-icon"></it-icon>`
-            : nothing}
-          <span class="visually-hidden">${statusLabel}: ${statusText}</span>
-        </div>
-      </slot>
+      <div class="${this.getStatusClasses()}">
+        ${statusIcon
+          ? html`<it-icon name="${statusIcon}" size="xs" variant="white" class="status-icon"></it-icon>`
+          : nothing}
+        <span class="visually-hidden">${statusLabel}: ${statusText}</span>
+      </div>
     `;
   }
 
@@ -264,26 +268,11 @@ export class ItAvatar extends BaseLocalizedComponent {
 
     const content = html`
       ${autoType === 'image' ? this.renderImage() : nothing} ${autoType === 'text' ? this.renderText() : nothing}
-      ${autoType === 'icon' ? this.renderIcon() : nothing} ${this.renderPresence()} ${this.renderStatus()}
+      ${autoType === 'icon' ? this.renderIcon() : nothing}
+      ${autoType === 'dropdown' ? html`<slot name="avatar-dropdown-content"></slot>` : nothing}
     `;
 
     return content;
-  }
-
-  private renderExtraText() {
-    if (!this.extraText) return nothing;
-
-    const textContent = this.text || this.avatarTitle;
-
-    return html`
-      <div class="extra-text">
-        ${this.extraTextTag === 'h3' ? html`<h3>${textContent}</h3>` : nothing}
-        ${this.extraTextTag === 'h4' ? html`<h4>${textContent}</h4>` : nothing}
-        ${this.extraTextTag === 'p' ? html`<p>${textContent}</p>` : nothing}
-        ${this.extraTextTag === 'time' ? html`<time>${textContent}</time>` : nothing}
-        ${this.extraTextTag === 'time' ? html`<time>${this.extraText}</time>` : html`<p>${this.extraText}</p>`}
-      </div>
-    `;
   }
 
   updated() {
@@ -304,10 +293,8 @@ export class ItAvatar extends BaseLocalizedComponent {
       );
     }
 
-    if (autoType === 'text' && !this.text && !this.initials) {
-      this.logger.warn(
-        'Avatar: tipo text rilevato ma nessun contenuto testuale fornito. Aggiungi text="..." o initials="..."',
-      );
+    if (autoType === 'text' && !this.text) {
+      this.logger.warn('Avatar: tipo text rilevato ma nessun contenuto testuale fornito. Aggiungi text="..."');
     }
 
     if (this.href && !this.avatarTitle && !this.text) {
@@ -324,27 +311,53 @@ export class ItAvatar extends BaseLocalizedComponent {
     }
   }
 
+  private get hasExtraTextContent(): boolean {
+    const extraTextSlot = this.shadowRoot?.querySelector('slot[name="extra-text"]') as HTMLSlotElement;
+    return extraTextSlot?.assignedElements().length > 0 || false;
+  }
+
+  private onExtraTextSlotChange = () => {
+    const extraTextSlot = this.shadowRoot?.querySelector('slot[name="extra-text"]') as HTMLSlotElement;
+    if (extraTextSlot?.assignedElements().length > 0) {
+      extraTextSlot?.assignedElements().forEach((el) => {
+        el.classList.add('extra-text');
+      });
+    }
+  };
+
+  private getWrapperClasses() {
+    return classMap({
+      'avatar-wrapper': true,
+      'avatar-extra-text': this.hasExtraTextContent,
+    });
+  }
+
   render() {
     const avatarContent = this.renderAvatarContent();
 
-    const avatar = this.href
-      ? html`
-          <a
-            href="${this.href}"
-            class="${this.getAvatarClasses()}"
-            title="${ifDefined(this.avatarTitle || this.text || undefined)}"
-            part="avatar focusable"
-          >
-            ${avatarContent}
-          </a>
-        `
-      : html`<div class="${this.getAvatarClasses()}" part="avatar">${avatarContent}</div>`;
+    const avatar =
+      this.href && this.type !== 'dropdown'
+        ? html`
+            <a
+              href="${this.href}"
+              class="${this.getAvatarWrapperClasses()}"
+              title="${ifDefined(this.avatarTitle || this.text || undefined)}"
+              part="avatar focusable"
+            >
+              ${avatarContent}
+            </a>
+          `
+        : html`<div class="${this.getAvatarClasses()}" part="avatar">${avatarContent}</div>`;
 
-    if (this.extraTextWrapper) {
-      return html`<div class="avatar-wrapper avatar-extra-text">${avatar} ${this.renderExtraText()}</div>`;
-    }
-
-    return avatar;
+    return html`
+      <div class="${this.getWrapperClasses()}">
+        ${avatar}
+        <slot name="extra-text" @slotchange="${this.onExtraTextSlotChange}" part="extra-text"></slot>
+        <slot name="avatar-dropdown-content" part="avatar-dropdown-content"></slot>
+        <slot name="presence" part="presence">${this.renderPresence()}</slot>
+        <slot name="status" part="status">${this.renderStatus()}</slot>
+      </div>
+    `;
   }
 }
 

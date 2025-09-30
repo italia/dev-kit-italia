@@ -61,6 +61,10 @@ export class BaseComponent extends LitElement {
     return active as T | null;
   }
 
+  get focusElement(): HTMLElement | null {
+    return this;
+  }
+
   connectedCallback() {
     super.connectedCallback();
 

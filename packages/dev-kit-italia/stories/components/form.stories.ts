@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
-import '@italia/input';
-import '@italia/button';
-
 const meta = {
   title: 'Componenti/Form',
   tags: ['autodocs'],
