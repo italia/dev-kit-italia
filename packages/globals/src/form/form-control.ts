@@ -4,7 +4,7 @@ import { FormControlController } from './form-controller.js';
 
 export class FormControl extends BaseLocalizedComponent {
   protected readonly formControlController = new FormControlController(this, {
-    assumeInteractionOn: ['it-input', 'it-blur'],
+    assumeInteractionOn: ['it-input', 'it-blur', 'it-change'],
   });
 
   // TODO: verificare se serve davvero con il fatto che usiamo form-controller
@@ -16,7 +16,7 @@ export class FormControl extends BaseLocalizedComponent {
   @state()
   _touched = false;
 
-  @query('.form__control')
+  @query('.it-form__control')
   inputElement!: HTMLInputElement; // from FormControl
 
   /** The name of the input, submitted as a name/value pair with form data. */
@@ -116,7 +116,8 @@ export class FormControl extends BaseLocalizedComponent {
     });
   }
 
-  protected _handleInput() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected _handleInput(e: Event) {
     this.handleValidationMessages();
     this.dispatchEvent(
       new CustomEvent('it-input', {
@@ -127,17 +128,20 @@ export class FormControl extends BaseLocalizedComponent {
     );
   }
 
-  protected _handleBlur() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected _handleBlur(e: Event) {
     this._touched = true;
     this.handleValidationMessages();
     this.dispatchEvent(new FocusEvent('it-blur', { bubbles: true, composed: true }));
   }
 
-  protected _handleFocus() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected _handleFocus(e: Event) {
     this.dispatchEvent(new FocusEvent('it-focus', { bubbles: true, composed: true }));
   }
 
-  protected _handleClick() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected _handleClick(e: Event) {
     this.dispatchEvent(new MouseEvent('it-click', { bubbles: true, composed: true }));
   }
 
@@ -221,8 +225,8 @@ export class FormControl extends BaseLocalizedComponent {
 
     if (this.customValidation) {
       this.setCustomValidity(this.validationText);
+    } else {
+      this.formControlController.updateValidity();
     }
-
-    this.formControlController.updateValidity();
   }
 }

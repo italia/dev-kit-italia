@@ -7,10 +7,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { when } from 'lit/directives/when.js';
 import { live } from 'lit/directives/live.js';
 
-// import it from './locales/it.js';
 import styles from './checkbox.scss';
-
-// registerTranslation(it);
 
 @customElement('it-checkbox')
 export class ItCheckbox extends FormControl {
@@ -35,6 +32,14 @@ export class ItCheckbox extends FormControl {
   @property({ type: Boolean, reflect: true })
   checked = false;
 
+  /** Draws checkboxes inline, side by side. */
+  @property({ type: Boolean, reflect: true })
+  inline = false;
+
+  /** Draws checkboxes in groups. */
+  @property({ type: Boolean, reflect: true })
+  group = false;
+
   /**
    * Draws the checkbox in an indeterminate state. This is usually applied to checkboxes that represents a "select
    * all/none" behavior when associated checkboxes have a mix of checked and unchecked states.
@@ -44,10 +49,6 @@ export class ItCheckbox extends FormControl {
   /** The input's label. */
   @property({ type: String })
   label = '';
-
-  /** If you want label to be hidden. */
-  @property({ type: Boolean, attribute: 'label-hidden' })
-  labelHidden = false;
 
   /** The input's help text. */
   @property({ type: String, attribute: 'support-text' })
@@ -64,7 +65,7 @@ export class ItCheckbox extends FormControl {
     // logger
     if (!this.label || this.label?.length === 0) {
       this.logger.warn(
-        `Label is required to ensure accessibility. Please, define a label for <it-checkbox name="${this.name}" ... /> . Set attribute label-hidden="true" if you don't want to show label.`,
+        `Label is required to ensure accessibility. Please, define a label for <it-checkbox name="${this.name}" ... /> .`,
       );
     }
   }
@@ -74,6 +75,13 @@ export class ItCheckbox extends FormControl {
   //   super._handleInput();
   // }
 
+  protected override _handleClick(e: Event): void {
+    this.checked = !this.checked;
+    this.indeterminate = false;
+    super._handleClick(e);
+    this._handleChange(e);
+  }
+
   private _renderInput(supportTextId: string, invalid: boolean, validityMessage: string) {
     const ariaDescribedBy = this.composeClass(
       this.supportText?.length > 0 ? supportTextId : '',
@@ -82,9 +90,10 @@ export class ItCheckbox extends FormControl {
     );
 
     const inputClasses = this.composeClass(
-      'form__control form-control',
+      'it-form__control',
       invalid ? 'is-invalid' : '',
       !invalid && this._touched ? 'just-validate-success-field' : '',
+      this.indeterminate ? 'semi-checked' : '',
     );
 
     const inputRender = html`
@@ -97,13 +106,14 @@ export class ItCheckbox extends FormControl {
         @blur=${this._handleBlur}
         @focus=${this._handleFocus}
         @click=${this._handleClick}
-        @change=${this._handleChange}
         @invalid=${this._handleInvalid}
         type="${this.type}"
         id="${this._id}"
         name="${this.name}"
-        ?disabled=${this.disabled}
-        ?required=${this.required}
+        .checked=${live(this.checked)}
+        .indeterminate=${live(this.indeterminate)}
+        .disabled=${this.disabled}
+        .required=${this.required}
         ?formNoValidate=${this.customValidation}
         .value="${live(this.value)}"
         class="${inputClasses}"
@@ -136,16 +146,19 @@ export class ItCheckbox extends FormControl {
       <span class="visually-hidden">${this.label}: </span>${validityMessage}
     </div>`;
 
-    return html`
-      <div class="form-group" part="input-wrapper">
-        <label
-          for="${ifDefined(this._id || undefined)}"
-          part="label"
-          class="${this.composeClass('active', this.labelHidden ? 'visually-hidden' : '')}"
-          >${this.label}</label
-        >
+    const wrapperClasses = this.composeClass(
+      'form-check',
+      this.inline ? 'form-check-inline' : '',
+      this.group ? 'form-check-group' : '',
+    );
 
-        ${this._renderInput(supportTextId, invalid, validityMessage)} ${validityMessageRender} ${supportTextRender}
+    const labelClasses = this.composeClass(this.disabled ? 'disabled' : '');
+
+    return html`
+      <div class="${wrapperClasses}" part="input-wrapper">
+        ${this._renderInput(supportTextId, invalid, validityMessage)}
+        <label for="${ifDefined(this._id || undefined)}" part="label" class="${labelClasses}">${this.label}</label>
+        ${validityMessageRender} ${supportTextRender}
       </div>
     `;
   }

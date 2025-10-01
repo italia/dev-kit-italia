@@ -135,14 +135,14 @@ export class ItInput extends FormControl {
     }
   }
 
-  override _handleInput() {
+  override _handleInput(e: Event) {
     this.value = this.inputElement.value;
 
     if (this.passwordStrengthMeter) {
       this._checkPasswordStrength(this.inputElement.value);
     }
 
-    super._handleInput();
+    super._handleInput(e);
   }
 
   private _togglePasswordVisibility() {
