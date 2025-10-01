@@ -90,7 +90,7 @@ In altre parole, la colonna si dimensiona in base al contenuto.
     html` <form>
       <div class="row align-itmes-center">
         <it-input class="col-md-6 col-lg-auto" label="Nome" id="nome" label-hidden placeholder="Nome e cognome"></it-input>
-        <it-input class="col-md-6 col-lg-auto" label="Username" id="username" label-hidden placeholder="username" slotted><span slot="icon">@</span></it-input>
+        <it-input class="col-md-6 col-lg-auto" label="Username" id="username" label-hidden placeholder="username"><span slot="icon">@</span></it-input>
         <div class="col-6 col-md-3 col-lg-auto d-flex justify-content-end">
           <it-button type="submit" variant="primary">Invia</button>
         </div>
@@ -177,7 +177,7 @@ Nel caso il campo non sia valido, è necessario invalidare il campo impostando i
     },
   },
   render: () =>
-    html` <form>
+    html` <form action="/prova">
       <div class="row">
         <it-input
           class="col-md-6"
@@ -218,15 +218,15 @@ export const ValidazioneJS: Story = {
 
       // evento scatenato quando il web-component ha effettutato il primo render, e l'input è disonibile nel DOM
       all_input.forEach(input=>{
-        input.addEventListener('input-ready', (event) => {
+        input.addEventListener('it-input-ready', (event) => {
           const input = event.detail.el;
           // il tuo codice qui.
         });
       });
 
-      // evento scatenato quando l'input riceve l'evento di 'on-input' (ad esempio, durante l'inserimento di testo da parte dell'utente)
+      // evento scatenato quando l'input riceve l'evento di 'it-input' (ad esempio, durante l'inserimento di testo da parte dell'utente)
       all_input.forEach(i=>{
-        i.addEventListener('on-input', (event) => {
+        i.addEventListener('it-input', (event) => {
           const input = event.detail.el;
           // il tuo codice qui.
         });
@@ -285,7 +285,7 @@ Ecco qui un esempio di implementazione della validazione con il plugin [JustVali
               {
                 validator: () => {
                   const value = getItInputValue('it-input[id="email"]');
-                  return /^[^s@]+@[^s@]+.[^s@]+$/.test(value);
+                  return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
                 },
                 errorMessage: 'Formato email non valido',
               },

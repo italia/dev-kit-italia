@@ -48,7 +48,7 @@
           {
             validator: () => {
               const value = getItInputValue('it-input[id="email"]');
-              return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+              return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
             },
             errorMessage: 'Formato email non valido',
           },
