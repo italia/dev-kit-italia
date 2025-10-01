@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { StoryFormControlMethodAndProps } from '@italia/globals';
 
 import { INPUT_TYPES, type InputType, INPUT_SIZES, type Sizes } from '../src/types.js';
 import i18nIT from '../src/locales/it.js';
+
 import '@italia/icon';
 import '@italia/button';
 import '@italia/input';
@@ -13,23 +15,31 @@ interface InputProps {
   label: string;
   type: InputType;
   name: string;
+  value: string;
   disabled?: boolean;
-  invalid: boolean;
-  required: boolean;
-  validityMessage: string;
+
+  form: string;
   customValidation: boolean;
+  validityMessage: string;
+
+  pattern?: string;
+  min?: number | string | Date;
+  max?: number | string | Date;
+  step?: number | 'any';
+  minlength: number;
+  maxlength: number;
+  required: boolean;
+
   readonly: boolean;
   plaintext: boolean;
   placeholder: string;
   supportText: string;
-  value: string;
-  slotted: boolean;
   labelHidden: boolean;
-  passwordStrengthMeter: boolean;
-  minlength: number;
-  maxlength: number;
-  suggestions: boolean;
   size: Sizes;
+  adaptive: boolean;
+
+  strengthMeter: boolean;
+  suggestions: boolean;
 }
 
 // Renderizza il wc it-input di default
@@ -39,23 +49,27 @@ const renderComponent = (params: any) =>
     label="${ifDefined(params.label || undefined)}"
     type="${ifDefined(params.type || undefined)}"
     name="${ifDefined(params.name || undefined)}"
+    value="${ifDefined(params.value || undefined)}"
     ?disabled="${params.disabled}"
-    ?invalid="${params.invalid}"
+    form="${ifDefined(params.form || undefined)}"
+    ?custom-validation="${params.customValidation}"
+    validity-message="${ifDefined(params.validityMessage || undefined)}"
+    pattern="${ifDefined(params.pattern || undefined)}"
+    min="${ifDefined(params.min || undefined)}"
+    max="${ifDefined(params.max || undefined)}"
+    step="${ifDefined(params.step || undefined)}"
+    minlength="${ifDefined(params.minlength) || undefined}"
+    maxlength="${ifDefined(params.maxlength) || undefined}"
     ?required="${params.required}"
     ?readonly="${params.readonly}"
     ?plaintext="${params.plaintext}"
-    validity-message="${ifDefined(params.validityMessage || undefined)}"
     placeholder="${ifDefined(params.placeholder || undefined)}"
     support-text="${ifDefined(params.supportText || undefined)}"
-    value="${ifDefined(params.value || undefined)}"
-    size="${ifDefined(params.size || undefined)}"
-    ?slotted="${params.slotted}"
-    ?strength-meter="${params.passwordStrengthMeter}"
-    minlength="${ifDefined(params.minlength) || undefined}"
-    maxlength="${ifDefined(params.maxlength) || undefined}"
-    ?suggestions="${params.suggestions}"
     ?label-hidden="${params.labelHidden}"
-    ?custom-validation="${params.customValidation}"
+    size="${ifDefined(params.size || undefined)}"
+    ?adaptive="${params.adaptive}"
+    ?strength-meter="${params.strengthMeter}"
+    ?suggestions="${params.suggestions}"
     >${ifDefined(params.children || undefined)}</it-input
   >`;
 
@@ -69,25 +83,37 @@ const meta = {
     label: 'Nome',
     type: 'text',
     name: 'nome',
-    disabled: false,
-    invalid: false,
-    required: false,
-    validityMessage: '',
-    customValidation: false,
-    placeholder: '',
-    supportText: '',
     value: '',
-    size: undefined,
-    readonly: false,
-    plaintext: false,
-    slotted: false,
-    labelHidden: false,
-    passwordStrengthMeter: false,
+    disabled: false,
+
+    form: '',
+    customValidation: false,
+    validityMessage: '',
+
+    pattern: undefined,
+    min: undefined,
+    max: undefined,
+    step: undefined,
     minlength: undefined,
     maxlength: undefined,
+    required: false,
+
+    readonly: false,
+    plaintext: false,
+    placeholder: '',
+    supportText: '',
+    labelHidden: false,
+    size: undefined,
+    adaptive: false,
+
+    strengthMeter: false,
     suggestions: false,
   },
   argTypes: {
+    id: {
+      control: 'text',
+      description: 'ID del campo',
+    },
     label: {
       control: 'text',
       description: 'Etichetta del campo',
@@ -100,25 +126,18 @@ const meta = {
     name: {
       control: 'text',
     },
+    value: {
+      control: 'text',
+      description: 'Valore del campo',
+    },
     disabled: {
       control: 'boolean',
       type: 'boolean',
       table: { defaultValue: { summary: 'false' } },
     },
-    invalid: {
-      control: 'boolean',
-      type: 'boolean',
-      table: { defaultValue: { summary: 'false' } },
-    },
-    required: {
-      control: 'boolean',
-      type: 'boolean',
-      table: { defaultValue: { summary: 'false' } },
-    },
-    validityMessage: {
-      name: 'validity-message',
+    form: {
       control: 'text',
-      description: 'Messaggio che viene mostrato quando il campo è invalido',
+      description: "ID html del form a cui è associato il campo, se il campo non si trova all'interno di una form ",
     },
     customValidation: {
       name: 'custom-validation',
@@ -126,27 +145,46 @@ const meta = {
       type: 'boolean',
       table: { defaultValue: { summary: 'false' } },
       description:
-        'Se la validazione del campo è fatta esternamente (lato server o con plugin js), impostare questo attributo a `true`.',
+        'Se la validazione del campo è fatta esternamente (lato server o con plugin js - validazione custom), impostare questo attributo a `true`.',
     },
-    placeholder: {
+    validityMessage: {
+      name: 'validity-message',
       control: 'text',
-      description: 'Testo segnaposto',
+      description:
+        "Messaggio da mostrare quando il campo è invalido nel caso di validazione esterna (validazione custom). Se impostato a '' (stringa vuota) il campo viene considerato valido.",
     },
-    supportText: {
-      name: 'support-text',
+    pattern: {
       control: 'text',
-      description: 'Testo di supporto',
+      description: 'Pattern di validazione del campo',
     },
-    value: {
+    min: {
       control: 'text',
-      description: 'Valore del campo',
+      description: 'Valore minimo consentito per un campo di tipo numerico o di tipo data',
     },
-    size: {
-      control: 'select',
-      options: INPUT_SIZES,
-      description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
-      table: { defaultValue: { summary: undefined } },
+    max: {
+      control: 'text',
+      description: 'Valore massimo consentito per un campo di tipo numerico o di tipo data',
     },
+    step: {
+      control: 'number',
+      description:
+        'Incremento per ogni step (tramite i pulsanti +/-) nel caso di input di tipo numerico o di tipo data',
+    },
+    minlength: {
+      type: 'number',
+      description: 'Lunghezza minima del valore da inserire. Usato anche per validare la robustezza della password',
+      table: { defaultValue: { summary: 'undefined. Se type="password": 8' } },
+    },
+    maxlength: {
+      type: 'number',
+      description: 'Lunghezza massima del valore da inserire.',
+    },
+    required: {
+      control: 'boolean',
+      type: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
+    },
+
     readonly: {
       control: 'boolean',
       type: 'boolean',
@@ -159,12 +197,14 @@ const meta = {
       description:
         "Se il campo è readonly, con l'attributo 'plaintext' il campo assume l'aspetto di testo normalizzato.",
     },
-    slotted: {
-      control: 'boolean',
-      type: 'boolean',
-      description:
-        "Se vengono usati gli slot per mostrare l'icona o il bottone, questo attributo deve avere valore 'true'",
-      table: { defaultValue: { summary: 'false' } },
+    placeholder: {
+      control: 'text',
+      description: 'Testo segnaposto',
+    },
+    supportText: {
+      name: 'support-text',
+      control: 'text',
+      description: 'Testo di supporto',
     },
     labelHidden: {
       name: 'label-hidden',
@@ -173,21 +213,26 @@ const meta = {
       description: 'Se si vuole nascondere la label. Risulterà comunque accessibile per i lettori di schermo.',
       table: { defaultValue: { summary: 'false' } },
     },
-    passwordStrengthMeter: {
+    size: {
+      control: 'select',
+      options: INPUT_SIZES,
+      description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
+      table: { defaultValue: { summary: undefined } },
+    },
+    adaptive: {
+      control: 'boolean',
+      type: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
+      description:
+        'Se il campo è `type="number"`, con l\'attributo `adaptive` il campo assume adatta la sua larghezza al contenuto',
+    },
+
+    strengthMeter: {
       name: 'strength-meter',
       control: 'boolean',
       type: 'boolean',
       description: "Se si vuole mostrare o meno il misuratore di robustezza della password nel caso di type='password'",
       table: { defaultValue: { summary: 'false' } },
-    },
-    minlength: {
-      type: 'number',
-      description: 'Lunghezza minima del valore da inserire. Usato anche per validare la robustezza della password',
-      table: { defaultValue: { summary: 'undefined. Se type="password": 8' } },
-    },
-    maxlength: {
-      type: 'number',
-      description: 'Lunghezza massima del valore da inserire.',
     },
     suggestions: {
       name: 'suggestions',
@@ -348,7 +393,6 @@ export const IconeOPulsanti: Story = {
     label: 'Campo con icona',
     name: 'field-icon-example',
     id: 'field-icon-example',
-    slotted: true,
     supportText: 'Testo di supporto',
   },
   parameters: {
@@ -362,7 +406,7 @@ export const IconeOPulsanti: Story = {
   render: (params) => html`
     ${renderComponent({
       ...params,
-      children: html`<it-icon name="it-pencil" slot="icon" size="sm"></it-icon>
+      children: html`<it-icon name="it-pencil" slot="prepend" size="sm"></it-icon>
         <it-button variant="primary" slot="append">Invio</it-button>`,
     })}
   `,
@@ -395,7 +439,6 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
   args: {
     type: 'text',
     placeholder: 'Testo segnaposto',
-    slotted: true,
   },
   render: (params) => html`
     ${renderComponent({
@@ -404,7 +447,7 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
       name: 'field-big-example',
       id: 'field-big-example',
       size: 'lg',
-      children: html`<it-icon name="it-pencil" slot="icon" size="md"></it-icon>
+      children: html`<it-icon name="it-pencil" slot="prepend" size="md"></it-icon>
         <it-button variant="primary" slot="append">Invio</it-button>`,
     })}
     ${renderComponent({
@@ -413,7 +456,7 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
       name: 'field-sizebase-example',
       id: 'field-sizebase-example',
       placeholder: 'Testo segnaposto',
-      children: html`<it-icon name="it-pencil" slot="icon" size="sm"></it-icon>
+      children: html`<it-icon name="it-pencil" slot="prepend" size="sm"></it-icon>
         <it-button variant="primary" slot="append">Invio</it-button>`,
     })}
     ${renderComponent({
@@ -422,7 +465,7 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
       name: 'field-small-example',
       id: 'field-small-example',
       size: 'sm',
-      children: html`<it-icon name="it-pencil" slot="icon" size="xs"></it-icon>
+      children: html`<it-icon name="it-pencil" slot="prepend" size="xs"></it-icon>
         <it-button variant="primary" slot="append">Invio</it-button>`,
     })}
   `,
@@ -511,7 +554,7 @@ Inoltre, è possibile restituire all’utente una lista dei suggerimenti, con in
       ...params,
       name: 'field-password-strength-example',
       id: 'field-password-strength-example',
-      passwordStrengthMeter: true,
+      strengthMeter: true,
       suggestions: true,
     })}
   `,
@@ -543,32 +586,32 @@ export const Textarea: Story = {
 
 export const GestioneErrori: Story = {
   ...meta,
-  name: 'Gestione degli errori',
+  name: 'Validazione e gestione degli errori',
   parameters: {
     docs: {
       description: {
-        story: `Se sono stati impostati uno di questi attributi <ul><li>\`required\`</li><li>\`pattern\`</li><li>\`minlength\`</li></ul> viene effettuata una validazione interna al componente.
- <br/><br/><h4>Personalizzazione dei messaggi di errore</h4>È possibile personalizzare i messaggi di errore tramite l'attributo \`translations\` a seconda che:
-       <ul><li>il campo è required e non è compilato: impostando il valore di \`validityRequired\` in \`translations\`</li>
-        <li>il campo non rispetta il pattern: impostando il valore di \`validityPattern\` in \`translations\`</li>
-        <li>il campo è troppo corto: impostando il valore di \`validityMinlength\` in \`translations\`</li>
-        <li>il campo ha un valore non valido: impostando il valore di \`validityInvalid\` in \`translations\`</li></ul>
-        <h4>Validazione esterna</h4>
-        È inoltre possibile validare il campo esternamente (via js ad esempio, o lato server), impostando l' attributo \`custom-validation="true"\`. In questo modo la validazione di defautl effettuata internamente al componente è disabilitata.
-        <br/>Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo \`validity-message="Messaggio di errore"\`.`,
+        story: `Se non è stata impostata la validazione custom tramite l'attributo \`custom-validation\`, e sono stati impostati uno di questi attributi <ul><li>\`required\`</li><li>\`pattern\`</li><li>\`min\`</li><li>\`max\`</li><li>\`step\`</li><li>\`minlength\`</li><li>\`maxlength\`</li></ul> viene effettuata una validazione interna utilizzando la validazione nativa del browser.
+ <br/><br/><h4>Personalizzazione dei messaggi di errore</h4>E' possibile personalizzare alcuni dei messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
+        <ul><li>\`validityRequired\`: messaggio che viene mostrato quando il campo è required e non è compilato</li>
+        <li>\`validityPattern\`: messaggio che viene mostrato quando il campo non rispetta il pattern indicato</li>
+        <li>\`validityMinlength\`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo corta rispetto al valore passatto nell'attributo \`min-length\`</li>
+         <li>\`validityMaxlength\`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo lunga rispetto al valore passatto nell'attributo \`max-length\`</li>
+      </ul>
+      Per gli altri errori di validazione non indicati, verranno mostrati i messsaggi di errore nativi del browser.
+      <h4>Validazione esterna (validazione custom)</h4>
+        E' inoltre possibile validare il campo esternamente (via js ad esempio, o lato server), impostando l' attributo \`custom-validation="true"\`. In questo modo la validazione di default del browser effettuata internamente al componente è disabilitata.
+        <br/><br/><h5>Campo invalido</h5>Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo \`validity-message="Messaggio di errore"\`.
+        <br/><br/><h5>Campo valido</h5>Per riportare il campo ad uno stato 'valido', è sufficiente impostare il messaggio di errore a vuoto: \`validity-message=""\`.`,
       },
     },
   },
-  args: { type: 'text', placeholder: 'Testo segnaposto', translations: undefined },
+  args: { type: 'text', placeholder: 'Testo segnaposto' },
   render: (params) => html`
     ${renderComponent({
       ...params,
       label: 'Campo obbligatorio',
       name: 'required-example',
       id: 'required-example',
-      translations: {
-        validityRequired: 'Questo campo è obbligatorio. Inserisci un valore.',
-      },
       required: true,
     })}
     ${renderComponent({
@@ -576,7 +619,7 @@ export const GestioneErrori: Story = {
       label: 'Validazione esterna',
       name: 'external-validation-example',
       id: 'external-validation-example',
-      validityMessage: 'Questo campo è obbligatorio!',
+      validityMessage: 'Questo campo è obbligatorio!!!',
       customValidation: true,
       required: undefined,
     })}
@@ -589,21 +632,21 @@ export const GestioneEventi: Story = {
   parameters: {
     docs: {
       description: {
-        story: `È possibile gestire gli eventi di \`on-input\`, \`blur\`, \`change\`, \`focus\`, \`click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
+        story: `E' possibile gestire gli eventi di \`it-input\`, \`it-blur\`, \`it-change\`, \`it-focus\`, \`it-click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
         <br/><br/>
         È sufficiente aggiungere un event listener al componente \`<it-input>\` per intercettare gli eventi desiderati. Ad esempio, per gestire l'evento di input, è possibile utilizzare il seguente codice:
 
 \`\`\`js
-document.querySelector('it-input#event-input-example').addEventListener('on-input', (event) => {
+document.querySelector('it-input#event-input-example').addEventListener('it-input', (event) => {
   console.log('Input event:', event);
   alert('Input event);
 });
 \`\`\`
 
-Il componente, emette anche un evento di tipo \`input-ready\` quando l'input è pronto e caricato nel DOM:
+Il componente, emette anche un evento di tipo \`it-input-ready\` quando l'input è pronto e caricato nel DOM:
 
 \`\`\`js
-document.querySelector('it-input#event-input-example').addEventListener('input-ready', (event) => {
+document.querySelector('it-input#event-input-example').addEventListener('it-input-ready', (event) => {
   console.log('Input ready:', event);
 });
 \`\`\`
@@ -617,15 +660,14 @@ document.querySelector('it-input#event-input-example').addEventListener('input-r
     name: 'event-input-example',
     id: 'event-input-example',
     placeholder: 'Testo segnaposto',
-    translations: undefined,
   },
   render: (params) => html`
     <script>
-      document.querySelector('it-input#event-input-example').addEventListener('on-input', (event) => {
+      document.querySelector('it-input#event-input-example').addEventListener('it-input', (event) => {
         console.log('Input event:', event);
         alert('Input event');
       });
-      document.querySelector('it-input#event-input-example').addEventListener('input-ready', (event) => {
+      document.querySelector('it-input#event-input-example').addEventListener('it-input-ready', (event) => {
         console.log('Input ready:', event);
       });
     </script>
@@ -634,6 +676,8 @@ document.querySelector('it-input#event-input-example').addEventListener('input-r
     })}
   `,
 };
+
+export const MetodiEPropPubblici: Story = { ...StoryFormControlMethodAndProps, tags: ['!dev'] };
 
 export const I18n: Story = {
   name: 'i18n',
