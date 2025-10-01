@@ -13,19 +13,25 @@ const Form = () => {
   return (
     <>
       <h1>it-form</h1>
-      <form id='form' onSubmit={handleSubmit}>
-        <it-input id='nome' name='nome' label='Nome'></it-input>
-        <it-input id='cognome' name='cognome' label='Cogome'></it-input>
-        <it-input id='email' name='email' label='E-mail' type='email' support-text='Inserisci la tua email'></it-input>
+      <form id="form" onSubmit={handleSubmit}>
+        <it-input id="nome" name="nome" label="Nome"></it-input>
+        <it-input id="cognome" name="cognome" label="Cogome"></it-input>
+        <it-input id="email" name="email" label="E-mail" type="email" support-text="Inserisci la tua email"></it-input>
         <it-input
-          id='messaggio'
-          name='messaggio'
-          label='Messaggio'
-          type='textarea'
-          support-text='Inserisci il tuo messaggio'
+          id="messaggio"
+          name="messaggio"
+          label="Messaggio"
+          type="textarea"
+          support-text="Inserisci il tuo messaggio"
         ></it-input>
+        <it-checkbox
+          id="privacy"
+          name="privacy"
+          label="Privacy"
+          support-text="Accetto le condizioni sulla privacy"
+        ></it-checkbox>
 
-        <it-button type='submit' variant='primary' block>
+        <it-button type="submit" variant="primary" block>
           Invia
         </it-button>
       </form>

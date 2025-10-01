@@ -297,7 +297,7 @@ export class ItInput extends FormControl {
     );
 
     const inputClasses = this.composeClass(
-      'form__control',
+      'it-form__control',
       this.plaintext ? 'form-control-plaintext' : 'form-control',
       this.size ? `form-control-${this.size}` : '',
       invalid ? 'is-invalid' : '',

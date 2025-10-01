@@ -15,7 +15,7 @@ export class ItCheckbox extends FormControl {
 
   protected readonly formControlController: FormControlController = new FormControlController(this, {
     value: (control: FormControl) =>
-      (control as ItCheckbox).checked ? (control as ItCheckbox).value || 'on' : undefined,
+      (control as ItCheckbox).checked ? (control as ItCheckbox).value || 'true' : undefined,
     setValue: (control: FormControl, value: unknown) => {
       const checkbox = control as ItCheckbox;
       checkbox.checked = Boolean(value);
