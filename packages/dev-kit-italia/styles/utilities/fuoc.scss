@@ -14,7 +14,14 @@
       // layout
       display: inline-block;
       box-sizing: border-box;
+
+      // look shimmer
       border-radius: $border-radius;
+      animation: fouc-shimmer 1.5s linear infinite;
+      background-color: if($bg != null, $bg, 'transparent');
+      background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+      background-repeat: no-repeat;
+      background-size: 200% 100%;
       vertical-align: middle;
 
       // dimensioni condizionali
@@ -25,20 +32,13 @@
         width: $width;
       }
 
-      // look shimmer
-      background-color: if($bg != null, $bg, 'transparent');
-      background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
-      background-repeat: no-repeat;
-      background-size: 200% 100%;
-      animation: fouc-shimmer 1.5s linear infinite;
-
       // pseudo-elemento per simulare larghezza testo attributo
       @if $attr != null and $width == null {
         &::after {
-          content: attr(#{$attr});
-          visibility: hidden; // invisibile ma riserva spazio
           display: inline-block;
+          content: attr(#{$attr});
           font: inherit;
+          visibility: hidden; // invisibile ma riserva spazio
           white-space: nowrap;
         }
       }
@@ -55,8 +55,8 @@
     // quando l'elemento è definito
     #{$tag}:defined {
       animation: none !important;
-      background-image: none !important;
       background-color: transparent !important;
+      background-image: none !important;
     }
   }
 }
