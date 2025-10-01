@@ -320,6 +320,9 @@ importers:
       '@italia/button':
         specifier: workspace:^
         version: link:../button
+      '@italia/checkbox':
+        specifier: workspace:^
+        version: link:../checkbox
       '@italia/chip':
         specifier: workspace:^
         version: link:../chip

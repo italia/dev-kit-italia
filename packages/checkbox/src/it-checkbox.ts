@@ -70,11 +70,6 @@ export class ItCheckbox extends FormControl {
     }
   }
 
-  // override _handleInput() {
-  //   this.value = this.inputElement.value;
-  //   super._handleInput();
-  // }
-
   protected override _handleClick(e: Event): void {
     this.checked = !this.checked;
     this.indeterminate = false;
