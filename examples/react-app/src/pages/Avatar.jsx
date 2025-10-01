@@ -387,24 +387,24 @@ export default function AvatarDemo() {
       <div style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ flex: 1, minWidth: 300 }}>
           <h4>Lista Verticale - Dimensione SM</h4>
-          <it-avatar-group size="sm" direction="vertical">
+          
             <div className="link-list-wrapper">
-              <ul className="link-list">
+              <ul className="link-list avatar-group">
                 <li>
                   <a className="list-item" href="#">
-                    <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg"></it-avatar>
+                    <it-avatar size="sm" src="https://randomuser.me/api/portraits/men/43.jpg"></it-avatar>
                     <span>Mario Rossi</span>
                   </a>
                 </li>
                 <li>
                   <a className="list-item" href="#">
-                    <it-avatar src="https://randomuser.me/api/portraits/women/44.jpg"></it-avatar>
+                    <it-avatar size="sm" src="https://randomuser.me/api/portraits/women/44.jpg"></it-avatar>
                     <span>Anna Verdi</span>
                   </a>
                 </li>
                 <li>
                   <div className="list-item">
-                    <it-avatar text="Sara Ghione" variant="primary"></it-avatar>
+                    <it-avatar size="sm" text="Sara Ghione" variant="primary"></it-avatar>
                     <span>Sara Ghione</span>
                   </div>
                 </li>
@@ -416,13 +416,13 @@ export default function AvatarDemo() {
                 </li>
               </ul>
             </div>
-          </it-avatar-group>
+          
         </div>
         <div style={{ flex: 1, minWidth: 300 }}>
           <h4>Lista Verticale - Dimensione MD</h4>
-          <it-avatar-group size="md" direction="vertical">
+          
             <div className="link-list-wrapper">
-              <ul className="link-list">
+              <ul className="link-list avatar-group">
                 <li>
                   <a className="list-item" href="#">
                     <it-avatar src="https://randomuser.me/api/portraits/men/32.jpg"></it-avatar>
@@ -449,7 +449,7 @@ export default function AvatarDemo() {
                 </li>
               </ul>
             </div>
-          </it-avatar-group>
+          
         </div>
       </div>
       {/* Gruppi avatar - Liste verticali con testo aggiuntivo */}
@@ -463,9 +463,9 @@ export default function AvatarDemo() {
         }}
       >
         <h4>Lista Team con Ruoli</h4>
-        <it-avatar-group size="md" direction="vertical">
+        
           <div className="link-list-wrapper">
-            <ul className="link-list">
+            <ul className="link-list avatar-group">
               <li>
                 <div className="list-item">
                   <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo">
@@ -508,7 +508,7 @@ export default function AvatarDemo() {
               </li>
             </ul>
           </div>
-        </it-avatar-group>
+        
       </div>
       {/* Gruppi di avatar - Avatar Sovrapposti */}
       <h2>Gruppi di avatar - Avatar Sovrapposti</h2>
@@ -531,26 +531,26 @@ export default function AvatarDemo() {
           }}
         >
           <h4>Avatar Sovrapposti - Dimensione SM</h4>
-          <it-avatar-group size="sm" direction="horizontal">
+          
             <div className="link-list-wrapper">
               <ul className="avatar-group-stacked">
                 <li>
-                  <it-avatar src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto profilo"></it-avatar>
+                  <it-avatar size="sm" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto profilo"></it-avatar>
                 </li>
                 <li>
-                  <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo"></it-avatar>
+                  <it-avatar size="sm" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo"></it-avatar>
                 </li>
                 <li>
-                  <it-avatar src="https://randomuser.me/api/portraits/women/41.jpg" alt="Foto profilo"></it-avatar>
+                  <it-avatar size="sm" src="https://randomuser.me/api/portraits/women/41.jpg" alt="Foto profilo"></it-avatar>
                 </li>
                 <li>
-                  <it-avatar text="Tommaso Sordi" variant="primary"></it-avatar>
+                  <it-avatar size="sm" text="Tommaso Sordi" variant="primary"></it-avatar>
                 </li>
                 <li>
-                  <it-avatar text="Barbara Tosi" variant="secondary"></it-avatar>
+                  <it-avatar size="sm" text="Barbara Tosi" variant="secondary"></it-avatar>
                 </li>
                 <li>
-                  <it-avatar type="dropdown">
+                  <it-avatar type="dropdown" size="sm">
                     <it-dropdown
                       label="4+"
                       slot="avatar-dropdown-content"
@@ -558,19 +558,19 @@ export default function AvatarDemo() {
                       variant="secondary"
                     >
                       <it-dropdown-item href="#">
-                        <it-avatar src="https://randomuser.me/api/portraits/men/22.jpg" alt="Foto profilo"></it-avatar>
+                        <it-avatar size="sm" src="https://randomuser.me/api/portraits/men/22.jpg" alt="Foto profilo"></it-avatar>
                         <span>Roberto Milano</span>
                       </it-dropdown-item>
                       <it-dropdown-item href="#">
-                        <it-avatar text="Giuseppe Verde" variant="primary"></it-avatar>
+                        <it-avatar size="sm" text="Giuseppe Verde" variant="primary"></it-avatar>
                         <span>Giuseppe Verde</span>
                       </it-dropdown-item>
                       <it-dropdown-item href="#">
-                        <it-avatar text="Laura Blu" variant="secondary"></it-avatar>
+                        <it-avatar size="sm" text="Laura Blu" variant="secondary"></it-avatar>
                         <span>Laura Blu</span>
                       </it-dropdown-item>
                       <it-dropdown-item href="#">
-                        <it-avatar icon="it-user" avatar-title="Altri utenti"></it-avatar>
+                        <it-avatar size="sm" icon="it-user" avatar-title="Altri utenti"></it-avatar>
                         <span>Altri utenti...</span>
                       </it-dropdown-item>
                     </it-dropdown>
@@ -578,7 +578,7 @@ export default function AvatarDemo() {
                 </li>
               </ul>
             </div>
-          </it-avatar-group>
+          
           <p style={{ marginTop: '0.5rem', fontSize: 14, variant: '#666' }}>
             <a href="#" style={{ variant: '#0066cc', textDecoration: 'none' }}>
               Visualizza altri 8 utenti →
@@ -595,7 +595,7 @@ export default function AvatarDemo() {
           }}
         >
           <h4>Avatar Sovrapposti - Dimensione MD</h4>
-          <it-avatar-group size="md" direction="horizontal">
+          
             <div className="link-list-wrapper">
               <ul className="avatar-group-stacked">
                 <li>
@@ -654,7 +654,7 @@ export default function AvatarDemo() {
                 </li>
               </ul>
             </div>
-          </it-avatar-group>
+          
           <p style={{ marginTop: '0.75rem', fontSize: 16, variant: '#666' }}>
             Clicca su "+4" per visualizzare gli utenti rimanenti
           </p>

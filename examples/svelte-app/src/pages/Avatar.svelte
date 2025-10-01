@@ -169,42 +169,42 @@
   <div style="display: flex; gap: 3rem; flex-wrap: wrap; align-items: center; justify-content: center;">
     <div style="flex: 1; min-width: 300px;">
       <h4>Lista Verticale - Dimensione SM</h4>
-      <it-avatar-group size="sm" direction="vertical">
+      
         <div class="link-list-wrapper">
-          <ul class="link-list">
+          <ul class="link-list avatar-group">
             <li>
               <a class="list-item" href="#">
-                <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg"></it-avatar>
+                <it-avatar size="sm" src="https://randomuser.me/api/portraits/men/43.jpg"></it-avatar>
                 <span>Mario Rossi</span>
               </a>
             </li>
             <li>
               <a class="list-item" href="#">
-                <it-avatar src="https://randomuser.me/api/portraits/women/44.jpg"></it-avatar>
+                <it-avatar size="sm" src="https://randomuser.me/api/portraits/women/44.jpg"></it-avatar>
                 <span>Anna Verdi</span>
               </a>
             </li>
             <li>
               <div class="list-item">
-                <it-avatar text="Sara Ghione" variant="primary"></it-avatar>
+                <it-avatar size="sm" text="Sara Ghione" variant="primary"></it-avatar>
                 <span>Sara Ghione</span>
               </div>
             </li>
             <li>
               <div class="list-item">
-                <it-avatar icon="it-user" avatar-title="Utente generico"></it-avatar>
+                <it-avatar size="sm" icon="it-user" avatar-title="Utente generico"></it-avatar>
                 <span>Antonio Esposito</span>
               </div>
             </li>
           </ul>
         </div>
-      </it-avatar-group>
+      
     </div>
     <div style="flex: 1; min-width: 300px;">
       <h4>Lista Verticale - Dimensione MD</h4>
-      <it-avatar-group size="md" direction="vertical">
+      
         <div class="link-list-wrapper">
-          <ul class="link-list">
+          <ul class="link-list avatar-group">
             <li>
               <a class="list-item" href="#">
                 <it-avatar src="https://randomuser.me/api/portraits/men/32.jpg"></it-avatar>
@@ -231,7 +231,7 @@
             </li>
           </ul>
         </div>
-      </it-avatar-group>
+      
     </div>
   </div>
 </section>
@@ -241,9 +241,9 @@
   <h2>Gruppi di avatar - Liste verticali con testo aggiuntivo</h2>
   <div style="align-items: center; justify-content: center; display: flex; flex-direction: column;">
     <h4>Lista Team con Ruoli</h4>
-    <it-avatar-group size="md" direction="vertical">
+    
       <div class="link-list-wrapper">
-        <ul class="link-list">
+        <ul class="link-list avatar-group">
           <li>
             <div class="list-item">
               <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo">
@@ -286,7 +286,7 @@
           </li>
         </ul>
       </div>
-    </it-avatar-group>
+    
   </div>
 </section>
 
@@ -296,41 +296,41 @@
   <div style="display: flex; flex-direction: column; gap: 3rem; align-items: center; justify-content: center;">
     <div style="text-align: center; align-items: center; justify-content: center; display: flex; flex-direction: column;">
       <h4>Avatar Sovrapposti - Dimensione SM</h4>
-      <it-avatar-group size="sm" direction="horizontal">
+      
         <div class="link-list-wrapper">
           <ul class="avatar-group-stacked">
             <li>
-              <it-avatar src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto profilo"></it-avatar>
+              <it-avatar size="sm" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto profilo"></it-avatar>
             </li>
             <li>
-              <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo"></it-avatar>
+              <it-avatar size="sm" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo"></it-avatar>
             </li>
             <li>
-              <it-avatar src="https://randomuser.me/api/portraits/women/41.jpg" alt="Foto profilo"></it-avatar>
+              <it-avatar size="sm" src="https://randomuser.me/api/portraits/women/41.jpg" alt="Foto profilo"></it-avatar>
             </li>
             <li>
-              <it-avatar text="Tommaso Sordi" variant="primary"></it-avatar>
+              <it-avatar size="sm" text="Tommaso Sordi" variant="primary"></it-avatar>
             </li>
             <li>
-              <it-avatar text="Barbara Tosi" variant="secondary"></it-avatar>
+              <it-avatar size="sm" text="Barbara Tosi" variant="secondary"></it-avatar>
             </li>
             <li>
-              <it-avatar type="dropdown">
+              <it-avatar type="dropdown" size="sm">
                 <it-dropdown label="4+" slot="avatar-dropdown-content" it-aria-label="Altri utenti" variant="secondary">
                   <it-dropdown-item href="#">
-                    <it-avatar src="https://randomuser.me/api/portraits/men/22.jpg" alt="Foto profilo"></it-avatar>
+                    <it-avatar size="sm" src="https://randomuser.me/api/portraits/men/22.jpg" alt="Foto profilo"></it-avatar>
                     <span>Roberto Milano</span>
                   </it-dropdown-item>
                   <it-dropdown-item href="#">
-                    <it-avatar text="Giuseppe Verde" variant="primary"></it-avatar>
+                    <it-avatar size="sm" text="Giuseppe Verde" variant="primary"></it-avatar>
                     <span>Giuseppe Verde</span>
                   </it-dropdown-item>
                   <it-dropdown-item href="#">
-                    <it-avatar text="Laura Blu" variant="secondary"></it-avatar>
+                    <it-avatar size="sm" text="Laura Blu" variant="secondary"></it-avatar>
                     <span>Laura Blu</span>
                   </it-dropdown-item>
                   <it-dropdown-item href="#">
-                    <it-avatar icon="it-user" avatar-title="Altri utenti"></it-avatar>
+                    <it-avatar size="sm" icon="it-user" avatar-title="Altri utenti"></it-avatar>
                     <span>Altri utenti...</span>
                   </it-dropdown-item>
                 </it-dropdown>
@@ -338,14 +338,14 @@
             </li>
           </ul>
         </div>
-      </it-avatar-group>
+      
       <p style="margin-top: 0.5rem; font-size: 14px; color: #666;">
         <a href="#" style="color: #0066cc; text-decoration: none;">Visualizza altri 8 utenti →</a>
       </p>
     </div>
     <div style="text-align: center; align-items: center; justify-content: center; display: flex; flex-direction: column;">
       <h4>Avatar Sovrapposti - Dimensione MD</h4>
-      <it-avatar-group size="md" direction="horizontal">
+      
         <div class="link-list-wrapper">
           <ul class="avatar-group-stacked">
             <li>
@@ -384,7 +384,7 @@
             </li>
           </ul>
         </div>
-      </it-avatar-group>
+      
       <p style="margin-top: 0.75rem; font-size: 16px; color: #666;">
         Clicca su "+4" per visualizzare gli utenti rimanenti
       </p>
