@@ -1,6 +1,10 @@
 import { property, query, state } from 'lit/decorators.js';
+import { registerTranslation } from '@italia/i18n';
 import { BaseLocalizedComponent } from '../base-component/base-component.js';
 import { FormControlController } from './form-controller.js';
+import it from './locales/it.js';
+
+registerTranslation(it);
 
 export class FormControl extends BaseLocalizedComponent {
   protected readonly formControlController = new FormControlController(this, {
@@ -98,14 +102,16 @@ export class FormControl extends BaseLocalizedComponent {
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   public reportValidity() {
-    return this.inputElement.reportValidity();
+    const ret = this.inputElement.checkValidity();
+    this.handleValidationMessages();
+    return ret; // this.inputElement.reportValidity();
   }
 
   /** Sets a custom validation message. Pass an empty string to restore validity. */
   public setCustomValidity(message: string) {
     this.inputElement.setCustomValidity(message);
+    this.validationMessage = this.inputElement.validationMessage;
     this.formControlController.updateValidity();
-    this.handleValidationMessages();
   }
 
   // Handlers

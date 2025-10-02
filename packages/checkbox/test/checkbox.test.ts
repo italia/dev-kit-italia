@@ -53,13 +53,13 @@ describe('<it-checkbox>', () => {
     const el: ItCheckbox = await fixture(
       html`<it-checkbox label="Campo richiesto" required support-text="Testo"></it-checkbox>`,
     );
-    const input = el.shadowRoot!.querySelector('input')!;
+    await el.reportValidity();
     el._touched = true; // forza la condizione di "toccato"
-    input.setCustomValidity('Campo obbligatorio');
+
     el.requestUpdate();
     await elementUpdated(el);
     const errorDiv = el.shadowRoot!.querySelector('.invalid-feedback')!;
-    expect(errorDiv.textContent).to.include('Campo obbligatorio');
+    expect(errorDiv.textContent).to.include('Questo campo è obbligatorio.');
   });
 
   it('logs a warning if label is missing', async () => {

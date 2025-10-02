@@ -24,13 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const el = fmc.querySelector(selector);
     return el?.value || ''; // .value dovrebbe essere esposto dal tuo componente
   };
-<<<<<<< HEAD
   const getItCheckboxValue = (selector) => {
     const el = fmc.querySelector(selector);
     return el?.checked || false; // .checked dovrebbe essere esposto dal tuo componente
   };
-=======
->>>>>>> main
 
   // Aggiungiamo regole
   validate
@@ -81,10 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
     Object.keys(fields).forEach((k) => {
       const f = fields[k];
       const wc = f.elem;
-<<<<<<< HEAD
-
-=======
->>>>>>> main
       if (wc) {
         wc.validationText = f.isValid ? '' : f.errorMessage;
       }

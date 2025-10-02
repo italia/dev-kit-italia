@@ -395,7 +395,7 @@ export class ItInput extends FormControl {
       () => html` <small class="form-text" id="${supportTextId}">${this.supportText}</small> `,
     )}`;
 
-    const showValidation = this._touched || this.customValidation;
+    const showValidation = true; // this._touched || this.customValidation;
     const validityMessage = (showValidation ? this.validationMessage : '') ?? '';
     const invalid =
       validityMessage?.length > 0 || (!this.customValidation && this.inputElement?.checkValidity() === false);
