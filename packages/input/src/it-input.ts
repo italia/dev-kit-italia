@@ -135,14 +135,14 @@ export class ItInput extends FormControl {
     }
   }
 
-  override _handleInput() {
+  override _handleInput(e: Event) {
     this.value = this.inputElement.value;
 
     if (this.passwordStrengthMeter) {
       this._checkPasswordStrength(this.inputElement.value);
     }
 
-    super._handleInput();
+    super._handleInput(e);
   }
 
   private _togglePasswordVisibility() {
@@ -326,7 +326,7 @@ export class ItInput extends FormControl {
     );
 
     const inputClasses = this.composeClass(
-      'form__control',
+      'it-form__control',
       this.plaintext ? 'form-control-plaintext' : 'form-control',
       this.size ? `form-control-${this.size}` : '',
       invalid ? 'is-invalid' : '',
