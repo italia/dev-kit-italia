@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const el = fmc.querySelector(selector);
     return el?.value || ''; // .value dovrebbe essere esposto dal tuo componente
   };
+  const getItCheckboxValue = (selector) => {
+    const el = fmc.querySelector(selector);
+    return el?.checked || false; // .checked dovrebbe essere esposto dal tuo componente
+  };
 
   // Aggiungiamo regole
   validate
@@ -48,7 +52,22 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         errorMessage: 'Inserire almeno 10 caratteri',
       },
-    ]);
+    ])
+    .addField(
+      'it-checkbox[id="privacy"]',
+      [
+        {
+          validator: () => {
+            const value = getItCheckboxValue('it-checkbox[id="privacy"]');
+            return value;
+          },
+          errorMessage: "L'accettazione della privacy è obbligatoria",
+        },
+      ],
+      {
+        events: ['it-change'], // 👈 FORZA l’ascolto sul change
+      },
+    );
 
   validate.onValidate((props) => {
     const { fields } = props;
@@ -59,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Object.keys(fields).forEach((k) => {
       const f = fields[k];
       const wc = f.elem;
+
       if (wc) {
         wc.validationText = f.isValid ? '' : f.errorMessage;
       }

@@ -43,7 +43,7 @@ export class FormControl extends BaseLocalizedComponent {
   customValidation = false;
 
   /** If your input is invalid from your custom validition, set this attribute with message validation */
-  @property({ attribute: 'validity-message' })
+  @property({ attribute: 'validity-message', reflect: true })
   validationText: string = '';
 
   /** Pattern the `value` must match to be valid */
@@ -82,9 +82,8 @@ export class FormControl extends BaseLocalizedComponent {
     return this.inputElement?.validity;
   }
 
-  public get validationMessage(): string {
-    return this.inputElement?.validationMessage;
-  }
+  @state()
+  public validationMessage = '';
 
   // Form validation methods
   public checkValidity(): boolean {
@@ -106,6 +105,7 @@ export class FormControl extends BaseLocalizedComponent {
   public setCustomValidity(message: string) {
     this.inputElement.setCustomValidity(message);
     this.formControlController.updateValidity();
+    this.handleValidationMessages();
   }
 
   // Handlers
@@ -119,6 +119,7 @@ export class FormControl extends BaseLocalizedComponent {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected _handleInput(e: Event) {
     this.handleValidationMessages();
+
     this.dispatchEvent(
       new CustomEvent('it-input', {
         detail: { value: this.inputElement.value, el: this.inputElement },
@@ -132,6 +133,7 @@ export class FormControl extends BaseLocalizedComponent {
   protected _handleBlur(e: Event) {
     this._touched = true;
     this.handleValidationMessages();
+
     this.dispatchEvent(new FocusEvent('it-blur', { bubbles: true, composed: true }));
   }
 
@@ -177,6 +179,8 @@ export class FormControl extends BaseLocalizedComponent {
         }
       }
     }
+
+    this.validationMessage = this.inputElement.validationMessage;
   }
 
   protected _handleInvalid(event: Event) {
@@ -224,7 +228,7 @@ export class FormControl extends BaseLocalizedComponent {
     super.updated?.(changedProperties);
 
     if (this.customValidation) {
-      this.setCustomValidity(this.validationText);
+      this.setCustomValidity(this.validationText ?? '');
     } else {
       this.formControlController.updateValidity();
     }

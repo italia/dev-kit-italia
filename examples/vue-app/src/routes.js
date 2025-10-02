@@ -8,9 +8,11 @@ import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
 import Section from './components/Section.vue';
 import Video from './components/Video.vue';
+import Checkbox from './components/Checkbox.vue';
 
 const routes = [
   { path: '/button', name: 'Button', component: Button },
+  { path: '/checkbox', name: 'Checkbox', component: Checkbox },
   { path: '/chip', name: 'Chip', component: Chip },
   { path: '/dropdown', name: 'Dropdown', component: Dropdown },
   { path: '/form', name: 'Form', component: Form },

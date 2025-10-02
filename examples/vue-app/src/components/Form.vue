@@ -23,7 +23,7 @@ const handleSubmit = (e) => {
       type="textarea"
       support-text="Inserisci il tuo messaggio"
     ></it-input>
-
+    <it-checkbox id="privacy" name="privacy" label="Privacy" support-text="Accetto le condizioni sulla privacy"></it-checkbox>
     <it-button type="submit" variant="primary" block> Invia </it-button>
   </form>
 </template>

@@ -1,4 +1,5 @@
 import Button from './pages/Button.svelte';
+import Checkbox from './pages/Checkbox.svelte';
 import Chip from './pages/Chip.svelte';
 import Dropdown from './pages/Dropdown.svelte';
 import Form from './pages/Form.svelte';
@@ -9,6 +10,7 @@ import Video from './pages/Video.svelte';
 
 export const AppRoutes = [
   { path: '/button', element: Button, title: 'Button' },
+  { path: '/checkbox', element: Checkbox, title: 'Checkbox' },
   { path: '/chip', element: Chip, title: 'Chip' },
   { path: '/dropdown', element: Dropdown, title: 'Dropdown' },
   { path: '/form', element: Form, title: 'Form' },

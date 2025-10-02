@@ -75,6 +75,8 @@ export class ItCheckbox extends FormControl {
     this.indeterminate = false;
     super._handleClick(e);
     this._handleChange(e);
+    // ✅ Evento standard per compatibilità
+    this.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
   private _renderInput(supportTextId: string, invalid: boolean, validityMessage: string) {
@@ -128,7 +130,7 @@ export class ItCheckbox extends FormControl {
     )}`;
 
     const showValidation = this._touched || this.customValidation;
-    const validityMessage = (showValidation ? this.validationMessage : '') ?? '';
+    const validityMessage = (showValidation ? (this.validationMessage ?? '') : '') ?? '';
     const invalid =
       validityMessage?.length > 0 || (!this.customValidation && this.inputElement?.checkValidity() === false);
 
