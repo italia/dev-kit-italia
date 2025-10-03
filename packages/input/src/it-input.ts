@@ -462,14 +462,14 @@ export class ItInput extends FormControl {
                       <button
                         class="input-number-add"
                         @click=${() => this._inputNumberIncDec(+1)}
-                        disabled=${this.disabled || this.readonly}
+                        ?disabled=${this.disabled || this.readonly}
                       >
                         <span class="visually-hidden">${this.$t('increaseValue')}</span>
                       </button>
                       <button
                         class="input-number-sub"
                         @click=${() => this._inputNumberIncDec(-1)}
-                        disabled=${this.disabled || this.readonly}
+                        ?disabled=${this.disabled || this.readonly}
                       >
                         <span class="visually-hidden">${this.$t('decreaseValue')}</span>
                       </button>
