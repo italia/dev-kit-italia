@@ -443,6 +443,8 @@ export class ItInput extends FormControl {
                   'input-group ',
                   this.type === 'number' ? 'input-number' : '',
                   this.type === 'number' && this.adaptive ? 'input-number-adaptive' : '',
+                  this.disabled ? 'disabled' : '',
+                  this.readonly ? 'readonly' : '',
                 )}"
               >
                 ${when(
