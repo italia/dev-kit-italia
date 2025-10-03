@@ -459,10 +459,18 @@ export class ItInput extends FormControl {
                   this.type === 'number',
                   () =>
                     html`<span class="input-group-text align-buttons flex-column">
-                      <button class="input-number-add" @click=${() => this._inputNumberIncDec(+1)}>
+                      <button
+                        class="input-number-add"
+                        @click=${() => this._inputNumberIncDec(+1)}
+                        disabled=${this.disabled || this.readonly}
+                      >
                         <span class="visually-hidden">${this.$t('increaseValue')}</span>
                       </button>
-                      <button class="input-number-sub" @click=${() => this._inputNumberIncDec(-1)}>
+                      <button
+                        class="input-number-sub"
+                        @click=${() => this._inputNumberIncDec(-1)}
+                        disabled=${this.disabled || this.readonly}
+                      >
                         <span class="visually-hidden">${this.$t('decreaseValue')}</span>
                       </button>
                       <div aria-live="polite" class="visually-hidden" id="${this._id}-live-region"></div>
