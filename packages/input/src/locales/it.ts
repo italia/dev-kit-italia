@@ -21,10 +21,6 @@ const translation: DefaultTranslation = {
   passwordSuggestionFollowedPlural: 'suggerimenti seguiti',
   passwordSuggestionOf: 'di',
   passwordSuggestionMetLabel: 'Soddisfatto:',
-  validityRequired: 'Questo campo è obbligatorio.',
-  validityPattern: 'Il valore non corrisponde al formato richiesto.',
-  validityMinlength: 'Il valore deve essere lungo almeno {minlength} caratteri.',
-  validityMaxlength: 'Il valore deve essere lungo al massimo {maxlength} caratteri.',
   increaseValue: 'Aumenta il valore',
   decreaseValue: 'Diminuisci il valore',
 };
