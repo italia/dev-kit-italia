@@ -8,13 +8,13 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/italia/design-web-components.git",
+    "url": "https://github.com/italia/dev-kit-italia.git",
     "directory": "packages/tabs"
   },
   "author": "Presidenza del Consiglio dei Ministri",
-  "homepage": "https://italia.github.io/design-web-components",
+  "homepage": "https://italia.github.io/dev-kit-italia",
   "bugs": {
-    "url": "https://github.com/italia/design-web-components/issues"
+    "url": "https://github.com/italia/dev-kit-italia/issues"
   },
   "type": "module",
   "main": "./dist/src/index.js",
@@ -35,7 +35,6 @@
     "analyze": "cem analyze --litelement --exclude dist",
     "build": "rollup --config rollup.config.js",
     "clean": "rimraf node_modules .turbo .rollup.cache dist coverage",
-    "prepublish": "pnpm build",
     "lint": "eslint --ext .ts \"src/**/*.ts\" \"test/**/*.ts\" && stylelint \"src/**/*.scss\" && prettier \"src/**/*.ts\" \"test/**/*.ts\" --check",
     "format": "eslint --ext .ts \"src/**/*.ts\" \"test/**/*.ts\" --fix && stylelint \"src/**/*.scss\" --fix && prettier \"src/**/*.ts\" \"test/**/*.ts\" --write",
     "test": "wtr --coverage --node-resolve --config web-test-runner.config.js"

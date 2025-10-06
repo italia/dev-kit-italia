@@ -1,20 +1,20 @@
 {
   "name": "@italia/input",
   "description": "Web component it-input del Design system .italia",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.0",
   "publishConfig": {
     "access": "public"
   },
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/italia/design-web-components.git",
+    "url": "https://github.com/italia/dev-kit-italia.git",
     "directory": "packages/input"
   },
   "author": "Presidenza del Consiglio dei Ministri",
-  "homepage": "https://italia.github.io/design-web-components",
+  "homepage": "https://italia.github.io/dev-kit-italia",
   "bugs": {
-    "url": "https://github.com/italia/design-web-components/issues"
+    "url": "https://github.com/italia/dev-kit-italia/issues"
   },
   "type": "module",
   "main": "./dist/src/index.js",
@@ -46,6 +46,7 @@
     "@italia/globals": "workspace:^",
     "@italia/icon": "workspace:^",
     "@italia/button": "workspace:^",
+    "@italia/i18n": "workspace:^",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:"
   },

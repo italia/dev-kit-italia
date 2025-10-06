@@ -6,52 +6,53 @@ import { type ItInput } from '@italia/input';
 describe('<it-input>', () => {
   // Il componente è accessibile di default
   it('should be accessible', async () => {
-    const el = await fixture<ItInput>(html`<it-input label="Test label"></it-input>`);
+    const el = await fixture<ItInput>(html`<it-input label="Test label" name="test"></it-input>`);
     await expect(el).to.be.accessible();
   });
 
   // Imposta e riflette il valore correttamente
   it('should reflect the initial value', async () => {
-    const el = await fixture<ItInput>(html`<it-input value="ciao"></it-input>`);
+    const el = await fixture<ItInput>(html`<it-input value="ciao" label="Test" name="test"></it-input>`);
     expect(el.value).to.equal('ciao');
     expect(el.shadowRoot?.querySelector('input')?.value).to.equal('ciao');
   });
 
   // Validazione (required)
   it('should mark the input as invalid if required and empty', async () => {
-    const el = await fixture<ItInput>(html`<it-input required></it-input>`);
+    const el = await fixture<ItInput>(html`<it-input label="Required field" name="req-field" required></it-input>`);
     const input = el.shadowRoot?.querySelector('input')!;
     input.focus();
     input.blur(); // trigger blur e checkValidity
 
-    expect(el.invalid).to.be.true;
-    expect(el.validityMessage).to.equal('Questo campo è obbligatorio.');
+    expect(el.validationMessage).to.equal('Questo campo è obbligatorio.');
   });
 
   // Validazione personalizzata (setCustomValidity)
   it('should show a custom validity message', async () => {
     const el = await fixture<ItInput>(
-      html`<it-input validity-message="Errore personalizzato" custom-validation></it-input>`,
+      html`<it-input
+        label="Custom validation"
+        name="custom"
+        validity-message="Errore personalizzato"
+        custom-validation
+      ></it-input>`,
     );
+
     await el.updateComplete;
 
-    expect(el.invalid).to.be.true;
-    expect(el.validityMessage).to.equal('Errore personalizzato');
-    const feedback = el.shadowRoot?.querySelector('.invalid-feedback');
-    expect(feedback?.textContent).to.include('Errore personalizzato');
+    expect(el.validationMessage).to.equal('Errore personalizzato');
   });
 
   // Reset del messaggio di validazione dopo input valido
 
   it('should clear the validity message after valid input', async () => {
-    const el = await fixture<ItInput>(html`<it-input required></it-input>`);
-    el.setCustomValidity('Errore');
+    const el = await fixture<ItInput>(html`<it-input required label="Required field" name="test"></it-input>`);
+    el.blur();
     el.value = 'ok';
     el.checkValidity();
     await el.updateComplete;
 
-    expect(el.invalid).to.be.false;
-    expect(el.validityMessage).to.equal('');
+    expect(el.validationMessage).to.equal('');
   });
 
   it('send right value to FormData', async () => {
@@ -59,7 +60,7 @@ describe('<it-input>', () => {
     const container = await fixture<HTMLDivElement>(html`
       <div>
         <form id="test-form">
-          <it-input name="email" type="email" value="test@example.com"></it-input>
+          <it-input name="email" type="email" value="test@example.com" label="Email"></it-input>
           <button type="submit">Invia</button>
         </form>
       </div>
@@ -83,7 +84,7 @@ describe('<it-input>', () => {
     const container = await fixture<HTMLDivElement>(html`
       <div>
         <form id="test-form">
-          <it-input name="username" value="initialValue"></it-input>
+          <it-input name="username" value="initialValue" label="Username"></it-input>
         </form>
       </div>
     `);

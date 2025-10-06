@@ -1,0 +1,139 @@
+import { Meta } from '@storybook/blocks';
+import { Code } from '@storybook/components';
+
+<Meta title="Welcome" />
+
+<div class="mb-4">
+  <h1 class="visually-hidden">Dev Kit Italia</h1>
+  <div>
+    <img src="./logo.png" width="500px" alt=".italia dev kit" />
+  </div>
+  <p class="lead mb-5">
+    Dev Kit Italia è un set di Web components che implementa il Design system .italia e i componenti presenti su [UI Kit
+    Italia](https://github.com/italia/design-ui-kit).
+  </p>
+</div>
+
+## Come iniziare
+
+Per iniziare, è sufficiente installare il pacchetto `npm` attraverso il seguente comando:
+
+```bash
+npm install @italia/dev-kit-italia --save
+```
+
+e seguire le istruzioni presenti [sulla pagina GitHub del
+progetto](https://github.com/italia/dev-kit-italia?tab=readme-ov-file#come-usare-la-libreria).
+
+Il progetto è distribuito con licenza BSD-3 (consultabile nel file [LICENSE](https://github.com/italia/dev-kit-italia/blob/main/LICENSE)),
+un modello ancora più permissivo della classica licenza GPL, in quanto consente di modificare e ridistribuire
+questo software secondo varie modalità, anche di tipo closed-source.
+
+## Come contribuire
+
+Per installare la libreria e avviare Storybook in locale, è necessario avere installato [Node.js](https://nodejs.org/) e [pnpm](https://pnpm.io/).
+
+Per installare le dipendenze:
+
+```bash
+pnpm install
+```
+
+Per compilare tutti i componenti:
+
+```bash
+pnpm build
+```
+
+Per avviare Storybook in locale:
+
+```bash
+pnpm storybook
+```
+
+**Durante lo sviluppo:**
+
+- Documentazione/Storie e tipi: si aggiornano automaticamente ✨
+- Componenti: puoi ricompilare il solo package modificato
+
+```bash
+# Per esempio, se stai modificando il componente button:
+pnpm build --filter=@italia/button
+# Poi ricarica la pagina del browser
+```
+
+## Testare l'integrazione in altri framework JS
+
+Si consiglia di partire creando un progetto di esempio utilizzando il framework desiderato e importando i Web Components da Dev Kit Italia.
+
+```bash
+# Esegui questo comando
+npm create vite@latest test-app
+# Poi segui il prompt!
+```
+
+Dopo aver creato il progetto, è possibile installare Dev Kit Italia come dipendenza:
+
+```bash
+npm install @italia/dev-kit-italia
+```
+
+A questo punto bisogna importare i Web Components nel progetto.
+
+```javascript
+import '@italia/dev-kit-italia/fonts.css';
+import '@italia/dev-kit-italia/styles.css';
+import '@italia/dev-kit-italia/elements.js';
+
+// Pronti a utilizzare i Web Components!
+return (
+  <div>
+    <it-button ...></it-button>
+  </div>
+)
+```
+
+Come alternativa, è possibile installare i singoli pacchetti dei Web Components. Sarà comunque necessario importare il file CSS generale come mostrato sopra.
+
+```bash
+npm install @italia/button
+```
+
+```javascript
+import '@italia/dev-kit-italia/styles.css';
+import '@italia/button/it-button.js';
+
+return (
+  <div>
+    <it-button ...></it-button>
+  </div>
+)
+```
+
+## Applicazioni predefinite per il testing
+
+All'interno di questo progetto, sotto alla cartella `/apps` sono gia disponibili alcune applicazioni create con i framework **Angular**, **React**, **Svelte** e **Vue** che consentono di testare l'attuale versione della libreria (o del branch corrente).
+
+#### Come testare:
+
+1. compilare sempre la versione corrente della libreria posizionandosi nella root con
+
+```bash
+pnpm build
+```
+
+2. posizionarsi nella cartella del framework che si vuole testare. Ad esempio se vogliamo testare il framework React (oppure Vue, o Svelte):
+
+```bash
+cd apps/react-app
+npm install # Per copiare nella node_modules la versione compilata di dev-kit-italia
+npm run dev
+```
+
+Se invece si vuole testare l'app Angular, è necessario avere installato in locale la CLI di Angular e fare:
+
+```bash
+cd apps/angular-app
+npm install # Per copiare nella node_modules la versione compilata di dev-kit-italia
+ng serve
+```

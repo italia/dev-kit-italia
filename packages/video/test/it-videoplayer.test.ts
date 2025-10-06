@@ -30,7 +30,7 @@ describe('ItVideo', () => {
     const translations = { en: { 'Play Video': 'Play Video' } };
     const el = await fixture<ItVideo>(
       html`<it-video
-        language="en"
+        lang="en"
         translations="${translations}"
         src="https://vjs.zencdn.net/v/oceans.webm"
         type="video/mp4"
@@ -58,7 +58,6 @@ describe('ItVideo', () => {
     await expect(overlayAccept).to.have.class('show');
 
     const acceptButton = el.shadowRoot?.querySelector('it-button')?.shadowRoot?.querySelector('button');
-    console.log(acceptButton);
     acceptButton?.click();
 
     await waitUntil(() => !overlayAccept?.classList.contains('show'), 'overlay still has class "show"', {

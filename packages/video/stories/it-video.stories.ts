@@ -1,19 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
+
 import '@italia/video';
 import '@italia/button';
-import '@italia/icon';
-import itLang from '../src/locales/it.js';
-import type { ConsentOptions, Track, Translations, Locale } from '../src/types.ts';
+import itLang from '../src/locales/videojs/it.js';
+import i18nIT from '../src/locales/it.js';
+import type { ConsentOptions, Track, VideoJSTranslations } from '../src/types.ts';
 
 interface VideoProps {
   src: string;
   poster: string;
   type?: string;
   options?: object;
-  translations?: Translations;
-  language?: Locale;
+  translations?: VideoJSTranslations;
+  lang?: string;
   track?: Track;
   consentOptions?: ConsentOptions;
   initPlugins: string;
@@ -28,7 +29,7 @@ const renderComponent = (params: any) => html`
     type="${ifDefined(params.type)}"
     options="${params.options ? JSON.stringify(params.options) : nothing}"
     translations="${params.translations ? JSON.stringify(params.translations) : nothing}"
-    language="${ifDefined(params.language)}"
+    lang="${ifDefined(params.lang)}"
     track="${params.track ? JSON.stringify(params.track) : nothing}"
     >${params.slot}</it-video
   >
@@ -46,8 +47,8 @@ const meta = {
     options: undefined,
     track: [],
     consentOptions: {},
-    language: 'it',
-    translations: { it: itLang },
+    lang: 'it',
+    translations: { it: itLang as any },
     initPlugins: '',
   },
   argTypes: {
@@ -72,23 +73,23 @@ const meta = {
       name: 'consent-options',
       control: 'object',
       description:
-        'Oggetto per la configurazione del riquadro per il consenso dei cookie. <br/>Di default sono gia previsti testi e icona, ma è possibile (ed è suggerito) modificare il testo con il link alla pagina della privacy policy. Di default viene salvata una variabile nel localstorage quando viene dato il consenso permanente per i cookie, ma è possibile personalizzare il comportamento passando in questo oggetto due funzioni specifiche per la gestione della memorizzazione del consenso: `onAccept` e `isAccepted`. ',
+        'Oggetto per la configurazione del consenso dei cookie. <br/>Di default viene salvata una variabile nel localstorage con lo stesso nome del type del video, ma è possibile personalizzarla passando in `consentOptions` un valore per `consentKey`. <br/>Inoltre, quando viene dato il consenso permanente per i cookie, è possibile personalizzare il comportamento passando in questo oggetto due funzioni specifiche per la gestione della memorizzazione del consenso: `onAccept` e `isAccepted`.',
       table: {
         defaultValue: {
-          summary:
-            "{icon: 'it-video', text: 'Accetta i cookie di YouTube per vedere il video. Puoi gestire le preferenze nella <a href='#' class='text-white'>cookie policy</a>.', acceptButtonText: 'Accetta', rememberCheckboxText: 'Ricorda per tutti i video',}",
+          summary: '{}',
         },
       },
     },
-    language: {
-      control: 'text',
-      description: "Lingua del player di cui verrano usate le corrispondenti 'transaltions'",
+    lang: {
+      control: 'select',
+      options: ['it', 'en', 'fr', 'de', 'es'],
+      description: "Lingua del player di cui verrano usate le corrispondenti 'translations'",
       table: { defaultValue: { summary: 'it' } },
     },
     translations: {
       control: 'object',
       description:
-        'Traduzioni per le diverse lingue. Di base è disponibile solo la lingua it. Usare questa prop per aggiungere le traduzioni in altre lingue. ',
+        'Traduzioni del player per le diverse lingue. Di base è disponibile solo la lingua it. Usare questa prop per aggiungere le traduzioni in altre lingue. ',
     },
     initPlugins: {
       name: 'init-plugins',
@@ -126,10 +127,6 @@ export default meta;
 export const EsempioInterattivo: Story = {
   ...meta,
   name: 'Esempio interattivo',
-  // args: {
-  //   src: 'https://vjs.zencdn.net/v/oceans.webm',
-  // },
-
   tags: ['!autodocs', '!dev'],
   parameters: {
     docs: {
@@ -157,14 +154,14 @@ export const ComeUsarlo: Story = {
 Per aggiungere un video, è sufficiente utilizzare il componente \`<it-video />\` ed i relativi attributi per gestirne la sorgente, e le opzioni del video player. - Usa l'attributo \`options\` per passare
 al player le opzioni definite qui [https://videojs.com/guides/options/](https://videojs.com/guides/options/).
 
-- Usa l'attributo \`translations\` per definire le traduzioni diverse dalla lingua italiana, o per
+- Usa l'attributo \`translations\` per definire le traduzioni del player diverse dalla lingua italiana, o per
 sovrascrivere le traduzioni italiane pre-impostate.
 
 ### Font per le icone del player
-Per utilizzare le icone del player, è necessario includere il font \`VideoJS.woff\` nella tua applicazione. Puoi farlo aggiungendo il css compilato di design-web-components nel tuo sorgente HTML:
+Per utilizzare le icone del player, è necessario includere il font \`VideoJS.woff\` nella tua applicazione. Puoi farlo aggiungendo il css compilato di dev-kit-italia nel tuo sorgente HTML:
 
 \`\`\`html
-<link rel="stylesheet" href="design-web-components/dist/design-web-components.css" />
+<link rel="stylesheet" href="dev-kit-italia/dist/styles.css" />
 \`\`\`
 oppure se stai usando SCSS puoi definire il font direttamente nel tuo file SCSS:
 
@@ -176,7 +173,7 @@ oppure se stai usando SCSS puoi definire il font direttamente nel tuo file SCSS:
   font-style: normal;
 }
 \`\`\`
-copiando l'asset \`VideoJS.woff\` nella tua cartella assets/fonts (lo puoi copiare dal package design-web-components).
+copiando l'asset \`VideoJS.woff\` nella tua cartella assets/fonts (lo puoi copiare dal package dev-kit-italia).
 
 
 ### Plugin
@@ -428,19 +425,18 @@ Nella sezione seguente vengono illustrate le funzioni per la gestione delle pref
 
 L'overlay di consenso viene automaticamente istanziato dal componente se si tratta di un video Youtube.
 
-Per personalizzare l'overlay di consenso è possibile passare al componente \`<it-video>\` l'attributo \`consent-options\` con il seguente formato:
+Per personalizzare il comportamento sulle scelte effettuate nell'overlay di consenso, è possibile passare al componente \`<it-video>\` l'attributo \`consentOptions\` con il seguente formato:
 
 \`\`\`js
-consent-options = {
-    icon?: string; //nome dell'icona da usare nell'overlay del consenso
-    text?: string; //testo da mostrare nell'overlay di consenso, comprendente il link alla privacy policy
-    acceptButtonText?: string; //testo da mostrare sul bottone di accettazione
-    rememberCheckboxText?: string; //testo da mostrare a fianco della checkbox per il salvataggio del consenso
+consentOptions = {
     consentKey?: string; //nome della variabile da usare nel localStorage per il salvataggio della preferenza sul consenso. Di default è 'youtube' per i video di Youtube.
     onAccept?: Function; //(accepted, consentKey)=>{} - funzione che viene invocata quando si accetta il consenso permanente per un video di questa tipologia. Se presente, non viene gestita la preferenza nel localstorage, ma è compito dello sviluppatore implementare la logica di salvataggio delle preferenze
     isAccepted?: Function; // (consentKey)=>{} - funzione che ritorna un valore booleano (true/false), che indica se l'utente ha gia accettato il consenso permanente per tutti i video di quel tipo.
   };
 \`\`\`
+
+Di default sono gia previsti testi e icona, ma è possibile (ed è suggerito) modificare il testo con il link alla pagina della privacy policy.
+I testi e l'icona sono modificabili attraverso il sistema di traduzioni. Vedi la guida dedicata.
 `,
       },
     },
@@ -450,6 +446,28 @@ consent-options = {
       ...params,
       src: 'https://youtu.be/_0j7ZQ67KtY',
       type: undefined,
-      translations: undefined,
+      // translations: undefined,
     })}`,
+};
+
+export const I18n: Story = {
+  name: 'i18n',
+  tags: ['!dev'],
+  render: () => html`<div class="hide-preview"></div>`,
+  parameters: {
+    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
+    docs: {
+      description: {
+        story: `
+Oltre all'attributo \`translations\` che permette di modificare le traduzioni interne al player, sono disponibili ulteriori stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+
+\`\`\`js
+const translation = {
+  ${JSON.stringify(i18nIT).replaceAll('{"', '"').replaceAll('",', '",\n\t').replaceAll('"}', '"')}
+}
+\`\`\`
+`,
+      },
+    },
+  },
 };
