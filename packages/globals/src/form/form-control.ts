@@ -1,10 +1,14 @@
 import { property, query, state } from 'lit/decorators.js';
+import { registerTranslation } from '@italia/i18n';
 import { BaseLocalizedComponent } from '../base-component/base-component.js';
 import { FormControlController } from './form-controller.js';
+import it from './locales/it.js';
+
+registerTranslation(it);
 
 export class FormControl extends BaseLocalizedComponent {
   protected readonly formControlController = new FormControlController(this, {
-    assumeInteractionOn: ['it-input', 'it-blur'],
+    assumeInteractionOn: ['it-input', 'it-blur', 'it-change'],
   });
 
   // TODO: verificare se serve davvero con il fatto che usiamo form-controller
@@ -16,7 +20,7 @@ export class FormControl extends BaseLocalizedComponent {
   @state()
   _touched = false;
 
-  @query('.form__control')
+  @query('.it-form__control')
   inputElement!: HTMLInputElement; // from FormControl
 
   /** The name of the input, submitted as a name/value pair with form data. */
@@ -28,7 +32,7 @@ export class FormControl extends BaseLocalizedComponent {
   value = '';
 
   /** If the input is disabled. */
-  @property({ type: Boolean }) // from FormControl
+  @property({ type: Boolean, reflect: true }) // from FormControl
   disabled = false;
 
   /**
@@ -43,7 +47,7 @@ export class FormControl extends BaseLocalizedComponent {
   customValidation = false;
 
   /** If your input is invalid from your custom validition, set this attribute with message validation */
-  @property({ attribute: 'validity-message' })
+  @property({ attribute: 'validity-message', reflect: true })
   validationText: string = '';
 
   /** Pattern the `value` must match to be valid */
@@ -77,37 +81,13 @@ export class FormControl extends BaseLocalizedComponent {
   @property({ type: Boolean, reflect: true }) // from FormControl
   required = false;
 
-  // Form attributes
-  // name: string;
-  // value: unknown;
-  // disabled?: boolean;
-  // form?: string;
-  // customValidation?: boolean; // se true, la validazione nativa del browser non viene eseguita
-  // validationText?: string; // messaggio di errore da mostrare in caso di validazione custom
-  // internal attributes
-  // inputElement: HTMLInputElement;
-
-  // Constraint validation attributes
-  // pattern?: string;
-  // min?: number | string | Date;
-  // max?: number | string | Date;
-  // step?: number | 'any';
-  // minlength?: number;
-  // maxlength?: number;
-  // required?: boolean;
-
-  // Form validation properties
-  // readonly validity: ValidityState; // getter methods to be implemented
-  // readonly validationMessage: string; // getter methods to be implemented
-
   /** Gets the validity state object */
   public get validity(): ValidityState {
     return this.inputElement?.validity;
   }
 
-  public get validationMessage(): string {
-    return this.inputElement?.validationMessage;
-  }
+  @state()
+  public validationMessage = '';
 
   // Form validation methods
   public checkValidity(): boolean {
@@ -122,12 +102,15 @@ export class FormControl extends BaseLocalizedComponent {
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   public reportValidity() {
-    return this.inputElement.reportValidity();
+    const ret = this.inputElement.checkValidity();
+    this.handleValidationMessages();
+    return ret; // this.inputElement.reportValidity();
   }
 
   /** Sets a custom validation message. Pass an empty string to restore validity. */
   public setCustomValidity(message: string) {
     this.inputElement.setCustomValidity(message);
+    this.validationMessage = this.inputElement.validationMessage;
     this.formControlController.updateValidity();
   }
 
@@ -139,8 +122,10 @@ export class FormControl extends BaseLocalizedComponent {
     });
   }
 
-  protected _handleInput() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected _handleInput(e: Event) {
     this.handleValidationMessages();
+
     this.dispatchEvent(
       new CustomEvent('it-input', {
         detail: { value: this.inputElement.value, el: this.inputElement },
@@ -150,17 +135,21 @@ export class FormControl extends BaseLocalizedComponent {
     );
   }
 
-  protected _handleBlur() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected _handleBlur(e: Event) {
     this._touched = true;
     this.handleValidationMessages();
+
     this.dispatchEvent(new FocusEvent('it-blur', { bubbles: true, composed: true }));
   }
 
-  protected _handleFocus() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected _handleFocus(e: Event) {
     this.dispatchEvent(new FocusEvent('it-focus', { bubbles: true, composed: true }));
   }
 
-  protected _handleClick() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected _handleClick(e: Event) {
     this.dispatchEvent(new MouseEvent('it-click', { bubbles: true, composed: true }));
   }
 
@@ -196,6 +185,8 @@ export class FormControl extends BaseLocalizedComponent {
         }
       }
     }
+
+    this.validationMessage = this.inputElement.validationMessage;
   }
 
   protected _handleInvalid(event: Event) {
@@ -243,9 +234,9 @@ export class FormControl extends BaseLocalizedComponent {
     super.updated?.(changedProperties);
 
     if (this.customValidation) {
-      this.setCustomValidity(this.validationText);
+      this.setCustomValidity(this.validationText ?? '');
+    } else {
+      this.formControlController.updateValidity();
     }
-
-    this.formControlController.updateValidity();
   }
 }

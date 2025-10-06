@@ -238,7 +238,6 @@ export class FormControlController implements ReactiveController {
   };
 
   private handleFormSubmit = (event: Event) => {
-    // console.log('handleFormSubmit');
     const disabled = this.options.disabled(this.host);
     const reportValidity = this.options.reportValidity;
 
@@ -251,7 +250,7 @@ export class FormControlController implements ReactiveController {
 
     if (this.form && !this.form.noValidate && !disabled && !reportValidity(this.host)) {
       event.preventDefault();
-      event.stopImmediatePropagation();
+      // event.stopImmediatePropagation(); // se lo attiviamo, valida un campo alla volta
     }
   };
 

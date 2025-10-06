@@ -1,11 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  text-align: center;
 }
 
 .app-header {
   border-bottom: 1px solid currentColor;
   margin-bottom: 2rem;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
 }
 
 .app-nav {

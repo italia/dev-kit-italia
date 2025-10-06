@@ -36,6 +36,7 @@ section {
 .app-header {
   border-bottom: 1px solid currentColor;
   margin-bottom: 2rem;
+  text-align: center;
 }
 .app-nav {
   display: flex;
