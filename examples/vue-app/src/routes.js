@@ -6,6 +6,7 @@ import Dropdown from './components/Dropdown.vue';
 import Form from './components/Form.vue';
 import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
+import Popover from './components/Popover.vue';
 import Section from './components/Section.vue';
 import Video from './components/Video.vue';
 
@@ -16,6 +17,7 @@ const routes = [
   { path: '/form', name: 'Form', component: Form },
   { path: '/icon', name: 'Icon', component: Icon },
   { path: '/input', name: 'Input', component: Input },
+  { path: '/popover', name: 'Popover', component: Popover },
   { path: '/section', name: 'Section', component: Section },
   { path: '/video', name: 'Video', component: Video },
 ];

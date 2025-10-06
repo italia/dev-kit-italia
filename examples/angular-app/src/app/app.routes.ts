@@ -30,6 +30,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/input.component').then((c) => c.InputComponent),
   },
   {
+    path: 'popover',
+    loadComponent: () => import('./pages/popover.component').then((c) => c.PopoverComponent),
+  },
+  {
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
   },

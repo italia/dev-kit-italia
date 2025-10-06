@@ -52,6 +52,9 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/input">
         Input
       </a>
+      <a href="/src/popover">
+        Popover
+      </a>
       <a href="/src/section">
         Section
       </a>
