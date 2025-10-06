@@ -242,8 +242,8 @@
             <div class="col-lg-4 col-md-4 pb-2">
               <h4>Contatti</h4>
               <p>
-                <strong>Comune di Lorem Ipsum</strong><br />
-                Via Roma 0 - 00000 Lorem Ipsum Codice fiscale / P. IVA: 000000000
+                <strong>Nome Ente</strong><br />
+                Via Roma 0 - 00000 Città - Codice fiscale / P. IVA: 000000000
               </p>
               <div class="link-list-wrapper">
                 <ul class="footer-list link-list clearfix">
@@ -279,12 +279,20 @@
               </div>
             </div>
             <div class="col-lg-4 col-md-4 mt-2">
-            <h4>Newsletter</h4>
-            <div class="form-group d-flex gap-1">
-              <input type="text" class="form-control form-control-sm" id="exampleFormGroup" placeholder="Inserisci la tua email">
-              <it-button type="submit" variant="primary">Iscriviti</it-button>
+              <h4>Newsletter</h4>
+              <div class="form-group d-flex gap-1">
+                <it-input
+                  slotted
+                  type="text"
+                  id="newsletter-email"
+                  size="sm"
+                  placeholder="Inserisci la tua email"
+                  label-hidden
+                >
+                  <it-button type="submit" variant="primary" slot="append">Iscriviti</it-button>
+                </it-input>
+              </div>
             </div>
-          </div>
           </div>
         </section>
       </div>

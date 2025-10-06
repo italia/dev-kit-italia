@@ -12,9 +12,9 @@ const defaultContent = html`
           <div class="row clearfix">
             <div class="col-sm-12">
               <div class="it-brand-wrapper">
-                <a href="#"
-                  ><it-icon name="it-pa" size="lg" color="white"></it-icon>
-                  <div class="it-brand-text ms-3">
+                <a href="#">
+                  <it-icon name="it-code-circle" size="xl" color="white"></it-icon>
+                  <div class="it-brand-text">
                     <h2 class="no_toc">Nome Ente</h2>
                     <h3 class="no_toc">Tagline</h3>
                   </div>
@@ -87,8 +87,8 @@ const defaultContent = html`
             <div class="col-lg-4 col-md-4 pb-2">
               <h4>Contatti</h4>
               <p>
-                <strong>Comune di Lorem Ipsum</strong><br />
-                Via Roma 0 - 00000 Lorem Ipsum Codice fiscale / P. IVA: 000000000
+                <strong>Nome Ente</strong><br />
+                Via Roma 0 - 00000 Città - Codice fiscale / P. IVA: 000000000
               </p>
               <div class="link-list-wrapper">
                 <ul class="footer-list link-list clearfix">
@@ -176,10 +176,10 @@ const smallContent = html` <footer class="it-footer">
           <div class="col-sm-12">
             <div class="it-brand-wrapper">
               <a href="#" >
-                <it-icon name="it-pa" size="lg" color="white"></it-icon>
-                <div class="it-brand-text ms-3">
+                <it-icon name="it-code-circle" size="xl" color="white"></it-icon>
+                <div class="it-brand-text">
                   <h2>Nome Ente</h2>
-                  <h3>Tagline</h3>
+                  <h3 class="no_toc">Tagline</h3>
                 </div>
               </a>
             </div>
@@ -273,9 +273,10 @@ const meta = {
       description: {
         component:
           `<Description>Documentazione ed esempi per la creazione di piè di pagina di navigazione.</Description>
+<h3 style="border-bottom:none;padding-top:36px">Introduzione</h3>
 Il **footer** (piè di pagina) è una sezione che contiene tutte le informazioni inerenti al sito web e alla società o organizzazione che rappresenta.
 
-Per una Pubblica Amministrazione potrebbe contenere tutte i riferimenti ai vari servizi, a varie pagine utili alla cittadinanza, riferimenti alla privacy, il collegamento alla Dichiarazione di accessibilità sul form AgID e informazioni su come contattare l’amministrazione.
+Per una Pubblica Amministrazione potrebbe contenere tutte i riferimenti ai vari **servizi**, a varie **pagine utili** alla cittadinanza, riferimenti alla **privacy**, il collegamento alla **Dichiarazione di accessibilità sul form AgID** e informazioni su come **contattare** l’amministrazione.
 
 Potrebbe anche contenere riferimenti alle pagine social dell’amministrazione.
 
@@ -310,13 +311,13 @@ export const FooterCompleto: Story = {
       description: {
         story: `Nel footer completo sono presenti i seguenti elementi:
 
-- Logo dell’ente con nome e tagline;
-- Sezioni di primo livello e relative sotto-sezioni; il nome della sezione è un link che porta alla pagina principale della sezione;
-- Contatti dell’ente;
-- Link utili (Media policy, Note legali, Privacy policy, Mappa del sito);
-- Dichiarazione di accessibilità (link esterno su form AgID);
-- Profili Social dell’ente;
-- Iscrizione Newsletter (opzionale).`,
+- **Logo** dell’ente con nome e tagline;
+- **Sezioni di primo livello** e relative sotto-sezioni; il nome della sezione è un link che porta alla pagina principale della sezione;
+- **Contatti** dell’ente;
+- **Link utili** (Media policy, Note legali, Privacy policy, Mappa del sito);
+- **Dichiarazione di accessibilità** (link esterno su form AgID);
+- **Profili Social** dell’ente;
+- **Iscrizione Newsletter** (opzionale).`,
       },
     },
   },

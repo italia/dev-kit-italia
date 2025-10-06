@@ -1,5 +1,6 @@
 <script>
   import Router from './Router.svelte';
+  import Footer from './components/Footer.svelte';
   import svelteLogo from './assets/svelte.svg';
   import viteLogo from '/vite.svg';
 </script>
@@ -27,6 +28,7 @@
     </nav>
   </div>
   <Router />
+  <Footer />
 </main>
 
 <style>
