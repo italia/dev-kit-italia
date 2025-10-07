@@ -135,14 +135,14 @@ export class ItInput extends FormControl {
     }
   }
 
-  override _handleInput() {
+  override _handleInput(e: Event) {
     this.value = this.inputElement.value;
 
     if (this.passwordStrengthMeter) {
       this._checkPasswordStrength(this.inputElement.value);
     }
 
-    super._handleInput();
+    super._handleInput(e);
   }
 
   private _togglePasswordVisibility() {
@@ -297,7 +297,7 @@ export class ItInput extends FormControl {
     );
 
     const inputClasses = this.composeClass(
-      'form__control',
+      'it-form__control',
       this.plaintext ? 'form-control-plaintext' : 'form-control',
       this.size ? `form-control-${this.size}` : '',
       invalid ? 'is-invalid' : '',
@@ -395,7 +395,7 @@ export class ItInput extends FormControl {
       () => html` <small class="form-text" id="${supportTextId}">${this.supportText}</small> `,
     )}`;
 
-    const showValidation = this._touched || this.customValidation;
+    const showValidation = true; // this._touched || this.customValidation;
     const validityMessage = (showValidation ? this.validationMessage : '') ?? '';
     const invalid =
       validityMessage?.length > 0 || (!this.customValidation && this.inputElement?.checkValidity() === false);
