@@ -42,6 +42,7 @@ const renderComponent = (params: any) =>
     ?required="${params.required}"
     support-text="${ifDefined(params.supportText || undefined)}"
     ?group="${params.group}"
+    class="${ifDefined(params.className || undefined)}"
     >${ifDefined(params.children || undefined)}</it-checkbox
   >`;
 
@@ -198,6 +199,7 @@ Affinché i campi checkbox risultino disabilitati occorrerà aggiungere l’attr
       ${renderComponent({
         ...params,
         label: 'Checkbox non selezionato',
+        className: 'mb-2',
       })}
       ${renderComponent({
         ...params,

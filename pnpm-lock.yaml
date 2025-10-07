@@ -209,7 +209,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/0f995fca74a6cec84d1f272a4e268a4a5a2cc5d7
+        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/ec89f232677d2bd48ad45b021e91445c7dc075b9
       lit:
         specifier: 'catalog:'
         version: 3.3.0
@@ -850,6 +850,9 @@ importers:
       '@italia/button':
         specifier: workspace:^
         version: link:../button
+      '@italia/checkbox':
+        specifier: workspace:^
+        version: link:../checkbox
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals

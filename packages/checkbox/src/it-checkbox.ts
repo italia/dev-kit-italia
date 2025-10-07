@@ -54,6 +54,11 @@ export class ItCheckbox extends FormControl {
   @property({ type: String, attribute: 'support-text' })
   supportText = '';
 
+  /** Simulates a click on the checkbox. */
+  click() {
+    this.inputElement.click();
+  }
+
   override connectedCallback() {
     super.connectedCallback?.();
     this._handleReady();
