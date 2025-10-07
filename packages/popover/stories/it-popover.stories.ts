@@ -23,7 +23,7 @@ type PopoverProps = {
 
 type Story = StoryObj<PopoverProps>;
 
-const containerStyle = 'height:200px;display:flex;align-items:flex-start;';
+const containerStyle = 'height:400px;display:flex;align-items:flex-start;';
 
 const meta = {
   title: 'Componenti/Popover',
@@ -100,7 +100,7 @@ L'utente deve aggiungere gli event listener necessari per aprire/chiudere il pop
   <it-button slot="trigger" id="trigger-btn">Clicca per aprire</it-button>
   <div slot="content" class="popover">
     <div class="popover-inner">
-      <h3 class="popover-header">Titolo</h3>
+      <h4 class="popover-header" style="margin-bottom:0;">Titolo</h4>
       <div class="popover-body">Contenuto del popover</div>
     </div>
   </div>
@@ -151,14 +151,17 @@ export const Base: Story = {
 
     return html`
       <it-popover placement=${ifDefined(args.placement)} ?open=${args.open}>
-        <it-button slot="trigger" variant="primary" @click=${handleClick}> Opzioni utente </it-button>
+        <it-button slot="trigger" variant="primary" @click=${handleClick}>
+          Opzioni utente, clicca per aprire
+        </it-button>
         <div slot="content" class="popover">
           <div class="popover-inner">
-            <h3 class="popover-header">Menu azioni</h3>
+            <h4 class="popover-header" style="margin-bottom:0;">Menu azioni</h4>
             <div class="popover-body">
               <div style="display: flex; flex-direction: column; gap: 8px;">
-                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Dictum sit amet
-                justo donec enim diam vulputate ut. Eu nisl nunc mi ipsum faucibus.
+                <p style="min-width: 200px;">
+                  Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.
+                </p>
                 <a
                   href="#"
                   @click=${(e: Event) => handleActionClick(e, 'Modifica profilo')}
@@ -220,16 +223,15 @@ export const Direzioni: Story = {
 
     return html`
       <div
-        style="height:200px;width:200px;display:flex;align-items:flex-start;gap: 2rem;flex-wrap: wrap;justify-content: center;"
+        style="height:400px;width:200px;display:flex;align-items:flex-start;gap: 2rem;flex-wrap: wrap;justify-content: center;"
       >
         <it-popover placement="bottom-start">
           <it-button slot="trigger" variant="primary" @click=${handleClick}>Giù</it-button>
           <div slot="content" class="popover">
             <div class="popover-inner">
-              <h3 class="popover-header">Azioni rapide</h3>
+              <h4 class="popover-header" style="margin-bottom:0;">Azioni rapide</h4>
               <div class="popover-body">
-                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Dictum sit amet
-                justo donec enim diam vulputate ut. Eu nisl nunc mi ipsum faucibus.
+               <p style="min-width: 200px;"> Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.</p>
                 <a href="#" @click=${handleLinkClick} style="color: var(--bs-primary); display: block;"> Copia link </a>
               </div>
             </div>
@@ -240,10 +242,9 @@ export const Direzioni: Story = {
           <it-button slot="trigger" variant="primary" @click=${handleClick}>Sinistra</it-button>
           <div slot="content" class="popover">
             <div class="popover-inner">
-              <h3 class="popover-header">Azioni rapide</h3>
+              <h4 class="popover-header" style="margin-bottom:0;">Azioni rapide</h4>
               <div class="popover-body">
-                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Dictum sit amet
-                justo donec enim diam vulputate ut. Eu nisl nunc mi ipsum faucibus.
+               <p style="min-width: 200px;"> Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.</p>
                 <a href="#" @click=${handleLinkClick} style="color: var(--bs-primary); display: block;"> Condividi </a>
               </div>
             </div>
@@ -254,10 +255,9 @@ export const Direzioni: Story = {
           <it-button slot="trigger" variant="primary" @click=${handleClick}>Su</it-button>
           <div slot="content" class="popover">
             <div class="popover-inner">
-              <h3 class="popover-header">Azioni rapide</h3>
+              <h4 class="popover-header" style="margin-bottom:0;">Azioni rapide</h4>
               <div class="popover-body">
-                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Dictum sit amet
-                justo donec enim diam vulputate ut. Eu nisl nunc mi ipsum faucibus.
+               <p style="min-width: 200px;"> Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.</p>
                 <a href="#" @click=${handleLinkClick} style="color: var(--bs-primary); display: block;"> ⬇️ Scarica </a>
               </div>
             </div>
@@ -268,10 +268,9 @@ export const Direzioni: Story = {
           <it-button slot="trigger" variant="primary" @click=${handleClick}>Destra</it-button>
           <div slot="content" class="popover">
             <div class="popover-inner">
-              <h3 class="popover-header">Azioni rapide</h3>
-              <div class="popover-body">
-                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Dictum sit amet
-                justo donec enim diam vulputate ut. Eu nisl nunc mi ipsum faucibus.
+              <h4 class="popover-header" style="margin-bottom:0;">Azioni rapide</h4>
+              <div class="popover-body" ">
+               <p style="min-width: 200px;"> Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.</p>
                 <a href="#" @click=${handleLinkClick} style="color: var(--bs-primary); display: block;">
                   Aggiungi ai preferiti
                 </a>
@@ -326,14 +325,16 @@ export const ConIconaELink: Story = {
         <it-button slot="trigger" variant="primary" @click=${handleClick}>Info documento</it-button>
         <div slot="content" class="popover">
           <div class="popover-inner">
-            <h3 class="popover-header">
+            <h4 class="popover-header" style="margin-bottom:0;">
               <it-icon name="it-info-circle" size="sm" style="margin-right:0.5rem;"></it-icon>
               Informazioni documento
-            </h3>
+            </h4>
             <div class="popover-body">
-              Questo documento contiene informazioni sensibili. Prima di procedere assicurati di avere le autorizzazioni
-              necessarie.
-              <a href="#" class="popover-inner-link" @click=${handleLinkClick}>Leggi la policy completa</a>
+              <p style="min-width: 200px;">
+                Questo documento contiene informazioni sensibili. Prima di procedere assicurati di avere le
+                autorizzazioni necessarie.
+                <a href="#" class="popover-inner-link" @click=${handleLinkClick}>Leggi la policy completa</a>
+              </p>
             </div>
           </div>
         </div>
@@ -369,7 +370,7 @@ export const ConIconaELink: Story = {
 //           <it-button slot="trigger" disabled variant="primary">Pulsante disabilitato</it-button>
 //           <div slot="content" class="popover">
 //             <div class="popover-inner">
-//               <h3 class="popover-header">Popover disabilitato</h3>
+//               <h4 class="popover-header" style="margin-bottom:0;">Popover disabilitato</h4>
 //               <div class="popover-body">
 //                 Questo popover appare su un elemento disabilitato. È necessario usare un elemento contenitore.
 //               </div>
@@ -404,26 +405,10 @@ export const Eventi: Story = {
 
     const handleOpen = (e: CustomEvent) => {
       console.log('Popover aperto', e);
-      const container = document.getElementById('event-log');
-      if (container) {
-        const message = document.createElement('div');
-        message.textContent = `✅ Evento: it-popover-open - ${new Date().toLocaleTimeString()}`;
-        message.style.cssText =
-          'padding:0.5rem;background:#e7f5eb;border-left:3px solid #0bd187;margin-bottom:0.25rem;';
-        container.prepend(message);
-      }
     };
 
     const handleClose = (e: CustomEvent) => {
       console.log('Popover chiuso', e);
-      const container = document.getElementById('event-log');
-      if (container) {
-        const message = document.createElement('div');
-        message.textContent = `❌ Evento: it-popover-close - ${new Date().toLocaleTimeString()}`;
-        message.style.cssText =
-          'padding:0.5rem;background:#fde7ea;border-left:3px solid #d9364f;margin-bottom:0.25rem;';
-        container.prepend(message);
-      }
     };
 
     return html`
@@ -432,20 +417,11 @@ export const Eventi: Story = {
           <it-button slot="trigger" variant="primary" @click=${handleClick}>Popover con eventi</it-button>
           <div slot="content" class="popover">
             <div class="popover-inner">
-              <h3 class="popover-header">Eventi del Popover</h3>
-              <div class="popover-body">
-                Apri e chiudi questo popover per vedere gli eventi nella console e nel log sottostante.
-              </div>
+              <h4 class="popover-header" style="margin-bottom:0;">Eventi del Popover</h4>
+              <div class="popover-body">Apri e chiudi questo popover per vedere gli eventi nella console.</div>
             </div>
           </div>
         </it-popover>
-
-        <div
-          id="event-log"
-          style="width:100%;max-width:600px;padding:1rem;background:#f5f5f5;border-radius:4px;min-height:100px;max-height:200px;overflow-y:auto;"
-        >
-          <strong>Log eventi:</strong>
-        </div>
       </div>
     `;
   },
@@ -488,7 +464,7 @@ export const PopoverSenzaPulsante: Story = {
         </a>
         <div slot="content" class="popover">
           <div class="popover-inner">
-            <h3 class="popover-header">Informazioni sulla privacy</h3>
+            <h4 class="popover-header" style="margin-bottom:0;">Informazioni sulla privacy</h4>
             <div class="popover-body">
               <div style="display: flex; flex-direction: column; gap: 8px;">
                 <a
@@ -555,10 +531,12 @@ export const PopoverConHover: Story = {
         </it-button>
         <div slot="content" class="popover">
           <div class="popover-inner">
-            <h3 class="popover-header">Esempio tecnico</h3>
+            <h4 class="popover-header" style="margin-bottom:0;">Esempio tecnico</h4>
             <div class="popover-body">
-              Questo è un esempio tecnico di attivazione su hover. Per questo caso d'uso si raccomanda l'utilizzo di un
-              componente Tooltip invece di un Popover.
+              <p style="min-width: 200px;">
+                Questo è un esempio tecnico di attivazione su hover. Per questo caso d'uso si raccomanda l'utilizzo di
+                un componente Tooltip invece di un Popover.
+              </p>
             </div>
           </div>
         </div>
@@ -665,9 +643,9 @@ export const PopoverConFocus: Story = {
           </it-button>
           <div slot="content" class="popover" @focus=${handleContentFocus} @blur=${handleContentBlur}>
             <div class="popover-inner">
-              <h3 class="popover-header">Esempio tecnico</h3>
+              <h4 class="popover-header" style="margin-bottom:0;">Esempio tecnico</h4>
               <div class="popover-body">
-                <p>
+                <p style="min-width: 200px;">
                   Questo è un esempio tecnico di attivazione su focus tramite navigazione Tab. Per contenuti informativi
                   brevi si raccomanda l'utilizzo di un Tooltip.
                 </p>
