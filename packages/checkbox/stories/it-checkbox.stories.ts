@@ -349,4 +349,7 @@ Per mostrare un testo di supporto alla checkbox, basterà aggiungere l'attributo
   `,
 };
 
-export const MetodiEPropPubblici: Story = { ...StoryFormControlMethodAndProps, tags: ['!dev'] };
+export const MetodiEPropPubblici: Story = {
+  ...StoryFormControlMethodAndProps('', `|\`click()\`| Triggera l'evento di click sull'input reale | - |`),
+  tags: ['!dev'],
+};
