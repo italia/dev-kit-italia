@@ -2,9 +2,6 @@
   let popoverRef;
 
   function handleTriggerClick(e) {
-    if (e.currentTarget.tagName && e.currentTarget.tagName.toLowerCase() === 'a' && e.currentTarget.getAttribute('href') === '#') {
-      e.preventDefault();
-    }
     e.currentTarget.closest('it-popover')?.toggle();
   }
 

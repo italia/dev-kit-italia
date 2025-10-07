@@ -4,7 +4,7 @@ import Dropdown from './pages/Dropdown.svelte';
 import Form from './pages/Form.svelte';
 import Icon from './pages/Icon.svelte';
 import Input from './pages/Input.svelte';
-import Popover from './lib/Popover.svelte';
+import Popover from './pages/Popover.svelte';
 import Section from './pages/Section.svelte';
 import Video from './pages/Video.svelte';
 

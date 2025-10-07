@@ -23,8 +23,7 @@ type PopoverProps = {
 
 type Story = StoryObj<PopoverProps>;
 
-const containerStyle =
-  'min-height:400px;display:flex;align-items:center;justify-content:center;min-width:600px;margin:auto;';
+const containerStyle = 'height:200px;display:flex;align-items:flex-start;';
 
 const meta = {
   title: 'Componenti/Popover',
@@ -32,7 +31,6 @@ const meta = {
   tags: ['autodocs'],
   args: {
     placement: 'bottom-start',
-    open: false,
   },
   argTypes: {
     placement: {
@@ -52,23 +50,20 @@ const meta = {
         'left-end',
       ],
     },
-    open: { control: 'boolean' },
   },
   decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
   parameters: {
     docs: {
       description: {
         component: `
-<Description>Documentazione ed esempi per aggiungere popover (tooltip informativi) a qualsiasi elemento del tuo sito.</Description>
+<Description>Documentazione ed esempi per aggiungere popover.</Description>
 
 Il componente \`<it-popover>\` permette di visualizzare contenuti in overlay posizionati rispetto a un elemento trigger.
 Utilizza [Floating UI](https://floating-ui.com/) per il posizionamento dinamico e supporta diverse posizioni tramite l'attributo \`placement\`.
 
-## Cos'è un Popover?
+### Differenza tra Popover, Tooltip e Dialog/Modal
 
 Un **popover** è un overlay non-modale che appare vicino a un elemento specifico, fornendo contenuto aggiuntivo contestuale e interattivo.
-
-### Differenza tra Popover, Tooltip e Dialog
 
 | Pattern | Modale | Backdrop | Dismissal | Contenuto | Esempi |
 |---------|--------|----------|-----------|-----------|---------|
@@ -76,28 +71,23 @@ Un **popover** è un overlay non-modale che appare vicino a un elemento specific
 | **Popover** | No | No | Light (click outside) | Ricco e interattivo | Menu, date picker, color picker |
 | **Dialog/Modal** | Sì | Sì | Explicit (button) | Complesso, richiede azione | Conferme, alert critici, form |
 
-Il componente implementa le best practices UX per i popover secondo le linee guida di design system come [Polaris (Shopify)](https://polaris.shopify.com/components/overlays/popover), [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/popovers) e [Material Design](https://m3.material.io/).
+Il componente implementa le best practices UX per i popover come [Polaris (Shopify)](https://polaris.shopify.com/components/overlays/popover), [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/popovers) e [Material Design](https://m3.material.io/).
 
-**Flessibilità del pattern di interazione**
+Il componente non implementa event listener automatici perché questi dipendono dal contesto d'uso e dal tipo di trigger che l'utente vuole utilizzare, ed è dunque a carico dell'utilizzatore: vengono in seguito forniti esempi.
 
-I popover, a differenza dei dialog modali, non hanno un pattern di interazione univoco:
-- **Click**: Per menu e azioni
-- **Hover**: Per preview e rich tooltip
-- **Focus**: Per accessibilità da tastiera
-- **Programmatico**: Da codice, come risposta ad altre azioni
-- **Custom**: Long press, combinazioni keyboard, ecc.
+Il componente gestisce comunque automaticamente il **click outside** per chiudere il popover (light dismiss pattern), perché questa è una caratteristica intrinseca dei popover.
 
-**Casi d'uso diversi richiedono logiche diverse**
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
+<p>Il componente gestisce automaticamente gli attributi ARIA necessari come <code>aria-haspopup</code> e <code>aria-expanded</code>.</p>
+<p>Il popover si chiude automaticamente quando si fa clic all'esterno.</p>
+<p>È possibile controllare il popover anche tramite i metodi <code>openPopover()</code>, <code>closePopover()</code> e <code>toggle()</code>.</p>
+<p>Il comportamento del focus non è gestito dal componente stesso, ma è lasciato all’utilizzatore. Questa scelta nasce dalla consapevolezza che solo l’utilizzatore conosce in dettaglio il contenuto del popover e il contesto in cui viene utilizzato, e può quindi determinare quale elemento debba ricevere il focus e quando farlo.
 
-- **Date Picker**: Aperto al click, chiuso alla selezione
-- **Color Picker**: Aperto al click, aggiornamento real-time
-- **Menu contestuale**: Aperto al click/right-click, chiuso alla selezione
-- **Info tooltip**: Aperto all'hover, chiuso all'uscita
-- **Form popover**: Aperto al focus, chiuso al blur o submit
+Delegare questa responsabilità garantisce maggiore flessibilità e coerenza funzionale, oltre a permettere una gestione del focus più aderente alle esigenze specifiche dell’applicazione e degli utenti finali. L’utilizzatore, quindi, dovrà definire esplicitamente nel proprio codice il comportamento del focus, in modo da garantire un’esperienza utente ottimale e accessibile.
 
-**Nota**: Il componente gestisce comunque automaticamente il **click outside** per chiudere il popover (light dismiss pattern), perché questa è una caratteristica intrinseca dei popover.
-
-## Utilizzo
+Se l’obiettivo è creare un menu con azioni o un dropdown menu, è consigliato utilizzare il componente dedicato **Dropdown**, che gestisce automaticamente il comportamento del focus e altre logiche specifiche di navigazione e accessibilità.</p>
+</div></div>
+### Utilizzo
 
 Il popover richiede due slot:
 - \`trigger\`: L'elemento che attiva il popover (generalmente un pulsante)
@@ -108,7 +98,7 @@ L'utente deve aggiungere gli event listener necessari per aprire/chiudere il pop
 \`\`\`html
 <it-popover>
   <it-button slot="trigger" id="trigger-btn">Clicca per aprire</it-button>
-  <div slot="content" class="popover" tabindex="-1">
+  <div slot="content" class="popover">
     <div class="popover-inner">
       <h3 class="popover-header">Titolo</h3>
       <div class="popover-body">Contenuto del popover</div>
@@ -126,11 +116,6 @@ L'utente deve aggiungere gli event listener necessari per aprire/chiudere il pop
 </script>
 \`\`\`
 
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>Il componente gestisce automaticamente gli attributi ARIA necessari come <code>aria-haspopup</code> e <code>aria-expanded</code>.</p>
-<p>Il popover si chiude automaticamente quando si fa clic all'esterno.</p>
-<p>È possibile controllare il popover anche tramite i metodi <code>openPopover()</code>, <code>closePopover()</code> e <code>toggle()</code>.</p>
-</div></div>
 `,
       },
     },
@@ -156,16 +141,46 @@ export const Base: Story = {
       popover?.toggle();
     };
 
+    const handleActionClick = (e: Event, action: string) => {
+      e.preventDefault();
+      const button = e.target as HTMLElement;
+      const popover = button.closest('it-popover') as any;
+      popover?.closePopover();
+      alert(`Azione selezionata: ${action}`);
+    };
+
     return html`
       <it-popover placement=${ifDefined(args.placement)} ?open=${args.open}>
-        <it-button slot="trigger" variant="danger" @click=${handleClick}>
-          Clicca per attivare/disattivare il popover
-        </it-button>
-        <div slot="content" class="popover" tabindex="-1">
+        <it-button slot="trigger" variant="primary" @click=${handleClick}> Opzioni utente </it-button>
+        <div slot="content" class="popover">
           <div class="popover-inner">
-            <h3 class="popover-header">Titolo del Popover</h3>
+            <h3 class="popover-header">Menu azioni</h3>
             <div class="popover-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Dictum sit amet
+                justo donec enim diam vulputate ut. Eu nisl nunc mi ipsum faucibus.
+                <a
+                  href="#"
+                  @click=${(e: Event) => handleActionClick(e, 'Modifica profilo')}
+                  style="color: var(--bs-primary); text-decoration: none;"
+                >
+                  Modifica profilo
+                </a>
+                <a
+                  href="#"
+                  @click=${(e: Event) => handleActionClick(e, 'Impostazioni')}
+                  style="color: var(--bs-primary); text-decoration: none;"
+                >
+                  Impostazioni
+                </a>
+                <a
+                  href="#"
+                  @click=${(e: Event) => handleActionClick(e, 'Esci')}
+                  style="color: var(--bs-danger); text-decoration: none;"
+                >
+                  Esci
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -178,15 +193,16 @@ export const Base: Story = {
       source: { excludeDecorators: true },
       canvas: { sourceState: 'shown' },
       description: {
-        story: 'Esempio base di popover con titolo e contenuto. Clicca sul pulsante per aprire/chiudere il popover.',
+        story:
+          'Esempio di popover con menu interattivo. I popover sono ideali per contenuti ricchi con link e azioni multiple.',
       },
     },
   },
   tags: ['!autodocs', '!dev'],
 };
 
-export const Posizione: Story = {
-  name: 'Posizioni',
+export const Direzioni: Story = {
+  name: 'Direzioni',
   render: () => {
     const handleClick = (e: Event) => {
       const button = e.target as HTMLElement;
@@ -194,44 +210,72 @@ export const Posizione: Story = {
       popover?.toggle();
     };
 
+    const handleLinkClick = (e: Event) => {
+      e.preventDefault();
+      const link = e.target as HTMLElement;
+      const popover = link.closest('it-popover') as any;
+      popover?.closePopover();
+      console.log('Link cliccato'); // eslint-disable-line no-console
+    };
+
     return html`
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-        <it-popover placement="top">
-          <it-button slot="trigger" variant="primary" @click=${handleClick}>Popover in alto</it-button>
-          <div slot="content" class="popover" tabindex="-1">
+      <div
+        style="height:200px;width:200px;display:flex;align-items:flex-start;gap: 2rem;flex-wrap: wrap;justify-content: center;"
+      >
+        <it-popover placement="bottom-start">
+          <it-button slot="trigger" variant="primary" @click=${handleClick}>Giù</it-button>
+          <div slot="content" class="popover">
             <div class="popover-inner">
-              <h3 class="popover-header">Popover top</h3>
-              <div class="popover-body">Questo popover viene visualizzato sopra l'elemento trigger.</div>
-            </div>
-          </div>
-        </it-popover>
-
-        <it-popover placement="right">
-          <it-button slot="trigger" variant="primary" @click=${handleClick}>Popover a destra</it-button>
-          <div slot="content" class="popover" tabindex="-1">
-            <div class="popover-inner">
-              <h3 class="popover-header">Popover right</h3>
-              <div class="popover-body">Questo popover viene visualizzato a destra dell'elemento trigger.</div>
-            </div>
-          </div>
-        </it-popover>
-
-        <it-popover placement="bottom">
-          <it-button slot="trigger" variant="primary" @click=${handleClick}>Popover in basso</it-button>
-          <div slot="content" class="popover" tabindex="-1">
-            <div class="popover-inner">
-              <h3 class="popover-header">Popover bottom</h3>
-              <div class="popover-body">Questo popover viene visualizzato sotto l'elemento trigger.</div>
+              <h3 class="popover-header">Azioni rapide</h3>
+              <div class="popover-body">
+                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Dictum sit amet
+                justo donec enim diam vulputate ut. Eu nisl nunc mi ipsum faucibus.
+                <a href="#" @click=${handleLinkClick} style="color: var(--bs-primary); display: block;"> Copia link </a>
+              </div>
             </div>
           </div>
         </it-popover>
 
         <it-popover placement="left">
-          <it-button slot="trigger" variant="primary" @click=${handleClick}>Popover a sinistra</it-button>
-          <div slot="content" class="popover" tabindex="-1">
+          <it-button slot="trigger" variant="primary" @click=${handleClick}>Sinistra</it-button>
+          <div slot="content" class="popover">
             <div class="popover-inner">
-              <h3 class="popover-header">Popover left</h3>
-              <div class="popover-body">Questo popover viene visualizzato a sinistra dell'elemento trigger.</div>
+              <h3 class="popover-header">Azioni rapide</h3>
+              <div class="popover-body">
+                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Dictum sit amet
+                justo donec enim diam vulputate ut. Eu nisl nunc mi ipsum faucibus.
+                <a href="#" @click=${handleLinkClick} style="color: var(--bs-primary); display: block;"> Condividi </a>
+              </div>
+            </div>
+          </div>
+        </it-popover>
+
+        <it-popover placement="top-start">
+          <it-button slot="trigger" variant="primary" @click=${handleClick}>Su</it-button>
+          <div slot="content" class="popover">
+            <div class="popover-inner">
+              <h3 class="popover-header">Azioni rapide</h3>
+              <div class="popover-body">
+                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Dictum sit amet
+                justo donec enim diam vulputate ut. Eu nisl nunc mi ipsum faucibus.
+                <a href="#" @click=${handleLinkClick} style="color: var(--bs-primary); display: block;"> ⬇️ Scarica </a>
+              </div>
+            </div>
+          </div>
+        </it-popover>
+
+        <it-popover placement="right">
+          <it-button slot="trigger" variant="primary" @click=${handleClick}>Destra</it-button>
+          <div slot="content" class="popover">
+            <div class="popover-inner">
+              <h3 class="popover-header">Azioni rapide</h3>
+              <div class="popover-body">
+                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Dictum sit amet
+                justo donec enim diam vulputate ut. Eu nisl nunc mi ipsum faucibus.
+                <a href="#" @click=${handleLinkClick} style="color: var(--bs-primary); display: block;">
+                  Aggiungi ai preferiti
+                </a>
+              </div>
             </div>
           </div>
         </it-popover>
@@ -245,8 +289,16 @@ export const Posizione: Story = {
     docs: {
       source: { excludeDecorators: true },
       description: {
-        story:
-          'Sono disponibili quattro posizioni principali: `top`, `right`, `bottom` e `left`. Il componente gestisce automaticamente il posizionamento se lo spazio è insufficiente.',
+        story: `Per aprire i popover in direzioni diverse,
+è possibile utilizzare l'attributo \`placement\` con i valori \`top\`, \`right\`,
+\`bottom\`, \`left\`, \`top-start\`, \`top-end\`, \`right-start\`, \`right-end\`,
+\`bottom-start\`, \`bottom-end\`, \`left-start\` e \`left-end\`.
+
+I valori \`top\`, \`right\`, \`bottom\` e \`left\` aprono il popover in direzioni standard,
+centrate rispetto al trigger,
+mentre i valori \`top-start\`, \`top-end\`, \`right-start\`, \`right-end\`,
+\`bottom-start\`, \`bottom-end\`, \`left-start\` e \`left-end\` permettono di specificare
+la posizione esatta del popover rispetto al trigger`,
       },
     },
   },
@@ -261,19 +313,27 @@ export const ConIconaELink: Story = {
       popover?.toggle();
     };
 
+    const handleLinkClick = (e: Event) => {
+      e.preventDefault();
+      const link = e.target as HTMLElement;
+      const popover = link.closest('it-popover') as any;
+      popover?.closePopover();
+      console.log('Vai al link cliccato'); // eslint-disable-line no-console
+    };
+
     return html`
-      <it-popover placement="top">
-        <it-button slot="trigger" variant="primary" @click=${handleClick}>Popover con icona e link</it-button>
-        <div slot="content" class="popover" tabindex="-1">
+      <it-popover placement="top-start">
+        <it-button slot="trigger" variant="primary" @click=${handleClick}>Info documento</it-button>
+        <div slot="content" class="popover">
           <div class="popover-inner">
             <h3 class="popover-header">
               <it-icon name="it-info-circle" size="sm" style="margin-right:0.5rem;"></it-icon>
-              Titolo del Popover
+              Informazioni documento
             </h3>
             <div class="popover-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue. Vestibulum ante ipsum
-              primis in faucibus orci luctus.
-              <a href="#" class="popover-inner-link">Vai al link</a>
+              Questo documento contiene informazioni sensibili. Prima di procedere assicurati di avere le autorizzazioni
+              necessarie.
+              <a href="#" class="popover-inner-link" @click=${handleLinkClick}>Leggi la policy completa</a>
             </div>
           </div>
         </div>
@@ -307,7 +367,7 @@ export const ConIconaELink: Story = {
 //       <span style="display:inline-block;" tabindex="0" @click=${handleClick}>
 //         <it-popover placement="top">
 //           <it-button slot="trigger" disabled variant="primary">Pulsante disabilitato</it-button>
-//           <div slot="content" class="popover" tabindex="-1">
+//           <div slot="content" class="popover">
 //             <div class="popover-inner">
 //               <h3 class="popover-header">Popover disabilitato</h3>
 //               <div class="popover-body">
@@ -368,9 +428,9 @@ export const Eventi: Story = {
 
     return html`
       <div style="display:flex;flex-direction:column;gap:1rem;align-items:center;">
-        <it-popover placement="bottom" @it-popover-open=${handleOpen} @it-popover-close=${handleClose}>
+        <it-popover placement="bottom-start" @it-popover-open=${handleOpen} @it-popover-close=${handleClose}>
           <it-button slot="trigger" variant="primary" @click=${handleClick}>Popover con eventi</it-button>
-          <div slot="content" class="popover" tabindex="-1">
+          <div slot="content" class="popover">
             <div class="popover-inner">
               <h3 class="popover-header">Eventi del Popover</h3>
               <div class="popover-body">
@@ -413,14 +473,46 @@ export const PopoverSenzaPulsante: Story = {
       popover?.toggle();
     };
 
+    const handleActionClick = (e: Event, action: string) => {
+      e.preventDefault();
+      const link = e.target as HTMLElement;
+      const popover = link.closest('it-popover') as any;
+      popover?.closePopover();
+      console.log(`Azione: ${action}`); // eslint-disable-line no-console
+    };
+
     return html`
-      <it-popover placement="top">
-        <a href="#" slot="trigger" style="text-decoration:underline;" @click=${handleClick}> Clicca questo link </a>
-        <div slot="content" class="popover" tabindex="-1">
+      <it-popover placement="top-start">
+        <a href="#" slot="trigger" style="text-decoration:underline;color:var(--bs-primary);" @click=${handleClick}>
+          Trigger personalizzato
+        </a>
+        <div slot="content" class="popover">
           <div class="popover-inner">
-            <h3 class="popover-header">Trigger personalizzato</h3>
+            <h3 class="popover-header">Informazioni sulla privacy</h3>
             <div class="popover-body">
-              Il popover può essere attivato da qualsiasi elemento HTML, non solo da pulsanti. In questo caso è un link.
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <a
+                  href="#"
+                  @click=${(e: Event) => handleActionClick(e, 'Privacy Policy')}
+                  style="color: var(--bs-primary); text-decoration: none;"
+                >
+                  Privacy Policy
+                </a>
+                <a
+                  href="#"
+                  @click=${(e: Event) => handleActionClick(e, 'Cookie Policy')}
+                  style="color: var(--bs-primary); text-decoration: none;"
+                >
+                  Cookie Policy
+                </a>
+                <a
+                  href="#"
+                  @click=${(e: Event) => handleActionClick(e, 'Gestisci consensi')}
+                  style="color: var(--bs-primary); text-decoration: none;"
+                >
+                  Gestisci consensi
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -442,7 +534,7 @@ export const PopoverSenzaPulsante: Story = {
 };
 
 export const PopoverConHover: Story = {
-  name: 'Attivazione su hover',
+  name: 'Attivazione su hover (sconsigliato)',
   render: () => {
     const handleMouseEnter = (e: Event) => {
       const button = e.target as HTMLElement;
@@ -457,16 +549,16 @@ export const PopoverConHover: Story = {
     };
 
     return html`
-      <it-popover placement="top">
+      <it-popover placement="top-start">
         <it-button slot="trigger" variant="primary" @mouseenter=${handleMouseEnter} @mouseleave=${handleMouseLeave}>
           Passa il mouse sopra
         </it-button>
-        <div slot="content" class="popover" tabindex="-1">
+        <div slot="content" class="popover">
           <div class="popover-inner">
-            <h3 class="popover-header">Popover su hover</h3>
+            <h3 class="popover-header">Esempio tecnico</h3>
             <div class="popover-body">
-              Questo popover si apre quando passi il mouse sopra il trigger e si chiude quando esci. Utile per mostrare
-              informazioni aggiuntive senza richiedere un click.
+              Questo è un esempio tecnico di attivazione su hover. Per questo caso d'uso si raccomanda l'utilizzo di un
+              componente Tooltip invece di un Popover.
             </div>
           </div>
         </div>
@@ -481,22 +573,35 @@ export const PopoverConHover: Story = {
       source: { excludeDecorators: true },
       description: {
         story: `
-Il popover può essere attivato con hover utilizzando gli eventi \`mouseenter\` e \`mouseleave\`.
+**Attenzione**: Questo pattern è tecnicamente possibile ma **sconsigliato** secondo le best practices UI.
+
+#### Linee guida d'uso
+
+Le best practices per componenti overlay distinguono i pattern in base al metodo di attivazione e al tipo di contenuto:
+
+**Pattern raccomandati:**
+
+- **Tooltip** (hover): Testo breve descrittivo, non interattivo, scompare automaticamente
+- **Popover** (click): Contenuto ricco e interattivo con link, pulsanti, form, immagini
+- **Modal/Dialog** (azione esplicita): Richiede attenzione immediata, blocca interazione con il resto della pagina
+
+L'attivazione su hover è appropriata per tooltip con testo semplice e non interattivo. I popover, progettati per contenuto complesso che richiede interazione, dovrebbero essere attivati tramite azione esplicita dell'utente (click).
+
+#### Implementazione tecnica
+
+Se necessario per casi specifici, è possibile implementare l'attivazione su hover:
 
 \`\`\`javascript
-// Apri al mouseenter
 trigger.addEventListener('mouseenter', () => {
   popover.openPopover();
 });
 
-// Chiudi al mouseleave
 trigger.addEventListener('mouseleave', () => {
   popover.closePopover();
 });
 \`\`\`
 
-Questo pattern è utile per **rich tooltip** che mostrano contenuto più complesso rispetto a un tooltip standard,
-ma che non richiedono un'interazione esplicita da parte dell'utente.
+**Nota**: Considerare l'utilizzo del componente Tooltip per questo scenario.
 `,
       },
     },
@@ -504,7 +609,7 @@ ma che non richiedono un'interazione esplicita da parte dell'utente.
 };
 
 export const PopoverConFocus: Story = {
-  name: 'Attivazione su focus',
+  name: 'Attivazione su focus (sconsigliato)',
   render: () => {
     let isOpen = false;
     let popoverElement: any = null;
@@ -552,28 +657,25 @@ export const PopoverConFocus: Story = {
       setTimeout(checkAndClose, 100);
     };
 
-    const handleLinkClick = (e: Event) => {
-      e.preventDefault(); // Previeni navigazione
-    };
-
     return html`
-      <it-popover placement="bottom">
-        <it-button slot="trigger" variant="primary" @focus=${handleFocus} @blur=${handleBlur}>
-          Usa Tab per focus
-        </it-button>
-        <div slot="content" class="popover" tabindex="-1" @focus=${handleContentFocus} @blur=${handleContentBlur}>
-          <div class="popover-inner">
-            <h3 class="popover-header">Popover su focus</h3>
-            <div class="popover-body">
-              <p>
-                Questo popover si apre quando il pulsante riceve il focus (via Tab) e si chiude quando il focus esce
-                completamente dal popover.
-              </p>
-              <a href="#" style="color: var(--bs-primary);" @click=${handleLinkClick}>Link di esempio</a>
+      <div style="height:600px;">
+        <it-popover placement="bottom-start">
+          <it-button slot="trigger" variant="primary" @focus=${handleFocus} @blur=${handleBlur}>
+            Usa Tab per focus
+          </it-button>
+          <div slot="content" class="popover" @focus=${handleContentFocus} @blur=${handleContentBlur}>
+            <div class="popover-inner">
+              <h3 class="popover-header">Esempio tecnico</h3>
+              <div class="popover-body">
+                <p>
+                  Questo è un esempio tecnico di attivazione su focus tramite navigazione Tab. Per contenuti informativi
+                  brevi si raccomanda l'utilizzo di un Tooltip.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </it-popover>
+        </it-popover>
+      </div>
     `;
   },
   decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
@@ -584,7 +686,23 @@ export const PopoverConFocus: Story = {
       source: { excludeDecorators: true },
       description: {
         story: `
-Il popover può essere attivato con focus utilizzando gli eventi \`focus\` e \`blur\`.
+**Attenzione**: Questo pattern è tecnicamente possibile ma **sconsigliato** per la maggior parte dei casi d'uso.
+
+#### Linee guida d'uso
+
+Le best practices UI per componenti overlay definiscono pattern specifici in base al metodo di attivazione:
+
+**Pattern raccomandati:**
+
+- **Tooltip** (hover): Testo breve descrittivo, non interattivo, scompare automaticamente
+- **Popover** (click): Contenuto ricco e interattivo con link, pulsanti, form, immagini
+- **Modal/Dialog** (azione esplicita): Richiede attenzione immediata, blocca interazione con il resto della pagina
+
+L'attivazione automatica su focus può creare confusione nella navigazione da tastiera e interferire con tecnologie assistive come screen reader.
+
+#### Implementazione tecnica
+
+L'implementazione richiede gestione dello stato e coordinamento dei blur events con timeout:
 
 \`\`\`javascript
 let isOpen = false;
@@ -628,16 +746,10 @@ trigger.addEventListener('focus', handleFocus);
 trigger.addEventListener('blur', handleBlur);
 popoverContent.addEventListener('blur', handleContentBlur);
 
-// Se ci sono link/button nel popover, previeni navigazione di default
-linkInsidePopover.addEventListener('click', (e) => e.preventDefault());
 \`\`\`
 
-Questo pattern è particolarmente utile per:
-- **Accessibilità**: l'utente può navigare con Tab e vedere le informazioni aggiuntive
-- **Form helper**: mostrare istruzioni quando l'utente entra in un campo o pulsante
-- **Keyboard navigation**: supporto completo per utenti che usano solo tastiera
 
-**Nota**: Il delay di 100ms sul blur è importante per permettere al browser di aggiornare \`document.activeElement\` prima di verificare se chiudere il popover. Il link deve avere \`preventDefault()\` per evitare navigazione durante il test del focus.
+**Nota**: Valutare attentamente l'uso di questo pattern e preferire tooltip per contenuti informativi o click per interazioni complesse.
 `,
       },
     },

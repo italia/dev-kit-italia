@@ -6,16 +6,3 @@
 :host {
   --#{$prefix}dropdown-background: var(--#{$prefix}color-background-inverse);
 }
-
-// Arrow styles - must be global since arrow is added to slotted content
-.arrow {
-  position: absolute;
-  z-index: -1;
-  width: var(--bs-popover-arrow-height, 1rem);
-  height: var(--bs-popover-arrow-width, 0.5rem);
-  background-color: var(--bs-popover-bg, #fff);
-  pointer-events: none;
-  border-width: calc(var(--bs-popover-arrow-width, 0.5rem) * 0.5) var(--bs-popover-arrow-height, 1rem)
-    calc(var(--bs-popover-arrow-width, 0.5rem) * 0.5) 0;
-  border-color: transparent;
-}
