@@ -13,6 +13,7 @@
 
 @import 'bootstrap-italia/src/scss/base/utilities/api';
 @import './utilities/focus';
+@import './utilities/fuoc';
 // @import 'bootstrap-italia/src/scss/utilities/focus';
 @import 'bootstrap-italia/src/scss/utilities/icons';
 @import 'bootstrap-italia/src/scss/utilities/colors';
@@ -35,5 +36,3 @@
 @import '@italia/section/styles/globals';
 @import '@italia/video/styles/globals';
 @import '@italia/chip/styles/globals';
-
-@import './utilities/fuoc';

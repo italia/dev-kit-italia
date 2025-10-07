@@ -161,3 +161,29 @@ it-avatar:not(:defined)[type='dropdown'] it-dropdown {
     text-transform: uppercase;
   }
 }
+
+// Specific fallback for it-avatar when component is not defined (JS disabled)
+it-avatar:not(:defined):has([slot='extra-text']) {
+  position: relative;
+  [slot='extra-text'] {
+    position: absolute;
+    left: calc(var(--#{$prefix}avatar-size) + var(--#{$prefix}spacing-s));
+    width: max-content;
+    p,
+    time {
+      margin: 0;
+      color: var(--#{$prefix}color-text-secondary);
+      font-size: var(--#{$prefix}caption-font-size);
+      text-transform: uppercase;
+    }
+    h3,
+    h4 {
+      margin: 0;
+      font-size: var(--#{$prefix}heading-6-font-size);
+
+      a {
+        display: inline-block;
+      }
+    }
+  }
+}
