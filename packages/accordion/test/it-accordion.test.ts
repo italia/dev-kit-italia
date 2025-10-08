@@ -1,3 +1,5 @@
+/// <reference types="mocha"/>
+
 import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
 import '../src/index.js';
 import type { ItAccordionItem } from '../src/it-accordion-item.js';
@@ -6,8 +8,14 @@ describe('ItAccordion', () => {
   it('is registered and renders children', async () => {
     const el = await fixture(html`
       <it-accordion>
-        <it-accordion-item label="One"><p slot="content">one</p></it-accordion-item>
-        <it-accordion-item label="Two"><p slot="content">two</p></it-accordion-item>
+        <it-accordion-item
+          ><span slot="heading">One</span>
+          <p slot="content">one</p></it-accordion-item
+        >
+        <it-accordion-item
+          ><span slot="heading">Two</span>
+          <p slot="content">two</p></it-accordion-item
+        >
       </it-accordion>
     `);
     expect(customElements.get('it-accordion')).to.be.a('function');
@@ -18,8 +26,14 @@ describe('ItAccordion', () => {
   it('propagates background/left-icon attributes to children', async () => {
     const el = await fixture(html`
       <it-accordion background-active background-hover left-icon>
-        <it-accordion-item label="One"><p slot="content">one</p></it-accordion-item>
-        <it-accordion-item label="Two"><p slot="content">two</p></it-accordion-item>
+        <it-accordion-item
+          ><span slot="heading">One</span>
+          <p slot="content">one</p></it-accordion-item
+        >
+        <it-accordion-item
+          ><span slot="heading">Two</span>
+          <p slot="content">two</p></it-accordion-item
+        >
       </it-accordion>
     `);
     await elementUpdated(el);
@@ -32,8 +46,14 @@ describe('ItAccordion', () => {
   it('single mode keeps only one item expanded', async () => {
     const el = await fixture(html`
       <it-accordion mode="single">
-        <it-accordion-item label="One" default-open><p slot="content">one</p></it-accordion-item>
-        <it-accordion-item label="Two"><p slot="content">two</p></it-accordion-item>
+        <it-accordion-item default-open
+          ><span slot="heading">One</span>
+          <p slot="content">one</p></it-accordion-item
+        >
+        <it-accordion-item
+          ><span slot="heading">Two</span>
+          <p slot="content">two</p></it-accordion-item
+        >
       </it-accordion>
     `);
     await elementUpdated(el);
@@ -55,7 +75,10 @@ describe('ItAccordion', () => {
   it('keyboard Enter/Space toggles items', async () => {
     const el = await fixture(html`
       <it-accordion>
-        <it-accordion-item label="K1"><p slot="content">one</p></it-accordion-item>
+        <it-accordion-item
+          ><span slot="heading">K1</span>
+          <p slot="content">one</p></it-accordion-item
+        >
       </it-accordion>
     `);
     const item = el.querySelector('it-accordion-item') as unknown as ItAccordionItem;
@@ -73,8 +96,14 @@ describe('ItAccordion', () => {
   it('bubbles collapse events to parent and parent enforces single mode', async () => {
     const el = await fixture(html`
       <it-accordion mode="single">
-        <it-accordion-item label="A"><p slot="content">a</p></it-accordion-item>
-        <it-accordion-item label="B"><p slot="content">b</p></it-accordion-item>
+        <it-accordion-item
+          ><span slot="heading">A</span>
+          <p slot="content">a</p></it-accordion-item
+        >
+        <it-accordion-item
+          ><span slot="heading">B</span>
+          <p slot="content">b</p></it-accordion-item
+        >
       </it-accordion>
     `);
     const items = Array.from(el.querySelectorAll('it-accordion-item')) as ItAccordionItem[];

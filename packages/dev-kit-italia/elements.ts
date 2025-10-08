@@ -2,6 +2,7 @@ import '@italia/accordion/it-collapse.js';
 import '@italia/accordion/it-accordion.js';
 import '@italia/accordion/it-accordion-item.js';
 import '@italia/button/it-button.js';
+import '@italia/chip/it-chip.js';
 import '@italia/dropdown/it-dropdown.js';
 import '@italia/dropdown/it-dropdown-item.js';
 import '@italia/icon/it-icon.js';

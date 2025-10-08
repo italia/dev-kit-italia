@@ -1,9 +1,10 @@
-import { FormMixin, ValidityMixin, VALIDATION_STATUS, setAttributes, BaseLocalizedComponent } from '@italia/globals';
+import { setAttributes, FormControl } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
 import { html, nothing } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { when } from 'lit/directives/when.js';
+import { live } from 'lit/directives/live.js';
 import {
   calculateScore,
   scoreColor,
@@ -19,80 +20,61 @@ import styles from './input.scss';
 registerTranslation(it);
 
 @customElement('it-input')
-export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
+export class ItInput extends FormControl {
   static styles = styles;
 
-  static get formAssociated() {
-    return true;
-  }
+  @state()
+  private _slotPrepend: HTMLSlotElement | null = null;
 
-  @property()
-  internals = this.attachInternals();
+  @state()
+  private _slotAppend: HTMLSlotElement | null = null;
 
-  @property({ type: Boolean })
-  slotted = false;
-
-  @property({ type: Boolean, reflect: true }) // from validity mixin
-  invalid = false;
-
-  @property({ type: Boolean, reflect: true, attribute: 'custom-validation' }) // from validity mixin
-  customValidation = false;
-
-  @property({ type: Boolean, reflect: true }) // from validity mixin
-  required = false;
-
-  @property({ attribute: 'validity-message' })
-  validationText: string = '';
-
-  @query('input')
-  protected _inputElement!: HTMLInputElement;
-
-  @property({ type: String }) size?: Sizes;
-
-  @property({ type: String })
-  label = '';
-
-  @property({ type: Boolean, attribute: 'label-hidden' })
-  labelHidden = false;
-
+  /**
+   * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
+   * to `text`.
+   */
   @property({ type: String })
   type: InputType = 'text';
 
-  @property({ type: String })
-  name = '';
+  /** The input's size. */
+  @property()
+  size?: Sizes;
 
+  /** If you want number-input to be adaptive in width */
+  @property({ type: Boolean })
+  adaptive = false;
+
+  /** The input's label. */
+  @property({ type: String })
+  label = '';
+
+  /** If you want label to be hidden. */
+  @property({ type: Boolean, attribute: 'label-hidden' })
+  labelHidden = false;
+
+  /** Placeholder text to show as a hint when the input is empty. */
   @property({ type: String })
   placeholder = '';
 
+  /** The input's help text. */
   @property({ type: String, attribute: 'support-text' })
   supportText = '';
 
-  @property({ type: Boolean })
-  disabled = false;
-
+  /** If you want the input to be displayed as plaintext. */
   @property({ type: Boolean })
   plaintext = false;
 
+  /** If the input is read-only. */
   @property({ type: Boolean })
   readonly = false;
 
+  /** If your input is of type 'password' and you want to display a strength meter */
   @property({ type: Boolean, attribute: 'strength-meter' })
   passwordStrengthMeter = false;
 
+  /** If your input is of type 'password' and you want to show password suggestions. */
   @property({ type: Boolean })
   suggestions = false;
-
-  @property({ type: Number })
-  minlength = -1;
-
-  @property({ type: Number })
-  maxlength = -1;
-
-  /**
-   * Pattern the `value` must match to be valid
-   */
-  @property({ type: String })
-  public pattern?: string;
 
   @state()
   private _passwordVisible = false;
@@ -103,96 +85,20 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
   @state()
   private _score = 0;
 
-  @state()
-  _value = ''; // from validity mixin
-
-  @state()
-  _touched = false; // from validity mixin
-
-  @property({ type: String })
-  public validityMessage: string = ''; // from validity mixin
-
-  @property({ reflect: true })
-  get value() {
-    if (this._inputElement) {
-      return this._inputElement.value;
-    }
-    return this._value;
+  get slotted() {
+    return this._slotPrepend || this._slotAppend;
   }
 
-  set value(value) {
-    const oldValue = this._value;
-    this._value = value;
-    this.internals.setFormValue(value); // <- Associa il valore al form
-    // make sure that lit-element updates the right properties
-    this.requestUpdate('value', oldValue);
-    // we set the value directly on the input (when available)
-    // so that programatic manipulation updates the UI correctly
-    if (this._inputElement && this._inputElement.value !== value) {
-      this._inputElement.value = value;
-    }
-  }
+  firstUpdated() {
+    // this.addFocus(this.inputElement); //NON serve per il momento perche sfruttiamo :focus-visible. Per gli input focus-visible si attiva anche al click perchè è il browser che lo gestisce
+    this._slotPrepend = this.querySelector('[slot="prepend"]');
+    this._slotAppend = this.querySelector('[slot="append"]');
 
-  // Getter pubblico per accedere all'input
-  get inputElement() {
-    return this.shadowRoot?.querySelector('input');
-  }
-
-  _handleFormdata(event: FormDataEvent) {
-    // Add name and value to the form's submission data if it's not disabled.
-    if (!this.disabled) {
-      const { formData } = event;
-      formData.append(this.name, this._value);
-    }
-  }
-
-  private _handleInput(e: Event) {
-    const input = e.target as HTMLInputElement;
-    this.value = input.value;
-
-    if (this.passwordStrengthMeter) {
-      this._checkPasswordStrength(input.value);
-    }
-
-    this.dispatchEvent(
-      new CustomEvent('on-input', {
-        detail: { value: input.value, el: input },
-        bubbles: true,
-        composed: true,
-      }),
-    );
-  }
-
-  checkValidity() {
-    if (!this.customValidation) {
-      const inputValid = this._inputElement ? this._inputElement.checkValidity() : true; // this._inputElement.checkValidity() è la validazione del browser
-      this._checkValidity(
-        {
-          [VALIDATION_STATUS.INVALID]: this.$t('validityInvalid'),
-          [VALIDATION_STATUS.ERROR_REQUIRED]: this.$t('validityRequired'),
-          [VALIDATION_STATUS.PATTERN]: this.$t('validityPattern'),
-          [VALIDATION_STATUS.MINLENGTH]: this.$t('validityMinlength'),
-          [VALIDATION_STATUS.MAXLENGTH]: this.$t('validityMaxlength'),
-        },
-        inputValid,
-      );
-    }
-  }
-
-  override _handleBlur() {
-    super._handleBlur();
-    this.checkValidity();
-  }
-
-  override firstUpdated() {
-    // this.addFocus(this._inputElement); //NON serve per il momento perche sfruttiamo :focus-visible. Per gli input focus-visible si attiva anche al click perchè è il browser che lo gestisce
-    const iconSlot = this.shadowRoot?.querySelector('slot[name="icon"]');
-    const appendSlot = this.shadowRoot?.querySelector('slot[name="append"]');
-
-    iconSlot?.addEventListener('slotchange', () => {
+    this._slotPrepend?.addEventListener('slotchange', () => {
       this.requestUpdate();
     });
-    appendSlot?.addEventListener('slotchange', () => {
+
+    this._slotAppend?.addEventListener('slotchange', () => {
       this.requestUpdate();
     });
   }
@@ -200,44 +106,16 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
   override connectedCallback() {
     super.connectedCallback?.();
 
-    /* così quando si scrive <it-input value="ciao"></it-input>, this.value viene impostato con 'ciao' */
-    const attrValue = this.getAttribute('value');
-    if (attrValue !== null) {
-      this.value = attrValue;
-    }
     if (this.type === 'password' && this.minlength < 0) {
       this.minlength = 8; // set default minlength for password
     }
-
-    requestAnimationFrame(() => {
-      this.dispatchEvent(new CustomEvent('input-ready', { bubbles: true, detail: { el: this.inputElement } }));
-    });
+    this._handleReady();
   }
-
-  // protected override update(changedProperties: Map<string | number | symbol, unknown>): void {
-  //   if (changedProperties.has('value') || (changedProperties.has('required') && this.required)) {
-  //     this.updateComplete.then(() => {
-  //       this.checkValidity();
-  //     });
-  //   }
-
-  //   super.update(changedProperties);
-  // }
 
   override updated(changedProperties: Map<string | number | symbol, unknown>) {
     super.updated?.(changedProperties);
 
-    if (this.customValidation) {
-      this.setCustomValidity(this.validationText);
-    }
-
-    if (this.invalid) {
-      const message =
-        this.validationText?.length > 0 ? this.validationText : (this.validityMessage ?? 'Campo non valido');
-
-      this.internals.setValidity({ customError: this.invalid }, message);
-    }
-
+    // logger
     if (this.passwordStrengthMeter && this.type !== 'password') {
       this.logger.warn(
         "The strength-meter property is enabled, but type isn't password. Please, remove strength-meter property.",
@@ -257,10 +135,20 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
     }
   }
 
+  override _handleInput(e: Event) {
+    this.value = this.inputElement.value;
+
+    if (this.passwordStrengthMeter) {
+      this._checkPasswordStrength(this.inputElement.value);
+    }
+
+    super._handleInput(e);
+  }
+
   private _togglePasswordVisibility() {
     this._passwordVisible = !this._passwordVisible;
-    if (this._inputElement) {
-      this._inputElement.type = this._passwordVisible ? 'text' : 'password';
+    if (this.inputElement) {
+      this.inputElement.type = this._passwordVisible ? 'text' : 'password';
     }
   }
 
@@ -366,7 +254,7 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
   private _renderpasswordStrengthMeter() {
     if (this.type === 'password' && this.passwordStrengthMeter) {
       const perc = this._score < 0 ? 0 : this._score;
-      const color = this._value?.length === 0 ? 'muted' : scoreColor(this._score);
+      const color = this.value?.length === 0 ? 'muted' : scoreColor(this._score);
       return html`<div class="password-strength-meter">
         ${this._renderSuggestions()}
 
@@ -400,19 +288,20 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
     return nothing;
   }
 
-  private _renderInput(supportTextId: string) {
+  private _renderInput(supportTextId: string, invalid: boolean, validityMessage: string) {
     const ariaDescribedBy = this.composeClass(
       this.supportText?.length > 0 ? supportTextId : '',
       this.passwordStrengthMeter ? `strengthMeterInfo_${this._id}` : '',
       this._ariaAttributes['aria-describedby']?.length > 0 ? this._ariaAttributes['aria-describedby'] : '',
-      this.validityMessage?.length > 0 ? `invalid-feedback-${this._id}` : '',
+      validityMessage?.length > 0 ? `invalid-feedback-${this._id}` : '',
     );
 
     const inputClasses = this.composeClass(
+      'it-form__control',
       this.plaintext ? 'form-control-plaintext' : 'form-control',
       this.size ? `form-control-${this.size}` : '',
-      this.invalid ? 'is-invalid' : '',
-      !this.invalid && this._touched ? 'just-validate-success-field' : '',
+      invalid ? 'is-invalid' : '',
+      !invalid && this._touched && !this.readonly ? 'just-validate-success-field' : '',
     );
 
     let inputRender;
@@ -423,58 +312,76 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
           part="textarea focusable"
           ${setAttributes(this._ariaAttributes)}
           aria-describedby=${ifDefined(ariaDescribedBy || undefined)}
-          ?aria-invalid=${this.invalid}
+          ?aria-invalid=${invalid}
           @input="${this._handleInput}"
           @blur=${this._handleBlur}
           @focus=${this._handleFocus}
           @click=${this._handleClick}
           @change=${this._handleChange}
+          @invalid=${this._handleInvalid}
           id="${this._id}"
           name="${this.name}"
           ?disabled=${this.disabled}
           ?readonly=${this.readonly}
           ?required=${this.required}
-          .value="${this._value}"
+          minlength=${ifDefined(this.minlength)}
+          maxlength=${ifDefined(this.maxlength)}
+          pattern=${ifDefined(this.pattern)}
+          ?formNoValidate=${this.customValidation}
+          .value="${live(this.value)}"
           placeholder=${ifDefined(this.placeholder || undefined)}
           class="${inputClasses}"
         ></textarea>
       `;
     } else {
+      let style = null;
+      if (this.type === 'number' && this.adaptive) {
+        style = `width: calc(${this.value.toString().length}ch + 70px);`;
+      }
       inputRender = html`
         <input
           part="input focusable"
           ${setAttributes(this._ariaAttributes)}
           aria-describedby=${ifDefined(ariaDescribedBy || undefined)}
-          ?aria-invalid=${this.invalid}
+          ?aria-invalid=${invalid}
           @input="${this._handleInput}"
           @blur=${this._handleBlur}
           @focus=${this._handleFocus}
           @click=${this._handleClick}
           @change=${this._handleChange}
+          @invalid=${this._handleInvalid}
           type="${this.type}"
           id="${this._id}"
           name="${this.name}"
           ?disabled=${this.disabled}
           ?readonly=${this.readonly}
           ?required=${this.required}
-          .value="${this._value}"
+          minlength=${ifDefined(this.minlength)}
+          maxlength=${ifDefined(this.maxlength)}
+          min=${ifDefined(this.min)}
+          max=${ifDefined(this.max)}
+          step=${ifDefined(this.step as number)}
+          pattern=${ifDefined(this.pattern)}
+          ?formNoValidate=${this.customValidation}
+          .value="${live(this.value)}"
           placeholder=${ifDefined(this.placeholder || undefined)}
           class="${inputClasses}"
+          style=${ifDefined(style)}
         />${this._renderTogglePasswordButton()}
       `;
     }
 
-    inputRender = html`
-      ${inputRender}
-      <div
-        role="alert"
-        id="invalid-feedback-${this._id}"
-        class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
-        ?hidden=${!(this.validityMessage?.length > 0)}
-      >
-        <span class="visually-hidden">${this.label}: </span>${this.validityMessage}
-      </div>
-    `;
+    // inputRender = html`
+    //   ${inputRender}
+    //   <div
+    //     role="alert"
+    //     id="invalid-feedback-${this._id}"
+    //     class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
+    //     ?hidden=${!(validityMessage?.length > 0)}
+    //   >
+    //     <span class="visually-hidden">${this.label}: </span>${validityMessage}
+    //   </div>
+    // `;
 
     return inputRender;
   }
@@ -488,6 +395,20 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
       () => html` <small class="form-text" id="${supportTextId}">${this.supportText}</small> `,
     )}`;
 
+    const showValidation = true; // this._touched || this.customValidation;
+    const validityMessage = (showValidation ? this.validationMessage : '') ?? '';
+    const invalid =
+      validityMessage?.length > 0 || (!this.customValidation && this.inputElement?.checkValidity() === false);
+
+    const validityMessageRender = html`<div
+      role="alert"
+      id="invalid-feedback-${this._id}"
+      class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
+      ?hidden=${!(validityMessage?.length > 0)}
+    >
+      <span class="visually-hidden">${this.label}: </span>${validityMessage}
+    </div>`;
+
     return html`
       <div class="form-group" part="input-wrapper">
         <label
@@ -498,19 +419,35 @@ export class ItInput extends ValidityMixin(FormMixin(BaseLocalizedComponent)) {
         >
 
         ${when(
-          this.slotted,
+          this.slotted || this.type === 'number',
           () =>
-            html` <div class="input-group">
-                <span class="input-group-text">
-                  <slot name="icon" @slotchange=${() => this.requestUpdate()}></slot
-                ></span>
-                ${this._renderInput(supportTextId)}
-                <div class="input-group-append">
-                  <slot name="append" @slotchange=${() => this.requestUpdate()}></slot>
-                </div>
+            html`<div
+                class="${this.composeClass(
+                  'input-group ',
+                  this.type === 'number' ? 'input-number' : '',
+                  this.type === 'number' && this.adaptive ? 'input-number-adaptive' : '',
+                )}"
+              >
+                ${when(
+                  this._slotPrepend,
+                  () =>
+                    html` <span class="input-group-text">
+                      <slot name="prepend" @slotchange=${() => this.requestUpdate()}></slot
+                    ></span>`,
+                )}
+                ${this._renderInput(supportTextId, invalid, validityMessage)}
+                ${when(
+                  this._slotAppend,
+                  () =>
+                    html` <div class="input-group-append">
+                      <slot name="append" @slotchange=${() => this.requestUpdate()}></slot>
+                    </div>`,
+                )}
               </div>
-              ${supportTextRender} ${this._renderpasswordStrengthMeter()}`,
-          () => html` ${this._renderInput(supportTextId)} ${supportTextRender} ${this._renderpasswordStrengthMeter()}`,
+              ${validityMessageRender} ${supportTextRender} ${this._renderpasswordStrengthMeter()}`,
+          () =>
+            html` ${this._renderInput(supportTextId, invalid, validityMessage)} ${validityMessageRender}
+            ${supportTextRender} ${this._renderpasswordStrengthMeter()}`,
         )}
       </div>
     `;
