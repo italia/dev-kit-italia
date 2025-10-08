@@ -18,10 +18,14 @@ interface AccordionItemProps {
   content: string;
   defaultOpen?: boolean;
   as?: HeadingLevels;
+  backgroundActive?: boolean;
+  backgroundHover?: boolean;
+  leftIcon?: boolean;
 }
 
 const renderAccordionItem = (params: AccordionItemProps) => html`
-  <it-accordion-item label="${params.label}" as="${ifDefined(params.as)}" ?default-open="${params.defaultOpen}">
+  <it-accordion-item ?default-open="${params.defaultOpen}">
+    <span slot="heading">${ifDefined(params.label)}</span>
     <div slot="content">${params.content}</div>
   </it-accordion-item>
 `;
@@ -83,16 +87,19 @@ const meta: Meta<AccordionProps> = {
       control: 'boolean',
       description: 'Applica sfondo primario agli header attivi (quando il contenuto è visibile)',
       table: { defaultValue: { summary: 'false' } },
+      name: 'background-active',
     },
     backgroundHover: {
       control: 'boolean',
       description: 'Applica sfondo primario agli header al passaggio del mouse',
       table: { defaultValue: { summary: 'false' } },
+      name: 'background-hover',
     },
     leftIcon: {
       control: 'boolean',
       description: 'Mostra icone plus/minus a sinistra invece della freccia a destra (Bootstrap Italia)',
       table: { defaultValue: { summary: 'false' } },
+      name: 'left-icon',
     },
   },
   parameters: {
@@ -143,35 +150,46 @@ export const AccordionItem = {
       control: 'text',
       description: "Testo dell'header dell'elemento accordion",
       table: { defaultValue: { summary: 'Accordion Item' } },
+      name: 'Intestazione',
     },
     as: {
       control: { type: 'select' },
-      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-      description: "Livello di heading per l'header (h1-h6)",
+      options: ['h2', 'h3', 'h4', 'h5', 'h6'],
+      description: "Livello di heading per l'header (h2-h6)",
       table: { defaultValue: { summary: 'h2' } },
     },
-    'default-open': {
+    defaultOpen: {
       control: 'boolean',
       description: "Se true, l'elemento è aperto di default (stato iniziale)",
       table: { defaultValue: { summary: 'false' } },
+      name: 'default-open',
     },
-    'background-active': {
+    backgroundActive: {
       control: 'boolean',
       description: "Se true, applica uno sfondo primario all'header quando l'elemento è aperto",
       table: { defaultValue: { summary: 'false' } },
+      name: 'background-active',
     },
-    'background-hover': {
+    backgroundHover: {
       control: 'boolean',
       description: "Se true, applica uno sfondo primario all'header al passaggio del mouse",
       table: { defaultValue: { summary: 'false' } },
+      name: 'background-hover',
     },
-    'left-icon': {
+    leftIcon: {
       control: 'boolean',
       description: 'Se true, mostra le icone +/- a sinistra invece della freccia a destra',
       table: { defaultValue: { summary: 'false' } },
+      name: 'left-icon',
     },
   },
-  decorators: [(Story) => html`<div style="min-height:150px;display:flex;align-items:center">${Story()}</div>`],
+  decorators: [
+    (Story) => html`
+      <div style="min-height:150px;display:flex;align-items:center">
+        <it-accordion>${Story()}</it-accordion>
+      </div>
+    `,
+  ],
   parameters: {
     useMetaDecorator: false,
     docs: {
@@ -182,11 +200,12 @@ Il componente \`it-accordion-item\` rappresenta un singolo elemento accordion ch
 
 #### Proprietà
 
-- **\`label\`**: Il testo dell'header dell'accordion item
-- **\`as\`**: Il livello di heading (h1-h6) da utilizzare per l'header
-- **\`default-open\`**: Se true, l'elemento viene mostrato espanso
+- **\`as\`**: Il livello di heading (h2-h6) da utilizzare per l'header (opzionale, default: \`h2\`)
+- **\`default-open\`**: Se true, l'elemento viene mostrato espanso (opzionale, default: \`false\`)
 
 #### Contenuto
+
+L'intestazione dell'accordion item va inserita nello slot heading (intestazione dell'elemento).
 
 Il contenuto dell'accordion item va inserito nello slot content (contenuto dell'elemento).
         `,
@@ -195,13 +214,12 @@ Il contenuto dell'accordion item va inserito nello slot content (contenuto dell'
   },
   render: (args: any) => html`
     <it-accordion-item
-      label="${args.label || 'Accordion Item'}"
-      as="${args.as || 'h4'}"
-      ?default-open="${args['default-open'] || false}"
-      ?background-active="${args['background-active'] || false}"
-      ?background-hover="${args['background-hover'] || false}"
-      ?left-icon="${args['left-icon'] || false}"
+      ?default-open="${args.defaultOpen || false}"
+      ?background-active="${args.backgroundActive || false}"
+      ?background-hover="${args.backgroundHover || false}"
+      ?left-icon="${args.leftIcon || false}"
     >
+      <span slot="heading">${args.label || 'Accordion Item'}</span>
       <div slot="content">
         Contenuto dell'accordion item. Questo testo è all'interno dello slot "content". Qui puoi inserire qualsiasi
         contenuto HTML: paragrafi, liste, immagini, ecc.
@@ -211,12 +229,12 @@ Il contenuto dell'accordion item va inserito nello slot content (contenuto dell'
   args: {
     label: 'Accordion Item',
     as: 'h2',
-    'default-open': false,
-    'background-active': false,
-    'background-hover': false,
-    'left-icon': false,
+    defaultOpen: false,
+    backgroundActive: false,
+    backgroundHover: false,
+    leftIcon: false,
   },
-};
+} satisfies Meta<AccordionItemProps>;
 
 export const Single: Story = {
   name: 'Modalità esclusiva',
@@ -260,23 +278,27 @@ Utilizzare questo approccio solo quando strettamente necessario: dal punto di vi
   },
   render: () =>
     html` <it-accordion>
-      <it-accordion-item label="Elemento Accordion #1" default-open>
+      <it-accordion-item default-open>
+        <span slot="heading">Elemento Accordion #1</span>
         <div slot="content">
           <!-- Accordion annidato -->
           <it-accordion>
-            <it-accordion-item label="Elemento Accordion annidato #1" as="h3" default-open>
+            <it-accordion-item as="h3" default-open>
+              <span slot="heading">Elemento Accordion annidato #1</span>
               <div slot="content">
                 Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
                 facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
               </div>
             </it-accordion-item>
-            <it-accordion-item label="Elemento Accordion annidato #2" as="h3">
+            <it-accordion-item as="h3">
+              <span slot="heading">Elemento Accordion annidato #2</span>
               <div slot="content">
                 Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
                 facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
               </div>
             </it-accordion-item>
-            <it-accordion-item label="Elemento Accordion annidato #3" as="h3">
+            <it-accordion-item as="h3">
+              <span slot="heading">Elemento Accordion annidato #3</span>
               <div slot="content">
                 Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
                 facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
@@ -285,13 +307,15 @@ Utilizzare questo approccio solo quando strettamente necessario: dal punto di vi
           </it-accordion>
         </div>
       </it-accordion-item>
-      <it-accordion-item label="Elemento Accordion #2">
+      <it-accordion-item>
+        <span slot="heading">Elemento Accordion #2</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
-      <it-accordion-item label="Elemento Accordion #3">
+      <it-accordion-item>
+        <span slot="heading">Elemento Accordion #3</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
@@ -316,19 +340,22 @@ Aggiungere la proprietà <code>background-active</code> a <code>it-accordion</co
   },
   render: () => html`
     <it-accordion background-active>
-      <it-accordion-item label="Elemento Accordion #1" default-open>
+      <it-accordion-item default-open>
+        <span slot="heading">Elemento Accordion #1</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
-      <it-accordion-item label="Elemento Accordion #2">
+      <it-accordion-item>
+        <span slot="heading">Elemento Accordion #2</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
-      <it-accordion-item label="Elemento Accordion #3">
+      <it-accordion-item>
+        <span slot="heading">Elemento Accordion #3</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
@@ -354,19 +381,22 @@ Aggiungere la proprietà <code>background-hover</code> a <code>it-accordion</cod
   },
   render: () => html`
     <it-accordion background-hover>
-      <it-accordion-item label="Elemento Accordion #1" default-open>
+      <it-accordion-item default-open>
+        <span slot="heading">Elemento Accordion #1</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
-      <it-accordion-item label="Elemento Accordion #2">
+      <it-accordion-item>
+        <span slot="heading">Elemento Accordion #2</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
-      <it-accordion-item label="Elemento Accordion #3">
+      <it-accordion-item>
+        <span slot="heading">Elemento Accordion #3</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.

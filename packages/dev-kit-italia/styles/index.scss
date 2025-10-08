@@ -26,10 +26,10 @@
 @import 'bootstrap-italia/src/scss/components/dropdown';
 
 /*dev-kit-italia global styles*/
+@import '@italia/accordion/styles/globals';
 @import '@italia/button/styles/globals';
 @import '@italia/dropdown/styles/globals';
 @import '@italia/icon/styles/globals';
 @import '@italia/input/styles/globals';
 @import '@italia/section/styles/globals';
 @import '@italia/video/styles/globals';
-@import '@italia/accordion/styles/globals';

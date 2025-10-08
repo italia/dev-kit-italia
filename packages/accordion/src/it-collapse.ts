@@ -19,10 +19,10 @@ export class ItCollapse extends BaseComponent {
   @property({ type: Boolean, reflect: true })
   expanded = false;
 
-  @property()
+  @property({ type: String })
   label: string = '';
 
-  @property()
+  @property({ type: String })
   as: string = 'button';
 
   @property({ type: Boolean, attribute: 'default-open', reflect: true })
@@ -31,7 +31,7 @@ export class ItCollapse extends BaseComponent {
   @query('.collapse-content')
   contentElement!: HTMLElement;
 
-  @queryAssignedElements()
+  @queryAssignedElements({ slot: 'trigger' })
   private triggerElements!: HTMLElement[];
 
   get triggerElement(): HTMLElement | null {
@@ -261,7 +261,7 @@ export class ItCollapse extends BaseComponent {
   protected renderDefaultTrigger() {
     if (!this.label) return null;
 
-    const buttonClasses = [!this.expanded && 'collapsed'].filter(Boolean).join(' ');
+    const buttonClasses = this.composeClass(!this.expanded && 'collapsed');
 
     const defaultButtonElement = html`<button
       type="button"
@@ -282,7 +282,7 @@ export class ItCollapse extends BaseComponent {
     const tagName = this.isValidTag(this.as) ? this.as : 'div';
     const Tag = unsafeStatic(tagName);
     // eslint-disable-next-line lit/binding-positions, lit/no-invalid-html
-    return html`<${Tag} part="trigger" role="button"  aria-expanded="${this.expanded}" aria-controls="${this._contentId}" id="${this._triggerId}">${this.label}</${Tag}>`;
+    return html`<${Tag} part="trigger" role="button" aria-expanded="${this.expanded}" aria-controls="${this._contentId}" id="${this._triggerId}">${this.label}</${Tag}>`;
   }
 
   private hasSlottedTrigger(): boolean {
@@ -290,8 +290,8 @@ export class ItCollapse extends BaseComponent {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  private isValidTag(tag: string) {
-    return /^[a-z][a-z0-9-]*$/.test(tag); // semplice validazione
+  protected isValidTag(tag: string) {
+    return /^[a-z][a-z0-9-]+$/.test(tag); // semplice validazione
   }
 
   render() {
@@ -302,7 +302,7 @@ export class ItCollapse extends BaseComponent {
     return html`
       <div class="accordion-item" part="accordion-item">
         <div class="collapse-wrapper">
-          ${when(!hasCustomTrigger && this.label, () => this.renderDefaultTrigger())}
+          ${when(!hasCustomTrigger, () => this.renderDefaultTrigger())}
           <slot name="trigger" @slotchange=${this._onTriggerSlotChange} part="trigger"></slot>
           <div
             class="collapse-content"

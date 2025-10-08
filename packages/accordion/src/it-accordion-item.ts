@@ -1,8 +1,8 @@
 import { customElement, property } from 'lit/decorators.js';
-import { html } from 'lit';
+import { html, nothing } from 'lit';
+import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { ItCollapse } from './it-collapse.js';
 import styles from './accordion.scss';
-import type { HeadingLevels } from './types.ts';
 
 @customElement('it-accordion-item')
 export class ItAccordionItem extends ItCollapse {
@@ -10,11 +10,8 @@ export class ItAccordionItem extends ItCollapse {
   // Aggiunge solo alias semantici per le proprietà accordion
   static styles = styles;
 
-  @property()
-  override as: HeadingLevels = 'h2';
-
-  @property({ type: Boolean, attribute: 'default-open', reflect: true })
-  override defaultOpen: boolean = false;
+  @property({ type: String })
+  override as: string = 'h2';
 
   @property({ type: Boolean, attribute: 'left-icon', reflect: true })
   leftIcon = false;
@@ -35,9 +32,7 @@ export class ItAccordionItem extends ItCollapse {
   }
 
   protected override renderDefaultTrigger() {
-    if (!this.label) return null;
-
-    const buttonClasses = ['accordion-button', !this.expanded && 'collapsed'].filter(Boolean).join(' ');
+    const buttonClasses = this.composeClass('accordion-button', !this.expanded && 'collapsed');
 
     // Scegli l'icona in base al tipo e allo stato
     let iconContent = null;
@@ -53,34 +48,33 @@ export class ItAccordionItem extends ItCollapse {
       ></it-icon>`;
     }
 
-    const buttonContent = this.leftIcon ? html`${iconContent}${this.label}` : html`${this.label}${iconContent}`;
-
     const buttonElement = html`<button
       type="button"
+      part="trigger"
       class="${buttonClasses}"
       aria-expanded="${this.expanded}"
       aria-controls="${this._contentId}"
       id="${this._triggerId}"
       @click=${this.handleTriggerAction}
     >
-      ${buttonContent}
+      ${this.leftIcon ? iconContent : nothing}
+      <slot name="heading"></slot>
+      ${!this.leftIcon ? iconContent : nothing}
     </button>`;
-    switch (this.as) {
-      case 'h3':
-        return html`<h3 class="accordion-header">${buttonElement}</h3>`;
-      case 'h4':
-        return html`<h4 class="accordion-header">${buttonElement}</h4>`;
-      case 'h5':
-        return html`<h5 class="accordion-header">${buttonElement}</h5>`;
-      case 'h6':
-        return html`<h6 class="accordion-header">${buttonElement}</h6>`;
-      default:
-        return html`<h2 class="accordion-header">${buttonElement}</h2>`;
-    }
+
+    // https://lit.dev/articles/lit-cheat-sheet/#bind-any-value-to-html-tag-name-or-attribute-name
+    const tagName = this.isValidTag(this.as) ? this.as : 'h2';
+    return html`
+      ${staticHtml`
+        <${unsafeStatic(tagName)} class="accordion-header">
+          ${buttonElement}
+        </${unsafeStatic(tagName)}>
+      `}
+    `;
   }
 
   protected override updateBackgroundStyles() {
-    // Aggiorna l'icona left se necessario
+    // Aggiorna l'icona sinistra se presente
     if (this.leftIcon) {
       const iconElement = this.shadowRoot?.querySelector('.accordion-icon-left') as HTMLElement;
       if (iconElement) {
@@ -95,7 +89,7 @@ export class ItAccordionItem extends ItCollapse {
       }
     }
 
-    // Aggiorna l'icona normale (chevron)
+    // Aggiorna l'icona predefinita a destra (chevron)
     const normalIcon = this.shadowRoot?.querySelector('.accordion-icon') as HTMLElement;
     if (normalIcon) {
       if (this.expanded) {
