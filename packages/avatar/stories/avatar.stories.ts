@@ -425,37 +425,37 @@ Per gli avatar con icona inserire un testo alternativo: \`<span class="visually-
     <div class="d-flex align-items-center justify-content-around flex-wrap flex-sm-nowrap gap-4">
       ${renderComponent({
         type: 'icon',
-        icon: 'it-search',
+        icon: 'it-user',
         avatarTitle: 'Cerca',
         size: 'xs',
       })}
       ${renderComponent({
         type: 'icon',
-        icon: 'it-search',
+        icon: 'it-user',
         avatarTitle: 'Cerca',
         size: 'sm',
       })}
       ${renderComponent({
         type: 'icon',
-        icon: 'it-search',
+        icon: 'it-user',
         avatarTitle: 'Cerca',
         size: 'md',
       })}
       ${renderComponent({
         type: 'icon',
-        icon: 'it-search',
+        icon: 'it-user',
         avatarTitle: 'Cerca',
         size: 'lg',
       })}
       ${renderComponent({
         type: 'icon',
-        icon: 'it-search',
+        icon: 'it-user',
         avatarTitle: 'Cerca',
         size: 'xl',
       })}
       ${renderComponent({
         type: 'icon',
-        icon: 'it-search',
+        icon: 'it-user',
         avatarTitle: 'Cerca',
         size: 'xxl',
       })}
@@ -505,7 +505,7 @@ Per associare un avatar ad un'azione o un link, utilizzare l'attributo \`href\` 
         })}
         ${renderComponent({
           type: 'icon',
-          icon: 'it-search',
+          icon: 'it-user',
           href: '#',
           avatarTitle: 'Cerca',
         })}
@@ -864,7 +864,7 @@ Utilizzando una lista di link con l’aggiunta della classe .avatar-group si ott
             </li>
             <li>
               <div class="list-item">
-                ${renderComponent({ icon: 'it-search', avatarTitle: 'Cerca' })}
+                ${renderComponent({ icon: 'it-user', avatarTitle: 'Cerca' })}
                 <span>Cerca utenti</span>
               </div>
             </li>
