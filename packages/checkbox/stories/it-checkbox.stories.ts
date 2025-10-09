@@ -151,7 +151,7 @@ const meta = {
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>
-Tutti gli attributi \`aria-*\` passati a \`<it-checkbox>\` vengono applicati all'input generato.
+Tutti gli attributi \`it-aria-*\` passati a \`<it-checkbox>\` vengono applicati all'input generato.
 </p></div></div>
 `,
       },
