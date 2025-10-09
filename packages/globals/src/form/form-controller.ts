@@ -214,10 +214,11 @@ export class FormControlController implements ReactiveController {
     const disabled = this.options.disabled(this.host);
     const name = this.options.name(this.host);
     const value = this.options.value(this.host);
+    const tagName = this.host.tagName.toLowerCase();
 
     // For buttons, we only submit the value if they were the submitter. This is currently done in doAction() by
     // injecting the name/value on a temporary button, so we can just skip them here.
-    const isButton = this.host.tagName.toLowerCase() === 'it-button';
+    const isButton = tagName === 'it-button';
 
     if (
       this.host.isConnected &&
@@ -227,12 +228,20 @@ export class FormControlController implements ReactiveController {
       name.length > 0 &&
       typeof value !== 'undefined'
     ) {
-      if (Array.isArray(value)) {
-        (value as unknown[]).forEach((val) => {
-          event.formData.append(name, (val as string | number | boolean).toString());
-        });
-      } else {
-        event.formData.append(name, (value as string | number | boolean).toString());
+      switch (tagName) {
+        case 'it-radio':
+          if ((this.host as any).checked) {
+            event.formData.append(name, value as string);
+          }
+          break;
+        default:
+          if (Array.isArray(value)) {
+            (value as unknown[]).forEach((val) => {
+              event.formData.append(name, (val as string | number | boolean).toString());
+            });
+          } else {
+            event.formData.append(name, (value as string | number | boolean).toString());
+          }
       }
     }
   };
@@ -380,9 +389,8 @@ export class FormControlController implements ReactiveController {
   }
 
   /** Resets the form, restoring all the control to their default value */
-  reset(submitter?: HTMLInputElement | any) {
-    this.doAction('reset', submitter);
-  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, class-methods-use-this
+  reset(submitter?: HTMLInputElement | any) {}
 
   /** Submits the form, triggering validation and form data injection. */
   submit(submitter?: HTMLInputElement | any) {

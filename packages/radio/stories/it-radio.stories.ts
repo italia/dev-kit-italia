@@ -384,65 +384,6 @@ export const RaggruppatiVisivamente: Story = {
   `,
 };
 
-export const GestioneErrori: Story = {
-  ...meta,
-  name: 'Validazione e gestione degli errori',
-  parameters: {
-    docs: {
-      description: {
-        story: `Se è stato impostato l'attributo \`required\` e non è stata impostata la validazione custom tramite l'attributo \`custom-validation\`, viene effettuata una validazione interna utilizzando la validazione nativa del browser.
-<br/><br/><h4>Validazione esterna (validazione custom)</h4>
-È inoltre possibile validare il campo esternamente (via js ad esempio, o lato server), impostando l'attributo \`custom-validation="true"\`. In questo modo la validazione di default del browser effettuata internamente al componente è disabilitata.
-<br/><br/><h5>Campo invalido</h5>Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo \`validity-message="Messaggio di errore"\`.
-<br/><br/><h5>Campo valido</h5>Per riportare il campo ad uno stato 'valido', è sufficiente impostare il messaggio di errore a vuoto: \`validity-message=""\`.`,
-      },
-    },
-  },
-  render: (params) => html`
-    <fieldset>
-      <legend>Gruppo di radio obbligatorio</legend>
-      ${renderComponent({
-        ...params,
-        id: 'radio-required1',
-        label: 'Radio obbligatorio 1',
-        name: 'gruppo-required',
-        value: 'opzione1',
-        required: true,
-      })}
-      ${renderComponent({
-        ...params,
-        id: 'radio-required2',
-        label: 'Radio obbligatorio 2',
-        name: 'gruppo-required',
-        value: 'opzione2',
-        required: true,
-      })}
-    </fieldset>
-    <br />
-    <fieldset>
-      <legend>Validazione esterna</legend>
-      ${renderComponent({
-        ...params,
-        id: 'radio-custom1',
-        label: 'Radio con validazione esterna 1',
-        name: 'gruppo-custom',
-        value: 'opzione1',
-        customValidation: true,
-        validityMessage: 'Devi selezionare una delle opzioni disponibili',
-      })}
-      ${renderComponent({
-        ...params,
-        id: 'radio-custom2',
-        label: 'Radio con validazione esterna 2',
-        name: 'gruppo-custom',
-        value: 'opzione2',
-        customValidation: true,
-        validityMessage: 'Devi selezionare una delle opzioni disponibili',
-      })}
-    </fieldset>
-  `,
-};
-
 export const MetodiEPropPubblici: Story = {
   ...StoryFormControlMethodAndProps('', `|\`click()\`| Triggera l'evento di click sull'input reale | - |`),
   tags: ['!dev'],
