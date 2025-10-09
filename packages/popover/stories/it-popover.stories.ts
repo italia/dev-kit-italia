@@ -61,16 +61,6 @@ const meta = {
 Il componente \`<it-popover>\` permette di visualizzare contenuti in overlay posizionati rispetto a un elemento trigger.
 Utilizza [Floating UI](https://floating-ui.com/) per il posizionamento dinamico e supporta diverse posizioni tramite l'attributo \`placement\`.
 
-### Differenza tra Popover, Tooltip e Dialog/Modal
-
-Un **popover** è un overlay non-modale che appare vicino a un elemento specifico, fornendo contenuto aggiuntivo contestuale e interattivo.
-
-| Pattern | Modale | Backdrop | Dismissal | Contenuto | Esempi |
-|---------|--------|----------|-----------|-----------|---------|
-| **Tooltip** | No | No | Light (hover out) | Solo testo breve | Descrizione funzione pulsante |
-| **Popover** | No | No | Light (click outside) | Ricco e interattivo | Menu, date picker, color picker |
-| **Dialog/Modal** | Sì | Sì | Explicit (button) | Complesso, richiede azione | Conferme, alert critici, form |
-
 Il componente implementa le best practices UX per i popover come [Polaris (Shopify)](https://polaris.shopify.com/components/overlays/popover), [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/popovers) e [Material Design](https://m3.material.io/).
 
 Il componente non implementa event listener automatici perché questi dipendono dal contesto d'uso e dal tipo di trigger che l'utente vuole utilizzare, ed è dunque a carico dell'utilizzatore: vengono in seguito forniti esempi.
@@ -87,6 +77,17 @@ Delegare questa responsabilità garantisce maggiore flessibilità e coerenza fun
 
 Se l’obiettivo è creare un menu con azioni o un dropdown menu, è consigliato utilizzare il componente dedicato **Dropdown**, che gestisce automaticamente il comportamento del focus e altre logiche specifiche di navigazione e accessibilità.</p>
 </div></div>
+
+### Differenza tra Popover, Tooltip e Dialog/Modal
+
+Un **popover** è un overlay non-modale che appare vicino a un elemento specifico, fornendo contenuto aggiuntivo contestuale e interattivo.
+
+| Pattern | Modale | Backdrop | Dismissal | Contenuto | Esempi |
+|---------|--------|----------|-----------|-----------|---------|
+| **Tooltip** | No | No | Light (hover out) | Solo testo breve | Descrizione funzione pulsante |
+| **Popover** | No | No | Light (click outside) | Ricco e interattivo | Menu, date picker, color picker |
+| **Dialog/Modal** | Sì | Sì | Explicit (button) | Complesso, richiede azione | Conferme, alert critici, form |
+
 ### Utilizzo
 
 Il popover richiede due slot:
@@ -394,51 +395,6 @@ export const ConIconaELink: Story = {
 //   },
 // };
 
-export const Eventi: Story = {
-  name: 'Eventi',
-  render: () => {
-    const handleClick = (e: Event) => {
-      const button = e.target as HTMLElement;
-      const popover = button.closest('it-popover') as any;
-      popover?.toggle();
-    };
-
-    const handleOpen = (e: CustomEvent) => {
-      console.log('Popover aperto', e);
-    };
-
-    const handleClose = (e: CustomEvent) => {
-      console.log('Popover chiuso', e);
-    };
-
-    return html`
-      <div style="display:flex;flex-direction:column;gap:1rem;align-items:center;">
-        <it-popover placement="bottom-start" @it-popover-open=${handleOpen} @it-popover-close=${handleClose}>
-          <it-button slot="trigger" variant="primary" @click=${handleClick}>Popover con eventi</it-button>
-          <div slot="content" class="popover">
-            <div class="popover-inner">
-              <h4 class="popover-header" style="margin-bottom:0;">Eventi del Popover</h4>
-              <div class="popover-body">Apri e chiudi questo popover per vedere gli eventi nella console.</div>
-            </div>
-          </div>
-        </it-popover>
-      </div>
-    `;
-  },
-  decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
-  argTypes: { ...disabledControls() },
-  parameters: {
-    ...meta.parameters,
-    docs: {
-      source: { excludeDecorators: true },
-      description: {
-        story:
-          'Il componente emette gli eventi `it-popover-open` quando viene aperto e `it-popover-close` quando viene chiuso. Apri la console del browser per vedere i log.',
-      },
-    },
-  },
-};
-
 export const PopoverSenzaPulsante: Story = {
   name: 'Con trigger personalizzato',
   render: () => {
@@ -729,6 +685,51 @@ popoverContent.addEventListener('blur', handleContentBlur);
 
 **Nota**: Valutare attentamente l'uso di questo pattern e preferire tooltip per contenuti informativi o click per interazioni complesse.
 `,
+      },
+    },
+  },
+};
+
+export const Eventi: Story = {
+  name: 'Eventi',
+  render: () => {
+    const handleClick = (e: Event) => {
+      const button = e.target as HTMLElement;
+      const popover = button.closest('it-popover') as any;
+      popover?.toggle();
+    };
+
+    const handleOpen = (e: CustomEvent) => {
+      console.log('Popover aperto', e);
+    };
+
+    const handleClose = (e: CustomEvent) => {
+      console.log('Popover chiuso', e);
+    };
+
+    return html`
+      <div style="display:flex;flex-direction:column;gap:1rem;align-items:center;">
+        <it-popover placement="bottom-start" @it-popover-open=${handleOpen} @it-popover-close=${handleClose}>
+          <it-button slot="trigger" variant="primary" @click=${handleClick}>Popover con eventi</it-button>
+          <div slot="content" class="popover">
+            <div class="popover-inner">
+              <h4 class="popover-header" style="margin-bottom:0;">Eventi del Popover</h4>
+              <div class="popover-body">Apri e chiudi questo popover per vedere gli eventi nella console.</div>
+            </div>
+          </div>
+        </it-popover>
+      </div>
+    `;
+  },
+  decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
+  argTypes: { ...disabledControls() },
+  parameters: {
+    ...meta.parameters,
+    docs: {
+      source: { excludeDecorators: true },
+      description: {
+        story:
+          'Il componente emette gli eventi `it-popover-open` quando viene aperto e `it-popover-close` quando viene chiuso. Apri la console del browser per vedere i log.',
       },
     },
   },
