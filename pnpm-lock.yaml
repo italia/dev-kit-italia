@@ -853,6 +853,9 @@ importers:
 
   packages/video:
     dependencies:
+      '@italia/accordion':
+        specifier: workspace:^
+        version: link:../accordion
       '@italia/button':
         specifier: workspace:^
         version: link:../button
