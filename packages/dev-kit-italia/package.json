@@ -59,6 +59,7 @@
     "@italia/video": "workspace:^",
     "@italia/input": "workspace:^",
     "@italia/i18n": "workspace:^",
+    "@italia/radio": "workspace:^",
     "rollup-plugin-copy": "^3.5.0"
   },
   "devDependencies": {
