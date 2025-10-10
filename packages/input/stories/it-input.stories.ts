@@ -677,7 +677,7 @@ document.querySelector('it-input#event-input-example').addEventListener('it-inpu
   `,
 };
 
-export const MetodiEPropPubblici: Story = { ...StoryFormControlMethodAndProps, tags: ['!dev'] };
+export const MetodiEPropPubblici: Story = { ...StoryFormControlMethodAndProps({}), tags: ['!dev'] };
 
 export const I18n: Story = {
   name: 'i18n',

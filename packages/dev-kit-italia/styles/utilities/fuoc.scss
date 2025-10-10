@@ -1,0 +1,86 @@
+@keyframes fouc-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@mixin it-shimmer($tag, $height: null, $width: null, $attr: null, $border-radius: 50%, $bg: null) {
+  @at-root {
+    #{$tag}:not(:defined) {
+      // layout
+      display: inline-block;
+      box-sizing: border-box;
+
+      // look shimmer
+      border-radius: $border-radius;
+      animation: fouc-shimmer 1.5s linear infinite;
+      background-color: if($bg != null, $bg, 'transparent');
+      background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+      background-repeat: no-repeat;
+      background-size: 200% 100%;
+      vertical-align: middle;
+
+      // dimensioni condizionali
+      @if $height != null {
+        height: $height;
+      }
+      @if $width != null {
+        width: $width;
+      }
+
+      // pseudo-elemento per simulare larghezza testo attributo
+      @if $attr != null and $width == null {
+        &::after {
+          display: inline-block;
+          content: attr(#{$attr});
+          font: inherit;
+          visibility: hidden; // invisibile ma riserva spazio
+          white-space: nowrap;
+        }
+      }
+    }
+
+    // rispetto preferenze ridotte: shimmer diventa statico
+    @media (prefers-reduced-motion: reduce) {
+      #{$tag}:not(:defined) {
+        animation: none;
+        background-image: none;
+      }
+    }
+
+    // quando l'elemento è definito
+    #{$tag}:defined {
+      animation: none !important;
+      background-color: transparent !important;
+      background-image: none !important;
+    }
+  }
+}
+
+$it-components: (
+  'it-avatar': (
+    border-radius: 50%,
+    bg: #ddd,
+  ),
+  'it-chip': (
+    height: 24px,
+    attr: 'label',
+    border-radius: 8px,
+    bg: #ddd,
+  ),
+);
+
+@each $tag, $params in $it-components {
+  @include it-shimmer(
+    $tag,
+    map-get($params, height),
+    if(map-has-key($params, width), map-get($params, width), null),
+    if(map-has-key($params, attr), map-get($params, attr), null),
+    if(map-has-key($params, border-radius), map-get($params, border-radius), 50%),
+    if(map-has-key($params, bg), map-get($params, bg), null)
+  );
+}
