@@ -11,5 +11,11 @@ it-checkbox {
     &[group] {
       margin-bottom: 1rem;
     }
+
+    [slot='label'] {
+      margin-left: 25px;
+      width: max-content;
+      display: inline-block;
+    }
   }
 }

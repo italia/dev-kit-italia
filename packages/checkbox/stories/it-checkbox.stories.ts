@@ -29,7 +29,6 @@ interface CheckboxProps {
 const renderComponent = (params: any) =>
   html`<it-checkbox
     id="${ifDefined(params.id || undefined)}"
-    label="${ifDefined(params.label || undefined)}"
     name="${ifDefined(params.name || undefined)}"
     value="${ifDefined(params.value?.length > 0 ? params.value : undefined)}"
     ?checked="${params.checked}"
@@ -43,7 +42,7 @@ const renderComponent = (params: any) =>
     support-text="${ifDefined(params.supportText || undefined)}"
     ?group="${params.group}"
     class="${ifDefined(params.className || undefined)}"
-    >${ifDefined(params.children || undefined)}</it-checkbox
+    ><span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}</it-checkbox
   >`;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories

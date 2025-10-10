@@ -2,7 +2,7 @@ import { setAttributes, FormControl, FormControlController } from '@italia/globa
 
 // import { registerTranslation } from '@italia/i18n';
 import { html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { when } from 'lit/directives/when.js';
 import { live } from 'lit/directives/live.js';
@@ -46,9 +46,15 @@ export class ItCheckbox extends FormControl {
    */
   @property({ type: Boolean, reflect: true }) indeterminate = false;
 
-  /** The input's label. */
-  @property({ type: String })
-  label = '';
+  @queryAssignedElements({ slot: 'label' })
+  labelElements!: HTMLElement[];
+
+  get label(): string {
+    if (this.labelElements.length > 0) {
+      return this.labelElements[0].innerText.trim();
+    }
+    return '';
+  }
 
   /** The input's help text. */
   @property({ type: String, attribute: 'support-text' })
@@ -146,7 +152,7 @@ export class ItCheckbox extends FormControl {
       class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
       ?hidden=${!(validityMessage?.length > 0)}
     >
-      <span class="visually-hidden">${this.label}: </span>${validityMessage}
+      <span class="visually-hidden"><slot name="label"></slot>: </span>${validityMessage}
     </div>`;
 
     const wrapperClasses = this.composeClass(
@@ -160,7 +166,9 @@ export class ItCheckbox extends FormControl {
     return html`
       <div class="${wrapperClasses}" part="input-wrapper">
         ${this._renderInput(supportTextId, invalid, validityMessage)}
-        <label for="${ifDefined(this._id || undefined)}" part="label" class="${labelClasses}">${this.label}</label>
+        <label for="${ifDefined(this._id || undefined)}" part="label" class="${labelClasses}"
+          ><slot name="label"></slot
+        ></label>
         ${validityMessageRender} ${supportTextRender}
       </div>
     `;
