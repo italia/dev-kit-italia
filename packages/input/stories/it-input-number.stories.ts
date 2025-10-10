@@ -31,7 +31,6 @@ interface InputNumberProps {
 const renderNumberInput = (params: any) =>
   html`<it-input
     id="${ifDefined(params.id || undefined)}"
-    label="${ifDefined(params.label || undefined)}"
     type="number"
     name="${ifDefined(params.name || undefined)}"
     value="${ifDefined(params.value || undefined)}"
@@ -48,7 +47,7 @@ const renderNumberInput = (params: any) =>
     support-text="${ifDefined(params.supportText || undefined)}"
     size="${ifDefined(params.size || undefined)}"
     ?adaptive="${params.adaptive}"
-    >${ifDefined(params.children || undefined)}</it-input
+    ><span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}</it-input
   >`;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
