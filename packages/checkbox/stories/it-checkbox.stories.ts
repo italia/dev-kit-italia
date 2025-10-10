@@ -278,7 +278,7 @@ export const Group: Story = {
     docs: {
       description: {
         story: `
-Per raggruppare visivamente gli elementi checkbox è necessario aggiungere al componente \`<it-checkbox>\` l'attributo \`group\`. L’elemento grafico di spunta verrà allineato alla destra del contenuto testuale.
+Per creare un gruppo di checkbox allineati in colonna, occorre aggiungere l'attributo \`group\` al componente \`<it-checkbox>\`. L’elemento grafico di spunta verrà allineato alla destra del contenuto testuale.
 
 In questi casi, se tutti gli elementi \`<it-checkbox>\` hanno lo stesso attributo \`name\`, al submit della form via js, il modo corretto per estrarre il valore è:
 
@@ -316,18 +316,18 @@ formData.getAll(field_name) // dove \`field_name\` è il valore dell'attributo \
           ...params,
           label: 'Checkbox selezionato',
           checked: true,
-          supportText: 'Testo descrittivo di supporto per l'opzione selezionabile',
+          supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
         })}
         ${renderComponent({
           ...params,
           label: 'Checkbox non selezionato',
-          supportText: 'Testo descrittivo di supporto per l'opzione selezionabile',
+          supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
         })}
         ${renderComponent({
           ...params,
           disabled: true,
           label: 'Checkbox disabilitato non selezionato',
-          supportText: 'Testo descrittivo di supporto per l'opzione selezionabile',
+          supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
         })}
       </fieldset>
     </div>
@@ -337,7 +337,7 @@ formData.getAll(field_name) // dove \`field_name\` è il valore dell'attributo \
 export const SupportText: Story = {
   ...meta,
   name: 'Testo di supporto',
-  args: { supportText: 'Testo descrittivo di supporto per l'opzione selezionabile' },
+  args: { supportText: "Testo descrittivo di supporto per l'opzione selezionabile" },
 
   parameters: {
     docs: {
