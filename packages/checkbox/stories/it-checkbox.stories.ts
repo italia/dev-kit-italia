@@ -321,7 +321,7 @@ formData.getAll(field_name) // dove \`field_name\` è il valore dell'attributo \
         ${renderComponent({
           ...params,
           label: 'Checkbox non selezionato',
-          supportText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie libero',
+          supportText: 'Testo descrittivo di supporto per l'opzione selezionabile',
         })}
         ${renderComponent({
           ...params,
