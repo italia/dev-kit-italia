@@ -212,7 +212,7 @@ Per disabilitare i checkbox, aggiungi l'attributo \`disabled\` al componente \`<
 
 export const Indeterminate: Story = {
   ...meta,
-  name: 'Stato indeterminato (mixed)',
+  name: 'Indeterminato (mixed)',
   args: { indeterminate: true },
 
   parameters: {
