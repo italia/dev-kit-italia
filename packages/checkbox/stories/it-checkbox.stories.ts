@@ -337,7 +337,7 @@ formData.getAll(field_name) // dove \`field_name\` è il valore dell'attributo \
 export const SupportText: Story = {
   ...meta,
   name: 'Testo di supporto',
-  args: { supportText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie libero' },
+  args: { supportText: 'Testo descrittivo di supporto per l'opzione selezionabile' },
 
   parameters: {
     docs: {
