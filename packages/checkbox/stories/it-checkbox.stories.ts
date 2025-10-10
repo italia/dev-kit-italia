@@ -248,7 +248,7 @@ export const Inline: Story = {
     docs: {
       description: {
         story: `
-Per allineare orizzontalmente le checkbox basterà aggiungere l'attributo \`inline\` a \`<it-checkbox>\`.
+Per allineare orizzontalmente le checkbox, aggiungi l'attributo \`inline\` a \`<it-checkbox>\`.
 `,
       },
     },
