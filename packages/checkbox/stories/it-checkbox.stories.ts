@@ -188,7 +188,7 @@ export const Disabilitato: Story = {
     docs: {
       description: {
         story: `
-Affinché i campi checkbox risultino disabilitati occorrerà aggiungere l’attributo \`disabled\` al componente \`<it-checkbox>\`.
+Per disabilitare i checkbox, aggiungi l'attributo \`disabled\` al componente \`<it-checkbox>\`.
 `,
       },
     },
