@@ -16,16 +16,17 @@
       <section>
         <h2>Form con validazione basica del browser</h2>
         <form id="form">
-          <it-input id="nome" name="nome" label="Nome"></it-input>
-          <it-input id="cognome" name="cognome" label="Cogome"></it-input>
-          <it-input id="email" name="email" label="E-mail" type="email" support-text="Inserisci la tua email" required></it-input>
+          <it-input id="nome" name="nome"><span slot="label">Nome</span></it-input>
+          <it-input id="cognome" name="cognome"><span slot="label">Cognome</span></it-input>
+          <it-input id="email" name="email" type="email" support-text="Inserisci la tua email" required>
+            <span slot="label">E-mail</span>
+          </it-input>
           <it-input
             id="messaggio"
             name="messaggio"
-            label="Messaggio"
             type="textarea"
             support-text="Inserisci il tuo messaggio"
-          ></it-input>
+          ><span slot="label">Messaggio</span></it-input>
 
           <it-button type="submit" variant="primary" block> Invia </it-button>
         </form>
@@ -34,16 +35,15 @@
       <section>
         <h2>Form con validazione custom con JustValidate</h2>
         <form id="form-custom-validation">
-          <it-input id="nome" name="nome" label="Nome" custom-validation></it-input>
-          <it-input id="cognome" name="cognome" label="Cogome" custom-validation></it-input>
-          <it-input id="email" name="email" label="E-mail" type="email" support-text="Inserisci la tua email" custom-validation></it-input>
+          <it-input id="nome" name="nome" custom-validation><span slot="label">Nome</span></it-input>
+          <it-input id="cognome" name="cognome" custom-validation><span slot="label">Cognome</span></it-input>
+          <it-input id="email" name="email" type="email" support-text="Inserisci la tua email" custom-validation><span slot="label">E-mail</span></it-input>
           <it-input
             id="messaggio"
             name="messaggio"
-            label="Messaggio"
             type="textarea"
             support-text="Inserisci il tuo messaggio" custom-validation
-          ></it-input>
+          ><span slot="label">Messaggio</span></it-input>
 
           <it-button type="submit" variant="primary" block> Invia </it-button>
         </form>

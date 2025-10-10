@@ -70,6 +70,10 @@ $it-components: (
   'it-avatar': (
     border-radius: 50%,
   ),
+  'it-button': (
+    border-radius: var(--bs-btn-border-radius, 4px),
+    height: 44.8px,
+  ),
   'it-chip': (
     height: 24px,
     attr: 'label',
