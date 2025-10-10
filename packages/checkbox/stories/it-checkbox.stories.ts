@@ -279,6 +279,13 @@ export const Group: Story = {
       description: {
         story: `
 Per raggruppare visivamente gli elementi checkbox occorrerà aggiungere al componente \`<it-checkbox>\` l'attributo \`group\`. L’elemento grafico di spunta verrà allineato alla destra del contenuto testuale.
+
+In questi casi, se tutti gli elementi \`<it-checkbox>\` hanno lo stesso attributo \`name\`, al submit della form via js, il modo corretto per estrarre il valore è:
+
+\`\`\`js
+  const formData = new FormData(document.getElementById('form'));
+formData.getAll(field_name) // dove \`field_name\` è il valore dell'attributo \`[name]\`
+\`\`\`
 `,
       },
     },
@@ -350,6 +357,9 @@ Per mostrare un testo di supporto alla checkbox, basterà aggiungere l'attributo
 };
 
 export const MetodiEPropPubblici: Story = {
-  ...StoryFormControlMethodAndProps('', `|\`click()\`| Triggera l'evento di click sull'input reale | - |`),
+  ...StoryFormControlMethodAndProps({
+    componentName: 'it-checkbox',
+    otherMethods: `|\`click()\`| Triggera l'evento di click sull'input reale | - |`,
+  }),
   tags: ['!dev'],
 };
