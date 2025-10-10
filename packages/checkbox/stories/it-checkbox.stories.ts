@@ -271,7 +271,7 @@ Per allineare orizzontalmente le checkbox, aggiungi l'attributo \`inline\` a \`<
 
 export const Group: Story = {
   ...meta,
-  name: 'Raggruppate visivamente',
+  name: 'Gruppo di checkbox',
   args: { group: true },
 
   parameters: {
