@@ -219,7 +219,7 @@ export const Indeterminate: Story = {
     docs: {
       description: {
         story: `
-Per ottenere lo stato indeterminato di una checkbox, è sufficiente aggiungere l'attributo \`indeterminate\` al componente \`<it-checkbox>\`.
+Per ottenere lo stato indeterminato di una checkbox, aggiungi l'attributo \`indeterminate\` al componente \`<it-checkbox>\`.
 `,
       },
     },
