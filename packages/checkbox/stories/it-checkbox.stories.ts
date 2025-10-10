@@ -343,7 +343,7 @@ export const SupportText: Story = {
     docs: {
       description: {
         story: `
-Per mostrare un testo di supporto alla checkbox, basterà aggiungere l'attributo \`supportText="Testo di supporto"\` a \`<it-checkbox>\`.
+Per mostrare un testo di supporto alla checkbox, aggiungi l'attributo \`supportText="Testo di supporto"\` a \`<it-checkbox>\`.
 `,
       },
     },
