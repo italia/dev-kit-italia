@@ -172,13 +172,17 @@ const meta = {
 <Description>Campi input con pulsanti per incrementare/decrementare valori numerici.</Description>
 
 
-Per:
-- Validazione e gestione degli errori
-- Gestione degli eventi
-- Metodi e proprietà accessibili via js
-- i18n
+L'input numerico è una variante del componente \`<it-input>\` con l'attributo \`type\` impostato su \`number\`.
 
-vedere la documentazione di base del componente \`<it-input>\`.
+Pertanto, per quanto riguarda:
+
+- la **validazione** e la **gestione degli errori**
+- la **gestione degli eventi**
+- i **metodi e le proprietà** accessibili tramite JavaScript
+- il **supporto all’internazionalizzazione (i18n)**
+
+
+è necessario fare riferimento alla **documentazione principale** del componente \`<it-input>\`.
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>
