@@ -1,3 +1,8 @@
+:root {
+  --it-fouc-bg: #ddd;
+  --it-host-display: inline-block;
+}
+
 @keyframes fouc-shimmer {
   0% {
     background-position: -200% 0;
@@ -8,17 +13,17 @@
   }
 }
 
-@mixin it-shimmer($tag, $height: null, $width: null, $attr: null, $border-radius: 50%, $bg: null) {
+@mixin it-shimmer($tag, $height: null, $width: null, $attr: null, $border-radius: 0, $bg: null) {
   @at-root {
     #{$tag}:not(:defined) {
       // layout
-      display: inline-block;
+      display: var(--it-host-display, inline-block);
       box-sizing: border-box;
 
       // look shimmer
       border-radius: $border-radius;
       animation: fouc-shimmer 1.5s linear infinite;
-      background-color: if($bg != null, $bg, 'transparent');
+      background-color: if($bg != null, $bg, var(--it-fouc-bg));
       background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
       background-repeat: no-repeat;
       background-size: 200% 100%;
@@ -64,13 +69,19 @@
 $it-components: (
   'it-avatar': (
     border-radius: 50%,
-    bg: #ddd,
   ),
   'it-chip': (
     height: 24px,
     attr: 'label',
-    border-radius: 8px,
-    bg: #ddd,
+    border-radius: 40px,
+  ),
+  'it-checkbox': (
+    height: 20px,
+    attr: 'label',
+  ),
+  'it-input': (
+    height: 74px,
+    attr: 'label',
   ),
 );
 
@@ -80,7 +91,7 @@ $it-components: (
     map-get($params, height),
     if(map-has-key($params, width), map-get($params, width), null),
     if(map-has-key($params, attr), map-get($params, attr), null),
-    if(map-has-key($params, border-radius), map-get($params, border-radius), 50%),
+    if(map-has-key($params, border-radius), map-get($params, border-radius), 0),
     if(map-has-key($params, bg), map-get($params, bg), null)
   );
 }
