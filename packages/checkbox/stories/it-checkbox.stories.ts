@@ -278,7 +278,7 @@ export const Group: Story = {
     docs: {
       description: {
         story: `
-Per raggruppare visivamente gli elementi checkbox occorrerà aggiungere al componente \`<it-checkbox>\` l'attributo \`group\`. L’elemento grafico di spunta verrà allineato alla destra del contenuto testuale.
+Per raggruppare visivamente gli elementi checkbox è necessario aggiungere al componente \`<it-checkbox>\` l'attributo \`group\`. L’elemento grafico di spunta verrà allineato alla destra del contenuto testuale.
 
 In questi casi, se tutti gli elementi \`<it-checkbox>\` hanno lo stesso attributo \`name\`, al submit della form via js, il modo corretto per estrarre il valore è:
 
