@@ -3,6 +3,7 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '@italia/button';
 import '@italia/popover';
+import '@italia/icon';
 
 type PopoverProps = {
   placement?:
@@ -82,10 +83,10 @@ Se l’obiettivo è creare un menu con azioni o un dropdown menu, è consigliato
 
 Un **popover** è un overlay non-modale che appare vicino a un elemento specifico, fornendo contenuto aggiuntivo contestuale e interattivo.
 
-| Pattern | Modale | Backdrop | Dismissal | Contenuto | Esempi |
-|---------|--------|----------|-----------|-----------|---------|
+| Pattern | Modale | Backdrop | Chiusura | Contenuto | Esempi |
+|---------|--------|----------|----------|-----------|--------|
 | **Tooltip** | No | No | Light (hover out) | Solo testo breve | Descrizione funzione pulsante |
-| **Popover** | No | No | Light (click outside) | Ricco e interattivo | Menu, date picker, color picker |
+| **Popover** | No | No | Light (click outside) | Ricco e interattivo | Menu, color picker, tour delle funzionalità |
 | **Dialog/Modal** | Sì | Sì | Explicit (button) | Complesso, richiede azione | Conferme, alert critici, form |
 
 ### Utilizzo
@@ -147,6 +148,7 @@ export const Base: Story = {
       const button = e.target as HTMLElement;
       const popover = button.closest('it-popover') as any;
       popover?.closePopover();
+      // eslint-disable-next-line no-alert
       alert(`Azione selezionata: ${action}`);
     };
 
@@ -206,7 +208,6 @@ export const Base: Story = {
 };
 
 export const Direzioni: Story = {
-  name: 'Direzioni',
   render: () => {
     const handleClick = (e: Event) => {
       const button = e.target as HTMLElement;

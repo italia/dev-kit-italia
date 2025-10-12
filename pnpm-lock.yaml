@@ -608,6 +608,9 @@ importers:
       '@italia/button':
         specifier: workspace:^
         version: link:../button
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config
