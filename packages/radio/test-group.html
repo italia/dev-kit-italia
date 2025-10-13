@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Group - Test HTML-First</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.16.0/dist/css/bootstrap-italia.min.css">
+    <script type="module" src="../src/it-radio.ts"></script>
+    <script type="module" src="../src/it-radio-group.ts"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Test Radio Group - HTML First Approach</h1>
+
+        <!-- Esempio 1: Con fieldset e legend (RACCOMANDATO) -->
+        <div class="mt-5">
+            <h2>Esempio 1: Con <code>&lt;fieldset&gt;</code> e <code>&lt;legend&gt;</code> (HTML-First)</h2>
+            <p class="text-muted">Questo è l'approccio raccomandato per la semantica HTML corretta.</p>
+
+            <form id="form1">
+                <fieldset>
+                    <legend>Seleziona il genere</legend>
+                    <it-radio-group name="genere" value="femmina">
+                        <it-radio value="maschio">Maschio</it-radio>
+                        <it-radio value="femmina">Femmina</it-radio>
+                        <it-radio value="altro">Altro</it-radio>
+                    </it-radio-group>
+                </fieldset>
+                <button type="submit" class="btn btn-primary mt-3">Invia</button>
+            </form>
+        </div>
+
+        <!-- Esempio 2: Con label attribute (alternativa) -->
+        <div class="mt-5">
+            <h2>Esempio 2: Con attributo <code>label</code></h2>
+            <p class="text-muted">Alternativa quando non si può usare fieldset.</p>
+
+            <form id="form2">
+                <it-radio-group name="animale" label="Scegli il tuo animale preferito" value="gatto">
+                    <it-radio value="cane">Cane</it-radio>
+                    <it-radio value="gatto">Gatto</it-radio>
+                    <it-radio value="coniglio">Coniglio</it-radio>
+                </it-radio-group>
+                <button type="submit" class="btn btn-primary mt-3">Invia</button>
+            </form>
+        </div>
+
+        <!-- Esempio 3: Required validation -->
+        <div class="mt-5">
+            <h2>Esempio 3: Campo obbligatorio (Required)</h2>
+            <p class="text-muted">Prova a inviare senza selezionare nulla.</p>
+
+            <form id="form3">
+                <fieldset>
+                    <legend>Accetti i termini e condizioni? <span class="text-danger">*</span></legend>
+                    <it-radio-group name="accettazione" required>
+                        <it-radio value="si">Sì, accetto</it-radio>
+                        <it-radio value="no">No, non accetto</it-radio>
+                    </it-radio-group>
+                </fieldset>
+                <button type="submit" class="btn btn-primary mt-3">Invia</button>
+            </form>
+        </div>
+
+        <!-- Esempio 4: Disabled -->
+        <div class="mt-5">
+            <h2>Esempio 4: Gruppo disabilitato</h2>
+
+            <form id="form4">
+                <fieldset>
+                    <legend>Opzioni (disabilitate)</legend>
+                    <it-radio-group name="opzioni" value="opzione2" disabled>
+                        <it-radio value="opzione1">Opzione 1</it-radio>
+                        <it-radio value="opzione2">Opzione 2 (selezionata)</it-radio>
+                        <it-radio value="opzione3">Opzione 3</it-radio>
+                    </it-radio-group>
+                </fieldset>
+            </form>
+        </div>
+
+        <!-- Esempio 5: Inline (con Bootstrap Italia) -->
+        <div class="mt-5">
+            <h2>Esempio 5: Disposizione inline</h2>
+
+            <form id="form5">
+                <fieldset>
+                    <legend>Valutazione del servizio</legend>
+                    <it-radio-group name="valutazione" class="d-flex gap-3">
+                        <it-radio value="1">★</it-radio>
+                        <it-radio value="2">★★</it-radio>
+                        <it-radio value="3">★★★</it-radio>
+                        <it-radio value="4">★★★★</it-radio>
+                        <it-radio value="5">★★★★★</it-radio>
+                    </it-radio-group>
+                </fieldset>
+                <button type="submit" class="btn btn-primary mt-3">Invia</button>
+            </form>
+        </div>
+
+        <!-- Test area -->
+        <div class="mt-5 p-4 bg-light">
+            <h2>Test Accessibilità Screen Reader</h2>
+            <p>Usa un lettore di schermo (VoiceOver, NVDA, JAWS) per verificare che annunci:</p>
+            <ul>
+                <li>Il nome del gruppo (dalla legend o label)</li>
+                <li>La posizione corretta: "1 di 3", "2 di 3", "3 di 3"</li>
+                <li>Lo stato checked/unchecked</li>
+            </ul>
+        </div>
+
+        <!-- Log area -->
+        <div class="mt-5">
+            <h2>Form Data Log</h2>
+            <pre id="log" class="p-3 bg-dark text-light"></pre>
+        </div>
+    </div>
+
+    <script>
+        // Log form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                const log = document.getElementById('log');
+                log.textContent = `Form ${form.id} submitted:\n${JSON.stringify(data, null, 2)}`;
+                console.log(`Form ${form.id}:`, data);
+            });
+        });
+
+        // Log changes
+        document.querySelectorAll('it-radio-group').forEach(group => {
+            group.addEventListener('change', (e) => {
+                console.log(`Group "${e.target.name}" changed to:`, e.target.value);
+            });
+        });
+    </script>
+</body>
+</html>

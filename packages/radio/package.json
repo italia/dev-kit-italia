@@ -23,6 +23,8 @@
   "exports": {
     ".": "./dist/src/index.js",
     "./it-radio.js": "./dist/src/it-radio.js",
+    "./it-radio-group.js": "./dist/src/it-radio-group.js",
+    "./radio-context.js": "./dist/src/radio-context.js",
     "./styles/*": "./styles/*"
   },
   "files": [
@@ -42,6 +44,7 @@
   },
   "dependencies": {
     "@italia/globals": "workspace:^",
+    "@lit/context": "^1.1.6",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:"
   },

@@ -1,29 +1,34 @@
-import { setAttributes, FormControl, FormControlController } from '@italia/globals';
+import { BaseComponent } from '@italia/globals';
 import { html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
+import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
+import { consume } from '@lit/context';
 import { when } from 'lit/directives/when.js';
-import { live } from 'lit/directives/live.js';
+import { radioGroupContext } from './radio-context.js';
+import type { ItRadioGroup } from './it-radio-group.js';
 
 import styles from './radio.scss';
 
 @customElement('it-radio')
-export class ItRadio extends FormControl {
+export class ItRadio extends BaseComponent {
   static styles = styles;
 
-  protected readonly formControlController: FormControlController = new FormControlController(this, {
-    value: (control: FormControl) => ((control as ItRadio).checked ? (control as ItRadio).value : undefined),
-    setValue: (control: FormControl, value: unknown) => {
-      const radio = control as ItRadio;
-      radio.checked = Boolean(value);
-    },
-  });
-
   /**
-   * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
-   * to `text`.
+   * Consume the parent radio group from Lit Context
    */
-  type = 'radio';
+  @consume({ context: radioGroupContext, subscribe: true })
+  private _group?: ItRadioGroup;
+
+  /** The radio's value attribute */
+  @property({ type: String, reflect: true })
+  value = '';
+
+  /** The radio's name attribute */
+  @property({ type: String, reflect: true })
+  name = '';
+
+  /** Whether the radio is disabled */
+  @property({ type: Boolean, reflect: true })
+  disabled = false;
 
   /** Draws the radio in a checked state. */
   @property({ type: Boolean, reflect: true })
@@ -37,230 +42,143 @@ export class ItRadio extends FormControl {
   @property({ type: Boolean, reflect: true })
   group = false;
 
-  /** The input's label. */
-  @property({ type: String })
-  label = '';
-
   /** The input's help text. */
   @property({ type: String, attribute: 'support-text' })
   supportText = '';
 
+  @queryAssignedElements({ slot: 'label' })
+  labelElements!: HTMLElement[];
+
+  get label(): string {
+    if (this.labelElements.length > 0) {
+      return this.labelElements[0].innerText.trim();
+    }
+    return '';
+  }
+
   /** Simulates a click on the radio. */
   click() {
-    this.inputElement.click();
+    if (!this.disabled) {
+      this.activate();
+    }
   }
 
-  /** Sets focus on the radio button. */
-  focus(options?: FocusOptions) {
-    this.inputElement?.focus(options);
+  /**
+   * Activate the radio via the group's public API
+   */
+  private activate(): void {
+    if (this.checked || this.disabled) {
+      return;
+    }
+
+    // Use the group's public API if available
+    if (this._group) {
+      this._group.selectRadio(this);
+    } else {
+      // Fallback if no group (shouldn't happen in normal usage)
+      this.checked = true;
+      this.dispatchEvent(
+        new Event('change', {
+          bubbles: true,
+          composed: true,
+        }),
+      );
+    }
   }
 
-  /** Removes focus from the radio button. */
-  blur() {
-    this.inputElement?.blur();
-  }
+  /**
+   * Handle keyup for Space key
+   */
+  private handleKeyup = (event: KeyboardEvent): void => {
+    if (event.code === 'Space') {
+      event.preventDefault();
+      this.activate();
+    }
+  };
+
+  /**
+   * Handle keydown - delegate arrow keys to the group
+   */
+  private handleKeydown = (event: KeyboardEvent): void => {
+    // Prevent Space from scrolling the page
+    if (event.code === 'Space') {
+      event.preventDefault();
+      return;
+    }
+
+    // Delegate arrow keys to the group's public API
+    if (this._group && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+      this._group.handleRadioKeyDown(this, event);
+    }
+  };
+
+  /**
+   * Handle click on the host
+   */
+  private handleClick = (): void => {
+    this.activate();
+  };
 
   override connectedCallback() {
     super.connectedCallback?.();
-    this._handleReady();
+
+    // Set role on host like Spectrum (NOT on internal element)
+    this.setAttribute('role', 'radio');
+
+    // Set tabindex if not already set (roving tabindex will be managed by group)
+    if (!this.hasAttribute('tabindex')) {
+      this.tabIndex = 0;
+    }
+
+    // Add event listeners on host
+    this.addEventListener('click', this.handleClick);
+    this.addEventListener('keyup', this.handleKeyup);
+    // Use capture phase for keydown to prevent Space from scrolling
+    this.addEventListener('keydown', this.handleKeydown, { capture: true });
+  }
+
+  override disconnectedCallback() {
+    super.disconnectedCallback?.();
+    this.removeEventListener('click', this.handleClick);
+    this.removeEventListener('keyup', this.handleKeyup);
+    this.removeEventListener('keydown', this.handleKeydown, { capture: true });
   }
 
   override updated(changedProperties: Map<string | number | symbol, unknown>) {
     super.updated?.(changedProperties);
 
+    // Update ARIA attributes on host (like Spectrum does)
+    if (changedProperties.has('checked')) {
+      this.setAttribute('aria-checked', this.checked ? 'true' : 'false');
+    }
+
+    if (changedProperties.has('disabled')) {
+      if (this.disabled) {
+        this.setAttribute('aria-disabled', 'true');
+      } else {
+        this.removeAttribute('aria-disabled');
+      }
+    }
+
     // logger
-    if (!this.label || this.label?.length === 0) {
+    if (!this.label) {
       this.logger.warn(
         `Label is required to ensure accessibility. Please, define a label for <it-radio name="${this.name}" ... /> .`,
       );
     }
-
-    // When checked changes, uncheck siblings
-    if (changedProperties.has('checked') && this.checked) {
-      this._uncheckSiblingRadios();
-    }
-
-    // Update tabindex based on checked state
-    if (changedProperties.has('checked') || changedProperties.has('name')) {
-      this._updateTabIndex();
-    }
   }
 
   /**
-   * Handle keyboard navigation in radio group
-   * Arrow keys move focus and select the radio
-   * Space selects the focused radio
+   * Render internal structure (like Spectrum)
+   * Just visual elements, no role/aria/events here (they're on the host)
    */
-  private _handleKeyDown = (event: KeyboardEvent) => {
-    // Only handle keys if not disabled
-    if (this.disabled) return;
-
-    const radios = this._getSiblingRadios();
-    const currentIndex = radios.indexOf(this);
-
-    let handled = false;
-    let nextIndex = currentIndex;
-
-    switch (event.key) {
-      case 'ArrowUp':
-      case 'ArrowLeft':
-        // Move to previous radio (wrap around)
-        nextIndex = currentIndex > 0 ? currentIndex - 1 : radios.length - 1;
-        handled = true;
-        break;
-
-      case 'ArrowDown':
-      case 'ArrowRight':
-        // Move to next radio (wrap around)
-        nextIndex = currentIndex < radios.length - 1 ? currentIndex + 1 : 0;
-        handled = true;
-        break;
-
-      case ' ':
-      case 'Space':
-        // Select current radio if not already selected
-        if (!this.checked) {
-          this._uncheckSiblingRadios();
-          this.checked = true;
-          this.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-        handled = true;
-        break;
-
-      default:
-        // Let other keys bubble normally
-        break;
-    }
-
-    if (handled) {
-      event.preventDefault();
-
-      // For arrow keys, move focus and select the next/previous radio
-      if (event.key.startsWith('Arrow') && nextIndex !== currentIndex) {
-        const nextRadio = radios[nextIndex];
-        if (nextRadio && !nextRadio.disabled) {
-          // Uncheck all siblings first
-          nextRadio._uncheckSiblingRadios();
-          // Check the next radio
-          nextRadio.checked = true;
-          // Move focus to the next radio
-          nextRadio.focus();
-          // Dispatch change event
-          nextRadio.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-      }
-    }
-  };
-
-  /**
-   * Get all sibling radios with the same name
-   */
-  private _getSiblingRadios(): ItRadio[] {
-    if (!this.name) return [this];
-
-    const form = this.form ? document.getElementById(this.form) : this.closest('form');
-    const root = form || document;
-
-    const radios = Array.from(root.querySelectorAll<ItRadio>(`it-radio[name="${this.name}"]`));
-    // Filter out disabled radios from navigation
-    return radios.filter((radio) => !radio.disabled);
-  }
-
-  /**
-   * Update tabindex to implement roving tabindex pattern
-   * Only the checked radio (or first radio if none checked) should be tabbable
-   */
-  private _updateTabIndex() {
-    const radios = this._getSiblingRadios();
-    const hasChecked = radios.some((radio) => radio.checked);
-
-    // Update tabindex for all radios in the group
-    radios.forEach((radio) => {
-      let shouldBeTabbed = false;
-
-      if (hasChecked) {
-        // If there's a checked radio, only it should be tabbable
-        shouldBeTabbed = radio.checked;
-      } else {
-        // If no radio is checked, only the first one should be tabbable
-        shouldBeTabbed = radio === radios[0];
-      }
-
-      // Update the tabindex of the internal input
-      if (radio.inputElement) {
-        // eslint-disable-next-line no-param-reassign
-        radio.inputElement.tabIndex = shouldBeTabbed ? 0 : -1;
-      }
-    });
-  }
-
-  protected override _handleClick(e: Event): void {
-    // Radio buttons should always be checked when clicked, not toggled
-    if (!this.checked) {
-      // First uncheck siblings, then set checked to true
-      // This ensures FormControlController sees only one checked radio
-      this._uncheckSiblingRadios();
-      this.checked = true;
-      super._handleClick(e);
-      this._handleChange(e);
-      this.dispatchEvent(new Event('change', { bubbles: true }));
-    }
-  }
-
-  /**
-   * Uncheck all other radio buttons with the same name in the document
-   */
-  private _uncheckSiblingRadios() {
-    if (!this.name) return;
-
-    // Find all radio buttons with the same name in the form or document
-    const form = this.form ? document.getElementById(this.form) : this.closest('form');
-    const root = form || document;
-
-    const radios = root.querySelectorAll<ItRadio>(`it-radio[name="${this.name}"]`);
-    radios.forEach((radio) => {
-      if (radio !== this && radio.checked) {
-        // eslint-disable-next-line no-param-reassign
-        radio.checked = false;
-      }
-    });
-  }
-
-  private _renderInput(supportTextId: string, invalid: boolean, validityMessage: string) {
-    const ariaDescribedBy = this.composeClass(
-      this.supportText?.length > 0 ? supportTextId : '',
-      this._ariaAttributes['aria-describedby']?.length > 0 ? this._ariaAttributes['aria-describedby'] : '',
-      validityMessage?.length > 0 ? `invalid-feedback-${this._id}` : '',
-    );
-
-    const inputClasses = this.composeClass(
-      'it-form__control',
-      invalid ? 'is-invalid' : '',
-      !invalid && this._touched ? 'just-validate-success-field' : '',
-    );
-
+  // eslint-disable-next-line class-methods-use-this
+  private _renderInput() {
+    // Render visual elements like Spectrum does
+    // #input = container, #button = visual circle
     const inputRender = html`
-      <input
-        part="radio focusable"
-        ${setAttributes(this._ariaAttributes)}
-        aria-describedby=${ifDefined(ariaDescribedBy || undefined)}
-        ?aria-invalid=${invalid}
-        @input="${this._handleInput}"
-        @blur=${this._handleBlur}
-        @focus=${this._handleFocus}
-        @click=${this._handleClick}
-        @keydown=${this._handleKeyDown}
-        @invalid=${this._handleInvalid}
-        type="${this.type}"
-        id="${this._id}"
-        name="${this.name}"
-        .checked=${live(this.checked)}
-        .disabled=${this.disabled}
-        .required=${this.required}
-        ?formNoValidate=${this.customValidation}
-        .value="${live(this.value)}"
-        class="${inputClasses}"
-      />
+      <div id="input" part="input"></div>
+      <span id="button" part="button" class="form-check-input"></span>
     `;
 
     return inputRender;
@@ -275,21 +193,6 @@ export class ItRadio extends FormControl {
       () => html` <small class="form-text" id="${supportTextId}">${this.supportText}</small> `,
     )}`;
 
-    const showValidation = true; // this._touched || this.customValidation ;
-    const validityMessage = (showValidation ? (this.validationMessage ?? '') : '') ?? '';
-
-    const invalid =
-      validityMessage?.length > 0 || (!this.customValidation && this.inputElement?.checkValidity() === false);
-
-    const validityMessageRender = html`<div
-      role="alert"
-      id="invalid-feedback-${this._id}"
-      class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
-      ?hidden=${!(validityMessage?.length > 0)}
-    >
-      <span class="visually-hidden">${this.label}: </span>${validityMessage}
-    </div>`;
-
     const wrapperClasses = this.composeClass(
       'form-check',
       this.inline ? 'form-check-inline' : '',
@@ -300,9 +203,9 @@ export class ItRadio extends FormControl {
 
     return html`
       <div class="${wrapperClasses}" part="input-wrapper">
-        ${this._renderInput(supportTextId, invalid, validityMessage)}
-        <label for="${ifDefined(this._id || undefined)}" part="label" class="${labelClasses}">${this.label}</label>
-        ${validityMessageRender} ${supportTextRender}
+        ${this._renderInput()}
+        <label part="label" class="${labelClasses}"><slot name="label">${this.label}</slot></label>
+        ${supportTextRender}
       </div>
     `;
   }
