@@ -3,6 +3,22 @@
 it-accordion-item {
   display: block;
   width: 100%;
+
+  &:not(:defined) {
+    [slot='heading'],
+    [slot='content'] {
+      padding: 1rem;
+      display: block;
+    }
+
+    &:not([default-open]) {
+      [slot='content'] {
+        padding: 0;
+        visibility: hidden;
+        height: 0;
+      }
+    }
+  }
 }
 
 it-accordion it-accordion::part(accordion) {
