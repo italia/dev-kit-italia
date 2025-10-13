@@ -12,7 +12,9 @@ import '@italia/radio';
 })
 export class RadioExamplesComponent {
   selectedValue = 'opzione1';
+
   selectedInline = 'opzione1';
+
   selectedGroup = 'opzione1';
 
   handleChange(event: Event, property: 'selectedValue' | 'selectedInline' | 'selectedGroup') {

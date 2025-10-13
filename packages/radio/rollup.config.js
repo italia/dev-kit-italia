@@ -6,7 +6,7 @@ import { litScss } from 'rollup-plugin-scss-lit';
  * @type {import('rollup').RollupOptions}
  */
 export default {
-  input: ['src/index.ts', 'src/it-radio.ts', 'src/it-radio-group.ts', 'src/radio-context.ts'],
+  input: ['src/index.ts', 'src/it-radio.ts', 'src/it-radio-group.ts'],
   output: {
     dir: 'dist',
     sourcemap: true,

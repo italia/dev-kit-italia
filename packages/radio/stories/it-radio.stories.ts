@@ -31,12 +31,10 @@ const renderComponent = (params: any) =>
     ?checked="${params.checked}"
     ?disabled="${params.disabled}"
     ?inline="${params.inline}"
-    ?group="${params.group}"
     support-text="${ifDefined(params.supportText || undefined)}"
     form="${ifDefined(params.form || undefined)}"
     ?custom-validation="${params.customValidation}"
     validity-message="${ifDefined(params.validityMessage || undefined)}"
-    ?required="${params.required}"
   >
     <span slot="label">${params.label || ''}</span>
   </it-radio>`;
@@ -97,12 +95,7 @@ const meta = {
       description: 'Se i radio devono essere visualizzati in linea',
       table: { defaultValue: { summary: 'false' } },
     },
-    group: {
-      control: 'boolean',
-      type: 'boolean',
-      description: 'Se il radio appartiene a un gruppo visivamente distinto',
-      table: { defaultValue: { summary: 'false' } },
-    },
+
     supportText: {
       name: 'support-text',
       control: 'text',
@@ -184,32 +177,30 @@ export const EsempioInterattivo: Story = {
     },
   },
   render: (params) => html`
-    <fieldset>
-      <legend>Gruppo di radio</legend>
-      <it-radio-group name="gruppo1">
-        ${renderComponent({
-          ...params,
-          id: 'radio1',
-          label: 'Radio di esempio 1',
-          name: 'gruppo1',
-          value: 'opzione1',
-        })}
-        ${renderComponent({
-          ...params,
-          id: 'radio2',
-          label: 'Radio di esempio 2',
-          name: 'gruppo1',
-          value: 'opzione2',
-        })}
-        ${renderComponent({
-          ...params,
-          id: 'radio3',
-          label: 'Radio di esempio 3',
-          name: 'gruppo1',
-          value: 'opzione3',
-        })}
-      </it-radio-group>
-    </fieldset>
+    <it-radio-group name="gruppo1" label="Esempio interattivo">
+      <span slot="legend">Esempio interattivo</span>
+      ${renderComponent({
+        ...params,
+        id: 'radio1',
+        label: 'Radio di esempio 1',
+        name: 'gruppo1',
+        value: 'opzione1',
+      })}
+      ${renderComponent({
+        ...params,
+        id: 'radio2',
+        label: 'Radio di esempio 2',
+        name: 'gruppo1',
+        value: 'opzione2',
+      })}
+      ${renderComponent({
+        ...params,
+        id: 'radio3',
+        label: 'Radio di esempio 3',
+        name: 'gruppo1',
+        value: 'opzione3',
+      })}
+    </it-radio-group>
   `,
 };
 
@@ -224,26 +215,22 @@ export const TestoDiSupporto: Story = {
     },
   },
   render: (params) => html`
-    <fieldset>
-      <legend>Gruppo di radio con testo di supporto</legend>
-      <it-radio-group name="gruppo-support">
-        ${renderComponent({
-          ...params,
-          id: 'radio-support1',
-          label: 'Radio con testo di supporto',
-          name: 'gruppo-support',
-          value: 'opzione1',
-          supportText: 'Questo è un testo di supporto per il radio button',
-        })}
-        ${renderComponent({
-          ...params,
-          id: 'radio-support2',
-          label: 'Altro radio',
-          name: 'gruppo-support',
-          value: 'opzione2',
-        })}
-      </it-radio-group>
-    </fieldset>
+    <it-radio-group name="gruppo-support">
+      <span slot="legend">Esempio con testo di supporto</span>
+      ${renderComponent({
+        ...params,
+        id: 'radio-support1',
+        label: 'Radio con testo di supporto',
+        value: 'opzione1',
+        supportText: 'Questo è un testo di supporto per il radio button',
+      })}
+      ${renderComponent({
+        ...params,
+        id: 'radio-support2',
+        label: 'Altro radio',
+        value: 'opzione2',
+      })}
+    </it-radio-group>
   `,
 };
 

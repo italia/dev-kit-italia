@@ -13,7 +13,7 @@
 :host {
   display: block;
   margin-bottom: var(--#{$prefix}spacing-xs);
-  
+
   // Role is on the host, make it focusable and styled
   &:focus {
     outline: 2px solid #ff9900;
@@ -36,21 +36,24 @@
   display: inline-block;
   width: 1.5rem;
   height: 1.5rem;
-  margin-right: 0.5rem;
-  vertical-align: middle;
-  background-color: #fff;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
   border: 2px solid #435a70;
   border-radius: 50%;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-right: 0.5rem;
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition:
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  vertical-align: middle;
 }
 
 // Checked state - :host has aria-checked
 :host([aria-checked='true']) #button {
-  background-color: #0066cc;
   border-color: #0066cc;
+  background-color: #0066cc;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
 }
 
@@ -59,15 +62,15 @@
   cursor: not-allowed;
   opacity: 0.5;
   pointer-events: none; // Prevent all interactions
-  
+
   #button {
+    border-color: #5c6f82;
     background-color: #f5f6f7;
-    border-color: #5c6f82;
   }
-  
+
   &[aria-checked='true'] #button {
-    background-color: #5c6f82;
     border-color: #5c6f82;
+    background-color: #5c6f82;
   }
 }
 

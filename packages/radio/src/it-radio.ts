@@ -1,12 +1,11 @@
-import { BaseComponent } from '@italia/globals';
+import { BaseComponent, FormControl } from '@italia/globals';
 import { html } from 'lit';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
-import { consume } from '@lit/context';
 import { when } from 'lit/directives/when.js';
-import { radioGroupContext } from './radio-context.js';
-import type { ItRadioGroup } from './it-radio-group.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import styles from './radio.scss';
+import { ItRadioGroup } from './it-radio-group.js';
 
 @customElement('it-radio')
 export class ItRadio extends BaseComponent {
@@ -15,8 +14,6 @@ export class ItRadio extends BaseComponent {
   /**
    * Consume the parent radio group from Lit Context
    */
-  @consume({ context: radioGroupContext, subscribe: true })
-  private _group?: ItRadioGroup;
 
   /** The radio's value attribute */
   @property({ type: String, reflect: true })
@@ -38,10 +35,6 @@ export class ItRadio extends BaseComponent {
   @property({ type: Boolean, reflect: true })
   inline = false;
 
-  /** Draws radios in groups. */
-  @property({ type: Boolean, reflect: true })
-  group = false;
-
   /** The input's help text. */
   @property({ type: String, attribute: 'support-text' })
   supportText = '';
@@ -56,24 +49,22 @@ export class ItRadio extends BaseComponent {
     return '';
   }
 
-  /** Simulates a click on the radio. */
-  click() {
-    if (!this.disabled) {
-      this.activate();
-    }
+  get group(): ItRadioGroup | null {
+    return this.closest('it-radio-group');
   }
 
   /**
    * Activate the radio via the group's public API
    */
+
   private activate(): void {
     if (this.checked || this.disabled) {
       return;
     }
 
     // Use the group's public API if available
-    if (this._group) {
-      this._group.selectRadio(this);
+    if (this.group) {
+      this.group.selectRadio(this);
     } else {
       // Fallback if no group (shouldn't happen in normal usage)
       this.checked = true;
@@ -106,10 +97,18 @@ export class ItRadio extends BaseComponent {
       return;
     }
 
-    // Delegate arrow keys to the group's public API
-    if (this._group && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
-      this._group.handleRadioKeyDown(this, event);
+    // Let Tab and Shift+Tab work normally for navigation
+    if (event.key === 'Tab') {
+      return;
     }
+
+    // Only prevent default for arrow keys (to prevent page scrolling)
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+      event.preventDefault();
+    }
+
+    // Delegate keyboard navigation to the group's public API
+    this.group?.handleRadioKeyDown(this, event);
   };
 
   /**
@@ -121,7 +120,6 @@ export class ItRadio extends BaseComponent {
 
   override connectedCallback() {
     super.connectedCallback?.();
-
     // Set role on host like Spectrum (NOT on internal element)
     this.setAttribute('role', 'radio');
 
@@ -132,16 +130,16 @@ export class ItRadio extends BaseComponent {
 
     // Add event listeners on host
     this.addEventListener('click', this.handleClick);
-    this.addEventListener('keyup', this.handleKeyup);
     // Use capture phase for keydown to prevent Space from scrolling
     this.addEventListener('keydown', this.handleKeydown, { capture: true });
+    this.addEventListener('keyup', this.handleKeyup, { capture: true });
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback?.();
     this.removeEventListener('click', this.handleClick);
-    this.removeEventListener('keyup', this.handleKeyup);
     this.removeEventListener('keydown', this.handleKeydown, { capture: true });
+    this.removeEventListener('keyup', this.handleKeyup, { capture: true });
   }
 
   override updated(changedProperties: Map<string | number | symbol, unknown>) {
@@ -190,21 +188,45 @@ export class ItRadio extends BaseComponent {
 
     const supportTextRender = html` ${when(
       this.supportText,
-      () => html` <small class="form-text" id="${supportTextId}">${this.supportText}</small> `,
+      () =>
+        html`<slot name="helpText"><small class="form-text" id="${supportTextId}">${this.supportText}</small></slot>`,
     )}`;
+
+    // const showValidation = true; // this._touched || this.customValidation ;
+    // const validityMessage = (showValidation ? (this.validationMessage ?? '') : '') ?? '';
+
+    // const invalid =
+    //   validityMessage?.length > 0 || (!this.customValidation && this.inputElement?.checkValidity() === false);
+
+    // const validityMessageRender = html`<div
+    //   role="alert"
+    //   id="invalid-feedback-${this._id}"
+    //   class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
+    //   ?hidden=${!(validityMessage?.length > 0)}
+    // >
+    //   <span class="visually-hidden">${this.label}: </span>${validityMessage}
+    // </div>`;
 
     const wrapperClasses = this.composeClass(
       'form-check',
       this.inline ? 'form-check-inline' : '',
       this.group ? 'form-check-group' : '',
+      'it-form__control',
+      // invalid ? 'is-invalid' : '',
+      // !invalid && this._touched ? 'just-validate-success-field' : '',
+    );
+    const ariaDescribedBy = this.composeClass(
+      this.supportText?.length > 0 ? supportTextId : '',
+      this._ariaAttributes['aria-describedby']?.length > 0 ? this._ariaAttributes['aria-describedby'] : '',
+      // validityMessage?.length > 0 ? `invalid-feedback-${this._id}` : '',
     );
 
     const labelClasses = this.composeClass(this.disabled ? 'disabled' : '');
 
     return html`
-      <div class="${wrapperClasses}" part="input-wrapper">
+      <div class="${wrapperClasses}" part="input-wrapper" aria-describedby="${ifDefined(ariaDescribedBy || undefined)}">
         ${this._renderInput()}
-        <label part="label" class="${labelClasses}"><slot name="label">${this.label}</slot></label>
+        <span part="label" class="${labelClasses}"><slot name="label">${this.label}</slot></span>
         ${supportTextRender}
       </div>
     `;

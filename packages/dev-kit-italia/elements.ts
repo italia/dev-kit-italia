@@ -9,7 +9,6 @@ import '@italia/popover/it-popover.js';
 import '@italia/video/it-video.js';
 import '@italia/radio/it-radio.js';
 import '@italia/radio/it-radio-group.js';
-import '@italia/radio/radio-context.js';
 
 import { registerTranslation } from '@italia/i18n/i18n.js';
 

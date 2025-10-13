@@ -1,8 +1,6 @@
 import { html, PropertyValues } from 'lit';
-import { property, queryAssignedElements } from 'lit/decorators.js';
-import { provide } from '@lit/context';
-import { FormControl, FormControlController } from '@italia/globals';
-import { radioGroupContext } from './radio-context.js';
+import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
+import { FormControl, FormControlController, RovingTabindexController } from '@italia/globals';
 import type { ItRadio } from './it-radio.js';
 
 /**
@@ -13,14 +11,9 @@ import type { ItRadio } from './it-radio.js';
  *
  * @cssprop --radio-group-gap - Gap between radio buttons (default: 0.5rem)
  */
+@customElement('it-radio-group')
 export class ItRadioGroup extends FormControl {
   static formAssociated = true;
-
-  /**
-   * Provide this group instance to child radio buttons via Lit Context
-   */
-  @provide({ context: radioGroupContext })
-  private _context = this;
 
   /**
    * The name of the radio group, used for form submission
@@ -31,7 +24,7 @@ export class ItRadioGroup extends FormControl {
   /**
    * The currently selected value
    */
-  @property({ type: String, reflect: true })
+  @state()
   value = '';
 
   /**
@@ -55,64 +48,119 @@ export class ItRadioGroup extends FormControl {
   /**
    * Get all slotted radio buttons
    */
-  @queryAssignedElements({ selector: 'it-radio' })
+  @queryAssignedElements({ selector: 'it-radio', slot: '' })
   private _radios!: ItRadio[];
 
-  private _internals?: ElementInternals;
+  @queryAssignedElements({ slot: 'legend' })
+  private _legend!: any;
 
-  private _hasUserInteracted = false;
-  
-  private _initialized = false;
+  /**
+   * Roving tabindex controller for keyboard navigation
+   */
+  private rovingTabindex = new RovingTabindexController<ItRadio>(this, {
+    getItems: () => this._radios,
+    onSelect: (radio) => this.selectRadio(radio),
+    direction: 'both',
+    selectOnFocus: true,
+  });
 
   /**
    * Form control integration
    */
   private formController = new FormControlController(this as any, {
     value: () => this.value,
-    disabled: () => this.disabled,
+    // disabled: () => this.disabled,
+    setValue: (control: FormControl, value: unknown) => {
+      const radioGroup = control as ItRadioGroup;
+      radioGroup.value = value as string;
+    },
   });
 
-  constructor() {
-    super();
+  /**
+   * Override: Custom validity check for radio group
+   */
+  override get validity(): ValidityState {
+    // Fallback: create a custom ValidityState-like object
+    const valid = !this.required || !!this.value;
+    return {
+      valid,
+      valueMissing: this.required && !this.value,
+      typeMismatch: false,
+      patternMismatch: false,
+      tooLong: false,
+      tooShort: false,
+      rangeUnderflow: false,
+      rangeOverflow: false,
+      stepMismatch: false,
+      badInput: false,
+      customError: false,
+    } as ValidityState;
+  }
 
-    // Attach ElementInternals for form participation
-    if ('attachInternals' in this) {
-      this._internals = (this as any).attachInternals();
+  /**
+   * Override: Check validity for radio group
+   */
+  override checkValidity(): boolean {
+    if (this.required && !this.value) {
+      return false;
     }
+    return true;
+  }
+
+  /**
+   * Override: Report validity for radio group
+   */
+  override reportValidity(): boolean {
+    const isValid = this.checkValidity();
+
+    if (!isValid) {
+      // Focus the first enabled radio for better UX
+      const firstEnabledRadio = this._radios?.find((r) => !r.disabled);
+      if (firstEnabledRadio) {
+        firstEnabledRadio.focus();
+      }
+    }
+
+    return isValid;
   }
 
   connectedCallback() {
-    super.connectedCallback();
-
-    // Set ARIA role for screen readers
-    this.setAttribute('role', 'radiogroup');
-
-    // Set aria-label if label is provided
-    if (this.label) {
-      this.setAttribute('aria-label', this.label);
-    }
+    super.connectedCallback?.();
+    this._handleReady();
+    this._setupRadios();
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
-    this.removeEventListener('change', this._handleRadioChange);
+    super.disconnectedCallback?.();
+    // this.removeEventListener('it-radio-keydown', this.handleRadioKeyDown);
+    // this.removeEventListener('it-radio-activate', this.selectRadio);
+    // this.removeEventListener('change', this._handleRadioChange);
   }
+
+  // firstUpdated() {
+  //   this._setupRadios();
+  // }
 
   /**
    * Initialize radio buttons and set up event listeners
    */
   private _setupRadios() {
     // Listen for change events from child radios
-    this.addEventListener('change', this._handleRadioChange);
+    // this.addEventListener('change', this._handleRadioChange);
 
     // Sync value from checked radio
     this._syncValueFromRadios();
 
     // Initialize radio states
     this._updateRadiosState();
+    this.setAttribute('role', 'radiogroup');
 
+    // Set aria-label if label is provided
+    if (this.label) {
+      this.setAttribute('aria-label', this.label);
+    }
     // Update form value
-    this._updateFormValue();
+    // this._updateFormValue();
   }
 
   /**
@@ -141,7 +189,6 @@ export class ItRadioGroup extends FormControl {
 
     const oldValue = this.value;
     this.value = radio.value;
-    this._hasUserInteracted = true;
 
     // Uncheck other radios using their public API
     this._radios.forEach((r) => {
@@ -158,7 +205,7 @@ export class ItRadioGroup extends FormControl {
     this._updateRadiosState();
 
     // Update form value
-    this._updateFormValue();
+    // this._updateFormValue();
 
     // Dispatch change event from the group if value changed
     if (oldValue !== this.value) {
@@ -170,58 +217,18 @@ export class ItRadioGroup extends FormControl {
       );
     }
 
-    // Clear validity errors if required field is now filled
-    if (this.required && this._internals) {
-      this._internals.setValidity({});
-    }
+    // // Clear validity errors if required field is now filled
+    // if (this.required && this._internals) {
+    //   this._internals.setValidity({});
+    // }
   }
 
   /**
    * PUBLIC API: Handle keyboard navigation from radio buttons
    */
   handleRadioKeyDown(radio: ItRadio, event: KeyboardEvent): void {
-    // Only handle arrow keys
-    if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
-      return;
-    }
-
-    event.preventDefault();
-
-    // Get radios dynamically to ensure we have the latest state
-    const radios = Array.from(this.querySelectorAll<ItRadio>('it-radio'));
-    const currentIndex = radios.indexOf(radio);
-    if (currentIndex === -1) {
-      return;
-    }
-
-    let nextIndex = currentIndex;
-
-    // Determine next radio based on arrow key
-    if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
-      // Move to previous radio (wrap around)
-      nextIndex = currentIndex > 0 ? currentIndex - 1 : radios.length - 1;
-    } else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
-      // Move to next radio (wrap around)
-      nextIndex = currentIndex < radios.length - 1 ? currentIndex + 1 : 0;
-    }
-
-    // Skip disabled radios
-    let attempts = 0;
-    while (radios[nextIndex]?.disabled && attempts < radios.length) {
-      if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
-        nextIndex = nextIndex > 0 ? nextIndex - 1 : radios.length - 1;
-      } else {
-        nextIndex = nextIndex < radios.length - 1 ? nextIndex + 1 : 0;
-      }
-      attempts += 1;
-    }
-
-    const nextRadio = radios[nextIndex];
-    if (nextRadio && !nextRadio.disabled) {
-      // Select and focus the next radio
-      this.selectRadio(nextRadio);
-      nextRadio.focus();
-    }
+    // Delegate to roving tabindex controller
+    this.rovingTabindex.handleKeydown(radio, event);
   }
 
   /**
@@ -240,13 +247,13 @@ export class ItRadioGroup extends FormControl {
   /**
    * Update form value via ElementInternals
    */
-  private _updateFormValue() {
-    if (this._internals && this.name) {
-      // Always set form value, even if empty
-      // This ensures the key exists in FormData (like native radio buttons)
-      this._internals.setFormValue(this.value || '');
-    }
-  }
+  // private _updateFormValue() {
+  //   if (this._internals && this.name) {
+  //     // Always set form value, even if empty
+  //     // This ensures the key exists in FormData (like native radio buttons)
+  //     this._internals.setFormValue(this.value || '');
+  //   }
+  // }
 
   /**
    * Synchronize radio button states with group state
@@ -256,9 +263,7 @@ export class ItRadioGroup extends FormControl {
       return;
     }
 
-    const hasChecked = this._radios.some((r) => r.checked);
-
-    this._radios.forEach((radio, index) => {
+    this._radios.forEach((radio) => {
       // Set checked state based on value
       // eslint-disable-next-line no-param-reassign
       radio.checked = radio.value === this.value;
@@ -278,118 +283,112 @@ export class ItRadioGroup extends FormControl {
       if (this.name) {
         radio.setAttribute('data-group-name', this.name);
       }
-
-      // NOTE: Following Spectrum pattern - NO aria-setsize/aria-posinset
-      // The role="radiogroup" on the parent and role="radio" on children
-      // is enough for screen readers to announce the correct count
-
-      // Roving tabindex pattern:
-      // Only the checked radio (or first if none checked) should be tabbable
-      if (radio.disabled) {
-        // eslint-disable-next-line no-param-reassign
-        radio.tabIndex = -1;
-      } else if (hasChecked) {
-        // eslint-disable-next-line no-param-reassign
-        radio.tabIndex = radio.checked ? 0 : -1;
-      } else {
-        // eslint-disable-next-line no-param-reassign
-        radio.tabIndex = index === 0 ? 0 : -1;
-      }
     });
+
+    // Update tabindex using roving tabindex controller
+    // Priority: checked and enabled > first enabled > 0
+    let tabbableIndex = 0;
+
+    // First, try to find a checked radio that is not disabled
+    const checkedEnabledIndex = this._radios.findIndex((r) => r.checked && !r.disabled);
+    if (checkedEnabledIndex >= 0) {
+      tabbableIndex = checkedEnabledIndex;
+    } else {
+      // If no checked enabled radio, find the first enabled radio
+      const firstEnabledIndex = this._radios.findIndex((r) => !r.disabled);
+      if (firstEnabledIndex >= 0) {
+        tabbableIndex = firstEnabledIndex;
+      }
+      // If all radios are disabled, tabbableIndex stays 0 (but controller will set all to -1)
+    }
+
+    this.rovingTabindex.updateTabindices(tabbableIndex);
   }
 
   updated(changed: PropertyValues) {
     super.updated(changed);
 
     // Update radios when value or name changes
-    if (changed.has('value') || changed.has('name')) {
+    if (changed.has('value')) {
       this._updateRadiosState();
-      this._updateFormValue();
+      this.dispatchEvent(new Event('change', { bubbles: true }));
+      // this._updateFormValue();
     }
 
     // Update disabled state
-    if (changed.has('disabled')) {
-      this._radios?.forEach((radio) => {
-        if (radio) {
-          // eslint-disable-next-line no-param-reassign
-          radio.disabled = this.disabled;
-        }
-      });
-    }
+    // if (changed.has('disabled')) {
+    // this._radios?.forEach((radio) => {
+    //   if (radio) {
+    //     // eslint-disable-next-line no-param-reassign
+    //     radio.disabled = this.disabled;
+    //   }
+    // });
+    // }
 
-    // Update aria-label
-    if (changed.has('label')) {
-      if (this.label) {
-        this.setAttribute('aria-label', this.label);
-      } else {
-        this.removeAttribute('aria-label');
-      }
-    }
+    // // Update aria-label
+    // if (changed.has('label')) {
+    //   if (this.label) {
+    //     this.setAttribute('aria-label', this.label);
+    //   } else {
+    //     this.removeAttribute('aria-label');
+    //   }
+    // }
   }
 
-  /**
-   * Get the validity state of the radio group
-   */
-  get validity(): ValidityState {
-    return this._internals?.validity ?? ({} as ValidityState);
-  }
+  // /**
+  //  * Get the validity state of the radio group
+  //  */
+  // get validity(): ValidityState {
+  //   return this._internals?.validity ?? ({} as ValidityState);
+  // }
 
-  /**
-   * Check if the radio group is valid
-   */
-  checkValidity(): boolean {
-    if (this.required && !this.value) {
-      return false;
-    }
-    return true;
-  }
+  // /**
+  //  * Check if the radio group is valid
+  //  */
+  // checkValidity(): boolean {
+  //   if (this.required && !this.value) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
   /**
    * Report validity and show validation UI
    */
-  reportValidity(): boolean {
-    const isValid = this.checkValidity();
+  // reportValidity(): boolean {
+  //   const isValid = this.checkValidity();
 
-    if (!isValid && this._internals && this._radios.length > 0) {
-      this._internals.setValidity(
-        { valueMissing: true },
-        "Seleziona un'opzione",
-        this._radios[0], // Reference first radio for focus
-      );
+  //   if (!isValid && this._internals && this._radios.length > 0) {
+  //     this._internals.setValidity(
+  //       { valueMissing: true },
+  //       "Seleziona un'opzione",
+  //       this._radios[0], // Reference first radio for focus
+  //     );
 
-      // Focus the first radio
-      this._radios[0].focus();
-    } else if (isValid && this._internals) {
-      this._internals.setValidity({});
-    }
+  //     // Focus the first radio
+  //     this._radios[0].focus();
+  //   } else if (isValid && this._internals) {
+  //     this._internals.setValidity({});
+  //   }
 
-    return isValid;
-  }
+  //   return isValid;
+  // }
 
   /**
    * Handle slot changes (when radios are added/removed)
    */
   private _handleSlotChange = () => {
-    // Initialize on first slot change
-    if (!this._initialized && this._radios && this._radios.length > 0) {
-      // Wait for all radios to complete their updates
-      Promise.all(this._radios.map((r) => r.updateComplete)).then(() => {
-        if (!this._initialized) {
-          this._initialized = true;
-          this._setupRadios();
-        }
-      });
-    } else if (this._initialized) {
-      // Update state when radios change after initialization
-      this._updateRadiosState();
-    }
+    this._updateRadiosState();
   };
 
   /**
    * Render the component
    */
   render() {
-    return html` <slot @slotchange=${this._handleSlotChange}></slot> `;
+    return html`<fieldset>
+      <legend><slot name="legend"></slot></legend>
+      <slot @slotchange=${this._handleSlotChange}></slot>
+    </fieldset>`;
   }
 }
 
@@ -398,9 +397,4 @@ declare global {
   interface HTMLElementTagNameMap {
     'it-radio-group': ItRadioGroup;
   }
-}
-
-// Define custom element if not already defined
-if (!customElements.get('it-radio-group')) {
-  customElements.define('it-radio-group', ItRadioGroup);
 }
