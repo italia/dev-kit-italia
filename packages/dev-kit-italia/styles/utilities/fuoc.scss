@@ -13,7 +13,7 @@
   }
 }
 
-@mixin it-shimmer($tag, $height: null, $width: null, $attr: null, $border-radius: 0, $bg: null) {
+@mixin it-shimmer($tag, $height: null, $width: null, $attr: null, $border-radius: 0, $bg: null, $padding: null) {
   @at-root {
     #{$tag}:not(:defined) {
       // layout
@@ -36,6 +36,9 @@
       @if $width != null {
         width: $width;
       }
+      @if $padding != null {
+        padding: $padding;
+      }
 
       // pseudo-elemento per simulare larghezza testo attributo
       @if $attr != null and $width == null {
@@ -43,7 +46,7 @@
           display: inline-block;
           content: attr(#{$attr});
           font: inherit;
-          visibility: hidden; // invisibile ma riserva spazio
+          // visibility: hidden; // invisibile ma riserva spazio
           white-space: nowrap;
         }
       }
@@ -73,9 +76,10 @@ $it-components: (
   'it-button': (
     border-radius: var(--bs-btn-border-radius, 4px),
     height: 44.8px,
+    padding: 0 1rem,
   ),
   'it-chip': (
-    height: 24px,
+    height: 27.5px,
     attr: 'label',
     border-radius: 40px,
   ),
@@ -83,9 +87,25 @@ $it-components: (
     height: 20px,
     attr: 'label',
   ),
+  'it-dropdown': (
+    border-radius: var(--bs-btn-border-radius, 4px),
+    height: 48px,
+    padding: 0 1rem,
+    attr: 'label',
+  ),
+  'it-icon': (
+    border-radius: 50%,
+    height: 32px,
+    width: 32px,
+  ),
   'it-input': (
     height: 74px,
     attr: 'label',
+    padding: 1rem,
+  ),
+  'it-video': (
+    height: var(--it-videojs-default-height),
+    width: var(--it-videojs-default-width),
   ),
 );
 
@@ -96,6 +116,7 @@ $it-components: (
     if(map-has-key($params, width), map-get($params, width), null),
     if(map-has-key($params, attr), map-get($params, attr), null),
     if(map-has-key($params, border-radius), map-get($params, border-radius), 0),
-    if(map-has-key($params, bg), map-get($params, bg), null)
+    if(map-has-key($params, bg), map-get($params, bg), null),
+    if(map-has-key($params, padding), map-get($params, padding), null)
   );
 }
