@@ -143,6 +143,10 @@ export class ItInput extends FormControl {
 
   override _handleInput(e: Event) {
     this.value = this.inputElement.value;
+    if (this.value === '00') {
+      this.value = '0';
+      this.inputElement.value = '0';
+    }
 
     if (this.passwordStrengthMeter) {
       this._checkPasswordStrength(this.inputElement.value);
