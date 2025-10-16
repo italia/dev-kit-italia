@@ -41,7 +41,8 @@
 .radio-control-label {
   display: block;
   width: 100%;
-  color: var(--bs-form-control-label-color);
+  // Use CSS custom property from parent group if set (for success state), otherwise use default
+  color: var(--it-radio-label-color, var(--bs-form-control-label-color));
   font-size: var(--bs-label-sm);
   font-weight: var(--bs-font-weight-solid);
   @media (min-width: 576px) {

@@ -2,16 +2,6 @@ import { expect, fixture, html, oneEvent, nextFrame } from '@open-wc/testing';
 import '@italia/radio';
 import { type ItRadio, type ItRadioGroup } from '@italia/radio';
 
-/**
- * Helper to wait for group AND child radios to be ready
- * Use this when you have `checked` or `disabled` attributes in HTML
- */
-async function waitForGroupAndRadios(el: ItRadioGroup) {
-  await el.updateComplete;
-  const radios = el.querySelectorAll<ItRadio>('it-radio');
-  await Promise.all(Array.from(radios).map((r) => r.updateComplete));
-}
-
 describe('<it-radio-group>', () => {
   it('should be accessible', async () => {
     const el = await fixture(html`
@@ -533,5 +523,115 @@ describe('<it-radio-group>', () => {
     expect(radios[0].checked).to.be.false;
     expect(radios[1].checked).to.be.true;
     expect(radios[2].checked).to.be.false;
+  });
+
+  // VALIDATION TESTS
+  describe('Native Validation', () => {
+    it('should not show aria-invalid until validation is triggered', async () => {
+      const el = await fixture<ItRadioGroup>(html`
+        <it-radio-group name="test" required>
+          <span slot="label">Test Group</span>
+          <it-radio value="1"><span slot="label">Option 1</span></it-radio>
+          <it-radio value="2"><span slot="label">Option 2</span></it-radio>
+        </it-radio-group>
+      `);
+
+      await el.updateComplete;
+      const radios = el.querySelectorAll<ItRadio>('it-radio');
+      await Promise.all(Array.from(radios).map((r) => r.updateComplete));
+
+      // Initially, aria-invalid should NOT be set (ARIA best practice)
+      expect(el.hasAttribute('aria-invalid')).to.be.false;
+      radios.forEach((radio) => {
+        expect(radio.hasAttribute('aria-invalid')).to.be.false;
+      });
+    });
+
+    it('should show aria-invalid after reportValidity() is called', async () => {
+      const el = await fixture<ItRadioGroup>(html`
+        <it-radio-group name="test" required>
+          <span slot="label">Test Group</span>
+          <it-radio value="1"><span slot="label">Option 1</span></it-radio>
+          <it-radio value="2"><span slot="label">Option 2</span></it-radio>
+        </it-radio-group>
+      `);
+
+      await el.updateComplete;
+      const radios = el.querySelectorAll<ItRadio>('it-radio');
+      await Promise.all(Array.from(radios).map((r) => r.updateComplete));
+
+      // Call reportValidity() - should trigger validation
+      const isValid = el.reportValidity();
+      await el.updateComplete;
+      await nextFrame();
+      await Promise.all(Array.from(radios).map((r) => r.updateComplete));
+
+      expect(isValid).to.be.false;
+      expect(el.hasAttribute('aria-invalid')).to.be.true;
+      radios.forEach((radio) => {
+        expect(radio.hasAttribute('aria-invalid')).to.be.true;
+      });
+    });
+
+    it('should clear aria-invalid after selecting a value', async () => {
+      const el = await fixture<ItRadioGroup>(html`
+        <it-radio-group name="test" required>
+          <span slot="label">Test Group</span>
+          <it-radio value="1"><span slot="label">Option 1</span></it-radio>
+          <it-radio value="2"><span slot="label">Option 2</span></it-radio>
+        </it-radio-group>
+      `);
+
+      await el.updateComplete;
+      const radios = el.querySelectorAll<ItRadio>('it-radio');
+      await Promise.all(Array.from(radios).map((r) => r.updateComplete));
+
+      // Trigger validation (should fail)
+      el.reportValidity();
+      await el.updateComplete;
+      await nextFrame();
+      await Promise.all(Array.from(radios).map((r) => r.updateComplete));
+
+      expect(el.hasAttribute('aria-invalid')).to.be.true;
+
+      // Now select a value
+      radios[0].click();
+      await el.updateComplete;
+      await nextFrame();
+      await Promise.all(Array.from(radios).map((r) => r.updateComplete));
+
+      // aria-invalid should be cleared
+      expect(el.hasAttribute('aria-invalid')).to.be.false;
+      radios.forEach((radio) => {
+        expect(radio.hasAttribute('aria-invalid')).to.be.false;
+      });
+    });
+
+    it('should show validation message in light DOM', async () => {
+      const el = await fixture<ItRadioGroup>(html`
+        <it-radio-group name="test" required>
+          <span slot="label">Test Group</span>
+          <it-radio value="1"><span slot="label">Option 1</span></it-radio>
+          <it-radio value="2"><span slot="label">Option 2</span></it-radio>
+        </it-radio-group>
+      `);
+
+      await el.updateComplete;
+
+      // Trigger validation
+      el.reportValidity();
+      await el.updateComplete;
+      await nextFrame();
+
+      // Validation message should be in light DOM (for aria-describedby cross-boundary)
+      const messageEl = el.querySelector('[slot="validation-message"]');
+      expect(messageEl).to.exist;
+      // Message format includes label: "Test Group: Questo campo è obbligatorio."
+      expect(messageEl?.textContent).to.include('obbligatorio');
+
+      // aria-describedby should reference the message
+      const ariaDescribedBy = el.getAttribute('aria-describedby');
+      expect(ariaDescribedBy).to.include(messageEl?.id || '');
+    });
   });
 });

@@ -10,7 +10,6 @@ import styles from './radio-group.scss';
  * @element it-radio-group
  * @slot - Contains the `<it-radio>` elements
  *
- * @cssprop --radio-group-gap - Gap between radio buttons (default: 0.5rem)
  */
 @customElement('it-radio-group')
 export class ItRadioGroup extends FormControl {
@@ -141,7 +140,7 @@ export class ItRadioGroup extends FormControl {
     if (message && message.length > 0) {
       this._validationTriggered = true;
     }
-    
+
     this.validationMessage = message;
     this.formControlController.updateValidity();
     // Update aria-invalid on group and children immediately
@@ -162,13 +161,63 @@ export class ItRadioGroup extends FormControl {
     if (!this._validationTriggered) {
       return;
     }
-    
+
     const invalid = this.checkValidity() === false || !!this.validationMessage;
     this.toggleAttribute('aria-invalid', invalid);
     this._radios?.forEach((r) => {
       if (invalid) r.setAttribute('aria-invalid', 'true');
       else r.removeAttribute('aria-invalid');
     });
+
+    // Update validation message in light DOM
+    this._updateValidationMessage();
+  }
+
+  /**
+   * Update validation message in light DOM (for aria-describedby cross-boundary support)
+   */
+  private _updateValidationMessage() {
+    const validityMessage = this.validationMessage;
+    const messageId = `invalid-feedback-${this._id}`;
+
+    // Find or create validation message element in light DOM
+    let messageEl = this.querySelector(`[slot="validation-message"]`);
+
+    if (validityMessage && validityMessage.length > 0) {
+      // Create message element if it doesn't exist
+      if (!messageEl) {
+        messageEl = document.createElement('div');
+        messageEl.setAttribute('slot', 'validation-message');
+        this.appendChild(messageEl);
+      }
+
+      // Update message content and attributes
+      messageEl.id = messageId;
+      messageEl.className = 'invalid-feedback form-feedback form-text form-feedback just-validate-error-label';
+      messageEl.setAttribute('role', 'alert');
+      messageEl.removeAttribute('hidden');
+
+      const labelText = this._label?.[0]?.textContent || '';
+      messageEl.innerHTML = `<span class="visually-hidden">${labelText}: </span>${validityMessage}`;
+
+      // Update aria-describedby on host
+      const existingDescribedBy = this._ariaAttributes['aria-describedby'] || '';
+      const ariaDescribedBy = existingDescribedBy ? `${existingDescribedBy} ${messageId}` : messageId;
+      this.setAttribute('aria-describedby', ariaDescribedBy);
+    } else {
+      // Remove message element if validation passed
+      if (messageEl) {
+        messageEl.remove();
+      }
+
+      // Update aria-describedby (remove message id)
+      const existingDescribedBy = this._ariaAttributes['aria-describedby'] || '';
+      if (existingDescribedBy) {
+        this.setAttribute('aria-describedby', existingDescribedBy);
+      } else {
+        this.removeAttribute('aria-describedby');
+      }
+    }
   }
 
   connectedCallback() {
@@ -239,7 +288,7 @@ export class ItRadioGroup extends FormControl {
         r.checked = true;
       }
     });
-    
+
     // If validation was already triggered, update state after selection
     if (this._validationTriggered) {
       // For native validation, clear error if now valid
@@ -253,7 +302,7 @@ export class ItRadioGroup extends FormControl {
         this._updateInvalidState();
       }
     }
-    
+
     if (event.type === 'click' || event.type === 'pointerdown') {
       this._handleClick(event);
     } else {
@@ -314,6 +363,27 @@ export class ItRadioGroup extends FormControl {
     this.rovingTabindex.updateTabindices(tabbableIndex);
   }
 
+  /**
+   * Sync group state (name, grouped, inline, required) to child radios
+   * This replaces the need for requestUpdate() calls
+   */
+  private _syncGroupStateToRadios() {
+    if (!this._radios || this._radios.length === 0) {
+      return;
+    }
+
+    const groupState = {
+      name: this.name,
+      grouped: this.grouped,
+      inline: this.inline,
+      required: this.required,
+    };
+
+    this._radios.forEach((radio) => {
+      radio.syncFromGroup(groupState);
+    });
+  }
+
   updated(changed: PropertyValues) {
     super.updated(changed);
 
@@ -327,24 +397,17 @@ export class ItRadioGroup extends FormControl {
         this._updateInvalidState();
       }
     }
-    
+
     // If validation message changed, update aria-invalid on group and children
     if (changed.has('validationMessage')) {
       this._updateInvalidState();
     }
 
-    // Se cambiano queste proprietà, forziamo il re-render dei radio figli
+    // If relevant group properties changed, sync to child radios
     const relevant = ['grouped', 'inline', 'name', 'required', 'disabled'];
     const hasChanged = Array.from(changed.keys()).some((k) => relevant.includes(String(k)));
     if (hasChanged && this._radios?.length) {
-      this._radios.forEach((r) => {
-        try {
-          // forziamo il re-render del singolo radio
-          r.requestUpdate();
-        } catch {
-          // ignore if radio not ready
-        }
-      });
+      this._syncGroupStateToRadios();
     }
   }
 
@@ -354,6 +417,8 @@ export class ItRadioGroup extends FormControl {
   private _handleSlotChange = () => {
     this._syncValueFromRadios();
     this._updateRadiosState();
+    // Sync group state to newly added radios
+    this._syncGroupStateToRadios();
   };
 
   private _handleLabelSlotChange = () => {
@@ -368,14 +433,6 @@ export class ItRadioGroup extends FormControl {
   render() {
     const validityMessage = this.validationMessage;
     const invalid = validityMessage?.length > 0 || (!this.customValidation && this?.checkValidity() === false);
-    const validityMessageRender = html`<div
-      role="alert"
-      id="invalid-feedback-${this._id}"
-      class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
-      ?hidden=${!(validityMessage?.length > 0)}
-    >
-      <span class="visually-hidden">${this._label?.[0]?.textContent}: </span>${validityMessage}
-    </div>`;
 
     const groupWrapperClasses = this.composeClass(
       'it-radio-group',
@@ -383,23 +440,14 @@ export class ItRadioGroup extends FormControl {
       this.inline && !this.grouped ? 'it-radio-group-inline' : '',
       this.grouped && !this.inline ? 'it-radio-group-stacked' : '',
       invalid ? 'is-invalid' : '',
-      // !invalid  && this._touched ? 'just-validate-success-field' : '',
+      !invalid && this._touched ? 'just-validate-success-field' : '',
     );
-    const ariaDescribedBy = this.composeClass(
-      this._ariaAttributes['aria-describedby']?.length > 0 ? this._ariaAttributes['aria-describedby'] : '',
-      validityMessage?.length > 0 ? `invalid-feedback-${this._id}` : '',
-    );
-
-    if (ariaDescribedBy) {
-      this.setAttribute('aria-describedby', ariaDescribedBy);
-    }
-    // this.setAttribute('aria-invalid', String(invalid));
 
     return html`<slot name="label" @slotchange=${this._handleLabelSlotChange}></slot>
       <div class=${groupWrapperClasses}>
         <slot @slotchange=${this._handleSlotChange}></slot>
       </div>
-      ${validityMessageRender}`;
+      <slot name="validation-message"></slot>`;
   }
 }
 

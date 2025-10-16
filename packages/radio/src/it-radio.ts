@@ -1,11 +1,11 @@
 import { BaseComponent } from '@italia/globals';
 import { html } from 'lit';
-import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
+import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
 import { when } from 'lit/directives/when.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { type ItRadioGroup } from '@italia/radio';
 
 import styles from './radio.scss';
-import { ItRadioGroup } from './it-radio-group.js';
 
 @customElement('it-radio')
 export class ItRadio extends BaseComponent {
@@ -27,6 +27,22 @@ export class ItRadio extends BaseComponent {
   @property({ type: String, attribute: 'support-text' })
   supportText = '';
 
+  /**
+   * Internal reactive state synced from group
+   * These replace the old getters that read from this.group
+   */
+  @state()
+  private _name = '';
+
+  @state()
+  private _grouped = false;
+
+  @state()
+  private _required = false;
+
+  @state()
+  private _inline = false;
+
   @queryAssignedElements({ slot: 'label' })
   labelElements!: HTMLElement[];
 
@@ -41,26 +57,38 @@ export class ItRadio extends BaseComponent {
     return this.closest('it-radio-group');
   }
 
+  // Public getters now read from internal state (reactive)
   get name(): string {
-    return this.group?.name || '';
+    return this._name || this.group?.name || '';
   }
 
   get grouped(): boolean {
-    return this.group?.grouped || false;
+    return this._grouped;
   }
 
   get required(): boolean {
-    return this.group?.required || false;
+    return this._required;
   }
 
   get inline(): boolean {
-    return this.group?.inline || false;
+    return this._inline;
   }
 
   get invalid(): boolean {
     // Read aria-invalid explicitly from the group: only the string "true" should be considered invalid
     const aria = this.group?.getAttribute ? this.group.getAttribute('aria-invalid') : null;
     return aria === 'true';
+  }
+
+  /**
+   * PUBLIC API: Called by group to sync state
+   * This replaces the need for requestUpdate() calls
+   */
+  syncFromGroup(groupState: { name?: string; grouped?: boolean; required?: boolean; inline?: boolean }): void {
+    if (groupState.name !== undefined) this._name = groupState.name;
+    if (groupState.grouped !== undefined) this._grouped = groupState.grouped;
+    if (groupState.required !== undefined) this._required = groupState.required;
+    if (groupState.inline !== undefined) this._inline = groupState.inline;
   }
   /**
    * Activate the radio via the group's public API
@@ -162,6 +190,24 @@ export class ItRadio extends BaseComponent {
       }
     }
 
+    // Sync name attribute from internal state
+    if (changedProperties.has('_name')) {
+      if (this._name) {
+        this.setAttribute('name', this._name);
+      } else {
+        this.removeAttribute('name');
+      }
+    }
+
+    // Sync aria-required from internal state
+    if (changedProperties.has('_required')) {
+      if (this._required) {
+        this.setAttribute('aria-required', 'true');
+      } else {
+        this.removeAttribute('aria-required');
+      }
+    }
+
     // logger
     if (!this.label) {
       this.logger.warn(`Label is required to ensure accessibility. Please, define a label for <it-radio/> .`);
@@ -205,17 +251,7 @@ export class ItRadio extends BaseComponent {
     );
     const controlClasses = this.composeClass('radio-control', this.grouped ? 'radio-control-grouped' : '');
     const labelClasses = this.composeClass('radio-control-label', this.disabled ? 'disabled' : '');
-    this.setAttribute('name', this.name);
-    if (this.required) {
-      this.setAttribute('aria-required', 'true');
-    } else {
-      this.removeAttribute('aria-required');
-    }
-    // if (this.invalid) {
-    //   this.setAttribute('aria-invalid', 'true');
-    // } else {
-    //   this.removeAttribute('aria-invalid');
-    // }
+
     return html`
       <div class="${wrapperClasses}" part="input-wrapper" aria-describedby="${ifDefined(ariaDescribedBy || undefined)}">
         <div id="radio-control" part="radio-control" class="${controlClasses}">

@@ -10,19 +10,6 @@
 @import 'bootstrap-italia/src/scss/forms/form-check';
 @import 'bootstrap-italia/src/scss/forms/just-validate';
 
-// slot[name='label'] {
-//   // @include font-size(var(--#{$prefix}font-size-md));
-//   // display: block;
-//   // margin-bottom: var(--#{$prefix}spacing-xxs);
-//   // color: var(--#{$prefix}color-body);
-//   // font-weight: 600;
-//   padding: 0 var(--bs-form-input-spacing-x);
-//   margin-bottom: var(--bs-spacing-s);
-//   background-color: rgba(0, 0, 0, 0);
-//   color: var(--bs-form-control-text-color);
-//   font-size: var(--bs-label-sm);
-//   font-weight: var(--bs-font-weight-solid);
-// }
 ::slotted([slot='label']) {
   display: block;
   padding: 0 var(--bs-form-input-spacing-x);
@@ -43,11 +30,15 @@
   align-items: center;
   gap: var(--bs-spacing-s);
 }
-// fieldset legend {
-//   padding: 0 var(--bs-form-input-spacing-x);
-//   margin-bottom: var(--bs-spacing-s);
-//   background-color: rgba(0, 0, 0, 0);
-//   color: var(--bs-form-control-text-color);
-//   font-size: var(--bs-label-sm);
-//   font-weight: var(--bs-font-weight-solid);
-// }
+
+// Set CSS custom property for success state that child radios can inherit
+// Use ::slotted to target it-radio elements in light DOM
+.just-validate-success-field ::slotted(it-radio) {
+  --it-radio-label-color: var(--bs-color-text-success);
+}
+
+.just-validate-success-field {
+  padding: 0 !important;
+  border: none !important;
+  background-image: none !important;
+}
