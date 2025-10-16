@@ -1,75 +1,106 @@
-# \<it-radio>
-
-This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
+# \<it-radio> & \<it-radio-group>
 
 ## Installation
 
 ```bash
-npm i it-radio
+npm i @italia/radio
 ```
 
 ## Usage
 
+### Utilizzo Base
+
 ```html
 <script type="module">
-  import '@italia/it-radio';
+  import '@italia/radio';
 </script>
 
-<it-radio></it-radio>
+<it-radio-group name="gruppo">
+  <span slot="legend">Seleziona un'opzione</span>
+  <it-radio value="opzione1" checked>
+    <span slot="label">Opzione 1</span>
+  </it-radio>
+  <it-radio value="opzione2">
+    <span slot="label">Opzione 2</span>
+  </it-radio>
+  <it-radio value="opzione3">
+    <span slot="label">Opzione 3</span>
+  </it-radio>
+</it-radio-group>
 ```
 
-## Linting and formatting
+### Con testo di supporto
 
-To scan the project for linting and formatting errors, run
-
-```bash
-npm run lint
+```html
+<it-radio-group name="gruppo">
+  <span slot="legend">Gruppo di radio</span>
+  <it-radio value="opt1" support-text="Testo di aiuto per questa opzione">
+    <span slot="label">Radio con supporto</span>
+  </it-radio>
+  <it-radio value="opt2">
+    <span slot="label">Radio semplice</span>
+  </it-radio>
+</it-radio-group>
 ```
 
-To automatically fix linting and formatting errors, run
+### Radio inline
 
-```bash
-npm run format
+```html
+<it-radio-group name="gruppo-inline">
+  <span slot="legend">Gruppo inline</span>
+  <it-radio value="opt1" inline>
+    <span slot="label">Opzione 1</span>
+  </it-radio>
+  <it-radio value="opt2" inline>
+    <span slot="label">Opzione 2</span>
+  </it-radio>
+  <it-radio value="opt3" inline>
+    <span slot="label">Opzione 3</span>
+  </it-radio>
+</it-radio-group>
 ```
 
-## Testing with Web Test Runner
+### Radio raggruppati visivamente
 
-To execute a single test run:
-
-```bash
-npm run test
+```html
+<it-radio-group name="gruppo">
+  <span slot="legend">Gruppo visivamente evidenziato</span>
+  <it-radio value="opt1" group>
+    <span slot="label">Opzione 1</span>
+  </it-radio>
+  <it-radio value="opt2" group>
+    <span slot="label">Opzione 2</span>
+  </it-radio>
+</it-radio-group>
 ```
 
-To run the tests in interactive watch mode run:
+### Con validazione (required)
 
-```bash
-npm run test:watch
+```html
+<form>
+  <it-radio-group name="scelta" required>
+    <span slot="legend">Seleziona un'opzione *</span>
+    <it-radio value="si">
+      <span slot="label">Sì, accetto</span>
+    </it-radio>
+    <it-radio value="no">
+      <span slot="label">No, non accetto</span>
+    </it-radio>
+  </it-radio-group>
+  <button type="submit">Invia</button>
+</form>
 ```
 
-## Demoing with Storybook
+### Stato disabilitato
 
-To run a local instance of Storybook for your component, run
-
-```bash
-npm run storybook
+```html
+<it-radio-group name="gruppo" disabled>
+  <span slot="legend">Gruppo disabilitato</span>
+  <it-radio value="opt1" checked>
+    <span slot="label">Opzione 1</span>
+  </it-radio>
+  <it-radio value="opt2">
+    <span slot="label">Opzione 2</span>
+  </it-radio>
+</it-radio-group>
 ```
-
-To build a production version of Storybook, run
-
-```bash
-npm run storybook:build
-```
-
-## Tooling configs
-
-For most of the tools, the configuration is in the `package.json` to reduce the amount of files in your project.
-
-If you customize the configuration a lot, you can consider moving them to individual files.
-
-## Local Demo with `web-dev-server`
-
-```bash
-npm start
-```
-
-To run a local development server that serves the basic demo located in `demo/index.html`

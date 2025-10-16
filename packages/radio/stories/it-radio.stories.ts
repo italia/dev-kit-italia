@@ -7,13 +7,10 @@ import '@italia/radio';
 
 interface RadioProps {
   id: string;
-  label: string;
   name: string;
   value: string;
-  checked: boolean;
-  disabled?: boolean;
   inline: boolean;
-  group: boolean;
+  grouped: boolean;
   supportText: string;
 
   form: string;
@@ -26,36 +23,30 @@ interface RadioProps {
 const renderComponent = (params: any) =>
   html`<it-radio
     id="${ifDefined(params.id || undefined)}"
-    label="${ifDefined(params.label || undefined)}"
-    name="${ifDefined(params.name || undefined)}"
     value="${ifDefined(params.value || undefined)}"
     ?checked="${params.checked}"
     ?disabled="${params.disabled}"
-    ?inline="${params.inline}"
-    ?group="${params.group}"
     support-text="${ifDefined(params.supportText || undefined)}"
     form="${ifDefined(params.form || undefined)}"
     ?custom-validation="${params.customValidation}"
     validity-message="${ifDefined(params.validityMessage || undefined)}"
-    ?required="${params.required}"
-  ></it-radio>`;
+  >
+    <span slot="label">${params.label || ''}</span>
+  </it-radio>`;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Form/Radio',
   tags: ['autodocs'],
-  component: 'it-radio',
+  component: 'it-radio-group',
   args: {
     id: '',
-    label: 'Radio di esempio',
-    name: 'radio',
-    value: '',
-    checked: false,
+    name: 'gruppo1',
+    // @ts-ignore these are docs
     disabled: false,
-    inline: false,
-    group: false,
     supportText: '',
-
+    grouped: false,
+    inline: false,
     form: '',
     customValidation: false,
     validityMessage: '',
@@ -66,50 +57,41 @@ const meta = {
       control: 'text',
       description: 'ID del campo',
     },
-    label: {
-      control: 'text',
-      description: 'Etichetta del campo',
-    },
+
     name: {
       control: 'text',
       description: 'Nome del campo. I radio dello stesso gruppo devono avere lo stesso name.',
     },
-    value: {
-      control: 'text',
-      description: 'Valore del campo',
-    },
-    checked: {
+
+    grouped: {
       control: 'boolean',
       type: 'boolean',
-      description: 'Se il radio è selezionato',
+      description: 'Se il radio-group deve avere i suoi elementi raggruppati visivamente',
       table: { defaultValue: { summary: 'false' } },
     },
+    // @ts-ignore these are docs
     disabled: {
       control: 'boolean',
       type: 'boolean',
-      description: 'Se il radio è disabilitato',
+      description: 'Se il singolo componente it-radio è disabilitato',
       table: { defaultValue: { summary: 'false' } },
     },
     inline: {
       control: 'boolean',
       type: 'boolean',
-      description: 'Se i radio devono essere visualizzati in linea',
+      description: 'Se il radio-group deve avere i suoi elementi visualizzati in linea',
       table: { defaultValue: { summary: 'false' } },
     },
-    group: {
-      control: 'boolean',
-      type: 'boolean',
-      description: 'Se il radio appartiene a un gruppo visivamente distinto',
-      table: { defaultValue: { summary: 'false' } },
-    },
+
     supportText: {
       name: 'support-text',
       control: 'text',
-      description: 'Testo di supporto',
+      description: 'Testo di supporto per un singolo componente it-radio',
     },
     form: {
       control: 'text',
-      description: "ID html del form a cui è associato il campo, se il campo non si trova all'interno di una form ",
+      description:
+        "ID html del form a cui è associato il componente it-radio-group, se non si trova all'interno di una form ",
     },
     customValidation: {
       name: 'custom-validation',
@@ -117,18 +99,18 @@ const meta = {
       type: 'boolean',
       table: { defaultValue: { summary: 'false' } },
       description:
-        'Se la validazione del campo è fatta esternamente (lato server o con plugin js - validazione custom), impostare questo attributo a `true`.',
+        'Se la validazione del radio group è fatta esternamente (lato server o con plugin js - validazione custom), impostare questo attributo a `true`.',
     },
     validityMessage: {
       name: 'validity-message',
       control: 'text',
       description:
-        "Messaggio da mostrare quando il campo è invalido nel caso di validazione esterna (validazione custom). Se impostato a '' (stringa vuota) il campo viene considerato valido.",
+        "Messaggio da mostrare quando il radio group è invalido nel caso di validazione esterna (validazione custom). Se impostato a '' (stringa vuota) il campo viene considerato valido.",
     },
     required: {
       control: 'boolean',
       type: 'boolean',
-      description: 'Se il campo è obbligatorio',
+      description: 'Se il radio group è obbligatorio',
       table: { defaultValue: { summary: 'false' } },
     },
   },
@@ -138,11 +120,15 @@ const meta = {
         component: `
 <Description>Radio button accessibili e personalizzabili.</Description>
 
-Per utilizzare i radio button personalizzati è necessario raggruppare gli elementi con lo stesso attributo \`name\` all'interno di un \`<fieldset>\` con una \`<legend>\` che descriva il gruppo.
+Il componente \`<it-radio-group>\` permette di raggruppare una serie di \`<it-radio>\`, gestendo la selezione di un solo elemento alla volta.\n
+Ogni \`<it-radio>\` all'interno del gruppo deve avere un valore unico nell'attributo \`value\`.
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>
-Tutti gli attributi \`aria-*\` passati a \`<it-radio>\` vengono applicati al radio generato. È importante fornire una label chiara per ogni radio button per garantire l'accessibilità.
+Il componente implementa completamente le specifiche ARIA per i gruppi di radio button: \`<it-radio-group>\` gestisce automaticamente gli attributi \`role="radiogroup"\` e \`aria-labelledby\`, mentre ogni \`<it-radio>\` riceve gli attributi \`role="radio"\`, \`aria-checked\` e \`aria-disabled\` in base al proprio stato.</p>
+<p>
+A causa delle limitazioni architetturali dei Web Components e del Shadow DOM, non è possibile utilizzare il meccanismo nativo HTML basato su \`<fieldset>\` e \`<legend>\`. Questo approccio, pur essendo standard, presenta notevoli problematiche di compatibilità cross-browser con gli screen reader: test approfonditi hanno dimostrato comportamenti inconsistenti tra diverse combinazioni di browser, sistemi operativi e tecnologie assistive. In alcuni casi la \`<legend>\` non viene annunciata, in altri il gruppo non viene riconosciuto come tale, mentre in altri ancora mancano informazioni sulla posizione delle opzioni all'interno del gruppo. Per superare queste limitazioni e garantire un'esperienza uniforme e accessibile su tutte le piattaforme, il componente richiede che la label del gruppo venga fornita tramite lo slot \`label\`, assicurando così la corretta associazione semantica anche all'interno dello Shadow DOM.</p>
+<p>L'implementazione si conforma al pattern "Radio Group" definito nelle [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/radio/examples/radio/), adottando la gestione della tastiera e degli stati prevista dalle linee guida di accessibilità. Questo approccio garantisce che le tecnologie assistive, in particolare gli screen reader, comunichino correttamente la posizione di ogni opzione nel gruppo (es. "1 di 3", "2 di 3", "3 di 3"), migliorando significativamente l'esperienza utente per le persone con disabilità.
 </p></div></div>
 `,
       },
@@ -165,31 +151,141 @@ export const EsempioInterattivo: Story = {
     },
   },
   render: (params) => html`
-    <fieldset>
-      <legend>Gruppo di radio</legend>
+    <div style="min-width:450px">
+      <it-radio-group
+        name="${params.name}"
+        ?inline="${params.inline}"
+        ?grouped="${params.grouped}"
+        .form="${params.form}"
+        ?required="${params.required}"
+        ?custom-validation="${params.customValidation}"
+        validity-message="${ifDefined(params.validityMessage || undefined)}"
+      >
+        <span slot="label">Esempio interattivo</span>
+        ${renderComponent({
+          ...params,
+          id: 'radio1',
+          label: 'Radio di esempio 1',
+          value: 'opzione1',
+        })}
+        ${renderComponent({
+          ...params,
+          id: 'radio2',
+          label: 'Radio di esempio 2',
+          value: 'opzione2',
+        })}
+        ${renderComponent({
+          ...params,
+          id: 'radio3',
+          label: 'Radio di esempio 3',
+          value: 'opzione3',
+        })}
+      </it-radio-group>
+    </div>
+  `,
+};
+export const PersonalizzazioneDegliStili: Story = {
+  name: 'Personalizzazione degli stili',
+  tags: ['!dev'],
+  parameters: {
+    viewMode: 'docs',
+    docs: {
+      canvas: { hidden: true, sourceState: 'none' },
+      description: {
+        story: `
+Per la personalizzazione degli stili del componente \`<it-radio>\` si può usare il selettore \`::part\` con i seguenti valori:
+
+| Part | Descrizione |
+|------|-------------|
+| \`input\` | Il contenitore dell'input nascosto |
+| \`button\` | Il cerchio del radio button visibile |
+| \`input-wrapper\` | Il wrapper principale che contiene il radio control e il testo di supporto |
+| \`radio-control\` | Il contenitore che racchiude il button e la label |
+| \`label\` | La label del radio button |
+
+[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+
+Esempio di personalizzazione:
+
+\`\`\`css
+it-radio::part(button) {
+  border-color: #0066cc;
+}
+
+it-radio::part(label) {
+  font-weight: bold;
+  color: #333;
+}
+\`\`\`
+`,
+      },
+    },
+  },
+  render: () => html`<div class="hide-preview"></div>`,
+};
+
+export const ComeUsareItRadio: Story = {
+  ...meta,
+  name: 'Componente it-radio',
+  tags: ['!dev'],
+  parameters: {
+    viewMode: 'docs',
+    docs: {
+      canvas: { hidden: true, sourceState: 'none' },
+      description: {
+        story: `
+Il componente \`<it-radio>\` deve essere sempre utilizzato all'interno di un \`<it-radio-group>\` e richiede obbligatoriamente:
+
+- Un **attributo \`value\`** univoco per identificare l'opzione
+- Una **label definita tramite slot** \`<span slot="label">Testo della label</span>\`
+
+#### Proprietà principali
+
+| Proprietà | Tipo | Descrizione |
+|-----------|------|-------------|
+| \`value\` | \`string\` | Valore univoco del radio button (obbligatorio) |
+| \`disabled\` | \`boolean\` | Se \`true\`, disabilita il singolo radio button |
+| \`support-text\` | \`string\` | Testo di supporto visualizzato sotto la label (obbligatorio) |
+`,
+      },
+    },
+  },
+  render: () => html`<div class="hide-preview"></div>`,
+};
+
+export const DefinizioneDellaLabel: Story = {
+  ...meta,
+  name: 'Definizione della Label',
+  parameters: {
+    docs: {
+      description: {
+        story: `
+
+Sia \`<it-radio-group>\` che \`<it-radio>\` espongono uno slot \`label\` per definire le rispettive etichette.
+
+La label del gruppo \`<it-radio-group>\` viene definita tramite lo slot \`label\` dell'elemento \`<it-radio-group>\` e identifica l'intero gruppo di radio button. È possibile utilizzare HTML all'interno dello slot per creare label formattate.
+
+Ogni \`<it-radio>\` richiede obbligatoriamente una label definita tramite il proprio slot \`label\`. La label identifica la singola opzione all'interno del gruppo. È possibile utilizzare anche HTML all'interno dello slot per creare label più complesse con formattazione o altri elementi.
+`,
+      },
+    },
+  },
+  render: (params) => html`
+    <it-radio-group name="gruppo-label">
+      <span slot="label">Gruppo con label formattate</span>
       ${renderComponent({
         ...params,
-        id: 'radio1',
-        label: 'Radio di esempio 1',
-        name: 'gruppo1',
+        id: 'radio-label1',
+        label: 'Label semplice',
         value: 'opzione1',
-        checked: true,
       })}
-      ${renderComponent({
-        ...params,
-        id: 'radio2',
-        label: 'Radio di esempio 2',
-        name: 'gruppo1',
-        value: 'opzione2',
-      })}
-      ${renderComponent({
-        ...params,
-        id: 'radio3',
-        label: 'Radio di esempio 3',
-        name: 'gruppo1',
-        value: 'opzione3',
-      })}
-    </fieldset>
+      <it-radio id="radio-label2" value="opzione2">
+        <span slot="label"><strong>Label</strong> con <em>formattazione</em></span>
+      </it-radio>
+      <it-radio id="radio-label3" value="opzione3">
+        <span slot="label">Label semplice</span>
+      </it-radio>
+    </it-radio-group>
   `,
 };
 
@@ -199,18 +295,17 @@ export const TestoDiSupporto: Story = {
   parameters: {
     docs: {
       description: {
-        story: `In caso di necessità, è possibile utilizzare un contenuto testuale sotto il radio button, indicando nell'attributo \`support-text\` il testo da visualizzare.`,
+        story: `In caso di necessità, è possibile utilizzare un contenuto testuale sotto il radio button tramite l'attributo \`support-text\` del componente \`<it-radio>\`.`,
       },
     },
   },
   render: (params) => html`
-    <fieldset>
-      <legend>Gruppo di radio con testo di supporto</legend>
+    <it-radio-group name="gruppo-support">
+      <span slot="label">Esempio con testo di supporto</span>
       ${renderComponent({
         ...params,
         id: 'radio-support1',
         label: 'Radio con testo di supporto',
-        name: 'gruppo-support',
         value: 'opzione1',
         supportText: 'Questo è un testo di supporto per il radio button',
       })}
@@ -218,10 +313,9 @@ export const TestoDiSupporto: Story = {
         ...params,
         id: 'radio-support2',
         label: 'Altro radio',
-        name: 'gruppo-support',
         value: 'opzione2',
       })}
-    </fieldset>
+    </it-radio-group>
   `,
 };
 
@@ -230,20 +324,19 @@ export const Inline: Story = {
   parameters: {
     docs: {
       description: {
-        story: `Per allineare orizzontalmente i radio button basterà aggiungere l'attributo \`inline\` a ciascun \`<it-radio>\`.`,
+        story: `Per allineare orizzontalmente i radio button basterà aggiungere l'attributo \`inline\` a \`<it-radio-group>\`.`,
       },
     },
   },
   render: (params) => html`
-    <fieldset>
-      <legend>Gruppo di radio</legend>
+    <it-radio-group name="gruppo-inline" inline>
+      <span slot="label">Esempio inline</span>
       ${renderComponent({
         ...params,
         id: 'radio-inline1',
         label: 'Radio inline 1',
         name: 'gruppo-inline',
         value: 'opzione1',
-        inline: true,
         checked: true,
       })}
       ${renderComponent({
@@ -252,7 +345,6 @@ export const Inline: Story = {
         label: 'Radio inline 2',
         name: 'gruppo-inline',
         value: 'opzione2',
-        inline: true,
       })}
       ${renderComponent({
         ...params,
@@ -260,49 +352,84 @@ export const Inline: Story = {
         label: 'Radio inline 3',
         name: 'gruppo-inline',
         value: 'opzione3',
-        inline: true,
       })}
-    </fieldset>
+    </it-radio-group>
   `,
 };
 
 export const Disabilitato: Story = {
   ...meta,
+  name: 'Radio disabilitati',
   parameters: {
     docs: {
       description: {
-        story: `Aggiungi l'attributo \`disabled\` ad un \`<it-radio>\` per impedire la modifica del valore e non inviare i dati in esso contenuti.`,
+        story: `
+
+#### Radio singolo disabilitato
+
+Aggiungi l'attributo \`disabled\` ad un singolo \`<it-radio>\` per disabilitare quell'opzione.
+
+#### Gruppo intero disabilitato
+
+Se invece intendi disabilitare l'intero gruppo, aggiungi l'attributo \`disabled\` a \`<it-radio-group>\`. In questo modo tutti i radio al suo interno risulteranno disabilitati automaticamente.
+`,
       },
     },
   },
   render: (params) => html`
-    <fieldset>
-      <legend>Gruppo di radio</legend>
-      ${renderComponent({
-        ...params,
-        id: 'radio-disabled1',
-        label: 'Radio selezionato e disabilitato',
-        name: 'gruppo-disabled',
-        value: 'opzione1',
-        checked: true,
-        disabled: true,
-      })}
-      ${renderComponent({
-        ...params,
-        id: 'radio-disabled2',
-        label: 'Radio disabilitato',
-        name: 'gruppo-disabled',
-        value: 'opzione2',
-        disabled: true,
-      })}
-      ${renderComponent({
-        ...params,
-        id: 'radio-disabled3',
-        label: 'Radio abilitato',
-        name: 'gruppo-disabled',
-        value: 'opzione3',
-      })}
-    </fieldset>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <it-radio-group name="gruppo-alcuni-disabled" value="opzione1">
+          <span slot="label">Esempio con alcuni disabilitati</span>
+          ${renderComponent({
+            ...params,
+            id: 'radio-disabled1',
+            label: 'Radio selezionato e disabilitato',
+            value: 'opzione1',
+            disabled: true,
+          })}
+          ${renderComponent({
+            ...params,
+            id: 'radio-disabled2',
+            label: 'Radio disabilitato',
+            name: 'gruppo-disabled',
+            value: 'opzione2',
+            disabled: true,
+          })}
+          ${renderComponent({
+            ...params,
+            id: 'radio-disabled3',
+            label: 'Radio abilitato',
+            name: 'gruppo-disabled',
+            value: 'opzione3',
+          })}
+        </it-radio-group>
+        </div>
+        <div class="col-12 col-md-6">
+          <it-radio-group name="gruppo-tutti-disabled" value="opzione2" disabled>
+            <span slot="label">Esempio con tutti disabilitati</span>
+            ${renderComponent({
+              ...params,
+              id: 'radio-disabled4',
+              label: 'Radio selezionato e disabilitato',
+              value: 'opzione1',
+            })}
+            ${renderComponent({
+              ...params,
+              id: 'radio-disabled5',
+              label: 'Radio disabilitato',
+              value: 'opzione2',
+            })}
+            ${renderComponent({
+              ...params,
+              id: 'radio-disabled6',
+              label: 'Radio abilitato',
+              value: 'opzione3',
+            })}
+          </it-radio-group>
+        </div>
+      </div>
+    </div>
   `,
 };
 
@@ -312,23 +439,22 @@ export const RaggruppatiVisivamente: Story = {
   parameters: {
     docs: {
       description: {
-        story: `Per raggruppare visivamente i radio button occorrerà aggiungere l'attributo \`group\` a ciascun \`<it-radio>\`. L'elemento grafico di selezione verrà allineato alla destra del contenuto testuale.`,
+        story: `Per raggruppare visivamente i radio button occorrerà aggiungere l'attributo \`group\` a \`<it-radio-group>\`. L'elemento grafico di selezione verrà allineato alla destra del contenuto testuale.`,
       },
     },
   },
   render: (params) => html`
     <div>
       <div class="row">
-        <fieldset class="col-12 col-md-6">
-          <legend>Gruppo di radio</legend>
-          <div>
+        <div class="col-12 col-md-6">
+          <it-radio-group name="gruppo-visual" grouped>
+            <span slot="label">Esempio grouped senza testo di supporto</span>
             ${renderComponent({
               ...params,
               id: 'radio-group1',
               label: 'Opzione 1',
               name: 'gruppo-visual',
               value: 'opzione1',
-              group: true,
               checked: true,
             })}
             ${renderComponent({
@@ -337,7 +463,6 @@ export const RaggruppatiVisivamente: Story = {
               label: 'Opzione 2',
               name: 'gruppo-visual',
               value: 'opzione2',
-              group: true,
             })}
             ${renderComponent({
               ...params,
@@ -345,46 +470,265 @@ export const RaggruppatiVisivamente: Story = {
               label: 'Opzione 3',
               name: 'gruppo-visual',
               value: 'opzione3',
-              group: true,
             })}
-          </div>
-        </fieldset>
-        <fieldset class="col-12 col-md-6">
-          <legend>Gruppo di radio</legend>
-          <div>
+          </it-radio-group>
+        </div>
+        <div class="col-12 col-md-6">
+          <it-radio-group name="gruppo-visual2" grouped>
+            <span slot="label">Esempio grouped con testo di supporto</span>
             ${renderComponent({
               ...params,
-              id: 'radio-group1',
+              id: 'radio-group4',
+              label: 'Opzione 1',
               supportText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie libero',
-              name: 'gruppo-visual',
+              name: 'gruppo-visual2',
               value: 'opzione1',
-              group: true,
               checked: true,
             })}
             ${renderComponent({
               ...params,
-              id: 'radio-group2',
+              id: 'radio-group5',
+              label: 'Opzione 2',
               supportText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie libero',
-              name: 'gruppo-visual',
+              name: 'gruppo-visual2',
               value: 'opzione2',
-              group: true,
             })}
             ${renderComponent({
               ...params,
-              id: 'radio-group3',
+              id: 'radio-group6',
+              label: 'Opzione 3',
               supportText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie libero',
-              name: 'gruppo-visual',
+              name: 'gruppo-visual2',
               value: 'opzione3',
-              group: true,
             })}
-          </div>
-        </fieldset>
+          </it-radio-group>
+        </div>
       </div>
     </div>
+  `,
+};
+
+export const RadioGroupRequired: Story = {
+  name: 'Validazione',
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Se non è stata impostata la validazione custom tramite l'attributo \`custom-validation\`, e sono stati impostati attributi come \`required\`, viene effettuata una validazione interna utilizzando la validazione nativa del browser.
+Verranno mostrati i messaggi di errore nativi, e i componenti \`<it-radio-group>\` e \`<it-radio>\` riceveranno l'attributo \`aria-invalid="true"\` quando non validi.
+
+\`\`\`html
+<form>
+  <it-radio-group name="scelta" required>
+    <span slot="label">Seleziona un'opzione (obbligatorio)</span>
+    <it-radio value="si">
+      <span slot="label">Sì, accetto</span>
+    </it-radio>
+    <it-radio value="no">
+      <span slot="label">No, non accetto</span>
+    </it-radio>
+  </it-radio-group>
+  <button type="submit">Invia</button>
+</form>
+\`\`\`
+
+### Personalizzazione dei messaggi di errore
+
+E' possibile personalizzare alcuni dei messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
+<ul>
+  <li>\`validityRequired\`: messaggio che viene mostrato quando il radio group è obbligatorio e nessuna opzione è stata selezionata</li>
+</ul>
+
+Per gli altri errori di validazione non indicati, verranno mostrati i messaggi di errore nativi del browser.
+
+### Validazione esterna (validazione custom)
+
+E' inoltre possibile validare il radio group esternamente (via js ad esempio, o lato server), impostando l'attributo \`custom-validation="true"\`. In questo modo la validazione di default del browser effettuata internamente al componente è disabilitata.
+
+#### Radio group invalido
+
+Nel caso il radio group non sia valido, è necessario invalidare il componente impostando il messaggio di errore da visualizzare attraverso l'attributo \`validity-message="Messaggio di errore"\`.
+
+#### Radio group valido
+
+Per riportare il radio group ad uno stato 'valido', è sufficiente impostare il messaggio di errore a vuoto: \`validity-message=""\`.
+
+### Validazione con JustValidate
+
+Il componente \`<it-radio-group>\` è compatibile con librerie di validazione esterne come [JustValidate](https://just-validate.dev/). Nell'esempio seguente viene mostrato come integrare JustValidate per validare un radio group obbligatorio.
+
+\`\`\`javascript
+const formEl = document.querySelector('#demo-form');
+const validate = new JustValidate(formEl);
+
+validate.addField('it-radio-group[name="scelta"]', [
+  {
+    rule: 'required',
+    errorMessage: 'Scelta obbligatoria',
+  },
+  {
+    validator: (value) => {
+      return Boolean(value);
+    },
+    errorMessage: 'Seleziona un valore',
+  },
+]);
+
+validate.onValidate((props) => {
+  const { fields } = props;
+  // Rimuovi messaggi creati da JustValidate
+  document.querySelectorAll('.just-validate-error-label').forEach((el) => el.remove());
+  // Aggiorna il Web Component
+  Object.keys(fields).forEach((k) => {
+    const f = fields[k];
+    const wc = f.elem;
+    if (wc) {
+      wc.validationText = f.isValid ? '' : f.errorMessage;
+    }
+  });
+  // Optional:  Listen to change events on radio-group to revalidate in real-time
+  const radioGroup = formEl.querySelector('it-radio-group[name="scelta"]');
+  if (radioGroup) {
+    radioGroup.addEventListener('change', () => {
+      // Revalidate the field when value changes (clears error if now valid)
+      validate.revalidateField('it-radio-group[name="scelta"]');
+    });
+  }
+});
+
+
+\`\`\`
+`,
+      },
+    },
+  },
+  render: () => html`
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const formEl = document.querySelector('#demo-form');
+
+        // Inizializziamo JustValidate senza selettore, passando il form element
+        const validate = new JustValidate(formEl);
+
+        // Funzione helper per leggere valore da <it-input>
+        const getItInputValue = (selector) => {
+          const el = formEl.querySelector(selector);
+          return el?.value || ''; // .value dovrebbe essere esposto dal tuo componente
+        };
+
+        // Aggiungiamo regole
+        validate.addField(
+          'it-radio-group[name="scelta"]',
+          [
+            {
+              rule: 'required',
+              errorMessage: 'Scelta obbligatoria',
+            },
+            {
+              validator: (value) => {
+                return Boolean(value);
+              },
+              errorMessage: 'Seleziona un valore',
+            },
+          ],
+          {
+            errorsContainer: '#radio-errors-container',
+          },
+        );
+
+        // Gestisci submit manualmente
+        formEl.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const radioGroup = formEl.querySelector('it-radio-group[name="scelta"]');
+
+          // Rimuovi sempre i messaggi DOM di JustValidate
+          document.querySelectorAll('.just-validate-error-label').forEach((el) => el.remove());
+
+          // Controlla se il valore è vuoto
+          if (!radioGroup || !radioGroup.value) {
+            // Mostra errore
+            radioGroup.setAttribute('validity-message', 'Scelta obbligatoria');
+          } else {
+            // Rimuovi errore e procedi
+            radioGroup.setAttribute('validity-message', '');
+            console.log('Form valido, valore:', radioGroup.value);
+          }
+        });
+
+        // Listen to change events on radio-group to clear error
+        const radioGroup = formEl.querySelector('it-radio-group[name="scelta"]');
+        if (radioGroup) {
+          radioGroup.addEventListener('change', () => {
+            // Quando l'utente seleziona qualcosa, rimuovi l'errore immediatamente
+            radioGroup.setAttribute('validity-message', '');
+          });
+        }
+        // oppure
+        // validate.onSuccess(( event ) => {
+        //  submit della form
+        //   event.currentTarget.submit();
+        // });
+      });
+    </script>
+
+    <form id="demo-form">
+      <it-radio-group name="scelta" required custom-validation>
+        <span slot="label">Esempio con validazione JustValidate</span>
+        <it-radio value="si">
+          <span slot="label">Sì, accetto</span>
+        </it-radio>
+        <it-radio value="no">
+          <span slot="label">No, non accetto</span>
+        </it-radio>
+        <it-radio value="forse">
+          <span slot="label">Forse</span>
+        </it-radio>
+      </it-radio-group>
+      <button type="submit" class="btn btn-primary mt-3">Invia</button>
+      <p class="form-text mt-2">Prova a inviare il form senza selezionare nulla per vedere la validazione.</p>
+    </form>
   `,
 };
 
 export const MetodiEPropPubblici: Story = {
   ...StoryFormControlMethodAndProps('', `|\`click()\`| Triggera l'evento di click sull'input reale | - |`),
   tags: ['!dev'],
+};
+export const I18n: Story = {
+  name: 'i18n',
+  tags: ['!dev'],
+  render: () => html`<div class="hide-preview"></div>`,
+  parameters: {
+    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
+    docs: {
+      description: {
+        story: `
+Per questo componente sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+
+Le traduzioni sono definite nel package \`@italia/globals\` e condivise con altri componenti form.
+
+\`\`\`js
+const translation = {
+  "validityRequired": "Questo campo è obbligatorio."
+}
+\`\`\`
+
+Per personalizzare le traduzioni, è possibile utilizzare l'utility di internazionalizzazione:
+
+\`\`\`js
+import { registerTranslation } from '@italia/i18n';
+
+registerTranslation({
+  $code: 'it',
+  $name: 'Italiano',
+  $dir: 'ltr',
+  validityRequired: 'Devi selezionare un'opzione.'
+});
+\`\`\`
+`,
+      },
+    },
+  },
 };

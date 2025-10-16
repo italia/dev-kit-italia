@@ -23,6 +23,7 @@
   "exports": {
     ".": "./dist/src/index.js",
     "./it-radio.js": "./dist/src/it-radio.js",
+    "./it-radio-group.js": "./dist/src/it-radio-group.js",
     "./styles/*": "./styles/*"
   },
   "files": [
