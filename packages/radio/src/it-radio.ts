@@ -1,4 +1,4 @@
-import { BaseComponent, FormControl } from '@italia/globals';
+import { BaseComponent } from '@italia/globals';
 import { html } from 'lit';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { when } from 'lit/directives/when.js';
@@ -11,17 +11,9 @@ import { ItRadioGroup } from './it-radio-group.js';
 export class ItRadio extends BaseComponent {
   static styles = styles;
 
-  /**
-   * Consume the parent radio group from Lit Context
-   */
-
   /** The radio's value attribute */
   @property({ type: String, reflect: true })
   value = '';
-
-  /** The radio's name attribute */
-  @property({ type: String, reflect: true })
-  name = '';
 
   /** Whether the radio is disabled */
   @property({ type: Boolean, reflect: true })
@@ -30,10 +22,6 @@ export class ItRadio extends BaseComponent {
   /** Draws the radio in a checked state. */
   @property({ type: Boolean, reflect: true })
   checked = false;
-
-  /** Draws radioes inline, side by side. */
-  @property({ type: Boolean, reflect: true })
-  inline = false;
 
   /** The input's help text. */
   @property({ type: String, attribute: 'support-text' })
@@ -53,27 +41,42 @@ export class ItRadio extends BaseComponent {
     return this.closest('it-radio-group');
   }
 
+  get name(): string {
+    return this.group?.name || '';
+  }
+
+  get grouped(): boolean {
+    return this.group?.grouped || false;
+  }
+
+  get required(): boolean {
+    return this.group?.required || false;
+  }
+
+  get inline(): boolean {
+    return this.group?.inline || false;
+  }
+
+  get invalid(): boolean {
+    // Read aria-invalid explicitly from the group: only the string "true" should be considered invalid
+    const aria = this.group?.getAttribute ? this.group.getAttribute('aria-invalid') : null;
+    return aria === 'true';
+  }
   /**
    * Activate the radio via the group's public API
    */
 
-  private activate(): void {
+  private activate(event: KeyboardEvent | PointerEvent | MouseEvent): void {
     if (this.checked || this.disabled) {
       return;
     }
 
     // Use the group's public API if available
     if (this.group) {
-      this.group.selectRadio(this);
+      this.group.selectRadio(this, event);
     } else {
       // Fallback if no group (shouldn't happen in normal usage)
       this.checked = true;
-      this.dispatchEvent(
-        new Event('change', {
-          bubbles: true,
-          composed: true,
-        }),
-      );
     }
   }
 
@@ -83,7 +86,7 @@ export class ItRadio extends BaseComponent {
   private handleKeyup = (event: KeyboardEvent): void => {
     if (event.code === 'Space') {
       event.preventDefault();
-      this.activate();
+      this.activate(event);
     }
   };
 
@@ -99,6 +102,7 @@ export class ItRadio extends BaseComponent {
 
     // Let Tab and Shift+Tab work normally for navigation
     if (event.key === 'Tab') {
+      this.group?.handleRadioKeyDown(this, event);
       return;
     }
 
@@ -114,23 +118,23 @@ export class ItRadio extends BaseComponent {
   /**
    * Handle click on the host
    */
-  private handleClick = (): void => {
-    this.activate();
+  private handleClick = (event: PointerEvent | MouseEvent): void => {
+    this.activate(event);
   };
 
   override connectedCallback() {
     super.connectedCallback?.();
-    // Set role on host like Spectrum (NOT on internal element)
+
+    // Set role on host for screen reader context
     this.setAttribute('role', 'radio');
 
-    // Set tabindex if not already set (roving tabindex will be managed by group)
+    // Set initial tabindex if not already set (roving tabindex will be managed by group)
     if (!this.hasAttribute('tabindex')) {
       this.tabIndex = 0;
     }
 
     // Add event listeners on host
     this.addEventListener('click', this.handleClick);
-    // Use capture phase for keydown to prevent Space from scrolling
     this.addEventListener('keydown', this.handleKeydown, { capture: true });
     this.addEventListener('keyup', this.handleKeyup, { capture: true });
   }
@@ -145,7 +149,7 @@ export class ItRadio extends BaseComponent {
   override updated(changedProperties: Map<string | number | symbol, unknown>) {
     super.updated?.(changedProperties);
 
-    // Update ARIA attributes on host (like Spectrum does)
+    // Update ARIA attributes on host
     if (changedProperties.has('checked')) {
       this.setAttribute('aria-checked', this.checked ? 'true' : 'false');
     }
@@ -160,9 +164,7 @@ export class ItRadio extends BaseComponent {
 
     // logger
     if (!this.label) {
-      this.logger.warn(
-        `Label is required to ensure accessibility. Please, define a label for <it-radio name="${this.name}" ... /> .`,
-      );
+      this.logger.warn(`Label is required to ensure accessibility. Please, define a label for <it-radio/> .`);
     }
   }
 
@@ -192,41 +194,34 @@ export class ItRadio extends BaseComponent {
         html`<slot name="helpText"><small class="form-text" id="${supportTextId}">${this.supportText}</small></slot>`,
     )}`;
 
-    // const showValidation = true; // this._touched || this.customValidation ;
-    // const validityMessage = (showValidation ? (this.validationMessage ?? '') : '') ?? '';
-
-    // const invalid =
-    //   validityMessage?.length > 0 || (!this.customValidation && this.inputElement?.checkValidity() === false);
-
-    // const validityMessageRender = html`<div
-    //   role="alert"
-    //   id="invalid-feedback-${this._id}"
-    //   class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
-    //   ?hidden=${!(validityMessage?.length > 0)}
-    // >
-    //   <span class="visually-hidden">${this.label}: </span>${validityMessage}
-    // </div>`;
-
     const wrapperClasses = this.composeClass(
       'form-check',
-      this.inline ? 'form-check-inline' : '',
-      this.group ? 'form-check-group' : '',
-      'it-form__control',
-      // invalid ? 'is-invalid' : '',
-      // !invalid && this._touched ? 'just-validate-success-field' : '',
+      this.inline && !this.grouped ? 'form-check-inline' : '',
+      this.grouped && !this.inline ? 'form-check-group' : '',
     );
     const ariaDescribedBy = this.composeClass(
       this.supportText?.length > 0 ? supportTextId : '',
       this._ariaAttributes['aria-describedby']?.length > 0 ? this._ariaAttributes['aria-describedby'] : '',
-      // validityMessage?.length > 0 ? `invalid-feedback-${this._id}` : '',
     );
-
-    const labelClasses = this.composeClass(this.disabled ? 'disabled' : '');
-
+    const controlClasses = this.composeClass('radio-control', this.grouped ? 'radio-control-grouped' : '');
+    const labelClasses = this.composeClass('radio-control-label', this.disabled ? 'disabled' : '');
+    this.setAttribute('name', this.name);
+    if (this.required) {
+      this.setAttribute('aria-required', 'true');
+    } else {
+      this.removeAttribute('aria-required');
+    }
+    // if (this.invalid) {
+    //   this.setAttribute('aria-invalid', 'true');
+    // } else {
+    //   this.removeAttribute('aria-invalid');
+    // }
     return html`
       <div class="${wrapperClasses}" part="input-wrapper" aria-describedby="${ifDefined(ariaDescribedBy || undefined)}">
-        ${this._renderInput()}
-        <span part="label" class="${labelClasses}"><slot name="label">${this.label}</slot></span>
+        <div id="radio-control" part="radio-control" class="${controlClasses}">
+          ${this._renderInput()}
+          <span part="label" class="${labelClasses}"><slot name="label">${this.label}</slot></span>
+        </div>
         ${supportTextRender}
       </div>
     `;

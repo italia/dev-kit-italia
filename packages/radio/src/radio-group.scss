@@ -1,0 +1,53 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+
+@import 'bootstrap-italia/src/scss/base/reboot'; //per gli stili di ::before e ::after
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/forms/forms';
+@import 'bootstrap-italia/src/scss/forms/form-control';
+@import 'bootstrap-italia/src/scss/forms/form-check';
+@import 'bootstrap-italia/src/scss/forms/just-validate';
+
+// slot[name='label'] {
+//   // @include font-size(var(--#{$prefix}font-size-md));
+//   // display: block;
+//   // margin-bottom: var(--#{$prefix}spacing-xxs);
+//   // color: var(--#{$prefix}color-body);
+//   // font-weight: 600;
+//   padding: 0 var(--bs-form-input-spacing-x);
+//   margin-bottom: var(--bs-spacing-s);
+//   background-color: rgba(0, 0, 0, 0);
+//   color: var(--bs-form-control-text-color);
+//   font-size: var(--bs-label-sm);
+//   font-weight: var(--bs-font-weight-solid);
+// }
+::slotted([slot='label']) {
+  display: block;
+  padding: 0 var(--bs-form-input-spacing-x);
+  margin-bottom: var(--bs-spacing-s);
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--bs-form-control-text-color);
+  font-size: var(--bs-label-sm);
+  font-weight: var(--bs-font-weight-solid);
+}
+
+.it-radio-group {
+  margin-bottom: var(--bs-spacing-xs);
+}
+
+.it-radio-group-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bs-spacing-s);
+}
+// fieldset legend {
+//   padding: 0 var(--bs-form-input-spacing-x);
+//   margin-bottom: var(--bs-spacing-s);
+//   background-color: rgba(0, 0, 0, 0);
+//   color: var(--bs-form-control-text-color);
+//   font-size: var(--bs-label-sm);
+//   font-weight: var(--bs-font-weight-solid);
+// }

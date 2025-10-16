@@ -13,12 +13,44 @@
 :host {
   display: block;
   margin-bottom: var(--#{$prefix}spacing-xs);
+  box-shadow: none !important;
+  -webkit-focus-ring-color: transparent; /* Chrome/Safari */
+  outline: none !important;
+}
 
-  // Role is on the host, make it focusable and styled
-  &:focus {
-    outline: 2px solid #ff9900;
-    outline-offset: 2px;
+/* Mostra il ring sul controllo interno in questi casi:
+   - host stesso è :focus-visible (keyboard)
+   - host contiene il focus (qualunque elemento figlio sia focalizzato)
+   - fallback: anche quando host ha semplicemente :focus (utile per alcuni casi) */
+:host(:focus-visible) .radio-control,
+:host(:focus-within) .radio-control,
+:host(:focus) .radio-control {
+  box-shadow:
+    0 0 0 2px $focus-outline-color-in,
+    0 0 0 5px $focus-outline-color-out !important;
+  /* assicurati che il controllo non abbia outline propio che interferisca */
+  outline: none;
+}
+
+.radio-control {
+  display: flex;
+  align-items: center;
+  padding: var(--bs-form-input-padding-y) var(--bs-form-input-padding-x);
+}
+
+.radio-control-label {
+  display: block;
+  width: 100%;
+  color: var(--bs-form-control-label-color);
+  font-size: var(--bs-label-sm);
+  font-weight: var(--bs-font-weight-solid);
+  @media (min-width: 576px) {
+    font-size: var(--bs-label-font-size-m);
   }
+}
+
+.radio-control-grouped {
+  flex-direction: row-reverse;
 }
 
 :host([inline]) {
@@ -31,52 +63,107 @@
   margin-bottom: var(--#{$prefix}spacing-xxs);
 }
 
-// Visual radio button circle - rendered as #button span (like Spectrum)
+// Visual radio button circle - using ::before and ::after like Bootstrap Italia
 #button {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  border: 2px solid #435a70;
-  border-radius: 50%;
+  position: relative;
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border: none !important;
+  margin-top: 0 !important;
   margin-right: 0.5rem;
-  background-color: #fff;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  transition:
-    background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
-  vertical-align: middle;
+
+  // Outer circle (border) - ::before
+  &::before {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--#{$prefix}form-control-label-color);
+    border-radius: var(--#{$prefix}radius-rounded);
+    content: '';
+    transition: all var(--#{$prefix}transition-instant) ease-out;
+  }
+
+  // Inner circle (filled dot) - ::after
+  &::after {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-width: 0;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: var(--#{$prefix}radius-rounded);
+    background-color: transparent;
+    content: '';
+    transform: scale(0);
+    transition: all var(--#{$prefix}transition-instant) ease-out;
+  }
 }
 
-// Checked state - :host has aria-checked
+// Unchecked state - ::before visible, ::after hidden
+:host(:not([aria-checked='true'])) #button {
+  &::before {
+    border-color: var(--#{$prefix}form-checkbox-border-color);
+  }
+
+  &::after {
+    z-index: -1;
+    border-width: 0;
+    border-color: transparent;
+    background-color: transparent;
+    transform: scale(0);
+  }
+}
+
+// Checked state - both visible, ::after scaled down
 :host([aria-checked='true']) #button {
-  border-color: #0066cc;
-  background-color: #0066cc;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+  &::before {
+    border-color: var(--#{$prefix}form-checked-color);
+  }
+
+  &::after {
+    z-index: 0;
+    border-width: 2px;
+    border-color: var(--#{$prefix}form-checked-color);
+    background-color: var(--#{$prefix}form-checked-color);
+    transform: scale(0.64);
+  }
 }
 
 // Disabled state - :host has aria-disabled
 :host([aria-disabled='true']) {
   cursor: not-allowed;
-  opacity: 0.5;
   pointer-events: none; // Prevent all interactions
 
-  #button {
-    border-color: #5c6f82;
-    background-color: #f5f6f7;
+  #button::before,
+  #button::after {
+    border-color: var(--#{$prefix}color-border-disabled);
   }
+}
 
-  &[aria-checked='true'] #button {
-    border-color: #5c6f82;
-    background-color: #5c6f82;
-  }
+:host([aria-disabled='true'][aria-checked='true']) #button::after {
+  background-color: var(--#{$prefix}color-border-disabled);
 }
 
 // Invalid state
 :host([aria-invalid='true']) #button {
-  border-color: #d9364f;
+  &::before,
+  &::after {
+    border-color: var(--#{$prefix}color-feedback-error);
+  }
+
+  &[aria-checked='true']::after {
+    background-color: var(--#{$prefix}color-feedback-error);
+  }
 }
 
 .form-text {

@@ -9,7 +9,7 @@ export interface RovingTabindexConfig<T extends HTMLElement> {
   /**
    * Callback when an item is selected/activated
    */
-  onSelect?: (item: T) => void;
+  onSelect?: (item: T, event: KeyboardEvent | PointerEvent | MouseEvent) => void;
 
   /**
    * Whether items wrap around (last -> first and vice versa)
@@ -38,10 +38,10 @@ export interface RovingTabindexConfig<T extends HTMLElement> {
 
 /**
  * Roving Tabindex Controller
- * 
+ *
  * Implements the ARIA roving tabindex pattern for keyboard navigation.
  * See: https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex
- * 
+ *
  * Usage:
  * ```ts
  * private rovingTabindex = new RovingTabindexController(this, {
@@ -94,7 +94,7 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
 
     // Find the active index
     let targetIndex = activeIndex ?? 0;
-    
+
     // If no active index specified, use first non-disabled item
     if (activeIndex === undefined) {
       targetIndex = items.findIndex((item) => !this.config.skipItem(item));
@@ -148,7 +148,7 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
 
     const items = this.config.getItems();
     const currentIndex = items.indexOf(currentItem);
-    
+
     if (currentIndex === -1) {
       return false;
     }
@@ -177,16 +177,16 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
 
     if (nextIndex !== -1 && nextIndex !== currentIndex) {
       const nextItem = items[nextIndex];
-      
+
       // Update tabindices
       this.updateTabindices(nextIndex);
-      
+
       // Focus the next item
       nextItem.focus();
 
       // Optionally select/activate the item
       if (this.config.selectOnFocus && this.config.onSelect) {
-        this.config.onSelect(nextItem);
+        this.config.onSelect(nextItem, event);
       }
 
       return true;
@@ -244,7 +244,7 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
   focusItem(item: T): void {
     const items = this.config.getItems();
     const index = items.indexOf(item);
-    
+
     if (index !== -1) {
       this.updateTabindices(index);
       item.focus();
@@ -257,7 +257,7 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
   focusFirst(): void {
     const items = this.config.getItems();
     const firstValidIndex = this.findNextValidIndex(items, 0, 1);
-    
+
     if (firstValidIndex !== -1) {
       this.focusItem(items[firstValidIndex]);
     }
@@ -269,7 +269,7 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
   focusLast(): void {
     const items = this.config.getItems();
     const lastValidIndex = this.findNextValidIndex(items, items.length - 1, -1);
-    
+
     if (lastValidIndex !== -1) {
       this.focusItem(items[lastValidIndex]);
     }

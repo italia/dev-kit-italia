@@ -24,36 +24,18 @@ function RadioExamples() {
       {/* Esempio base */}
       <section style={{ marginBottom: '3rem' }}>
         <h2>Esempio Base</h2>
-        <fieldset>
-          <legend>Gruppo di radio</legend>
-          <it-radio
-            id="radio1"
-            name="gruppo1"
-            value="opzione1"
-            checked={selectedValue === 'opzione1'}
-            onChange={handleChange}
-          >
+        <it-radio-group name="gruppo1" value={selectedValue} onChange={handleChange}>
+          <span slot="legend">Gruppo di radio</span>
+          <it-radio id="radio1" value="opzione1">
             <span slot="label">Radio di esempio 1</span>
           </it-radio>
-          <it-radio
-            id="radio2"
-            name="gruppo1"
-            value="opzione2"
-            checked={selectedValue === 'opzione2'}
-            onChange={handleChange}
-          >
+          <it-radio id="radio2" value="opzione2">
             <span slot="label">Radio di esempio 2</span>
           </it-radio>
-          <it-radio
-            id="radio3"
-            name="gruppo1"
-            value="opzione3"
-            checked={selectedValue === 'opzione3'}
-            onChange={handleChange}
-          >
+          <it-radio id="radio3" value="opzione3">
             <span slot="label">Radio di esempio 3</span>
           </it-radio>
-        </fieldset>
+        </it-radio-group>
         <p>
           Valore selezionato: <strong>{selectedValue}</strong>
         </p>
@@ -62,20 +44,19 @@ function RadioExamples() {
       {/* Testo di supporto */}
       <section style={{ marginBottom: '3rem' }}>
         <h2>Testo di Supporto</h2>
-        <fieldset>
-          <legend>Gruppo di radio con testo di supporto</legend>
+        <it-radio-group name="gruppo-support">
+          <span slot="legend">Esempio con testo di supporto</span>
           <it-radio
             id="radio-support1"
-            name="gruppo-support"
             value="opzione1"
             support-text="Questo è un testo di supporto per il radio button"
           >
             <span slot="label">Radio con testo di supporto</span>
           </it-radio>
-          <it-radio id="radio-support2" name="gruppo-support" value="opzione2">
+          <it-radio id="radio-support2" value="opzione2">
             <span slot="label">Altro radio</span>
           </it-radio>
-        </fieldset>
+        </it-radio-group>
       </section>
 
       {/* Radio inline */}
@@ -83,36 +64,21 @@ function RadioExamples() {
         <h2>Radio Inline</h2>
         <fieldset>
           <legend>Gruppo di radio</legend>
-          <it-radio
-            id="radio-inline1"
+          <it-radio-group
             name="gruppo-inline"
-            value="opzione1"
-            inline
-            checked={selectedInline === 'opzione1'}
+            value={selectedInline}
             onChange={(e) => setSelectedInline(e.target.value)}
           >
-            <span slot="label">Radio inline 1</span>
-          </it-radio>
-          <it-radio
-            id="radio-inline2"
-            name="gruppo-inline"
-            value="opzione2"
-            inline
-            checked={selectedInline === 'opzione2'}
-            onChange={(e) => setSelectedInline(e.target.value)}
-          >
-            <span slot="label">Radio inline 2</span>
-          </it-radio>
-          <it-radio
-            id="radio-inline3"
-            name="gruppo-inline"
-            value="opzione3"
-            inline
-            checked={selectedInline === 'opzione3'}
-            onChange={(e) => setSelectedInline(e.target.value)}
-          >
-            <span slot="label">Radio inline 3</span>
-          </it-radio>
+            <it-radio id="radio-inline1" value="opzione1" inline>
+              <span slot="label">Radio inline 1</span>
+            </it-radio>
+            <it-radio id="radio-inline2" value="opzione2" inline>
+              <span slot="label">Radio inline 2</span>
+            </it-radio>
+            <it-radio id="radio-inline3" value="opzione3" inline>
+              <span slot="label">Radio inline 3</span>
+            </it-radio>
+          </it-radio-group>
         </fieldset>
       </section>
 
@@ -121,15 +87,17 @@ function RadioExamples() {
         <h2>Radio Disabilitato</h2>
         <fieldset>
           <legend>Gruppo di radio</legend>
-          <it-radio id="radio-disabled1" name="gruppo-disabled" value="opzione1" checked disabled>
-            <span slot="label">Radio selezionato e disabilitato</span>
-          </it-radio>
-          <it-radio id="radio-disabled2" name="gruppo-disabled" value="opzione2" disabled>
-            <span slot="label">Radio disabilitato</span>
-          </it-radio>
-          <it-radio id="radio-disabled3" name="gruppo-disabled" value="opzione3">
-            <span slot="label">Radio abilitato</span>
-          </it-radio>
+          <it-radio-group name="gruppo-disabled">
+            <it-radio id="radio-disabled1" value="opzione1" checked disabled>
+              <span slot="label">Radio selezionato e disabilitato</span>
+            </it-radio>
+            <it-radio id="radio-disabled2" value="opzione2" disabled>
+              <span slot="label">Radio disabilitato</span>
+            </it-radio>
+            <it-radio id="radio-disabled3" value="opzione3">
+              <span slot="label">Radio abilitato</span>
+            </it-radio>
+          </it-radio-group>
         </fieldset>
       </section>
 
@@ -139,58 +107,79 @@ function RadioExamples() {
         <div className="row">
           <fieldset className="col-12 col-md-6">
             <legend>Gruppo di radio</legend>
-            <div>
+            <it-radio-group
+              name="gruppo-visual"
+              value={selectedGroup}
+              onChange={(e) => setSelectedGroup(e.target.value)}
+            >
+              <it-radio id="radio-group1" value="opzione1" group>
+                <span slot="label">Opzione 1</span>
+              </it-radio>
+              <it-radio id="radio-group2" value="opzione2" group>
+                <span slot="label">Opzione 2</span>
+              </it-radio>
+              <it-radio id="radio-group3" value="opzione3" group>
+                <span slot="label">Opzione 3</span>
+              </it-radio>
+            </it-radio-group>
+          </fieldset>
+          <fieldset className="col-12 col-md-6">
+            <legend>Gruppo di radio con supportText</legend>
+            <it-radio-group name="gruppo-visual2">
               <it-radio
-                id="radio-group1"
-                name="gruppo-visual"
+                id="radio-group4"
                 value="opzione1"
                 group
-                checked={selectedGroup === 'opzione1'}
-                onChange={(e) => setSelectedGroup(e.target.value)}
+                checked
+                support-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie libero"
               >
                 <span slot="label">Opzione 1</span>
               </it-radio>
               <it-radio
-                id="radio-group2"
-                name="gruppo-visual"
+                id="radio-group5"
                 value="opzione2"
                 group
-                checked={selectedGroup === 'opzione2'}
-                onChange={(e) => setSelectedGroup(e.target.value)}
+                support-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie libero"
               >
                 <span slot="label">Opzione 2</span>
               </it-radio>
               <it-radio
-                id="radio-group3"
-                name="gruppo-visual"
+                id="radio-group6"
                 value="opzione3"
                 group
-                checked={selectedGroup === 'opzione3'}
-                onChange={(e) => setSelectedGroup(e.target.value)}
+                support-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie libero"
               >
                 <span slot="label">Opzione 3</span>
               </it-radio>
-            </div>
+            </it-radio-group>
           </fieldset>
         </div>
       </section>
 
       {/* Form con validazione */}
       <section style={{ marginBottom: '3rem' }}>
-        <h2>Validazione (Required)</h2>
+        <h2>Radio Group con Validazione</h2>
         <form id="demo-form" onSubmit={handleFormSubmit}>
           <fieldset>
-            <legend>Seleziona un'opzione *</legend>
-            <it-radio name="scelta-required" value="si" required>
-              <span slot="label">Sì</span>
-            </it-radio>
-            <it-radio name="scelta-required" value="no" required>
-              <span slot="label">No</span>
-            </it-radio>
+            <legend>
+              Seleziona un'opzione <span className="text-danger">*</span>
+            </legend>
+            <it-radio-group name="scelta" required>
+              <it-radio value="si">
+                <span slot="label">Sì, accetto</span>
+              </it-radio>
+              <it-radio value="no">
+                <span slot="label">No, non accetto</span>
+              </it-radio>
+              <it-radio value="forse">
+                <span slot="label">Forse</span>
+              </it-radio>
+            </it-radio-group>
           </fieldset>
           <button type="submit" className="btn btn-primary mt-3">
             Invia
           </button>
+          <p className="form-text mt-2">Prova a inviare il form senza selezionare nulla per vedere la validazione.</p>
         </form>
       </section>
     </div>

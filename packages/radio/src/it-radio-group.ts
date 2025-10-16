@@ -1,7 +1,8 @@
 import { html, PropertyValues } from 'lit';
 import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
 import { FormControl, FormControlController, RovingTabindexController } from '@italia/globals';
-import type { ItRadio } from './it-radio.js';
+import type { ItRadio } from '@italia/radio';
+import styles from './radio-group.scss';
 
 /**
  * Radio group component - manages a collection of radio buttons
@@ -13,6 +14,8 @@ import type { ItRadio } from './it-radio.js';
  */
 @customElement('it-radio-group')
 export class ItRadioGroup extends FormControl {
+  static styles = styles;
+
   static formAssociated = true;
 
   /**
@@ -24,7 +27,7 @@ export class ItRadioGroup extends FormControl {
   /**
    * The currently selected value
    */
-  @state()
+  @property({ type: String, reflect: true })
   value = '';
 
   /**
@@ -40,26 +43,39 @@ export class ItRadioGroup extends FormControl {
   required = false;
 
   /**
-   * Optional label for the radio group (alternative to using <legend>)
+   * Optional prop for visual styling of grouped radios (borders between radios)
    */
-  @property({ type: String })
-  label = '';
+  @property({ type: Boolean, reflect: true })
+  grouped = false;
+
+  /**
+   * Whether the radios are displayed inline (horizontally) or stacked (vertically)
+   */
+  @property({ type: Boolean, reflect: true })
+  inline = false;
 
   /**
    * Get all slotted radio buttons
    */
-  @queryAssignedElements({ selector: 'it-radio', slot: '' })
+  @queryAssignedElements()
   private _radios!: ItRadio[];
 
-  @queryAssignedElements({ slot: 'legend' })
-  private _legend!: any;
+  @queryAssignedElements({ slot: 'label' })
+  private _label!: HTMLElement[];
+
+  /**
+   * Track if validation has been triggered (via reportValidity or setCustomValidity)
+   * ARIA best practice: don't show aria-invalid until user attempts submission
+   */
+  @state()
+  private _validationTriggered = false;
 
   /**
    * Roving tabindex controller for keyboard navigation
    */
   private rovingTabindex = new RovingTabindexController<ItRadio>(this, {
     getItems: () => this._radios,
-    onSelect: (radio) => this.selectRadio(radio),
+    onSelect: (radio, event) => this.selectRadio(radio, event),
     direction: 'both',
     selectOnFocus: true,
   });
@@ -67,7 +83,7 @@ export class ItRadioGroup extends FormControl {
   /**
    * Form control integration
    */
-  private formController = new FormControlController(this as any, {
+  private _formController = new FormControlController(this as any, {
     value: () => this.value,
     // disabled: () => this.disabled,
     setValue: (control: FormControl, value: unknown) => {
@@ -111,56 +127,80 @@ export class ItRadioGroup extends FormControl {
    * Override: Report validity for radio group
    */
   override reportValidity(): boolean {
+    this._validationTriggered = true; // Mark that validation has been attempted
     const isValid = this.checkValidity();
-
-    if (!isValid) {
-      // Focus the first enabled radio for better UX
-      const firstEnabledRadio = this._radios?.find((r) => !r.disabled);
-      if (firstEnabledRadio) {
-        firstEnabledRadio.focus();
-      }
-    }
-
+    this.handleValidationMessages();
+    this._updateInvalidState();
     return isValid;
+  }
+
+  /** Sets a custom validation message. Pass an empty string to restore validity. */
+  public override setCustomValidity(message: string) {
+    // Only trigger validation state if message is non-empty (actual error)
+    // Empty message during init or after correction should not trigger invalid state initially
+    if (message && message.length > 0) {
+      this._validationTriggered = true;
+    }
+    
+    this.validationMessage = message;
+    this.formControlController.updateValidity();
+    // Update aria-invalid on group and children immediately
+    this._updateInvalidState();
+  }
+
+  protected override handleValidationMessages() {
+    const _v = this.validity;
+    if (!this.customValidation) {
+      if (_v.valueMissing) {
+        this.setCustomValidity(this.$t('validityRequired'));
+      } else this.setCustomValidity('');
+    }
+  }
+
+  private _updateInvalidState() {
+    // Only show aria-invalid if validation has been triggered (ARIA best practice)
+    if (!this._validationTriggered) {
+      return;
+    }
+    
+    const invalid = this.checkValidity() === false || !!this.validationMessage;
+    this.toggleAttribute('aria-invalid', invalid);
+    this._radios?.forEach((r) => {
+      if (invalid) r.setAttribute('aria-invalid', 'true');
+      else r.removeAttribute('aria-invalid');
+    });
   }
 
   connectedCallback() {
     super.connectedCallback?.();
     this._handleReady();
-    this._setupRadios();
+    this.setAttribute('role', 'radiogroup');
+  }
+
+  firstUpdated() {
+    const checkedRadio = this.querySelector<ItRadio>('it-radio[checked]');
+    if (checkedRadio) {
+      this.value = checkedRadio.value;
+    }
+    this.updateRadios();
+  }
+
+  private async updateRadios() {
+    if (!this.hasUpdated) {
+      // Initial validation has to happen after the initial render to allow
+      // the buttons to be queries from the rendered <slot> element
+      await this.updateComplete;
+    }
+    const radios = this.querySelectorAll<ItRadio>('it-radio');
+    // eslint-disable-next-line no-return-assign, no-param-reassign
+    radios.forEach((r) => {
+      // eslint-disable-next-line no-param-reassign
+      r.checked = r.value === this.value;
+    });
   }
 
   disconnectedCallback() {
     super.disconnectedCallback?.();
-    // this.removeEventListener('it-radio-keydown', this.handleRadioKeyDown);
-    // this.removeEventListener('it-radio-activate', this.selectRadio);
-    // this.removeEventListener('change', this._handleRadioChange);
-  }
-
-  // firstUpdated() {
-  //   this._setupRadios();
-  // }
-
-  /**
-   * Initialize radio buttons and set up event listeners
-   */
-  private _setupRadios() {
-    // Listen for change events from child radios
-    // this.addEventListener('change', this._handleRadioChange);
-
-    // Sync value from checked radio
-    this._syncValueFromRadios();
-
-    // Initialize radio states
-    this._updateRadiosState();
-    this.setAttribute('role', 'radiogroup');
-
-    // Set aria-label if label is provided
-    if (this.label) {
-      this.setAttribute('aria-label', this.label);
-    }
-    // Update form value
-    // this._updateFormValue();
   }
 
   /**
@@ -182,12 +222,11 @@ export class ItRadioGroup extends FormControl {
   /**
    * PUBLIC API: Called by radio buttons to select themselves
    */
-  selectRadio(radio: ItRadio): void {
+  selectRadio(radio: ItRadio, event: KeyboardEvent | PointerEvent | MouseEvent): void {
     if (radio.disabled || this.disabled) {
       return;
     }
 
-    const oldValue = this.value;
     this.value = radio.value;
 
     // Uncheck other radios using their public API
@@ -200,27 +239,26 @@ export class ItRadioGroup extends FormControl {
         r.checked = true;
       }
     });
-
-    // Update tabindex for roving tabindex pattern
-    this._updateRadiosState();
-
-    // Update form value
-    // this._updateFormValue();
-
-    // Dispatch change event from the group if value changed
-    if (oldValue !== this.value) {
-      this.dispatchEvent(
-        new Event('change', {
-          bubbles: true,
-          composed: true,
-        }),
-      );
+    
+    // If validation was already triggered, update state after selection
+    if (this._validationTriggered) {
+      // For native validation, clear error if now valid
+      if (!this.customValidation) {
+        this.handleValidationMessages();
+        this._updateInvalidState();
+      }
+      // For custom validation (JustValidate), the external validator will call setCustomValidity
+      // but we still update the state based on current validationMessage
+      else {
+        this._updateInvalidState();
+      }
     }
-
-    // // Clear validity errors if required field is now filled
-    // if (this.required && this._internals) {
-    //   this._internals.setValidity({});
-    // }
+    
+    if (event.type === 'click' || event.type === 'pointerdown') {
+      this._handleClick(event);
+    } else {
+      this._handleChange(event);
+    }
   }
 
   /**
@@ -228,32 +266,10 @@ export class ItRadioGroup extends FormControl {
    */
   handleRadioKeyDown(radio: ItRadio, event: KeyboardEvent): void {
     // Delegate to roving tabindex controller
-    this.rovingTabindex.handleKeydown(radio, event);
+    const handled = this.rovingTabindex.handleKeydown(radio, event);
+    if (handled) this._handleFocus(event);
+    else this._handleBlur(event);
   }
-
-  /**
-   * Handle change events from child radio buttons
-   */
-  private _handleRadioChange = (e: Event) => {
-    const radio = e.target as ItRadio;
-
-    // Only process if the radio is actually checked
-    if (radio.checked) {
-      // Use the public API to select this radio
-      this.selectRadio(radio);
-    }
-  };
-
-  /**
-   * Update form value via ElementInternals
-   */
-  // private _updateFormValue() {
-  //   if (this._internals && this.name) {
-  //     // Always set form value, even if empty
-  //     // This ensures the key exists in FormData (like native radio buttons)
-  //     this._internals.setFormValue(this.value || '');
-  //   }
-  // }
 
   /**
    * Synchronize radio button states with group state
@@ -275,13 +291,6 @@ export class ItRadioGroup extends FormControl {
       if (this.disabled) {
         // eslint-disable-next-line no-param-reassign
         radio.disabled = true;
-      }
-      // Don't re-enable radios that are individually disabled
-      // (we only propagate disabled=true from group to radios, not false)
-
-      // Set name for grouping (important for native behavior)
-      if (this.name) {
-        radio.setAttribute('data-group-name', this.name);
       }
     });
 
@@ -312,83 +321,85 @@ export class ItRadioGroup extends FormControl {
     if (changed.has('value')) {
       this._updateRadiosState();
       this.dispatchEvent(new Event('change', { bubbles: true }));
-      // this._updateFormValue();
+      // Re-validate after value change (for native validation) only if validation was already triggered
+      if (!this.customValidation && this._validationTriggered) {
+        this.handleValidationMessages();
+        this._updateInvalidState();
+      }
+    }
+    
+    // If validation message changed, update aria-invalid on group and children
+    if (changed.has('validationMessage')) {
+      this._updateInvalidState();
     }
 
-    // Update disabled state
-    // if (changed.has('disabled')) {
-    // this._radios?.forEach((radio) => {
-    //   if (radio) {
-    //     // eslint-disable-next-line no-param-reassign
-    //     radio.disabled = this.disabled;
-    //   }
-    // });
-    // }
-
-    // // Update aria-label
-    // if (changed.has('label')) {
-    //   if (this.label) {
-    //     this.setAttribute('aria-label', this.label);
-    //   } else {
-    //     this.removeAttribute('aria-label');
-    //   }
-    // }
+    // Se cambiano queste proprietà, forziamo il re-render dei radio figli
+    const relevant = ['grouped', 'inline', 'name', 'required', 'disabled'];
+    const hasChanged = Array.from(changed.keys()).some((k) => relevant.includes(String(k)));
+    if (hasChanged && this._radios?.length) {
+      this._radios.forEach((r) => {
+        try {
+          // forziamo il re-render del singolo radio
+          r.requestUpdate();
+        } catch {
+          // ignore if radio not ready
+        }
+      });
+    }
   }
-
-  // /**
-  //  * Get the validity state of the radio group
-  //  */
-  // get validity(): ValidityState {
-  //   return this._internals?.validity ?? ({} as ValidityState);
-  // }
-
-  // /**
-  //  * Check if the radio group is valid
-  //  */
-  // checkValidity(): boolean {
-  //   if (this.required && !this.value) {
-  //     return false;
-  //   }
-  //   return true;
-  // }
-
-  /**
-   * Report validity and show validation UI
-   */
-  // reportValidity(): boolean {
-  //   const isValid = this.checkValidity();
-
-  //   if (!isValid && this._internals && this._radios.length > 0) {
-  //     this._internals.setValidity(
-  //       { valueMissing: true },
-  //       "Seleziona un'opzione",
-  //       this._radios[0], // Reference first radio for focus
-  //     );
-
-  //     // Focus the first radio
-  //     this._radios[0].focus();
-  //   } else if (isValid && this._internals) {
-  //     this._internals.setValidity({});
-  //   }
-
-  //   return isValid;
-  // }
 
   /**
    * Handle slot changes (when radios are added/removed)
    */
   private _handleSlotChange = () => {
+    this._syncValueFromRadios();
     this._updateRadiosState();
+  };
+
+  private _handleLabelSlotChange = () => {
+    const labelId = this.generateId('it-radio-group-label');
+    this._label[0]?.setAttribute('id', labelId);
+    this.setAttribute('aria-labelledby', labelId);
   };
 
   /**
    * Render the component
    */
   render() {
-    return html`<fieldset>
-      <legend><slot name="legend"></slot></legend>
-      <slot @slotchange=${this._handleSlotChange}></slot>
-    </fieldset>`;
+    const validityMessage = this.validationMessage;
+    const invalid = validityMessage?.length > 0 || (!this.customValidation && this?.checkValidity() === false);
+    const validityMessageRender = html`<div
+      role="alert"
+      id="invalid-feedback-${this._id}"
+      class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
+      ?hidden=${!(validityMessage?.length > 0)}
+    >
+      <span class="visually-hidden">${this._label?.[0]?.textContent}: </span>${validityMessage}
+    </div>`;
+
+    const groupWrapperClasses = this.composeClass(
+      'it-radio-group',
+      'it-form__control',
+      this.inline && !this.grouped ? 'it-radio-group-inline' : '',
+      this.grouped && !this.inline ? 'it-radio-group-stacked' : '',
+      invalid ? 'is-invalid' : '',
+      // !invalid  && this._touched ? 'just-validate-success-field' : '',
+    );
+    const ariaDescribedBy = this.composeClass(
+      this._ariaAttributes['aria-describedby']?.length > 0 ? this._ariaAttributes['aria-describedby'] : '',
+      validityMessage?.length > 0 ? `invalid-feedback-${this._id}` : '',
+    );
+
+    if (ariaDescribedBy) {
+      this.setAttribute('aria-describedby', ariaDescribedBy);
+    }
+    // this.setAttribute('aria-invalid', String(invalid));
+
+    return html`<slot name="label" @slotchange=${this._handleLabelSlotChange}></slot>
+      <div class=${groupWrapperClasses}>
+        <slot @slotchange=${this._handleSlotChange}></slot>
+      </div>
+      ${validityMessageRender}`;
   }
 }
 
