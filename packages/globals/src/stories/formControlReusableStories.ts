@@ -1,7 +1,12 @@
 /* eslint-disable arrow-body-style */
 import { html } from 'lit';
 
-export const StoryFormControlMethodAndProps = (otherProps = '', otherMethods = '', otherEvents = '') => {
+export const StoryFormControlMethodAndProps = ({
+  otherProps = '',
+  otherMethods = '',
+  otherEvents = '',
+  componentName = 'it-input',
+}) => {
   return {
     name: 'Proprietà, Metodi, ed Eventi accessibili via js',
     tags: ['!dev'],
@@ -13,7 +18,7 @@ export const StoryFormControlMethodAndProps = (otherProps = '', otherMethods = '
           story: `Il componente espone delle proprietà, dei metodi e degli eventi, utili per eventuali interazioni via js.
 
 \`\`\`html
-<it-input ... id="myinput"></it-input>
+<${componentName} ... id="myinput"></${componentName}>
 \`\`\`
 
 \`\`\`js

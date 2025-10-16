@@ -72,10 +72,6 @@ $utilities: (
 );
 @import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
 
-:host {
-  display: block;
-}
-
 .password-icon {
   top: calc(var(--#{$prefix}form-control-spacing) * 5);
   --#{$prefix}icon-default: var(--#{$prefix}icon-primary);
