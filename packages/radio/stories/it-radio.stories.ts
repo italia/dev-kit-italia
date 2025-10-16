@@ -25,7 +25,6 @@ const renderComponent = (params: any) =>
     id="${ifDefined(params.id || undefined)}"
     value="${ifDefined(params.value || undefined)}"
     ?checked="${params.checked}"
-    ?disabled="${params.disabled}"
     support-text="${ifDefined(params.supportText || undefined)}"
     form="${ifDefined(params.form || undefined)}"
     ?custom-validation="${params.customValidation}"
@@ -73,7 +72,8 @@ const meta = {
     disabled: {
       control: 'boolean',
       type: 'boolean',
-      description: 'Se il singolo componente it-radio è disabilitato',
+      description:
+        "Se il gruppo di radio è disabilitato. Per l'omonimo attributo del componente it-radio, vedi la sezione dedicata",
       table: { defaultValue: { summary: 'false' } },
     },
     inline: {
@@ -150,8 +150,9 @@ export const EsempioInterattivo: Story = {
       },
     },
   },
+  decorators: [(Story) => html` <div style="min-width:450px">${Story()}</div>`],
   render: (params) => html`
-    <div style="min-width:450px">
+
       <it-radio-group
         name="${params.name}"
         ?inline="${params.inline}"
@@ -539,7 +540,7 @@ E' possibile personalizzare alcuni dei messaggi di errore di validazione, traduc
   <li>\`validityRequired\`: messaggio che viene mostrato quando il radio group è obbligatorio e nessuna opzione è stata selezionata</li>
 </ul>
 
-Per gli altri errori di validazione non indicati, verranno mostrati i messaggi di errore nativi del browser.
+Non esistono altre possibili validazioni native per questo tipo di input. Per validazioni custom dovrai fornire i tuoi messaggi di errore.
 
 ### Validazione esterna (validazione custom)
 
