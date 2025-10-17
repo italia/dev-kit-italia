@@ -1,75 +1,11 @@
-<!doctype html>
-<html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test Web Components - vanilla-app</title>
-    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
-    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
-    <link rel="stylesheet" href="/src/style.css" />
-  </head>
-  <body>
-    <div id="root">
-      <div id="app-header">
-        <div class="app-header">
-          <a href="https://vite.dev" target="_blank">
-            <img src="/public/vite.svg" class="logo" alt="Vite logo" />
-          </a>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-            <img src="/src/javascript.svg" class="logo vanilla" alt="JavaScript logo" />
-          </a>
-          <nav class="app-nav">
-            <a href="/src/button">Button</a>
-            <a href="/src/chip">Chip</a>
-            <a href="/src/dropdown">Dropdown</a>
-            <a href="/src/form">Form</a>
-            <a href="/src/icon">Icon</a>
-            <a href="/src/input">Input</a>
-            <a href="/src/section">Section</a>
-            <a href="/src/video">Video</a>
-            <a href="/src/avatar">Avatar</a>
-          </nav>
-        </div>
-      </div>
-      <h1>Form</h1>
-      <section>
-        <h2>Form con validazione basica del browser</h2>
-        <form id="form">
-          <it-input id="nome" name="nome"><span slot="label">Nome</span></it-input>
-          <it-input id="cognome" name="cognome"><span slot="label">Cognome</span></it-input>
-          <it-input id="email" name="email" type="email" support-text="Inserisci la tua email" required>
-            <span slot="label">E-mail</span>
-          </it-input>
-          <it-input
-            id="messaggio"
-            name="messaggio"
-            type="textarea"
-            support-text="Inserisci il tuo messaggio"
-          ><span slot="label">Messaggio</span></it-input>
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-          <it-button type="submit" variant="primary" block> Invia </it-button>
-        </form>
-      </section>
-
-      <section>
-        <h2>Form con validazione custom con JustValidate</h2>
-        <form id="form-custom-validation">
-          <it-input id="nome" name="nome" custom-validation><span slot="label">Nome</span></it-input>
-          <it-input id="cognome" name="cognome" custom-validation><span slot="label">Cognome</span></it-input>
-          <it-input id="email" name="email" type="email" support-text="Inserisci la tua email" custom-validation><span slot="label">E-mail</span></it-input>
-          <it-input
-            id="messaggio"
-            name="messaggio"
-            type="textarea"
-            support-text="Inserisci il tuo messaggio" custom-validation
-          ><span slot="label">Messaggio</span></it-input>
-
-          <it-button type="submit" variant="primary" block> Invia </it-button>
-        </form>
-      </section>
-    </div>
-
+@Component({
+  selector: 'app-footer',
+  standalone: true,
+  imports: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
     <footer class="it-footer">
       <div class="it-footer-main">
         <div class="container">
@@ -230,11 +166,7 @@
         </div>
       </div>
     </footer>
-
-    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
-    <script type="module" src="/src/main.js"></script>
-    <script type="module" src="/src/js/form.js"></script>
-
-
-  </body>
-</html>
+  `,
+  styles: [],
+})
+export class FooterComponent {}
