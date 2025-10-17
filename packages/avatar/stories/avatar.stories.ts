@@ -32,10 +32,10 @@ interface AvatarProps {
 }
 
 const AVATAR_SIZES: AvatarSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
-const AVATAR_COLORS: AvatarColor[] = ['', 'primary', 'secondary'];
-const AVATAR_TYPES: AvatarType[] = ['', 'image', 'text', 'icon'];
-const AVATAR_PRESENCE: AvatarPresence[] = ['', 'active', 'busy', 'hidden'];
-const AVATAR_STATUS: AvatarStatus[] = ['', 'approved', 'declined', 'notify'];
+const AVATAR_COLORS: AvatarColor[] = ['primary', 'secondary'];
+const AVATAR_TYPES: AvatarType[] = ['image', 'text', 'icon'];
+const AVATAR_PRESENCE: AvatarPresence[] = ['active', 'busy', 'hidden'];
+const AVATAR_STATUS: AvatarStatus[] = ['approved', 'declined', 'notify'];
 
 const renderComponent = (params: Partial<AvatarProps> & { slot?: 'trigger' }) => html`
   <it-avatar
@@ -59,15 +59,11 @@ const meta = {
   component: 'it-avatar',
   tags: ['autodocs', 'alpha', 'new'],
   args: {
-    type: '',
     size: 'md',
-    variant: '',
-    presence: '',
-    status: '',
     src: 'https://randomuser.me/api/portraits/men/43.jpg',
     alt: 'Mario Rossi',
     text: 'Mario Rossi',
-    icon: 'search',
+    icon: '',
     href: '',
     avatarTitle: '',
   },
@@ -77,7 +73,6 @@ const meta = {
       description:
         "Tipo di contenuto dell'avatar. Se vuoto, viene determinato automaticamente: src → image, icon → icon, altrimenti text.",
       options: AVATAR_TYPES,
-      table: { defaultValue: { summary: 'auto' } },
     },
     size: {
       control: 'select',
@@ -89,19 +84,16 @@ const meta = {
       control: 'select',
       description: "Colore di sfondo dell'avatar per avatar con testo.",
       options: AVATAR_COLORS,
-      table: { defaultValue: { summary: '' } },
     },
     presence: {
       control: 'select',
       description: "Indicatore di presenza dell'utente.",
       options: AVATAR_PRESENCE,
-      table: { defaultValue: { summary: '' } },
     },
     status: {
       control: 'select',
       description: "Indicatore di stato dell'account utente.",
       options: AVATAR_STATUS,
-      table: { defaultValue: { summary: '' } },
     },
     src: {
       control: 'text',

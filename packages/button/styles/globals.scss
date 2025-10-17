@@ -1,7 +1,13 @@
 it-button {
-  display: inline-block;
+  --it-host-display: inline-block;
+  display: var(--it-host-display);
   width: auto;
   cursor: default !important; //per non applicare gli stili di default del browser su questi stati: [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled)
+
+  &:not(:defined) {
+    --it-host-display: inline-flex;
+    align-items: center;
+  }
 }
 
 .bg-dark {

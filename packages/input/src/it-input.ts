@@ -1,7 +1,7 @@
 import { setAttributes, FormControl } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
 import { html, nothing } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state, queryAssignedElements } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { when } from 'lit/directives/when.js';
 import { live } from 'lit/directives/live.js';
@@ -44,10 +44,6 @@ export class ItInput extends FormControl {
   @property({ type: Boolean })
   adaptive = false;
 
-  /** The input's label. */
-  @property({ type: String })
-  label = '';
-
   /** If you want label to be hidden. */
   @property({ type: Boolean, attribute: 'label-hidden' })
   labelHidden = false;
@@ -75,6 +71,16 @@ export class ItInput extends FormControl {
   /** If your input is of type 'password' and you want to show password suggestions. */
   @property({ type: Boolean })
   suggestions = false;
+
+  @queryAssignedElements({ slot: 'label' })
+  labelElements!: HTMLElement[];
+
+  get label(): string {
+    if (this.labelElements.length > 0) {
+      return this.labelElements[0].innerText.trim();
+    }
+    return '';
+  }
 
   @state()
   private _passwordVisible = false;
@@ -415,8 +421,8 @@ export class ItInput extends FormControl {
           for="${ifDefined(this._id || undefined)}"
           part="label"
           class="${this.composeClass('active', this.labelHidden ? 'visually-hidden' : '')}"
-          >${this.label}</label
-        >
+          ><slot name="label"></slot
+        ></label>
 
         ${when(
           this.slotted || this.type === 'number',
