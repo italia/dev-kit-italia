@@ -6,20 +6,24 @@ import { type ItInput } from '@italia/input';
 describe('<it-input>', () => {
   // Il componente è accessibile di default
   it('should be accessible', async () => {
-    const el = await fixture<ItInput>(html`<it-input label="Test label" name="test"></it-input>`);
+    const el = await fixture<ItInput>(html`<it-input name="test"><span slot="label">Test label</span></it-input>`);
     await expect(el).to.be.accessible();
   });
 
   // Imposta e riflette il valore correttamente
   it('should reflect the initial value', async () => {
-    const el = await fixture<ItInput>(html`<it-input value="ciao" label="Test" name="test"></it-input>`);
+    const el = await fixture<ItInput>(
+      html`<it-input value="ciao" name="test"><span slot="label">Test</span></it-input>`,
+    );
     expect(el.value).to.equal('ciao');
     expect(el.shadowRoot?.querySelector('input')?.value).to.equal('ciao');
   });
 
   // Validazione (required)
   it('should mark the input as invalid if required and empty', async () => {
-    const el = await fixture<ItInput>(html`<it-input label="Required field" name="req-field" required></it-input>`);
+    const el = await fixture<ItInput>(
+      html`<it-input name="req-field" required><span slot="label">Required field</span></it-input>`,
+    );
     const input = el.shadowRoot?.querySelector('input')!;
     input.focus();
     input.blur(); // trigger blur e checkValidity
@@ -30,12 +34,9 @@ describe('<it-input>', () => {
   // Validazione personalizzata (setCustomValidity)
   it('should show a custom validity message', async () => {
     const el = await fixture<ItInput>(
-      html`<it-input
-        label="Custom validation"
-        name="custom"
-        validity-message="Errore personalizzato"
-        custom-validation
-      ></it-input>`,
+      html`<it-input name="custom" validity-message="Errore personalizzato" custom-validation
+        ><span slot="label">Custom validation</span></it-input
+      >`,
     );
 
     await el.updateComplete;
@@ -46,7 +47,9 @@ describe('<it-input>', () => {
   // Reset del messaggio di validazione dopo input valido
 
   it('should clear the validity message after valid input', async () => {
-    const el = await fixture<ItInput>(html`<it-input required label="Required field" name="test"></it-input>`);
+    const el = await fixture<ItInput>(
+      html`<it-input required name="test"><span slot="label">Required field</span></it-input>`,
+    );
     el.blur();
     el.value = 'ok';
     el.checkValidity();
@@ -60,7 +63,7 @@ describe('<it-input>', () => {
     const container = await fixture<HTMLDivElement>(html`
       <div>
         <form id="test-form">
-          <it-input name="email" type="email" value="test@example.com" label="Email"></it-input>
+          <it-input name="email" type="email" value="test@example.com"><span slot="label">Email</span></it-input>
           <button type="submit">Invia</button>
         </form>
       </div>
@@ -84,7 +87,7 @@ describe('<it-input>', () => {
     const container = await fixture<HTMLDivElement>(html`
       <div>
         <form id="test-form">
-          <it-input name="username" value="initialValue" label="Username"></it-input>
+          <it-input name="username" value="initialValue"><span slot="label">Username</span></it-input>
         </form>
       </div>
     `);
