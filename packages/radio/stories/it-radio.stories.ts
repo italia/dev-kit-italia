@@ -25,6 +25,7 @@ const renderComponent = (params: any) =>
     id="${ifDefined(params.id || undefined)}"
     value="${ifDefined(params.value || undefined)}"
     ?checked="${params.checked}"
+    ?disabled="${params.disabled}"
     support-text="${ifDefined(params.supportText || undefined)}"
     form="${ifDefined(params.form || undefined)}"
     ?custom-validation="${params.customValidation}"
