@@ -1,30 +1,11 @@
-<!doctype html>
-<html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test Web Components - vanilla-app</title>
-    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
-    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
-    <link rel="stylesheet" href="/src/style.css" />
-  </head>
-  <body>
-    <div id="root">
-      <div id="app-header"></div>
-      <h1>it-video</h1>
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-      <div style="width: 600px;">
-        <div class="mb-5">
-          <it-video src="https://vjs.zencdn.net/v/oceans.webm"></it-video>
-        </div>
-        <h2>Youtube</h2>
-        <div>
-          <it-video src="https://youtu.be/_0j7ZQ67KtY"></it-video>
-        </div>
-      </div>
-    </div>
-
+@Component({
+  selector: 'app-footer',
+  standalone: true,
+  imports: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
     <footer class="it-footer">
       <div class="it-footer-main">
         <div class="container">
@@ -185,9 +166,7 @@
         </div>
       </div>
     </footer>
-
-    <script type="module" src="/src/main.js"></script>
-
-
-  </body>
-</html>
+  `,
+  styles: [],
+})
+export class FooterComponent {}
