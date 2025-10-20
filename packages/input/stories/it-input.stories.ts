@@ -46,7 +46,6 @@ interface InputProps {
 const renderComponent = (params: any) =>
   html`<it-input
     id="${ifDefined(params.id || undefined)}"
-    label="${ifDefined(params.label || undefined)}"
     type="${ifDefined(params.type || undefined)}"
     name="${ifDefined(params.name || undefined)}"
     value="${ifDefined(params.value || undefined)}"
@@ -70,7 +69,7 @@ const renderComponent = (params: any) =>
     ?adaptive="${params.adaptive}"
     ?strength-meter="${params.strengthMeter}"
     ?suggestions="${params.suggestions}"
-    >${ifDefined(params.children || undefined)}</it-input
+    ><span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}</it-input
   >`;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories

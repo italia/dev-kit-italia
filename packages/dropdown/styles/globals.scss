@@ -2,4 +2,14 @@ it-dropdown {
   &[full-width] it-dropdown-item {
     display: inline-block;
   }
+
+  &:not(:defined) {
+    --it-host-display: inline-flex;
+    align-items: center;
+
+    it-dropdown-item:not(:defined),
+    [slot='header'] {
+      display: none;
+    }
+  }
 }

@@ -1,5 +1,6 @@
 <script setup>
 import { AppRoutes } from './routes';
+import Footer from './components/Footer.vue';
 </script>
 
 <template>
@@ -19,6 +20,7 @@ import { AppRoutes } from './routes';
     </nav>
   </div>
   <router-view></router-view>
+  <Footer />
 </template>
 
 <style>
