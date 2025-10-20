@@ -9,7 +9,11 @@
 }
 
 .sbdocs-wrapper {
-  justify-content: start!important;
+  justify-content: start !important;
+}
+
+.sbdocs.sbdocs-content {
+  max-width: unset;
 }
 
 .sbdocs,
@@ -24,11 +28,12 @@
   font-family: var(--bs-font-sans-serif); /* "Titillium Web", Geneva, Tahoma, sans-serif */
 }
 
-.sbdocs description, p.lead {
-  font-size: var(--bs-lead-font-size)!important; /* 1.25rem mobile, 1.5rem desktop */
-  font-weight: var(--bs-lead-font-weight)!important;
-  line-height: var(--bs-lead-line-height)!important;
-  margin-bottom: 2rem!important;
+.sbdocs description,
+p.lead {
+  font-size: var(--bs-lead-font-size) !important; /* 1.25rem mobile, 1.5rem desktop */
+  font-weight: var(--bs-lead-font-weight) !important;
+  line-height: var(--bs-lead-line-height) !important;
+  margin-bottom: 2rem !important;
 }
 
 /* Tipografia Bootstrap Italia usando variabili CSS native */
@@ -99,7 +104,7 @@
 .docblock-source.sb-unstyled {
   margin-top: 0;
   margin-bottom: 0;
-  
+
   pre.prismjs {
     font-size: 16px;
     line-height: 1.55;
@@ -115,7 +120,7 @@ div:has(.docblock-argstable) {
 }
 
 table.docblock-argstable {
-  min-width: 960px
+  min-width: 960px;
 }
 
 .flex {
@@ -130,7 +135,7 @@ table.docblock-argstable {
   ul {
     font-size: 0.85rem;
     line-height: 1.2;
-    
+
     li.toc-list-item {
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
@@ -168,3 +173,23 @@ table.docblock-argstable {
 // white-space: pre;
 // display: block;
 // }
+
+/* Colonna TOC (affiancata al contenuto) */
+#storybook-docs .sbdocs-wrapper > div:not(.sbdocs-content) {
+  width: 350px;
+  overflow-wrap: break-word;
+  word-break: break-word; /* fallback */
+  white-space: normal;
+
+  > div {
+    width: 100%;
+  }
+
+  a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 220px;
+  }
+}
