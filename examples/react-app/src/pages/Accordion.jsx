@@ -77,7 +77,7 @@ const Accordion = () => {
 
       {/* Header attivi */}
       <section>
-        <h2>Header attivi</h2>
+        <h2>Stato attivo</h2>
         <p>
           Aggiungere la proprietà <code>background-active</code> per ottenere header con sfondo di colore primario
           quando questi sono attivi e il contenuto relativo è visibile.
@@ -110,7 +110,7 @@ const Accordion = () => {
 
       {/* Hover degli Header */}
       <section>
-        <h2>Hover degli Header</h2>
+        <h2>Stato hover</h2>
         <p>
           Aggiungere la proprietà <code>background-hover</code> per ottenere header con sfondo di colore primario
           all'hover.
