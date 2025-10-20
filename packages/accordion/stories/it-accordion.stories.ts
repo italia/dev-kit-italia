@@ -325,7 +325,7 @@ Utilizzare questo approccio solo quando strettamente necessario: dal punto di vi
 };
 
 export const HeaderAttivi: Story = {
-  name: 'Header attivi',
+  name: 'Stato attivo',
   argTypes: {
     backgroundActive: { table: { disable: true } },
   },
@@ -366,7 +366,7 @@ Aggiungere la proprietà <code>background-active</code> a <code>it-accordion</co
 };
 
 export const HoverDegliHeader: Story = {
-  name: 'Hover degli Header',
+  name: 'Stato hover',
   argTypes: {
     backgroundHover: { table: { disable: true } },
   },
