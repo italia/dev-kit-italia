@@ -1,7 +1,7 @@
 ---
 '@italia/accordion': minor
 '@italia/globals': minor
-'@italia/design-web-components': patch
+'@italia/dev-kit-italia': patch
 ---
 
 Added accordion component
