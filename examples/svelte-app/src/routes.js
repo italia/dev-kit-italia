@@ -1,3 +1,4 @@
+import Accordion from './pages/Accordion.svelte';
 import Button from './pages/Button.svelte';
 import Chip from './pages/Chip.svelte';
 import Dropdown from './pages/Dropdown.svelte';
@@ -10,6 +11,7 @@ import Video from './pages/Video.svelte';
 import Rating from './pages/Rating.svelte';
 
 export const AppRoutes = [
+  { path: '/accordion', element: Accordion, title: 'Accordion' },
   { path: '/button', element: Button, title: 'Button' },
   { path: '/chip', element: Chip, title: 'Chip' },
   { path: '/dropdown', element: Dropdown, title: 'Dropdown' },

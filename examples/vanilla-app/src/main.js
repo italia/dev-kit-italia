@@ -2,6 +2,7 @@ import './style.css';
 
 import javascriptLogo from './javascript.svg';
 import viteLogo from '/vite.svg';
+
 // import '@italia/dev-kit-italia/fonts.css';
 // import '@italia/dev-kit-italia/styles.css';
 import '@italia/dev-kit-italia/elements.js';
@@ -28,12 +29,15 @@ registerTranslation(en);
 document.querySelector('#app-header').innerHTML = `
   <div class="app-header">
     <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
+      <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
     </a>
     <nav class="app-nav">
+      <a href="/src/accordion">
+        Accordion
+      </a>
       <a href="/src/button">
         Button
       </a>
