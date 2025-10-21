@@ -27,10 +27,10 @@
 
 .sbdocs-content description:not(.docs-story description):not(.docs-story * description),
 .sbdocs-content p.lead:not(.docs-story p.lead):not(.docs-story * p.lead) {
+  margin-bottom: 2rem !important;
   font-size: var(--bs-lead-font-size) !important; /* 1.25rem mobile, 1.5rem desktop */
   font-weight: var(--bs-lead-font-weight) !important;
   line-height: var(--bs-lead-line-height) !important;
-  margin-bottom: 2rem !important;
 }
 
 /* Tipografia Bootstrap Italia usando variabili CSS native */
@@ -137,7 +137,7 @@ table.docblock-argstable {
 }
 
 #anchor--componenti-icona--informazioni-utili .sbdocs-preview,
-#anchor--componenti-sticky--custom-events .sbdocs-preview {
+#anchor--componenti-sticky--custom-events .sbdocs-preview,
 #anchor--componenti-footer--placeholder .sbdocs-preview {
   display: none;
 }
@@ -161,10 +161,3 @@ table.docblock-argstable {
     font-size: 13px;
   }
 }
-
-/* Forza a capo prima del nome dell'attributo */
-// .token.attr-name::before {
-// content: '';
-// white-space: pre;
-// display: block;
-// }

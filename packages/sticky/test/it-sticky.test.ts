@@ -501,4 +501,167 @@ describe('ItSticky', () => {
       expect(offEventFired).to.be.true;
     });
   });
+
+  describe('Accessibility', () => {
+    it('should maintain focus on interactive elements when becoming sticky', async () => {
+      const el = await fixture<ItSticky>(html`
+        <it-sticky>
+          <nav role="navigation" aria-label="Test navigation">
+            <a href="#link1" id="first-link">Link 1</a>
+            <a href="#link2" id="second-link">Link 2</a>
+            <button id="test-button">Button</button>
+          </nav>
+        </it-sticky>
+      `);
+
+      const firstLink = el.querySelector('#first-link') as HTMLAnchorElement;
+      const secondLink = el.querySelector('#second-link') as HTMLAnchorElement;
+      const button = el.querySelector('#test-button') as HTMLButtonElement;
+
+      // Verifica che gli elementi siano focusabili
+      expect(firstLink).to.exist;
+      expect(secondLink).to.exist;
+      expect(button).to.exist;
+
+      // Focus sul primo link
+      firstLink.focus();
+      expect(document.activeElement).to.equal(firstLink);
+
+      // Simula scroll per rendere sticky
+      simulateScroll(100);
+      await waitForFrame();
+
+      // Il focus dovrebbe essere mantenuto
+      expect(document.activeElement).to.equal(firstLink);
+
+      // Prova con tab navigation
+      secondLink.focus();
+      expect(document.activeElement).to.equal(secondLink);
+
+      button.focus();
+      expect(document.activeElement).to.equal(button);
+    });
+
+    it('should maintain ARIA attributes when sticky', async () => {
+      const el = await fixture<ItSticky>(html`
+        <it-sticky>
+          <nav role="navigation" aria-label="Main menu">
+            <ul>
+              <li><a href="#1">Item 1</a></li>
+              <li><a href="#2">Item 2</a></li>
+            </ul>
+          </nav>
+        </it-sticky>
+      `);
+
+      const nav = el.querySelector('nav');
+      expect(nav?.getAttribute('role')).to.equal('navigation');
+      expect(nav?.getAttribute('aria-label')).to.equal('Main menu');
+
+      // Diventa sticky
+      simulateScroll(100);
+      await waitForFrame();
+
+      // Gli attributi ARIA dovrebbero rimanere invariati
+      expect(nav?.getAttribute('role')).to.equal('navigation');
+      expect(nav?.getAttribute('aria-label')).to.equal('Main menu');
+    });
+
+    it('should support keyboard navigation within sticky content', async () => {
+      const el = await fixture<ItSticky>(html`
+        <it-sticky>
+          <div role="banner">
+            <a href="#link1" id="link1">Link 1</a>
+            <a href="#link2" id="link2">Link 2</a>
+            <a href="#link3" id="link3">Link 3</a>
+          </div>
+        </it-sticky>
+      `);
+
+      const link1 = el.querySelector('#link1') as HTMLAnchorElement;
+      const link2 = el.querySelector('#link2') as HTMLAnchorElement;
+      const link3 = el.querySelector('#link3') as HTMLAnchorElement;
+
+      // Simula scroll per rendere sticky
+      simulateScroll(100);
+      await waitForFrame();
+
+      // Verifica che tutti i link siano ancora accessibili via tastiera
+      link1.focus();
+      expect(document.activeElement).to.equal(link1);
+
+      link2.focus();
+      expect(document.activeElement).to.equal(link2);
+
+      link3.focus();
+      expect(document.activeElement).to.equal(link3);
+    });
+
+    it('should not trap focus within sticky element', async () => {
+      const container = await fixture(html`
+        <div>
+          <button id="before">Before Sticky</button>
+          <it-sticky>
+            <nav>
+              <a href="#1" id="inside">Inside Sticky</a>
+            </nav>
+          </it-sticky>
+          <button id="after">After Sticky</button>
+        </div>
+      `);
+
+      const before = container.querySelector('#before') as HTMLButtonElement;
+      const inside = container.querySelector('#inside') as HTMLAnchorElement;
+      const after = container.querySelector('#after') as HTMLButtonElement;
+
+      // Simula scroll per rendere sticky
+      simulateScroll(100);
+      await waitForFrame();
+
+      // Il focus dovrebbe poter muoversi liberamente dentro e fuori dallo sticky
+      before.focus();
+      expect(document.activeElement).to.equal(before);
+
+      inside.focus();
+      expect(document.activeElement).to.equal(inside);
+
+      after.focus();
+      expect(document.activeElement).to.equal(after);
+    });
+
+    it('should maintain semantic structure for screen readers', async () => {
+      const el = await fixture<ItSticky>(html`
+        <it-sticky>
+          <header role="banner">
+            <h1>Site Title</h1>
+            <nav role="navigation" aria-label="Primary">
+              <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+              </ul>
+            </nav>
+          </header>
+        </it-sticky>
+      `);
+
+      const header = el.querySelector('header');
+      const h1 = el.querySelector('h1');
+      const nav = el.querySelector('nav');
+
+      // Verifica la struttura semantica prima di diventare sticky
+      expect(header?.getAttribute('role')).to.equal('banner');
+      expect(h1?.textContent).to.equal('Site Title');
+      expect(nav?.getAttribute('role')).to.equal('navigation');
+
+      // Diventa sticky
+      simulateScroll(100);
+      await waitForFrame();
+
+      // La struttura semantica deve rimanere intatta
+      expect(header?.getAttribute('role')).to.equal('banner');
+      expect(h1?.textContent).to.equal('Site Title');
+      expect(nav?.getAttribute('role')).to.equal('navigation');
+      expect(nav?.getAttribute('aria-label')).to.equal('Primary');
+    });
+  });
 });

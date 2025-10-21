@@ -1,7 +1,6 @@
 import './style.css';
 
 import javascriptLogo from './javascript.svg';
-import viteLogo from '/vite.svg';
 
 // import '@italia/dev-kit-italia/fonts.css';
 // import '@italia/dev-kit-italia/styles.css';
@@ -61,6 +60,9 @@ document.querySelector('#app-header').innerHTML = `
       </a>
       <a href="/src/video">
         Video
+      </a>
+      <a href="/src/sticky">
+        Sticky
       </a>
     </nav>
   </div>
