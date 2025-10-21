@@ -1,0 +1,50 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+
+@import 'bootstrap-italia/src/scss/base/reboot'; //per gli stili di ::before e ::after
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@import 'bootstrap-italia/src/scss/components/rating';
+
+:host {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  --bs-rating-icon-fill: var(--bs-icon-disabled);
+  --bs-rating-text: var(--bs-color-text-secondary);
+  --bs-rating-font-size: var(--bs-label-font-size-s);
+  --bs-rating-line-height: var(--bs-label-line-height);
+  --bs-rating-font-weight: var(--bs-font-weight-solid);
+}
+
+// .rating {
+//   padding: 0;
+//   border: none;
+//   margin: 0;
+
+//   legend {
+//     padding: 0;
+//     margin-bottom: 0.5rem;
+//   }
+
+//   &.rating-read-only {
+//     pointer-events: none;
+
+//     input[type='radio'] {
+//       display: none;
+//     }
+//   }
+// }
+div.it-radio-group {
+  display: flex;
+}
+
+::slotted([slot='label']) {
+  width: auto;
+  margin-left: var(--bs-spacing-xxs);
+  color: var(--bs-rating-text);
+  float: right;
+  font-size: var(--bs-rating-font-size);
+  font-weight: var(--bs-rating-font-weight);
+  line-height: var(--bs-rating-line-height);
+}

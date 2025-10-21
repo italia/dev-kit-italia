@@ -283,6 +283,9 @@ importers:
       '@italia/radio':
         specifier: workspace:^
         version: link:../radio
+      '@italia/rating':
+        specifier: workspace:^
+        version: link:../rating
       '@italia/section':
         specifier: workspace:^
         version: link:../section
@@ -693,6 +696,67 @@ importers:
       rollup-plugin-scss-lit:
         specifier: ^2.1.0
         version: 2.1.0(lit@3.3.0)(rollup@4.42.0)
+      tslib:
+        specifier: ^2.6.3
+        version: 2.8.1
+      typescript:
+        specifier: 'catalog:'
+        version: 5.8.3
+
+  packages/rating:
+    dependencies:
+      '@italia/globals':
+        specifier: workspace:^
+        version: link:../globals
+      '@italia/i18n':
+        specifier: workspace:^
+        version: link:../i18n
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
+      '@italia/radio':
+        specifier: workspace:^
+        version: link:../radio
+      bootstrap-italia:
+        specifier: 'catalog:'
+        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/ef2e00fa2572fe3fe5dd8ac10a5ed51158309b52
+      lit:
+        specifier: 'catalog:'
+        version: 3.3.0
+    devDependencies:
+      '@custom-elements-manifest/analyzer':
+        specifier: ^0.10.3
+        version: 0.10.4
+      '@italia/input':
+        specifier: workspace:^
+        version: link:../input
+      '@italia/test-config':
+        specifier: workspace:^
+        version: link:../test-config
+      '@italia/typescript-config':
+        specifier: workspace:^
+        version: link:../typescript-config
+      '@open-wc/testing':
+        specifier: ^4.0.0
+        version: 4.0.0
+      '@rollup/plugin-node-resolve':
+        specifier: ^15.3.0
+        version: 15.3.1(rollup@4.42.0)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.1
+        version: 12.1.2(rollup@4.42.0)(tslib@2.8.1)(typescript@5.8.3)
+      '@web/test-runner':
+        specifier: ^0.19.0
+        version: 0.19.0
+      rollup:
+        specifier: ^4.42.0
+        version: 4.42.0
+      rollup-plugin-scss-lit:
+        specifier: ^2.1.0
+        version: 2.1.0(lit@3.3.0)(rollup@4.42.0)
+      sass:
+        specifier: 'catalog:'
+        version: 1.89.0
       tslib:
         specifier: ^2.6.3
         version: 2.8.1
@@ -1793,6 +1857,11 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
+  '@puppeteer/browsers@2.6.1':
+    resolution: {integrity: sha512-aBSREisdsGH890S2rQqK82qmQYU3uFpSH8wcZWHgHzl3LfzsxAKbLNiAG9mO8v1Y0UICBeClICxPJvyr0rcuxg==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   '@rollup/plugin-commonjs@28.0.6':
     resolution: {integrity: sha512-XSQB1K7FUU5QP+3lOQmVCE3I0FcbbNvmNT4VJSj93iUjayaARrTQeoRdiYQoftAJBLrR9t2agwAd3ekaTgHNlw==}
     engines: {node: '>=16.0.0 || 14 >= 14.17'}
@@ -2547,6 +2616,10 @@ packages:
     resolution: {integrity: sha512-Edc6Y49aVB6k18S5IOj9OCX3rEf8F3jptIu0p95+imqxmcutFEh1GNmlAk2bQGnXS0U6uVY7Xbf61fiaXUQqhg==}
     engines: {node: '>=18.0.0'}
 
+  '@web/test-runner-chrome@0.17.0':
+    resolution: {integrity: sha512-Il5N9z41NKWCrQM1TVgRaDWWYoJtG5Ha4fG+cN1MWL2OlzBS4WoOb4lFV3EylZ7+W3twZOFr1zy2Rx61yDYd/A==}
+    engines: {node: '>=18.0.0'}
+
   '@web/test-runner-commands@0.9.0':
     resolution: {integrity: sha512-zeLI6QdH0jzzJMDV5O42Pd8WLJtYqovgdt0JdytgHc0d1EpzXDsc7NTCJSImboc2NcayIsWAvvGGeRF69SMMYg==}
     engines: {node: '>=18.0.0'}
@@ -2581,6 +2654,11 @@ packages:
 
   '@web/test-runner@0.18.3':
     resolution: {integrity: sha512-QkVK8Qguw3Zhyu8SYR7F4VdcjyXBeJNr8W8L++s4zO/Ok7DR/Wu7+rLswn3H7OH3xYoCHRmwteehcFejefz6ew==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
+
+  '@web/test-runner@0.19.0':
+    resolution: {integrity: sha512-qLUupi88OK1Kl52cWPD/2JewUCRUxYsZ1V1DyLd05P7u09zCdrUYrtkB/cViWyxlBe/TOvqkSNpcTv6zLJ9GoA==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -2924,6 +3002,11 @@ packages:
     engines: {node: '>=12.13.0'}
     hasBin: true
 
+  chromium-bidi@0.11.0:
+    resolution: {integrity: sha512-6CJWHkNRoyZyjV9Rwv2lYONZf1Xm0IuDyNq97nwSsxxP3wf5Bwy15K5rOvVKMtJ127jJBmxFUanSAOjgFRxgrA==}
+    peerDependencies:
+      devtools-protocol: '*'
+
   chromium-bidi@0.6.3:
     resolution: {integrity: sha512-qXlsCmpCZJAnoTYI83Iu6EdYQpMYdVkCfq08KDh2pmlVqK5t5IA9mGs4/LwCwp4fqisSOMXZxP3HIh8w8aRn0A==}
     peerDependencies:
@@ -3244,6 +3327,9 @@ packages:
 
   devtools-protocol@0.0.1312386:
     resolution: {integrity: sha512-DPnhUXvmvKT2dFA/j7B+riVLUt9Q6RKJlcppojL5CoRywJJKLDYnRlw0gTFKfgDPHP5E04UoB71SxoJlVZy8FA==}
+
+  devtools-protocol@0.0.1367902:
+    resolution: {integrity: sha512-XxtPuC3PGakY6PD7dG66/o8KwJ/LkH2/EKe19Dcw58w53dv4/vSQEkn/SzuyhHE2q4zPgCkxQBxus3VV4ql+Pg==}
 
   diff@5.2.0:
     resolution: {integrity: sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==}
@@ -5168,6 +5254,10 @@ packages:
     resolution: {integrity: sha512-cHArnywCiAAVXa3t4GGL2vttNxh7GqXtIYGym99egkNJ3oG//wL9LkvO4WE8W1TJe95t1F1ocu9X4xWaGsOKOA==}
     engines: {node: '>=18'}
 
+  puppeteer-core@23.11.1:
+    resolution: {integrity: sha512-3HZ2/7hdDKZvZQ7dhhITOUg4/wOrDRjyK2ZBllRB0ZCOi9u0cwq1ACHDjBB+nX+7+kltHjQvBRdeY7+W0T+7Gg==}
+    engines: {node: '>=18'}
+
   qs@6.14.0:
     resolution: {integrity: sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==}
     engines: {node: '>=0.6'}
@@ -5780,6 +5870,9 @@ packages:
   typed-array-length@1.0.7:
     resolution: {integrity: sha512-3KS2b+kL7fsuk/eJZ7EQdnEmQoaho/r6KUef7hxvltNA5DR8NAUM+8wJMbJyZ4G9/7i3v5zPBIMN5aybAh2/Jg==}
     engines: {node: '>= 0.4'}
+
+  typed-query-selector@2.12.0:
+    resolution: {integrity: sha512-SbklCd1F0EiZOyPiW192rrHZzZ5sBijB6xM+cpmrwDqObvdtunOHHIk9fCGsoK5JVIYXoyEp4iEdE3upFH3PAg==}
 
   typescript@5.4.5:
     resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
@@ -6916,6 +7009,20 @@ snapshots:
       - bare-buffer
       - supports-color
 
+  '@puppeteer/browsers@2.6.1':
+    dependencies:
+      debug: 4.4.1
+      extract-zip: 2.0.1
+      progress: 2.0.3
+      proxy-agent: 6.5.0
+      semver: 7.7.2
+      tar-fs: 3.0.8
+      unbzip2-stream: 1.4.3
+      yargs: 17.7.2
+    transitivePeerDependencies:
+      - bare-buffer
+      - supports-color
+
   '@rollup/plugin-commonjs@28.0.6(rollup@4.42.0)':
     dependencies:
       '@rollup/pluginutils': 5.1.4(rollup@4.42.0)
@@ -7823,6 +7930,19 @@ snapshots:
       - supports-color
       - utf-8-validate
 
+  '@web/test-runner-chrome@0.17.0':
+    dependencies:
+      '@web/test-runner-core': 0.13.4
+      '@web/test-runner-coverage-v8': 0.8.0
+      async-mutex: 0.4.0
+      chrome-launcher: 0.15.2
+      puppeteer-core: 23.11.1
+    transitivePeerDependencies:
+      - bare-buffer
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+
   '@web/test-runner-commands@0.9.0':
     dependencies:
       '@web/test-runner-core': 0.13.4
@@ -7960,6 +8080,30 @@ snapshots:
       '@web/config-loader': 0.3.3
       '@web/dev-server': 0.4.6
       '@web/test-runner-chrome': 0.16.0
+      '@web/test-runner-commands': 0.9.0
+      '@web/test-runner-core': 0.13.4
+      '@web/test-runner-mocha': 0.9.0
+      camelcase: 6.3.0
+      command-line-args: 5.1.2
+      command-line-usage: 7.0.3
+      convert-source-map: 2.0.0
+      diff: 5.2.0
+      globby: 11.1.0
+      nanocolors: 0.2.13
+      portfinder: 1.0.37
+      source-map: 0.7.4
+    transitivePeerDependencies:
+      - bare-buffer
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+
+  '@web/test-runner@0.19.0':
+    dependencies:
+      '@web/browser-logs': 0.4.1
+      '@web/config-loader': 0.3.3
+      '@web/dev-server': 0.4.6
+      '@web/test-runner-chrome': 0.17.0
       '@web/test-runner-commands': 0.9.0
       '@web/test-runner-core': 0.13.4
       '@web/test-runner-mocha': 0.9.0
@@ -8333,6 +8477,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  chromium-bidi@0.11.0(devtools-protocol@0.0.1367902):
+    dependencies:
+      devtools-protocol: 0.0.1367902
+      mitt: 3.0.1
+      zod: 3.23.8
+
   chromium-bidi@0.6.3(devtools-protocol@0.0.1312386):
     dependencies:
       devtools-protocol: 0.0.1312386
@@ -8630,6 +8780,8 @@ snapshots:
     optional: true
 
   devtools-protocol@0.0.1312386: {}
+
+  devtools-protocol@0.0.1367902: {}
 
   diff@5.2.0: {}
 
@@ -10694,6 +10846,20 @@ snapshots:
       - supports-color
       - utf-8-validate
 
+  puppeteer-core@23.11.1:
+    dependencies:
+      '@puppeteer/browsers': 2.6.1
+      chromium-bidi: 0.11.0(devtools-protocol@0.0.1367902)
+      debug: 4.4.1
+      devtools-protocol: 0.0.1367902
+      typed-query-selector: 2.12.0
+      ws: 8.18.2
+    transitivePeerDependencies:
+      - bare-buffer
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+
   qs@6.14.0:
     dependencies:
       side-channel: 1.1.0
@@ -11422,6 +11588,8 @@ snapshots:
       is-typed-array: 1.1.15
       possible-typed-array-names: 1.1.0
       reflect.getprototypeof: 1.0.10
+
+  typed-query-selector@2.12.0: {}
 
   typescript@5.4.5: {}
 

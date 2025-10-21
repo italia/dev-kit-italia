@@ -217,9 +217,10 @@ export class ItRadio extends BaseComponent {
   /**
    * Render internal structure (like Spectrum)
    * Just visual elements, no role/aria/events here (they're on the host)
+   * Protected to allow subclasses (like it-rating-item) to override
    */
   // eslint-disable-next-line class-methods-use-this
-  private _renderInput() {
+  protected _renderInput() {
     // Render visual elements like Spectrum does
     // #input = container, #button = visual circle
     const inputRender = html`
