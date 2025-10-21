@@ -55,6 +55,9 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/radio-examples.html">
         Radio
       </a>
+      <a href="/src/rating.html">
+        Rating
+      </a>
       <a href="/src/section">
         Section
       </a>

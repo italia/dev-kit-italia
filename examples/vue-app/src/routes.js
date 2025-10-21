@@ -7,6 +7,7 @@ import Form from './components/Form.vue';
 import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
 import Radio from './components/Radio.vue';
+import Rating from './components/Rating.vue';
 import Section from './components/Section.vue';
 import Video from './components/Video.vue';
 
@@ -18,6 +19,7 @@ const routes = [
   { path: '/icon', name: 'Icon', component: Icon },
   { path: '/input', name: 'Input', component: Input },
   { path: '/radio', name: 'Radio', component: Radio },
+  { path: '/rating', name: 'Rating', component: Rating },
   { path: '/section', name: 'Section', component: Section },
   { path: '/video', name: 'Video', component: Video },
 ];

@@ -26,6 +26,7 @@
       <a href="#/radio">Radio</a>
       <a href="#/section">Section</a>
       <a href="#/video">Video</a>
+      <a href="#/rating">Rating</a>
     </nav>
   </div>
   <Router />

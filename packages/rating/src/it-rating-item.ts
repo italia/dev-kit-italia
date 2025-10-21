@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
 import { ItRadio } from '@italia/radio';
 import '@italia/icon';
 
@@ -17,17 +17,14 @@ export class ItRatingItem extends ItRadio {
   static override styles = styles;
 
   /**
-   * The icon name to use for the rating item
-   * @default 'it-star-full'
-   */
-  @property({ type: String, reflect: true })
-  icon = 'it-star-full';
-
-  /**
    * Override group getter to find parent it-rating instead of it-radio-group
    */
   override get group() {
     return this.closest('it-rating');
+  }
+
+  get icon(): string {
+    return this.group?.icon || 'it-star-full';
   }
 
   /**

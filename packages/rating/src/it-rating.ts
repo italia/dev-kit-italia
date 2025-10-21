@@ -32,14 +32,21 @@ export class ItRating extends ItRadioGroup {
   /**
    * Maximum number of stars (to calculate "X out of Y")
    */
-  @property({ type: Number, attribute: 'max-stars' })
-  maxStars = 5;
+  @property({ type: Number, attribute: 'max-elements', reflect: true })
+  maxElements = 5;
 
   /**
    * Whether the rating is read-only (non-interactive)
    */
   @property({ type: Boolean, reflect: true, attribute: 'read-only' })
   readOnly = false;
+
+  /**
+   * The icon name to use for the rating item
+   * @default 'it-star-full'
+   */
+  @property({ type: String, reflect: true })
+  icon = 'it-star-full';
 
   /**
    * Sync read-only state to all rating items
@@ -68,7 +75,7 @@ export class ItRating extends ItRadioGroup {
     const termKey = currentValue === 1 ? 'ratingLabelSingle' : 'ratingLabelPlural';
 
     // Pass parameters directly to the translation function
-    return this.localize.term(termKey, currentValue, this.maxStars);
+    return this.localize.term(termKey, currentValue, this.maxElements);
   }
 
   /**
@@ -95,9 +102,12 @@ export class ItRating extends ItRadioGroup {
       this._updateRatingItemsDisplay();
       this._ensureAnnouncement();
     }
+    if (changedProperties.has('icon')) {
+      this._updateRatingItemsDisplay();
+    }
 
-    // When maxStars changes, update the announcement
-    if (changedProperties.has('maxStars')) {
+    // When maxElements changes, update the announcement
+    if (changedProperties.has('maxElements')) {
       this._ensureAnnouncement();
     }
   }

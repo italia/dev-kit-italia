@@ -53,7 +53,7 @@ describe('<it-rating>', () => {
 
     it('should render correct number of stars', async () => {
       const el = await fixture<ItRating>(html`
-        <it-rating name="test" max-stars="7"> ${createRatingItems('test', 7)} </it-rating>
+        <it-rating name="test" max-elements="7"> ${createRatingItems('test', 7)} </it-rating>
       `);
       await el.updateComplete;
       const items = el.querySelectorAll<ItRatingItem>('it-rating-item');

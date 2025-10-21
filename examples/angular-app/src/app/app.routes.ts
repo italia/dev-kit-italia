@@ -35,6 +35,10 @@ export const routes: Routes = [
       import('./pages/radio-examples.component').then((c) => c.RadioExamplesComponent),
   },
   {
+    path: 'rating',
+    loadComponent: () => import('./pages/rating.component').then((c) => c.RatingComponent),
+  },
+  {
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
   },

@@ -719,7 +719,7 @@ importers:
         version: link:../radio
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/ef2e00fa2572fe3fe5dd8ac10a5ed51158309b52
+        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/ec89f232677d2bd48ad45b021e91445c7dc075b9
       lit:
         specifier: 'catalog:'
         version: 3.3.0
