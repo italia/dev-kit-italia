@@ -389,8 +389,9 @@ export class FormControlController implements ReactiveController {
   }
 
   /** Resets the form, restoring all the control to their default value */
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, class-methods-use-this
-  reset(submitter?: HTMLInputElement | any) {}
+  reset(submitter?: HTMLInputElement | any) {
+    this.doAction('reset', submitter);
+  }
 
   /** Submits the form, triggering validation and form data injection. */
   submit(submitter?: HTMLInputElement | any) {
