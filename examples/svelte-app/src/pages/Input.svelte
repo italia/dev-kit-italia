@@ -16,6 +16,38 @@
 <it-input id="exampleInputText" label="Campo di testo" type="text" name="testo"></it-input>
 <it-input id="exampleInputEmail" label="Campo email" type="email" name="email"></it-input>
 <it-input id="exampleInputNumber" label="Campo numerico" type="number" name="number"></it-input>
+
+<it-input
+  id="exampleInputNumberMinMaxStep"
+  label="Campo numerico min, max, step"
+  type="number"
+  name="numberminmaxstep"
+  min="10"
+  max="100"
+  step="10"
+></it-input>
+<it-input
+  id="exampleInputNumberCurrency"
+  label="Campo numerico currency"
+  type="number"
+  name="numbercurrency"
+  value="3.50"
+  step="0.01"
+>
+  <span slot="prepend" class="fw-semibold"> € </span>
+</it-input>
+<it-input id="exampleInputNumberPerc" label="Campo numerico percentage" type="number" name="numberperc" value="50">
+  <span slot="prepend" class="fw-semibold"> % </span>
+</it-input>
+<it-input
+  id="exampleInputNumberAdaptive"
+  label="Campo numerico adattivo"
+  type="number"
+  name="numberadaptive"
+  value="99999"
+  adaptive
+></it-input>
+
 <it-input id="exampleInputTel" label="Campo telefonico" type="tel" name="telefono"></it-input>
 <it-input id="exampleInputTime" label="Campo orario" type="time" name="orario"></it-input>
 <it-input
