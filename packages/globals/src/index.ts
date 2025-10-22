@@ -12,6 +12,11 @@ export {
   BaseComponentType,
   BaseLocalizedComponent,
 } from './base-component/base-component.js';
+export {
+  AriaKeyboardAccordionController,
+  type AriaKeyboardAccordionConfig,
+} from './controllers/aria-keyboard-accordion-controller.js';
+export { CollapseAnimationController } from './controllers/collapse-controller.js';
 
 export { FormControl } from './form/form-control.js';
 export { formCollections, FormControlControllerOptions, FormControlController } from './form/form-controller.js';

@@ -44,7 +44,7 @@ const preview = {
           'Welcome',
           'PersonalizzazioneDegliStili',
           'Componenti',
-          ['Button', 'Dropdown', 'Icon', 'Video', 'Form'],
+          ['Accordion', 'Button', 'Chip', 'Dropdown', 'Form', 'Icon', 'Section', 'Video'],
         ],
       },
     },
