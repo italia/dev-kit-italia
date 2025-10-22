@@ -38,6 +38,7 @@ const Input = () => {
         type="number"
         name="numbercurrency"
         value="3.50"
+        step="0.01"
       >
         <span slot="prepend" class="fw-semibold">
           €

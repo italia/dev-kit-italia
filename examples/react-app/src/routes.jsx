@@ -1,3 +1,4 @@
+import Accordion from './pages/Accordion';
 import Button from './pages/Button';
 import Checkbox from './pages/Checkbox';
 import Chip from './pages/Chip';
@@ -9,6 +10,7 @@ import Section from './pages/Section';
 import Video from './pages/Video';
 
 export const AppRoutes = [
+  { path: '/accordion', element: <Accordion />, title: 'Accordion' },
   { path: '/button', element: <Button />, title: 'Button' },
   { path: '/checkbox', element: <Checkbox />, title: 'Checkbox' },
   { path: '/chip', element: <Chip />, title: 'Chip' },

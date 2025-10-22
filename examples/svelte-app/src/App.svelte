@@ -1,5 +1,6 @@
 <script>
   import Router from './Router.svelte';
+  import Footer from './components/Footer.svelte';
   import svelteLogo from './assets/svelte.svg';
   import viteLogo from '/vite.svg';
 </script>
@@ -16,6 +17,7 @@
     </div>
     <div>Vite + Svelte</div>
     <nav class="app-nav">
+      <a href="#/accordion">Accordion</a>
       <a href="#/button">Button</a>
       <a href="#/checkbox">Checkbox</a>
       <a href="#/chip">Chip</a>
@@ -28,6 +30,7 @@
     </nav>
   </div>
   <Router />
+  <Footer />
 </main>
 
 <style>

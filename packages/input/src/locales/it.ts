@@ -21,6 +21,8 @@ const translation: DefaultTranslation = {
   passwordSuggestionFollowedPlural: 'suggerimenti seguiti',
   passwordSuggestionOf: 'di',
   passwordSuggestionMetLabel: 'Soddisfatto:',
+  increaseValue: 'Aumenta il valore',
+  decreaseValue: 'Diminuisci il valore',
 };
 
 export default translation;

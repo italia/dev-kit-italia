@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+import Accordion from './components/Accordion.vue';
 import Button from './components/Button.vue';
 import Chip from './components/Chip.vue';
 import Dropdown from './components/Dropdown.vue';
@@ -11,6 +12,7 @@ import Video from './components/Video.vue';
 import Checkbox from './components/Checkbox.vue';
 
 const routes = [
+  { path: '/accordion', name: 'Accordion', component: Accordion },
   { path: '/button', name: 'Button', component: Button },
   { path: '/checkbox', name: 'Checkbox', component: Checkbox },
   { path: '/chip', name: 'Chip', component: Chip },

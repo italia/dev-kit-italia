@@ -4,6 +4,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import '@italia/video';
 import '@italia/button';
+import '@italia/accordion';
+import '@italia/icon';
 import itLang from '../src/locales/videojs/it.js';
 import i18nIT from '../src/locales/it.js';
 import type { ConsentOptions, Track, VideoJSTranslations } from '../src/types.ts';
@@ -202,33 +204,15 @@ export const ConTrascrizione: Story = {
     html` ${renderComponent({
       ...params,
       translations: undefined,
-      slot: html`<div class="vjs-transcription accordion">
-        <div class="accordion-item">
-          <h2 class="accordion-header " id="transcription-head4">
-            <button
-              class="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#transcription4"
-              aria-expanded="true"
-              aria-controls="transcription4"
-            >
-              Trascrizione
-            </button>
-          </h2>
-          <div
-            id="transcription4"
-            class="accordion-collapse collapse"
-            role="region"
-            aria-labelledby="transcription-head4"
-          >
-            <div class="accordion-body">
-              Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
-              facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
-            </div>
+      slot: html`<it-accordion class="vjs-transcription">
+        <it-accordion-item>
+          <span slot="heading" id="transcription-head4">Trascrizione</span>
+          <div slot="content">
+            Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
+            facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
           </div>
-        </div>
-      </div>`,
+        </it-accordion-item>
+      </it-accordion>`,
     })}`,
 };
 

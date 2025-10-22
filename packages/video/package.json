@@ -42,6 +42,7 @@
     "test": "wtr --coverage --node-resolve --config web-test-runner.config.js"
   },
   "dependencies": {
+    "@italia/accordion": "workspace:^",
     "@italia/button": "workspace:^",
     "@italia/icon": "workspace:^",
     "@italia/checkbox": "workspace:^",
