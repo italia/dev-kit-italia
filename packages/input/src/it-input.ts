@@ -143,6 +143,10 @@ export class ItInput extends FormControl {
 
   override _handleInput(e: Event) {
     this.value = this.inputElement.value;
+    if (this.value === '00') {
+      this.value = '0';
+      this.inputElement.value = '0';
+    }
 
     if (this.passwordStrengthMeter) {
       this._checkPasswordStrength(this.inputElement.value);
@@ -204,6 +208,35 @@ export class ItInput extends FormControl {
       text += ` ${completedCount} ${this.$t('passwordSuggestionOf')} ${totalCount} ${suggestionOfText}.`;
     }
     this._strengthInfos = text;
+  }
+
+  private static _cleanFloat(num: number) {
+    return parseFloat(num.toPrecision(15));
+  }
+
+  private _inputNumberIncDec(v: number) {
+    const step = typeof this.step === 'number' ? this.step : Number(this.step) || 1;
+
+    const value = typeof this.value === 'number' ? this.value : Number(this.value) || 0;
+    const min = typeof this.min === 'number' ? this.min : Number(this.min);
+    const max = typeof this.max === 'number' ? this.max : Number(this.max);
+
+    const _v = v * step;
+
+    const newValue = ItInput._cleanFloat(value + _v);
+
+    if (newValue > max || newValue < min) {
+      // non fare nulla
+    } else {
+      const _value = newValue.toString();
+      this.value = _value;
+      this.inputElement.dispatchEvent(new Event('blur', { bubbles: true }));
+      this.inputElement.dispatchEvent(new Event('change', { bubbles: true }));
+      const liveRegion = this.shadowRoot?.querySelector(`#${this._id}-live-region`);
+      if (liveRegion) {
+        liveRegion.textContent = `${_value}`;
+      }
+    }
   }
 
   private _renderTogglePasswordButton() {
@@ -377,18 +410,6 @@ export class ItInput extends FormControl {
       `;
     }
 
-    // inputRender = html`
-    //   ${inputRender}
-    //   <div
-    //     role="alert"
-    //     id="invalid-feedback-${this._id}"
-    //     class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
-    //     ?hidden=${!(validityMessage?.length > 0)}
-    //   >
-    //     <span class="visually-hidden">${this.label}: </span>${validityMessage}
-    //   </div>
-    // `;
-
     return inputRender;
   }
 
@@ -432,6 +453,8 @@ export class ItInput extends FormControl {
                   'input-group ',
                   this.type === 'number' ? 'input-number' : '',
                   this.type === 'number' && this.adaptive ? 'input-number-adaptive' : '',
+                  this.disabled ? 'disabled' : '',
+                  this.readonly ? 'readonly' : '',
                 )}"
               >
                 ${when(
@@ -442,6 +465,27 @@ export class ItInput extends FormControl {
                     ></span>`,
                 )}
                 ${this._renderInput(supportTextId, invalid, validityMessage)}
+                ${when(
+                  this.type === 'number',
+                  () =>
+                    html`<span class="input-group-text align-buttons flex-column">
+                      <button
+                        class="input-number-add"
+                        @click=${() => this._inputNumberIncDec(+1)}
+                        ?disabled=${this.disabled || this.readonly}
+                      >
+                        <span class="visually-hidden">${this.$t('increaseValue')}</span>
+                      </button>
+                      <button
+                        class="input-number-sub"
+                        @click=${() => this._inputNumberIncDec(-1)}
+                        ?disabled=${this.disabled || this.readonly}
+                      >
+                        <span class="visually-hidden">${this.$t('decreaseValue')}</span>
+                      </button>
+                      <div aria-live="polite" class="visually-hidden" id="${this._id}-live-region"></div>
+                    </span>`,
+                )}
                 ${when(
                   this._slotAppend,
                   () =>
