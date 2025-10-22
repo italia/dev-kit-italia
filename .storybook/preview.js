@@ -1,4 +1,4 @@
-/** @type { import('@storybook/web-components').Preview } */
+/** @type { import('@storybook/web-components-vite').Preview } */
 import './main.scss';
 import './storybook-styles.scss';
 import prettier from 'prettier-v2';
