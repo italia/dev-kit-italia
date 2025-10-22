@@ -10,13 +10,10 @@
 
 .sbdocs-wrapper {
   justify-content: start !important;
-<<<<<<< HEAD
 }
 
 .sbdocs.sbdocs-content {
-  max-width: unset;
-=======
->>>>>>> main
+  margin: 0 auto;
 }
 
 /* Applica stili SOLO alla documentazione, MAI alle preview */
@@ -32,13 +29,8 @@
   font-family: var(--bs-font-sans-serif); /* "Titillium Web", Geneva, Tahoma, sans-serif */
 }
 
-<<<<<<< HEAD
-.sbdocs description,
-p.lead {
-=======
 .sbdocs-content description:not(.docs-story description):not(.docs-story * description),
 .sbdocs-content p.lead:not(.docs-story p.lead):not(.docs-story * p.lead) {
->>>>>>> main
   font-size: var(--bs-lead-font-size) !important; /* 1.25rem mobile, 1.5rem desktop */
   font-weight: var(--bs-lead-font-weight) !important;
   line-height: var(--bs-lead-line-height) !important;
