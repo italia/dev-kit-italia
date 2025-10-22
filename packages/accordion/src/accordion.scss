@@ -1,0 +1,110 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
+@import 'bootstrap-italia/src/scss/components/accordion';
+@import 'bootstrap-italia/src/scss/components/type';
+
+:host {
+  --bs-accordion-btn-icon-width: 1.5rem;
+}
+
+:host([left-icon]) {
+  --bs-accordion-btn-icon-width: 1.25rem;
+}
+
+:host([background-active]) .accordion-header .accordion-button:not(.collapsed) {
+  background-color: var(--bs-color-background-primary);
+  color: var(--bs-color-text-inverse);
+}
+
+:host([background-hover]) .accordion-header .accordion-button:hover {
+  background-color: var(--bs-color-background-primary);
+  color: var(--bs-color-text-inverse);
+
+  it-icon::part(icon) {
+    --bs-icon-primary: var(--bs-color-text-inverse);
+  }
+}
+
+:host(:not(:first-of-type)) .accordion-item {
+  border-top: 0;
+}
+
+:host([left-icon]) .accordion-header .accordion-button {
+  justify-content: flex-start;
+}
+
+it-accordion-item {
+  display: block;
+  width: 100%;
+}
+
+it-icon::part(icon) {
+  width: var(--bs-accordion-btn-icon-width);
+  height: var(--bs-accordion-btn-icon-width);
+  fill: currentColor;
+}
+
+.accordion-button {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0;
+  color: var(--accordion-button-color, inherit);
+  font-family: var(--bs-font-sans);
+  text-align: left;
+  --bs-accordion-inner-border-radius: 0;
+
+  &::after {
+    content: none !important;
+  }
+
+  &:focus-visible {
+    z-index: 3;
+    border-color: #000 !important;
+    box-shadow: var(--bs-accordion-btn-focus-box-shadow);
+    box-shadow:
+      0 0 0 2px var(--bs-color-border-inverse),
+      0 0 0 5px var(--bs-color-outline-focus) !important;
+    outline: 3px solid rgba(0, 0, 0, 0) !important;
+    outline-offset: 3px !important;
+  }
+
+  span {
+    flex: 1;
+  }
+}
+
+// Stili per l'icona dell'accordion
+.accordion-icon {
+  flex-shrink: 0;
+  margin-left: auto;
+  transform: scaleY(-1); // Freccia verso il basso di default
+  transition: transform 0.3s ease;
+
+  &.expanded {
+    transform: scaleY(1); // Freccia verso l'alto quando è espanso
+  }
+}
+
+// Stili per l'icona a sinistra (Bootstrap Italia style)
+.accordion-icon-left {
+  flex-shrink: 0;
+  margin-right: var(--bs-spacing-s, 0.5rem);
+  // Non ha trasformazioni - l'icona cambia da plus a minus direttamente
+}
+
+// Quando l'accordion ha left-icon attivo, nascondi l'icona normale
+.accordion.accordion-left-icon .accordion-icon {
+  display: none;
+}
+
+.accordion-header {
+  display: flex;
+
+  .accordion-button {
+    background-color: unset;
+  }
+}

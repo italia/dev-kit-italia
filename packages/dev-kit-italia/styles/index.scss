@@ -27,6 +27,7 @@
 @import 'bootstrap-italia/src/scss/components/dropdown';
 
 /*dev-kit-italia global styles*/
+@import '@italia/accordion/styles/globals';
 @import '@italia/button/styles/globals';
 @import '@italia/dropdown/styles/globals';
 @import '@italia/icon/styles/globals';
@@ -34,3 +35,16 @@
 @import '@italia/section/styles/globals';
 @import '@italia/video/styles/globals';
 @import '@italia/chip/styles/globals';
+// Footer
+@import 'bootstrap-italia/src/scss/components/footer';
+@import 'bootstrap-italia/src/scss/components/list';
+@import 'bootstrap-italia/src/scss/components/headercenter';
+
+.it-footer-main .it-brand-wrapper ::part(icon) {
+  width: var(--bs-footer-brand-icon-size);
+  height: var(--bs-footer-brand-icon-size);
+  flex-shrink: 0;
+  margin-right: var(--bs-spacing-xs);
+  fill: var(--bs-footer-brand-icon-color);
+}
+// End footer
