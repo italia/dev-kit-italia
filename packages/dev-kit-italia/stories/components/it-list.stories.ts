@@ -106,7 +106,7 @@ export const ListaConAvatar: Story = {
               <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Anna Barbieri" />
             </div>
             <div class="it-right-zone">
-              <span class="text">Anna Barbieri Link</span>
+              <span class="text">Link</span>
             </div>
           </a>
         </li>
