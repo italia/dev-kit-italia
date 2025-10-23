@@ -230,7 +230,7 @@ export const ListaConImmagine: Story = {
     docs: {
       description: {
         story: `
-L'elemento \`.it-thumb\` con all'interno la relativa immagine, precede l'elemento \`.it-right-zone\` che contiene il testo. Ha una dimensione massima di \`5rem\` che corrispondono a \`80px\`. La proporzione dell'immagine può essere modificata utilizzando le classi specifiche per le proporzioni.
+L'elemento \`.it-thumb\` con all'interno la relativa immagine, precede l'elemento \`.it-right-zone\` che contiene il testo. Ha una dimensione massima di \`5rem\` che corrispondono a \`80px\`. La proporzione dell'immagine può essere modificata utilizzando le classi specifiche per le [proporzioni](/docs/organizzare-gli-spazi-proporzioni).
 `,
       },
     },
