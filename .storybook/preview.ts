@@ -67,8 +67,7 @@ export const decorators = [
     // Questo codice funziona anche senza React
     setTimeout(() => {
       if (typeof document !== 'undefined' && document.documentElement) {
-        // document.documentElement.lang = 'it'; // Cambia "it" con la lingua desiderata
-        document.getElementById('storybook-explorer-searchfield')?.setAttribute('placeholder', 'Cerca componenti');
+        document.documentElement.lang = 'it'; // Cambia "it" con la lingua desiderata
       }
     }, 0); // Lascia tempo all'iframe di caricare
     return Story();
