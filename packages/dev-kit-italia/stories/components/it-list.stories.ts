@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import '@italia/icon';
 import '@italia/button';
@@ -127,6 +127,11 @@ export const ListaConAvatar: Story = {
     docs: {
       description: {
         story: `
+<div class="alert alert-warning" role="alert">
+  <it-icon name="it-warning-circle" color="warning" class="me-2"></it-icon>
+  <span class="font-sans-serif">Questo caso d'uso è in fase di sviluppo, sarà completo non appena sarà pronto il componente \`it-avatar\`.</span>
+</div>
+
 L'elemento \`.avatar\` precede l'elemento \`.it-right-zone\` che contiene il testo.
 `,
       },
@@ -455,6 +460,11 @@ export const ListaConMetadata: Story = {
     docs: {
       description: {
         story: `
+<div class="alert alert-warning" role="alert">
+  <it-icon name="it-warning-circle" color="warning" class="me-2"></it-icon>
+  <span class="font-sans-serif">Questo caso d'uso è in fase di sviluppo, sarà completo non appena sarà pronto il componente \`it-avatar\`.</span>
+</div>
+
 Ad ogni lista si può aggiungere un campo testuale metadata, come nell'esempio seguente. L'elemento \`.metadata\`, segue l'elemento \`.text\`.
 `,
       },
@@ -1008,6 +1018,11 @@ export const LinkListToggle: Story = {
     docs: {
       description: {
         story: `
+<div class="alert alert-warning" role="alert">
+  <it-icon name="it-warning-circle" color="warning" class="me-2"></it-icon>
+  <span class="font-sans-serif">Questo caso d'uso è in fase di sviluppo, sarà completo non appena sarà pronto il componente \`it-toggle\`.</span>
+</div>
+
 Una lista di link può contenere anche elementi appartenenti ai form, di seguito un esempio contenente un [toggle](/docs/componenti-toggle--documentazione).
 `,
       },
@@ -1045,6 +1060,11 @@ export const LinkListCheckbox: Story = {
     docs: {
       description: {
         story: `
+<div class="alert alert-warning" role="alert">
+  <it-icon name="it-warning-circle" color="warning" class="me-2"></it-icon>
+  <span class="font-sans-serif">Questo caso d'uso è in fase di sviluppo, sarà completo non appena sarà pronto il componente \`it-checkbox\`.</span>
+</div>
+
 Lista di link contenente un [checkbox](/docs/componenti-form-checkbox--documentazione).
 `,
       },
@@ -1210,6 +1230,11 @@ export const LinkListAnnidataCollassabile: Story = {
     docs: {
       description: {
         story: `
+<div class="alert alert-warning" role="alert">
+  <it-icon name="it-warning-circle" color="warning" class="me-2"></it-icon>
+  <span class="font-sans-serif">Questo caso d'uso è in fase di sviluppo, sarà completo non appena sarà pronto il componente \`it-collapse\`.</span>
+</div>
+
 Esempio di navigazione annidata collassabile. Per questo tipo di link list sono state utilizzate, oltre alle classi custom, le classi e gli attributi di Bootstrap per l'attivazione del comportamento collapse.
 `,
       },
