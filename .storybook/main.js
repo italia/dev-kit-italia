@@ -12,7 +12,7 @@ function getAbsolutePath(value) {
 const config = {
   stories: ['../packages/**/stories/**/*.mdx', '../packages/**/stories/**/*.stories.@(js|ts|tsx|jsx|mjs)'],
   addons: [
-    getAbsolutePath('@chromatic-com/storybook'),
+    // getAbsolutePath('@chromatic-com/storybook'),
     getAbsolutePath('@storybook/addon-docs'),
     getAbsolutePath('@storybook/addon-a11y'),
   ],
@@ -29,11 +29,18 @@ const config = {
     config.css.preprocessorOptions = config.css.preprocessorOptions || {};
     config.css.preprocessorOptions.scss = {
       // Modificare gli import ora significherebbe una riscrittura pesante di bootstrap-italia.
-      silenceDeprecations: ['import', 'global-builtin', 'function-units', 'color-functions', 'mixed-decls'],
+      silenceDeprecations: [
+        'import',
+        'global-builtin',
+        'function-units',
+        'color-functions',
+        'mixed-decls',
+        'abs-percent',
+      ],
     };
 
-    console.log('OptimizeDeps include:', config.optimizeDeps?.include);
-    console.log('OptimizeDeps exclude:', config.optimizeDeps?.exclude);
+    // console.log('OptimizeDeps include:', config.optimizeDeps?.include);
+    // console.log('OptimizeDeps exclude:', config.optimizeDeps?.exclude);
     config.optimizeDeps ??= {};
     config.optimizeDeps.exclude ??= [];
 
