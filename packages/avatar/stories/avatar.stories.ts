@@ -522,6 +522,7 @@ L'avatar supporta indicatori di presenza dell'utente attraverso l'attributo \`pr
 - **Lo stato invisibile** si ottiene aggiungendo l'attributo \`presence="hidden"\`
 
 #### Personalizzazione con Slot
+L'esempio "Presenza personalizzata con slot" mostra come lo stesso componente possa essere adattato a stili o contenuti differenti tramite gli slot, per illustrare la flessibilità dell'approccio.
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>Ricordarsi sempre di includere testo per screen reader con \`<span class="visually-hidden">\` in caso di uso di personalizzazione.</p></div></div>
 
@@ -592,6 +593,10 @@ Le traduzioni dei nomi degli stati sono gestite automaticamente tramite il [sist
       <!-- Esempi con slot personalizzati -->
       <div>
         <h4>Presenza personalizzata con slot</h4>
+        <p>
+          L'esempio "Presenza personalizzata con slot" mostra come lo stesso componente possa essere adattato a stili o
+          contenuti differenti tramite gli slot, per illustrare la flessibilità dell'approccio.
+        </p>
         <div class="d-flex align-items-center gap-4 flex-wrap">
           <div class="text-center">
             <it-avatar type="text" text="Marco Bianchi" variant="primary" presence="active" size="lg">
@@ -662,6 +667,7 @@ L'avatar supporta indicatori di stato dell'account attraverso l'attributo \`stat
 - **Lo stato notifica** si ottiene aggiungendo l'attributo \`status="notify"\`
 
 #### Personalizzazione con Slot
+L'esempio "Status personalizzato con slot" mostra come lo stesso componente possa essere adattato a stili o contenuti differenti tramite gli slot, per illustrare la flessibilità dell'approccio.
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>Ricordarsi sempre di includere testo per screen reader con \`<span class="visually-hidden">\` in caso di uso di personalizzazione.</p></div></div>
 
@@ -734,6 +740,10 @@ Le traduzioni sono gestite automaticamente tramite il [sistema @italia/i18n](/do
       <!-- Esempi con slot personalizzati -->
       <div>
         <h4>Status personalizzato con slot</h4>
+        <p>
+          L'esempio "Status personalizzato con slot" mostra come lo stesso componente possa essere adattato a stili o
+          contenuti differenti tramite gli slot, per illustrare la flessibilità dell'approccio.
+        </p>
         <div class="d-flex align-items-center gap-4 flex-wrap">
           <div class="text-center">
             <it-avatar type="text" text="Luigi Neri" variant="primary" status="approved" size="lg">
