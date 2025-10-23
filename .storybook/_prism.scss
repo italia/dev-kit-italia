@@ -114,7 +114,7 @@
   }
 
   .token.selector,
-  .token.attr-name,
+  .token.attr-value,
   .token.string,
   .token.char,
   .token.builtin,
@@ -123,7 +123,8 @@
   }
 
   .token.atrule,
-  .token.attr-value,
+  .token.attr-name,
+  .token.attr-value.attr-equals,
   .token.function,
   .token.regex,
   .token.important {
