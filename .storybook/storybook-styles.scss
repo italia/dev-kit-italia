@@ -14,8 +14,18 @@
 
 // Indice laterale destro
 .sbdocs-toc--custom {
+  width: 100% !important;
+
+  &,
   nav,
   .toc-wrapper ul {
+    min-width: 0px;
+    max-width: 20rem;
+  }
+
+  nav,
+  .toc-wrapper ul {
+    width: 100%;
     font-family: var(--bs-font-sans-serif);
     font-size: 16px;
   }
@@ -228,23 +238,3 @@ table.docblock-argstable {
 // white-space: pre;
 // display: block;
 // }
-
-/* Colonna TOC (affiancata al contenuto) */
-#storybook-docs .sbdocs-wrapper > div:not(.sbdocs-content) {
-  width: 350px;
-  overflow-wrap: break-word;
-  word-break: break-word; /* fallback */
-  white-space: normal;
-
-  > div {
-    width: 100%;
-  }
-
-  a {
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 220px;
-  }
-}
