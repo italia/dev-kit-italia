@@ -51,6 +51,7 @@
   ],
   "dependencies": {
     "@italia/accordion": "workspace:^",
+    "@italia/breadcrumbs": "workspace:^",
     "@italia/button": "workspace:^",
     "@italia/chip": "workspace:^",
     "@italia/dropdown": "workspace:^",

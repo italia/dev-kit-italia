@@ -1,7 +1,7 @@
 {
-  "name": "@italia/i18n",
-  "description": "Translations utility del Design system .italia",
-  "version": "0.1.0-alpha.1",
+  "name": "@italia/breadcrumbs",
+  "description": "Web component it-breadcrumbs del Design system .italia",
+  "version": "0.0.0",
   "publishConfig": {
     "access": "public"
   },
@@ -9,7 +9,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/italia/dev-kit-italia.git",
-    "directory": "packages/i18n"
+    "directory": "packages/breadcrumbs"
   },
   "author": "Presidenza del Consiglio dei Ministri",
   "homepage": "https://italia.github.io/dev-kit-italia",
@@ -22,35 +22,45 @@
   "types": "./dist/src/index.d.ts",
   "exports": {
     ".": "./dist/src/index.js",
-    "./i18n.js": "./dist/src/index.js"
+    "./it-breadcrumbs.js": "./dist/src/it-breadcrumbs.js",
+    "./it-breadcrumb-item.js": "./dist/src/it-breadcrumb-item.js",
+    "./styles/*": "./styles/*"
   },
   "files": [
     "dist/src",
     "README.md",
     "AUTHORS",
-    "LICENSE"
+    "LICENSE",
+    "custom-elements.json",
+    "styles"
   ],
   "scripts": {
     "analyze": "cem analyze --litelement --exclude dist",
     "build": "rollup --config rollup.config.js",
     "clean": "rimraf node_modules .turbo .rollup.cache dist coverage",
-    "lint": "eslint --ext .ts \"src/**/*.ts\" && prettier \"src/**/*.ts\" --check",
+    "prepublish": "build",
+    "lint": "eslint --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" && stylelint \"src/**/*.scss\" && prettier \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --check",
     "format": "eslint --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --fix && stylelint \"src/**/*.scss\" --fix && prettier \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --write",
     "test": "wtr --coverage --node-resolve --config web-test-runner.config.js"
   },
   "dependencies": {
+    "@italia/globals": "workspace:^",
+    "bootstrap-italia": "catalog:",
     "lit": "catalog:"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.3",
     "@italia/test-config": "workspace:^",
     "@italia/typescript-config": "workspace:^",
+    "@italia/icon": "workspace:^",
     "@open-wc/testing": "catalog:",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/mocha": "catalog:",
     "@web/test-runner": "catalog:",
     "rollup": "^4.42.0",
+    "rollup-plugin-scss-lit": "^2.1.0",
+    "sass": "catalog:",
     "tslib": "^2.6.3",
     "typescript": "catalog:"
   },
