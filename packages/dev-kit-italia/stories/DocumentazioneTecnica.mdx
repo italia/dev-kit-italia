@@ -1,5 +1,5 @@
-import { Meta } from '@storybook/blocks';
-import { Code } from '@storybook/components';
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Code } from 'storybook/internal/components';
 
 <Meta title="Documentazione tecnica" />
 
@@ -179,23 +179,19 @@ chi la utilizza in un'applicazione o sito.
 ### Responsabilità della libreria
 
 - **Garantire layout prevedibili**:
-
   - Definire **dimensioni** minime o fisse nei componenti (min-height, aspect-ratio, ecc.)
 
   - Prevedere **slot con layout stabile** anche prima del caricamento degli stili o dell'hydration
 
 - Prevedere **fallback CSS**:
-
   - Fornire stili CSS di base caricabili esternamente (via style.css) o inline (`<style>` in Light DOM)
 
 - Progettare per **HTML-first**:
-
   - Permettere l’inserimento di contenuti tramite **slot** (e non solo proprietà dinamiche)
 
   - Evitare dipendenze critiche da render() di Lit per i contenuti essenziali
 
 - Facilitare il **preload degli stili**:
-
   - Rendere disponibili gli stili critici in file separati e documentarne l’uso
 
 ### Responsabilità dell'utilizzatore (consumatore dei componenti)
@@ -203,21 +199,17 @@ chi la utilizza in un'applicazione o sito.
 Chi integra i Web Components in un’applicazione deve:
 
 - Adottare un **approccio HTML-first**:
-
   - Usare il markup completo (come da documentazione) e contenuti slot nel primo render server-side
 
   - Evitare di popolare dinamicamente gli slot via JS dopo l’hydration HTML
 
 - Caricare gli **stili critici** anticipatamente:
-
   - Utilizzare `<link rel="preload">` o tecniche come `vite-plugin-critical` per includere gli stili nel primo paint
 
 - Usare **skeletons o placeholder** coerenti:
-
   - Inserire contenuti temporanei che rispettino la dimensione finale per evitare "salti" visivi
 
 - Garantire per quanto possibile **coerenza** tra layout iniziale e finale:
-
   - Assicurarsi che la struttura del DOM server-side corrisponda a quella post-hydration, assicurandosi di seguire la documentazione fornita dal kit.
 
   - Comunicare all’utente finale con un apposito tag `<noscript>` la necessità di abilitare Javascript per poter fruire di tutte le funzionalità del sito / applicazione. Es.
