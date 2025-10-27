@@ -1,10 +1,10 @@
-/** @type { import('@storybook/web-components').Preview } */
+import type { Preview } from '@storybook/web-components-vite';
 import './main.scss';
 import './storybook-styles.scss';
 import prettier from 'prettier-v2';
 import HTMLParser from 'prettier-v2/parser-html';
 
-const preview = {
+const preview: Preview = {
   parameters: {
     layout: 'centered',
     controls: {
@@ -16,7 +16,7 @@ const preview = {
     docs: {
       source: {
         // trasforma tutte le preview docs (restituendo il codice HTML formattato)
-        transform: (input) => {
+        transform: (input: string) => {
           if (!input || typeof input !== 'string') return input;
           const t = input.trim();
           if (!(t.startsWith('<') || /<\s*it-[a-z0-9-]+/i.test(input))) return input;
@@ -39,14 +39,6 @@ const preview = {
       },
     },
     options: {
-      // storySort: {
-      //   order: [
-      //     'Welcome',
-      //     'PersonalizzazioneDegliStili',
-      //     'Componenti',
-      //     ['Button', 'Dropdown', 'Icon', 'Video', 'Form'],
-      //   ],
-      // },
       storySort: (a, b) => {
         const order = ['Welcome', 'PersonalizzazioneDegliStili', 'Componenti'];
 
@@ -84,7 +76,7 @@ const preview = {
 export default preview;
 
 export const decorators = [
-  (Story) => {
+  (Story: any) => {
     // Usa un effetto per agire sul documento dell'iframe dopo il mount
     // Funziona anche con React o senza (a seconda del setup)
 
