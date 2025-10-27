@@ -11,6 +11,8 @@ cd ./examples/angular-app && npm ci && npm run build
 cd ../..
 cd ./examples/vue-app && npm ci && npm run build
 cd ../..
+cd ./examples/vanilla-app && npm ci && npm run build
+cd ../..
 
 rm -rf ./storybook-static/svelte-app/
 rm -rf ./storybook-static/vue-app/
