@@ -8,8 +8,8 @@
 <main>
   <div class="app-header">
     <div>
-      <a href="https://vite.dev" target="_blank" rel="noreferrer">
-        <img src={viteLogo} class="logo" alt="Vite Logo" />
+      <a href="https://vite.dev" target="_blank">
+        <img src={viteLogo} class="logo" alt="Vite logo" />
       </a>
       <a href="https://svelte.dev" target="_blank" rel="noreferrer">
         <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
@@ -28,8 +28,10 @@
       <a href="#/section">Section</a>
       <a href="#/video">Video</a>
       <a href="#/rating">Rating</a>
+      <a href="#/avatar">Avatar</a>
     </nav>
   </div>
+
   <Router />
   <Footer />
 </main>
@@ -41,9 +43,11 @@
     will-change: filter;
     transition: filter 300ms;
   }
+
   .logo:hover {
     filter: drop-shadow(0 0 2em #646cffaa);
   }
+
   .logo.svelte:hover {
     filter: drop-shadow(0 0 2em #ff3e00aa);
   }

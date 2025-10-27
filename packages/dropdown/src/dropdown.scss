@@ -18,10 +18,10 @@
 
   .arrow {
     z-index: -1;
-    width: var(--#{$prefix}-dropdown-notch-base-size);
-    height: var(--#{$prefix}-dropdown-notch-base-size);
-    border-radius: var(--#{$prefix}-dropdown-border-radius);
-    background-color: var(--#{$prefix}-dropdown-background);
+    width: var(--#{$prefix}dropdown-notch-base-size);
+    height: var(--#{$prefix}dropdown-notch-base-size);
+    border-radius: var(--#{$prefix}dropdown-border-radius);
+    background-color: var(--#{$prefix}dropdown-background);
   }
 
   @if $dropdown-padding-y == 0 {
@@ -48,7 +48,7 @@
 
 it-button,
 it-popover {
-  display: inline-block;
+  display: inline-flex;
 }
 
 .dropdown-toggle-icon {

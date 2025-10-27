@@ -9,6 +9,7 @@ import Radio from './pages/Radio.svelte';
 import Section from './pages/Section.svelte';
 import Video from './pages/Video.svelte';
 import Rating from './pages/Rating.svelte';
+import Avatar from './pages/Avatar.svelte';
 
 export const AppRoutes = [
   { path: '/accordion', element: Accordion, title: 'Accordion' },
@@ -22,6 +23,7 @@ export const AppRoutes = [
   { path: '/section', element: Section, title: 'Section' },
   { path: '/video', element: Video, title: 'Video' },
   { path: '/rating', element: Rating, title: 'Rating' },
+  { path: '/avatar', element: Avatar, title: 'Avatar' },
 ];
 
 export const routes = AppRoutes.reduce((acc, route) => {

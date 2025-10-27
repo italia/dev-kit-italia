@@ -9,6 +9,7 @@ import Radio from './pages/Radio';
 import Rating from './pages/Rating';
 import Section from './pages/Section';
 import Video from './pages/Video';
+import Avatar from './pages/Avatar';
 
 export const AppRoutes = [
   { path: '/accordion', element: <Accordion />, title: 'Accordion' },
@@ -22,4 +23,5 @@ export const AppRoutes = [
   { path: '/rating', element: <Rating />, title: 'Rating' },
   { path: '/section', element: <Section />, title: 'Section' },
   { path: '/video', element: <Video />, title: 'Video' },
+  { path: '/avatar', element: <Avatar />, title: 'Avatar' },
 ];
