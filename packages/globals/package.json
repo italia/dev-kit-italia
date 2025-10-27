@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@italia/i18n": "workspace:^",
+    "@floating-ui/dom": "^1.7.1",
     "clsx": "^2.1.1",
     "lit": "catalog:"
   },
