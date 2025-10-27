@@ -10,6 +10,7 @@ import Input from './components/Input.vue';
 import Radio from './components/Radio.vue';
 import Section from './components/Section.vue';
 import Video from './components/Video.vue';
+import Avatar from './components/Avatar.vue';
 
 const routes = [
   { path: '/accordion', name: 'Accordion', component: Accordion },
@@ -22,6 +23,7 @@ const routes = [
   { path: '/radio', name: 'Radio', component: Radio },
   { path: '/section', name: 'Section', component: Section },
   { path: '/video', name: 'Video', component: Video },
+  { path: '/avatar', name: 'Avatar', component: Avatar },
 ];
 
 const router = createRouter({

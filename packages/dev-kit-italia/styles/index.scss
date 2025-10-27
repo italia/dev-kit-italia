@@ -25,8 +25,10 @@
 
 @import 'bootstrap-italia/src/scss/components/linklist';
 @import 'bootstrap-italia/src/scss/components/dropdown';
+@import 'bootstrap-italia/src/scss/components/avatar';
 
 /*dev-kit-italia global styles*/
+@import '@italia/avatar/styles/globals';
 @import '@italia/accordion/styles/globals';
 @import '@italia/button/styles/globals';
 @import '@italia/dropdown/styles/globals';

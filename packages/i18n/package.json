@@ -53,5 +53,6 @@
     "rollup": "^4.42.0",
     "tslib": "^2.6.3",
     "typescript": "catalog:"
-  }
+  },
+  "customElements": "custom-elements.json"
 }

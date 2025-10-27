@@ -1,6 +1,6 @@
 /* eslint-disable lit-a11y/list */
 import { BaseComponent, AriaKeyboardListController } from '@italia/globals';
-import { html, LitElement } from 'lit';
+import { html, LitElement, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import styles from './dropdown.scss';
@@ -33,6 +33,8 @@ export class ItDropdown extends BaseComponent {
   @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = false;
 
   @property({ type: String, attribute: 'it-role' }) itRole: string = 'menu';
+
+  @property({ type: String, attribute: 'it-aria-label' }) itAriaLabel: string = '';
 
   @state() private _popoverOpen = false;
 
@@ -139,12 +141,14 @@ export class ItDropdown extends BaseComponent {
     this._setChildrenProperties();
   }
 
+  // https://github.com/primefaces/primeng/issues/14851 for conditional aria controls
   render() {
     return html`
       <it-popover
         placement=${this.alignment}
         @it-popover-open=${this._onPopoverOpen}
         @it-popover-close=${this._onPopoverClose}
+        exportparts="focusable, icon, button"
         ?open=${this._popoverOpen}
       >
         <it-button
@@ -157,15 +161,17 @@ export class ItDropdown extends BaseComponent {
           @click=${this._onTriggerClick}
           @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
           class="dropdown-toggle"
-          exportparts="focusable"
+          it-aria-label=${ifDefined(this.itAriaLabel ? this.itAriaLabel : undefined)}
+          exportparts="focusable, button"
           it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
-          it-aria-controls=${this._menuId}
+          it-aria-controls=${this._popoverOpen ? this._menuId : nothing}
         >
           ${this.alignment.startsWith('left')
             ? html`<it-icon
                 name=${this._popoverOpen ? 'it-collapse' : 'it-expand'}
                 class="dropdown-toggle-icon left"
                 size="sm"
+                exportparts="icon"
               ></it-icon>`
             : ''}
           ${this.label}
@@ -176,6 +182,7 @@ export class ItDropdown extends BaseComponent {
                   right: this.alignment.startsWith('right'),
                   top: this.alignment.startsWith('top'),
                 })}
+                exportparts="icon"
                 size="sm"
               ></it-icon>`
             : ''}
