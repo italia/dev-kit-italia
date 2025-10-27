@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='react-app'>
       <div className='app-header'>
         <div>
           <a href='https://vite.dev' target='_blank'>
