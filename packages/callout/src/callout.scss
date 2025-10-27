@@ -1,0 +1,29 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@import 'bootstrap-italia/src/scss/components/callout';
+
+// Custom styles to handle slotted content
+:host {
+  display: block;
+  --#{$prefix}callout-text-font-size: 16px;
+}
+
+// Ensure proper styling for slotted icons (elements in light DOM with slot="icon")
+:host ::slotted(it-icon[slot='icon']) {
+  margin-right: var(--#{$prefix}spacing-xxs);
+}
+
+// Ensure proper spacing for slotted title text (elements with slot="title")
+:host ::slotted(*[slot='title']) {
+  margin: 0;
+}
+
+// Ensure proper styling for content paragraphs (default slot paragraph)
+:host ::slotted(p) {
+  color: var(--#{$prefix}callout-text-color);
+  font-family: var(--#{$prefix}callout-font-family);
+  font-size: var(--#{$prefix}callout-text-font-size) !important;
+}
