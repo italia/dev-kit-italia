@@ -142,6 +142,9 @@
 .sbdocs-content p:not(.sb-story p),
 .sbdocs-content li:not(.toc-list-item):not(.sb-story li) {
   max-width: 75ch;
+  font-size: var(--bs-body-font-size); /* Mobile: 16px, Desktop: 18px */
+  font-weight: var(--bs-body-font-weight); /* 400 */
+  line-height: var(--bs-body-line-height); /* 150% */
 }
 
 .sbdocs-content .callout:not(.sb-story .callout) {

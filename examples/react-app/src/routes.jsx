@@ -8,6 +8,7 @@ import Icon from './pages/Icon';
 import Input from './pages/Input';
 import Section from './pages/Section';
 import Video from './pages/Video';
+import Avatar from './pages/Avatar';
 
 export const AppRoutes = [
   { path: '/accordion', element: <Accordion />, title: 'Accordion' },
@@ -20,4 +21,5 @@ export const AppRoutes = [
   { path: '/input', element: <Input />, title: 'Input' },
   { path: '/section', element: <Section />, title: 'Section' },
   { path: '/video', element: <Video />, title: 'Video' },
+  { path: '/avatar', element: <Avatar />, title: 'Avatar' },
 ];

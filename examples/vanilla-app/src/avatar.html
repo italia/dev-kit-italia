@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Web Components - Avatar (vanilla)</title>
+  <!-- Load compiled dev-kit CSS in <head> so styles are present even when JS is disabled -->
+  <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
+  <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+  <!-- Local app styles so layout (#root etc.) is present without JS -->
+  <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+      <div id="root">
+      <div id="app-header">
+        <div class="app-header">
+          <a href="https://vite.dev" target="_blank">
+            <img src="/public/vite.svg" class="logo" alt="Vite logo" />
+          </a>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+            <img src="/src/javascript.svg" class="logo vanilla" alt="JavaScript logo" />
+          </a>
+          <nav class="app-nav">
+            <a href="/src/button">Button</a>
+            <a href="/src/chip">Chip</a>
+            <a href="/src/dropdown">Dropdown</a>
+            <a href="/src/form">Form</a>
+            <a href="/src/icon">Icon</a>
+            <a href="/src/input">Input</a>
+            <a href="/src/section">Section</a>
+            <a href="/src/video">Video</a>
+            <a href="/src/avatar">Avatar</a>
+          </nav>
+        </div>
+      </div>
+      <h1>it-avatar</h1>
+
+      <section>
+        <h2>Avatar con immagine</h2>
+        <div style="display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap;">
+          <it-avatar type="image" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Luisa Neri" size="xs"></it-avatar>
+          <it-avatar type="image" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Luisa Neri" size="sm"></it-avatar>
+          <it-avatar type="image" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Luisa Neri" size="md"></it-avatar>
+          <it-avatar type="image" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Luisa Neri" size="lg"></it-avatar>
+          <it-avatar type="image" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Luisa Neri" size="xl"></it-avatar>
+          <it-avatar type="image" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Luisa Neri" size="xxl"></it-avatar>
+        </div>
+      </section>
+
+      <section>
+        <h2>Avatar con testo</h2>
+        <div style="display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
+          <it-avatar type="text" text="Mario Rossi" size="xs"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" size="sm"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" size="md"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" size="lg"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" size="xl"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" size="xxl"></it-avatar>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
+          <it-avatar type="text" text="Mario Rossi" variant="primary" size="xs"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" variant="primary" size="sm"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" variant="primary" size="md"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" variant="primary" size="lg"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" variant="primary" size="xl"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" variant="primary" size="xxl"></it-avatar>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap;">
+          <it-avatar type="text" text="Mario Rossi" variant="secondary" size="xs"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" variant="secondary" size="sm"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" variant="secondary" size="md"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" variant="secondary" size="lg"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" variant="secondary" size="xl"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" variant="secondary" size="xxl"></it-avatar>
+        </div>
+      </section>
+
+      <section>
+        <h2>Avatar con icona</h2>
+        <div style="display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap;">
+          <it-avatar type="icon" icon="it-search" avatar-title="Cerca" size="xs"></it-avatar>
+          <it-avatar type="icon" icon="it-search" avatar-title="Cerca" size="sm"></it-avatar>
+          <it-avatar type="icon" icon="it-search" avatar-title="Cerca" size="md"></it-avatar>
+          <it-avatar type="icon" icon="it-search" avatar-title="Cerca" size="lg"></it-avatar>
+          <it-avatar type="icon" icon="it-search" avatar-title="Cerca" size="xl"></it-avatar>
+          <it-avatar type="icon" icon="it-search" avatar-title="Cerca" size="xxl"></it-avatar>
+        </div>
+      </section>
+
+      <section>
+        <h2>Avatar come link</h2>
+        <div style="display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap;">
+          <it-avatar type="image" src="https://randomuser.me/api/portraits/women/41.jpg" alt="Anna Barbieri" href="#" avatar-title="Anna Barbieri"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" href="#" avatar-title="Mario Rossi"></it-avatar>
+          <it-avatar type="text" text="Mario Rossi" variant="primary" href="#" avatar-title="Mario Rossi"></it-avatar>
+          <it-avatar type="icon" icon="it-search" href="#" avatar-title="Cerca"></it-avatar>
+        </div>
+      </section>
+
+      <section>
+        <h2>Avatar con testo aggiuntivo</h2>
+        <div style="display:flex;flex-direction:column;gap:2rem;align-items:flex-start;justify-content:center;">
+          <it-avatar type="image" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo" text="Mario Rossi">
+            <div slot="extra-text">
+              <h4>Mario Rossi</h4>
+              <time>15 SET 2025</time>
+            </div>
+          </it-avatar>
+          <it-avatar type="image" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto profilo" text="Giulia Neri">
+            <div slot="extra-text">
+              <h4>Giulia Neri</h4>
+              <p>LOREM IPSUM DOLOR</p>
+            </div>
+          </it-avatar>
+          <it-avatar type="text" text="Michele Dotti" variant="primary">
+            <div slot="extra-text">
+              <h4>Michele Dotti</h4>
+              <time>12 MAG 2025</time>
+            </div>
+          </it-avatar>
+        </div>
+      </section>
+
+      <section>
+        <h2>Avatar presenza utente</h2>
+        <div style="display:flex;gap:2rem;flex-wrap:wrap;align-items:center;justify-content:center;">
+          <div style="text-align:center;">
+            <it-avatar type="image" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Mario Rossi" presence="active" size="lg"></it-avatar>
+            <div style="margin-top:8px;"><small>Attivo</small></div>
+          </div>
+          <div style="text-align:center;">
+            <it-avatar type="image" src="https://randomuser.me/api/portraits/women/41.jpg" alt="Luisa Neri" presence="busy" size="lg"></it-avatar>
+            <div style="margin-top:8px;"><small>Non disponibile</small></div>
+          </div>
+          <div style="text-align:center;">
+            <it-avatar type="image" src="https://randomuser.me/api/portraits/men/33.jpg" alt="Gioacchino Romani" presence="hidden" size="lg"></it-avatar>
+            <div style="margin-top:8px;"><small>Invisibile</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Gruppi di avatar - Liste verticali</h2>
+        <div style="display:flex;gap:3rem;flex-wrap:wrap;align-items:center;justify-content:center;">
+          <div style="flex:1;min-width:300px;">
+            <h4>Lista Verticale - Dimensione SM</h4>
+            <div class="link-list-wrapper">
+              <ul class="link-list avatar-group">
+                <li>
+                  <a class="list-item" href="#">
+                    <it-avatar size="sm" src="https://randomuser.me/api/portraits/men/43.jpg"></it-avatar>
+                    <span>Mario Rossi</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="list-item" href="#">
+                    <it-avatar size="sm" src="https://randomuser.me/api/portraits/women/44.jpg"></it-avatar>
+                    <span>Anna Verdi</span>
+                  </a>
+                </li>
+                <li>
+                  <div class="list-item">
+                    <it-avatar size="sm" text="Sara Ghione" variant="primary"></it-avatar>
+                    <span>Sara Ghione</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="list-item">
+                    <it-avatar icon="it-user" avatar-title="Utente generico" size="sm"></it-avatar>
+                    <span>Antonio Esposito</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="flex:1;min-width:300px;">
+            <h4>Lista Verticale - Dimensione MD</h4>
+            <div class="link-list-wrapper">
+              <ul class="link-list avatar-group">
+                <li>
+                  <a class="list-item" href="#">
+                    <it-avatar src="https://randomuser.me/api/portraits/men/32.jpg"></it-avatar>
+                    <span>Luca Bianchi</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="list-item" href="#">
+                    <it-avatar src="https://randomuser.me/api/portraits/women/28.jpg"></it-avatar>
+                    <span>Elena Rossi</span>
+                  </a>
+                </li>
+                <li>
+                  <div class="list-item">
+                    <it-avatar text="Marco Neri" variant="secondary"></it-avatar>
+                    <span>Marco Neri</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="list-item">
+                    <it-avatar icon="it-search" avatar-title="Cerca"></it-avatar>
+                    <span>Cerca utenti</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Gruppi di avatar - Avatar Sovrapposti</h2>
+        <div style="display:flex;flex-direction:column;gap:3rem;align-items:center;justify-content:center;">
+          <div style="text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <h4>Avatar Sovrapposti - Dimensione SM</h4>
+            <div class="link-list-wrapper">
+              <ul class="avatar-group-stacked">
+                <li><it-avatar size="sm" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto profilo"></it-avatar></li>
+                <li><it-avatar size="sm" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo"></it-avatar></li>
+                <li><it-avatar size="sm" src="https://randomuser.me/api/portraits/women/41.jpg" alt="Foto profilo"></it-avatar></li>
+                <li><it-avatar size="sm" text="Tommaso Sordi" variant="primary"></it-avatar></li>
+                <li><it-avatar size="sm" text="Barbara Tosi" variant="secondary"></it-avatar></li>
+                <li>
+                  <it-avatar type="dropdown" size="sm">
+                    <it-dropdown label="4+" slot="avatar-dropdown-content" it-aria-label="Altri utenti" variant="secondary">
+                      <it-dropdown-item href="#">
+                        <it-avatar size="sm" src="https://randomuser.me/api/portraits/men/22.jpg" alt="Foto profilo"></it-avatar>
+                        <span>Roberto Milano</span>
+                      </it-dropdown-item>
+                      <it-dropdown-item href="#">
+                        <it-avatar size="sm" text="Giuseppe Verde" variant="primary"></it-avatar>
+                        <span>Giuseppe Verde</span>
+                      </it-dropdown-item>
+                      <it-dropdown-item href="#">
+                        <it-avatar size="sm" text="Laura Blu" variant="secondary"></it-avatar>
+                        <span>Laura Blu</span>
+                      </it-dropdown-item>
+                      <it-dropdown-item href="#">
+                        <it-avatar size="sm" icon="it-user" avatar-title="Altri utenti"></it-avatar>
+                        <span>Altri utenti...</span>
+                      </it-dropdown-item>
+                    </it-dropdown>
+                  </it-avatar>
+                </li>
+              </ul>
+            </div>
+            <p style="margin-top:0.5rem;font-size:14px;color:#666;"><a href="#" style="color:#0066cc;text-decoration:none;">Visualizza altri 8 utenti →</a></p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
