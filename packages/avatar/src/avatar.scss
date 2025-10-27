@@ -1,0 +1,81 @@
+// Avatar styles based on Bootstrap Italia
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@import 'bootstrap-italia/src/scss/components/avatar';
+
+slot[name='extra-text']::slotted(*) {
+  @extend .extra-text;
+}
+
+:host {
+  display: inline-flex;
+  --#{$prefix}avatar-background: var(--#{$prefix}color-background-secondary-lighter);
+  --#{$prefix}avatar-text-color: var(--#{$prefix}color-text-secondary);
+  --#{$prefix}avatar-font-size: var(--#{$prefix}font-size-3);
+  --#{$prefix}avatar-font-weight: var(--#{$prefix}font-weight-solid);
+  --#{$prefix}avatar-icon-size: var(--#{$prefix}icon-size-s);
+  --#{$prefix}avatar-radius: var(--#{$prefix}radius-circle);
+  --#{$prefix}avatar-size: 2.5rem; // default size - see '.size-' classes for other sizes
+  --#{$prefix}avatar-dot-size: 12px;
+  --#{$prefix}avatar-dot-border-size: 2px;
+  --#{$prefix}avatar-dot-border-color: var(--#{$prefix}color-border-inverse);
+  --#{$prefix}avatar-dot-offset-right: 0;
+  --#{$prefix}avatar-dot-offset-top: 4px;
+  --#{$prefix}avatar-dot-offset-bottom: 0;
+
+  a.avatar,
+  a .avatar {
+    text-decoration: none;
+  }
+
+  a.avatar:hover,
+  a .avatar:hover {
+    text-decoration: none;
+  }
+}
+
+it-icon::part(icon) {
+  width: var(--bs-avatar-icon-size);
+  height: var(--bs-avatar-icon-size);
+}
+
+it-icon {
+  display: inline-flex;
+}
+
+it-icon.presence-icon::part(icon),
+it-icon.status-icon::part(icon) {
+  width: 12px;
+  height: 12px;
+  stroke: var(--bs-icon-inverse);
+  stroke-width: 2px;
+}
+
+.extra-text {
+  margin-left: var(--#{$prefix}spacing-s);
+
+  h3,
+  h4 {
+    margin: 0;
+    font-size: var(--#{$prefix}heading-6-font-size) !important;
+
+    a {
+      display: inline-block;
+    }
+  }
+
+  p,
+  time {
+    margin: 0;
+    color: var(--#{$prefix}color-text-secondary);
+    font-size: var(--#{$prefix}caption-font-size);
+    text-transform: uppercase;
+  }
+}
+
+.avatar-wrapper {
+  display: inline-flex;
+}
