@@ -39,15 +39,15 @@ un contenitore per gli elementi breadcrumb; ogni voce può essere un link oppure
 <p>
 Assicurati di fornire un label descrittivo (es. "Percorso di navigazione").
 </p>
+<p>Il componente gestisce automaticamente l'attributo \`aria-current="page"\` sull'elemento che rappresenta la pagina corrente, ossia l'ultimo elemento.</p>
+<p>Il componente rende il separatore nascosto agli screen reader, settando automaticamente aria-hidden a true.</p>
 <p>
 Nota: Axe e altri strumenti di analisi statica possono segnalare errori quando analizzano il componente it-breadcrumb.
 </p>
 <p>
-Questi sono falsi positivi: la struttura accessibile effettiva è corretta, come confermato dall'Accessibility Tree e dai test manuali.
+Questi sono falsi positivi dovuti allo scarso supporto di questi sistemi per la tecnologia Web Components: la struttura accessibile effettiva è corretta, come l'annuncio, e questo è confermato sia dall'Accessibility Tree generato che dai test manuali eseguiti.
 </p>
-<p>
-Conforme a WCAG 2.1 – 1.3.1 e testata su NVDA, JAWS e VoiceOver.
-</p></div></div>
+</div></div>
 
 `,
       },
