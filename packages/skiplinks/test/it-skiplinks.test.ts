@@ -53,15 +53,15 @@ describe('ItSkiplinks', () => {
       </it-skiplinks>
     `);
 
-    const anchor = el.shadowRoot!.querySelector('li a')!;
+    const anchor: HTMLElement = el.shadowRoot!.querySelector('li a');
 
     // Simuliamo focus
-    anchor.focus();
+    anchor?.focus();
     await el.updateComplete;
 
-    // Dovresti controllare la classe o lo stile che mostra il link
-    // Se `visually-hidden-focusable` utilizza :focus-within, possiamo verificare il focus
-    expect(document.activeElement).to.equal(anchor);
+    // // Dovresti controllare la classe o lo stile che mostra il link
+    // // Se `visually-hidden-focusable` utilizza :focus-within, possiamo verificare il focus
+    expect(anchor?.parentNode.getBoundingClientRect().width).to.greaterThan(1);
   });
 
   it('updates links when slot content changes', async () => {
