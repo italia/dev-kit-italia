@@ -11,21 +11,6 @@ export class PopoverComponent {
   // marker field used to satisfy linter
   private _marker = false;
 
-  togglePopover(event: Event) {
-    const trigger = event.currentTarget as HTMLElement;
-    if (
-      trigger &&
-      trigger.tagName &&
-      trigger.tagName.toLowerCase() === 'a' &&
-      trigger.getAttribute('href') === '#'
-    ) {
-      event.preventDefault();
-    }
-    const pop = trigger.closest('it-popover') as any;
-    pop?.toggle();
-    this._marker = true;
-  }
-
   handleAction(event: Event, action: string) {
     event.preventDefault();
     const link = event.currentTarget as HTMLElement;

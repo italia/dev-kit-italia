@@ -1,12 +1,6 @@
 <template>
   <h1>it-popover</h1>
 
-  <div class="alert alert-info" role="alert">
-    <strong>Nota:</strong> Il componente <code>it-popover</code> non gestisce automaticamente il click sul trigger. È
-    necessario aggiungere un event handler <code>@click</code> che chiama <code>toggle()</code> sul popover. Vedi gli
-    esempi sotto per i pattern da usare.
-  </div>
-
   <!-- Base - Menu utente -->
   <section style="margin-bottom: 2rem">
     <h2>Base - Menu utente</h2>
@@ -14,32 +8,35 @@
       Esempio di popover con menu interattivo. I popover sono ideali per contenuti ricchi con link e azioni multiple.
     </p>
     <it-popover>
-      <it-button slot="trigger" variant="primary" @click="handleTriggerClick">Opzioni utente</it-button>
+      <it-button slot="trigger" variant="primary">Opzioni utente, clicca per aprire</it-button>
       <div slot="content" class="popover">
         <div class="popover-inner">
-          <h3 class="popover-header">Menu azioni</h3>
+          <h3 class="popover-header" style="margin-bottom: 0">Menu azioni</h3>
           <div class="popover-body">
             <div style="display: flex; flex-direction: column; gap: 8px">
+              <p style="min-width: 200px">
+                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.
+              </p>
               <a
                 href="#"
                 @click="(e) => handleAction(e, 'Modifica profilo')"
                 style="color: var(--bs-primary); text-decoration: none"
               >
-                📝 Modifica profilo
+                Modifica profilo
               </a>
               <a
                 href="#"
                 @click="(e) => handleAction(e, 'Impostazioni')"
                 style="color: var(--bs-primary); text-decoration: none"
               >
-                ⚙️ Impostazioni
+                Impostazioni
               </a>
               <a
                 href="#"
                 @click="(e) => handleAction(e, 'Esci')"
                 style="color: var(--bs-danger); text-decoration: none"
               >
-                🚪 Esci
+                Esci
               </a>
             </div>
           </div>
@@ -54,17 +51,20 @@
     <p>I popover possono essere posizionati in diverse direzioni.</p>
     <div style="display: flex; gap: 1rem; flex-wrap: wrap">
       <it-popover placement="bottom-start">
-        <it-button slot="trigger" variant="primary" @click="handleTriggerClick">Giù</it-button>
+        <it-button slot="trigger" variant="primary">Giù</it-button>
         <div slot="content" class="popover">
           <div class="popover-inner">
-            <h3 class="popover-header">Azioni rapide</h3>
+            <h3 class="popover-header" style="margin-bottom: 0">Azioni rapide</h3>
             <div class="popover-body">
+              <p style="min-width: 200px">
+                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.
+              </p>
               <a
                 href="#"
                 @click="(e) => handleAction(e, 'Copia link')"
                 style="color: var(--bs-primary); display: block"
               >
-                📋 Copia link
+                Copia link
               </a>
             </div>
           </div>
@@ -72,13 +72,16 @@
       </it-popover>
 
       <it-popover placement="left">
-        <it-button slot="trigger" variant="primary" @click="handleTriggerClick">Sinistra</it-button>
+        <it-button slot="trigger" variant="primary">Sinistra</it-button>
         <div slot="content" class="popover">
           <div class="popover-inner">
-            <h3 class="popover-header">Azioni rapide</h3>
+            <h3 class="popover-header" style="margin-bottom: 0">Azioni rapide</h3>
             <div class="popover-body">
+              <p style="min-width: 200px">
+                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.
+              </p>
               <a href="#" @click="(e) => handleAction(e, 'Condividi')" style="color: var(--bs-primary); display: block">
-                📤 Condividi
+                Condividi
               </a>
             </div>
           </div>
@@ -86,11 +89,14 @@
       </it-popover>
 
       <it-popover placement="top-start">
-        <it-button slot="trigger" variant="primary" @click="handleTriggerClick">Su</it-button>
+        <it-button slot="trigger" variant="primary">Su</it-button>
         <div slot="content" class="popover">
           <div class="popover-inner">
-            <h3 class="popover-header">Azioni rapide</h3>
+            <h3 class="popover-header" style="margin-bottom: 0">Azioni rapide</h3>
             <div class="popover-body">
+              <p style="min-width: 200px">
+                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.
+              </p>
               <a href="#" @click="(e) => handleAction(e, 'Scarica')" style="color: var(--bs-primary); display: block">
                 ⬇️ Scarica
               </a>
@@ -100,17 +106,20 @@
       </it-popover>
 
       <it-popover placement="right">
-        <it-button slot="trigger" variant="primary" @click="handleTriggerClick">Destra</it-button>
+        <it-button slot="trigger" variant="primary">Destra</it-button>
         <div slot="content" class="popover">
           <div class="popover-inner">
-            <h3 class="popover-header">Azioni rapide</h3>
+            <h3 class="popover-header" style="margin-bottom: 0">Azioni rapide</h3>
             <div class="popover-body">
+              <p style="min-width: 200px">
+                Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.
+              </p>
               <a
                 href="#"
                 @click="(e) => handleAction(e, 'Aggiungi ai preferiti')"
                 style="color: var(--bs-primary); display: block"
               >
-                ⭐ Aggiungi ai preferiti
+                Aggiungi ai preferiti
               </a>
             </div>
           </div>
@@ -124,19 +133,21 @@
     <h2>Titolo con icona e link</h2>
     <p>È possibile aggiungere un'icona nel titolo e link nel contenuto.</p>
     <it-popover placement="top">
-      <it-button slot="trigger" variant="primary" @click="handleTriggerClick">Info documento</it-button>
+      <it-button slot="trigger" variant="primary">Info documento</it-button>
       <div slot="content" class="popover">
         <div class="popover-inner">
-          <h3 class="popover-header">
+          <h3 class="popover-header" style="margin-bottom: 0">
             <it-icon name="it-info-circle" size="sm" style="margin-right: 0.5rem"></it-icon>
             Informazioni documento
           </h3>
           <div class="popover-body">
-            Questo documento contiene informazioni sensibili. Prima di procedere assicurati di avere le autorizzazioni
-            necessarie.
-            <a href="#" class="popover-inner-link" @click="(e) => handleAction(e, 'Policy completa')"
-              >Leggi la policy completa</a
-            >
+            <p style="min-width: 200px">
+              Questo documento contiene informazioni sensibili. Prima di procedere assicurati di avere le autorizzazioni
+              necessarie.
+              <a href="#" class="popover-inner-link" @click="(e) => handleAction(e, 'Policy completa')"
+                >Leggi la policy completa</a
+              >
+            </p>
           </div>
         </div>
       </div>
@@ -150,12 +161,7 @@
     <p style="max-width: 500px">
       Per maggiori informazioni sulla privacy e su come trattiamo i tuoi dati,
       <it-popover placement="top">
-        <a
-          href="#"
-          slot="trigger"
-          style="text-decoration: underline; color: var(--bs-primary)"
-          @click="handleTriggerClick"
-        >
+        <a href="#" slot="trigger" style="text-decoration: underline; color: var(--bs-primary)">
           consulta le nostre policy
         </a>
         <div slot="content" class="popover">
@@ -198,11 +204,11 @@
     <h2>Eventi</h2>
     <p>Il componente emette eventi quando viene aperto e chiuso.</p>
     <it-popover placement="bottom-start" @it-popover-open="handlePopoverOpen" @it-popover-close="handlePopoverClose">
-      <it-button slot="trigger" variant="primary" @click="handleTriggerClick">Popover con eventi</it-button>
+      <it-button slot="trigger" variant="primary">Popover con eventi</it-button>
       <div slot="content" class="popover">
         <div class="popover-inner">
-          <h3 class="popover-header">Eventi del Popover</h3>
-          <div class="popover-body">Apri e chiudi questo popover per vedere gli eventi nella console del browser.</div>
+          <h3 class="popover-header" style="margin-bottom: 0">Eventi del Popover</h3>
+          <div class="popover-body">Apri e chiudi questo popover per vedere gli eventi nella console.</div>
         </div>
       </div>
     </it-popover>
@@ -216,13 +222,6 @@ export default {
   name: 'PopoverDemo',
   setup() {
     const popoverRef = ref(null);
-
-    const handleTriggerClick = (e) => {
-      if (e.currentTarget.tagName && e.currentTarget.tagName.toLowerCase() === 'a' && e.currentTarget.getAttribute('href') === '#') {
-        e.preventDefault();
-      }
-      e.currentTarget.closest('it-popover')?.toggle();
-    };
 
     const handleAction = (e, action) => {
       e.preventDefault();
@@ -252,7 +251,6 @@ export default {
 
     return {
       popoverRef,
-      handleTriggerClick,
       handleAction,
       openPopover,
       closePopover,
