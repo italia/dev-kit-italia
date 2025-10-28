@@ -44,7 +44,7 @@ Per navigare tra gli elementi puoi usare il tasto: **TAB** (tabulazione).
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>
-E' necessario passare al componente \`it-skiplinks\` l'attributo \`aria-label\` dedicato che ne spieghi l’uso.
+È necessario passare al componente \`it-skiplinks\` l'attributo \`it-aria-label\` dedicato che ne spieghi l’uso.
 </p></div></div>
 
 
