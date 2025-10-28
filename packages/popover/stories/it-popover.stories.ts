@@ -63,13 +63,12 @@ Utilizza [Floating UI](https://floating-ui.com/) per il posizionamento dinamico 
 
 Il componente implementa le best practices UX per i popover come [Polaris (Shopify)](https://polaris.shopify.com/components/overlays/popover), [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/popovers) e [Material Design](https://m3.material.io/).
 
-Il componente non implementa event listener automatici perché questi dipendono dal contesto d'uso e dal tipo di trigger che l'utente vuole utilizzare, ed è dunque a carico dell'utilizzatore: vengono in seguito forniti esempi.
-
-Il componente gestisce comunque automaticamente il **click outside** per chiudere il popover (light dismiss pattern), perché questa è una caratteristica intrinseca dei popover.
+Il componente gestisce automaticamente il **click outside** e il tasto <kbd>Esc</kbd> per chiudere il popover (light dismiss pattern), perché questa è una caratteristica intrinseca dei popover.
+Eventuali altri comportamenti devono essere implementati dall’utilizzatore in base al contesto specifico.
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>Il componente gestisce automaticamente gli attributi ARIA necessari come <code>aria-haspopup</code> e <code>aria-expanded</code>.</p>
-<p>Il popover si chiude automaticamente quando si fa clic all'esterno.</p>
+<p>Il popover si chiude automaticamente quando si fa clic all'esterno o si preme il tasto <kbd>Esc</kbd>.</p>
 <p>È possibile controllare il popover anche tramite i metodi <code>openPopover()</code>, <code>closePopover()</code> e <code>toggle()</code>.</p>
 <p>Il comportamento del focus non è gestito dal componente stesso, ma è lasciato all’utilizzatore. Questa scelta nasce dalla consapevolezza che solo l’utilizzatore conosce in dettaglio il contenuto del popover e il contesto in cui viene utilizzato, e può quindi determinare quale elemento debba ricevere il focus e quando farlo.
 
@@ -93,8 +92,6 @@ Un **popover** è un overlay non-modale che appare vicino a un elemento specific
 Il popover richiede due slot:
 - \`trigger\`: L'elemento che attiva il popover (generalmente un pulsante)
 - \`content\`: Il contenuto da visualizzare nel popover
-\`\`\`
-
 `,
       },
     },
