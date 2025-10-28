@@ -199,5 +199,62 @@ describe('Popover component', () => {
 
       expect(popover.open).to.be.false;
     });
+
+    it('closes on Escape key press', async () => {
+      const el = await fixture<ItPopover>(html`
+        <it-popover>
+          <it-button slot="trigger">Trigger</it-button>
+          <div slot="content" class="popover">
+            <div class="popover-inner">
+              <div class="popover-body">Content</div>
+            </div>
+          </div>
+        </it-popover>
+      `);
+
+      el.openPopover();
+      await el.updateComplete;
+      expect(el.open).to.be.true;
+
+      const escapeEvent = new KeyboardEvent('keydown', {
+        key: 'Escape',
+        bubbles: true,
+        cancelable: true,
+      });
+      el.querySelector('it-button')?.dispatchEvent(escapeEvent);
+
+      await waitUntil(() => !el.open, 'Popover should close on Escape key press');
+
+      expect(el.open).to.be.false;
+    });
+
+    it('does not have standard events when controlled', async () => {
+      const el = await fixture<ItPopover>(html`
+        <it-popover controlled>
+          <it-button slot="trigger">Trigger</it-button>
+          <div slot="content" class="popover">
+            <div class="popover-inner">
+              <div class="popover-body">Content</div>
+            </div>
+          </div>
+        </it-popover>
+      `);
+
+      expect(el.controlled).to.be.true;
+
+      el.openPopover();
+      await el.updateComplete;
+      expect(el.open).to.be.true;
+
+      const escapeEvent = new KeyboardEvent('keydown', {
+        key: 'Escape',
+        bubbles: true,
+        cancelable: true,
+      });
+      el.querySelector('it-button')?.dispatchEvent(escapeEvent);
+
+      // Since it's controlled, it should remain open
+      expect(el.open).to.be.true;
+    });
   });
 });

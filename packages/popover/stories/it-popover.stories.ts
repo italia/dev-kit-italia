@@ -52,7 +52,6 @@ const meta = {
       ],
     },
   },
-  decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
   parameters: {
     docs: {
       description: {
@@ -94,28 +93,6 @@ Un **popover** è un overlay non-modale che appare vicino a un elemento specific
 Il popover richiede due slot:
 - \`trigger\`: L'elemento che attiva il popover (generalmente un pulsante)
 - \`content\`: Il contenuto da visualizzare nel popover
-
-L'utente deve aggiungere gli event listener necessari per aprire/chiudere il popover chiamando i metodi \`toggle()\`, \`openPopover()\` o \`closePopover()\`.
-
-\`\`\`html
-<it-popover>
-  <it-button slot="trigger" id="trigger-btn">Clicca per aprire</it-button>
-  <div slot="content" class="popover">
-    <div class="popover-inner">
-      <h4 class="popover-header" style="margin-bottom:0;">Titolo</h4>
-      <div class="popover-body">Contenuto del popover</div>
-    </div>
-  </div>
-</it-popover>
-
-<script>
-  const popover = document.querySelector('it-popover');
-  const trigger = document.getElementById('trigger-btn');
-
-  trigger.addEventListener('click', () => {
-    popover.toggle();
-  });
-</script>
 \`\`\`
 
 `,
@@ -137,12 +114,6 @@ function disabledControls(except?: (keyof (typeof meta)['argTypes'])[]) {
 
 export const Base: Story = {
   render: (args) => {
-    const handleClick = (e: Event) => {
-      const button = e.target as HTMLElement;
-      const popover = button.closest('it-popover') as any;
-      popover?.toggle();
-    };
-
     const handleActionClick = (e: Event, action: string) => {
       e.preventDefault();
       const button = e.target as HTMLElement;
@@ -154,9 +125,7 @@ export const Base: Story = {
 
     return html`
       <it-popover placement=${ifDefined(args.placement)} ?open=${args.open}>
-        <it-button slot="trigger" variant="primary" @click=${handleClick}>
-          Opzioni utente, clicca per aprire
-        </it-button>
+        <it-button slot="trigger" variant="primary">Opzioni utente, clicca per aprire</it-button>
         <div slot="content" class="popover">
           <div class="popover-inner">
             <h4 class="popover-header" style="margin-bottom:0;">Menu azioni</h4>
@@ -193,6 +162,7 @@ export const Base: Story = {
       </it-popover>
     `;
   },
+  decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
   parameters: {
     ...meta.parameters,
     docs: {
@@ -209,12 +179,6 @@ export const Base: Story = {
 
 export const Direzioni: Story = {
   render: () => {
-    const handleClick = (e: Event) => {
-      const button = e.target as HTMLElement;
-      const popover = button.closest('it-popover') as any;
-      popover?.toggle();
-    };
-
     const handleLinkClick = (e: Event) => {
       e.preventDefault();
       const link = e.target as HTMLElement;
@@ -224,11 +188,8 @@ export const Direzioni: Story = {
     };
 
     return html`
-      <div
-        style="height:400px;width:200px;display:flex;align-items:flex-start;gap: 2rem;flex-wrap: wrap;justify-content: center;"
-      >
         <it-popover placement="bottom-start">
-          <it-button slot="trigger" variant="primary" @click=${handleClick}>Giù</it-button>
+          <it-button slot="trigger" variant="primary">Giù</it-button>
           <div slot="content" class="popover">
             <div class="popover-inner">
               <h4 class="popover-header" style="margin-bottom:0;">Azioni rapide</h4>
@@ -241,7 +202,7 @@ export const Direzioni: Story = {
         </it-popover>
 
         <it-popover placement="left">
-          <it-button slot="trigger" variant="primary" @click=${handleClick}>Sinistra</it-button>
+          <it-button slot="trigger" variant="primary">Sinistra</it-button>
           <div slot="content" class="popover">
             <div class="popover-inner">
               <h4 class="popover-header" style="margin-bottom:0;">Azioni rapide</h4>
@@ -254,7 +215,7 @@ export const Direzioni: Story = {
         </it-popover>
 
         <it-popover placement="top-start">
-          <it-button slot="trigger" variant="primary" @click=${handleClick}>Su</it-button>
+          <it-button slot="trigger" variant="primary">Su</it-button>
           <div slot="content" class="popover">
             <div class="popover-inner">
               <h4 class="popover-header" style="margin-bottom:0;">Azioni rapide</h4>
@@ -267,7 +228,7 @@ export const Direzioni: Story = {
         </it-popover>
 
         <it-popover placement="right">
-          <it-button slot="trigger" variant="primary" @click=${handleClick}>Destra</it-button>
+          <it-button slot="trigger" variant="primary">Destra</it-button>
           <div slot="content" class="popover">
             <div class="popover-inner">
               <h4 class="popover-header" style="margin-bottom:0;">Azioni rapide</h4>
@@ -280,10 +241,12 @@ export const Direzioni: Story = {
             </div>
           </div>
         </it-popover>
-      </div>
     `;
   },
-  decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
+  decorators: [
+    (Story) =>
+      html`<div style="${containerStyle}width:200px;gap:2rem;flex-wrap:wrap;justify-content:center">${Story()}</div>`,
+  ],
   argTypes: { ...disabledControls() },
   parameters: {
     ...meta.parameters,
@@ -308,12 +271,6 @@ la posizione esatta del popover rispetto al trigger`,
 export const ConIconaELink: Story = {
   name: 'Titolo con icona e link',
   render: () => {
-    const handleClick = (e: Event) => {
-      const button = e.target as HTMLElement;
-      const popover = button.closest('it-popover') as any;
-      popover?.toggle();
-    };
-
     const handleLinkClick = (e: Event) => {
       e.preventDefault();
       const link = e.target as HTMLElement;
@@ -323,8 +280,8 @@ export const ConIconaELink: Story = {
     };
 
     return html`
-      <it-popover placement="top-start">
-        <it-button slot="trigger" variant="primary" @click=${handleClick}>Info documento</it-button>
+      <it-popover>
+        <it-button slot="trigger" variant="primary">Info documento</it-button>
         <div slot="content" class="popover">
           <div class="popover-inner">
             <h4 class="popover-header" style="margin-bottom:0;">
@@ -399,13 +356,6 @@ export const ConIconaELink: Story = {
 export const PopoverSenzaPulsante: Story = {
   name: 'Con trigger personalizzato',
   render: () => {
-    const handleClick = (e: Event) => {
-      e.preventDefault();
-      const link = e.target as HTMLElement;
-      const popover = link.closest('it-popover') as any;
-      popover?.toggle();
-    };
-
     const handleActionClick = (e: Event, action: string) => {
       e.preventDefault();
       const link = e.target as HTMLElement;
@@ -415,8 +365,8 @@ export const PopoverSenzaPulsante: Story = {
     };
 
     return html`
-      <it-popover placement="top-start">
-        <a href="#" slot="trigger" style="text-decoration:underline;color:var(--bs-primary);" @click=${handleClick}>
+      <it-popover>
+        <a href="#" slot="trigger" style="text-decoration:underline;color:var(--bs-primary);">
           Trigger personalizzato
         </a>
         <div slot="content" class="popover">
@@ -482,7 +432,7 @@ export const PopoverConHover: Story = {
     };
 
     return html`
-      <it-popover placement="top-start">
+      <it-popover>
         <it-button slot="trigger" variant="primary" @mouseenter=${handleMouseEnter} @mouseleave=${handleMouseLeave}>
           Passa il mouse sopra
         </it-button>
@@ -593,24 +543,22 @@ export const PopoverConFocus: Story = {
     };
 
     return html`
-      <div style="height:600px;">
-        <it-popover placement="bottom-start">
-          <it-button slot="trigger" variant="primary" @focus=${handleFocus} @blur=${handleBlur}>
-            Usa Tab per focus
-          </it-button>
-          <div slot="content" class="popover" @focus=${handleContentFocus} @blur=${handleContentBlur}>
-            <div class="popover-inner">
-              <h4 class="popover-header" style="margin-bottom:0;">Esempio tecnico</h4>
-              <div class="popover-body">
-                <p style="min-width: 200px;">
-                  Questo è un esempio tecnico di attivazione su focus tramite navigazione Tab. Per contenuti informativi
-                  brevi si raccomanda l'utilizzo di un Tooltip.
-                </p>
-              </div>
+      <it-popover>
+        <it-button slot="trigger" variant="primary" @focus=${handleFocus} @blur=${handleBlur}>
+          Usa Tab per focus
+        </it-button>
+        <div slot="content" class="popover" @focus=${handleContentFocus} @blur=${handleContentBlur}>
+          <div class="popover-inner">
+            <h4 class="popover-header" style="margin-bottom:0;">Esempio tecnico</h4>
+            <div class="popover-body">
+              <p style="min-width: 200px;">
+                Questo è un esempio tecnico di attivazione su focus tramite navigazione Tab. Per contenuti informativi
+                brevi si raccomanda l'utilizzo di un Tooltip.
+              </p>
             </div>
           </div>
-        </it-popover>
-      </div>
+        </div>
+      </it-popover>
     `;
   },
   decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
@@ -691,15 +639,35 @@ popoverContent.addEventListener('blur', handleContentBlur);
   },
 };
 
-export const Eventi: Story = {
-  name: 'Eventi',
-  render: () => {
-    const handleClick = (e: Event) => {
-      const button = e.target as HTMLElement;
-      const popover = button.closest('it-popover') as any;
-      popover?.toggle();
-    };
+export const AttivazioneControllata: Story = {
+  name: 'Attivazione controllata',
+  tags: ['!dev'],
+  render: () => html`
+    <it-popover controlled>
+      <it-button slot="trigger" variant="primary" id="controlled-trigger"> Popover controllato </it-button>
+      <div slot="content" class="popover">
+        <div class="popover-inner">
+          <div class="popover-body">Questo popover non si aprirà e questo testo non si vedrà.</div>
+        </div>
+      </div>
+    </it-popover>
+  `,
+  decorators: [(Story) => html`<div style="${containerStyle}height:auto">${Story()}</div>`],
+  argTypes: { ...disabledControls() },
+  parameters: {
+    ...meta.parameters,
+    docs: {
+      source: { excludeDecorators: true },
+      description: {
+        story:
+          "Impostando l'attributo `controlled`, il popover non gestisce automaticamente l'apertura e la chiusura. L'utilizzatore deve chiamare i metodi `openPopover()`, `closePopover()` o `toggle()` per controllarne lo stato.",
+      },
+    },
+  },
+};
 
+export const Eventi: Story = {
+  render: () => {
     const handleOpen = (e: CustomEvent) => {
       console.log('Popover aperto', e);
     };
@@ -709,17 +677,15 @@ export const Eventi: Story = {
     };
 
     return html`
-      <div style="display:flex;flex-direction:column;gap:1rem;align-items:center;">
-        <it-popover placement="bottom-start" @it-popover-open=${handleOpen} @it-popover-close=${handleClose}>
-          <it-button slot="trigger" variant="primary" @click=${handleClick}>Popover con eventi</it-button>
-          <div slot="content" class="popover">
-            <div class="popover-inner">
-              <h4 class="popover-header" style="margin-bottom:0;">Eventi del Popover</h4>
-              <div class="popover-body">Apri e chiudi questo popover per vedere gli eventi nella console.</div>
-            </div>
+      <it-popover @it-popover-open=${handleOpen} @it-popover-close=${handleClose}>
+        <it-button slot="trigger" variant="primary">Popover con eventi</it-button>
+        <div slot="content" class="popover">
+          <div class="popover-inner">
+            <h4 class="popover-header" style="margin-bottom:0;">Eventi del Popover</h4>
+            <div class="popover-body">Apri e chiudi questo popover per vedere gli eventi nella console.</div>
           </div>
-        </it-popover>
-      </div>
+        </div>
+      </it-popover>
     `;
   },
   decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],

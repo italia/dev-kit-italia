@@ -150,6 +150,7 @@ export class ItDropdown extends BaseComponent {
         @it-popover-close=${this._onPopoverClose}
         exportparts="focusable, icon, button"
         ?open=${this._popoverOpen}
+        controlled
       >
         <it-button
           id=${this._buttonId}

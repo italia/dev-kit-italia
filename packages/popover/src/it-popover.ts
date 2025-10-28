@@ -1,7 +1,7 @@
 import { type ItButton } from '@italia/button';
 import { BaseComponent } from '@italia/globals';
 import { customElement, property, query } from 'lit/decorators.js';
-import { html } from 'lit';
+import { html, PropertyValues } from 'lit';
 import { computePosition, offset, flip, shift, autoUpdate, arrow, type Placement, size } from '@floating-ui/dom';
 import styles from './popover.scss';
 
@@ -12,6 +12,8 @@ export class ItPopover extends BaseComponent {
   static styles = styles;
 
   @property({ type: Boolean, reflect: true }) open = false;
+
+  @property({ type: Boolean }) controlled = false;
 
   @property({ type: String }) placement: PopoverPlacement = 'bottom-start';
 
@@ -45,15 +47,33 @@ export class ItPopover extends BaseComponent {
     }
   }
 
-  connectedCallback() {
-    super.connectedCallback?.();
+  protected setupStandardEvents() {
     document.addEventListener('click', this._onDocumentClick);
+    this._triggerElement?.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.toggle();
+    });
+    this._triggerElement?.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.open) {
+        this.closePopover();
+      }
+    });
+    this._contentElement?.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.open) {
+        this.closePopover();
+      }
+    });
   }
 
   disconnectedCallback() {
     super.disconnectedCallback?.();
     document.removeEventListener('click', this._onDocumentClick);
     this._cleanup?.();
+  }
+
+  protected firstUpdated(_changedProperties: PropertyValues): void {
+    super.firstUpdated(_changedProperties);
+    if (!this.controlled) this.setupStandardEvents();
   }
 
   updated(changedProps: Map<string, any>) {
@@ -163,6 +183,7 @@ export class ItPopover extends BaseComponent {
 
   public closePopover() {
     this.open = false;
+    this._triggerElement?.focus();
   }
 
   render() {
