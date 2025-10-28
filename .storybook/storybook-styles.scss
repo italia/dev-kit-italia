@@ -48,6 +48,10 @@
       font-size: 80%;
       font-weight: 600;
     }
+
+    strong {
+      font-weight: bold;
+    }
   }
 
   pre:not(.sb-story pre),
@@ -201,6 +205,16 @@ table.docblock-argstable {
 #anchor--componenti-icona--informazioni-utili .sbdocs-preview,
 #anchor--componenti-footer--placeholder .sbdocs-preview {
   display: none;
+}
+
+#anchor--componenti-skiplinks--esempio-interattivo {
+  .docs-story {
+    > div:first-of-type {
+      > div:first-of-type {
+        width: 100%;
+      }
+    }
+  }
 }
 
 .sbdocs.sbdocs-preview:has(.hide-preview) {

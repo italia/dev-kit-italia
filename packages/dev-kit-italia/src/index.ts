@@ -8,6 +8,7 @@ export * from '@italia/dropdown';
 export * from '@italia/icon';
 export * from '@italia/input';
 export * from '@italia/section';
+export * from '@italia/skiplinks';
 export * from '@italia/popover';
 export * from '@italia/video';
 
