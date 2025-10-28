@@ -7,7 +7,7 @@ import styles from './skiplinks.scss';
 export class ItSkiplinks extends BaseComponent {
   static styles = styles;
 
-  links = [];
+  protected links = [];
 
   private _onSlotChange(e: any) {
     const slot = e.target;
