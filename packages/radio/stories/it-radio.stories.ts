@@ -511,7 +511,7 @@ export const RaggruppatiVisivamente: Story = {
 };
 
 export const RadioGroupRequired: Story = {
-  name: 'Validazione',
+  name: 'Validazione e gestione degli errori',
   parameters: {
     docs: {
       description: {
@@ -534,6 +534,7 @@ Verranno mostrati i messaggi di errore nativi, e i componenti \`<it-radio-group>
 </form>
 \`\`\`
 
+<br/>
 ### Personalizzazione dei messaggi di errore
 
 E' possibile personalizzare alcuni dei messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
@@ -543,141 +544,15 @@ E' possibile personalizzare alcuni dei messaggi di errore di validazione, traduc
 
 Non esistono altre possibili validazioni native per questo tipo di input. Per validazioni custom dovrai fornire i tuoi messaggi di errore.
 
-### Validazione esterna (validazione custom)
 
-E' inoltre possibile validare il radio group esternamente (via js ad esempio, o lato server), impostando l'attributo \`custom-validation="true"\`. In questo modo la validazione di default del browser effettuata internamente al componente è disabilitata.
-
-#### Radio group invalido
-
-Nel caso il radio group non sia valido, è necessario invalidare il componente impostando il messaggio di errore da visualizzare attraverso l'attributo \`validity-message="Messaggio di errore"\`.
-
-#### Radio group valido
-
-Per riportare il radio group ad uno stato 'valido', è sufficiente impostare il messaggio di errore a vuoto: \`validity-message=""\`.
-
-### Validazione con JustValidate
-
-Il componente \`<it-radio-group>\` è compatibile con librerie di validazione esterne come [JustValidate](https://just-validate.dev/). Nell'esempio seguente viene mostrato come integrare JustValidate per validare un radio group obbligatorio.
-
-\`\`\`javascript
-const formEl = document.querySelector('#demo-form');
-const validate = new JustValidate(formEl);
-
-validate.addField('it-radio-group[name="scelta"]', [
-  {
-    rule: 'required',
-    errorMessage: 'Scelta obbligatoria',
-  },
-  {
-    validator: (value) => {
-      return Boolean(value);
-    },
-    errorMessage: 'Seleziona un valore',
-  },
-]);
-
-validate.onValidate((props) => {
-  const { fields } = props;
-  // Rimuovi messaggi creati da JustValidate
-  document.querySelectorAll('.just-validate-error-label').forEach((el) => el.remove());
-  // Aggiorna il Web Component
-  Object.keys(fields).forEach((k) => {
-    const f = fields[k];
-    const wc = f.elem;
-    if (wc) {
-      wc.validationText = f.isValid ? '' : f.errorMessage;
-    }
-  });
-  // Optional:  Listen to change events on radio-group to revalidate in real-time
-  const radioGroup = formEl.querySelector('it-radio-group[name="scelta"]');
-  if (radioGroup) {
-    radioGroup.addEventListener('change', () => {
-      // Revalidate the field when value changes (clears error if now valid)
-      validate.revalidateField('it-radio-group[name="scelta"]');
-    });
-  }
-});
-
-
-\`\`\`
 `,
       },
     },
   },
   render: () => html`
-    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        const formEl = document.querySelector('#demo-form');
-
-        // Inizializziamo JustValidate senza selettore, passando il form element
-        const validate = new JustValidate(formEl);
-
-        // Funzione helper per leggere valore da <it-input>
-        const getItInputValue = (selector) => {
-          const el = formEl.querySelector(selector);
-          return el?.value || ''; // .value dovrebbe essere esposto dal tuo componente
-        };
-
-        // Aggiungiamo regole
-        validate.addField(
-          'it-radio-group[name="scelta"]',
-          [
-            {
-              rule: 'required',
-              errorMessage: 'Scelta obbligatoria',
-            },
-            {
-              validator: (value) => {
-                return Boolean(value);
-              },
-              errorMessage: 'Seleziona un valore',
-            },
-          ],
-          {
-            errorsContainer: '#radio-errors-container',
-          },
-        );
-
-        // Gestisci submit manualmente
-        formEl.addEventListener('submit', (e) => {
-          e.preventDefault();
-
-          const radioGroup = formEl.querySelector('it-radio-group[name="scelta"]');
-
-          // Rimuovi sempre i messaggi DOM di JustValidate
-          document.querySelectorAll('.just-validate-error-label').forEach((el) => el.remove());
-
-          // Controlla se il valore è vuoto
-          if (!radioGroup || !radioGroup.value) {
-            // Mostra errore
-            radioGroup.setAttribute('validity-message', 'Scelta obbligatoria');
-          } else {
-            // Rimuovi errore e procedi
-            radioGroup.setAttribute('validity-message', '');
-            console.log('Form valido, valore:', radioGroup.value);
-          }
-        });
-
-        // Listen to change events on radio-group to clear error
-        const radioGroup = formEl.querySelector('it-radio-group[name="scelta"]');
-        if (radioGroup) {
-          radioGroup.addEventListener('change', () => {
-            // Quando l'utente seleziona qualcosa, rimuovi l'errore immediatamente
-            radioGroup.setAttribute('validity-message', '');
-          });
-        }
-        // oppure
-        // validate.onSuccess(( event ) => {
-        //  submit della form
-        //   event.currentTarget.submit();
-        // });
-      });
-    </script>
-
     <form id="demo-form">
-      <it-radio-group name="scelta" required custom-validation>
-        <span slot="label">Esempio con validazione JustValidate</span>
+      <it-radio-group name="scelta" required>
+        <span slot="label">Esempio con validazione</span>
         <it-radio value="si">
           <span slot="label">Sì, accetto</span>
         </it-radio>
@@ -697,40 +572,4 @@ validate.onValidate((props) => {
 export const MetodiEPropPubblici: Story = {
   ...StoryFormControlMethodAndProps('', `|\`click()\`| Triggera l'evento di click sull'input reale | - |`),
   tags: ['!dev'],
-};
-export const I18n: Story = {
-  name: 'i18n',
-  tags: ['!dev'],
-  render: () => html`<div class="hide-preview"></div>`,
-  parameters: {
-    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
-    docs: {
-      description: {
-        story: `
-Per questo componente sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
-
-Le traduzioni sono definite nel package \`@italia/globals\` e condivise con altri componenti form.
-
-\`\`\`js
-const translation = {
-  "validityRequired": "Questo campo è obbligatorio."
-}
-\`\`\`
-
-Per personalizzare le traduzioni, è possibile utilizzare l'utility di internazionalizzazione:
-
-\`\`\`js
-import { registerTranslation } from '@italia/i18n';
-
-registerTranslation({
-  $code: 'it',
-  $name: 'Italiano',
-  $dir: 'ltr',
-  validityRequired: 'Devi selezionare un'opzione.'
-});
-\`\`\`
-`,
-      },
-    },
-  },
 };
