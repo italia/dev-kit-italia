@@ -77,9 +77,9 @@ Delegare questa responsabilità garantisce maggiore flessibilità e coerenza fun
 Se l’obiettivo è creare un menu con azioni o un dropdown menu, è consigliato utilizzare il componente dedicato **Dropdown**, che gestisce automaticamente il comportamento del focus e altre logiche specifiche di navigazione e accessibilità.</p>
 </div></div>
 
-### Differenza tra Popover, Tooltip e Dialog/Modal
+### Differenze tra componenti simili
 
-Un **popover** è un overlay non-modale che appare vicino a un elemento specifico, fornendo contenuto aggiuntivo contestuale e interattivo.
+Un popover è una finestra che appare vicino a un elemento della pagina. Mostra informazioni extra con cui puoi interagire. Non blocca il resto della pagina.```
 
 | Pattern | Modale | Backdrop | Chiusura | Contenuto | Esempi |
 |---------|--------|----------|----------|-----------|--------|

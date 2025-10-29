@@ -4,7 +4,7 @@ Questo package contiene il web component `<it-popover>`, conforme agli standard 
 
 ## Cos'è un Popover?
 
-Un **popover** è un piccolo overlay non-modale che appare vicino a un elemento specifico dell'interfaccia, solitamente attivato da un'interazione dell'utente (click, hover, focus).
+Un **popover** è una finestra che appare vicino a un elemento della pagina. Mostra informazioni extra con cui puoi interagire. Non blocca il resto della pagina.
 
 ### Differenza tra Popover, Tooltip e Dialog
 
