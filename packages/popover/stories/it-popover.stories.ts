@@ -79,7 +79,7 @@ Se l’obiettivo è creare un menu con azioni o un dropdown menu, è consigliato
 
 ### Differenze tra componenti simili
 
-Un popover è una finestra che appare vicino a un elemento della pagina. Mostra informazioni extra con cui puoi interagire. Non blocca il resto della pagina.```
+Un popover è una finestra che appare vicino a un elemento della pagina. Mostra informazioni extra con cui puoi interagire. Non blocca il resto della pagina.
 
 | Pattern | Modale | Backdrop | Chiusura | Contenuto | Esempi |
 |---------|--------|----------|----------|-----------|--------|
