@@ -4,19 +4,9 @@ import '@italia/icon';
 import '@italia/button';
 
 const meta = {
-  title: 'Componenti/Liste',
-  tags: ['autodocs'],
-
+  title: 'Componenti/List',
+  // tags: ['autodocs'],
   parameters: {
-    docs: {
-      description: {
-        component: `
-<Description>La lista è un componente flessibile per la visualizzazione di liste con testo, link o elementi correlati.</Description>
-
-Le liste sono componenti basati su classi CSS che possono essere applicati direttamente all'HTML. Non sono web components, ma semplici stili da utilizzare nelle tue applicazioni.
-`,
-      },
-    },
     layout: 'padded',
   },
 } satisfies Meta;
@@ -27,23 +17,6 @@ type Story = StoryObj;
 // ============================================
 // TIPOLOGIE DI LISTA
 // ============================================
-
-export const IntroduzioneListe: Story = {
-  name: 'Tipologie di lista',
-  tags: ['!dev'],
-  parameters: {
-    viewMode: 'docs',
-    docs: {
-      canvas: { hidden: true, sourceState: 'none' },
-      description: {
-        story: `
-Le liste, costituite da tag \`<ul>\` con classe \`.it-list\` all'interno di un wrapper con classe \`.it-list-wrapper\`, possono contenere testi, link, icone, avatar, immagini o una combinazione di questi elementi.
-`,
-      },
-    },
-  },
-  render: () => html`<div class="hide-preview"></div>`,
-};
 
 export const ListaSemplice: Story = {
   name: 'Lista semplice solo testo',
@@ -76,11 +49,7 @@ export const ListaSemplice: Story = {
   `,
   parameters: {
     docs: {
-      description: {
-        story: `
-Lista di base con elementi testuali. Gli elementi possono essere semplici testi (\`<div class="list-item">\`) o link (\`<a class="list-item">\`).
-`,
-      },
+      canvas: { sourceState: 'shown' },
     },
   },
 };
@@ -123,20 +92,6 @@ export const ListaConAvatar: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-<div class="alert alert-warning" role="alert">
-  <it-icon name="it-warning-circle" color="warning" class="me-2"></it-icon>
-  <span class="font-sans-serif">Questo caso d'uso è in fase di sviluppo, sarà completo non appena sarà pronto il componente \`it-avatar\`.</span>
-</div>
-
-L'elemento \`.avatar\` precede l'elemento \`.it-right-zone\` che contiene il testo.
-`,
-      },
-    },
-  },
 };
 
 export const ListaConIcona: Story = {
@@ -177,15 +132,6 @@ export const ListaConIcona: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-L'elemento \`.it-rounded-icon\` con all'interno la relativa icona, precede l'elemento \`.it-right-zone\` che contiene il testo.
-`,
-      },
-    },
-  },
 };
 
 export const ListaConImmagine: Story = {
@@ -226,37 +172,11 @@ export const ListaConImmagine: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-L'elemento \`.it-thumb\` con all'interno la relativa immagine, precede l'elemento \`.it-right-zone\` che contiene il testo. Ha una dimensione massima di \`5rem\` che corrispondono a \`80px\`. La proporzione dell'immagine può essere modificata utilizzando le classi specifiche per le [proporzioni](/docs/organizzare-gli-spazi-proporzioni).
-`,
-      },
-    },
-  },
 };
 
 // ============================================
 // LISTA CON AZIONI
 // ============================================
-
-export const IntroduzioneAzioni: Story = {
-  name: 'Lista con azioni',
-  tags: ['!dev'],
-  parameters: {
-    viewMode: 'docs',
-    docs: {
-      canvas: { hidden: true, sourceState: 'none' },
-      description: {
-        story: `
-Le liste con azioni hanno al loro interno icone o elementi interattivi da associare ad azioni specifiche decise in base alle esigenze.
-`,
-      },
-    },
-  },
-  render: () => html`<div class="hide-preview"></div>`,
-};
 
 export const ListaConFreccia: Story = {
   name: 'Con freccia',
@@ -282,15 +202,6 @@ export const ListaConFreccia: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-L'elemento \`.icon\` con all'interno la relativa icona segue l'elemento \`.text\` che contiene il testo.
-`,
-      },
-    },
-  },
 };
 
 export const ListaConAzioniMultiple: Story = {
@@ -359,37 +270,11 @@ export const ListaConAzioniMultiple: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-L'elemento \`.it-multiple\` con all'interno le relative icone, segue l'elemento \`.text\`.
-`,
-      },
-    },
-  },
 };
 
 // ============================================
 // ALTRE VARIAZIONI
 // ============================================
-
-export const IntroduzioneVariazioni: Story = {
-  name: 'Altre variazioni',
-  tags: ['!dev'],
-  parameters: {
-    viewMode: 'docs',
-    docs: {
-      canvas: { hidden: true, sourceState: 'none' },
-      description: {
-        story: `
-Le liste possono includere metadata e testo aggiuntivo per fornire più informazioni.
-      `,
-      },
-    },
-  },
-  render: () => html`<div class="hide-preview"></div>`,
-};
 
 export const ListaConMetadata: Story = {
   name: 'Con metadata',
@@ -456,20 +341,6 @@ export const ListaConMetadata: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-<div class="alert alert-warning" role="alert">
-  <it-icon name="it-warning-circle" color="warning" class="me-2"></it-icon>
-  <span class="font-sans-serif">Questo caso d'uso è in fase di sviluppo, sarà completo non appena sarà pronto il componente \`it-avatar\`.</span>
-</div>
-
-Ad ogni lista si può aggiungere un campo testuale metadata, come nell'esempio seguente. L'elemento \`.metadata\`, segue l'elemento \`.text\`.
-`,
-      },
-    },
-  },
 };
 
 export const ListaConTestoAggiuntivo: Story = {
@@ -568,37 +439,11 @@ export const ListaConTestoAggiuntivo: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per avere una lista che permetta paragrafi di testo aggiuntivo per ogni elemento, bisogna utilizzare un approccio con titolo (heading) e paragrafo \`<p>\`, mantenendo la classe \`.text\` per l'elementi titolo. Entrambi devono essere inclusi in un elemento \`<div>\` per il corretto allineamento.
-`,
-      },
-    },
-  },
 };
 
 // ============================================
 // LISTE PER MENU DI NAVIGAZIONE
 // ============================================
-
-export const IntroduzioneMenuNavigazione: Story = {
-  name: 'Liste per menu di navigazione',
-  tags: ['!dev'],
-  parameters: {
-    viewMode: 'docs',
-    docs: {
-      canvas: { hidden: true, sourceState: 'none' },
-      description: {
-        story: `
-Le liste per menu di navigazione, costituite da tag \`<ul>\` con classe \`.link-list\` all'interno di un wrapper con classe \`.link-list-wrapper\`, vengono utilizzate per creare le voci dei menu Dropdown, Megamenu, Sidebar e Navscroll.
-`,
-      },
-    },
-  },
-  render: () => html`<div class="hide-preview"></div>`,
-};
 
 export const LinkListLineaSingola: Story = {
   name: 'Linea singola',
@@ -617,15 +462,6 @@ export const LinkListLineaSingola: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Lista di link semplice con linea singola. Ogni elemento è un link cliccabile.
-`,
-      },
-    },
-  },
 };
 
 export const LinkListElementoAttivo: Story = {
@@ -645,15 +481,6 @@ export const LinkListElementoAttivo: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per rendere attivo un elemento è sufficiente aggiungere la classe \`.active\` al relativo link.
-`,
-      },
-    },
-  },
 };
 
 export const LinkListElementoDisabilitato: Story = {
@@ -673,15 +500,6 @@ export const LinkListElementoDisabilitato: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per disabilitare un elemento è sufficiente aggiungere la classe \`.disabled\` al relativo link.
-`,
-      },
-    },
-  },
 };
 
 export const LinkListIntestazioneSenzaLink: Story = {
@@ -706,18 +524,6 @@ export const LinkListIntestazioneSenzaLink: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Le liste di link possono avere un'intestazione (con o senza link) e/o divisori per separare gruppi di link.
-
-L'intestazione è costituita dall'elemento \`.link-list-heading\` che precede il tag \`<ul>\`.
-Il divisore è costituito dal tag \`<span>\` con classe \`.divider\` e attributo \`role="separator"\` all'interno del tag \`<li>\`.
-`,
-      },
-    },
-  },
 };
 
 export const LinkListIntestazioneConLink: Story = {
@@ -768,15 +574,6 @@ export const LinkListDimensioni: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per ogni elemento di una lista di link è possibile definire una variante di dimensione maggiore utilizzando la classe \`.large\` applicata al tag \`<a>\`.
-`,
-      },
-    },
-  },
 };
 
 export const LinkListMultilineIcona: Story = {
@@ -821,40 +618,6 @@ export const LinkListMultilineIcona: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Ogni elemento di una lista di link può avere un'icona (a destra o sinistra del testo) ed un abstract.
-
-Per includere un'icona bisogna aggiungere al tag \`<a>\` una delle seguenti classi:
-- \`icon-right\`: se si vuole posizionare l'icona a destra del testo
-- \`icon-left\`: se si vuole posizionare l'icona a sinistra del testo
-
-All'interno del tag \`<span class="list-item-title-icon-wrapper">\` subito dopo lo \`<span class="list-item-title">\` contenente il testo, puoi inserire [l'icona necessaria](/docs/componenti-icon--documentazione).
-`,
-      },
-    },
-  },
-};
-
-export const ListaConControlli: Story = {
-  name: 'Lista con controlli',
-  tags: ['!dev'],
-  parameters: {
-    viewMode: 'docs',
-    docs: {
-      canvas: { hidden: true, sourceState: 'none' },
-      description: {
-        story: `
-Le liste di link con controlli sono caratterizzate da icone a destra e sinistra del testo. Quella di destra è descrittiva mentre quella di sinistra può essere un'eventuale azione aggiuntiva da gestire in Javascript.
-
-È necessario aggiungere al tag \`<a>\` la classe \`.icon-right\` se si vuole posizionare l'icona a destra del testo, oppure la classe \`.icon-left\` se si vuole posizionare l'icona a sinistra del testo.
-`,
-      },
-    },
-  },
-  render: () => html`<div class="hide-preview"></div>`,
 };
 
 export const LinkListControlliIconaSinistra: Story = {
@@ -889,15 +652,6 @@ export const LinkListControlliIconaSinistra: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-All'interno del tag \`<span class="list-item-title-icon-wrapper">\` subito prima del tag \`<span class="list-item-title">\` contenente il testo, puoi inserire [l'icona necessaria](/docs/componenti-icon--documentazione). Per posizionare correttamente l'icona a sinistra del testo bisogna aggiungere al tag \`<a>\` la classe: \`.icon-left\`.
-`,
-      },
-    },
-  },
 };
 
 export const LinkListControlliIconaDestra: Story = {
@@ -932,15 +686,6 @@ export const LinkListControlliIconaDestra: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-All'interno del tag \`<span class="list-item-title-icon-wrapper">\` subito dopo il tag \`<span class="list-item-title">\` contenente il testo, puoi inserire [l'icona necessaria](/docs/componenti-icon--documentazione). Per posizionare correttamente l'icona a destra del testo bisogna aggiungere al tag \`<a>\` la classe: \`.icon-right\`.
-`,
-      },
-    },
-  },
 };
 
 export const LinkListControlliDoppiaIcona: Story = {
@@ -975,17 +720,6 @@ export const LinkListControlliDoppiaIcona: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per aggiungere un'icona a sinistra del testo bisogna aggiungere al tag \`<a>\` la classe: \`.icon-left\`. Inserisci l'icona all'interno del tag \`<span class="list-item-title-icon-wrapper">\` subito prima del tag \`<span class="list-item-title">\` contenente il testo.
-
-Per aggiungere un'icona a destra del testo bisogna aggiungere al tag \`<a>\` la classe: \`.icon-right\`. Inserisci l'icona all'interno del tag \`<span class="list-item-title-icon-wrapper">\` subito dopo del tag \`<span class="list-item-title">\` contenente il testo.
-`,
-      },
-    },
-  },
 };
 
 export const LinkListToggle: Story = {
@@ -1012,20 +746,6 @@ export const LinkListToggle: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-<div class="alert alert-warning" role="alert">
-  <it-icon name="it-warning-circle" color="warning" class="me-2"></it-icon>
-  <span class="font-sans-serif">Questo caso d'uso è in fase di sviluppo, sarà completo non appena sarà pronto il componente \`it-toggle\`.</span>
-</div>
-
-Una lista di link può contenere anche elementi appartenenti ai form, di seguito un esempio contenente un [toggle](/docs/componenti-toggle--documentazione).
-`,
-      },
-    },
-  },
 };
 
 export const LinkListCheckbox: Story = {
@@ -1054,37 +774,6 @@ export const LinkListCheckbox: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-<div class="alert alert-warning" role="alert">
-  <it-icon name="it-warning-circle" color="warning" class="me-2"></it-icon>
-  <span class="font-sans-serif">Questo caso d'uso è in fase di sviluppo, sarà completo non appena sarà pronto il componente \`it-checkbox\`.</span>
-</div>
-
-Lista di link contenente un [checkbox](/docs/componenti-form-checkbox--documentazione).
-`,
-      },
-    },
-  },
-};
-
-export const ListeAnnidate: Story = {
-  name: 'Liste annidate',
-  tags: ['!dev'],
-  parameters: {
-    viewMode: 'docs',
-    docs: {
-      canvas: { hidden: true, sourceState: 'none' },
-      description: {
-        story: `
-Le liste di link possono contenere link con sottosezioni espanse o collassabili.
-`,
-      },
-    },
-  },
-  render: () => html`<div class="hide-preview"></div>`,
 };
 
 export const LinkListAnnidataEspansa: Story = {
@@ -1130,15 +819,6 @@ export const LinkListAnnidataEspansa: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Di seguito un esempio di navigazione annidata espansa.
-`,
-      },
-    },
-  },
 };
 
 export const LinkListAnnidataCollassabile: Story = {
@@ -1224,18 +904,4 @@ export const LinkListAnnidataCollassabile: Story = {
       </ul>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-<div class="alert alert-warning" role="alert">
-  <it-icon name="it-warning-circle" color="warning" class="me-2"></it-icon>
-  <span class="font-sans-serif">Questo caso d'uso è in fase di sviluppo, sarà completo non appena sarà pronto il componente \`it-collapse\`.</span>
-</div>
-
-Esempio di navigazione annidata collassabile. Per questo tipo di link list sono state utilizzate, oltre alle classi custom, le classi e gli attributi di Bootstrap per l'attivazione del comportamento collapse.
-`,
-      },
-    },
-  },
 };
