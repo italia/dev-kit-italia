@@ -147,7 +147,7 @@ export const ListaConIcona: Story = {
         <li>
           <div class="list-item">
             <div class="it-rounded-icon">
-              <it-icon name="it-folder""></it-icon>
+              <it-icon name="it-folder"></it-icon>
             </div>
             <div class="it-right-zone">
               <span class="text">Testo</span>
@@ -157,7 +157,7 @@ export const ListaConIcona: Story = {
         <li>
           <a href="#" class="list-item">
             <div class="it-rounded-icon">
-              <it-icon name="it-folder""></it-icon>
+              <it-icon name="it-folder"></it-icon>
             </div>
             <div class="it-right-zone">
               <span class="text">Link</span>
@@ -167,7 +167,7 @@ export const ListaConIcona: Story = {
         <li>
           <div class="list-item">
             <div class="it-rounded-icon">
-              <it-icon name="it-folder""></it-icon>
+              <it-icon name="it-folder"></it-icon>
             </div>
             <div class="it-right-zone">
               <span class="text">Testo</span>
@@ -494,7 +494,6 @@ export const ListaConTestoAggiuntivo: Story = {
                 </a>
                 <a href="#" aria-label="Testo - Azione 3">
                   <it-icon color="primary" name="it-code-circle" label="Codice"></it-icon>
-                  </svg>
                 </a>
               </span>
             </div>
@@ -919,7 +918,6 @@ export const LinkListControlliIconaDestra: Story = {
             <span class="list-item-title-icon-wrapper">
               <span class="list-item-title">Link lista 2</span>
               <it-icon name="it-link" color="primary" size="sm" label="Link"></it-icon>
-              </svg>
             </span>
           </a>
         </li>
