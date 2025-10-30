@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=/vue-app/",
     "preview": "vite preview"
   },
   "dependencies": {

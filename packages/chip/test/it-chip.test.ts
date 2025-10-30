@@ -59,9 +59,10 @@ describe('it-chip component', () => {
           avatar-alt="Avatar alt text"
         ></it-chip>
       `);
-      const img = el.shadowRoot?.querySelector('img');
-      expect(img?.getAttribute('src')).to.equal('https://randomuser.me/api/portraits/men/46.jpg');
-      expect(img?.getAttribute('alt')).to.equal('Avatar alt text');
+      const avatar = el.shadowRoot?.querySelector('it-avatar');
+      expect(avatar).to.exist;
+      expect(avatar?.getAttribute('src')).to.equal('https://randomuser.me/api/portraits/men/46.jpg');
+      expect(avatar?.getAttribute('alt')).to.equal('Avatar alt text');
     });
   });
 

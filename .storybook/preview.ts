@@ -1,10 +1,10 @@
-/** @type { import('@storybook/web-components').Preview } */
+import type { Preview } from '@storybook/web-components-vite';
 import './main.scss';
 import './storybook-styles.scss';
 import prettier from 'prettier-v2';
 import HTMLParser from 'prettier-v2/parser-html';
 
-const preview = {
+const preview: Preview = {
   parameters: {
     layout: 'centered',
     controls: {
@@ -16,7 +16,7 @@ const preview = {
     docs: {
       source: {
         // trasforma tutte le preview docs (restituendo il codice HTML formattato)
-        transform: (input) => {
+        transform: (input: string) => {
           if (!input || typeof input !== 'string') return input;
           const t = input.trim();
           if (!(t.startsWith('<') || /<\s*it-[a-z0-9-]+/i.test(input))) return input;
@@ -39,13 +39,35 @@ const preview = {
       },
     },
     options: {
-      storySort: {
-        order: [
-          'Welcome',
-          'PersonalizzazioneDegliStili',
-          'Componenti',
-          ['Accordion', 'Button', 'Chip', 'Dropdown', 'Form', 'Icon', 'Section', 'Video'],
-        ],
+      storySort: (a, b) => {
+        const order = ['Welcome', 'PersonalizzazioneDegliStili', 'Componenti'];
+
+        const kindA = a.title.split('/');
+        const kindB = b.title.split('/');
+
+        const topA = kindA[0];
+        const topB = kindB[0];
+
+        const topAIndex = order.indexOf(topA);
+        const topBIndex = order.indexOf(topB);
+
+        if (topAIndex !== -1 && topBIndex !== -1 && topAIndex !== topBIndex) {
+          return topAIndex - topBIndex;
+        } else if (topAIndex !== -1 && topBIndex === -1) {
+          return -1;
+        } else if (topAIndex === -1 && topBIndex !== -1) {
+          return 1;
+        }
+
+        // Se siamo dentro "Componenti", ordina alfabeticamente
+        if (topA === 'Componenti' && topB === 'Componenti') {
+          return (kindA[1] ?? '').localeCompare(kindB[1] ?? '', 'it', {
+            numeric: true,
+          });
+        }
+
+        // fallback: ordinamento alfabetico su id
+        return a.id.localeCompare(b.id, 'it', { numeric: true });
       },
     },
   },
@@ -54,7 +76,7 @@ const preview = {
 export default preview;
 
 export const decorators = [
-  (Story) => {
+  (Story: any) => {
     // Usa un effetto per agire sul documento dell'iframe dopo il mount
     // Funziona anche con React o senza (a seconda del setup)
 

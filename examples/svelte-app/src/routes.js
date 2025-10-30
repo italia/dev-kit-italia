@@ -8,6 +8,7 @@ import Input from './pages/Input.svelte';
 import Section from './pages/Section.svelte';
 import Sticky from './pages/Sticky.svelte';
 import Video from './pages/Video.svelte';
+import Avatar from './pages/Avatar.svelte';
 
 export const AppRoutes = [
   { path: '/accordion', element: Accordion, title: 'Accordion' },
@@ -20,6 +21,7 @@ export const AppRoutes = [
   { path: '/section', element: Section, title: 'Section' },
   { path: '/sticky', element: Sticky, title: 'Sticky' },
   { path: '/video', element: Video, title: 'Video' },
+  { path: '/avatar', element: Avatar, title: 'Avatar' },
 ];
 
 export const routes = AppRoutes.reduce((acc, route) => {
