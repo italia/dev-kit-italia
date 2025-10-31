@@ -8,8 +8,8 @@ import { Code } from 'storybook/internal/components';
 In questa pagina sono descritte le scelte tecniche e le linee guida adottate per la realizzazione della libreria
 **Dev Kit Italia** basata su **Lit** e organizzata in **monorepo**.
 
-L’obiettivo è fornire una base scalabile,
-manutenibile e pronta per l’espansione futura.
+L'obiettivo è fornire una base scalabile,
+manutenibile e pronta per l'espansione futura.
 
 ## Stack tecnologico
 
@@ -32,7 +32,7 @@ Open Web Components fornisce strumenti e convenzioni standardizzate per sviluppa
 - **Qualità del codice**: linting specifico per Lit (eslint-plugin-lit), configurazioni Prettier e suggerimenti per migliorare performance e accessibilità.
 - **Supporto alla documentazione**: integrazione nativa con Storybook e demo live tramite `@web/dev-server`.
 - **Ottimizzazione per la pubblicazione**: configurazioni pronte per bundling, tree-shaking e distribuzione su NPM via ESM.
-- **Allineamento agli standard**: segue le raccomandazioni W3C e promuove l’uso di API native senza lock-in proprietari.
+- **Allineamento agli standard**: segue le raccomandazioni W3C e promuove l'uso di API native senza lock-in proprietari.
 - **Adozione da parte di attori di rilievo**: utilizzato in progetti di produzione da organizzazioni come Adobe (Spectrum Web Components).
 
 ## Struttura del Monorepo (esempio)
@@ -89,7 +89,7 @@ DOM.
 
 ### Quando evitare lo Shadow DOM
 
-Alcuni casi d’uso (accessibilità) possono richiedere il **Light DOM**, ad esempio:
+Alcuni casi d'uso (accessibilità) possono richiedere il **Light DOM**, ad esempio:
 
 - Screen reader che non leggono contenuti shadow
 - Attributi ARIA che non si propagano correttamente
@@ -102,7 +102,7 @@ dimostrabili alla piena accessibilità con lo Shadow DOM.
 ## Migrazione da Bootstrap Italia
 
 I progetti che utilizzano **Bootstrap Italia** possono migrare progressivamente verso i nuovi **Web Components**, seguendo la guida
-all’upgrade che verrà fornita.
+all'upgrade che verrà fornita.
 
 Vantaggi della migrazione a Web Components:
 
@@ -195,21 +195,21 @@ chi la utilizza in un'applicazione o sito.
   - Fornire stili CSS di base caricabili esternamente (via style.css) o inline (`<style>` in Light DOM)
 
 - Progettare per **HTML-first**:
-  - Permettere l’inserimento di contenuti tramite **slot** (e non solo proprietà dinamiche)
+  - Permettere l'inserimento di contenuti tramite **slot** (e non solo proprietà dinamiche)
 
   - Evitare dipendenze critiche da render() di Lit per i contenuti essenziali
 
 - Facilitare il **preload degli stili**:
-  - Rendere disponibili gli stili critici in file separati e documentarne l’uso
+  - Rendere disponibili gli stili critici in file separati e documentarne l'uso
 
 ### Responsabilità dell'utilizzatore (consumatore dei componenti)
 
-Chi integra i Web Components in un’applicazione deve:
+Chi integra i Web Components in un'applicazione deve:
 
 - Adottare un **approccio HTML-first**:
   - Usare il markup completo (come da documentazione) e contenuti slot nel primo render server-side
 
-  - Evitare di popolare dinamicamente gli slot via JS dopo l’hydration HTML
+  - Evitare di popolare dinamicamente gli slot via JS dopo l'hydration HTML
 
 - Caricare gli **stili critici** anticipatamente:
   - Utilizzare `<link rel="preload">` o tecniche come `vite-plugin-critical` per includere gli stili nel primo paint
@@ -220,7 +220,7 @@ Chi integra i Web Components in un’applicazione deve:
 - Garantire per quanto possibile **coerenza** tra layout iniziale e finale:
   - Assicurarsi che la struttura del DOM server-side corrisponda a quella post-hydration, assicurandosi di seguire la documentazione fornita dal kit.
 
-  - Comunicare all’utente finale con un apposito tag `<noscript>` la necessità di abilitare Javascript per poter fruire di tutte le funzionalità del sito / applicazione. Es.
+  - Comunicare all'utente finale con un apposito tag `<noscript>` la necessità di abilitare Javascript per poter fruire di tutte le funzionalità del sito / applicazione. Es.
 
     ```html
     <noscript>
@@ -236,7 +236,7 @@ Chi integra i Web Components in un’applicazione deve:
 
 ### Nota finale
 
-L'efficacia del fallback styling è strettamente legata all’approccio HTML-first.
+L'efficacia del fallback styling è strettamente legata all'approccio HTML-first.
 
 Se i Web Components sono utilizzati con contenuto dinamico popolato dopo il caricamento, si
 introduce un rischio significativo di layout shift.
