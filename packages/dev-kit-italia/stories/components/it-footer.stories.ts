@@ -140,7 +140,7 @@ const defaultContent = html`
                   size="sm"
                   placeholder="Inserisci la tua email"
                   label-hidden
-                >
+                  ><span slot="label">Inserisci la tua emial</span>
                   <it-button type="submit" variant="primary" slot="append">Iscriviti</it-button>
                 </it-input>
               </div>
@@ -236,7 +236,7 @@ const smallContent = html` <footer class="it-footer">
                   placeholder="Inserisci la tua email"
                   slotted
                   label-hidden
-                >
+                ><span slot="label">Inserisci la tua email</span>
                   <it-button type="submit" variant="primary" slot="append">Iscriviti</button>
                 </it-input>
 
