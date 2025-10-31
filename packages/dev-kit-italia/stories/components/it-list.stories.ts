@@ -787,19 +787,19 @@ export const LinkListCheckbox: Story = {
     <div class="link-list-wrapper">
       <ul class="link-list">
         <li>
-          <div class="form-check form-check-group" aria-describedby="">
+          <div class="form-check form-check-group">
             <input type="checkbox" id="checkbox6" checked />
             <label for="checkbox6">Checkbox selezionato</label>
           </div>
         </li>
         <li>
-          <div class="form-check form-check-group" aria-describedby="">
+          <div class="form-check form-check-group">
             <input type="checkbox" id="checkbox7" />
             <label for="checkbox7">Checkbox non selezionato</label>
           </div>
         </li>
         <li>
-          <div class="form-check form-check-group disabled" aria-describedby="" aria-disabled="true">
+          <div class="form-check form-check-group disabled" aria-disabled="true">
             <input type="checkbox" id="checkbox8" disabled aria-disabled="true" />
             <label for="checkbox8">Checkbox disabilitato non selezionato</label>
           </div>
