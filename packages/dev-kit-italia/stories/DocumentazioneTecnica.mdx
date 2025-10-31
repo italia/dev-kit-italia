@@ -3,17 +3,13 @@ import { Code } from 'storybook/internal/components';
 
 <Meta title="Documentazione tecnica" />
 
-<div class="mb-4">
-  <h1>Documentazione tecnica del progetto Dev Kit Italia</h1>
-  <p class="lead mb-5">
-    In questa pagina sono descritte le scelte tecniche e le linee guida adottate per la realizzazione della libreria
-    **Dev Kit Italia** basata su **Lit** e organizzata in **monorepo**.
+# Documentazione tecnica del progetto Dev Kit Italia
 
-    L’obiettivo è fornire una base scalabile,
-    manutenibile e pronta per l’espansione futura.
+In questa pagina sono descritte le scelte tecniche e le linee guida adottate per la realizzazione della libreria
+**Dev Kit Italia** basata su **Lit** e organizzata in **monorepo**.
 
-  </p>
-</div>
+L’obiettivo è fornire una base scalabile,
+manutenibile e pronta per l’espansione futura.
 
 ## Stack tecnologico
 
@@ -29,8 +25,10 @@ Open Web Components fornisce strumenti e convenzioni standardizzate per sviluppa
 
 **Vantaggi principali:**
 
-- **Avvio rapido con best practice consolidate**: include generatori di progetto (`npm @open-wc`) che integrano configurazioni moderne (es. Vite, TypeScript, testing).
-- **Testing integrato**: supporta `@web/test-runner`, `sinon`, `chai` e strumenti di mocking mirati per ambienti DOM.
+- <strong>Avvio rapido con best practice consolidate</strong>: include generatori di progetto (`npm @open-wc`) che
+  integrano configurazioni moderne (es. Vite, TypeScript, testing).
+- <strong>Testing integrato</strong>: supporta `@web/test-runner`, `sinon`, `chai` e strumenti di mocking mirati per
+  ambienti DOM.
 - **Qualità del codice**: linting specifico per Lit (eslint-plugin-lit), configurazioni Prettier e suggerimenti per migliorare performance e accessibilità.
 - **Supporto alla documentazione**: integrazione nativa con Storybook e demo live tramite `@web/dev-server`.
 - **Ottimizzazione per la pubblicazione**: configurazioni pronte per bundling, tree-shaking e distribuzione su NPM via ESM.
@@ -57,7 +55,7 @@ Open Web Components fornisce strumenti e convenzioni standardizzate per sviluppa
 └── README.md
 ```
 
-## 🧩 Struttura di un componente
+## Struttura di un componente
 
 Ogni componente:
 
@@ -116,7 +114,7 @@ Vantaggi della migrazione a Web Components:
 I Web Components verranno usati in modalità HTML-first, sfruttando gli slot e componendo tutto
 il markup esternamente.
 
-## 🧱 Approccio HTML-first
+## Approccio HTML-first
 
 Vantaggi:
 
@@ -125,7 +123,17 @@ Vantaggi:
 - Integrazione diretta con componenti come next/image (React) e/o altri
   framework
 
-**NOTA: Nella cartella `examples` della root del progetto, sono forniti e documentati per gli utilizzatori finali gli snippet HTML da utilizzare sia in ambiente JS vanilla, che nei framework React, Angular, Vue, Svelte **
+<div class="callout callout-primary">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">NOTA</span>
+    </div>
+    <p>
+      Nella cartella `examples` della root del progetto, sono forniti e documentati per gli utilizzatori finali gli
+      snippet HTML da utilizzare sia in ambiente JS vanilla, che nei framework React, Angular, Vue, Svelte
+    </p>
+  </div>
+</div>
 
 Esempio:
 
