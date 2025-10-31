@@ -54,6 +54,7 @@ Nell’esempio che segue, implementato per il sito Designers Italia, sono inseri
 - un *collegamento diretto alla Dichiarazione di accessibilità disponibile sul form AgID*, che accompagnerà il necessario link presente anche nel piede di pagina, per permettere a chi naviga con strumenti assistivi di trovarla facilmente senza dover scansionare tutti i contennuti.
 
 Consigliamo di non eccedere con il numero di elementi scorciatoia, altrimenti emergerebbe il bisogno di poter saltare le stesse scorciatoie.
+
 `,
       },
     },
@@ -87,6 +88,27 @@ export const EsempioInterattivo: Story = {
         <a href="#satisfaction">Questa pagina ti è stata utile?</a>
         <a href="#footer">Vai al piè di pagina</a>
         <a href="https://form.agid.gov.it/view/xyz">Dichiarazione di accessibilità (link esterno su sito AgID</a> `,
+    })}`,
+};
+
+export const PochiLink: Story = {
+  ...meta,
+  name: 'Numero ridotto di link',
+  args: {},
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Quando sono presenti uno o due link, il componente evita di generare un elemento \`<nav>\` al fine di ridurre la complessità di lettura per gli screen reader.
+`,
+      },
+    },
+  },
+  render: (params) =>
+    html` ${renderComponent({
+      ...params,
+      slot: html`<a href="#menu">Vai al menu</a>
+        <a href="#main-content">Vai al contenuto principale</a> `,
     })}`,
 };
 

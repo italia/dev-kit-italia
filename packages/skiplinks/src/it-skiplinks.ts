@@ -26,17 +26,25 @@ export class ItSkiplinks extends BaseComponent {
   render() {
     return html`
       <slot @slotchange=${this._onSlotChange}></slot>
-      <nav class="skiplinks" role="navigation" ${setAttributes(this._ariaAttributes)}>
-        <ul part="skiplinks-list">
-          ${this.links.map(
-            (link: any) => html`
-              <li class="visually-hidden-focusable">
-                <a href=${link.href}>${link.text}</a>
-              </li>
-            `,
-          )}
-        </ul>
-      </nav>
+      ${this.links.length > 2
+        ? html`
+            <nav class="skiplinks" role="navigation" ${setAttributes(this._ariaAttributes)}>
+              <ul part="skiplinks-list">
+                ${this.links.map(
+                  (link: any) => html`
+                    <li class="visually-hidden-focusable">
+                      <a href=${link.href}>${link.text}</a>
+                    </li>
+                  `,
+                )}
+              </ul>
+            </nav>
+          `
+        : html`<div class="skiplinks">
+            ${this.links.map(
+              (link: any) => html` <a href=${link.href} class="visually-hidden-focusable">${link.text}</a> `,
+            )}
+          </div>`}
     `;
   }
 }
