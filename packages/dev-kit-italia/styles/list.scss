@@ -1,0 +1,4 @@
+.it-list-wrapper .it-list .list-item it-avatar {
+  flex-shrink: 0;
+  margin-right: var(--#{$prefix}icon-spacing);
+}

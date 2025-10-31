@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import '@italia/icon';
 import '@italia/button';
+import '@italia/avatar';
 
 const meta = {
   title: 'Componenti/List',
@@ -61,9 +62,13 @@ export const ListaConAvatar: Story = {
       <ul class="it-list">
         <li>
           <div class="list-item">
-            <div class="avatar">
-              <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Anna Barbieri" />
-            </div>
+            <it-avatar
+              type="image"
+              size="md"
+              src="https://randomuser.me/api/portraits/women/41.jpg"
+              alt="Anna Barbieri"
+              text="Anna Barbieri"
+            ></it-avatar>
             <div class="it-right-zone">
               <span class="text">Testo</span>
             </div>
@@ -71,9 +76,13 @@ export const ListaConAvatar: Story = {
         </li>
         <li>
           <a href="#" class="list-item">
-            <div class="avatar">
-              <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Anna Barbieri" />
-            </div>
+            <it-avatar
+              type="image"
+              size="md"
+              src="https://randomuser.me/api/portraits/women/41.jpg"
+              alt="Anna Barbieri"
+              text="Anna Barbieri"
+            ></it-avatar>
             <div class="it-right-zone">
               <span class="text">Link</span>
             </div>
@@ -81,9 +90,13 @@ export const ListaConAvatar: Story = {
         </li>
         <li>
           <div class="list-item">
-            <div class="avatar">
-              <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Anna Barbieri" />
-            </div>
+            <it-avatar
+              type="image"
+              size="md"
+              src="https://randomuser.me/api/portraits/women/41.jpg"
+              alt="Anna Barbieri"
+              text="Anna Barbieri"
+            ></it-avatar>
             <div class="it-right-zone">
               <span class="text">Testo</span>
             </div>
@@ -283,9 +296,13 @@ export const ListaConMetadata: Story = {
       <ul class="it-list">
         <li>
           <div class="list-item">
-            <div class="avatar">
-              <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Anna Barbieri" />
-            </div>
+            <it-avatar
+              type="image"
+              size="md"
+              src="https://randomuser.me/api/portraits/women/41.jpg"
+              alt="Anna Barbieri"
+              text="Anna Barbieri"
+            ></it-avatar>
             <div class="it-right-zone">
               <span class="text">Testo</span>
               <span class="metadata">metadata testo</span>
@@ -294,9 +311,13 @@ export const ListaConMetadata: Story = {
         </li>
         <li>
           <div class="list-item">
-            <div class="avatar">
-              <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Anna Barbieri" />
-            </div>
+            <it-avatar
+              type="image"
+              size="md"
+              src="https://randomuser.me/api/portraits/women/41.jpg"
+              alt="Anna Barbieri"
+              text="Anna Barbieri"
+            ></it-avatar>
             <div class="it-right-zone">
               <span class="text">Testo</span>
               <span class="metadata"><a href="#">metadata link</a></span>
@@ -305,9 +326,13 @@ export const ListaConMetadata: Story = {
         </li>
         <li>
           <a href="#" class="list-item">
-            <div class="avatar">
-              <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Anna Barbieri" />
-            </div>
+            <it-avatar
+              type="image"
+              size="md"
+              src="https://randomuser.me/api/portraits/women/41.jpg"
+              alt="Anna Barbieri"
+              text="Anna Barbieri"
+            ></it-avatar>
             <div class="it-right-zone">
               <span class="text">Link</span>
               <span class="metadata">metadata testo</span>
@@ -316,9 +341,13 @@ export const ListaConMetadata: Story = {
         </li>
         <li>
           <div class="list-item">
-            <div class="avatar">
-              <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Anna Barbieri" />
-            </div>
+            <it-avatar
+              type="image"
+              size="md"
+              src="https://randomuser.me/api/portraits/women/41.jpg"
+              alt="Anna Barbieri"
+              text="Anna Barbieri"
+            ></it-avatar>
             <div class="it-right-zone">
               <a href="#">
                 <span class="text">Link</span>
@@ -329,9 +358,13 @@ export const ListaConMetadata: Story = {
         </li>
         <li>
           <a class="list-item" href="#">
-            <div class="avatar">
-              <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Anna Barbieri" />
-            </div>
+            <it-avatar
+              type="image"
+              size="md"
+              src="https://randomuser.me/api/portraits/women/41.jpg"
+              alt="Anna Barbieri"
+              text="Anna Barbieri"
+            ></it-avatar>
             <div class="it-right-zone">
               <span class="text">Link</span>
               <span class="metadata">metadata testo</span>
