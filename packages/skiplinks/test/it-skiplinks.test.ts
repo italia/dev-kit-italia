@@ -9,12 +9,12 @@ describe('ItSkiplinks', () => {
   it('renders a slot and empty nav initially', async () => {
     const el = await fixture(html`<it-skiplinks></it-skiplinks>`);
     const slot = el.shadowRoot!.querySelector('slot');
-    const nav = el.shadowRoot!.querySelector('nav.skiplinks');
+    const div = el.shadowRoot!.querySelector('div.skiplinks');
 
     expect(slot).to.exist;
-    expect(nav).to.exist;
+    expect(div).to.exist;
     // inizialmente non ci sono link
-    expect(nav!.querySelectorAll('li')).to.have.length(0);
+    expect(div!.querySelectorAll('a')).to.have.length(0);
   });
 
   it('renders links from slotted <a> elements', async () => {
@@ -25,14 +25,14 @@ describe('ItSkiplinks', () => {
       </it-skiplinks>
     `);
 
-    const nav = el.shadowRoot!.querySelector('nav.skiplinks');
-    const listItems = nav!.querySelectorAll('li');
+    const div = el.shadowRoot!.querySelector('div.skiplinks');
+    const items = div!.querySelectorAll('a');
 
-    expect(listItems).to.have.length(2);
-    expect(listItems[0].querySelector('a')!.getAttribute('href')).to.equal('#main');
-    expect(listItems[0].textContent!.trim()).to.equal('Vai al contenuto');
-    expect(listItems[1].querySelector('a')!.getAttribute('href')).to.equal('#footer');
-    expect(listItems[1].textContent!.trim()).to.equal('Vai al footer');
+    expect(items).to.have.length(2);
+    expect(items[0].getAttribute('href')).to.equal('#main');
+    expect(items[0].textContent!.trim()).to.equal('Vai al contenuto');
+    expect(items[1].getAttribute('href')).to.equal('#footer');
+    expect(items[1].textContent!.trim()).to.equal('Vai al footer');
   });
 
   it('links are hidden initially', async () => {
@@ -42,8 +42,8 @@ describe('ItSkiplinks', () => {
       </it-skiplinks>
     `);
 
-    const li = el.shadowRoot!.querySelector('li')!;
-    expect(li.classList.contains('visually-hidden-focusable')).to.be.true;
+    const a = el.shadowRoot!.querySelector('a')!;
+    expect(a.classList.contains('visually-hidden-focusable')).to.be.true;
   });
 
   it('links become visible when focused (simulate Tab)', async () => {
@@ -53,7 +53,7 @@ describe('ItSkiplinks', () => {
       </it-skiplinks>
     `);
 
-    const anchor: HTMLElement = el.shadowRoot!.querySelector('li a');
+    const anchor: HTMLElement = el.shadowRoot!.querySelector('a');
 
     // Simuliamo focus
     anchor?.focus();
@@ -78,11 +78,28 @@ describe('ItSkiplinks', () => {
 
     await el.updateComplete;
 
-    const nav = el.shadowRoot!.querySelector('nav.skiplinks');
-    const links = nav!.querySelectorAll('li a');
+    const div = el.shadowRoot!.querySelector('div.skiplinks');
+    const links = div!.querySelectorAll('a');
 
     expect(links).to.have.length(1);
     expect(links[0].getAttribute('href')).to.equal('#new');
     expect(links[0].textContent).to.equal('Nuovo link');
+  });
+
+  it('More than 2 skiplinks creates nav', async () => {
+    const el = await fixture(
+      html`<it-skiplinks it-aria-label="Vai a">
+        <a href="#menu">Vai al menu</a>
+        <a href="#content">Vai al contenuto</a>
+        <a href="#footer">Vai al footer</a></it-skiplinks
+      >`,
+    );
+
+    const nav = el.shadowRoot!.querySelector('nav.skiplinks');
+    const items = nav!.querySelectorAll('li');
+
+    expect(nav).to.exist;
+    expect(items.length).to.equal(3);
+    expect(nav?.getAttribute('aria-label')).to.equal('Vai a');
   });
 });
