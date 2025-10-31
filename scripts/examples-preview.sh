@@ -1,7 +1,6 @@
 #!/bin/bash
 
 ls -l ./packages/dev-kit-italia/dist
-chmod -R 777 ./packages
 
 cd ./examples/svelte-app && npm ci && npm run build
 cd ../..
