@@ -25,8 +25,10 @@ Open Web Components fornisce strumenti e convenzioni standardizzate per sviluppa
 
 **Vantaggi principali:**
 
-- <strong>Avvio rapido con best practice consolidate</strong>: include generatori di progetto (`npm @open-wc`) che integrano configurazioni moderne (es. Vite, TypeScript, testing).
-- <strong>Testing integrato</strong>: supporta `@web/test-runner`, `sinon`, `chai` e strumenti di mocking mirati per ambienti DOM.
+- <strong>Avvio rapido con best practice consolidate</strong>: include generatori di progetto (`npm @open-wc`) che
+  integrano configurazioni moderne (es. Vite, TypeScript, testing).
+- <strong>Testing integrato</strong>: supporta `@web/test-runner`, `sinon`, `chai` e strumenti di mocking mirati per
+  ambienti DOM.
 - **Qualità del codice**: linting specifico per Lit (eslint-plugin-lit), configurazioni Prettier e suggerimenti per migliorare performance e accessibilità.
 - **Supporto alla documentazione**: integrazione nativa con Storybook e demo live tramite `@web/dev-server`.
 - **Ottimizzazione per la pubblicazione**: configurazioni pronte per bundling, tree-shaking e distribuzione su NPM via ESM.
@@ -86,7 +88,7 @@ Tuttavia, in alcuni casi specifici (soprattutto legati all'accessibilità), può
 
 ### Quando evitare lo shadow DOM
 
-Alcuni casi d'uso (accessibilità) possono richiedere il **Light DOM**, ad esempio:
+Alcuni casi d'uso (accessibilità) possono richiedere il **light DOM**, ad esempio:
 
 - Screen reader che non leggono contenuti shadow
 - Attributi ARIA che non si propagano correttamente
@@ -94,7 +96,12 @@ Alcuni casi d'uso (accessibilità) possono richiedere il **Light DOM**, ad esemp
 
 **Linea guida:**
 Usare **shadow DOM** di default. Usare **light DOM** solo nei casi in cui ci siano impedimenti
+<<<<<<< HEAD
 dimostrabili alla piena accessibilità con lo Shadow DOM.
+=======
+dimostrabili alla piena accessibilità con lo shadow DOM.
+
+> > > > > > > 2461bda (fix: camelcase)
 
 ## Migrazione da Bootstrap Italia
 
@@ -167,7 +174,7 @@ h-100 w-100"
 
 <br />
 
-<h2> Layout Shift e FOUC</h2>
+## Layout Shift e FOUC
 
 Il **Cumulative Layout Shift (CLS)** misura quanto gli elementi visivi cambiano posizione durante il caricamento. Un'esperienza utente ottimale
 richiede che tali spostamenti siano ridotti al minimo.
@@ -188,7 +195,7 @@ chi la utilizza in un'applicazione o sito.
   - Prevedere **slot con layout stabile** anche prima del caricamento degli stili o dell'hydration
 
 - Prevedere **fallback CSS**:
-  - Fornire stili CSS di base caricabili esternamente (via style.css) o inline (`<style>` in Light DOM)
+  - Fornire stili CSS di base caricabili esternamente (via style.css) o inline (`<style>` in light DOM)
 
 - Progettare per **HTML-first**:
   - Permettere l'inserimento di contenuti tramite **slot** (e non solo proprietà dinamiche)
