@@ -2,4 +2,4 @@
 '@italia/dev-kit-italia': patch
 ---
 
-obiettivo del progetto
+Aggiunta documentazione sull'obiettivo del progetto
