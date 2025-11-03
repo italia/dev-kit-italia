@@ -10,6 +10,7 @@
   "fixed": [
     [
       "@italia/accordion",
+      "@italia/avatar",
       "@italia/button",
       "@italia/chip",
       "@italia/dev-kit-italia",
@@ -19,7 +20,9 @@
       "@italia/icon",
       "@italia/input",
       "@italia/popover",
+      "@italia/radio",
       "@italia/section",
+      "@italia/sticky",
       "@italia/video"
     ]
   ],

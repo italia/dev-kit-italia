@@ -1,7 +1,6 @@
 import { BaseComponent } from '@italia/globals';
 import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { when } from 'lit/directives/when.js';
 import styles from './breadcrumb-item.scss';
 
 /**

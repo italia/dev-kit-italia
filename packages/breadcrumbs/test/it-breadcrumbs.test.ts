@@ -82,7 +82,7 @@ describe('it-breadcrumb component', () => {
 
     it('handles custom separators', async () => {
       const el = await fixture(html`
-        <it-breadcrumb separator=">">
+        <it-breadcrumb separator="&gt;">
           <it-breadcrumb-item href="/home">Home</it-breadcrumb-item>
           <it-breadcrumb-item href="/library">Library</it-breadcrumb-item>
         </it-breadcrumb>

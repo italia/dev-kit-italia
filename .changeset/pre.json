@@ -11,7 +11,35 @@
     "@italia/typescript-config": "0.0.0",
     "@italia/video": "0.0.0",
     "@italia/i18n": "0.0.0",
-    "@italia/input": "0.0.0"
+    "@italia/input": "0.0.0",
+    "@italia/accordion": "0.0.0",
+    "@italia/avatar": "0.1.0-alpha.1",
+    "@italia/chip": "0.0.0",
+    "@italia/dropdown": "0.0.0",
+    "@italia/popover": "0.0.0",
+    "@italia/radio": "0.0.0",
+    "@italia/section": "0.0.0",
+    "@italia/sticky": "0.0.0"
   },
-  "changesets": ["eight-tips-rest", "legal-tips-invite", "witty-deer-love"]
+  "changesets": [
+    "big-queens-cover",
+    "blue-deer-walk",
+    "clean-jokes-unite",
+    "clean-shrimps-remain",
+    "common-rice-type",
+    "cyan-lemons-flow",
+    "eight-tips-rest",
+    "evil-chicken-help",
+    "fast-tables-knock",
+    "huge-suns-switch",
+    "legal-pillows-flow",
+    "legal-tips-invite",
+    "modern-plums-yell",
+    "red-banks-attack",
+    "rotten-turtles-clean",
+    "thick-views-make",
+    "violet-eagles-scream",
+    "wise-rooms-kick",
+    "witty-deer-love"
+  ]
 }

@@ -16,5 +16,7 @@ addons.setConfig({
 
     brandTitle: 'Dev Kit Italia',
     brandImage: './logo.png',
+
+    fontBase: '"Titillium Web", Geneva, Tahoma, sans-serif',
   },
 });

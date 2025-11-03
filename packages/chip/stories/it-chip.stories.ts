@@ -279,7 +279,7 @@ export const VariantiDimensione: Story = {
     dismissable: true,
   },
   render: () => html`
-    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
       <it-chip label="Etichetta" size="sm" variant="" dismissable></it-chip>
       <it-chip label="Etichetta" size="lg" variant="" dismissable></it-chip>
     </div>
@@ -404,7 +404,7 @@ Le chip possono includere un avatar utilizzando gli attributi \`avatar\` e \`ava
     },
   },
   render: () => html`
-    <div class="d-flex gap-2 flex-wrap">
+    <div class="d-flex gap-2 flex-wrap align-items-center">
       <it-chip
         label="Mario Rossi"
         size="sm"
@@ -455,7 +455,7 @@ Le chip possono includere un'icona utilizzando lo slot \`icon\` con il component
     },
   },
   render: () => html`
-    <div class="d-flex gap-2 flex-wrap">
+    <div class="d-flex gap-2 flex-wrap align-items-center">
       <it-chip label="Download" size="sm" variant="primary" dismissable>
         <it-icon slot="icon" name="it-download"></it-icon>
         <it-button

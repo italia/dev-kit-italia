@@ -61,6 +61,10 @@ export class BaseComponent extends LitElement {
     return active as T | null;
   }
 
+  get focusElement(): HTMLElement | null {
+    return this;
+  }
+
   // eslint-disable-next-line class-methods-use-this
   protected get prefersReducedMotion(): boolean {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -34,7 +34,20 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/input.component').then((c) => c.InputComponent),
   },
   {
+    path: 'sticky',
+    loadComponent: () => import('./pages/sticky.component').then((c) => c.StickyComponent),
+  },
+  {
+    path: 'radio',
+    loadComponent: () =>
+      import('./pages/radio-examples.component').then((c) => c.RadioExamplesComponent),
+  },
+  {
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
+  },
+  {
+    path: 'avatar',
+    loadComponent: () => import('./pages/avatar.component').then((c) => c.AvatarComponent),
   },
 ];

@@ -25,8 +25,13 @@
 
 @import 'bootstrap-italia/src/scss/components/linklist';
 @import 'bootstrap-italia/src/scss/components/dropdown';
+@import 'bootstrap-italia/src/scss/components/nav';
+@import 'bootstrap-italia/src/scss/components/header';
+@import 'bootstrap-italia/src/scss/components/headerslim';
+@import 'bootstrap-italia/src/scss/components/avatar';
 
 /*dev-kit-italia global styles*/
+@import '@italia/avatar/styles/globals';
 @import '@italia/accordion/styles/globals';
 @import '@italia/button/styles/globals';
 @import '@italia/dropdown/styles/globals';
@@ -35,6 +40,8 @@
 @import '@italia/section/styles/globals';
 @import '@italia/video/styles/globals';
 @import '@italia/chip/styles/globals';
+@import '@italia/sticky/styles/globals';
+@import '@italia/radio/styles/globals';
 // Footer
 @import 'bootstrap-italia/src/scss/components/footer';
 @import 'bootstrap-italia/src/scss/components/list';
