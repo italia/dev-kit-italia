@@ -1,5 +1,11 @@
 # @italia/i18n
 
+## 0.1.0-alpha.2
+
+### Minor Changes
+
+- [#78](https://github.com/italia/dev-kit-italia/pull/78) [`21d2248`](https://github.com/italia/dev-kit-italia/commit/21d22487a1a0df53243b74649259d9a1a371b03b) Thanks [@pnicolli](https://github.com/pnicolli)! - Rinominato in Dev Kit Italia
+
 ## 0.1.0-alpha.1
 
 ### Minor Changes

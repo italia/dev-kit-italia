@@ -70,14 +70,15 @@ const MyPassword = () => {
   return translationsLoaded ? (
     <it-input
       id="field-password-strength-example"
-      label="Campo password"
       type="password"
       name="field-password-strength-example"
       support-text="Inserisci almeno 8 caratteri e alcuni caratteri speciali."
       strength-meter={true}
       minlength="8"
       suggestions={true}
-    ></it-input>
+    >
+      <span slot="label">Campo password</span>
+    </it-input>
   ) : (
     <></>
   );

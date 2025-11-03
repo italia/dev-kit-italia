@@ -61,11 +61,17 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/popover">
         Popover
       </a>
+      <a href="/src/radio-examples.html">
+        Radio
+      </a>
       <a href="/src/section">
         Section
       </a>
       <a href="/src/video">
         Video
+      </a>
+      <a href="/src/sticky">
+        Sticky
       </a>
     </nav>
   </div>

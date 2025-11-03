@@ -25,6 +25,7 @@
       <a href="#/icon">Icon</a>
       <a href="#/input">Input</a>
       <a href="#/popover">Popover</a>
+      <a href="#/radio">Radio</a>
       <a href="#/section">Section</a>
       <a href="#/video">Video</a>
       <a href="#/avatar">Avatar</a>
