@@ -1,8 +1,8 @@
 import '@italia/accordion/it-collapse.js';
 import '@italia/accordion/it-accordion.js';
 import '@italia/accordion/it-accordion-item.js';
-import '@italia/accordion/it-breadcrumbs.js';
-import '@italia/accordion/it-breadcrumb-item.js';
+import '@italia/breadcrumbs/it-breadcrumbs.js';
+import '@italia/breadcrumbs/it-breadcrumb-item.js';
 import '@italia/button/it-button.js';
 import '@italia/chip/it-chip.js';
 import '@italia/avatar/it-avatar.js';
