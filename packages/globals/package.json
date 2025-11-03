@@ -1,7 +1,7 @@
 {
   "name": "@italia/globals",
   "description": "Utilities per i Web components del Design System .italia",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "publishConfig": {
     "access": "public"
   },

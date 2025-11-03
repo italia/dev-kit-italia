@@ -1,7 +1,7 @@
 {
   "name": "@italia/i18n",
   "description": "Translations utility del Design system .italia",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "publishConfig": {
     "access": "public"
   },
