@@ -10,6 +10,7 @@ import Input from './components/Input.vue';
 import Radio from './components/Radio.vue';
 import Rating from './components/Rating.vue';
 import Section from './components/Section.vue';
+import Sticky from './components/Sticky.vue';
 import Video from './components/Video.vue';
 import Avatar from './components/Avatar.vue';
 
@@ -24,12 +25,13 @@ const routes = [
   { path: '/radio', name: 'Radio', component: Radio },
   { path: '/rating', name: 'Rating', component: Rating },
   { path: '/section', name: 'Section', component: Section },
+  { path: '/sticky', name: 'Sticky', component: Sticky },
   { path: '/video', name: 'Video', component: Video },
   { path: '/avatar', name: 'Avatar', component: Avatar },
 ];
 
 const router = createRouter({
-  history: createWebHistory("vue-app"),
+  history: createWebHistory('vue-app'),
   routes,
 });
 

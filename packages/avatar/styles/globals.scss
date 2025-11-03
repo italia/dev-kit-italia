@@ -3,36 +3,72 @@ it-avatar {
   position: relative;
   z-index: 1;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: var(--#{$prefix}avatar-size);
   height: var(--#{$prefix}avatar-size);
+  align-items: center;
+  justify-content: center;
   border-radius: var(--#{$prefix}avatar-radius);
   background: var(--#{$prefix}avatar-background);
   color: var(--#{$prefix}avatar-text-color);
   transition: background-color var(--#{$prefix}transition-instant);
+
+  // Stili automatici per slot presenza e status
+  slot[name='presence'] {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+  }
+
+  slot[name='status'] {
+    position: absolute;
+    z-index: 2;
+    top: -5px;
+    right: -5px;
+  }
+
+  // Se l'utente non usa slot, usa il wrapper con le classi CSS
+  .avatar-presence {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+  }
+
+  .avatar-status {
+    position: absolute;
+    z-index: 2;
+    top: -5px;
+    right: -5px;
+  }
 }
 
 // Varianti di dimensione (solo le dimensioni, nient'altro)
 it-avatar[size='xs'] {
   --bs-avatar-size: 1rem;
 }
+
 it-avatar[size='sm'] {
   --bs-avatar-size: 1.5rem;
 }
+
 it-avatar[size='md'],
 it-avatar:not([size]) {
   --bs-avatar-size: 2.5rem;
 }
+
 it-avatar[size='lg'] {
   --bs-avatar-size: 3.5rem;
 }
+
 it-avatar[size='xl'] {
   --bs-avatar-size: 5rem;
 }
+
 it-avatar[size='xxl'] {
   --bs-avatar-size: 7rem;
 }
+
 it-avatar ~ span {
   margin-left: var(--bs-spacing-xxs);
 }
@@ -42,6 +78,7 @@ it-avatar:defined {
   animation: none !important;
   background-image: none !important;
 }
+
 it-avatar:defined:has([slot='extra-text']) {
   width: auto;
   height: auto;
@@ -58,13 +95,15 @@ ul.avatar-group-stacked {
       width: auto;
       height: auto;
     }
+
     & > it-avatar::part(avatar) {
       border: 2px solid var(--bs-color-border-inverse);
+
       &:focus {
-        border-color: transparent !important;
-        border: 0;
         width: calc(var(--bs-avatar-size) - 4px);
         height: calc(var(--bs-avatar-size) - 4px);
+        border: 0;
+        border-color: transparent !important;
         margin-left: 2px;
       }
     }
@@ -75,67 +114,40 @@ ul li {
   it-avatar ~ span {
     margin-left: var(--bs-spacing-xxs);
   }
+
   it-avatar:defined {
     width: auto;
     height: auto;
   }
 }
+
 it-avatar::part(avatar) {
   box-sizing: border-box;
   // border: 2px solid var(--bs-color-border-inverse);
-}
-
-// Stili automatici per slot presenza e status
-it-avatar {
-  slot[name='presence'] {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 2;
-  }
-
-  slot[name='status'] {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    z-index: 2;
-  }
-
-  // Se l'utente non usa slot, usa il wrapper con le classi CSS
-  .avatar-presence {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 2;
-  }
-
-  .avatar-status {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    z-index: 2;
-  }
 }
 
 it-avatar[type='dropdown'] ::part(button) {
   display: flex !important;
   width: calc(var(--bs-avatar-size) - 4px);
   height: calc(var(--bs-avatar-size) - 4px);
-  padding: 0;
   align-items: center;
   justify-content: center;
+  padding: 0;
   border-radius: 50%;
-  font-size: var(--bs-avatar-font-size);
   background-color: transparent !important;
   color: var(--bs-avatar-text-color);
+  font-size: var(--bs-avatar-font-size);
 }
+
 it-avatar[type='dropdown'][variant='primary'] ::part(button),
 it-avatar[type='dropdown'][variant='secondary'] ::part(button) {
   color: var(--bs-avatar-text-color);
 }
+
 it-avatar[type='dropdown'] ::part(icon) {
   display: none !important;
 }
+
 it-avatar:not(:defined)[type='dropdown'] it-dropdown {
   display: none !important;
 }
@@ -165,10 +177,12 @@ it-avatar:not(:defined)[type='dropdown'] it-dropdown {
 // Specific fallback for it-avatar when component is not defined (JS disabled)
 it-avatar:not(:defined):has([slot='extra-text']) {
   position: relative;
+
   [slot='extra-text'] {
     position: absolute;
     left: calc(var(--#{$prefix}avatar-size) + var(--#{$prefix}spacing-s));
     width: max-content;
+
     p,
     time {
       margin: 0;
@@ -176,6 +190,7 @@ it-avatar:not(:defined):has([slot='extra-text']) {
       font-size: var(--#{$prefix}caption-font-size);
       text-transform: uppercase;
     }
+
     h3,
     h4 {
       margin: 0;

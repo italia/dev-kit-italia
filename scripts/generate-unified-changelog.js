@@ -137,7 +137,7 @@ function generateUnifiedChangelog() {
 
   // Genera il contenuto del changelog unificato
   let unifiedContent = '# Dev Kit Italia Changelog\n\n';
-  unifiedContent += 'Questo changelog raccoglie tutte le modifiche di tutti i pacchetti del monorepo.\n\n';
+  unifiedContent += 'This changelog contains all changes from all packages in the monorepo.\n\n';
 
   for (const version of sortedVersions) {
     unifiedContent += `## ${version}\n\n`;

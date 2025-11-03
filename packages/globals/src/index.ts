@@ -24,5 +24,6 @@ export { FormControl } from './form/form-control.js';
 export { formCollections, FormControlControllerOptions, FormControlController } from './form/form-controller.js';
 export { cookies } from './utils/cookies.js';
 export type Constructor<T = {}> = new (...args: any[]) => T;
+export { WindowManager, type ScrollCallback, type ScrollState } from './window-manager.js';
 
 export { StoryFormControlMethodAndProps };

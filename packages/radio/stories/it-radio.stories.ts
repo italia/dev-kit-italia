@@ -228,7 +228,7 @@ it-radio::part(label) {
 
 export const ComeUsareItRadio: Story = {
   ...meta,
-  name: 'Componente it-radio',
+  name: 'Utilizzo',
   tags: ['!dev'],
   parameters: {
     viewMode: 'docs',

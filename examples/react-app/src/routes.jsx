@@ -8,6 +8,7 @@ import Input from './pages/Input';
 import Radio from './pages/Radio';
 import Rating from './pages/Rating';
 import Section from './pages/Section';
+import Sticky from './pages/Sticky';
 import Video from './pages/Video';
 import Avatar from './pages/Avatar';
 
@@ -22,6 +23,7 @@ export const AppRoutes = [
   { path: '/radio', element: <Radio />, title: 'Radio' },
   { path: '/rating', element: <Rating />, title: 'Rating' },
   { path: '/section', element: <Section />, title: 'Section' },
+  { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/video', element: <Video />, title: 'Video' },
   { path: '/avatar', element: <Avatar />, title: 'Avatar' },
 ];

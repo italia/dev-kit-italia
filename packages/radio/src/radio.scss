@@ -22,9 +22,7 @@
    - host stesso è :focus-visible (keyboard)
    - host contiene il focus (qualunque elemento figlio sia focalizzato)
    - fallback: anche quando host ha semplicemente :focus (utile per alcuni casi) */
-:host(:focus-visible) .radio-control,
-:host(:focus-within) .radio-control,
-:host(:focus) .radio-control {
+:host(:focus-visible) .radio-control {
   box-shadow:
     0 0 0 2px $focus-outline-color-in,
     0 0 0 5px $focus-outline-color-out !important;
@@ -37,6 +35,7 @@
   width: fit-content;
   align-items: center;
   padding: var(--bs-form-input-padding-y) var(--bs-form-input-padding-x);
+  cursor: pointer;
 }
 
 .radio-control-label {
@@ -144,8 +143,9 @@
 
 // Disabled state - :host has aria-disabled
 :host([aria-disabled='true']) {
-  cursor: not-allowed;
-  pointer-events: none; // Prevent all interactions
+  .radio-control {
+    cursor: not-allowed;
+  }
 
   #button::before,
   #button::after {
