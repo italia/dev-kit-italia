@@ -38,6 +38,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/sticky.component').then((c) => c.StickyComponent),
   },
   {
+    path: 'radio',
+    loadComponent: () =>
+      import('./pages/radio-examples.component').then((c) => c.RadioExamplesComponent),
+  },
+  {
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
   },

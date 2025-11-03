@@ -28,16 +28,17 @@
   "scripts": {
     "build": "rollup --config rollup.config.js",
     "clean": "rimraf node_modules .turbo .rollup.cache dist",
-    "lint": "eslint --ext .ts \"src/**/*.ts\" && stylelint \"styles/**/*.scss\" && prettier \"src/**/*.ts\" \"styles/**/*.scss\" --check",
-    "format": "eslint --ext .ts \"src/**/*.ts\" --fix && stylelint \"styles/**/*.scss\" --fix && prettier \"src/**/*.ts\" \"styles/**/*.scss\" --write"
+    "prepublish": "build",
+    "lint": "eslint --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" && stylelint \"styles/**/*.scss\" && prettier \"src/**/*.ts\" \"stories/**/*.ts\" --check",
+    "format": "eslint --fix --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" && stylelint --fix \"styles/**/*.scss\" && prettier --write \"src/**/*.ts\" \"stories/**/*.ts\""
   },
   "files": [
     "dist",
     "!dist/tsconfig.tsbuildinfo",
-    "custom-elements.json",
     "README.md",
     "AUTHORS",
-    "LICENSE"
+    "LICENSE",
+    "custom-elements.json"
   ],
   "keywords": [
     "web components",
@@ -62,7 +63,9 @@
     "@italia/section": "workspace:^",
     "@italia/sticky": "workspace:^",
     "@italia/video": "workspace:^",
-    "rollup-plugin-copy": "^3.5.0"
+    "@italia/input": "workspace:^",
+    "@italia/i18n": "workspace:^",
+    "@italia/radio": "workspace:^"
   },
   "devDependencies": {
     "@italia/typescript-config": "workspace:^",
@@ -71,6 +74,7 @@
     "bootstrap-italia": "catalog:",
     "rimraf": "^6.0.1",
     "rollup": "^4.42.0",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-scss": "^4.0.1",
     "sass": "catalog:",
     "typescript": "catalog:"

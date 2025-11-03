@@ -104,6 +104,14 @@ $it-components: (
     attr: 'label',
     padding: 1rem,
   ),
+  'it-radio': (
+    height: 28px,
+    bg: transparent,
+  ),
+  'it-radio-group': (
+    // height: 80px,
+    bg: transparent,
+  ),
   'it-video': (
     height: var(--it-videojs-default-height),
     width: var(--it-videojs-default-width),

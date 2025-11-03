@@ -1,5 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { registerTranslation } from '@italia/dev-kit-italia/elements.js';
+import '@italia/dev-kit-italia/elements.js';
 import { appConfig } from './app/app.config';
 import { App } from './app/app';
 
