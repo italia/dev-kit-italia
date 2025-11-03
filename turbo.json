@@ -8,13 +8,11 @@
         "dist/**/*.js.map",
         "dist/**/*.d.ts",
         "dist/**/*.d.ts.map",
+        "dist/**/*.css",
+        "dist/assets/**",
         "src/icons/*.ts",
         "src/icon-registry.ts"
       ]
-    },
-    "build:styles": {
-      "dependsOn": [],
-      "outputs": ["dist/styles.css"]
     },
     "analyze": {
       "dependsOn": ["^build"],

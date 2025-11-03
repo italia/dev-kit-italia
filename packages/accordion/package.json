@@ -29,24 +29,26 @@
   },
   "files": [
     "dist/src",
+    "styles",
     "README.md",
     "AUTHORS",
     "LICENSE",
-    "custom-elements.json",
-    "styles"
+    "custom-elements.json"
   ],
   "scripts": {
     "analyze": "cem analyze --litelement --exclude dist",
     "build": "rollup --config rollup.config.js",
     "clean": "rimraf node_modules .turbo .rollup.cache dist coverage",
-    "lint": "eslint --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" && prettier \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --check",
-    "format": "eslint --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --fix && prettier \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --write",
-    "test": "wtr --coverage --node-resolve --config web-test-runner.config.js"
+    "prepublish": "build",
+    "lint": "eslint --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" && stylelint \"styles/**/*.scss\" \"src/**/*.scss\" && prettier \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --check",
+    "format": "eslint --fix --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" && stylelint --fix \"styles/**/*.scss\" \"src/**/*.scss\" && prettier --write \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\"",
+    "test": "wtr --coverage --node-resolve --config web-test-runner.config.js",
+    "test:watch": "wtr --coverage --node-resolve --config web-test-runner.config.js --watch"
   },
   "dependencies": {
-    "@italia/icon": "workspace:^",
     "@italia/button": "workspace:^",
     "@italia/globals": "workspace:^",
+    "@italia/icon": "workspace:^",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:"
   },

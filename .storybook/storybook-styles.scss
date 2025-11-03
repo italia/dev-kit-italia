@@ -41,12 +41,16 @@
   :not(.sb-story *) {
     font-family: var(--bs-font-sans-serif);
     font-size: var(--bs-body-font-size); /* Mobile: 16px, Desktop: 18px */
-    font-weight: var(--bs-body-font-weight); /* 400 */
+    //font-weight: var(--bs-body-font-weight); /* 400 */
     line-height: var(--bs-body-line-height); /* 150% */
 
     &.docblock-code-toggle {
       font-size: 80%;
       font-weight: 600;
+    }
+
+    &.docblock-argstable * {
+      font-size: 1rem;
     }
   }
 
