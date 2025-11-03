@@ -190,7 +190,7 @@ export const ValorePreimpostato: Story = {
       <span slot="label">Valutazione</span>
       <it-rating-item value="1"><span slot="label">1 stella</span></it-rating-item>
       <it-rating-item value="2"><span slot="label">2 stelle</span></it-rating-item>
-      <it-rating-item value="3" checked><span slot="label">3 stelle</span></it-rating-item>
+      <it-rating-item value="3"><span slot="label">3 stelle</span></it-rating-item>
       <it-rating-item value="4"><span slot="label">4 stelle</span></it-rating-item>
       <it-rating-item value="5"><span slot="label">5 stelle</span></it-rating-item>
     </it-rating>

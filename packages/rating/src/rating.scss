@@ -9,6 +9,7 @@
 :host {
   display: flex;
   flex-direction: row-reverse;
+  flex-wrap: wrap;
   align-items: center;
   --bs-rating-icon-fill: var(--bs-icon-disabled);
   --bs-rating-text: var(--bs-color-text-secondary);
@@ -17,24 +18,6 @@
   --bs-rating-font-weight: var(--bs-font-weight-solid);
 }
 
-// .rating {
-//   padding: 0;
-//   border: none;
-//   margin: 0;
-
-//   legend {
-//     padding: 0;
-//     margin-bottom: 0.5rem;
-//   }
-
-//   &.rating-read-only {
-//     pointer-events: none;
-
-//     input[type='radio'] {
-//       display: none;
-//     }
-//   }
-// }
 div.it-radio-group {
   display: flex;
 }
