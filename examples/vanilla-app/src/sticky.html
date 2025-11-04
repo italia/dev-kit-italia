@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Accessibilità it-sticky</title>
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+
+      .sticky-header {
+        background: #0066cc;
+        color: white;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .sticky-nav {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .sticky-nav a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+      }
+
+      .sticky-nav a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .sticky-nav a:focus {
+        outline: 2px solid white;
+        outline-offset: 2px;
+      }
+
+      .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .section {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: #f5f5f5;
+        border-radius: 8px;
+      }
+
+      .instructions {
+        background: #fff3cd;
+        border: 1px solid #ffc107;
+        padding: 1rem;
+        border-radius: 4px;
+        margin-bottom: 2rem;
+      }
+
+      .instructions h2 {
+        margin-top: 0;
+        color: #856404;
+      }
+
+      .instructions ul {
+        margin-bottom: 0;
+      }
+
+      .instructions li {
+        margin-bottom: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+    <div id="app-header"></div>
+    <!-- Sticky Header per test di accessibilità -->
+    <it-sticky>
+      <header class="sticky-header" role="banner">
+        <nav class="sticky-nav" role="navigation" aria-label="Menu principale">
+          <a href="#home" id="link-home">Home</a>
+          <a href="#about" id="link-about">Chi siamo</a>
+          <a href="#services" id="link-services">Servizi</a>
+          <a href="#contact" id="link-contact">Contatti</a>
+          <button
+            style="background: white; color: #0066cc; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;"
+            id="cta-button"
+          >
+            Azione
+          </button>
+        </nav>
+      </header>
+    </it-sticky>
+
+    <!-- Contenuto principale -->
+    <main class="content">
+      <div class="instructions">
+        <h2>Test di Accessibilità per it-sticky</h2>
+        <p>Questa pagina serve per testare l'accessibilità del componente it-sticky:</p>
+        <ul>
+          <li><strong>Navigazione da tastiera</li>
+          <li><strong>Screen reader</li>
+          <li><strong>Scroll test</li>
+          <li><strong>Focus management:</strong> Metti il focus su un link nell'header, poi scrolla. Il focus dovrebbe rimanere sull'elemento anche quando diventa sticky.</li>
+        </ul>
+      </div>
+
+      <section id="home" class="section">
+         <h2>Excepteur sint occaecat cupidatat</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </section>
+
+      <section id="about" class="section">
+        <h2>Excepteur sint occaecat cupidatat</h2>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      </section>
+
+      <section id="services" class="section">
+        <h2>Excepteur sint occaecat cupidatat</h2>
+        <p>Excepteur sint occaecat cupidatati:</p>
+        <ul>
+          <li>Excepteur sint occaecat cupidatat</li>
+          <li>Excepteur sint occaecat cupidatat</li>
+          <li> Excepteur sint occaecat cupidatat</li>
+        </ul>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </section>
+
+      <section id="contact" class="section">
+        <h2>Contatti</h2>
+        <p>Contattaci per maggiori informazioni.</p>
+        <form>
+          <div style="margin-bottom: 1rem;">
+            <label for="name">Nome:</label><br>
+            <input type="text" id="name" name="name" style="padding: 0.5rem; width: 100%; max-width: 400px;">
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" style="padding: 0.5rem; width: 100%; max-width: 400px;">
+          </div>
+          <button type="submit" style="padding: 0.5rem 1rem; background: #0066cc; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            Invia
+          </button>
+        </form>
+      </section>
+
+      <section class="section">
+        <h2>Excepteur sint occaecat cupidatat</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </section>
+
+      <section class="section">
+        <h2>Excepteur sint occaecat cupidatate</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <a href="#home" style="color: #0066cc;">Torna all'inizio</a>
+      </section>
+    </main>
+    </div>
+
+    <script type="module">
+      import '@italia/dev-kit-italia/elements.js';
+
+      // Log per debugging accessibilità
+      const stickyElement = document.querySelector('it-sticky');
+
+      stickyElement.addEventListener('it-sticky-change', (e) => {
+        const state = e.detail.isSticky ? 'sticky' : 'normale';
+        // eslint-disable-next-line no-console
+        console.log(`Header è ora: ${state}`);
+
+        // Verifica che il focus sia mantenuto
+        const focusedElement = document.activeElement;
+        if (focusedElement && focusedElement.closest('it-sticky')) {
+          // eslint-disable-next-line no-console
+          console.log('Focus mantenuto su:', focusedElement.id || focusedElement.tagName);
+        }
+      });
+
+      // Test: verifica che Tab navigation funzioni
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          // eslint-disable-next-line no-console
+          console.log('Tab premuto, elemento con focus:', document.activeElement);
+        }
+      });
+    </script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
