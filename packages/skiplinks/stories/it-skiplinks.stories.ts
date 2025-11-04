@@ -37,7 +37,7 @@ const meta = {
 
 Questo componente permette a chi naviga sequenzialmente i contenuti di accedere a tutti i contenuti principali della pagina in modo più semplice. È particolarmente utile per chi usa la tastiera o tecnologie assistive come i lettori di schermo.
 
-Deve essere il primo contenuto che si incontra nella pagina. Se è presente l’elemento \`<header>\` suggeriamo di integrarlo come primo suo elemento figlio, in modo da comprenderlo in ogni caso in un landmark di pagina.
+Deve essere il primo contenuto della pagina. Se è presente l’elemento \`<header>\` è raccomandato integrarlo come primo suo elemento figlio, così da includerlo sempre in un landmark di pagina.
 
 Per navigare tra gli elementi puoi usare il tasto: **TAB** (tabulazione).
 
