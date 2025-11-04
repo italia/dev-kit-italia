@@ -3,10 +3,11 @@ import { html } from 'lit';
 import '@italia/icon';
 import '@italia/button';
 import '@italia/avatar';
+import '@italia/checkbox';
 
 const meta = {
   title: 'Componenti/List',
-  // tags: ['autodocs'],
+  tags: ['beta'],
   parameters: {
     layout: 'padded',
   },
@@ -787,22 +788,19 @@ export const LinkListCheckbox: Story = {
     <div class="link-list-wrapper">
       <ul class="link-list">
         <li>
-          <div class="form-check form-check-group">
-            <input type="checkbox" id="checkbox6" checked />
-            <label for="checkbox6">Checkbox selezionato</label>
-          </div>
+          <it-checkbox name="checkbox6" group checked>
+            <span slot="label">Checkbox selezionato</span>
+          </it-checkbox>
         </li>
         <li>
-          <div class="form-check form-check-group">
-            <input type="checkbox" id="checkbox7" />
-            <label for="checkbox7">Checkbox non selezionato</label>
-          </div>
+          <it-checkbox name="checkbox7" group>
+            <span slot="label">Checkbox non selezionato</span>
+          </it-checkbox>
         </li>
         <li>
-          <div class="form-check form-check-group disabled" aria-disabled="true">
-            <input type="checkbox" id="checkbox8" disabled aria-disabled="true" />
-            <label for="checkbox8">Checkbox disabilitato non selezionato</label>
-          </div>
+          <it-checkbox name="checkbox8" group disabled>
+            <span slot="label">Checkbox disabilitato non selezionato</span>
+          </it-checkbox>
         </li>
       </ul>
     </div>
