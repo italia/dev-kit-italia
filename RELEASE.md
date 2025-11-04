@@ -37,7 +37,8 @@ Changesets creerà, tramite GitHub Actions, una pull request di rilascio quando:
 
 ### 3. Pubblicazione Automatica
 
-Quando la pull request di rilascio viene unita, il workflow GitHub Actions:
+Quando la pull request di rilascio viene unita, è possibile effettuare una nuova release su GitHub creando un tag sul branch principale.
+Quando viene creato un tag, il workflow GitHub Actions:
 
 1. 🔨 Builda tutti i pacchetti
 2. 📦 Pubblica tutti i pacchetti su NPM con certificazione di provenance
