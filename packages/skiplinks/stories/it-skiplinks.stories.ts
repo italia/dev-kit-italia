@@ -5,7 +5,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import '@italia/skiplinks';
 
 interface SkiplinksProps {
-  ['it-aria-label']: string;
+  ['it-aria-label']: string | undefined;
   slot?: string | TemplateResult;
 }
 
@@ -44,7 +44,7 @@ Per navigare tra gli elementi puoi usare il tasto: **TAB** (tabulazione).
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>
-È necessario passare al componente \`it-skiplinks\` l'attributo \`it-aria-label\` dedicato che ne spieghi l’uso.
+Nel caso in cui il numero di link sia superiore a 2, è necessario passare al componente \`it-skiplinks\` l'attributo \`it-aria-label\` dedicato che ne spieghi l’uso. In questo caso infatti verrà generato un elemento \`<nav>\` a cui verrà applicato l'attributo \`aria-label\` per migliorarne l'accessibilità.
 </p></div></div>
 
 
@@ -107,6 +107,8 @@ Quando sono presenti uno o due link, il componente evita di generare un elemento
   render: (params) =>
     html` ${renderComponent({
       ...params,
+      // eslint-disable-next-line no-useless-computed-key
+      ['it-aria-label']: undefined,
       slot: html`<a href="#menu">Vai al menu</a>
         <a href="#main-content">Vai al contenuto principale</a> `,
     })}`,
