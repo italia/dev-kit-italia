@@ -4,7 +4,7 @@ import '@italia/icon';
 import '@italia/button';
 
 const meta = {
-  title: 'Componenti/Torna indietro',
+  title: 'Componenti/Navigazione/Torna indietro',
   component: 'it-back',
   tags: ['autodocs'],
   render: () => html`<div class="hide-preview"></div>`,
@@ -28,11 +28,41 @@ Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del desi
 export default meta;
 type Story = StoryObj;
 
+export const AttivazioneTramiteCodice: Story = {
+  name: 'Attivazione tramite codice',
+  parameters: {
+    docs: {
+      description: {
+        story: `
+La funzionalità "torna indietro" deve essere implementata registrando un event listener sull'elemento desiderato e invocando il metodo \`window.history.back()\` all'interno dell'handler dell'evento.
+
+Questo metodo consente di navigare all'indietro di una singola entry nello stack della cronologia del browser, replicando il comportamento del pulsante "Indietro" nativo del browser.
+
+\`\`\`javascript
+const backButton = document.getElementById('backButton');
+backButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.history.back();
+});
+
+\`\`\`
+Gli esempi seguenti implementano questa funzionalità nel loro codice di esempio.
+
+<br/>
+
+        `.trim(),
+      },
+    },
+  },
+  render: () => html`<div class="hide-preview"></div>`,
+};
+
 export const Link: Story = {
   parameters: {
     docs: {
       description: {
         story: `
+
 Quando si utilizza un link (tag \`<a>\`) è necessario aggiungere un valore all'attributo href perché il link sia correttamente navigabile via tastiera.
 
 Utilizzare la classe \`.go-back\` per applicare lo stile appropriato.
@@ -53,7 +83,7 @@ Utilizzare la classe \`.go-back\` per applicare lo stile appropriato.
       }}
     >
       <it-icon name="it-arrow-left" size="sm" color="primary" class="me-2"></it-icon>
-      Torna indietro
+      <span>Torna indietro</span>
     </a>
   `,
 };
@@ -73,52 +103,50 @@ Utilizzare la classe \`.go-back\` per applicare lo stile appropriato.
       },
     },
   },
+  decorators: [
+    (story) => html` <div class="d-flex gap-3 flex-wrap"><!-- Inizio esempi -->${story()}<!-- Fine esempi --></div> `,
+  ],
   render: () => html`
-    <div class="d-flex gap-3 flex-wrap">
-      <button
-        type="button"
-        class="btn btn-primary go-back"
-        @click=${() => {
-          window.history.back();
-        }}
-      >
-        <it-icon name="it-arrow-left" size="sm" color="white" class="me-2"></it-icon>
-        Torna indietro
-      </button>
-
-      <button
-        type="button"
-        class="btn btn-primary go-back"
-        @click=${() => {
-          window.history.back();
-        }}
-      >
-        <it-icon name="it-arrow-up" size="sm" color="white" class="me-2"></it-icon>
-        Livello superiore
-      </button>
-
-      <it-button
-        variant="primary"
-        class="go-back"
-        @click=${() => {
-          window.history.back();
-        }}
-      >
-        <it-icon name="it-arrow-left" size="sm" color="white" slot="prefix"></it-icon>
-        Torna indietro
-      </it-button>
-
-      <it-button
-        variant="primary"
-        class="go-back"
-        @click=${() => {
-          window.history.back();
-        }}
-      >
-        <it-icon name="it-arrow-up" size="sm" color="white" slot="prefix"></it-icon>
-        Livello superiore
-      </it-button>
-    </div>
+    <button
+      type="button"
+      class="btn btn-primary go-back"
+      @click=${() => {
+        window.history.back();
+      }}
+    >
+      <it-icon name="it-arrow-left" size="sm" color="white" class="me-2"></it-icon>
+      <span>Torna indietro</span>
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary go-back"
+      @click=${() => {
+        window.history.back();
+      }}
+    >
+      <it-icon name="it-arrow-up" size="sm" color="white" class="me-2"></it-icon>
+      <span>Torna indietro</span>
+    </button>
+    <it-button
+      variant="primary"
+      class="go-back"
+      @click=${() => {
+        window.history.back();
+      }}
+    >
+      <it-icon name="it-arrow-left" size="sm" color="white" slot="prefix"></it-icon>
+      <span>Torna indietro</span>
+    </it-button>
+    <it-button
+      variant="primary"
+      class="go-back"
+      @click=${() => {
+        window.history.back();
+      }}
+    >
+      <it-icon name="it-arrow-up" size="sm" color="white" slot="prefix"></it-icon>
+      <span>Torna indietro</span>
+    </it-button>
   `,
 };
 
@@ -136,76 +164,49 @@ export const PulsanteSolaIcona: Story = {
       },
     },
   },
+  decorators: [
+    (story) => html` <div class="d-flex gap-3 flex-wrap"><!-- Inizio esempi -->${story()}<!-- Fine esempi --></div> `,
+  ],
   render: () => html`
-    <div class="d-flex gap-3 flex-wrap">
-      <button
-        type="button"
-        class="btn btn-primary go-back"
-        @click=${() => {
-          window.history.back();
-        }}
-      >
-        <it-icon name="it-arrow-left" size="sm" color="white"></it-icon>
-        <span class="visually-hidden">Torna indietro</span>
-      </button>
-
-      <button
-        type="button"
-        class="btn btn-primary go-back"
-        @click=${() => {
-          window.history.back();
-        }}
-      >
-        <it-icon name="it-arrow-up" size="sm" color="white"></it-icon>
-        <span class="visually-hidden">Livello superiore</span>
-      </button>
-
-      <it-button
-        variant="primary"
-        class="go-back"
-        @click=${() => {
-          window.history.back();
-        }}
-      >
-        <it-icon name="it-arrow-left" size="sm" color="white"></it-icon>
-        <span class="visually-hidden">Torna indietro</span>
-      </it-button>
-
-      <it-button
-        variant="primary"
-        class="go-back"
-        @click=${() => {
-          window.history.back();
-        }}
-      >
-        <it-icon name="it-arrow-up" size="sm" color="white"></it-icon>
-        <span class="visually-hidden">Livello superiore</span>
-      </it-button>
-    </div>
+    <button
+      type="button"
+      class="btn btn-primary go-back"
+      @click=${() => {
+        window.history.back();
+      }}
+    >
+      <it-icon name="it-arrow-left" size="sm" color="white"></it-icon>
+      <span class="visually-hidden">Torna indietro</span>
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary go-back"
+      @click=${() => {
+        window.history.back();
+      }}
+    >
+      <it-icon name="it-arrow-up" size="sm" color="white"></it-icon>
+      <span class="visually-hidden">Torna indietro</span>
+    </button>
+    <it-button
+      variant="primary"
+      class="go-back"
+      @click=${() => {
+        window.history.back();
+      }}
+    >
+      <it-icon name="it-arrow-left" size="sm" color="white"></it-icon>
+      <span class="visually-hidden">Torna indietro</span>
+    </it-button>
+    <it-button
+      variant="primary"
+      class="go-back"
+      @click=${() => {
+        window.history.back();
+      }}
+    >
+      <it-icon name="it-arrow-up" size="sm" color="white"></it-icon>
+      <span class="visually-hidden">Torna indietro</span>
+    </it-button>
   `,
-};
-
-export const AttivazioneTramiteCodice: Story = {
-  name: 'Attivazione tramite codice',
-  parameters: {
-    docs: {
-      description: {
-        story: `
-È possibile attivare la funzionalità "torna indietro" tramite JavaScript utilizzando il metodo \`window.history.back()\`.
-
-Questo metodo permette di retrocedere di un passo nella cronologia di navigazione del browser, equivalente al tasto "Indietro" del browser.
-
-\`\`\`javascript
-const backButton = document.getElementById('backButton');
-backButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  window.history.back();
-});
-\`\`\`
-
-        `.trim(),
-      },
-    },
-  },
-  render: () => html`<div class="hide-preview"></div>`,
 };
