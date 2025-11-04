@@ -35,7 +35,7 @@ const meta = {
         component: `
 <Description>Gli skiplinks sono scorciatoie di navigazione che consentono agli utenti di andare direttamente ai contenuti principali della pagina, soprattutto se questa è particolarmente complessa da navigare.</Description>
 
-È un componente che permette a persone che navigano sequenzialmente i contenuti di aver accesso più facile a tutti i contenuti principali della pagina. È particolarmente utile per coloro che per navigare usano la tastiera o tecnologie assistive come i lettori di schermo.
+Questo componente permette a chi naviga sequenzialmente i contenuti di accedere a tutti i contenuti principali della pagina in modo più semplice. È particolarmente utile per chi usa la tastiera o tecnologie assistive come i lettori di schermo.
 
 Deve essere il primo contenuto che si incontra nella pagina. Se è presente l’elemento \`<header>\` suggeriamo di integrarlo come primo suo elemento figlio, in modo da comprenderlo in ogni caso in un landmark di pagina.
 
