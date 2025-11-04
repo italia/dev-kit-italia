@@ -52,8 +52,8 @@ const renderNumberInput = (params: any) =>
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Componenti/Form/Input Numerico',
-  tags: ['autodocs'],
+  title: 'Componenti/Form/InputNumber',
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   component: 'it-input',
   args: {
     id: '',

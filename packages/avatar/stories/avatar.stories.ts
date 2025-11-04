@@ -57,7 +57,7 @@ const renderComponent = (params: Partial<AvatarProps> & { slot?: 'trigger' }) =>
 const meta = {
   title: 'Componenti/Avatar',
   component: 'it-avatar',
-  tags: ['autodocs', 'alpha', 'new'],
+  tags: ['autodocs', 'beta', 'a11y-ok', 'web-component'],
   args: {
     size: 'md',
     src: 'https://randomuser.me/api/portraits/men/43.jpg',

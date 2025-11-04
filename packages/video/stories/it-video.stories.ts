@@ -40,7 +40,7 @@ const renderComponent = (params: any) => html`
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Video',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   component: 'it-video',
   args: {
     src: 'https://vjs.zencdn.net/v/oceans.webm',
