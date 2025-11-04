@@ -113,7 +113,7 @@ Quando sono presenti uno o due link, il componente evita di generare un elemento
 };
 
 export const ComeUsarlo: Story = {
-  name: 'Come visualizzare gli skiplinks su MacOS',
+  name: 'Come visualizzali su MacOS',
   tags: ['!dev'],
   render: () => html`<div class="hide-preview"></div>`,
   parameters: {
