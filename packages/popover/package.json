@@ -1,7 +1,7 @@
 {
   "name": "@italia/popover",
   "description": "Web component it-popover del Design system .italia",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.2",
   "publishConfig": {
     "access": "public"
   },
@@ -34,17 +34,19 @@
     "custom-elements.json"
   ],
   "scripts": {
+    "analyze": "cem analyze --litelement --exclude dist",
     "build": "rollup --config rollup.config.js",
     "clean": "rimraf node_modules .turbo .rollup.cache dist coverage",
-    "prepublish": "build",
+    "prepublish": "pnpm build",
     "lint": "eslint --ext .ts \"src/**/*.ts\" && stylelint \"src/**/*.scss\" && prettier \"src/**/*.ts\" \"test/**/*.ts\" --check",
     "format": "eslint --ext .ts \"src/**/*.ts\" --fix && stylelint \"src/**/*.scss\" --fix && prettier \"src/**/*.ts\" --write",
-    "test": "wtr --coverage --node-resolve --config web-test-runner.config.js"
+    "test": "wtr --coverage --node-resolve --config web-test-runner.config.js",
+    "test:watch": "wtr --coverage --node-resolve --config web-test-runner.config.js --watch"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.7.1",
     "@italia/globals": "workspace:^",
     "bootstrap-italia": "catalog:",
-    "@floating-ui/dom": "^1.7.1",
     "lit": "catalog:"
   },
   "devDependencies": {
@@ -57,6 +59,7 @@
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/mocha": "catalog:",
     "@web/test-runner": "catalog:",
+    "rimraf": "^6.0.1",
     "rollup": "^4.42.0",
     "rollup-plugin-scss-lit": "^2.1.0",
     "sass": "catalog:",

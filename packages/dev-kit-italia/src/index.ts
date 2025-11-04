@@ -7,9 +7,11 @@ export * from '@italia/avatar';
 export * from '@italia/dropdown';
 export * from '@italia/icon';
 export * from '@italia/input';
+export * from '@italia/popover';
+export * from '@italia/radio';
 export * from '@italia/section';
 export * from '@italia/skiplinks';
-export * from '@italia/popover';
+export * from '@italia/sticky';
 export * from '@italia/video';
 
 export { registerTranslation };

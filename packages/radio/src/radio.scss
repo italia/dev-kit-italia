@@ -1,0 +1,176 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+
+@import 'bootstrap-italia/src/scss/base/reboot'; //per gli stili di ::before e ::after
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/forms/forms';
+@import 'bootstrap-italia/src/scss/forms/form-control';
+@import 'bootstrap-italia/src/scss/forms/form-check';
+@import 'bootstrap-italia/src/scss/forms/just-validate';
+
+:host {
+  display: block;
+  margin-bottom: var(--#{$prefix}spacing-xs);
+  box-shadow: none !important;
+  -webkit-focus-ring-color: transparent; /* Chrome/Safari */
+  outline: none !important;
+}
+
+/* Mostra il ring sul controllo interno in questi casi:
+   - host stesso è :focus-visible (keyboard)
+   - host contiene il focus (qualunque elemento figlio sia focalizzato)
+   - fallback: anche quando host ha semplicemente :focus (utile per alcuni casi) */
+:host(:focus-visible) .radio-control {
+  box-shadow:
+    0 0 0 2px $focus-outline-color-in,
+    0 0 0 5px $focus-outline-color-out !important;
+  /* assicurati che il controllo non abbia outline propio che interferisca */
+  outline: none;
+}
+
+.radio-control {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  padding: var(--bs-form-input-padding-y) var(--bs-form-input-padding-x);
+  cursor: pointer;
+}
+
+.radio-control-label {
+  display: block;
+  width: 100%;
+  // Use CSS custom property from parent group if set (for success state), otherwise use default
+  color: var(--it-radio-label-color, var(--bs-form-control-label-color));
+  font-size: var(--bs-label-sm);
+  font-weight: var(--bs-font-weight-solid);
+  @media (min-width: 576px) {
+    font-size: var(--bs-label-font-size-m);
+  }
+}
+
+.radio-control-grouped {
+  width: 100%;
+  flex-direction: row-reverse;
+}
+
+:host([inline]) {
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 0;
+}
+
+:host(:not([group])).form-check label {
+  margin-bottom: var(--#{$prefix}spacing-xxs);
+}
+
+// Visual radio button circle - using ::before and ::after like Bootstrap Italia
+#button {
+  position: relative;
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border: none !important;
+  margin-top: 0 !important;
+  margin-right: 0.5rem;
+
+  // Outer circle (border) - ::before
+  &::before {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--#{$prefix}form-control-label-color);
+    border-radius: var(--#{$prefix}radius-rounded);
+    content: '';
+    transition: all var(--#{$prefix}transition-instant) ease-out;
+  }
+
+  // Inner circle (filled dot) - ::after
+  &::after {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-width: 0;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: var(--#{$prefix}radius-rounded);
+    background-color: transparent;
+    content: '';
+    transform: scale(0);
+    transition: all var(--#{$prefix}transition-instant) ease-out;
+  }
+}
+
+// Unchecked state - ::before visible, ::after hidden
+:host(:not([aria-checked='true'])) #button {
+  &::before {
+    border-color: var(--#{$prefix}form-checkbox-border-color);
+  }
+
+  &::after {
+    z-index: -1;
+    border-width: 0;
+    border-color: transparent;
+    background-color: transparent;
+    transform: scale(0);
+  }
+}
+
+// Checked state - both visible, ::after scaled down
+:host([aria-checked='true']) #button {
+  &::before {
+    border-color: var(--#{$prefix}form-checked-color);
+  }
+
+  &::after {
+    z-index: 0;
+    border-width: 2px;
+    border-color: var(--#{$prefix}form-checked-color);
+    background-color: var(--#{$prefix}form-checked-color);
+    transform: scale(0.64);
+  }
+}
+
+// Disabled state - :host has aria-disabled
+:host([aria-disabled='true']) {
+  .radio-control {
+    cursor: not-allowed;
+  }
+
+  #button::before,
+  #button::after {
+    border-color: var(--#{$prefix}color-border-disabled);
+  }
+}
+
+:host([aria-disabled='true'][aria-checked='true']) #button::after {
+  background-color: var(--#{$prefix}color-border-disabled);
+}
+
+// Invalid state
+:host([aria-invalid='true']) #button {
+  &::before,
+  &::after {
+    border-color: var(--#{$prefix}color-feedback-error);
+  }
+
+  &[aria-checked='true']::after {
+    background-color: var(--#{$prefix}color-feedback-error);
+  }
+}
+
+.form-text {
+  display: block;
+  margin-top: var(--#{$prefix}spacing-xxs);
+  margin-bottom: 0;
+}

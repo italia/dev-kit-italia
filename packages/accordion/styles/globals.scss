@@ -7,15 +7,15 @@ it-accordion-item {
   &:not(:defined) {
     [slot='heading'],
     [slot='content'] {
-      padding: 1rem;
       display: block;
+      padding: 1rem;
     }
 
     &:not([default-open]) {
       [slot='content'] {
+        height: 0;
         padding: 0;
         visibility: hidden;
-        height: 0;
       }
     }
   }
