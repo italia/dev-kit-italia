@@ -1,3 +1,5 @@
+/// <reference types="@types/mocha" />
+
 import type { ItChip } from '@italia/chip';
 import '@italia/button';
 import '@italia/icon';

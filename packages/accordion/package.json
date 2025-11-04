@@ -46,9 +46,7 @@
     "test:watch": "wtr --coverage --node-resolve --config web-test-runner.config.js --watch"
   },
   "dependencies": {
-    "@italia/button": "workspace:^",
     "@italia/globals": "workspace:^",
-    "@italia/icon": "workspace:^",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:"
   },
