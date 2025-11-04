@@ -10,6 +10,8 @@
 
 .acceptoverlay {
   --bs-acceptoverlay-color-text: #fff;
+  --bs-form-control-label-color: #fff;
+  --bs-form-checkbox-border-color: #fff;
 
   a {
     color: var(--bs-acceptoverlay-color-text);
