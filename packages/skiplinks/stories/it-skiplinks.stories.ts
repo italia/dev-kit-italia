@@ -33,7 +33,7 @@ const meta = {
     docs: {
       description: {
         component: `
-<Description>Gli Skiplinks sono scorciatoie di navigazione che consentono agli utenti di andare direttamente ai contenuti principali della pagina, soprattutto se la pagina è particolarmente complessa.</Description>
+<Description>Gli skiplinks sono scorciatoie di navigazione che consentono agli utenti di andare direttamente ai contenuti principali della pagina, soprattutto se questa è particolarmente complessa da navigare.</Description>
 
 È un componente che permette a persone che navigano sequenzialmente i contenuti di aver accesso più facile a tutti i contenuti principali della pagina. È particolarmente utile per coloro che per navigare usano la tastiera o tecnologie assistive come i lettori di schermo.
 
