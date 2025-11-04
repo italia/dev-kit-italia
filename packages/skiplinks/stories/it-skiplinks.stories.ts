@@ -53,7 +53,7 @@ Nell’esempio che segue, implementato per il sito Designers Italia, sono inseri
 - un salto ad un *modulo per chiedere alle persone come stanno valutando l’esperienza d’uso* della pagina. Il testo dello skiplink anticipa già la domanda;
 - un *collegamento diretto alla Dichiarazione di accessibilità disponibile sul form AgID*, che accompagnerà il necessario link presente anche nel piede di pagina, per permettere a chi naviga con strumenti assistivi di trovarla facilmente senza dover scansionare tutti i contennuti.
 
-Consigliamo di non eccedere con il numero di elementi scorciatoia, altrimenti emergerebbe il bisogno di poter saltare le stesse scorciatoie.
+È raccomandato di limitare il numero di elementi scorciatoia per evitare che gli utenti debbano saltare le scorciatoie stesse.
 
 `,
       },
