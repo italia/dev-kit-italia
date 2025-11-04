@@ -40,7 +40,14 @@ const preview: Preview = {
     },
     options: {
       storySort: (a, b) => {
-        const order = ['Welcome', 'PersonalizzazioneDegliStili', 'Componenti'];
+        const order = [
+          'Introduzione',
+          'Personalizzazione degli stili',
+          'Font',
+          'i18n - Internazionalizzazione',
+          'Documentazione tecnica',
+          'Componenti',
+        ];
 
         const kindA = a.title.split('/');
         const kindB = b.title.split('/');

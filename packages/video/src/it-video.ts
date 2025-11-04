@@ -183,33 +183,34 @@ export class ItVideo extends BaseLocalizedComponent {
       }
 
       this.initPluginsFn?.(videojsFn); // se passata una funzione di init di ulteriori plugin, la chiama.
+      if (this.videoElement) {
+        this.player = videojsFn(this.videoElement, mergedOptions, function onPlayerReady() {
+          this.addClass('vjs-theme-bootstrap-italia');
+          this.addClass('vjs-big-play-centered');
 
-      this.player = videojsFn(this.videoElement, mergedOptions, function onPlayerReady() {
-        this.addClass('vjs-theme-bootstrap-italia');
-        this.addClass('vjs-big-play-centered');
+          // Aggiungi i track manualmente
+          tracks.forEach((t) => {
+            this.addRemoteTextTrack(
+              {
+                kind: t.kind,
+                src: t.src,
+                srclang: t.srclang || this.language,
+                label: t.label,
+                default: !!t.default,
+              },
+              false,
+            );
+          });
 
-        // Aggiungi i track manualmente
-        tracks.forEach((t) => {
-          this.addRemoteTextTrack(
-            {
-              kind: t.kind,
-              src: t.src,
-              srclang: t.srclang || this.language,
-              label: t.label,
-              default: !!t.default,
-            },
-            false,
-          );
-        });
+          if (focusPlayButton) {
+            const playButton = this.el()?.querySelector('.vjs-big-play-button') as HTMLButtonElement | null;
 
-        if (focusPlayButton) {
-          const playButton = this.el()?.querySelector('.vjs-big-play-button') as HTMLButtonElement | null;
-
-          if (playButton) {
-            playButton.focus();
+            if (playButton) {
+              playButton.focus();
+            }
           }
-        }
-      });
+        });
+      }
     }
   }
 
@@ -249,10 +250,14 @@ export class ItVideo extends BaseLocalizedComponent {
                   ${this.$t('video_consent_accept')}
                 </it-button>
 
-                <div class="form-check">
-                  <input id="chk-remember" type="checkbox" @click=${() => this.acceptConsent(true)} />
-                  <label for="chk-remember">${this.$t('video_consent_remember')}</label>
-                </div>
+                <it-checkbox
+                  @click=${(e: Event) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.acceptConsent(true);
+                  }}
+                  label="${this.$t('video_consent_remember')}"
+                ></it-checkbox>
               </div>
             </div>
           </div>
