@@ -29,7 +29,7 @@ catalogs:
       version: 1.89.0
     typescript:
       specifier: ^5.5.3
-      version: 5.8.3
+      version: 5.9.3
 
 overrides:
   react: 19.2.0
@@ -174,7 +174,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -201,7 +201,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/avatar:
     dependencies:
@@ -241,7 +241,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -265,7 +265,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/button:
     dependencies:
@@ -299,7 +299,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -323,7 +323,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/callout:
     dependencies:
@@ -357,7 +357,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -378,7 +378,65 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
+
+  packages/checkbox:
+    dependencies:
+      '@italia/globals':
+        specifier: workspace:^
+        version: link:../globals
+      '@italia/i18n':
+        specifier: workspace:^
+        version: link:../i18n
+      bootstrap-italia:
+        specifier: 'catalog:'
+        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/5ca55d534319deb559e1860fb0bc121113a78ebf
+      lit:
+        specifier: 'catalog:'
+        version: 3.3.0
+    devDependencies:
+      '@custom-elements-manifest/analyzer':
+        specifier: ^0.10.3
+        version: 0.10.10
+      '@italia/test-config':
+        specifier: workspace:^
+        version: link:../test-config
+      '@italia/typescript-config':
+        specifier: workspace:^
+        version: link:../typescript-config
+      '@open-wc/testing':
+        specifier: 'catalog:'
+        version: 4.0.0
+      '@rollup/plugin-node-resolve':
+        specifier: ^16.0.1
+        version: 16.0.3(rollup@4.52.5)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.2
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
+      '@types/mocha':
+        specifier: 'catalog:'
+        version: 10.0.10
+      '@web/test-runner':
+        specifier: 'catalog:'
+        version: 0.18.3
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.1.0
+      rollup:
+        specifier: ^4.42.0
+        version: 4.52.5
+      rollup-plugin-scss-lit:
+        specifier: ^2.1.0
+        version: 2.1.0(lit@3.3.0)(rollup@4.52.5)
+      sass:
+        specifier: 'catalog:'
+        version: 1.89.0
+      tslib:
+        specifier: ^2.6.3
+        version: 2.8.1
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
 
   packages/chip:
     dependencies:
@@ -418,7 +476,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -442,7 +500,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/dev-kit-italia:
     dependencies:
@@ -458,6 +516,9 @@ importers:
       '@italia/callout':
         specifier: workspace:^
         version: link:../callout
+      '@italia/checkbox':
+        specifier: workspace:^
+        version: link:../checkbox
       '@italia/chip':
         specifier: workspace:^
         version: link:../chip
@@ -500,7 +561,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       bootstrap-italia:
         specifier: 'catalog:'
         version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/5ca55d534319deb559e1860fb0bc121113a78ebf
@@ -521,7 +582,7 @@ importers:
         version: 1.89.0
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/dropdown:
     dependencies:
@@ -561,7 +622,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -585,7 +646,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/globals:
     dependencies:
@@ -628,7 +689,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/i18n:
     dependencies:
@@ -653,7 +714,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -671,7 +732,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/icon:
     dependencies:
@@ -702,7 +763,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -732,7 +793,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/input:
     dependencies:
@@ -772,7 +833,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -796,7 +857,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/popover:
     dependencies:
@@ -833,7 +894,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -857,7 +918,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/radio:
     dependencies:
@@ -888,7 +949,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -909,7 +970,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/section:
     dependencies:
@@ -943,7 +1004,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -967,7 +1028,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/sticky:
     dependencies:
@@ -998,7 +1059,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -1019,7 +1080,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/tabs:
     dependencies:
@@ -1044,7 +1105,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -1065,7 +1126,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/test-config:
     devDependencies:
@@ -1101,7 +1162,7 @@ importers:
         version: 2.1.0(lit@3.3.0)(rollup@4.52.5)
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
   packages/typescript-config: {}
 
@@ -1113,6 +1174,9 @@ importers:
       '@italia/button':
         specifier: workspace:^
         version: link:../button
+      '@italia/checkbox':
+        specifier: workspace:^
+        version: link:../checkbox
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
@@ -1155,7 +1219,7 @@ importers:
         version: 16.0.3(rollup@4.52.5)
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
-        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
       '@types/mocha':
         specifier: 'catalog:'
         version: 10.0.10
@@ -1179,7 +1243,7 @@ importers:
         version: 2.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.8.3
+        version: 5.9.3
 
 packages:
 
@@ -6044,11 +6108,6 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typescript@5.8.3:
-    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
@@ -7219,11 +7278,11 @@ snapshots:
     optionalDependencies:
       rollup: 4.52.5
 
-  '@rollup/plugin-typescript@12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.8.3)':
+  '@rollup/plugin-typescript@12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)':
     dependencies:
       '@rollup/pluginutils': 5.1.4(rollup@4.52.5)
       resolve: 1.22.10
-      typescript: 5.8.3
+      typescript: 5.9.3
     optionalDependencies:
       rollup: 4.52.5
       tslib: 2.8.1
@@ -11601,8 +11660,6 @@ snapshots:
       reflect.getprototypeof: 1.0.10
 
   typescript@5.4.5: {}
-
-  typescript@5.8.3: {}
 
   typescript@5.9.3: {}
 

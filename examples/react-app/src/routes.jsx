@@ -1,5 +1,6 @@
 import Accordion from './pages/Accordion';
 import Button from './pages/Button';
+import Checkbox from './pages/Checkbox';
 import Chip from './pages/Chip';
 import Dropdown from './pages/Dropdown';
 import Form from './pages/Form';
@@ -14,6 +15,7 @@ import Avatar from './pages/Avatar';
 export const AppRoutes = [
   { path: '/accordion', element: <Accordion />, title: 'Accordion' },
   { path: '/button', element: <Button />, title: 'Button' },
+  { path: '/checkbox', element: <Checkbox />, title: 'Checkbox' },
   { path: '/chip', element: <Chip />, title: 'Chip' },
   { path: '/dropdown', element: <Dropdown />, title: 'Dropdown' },
   { path: '/form', element: <Form />, title: 'Form' },

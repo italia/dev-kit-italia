@@ -11,11 +11,13 @@ import Radio from './components/Radio.vue';
 import Section from './components/Section.vue';
 import Sticky from './components/Sticky.vue';
 import Video from './components/Video.vue';
+import Checkbox from './components/Checkbox.vue';
 import Avatar from './components/Avatar.vue';
 
 const routes = [
   { path: '/accordion', name: 'Accordion', component: Accordion },
   { path: '/button', name: 'Button', component: Button },
+  { path: '/checkbox', name: 'Checkbox', component: Checkbox },
   { path: '/chip', name: 'Chip', component: Chip },
   { path: '/dropdown', name: 'Dropdown', component: Dropdown },
   { path: '/form', name: 'Form', component: Form },
