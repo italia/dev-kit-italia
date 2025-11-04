@@ -138,28 +138,29 @@ return (
 
 ## Applicazioni predefinite per il testing
 
-All'interno di questo progetto, sotto alla cartella `/apps` sono gia disponibili alcune applicazioni create con i framework **Angular**, **React**, **Svelte** e **Vue** che consentono di testare l'attuale versione della libreria (o del branch corrente).
+All'interno di questo progetto, sotto alla cartella `/examples` sono gia disponibili alcune applicazioni create con i framework **Angular**, **React**, **Svelte** e **Vue** che consentono di testare l'attuale versione della libreria (o del branch corrente).
 
 #### Come testare:
 
 1. compilare sempre la versione corrente della libreria posizionandosi nella root con
 
 ```bash
+pnpm install # Per installare tutte le dipendeze dei vari packages
 pnpm build
 ```
 
 2. posizionarsi nella cartella del framework che si vuole testare. Ad esempio se vogliamo testare il framework React (oppure Vue, o Svelte):
 
 ```bash
-cd apps/react-app
+cd examples/react-app
 npm install # Per copiare nella node_modules la versione compilata di dev-kit-italia
 npm run dev
 ```
 
-Se invece si vuole testare l'app Angular, è necessario avere installato in locale la CLI di Angular e fare:
+Se invece si vuole testare l'app Angular, è necessario fare:
 
 ```bash
-cd apps/angular-app
+cd examples/angular-app
 npm install # Per copiare nella node_modules la versione compilata di dev-kit-italia
-ng serve
+npm start
 ```
