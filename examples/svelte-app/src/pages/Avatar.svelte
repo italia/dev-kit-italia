@@ -169,7 +169,7 @@
   <div style="display: flex; gap: 3rem; flex-wrap: wrap; align-items: center; justify-content: center;">
     <div style="flex: 1; min-width: 300px;">
       <h4>Lista Verticale - Dimensione SM</h4>
-      
+
         <div class="link-list-wrapper">
           <ul class="link-list avatar-group">
             <li>
@@ -198,11 +198,11 @@
             </li>
           </ul>
         </div>
-      
+
     </div>
     <div style="flex: 1; min-width: 300px;">
       <h4>Lista Verticale - Dimensione MD</h4>
-      
+
         <div class="link-list-wrapper">
           <ul class="link-list avatar-group">
             <li>
@@ -231,7 +231,7 @@
             </li>
           </ul>
         </div>
-      
+
     </div>
   </div>
 </section>
@@ -241,7 +241,7 @@
   <h2>Gruppi di avatar - Liste verticali con testo aggiuntivo</h2>
   <div style="align-items: center; justify-content: center; display: flex; flex-direction: column;">
     <h4>Lista Team con Ruoli</h4>
-    
+
       <div class="link-list-wrapper">
         <ul class="link-list avatar-group">
           <li>
@@ -286,7 +286,7 @@
           </li>
         </ul>
       </div>
-    
+
   </div>
 </section>
 
@@ -296,7 +296,7 @@
   <div style="display: flex; flex-direction: column; gap: 3rem; align-items: center; justify-content: center;">
     <div style="text-align: center; align-items: center; justify-content: center; display: flex; flex-direction: column;">
       <h4>Avatar Sovrapposti - Dimensione SM</h4>
-      
+
         <div class="link-list-wrapper">
           <ul class="avatar-group-stacked">
             <li>
@@ -338,14 +338,14 @@
             </li>
           </ul>
         </div>
-      
+
       <p style="margin-top: 0.5rem; font-size: 14px; color: #666;">
         <a href="#" style="color: #0066cc; text-decoration: none;">Visualizza altri 8 utenti →</a>
       </p>
     </div>
     <div style="text-align: center; align-items: center; justify-content: center; display: flex; flex-direction: column;">
       <h4>Avatar Sovrapposti - Dimensione MD</h4>
-      
+
         <div class="link-list-wrapper">
           <ul class="avatar-group-stacked">
             <li>
@@ -355,7 +355,7 @@
               <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo" href="#"></it-avatar>
             </li>
             <li>
-              <it-avatar type="text" text="Giulia Neri" variant="primary" href="#" avatar-title="Giulia Neri" slot="trigger"></it-avatar>
+              <it-avatar type="text" text="Giulia Neri" variant="primary" href="#" avatar-title="Giulia Neri"></it-avatar>
             </li>
             <li>
               <it-avatar text="Sandro Penna" variant="secondary" href="#"></it-avatar>
@@ -384,7 +384,7 @@
             </li>
           </ul>
         </div>
-      
+
       <p style="margin-top: 0.75rem; font-size: 16px; color: #666;">
         Clicca su "+4" per visualizzare gli utenti rimanenti
       </p>

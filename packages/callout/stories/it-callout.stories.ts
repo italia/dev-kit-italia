@@ -12,7 +12,7 @@ interface CalloutProps {
 }
 
 const renderComponent = ({
-  variant,
+  variant = 'primary',
   highlight = false,
   more = false,
   icon = '',
@@ -29,7 +29,7 @@ const renderComponent = ({
 
 const meta = {
   title: 'Componenti/Callout',
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
   component: 'it-callout',
   args: {
     variant: '',

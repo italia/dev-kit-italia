@@ -156,7 +156,7 @@ export class FormControl extends BaseLocalizedComponent {
   /*
   Override default browser validation messages
    */
-  private handleValidationMessages() {
+  protected handleValidationMessages() {
     if (!this.customValidation) {
       const _v = this.inputElement.validity;
 
