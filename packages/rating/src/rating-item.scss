@@ -21,9 +21,7 @@
 }
 
 /* Focus ring - mostra quando l'item è focalizzato via tastiera */
-:host(:focus-visible) #star,
-:host(:focus-within) #star,
-:host(:focus) #star {
+:host(:focus-visible) #star {
   border-radius: var(--#{$prefix}radius-xs);
   box-shadow:
     0 0 0 2px $focus-outline-color-in,
@@ -69,12 +67,6 @@
   }
 }
 
-/* Stella piena quando checked */
-:host([checked]) #star,
-:host([aria-checked='true']) #star {
-  color: var(--#{$prefix}warning, #a66300);
-}
-
 /* Stella vuota quando non checked */
 :host(:not([checked])) #star,
 :host([aria-checked='false']) #star {
@@ -85,15 +77,4 @@
 :host([disabled]) #star {
   cursor: not-allowed;
   opacity: 0.6;
-}
-
-/* Hover effect solo se non disabled */
-:host(:not([disabled]):hover) #star {
-  color: var(--#{$prefix}warning, #a66300);
-  transform: scale(1.15);
-}
-
-/* Label accessibile (visually-hidden) */
-.visually-hidden {
-  @extend .visually-hidden;
 }
