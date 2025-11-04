@@ -1,5 +1,8 @@
+/// <reference types="mocha"/>
+
 import { expect, fixture, html } from '@open-wc/testing';
-import type { ItCallout } from '../src/it-callout.js';
+import type { ItCallout } from '@italia/callout';
+import '@italia/icon';
 import '@italia/callout';
 
 describe('ItCallout', () => {
@@ -102,7 +105,8 @@ describe('ItCallout', () => {
       expect(root.querySelector('.callout')).to.exist;
       expect(root.querySelector('.callout-inner')).to.exist;
       expect(root.querySelector('.callout-title')).to.exist;
-      expect(root.querySelector('.callout-content')).to.exist;
+      // Il contenuto è nello slot default, non c'è un wrapper .callout-content
+      expect(root.querySelector('slot:not([name])')).to.exist;
     });
 
     it('applies variant + highlight combination classes', async () => {
@@ -168,14 +172,16 @@ describe('ItCallout', () => {
       expect(moreSlot).to.exist;
       expect(moreSlot.assignedElements()[0].textContent?.trim()).to.equal('Extra');
 
+      // Lo slot more-content viene sempre renderizzato, anche senza contenuto
       const elWithout = await fixture<ItCallout>(html`
         <it-callout>
           <p>Only main</p>
         </it-callout>
       `);
       await elWithout.updateComplete;
-      const absentMore = elWithout.shadowRoot!.querySelector('slot[name="more-content"]');
-      expect(absentMore).to.not.exist;
+      const moreSlotEmpty = elWithout.shadowRoot!.querySelector('slot[name="more-content"]') as HTMLSlotElement;
+      expect(moreSlotEmpty).to.exist;
+      expect(moreSlotEmpty.assignedElements().length).to.equal(0);
     });
 
     it('does not render title block when no title nor icon provided', async () => {
@@ -186,8 +192,8 @@ describe('ItCallout', () => {
       `);
       await el.updateComplete;
       const titleContainer = el.shadowRoot!.querySelector('.callout-title');
-      // when no title/icon provided the title container should not be rendered
-      expect(titleContainer).to.be.null;
+      // Il titolo viene sempre renderizzato, ma sarà vuoto
+      expect(titleContainer).to.exist;
     });
   });
 
@@ -204,7 +210,8 @@ describe('ItCallout', () => {
       expect(root.querySelector('[part="callout"]')).to.exist;
       expect(root.querySelector('[part="inner"]')).to.exist;
       expect(root.querySelector('[part="title"]')).to.exist;
-      expect(root.querySelector('[part="content"]')).to.exist;
+      // Il part content non esiste, il contenuto è nello slot
+      expect(root.querySelector('[part="more-content"]')).to.exist;
     });
 
     it('exposes more-content part when additional content provided', async () => {

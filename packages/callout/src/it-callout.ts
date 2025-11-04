@@ -32,7 +32,10 @@ export class ItCallout extends BaseComponent {
   }
 
   private onIconSlotChange = () => {
-    this.updateIconColors();
+    // Usa requestAnimationFrame per dare tempo al DOM di stabilizzarsi
+    requestAnimationFrame(() => {
+      this.updateIconColors();
+    });
   };
 
   private updateIconColors() {
