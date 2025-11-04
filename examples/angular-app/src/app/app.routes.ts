@@ -6,6 +6,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/accordion.component').then((c) => c.AccordionComponent),
   },
   {
+    path: 'badge',
+    loadComponent: () => import('./pages/badge.component').then((c) => c.BadgeComponent),
+  },
+  {
     path: 'button',
     loadComponent: () => import('./pages/button.component').then((c) => c.ButtonComponent),
   },
