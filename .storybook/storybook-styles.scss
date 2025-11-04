@@ -14,8 +14,18 @@
 
 // Indice laterale destro
 .sbdocs-toc--custom {
+  width: 100% !important;
+
+  &,
   nav,
   .toc-wrapper ul {
+    min-width: 0px;
+    max-width: 20rem;
+  }
+
+  nav,
+  .toc-wrapper ul {
+    width: 100%;
     font-family: var(--bs-font-sans-serif);
     font-size: 16px;
   }
@@ -38,6 +48,8 @@
 /* Applica stili SOLO alla documentazione, MAI alle preview */
 /* Esclude esplicitamente .sb-story che contiene le preview */
 .sbdocs-content {
+  margin: 0 auto;
+
   :not(.sb-story *) {
     font-family: var(--bs-font-sans-serif);
     font-size: var(--bs-body-font-size); /* Mobile: 16px, Desktop: 18px */
