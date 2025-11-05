@@ -30,12 +30,16 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/icon.component').then((c) => c.IconComponent),
   },
   {
-    path: 'section',
-    loadComponent: () => import('./pages/section.component').then((c) => c.SectionComponent),
-  },
-  {
     path: 'input',
     loadComponent: () => import('./pages/input.component').then((c) => c.InputComponent),
+  },
+  {
+    path: 'overlay',
+    loadComponent: () => import('./pages/overlay.component').then((c) => c.OverlayComponent),
+  },
+  {
+    path: 'section',
+    loadComponent: () => import('./pages/section.component').then((c) => c.SectionComponent),
   },
   {
     path: 'sticky',

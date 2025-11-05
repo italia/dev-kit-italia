@@ -7,6 +7,7 @@ import Dropdown from './components/Dropdown.vue';
 import Form from './components/Form.vue';
 import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
+import Overlay from './components/Overlay.vue';
 import Radio from './components/Radio.vue';
 import Section from './components/Section.vue';
 import Sticky from './components/Sticky.vue';
@@ -23,6 +24,7 @@ const routes = [
   { path: '/form', name: 'Form', component: Form },
   { path: '/icon', name: 'Icon', component: Icon },
   { path: '/input', name: 'Input', component: Input },
+  { path: '/overlay', name: 'Overlay', component: Overlay },
   { path: '/radio', name: 'Radio', component: Radio },
   { path: '/section', name: 'Section', component: Section },
   { path: '/sticky', name: 'Sticky', component: Sticky },
@@ -31,7 +33,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory("vue-app"),
+  history: createWebHistory('vue-app'),
   routes,
 });
 

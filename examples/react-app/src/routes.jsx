@@ -6,6 +6,7 @@ import Dropdown from './pages/Dropdown';
 import Form from './pages/Form';
 import Icon from './pages/Icon';
 import Input from './pages/Input';
+import Overlay from './pages/Overlay';
 import Radio from './pages/Radio';
 import Section from './pages/Section';
 import Sticky from './pages/Sticky';
@@ -21,6 +22,7 @@ export const AppRoutes = [
   { path: '/form', element: <Form />, title: 'Form' },
   { path: '/icon', element: <Icon />, title: 'Icon' },
   { path: '/input', element: <Input />, title: 'Input' },
+  { path: '/overlay', element: <Overlay />, title: 'Overlay' },
   { path: '/radio', element: <Radio />, title: 'Radio' },
   { path: '/section', element: <Section />, title: 'Section' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },

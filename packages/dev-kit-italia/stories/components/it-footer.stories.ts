@@ -281,7 +281,9 @@ Per una Pubblica Amministrazione potrebbe contenere tutte i riferimenti ai vari 
 Potrebbe anche contenere riferimenti alle pagine social dell’amministrazione.
 
 Le composizioni mostrate sfruttano le classi di bootstrap-italia affiancate ai web components forniti dal kit.
-\n**In caso non si stia utilizzando il bundle unico, assicurarsi di avere importato tutti i fogli di stile necessari da \`bootstrap-italia\`.**
+<div class="callout callout-primary"><div class="callout-inner"><div class="callout-title"><span class="text">Stili</span></div>
+<p>In caso non si stia utilizzando il bundle unico, assicurarsi di avere importato tutti i fogli di stile necessari da \`bootstrap-italia\`.</p></div></div>
+
         `.trim(),
       },
     },
