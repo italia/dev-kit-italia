@@ -1,21 +1,5 @@
-<!doctype html>
-<html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test Web Components - Avatar (vanilla)</title>
-  <!-- Load compiled dev-kit CSS in <head> so styles are present even when JS is disabled -->
-  <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
-  <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
-  <!-- Local app styles so layout (#root etc.) is present without JS -->
-  <link rel="stylesheet" href="/src/style.css" />
-  </head>
-  <body>
-      <div id="root">
-      <div id="app-header">
-      </div>
-      <div class="container my-4">
+<template>
+ <div class="container my-4">
   <h1>Affix</h1>
 
   <!-- Affix top  -->
@@ -197,11 +181,10 @@
   </section>
 </div>
 
+</template>
 
-
-      <div id="app-footer"></div>
-    </div>
-
-    <script type="module" src="/src/main.js"></script>
-  </body>
-</html>
+<script>
+export default {
+  name: 'Affix',
+};
+</script>
