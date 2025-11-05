@@ -39,42 +39,17 @@ const preview: Preview = {
       },
     },
     options: {
-      storySort: (a, b) => {
-        const order = [
+      storySort: {
+        method: 'alphabetical',
+        order: [
           'Introduzione',
           'Personalizzazione degli stili',
           'Font',
           'i18n - Internazionalizzazione',
           'Documentazione tecnica',
           'Componenti',
-        ];
-
-        const kindA = a.title.split('/');
-        const kindB = b.title.split('/');
-
-        const topA = kindA[0];
-        const topB = kindB[0];
-
-        const topAIndex = order.indexOf(topA);
-        const topBIndex = order.indexOf(topB);
-
-        if (topAIndex !== -1 && topBIndex !== -1 && topAIndex !== topBIndex) {
-          return topAIndex - topBIndex;
-        } else if (topAIndex !== -1 && topBIndex === -1) {
-          return -1;
-        } else if (topAIndex === -1 && topBIndex !== -1) {
-          return 1;
-        }
-
-        // Se siamo dentro "Componenti", ordina alfabeticamente
-        if (topA === 'Componenti' && topB === 'Componenti') {
-          return (kindA[1] ?? '').localeCompare(kindB[1] ?? '', 'it', {
-            numeric: true,
-          });
-        }
-
-        // fallback: ordinamento alfabetico su id
-        return a.id.localeCompare(b.id, 'it', { numeric: true });
+          'Framework',
+        ],
       },
     },
   },

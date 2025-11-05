@@ -267,7 +267,7 @@ const smallContent = html` <footer class="it-footer">
 const meta = {
   title: 'Componenti/Footer',
   component: 'footer',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'documentation'],
   parameters: {
     docs: {
       description: {

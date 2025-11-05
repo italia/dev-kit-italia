@@ -3,7 +3,7 @@ import { html } from 'lit';
 
 const meta = {
   title: 'Componenti/Form',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'documentation'],
 
   parameters: {
     docs: {

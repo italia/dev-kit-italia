@@ -33,7 +33,7 @@ const renderComponent = (params: IconProps) => html`
 
 const meta: Meta<IconProps> = {
   title: 'Componenti/Icon',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   component: 'it-icon',
   args: {
     name: 'it-star-full',
