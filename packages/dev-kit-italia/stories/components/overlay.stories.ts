@@ -4,7 +4,7 @@ import '@italia/icon';
 
 const meta = {
   title: 'Componenti/Overlay Panel',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'documentation'],
 
   parameters: {
     docs: {
