@@ -84,7 +84,7 @@ const renderSizeVariant = (args: ButtonProps, defaultText: string) =>
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Button',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   component: 'it-button',
   args: {
     slot: 'Testo del pulsante',

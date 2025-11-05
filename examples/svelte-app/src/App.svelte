@@ -19,6 +19,7 @@
     <nav class="app-nav">
       <a href="#/accordion">Accordion</a>
       <a href="#/button">Button</a>
+      <a href="#/checkbox">Checkbox</a>
       <a href="#/chip">Chip</a>
       <a href="#/dropdown">Dropdown</a>
       <a href="#/form">Form</a>

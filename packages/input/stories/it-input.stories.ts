@@ -75,7 +75,7 @@ const renderComponent = (params: any) =>
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Form/Input',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   component: 'it-input',
   args: {
     id: '',
@@ -251,7 +251,7 @@ Per il corretto funzionamento degli elementi di tipo \`<it-input>\` è di fondam
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>
-Tutti gli attributi \`aria-*\` passati a \`<it-input>\` vengono applicati all'input generato.
+Tutti gli attributi \`it-aria-*\` passati a \`<it-input>\` vengono applicati all'input generato.
 </p></div></div>
 `,
       },

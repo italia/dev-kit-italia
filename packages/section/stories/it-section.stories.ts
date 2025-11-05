@@ -52,7 +52,7 @@ function renderSection({
 }
 const meta = {
   title: 'Componenti/Section',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   component: 'it-section',
   parameters: {
     docs: {

@@ -1,0 +1,242 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Code } from 'storybook/internal/components';
+
+<Meta title="Documentazione tecnica" />
+
+# Documentazione tecnica del progetto Dev Kit Italia
+
+In questa pagina sono descritte le scelte tecniche e le linee guida adottate per la realizzazione della libreria
+**Dev Kit Italia** basata su **Lit** e organizzata in **monorepo**.
+
+L'obiettivo è fornire una base scalabile,
+manutenibile e pronta per l'espansione futura.
+
+## Stack tecnologico
+
+- **Framework:** [Lit](https://lit.dev)
+- **Linguaggio:** TypeScript
+- **Stili:** SCSS importato inline (`?inline`)
+- **Struttura:** Monorepo (es. npm/pnpm workspaces, Nx, Turborepo)
+- **Strumenti di supporto:** [Open Web Components](https://open-wc.org)
+
+## Perché Open Web Components
+
+Open Web Components fornisce strumenti e convenzioni standardizzate per sviluppare Web Components in modo coerente, scalabile e manutenibile.
+
+**Vantaggi principali:**
+
+- <strong>Avvio rapido con best practice consolidate</strong>: include generatori di progetto (`npm @open-wc`) che
+  integrano configurazioni moderne (es. Vite, TypeScript, testing).
+- <strong>Testing integrato</strong>: supporta `@web/test-runner`, `sinon`, `chai` e strumenti di mocking mirati per
+  ambienti DOM.
+- **Qualità del codice**: linting specifico per Lit (eslint-plugin-lit), configurazioni Prettier e suggerimenti per migliorare performance e accessibilità.
+- **Supporto alla documentazione**: integrazione nativa con Storybook e demo live tramite `@web/dev-server`.
+- **Ottimizzazione per la pubblicazione**: configurazioni pronte per bundling, tree-shaking e distribuzione su NPM via ESM.
+- **Allineamento agli standard**: segue le raccomandazioni W3C e promuove l'uso di API native senza lock-in proprietari.
+- **Adozione da parte di attori di rilievo**: utilizzato in progetti di produzione da organizzazioni come Adobe (Spectrum Web Components).
+
+## Struttura del monorepo (esempio)
+
+```bash
+
+/web-components-monorepo
+├── packages/
+│   ├── card/
+│   │   ├── src/
+│   │   │   └── card.ts
+│   │   └── package.json
+│   ├── button/
+│   └── ...
+├── shared/
+│   └── base-component/
+│       └── base-component.ts
+├── tsconfig.base.json
+├── ...
+└── README.md
+```
+
+## Struttura di un componente
+
+Ogni componente:
+
+- Utilizza i decorator `@customElement` e `@property` di Lit
+- Include SCSS inline (?inline)
+- Gestisce attributi e **slot**
+- È progettato per essere **riusabile** e **accessibile**
+
+**Esempio:** [`it-icon`](https://github.com/italia/dev-kit-italia/blob/main/packages/icon/src/it-icon.ts)
+
+Include:
+
+- @property configurabili (`align`, `padded`,...)
+- Slot: per l'svg customElement
+- Condizioni dinamiche con `nothing`
+
+## Shadow DOM vs light DOM
+
+### Scelta del progetto
+
+L'implementazione di default utilizza **shadow DOM** per:
+
+- Incapsulamento degli stili
+- Isolamento del markup interno
+
+pertanto il funzionamento e il rendering dei componenti è garantito esclusivamente con
+javascript abilitato (non è supportato js disabilitato).
+
+Tuttavia, in alcuni casi specifici (soprattutto legati all'accessibilità), può essere utilizzato il light DOM.
+
+### Quando evitare lo shadow DOM
+
+Alcuni casi d'uso (accessibilità) possono richiedere il **light DOM**, ad esempio:
+
+- Screen reader che non leggono contenuti shadow
+- Attributi ARIA che non si propagano correttamente
+- Problemi di focus management con tastiera
+
+**Linea guida:**
+Usare **shadow DOM** di default. Usare **light DOM** solo nei casi in cui ci siano impedimenti dimostrabili alla piena accessibilità con lo shadow DOM.
+
+## Migrazione da Bootstrap Italia
+
+I progetti che utilizzano **Bootstrap Italia** possono migrare progressivamente verso i nuovi **Web Components**, seguendo la guida
+all'upgrade che verrà fornita.
+
+Vantaggi della migrazione a Web Components:
+
+- Markup semplificato
+- Stili incapsulati
+- Comportamenti accessibili integrati
+- Maggiore riusabilità e composizione
+
+I Web Components verranno usati in modalità HTML-first, sfruttando gli slot e componendo tutto il markup esternamente.
+
+## Approccio HTML-first
+
+Vantaggi:
+
+- Ottimizzazione per SEO e performance (contenuto visibile nel markup server-side)
+- Maggiore controllo del markup accessibile
+- Integrazione diretta con componenti come next/image (React) e/o altri
+  framework
+
+<div class="callout callout-primary">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">NOTA</span>
+    </div>
+    <p>
+      Nella cartella `examples` della root del progetto, sono forniti e documentati per gli utilizzatori finali gli
+      snippet HTML da utilizzare sia in ambiente JS vanilla, che nei framework React, Angular, Vue, Svelte
+    </p>
+  </div>
+</div>
+
+Esempio:
+
+```html
+<div
+  className="d-flex align-items-center justify-content-center
+h-100 w-100"
+>
+  <div className="row w-100">
+    <div className="col-12 col-lg-6">
+      <it-card>
+        <div slot="image">
+          <figure>
+            <it-image
+              src="https://placehold.co/400x300/0066cc/FFFFFF/?text=IMMAGINE%20
+              DI%20ESEMPIO"
+              alt="Descrizione immagine"
+              fill
+            />
+          </figure>
+        </div>
+        <it-card-calendar date="{new" Date().toISOString()}></it-card-calendar>
+        <div slot="card-body">
+          <h3 slot="card-title">Sono un componente totalmente html1st</h3>
+          <p>Contenuto della card in questo slot.</p>
+        </div>
+        <div slot="card-link">
+          <a href="#">sono un link custom</a>
+        </div>
+      </it-card>
+    </div>
+  </div>
+</div>
+```
+
+<br />
+
+## Layout Shift e FOUC
+
+Il **Cumulative Layout Shift (CLS)** misura quanto gli elementi visivi cambiano posizione durante il caricamento. Un'esperienza utente ottimale
+richiede che tali spostamenti siano ridotti al minimo.
+
+Anche il **Flash of Unstyled Content (FOUC)** – quando contenuti
+visibili non sono ancora correttamente stilizzati – impatta negativamente la percezione della qualità. Per ridurre
+questi problemi, è importante distinguere le responsabilità tra chi sviluppa la libreria di Web Components e chi la
+utilizza in un'applicazione o sito.
+
+Per ridurre questi problemi, è importante distinguere le responsabilità tra chi sviluppa la libreria di Web Components e
+chi la utilizza in un'applicazione o sito.
+
+### Responsabilità della libreria
+
+- **Garantire layout prevedibili**:
+  - Definire **dimensioni** minime o fisse nei componenti (min-height, aspect-ratio, ecc.)
+
+  - Prevedere **slot con layout stabile** anche prima del caricamento degli stili o dell'hydration
+
+- Prevedere **fallback CSS**:
+  - Fornire stili CSS di base caricabili esternamente (via style.css) o inline (`<style>` in light DOM)
+
+- Progettare per **HTML-first**:
+  - Permettere l'inserimento di contenuti tramite **slot** (e non solo proprietà dinamiche)
+
+  - Evitare dipendenze critiche da render() di Lit per i contenuti essenziali
+
+- Facilitare il **preload degli stili**:
+  - Rendere disponibili gli stili critici in file separati e documentarne l'uso
+
+### Responsabilità dell'utilizzatore (consumatore dei componenti)
+
+Chi integra i Web Components in un'applicazione deve:
+
+- Adottare un **approccio HTML-first**:
+  - Usare il markup completo (come da documentazione) e contenuti slot nel primo render server-side
+
+  - Evitare di popolare dinamicamente gli slot via JS dopo l'hydration HTML
+
+- Caricare gli **stili critici** anticipatamente:
+  - Utilizzare `<link rel="preload">` o tecniche come `vite-plugin-critical` per includere gli stili nel primo paint
+
+- Usare **skeletons o placeholder** coerenti:
+  - Inserire contenuti temporanei che rispettino la dimensione finale per evitare "salti" visivi
+
+- Garantire per quanto possibile **coerenza** tra layout iniziale e finale:
+  - Assicurarsi che la struttura del DOM server-side corrisponda a quella post-hydration, assicurandosi di seguire la documentazione fornita dal kit.
+
+  - Comunicare all'utente finale con un apposito tag `<noscript>` la necessità di abilitare Javascript per poter fruire di tutte le funzionalità del sito / applicazione. Es.
+
+    ```html
+    <noscript>
+      <div
+        style="background-color: #ffdddd; color: #a00; padding: 1em; text-align:
+    center; font-family: sans-serif;"
+      >
+        ⚠ JavaScript è disabilitato. Per utilizzare tutte le funzionalità di questo sito, abilita JavaScript nelle
+        impostazioni del tuo browser.
+      </div>
+    </noscript>
+    ```
+
+### Nota finale
+
+L'efficacia del fallback styling è strettamente legata all'approccio HTML-first.
+
+Se i Web Components sono utilizzati con contenuto dinamico popolato dopo il caricamento, si
+introduce un rischio significativo di layout shift.
+
+Viceversa, un uso coerente di slot e markup completo nel primo render HTML riduce drasticamente il CLS e migliora la stabilità
+visiva.

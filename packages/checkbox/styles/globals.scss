@@ -1,0 +1,21 @@
+it-checkbox {
+  --it-host-display: block;
+  display: var(--it-host-display);
+
+  &[inline] {
+    --it-host-display: inline-block;
+    margin-right: 1rem;
+  }
+
+  &:not(:defined) {
+    &[group] {
+      margin-bottom: 1rem;
+    }
+
+    [slot='label'] {
+      margin-left: 25px;
+      width: max-content;
+      display: inline-block;
+    }
+  }
+}
