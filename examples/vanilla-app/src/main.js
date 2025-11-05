@@ -35,6 +35,9 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/accordion">
         Accordion
       </a>
+      <a href="/src/affix">
+        Affix
+      </a>
       <a href="/src/avatar">
         Avatar
       </a>
