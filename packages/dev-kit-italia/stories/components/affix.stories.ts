@@ -8,7 +8,7 @@ const meta = {
     docs: {
       description: {
         component: `
-<Description>Blocca la posizione di un elemento rispetto ad un'area visibile della pagina una volta raggiunta l'area durante lo scorrimento.</Description>
+<Description>Blocca la posizione di un elemento rispetto a un'area visibile della pagina una volta che questa viene raggiunta durante lo scorrimento.</Description>
 
 
 Un elemento Affix rimane nella sua posizione originale fino a quando l’utente non scorre la pagina oltre l'elemento;
