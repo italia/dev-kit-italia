@@ -57,11 +57,11 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `<Description>Per creare sezioni di layout orizzontale con differenti sfondi.</Description>
+        component: `<Description>Sezione per raggruppare contenuti coerenti e con sfondi dedicati</Description>
 
 Il componente \`<it-section>\` rappresenta un contenitore visivo per introdurre sezioni di contenuto con o senza immagine.
 
-Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del design-system](https://designers.italia.it/design-system/componenti/sections/)
+Per indicazioni su come e quando usarlo consulta la [guida del design-system](https://designers.italia.it/design-system/componenti/sections/)
 
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità (Draft)</span></div><p>
@@ -191,9 +191,9 @@ export const VarianteConImmagine: Story = {
     docs: {
       description: {
         story: `
-Valorizzando l'attributo \`image\` del componente con l’URL dell’immagine da utilizzare  la Section utilizzerà l’immagine indicata come sfondo, adattandone automaticamente le dimensioni per coprire l’intera Section.
+Per aggiungere un'immagine di sfondo alla sezione, inserire l'URL dell'immagine nell'attributo \`image\`. L'immagine si adatterà automaticamente.
 
-A seconda della luminosità dell’immagine si consiglia di valorizzare o meno l'attributo \`inverse\` per garantire il corretto contrasto fra testi e sfondo.
+Se l'immagine di sfondo è scura, usa l'attributo \`inverse\` per rendere il testo bianco e mantenere una buona leggibilità.
         `,
       },
     },
