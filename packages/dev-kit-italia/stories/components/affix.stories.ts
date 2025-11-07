@@ -57,7 +57,7 @@ export const AffixTop: Story = {
         story: `
 Per ancorare un elemento alla parte alta della pagina è sufficiente applicare la classe \`.affix-parent\` all’elemento che lo contiene e la classe **\`.affix-top\`** all’elemento stesso.
 
-<div class="mt-5" style="font-size:0.9rem">Scolla il contenuto dell'esempio qui sotto per vedere l'effetto dell'affix.</div>
+<div class="mt-5" style="font-size:0.9rem">Scorri il contenuto dell'esempio qui sotto per vedere l'effetto dell'affix.</div>
 `,
       },
     },
