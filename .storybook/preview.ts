@@ -3,7 +3,7 @@ import './main.scss';
 import './storybook-styles.scss';
 import prettier from 'prettier-v2';
 import HTMLParser from 'prettier-v2/parser-html';
-import '../packages/dev-kit-italia/elements';
+import './elements';
 
 const preview: Preview = {
   parameters: {
