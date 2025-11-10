@@ -525,7 +525,6 @@ export const Readonly: Story = {
 
 export const Password: Story = {
   ...meta,
-  name: "Password",
   parameters: {
     docs: {
       description: {
