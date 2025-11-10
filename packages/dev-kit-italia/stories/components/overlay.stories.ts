@@ -4,7 +4,7 @@ import '@italia/icon';
 
 const meta = {
   title: 'Componenti/Overlay Panel',
-  tags: ['documentation'],
+  tags: ['documentation', 'new'],
 
   //   parameters: {
   //     docs: {
