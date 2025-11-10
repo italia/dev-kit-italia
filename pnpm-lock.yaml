@@ -324,9 +324,6 @@ importers:
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
-      '@italia/icon':
-        specifier: workspace:^
-        version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
         version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/5ca55d534319deb559e1860fb0bc121113a78ebf
@@ -337,6 +334,9 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.10
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config

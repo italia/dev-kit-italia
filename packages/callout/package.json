@@ -45,7 +45,6 @@
   },
   "dependencies": {
     "@italia/globals": "workspace:^",
-    "@italia/icon": "workspace:^",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:"
   },
@@ -53,6 +52,7 @@
     "@custom-elements-manifest/analyzer": "^0.10.3",
     "@italia/test-config": "workspace:^",
     "@italia/typescript-config": "workspace:^",
+    "@italia/icon": "workspace:^",
     "@open-wc/testing": "catalog:",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",

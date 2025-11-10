@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { type CalloutVariant, CALLOUT_VARIANTS } from '../src/types.ts';
-import '@italia/callout';
-import '@italia/icon';
 
 interface CalloutProps {
   variant: CalloutVariant;

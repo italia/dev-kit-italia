@@ -13,3 +13,4 @@ import '../packages/radio/dist/src';
 import '../packages/section/dist/src';
 import '../packages/sticky/dist/src';
 import '../packages/video/dist/src';
+import '../packages/callout/dist/src';
