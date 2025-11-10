@@ -6,10 +6,6 @@ import { StoryFormControlMethodAndProps } from '@italia/globals';
 import { INPUT_TYPES, type InputType, INPUT_SIZES, type Sizes } from '../src/types.js';
 import i18nIT from '../src/locales/it.js';
 
-import '@italia/icon';
-import '@italia/button';
-import '@italia/input';
-
 interface InputProps {
   id: string;
   label: string;
@@ -245,7 +241,7 @@ const meta = {
     docs: {
       description: {
         component: `
-<Description>Input accessibile e responsivo.</Description>
+<Description>Campi per l'inserimento di dati testuali e numerici, in forma libera o in formati specifici, all'interno di un form</Description>
 
 Per il corretto funzionamento degli elementi di tipo \`<it-input>\` è di fondamentale importanza l’utilizzo uno degli appositi attributi \`type\` (ad esempio, "email" per l’inserimento di indirizzi email o "number" per informazioni numeriche), in modo da sfruttare i controlli nativi dei browser più recenti come la verifica dell’email, l’utilizzo di metodo di input numerico ed altro.
 
@@ -472,6 +468,7 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
 
 export const Disabilitato: Story = {
   ...meta,
+  name: 'Stato disabilitato',
   parameters: {
     docs: {
       description: {
@@ -495,6 +492,7 @@ export const Disabilitato: Story = {
 
 export const Readonly: Story = {
   ...meta,
+  name: 'Stato readonly',
   parameters: {
     docs: {
       description: {

@@ -3,8 +3,6 @@ import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { SECTION_VARIANTS, type SectionProps } from '../src/types.ts';
 
-import '@italia/section';
-
 const defaultContent = html`
   <!-- contenuto di esempio START -->
   <div class="container">
