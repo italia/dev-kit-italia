@@ -3,7 +3,7 @@ import { html } from 'lit';
 
 const meta = {
   title: 'Componenti/Affix',
-  tags: ['documentation'],
+  tags: ['documentation', 'new'],
   //   parameters: {
   //     docs: {
   //       description: {
