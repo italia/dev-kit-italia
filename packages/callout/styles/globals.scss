@@ -1,3 +1,11 @@
 it-callout p:last-child {
   margin: 0;
 }
+
+it-callout p.callout-big-text {
+  font-size: var(--it-body-font-size-l);
+}
+
+it-callout p {
+  font-size: var(--bs-callout-text-size);
+}

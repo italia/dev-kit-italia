@@ -8,7 +8,7 @@
 // Custom styles to handle slotted content
 :host {
   display: block;
-  --#{$prefix}callout-text-font-size: 16px;
+  --#{$prefix}callout-text-size: 16px;
 }
 
 // Ensure proper styling for slotted icons (elements in light DOM with slot="icon")
@@ -25,5 +25,4 @@
 :host ::slotted(p) {
   color: var(--#{$prefix}callout-text-color);
   font-family: var(--#{$prefix}callout-font-family);
-  font-size: var(--#{$prefix}callout-text-font-size) !important;
 }

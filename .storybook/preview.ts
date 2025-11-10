@@ -46,6 +46,7 @@ const preview: Preview = {
           'Personalizzazione degli stili',
           'Font',
           'i18n - Internazionalizzazione',
+          'Documentazione tecnica',
           'Componenti',
           'Framework',
         ],

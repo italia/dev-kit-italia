@@ -19,17 +19,19 @@ const renderComponent = ({
   title = 'Titolo callout',
   content = 'Maecenas vulputate ante dictum vestibulum volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non augue non purus vestibulum varius.',
   moreContent = '',
+  big = false,
 }) => html`
   <it-callout variant="${ifDefined(variant)}" ?highlight="${highlight}" ?more="${more}">
     ${icon ? html`<it-icon slot="icon" name="${icon}" size="md"></it-icon>` : nothing}
     <span slot="title">${title}</span>
-    ${content ? html`<p>${content}</p>` : ''} ${moreContent ? html`<div slot="more-content">${moreContent}</div>` : ''}
+    <p class="${ifDefined(big) ? 'callout-big-text' : nothing}">${content}</p>
+    ${moreContent ? html`<div slot="more-content">${moreContent}</div>` : ''}
   </it-callout>
 `;
 
 const meta = {
   title: 'Componenti/Callout',
-  // tags: ['autodocs'],
+  tags: ['beta', 'a11y-ok', 'web-component'],
   component: 'it-callout',
   args: {
     variant: '',
@@ -57,11 +59,8 @@ const meta = {
     docs: {
       description: {
         component: `
-<Description>Componente per evidenziare contenuti testuali.</Description>
+<Description>Box con uno stile visivo distintivo per evidenziare contenuti testuali importanti su pagine lunghe</Description>
 
-I callout possono essere utilizzati per evidenziare alcune parti del testo che richiedono particolare attenzione. Possono contenere messaggi di errore, avvertimento, suggerimenti, ecc.
-
-Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del design-system](https://designers.italia.it/design-system/componenti/callout/).
 `,
       },
     },
@@ -93,14 +92,25 @@ Il callout base è costituito da un web component \`<it-callout>\` che genera la
 
 Al titolo può essere aggiunta un'icona utilizzando lo slot \`icon\`. L'icona viene automaticamente colorata in base alla proprietà \`variant\` del callout, eliminando la necessità di specificare manualmente l'attributo \`color\`.
 
-#### Accessibilità
-
-Nel caso l'icona comunicasse visivamente contenuti non disponibili nel testo (ad esempio un allarme o una conferma) questa andrà affiancata da un testo riservato agli screen reader: \`<span class="visually-hidden">Testo alternativo</span>\`
 `,
       },
     },
   },
   render: (params) => html` <div class="row">${renderComponent({ ...params, icon: 'it-info-circle' })}</div> `,
+};
+export const CalloutBigText: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: `
+
+`,
+      },
+    },
+  },
+  render: (params) => html`
+    <div class="row">${renderComponent({ ...params, icon: 'it-info-circle', big: true })}</div>
+  `,
 };
 
 export const CalloutPrimario: Story = {
@@ -122,11 +132,11 @@ Utilizzare la proprietà \`variant="primary"\` per applicare il colore primario 
         title: 'Note a riguardo',
         icon: 'it-info-circle',
         // @ts-ignore
-        content: html`<p>
+        content: html`
           Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
           molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
           interdum magna, eu commodo odio mauris semper dolor.
-        </p>`,
+        `,
       })}
     </div>
   `,
@@ -151,11 +161,11 @@ Utilizzare la proprietà \`variant="success"\` per indicare una procedura andata
         title: 'Titolo di conferma',
         icon: 'it-check-circle',
         // @ts-ignore
-        content: html`<p>
+        content: html`
           Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
           molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
           interdum magna, eu commodo odio mauris semper dolor.
-        </p>`,
+        `,
       })}
     </div>
   `,
@@ -180,11 +190,11 @@ Utilizzare la proprietà \`variant="warning"\` per indicare una procedura o test
         title: 'Titolo di attenzione',
         icon: 'it-warning-circle',
         // @ts-ignore
-        content: html`<p>
+        content: html`
           Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
           molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
           interdum magna, eu commodo odio mauris semper dolor.
-        </p>`,
+        `,
       })}
     </div>
   `,
@@ -209,11 +219,11 @@ Utilizzare la proprietà \`variant="danger"\` per indicare un errore o una proce
         title: 'Titolo di allerta',
         icon: 'it-close-circle',
         // @ts-ignore
-        content: html`<p>
+        content: html`
           Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
           molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
           interdum magna, eu commodo odio mauris semper dolor.
-        </p>`,
+        `,
       })}
     </div>
   `,
@@ -238,11 +248,11 @@ Utilizzando la proprietà \`highlight\` si ottiene una differente versione del c
         title: 'Titolo callout',
         icon: '',
         // @ts-ignore
-        content: html`<p>
+        content: html`
           Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
           molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
           interdum magna, eu commodo odio mauris semper dolor.
-        </p>`,
+        `,
       })}
     </div>
   `,
@@ -267,11 +277,11 @@ Callout highlight con variante primaria.
         title: 'Titolo callout',
         icon: '',
         // @ts-ignore
-        content: html`<p>
+        content: html`
           Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
           molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
           interdum magna, eu commodo odio mauris semper dolor.
-        </p>`,
+        `,
       })}
     </div>
   `,
@@ -296,11 +306,11 @@ Callout highlight con variante success.
         title: 'Titolo di conferma',
         icon: 'it-check-circle',
         // @ts-ignore
-        content: html`<p>
+        content: html`
           Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
           molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
           interdum magna, eu commodo odio mauris semper dolor.
-        </p>`,
+        `,
       })}
     </div>
   `,
@@ -325,11 +335,11 @@ Callout highlight con variante warning.
         title: 'Titolo di attenzione',
         icon: 'it-warning-circle',
         // @ts-ignore
-        content: html`<p>
+        content: html`
           Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
           molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
           interdum magna, eu commodo odio mauris semper dolor.
-        </p>`,
+        `,
       })}
     </div>
   `,
@@ -354,11 +364,11 @@ Callout highlight con variante danger.
         title: 'Titolo di allerta',
         icon: 'it-close-circle',
         // @ts-ignore
-        content: html`<p>
+        content: html`
           Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
           molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
           interdum magna, eu commodo odio mauris semper dolor.
-        </p>`,
+        `,
       })}
     </div>
   `,
