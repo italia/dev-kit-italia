@@ -55,6 +55,7 @@
     "@italia/accordion": "workspace:^",
     "@italia/button": "workspace:^",
     "@italia/chip": "workspace:^",
+    "@italia/checkbox": "workspace:^",
     "@italia/dropdown": "workspace:^",
     "@italia/i18n": "workspace:^",
     "@italia/icon": "workspace:^",

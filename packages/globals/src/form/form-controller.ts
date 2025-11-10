@@ -234,6 +234,14 @@ export class FormControlController implements ReactiveController {
             event.formData.append(name, value as string);
           }
           break;
+        case 'it-checkbox':
+          if ((this.host as any).checked) {
+            if (event.formData.getAll(name).indexOf(value as string) < 0) {
+              // handle group checkbox
+              event.formData.append(name, value as string);
+            }
+          }
+          break;
         default:
           if (Array.isArray(value)) {
             (value as unknown[]).forEach((val) => {

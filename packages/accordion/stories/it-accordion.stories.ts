@@ -62,7 +62,7 @@ const defaultItems: AccordionItemProps[] = [
 
 const meta: Meta<AccordionProps> = {
   title: 'Componenti/Accordion',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   component: 'it-accordion',
   args: {
     mode: 'multiple',

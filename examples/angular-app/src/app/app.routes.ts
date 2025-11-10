@@ -10,6 +10,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/button.component').then((c) => c.ButtonComponent),
   },
   {
+    path: 'checkbox',
+    loadComponent: () => import('./pages/checkbox.component').then((c) => c.CheckboxComponent),
+  },
+  {
     path: 'chip',
     loadComponent: () => import('./pages/chip.component').then((c) => c.ChipComponent),
   },
