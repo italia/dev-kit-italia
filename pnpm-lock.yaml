@@ -157,6 +157,9 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.10
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config
@@ -218,6 +221,9 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.10
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config
@@ -386,6 +392,9 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.10
+      '@italia/avatar':
+        specifier: workspace:^
+        version: link:../avatar
       '@italia/button':
         specifier: workspace:^
         version: link:../button
@@ -529,6 +538,9 @@ importers:
       '@italia/button':
         specifier: workspace:^
         version: link:../button
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
       '@italia/popover':
         specifier: workspace:^
         version: link:../popover
@@ -737,6 +749,9 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.10
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config
@@ -1108,6 +1123,12 @@ importers:
       '@italia/button':
         specifier: workspace:^
         version: link:../button
+      '@italia/checkbox':
+        specifier: workspace:^
+        version: link:../checkbox
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config
