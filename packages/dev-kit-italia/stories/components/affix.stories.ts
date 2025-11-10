@@ -3,50 +3,30 @@ import { html } from 'lit';
 
 const meta = {
   title: 'Componenti/Affix',
-  tags: ['autodocs', 'documentation'],
-  parameters: {
-    docs: {
-      description: {
-        component: `
-<Description>Blocca la posizione di un elemento rispetto a un'area visibile della pagina una volta che questa viene raggiunta durante lo scorrimento.</Description>
+  tags: ['documentation'],
+  //   parameters: {
+  //     docs: {
+  //       description: {
+  //         component: `
+  // <Description>Blocca la posizione di un elemento rispetto a un'area visibile della pagina una volta che questa viene raggiunta durante lo scorrimento.</Description>
 
+  // Un elemento Affix rimane nella sua posizione originale fino a quando l’utente non scorre la pagina oltre l'elemento;
+  // a quel punto, l’elemento viene “ancorato” a una zona fissa dello schermo (ad esempio la parte superiore).
 
-Un elemento Affix rimane nella sua posizione originale fino a quando l’utente non scorre la pagina oltre l'elemento;
-a quel punto, l’elemento viene “ancorato” a una zona fissa dello schermo (ad esempio la parte superiore).
+  // Una volta che lo scorrimento della pagina supera l'area di ancoraggio dell'elemento, questo viene nascosto e non è più “ancorato”.
 
-Una volta che lo scorrimento della pagina supera l'area di ancoraggio dell'elemento, questo viene nascosto e non è più “ancorato”.
+  // Questo comportamento è utile, per esempio, per mantenere visibili intestazioni, barre degli strumenti o pulsanti di azione dopo che si è superata una certa sezione del contenuto.
 
-Questo comportamento è utile, per esempio, per mantenere visibili intestazioni, barre degli strumenti o pulsanti di azione dopo che si è superata una certa sezione del contenuto.
-
-
-<div class="callout callout-warning"><div class="callout-inner"><div class="callout-title"><span class="text">Nota</span></div>
-<p>È importante assicurarsi che un elemento Affix non nasconda il contenuto della pagina, soprattutto quando la dimensione della finestra del browser è ridotta.</p></div></div>
-`,
-      },
-    },
-  },
+  // <div class="callout callout-warning"><div class="callout-inner"><div class="callout-title"><span class="text">Nota</span></div>
+  // <p>È importante assicurarsi che un elemento Affix non nasconda il contenuto della pagina, soprattutto quando la dimensione della finestra del browser è ridotta.</p></div></div>
+  // `,
+  //       },
+  //     },
+  //   },
 } satisfies Meta;
 
 export default meta;
 type Story = StoryObj;
-
-export const IndicazioniGenerali: Story = {
-  name: 'Indicazioni generali',
-  tags: ['!dev'],
-  parameters: {
-    docs: {
-      description: {
-        story: `
-In generale, per utilizzare correttamente il comportamento Affix è necessario:
-- assegnare la classe \`.affix-parent\` al contenitore che delimita l’area in cui l’elemento deve rimanere ancorato. Questo contenitore rappresenta il riferimento spaziale entro cui l’elemento affix può muoversi o restare fissato.
-- applicare la classe \`.affix-top\` (oppure \`.affix-bottom\`) all'elemento da fissare durante lo scroll. Questo elemento è bene che sia un figlio diretto del contenitore con classe \`.affix-parent\`, poiché il calcolo della posizione ancorata viene effettuato in relazione a quest’ultimo.
-<br/><br/>
-`,
-      },
-    },
-  },
-  render: () => html`<div class="hide-preview"></div>`,
-};
 
 export const AffixTop: Story = {
   ...meta,
@@ -55,7 +35,7 @@ export const AffixTop: Story = {
     docs: {
       description: {
         story: `
-Per ancorare un elemento alla parte alta della pagina è sufficiente applicare la classe \`.affix-parent\` all’elemento che lo contiene e la classe **\`.affix-top\`** all’elemento stesso.
+Per ancorare un elemento alla parte **alta** della pagina è sufficiente applicare la classe \`.affix-parent\` all’elemento che lo contiene e la classe **\`.affix-top\`** all’elemento stesso.
 
 <div class="mt-5" style="font-size:0.9rem">Scorri il contenuto dell'esempio qui sotto per vedere l'effetto dell'affix.</div>
 `,
@@ -147,7 +127,7 @@ export const AffixBottom: Story = {
     docs: {
       description: {
         story: `
-Per ancorare un elemento alla parte bassa della pagina è sufficiente applicare la classe \`.affix-parent\` all’elemento che lo contiene e la classe **\`.affix-bottom\`** all’elemento stesso.
+Per ancorare un elemento alla parte **bassa** della pagina è sufficiente applicare la classe \`.affix-parent\` all’elemento che lo contiene e la classe **\`.affix-bottom\`** all’elemento stesso.
 <div class="mt-5" style="font-size:0.9rem">Scorri il contenuto dell'esempio qui sotto per vedere l'effetto dell'affix.</div>`,
       },
     },
