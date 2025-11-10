@@ -468,7 +468,7 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
 
 export const Disabilitato: Story = {
   ...meta,
-  name: "Stato disabilitato",
+  name: 'Stato disabilitato',
   parameters: {
     docs: {
       description: {
@@ -492,7 +492,7 @@ export const Disabilitato: Story = {
 
 export const Readonly: Story = {
   ...meta,
-  name: "Stato readonly",
+  name: 'Stato readonly',
   parameters: {
     docs: {
       description: {
