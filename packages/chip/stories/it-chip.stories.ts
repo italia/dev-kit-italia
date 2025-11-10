@@ -2,9 +2,6 @@ import { html, nothing } from 'lit';
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { CHIP_VARIANTS, CHIP_SIZES, type ChipProps } from '../src/types.ts';
-import '@italia/icon';
-import '@italia/button';
-import '@italia/chip';
 
 const meta = {
   title: 'Componenti/Chip',
