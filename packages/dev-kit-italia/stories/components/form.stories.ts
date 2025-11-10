@@ -45,7 +45,7 @@ export const DimensionamentoColonne: Story = {
   render: () =>
     html` <form>
       <div class="row">
-        <it-input class="col-md-6 id="nome"><span slot="label">Nome</span></it-input>
+        <it-input class="col-md-6" id="nome"><span slot="label">Nome</span></it-input>
         <it-input class="col-md-6" id="cognome"><span slot="label">Cognome</span></it-input>
       </div>
       <div class="row">
@@ -63,7 +63,7 @@ export const DimensionamentoColonne: Story = {
       <div class="row mt-4">
         <div class="form-group col text-center">
           <it-button type="button" variant="primary" outline>Annulla</it-button>
-          <it-button type="submit" variant="primary">Conferma</button>
+          <it-button type="submit" variant="primary">Conferma</it-button>
         </div>
       </div>
     </form>`,
@@ -85,13 +85,17 @@ In altre parole, la colonna si dimensiona in base al contenuto.
   },
   render: () =>
     html` <form>
-      <div class="row align-itmes-center">
-        <it-input class="col-md-6 col-lg-auto" id="nome" label-hidden placeholder="Nome e cognome"><span slot="label">Nome e cognome</span></it-input>
-        <it-input class="col-md-6 col-lg-auto" id="username" label-hidden placeholder="username"><span slot="label">Username</span><span slot="icon">@</span></it-input>
+      <div class="row align-items-center">
+        <it-input class="col-md-6 col-lg-auto" id="nome" label-hidden placeholder="Nome e cognome">
+          <span slot="label">Nome e cognome</span>
+        </it-input>
+        <it-input class="col-md-6 col-lg-auto" id="username" label-hidden placeholder="username">
+          <span slot="label">Username</span><span slot="icon">@</span>
+        </it-input>
         <div class="col-6 col-md-3 col-lg-auto d-flex justify-content-end">
-          <it-button type="submit" variant="primary">Invia</button>
+          <it-button type="submit" variant="primary">Invia</it-button>
         </div>
-
+      </div>
     </form>`,
 };
 
@@ -108,9 +112,9 @@ Aggiungi l’attributo booleano \`disabled\` su un widget per impedire le intera
   },
   render: () =>
     html` <form>
-      <it-input id="nome" label-hidden placeholder="Esempio input disabilitato" disabled
-        ><span slot="label">Esempio input disabilitato</span></it-input
-      >
+      <it-input id="nome" label-hidden placeholder="Esempio input disabilitato" disabled>
+        <span slot="label">Esempio input disabilitato</span>
+      </it-input>
     </form>`,
 };
 
@@ -139,12 +143,16 @@ if (fieldset.disabled) {
     html` <form>
       <fieldset disabled aria-label="Form disabilitato">
         <div class="row">
-          <it-input disabled class="col-md-6" id="nome" placeholder="input disabilitato"><span slot="label">Nome</span></it-input>
-          <it-input disabled class="col-md-6" id="cognome" placeholder="input disabilitato"><span slot="label">Cognome</span></it-input>
+          <it-input disabled class="col-md-6" id="nome" placeholder="input disabilitato">
+            <span slot="label">Nome</span>
+          </it-input>
+          <it-input disabled class="col-md-6" id="cognome" placeholder="input disabilitato">
+            <span slot="label">Cognome</span>
+          </it-input>
         </div>
-        <div class="row>
+        <div class="row">
           <div class="col">
-           <it-button aria-disabled type="submit" id="submit" variant="primary">Pulsante disabilitato</button>
+            <it-button aria-disabled type="submit" id="submit" variant="primary">Pulsante disabilitato</it-button>
           </div>
         </div>
       </fieldset>
@@ -172,9 +180,9 @@ Nel caso il campo non sia valido, è necessario invalidare il campo impostando i
   render: () =>
     html` <form action="/prova">
       <div class="row">
-        <it-input class="col-md-6" id="email" type="email" placeholder="Validazione di default"
-          ><span slot="label">E-mail</span></it-input
-        >
+        <it-input class="col-md-6" id="email" type="email" placeholder="Validazione di default">
+          <span slot="label">E-mail</span>
+        </it-input>
         <it-input
           class="col-md-6"
           id="username"
@@ -182,8 +190,9 @@ Nel caso il campo non sia valido, è necessario invalidare il campo impostando i
           validity-message="Username obbligatorio"
           required
           placeholder="Validazione custom"
-          ><span slot="label">Username</span></it-input
         >
+          <span slot="label">Username</span>
+        </it-input>
       </div>
     </form>`,
 };
@@ -274,7 +283,7 @@ Ecco qui un esempio di implementazione della validazione con il plugin [JustVali
               {
                 validator: () => {
                   const value = getItInputValue('it-input[id="email"]');
-                  return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
+                  return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/.test(value);
                 },
                 errorMessage: 'Formato email non valido',
               },
@@ -323,12 +332,20 @@ Ecco qui un esempio di implementazione della validazione con il plugin [JustVali
       <form id="form-validation-example">
         <it-input id="nome" name="nome"><span slot="label">Nome</span></it-input>
         <it-input id="cognome" name="cognome"><span slot="label">Cognome</span></it-input>
-        <it-input id="email" name="email" type="email" support-text="Inserisci la tua email"
-          custom-validation><span slot="label">E-mail</span></it-input>
-        <it-input id="messaggio" name="messaggio" type="textarea"
-          support-text="Inserisci il tuo messaggio" custom-validation><span slot="label">Messaggio</span></it-input>
+        <it-input id="email" name="email" type="email" support-text="Inserisci la tua email" custom-validation>
+          <span slot="label">E-mail</span>
+        </it-input>
+        <it-input
+          id="messaggio"
+          name="messaggio"
+          type="textarea"
+          support-text="Inserisci il tuo messaggio"
+          custom-validation
+        >
+          <span slot="label">Messaggio</span>
+        </it-input>
         <!-- <it-input id="password" type="password" minlength="10" suggestions strength-meter><span slot="label">Password</span></it-input> -->
-        <it-button type="submit" variant="primary" block>Invia</it-button></form>
+        <it-button type="submit" variant="primary" block>Invia</it-button>
       </form>`,
 };
 
