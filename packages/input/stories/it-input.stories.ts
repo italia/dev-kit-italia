@@ -4,7 +4,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { StoryFormControlMethodAndProps } from '@italia/globals';
 
 import { INPUT_TYPES, type InputType, INPUT_SIZES, type Sizes } from '../src/types.js';
-import i18nIT from '../src/locales/it.js';
 
 import '@italia/icon';
 import '@italia/button';
@@ -69,13 +68,15 @@ const renderComponent = (params: any) =>
     ?adaptive="${params.adaptive}"
     ?strength-meter="${params.strengthMeter}"
     ?suggestions="${params.suggestions}"
-    ><span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}</it-input
-  >`;
+  >
+    <span slot="label">${params.label}</span>
+    ${ifDefined(params.children || undefined)}
+  </it-input>`;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Form/Input',
-  tags: ['autodocs', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-input',
   args: {
     id: '',
@@ -472,7 +473,7 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
 
 export const Disabilitato: Story = {
   ...meta,
-  name: "Stato disabilitato",
+  name: 'Stato disabilitato',
   parameters: {
     docs: {
       description: {
@@ -496,12 +497,12 @@ export const Disabilitato: Story = {
 
 export const Readonly: Story = {
   ...meta,
-  name: "Stato readonly",
+  name: 'Stato readonly',
   parameters: {
     docs: {
       description: {
         story: `Aggiungi l’attributo \`readonly\` ad un \`<it-input>\` per impedire la modifica del valore contenuto.
-<br/><br/><h4>Readonly normalizzato</h4>Se per qualche motivo vuoi avere gli elementi input readonly nella forma stilizzata come testo, aggiungi l'attributo \`plaintext\` a \`<it-input>\`.`,
+<br/><br/><h3>Readonly normalizzato</h3>Se per qualche motivo vuoi avere gli elementi input readonly nella forma stilizzata come testo, aggiungi l'attributo \`plaintext\` a \`<it-input>\`.`,
       },
     },
   },
@@ -529,9 +530,9 @@ export const Password: Story = {
     docs: {
       description: {
         story: `Per semplificare l’inserimento della password, il componente \`<it-input>\` di tipo password include un pulsante che mostra i caratteri digitati.
-        È inoltre possibile aggiungere un testo di supporto che aiuti nella compilazione, attraverso l’attributo \`support-text\`.
-        <br/><br/>
-        <h4>Misuratore sicurezza e suggerimenti</h4>
+È inoltre possibile aggiungere un testo di supporto che aiuti nella compilazione, attraverso l’attributo \`support-text\`.
+<br/><br/>
+<h3>Misuratore sicurezza e suggerimenti</h3>
 Nel caso di un campo per la scelta di una nuova password, è possibile abbinare controlli per segnalare quanto la password che si sta inserendo segua alcuni suggerimenti di sicurezza, come la lunghezza minima o l’uso di caratteri speciali, attraverso gli attributi \`strength-meter="true"\` e \`minlength\` per modificare la lunghezza minima richiesta per la password.
 
 Inoltre, è possibile restituire all’utente una lista dei suggerimenti, con indicati quelli che sono stati soddisfatti, attraverso l’attributo \`suggestions="true"\`.
@@ -591,18 +592,19 @@ export const GestioneErrori: Story = {
   parameters: {
     docs: {
       description: {
-        story: `Se non è stata impostata la validazione custom tramite l'attributo \`custom-validation\`, e sono stati impostati uno di questi attributi <ul><li>\`required\`</li><li>\`pattern\`</li><li>\`min\`</li><li>\`max\`</li><li>\`step\`</li><li>\`minlength\`</li><li>\`maxlength\`</li></ul> viene effettuata una validazione interna utilizzando la validazione nativa del browser.
- <br/><br/><h4>Personalizzazione dei messaggi di errore</h4>E' possibile personalizzare alcuni dei messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
-        <ul><li>\`validityRequired\`: messaggio che viene mostrato quando il campo è required e non è compilato</li>
-        <li>\`validityPattern\`: messaggio che viene mostrato quando il campo non rispetta il pattern indicato</li>
-        <li>\`validityMinlength\`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo corta rispetto al valore passatto nell'attributo \`min-length\`</li>
-         <li>\`validityMaxlength\`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo lunga rispetto al valore passatto nell'attributo \`max-length\`</li>
-      </ul>
-      Per gli altri errori di validazione non indicati, verranno mostrati i messsaggi di errore nativi del browser.
-      <h4>Validazione esterna (validazione custom)</h4>
-        E' inoltre possibile validare il campo esternamente (via js ad esempio, o lato server), impostando l' attributo \`custom-validation="true"\`. In questo modo la validazione di default del browser effettuata internamente al componente è disabilitata.
-        <br/><br/><h5>Campo invalido</h5>Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo \`validity-message="Messaggio di errore"\`.
-        <br/><br/><h5>Campo valido</h5>Per riportare il campo ad uno stato 'valido', è sufficiente impostare il messaggio di errore a vuoto: \`validity-message=""\`.`,
+        story: `
+  Se non è stata impostata la validazione custom tramite l'attributo \`custom-validation\`, e sono stati impostati uno di questi attributi <ul><li>\`required\`</li><li>\`pattern\`</li><li>\`min\`</li><li>\`max\`</li><li>\`step\`</li><li>\`minlength\`</li><li>\`maxlength\`</li></ul> viene effettuata una validazione interna utilizzando la validazione nativa del browser.
+ <br/><br/><h3>Personalizzazione dei messaggi di errore</h3>E' possibile personalizzare alcuni dei messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
+<ul><li>\`validityRequired\`: messaggio che viene mostrato quando il campo è required e non è compilato</li>
+<li>\`validityPattern\`: messaggio che viene mostrato quando il campo non rispetta il pattern indicato</li>
+<li>\`validityMinlength\`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo corta rispetto al valore passatto nell'attributo \`min-length\`</li>
+<li>\`validityMaxlength\`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo lunga rispetto al valore passatto nell'attributo \`max-length\`</li>
+</ul>
+Per gli altri errori di validazione non indicati, verranno mostrati i messsaggi di errore nativi del browser.
+<h3>Validazione esterna (validazione custom)</h3>
+E' inoltre possibile validare il campo esternamente (via js ad esempio, o lato server), impostando l' attributo \`custom-validation="true"\`. In questo modo la validazione di default del browser effettuata internamente al componente è disabilitata.
+<br/><br/><h4>Campo invalido</h4>Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo \`validity-message="Messaggio di errore"\`.
+<br/><h4>Campo valido</h4>Per riportare il campo ad uno stato 'valido', è sufficiente impostare il messaggio di errore a vuoto: \`validity-message=""\`.`,
       },
     },
   },
@@ -634,8 +636,8 @@ export const GestioneEventi: Story = {
     docs: {
       description: {
         story: `E' possibile gestire gli eventi di \`it-input\`, \`it-blur\`, \`it-change\`, \`it-focus\`, \`it-click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
-        <br/><br/>
-        È sufficiente aggiungere un event listener al componente \`<it-input>\` per intercettare gli eventi desiderati. Ad esempio, per gestire l'evento di input, è possibile utilizzare il seguente codice:
+<br/><br/>
+È sufficiente aggiungere un event listener al componente \`<it-input>\` per intercettare gli eventi desiderati. Ad esempio, per gestire l'evento di input, è possibile utilizzare il seguente codice:
 
 \`\`\`js
 document.querySelector('it-input#event-input-example').addEventListener('it-input', (event) => {
@@ -680,24 +682,24 @@ document.querySelector('it-input#event-input-example').addEventListener('it-inpu
 
 export const MetodiEPropPubblici: Story = { ...StoryFormControlMethodAndProps({}), tags: ['!dev'] };
 
-export const I18n: Story = {
-  name: 'i18n',
-  tags: ['!dev'],
-  render: () => html`<div class="hide-preview"></div>`,
-  parameters: {
-    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
-    docs: {
-      description: {
-        story: `
-Per questo componente sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+// export const I18n: Story = {
+//   name: 'i18n',
+//   tags: ['!dev'],
+//   render: () => html`<div class="hide-preview"></div>`,
+//   parameters: {
+//     viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
+//     docs: {
+//       description: {
+//         story: `
+// Per questo componente sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
 
-\`\`\`js
-const translation = {
-  ${JSON.stringify(i18nIT).replaceAll('{"', '"').replaceAll('",', '",\n\t').replaceAll('"}', '"')}
-}
-\`\`\`
-`,
-      },
-    },
-  },
-};
+// \`\`\`js
+// const translation = {
+//   ${JSON.stringify(i18nIT).replaceAll('{"', '"').replaceAll('",', '",\n\t').replaceAll('"}', '"')}
+// }
+// \`\`\`
+// `,
+//       },
+//     },
+//   },
+// };
