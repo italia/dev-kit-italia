@@ -4,9 +4,9 @@ import '@italia/icon';
 import '@italia/button';
 
 const meta = {
-  title: 'Componenti/Navigazione/Torna indietro',
+  title: 'Componenti/Torna indietro',
   component: 'it-back',
-  tags: ['new'],
+  tags: ['new', 'documentation'],
   render: () => html`<div class="hide-preview"></div>`,
   parameters: {
     docs: {
