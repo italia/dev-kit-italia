@@ -18,7 +18,7 @@ const renderComponent = (params: SkiplinksProps, defaultSlot: string | TemplateR
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Skiplinks',
-  tags: ['autodocs'],
+  tags: ['new'],
   component: 'it-skiplinks',
   args: {
     'it-aria-label': 'Aria label',
@@ -66,11 +66,10 @@ type Story = StoryObj<SkiplinksProps>;
 
 export const EsempioInterattivo: Story = {
   ...meta,
-  name: 'Esempio interattivo',
+  name: 'Esempio',
   args: {
     'it-aria-label': 'Vai a:',
   },
-  tags: ['!autodocs', '!dev'],
   parameters: {
     docs: {
       className: 'my-wide-story',
@@ -112,42 +111,4 @@ Quando sono presenti uno o due link, il componente evita di generare un elemento
       slot: html`<a href="#menu">Vai al menu</a>
         <a href="#main-content">Vai al contenuto principale</a> `,
     })}`,
-};
-
-export const ComeUsarlo: Story = {
-  name: 'Come visualizzali su MacOS',
-  tags: ['!dev'],
-  render: () => html`<div class="hide-preview"></div>`,
-  parameters: {
-    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
-    docs: {
-      description: {
-        story: `
-<h4>Chrome</h4>
-Per attivare la funzionalità si digita da tastiera il tasto: **TAB**.
-
-<h4>Safari</h4>
-Per attivare la navigazione via **TAB** è necessario:
-
-1. Aprire il menu Safari > Preferenze
-2. Cliccare sulla tab Avanzate
-3. Selezionare “Premi tabulatore per evidenziare tutti gli elementi della pagina web”.
-
-Alternativamente è possibile navigare gli elementi usando *opzione+TAB*.
-
-<h4>Firefox</h4>
-Le impostazioni di default di macOS non consentono la navigazione di tutti gli elementi interattivi di un sito con l’uso del pulsante TAB.
-Per attivare questa modalità è necessario modificare le preferenze di sistema come segue:
-
-1. Aprire il Menu Apple > Preferenze di Sistema, quindi fare clic su Tastiera.
-2. Fare clic su Abbreviazioni.
-3. Nella parte inferiore della finestra delle preferenze, selezionare “Usa la navigazione da tastiera per spostare la selezione tra i controlli”.
-
-Una volta selezionata questa opzione gli skiplinks saranno attivabili su Firefox con il pulsante **TAB**.
-
-Vedi anche la [guida ufficiale di Apple](https://support.apple.com/it-it/HT204434).
-`,
-      },
-    },
-  },
 };
