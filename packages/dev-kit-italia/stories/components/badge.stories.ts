@@ -3,19 +3,19 @@ import { html } from 'lit';
 
 const meta = {
   title: 'Componenti/Badge',
-  tags: ['autodocs', 'documentation'],
+  tags: ['documentation'],
 
-  parameters: {
-    docs: {
-      description: {
-        component: `
-<Description>Questo elemento è utile per piccoli contatori ed etichette.</Description>
+  //   parameters: {
+  //     docs: {
+  //       description: {
+  //         component: `
+  // <Description>Questo elemento è utile per piccoli contatori ed etichette.</Description>
 
-La dimensione e il carattere di ogni badge si adattano automaticamente a quelli dell’elemento che lo contiene.
-`,
-      },
-    },
-  },
+  // La dimensione e il carattere di ogni badge si adattano automaticamente a quelli dell’elemento che lo contiene.
+  // `,
+  //       },
+  //     },
+  //   },
 } satisfies Meta;
 
 export default meta;
@@ -23,7 +23,6 @@ type Story = StoryObj;
 
 export const Dimensione: Story = {
   ...meta,
-  tags: ['!autodocs', '!dev'],
   parameters: {
     docs: {
       description: {
@@ -49,14 +48,7 @@ export const BottoniELink: Story = {
       description: {
         story: `I badge possono essere utilizzati come contatori all’interno di link o pulsanti. Per questi casi, si consiglia di utilizzare la classe \`.badge-sm\` che riduce la spaziatura laterale interna.
 
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>
-A seconda di come i badge vengono utilizzati, questi potrebbero confondere gli utenti che usano lo screen reader e tecnologie assistive simili. Mentre lo stile dei badge fornisce un indizio visivo sul loro scopo, a questi utenti saranno semplicemente presentati come semplice contenuto.
-<br/>
-A seconda della situazione specifica, questi badge possono sembrare parole o numeri aggiuntivi casuali alla fine di una frase, un collegamento o un pulsante.
-<br/><br/>
-A meno che il contesto non sia chiaro (come con l’esempio “Notifiche”, dove si capisce che il “4” è il numero di notifiche), considera l’eventualità di includere un testo aggiuntivo nascosto.
-</p></div></div>`,
+`,
       },
     },
   },
