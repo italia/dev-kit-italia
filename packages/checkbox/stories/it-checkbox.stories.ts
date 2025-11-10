@@ -48,7 +48,7 @@ const renderComponent = (params: any) =>
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Form/Checkbox',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'new', 'a11y-ok', 'web-component'],
   component: 'it-checkbox',
   args: {
     id: '',
