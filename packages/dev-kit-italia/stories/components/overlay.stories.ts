@@ -4,32 +4,31 @@ import '@italia/icon';
 
 const meta = {
   title: 'Componenti/Overlay Panel',
-  tags: ['autodocs', 'documentation'],
+  tags: ['documentation'],
 
-  parameters: {
-    docs: {
-      description: {
-        component: `
-<Description>Per applicare label con opacità sovrapposte ad immagini o a qualsiasi altro elemento.</Description>
+  //   parameters: {
+  //     docs: {
+  //       description: {
+  //         component: `
+  // <Description>Per applicare label con opacità sovrapposte ad immagini o a qualsiasi altro elemento.</Description>
 
-La struttura basica è composta da:
-- un contenitore con classe \`.overlay-wrapper\`. L'elemento contenuto (ad esempipo una immagine) conserva la sua dimensione naturale.
-- l’overlay, un elemento con classe \`.overlay-panel\`, si posizione a piede del contenitore. Ha un’altezza fissa e una larghezza corrispondente a quella del contenitore.
+  // La struttura basica è composta da:
+  // - un contenitore con classe \`.overlay-wrapper\`. L'elemento contenuto (ad esempipo una immagine) conserva la sua dimensione naturale.
+  // - l’overlay, un elemento con classe \`.overlay-panel\`, si posizione a piede del contenitore. Ha un’altezza fissa e una larghezza corrispondente a quella del contenitore.
 
-Nel caso il testo contenuto dell'overlay sia troppo lungo verrà troncato con l’utilizzo di ellissi.
+  // Nel caso il testo contenuto dell'overlay sia troppo lungo verrà troncato con l’utilizzo di ellissi.
 
-Aggiungendo all’Overlay Panel la classe \`.overlay-panel-fullheight\` questo coprirà per intero il contenitore.
+  // Aggiungendo all’Overlay Panel la classe \`.overlay-panel-fullheight\` questo coprirà per intero il contenitore.
 
-<div class="text-muted fst-italic">Negli esempi seguenti mostreremo le classi applicate al caso di una immagine con contenitore \`<figure>\` . </div>
+  // <div class="text-muted fst-italic">Negli esempi seguenti mostreremo le classi applicate al caso di una immagine con contenitore \`<figure>\` . </div>
 
+  // <div class="callout callout-primary"><div class="callout-inner"><div class="callout-title"><span class="text">Stili</span></div>
+  // <p>In caso non si stia utilizzando il bundle unico, assicurarsi di avere importato tutti i fogli di stile necessari da \`bootstrap-italia\`.</p></div></div>
 
-<div class="callout callout-primary"><div class="callout-inner"><div class="callout-title"><span class="text">Stili</span></div>
-<p>In caso non si stia utilizzando il bundle unico, assicurarsi di avere importato tutti i fogli di stile necessari da \`bootstrap-italia\`.</p></div></div>
-
-`,
-      },
-    },
-  },
+  // `,
+  //       },
+  //     },
+  //   },
 } satisfies Meta;
 
 export default meta;
@@ -37,11 +36,12 @@ type Story = StoryObj;
 
 export const Esempio: Story = {
   ...meta,
+  name: 'Overlay default',
   parameters: {
     docs: {
       description: {
-        component: `
-Il colore predefinito dell’Overlay Panel corrisponde al colore Primary.
+        story: `
+Il colore predefinito dell’Overlay Panel corrisponde al colore \`primary\`.
 `,
       },
     },
@@ -80,7 +80,7 @@ export const Nero: Story = {
   parameters: {
     docs: {
       description: {
-        component: `
+        story: `
 Aggiungendo all’Overlay Panel la classe \`.overlay-black\` si ottiene un overlay di colore nero.
 `,
       },
