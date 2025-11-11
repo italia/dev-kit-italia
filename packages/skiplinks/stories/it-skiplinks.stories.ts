@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html, type TemplateResult } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import '@italia/skiplinks';
-
 interface SkiplinksProps {
   ['it-aria-label']: string | undefined;
   slot?: string | TemplateResult;

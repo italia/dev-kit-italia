@@ -968,9 +968,6 @@ importers:
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
-      '@italia/icon':
-        specifier: workspace:^
-        version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
         version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/5ca55d534319deb559e1860fb0bc121113a78ebf
