@@ -66,5 +66,8 @@
     "tslib": "^2.6.3",
     "typescript": "catalog:"
   },
+  "peerDependencies": {
+    "@italia/button": "workspace:^"
+  },
   "customElements": "custom-elements.json"
 }

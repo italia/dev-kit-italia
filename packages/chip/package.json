@@ -44,7 +44,6 @@
     "test:watch": "wtr --coverage --node-resolve --config web-test-runner.config.js --watch"
   },
   "dependencies": {
-    "@italia/avatar": "workspace:^",
     "@italia/globals": "workspace:^",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:"
@@ -67,6 +66,11 @@
     "sass": "catalog:",
     "tslib": "^2.6.3",
     "typescript": "catalog:"
+  },
+  "peerDependencies": {
+    "@italia/avatar": "workspace:^",
+    "@italia/button": "workspace:^",
+    "@italia/icon": "workspace:^"
   },
   "customElements": "custom-elements.json"
 }

@@ -46,14 +46,13 @@
     "test:watch": "wtr --coverage --node-resolve --config web-test-runner.config.js --watch"
   },
   "dependencies": {
-    "@italia/button": "workspace:^",
     "@italia/globals": "workspace:^",
-    "@italia/icon": "workspace:^",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.3",
+    "@italia/icon": "workspace:^",
     "@italia/test-config": "workspace:^",
     "@italia/typescript-config": "workspace:^",
     "@open-wc/testing": "catalog:",
@@ -68,6 +67,9 @@
     "sass": "catalog:",
     "tslib": "^2.6.3",
     "typescript": "catalog:"
+  },
+  "peerDependencies": {
+    "@italia/icon": "workspace:^"
   },
   "customElements": "custom-elements.json"
 }
