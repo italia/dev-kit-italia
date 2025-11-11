@@ -1,8 +1,5 @@
 import type { StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import '@italia/icon';
-import '@italia/button';
-import '@italia/input';
 
 const defaultContent = html`
   <footer class="it-footer">
