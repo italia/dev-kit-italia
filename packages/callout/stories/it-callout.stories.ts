@@ -53,16 +53,6 @@ const meta = {
       table: { defaultValue: { summary: 'false' } },
     },
   },
-  parameters: {
-    docs: {
-      description: {
-        component: `
-<Description>Box con uno stile visivo distintivo per evidenziare contenuti testuali importanti su pagine lunghe</Description>
-
-`,
-      },
-    },
-  },
 } satisfies Meta<CalloutProps>;
 
 export default meta;
@@ -82,45 +72,15 @@ export const EsempioInterattivo: Story = {
 };
 
 export const CalloutBase: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Il callout base è costituito da un web component \`<it-callout>\` che genera la struttura HTML necessaria. È possibile aggiungere un titolo utilizzando lo slot \`title\` e il contenuto principale utilizzando lo slot di default.
-
-Al titolo può essere aggiunta un'icona utilizzando lo slot \`icon\`. L'icona viene automaticamente colorata in base alla proprietà \`variant\` del callout, eliminando la necessità di specificare manualmente l'attributo \`color\`.
-
-`,
-      },
-    },
-  },
   render: (params) => html` <div class="row">${renderComponent({ ...params, icon: 'it-info-circle' })}</div> `,
 };
 export const CalloutBigText: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: `
-
-`,
-      },
-    },
-  },
   render: (params) => html`
     <div class="row">${renderComponent({ ...params, icon: 'it-info-circle', big: true })}</div>
   `,
 };
 
 export const CalloutPrimario: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Utilizzare la proprietà \`variant="primary"\` per applicare il colore primario agli elementi grafici del callout. È consigliato per dare un evidenza particolare al componente nel contesto della pagina.
-`,
-      },
-    },
-  },
   render: () => html`
     <div class="row">
       ${renderComponent({
@@ -141,15 +101,6 @@ Utilizzare la proprietà \`variant="primary"\` per applicare il colore primario 
 };
 
 export const CalloutSuccess: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Utilizzare la proprietà \`variant="success"\` per indicare una procedura andata a buon fine.
-`,
-      },
-    },
-  },
   render: () => html`
     <div class="row">
       ${renderComponent({
@@ -170,15 +121,6 @@ Utilizzare la proprietà \`variant="success"\` per indicare una procedura andata
 };
 
 export const CalloutWarning: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Utilizzare la proprietà \`variant="warning"\` per indicare una procedura o testo che richiede l'attenzione dell'utente.
-`,
-      },
-    },
-  },
   render: () => html`
     <div class="row">
       ${renderComponent({
@@ -199,15 +141,6 @@ Utilizzare la proprietà \`variant="warning"\` per indicare una procedura o test
 };
 
 export const CalloutDanger: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Utilizzare la proprietà \`variant="danger"\` per indicare un errore o una procedura pericolosa o non consentita.
-`,
-      },
-    },
-  },
   render: () => html`
     <div class="row">
       ${renderComponent({
@@ -228,15 +161,6 @@ Utilizzare la proprietà \`variant="danger"\` per indicare un errore o una proce
 };
 
 export const HighlightBase: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Utilizzando la proprietà \`highlight\` si ottiene una differente versione del callout, con bordo solo sul lato sinistro.
-`,
-      },
-    },
-  },
   render: () => html`
     <div class="row">
       ${renderComponent({
@@ -257,15 +181,6 @@ Utilizzando la proprietà \`highlight\` si ottiene una differente versione del c
 };
 
 export const HighlightPrimario: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Callout highlight con variante primaria.
-`,
-      },
-    },
-  },
   render: () => html`
     <div class="row">
       ${renderComponent({
@@ -286,15 +201,6 @@ Callout highlight con variante primaria.
 };
 
 export const HighlightSuccess: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Callout highlight con variante success.
-`,
-      },
-    },
-  },
   render: () => html`
     <div class="row">
       ${renderComponent({
@@ -315,15 +221,6 @@ Callout highlight con variante success.
 };
 
 export const HighlightWarning: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Callout highlight con variante warning.
-`,
-      },
-    },
-  },
   render: () => html`
     <div class="row">
       ${renderComponent({
@@ -344,15 +241,6 @@ Callout highlight con variante warning.
 };
 
 export const HighlightDanger: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Callout highlight con variante danger.
-`,
-      },
-    },
-  },
   render: () => html`
     <div class="row">
       ${renderComponent({
@@ -373,19 +261,6 @@ Callout highlight con variante danger.
 };
 
 export const CalloutApprofondimento: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Il callout di tipo approfondimento, ottenibile utilizzando la proprietà \`more\`, ha un aspetto radicalmente differente dagli altri stili disponibili ed è indicato per testi più estesi.
-
-Come da esempio, è possibile aggiungere ulteriore testo all'interno di un Collapse standard presente al fondo del contenuto utilizzando lo slot \`more-content\`.
-
-Il pulsante di controllo del collapse può essere affiancato da un link per download di PDF o altri tipi di documento, con relativa icona.
-`,
-      },
-    },
-  },
   render: () => html`
     <div class="row">
       ${renderComponent({

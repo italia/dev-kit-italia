@@ -5,9 +5,9 @@ import * as CalloutStories from './it-callout.stories';
 
 # Callout
 
-<Description>
+<description>
   Box con uno stile visivo distintivo per evidenziare contenuti testuali importanti su pagine lunghe
-</Description>
+</description>
 
 ## Cosa fa
 
@@ -15,14 +15,6 @@ I callout possono essere utilizzati per evidenziare alcune parti del testo che r
 Possono contenere messaggi di errore, avvertimento, suggerimenti, ecc.
 
 [Approfondisci quando e come usare il componente Callout](https://designers.italia.it/design-system/componenti/callout/).
-
-Il componente può essere utilizzato con diverse configurazioni:
-
-- **Titolo e contenuto**: inserendo un elemento nello slot `title` per il titolo e il contenuto principale nello slot di default
-- **Con icona**: aggiungendo un'icona nello slot `icon` che verrà automaticamente colorata in base alla variante
-- **Varianti di colore**: utilizzando l'attributo `variant` per applicare stili diversi (primary, success, warning, danger)
-- **Modalità highlight**: con l'attributo `highlight` per ottenere un bordo solo sul lato sinistro
-- **Modalità approfondimento**: con l'attributo `more` per contenuti estesi
 
 ## Anteprima del componente
 
@@ -47,7 +39,7 @@ Il callout base è costituito da un web component `<it-callout>` che genera la s
 
 È possibile aggiungere un titolo utilizzando lo slot `title` e il contenuto principale utilizzando lo slot di default.
 
-Al titolo può essere aggiunta un'icona utilizzando lo slot `icon`. L'icona viene automaticamente colorata in base alla proprietà `variant` del callout, eliminando la necessità di specificare manualmente l'attributo \`color\`.
+Al titolo può essere aggiunta un'icona utilizzando lo slot `icon`. L'icona viene automaticamente colorata in base alla proprietà `variant` del callout, eliminando la necessità di specificare manualmente l'attributo `color`.
 
 <Canvas of={CalloutStories.CalloutBase} />
 
