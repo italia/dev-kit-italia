@@ -3,7 +3,6 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { type InputType, INPUT_SIZES, type Sizes } from '../src/types.js';
-import '@italia/input';
 
 interface InputNumberProps {
   id: string;

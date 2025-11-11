@@ -44,10 +44,6 @@
     "test:watch": "wtr --coverage --node-resolve --config web-test-runner.config.js --watch"
   },
   "dependencies": {
-    "@italia/accordion": "workspace:^",
-    "@italia/button": "workspace:^",
-    "@italia/icon": "workspace:^",
-    "@italia/checkbox": "workspace:^",
     "@italia/globals": "workspace:^",
     "@italia/i18n": "workspace:^",
     "bootstrap-italia": "catalog:",
@@ -57,20 +53,28 @@
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.3",
+    "@italia/button": "workspace:^",
+    "@italia/checkbox": "workspace:^",
+    "@italia/icon": "workspace:^",
     "@italia/test-config": "workspace:^",
     "@italia/typescript-config": "workspace:^",
     "@open-wc/testing": "catalog:",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
-    "rollup-plugin-copy": "^3.5.0",
     "@types/mocha": "catalog:",
     "@web/test-runner": "catalog:",
     "rimraf": "^6.0.1",
     "rollup": "^4.42.0",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-scss-lit": "^2.1.0",
     "tslib": "^2.6.3",
     "typescript": "catalog:"
+  },
+  "peerDependencies": {
+    "@italia/button": "workspace:^",
+    "@italia/checkbox": "workspace:^",
+    "@italia/icon": "workspace:^"
   },
   "customElements": "custom-elements.json"
 }
