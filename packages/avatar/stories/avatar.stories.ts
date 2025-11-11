@@ -8,14 +8,6 @@ import {
   type AvatarStatus,
   type AvatarType,
 } from '../src/types.js';
-import '@italia/avatar';
-import '@italia/icon';
-// TO BE FIXED - Installato come dipendenze o non vengono letti da storybook lui e popover
-// Permane anche il bug del caricamento dei web-components in maniera lazy e parziale di sb
-// Se fai hover su dropdown o entry nella sua story poi funziona
-// Bisogna piantare a mano lo tutti gli asset del bundle nella previewHead e nella static build di sb,
-// poi funziona tutto e non servono più gli import nelle singole stories
-import '@italia/dropdown';
 
 interface AvatarProps {
   size: AvatarSize;

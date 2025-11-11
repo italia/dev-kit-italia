@@ -6,10 +6,6 @@ import { StoryFormControlMethodAndProps } from '@italia/globals';
 import { INPUT_TYPES, type InputType, INPUT_SIZES, type Sizes } from '../src/types.js';
 import i18nIT from '../src/locales/it.js';
 
-import '@italia/icon';
-import '@italia/button';
-import '@italia/input';
-
 interface InputProps {
   id: string;
   label: string;
@@ -472,7 +468,7 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
 
 export const Disabilitato: Story = {
   ...meta,
-  name: "Stato disabilitato",
+  name: 'Stato disabilitato',
   parameters: {
     docs: {
       description: {
@@ -496,7 +492,7 @@ export const Disabilitato: Story = {
 
 export const Readonly: Story = {
   ...meta,
-  name: "Stato readonly",
+  name: 'Stato readonly',
   parameters: {
     docs: {
       description: {
