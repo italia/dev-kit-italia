@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import '@italia/button';
-import '@italia/dropdown';
-import '@italia/icon';
-import '@italia/popover';
 
 type DropdownProps = {
   label: string;
@@ -35,7 +31,7 @@ const containerStyle = 'height:200px;display:flex;align-items:flex-start;';
 const meta = {
   title: 'Componenti/Dropdown',
   component: 'it-dropdown',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   args: {
     label: 'Apri dropdown',
     disabled: false,

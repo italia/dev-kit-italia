@@ -3,7 +3,6 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { type AvailableIcons, registry } from '../src/icon-registry.ts';
 import { type Sizes, type Alignments, type Colors, ICON_SIZES, ICON_COLORS, ICON_ALIGNMENTS } from '../src/types.ts';
-import '@italia/icon';
 
 interface IconProps {
   name?: string;
@@ -33,7 +32,7 @@ const renderComponent = (params: IconProps) => html`
 
 const meta: Meta<IconProps> = {
   title: 'Componenti/Icon',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   component: 'it-icon',
   args: {
     name: 'it-star-full',

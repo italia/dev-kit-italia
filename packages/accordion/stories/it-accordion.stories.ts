@@ -2,9 +2,6 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { ACCORDION_MODES, type AccordionMode, type HeadingLevels } from '../src/types.js';
-import '@italia/accordion';
-import '@italia/button';
-import '@italia/icon';
 
 interface AccordionProps {
   mode?: AccordionMode;
@@ -62,7 +59,7 @@ const defaultItems: AccordionItemProps[] = [
 
 const meta: Meta<AccordionProps> = {
   title: 'Componenti/Accordion',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   component: 'it-accordion',
   args: {
     mode: 'multiple',

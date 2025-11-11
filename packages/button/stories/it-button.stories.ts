@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { type Sizes, type Variants, BUTTON_SIZES, BUTTON_VARIANTS } from '../src/types.ts';
-import '@italia/button';
-import '@italia/icon';
 
 interface ButtonProps {
   variant: Variants;
@@ -84,7 +82,7 @@ const renderSizeVariant = (args: ButtonProps, defaultText: string) =>
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Button',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   component: 'it-button',
   args: {
     slot: 'Testo del pulsante',
