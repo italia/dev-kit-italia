@@ -3,13 +3,13 @@
 import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
 import '@italia/breadcrumbs';
 
-describe('it-breadcrumb component', () => {
+describe('it-breadcrumbs component', () => {
   describe('structure and rendering', () => {
     it('renders nav element with breadcrumb class', async () => {
       const el = await fixture(html`
-        <it-breadcrumb>
+        <it-breadcrumbs>
           <it-breadcrumb-item>Test</it-breadcrumb-item>
-        </it-breadcrumb>
+        </it-breadcrumbs>
       `);
 
       await elementUpdated(el);
@@ -21,9 +21,9 @@ describe('it-breadcrumb component', () => {
 
     it('renders breadcrumb list with correct classes', async () => {
       const el = await fixture(html`
-        <it-breadcrumb>
+        <it-breadcrumbs>
           <it-breadcrumb-item>Test</it-breadcrumb-item>
-        </it-breadcrumb>
+        </it-breadcrumbs>
       `);
       await elementUpdated(el);
       const ol = el.shadowRoot?.querySelector('ol');
@@ -31,11 +31,27 @@ describe('it-breadcrumb component', () => {
       expect(ol?.classList.contains('breadcrumb')).to.be.true;
     });
 
+    it('renders links in light DOM for progressive enhancement', async () => {
+      const el = await fixture(html`
+        <it-breadcrumbs>
+          <it-breadcrumb-item><a href="/home">Home</a></it-breadcrumb-item>
+          <it-breadcrumb-item><a href="/library">Library</a></it-breadcrumb-item>
+        </it-breadcrumbs>
+      `);
+      await elementUpdated(el);
+
+      const firstItem = el.querySelector('it-breadcrumb-item');
+      const link = firstItem?.querySelector('a');
+      expect(link).to.exist;
+      expect(link?.getAttribute('href')).to.equal('/home');
+      expect(link?.textContent).to.equal('Home');
+    });
+
     it('passes aria-label to nav element', async () => {
       const el = await fixture(html`
-        <it-breadcrumb label="Navigation breadcrumb">
+        <it-breadcrumbs label="Navigation breadcrumb">
           <it-breadcrumb-item>Test</it-breadcrumb-item>
-        </it-breadcrumb>
+        </it-breadcrumbs>
       `);
       await elementUpdated(el);
       const nav = el.shadowRoot?.querySelector('nav');
@@ -44,11 +60,11 @@ describe('it-breadcrumb component', () => {
 
     it('renders slotted breadcrumb items', async () => {
       const el = await fixture(html`
-        <it-breadcrumb>
-          <it-breadcrumb-item href="/home">Home</it-breadcrumb-item>
-          <it-breadcrumb-item href="/library">Library</it-breadcrumb-item>
+        <it-breadcrumbs>
+          <it-breadcrumb-item><a href="/home">Home</a></it-breadcrumb-item>
+          <it-breadcrumb-item><a href="/library">Library</a></it-breadcrumb-item>
           <it-breadcrumb-item>Data</it-breadcrumb-item>
-        </it-breadcrumb>
+        </it-breadcrumbs>
       `);
       await elementUpdated(el);
       const slot = el.shadowRoot?.querySelector('slot');
@@ -62,10 +78,10 @@ describe('it-breadcrumb component', () => {
   describe('breadcrumb interactions', () => {
     it('handles breadcrumb item current state', async () => {
       const el = await fixture(html`
-        <it-breadcrumb>
-          <it-breadcrumb-item href="/home">Home</it-breadcrumb-item>
+        <it-breadcrumbs>
+          <it-breadcrumb-item><a href="/home">Home</a></it-breadcrumb-item>
           <it-breadcrumb-item>Current Page</it-breadcrumb-item>
-        </it-breadcrumb>
+        </it-breadcrumbs>
       `);
       await elementUpdated(el);
       const items = Array.from(el.querySelectorAll('it-breadcrumb-item'));
@@ -82,10 +98,10 @@ describe('it-breadcrumb component', () => {
 
     it('handles custom separators', async () => {
       const el = await fixture(html`
-        <it-breadcrumb separator="&gt;">
-          <it-breadcrumb-item href="/home">Home</it-breadcrumb-item>
-          <it-breadcrumb-item href="/library">Library</it-breadcrumb-item>
-        </it-breadcrumb>
+        <it-breadcrumbs separator="&gt;">
+          <it-breadcrumb-item><a href="/home">Home</a></it-breadcrumb-item>
+          <it-breadcrumb-item><a href="/library">Library</a></it-breadcrumb-item>
+        </it-breadcrumbs>
       `);
       await elementUpdated(el);
       const items = Array.from(el.querySelectorAll('it-breadcrumb-item'));
@@ -97,9 +113,9 @@ describe('it-breadcrumb component', () => {
 
     it('applies dark mode styles when dark attribute is set', async () => {
       const el = await fixture(html`
-        <it-breadcrumb dark>
-          <it-breadcrumb-item href="/home">Home</it-breadcrumb-item>
-        </it-breadcrumb>
+        <it-breadcrumbs dark>
+          <it-breadcrumb-item><a href="/home">Home</a></it-breadcrumb-item>
+        </it-breadcrumbs>
       `);
       await elementUpdated(el);
       const ol = el.shadowRoot?.querySelector('ol');

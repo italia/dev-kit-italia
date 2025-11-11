@@ -1,8 +1,5 @@
 import type { StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import '@italia/icon';
-import '@italia/button';
-import '@italia/input';
 
 const defaultContent = html`
   <footer class="it-footer">
@@ -267,7 +264,7 @@ const smallContent = html` <footer class="it-footer">
 const meta = {
   title: 'Componenti/Footer',
   component: 'footer',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'documentation'],
   parameters: {
     docs: {
       description: {

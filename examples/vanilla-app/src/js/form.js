@@ -3,8 +3,13 @@ const handleSubmit = (e) => {
 
   const formData = new FormData(document.getElementById('form'));
   const data = Object.fromEntries(formData.entries());
+
   console.log(data);
   // Handle form submission logic here
+  /*
+  Per i campi di tipo checkbox multiple (stesso [name] e valori delle checkbox diversi),
+  il valore si ottiene con formData.getAll(field_name) dove field_name è il valore dell'attributo [name] delle checkbox
+  */
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,6 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const getItInputValue = (selector) => {
     const el = fmc.querySelector(selector);
     return el?.value || ''; // .value dovrebbe essere esposto dal tuo componente
+  };
+  const getItCheckboxValue = (selector) => {
+    const el = fmc.querySelector(selector);
+    return el?.checked || false; // .checked dovrebbe essere esposto dal tuo componente
   };
 
   // Aggiungiamo regole
@@ -48,7 +57,22 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         errorMessage: 'Inserire almeno 10 caratteri',
       },
-    ]);
+    ])
+    .addField(
+      'it-checkbox[id="privacy"]',
+      [
+        {
+          validator: () => {
+            const value = getItCheckboxValue('it-checkbox[id="privacy"]');
+            return value;
+          },
+          errorMessage: "L'accettazione della privacy è obbligatoria",
+        },
+      ],
+      {
+        events: ['it-change'], // 👈 FORZA l’ascolto sul change
+      },
+    );
 
   validate.onValidate((props) => {
     const { fields } = props;

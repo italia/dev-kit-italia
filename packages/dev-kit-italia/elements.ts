@@ -4,6 +4,7 @@ import '@italia/accordion/it-accordion-item.js';
 import '@italia/breadcrumbs/it-breadcrumbs.js';
 import '@italia/breadcrumbs/it-breadcrumb-item.js';
 import '@italia/button/it-button.js';
+import '@italia/checkbox/it-checkbox.js';
 import '@italia/chip/it-chip.js';
 import '@italia/avatar/it-avatar.js';
 import '@italia/dropdown/it-dropdown.js';

@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import '@italia/video';
-import '@italia/button';
-import '@italia/accordion';
-import '@italia/icon';
 import itLang from '../src/locales/videojs/it.js';
 import i18nIT from '../src/locales/it.js';
 import type { ConsentOptions, Track, VideoJSTranslations } from '../src/types.ts';
@@ -40,7 +36,7 @@ const renderComponent = (params: any) => html`
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Video',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   component: 'it-video',
   args: {
     src: 'https://vjs.zencdn.net/v/oceans.webm',

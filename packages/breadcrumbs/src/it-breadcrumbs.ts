@@ -10,7 +10,7 @@ import styles from './breadcrumbs.scss';
  * - Renders a list of slotted anchors or items
  * - Dark mode variant
  */
-@customElement('it-breadcrumb')
+@customElement('it-breadcrumbs')
 export class ItBreadcrumb extends BaseComponent {
   static styles = styles;
 
@@ -28,7 +28,7 @@ export class ItBreadcrumb extends BaseComponent {
         const current = index === assignedElements.length - 1;
         el.setCurrent(current);
         el.setSeparator(this.separator);
-        el.requestUpdate();
+        // Non serve requestUpdate() perché current e separator sono @state() reattivi
       }
     });
   }

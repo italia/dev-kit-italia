@@ -6,8 +6,20 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/accordion.component').then((c) => c.AccordionComponent),
   },
   {
+    path: 'avatar',
+    loadComponent: () => import('./pages/avatar.component').then((c) => c.AvatarComponent),
+  },
+  {
+    path: 'breadcrumbs',
+    loadComponent: () => import('./pages/breadcrumbs.component').then((c) => c.BreadcrumbsComponent),
+  },
+  {
     path: 'button',
     loadComponent: () => import('./pages/button.component').then((c) => c.ButtonComponent),
+  },
+  {
+    path: 'checkbox',
+    loadComponent: () => import('./pages/checkbox.component').then((c) => c.CheckboxComponent),
   },
   {
     path: 'chip',
@@ -26,16 +38,8 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/icon.component').then((c) => c.IconComponent),
   },
   {
-    path: 'section',
-    loadComponent: () => import('./pages/section.component').then((c) => c.SectionComponent),
-  },
-  {
     path: 'input',
     loadComponent: () => import('./pages/input.component').then((c) => c.InputComponent),
-  },
-  {
-    path: 'sticky',
-    loadComponent: () => import('./pages/sticky.component').then((c) => c.StickyComponent),
   },
   {
     path: 'radio',
@@ -43,11 +47,15 @@ export const routes: Routes = [
       import('./pages/radio-examples.component').then((c) => c.RadioExamplesComponent),
   },
   {
-    path: 'video',
-    loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
+    path: 'section',
+    loadComponent: () => import('./pages/section.component').then((c) => c.SectionComponent),
   },
   {
-    path: 'avatar',
-    loadComponent: () => import('./pages/avatar.component').then((c) => c.AvatarComponent),
+    path: 'sticky',
+    loadComponent: () => import('./pages/sticky.component').then((c) => c.StickyComponent),
+  },
+  {
+    path: 'video',
+    loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
   },
 ];

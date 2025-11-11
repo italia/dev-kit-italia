@@ -1,0 +1,118 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle } from '@storybook/addon-docs/blocks';
+import * as BreadcrumbsStories from './it-breadcrumbs.stories';
+
+<Meta of={BreadcrumbsStories} />
+
+# Breadcrumbs
+
+<description>Indicatori di un percorso di navigazione gerarchico che aiuta gli utenti a comprendere la loro posizione all'interno di un sito e a tornare facilmente ai livelli precedenti</description>
+
+## Cosa fa
+
+Usa il componente Breadcrumbs quando un sito presenta molti contenuti, organizzati su più di due livelli gerarchici, e gli utenti hanno bisogno di spostarsi velocemente tra i vari livelli.
+
+[Approfondisci quando e come usare il componente Breadcrumbs](https://designers.italia.it/design-system/componenti/breadcrumb/).
+
+### Alternative a questo componente
+- Progress indicators: utile a indicare il progresso di un flusso transazionale lineare, come la richiesta di un servizio o un pagamento.
+
+## Anteprima del componente
+
+<Canvas of={BreadcrumbsStories.EsempioInterattivo} />
+
+## Attributi
+
+Gli attributi definiscono l'aspetto, il comportamento e il contenuto del componente.
+
+Modificando questi valori puoi personalizzare come il componente si presenta o reagisce alle interazioni.
+
+<Controls of={BreadcrumbsStories.EsempioInterattivo} />
+
+## Accessibilità
+
+Il componente Breadcrumbs implementa le specifiche ARIA [WAI-ARIA Authoring Practices 1.2 breadcrumbs](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/) per garantire un'esperienza accessibile a tutti gli utenti:
+- Fornisce automaticamente l'attributo `aria-current="page"` sull'ultimo elemento per indicare la pagina corrente agli screen reader
+- Il separatore viene nascosto agli screen reader tramite `aria-hidden="true"` per evitare annunci ridondanti
+- Usa elementi semantici (`<nav>`, `<ol>`, `<li>`) per una corretta struttura del documento
+
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Nota sui test di accessibilità</span>
+    </div>
+    <p>
+      Axe e altri strumenti di analisi statica possono segnalare falsi positivi quando analizzano il componente breadcrumb a causa del limitato supporto per i Web Components. La struttura accessibile effettiva è corretta, come confermato dall'Accessibility Tree e dai test manuali con screen reader.
+    </p>
+  </div>
+</div>
+
+## Breadcrumb Item
+
+Il componente `it-breadcrumb-item` rappresenta un singolo elemento della traccia di navigazione e deve essere utilizzato all'interno di un contenitore `it-breadcrumbs`.
+
+### Proprietà
+Il componente `it-breadcrumb-item` supporta le seguenti proprietà:
+- `href` (string): URL di destinazione del link.
+
+### Contenuto
+
+Il testo del singolo Breadcrumb Item va inserito all'interno del tag `<a>` che a sua volta va inserito nello slot principale del componente. Puoi anche inserire icone o altri elementi HTML all'interno del link.
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Accessibilità e semantica</span>
+    </div>
+    <p>
+      Ricordati di inserire il testo descrittivo del link all'interno del tag `<a>` per garantire una corretta semantica e accessibilità.
+    </p>
+    <p>
+      Ricordati di valorizzare sempre l'attributo `href` per rendere il link effettivamente navigabile e semanticamente corretto.
+    </p>
+  </div>
+</div>
+
+
+<Canvas of={BreadcrumbsStories.ConLink} />
+
+## Con icona
+
+Per aggiungere un'icona ad un elemento `it-breadcrumb-item`, inserisci al suo interno un componente `it-icon` con l'icona desiderata all'interno del tag `<a>` corrispondente.
+
+<Canvas of={BreadcrumbsStories.ConIcona} />
+
+## Separatore personalizzato
+
+Di default, il componente Breadcrumbs usa `/` come separatore tra gli elementi. Puoi personalizzarlo in due modi:
+
+- Usando l'attributo `separator` sul componente `it-breadcrumbs` per cambiare il simbolo (es. `>`)
+- Inserendo un elemento personalizzato (come un'icona) nello slot `separator` di ogni `it-breadcrumb-item`
+
+<Canvas of={BreadcrumbsStories.SeparatorePersonalizzato} />
+
+## Sfondo scuro
+
+Per utilizzare il componente Breadcrumbs su sfondi scuri, aggiungi l'attributo `dark`.
+
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Accessibilità e icone</span>
+    </div>
+    <p>
+      Quando usi icone negli slot `separator` o come contenuto di un `it-breadcrumb-item` ricorda di impostare manualmente il colore appropriato in modo da garantire un contrasto che rispetti le linee guida di accessibilità.
+    </p>
+  </div>
+</div>
+
+<Canvas of={BreadcrumbsStories.Sfondo} />
+
+## Personalizzazione degli stili
+
+Per la personalizzazione degli stili puoi usare i selettori `::part`:
+
+- `::part(breadcrumbs-container)` - elemento`nav` che contiene il breadcrumb
+- `::part(breadcrumbs)` - elemento `ol` che contiene le voci
+- `::part(breadcrumb-item)` - ogni singolo elemento `li` della lista
+- `::part(separator)` - elemento usato come separatore tra le voci
+
+[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).

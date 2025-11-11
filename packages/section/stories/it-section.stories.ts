@@ -3,8 +3,6 @@ import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { SECTION_VARIANTS, type SectionProps } from '../src/types.ts';
 
-import '@italia/section';
-
 const defaultContent = html`
   <!-- contenuto di esempio START -->
   <div class="container">
@@ -52,7 +50,7 @@ function renderSection({
 }
 const meta = {
   title: 'Componenti/Section',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   component: 'it-section',
   parameters: {
     docs: {

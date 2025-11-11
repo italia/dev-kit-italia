@@ -3,7 +3,6 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { type InputType, INPUT_SIZES, type Sizes } from '../src/types.js';
-import '@italia/input';
 
 interface InputNumberProps {
   id: string;
@@ -53,7 +52,7 @@ const renderNumberInput = (params: any) =>
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Form/Input Numerico',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   component: 'it-input',
   args: {
     id: '',

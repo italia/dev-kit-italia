@@ -1,0 +1,71 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+
+// FUOC (Flash of Unstyled Content) styles
+// Stili applicati prima che il componente sia definito per prevenire layout shift
+// IMPORTANTE: Con la nuova struttura, i link <a> sono nel light DOM e quindi
+// funzionano anche senza JavaScript, garantendo progressive enhancement
+
+it-breadcrumbs:not(:defined) {
+  --it-host-display: flex;
+  --it-breadcrumb-background-color: transparent;
+  --it-breadcrumb-text-color: inherit;
+  display: var(--it-host-display);
+
+  it-breadcrumb-item:not(:defined) {
+    display: inline-flex;
+    align-items: center;
+
+    // Stili per i link nel light DOM
+    a {
+      display: var(--it-host-display);
+      align-items: center;
+      color: var(--bs-breadcrumb-link-color, var(--it-breadcrumb-text-color));
+      font-weight: var(--bs-breadcrumb-link-font-weight, 600);
+    }
+
+    // Mostra il separatore usando l'attributo separator del parent o il default "/"
+    &:not(:last-child)::after {
+      padding: 0 0.5rem;
+      color: var(--bs-breadcrumb-separator-color);
+      content: '/';
+    }
+
+    // Override del contenuto se c'è uno slot separator popolato
+    // (in questo caso non possiamo sapere il contenuto, quindi lasciamo vuoto)
+    &:has([slot='separator'])::after {
+      padding: 0;
+      content: '';
+    }
+
+    color: var(--bs-breadcrumb-link-color);
+  }
+
+  it-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// Per il tema dark quando non ancora definito
+it-breadcrumbs[dark]:not(:defined) {
+  --it-breadcrumb-background-color: hsl(210, 25%, 35.2%);
+  --it-breadcrumb-text-color: #fff;
+  padding: 0.75rem 1rem;
+  background: var(--it-breadcrumb-background-color);
+
+  it-breadcrumb-item:not(:defined) {
+    // Stili per i link nel tema dark
+    a {
+      display: var(--it-host-display);
+      color: var(--it-breadcrumb-text-color);
+      font-weight: var(--bs-breadcrumb-link-font-weight, 600);
+    }
+
+    &:not(:last-child)::after {
+      color: var(--it-breadcrumb-text-color);
+    }
+
+    color: var(--it-breadcrumb-text-color);
+  }
+}

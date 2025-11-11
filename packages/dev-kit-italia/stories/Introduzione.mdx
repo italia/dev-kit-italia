@@ -8,13 +8,37 @@ import { Code } from 'storybook/internal/components';
   <div>
     <img src="./logo.png" width="500px" alt=".italia dev kit" />
   </div>
-  <p className="lead mb-5">Dev Kit Italia è un set di Web components che implementa il Design system .italia e i componenti presenti su [UI Kit
-    Italia](https://github.com/italia/design-ui-kit).</p>
   <p className="lead mb-5">
-    <b>⚠️ Attenzione: questo repository e i relativi pacchetti sono in lavorazione.
-    <br/>Attualmente sono pubblicati per permetterne lo sviluppo, non sono consigliati per l'utilizzo in ambienti di produzione.</b>
+    Dev Kit Italia è un set di Web components che implementa il Design system .italia e i componenti presenti su [UI Kit
+    Italia](https://github.com/italia/design-ui-kit).
+  </p>
+  <p className="lead mb-5">
+    <b>
+      ⚠️ Attenzione: questo repository e i relativi pacchetti sono in lavorazione.
+      <br />
+      Attualmente sono pubblicati per permetterne lo sviluppo, non sono consigliati per l'utilizzo in ambienti di
+      produzione.
+    </b>
   </p>
 </div>
+
+## Il progetto
+
+Dev Kit Italia è un progetto open source che raccoglie strumenti, componenti e risorse per sviluppare interfacce coerenti con il Design System **.italia**.
+
+### Obiettivo
+
+Il suo obiettivo è semplificare la creazione di siti e applicazioni della Pubblica Amministrazione, offrendo componenti pronti all’uso, con documentazione chiara e linee guida condivise.
+
+Il progetto nasce per evolvere le attuali librerie di sviluppo (come Bootstrap Italia, React Kit e Angular Kit) verso un sistema basato su **web component** nativi HTML, più flessibile, duraturo e indipendente dai framework.
+Questo approccio permette di:
+
+- usare gli stessi componenti in **qualsiasi ambiente** di sviluppo;
+- **ridurre** la manutenzione del codice e il **debito tecnico**;
+- garantire **accessibilità** (WCAG 2.2) e uniformità visiva;
+- facilitare la **personalizzazione** tramite design token integrati.
+
+In sintesi, Dev Kit Italia punta a rendere più facile e sostenibile lo sviluppo di siti e servizi pubblici digitali, offrendo strumenti moderni e aperti a chiunque voglia contribuire o creare esperienze utente di qualità.
 
 ## Come iniziare
 
@@ -114,28 +138,29 @@ return (
 
 ## Applicazioni predefinite per il testing
 
-All'interno di questo progetto, sotto alla cartella `/apps` sono gia disponibili alcune applicazioni create con i framework **Angular**, **React**, **Svelte** e **Vue** che consentono di testare l'attuale versione della libreria (o del branch corrente).
+All'interno di questo progetto, sotto alla cartella `/examples` sono gia disponibili alcune applicazioni create con i framework **Angular**, **React**, **Svelte** e **Vue** che consentono di testare l'attuale versione della libreria (o del branch corrente).
 
 #### Come testare:
 
 1. compilare sempre la versione corrente della libreria posizionandosi nella root con
 
 ```bash
+pnpm install # Per installare tutte le dipendeze dei vari packages
 pnpm build
 ```
 
 2. posizionarsi nella cartella del framework che si vuole testare. Ad esempio se vogliamo testare il framework React (oppure Vue, o Svelte):
 
 ```bash
-cd apps/react-app
+cd examples/react-app
 npm install # Per copiare nella node_modules la versione compilata di dev-kit-italia
 npm run dev
 ```
 
-Se invece si vuole testare l'app Angular, è necessario avere installato in locale la CLI di Angular e fare:
+Se invece si vuole testare l'app Angular, è necessario fare:
 
 ```bash
-cd apps/angular-app
+cd examples/angular-app
 npm install # Per copiare nella node_modules la versione compilata di dev-kit-italia
-ng serve
+npm start
 ```

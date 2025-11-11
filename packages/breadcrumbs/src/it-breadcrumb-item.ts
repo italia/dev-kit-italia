@@ -1,27 +1,26 @@
 import { BaseComponent } from '@italia/globals';
 import { html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, state } from 'lit/decorators.js';
 import styles from './breadcrumb-item.scss';
 
 /**
  * Breadcrumb item component representing a single item in the breadcrumb trail.
- * - Renders an anchor if not current, otherwise just text.
- * - Adds a separator after the item.
+ * - Wraps slotted content (typically an anchor or text)
+ * - Adds a separator after the item
+ * - Supports progressive enhancement: links work even without JavaScript
  *
  */
 @customElement('it-breadcrumb-item')
 export class ItBreadcrumbItem extends BaseComponent {
   static styles = styles;
 
-  @property({ type: String, reflect: true }) href = '#';
-
-  private current = false;
+  @state() private current = false;
 
   public setCurrent(value: boolean) {
     this.current = value;
   }
 
-  private separator = '/';
+  @state() private separator = '/';
 
   public setSeparator(value: string) {
     this.separator = value;
@@ -51,7 +50,7 @@ export class ItBreadcrumbItem extends BaseComponent {
     if (!this.current)
       return html`
         <li class="breadcrumb-item" part="breadcrumb-item">
-          <a href="${this.href}" part="focusable"> <slot></slot></a>
+          <slot></slot>
           <span class="${this._getSeparatorClasses() ? '' : 'separator'}" aria-hidden="true"
             ><slot name="separator" part="separator">${this.separator}</slot></span
           >

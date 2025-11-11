@@ -21,9 +21,5 @@
       --bs-breadcrumb-item-active-color: #fff;
       --bs-breadcrumb-separator-color: #fff;
     }
-
-    ::slotted(it-breadcrumb-item a) {
-      --bs-breadcrumb-link-color: #fff;
-    }
   }
 }

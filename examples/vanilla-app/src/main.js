@@ -38,8 +38,14 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/avatar">
         Avatar
       </a>
+      <a href="/src/breadcrumbs">
+        Breadcrumbs
+      </a>
       <a href="/src/button">
         Button
+      </a>
+      <a href="/src/checkbox">
+        Checkbox
       </a>
       <a href="/src/chip">
         Chip
@@ -62,20 +68,13 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/section">
         Section
       </a>
-      <a href="/src/video">
-        Video
-      </a>
       <a href="/src/sticky">
         Sticky
       </a>
+      <a href="/src/video">
+        Video
+      </a>
     </nav>
-    <div>
-     <it-breadcrumb label="Percorso di navigazione">
-       <it-breadcrumb-item href="#">Home</it-breadcrumb-item>
-       <it-breadcrumb-item href="#">Componenti</it-breadcrumb-item>
-       <it-breadcrumb-item href="#">Componente</it-breadcrumb-item>
-     </it-breadcrumb>
-    </div>
   </div>
 `;
 
