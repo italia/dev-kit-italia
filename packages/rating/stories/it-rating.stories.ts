@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import '@italia/rating';
-import '@italia/radio';
-import '@italia/icon';
-import '@italia/input';
 import { StoryFormControlMethodAndProps } from '@italia/globals';
 
 interface RatingProps {
@@ -21,7 +17,7 @@ interface RatingProps {
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Rating',
-  tags: ['autodocs'],
+  tags: ['new', 'web-component', 'a11y-ok'],
   component: 'it-rating',
   args: {
     name: 'rating',
@@ -71,30 +67,6 @@ const meta = {
       description:
         'Numero massimo di elementi nel rating, per messaggi di supporto e accessibilità, modificare rispetto al default solo se si cambia il numero di elementi visualizzati rispetto al default di 5',
       table: { defaultValue: { summary: '5' } },
-    },
-  },
-  parameters: {
-    docs: {
-      description: {
-        component: `
-<Description>Una scala di valori grafica a stelline, utile per esprimere una valutazione su un servizio o un contenuto.</Description>
-
-Il componente \`<it-rating>\` permette agli utenti di valutare contenuti o servizi con un sistema di stelle da 1 a 5 (configurabile).
-
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>
-Il componente implementa completamente le specifiche ARIA per i rating: utilizza \`role="radiogroup"\` per il gruppo di stelle e \`role="radio"\` per ogni stella quando il componente è interattivo.
-</p>
-<p>
-La navigazione da tastiera è completa e intuitiva: le frecce permettono di navigare tra le stelle, Home e End vanno alla prima e ultima stella rispettivamente, mentre Spazio ed Enter selezionano la stella corrente.
-
-È obbligatorio, per ragioni di accessibilità, fornire la label per ogni \`<it-rating-item>\` tramite lo slot \`label\`. È obbligatorio anche fornire una label per il gruppo \`<it-rating>\`, tramite lo slot \`label\`.
-</p>
-</div></div>
-
-
-`,
-      },
     },
   },
 } satisfies Meta<RatingProps>;
@@ -151,23 +123,6 @@ export const PersonalizzazioneDegliStili: Story = {
     viewMode: 'docs',
     docs: {
       canvas: { hidden: true, sourceState: 'none' },
-      description: {
-        story: `
-Per la personalizzazione degli stili del componente \`<it-rating-item>\` si può usare il selettore \`::part\` con i seguenti valori:
-
-#### it-rating-item
-
-| Part | Descrizione |
-|------|-------------|
-| \`input\` | Il contenitore dell'input nascosto |
-| \`star\` | L'icona (stella o icona personalizzata) |
-
-
-[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
-
-<p></p>
-`,
-      },
     },
   },
   render: () => html`<div class="hide-preview"></div>`,
@@ -178,13 +133,7 @@ export const ValorePreimpostato: Story = {
   args: {
     value: 3,
   },
-  parameters: {
-    docs: {
-      description: {
-        story: `È possibile inizializzare il componente con un valore preimpostato utilizzando l'attributo \`value\`.`,
-      },
-    },
-  },
+
   render: () => html`
     <it-rating name="rating-preset" value="3">
       <span slot="label">Valutazione</span>
@@ -203,13 +152,7 @@ export const SolaLettura: Story = {
     value: 4,
     readOnly: true,
   },
-  parameters: {
-    docs: {
-      description: {
-        story: `È possibile impostare il componente in modalità sola lettura utilizzando l'attributo \`read-only\`. In questa modalità, il rating non è interattivo e serve solo per visualizzare una valutazione esistente.`,
-      },
-    },
-  },
+
   render: () => html`
     <it-rating name="rating-readonly" value="4" read-only>
       <span slot="label">Sola lettura</span>
@@ -228,13 +171,7 @@ export const IconePersonalizzate: Story = {
   args: {
     value: 3,
   },
-  parameters: {
-    docs: {
-      description: {
-        story: `È possibile personalizzare l'icona utilizzata per il rating tramite l'attributo \`icon\` su \`<it-rating>\`. Di default viene utilizzata l'icona \`it-star-full\`, ma è possibile usare qualsiasi icona disponibile nel design system e/o icone personalizzate.`,
-      },
-    },
-  },
+
   render: () => html`
     <it-rating name="rating-check" icon="it-check-circle" value="4">
       <span slot="label">Valutazione con check</span>
@@ -252,13 +189,7 @@ export const Obbligatorio: Story = {
     value: 0,
     required: true,
   },
-  parameters: {
-    docs: {
-      description: {
-        story: `È possibile impostare il componente come obbligatorio utilizzando l'attributo \`required\`. In questo modo, l'utente deve selezionare una valutazione prima di poter inviare il modulo.`,
-      },
-    },
-  },
+
   render: () => html`
     <form
       @submit=${(e: Event) => {
@@ -269,13 +200,23 @@ export const Obbligatorio: Story = {
     >
       <it-rating name="rating-required" required>
         <span slot="label">Valutazione (obbligatoria)</span>
-        <it-rating-item value="1"><span slot="label">1 stella</span></it-rating-item>
-        <it-rating-item value="2"><span slot="label">2 stelle</span></it-rating-item>
-        <it-rating-item value="3"><span slot="label">3 stelle</span></it-rating-item>
-        <it-rating-item value="4"><span slot="label">4 stelle</span></it-rating-item>
-        <it-rating-item value="5"><span slot="label">5 stelle</span></it-rating-item>
+        <it-rating-item value="1">
+          <span slot="label">1 stella</span>
+        </it-rating-item>
+        <it-rating-item value="2">
+          <span slot="label">2 stelle</span>
+        </it-rating-item>
+        <it-rating-item value="3">
+          <span slot="label">3 stelle</span>
+        </it-rating-item>
+        <it-rating-item value="4">
+          <span slot="label">4 stelle</span>
+        </it-rating-item>
+        <it-rating-item value="5">
+          <span slot="label">5 stelle</span>
+        </it-rating-item>
       </it-rating>
-      <button type="submit" class="btn btn-primary mt-3">Invia</button>
+      <it-button type="submit" class="mt-3" variant="primary">Invia</it-button>
     </form>
   `,
 };
@@ -296,11 +237,21 @@ export const InForm: Story = {
       <div class="mb-4">
         <it-rating name="rating" required>
           <span slot="label">Valuta questo servizio (obbligatorio)</span>
-          <it-rating-item value="1"><span slot="label">1 stella</span></it-rating-item>
-          <it-rating-item value="2"><span slot="label">2 stelle</span></it-rating-item>
-          <it-rating-item value="3"><span slot="label">3 stelle</span></it-rating-item>
-          <it-rating-item value="4"><span slot="label">4 stelle</span></it-rating-item>
-          <it-rating-item value="5"><span slot="label">5 stelle</span></it-rating-item>
+          <it-rating-item value="1">
+            <span slot="label">1 stella</span>
+          </it-rating-item>
+          <it-rating-item value="2">
+            <span slot="label">2 stelle</span>
+          </it-rating-item>
+          <it-rating-item value="3">
+            <span slot="label">3 stelle</span>
+          </it-rating-item>
+          <it-rating-item value="4">
+            <span slot="label">4 stelle</span>
+          </it-rating-item>
+          <it-rating-item value="5">
+            <span slot="label">5 stelle</span>
+          </it-rating-item>
         </it-rating>
       </div>
 
@@ -311,8 +262,8 @@ export const InForm: Story = {
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary">Invia recensione</button>
-      <button type="reset" class="btn btn-outline-primary ms-2">Reset</button>
+      <it-button type="submit" variant="primary">Invia recensione</it-button>
+      <it-button type="reset" variant="primary" outline>Reset</it-button>
     </form>
   `,
 };

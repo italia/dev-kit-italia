@@ -10,6 +10,7 @@ import '../packages/icon/dist/src';
 import '../packages/input/dist/src';
 import '../packages/popover/dist/src';
 import '../packages/radio/dist/src';
+import '../packages/rating/dist/src';
 import '../packages/section/dist/src';
 import '../packages/sticky/dist/src';
 import '../packages/video/dist/src';

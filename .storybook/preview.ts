@@ -34,7 +34,7 @@ const preview: Preview = {
         },
       },
       toc: {
-        headingSelector: 'h2, h3',
+        headingSelector: 'h2',
         ignoreSelector: 'h2[id|="stories"], #esempio, .docs-story h2, .docs-story h3',
         title: 'Indice',
       },
