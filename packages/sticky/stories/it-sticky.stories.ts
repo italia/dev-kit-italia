@@ -1,9 +1,7 @@
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html, nothing } from 'lit';
-import type { Meta, StoryObj } from '@storybook/web-components';
-import type { StickyOptions } from '@italia/sticky';
 import { ifDefined } from 'lit/directives/if-defined.js';
-
-import '@italia/sticky';
+import type { StickyOptions } from '../src/sticky-controller.js';
 
 function renderSticky({ stackable, paddingTop, stickyClassName, positionType }: StickyOptions) {
   return html`

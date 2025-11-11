@@ -3,7 +3,6 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { type AvailableIcons, registry } from '../src/icon-registry.ts';
 import { type Sizes, type Alignments, type Colors, ICON_SIZES, ICON_COLORS, ICON_ALIGNMENTS } from '../src/types.ts';
-import '@italia/icon';
 
 interface IconProps {
   name?: string;

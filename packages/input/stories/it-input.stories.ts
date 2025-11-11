@@ -5,10 +5,6 @@ import { StoryFormControlMethodAndProps } from '@italia/globals';
 
 import { INPUT_TYPES, type InputType, INPUT_SIZES, type Sizes } from '../src/types.js';
 
-import '@italia/icon';
-import '@italia/button';
-import '@italia/input';
-
 interface InputProps {
   id: string;
   label: string;
