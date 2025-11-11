@@ -3,8 +3,6 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { StoryFormControlMethodAndProps } from '@italia/globals';
 
-import '@italia/checkbox';
-
 interface CheckboxProps {
   id: string;
   label: string;

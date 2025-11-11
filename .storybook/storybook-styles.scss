@@ -98,6 +98,7 @@
 /* stylelint-disable-next-line selector-type-no-unknown */
 .sbdocs-content description:not(.sb-story description),
 .sbdocs-content p.lead:not(.sb-story p.lead) {
+  display: block;
   margin-bottom: 2rem !important;
   font-size: var(--bs-lead-font-size) !important; /* 1.25rem mobile, 1.5rem desktop */
   font-weight: var(--bs-lead-font-weight) !important;
