@@ -65,6 +65,10 @@
       font-weight: bold;
     }
 
+    &.small {
+      font-size: var(--bs-caption-font-size);
+    }
+
     &.docblock-argstable * {
       font-size: 1rem;
     }
@@ -96,10 +100,6 @@
     &:hover {
       color: var(--bs-color-link-hover);
     }
-  }
-
-  .small {
-    font-size: var(--bs-caption-font-size);
   }
 }
 
