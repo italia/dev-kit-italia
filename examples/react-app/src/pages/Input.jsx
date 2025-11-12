@@ -65,6 +65,7 @@ const Input = () => {
       ></it-input>
       <it-input id="exampleInputTel" label="Campo telefonico" type="tel" name="telefono"></it-input>
       <it-input id="exampleInputTime" label="Campo orario" type="time" name="orario"></it-input>
+      <it-input id="exampleInputDate" label="Campo data" type="date" name="data"></it-input>
       <it-input
         id="field-disabled-example"
         label="Campo disabilitato"
