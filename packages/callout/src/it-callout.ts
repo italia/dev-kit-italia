@@ -42,8 +42,11 @@ export class ItCallout extends BaseComponent {
     if (!this._iconSlot || !this.variant) return;
 
     const assignedIcons = this._iconSlot.assignedElements();
-    assignedIcons.forEach((icon: any) => {
-      if (icon.tagName?.toLowerCase() === 'it-icon') {
+    assignedIcons.forEach((icon: Element) => {
+      if (
+        icon instanceof HTMLElement &&
+        icon.tagName?.toLowerCase() === 'it-icon'
+      ) {
         icon.setAttribute('color', this.variant);
       }
     });
@@ -76,16 +79,16 @@ export class ItCallout extends BaseComponent {
   }
 
   private renderInner() {
-    return html` <div class="callout-inner" part="inner">${this.renderTitle()} ${this.renderContent()}</div> `;
+    return html` <div class="callout-inner" part="inner">${this.renderTitle()} <slot></slot></div> `;
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  private renderContent(): TemplateResult {
-    return html`<slot></slot>`;
-  }
+
+
+
+
 
   private renderHighlightContent() {
-    return html`${this.renderTitle()} ${this.renderContent()}`;
+    return html`${this.renderTitle()} <slot></slot>`;
   }
 
   render() {
