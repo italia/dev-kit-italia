@@ -13,7 +13,7 @@ interface BreadcrumbProps {
 const meta = {
   title: 'Componenti/Breadcrumbs',
   tags: ['new', 'component', 'a11y-ok'],
-  component: 'it-breadcrumb',
+  component: 'it-breadcrumbs',
   args: {
     label: 'Percorso di navigazione',
     dark: false,

@@ -5,15 +5,15 @@
 
 @import 'bootstrap-italia/src/scss/components/breadcrumb';
 
-// Stili per i link nel light DOM (slotted)
+// Styles for links in the light DOM (slotted)
 .breadcrumb-item ::slotted(a) {
   display: inline-block;
   color: var(--bs-breadcrumb-link-color) !important;
   font-weight: var(--bs-breadcrumb-link-font-weight) !important;
 }
 
-// Stili per l'elemento corrente (ultimo della breadcrumb)
-// Quando il li ha la classe 'active', il link/testo deve avere lo stile del body
+// Styles for the current element (last in the breadcrumb)
+// When the li has the 'active' class, the link/text should have body style
 .breadcrumb-item.active {
   ::slotted(a),
   ::slotted(*) {

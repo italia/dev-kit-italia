@@ -28,7 +28,7 @@ export class ItBreadcrumb extends BaseComponent {
         const current = index === assignedElements.length - 1;
         el.setCurrent(current);
         el.setSeparator(this.separator);
-        // Non serve requestUpdate() perché current e separator sono @state() reattivi
+        // No need for requestUpdate() because current and separator are reactive @state() properties
       }
     });
   }
@@ -47,6 +47,6 @@ export class ItBreadcrumb extends BaseComponent {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'it-breadcrumb': ItBreadcrumb;
+    'it-breadcrumbs': ItBreadcrumb;
   }
 }

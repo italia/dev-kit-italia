@@ -1,10 +1,6 @@
 @import 'bootstrap-italia/src/scss/base/functions';
 @import 'bootstrap-italia/src/scss/base/variables';
 
-// FUOC (Flash of Unstyled Content) styles
-// Stili applicati prima che il componente sia definito per prevenire layout shift
-// IMPORTANTE: Con la nuova struttura, i link <a> sono nel light DOM e quindi
-// funzionano anche senza JavaScript, garantendo progressive enhancement
 
 it-breadcrumbs:not(:defined) {
   --it-host-display: flex;
