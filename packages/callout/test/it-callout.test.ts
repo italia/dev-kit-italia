@@ -70,7 +70,7 @@ describe('ItCallout', () => {
     it('reflects variant attribute to property and class', async () => {
       const el = await fixture<ItCallout>(html`<it-callout variant="primary"></it-callout>`);
       await el.updateComplete;
-      
+
       expect(el.variant).to.equal('primary');
       const root = el.shadowRoot!;
       const callout = root.querySelector('.callout');

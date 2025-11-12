@@ -1,5 +1,5 @@
 import { BaseComponent } from '@italia/globals';
-import { html, type TemplateResult } from 'lit';
+import { html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { when } from 'lit/directives/when.js';
@@ -43,10 +43,7 @@ export class ItCallout extends BaseComponent {
 
     const assignedIcons = this._iconSlot.assignedElements();
     assignedIcons.forEach((icon: Element) => {
-      if (
-        icon instanceof HTMLElement &&
-        icon.tagName?.toLowerCase() === 'it-icon'
-      ) {
+      if (icon instanceof HTMLElement && icon.tagName?.toLowerCase() === 'it-icon') {
         icon.setAttribute('color', this.variant);
       }
     });
@@ -81,11 +78,6 @@ export class ItCallout extends BaseComponent {
   private renderInner() {
     return html` <div class="callout-inner" part="inner">${this.renderTitle()} <slot></slot></div> `;
   }
-
-
-
-
-
 
   private renderHighlightContent() {
     return html`${this.renderTitle()} <slot></slot>`;
