@@ -1,0 +1,40 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './it-input-calendar.stories';
+
+<Meta of={Stories} />
+
+# Input Calendario
+
+<description>Campo per selezionare una data all'interno di un calendario</description>
+
+L’input di tipo calendario è una variante del componente `<it-input>` con `type="date"`. Per informazioni generali sull’utilizzo del componente, [consulta la documentazione di it-input](?path=/docs/componenti-form-input--documentazione).
+
+## Cosa fa
+Il componente calendario, o datepicker, consente all’utente di selezionare una data specifica, sia digitando manualmente il valore, sia scegliendo il valore da un calendario.
+
+[Approfondisci come e quando usare il componente Datepicker](https://designers.italia.it/design-system/componenti/datepicker/)
+
+## Anteprima del componente
+
+<Canvas of={Stories.EsempioInterattivo} />
+
+<div class="small">Questi attributi definiscono l’aspetto, il comportamento e il contenuto del componente. Puoi modificare questi valori per personalizzare il componente. L’anteprima e il codice si aggiornano in tempo reale, così puoi vedere subito il risultato delle tue modifiche.</div>
+<Controls of={Stories.EsempioInterattivo} />
+
+
+## Restringere il periodo di validità
+Puoi limitare l’intervallo di date selezionabili impostando gli attributi `min` e/o `max` con una stringa nel formato `YYYY-MM-DD`. Non è necessario utilizzare entrambi: puoi impostarne solo uno se vuoi.
+
+Se non usi una validazione custom, la validazione nativa terrà conto di questi range per validare il valore inserito nel campo.
+
+<Canvas of={Stories.MinMax} />
+
+
+## Impostare intervalli di date regolari
+Puoi impostare intervalli di date regolari validi, utilizzando l'attributo `step`.
+Il valore predefinito di `step` è `1` (ogni giorno è selezionabile).
+
+Nell'esempio qui sotto, lo step è stato impostato a `7` per permettere solo date a intervalli di 7 giorni (utile per selezionare solo i lunedì, ad esempio).
+
+<Canvas of={Stories.Step} />

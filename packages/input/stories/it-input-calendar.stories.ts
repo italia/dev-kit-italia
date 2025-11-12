@@ -4,7 +4,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { type InputType, INPUT_SIZES, type Sizes } from '../src/types.js';
 
-interface InputNumberProps {
+interface InputCalendarProps {
   id: string;
   label: string;
   type: InputType;
@@ -20,17 +20,28 @@ interface InputNumberProps {
   supportText: string;
   value: string;
   size: Sizes;
-  adaptive: boolean;
-  min?: number;
-  max?: number;
+  min?: string;
+  max?: string;
   step?: number;
 }
 
+const today = new Date();
+const defaultMin = today.toISOString().split('T')[0];
+const _defaultMax = new Date(today);
+_defaultMax.setDate(today.getDate() + 3);
+const defaultMax = _defaultMax.toISOString().split('T')[0];
+
+const dayOfWeek = today.getDay();
+const daysUntilNextMonday = (8 - dayOfWeek) % 7 || 7;
+const _nextMonday = new Date(today);
+_nextMonday.setDate(today.getDate() + daysUntilNextMonday);
+const nextMonday = _nextMonday.toISOString().split('T')[0];
+
 // Renderizza il wc it-input configurato per input numerico
-const renderNumberInput = (params: any) =>
+const renderCalendarInput = (params: any) =>
   html`<it-input
     id="${ifDefined(params.id || undefined)}"
-    type="number"
+    type="date"
     name="${ifDefined(params.name || undefined)}"
     value="${ifDefined(params.value || undefined)}"
     ?disabled="${params.disabled}"
@@ -46,20 +57,21 @@ const renderNumberInput = (params: any) =>
     support-text="${ifDefined(params.supportText || undefined)}"
     size="${ifDefined(params.size || undefined)}"
     ?adaptive="${params.adaptive}"
-    ><span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}</it-input
-  >`;
+  >
+    <span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}
+  </it-input>`;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Componenti/Form/Input Numerico',
-  tags: ['autodocs', 'a11y-ok', 'web-component'],
+  title: 'Componenti/Form/Input Calendario',
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-input',
   args: {
     id: '',
-    label: 'Input Number',
-    type: 'number',
-    name: 'inputNumber',
-    value: '100',
+    label: 'Datepicker',
+    type: 'date',
+    name: 'inputDate',
+    value: undefined,
     disabled: false,
     customValidation: false,
     validityMessage: '',
@@ -72,7 +84,6 @@ const meta = {
     placeholder: '',
     supportText: '',
     size: undefined,
-    adaptive: false,
   },
   argTypes: {
     label: {
@@ -81,16 +92,16 @@ const meta = {
     },
     type: {
       control: 'select',
-      options: ['number'],
+      options: ['date'],
       fixed: true,
-      table: { defaultValue: { summary: 'number' } },
+      table: { defaultValue: { summary: 'date' } },
     },
     name: {
       control: 'text',
     },
     value: {
       control: 'text',
-      description: 'Valore del campo',
+      description: 'Valore del campo (nel formato YYYY-MM-DD)',
     },
     disabled: {
       control: 'boolean',
@@ -112,12 +123,12 @@ const meta = {
         "Messaggio da mostrare quando il campo è invalido nel caso di validazione esterna (validazione custom). Se impostato a '' (stringa vuota) il campo viene considerato valido.",
     },
     min: {
-      control: 'number',
-      description: 'Valore minimo consentito',
+      control: 'text',
+      description: 'Valore minimo consentito (nel formato YYYY-MM-DD)',
     },
     max: {
-      control: 'number',
-      description: 'Valore massimo consentito',
+      control: 'text',
+      description: 'Valore massimo consentito (nel formato YYYY-MM-DD)',
     },
     step: {
       control: 'number',
@@ -155,51 +166,15 @@ const meta = {
       description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
       table: { defaultValue: { summary: undefined } },
     },
-    adaptive: {
-      control: 'boolean',
-      type: 'boolean',
-      table: { defaultValue: { summary: 'false' } },
-      description:
-        'Se il campo è `type="number"`, con l\'attributo `adaptive` il campo assume adatta la sua larghezza al contenuto',
-    },
   },
-  parameters: {
-    docs: {
-      description: {
-        component: `
-<Description>Campi input con pulsanti per incrementare/decrementare valori numerici.</Description>
-
-
-L'input numerico è una variante del componente \`<it-input>\` con l'attributo \`type\` impostato su \`number\`.
-
-Pertanto, per quanto riguarda:
-
-- la **validazione** e la **gestione degli errori**
-- la **gestione degli eventi**
-- i **metodi e le proprietà** accessibili tramite JavaScript
-- il **supporto all’internazionalizzazione (i18n)**
-
-
-è necessario fare riferimento alla **documentazione principale** del componente \`<it-input>\`.
-
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>
-Tutti gli attributi \`aria-*\` passati a \`<it-input>\` vengono applicati all'input generato.
-</p></div></div>
-
-`,
-      },
-    },
-  },
-} satisfies Meta<InputNumberProps>;
+} satisfies Meta<InputCalendarProps>;
 
 export default meta;
-type Story = StoryObj<InputNumberProps>;
+type Story = StoryObj<InputCalendarProps>;
 
 export const EsempioInterattivo: Story = {
   ...meta,
   name: 'Esempio interattivo',
-  tags: ['!autodocs', '!dev'],
   parameters: {
     docs: {
       canvas: {
@@ -208,204 +183,41 @@ export const EsempioInterattivo: Story = {
     },
   },
   render: (params) =>
-    html`${renderNumberInput({
+    html`${renderCalendarInput({
       ...params,
-      label: 'Input Numerico',
-      name: 'inputNumber',
-      id: 'exampleInputNumber',
     })}`,
 };
 
-export const Esempi: Story = {
+export const MinMax: Story = {
   ...meta,
+  name: 'Restringere il periodo di validità',
   parameters: {
     docs: {
-      description: {
-        story: `
-La larghezza del campo predefinita è quella del suo contenitore, per limitare la larghezza alle dimensioni del valore contenuto utilizzare il ridimensionamento adattivo.
-`,
+      canvas: {
+        sourceState: 'shown',
       },
     },
   },
-  args: {
-    value: '100',
-  },
-  render: (params) => html`
-    <div class="w-100">
-      ${renderNumberInput({
-        ...params,
-        label: 'Input Numerico inserito in una colonna a tutta larghezza',
-        name: 'inputNumberFull',
-        id: 'inputNumberFull',
-      })}
-    </div>
-    <div class="w-50">
-      ${renderNumberInput({
-        ...params,
-        label: 'Input Numerico inserito in una colonna di larghezza 50%',
-        name: 'inputNumberHalf',
-        id: 'inputNumberHalf',
-      })}
-    </div>
-  `,
+  args: { ...meta.args, min: defaultMin, max: defaultMax, label: 'Scegli una data nel periodo' },
+  render: (params) =>
+    html`${renderCalendarInput({
+      ...params,
+    })}`,
 };
 
-export const LimitiEStep: Story = {
+export const Step: Story = {
   ...meta,
-  name: 'Limiti e Step',
+  name: 'Impostare intervalli di date regolari',
   parameters: {
     docs: {
-      description: {
-        story: `
-Aggiungendo gli attributi HTML \`min=""\`, \`max=""\` e \`step=""\` all'input è possibile limitare il valore minimo e massimo del campo e decidere di quanto varierà a ogni click sui pulsanti.
-`,
+      canvas: {
+        sourceState: 'shown',
       },
     },
   },
-  args: {
-    value: '100',
-    min: 0,
-    max: 200,
-    step: 10,
-  },
-  render: (params) => html`
-    ${renderNumberInput({
+  args: { ...meta.args, min: nextMonday, step: 7, label: 'Scegli una data' },
+  render: (params) =>
+    html`${renderCalendarInput({
       ...params,
-      label: 'Min, Max & Step',
-      name: 'inputNumberLimits',
-      id: 'inputNumberLimits',
-    })}
-  `,
-};
-
-export const Valuta: Story = {
-  ...meta,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per anteporre il simbolo della valuta (ad esempio in Euro), utilizza lo slot \`prepend\`.
-`,
-      },
-    },
-  },
-  args: {
-    value: '3.50',
-    step: 0.01,
-    min: 0,
-  },
-  render: (params) => html`
-    ${renderNumberInput({
-      ...params,
-      label: 'Currency',
-      name: 'inputNumberCurrency',
-      id: 'inputNumberCurrency',
-      children: html`<span slot="prepend" class="fw-semibold">&euro;</span> `,
-    })}
-  `,
-};
-
-export const Percentuale: Story = {
-  ...meta,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per anteporre il simbolo percentuale, utilizza lo slot \`prepend\`.
-
-Si consiglia di impostare gli attributi \`min=0\` e \`max="100"\`.
-`,
-      },
-    },
-  },
-  args: {
-    value: '50',
-    step: 10,
-    min: 0,
-    max: 100,
-  },
-  render: (params) => html`
-    ${renderNumberInput({
-      ...params,
-      label: 'Percentage',
-      name: 'inputNumberPercent',
-      id: 'inputNumberPercent',
-      children: html`<span slot="prepend" class="fw-semibold">%</span> `,
-    })}
-  `,
-};
-
-export const Disabilitato: Story = {
-  ...meta,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per disabilitare un Input number, aggiungere l'attributo \`disabled\` al componente \`<it-input>\`.
-`,
-      },
-    },
-  },
-  args: {
-    value: '50',
-    disabled: true,
-  },
-  render: (params) => html`
-    ${renderNumberInput({
-      ...params,
-      label: 'Disabled',
-      name: 'inputNumberDisabled',
-      id: 'inputNumberDisabled',
-    })}
-  `,
-};
-
-export const Readonly: Story = {
-  ...meta,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per rendere un Input number \`readonly\`, aggiungere l'attributo \`readonly\` al componente \`<it-input>\`.
-`,
-      },
-    },
-  },
-  args: {
-    value: '50',
-    readonly: true,
-  },
-  render: (params) => html`
-    ${renderNumberInput({
-      ...params,
-      label: 'Contenuto in sola lettura',
-      name: 'inputNumberReadonly',
-      id: 'inputNumberReadonly',
-    })}
-  `,
-};
-
-export const Ridimensionamento: Story = {
-  ...meta,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-È possibile far sì che il campo numerico si ridimensioni automaticamente a seconda del valore contenuto in esso. Per ottenere questo comportamento, è sufficiente aggiungere l'attributo \`adaptive\` al componente \`<it-input>\`.
-`,
-      },
-    },
-  },
-  args: {
-    value: '99999',
-    adaptive: true,
-  },
-  render: (params) => html`
-    ${renderNumberInput({
-      ...params,
-      label: 'Adattivo',
-      name: 'inputNumberAdaptive',
-      id: 'inputNumberAdaptive',
-    })}
-  `,
+    })}`,
 };
