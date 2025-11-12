@@ -97,6 +97,10 @@
       color: var(--bs-color-link-hover);
     }
   }
+
+  .small {
+    font-size: var(--bs-caption-font-size);
+  }
 }
 
 /* stylelint-disable-next-line selector-type-no-unknown */
