@@ -163,34 +163,6 @@ const meta = {
         'Se il campo è `type="number"`, con l\'attributo `adaptive` il campo assume adatta la sua larghezza al contenuto',
     },
   },
-  parameters: {
-    docs: {
-      description: {
-        component: `
-<Description>Campi input con pulsanti per incrementare/decrementare valori numerici.</Description>
-
-
-L'input numerico è una variante del componente \`<it-input>\` con l'attributo \`type\` impostato su \`number\`.
-
-Pertanto, per quanto riguarda:
-
-- la **validazione** e la **gestione degli errori**
-- la **gestione degli eventi**
-- i **metodi e le proprietà** accessibili tramite JavaScript
-- il **supporto all’internazionalizzazione (i18n)**
-
-
-è necessario fare riferimento alla **documentazione principale** del componente \`<it-input>\`.
-
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>
-Tutti gli attributi \`aria-*\` passati a \`<it-input>\` vengono applicati all'input generato.
-</p></div></div>
-
-`,
-      },
-    },
-  },
 } satisfies Meta<InputNumberProps>;
 
 export default meta;
