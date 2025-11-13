@@ -138,7 +138,7 @@ const meta = {
       type: 'boolean',
       table: { defaultValue: { summary: 'false' } },
       description:
-        "Se il campo è readonly, con l'attributo 'plaintext' il campo assume l'aspetto di testo normalizzato.",
+        "Se il campo è `readonly`, con l'attributo 'plaintext' il campo assume l'aspetto di testo normalizzato.",
     },
     placeholder: {
       control: 'text',
@@ -194,7 +194,7 @@ export const Esempi: Story = {
     docs: {
       description: {
         story: `
-La larghezza del campo predefinita è quella del suo contenitore, per limitare la larghezza alle dimensioni del valore contenuto utilizzare il ridimensionamento adattivo.
+La larghezza del campo predefinita è quella del suo contenitore. Per limitare la larghezza alle dimensioni del valore contenuto, utilizza il ridimensionamento adattivo.
 `,
       },
     },
@@ -229,7 +229,7 @@ export const LimitiEStep: Story = {
     docs: {
       description: {
         story: `
-Aggiungendo gli attributi HTML \`min=""\`, \`max=""\` e \`step=""\` all'input è possibile limitare il valore minimo e massimo del campo e decidere di quanto varierà a ogni click sui pulsanti.
+Aggiungendo gli attributi HTML \`min=""\`, \`max=""\` e \`step=""\` all'input, puoi limitare il valore minimo e massimo del campo e decidere di quanto varierà a ogni click sui pulsanti.
 `,
       },
     },
@@ -285,7 +285,7 @@ export const Percentuale: Story = {
         story: `
 Per anteporre il simbolo percentuale, utilizza lo slot \`prepend\`.
 
-Si consiglia di impostare gli attributi \`min=0\` e \`max="100"\`.
+Ti consigliamo di impostare gli attributi \`min=0\` e \`max="100"\`.
 `,
       },
     },
@@ -313,7 +313,7 @@ export const Disabilitato: Story = {
     docs: {
       description: {
         story: `
-Per disabilitare un Input number, aggiungere l'attributo \`disabled\` al componente \`<it-input>\`.
+Per disabilitare un Input number, aggiungi l'attributo \`disabled\` al componente \`<it-input>\`.
 `,
       },
     },
@@ -338,7 +338,7 @@ export const Readonly: Story = {
     docs: {
       description: {
         story: `
-Per rendere un Input number \`readonly\`, aggiungere l'attributo \`readonly\` al componente \`<it-input>\`.
+Per rendere un Input number \`readonly\`, aggiungi l'attributo \`readonly\` al componente \`<it-input>\`.
 `,
       },
     },
@@ -363,7 +363,7 @@ export const Ridimensionamento: Story = {
     docs: {
       description: {
         story: `
-È possibile far sì che il campo numerico si ridimensioni automaticamente a seconda del valore contenuto in esso. Per ottenere questo comportamento, è sufficiente aggiungere l'attributo \`adaptive\` al componente \`<it-input>\`.
+Puoi far sì che il campo numerico si ridimensioni automaticamente a seconda del valore contenuto in esso. Per ottenere questo comportamento, è sufficiente aggiungere l'attributo \`adaptive\` al componente \`<it-input>\`.
 `,
       },
     },
