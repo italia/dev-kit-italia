@@ -76,8 +76,45 @@ Tutti gli attributi `it-aria-*` passati a `<it-input>` vengono applicati all'inp
 
 ## Validazione e gestione degli errori
 
-<Description of={Stories.GestioneErrori} />
-<Canvas of={Stories.GestioneErrori} />
+Se non è stata impostata la validazione custom tramite l'attributo `custom-validation`, e sono stati impostati uno di questi attributi
+-`required`
+- `pattern`
+- `min`
+- `max`
+- `step`
+- `minlength`
+- `maxlength`
+
+viene effettuata una validazione interna utilizzando la validazione nativa del browser.
+
+<Canvas of={Stories.ValidazioneNativa} />
+
+### Personalizzazione dei messaggi di errore
+
+E' possibile personalizzare alcuni dei messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
+
+- `validityRequired`: messaggio che viene mostrato quando il campo è `required` e non è compilato
+- `validityPattern`: messaggio che viene mostrato quando il campo non rispetta il pattern indicato
+- `validityMinlength`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo corta rispetto al valore passatto nell'attributo `min-length`
+- `validityMaxlength`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo lunga rispetto al valore passatto nell'attributo `max-length`
+
+Per gli altri errori di validazione non indicati, verranno mostrati i messaggi di errore nativi del browser.
+
+### Validazione esterna (validazione custom)
+
+E' inoltre possibile validare il campo esternamente (via js ad esempio, o lato server), impostando l'attributo `custom-validation="true"`.
+In questo modo la validazione di default del browser effettuata internamente al componente è disabilitata.
+
+
+#### Campo invalido
+
+Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo `validity-message="Messaggio di errore"`.
+
+#### Campo valido
+
+Per riportare il campo ad uno stato 'valido', è sufficiente impostare il messaggio di errore a vuoto: `validity-message=""`.
+
+<Canvas of={Stories.ValidazioneCustom} />
 
 ## Gestione degli eventi
 

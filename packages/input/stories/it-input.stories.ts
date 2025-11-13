@@ -582,28 +582,9 @@ export const Textarea: Story = {
   `,
 };
 
-export const GestioneErrori: Story = {
+export const ValidazioneNativa: Story = {
   ...meta,
-  name: 'Validazione e gestione degli errori',
-  parameters: {
-    docs: {
-      description: {
-        story: `
-  Se non è stata impostata la validazione custom tramite l'attributo \`custom-validation\`, e sono stati impostati uno di questi attributi <ul><li>\`required\`</li><li>\`pattern\`</li><li>\`min\`</li><li>\`max\`</li><li>\`step\`</li><li>\`minlength\`</li><li>\`maxlength\`</li></ul> viene effettuata una validazione interna utilizzando la validazione nativa del browser.
- <br/><br/><h3>Personalizzazione dei messaggi di errore</h3>E' possibile personalizzare alcuni dei messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
-<ul><li>\`validityRequired\`: messaggio che viene mostrato quando il campo è required e non è compilato</li>
-<li>\`validityPattern\`: messaggio che viene mostrato quando il campo non rispetta il pattern indicato</li>
-<li>\`validityMinlength\`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo corta rispetto al valore passatto nell'attributo \`min-length\`</li>
-<li>\`validityMaxlength\`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo lunga rispetto al valore passatto nell'attributo \`max-length\`</li>
-</ul>
-Per gli altri errori di validazione non indicati, verranno mostrati i messsaggi di errore nativi del browser.
-<h3>Validazione esterna (validazione custom)</h3>
-E' inoltre possibile validare il campo esternamente (via js ad esempio, o lato server), impostando l' attributo \`custom-validation="true"\`. In questo modo la validazione di default del browser effettuata internamente al componente è disabilitata.
-<br/><br/><h4>Campo invalido</h4>Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo \`validity-message="Messaggio di errore"\`.
-<br/><h4>Campo valido</h4>Per riportare il campo ad uno stato 'valido', è sufficiente impostare il messaggio di errore a vuoto: \`validity-message=""\`.`,
-      },
-    },
-  },
+  name: 'Validazione nativa',
   args: { type: 'text', placeholder: 'Testo segnaposto' },
   render: (params) => html`
     ${renderComponent({
@@ -613,6 +594,14 @@ E' inoltre possibile validare il campo esternamente (via js ad esempio, o lato s
       id: 'required-example',
       required: true,
     })}
+  `,
+};
+
+export const ValidazioneCustom: Story = {
+  ...meta,
+  name: 'Validazione custom',
+  args: { type: 'text', placeholder: 'Testo segnaposto' },
+  render: (params) => html`
     ${renderComponent({
       ...params,
       label: 'Validazione esterna',
@@ -677,25 +666,3 @@ document.querySelector('it-input#event-input-example').addEventListener('it-inpu
 };
 
 export const MetodiEPropPubblici: Story = { ...StoryFormControlMethodAndProps({}), tags: ['!dev'] };
-
-// export const I18n: Story = {
-//   name: 'i18n',
-//   tags: ['!dev'],
-//   render: () => html`<div class="hide-preview"></div>`,
-//   parameters: {
-//     viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
-//     docs: {
-//       description: {
-//         story: `
-// Per questo componente sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
-
-// \`\`\`js
-// const translation = {
-//   ${JSON.stringify(i18nIT).replaceAll('{"', '"').replaceAll('",', '",\n\t').replaceAll('"}', '"')}
-// }
-// \`\`\`
-// `,
-//       },
-//     },
-//   },
-// };
