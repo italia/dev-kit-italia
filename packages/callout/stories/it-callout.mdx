@@ -20,26 +20,24 @@ Possono contenere messaggi di errore, avvertimento, suggerimenti, ecc.
 
 <Canvas of={CalloutStories.EsempioInterattivo} />
 
-## Attributi
-
-Gli attributi definiscono l'aspetto, il comportamento e il contenuto del componente.
-
-Modificando questi valori puoi personalizzare come il componente si presenta o reagisce alle interazioni.
+Questi sono gli attributi che definiscono l’aspetto, il comportamento e il contenuto del componente. Puoi modificare questi valori per personalizzare il componente. L’anteprima e il codice si aggiornano in tempo reale, così puoi vedere subito il risultato delle tue modifiche.
 
 <Controls of={CalloutStories.EsempioInterattivo} />
 
 ## Accessibilità
 
 Nel caso l'icona comunicasse visivamente contenuti non disponibili nel testo (ad esempio un allarme o una
-conferma) questa andrà affiancata da un testo riservato agli screen reader.
+conferma), questa andrà affiancata da un testo riservato agli screen reader.
 
 ## Callout base
 
-Il callout base è costituito da un web component `<it-callout>` che genera la struttura HTML necessaria in base alla variante: inserisci il contenuto in un tag `<p>` al suo interno.
 
-È possibile aggiungere un titolo utilizzando lo slot `title` e il contenuto principale utilizzando lo slot di default.
+Il callout base è costituito da un web component `<it-callout>` che genera la struttura HTML necessaria in base alla tipologia di callout (default callout, callout hightlight, callout di approfondimento).
+Inserisci il testo del callout in un tag `<p>` al suo interno.
 
-Al titolo può essere aggiunta un'icona utilizzando lo slot `icon`. L'icona viene automaticamente colorata in base alla proprietà `variant` del callout, eliminando la necessità di specificare manualmente l'attributo `color`.
+Puoi aggiungere un titolo utilizzando lo slot `title`.
+Inserisci il testo del callout in un tag `<p>` al suo interno.
+Puoi aggiungere un'icona da mostrare a fianco del titolo, usando lo slot `icon`. Il colore dell'icona dipende dal colore indicato nell'attributo `variant` del callout. Non devi preoccuparti di impostare il colore manualmente sull'icona.
 
 <Canvas of={CalloutStories.CalloutBase} />
 
@@ -51,25 +49,25 @@ Per aumentare la dimensione di un paragrafo contenuto nel callout applica la cla
 
 ### Callout primario
 
-Utilizza la variante primary per applicare il colore primario agli elementi grafici del callout. È consigliato per dare un evidenza particolare al componente nel contesto della pagina.
+Utilizza questa variante, impostando l'attributo `variant="primary"`, per dare un'evidenza particolare al componente nel contesto della pagina.
 
 <Canvas of={CalloutStories.CalloutPrimario} />
 
 ### Callout success
 
-Utilizza la variante success per indicare una procedura andata a buon fine.
+Utilizza questa variante, impostando l'attributo `variant="success"`, per indicare una procedura andata a buon fine.
 
 <Canvas of={CalloutStories.CalloutSuccess} />
 
 ### Callout warning
 
-Utilizza la variante warning per indicare una procedura o testo che richiede l’attenzione dell’utente.
+Utilizza questa variante, impostando l'attributo `variant="warning"`, per indicare una procedura o un testo che richiede l’attenzione dell’utente.
 
 <Canvas of={CalloutStories.CalloutWarning} />
 
 ### Callout danger
 
-Utilizza la variante danger per indicare un errore o una procedura pericolosa o non consentita.
+Utilizza questa variante, impostando l'attributo `variant="danger"`, per indicare un errore o una procedura pericolosa o non consentita.
 
 <Canvas of={CalloutStories.CalloutDanger} />
 
