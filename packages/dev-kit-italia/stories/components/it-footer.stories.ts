@@ -269,7 +269,7 @@ const meta = {
     docs: {
       description: {
         component:
-          `<Description>Documentazione ed esempi per la creazione di piè di pagina di navigazione.</Description>
+          `<Description>Menu di navigazione secondaria posto in fondo alle pagine per presentare contenuti supplementari come contatti, informazioni legali e link alle sezioni di un sito</Description>
 <h3 style="border-bottom:none;padding-top:36px">Introduzione</h3>
 Il **footer** (piè di pagina) è una sezione che contiene tutte le informazioni inerenti al sito web e alla società o organizzazione che rappresenta.
 
