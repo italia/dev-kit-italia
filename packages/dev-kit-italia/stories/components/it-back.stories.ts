@@ -63,7 +63,7 @@ export const Pulsante: Story = {
       icon
     >
       <it-icon name="it-arrow-up" size="sm" color="white"></it-icon>
-      <span>Torna indietro</span>
+      <span>Torna su</span>
     </it-button>
   `,
 };
