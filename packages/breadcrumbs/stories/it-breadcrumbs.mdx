@@ -20,11 +20,7 @@ Usa il componente Breadcrumbs quando un sito presenta molti contenuti, organizza
 
 <Canvas of={BreadcrumbsStories.EsempioInterattivo} />
 
-## Attributi
-
-Gli attributi definiscono l'aspetto, il comportamento e il contenuto del componente.
-
-Modificando questi valori puoi personalizzare come il componente si presenta o reagisce alle interazioni.
+Questi sono gli attributi che definiscono l’aspetto, il comportamento e il contenuto del componente. Puoi modificare questi valori per personalizzare il componente. L’anteprima e il codice si aggiornano in tempo reale, così puoi vedere subito il risultato delle tue modifiche.
 
 <Controls of={BreadcrumbsStories.EsempioInterattivo} />
 
@@ -41,17 +37,20 @@ Il componente Breadcrumbs implementa le specifiche ARIA [WAI-ARIA Authoring Prac
       <span class="text">Nota sui test di accessibilità</span>
     </div>
     <p>
-      Axe e altri strumenti di analisi statica possono segnalare falsi positivi quando analizzano il componente breadcrumb a causa del limitato supporto per i Web Components. La struttura accessibile effettiva è corretta, come confermato dall'Accessibility Tree e dai test manuali con screen reader.
+      Axe e altri strumenti di analisi statica possono segnalare falsi positivi quando analizzano il componente `it-breadcrumbs` a causa del limitato supporto per i Web Components. La struttura accessibile effettiva è corretta, come confermato dall'Accessibility Tree e dai test manuali con screen reader.
     </p>
   </div>
 </div>
 
 ## Breadcrumb Item
 
-Il componente `it-breadcrumb-item` rappresenta un singolo elemento della traccia di navigazione e deve essere utilizzato all'interno di un contenitore `it-breadcrumbs`.
 
-### Proprietà
-Il componente `it-breadcrumb-item` supporta le seguenti proprietà:
+### Cosa fa
+Rappresenta un singolo elemento all’interno del percorso di navigazione (breadcrumb) e permette all'utente di navigare a una specifica sezione o pagina del sito. 
+Deve essere utilizzato all'interno di un contenitore `it-breadcrumbs`.
+
+### Attributi
+Il componente `it-breadcrumb-item` prevede i seguenti attributi:
 - `href` (string): URL di destinazione del link.
 
 ### Contenuto
