@@ -2,7 +2,13 @@
 
 Questo package contiene il web component `<it-dropdown>`, conforme agli standard del progetto e con stili Bootstrap Italia.
 
-## Utilizzo
+## Installation
+
+```bash
+npm i @italia/dropdown
+```
+
+## Usage
 
 ```
 <it-dropdown>
