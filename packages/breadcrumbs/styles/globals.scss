@@ -1,6 +1,6 @@
 @import 'bootstrap-italia/src/scss/base/functions';
 @import 'bootstrap-italia/src/scss/base/variables';
-
+// TODO: refactor once BSI styles are fixed and updated
 it-breadcrumbs:not(:defined) {
   --it-host-display: flex;
   --it-breadcrumb-background-color: transparent;
@@ -11,7 +11,6 @@ it-breadcrumbs:not(:defined) {
     display: inline-flex;
     align-items: center;
 
-    // Stili per i link nel light DOM
     a {
       display: var(--it-host-display);
       align-items: center;
@@ -19,15 +18,12 @@ it-breadcrumbs:not(:defined) {
       font-weight: var(--bs-breadcrumb-link-font-weight, 600);
     }
 
-    // Mostra il separatore usando l'attributo separator del parent o il default "/"
     &:not(:last-child)::after {
       padding: 0 0.5rem;
       color: var(--bs-breadcrumb-separator-color);
       content: '/';
     }
 
-    // Override del contenuto se c'è uno slot separator popolato
-    // (in questo caso non possiamo sapere il contenuto, quindi lasciamo vuoto)
     &:has([slot='separator'])::after {
       padding: 0;
       content: '';
@@ -42,7 +38,6 @@ it-breadcrumbs:not(:defined) {
   }
 }
 
-// Per il tema dark quando non ancora definito
 it-breadcrumbs[dark]:not(:defined) {
   --it-breadcrumb-background-color: hsl(210, 25%, 35.2%);
   --it-breadcrumb-text-color: #fff;
@@ -50,7 +45,6 @@ it-breadcrumbs[dark]:not(:defined) {
   background: var(--it-breadcrumb-background-color);
 
   it-breadcrumb-item:not(:defined) {
-    // Stili per i link nel tema dark
     a {
       display: var(--it-host-display);
       color: var(--it-breadcrumb-text-color);

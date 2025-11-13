@@ -4,7 +4,7 @@
 @import 'bootstrap-italia/src/scss/base/maps';
 
 @import 'bootstrap-italia/src/scss/components/breadcrumb';
-
+// TODO: refactor once BSI styles are fixed and updated
 // Styles for links in the light DOM (slotted)
 .breadcrumb-item ::slotted(a) {
   display: inline-block;

@@ -49,7 +49,7 @@ describe('it-breadcrumbs component', () => {
 
     it('passes aria-label to nav element', async () => {
       const el = await fixture(html`
-        <it-breadcrumbs label="Navigation breadcrumb">
+        <it-breadcrumbs it-aria-label="Navigation breadcrumb">
           <it-breadcrumb-item>Test</it-breadcrumb-item>
         </it-breadcrumbs>
       `);
@@ -101,6 +101,7 @@ describe('it-breadcrumbs component', () => {
         <it-breadcrumbs separator="&gt;">
           <it-breadcrumb-item><a href="/home">Home</a></it-breadcrumb-item>
           <it-breadcrumb-item><a href="/library">Library</a></it-breadcrumb-item>
+          <it-breadcrumb-item>Current</it-breadcrumb-item>
         </it-breadcrumbs>
       `);
       await elementUpdated(el);
@@ -115,6 +116,7 @@ describe('it-breadcrumbs component', () => {
       const el = await fixture(html`
         <it-breadcrumbs dark>
           <it-breadcrumb-item><a href="/home">Home</a></it-breadcrumb-item>
+          <it-breadcrumb-item>Current</it-breadcrumb-item>
         </it-breadcrumbs>
       `);
       await elementUpdated(el);

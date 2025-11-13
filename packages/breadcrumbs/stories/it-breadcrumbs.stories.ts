@@ -5,7 +5,7 @@ import '@italia/breadcrumbs';
 import '@italia/icon';
 
 interface BreadcrumbProps {
-  label?: string;
+  'it-aria-label'?: string;
   dark?: boolean;
   separator?: string;
 }
@@ -15,11 +15,11 @@ const meta = {
   tags: ['new', 'component', 'a11y-ok'],
   component: 'it-breadcrumbs',
   args: {
-    label: 'Percorso di navigazione',
+    'it-aria-label': 'Percorso di navigazione',
     dark: false,
   },
   argTypes: {
-    label: {
+    'it-aria-label': {
       control: 'text',
       description: 'Testo usato come `aria-label` sul contenitore di navigazione (es. "Percorso di navigazione").',
     },
@@ -39,7 +39,7 @@ export const EsempioInterattivo: Story = {
   tags: ['!autodocs', '!dev'],
   parameters: { docs: { canvas: { sourceState: 'shown' } } },
   render: (args) => html`
-    <it-breadcrumbs label=${args.label} ?dark="${ifDefined(args.dark)}">
+    <it-breadcrumbs it-aria-label=${args['it-aria-label']} ?dark="${ifDefined(args.dark)}">
       <it-breadcrumb-item><a href="#">Home</a></it-breadcrumb-item>
       <it-breadcrumb-item><a href="#">Sezione</a></it-breadcrumb-item>
       <it-breadcrumb-item>Voce corrente</it-breadcrumb-item>
@@ -50,10 +50,10 @@ export const EsempioInterattivo: Story = {
 export const ConLink: Story = {
   tags: ['!autodocs', '!dev'],
   args: {
-    label: 'Breadcrumb con link',
+    'it-aria-label': 'Breadcrumb con link',
   },
   render: (args) => html`
-    <it-breadcrumbs label=${args.label}>
+    <it-breadcrumbs it-aria-label=${args['it-aria-label']}>
       <it-breadcrumb-item><a href="#">Home</a></it-breadcrumb-item>
       <it-breadcrumb-item><a href="#">Sezione</a></it-breadcrumb-item>
       <it-breadcrumb-item>Voce corrente</it-breadcrumb-item>
@@ -64,7 +64,7 @@ export const ConLink: Story = {
 export const ConIcona: Story = {
   name: 'Con icona',
   render: () => html`
-    <it-breadcrumbs label="Percorso di navigazione">
+    <it-breadcrumbs it-aria-label="Percorso di navigazione">
       <it-breadcrumb-item>
         <a href="#"><it-icon name="it-link" color="secondary" size="sm" class="me-1"></it-icon>Home</a>
       </it-breadcrumb-item>
@@ -80,17 +80,17 @@ export const ConIcona: Story = {
 
 export const SeparatorePersonalizzato: Story = {
   args: {
-    label: 'Breadcrumb con separatore personalizzato',
+    'it-aria-label': 'Breadcrumb con separatore personalizzato',
     separator: '>',
   },
   render: (args) => html`
-    <it-breadcrumbs label=${args.label} separator=${args.separator}>
+    <it-breadcrumbs label=${args['it-aria-label']} separator=${args.separator}>
       <it-breadcrumb-item><a href="#">Home</a></it-breadcrumb-item>
       <it-breadcrumb-item><a href="#">Sezione</a></it-breadcrumb-item>
       <it-breadcrumb-item>Voce corrente</it-breadcrumb-item>
     </it-breadcrumbs>
 
-    <it-breadcrumbs label="Percorso di navigazione con icona come separatore" class="mt-3">
+    <it-breadcrumbs it-aria-label="Percorso di navigazione con icona come separatore" class="mt-3">
       <it-breadcrumb-item>
         <a href="#">Home</a>
         <it-icon name="it-chevron-right" color="secondary" size="sm" slot="separator" class="my-separator"></it-icon>
@@ -104,7 +104,7 @@ export const SeparatorePersonalizzato: Story = {
 
     <style>
       .my-separator {
-        padding: 0 4px;
+        margin-inline: -4px;
       }
     </style>
   `,
@@ -113,12 +113,12 @@ export const SeparatorePersonalizzato: Story = {
 export const Sfondo: Story = {
   name: 'Sfondo scuro',
   render: () => html`
-    <it-breadcrumbs label="Percorso di navigazione" dark>
+    <it-breadcrumbs it-aria-label="Percorso di navigazione" dark>
       <it-breadcrumb-item><a href="#">Home</a></it-breadcrumb-item>
       <it-breadcrumb-item><a href="#">Sezione</a></it-breadcrumb-item>
       <it-breadcrumb-item>Voce corrente</it-breadcrumb-item>
     </it-breadcrumbs>
-    <it-breadcrumbs label="Percorso di navigazione2" dark>
+    <it-breadcrumbs it-aria-label="Percorso di navigazione2" dark>
       <it-breadcrumb-item>
         <a href="#">Home</a>
         <it-icon name="it-chevron-right" color="white" size="sm" slot="separator" class="my-separator"></it-icon>
@@ -129,7 +129,7 @@ export const Sfondo: Story = {
       </it-breadcrumb-item>
       <it-breadcrumb-item>Voce corrente</it-breadcrumb-item>
     </it-breadcrumbs>
-    <it-breadcrumbs label="Percorso di navigazione3" dark>
+    <it-breadcrumbs it-aria-label="Percorso di navigazione3" dark>
       <it-breadcrumb-item>
         <a href="#">
           <it-icon name="it-link" color="white" size="sm" class="me-1"></it-icon>
@@ -143,15 +143,13 @@ export const Sfondo: Story = {
         </a>
       </it-breadcrumb-item>
       <it-breadcrumb-item>
-        <a href="#">
-          <it-icon name="it-link" color="white" size="sm" class="me-1"></it-icon>
-          Voce corrente
-        </a>
+        <it-icon name="it-link" color="white" size="sm" class="me-1"></it-icon>
+        Voce corrente
       </it-breadcrumb-item>
     </it-breadcrumbs>
     <style>
       .my-separator {
-        padding: 0 4px;
+        margin-inline: -4px;
       }
     </style>
   `,

@@ -14,7 +14,7 @@ import styles from './breadcrumbs.scss';
 export class ItBreadcrumb extends BaseComponent {
   static styles = styles;
 
-  @property({ type: String, reflect: true }) label = 'Breadcrumb';
+  @property({ type: String, reflect: true, attribute: 'it-aria-label' }) itAriaLabel = 'Breadcrumbs';
 
   @property({ type: String, reflect: true }) separator = '/';
 
@@ -36,7 +36,7 @@ export class ItBreadcrumb extends BaseComponent {
   override render() {
     const olClasses = this.dark ? 'breadcrumb dark' : 'breadcrumb';
     return html`
-      <nav aria-label="${this.label}" part="breadcrumbs-container" class="breadcrumb-container">
+      <nav aria-label="${this.itAriaLabel}" part="breadcrumbs-container" class="breadcrumb-container">
         <ol class="${olClasses}" part="breadcrumbs">
           <slot @slotchange=${this._setChildrenProperties}></slot>
         </ol>
