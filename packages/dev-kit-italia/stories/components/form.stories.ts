@@ -152,7 +152,7 @@ if (fieldset.disabled) {
         </div>
         <div class="row">
           <div class="col">
-            <it-button aria-disabled type="submit" id="submit" variant="primary">Pulsante disabilitato</it-button>
+            <it-button disabled type="submit" id="submit" variant="primary">Pulsante disabilitato</it-button>
           </div>
         </div>
       </fieldset>
