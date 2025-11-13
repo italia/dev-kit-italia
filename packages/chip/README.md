@@ -5,14 +5,14 @@ This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) reco
 ## Installation
 
 ```bash
-npm i it-chip
+npm i @italia/chip
 ```
 
 ## Usage
 
 ```html
 <script type="module">
-  import '@italia/it-chip';
+  import '@italia/chip';
 </script>
 
 <it-chip></it-chip>
