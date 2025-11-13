@@ -181,14 +181,14 @@ export const HighlightBase: Story = {
 };
 
 export const HighlightPrimario: Story = {
- parameters: {
+  parameters: {
     docs: {
       canvas: {
         sourceState: 'shown',
       },
     },
   },
-    render: () => html`
+  render: () => html`
     <div class="row">
       ${renderComponent({
         variant: 'primary',
@@ -248,7 +248,7 @@ export const HighlightWarning: Story = {
 };
 
 export const HighlightDanger: Story = {
- parameters: {
+  parameters: {
     docs: {
       canvas: {
         sourceState: 'closed',
