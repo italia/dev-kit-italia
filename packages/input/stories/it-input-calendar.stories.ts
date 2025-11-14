@@ -136,6 +136,7 @@ const meta = {
     step: {
       control: 'number',
       description: 'Incremento per ogni step (utilizzato dai pulsanti +/-)',
+      type: 'string',
     },
     required: {
       control: 'boolean',
