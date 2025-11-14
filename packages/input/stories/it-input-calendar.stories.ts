@@ -130,6 +130,7 @@ const meta = {
     max: {
       control: 'text',
       description: 'Valore massimo consentito (nel formato YYYY-MM-DD)',
+      type: 'string',
     },
     step: {
       control: 'number',
