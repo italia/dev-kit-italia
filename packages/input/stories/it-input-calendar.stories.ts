@@ -166,6 +166,7 @@ const meta = {
     },
     size: {
       control: 'select',
+      type: 'string',
       options: INPUT_SIZES,
       description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
       table: { defaultValue: { summary: undefined } },
