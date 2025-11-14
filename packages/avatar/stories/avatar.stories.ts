@@ -410,37 +410,37 @@ Per gli avatar con icona inserire un testo alternativo: \`<span class="visually-
       ${renderComponent({
         type: 'icon',
         icon: 'it-user',
-        avatarTitle: 'Cerca',
+        avatarTitle: 'Utente',
         size: 'xs',
       })}
       ${renderComponent({
         type: 'icon',
         icon: 'it-user',
-        avatarTitle: 'Cerca',
+        avatarTitle: 'Utente',
         size: 'sm',
       })}
       ${renderComponent({
         type: 'icon',
         icon: 'it-user',
-        avatarTitle: 'Cerca',
+        avatarTitle: 'Utente',
         size: 'md',
       })}
       ${renderComponent({
         type: 'icon',
         icon: 'it-user',
-        avatarTitle: 'Cerca',
+        avatarTitle: 'Utente',
         size: 'lg',
       })}
       ${renderComponent({
         type: 'icon',
         icon: 'it-user',
-        avatarTitle: 'Cerca',
+        avatarTitle: 'Utente',
         size: 'xl',
       })}
       ${renderComponent({
         type: 'icon',
         icon: 'it-user',
-        avatarTitle: 'Cerca',
+        avatarTitle: 'Utente',
         size: 'xxl',
       })}
     </div>
@@ -491,7 +491,7 @@ Per associare un avatar ad un'azione o un link, utilizzare l'attributo \`href\` 
           type: 'icon',
           icon: 'it-user',
           href: '#',
-          avatarTitle: 'Cerca',
+          avatarTitle: 'Utente',
         })}
       </div>
     </div>
@@ -858,7 +858,7 @@ Utilizzando una lista di link con l’aggiunta della classe .avatar-group si ott
             </li>
             <li>
               <div class="list-item">
-                ${renderComponent({ icon: 'it-user', avatarTitle: 'Cerca' })}
+                ${renderComponent({ icon: 'it-user', avatarTitle: 'Utente generico' })}
                 <span>Cerca utenti</span>
               </div>
             </li>
@@ -886,7 +886,7 @@ Per mostrare ulteriori avatar in un menu a discesa, utilizzare \`it-avatar\` con
 L'avatar dropdown eredita automaticamente la dimensione dal gruppo e può contenere una lista di avatar con nomi nel menu.
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità del dropdown</span></div>
-<p>È fondamentale utilizzare l'attributo \`it-aria-label\` sul componente \`it-dropdown\` per fornire una descrizione significativa agli screen reader. Senza questo attributo, uno screen reader leggerebbe solo il testo del label (es. "+4") senza contesto, mentre con \`it-aria-label="Altri utenti"\` fornisce una descrizione chiara e comprensibile.</p></div></div>
+<p>Devi utilizzare l'attributo \`it-aria-label\` sul componente \`it-dropdown\` per fornire una descrizione completa agli screen reader. L'aria-label deve contenere sia il testo visibile che la sua spiegazione, ad esempio: \`it-aria-label="Visualizza altri 4 utenti"\`. In questo modo uno screen reader leggerà l'intera descrizione fornendo il contesto completo all'utente.</p></div></div>
 `,
       },
     },
@@ -914,7 +914,12 @@ L'avatar dropdown eredita automaticamente la dimensione dal gruppo e può conten
           <li><it-avatar text="Sandro Penna" variant="secondary" href="#"></it-avatar></li>
           <li>
             <it-avatar type="dropdown">
-              <it-dropdown label="4+" slot="avatar-dropdown-content" it-aria-label="Altri utenti" variant="secondary">
+              <it-dropdown
+                label="4+"
+                slot="avatar-dropdown-content"
+                it-aria-label="Visualizza altri 4 utenti"
+                variant="secondary"
+              >
                 <it-dropdown-item href="#">
                   <it-avatar src="https://randomuser.me/api/portraits/men/22.jpg" alt="Foto profilo"></it-avatar>
                   <span>Roberto Milano</span>

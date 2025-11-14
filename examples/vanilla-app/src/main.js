@@ -72,6 +72,13 @@ document.querySelector('#app-header').innerHTML = `
         Sticky
       </a>
     </nav>
+    <div>
+     <it-breadcrumb label="Percorso di navigazione">
+       <it-breadcrumb-item href="#">Home</it-breadcrumb-item>
+       <it-breadcrumb-item href="#">Componenti</it-breadcrumb-item>
+       <it-breadcrumb-item href="#">Componente</it-breadcrumb-item>
+     </it-breadcrumb>
+    </div>
   </div>
 `;
 

@@ -65,7 +65,7 @@ export default function AvatarDemo() {
         <h2>Avatar con icona</h2>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
           {['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].map((size) => (
-            <it-avatar key={size} type="icon" icon="it-search" avatar-title="Cerca" size={size}></it-avatar>
+            <it-avatar key={size} type="icon" icon="it-user" avatar-title="Utente" size={size}></it-avatar>
           ))}
         </div>
       </section>
@@ -81,7 +81,7 @@ export default function AvatarDemo() {
           ></it-avatar>
           <it-avatar type="text" text="Mario Rossi" href="#" avatar-title="Mario Rossi"></it-avatar>
           <it-avatar type="text" text="Mario Rossi" variant="primary" href="#" avatar-title="Mario Rossi"></it-avatar>
-          <it-avatar type="icon" icon="it-search" href="#" avatar-title="Cerca"></it-avatar>
+          <it-avatar type="icon" icon="it-user" href="#" avatar-title="Utente"></it-avatar>
         </div>
       </section>
       <section>
@@ -167,26 +167,10 @@ export default function AvatarDemo() {
         </div>
         <h3>Presenza personalizzata con slot</h3>
         <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: 'center', display: 'inline-block' }}>
             <it-avatar type="text" text="Marco Bianchi" variant="primary" presence="active" size="lg">
-              <span
-                slot="presence"
-                style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  right: 0,
-                  background: '#28a745',
-                  variant: 'white',
-                  borderRadius: '50%',
-                  width: 20,
-                  height: 20,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '2px solid white',
-                }}
-              >
-                <it-icon name="it-check" size="xs" variant="white"></it-icon>
+              <span slot="presence" className="custom-presence custom-presence-success">
+                <it-icon name="it-check" size="xs" color="white"></it-icon>
                 <span className="visually-hidden">Utente online e disponibile</span>
               </span>
             </it-avatar>
@@ -194,64 +178,14 @@ export default function AvatarDemo() {
               <small>Con icona check</small>
             </div>
           </div>
-          <div style={{ textAlign: 'center', alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
+          <div style={{ textAlign: 'center', display: 'inline-block' }}>
             <it-avatar type="text" text="Sara Verdi" variant="secondary" presence="busy" size="lg">
-              <span
-                slot="presence"
-                style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  right: 0,
-                  background: '#dc3545',
-                  variant: 'white',
-                  borderRadius: '50%',
-                  width: 20,
-                  height: 20,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '2px solid white',
-                  fontSize: 10,
-                  fontWeight: 'bold',
-                }}
-              >
+              <span slot="presence" className="custom-presence custom-presence-danger">
                 !<span className="visually-hidden">Utente occupato, non disturbare</span>
               </span>
             </it-avatar>
             <div style={{ marginTop: 8 }}>
               <small>Con testo custom</small>
-            </div>
-          </div>
-          <div style={{ textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <it-avatar
-              src="https://randomuser.me/api/portraits/women/32.jpg"
-              alt="Foto profilo"
-              presence="hidden"
-              size="lg"
-            >
-              <span
-                slot="presence"
-                style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  right: 0,
-                  background: '#6c757d',
-                  opacity: 0.7,
-                  borderRadius: '50%',
-                  width: 20,
-                  height: 20,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '2px solid white',
-                }}
-              >
-                <it-icon name="it-minus" size="xs" variant="white"></it-icon>
-                <span className="visually-hidden">Utente invisibile</span>
-              </span>
-            </it-avatar>
-            <div style={{ marginTop: 8 }}>
-              <small>Con icona minus</small>
             </div>
           </div>
         </div>
@@ -298,26 +232,10 @@ export default function AvatarDemo() {
       </div>
       <h3>Status personalizzato con slot</h3>
       <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center', display: 'inline-block' }}>
           <it-avatar type="text" text="Luigi Neri" variant="primary" status="approved" size="lg">
-            <span
-              slot="status"
-              style={{
-                position: 'absolute',
-                top: -5,
-                right: -5,
-                background: '#28a745',
-                variant: 'white',
-                borderRadius: '50%',
-                width: 24,
-                height: 24,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                border: '2px solid white',
-              }}
-            >
-              <it-icon name="it-check-circle" size="xs" variant="white"></it-icon>
+            <span slot="status" className="custom-status custom-status-success">
+              <it-icon name="it-check-circle" size="xs" color="white"></it-icon>
               <span className="visually-hidden">Account verificato e approvato</span>
             </span>
           </it-avatar>
@@ -325,60 +243,15 @@ export default function AvatarDemo() {
             <small>Verificato</small>
           </div>
         </div>
-        <div style={{ textAlign: 'center', alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
+        <div style={{ textAlign: 'center', display: 'inline-block' }}>
           <it-avatar type="text" text="Carla Blu" variant="secondary" status="declined" size="lg">
-            <span
-              slot="status"
-              style={{
-                position: 'absolute',
-                top: -5,
-                right: -5,
-                background: '#dc3545',
-                variant: 'white',
-                borderRadius: '50%',
-                width: 24,
-                height: 24,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                border: '2px solid white',
-              }}
-            >
-              <it-icon name="it-close" size="xs" variant="white"></it-icon>
+            <span slot="status" className="custom-status custom-status-danger">
+              <it-icon name="it-close" size="xs" color="white"></it-icon>
               <span className="visually-hidden">Account sospeso o respinto</span>
             </span>
           </it-avatar>
           <div style={{ marginTop: 8 }}>
             <small>Sospeso</small>
-          </div>
-        </div>
-        <div style={{ textAlign: 'center', alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
-          <it-avatar src="https://randomuser.me/api/portraits/men/25.jpg" alt="Foto profilo" status="notify" size="lg">
-            <span
-              slot="status"
-              style={{
-                position: 'absolute',
-                top: -5,
-                right: -5,
-                background: '#17a2b8',
-                borderRadius: '50%',
-                width: 24,
-                height: 24,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                border: '2px solid white',
-                padding: 2,
-              }}
-            >
-              <span
-                style={{ width: 8, height: 8, background: 'white', borderRadius: '50%', display: 'inline-block' }}
-              ></span>
-              <span className="visually-hidden">Nuove notifiche disponibili</span>
-            </span>
-          </it-avatar>
-          <div style={{ marginTop: 8 }}>
-            <small>Notifiche</small>
           </div>
         </div>
       </div>
@@ -443,7 +316,7 @@ export default function AvatarDemo() {
                 </li>
                 <li>
                   <div className="list-item">
-                    <it-avatar icon="it-search" avatar-title="Cerca"></it-avatar>
+                    <it-avatar icon="it-user" avatar-title="Utente generico"></it-avatar>
                     <span>Cerca utenti</span>
                   </div>
                 </li>
@@ -554,7 +427,7 @@ export default function AvatarDemo() {
                     <it-dropdown
                       label="4+"
                       slot="avatar-dropdown-content"
-                      it-aria-label="Altri utenti"
+                      it-aria-label="+4 altri utenti"
                       variant="secondary"
                     >
                       <it-dropdown-item href="#">
@@ -630,7 +503,7 @@ export default function AvatarDemo() {
                     <it-dropdown
                       label="4+"
                       slot="avatar-dropdown-content"
-                      it-aria-label="Altri utenti"
+                      it-aria-label="+4 altri utenti"
                       variant="secondary"
                     >
                       <it-dropdown-item href="#">
@@ -660,6 +533,72 @@ export default function AvatarDemo() {
           </p>
         </div>
       </div>
+
+      <style>
+        {`
+          /* Esempi di classi CSS per personalizzare gli slot presence */
+          .custom-presence {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid white;
+            border-radius: 50%;
+            z-index: 10;
+          }
+
+          .custom-presence-success {
+            background: #28a745;
+            color: white;
+          }
+
+          .custom-presence-danger {
+            background: #dc3545;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+          }
+
+          .custom-presence-hidden {
+            background: #6c757d;
+            opacity: 0.7;
+            color: white;
+          }
+
+          /* Esempi di classi CSS per personalizzare gli slot status */
+          .custom-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 24px;
+            height: 24px;
+            border: 2px solid white;
+            border-radius: 50%;
+            z-index: 10;
+          }
+
+          .custom-status-success {
+            background: #28a745;
+            color: white;
+          }
+
+          .custom-status-danger {
+            background: #dc3545;
+            color: white;
+          }
+
+          .custom-status-info {
+            background: #17a2b8;
+          }
+        `}
+      </style>
     </div>
   );
 }
