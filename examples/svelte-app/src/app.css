@@ -32,10 +32,6 @@ body {
   text-align: center;
 }
 
-h1 {
-  text-align: center;
-}
-
 .app-nav {
   display: flex;
   justify-content: center;
