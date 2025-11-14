@@ -114,14 +114,17 @@ const meta = {
     min: {
       control: 'number',
       description: 'Valore minimo consentito',
+      type: 'string',
     },
     max: {
       control: 'number',
       description: 'Valore massimo consentito',
+      type: 'string',
     },
     step: {
       control: 'number',
       description: 'Incremento per ogni step (utilizzato dai pulsanti +/-)',
+      type: 'string',
     },
     required: {
       control: 'boolean',
@@ -154,6 +157,7 @@ const meta = {
       options: INPUT_SIZES,
       description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
       table: { defaultValue: { summary: undefined } },
+      type: 'string',
     },
     adaptive: {
       control: 'boolean',

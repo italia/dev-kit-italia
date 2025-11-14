@@ -152,19 +152,23 @@ const meta = {
     pattern: {
       control: 'text',
       description: 'Pattern di validazione del campo',
+      type: 'string',
     },
     min: {
       control: 'text',
       description: 'Valore minimo consentito per un campo di tipo numerico o di tipo data',
+      type: 'string',
     },
     max: {
       control: 'text',
       description: 'Valore massimo consentito per un campo di tipo numerico o di tipo data',
+      type: 'string',
     },
     step: {
       control: 'number',
       description:
         'Incremento per ogni step (tramite i pulsanti +/-) nel caso di input di tipo numerico o di tipo data',
+      type: 'string',
     },
     minlength: {
       type: 'number',
@@ -214,6 +218,7 @@ const meta = {
       options: INPUT_SIZES,
       description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
       table: { defaultValue: { summary: undefined } },
+      type: 'string',
     },
     adaptive: {
       control: 'boolean',
