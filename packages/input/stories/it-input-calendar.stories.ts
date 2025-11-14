@@ -125,6 +125,7 @@ const meta = {
     min: {
       control: 'text',
       description: 'Valore minimo consentito (nel formato YYYY-MM-DD)',
+      type: 'string',
     },
     max: {
       control: 'text',
