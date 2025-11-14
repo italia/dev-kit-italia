@@ -16,12 +16,25 @@
 <h1>it-form</h1>
 
 <form id="form" on:submit={handleSubmit}>
-  <it-input id="nome" name="nome" label="Nome" required></it-input>
-  <it-input id="cognome" name="cognome" label="Cogome"></it-input>
-  <it-input id="email" name="email" label="E-mail" type="email" support-text="Inserisci la tua email"></it-input>
-  <it-input id="messaggio" name="messaggio" label="Messaggio" type="textarea" support-text="Inserisci il tuo messaggio"
-  ></it-input>
-  <it-checkbox id="privacy" name="privacy" label="Privacy" support-text="Accetto le condizioni sulla privacy"
-  ></it-checkbox>
+  <it-input id="nome" name="nome" required>
+    <span slot="label">Nome</span>
+  </it-input>
+
+  <it-input id="cognome" name="cognome">
+    <span slot="label">Cognome</span>
+  </it-input>
+
+  <it-input id="email" name="email" type="email" support-text="Inserisci la tua email">
+    <span slot="label">E-mail</span>
+  </it-input>
+
+  <it-input id="messaggio" name="messaggio" type="textarea" support-text="Inserisci il tuo messaggio">
+    <span slot="label">Messaggio</span>
+  </it-input>
+
+  <it-checkbox id="privacy" name="privacy" support-text="Accetto le condizioni sulla privacy">
+    <span slot="label">Privacy</span>
+  </it-checkbox>
+
   <it-button type="submit" variant="primary" block name="submit"> Invia </it-button>
 </form>

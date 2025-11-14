@@ -1,32 +1,49 @@
 <h1>it-checkbox</h1>
 
-<it-checkbox id="chExample" label="Checkbox di esempio" name="esempio"></it-checkbox>
+<it-checkbox id="chExample" name="esempio">
+  <span slot="label">Checkbox di esempio</span>
+</it-checkbox>
 
 <section>
   <h2>Checked</h2>
-  <it-checkbox id="checked" label="Checkbox di esempio selezionata" name="esempioChecked" checked></it-checkbox>
+  <it-checkbox id="checked" name="esempioChecked" checked>
+    <span slot="label">Checkbox di esempio selezionata</span>
+  </it-checkbox>
 </section>
 
 <section>
   <h2>Indeterminate</h2>
-  <it-checkbox id="indeterminate" label="Checkbox di esempio indeterminata" indeterminate></it-checkbox>
+  <it-checkbox id="indeterminate" indeterminate>
+    <span slot="label">Checkbox di esempio indeterminata</span>
+  </it-checkbox>
 </section>
+
 <section>
   <h2>Disabilitata</h2>
-  <it-checkbox id="disabledd" label="Checkbox di esempio disabilitata" disabled></it-checkbox>
+  <it-checkbox id="disabledd" disabled>
+    <span slot="label">Checkbox di esempio disabilitata</span>
+  </it-checkbox>
 </section>
 
 <section>
   <h2>Required</h2>
-  <it-checkbox id="required" label="Checkbox di esempio required" required></it-checkbox>
+  <it-checkbox id="required" required>
+    <span slot="label">Checkbox di esempio required</span>
+  </it-checkbox>
 </section>
 
 <section>
   <h2>Inline</h2>
   <fieldset>
     <legend>Gruppo di checkbox</legend>
-    <it-checkbox id="inline-1" label="Checkbox di esempio inline 1" inline></it-checkbox>
-    <it-checkbox id="inline-2" label="Checkbox di esempio inline 2" inline></it-checkbox>
+
+    <it-checkbox id="inline-1" inline>
+      <span slot="label">Checkbox di esempio inline 1</span>
+    </it-checkbox>
+
+    <it-checkbox id="inline-2" inline>
+      <span slot="label">Checkbox di esempio inline 2</span>
+    </it-checkbox>
   </fieldset>
 </section>
 
@@ -34,15 +51,24 @@
   <h2>Raggruppamento</h2>
   <fieldset>
     <legend>Gruppo di checkbox</legend>
-    <it-checkbox id="inline-1" label="Checkbox di esempio inline 1" group></it-checkbox>
-    <it-checkbox id="inline-2" label="Checkbox di esempio inline 2" group></it-checkbox>
+
+    <it-checkbox id="inline-1" group>
+      <span slot="label">Checkbox di esempio inline 1</span>
+    </it-checkbox>
+
+    <it-checkbox id="inline-2" group>
+      <span slot="label">Checkbox di esempio inline 2</span>
+    </it-checkbox>
+
   </fieldset>
 </section>
 
 <section>
   <h2>Testo di supporto</h2>
 
-  <it-checkbox id="supporttext" label="Checkbox di esempio" support-text="Testo di supporto"></it-checkbox>
+  <it-checkbox id="supporttext" support-text="Testo di supporto">
+    <span slot="label">Checkbox di esempio</span>
+  </it-checkbox>
 </section>
 
 <section>
@@ -50,12 +76,10 @@
 
   <it-checkbox
     id="customvalidation"
-    label="Checkbox di esempio"
     supportText="Testo di supporto"
     custom-validation
     validity-message="Obbligatorio!"
-  ></it-checkbox>
+  >
+    <span slot="label">Checkbox di esempio</span>
+  </it-checkbox>
 </section>
-
-
-
