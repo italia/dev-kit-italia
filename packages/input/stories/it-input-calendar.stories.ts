@@ -102,6 +102,7 @@ const meta = {
     value: {
       control: 'text',
       description: 'Valore del campo (nel formato YYYY-MM-DD)',
+      type: 'string',
     },
     disabled: {
       control: 'boolean',
