@@ -154,7 +154,7 @@ export class ItDropdown extends BaseComponent {
         <it-button
           id=${this._buttonId}
           slot="trigger"
-          ?it-aria-disabled="${this.disabled}"
+          ?disabled="${this.disabled}"
           type="button"
           variant=${ifDefined(this.variant)}
           size=${ifDefined(this.size)}
