@@ -23,6 +23,36 @@
             <it-input id="email-basic" name="email" type="email" support-text="Inserisci la tua email" required>
               <span slot="label">E-mail</span>
             </it-input>
+            <it-input id="figli-basic" name="figli" type="number" support-text="Numero di figli" required min="0" max="10">
+              <span slot="label">Numero di figli</span>
+            </it-input>
+            <it-input id="telefono" name="telefono-basic" type="tel">
+              <it-icon name="it-telephone" slot="prepend" size="sm"></it-icon>
+              <span slot="label">Telefono</span>
+            </it-input>
+            <it-input id="orario" name="orario-basic" type="time">
+              <span slot="label">Orario</span>
+            </it-input>
+            <it-input id="disabilitato" name="disabilitato-basic" value="valore del campo" disabled>
+              <span slot="label">Campo disabilitato</span>
+            </it-input>
+            <it-input
+              id="field-readonly-example"
+              type="text"
+              name="field-readonly-example"
+              value="Contenuto in sola lettura"
+              readonly
+              >
+              <span slot="label">Campo readonly</span>
+            </it-input>
+            <it-input
+              id="field-readonlyplaintext-example"
+              type="text"
+              name="field-readonlyplaintext-example"
+              value="Contenuto in sola lettura"
+              readonly plaintext>
+              <span slot="label">Campo readonly normalizzato come plaintext</span>
+            </it-input>
 
 
             <fieldset class="mb-4">
@@ -56,6 +86,23 @@
             ><span slot="label">Messaggio</span></it-input>
             <it-checkbox id="privacy-basic" name="privacy" support-text="Accetto le condizioni sulla privacy" required class="mb-4"><span slot="label">Privacy</span></it-checkbox>
 
+            <it-input
+              id="field-password-example"
+              type="password"
+              name="field-password-example"
+              minlength="8"
+              support-text="Inserisci almeno 8 caratteri e alcuni caratteri speciali." required>
+                <span slot="label">Campo password</span>
+            </it-input>
+            <it-input
+              id="field-password-strength-example"
+              type="password"
+              name="field-password-strength-example"
+              minlength="8"
+              support-text="Inserisci almeno 8 caratteri e alcuni caratteri speciali."
+              strength-meter suggestions required>
+                <span slot="label">Campo password</span>
+            </it-input>
 
             <it-button type="submit" variant="primary" block> Invia </it-button>
           </form>
