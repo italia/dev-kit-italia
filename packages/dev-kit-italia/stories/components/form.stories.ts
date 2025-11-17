@@ -3,7 +3,7 @@ import { html } from 'lit';
 
 const meta = {
   title: 'Componenti/Form',
-  tags: ['autodocs', 'documentation'],
+  tags: ['documentation'],
 
   parameters: {
     docs: {
@@ -19,46 +19,43 @@ Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del desi
 export default meta;
 type Story = StoryObj;
 
-export const ElementiEStili: Story = {
-  name: 'Elementi e stili per la creazione di form accessibili e responsivi.',
-  tags: ['!dev'],
-  parameters: {
-    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
-    docs: {
-      canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
-      description: {
-        story: `
-Nella visualizzazione predefinita di un form gli elementi sono distribuiti verticalmente, ma è possibile utilizzare classi aggiuntive per variare questo tipo di layout.
-
-Bootstrap Italia applica automaticamente a tutti i form \`display: block\` e \`width: 100%\`.
-`,
-      },
-    },
-  },
-  render: () => html`<div class="hide-preview"></div>`,
-};
-
 export const DimensionamentoColonne: Story = {
   ...meta,
   name: 'Dimensionamento delle colonne',
 
   render: () =>
-    html` <form>
+    html`<form>
       <div class="row">
-        <it-input class="col-md-6" id="nome"><span slot="label">Nome</span></it-input>
-        <it-input class="col-md-6" id="cognome"><span slot="label">Cognome</span></it-input>
+        <it-input class="col-md-6" id="nome">
+          <span slot="label">Nome</span>
+        </it-input>
+        <it-input class="col-md-6" id="cognome">
+          <span slot="label">Cognome</span>
+        </it-input>
       </div>
       <div class="row">
-        <it-input class="col" id="indirizzo"><span slot="label">Indirizzo</span></it-input>
+        <it-input class="col" id="indirizzo">
+          <span slot="label">Indirizzo</span>
+        </it-input>
       </div>
       <div class="row">
-        <it-input class="col-md-6" id="comune"><span slot="label">Comune</span></it-input>
-        <it-input class="col-md" id="provincia"><span slot="label">Provincia</span></it-input>
-        <it-input class="col-md" id="cap"><span slot="label">CAP</span></it-input>
+        <it-input class="col-md-6" id="comune">
+          <span slot="label">Comune</span>
+        </it-input>
+        <it-input class="col-md" id="provincia">
+          <span slot="label">Provincia</span>
+        </it-input>
+        <it-input class="col-md" id="cap">
+          <span slot="label">CAP</span>
+        </it-input>
       </div>
       <div class="row">
-        <it-input class="col-md-6" id="email" type="email"><span slot="label">E-mail</span></it-input>
-        <it-input class="col-md-6" id="password" type="password"><span slot="label">Password</span></it-input>
+        <it-input class="col-md-6" id="email" type="email">
+          <span slot="label">E-mail</span>
+        </it-input>
+        <it-input class="col-md-6" id="password" type="password">
+          <span slot="label">Password</span>
+        </it-input>
       </div>
       <div class="row mt-4">
         <div class="form-group col text-center">
@@ -72,27 +69,16 @@ export const DimensionamentoColonne: Story = {
 export const Autodimensionamento: Story = {
   ...meta,
   name: 'Auto-dimensionamento',
-  parameters: {
-    docs: {
-      description: {
-        story: `
-L’esempio seguente usa una delle [utilità di flexbox](https://italia.github.io/bootstrap-italia/docs/organizzare-gli-spazi/flex/) per centrare verticalmente dal breakpoint \`lg\` in su il contenuto e cambiando \`.col\` con \`.col-auto\` in modo che le colonne occupino solo lo spazio necessario.
-In altre parole, la colonna si dimensiona in base al contenuto.
-
-È possibile usarlo anche quando sono presenti altre colonne con dimensioni specifiche (es.: \`col-sm-3\`).`,
-      },
-    },
-  },
   render: () =>
     html` <form>
-      <div class="row align-items-center">
+      <div class="row">
         <it-input class="col-md-6 col-lg-auto" id="nome" label-hidden placeholder="Nome e cognome">
           <span slot="label">Nome e cognome</span>
         </it-input>
         <it-input class="col-md-6 col-lg-auto" id="username" label-hidden placeholder="username">
           <span slot="label">Username</span><span slot="icon">@</span>
         </it-input>
-        <div class="col-6 col-md-3 col-lg-auto d-flex justify-content-end">
+        <div class="col-6 col-md-3 col-lg-auto">
           <it-button type="submit" variant="primary">Invia</it-button>
         </div>
       </div>
@@ -102,14 +88,6 @@ In altre parole, la colonna si dimensiona in base al contenuto.
 export const DisabilitazioneCampi: Story = {
   ...meta,
   name: 'Disabilitazione di campi',
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Aggiungi l’attributo booleano \`disabled\` su un widget per impedire le interazioni dell’utente e renderlo più chiaro.`,
-      },
-    },
-  },
   render: () =>
     html` <form>
       <it-input id="nome" label-hidden placeholder="Esempio input disabilitato" disabled>
@@ -118,65 +96,8 @@ Aggiungi l’attributo booleano \`disabled\` su un widget per impedire le intera
     </form>`,
 };
 
-export const DisabilitazioneForm: Story = {
-  ...meta,
-  name: 'Disabilitazione di un intero form o gruppo di campi',
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Aggiungi l’attributo booleano \`disabled\` al \`fieldset\` e, poichè il browser non è in grado di propagare in autonomia lo stato disabilitato agli elementi contenuti nel \`fieldset\`, devi propagare tu l'attributo \`disabled\` (o \`aria-disabled\` per i bottoni) su tutti gli elementi in esso contenuti.
-
-Puoi gestirlo anche via JS, in questo modo:
-
-\`\`\`js
-if (fieldset.disabled) {
-  myInput.disabled = true;
-}
-\`\`\`
-
-`,
-      },
-    },
-  },
-  render: () =>
-    html` <form>
-      <fieldset disabled aria-label="Form disabilitato">
-        <div class="row">
-          <it-input disabled class="col-md-6" id="nome" placeholder="input disabilitato">
-            <span slot="label">Nome</span>
-          </it-input>
-          <it-input disabled class="col-md-6" id="cognome" placeholder="input disabilitato">
-            <span slot="label">Cognome</span>
-          </it-input>
-        </div>
-        <div class="row">
-          <div class="col">
-            <it-button disabled type="submit" id="submit" variant="primary">Pulsante disabilitato</it-button>
-          </div>
-        </div>
-      </fieldset>
-    </form>`,
-};
-
 export const Validazione: Story = {
   ...meta,
-
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Di base, i componenti che implementano widget utilizzabili nelle form, come ad esempio \`<it-input>\`, forniscono la validazione standard del browser a seconda del tipo di campo e/o degli attributi \`minlength\`, \`maxlength\`, \`pattern\` e \`required\`.
-
-#### Validazione custom
-
-In alternativa, è possibile eseguire una propria validazione (lato server, o con js), impostando l' attributo \`custom-validation="true"\`. In questo modo la validazione di default effettuata internamente al componente è disabilitata.
-
-Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo \`validity-message="Messaggio di errore"\`.
-`,
-      },
-    },
-  },
   render: () =>
     html` <form action="/prova">
       <div class="row">
@@ -197,67 +118,10 @@ Nel caso il campo non sia valido, è necessario invalidare il campo impostando i
     </form>`,
 };
 
-export const ValidazioneJS: Story = {
-  ...meta,
-  name: 'Validazione via JS',
-  tags: ['!dev'],
-  parameters: {
-    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
-    docs: {
-      canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
-      description: {
-        story: `
-È possibile implementare una propria validazione via JS, intercettando gli eventi emessi dai componenti:
-
-\`\`\`js
- window.addEventListener('DOMContentLoaded', () => {
-      const form = document.querySelector('#form');
-      const all_input = form.querySelectorAll('it-input');
-
-      // evento scatenato quando il web-component ha effettutato il primo render, e l'input è disonibile nel DOM
-      all_input.forEach(input=>{
-        input.addEventListener('it-input-ready', (event) => {
-          const input = event.detail.el;
-          // il tuo codice qui.
-        });
-      });
-
-      // evento scatenato quando l'input riceve l'evento di 'it-input' (ad esempio, durante l'inserimento di testo da parte dell'utente)
-      all_input.forEach(i=>{
-        i.addEventListener('it-input', (event) => {
-          const input = event.detail.el;
-          // il tuo codice qui.
-        });
-      });
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // il tuo codice qui.
-      });
-    });
-\`\`\`
-`,
-      },
-    },
-  },
-  render: () => html`<div class="hide-preview"></div>`,
-};
-
 export const EsempioJustValidate: Story = {
   ...meta,
   name: 'Esempio di validazione via JS con plugin JustValidate',
   tags: ['!dev'],
-  parameters: {
-    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
-    docs: {
-      canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
-      description: {
-        story: `
-Ecco qui un esempio di implementazione della validazione con il plugin [JustValidate](https://just-validate.dev/).
-`,
-      },
-    },
-  },
   render: () =>
     html`<script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
       <script>
@@ -330,8 +194,12 @@ Ecco qui un esempio di implementazione della validazione con il plugin [JustVali
       </script>
 
       <form id="form-validation-example">
-        <it-input id="nome" name="nome"><span slot="label">Nome</span></it-input>
-        <it-input id="cognome" name="cognome"><span slot="label">Cognome</span></it-input>
+        <it-input id="nome" name="nome">
+          <span slot="label">Nome</span>
+        </it-input>
+        <it-input id="cognome" name="cognome">
+          <span slot="label">Cognome</span>
+        </it-input>
         <it-input id="email" name="email" type="email" support-text="Inserisci la tua email" custom-validation>
           <span slot="label">E-mail</span>
         </it-input>
@@ -347,21 +215,4 @@ Ecco qui un esempio di implementazione della validazione con il plugin [JustVali
         <!-- <it-input id="password" type="password" minlength="10" suggestions strength-meter><span slot="label">Password</span></it-input> -->
         <it-button type="submit" variant="primary" block>Invia</it-button>
       </form>`,
-};
-
-export const SingoliCampi: Story = {
-  name: 'Tipologie di campi',
-  tags: ['!dev'],
-  parameters: {
-    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
-    docs: {
-      canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
-      description: {
-        story: `
-I singoli campi di tipo \`<it-input>\`, \`<it-checkbox>\`, \`<it-radio>\`, \`<it-toggle>\`, ecc. sono trattati in pagine separate della documentazione.
-`,
-      },
-    },
-  },
-  render: () => html`<div class="hide-preview"></div>`,
 };
