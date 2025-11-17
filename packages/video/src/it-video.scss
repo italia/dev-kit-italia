@@ -8,6 +8,10 @@
 @import 'bootstrap-italia/src/scss/components/videoplayer';
 @import 'bootstrap-italia/src/scss/components/accept-overlay';
 
+.acceptoverlayable {
+  aspect-ratio: 16 / 9;
+}
+
 .acceptoverlay {
   --bs-acceptoverlay-color-text: #fff;
   --bs-form-control-label-color: #fff;
