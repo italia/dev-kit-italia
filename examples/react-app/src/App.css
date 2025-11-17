@@ -1,7 +1,6 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
 }
 
 .logo {
@@ -22,10 +21,6 @@
 .app-header {
   border-bottom: 1px solid currentColor;
   margin-bottom: 2rem;
-  text-align: center;
-}
-
-h1 {
   text-align: center;
 }
 
