@@ -1,8 +1,20 @@
 import React from 'react';
 
 export default function AvatarDemo() {
+  const sizes = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+
+  const imageAvatars = [
+    { size: 'xs', src: 'https://randomuser.me/api/portraits/women/44.jpg', alt: 'Luisa Neri' },
+    { size: 'sm', src: 'https://randomuser.me/api/portraits/women/44.jpg', alt: 'Luisa Neri' },
+    { size: 'md', src: 'https://randomuser.me/api/portraits/men/43.jpg', alt: 'Gioacchino Romani' },
+    { size: 'lg', src: 'https://randomuser.me/api/portraits/women/41.jpg', alt: 'Anna Barbieri' },
+    { size: 'xl', src: 'https://randomuser.me/api/portraits/men/33.jpg', alt: 'Carlo Poli' },
+    { size: 'xxl', src: 'https://randomuser.me/api/portraits/women/90.jpg', alt: 'Giovanna Ferrero' },
+  ];
+
   return (
     <div>
+      {/* Avatar con immagine */}
       <section>
         <h2>Avatar con immagine</h2>
         <div
@@ -14,17 +26,13 @@ export default function AvatarDemo() {
             flexWrap: 'wrap',
           }}
         >
-          {['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].map((size) => (
-            <it-avatar
-              key={size}
-              type="image"
-              src="https://randomuser.me/api/portraits/women/44.jpg"
-              alt="Luisa Neri"
-              size={size}
-            ></it-avatar>
+          {imageAvatars.map((avatar) => (
+            <it-avatar key={avatar.size} type="image" src={avatar.src} alt={avatar.alt} size={avatar.size}></it-avatar>
           ))}
         </div>
       </section>
+
+      {/* Avatar con testo */}
       <section>
         <h2>Avatar con testo</h2>
         <div
@@ -34,11 +42,11 @@ export default function AvatarDemo() {
             alignItems: 'center',
             justifyContent: 'center',
             flexWrap: 'wrap',
-            marginBottom: 16,
+            marginBottom: '1rem',
           }}
         >
-          {['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].map((size) => (
-            <it-avatar key={size} type="text" text="Mario Rossi" size={size}></it-avatar>
+          {sizes.map((size) => (
+            <it-avatar key={size} type="text" text="Mario Rossi" avatar-title="Mario Rossi" size={size}></it-avatar>
           ))}
         </div>
         <div
@@ -48,27 +56,53 @@ export default function AvatarDemo() {
             alignItems: 'center',
             justifyContent: 'center',
             flexWrap: 'wrap',
-            marginBottom: 16,
+            marginBottom: '1rem',
           }}
         >
-          {['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].map((size) => (
-            <it-avatar key={size + 'p'} type="text" text="Mario Rossi" variant="primary" size={size}></it-avatar>
+          {sizes.map((size) => (
+            <it-avatar
+              key={`primary-${size}`}
+              type="text"
+              text="Mario Rossi"
+              avatar-title="Mario Rossi"
+              variant="primary"
+              size={size}
+            ></it-avatar>
           ))}
         </div>
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
-          {['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].map((size) => (
-            <it-avatar key={size + 's'} type="text" text="Mario Rossi" variant="secondary" size={size}></it-avatar>
+        <div
+          style={{
+            display: 'flex',
+            gap: '1rem',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
+          {sizes.map((size) => (
+            <it-avatar
+              key={`secondary-${size}`}
+              type="text"
+              text="Mario Rossi"
+              variant="secondary"
+              avatar-title="Mario Rossi"
+              size={size}
+            ></it-avatar>
           ))}
         </div>
       </section>
+
+      {/* Avatar con icona */}
       <section>
         <h2>Avatar con icona</h2>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
-          {['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].map((size) => (
+          {sizes.map((size) => (
             <it-avatar key={size} type="icon" icon="it-user" avatar-title="Utente" size={size}></it-avatar>
           ))}
         </div>
       </section>
+
+      {/* Avatar come link */}
       <section>
         <h2>Avatar come link</h2>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -84,50 +118,19 @@ export default function AvatarDemo() {
           <it-avatar type="icon" icon="it-user" href="#" avatar-title="Utente"></it-avatar>
         </div>
       </section>
+
+      {/* Comportamento presenza utente */}
       <section>
-        <h2>Avatar con testo aggiuntivo</h2>
+        <h2>Comportamento presenza utente</h2>
         <div
           style={{
             display: 'flex',
-            flexDirection: 'column',
             gap: '2rem',
+            flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'center',
           }}
         >
-          <it-avatar
-            type="image"
-            src="https://randomuser.me/api/portraits/men/43.jpg"
-            alt="Foto profilo"
-            text="Mario Rossi"
-          >
-            <div slot="extra-text">
-              <h4>Mario Rossi</h4>
-              <time>15 SET 2025</time>
-            </div>
-          </it-avatar>
-          <it-avatar
-            type="image"
-            src="https://randomuser.me/api/portraits/women/44.jpg"
-            alt="Foto profilo"
-            text="Giulia Neri"
-          >
-            <div slot="extra-text">
-              <h4>Giulia Neri</h4>
-              <p>LOREM IPSUM DOLOR</p>
-            </div>
-          </it-avatar>
-          <it-avatar type="text" text="Michele Dotti" variant="primary">
-            <div slot="extra-text">
-              <h4>Michele Dotti</h4>
-              <time>12 MAG 2025</time>
-            </div>
-          </it-avatar>
-        </div>
-      </section>
-      <section>
-        <h2>Avatar presenza utente</h2>
-        <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
           <div style={{ textAlign: 'center' }}>
             <it-avatar
               type="image"
@@ -136,7 +139,7 @@ export default function AvatarDemo() {
               presence="active"
               size="lg"
             ></it-avatar>
-            <div style={{ marginTop: 8 }}>
+            <div style={{ marginTop: '0.5rem' }}>
               <small>Attivo</small>
             </div>
           </div>
@@ -148,7 +151,7 @@ export default function AvatarDemo() {
               presence="busy"
               size="lg"
             ></it-avatar>
-            <div style={{ marginTop: 8 }}>
+            <div style={{ marginTop: '0.5rem' }}>
               <small>Non disponibile</small>
             </div>
           </div>
@@ -160,188 +163,433 @@ export default function AvatarDemo() {
               presence="hidden"
               size="lg"
             ></it-avatar>
-            <div style={{ marginTop: 8 }}>
+            <div style={{ marginTop: '0.5rem' }}>
               <small>Invisibile</small>
             </div>
           </div>
         </div>
+
         <h3>Presenza personalizzata con slot</h3>
-        <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
+        <div
+          style={{
+            display: 'flex',
+            gap: '2rem',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <div style={{ textAlign: 'center', display: 'inline-block' }}>
-            <it-avatar type="text" text="Marco Bianchi" variant="primary" presence="active" size="lg">
+            <it-avatar
+              type="text"
+              text="Marco Bianchi"
+              avatar-title="Marco Bianchi"
+              variant="primary"
+              presence="active"
+              size="lg"
+            >
               <span slot="presence" className="custom-presence custom-presence-success">
                 <it-icon name="it-check" size="xs" color="white"></it-icon>
                 <span className="visually-hidden">Utente online e disponibile</span>
               </span>
             </it-avatar>
-            <div style={{ marginTop: 8 }}>
+            <div style={{ marginTop: '0.5rem' }}>
               <small>Con icona check</small>
             </div>
           </div>
           <div style={{ textAlign: 'center', display: 'inline-block' }}>
-            <it-avatar type="text" text="Sara Verdi" variant="secondary" presence="busy" size="lg">
+            <it-avatar
+              type="text"
+              text="Sara Verdi"
+              avatar-title="Sara Verdi"
+              variant="secondary"
+              presence="busy"
+              size="lg"
+            >
               <span slot="presence" className="custom-presence custom-presence-danger">
                 !<span className="visually-hidden">Utente occupato, non disturbare</span>
               </span>
             </it-avatar>
-            <div style={{ marginTop: 8 }}>
+            <div style={{ marginTop: '0.5rem' }}>
               <small>Con testo custom</small>
             </div>
           </div>
         </div>
       </section>
-      {/* Avatar status utente */}
-      <h2>Avatar status utente</h2>
-      <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ textAlign: 'center' }}>
-          <it-avatar
-            type="image"
-            src="https://randomuser.me/api/portraits/men/43.jpg"
-            alt="Mario Rossi"
-            status="approved"
-            size="lg"
-          ></it-avatar>
-          <div style={{ marginTop: 8 }}>
-            <small>Approvato</small>
+
+      {/* Comportamento status utente */}
+      <section>
+        <h2>Comportamento status utente</h2>
+        <div
+          style={{
+            display: 'flex',
+            gap: '2rem',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div style={{ textAlign: 'center' }}>
+            <it-avatar
+              type="image"
+              src="https://randomuser.me/api/portraits/men/43.jpg"
+              alt="Mario Rossi"
+              status="approved"
+              size="lg"
+            ></it-avatar>
+            <div style={{ marginTop: '0.5rem' }}>
+              <small>Approvato</small>
+            </div>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <it-avatar
+              type="image"
+              src="https://randomuser.me/api/portraits/women/41.jpg"
+              alt="Luisa Neri"
+              status="declined"
+              size="lg"
+            ></it-avatar>
+            <div style={{ marginTop: '0.5rem' }}>
+              <small>Respinto</small>
+            </div>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <it-avatar
+              type="image"
+              src="https://randomuser.me/api/portraits/men/33.jpg"
+              alt="Gioacchino Romani"
+              status="notify"
+              size="lg"
+            ></it-avatar>
+            <div style={{ marginTop: '0.5rem' }}>
+              <small>Notifica</small>
+            </div>
           </div>
         </div>
-        <div style={{ textAlign: 'center' }}>
-          <it-avatar
-            type="image"
-            src="https://randomuser.me/api/portraits/women/41.jpg"
-            alt="Luisa Neri"
-            status="declined"
-            size="lg"
-          ></it-avatar>
-          <div style={{ marginTop: 8 }}>
-            <small>Respinto</small>
+
+        <h3>Status personalizzato con slot</h3>
+        <div
+          style={{
+            display: 'flex',
+            gap: '2rem',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div style={{ textAlign: 'center', display: 'inline-block' }}>
+            <it-avatar
+              type="text"
+              text="Luigi Neri"
+              avatar-title="Luigi Neri"
+              variant="primary"
+              status="approved"
+              size="lg"
+            >
+              <span slot="status" className="custom-status custom-status-success">
+                <it-icon name="it-check-circle" size="xs" color="white"></it-icon>
+                <span className="visually-hidden">Account verificato e approvato</span>
+              </span>
+            </it-avatar>
+            <div style={{ marginTop: '0.5rem' }}>
+              <small>Verificato</small>
+            </div>
+          </div>
+          <div style={{ textAlign: 'center', display: 'inline-block' }}>
+            <it-avatar
+              type="text"
+              text="Carla Blu"
+              avatar-title="Carla Blu"
+              variant="secondary"
+              status="declined"
+              size="lg"
+            >
+              <span slot="status" className="custom-status custom-status-danger">
+                <it-icon name="it-close" size="xs" color="white"></it-icon>
+                <span className="visually-hidden">Account sospeso o respinto</span>
+              </span>
+            </it-avatar>
+            <div style={{ marginTop: '0.5rem' }}>
+              <small>Sospeso</small>
+            </div>
           </div>
         </div>
-        <div style={{ textAlign: 'center' }}>
-          <it-avatar
-            type="image"
-            src="https://randomuser.me/api/portraits/men/33.jpg"
-            alt="Gioacchino Romani"
-            status="notify"
-            size="lg"
-          ></it-avatar>
-          <div style={{ marginTop: 8 }}>
-            <small>Notifica</small>
-          </div>
-        </div>
-      </div>
-      <h3>Status personalizzato con slot</h3>
-      <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ textAlign: 'center', display: 'inline-block' }}>
-          <it-avatar type="text" text="Luigi Neri" variant="primary" status="approved" size="lg">
-            <span slot="status" className="custom-status custom-status-success">
-              <it-icon name="it-check-circle" size="xs" color="white"></it-icon>
-              <span className="visually-hidden">Account verificato e approvato</span>
-            </span>
-          </it-avatar>
-          <div style={{ marginTop: 8 }}>
-            <small>Verificato</small>
-          </div>
-        </div>
-        <div style={{ textAlign: 'center', display: 'inline-block' }}>
-          <it-avatar type="text" text="Carla Blu" variant="secondary" status="declined" size="lg">
-            <span slot="status" className="custom-status custom-status-danger">
-              <it-icon name="it-close" size="xs" color="white"></it-icon>
-              <span className="visually-hidden">Account sospeso o respinto</span>
-            </span>
-          </it-avatar>
-          <div style={{ marginTop: 8 }}>
-            <small>Sospeso</small>
-          </div>
-        </div>
-      </div>
+      </section>
+
       {/* Gruppi avatar - Liste verticali */}
-      <h2>Gruppi di avatar - Liste verticali</h2>
-      <div style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ flex: 1, minWidth: 300 }}>
-          <h4>Lista Verticale - Dimensione SM</h4>
-          
+      <section>
+        <h2>Gruppi di avatar - Liste verticali</h2>
+        <div
+          style={{
+            display: 'flex',
+            gap: '3rem',
+            flexWrap: 'wrap',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+          }}
+        >
+          <div style={{ flex: '1', minWidth: '300px' }}>
+            <h4>Lista Verticale - Dimensione SM</h4>
             <div className="link-list-wrapper">
               <ul className="link-list avatar-group">
                 <li>
                   <a className="list-item" href="#">
-                    <it-avatar size="sm" src="https://randomuser.me/api/portraits/men/43.jpg"></it-avatar>
+                    <it-avatar
+                      size="sm"
+                      type="image"
+                      src="https://randomuser.me/api/portraits/men/43.jpg"
+                      alt="Mario Rossi"
+                    ></it-avatar>
                     <span>Mario Rossi</span>
                   </a>
                 </li>
                 <li>
                   <a className="list-item" href="#">
-                    <it-avatar size="sm" src="https://randomuser.me/api/portraits/women/44.jpg"></it-avatar>
+                    <it-avatar
+                      size="sm"
+                      type="image"
+                      src="https://randomuser.me/api/portraits/women/44.jpg"
+                      alt="Anna Verdi"
+                    ></it-avatar>
                     <span>Anna Verdi</span>
                   </a>
                 </li>
                 <li>
-                  <div className="list-item">
-                    <it-avatar size="sm" text="Sara Ghione" variant="primary"></it-avatar>
+                  <a className="list-item" href="#">
+                    <it-avatar size="sm" type="text" text="Sara Ghione" variant="primary"></it-avatar>
                     <span>Sara Ghione</span>
-                  </div>
+                  </a>
                 </li>
                 <li>
-                  <div className="list-item">
-                    <it-avatar icon="it-user" avatar-title="Utente generico"></it-avatar>
+                  <a className="list-item" href="#">
+                    <it-avatar size="sm" type="icon" icon="it-user"></it-avatar>
                     <span>Antonio Esposito</span>
-                  </div>
+                  </a>
                 </li>
               </ul>
             </div>
-          
-        </div>
-        <div style={{ flex: 1, minWidth: 300 }}>
-          <h4>Lista Verticale - Dimensione MD</h4>
-          
+          </div>
+
+          <div style={{ flex: '1', minWidth: '300px' }}>
+            <h4>Lista Verticale - Dimensione MD</h4>
             <div className="link-list-wrapper">
               <ul className="link-list avatar-group">
                 <li>
                   <a className="list-item" href="#">
-                    <it-avatar src="https://randomuser.me/api/portraits/men/32.jpg"></it-avatar>
+                    <it-avatar
+                      type="image"
+                      src="https://randomuser.me/api/portraits/men/32.jpg"
+                      alt="Luca Bianchi"
+                    ></it-avatar>
                     <span>Luca Bianchi</span>
                   </a>
                 </li>
                 <li>
                   <a className="list-item" href="#">
-                    <it-avatar src="https://randomuser.me/api/portraits/women/28.jpg"></it-avatar>
+                    <it-avatar
+                      type="image"
+                      src="https://randomuser.me/api/portraits/women/28.jpg"
+                      alt="Elena Rossi"
+                    ></it-avatar>
                     <span>Elena Rossi</span>
                   </a>
                 </li>
                 <li>
-                  <div className="list-item">
-                    <it-avatar text="Marco Neri" variant="secondary"></it-avatar>
+                  <a className="list-item" href="#">
+                    <it-avatar type="text" text="Marco Neri" variant="secondary"></it-avatar>
                     <span>Marco Neri</span>
-                  </div>
+                  </a>
                 </li>
                 <li>
-                  <div className="list-item">
-                    <it-avatar icon="it-user" avatar-title="Utente generico"></it-avatar>
+                  <a className="list-item" href="#">
+                    <it-avatar type="icon" icon="it-user"></it-avatar>
                     <span>Cerca utenti</span>
-                  </div>
+                  </a>
                 </li>
               </ul>
             </div>
-          
+          </div>
         </div>
+      </section>
+
+      {/* Gruppi di avatar - Avatar Sovrapposti */}
+      <section>
+        <h2>Gruppi di avatar - Avatar Sovrapposti</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', height: '300px' }}>
+          <div>
+            <ul className="avatar-group-stacked">
+              <li>
+                <it-avatar
+                  src="https://randomuser.me/api/portraits/women/44.jpg"
+                  alt="Giorgia Vicari"
+                  href="#"
+                ></it-avatar>
+              </li>
+              <li>
+                <it-avatar
+                  src="https://randomuser.me/api/portraits/men/43.jpg"
+                  alt="Francesco Donati"
+                  href="#"
+                ></it-avatar>
+              </li>
+              <li>
+                <it-avatar
+                  type="text"
+                  text="Giulia Neri"
+                  variant="primary"
+                  href="#"
+                  avatar-title="Giulia Neri"
+                ></it-avatar>
+              </li>
+              <li>
+                <it-avatar text="Sandro Penna" variant="secondary" avatar-title="Sandro Penna" href="#"></it-avatar>
+              </li>
+              <li>
+                <it-avatar type="dropdown">
+                  <it-dropdown
+                    label="4+"
+                    slot="avatar-dropdown-content"
+                    it-aria-label="Visualizza altri 4 utenti"
+                    variant="secondary"
+                  >
+                    <it-dropdown-item href="#">
+                      <it-avatar src="https://randomuser.me/api/portraits/men/22.jpg"></it-avatar>
+                      <span>Roberto Milano</span>
+                    </it-dropdown-item>
+                    <it-dropdown-item href="#">
+                      <it-avatar text="Giuseppe Verde" variant="primary" avatar-title="Giuseppe Verde"></it-avatar>
+                      <span>Giuseppe Verde</span>
+                    </it-dropdown-item>
+                    <it-dropdown-item href="#">
+                      <it-avatar text="Laura Blu" variant="secondary" avatar-title="Laura Blu"></it-avatar>
+                      <span>Laura Blu</span>
+                    </it-dropdown-item>
+                    <it-dropdown-item href="#">
+                      <it-avatar icon="it-user" avatar-title="Altri utenti" type="icon"></it-avatar>
+                      <span>Altri utenti...</span>
+                    </it-dropdown-item>
+                  </it-dropdown>
+                </it-avatar>
+              </li>
+            </ul>
+          </div>
+          <p style={{ marginTop: '0.75rem', fontSize: '16px', color: '#666' }}>
+            Clicca su "+4" per visualizzare gli utenti rimanenti
+          </p>
+        </div>
+      </section>
+
+      {/* Avatar Sovrapposti - Dimensione SM */}
+      <section>
+        <h2>Avatar Sovrapposti - Dimensione SM</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+          <div>
+            <ul className="avatar-group-stacked">
+              <li>
+                <it-avatar
+                  src="https://randomuser.me/api/portraits/women/44.jpg"
+                  alt="Giorgia Vicari"
+                  size="sm"
+                ></it-avatar>
+              </li>
+              <li>
+                <it-avatar
+                  src="https://randomuser.me/api/portraits/men/43.jpg"
+                  alt="Francesco Donati"
+                  size="sm"
+                ></it-avatar>
+              </li>
+              <li>
+                <it-avatar text="Tommaso Sordi" avatar-title="Tommaso Sordi" variant="primary" size="sm"></it-avatar>
+              </li>
+              <li>
+                <it-avatar text="Barbara Tosi" avatar-title="Barbara Tosi" size="sm"></it-avatar>
+              </li>
+              <li>
+                <it-avatar text="Barbara Tosti" avatar-title="Barbara Tosti" variant="secondary" size="sm"></it-avatar>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Avatar Sovrapposti - Dimensione MD */}
+      <section>
+        <h2>Avatar Sovrapposti - Dimensione MD</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+          <div>
+            <div>
+              <ul className="avatar-group-stacked">
+                <li>
+                  <it-avatar
+                    src="https://randomuser.me/api/portraits/women/44.jpg"
+                    alt="Giorgia Vicari"
+                    href="#"
+                  ></it-avatar>
+                </li>
+                <li>
+                  <it-avatar
+                    src="https://randomuser.me/api/portraits/men/43.jpg"
+                    alt="Francesco Donati"
+                    href="#"
+                  ></it-avatar>
+                </li>
+                <li>
+                  <it-avatar
+                    type="text"
+                    text="Giulia Neri"
+                    variant="primary"
+                    href="#"
+                    avatar-title="Giulia Neri"
+                  ></it-avatar>
+                </li>
+                <li>
+                  <it-avatar text="Sandro Penna" variant="secondary" avatar-title="Sandro Penna" href="#"></it-avatar>
+                </li>
+                <li>
+                  <it-avatar text="Sandro Pertini" avatar-title="Sandro Pertini" href="#"></it-avatar>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    {/* Avatar con testo aggiuntivo */}
+    <section>
+      <h2>Avatar con testo aggiuntivo</h2>
+      <div className="d-flex gap-4">
+        <it-avatar type="image" src="https://randomuser.me/api/portraits/men/43.jpg" size="xl">
+          <div slot="extra-text" style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
+            <h4>Mario Rossi</h4>
+            <time>15 SET 2025</time>
+          </div>
+        </it-avatar>
+
+        <it-avatar type="image" src="https://randomuser.me/api/portraits/women/44.jpg" size="xl">
+          <div slot="extra-text" style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
+            <h4>Giulia Neri</h4>
+            <p>LOREM IPSUM DOLOR</p>
+          </div>
+        </it-avatar>
+
+        <it-avatar type="text" variant="primary" size="xl" text="Michele Dotti">
+          <div slot="extra-text" style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
+            <h4>Michele Dotti</h4>
+            <time>12 MAG 2025</time>
+          </div>
+        </it-avatar>
       </div>
-      {/* Gruppi avatar - Liste verticali con testo aggiuntivo */}
-      <h2>Gruppi di avatar - Liste verticali con testo aggiuntivo</h2>
-      <div
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
-        <h4>Lista Team con Ruoli</h4>
-        
+    </section>      {/* Gruppi avatar - Liste verticali con testo aggiuntivo */}
+      <section>
+        <h2>Gruppi di avatar - Liste verticali con testo aggiuntivo</h2>
+        <div style={{ maxWidth: '400px' }}>
+          <h4>Lista Team con Ruoli</h4>
           <div className="link-list-wrapper">
             <ul className="link-list avatar-group">
               <li>
                 <div className="list-item">
-                  <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo">
+                  <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg">
                     <div slot="extra-text">
                       <h4>Mario Rossi</h4>
                       <p>TEAM LEADER</p>
@@ -351,7 +599,7 @@ export default function AvatarDemo() {
               </li>
               <li>
                 <div className="list-item">
-                  <it-avatar src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto profilo">
+                  <it-avatar src="https://randomuser.me/api/portraits/women/44.jpg">
                     <div slot="extra-text">
                       <h4>Giulia Neri</h4>
                       <p>FRONTEND DEVELOPER</p>
@@ -381,159 +629,10 @@ export default function AvatarDemo() {
               </li>
             </ul>
           </div>
-        
-      </div>
-      {/* Gruppi di avatar - Avatar Sovrapposti */}
-      <h2>Gruppi di avatar - Avatar Sovrapposti</h2>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '3rem',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <div
-          style={{
-            textAlign: 'center',
-            alignItems: 'center',
-            justifyContent: 'center',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          <h4>Avatar Sovrapposti - Dimensione SM</h4>
-          
-            <div className="link-list-wrapper">
-              <ul className="avatar-group-stacked">
-                <li>
-                  <it-avatar size="sm" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto profilo"></it-avatar>
-                </li>
-                <li>
-                  <it-avatar size="sm" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo"></it-avatar>
-                </li>
-                <li>
-                  <it-avatar size="sm" src="https://randomuser.me/api/portraits/women/41.jpg" alt="Foto profilo"></it-avatar>
-                </li>
-                <li>
-                  <it-avatar size="sm" text="Tommaso Sordi" variant="primary"></it-avatar>
-                </li>
-                <li>
-                  <it-avatar size="sm" text="Barbara Tosi" variant="secondary"></it-avatar>
-                </li>
-                <li>
-                  <it-avatar type="dropdown" size="sm">
-                    <it-dropdown
-                      label="4+"
-                      slot="avatar-dropdown-content"
-                      it-aria-label="+4 altri utenti"
-                      variant="secondary"
-                    >
-                      <it-dropdown-item href="#">
-                        <it-avatar size="sm" src="https://randomuser.me/api/portraits/men/22.jpg" alt="Foto profilo"></it-avatar>
-                        <span>Roberto Milano</span>
-                      </it-dropdown-item>
-                      <it-dropdown-item href="#">
-                        <it-avatar size="sm" text="Giuseppe Verde" variant="primary"></it-avatar>
-                        <span>Giuseppe Verde</span>
-                      </it-dropdown-item>
-                      <it-dropdown-item href="#">
-                        <it-avatar size="sm" text="Laura Blu" variant="secondary"></it-avatar>
-                        <span>Laura Blu</span>
-                      </it-dropdown-item>
-                      <it-dropdown-item href="#">
-                        <it-avatar size="sm" icon="it-user" avatar-title="Altri utenti"></it-avatar>
-                        <span>Altri utenti...</span>
-                      </it-dropdown-item>
-                    </it-dropdown>
-                  </it-avatar>
-                </li>
-              </ul>
-            </div>
-          
-          <p style={{ marginTop: '0.5rem', fontSize: 14, variant: '#666' }}>
-            <a href="#" style={{ variant: '#0066cc', textDecoration: 'none' }}>
-              Visualizza altri 8 utenti →
-            </a>
-          </p>
         </div>
-        <div
-          style={{
-            textAlign: 'center',
-            alignItems: 'center',
-            justifyContent: 'center',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          <h4>Avatar Sovrapposti - Dimensione MD</h4>
-          
-            <div className="link-list-wrapper">
-              <ul className="avatar-group-stacked">
-                <li>
-                  <it-avatar
-                    src="https://randomuser.me/api/portraits/women/44.jpg"
-                    alt="Foto profilo"
-                    href="#"
-                  ></it-avatar>
-                </li>
-                <li>
-                  <it-avatar
-                    src="https://randomuser.me/api/portraits/men/43.jpg"
-                    alt="Foto profilo"
-                    href="#"
-                  ></it-avatar>
-                </li>
-                <li>
-                  <it-avatar
-                    type="text"
-                    text="Giulia Neri"
-                    variant="primary"
-                    href="#"
-                    avatar-title="Giulia Neri"
-                    slot="trigger"
-                  ></it-avatar>
-                </li>
-                <li>
-                  <it-avatar text="Sandro Penna" variant="secondary" href="#"></it-avatar>
-                </li>
-                <li>
-                  <it-avatar type="dropdown">
-                    <it-dropdown
-                      label="4+"
-                      slot="avatar-dropdown-content"
-                      it-aria-label="+4 altri utenti"
-                      variant="secondary"
-                    >
-                      <it-dropdown-item href="#">
-                        <it-avatar src="https://randomuser.me/api/portraits/men/22.jpg" alt="Foto profilo"></it-avatar>
-                        <span>Roberto Milano</span>
-                      </it-dropdown-item>
-                      <it-dropdown-item href="#">
-                        <it-avatar text="Giuseppe Verde" variant="primary"></it-avatar>
-                        <span>Giuseppe Verde</span>
-                      </it-dropdown-item>
-                      <it-dropdown-item href="#">
-                        <it-avatar text="Laura Blu" variant="secondary"></it-avatar>
-                        <span>Laura Blu</span>
-                      </it-dropdown-item>
-                      <it-dropdown-item href="#">
-                        <it-avatar icon="it-user" avatar-title="Altri utenti"></it-avatar>
-                        <span>Altri utenti...</span>
-                      </it-dropdown-item>
-                    </it-dropdown>
-                  </it-avatar>
-                </li>
-              </ul>
-            </div>
-          
-          <p style={{ marginTop: '0.75rem', fontSize: 16, variant: '#666' }}>
-            Clicca su "+4" per visualizzare gli utenti rimanenti
-          </p>
-        </div>
-      </div>
+      </section>
 
+      {/* CSS personalizzato */}
       <style>
         {`
           /* Esempi di classi CSS per personalizzare gli slot presence */
