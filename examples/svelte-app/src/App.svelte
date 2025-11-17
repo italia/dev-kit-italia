@@ -32,8 +32,9 @@
       <a href="#/video">Video</a>
     </nav>
   </div>
-
-  <Router />
+  <div class="container mb-4">
+    <Router />
+  </div>
   <Footer />
 </main>
 
