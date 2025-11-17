@@ -215,8 +215,8 @@ const meta = {
     },
     size: {
       control: 'select',
-      options: INPUT_SIZES,
-      description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
+      options: INPUT_SIZES.filter((o) => o !== undefined),
+      description: "Dimensione del campo: 'sm' | (nessuno = 'md') | 'lg' ",
       table: { defaultValue: { summary: undefined } },
       type: 'string',
     },
