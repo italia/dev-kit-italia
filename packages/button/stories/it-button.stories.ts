@@ -25,11 +25,12 @@ const renderComponent = (params: ButtonProps, defaultSlot = '') => {
       ?outline="${params.outline}"
       size="${ifDefined(params.size)}"
       ?block="${params.block}"
-      ?it-aria-disabled="${ifDefined(params.disabled ? 'true' : undefined)}"
+      ?disabled="${ifDefined(params.disabled ? 'true' : undefined)}"
       ?icon="${params.icon}"
       type="${ifDefined(params.type)}"
-      >${slot}</it-button
     >
+      ${slot}
+    </it-button>
   `;
 };
 
@@ -116,7 +117,6 @@ const meta = {
     disabled: {
       control: 'boolean',
       type: 'boolean',
-      name: 'it-aria-disabled',
       table: { defaultValue: { summary: 'false' } },
     },
     outline: {
@@ -238,9 +238,13 @@ Dove il click sul pulsante non genera un cambio di pagina utilizzare esclusivame
 <br/><br/>
 Qualora non fosse possibile, è necessario applicare in modo appropriato l’attributo \`role="button"\` per trasmetterne lo scopo alle tecnologie assistive.</p></div></div>
 
+#### Note sugli attributi ARIA
+
+Tutti gli attributi \`it-aria-*\` passati a \`<it-button>\` vengono applicati al button generato come attributi \`aria-*\`.
+Anche l'attributo \`it-role\` viene passato al button come attributo \`role\`.
+
 #### Note sullo stato disabilitato
-I pulsanti disabilitati dovranno avere l'attributo \`aria-disabled="true"\` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo \`aria-disabled\` è consigliato usare anche l'attributo \`aria-describedby\` (o un elemento all'interno del bottone con classe \`.sr-only\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
-<br/> È sconsigliato l'uso dell'attributo \`disabled\`.
+I pulsanti disabilitati dovranno avere l'attributo \`disabled\` per indicare lo stato dell'elemento al browser e alle tecnologie assistive. Quando si utilizza l'attributo \`disabled\` è consigliato usare anche l'attributo \`it-aria-describedby\` (o un elemento all'interno del bottone con classe \`.sr-only\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
 `,
       },
     },
@@ -428,7 +432,7 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <it-icon name="it-star-full" color="white" size="sm"></it-icon>
@@ -440,7 +444,7 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <it-icon name="it-star-full" color="white" size="sm"></it-icon> <span>${slot ?? 'Pulsante con icona'}</span>
@@ -452,7 +456,7 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <it-icon name="it-star-full" color="white" size="xs"></it-icon>
@@ -465,7 +469,7 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <it-icon name="it-star-full" color="primary" size="xs"></it-icon>
@@ -520,7 +524,7 @@ La dimensione dell'icona deve sempre essere \`xs\`, quindi \`<it-icon>\` deve av
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon">
@@ -535,7 +539,7 @@ La dimensione dell'icona deve sempre essere \`xs\`, quindi \`<it-icon>\` deve av
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon" size="sm">
@@ -550,7 +554,7 @@ La dimensione dell'icona deve sempre essere \`xs\`, quindi \`<it-icon>\` deve av
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon">
@@ -566,7 +570,7 @@ La dimensione dell'icona deve sempre essere \`xs\`, quindi \`<it-icon>\` deve av
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon">

@@ -12,7 +12,7 @@ npm i @italia/avatar
 
 ```html
 <script type="module">
-  import '@italia/avatar/it-avatar.js';
+  import '@italia/avatar';
 </script>
 
 <it-avatar></it-avatar>

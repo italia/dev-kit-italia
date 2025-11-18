@@ -17,6 +17,7 @@ import Avatar from './components/Avatar.vue';
 
 const routes = [
   { path: '/accordion', name: 'Accordion', component: Accordion },
+  { path: '/avatar', name: 'Avatar', component: Avatar },
   { path: '/button', name: 'Button', component: Button },
   { path: '/checkbox', name: 'Checkbox', component: Checkbox },
   { path: '/chip', name: 'Chip', component: Chip },
@@ -29,7 +30,6 @@ const routes = [
   { path: '/section', name: 'Section', component: Section },
   { path: '/sticky', name: 'Sticky', component: Sticky },
   { path: '/video', name: 'Video', component: Video },
-  { path: '/avatar', name: 'Avatar', component: Avatar },
 ];
 
 const router = createRouter({

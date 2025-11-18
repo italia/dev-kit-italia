@@ -13,7 +13,16 @@
   }
 }
 
-@mixin it-shimmer($tag, $height: null, $width: null, $attr: null, $border-radius: 0, $bg: null, $padding: null) {
+@mixin it-shimmer(
+  $tag,
+  $height: null,
+  $width: null,
+  $attr: null,
+  $border-radius: 0,
+  $bg: null,
+  $padding: null,
+  $aspectRatio
+) {
   @at-root {
     #{$tag}:not(:defined) {
       // layout
@@ -38,6 +47,9 @@
       }
       @if $padding != null {
         padding: $padding;
+      }
+      @if $aspectRatio != null {
+        aspect-ratio: $aspectRatio;
       }
 
       // pseudo-elemento per simulare larghezza testo attributo
@@ -114,8 +126,9 @@ $it-components: (
     bg: transparent,
   ),
   'it-video': (
-    height: var(--it-videojs-default-height),
-    width: var(--it-videojs-default-width),
+    height: auto,
+    width: 100%,
+    aspect-ratio: 16 / 9,
   ),
 );
 
@@ -127,6 +140,7 @@ $it-components: (
     if(map-has-key($params, attr), map-get($params, attr), null),
     if(map-has-key($params, border-radius), map-get($params, border-radius), 0),
     if(map-has-key($params, bg), map-get($params, bg), null),
-    if(map-has-key($params, padding), map-get($params, padding), null)
+    if(map-has-key($params, padding), map-get($params, padding), null),
+    if(map-has-key($params, aspect-ratio), map-get($params, aspect-ratio), null)
   );
 }

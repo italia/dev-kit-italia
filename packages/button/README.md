@@ -5,14 +5,14 @@ This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) reco
 ## Installation
 
 ```bash
-npm i it-button
+npm i @italia/button
 ```
 
 ## Usage
 
 ```html
 <script type="module">
-  import '@italia/it-button';
+  import '@italia/button';
 </script>
 
 <it-button></it-button>
