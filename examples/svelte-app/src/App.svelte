@@ -18,6 +18,7 @@
     <div>Vite + Svelte</div>
     <nav class="app-nav">
       <a href="#/accordion">Accordion</a>
+      <a href="#/avatar">Avatar</a>
       <a href="#/button">Button</a>
       <a href="#/checkbox">Checkbox</a>
       <a href="#/chip">Chip</a>
@@ -27,8 +28,8 @@
       <a href="#/input">Input</a>
       <a href="#/radio">Radio</a>
       <a href="#/section">Section</a>
+      <a href="#/sticky">Sticky</a>
       <a href="#/video">Video</a>
-      <a href="#/avatar">Avatar</a>
     </nav>
   </div>
   <div class="container mb-4">
