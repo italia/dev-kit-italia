@@ -2,4 +2,4 @@
 '@italia/button': patch
 ---
 
-fix: it-button docs
+Updated it-button docs
