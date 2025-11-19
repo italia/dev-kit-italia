@@ -78,8 +78,8 @@ const meta: Meta<AccordionProps> = {
       control: 'select',
       description:
         "Se impostato a `single`, solo un elemento dell'accordion può essere aperto contemporaneamente. Il default è `multiple`.",
-        table: { defaultValue: { summary: 'multiple' } },
-        options: ACCORDION_MODES,
+      table: { defaultValue: { summary: 'multiple' } },
+      options: ACCORDION_MODES,
     },
     backgroundActive: {
       control: 'boolean',

@@ -16,13 +16,13 @@ const clickHandler = () => {
       <div class="flex">
         <it-button variant="primary" size="sm" type="button"> Primary </it-button>
 
-        <it-button variant="primary" size="sm" aria-disabled="true" type="button"> Primary disabled </it-button>
+        <it-button variant="primary" size="sm" :disabled="true" type="button"> Primary disabled </it-button>
       </div>
 
       <div class="flex">
         <it-button variant="primary" outline="{true}" size="sm" type="button"> Primary outline </it-button>
 
-        <it-button variant="primary" outline="{true}" size="sm" aria-disabled="true" type="button">
+        <it-button variant="primary" outline="{true}" size="sm" :disabled="true" type="button">
           Primary outline disabled
         </it-button>
       </div>
@@ -31,13 +31,13 @@ const clickHandler = () => {
       <div class="flex">
         <it-button variant="secondary" size="sm" type="button"> Secondary </it-button>
 
-        <it-button variant="secondary" size="sm" aria-disabled="true" type="button"> Secondary disabled </it-button>
+        <it-button variant="secondary" size="sm" :disabled="true" type="button"> Secondary disabled </it-button>
       </div>
 
       <div class="flex">
         <it-button variant="secondary" outline="{true}" size="sm" type="button"> Secondary outline </it-button>
 
-        <it-button variant="secondary" outline="{true}" size="sm" aria-disabled="true" type="button">
+        <it-button variant="secondary" outline="{true}" size="sm" :disabled="true" type="button">
           Secondary outline disabled
         </it-button>
       </div>
@@ -46,13 +46,13 @@ const clickHandler = () => {
       <div class="flex">
         <it-button variant="success" size="sm" type="button"> Success </it-button>
 
-        <it-button variant="success" size="sm" aria-disabled="true" type="button"> Success disabled </it-button>
+        <it-button variant="success" size="sm" :disabled="true" type="button"> Success disabled </it-button>
       </div>
 
       <div class="flex">
         <it-button variant="success" outline="{true}" size="sm" type="button"> Success outline </it-button>
 
-        <it-button variant="success" outline="{true}" size="sm" aria-disabled="true" type="button">
+        <it-button variant="success" outline="{true}" size="sm" :disabled="true" type="button">
           Success outline disabled
         </it-button>
       </div>
@@ -61,13 +61,13 @@ const clickHandler = () => {
       <div class="flex">
         <it-button variant="danger" size="sm" type="button"> Danger </it-button>
 
-        <it-button variant="danger" size="sm" aria-disabled="true" type="button"> Danger disabled </it-button>
+        <it-button variant="danger" size="sm" :disabled="true" type="button"> Danger disabled </it-button>
       </div>
 
       <div class="flex">
         <it-button variant="danger" outline="{true}" size="sm" type="button"> Danger outline </it-button>
 
-        <it-button variant="danger" outline="{true}" size="sm" aria-disabled="true" type="button">
+        <it-button variant="danger" outline="{true}" size="sm" :disabled="true" type="button">
           Danger outline disabled
         </it-button>
       </div>
@@ -76,13 +76,13 @@ const clickHandler = () => {
       <div class="flex">
         <it-button variant="warning" size="sm" type="button"> Warning </it-button>
 
-        <it-button variant="warning" size="sm" aria-disabled="true" type="button"> Warning disabled </it-button>
+        <it-button variant="warning" size="sm" :disabled="true" type="button"> Warning disabled </it-button>
       </div>
 
       <div class="flex">
         <it-button variant="warning" outline="{true}" size="sm" type="button"> Warning outline </it-button>
 
-        <it-button variant="warning" outline="{true}" size="sm" aria-disabled="true" type="button">
+        <it-button variant="warning" outline="{true}" size="sm" :disabled="true" type="button">
           Warning outline disabled
         </it-button>
       </div>
@@ -91,7 +91,7 @@ const clickHandler = () => {
       <div class="flex">
         <it-button variant="link" size="sm" type="button"> Link </it-button>
 
-        <it-button variant="link" size="sm" aria-disabled="true" type="button"> Link disabled </it-button>
+        <it-button variant="link" size="sm" :disabled="true" type="button"> Link disabled </it-button>
       </div>
     </div>
   </section>
@@ -136,13 +136,13 @@ const clickHandler = () => {
         <div class="flex">
           <it-button variant="primary" size="sm" type="button"> Primary </it-button>
 
-          <it-button variant="primary" size="sm" aria-disabled="true" type="button"> Primary disabled </it-button>
+          <it-button variant="primary" size="sm" :disabled="true" type="button"> Primary disabled </it-button>
         </div>
 
         <div class="flex">
           <it-button variant="primary" outline="{true}" size="sm" type="button"> Primary outline </it-button>
 
-          <it-button variant="primary" outline="{true}" size="sm" aria-disabled="true" type="button">
+          <it-button variant="primary" outline="{true}" size="sm" :disabled="true" type="button">
             Primary outline disabled
           </it-button>
         </div>
@@ -151,13 +151,13 @@ const clickHandler = () => {
         <div class="flex">
           <it-button variant="secondary" size="sm" type="button"> Secondary </it-button>
 
-          <it-button variant="secondary" size="sm" aria-disabled="true" type="button"> Secondary disabled </it-button>
+          <it-button variant="secondary" size="sm" :disabled="true" type="button"> Secondary disabled </it-button>
         </div>
 
         <div class="flex">
           <it-button variant="secondary" outline="{true}" size="sm" type="button"> Secondary outline </it-button>
 
-          <it-button variant="secondary" outline="{true}" size="sm" aria-disabled="true" type="button">
+          <it-button variant="secondary" outline="{true}" size="sm" :disabled="true" type="button">
             Secondary outline disabled
           </it-button>
         </div>
@@ -166,7 +166,7 @@ const clickHandler = () => {
         <div class="flex">
           <it-button variant="link" size="sm" type="button"> Link </it-button>
 
-          <it-button variant="link" size="sm" aria-disabled="true" type="button"> Link disabled </it-button>
+          <it-button variant="link" size="sm" :disabled="true" type="button"> Link disabled </it-button>
         </div>
       </div>
     </div>

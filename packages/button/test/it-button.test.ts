@@ -21,7 +21,7 @@ describe('Button component', () => {
     });
 
     it('disabled is accessible', async () => {
-      const el = await fixture<ItButton>(html`<it-button it-aria-disabled="true">bsi Button</it-button>`);
+      const el = await fixture<ItButton>(html`<it-button disabled>bsi Button</it-button>`);
       const button = el.shadowRoot?.querySelector('button');
 
       await expect(el).to.be.accessible();
@@ -81,7 +81,7 @@ describe('Button component', () => {
             submitHandler();
           }}
         >
-          <it-button type="submit" it-aria-disabled="true">Submit</it-button>
+          <it-button type="submit" disabled>Submit</it-button>
         </form>
       `);
 

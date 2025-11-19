@@ -256,8 +256,8 @@ export class ItVideo extends BaseLocalizedComponent {
                     e.stopPropagation();
                     this.acceptConsent(true);
                   }}
-                  label="${this.$t('video_consent_remember')}"
-                ></it-checkbox>
+                  ><span slot="label">${this.$t('video_consent_remember')}</span></it-checkbox
+                >
               </div>
             </div>
           </div>
