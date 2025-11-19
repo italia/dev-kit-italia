@@ -191,7 +191,7 @@ export const VarianteConImmagine: Story = {
     docs: {
       description: {
         story: `
-Per aggiungere un'immagine di sfondo alla sezione, inserire l'URL dell'immagine nell'attributo \`image\`. L'immagine si adatterà automaticamente.
+Inserisci la URL di un'immagine nell'attributo \`image\` per aggiungerla come sfondo della sezione. Le dimensioni dell'immagine si adattano automaticamente.
 
 Se l'immagine di sfondo è scura, usa l'attributo \`inverse\` per rendere il testo bianco e mantenere una buona leggibilità.
         `,
