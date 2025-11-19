@@ -1,0 +1,135 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-input.stories';
+
+<Meta of={Stories} />
+
+# Input
+
+<description>Campi per l'inserimento di dati testuali, numerici, in forma libera o in formati specifici, all'interno di un form</description>
+
+Per il corretto funzionamento degli elementi di tipo `<it-input>` è di fondamentale importanza l’utilizzo uno degli appositi attributi `type` (ad esempio, "email" per l’inserimento di indirizzi email o "number" per informazioni numeriche), in modo da sfruttare i controlli nativi dei browser più recenti come la verifica dell’email, l’utilizzo di metodo di input numerico ed altro.
+
+## Cosa fa
+Il componente `it-input` consente all’utente di inserire dati testuali o numerici, sia in forma libera che secondo formati prestabiliti, all’interno di moduli (form).
+È ideale per raccogliere informazioni brevi (come nomi, email, telefono) o lunghe (come descrizioni), nonché per supportare varianti specifiche come password e aree di testo.
+Si utilizza quando si vuole dare all’utente la possibilità di digitare direttamente un valore e non semplicemente selezionarlo da un elenco di opzioni.
+
+[Approfondisci come e quando usare il componente Input](https://designers.italia.it/design-system/componenti/input/)
+
+## Anteprima del componente
+
+<Canvas of={Stories.EsempioInterattivo} />
+
+<div class="small">Questi sono gli attributi che definiscono l’aspetto, il comportamento e il contenuto del componente. Puoi modificare questi valori per personalizzare il componente. L’anteprima e il codice si aggiornano in tempo reale, così puoi vedere subito il risultato delle tue modifiche.</div>
+
+<Controls of={Stories.EsempioInterattivo} />
+
+## Accessibilità
+
+Tutti gli attributi `it-aria-*` passati a `<it-input>` vengono applicati all'input generato.
+
+
+## Testo segnaposto
+
+<Description of={Stories.Placeholder} />
+<Canvas of={Stories.Placeholder} />
+
+## Testo di supporto
+
+<Description of={Stories.TestoDiSupporto} />
+<Canvas of={Stories.TestoDiSupporto} />
+
+## Etichetta nascosta
+
+<Description of={Stories.LabelHidden} />
+<Canvas of={Stories.LabelHidden} />
+
+## Icone o pulsanti
+
+<Description of={Stories.IconeOPulsanti} />
+<Canvas of={Stories.IconeOPulsanti} />
+
+## Dimensioni
+
+<Description of={Stories.Dimensioni} />
+<Canvas of={Stories.Dimensioni} />
+
+## Stato disabilitato
+
+<Description of={Stories.Disabilitato} />
+<Canvas of={Stories.Disabilitato} />
+
+## Stato readonly
+
+<Description of={Stories.Readonly} />
+<Canvas of={Stories.Readonly} />
+
+## Password
+
+<Description of={Stories.Password} />
+<Canvas of={Stories.Password} />
+
+## Area di testo
+
+<Description of={Stories.Textarea} />
+<Canvas of={Stories.Textarea} />
+
+## Validazione e gestione degli errori
+
+Se non è stata impostata la validazione custom tramite l'attributo `custom-validation`, e sono stati impostati uno di questi attributi
+-`required`
+- `pattern`
+- `min`
+- `max`
+- `step`
+- `minlength`
+- `maxlength`
+
+viene effettuata una validazione interna utilizzando la validazione nativa del browser.
+
+<Canvas of={Stories.ValidazioneNativa} />
+
+### Personalizzazione dei messaggi di errore
+
+E' possibile personalizzare alcuni dei messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
+
+- `validityRequired`: messaggio che viene mostrato quando il campo è `required` e non è compilato
+- `validityPattern`: messaggio che viene mostrato quando il campo non rispetta il pattern indicato
+- `validityMinlength`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo corta rispetto al valore passatto nell'attributo `min-length`
+- `validityMaxlength`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo lunga rispetto al valore passatto nell'attributo `max-length`
+
+Per gli altri errori di validazione non indicati, verranno mostrati i messaggi di errore nativi del browser.
+
+### Validazione esterna (validazione custom)
+
+E' inoltre possibile validare il campo esternamente (via js ad esempio, o lato server), impostando l'attributo `custom-validation="true"`.
+In questo modo la validazione di default del browser effettuata internamente al componente è disabilitata.
+
+
+#### Campo invalido
+
+Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo `validity-message="Messaggio di errore"`.
+
+#### Campo valido
+
+Per riportare il campo ad uno stato 'valido', è sufficiente impostare il messaggio di errore a vuoto: `validity-message=""`.
+
+<Canvas of={Stories.ValidazioneCustom} />
+
+## Gestione degli eventi
+
+<Description of={Stories.GestioneEventi} />
+<Canvas of={Stories.GestioneEventi} />
+
+## {Stories.MetodiEPropPubblici.name}
+<Description of={Stories.MetodiEPropPubblici}/>
+
+## i18n
+
+Per questo componente sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+
+```js
+const translation = {
+  ${JSON.stringify(i18nIT).replaceAll('{"', '"').replaceAll('",', '",\n\t').replaceAll('"}', '"')}
+}
+```
