@@ -28,7 +28,7 @@ Non dovrebbero essere usati per attivare la navigazione verso altre pagine o lin
 Questo può provocare complesse problematiche di accessibilità.
 
 - Dove il click sul pulsante non genera un cambio di pagina utilizza esclusivamente il componente `<it-button>`.
-Qualora non fosse possibile, è necessario applicare in modo appropriato l’attributo `it-role="button"` per trasmetterne lo scopo alle tecnologie assistive.
+Qualora non fosse possibile, è necessario applicare in modo appropriato l’attributo `role="button"` su elementi `<a>` o `<span>` per trasmetterne lo scopo alle tecnologie assistive.
 
 - Quando si utilizza l'attributo `disabled` è consigliato usare anche l'attributo `it-aria-describedby` (o un elemento all'interno di it-button con classe `.sr-only`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
 
