@@ -36,7 +36,7 @@ const renderComponent = (params: any) => html`
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Video',
-  tags: ['autodocs', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-video',
   args: {
     src: 'https://vjs.zencdn.net/v/oceans.webm',
@@ -104,7 +104,7 @@ export default meta;
 export const EsempioInterattivo: Story = {
   ...meta,
   name: 'Esempio interattivo',
-  tags: ['!autodocs', '!dev'],
+  tags: ['!dev'],
   parameters: {
     docs: {
       source: { excludeDecorators: true },

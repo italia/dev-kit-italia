@@ -40,13 +40,14 @@ const renderComponent = (params: any) =>
     support-text="${ifDefined(params.supportText || undefined)}"
     ?group="${params.group}"
     class="${ifDefined(params.className || undefined)}"
-    ><span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}</it-checkbox
-  >`;
+  >
+    <span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}
+  </it-checkbox> `;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Form/Checkbox',
-  tags: ['autodocs', 'new', 'a11y-ok', 'web-component'],
+  tags: ['new', 'a11y-ok', 'web-component'],
   component: 'it-checkbox',
   args: {
     id: '',
@@ -139,21 +140,6 @@ const meta = {
       description: 'Testo di supporto',
     },
   },
-  parameters: {
-    docs: {
-      description: {
-        component: `
-<Description>Casella di controllo accessibile e responsiva, che consente all'utente di attivare o disattivare un'opzione.</Description>
-
-
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>
-Tutti gli attributi \`it-aria-*\` passati a \`<it-checkbox>\` vengono applicati all'input generato.
-</p></div></div>
-`,
-      },
-    },
-  },
 } satisfies Meta<CheckboxProps>;
 
 export default meta;
@@ -162,7 +148,7 @@ type Story = StoryObj<CheckboxProps>;
 export const EsempioInterattivo: Story = {
   ...meta,
   name: 'Esempio interattivo',
-  tags: ['!autodocs', '!dev'],
+  tags: ['!dev'],
   parameters: {
     docs: {
       canvas: {
@@ -180,16 +166,6 @@ export const Disabilitato: Story = {
   ...meta,
   // name: 'Disabilitato',
   args: { disabled: true },
-
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per disabilitare i checkbox, aggiungi l'attributo \`disabled\` al componente \`<it-checkbox>\`.
-`,
-      },
-    },
-  },
   render: (params) => html`
     <fieldset>
       <legend>Gruppo di checkbox</legend>
@@ -211,16 +187,6 @@ export const Indeterminate: Story = {
   ...meta,
   name: 'Indeterminato (mixed)',
   args: { indeterminate: true },
-
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per ottenere lo stato indeterminato di una checkbox, aggiungi l'attributo \`indeterminate\` al componente \`<it-checkbox>\`.
-`,
-      },
-    },
-  },
   render: (params) => html`
     ${renderComponent({
       ...params,
@@ -239,16 +205,6 @@ export const Inline: Story = {
         key !== 'inline' ? [key, { ...value, table: { ...value.table, disable: true } }] : [key, { ...value }],
       ),
     ),
-  },
-
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per allineare orizzontalmente le checkbox, aggiungi l'attributo \`inline\` a \`<it-checkbox>\`.
-`,
-      },
-    },
   },
   render: (params) => html`
     <fieldset>
@@ -270,23 +226,6 @@ export const Group: Story = {
   ...meta,
   name: 'Gruppo di checkbox',
   args: { group: true },
-
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per creare un gruppo di checkbox allineati in colonna, occorre aggiungere l'attributo \`group\` al componente \`<it-checkbox>\`. L’elemento grafico di spunta verrà allineato alla destra del contenuto testuale.
-
-In questi casi, se tutti gli elementi \`<it-checkbox>\` hanno lo stesso attributo \`name\`, al submit della form via js, il modo corretto per estrarre il valore è:
-
-\`\`\`js
-  const formData = new FormData(document.getElementById('form'));
-formData.getAll(field_name) // dove \`field_name\` è il valore dell'attributo \`[name]\`
-\`\`\`
-`,
-      },
-    },
-  },
   render: (params) => html`
     <div class="row">
       <fieldset class="col-12 col-md-6">
@@ -335,16 +274,6 @@ export const SupportText: Story = {
   ...meta,
   name: 'Testo di supporto',
   args: { supportText: "Testo descrittivo di supporto per l'opzione selezionabile" },
-
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per mostrare un testo di supporto alla checkbox, aggiungi l'attributo \`supportText="Testo di supporto"\` a \`<it-checkbox>\`.
-`,
-      },
-    },
-  },
   render: (params) => html`
     ${renderComponent({
       ...params,
