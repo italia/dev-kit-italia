@@ -369,7 +369,7 @@ export const Disabilitato: Story = {
 
 Aggiungi l'attributo \`disabled\` ad un singolo \`<it-radio>\` per disabilitare quell'opzione.
 
-#### Gruppo intero di radio disabilitato
+#### Gruppo di radio disabilitato
 
 Se invece intendi disabilitare l'intero gruppo, aggiungi l'attributo \`disabled\` a \`<it-radio-group>\`. In questo modo tutti i radio al suo interno risulteranno disabilitati automaticamente.
 `,
