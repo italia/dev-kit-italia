@@ -15,7 +15,8 @@ export const StoryFormControlMethodAndProps = ({
       viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
       docs: {
         description: {
-          story: `Il componente espone delle proprietà, dei metodi e degli eventi, utili per eventuali interazioni via js.
+          story: `
+Il componente espone delle proprietà, metodi, ed eventi, utili per eventuali interazioni via js.
 
 \`\`\`html
 <${componentName} ... id="myinput"></${componentName}>
