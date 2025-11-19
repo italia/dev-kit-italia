@@ -237,7 +237,7 @@ export const ComeUsareItRadio: Story = {
 Il componente \`<it-radio>\` deve essere sempre utilizzato all'interno di un \`<it-radio-group>\` e richiede obbligatoriamente:
 
 - Un **attributo \`value\`** univoco per identificare l'opzione
-- Una **etichetta definita tramite slot** \`<span slot="label">Testo della label</span>\`
+- Una **etichetta definita tramite slot** \`<span slot="label">Testo dell'etichetta</span>\`
 
 #### Proprietà principali
 
