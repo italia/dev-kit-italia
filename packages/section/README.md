@@ -5,14 +5,14 @@ This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) reco
 ## Installation
 
 ```bash
-npm i it-section
+npm i @italia/section
 ```
 
 ## Usage
 
 ```html
 <script type="module">
-  import '@italia/it-section';
+  import '@italia/section';
 </script>
 
 <it-section></it-section>

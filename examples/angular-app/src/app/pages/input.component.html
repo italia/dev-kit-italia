@@ -1,115 +1,145 @@
 <h1>it-input</h1>
 
-<it-input id="exampleInputText" label="Campo di testo" type="text" name="testo"></it-input>
-<it-input id="exampleInputEmail" label="Campo email" type="email" name="email"></it-input>
-<it-input id="exampleInputNumber" label="Campo numerico" type="number" name="number"></it-input>
+<it-input id="exampleInputText" type="text" name="testo">
+  <span slot="label">Campo di testo</span>
+</it-input>
+
+<it-input id="exampleInputEmail" type="email" name="email">
+  <span slot="label">Campo email</span>
+</it-input>
+
+<it-input id="exampleInputNumber" type="number" name="number">
+  <span slot="label">Campo numerico</span>
+</it-input>
+
 <it-input
-    id="exampleInputNumberMinMaxStep"
-    label="Campo numerico min, max, step"
-    type="number"
-    name="numberminmaxstep"
-    min="10"
-    max="100"
-    step="10"
-  ></it-input>
-  <it-input
-    id="exampleInputNumberCurrency"
-    label="Campo numerico currency"
-    type="number"
-    name="numbercurrency"
-    value="3.50"
-    step="0.01"
-  >
-    <span slot="prepend" class="fw-semibold">
-      €
-    </span>
-  </it-input>
-  <it-input
-    id="exampleInputNumberPerc"
-    label="Campo numerico percentage"
-    type="number"
-    name="numberperc"
-    value="50"
-  >
-    <span slot="prepend" class="fw-semibold">
-      %
-    </span>
-  </it-input>
-  <it-input
-    id="exampleInputNumberAdaptive"
-    label="Campo numerico adattivo"
-    type="number"
-    name="numberadaptive"
-    value="99999"
-    adaptive
-  ></it-input>
-<it-input id="exampleInputTel" label="Campo telefonico" type="tel" name="telefono"></it-input>
-<it-input id="exampleInputTime" label="Campo orario" type="time" name="orario"></it-input>
+  id="exampleInputNumberMinMaxStep"
+  type="number"
+  name="numberminmaxstep"
+  min="10"
+  max="100"
+  step="10"
+>
+  <span slot="label">Campo numerico min, max, step</span>
+</it-input>
+
+<it-input
+  id="exampleInputNumberCurrency"
+  type="number"
+  name="numbercurrency"
+  value="3.50"
+  step="0.01"
+>
+  <span slot="label">Campo numerico currency</span>
+  <span slot="prepend" class="fw-semibold">€</span>
+</it-input>
+
+<it-input
+  id="exampleInputNumberPerc"
+  type="number"
+  name="numberperc"
+  value="50"
+>
+  <span slot="label">Campo numerico percentage</span>
+  <span slot="prepend" class="fw-semibold">%</span>
+</it-input>
+
+<it-input
+  id="exampleInputNumberAdaptive"
+  type="number"
+  name="numberadaptive"
+  value="99999"
+  adaptive
+>
+  <span slot="label">Campo numerico adattivo</span>
+</it-input>
+
+<it-input id="exampleInputTel" type="tel" name="telefono">
+  <span slot="label">Campo telefonico</span>
+</it-input>
+
+<it-input id="exampleInputTime" type="time" name="orario">
+  <span slot="label">Campo orario</span>
+</it-input>
+
 <it-input
   id="field-disabled-example"
-  label="Campo disabilitato"
   type="text"
   name="field-disabled-example"
-  disabled={true}
-></it-input>
+  disabled="true"
+>
+  <span slot="label">Campo disabilitato</span>
+</it-input>
+
 <it-input
   id="field-readonly-example"
-  label="Campo readonly"
   type="text"
   name="field-readonly-example"
-  readonly={true}
+  readonly="true"
   value="Contenuto in sola lettura"
-></it-input>
+>
+  <span slot="label">Campo readonly</span>
+</it-input>
+
 <it-input
   id="field-readonlyplaintext-example"
-  label="Campo readonly normalizzato come plaintext"
   type="text"
   name="field-readonlyplaintext-example"
-  readonly={true}
-  plaintext={true}
+  readonly="true"
+  plaintext="true"
   value="Contenuto in sola lettura"
-></it-input>
+>
+  <span slot="label">Campo readonly normalizzato come plaintext</span>
+</it-input>
 
 <it-input
   id="field-password-example"
-  label="Campo password"
   type="password"
   name="field-password-example"
   support-text="Inserisci almeno 8 caratteri e alcuni caratteri speciali."
   minlength="8"
-></it-input>
+>
+  <span slot="label">Campo password</span>
+</it-input>
+
 <it-input
   id="field-password-strength-example"
-  label="Campo password"
   type="password"
   name="field-password-strength-example"
   support-text="Inserisci almeno 8 caratteri e alcuni caratteri speciali."
-  strength-meter={true}
+  strength-meter="true"
   minlength="8"
-  suggestions={true}
-></it-input>
+  suggestions="true"
+>
+  <span slot="label">Campo password</span>
+</it-input>
 
 <it-input
   id="textarea-example"
-  label="Area di testo"
   type="textarea"
   name="textarea-example"
   placeholder="Testo segnaposto"
-></it-input>
+>
+  <span slot="label">Area di testo</span>
+</it-input>
+
 <it-input
   id="required-example"
-  label="Campo obbligatorio"
   type="text"
   name="required-example"
   required
   placeholder="Testo segnaposto"
-></it-input>
+>
+  <span slot="label">Campo obbligatorio</span>
+</it-input>
+
 <it-input
   id="external-validation-example"
-  label="Validazione esterna"
   type="text"
   name="external-validation-example"
   validity-message="Questo campo è obbligatorio!"
   placeholder="Testo segnaposto"
   custom-validation=""
-></it-input>
+>
+  <span slot="label">Validazione esterna</span>
+</it-input>

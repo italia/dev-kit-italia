@@ -2,9 +2,6 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { ACCORDION_MODES, type AccordionMode, type HeadingLevels } from '../src/types.js';
-import '@italia/accordion';
-import '@italia/button';
-import '@italia/icon';
 
 interface AccordionProps {
   mode?: AccordionMode;
@@ -80,7 +77,8 @@ const meta: Meta<AccordionProps> = {
     mode: {
       control: 'select',
       description:
-        "Se impostato a single, solo un elemento dell'accordion può essere aperto contemporaneamente. Il default è multiple.",
+        "Se impostato a `single`, solo un elemento dell'accordion può essere aperto contemporaneamente. Il default è `multiple`.",
+      table: { defaultValue: { summary: 'multiple' } },
       options: ACCORDION_MODES,
     },
     backgroundActive: {

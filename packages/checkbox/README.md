@@ -5,14 +5,14 @@ This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) reco
 ## Installation
 
 ```bash
-npm i it-checkbox
+npm i @italia/checkbox
 ```
 
 ## Usage
 
 ```html
 <script type="module">
-  import '@italia/it-checkbox';
+  import '@italia/checkbox';
 </script>
 
 <it-checkbox></it-checkbox>

@@ -144,15 +144,9 @@ importers:
 
   packages/accordion:
     dependencies:
-      '@italia/button':
-        specifier: workspace:^
-        version: link:../button
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
-      '@italia/icon':
-        specifier: workspace:^
-        version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
         version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/5ca55d534319deb559e1860fb0bc121113a78ebf
@@ -163,6 +157,9 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.10
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config
@@ -208,18 +205,12 @@ importers:
 
   packages/avatar:
     dependencies:
-      '@italia/dropdown':
-        specifier: workspace:^
-        version: link:../dropdown
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
       '@italia/i18n':
         specifier: workspace:^
         version: link:../i18n
-      '@italia/icon':
-        specifier: workspace:^
-        version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
         version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/5ca55d534319deb559e1860fb0bc121113a78ebf
@@ -230,6 +221,9 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.10
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config
@@ -275,9 +269,6 @@ importers:
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
-      '@italia/icon':
-        specifier: workspace:^
-        version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
         version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/5ca55d534319deb559e1860fb0bc121113a78ebf
@@ -388,9 +379,6 @@ importers:
 
   packages/chip:
     dependencies:
-      '@italia/avatar':
-        specifier: workspace:^
-        version: link:../avatar
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
@@ -404,6 +392,9 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.10
+      '@italia/avatar':
+        specifier: workspace:^
+        version: link:../avatar
       '@italia/button':
         specifier: workspace:^
         version: link:../button
@@ -531,18 +522,9 @@ importers:
 
   packages/dropdown:
     dependencies:
-      '@italia/button':
-        specifier: workspace:^
-        version: link:../button
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
-      '@italia/icon':
-        specifier: workspace:^
-        version: link:../icon
-      '@italia/popover':
-        specifier: workspace:^
-        version: link:../popover
       bootstrap-italia:
         specifier: 'catalog:'
         version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/5ca55d534319deb559e1860fb0bc121113a78ebf
@@ -553,6 +535,15 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.10
+      '@italia/button':
+        specifier: workspace:^
+        version: link:../button
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
+      '@italia/popover':
+        specifier: workspace:^
+        version: link:../popover
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config
@@ -742,18 +733,12 @@ importers:
 
   packages/input:
     dependencies:
-      '@italia/button':
-        specifier: workspace:^
-        version: link:../button
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
       '@italia/i18n':
         specifier: workspace:^
         version: link:../i18n
-      '@italia/icon':
-        specifier: workspace:^
-        version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
         version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/5ca55d534319deb559e1860fb0bc121113a78ebf
@@ -764,6 +749,9 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.10
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config
@@ -922,9 +910,6 @@ importers:
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
-      '@italia/icon':
-        specifier: workspace:^
-        version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
         version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/5ca55d534319deb559e1860fb0bc121113a78ebf
@@ -1113,24 +1098,12 @@ importers:
 
   packages/video:
     dependencies:
-      '@italia/accordion':
-        specifier: workspace:^
-        version: link:../accordion
-      '@italia/button':
-        specifier: workspace:^
-        version: link:../button
-      '@italia/checkbox':
-        specifier: workspace:^
-        version: link:../checkbox
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
       '@italia/i18n':
         specifier: workspace:^
         version: link:../i18n
-      '@italia/icon':
-        specifier: workspace:^
-        version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
         version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/5ca55d534319deb559e1860fb0bc121113a78ebf
@@ -1147,6 +1120,15 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.10
+      '@italia/button':
+        specifier: workspace:^
+        version: link:../button
+      '@italia/checkbox':
+        specifier: workspace:^
+        version: link:../checkbox
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config
