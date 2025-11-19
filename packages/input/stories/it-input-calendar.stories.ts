@@ -165,9 +165,9 @@ const meta = {
       description: 'Testo di supporto',
     },
     size: {
-      control: 'select',
-      options: INPUT_SIZES.filter((o) => o !== undefined),
-      description: "Dimensione del campo: 'sm' | (nessuno = 'md') | 'lg' ",
+      control: { type: 'select', labels: { undefined: '(non definito)', sm: 'sm', lg: 'lg' } },
+      options: INPUT_SIZES,
+      description: "Dimensione del campo: 'sm' | (non definito) | 'lg' ",
       table: { defaultValue: { summary: undefined } },
       type: 'string',
     },

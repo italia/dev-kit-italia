@@ -153,9 +153,9 @@ const meta = {
       description: 'Testo di supporto',
     },
     size: {
-      control: 'select',
+      control: { type: 'select', labels: { undefined: '(non definito)', sm: 'sm', lg: 'lg' } },
       options: INPUT_SIZES,
-      description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
+      description: "Dimensione del campo: 'sm' | (non definito) | 'lg' ",
       table: { defaultValue: { summary: undefined } },
       type: 'string',
     },
