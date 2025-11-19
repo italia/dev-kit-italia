@@ -28,7 +28,7 @@ interface InputNumberProps {
 
 // Renderizza il wc it-input configurato per input numerico
 const renderNumberInput = (params: any) =>
-  html`<it-input
+  html` <it-input
     id="${ifDefined(params.id || undefined)}"
     type="number"
     name="${ifDefined(params.name || undefined)}"
@@ -46,8 +46,9 @@ const renderNumberInput = (params: any) =>
     support-text="${ifDefined(params.supportText || undefined)}"
     size="${ifDefined(params.size || undefined)}"
     ?adaptive="${params.adaptive}"
-    ><span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}</it-input
-  >`;
+  >
+    <span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}
+  </it-input>`;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
@@ -153,9 +154,9 @@ const meta = {
       description: 'Testo di supporto',
     },
     size: {
-      control: 'select',
+      control: { type: 'select', labels: { undefined: '(non definito)', sm: 'sm', lg: 'lg' } },
       options: INPUT_SIZES,
-      description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
+      description: "Dimensione del campo: 'sm' | (non definito) | 'lg' ",
       table: { defaultValue: { summary: undefined } },
       type: 'string',
     },
