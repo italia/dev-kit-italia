@@ -34,6 +34,8 @@ const meta = {
     href: {
       control: 'text',
       description: 'Se valorizzato, la chip sarà un link (elemento `<a>`).',
+      type: 'string',
+      table: { defaultValue: { summary: undefined } },
     },
     variant: {
       control: 'select',
