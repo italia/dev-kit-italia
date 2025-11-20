@@ -1,6 +1,6 @@
 <h1>it-video</h1>
 
-<div style="width: 600px">
+<div style="width: 600px; margin-left: auto; margin-right: auto;">
   <div class="mb-5">
     <it-video src="https://vjs.zencdn.net/v/oceans.webm"></it-video>
   </div>

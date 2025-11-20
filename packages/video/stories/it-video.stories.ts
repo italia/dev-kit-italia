@@ -36,7 +36,7 @@ const renderComponent = (params: any) => html`
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Video',
-  tags: ['autodocs', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-video',
   args: {
     src: 'https://vjs.zencdn.net/v/oceans.webm',
@@ -97,27 +97,6 @@ const meta = {
     },
   },
   decorators: [(Story) => html`<div class="sbdocs-video-container">${Story()}</div>`],
-  parameters: {
-    docs: {
-      source: { excludeDecorators: true },
-      description: {
-        component: `
-<Description>Componente Video Player.</Description>
-<br/><br/>
-Il tag video HTML5 consente di incorporare video all’interno di una pagina web senza dover utilizzare plugin esterni.
-Questo componente utilizza la libreria [video.js](https://videojs.com/) per implementare funzionalità avanzate come il supporto a diversi formati video, la personalizzazione dell’interfaccia utente e l’integrazione con API esterne.
-
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>Le persone che utilizzano le tecnologie assistive possono agevolmente accedere ai comandi di questo player video, tuttavia per rendere accessibile un contenuto video è necessario soddisfare i Criteri di Successo contenuti nelle <a href="https://www.w3.org/Translations/WCAG21-it/#time-based-media">linee guida 1.2 Media temporizzati delle WCAG (versione corrente)</a>. In particolare:</p>
-<ul>
-<li>Se il contenuto è costituito da “solo video” oppure “solo audio”, è necessario fornire una trascrizione (Criterio di Successo 1.2.1)</li>
-<li>Fornire sempre sottotitoli (Criterio di Successo 1.2.2).</li>
-<li>Fornire audio descrizioni quando sono presenti scene o contenuti non descritte dalla traccia audio primaria. (Criteri di Successo 1.2.3 e 1.2.5)</li>
-</ul></div></div>
-`,
-      },
-    },
-  },
 } satisfies Meta<VideoProps>;
 
 export default meta;
@@ -125,12 +104,12 @@ export default meta;
 export const EsempioInterattivo: Story = {
   ...meta,
   name: 'Esempio interattivo',
-  tags: ['!autodocs', '!dev'],
+  tags: ['!dev'],
   parameters: {
     docs: {
       source: { excludeDecorators: true },
       canvas: {
-        sourceState: 'shown',
+        sourceState: 'closed',
       },
     },
   },
@@ -138,59 +117,6 @@ export const EsempioInterattivo: Story = {
     html` ${renderComponent({
       ...params,
     })}`,
-};
-
-export const ComeUsarlo: Story = {
-  name: 'Come usarlo',
-  tags: ['!dev'],
-  render: () => html`<div class="hide-preview"></div>`,
-  parameters: {
-    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
-    docs: {
-      description: {
-        story: `
-Per aggiungere un video, è sufficiente utilizzare il componente \`<it-video />\` ed i relativi attributi per gestirne la sorgente, e le opzioni del video player. - Usa l'attributo \`options\` per passare
-al player le opzioni definite qui [https://videojs.com/guides/options/](https://videojs.com/guides/options/).
-
-- Usa l'attributo \`translations\` per definire le traduzioni del player diverse dalla lingua italiana, o per
-sovrascrivere le traduzioni italiane pre-impostate.
-
-### Font per le icone del player
-Per utilizzare le icone del player, è necessario includere il font \`VideoJS.woff\` nella tua applicazione. Puoi farlo aggiungendo il css compilato di dev-kit-italia nel tuo sorgente HTML:
-
-\`\`\`html
-<link rel="stylesheet" href="dev-kit-italia/dist/styles.css" />
-\`\`\`
-oppure se stai usando SCSS puoi definire il font direttamente nel tuo file SCSS:
-
-\`\`\`scss
-@font-face {
-  font-family: VideoJS;
-  src: url('./assets/fonts/VideoJS.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-\`\`\`
-copiando l'asset \`VideoJS.woff\` nella tua cartella assets/fonts (lo puoi copiare dal package dev-kit-italia).
-
-
-### Plugin
-Esistono numerosi plugin disponibili per Video.js, che consentono di aggiungere nuove funzionalità, come la riproduzione di video in VR, l’analisi delle statistiche di visualizzazione del video, le utility per la UI mobile e molto altro ancora.
-
-#### Utilizzo di ulteriori plugin
-<Description> (Ad esempio il plugin per l'embed di Vimeo)</Description>
-Con l'attributo  \`init-plugins\` è possibile passare al componente \`<it-video>\` il nome della propria funzione di inizializzazione dei plugin, che deve essere definita nella window.
-
-Esempio:
-
-\`\`\`html
-<it-video ...... init-plugins="myInitPlugin"></it-video>
-<script> const myInitPlugin = (videojs)=>{ /*my code*/ }</script>
-\`\`\`
-`,
-      },
-    },
-  },
 };
 
 export const ConTrascrizione: Story = {
@@ -215,35 +141,6 @@ export const ConTrascrizione: Story = {
 export const SottotitoliDidascalieCapitoliEDescrizioni: Story = {
   ...meta,
   name: 'Sottotitoli, didascalie, capitoli e descrizioni',
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Tramite l'attributo \`track\` puoi aggiungere del testo accessibile presente in un file testuale; l’unico formato supportato è WebVTT.
-L'attributo \`track\` accetta un elenco di valori con il seguente formato:
-
-\`\`\`js
-[{kind:'captions', src:'https://example.com/captions.vtt', srclang:'it', label:'Italiano', default:true}, ...]
-\`\`\`
-
-dove ogni singolo elemento rappresenta un file di sottotitoli, didascalie, capitoli o descrizioni.
-
-Valorizzando opportunamente la proprietà \`kind\` puoi specificare se il file associato contiene:
-- \`captions\`: per i sottotitoli (trascrizione dei dialoghi)
-- \`subtitles\`: per le didascalie (trascrizione dei dialoghi, degli effetti sonori, trascrizione del tipo di emozioni rappresentate dalla musica, ecc)
-- \`chapters\`: per i capitoli
-- \`descriptions\`: per le descrizioni (testo che descrive il contenuto visivo del video, utile per le persone con disabilità visive)
-- \`metadata\`: per i metadati (informazioni aggiuntive sul video, come la durata, la risoluzione, ecc)
-
-L'attributo \`default\` indica se il file associato è quello predefinito da utilizzare di default quando il video viene caricato.
-
-Approfondisci l’argomento consultando la documentazione di [VideoJS](https://videojs.com/guides/text-tracks/) (Inglese).
-
-Di seguito un esempio d’uso delle didascalie (kind:"captions") in diverse lingue.
-`,
-      },
-    },
-  },
   render: (params) =>
     html`${renderComponent({
       ...params,
@@ -264,7 +161,7 @@ export const ImmagineDiAnteprima: Story = {
     docs: {
       description: {
         story: `
-Per aggiungere un’immagine di anteprima come copertina al video occorre utilizzare l’attributo \`poster\` inizializzato con la url dell’anteprima.
+Per aggiungere un’immagine di anteprima come copertina al video, utilizza l’attributo \`poster\` inizializzato con la url dell’anteprima.
 
 <div class="callout callout-warning"><div class="callout-inner"><div class="callout-title"><span class="text">Attenzione</span></div>
 <p>Le immagini caricate come copertina devono rispettare la stessa \`aspect ratio\` del video per una corretta visualizzazione.
@@ -299,7 +196,7 @@ In questo contesto, i formati di streaming HLS e DASH offrono importanti vantagg
 L’uso dei formati di streaming permette una riproduzione fluida dei video online grazie alla loro
 capacità di adattarsi alla larghezza di banda disponibile. In questo modo si evitano interruzioni o rallentamenti durante la visualizzazione, migliorando l’esperienza utente. Inoltre, questi formati consentono di distribuire il contenuto su diverse piattaforme e dispositivi, aumentando la portabilità del video.
 
-<div class="callout callout-info"><div class="callout-inner"><div class="callout-title"><span class="text"><h5 id="tip">Tip</h5></span></div><p>FFmpeg è uno strumento di conversione multimediale open-source che consente di convertire facilmente i
+<div class="callout callout-info"><div class="callout-inner"><div class="callout-title"><span class="text">Suggerimento</span></div><p>FFmpeg è uno strumento di conversione multimediale open-source che consente di convertire facilmente i
 file MP4 in formati adattivi come HLS o DASH, ti permette la conversione del video MP4 in un formato a
 bitrate variabile per adattare la qualità del video alle diverse velocità di connessione degli utenti.
 Approfondisci su <a href="https://ffmpeg.org/">FFmpeg</a>.</p></div></div>
@@ -394,7 +291,7 @@ Tuttavia, è importante tenere in considerazione la questione della privacy: qua
 <p>Coinvolgi il Responsabile per la protezione dei dati (RDP/DPO) della tua amministrazione e ricordati di aggiornare la cookie policy del sito. Designers Italia mette a disposizione il [kit Privacy](https://designers.italia.it/risorse-per-progettare/organizzare/privacy/) per approfondire questi temi e in particolare uno strumento dedicato alla redazione della Cookie policy che trovi in [questa azione del kit](https://designers.italia.it/risorse-per-progettare/organizzare/privacy/rispetta-la-privacy-per-il-go-live-di-un-sito/).</p>
 </div></div>
 
-#### Attivazione dell’overlay di consenso
+### Attivazione dell’overlay di consenso
 L’utilizzo di un overlay per il consenso è una soluzione comune per garantire la conformità alla normativa sulla privacy in materia di cookie e tracciamento degli utenti.
 L’overlay per il consenso consente di informare l’utente sui cookie utilizzati e di ottenere il suo consenso in modo esplicito e consapevole alla riproduzione del video prima dell’installazione di qualunque cookie.
 

@@ -112,7 +112,7 @@ const dismissTemplate = (label = 'Elimina etichetta', disabled = false, descript
   <it-button
     slot="dismiss-button"
     it-aria-label="${label}"
-    it-aria-disabled="${disabled}"
+    ?disabled="${disabled}"
     it-aria-description="${description}"
     ?icon=${true}
     @click=${(e: Event) => {
@@ -375,12 +375,12 @@ Aggiungendo l'attributo \`is-disabled\` si ottiene una chip disabilitata.
     },
   },
   render: (args) => html`
-    <it-chip label="Etichetta" size="sm" variant="${args.variant}" dismissable is-disabled>
+    <it-chip label="Etichetta" size="sm" variant="${args.variant}" dismissable ?is-disabled="${args.isDisabled}">
       <it-button
         slot="dismiss-button"
         icon
         it-aria-label="Elimina etichetta"
-        it-aria-disabled="true"
+        ?disabled="${args.isDisabled}"
         it-aria-description="Questa chip è disabilitata e non può essere rimossa."
       >
         <it-icon name="it-close" size="sm"></it-icon>

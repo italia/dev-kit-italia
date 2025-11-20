@@ -14,6 +14,7 @@ import Avatar from './pages/Avatar';
 
 export const AppRoutes = [
   { path: '/accordion', element: <Accordion />, title: 'Accordion' },
+  { path: '/avatar', element: <Avatar />, title: 'Avatar' },
   { path: '/button', element: <Button />, title: 'Button' },
   { path: '/checkbox', element: <Checkbox />, title: 'Checkbox' },
   { path: '/chip', element: <Chip />, title: 'Chip' },
@@ -25,5 +26,4 @@ export const AppRoutes = [
   { path: '/section', element: <Section />, title: 'Section' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/video', element: <Video />, title: 'Video' },
-  { path: '/avatar', element: <Avatar />, title: 'Avatar' },
 ];

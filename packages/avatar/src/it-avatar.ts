@@ -248,18 +248,16 @@ export class ItAvatar extends BaseLocalizedComponent {
 
     return html`
       <p aria-hidden="true">${initials}</p>
-      ${this.text ? html`<span class="visually-hidden">${this.text}</span>` : nothing}
+      ${this.avatarTitle ? html`<span class="visually-hidden">${this.avatarTitle}</span>` : nothing}
     `;
   }
 
   private renderIcon() {
     if (!this.icon) return nothing;
 
-    const accessibleText = this.avatarTitle || this.text || this.alt || 'Icona';
-
     return html`
-      <it-icon name="${this.icon}" aria-hidden="true"></it-icon>
-      <span class="visually-hidden">${accessibleText}</span>
+      <it-icon name="${this.icon}"></it-icon>
+      ${this.avatarTitle ? html`<span class="visually-hidden">${this.avatarTitle}</span>` : nothing}
     `;
   }
 
