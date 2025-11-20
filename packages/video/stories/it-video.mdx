@@ -1,0 +1,121 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-video.stories';
+
+<Meta of={Stories} />
+
+
+# Video
+
+<description>Lettore per mostrare video sul proprio sito o incorporarli da piattaforme terze rispettando privacy e accessibilità.</description>
+
+## Cosa fa
+Il componente `it-video` consente di incorporare video all’interno delle pagine web, offrendo un lettore video accessibile e rispettoso della privacy degli utenti.
+Supporta sia la riproduzione di video ospitati localmente che l’incorporamento di video da piattaforme esterne come YouTube, garantendo un’esperienza utente coerente e personalizzabile.
+Questo componente utilizza la libreria [video.js](https://videojs.com/) per implementare funzionalità avanzate come il supporto a diversi formati video, la personalizzazione dell’interfaccia utente e l’integrazione con API esterne.
+
+## Anteprima e attributi del componente
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+## Indicazioni generali
+Per aggiungere un video, è sufficiente utilizzare il componente `<it-video />` ed i relativi attributi per gestirne la sorgente, e le opzioni del video player. - Usa l'attributo `options` per passare
+al player le opzioni definite qui [https://videojs.com/guides/options/](https://videojs.com/guides/options/).
+
+- Usa l'attributo `translations` per definire le traduzioni del player diverse dalla lingua italiana, o per
+sovrascrivere le traduzioni italiane pre-impostate.
+
+### Font per le icone del player
+Per utilizzare le icone del player, è necessario includere il font `VideoJS.
+Per utilizzare le icone del player, è necessario includere il font `VideoJS.woff` nella tua applicazione. Puoi farlo aggiungendo il css compilato di dev-kit-italia nel tuo sorgente HTML:
+
+```html
+<link rel="stylesheet" href="dev-kit-italia/dist/styles.css" />
+```
+oppure se stai usando SCSS puoi definire il font direttamente nel tuo file SCSS:
+
+```scss
+@font-face {
+  font-family: VideoJS;
+  src: url('./assets/fonts/VideoJS.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+```
+copiando l'asset `VideoJS.woff` nella tua cartella assets/fonts (lo puoi copiare dal package dev-kit-italia).
+
+
+### Plugin per Video.js
+Esistono numerosi plugin disponibili per Video.js, che consentono di aggiungere nuove funzionalità, come la riproduzione di video in VR, l’analisi delle statistiche di visualizzazione del video, le utility per la UI mobile e molto altro ancora.
+
+#### Utilizzo di ulteriori plugin
+<Description> (Ad esempio il plugin per l'embed di Vimeo)</Description>
+Con l'attributo  `init-plugins` è possibile passare al componente `<it-video>` il nome della propria funzione di inizializzazione dei plugin, che deve essere definita nella window.
+
+Esempio:
+
+```html
+<it-video ...... init-plugins="myInitPlugin"></it-video>
+<script> const myInitPlugin = (videojs)=>{ /*my code*/ }</script>
+```
+
+## Accessibilità
+
+Le persone che utilizzano le tecnologie assistive possono agevolmente accedere ai comandi di questo player video, tuttavia per rendere accessibile un contenuto video è necessario soddisfare i Criteri di Successo contenuti nelle [linee guida 1.2 Media temporizzati delle WCAG (versione corrente)](https://www.w3.org/Translations/WCAG21-it/#time-based-media).
+
+In particolare:
+- Se il contenuto è costituito da “solo video” oppure “solo audio”, è necessario fornire una trascrizione (Criterio di Successo 1.2.1)
+- Fornire sempre sottotitoli (Criterio di Successo 1.2.2).
+- Fornire audio descrizioni quando sono presenti scene o contenuti non descritte dalla traccia audio primaria. (Criteri di Successo 1.2.3 e 1.2.5)
+
+
+## Con trascrizione
+Per aggiungere una trascrizione al video, utilizzare il componente `<it-accordion>` come elemento figlio del componente `<it-video>`. All'interno dell'accordion, è possibile inserire il testo della trascrizione del video.
+Vedi la [documentazione di `<it-accordion>`](?path=/docs/componenti-accordion--documentazione) per maggiori dettagli su come utilizzarlo.
+<Canvas of={Stories.ConTrascrizione} />
+
+## Sottotitoli, didascalie, capitoli e descrizioni
+
+Tramite l'attributo `track` puoi aggiungere del testo accessibile presente in un file testuale; l’unico formato supportato è WebVTT.
+L'attributo `track` accetta un elenco di valori con il seguente formato:
+
+```js
+[{kind:'captions', src:'https://example.com/captions.vtt', srclang:'it', label:'Italiano', default:true}, ...]
+```
+
+dove ogni singolo elemento rappresenta un file di sottotitoli, didascalie, capitoli o descrizioni.
+
+Valorizzando opportunamente la proprietà `kind` puoi specificare se il file associato contiene:
+- `captions`: per i sottotitoli (trascrizione dei dialoghi)
+- `subtitles`: per le didascalie (trascrizione dei dialoghi, degli effetti sonori, trascrizione del tipo di emozioni rappresentate dalla musica, ecc)
+- `chapters`: per i capitoli
+- `descriptions`: per le descrizioni (testo che descrive il contenuto visivo del video, utile per le persone con disabilità visive)
+- `metadata`: per i metadati (informazioni aggiuntive sul video, come la durata, la risoluzione, ecc)
+
+L'attributo `default` indica se il file associato è quello predefinito da utilizzare di default quando il video viene caricato.
+
+Approfondisci l’argomento consultando la documentazione di [VideoJS](https://videojs.com/guides/text-tracks/) (Inglese).
+
+Di seguito un esempio d’uso delle didascalie (kind:"captions") in diverse lingue.
+
+<Canvas of={Stories.SottotitoliDidascalieCapitoliEDescrizioni} />
+
+## Immagine di anteprima
+
+<Description of={Stories.ImmagineDiAnteprima} />
+<Canvas of={Stories.ImmagineDiAnteprima} />
+
+## Streaming
+<Description of={Stories.Streaming} />
+<Canvas of={Stories.Streaming} />
+
+## Gestire più tracce audio
+<Description of={Stories.GestirePiuTracceAudio} />
+<Canvas of={Stories.GestirePiuTracceAudio} />
+
+## Embed da piattaforme terze
+<Description of={Stories.EmbedDaPiattaformeTerze} />
+<Canvas of={Stories.EmbedDaPiattaformeTerze} />
+
+## i18n
+<Description of={Stories.I18n} />

@@ -1,0 +1,100 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './form.stories';
+
+<Meta of={Stories} />
+
+# Form
+
+<description>Campi input aggregati per la raccolta di dati e la configurazione di opzioni</description>
+
+## Cosa fa
+Il componente form, o modulo, è un involucro (wrapper) che permette di raggruppare e impaginare campi input correlati per l'invio di informazioni o la configurazione di opzioni.
+
+Le persone possono inviare il form quando tutti i campi obbligatori sono compilati e i dati sono validi rispetto al formato richiesto dallo specifico campo.
+
+[Approfondisci come e quando usare il componente Input](https://designers.italia.it/design-system/componenti/form/)
+
+## Organizzazione dei campi
+
+Nella visualizzazione predefinita di un form gli elementi sono distribuiti verticalmente, ma è possibile utilizzare classi aggiuntive per variare questo tipo di layout.
+(Bootstrap Italia applica automaticamente a tutti i form `display: block` e `width: 100%`.)
+
+
+### Dimensionamento delle colonne
+Strutture più complesse possono essere costruite usando il sistema a griglia, da utilizzare per layout che richiedono più colonne, larghezze diverse e opzioni di allineamento aggiuntive.
+La classe `.row` ne assicura una corretta spaziatura. Questa classe deve essere applicata ad un elemento html contenitore (ad esempio un `<div>`).
+
+Si può scegliere di dare una dimensione ad una colonna, ad esempio dandogli una classe `.col-md-6` per ottenere una certo design dal breakpoint `md` in su, mentre le restanti colonne con classe `.col-md` si divideranno il resto dello spazio.
+La classe `.col-md*` può essere applicata sia ad un tag html che fa da contenitore (ad esempio un `div`), sia al componente di input stesso (ad esempio su `<it-input class="col-md-6">`).
+
+<Canvas of={Stories.DimensionamentoColonne} />
+
+### Autodimensionamento
+
+L’esempio seguente usa una delle [utilità di flexbox](https://italia.github.io/bootstrap-italia/docs/organizzare-gli-spazi/flex/) per centrare verticalmente dal breakpoint `lg` in su il contenuto e cambiando `.col` con `.col-auto` in modo che le colonne occupino solo lo spazio necessario.
+In altre parole, la colonna si dimensiona in base al contenuto.
+
+È possibile usarlo anche quando sono presenti altre colonne con dimensioni specifiche (es.: `col-sm-3`).
+
+<Canvas of={Stories.Autodimensionamento} />
+
+## Disabilitare un campo
+
+Aggiungi l’attributo booleano `disabled` su un campo della form per impedire le interazioni dell’utente e renderlo più chiaro.
+
+<Canvas of={Stories.DisabilitazioneCampi} />
+
+## Validazione
+Di base, i componenti che implementano widget utilizzabili nelle form, come ad esempio `<it-input>`, forniscono la validazione standard del browser a seconda del tipo di campo e/o degli attributi `minlength`, `maxlength`, `pattern` e `required`.
+
+### Validazione custom
+
+In alternativa, è possibile eseguire una propria validazione (lato server, o con js), impostando l' attributo `custom-validation="true"`. In questo modo la validazione di default effettuata internamente al componente è disabilitata.
+
+Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo `validity-message="Messaggio di errore"`.
+
+<Canvas of={Stories.Validazione} />
+
+### Validazione via js
+
+È possibile implementare una propria validazione via JS, intercettando gli eventi emessi dai componenti:
+
+```js
+ window.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('#form');
+      const all_input = form.querySelectorAll('it-input');
+
+      // evento scatenato quando il web-component ha effettutato il primo render, e l'input è disonibile nel DOM
+      all_input.forEach(input=>{
+        input.addEventListener('it-input-ready', (event) => {
+          const input = event.detail.el;
+          // il tuo codice qui.
+        });
+      });
+
+      // evento scatenato quando l'input riceve l'evento di 'it-input' (ad esempio, durante l'inserimento di testo da parte dell'utente)
+      all_input.forEach(i=>{
+        i.addEventListener('it-input', (event) => {
+          const input = event.detail.el;
+          // il tuo codice qui.
+        });
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // il tuo codice qui.
+      });
+    });
+```
+
+<br/><br/>
+#### Esempio di validazione via JS con plugin JustValidate
+
+Ecco qui un esempio di implementazione della validazione con il plugin [JustValidate](https://just-validate.dev/).
+
+<Canvas of={Stories.EsempioJustValidate} />
+
+
+## Tipologie di campi
+
+I singoli campi di tipo `<it-input>`, `<it-checkbox>`, `<it-radio>`, `<it-toggle>`, ecc. sono trattati in pagine separate della documentazione.

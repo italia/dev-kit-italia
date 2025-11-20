@@ -11,7 +11,8 @@ export const routes: Routes = [
   },
   {
     path: 'breadcrumbs',
-    loadComponent: () => import('./pages/breadcrumbs.component').then((c) => c.BreadcrumbsComponent),
+    loadComponent: () =>
+      import('./pages/breadcrumbs.component').then((c) => c.BreadcrumbsComponent),
   },
   {
     path: 'button',
