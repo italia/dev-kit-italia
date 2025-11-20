@@ -41,14 +41,14 @@ describe('ItCallout', () => {
       await expect(el).to.be.accessible();
     });
 
-    it('highlight and more variations are accessible', async () => {
+    it('highlight e slot more-content sono accessibili', async () => {
       const el = await fixture(html`
         <div>
-          <it-callout highlight
-            ><span slot="title">Highlight</span>
-            <p>Contenuto</p></it-callout
-          >
-          <it-callout more>
+          <it-callout highlight>
+            <span slot="title">Highlight</span>
+            <p>Contenuto</p>
+          </it-callout>
+          <it-callout>
             <span slot="title">Approfondimento</span>
             <p>Contenuto principale</p>
             <div slot="more-content">Contenuto aggiuntivo</div>
@@ -64,7 +64,6 @@ describe('ItCallout', () => {
       const el = await fixture<ItCallout>(html`<it-callout></it-callout>`);
       expect(el.variant).to.equal('');
       expect(el.highlight).to.equal(false);
-      expect(el.more).to.equal(false);
     });
 
     it('reflects variant attribute to property and class', async () => {
@@ -78,17 +77,29 @@ describe('ItCallout', () => {
       expect(callout?.classList.contains('callout-primary')).to.be.true;
     });
 
-    it('boolean attributes reflect to properties and add classes', async () => {
-      const el = await fixture<ItCallout>(html`<it-callout highlight more big-text></it-callout>`);
+    it('highlight attribute reflect to property and class', async () => {
+      const el = await fixture<ItCallout>(html`<it-callout highlight></it-callout>`);
       await el.updateComplete;
       expect(el.highlight).to.equal(true);
-      expect(el.more).to.equal(true);
 
       const callout = el.shadowRoot!.querySelector('.callout');
       expect(callout?.classList.contains('callout-highlight')).to.be.true;
-      expect(callout?.classList.contains('callout-more')).to.be.true;
-      // big-text affects typography not classes in markup; ensure attribute present
-      expect(el.hasAttribute('big-text')).to.be.true;
+    });
+
+    it('applies bigText to paragraphs in default slot', async () => {
+      const el = await fixture<ItCallout>(html`<it-callout bigText><p>Testo grande</p></it-callout>`);
+      await el.updateComplete;
+      const slot = el.shadowRoot!.querySelector('slot:not([name])') as HTMLSlotElement;
+      const assigned = slot.assignedElements();
+      expect(assigned.length).to.be.greaterThan(0);
+      const p = assigned.find((n) => n.tagName.toLowerCase() === 'p');
+      expect(p).to.exist;
+      expect(p?.classList.contains('callout-big-text')).to.be.true;
+
+      // Se la prop viene tolta, la classe viene rimossa
+      el.bigText = false;
+      await el.updateComplete;
+      expect(p?.classList.contains('callout-big-text')).to.be.false;
     });
   });
 
@@ -160,8 +171,9 @@ describe('ItCallout', () => {
     });
 
     it('more-content slot exists only when provided', async () => {
+      // Lo slot more-content viene sempre renderizzato, il contenuto appare se fornito, indipendentemente da more
       const elWith = await fixture<ItCallout>(html`
-        <it-callout more>
+        <it-callout>
           <span slot="title">Title</span>
           <p>Main</p>
           <div slot="more-content">Extra</div>
@@ -182,6 +194,18 @@ describe('ItCallout', () => {
       const moreSlotEmpty = elWithout.shadowRoot!.querySelector('slot[name="more-content"]') as HTMLSlotElement;
       expect(moreSlotEmpty).to.exist;
       expect(moreSlotEmpty.assignedElements().length).to.equal(0);
+
+      // Test: more-content funziona anche senza prop more
+      const elNoMore = await fixture<ItCallout>(html`
+        <it-callout>
+          <p>Main</p>
+          <div slot="more-content">Contenuto extra</div>
+        </it-callout>
+      `);
+      await elNoMore.updateComplete;
+      const moreSlotNoMore = elNoMore.shadowRoot!.querySelector('slot[name="more-content"]') as HTMLSlotElement;
+      expect(moreSlotNoMore).to.exist;
+      expect(moreSlotNoMore.assignedElements()[0].textContent?.trim()).to.equal('Contenuto extra');
     });
 
     it('does not render title block when no title nor icon provided', async () => {
@@ -216,7 +240,7 @@ describe('ItCallout', () => {
 
     it('exposes more-content part when additional content provided', async () => {
       const el = await fixture<ItCallout>(html`
-        <it-callout more>
+        <it-callout>
           <span slot="title">Title</span>
           <p>Content</p>
           <div slot="more-content">More content</div>

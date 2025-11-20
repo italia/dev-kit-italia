@@ -14,7 +14,7 @@ export class ItCallout extends BaseComponent {
 
   @property({ type: Boolean, reflect: true }) highlight = false;
 
-  @property({ type: Boolean, reflect: true }) more = false;
+  @property({ type: Boolean, reflect: true, attribute: 'big-text' }) bigText = false;
 
   @query('slot[name="title"]') private _titleSlot!: HTMLSlotElement;
 
@@ -22,12 +22,28 @@ export class ItCallout extends BaseComponent {
 
   @query('slot[name="more-content"]') private _moreContentSlot!: HTMLSlotElement;
 
+  private updateParagraphsSize() {
+    if (!this.shadowRoot) return;
+    const slot = this.shadowRoot.querySelector('slot:not([name])') as HTMLSlotElement;
+    if (!slot) return;
+    const assigned = slot.assignedElements({ flatten: true });
+    assigned.forEach((el) => {
+      if (el.tagName?.toLowerCase() === 'p') {
+        if (this.bigText) {
+          el.classList.add('callout-big-text');
+        } else {
+          el.classList.remove('callout-big-text');
+        }
+      }
+    });
+  }
+
   private getCalloutClasses() {
     return classMap({
       callout: true,
       [`callout-${this.variant}`]: !!this.variant,
       'callout-highlight': this.highlight,
-      'callout-more': this.more,
+      // 'callout-more' non più usato
     });
   }
 
@@ -51,17 +67,29 @@ export class ItCallout extends BaseComponent {
 
   override updated(changedProperties: Map<string | number | symbol, unknown>) {
     super.updated(changedProperties);
-
     // Se cambia la variante, aggiorna i colori delle icone
     if (changedProperties.has('variant')) {
       this.updateIconColors();
     }
+    // Aggiorna la dimensione dei <p> nel default slot se cambia bigText o slot
+    if (changedProperties.has('bigText')) {
+      this.updateParagraphsSize();
+    }
+    // Aggiorna sempre dopo ogni update (slotchange non sempre triggera updated)
+    this.updateParagraphsSize();
   }
 
   override firstUpdated(changedProperties: Map<string | number | symbol, unknown>) {
     super.firstUpdated(changedProperties);
     // Aggiorna i colori delle icone al primo render
     this.updateIconColors();
+    // Aggiorna la dimensione dei <p> al primo render
+    this.updateParagraphsSize();
+    // Aggiorna anche su slotchange
+    const slot = this.shadowRoot?.querySelector('slot:not([name])') as HTMLSlotElement;
+    if (slot) {
+      slot.addEventListener('slotchange', () => this.updateParagraphsSize());
+    }
   }
 
   private renderTitle() {
@@ -80,20 +108,28 @@ export class ItCallout extends BaseComponent {
   }
 
   private renderHighlightContent() {
-    return html`${this.renderTitle()} <slot></slot>`;
+    return html`
+      ${this.renderTitle()}
+      <slot></slot>
+      <div class="callout-more-content" part="more-content">
+        <slot name="more-content"></slot>
+      </div>
+    `;
   }
 
   render() {
     return html`
       <div class="${this.getCalloutClasses()}" part="callout">
         ${when(
-          !this.highlight && !this.more,
-          () => this.renderInner(),
+          !this.highlight,
+          () => html`
+            ${this.renderInner()}
+            <div class="callout-more-content" part="more-content">
+              <slot name="more-content"></slot>
+            </div>
+          `,
           () => this.renderHighlightContent(),
         )}
-        <div class="callout-more-content" part="more-content">
-          <slot name="more-content"></slot>
-        </div>
       </div>
     `;
   }

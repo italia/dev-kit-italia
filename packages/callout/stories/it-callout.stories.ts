@@ -6,23 +6,22 @@ import { type CalloutVariant, CALLOUT_VARIANTS } from '../src/types.ts';
 interface CalloutProps {
   variant: CalloutVariant;
   highlight: boolean;
-  more: boolean;
+  bigText: boolean;
 }
 
 const renderComponent = ({
   variant = 'primary',
   highlight = false,
-  more = false,
   icon = '',
   title = 'Titolo callout',
   content = 'Maecenas vulputate ante dictum vestibulum volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non augue non purus vestibulum varius.',
   moreContent = '',
-  big = false,
+  bigText = false,
 }) => html`
-  <it-callout variant="${ifDefined(variant)}" ?highlight="${highlight}" ?more="${more}">
+  <it-callout variant="${ifDefined(variant)}" ?highlight="${highlight}" ?bigText="${bigText}">
     ${icon ? html`<it-icon slot="icon" name="${icon}" size="md"></it-icon>` : nothing}
     <span slot="title">${title}</span>
-    <p class="${ifDefined(big) ? 'callout-big-text' : nothing}">${content}</p>
+    <p>${content}</p>
     ${moreContent ? html`<div slot="more-content">${moreContent}</div>` : ''}
   </it-callout>
 `;
@@ -34,22 +33,23 @@ const meta = {
   args: {
     variant: '',
     highlight: false,
-    more: false,
+    bigText: false,
   },
   argTypes: {
     variant: {
       control: 'select',
       description: 'Variante di colore del callout',
-      options: CALLOUT_VARIANTS,
+      options: ['', ...CALLOUT_VARIANTS],
+      table: { defaultValue: { summary: "''" } },
     },
     highlight: {
       control: 'boolean',
-      description: 'Applicare lo stile highlight (bordo solo a sinistra)',
+      description: 'Applica lo stile highlight (bordo solo a sinistra)',
       table: { defaultValue: { summary: 'false' } },
     },
-    more: {
+    bigText: {
       control: 'boolean',
-      description: 'Applicare lo stile more per contenuti estesi',
+      description: 'Applica la dimensione grande al testo del callout',
       table: { defaultValue: { summary: 'false' } },
     },
   },
@@ -61,13 +61,7 @@ type Story = StoryObj<CalloutProps>;
 export const EsempioInterattivo: Story = {
   name: 'Esempio interattivo',
   tags: ['!autodocs', '!dev'],
-  parameters: {
-    docs: {
-      canvas: {
-        sourceState: 'shown',
-      },
-    },
-  },
+
   render: (params) => renderComponent({ ...params, icon: 'it-info-circle' }),
 };
 
@@ -76,7 +70,7 @@ export const CalloutBase: Story = {
 };
 export const CalloutBigText: Story = {
   render: (params) => html`
-    <div class="row">${renderComponent({ ...params, icon: 'it-info-circle', big: true })}</div>
+    <div class="row">${renderComponent({ ...params, icon: 'it-info-circle', bigText: true })}</div>
   `,
 };
 
@@ -86,7 +80,7 @@ export const CalloutPrimario: Story = {
       ${renderComponent({
         variant: 'primary',
         highlight: false,
-        more: false,
+        // more rimosso
         title: 'Note a riguardo',
         icon: 'it-info-circle',
         // @ts-ignore
@@ -106,7 +100,7 @@ export const CalloutSuccess: Story = {
       ${renderComponent({
         variant: 'success',
         highlight: false,
-        more: false,
+        // more rimosso
         title: 'Titolo di conferma',
         icon: 'it-check-circle',
         // @ts-ignore
@@ -126,7 +120,7 @@ export const CalloutWarning: Story = {
       ${renderComponent({
         variant: 'warning',
         highlight: false,
-        more: false,
+        // more rimosso
         title: 'Titolo di attenzione',
         icon: 'it-warning-circle',
         // @ts-ignore
@@ -146,7 +140,7 @@ export const CalloutDanger: Story = {
       ${renderComponent({
         variant: 'danger',
         highlight: false,
-        more: false,
+        // more rimosso
         title: 'Titolo di allerta',
         icon: 'it-close-circle',
         // @ts-ignore
@@ -166,7 +160,7 @@ export const HighlightBase: Story = {
       ${renderComponent({
         variant: '',
         highlight: true,
-        more: false,
+        // more rimosso
         title: 'Titolo callout',
         icon: '',
         // @ts-ignore
@@ -193,7 +187,7 @@ export const HighlightPrimario: Story = {
       ${renderComponent({
         variant: 'primary',
         highlight: true,
-        more: false,
+        // more rimosso
         title: 'Titolo callout',
         icon: '',
         // @ts-ignore
@@ -213,7 +207,7 @@ export const HighlightSuccess: Story = {
       ${renderComponent({
         variant: 'success',
         highlight: true,
-        more: false,
+        // more rimosso
         title: 'Titolo di conferma',
         icon: 'it-check-circle',
         // @ts-ignore
@@ -233,7 +227,7 @@ export const HighlightWarning: Story = {
       ${renderComponent({
         variant: 'warning',
         highlight: true,
-        more: false,
+        // more rimosso
         title: 'Titolo di attenzione',
         icon: 'it-warning-circle',
         // @ts-ignore
@@ -260,7 +254,7 @@ export const HighlightDanger: Story = {
       ${renderComponent({
         variant: 'danger',
         highlight: true,
-        more: false,
+        // more rimosso
         title: 'Titolo di allerta',
         icon: 'it-close-circle',
         // @ts-ignore
@@ -277,48 +271,25 @@ export const HighlightDanger: Story = {
 export const CalloutApprofondimento: Story = {
   render: () => html`
     <div class="row">
-      ${renderComponent({
-        variant: '',
-        highlight: false,
-        more: true,
-        title: 'Approfondimento',
-        icon: 'it-info-circle',
-        // @ts-ignore
-        content: html`
-          <p>
-            Quisque suscipit interdum augue non volutpat. Cras tristique arcu tortor. Mauris eu magna nibh. Curabitur
-            malesuada neque in lectus sagittis accumsan. In vitae justo eros. Maecenas pellentesque lacinia ipsum vitae
-            rhoncus. Vestibulum pretium tempor turpis, nec gravida eros viverra in. Proin dictum nibh ut semper
-            tristique.
-          </p>
-          <p>
-            Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
-            molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
-            interdum magna, eu commodo odio mauris semper dolor.
-          </p>
-          <p>
-            Maecenas vulputate ante dictum <a href="#">vestibulum volutpat</a>. Lorem ipsum dolor sit amet,
-            <strong>consectetur adipiscing elit.</strong> Aenean non augue non purus vestibulum varius. Maecenas
-            ullamcorper tincidunt nulla quis laoreet.
-          </p>
-        `,
-        // moreContent: `
-        //     <div class="collapse-header d-flex align-items-center justify-content-between">
-        //       <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        //         Leggi tutto
-        //       </button>
-        //       <a href="#" class="btn btn-primary ms-2">
-        //         <it-icon name="it-download" size="xs" color="white"></it-icon>
-        //         PDF Download
-        //       </a>
-        //     </div>
-        //     <div class="collapse" id="collapseExample">
-        //       <div class="collapse-content">
-        //         <p>Contenuto aggiuntivo che viene mostrato quando il collapse è espanso. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        //       </div>
-        //     </div>
-        //   `,
-      })}
+      <it-callout>
+        <span slot="title">Approfondimento</span>
+        <p>
+          Quisque suscipit interdum augue non volutpat. Cras tristique arcu tortor. Mauris eu magna nibh. Curabitur
+          malesuada neque in lectus sagittis accumsan. In vitae justo eros. Maecenas pellentesque lacinia ipsum vitae
+          rhoncus. Vestibulum pretium tempor turpis, nec gravida eros viverra in. Proin dictum nibh ut semper tristique.
+        </p>
+        <p>
+          Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
+          molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
+          interdum magna, eu commodo odio mauris semper dolor.
+        </p>
+        <p>
+          Maecenas vulputate ante dictum <a href="#">vestibulum volutpat</a>. Lorem ipsum dolor sit amet,
+          <strong>consectetur adipiscing elit.</strong> Aenean non augue non purus vestibulum varius. Maecenas
+          ullamcorper tincidunt nulla quis laoreet.
+        </p>
+        <div slot="more-content">Contenuto aggiuntivo di approfondimento</div>
+      </it-callout>
     </div>
   `,
 };

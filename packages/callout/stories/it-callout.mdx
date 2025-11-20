@@ -5,9 +5,7 @@ import * as CalloutStories from './it-callout.stories';
 
 # Callout
 
-<description>
-  Box con uno stile visivo distintivo per evidenziare contenuti testuali importanti su pagine lunghe
-</description>
+<description>Box con uno stile visivo distintivo per evidenziare contenuti testuali importanti su pagine lunghe</description>
 
 ## Cosa fa
 
@@ -16,83 +14,74 @@ Possono contenere messaggi di errore, avvertimento, suggerimenti, ecc.
 
 [Approfondisci quando e come usare il componente Callout](https://designers.italia.it/design-system/componenti/callout/).
 
-## Anteprima del componente
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l’aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su <strong>Show code</strong>.
 
 <Canvas of={CalloutStories.EsempioInterattivo} />
-
-Questi sono gli attributi che definiscono l’aspetto, il comportamento e il contenuto del componente. Puoi modificare questi valori per personalizzare il componente. L’anteprima e il codice si aggiornano in tempo reale, così puoi vedere subito il risultato delle tue modifiche.
-
 <Controls of={CalloutStories.EsempioInterattivo} />
+
+## Indicazioni generali
+
+
+
+
+La struttura di `<it-callout>` prevede i seguenti slot:
+
+- **(default)**: il contenuto principale, tipicamente un `<p>`, viene inserito direttamente nel componente.
+- **slot="title"**: per il titolo del callout, visualizzato accanto all’icona (se presente).
+- **slot="icon"**: per un’icona opzionale, mostrata prima del titolo. Il colore dell’icona si adatta automaticamente alla variante del callout.
+- **slot="more-content"**: per contenuti aggiuntivi opzionali, visualizzati in fondo al callout.
+
 
 ## Accessibilità
 
-Nel caso l'icona comunicasse visivamente contenuti non disponibili nel testo (ad esempio un allarme o una
-conferma), questa andrà affiancata da un testo riservato agli screen reader.
-
-## Callout base
+Se l'icona comunica un'informazione non presente nel testo (es. allarme, conferma), aggiungi sempre un testo alternativo per screen reader, ad esempio con una classe `.sr-only`.
 
 
-Il callout base è costituito da un web component `<it-callout>` che genera la struttura HTML necessaria in base alla tipologia di callout (default callout, callout hightlight, callout di approfondimento).
-Inserisci il testo del callout in un tag `<p>` al suo interno.
 
-Puoi aggiungere un titolo utilizzando lo slot `title`.
-Inserisci il testo del callout in un tag `<p>` al suo interno.
-Puoi aggiungere un'icona da mostrare a fianco del titolo, usando lo slot `icon`. Il colore dell'icona dipende dal colore indicato nell'attributo `variant` del callout. Non devi preoccuparti di impostare il colore manualmente sull'icona.
 
-<Canvas of={CalloutStories.CalloutBase} />
+## Dimensione del testo
 
-Per aumentare la dimensione di un paragrafo contenuto nel callout applica la classe .callout-big-text allo stesso.
+Per aumentare la dimensione del testo dei paragrafi nel callout, aggiungi l'attributo <code>big-text</code> al componente
 
 <Canvas of={CalloutStories.CalloutBigText} />
 
 ## Varianti di colore
 
 ### Callout primario
-
-Utilizza questa variante, impostando l'attributo `variant="primary"`, per dare un'evidenza particolare al componente nel contesto della pagina.
-
+Usa l'attributo <code>variant="primary"</code> per dare evidenza particolare.
 <Canvas of={CalloutStories.CalloutPrimario} />
 
 ### Callout success
-
-Utilizza questa variante, impostando l'attributo `variant="success"`, per indicare una procedura andata a buon fine.
-
+Usa l'attributo <code>variant="success"</code> per indicare una procedura andata a buon fine.
 <Canvas of={CalloutStories.CalloutSuccess} />
 
 ### Callout warning
-
-Utilizza questa variante, impostando l'attributo `variant="warning"`, per indicare una procedura o un testo che richiede l’attenzione dell’utente.
-
+Usa l'attributo <code>variant="warning"</code> per richiamare l’attenzione dell’utente.
 <Canvas of={CalloutStories.CalloutWarning} />
 
 ### Callout danger
-
-Utilizza questa variante, impostando l'attributo `variant="danger"`, per indicare un errore o una procedura pericolosa o non consentita.
-
+Usa l'attributo <code>variant="danger"</code> per errori o procedure pericolose.
 <Canvas of={CalloutStories.CalloutDanger} />
 
 ## Callout Highlight
 
-Valorizzando l'attributo `highlight` si ottiene una differente versione del callout, con bordo solo sul lato sinistro.
+Usando l'attributo <code>highlight</code> il callout mostra un bordo solo sul lato sinistro: <code>&lt;it-callout highlight&gt;</code>.
 
 ### Highlight base
-
 <Canvas of={CalloutStories.HighlightBase} />
 
 ### Highlight primario
-
 <Canvas of={CalloutStories.HighlightPrimario} />
 
 ### Highlight success
-
 <Canvas of={CalloutStories.HighlightSuccess} />
 
 ### Highlight warning
-
 <Canvas of={CalloutStories.HighlightWarning} />
 
 ### Highlight danger
-
 <Canvas of={CalloutStories.HighlightDanger} />
 
 ## Callout di approfondimento
