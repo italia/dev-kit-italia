@@ -28,7 +28,7 @@ interface InputNumberProps {
 
 // Renderizza il wc it-input configurato per input numerico
 const renderNumberInput = (params: any) =>
-  html`<it-input
+  html` <it-input
     id="${ifDefined(params.id || undefined)}"
     type="number"
     name="${ifDefined(params.name || undefined)}"
@@ -46,8 +46,9 @@ const renderNumberInput = (params: any) =>
     support-text="${ifDefined(params.supportText || undefined)}"
     size="${ifDefined(params.size || undefined)}"
     ?adaptive="${params.adaptive}"
-    ><span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}</it-input
-  >`;
+  >
+    <span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}
+  </it-input>`;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
@@ -114,17 +115,17 @@ const meta = {
     min: {
       control: 'number',
       description: 'Valore minimo consentito',
-      type: 'string',
+      type: 'number',
     },
     max: {
       control: 'number',
       description: 'Valore massimo consentito',
-      type: 'string',
+      type: 'number',
     },
     step: {
       control: 'number',
       description: 'Incremento per ogni step (utilizzato dai pulsanti +/-)',
-      type: 'string',
+      type: 'number',
     },
     required: {
       control: 'boolean',
@@ -153,9 +154,9 @@ const meta = {
       description: 'Testo di supporto',
     },
     size: {
-      control: 'select',
+      control: { type: 'select', labels: { undefined: '(non definito)', sm: 'sm', lg: 'lg' } },
       options: INPUT_SIZES,
-      description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
+      description: "Dimensione del campo: 'sm' | (non definito) | 'lg' ",
       table: { defaultValue: { summary: undefined } },
       type: 'string',
     },
@@ -289,7 +290,7 @@ export const Percentuale: Story = {
         story: `
 Per anteporre il simbolo percentuale, utilizza lo slot \`prepend\`.
 
-Ti consigliamo di impostare gli attributi \`min=0\` e \`max="100"\`.
+Ti consigliamo di impostare gli attributi \`min="0"\` e \`max="100"\`.
 `,
       },
     },
