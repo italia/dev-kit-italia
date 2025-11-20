@@ -23,6 +23,19 @@ $utilities: (
   display: inline-block;
 }
 
+:host([align='top']) {
+  vertical-align: top;
+}
+
+:host([align='middle']),
+:host(:not([align])) {
+  vertical-align: middle;
+}
+
+:host([align='bottom']) {
+  vertical-align: bottom;
+}
+
 .icon-white {
   fill: #fff !important;
   // Alcune icone bsi hanno attr di path fissati come fill:black, per ora patchiamo qui

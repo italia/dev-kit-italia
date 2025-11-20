@@ -86,3 +86,7 @@ $utilities: (
   top: calc(var(--#{$prefix}form-control-spacing) * 5);
   --#{$prefix}icon-default: var(--#{$prefix}icon-primary);
 }
+
+.is-invalid + .input-group-text.align-buttons {
+  bottom: 0 !important;
+}

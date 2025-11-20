@@ -28,7 +28,7 @@ interface InputNumberProps {
 
 // Renderizza il wc it-input configurato per input numerico
 const renderNumberInput = (params: any) =>
-  html`<it-input
+  html` <it-input
     id="${ifDefined(params.id || undefined)}"
     type="number"
     name="${ifDefined(params.name || undefined)}"
@@ -46,8 +46,9 @@ const renderNumberInput = (params: any) =>
     support-text="${ifDefined(params.supportText || undefined)}"
     size="${ifDefined(params.size || undefined)}"
     ?adaptive="${params.adaptive}"
-    ><span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}</it-input
-  >`;
+  >
+    <span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}
+  </it-input>`;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
@@ -114,14 +115,17 @@ const meta = {
     min: {
       control: 'number',
       description: 'Valore minimo consentito',
+      type: 'number',
     },
     max: {
       control: 'number',
       description: 'Valore massimo consentito',
+      type: 'number',
     },
     step: {
       control: 'number',
       description: 'Incremento per ogni step (utilizzato dai pulsanti +/-)',
+      type: 'number',
     },
     required: {
       control: 'boolean',
@@ -138,7 +142,7 @@ const meta = {
       type: 'boolean',
       table: { defaultValue: { summary: 'false' } },
       description:
-        "Se il campo è readonly, con l'attributo 'plaintext' il campo assume l'aspetto di testo normalizzato.",
+        "Se il campo è `readonly`, con l'attributo 'plaintext' il campo assume l'aspetto di testo normalizzato.",
     },
     placeholder: {
       control: 'text',
@@ -150,10 +154,11 @@ const meta = {
       description: 'Testo di supporto',
     },
     size: {
-      control: 'select',
+      control: { type: 'select', labels: { undefined: '(non definito)', sm: 'sm', lg: 'lg' } },
       options: INPUT_SIZES,
-      description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
+      description: "Dimensione del campo: 'sm' | (non definito) | 'lg' ",
       table: { defaultValue: { summary: undefined } },
+      type: 'string',
     },
     adaptive: {
       control: 'boolean',
@@ -161,34 +166,6 @@ const meta = {
       table: { defaultValue: { summary: 'false' } },
       description:
         'Se il campo è `type="number"`, con l\'attributo `adaptive` il campo assume adatta la sua larghezza al contenuto',
-    },
-  },
-  parameters: {
-    docs: {
-      description: {
-        component: `
-<Description>Campi input con pulsanti per incrementare/decrementare valori numerici.</Description>
-
-
-L'input numerico è una variante del componente \`<it-input>\` con l'attributo \`type\` impostato su \`number\`.
-
-Pertanto, per quanto riguarda:
-
-- la **validazione** e la **gestione degli errori**
-- la **gestione degli eventi**
-- i **metodi e le proprietà** accessibili tramite JavaScript
-- il **supporto all’internazionalizzazione (i18n)**
-
-
-è necessario fare riferimento alla **documentazione principale** del componente \`<it-input>\`.
-
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>
-Tutti gli attributi \`aria-*\` passati a \`<it-input>\` vengono applicati all'input generato.
-</p></div></div>
-
-`,
-      },
     },
   },
 } satisfies Meta<InputNumberProps>;
@@ -222,7 +199,7 @@ export const Esempi: Story = {
     docs: {
       description: {
         story: `
-La larghezza del campo predefinita è quella del suo contenitore, per limitare la larghezza alle dimensioni del valore contenuto utilizzare il ridimensionamento adattivo.
+La larghezza del campo predefinita è quella del suo contenitore. Per limitare la larghezza alle dimensioni del valore contenuto, utilizza il ridimensionamento adattivo.
 `,
       },
     },
@@ -257,7 +234,7 @@ export const LimitiEStep: Story = {
     docs: {
       description: {
         story: `
-Aggiungendo gli attributi HTML \`min=""\`, \`max=""\` e \`step=""\` all'input è possibile limitare il valore minimo e massimo del campo e decidere di quanto varierà a ogni click sui pulsanti.
+Aggiungendo gli attributi HTML \`min=""\`, \`max=""\` e \`step=""\` all'input, puoi limitare il valore minimo e massimo del campo e decidere di quanto varierà a ogni click sui pulsanti.
 `,
       },
     },
@@ -313,7 +290,7 @@ export const Percentuale: Story = {
         story: `
 Per anteporre il simbolo percentuale, utilizza lo slot \`prepend\`.
 
-Si consiglia di impostare gli attributi \`min=0\` e \`max="100"\`.
+Ti consigliamo di impostare gli attributi \`min="0"\` e \`max="100"\`.
 `,
       },
     },
@@ -341,7 +318,7 @@ export const Disabilitato: Story = {
     docs: {
       description: {
         story: `
-Per disabilitare un Input number, aggiungere l'attributo \`disabled\` al componente \`<it-input>\`.
+Per disabilitare un Input number, aggiungi l'attributo \`disabled\` al componente \`<it-input>\`.
 `,
       },
     },
@@ -366,7 +343,7 @@ export const Readonly: Story = {
     docs: {
       description: {
         story: `
-Per rendere un Input number \`readonly\`, aggiungere l'attributo \`readonly\` al componente \`<it-input>\`.
+Per rendere un Input number \`readonly\`, aggiungi l'attributo \`readonly\` al componente \`<it-input>\`.
 `,
       },
     },
@@ -391,7 +368,7 @@ export const Ridimensionamento: Story = {
     docs: {
       description: {
         story: `
-È possibile far sì che il campo numerico si ridimensioni automaticamente a seconda del valore contenuto in esso. Per ottenere questo comportamento, è sufficiente aggiungere l'attributo \`adaptive\` al componente \`<it-input>\`.
+Puoi far sì che il campo numerico si ridimensioni automaticamente a seconda del valore contenuto in esso. Per ottenere questo comportamento, è sufficiente aggiungere l'attributo \`adaptive\` al componente \`<it-input>\`.
 `,
       },
     },
