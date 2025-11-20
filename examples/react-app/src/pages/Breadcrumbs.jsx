@@ -122,9 +122,9 @@ const Breadcrumbs = () => {
         <it-breadcrumbs label="Percorso di navigazione 2" dark className="mt-3">
           <it-breadcrumb-item>
             <a href="#">Home</a>
-            <it-icon
+              <it-icon
               name="it-chevron-right"
-              color="white"
+              color="inverse"
               size="sm"
               slot="separator"
               className="my-separator"
@@ -146,7 +146,7 @@ const Breadcrumbs = () => {
         <it-breadcrumbs label="Percorso di navigazione 3" dark className="mt-3">
           <it-breadcrumb-item>
             <a href="#">
-              <it-icon name="it-link" color="white" size="sm" className="me-1"></it-icon>
+              <it-icon name="it-link" color="inverse" size="sm" className="me-1"></it-icon>
               Home
             </a>
           </it-breadcrumb-item>

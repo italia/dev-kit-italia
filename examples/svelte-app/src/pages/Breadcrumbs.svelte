@@ -110,7 +110,7 @@
     <it-breadcrumbs label="Percorso di navigazione 2" dark class="mt-3">
       <it-breadcrumb-item>
         <a href="#">Home</a>
-        <it-icon name="it-chevron-right" color="white" size="sm" slot="separator" class="my-separator"></it-icon>
+        <it-icon name="it-chevron-right" color="inverse" size="sm" slot="separator" class="my-separator"></it-icon>
       </it-breadcrumb-item>
       <it-breadcrumb-item>
         <a href="#">Sezione</a>
@@ -122,7 +122,7 @@
     <it-breadcrumbs label="Percorso di navigazione 3" dark class="mt-3">
       <it-breadcrumb-item>
         <a href="#">
-          <it-icon name="it-link" color="white" size="sm" class="me-1"></it-icon>
+          <it-icon name="it-link" color="inverse" size="sm" class="me-1"></it-icon>
           Home
         </a>
       </it-breadcrumb-item>

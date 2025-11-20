@@ -25,30 +25,14 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l’aspet
 <Canvas of={BreadcrumbsStories.EsempioInterattivo} />
 <Controls of={BreadcrumbsStories.EsempioInterattivo} />
 
-## Accessibilità
+## Indicazioni generali
 
-Il componente Breadcrumbs implementa le specifiche ARIA [WAI-ARIA Authoring Practices 1.2 breadcrumbs](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/) per garantire un'esperienza accessibile a tutti gli utenti:
-- Fornisce automaticamente l'attributo `aria-current="page"` sull'ultimo elemento per indicare la pagina corrente agli screen reader.
-- Il separatore viene nascosto agli screen reader tramite `aria-hidden="true"` per evitare annunci ridondanti.
-- Usa elementi semantici (`<nav>`, `<ol>`, `<li>`) per una corretta struttura del documento.
+Il componente `it-breadcrumb-item` rappresenta un singolo elemento breadcrumb e va sempre usato come figlio di `it-breadcrumbs`.
 
-<div class="callout callout-warning">
-  <div class="callout-inner">
-    <div class="callout-title">
-      <span class="text">Nota sui test di accessibilità</span>
-    </div>
-    <p>
-      Axe e altri strumenti di analisi statica possono segnalare falsi positivi quando analizzano il componente <code>it-breadcrumb</code> a causa del limitato supporto per i Web Components. La struttura accessibile effettiva è corretta, come confermato dall'Accessibility Tree e dai test manuali con screen reader.
-    </p>
-  </div>
-</div>
+Il componente `it-breadcrumb-item` espone i seguenti slot:
+- **default**: voce breadcrumb.Inserisci normalmente un link `<a>`, eventualmente con altri elementi inline
+- **separator**: elemento separatore personalizzato (ad esempio un'icona)
 
-## Elemento singolo
-Il componente `it-breadcrumb-item` rappresenta un singolo elemento breadcrumb che deve essere utilizzato all'interno di un contenitore `it-breadcrumbs`.
-
-### Contenuto
-
-Ricordati di inserire il testo (cioè il nome della sezione o della pagina) all’interno di un tag `<a>` direttamente nello slot principale del componente. Se vuoi, puoi aggiungere anche icone o altri elementi HTML dentro il link.
 <div class="callout callout-warning">
   <div class="callout-inner">
     <div class="callout-title">
@@ -63,10 +47,26 @@ Ricordati di inserire il testo (cioè il nome della sezione o della pagina) all�
   </div>
 </div>
 
+## Accessibilità
 
-<Canvas of={BreadcrumbsStories.ConLink} />
+Il componente Breadcrumbs implementa le specifiche ARIA [WAI-ARIA Authoring Practices 1.2 breadcrumbs](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/) per garantire un'esperienza accessibile a tutti gli utenti:
+- Fornisce automaticamente l'attributo `aria-current="page"` sull'ultimo elemento per indicare la pagina corrente agli screen reader.
+- Il separatore viene nascosto agli screen reader tramite `aria-hidden="true"` per evitare annunci ridondanti.
+- Usa elementi semantici (`<nav>`, `<ol>`, `<li>`) per una corretta struttura del documento.
 
-### Con icona
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Nota sui test di accessibilità</span>
+    </div>
+    <p>
+      Axe e altri strumenti di analisi statica possono segnalare falsi positivi quando analizzano il componente `it-breadcrumbs` a causa del limitato supporto per i Web Components. La struttura accessibile effettiva è corretta, come confermato dall'Accessibility Tree e dai test manuali con screen reader.
+    </p>
+  </div>
+</div>
+
+
+## Con icona
 
 Puoi aggiungere un'icona a un elemento `it-breadcrumb-item` inserendo un componente `it-icon` all'interno del tag `<a>`.
 
@@ -82,7 +82,7 @@ Di default, il componente Breadcrumbs usa `/` come separatore tra gli elementi. 
 
 ## Sfondo scuro
 
-Per usare il componente Breadcrumbs su sfondi scuri, aggiungi l'attributo `dark`.
+Per utilizzare la versione su sfondo scuro delle breadcrumbs, aggiungi l'attributo `dark`.
 
 <div class="callout callout-warning">
   <div class="callout-inner">

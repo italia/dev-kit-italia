@@ -121,29 +121,29 @@ export const Sfondo: Story = {
     <it-breadcrumbs it-aria-label="Percorso di navigazione2" dark>
       <it-breadcrumb-item>
         <a href="#">Home</a>
-        <it-icon name="it-chevron-right" color="white" size="sm" slot="separator" class="my-separator"></it-icon>
+        <it-icon name="it-chevron-right" color="inverse" size="sm" slot="separator" class="my-separator"></it-icon>
       </it-breadcrumb-item>
       <it-breadcrumb-item>
         <a href="#">Sezione</a>
-        <it-icon name="it-chevron-right" color="white" size="sm" slot="separator" class="my-separator"></it-icon>
+        <it-icon name="it-chevron-right" color="inverse" size="sm" slot="separator" class="my-separator"></it-icon>
       </it-breadcrumb-item>
       <it-breadcrumb-item>Voce corrente</it-breadcrumb-item>
     </it-breadcrumbs>
     <it-breadcrumbs it-aria-label="Percorso di navigazione3" dark>
       <it-breadcrumb-item>
         <a href="#">
-          <it-icon name="it-link" color="white" size="sm" class="me-1"></it-icon>
+          <it-icon name="it-link" color="inverse" size="sm" class="me-1"></it-icon>
           Home
         </a>
       </it-breadcrumb-item>
       <it-breadcrumb-item>
         <a href="#">
-          <it-icon name="it-link" color="white" size="sm" class="me-1"></it-icon>
+          <it-icon name="it-link" color="inverse" size="sm" class="me-1"></it-icon>
           Sezione
         </a>
       </it-breadcrumb-item>
       <it-breadcrumb-item>
-        <it-icon name="it-link" color="white" size="sm" class="me-1"></it-icon>
+        <it-icon name="it-link" color="inverse" size="sm" class="me-1"></it-icon>
         Voce corrente
       </it-breadcrumb-item>
     </it-breadcrumbs>
