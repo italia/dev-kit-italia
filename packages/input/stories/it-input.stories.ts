@@ -133,6 +133,7 @@ const meta = {
     },
     form: {
       control: 'text',
+      type: 'string',
       description: "ID html del form a cui è associato il campo, se il campo non si trova all'interno di una form ",
     },
     customValidation: {
@@ -168,7 +169,7 @@ const meta = {
       control: 'number',
       description:
         'Incremento per ogni step (tramite i pulsanti +/-) nel caso di input di tipo numerico o di tipo data',
-      type: 'string',
+      type: 'number',
     },
     minlength: {
       type: 'number',
@@ -214,9 +215,9 @@ const meta = {
       table: { defaultValue: { summary: 'false' } },
     },
     size: {
-      control: 'select',
-      options: INPUT_SIZES.filter((o) => o !== undefined),
-      description: "Dimensione del campo: 'sm' | (nessuno = 'md') | 'lg' ",
+      control: { type: 'select', labels: { undefined: '(non definito)', sm: 'sm', lg: 'lg' } },
+      options: INPUT_SIZES,
+      description: "Dimensione del campo: 'sm' | (non definito) | 'lg' ",
       table: { defaultValue: { summary: undefined } },
       type: 'string',
     },
@@ -271,7 +272,7 @@ export const EsempioInterattivo: Story = {
   parameters: {
     docs: {
       canvas: {
-        sourceState: 'shown',
+        sourceState: 'closed',
       },
     },
   },
@@ -324,15 +325,6 @@ export const Placeholder: Story = {
     id: 'placeholder-example',
   },
 
-  parameters: {
-    docs: {
-      description: {
-        story: `
-È possibile abbinare al componente \`<it-input>\` un testo segnaposto (placeholder) per fornire indicazioni sul tipo di contenuto atteso. Questo testo non sostituisce l’etichetta, ma fornisce informazioni aggiuntive.
-`,
-      },
-    },
-  },
   render: (params) => html`
     ${renderComponent({
       ...params,
@@ -351,14 +343,6 @@ export const TestoDiSupporto: Story = {
     id: 'supportText-example',
     supportText: 'Testo di supporto',
   },
-
-  parameters: {
-    docs: {
-      description: {
-        story: `In caso di necessità, è anche possibile utilizzare un ulteriore contenuto testuale sotto il campo di testo, indicando nell'attributo \`support-text\` il testo da visualizzare.`,
-      },
-    },
-  },
   render: (params) => html`
     ${renderComponent({
       ...params,
@@ -370,14 +354,6 @@ export const LabelHidden: Story = {
   ...meta,
   name: 'Etichetta nascosta',
   args: { placeholder: 'Cerca...', label: 'Cerca nel sito', labelHidden: true },
-
-  parameters: {
-    docs: {
-      description: {
-        story: `Se si vuole nascondere l'etichetta, come ad esempio nei campi di ricerca, è sufficiente passare l'attributo \`label-hidden\`.`,
-      },
-    },
-  },
   render: (params) => html`
     ${renderComponent({
       ...params,
@@ -399,7 +375,7 @@ export const IconeOPulsanti: Story = {
   parameters: {
     docs: {
       description: {
-        story: `<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità delle icone</span></div><p>Nel caso in cui l’icona è semanticamente rilevante e non spiegata dal testo che la segue, occorre passare al componente \`<it-icon>\` l'attributo \`label\` che ne spieghi il significato (nel formato \`<it-icon .... label="Significato dell'icona"/>\`)</p></div></div>`,
+        story: `<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità delle icone</span></div><p>Nel caso in cui l’icona è semanticamente rilevante e non spiegata dal testo che la segue, devi passare al componente \`<it-icon>\` l'attributo \`label\` che ne spieghi il significato (nel formato \`<it-icon .... label="Significato dell'icona"/>\`)</p></div></div>`,
       },
     },
   },
@@ -420,9 +396,9 @@ export const Dimensioni: Story = {
       description: {
         story: `L'input di base ha una dimensione media che non necessita di alcuna classe aggiuntiva.
 
-Per modificare questa dimensione, è possiible utilizzare l'attributo \`size\` il cui valore può essere \`sm\` oppure \`lg\`.
+Per modificare questa dimensione, puoi utilizzare l'attributo \`size\` il cui valore può essere \`sm\` oppure \`lg\`.
 
-Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attributo \`size\` sull'icona in questo modo:
+Per modificare invece la dimensione dell’icona, puoi utilizzare l'attributo \`size\` sull'icona in questo modo:
 <table>
 <thead>
   <tr><th>Dimensione input</th><th>Attributo size (di it-input)</th><th>Dimensione icona</th></tr>
@@ -475,13 +451,6 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
 export const Disabilitato: Story = {
   ...meta,
   name: 'Stato disabilitato',
-  parameters: {
-    docs: {
-      description: {
-        story: `Aggiungi l’attributo \`disabled\` ad un \`<it-input>\` per impedire la modifica del valore contenuto e non inviare i dati in esso contenuti.`,
-      },
-    },
-  },
   args: {
     type: 'text',
     label: 'Campo disabilitato',
@@ -499,14 +468,6 @@ export const Disabilitato: Story = {
 export const Readonly: Story = {
   ...meta,
   name: 'Stato readonly',
-  parameters: {
-    docs: {
-      description: {
-        story: `Aggiungi l’attributo \`readonly\` ad un \`<it-input>\` per impedire la modifica del valore contenuto.
-<br/><br/><h3>Readonly normalizzato</h3>Se per qualche motivo vuoi avere gli elementi input readonly nella forma stilizzata come testo, aggiungi l'attributo \`plaintext\` a \`<it-input>\`.`,
-      },
-    },
-  },
   args: { type: 'text', readonly: true, value: 'Contenuto in sola lettura' },
   render: (params) => html`
     ${renderComponent({
@@ -527,20 +488,6 @@ export const Readonly: Story = {
 
 export const Password: Story = {
   ...meta,
-  parameters: {
-    docs: {
-      description: {
-        story: `Per semplificare l’inserimento della password, il componente \`<it-input>\` di tipo password include un pulsante che mostra i caratteri digitati.
-È inoltre possibile aggiungere un testo di supporto che aiuti nella compilazione, attraverso l’attributo \`support-text\`.
-<br/><br/>
-<h3>Misuratore sicurezza e suggerimenti</h3>
-Nel caso di un campo per la scelta di una nuova password, è possibile abbinare controlli per segnalare quanto la password che si sta inserendo segua alcuni suggerimenti di sicurezza, come la lunghezza minima o l’uso di caratteri speciali, attraverso gli attributi \`strength-meter="true"\` e \`minlength\` per modificare la lunghezza minima richiesta per la password.
-
-Inoltre, è possibile restituire all’utente una lista dei suggerimenti, con indicati quelli che sono stati soddisfatti, attraverso l’attributo \`suggestions="true"\`.
-`,
-      },
-    },
-  },
   args: {
     type: 'password',
     label: 'Campo password',
@@ -566,13 +513,6 @@ Inoltre, è possibile restituire all’utente una lista dei suggerimenti, con in
 export const Textarea: Story = {
   ...meta,
   name: 'Area di testo',
-  parameters: {
-    docs: {
-      description: {
-        story: `Per permettere agli utenti di inserire un testo esteso (ad esempio per lasciare commenti o informazioni), è bene utilizzare un elemento \`<it-input>\` con \`type="textarea"\`.`,
-      },
-    },
-  },
   args: {
     type: 'textarea',
     label: 'Area di testo',
@@ -625,7 +565,7 @@ export const GestioneEventi: Story = {
   parameters: {
     docs: {
       description: {
-        story: `E' possibile gestire gli eventi di \`it-input\`, \`it-blur\`, \`it-change\`, \`it-focus\`, \`it-click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
+        story: `È possibile gestire gli eventi di \`it-input\`, \`it-blur\`, \`it-change\`, \`it-focus\`, \`it-click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
 <br/><br/>
 È sufficiente aggiungere un event listener al componente \`<it-input>\` per intercettare gli eventi desiderati. Ad esempio, per gestire l'evento di input, è possibile utilizzare il seguente codice:
 
