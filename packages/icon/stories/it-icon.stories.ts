@@ -155,7 +155,7 @@ Il componente \`<it-icon>\` supporta quattro dimensioni predefinite: \`xs\`, \`s
 export const VariantiAllineamento: Story = {
   name: 'Varianti di allineamento',
   render: () => html`
-    <div>
+    <div style="line-height: 5rem">
       ${['top', 'middle', 'bottom'].map((align) =>
         // @ts-ignore
         renderComponent({ name: 'it-star-full', label: `align ${align}`, align, size: 'lg' }),
