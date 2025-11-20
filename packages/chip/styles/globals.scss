@@ -31,26 +31,26 @@ it-chip:defined {
 // Styles for the loading state
 it-chip:not(:defined) {
   --it-host-display: flex;
-  --it-chip-fuoc-font-size: 16px;
-  --it-chip-fuoc-children-size: 16px;
+  --it-chip-fouc-font-size: 16px;
+  --it-chip-fouc-children-size: 16px;
   width: fit-content;
   height: 34px;
   align-items: center;
   padding: var(--it-spacing-3xs) var(--it-spacing-xs);
-  font-size: var(--it-chip-fuoc-font-size);
+  font-size: var(--it-chip-fouc-font-size);
   gap: var(--it-spacing-xxs);
 
   ::after {
     order: 1;
-    font-size: var(--it-chip-fuoc-font-size);
+    font-size: var(--it-chip-fouc-font-size);
     font-weight: var(--it-font-weight-semibold);
     line-height: var(--it-font-line-height-5);
   }
 
   it-button,
   it-icon {
-    width: var(--it-chip-fuoc-children-size);
-    height: var(--it-chip-fuoc-children-size);
+    width: var(--it-chip-fouc-children-size);
+    height: var(--it-chip-fouc-children-size);
   }
 
   it-button {
@@ -66,8 +66,8 @@ it-chip:not(:defined) {
   &[avatar] {
     &::before {
       display: inline-block;
-      width: var(--it-chip-fuoc-children-size);
-      height: var(--it-chip-fuoc-children-size);
+      width: var(--it-chip-fouc-children-size);
+      height: var(--it-chip-fouc-children-size);
       order: 0;
       border-radius: 50%;
       margin-right: 0.5rem;
@@ -77,7 +77,7 @@ it-chip:not(:defined) {
   }
 
   &[size='lg'] {
-    --it-chip-fuoc-children-size: 24px;
-    --it-chip-fuoc-font-size: 18px;
+    --it-chip-fouc-children-size: 24px;
+    --it-chip-fouc-font-size: 18px;
   }
 }

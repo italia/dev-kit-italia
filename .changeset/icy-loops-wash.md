@@ -2,4 +2,4 @@
 '@italia/chip': minor
 ---
 
-Update docs and fix FUOC styles
+Update docs and fix FOUC styles
