@@ -1,3 +1,5 @@
+@use 'sass:list';
+
 :root {
   --it-fouc-bg: #ddd;
   --it-host-display: inline-block;
@@ -128,7 +130,9 @@ $it-components: (
   'it-video': (
     height: auto,
     width: 100%,
-    aspect-ratio: 16 / 9,
+    // Check the Heads up! section in the documentation
+    // https://sass-lang.com/documentation/modules/list/#slash
+    aspect-ratio: list.slash(16, 9),
   ),
 );
 
