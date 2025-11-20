@@ -196,7 +196,7 @@ In questo contesto, i formati di streaming HLS e DASH offrono importanti vantagg
 L’uso dei formati di streaming permette una riproduzione fluida dei video online grazie alla loro
 capacità di adattarsi alla larghezza di banda disponibile. In questo modo si evitano interruzioni o rallentamenti durante la visualizzazione, migliorando l’esperienza utente. Inoltre, questi formati consentono di distribuire il contenuto su diverse piattaforme e dispositivi, aumentando la portabilità del video.
 
-<div class="callout callout-info"><div class="callout-inner"><div class="callout-title"><span class="text"><h5 id="tip">Tip</h5></span></div><p>FFmpeg è uno strumento di conversione multimediale open-source che consente di convertire facilmente i
+<div class="callout callout-info"><div class="callout-inner"><div class="callout-title"><span class="text">Suggerimento</span></div><p>FFmpeg è uno strumento di conversione multimediale open-source che consente di convertire facilmente i
 file MP4 in formati adattivi come HLS o DASH, ti permette la conversione del video MP4 in un formato a
 bitrate variabile per adattare la qualità del video alle diverse velocità di connessione degli utenti.
 Approfondisci su <a href="https://ffmpeg.org/">FFmpeg</a>.</p></div></div>

@@ -115,17 +115,17 @@ const meta = {
     min: {
       control: 'number',
       description: 'Valore minimo consentito',
-      type: 'string',
+      type: 'number',
     },
     max: {
       control: 'number',
       description: 'Valore massimo consentito',
-      type: 'string',
+      type: 'number',
     },
     step: {
       control: 'number',
       description: 'Incremento per ogni step (utilizzato dai pulsanti +/-)',
-      type: 'string',
+      type: 'number',
     },
     required: {
       control: 'boolean',
@@ -290,7 +290,7 @@ export const Percentuale: Story = {
         story: `
 Per anteporre il simbolo percentuale, utilizza lo slot \`prepend\`.
 
-Ti consigliamo di impostare gli attributi \`min=0\` e \`max="100"\`.
+Ti consigliamo di impostare gli attributi \`min="0"\` e \`max="100"\`.
 `,
       },
     },

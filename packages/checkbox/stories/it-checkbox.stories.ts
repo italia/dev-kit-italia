@@ -72,17 +72,21 @@ const meta = {
     id: {
       control: 'text',
       description: 'ID del campo',
+      type: 'string',
     },
     label: {
       control: 'text',
       description: 'Etichetta del campo',
+      type: 'string',
     },
     name: {
       control: 'text',
+      type: 'string',
     },
     value: {
       control: 'text',
       description: 'Valore del campo',
+      type: 'string',
     },
     checked: {
       control: 'boolean',
@@ -101,6 +105,7 @@ const meta = {
     },
     form: {
       control: 'text',
+      type: 'string',
       description: "ID html del form a cui è associato il campo, se il campo non si trova all'interno di una form ",
     },
     customValidation: {
@@ -114,6 +119,7 @@ const meta = {
     validityMessage: {
       name: 'validity-message',
       control: 'text',
+      type: 'string',
       description:
         "Messaggio da mostrare quando il campo è invalido nel caso di validazione esterna (validazione custom). Se impostato a '' (stringa vuota) il campo viene considerato valido.",
     },
@@ -138,6 +144,7 @@ const meta = {
       name: 'support-text',
       control: 'text',
       description: 'Testo di supporto',
+      type: 'string',
     },
   },
 } satisfies Meta<CheckboxProps>;
