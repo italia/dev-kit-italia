@@ -10,7 +10,7 @@ const defaultContent = html`
             <div class="col-sm-12">
               <div class="it-brand-wrapper">
                 <a href="#">
-                  <it-icon name="it-code-circle" size="xl" color="white"></it-icon>
+                  <it-icon name="it-code-circle" size="xl" color="inverse"></it-icon>
                   <div class="it-brand-text">
                     <h2 class="no_toc">Nome Ente</h2>
                     <h3 class="no_toc">Tagline</h3>
@@ -102,25 +102,25 @@ const defaultContent = html`
                 <ul class="list-inline text-left social">
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#"
-                      ><it-icon color="white" size="sm" name="it-designers-italia"></it-icon
+                      ><it-icon color="inverse" size="sm" name="it-designers-italia"></it-icon
                       ><span class="visually-hidden">Designers Italia (link esterno)</span></a
                     >
                   </li>
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#"
-                      ><it-icon color="white" size="sm" name="it-twitter"></it-icon
+                      ><it-icon color="inverse" size="sm" name="it-twitter"></it-icon
                       ><span class="visually-hidden">X (link esterno)</span></a
                     >
                   </li>
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#"
-                      ><it-icon color="white" size="sm" name="it-medium"></it-icon
+                      ><it-icon color="inverse" size="sm" name="it-medium"></it-icon
                       ><span class="visually-hidden">Medium (link esterno)</span></a
                     >
                   </li>
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#"
-                      ><it-icon color="white" size="sm" name="it-behance"></it-icon
+                      ><it-icon color="inverse" size="sm" name="it-behance"></it-icon
                       ><span class="visually-hidden">Behance (link esterno)</span></a
                     >
                   </li>
@@ -173,7 +173,7 @@ const smallContent = html` <footer class="it-footer">
           <div class="col-sm-12">
             <div class="it-brand-wrapper">
               <a href="#" >
-                <it-icon name="it-code-circle" size="xl" color="white"></it-icon>
+                <it-icon name="it-code-circle" size="xl" color="inverse"></it-icon>
                 <div class="it-brand-text">
                   <h2>Nome Ente</h2>
                   <h3 class="no_toc">Tagline</h3>
@@ -205,19 +205,19 @@ const smallContent = html` <footer class="it-footer">
               <h4>Seguici su</h4>
                 <ul class="list-inline text-left social">
                   <li class="list-inline-item">
-                    <a class="p-2 text-white" href="#"><it-icon color="white" size="sm" name="it-designers-italia"></it-icon><span class="visually-hidden">Designers Italia (link esterno)</span></a
+                    <a class="p-2 text-white" href="#"><it-icon color="inverse" size="sm" name="it-designers-italia"></it-icon><span class="visually-hidden">Designers Italia (link esterno)</span></a
                     >
                   </li>
                   <li class="list-inline-item">
-                    <a class="p-2 text-white" href="#"><it-icon color="white" size="sm" name="it-twitter"></it-icon><span class="visually-hidden">X (link esterno)</span></a
+                    <a class="p-2 text-white" href="#"><it-icon color="inverse" size="sm" name="it-twitter"></it-icon><span class="visually-hidden">X (link esterno)</span></a
                     >
                   </li>
                   <li class="list-inline-item">
-                    <a class="p-2 text-white" href="#"><it-icon color="white" size="sm" name="it-medium"></it-icon><span class="visually-hidden">Medium (link esterno)</span></a
+                    <a class="p-2 text-white" href="#"><it-icon color="inverse" size="sm" name="it-medium"></it-icon><span class="visually-hidden">Medium (link esterno)</span></a
                     >
                   </li>
                   <li class="list-inline-item">
-                    <a class="p-2 text-white" href="#"><it-icon color="white" size="sm" name="it-behance"></it-icon><span class="visually-hidden">Behance (link esterno)</span></a
+                    <a class="p-2 text-white" href="#"><it-icon color="inverse" size="sm" name="it-behance"></it-icon><span class="visually-hidden">Behance (link esterno)</span></a
                     >
                   </li>
                 </ul>

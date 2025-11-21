@@ -618,7 +618,7 @@ Le traduzioni dei nomi degli stati sono gestite automaticamente tramite il [sist
               size="lg"
             >
               <span slot="presence" class="custom-presence custom-presence-success">
-                <it-icon name="it-check" size="xs" color="white"></it-icon>
+                <it-icon name="it-check" size="xs" color="inverse"></it-icon>
                 <span class="visually-hidden">Utente online e disponibile</span>
               </span>
             </it-avatar>
@@ -779,7 +779,7 @@ Le traduzioni sono gestite automaticamente tramite il [sistema @italia/i18n](/do
               size="lg"
             >
               <span slot="status" class="custom-status custom-status-success">
-                <it-icon name="it-check-circle" size="xs" color="white"></it-icon>
+                <it-icon name="it-check-circle" size="xs" color="inverse"></it-icon>
                 <span class="visually-hidden">Account verificato e approvato</span>
               </span>
             </it-avatar>
@@ -796,7 +796,7 @@ Le traduzioni sono gestite automaticamente tramite il [sistema @italia/i18n](/do
               size="lg"
             >
               <span slot="status" class="custom-status custom-status-danger">
-                <it-icon name="it-close" size="xs" color="white"></it-icon>
+                <it-icon name="it-close" size="xs" color="inverse"></it-icon>
                 <span class="visually-hidden">Account sospeso o respinto</span>
               </span>
             </it-avatar>

@@ -244,17 +244,17 @@ const Button = () => {
         <h2>Con icona </h2>
         <div className="flex">
           <it-button variant="success" size="lg" icon={true} type="button">
-            <it-icon name="it-star-full" color="white" size="sm"></it-icon>
+            <it-icon name="it-star-full" color="inverse" size="sm"></it-icon>
             <span>Testo del pulsante</span>
           </it-button>
 
           <it-button variant="primary" icon={true} type="button">
-            <it-icon name="it-star-full" color="white" size="sm"></it-icon>
+            <it-icon name="it-star-full" color="inverse" size="sm"></it-icon>
             <span>Testo del pulsante</span>
           </it-button>
 
           <it-button variant="danger" size="xs" icon={true} type="button">
-            <it-icon name="it-star-full" color="white" size="xs"></it-icon>
+            <it-icon name="it-star-full" color="inverse" size="xs"></it-icon>
             <span>Testo del pulsante</span>
           </it-button>
 
