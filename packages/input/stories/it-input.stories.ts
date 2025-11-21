@@ -4,7 +4,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { StoryFormControlMethodAndProps } from '@italia/globals';
 
 import { INPUT_TYPES, type InputType, INPUT_SIZES, type Sizes } from '../src/types.js';
-import i18nIT from '../src/locales/it.js';
 
 interface InputProps {
   id: string;
@@ -65,13 +64,15 @@ const renderComponent = (params: any) =>
     ?adaptive="${params.adaptive}"
     ?strength-meter="${params.strengthMeter}"
     ?suggestions="${params.suggestions}"
-    ><span slot="label">${params.label}</span>${ifDefined(params.children || undefined)}</it-input
-  >`;
+  >
+    <span slot="label">${params.label}</span>
+    ${ifDefined(params.children || undefined)}
+  </it-input>`;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Form/Input',
-  tags: ['autodocs', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-input',
   args: {
     id: '',
@@ -132,6 +133,7 @@ const meta = {
     },
     form: {
       control: 'text',
+      type: 'string',
       description: "ID html del form a cui è associato il campo, se il campo non si trova all'interno di una form ",
     },
     customValidation: {
@@ -151,19 +153,23 @@ const meta = {
     pattern: {
       control: 'text',
       description: 'Pattern di validazione del campo',
+      type: 'string',
     },
     min: {
       control: 'text',
       description: 'Valore minimo consentito per un campo di tipo numerico o di tipo data',
+      type: 'string',
     },
     max: {
       control: 'text',
       description: 'Valore massimo consentito per un campo di tipo numerico o di tipo data',
+      type: 'string',
     },
     step: {
       control: 'number',
       description:
         'Incremento per ogni step (tramite i pulsanti +/-) nel caso di input di tipo numerico o di tipo data',
+      type: 'number',
     },
     minlength: {
       type: 'number',
@@ -209,10 +215,11 @@ const meta = {
       table: { defaultValue: { summary: 'false' } },
     },
     size: {
-      control: 'select',
+      control: { type: 'select', labels: { undefined: '(non definito)', sm: 'sm', lg: 'lg' } },
       options: INPUT_SIZES,
-      description: "Dimensione del campo: 'sm' | (stringa vuota) | 'lg' ",
+      description: "Dimensione del campo: 'sm' | (non definito) | 'lg' ",
       table: { defaultValue: { summary: undefined } },
+      type: 'string',
     },
     adaptive: {
       control: 'boolean',
@@ -265,7 +272,7 @@ export const EsempioInterattivo: Story = {
   parameters: {
     docs: {
       canvas: {
-        sourceState: 'shown',
+        sourceState: 'closed',
       },
     },
   },
@@ -318,15 +325,6 @@ export const Placeholder: Story = {
     id: 'placeholder-example',
   },
 
-  parameters: {
-    docs: {
-      description: {
-        story: `
-È possibile abbinare al componente \`<it-input>\` un testo segnaposto (placeholder) per fornire indicazioni sul tipo di contenuto atteso. Questo testo non sostituisce l’etichetta, ma fornisce informazioni aggiuntive.
-`,
-      },
-    },
-  },
   render: (params) => html`
     ${renderComponent({
       ...params,
@@ -345,14 +343,6 @@ export const TestoDiSupporto: Story = {
     id: 'supportText-example',
     supportText: 'Testo di supporto',
   },
-
-  parameters: {
-    docs: {
-      description: {
-        story: `In caso di necessità, è anche possibile utilizzare un ulteriore contenuto testuale sotto il campo di testo, indicando nell'attributo \`support-text\` il testo da visualizzare.`,
-      },
-    },
-  },
   render: (params) => html`
     ${renderComponent({
       ...params,
@@ -364,14 +354,6 @@ export const LabelHidden: Story = {
   ...meta,
   name: 'Etichetta nascosta',
   args: { placeholder: 'Cerca...', label: 'Cerca nel sito', labelHidden: true },
-
-  parameters: {
-    docs: {
-      description: {
-        story: `Se si vuole nascondere l'etichetta, come ad esempio nei campi di ricerca, è sufficiente passare l'attributo \`label-hidden\`.`,
-      },
-    },
-  },
   render: (params) => html`
     ${renderComponent({
       ...params,
@@ -393,7 +375,7 @@ export const IconeOPulsanti: Story = {
   parameters: {
     docs: {
       description: {
-        story: `<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità delle icone</span></div><p>Nel caso in cui l’icona è semanticamente rilevante e non spiegata dal testo che la segue, occorre passare al componente \`<it-icon>\` l'attributo \`label\` che ne spieghi il significato (nel formato \`<it-icon .... label="Significato dell'icona"/>\`)</p></div></div>`,
+        story: `<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità delle icone</span></div><p>Nel caso in cui l’icona è semanticamente rilevante e non spiegata dal testo che la segue, devi passare al componente \`<it-icon>\` l'attributo \`label\` che ne spieghi il significato (nel formato \`<it-icon .... label="Significato dell'icona"/>\`)</p></div></div>`,
       },
     },
   },
@@ -414,9 +396,9 @@ export const Dimensioni: Story = {
       description: {
         story: `L'input di base ha una dimensione media che non necessita di alcuna classe aggiuntiva.
 
-Per modificare questa dimensione, è possiible utilizzare l'attributo \`size\` il cui valore può essere \`sm\` oppure \`lg\`.
+Per modificare questa dimensione, puoi utilizzare l'attributo \`size\` il cui valore può essere \`sm\` oppure \`lg\`.
 
-Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attributo \`size\` sull'icona in questo modo:
+Per modificare invece la dimensione dell’icona, puoi utilizzare l'attributo \`size\` sull'icona in questo modo:
 <table>
 <thead>
   <tr><th>Dimensione input</th><th>Attributo size (di it-input)</th><th>Dimensione icona</th></tr>
@@ -469,13 +451,6 @@ Per modificare invece la dimensione dell’icona, è possibile utilizzare l'attr
 export const Disabilitato: Story = {
   ...meta,
   name: 'Stato disabilitato',
-  parameters: {
-    docs: {
-      description: {
-        story: `Aggiungi l’attributo \`disabled\` ad un \`<it-input>\` per impedire la modifica del valore contenuto e non inviare i dati in esso contenuti.`,
-      },
-    },
-  },
   args: {
     type: 'text',
     label: 'Campo disabilitato',
@@ -493,14 +468,6 @@ export const Disabilitato: Story = {
 export const Readonly: Story = {
   ...meta,
   name: 'Stato readonly',
-  parameters: {
-    docs: {
-      description: {
-        story: `Aggiungi l’attributo \`readonly\` ad un \`<it-input>\` per impedire la modifica del valore contenuto.
-<br/><br/><h4>Readonly normalizzato</h4>Se per qualche motivo vuoi avere gli elementi input readonly nella forma stilizzata come testo, aggiungi l'attributo \`plaintext\` a \`<it-input>\`.`,
-      },
-    },
-  },
   args: { type: 'text', readonly: true, value: 'Contenuto in sola lettura' },
   render: (params) => html`
     ${renderComponent({
@@ -521,20 +488,6 @@ export const Readonly: Story = {
 
 export const Password: Story = {
   ...meta,
-  parameters: {
-    docs: {
-      description: {
-        story: `Per semplificare l’inserimento della password, il componente \`<it-input>\` di tipo password include un pulsante che mostra i caratteri digitati.
-        È inoltre possibile aggiungere un testo di supporto che aiuti nella compilazione, attraverso l’attributo \`support-text\`.
-        <br/><br/>
-        <h4>Misuratore sicurezza e suggerimenti</h4>
-Nel caso di un campo per la scelta di una nuova password, è possibile abbinare controlli per segnalare quanto la password che si sta inserendo segua alcuni suggerimenti di sicurezza, come la lunghezza minima o l’uso di caratteri speciali, attraverso gli attributi \`strength-meter="true"\` e \`minlength\` per modificare la lunghezza minima richiesta per la password.
-
-Inoltre, è possibile restituire all’utente una lista dei suggerimenti, con indicati quelli che sono stati soddisfatti, attraverso l’attributo \`suggestions="true"\`.
-`,
-      },
-    },
-  },
   args: {
     type: 'password',
     label: 'Campo password',
@@ -560,13 +513,6 @@ Inoltre, è possibile restituire all’utente una lista dei suggerimenti, con in
 export const Textarea: Story = {
   ...meta,
   name: 'Area di testo',
-  parameters: {
-    docs: {
-      description: {
-        story: `Per permettere agli utenti di inserire un testo esteso (ad esempio per lasciare commenti o informazioni), è bene utilizzare un elemento \`<it-input>\` con \`type="textarea"\`.`,
-      },
-    },
-  },
   args: {
     type: 'textarea',
     label: 'Area di testo',
@@ -581,27 +527,9 @@ export const Textarea: Story = {
   `,
 };
 
-export const GestioneErrori: Story = {
+export const ValidazioneNativa: Story = {
   ...meta,
-  name: 'Validazione e gestione degli errori',
-  parameters: {
-    docs: {
-      description: {
-        story: `Se non è stata impostata la validazione custom tramite l'attributo \`custom-validation\`, e sono stati impostati uno di questi attributi <ul><li>\`required\`</li><li>\`pattern\`</li><li>\`min\`</li><li>\`max\`</li><li>\`step\`</li><li>\`minlength\`</li><li>\`maxlength\`</li></ul> viene effettuata una validazione interna utilizzando la validazione nativa del browser.
- <br/><br/><h4>Personalizzazione dei messaggi di errore</h4>E' possibile personalizzare alcuni dei messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
-        <ul><li>\`validityRequired\`: messaggio che viene mostrato quando il campo è required e non è compilato</li>
-        <li>\`validityPattern\`: messaggio che viene mostrato quando il campo non rispetta il pattern indicato</li>
-        <li>\`validityMinlength\`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo corta rispetto al valore passatto nell'attributo \`min-length\`</li>
-         <li>\`validityMaxlength\`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo lunga rispetto al valore passatto nell'attributo \`max-length\`</li>
-      </ul>
-      Per gli altri errori di validazione non indicati, verranno mostrati i messsaggi di errore nativi del browser.
-      <h4>Validazione esterna (validazione custom)</h4>
-        E' inoltre possibile validare il campo esternamente (via js ad esempio, o lato server), impostando l' attributo \`custom-validation="true"\`. In questo modo la validazione di default del browser effettuata internamente al componente è disabilitata.
-        <br/><br/><h5>Campo invalido</h5>Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo \`validity-message="Messaggio di errore"\`.
-        <br/><br/><h5>Campo valido</h5>Per riportare il campo ad uno stato 'valido', è sufficiente impostare il messaggio di errore a vuoto: \`validity-message=""\`.`,
-      },
-    },
-  },
+  name: 'Validazione nativa',
   args: { type: 'text', placeholder: 'Testo segnaposto' },
   render: (params) => html`
     ${renderComponent({
@@ -611,6 +539,14 @@ export const GestioneErrori: Story = {
       id: 'required-example',
       required: true,
     })}
+  `,
+};
+
+export const ValidazioneCustom: Story = {
+  ...meta,
+  name: 'Validazione custom',
+  args: { type: 'text', placeholder: 'Testo segnaposto' },
+  render: (params) => html`
     ${renderComponent({
       ...params,
       label: 'Validazione esterna',
@@ -629,9 +565,9 @@ export const GestioneEventi: Story = {
   parameters: {
     docs: {
       description: {
-        story: `E' possibile gestire gli eventi di \`it-input\`, \`it-blur\`, \`it-change\`, \`it-focus\`, \`it-click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
-        <br/><br/>
-        È sufficiente aggiungere un event listener al componente \`<it-input>\` per intercettare gli eventi desiderati. Ad esempio, per gestire l'evento di input, è possibile utilizzare il seguente codice:
+        story: `È possibile gestire gli eventi di \`it-input\`, \`it-blur\`, \`it-change\`, \`it-focus\`, \`it-click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
+<br/><br/>
+È sufficiente aggiungere un event listener al componente \`<it-input>\` per intercettare gli eventi desiderati. Ad esempio, per gestire l'evento di input, è possibile utilizzare il seguente codice:
 
 \`\`\`js
 document.querySelector('it-input#event-input-example').addEventListener('it-input', (event) => {
@@ -675,25 +611,3 @@ document.querySelector('it-input#event-input-example').addEventListener('it-inpu
 };
 
 export const MetodiEPropPubblici: Story = { ...StoryFormControlMethodAndProps({}), tags: ['!dev'] };
-
-export const I18n: Story = {
-  name: 'i18n',
-  tags: ['!dev'],
-  render: () => html`<div class="hide-preview"></div>`,
-  parameters: {
-    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
-    docs: {
-      description: {
-        story: `
-Per questo componente sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
-
-\`\`\`js
-const translation = {
-  ${JSON.stringify(i18nIT).replaceAll('{"', '"').replaceAll('",', '",\n\t').replaceAll('"}', '"')}
-}
-\`\`\`
-`,
-      },
-    },
-  },
-};

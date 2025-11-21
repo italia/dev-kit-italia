@@ -275,31 +275,37 @@ Un avatar con testo conterrà uno \`<span>\` per soli screen reader con il nome 
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         size: 'xs',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         size: 'sm',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         size: 'md',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         size: 'lg',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         size: 'xl',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         size: 'xxl',
       })}
     </div>
@@ -307,36 +313,42 @@ Un avatar con testo conterrà uno \`<span>\` per soli screen reader con il nome 
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         variant: 'primary',
         size: 'xs',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         variant: 'primary',
         size: 'sm',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         variant: 'primary',
         size: 'md',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         variant: 'primary',
         size: 'lg',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         variant: 'primary',
         size: 'xl',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         variant: 'primary',
         size: 'xxl',
       })}
@@ -345,36 +357,42 @@ Un avatar con testo conterrà uno \`<span>\` per soli screen reader con il nome 
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         variant: 'secondary',
         size: 'xs',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         variant: 'secondary',
         size: 'sm',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         variant: 'secondary',
         size: 'md',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         variant: 'secondary',
         size: 'lg',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         variant: 'secondary',
         size: 'xl',
       })}
       ${renderComponent({
         type: 'text',
         text: 'Mario Rossi',
+        avatarTitle: 'Mario Rossi',
         variant: 'secondary',
         size: 'xxl',
       })}
@@ -410,37 +428,37 @@ Per gli avatar con icona inserire un testo alternativo: \`<span class="visually-
       ${renderComponent({
         type: 'icon',
         icon: 'it-user',
-        avatarTitle: 'Cerca',
+        avatarTitle: 'Utente',
         size: 'xs',
       })}
       ${renderComponent({
         type: 'icon',
         icon: 'it-user',
-        avatarTitle: 'Cerca',
+        avatarTitle: 'Utente',
         size: 'sm',
       })}
       ${renderComponent({
         type: 'icon',
         icon: 'it-user',
-        avatarTitle: 'Cerca',
+        avatarTitle: 'Utente',
         size: 'md',
       })}
       ${renderComponent({
         type: 'icon',
         icon: 'it-user',
-        avatarTitle: 'Cerca',
+        avatarTitle: 'Utente',
         size: 'lg',
       })}
       ${renderComponent({
         type: 'icon',
         icon: 'it-user',
-        avatarTitle: 'Cerca',
+        avatarTitle: 'Utente',
         size: 'xl',
       })}
       ${renderComponent({
         type: 'icon',
         icon: 'it-user',
-        avatarTitle: 'Cerca',
+        avatarTitle: 'Utente',
         size: 'xxl',
       })}
     </div>
@@ -458,7 +476,7 @@ export const AvatarLink: Story = {
 Per associare un avatar ad un'azione o un link, utilizzare l'attributo \`href\` con relativo link o chiamata JavaScript.
 
 <div class="callout callout-warning"><div class="callout-inner"><div class="callout-title"><span class="text">Tooltip non ancora implementato</span></div>
-<p>La funzionalità tooltip per gli avatar con link è attualmente in fase di sviluppo. </p></div></div>
+<p>La funzionalità tooltip per gli avatar con link è attualmente in fase di sviluppo.</p></div></div>
 
 `,
       },
@@ -491,7 +509,7 @@ Per associare un avatar ad un'azione o un link, utilizzare l'attributo \`href\` 
           type: 'icon',
           icon: 'it-user',
           href: '#',
-          avatarTitle: 'Cerca',
+          avatarTitle: 'Utente',
         })}
       </div>
     </div>
@@ -591,9 +609,16 @@ Le traduzioni dei nomi degli stati sono gestite automaticamente tramite il [sist
         </p>
         <div class="d-flex align-items-center gap-4 flex-wrap">
           <div class="text-center">
-            <it-avatar type="text" text="Marco Bianchi" variant="primary" presence="active" size="lg">
+            <it-avatar
+              type="text"
+              text="Marco Bianchi"
+              avatarTitle="Marco Bianchi"
+              variant="primary"
+              presence="active"
+              size="lg"
+            >
               <span slot="presence" class="custom-presence custom-presence-success">
-                <it-icon name="it-check" size="xs" color="white"></it-icon>
+                <it-icon name="it-check" size="xs" color="inverse"></it-icon>
                 <span class="visually-hidden">Utente online e disponibile</span>
               </span>
             </it-avatar>
@@ -601,7 +626,14 @@ Le traduzioni dei nomi degli stati sono gestite automaticamente tramite il [sist
           </div>
 
           <div class="text-center">
-            <it-avatar type="text" text="Sara Verdi" variant="secondary" presence="busy" size="lg">
+            <it-avatar
+              type="text"
+              text="Sara Verdi"
+              avatarTitle="Sara Verdi"
+              variant="secondary"
+              presence="busy"
+              size="lg"
+            >
               <span slot="presence" class="custom-presence custom-presence-danger">
                 !
                 <span class="visually-hidden">Utente occupato, non disturbare</span>
@@ -738,9 +770,16 @@ Le traduzioni sono gestite automaticamente tramite il [sistema @italia/i18n](/do
         </p>
         <div class="d-flex align-items-center gap-4 flex-wrap">
           <div class="text-center">
-            <it-avatar type="text" text="Luigi Neri" variant="primary" status="approved" size="lg">
+            <it-avatar
+              type="text"
+              text="Luigi Neri"
+              avatarTitle="Luigi Neri"
+              variant="primary"
+              status="approved"
+              size="lg"
+            >
               <span slot="status" class="custom-status custom-status-success">
-                <it-icon name="it-check-circle" size="xs" color="white"></it-icon>
+                <it-icon name="it-check-circle" size="xs" color="inverse"></it-icon>
                 <span class="visually-hidden">Account verificato e approvato</span>
               </span>
             </it-avatar>
@@ -748,9 +787,16 @@ Le traduzioni sono gestite automaticamente tramite il [sistema @italia/i18n](/do
           </div>
 
           <div class="text-center">
-            <it-avatar type="text" text="Carla Blu" variant="secondary" status="declined" size="lg">
+            <it-avatar
+              type="text"
+              text="Carla Blu"
+              avatarTitle="Carla Blu"
+              variant="secondary"
+              status="declined"
+              size="lg"
+            >
               <span slot="status" class="custom-status custom-status-danger">
-                <it-icon name="it-close" size="xs" color="white"></it-icon>
+                <it-icon name="it-close" size="xs" color="inverse"></it-icon>
                 <span class="visually-hidden">Account sospeso o respinto</span>
               </span>
             </it-avatar>
@@ -796,6 +842,11 @@ export const GruppiAvatarListe: Story = {
 Utilizzando una lista di link con l’aggiunta della classe .avatar-group si ottiene una lista verticale con avatar affiancati da link e testi.
 
 È possibile utilizzare avatar di dimensione \`sm\` o \`md\` all'interno della lista.
+
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
+<p>Se un elemento della lista non è un link, ricordati di assegnare \`aria-hidden="true"\` allo span contenuto nel tag \`<div class="list-item"></div>\`, come negli esempi seguenti. Questo garantisce che gli screen reader non ripetano inutilmente informazioni ridondanti.</p></div></div>
+
+
 `,
       },
     },
@@ -819,16 +870,16 @@ Utilizzando una lista di link con l’aggiunta della classe .avatar-group si ott
               </a>
             </li>
             <li>
-              <div class="list-item">
-                ${renderComponent({ size: 'sm', text: 'Sara Ghione', variant: 'primary' })}
+              <a class="list-item" href="#">
+                ${renderComponent({ size: 'sm', text: 'Sara Ghione', variant: 'primary', type: 'text' })}
                 <span>Sara Ghione</span>
-              </div>
+              </a>
             </li>
             <li>
-              <div class="list-item">
-                ${renderComponent({ size: 'sm', icon: 'it-user', avatarTitle: 'Utente generico' })}
+              <a class="list-item" href="#">
+                ${renderComponent({ size: 'sm', icon: 'it-user', type: 'icon' })}
                 <span>Antonio Esposito</span>
-              </div>
+              </a>
             </li>
           </ul>
         </div>
@@ -851,16 +902,16 @@ Utilizzando una lista di link con l’aggiunta della classe .avatar-group si ott
               </a>
             </li>
             <li>
-              <div class="list-item">
-                ${renderComponent({ text: 'Marco Neri', variant: 'secondary' })}
+              <a class="list-item" href="#">
+                ${renderComponent({ text: 'Marco Neri', variant: 'secondary', type: 'text' })}
                 <span>Marco Neri</span>
-              </div>
+              </a>
             </li>
             <li>
-              <div class="list-item">
-                ${renderComponent({ icon: 'it-user', avatarTitle: 'Cerca' })}
+              <a class="list-item" href="#">
+                ${renderComponent({ icon: 'it-user', type: 'icon' })}
                 <span>Cerca utenti</span>
-              </div>
+              </a>
             </li>
           </ul>
         </div>
@@ -886,7 +937,7 @@ Per mostrare ulteriori avatar in un menu a discesa, utilizzare \`it-avatar\` con
 L'avatar dropdown eredita automaticamente la dimensione dal gruppo e può contenere una lista di avatar con nomi nel menu.
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità del dropdown</span></div>
-<p>È fondamentale utilizzare l'attributo \`it-aria-label\` sul componente \`it-dropdown\` per fornire una descrizione significativa agli screen reader. Senza questo attributo, uno screen reader leggerebbe solo il testo del label (es. "+4") senza contesto, mentre con \`it-aria-label="Altri utenti"\` fornisce una descrizione chiara e comprensibile.</p></div></div>
+<p>Devi utilizzare l'attributo \`it-aria-label\` sul componente \`it-dropdown\` per fornire una descrizione completa agli screen reader. L'aria-label deve contenere sia il testo visibile che la sua spiegazione, ad esempio: \`it-aria-label="Visualizza altri 4 utenti"\`. In questo modo uno screen reader leggerà l'intera descrizione fornendo il contesto completo all'utente.</p></div></div>
 `,
       },
     },
@@ -896,10 +947,10 @@ L'avatar dropdown eredita automaticamente la dimensione dal gruppo e può conten
       <div>
         <ul class="avatar-group-stacked">
           <li>
-            <it-avatar src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto profilo" href="#"></it-avatar>
+            <it-avatar src="https://randomuser.me/api/portraits/women/44.jpg" alt="Giorgia Vicari" href="#"></it-avatar>
           </li>
           <li>
-            <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo" href="#"></it-avatar>
+            <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg" alt="Francesco Donati" href="#"></it-avatar>
           </li>
           <li>
             ${renderComponent({
@@ -914,9 +965,14 @@ L'avatar dropdown eredita automaticamente la dimensione dal gruppo e può conten
           <li><it-avatar text="Sandro Penna" variant="secondary" href="#"></it-avatar></li>
           <li>
             <it-avatar type="dropdown">
-              <it-dropdown label="4+" slot="avatar-dropdown-content" it-aria-label="Altri utenti" variant="secondary">
+              <it-dropdown
+                label="4+"
+                slot="avatar-dropdown-content"
+                it-aria-label="Visualizza altri 4 utenti"
+                variant="secondary"
+              >
                 <it-dropdown-item href="#">
-                  <it-avatar src="https://randomuser.me/api/portraits/men/22.jpg" alt="Foto profilo"></it-avatar>
+                  <it-avatar src="https://randomuser.me/api/portraits/men/22.jpg"></it-avatar>
                   <span>Roberto Milano</span>
                 </it-dropdown-item>
                 <it-dropdown-item href="#">
@@ -950,17 +1006,25 @@ export const AvatarSovrappostiSM: Story = {
       <div>
         <ul class="avatar-group-stacked">
           <li>
-            <it-avatar src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto profilo" size="sm"></it-avatar>
+            <it-avatar
+              src="https://randomuser.me/api/portraits/women/44.jpg"
+              alt="Giorgia Vicari"
+              size="sm"
+            ></it-avatar>
           </li>
           <li>
-            <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo" size="sm"></it-avatar>
+            <it-avatar
+              src="https://randomuser.me/api/portraits/men/43.jpg"
+              alt="Francesco Donati"
+              size="sm"
+            ></it-avatar>
           </li>
+
+          <li><it-avatar text="Tommaso Sordi" avatar-title="Tommaso Sordi" variant="primary" size="sm"></it-avatar></li>
+          <li><it-avatar text="Barbara Tosi" avatar-title="Barbara Tosi" size="sm"></it-avatar></li>
           <li>
-            <it-avatar src="https://randomuser.me/api/portraits/women/41.jpg" alt="Foto profilo" size="sm"></it-avatar>
+            <it-avatar text="Barbara Tosti" avatar-title="Barbara Tosti" variant="secondary" size="sm"></it-avatar>
           </li>
-          <li><it-avatar text="Tommaso Sordi" variant="primary" size="sm"></it-avatar></li>
-          <li><it-avatar text="Barbara Tosi" size="sm"></it-avatar></li>
-          <li><it-avatar text="Barbara Tosi" variant="secondary" size="sm"></it-avatar></li>
         </ul>
       </div>
     </div>
@@ -976,10 +1040,18 @@ export const AvatarSovrappostiMD: Story = {
         <div>
           <ul class="avatar-group-stacked">
             <li>
-              <it-avatar src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto profilo" href="#"></it-avatar>
+              <it-avatar
+                src="https://randomuser.me/api/portraits/women/44.jpg"
+                alt="Giorgia Vicari"
+                href="#"
+              ></it-avatar>
             </li>
             <li>
-              <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo" href="#"></it-avatar>
+              <it-avatar
+                src="https://randomuser.me/api/portraits/men/43.jpg"
+                alt="Francesco Donati"
+                href="#"
+              ></it-avatar>
             </li>
             <li>
               ${renderComponent({
@@ -991,8 +1063,8 @@ export const AvatarSovrappostiMD: Story = {
                 slot: 'trigger',
               })}
             </li>
-            <li><it-avatar text="Sandro Penna" variant="secondary" href="#"></it-avatar></li>
-            <li><it-avatar text="Sandro Penna" href="#"></it-avatar></li>
+            <li><it-avatar text="Sandro Penna" variant="secondary" avatar-title="Sandro Penna""></it-avatar></li>
+            <li><it-avatar text="Sandro Pertini" avatar-title="Sandro Pertini" ></it-avatar></li>
           </ul>
         </div>
       </div>
@@ -1014,21 +1086,21 @@ Per il nome è possibile utilizzare i tag \`<h3>\` o \`<h4>\` tramite lo slot. I
   },
   render: () => html`
     <div class="d-flex gap-4">
-      <it-avatar type="image" src="https://randomuser.me/api/portraits/men/43.jpg" size="xl" text="Mario Rossi">
+      <it-avatar type="image" src="https://randomuser.me/api/portraits/men/43.jpg" size="xl">
         <div slot="extra-text">
           <h4>Mario Rossi</h4>
           <time>15 SET 2025</time>
         </div>
       </it-avatar>
 
-      <it-avatar type="image" src="https://randomuser.me/api/portraits/women/44.jpg" size="xl" text="Giulia Neri">
+      <it-avatar type="image" src="https://randomuser.me/api/portraits/women/44.jpg" size="xl">
         <div slot="extra-text">
           <h4>Giulia Neri</h4>
           <p>LOREM IPSUM DOLOR</p>
         </div>
       </it-avatar>
 
-      <it-avatar type="text" text="Michele Dotti" variant="primary" size="xl">
+      <it-avatar type="text" variant="primary" size="xl" text="Michele Dotti">
         <div slot="extra-text">
           <h4>Michele Dotti</h4>
           <time>12 MAG 2025</time>
@@ -1057,7 +1129,7 @@ Questo è particolarmente utile per creare liste di utenti con informazioni aggi
         <ul class="link-list avatar-group">
           <li>
             <div class="list-item">
-              <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg" alt="Foto profilo">
+              <it-avatar src="https://randomuser.me/api/portraits/men/43.jpg">
                 <div slot="extra-text">
                   <h4>Mario Rossi</h4>
                   <p>TEAM LEADER</p>
@@ -1067,7 +1139,7 @@ Questo è particolarmente utile per creare liste di utenti con informazioni aggi
           </li>
           <li>
             <div class="list-item">
-              <it-avatar src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto profilo">
+              <it-avatar src="https://randomuser.me/api/portraits/women/44.jpg">
                 <div slot="extra-text">
                   <h4>Giulia Neri</h4>
                   <p>FRONTEND DEVELOPER</p>
