@@ -38,6 +38,9 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/avatar">
         Avatar
       </a>
+      <a href="/src/back-to-top">
+        Back to Top
+      </a>
       <a href="/src/button">
         Button
       </a>
