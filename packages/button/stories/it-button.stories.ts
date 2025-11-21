@@ -382,7 +382,7 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         ?disabled="${params.disabled}"
         type="${params.type}"
       >
-        <it-icon name="it-star-full" color="white" size="sm"></it-icon>
+        <it-icon name="it-star-full" color="inverse" size="sm"></it-icon>
         <span>${slot ?? 'Pulsante Large con icona'}</span>
       </it-button>
 
@@ -394,7 +394,7 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         ?disabled="${params.disabled}"
         type="${params.type}"
       >
-        <it-icon name="it-star-full" color="white" size="sm"></it-icon> <span>${slot ?? 'Pulsante con icona'}</span>
+        <it-icon name="it-star-full" color="inverse" size="sm"></it-icon> <span>${slot ?? 'Pulsante con icona'}</span>
       </it-button>
 
       <it-button
@@ -406,7 +406,7 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         ?disabled="${params.disabled}"
         type="${params.type}"
       >
-        <it-icon name="it-star-full" color="white" size="xs"></it-icon>
+        <it-icon name="it-star-full" color="inverse" size="xs"></it-icon>
         <span>${slot ?? 'Pulsante Extra Small con icona'}</span>
       </it-button>
 
