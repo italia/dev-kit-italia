@@ -85,7 +85,7 @@
     <div style="text-align: center; display: inline-block;">
       <it-avatar type="text" text="Marco Bianchi" avatar-title="Marco Bianchi" variant="primary" presence="active" size="lg">
         <span slot="presence" class="custom-presence custom-presence-success">
-          <it-icon name="it-check" size="xs" color="white"></it-icon>
+          <it-icon name="it-check" size="xs" color="inverse"></it-icon>
           <span class="visually-hidden">Utente online e disponibile</span>
         </span>
       </it-avatar>
@@ -125,7 +125,7 @@
     <div style="text-align: center; display: inline-block;">
       <it-avatar type="text" text="Luigi Neri" avatar-title="Luigi Neri" variant="primary" status="approved" size="lg">
         <span slot="status" class="custom-status custom-status-success">
-          <it-icon name="it-check-circle" size="xs" color="white"></it-icon>
+          <it-icon name="it-check-circle" size="xs" color="inverse"></it-icon>
           <span class="visually-hidden">Account verificato e approvato</span>
         </span>
       </it-avatar>
@@ -134,7 +134,7 @@
     <div style="text-align: center; display: inline-block;">
       <it-avatar type="text" text="Carla Blu" avatar-title="Carla Blu" variant="secondary" status="declined" size="lg">
         <span slot="status" class="custom-status custom-status-danger">
-          <it-icon name="it-close" size="xs" color="white"></it-icon>
+          <it-icon name="it-close" size="xs" color="inverse"></it-icon>
           <span class="visually-hidden">Account sospeso o respinto</span>
         </span>
       </it-avatar>

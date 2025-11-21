@@ -189,7 +189,7 @@ export default function AvatarDemo() {
               size="lg"
             >
               <span slot="presence" className="custom-presence custom-presence-success">
-                <it-icon name="it-check" size="xs" color="white"></it-icon>
+                <it-icon name="it-check" size="xs" color="inverse"></it-icon>
                 <span className="visually-hidden">Utente online e disponibile</span>
               </span>
             </it-avatar>
@@ -287,7 +287,7 @@ export default function AvatarDemo() {
               size="lg"
             >
               <span slot="status" className="custom-status custom-status-success">
-                <it-icon name="it-check-circle" size="xs" color="white"></it-icon>
+                <it-icon name="it-check-circle" size="xs" color="inverse"></it-icon>
                 <span className="visually-hidden">Account verificato e approvato</span>
               </span>
             </it-avatar>
@@ -305,7 +305,7 @@ export default function AvatarDemo() {
               size="lg"
             >
               <span slot="status" className="custom-status custom-status-danger">
-                <it-icon name="it-close" size="xs" color="white"></it-icon>
+                <it-icon name="it-close" size="xs" color="inverse"></it-icon>
                 <span className="visually-hidden">Account sospeso o respinto</span>
               </span>
             </it-avatar>
