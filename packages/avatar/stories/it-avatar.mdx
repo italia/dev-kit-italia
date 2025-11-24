@@ -34,37 +34,37 @@ L'avatar implementa le best practice di accessibilità:
 
 ## Avatar con immagine
 
-Il componente avatar ridimensiona automaticamente l'immagine adattandola al formato circolare e centrandola. Si consiglia in ogni caso di utilizzare immagini delle dimensioni corrette.
+Il componente avatar ridimensiona automaticamente l'immagine adattandola al formato circolare e centrandola. Ti consigliamo in ogni caso di utilizzare immagini delle dimensioni corrette.
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità delle immagini</span></div>
 <p>Per ragioni di accessibilità è importante indicare all'interno dell'avatar il nome dell'utente associato allo stesso.
-Nel caso di avatar con immagine utilizzare l'attributo `alt` dell'immagine inserendo in esso il nome dell'utente.</p></div></div>
+Nel caso di avatar con immagine, utilizza l'attributo `alt` dell'immagine inserendo in esso il nome dell'utente.</p></div></div>
 
 <Canvas of={AvatarStories.AvatarConImmagine} />
 
 ## Avatar con testo
 
-La versione con testo contiene le iniziali dell'utente (una sola nel caso delle dimensioni xs ed sm). Oltre ai colori di default è possibile utilizzare uno sfondo a scelta fra:
+La versione con testo contiene le iniziali dell'utente (una sola nel caso delle dimensioni `xs` e `sm`). Oltre ai colori di default, puoi utilizzare uno sfondo a scelta fra:
 
 - **Primario**: aggiungendo l'attributo `variant="primary"`
 - **Secondario**: aggiungendo l'attributo `variant="secondary"`
 
 In questi casi il testo sarà di colore bianco.
 
-Un avatar con testo conterrà uno `<span>` per soli screen reader con il nome dell'utente indicato per esteso: `<span class="visually-hidden">Nome Utente</span>`.
+Un avatar con testo conterrà uno `<span class="visually-hidden">Nome Utente</span>` contenente il nome dell'utente, utile alle tecnologie assistive.
 
 <Canvas of={AvatarStories.AvatarConTesto} />
 
 ## Avatar con icona
 
-Per utilizzare un'icona all'interno di un avatar è sufficiente includere il nome dell'icona prescelta dalla [libreria icone](https://designers.italia.it/design-system/fondamenti/iconografia/) e indicarne il colore con una delle classi disponibili.
+Per mostrare un'icona all'interno di un avatar, utilizza l'attributo `icon` valorizzato con il nome dell'icona prescelta dalla [libreria icone](https://designers.italia.it/design-system/fondamenti/iconografia/). Puoi cambiare il colore del'icona usando una delle classi disponibili.
 
-Per gli avatar con icona inserire un testo alternativo: `<span class="visually-hidden">Testo icona</span>`
+Per migliorare l'esperienza d'uso con i lettori di schermo,  negli avatar con icona inserisci sempre un testo alternativo: `<span class="visually-hidden">Testo icona</span>`
 
 <Canvas of={AvatarStories.AvatarConIcona} />
 
 ## Avatar con link
 
-Per associare un avatar ad un'azione o un link, utilizzare l'attributo `href` con relativo link o chiamata JavaScript.
+Per associare un avatar ad un'azione o un link, utilizza l'attributo `href` con relativo link o chiamata JavaScript.
 
 <div class="callout callout-warning"><div class="callout-inner"><div class="callout-title"><span class="text">Tooltip non ancora implementato</span></div>
 <p>La funzionalità tooltip per gli avatar con link è attualmente in fase di sviluppo.</p></div></div>
@@ -76,16 +76,16 @@ Per associare un avatar ad un'azione o un link, utilizzare l'attributo `href` co
 
 L'avatar supporta indicatori di presenza dell'utente attraverso l'attributo `presence`:
 
-- **Lo stato attivo** si ottiene aggiungendo l'attributo `presence="active"`
-- **Lo stato non disponibile** si ottiene aggiungendo l'attributo `presence="busy"`
-- **Lo stato invisibile** si ottiene aggiungendo l'attributo `presence="hidden"`
+- **Lo stato attivo** puoi ottenerlo aggiungendo l'attributo `presence="active"`
+- **Lo stato non disponibile** puoi ottenerlo aggiungendo l'attributo `presence="busy"`
+- **Lo stato invisibile** puoi ottenerlo aggiungendo l'attributo `presence="hidden"`
 
 #### Personalizzazione con Slot
 L'esempio "Presenza personalizzata con slot" mostra come lo stesso componente possa essere adattato a stili o contenuti differenti tramite gli slot, per illustrare la flessibilità dell'approccio.
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>Ricordarsi sempre di includere testo per screen reader con `<span class="visually-hidden">` in caso di uso di personalizzazione.</p></div></div>
+<p>Ricordarti di includere sempre il testo per gli screen reader con `<span class="visually-hidden">` in caso di  personalizzazione.</p></div></div>
 
-È possibile personalizzare completamente l'indicatore di presenza usando il **`slot="presence"`**:
+Puoi personalizzare completamente l'indicatore di presenza usando il **`slot="presence"`**:
 
 ```html
 <it-avatar text="Nome Utente" presence="active">
@@ -113,16 +113,16 @@ Le traduzioni dei nomi degli stati sono gestite automaticamente tramite il [sist
 
 L'avatar supporta indicatori di stato dell'account attraverso l'attributo `status`:
 
-- **Lo stato approvato** si ottiene aggiungendo l'attributo `status="approved"`
-- **Lo stato respinto** si ottiene aggiungendo l'attributo `status="declined"`
-- **Lo stato notifica** si ottiene aggiungendo l'attributo `status="notify"`
+- **Lo stato approvato** puoi ottenerlo aggiungendo l'attributo `status="approved"`
+- **Lo stato respinto** puoi ottenerlo aggiungendo l'attributo `status="declined"`
+- **Lo stato notifica** puoi ottenerlo aggiungendo l'attributo `status="notify"`
 
 #### Personalizzazione con Slot
 L'esempio "Status personalizzato con slot" mostra come lo stesso componente possa essere adattato a stili o contenuti differenti tramite gli slot, per illustrare la flessibilità dell'approccio.
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>Ricordarsi sempre di includere testo per screen reader con `<span class="visually-hidden">` in caso di uso di personalizzazione.</p></div></div>
+<p>Ricordarti di includere sempre il testo per gli screen reader con `<span class="visually-hidden">` in caso di personalizzazione.</p></div></div>
 
-È possibile personalizzare completamente l'indicatore di stato usando il **`slot="status"`**:
+Puoi personalizzare completamente l'indicatore di stato usando il **`slot="status"`**:
 
 ```html
 <it-avatar text="Nome Utente" status="approved">
@@ -148,15 +148,15 @@ Le traduzioni sono gestite automaticamente tramite il [sistema @italia/i18n](/do
 
 ## Gruppi di avatar - Liste verticali
 
-Utilizzando una lista di link con l’aggiunta della classe .avatar-group si ottiene una lista verticale con avatar affiancati da link e testi.
+Puoi ottenere uuna lista verticale con avatar affiancati da link e testi, aggiungendo la classe `.avatar-group` al componente
 
-È possibile utilizzare avatar di dimensione `sm` o `md` all'interno della lista.
+All'interno della lista puoi usare avatar di dimensione `sm` o `md`.
 
 <Canvas of={AvatarStories.GruppiAvatarListe} />
 
 ## Gruppi di avatar - Liste verticali con testo aggiuntivo
 
-È possibile combinare le liste verticali con avatar che includono testo aggiuntivo tramite lo slot `extra-text`.
+Puoi combinare le liste verticali con avatar che includono testo aggiuntivo tramite lo slot `extra-text`.
 
 Questo è particolarmente utile per creare liste di utenti con informazioni aggiuntive come ruoli, date o descrizioni.
 
@@ -164,11 +164,11 @@ Questo è particolarmente utile per creare liste di utenti con informazioni aggi
 
 ## Gruppi di avatar - Avatar Sovrapposti
 
-Racchiudendo una serie di avatar in una lista di tipo `<ul>` con classe .avatar-group-stacked questi verranno visualizzati come una lista orizzontale in cui i singoli elementi sono parzialmente sovrapposti. In questo tipo di gruppo è possibile inserire dei Dropdown per racchiudere ulteriori elementi avatar.
+Puoi visualizzare una lista orizzontale di avatar parzialmente sovrapposti, racchiudendoli in una lista di tipo `<ul>` con classe `.avatar-group-stacked`. In questo tipo di gruppo puoi anche inserire dei Dropdown per racchiudere ulteriori elementi avatar.
 
-È possibile utilizzare avatar di dimensione `sm` o `md` all'interno della lista.
+Puoi utilizzare avatar di dimensione `sm` o `md` all'interno della lista.
 
-Per mostrare ulteriori avatar in un menu a discesa, utilizzare `it-avatar` con `type="dropdown"`.
+Per mostrare ulteriori avatar in un menu a discesa, utilizza `it-avatar` con `type="dropdown"`.
 
 L'avatar dropdown eredita automaticamente la dimensione dal gruppo e può contenere una lista di avatar con nomi nel menu.
 
@@ -194,7 +194,7 @@ Per il nome è possibile utilizzare i tag `<h3>` o `<h4>` tramite lo slot. Il te
 
 ## Personalizzazione degli stili
 
-Per la personalizzazione degli stili si può usare il selettore `::part` passando il valore `avatar`. [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+Per la personalizzazione degli stili puoi usare il selettore `::part` passando il valore `avatar`. [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
 
 Altri valori disponibili per il selettore part per i vari slot esposti dal componente sono:
 - `presence`: target dello slot dell'indicatore di presenza.
