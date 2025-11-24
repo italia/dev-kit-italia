@@ -14,13 +14,13 @@ export class ItCallout extends BaseComponent {
 
   @property({ type: Boolean, reflect: true }) highlight = false;
 
+  @property({ type: Boolean, reflect: true, attribute: 'callout-more' }) calloutMore = false;
+
   @property({ type: Boolean, reflect: true, attribute: 'big-text' }) bigText = false;
 
   @query('slot[name="title"]') private _titleSlot!: HTMLSlotElement;
 
   @query('slot[name="icon"]') private _iconSlot!: HTMLSlotElement;
-
-  @query('slot[name="more-content"]') private _moreContentSlot!: HTMLSlotElement;
 
   private updateParagraphsSize() {
     if (!this.shadowRoot) return;
@@ -41,9 +41,9 @@ export class ItCallout extends BaseComponent {
   private getCalloutClasses() {
     return classMap({
       callout: true,
-      [`callout-${this.variant}`]: !!this.variant,
+      [`callout-${this.variant}`]: !!this.variant && !this.calloutMore,
       'callout-highlight': this.highlight,
-      // 'callout-more' non più usato
+      'callout-more': this.calloutMore,
     });
   }
 
@@ -79,19 +79,6 @@ export class ItCallout extends BaseComponent {
     this.updateParagraphsSize();
   }
 
-  override firstUpdated(changedProperties: Map<string | number | symbol, unknown>) {
-    super.firstUpdated(changedProperties);
-    // Aggiorna i colori delle icone al primo render
-    this.updateIconColors();
-    // Aggiorna la dimensione dei <p> al primo render
-    this.updateParagraphsSize();
-    // Aggiorna anche su slotchange
-    const slot = this.shadowRoot?.querySelector('slot:not([name])') as HTMLSlotElement;
-    if (slot) {
-      slot.addEventListener('slotchange', () => this.updateParagraphsSize());
-    }
-  }
-
   private renderTitle() {
     return html`
       <div class="callout-title" part="title">
@@ -104,16 +91,20 @@ export class ItCallout extends BaseComponent {
   }
 
   private renderInner() {
-    return html` <div class="callout-inner" part="inner">${this.renderTitle()} <slot></slot></div> `;
+    return html`
+      <div class="callout-inner" part="inner">
+        ${this.renderTitle()}
+        <slot></slot>
+        <slot name="more-content"></slot>
+      </div>
+    `;
   }
 
   private renderHighlightContent() {
     return html`
       ${this.renderTitle()}
       <slot></slot>
-      <div class="callout-more-content" part="more-content">
-        <slot name="more-content"></slot>
-      </div>
+      <slot name="more-content"></slot>
     `;
   }
 
@@ -121,13 +112,8 @@ export class ItCallout extends BaseComponent {
     return html`
       <div class="${this.getCalloutClasses()}" part="callout">
         ${when(
-          !this.highlight,
-          () => html`
-            ${this.renderInner()}
-            <div class="callout-more-content" part="more-content">
-              <slot name="more-content"></slot>
-            </div>
-          `,
+          !this.highlight && !this.calloutMore,
+          () => html` ${this.renderInner()} `,
           () => this.renderHighlightContent(),
         )}
       </div>

@@ -49,6 +49,8 @@ document.querySelector('#app-header').innerHTML = `
       </a>
       <a href="/src/callout">
         Callout
+      <a href="/src/collapse">
+        Collapse
       </a>
       <a href="/src/dropdown">
         Dropdown

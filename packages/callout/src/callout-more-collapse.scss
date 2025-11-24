@@ -1,0 +1,123 @@
+:host {
+  display: block;
+}
+
+.collapse-div {
+  display: flex;
+  flex-direction: column-reverse;
+  border-bottom: none;
+}
+
+.collapse-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: stretch;
+  gap: var(--it-spacing-xs, 0.75rem);
+}
+
+.collapse-header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding-top: var(--it-spacing-sm, 1rem);
+  border-top: 1px solid var(--it-border-color, #e6e9f2);
+  margin-top: 0;
+  gap: var(--it-spacing-sm, 1rem);
+}
+
+.collapse-content {
+  width: 100%;
+}
+
+.collapse-body {
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.collapse-body ::slotted(p:last-child) {
+  margin-bottom: var(--it-spacing-sm, 1rem);
+}
+
+.callout-more-toggle {
+  display: inline-flex;
+  width: auto;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: var(--bs-primary, #0066cc);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 400;
+  gap: var(--it-spacing-xxs, 0.5rem);
+}
+
+.callout-more-toggle:hover,
+.callout-more-toggle:focus,
+.callout-more-toggle:active {
+  background: none;
+  color: var(--bs-primary-hover, var(--bs-primary, #0066cc));
+}
+
+.callout-more-toggle span {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  box-sizing: border-box;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  margin-top: 0.111rem;
+  margin-left: 0.444rem;
+}
+
+.callout-more-toggle span::before,
+.callout-more-toggle span::after {
+  position: absolute;
+  background: currentColor;
+  content: '';
+}
+
+.callout-more-toggle span::before {
+  top: 6px;
+  left: 2px;
+  width: 9px;
+  height: 1px;
+}
+
+.callout-more-toggle span::after {
+  top: 0;
+  left: 6px;
+  width: 1px;
+  height: 9px;
+  transform: translateY(2px);
+  transition: transform 0.2s ease;
+}
+
+.callout-more-toggle[aria-expanded='true'] span::after {
+  transform: translateY(2px) rotate(90deg);
+}
+
+.callout-more-toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.collapse-header ::slotted(*) {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  color: var(--bs-primary, #0066cc);
+  font-weight: 400;
+  gap: var(--it-spacing-xxs, 0.5rem);
+  text-decoration: none;
+}
+
+.collapse-header ::slotted(.callout-more-download) {
+  font-weight: 400;
+}
+
+.collapse-header ::slotted(*) svg {
+  fill: currentColor;
+}

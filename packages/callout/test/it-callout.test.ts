@@ -41,7 +41,7 @@ describe('ItCallout', () => {
       await expect(el).to.be.accessible();
     });
 
-    it('highlight e slot more-content sono accessibili', async () => {
+    it('highlight and slot more-content are accessibile', async () => {
       const el = await fixture(html`
         <div>
           <it-callout highlight>
@@ -64,6 +64,8 @@ describe('ItCallout', () => {
       const el = await fixture<ItCallout>(html`<it-callout></it-callout>`);
       expect(el.variant).to.equal('');
       expect(el.highlight).to.equal(false);
+      expect(el.calloutMore).to.equal(false);
+      expect(el.bigText).to.equal(false);
     });
 
     it('reflects variant attribute to property and class', async () => {
@@ -87,19 +89,62 @@ describe('ItCallout', () => {
     });
 
     it('applies bigText to paragraphs in default slot', async () => {
-      const el = await fixture<ItCallout>(html`<it-callout bigText><p>Testo grande</p></it-callout>`);
+      const el = await fixture<ItCallout>(html`<it-callout big-text><p>Testo grande</p></it-callout>`);
       await el.updateComplete;
+
       const slot = el.shadowRoot!.querySelector('slot:not([name])') as HTMLSlotElement;
       const assigned = slot.assignedElements();
       expect(assigned.length).to.be.greaterThan(0);
       const p = assigned.find((n) => n.tagName.toLowerCase() === 'p');
       expect(p).to.exist;
+
+      // Aspetta che la classe venga applicata
+      await new Promise<void>((resolve) => {
+        setTimeout(() => resolve(), 50);
+      });
       expect(p?.classList.contains('callout-big-text')).to.be.true;
 
       // Se la prop viene tolta, la classe viene rimossa
       el.bigText = false;
       await el.updateComplete;
+      await new Promise<void>((resolve) => {
+        setTimeout(() => resolve(), 50);
+      });
       expect(p?.classList.contains('callout-big-text')).to.be.false;
+    });
+
+    it('calloutMore attribute applies callout-more class', async () => {
+      const el = await fixture<ItCallout>(html`<it-callout callout-more></it-callout>`);
+      await el.updateComplete;
+      expect(el.calloutMore).to.equal(true);
+
+      const callout = el.shadowRoot!.querySelector('.callout');
+      expect(callout?.classList.contains('callout-more')).to.be.true;
+    });
+
+    it('calloutMore does not apply variant class', async () => {
+      const el = await fixture<ItCallout>(html`<it-callout variant="primary" callout-more></it-callout>`);
+      await el.updateComplete;
+      const callout = el.shadowRoot!.querySelector('.callout');
+      expect(callout?.classList.contains('callout-more')).to.be.true;
+      // Variant class should not be applied when calloutMore is true
+      expect(callout?.classList.contains('callout-primary')).to.be.false;
+    });
+
+    it('updates icon color when variant changes', async () => {
+      const el = await fixture<ItCallout>(html`
+        <it-callout variant="primary">
+          <it-icon slot="icon" name="it-info-circle"></it-icon>
+          <span slot="title">Title</span>
+        </it-callout>
+      `);
+      await el.updateComplete;
+      const icon = el.querySelector('it-icon');
+      expect(icon?.getAttribute('color')).to.equal('primary');
+
+      el.variant = 'danger';
+      await el.updateComplete;
+      expect(icon?.getAttribute('color')).to.equal('danger');
     });
   });
 
@@ -234,8 +279,6 @@ describe('ItCallout', () => {
       expect(root.querySelector('[part="callout"]')).to.exist;
       expect(root.querySelector('[part="inner"]')).to.exist;
       expect(root.querySelector('[part="title"]')).to.exist;
-      // Il part content non esiste, il contenuto è nello slot
-      expect(root.querySelector('[part="more-content"]')).to.exist;
     });
 
     it('exposes more-content part when additional content provided', async () => {

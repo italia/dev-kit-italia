@@ -130,6 +130,7 @@ $it-components: (
     width: 100%,
     aspect-ratio: 16 / 9,
   ),
+  'it-collapse': (),
 );
 
 @each $tag, $params in $it-components {

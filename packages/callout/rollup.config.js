@@ -5,7 +5,7 @@ import { litScss } from 'rollup-plugin-scss-lit';
  * @type {import('rollup').RollupOptions}
  */
 export default {
-  input: ['src/index.ts', 'src/it-callout.ts'],
+  input: ['src/index.ts', 'src/it-callout.ts', 'src/it-callout-more.ts', 'src/it-callout-more-collapse.ts'],
   output: {
     dir: 'dist',
     sourcemap: true,
@@ -25,5 +25,5 @@ export default {
       },
     }),
   ],
-  external: [/^lit(\/|$)/],
+  external: [/^lit(\/|$)/, /^@italia\/collapse(\/|$)/, /^@italia\/globals(\/|$)/],
 };

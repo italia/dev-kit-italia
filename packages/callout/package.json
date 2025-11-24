@@ -23,6 +23,9 @@
   "exports": {
     ".": "./dist/src/index.js",
     "./it-callout.js": "./dist/src/it-callout.js",
+    "./it-callout-more.js": "./dist/src/it-callout-more.js",
+    "./it-callout-more-collapse.js": "./dist/src/it-callout-more-collapse.js",
+    "./it-callout-approfondimento.js": "./dist/src/it-callout-more.js",
     "./styles/*": "./styles/*"
   },
   "files": [
@@ -45,6 +48,7 @@
   },
   "dependencies": {
     "@italia/globals": "workspace:^",
+    "@italia/collapse": "workspace:^",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:"
   },

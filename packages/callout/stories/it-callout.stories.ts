@@ -6,23 +6,30 @@ import { type CalloutVariant, CALLOUT_VARIANTS } from '../src/types.ts';
 interface CalloutProps {
   variant: CalloutVariant;
   highlight: boolean;
-  bigText: boolean;
+  calloutMore?: boolean;
+  bigText?: boolean;
 }
 
 const renderComponent = ({
   variant = 'primary',
   highlight = false,
+  calloutMore = false,
   icon = '',
   title = 'Titolo callout',
   content = 'Maecenas vulputate ante dictum vestibulum volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non augue non purus vestibulum varius.',
-  moreContent = '',
+  moreContent = undefined,
   bigText = false,
 }) => html`
-  <it-callout variant="${ifDefined(variant)}" ?highlight="${highlight}" ?bigText="${bigText}">
+  <it-callout
+    variant="${ifDefined(variant)}"
+    ?highlight="${highlight}"
+    ?callout-more="${calloutMore}"
+    ?big-text="${bigText}"
+  >
     ${icon ? html`<it-icon slot="icon" name="${icon}" size="md"></it-icon>` : nothing}
     <span slot="title">${title}</span>
     <p>${content}</p>
-    ${moreContent ? html`<div slot="more-content">${moreContent}</div>` : ''}
+    ${moreContent}
   </it-callout>
 `;
 
@@ -33,23 +40,29 @@ const meta = {
   args: {
     variant: '',
     highlight: false,
+    calloutMore: false,
     bigText: false,
   },
   argTypes: {
     variant: {
       control: 'select',
       description: 'Variante di colore del callout',
-      options: ['', ...CALLOUT_VARIANTS],
-      table: { defaultValue: { summary: "''" } },
+      options: CALLOUT_VARIANTS,
     },
     highlight: {
       control: 'boolean',
       description: 'Applica lo stile highlight (bordo solo a sinistra)',
       table: { defaultValue: { summary: 'false' } },
     },
+    calloutMore: {
+      control: 'boolean',
+      description:
+        'Applica lo stile "Approfondimento" all callout. Aggiungi eventuale contenuto collassabile da mostrare nello slot `more-content`',
+      table: { defaultValue: { summary: 'false' } },
+    },
     bigText: {
       control: 'boolean',
-      description: 'Applica la dimensione grande al testo del callout',
+      description: "Applica lo stile per testo più grande all'interno del callout",
       table: { defaultValue: { summary: 'false' } },
     },
   },
@@ -80,7 +93,7 @@ export const CalloutPrimario: Story = {
       ${renderComponent({
         variant: 'primary',
         highlight: false,
-        // more rimosso
+
         title: 'Note a riguardo',
         icon: 'it-info-circle',
         // @ts-ignore
@@ -100,7 +113,7 @@ export const CalloutSuccess: Story = {
       ${renderComponent({
         variant: 'success',
         highlight: false,
-        // more rimosso
+
         title: 'Titolo di conferma',
         icon: 'it-check-circle',
         // @ts-ignore
@@ -120,7 +133,7 @@ export const CalloutWarning: Story = {
       ${renderComponent({
         variant: 'warning',
         highlight: false,
-        // more rimosso
+
         title: 'Titolo di attenzione',
         icon: 'it-warning-circle',
         // @ts-ignore
@@ -140,7 +153,7 @@ export const CalloutDanger: Story = {
       ${renderComponent({
         variant: 'danger',
         highlight: false,
-        // more rimosso
+
         title: 'Titolo di allerta',
         icon: 'it-close-circle',
         // @ts-ignore
@@ -160,7 +173,7 @@ export const HighlightBase: Story = {
       ${renderComponent({
         variant: '',
         highlight: true,
-        // more rimosso
+
         title: 'Titolo callout',
         icon: '',
         // @ts-ignore
@@ -187,7 +200,7 @@ export const HighlightPrimario: Story = {
       ${renderComponent({
         variant: 'primary',
         highlight: true,
-        // more rimosso
+
         title: 'Titolo callout',
         icon: '',
         // @ts-ignore
@@ -207,7 +220,7 @@ export const HighlightSuccess: Story = {
       ${renderComponent({
         variant: 'success',
         highlight: true,
-        // more rimosso
+
         title: 'Titolo di conferma',
         icon: 'it-check-circle',
         // @ts-ignore
@@ -227,7 +240,7 @@ export const HighlightWarning: Story = {
       ${renderComponent({
         variant: 'warning',
         highlight: true,
-        // more rimosso
+
         title: 'Titolo di attenzione',
         icon: 'it-warning-circle',
         // @ts-ignore
@@ -254,7 +267,7 @@ export const HighlightDanger: Story = {
       ${renderComponent({
         variant: 'danger',
         highlight: true,
-        // more rimosso
+
         title: 'Titolo di allerta',
         icon: 'it-close-circle',
         // @ts-ignore
@@ -268,28 +281,62 @@ export const HighlightDanger: Story = {
   `,
 };
 
+// Story strutturata per replicare fedelmente il DOM di Bootstrap Italia per il callout con approfondimento/collapse.
+// Riferimento: https://bootstrap-italia-brqzfp0zy-dip-trasformazione-digitale.vercel.app/docs/componenti/callout/#callout-approfondimento
+// NOTA: Qui si usano wrapper <div> e classi come in BSI, anche se non previsti dal componente, per ottenere lo stesso markup e comportamento visivo.
+
+// Story aggiornata: usa <it-callout-more> per markup e slot semplificati
 export const CalloutApprofondimento: Story = {
   render: () => html`
     <div class="row">
-      <it-callout>
-        <span slot="title">Approfondimento</span>
-        <p>
-          Quisque suscipit interdum augue non volutpat. Cras tristique arcu tortor. Mauris eu magna nibh. Curabitur
-          malesuada neque in lectus sagittis accumsan. In vitae justo eros. Maecenas pellentesque lacinia ipsum vitae
-          rhoncus. Vestibulum pretium tempor turpis, nec gravida eros viverra in. Proin dictum nibh ut semper tristique.
-        </p>
-        <p>
-          Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
-          molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
-          interdum magna, eu commodo odio mauris semper dolor.
-        </p>
-        <p>
-          Maecenas vulputate ante dictum <a href="#">vestibulum volutpat</a>. Lorem ipsum dolor sit amet,
-          <strong>consectetur adipiscing elit.</strong> Aenean non augue non purus vestibulum varius. Maecenas
-          ullamcorper tincidunt nulla quis laoreet.
-        </p>
-        <div slot="more-content">Contenuto aggiuntivo di approfondimento</div>
-      </it-callout>
+      <div class="col-12 col-lg-8">
+        <div class="it-callout-wrapper">
+          ${renderComponent({
+            variant: '',
+            highlight: false,
+            calloutMore: true,
+            title: 'Approfondimento',
+            icon: 'it-info-circle',
+            // @ts-ignore
+            content: html`
+              <p>
+                Quisque suscipit interdum augue non volutpat. Cras tristique arcu tortor. Mauris eu magna nibh.
+                Curabitur malesuada neque in lectus sagittis accumsan. In vitae justo eros. Maecenas pellentesque
+                lacinia ipsum vitae rhoncus. Vestibulum pretium tempor turpis, nec gravida eros viverra in. Proin dictum
+                nibh ut semper tristique.
+              </p>
+              <p>
+                Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
+                molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem
+                erat interdum magna, eu commodo odio mauris semper dolor.
+              </p>
+              <p>
+                Maecenas vulputate ante dictum <a href="#">vestibulum volutpat</a>. Lorem ipsum dolor sit amet,
+                <strong>consectetur adipiscing elit.</strong> Aenean non augue non purus vestibulum varius. Maecenas
+                ullamcorper tincidunt nulla quis laoreet.
+              </p>
+            `,
+            // @ts-ignore
+            moreContent: html`
+              <it-callout-more>
+                <span slot="label">Leggi tutto</span>
+                <div slot="content">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum
+                </div>
+                <a slot="extra" class="callout-more-download" href="#">
+                  <it-icon name="it-download" color="primary" size="sm"></it-icon>
+                  <span class="visually-hidden">Scarica il contenuto in PDF </span>
+                  Download
+                </a>
+              </it-callout-more>
+            `,
+          })}
+        </div>
+      </div>
     </div>
   `,
 };

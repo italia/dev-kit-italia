@@ -26,8 +26,3 @@
   color: var(--#{$prefix}callout-text-color);
   font-family: var(--#{$prefix}callout-font-family);
 }
-// Big text utility for paragraphs in callout
-.callout-big-text {
-  font-size: 1.25em;
-  line-height: 1.6;
-}

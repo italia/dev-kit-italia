@@ -1,11 +1,11 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html, nothing } from 'lit';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
-import { ItCollapse } from './it-collapse.js';
+import { ItCollapseBase } from '@italia/collapse';
 import styles from './accordion.scss';
 
 @customElement('it-accordion-item')
-export class ItAccordionItem extends ItCollapse {
+export class ItAccordionItem extends ItCollapseBase {
   // Eredita tutte le proprietà da ItCollapse
   // Aggiunge solo alias semantici per le proprietà accordion
   static styles = styles;
@@ -21,6 +21,8 @@ export class ItAccordionItem extends ItCollapse {
 
   @property({ type: Boolean, attribute: 'background-hover', reflect: true })
   backgroundHover = false;
+
+  protected override isAccordion: boolean = true;
 
   public setParentBackground(backgroundActive: boolean, backgroundHover: boolean) {
     this.backgroundActive = backgroundActive;
@@ -71,6 +73,12 @@ export class ItAccordionItem extends ItCollapse {
         </${unsafeStatic(tagName)}>
       `}
     `;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  protected override isValidTag(tag: string) {
+    const safeTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+    return safeTags.includes(tag.toLowerCase());
   }
 
   protected override updateBackgroundStyles() {
