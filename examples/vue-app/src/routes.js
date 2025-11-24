@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import Accordion from './components/Accordion.vue';
+import BackToTop from './components/BackToTop.vue';
 import Button from './components/Button.vue';
 import Chip from './components/Chip.vue';
 import Collapse from './components/Collapse.vue';
@@ -18,6 +19,7 @@ import Avatar from './components/Avatar.vue';
 const routes = [
   { path: '/accordion', name: 'Accordion', component: Accordion },
   { path: '/avatar', name: 'Avatar', component: Avatar },
+  { path: '/back-to-top', name: 'BackToTop', component: BackToTop },
   { path: '/button', name: 'Button', component: Button },
   { path: '/checkbox', name: 'Checkbox', component: Checkbox },
   { path: '/chip', name: 'Chip', component: Chip },
@@ -33,7 +35,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory("vue-app"),
+  history: createWebHistory('vue-app'),
   routes,
 });
 

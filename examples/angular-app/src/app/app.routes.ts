@@ -10,6 +10,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/avatar.component').then((c) => c.AvatarComponent),
   },
   {
+    path: 'back-to-top',
+    loadComponent: () => import('./pages/back-to-top.component').then((c) => c.BackToTopComponent),
+  },
+  {
     path: 'button',
     loadComponent: () => import('./pages/button.component').then((c) => c.ButtonComponent),
   },
