@@ -17,8 +17,14 @@ Il componente `it-back-to-top` ti consente di generare un pulsante che, al clic,
 
 Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
 
+Nota: negli esempi sottostanti il valore di `scroll-limit` è impostato a `0` per permettere di testarne il funzionamento.
+<it-back-to-top></it-back-to-top>
 <Canvas of={Stories.EsempioInterattivo} />
 <Controls of={Stories.EsempioInterattivo} />
+
+## Indicazioni generali
+Per vedere il componente in azione, scrolla la pagina verso il basso. Il pulsante "Torna su" apparirà nell'angolo in basso a destra.
+
 
 ## Accessibilità
 
@@ -30,6 +36,20 @@ Su pagine scure (esempio pagine con tema scuro o con molte sezioni a sfondo scur
 
 Tutti gli attributi `it-aria-*` passati a `<it-back-to-top>` vengono applicati al button generato come attributi `aria-*`.
 Anche l'attributo `it-role` viene passato al button come attributo `role`.
+
+## Versione ridotta
+
+Aggiungi l'attributo `small` per ottenere un pulsante di dimensioni ridotte.
+
+<Canvas of={Stories.Small} />
+
+## Versione su sfondo scuro
+
+Aggiungi l'attributo `inverse` per adattare il bottone a sfondi scuri.
+Tramite l'attributo `icon-color` puoi anche personalizzare il colore dell'icona.
+
+<Canvas of={Stories.Dark} />
+
 
 ## Personalizzazone degli stili
 

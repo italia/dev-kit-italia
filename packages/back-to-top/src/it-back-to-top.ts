@@ -20,6 +20,8 @@ export class ItBackToTop extends BaseComponent {
 
   @property({ type: String, attribute: 'icon-color' }) iconColor = 'inverse'; // Variante di colore dell'icona
 
+  @property({ type: Boolean }) visible = false;
+
   connectedCallback() {
     super.connectedCallback?.();
     window.addEventListener('scroll', this._onScroll);
@@ -32,32 +34,43 @@ export class ItBackToTop extends BaseComponent {
   }
 
   _onScroll = () => {
-    console.log('Scroll position:', window.scrollY, this.scrollLimit);
     if (window.scrollY > this.scrollLimit) {
-      this.style.display = 'block';
+      this.visible = true;
     } else {
-      this.style.display = 'none';
+      this.visible = false;
     }
   };
 
-  static _easeInOutQuad(t: number) {
-    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-  }
-
   _scrollToTop = () => {
-    console.log('scrolltotop');
-    const start = window.scrollY;
+    const root = document.documentElement;
+
+    const start = root.scrollTop;
+    const target = this.offset || 0;
+    const duration = this.duration || 500;
     const startTime = performance.now();
+
+    const originalScrollBehavior = root.style.scrollBehavior;
+
+    // disabilita temporaneamente lo smooth
+    root.style.scrollBehavior = 'auto';
 
     const animate = (time: number) => {
       const elapsed = time - startTime;
-      const progress = Math.min(elapsed / this.duration, 1);
-      const ease = ItBackToTop._easeInOutQuad(progress);
-      window.scrollTo(0, (start - this.offset) * (1 - ease));
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Interpolazione lineare
+      const current = start + (target - start) * progress;
+
+      root.scrollTop = current;
+
       if (progress < 1) {
         requestAnimationFrame(animate);
+      } else {
+        // ✅ ripristina lo smooth originale
+        root.style.scrollBehavior = originalScrollBehavior;
       }
     };
+
     requestAnimationFrame(animate);
   };
 
@@ -65,6 +78,7 @@ export class ItBackToTop extends BaseComponent {
     const classes = this.composeClass('back-to-top', {
       'back-to-top-small': this.small,
       dark: this.inverse,
+      'back-to-top-show': this.visible,
     });
 
     return html`
@@ -79,7 +93,7 @@ export class ItBackToTop extends BaseComponent {
         <it-icon
           part="icon"
           name="it-arrow-up"
-          size="lg"
+          size="${this.small ? 'sm' : 'md'}"
           color="${this.iconColor === 'inverse' && this.inverse ? 'primary' : this.iconColor}"
         ></it-icon>
       </button>
