@@ -54,6 +54,7 @@ const meta = {
   component: 'it-section',
   parameters: {
     docs: {
+      layout: 'padded',
       description: {
         component: `<Description>Sezione per raggruppare contenuti coerenti e con sfondi dedicati</Description>
 
