@@ -109,7 +109,7 @@ export class ItCheckbox extends FormControl {
         part="checkbox focusable"
         ${setAttributes(this._ariaAttributes)}
         aria-describedby=${ifDefined(ariaDescribedBy || undefined)}
-        ?aria-invalid=${invalid}
+        aria-invalid=${ifDefined(invalid ? 'true' : undefined)}
         @input="${this._handleInput}"
         @blur=${this._handleBlur}
         @focus=${this._handleFocus}

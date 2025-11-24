@@ -1,0 +1,132 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle } from '@storybook/addon-docs/blocks';
+import * as CollapseStories from './it-collapse.stories';
+
+<Meta of={CollapseStories} />
+
+# Collapse
+
+<description>Funzionalità applicabile a elementi di interfaccia per espandere o comprimere sezioni di contenuto e ottimizzare spazio</description>
+
+## Cosa fa
+Per ottimizzare l’ingombro dei contenuti di una pagina si possono usare degli elementi richiudibili (in gergo definiti collassabili o collapse), che possono essere attivati indipendentemente l’uno dall’altro oppure in modo esclusivo con l’attivazione di solo un blocco alla volta (in gergo definiti fisarmoniche o accordion).
+
+Il componente [Accordion](?path=/docs/componenti-accordion--documentazione) è basato su Collapse.
+
+[Approfondisci quando e come usare il componente Collapse](https://designers.italia.it/design-system/componenti/collapse/).
+
+### Alternative a questo componente
+
+
+- [Accordion](?path=/docs/componenti-accordion--documentazione): possono essere attivati indipendentemente l'uno dall'altro oppure in modo esclusivo con l'attivazione di un solo blocco alla volta.
+
+- Tabs: mostrano i contenuti senza spingere altre sezioni verso il fondo della pagina e sono utili quando l'utente deve passare velocemente da una sezone all'altra.
+
+
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+<Canvas of={CollapseStories.EsempioInterattivo} />
+
+
+
+<Controls of={CollapseStories.EsempioInterattivo} />
+
+## Informazioni generali
+Il componente `it-collapse` utilizza diversi slot per definire il trigger, il testo mostrato nel trigger e il contenuto collassabile:
+
+- `slot="trigger"`: **opzionale**, inserisci un elemento personalizzato da utilizzare come trigger per aprire/chiudere il collapse.
+- `slot="label"`: **obbligatorio**, inserisci il testo da mostrare nel trigger di default. Questo slot è obbligatorio anche nel caso di utilizzo di trigger personalizzato, vedi la sezione [Trigger personalizzato](#trigger-personalizzato).
+- `slot="content"`: **obbligatorio**, inserisci il contenuto da mostrare o nascondere nello slot `content` del componente.
+
+Il componente può essere utilizzato in due modalità:
+
+- Con **trigger di default**: inserendo un elemento nello slot `label` per definire il testo del pulsante
+- Con **trigger personalizzato**: inserendo un elemento nello slot `trigger`
+
+L'attributo `as` permette di impostare il tag del trigger di default:
+
+- Default `button`: il componente renderizza un `<button>` con id e attributi ARIA (`aria-expanded`, `aria-controls`).
+- Altri tag validi (es. `a`, `p`, `div`, `span`): il componente renderizza il tag scelto (ad esempio `<a>`) e imposta automaticamente `role="button"`, `tabindex="0"`, id univoco e attributi ARIA.
+
+  Assicurati di utilizzare [tag HTML compatibili con il ruolo button](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/button_role).
+
+<Canvas of={CollapseStories.Comportamento} />
+
+
+## Accessibilità
+Il collapse implementa le specifiche ARIA [WAI-ARIA Authoring Practices 1.1 disclosure pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/) per garantire un'esperienza accessibile a tutti gli utenti:
+- Supporto per `Space` e `Enter` per attivare/disattivare elementi
+- Attributi ARIA appropriati per comunicare lo stato agli screen reader
+- Rispetto delle preferenze di riduzione del movimento definite dall'utente per le animazioni di apertura/chiusura
+
+
+## Stato iniziale aperto
+
+Usa l'attributo `default-open` per rendere il collapse inizialmente aperto al caricamento della pagina.
+
+<Canvas of={CollapseStories.Aperto} />
+
+
+## Tag del trigger di default
+
+Come descritto nella sezione [Informazioni generali](#informazioni-generali), puoi assegnare al trigger diversi tag validi per il [ruolo button](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/button_role), valorizzando adeguatamente l'attributo `as`.
+
+Ad esempio, per ottenere un link (`<a>`) come trigger del collapse, valorizza l'attributo `as` con il valore `a`.
+
+<div class="callout callout-info">
+<div class="callout-inner">
+<div class="callout-title"><span class="text">Nota</span></div>
+<p>In questo esempio non viene valorizzato l'attributo `variant`, per mostrare come il componente assegna al trigger la variante di default, `primary`, e rende il trigger visivamente analogo alla variante primaria del componente Button.</p>
+<p>
+Per informazioni su come modificare l'aspetto del trigger attraverso gli attributi del componente, consulta la sezione [Varianti del trigger](#varianti-del-trigger).
+
+Se hai necessità di personalizzare ulteriormente l'aspetto del trigger di default, consulta la sezione [Personalizzazione degli stili](#personalizzazione-degli-stili).
+
+Se hai bisogno di un trigger ad hoc per il tuo caso d'uso, valuta l'utilizzo di un [trigger personalizzato](#trigger-personalizzato).
+</p>
+</div>
+</div>
+
+<Canvas of={CollapseStories.LinkCollapse} />
+
+
+
+## Varianti del trigger
+
+Usa l'attributo `variant` per applicare le varianti Bootstrap Italia ai trigger di Collapse.
+
+Usa l'attributo `size` per applicare le dimensioni Bootstrap Italia ai trigger di Collapse.
+
+Usa l'attributo `outline` per applicare le varianti outline Bootstrap Italia ai trigger di Collapse.
+<div class="callout callout-warning">
+<div class="callout-inner">
+<div class="callout-title"><span class="text">Attenzione</span></div>
+<p>
+Sono attualmente supportati solo gli stili Bootstrap Italia relativi ai pulsanti, in quanto il trigger è semanticamente un pulsante e come tale deve essere reso, coerente col resto del Design Kit.
+</p>
+<p>
+Vedi la sezione dedicata per come inserire un [trigger personalizzato](#trigger-personalizzato) e/o quella per la [personalizzazione degli stili](#personalizzazione-degli-stili) per esplorare le altre possibilità fornite dal Kit.
+</p>
+</div>
+</div>
+
+<Canvas of={CollapseStories.TriggerClassi} />
+
+
+## Trigger personalizzato
+
+Puoi utilizzare un trigger personalizzato inserendo un elemento nello slot `trigger`. Questo elemento diventa il controllo per aprire e chiudere il collapse.
+
+Ricordati di inserire il testo del trigger nello slot `label`.
+
+<Canvas of={CollapseStories.TriggerPersonalizzato} />
+
+
+## Personalizzazione degli stili
+
+Per la personalizzazione degli stili si possono usare i selettori `::part` dedicati:
+- `::part(trigger)` - elemento trigger
+- `::part(content)` - elemento contenitore del corpo collassabile
+
+[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
