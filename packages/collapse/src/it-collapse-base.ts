@@ -1,14 +1,15 @@
 import { BaseComponent } from '@italia/globals';
 import { html } from 'lit';
-import { customElement, property, query, queryAssignedElements } from 'lit/decorators.js';
+import { property, query, queryAssignedElements } from 'lit/decorators.js';
 import { when } from 'lit/directives/when.js';
-import { unsafeStatic } from 'lit/static-html.js';
-import styles from './collapse.scss';
+import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
+// The button package does not export Sizes/Variants types in this workspace
+// so use simple string-typed properties here to avoid type errors.
 import { isKeyboardEvent, isMouseEvent, PressEvent } from './types.js';
+import styles from './collapse.scss';
 
-// TODO: quando si sviluppa collapse come componente standalone, decoupling dalle classi di accordion, e aggiornare il part name
-@customElement('it-collapse')
-export class ItCollapse extends BaseComponent {
+// Base class without @customElement decorator for inheritance
+export class ItCollapseBase extends BaseComponent {
   static styles = styles;
 
   static override shadowRootOptions = {
@@ -16,13 +17,18 @@ export class ItCollapse extends BaseComponent {
     delegatesFocus: true,
   };
 
+  @property({ type: String, reflect: true }) private variant = 'primary';
+
+  @property({ type: String, reflect: true }) private size = '';
+
+  @property({ type: Boolean, reflect: true }) private outline = false;
+
   @property({ type: Boolean, reflect: true })
   expanded = false;
 
-  @property({ type: String })
-  label: string = '';
+  protected isAccordion: boolean = false;
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   as: string = 'button';
 
   @property({ type: Boolean, attribute: 'default-open', reflect: true })
@@ -153,14 +159,6 @@ export class ItCollapse extends BaseComponent {
   }
 
   private updateAriaAttributes() {
-    // Se abbiamo il trigger di default, aggiorna quello
-    const defaultButton = this.shadowRoot?.querySelector('.accordion-button') as HTMLButtonElement;
-    if (defaultButton) {
-      defaultButton.setAttribute('aria-expanded', String(this.expanded));
-      defaultButton.setAttribute('aria-controls', this._contentId);
-      defaultButton.id = this._triggerId;
-    }
-
     if (this.triggerElement) {
       if (
         this.triggerElement.tagName.toLowerCase() === 'button' ||
@@ -170,13 +168,12 @@ export class ItCollapse extends BaseComponent {
         buttonElement.id = this._triggerId;
         buttonElement.setAttribute('aria-expanded', String(this.expanded));
         buttonElement.setAttribute('aria-controls', this._contentId);
-      } else {
-        // Cerca un button all'interno
-        const nestedButton = this.triggerElement.querySelector('button, [role="button"]') as HTMLElement;
-        if (nestedButton) {
-          nestedButton.id = this._triggerId;
-          nestedButton.setAttribute('aria-expanded', String(this.expanded));
-          nestedButton.setAttribute('aria-controls', this._contentId);
+        buttonElement.addEventListener('click', this.handleTriggerAction.bind(this));
+        buttonElement.addEventListener('keyup', this.handleTriggerAction.bind(this));
+        if (!this.expanded) {
+          buttonElement.classList.add('collapsed');
+        } else {
+          buttonElement.classList.remove('collapsed');
         }
       }
     }
@@ -256,33 +253,43 @@ export class ItCollapse extends BaseComponent {
   private _onTriggerSlotChange = () => {
     // Aggiorna gli attributi ARIA quando il contenuto dello slot cambia
     this.updateAriaAttributes();
+    // Forza un aggiornamento per il rendering, i getter sono stale altrimenti
+    this.requestUpdate();
   };
 
   protected renderDefaultTrigger() {
-    if (!this.label) return null;
-
-    const buttonClasses = this.composeClass(!this.expanded && 'collapsed');
-
+    const buttonClasses = this.composeClass('btn', this.className, {
+      collapsed: !this.expanded,
+      [`btn-${this.variant}`]: !!this.variant && !this.outline,
+      [`btn-outline-${this.variant}`]: !!this.variant && this.outline,
+      [`btn-${this.size}`]: !!this.size,
+    });
+    const part = this.composeClass('button', 'focusable', {
+      [this.variant]: this.variant?.length > 0,
+      outline: this.outline,
+    });
     const defaultButtonElement = html`<button
       type="button"
-      part="trigger"
+      part="${part}"
+      variant="${this.variant}"
       class="${buttonClasses}"
       aria-expanded="${this.expanded}"
       aria-controls="${this._contentId}"
       id="${this._triggerId}"
       @click=${this.handleTriggerAction}
-      @keydown=${this.handleTriggerAction}
+      @keyup=${this.handleTriggerAction}
     >
-      ${this.label}
+      <slot name="label"></slot>
     </button>`;
 
-    if (this.as === 'button') {
+    if (!this.as || this.as === 'button') {
       return defaultButtonElement;
     }
-    const tagName = this.isValidTag(this.as) ? this.as : 'div';
+    const tagName = this.isValidTag(this.as) ? this.as : 'button';
     const Tag = unsafeStatic(tagName);
-    // eslint-disable-next-line lit/binding-positions, lit/no-invalid-html
-    return html`<${Tag} part="trigger" role="button" aria-expanded="${this.expanded}" aria-controls="${this._contentId}" id="${this._triggerId}">${this.label}</${Tag}>`;
+
+    return html`${staticHtml`<${Tag} part="${part}" role="button" aria-expanded="${this.expanded}" aria-controls="${this._contentId}" id="${this._triggerId}"  @click=${this.handleTriggerAction}
+      @keyup=${this.handleTriggerAction} tabindex="0" class="${buttonClasses}"><slot name="label"></slot></${Tag}>`}`;
   }
 
   private hasSlottedTrigger(): boolean {
@@ -291,7 +298,8 @@ export class ItCollapse extends BaseComponent {
 
   // eslint-disable-next-line class-methods-use-this
   protected isValidTag(tag: string) {
-    return /^[a-z][a-z0-9-]+$/.test(tag); // semplice validazione
+    const safeTags = ['div', 'span', 'li', 'p', 'a', 'button'];
+    return safeTags.includes(tag.toLowerCase());
   }
 
   render() {
@@ -299,8 +307,9 @@ export class ItCollapse extends BaseComponent {
     // la funzione viene chiamata senza contesto (this viene perso) — devi chiamare il metodo tramite closure
     // che mantiene il contesto, es. () => this.renderDefaultTrigger().
     const hasCustomTrigger = this.hasSlottedTrigger();
+    const classPrefix = this.isAccordion ? 'accordion-' : 'collapse-';
     return html`
-      <div class="accordion-item" part="accordion-item">
+      <div class="${classPrefix}item" part="${classPrefix}item">
         <div class="collapse-wrapper">
           ${when(!hasCustomTrigger, () => this.renderDefaultTrigger())}
           <slot name="trigger" @slotchange=${this._onTriggerSlotChange} part="trigger"></slot>
@@ -311,18 +320,12 @@ export class ItCollapse extends BaseComponent {
             aria-labelledby="${this._triggerId}"
             id="${this._contentId}"
           >
-            <div class="accordion-body">
+            <div class="${classPrefix}body">
               <slot name="content"></slot>
             </div>
           </div>
         </div>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'it-collapse': ItCollapse;
   }
 }
