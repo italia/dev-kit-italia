@@ -59,8 +59,7 @@
         &::after {
           display: inline-block;
           content: attr(#{$attr});
-          font: inherit;
-          // visibility: hidden; // invisibile ma riserva spazio
+          font-family: var(--bs-font-sans);
           white-space: nowrap;
         }
       }
