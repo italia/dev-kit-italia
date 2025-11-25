@@ -7,7 +7,7 @@ import * as AvatarStories from './it-avatar.stories';
 
 # Avatar
 
-<description>Componente per rappresentare un utente tramite immagine, iniziali, icona o stato.</description>
+<description>Rappresentazione grafica di un utente per identificare visivamente la persona online</description>
 
 ## Cosa fa
 
@@ -16,7 +16,7 @@ Il componente Avatar permette di rappresentare una persona, il suo stato e le su
 
 Può essere utile ad esempio per indicare l'autore di un testo, il proprio profilo in un'area riservata, le persone che hanno interagito con un contenuto.
 
-[Approfondisci come e quando usare il componente Avatar](https://designers.italia.it/design-system/componenti/avatar/).
+[Approfondisci come e quando usare il componente Avatar](https://designers.italia.it/design-system/componenti/avatar/)
 ## Anteprima e attributi del componente
 
 Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
@@ -25,8 +25,10 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 <Controls of={AvatarStories.EsempioInterattivo} />
 
 ## Accessibilità
-L'avatar implementa le best practice di accessibilità:
-- Supporta attributi ARIA per una migliore accessibilità
+
+Il componente Avatar implementa automaticamente le seguenti feature di accessibilità:
+
+- Supporta attributi ARIA
 - Gestione di testo alternativo per immagini
 - Stato e presenza comunicati tramite attributi
 - Testo per screen reader nelle varianti testuali e icona
@@ -78,12 +80,12 @@ L'avatar supporta indicatori di presenza dell'utente attraverso l'attributo `pre
 - **Lo stato non disponibile** puoi ottenerlo aggiungendo l'attributo `presence="busy"`
 - **Lo stato invisibile** puoi ottenerlo aggiungendo l'attributo `presence="hidden"`
 
-#### Personalizzazione con Slot
+### Personalizzazione con Slot
 L'esempio "Presenza personalizzata con slot" mostra come lo stesso componente possa essere adattato a stili o contenuti differenti tramite gli slot, per illustrare la flessibilità dell'approccio.
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>Ricordarti di includere sempre il testo per gli screen reader con `<span class="visually-hidden">` in caso di  personalizzazione.</p></div></div>
 
-Puoi personalizzare completamente l'indicatore di presenza usando il **`slot="presence"`**:
+Puoi personalizzare completamente l'indicatore di presenza usando lo **`slot="presence"`**:
 
 ```html
 <it-avatar text="Nome Utente" presence="active">
@@ -103,7 +105,7 @@ Puoi personalizzare completamente l'indicatore di presenza usando il **`slot="pr
 }
 ```
 
-Le traduzioni dei nomi degli stati sono gestite automaticamente tramite il [sistema @italia/i18n](/docs/componenti-i18n--documentazione).
+Le traduzioni dei nomi degli stati sono gestite automaticamente tramite il [sistema @italia/i18n](/docs/i18n-internazionalizzazione--documentazione).
 
 <Canvas of={AvatarStories.ComportamentoPresenzaUtente} />
 
@@ -115,12 +117,12 @@ L'avatar supporta indicatori di stato dell'account attraverso l'attributo `statu
 - **Lo stato respinto** puoi ottenerlo aggiungendo l'attributo `status="declined"`
 - **Lo stato notifica** puoi ottenerlo aggiungendo l'attributo `status="notify"`
 
-#### Personalizzazione con Slot
+### Personalizzazione con Slot
 L'esempio "Status personalizzato con slot" mostra come lo stesso componente possa essere adattato a stili o contenuti differenti tramite gli slot, per illustrare la flessibilità dell'approccio.
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>Ricordarti di includere sempre il testo per gli screen reader con `<span class="visually-hidden">` in caso di personalizzazione.</p></div></div>
 
-Puoi personalizzare completamente l'indicatore di stato usando il **`slot="status"`**:
+Puoi personalizzare completamente l'indicatore di stato usando lo **`slot="status"`**:
 
 ```html
 <it-avatar text="Nome Utente" status="approved">
@@ -140,13 +142,13 @@ Puoi personalizzare completamente l'indicatore di stato usando il **`slot="statu
 }
 ```
 
-Le traduzioni sono gestite automaticamente tramite il [sistema @italia/i18n](/docs/componenti-i18n--documentazione).
+Le traduzioni sono gestite automaticamente tramite il [sistema @italia/i18n](/docs/i18n-internazionalizzazione--documentazione).
 
 <Canvas of={AvatarStories.ComportamentoStatusUtente} />
 
 ## Gruppi di avatar - Liste verticali
 
-Puoi ottenere uuna lista verticale con avatar affiancati da link e testi, aggiungendo la classe `.avatar-group` al componente
+Puoi ottenere uuna lista verticale con avatar affiancati da link e testi, aggiungendo la classe `.avatar-group` al componente.
 
 All'interno della lista puoi usare avatar di dimensione `sm` o `md`.
 
