@@ -59,8 +59,7 @@
         &::after {
           display: inline-block;
           content: attr(#{$attr});
-          font: inherit;
-          // visibility: hidden; // invisibile ma riserva spazio
+          font-family: var(--bs-font-sans);
           white-space: nowrap;
         }
       }
@@ -134,6 +133,7 @@ $it-components: (
     // https://sass-lang.com/documentation/modules/list/#slash
     aspect-ratio: list.slash(16, 9),
   ),
+  'it-collapse': (),
 );
 
 @each $tag, $params in $it-components {

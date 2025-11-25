@@ -264,25 +264,7 @@ const smallContent = html` <footer class="it-footer">
 const meta = {
   title: 'Componenti/Footer',
   component: 'footer',
-  tags: ['autodocs', 'documentation'],
-  parameters: {
-    docs: {
-      description: {
-        component:
-          `<Description>Documentazione ed esempi per la creazione di piè di pagina di navigazione.</Description>
-<h3 style="border-bottom:none;padding-top:36px">Introduzione</h3>
-Il **footer** (piè di pagina) è una sezione che contiene tutte le informazioni inerenti al sito web e alla società o organizzazione che rappresenta.
-
-Per una Pubblica Amministrazione potrebbe contenere tutte i riferimenti ai vari **servizi**, a varie **pagine utili** alla cittadinanza, riferimenti alla **privacy**, il collegamento alla **Dichiarazione di accessibilità sul form AgID** e informazioni su come **contattare** l’amministrazione.
-
-Potrebbe anche contenere riferimenti alle pagine social dell’amministrazione.
-
-Le composizioni mostrate sfruttano le classi di bootstrap-italia affiancate ai web components forniti dal kit.
-\n**In caso non si stia utilizzando il bundle unico, assicurarsi di avere importato tutti i fogli di stile necessari da \`bootstrap-italia\`.**
-        `.trim(),
-      },
-    },
-  },
+  tags: ['documentation'],
 };
 
 export default meta;

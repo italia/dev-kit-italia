@@ -1,0 +1,49 @@
+import { Meta, Canvas, Controls, Description, Subtitle } from '@storybook/addon-docs/blocks';
+import * as FooterStories from './footer.stories';
+
+<Meta of={FooterStories} />
+
+# Footer
+
+<description>Menu di navigazione secondaria posto in fondo alle pagine per presentare contenuti supplementari come contatti, informazioni legali e link alle sezioni di un sito</description>
+
+
+
+## Cosa fa
+Il Footer (piè di pagina) è una sezione che contiene tutte le informazioni inerenti al sito web e alla società o organizzazione che rappresenta.
+
+Per una Pubblica Amministrazione potrebbe contenere tutte i riferimenti ai vari **servizi**, a varie **pagine utili** alla cittadinanza, riferimenti alla **privacy**, il collegamento alla **Dichiarazione di accessibilità sul form AgID** e informazioni su come **contattare** l’amministrazione.
+
+Potrebbe anche contenere riferimenti alle pagine social dell’amministrazione.
+
+
+[Approfondisci quando e come usare il componente Footer](https://designers.italia.it/design-system/componenti/footer/).
+
+## Indicazioni generali
+
+Le composizioni mostrate sfruttano le classi di bootstrap-italia affiancate ai web components forniti dal kit.
+
+**Se non usi il pacchetto completo di Dev Kit Italia (`@italia/dev-kit-italia`), ricordati di importare tutti i CSS.**
+
+## Footer completo
+
+Nel footer completo sono presenti i seguenti elementi:
+
+- **Logo** dell’ente con nome e tagline;
+- **Sezioni di primo livello** e relative sotto-sezioni; il nome della sezione è un link che porta alla pagina principale della sezione;
+- **Contatti** dell’ente;
+- **Link utili** (Media policy, Note legali, Privacy policy, Mappa del sito);
+- **Dichiarazione di accessibilità** (link esterno su form AgID);
+- **Profili Social** dell’ente;
+- **Iscrizione Newsletter** (opzionale).
+
+<Canvas of={FooterStories.FooterCompleto} />
+
+## Footer compatto
+
+Il footer compatto è una versione semplificata del footer completo.
+
+Contiene i contatti dell’ente, collegamenti ai profili social, form di iscrizione alla newsletter (se presente) e i link utili. Può essere utilizzato nei casi in cui non è necessario mostrare le sezioni di navigazione di primo livello.
+
+<Canvas of={FooterStories.FooterCompatto} />
+

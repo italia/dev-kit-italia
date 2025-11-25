@@ -47,6 +47,9 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/chip">
         Chip
       </a>
+      <a href="/src/collapse">
+        Collapse
+      </a>
       <a href="/src/dropdown">
         Dropdown
       </a>

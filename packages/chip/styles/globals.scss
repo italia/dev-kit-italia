@@ -4,7 +4,7 @@ it-chip {
   vertical-align: middle;
 }
 
-// Stili per i componenti interni post-caricamento
+// Styles for the defined state
 it-chip:defined {
   it-button::part(button) {
     padding: 0;
@@ -26,5 +26,58 @@ it-chip:defined {
   it-button it-icon,
   it-button {
     display: inline-flex;
+  }
+}
+// Styles for the loading state
+it-chip:not(:defined) {
+  --it-host-display: flex;
+  --it-chip-fouc-font-size: 16px;
+  --it-chip-fouc-children-size: 16px;
+  width: fit-content;
+  height: 34px;
+  align-items: center;
+  padding: var(--it-spacing-3xs) var(--it-spacing-xs);
+  font-size: var(--it-chip-fouc-font-size);
+  gap: var(--it-spacing-xxs);
+
+  ::after {
+    order: 1;
+    font-size: var(--it-chip-fouc-font-size);
+    font-weight: var(--it-font-weight-semibold);
+    line-height: var(--it-font-line-height-5);
+  }
+
+  it-button,
+  it-icon {
+    width: var(--it-chip-fouc-children-size);
+    height: var(--it-chip-fouc-children-size);
+  }
+
+  it-button {
+    order: 2;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  it-icon {
+    order: 0;
+  }
+
+  &[avatar] {
+    &::before {
+      display: inline-block;
+      width: var(--it-chip-fouc-children-size);
+      height: var(--it-chip-fouc-children-size);
+      order: 0;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      background-color: var(--it-fouc-bg);
+      content: '';
+    }
+  }
+
+  &[size='lg'] {
+    --it-chip-fouc-children-size: 24px;
+    --it-chip-fouc-font-size: 18px;
   }
 }

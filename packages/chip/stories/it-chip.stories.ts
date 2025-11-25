@@ -34,6 +34,8 @@ const meta = {
     href: {
       control: 'text',
       description: 'Se valorizzato, la chip sarà un link (elemento `<a>`).',
+      type: 'string',
+      table: { defaultValue: { summary: undefined } },
     },
     variant: {
       control: 'select',
@@ -80,18 +82,7 @@ const meta = {
 
   parameters: {
     docs: {
-      description: {
-        component: `
-<Description>Elementi compatti che rappresentano un input, attributo o azione.</Description>
-Il componente \`<it-chip>\` si compone principalmente di una label testuale e, opzionalmente, di:
-
-- un avatar (immagine) a sinistra, tramite la proprietà \`avatar\`;
-- un'icona inserita nello slot \`icon\`;
-- un pulsante di chiusura nello slot \`dismiss-button\`, per le chip cancellabili/rimuovibili (la logica di rimozione è a carico dell'utilizzatore, vedi sezione dedicata).
-
-Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del design-system](https://designers.italia.it/design-system/componenti/chips/).
-`,
-      },
+      page: null,
     },
   },
 } satisfies Meta<
@@ -145,7 +136,7 @@ const iconTemplate = (color: string, size: string) => html`
 `;
 
 // Renderizza il wc it-chip di default
-const renderComponent = (params) => {
+const renderComponent = (params: ChipProps & { withIcon?: boolean; withDismissButton?: boolean; id?: string }) => {
   const {
     avatar,
     avatarAlt,
@@ -172,7 +163,7 @@ const renderComponent = (params) => {
       avatar-alt="${ifDefined(avatarAlt || undefined)}"
       a11y-description="${a11yDescription}"
       ?id="${id}"
-      >${withIcon ? iconTemplate(variant, size) : nothing}${dismissable && withDismissButton
+      >${withIcon ? iconTemplate(variant ?? '', size ?? 'sm') : nothing}${dismissable && withDismissButton
         ? dismissTemplate('I am dismissable', isDisabled)
         : nothing}</it-chip
     >
@@ -198,16 +189,11 @@ export const EsempioInterattivo: Story = {
 
 export const PersonalizzazioneDegliStili: Story = {
   name: 'Personalizzazione degli stili',
-  tags: ['!dev'],
+  tags: ['!dev', '!autodocs'],
   parameters: {
-    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
+    viewMode: 'docs',
     docs: {
-      canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
-      description: {
-        story: `
-Per la personalizzazione degli stili si può usare il selettore \`::part\` passando il valore \`chip\`. [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
-`,
-      },
+      canvas: { hidden: true, sourceState: 'none' },
     },
   },
   render: () => html`<div class="hide-preview"></div>`,
@@ -226,15 +212,6 @@ export const VarianteConLink: Story = {
 export const VariantiColore: Story = {
   name: 'Varianti di colore',
   args: { label: 'Etichetta', size: 'sm', dismissable: false },
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Gli stili definiti da Bootstrap Italia utilizzano un naming consistente con Bootstrap, con alcune personalizzazioni:
-`,
-      },
-    },
-  },
   render: () => html`
     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
       <it-chip label="Etichetta" size="sm" variant="primary"></it-chip>
@@ -248,15 +225,6 @@ Gli stili definiti da Bootstrap Italia utilizzano un naming consistente con Boot
 export const VariantiColoreLink: Story = {
   name: 'Varianti di colore link',
   args: { label: 'Etichetta', size: 'sm', dismissable: false },
-  parameters: {
-    docs: {
-      description: {
-        story: `
-
-`,
-      },
-    },
-  },
   render: () => html`
     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
       <it-chip label="Etichetta" size="sm" variant="primary" href="#"></it-chip>
@@ -313,16 +281,6 @@ export const ChipConChiusura: Story = {
       canvas: {
         sourceState: 'shown',
       },
-      description: {
-        story: `
-Questa composizione mostra una chip con funzionalità di chiusura.
-
-La proprietà \`dismissable\` **non aggiunge automaticamente il pulsante**: è responsabilità dell'utilizzatore fornire un \`<it-button>\` con \`slot="dismiss-button"\` e logica di rimozione/logiche di esecuzione.
-L'icona di chiusura deve avere dimensione \`sm\` per rispettare il design.
-Il codice JS dell'esempio gestisce la rimozione della chip sia via click che via tastiera (\`Enter\` o \`Spazio\`).
-
-`,
-      },
       source: {
         code: `<it-chip label="Etichetta" size="sm" variant="primary" dismissable id="chip-dismissable">
   <it-button
@@ -365,15 +323,6 @@ export const ChipDisabilitata: Story = {
   args: {
     isDisabled: true,
   },
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Aggiungendo l'attributo \`is-disabled\` si ottiene una chip disabilitata.
-`,
-      },
-    },
-  },
   render: (args) => html`
     <it-chip label="Etichetta" size="sm" variant="${args.variant}" dismissable ?is-disabled="${args.isDisabled}">
       <it-button
@@ -391,15 +340,6 @@ Aggiungendo l'attributo \`is-disabled\` si ottiene una chip disabilitata.
 
 export const ChipConAvatar: Story = {
   name: 'Chip con avatar',
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Le chip possono includere un avatar utilizzando gli attributi \`avatar\` e \`avatar-alt\`.
-`,
-      },
-    },
-  },
   render: () => html`
     <div class="d-flex gap-2 flex-wrap align-items-center">
       <it-chip
@@ -442,15 +382,6 @@ Le chip possono includere un avatar utilizzando gli attributi \`avatar\` e \`ava
 
 export const ChipConIcona: Story = {
   name: 'Chip con icona',
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Le chip possono includere un'icona utilizzando lo slot \`icon\` con il componente it-icon.
-`,
-      },
-    },
-  },
   render: () => html`
     <div class="d-flex gap-2 flex-wrap align-items-center">
       <it-chip label="Download" size="sm" variant="primary" dismissable>

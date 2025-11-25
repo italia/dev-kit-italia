@@ -49,7 +49,7 @@ const renderComponent = (params: Partial<AvatarProps> & { slot?: 'trigger' }) =>
 const meta = {
   title: 'Componenti/Avatar',
   component: 'it-avatar',
-  tags: ['autodocs', 'beta', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   args: {
     size: 'md',
     src: 'https://randomuser.me/api/portraits/men/43.jpg',
@@ -65,52 +65,63 @@ const meta = {
       description:
         "Tipo di contenuto dell'avatar. Se vuoto, viene determinato automaticamente: src → image, icon → icon, altrimenti text.",
       options: AVATAR_TYPES,
+      type: 'string',
     },
     size: {
       control: 'select',
       description: "Dimensione dell'avatar.",
       options: AVATAR_SIZES,
       table: { defaultValue: { summary: 'md' } },
+      type: 'string',
     },
     variant: {
       control: 'select',
       description: "Colore di sfondo dell'avatar per avatar con testo.",
       options: AVATAR_COLORS,
+      type: 'string',
     },
     presence: {
       control: 'select',
       description: "Indicatore di presenza dell'utente.",
       options: AVATAR_PRESENCE,
+      type: 'string',
     },
     status: {
       control: 'select',
       description: "Indicatore di stato dell'account utente.",
       options: AVATAR_STATUS,
+      type: 'string',
     },
     src: {
       control: 'text',
       description: "URL dell'immagine per avatar di tipo immagine.",
+      type: 'string',
     },
     alt: {
       control: 'text',
       description: "Testo alternativo per l'immagine dell'avatar.",
+      type: 'string',
     },
     text: {
       control: 'text',
       description: "Testo per generare le iniziali dell'avatar.",
+      type: 'string',
     },
 
     icon: {
       control: 'text',
       description: "Nome dell'icona per avatar di tipo icona.",
+      type: 'string',
     },
     href: {
       control: 'text',
       description: "URL del link se l'avatar deve essere cliccabile.",
+      type: 'string',
     },
     avatarTitle: {
       control: 'text',
       description: 'Titolo per accessibilità e tooltip.',
+      type: 'string',
     },
   },
   parameters: {
