@@ -17,6 +17,7 @@ registerTranslation(it);
   <it-input id="exampleInputNumber" type="number" name="number"><span slot="label">Campo numerico</span></it-input>
   <it-input id="exampleInputTel" type="tel" name="telefono"><span slot="label">Campo telefonico</span></it-input>
   <it-input id="exampleInputTime" type="time" name="orario"><span slot="label">Campo orario</span></it-input>
+  <it-input id="exampleInputDate" type="date" name="data"><span slot="label">Campo data</span></it-input>
   <it-input
     id="field-disabled-example"
     type="text"

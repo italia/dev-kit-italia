@@ -1,0 +1,79 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-section.stories';
+
+<Meta of={Stories} />
+
+# Section
+
+<description>Sezione per creare raggruppamenti orizzontali di contenuti coerenti e con sfondi dedicati</description>
+
+## Cosa fa
+
+Il componente `it-section` rappresenta un contenitore visivo per introdurre sezioni di contenuto con o senza immagine.
+È utile per organizzare e suddividere contenuti particolarmente ampi e complessi, permettendo agli utenti di navigare facilmente tra le diverse parti.
+
+
+[Approfondisci come e quando usare il componente Section](https://designers.italia.it/design-system/componenti/sections/)
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+
+<Controls of={Stories.EsempioInterattivo} />
+
+## Accessibilità
+
+Il componente `it-section` è progettato per essere accessibile:
+
+- Il tag `<section>` generato dal componente viene automaticamente associato al primo heading (h1-h6) presente nel contenuto tramite l'attributo `aria-labelledby`. Se l'heading non ha un id, il componente ne genera uno automaticamente.
+- Le immagini fornite tramite l'attributo `image` sono considerate **decorative**: vengono rese con `alt=""` e `aria-hidden="true"`, quindi non vengono annunciate dagli screen reader.
+
+Per garantire un'esperienza accessibile, segui queste linee guida quando usi il componente `it-section`:
+
+- Assicurati che ogni sezione contenga almeno un'intestazione semantica (h2, h3, ecc.) che descriva il contenuto della sezione.
+- Usa `it-section` per raggruppamenti semantici con particolari necessità di varianti di stile e/o inserimento di immagini di sfondo. Se stai implementando un semplice contenitore senza queste necessità, considera l'uso di `<section>`, `<div>` o di altri elementi HTML semantici appropriati.
+
+
+## Varianti di sfondo
+
+Sono disponibili le varianti colore di sfondo per le sezioni, corrispondenti alle classi di Bootstrap Italia:
+
+- `muted`
+- `emphasis` - applica automaticamente il testo bianco
+- `primary` - applica automaticamente il testo bianco
+
+Il componente Section ha, per default, uno sfondo trasparente.
+
+<Canvas of={Stories.VariantiColore} />
+
+## Sezione con immagine decorativa
+
+Inserisci la URL di un'immagine nell'attributo `image` per aggiungerla come sfondo della sezione. Le dimensioni dell'immagine si adattano automaticamente.
+
+Se l'immagine di sfondo è scura, usa l'attributo `inverse` per rendere il testo bianco e mantenere una buona leggibilità.
+
+<Canvas of={Stories.VarianteConImmagine} />
+
+## Sezione con card
+
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Cards non ancora implementate</span>
+    </div>
+    <p>
+      Le card non sono ancora state implementate nel Dev Kit Italia. La sezione seguente è a scopo puramente esemplificativo e dimostrativo, e verrà aggiornata non appena le card saranno disponibili.
+    </p>
+  </div>
+</div>
+
+Per aggiungere una serie di card all'interno di una Section si consiglia di utilizzare le griglie per garantire un corretto margine fra gli elementi.
+
+<Canvas of={Stories.SectionConCard} />
+
+
+## Personalizzazione degli stili
+
+<Description of={Stories.PersonalizzazioneDegliStili}/>

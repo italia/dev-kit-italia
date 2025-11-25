@@ -47,22 +47,20 @@ const Section = () => {
             </div>
           </it-section>
 
-          <it-section variant="emphasis" inverse>
+          <it-section variant="emphasis">
             <div className="container">
               <h3 id="section-heading-emphasis">Sezione emphasis</h3>
               <p>
                 Questa sezione usa la variante <code>emphasis</code>
-                con testo bianco attraverso l'attributo inverse
               </p>
             </div>
           </it-section>
 
-          <it-section variant="primary" inverse>
+          <it-section variant="primary">
             <div className="container">
               <h3 id="section-heading-primary">Sezione primary</h3>
               <p>
                 Questa sezione usa la variante <code>primary</code>
-                con testo bianco attraverso l'attributo inverse
               </p>
             </div>
           </it-section>
