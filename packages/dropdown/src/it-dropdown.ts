@@ -128,7 +128,7 @@ export class ItDropdown extends BaseComponent {
     };
 
     if (['ArrowDown', 'ArrowUp'].includes(event.key)) {
-      if (!this._popoverOpen && currentIndex === -1) {
+      if (!this.disabled && !this._popoverOpen && currentIndex === -1) {
         this.addEventListener('it-popover-open', handle, { once: true });
         this._popoverOpen = true;
         return;
@@ -167,18 +167,13 @@ export class ItDropdown extends BaseComponent {
           it-aria-controls=${this._popoverOpen ? this._menuId : nothing}
         >
           ${this.alignment.startsWith('left')
-            ? html`<it-icon
-                name=${this._popoverOpen ? 'it-collapse' : 'it-expand'}
-                class="dropdown-toggle-icon left"
-                size="sm"
-                exportparts="icon"
-              ></it-icon>`
+            ? html`<it-icon name="it-expand" class="icon-expand left" size="sm" exportparts="icon"></it-icon>`
             : ''}
           ${this.label}
           ${!this.alignment.startsWith('left')
             ? html`<it-icon
-                name=${this._popoverOpen ? 'it-collapse' : 'it-expand'}
-                class=${this.composeClass('dropdown-toggle-icon', {
+                name="it-expand"
+                class=${this.composeClass('icon-expand', {
                   right: this.alignment.startsWith('right'),
                   top: this.alignment.startsWith('top'),
                 })}
