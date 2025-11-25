@@ -66,8 +66,15 @@ export class ItBackToTop extends BaseComponent {
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
-        // ✅ ripristina lo smooth originale
+        // Scroll to top completato
+        // ripristina lo smooth originale
         root.style.scrollBehavior = originalScrollBehavior;
+
+        // Aspetta che lo scroll finisca e focus sul body per evitare che lo screen reader rimanga sul pulsante
+        setTimeout(() => {
+          document.body.setAttribute('tabindex', '-1');
+          document.body.focus({ preventScroll: true });
+        }, 300);
       }
     };
 
