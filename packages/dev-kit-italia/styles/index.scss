@@ -45,16 +45,5 @@
 @import '@italia/collapse/styles/globals';
 @import '@italia/sticky/styles/globals';
 @import '@italia/radio/styles/globals';
-// Footer
-@import 'bootstrap-italia/src/scss/components/footer';
-@import 'bootstrap-italia/src/scss/components/list';
-@import 'bootstrap-italia/src/scss/components/headercenter';
-
-.it-footer-main .it-brand-wrapper ::part(icon) {
-  width: var(--bs-footer-brand-icon-size);
-  height: var(--bs-footer-brand-icon-size);
-  flex-shrink: 0;
-  margin-right: var(--bs-spacing-xs);
-  fill: var(--bs-footer-brand-icon-color);
-}
-// End footer
+@import './components/footer';
+@import './components/go-back';

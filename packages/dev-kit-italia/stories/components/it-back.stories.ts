@@ -6,7 +6,7 @@ import '@italia/button';
 const meta = {
   title: 'Componenti/Torna indietro',
   component: 'it-back',
-  tags: ['new', 'documentation'],
+  tags: ['beta', 'documentation'],
   render: () => html`<div class="hide-preview"></div>`,
   parameters: {
     docs: {
@@ -32,7 +32,7 @@ export const Link: Story = {
         window.history.back();
       }}
     >
-      <it-icon name="it-arrow-left" size="sm" color="primary" class="me-2"></it-icon>
+      <it-icon name="it-arrow-left" size="sm" color="primary"></it-icon>
       <span>Torna indietro</span>
     </a>
   `,
@@ -51,8 +51,10 @@ export const Pulsante: Story = {
       }}
       icon
     >
-      <it-icon name="it-arrow-left" size="sm" color="white"></it-icon>
-      <span>Torna indietro</span>
+      <span class="go-back">
+        <it-icon name="it-arrow-left" size="sm" color="inverse"></it-icon>
+        <span>Torna indietro</span>
+      </span>
     </it-button>
     <it-button
       variant="primary"
@@ -62,8 +64,10 @@ export const Pulsante: Story = {
       }}
       icon
     >
-      <it-icon name="it-arrow-up" size="sm" color="white"></it-icon>
-      <span>Torna su</span>
+      <span class="go-back">
+        <it-icon name="it-arrow-up" size="sm" color="inverse"></it-icon>
+        <span>Torna su</span>
+      </span>
     </it-button>
   `,
 };
@@ -77,43 +81,51 @@ export const PulsanteSolaIcona: Story = {
   render: () => html`
     <it-button
       variant="primary"
-      class="go-back"
+      icon
       @click=${() => {
         window.history.back();
       }}
     >
-      <it-icon name="it-arrow-left" size="sm" color="white"></it-icon>
-      <span class="visually-hidden">Torna indietro</span>
+      <span class="go-back">
+        <it-icon name="it-arrow-left" size="sm" color="inverse"></it-icon>
+        <span class="visually-hidden">Torna indietro</span>
+      </span>
     </it-button>
     <it-button
       variant="primary"
-      class="go-back"
+      icon
       @click=${() => {
         window.history.back();
       }}
     >
-      <it-icon name="it-arrow-up" size="sm" color="white"></it-icon>
-      <span class="visually-hidden">Torna indietro</span>
+      <span class="go-back">
+        <it-icon name="it-arrow-up" size="sm" color="inverse"></it-icon>
+        <span class="visually-hidden">Torna indietro</span>
+      </span>
     </it-button>
     <it-button
       variant="primary"
-      class="go-back"
+      icon
       @click=${() => {
         window.history.back();
       }}
     >
-      <it-icon name="it-arrow-right" size="sm" color="white"></it-icon>
-      <span class="visually-hidden">Torna indietro</span>
+      <span class="go-back">
+        <it-icon name="it-arrow-right" size="sm" color="inverse"></it-icon>
+        <span class="visually-hidden">Torna indietro</span>
+      </span>
     </it-button>
     <it-button
       variant="primary"
-      class="go-back"
+      icon
       @click=${() => {
         window.history.back();
       }}
     >
-      <it-icon name="it-arrow-down" size="sm" color="white"></it-icon>
-      <span class="visually-hidden">Torna indietro</span>
+      <span class="go-back">
+        <it-icon name="it-arrow-down" size="sm" color="inverse"></it-icon>
+        <span class="visually-hidden">Torna indietro</span>
+      </span>
     </it-button>
   `,
 };
