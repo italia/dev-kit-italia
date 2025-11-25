@@ -12,8 +12,9 @@ interface BreadcrumbProps {
 
 const meta = {
   title: 'Componenti/Breadcrumbs',
-  tags: ['new', 'component', 'a11y-ok'],
+  tags: ['beta', 'web-component', 'a11y-ok'],
   component: 'it-breadcrumbs',
+
   args: {
     'it-aria-label': 'Percorso di navigazione',
     dark: false,
@@ -34,10 +35,9 @@ export default meta;
 type Story = StoryObj<BreadcrumbProps>;
 
 export const EsempioInterattivo: Story = {
-  ...meta,
   name: 'Esempio interattivo',
   tags: ['!autodocs', '!dev'],
-  parameters: { docs: { canvas: { sourceState: 'shown' } } },
+  parameters: { docs: { canvas: { sourceState: 'hidden' } } },
   render: (args) => html`
     <it-breadcrumbs it-aria-label=${args['it-aria-label']} ?dark="${ifDefined(args.dark)}">
       <it-breadcrumb-item><a href="#">Home</a></it-breadcrumb-item>
