@@ -61,7 +61,7 @@
       font-weight: 600;
     }
 
-    &.docblock-argstable * {
+    &.docblock-argstable *:not(code) {
       font-size: 1rem;
     }
   }

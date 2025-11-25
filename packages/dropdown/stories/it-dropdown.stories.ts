@@ -45,13 +45,18 @@ const meta = {
     'it-aria-label': undefined,
   },
   argTypes: {
-    label: { control: 'text' },
+    label: {
+      control: 'text',
+      description: 'Testo del pulsante che apre il dropdown',
+    },
     disabled: {
       control: 'boolean',
+      description: 'Disabilita il dropdown',
       table: { defaultValue: { summary: 'false' } },
     },
     alignment: {
       control: 'select',
+      description: 'Posizionamento del menu rispetto al pulsante',
       options: [
         'top',
         'right',
@@ -71,32 +76,39 @@ const meta = {
     },
     variant: {
       control: 'select',
+      description: 'Variante grafica del pulsante',
       options: ['primary', 'secondary', 'success', 'danger', 'warning', 'light', 'link'],
       type: 'string',
       table: { defaultValue: { summary: 'primary' } },
     },
     size: {
       control: 'select',
+      description: 'Dimensione del pulsante',
       options: ['sm', 'lg'],
       type: 'string',
       table: {},
     },
     'it-role': {
       control: 'select',
+      description: 'Ruolo del pulsante (vedi la sezione Accessibilità)',
       options: ['menu', 'list'],
       type: 'string',
       table: { defaultValue: { summary: 'menu' } },
     },
     dark: {
       control: 'boolean',
+      description: 'Stile scuro per il menu dropdown',
       table: { defaultValue: { summary: 'false' } },
     },
     'full-width': {
       control: 'boolean',
+      description: 'Imposta la larghezza del menu dropdown al 100% del contenitore',
       table: { defaultValue: { summary: 'false' } },
     },
     'it-aria-label': {
       control: 'text',
+      description:
+        "Valore per l'attributo `aria-label` del pulsante (obbligatorio per accessibilità se `label` è vuoto)",
       type: 'string',
     },
   },
