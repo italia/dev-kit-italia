@@ -1,5 +1,6 @@
 import { BaseComponent } from '@italia/globals';
 import { html } from 'lit';
+import { unsafeStatic, html as staticHtml } from 'lit/static-html.js';
 import { customElement, property, query } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { when } from 'lit/directives/when.js';
@@ -17,6 +18,14 @@ export class ItCallout extends BaseComponent {
   @property({ type: Boolean, reflect: true, attribute: 'callout-more' }) calloutMore = false;
 
   @property({ type: Boolean, reflect: true, attribute: 'big-text' }) bigText = false;
+
+  @property({ type: String, reflect: true, attribute: 'heading-level' }) headingLevel:
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6' = 'h2';
 
   @query('slot[name="title"]') private _titleSlot!: HTMLSlotElement;
 
@@ -80,12 +89,19 @@ export class ItCallout extends BaseComponent {
   }
 
   private renderTitle() {
+    const headingTag = unsafeStatic(this.headingLevel);
+    const headingId = `${this._id}-title`;
+
     return html`
       <div class="callout-title" part="title">
         <slot name="icon" @slotchange="${this.onIconSlotChange}"></slot>
-        <span class="text">
-          <slot name="title"></slot>
-        </span>
+        <div class="text">
+          ${staticHtml`
+            <${headingTag} id="${headingId}">
+              <slot name="title"></slot>
+            </${headingTag}>
+          `}
+        </div>
       </div>
     `;
   }
@@ -109,14 +125,16 @@ export class ItCallout extends BaseComponent {
   }
 
   render() {
+    const headingId = `${this._id}-title`;
+
     return html`
-      <div class="${this.getCalloutClasses()}" part="callout">
+      <section class="${this.getCalloutClasses()}" part="callout" aria-labelledby="${headingId}">
         ${when(
           !this.highlight && !this.calloutMore,
           () => html` ${this.renderInner()} `,
           () => this.renderHighlightContent(),
         )}
-      </div>
+      </section>
     `;
   }
 }

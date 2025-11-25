@@ -42,9 +42,16 @@ Vedi la sezione [Callout di approfondimento](#callout-di-approfondimento) per un
 
 ## Accessibilità
 
+
+Il callout utilizza un elemento `<section>` con `aria-labelledby` che punta all'intestazione del titolo per assicurare una struttura semantica corretta.
+
+Per garantire una corretta gerarchia dei contenuti, usa l'attributo `heading-level` per specificare il livello di intestazione appropriato (h1-h6) in base al contesto della pagina.
+
+Il valore predefinito è `h2`. Assicurati di scegliere il livello corretto per mantenere una struttura gerarchica logica del documento.
+
 Se l'icona comunica un'informazione non presente nel testo (es. allarme, conferma), usa l'attributo `label` di `it-icon` per fornire una descrizione accessibile agli screen reader.
 
-[Consulta la sezione Accessibilità del componente Icona](/docs/componenti-icon--documentazione#accessibilità).
+[Consulta la sezione Accessibilità della documentazione di Icon](/docs/componenti-icon--docs#accessibilità).
 
 
 

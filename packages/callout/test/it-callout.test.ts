@@ -66,6 +66,50 @@ describe('ItCallout', () => {
       expect(el.highlight).to.equal(false);
       expect(el.calloutMore).to.equal(false);
       expect(el.bigText).to.equal(false);
+      expect(el.headingLevel).to.equal('h2');
+    });
+
+    it('reflects heading-level attribute to property', async () => {
+      const el = await fixture<ItCallout>(html`<it-callout heading-level="h3"></it-callout>`);
+      await el.updateComplete;
+      expect(el.headingLevel).to.equal('h3');
+    });
+
+    it('renders correct heading tag based on heading-level', async () => {
+      const el = await fixture<ItCallout>(html`
+        <it-callout heading-level="h3">
+          <span slot="title">Test Title</span>
+        </it-callout>
+      `);
+      await el.updateComplete;
+      const root = el.shadowRoot!;
+      const heading = root.querySelector('h3');
+      expect(heading).to.exist;
+
+      // L'heading contiene uno slot, verifica che lo slot esista
+      const slot = heading?.querySelector('slot[name="title"]');
+      expect(slot).to.exist;
+    });
+
+    it('generates id on heading and aria-labelledby on section', async () => {
+      const el = await fixture<ItCallout>(html`
+        <it-callout>
+          <span slot="title">Test Title</span>
+        </it-callout>
+      `);
+      await el.updateComplete;
+      const root = el.shadowRoot!;
+      const section = root.querySelector('section');
+      const heading = root.querySelector('h2');
+
+      expect(section).to.exist;
+      expect(heading).to.exist;
+
+      const headingId = heading!.getAttribute('id');
+      const ariaLabelledby = section!.getAttribute('aria-labelledby');
+
+      expect(headingId).to.exist;
+      expect(ariaLabelledby).to.equal(headingId);
     });
 
     it('reflects variant attribute to property and class', async () => {

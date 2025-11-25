@@ -31,8 +31,47 @@
   margin: 0;
 }
 
-.callout:not(.callout-highlight):not(.callout-more) .callout-title .text:after {
-  top: 0.776em;
+// Reset heading styles to maintain callout title appearance
+.callout-title {
+  display: flex;
+  align-items: center;
+
+  .text {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      display: inline-flex;
+      padding: 0;
+      border: 0;
+      margin: 0;
+      color: inherit;
+      font-size: var(--#{$prefix}callout-title-font-size);
+      font-weight: var(--#{$prefix}callout-title-font-weight);
+      line-height: inherit;
+      text-transform: uppercase;
+    }
+  }
+}
+
+// Ensure headings display inline-flex in highlight and callout-more variants
+.callout-highlight .callout-title .text,
+.callout-more .callout-title .text {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    display: inline-flex;
+  }
+}
+
+.callout-more .callout-title {
+  display: flex;
+  align-items: center;
 }
 
 ::slotted(it-icon[slot='icon']) {

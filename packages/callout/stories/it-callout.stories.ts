@@ -8,6 +8,7 @@ interface CalloutProps {
   highlight: boolean;
   calloutMore?: boolean;
   bigText?: boolean;
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 
 const renderComponent = ({
@@ -22,12 +23,14 @@ const renderComponent = ({
   </p>`,
   moreContent = undefined,
   bigText = false,
+  headingLevel = 'h2',
 }) => html`
   <it-callout
     variant="${ifDefined(variant)}"
     ?highlight="${highlight}"
     ?callout-more="${calloutMore}"
     ?big-text="${bigText}"
+    heading-level="${headingLevel}"
   >
     ${icon ? html`<it-icon slot="icon" name="${icon}" size="md"></it-icon>` : nothing}
     <span slot="title">${title}</span>
@@ -44,6 +47,7 @@ const meta = {
     highlight: false,
     calloutMore: false,
     bigText: false,
+    headingLevel: 'h2',
   },
   argTypes: {
     variant: {
@@ -66,6 +70,12 @@ const meta = {
       control: 'boolean',
       description: "Applica lo stile per testo più grande all'interno del callout",
       table: { defaultValue: { summary: 'false' } },
+    },
+    headingLevel: {
+      control: 'select',
+      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+      description: 'Livello di intestazione semantica per il titolo del callout',
+      table: { defaultValue: { summary: 'h2' } },
     },
   },
 } satisfies Meta<CalloutProps>;
