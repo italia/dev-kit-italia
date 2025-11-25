@@ -1,0 +1,125 @@
+import { Meta, Canvas, Controls, Description } from '@storybook/addon-docs/blocks';
+import * as ChipStories from './it-chip.stories';
+
+<Meta of={ChipStories} />
+
+# Chip
+
+<description>Etichetta cliccabile che contiene brevi testi (tag) e icone per classificare, ordinare e filtriare contenuti e altri elementi di interfaccia.</description>
+
+## Cosa fa
+Usa il componente per classificare e organizzare contenuti e parti dell'interfaccia in base a liste di tag, stati, utenti o altre ontologie legate al contesto; puoi usarlo inoltre per dare accesso diretto ad archivi di contenuti filtrati per attributi o per permettere all'utente di selezionare o rimuovere scelte di input (ad esempio filtri per attributo o utenti destinatari di un messaggio).
+
+Le chips possono essere parte di un gruppo (set) e permettere selezione, deselezione o rimozione a seconda del contesto.
+
+[Approfondisci quando e come usare il componente Chip](https://designers.italia.it/design-system/componenti/chips/).
+
+### Alternative a questo componente
+- Badge: per singole etichette statiche o quantitative (ad esempio numero notifiche).
+- [Button](/docs/componenti-button--documentazione): per azioni che non coinvolgono scelte o filtri
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={ChipStories.EsempioInterattivo} />
+<Controls of={ChipStories.EsempioInterattivo} />
+
+## Informazioni generali
+
+Il componente `it-chip` si compone principalmente di una label testuale e, opzionalmente, di:
+
+- un **avatar** (immagine) a sinistra, tramite la proprietà `avatar`
+- un'**icona** inserita nello slot `icon`
+- un **pulsante di chiusura** nello slot `dismiss-button`, per le chip cancellabili/rimuovibili (la logica di rimozione è a carico dell'utilizzatore)
+
+
+## Accessibilità
+
+Il componente chip implementa best practice di accessibilità:
+
+- Supporto per navigazione da tastiera nei link e nei pulsanti di chiusura
+- Attributi ARIA appropriati per comunicare lo stato agli screen reader
+- Descrizioni accessibili opzionali tramite `a11y-description`
+
+
+## Varianti di colore
+
+
+Sono disponibili diverse varianti di colore per le chip.
+Usa l'attributo `variant` per applicare i diversi colori: `primary`, `secondary`, `success`, `danger`, `warning`.
+<Canvas of={ChipStories.VariantiColore} />
+
+## Varianti di dimensione
+
+
+Le chip sono disponibili in due dimensioni: `sm` (small, predefinita) e `lg` (large).
+
+Usa l'attributo `size` per impostare la dimensione desiderata. La dimensione influisce sull'altezza della chip e sulla dimensione degli elementi che contiene (icone, avatar).
+<Canvas of={ChipStories.VariantiDimensione} />
+
+## Chip come link
+
+
+Per rendere una chip cliccabile come link, usa l'attributo `href` con l'URL di destinazione. La chip verrà renderizzata come elemento `<a>` anziché `<div>`.
+<Canvas of={ChipStories.VarianteConLink} />
+
+## Chip link colorate
+
+
+Combinando l'attributo `href` con le varianti di colore messe a disposizione dall'attributo `variant`, puoi creare chip cliccabili con diverse varianti di colore.
+
+La chip si comporterà come un link interattivo mantenendo lo stile della variante di colore scelta.
+<Canvas of={ChipStories.VariantiColoreLink} />
+
+## Chip con avatar
+
+
+Le chip possono includere un componente [Avatar](/docs/componenti-avatar--documentazione) utilizzando gli attributi `avatar` e `avatar-alt`.
+
+L'avatar viene ridimensionato automaticamente in base alla dimensione della chip:
+- Chip `sm` imposta la dimensione dell'avatar a `xs`
+- Chip `lg` imposta la dimensione dell'avatar a `sm`
+<Canvas of={ChipStories.ChipConAvatar} />
+
+
+## Chip con icona
+
+
+Le chip possono includere un'icona utilizzando lo slot `icon` con il componente `it-icon`.
+
+L'icona viene ridimensionata automaticamente:
+- Chip `sm` imposta la dimensione dell'icona a `xs`
+- Chip `lg` imposta la dimensione dell'icona a `sm`
+<Canvas of={ChipStories.ChipConIcona} />
+
+## Chip con chiusura
+
+
+La proprietà `dismissable` **non aggiunge automaticamente il pulsante**: dovrai fornire un `<it-button>` con `slot="dismiss-button"` e la logica di rimozione che preferisci.
+
+L'icona di chiusura deve avere dimensione `sm` per rispettare le proporzioni.
+
+Il componente **non gestisce automaticamente la rimozione della chip**. Dovrai:
+
+1. Impostare l'attributo `dismissable` sulla chip
+2. Inserire un `<it-button>` nello slot `dismiss-button`
+3. Aggiungere la tua logica JavaScript per gestire l'evento click/keydown
+
+Il codice dell'esempio gestisce la rimozione della chip sia via click che via tastiera (`Enter` o `Spazio`).
+<Canvas of={ChipStories.ChipConChiusura} />
+
+## Chip disabilitata
+
+
+Usa l'attributo `is-disabled` per disabilitare una chip. La chip disabilitata non sarà cliccabile e il pulsante di chiusura, se presente, sarà anch'esso disabilitato.
+<Canvas of={ChipStories.ChipDisabilitata} />
+
+## Personalizzazione degli stili
+
+Per la personalizzazione degli stili puoi usare i selettori `::part` dedicati:
+
+- `::part(chip)` - elemento chip (div o a, a seconda della presenza di `href`)
+- `::part(focusable)` - presente solo quando la chip è un link (`href` valorizzato)
+
+[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).

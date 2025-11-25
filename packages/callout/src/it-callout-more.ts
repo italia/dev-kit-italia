@@ -19,12 +19,15 @@ export class ItCalloutMore extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'default-open', reflect: true }) defaultOpen = false;
 
+  @property({ type: Boolean, attribute: 'big-text', reflect: true }) bigText = false;
+
   render() {
     return html`
       <div class="callout-more">
         <it-callout-more-collapse
           variant="${this.variant}"
           ?default-open=${this.defaultOpen}
+          ?big-text=${this.bigText}
           size=${ifDefined(this.size ?? undefined)}
           as=${ifDefined(this.as ?? undefined)}
           ?outline=${this.outline}

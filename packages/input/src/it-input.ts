@@ -351,7 +351,7 @@ export class ItInput extends FormControl {
           part="textarea focusable"
           ${setAttributes(this._ariaAttributes)}
           aria-describedby=${ifDefined(ariaDescribedBy || undefined)}
-          ?aria-invalid=${invalid}
+          aria-invalid=${ifDefined(invalid ? 'true' : undefined)}
           @input="${this._handleInput}"
           @blur=${this._handleBlur}
           @focus=${this._handleFocus}
@@ -382,7 +382,7 @@ export class ItInput extends FormControl {
           part="input focusable"
           ${setAttributes(this._ariaAttributes)}
           aria-describedby=${ifDefined(ariaDescribedBy || undefined)}
-          ?aria-invalid=${invalid}
+          aria-invalid=${ifDefined(invalid ? 'true' : undefined)}
           @input="${this._handleInput}"
           @blur=${this._handleBlur}
           @focus=${this._handleFocus}

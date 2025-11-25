@@ -1,16 +1,24 @@
 <template>
   <h1>it-callout</h1>
-  <it-callout>
-    <it-icon slot="icon" name="it-info-circle" size="sm" aria-hidden="true"></it-icon>
-    <span slot="title">Titolo callout</span>
-    <p>Maecenas vulputate ante dictum vestibulum volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non augue non purus vestibulum varius.</p>
-  </it-callout>
 
   <section>
     <h2>Callout Base</h2>
     <div class="row">
       <div class="col-12 col-lg-6">
         <it-callout>
+          <it-icon slot="icon" name="it-info-circle" size="sm" aria-hidden="true"></it-icon>
+          <span slot="title">Titolo callout</span>
+          <p>Maecenas vulputate ante dictum vestibulum volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non augue non purus vestibulum varius.</p>
+        </it-callout>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Callout Big Text</h2>
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <it-callout big-text>
           <it-icon slot="icon" name="it-info-circle" size="sm" aria-hidden="true"></it-icon>
           <span slot="title">Titolo callout</span>
           <p>Maecenas vulputate ante dictum vestibulum volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non augue non purus vestibulum varius.</p>
@@ -138,27 +146,23 @@
     <h2>Callout Approfondimento</h2>
     <div class="row">
       <div class="col-12">
-        <it-callout more>
+        <it-callout callout-more>
+          <it-icon slot="icon" name="it-info-circle" size="sm" aria-hidden="true"></it-icon>
           <span slot="title">Approfondimento</span>
           <p>Quisque suscipit interdum augue non volutpat. Cras tristique arcu tortor. Mauris eu magna nibh. Curabitur malesuada neque in lectus sagittis accumsan. In vitae justo eros. Maecenas pellentesque lacinia ipsum vitae rhoncus. Vestibulum pretium tempor turpis, nec gravida eros viverra in. Proin dictum nibh ut semper tristique.</p>
-          <p>Maecenas at erat id sem interdum efficitur eu sed nunc. Mauris sit amet erat eget augue molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat interdum magna, eu commodo odio mauris semper dolor.</p>
-          <p>Maecenas vulputate ante dictum vestibulum volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non augue non purus vestibulum varius. Maecenas ullamcorper tincidunt nulla quis laoreet.</p>
-          <div slot="more-content">
-            <div class="collapse-header d-flex align-items-center justify-content-between">
-              <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                Leggi tutto
-              </button>
-              <a href="#" class="btn btn-primary ms-2">
-                <it-icon name="it-download" size="xs" color="white"></it-icon>
-                PDF Download
-              </a>
+          <p>Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat interdum magna, eu commodo odio mauris semper dolor.</p>
+          <p>Maecenas vulputate ante dictum <a href="#">vestibulum volutpat</a>. Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit.</strong> Aenean non augue non purus vestibulum varius. Maecenas ullamcorper tincidunt nulla quis laoreet.</p>
+          <it-callout-more>
+            <span slot="label">Leggi tutto</span>
+            <div slot="content">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
             </div>
-            <div class="collapse" id="collapseExample">
-              <div class="collapse-content">
-                <p>Contenuto aggiuntivo che viene mostrato quando il collapse è espanso. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-          </div>
+            <a slot="extra" class="callout-more-download" href="#">
+              <it-icon name="it-download" color="primary" size="sm"></it-icon>
+              <span class="visually-hidden">Scarica il contenuto in PDF </span>
+              Download
+            </a>
+          </it-callout-more>
         </it-callout>
       </div>
     </div>

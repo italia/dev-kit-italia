@@ -41,14 +41,15 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/button">
         Button
       </a>
+      <a href="/src/callout">
+        Callout
+      </a>
       <a href="/src/checkbox">
         Checkbox
       </a>
       <a href="/src/chip">
         Chip
       </a>
-      <a href="/src/callout">
-        Callout
       <a href="/src/collapse">
         Collapse
       </a>
@@ -90,7 +91,7 @@ document.querySelector('#app-footer').innerHTML = `
             <div class="col-sm-12">
               <div class="it-brand-wrapper">
                 <a href="#">
-                  <it-icon name="it-pa" size="lg" color="white"></it-icon>
+                  <it-icon name="it-pa" size="lg" color="inverse"></it-icon>
                   <div class="it-brand-text ms-3">
                     <h2 class="no_toc">Nome Ente</h2>
                     <h3 class="no_toc">Tagline</h3>
@@ -182,25 +183,25 @@ document.querySelector('#app-footer').innerHTML = `
                 <ul class="list-inline text-left social">
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#">
-                      <it-icon color="white" size="sm" name="it-designers-italia"></it-icon>
+                      <it-icon color="inverse" size="sm" name="it-designers-italia"></it-icon>
                       <span class="visually-hidden">Designers Italia (link esterno)</span>
                     </a>
                   </li>
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#">
-                      <it-icon color="white" size="sm" name="it-twitter"></it-icon>
+                      <it-icon color="inverse" size="sm" name="it-twitter"></it-icon>
                       <span class="visually-hidden">X (link esterno)</span>
                     </a>
                   </li>
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#">
-                      <it-icon color="white" size="sm" name="it-medium"></it-icon>
+                      <it-icon color="inverse" size="sm" name="it-medium"></it-icon>
                       <span class="visually-hidden">Medium (link esterno)</span>
                     </a>
                   </li>
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#">
-                      <it-icon color="white" size="sm" name="it-behance"></it-icon>
+                      <it-icon color="inverse" size="sm" name="it-behance"></it-icon>
                       <span class="visually-hidden">Behance (link esterno)</span>
                     </a>
                   </li>

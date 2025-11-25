@@ -11,12 +11,15 @@ interface CalloutProps {
 }
 
 const renderComponent = ({
-  variant = 'primary',
+  variant = '',
   highlight = false,
   calloutMore = false,
   icon = '',
   title = 'Titolo callout',
-  content = 'Maecenas vulputate ante dictum vestibulum volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non augue non purus vestibulum varius.',
+  content = html`<p>
+    Maecenas vulputate ante dictum vestibulum volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+    non augue non purus vestibulum varius.
+  </p>`,
   moreContent = undefined,
   bigText = false,
 }) => html`
@@ -28,8 +31,7 @@ const renderComponent = ({
   >
     ${icon ? html`<it-icon slot="icon" name="${icon}" size="md"></it-icon>` : nothing}
     <span slot="title">${title}</span>
-    <p>${content}</p>
-    ${moreContent}
+    ${content} ${moreContent}
   </it-callout>
 `;
 
@@ -92,8 +94,6 @@ export const CalloutPrimario: Story = {
     <div class="row">
       ${renderComponent({
         variant: 'primary',
-        highlight: false,
-
         title: 'Note a riguardo',
         icon: 'it-info-circle',
         // @ts-ignore
@@ -112,8 +112,6 @@ export const CalloutSuccess: Story = {
     <div class="row">
       ${renderComponent({
         variant: 'success',
-        highlight: false,
-
         title: 'Titolo di conferma',
         icon: 'it-check-circle',
         // @ts-ignore
@@ -132,8 +130,6 @@ export const CalloutWarning: Story = {
     <div class="row">
       ${renderComponent({
         variant: 'warning',
-        highlight: false,
-
         title: 'Titolo di attenzione',
         icon: 'it-warning-circle',
         // @ts-ignore
@@ -152,8 +148,6 @@ export const CalloutDanger: Story = {
     <div class="row">
       ${renderComponent({
         variant: 'danger',
-        highlight: false,
-
         title: 'Titolo di allerta',
         icon: 'it-close-circle',
         // @ts-ignore
@@ -171,12 +165,10 @@ export const HighlightBase: Story = {
   render: () => html`
     <div class="row">
       ${renderComponent({
-        variant: '',
         highlight: true,
-
         title: 'Titolo callout',
-        icon: '',
-        // @ts-ignore
+        icon: 'it-info-circle',
+
         content: html`
           Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
           molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
@@ -188,13 +180,6 @@ export const HighlightBase: Story = {
 };
 
 export const HighlightPrimario: Story = {
-  parameters: {
-    docs: {
-      canvas: {
-        sourceState: 'shown',
-      },
-    },
-  },
   render: () => html`
     <div class="row">
       ${renderComponent({
@@ -202,8 +187,8 @@ export const HighlightPrimario: Story = {
         highlight: true,
 
         title: 'Titolo callout',
-        icon: '',
-        // @ts-ignore
+        icon: 'it-info-circle',
+
         content: html`
           Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
           molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
@@ -223,7 +208,6 @@ export const HighlightSuccess: Story = {
 
         title: 'Titolo di conferma',
         icon: 'it-check-circle',
-        // @ts-ignore
         content: html`
           Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
           molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
@@ -243,7 +227,6 @@ export const HighlightWarning: Story = {
 
         title: 'Titolo di attenzione',
         icon: 'it-warning-circle',
-        // @ts-ignore
         content: html`
           Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
           molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
@@ -270,7 +253,6 @@ export const HighlightDanger: Story = {
 
         title: 'Titolo di allerta',
         icon: 'it-close-circle',
-        // @ts-ignore
         content: html`
           Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
           molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
@@ -281,62 +263,52 @@ export const HighlightDanger: Story = {
   `,
 };
 
-// Story strutturata per replicare fedelmente il DOM di Bootstrap Italia per il callout con approfondimento/collapse.
-// Riferimento: https://bootstrap-italia-brqzfp0zy-dip-trasformazione-digitale.vercel.app/docs/componenti/callout/#callout-approfondimento
-// NOTA: Qui si usano wrapper <div> e classi come in BSI, anche se non previsti dal componente, per ottenere lo stesso markup e comportamento visivo.
-
-// Story aggiornata: usa <it-callout-more> per markup e slot semplificati
 export const CalloutApprofondimento: Story = {
   render: () => html`
-    <div class="row">
-      <div class="col-12 col-lg-8">
-        <div class="it-callout-wrapper">
-          ${renderComponent({
-            variant: '',
-            highlight: false,
-            calloutMore: true,
-            title: 'Approfondimento',
-            icon: 'it-info-circle',
-            // @ts-ignore
-            content: html`
-              <p>
-                Quisque suscipit interdum augue non volutpat. Cras tristique arcu tortor. Mauris eu magna nibh.
-                Curabitur malesuada neque in lectus sagittis accumsan. In vitae justo eros. Maecenas pellentesque
-                lacinia ipsum vitae rhoncus. Vestibulum pretium tempor turpis, nec gravida eros viverra in. Proin dictum
-                nibh ut semper tristique.
-              </p>
-              <p>
-                Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
-                molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem
-                erat interdum magna, eu commodo odio mauris semper dolor.
-              </p>
-              <p>
-                Maecenas vulputate ante dictum <a href="#">vestibulum volutpat</a>. Lorem ipsum dolor sit amet,
-                <strong>consectetur adipiscing elit.</strong> Aenean non augue non purus vestibulum varius. Maecenas
-                ullamcorper tincidunt nulla quis laoreet.
-              </p>
-            `,
-            // @ts-ignore
-            moreContent: html`
-              <it-callout-more>
-                <span slot="label">Leggi tutto</span>
-                <div slot="content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                  officia deserunt mollit anim id est laborum
-                </div>
-                <a slot="extra" class="callout-more-download" href="#">
-                  <it-icon name="it-download" color="primary" size="sm"></it-icon>
-                  <span class="visually-hidden">Scarica il contenuto in PDF </span>
-                  Download
-                </a>
-              </it-callout-more>
-            `,
-          })}
-        </div>
-      </div>
+    <div class="row" style="background-color: #fff; padding: 2rem">
+      <!-- START CALLOUT APPROFONDIMENTO -->
+      ${renderComponent({
+        calloutMore: true,
+        title: 'Approfondimento',
+        icon: 'it-info-circle',
+        content: html`
+          <p>
+            Quisque suscipit interdum augue non volutpat. Cras tristique arcu tortor. Mauris eu magna nibh. Curabitur
+            malesuada neque in lectus sagittis accumsan. In vitae justo eros. Maecenas pellentesque lacinia ipsum vitae
+            rhoncus. Vestibulum pretium tempor turpis, nec gravida eros viverra in. Proin dictum nibh ut semper
+            tristique.
+          </p>
+          <p>
+            Maecenas at erat id <strong>sem interdum efficitur eu sed nunc.</strong> Mauris sit amet erat eget augue
+            molestie malesuada ut sed ex. In sed dignissim elit. Donec efficitur, sem eget vestibulum auctor, sem erat
+            interdum magna, eu commodo odio mauris semper dolor.
+          </p>
+          <p>
+            Maecenas vulputate ante dictum <a href="#">vestibulum volutpat</a>. Lorem ipsum dolor sit amet,
+            <strong>consectetur adipiscing elit.</strong> Aenean non augue non purus vestibulum varius. Maecenas
+            ullamcorper tincidunt nulla quis laoreet.
+          </p>
+        `,
+        // @ts-ignore
+        moreContent: html`
+          <it-callout-more>
+            <span slot="label">Leggi tutto</span>
+            <div slot="content">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum
+            </div>
+            <a slot="extra" class="callout-more-download" href="#">
+              <it-icon name="it-download" color="primary" size="sm"></it-icon>
+              <span class="visually-hidden">Scarica il contenuto in PDF </span>
+              Download
+            </a>
+          </it-callout-more>
+        `,
+      })}
+      <!-- END CALLOUT APPROFONDIMENTO -->
     </div>
   `,
 };

@@ -1,5 +1,21 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
 :host {
   display: block;
+  font-family: var(--bs-callout-font-family, inherit);
+  font-size: var(--bs-callout-font-size, 1rem);
+}
+
+/* Anti-FOUC: nascondi il contenuto finché il componente non è definito */
+:host(:not(:defined)) {
+  visibility: hidden;
+}
+
+:host([big-text]) {
+  --bs-callout-text-size: 18px;
 }
 
 .collapse-div {
@@ -32,6 +48,7 @@
 .collapse-body {
   padding: 0;
   color: inherit;
+  font-family: inherit;
   font-size: inherit;
 }
 
@@ -54,7 +71,6 @@
 }
 
 .callout-more-toggle:hover,
-.callout-more-toggle:focus,
 .callout-more-toggle:active {
   background: none;
   color: var(--bs-primary-hover, var(--bs-primary, #0066cc));
@@ -100,8 +116,12 @@
 }
 
 .callout-more-toggle:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
+  border-color: var(--bs-focus-outline-color) !important;
+  box-shadow:
+    0 0 0 2px var(--bs-color-border-inverse),
+    0 0 0 5px var(--bs-color-outline-focus) !important;
+  outline: 3px solid transparent !important;
+  outline-offset: 3px !important;
 }
 
 .collapse-header ::slotted(*) {

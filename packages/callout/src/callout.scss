@@ -9,6 +9,16 @@
 :host {
   display: block;
   --#{$prefix}callout-text-size: 16px;
+  --#{$prefix}callout-font-family: #{$font-family-serif};
+}
+
+/* Anti-FOUC: nascondi il contenuto finché il componente non è definito */
+:host(:not(:defined)) {
+  visibility: hidden;
+}
+
+:host([big-text]) {
+  --#{$prefix}callout-text-size: 18px;
 }
 
 // Ensure proper styling for slotted icons (elements in light DOM with slot="icon")
@@ -21,8 +31,10 @@
   margin: 0;
 }
 
-// Ensure proper styling for content paragraphs (default slot paragraph)
-:host ::slotted(p) {
-  color: var(--#{$prefix}callout-text-color);
-  font-family: var(--#{$prefix}callout-font-family);
+.callout:not(.callout-highlight):not(.callout-more) .callout-title .text:after {
+  top: 0.776em;
+}
+
+::slotted(it-icon[slot='icon']) {
+  --bs-icon-default: var(--it-color-border-secondary);
 }

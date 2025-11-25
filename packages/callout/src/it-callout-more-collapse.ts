@@ -1,13 +1,14 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ItCollapseBase } from '@italia/collapse';
 import { html } from 'lit';
 import { when } from 'lit/directives/when.js';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import styles from './callout-more-collapse.scss';
 
 @customElement('it-callout-more-collapse')
 export class ItCalloutMoreCollapse extends ItCollapseBase {
   static override styles = [ItCollapseBase.styles, styles];
+
+  @property({ type: Boolean, attribute: 'big-text', reflect: true }) bigText = false;
 
   protected override renderDefaultTrigger() {
     return html`<button
@@ -18,8 +19,7 @@ export class ItCalloutMoreCollapse extends ItCollapseBase {
       id="${this._triggerId}"
       @click=${this.handleTriggerAction}
       @keyup=${this.handleTriggerAction}
-      part="trigger"
-      exportparts="trigger, focusable, button"
+      part="focusable trigger"
     >
       <slot name="label"></slot>
       <span aria-hidden="true"></span>

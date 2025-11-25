@@ -89,28 +89,21 @@ describe('ItCallout', () => {
     });
 
     it('applies bigText to paragraphs in default slot', async () => {
-      const el = await fixture<ItCallout>(html`<it-callout big-text><p>Testo grande</p></it-callout>`);
+      const el = await fixture<ItCallout>(html`<it-callout big-text><p>Test paragraph</p></it-callout>`);
       await el.updateComplete;
+      expect(el.bigText).to.equal(true);
 
-      const slot = el.shadowRoot!.querySelector('slot:not([name])') as HTMLSlotElement;
-      const assigned = slot.assignedElements();
-      expect(assigned.length).to.be.greaterThan(0);
-      const p = assigned.find((n) => n.tagName.toLowerCase() === 'p');
-      expect(p).to.exist;
+      // Verifica che la CSS variable sia impostata correttamente
+      const styles = getComputedStyle(el);
+      const textSize = styles.getPropertyValue('--bs-callout-text-size').trim();
+      expect(textSize).to.equal('18px');
 
-      // Aspetta che la classe venga applicata
-      await new Promise<void>((resolve) => {
-        setTimeout(() => resolve(), 50);
-      });
-      expect(p?.classList.contains('callout-big-text')).to.be.true;
-
-      // Se la prop viene tolta, la classe viene rimossa
+      // Se la prop viene tolta, la CSS variable torna al default
       el.bigText = false;
       await el.updateComplete;
-      await new Promise<void>((resolve) => {
-        setTimeout(() => resolve(), 50);
-      });
-      expect(p?.classList.contains('callout-big-text')).to.be.false;
+      const updatedStyles = getComputedStyle(el);
+      const defaultTextSize = updatedStyles.getPropertyValue('--bs-callout-text-size').trim();
+      expect(defaultTextSize).to.equal('16px');
     });
 
     it('calloutMore attribute applies callout-more class', async () => {
@@ -290,6 +283,56 @@ describe('ItCallout', () => {
         </it-callout>
       `);
       await el.updateComplete;
+    });
+  });
+
+  describe('callout-more with big-text', () => {
+    it('applies font-size CSS variables when big-text is set', async () => {
+      const el = await fixture<ItCallout>(html`
+        <it-callout callout-more big-text>
+          <span slot="title">Title</span>
+          <p>Main content</p>
+          <it-callout-more slot="more-content">
+            <span slot="label">Read more</span>
+            <div slot="content">
+              <p>Collapse content</p>
+            </div>
+          </it-callout-more>
+        </it-callout>
+      `);
+      await el.updateComplete;
+
+      // Check CSS variable is set on host
+      const styles = getComputedStyle(el);
+      const textSize = styles.getPropertyValue('--bs-callout-text-size').trim();
+      expect(textSize).to.equal('18px');
+    });
+
+    it('applies big-text styles to paragraphs in collapse content', async () => {
+      const el = await fixture<ItCallout>(html`
+        <it-callout callout-more big-text>
+          <span slot="title">Title</span>
+          <p>Main content</p>
+          <it-callout-more slot="more-content">
+            <span slot="label">Read more</span>
+            <div slot="content">
+              <p>Collapse paragraph</p>
+            </div>
+          </it-callout-more>
+        </it-callout>
+      `);
+      await el.updateComplete;
+
+      const calloutMore = el.querySelector('it-callout-more');
+      expect(calloutMore).to.exist;
+
+      // Verifica che it-callout-more abbia ricevuto l'attributo big-text
+      expect(calloutMore!.hasAttribute('big-text')).to.be.true;
+
+      // Verifica che it-callout-more applichi la CSS variable corretta
+      const styles = getComputedStyle(calloutMore!);
+      const textSize = styles.getPropertyValue('--bs-callout-text-size').trim();
+      expect(textSize).to.equal('18px');
     });
   });
 });

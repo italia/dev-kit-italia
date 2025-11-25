@@ -1,6 +1,5 @@
 import { ItCollapseBase } from './it-collapse-base.js';
 
-// TODO: quando si sviluppa collapse come componente standalone, decoupling dalle classi di accordion, e aggiornare il part name
 /**
  * @element it-collapse
  */

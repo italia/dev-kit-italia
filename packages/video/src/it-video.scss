@@ -1,3 +1,4 @@
+@use 'sass:list';
 @import 'bootstrap-italia/src/scss/base/functions';
 @import 'bootstrap-italia/src/scss/base/variables';
 @import 'bootstrap-italia/src/scss/base/mixins';
@@ -9,7 +10,9 @@
 @import 'bootstrap-italia/src/scss/components/accept-overlay';
 
 .acceptoverlayable {
-  aspect-ratio: 16 / 9;
+  // Check the Heads up! section in the documentation
+  // https://sass-lang.com/documentation/modules/list/#slash
+  aspect-ratio: list.slash(16, 9);
 }
 
 .acceptoverlay {
@@ -91,7 +94,9 @@ video:not([width]) {
 
   &.vjs-youtube {
     .vjs-tech {
-      aspect-ratio: 16/9;
+      // Check the Heads up! section in the documentation
+      // https://sass-lang.com/documentation/modules/list/#slash
+      aspect-ratio: list.slash(16, 9);
     }
   }
 

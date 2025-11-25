@@ -22,17 +22,17 @@ export class ItCallout extends BaseComponent {
 
   @query('slot[name="icon"]') private _iconSlot!: HTMLSlotElement;
 
-  private updateParagraphsSize() {
+  private updateMoreContentBigText() {
     if (!this.shadowRoot) return;
-    const slot = this.shadowRoot.querySelector('slot:not([name])') as HTMLSlotElement;
+    const slot = this.shadowRoot.querySelector('slot[name="more-content"]') as HTMLSlotElement;
     if (!slot) return;
     const assigned = slot.assignedElements({ flatten: true });
     assigned.forEach((el) => {
-      if (el.tagName?.toLowerCase() === 'p') {
+      if (el.tagName?.toLowerCase() === 'it-callout-more') {
         if (this.bigText) {
-          el.classList.add('callout-big-text');
+          el.setAttribute('big-text', '');
         } else {
-          el.classList.remove('callout-big-text');
+          el.removeAttribute('big-text');
         }
       }
     });
@@ -71,12 +71,12 @@ export class ItCallout extends BaseComponent {
     if (changedProperties.has('variant')) {
       this.updateIconColors();
     }
-    // Aggiorna la dimensione dei <p> nel default slot se cambia bigText o slot
+    // Propaga big-text a it-callout-more
     if (changedProperties.has('bigText')) {
-      this.updateParagraphsSize();
+      this.updateMoreContentBigText();
     }
     // Aggiorna sempre dopo ogni update (slotchange non sempre triggera updated)
-    this.updateParagraphsSize();
+    this.updateMoreContentBigText();
   }
 
   private renderTitle() {

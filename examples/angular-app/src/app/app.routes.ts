@@ -14,6 +14,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/button.component').then((c) => c.ButtonComponent),
   },
   {
+    path: 'callout',
+    loadComponent: () => import('./pages/callout.component').then((c) => c.CalloutComponent),
+  },
+  {
     path: 'checkbox',
     loadComponent: () => import('./pages/checkbox.component').then((c) => c.CheckboxComponent),
   },

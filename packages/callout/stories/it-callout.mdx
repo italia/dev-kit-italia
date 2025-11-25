@@ -23,34 +23,28 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l’aspet
 
 ## Indicazioni generali
 
-### Slot di `<it-callout>`
+Il componente `<it-callout>` espone i seguenti slot:
 
 - **(default)**: il contenuto principale, tipicamente uno o più elementi `<p>`, viene inserito direttamente nel componente.
 - **slot="title"**: per il titolo del callout, visualizzato accanto all'icona (se presente).
-- **slot="icon"**: per un'icona opzionale, mostrata prima del titolo. Il colore dell'icona si adatta automaticamente alla variante del callout.
+- **slot="icon"**: per un'icona opzionale, mostrata prima del titolo. Il colore dell'icona si adatta automaticamente alla variante colore del callout.
 - **slot="more-content"**: per contenuti aggiuntivi opzionali, visualizzati in fondo al callout. Per i callout di tipo "approfondimento" (con attributo `callout-more`), questo slot contiene solitamente un componente `<it-callout-more>`.
 
-### Attributi di `<it-callout>`
+Per i [Callout di approfondimento](#callout-di-approfondimento), puoi inserire il componente `<it-callout-more>`, basato su [Collapse](/docs/componenti-collapse--documentazione), nello slot `more-content`. Questo fornirà la funzionalità di collassa/espandi per contenuti richiudibili.
 
-- **variant**: definisce il colore del bordo e del titolo. Valori: `"primary"`, `"success"`, `"warning"`, `"danger"`.
-- **highlight**: se presente, applica uno stile con bordo solo sul lato sinistro.
-- **callout-more**: se presente, applica lo stile "approfondimento" (sfondo colorato, layout specifico).
-- **big-text**: se presente, aumenta la dimensione del testo nei paragrafi.
-
-### Componente `<it-callout-more>`
-
-Per i [Callout di approfondimento](#callout-di-approfondimento), il componente `<it-callout-more>` viene inserito nello slot `more-content` e fornisce funzionalità di collapse per contenuti richiudibili.
-
-**Slot disponibili:**
+Il componente `<it-callout-more>` espone i seguenti slot:
 
 - **slot="label"**: testo del pulsante che attiva/disattiva il collapse (es. "Leggi tutto")
 - **slot="content"**: contenuto richiudibile, mostrato/nascosto al click del pulsante
 - **slot="extra"**: contenuto aggiuntivo visualizzato accanto al pulsante (es. link per download PDF)
 
+Vedi la sezione [Callout di approfondimento](#callout-di-approfondimento) per un esempio completo.
 
 ## Accessibilità
 
-Se l'icona comunica un'informazione non presente nel testo (es. allarme, conferma), aggiungi sempre un testo alternativo per screen reader, ad esempio con una classe `.sr-only`.
+Se l'icona comunica un'informazione non presente nel testo (es. allarme, conferma), usa l'attributo `label` di `it-icon` per fornire una descrizione accessibile agli screen reader.
+
+[Consulta la sezione Accessibilità del componente Icona](/docs/componenti-icon--documentazione#accessibilità).
 
 
 
@@ -62,7 +56,7 @@ Per aumentare la dimensione del testo dei paragrafi nel callout, aggiungi l'attr
 <Canvas of={CalloutStories.CalloutBigText} />
 
 ## Varianti di colore
-
+Il callout supporta diverse varianti di colore, selezionabili tramite l'attributo <code>variant</code>.
 ### Callout primario
 Usa l'attributo <code>variant="primary"</code> per dare evidenza particolare.
 <Canvas of={CalloutStories.CalloutPrimario} />
@@ -81,7 +75,7 @@ Usa l'attributo <code>variant="danger"</code> per errori o procedure pericolose.
 
 ## Callout Highlight
 
-Usando l'attributo <code>highlight</code> il callout mostra un bordo solo sul lato sinistro: <code>&lt;it-callout highlight&gt;</code>.
+Utilizza l'attributo <code>highlight</code> in combinazione con l'attributo <code>variant</code> per mostrare un bordo solo sul lato sinistro.
 
 ### Highlight base
 <Canvas of={CalloutStories.HighlightBase} />
@@ -102,7 +96,39 @@ Usando l'attributo <code>highlight</code> il callout mostra un bordo solo sul la
 
 Il callout **approfondimento** ha uno stile visivo differente ed è indicato per contenuti testuali più estesi,
 spesso accompagnati da sezioni richiudibili (collapse) e link di download.
-Usa l'attributo <code>callout-more</code> per applicare lo stile di approfondimento: <code>&lt;it-callout callout-more&gt;</code>.
+
+Usa l'attributo <code>callout-more</code> di `it-callout` per applicare lo stile di approfondimento.
+
+Usa il componente `<it-callout-more>` nello slot `more-content` per aggiungere sezioni richiudibili.
+
+Usa lo slot `label` di `<it-callout-more>` per definire il testo del pulsante di espansione/contrazione.
+
+Usa lo slot `content` di `<it-callout-more>` per inserire il contenuto richiudibile.
+
+Usa lo slot `extra` di `<it-callout-more>` per aggiungere link di download o altri contenuti aggiuntivi accanto al pulsante di espansione.
 
 
 <Canvas of={CalloutStories.CalloutApprofondimento} />
+
+## Personalizzazione degli stili
+
+Per la personalizzazione degli stili si possono usare i selettori `::part` dedicati e le proprietà CSS personalizzabili elencate di seguito.
+
+#### Selettori di `it-callout`
+
+- `::part(callout)` - elemento contenitore principale del callout
+- `::part(inner)` - contenitore interno del callout
+- `::part(title)` - elemento titolo del callout
+
+#### Selettori di `it-callout-more` (approfondimento)
+
+- `::part(trigger)` - pulsante espandi/collassa
+- `::part(extra)` - contenitore per contenuti extra (es. link download)
+- `::part(content)` - contenitore del contenuto richiudibile
+
+#### Proprietà CSS personalizzabili
+
+- `--bs-callout-text-size` - dimensione del font dei paragrafi (default: `16px`, con `big-text`: `18px`)
+- `--bs-callout-font-family` - famiglia di font del testo (default: font serif di Bootstrap Italia)
+
+[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).

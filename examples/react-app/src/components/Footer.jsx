@@ -8,7 +8,7 @@ export function Footer() {
               <div className="col-sm-12">
                 <div className="it-brand-wrapper">
                   <a href="#">
-                    <it-icon name="it-pa" size="lg" color="white"></it-icon>
+                    <it-icon name="it-pa" size="lg" color="inverse"></it-icon>
                     <div className="it-brand-text ms-3">
                       <h2 className="no_toc">Nome Ente</h2>
                       <h3 className="no_toc">Tagline</h3>
@@ -191,25 +191,25 @@ export function Footer() {
                   <ul className="list-inline text-left social">
                     <li className="list-inline-item">
                       <a className="p-2 text-white" href="#">
-                        <it-icon color="white" size="sm" name="it-designers-italia"></it-icon>
+                        <it-icon color="inverse" size="sm" name="it-designers-italia"></it-icon>
                         <span className="visually-hidden">Designers Italia (link esterno)</span>
                       </a>
                     </li>
                     <li className="list-inline-item">
                       <a className="p-2 text-white" href="#">
-                        <it-icon color="white" size="sm" name="it-twitter"></it-icon>
+                        <it-icon color="inverse" size="sm" name="it-twitter"></it-icon>
                         <span className="visually-hidden">X (link esterno)</span>
                       </a>
                     </li>
                     <li className="list-inline-item">
                       <a className="p-2 text-white" href="#">
-                        <it-icon color="white" size="sm" name="it-medium"></it-icon>
+                        <it-icon color="inverse" size="sm" name="it-medium"></it-icon>
                         <span className="visually-hidden">Medium (link esterno)</span>
                       </a>
                     </li>
                     <li className="list-inline-item">
                       <a className="p-2 text-white" href="#">
-                        <it-icon color="white" size="sm" name="it-behance"></it-icon>
+                        <it-icon color="inverse" size="sm" name="it-behance"></it-icon>
                         <span className="visually-hidden">Behance (link esterno)</span>
                       </a>
                     </li>

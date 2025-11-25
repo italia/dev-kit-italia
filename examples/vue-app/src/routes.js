@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import Accordion from './components/Accordion.vue';
 import Button from './components/Button.vue';
+import Callout from './pages/Callout.vue';
 import Chip from './components/Chip.vue';
 import Collapse from './components/Collapse.vue';
 import Dropdown from './components/Dropdown.vue';
@@ -19,6 +20,7 @@ const routes = [
   { path: '/accordion', name: 'Accordion', component: Accordion },
   { path: '/avatar', name: 'Avatar', component: Avatar },
   { path: '/button', name: 'Button', component: Button },
+  { path: '/callout', name: 'Callout', component: Callout },
   { path: '/checkbox', name: 'Checkbox', component: Checkbox },
   { path: '/chip', name: 'Chip', component: Chip },
   { path: '/collapse', name: 'Collapse', component: Collapse },
