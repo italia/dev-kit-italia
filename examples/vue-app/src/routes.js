@@ -6,6 +6,7 @@ import Breadcrumbs from './components/Breadcrumbs.vue';
 import Button from './components/Button.vue';
 import Checkbox from './components/Checkbox.vue';
 import Chip from './components/Chip.vue';
+import Collapse from './components/Collapse.vue';
 import Dropdown from './components/Dropdown.vue';
 import Form from './components/Form.vue';
 import Icon from './components/Icon.vue';
@@ -22,6 +23,7 @@ const routes = [
   { path: '/button', name: 'Button', component: Button },
   { path: '/checkbox', name: 'Checkbox', component: Checkbox },
   { path: '/chip', name: 'Chip', component: Chip },
+  { path: '/collapse', name: 'Collapse', component: Collapse },
   { path: '/dropdown', name: 'Dropdown', component: Dropdown },
   { path: '/form', name: 'Form', component: Form },
   { path: '/icon', name: 'Icon', component: Icon },

@@ -23,6 +23,7 @@
       <a href="#/breadcrumbs">Breadcrumbs</a>
       <a href="#/checkbox">Checkbox</a>
       <a href="#/chip">Chip</a>
+      <a href="#/collapse">Collapse</a>
       <a href="#/dropdown">Dropdown</a>
       <a href="#/form">Form</a>
       <a href="#/icon">Icon</a>

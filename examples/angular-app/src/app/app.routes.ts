@@ -27,6 +27,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/chip.component').then((c) => c.ChipComponent),
   },
   {
+    path: 'collapse',
+    loadComponent: () => import('./pages/collapse.component').then((c) => c.CollapseComponent),
+  },
+  {
     path: 'dropdown',
     loadComponent: () => import('./pages/dropdown.component').then((c) => c.DropdownComponent),
   },

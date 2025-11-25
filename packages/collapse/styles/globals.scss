@@ -1,0 +1,24 @@
+it-collapse {
+  &:not(:defined) {
+    [slot='content'] {
+      display: block;
+    }
+
+    [slot='label'] {
+      display: inline-flex;
+      height: 44.8px;
+      align-items: center;
+      padding: 0 1rem;
+      border-radius: var(--bs-btn-border-radius, 4px);
+    }
+
+    &:not([default-open]) {
+      [slot='content'] {
+        height: 0 !important;
+        padding: 0 !important;
+        visibility: hidden;
+        width: 0;
+      }
+    }
+  }
+}
