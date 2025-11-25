@@ -53,10 +53,6 @@ it-popover {
 }
 
 .dropdown-toggle {
-  // .dropdown-toggle-icon {
-  //   transition: transform var(--#{$prefix}dropdown-animation-speed);
-  // }
-
   .icon-expand {
     &.top {
       transform: scaleY(-1);
