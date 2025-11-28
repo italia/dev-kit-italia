@@ -55,6 +55,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/section.component').then((c) => c.SectionComponent),
   },
   {
+    path: 'skiplinks',
+    loadComponent: () => import('./pages/skiplinks.component').then((c) => c.SkiplinksComponent),
+  },
+  {
     path: 'sticky',
     loadComponent: () => import('./pages/sticky.component').then((c) => c.StickyComponent),
   },

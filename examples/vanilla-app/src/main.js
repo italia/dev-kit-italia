@@ -71,6 +71,9 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/section">
         Section
       </a>
+      <a href="/src/skiplinks">
+        Skiplinks
+      </a>
       <a href="/src/sticky">
         Sticky
       </a>

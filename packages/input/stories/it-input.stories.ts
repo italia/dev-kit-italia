@@ -311,6 +311,13 @@ export const EsempioInterattivo: Story = {
       label: 'Campo orario',
       name: 'orario',
       id: 'exampleInputTime',
+    })}
+    ${renderComponent({
+      ...params,
+      type: 'date',
+      label: 'Campo data',
+      name: 'data',
+      id: 'exampleInputDate',
     })}`,
 };
 

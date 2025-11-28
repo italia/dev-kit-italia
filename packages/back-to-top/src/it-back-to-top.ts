@@ -18,6 +18,12 @@ export class ItBackToTop extends BaseComponent {
 
   @property({ type: Boolean }) inverse = false; // Variante di colore invertito
 
+  @property({ type: Boolean }) shadow = false; // Se si vuole mostrare l'ombra sotto al bottone
+
+  @property({ type: Boolean }) border = false; // Abilita il bordo attorno al bottone per garantire il contrasto su sfondi scuri (su sfondi chiari se il bottone è inverse)
+
+  @property({ type: String, attribute: 'border-color' }) borderColor = 'white'; // Permette di definire il colore del bordo per garantire il contrasto.
+
   @property({ type: String, attribute: 'icon-color' }) iconColor = 'inverse'; // Variante di colore dell'icona
 
   @property({ type: Boolean }) visible = false;
@@ -82,10 +88,17 @@ export class ItBackToTop extends BaseComponent {
   };
 
   override render() {
+    let _borderColor = this.borderColor;
+    if (this.inverse && !this.hasAttribute('border-color')) {
+      _borderColor = 'primary';
+    }
     const classes = this.composeClass('back-to-top', {
       'back-to-top-small': this.small,
       dark: this.inverse,
+      shadow: this.shadow,
       'back-to-top-show': this.visible,
+      'back-to-top-border': this.border,
+      [`border-${_borderColor}`]: this.border,
     });
 
     return html`

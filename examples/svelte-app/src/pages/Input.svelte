@@ -51,6 +51,10 @@
   <span slot="label">Campo orario</span>
 </it-input>
 
+<it-input id="exampleInputDate" type="date" name="data">
+  <span slot="label">Campo data</span>
+</it-input>
+
 <it-input id="field-disabled-example" type="text" name="field-disabled-example" disabled={true}>
   <span slot="label">Campo disabilitato</span>
 </it-input>

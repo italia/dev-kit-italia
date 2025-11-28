@@ -1,4 +1,4 @@
-export const INPUT_TYPES = ['text', 'email', 'number', 'tel', 'time', 'password', 'textarea'];
+export const INPUT_TYPES = ['text', 'email', 'number', 'tel', 'time', 'password', 'textarea', 'date'];
 
 export const INPUT_SIZES = ['sm', undefined, 'lg'];
 

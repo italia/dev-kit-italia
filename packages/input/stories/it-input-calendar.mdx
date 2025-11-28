@@ -1,0 +1,51 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './it-input-calendar.stories';
+
+<Meta of={Stories} />
+
+# Input Calendario
+
+<description>Campo per selezionare una data all'interno di un calendario</description>
+
+## Cosa fa
+Il componente calendario, o datepicker, consente all’utente di selezionare una data specifica, sia digitando manualmente il valore, sia scegliendo il valore da un calendario.
+
+[Approfondisci come e quando usare il componente Datepicker](https://designers.italia.it/design-system/componenti/datepicker/)
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+
+<Controls of={Stories.EsempioInterattivo} />
+
+## Indicazioni generali
+
+L’input di tipo calendario è una variante del componente `<it-input>` con l'attributo `type` impostato su `date` (`type="date"`).
+
+Pertanto, per quanto riguarda:
+
+- la **validazione** e la **gestione degli errori**
+- la **gestione degli eventi**
+- i **metodi e le proprietà** accessibili tramite JavaScript
+- il **supporto all’internazionalizzazione (i18n)**
+
+è necessario fare riferimento alla [documentazione di it-input](?path=/docs/componenti-form-input--documentazione).
+
+## Restringere il periodo di validità
+Puoi limitare l’intervallo di date selezionabili impostando gli attributi `min` e/o `max` con una stringa nel formato `YYYY-MM-DD`. Non è necessario utilizzare entrambi: puoi impostarne solo uno se vuoi.
+
+Se non usi una validazione custom, la validazione nativa terrà conto di questi range per validare il valore inserito nel campo.
+
+<Canvas of={Stories.MinMax} />
+
+
+## Impostare intervalli di date regolari
+Puoi impostare intervalli di date regolari validi, utilizzando l'attributo `step`.
+Il valore predefinito di `step` è `1` (ogni giorno è selezionabile).
+
+Nell'esempio qui sotto, lo step è stato impostato a `7` per permettere solo date a intervalli di 7 giorni (utile per selezionare solo i lunedì, ad esempio).
+
+<Canvas of={Stories.Step} />

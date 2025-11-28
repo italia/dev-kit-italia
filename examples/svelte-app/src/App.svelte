@@ -30,6 +30,7 @@
       <a href="#/input">Input</a>
       <a href="#/radio">Radio</a>
       <a href="#/section">Section</a>
+      <a href="#/skiplinks">Skiplinks</a>
       <a href="#/sticky">Sticky</a>
       <a href="#/video">Video</a>
     </nav>

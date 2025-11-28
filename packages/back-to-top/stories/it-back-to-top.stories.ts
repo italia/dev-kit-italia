@@ -8,6 +8,9 @@ interface BackToTopProps {
   duration: number;
   small: boolean;
   inverse: boolean;
+  shadow: boolean;
+  border: boolean;
+  borderColor: string;
   iconColor: string;
   itAriaLabel?: string;
 }
@@ -20,6 +23,9 @@ const renderComponent = (params: BackToTopProps) => html`
     duration="${ifDefined(params.duration)}"
     ?small="${params.small}"
     ?inverse="${params.inverse}"
+    ?shadow="${params.shadow}"
+    ?border="${params.border}"
+    border-color="${ifDefined(params.borderColor)}"
     icon-color="${ifDefined(params.iconColor)}"
     it-aria-label="${ifDefined(params.itAriaLabel)}"
   ></it-back-to-top>
@@ -36,6 +42,9 @@ const meta = {
     duration: undefined,
     small: undefined,
     inverse: undefined,
+    shadow: undefined,
+    border: false,
+    borderColor: undefined,
     iconColor: undefined,
     itAriaLabel: 'Torna su',
   },
@@ -70,6 +79,30 @@ const meta = {
       type: 'boolean',
       description: 'Variante di colore invertito',
       table: { defaultValue: { summary: 'false' } },
+    },
+    shadow: {
+      control: 'boolean',
+      type: 'boolean',
+      description: "Aggiunge un'ombra al pulsante",
+      table: { defaultValue: { summary: 'false' } },
+    },
+    border: {
+      control: 'boolean',
+      type: 'boolean',
+      defaultValue: false,
+      description:
+        'Abilita / disabilita il bordo sul bottone per garantire il contrasto del pulsante su sfondi non a contrasto',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    borderColor: {
+      name: 'border-color',
+      control: 'text',
+      type: 'string',
+      defaultValue: 'white',
+      description: 'Colore del bordo',
+      table: {
+        defaultValue: { summary: 'Default: "white". Se è attivo l\'attributo "inverse", il default è "primary".' },
+      },
     },
     iconColor: {
       name: 'icon-color',
@@ -126,6 +159,27 @@ export const EsempioInterattivo: Story = {
   render: ScrollToTopTemplate,
 };
 
+export const Border: Story = {
+  ...meta,
+  name: 'Con bordo',
+  args: { border: true },
+  render: (params, context) => html` <div class="bg-primary text-white">${ScrollToTopTemplate(params, context)}</div> `,
+};
+
+export const BorderColor: Story = {
+  ...meta,
+  name: 'Colore del bordo',
+  args: { border: true, borderColor: 'secondary', inverse: true, iconColor: 'secondary' },
+  render: ScrollToTopTemplate,
+};
+
+export const IconColor: Story = {
+  ...meta,
+  name: "Colore dell'icona",
+  args: { border: true, borderColor: 'danger', inverse: true, iconColor: 'danger' },
+  render: ScrollToTopTemplate,
+};
+
 export const Small: Story = {
   ...meta,
   name: 'Versione ridotta',
@@ -133,11 +187,28 @@ export const Small: Story = {
   render: ScrollToTopTemplate,
 };
 
+export const Shadow: Story = {
+  ...meta,
+  name: 'Versione con ombra',
+  args: { shadow: true },
+  render: ScrollToTopTemplate,
+};
+
 export const Dark: Story = {
   ...meta,
   name: 'Versione per sfondo scuro',
-  args: { inverse: true },
+  args: { inverse: true, border: true },
   // render: ScrollToTopTemplate,
+  render: (params, context) => html`
+    <div class="bg-secondary text-white">${ScrollToTopTemplate(params, context)}</div>
+  `,
+};
+
+export const DarkShadow: Story = {
+  ...meta,
+  name: 'Versione con ombra su sfondo scuro',
+  args: { inverse: true, border: true, shadow: true },
+
   render: (params, context) => html`
     <div class="bg-secondary text-white">${ScrollToTopTemplate(params, context)}</div>
   `,
