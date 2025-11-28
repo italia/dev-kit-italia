@@ -38,17 +38,6 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/icon.component').then((c) => c.IconComponent),
   },
   {
-<<<<<<< HEAD
-    path: 'section',
-    loadComponent: () => import('./pages/section.component').then((c) => c.SectionComponent),
-  },
-  {
-    path: 'skiplinks',
-    loadComponent: () => import('./pages/skiplinks.component').then((c) => c.SkiplinksComponent),
-  },
-  {
-=======
->>>>>>> main
     path: 'input',
     loadComponent: () => import('./pages/input.component').then((c) => c.InputComponent),
   },
@@ -60,6 +49,10 @@ export const routes: Routes = [
   {
     path: 'section',
     loadComponent: () => import('./pages/section.component').then((c) => c.SectionComponent),
+  },
+  {
+    path: 'skiplinks',
+    loadComponent: () => import('./pages/skiplinks.component').then((c) => c.SkiplinksComponent),
   },
   {
     path: 'sticky',
