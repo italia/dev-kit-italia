@@ -61,6 +61,7 @@
       font-weight: 600;
     }
 
+<<<<<<< HEAD
     strong {
       font-weight: bold;
     }
@@ -70,6 +71,9 @@
     }
 
     &.docblock-argstable * {
+=======
+    &.docblock-argstable *:not(code) {
+>>>>>>> main
       font-size: 1rem;
     }
   }
@@ -201,6 +205,12 @@ div:has(.docblock-argstable) {
 
 table.docblock-argstable {
   min-width: 960px;
+
+  label:has([role='switch'][type='checkbox']) {
+    span {
+      padding: 2px 10px;
+    }
+  }
 }
 
 .flex {

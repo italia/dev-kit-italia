@@ -18,9 +18,11 @@
     <div>Vite + Svelte</div>
     <nav class="app-nav">
       <a href="#/accordion">Accordion</a>
+      <a href="#/avatar">Avatar</a>
       <a href="#/button">Button</a>
       <a href="#/checkbox">Checkbox</a>
       <a href="#/chip">Chip</a>
+      <a href="#/collapse">Collapse</a>
       <a href="#/dropdown">Dropdown</a>
       <a href="#/form">Form</a>
       <a href="#/icon">Icon</a>
@@ -28,12 +30,13 @@
       <a href="#/radio">Radio</a>
       <a href="#/section">Section</a>
       <a href="#/skiplinks">Skiplinks</a>
+      <a href="#/sticky">Sticky</a>
       <a href="#/video">Video</a>
-      <a href="#/avatar">Avatar</a>
     </nav>
   </div>
-
-  <Router />
+  <div class="container mb-4">
+    <Router />
+  </div>
   <Footer />
 </main>
 

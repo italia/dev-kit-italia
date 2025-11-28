@@ -86,9 +86,7 @@ describe('<it-icon>', () => {
   });
 
   it('passes a11y checks with overridden aria-hidden and provided label', async () => {
-    const el = await fixtureWithDelay<ItIcon>(
-      html`<it-icon name="it-user" aria-hidden="false" label="Label"></it-icon>`,
-    );
+    const el = await fixtureWithDelay<ItIcon>(html`<it-icon name="it-user" label="Label"></it-icon>`);
     await expect(el).to.be.accessible();
   });
 

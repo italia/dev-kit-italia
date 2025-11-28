@@ -15,7 +15,6 @@ manutenibile e pronta per l'espansione futura.
 
 - **Framework:** [Lit](https://lit.dev)
 - **Linguaggio:** TypeScript
-- **Stili:** SCSS importato inline (`?inline`)
 - **Struttura:** Monorepo (es. npm/pnpm workspaces, Nx, Turborepo)
 - **Strumenti di supporto:** [Open Web Components](https://open-wc.org)
 
@@ -30,7 +29,7 @@ Open Web Components fornisce strumenti e convenzioni standardizzate per sviluppa
 - <strong>Testing integrato</strong>: supporta `@web/test-runner`, `sinon`, `chai` e strumenti di mocking mirati per
   ambienti DOM.
 - **Qualità del codice**: linting specifico per Lit (eslint-plugin-lit), configurazioni Prettier e suggerimenti per migliorare performance e accessibilità.
-- **Supporto alla documentazione**: integrazione nativa con Storybook e demo live tramite `@web/dev-server`.
+- **Supporto alla documentazione**: integrazione nativa con Storybook.
 - **Ottimizzazione per la pubblicazione**: configurazioni pronte per bundling, tree-shaking e distribuzione su NPM via ESM.
 - **Allineamento agli standard**: segue le raccomandazioni W3C e promuove l'uso di API native senza lock-in proprietari.
 - **Adozione da parte di attori di rilievo**: utilizzato in progetti di produzione da organizzazioni come Adobe (Spectrum Web Components).
@@ -60,11 +59,11 @@ Open Web Components fornisce strumenti e convenzioni standardizzate per sviluppa
 Ogni componente:
 
 - Utilizza i decorator `@customElement` e `@property` di Lit
-- Include SCSS inline (?inline)
+- Include SCSS nel proprio shadow DOM
 - Gestisce attributi e **slot**
 - È progettato per essere **riusabile** e **accessibile**
 
-**Esempio:** [`it-icon`](https://github.com/italia/dev-kit-italia/blob/main/packages/icon/src/it-icon.ts)
+**Esempio:** [it-icon](https://github.com/italia/dev-kit-italia/blob/main/packages/icon/src/it-icon.ts)
 
 Include:
 

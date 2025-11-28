@@ -1,4 +1,4 @@
-import '@italia/accordion/it-collapse.js';
+// import '@italia/collapse/it-collapse.js';
 import '@italia/accordion/it-accordion.js';
 import '@italia/accordion/it-accordion-item.js';
 import '@italia/button/it-button.js';

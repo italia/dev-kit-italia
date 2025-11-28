@@ -4,7 +4,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { SECTION_VARIANTS, type SectionProps } from '../src/types.ts';
 
 const defaultContent = html`
-  <!-- contenuto di esempio START -->
   <div class="container">
     <div class="row mb-3">
       <div class="col-12">
@@ -32,7 +31,6 @@ const defaultContent = html`
       </div>
     </div>
   </div>
-  <!-- contenuto di esempio END -->
 `;
 function renderSection({
   variant,
@@ -44,22 +42,25 @@ function renderSection({
 }) {
   return html`
     <it-section variant="${variant || nothing}" image="${image || nothing}" ?inverse="${ifDefined(inverse)}">
+      <!-- contenuto di esempio START -->
       ${content || defaultContent}
+      <!-- contenuto di esempio END -->
     </it-section>
   `;
 }
 const meta = {
   title: 'Componenti/Section',
-  tags: ['autodocs', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-section',
   parameters: {
     docs: {
+      layout: 'padded',
       description: {
-        component: `<Description>Per creare sezioni di layout orizzontale con differenti sfondi.</Description>
+        component: `<Description>Sezione per raggruppare contenuti coerenti e con sfondi dedicati</Description>
 
 Il componente \`<it-section>\` rappresenta un contenitore visivo per introdurre sezioni di contenuto con o senza immagine.
 
-Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del design-system](https://designers.italia.it/design-system/componenti/sections/)
+Per indicazioni su come e quando usarlo consulta la [guida del design-system](https://designers.italia.it/design-system/componenti/sections/)
 
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità (Draft)</span></div><p>
@@ -86,6 +87,7 @@ Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del desi
       options: SECTION_VARIANTS,
       description: 'Variante grafica del componente, corrisponde alle classi di Bootstrap Italia',
       table: { defaultValue: { summary: undefined } },
+      type: { name: 'string', required: false },
     },
     image: {
       control: { type: 'text' },
@@ -95,7 +97,7 @@ Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del desi
     inverse: {
       control: { type: 'boolean' },
       description:
-        'Quando attivo, l’attributo inverse applica il colore bianco ai testi. È utile quando la sezione ha uno sfondo scuro o un’immagine di sfondo, così da garantire il corretto contrasto e la leggibilità dei contenuti.',
+        "Applica il colore bianco ai testi. È utile quando la sezione ha un'immagine di sfondo scura, così da garantire il corretto contrasto e la leggibilità dei contenuti. Non è necessario con le varianti `emphasis` e `primary`, che applicano già automaticamente il testo bianco.",
       table: { defaultValue: { summary: false } },
     },
   },
@@ -107,14 +109,7 @@ type Story = StoryObj<SectionProps>;
 export const EsempioInterattivo: Story = {
   name: 'Esempio interattivo',
   tags: ['!autodocs', '!dev'],
-  parameters: {
-    docs: {
-      canvas: {
-        sourceState: 'shown',
-      },
-    },
-  },
-  render: (args) => html`${renderSection(args)}`,
+  render: (args) => html`<div class="p-4" style="background-color: #e9ecef;">${renderSection(args)}</div>`,
 };
 
 export const PersonalizzazioneDegliStili: Story = {
@@ -126,11 +121,11 @@ export const PersonalizzazioneDegliStili: Story = {
       canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
       description: {
         story: `
-Per la personalizzazione degli stili si può usare il selettore \`::part\` passando il valore \`section\`. [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+Per la personalizzazione degli stili puoi usare il selettore \`::part\` passando il valore \`section\`. [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
 
-Quando si organizzano i contenuti usando le classi della griglia, non serve aggiungere spazio ai lati. Se proprio necessario, si può aggiungere spazio laterale usando la variabile \`--bs-section-padding-x\`.
+Quando si organizzano i contenuti usando le classi della griglia, non serve aggiungere spazio ai lati. Se proprio necessario, puoi aggiungere spazio laterale usando la variabile \`--bs-section-padding-x\`.
 
-Si può usare la variabile \`--bs-section-image-overlay\` per regolare l'opacità dell'overlay applicato all'immagine.
+Puoi usare la variabile \`--bs-section-image-overlay\` per regolare l'opacità dell'overlay applicato all'immagine.
 `,
       },
     },
@@ -140,18 +135,14 @@ Si può usare la variabile \`--bs-section-image-overlay\` per regolare l'opacit�
 export const VariantiColore: Story = {
   name: 'Varianti di sfondo',
   render: () => html`
-    <div class="d-flex flex-column gap-4">
+    <div class="d-flex flex-column gap-4 p-4" style="background-color: #e9ecef; min-width:600px;">
       ${(['muted', 'emphasis', 'primary'] as const).map((variant) =>
         renderSection({
           variant,
-          inverse: variant !== 'muted',
           content: html`
             <div class="container">
               <h3 id="section-heading-${variant}">Sezione ${variant}</h3>
-              <p>
-                Questa sezione usa la variante <code>${variant}</code>
-                ${variant !== 'muted' ? "con testo bianco attraverso l'attributo inverse" : ''}
-              </p>
+              <p>Questa sezione usa la variante <code>${variant}</code></p>
             </div>
           `,
         }),
@@ -165,8 +156,8 @@ export const VariantiColore: Story = {
 Sono disponibili le varianti colore di sfondo per le sezioni, corrispondenti alle classi di Bootstrap italia:
 
 - \`muted\`
-- \`emphasis\`
-- \`primary\`
+- \`emphasis\` - applica automaticamente il testo bianco
+- \`primary\` - applica automaticamente il testo bianco
 
 Il componente Section ha, per default, uno sfondo trasparente.
         `,
@@ -189,9 +180,9 @@ export const VarianteConImmagine: Story = {
     docs: {
       description: {
         story: `
-Valorizzando l'attributo \`image\` del componente con l’URL dell’immagine da utilizzare  la Section utilizzerà l’immagine indicata come sfondo, adattandone automaticamente le dimensioni per coprire l’intera Section.
+Inserisci la URL di un'immagine nell'attributo \`image\` per aggiungerla come sfondo della sezione. Le dimensioni dell'immagine si adattano automaticamente.
 
-A seconda della luminosità dell’immagine si consiglia di valorizzare o meno l'attributo \`inverse\` per garantire il corretto contrasto fra testi e sfondo.
+Se l'immagine di sfondo è scura, usa l'attributo \`inverse\` per rendere il testo bianco e mantenere una buona leggibilità.
         `,
       },
     },
