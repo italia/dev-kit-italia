@@ -61,7 +61,6 @@
       font-weight: 600;
     }
 
-<<<<<<< HEAD
     strong {
       font-weight: bold;
     }
@@ -70,10 +69,7 @@
       font-size: var(--bs-caption-font-size);
     }
 
-    &.docblock-argstable * {
-=======
     &.docblock-argstable *:not(code) {
->>>>>>> main
       font-size: 1rem;
     }
   }
