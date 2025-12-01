@@ -41,18 +41,18 @@ const renderComponent = (params: AccordionProps, items: AccordionItemProps[] = [
 
 const defaultItems: AccordionItemProps[] = [
   {
-    label: 'Elemento Accordion #1',
+    label: 'Elemento richiudibile #1',
     content:
       'Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.',
     defaultOpen: true,
   },
   {
-    label: 'Elemento Accordion #2',
+    label: 'Elemento richiudibile #2',
     content:
       'Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.',
   },
   {
-    label: 'Elemento Accordion #3',
+    label: 'Elemento richiudibile #3',
     content:
       'Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.',
   },
@@ -107,8 +107,8 @@ const meta: Meta<AccordionProps> = {
       source: { excludeDecorators: true },
       description: {
         component: `
-<Description>Costruisci accordion collassabili verticalmente.</Description>
-Per ottimizzare l'ingombro dei contenuti di una pagina a volte è necessario usare degli elementi richiudibili (in gergo definiti collassabili o collapse), che possono essere attivati indipendentemente l'uno dall'altro oppure in modo esclusivo con l'attivazione di solo un blocco alla volta (in gergo definiti fisarmoniche o accordion).
+<Description>Costruisci accordion richiudibili verticalmente.</Description>
+Per ottimizzare l'ingombro dei contenuti di una pagina a volte è necessario usare degli elementi richiudibili (in gergo definiti richiudibili o collapse), che possono essere attivati indipendentemente l'uno dall'altro oppure in modo esclusivo con l'attivazione di solo un blocco alla volta (in gergo definiti fisarmoniche o accordion).
 
 Il componente Accordion è basato su [Collapse](?path=/docs/componenti-collapse--documentazione).
 
@@ -184,8 +184,9 @@ export const AccordionItem = {
     // Accordion item controls
     label: {
       control: 'text',
-      description: "Testo dell'header dell'elemento accordion per l'esempio interattivo, inserito nello `slot heading`",
-      table: { defaultValue: { summary: 'Elemento Accordion' } },
+      description:
+        "Testo dell'header dell'Elemento richiudibile per l'esempio interattivo, inserito nello `slot heading`",
+      table: { defaultValue: { summary: 'Elemento richiudibile' } },
       name: 'Intestazione',
     },
     as: {
@@ -216,15 +217,15 @@ export const AccordionItem = {
   },
   render: (args: any) => html`
     <it-accordion-item as="${args.as || 'h2'}" ?default-open="${args.defaultOpen || false}">
-      <span slot="heading">${args.label || 'Elemento Accordion'}</span>
+      <span slot="heading">${args.label || 'Elemento richiudibile'}</span>
       <div slot="content">
-        Contenuto dell'accordion item. Questo testo è all'interno dello slot "content". Qui puoi inserire qualsiasi
-        contenuto HTML: paragrafi, liste, immagini, ecc.
+        Contenuto dell'elemento richiudibile. Questo testo è all'interno dello slot "content". Qui puoi inserire
+        qualsiasi contenuto HTML: paragrafi, liste, immagini, ecc.
       </div>
     </it-accordion-item>
   `,
   args: {
-    label: 'Elemento Accordion',
+    label: 'Elemento richiudibile',
     as: 'h2',
     defaultOpen: false,
   },
@@ -261,26 +262,26 @@ export const AccordionAnnidati: Story = {
   render: () =>
     html` <it-accordion>
       <it-accordion-item default-open>
-        <span slot="heading">Elemento Accordion #1</span>
+        <span slot="heading">Elemento richiudibile #1</span>
         <div slot="content">
           <!-- Accordion annidato -->
           <it-accordion>
             <it-accordion-item as="h3" default-open>
-              <span slot="heading">Elemento Accordion annidato #1</span>
+              <span slot="heading">Elemento richiudibile annidato #1</span>
               <div slot="content">
                 Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
                 facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
               </div>
             </it-accordion-item>
             <it-accordion-item as="h3">
-              <span slot="heading">Elemento Accordion annidato #2</span>
+              <span slot="heading">Elemento richiudibile annidato #2</span>
               <div slot="content">
                 Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
                 facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
               </div>
             </it-accordion-item>
             <it-accordion-item as="h3">
-              <span slot="heading">Elemento Accordion annidato #3</span>
+              <span slot="heading">Elemento richiudibile annidato #3</span>
               <div slot="content">
                 Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
                 facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
@@ -290,14 +291,14 @@ export const AccordionAnnidati: Story = {
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #2</span>
+        <span slot="heading">Elemento richiudibile #2</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #3</span>
+        <span slot="heading">Elemento richiudibile #3</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
@@ -315,21 +316,21 @@ export const HeaderAttivi: Story = {
   render: () => html`
     <it-accordion background-active>
       <it-accordion-item default-open>
-        <span slot="heading">Elemento Accordion #1</span>
+        <span slot="heading">Elemento richiudibile #1</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #2</span>
+        <span slot="heading">Elemento richiudibile #2</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #3</span>
+        <span slot="heading">Elemento richiudibile #3</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
@@ -348,21 +349,21 @@ export const HoverDegliHeader: Story = {
   render: () => html`
     <it-accordion background-hover>
       <it-accordion-item default-open>
-        <span slot="heading">Elemento Accordion #1</span>
+        <span slot="heading">Elemento richiudibile #1</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #2</span>
+        <span slot="heading">Elemento richiudibile #2</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #3</span>
+        <span slot="heading">Elemento richiudibile #3</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus
           facilisis. Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.

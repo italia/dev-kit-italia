@@ -43,6 +43,7 @@
   position: relative;
   display: inline-block;
 
+  --#{$prefix}dropdown-animation-speed: #{$dropdown-menu-animation-speed};
   --#{$prefix}icon-default: currentColor;
 }
 
@@ -51,16 +52,34 @@ it-popover {
   display: inline-flex;
 }
 
-.dropdown-toggle-icon {
-  &.top {
+.dropdown-toggle {
+  .icon-expand {
+    &.top {
+      transform: scaleY(-1);
+    }
+
+    &.left {
+      transform: rotate(90deg);
+    }
+
+    &.right {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &[it-aria-expanded] .icon-expand {
     transform: scaleY(-1);
-  }
 
-  &.left {
-    transform: rotate(90deg);
-  }
+    &.top {
+      transform: scaleY(1);
+    }
 
-  &.right {
-    transform: rotate(-90deg);
+    &.left {
+      transform: rotate(-90deg);
+    }
+
+    &.right {
+      transform: rotate(90deg);
+    }
   }
 }

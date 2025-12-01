@@ -17,21 +17,21 @@
 
     <it-accordion>
       <it-accordion-item default-open>
-        <span slot="heading">Elemento Accordion #1</span>
+        <span slot="heading">Elemento richiudibile #1</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #2</span>
+        <span slot="heading">Elemento richiudibile #2</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #3</span>
+        <span slot="heading">Elemento richiudibile #3</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
@@ -47,21 +47,21 @@
 
     <it-accordion mode="single">
       <it-accordion-item default-open>
-        <span slot="heading">Elemento Accordion #1</span>
+        <span slot="heading">Elemento richiudibile #1</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #2</span>
+        <span slot="heading">Elemento richiudibile #2</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #3</span>
+        <span slot="heading">Elemento richiudibile #3</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
@@ -77,21 +77,21 @@
 
     <it-accordion background-active>
       <it-accordion-item default-open>
-        <span slot="heading">Elemento Accordion #1</span>
+        <span slot="heading">Elemento richiudibile #1</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #2</span>
+        <span slot="heading">Elemento richiudibile #2</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #3</span>
+        <span slot="heading">Elemento richiudibile #3</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
@@ -107,21 +107,21 @@
 
     <it-accordion background-hover>
       <it-accordion-item default-open>
-        <span slot="heading">Elemento Accordion #1</span>
+        <span slot="heading">Elemento richiudibile #1</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #2</span>
+        <span slot="heading">Elemento richiudibile #2</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #3</span>
+        <span slot="heading">Elemento richiudibile #3</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
@@ -137,21 +137,21 @@
 
     <it-accordion left-icon>
       <it-accordion-item default-open>
-        <span slot="heading">Elemento Accordion #1</span>
+        <span slot="heading">Elemento richiudibile #1</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #2</span>
+        <span slot="heading">Elemento richiudibile #2</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #3</span>
+        <span slot="heading">Elemento richiudibile #3</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
@@ -170,26 +170,26 @@
 
     <it-accordion>
       <it-accordion-item default-open>
-        <span slot="heading">Elemento Accordion #1</span>
+        <span slot="heading">Elemento richiudibile #1</span>
         <div slot="content">
           <!-- Accordion annidato -->
           <it-accordion>
             <it-accordion-item as="h3" default-open>
-              <span slot="heading">Elemento Accordion annidato #1</span>
+              <span slot="heading">Elemento richiudibile annidato #1</span>
               <div slot="content">
                 Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
                 Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
               </div>
             </it-accordion-item>
             <it-accordion-item as="h3">
-              <span slot="heading">Elemento Accordion annidato #2</span>
+              <span slot="heading">Elemento richiudibile annidato #2</span>
               <div slot="content">
                 Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
                 Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
               </div>
             </it-accordion-item>
             <it-accordion-item as="h3">
-              <span slot="heading">Elemento Accordion annidato #3</span>
+              <span slot="heading">Elemento richiudibile annidato #3</span>
               <div slot="content">
                 Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
                 Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
@@ -199,14 +199,14 @@
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #2</span>
+        <span slot="heading">Elemento richiudibile #2</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.
         </div>
       </it-accordion-item>
       <it-accordion-item>
-        <span slot="heading">Elemento Accordion #3</span>
+        <span slot="heading">Elemento richiudibile #3</span>
         <div slot="content">
           Vestibulum hendrerit ultrices nibh, sed pharetra lacus ultrices eget. Morbi et ipsum et sapien dapibus facilisis.
           Integer eget semper nibh. Proin enim nulla, egestas ac rutrum eget, ullamcorper nec turpis.

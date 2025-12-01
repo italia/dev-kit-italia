@@ -24,19 +24,23 @@
 <!-- Avatar con testo -->
 <section>
   <h2>Avatar con testo</h2>
-  <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem;">
+  <div
+    style="display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem;"
+  >
     {#each sizes as size}
-      <it-avatar type="text" text="Mario Rossi" avatar-title="Mario Rossi" size={size}></it-avatar>
+      <it-avatar type="text" text="Mario Rossi" avatar-title="Mario Rossi" {size}></it-avatar>
     {/each}
   </div>
-  <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem;">
+  <div
+    style="display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem;"
+  >
     {#each sizes as size}
-      <it-avatar type="text" text="Mario Rossi" avatar-title="Mario Rossi" variant="primary" size={size}></it-avatar>
+      <it-avatar type="text" text="Mario Rossi" avatar-title="Mario Rossi" variant="primary" {size}></it-avatar>
     {/each}
   </div>
   <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap;">
     {#each sizes as size}
-      <it-avatar type="text" text="Mario Rossi" variant="secondary" avatar-title="Mario Rossi" size={size}></it-avatar>
+      <it-avatar type="text" text="Mario Rossi" variant="secondary" avatar-title="Mario Rossi" {size}></it-avatar>
     {/each}
   </div>
 </section>
@@ -46,7 +50,7 @@
   <h2>Avatar con icona</h2>
   <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap;">
     {#each sizes as size}
-      <it-avatar type="icon" icon="it-user" avatar-title="Utente" size={size}></it-avatar>
+      <it-avatar type="icon" icon="it-user" avatar-title="Utente" {size}></it-avatar>
     {/each}
   </div>
 </section>
@@ -55,7 +59,13 @@
 <section>
   <h2>Avatar come link</h2>
   <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap;">
-    <it-avatar type="image" src="https://randomuser.me/api/portraits/women/41.jpg" alt="Anna Barbieri" href="#" avatar-title="Anna Barbieri"></it-avatar>
+    <it-avatar
+      type="image"
+      src="https://randomuser.me/api/portraits/women/41.jpg"
+      alt="Anna Barbieri"
+      href="#"
+      avatar-title="Anna Barbieri"
+    ></it-avatar>
     <it-avatar type="text" text="Mario Rossi" href="#" avatar-title="Mario Rossi"></it-avatar>
     <it-avatar type="text" text="Mario Rossi" variant="primary" href="#" avatar-title="Mario Rossi"></it-avatar>
     <it-avatar type="icon" icon="it-user" href="#" avatar-title="Utente"></it-avatar>
@@ -67,15 +77,33 @@
   <h2>Comportamento presenza utente</h2>
   <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; justify-content: center;">
     <div style="text-align: center;">
-      <it-avatar type="image" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Mario Rossi" presence="active" size="lg"></it-avatar>
+      <it-avatar
+        type="image"
+        src="https://randomuser.me/api/portraits/men/43.jpg"
+        alt="Mario Rossi"
+        presence="active"
+        size="lg"
+      ></it-avatar>
       <div style="margin-top: 0.5rem;"><small>Attivo</small></div>
     </div>
     <div style="text-align: center;">
-      <it-avatar type="image" src="https://randomuser.me/api/portraits/women/41.jpg" alt="Luisa Neri" presence="busy" size="lg"></it-avatar>
+      <it-avatar
+        type="image"
+        src="https://randomuser.me/api/portraits/women/41.jpg"
+        alt="Luisa Neri"
+        presence="busy"
+        size="lg"
+      ></it-avatar>
       <div style="margin-top: 0.5rem;"><small>Non disponibile</small></div>
     </div>
     <div style="text-align: center;">
-      <it-avatar type="image" src="https://randomuser.me/api/portraits/men/33.jpg" alt="Gioacchino Romani" presence="hidden" size="lg"></it-avatar>
+      <it-avatar
+        type="image"
+        src="https://randomuser.me/api/portraits/men/33.jpg"
+        alt="Gioacchino Romani"
+        presence="hidden"
+        size="lg"
+      ></it-avatar>
       <div style="margin-top: 0.5rem;"><small>Invisibile</small></div>
     </div>
   </div>
@@ -83,7 +111,14 @@
   <h3>Presenza personalizzata con slot</h3>
   <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; justify-content: center;">
     <div style="text-align: center; display: inline-block;">
-      <it-avatar type="text" text="Marco Bianchi" avatar-title="Marco Bianchi" variant="primary" presence="active" size="lg">
+      <it-avatar
+        type="text"
+        text="Marco Bianchi"
+        avatar-title="Marco Bianchi"
+        variant="primary"
+        presence="active"
+        size="lg"
+      >
         <span slot="presence" class="custom-presence custom-presence-success">
           <it-icon name="it-check" size="xs" color="inverse"></it-icon>
           <span class="visually-hidden">Utente online e disponibile</span>
@@ -107,15 +142,33 @@
   <h2>Comportamento status utente</h2>
   <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; justify-content: center;">
     <div style="text-align: center;">
-      <it-avatar type="image" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Mario Rossi" status="approved" size="lg"></it-avatar>
+      <it-avatar
+        type="image"
+        src="https://randomuser.me/api/portraits/men/43.jpg"
+        alt="Mario Rossi"
+        status="approved"
+        size="lg"
+      ></it-avatar>
       <div style="margin-top: 0.5rem;"><small>Approvato</small></div>
     </div>
     <div style="text-align: center;">
-      <it-avatar type="image" src="https://randomuser.me/api/portraits/women/41.jpg" alt="Luisa Neri" status="declined" size="lg"></it-avatar>
+      <it-avatar
+        type="image"
+        src="https://randomuser.me/api/portraits/women/41.jpg"
+        alt="Luisa Neri"
+        status="declined"
+        size="lg"
+      ></it-avatar>
       <div style="margin-top: 0.5rem;"><small>Respinto</small></div>
     </div>
     <div style="text-align: center;">
-      <it-avatar type="image" src="https://randomuser.me/api/portraits/men/33.jpg" alt="Gioacchino Romani" status="notify" size="lg"></it-avatar>
+      <it-avatar
+        type="image"
+        src="https://randomuser.me/api/portraits/men/33.jpg"
+        alt="Gioacchino Romani"
+        status="notify"
+        size="lg"
+      ></it-avatar>
       <div style="margin-top: 0.5rem;"><small>Notifica</small></div>
     </div>
   </div>
@@ -153,13 +206,15 @@
         <ul class="link-list avatar-group">
           <li>
             <a class="list-item" href="#">
-              <it-avatar size="sm" type="image" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Mario Rossi"></it-avatar>
+              <it-avatar size="sm" type="image" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Mario Rossi"
+              ></it-avatar>
               <span>Mario Rossi</span>
             </a>
           </li>
           <li>
             <a class="list-item" href="#">
-              <it-avatar size="sm" type="image" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Anna Verdi"></it-avatar>
+              <it-avatar size="sm" type="image" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Anna Verdi"
+              ></it-avatar>
               <span>Anna Verdi</span>
             </a>
           </li>
@@ -185,13 +240,15 @@
         <ul class="link-list avatar-group">
           <li>
             <a class="list-item" href="#">
-              <it-avatar type="image" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Luca Bianchi"></it-avatar>
+              <it-avatar type="image" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Luca Bianchi"
+              ></it-avatar>
               <span>Luca Bianchi</span>
             </a>
           </li>
           <li>
             <a class="list-item" href="#">
-              <it-avatar type="image" src="https://randomuser.me/api/portraits/women/28.jpg" alt="Elena Rossi"></it-avatar>
+              <it-avatar type="image" src="https://randomuser.me/api/portraits/women/28.jpg" alt="Elena Rossi"
+              ></it-avatar>
               <span>Elena Rossi</span>
             </a>
           </li>
@@ -231,7 +288,12 @@
         <li><it-avatar text="Sandro Penna" variant="secondary" avatar-title="Sandro Penna" href="#"></it-avatar></li>
         <li>
           <it-avatar type="dropdown">
-            <it-dropdown label="4+" slot="avatar-dropdown-content" it-aria-label="Visualizza altri 4 utenti" variant="secondary">
+            <it-dropdown
+              label="4+"
+              slot="avatar-dropdown-content"
+              it-aria-label="Visualizza altri 4 utenti"
+              variant="secondary"
+            >
               <it-dropdown-item href="#">
                 <it-avatar src="https://randomuser.me/api/portraits/men/22.jpg"></it-avatar>
                 <span>Roberto Milano</span>
