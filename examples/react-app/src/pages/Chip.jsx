@@ -85,7 +85,7 @@ const Chip = () => {
               slot="dismiss-button"
               icon
               it-aria-label="Elimina etichetta"
-              it-aria-disabled="true"
+              disabled
               it-aria-description="Puoi premere per eliminare la chip."
               onClick={handleDismiss}
               onKeyDown={handleKeyDown}
@@ -105,7 +105,7 @@ const Chip = () => {
               slot="dismiss-button"
               icon
               it-aria-label="Elimina etichetta"
-              it-aria-disabled="true"
+              disabled
               it-aria-description="Puoi premere per eliminare la chip."
               onClick={handleDismiss}
               onKeyDown={handleKeyDown}
@@ -137,7 +137,7 @@ const Chip = () => {
               slot="dismiss-button"
               icon
               it-aria-label="Elimina chip"
-              it-aria-disabled="true"
+              disabled
               it-aria-description="Puoi premere per eliminare la chip."
               onClick={handleDismiss}
               onKeyDown={handleKeyDown}
@@ -156,7 +156,7 @@ const Chip = () => {
               slot="dismiss-button"
               icon
               it-aria-label="Elimina etichetta"
-              it-aria-disabled="true"
+              disabled
               it-aria-description="Puoi premere per eliminare la chip."
               onClick={handleDismiss}
               onKeyDown={handleKeyDown}

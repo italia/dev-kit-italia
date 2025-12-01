@@ -1,3 +1,4 @@
+@use 'sass:list';
 @import 'bootstrap-italia/src/scss/base/functions';
 @import 'bootstrap-italia/src/scss/base/variables';
 @import 'bootstrap-italia/src/scss/base/mixins';
@@ -7,6 +8,12 @@
 
 @import 'bootstrap-italia/src/scss/components/videoplayer';
 @import 'bootstrap-italia/src/scss/components/accept-overlay';
+
+.acceptoverlayable {
+  // Check the Heads up! section in the documentation
+  // https://sass-lang.com/documentation/modules/list/#slash
+  aspect-ratio: list.slash(16, 9);
+}
 
 .acceptoverlay {
   --bs-acceptoverlay-color-text: #fff;
@@ -79,8 +86,32 @@ video:not([width]) {
 .video-js {
   width: var(--it-videojs-default-width);
   height: var(--it-videojs-default-height);
+
+  .vjs-tech {
+    position: inherit !important;
+    height: auto !important;
+  }
+
+  &.vjs-youtube {
+    .vjs-tech {
+      // Check the Heads up! section in the documentation
+      // https://sass-lang.com/documentation/modules/list/#slash
+      aspect-ratio: list.slash(16, 9);
+    }
+  }
+
+  &:not(.vjs-audio-only-mode) {
+    &.vjs-fluid,
+    &.vjs-16-9,
+    &.vjs-4-3,
+    &.vjs-9-16,
+    &.vjs-1-1,
+    &.vjs-youtube {
+      height: auto;
+    }
+  }
 }
 
-.vjs-fluid:not(.vjs-audio-only-mode) {
-  padding-top: 56.25%;
-}
+// .vjs-fluid:not(.vjs-audio-only-mode) {
+//   padding-top: 56.25%;
+// }

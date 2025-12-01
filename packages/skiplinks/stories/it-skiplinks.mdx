@@ -1,0 +1,81 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-skiplinks.stories';
+
+<Meta of={Stories} />
+
+<Title/>
+
+<description>Link di accesso rapido ai contenuti di interesse su una pagina per la navigazione tramite tastiera o tecnologie assistive</description>
+
+## Cosa fa
+
+Gli skiplinks sono scorciatoie di navigazione che consentono agli utenti di andare direttamente ai contenuti principali della pagina in modo più semplice, soprattutto se questa è particolarmente complessa da navigare.
+
+È molto utile per chi usa la tastiera o tecnologie assistive come i lettori di schermo.
+
+[Approfondisci come e quando usare il componente Skiplinks](https://designers.italia.it/design-system/componenti/skiplinks/)
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi della tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+Nell’esempio che segue (implementato per il sito Designers Italia), sono inseriti due collegamenti che è utile approfondire:
+
+- un salto ad un _modulo per chiedere alle persone come stanno valutando l’esperienza d’uso_ della pagina. Il testo dello skiplink anticipa già la domanda;
+- un _collegamento diretto alla Dichiarazione di accessibilità disponibile sul form AgID_, che accompagnerà il necessario link presente anche nel piede di pagina, per permettere a chi naviga con strumenti assistivi di trovarla facilmente senza dover scansionare tutti i contennuti.
+
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+## Indicazioni generali
+
+Deve essere il primo contenuto della pagina. Se è presente l’elemento `<header>`, ti raccomandiamo di integrarlo come primo suo elemento figlio, così da includerlo sempre in un landmark di pagina.
+
+Per navigare tra gli elementi puoi usare il tasto: **TAB** (tabulazione).
+<div class="callout callout-primary">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Nota</span>
+    </div>
+    <p>
+      Ti raccomandiamo di limitare il numero di elementi scorciatoia per evitare che gli utenti debbano saltare le
+      scorciatoie stesse.
+    </p>
+  </div>
+</div>
+
+## Accessibilità
+
+Nel caso in cui il numero di link sia superiore a 2, è necessario passare al componente `it-skiplinks` l'attributo `it-aria-label` dedicato che ne spieghi l’uso. In questo caso infatti verrà generato un elemento `<nav>` a cui verrà applicato l'attributo `aria-label` per migliorarne l'accessibilità.
+
+
+## Numero ridotto di link
+
+<Description of={Stories.PochiLink} />
+<Canvas of={Stories.PochiLink} />
+
+## Come visualizzali su MacOS
+
+### Chrome
+Per attivare la funzionalità, digita da tastiera il tasto: **TAB**.
+
+### Safari
+Per attivare la navigazione via **TAB** devi:
+
+1. Aprire il menu Safari > Preferenze
+2. Cliccare sulla tab Avanzate
+3. Selezionare “Premi tabulatore per evidenziare tutti gli elementi della pagina web”.
+
+Alternativamente, puoi navigare gli elementi usando _opzione+TAB_.
+
+### Firefox
+Le impostazioni di default di macOS non consentono la navigazione di tutti gli elementi interattivi di un sito con l’uso
+del pulsante TAB. Per attivare questa modalità, devi modificare le preferenze di sistema come segue:
+
+1. Apri il Menu Apple > Preferenze di Sistema, quindi fai clic su “Tastiera“.
+2. Fai clic su “Abbreviazioni“.
+3. Nella parte inferiore della finestra delle preferenze, seleziona “Usa la navigazione da tastiera per spostare la selezione tra i controlli”.
+
+Una volta selezionata questa opzione, gli skiplinks saranno attivabili su Firefox con il pulsante **TAB**.
+
+Vedi anche la [guida ufficiale di Apple](https://support.apple.com/it-it/HT204434).

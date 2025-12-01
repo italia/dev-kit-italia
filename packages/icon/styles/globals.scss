@@ -2,6 +2,74 @@ it-icon {
   line-height: 0;
 }
 
+// FOUC prevention: apply styles even when component is not yet defined
+it-icon:not(:defined) {
+  display: inline-block;
+  line-height: 0;
+
+  // Size variants
+  &[size='xs'] {
+    width: var(--#{$prefix}icon-size-xs);
+    height: var(--#{$prefix}icon-size-xs);
+
+    &[padded] {
+      margin: 4px;
+    }
+  }
+
+  &[size='sm'] {
+    width: var(--#{$prefix}icon-size-s);
+    height: var(--#{$prefix}icon-size-s);
+
+    &[padded] {
+      margin: 6px;
+    }
+  }
+
+  &:not([size]),
+  &[size=''] {
+    width: var(--#{$prefix}icon-size-m);
+    height: var(--#{$prefix}icon-size-m);
+
+    &[padded] {
+      margin: 8px;
+    }
+  }
+
+  &[size='lg'] {
+    width: var(--#{$prefix}icon-size-l);
+    height: var(--#{$prefix}icon-size-l);
+
+    &[padded] {
+      margin: 12px;
+    }
+  }
+
+  &[size='xl'] {
+    width: var(--#{$prefix}icon-size-xl);
+    height: var(--#{$prefix}icon-size-xl);
+
+    &[padded] {
+      margin: 16px;
+    }
+  }
+
+  // Alignment variants - default is middle when no align attribute
+  &:not([align]),
+  &[align=''],
+  &[align='middle'] {
+    vertical-align: middle;
+  }
+
+  &[align='top'] {
+    vertical-align: top;
+  }
+
+  &[align='bottom'] {
+    vertical-align: bottom;
+  }
+}
+
 .bg-dark {
   it-icon::part(icon) {
     --#{$prefix}icon-default: var(--#{$prefix}color-text-inverse);
