@@ -61,17 +61,20 @@ const meta = {
       table: { defaultValue: { summary: 'false' } },
     },
     calloutMore: {
+      name: 'callout-more',
       control: 'boolean',
       description:
         'Applica lo stile "Approfondimento" all callout. Aggiungi eventuale contenuto collassabile da mostrare nello slot `more-content`',
       table: { defaultValue: { summary: 'false' } },
     },
     bigText: {
+      name: 'big-text',
       control: 'boolean',
       description: "Applica lo stile per testo più grande all'interno del callout",
       table: { defaultValue: { summary: 'false' } },
     },
     headingLevel: {
+      name: 'heading-level',
       control: 'select',
       options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
       description: 'Livello di intestazione semantica per il titolo del callout',
