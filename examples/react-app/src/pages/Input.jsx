@@ -33,13 +33,13 @@ const Input = () => {
         <span slot="label">Campo numerico min, max, step</span>
       </it-input>
       <it-input id="exampleInputNumberCurrency" type="number" name="numbercurrency" value="3.50" step="0.01">
-        <span slot="label">Campo numerico currency</span>
+        <span slot="label">Campo numerico valuta</span>
         <span slot="prepend" class="fw-semibold">
           €
         </span>
       </it-input>
       <it-input id="exampleInputNumberPerc" type="number" name="numberperc" value="50">
-        <span slot="label">Campo numerico percentage</span>
+        <span slot="label">Campo numerico percentuale</span>
         <span slot="prepend" class="fw-semibold">
           %
         </span>
@@ -52,6 +52,9 @@ const Input = () => {
       </it-input>
       <it-input id="exampleInputTime" type="time" name="orario">
         <span slot="label">Campo orario</span>
+      </it-input>
+      <it-input id="exampleInputDate" type="date" name="data">
+        <span slot="label">Campo data</span>
       </it-input>
       <it-input id="field-disabled-example" type="text" name="field-disabled-example" disabled={true}>
         <span slot="label">Campo disabilitato</span>

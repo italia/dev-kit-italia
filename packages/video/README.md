@@ -5,14 +5,14 @@ This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) reco
 ## Installation
 
 ```bash
-npm i it-video
+npm i @italia/video
 ```
 
 ## Usage
 
 ```html
 <script type="module">
-  import '@italia/it-video';
+  import '@italia/video';
 </script>
 
 <it-video></it-video>

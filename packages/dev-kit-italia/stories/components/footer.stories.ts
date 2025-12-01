@@ -10,7 +10,7 @@ const defaultContent = html`
             <div class="col-sm-12">
               <div class="it-brand-wrapper">
                 <a href="#">
-                  <it-icon name="it-code-circle" size="xl" color="white"></it-icon>
+                  <it-icon name="it-code-circle" size="xl" color="inverse"></it-icon>
                   <div class="it-brand-text">
                     <h2 class="no_toc">Nome Ente</h2>
                     <h3 class="no_toc">Tagline</h3>
@@ -102,25 +102,25 @@ const defaultContent = html`
                 <ul class="list-inline text-left social">
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#"
-                      ><it-icon color="white" size="sm" name="it-designers-italia"></it-icon
+                      ><it-icon color="inverse" size="sm" name="it-designers-italia"></it-icon
                       ><span class="visually-hidden">Designers Italia (link esterno)</span></a
                     >
                   </li>
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#"
-                      ><it-icon color="white" size="sm" name="it-twitter"></it-icon
+                      ><it-icon color="inverse" size="sm" name="it-twitter"></it-icon
                       ><span class="visually-hidden">X (link esterno)</span></a
                     >
                   </li>
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#"
-                      ><it-icon color="white" size="sm" name="it-medium"></it-icon
+                      ><it-icon color="inverse" size="sm" name="it-medium"></it-icon
                       ><span class="visually-hidden">Medium (link esterno)</span></a
                     >
                   </li>
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#"
-                      ><it-icon color="white" size="sm" name="it-behance"></it-icon
+                      ><it-icon color="inverse" size="sm" name="it-behance"></it-icon
                       ><span class="visually-hidden">Behance (link esterno)</span></a
                     >
                   </li>
@@ -173,7 +173,7 @@ const smallContent = html` <footer class="it-footer">
           <div class="col-sm-12">
             <div class="it-brand-wrapper">
               <a href="#" >
-                <it-icon name="it-code-circle" size="xl" color="white"></it-icon>
+                <it-icon name="it-code-circle" size="xl" color="inverse"></it-icon>
                 <div class="it-brand-text">
                   <h2>Nome Ente</h2>
                   <h3 class="no_toc">Tagline</h3>
@@ -205,19 +205,19 @@ const smallContent = html` <footer class="it-footer">
               <h4>Seguici su</h4>
                 <ul class="list-inline text-left social">
                   <li class="list-inline-item">
-                    <a class="p-2 text-white" href="#"><it-icon color="white" size="sm" name="it-designers-italia"></it-icon><span class="visually-hidden">Designers Italia (link esterno)</span></a
+                    <a class="p-2 text-white" href="#"><it-icon color="inverse" size="sm" name="it-designers-italia"></it-icon><span class="visually-hidden">Designers Italia (link esterno)</span></a
                     >
                   </li>
                   <li class="list-inline-item">
-                    <a class="p-2 text-white" href="#"><it-icon color="white" size="sm" name="it-twitter"></it-icon><span class="visually-hidden">X (link esterno)</span></a
+                    <a class="p-2 text-white" href="#"><it-icon color="inverse" size="sm" name="it-twitter"></it-icon><span class="visually-hidden">X (link esterno)</span></a
                     >
                   </li>
                   <li class="list-inline-item">
-                    <a class="p-2 text-white" href="#"><it-icon color="white" size="sm" name="it-medium"></it-icon><span class="visually-hidden">Medium (link esterno)</span></a
+                    <a class="p-2 text-white" href="#"><it-icon color="inverse" size="sm" name="it-medium"></it-icon><span class="visually-hidden">Medium (link esterno)</span></a
                     >
                   </li>
                   <li class="list-inline-item">
-                    <a class="p-2 text-white" href="#"><it-icon color="white" size="sm" name="it-behance"></it-icon><span class="visually-hidden">Behance (link esterno)</span></a
+                    <a class="p-2 text-white" href="#"><it-icon color="inverse" size="sm" name="it-behance"></it-icon><span class="visually-hidden">Behance (link esterno)</span></a
                     >
                   </li>
                 </ul>
@@ -264,27 +264,7 @@ const smallContent = html` <footer class="it-footer">
 const meta = {
   title: 'Componenti/Footer',
   component: 'footer',
-  tags: ['autodocs', 'documentation'],
-  parameters: {
-    docs: {
-      description: {
-        component:
-          `<Description>Documentazione ed esempi per la creazione di piè di pagina di navigazione.</Description>
-<h3 style="border-bottom:none;padding-top:36px">Introduzione</h3>
-Il **footer** (piè di pagina) è una sezione che contiene tutte le informazioni inerenti al sito web e alla società o organizzazione che rappresenta.
-
-Per una Pubblica Amministrazione potrebbe contenere tutte i riferimenti ai vari **servizi**, a varie **pagine utili** alla cittadinanza, riferimenti alla **privacy**, il collegamento alla **Dichiarazione di accessibilità sul form AgID** e informazioni su come **contattare** l’amministrazione.
-
-Potrebbe anche contenere riferimenti alle pagine social dell’amministrazione.
-
-Le composizioni mostrate sfruttano le classi di bootstrap-italia affiancate ai web components forniti dal kit.
-<div class="callout callout-primary"><div class="callout-inner"><div class="callout-title"><span class="text">Stili</span></div>
-<p>In caso non si stia utilizzando il bundle unico, assicurarsi di avere importato tutti i fogli di stile necessari da \`bootstrap-italia\`.</p></div></div>
-
-        `.trim(),
-      },
-    },
-  },
+  tags: ['documentation'],
 };
 
 export default meta;

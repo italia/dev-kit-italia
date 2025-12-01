@@ -6,6 +6,18 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/accordion.component').then((c) => c.AccordionComponent),
   },
   {
+    path: 'affix',
+    loadComponent: () => import('./pages/affix.component').then((c) => c.AffixComponent),
+  },
+  {
+    path: 'avatar',
+    loadComponent: () => import('./pages/avatar.component').then((c) => c.AvatarComponent),
+  },
+  {
+    path: 'badge',
+    loadComponent: () => import('./pages/badge.component').then((c) => c.BadgeComponent),
+  },
+  {
     path: 'button',
     loadComponent: () => import('./pages/button.component').then((c) => c.ButtonComponent),
   },
@@ -16,6 +28,10 @@ export const routes: Routes = [
   {
     path: 'chip',
     loadComponent: () => import('./pages/chip.component').then((c) => c.ChipComponent),
+  },
+  {
+    path: 'collapse',
+    loadComponent: () => import('./pages/collapse.component').then((c) => c.CollapseComponent),
   },
   {
     path: 'dropdown',
@@ -38,24 +54,24 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/overlay.component').then((c) => c.OverlayComponent),
   },
   {
+    path: 'radio',
+    loadComponent: () =>
+      import('./pages/radio-examples.component').then((c) => c.RadioExamplesComponent),
+  },
+  {
     path: 'section',
     loadComponent: () => import('./pages/section.component').then((c) => c.SectionComponent),
+  },
+  {
+    path: 'skiplinks',
+    loadComponent: () => import('./pages/skiplinks.component').then((c) => c.SkiplinksComponent),
   },
   {
     path: 'sticky',
     loadComponent: () => import('./pages/sticky.component').then((c) => c.StickyComponent),
   },
   {
-    path: 'radio',
-    loadComponent: () =>
-      import('./pages/radio-examples.component').then((c) => c.RadioExamplesComponent),
-  },
-  {
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
-  },
-  {
-    path: 'avatar',
-    loadComponent: () => import('./pages/avatar.component').then((c) => c.AvatarComponent),
   },
 ];

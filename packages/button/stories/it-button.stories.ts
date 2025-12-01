@@ -13,7 +13,6 @@ interface ButtonProps {
   block: boolean;
   icon?: boolean;
   value: string;
-  'aria-label': string;
 }
 
 // Renderizza il wc it-button di default
@@ -25,11 +24,12 @@ const renderComponent = (params: ButtonProps, defaultSlot = '') => {
       ?outline="${params.outline}"
       size="${ifDefined(params.size)}"
       ?block="${params.block}"
-      ?it-aria-disabled="${ifDefined(params.disabled ? 'true' : undefined)}"
+      ?disabled="${ifDefined(params.disabled ? 'true' : undefined)}"
       ?icon="${params.icon}"
       type="${ifDefined(params.type)}"
-      >${slot}</it-button
     >
+      ${slot}
+    </it-button>
   `;
 };
 
@@ -82,7 +82,7 @@ const renderSizeVariant = (args: ButtonProps, defaultText: string) =>
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Button',
-  tags: ['autodocs', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-button',
   args: {
     slot: 'Testo del pulsante',
@@ -94,7 +94,6 @@ const meta = {
     icon: false,
     type: 'button',
     value: '',
-    'aria-label': 'Aria label',
   },
   argTypes: {
     variant: {
@@ -116,7 +115,6 @@ const meta = {
     disabled: {
       control: 'boolean',
       type: 'boolean',
-      name: 'it-aria-disabled',
       table: { defaultValue: { summary: 'false' } },
     },
     outline: {
@@ -135,10 +133,6 @@ const meta = {
       control: 'text',
       description: 'Testo del pulsante',
     },
-    'aria-label': {
-      control: 'text',
-      description: 'Testo aria-label del pulsante',
-    },
     type: {
       control: 'select',
       description: 'Tipologia di pulsante',
@@ -147,17 +141,6 @@ const meta = {
     },
     value: {
       control: 'text',
-    },
-  },
-  parameters: {
-    docs: {
-      description: {
-        component: `
-<Description>Pulsante con etichetta di testo o icona che al click inizia un'azione o un evento.</Description>
-
-Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del design-system](https://designers.italia.it/design-system/componenti/buttons/).
-`,
-      },
     },
   },
 } satisfies Meta<ButtonProps>;
@@ -171,7 +154,7 @@ export const EsempioInterattivo: Story = {
   args: {
     variant: 'primary',
   },
-  tags: ['!autodocs', '!dev'],
+  tags: ['!dev'],
   parameters: {
     docs: {
       canvas: {
@@ -185,21 +168,34 @@ export const EsempioInterattivo: Story = {
     })}`,
 };
 
-export const PersonalizzazioneDegliStili: Story = {
-  name: 'Personalizzazione degli stili',
-  tags: ['!dev'],
-  parameters: {
-    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
-    docs: {
-      canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
-      description: {
-        story: `
-Per la personalizzazione degli stili si può usare il selettore \`::part\` passando il valore \`button\`. [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
-`,
+export const Disabilitato: Story = {
+  name: 'Stato disabilitato',
+  args: { slot: '', disabled: true },
+  argTypes: {
+    variant: {
+      table: {
+        disable: true,
+      },
+    },
+    outline: {
+      table: {
+        disable: true,
+      },
+    },
+    disabled: {
+      table: {
+        disable: true,
       },
     },
   },
-  render: () => html`<div class="hide-preview"></div>`,
+  render: (args) => html`
+    ${renderComponent({ ...args, variant: 'primary' }, 'Primary')}
+    ${renderComponent({ ...args, variant: 'secondary' }, 'Secondary')}
+    ${renderComponent({ ...args, variant: 'success' }, 'Success')}
+    ${renderComponent({ ...args, variant: 'danger' }, 'Danger')}
+    ${renderComponent({ ...args, variant: 'warning' }, 'Warning')}
+    ${renderComponent({ ...args, variant: 'link' }, 'Pulsante link')}
+  `,
 };
 
 export const VariantiColore: Story = {
@@ -219,29 +215,6 @@ export const VariantiColore: Story = {
     disabled: {
       table: {
         disable: true,
-      },
-    },
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Gli stili definiti da Bootstrap Italia utilizzano un naming consistente con Bootstrap, con alcune personalizzazioni.
-
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>
-Le classi \`.btn\` e \`.btn-\` conferiscono agli elementi html l’aspetto visivo di un pulsante. Anche elementi \`<a>\` o \`<span>\` possono subire questa trasformazione provocando discrepanza tra ciò che si rappresenta e la funzione semantica dell’elemento.
-<br/>
-Questo può provocare complesse problematiche di accessibilità.
-<br/><br/>
-Dove il click sul pulsante non genera un cambio di pagina utilizzare esclusivamente il componente \`<it-button>\`.
-<br/><br/>
-Qualora non fosse possibile, è necessario applicare in modo appropriato l’attributo \`role="button"\` per trasmetterne lo scopo alle tecnologie assistive.</p></div></div>
-
-#### Note sullo stato disabilitato
-I pulsanti disabilitati dovranno avere l'attributo \`aria-disabled="true"\` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo \`aria-disabled\` è consigliato usare anche l'attributo \`aria-describedby\` (o un elemento all'interno del bottone con classe \`.sr-only\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
-<br/> È sconsigliato l'uso dell'attributo \`disabled\`.
-`,
       },
     },
   },
@@ -272,17 +245,6 @@ export const VariantiDimensione: Story = {
     block: {
       table: {
         disable: true,
-      },
-    },
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per ottenere pulsanti di dimensione più grande o più piccola, è sufficiente utilizzare l'attributo \`size\` con i valori \`lg\` o \`xs\`.
-
-Utilizzando invece l'attributo \`block\` si ottengono pulsanti che prendono tutta l’ampiezza a loro disposizione, a seconda delle dimensioni del loro contenitore.
-`,
       },
     },
   },
@@ -401,17 +363,6 @@ export const ConIcona: Story = {
     docs: {
       description: {
         story: `
-È necessario passare l'attributo \`icon="true"\` (o \`icon=""\`, o semplicemente \`icon\`) a \`<it-button>\` per applicargli gli stili corretti.
-
-L’icona può essere posizionata a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.
-<br/><br/>
-#### Dimensione dell'icona
-- Nei pulsanti di dimensione \`lg\` o default (\`sm\`), è necessario passare l'attributo \`size="sm"\` all'icona.
-- Nei pulsanti di dimensione \`xs\`, è necessario passare l'attributo \`size="xs"\` all'icona .
-
-#### Allineamento e spaziatura dell’icona
-Nel caso si utilizzi un’icona all’interno di un elemento \`<it-button>\` è necessario inserire il testo del pulsante all’interno di un tag \`<span/>\` al fine di garantire un perfetto allineamento ed una corretta spaziatura tra l’icona e lo stesso testo.
-
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>
 Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba essere un elemento decorativo, è necessario utilizzare correttamente gli attributi \`label\`, \`role\` e \`aria-hidden\` sul componente \`<it-icon>\`. Per maggiori dettagli visita la [guida dedicata](?path=/docs/componenti-icon--documentazione) al componente \`<it-icon>\`.</p></div></div>
@@ -428,10 +379,10 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
-        <it-icon name="it-star-full" color="white" size="sm"></it-icon>
+        <it-icon name="it-star-full" color="inverse" size="sm"></it-icon>
         <span>${slot ?? 'Pulsante Large con icona'}</span>
       </it-button>
 
@@ -440,10 +391,10 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
-        <it-icon name="it-star-full" color="white" size="sm"></it-icon> <span>${slot ?? 'Pulsante con icona'}</span>
+        <it-icon name="it-star-full" color="inverse" size="sm"></it-icon> <span>${slot ?? 'Pulsante con icona'}</span>
       </it-button>
 
       <it-button
@@ -452,10 +403,10 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
-        <it-icon name="it-star-full" color="white" size="xs"></it-icon>
+        <it-icon name="it-star-full" color="inverse" size="xs"></it-icon>
         <span>${slot ?? 'Pulsante Extra Small con icona'}</span>
       </it-button>
 
@@ -465,7 +416,7 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <it-icon name="it-star-full" color="primary" size="xs"></it-icon>
@@ -495,21 +446,6 @@ export const ConIconaCerchiata: Story = {
       },
     },
   },
-  parameters: {
-    docs: {
-      description: {
-        story: `
-È necessario passare l'attributo \`icon="true"\` (o \`icon=""\`, o semplicemente \`icon\`) a \`<it-button>\` per applicargli gli stili corretti.
-
-L’icona può essere posizionata a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.
-<br/>Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` per poter avere il contorno circolare.
-<br/><br/>
-#### Dimensione dell'icona
-La dimensione dell'icona deve sempre essere \`xs\`, quindi \`<it-icon>\` deve avere sempre l'attributo \`size="xs"\`.
-`,
-      },
-    },
-  },
   render: (params) => {
     const slot = params.slot?.length > 0 ? params.slot : null;
     return html`
@@ -520,7 +456,7 @@ La dimensione dell'icona deve sempre essere \`xs\`, quindi \`<it-icon>\` deve av
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon">
@@ -535,7 +471,7 @@ La dimensione dell'icona deve sempre essere \`xs\`, quindi \`<it-icon>\` deve av
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon" size="sm">
@@ -550,7 +486,7 @@ La dimensione dell'icona deve sempre essere \`xs\`, quindi \`<it-icon>\` deve av
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon">
@@ -566,7 +502,7 @@ La dimensione dell'icona deve sempre essere \`xs\`, quindi \`<it-icon>\` deve av
         icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?it-aria-disabled="${params.disabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon">

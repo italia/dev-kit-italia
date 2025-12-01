@@ -1,0 +1,134 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-dropdown.stories';
+
+<Meta of={Stories} />
+
+<Title of={Stories} />
+
+<description>Elenco di azioni o link a comparsa per risparmiare spazio e organizzare opzioni in modo compatto e coerente</description>
+
+## Cosa fa
+
+Il componente dropdown, chiamato anche menu a tendina, offre una navigazione veloce al contenuto desiderato, permettendo agli utenti di risparmiare tempo e accedere direttamente a specifici contenuti.
+È utile quindi per creare menu contestuali tramite un elenco di link o azioni.
+
+[Approfondisci quando e come usare il componente Dropdown](https://designers.italia.it/design-system/componenti/dropdown/)
+
+### Alternative a questo componente
+
+Select, Autocomplete e [Radio button](/docs/componenti-form-radio--documentazione):
+per permettere all'utente di esprimere scelte tra più elementi in un modulo ([Form](/docs/componenti-form--documentazione)) usa i componenti dedicati.
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.Base} />
+<Controls of={Stories.Base} />
+
+## Informazioni generali
+
+Per la creazione di un Dropdown usa il componente `<it-dropdown>` e inserisci al suo interno uno o più `<it-dropdown-item>`.
+Dovrai specificare l'etichetta del menu tramite l'attributo `label`.
+Puoi specificare una variante tramite l'attributo `variant`, questa verrà applicata al pulsante di attivazione del menu.
+
+## Accessibilità
+
+Lo standard [WAI ARIA](https://www.w3.org/TR/wai-aria/) definisce un widget con proprietà [`role="menu"`](https://www.w3.org/TR/wai-aria/#menu), specifica per i menu applicativi con link o azioni.
+
+Questi menu possono contenere solo voci di menu, voci di menu di caselle di controllo, voci di menu dei pulsanti di opzione, gruppi di pulsanti di opzione e sottomenu.
+
+I dropdown di **Dev Kit Italia** sono progettati per essere invece generici e applicabili a una varietà di situazioni.
+Per questo motivo, il componente `it-dropdown` ha come ruolo predefinito il ruolo `menu` e gestisce automaticamente il ruolo degli elementi interni, ma puoi modificare il ruolo del Dropdown generato da questo componente ad una semplice lista impostando l'attributo `it-role="list"`.
+
+Questo componente comprende di base il supporto per la maggior parte delle interazioni standard del menu della tastiera, come la possibilità di spostarsi tra i singoli elementi `it-dropdown-item` usando i tasti freccia, e chiude il menu con il tasto ESC.
+
+Infine, dovrai inserire un'etichetta per il pulsante di attivazione del menu tramite l'attributo `label`, che verrà letta dagli screen reader.
+In alternativa, puoi omettere l'attributo `label` e aggiungere un attributo `it-aria-label` al componente `<it-dropdown>`.
+
+## Varianti
+
+Ovviamente sono disponibili [tutte le varianti](/docs/componenti-button--documentazione#varianti-di-colore) già presenti per i pulsanti: `primary`, `secondary`, `success`, `danger` (oltre a `warning`, `light`, `link`). Qui un esempio con alcune di esse.
+
+<Canvas of={Stories.Varianti} />
+
+## Posizionamento
+
+Per aprire le voci di menu in direzioni diverse, usa l'attributo `alignment` con i valori:
+
+- `top`
+- `right`
+- `bottom`
+- `left`
+- `top-start`
+- `top-end`
+- `right-start`
+- `right-end`
+- `bottom-start`
+- `bottom-end`
+- `left-start`
+- `left-end`
+
+I valori `top`, `right`, `bottom`, `left` aprono il menu in posizione centrata rispetto al pulsante;
+quelli con `-start` / `-end` permettono un allineamento più preciso.
+
+<Canvas of={Stories.Posizionamento} />
+
+## Menu disabilitato
+
+Aggiungi l'attributo `disabled` sul tag `<it-dropdown>` per disabilitare completamente il menu.
+
+<Canvas of={Stories.MenuDisabilitato} />
+
+## Dropdown menu
+
+Puoi personalizzare le voci del menu che viene aperto al click.
+
+### Menu voci attive
+
+Aggiungi l'attributo `active` agli elementi da mostrare come attivi. Per accessibilità viene aggiunto automaticamente il testo nascosto "attivo" in coda al contenuto.
+
+<Canvas of={Stories.MenuVociAttive} />
+
+### Menu voci disabilitate
+
+Per rendere non selezionabili alcune voci aggiungi `disabled` agli elementi `<it-dropdown-item>` interessati.
+
+<Canvas of={Stories.MenuVociDisabilitate} />
+
+### Menu con intestazioni e separatori
+
+Puoi inserire un'intestazione usando un elemento con `slot="header"` e dividere le sezioni con un elemento `<it-dropdown-item separator>`.
+
+<Canvas of={Stories.MenuIntestazioniSeparatori} />
+
+### Menu con voci grandi
+
+Usa l'attributo `large` su una voce per aumentarne la dimensione.
+
+<Canvas of={Stories.MenuVociGrandi} />
+
+### Menu a tutta larghezza
+
+Usa l'attributo `full-width` per espandere il menu alla larghezza del contenitore.
+Le voci vengono disposte orizzontalmente se lo spazio lo consente.
+
+<Canvas of={Stories.MenuATuttaLarghezza} />
+
+### Menu con icona a destra
+
+Usa lo slot `suffix` per aggiungere agli elementi del menu un'icona illustrativa allineata a destra.
+
+<Canvas of={Stories.MenuIconaDestra} />
+
+### Menu con icona a sinistra
+
+Usa lo slot `prefix` per aggiungere agli elementi del menu un'icona illustrativa allineata a sinistra.
+
+<Canvas of={Stories.MenuIconaSinistra} />
+
+### Menu dark
+
+Aggiungi l'attributo `dark` al dropdown per ottenere la versione scura con colori primari invertiti.
+
+<Canvas of={Stories.MenuScuro} />

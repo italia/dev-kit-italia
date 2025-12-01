@@ -1,5 +1,5 @@
 <h1>it-sticky</h1>
-<div style="height: 4000px; background: linear-gradient(#eee, #ccc); padding: 20px;">
+<div style="background: linear-gradient(#eee, #ccc); padding: 20px; min-height: 100vh;">
   
   <section>
     <h2>Esempio componente it-sticky</h2>
@@ -43,19 +43,19 @@
       <div>Elemento sticky stackable</div>
     </it-sticky>
     
-    <div style="height: 500px;"></div>
+    <div style="height: 24px;"></div>
     
     <it-sticky class="bg-success p-2 text-white w-100" stackable>
       <div>Elemento sticky stackable</div>
     </it-sticky>
     
-    <div style="height: 500px;"></div>
+    <div style="height: 24px;"></div>
     
     <it-sticky class="bg-danger p-2 text-white w-100" stackable>
       <div>Elemento sticky stackable</div>
     </it-sticky>
     
-    <div style="height: 500px;"></div>
+    <div style="height: 24px;"></div>
     
     <it-sticky class="bg-warning p-2 text-white w-100" stackable padding-top="50">
       <div>Elemento sticky stackable con top offset 50px</div>
@@ -102,7 +102,9 @@
     </div>
   </section>
 
-</div>
+ </div>
+
+<app-footer></app-footer>
 
 <style>
 .resizable-content {

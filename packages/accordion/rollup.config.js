@@ -5,7 +5,7 @@ import { litScss } from 'rollup-plugin-scss-lit';
  * @type {import('rollup').RollupOptions}
  */
 export default {
-  input: ['src/index.ts', 'src/it-accordion.ts', 'src/it-accordion-item.ts', 'src/it-collapse.ts'],
+  input: ['src/index.ts', 'src/it-accordion.ts', 'src/it-accordion-item.ts'],
   output: {
     dir: 'dist',
     sourcemap: true,
@@ -21,6 +21,7 @@ export default {
       minify: process.env.NODE_ENV === 'production',
       options: {
         loadPaths: ['node_modules'],
+        quietDeps: true,
         silenceDeprecations: ['import'],
       },
     }),

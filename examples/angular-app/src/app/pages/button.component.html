@@ -7,13 +7,13 @@
     <div class="flex">
       <it-button variant="primary" size="sm" type="button"> Primary </it-button>
 
-      <it-button variant="primary" size="sm" aria-disabled="true" type="button"> Primary disabled </it-button>
+      <it-button variant="primary" size="sm" disabled type="button"> Primary disabled </it-button>
     </div>
 
     <div class="flex">
       <it-button variant="primary" outline size="sm" type="button"> Primary outline </it-button>
 
-      <it-button variant="primary" outline size="sm" aria-disabled="true" type="button">
+      <it-button variant="primary" outline size="sm" disabled type="button">
         Primary outline disabled
       </it-button>
     </div>
@@ -22,13 +22,13 @@
     <div class="flex">
       <it-button variant="secondary" size="sm" type="button"> Secondary </it-button>
 
-      <it-button variant="secondary" size="sm" aria-disabled="true" type="button"> Secondary disabled </it-button>
+      <it-button variant="secondary" size="sm" disabled type="button"> Secondary disabled </it-button>
     </div>
 
     <div class="flex">
       <it-button variant="secondary" outline size="sm" type="button"> Secondary outline </it-button>
 
-      <it-button variant="secondary" outline size="sm" aria-disabled="true" type="button">
+      <it-button variant="secondary" outline size="sm" disabled type="button">
         Secondary outline disabled
       </it-button>
     </div>
@@ -37,13 +37,13 @@
     <div class="flex">
       <it-button variant="success" size="sm" type="button"> Success </it-button>
 
-      <it-button variant="success" size="sm" aria-disabled="true" type="button"> Success disabled </it-button>
+      <it-button variant="success" size="sm" disabled type="button"> Success disabled </it-button>
     </div>
 
     <div class="flex">
       <it-button variant="success" outline size="sm" type="button"> Success outline </it-button>
 
-      <it-button variant="success" outline size="sm" aria-disabled="true" type="button">
+      <it-button variant="success" outline size="sm" disabled type="button">
         Success outline disabled
       </it-button>
     </div>
@@ -52,13 +52,13 @@
     <div class="flex">
       <it-button variant="danger" size="sm" type="button"> Danger </it-button>
 
-      <it-button variant="danger" size="sm" aria-disabled="true" type="button"> Danger disabled </it-button>
+      <it-button variant="danger" size="sm" disabled type="button"> Danger disabled </it-button>
     </div>
 
     <div class="flex">
       <it-button variant="danger" outline size="sm" type="button"> Danger outline </it-button>
 
-      <it-button variant="danger" outline size="sm" aria-disabled="true" type="button">
+      <it-button variant="danger" outline size="sm" disabled type="button">
         Danger outline disabled
       </it-button>
     </div>
@@ -67,13 +67,13 @@
     <div class="flex">
       <it-button variant="warning" size="sm" type="button"> Warning </it-button>
 
-      <it-button variant="warning" size="sm" aria-disabled="true" type="button"> Warning disabled </it-button>
+      <it-button variant="warning" size="sm" disabled type="button"> Warning disabled </it-button>
     </div>
 
     <div class="flex">
       <it-button variant="warning" outline size="sm" type="button"> Warning outline </it-button>
 
-      <it-button variant="warning" outline size="sm" aria-disabled="true" type="button">
+      <it-button variant="warning" outline size="sm" disabled type="button">
         Warning outline disabled
       </it-button>
     </div>
@@ -82,7 +82,7 @@
     <div class="flex">
       <it-button variant="link" size="sm" type="button"> Link </it-button>
 
-      <it-button variant="link" size="sm" aria-disabled="true" type="button"> Link disabled </it-button>
+      <it-button variant="link" size="sm" disabled type="button"> Link disabled </it-button>
     </div>
   </div>
 </section>
@@ -127,13 +127,13 @@
       <div class="flex">
         <it-button variant="primary" size="sm" type="button"> Primary </it-button>
 
-        <it-button variant="primary" size="sm" aria-disabled="true" type="button"> Primary disabled </it-button>
+        <it-button variant="primary" size="sm" disabled type="button"> Primary disabled </it-button>
       </div>
 
       <div class="flex">
         <it-button variant="primary" outline size="sm" type="button"> Primary outline </it-button>
 
-        <it-button variant="primary" outline size="sm" aria-disabled="true" type="button">
+        <it-button variant="primary" outline size="sm" disabled type="button">
           Primary outline disabled
         </it-button>
       </div>
@@ -142,13 +142,13 @@
       <div class="flex">
         <it-button variant="secondary" size="sm" type="button"> Secondary </it-button>
 
-        <it-button variant="secondary" size="sm" aria-disabled="true" type="button"> Secondary disabled </it-button>
+        <it-button variant="secondary" size="sm" disabled type="button"> Secondary disabled </it-button>
       </div>
 
       <div class="flex">
         <it-button variant="secondary" outline size="sm" type="button"> Secondary outline </it-button>
 
-        <it-button variant="secondary" outline size="sm" aria-disabled="true" type="button">
+        <it-button variant="secondary" outline size="sm" disabled type="button">
           Secondary outline disabled
         </it-button>
       </div>
@@ -157,7 +157,7 @@
       <div class="flex">
         <it-button variant="link" size="sm" type="button"> Link </it-button>
 
-        <it-button variant="link" size="sm" aria-disabled="true" type="button"> Link disabled </it-button>
+        <it-button variant="link" size="sm" disabled type="button"> Link disabled </it-button>
       </div>
     </div>
   </div>
@@ -166,17 +166,17 @@
   <h2>Con icona</h2>
   <div class="flex">
     <it-button variant="success" size="lg" icon={true} type="button">
-      <it-icon name="it-star-full" color="white" size="sm"></it-icon>
+      <it-icon name="it-star-full" color="inverse" size="sm"></it-icon>
       <span>Testo del pulsante</span>
     </it-button>
 
     <it-button variant="primary" icon={true} type="button">
-      <it-icon name="it-star-full" color="white" size="sm"></it-icon>
+      <it-icon name="it-star-full" color="inverse" size="sm"></it-icon>
       <span>Testo del pulsante</span>
     </it-button>
 
     <it-button variant="danger" size="xs" icon={true} type="button">
-      <it-icon name="it-star-full" color="white" size="xs"></it-icon>
+      <it-icon name="it-star-full" color="inverse" size="xs"></it-icon>
       <span>Testo del pulsante</span>
     </it-button>
 
