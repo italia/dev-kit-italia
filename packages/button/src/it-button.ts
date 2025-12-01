@@ -31,7 +31,7 @@ export class ItButton extends BaseComponent {
 
   @property() internals = this.attachInternals();
 
-  @property({ type: Boolean, reflect: true, attribute: 'it-aria-disabled' }) disabled?: boolean;
+  @property({ type: Boolean, reflect: true }) disabled?: boolean;
 
   @property({ type: Boolean, reflect: true, attribute: 'it-aria-expanded' }) expanded?: boolean;
 
@@ -81,7 +81,11 @@ export class ItButton extends BaseComponent {
   private _onKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      this._nativeButton?.click();
+      if (!this.disabled) {
+        this._nativeButton?.click();
+      } else {
+        e.stopPropagation();
+      }
     }
   };
 
@@ -122,9 +126,9 @@ export class ItButton extends BaseComponent {
         class="${classes}"
         @click="${this.type === 'submit' ? this.surfaceSubmitEvent : undefined}"
         .value="${ifDefined(this.value ? this.value : undefined)}"
+        aria-disabled="${ifDefined(this.disabled ? this.disabled : undefined)}"
         ${setAttributes(this._ariaAttributes)}
         aria-expanded="${ifDefined(this.expanded !== undefined ? this.expanded : undefined)}"
-        aria-disabled="${ifDefined(this.disabled ? this.disabled : undefined)}"
       >
         <slot></slot>
       </button>

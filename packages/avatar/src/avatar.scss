@@ -37,6 +37,11 @@ slot[name='extra-text']::slotted(*) {
   }
 }
 
+:host([type='text']) {
+  cursor: default;
+  pointer-events: none;
+}
+
 it-icon::part(icon) {
   width: var(--bs-avatar-icon-size);
   height: var(--bs-avatar-icon-size);
