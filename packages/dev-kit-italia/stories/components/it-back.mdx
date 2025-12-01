@@ -9,7 +9,7 @@ import * as BackStories from './it-back.stories';
 
 ## Cosa fa
 
-Il componente Back guida l'utente a tornare alla pagina precedente da cui si proviene, utile nel caso di processi e moduli da compilare a più step, come può essere la compilazione di un questionario.
+Il componente "Torna indietro" guida l'utente a tornare alla pagina precedente da cui si proviene, utile nel caso di processi e moduli da compilare a più step, come può essere la compilazione di un questionario.
 Puoi utilizzarlo come link o pulsante.
 
 Può essere molto utile ad orientarsi nel contesto di un modulo (Form) composto da diversi passaggi.
@@ -50,7 +50,7 @@ Assicurati di includere un testo alternativo per gli screen reader utilizzando u
 
 ## Link
 
-Quando si utilizza un link (tag `<a>`) è necessario aggiungere un valore all'attributo href perché il link sia accessibile e navigabile via tastiera.
+Quando si utilizza un link (tag `<a>`) è necessario aggiungere un valore all'attributo `href` perché il link sia accessibile e navigabile via tastiera.
 
 Utilizza la classe `.go-back` per applicare lo stile appropriato.
 
@@ -58,14 +58,13 @@ Utilizza la classe `.go-back` per applicare lo stile appropriato.
 
 ## Pulsante
 
-Nel caso dell’utilizzo di un pulsante l’accorgimento sopraindicato non è necessario.
 
-Utilizza la classe `.go-back` per applicare lo stile appropriato.
+Applica la classe `.go-back` al componente `<it-button>` per applicare lo stile appropriato.
 
 <Canvas of={BackStories.Pulsante} />
 
 ## Pulsante con sola icona
 
-Puoi creare pulsanti senza testo dotati di sola icona avendo cura di includere il testo alternativo per gli screen reader in un tag `<span>` con classe `.visually-hidden`.
+Puoi creare pulsanti senza testo dotati di sola icona, avendo cura di includere il testo alternativo per gli screen reader in un tag `<span>` con classe `.visually-hidden`.
 
 <Canvas of={BackStories.PulsanteSolaIcona} />
