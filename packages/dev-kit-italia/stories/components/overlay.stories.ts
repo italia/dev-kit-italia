@@ -52,21 +52,21 @@ Il colore predefinito dell’Overlay Panel corrisponde al colore \`primary\`.
         <div class="col-12 col-md-6">
           <p><strong>Overlay ad altezza fissa</strong></p>
           <figure class="overlay-wrapper">
-            <img src="https://picsum.photos/240/160?image=1056" alt="descrizione immagine" class="img-fluid" />
+            <img src="https://picsum.photos/240/160?image=1056" alt="descrizione immagine" class="img-fluid w-100" />
             <figcaption class="overlay-panel"><span>Label immagine</span></figcaption>
           </figure>
         </div>
         <div class="col-12 col-md-6">
           <p><strong>Overlay a tutta altezza</strong></p>
           <figure class="overlay-wrapper">
-            <img src="https://picsum.photos/240/160?image=1056" alt="descrizione immagine" class="img-fluid" />
+            <img src="https://picsum.photos/240/160?image=1056" alt="descrizione immagine" class="img-fluid w-100" />
             <figcaption class="overlay-panel overlay-panel-fullheight"><span>Label immagine</span></figcaption>
           </figure>
         </div>
         <div class="col-12">
           <p><strong>Esempio con differenti proporzioni</strong></p>
-          <figure class="overlay-wrapper">
-            <img src="https://picsum.photos/800/300?image=1055" alt="descrizione immagine" class="img-fluid" />
+          <figure class="overlay-wrapper w-100">
+            <img src="https://picsum.photos/800/300?image=1055" alt="descrizione immagine" class="img-fluid w-100" />
             <figcaption class="overlay-panel"><span>Label immagine</span></figcaption>
           </figure>
         </div>
@@ -92,14 +92,14 @@ Aggiungendo all’Overlay Panel la classe \`.overlay-black\` si ottiene un overl
         <div class="col-12 col-md-6">
           <p><strong>Overlay ad altezza fissa</strong></p>
           <figure class="overlay-wrapper">
-            <img src="https://picsum.photos/240/160?image=1056" alt="descrizione immagine" class="img-fluid" />
+            <img src="https://picsum.photos/240/160?image=1056" alt="descrizione immagine" class="img-fluid w-100" />
             <figcaption class="overlay-panel overlay-black"><span>Label immagine</span></figcaption>
           </figure>
         </div>
         <div class="col-12 col-md-6">
           <p><strong>Overlay a tutta altezza</strong></p>
           <figure class="overlay-wrapper">
-            <img src="https://picsum.photos/240/160?image=1056" alt="descrizione immagine" class="img-fluid" />
+            <img src="https://picsum.photos/240/160?image=1056" alt="descrizione immagine" class="img-fluid w-100" />
             <figcaption class="overlay-panel overlay-panel-fullheight overlay-black">
               <span>Label immagine</span>
             </figcaption>
@@ -107,8 +107,8 @@ Aggiungendo all’Overlay Panel la classe \`.overlay-black\` si ottiene un overl
         </div>
         <div class="col-12">
           <p><strong>Esempio con differenti proporzioni</strong></p>
-          <figure class="overlay-wrapper">
-            <img src="https://picsum.photos/800/300?image=1055" alt="descrizione immagine" class="img-fluid" />
+          <figure class="overlay-wrapper w-100">
+            <img src="https://picsum.photos/800/300?image=1055" alt="descrizione immagine" class="img-fluid w-100" />
             <figcaption class="overlay-panel overlay-black"><span>Label immagine</span></figcaption>
           </figure>
         </div>

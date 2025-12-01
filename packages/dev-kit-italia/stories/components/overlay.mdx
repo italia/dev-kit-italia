@@ -33,7 +33,16 @@ Aggiungendo all’Overlay Panel la classe `.overlay-panel-fullheight` questo cop
     </div>
     <p>
       In caso non si stia utilizzando il bundle unico, assicurarsi di avere importato tutti i fogli di stile necessari
-      da `bootstrap-italia`.
+      da `bootstrap-italia`:
+
+
+      ```css
+      @import 'bootstrap-italia/src/scss/base/functions';
+      @import 'bootstrap-italia/src/scss/base/variables';
+      @import 'bootstrap-italia/src/scss/base/mixins';
+      @import 'bootstrap-italia/src/scss/components/_overlay-panel.scss';
+      ```
+
     </p>
   </div>
 </div>
