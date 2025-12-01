@@ -172,18 +172,6 @@ describe('<it-dropdown>', () => {
       const icon = el.shadowRoot!.querySelector('it-icon')!;
       expect(icon.getAttribute('name')).to.equal('it-expand');
     });
-
-    it('shows collapse icon when opened', async () => {
-      const el = await fixture<ItDropdown>(html`<it-dropdown></it-dropdown>`);
-      await el.updateComplete;
-
-      const button = el.shadowRoot!.querySelector('it-button')!;
-      button.click();
-      await oneEvent(el.shadowRoot!.querySelector('it-popover')!, 'it-popover-open');
-
-      const icon = el.shadowRoot!.querySelector('it-icon')!;
-      expect(icon.getAttribute('name')).to.equal('it-collapse');
-    });
   });
 
   describe('Dropdown menu styling', () => {

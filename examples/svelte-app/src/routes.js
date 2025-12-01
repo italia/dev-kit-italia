@@ -1,6 +1,8 @@
 import Accordion from './pages/Accordion.svelte';
 import Avatar from './pages/Avatar.svelte';
 import Breadcrumbs from './pages/Breadcrumbs.svelte';
+import Affix from './pages/Affix.svelte';
+import Badge from './pages/Badge.svelte';
 import Button from './pages/Button.svelte';
 import Checkbox from './pages/Checkbox.svelte';
 import Chip from './pages/Chip.svelte';
@@ -11,12 +13,15 @@ import Icon from './pages/Icon.svelte';
 import Input from './pages/Input.svelte';
 import Radio from './pages/Radio.svelte';
 import Section from './pages/Section.svelte';
+import Skiplinks from './pages/Skiplinks.svelte';
 import Sticky from './pages/Sticky.svelte';
 import Video from './pages/Video.svelte';
 
 export const AppRoutes = [
   { path: '/accordion', element: Accordion, title: 'Accordion' },
+  { path: '/affix', element: Affix, title: 'Affix' },
   { path: '/avatar', element: Avatar, title: 'Avatar' },
+  { path: '/badge', element: Badge, title: 'Badge' },
   { path: '/breadcrumbs', element: Breadcrumbs, title: 'Breadcrumbs' },
   { path: '/button', element: Button, title: 'Button' },
   { path: '/checkbox', element: Checkbox, title: 'Checkbox' },
@@ -28,6 +33,7 @@ export const AppRoutes = [
   { path: '/input', element: Input, title: 'Input' },
   { path: '/radio', element: Radio, title: 'Radio' },
   { path: '/section', element: Section, title: 'Section' },
+  { path: '/skiplinks', element: Skiplinks, title: 'Skiplinks' },
   { path: '/sticky', element: Sticky, title: 'Sticky' },
   { path: '/video', element: Video, title: 'Video' },
 ];

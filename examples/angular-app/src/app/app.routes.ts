@@ -6,6 +6,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/accordion.component').then((c) => c.AccordionComponent),
   },
   {
+    path: 'affix',
+    loadComponent: () => import('./pages/affix.component').then((c) => c.AffixComponent),
+  },
+  {
     path: 'avatar',
     loadComponent: () => import('./pages/avatar.component').then((c) => c.AvatarComponent),
   },
@@ -13,6 +17,10 @@ export const routes: Routes = [
     path: 'breadcrumbs',
     loadComponent: () =>
       import('./pages/breadcrumbs.component').then((c) => c.BreadcrumbsComponent),
+  },
+  {
+    path: 'badge',
+    loadComponent: () => import('./pages/badge.component').then((c) => c.BadgeComponent),
   },
   {
     path: 'button',
@@ -54,6 +62,10 @@ export const routes: Routes = [
   {
     path: 'section',
     loadComponent: () => import('./pages/section.component').then((c) => c.SectionComponent),
+  },
+  {
+    path: 'skiplinks',
+    loadComponent: () => import('./pages/skiplinks.component').then((c) => c.SkiplinksComponent),
   },
   {
     path: 'sticky',

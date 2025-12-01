@@ -3,7 +3,7 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 type DropdownProps = {
-  label: string;
+  label?: string;
   disabled?: boolean;
   alignment?:
     | 'top'
@@ -23,6 +23,7 @@ type DropdownProps = {
   'it-role'?: string;
   dark?: boolean;
   'full-width'?: boolean;
+  'it-aria-label'?: string;
 };
 type Story = StoryObj<DropdownProps>;
 
@@ -31,7 +32,7 @@ const containerStyle = 'height:200px;display:flex;align-items:flex-start;';
 const meta = {
   title: 'Componenti/Dropdown',
   component: 'it-dropdown',
-  tags: ['autodocs', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   args: {
     label: 'Apri dropdown',
     disabled: false,
@@ -41,12 +42,21 @@ const meta = {
     'it-role': undefined,
     dark: false,
     'full-width': false,
+    'it-aria-label': undefined,
   },
   argTypes: {
-    label: { control: 'text' },
-    disabled: { control: 'boolean' },
+    label: {
+      control: 'text',
+      description: 'Testo del pulsante che apre il dropdown',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disabilita il dropdown',
+      table: { defaultValue: { summary: 'false' } },
+    },
     alignment: {
       control: 'select',
+      description: 'Posizionamento del menu rispetto al pulsante',
       options: [
         'top',
         'right',
@@ -61,41 +71,50 @@ const meta = {
         'left-start',
         'left-end',
       ],
+      type: 'string',
+      table: { defaultValue: { summary: 'bottom-start' } },
     },
     variant: {
       control: 'select',
+      description: 'Variante grafica del pulsante',
       options: ['primary', 'secondary', 'success', 'danger', 'warning', 'light', 'link'],
+      type: 'string',
+      table: { defaultValue: { summary: 'primary' } },
     },
     size: {
       control: 'select',
+      description: 'Dimensione del pulsante',
       options: ['sm', 'lg'],
+      type: 'string',
+      table: {},
     },
     'it-role': {
       control: 'select',
+      description: 'Ruolo del pulsante (vedi la sezione Accessibilità)',
       options: ['menu', 'list'],
+      type: 'string',
+      table: { defaultValue: { summary: 'menu' } },
     },
-    dark: { control: 'boolean' },
-    'full-width': { control: 'boolean' },
+    dark: {
+      control: 'boolean',
+      description: 'Stile scuro per il menu dropdown',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    'full-width': {
+      control: 'boolean',
+      description: 'Imposta la larghezza del menu dropdown al 100% del contenitore',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    'it-aria-label': {
+      control: 'text',
+      description:
+        "Valore per l'attributo `aria-label` del pulsante (obbligatorio per accessibilità se `label` è vuoto)",
+      type: 'string',
+    },
   },
-  decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
   parameters: {
     docs: {
-      description: {
-        component: `
-<Description>Attiva o disattiva overlay contestuali per visualizzare liste di link ed altro ancora con questi menu a tendina.</Description>
-
-Per la creazione di un dropdown è necessario utilizzare il componente \`<it-dropdown>\` che può contenere al suo interno uno o più \`<it-dropdown-item>\`.
-È necessario specificare l'etichetta del menu tramite l'attributo \`label\`.
-È possibile specificare una variante tramite l'attributo \`variant\`, questa verrà applicata al pulsante di attivazione del menu.
-
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>Lo standard <a href="https://www.w3.org/TR/wai-aria/">WAI ARIA</a> definisce un widget con proprietà <a href="https://www.w3.org/TR/wai-aria/#menu">\`role="menu"\`</a>, specifica per i menu applicativi con link o azioni.
-Questi menu possono contenere solo voci di menu, voci di menu di caselle di controllo, voci di menu dei pulsanti di opzione, gruppi di pulsanti di opzione e sottomenu.</p>
-<p>I dropdown di **Dev Kit Italia** sono progettati per essere invece generici e applicabili a una varietà di situazioni. Per questo motivo, il componente \`it-dropdown\` ha come ruolo predefinito il ruolo \`menu\` e gestisce automaticamente il ruolo degli elementi interni, ma gli autori potranno modificare il ruolo del Dropdown generato da questo componente ad una semplice lista impostando l'attributo \`it-role="list"\`.</p>
-<p>Questo componente comprende di base il supporto per la maggior parte delle interazioni standard del menu della tastiera, come la possibilità di spostarsi tra i singoli elementi \`it-dropdown-item\` usando i tasti freccia, e chiude il menu con il tasto ESC.</p>
-</div></div>
-`,
-      },
+      source: { excludeDecorators: true },
     },
   },
 } satisfies Meta<DropdownProps>;
@@ -122,121 +141,78 @@ export const Base: Story = {
       it-role=${ifDefined(args['it-role'])}
       ?dark=${args.dark}
       ?full-width=${args['full-width']}
+      it-aria-label=${ifDefined(args['it-aria-label'])}
     >
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item href="#">Azione 2</it-dropdown-item>
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
   `,
-  parameters: {
-    ...meta.parameters,
-    docs: {
-      source: { excludeDecorators: true },
-      canvas: { sourceState: 'shown' },
-    },
-  },
   tags: ['!autodocs', '!dev'],
+  decorators: [(Story) => html`<div style="height:200px">${Story()}</div>`],
 };
 
 export const Varianti: Story = {
-  name: 'Dropdown button varianti',
   render: () => html`
-    <it-dropdown label="Primario" variant="primary">
+    <it-dropdown label="Apri dropdown" variant="primary">
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item href="#">Azione 2</it-dropdown-item>
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
 
-    <it-dropdown label="Secondario" variant="secondary">
+    <it-dropdown label="Apri dropdown" variant="secondary">
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item href="#">Azione 2</it-dropdown-item>
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
 
-    <it-dropdown label="Success" variant="success">
+    <it-dropdown label="Apri dropdown" variant="success">
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item href="#">Azione 2</it-dropdown-item>
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
 
-    <it-dropdown label="Danger" variant="danger">
+    <it-dropdown label="Apri dropdown" variant="danger">
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item href="#">Azione 2</it-dropdown-item>
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
   `,
-  decorators: [(Story) => html`<div style="${containerStyle}gap:0.5rem;flex-wrap:wrap;display:flex">${Story()}</div>`],
+  decorators: [(Story) => html`<div style="${containerStyle}gap:0.5rem;flex-wrap:wrap">${Story()}</div>`],
   argTypes: { ...disabledControls() },
-  parameters: {
-    ...meta.parameters,
-    docs: {
-      source: { excludeDecorators: true },
-      description: {
-        story:
-          'Ovviamente sono disponibili tutte le varianti già disponibili per i pulsanti. Di seguito, un esempio di utilizzo con le varianti `primary`, `secondary`, `success` e `danger`.',
-      },
-    },
-  },
 };
 
-export const Direzioni: Story = {
+export const Posizionamento: Story = {
   render: () => html`
-    <it-dropdown label="Giù" alignment="bottom-start">
+    <it-dropdown label="Apri dropdown" alignment="bottom-start" style="grid-column:2">
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item href="#">Azione 2</it-dropdown-item>
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
 
-    <it-dropdown label="Su" alignment="top-start">
+    <it-dropdown label="Apri dropup" alignment="top-start" style="grid-row:3;grid-column:2">
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item href="#">Azione 2</it-dropdown-item>
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
 
-    <it-dropdown label="Sinistra" alignment="left">
+    <it-dropdown label="Apri dropstart" alignment="left" style="grid-row:2;grid-column:3">
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item href="#">Azione 2</it-dropdown-item>
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
 
-    <it-dropdown label="Destra" alignment="right">
+    <it-dropdown label="Apri dropend" alignment="right" style="grid-row:2;grid-column:1">
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item href="#">Azione 2</it-dropdown-item>
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
   `,
-  decorators: [
-    (Story) =>
-      html`<div
-        style="${containerStyle}gap:2rem;flex-wrap:wrap;align-items:space-between;justify-content:center;flex-direction:column;"
-      >
-        ${Story()}
-      </div>`,
-  ],
+  decorators: [(Story) => html`<div style="display:grid;gap:.5rem;grid:1fr 1fr 1fr/1fr 1fr 1fr;">${Story()}</div>`],
   argTypes: { ...disabledControls() },
-  parameters: {
-    ...meta.parameters,
-    docs: {
-      source: { excludeDecorators: true },
-      description: {
-        story: `Per aprire le voci di menu in direzioni diverse,
-è possibile utilizzare l'attributo \`alignment\` con i valori \`top\`, \`right\`,
-\`bottom\`, \`left\`, \`top-start\`, \`top-end\`, \`right-start\`, \`right-end\`,
-\`bottom-start\`, \`bottom-end\`, \`left-start\` e \`left-end\`.
-
-I valori \`top\`, \`right\`, \`bottom\` e \`left\` aprono il menu in direzioni standard,
-centrate rispetto al trigger,
-mentre i valori \`top-start\`, \`top-end\`, \`right-start\`, \`right-end\`,
-\`bottom-start\`, \`bottom-end\`, \`left-start\` e \`left-end\` permettono di specificare
-la posizione esatta del menu rispetto al trigger.
-`,
-      },
-    },
-  },
 };
 
 export const MenuVociAttive: Story = {
-  name: 'Menu con voci attive',
   render: (args) => html`
     <it-dropdown label=${args.label} variant=${args.variant}>
       <it-dropdown-item href="#" active>Attivo</it-dropdown-item>
@@ -245,20 +221,10 @@ export const MenuVociAttive: Story = {
     </it-dropdown>
   `,
   argTypes: { ...disabledControls(['label', 'variant']) },
-  parameters: {
-    ...meta.parameters,
-    docs: {
-      source: { excludeDecorators: true },
-      description: {
-        story: `Aggiungere l'attributo active agli elementi del dropdown che si vogliono mostrare come attivi.
-Per questioni di accessibilità il componente aggiungerà automaticamente <span class="visually-hidden"> attivo</span> in coda al testo degli elementi attivi.`,
-      },
-    },
-  },
+  decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
 };
 
 export const MenuDisabilitato: Story = {
-  name: 'Menu disabilitato',
   args: { disabled: true },
   render: (args) => html`
     <it-dropdown label=${args.label} ?disabled=${args.disabled} variant=${args.variant}>
@@ -268,19 +234,9 @@ export const MenuDisabilitato: Story = {
     </it-dropdown>
   `,
   argTypes: { ...disabledControls(['label', 'variant']) },
-  parameters: {
-    ...meta.parameters,
-    docs: {
-      source: { excludeDecorators: true },
-      description: {
-        story: `Aggiungere l'attributo \`disabled\` al dropdown per **disabilitarlo** completamente.`,
-      },
-    },
-  },
 };
 
 export const MenuVociDisabilitate: Story = {
-  name: 'Menu con voci disabilitate',
   render: (args) => html`
     <it-dropdown label=${args.label} variant=${args.variant}>
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
@@ -289,63 +245,35 @@ export const MenuVociDisabilitate: Story = {
     </it-dropdown>
   `,
   argTypes: { ...disabledControls(['label', 'variant']) },
-  parameters: {
-    ...meta.parameters,
-    docs: {
-      source: { excludeDecorators: true },
-      description: {
-        story: `Aggiungere l'attributo \`disabled\` agli elementi del dropdown che si vogliono mostrare come **disabilitati**.`,
-      },
-    },
-  },
+  decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
 };
 
 export const MenuIntestazioniSeparatori: Story = {
-  name: 'Menu con intestazioni e separatori',
   render: (args) => html`
-    <it-dropdown label="Item con separatore e header" variant=${args.variant}>
+    <it-dropdown label="Apri dropdown" variant=${args.variant}>
       <h4 slot="header" class="link-list-heading dropdown-header">Intestazione</h4>
-      <it-dropdown-item href="#">Prima voce</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item separator></it-dropdown-item>
-      <it-dropdown-item href="#">Dopo separatore</it-dropdown-item>
+      <it-dropdown-item href="#">Azione 2</it-dropdown-item>
     </it-dropdown>
   `,
   argTypes: { ...disabledControls(['variant']) },
-  parameters: {
-    ...meta.parameters,
-    docs: {
-      source: { excludeDecorators: true },
-      description: {
-        story: `All'interno del menu dropdown possono essere inseriti header e separatori.`,
-      },
-    },
-  },
+  decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
 };
 
 export const MenuVociGrandi: Story = {
-  name: 'Menu con voci grandi',
   render: (args) => html`
     <it-dropdown label=${args.label} variant=${args.variant}>
-      <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-      <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-      <it-dropdown-item href="#" large>Grande</it-dropdown-item>
+      <it-dropdown-item href="#" large>Azione 1</it-dropdown-item>
+      <it-dropdown-item href="#" large>Azione 2</it-dropdown-item>
+      <it-dropdown-item href="#" large>Azione 3</it-dropdown-item>
     </it-dropdown>
   `,
   argTypes: { ...disabledControls(['label', 'variant']) },
-  parameters: {
-    ...meta.parameters,
-    docs: {
-      source: { excludeDecorators: true },
-      description: {
-        story: `Per aumentare la dimensione degli elementi contenuti nel dropdown
-è sufficiente aggiungere agli stessi l'attributo \`large\`.`,
-      },
-    },
-  },
+  decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
 };
 
 export const MenuATuttaLarghezza: Story = {
-  name: 'Menu a tutta larghezza',
   args: { 'full-width': true },
   render: (args) => html`
     <it-dropdown
@@ -358,28 +286,17 @@ export const MenuATuttaLarghezza: Story = {
       ?dark=${args.dark}
       ?full-width=${args['full-width']}
       style="width: 100%;"
+      it-aria-label=${ifDefined(args['it-aria-label'])}
     >
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item href="#">Azione 2</it-dropdown-item>
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
   `,
-  decorators: [(Story) => html`<div style="${containerStyle}min-width:300px">${Story()}</div>`],
-  parameters: {
-    ...meta.parameters,
-    docs: {
-      source: { excludeDecorators: true },
-      description: {
-        story: `Per ottenere un dropdown menu largo quanto l’elemento che contiene il dropdown button
-è sufficiente aggiungere l'attributo \`full-width\`.
-I link e testi contenuti al suo interno saranno disposti in orizzontale.`,
-      },
-    },
-  },
+  decorators: [(Story) => html`<div style="${containerStyle}height:100px;min-width:300px">${Story()}</div>`],
 };
 
 export const MenuIconaDestra: Story = {
-  name: 'Menu con icona a destra',
   render: (args) => html`
     <it-dropdown label=${args.label} variant=${args.variant}>
       <it-dropdown-item href="#">
@@ -397,20 +314,10 @@ export const MenuIconaDestra: Story = {
     </it-dropdown>
   `,
   argTypes: { ...disabledControls(['label', 'variant']) },
-  parameters: {
-    ...meta.parameters,
-    docs: {
-      source: { excludeDecorators: true },
-      description: {
-        story: `Agli elementi contenuti nel menu può essere aggiunta un’icona illustrativa
-allineata a destra utilizzando lo slot \`suffix\``,
-      },
-    },
-  },
+  decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
 };
 
 export const MenuIconaSinistra: Story = {
-  name: 'Menu con icona a sinistra',
   render: (args) => html`
     <it-dropdown label=${args.label} variant=${args.variant}>
       <it-dropdown-item href="#">
@@ -428,39 +335,19 @@ export const MenuIconaSinistra: Story = {
     </it-dropdown>
   `,
   argTypes: { ...disabledControls(['label', 'variant']) },
-  parameters: {
-    ...meta.parameters,
-    docs: {
-      source: { excludeDecorators: true },
-      description: {
-        story: `Agli elementi contenuti nel menu può essere aggiunta un’icona illustrativa
-allineata a sinistra utilizzando lo slot \`prefix\``,
-      },
-    },
-  },
+  decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
 };
 
 export const MenuScuro: Story = {
-  name: 'Menu scuro',
   args: { dark: true },
   render: (args) => html`
     <it-dropdown label=${args.label} variant=${args.variant} dark>
       <h4 slot="header" class="link-list-heading dropdown-header">Intestazione</h4>
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-      <it-dropdown-item separator></it-dropdown-item>
       <it-dropdown-item href="#">Azione 3</it-dropdown-item>
     </it-dropdown>
   `,
   argTypes: { ...disabledControls(['label', 'variant']) },
-  parameters: {
-    ...meta.parameters,
-    docs: {
-      source: { excludeDecorators: true },
-      description: {
-        story: `Aggiungendo l'attributo \`dark\` al dropdown si ottiene una versione con un colore primario scuro.
-Link ed elementi interni vengono declinati di conseguenza.`,
-      },
-    },
-  },
+  decorators: [(Story) => html`<div style="${containerStyle}height:220px">${Story()}</div>`],
 };

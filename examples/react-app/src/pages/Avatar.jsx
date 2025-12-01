@@ -31,7 +31,6 @@ export default function AvatarDemo() {
           ))}
         </div>
       </section>
-
       {/* Avatar con testo */}
       <section>
         <h2>Avatar con testo</h2>
@@ -91,7 +90,6 @@ export default function AvatarDemo() {
           ))}
         </div>
       </section>
-
       {/* Avatar con icona */}
       <section>
         <h2>Avatar con icona</h2>
@@ -101,7 +99,6 @@ export default function AvatarDemo() {
           ))}
         </div>
       </section>
-
       {/* Avatar come link */}
       <section>
         <h2>Avatar come link</h2>
@@ -118,7 +115,6 @@ export default function AvatarDemo() {
           <it-avatar type="icon" icon="it-user" href="#" avatar-title="Utente"></it-avatar>
         </div>
       </section>
-
       {/* Comportamento presenza utente */}
       <section>
         <h2>Comportamento presenza utente</h2>
@@ -216,7 +212,6 @@ export default function AvatarDemo() {
           </div>
         </div>
       </section>
-
       {/* Comportamento status utente */}
       <section>
         <h2>Comportamento status utente</h2>
@@ -315,7 +310,6 @@ export default function AvatarDemo() {
           </div>
         </div>
       </section>
-
       {/* Gruppi avatar - Liste verticali */}
       <section>
         <h2>Gruppi di avatar - Liste verticali</h2>
@@ -411,7 +405,6 @@ export default function AvatarDemo() {
           </div>
         </div>
       </section>
-
       {/* Gruppi di avatar - Avatar Sovrapposti */}
       <section>
         <h2>Gruppi di avatar - Avatar Sovrapposti</h2>
@@ -478,7 +471,6 @@ export default function AvatarDemo() {
           </p>
         </div>
       </section>
-
       {/* Avatar Sovrapposti - Dimensione SM */}
       <section>
         <h2>Avatar Sovrapposti - Dimensione SM</h2>
@@ -512,7 +504,6 @@ export default function AvatarDemo() {
           </div>
         </div>
       </section>
-
       {/* Avatar Sovrapposti - Dimensione MD */}
       <section>
         <h2>Avatar Sovrapposti - Dimensione MD</h2>
@@ -554,33 +545,33 @@ export default function AvatarDemo() {
           </div>
         </div>
       </section>
+      {/* Avatar con testo aggiuntivo */}
+      <section>
+        <h2>Avatar con testo aggiuntivo</h2>
+        <div className="d-flex gap-4">
+          <it-avatar type="image" src="https://randomuser.me/api/portraits/men/43.jpg" size="xl">
+            <div slot="extra-text" style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
+              <h4>Mario Rossi</h4>
+              <time>15 SET 2025</time>
+            </div>
+          </it-avatar>
 
-    {/* Avatar con testo aggiuntivo */}
-    <section>
-      <h2>Avatar con testo aggiuntivo</h2>
-      <div className="d-flex gap-4">
-        <it-avatar type="image" src="https://randomuser.me/api/portraits/men/43.jpg" size="xl">
-          <div slot="extra-text" style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
-            <h4>Mario Rossi</h4>
-            <time>15 SET 2025</time>
-          </div>
-        </it-avatar>
+          <it-avatar type="image" src="https://randomuser.me/api/portraits/women/44.jpg" size="xl">
+            <div slot="extra-text" style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
+              <h4>Giulia Neri</h4>
+              <p>LOREM IPSUM DOLOR</p>
+            </div>
+          </it-avatar>
 
-        <it-avatar type="image" src="https://randomuser.me/api/portraits/women/44.jpg" size="xl">
-          <div slot="extra-text" style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
-            <h4>Giulia Neri</h4>
-            <p>LOREM IPSUM DOLOR</p>
-          </div>
-        </it-avatar>
-
-        <it-avatar type="text" variant="primary" size="xl" text="Michele Dotti">
-          <div slot="extra-text" style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
-            <h4>Michele Dotti</h4>
-            <time>12 MAG 2025</time>
-          </div>
-        </it-avatar>
-      </div>
-    </section>      {/* Gruppi avatar - Liste verticali con testo aggiuntivo */}
+          <it-avatar type="text" variant="primary" size="xl" text="Michele Dotti">
+            <div slot="extra-text" style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
+              <h4>Michele Dotti</h4>
+              <time>12 MAG 2025</time>
+            </div>
+          </it-avatar>
+        </div>
+      </section>{' '}
+      {/* Gruppi avatar - Liste verticali con testo aggiuntivo */}
       <section>
         <h2>Gruppi di avatar - Liste verticali con testo aggiuntivo</h2>
         <div style={{ maxWidth: '400px' }}>
@@ -631,7 +622,6 @@ export default function AvatarDemo() {
           </div>
         </div>
       </section>
-
       {/* CSS personalizzato */}
       <style>
         {`
