@@ -35,8 +35,14 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/accordion">
         Accordion
       </a>
+      <a href="/src/affix">
+        Affix
+      </a>
       <a href="/src/avatar">
         Avatar
+      </a>
+      <a href="/src/badge">
+        Badge
       </a>
       <a href="/src/button">
         Button
@@ -67,6 +73,9 @@ document.querySelector('#app-header').innerHTML = `
       </a>
       <a href="/src/section">
         Section
+      </a>
+      <a href="/src/skiplinks">
+        Skiplinks
       </a>
       <a href="/src/sticky">
         Sticky

@@ -18,7 +18,7 @@ const Dropdown = () => {
       {/* Ruolo list */}
       <section>
         <h2>Ruolo list</h2>
-        <p style={{ maxWidth: '620px' }}>
+        <p style={{ maxWidth: '75ch' }}>
           Esempio di dropdown con <code>it-role="list"</code> per presentare elementi come semplice elenco invece che
           come menu applicativo.
         </p>
@@ -140,10 +140,14 @@ const Dropdown = () => {
       <section>
         <h2>Menu con voci grandi</h2>
         <it-dropdown label="Dropdown" variant="primary">
-          <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 2</it-dropdown-item>
           <it-dropdown-item href="#" large>
-            Grande
+            Azione 1
+          </it-dropdown-item>
+          <it-dropdown-item href="#" large>
+            Azione 2
+          </it-dropdown-item>
+          <it-dropdown-item href="#" large>
+            Azione 3
           </it-dropdown-item>
         </it-dropdown>
       </section>
@@ -198,17 +202,15 @@ const Dropdown = () => {
       {/* Menu scuro */}
       <section>
         <h2>Menu scuro</h2>
-        <div className="p-4 bg-dark" style={{ display: 'inline-block' }}>
-          <it-dropdown label="Dropdown" variant="primary" dark>
-            <h4 slot="header" className="link-list-heading dropdown-header">
-              Intestazione
-            </h4>
-            <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-            <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-            <it-dropdown-item separator></it-dropdown-item>
-            <it-dropdown-item href="#">Azione 3</it-dropdown-item>
-          </it-dropdown>
-        </div>
+        <it-dropdown label="Dropdown" variant="primary" dark>
+          <h4 slot="header" className="link-list-heading dropdown-header">
+            Intestazione
+          </h4>
+          <it-dropdown-item href="#">Azione 1</it-dropdown-item>
+          <it-dropdown-item href="#">Azione 2</it-dropdown-item>
+          <it-dropdown-item separator></it-dropdown-item>
+          <it-dropdown-item href="#">Azione 3</it-dropdown-item>
+        </it-dropdown>
       </section>
     </>
   );

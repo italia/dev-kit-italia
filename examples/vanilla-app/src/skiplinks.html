@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Web Components - vanilla-app</title>
+  <!-- Load compiled dev-kit CSS in <head> so styles are present even when JS is disabled -->
+  <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
+  <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+  <!-- Local app styles so layout (#root etc.) is present without JS -->
+  <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="root">
+      <div id="app-header">
+        <div class="app-header">
+          <a href="https://vite.dev" target="_blank">
+            <img src="/public/vite.svg" class="logo" alt="Vite logo" />
+          </a>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+            <img src="/src/javascript.svg" class="logo vanilla" alt="JavaScript logo" />
+          </a>
+          <nav class="app-nav">
+            <a href="/src/button">Button</a>
+            <a href="/src/chip">Chip</a>
+            <a href="/src/dropdown">Dropdown</a>
+            <a href="/src/form">Form</a>
+            <a href="/src/icon">Icon</a>
+            <a href="/src/input">Input</a>
+            <a href="/src/section">Section</a>
+            <a href="/src/skiplinks">Skiplinks</a>
+            <a href="/src/video">Video</a>
+            <a href="/src/avatar">Avatar</a>
+          </nav>
+        </div>
+      </div>
+      <h1>it-skiplinks</h1>
+
+      <it-skiplinks it-aria-label="Vai a:">
+        <a href="#menu">Vai al menu</a>
+        <a href="#main-content">Vai al contenuto principale</a>
+        <a href="#satisfaction">Questa pagina ti è stata utile?</a>
+        <a href="#footer">Vai al piè di pagina</a>
+        <a href="https://form.agid.gov.it/view/xyz">Dichiarazione di accessibilità (link esterno su sito AgID</a>
+      </it-skiplinks>
+
+     <section>
+        <h2>Numero ridotto di skiplinks</h2>
+        <it-skiplinks>
+          <a href="#menu">Vai al menu</a>
+          <a href="#main-content">Vai al contenuto principale</a>
+        </it-skiplinks>
+      </section>
+
+
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

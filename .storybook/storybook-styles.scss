@@ -61,7 +61,15 @@
       font-weight: 600;
     }
 
-    &.docblock-argstable * {
+    strong {
+      font-weight: bold;
+    }
+
+    &.small {
+      font-size: var(--bs-caption-font-size);
+    }
+
+    &.docblock-argstable *:not(code) {
       font-size: 1rem;
     }
   }
@@ -227,6 +235,16 @@ table.docblock-argstable {
   display: none;
 }
 
+#anchor--componenti-skiplinks--esempio-interattivo {
+  .docs-story {
+    > div:first-of-type {
+      > div:first-of-type {
+        width: 100%;
+      }
+    }
+  }
+}
+
 .sbdocs.sbdocs-preview:has(.hide-preview) {
   display: none;
 }
@@ -245,4 +263,15 @@ table.docblock-argstable {
   ul {
     font-size: 13px;
   }
+}
+
+//per rendere scollabili le storie di affix
+#story--componenti-affix--affix-top,
+#story--componenti-affix--affix-bottom {
+  height: 400px !important;
+  transform: translateZ(0);
+  overflow: auto !important;
+
+  position: relative;
+  display: block;
 }
