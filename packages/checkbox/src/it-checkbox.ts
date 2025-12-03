@@ -68,12 +68,13 @@ export class ItCheckbox extends FormControl {
   override connectedCallback() {
     super.connectedCallback?.();
     this._handleReady();
+    // 🔍 Verifica se il parent è un it-checkbox-group
+    this.isInGroup = !!this.closest('it-checkbox-group');
   }
 
   override updated(changedProperties: Map<string | number | symbol, unknown>) {
     super.updated?.(changedProperties);
 
-    console.log('changedProperties', changedProperties);
     // logger
     if (!this.label || this.label?.length === 0) {
       this.logger.warn(
@@ -81,55 +82,6 @@ export class ItCheckbox extends FormControl {
       );
     }
   }
-
-  protected override _handleChange(e: Event): void {
-    super._handleChange(e);
-    console.log('hndleChange', this.value);
-    this.checkValidity(); // ricalcola il gruppo e aggiorna UI
-  }
-
-  private _hasSiblings = (): boolean => {
-    const form = this.formControlController?.form;
-    if (!form) return false;
-
-    const checkboxes = Array.from(form.querySelectorAll<ItCheckbox>(`it-checkbox[name="${this.name}"]`));
-    return checkboxes.length > 1;
-  };
-
-  private _validateGroupUI(): boolean {
-    const form = this.formControlController?.form;
-    if (!form || !this.inputElement) return true;
-
-    const checkboxes = Array.from(form.querySelectorAll<ItCheckbox>(`it-checkbox[name="${this.name}"]`));
-    const isChecked = checkboxes.some((cb) => cb.checked);
-
-    checkboxes.forEach((cb) => {
-      if (!isChecked) {
-        cb.setCustomValidity('Seleziona almeno un’opzione');
-      } else {
-        cb.setCustomValidity('');
-      }
-
-      // forza la UI aggiornata per TUTTI, incluso quello cliccato
-      cb._touched = true;
-      cb.requestUpdate();
-    });
-
-    return isChecked;
-  }
-
-  public override checkValidity(): boolean {
-    if (!this._hasSiblings()) {
-      return super.checkValidity();
-    }
-
-    return this._validateGroupUI();
-  }
-
-  // public override checkValidity(): boolean {
-  //   console.log('check validity');
-  //   return super.checkValidity();
-  // }
 
   protected override _handleClick(e: Event): void {
     this.checked = !this.checked;
@@ -154,6 +106,8 @@ export class ItCheckbox extends FormControl {
       this.indeterminate ? 'semi-checked' : '',
     );
 
+    const inputIsRequired = this.required && !this.isInGroup; // Disabilita il 'required' nativo se siamo in un gruppo
+
     const inputRender = html`
       <input
         part="checkbox focusable"
@@ -171,7 +125,7 @@ export class ItCheckbox extends FormControl {
         .checked=${live(this.checked)}
         .indeterminate=${live(this.indeterminate)}
         .disabled=${this.disabled}
-        .required=${this.required}
+        .required=${inputIsRequired}
         ?formNoValidate=${this.customValidation}
         .value="${live(this.value)}"
         class="${inputClasses}"
@@ -183,7 +137,6 @@ export class ItCheckbox extends FormControl {
 
   // Render the UI as a function of component state
   override render() {
-    console.log('render');
     const supportTextId = `${this._id}-support-text`;
 
     const supportTextRender = html` ${when(

@@ -81,6 +81,10 @@ export class FormControl extends BaseLocalizedComponent {
   @property({ type: Boolean, reflect: true }) // from FormControl
   required = false;
 
+  /* For grouped input, like checkbox-group */
+  @property({ type: Boolean })
+  protected isInGroup = false;
+
   /** Gets the validity state object */
   public get validity(): ValidityState {
     return this.inputElement?.validity;
@@ -158,7 +162,9 @@ export class FormControl extends BaseLocalizedComponent {
     if (!this.customValidation) {
       const _v = this.inputElement.validity;
 
-      if (_v.valueMissing) {
+      const isRequiredHandledByGroup = this.isInGroup === true;
+
+      if (_v.valueMissing && !isRequiredHandledByGroup) {
         this.setCustomValidity(this.$t('validityRequired'));
       } else if (_v.patternMismatch) {
         this.setCustomValidity(this.$t('validityPattern'));

@@ -1,5 +1,5 @@
 import { html, PropertyValues } from 'lit';
-import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
+import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { FormControl, FormControlController, RovingTabindexController } from '@italia/globals';
 import type { ItRadio } from '@italia/radio';
 import styles from './radio-group.scss';
@@ -183,7 +183,7 @@ export class ItRadioGroup extends FormControl {
 
       // Update message content and attributes
       messageEl.id = messageId;
-      messageEl.className = 'invalid-feedback form-feedback form-text form-feedback just-validate-error-label';
+      messageEl.className = 'form-feedback just-validate-error-label';
       messageEl.setAttribute('role', 'alert');
       messageEl.removeAttribute('hidden');
 
