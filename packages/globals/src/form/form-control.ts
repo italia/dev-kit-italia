@@ -102,8 +102,8 @@ export class FormControl extends BaseLocalizedComponent {
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   public reportValidity() {
-    //const ret = this.inputElement.checkValidity();
-    const ret = this.checkValidity(); //chiama la checkValidity, che se è stata overridata chiama quella
+    // const ret = this.inputElement.checkValidity();
+    const ret = this.checkValidity(); // chiama la checkValidity, che se è stata overridata chiama quella
     this.handleValidationMessages();
     return ret; // this.inputElement.reportValidity();
   }
