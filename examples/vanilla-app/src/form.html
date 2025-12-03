@@ -26,11 +26,11 @@
             <it-input id="figli-basic" name="figli" type="number" support-text="Numero di figli" required min="0" max="10">
               <span slot="label">Numero di figli</span>
             </it-input>
-            <it-input id="telefono" name="telefono-basic" type="tel">
+            <it-input id="telefono" name="telefono-basic" type="tel" required>
               <it-icon name="it-telephone" slot="prepend" size="sm"></it-icon>
               <span slot="label">Telefono</span>
             </it-input>
-            <it-input id="orario" name="orario-basic" type="time">
+            <it-input id="orario" name="orario-basic" type="time" required>
               <span slot="label">Orario</span>
             </it-input>
             <it-input id="disabilitato" name="disabilitato-basic" value="valore del campo" disabled>
@@ -57,7 +57,7 @@
 
             <fieldset class="mb-4">
               <legend>Animali preferiti</legend>
-              <it-checkbox id="animali" name="animali" value="cane" group><span slot="label">Cane</span></it-checkbox>
+              <it-checkbox id="animali" name="animali" value="cane" group required><span slot="label">Cane</span></it-checkbox>
               <it-checkbox id="animali" name="animali" value="gatto" group><span slot="label">Gatto</span></it-checkbox>
               <it-checkbox id="animali" name="animali" value="topo" group><span slot="label">Topo</span></it-checkbox>
               <it-checkbox id="animali" name="animali" value="serpente" group><span slot="label">Serpente</span></it-checkbox>
@@ -108,7 +108,7 @@
           </form>
         </section>
 
-        <section>
+        <!-- <section>
           <h2>Form con validazione custom con JustValidate</h2>
           <form id="form-custom-validation">
             <it-input id="nome" name="nome" custom-validation><span slot="label">Nome</span></it-input>
@@ -123,17 +123,17 @@
             <it-checkbox id="privacy" name="privacy" support-text="Accetto le condizioni sulla privacy" custom-validation class="mb-4"><span slot="label">Privacy</span></it-checkbox>
             <it-button type="submit" variant="primary" block> Invia </it-button>
           </form>
-        </section>
+        </section> -->
       </div>
       <div id="app-footer"></div>
     </div>
 
-    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
+    <!-- <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script> -->
 
 
-    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
+    <!-- <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script> -->
     <script type="module" src="/src/main.js"></script>
-    <script type="module" src="/src/js/form.js"></script>
+    <!-- <script type="module" src="/src/js/form.js"></script> -->
 
 
   </body>
