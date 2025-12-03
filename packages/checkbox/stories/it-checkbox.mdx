@@ -29,12 +29,10 @@ Per disabilitare una checkbox, aggiungi l'attributo `disabled` al componente `<i
 Per ottenere lo stato indeterminato di una checkbox, aggiungi l'attributo `indeterminate` al componente `<it-checkbox>`.
 <Canvas of={Stories.Indeterminate} />
 
-## Inline
-Per allineare orizzontalmente le checkbox, aggiungi l'attributo `inline` a `<it-checkbox>`.
-<Canvas of={Stories.Inline} />
-
 ## Gruppo di checkbox
-Per creare un gruppo di checkbox allineati in colonna, occorre aggiungere l'attributo `group` al componente `<it-checkbox>`. L’elemento grafico di spunta verrà allineato alla destra del contenuto testuale.
+Per creare un gruppo di checkbox, racchiudi tutti gli element `<it-checkbox>` all'interno del componente `<it-checkbox-group>` e assegna al gruppo l'attributo `name` e `required` nel caso in cui il gruppo di checkbox sia obbligatorio.
+
+Inserisci l'etichetta del gruppo in un elemento con attributo `slot="legend"` all'interno di `<it-checkbox-group>`.
 
 In questi casi, se tutti gli elementi `<it-checkbox>` hanno lo stesso attributo `name`, al submit della form via js, il modo corretto per estrarre il valore è:
 
@@ -42,8 +40,16 @@ In questi casi, se tutti gli elementi `<it-checkbox>` hanno lo stesso attributo 
 const formData = new FormData(document.getElementById('form'));
 formData.getAll(field_name) // dove `field_name` è il valore dell'attributo `[name]`
 ```
+
+### Allineati in colonna
+Per creare un gruppo di checkbox allineati in colonna, occorre aggiungere l'attributo `group` al componente `<it-checkbox>`. L’elemento grafico di spunta verrà allineato alla destra del contenuto testuale.
+
+
 <Canvas of={Stories.Group} />
 
+### Inline
+Per allineare orizzontalmente le checkbox, aggiungi l'attributo `inline` a `<it-checkbox>`.
+<Canvas of={Stories.Inline} />
 
 ## Testo di supporto
 Per mostrare un testo di supporto alla checkbox, aggiungi l'attributo `supportText="Testo di supporto"` a `<it-checkbox>`.

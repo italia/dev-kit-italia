@@ -174,19 +174,21 @@ export const Disabilitato: Story = {
   // name: 'Disabilitato',
   args: { disabled: true },
   render: (params) => html`
-    <fieldset>
-      <legend>Gruppo di checkbox</legend>
+    <it-checkbox-group name=${params.name} ?required=${params.required}>
+      <span slot="legend">Gruppo di checkbox</span>
       ${renderComponent({
         ...params,
+        required: undefined,
         label: 'Checkbox non selezionato',
         className: 'mb-2',
       })}
       ${renderComponent({
         ...params,
+        required: undefined,
         label: 'Checkbox selezionato',
         checked: true,
       })}
-    </fieldset>
+    </it-checkbox-group>
   `,
 };
 
@@ -214,18 +216,20 @@ export const Inline: Story = {
     ),
   },
   render: (params) => html`
-    <fieldset>
-      <legend>Gruppo di checkbox</legend>
+    <it-checkbox-group name=${params.name} ?required=${params.required}>
+      <span slot="legend">Gruppo di checkbox</span>
       ${renderComponent({
         ...params,
+        required: undefined,
         label: 'Checkbox non selezionato',
       })}
       ${renderComponent({
         ...params,
+        required: undefined,
         label: 'Checkbox selezionato',
         checked: true,
       })}
-    </fieldset>
+    </it-checkbox-group>
   `,
 };
 
@@ -235,39 +239,45 @@ export const Group: Story = {
   args: { group: true },
   render: (params) => html`
     <div class="row">
-      <fieldset class="col-12 col-md-6">
-        <legend>Gruppo di checkbox</legend>
+      <it-checkbox-group name=${params.name} ?required=${params.required} class="col-12 col-md-6">
+        <span slot="legend">Gruppo di checkbox</span>
         ${renderComponent({
           ...params,
+          required: undefined,
           label: 'Checkbox selezionato',
           checked: true,
         })}
         ${renderComponent({
           ...params,
+          required: undefined,
           label: 'Checkbox non selezionato',
         })}
         ${renderComponent({
           ...params,
+          required: undefined,
           disabled: true,
           label: 'Checkbox disabilitato non selezionato',
         })}
-      </fieldset>
+      </it-checkbox-group>
 
-      <fieldset class="col-12 col-md-6">
-        <legend>Gruppo di checkbox</legend>
+      <it-checkbox-group name=${params.name} ?required=${params.required} class="col-12 col-md-6">
+        <span slot="legend">Gruppo di checkbox</span>
         ${renderComponent({
           ...params,
+          required: undefined,
           label: 'Checkbox selezionato',
           checked: true,
           supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
         })}
         ${renderComponent({
           ...params,
+          required: undefined,
           label: 'Checkbox non selezionato',
           supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
         })}
         ${renderComponent({
           ...params,
+          required: undefined,
           disabled: true,
           label: 'Checkbox disabilitato non selezionato',
           supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
