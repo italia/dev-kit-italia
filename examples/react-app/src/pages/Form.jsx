@@ -76,23 +76,18 @@ const Form = () => {
           </it-checkbox>
         </fieldset>
 
-        <fieldset>
-          <legend>Gruppo di radio</legend>
-          <it-radio-group name="scelta" required>
-            <span slot="label">
-              Seleziona un'opzione <span className="text-danger">*</span>
-            </span>
-            <it-radio value="si">
-              <span slot="label">Sì, accetto</span>
-            </it-radio>
-            <it-radio value="no">
-              <span slot="label">No, non accetto</span>
-            </it-radio>
-            <it-radio value="forse">
-              <span slot="label">Forse</span>
-            </it-radio>
-          </it-radio-group>
-        </fieldset>
+        <it-radio-group name="gruppo1" required>
+          <span slot="label">Gruppo di radio</span>
+          <it-radio id="radio1" value="opzione1">
+            <span slot="label">Radio di esempio 1</span>
+          </it-radio>
+          <it-radio id="radio2" value="opzione2">
+            <span slot="label">Radio di esempio 2</span>
+          </it-radio>
+          <it-radio id="radio3" value="opzione3">
+            <span slot="label">Radio di esempio 3</span>
+          </it-radio>
+        </it-radio-group>
 
         <it-input id="messaggio-basic" name="messaggio" type="textarea" support-text="Inserisci il tuo messaggio">
           <span slot="label">Messaggio</span>

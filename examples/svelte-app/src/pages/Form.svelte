@@ -62,20 +62,18 @@
     <it-checkbox id="animali" name="animali" value="serpente" group><span slot="label">Serpente</span></it-checkbox>
   </fieldset>
 
-  <fieldset>
-    <legend>Gruppo di radio</legend>
-    <it-radio-group name="gruppo1">
-      <it-radio id="radio1" name="gruppo1" value="opzione1" checked>
-        <span slot="label">Radio di esempio 1</span>
-      </it-radio>
-      <it-radio id="radio2" name="gruppo1" value="opzione2">
-        <span slot="label">Radio di esempio 2</span>
-      </it-radio>
-      <it-radio id="radio3" name="gruppo1" value="opzione3">
-        <span slot="label">Radio di esempio 3</span>
-      </it-radio>
-    </it-radio-group>
-  </fieldset>
+  <it-radio-group name="gruppo1" required>
+    <span slot="label">Gruppo di radio</span>
+    <it-radio id="radio1" value="opzione1">
+      <span slot="label">Radio di esempio 1</span>
+    </it-radio>
+    <it-radio id="radio2" value="opzione2">
+      <span slot="label">Radio di esempio 2</span>
+    </it-radio>
+    <it-radio id="radio3" value="opzione3">
+      <span slot="label">Radio di esempio 3</span>
+    </it-radio>
+  </it-radio-group>
 
   <it-input id="messaggio-basic" name="messaggio" type="textarea" support-text="Inserisci il tuo messaggio"
     ><span slot="label">Messaggio</span></it-input
