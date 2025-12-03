@@ -2,6 +2,7 @@ import { FormControl, FormControlController } from '@italia/globals';
 import { html } from 'lit';
 import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
 import { when } from 'lit/directives/when.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { ItCheckbox } from '@italia/checkbox';
 import styles from './checkbox-group.scss';
 
@@ -154,9 +155,9 @@ export class ItCheckboxGroup extends FormControl {
       <fieldset
         class="it-checkbox-group it-form__control"
         id="${this._id}"
-        aria-describedby=${invalid ? errorId : ''}
+        aria-describedby=${ifDefined(invalid ? errorId : undefined)}
+        aria-required=${ifDefined(this.required ? 'true' : undefined)}
         part="fieldset"
-        role="group"
       >
         <legend part="legend">
           <slot name="legend"></slot>

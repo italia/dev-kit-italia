@@ -55,13 +55,20 @@ const handleSubmit = (e) => {
       readonly plaintext>
       <span slot="label">Campo readonly normalizzato come plaintext</span>
     </it-input>
-    <fieldset class="mb-4">
-      <legend>Animali preferiti</legend>
-      <it-checkbox id="animali" name="animali" value="cane" group><span slot="label">Cane</span></it-checkbox>
-      <it-checkbox id="animali" name="animali" value="gatto" group><span slot="label">Gatto</span></it-checkbox>
-      <it-checkbox id="animali" name="animali" value="topo" group><span slot="label">Topo</span></it-checkbox>
-      <it-checkbox id="animali" name="animali" value="serpente" group><span slot="label">Serpente</span></it-checkbox>
-    </fieldset>
+
+
+    <it-checkbox-group required name="animali" class="mb-4">
+      <span slot="legend">Animali preferiti</span>
+      <it-checkbox name="animali" value="cane" group>
+        <span slot="label">Cane</span>
+      </it-checkbox>
+      <it-checkbox name="animali" value="gatto" group>
+        <span slot="label">Gatto</span>
+      </it-checkbox>
+      <it-checkbox name="animali" value="topo" group>
+        <span slot="label">Topo</span>
+      </it-checkbox>
+    </it-checkbox-group>
 
     <it-radio-group name="gruppo1" required>
       <span slot="label">Gruppo di radio</span>
