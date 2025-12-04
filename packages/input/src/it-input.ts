@@ -136,7 +136,7 @@ export class ItInput extends FormControl {
 
     if (!this.label || this.label?.length === 0) {
       this.logger.warn(
-        `Label is required to ensure accessibility. Please, define a label for <it-input name="${this.name}" id="${this.id} ... /> . Set attribute label-hidden="true" if you don't want to show label.`,
+        `Label is required to ensure accessibility. Please, define a label for <it-input name="${this.name}" id="${this.id}" ... /> . Set attribute label-hidden="true" if you don't want to show label.`,
       );
     }
   }
