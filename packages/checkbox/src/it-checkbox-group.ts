@@ -1,5 +1,5 @@
 import { FormControl, FormControlController } from '@italia/globals';
-import { html } from 'lit';
+import { html, PropertyValues } from 'lit';
 import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
 import { when } from 'lit/directives/when.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -12,6 +12,14 @@ export class ItCheckboxGroup extends FormControl {
 
   @property({ type: Boolean, reflect: true })
   required = false;
+
+  /** Draws checkboxes inline, side by side. */
+  @property({ type: Boolean, reflect: true })
+  inline = false;
+
+  /** Draws checkboxes in groups. */
+  @property({ type: Boolean, reflect: true })
+  group = false;
 
   @property({ type: String, reflect: true })
   name = ''; // Il name del gruppo
@@ -42,6 +50,23 @@ export class ItCheckboxGroup extends FormControl {
   // Questo state servirà per forzare il re-render del messaggio di errore
   @state()
   private _groupValid = true;
+
+  get selectedValues(): string[] {
+    if (!this.value) return [];
+    try {
+      return JSON.parse(this.value);
+    } catch {
+      return [];
+    }
+  }
+
+  set selectedValues(vals: string[]) {
+    this.value = JSON.stringify(vals);
+  }
+
+  public has(v: string) {
+    return this.selectedValues.indexOf(v) >= 0;
+  }
 
   override connectedCallback() {
     super.connectedCallback?.();
@@ -76,6 +101,11 @@ export class ItCheckboxGroup extends FormControl {
 
   // Ascolta gli 'it-change' bubblati dalle singole checkbox
   private _handleGroupChange() {
+    // Aggiorna this.value con l'array corrente delle checkbox selezionate
+    const selected = this.checkboxes.filter((cb) => cb.checked).map((cb) => cb.value || 'true');
+
+    this.value = JSON.stringify(selected);
+
     // Quando qualcosa cambia, ricalcola la validità
     this.handleValidationMessages();
     this.requestUpdate(); // Aggiorna la vista
@@ -124,7 +154,57 @@ export class ItCheckboxGroup extends FormControl {
    * setta this.validationMessage. Aggiorniamolo per la logica di gruppo.
    */
   protected override handleValidationMessages() {
-    this.validationMessage = this.checkValidity() ? '' : this.$t('validityGroupRequired');
+    if (!this.customValidation && this.formControlController.submittedOnce) {
+      this.validationMessage = this.checkValidity() ? '' : this.$t('validityGroupRequired');
+    }
+  }
+
+  /**
+   * Sync group state (name, grouped, inline, required, disabled, checked) to child checkboxes
+   * This replaces the need for requestUpdate() calls
+   */
+  private _syncGroupStateToChildren() {
+    if (!this.checkboxes || this.checkboxes.length === 0) {
+      return;
+    }
+
+    this.checkboxes.forEach((cb) => {
+      // eslint-disable-next-line no-param-reassign
+      cb.name = this.name;
+      // eslint-disable-next-line no-param-reassign
+      cb.group = this.group || !this.inline;
+      // eslint-disable-next-line no-param-reassign
+      cb.inline = this.inline;
+      // eslint-disable-next-line no-param-reassign
+      cb.required = this.required;
+
+      if (this.disabled) {
+        // eslint-disable-next-line no-param-reassign
+        cb.disabled = this.disabled;
+      }
+      if (!cb.hasAttribute('checked')) {
+        // eslint-disable-next-line no-param-reassign
+        cb.checked = this.has(cb.value);
+      }
+    });
+  }
+
+  updated(changed: PropertyValues) {
+    super.updated(changed);
+
+    // Update radios when value or name changes
+    if (changed.has('value')) {
+      // Re-validate after value change (for native validation) only if validation was already triggered
+
+      this.handleValidationMessages();
+    }
+
+    // If relevant group properties changed, sync to child checkboxes
+    const relevant = ['group', 'inline', 'name', 'required', 'disabled', 'value'];
+    const hasChanged = Array.from(changed.keys()).some((k) => relevant.includes(String(k)));
+    if (hasChanged && this.checkboxes?.length) {
+      this._syncGroupStateToChildren();
+    }
   }
 
   // Render per mostrare l'errore (usa la tua logica di rendering dell'errore)
@@ -172,9 +252,7 @@ export class ItCheckboxGroup extends FormControl {
   // Metodo per gestire l'assegnazione iniziale e re-assegnazione delle checkbox
   private _handleSlotChange() {
     // Dopo l'assegnazione, forziamo un controllo di validità per inizializzare _groupValid
-    if (this.formControlController.submittedOnce) {
-      this.handleValidationMessages();
-    }
+    this.handleValidationMessages();
     this.requestUpdate();
   }
 }

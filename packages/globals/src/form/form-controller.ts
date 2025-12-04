@@ -245,6 +245,9 @@ export class FormControlController implements ReactiveController {
             }
           }
           break;
+        case 'it-checkbox-group':
+          // non settare valori in formData, perchè ogni singola checkbox setta il suo valore
+          break;
         default:
           if (Array.isArray(value)) {
             (value as unknown[]).forEach((val) => {

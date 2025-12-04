@@ -380,7 +380,7 @@ export class ItRadioGroup extends FormControl {
     // Update radios when value or name changes
     if (changed.has('value')) {
       this._updateRadiosState();
-      this.dispatchEvent(new Event('change', { bubbles: true }));
+      this.dispatchEvent(new Event('it-change', { bubbles: true }));
       // Re-validate after value change (for native validation) only if validation was already triggered
       if (!this.customValidation && this.formControlController.submittedOnce) {
         this.handleValidationMessages();

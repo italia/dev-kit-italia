@@ -174,17 +174,19 @@ export const Disabilitato: Story = {
   // name: 'Disabilitato',
   args: { disabled: true },
   render: (params) => html`
-    <it-checkbox-group name=${params.name} ?required=${params.required}>
+    <it-checkbox-group name=${params.name} ?required=${params.required} ?disabled=${params.disabled}>
       <span slot="legend">Gruppo di checkbox</span>
       ${renderComponent({
         ...params,
         required: undefined,
+        disabled: undefined,
         label: 'Checkbox non selezionato',
         className: 'mb-2',
       })}
       ${renderComponent({
         ...params,
         required: undefined,
+        disabled: undefined,
         label: 'Checkbox selezionato',
         checked: true,
       })}
@@ -216,16 +218,22 @@ export const Inline: Story = {
     ),
   },
   render: (params) => html`
-    <it-checkbox-group name=${params.name} ?required=${params.required}>
+    <it-checkbox-group name=${params.name} ?required=${params.required} ?group=${params.group} ?inline=${params.inline}>
       <span slot="legend">Gruppo di checkbox</span>
       ${renderComponent({
         ...params,
         required: undefined,
+        name: undefined,
+        grpup: undefined,
+        inline: undefined,
         label: 'Checkbox non selezionato',
       })}
       ${renderComponent({
         ...params,
         required: undefined,
+        name: undefined,
+        grpup: undefined,
+        inline: undefined,
         label: 'Checkbox selezionato',
         checked: true,
       })}
@@ -239,22 +247,37 @@ export const Group: Story = {
   args: { group: true },
   render: (params) => html`
     <div class="row">
-      <it-checkbox-group name=${params.name} ?required=${params.required} class="col-12 col-md-6">
+      <it-checkbox-group
+        name=${params.name}
+        ?required=${params.required}
+        ?group=${params.group}
+        ?inline=${params.inline}
+        class="col-12 col-md-6"
+      >
         <span slot="legend">Gruppo di checkbox</span>
         ${renderComponent({
           ...params,
           required: undefined,
+          name: undefined,
+          grpup: undefined,
+          inline: undefined,
           label: 'Checkbox selezionato',
           checked: true,
         })}
         ${renderComponent({
           ...params,
           required: undefined,
+          name: undefined,
+          grpup: undefined,
+          inline: undefined,
           label: 'Checkbox non selezionato',
         })}
         ${renderComponent({
           ...params,
           required: undefined,
+          name: undefined,
+          grpup: undefined,
+          inline: undefined,
           disabled: true,
           label: 'Checkbox disabilitato non selezionato',
         })}
@@ -265,6 +288,9 @@ export const Group: Story = {
         ${renderComponent({
           ...params,
           required: undefined,
+          name: undefined,
+          grpup: undefined,
+          inline: undefined,
           label: 'Checkbox selezionato',
           checked: true,
           supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
@@ -272,18 +298,72 @@ export const Group: Story = {
         ${renderComponent({
           ...params,
           required: undefined,
+          name: undefined,
+          grpup: undefined,
+          inline: undefined,
           label: 'Checkbox non selezionato',
           supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
         })}
         ${renderComponent({
           ...params,
           required: undefined,
+          name: undefined,
+          grpup: undefined,
+          inline: undefined,
           disabled: true,
           label: 'Checkbox disabilitato non selezionato',
           supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
         })}
-      </fieldset>
+      </it-checkbox-group>
     </div>
+  `,
+};
+
+export const GroupInitValue: Story = {
+  ...meta,
+  name: 'Valore iniziale del gruppo',
+  args: { group: true, name: 'checkboxgroup' },
+  render: (params) => html`
+    <it-checkbox-group
+      name=${params.name}
+      ?required=${params.required}
+      ?group=${params.group}
+      ?inline=${params.inline}
+      value='["valore_1","valore_3"]'
+      ?disabled=${params.disabled}
+    >
+      <span slot="legend">Gruppo di checkbox</span>
+      ${renderComponent({
+        ...params,
+        required: undefined,
+        name: undefined,
+        grpup: undefined,
+        inline: undefined,
+        disabled: undefined,
+        label: 'Valore 1',
+        value: 'valore_1',
+      })}
+      ${renderComponent({
+        ...params,
+        required: undefined,
+        name: undefined,
+        grpup: undefined,
+        inline: undefined,
+        disabled: undefined,
+        label: 'Valore 2',
+        value: 'valore_2',
+      })}
+      ${renderComponent({
+        ...params,
+        required: undefined,
+        name: undefined,
+        grpup: undefined,
+        inline: undefined,
+        disabled: undefined,
+        label: 'Valore 3',
+        value: 'valore_3',
+      })}
+    </it-checkbox-group>
   `,
 };
 

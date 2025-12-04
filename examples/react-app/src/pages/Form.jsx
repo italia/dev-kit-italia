@@ -1,11 +1,29 @@
 import React from 'react';
 
 const Form = () => {
+  function formDataToObject(fd) {
+    const obj = {};
+
+    for (const [key, value] of fd.entries()) {
+      if (obj[key] !== undefined) {
+        // Se la key esiste già → trasformala in array
+        if (!Array.isArray(obj[key])) {
+          obj[key] = [obj[key]];
+        }
+        obj[key].push(value);
+      } else {
+        obj[key] = value;
+      }
+    }
+
+    return obj;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData(document.getElementById('form'));
-    const data = Object.fromEntries(formData.entries());
+    const data = formDataToObject(formData);
     console.log(data);
     // Handle form submission logic here
     /*
@@ -60,15 +78,15 @@ const Form = () => {
           <span slot="label">Campo readonly normalizzato come plaintext</span>
         </it-input>
 
-        <it-checkbox-group required name="animali" class="mb-4">
+        <it-checkbox-group required group name="animali" class="mb-4" value='["gatto","topo"]'>
           <span slot="legend">Animali preferiti</span>
-          <it-checkbox name="animali" value="cane" group>
+          <it-checkbox value="cane">
             <span slot="label">Cane</span>
           </it-checkbox>
-          <it-checkbox name="animali" value="gatto" group>
+          <it-checkbox value="gatto">
             <span slot="label">Gatto</span>
           </it-checkbox>
-          <it-checkbox name="animali" value="topo" group>
+          <it-checkbox value="topo">
             <span slot="label">Topo</span>
           </it-checkbox>
         </it-checkbox-group>
