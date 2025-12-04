@@ -95,7 +95,7 @@ export class ItCheckboxGroup extends FormControl {
       rangeOverflow: false,
       stepMismatch: false,
       badInput: false,
-      customError: false,
+      customError: this.customValidation && this.validationText?.length > 0,
     } as ValidityState;
   }
 
@@ -157,6 +157,9 @@ export class ItCheckboxGroup extends FormControl {
     if (!this.customValidation && this.formControlController.submittedOnce) {
       this.validationMessage = this.checkValidity() ? '' : this.$t('validityGroupRequired');
     }
+    if (this.customValidation) {
+      this.validationMessage = this.inputElement.validationMessage;
+    }
   }
 
   /**
@@ -193,7 +196,7 @@ export class ItCheckboxGroup extends FormControl {
     super.updated(changed);
 
     // Update radios when value or name changes
-    if (changed.has('value')) {
+    if (changed.has('value') || (changed.has('validationText') && this.customValidation)) {
       // Re-validate after value change (for native validation) only if validation was already triggered
 
       this.handleValidationMessages();
@@ -211,8 +214,8 @@ export class ItCheckboxGroup extends FormControl {
   // All'interno di ItCheckboxGroup (metodo render)
 
   override render() {
-    const showValidation = true;
-    const validityMessage = (showValidation ? (this.validationMessage ?? '') : '') ?? '';
+    const showValidation = this.formControlController.submittedOnce || this.customValidation; // true; // this._touched || this.customValidation;
+    const validityMessage = (showValidation ? this.validationMessage : '') ?? '';
 
     // Determina lo stato di invalidità in base alla validazione di gruppo
     const invalid = validityMessage?.length > 0 || !this._groupValid;
@@ -247,6 +250,16 @@ export class ItCheckboxGroup extends FormControl {
         ${when(invalid, () => validityMessageRender)}
       </fieldset>
     `;
+  }
+
+  public override setCustomValidity(message: string) {
+    if (!this.customValidation) {
+      this.inputElement.setCustomValidity(message);
+      this.validationMessage = this.inputElement.validationMessage;
+    } else {
+      this.validationMessage = message;
+    }
+    this.formControlController.updateValidity();
   }
 
   // Metodo per gestire l'assegnazione iniziale e re-assegnazione delle checkbox

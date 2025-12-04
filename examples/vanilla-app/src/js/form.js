@@ -90,6 +90,21 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         events: ['it-change'], // 👈 FORZA l’ascolto sul change
       },
+    )
+    .addField(
+      'it-checkbox-group[id="animali-ext"]',
+      [
+        {
+          validator: () => {
+            const value = getItInputValue('it-checkbox-group[id="animali-ext"]');
+            return value.length > 0;
+          },
+          errorMessage: 'Scegli almeno un animale',
+        },
+      ],
+      {
+        events: ['it-change'], // 👈 FORZA l’ascolto sul change
+      },
     );
 
   validate.onValidate((props) => {

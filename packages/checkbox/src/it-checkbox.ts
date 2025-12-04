@@ -144,7 +144,7 @@ export class ItCheckbox extends FormControl {
       () => html` <small class="form-text" id="${supportTextId}">${this.supportText}</small> `,
     )}`;
 
-    const showValidation = true; // this._touched || this.customValidation ;
+    const showValidation = this.formControlController.submittedOnce || this.customValidation; // true; // this._touched || this.customValidation ;
     const validityMessage = (showValidation ? (this.validationMessage ?? '') : '') ?? '';
 
     const invalid =
