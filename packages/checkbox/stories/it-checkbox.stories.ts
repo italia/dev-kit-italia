@@ -338,7 +338,7 @@ export const GroupInitValue: Story = {
       ?group=${params.group}
       ?inline=${params.inline}
       ?disabled=${params.disabled}
-      value='["valore_1","valore_3"]'
+      value='["opt_1","opt_3"]'
     >
       <span slot="legend">Gruppo di checkbox</span>
       ${renderComponent({
@@ -348,8 +348,8 @@ export const GroupInitValue: Story = {
         group: undefined,
         inline: undefined,
         disabled: undefined,
-        label: 'Valore 1',
-        value: 'valore_1',
+        label: 'Opzione numero 1',
+        value: 'opt_1',
       })}
       ${renderComponent({
         ...params,
@@ -358,8 +358,8 @@ export const GroupInitValue: Story = {
         group: undefined,
         inline: undefined,
         disabled: undefined,
-        label: 'Valore 2',
-        value: 'valore_2',
+        label: 'Opzione numero 2',
+        value: 'opt_2',
       })}
       ${renderComponent({
         ...params,
@@ -368,8 +368,8 @@ export const GroupInitValue: Story = {
         group: undefined,
         inline: undefined,
         disabled: undefined,
-        label: 'Valore 3',
-        value: 'valore_3',
+        label: 'Opzione numero 3',
+        value: 'opt_3',
       })}
     </it-checkbox-group>
   `,
@@ -393,8 +393,8 @@ export const ValidazioneNativa: Story = {
   args: { required: true },
   render: (params) => html`
     <form>
-      <div class="row">
-        <div class="col-md-6">
+      <div class="row mb-4">
+        <div class="col-md-6 d-flex align-items-center">
           ${renderComponent({
             ...params,
             label: 'Checkbox singola obbligatoria',
@@ -457,7 +457,7 @@ export const ValidazioneCustom: Story = {
   args: { customValidation: true, validityMessage: 'Questo campo è obbligatorio!!!' },
   render: (params) => html`
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 d-flex align-items-center">
           ${renderComponent({
             ...params,
             required: undefined,
@@ -473,7 +473,7 @@ export const ValidazioneCustom: Story = {
             ?inline=${params.inline}
             ?disabled=${params.disabled}
             ?custom-validation=${params.customValidation}
-            ?validity-message=${params.validityMessage}
+            validity-message="${ifDefined(params.validityMessage || undefined)}"
           >
             <span slot="legend">Gruppo di checkbox obbligatorio</span>
             ${renderComponent({
