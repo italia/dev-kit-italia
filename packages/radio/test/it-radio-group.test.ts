@@ -298,7 +298,7 @@ describe('<it-radio-group>', () => {
     expect(el.value).to.equal('1');
 
     // Click on second radio
-    const listener = oneEvent(el, 'change');
+    const listener = oneEvent(el, 'it-change');
     radios[1].click();
     await listener;
 
@@ -446,7 +446,7 @@ describe('<it-radio-group>', () => {
     expect(formData.get('test')).to.equal('option2');
   });
 
-  it('should emit change event when selection changes', async () => {
+  it('should emit it-change event when selection changes', async () => {
     const el = await fixture<ItRadioGroup>(html`
       <it-radio-group name="test">
         <it-radio value="1"><span slot="label">Option 1</span></it-radio>
@@ -457,7 +457,7 @@ describe('<it-radio-group>', () => {
     const radios = el.querySelectorAll<ItRadio>('it-radio');
 
     setTimeout(() => radios[1].click());
-    const event = await oneEvent(el, 'change');
+    const event = await oneEvent(el, 'it-change');
 
     expect(event).to.exist;
     expect(el.value).to.equal('2');
