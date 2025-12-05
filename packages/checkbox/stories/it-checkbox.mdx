@@ -41,7 +41,7 @@ Sul componente `<it-checkbox-group>` sono disponibili alcuni attributi che si ri
 
 Inserisci l'etichetta del gruppo in un elemento con attributo `slot="legend"` all'interno di `<it-checkbox-group>`.
 
-In questi casi, al submit della form via js, il modo corretto per estrarre il valore del campo è:
+Quando utilizzi il componente `it-checkbox-group` in una form, il modo corretto per estrarre il valore del campo al submit via JS è:
 
 ```js
 const formData = new FormData(document.getElementById('form'));
