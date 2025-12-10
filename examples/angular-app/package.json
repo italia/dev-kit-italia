@@ -23,7 +23,7 @@
   "private": true,
   "dependencies": {
     "@italia/dev-kit-italia": "file:../../packages/dev-kit-italia",
-    "@angular/common": "^20.2.0",
+    "@angular/common": "^20.3.14",
     "@angular/compiler": "^20.3.15",
     "@angular/core": "^20.2.0",
     "@angular/forms": "^20.2.0",
