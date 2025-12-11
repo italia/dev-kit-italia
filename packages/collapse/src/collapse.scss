@@ -2,9 +2,10 @@
 @import 'bootstrap-italia/src/scss/base/variables';
 @import 'bootstrap-italia/src/scss/base/mixins';
 @import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/components/buttons';
 
 :host {
-  display: block;
+  display: inline-flex;
 }
 
 .collapse-wrapper {
@@ -14,4 +15,13 @@
 .collapse-content {
   overflow: hidden;
   height: 0;
+}
+
+.collapse-item {
+  width: fit-content;
+}
+
+button,
+[role='button'] {
+  cursor: pointer;
 }

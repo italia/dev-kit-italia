@@ -1,3 +1,5 @@
+@use 'sass:list';
+
 :root {
   --it-fouc-bg: #ddd;
   --it-host-display: inline-block;
@@ -57,8 +59,7 @@
         &::after {
           display: inline-block;
           content: attr(#{$attr});
-          font: inherit;
-          // visibility: hidden; // invisibile ma riserva spazio
+          font-family: var(--bs-font-sans);
           white-space: nowrap;
         }
       }
@@ -128,8 +129,11 @@ $it-components: (
   'it-video': (
     height: auto,
     width: 100%,
-    aspect-ratio: 16 / 9,
+    // Check the Heads up! section in the documentation
+    // https://sass-lang.com/documentation/modules/list/#slash
+    aspect-ratio: list.slash(16, 9),
   ),
+  'it-collapse': (),
 );
 
 @each $tag, $params in $it-components {

@@ -37,7 +37,7 @@ export class ItSection extends BaseComponent {
     const contentWrapper = section.querySelector('.section-content');
     if (!contentWrapper) return;
 
-    if (this.inverse) {
+    if (this.inverse || this.variant === 'emphasis' || this.variant === 'primary') {
       contentWrapper.classList.add('white-color');
     } else {
       contentWrapper.classList.remove('white-color');

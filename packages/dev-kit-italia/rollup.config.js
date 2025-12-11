@@ -47,6 +47,8 @@ export default [
       scss({
         fileName: 'styles.css',
         outputStyle: 'compressed',
+        quietDeps: true,
+        silenceDeprecations: ['import'],
       }),
     ],
   },

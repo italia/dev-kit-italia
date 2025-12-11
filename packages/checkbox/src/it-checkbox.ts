@@ -68,6 +68,8 @@ export class ItCheckbox extends FormControl {
   override connectedCallback() {
     super.connectedCallback?.();
     this._handleReady();
+    // 🔍 Verifica se il parent è un it-checkbox-group
+    this.isInGroup = !!this.closest('it-checkbox-group');
   }
 
   override updated(changedProperties: Map<string | number | symbol, unknown>) {
@@ -104,12 +106,14 @@ export class ItCheckbox extends FormControl {
       this.indeterminate ? 'semi-checked' : '',
     );
 
+    const inputIsRequired = this.required && !this.isInGroup; // Disabilita il 'required' nativo se siamo in un gruppo
+
     const inputRender = html`
       <input
         part="checkbox focusable"
         ${setAttributes(this._ariaAttributes)}
         aria-describedby=${ifDefined(ariaDescribedBy || undefined)}
-        ?aria-invalid=${invalid}
+        aria-invalid=${ifDefined(invalid ? 'true' : undefined)}
         @input="${this._handleInput}"
         @blur=${this._handleBlur}
         @focus=${this._handleFocus}
@@ -121,7 +125,7 @@ export class ItCheckbox extends FormControl {
         .checked=${live(this.checked)}
         .indeterminate=${live(this.indeterminate)}
         .disabled=${this.disabled}
-        .required=${this.required}
+        .required=${inputIsRequired}
         ?formNoValidate=${this.customValidation}
         .value="${live(this.value)}"
         class="${inputClasses}"
@@ -140,7 +144,7 @@ export class ItCheckbox extends FormControl {
       () => html` <small class="form-text" id="${supportTextId}">${this.supportText}</small> `,
     )}`;
 
-    const showValidation = true; // this._touched || this.customValidation ;
+    const showValidation = this.formControlController.submittedOnce || this.customValidation; // true; // this._touched || this.customValidation ;
     const validityMessage = (showValidation ? (this.validationMessage ?? '') : '') ?? '';
 
     const invalid =

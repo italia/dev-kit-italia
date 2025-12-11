@@ -63,6 +63,8 @@ export class FormControlController implements ReactiveController {
 
   options: FormControlControllerOptions;
 
+  submittedOnce: boolean = false;
+
   constructor(host: ReactiveControllerHost & FormControl, options?: Partial<FormControlControllerOptions>) {
     (this.host = host).addController(this);
     this.options = {
@@ -178,6 +180,7 @@ export class FormControlController implements ReactiveController {
     if (!formCollection) {
       return;
     }
+    this.submittedOnce = false;
 
     // Remove this host from the form's collection
     formCollection.delete(this.host);
@@ -242,6 +245,9 @@ export class FormControlController implements ReactiveController {
             }
           }
           break;
+        case 'it-checkbox-group':
+          // non settare valori in formData, perchè ogni singola checkbox setta il suo valore
+          break;
         default:
           if (Array.isArray(value)) {
             (value as unknown[]).forEach((val) => {
@@ -265,14 +271,33 @@ export class FormControlController implements ReactiveController {
       });
     }
 
-    if (this.form && !this.form.noValidate && !disabled && !reportValidity(this.host)) {
+    const resReportValidity = reportValidity(this.host);
+
+    if (this.form && !this.form.noValidate && !disabled && !resReportValidity) {
       event.preventDefault();
       // event.stopImmediatePropagation(); // se lo attiviamo, valida un campo alla volta
+
+      // Scroll al primo controllo non valido
+      const formControls = formCollections.get(this.form);
+      if (formControls) {
+        for (const control of formControls) {
+          if (!control.validity?.valid) {
+            // Scroll smooth verso il controllo non valido
+            control.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center',
+            });
+            break;
+          }
+        }
+      }
     }
+    this.submittedOnce = true;
   };
 
   private handleFormReset = () => {
     this.options.setValue(this.host, '');
+    this.submittedOnce = false;
     this.setUserInteracted(this.host, false);
     interactions.set(this.host, []);
   };
@@ -429,6 +454,12 @@ export class FormControlController implements ReactiveController {
     host.toggleAttribute('data-valid', isValid);
     host.toggleAttribute('data-user-invalid', !isValid && hasInteracted);
     host.toggleAttribute('data-user-valid', isValid && hasInteracted);
+  }
+
+  userInteracted() {
+    const hasInteracted = Boolean(userInteractedControls.has(this.host));
+
+    return hasInteracted;
   }
 
   /**

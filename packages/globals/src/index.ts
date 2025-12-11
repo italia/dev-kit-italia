@@ -3,6 +3,7 @@ import TrackFocus from './utils/track-focus.js';
 import setAttributes from './directives/setAttributes.js';
 import AriaKeyboardListController from './controllers/aria-keyboard-list-controller.js';
 import { StoryFormControlMethodAndProps } from './stories/formControlReusableStories.js';
+import { CollapsibleOrHiddenContentGuidelines } from './stories/reusableUsageGuidelinesStories.js';
 
 export { TrackFocus, setAttributes, AriaKeyboardListController };
 export type { AriaKeyboardConfig } from './controllers/aria-keyboard-list-controller.js';
@@ -26,4 +27,4 @@ export { cookies } from './utils/cookies.js';
 export type Constructor<T = {}> = new (...args: any[]) => T;
 export { WindowManager, type ScrollCallback, type ScrollState } from './window-manager.js';
 
-export { StoryFormControlMethodAndProps };
+export { StoryFormControlMethodAndProps, CollapsibleOrHiddenContentGuidelines };
