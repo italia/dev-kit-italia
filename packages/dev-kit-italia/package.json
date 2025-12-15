@@ -54,8 +54,9 @@
     "@italia/avatar": "workspace:^",
     "@italia/accordion": "workspace:^",
     "@italia/button": "workspace:^",
-    "@italia/chip": "workspace:^",
     "@italia/checkbox": "workspace:^",
+    "@italia/chip": "workspace:^",
+    "@italia/collapse": "workspace:^",
     "@italia/dropdown": "workspace:^",
     "@italia/i18n": "workspace:^",
     "@italia/rating": "workspace:^",
@@ -63,6 +64,7 @@
     "@italia/input": "workspace:^",
     "@italia/popover": "workspace:^",
     "@italia/section": "workspace:^",
+    "@italia/skiplinks": "workspace:^",
     "@italia/sticky": "workspace:^",
     "@italia/video": "workspace:^",
     "@italia/radio": "workspace:^"

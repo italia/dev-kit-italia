@@ -126,7 +126,7 @@ Ogni \`<it-radio>\` all'interno del gruppo deve avere un valore unico nell'attri
 <p>
 Il componente implementa completamente le specifiche ARIA per i gruppi di radio button: \`<it-radio-group>\` gestisce automaticamente gli attributi \`role="radiogroup"\` e \`aria-labelledby\`, mentre ogni \`<it-radio>\` riceve gli attributi \`role="radio"\`, \`aria-checked\` e \`aria-disabled\` in base al proprio stato.</p>
 <p>
-A causa delle limitazioni architetturali dei Web Components e del Shadow DOM, non è possibile utilizzare il meccanismo nativo HTML basato su \`<fieldset>\` e \`<legend>\`. Questo approccio, pur essendo standard, presenta notevoli problematiche di compatibilità cross-browser con gli screen reader: test approfonditi hanno dimostrato comportamenti inconsistenti tra diverse combinazioni di browser, sistemi operativi e tecnologie assistive. In alcuni casi la \`<legend>\` non viene annunciata, in altri il gruppo non viene riconosciuto come tale, mentre in altri ancora mancano informazioni sulla posizione delle opzioni all'interno del gruppo. Per superare queste limitazioni e garantire un'esperienza uniforme e accessibile su tutte le piattaforme, il componente richiede che la label del gruppo venga fornita tramite lo slot \`label\`, assicurando così la corretta associazione semantica anche all'interno dello Shadow DOM.</p>
+A causa delle limitazioni architetturali dei Web Components e del Shadow DOM, non è possibile utilizzare il meccanismo nativo HTML basato su \`<fieldset>\` e \`<legend>\`. Questo approccio, pur essendo standard, presenta notevoli problematiche di compatibilità cross-browser con gli screen reader: test approfonditi hanno dimostrato comportamenti inconsistenti tra diverse combinazioni di browser, sistemi operativi e tecnologie assistive. In alcuni casi la \`<legend>\` non viene annunciata, in altri il gruppo non viene riconosciuto come tale, mentre in altri ancora mancano informazioni sulla posizione delle opzioni all'interno del gruppo. Per superare queste limitazioni e garantire un'esperienza uniforme e accessibile su tutte le piattaforme, il componente richiede che l'etichetta del gruppo venga fornita tramite lo slot \`label\`, assicurando così la corretta associazione semantica anche all'interno dello Shadow DOM.</p>
 <p>L'implementazione si conforma al pattern "Radio Group" definito nelle [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/radio/examples/radio/), adottando la gestione della tastiera e degli stati prevista dalle linee guida di accessibilità. Questo approccio garantisce che le tecnologie assistive, in particolare gli screen reader, comunichino correttamente la posizione di ogni opzione nel gruppo (es. "1 di 3", "2 di 3", "3 di 3"), migliorando significativamente l'esperienza utente per le persone con disabilità.
 </p></div></div>
 `,
@@ -201,7 +201,7 @@ Per la personalizzazione degli stili del componente \`<it-radio>\` si può usare
 | \`button\` | Il cerchio del radio button visibile |
 | \`input-wrapper\` | Il wrapper principale che contiene il radio control e il testo di supporto |
 | \`radio-control\` | Il contenitore che racchiude il button e la label |
-| \`label\` | La label del radio button |
+| \`label\` | L'etichetta del radio button |
 
 [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
 
@@ -237,7 +237,7 @@ export const ComeUsareItRadio: Story = {
 Il componente \`<it-radio>\` deve essere sempre utilizzato all'interno di un \`<it-radio-group>\` e richiede obbligatoriamente:
 
 - Un **attributo \`value\`** univoco per identificare l'opzione
-- Una **label definita tramite slot** \`<span slot="label">Testo della label</span>\`
+- Una **etichetta definita tramite slot** \`<span slot="label">Testo dell'etichetta</span>\`
 
 #### Proprietà principali
 
@@ -245,7 +245,7 @@ Il componente \`<it-radio>\` deve essere sempre utilizzato all'interno di un \`<
 |-----------|------|-------------|
 | \`value\` | \`string\` | Valore univoco del radio button (obbligatorio) |
 | \`disabled\` | \`boolean\` | Se \`true\`, disabilita il singolo radio button |
-| \`support-text\` | \`string\` | Testo di supporto visualizzato sotto la label (obbligatorio) |
+| \`support-text\` | \`string\` | Testo di supporto visualizzato sotto l'etichetta (obbligatorio) |
 `,
       },
     },
@@ -255,7 +255,7 @@ Il componente \`<it-radio>\` deve essere sempre utilizzato all'interno di un \`<
 
 export const DefinizioneDellaLabel: Story = {
   ...meta,
-  name: 'Definizione della Label',
+  name: "Definizione dell'etichetta",
   parameters: {
     docs: {
       description: {
@@ -263,9 +263,9 @@ export const DefinizioneDellaLabel: Story = {
 
 Sia \`<it-radio-group>\` che \`<it-radio>\` espongono uno slot \`label\` per definire le rispettive etichette.
 
-La label del gruppo \`<it-radio-group>\` viene definita tramite lo slot \`label\` dell'elemento \`<it-radio-group>\` e identifica l'intero gruppo di radio button. È possibile utilizzare HTML all'interno dello slot per creare label formattate.
+L'etichetta del gruppo \`<it-radio-group>\` viene definita tramite lo slot \`label\` dell'elemento \`<it-radio-group>\` e identifica l'intero gruppo di radio button. È possibile utilizzare HTML all'interno dello slot per creare etichette formattate.
 
-Ogni \`<it-radio>\` richiede obbligatoriamente una label definita tramite il proprio slot \`label\`. La label identifica la singola opzione all'interno del gruppo. È possibile utilizzare anche HTML all'interno dello slot per creare label più complesse con formattazione o altri elementi.
+Ogni \`<it-radio>\` richiede obbligatoriamente un'etichetta definita tramite il proprio slot \`label\`. L'etichetta identifica la singola opzione all'interno del gruppo. È possibile utilizzare anche HTML all'interno dello slot per creare etichette più complesse con formattazione o altri elementi.
 `,
       },
     },
@@ -276,14 +276,14 @@ Ogni \`<it-radio>\` richiede obbligatoriamente una label definita tramite il pro
       ${renderComponent({
         ...params,
         id: 'radio-label1',
-        label: 'Label semplice',
+        label: 'Etichetta semplice',
         value: 'opzione1',
       })}
       <it-radio id="radio-label2" value="opzione2">
-        <span slot="label"><strong>Label</strong> con <em>formattazione</em></span>
+        <span slot="label"><strong>Etichetta</strong> con <em>formattazione</em></span>
       </it-radio>
       <it-radio id="radio-label3" value="opzione3">
-        <span slot="label">Label semplice</span>
+        <span slot="label">Etichetta semplice</span>
       </it-radio>
     </it-radio-group>
   `,
@@ -359,7 +359,7 @@ export const Inline: Story = {
 
 export const Disabilitato: Story = {
   ...meta,
-  name: 'Radio disabilitati',
+  name: 'Stato disabilitato',
   parameters: {
     docs: {
       description: {
@@ -369,7 +369,7 @@ export const Disabilitato: Story = {
 
 Aggiungi l'attributo \`disabled\` ad un singolo \`<it-radio>\` per disabilitare quell'opzione.
 
-#### Gruppo intero disabilitato
+#### Gruppo di radio disabilitato
 
 Se invece intendi disabilitare l'intero gruppo, aggiungi l'attributo \`disabled\` a \`<it-radio-group>\`. In questo modo tutti i radio al suo interno risulteranno disabilitati automaticamente.
 `,
@@ -528,7 +528,7 @@ Verranno mostrati i messaggi di errore nativi, e i componenti \`<it-radio-group>
       <span slot="label">No, non accetto</span>
     </it-radio>
   </it-radio-group>
-  <button type="submit">Invia</button>
+  <it-button type="submit" variant="primary">Invia</it-button>
 </form>
 \`\`\`
 
@@ -561,7 +561,7 @@ Non esistono altre possibili validazioni native per questo tipo di input. Per va
           <span slot="label">Forse</span>
         </it-radio>
       </it-radio-group>
-      <button type="submit" class="btn btn-primary mt-3">Invia</button>
+      <it-button type="submit" class="mt-3" variant="primary">Invia</it-button>
       <p class="form-text mt-2">Prova a inviare il form senza selezionare nulla per vedere la validazione.</p>
     </form>
   `,

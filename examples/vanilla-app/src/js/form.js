@@ -1,8 +1,26 @@
+function formDataToObject(fd) {
+  const obj = {};
+
+  for (const [key, value] of fd.entries()) {
+    if (obj[key] !== undefined) {
+      // Se la key esiste già → trasformala in array
+      if (!Array.isArray(obj[key])) {
+        obj[key] = [obj[key]];
+      }
+      obj[key].push(value);
+    } else {
+      obj[key] = value;
+    }
+  }
+
+  return obj;
+}
+
 const handleSubmit = (e) => {
   e.preventDefault();
 
   const formData = new FormData(document.getElementById('form'));
-  const data = Object.fromEntries(formData.entries());
+  const data = formDataToObject(formData);
 
   console.log(data);
   // Handle form submission logic here
@@ -67,6 +85,21 @@ document.addEventListener('DOMContentLoaded', () => {
             return value;
           },
           errorMessage: "L'accettazione della privacy è obbligatoria",
+        },
+      ],
+      {
+        events: ['it-change'], // 👈 FORZA l’ascolto sul change
+      },
+    )
+    .addField(
+      'it-checkbox-group[id="animali-ext"]',
+      [
+        {
+          validator: () => {
+            const value = getItInputValue('it-checkbox-group[id="animali-ext"]');
+            return value.length > 0;
+          },
+          errorMessage: 'Scegli almeno un animale',
         },
       ],
       {

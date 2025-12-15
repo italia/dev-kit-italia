@@ -57,7 +57,7 @@
   <section class="mb-5">
     <h2>Con icone personalizzate</h2>
     <div style="display: flex; justify-content: center;">
-    <it-rating name="rating-check" value="4">
+    <it-rating name="rating-check" value="4" icon="it-check-circle">
       <span slot="label">Valutazione con check</span>
       <it-rating-item value="1" icon="it-check-circle"><span slot="label">1 check</span></it-rating-item>
       <it-rating-item value="2" icon="it-check-circle"><span slot="label">2 check</span></it-rating-item>
@@ -85,7 +85,7 @@
         <it-rating-item value="4"><span slot="label">4 stelle</span></it-rating-item>
         <it-rating-item value="5"><span slot="label">5 stelle</span></it-rating-item>
       </it-rating>
-      <button type="submit" class="btn btn-primary mt-3">Invia</button>
+      <it-button type="submit" class="btn btn-primary mt-3">Invia</it-button>
     </form>
     </div>
   </section>
@@ -124,8 +124,8 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary">Invia recensione</button>
-      <button type="reset" class="btn btn-outline-primary ms-2">Reset</button>
+      <it-button type="submit" class="btn btn-primary">Invia recensione</it-button>
+      <it-button type="reset" class="btn btn-outline-primary ms-2">Reset</it-button>
     </form>
     </div>
   </section>

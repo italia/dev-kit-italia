@@ -97,7 +97,7 @@ const handleReviewReset = () => {
             <it-rating-item name="rating-required" value="4"><span slot="label">4 stelle</span></it-rating-item>
             <it-rating-item name="rating-required" value="5"><span slot="label">5 stelle</span></it-rating-item>
           </it-rating>
-          <button type="submit" class="btn btn-primary mt-3">Invia</button>
+          <it-button type="submit" class="btn btn-primary mt-3">Invia</it-button>
         </form>
       </div>
     </section>
@@ -124,8 +124,8 @@ const handleReviewReset = () => {
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary">Invia recensione</button>
-          <button type="reset" class="btn btn-outline-primary ms-2">Reset</button>
+          <it-button type="submit" class="btn btn-primary">Invia recensione</it-button>
+          <it-button type="reset" class="btn btn-outline-primary ms-2">Reset</it-button>
         </form>
       </div>
     </section>

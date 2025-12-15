@@ -25,7 +25,7 @@ const meta = {
     disabled: false,
     readOnly: false,
     required: false,
-    icon: 'it-star-full',
+    icon: 'it-star-outline',
     maxElements: 5,
   },
   argTypes: {
@@ -40,7 +40,7 @@ const meta = {
     icon: {
       control: 'text',
       description: "Nome dell'icona da utilizzare per gli item del rating",
-      table: { defaultValue: { summary: 'it-star-full' } },
+      table: { defaultValue: { summary: 'it-star-outline' } },
     },
     disabled: {
       control: 'boolean',
@@ -95,6 +95,8 @@ export const EsempioInterattivo: Story = {
       @change=${(e: CustomEvent) => {
         console.log('Rating changed:', (e.target as HTMLElement).getAttribute('value'));
       }}
+      icon=${ifDefined(args.icon || undefined)}
+      max-elements=${args.maxElements.toString()}
     >
       <span slot="label">Valuta questo contenuto</span>
       <it-rating-item value="1" ?checked=${args.value === 1}>
@@ -265,6 +267,11 @@ export const InForm: Story = {
       <it-button type="submit" variant="primary">Invia recensione</it-button>
       <it-button type="reset" variant="primary" outline>Reset</it-button>
     </form>
+    <style>
+      #review-form  {
+        max-width: 400px;
+      }
+    </style>
   `,
 };
 

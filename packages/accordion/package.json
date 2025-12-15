@@ -24,7 +24,6 @@
     ".": "./dist/src/index.js",
     "./it-accordion.js": "./dist/src/it-accordion.js",
     "./it-accordion-item.js": "./dist/src/it-accordion-item.js",
-    "./it-collapse.js": "./dist/src/it-collapse.js",
     "./styles/*": "./styles/*"
   },
   "files": [
@@ -46,13 +45,15 @@
     "test:watch": "wtr --coverage --node-resolve --config web-test-runner.config.js --watch"
   },
   "dependencies": {
+    "@italia/collapse": "workspace:^",
+    "@italia/button": "workspace:^",
     "@italia/globals": "workspace:^",
+    "@italia/icon": "workspace:^",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.3",
-    "@italia/icon": "workspace:^",
     "@italia/test-config": "workspace:^",
     "@italia/typescript-config": "workspace:^",
     "@open-wc/testing": "catalog:",

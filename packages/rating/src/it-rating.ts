@@ -43,10 +43,10 @@ export class ItRating extends ItRadioGroup {
 
   /**
    * The icon name to use for the rating item
-   * @default 'it-star-full'
+   * @default 'it-star-outline'
    */
   @property({ type: String, reflect: true })
-  icon = 'it-star-full';
+  icon = 'it-star-outline';
 
   /**
    * Sync read-only state to all rating items

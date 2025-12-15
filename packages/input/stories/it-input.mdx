@@ -1,0 +1,147 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-input.stories';
+
+<Meta of={Stories} />
+
+# Input
+
+<description>Campi per l'inserimento di dati testuali, numerici, in forma libera o in formati specifici, all'interno di un form</description>
+
+## Cosa fa
+Il componente `it-input` consente all’utente di inserire dati testuali o numerici, sia in forma libera che secondo formati prestabiliti, all’interno di moduli (form).
+È ideale per raccogliere informazioni brevi (come nomi, email, telefono) o lunghe (come descrizioni), nonché per supportare varianti specifiche come password e aree di testo.
+Si utilizza quando si vuole dare all’utente la possibilità di digitare direttamente un valore e non semplicemente selezionarlo da un elenco di opzioni.
+
+[Approfondisci come e quando usare il componente Input](https://designers.italia.it/design-system/componenti/input/)
+
+## Anteprima e attributi del componente
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+## Indicazioni generali
+
+Per il corretto funzionamento degli elementi di tipo `<it-input>` è di fondamentale importanza l’utilizzo uno degli appositi attributi `type` (ad esempio, "email" per l’inserimento di indirizzi email o "number" per informazioni numeriche), in modo da sfruttare i controlli nativi dei browser più recenti come la verifica dell’email, l’utilizzo di metodo di input numerico ed altro.
+
+## Accessibilità
+
+Tutti gli attributi `it-aria-*` passati a `<it-input>` vengono applicati all'input generato.
+
+## Testo segnaposto
+
+Puoi abbinare al componente `<it-input>` un testo segnaposto (placeholder) per fornire indicazioni sul tipo di contenuto atteso. Questo testo non sostituisce l’etichetta, ma fornisce informazioni aggiuntive.
+<Canvas of={Stories.Placeholder} />
+
+## Testo di supporto
+
+In caso di necessità, puoi anche utilizzare un ulteriore contenuto testuale sotto il campo di testo, indicando nell'attributo `support-text` il testo da visualizzare.
+<Canvas of={Stories.TestoDiSupporto} />
+
+## Etichetta nascosta
+
+Se vuoi nascondere l'etichetta, come ad esempio nei campi di ricerca, è sufficiente passare l'attributo `label-hidden`.
+<Canvas of={Stories.LabelHidden} />
+
+## Icone o pulsanti
+
+<Description of={Stories.IconeOPulsanti} />
+<Canvas of={Stories.IconeOPulsanti} />
+
+## Dimensioni
+
+<Description of={Stories.Dimensioni} />
+<Canvas of={Stories.Dimensioni} />
+
+## Stato disabilitato
+
+Aggiungi l’attributo `disabled` ad un `<it-input>` per impedire la modifica del valore contenuto e non inviare i dati in esso contenuti.
+<Canvas of={Stories.Disabilitato} />
+
+## Stato readonly
+
+Aggiungi l’attributo `readonly` ad un `<it-input>` per impedire la modifica del valore contenuto.
+
+### Readonly normalizzato
+Se per qualche motivo vuoi avere gli elementi input readonly nella forma stilizzata come testo, aggiungi l'attributo `plaintext` a `<it-input>`.
+
+<Canvas of={Stories.Readonly} />
+
+## Password
+
+Per semplificare l’inserimento della password, il componente `<it-input>` di tipo password include un pulsante che mostra i caratteri digitati.
+
+Puoi aggiungere anche un testo di supporto che aiuti nella compilazione, attraverso l’attributo `support-text`.
+
+
+### Misuratore sicurezza e suggerimenti
+Nel caso di un campo per la scelta di una nuova password, puoi abbinare controlli per segnalare quanto la password che si sta inserendo segua alcuni suggerimenti di sicurezza, come la lunghezza minima o l’uso di caratteri speciali, attraverso gli attributi `strength-meter="true"` e `minlength` per modificare la lunghezza minima richiesta per la password.
+
+Inoltre, puoi restituire all’utente una lista dei suggerimenti, con indicati quelli che sono stati soddisfatti, attraverso l’attributo `suggestions="true"`.
+
+<Canvas of={Stories.Password} />
+
+## Area di testo
+
+Per permettere agli utenti di inserire un testo esteso (ad esempio per lasciare commenti o informazioni), è bene utilizzare un elemento `<it-input>` con `type="textarea"`.
+<Canvas of={Stories.Textarea} />
+
+## Validazione e gestione degli errori
+
+Se non hai impostato la validazione custom tramite l'attributo `custom-validation`, e hai impostato uno di questi attributi
+- `required`
+- `pattern`
+- `min`
+- `max`
+- `step`
+- `minlength`
+- `maxlength`
+
+viene effettuata una validazione interna utilizzando la validazione nativa del browser.
+
+<Canvas of={Stories.ValidazioneNativa} />
+
+### Personalizzazione dei messaggi di errore
+
+Puoi personalizzare alcuni dei messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
+
+- `validityRequired`: messaggio che viene mostrato quando il campo è `required` e non è compilato
+- `validityPattern`: messaggio che viene mostrato quando il campo non rispetta il pattern indicato
+- `validityMinlength`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo corta rispetto al valore passatto nell'attributo `min-length`
+- `validityMaxlength`: messaggio che viene mostrato quando la lunghezza del valore del campo è troppo lunga rispetto al valore passatto nell'attributo `max-length`
+
+Per gli altri errori di validazione non indicati, verranno mostrati i messaggi di errore nativi del browser.
+
+### Validazione esterna (validazione custom)
+
+Puoi anche validare il campo esternamente (via js ad esempio, o lato server), impostando l'attributo `custom-validation="true"`.
+In questo modo la validazione di default del browser effettuata internamente al componente è disabilitata.
+
+
+#### Campo invalido
+
+Nel caso il campo non sia valido, devi invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo `validity-message="Messaggio di errore"`.
+
+#### Campo valido
+
+Per riportare il campo ad uno stato 'valido', è sufficiente impostare il messaggio di errore a vuoto: `validity-message=""`.
+
+<Canvas of={Stories.ValidazioneCustom} />
+
+## Gestione degli eventi
+
+<Description of={Stories.GestioneEventi} />
+<Canvas of={Stories.GestioneEventi} />
+
+## {Stories.MetodiEPropPubblici.name}
+<Description of={Stories.MetodiEPropPubblici}/>
+
+## i18n
+
+Per questo componente sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+
+```js
+const translation = {
+  ${JSON.stringify(i18nIT).replaceAll('{"', '"').replaceAll('",', '",\n\t').replaceAll('"}', '"')}
+}
+```

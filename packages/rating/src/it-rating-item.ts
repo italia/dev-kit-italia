@@ -24,7 +24,7 @@ export class ItRatingItem extends ItRadio {
   }
 
   get icon(): string {
-    return this.group?.icon || 'it-star-full';
+    return this.group?.icon || 'it-star-outline';
   }
 
   /**
@@ -42,10 +42,14 @@ export class ItRatingItem extends ItRadio {
 
     // Use primary color only for filled icons
     const iconColor = isFilled ? 'primary' : 'secondary';
+    let renderedIcon = this.icon;
+    if (isFilled && this.icon === 'it-star-outline') {
+      renderedIcon = 'it-star-full';
+    }
 
     return html`
       <div id="input" part="input"></div>
-      <it-icon id="star" part="star" name="${this.icon}" size="sm" aria-hidden="true" color="${iconColor}"></it-icon>
+      <it-icon id="star" part="star" name="${renderedIcon}" size="sm" aria-hidden="true" color="${iconColor}"></it-icon>
     `;
   }
 

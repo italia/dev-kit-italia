@@ -127,9 +127,9 @@ export default function Rating() {
                 <span slot="label">5 stelle</span>
               </it-rating-item>
             </it-rating>
-            <button type="submit" className="btn btn-primary mt-3">
+            <it-button type="submit" className="btn btn-primary mt-3">
               Invia
-            </button>
+            </it-button>
           </form>
         </div>
       </section>
@@ -180,12 +180,12 @@ export default function Rating() {
               </div>
             </div>
 
-            <button type="submit" className="btn btn-primary">
+            <it-button type="submit" className="btn btn-primary">
               Invia recensione
-            </button>
-            <button type="reset" className="btn btn-outline-primary ms-2">
+            </it-button>
+            <it-button type="reset" className="btn btn-outline-primary ms-2">
               Reset
-            </button>
+            </it-button>
           </form>
         </div>
       </section>

@@ -1,0 +1,94 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-icon.stories';
+
+<Meta of={Stories} />
+
+# Icon
+
+<description>Componente per l'utilizzo di icone del Design System e/o icone personalizzate</description>
+
+## Cosa fa
+
+Il componente Icon ti consente di visualizzare una delle icone SVG disponibili nel Design System, usare un'icona SVG proprietaria o un'icona SVG tramite URL.
+
+Tutte le icone vengono caricate unicamente in modalità asincrona.
+
+[Approfondisci come e quando usare le icone nel Design System](https://designers.italia.it/design-system/fondamenti/icone/)
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+
+<Controls of={Stories.EsempioInterattivo} />
+
+## Accessibilità
+
+Di default, le icone sono considerate decorative: il componente aggiunge automaticamente `role="presentation"` e `aria-hidden="true"` all'elemento SVG, così da essere ignorate dalle tecnologie assistive.
+
+Se invece viene valorizzato l'attributo `label`, il componente `<it-icon>` inserisce un tag `<title>` all'interno dell'SVG, corredato da relativo `aria-labelledBy`, e imposta `role="img"` per supportare tecnologie assistive come gli screen reader.
+
+## Varianti di colore
+
+Utilizza l'attributo `color` per cambiare il colore dell'icona.
+
+<Canvas of={Stories.VariantiColore} />
+
+
+## Varianti di dimensione
+
+Il componente `<it-icon>` supporta quattro dimensioni predefinite: `xs`, `sm`, `lg`, `xl`. Utilizza l'attributo `size` per impostare la dimensione desiderata.
+
+<Canvas of={Stories.VariantiDimensione} />
+
+## Varianti di allineamento
+
+Puoi usare l'attributo `align` per posizionare le icone all'interno di un elemento. I valori disponibili sono: `top`, `middle`, `bottom`.
+
+<Canvas of={Stories.VariantiAllineamento} />
+
+## Spaziatura
+
+Puoi applicare l'attributo `padded` all'icona per creare attorno all'icona un padding proporzionale alla dimensione dell'icona stessa.
+
+<Canvas of={Stories.Spaziatura} />
+
+## SVG personalizzato
+
+Puoi usare `<it-icon>` come contenitore per un qualsiasi SVG personalizzato, semplicemente inserendolo nello slot:
+
+```html
+<it-icon size='sm' label='Icona utente'>
+  <svg viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" fill="red"></circle>
+  </svg>
+</it-icon>
+```
+
+In questo caso:
+- il componente si occupa comunque di gestire l'accessibilità
+- vengono rimossi eventuali `<title>` duplicati
+- viene forzato `aria-hidden="true"` se necessario
+
+<Canvas of={Stories.SVGPersonalizzato} />
+
+## SVG esterno
+
+È possibile utilizzare un'immagine esterna come icona, utilizzando l'URL dell'immagine nell'attributo `src` del componente.
+
+```html
+<it-icon src="https://…/logo.svg" label="Logo"></it-icon>
+```
+
+<Canvas of={Stories.SVGEsterno} />
+
+## Icone disponibili
+
+Questa sezione mostra tutte le icone SVG disponibili nel Design System. Puoi cercare un'icona per nome e cliccarla per copiarne il nome identificativo da usare nell'attributo `name`.
+
+<Canvas of={Stories.IconeDisponibili} />
+
+## Personalizzazione degli stili
+
+Per la personalizzazione degli stili puoi usare il selettore `::part` dedicato passando il valore `icon`. [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).

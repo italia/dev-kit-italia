@@ -96,6 +96,7 @@ I seguenti pacchetti vengono rilasciati sempre con la stessa versione (configura
 - `@italia/globals`
 - `@italia/icon`
 - `@italia/video`
+- `@italia/skiplinks`
 
 ### Pacchetti Ignorati
 

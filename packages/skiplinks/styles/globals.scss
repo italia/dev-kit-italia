@@ -1,0 +1,9 @@
+it-skiplinks {
+  --it-host-display: block;
+
+  &:defined {
+    > a {
+      display: none;
+    }
+  }
+}

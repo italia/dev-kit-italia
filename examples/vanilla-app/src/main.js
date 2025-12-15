@@ -35,8 +35,14 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/accordion">
         Accordion
       </a>
+      <a href="/src/affix">
+        Affix
+      </a>
       <a href="/src/avatar">
         Avatar
+      </a>
+      <a href="/src/badge">
+        Badge
       </a>
       <a href="/src/button">
         Button
@@ -46,6 +52,9 @@ document.querySelector('#app-header').innerHTML = `
       </a>
       <a href="/src/chip">
         Chip
+      </a>
+      <a href="/src/collapse">
+        Collapse
       </a>
       <a href="/src/dropdown">
         Dropdown
@@ -68,13 +77,17 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/section">
         Section
       </a>
-      <a href="/src/video">
-        Video
+      <a href="/src/skiplinks">
+        Skiplinks
       </a>
       <a href="/src/sticky">
         Sticky
       </a>
+      <a href="/src/video">
+        Video
+      </a>
     </nav>
+
   </div>
 `;
 
@@ -87,7 +100,7 @@ document.querySelector('#app-footer').innerHTML = `
             <div class="col-sm-12">
               <div class="it-brand-wrapper">
                 <a href="#">
-                  <it-icon name="it-pa" size="lg" color="white"></it-icon>
+                  <it-icon name="it-pa" size="lg" color="inverse"></it-icon>
                   <div class="it-brand-text ms-3">
                     <h2 class="no_toc">Nome Ente</h2>
                     <h3 class="no_toc">Tagline</h3>
@@ -179,25 +192,25 @@ document.querySelector('#app-footer').innerHTML = `
                 <ul class="list-inline text-left social">
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#">
-                      <it-icon color="white" size="sm" name="it-designers-italia"></it-icon>
+                      <it-icon color="inverse" size="sm" name="it-designers-italia"></it-icon>
                       <span class="visually-hidden">Designers Italia (link esterno)</span>
                     </a>
                   </li>
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#">
-                      <it-icon color="white" size="sm" name="it-twitter"></it-icon>
+                      <it-icon color="inverse" size="sm" name="it-twitter"></it-icon>
                       <span class="visually-hidden">X (link esterno)</span>
                     </a>
                   </li>
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#">
-                      <it-icon color="white" size="sm" name="it-medium"></it-icon>
+                      <it-icon color="inverse" size="sm" name="it-medium"></it-icon>
                       <span class="visually-hidden">Medium (link esterno)</span>
                     </a>
                   </li>
                   <li class="list-inline-item">
                     <a class="p-2 text-white" href="#">
-                      <it-icon color="white" size="sm" name="it-behance"></it-icon>
+                      <it-icon color="inverse" size="sm" name="it-behance"></it-icon>
                       <span class="visually-hidden">Behance (link esterno)</span>
                     </a>
                   </li>
@@ -215,6 +228,7 @@ document.querySelector('#app-footer').innerHTML = `
                   placeholder="Inserisci la tua email"
                   label-hidden
                 >
+                  <span slot="label">Iscriviti alla newsletter</span>
                   <it-button type="submit" variant="primary" slot="append">Iscriviti</it-button>
                 </it-input>
               </div>
