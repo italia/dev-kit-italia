@@ -136,7 +136,7 @@ export class ItInput extends FormControl {
 
     if (!this.label || this.label?.length === 0) {
       this.logger.warn(
-        `Label is required to ensure accessibility. Please, define a label for <it-input name="${this.name}" ... /> . Set attribute label-hidden="true" if you don't want to show label.`,
+        `Label is required to ensure accessibility. Please, define a label for <it-input name="${this.name}" id="${this.id}" ... /> . Set attribute label-hidden="true" if you don't want to show label.`,
       );
     }
   }
@@ -327,20 +327,20 @@ export class ItInput extends FormControl {
     return nothing;
   }
 
-  private _renderInput(supportTextId: string, invalid: boolean, validityMessage: string) {
+  private _renderInput(supportTextId: string, invalid: boolean, validityMessage: string, showValidation: boolean) {
     const ariaDescribedBy = this.composeClass(
       this.supportText?.length > 0 ? supportTextId : '',
       this.passwordStrengthMeter ? `strengthMeterInfo_${this._id}` : '',
       this._ariaAttributes['aria-describedby']?.length > 0 ? this._ariaAttributes['aria-describedby'] : '',
-      validityMessage?.length > 0 ? `invalid-feedback-${this._id}` : '',
+      showValidation && validityMessage?.length > 0 ? `invalid-feedback-${this._id}` : '',
     );
 
     const inputClasses = this.composeClass(
       'it-form__control',
       this.plaintext ? 'form-control-plaintext' : 'form-control',
       this.size ? `form-control-${this.size}` : '',
-      invalid ? 'is-invalid' : '',
-      !invalid && this._touched && !this.readonly ? 'just-validate-success-field' : '',
+      showValidation && invalid ? 'is-invalid' : '',
+      showValidation && !invalid && !this.readonly ? 'just-validate-success-field' : '',
     );
 
     let inputRender;
@@ -400,6 +400,7 @@ export class ItInput extends FormControl {
           min=${ifDefined(this.min)}
           max=${ifDefined(this.max)}
           step=${ifDefined(this.step as number)}
+          autocomplete="off"
           pattern=${ifDefined(this.pattern)}
           ?formNoValidate=${this.customValidation}
           .value="${live(this.value)}"
@@ -422,7 +423,7 @@ export class ItInput extends FormControl {
       () => html` <small class="form-text" id="${supportTextId}">${this.supportText}</small> `,
     )}`;
 
-    const showValidation = true; // this._touched || this.customValidation;
+    const showValidation = this.formControlController.submittedOnce || this.customValidation; // true; // this._touched || this.customValidation;
     const validityMessage = (showValidation ? this.validationMessage : '') ?? '';
     const invalid =
       validityMessage?.length > 0 || (!this.customValidation && this.inputElement?.checkValidity() === false);
@@ -464,7 +465,7 @@ export class ItInput extends FormControl {
                       <slot name="prepend" @slotchange=${() => this.requestUpdate()}></slot
                     ></span>`,
                 )}
-                ${this._renderInput(supportTextId, invalid, validityMessage)}
+                ${this._renderInput(supportTextId, invalid, validityMessage, showValidation)}
                 ${when(
                   this.type === 'number',
                   () =>
@@ -496,7 +497,7 @@ export class ItInput extends FormControl {
               </div>
               ${validityMessageRender} ${supportTextRender} ${this._renderpasswordStrengthMeter()}`,
           () =>
-            html` ${this._renderInput(supportTextId, invalid, validityMessage)} ${validityMessageRender}
+            html` ${this._renderInput(supportTextId, invalid, validityMessage, showValidation)} ${validityMessageRender}
             ${supportTextRender} ${this._renderpasswordStrengthMeter()}`,
         )}
       </div>
