@@ -135,6 +135,7 @@
                   placeholder="Inserisci la tua email"
                   label-hidden
                 >
+                  <span slot="label">Iscriviti alla newsletter</span>
                   <it-button type="submit" variant="primary" slot="append">Iscriviti</it-button>
                 </it-input>
               </div>
