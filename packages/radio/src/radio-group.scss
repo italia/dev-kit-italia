@@ -31,14 +31,6 @@
   gap: var(--bs-spacing-s);
 }
 
-// Set CSS custom property for success state that child radios can inherit
-// Use ::slotted to target it-radio elements in light DOM
-.just-validate-success-field ::slotted(it-radio) {
-  --it-radio-label-color: var(--bs-color-text-success);
-}
-
-.just-validate-success-field {
-  padding: 0 !important;
-  border: none !important;
-  background-image: none !important;
+.form-feedaback {
+  font-weight: bold;
 }

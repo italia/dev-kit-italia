@@ -142,6 +142,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
                     placeholder="Inserisci la tua email"
                     label-hidden
                   >
+                    <span slot="label">Iscriviti alla newsletter</span>
                     <it-button type="submit" variant="primary" slot="append">Iscriviti</it-button>
                   </it-input>
                 </div>
@@ -159,7 +160,8 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
             <li class="list-inline-item"><a href="#">Mappa del sito</a></li>
             <li class="list-inline-item">
               <a href="https://form.agid.gov.it/view/xyz">
-                Dichiarazione di accessibilità <span class="visually-hidden">(link esterno su sito AgID)</span>
+                Dichiarazione di accessibilità
+                <span class="visually-hidden">(link esterno su sito AgID)</span>
               </a>
             </li>
           </ul>
