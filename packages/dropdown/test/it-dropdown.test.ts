@@ -121,7 +121,7 @@ describe('<it-dropdown>', () => {
       button.click();
       await el.updateComplete;
 
-      expect(button.getAttribute('aria-expanded')).to.equal('false');
+      expect(button.getAttribute('aria-expanded')).to.be.null;
       expect(menu.classList.contains('show')).to.be.false;
     });
   });

@@ -35,11 +35,21 @@ export class ItPopover extends BaseComponent {
 
   private _setChildrenProperties() {
     if (this._triggerElement && this._triggerElement.tagName === 'IT-BUTTON') {
+      if ((this._triggerElement as ItButton).disabled) {
+        this._triggerElement.removeAttribute('it-aria-haspopup');
+        (this._triggerElement as ItButton).expanded = undefined;
+        return;
+      }
       if (!this._triggerElement.hasAttribute('it-aria-haspopup')) {
         this._triggerElement?.setAttribute('it-aria-haspopup', 'true');
       }
       (this._triggerElement as ItButton).expanded = this.open;
     } else {
+      if (this._triggerElement?.hasAttribute('disabled')) {
+        this._triggerElement.removeAttribute('aria-haspopup');
+        this._triggerElement.removeAttribute('aria-expanded');
+        return;
+      }
       if (!this._triggerElement?.hasAttribute('aria-haspopup')) {
         this._triggerElement?.setAttribute('aria-haspopup', 'true');
       }
@@ -56,11 +66,13 @@ export class ItPopover extends BaseComponent {
     this._triggerElement?.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.open) {
         this.closePopover();
+        this._triggerElement?.focus();
       }
     });
     this._contentElement?.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.open) {
         this.closePopover();
+        this._triggerElement?.focus();
       }
     });
   }
@@ -183,7 +195,6 @@ export class ItPopover extends BaseComponent {
 
   public closePopover() {
     this.open = false;
-    this._triggerElement?.focus();
   }
 
   render() {
