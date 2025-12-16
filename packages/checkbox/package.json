@@ -23,6 +23,7 @@
   "exports": {
     ".": "./dist/src/index.js",
     "./it-checkbox.js": "./dist/src/it-checkbox.js",
+    "./it-checkbox-group.js": "./dist/src/it-checkbox-group.js",
     "./styles/*": "./styles/*"
   },
   "files": [

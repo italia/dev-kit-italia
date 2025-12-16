@@ -35,11 +35,17 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/accordion">
         Accordion
       </a>
+      <a href="/src/affix">
+        Affix
+      </a>
       <a href="/src/avatar">
         Avatar
       </a>
       <a href="/src/back-to-top">
         Back to Top
+      </a>
+      <a href="/src/badge">
+        Badge
       </a>
       <a href="/src/button">
         Button
@@ -222,6 +228,7 @@ document.querySelector('#app-footer').innerHTML = `
                   placeholder="Inserisci la tua email"
                   label-hidden
                 >
+                  <span slot="label">Iscriviti alla newsletter</span>
                   <it-button type="submit" variant="primary" slot="append">Iscriviti</it-button>
                 </it-input>
               </div>

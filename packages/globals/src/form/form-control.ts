@@ -81,6 +81,10 @@ export class FormControl extends BaseLocalizedComponent {
   @property({ type: Boolean, reflect: true }) // from FormControl
   required = false;
 
+  /* For grouped input, like checkbox-group */
+  @property({ type: Boolean })
+  protected isInGroup = false;
+
   /** Gets the validity state object */
   public get validity(): ValidityState {
     return this.inputElement?.validity;
@@ -89,20 +93,21 @@ export class FormControl extends BaseLocalizedComponent {
   @state()
   public validationMessage = '';
 
+  /** Gets the associated form, if one exists. */
+  public getForm(): HTMLFormElement | null {
+    return this.formControlController.getForm();
+  }
+
   // Form validation methods
   public checkValidity(): boolean {
     const inputValid = this.inputElement?.checkValidity() ?? true; // this.inputElement.checkValidity() è la validazione del browser
     return inputValid;
   }
 
-  /** Gets the associated form, if one exists. */
-  public getForm(): HTMLFormElement | null {
-    return this.formControlController.getForm();
-  }
-
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   public reportValidity() {
-    const ret = this.inputElement.checkValidity();
+    // const ret = this.inputElement.checkValidity();
+    const ret = this.checkValidity(); // chiama la checkValidity, che se è stata overridata chiama quella
     this.handleValidationMessages();
     return ret; // this.inputElement.reportValidity();
   }
@@ -115,7 +120,6 @@ export class FormControl extends BaseLocalizedComponent {
   }
 
   // Handlers
-
   protected _handleReady() {
     requestAnimationFrame(() => {
       this.dispatchEvent(new CustomEvent('it-input-ready', { bubbles: true, detail: { el: this.inputElement } }));
@@ -125,7 +129,6 @@ export class FormControl extends BaseLocalizedComponent {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected _handleInput(e: Event) {
     this.handleValidationMessages();
-
     this.dispatchEvent(
       new CustomEvent('it-input', {
         detail: { value: this.inputElement.value, el: this.inputElement },
@@ -139,7 +142,6 @@ export class FormControl extends BaseLocalizedComponent {
   protected _handleBlur(e: Event) {
     this._touched = true;
     this.handleValidationMessages();
-
     this.dispatchEvent(new FocusEvent('it-blur', { bubbles: true, composed: true }));
   }
 
@@ -160,7 +162,9 @@ export class FormControl extends BaseLocalizedComponent {
     if (!this.customValidation) {
       const _v = this.inputElement.validity;
 
-      if (_v.valueMissing) {
+      const isRequiredHandledByGroup = this.isInGroup === true;
+
+      if (_v.valueMissing && !isRequiredHandledByGroup) {
         this.setCustomValidity(this.$t('validityRequired'));
       } else if (_v.patternMismatch) {
         this.setCustomValidity(this.$t('validityPattern'));
@@ -235,7 +239,7 @@ export class FormControl extends BaseLocalizedComponent {
 
     if (this.customValidation) {
       this.setCustomValidity(this.validationText ?? '');
-    } else {
+    } else if (this.formControlController.userInteracted()) {
       this.formControlController.updateValidity();
     }
   }

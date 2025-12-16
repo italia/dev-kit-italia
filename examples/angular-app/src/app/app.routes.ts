@@ -6,12 +6,20 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/accordion.component').then((c) => c.AccordionComponent),
   },
   {
+    path: 'affix',
+    loadComponent: () => import('./pages/affix.component').then((c) => c.AffixComponent),
+  },
+  {
     path: 'avatar',
     loadComponent: () => import('./pages/avatar.component').then((c) => c.AvatarComponent),
   },
   {
     path: 'back-to-top',
     loadComponent: () => import('./pages/back-to-top.component').then((c) => c.BackToTopComponent),
+  },
+  {
+    path: 'badge',
+    loadComponent: () => import('./pages/badge.component').then((c) => c.BadgeComponent),
   },
   {
     path: 'button',

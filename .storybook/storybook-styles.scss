@@ -264,3 +264,14 @@ table.docblock-argstable {
     font-size: 13px;
   }
 }
+
+//per rendere scollabili le storie di affix
+#story--componenti-affix--affix-top,
+#story--componenti-affix--affix-bottom {
+  height: 400px !important;
+  transform: translateZ(0);
+  overflow: auto !important;
+
+  position: relative;
+  display: block;
+}
