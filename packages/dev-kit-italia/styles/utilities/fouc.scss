@@ -23,10 +23,20 @@
   $border-radius: 0,
   $bg: null,
   $padding: null,
-  $aspectRatio
+  $margin: null,
+  $aspectRatio: null,
+  $pseudo: null
 ) {
   @at-root {
-    #{$tag}:not(:defined) {
+    // costruzione selettore base
+    $selector: if($pseudo, '#{$tag}:not(:defined)::#{$pseudo}', '#{$tag}:not(:defined)');
+    $selector-def: if($pseudo, '#{$tag}:defined::#{$pseudo}', '#{$tag}:defined');
+
+    #{$selector} {
+      @if $pseudo {
+        content: '';
+      }
+
       // layout
       display: var(--it-host-display, inline-block);
       box-sizing: border-box;
@@ -50,6 +60,9 @@
       @if $padding != null {
         padding: $padding;
       }
+      @if $margin != null {
+        margin: $margin;
+      }
       @if $aspectRatio != null {
         aspect-ratio: $aspectRatio;
       }
@@ -67,14 +80,14 @@
 
     // rispetto preferenze ridotte: shimmer diventa statico
     @media (prefers-reduced-motion: reduce) {
-      #{$tag}:not(:defined) {
+      #{$selector} {
         animation: none;
         background-image: none;
       }
     }
 
     // quando l'elemento è definito
-    #{$tag}:defined {
+    #{$selector-def} {
       animation: none !important;
       background-color: transparent !important;
       background-image: none !important;
@@ -119,8 +132,11 @@ $it-components: (
     padding: 1rem,
   ),
   'it-radio': (
-    height: 28px,
-    bg: transparent,
+    pseudo: before,
+    height: 20px,
+    width: 20px,
+    border-radius: 100%,
+    margin: 0 0.5rem 0 0,
   ),
   'it-radio-group': (
     // height: 80px,
@@ -145,6 +161,8 @@ $it-components: (
     if(map-has-key($params, border-radius), map-get($params, border-radius), 0),
     if(map-has-key($params, bg), map-get($params, bg), null),
     if(map-has-key($params, padding), map-get($params, padding), null),
-    if(map-has-key($params, aspect-ratio), map-get($params, aspect-ratio), null)
+    if(map-has-key($params, margin), map-get($params, margin), null),
+    if(map-has-key($params, aspect-ratio), map-get($params, aspect-ratio), null),
+    if(map-has-key($params, pseudo), map-get($params, pseudo), null)
   );
 }
