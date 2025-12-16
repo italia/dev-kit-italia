@@ -8,9 +8,27 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FormComponent {
+  formDataToObject = (fd: any) => {
+    const obj: any = {};
+
+    for (const [key, value] of fd.entries()) {
+      if (obj[key] !== undefined) {
+        // Se la key esiste già → trasformala in array
+        if (!Array.isArray(obj[key])) {
+          obj[key] = [obj[key]];
+        }
+        obj[key].push(value);
+      } else {
+        obj[key] = value;
+      }
+    }
+
+    return obj;
+  };
+
   handleSubmit = (formElement: HTMLFormElement) => {
     const formData = new FormData(formElement);
-    const data = Object.fromEntries(formData.entries());
+    const data = this.formDataToObject(formData);
     console.log(data);
     // Handle form submission logic here
     /*

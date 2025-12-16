@@ -1,5 +1,5 @@
 import { html, PropertyValues } from 'lit';
-import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
+import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { FormControl, FormControlController, RovingTabindexController } from '@italia/globals';
 import type { ItRadio } from '@italia/radio';
 import styles from './radio-group.scss';
@@ -63,13 +63,6 @@ export class ItRadioGroup extends FormControl {
   private _label!: HTMLElement[];
 
   /**
-   * Track if validation has been triggered (via reportValidity or setCustomValidity)
-   * ARIA best practice: don't show aria-invalid until user attempts submission
-   */
-  @state()
-  private _validationTriggered = false;
-
-  /**
    * Roving tabindex controller for keyboard navigation
    */
   private rovingTabindex = new RovingTabindexController<ItRadio>(this, {
@@ -126,7 +119,6 @@ export class ItRadioGroup extends FormControl {
    * Override: Report validity for radio group
    */
   override reportValidity(): boolean {
-    this._validationTriggered = true; // Mark that validation has been attempted
     const isValid = this.checkValidity();
     this.handleValidationMessages();
     this._updateInvalidState();
@@ -137,9 +129,6 @@ export class ItRadioGroup extends FormControl {
   public override setCustomValidity(message: string) {
     // Only trigger validation state if message is non-empty (actual error)
     // Empty message during init or after correction should not trigger invalid state initially
-    if (message && message.length > 0) {
-      this._validationTriggered = true;
-    }
 
     this.validationMessage = message;
     this.formControlController.updateValidity();
@@ -158,7 +147,7 @@ export class ItRadioGroup extends FormControl {
 
   private _updateInvalidState() {
     // Only show aria-invalid if validation has been triggered (ARIA best practice)
-    if (!this._validationTriggered) {
+    if (!this.formControlController.submittedOnce) {
       return;
     }
 
@@ -194,7 +183,7 @@ export class ItRadioGroup extends FormControl {
 
       // Update message content and attributes
       messageEl.id = messageId;
-      messageEl.className = 'invalid-feedback form-feedback form-text form-feedback just-validate-error-label';
+      messageEl.className = 'form-feedback just-validate-error-label';
       messageEl.setAttribute('role', 'alert');
       messageEl.removeAttribute('hidden');
 
@@ -291,7 +280,7 @@ export class ItRadioGroup extends FormControl {
     });
 
     // If validation was already triggered, update state after selection
-    if (this._validationTriggered) {
+    if (this.formControlController.submittedOnce) {
       // For native validation, clear error if now valid
       if (!this.customValidation) {
         this.handleValidationMessages();
@@ -391,9 +380,9 @@ export class ItRadioGroup extends FormControl {
     // Update radios when value or name changes
     if (changed.has('value')) {
       this._updateRadiosState();
-      this.dispatchEvent(new Event('change', { bubbles: true }));
+      this.dispatchEvent(new Event('it-change', { bubbles: true }));
       // Re-validate after value change (for native validation) only if validation was already triggered
-      if (!this.customValidation && this._validationTriggered) {
+      if (!this.customValidation && this.formControlController.submittedOnce) {
         this.handleValidationMessages();
         this._updateInvalidState();
       }
@@ -441,7 +430,6 @@ export class ItRadioGroup extends FormControl {
       this.inline && !this.grouped ? 'it-radio-group-inline' : '',
       this.grouped && !this.inline ? 'it-radio-group-stacked' : '',
       invalid ? 'is-invalid' : '',
-      !invalid && this._touched ? 'just-validate-success-field' : '',
     );
 
     return html`<slot name="label" @slotchange=${this._handleLabelSlotChange}></slot>
