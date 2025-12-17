@@ -546,6 +546,9 @@ importers:
       '@italia/section':
         specifier: workspace:^
         version: link:../section
+      '@italia/select':
+        specifier: workspace:^
+        version: link:../select
       '@italia/skiplinks':
         specifier: workspace:^
         version: link:../skiplinks
@@ -990,6 +993,67 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.10
+      '@italia/test-config':
+        specifier: workspace:^
+        version: link:../test-config
+      '@italia/typescript-config':
+        specifier: workspace:^
+        version: link:../typescript-config
+      '@open-wc/testing':
+        specifier: 'catalog:'
+        version: 4.0.0
+      '@rollup/plugin-node-resolve':
+        specifier: ^16.0.1
+        version: 16.0.3(rollup@4.52.5)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.2
+        version: 12.3.0(rollup@4.52.5)(tslib@2.8.1)(typescript@5.9.3)
+      '@types/mocha':
+        specifier: 'catalog:'
+        version: 10.0.10
+      '@web/test-runner':
+        specifier: 'catalog:'
+        version: 0.18.3
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.1.0
+      rollup:
+        specifier: ^4.42.0
+        version: 4.52.5
+      rollup-plugin-scss-lit:
+        specifier: ^2.1.0
+        version: 2.1.0(lit@3.3.0)(rollup@4.52.5)
+      sass:
+        specifier: 'catalog:'
+        version: 1.89.0
+      tslib:
+        specifier: ^2.6.3
+        version: 2.8.1
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+
+  packages/select:
+    dependencies:
+      '@italia/globals':
+        specifier: workspace:^
+        version: link:../globals
+      '@italia/i18n':
+        specifier: workspace:^
+        version: link:../i18n
+      bootstrap-italia:
+        specifier: 'catalog:'
+        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/ba6eddb24194f44d1080deb24701e0603457d176
+      lit:
+        specifier: 'catalog:'
+        version: 3.3.0
+    devDependencies:
+      '@custom-elements-manifest/analyzer':
+        specifier: ^0.10.3
+        version: 0.10.10
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config

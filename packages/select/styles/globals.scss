@@ -1,0 +1,8 @@
+it-select {
+  > option {
+    display: none;
+  }
+  &:not(:defined) {
+    margin-bottom: var(--bs-spacing-m, 24px);
+  }
+}
