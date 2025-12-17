@@ -157,7 +157,6 @@ const meta = {
       table: { defaultValue: { summary: undefined } },
       type: 'string',
     },
-
   },
 } satisfies Meta<InputNumberProps>;
 
@@ -192,7 +191,7 @@ export const LimitiEStep: Story = {
     docs: {
       description: {
         story: `
-Aggiungendo gli attributi HTML \`min=""\`, \`max=""\` e \`step=""\` all'input, puoi limitare il valore minimo e massimo del campo e decidere l'intervallo orario.
+Aggiungendo gli attributi HTML \`min=""\`, \`max=""\` o \`step=""\` all'input, puoi limitare il valore minimo e massimo del campo e decidere un intervallo orario valido.
 
 Questi attributi sono utili solo ai fini della validazione, e non modificano l'interfaccia del selettore.
 
@@ -205,8 +204,8 @@ L'attributo \`step=""\` prevede l'inserimento di un intervallo in secondi.
   },
   args: {
     value: '10:00',
-    min: "09:00",
-    max: "12:00",
+    min: '09:00',
+    max: '12:00',
     step: 1800,
   },
   render: (params) => html`
@@ -219,53 +218,52 @@ L'attributo \`step=""\` prevede l'inserimento di un intervallo in secondi.
   `,
 };
 
-export const Disabilitato: Story = {
-  ...meta,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per disabilitare un Input Ora, aggiungi l'attributo \`disabled\` al componente \`<it-input>\`.
-`,
-      },
-    },
-  },
-  args: {
-    value: '11:00',
-    disabled: true,
-  },
-  render: (params) => html`
-    ${renderTimeInput({
-      ...params,
-      label: 'Disabled',
-      name: 'inputTimeDisabled',
-      id: 'inputTimeDisabled',
-    })}
-  `,
-};
+// export const Disabilitato: Story = {
+//   ...meta,
+//   parameters: {
+//     docs: {
+//       description: {
+//         story: `
+// Per disabilitare un Input Ora, aggiungi l'attributo \`disabled\` al componente \`<it-input>\`.
+// `,
+//       },
+//     },
+//   },
+//   args: {
+//     value: '11:00',
+//     disabled: true,
+//   },
+//   render: (params) => html`
+//     ${renderTimeInput({
+//       ...params,
+//       label: 'Disabled',
+//       name: 'inputTimeDisabled',
+//       id: 'inputTimeDisabled',
+//     })}
+//   `,
+// };
 
-export const Readonly: Story = {
-  ...meta,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per rendere un Input Ora \`readonly\`, aggiungi l'attributo \`readonly\` al componente \`<it-input>\`.
-`,
-      },
-    },
-  },
-  args: {
-    value: '12:30',
-    readonly: true,
-  },
-  render: (params) => html`
-    ${renderTimeInput({
-      ...params,
-      label: 'Contenuto in sola lettura',
-      name: 'inputTimeReadonly',
-      id: 'inputTimeReadonly',
-    })}
-  `,
-};
-
+// export const Readonly: Story = {
+//   ...meta,
+//   parameters: {
+//     docs: {
+//       description: {
+//         story: `
+// Per rendere un Input Ora \`readonly\`, aggiungi l'attributo \`readonly\` al componente \`<it-input>\`.
+// `,
+//       },
+//     },
+//   },
+//   args: {
+//     value: '12:30',
+//     readonly: true,
+//   },
+//   render: (params) => html`
+//     ${renderTimeInput({
+//       ...params,
+//       label: 'Contenuto in sola lettura',
+//       name: 'inputTimeReadonly',
+//       id: 'inputTimeReadonly',
+//     })}
+//   `,
+// };
