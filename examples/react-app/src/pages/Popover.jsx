@@ -1,167 +1,78 @@
 import React from 'react';
 
 const Popover = () => {
-  // Helper per gestire il click su azioni
-  const handleAction = (e, action) => {
+  const handleLinkClick = (e) => {
     e.preventDefault();
-    e.currentTarget.closest('it-popover')?.closePopover();
-    console.log(`Azione selezionata: ${action}`);
   };
 
   return (
     <>
       <h1>it-popover</h1>
 
-      {/* Base - Menu utente */}
+      {/* Base */}
       <section style={{ marginBottom: '2rem' }}>
-        <h2>Base - Menu utente</h2>
-        <p>
-          Esempio di popover con menu interattivo. I popover sono ideali per contenuti ricchi con link e azioni
-          multiple.
-        </p>
-        <it-popover>
+        <h2>Base</h2>
+        <it-popover placement="right">
           <it-button slot="trigger" variant="primary">
             Opzioni utente, clicca per aprire
           </it-button>
           <div slot="content" className="popover">
-            <div className="popover-inner">
-              <h3 className="popover-header" style={{ marginBottom: '0' }}>
-                Menu azioni
-              </h3>
-              <div className="popover-body">
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <p style={{ minWidth: '200px' }}>
-                    Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.
-                  </p>
-                  <a
-                    href="#"
-                    onClick={(e) => handleAction(e, 'Modifica profilo')}
-                    style={{ color: 'var(--bs-primary)', textDecoration: 'none' }}
-                  >
-                    Modifica profilo
-                  </a>
-                  <a
-                    href="#"
-                    onClick={(e) => handleAction(e, 'Impostazioni')}
-                    style={{ color: 'var(--bs-primary)', textDecoration: 'none' }}
-                  >
-                    Impostazioni
-                  </a>
-                  <a
-                    href="#"
-                    onClick={(e) => handleAction(e, 'Esci')}
-                    style={{ color: 'var(--bs-danger)', textDecoration: 'none' }}
-                  >
-                    Esci
-                  </a>
-                </div>
-              </div>
+            <h4 className="popover-header">Titolo del popover</h4>
+            <div className="popover-body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.
             </div>
           </div>
         </it-popover>
       </section>
 
-      {/* Direzioni */}
+      {/* Posizione */}
       <section style={{ marginBottom: '2rem' }}>
-        <h2>Direzioni</h2>
-        <p>I popover possono essere posizionati in diverse direzioni.</p>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <it-popover placement="bottom-start">
+        <h2>Posizione</h2>
+        <div style={{ display: 'grid', gap: '.5rem', gridTemplate: '1fr 1fr 1fr / 1fr 1fr 1fr' }}>
+          <it-popover placement="bottom-start" style={{ gridColumn: '2' }}>
             <it-button slot="trigger" variant="primary">
               Giù
             </it-button>
             <div slot="content" className="popover">
-              <div className="popover-inner">
-                <h3 className="popover-header" style={{ marginBottom: '0' }}>
-                  Azioni rapide
-                </h3>
-                <div className="popover-body">
-                  <p style={{ minWidth: '200px' }}>
-                    Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.
-                  </p>
-                  <a
-                    href="#"
-                    onClick={(e) => handleAction(e, 'Copia link')}
-                    style={{ color: 'var(--bs-primary)', display: 'block' }}
-                  >
-                    Copia link
-                  </a>
-                </div>
+              <h4 className="popover-header">Titolo del popover</h4>
+              <div className="popover-body">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.
               </div>
             </div>
           </it-popover>
 
-          <it-popover placement="left">
-            <it-button slot="trigger" variant="primary">
-              Sinistra
-            </it-button>
-            <div slot="content" className="popover">
-              <div className="popover-inner">
-                <h3 className="popover-header" style={{ marginBottom: '0' }}>
-                  Azioni rapide
-                </h3>
-                <div className="popover-body">
-                  <p style={{ minWidth: '200px' }}>
-                    Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.
-                  </p>
-                  <a
-                    href="#"
-                    onClick={(e) => handleAction(e, 'Condividi')}
-                    style={{ color: 'var(--bs-primary)', display: 'block' }}
-                  >
-                    Condividi
-                  </a>
-                </div>
-              </div>
-            </div>
-          </it-popover>
-
-          <it-popover placement="top-start">
+          <it-popover placement="top-start" style={{ gridRow: '3', gridColumn: '2' }}>
             <it-button slot="trigger" variant="primary">
               Su
             </it-button>
             <div slot="content" className="popover">
-              <div className="popover-inner">
-                <h3 className="popover-header" style={{ marginBottom: '0' }}>
-                  Azioni rapide
-                </h3>
-                <div className="popover-body">
-                  <p style={{ minWidth: '200px' }}>
-                    Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.
-                  </p>
-                  <a
-                    href="#"
-                    onClick={(e) => handleAction(e, 'Scarica')}
-                    style={{ color: 'var(--bs-primary)', display: 'block' }}
-                  >
-                    ⬇️ Scarica
-                  </a>
-                </div>
+              <h4 className="popover-header">Titolo del popover</h4>
+              <div className="popover-body">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.
               </div>
             </div>
           </it-popover>
 
-          <it-popover placement="right">
+          <it-popover placement="left" style={{ gridRow: '2', gridColumn: '3' }}>
+            <it-button slot="trigger" variant="primary">
+              Sinistra
+            </it-button>
+            <div slot="content" className="popover">
+              <h4 className="popover-header">Titolo del popover</h4>
+              <div className="popover-body">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.
+              </div>
+            </div>
+          </it-popover>
+
+          <it-popover placement="right" style={{ gridRow: '2', gridColumn: '1' }}>
             <it-button slot="trigger" variant="primary">
               Destra
             </it-button>
             <div slot="content" className="popover">
-              <div className="popover-inner">
-                <h3 className="popover-header" style={{ marginBottom: '0' }}>
-                  Azioni rapide
-                </h3>
-                <div className="popover-body">
-                  <p style={{ minWidth: '200px' }}>
-                    Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.
-                  </p>
-                  <a
-                    href="#"
-                    onClick={(e) => handleAction(e, 'Aggiungi ai preferiti')}
-                    style={{ color: 'var(--bs-primary)', display: 'block' }}
-                  >
-                    Aggiungi ai preferiti
-                  </a>
-                </div>
+              <h4 className="popover-header">Titolo del popover</h4>
+              <div className="popover-body">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.
               </div>
             </div>
           </it-popover>
@@ -171,99 +82,128 @@ const Popover = () => {
       {/* Titolo con icona e link */}
       <section style={{ marginBottom: '2rem' }}>
         <h2>Titolo con icona e link</h2>
-        <p>È possibile aggiungere un'icona nel titolo e link nel contenuto.</p>
-        <it-popover placement="top">
+        <it-popover>
           <it-button slot="trigger" variant="primary">
-            Info documento
+            Popover con icona e link
           </it-button>
           <div slot="content" className="popover">
-            <div className="popover-inner">
-              <h3 className="popover-header" style={{ marginBottom: '0' }}>
-                <it-icon name="it-info-circle" size="sm" style={{ marginRight: '0.5rem' }}></it-icon>
-                Informazioni documento
-              </h3>
-              <div className="popover-body">
-                <p style={{ minWidth: '200px' }}>
-                  Questo documento contiene informazioni sensibili. Prima di procedere assicurati di avere le
-                  autorizzazioni necessarie.
-                  <a href="#" className="popover-inner-link" onClick={(e) => handleAction(e, 'Policy completa')}>
-                    Leggi la policy completa
-                  </a>
-                </p>
-              </div>
+            <h4 className="popover-header">
+              <it-icon name="it-help-circle" size="sm"></it-icon>
+              Titolo con icona
+            </h4>
+            <div className="popover-body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.
+              <a href="#" className="popover-inner-link" onClick={handleLinkClick}>
+                Leggi tutto
+                <it-icon name="it-arrow-right" size="xs" color="primary"></it-icon>
+              </a>
             </div>
           </div>
         </it-popover>
       </section>
 
-      {/* Con trigger personalizzato */}
+      {/* Elementi disabilitati */}
       <section style={{ marginBottom: '2rem' }}>
-        <h2>Con trigger personalizzato</h2>
-        <p>Il popover può essere attivato da qualsiasi elemento HTML.</p>
-        <p style={{ maxWidth: '500px' }}>
-          Per maggiori informazioni sulla privacy e su come trattiamo i tuoi dati,{' '}
-          <it-popover placement="top">
-            <a href="#" slot="trigger" style={{ textDecoration: 'underline', color: 'var(--bs-primary)' }}>
-              consulta le nostre policy
-            </a>
-            <div slot="content" className="popover">
-              <div className="popover-inner">
-                <h3 className="popover-header">Informazioni sulla privacy</h3>
-                <div className="popover-body">
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    <a
-                      href="#"
-                      onClick={(e) => handleAction(e, 'Privacy Policy')}
-                      style={{ color: 'var(--bs-primary)', textDecoration: 'none' }}
-                    >
-                      🔒 Privacy Policy
-                    </a>
-                    <a
-                      href="#"
-                      onClick={(e) => handleAction(e, 'Cookie Policy')}
-                      style={{ color: 'var(--bs-primary)', textDecoration: 'none' }}
-                    >
-                      🍪 Cookie Policy
-                    </a>
-                    <a
-                      href="#"
-                      onClick={(e) => handleAction(e, 'Gestisci consensi')}
-                      style={{ color: 'var(--bs-primary)', textDecoration: 'none' }}
-                    >
-                      ⚙️ Gestisci consensi
-                    </a>
-                  </div>
-                </div>
-              </div>
+        <h2>Elementi disabilitati</h2>
+        <it-popover placement="right">
+          <it-button slot="trigger" variant="primary" disabled>
+            Pulsante disabilitato, il popover non si apre
+          </it-button>
+          <div slot="content" className="popover">
+            <div className="popover-body">Popover disabilitato</div>
+          </div>
+        </it-popover>
+      </section>
+
+      {/* Elementi disabilitati con hover */}
+      <section style={{ marginBottom: '2rem' }}>
+        <h2>Elementi disabilitati con hover</h2>
+        <ElementiDisabilitatiConHover />
+      </section>
+
+      {/* Attivazione controllata */}
+      <section style={{ marginBottom: '2rem' }}>
+        <h2>Attivazione controllata</h2>
+        <p>Non si apre semplicemente con il click, il comportamento dev'essere controllato tramite codice.</p>
+        <it-popover controlled placement="right">
+          <it-button slot="trigger" variant="primary">
+            Popover controllato
+          </it-button>
+          <div slot="content" className="popover">
+            <div className="popover-inner">
+              <div className="popover-body">Questo popover non si aprirà e questo testo non si vedrà.</div>
             </div>
-          </it-popover>
-          .
-        </p>
+          </div>
+        </it-popover>
       </section>
 
       {/* Eventi */}
       <section style={{ marginBottom: '2rem' }}>
         <h2>Eventi</h2>
-        <p>Il componente emette eventi quando viene aperto e chiuso.</p>
         <it-popover
-          placement="bottom-start"
-          onit-popover-open={() => console.log('✅ Popover aperto')}
-          onit-popover-close={() => console.log('❌ Popover chiuso')}
+          onit-popover-open={(e) => console.log('Popover aperto', e)}
+          onit-popover-close={(e) => console.log('Popover chiuso', e)}
+          placement="right"
         >
           <it-button slot="trigger" variant="primary">
             Popover con eventi
           </it-button>
           <div slot="content" className="popover">
-            <div className="popover-inner">
-              <h3 className="popover-header" style={{ marginBottom: '0' }}>
-                Eventi del Popover
-              </h3>
-              <div className="popover-body">Apri e chiudi questo popover per vedere gli eventi nella console.</div>
-            </div>
+            <h4 className="popover-header">Eventi del Popover</h4>
+            <div className="popover-body">Apri e chiudi questo popover per vedere gli eventi nella console.</div>
           </div>
         </it-popover>
       </section>
     </>
+  );
+};
+
+// Componente separato per elementi disabilitati con hover
+const ElementiDisabilitatiConHover = () => {
+  const handleMouseEnter = (e) => {
+    const button = e.target;
+    const popover = button.closest('it-popover');
+    popover?.openPopover();
+  };
+
+  const handleMouseLeave = (e) => {
+    const button = e.target;
+    const popover = button.closest('it-popover');
+    popover?.closePopover();
+  };
+
+  const handleFocus = (e) => {
+    const button = e.target;
+    const popover = button.closest('it-popover');
+    popover?.openPopover();
+  };
+
+  const handleBlur = (e) => {
+    const target = e.relatedTarget;
+    if (!target?.closest?.('it-popover')) {
+      const button = e.target;
+      const popover = button.closest('it-popover');
+      popover?.closePopover();
+    }
+  };
+
+  return (
+    <it-popover placement="right">
+      <it-button
+        slot="trigger"
+        variant="primary"
+        disabled
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      >
+        Pulsante disabilitato
+      </it-button>
+      <div slot="content" className="popover" onBlur={handleBlur}>
+        <div className="popover-body">Pulsante disabilitato, qui puoi spiegare il perché</div>
+      </div>
+    </it-popover>
   );
 };
 

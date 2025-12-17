@@ -1,54 +1,57 @@
-// inizializzazione dopo il parsing del DOM
-const initPopoverHandlers = () => {
-  // chiudi qualsiasi popover accidentalmente aperto
-  document.querySelectorAll('it-popover').forEach((p) => {
-    try {
-      // preferiamo usare l'API pubblica quando disponibile
-      p.closePopover?.();
-      // fallback: rimuovere attributo open se presente
-      if (p.hasAttribute && p.hasAttribute('open')) p.removeAttribute('open');
-    } catch (err) {
-      // ignore
+// Helper per gestire click sui link
+const handleLinkClick = (e) => {
+  e.preventDefault();
+};
+
+// Gestione elementi disabilitati con hover
+const disabledHoverBtn = document.getElementById('disabled-hover-btn');
+const popoverDisabledHover = document.getElementById('popover-disabled-hover');
+const disabledHoverContent = document.getElementById('disabled-hover-content');
+
+if (disabledHoverBtn && popoverDisabledHover) {
+  disabledHoverBtn.addEventListener('mouseenter', () => {
+    popoverDisabledHover.openPopover();
+  });
+
+  disabledHoverBtn.addEventListener('mouseleave', () => {
+    popoverDisabledHover.closePopover();
+  });
+
+  disabledHoverBtn.addEventListener('focus', () => {
+    popoverDisabledHover.openPopover();
+  });
+
+  disabledHoverBtn.addEventListener('blur', (e) => {
+    const target = e.relatedTarget;
+    if (!target || !popoverDisabledHover.contains(target)) {
+      popoverDisabledHover.closePopover();
     }
   });
 
-  // fallback: alcuni web component possono aprirsi più tardi durante l'upgrade; forziamo la chiusura dopo un breve delay
-  setTimeout(() => {
-    document.querySelectorAll('it-popover[open]').forEach((p) => {
-      try {
-        p.closePopover?.();
-        if (p.hasAttribute && p.hasAttribute('open')) p.removeAttribute('open');
-      } catch (e) {
-        // ignore
+  if (disabledHoverContent) {
+    disabledHoverContent.addEventListener('blur', (e) => {
+      const target = e.relatedTarget;
+      if (!target || !popoverDisabledHover.contains(target)) {
+        popoverDisabledHover.closePopover();
       }
     });
-  }, 50);
-};
-
-if (document.readyState === 'loading') {
-  window.addEventListener('DOMContentLoaded', initPopoverHandlers);
-} else {
-  initPopoverHandlers();
+  }
 }
 
-// Helper per gestire click sulle azioni
-document.querySelectorAll('.action-link').forEach((link) => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const { action } = e.currentTarget.dataset;
-    const popover = e.currentTarget.closest('it-popover');
-    popover?.closePopover();
-    console.log(`Azione selezionata: ${action}`);
-  });
+// Helper per gestire click sui link
+document.querySelectorAll('.link-click').forEach((link) => {
+  link.addEventListener('click', handleLinkClick);
 });
 
 // Eventi
 const eventPopover = document.getElementById('popover-events');
 
-eventPopover?.addEventListener('it-popover-open', () => {
-  console.log('✅ Popover aperto');
-});
+if (eventPopover) {
+  eventPopover.addEventListener('it-popover-open', (e) => {
+    console.log('Popover aperto', e);
+  });
 
-eventPopover?.addEventListener('it-popover-close', () => {
-  console.log('❌ Popover chiuso');
-});
+  eventPopover.addEventListener('it-popover-close', (e) => {
+    console.log('Popover chiuso', e);
+  });
+}

@@ -8,36 +8,42 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   styleUrls: ['./popover.component.css'],
 })
 export class PopoverComponent {
-  // marker field used to satisfy linter
-  private _marker = false;
-
-  handleAction(event: Event, action: string) {
+  handleLinkClick(event: Event) {
     event.preventDefault();
-    const link = event.currentTarget as HTMLElement;
-    const pop = link.closest('it-popover') as any;
-    pop?.closePopover();
-    this.logAction(action);
   }
 
-  handlePopoverOpen() {
-    this.log('Popover aperto');
+  handleMouseEnter(event: Event) {
+    const button = event.target as HTMLElement;
+    const popover = button.closest('it-popover') as any;
+    popover?.openPopover();
   }
 
-  handlePopoverClose() {
-    this.log('Popover chiuso');
-  }
-  // no programmatic controls in this example; behaviour delegated to template triggers
-
-  // helpers that use `this` so linters consider methods to reference class instance
-  private logAction(action: string) {
-    // eslint-disable-next-line no-console
-    console.log(`Azione selezionata: ${action}`);
-    this._marker = this._marker || false;
+  handleMouseLeave(event: Event) {
+    const button = event.target as HTMLElement;
+    const popover = button.closest('it-popover') as any;
+    popover?.closePopover();
   }
 
-  private log(msg: string) {
-    // eslint-disable-next-line no-console
-    console.log(`✅ ${msg}`);
-    this._marker = this._marker || false;
+  handleFocus(event: Event) {
+    const button = event.target as HTMLElement;
+    const popover = button.closest('it-popover') as any;
+    popover?.openPopover();
+  }
+
+  handleBlur(event: FocusEvent) {
+    const target = event.relatedTarget as HTMLElement;
+    if (!target?.closest?.('it-popover')) {
+      const button = event.target as HTMLElement;
+      const popover = button.closest('it-popover') as any;
+      popover?.closePopover();
+    }
+  }
+
+  handlePopoverOpen(event: CustomEvent) {
+    console.log('Popover aperto', event);
+  }
+
+  handlePopoverClose(event: CustomEvent) {
+    console.log('Popover chiuso', event);
   }
 }
