@@ -39,11 +39,11 @@ export class PopoverComponent {
     }
   }
 
-  handlePopoverOpen(event: CustomEvent) {
+  handlePopoverOpen(event: Event) {
     console.log('Popover aperto', event);
   }
 
-  handlePopoverClose(event: CustomEvent) {
+  handlePopoverClose(event: Event) {
     console.log('Popover chiuso', event);
   }
 }

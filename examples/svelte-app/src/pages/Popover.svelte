@@ -170,9 +170,6 @@
     </div>
   </it-popover>
 </section>
-    </div>
-  </it-popover>
-</section>
 
 <!-- Con trigger personalizzato -->
 <section style="margin-bottom: 2rem">
