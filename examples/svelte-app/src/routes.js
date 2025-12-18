@@ -11,6 +11,7 @@ import Icon from './pages/Icon.svelte';
 import Input from './pages/Input.svelte';
 import Radio from './pages/Radio.svelte';
 import Section from './pages/Section.svelte';
+import Select from './pages/Select.svelte';
 import Skiplinks from './pages/Skiplinks.svelte';
 import Sticky from './pages/Sticky.svelte';
 import Video from './pages/Video.svelte';
@@ -30,6 +31,7 @@ export const AppRoutes = [
   { path: '/input', element: Input, title: 'Input' },
   { path: '/radio', element: Radio, title: 'Radio' },
   { path: '/section', element: Section, title: 'Section' },
+  { path: '/select', element: Section, title: 'Select' },
   { path: '/skiplinks', element: Skiplinks, title: 'Skiplinks' },
   { path: '/sticky', element: Sticky, title: 'Sticky' },
   { path: '/video', element: Video, title: 'Video' },

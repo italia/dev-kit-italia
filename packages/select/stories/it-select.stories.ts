@@ -169,6 +169,7 @@ export const Multiple: Story = {
     html`${renderSelect({
       ...params,
       multiple: true,
+      placeholder: 'Seleziona una o più opzioni',
       children: DefaultChildren,
     })}`,
 };

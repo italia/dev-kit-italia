@@ -12,6 +12,7 @@ import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
 import Radio from './components/Radio.vue';
 import Section from './components/Section.vue';
+import Select from './components/Select.vue';
 import Sticky from './components/Sticky.vue';
 import Video from './components/Video.vue';
 import Checkbox from './components/Checkbox.vue';
@@ -33,6 +34,7 @@ const routes = [
   { path: '/input', name: 'Input', component: Input },
   { path: '/radio', name: 'Radio', component: Radio },
   { path: '/section', name: 'Section', component: Section },
+  { path: '/select', name: 'Select', component: Select },
   { path: '/skiplinks', name: 'Skiplinks', component: Skiplinks },
   { path: '/sticky', name: 'Sticky', component: Sticky },
   { path: '/video', name: 'Video', component: Video },

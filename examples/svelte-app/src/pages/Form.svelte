@@ -98,9 +98,19 @@
     </it-radio>
   </it-radio-group>
 
-  <it-input id="messaggio-basic" name="messaggio" type="textarea" support-text="Inserisci il tuo messaggio"
-    ><span slot="label">Messaggio</span></it-input
-  >
+  <it-select name="select-input" placeholder="Seleziona un'opzione" required>
+    <span slot="label">Select semplice</span>
+    <option value="Value 1">Opzione 1</option>
+    <option value="Value 2">Opzione 2</option>
+    <option value="Value 3">Opzione 3</option>
+    <option value="Value 4">Opzione 4</option>
+    <option value="Value 5">Opzione 5</option>
+  </it-select>
+
+  <it-input id="messaggio-basic" name="messaggio" type="textarea" support-text="Inserisci il tuo messaggio">
+    <span slot="label">Messaggio</span>
+  </it-input>
+
   <it-checkbox
     id="privacy-basic"
     name="privacy"

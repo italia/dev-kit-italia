@@ -49,6 +49,17 @@ export class ItSelect extends FormControl {
     return '';
   }
 
+  firstUpdated() {
+    this._renderOptions();
+  }
+
+  override connectedCallback() {
+    super.connectedCallback?.();
+
+    this._renderOptions();
+    this._handleReady();
+  }
+
   override updated(changedProperties: Map<string | number | symbol, unknown>) {
     super.updated?.(changedProperties);
 
@@ -104,6 +115,10 @@ export class ItSelect extends FormControl {
     });
   }
 
+  private _onOptionsChange() {
+    this.requestUpdate();
+  }
+
   // Render the UI as a function of component state
   override render() {
     const supportTextId = `${this._id}-support-text`;
@@ -142,7 +157,7 @@ export class ItSelect extends FormControl {
     );
 
     return html`
-      <div class="select-wrapper" part="select-wrapper">
+      <div class="select-wrapper form-group" part="select-wrapper">
         <label
           for="${ifDefined(this._id || undefined)}"
           part="label"
@@ -175,7 +190,7 @@ export class ItSelect extends FormControl {
           )}
           ${this._renderOptions()}
         </select>
-        <slot></slot>
+        <slot @slotchange=${this._onOptionsChange}></slot>
         ${validityMessageRender} ${supportTextRender}
       </div>
     `;
