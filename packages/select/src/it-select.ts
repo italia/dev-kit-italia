@@ -1,9 +1,8 @@
-import { setAttributes, FormControl, FormControlController } from '@italia/globals';
+import { setAttributes, FormControl } from '@italia/globals';
 import { html } from 'lit';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { when } from 'lit/directives/when.js';
-import { live } from 'lit/directives/live.js';
 
 import { type Sizes } from './types.js';
 
@@ -33,16 +32,15 @@ export class ItSelect extends FormControl {
   @property({ type: Boolean })
   readonly = false;
 
+  /** If the select is multiple. */
+  @property({ type: Boolean })
+  multiple = false;
+
   @queryAssignedElements({ slot: 'label' })
   labelElements!: HTMLElement[];
 
   @queryAssignedElements()
   private _options!: HTMLOptionElement[];
-
-  // // Override del controller per cambiare l'evento di interazione
-  // protected override readonly formControlController: FormControlController = new FormControlController(this, {
-  //   assumeInteractionOn: ['it-change'],
-  // });
 
   get label(): string {
     if (this.labelElements.length > 0) {
@@ -65,23 +63,45 @@ export class ItSelect extends FormControl {
   override _handleInput(e: Event) {
     const select = e.target as HTMLSelectElement;
 
-    this.value = select.value;
+    if (this.multiple) {
+      this.value = Array.from(select.selectedOptions)
+        .map((o) => o.value)
+        .join(',');
+    } else {
+      this.value = select.value;
+    }
 
     super._handleInput(e);
   }
 
   private _isSelected(value: string) {
+    if (this.multiple) {
+      return (this.value ?? '').split(',').includes(value);
+    }
     return this.value === value;
   }
 
-  private _renderOptions() {
-    return this._options?.map(
+  private _renderOptionItems(_opts: HTMLOptionElement[]) {
+    return _opts.map(
       (opt) => html`
         <option value=${opt.value} ?disabled=${opt.disabled} ?selected=${this._isSelected(opt.value)}>
           ${opt.textContent}
         </option>
       `,
     );
+  }
+
+  private _renderOptions() {
+    return this._options?.map((opt: any) => {
+      if (opt.tagName === 'OPTGROUP') {
+        return html`
+          <optgroup label="${opt.label}" ?disabled=${opt.disabled}>
+            ${this._renderOptionItems(Array.from(opt.children) as HTMLOptionElement[])}
+          </optgroup>
+        `;
+      }
+      return this._renderOptionItems([opt]);
+    });
   }
 
   // Render the UI as a function of component state
@@ -137,8 +157,8 @@ export class ItSelect extends FormControl {
           aria-invalid=${ifDefined(invalid ? 'true' : undefined)}
           id="${this._id}"
           name="${this.name}"
-          .value="${live(this.value)}"
           class="${inputClasses}"
+          ?multiple=${this.multiple}
           ?disabled=${this.disabled || this.readonly}
           ?required=${this.required}
           ?formNoValidate=${this.customValidation}

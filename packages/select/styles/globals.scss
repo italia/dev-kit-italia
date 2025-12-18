@@ -1,8 +1,6 @@
 it-select {
-  > option {
+  > option,
+  > optgroup {
     display: none;
-  }
-  &:not(:defined) {
-    margin-bottom: var(--bs-spacing-m, 24px);
   }
 }

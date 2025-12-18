@@ -275,3 +275,9 @@ table.docblock-argstable {
   position: relative;
   display: block;
 }
+
+//per dare una larghezza minima alle stories di select
+it-select {
+  min-width: 250px;
+  display: block;
+}

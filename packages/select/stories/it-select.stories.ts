@@ -8,6 +8,7 @@ interface SelectProps {
   id: string;
   label: string;
   name: string;
+  multiple?: boolean;
   disabled?: boolean;
   invalid: boolean;
   required: boolean;
@@ -26,6 +27,7 @@ const renderSelect = (params: any) =>
     id="${ifDefined(params.id || undefined)}"
     name="${ifDefined(params.name || undefined)}"
     value="${ifDefined(params.value || undefined)}"
+    ?multiple="${params.multiple}"
     ?disabled="${params.disabled}"
     ?custom-validation="${params.customValidation}"
     validity-message="${ifDefined(params.validityMessage || undefined)}"
@@ -49,6 +51,7 @@ const meta = {
     label: 'Etichetta',
     name: 'select-input',
     value: undefined,
+    multiple: false,
     disabled: false,
     customValidation: false,
     validityMessage: '',
@@ -71,6 +74,12 @@ const meta = {
       control: 'text',
       description: 'Valore del campo',
       type: 'string',
+    },
+    multiple: {
+      control: 'boolean',
+      description: 'Abilita la selezione di più valori',
+      type: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
     },
     disabled: {
       control: 'boolean',
@@ -123,6 +132,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<SelectProps>;
 
+const DefaultChildren = html`<option value="Value 1">Opzione 1</option>
+  <option value="Value 2">Opzione 2</option>
+  <option value="Value 3">Opzione 3</option>
+  <option value="Value 4">Opzione 4</option>
+  <option value="Value 5">Opzione 5</option>`;
+
 export const EsempioInterattivo: Story = {
   ...meta,
   name: 'Esempio interattivo',
@@ -136,10 +151,66 @@ export const EsempioInterattivo: Story = {
   render: (params) =>
     html`${renderSelect({
       ...params,
-      children: html`<option value="Value 1">Opzione 1</option>
-        <option value="Value 2">Opzione 2</option>
-        <option value="Value 3">Opzione 3</option>
-        <option value="Value 4">Opzione 4</option>
-        <option value="Value 5">Opzione 5</option>`,
+      children: DefaultChildren,
+    })}`,
+};
+
+export const Multiple: Story = {
+  ...meta,
+  name: 'Select multipla',
+  parameters: {
+    docs: {
+      canvas: {
+        sourceState: 'shown',
+      },
+    },
+  },
+  render: (params) =>
+    html`${renderSelect({
+      ...params,
+      multiple: true,
+      children: DefaultChildren,
+    })}`,
+};
+
+export const Disabled: Story = {
+  ...meta,
+  name: 'Select disabilitata',
+  parameters: {
+    docs: {
+      canvas: {
+        sourceState: 'shown',
+      },
+    },
+  },
+  render: (params) =>
+    html`${renderSelect({
+      ...params,
+      disabled: true,
+      children: DefaultChildren,
+    })}`,
+};
+
+export const Groups: Story = {
+  ...meta,
+  name: 'Select con gruppi',
+  parameters: {
+    docs: {
+      canvas: {
+        sourceState: 'shown',
+      },
+    },
+  },
+  render: (params) =>
+    html`${renderSelect({
+      ...params,
+      children: html`<optgroup label="Gruppo 1">
+          <option value="1">Opzione 1</option>
+          <option value="2">Opzione 2</option>
+        </optgroup>
+        <optgroup label="Gruppo 2">
+          <option value="3">Opzione 3</option>
+          <option value="4">Opzione 4</option>
+        </optgroup>`,
     })}`,
 };

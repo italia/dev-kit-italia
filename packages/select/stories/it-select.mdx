@@ -6,10 +6,10 @@ import * as Stories from './it-select.stories';
 
 # Select
 
-<description>Campo di selezione di un form per scegliere un'opzione da una lista predefinita di valori.</description>
+<description>Campo di selezione di un form per scegliere una o più opzioni da una lista predefinita di valori.</description>
 
 ## Cosa fa
-Il componente it-select, permette agli utenti di scegliere un elemento all'interno di un elenco di opzioni predefinite.
+Il componente it-select, permette agli utenti di selezionare uno o più elementi elementi all'interno di un elenco di opzioni predefinite.
 
 [Approfondisci come e quando usare il componente Select](https://designers.italia.it/design-system/componenti/select/)
 
@@ -21,4 +21,16 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 <Controls of={Stories.EsempioInterattivo} />
 
+## Select multipla
+Aggiungi l'attributo `multiple` per abilitare la selezione multipla di valori in una `it-select`.
+<Canvas of={Stories.Multiple} />
 
+
+## Select disabilitata
+Aggiungi l'attributo `disabled` per disabilitare una `it-select`.
+<Canvas of={Stories.Disabled} />
+
+
+## Select con gruppi
+Per ottenere una `it-select` con raggruppamenti, utilizzare il tag HTML `<optgroup>` per raggruppare le `<option>` al suo interno.
+<Canvas of={Stories.Groups} />
