@@ -5,6 +5,22 @@ import AriaKeyboardListController from './controllers/aria-keyboard-list-control
 import { StoryFormControlMethodAndProps } from './stories/formControlReusableStories.js';
 import { CollapsibleOrHiddenContentGuidelines } from './stories/reusableUsageGuidelinesStories.js';
 
+declare global {
+  interface Window {
+    _itAnalytics: {
+      version: string;
+    };
+  }
+}
+
+if (typeof window !== 'undefined') {
+  window._itAnalytics = window._itAnalytics || {};
+  window._itAnalytics = {
+    ...window._itAnalytics,
+    version: '0.1.0-alpha.2',
+  };
+}
+
 export { TrackFocus, setAttributes, AriaKeyboardListController };
 export type { AriaKeyboardConfig } from './controllers/aria-keyboard-list-controller.js';
 export { RovingTabindexController } from './controllers/roving-tabindex-controller.js';
