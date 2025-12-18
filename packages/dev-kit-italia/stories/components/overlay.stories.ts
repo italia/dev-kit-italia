@@ -3,7 +3,7 @@ import { html } from 'lit';
 import '@italia/icon';
 
 const meta = {
-  title: 'Componenti/Overlay Panel',
+  title: 'Componenti/Overlay',
   tags: ['documentation', 'new'],
 
   //   parameters: {
@@ -18,7 +18,7 @@ const meta = {
 
   // Nel caso il testo contenuto dell'overlay sia troppo lungo verrà troncato con l’utilizzo di ellissi.
 
-  // Aggiungendo all’Overlay Panel la classe \`.overlay-panel-fullheight\` questo coprirà per intero il contenitore.
+  // Aggiungendo all’Overlay la classe \`.overlay-panel-fullheight\` questo coprirà per intero il contenitore.
 
   // <div class="text-muted fst-italic">Negli esempi seguenti mostreremo le classi applicate al caso di una immagine con contenitore \`<figure>\` . </div>
 
@@ -41,7 +41,7 @@ export const Esempio: Story = {
     docs: {
       description: {
         story: `
-Il colore predefinito dell’Overlay Panel corrisponde al colore \`primary\`.
+Il colore predefinito dell’Overlay corrisponde al colore \`primary\`.
 `,
       },
     },
@@ -81,7 +81,7 @@ export const Nero: Story = {
     docs: {
       description: {
         story: `
-Aggiungendo all’Overlay Panel la classe \`.overlay-black\` si ottiene un overlay di colore nero.
+Aggiungendo all’Overlay la classe \`.overlay-black\` si ottiene un overlay di colore nero.
 `,
       },
     },
@@ -123,7 +123,7 @@ export const ConIcona: Story = {
     docs: {
       description: {
         story: `
-Per ottenere un Overlay Panel con icona centrata in verticale ed orizzontale aggiungere la classe \`.overlay-icon\`.
+Per ottenere un Overlay con icona centrata in verticale ed orizzontale aggiungere la classe \`.overlay-icon\`.
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>Ricordarsi di aggiungere un testo alternativo per screen reader che comunichi lo stesso messaggio dell’icona.</p></div></div>
