@@ -456,6 +456,7 @@ export const ValidazioneCustom: Story = {
   name: 'Validazione custom',
   args: { customValidation: true, validityMessage: 'Questo campo è obbligatorio!!!' },
   render: (params) => html`
+    <form>
       <div class="row">
         <div class="col-md-6 d-flex align-items-center">
           ${renderComponent({

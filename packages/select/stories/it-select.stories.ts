@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-
+import { StoryFormControlMethodAndProps } from '@italia/globals';
 import { SELECT_SIZES, type Sizes } from '../src/types.js';
 
 interface SelectProps {
@@ -214,4 +214,116 @@ export const Groups: Story = {
           <option value="4">Opzione 4</option>
         </optgroup>`,
     })}`,
+};
+
+export const SupportText: Story = {
+  ...meta,
+  name: 'Select con testo di supporto',
+  parameters: {
+    docs: {
+      canvas: {
+        sourceState: 'shown',
+      },
+    },
+  },
+  render: (params) =>
+    html`${renderSelect({
+      ...params,
+      supportText: 'Questo è un testo di supporto alla select',
+      children: DefaultChildren,
+    })}`,
+};
+
+export const ValidazioneNativa: Story = {
+  ...meta,
+  name: 'Validazione nativa',
+  args: { required: true },
+  render: (params) => html`
+    <form>
+      ${renderSelect({
+        ...params,
+        label: 'Select obbligatoria',
+        name: 'required-example',
+        id: 'required-example',
+        children: DefaultChildren,
+      })}
+
+      <div class="text-center">
+        <it-button type="submit" variant="primary">Invia</it-button>
+      </div>
+    </form>
+  `,
+};
+
+export const ValidazioneCustom: Story = {
+  ...meta,
+  name: 'Validazione custom',
+  args: { customValidation: true, validityMessage: 'Questo campo è obbligatorio!!!' },
+  render: (params) => html`
+    ${renderSelect({
+      ...params,
+      required: undefined,
+      label: 'Select obbligatoria',
+      name: 'external-validation-example',
+      id: 'external-validation-example',
+      children: DefaultChildren,
+    })}
+  `,
+};
+
+export const GestioneEventi: Story = {
+  ...meta,
+  name: 'Gestione degli eventi',
+  parameters: {
+    docs: {
+      description: {
+        story: `È possibile gestire gli eventi di \`it-input\`, \`it-blur\`, \`it-change\`, \`it-focus\`, \`it-click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
+<br/><br/>
+È sufficiente aggiungere un event listener al componente \`<it-select>\` per intercettare gli eventi desiderati. Ad esempio, per gestire l'evento di change, è possibile utilizzare il seguente codice:
+
+\`\`\`js
+document.querySelector('it-select#event-select-example').addEventListener('it-change', (event) => {
+  console.log('Select event:', event);
+  alert('Select event');
+});
+\`\`\`
+
+Il componente, emette anche un evento di tipo \`it-input-ready\` quando l'input è pronto e caricato nel DOM:
+
+\`\`\`js
+document.querySelector('it-select#event-select-example').addEventListener('it-input-ready', (event) => {
+  console.log('Select ready:', event);
+});
+\`\`\`
+      `,
+      },
+    },
+  },
+  args: {
+    label: 'Prova evento di change',
+    name: 'event-select-example',
+    id: 'event-select-example',
+  },
+  render: (params) => html`
+    <script>
+      document.querySelector('it-select#event-select-example').addEventListener('it-change', (event) => {
+        console.log('Select event:', event);
+        alert('Select event');
+      });
+      document.querySelector('it-select#event-select-example').addEventListener('it-input-ready', (event) => {
+        console.log('Select ready:', event);
+      });
+    </script>
+    ${renderSelect({
+      ...params,
+      children: DefaultChildren,
+    })}
+  `,
+};
+
+export const MetodiEPropPubblici: Story = {
+  ...StoryFormControlMethodAndProps({
+    componentName: 'it-select',
+  }),
+  tags: ['!dev'],
 };
