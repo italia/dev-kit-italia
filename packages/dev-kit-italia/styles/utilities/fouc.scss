@@ -94,13 +94,11 @@ $it-components: (
   ),
   'it-chip': (
     height: 27.5px,
-    attr: 'label',
     border-radius: 40px,
   ),
   'it-checkbox': (
     height: 20px,
     width: 20px,
-    attr: 'label',
   ),
   'it-dropdown': (
     border-radius: var(--bs-btn-border-radius, 4px),
@@ -115,7 +113,6 @@ $it-components: (
   ),
   'it-input': (
     height: 74px,
-    attr: 'label',
     padding: 1rem,
   ),
   'it-radio': (
@@ -125,6 +122,14 @@ $it-components: (
   'it-radio-group': (
     // height: 80px,
     bg: transparent,
+  ),
+  'it-select': (
+    height: 74px,
+    padding: 1rem,
+  ),
+  'it-select[multiple]': (
+    height: 161px,
+    padding: 1rem,
   ),
   'it-video': (
     height: auto,

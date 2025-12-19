@@ -1,4 +1,11 @@
 it-select {
+  --it-host-display: block;
+  display: var(--it-host-display);
+
+  &:not(:defined) {
+    margin-bottom: var(--bs-spacing-m, 24px);
+  }
+
   > option,
   > optgroup {
     display: none;
