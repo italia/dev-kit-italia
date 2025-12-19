@@ -4,6 +4,7 @@ import '@italia/accordion/it-accordion-item.js';
 import '@italia/button/it-button.js';
 import '@italia/callout/it-callout.js';
 import '@italia/callout/it-callout-more.js';
+import '@italia/callout/it-callout-more-collapse.js';
 import '@italia/checkbox/it-checkbox.js';
 import '@italia/checkbox/it-checkbox-group.js';
 import '@italia/chip/it-chip.js';

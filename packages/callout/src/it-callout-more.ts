@@ -3,7 +3,6 @@ import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import styles from './callout-more.scss';
-import './it-callout-more-collapse.js';
 
 @customElement('it-callout-more')
 export class ItCalloutMore extends BaseComponent {

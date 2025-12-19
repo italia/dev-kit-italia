@@ -48,7 +48,6 @@
   },
   "dependencies": {
     "@italia/globals": "workspace:^",
-    "@italia/collapse": "workspace:^",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:"
   },
@@ -66,7 +65,11 @@
     "rollup-plugin-scss-lit": "^2.1.0",
     "sass": "catalog:",
     "tslib": "^2.6.3",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "@italia/collapse": "workspace:^"
+  },
+  "peerDependencies": {
+    "@italia/collapse": "workspace:^"
   },
   "customElements": "custom-elements.json"
 }

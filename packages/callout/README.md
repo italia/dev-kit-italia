@@ -6,6 +6,7 @@ Web component it-callout del Design system .italia
 
 ```bash
 npm install @italia/callout
+npm install @italia/collapse
 ```
 
 ## Utilizzo

@@ -327,9 +327,6 @@ importers:
 
   packages/callout:
     dependencies:
-      '@italia/collapse':
-        specifier: workspace:^
-        version: link:../collapse
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
@@ -343,6 +340,9 @@ importers:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.3
         version: 0.10.10
+      '@italia/collapse':
+        specifier: workspace:^
+        version: link:../collapse
       '@italia/icon':
         specifier: workspace:^
         version: link:../icon
