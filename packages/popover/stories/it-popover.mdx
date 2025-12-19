@@ -135,4 +135,16 @@ Impostando l'attributo `controlled`, il popover non gestisce automaticamente l'a
 
 Il componente emette gli eventi `it-popover-open` quando viene aperto e `it-popover-close` quando viene chiuso. Apri la console del browser per vedere i log.
 
+```javascript
+const popover = document.querySelector('it-popover');
+
+popover.addEventListener('it-popover-open', (e) => {
+  console.log('Popover aperto', e);
+});
+
+popover.addEventListener('it-popover-close', (e) => {
+  console.log('Popover chiuso', e);
+});
+```
+
 <Canvas of={PopoverStories.Eventi} />
