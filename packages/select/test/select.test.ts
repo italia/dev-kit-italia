@@ -1,113 +1,134 @@
-// import '@italia/input';
-// import { expect, fixture, html } from '@open-wc/testing';
+import '@italia/select';
+import { expect, fixture, html } from '@open-wc/testing';
 
-// import { type ItInput } from '@italia/input';
+import { type ItSelect } from '@italia/select';
 
-// describe('<it-input>', () => {
-//   // Il componente è accessibile di default
-//   it('should be accessible', async () => {
-//     const el = await fixture<ItInput>(html`<it-input name="test"><span slot="label">Test label</span></it-input>`);
-//     await expect(el).to.be.accessible();
-//   });
+describe('<it-select>', () => {
+  // rendering base
+  it('renders label and select', async () => {
+    const el = await fixture<ItSelect>(html`
+      <it-select>
+        <span slot="label">My select</span>
+        <option value="1">One</option>
+      </it-select>
+    `);
 
-//   // Imposta e riflette il valore correttamente
-//   it('should reflect the initial value', async () => {
-//     const el = await fixture<ItInput>(
-//       html`<it-input value="ciao" name="test"><span slot="label">Test</span></it-input>`,
-//     );
-//     expect(el.value).to.equal('ciao');
-//     expect(el.shadowRoot?.querySelector('input')?.value).to.equal('ciao');
-//   });
+    await el.updateComplete;
 
-//   // Validazione (required)
-//   it('should mark the input as invalid if required and empty', async () => {
-//     const el = await fixture<ItInput>(
-//       html`<it-input name="req-field" required><span slot="label">Required field</span></it-input>`,
-//     );
-//     const input = el.shadowRoot?.querySelector('input')!;
-//     input.focus();
-//     input.blur(); // trigger blur e checkValidity
+    const select = el.shadowRoot!.querySelector('select');
+    const slot = el.shadowRoot!.querySelector<HTMLSlotElement>('slot[name="label"]')!;
+    const nodes = slot.assignedNodes({ flatten: true });
 
-//     expect(el.validationMessage).to.equal('Questo campo è obbligatorio.');
-//   });
+    expect(select).to.exist;
+    expect(nodes[0].textContent).to.equal('My select');
+  });
 
-//   // Validazione personalizzata (setCustomValidity)
-//   it('should show a custom validity message', async () => {
-//     const el = await fixture<ItInput>(
-//       html`<it-input name="custom" validity-message="Errore personalizzato" custom-validation
-//         ><span slot="label">Custom validation</span></it-input
-//       >`,
-//     );
+  // rendering options
+  it('renders options passed via slot', async () => {
+    const el = await fixture<ItSelect>(html`
+      <it-select>
+        <span slot="label">Options</span>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+      </it-select>
+    `);
 
-//     await el.updateComplete;
+    await el.updateComplete;
 
-//     expect(el.validationMessage).to.equal('Errore personalizzato');
-//   });
+    const options = el.shadowRoot!.querySelectorAll('option');
 
-//   // Reset del messaggio di validazione dopo input valido
+    // 2 option reali
+    expect(options.length).to.equal(2);
+    expect(options[0].value).to.equal('1');
+    expect(options[1].value).to.equal('2');
+  });
 
-//   it('should clear the validity message after valid input', async () => {
-//     const el = await fixture<ItInput>(
-//       html`<it-input required name="test"><span slot="label">Required field</span></it-input>`,
-//     );
-//     el.blur();
-//     el.value = 'ok';
-//     el.checkValidity();
-//     await el.updateComplete;
+  // test placeholder
+  it('renders placeholder option when provided', async () => {
+    const el = await fixture<ItSelect>(html`
+      <it-select placeholder="Select one">
+        <span slot="label">Placeholder</span>
+        <option value="1">One</option>
+      </it-select>
+    `);
 
-//     expect(el.validationMessage).to.equal('');
-//   });
+    await el.updateComplete;
 
-//   it('send right value to FormData', async () => {
-//     // 1. Setup: inseriamo il form nel DOM
-//     const container = await fixture<HTMLDivElement>(html`
-//       <div>
-//         <form id="test-form">
-//           <it-input name="email" type="email" value="test@example.com"><span slot="label">Email</span></it-input>
-//           <button type="submit">Invia</button>
-//         </form>
-//       </div>
-//     `);
+    const options = el.shadowRoot!.querySelectorAll('option');
 
-//     const form = container.querySelector('form')!;
-//     const itInput = form.querySelector('it-input')!;
+    expect(options[0].textContent).to.equal('Select one');
+    expect(options[0].disabled).to.be.false;
+  });
 
-//     // 2. Aspettiamo il rendering completo (necessario per Shadow DOM)
-//     await itInput.updateComplete;
+  // test selezione singola
+  it('updates value on single select change', async () => {
+    const el = await fixture<ItSelect>(html`
+      <it-select>
+        <span slot="label">Single</span>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+      </it-select>
+    `);
 
-//     // 3. Usiamo direttamente `new FormData(form)` per simulare la submit
-//     const formData = new FormData(form);
+    await el.updateComplete;
 
-//     // 4. Assert: il valore è incluso correttamente
-//     expect(formData.get('email')).to.equal('test@example.com');
-//   });
+    const select = el.shadowRoot!.querySelector('select')!;
 
-//   it('update FormData on input value change', async () => {
-//     // 1. Setup iniziale
-//     const container = await fixture<HTMLDivElement>(html`
-//       <div>
-//         <form id="test-form">
-//           <it-input name="username" value="initialValue"><span slot="label">Username</span></it-input>
-//         </form>
-//       </div>
-//     `);
+    select.value = '2';
+    select.dispatchEvent(new Event('change', { bubbles: true }));
 
-//     const form = container.querySelector('form')!;
-//     const itInput = form.querySelector('it-input')!;
+    await el.updateComplete;
 
-//     // 2. Aspetta che il componente sia completamente aggiornato
-//     await itInput.updateComplete;
+    expect(el.value).to.equal('2');
+  });
 
-//     // 3. Cambia dinamicamente il valore via proprietà
-//     itInput.value = 'newValue';
+  // test selezione multipla
+  it('updates value on multiple select change', async () => {
+    const el = await fixture<ItSelect>(html`
+      <it-select multiple>
+        <span slot="label">Multiple</span>
+        <option value="a">A</option>
+        <option value="b">B</option>
+        <option value="c">C</option>
+      </it-select>
+    `);
 
-//     // 4. Aspetta che Lit aggiorni il DOM interno
-//     await itInput.updateComplete;
+    await el.updateComplete;
 
-//     // 5. Crea un nuovo FormData per simulare la submit
-//     const formData = new FormData(form);
+    const select = el.shadowRoot!.querySelector('select')!;
 
-//     // 6. Verifica che il nuovo valore sia stato registrato
-//     expect(formData.get('username')).to.equal('newValue');
-//   });
-// });
+    select.options[0].selected = true;
+    select.options[2].selected = true;
+
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+
+    await el.updateComplete;
+
+    expect(el.value).to.equal('a,c');
+  });
+
+  // Il componente è accessibile di default
+  it('should be accessible', async () => {
+    const el = await fixture<ItSelect>(
+      html`<it-select name="test"
+        ><span slot="label">Test label</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option></it-select
+      >`,
+    );
+    await expect(el).to.be.accessible();
+  });
+
+  // Imposta e riflette il valore correttamente
+  it('should reflect the initial value', async () => {
+    const el = await fixture<ItSelect>(
+      html`<it-select name="test" value="1"
+        ><span slot="label">Test label</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option></it-select
+      >`,
+    );
+    expect(el.value).to.equal('1');
+    expect(el.shadowRoot?.querySelector('select')?.value).to.equal('1');
+  });
+});
