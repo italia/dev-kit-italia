@@ -28,19 +28,21 @@ Le liste, costituite da tag `<ul>` con classe `.it-list` all'interno di un wrapp
 
 ### Lista con avatar
 
-L'elemento `.avatar` precede l'elemento `.it-right-zone` che contiene il testo.
+Inserisci l'elemento `it-avatar` prima dell'elemento `.it-right-zone` che contiene il testo.
 
 <Canvas of={ListStories.ListaConAvatar} />
 
 ### Lista con icona
 
-L'elemento `.it-rounded-icon` con all'interno la relativa icona, precede l'elemento `.it-right-zone` che contiene il testo.
+Inserisci l'elemento `.it-rounded-icon`, con all'interno la relativa icona, prima dell'elemento `.it-right-zone` che contiene il testo.
 
 <Canvas of={ListStories.ListaConIcona} />
 
 ### Lista con immagine
 
-L'elemento `.it-thumb` con all'interno la relativa immagine, precede l'elemento `.it-right-zone` che contiene il testo. Ha una dimensione massima di `5rem` che corrispondono a `80px`. La proporzione dell'immagine può essere modificata utilizzando le classi specifiche per le [proporzioni](/docs/organizzare-gli-spazi-proporzioni).
+Inserisci l'elemento `.it-thumb`, con all'interno la relativa immagine, prima dell'elemento `.it-right-zone` che contiene il testo.
+Ha una dimensione massima di `5rem` che corrispondono a `80px`.
+La proporzione dell'immagine può essere modificata utilizzando le classi specifiche per le [proporzioni](https://designers.italia.it/design-system/fondamenti/proporzioni-media/).
 
 <Canvas of={ListStories.ListaConImmagine} />
 
@@ -50,13 +52,13 @@ Le liste con azioni hanno al loro interno icone o elementi interattivi da associ
 
 ### Con freccia
 
-L'elemento `.icon` con all'interno la relativa icona segue l'elemento `.text` che contiene il testo.
+Inserisci l'elemento `it-icon` dopo l'elemento `.text` che contiene il testo.
 
 <Canvas of={ListStories.ListaConFreccia} />
 
 ### Con azioni multiple
 
-L'elemento `.it-multiple` con all'interno le relative icone, segue l'elemento `.text`.
+Inserisci l'elemento `.it-multiple`, con all'interno le relative icone, dopo l'elemento `.text`.
 
 <Canvas of={ListStories.ListaConAzioniMultiple} />
 
@@ -64,19 +66,21 @@ L'elemento `.it-multiple` con all'interno le relative icone, segue l'elemento `.
 
 ### Con metadata
 
-Ad ogni lista si può aggiungere un campo testuale metadata, come nell'esempio seguente. L'elemento `.metadata`, segue l'elemento `.text`.
+Ad ogni lista puoi aggiungere un campo testuale metadata, come nell'esempio seguente.
+Inserisci l'elemento `.metadata` dopo l'elemento `.text`.
 
 <Canvas of={ListStories.ListaConMetadata} />
 
 ### Con testo aggiuntivo, azioni multiple e metadata
 
-Per avere una lista che permetta paragrafi di testo aggiuntivo per ogni elemento, bisogna utilizzare un approccio con titolo (heading) e paragrafo `<p>`, mantenendo la classe `.text` per l'elementi titolo. Entrambi devono essere inclusi in un elemento `<div>` per il corretto allineamento.
+Per avere una lista che permetta paragrafi di testo aggiuntivo per ogni elemento, utilizza un approccio con titolo (heading) e paragrafo `<p>`, mantenendo la classe `.text` per l'elemento titolo.
+Devi includere entrambi in un elemento `<div>` per il corretto allineamento.
 
 <Canvas of={ListStories.ListaConTestoAggiuntivo} />
 
 ## Liste per menu di navigazione
 
-Le liste per menu di navigazione, costituite da tag `<ul>` con classe `.link-list` all'interno di un wrapper con classe `.link-list-wrapper`, vengono utilizzate per creare le voci dei menu Dropdown, Megamenu, Sidebar e Navscroll.
+Utilizza le liste per menu di navigazione, costituite da tag `<ul>` con classe `.link-list` all'interno di un wrapper con classe `.link-list-wrapper`, per creare le voci dei menu Megamenu, Sidebar e Navscroll.
 
 ### Linea singola
 
@@ -84,13 +88,13 @@ Le liste per menu di navigazione, costituite da tag `<ul>` con classe `.link-lis
 
 #### Elemento con stato attivo
 
-Per rendere attivo un elemento è sufficiente aggiungere la classe `.active` al relativo link.
+Aggiungi la classe `.active` al relativo link per rendere attivo un elemento.
 
 <Canvas of={ListStories.LinkListElementoAttivo} />
 
 #### Elemento con stato disabilitato
 
-Per disabilitare un elemento è sufficiente aggiungere la classe `.disabled` al relativo link.
+Aggiungi la classe `.disabled` al relativo link per disabilitare un elemento.
 
 <Canvas of={ListStories.LinkListElementoDisabilitato} />
 
@@ -106,7 +110,7 @@ Il divisore è costituito dal tag `<span>` con classe `.divider` e attributo `ro
 
 ### Dimensioni
 
-Per ogni elemento di una lista di link è possibile definire una variante di dimensione maggiore utilizzando la classe `.large` applicata al tag `<a>`.
+Per ogni elemento di una lista di link puoi definire una variante di dimensione maggiore utilizzando la classe `.large` applicata al tag `<a>`.
 
 <Canvas of={ListStories.LinkListDimensioni} />
 
@@ -114,26 +118,28 @@ Per ogni elemento di una lista di link è possibile definire una variante di dim
 
 Ogni elemento di una lista di link può avere un'icona (a destra o sinistra del testo) ed un abstract.
 
-Per includere un'icona bisogna aggiungere al tag `<a>` una delle seguenti classi:
+Per includere un'icona, aggiungi al tag `<a>` una delle seguenti classi:
 
-- `icon-right`: se si vuole posizionare l'icona a destra del testo
-- `icon-left`: se si vuole posizionare l'icona a sinistra del testo
+- `icon-right`: se vuoi posizionare l'icona a destra del testo
+- `icon-left`: se vuoi posizionare l'icona a sinistra del testo
 
-All'interno del tag `<span class="list-item-title-icon-wrapper">` subito dopo lo `<span class="list-item-title">` contenente il testo, puoi inserire [l'icona necessaria](/docs/componenti-icon--documentazione).
+Puoi inserire [l'icona necessaria](/docs/componenti-icon--documentazione) all'interno del tag `<span class="list-item-title-icon-wrapper">`, subito dopo o prima dello `<span class="list-item-title">` contenente il testo.
 
 <Canvas of={ListStories.LinkListMultilineIcona} />
 
 ### Lista con controlli
 
-Le liste di link con controlli sono caratterizzate da icone a destra e sinistra del testo. Quella di destra è descrittiva mentre quella di sinistra può essere un'eventuale azione aggiuntiva da gestire in JavaScript.
+Le liste di link con controlli sono caratterizzate da icone a destra e sinistra del testo.
+Quella di destra è descrittiva mentre quella di sinistra può essere un'eventuale azione aggiuntiva da gestire in JavaScript.
 
-È necessario aggiungere al tag `<a>` la classe `.icon-right` se si vuole posizionare l'icona a destra del testo, oppure la classe `.icon-left` se si vuole posizionare l'icona a sinistra del testo.
+Devi aggiungere al tag `<a>` la classe `.icon-right` se vuoi posizionare l'icona a destra del testo, oppure la classe `.icon-left` se vuoi posizionare l'icona a sinistra del testo.
 
 #### Azione primaria
 
 ##### Icona a sinistra
 
-All'interno del tag `<span class="list-item-title-icon-wrapper">` subito prima del tag `<span class="list-item-title">` contenente il testo, puoi inserire [l'icona necessaria](/docs/componenti-icon--documentazione). Per posizionare correttamente l'icona a sinistra del testo bisogna aggiungere al tag `<a>` la classe: `.icon-left`.
+Puoi inserire [l'icona necessaria](/docs/componenti-icon--documentazione) all'interno del tag `<span class="list-item-title-icon-wrapper">`, subito prima del tag `<span class="list-item-title">` contenente il testo.
+Per posizionare correttamente l'icona a sinistra del testo bisogna aggiungere al tag `<a>` la classe: `.icon-left`.
 
 <Canvas of={ListStories.LinkListControlliIconaSinistra} />
 
@@ -141,7 +147,8 @@ All'interno del tag `<span class="list-item-title-icon-wrapper">` subito prima d
 
 ##### Icona a destra
 
-All'interno del tag `<span class="list-item-title-icon-wrapper">` subito dopo il tag `<span class="list-item-title">` contenente il testo, puoi inserire [l'icona necessaria](/docs/componenti-icon--documentazione). Per posizionare correttamente l'icona a destra del testo bisogna aggiungere al tag `<a>` la classe: `.icon-right`.
+Puoi inserire [l'icona necessaria](/docs/componenti-icon--documentazione) all'interno del tag `<span class="list-item-title-icon-wrapper">`, subito dopo il tag `<span class="list-item-title">` contenente il testo.
+Per posizionare correttamente l'icona a destra del testo bisogna aggiungere al tag `<a>` la classe: `.icon-right`.
 
 <Canvas of={ListStories.LinkListControlliIconaDestra} />
 
@@ -149,11 +156,13 @@ All'interno del tag `<span class="list-item-title-icon-wrapper">` subito dopo il
 
 ##### Icona a sinistra
 
-Per aggiungere un'icona a sinistra del testo bisogna aggiungere al tag `<a>` la classe: `.icon-left`. Inserisci l'icona all'interno del tag `<span class="list-item-title-icon-wrapper">` subito prima del tag `<span class="list-item-title">` contenente il testo.
+Per aggiungere un'icona a sinistra del testo devi aggiungere al tag `<a>` la classe: `.icon-left`.
+Inserisci l'icona all'interno del tag `<span class="list-item-title-icon-wrapper">`, subito prima del tag `<span class="list-item-title">` contenente il testo.
 
 ##### Icona a destra
 
-Per aggiungere un'icona a destra del testo bisogna aggiungere al tag `<a>` la classe: `.icon-right`. Inserisci l'icona all'interno del tag `<span class="list-item-title-icon-wrapper">` subito dopo del tag `<span class="list-item-title">` contenente il testo.
+Per aggiungere un'icona a destra del testo devi aggiungere al tag `<a>` la classe: `.icon-right`.
+Inserisci l'icona all'interno del tag `<span class="list-item-title-icon-wrapper">`, subito dopo del tag `<span class="list-item-title">` contenente il testo.
 
 <Canvas of={ListStories.LinkListControlliDoppiaIcona} />
 
@@ -186,6 +195,7 @@ Di seguito un esempio di navigazione annidata espansa.
 
 #### Collassabile
 
-Esempio di navigazione annidata collassabile. Per questo tipo di link list sono stati utilizzati, oltre alle classi custom, i componenti [Collapse](/docs/componenti-collapse--documentazione) e [Icon](/docs/componenti-icon--documentazione).
+Esempio di navigazione annidata collassabile.
+Per questo tipo di link list sono stati utilizzati, oltre alle classi custom, i componenti [Collapse](/docs/componenti-collapse--documentazione) e [Icon](/docs/componenti-icon--documentazione).
 
 <Canvas of={ListStories.LinkListAnnidataCollassabile} />
