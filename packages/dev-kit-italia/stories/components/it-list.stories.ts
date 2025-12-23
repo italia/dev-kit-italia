@@ -7,7 +7,7 @@ import '@italia/checkbox';
 
 const meta = {
   title: 'Componenti/List',
-  tags: ['new', 'documentation'],
+  tags: ['new', 'a11y-ok', 'documentation'],
   parameters: {
     layout: 'padded',
   },
