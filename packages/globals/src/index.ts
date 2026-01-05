@@ -17,7 +17,7 @@ if (typeof window !== 'undefined') {
   window._itAnalytics = window._itAnalytics || {};
   window._itAnalytics = {
     ...window._itAnalytics,
-    version: '0.1.0-alpha.2',
+    version: '1.0.0-alpha.3',
   };
 }
 

@@ -2,6 +2,279 @@
 
 This changelog contains all changes from all packages in the monorepo.
 
+## 1.0.0-alpha.3
+
+### `accordion`
+
+### Minor Changes
+
+- [#134](https://github.com/italia/dev-kit-italia/pull/134) [`7b3fd82`](https://github.com/italia/dev-kit-italia/commit/7b3fd821de6675e5f96acd0956e3560ae3d863c8) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added collapse component
+
+### Patch Changes
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`d0312a7`](https://github.com/italia/dev-kit-italia/commit/d0312a7af33f7fa0bca62e3500a1f2babb760775), [`d7e298e`](https://github.com/italia/dev-kit-italia/commit/d7e298e8382243a8103dbd687e8bc794a25553b5), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`aa2bae9`](https://github.com/italia/dev-kit-italia/commit/aa2bae9f2687f31efbff1d94fb5edafa87882761), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2), [`7b3fd82`](https://github.com/italia/dev-kit-italia/commit/7b3fd821de6675e5f96acd0956e3560ae3d863c8)]:
+  - @italia/globals@1.0.0-alpha.3
+  - @italia/button@1.0.0-alpha.3
+  - @italia/icon@1.0.0-alpha.3
+  - @italia/collapse@1.0.0-alpha.3
+
+### `avatar`
+
+### Minor Changes
+
+- [#213](https://github.com/italia/dev-kit-italia/pull/213) [`4cb77c2`](https://github.com/italia/dev-kit-italia/commit/4cb77c28e60eb24f51690a81515d6117d3167f68) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Move avatar and footer docs to mdx and align to new structure
+
+- [#204](https://github.com/italia/dev-kit-italia/pull/204) [`532c6d2`](https://github.com/italia/dev-kit-italia/commit/532c6d24169ae9a01673c7d760ccfdb1b58c9a07) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fix some a11y issues, update docs and framework examples
+
+### Patch Changes
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`d7e298e`](https://github.com/italia/dev-kit-italia/commit/d7e298e8382243a8103dbd687e8bc794a25553b5), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2)]:
+  - @italia/globals@1.0.0-alpha.3
+  - @italia/icon@1.0.0-alpha.3
+  - @italia/i18n@1.0.0-alpha.3
+
+### `button`
+
+### Minor Changes
+
+- [#134](https://github.com/italia/dev-kit-italia/pull/134) [`7b3fd82`](https://github.com/italia/dev-kit-italia/commit/7b3fd821de6675e5f96acd0956e3560ae3d863c8) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added collapse component
+
+### Patch Changes
+
+- [#197](https://github.com/italia/dev-kit-italia/pull/197) [`d0312a7`](https://github.com/italia/dev-kit-italia/commit/d0312a7af33f7fa0bca62e3500a1f2babb760775) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed it-button disabled interaction.
+
+- [#203](https://github.com/italia/dev-kit-italia/pull/203) [`aa2bae9`](https://github.com/italia/dev-kit-italia/commit/aa2bae9f2687f31efbff1d94fb5edafa87882761) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated it-button docs
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2)]:
+  - @italia/globals@1.0.0-alpha.3
+
+### `checkbox`
+
+### Minor Changes
+
+- [#127](https://github.com/italia/dev-kit-italia/pull/127) [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added checkbox component
+
+### Patch Changes
+
+- [#222](https://github.com/italia/dev-kit-italia/pull/222) [`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed form elements validation
+
+- [#211](https://github.com/italia/dev-kit-italia/pull/211) [`8ddff07`](https://github.com/italia/dev-kit-italia/commit/8ddff0754342cd7314c6ba7d65909437473a890b) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fix aria-invalid attribute value
+
+- [#206](https://github.com/italia/dev-kit-italia/pull/206) [`21b8a9d`](https://github.com/italia/dev-kit-italia/commit/21b8a9d02dc62c3d25925c9bd6e5697abffd0b39) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Refactor docs for it-input, it-checkbox, it-video
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2)]:
+  - @italia/globals@1.0.0-alpha.3
+  - @italia/i18n@1.0.0-alpha.3
+
+### `chip`
+
+### Minor Changes
+
+- [#205](https://github.com/italia/dev-kit-italia/pull/205) [`8ea45a9`](https://github.com/italia/dev-kit-italia/commit/8ea45a9a2c9195b6e73bd7d612405654c6355567) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Update docs and fix FOUC styles
+
+### Patch Changes
+
+- [#197](https://github.com/italia/dev-kit-italia/pull/197) [`d0312a7`](https://github.com/italia/dev-kit-italia/commit/d0312a7af33f7fa0bca62e3500a1f2babb760775) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed it-button disabled interaction.
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`d0312a7`](https://github.com/italia/dev-kit-italia/commit/d0312a7af33f7fa0bca62e3500a1f2babb760775), [`d7e298e`](https://github.com/italia/dev-kit-italia/commit/d7e298e8382243a8103dbd687e8bc794a25553b5), [`4cb77c2`](https://github.com/italia/dev-kit-italia/commit/4cb77c28e60eb24f51690a81515d6117d3167f68), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`aa2bae9`](https://github.com/italia/dev-kit-italia/commit/aa2bae9f2687f31efbff1d94fb5edafa87882761), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2), [`7b3fd82`](https://github.com/italia/dev-kit-italia/commit/7b3fd821de6675e5f96acd0956e3560ae3d863c8), [`532c6d2`](https://github.com/italia/dev-kit-italia/commit/532c6d24169ae9a01673c7d760ccfdb1b58c9a07)]:
+  - @italia/globals@1.0.0-alpha.3
+  - @italia/button@1.0.0-alpha.3
+  - @italia/icon@1.0.0-alpha.3
+  - @italia/avatar@1.0.0-alpha.3
+
+### `collapse`
+
+### Minor Changes
+
+- [#134](https://github.com/italia/dev-kit-italia/pull/134) [`7b3fd82`](https://github.com/italia/dev-kit-italia/commit/7b3fd821de6675e5f96acd0956e3560ae3d863c8) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added collapse component
+
+### Patch Changes
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2)]:
+  - @italia/globals@1.0.0-alpha.3
+
+### `dev-kit-italia`
+
+### Minor Changes
+
+- [#141](https://github.com/italia/dev-kit-italia/pull/141) [`198638c`](https://github.com/italia/dev-kit-italia/commit/198638c16916b7b7706d2c691b5cdc3d64ce17bb) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-skiplinks component
+
+- [#153](https://github.com/italia/dev-kit-italia/pull/153) [`c37bb79`](https://github.com/italia/dev-kit-italia/commit/c37bb79cd11faf8e3fc4b78f7d3a9da02a65605b) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added Affix documentation
+
+- [#213](https://github.com/italia/dev-kit-italia/pull/213) [`4cb77c2`](https://github.com/italia/dev-kit-italia/commit/4cb77c28e60eb24f51690a81515d6117d3167f68) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Move avatar and footer docs to mdx and align to new structure
+
+- [#127](https://github.com/italia/dev-kit-italia/pull/127) [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added checkbox component
+
+- [#149](https://github.com/italia/dev-kit-italia/pull/149) [`7d17473`](https://github.com/italia/dev-kit-italia/commit/7d17473a5f48e25054bca57707f4ef834e31cfd4) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added docs for Badge
+
+- [#134](https://github.com/italia/dev-kit-italia/pull/134) [`7b3fd82`](https://github.com/italia/dev-kit-italia/commit/7b3fd821de6675e5f96acd0956e3560ae3d863c8) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added collapse component
+
+### Patch Changes
+
+- [#222](https://github.com/italia/dev-kit-italia/pull/222) [`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed form elements validation
+
+- [#201](https://github.com/italia/dev-kit-italia/pull/201) [`147f9ba`](https://github.com/italia/dev-kit-italia/commit/147f9ba893a5a29e923bee42f46eaab4838861d4) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fix: fouc styles for it-video
+
+- [#197](https://github.com/italia/dev-kit-italia/pull/197) [`d0312a7`](https://github.com/italia/dev-kit-italia/commit/d0312a7af33f7fa0bca62e3500a1f2babb760775) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed it-button disabled interaction.
+
+- [#131](https://github.com/italia/dev-kit-italia/pull/131) [`a2649a8`](https://github.com/italia/dev-kit-italia/commit/a2649a8879464a65539a15ed077671dc9873a119) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Aggiunta documentazione sull'obiettivo del progetto
+
+- Updated dependencies [[`198638c`](https://github.com/italia/dev-kit-italia/commit/198638c16916b7b7706d2c691b5cdc3d64ce17bb), [`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`147f9ba`](https://github.com/italia/dev-kit-italia/commit/147f9ba893a5a29e923bee42f46eaab4838861d4), [`8ddff07`](https://github.com/italia/dev-kit-italia/commit/8ddff0754342cd7314c6ba7d65909437473a890b), [`d0312a7`](https://github.com/italia/dev-kit-italia/commit/d0312a7af33f7fa0bca62e3500a1f2babb760775), [`8ea45a9`](https://github.com/italia/dev-kit-italia/commit/8ea45a9a2c9195b6e73bd7d612405654c6355567), [`21b8a9d`](https://github.com/italia/dev-kit-italia/commit/21b8a9d02dc62c3d25925c9bd6e5697abffd0b39), [`5e541a4`](https://github.com/italia/dev-kit-italia/commit/5e541a42b580b9c9d6086ff65e0aed42929ab7d4), [`d7e298e`](https://github.com/italia/dev-kit-italia/commit/d7e298e8382243a8103dbd687e8bc794a25553b5), [`31f51f5`](https://github.com/italia/dev-kit-italia/commit/31f51f5c748672de5f05d45643fe418aa730feef), [`4cb77c2`](https://github.com/italia/dev-kit-italia/commit/4cb77c28e60eb24f51690a81515d6117d3167f68), [`d59a424`](https://github.com/italia/dev-kit-italia/commit/d59a4240606ab8ac3983e71ad0ba829a0fc74fd0), [`2300214`](https://github.com/italia/dev-kit-italia/commit/2300214a46761099e6672f85fbe8bbb1acaae4e9), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`aa2bae9`](https://github.com/italia/dev-kit-italia/commit/aa2bae9f2687f31efbff1d94fb5edafa87882761), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2), [`7b3fd82`](https://github.com/italia/dev-kit-italia/commit/7b3fd821de6675e5f96acd0956e3560ae3d863c8), [`d162cca`](https://github.com/italia/dev-kit-italia/commit/d162cca4553bcc3d770d94438eb96be4c1b04166), [`532c6d2`](https://github.com/italia/dev-kit-italia/commit/532c6d24169ae9a01673c7d760ccfdb1b58c9a07)]:
+  - @italia/skiplinks@1.0.0-alpha.3
+  - @italia/checkbox@1.0.0-alpha.3
+  - @italia/input@1.0.0-alpha.3
+  - @italia/radio@1.0.0-alpha.3
+  - @italia/video@1.0.0-alpha.3
+  - @italia/dropdown@1.0.0-alpha.3
+  - @italia/button@1.0.0-alpha.3
+  - @italia/chip@1.0.0-alpha.3
+  - @italia/icon@1.0.0-alpha.3
+  - @italia/avatar@1.0.0-alpha.3
+  - @italia/section@1.0.0-alpha.3
+  - @italia/accordion@1.0.0-alpha.3
+  - @italia/collapse@1.0.0-alpha.3
+  - @italia/popover@1.0.0-alpha.3
+  - @italia/i18n@1.0.0-alpha.3
+  - @italia/sticky@1.0.0-alpha.3
+
+### `dropdown`
+
+### Minor Changes
+
+- [#214](https://github.com/italia/dev-kit-italia/pull/214) [`31f51f5`](https://github.com/italia/dev-kit-italia/commit/31f51f5c748672de5f05d45643fe418aa730feef) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed dropdown animation and other icon issues, updated docs structure
+
+### Patch Changes
+
+- [#197](https://github.com/italia/dev-kit-italia/pull/197) [`d0312a7`](https://github.com/italia/dev-kit-italia/commit/d0312a7af33f7fa0bca62e3500a1f2babb760775) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed it-button disabled interaction.
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`d0312a7`](https://github.com/italia/dev-kit-italia/commit/d0312a7af33f7fa0bca62e3500a1f2babb760775), [`d7e298e`](https://github.com/italia/dev-kit-italia/commit/d7e298e8382243a8103dbd687e8bc794a25553b5), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`aa2bae9`](https://github.com/italia/dev-kit-italia/commit/aa2bae9f2687f31efbff1d94fb5edafa87882761), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2), [`7b3fd82`](https://github.com/italia/dev-kit-italia/commit/7b3fd821de6675e5f96acd0956e3560ae3d863c8)]:
+  - @italia/globals@1.0.0-alpha.3
+  - @italia/button@1.0.0-alpha.3
+  - @italia/icon@1.0.0-alpha.3
+  - @italia/popover@1.0.0-alpha.3
+
+### `globals`
+
+### Minor Changes
+
+- [#231](https://github.com/italia/dev-kit-italia/pull/231) [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e) Thanks [@pnicolli](https://github.com/pnicolli)! - Added global variable with current kit version number
+
+- [#127](https://github.com/italia/dev-kit-italia/pull/127) [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added checkbox component
+
+### Patch Changes
+
+- [#222](https://github.com/italia/dev-kit-italia/pull/222) [`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed form elements validation
+
+- [#172](https://github.com/italia/dev-kit-italia/pull/172) [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fix: docs for input and number-input
+
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.3
+
+### `icon`
+
+### Minor Changes
+
+- [#207](https://github.com/italia/dev-kit-italia/pull/207) [`d7e298e`](https://github.com/italia/dev-kit-italia/commit/d7e298e8382243a8103dbd687e8bc794a25553b5) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Update docs and color variants
+
+### Patch Changes
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2)]:
+  - @italia/globals@1.0.0-alpha.3
+
+### `input`
+
+### Minor Changes
+
+- [#202](https://github.com/italia/dev-kit-italia/pull/202) [`5e541a4`](https://github.com/italia/dev-kit-italia/commit/5e541a42b580b9c9d6086ff65e0aed42929ab7d4) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fix examples for form, and styles for number validation with error
+
+- [#177](https://github.com/italia/dev-kit-italia/pull/177) [`2300214`](https://github.com/italia/dev-kit-italia/commit/2300214a46761099e6672f85fbe8bbb1acaae4e9) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Handled input type="date" and added docs
+
+- [#127](https://github.com/italia/dev-kit-italia/pull/127) [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added checkbox component
+
+### Patch Changes
+
+- [#222](https://github.com/italia/dev-kit-italia/pull/222) [`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed form elements validation
+
+- [#211](https://github.com/italia/dev-kit-italia/pull/211) [`8ddff07`](https://github.com/italia/dev-kit-italia/commit/8ddff0754342cd7314c6ba7d65909437473a890b) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fix aria-invalid attribute value
+
+- [#206](https://github.com/italia/dev-kit-italia/pull/206) [`21b8a9d`](https://github.com/italia/dev-kit-italia/commit/21b8a9d02dc62c3d25925c9bd6e5697abffd0b39) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Refactor docs for it-input, it-checkbox, it-video
+
+- [#172](https://github.com/italia/dev-kit-italia/pull/172) [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fix: docs for input and number-input
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`d7e298e`](https://github.com/italia/dev-kit-italia/commit/d7e298e8382243a8103dbd687e8bc794a25553b5), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2)]:
+  - @italia/globals@1.0.0-alpha.3
+  - @italia/icon@1.0.0-alpha.3
+  - @italia/i18n@1.0.0-alpha.3
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`d0312a7`](https://github.com/italia/dev-kit-italia/commit/d0312a7af33f7fa0bca62e3500a1f2babb760775), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`aa2bae9`](https://github.com/italia/dev-kit-italia/commit/aa2bae9f2687f31efbff1d94fb5edafa87882761), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2), [`7b3fd82`](https://github.com/italia/dev-kit-italia/commit/7b3fd821de6675e5f96acd0956e3560ae3d863c8)]:
+  - @italia/globals@1.0.0-alpha.3
+  - @italia/button@1.0.0-alpha.3
+
+### `radio`
+
+### Patch Changes
+
+- [#222](https://github.com/italia/dev-kit-italia/pull/222) [`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed form elements validation
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2)]:
+  - @italia/globals@1.0.0-alpha.3
+
+### `section`
+
+### Minor Changes
+
+- [#170](https://github.com/italia/dev-kit-italia/pull/170) [`d59a424`](https://github.com/italia/dev-kit-italia/commit/d59a4240606ab8ac3983e71ad0ba829a0fc74fd0) Thanks [@zetareticoli](https://github.com/zetareticoli)! - Updated docs and props
+
+### Patch Changes
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2)]:
+  - @italia/globals@1.0.0-alpha.3
+
+### `skiplinks`
+
+### Minor Changes
+
+- [#141](https://github.com/italia/dev-kit-italia/pull/141) [`198638c`](https://github.com/italia/dev-kit-italia/commit/198638c16916b7b7706d2c691b5cdc3d64ce17bb) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-skiplinks component
+
+### Patch Changes
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2)]:
+  - @italia/globals@1.0.0-alpha.3
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2)]:
+  - @italia/globals@1.0.0-alpha.3
+
+### `video`
+
+### Minor Changes
+
+- [#127](https://github.com/italia/dev-kit-italia/pull/127) [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added checkbox component
+
+### Patch Changes
+
+- [#201](https://github.com/italia/dev-kit-italia/pull/201) [`147f9ba`](https://github.com/italia/dev-kit-italia/commit/147f9ba893a5a29e923bee42f46eaab4838861d4) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fix: fouc styles for it-video
+
+- [#206](https://github.com/italia/dev-kit-italia/pull/206) [`21b8a9d`](https://github.com/italia/dev-kit-italia/commit/21b8a9d02dc62c3d25925c9bd6e5697abffd0b39) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Refactor docs for it-input, it-checkbox, it-video
+
+- [#199](https://github.com/italia/dev-kit-italia/pull/199) [`d162cca`](https://github.com/italia/dev-kit-italia/commit/d162cca4553bcc3d770d94438eb96be4c1b04166) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Moved attr "label" for input and checkbox in dedicated slot
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`8ddff07`](https://github.com/italia/dev-kit-italia/commit/8ddff0754342cd7314c6ba7d65909437473a890b), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`d0312a7`](https://github.com/italia/dev-kit-italia/commit/d0312a7af33f7fa0bca62e3500a1f2babb760775), [`21b8a9d`](https://github.com/italia/dev-kit-italia/commit/21b8a9d02dc62c3d25925c9bd6e5697abffd0b39), [`d7e298e`](https://github.com/italia/dev-kit-italia/commit/d7e298e8382243a8103dbd687e8bc794a25553b5), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`aa2bae9`](https://github.com/italia/dev-kit-italia/commit/aa2bae9f2687f31efbff1d94fb5edafa87882761), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2), [`7b3fd82`](https://github.com/italia/dev-kit-italia/commit/7b3fd821de6675e5f96acd0956e3560ae3d863c8)]:
+  - @italia/checkbox@1.0.0-alpha.3
+  - @italia/globals@1.0.0-alpha.3
+  - @italia/button@1.0.0-alpha.3
+  - @italia/icon@1.0.0-alpha.3
+  - @italia/i18n@1.0.0-alpha.3
+
 ## 0.1.0-alpha.2
 
 ### `accordion`
