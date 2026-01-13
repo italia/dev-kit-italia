@@ -1,5 +1,14 @@
 # @italia/sticky
 
+## 1.0.0-alpha.4
+
+### Patch Changes
+
+- [#239](https://github.com/italia/dev-kit-italia/pull/239) [`7207967`](https://github.com/italia/dev-kit-italia/commit/7207967288d520767efd5c79908d6526e0f5219e) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Fixed readme for installation
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.4
+
 ## 1.0.0-alpha.3
 
 ### Patch Changes

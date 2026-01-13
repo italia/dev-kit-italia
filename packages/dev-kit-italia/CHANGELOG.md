@@ -1,5 +1,28 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-alpha.4
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`7207967`](https://github.com/italia/dev-kit-italia/commit/7207967288d520767efd5c79908d6526e0f5219e)]:
+  - @italia/sticky@1.0.0-alpha.4
+  - @italia/accordion@1.0.0-alpha.4
+  - @italia/avatar@1.0.0-alpha.4
+  - @italia/button@1.0.0-alpha.4
+  - @italia/checkbox@1.0.0-alpha.4
+  - @italia/chip@1.0.0-alpha.4
+  - @italia/collapse@1.0.0-alpha.4
+  - @italia/dropdown@1.0.0-alpha.4
+  - @italia/i18n@1.0.0-alpha.4
+  - @italia/icon@1.0.0-alpha.4
+  - @italia/input@1.0.0-alpha.4
+  - @italia/popover@1.0.0-alpha.4
+  - @italia/radio@1.0.0-alpha.4
+  - @italia/section@1.0.0-alpha.4
+  - @italia/skiplinks@1.0.0-alpha.4
+  - @italia/video@1.0.0-alpha.4
+
 ## 1.0.0-alpha.3
 
 ### Minor Changes
