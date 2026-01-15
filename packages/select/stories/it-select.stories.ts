@@ -39,7 +39,7 @@ const renderSelect = (params: any) =>
   >
     <span slot="label">${params.label}</span>
     ${ifDefined(params.children || undefined)}
-  </it-input>`;
+  </it-select>`;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
