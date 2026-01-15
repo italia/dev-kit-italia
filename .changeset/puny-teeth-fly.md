@@ -1,8 +1,8 @@
 ---
-'@italia/dev-kit-italia': patch
-'@italia/checkbox': patch
-'@italia/select': patch
-'@italia/input': patch
+'@italia/dev-kit-italia': minor
+'@italia/checkbox': minor
+'@italia/select': minor
+'@italia/input': minor
 ---
 
 Added it-select component
