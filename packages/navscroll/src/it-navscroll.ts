@@ -35,13 +35,13 @@ export class ItNavscroll extends BaseComponent {
   backLabel = 'Indietro';
 
   /**
-   * ID del contenitore scrollabile da monitorare per la progress bar
+   * Selettore del contenitore scrollabile da monitorare per la progress bar
    */
   @property({ type: String })
   for: string | null = null;
 
   /**
-   * Where is navscroll placed on mobile when it is closed
+   * Posizione dello navscroll su mobile quando è chiuso
    * */
   @property({ type: String, attribute: 'position' })
   position: Position = 'bottom';
@@ -70,9 +70,7 @@ export class ItNavscroll extends BaseComponent {
 
   private progressEl!: HTMLElement; // div della progressbar
 
-  private scrollContainer!: HTMLElement; // contenitore scrollabile
-
-  private targetContainer!: HTMLElement; // container indicato dall'attributo 'for'
+  private scrollContainer!: HTMLElement; // contenitore scrollabile (quello indicato dall'attributo 'for', altrimenti il document)
 
   private wrapper!: HTMLElement; // navscroll-wrapper
 
@@ -250,16 +248,17 @@ export class ItNavscroll extends BaseComponent {
 
   private initContainers() {
     // Cerco il main referenziato
-    this.targetContainer = this.for ? document.querySelector(this.for)! : (document.scrollingElement as HTMLElement);
+    const targetContainer = this.for ? document.querySelector(this.for)! : (document.scrollingElement as HTMLElement);
 
     // Determino il container corretto
-    const style = this.targetContainer ? getComputedStyle(this.targetContainer) : null;
+    const style = targetContainer ? getComputedStyle(targetContainer) : null;
     const overflowY = style?.overflowY;
+
     const isScrollableContainer = overflowY !== 'visible' && overflowY !== 'hidden';
 
-    if (isScrollableContainer && this.targetContainer instanceof HTMLElement) {
+    if (isScrollableContainer && targetContainer instanceof HTMLElement) {
       // container interno scrollabile
-      this.scrollContainer = this.targetContainer;
+      this.scrollContainer = targetContainer;
       this.scrollContainer.addEventListener('scroll', () => this.onScroll());
     } else {
       // scroll della pagina → ascolto window
@@ -422,8 +421,22 @@ export class ItNavscroll extends BaseComponent {
 
   // eslint-disable-next-line class-methods-use-this
   private scrollToElement(targetEl: HTMLElement, duration = 700, offset = 0, callback?: () => void) {
-    const startY = window.scrollY;
-    const targetY = targetEl.getBoundingClientRect().top + startY - offset;
+    const container = this.scrollContainer ?? null;
+
+    const style = container ? getComputedStyle(container) : null;
+    const overflowY = style?.overflowY;
+    const isScrollableContainer = !!container && overflowY !== 'visible' && overflowY !== 'hidden';
+
+    const startY = isScrollableContainer ? container!.scrollTop : window.scrollY;
+
+    const targetY = isScrollableContainer
+      ? (() => {
+          const containerRect = container!.getBoundingClientRect();
+          const targetRect = targetEl.getBoundingClientRect();
+          return targetRect.top - containerRect.top + container!.scrollTop - offset;
+        })()
+      : targetEl.getBoundingClientRect().top + window.scrollY - offset;
+
     const distance = targetY - startY;
     const startTime = performance.now();
 
@@ -432,12 +445,18 @@ export class ItNavscroll extends BaseComponent {
     const step = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      window.scrollTo(0, startY + distance * easeInOutSine(progress));
+      const value = startY + distance * easeInOutSine(progress);
+
+      if (isScrollableContainer) {
+        container!.scrollTop = value;
+      } else {
+        window.scrollTo(0, value);
+      }
 
       if (progress < 1) {
         requestAnimationFrame(step);
-      } else if (callback) {
-        callback();
+      } else {
+        callback?.();
       }
     };
 
@@ -452,10 +471,10 @@ export class ItNavscroll extends BaseComponent {
         themeClass = 'theme-dark-mobile';
         break;
       case 'desktop':
-        themeClass = 'theme-dark-desktop';
+        themeClass = 'theme-dark-desk';
         break;
       case 'always':
-        themeClass = 'theme-dark-mobile theme-dark-desktop';
+        themeClass = 'theme-dark-mobile theme-dark-desk';
         break;
       default:
         themeClass = '';

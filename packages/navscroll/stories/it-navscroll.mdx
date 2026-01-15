@@ -9,16 +9,18 @@ import * as Stories from './it-navscroll.stories';
 
 ## Cosa fa
 
-Navscroll è una declinazione di sidebar. È una barra di navigazione laterale che, tramite una lista di ancore, permette di creare un indice utile a saltare velocemente alle sezioni e ai contenuti presenti su una stessa pagina.
+Navscroll è una declinazione di [Sidebar](?path=/docs/componenti-sidebar--documentazione). È una barra di navigazione laterale che, tramite una lista di àncore, permette di creare un indice utile a saltare velocemente alle sezioni e ai contenuti presenti su una stessa pagina.
 
-[Approfondisci come e quando usare il componente Navscroll](https://designers.italia.it/design-system/componenti/navscroll/)
+[Approfondisci come e quando usare il componente Navscroll](https://designers.italia.it/design-system/componenti/navscroll/).
 
 ### Alternative a questo componente
-- Sidebar: quando hai bisogno di una barra di navigazione laterale classica per navigare verso altre pagine o sezioni del sito.
+- [Sidebar](?path=/docs/componenti-sidebar--documentazione): quando hai bisogno di una barra di navigazione laterale classica per navigare verso altre pagine o sezioni del sito.
 
 ## Anteprima e attributi del componente
 
 Modifica gli attributi della tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+Per vedere cosa succede su mobile, restringi la larghezza della tua finestra.
 
 <Canvas of={Stories.EsempioInterattivo} />
 <Controls of={Stories.EsempioInterattivo} />
@@ -30,6 +32,7 @@ Modifica gli attributi della tabella per personalizzare in tempo reale l'aspetto
 - Assicurati che ogni link abbia un anchor tag che corrisponde all'ID della sezione di destinazione sulla pagina.
 - Posiziona il componente a destra o a sinistra del contenuto principale della pagina, a seconda delle esigenze.
 - Puoi aggiungere un effetto di scroll animato per rendere la navigazione più piacevole, utilizzando la proprietà disponibile nei principali browser, senza fare ricorso a Javascript.
+- Se non definisci nulla nell'attributo 'for', viene tenuto in considerazione tutto il documento.
 
 ### Attenzione a
 - Testare il comportamento di scroll su vari dispositivi per assicurarti che sia fluido e funzioni come previsto.
@@ -42,4 +45,7 @@ Modifica gli attributi della tabella per personalizzare in tempo reale l'aspetto
 ## Accessibilità
 
 [TODO]
+
+[SLOT]
+
 
