@@ -248,6 +248,7 @@ export class ItNavscroll extends BaseComponent {
 
   private initContainers() {
     // Cerco il main referenziato
+    console.log('initContainers', this.for, this.for ? document.querySelector(this.for) : null);
     const targetContainer = this.for ? document.querySelector(this.for)! : (document.scrollingElement as HTMLElement);
 
     // Determino il container corretto

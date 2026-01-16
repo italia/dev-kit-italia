@@ -1,5 +1,20 @@
 # @italia/avatar
 
+## 1.0.0-alpha.3
+
+### Minor Changes
+
+- [#213](https://github.com/italia/dev-kit-italia/pull/213) [`4cb77c2`](https://github.com/italia/dev-kit-italia/commit/4cb77c28e60eb24f51690a81515d6117d3167f68) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Move avatar and footer docs to mdx and align to new structure
+
+- [#204](https://github.com/italia/dev-kit-italia/pull/204) [`532c6d2`](https://github.com/italia/dev-kit-italia/commit/532c6d24169ae9a01673c7d760ccfdb1b58c9a07) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fix some a11y issues, update docs and framework examples
+
+### Patch Changes
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`d7e298e`](https://github.com/italia/dev-kit-italia/commit/d7e298e8382243a8103dbd687e8bc794a25553b5), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2)]:
+  - @italia/globals@1.0.0-alpha.3
+  - @italia/icon@1.0.0-alpha.3
+  - @italia/i18n@1.0.0-alpha.3
+
 ## 0.1.0-alpha.2
 
 ### Minor Changes

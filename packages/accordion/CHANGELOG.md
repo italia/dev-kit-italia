@@ -1,5 +1,19 @@
 # @italia/icon
 
+## 1.0.0-alpha.3
+
+### Minor Changes
+
+- [#134](https://github.com/italia/dev-kit-italia/pull/134) [`7b3fd82`](https://github.com/italia/dev-kit-italia/commit/7b3fd821de6675e5f96acd0956e3560ae3d863c8) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added collapse component
+
+### Patch Changes
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`d0312a7`](https://github.com/italia/dev-kit-italia/commit/d0312a7af33f7fa0bca62e3500a1f2babb760775), [`d7e298e`](https://github.com/italia/dev-kit-italia/commit/d7e298e8382243a8103dbd687e8bc794a25553b5), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`aa2bae9`](https://github.com/italia/dev-kit-italia/commit/aa2bae9f2687f31efbff1d94fb5edafa87882761), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2), [`7b3fd82`](https://github.com/italia/dev-kit-italia/commit/7b3fd821de6675e5f96acd0956e3560ae3d863c8)]:
+  - @italia/globals@1.0.0-alpha.3
+  - @italia/button@1.0.0-alpha.3
+  - @italia/icon@1.0.0-alpha.3
+  - @italia/collapse@1.0.0-alpha.3
+
 ## 0.1.0-alpha.2
 
 ### Minor Changes
