@@ -8,6 +8,7 @@ it-navscroll {
     --bs-modal-width: calc(100vw - 48px);
     --bs-modal-padding: 0;
     --bs-modal-title-font-size: 1rem;
+    --bs-modal-bg: var(--bs-navscroll-background);
   }
 
   it-modal::part(modal-content-wrapper) {
@@ -23,5 +24,18 @@ it-navscroll {
   it-button[slot='header']::part(button) {
     text-align: left;
     text-decoration: none;
+  }
+
+  .theme-dark-mobile {
+    it-button[slot='trigger']::part(button) {
+      color: var(--bs-navscroll-toggler-color); //$navscroll-dark-text-color;
+    }
+
+    it-modal,
+    it-modal it-button::part(button) {
+      --bs-btn-text-color: #fff;
+      --bs-color-text-muted: #fff;
+      --bs-icon-primary: var(--bs-icon-inverse);
+    }
   }
 }
