@@ -248,7 +248,6 @@ export class ItNavscroll extends BaseComponent {
 
   private initContainers() {
     // Cerco il main referenziato
-    console.log('initContainers', this.for, this.for ? document.querySelector(this.for) : null);
     const targetContainer = this.for ? document.querySelector(this.for)! : (document.scrollingElement as HTMLElement);
 
     // Determino il container corretto
@@ -288,7 +287,7 @@ export class ItNavscroll extends BaseComponent {
 
     // 2️⃣ applico active solo al link corrente e ai suoi parent
     const currentLink = this.navEl.querySelector(`a[href="${hash}"]`);
-    console.log('currentLink for hash', hash, currentLink);
+
     if (currentLink) {
       currentLink.classList.add('active');
       currentLink.setAttribute('aria-current', 'location');
@@ -395,7 +394,7 @@ export class ItNavscroll extends BaseComponent {
         if (!targetEl) return;
 
         this.activeTarget = `#${targetId}`;
-        //  this.setCurrent(this.activeTarget);
+        this.setCurrent(this.activeTarget);
 
         // scroll animato
         this.scrollToElement(targetEl, 700, 0, () => {
