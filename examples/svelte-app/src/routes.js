@@ -10,6 +10,7 @@ import Form from './pages/Form.svelte';
 import Icon from './pages/Icon.svelte';
 import Input from './pages/Input.svelte';
 import Modal from './pages/Modal.svelte';
+import Navscroll from './pages/Navscroll.svelte';
 import Radio from './pages/Radio.svelte';
 import Section from './pages/Section.svelte';
 import Sidebar from './components/Sidebar.svelte';
@@ -31,6 +32,7 @@ export const AppRoutes = [
   { path: '/icon', element: Icon, title: 'Icon' },
   { path: '/input', element: Input, title: 'Input' },
   { path: '/modal', element: Modal, title: 'Modal' },
+  { path: '/navscroll', element: Navscroll, title: 'Navscroll' },
   { path: '/radio', element: Radio, title: 'Radio' },
   { path: '/section', element: Section, title: 'Section' },
   { path: '/sidebar', element: Sidebar, title: 'Sidebar' },
