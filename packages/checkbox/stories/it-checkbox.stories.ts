@@ -174,19 +174,23 @@ export const Disabilitato: Story = {
   // name: 'Disabilitato',
   args: { disabled: true },
   render: (params) => html`
-    <fieldset>
-      <legend>Gruppo di checkbox</legend>
+    <it-checkbox-group name=${params.name} ?required=${params.required} ?disabled=${params.disabled}>
+      <span slot="legend">Gruppo di checkbox</span>
       ${renderComponent({
         ...params,
+        required: undefined,
+        disabled: undefined,
         label: 'Checkbox non selezionato',
         className: 'mb-2',
       })}
       ${renderComponent({
         ...params,
+        required: undefined,
+        disabled: undefined,
         label: 'Checkbox selezionato',
         checked: true,
       })}
-    </fieldset>
+    </it-checkbox-group>
   `,
 };
 
@@ -214,18 +218,26 @@ export const Inline: Story = {
     ),
   },
   render: (params) => html`
-    <fieldset>
-      <legend>Gruppo di checkbox</legend>
+    <it-checkbox-group name=${params.name} ?required=${params.required} ?group=${params.group} ?inline=${params.inline}>
+      <span slot="legend">Gruppo di checkbox</span>
       ${renderComponent({
         ...params,
+        required: undefined,
+        name: undefined,
+        group: undefined,
+        inline: undefined,
         label: 'Checkbox non selezionato',
       })}
       ${renderComponent({
         ...params,
+        required: undefined,
+        name: undefined,
+        group: undefined,
+        inline: undefined,
         label: 'Checkbox selezionato',
         checked: true,
       })}
-    </fieldset>
+    </it-checkbox-group>
   `,
 };
 
@@ -235,45 +247,131 @@ export const Group: Story = {
   args: { group: true },
   render: (params) => html`
     <div class="row">
-      <fieldset class="col-12 col-md-6">
-        <legend>Gruppo di checkbox</legend>
+      <it-checkbox-group
+        name=${params.name}
+        ?required=${params.required}
+        ?group=${params.group}
+        ?inline=${params.inline}
+        ?disabled=${params.disabled}
+        class="col-12 col-md-6"
+      >
+        <span slot="legend">Gruppo di checkbox</span>
         ${renderComponent({
           ...params,
+          required: undefined,
+          name: undefined,
+          group: undefined,
+          inline: undefined,
           label: 'Checkbox selezionato',
           checked: true,
         })}
         ${renderComponent({
           ...params,
+          required: undefined,
+          name: undefined,
+          group: undefined,
+          inline: undefined,
           label: 'Checkbox non selezionato',
         })}
         ${renderComponent({
           ...params,
+          required: undefined,
+          name: undefined,
+          group: undefined,
+          inline: undefined,
           disabled: true,
           label: 'Checkbox disabilitato non selezionato',
         })}
-      </fieldset>
+      </it-checkbox-group>
 
-      <fieldset class="col-12 col-md-6">
-        <legend>Gruppo di checkbox</legend>
+      <it-checkbox-group
+        name=${params.name}
+        ?required=${params.required}
+        ?group=${params.group}
+        ?inline=${params.inline}
+        ?disabled=${Group.disabled}
+        class="col-12 col-md-6"
+      >
+        <span slot="legend">Gruppo di checkbox</span>
         ${renderComponent({
           ...params,
+          required: undefined,
+          name: undefined,
+          group: undefined,
+          inline: undefined,
           label: 'Checkbox selezionato',
           checked: true,
           supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
         })}
         ${renderComponent({
           ...params,
+          required: undefined,
+          name: undefined,
+          group: undefined,
+          inline: undefined,
           label: 'Checkbox non selezionato',
           supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
         })}
         ${renderComponent({
           ...params,
+          required: undefined,
+          name: undefined,
+          group: undefined,
+          inline: undefined,
           disabled: true,
           label: 'Checkbox disabilitato non selezionato',
           supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
         })}
-      </fieldset>
+      </it-checkbox-group>
     </div>
+  `,
+};
+
+export const GroupInitValue: Story = {
+  ...meta,
+  name: 'Valore iniziale del gruppo',
+  args: { group: true, name: 'checkboxgroup' },
+  render: (params) => html`
+    <it-checkbox-group
+      name=${params.name}
+      ?required=${params.required}
+      ?group=${params.group}
+      ?inline=${params.inline}
+      ?disabled=${params.disabled}
+      value='["opt_1","opt_3"]'
+    >
+      <span slot="legend">Gruppo di checkbox</span>
+      ${renderComponent({
+        ...params,
+        required: undefined,
+        name: undefined,
+        group: undefined,
+        inline: undefined,
+        disabled: undefined,
+        label: 'Opzione numero 1',
+        value: 'opt_1',
+      })}
+      ${renderComponent({
+        ...params,
+        required: undefined,
+        name: undefined,
+        group: undefined,
+        inline: undefined,
+        disabled: undefined,
+        label: 'Opzione numero 2',
+        value: 'opt_2',
+      })}
+      ${renderComponent({
+        ...params,
+        required: undefined,
+        name: undefined,
+        group: undefined,
+        inline: undefined,
+        disabled: undefined,
+        label: 'Opzione numero 3',
+        value: 'opt_3',
+      })}
+    </it-checkbox-group>
   `,
 };
 
@@ -285,6 +383,188 @@ export const SupportText: Story = {
     ${renderComponent({
       ...params,
       label: 'Checkbox con testo di supporto selezionato',
+    })}
+  `,
+};
+
+export const ValidazioneNativa: Story = {
+  ...meta,
+  name: 'Validazione nativa',
+  args: { required: true },
+  render: (params) => html`
+    <form>
+      <div class="row mb-4">
+        <div class="col-md-6 d-flex align-items-center">
+          ${renderComponent({
+            ...params,
+            label: 'Checkbox singola obbligatoria',
+            name: 'single-required-example',
+            id: 'single-required-example',
+          })}
+        </div>
+        <div class="col-md-6">
+          <it-checkbox-group
+            name="multiple-required-example"
+            ?required=${params.required}
+            ?group=${params.group}
+            ?inline=${params.inline}
+            ?disabled=${params.disabled}
+          >
+            <span slot="legend">Gruppo di checkbox obbligatorio</span>
+            ${renderComponent({
+              ...params,
+              required: undefined,
+              name: undefined,
+              group: undefined,
+              inline: undefined,
+              disabled: undefined,
+              label: 'Valore 1',
+              value: 'valore_1',
+            })}
+            ${renderComponent({
+              ...params,
+              required: undefined,
+              name: undefined,
+              group: undefined,
+              inline: undefined,
+              disabled: undefined,
+              label: 'Valore 2',
+              value: 'valore_2',
+            })}
+            ${renderComponent({
+              ...params,
+              required: undefined,
+              name: undefined,
+              group: undefined,
+              inline: undefined,
+              disabled: undefined,
+              label: 'Valore 3',
+              value: 'valore_3',
+            })}
+          </it-checkbox-group>
+        </div>
+      </div>
+      <div class="text-center">
+        <it-button type="submit" variant="primary">Invia</it-button>
+      </div>
+    </form>
+  `,
+};
+
+export const ValidazioneCustom: Story = {
+  ...meta,
+  name: 'Validazione custom',
+  args: { customValidation: true, validityMessage: 'Questo campo è obbligatorio!!!' },
+  render: (params) => html`
+      <div class="row">
+        <div class="col-md-6 d-flex align-items-center">
+          ${renderComponent({
+            ...params,
+            required: undefined,
+            label: 'Checkbox singola obbligatoria',
+            name: 'external-validation-single-example',
+            id: 'external-validation-single-example',
+          })}
+        </div>
+        <div class="col-md-6">
+          <it-checkbox-group
+            name="external-validation-multiple-example"
+            ?group=${params.group}
+            ?inline=${params.inline}
+            ?disabled=${params.disabled}
+            ?custom-validation=${params.customValidation}
+            validity-message="${ifDefined(params.validityMessage || undefined)}"
+          >
+            <span slot="legend">Gruppo di checkbox obbligatorio</span>
+            ${renderComponent({
+              ...params,
+              required: undefined,
+              name: undefined,
+              group: undefined,
+              inline: undefined,
+              disabled: undefined,
+              customValidation: undefined,
+              validityMessage: undefined,
+              label: 'Valore 1',
+              value: 'valore_1',
+            })}
+            ${renderComponent({
+              ...params,
+              required: undefined,
+              name: undefined,
+              group: undefined,
+              inline: undefined,
+              disabled: undefined,
+              customValidation: undefined,
+              validityMessage: undefined,
+              label: 'Valore 2',
+              value: 'valore_2',
+            })}
+            ${renderComponent({
+              ...params,
+              required: undefined,
+              name: undefined,
+              group: undefined,
+              inline: undefined,
+              disabled: undefined,
+              customValidation: undefined,
+              validityMessage: undefined,
+              label: 'Valore 3',
+              value: 'valore_3',
+            })}
+          </it-checkbox-group>
+        </div>
+      </div>
+    </form>
+  `,
+};
+
+export const GestioneEventi: Story = {
+  ...meta,
+  name: 'Gestione degli eventi',
+  parameters: {
+    docs: {
+      description: {
+        story: `È possibile gestire gli eventi di \`it-input\`, \`it-blur\`, \`it-change\`, \`it-focus\`, \`it-click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
+<br/><br/>
+È sufficiente aggiungere un event listener al componente \`<it-checkbox>\` o al componente \`<it-checkbox-group>\` per intercettare gli eventi desiderati. Ad esempio, per gestire l'evento di change, è possibile utilizzare il seguente codice:
+
+\`\`\`js
+document.querySelector('it-checkbox#event-checkbox-example').addEventListener('it-change', (event) => {
+  console.log('Checkbox event:', event);
+  alert('Checkbox event');
+});
+\`\`\`
+
+Il componente, emette anche un evento di tipo \`it-input-ready\` quando l'input è pronto e caricato nel DOM:
+
+\`\`\`js
+document.querySelector('it-checkbox#event-checkbox-example').addEventListener('it-input-ready', (event) => {
+  console.log('Checkbox ready:', event);
+});
+\`\`\`
+      `,
+      },
+    },
+  },
+  args: {
+    type: 'text',
+    label: 'Prova evento di change',
+    name: 'event-checkbox-example',
+    id: 'event-checkbox-example',
+  },
+  render: (params) => html`
+    <script>
+      document.querySelector('it-checkbox#event-checkbox-example').addEventListener('it-change', (event) => {
+        console.log('Checkbox event:', event);
+        alert('Checkbox event');
+      });
+      document.querySelector('it-checkbox#event-checkbox-example').addEventListener('it-input-ready', (event) => {
+        console.log('Checkbox ready:', event);
+      });
+    </script>
+    ${renderComponent({
+      ...params,
     })}
   `,
 };

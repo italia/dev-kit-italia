@@ -1,5 +1,40 @@
 # @italia/input
 
+## 1.0.0-alpha.4
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.4
+  - @italia/i18n@1.0.0-alpha.4
+  - @italia/icon@1.0.0-alpha.4
+
+## 1.0.0-alpha.3
+
+### Minor Changes
+
+- [#202](https://github.com/italia/dev-kit-italia/pull/202) [`5e541a4`](https://github.com/italia/dev-kit-italia/commit/5e541a42b580b9c9d6086ff65e0aed42929ab7d4) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fix examples for form, and styles for number validation with error
+
+- [#177](https://github.com/italia/dev-kit-italia/pull/177) [`2300214`](https://github.com/italia/dev-kit-italia/commit/2300214a46761099e6672f85fbe8bbb1acaae4e9) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Handled input type="date" and added docs
+
+- [#127](https://github.com/italia/dev-kit-italia/pull/127) [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added checkbox component
+
+### Patch Changes
+
+- [#222](https://github.com/italia/dev-kit-italia/pull/222) [`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed form elements validation
+
+- [#211](https://github.com/italia/dev-kit-italia/pull/211) [`8ddff07`](https://github.com/italia/dev-kit-italia/commit/8ddff0754342cd7314c6ba7d65909437473a890b) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fix aria-invalid attribute value
+
+- [#206](https://github.com/italia/dev-kit-italia/pull/206) [`21b8a9d`](https://github.com/italia/dev-kit-italia/commit/21b8a9d02dc62c3d25925c9bd6e5697abffd0b39) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Refactor docs for it-input, it-checkbox, it-video
+
+- [#172](https://github.com/italia/dev-kit-italia/pull/172) [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fix: docs for input and number-input
+
+- Updated dependencies [[`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c), [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e), [`d7e298e`](https://github.com/italia/dev-kit-italia/commit/d7e298e8382243a8103dbd687e8bc794a25553b5), [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539), [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2)]:
+  - @italia/globals@1.0.0-alpha.3
+  - @italia/icon@1.0.0-alpha.3
+  - @italia/i18n@1.0.0-alpha.3
+
 ## 0.1.0-alpha.2
 
 ### Minor Changes

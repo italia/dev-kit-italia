@@ -1,9 +1,27 @@
 <script>
+  function formDataToObject(fd) {
+    const obj = {};
+
+    for (const [key, value] of fd.entries()) {
+      if (obj[key] !== undefined) {
+        // Se la key esiste già → trasformala in array
+        if (!Array.isArray(obj[key])) {
+          obj[key] = [obj[key]];
+        }
+        obj[key].push(value);
+      } else {
+        obj[key] = value;
+      }
+    }
+
+    return obj;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData(document.getElementById('form'));
-    const data = Object.fromEntries(formData.entries());
+    const data = formDataToObject(formData);
     console.log(data);
     //
     /*
@@ -54,28 +72,31 @@
     <span slot="label">Campo readonly normalizzato come plaintext</span>
   </it-input>
 
-  <fieldset class="mb-4">
-    <legend>Animali preferiti</legend>
-    <it-checkbox id="animali" name="animali" value="cane" group><span slot="label">Cane</span></it-checkbox>
-    <it-checkbox id="animali" name="animali" value="gatto" group><span slot="label">Gatto</span></it-checkbox>
-    <it-checkbox id="animali" name="animali" value="topo" group><span slot="label">Topo</span></it-checkbox>
-    <it-checkbox id="animali" name="animali" value="serpente" group><span slot="label">Serpente</span></it-checkbox>
-  </fieldset>
+  <it-checkbox-group required group name="animali" class="mb-4" value="["gatto","topo"]">
+    <span slot="legend">Animali preferiti</span>
+    <it-checkbox value="cane">
+      <span slot="label">Cane</span>
+    </it-checkbox>
+    <it-checkbox value="gatto">
+      <span slot="label">Gatto</span>
+    </it-checkbox>
+    <it-checkbox value="topo">
+      <span slot="label">Topo</span>
+    </it-checkbox>
+  </it-checkbox-group>
 
-  <fieldset>
-    <legend>Gruppo di radio</legend>
-    <it-radio-group name="gruppo1">
-      <it-radio id="radio1" name="gruppo1" value="opzione1" checked>
-        <span slot="label">Radio di esempio 1</span>
-      </it-radio>
-      <it-radio id="radio2" name="gruppo1" value="opzione2">
-        <span slot="label">Radio di esempio 2</span>
-      </it-radio>
-      <it-radio id="radio3" name="gruppo1" value="opzione3">
-        <span slot="label">Radio di esempio 3</span>
-      </it-radio>
-    </it-radio-group>
-  </fieldset>
+  <it-radio-group name="gruppo1" required>
+    <span slot="label">Gruppo di radio</span>
+    <it-radio id="radio1" value="opzione1">
+      <span slot="label">Radio di esempio 1</span>
+    </it-radio>
+    <it-radio id="radio2" value="opzione2">
+      <span slot="label">Radio di esempio 2</span>
+    </it-radio>
+    <it-radio id="radio3" value="opzione3">
+      <span slot="label">Radio di esempio 3</span>
+    </it-radio>
+  </it-radio-group>
 
   <it-input id="messaggio-basic" name="messaggio" type="textarea" support-text="Inserisci il tuo messaggio"
     ><span slot="label">Messaggio</span></it-input
