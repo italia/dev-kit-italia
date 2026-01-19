@@ -1,7 +1,7 @@
 {
   "name": "@italia/sticky",
   "description": "Web component it-sticky del Design system .italia",
-  "version": "0.1.0-alpha.2",
+  "version": "1.0.0-alpha.4",
   "publishConfig": {
     "access": "public"
   },
