@@ -1,105 +1,209 @@
-/// <reference types="mocha"/>
+/// <reference types="mocha" />
 
 import '@italia/navscroll';
 import { expect, fixture, html } from '@open-wc/testing';
-
-// import { type ItNavscroll } from '@italia/navscroll';
+import type { ItNavscroll } from '@italia/navscroll';
 
 describe('ItNavscroll', () => {
-  it('renders a slot and empty nav initially', async () => {
-    const el = await fixture(html`<it-navscroll></it-navscroll>`);
-    const slot = el.shadowRoot!.querySelector('slot');
-    const div = el.shadowRoot!.querySelector('div.navscroll');
+  let el: ItNavscroll;
+  let scrollContainer: HTMLElement;
 
-    expect(slot).to.exist;
-    expect(div).to.exist;
-    // inizialmente non ci sono link
-    expect(div!.querySelectorAll('a')).to.have.length(0);
-  });
+  beforeEach(async () => {
+    scrollContainer = document.createElement('div');
+    scrollContainer.id = 'scroll-container';
+    scrollContainer.style.height = '200px';
+    scrollContainer.style.overflowY = 'scroll';
+    scrollContainer.innerHTML = `
+      <section id="p1" style="height:100px"></section>
+      <section id="p1_1" style="height:100px"></section>
+      <section id="p1_1_1" style="height:100px"></section>
+      <section id="p1_1_2" style="height:100px"></section>
+      <section id="p2" style="height:100px"></section>
+    `;
+    document.body.appendChild(scrollContainer);
 
-  it('renders links from slotted <a> elements', async () => {
-    const el = await fixture(html`
-      <it-navscroll>
-        <a href="#main">Vai al contenuto</a>
-        <a href="#footer">Vai al footer</a>
+    el = await fixture<ItNavscroll>(html`
+      <it-navscroll breakpoint="1024" open-label="Naviga fra le sezioni" sticky="" for="#scroll-container">
+        <div class="link-list-wrapper">
+          <h3>Header</h3>
+          <div class="progress">
+            <div
+              class="progress-bar it-navscroll-progressbar"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="Progress bar"
+            ></div>
+          </div>
+          <nav>
+            <ul class="link-list">
+              <li class="nav-item">
+                <a class="nav-link active" href="#p1"><span>1. Introduzione </span></a>
+                <ul class="link-list">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#p1_1"><span>1.1 Elemento annidato </span></a>
+                    <ul class="tertiary link-list">
+                      <li class="nav-item">
+                        <a class="nav-link" href="#p1_1_1"><span>1.1.1 Elemento annidato </span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#p1_1_2"><span>1.1.2 Elemento annidato </span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#p1_1_3"><span>1.1.3 Elemento annidato </span></a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#p1_2"><span>1.2 Elemento annidato </span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#p1_3"><span>1.3 Elemento annidato </span></a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#p2"><span>2. Seconda sezione </span></a>
+                <ul class="link-list">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#p2_1"><span>2.1 Elemento annidato </span></a>
+                    <ul class="tertiary link-list">
+                      <li class="nav-item">
+                        <a class="nav-link" href="#p2_1_1"><span>2.1.1 Elemento annidato </span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#p2_1_2"><span>2.1.2 Elemento annidato </span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#p2_1_3"><span>2.1.3 Elemento annidato </span></a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </it-navscroll>
     `);
-
-    const div = el.shadowRoot!.querySelector('div.navscroll');
-    const items = div!.querySelectorAll('a');
-
-    expect(items).to.have.length(2);
-    expect(items[0].getAttribute('href')).to.equal('#main');
-    expect(items[0].textContent!.trim()).to.equal('Vai al contenuto');
-    expect(items[1].getAttribute('href')).to.equal('#footer');
-    expect(items[1].textContent!.trim()).to.equal('Vai al footer');
   });
 
-  it('links are hidden initially', async () => {
-    const el = await fixture(html`
-      <it-navscroll>
-        <a href="#main">Vai al contenuto</a>
-      </it-navscroll>
-    `);
-
-    const a = el.shadowRoot!.querySelector('a')!;
-    expect(a.classList.contains('visually-hidden-focusable')).to.be.true;
+  afterEach(() => {
+    scrollContainer.remove();
   });
 
-  it('links become visible when focused (simulate Tab)', async () => {
-    const el = await fixture(html`
-      <it-navscroll>
-        <a href="#main">Vai al contenuto</a>
-      </it-navscroll>
-    `);
+  it('renders wrapper, progress bar e nav', () => {
+    expect(el.querySelector('.link-list-wrapper')).to.exist;
+    const progress = el.querySelector<HTMLElement>('.progress-bar.it-navscroll-progressbar');
+    expect(progress).to.exist;
+    expect(progress?.getAttribute('role')).to.equal('progressbar');
 
-    const anchor: HTMLElement = el.shadowRoot!.querySelector('a');
-
-    // Simuliamo focus
-    anchor?.focus();
-    await el.updateComplete;
-
-    // // Dovresti controllare la classe o lo stile che mostra il link
-    // // Se `visually-hidden-focusable` utilizza :focus-within, possiamo verificare il focus
-    expect(anchor?.parentNode.getBoundingClientRect().width).to.greaterThan(1);
-  });
-
-  it('updates links when slot content changes', async () => {
-    const el = await fixture(html`<it-navscroll></it-navscroll>`);
-
-    const slotEl = document.createElement('a');
-    slotEl.setAttribute('href', '#new');
-    slotEl.textContent = 'Nuovo link';
-    el.appendChild(slotEl);
-
-    // Trigger slotchange manually
-    const slot = el.shadowRoot!.querySelector('slot')!;
-    slot.dispatchEvent(new Event('slotchange'));
-
-    await el.updateComplete;
-
-    const div = el.shadowRoot!.querySelector('div.navscroll');
-    const links = div!.querySelectorAll('a');
-
-    expect(links).to.have.length(1);
-    expect(links[0].getAttribute('href')).to.equal('#new');
-    expect(links[0].textContent).to.equal('Nuovo link');
-  });
-
-  it('More than 2 navscroll creates nav', async () => {
-    const el = await fixture(
-      html`<it-navscroll it-aria-label="Vai a">
-        <a href="#menu">Vai al menu</a>
-        <a href="#content">Vai al contenuto</a>
-        <a href="#footer">Vai al footer</a></it-navscroll
-      >`,
-    );
-
-    const nav = el.shadowRoot!.querySelector('nav.navscroll');
-    const items = nav!.querySelectorAll('li');
-
+    const nav = el.querySelector('nav');
     expect(nav).to.exist;
-    expect(items.length).to.equal(3);
-    expect(nav?.getAttribute('aria-label')).to.equal('Vai a');
+    expect(nav?.querySelectorAll('a.nav-link').length).to.be.greaterThan(0);
+  });
+
+  it('click su link semplice aggiorna active e aria-current', () => {
+    const link = el.querySelector<HTMLAnchorElement>('a[href="#p2"]')!;
+    link.click();
+
+    expect(link.classList.contains('active')).to.be.true;
+    expect(link.getAttribute('aria-current')).to.equal('location');
+
+    const other = el.querySelector<HTMLAnchorElement>('a[href="#p1"]')!;
+    expect(other.classList.contains('active')).to.be.false;
+  });
+
+  it('click su link annidato aggiorna genitori e aria-current', () => {
+    const nestedLink = el.querySelector<HTMLAnchorElement>('a[href="#p1_1_2"]')!;
+    nestedLink.click();
+
+    expect(nestedLink.classList.contains('active')).to.be.true;
+    expect(nestedLink.getAttribute('aria-current')).to.equal('location');
+
+    // Genitori
+    const parent1 = el.querySelector<HTMLAnchorElement>('a[href="#p1_1"]')!;
+    const parent2 = el.querySelector<HTMLAnchorElement>('a[href="#p1"]')!;
+    expect(parent1.classList.contains('active')).to.be.true;
+    expect(parent2.classList.contains('active')).to.be.true;
+
+    // Solo link cliccato ha aria-current
+    expect(parent1.getAttribute('aria-current')).to.be.null;
+    expect(parent2.getAttribute('aria-current')).to.be.null;
+  });
+
+  it('scroll container aggiorna progress bar', () => {
+    const progress = el.querySelector<HTMLElement>('.progress-bar.it-navscroll-progressbar')!;
+    scrollContainer.scrollTop = 50;
+    scrollContainer.dispatchEvent(new Event('scroll'));
+    console.log('aria-valuenow', progress.getAttribute('aria-valuenow'));
+    expect(Number(progress.getAttribute('aria-valuenow'))).to.be.greaterThan(0);
+  });
+
+  it('modal mobile mostra trigger con label e si aggiorna su link annidato', () => {
+    el.updateMode(true); // forza modalità modal
+    const trigger = el.querySelector<HTMLButtonElement>('it-modal [slot="trigger"]')!;
+    expect(trigger.textContent?.trim()).to.equal('Naviga fra le sezioni');
+
+    const nestedLink = el.querySelector<HTMLAnchorElement>('a[href="#p1_1_1"]')!;
+    nestedLink.click();
+    expect(trigger.textContent?.trim()).to.equal('1.1.1 Elemento annidato');
+  });
+
+  it('exitModal rimuove modal e ripristina menu', () => {
+    el.updateMode(true);
+    const modal = el.querySelector('it-modal')!;
+    el.exitModal();
+
+    expect(el.querySelector('it-modal')).to.be.null;
+    expect(el.querySelector('.link-list-wrapper')).to.exist;
+    expect(modal.contains(el.querySelector('.link-list-wrapper'))).to.be.false;
+  });
+
+  it('aggiorna active e progress bar durante scroll', async () => {
+    const progress = el.querySelector<HTMLElement>('.progress-bar.it-navscroll-progressbar')!;
+
+    // Scroll verso p1_1
+    scrollContainer.scrollTop = 110;
+    scrollContainer.dispatchEvent(new Event('scroll'));
+    // eslint-disable-next-line no-promise-executor-return
+    await new Promise((r) => setTimeout(r, 20));
+
+    const activeLink1 = el.querySelector<HTMLAnchorElement>('a.nav-link.active')!;
+    expect(activeLink1.textContent).to.include('1. Introduzione');
+
+    const parentLink = el.querySelector<HTMLAnchorElement>('a[href="#p1"]')!;
+    expect(parentLink.classList.contains('active')).to.be.true;
+
+    expect(Number(progress.getAttribute('aria-valuenow'))).to.be.greaterThan(0);
+
+    // Scroll verso p1_1_2
+    scrollContainer.scrollTop = 220;
+    scrollContainer.dispatchEvent(new Event('scroll'));
+    // eslint-disable-next-line no-promise-executor-return
+    await new Promise((r) => setTimeout(r, 20));
+
+    const activeLink2 = el.querySelector<HTMLAnchorElement>('a.nav-link.active')!;
+    expect(activeLink2.textContent).to.include('1. Introduzione');
+
+    const parentLink2 = el.querySelector<HTMLAnchorElement>('a[href="#p1_1"]')!;
+    const grandParentLink = el.querySelector<HTMLAnchorElement>('a[href="#p1"]')!;
+    expect(parentLink2.classList.contains('active')).to.be.true;
+    expect(grandParentLink.classList.contains('active')).to.be.true;
+
+    // Scroll verso p2
+    scrollContainer.scrollTop = 450;
+    scrollContainer.dispatchEvent(new Event('scroll'));
+    // eslint-disable-next-line no-promise-executor-return
+    await new Promise((r) => setTimeout(r, 20));
+
+    const activeLink3 = el.querySelector<HTMLAnchorElement>('a.nav-link.active')!;
+    expect(activeLink3.textContent).to.include('2. Seconda sezione ');
+
+    // Tutti i vecchi parent non devono più essere active
+    const oldParent = el.querySelector<HTMLAnchorElement>('a[href="#p1"]')!;
+    expect(oldParent.classList.contains('active')).to.be.false;
+
+    expect(Number(progress.getAttribute('aria-valuenow'))).to.be.greaterThan(0);
   });
 });

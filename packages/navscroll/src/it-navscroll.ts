@@ -148,7 +148,7 @@ export class ItNavscroll extends BaseComponent {
   /*
    * Gestione della modale
    */
-  private updateMode(isConstrained: boolean) {
+  public updateMode(isConstrained: boolean) {
     const nextMode = isConstrained ? 'modal' : 'inline';
     if (this.sticky) {
       if (nextMode === 'inline' && !this.wrapper.classList.contains('affix-top')) {
@@ -189,7 +189,7 @@ export class ItNavscroll extends BaseComponent {
     this.updateTriggerText();
   }
 
-  private exitModal() {
+  public exitModal() {
     if (this.modalEl?.contains(this.menuWrapper)) {
       this.wrapper.appendChild(this.menuWrapper);
       // this.shadowRoot?.appendChild(this.navEl);
