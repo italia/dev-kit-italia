@@ -288,6 +288,7 @@ export class ItNavscroll extends BaseComponent {
 
     // 2️⃣ applico active solo al link corrente e ai suoi parent
     const currentLink = this.navEl.querySelector(`a[href="${hash}"]`);
+    console.log('currentLink for hash', hash, currentLink);
     if (currentLink) {
       currentLink.classList.add('active');
       currentLink.setAttribute('aria-current', 'location');
@@ -357,6 +358,7 @@ export class ItNavscroll extends BaseComponent {
     }
 
     if (currentSection) {
+      console.log('scrollhandler');
       const id = currentSection?.id;
 
       this.activeTarget = `#${id}`;
@@ -397,19 +399,20 @@ export class ItNavscroll extends BaseComponent {
         if (!targetEl) return;
 
         this.activeTarget = `#${targetId}`;
-        this.setCurrent(this.activeTarget);
+        //  this.setCurrent(this.activeTarget);
 
         // scroll animato
         this.scrollToElement(targetEl, 700, 0, () => {
           // focus senza scroll jump
           targetEl.setAttribute('tabindex', '-1');
           targetEl.focus({ preventScroll: true });
-          setTimeout(() => {
-            targetEl.removeAttribute('tabindex');
-          }, 500);
 
           // aggiorna URL
           window.history.replaceState(null, '', `#${targetId}`);
+          const announcer = document.getElementById('aria-navscroll-announcer');
+          if (announcer) {
+            announcer.textContent = `Sezione ${targetEl.textContent} selezionata`;
+          }
         });
 
         // chiude il modal se siamo in modal mode
@@ -438,9 +441,9 @@ export class ItNavscroll extends BaseComponent {
       ? (() => {
           const containerRect = container!.getBoundingClientRect();
           const targetRect = targetEl.getBoundingClientRect();
-          return targetRect.top - containerRect.top + container!.scrollTop - sectionOffset - offset;
+          return targetRect.top - containerRect.top + container!.scrollTop - sectionOffset - offset + 50;
         })()
-      : targetEl.getBoundingClientRect().top + window.scrollY - sectionOffset - offset;
+      : targetEl.getBoundingClientRect().top + window.scrollY - sectionOffset - offset + 50;
 
     const distance = targetY - startY;
     const startTime = performance.now();

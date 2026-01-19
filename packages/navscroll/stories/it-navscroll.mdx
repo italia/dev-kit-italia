@@ -51,6 +51,11 @@ Per garantire un'esperienza accessibile, segui queste linee guida:
 - Inserisci l'attributo `aria-label` sull'elemento `<aside>` che contiene il componente `<it-navscroll>`, per specificare meglio ai lettori di schermo di che cosa si tratta. Non è obbligatorio ma è consigliato.
 - Usa l'attributo `aria-disabled="true"` per i link disabilitati per garantire il corretto supporto alle tecnologie assistive.
 
+Per garantire una migliore esperienza di navigazione con gli screen reader, soprattutto per JAWS, inserisci in pagina un elemento con `aria-live="polite"` e `id="aria-navscroll-announcer"` che venga aggiornato con il titolo della sezione raggiunta dopo lo scroll:
+``` html
+<div id="aria-navscroll-announcer" aria-live="polite" aria-atomic="true" class="visually-hidden"></div>
+```
+
 
 ## Posizionata a fondo pagina con linea a sinistra
 
