@@ -430,13 +430,17 @@ export class ItNavscroll extends BaseComponent {
 
     const startY = isScrollableContainer ? container!.scrollTop : window.scrollY;
 
+    // offset per posizionare la sezione al 25% della viewport
+    const viewportHeight = window.innerHeight;
+    const sectionOffset = viewportHeight * 0.25;
+
     const targetY = isScrollableContainer
       ? (() => {
           const containerRect = container!.getBoundingClientRect();
           const targetRect = targetEl.getBoundingClientRect();
-          return targetRect.top - containerRect.top + container!.scrollTop - offset;
+          return targetRect.top - containerRect.top + container!.scrollTop - sectionOffset - offset;
         })()
-      : targetEl.getBoundingClientRect().top + window.scrollY - offset;
+      : targetEl.getBoundingClientRect().top + window.scrollY - sectionOffset - offset;
 
     const distance = targetY - startY;
     const startTime = performance.now();
