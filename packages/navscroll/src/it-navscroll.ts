@@ -339,17 +339,15 @@ export class ItNavscroll extends BaseComponent {
 
     if (!sections.length) return;
 
-    const scrollTop = this.scrollContainerTop;
-    const viewportHeight = window.innerHeight;
+    const scrollTop = this.scrollContainer?.scrollTop;
+    const viewportHeight = this.scrollContainer.clientHeight;
 
-    // calcola quale sezione è "active"
     let currentSection: HTMLElement | null = null;
 
     for (const section of sections) {
-      const rect = section.getBoundingClientRect();
-      const sectionTop = rect.top + scrollTop;
+      const sectionTop = section.offsetTop;
 
-      // se la sezione è visibile (top entro il 25% dell'alto viewport)
+      // se la sezione supera il 25% del viewport del container
       if (scrollTop + viewportHeight * 0.25 >= sectionTop) {
         currentSection = section;
       } else {
@@ -358,9 +356,7 @@ export class ItNavscroll extends BaseComponent {
     }
 
     if (currentSection) {
-      console.log('scrollhandler');
       const id = currentSection?.id;
-
       this.activeTarget = `#${id}`;
       this.setCurrent(this.activeTarget);
     }
@@ -441,9 +437,9 @@ export class ItNavscroll extends BaseComponent {
       ? (() => {
           const containerRect = container!.getBoundingClientRect();
           const targetRect = targetEl.getBoundingClientRect();
-          return targetRect.top - containerRect.top + container!.scrollTop - sectionOffset - offset + 50;
+          return targetRect.top - containerRect.top + container!.scrollTop - sectionOffset - offset;
         })()
-      : targetEl.getBoundingClientRect().top + window.scrollY - sectionOffset - offset + 50;
+      : targetEl.getBoundingClientRect().top + window.scrollY - sectionOffset - offset;
 
     const distance = targetY - startY;
     const startTime = performance.now();
