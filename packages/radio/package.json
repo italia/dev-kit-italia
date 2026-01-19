@@ -1,7 +1,7 @@
 {
   "name": "@italia/radio",
   "description": "Web component it-radio del Design system .italia",
-  "version": "0.1.0-alpha.2",
+  "version": "1.0.0-alpha.4",
   "publishConfig": {
     "access": "public"
   },

@@ -1,4 +1,4 @@
-# @italia/skiplinks
+# @italia/collapse
 
 ## 1.0.0-alpha.4
 
@@ -12,7 +12,7 @@
 
 ### Minor Changes
 
-- [#141](https://github.com/italia/dev-kit-italia/pull/141) [`198638c`](https://github.com/italia/dev-kit-italia/commit/198638c16916b7b7706d2c691b5cdc3d64ce17bb) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-skiplinks component
+- [#134](https://github.com/italia/dev-kit-italia/pull/134) [`7b3fd82`](https://github.com/italia/dev-kit-italia/commit/7b3fd821de6675e5f96acd0956e3560ae3d863c8) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added collapse component
 
 ### Patch Changes
 

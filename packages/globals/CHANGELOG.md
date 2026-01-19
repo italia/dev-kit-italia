@@ -1,5 +1,30 @@
 # @italia/globals
 
+## 1.0.0-alpha.4
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.4
+
+## 1.0.0-alpha.3
+
+### Minor Changes
+
+- [#231](https://github.com/italia/dev-kit-italia/pull/231) [`dd0a212`](https://github.com/italia/dev-kit-italia/commit/dd0a212d90c8babe430838845962d03d61aea59e) Thanks [@pnicolli](https://github.com/pnicolli)! - Added global variable with current kit version number
+
+- [#127](https://github.com/italia/dev-kit-italia/pull/127) [`1c9b7b4`](https://github.com/italia/dev-kit-italia/commit/1c9b7b484ca631a2f72a3eb5179997a0852f6539) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added checkbox component
+
+### Patch Changes
+
+- [#222](https://github.com/italia/dev-kit-italia/pull/222) [`a4a9ba0`](https://github.com/italia/dev-kit-italia/commit/a4a9ba03667e46dcabf104ec4ef24f76c5f5e10c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed form elements validation
+
+- [#172](https://github.com/italia/dev-kit-italia/pull/172) [`f0503f1`](https://github.com/italia/dev-kit-italia/commit/f0503f19d34ea15e1953d5ff35c345719fe0d6d2) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fix: docs for input and number-input
+
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.3
+
 ## 0.1.0-alpha.2
 
 ### Minor Changes
