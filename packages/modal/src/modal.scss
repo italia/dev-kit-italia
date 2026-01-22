@@ -100,6 +100,7 @@ $utilities: (
 
 .modal.alert-modal .modal-dialog .modal-content .modal-header {
   align-items: center;
+  justify-content: space-between;
   gap: var(--it-spacing-2x);
 }
 
