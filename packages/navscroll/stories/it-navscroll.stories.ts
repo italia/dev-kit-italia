@@ -308,21 +308,25 @@ const meta = {
     breakpoint: {
       control: 'number',
       description: 'Breakpoint sotto il quale la navigazione viene collassata',
+      type: 'number',
       table: { defaultValue: { summary: '991' } },
     },
     'open-label': {
       control: 'text',
       description: "Etichetta per l'apertura del menu collassato su mobile, quando nessuna sezione è ancora attiva",
+      type: 'string',
       table: { defaultValue: { summary: 'Indice di navigazione' } },
     },
     'open-aria-label': {
       control: 'text',
       description: 'aria-label per il menu collassato su mobile',
+      type: 'string',
       table: { defaultValue: { summary: 'Apri/Chiudi indice di navigazione' } },
     },
     'back-label': {
       control: 'text',
       description: 'Testo da mostrare sul pulsante di chiusura del menu su mobile',
+      type: 'string',
       table: { defaultValue: { summary: 'Indietro' } },
     },
   },
