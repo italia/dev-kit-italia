@@ -30,7 +30,7 @@ const closeModal = (event: Event) => {
 const meta = {
   title: 'Componenti/Modal',
   component: 'it-modal',
-  tags: ['new', 'a11y-ok', 'web-component'],
+  tags: ['beta', 'a11y-ok', 'web-component'],
   parameters: {
     layout: 'fullscreen',
     docs: {
