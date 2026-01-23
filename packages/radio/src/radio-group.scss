@@ -12,23 +12,23 @@
 
 ::slotted([slot='label']) {
   display: block;
-  padding: 0 var(--bsi-form-input-spacing-x);
-  margin-bottom: var(--bsi-spacing-s);
+  padding: 0 var(--#{$prefix}form-input-spacing-x);
+  margin-bottom: var(--#{$prefix}spacing-s);
   background-color: rgba(0, 0, 0, 0);
-  color: var(--bsi-form-control-text-color);
-  font-size: var(--bsi-label-sm);
-  font-weight: var(--bsi-font-weight-solid);
+  color: var(--#{$prefix}form-control-text-color);
+  font-size: var(--#{$prefix}label-sm);
+  font-weight: var(--#{$prefix}font-weight-solid);
 }
 
 .it-radio-group {
-  margin-bottom: var(--bsi-spacing-xs);
+  margin-bottom: var(--#{$prefix}spacing-xs);
 }
 
 .it-radio-group-inline {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--bsi-spacing-s);
+  gap: var(--#{$prefix}spacing-s);
 }
 
 .form-feedaback {
