@@ -10,16 +10,16 @@
 }
 
 :host([is-disabled]) ::slotted(it-icon) {
-  --bsi-icon-primary: var(--bsi-icon-disabled);
-  --bsi-icon-secondary: var(--bsi-icon-disabled);
-  --bsi-icon-success: var(--bsi-icon-disabled);
-  --bsi-icon-danger: var(--bsi-icon-disabled);
-  --bsi-icon-warning: var(--bsi-icon-disabled);
-  --bsi-icon-default: var(--bsi-icon-disabled);
+  --#{$prefix}icon-primary: var(--#{$prefix}icon-disabled);
+  --#{$prefix}icon-secondary: var(--#{$prefix}icon-disabled);
+  --#{$prefix}icon-success: var(--#{$prefix}icon-disabled);
+  --#{$prefix}icon-danger: var(--#{$prefix}icon-disabled);
+  --#{$prefix}icon-warning: var(--#{$prefix}icon-disabled);
+  --#{$prefix}icon-default: var(--#{$prefix}icon-disabled);
 }
 
 :host ::slotted(it-icon) {
-  --bsi-icon-default: var(--bsi-chip-icon-color);
+  --#{$prefix}icon-default: var(--#{$prefix}chip-icon-color);
 }
 
 :host([is-disabled]) ::slotted(it-button) {
@@ -28,11 +28,11 @@
 
 /* Hover on the chip */
 :host a:hover ::slotted(it-icon) {
-  --bsi-icon-primary: var(--bsi-chip-text-color);
-  --bsi-icon-secondary: var(--bsi-chip-text-color);
-  --bsi-icon-success: var(--bsi-chip-text-color);
-  --bsi-icon-danger: var(--bsi-chip-text-color);
-  --bsi-icon-warning: var(--bsi-chip-text-color);
-  --bsi-icon-default: var(--bsi-chip-text-color);
-  --bsi-chip-icon-color: var(--bsi-chip-text-color);
+  --#{$prefix}icon-primary: var(--#{$prefix}chip-text-color);
+  --#{$prefix}icon-secondary: var(--#{$prefix}chip-text-color);
+  --#{$prefix}icon-success: var(--#{$prefix}chip-text-color);
+  --#{$prefix}icon-danger: var(--#{$prefix}chip-text-color);
+  --#{$prefix}icon-warning: var(--#{$prefix}chip-text-color);
+  --#{$prefix}icon-default: var(--#{$prefix}chip-text-color);
+  --#{$prefix}chip-icon-color: var(--#{$prefix}chip-text-color);
 }

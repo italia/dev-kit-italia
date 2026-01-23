@@ -12,15 +12,15 @@ it-chip:defined {
     background: transparent;
     cursor: pointer !important;
     line-height: 1;
-    --bsi-btn-disabled-opacity: 1;
+    --#{$prefix}btn-disabled-opacity: 1;
   }
 
   it-button it-icon::part(icon) {
-    fill: var(--bsi-chip-icon-color);
+    fill: var(--#{$prefix}chip-icon-color);
   }
 
   &:hover it-button it-icon::part(icon) {
-    fill: var(--bsi-chip-text-color);
+    fill: var(--#{$prefix}chip-text-color);
   }
 
   it-button it-icon,
