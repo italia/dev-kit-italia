@@ -92,7 +92,7 @@ const getBodyInlineMenu = (id: string) =>
       <ul class="link-list">
         <li>
           <it-collapse>
-            <button class="list-item icon-right px-0 border-0 bg-transparent" slot="trigger">
+            <button class="list-item icon-right border-0 bg-transparent" slot="trigger">
               <span class="list-item-title-icon-wrapper" slot="label">
                 <span class="list-item-title">Introduzione</span>
                 <it-icon name="it-expand" color="primary" class="left"></it-icon>
@@ -113,7 +113,7 @@ const getBodyInlineMenu = (id: string) =>
         </li>
         <li>
           <it-collapse>
-            <button class="list-item icon-right px-0 border-0 bg-transparent" slot="trigger">
+            <button class="list-item icon-right border-0 bg-transparent" slot="trigger">
               <span class="list-item-title-icon-wrapper" slot="label">
                 <span class="list-item-title">Seconda sezione</span>
                 <it-icon name="it-expand" color="primary" class="left"></it-icon>

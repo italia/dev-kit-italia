@@ -36,4 +36,16 @@ it-navscroll {
       --#{$prefix}icon-primary: var(--#{$prefix}icon-inverse);
     }
   }
+
+  .inline-menu {
+    > .link-list-wrapper {
+      > ul.link-list {
+        > li {
+          .list-item {
+            padding: var(--#{$prefix}navscroll-item-spacing);
+          }
+        }
+      }
+    }
+  }
 }
