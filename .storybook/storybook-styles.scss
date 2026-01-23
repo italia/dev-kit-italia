@@ -26,20 +26,20 @@
   nav,
   .toc-wrapper ul {
     width: 100%;
-    font-family: var(--bs-font-sans-serif);
+    font-family: var(--bsi-font-sans-serif);
     font-size: 16px;
   }
 
   nav .toc-list-item {
     > a:hover {
-      color: var(--bs-color-link);
+      color: var(--bsi-color-link);
     }
 
     &.is-active-li > a {
-      color: var(--bs-color-link);
+      color: var(--bsi-color-link);
 
       &:hover {
-        color: var(--bs-color-link-hover);
+        color: var(--bsi-color-link-hover);
       }
     }
   }
@@ -51,10 +51,10 @@
   margin: 0 auto;
 
   :not(.sb-story *) {
-    font-family: var(--bs-font-sans-serif);
-    font-size: var(--bs-body-font-size); /* Mobile: 16px, Desktop: 18px */
-    //font-weight: var(--bs-body-font-weight); /* 400 */
-    line-height: var(--bs-body-line-height); /* 150% */
+    font-family: var(--bsi-font-sans-serif);
+    font-size: var(--bsi-body-font-size); /* Mobile: 16px, Desktop: 18px */
+    //font-weight: var(--bsi-body-font-weight); /* 400 */
+    line-height: var(--bsi-body-line-height); /* 150% */
 
     &.docblock-code-toggle {
       font-size: 80%;
@@ -66,7 +66,7 @@
     }
 
     &.small {
-      font-size: var(--bs-caption-font-size);
+      font-size: var(--bsi-caption-font-size);
     }
 
     &.docblock-argstable *:not(code) {
@@ -78,27 +78,27 @@
   code:not(.sb-story code),
   kbd:not(.sb-story kbd),
   samp:not(.sb-story samp) {
-    font-family: var(--bs-font-mono);
+    font-family: var(--bsi-font-mono);
   }
 
   code:not(.sb-story code) {
-    background-color: var(--bs-code-background);
-    color: var(--bs-color-code);
+    background-color: var(--bsi-code-background);
+    color: var(--bsi-color-code);
     font-size: 85%;
     word-wrap: break-word;
   }
 
   pre:not(.sb-story pre) span {
-    font-family: var(--bs-font-mono);
+    font-family: var(--bsi-font-mono);
     font-size: 88.9%;
   }
 
   a:not(.sb-story a) {
-    color: var(--bs-color-link);
+    color: var(--bsi-color-link);
     text-decoration: underline;
 
     &:hover {
-      color: var(--bs-color-link-hover);
+      color: var(--bsi-color-link-hover);
     }
   }
 }
@@ -108,9 +108,9 @@
 .sbdocs-content p.lead:not(.sb-story p.lead) {
   display: block;
   margin-bottom: 2rem !important;
-  font-size: var(--bs-lead-font-size) !important; /* 1.25rem mobile, 1.5rem desktop */
-  font-weight: var(--bs-lead-font-weight) !important;
-  line-height: var(--bs-lead-line-height) !important;
+  font-size: var(--bsi-lead-font-size) !important; /* 1.25rem mobile, 1.5rem desktop */
+  font-weight: var(--bsi-lead-font-weight) !important;
+  line-height: var(--bsi-lead-line-height) !important;
 }
 
 /* Tipografia Bootstrap Italia usando variabili CSS native */
@@ -118,45 +118,45 @@
 /* Gli h1-h6 nelle preview (.sb-story) NON devono essere toccati */
 .sbdocs-content h1:not(.sb-story h1) {
   margin-bottom: 1.5rem;
-  font-size: var(--bs-heading-1-font-size); /* Mobile: 40px, Desktop: 48px */
-  font-weight: var(--bs-heading-font-weight); /* 700 */
-  letter-spacing: var(--bs-font-tracking-narrow, -1px);
-  line-height: var(--bs-heading-line-height); /* 120% */
+  font-size: var(--bsi-heading-1-font-size); /* Mobile: 40px, Desktop: 48px */
+  font-weight: var(--bsi-heading-font-weight); /* 700 */
+  letter-spacing: var(--bsi-font-tracking-narrow, -1px);
+  line-height: var(--bsi-heading-line-height); /* 120% */
 }
 
 .sbdocs-content h2:not(.sb-story h2) {
   margin-bottom: 1.25rem;
-  font-size: var(--bs-heading-2-font-size); /* Mobile: 32px, Desktop: 40px */
-  font-weight: var(--bs-heading-font-weight);
-  line-height: var(--bs-heading-line-height);
+  font-size: var(--bsi-heading-2-font-size); /* Mobile: 32px, Desktop: 40px */
+  font-weight: var(--bsi-heading-font-weight);
+  line-height: var(--bsi-heading-line-height);
 }
 
 .sbdocs-content h3:not(.sb-story h3) {
   margin-bottom: 1rem;
-  font-size: var(--bs-heading-3-font-size); /* Mobile: 28px, Desktop: 32px */
-  font-weight: var(--bs-heading-font-weight);
-  line-height: var(--bs-heading-line-height);
+  font-size: var(--bsi-heading-3-font-size); /* Mobile: 28px, Desktop: 32px */
+  font-weight: var(--bsi-heading-font-weight);
+  line-height: var(--bsi-heading-line-height);
 }
 
 .sbdocs-content h4:not(.sb-story h4) {
   margin-bottom: 0.875rem;
-  font-size: var(--bs-heading-4-font-size); /* Mobile: 24px, Desktop: 28px */
-  font-weight: var(--bs-heading-font-weight-weak); /* 600 */
-  line-height: var(--bs-heading-line-height);
+  font-size: var(--bsi-heading-4-font-size); /* Mobile: 24px, Desktop: 28px */
+  font-weight: var(--bsi-heading-font-weight-weak); /* 600 */
+  line-height: var(--bsi-heading-line-height);
 }
 
 .sbdocs-content h5:not(.sb-story h5) {
   margin-bottom: 0.75rem;
-  font-size: var(--bs-heading-5-font-size); /* Mobile: 20px, Desktop: 24px */
-  font-weight: var(--bs-heading-font-weight-weak);
-  line-height: var(--bs-heading-line-height);
+  font-size: var(--bsi-heading-5-font-size); /* Mobile: 20px, Desktop: 24px */
+  font-weight: var(--bsi-heading-font-weight-weak);
+  line-height: var(--bsi-heading-line-height);
 }
 
 .sbdocs-content h6:not(.sb-story h6) {
   margin-bottom: 0.625rem;
-  font-size: var(--bs-heading-6-font-size); /* Mobile: 16px, Desktop: 18px */
-  font-weight: var(--bs-heading-font-weight-weak);
-  line-height: var(--bs-heading-line-height);
+  font-size: var(--bsi-heading-6-font-size); /* Mobile: 16px, Desktop: 18px */
+  font-weight: var(--bsi-heading-font-weight-weak);
+  line-height: var(--bsi-heading-line-height);
 }
 
 /* Margin top solo per il primo h3 nella documentazione principale, non nelle preview */
@@ -167,9 +167,9 @@
 .sbdocs-content p:not(.sb-story p),
 .sbdocs-content li:not(.toc-list-item):not(.sb-story li) {
   max-width: 75ch;
-  font-size: var(--bs-body-font-size); /* Mobile: 16px, Desktop: 18px */
-  font-weight: var(--bs-body-font-weight); /* 400 */
-  line-height: var(--bs-body-line-height); /* 150% */
+  font-size: var(--bsi-body-font-size); /* Mobile: 16px, Desktop: 18px */
+  font-weight: var(--bsi-body-font-weight); /* 400 */
+  line-height: var(--bsi-body-line-height); /* 150% */
 }
 
 .sbdocs-content .callout:not(.sb-story .callout) {
