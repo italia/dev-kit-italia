@@ -30,7 +30,7 @@ Restringi la larghezza della finestra per vedere cosa succede su dispositivi mob
 - Definisci le sezioni della pagina, utilizzando intestazioni semantiche come `h2` oppure `h3`, fai attenzione all'ordine corretto.
 - Aggiungi nel componente le voci e i link necessari per navigare a ciascuna sezione della pagina.
 - Assicurati che ogni link abbia un anchor tag che corrisponde all'ID della sezione di destinazione sulla pagina.
-Ogni link all’interno del componente Navscroll deve avere l’attributo `href` con il valore dell’id relativo all’elemento correlato in pagina: `href="#idElemento"`.
+**Ogni link all’interno del componente Navscroll deve avere l’attributo `href` con il valore dell’id relativo all’elemento correlato in pagina: `href="#idElemento"`.**
 - Posiziona il componente a destra o a sinistra del contenuto principale della pagina, a seconda delle esigenze.
 - Se non definisci nulla nell'attributo `for`, viene tenuto in considerazione tutto il documento.
 
@@ -56,27 +56,39 @@ Per garantire una migliore esperienza di navigazione con gli screen reader, sopr
 <div id="aria-navscroll-announcer" aria-live="polite" aria-atomic="true" class="visually-hidden"></div>
 ```
 
+## Posizionamento su desktop
 
-## Posizionata a fondo pagina con linea a sinistra
+La Navscroll può essere posizionata a sinistra o a destra, a seconda dell'ordine in cui viene inserita nel markup HTML.
 
-Il posizionamento a fondo pagina si riferisce alla visualizzazione su dispositivi mobili.
+Puoi decidere di mostrare o meno una linea di separazione sulla Navscroll, valorizzando opportunamente sull componente `<it-navscroll>` l'attributo `line-position`.
 
-La Navscroll può avere una linea-separatore a sinistra dell’elemento. Si ottiene aggiungendo al componente `<it-navscroll>` l'attributo `line-position="left"`.
+### A sinistra
+In questo esempio la Navscroll è posizionata a sinistra con la linea di separazione impostata su `line-position="right"`.
+<Canvas of={Stories.DesktopOnLeft} />
 
+### A destra
+In questo esempio la Navscroll è posizionata a destra con la linea di separazione impostata su `line-position="left"`.
+<Canvas of={Stories.DesktopOnRight} />
 
-Restringi la larghezza della finestra per vedere cosa succede su dispositivi mobili..
+## Posizionamento su mobile
 
-<Canvas of={Stories.BottomWithLeftLine} />
-
-## Posizionata in testa alla pagina con linea a destra
-
-Il posizionamento in testa alla pagina si riferisce alla visualizzazione su dispositivi mobili.
-
-La Navscroll può avere una linea-separatore a destra dell’elemento. Si ottiene aggiungendo al componente `<it-navscroll>` l'attributo `line-position="right"`.
+Puoi decidere dove viene mostrato il trigger per l'apertura della Navscroll sui dispositivi mobili utilizzando l'attributo `position`.
 
 Restringi la larghezza della finestra per vedere cosa succede su dispositivi mobili.
 
-<Canvas of={Stories.TopWithRightLine} />
+### Posizionata in fondo alla pagina
+
+Imposta l'attributo ``position="bottom"`` per mostrare il trigger di apertura della Navscroll in fondo alla pagina.
+
+Il posizionamento in fondo alla pagina è il default per il componente ``<it-navscroll>``.
+
+<Canvas of={Stories.MobileBottom} />
+
+### Posizionata in testa alla pagina
+
+Imposta l'attributo ``position="top"`` per mostrare il trigger di apertura della Navscroll in testa alla pagina.
+<Canvas of={Stories.MobileTop} />
+
 
 ## Con barra di progresso
 Per mostrare la barra di progresso, aggiungi il markup della progressbar all'interno del div con classe `link-list-wrapper`.

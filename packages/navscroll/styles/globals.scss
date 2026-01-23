@@ -2,10 +2,10 @@ it-navscroll {
   --it-host-display: block;
 
   it-modal::part(modal) {
-    --bs-modal-width: calc(100vw - 48px);
-    --bs-modal-padding: 0;
-    --bs-modal-title-font-size: 1rem;
-    --bs-modal-bg: var(--bs-navscroll-background);
+    --#{$prefix}modal-width: calc(100vw - 48px);
+    --#{$prefix}modal-padding: 0;
+    --#{$prefix}modal-title-font-size: 1rem;
+    --#{$prefix}modal-bg: var(--#{$prefix}navscroll-background);
   }
 
   it-modal::part(modal-content-wrapper) {
@@ -14,8 +14,8 @@ it-navscroll {
 
   it-modal::part(modal-header) {
     display: block;
-    //--bs-navscroll-bottom-box-shadow: 0 0px 30px 5px rgba(0, 0, 0, 0.05);
-    box-shadow: var(--bs-navscroll-bottom-box-shadow);
+    //--#{$prefix}navscroll-bottom-box-shadow: 0 0px 30px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--#{$prefix}navscroll-bottom-box-shadow);
   }
 
   it-button[slot='header']::part(button) {
@@ -25,15 +25,15 @@ it-navscroll {
 
   .theme-dark-mobile {
     it-button[slot='trigger']::part(button) {
-      color: var(--bs-navscroll-toggler-color); //$navscroll-dark-text-color;
+      color: var(--#{$prefix}navscroll-toggler-color); //$navscroll-dark-text-color;
     }
 
     it-modal,
     it-modal it-button::part(button) {
-      --bs-btn-text-color: #fff;
-      --bs-color-link-hover: #fff;
-      --bs-color-text-muted: #fff;
-      --bs-icon-primary: var(--bs-icon-inverse);
+      --#{$prefix}btn-text-color: #fff;
+      --#{$prefix}color-link-hover: #fff;
+      --#{$prefix}color-text-muted: #fff;
+      --#{$prefix}icon-primary: var(--#{$prefix}icon-inverse);
     }
   }
 }

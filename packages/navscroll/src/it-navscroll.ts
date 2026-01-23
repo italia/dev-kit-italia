@@ -347,6 +347,11 @@ export class ItNavscroll extends BaseComponent {
       const sectionTop = section.offsetTop;
 
       // se la sezione supera il 25% del viewport del container
+      console.log(
+        { scrollTop, viewportHeight, sectionTop },
+        'scrollTop + viewportHeight * 0.25 >= sectionTop=',
+        scrollTop + viewportHeight * 0.25 >= sectionTop,
+      );
       if (scrollTop + viewportHeight * 0.25 >= sectionTop) {
         currentSection = section;
       } else {
@@ -426,19 +431,20 @@ export class ItNavscroll extends BaseComponent {
     const overflowY = style?.overflowY;
     const isScrollableContainer = !!container && overflowY !== 'visible' && overflowY !== 'hidden';
 
-    const startY = isScrollableContainer ? container!.scrollTop : window.scrollY;
+    const startY = this.scrollContainerTop;
 
     // offset per posizionare la sezione al 25% della viewport
-    const viewportHeight = window.innerHeight;
-    const sectionOffset = viewportHeight * 0.25;
+    const viewportHeight = isScrollableContainer ? this.scrollContainer.clientHeight : window.innerHeight;
+    const sectionOffset = viewportHeight * 0.25 - 30;
 
+    const targetOffset = startY - sectionOffset - offset;
     const targetY = isScrollableContainer
       ? (() => {
           const containerRect = container!.getBoundingClientRect();
           const targetRect = targetEl.getBoundingClientRect();
-          return targetRect.top - containerRect.top + container!.scrollTop - sectionOffset - offset;
+          return targetRect.top - containerRect.top + targetOffset;
         })()
-      : targetEl.getBoundingClientRect().top + window.scrollY - sectionOffset - offset;
+      : targetEl.getBoundingClientRect().top + targetOffset;
 
     const distance = targetY - startY;
     const startTime = performance.now();

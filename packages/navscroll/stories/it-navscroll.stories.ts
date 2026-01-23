@@ -359,27 +359,50 @@ export const EsempioInterattivo: Story = {
     })}`,
 };
 
-export const BottomWithLeftLine: Story = {
+export const DesktopOnLeft: Story = {
   ...meta,
-  name: 'Posizionata a fondo pagina con linea a sinistra',
-  args: { position: 'bottom', 'line-position': 'left' },
+  name: 'Posizionata a sinistra su desktop',
+  args: { 'line-position': 'right' },
   render: (params) =>
     html` ${renderComponent({
       ...params,
       _progress: false,
-      _uniqueStoryID: '-story2',
+      _uniqueStoryID: '-story2-1',
+    })}`,
+};
+export const DesktopOnRight: Story = {
+  ...meta,
+  name: 'Posizionata a destra su desktop',
+  args: { 'line-position': 'left' },
+  render: (params) =>
+    html` ${renderComponent({
+      ...params,
+      _progress: false,
+      _uniqueStoryID: '-story2-2',
     })}`,
 };
 
-export const TopWithRightLine: Story = {
+export const MobileBottom: Story = {
   ...meta,
-  name: 'Posizionata in testa alla pagina con linea a destra',
-  args: { position: 'top', 'line-position': 'right' },
+  name: 'Posizionata a fondo pagina',
+  args: { position: 'bottom' },
   render: (params) =>
     html` ${renderComponent({
       ...params,
       _progress: false,
-      _uniqueStoryID: '-story3',
+      _uniqueStoryID: '-story3-1',
+    })}`,
+};
+
+export const MobileTop: Story = {
+  ...meta,
+  name: 'Posizionata in testa alla pagina',
+  args: { position: 'top' },
+  render: (params) =>
+    html` ${renderComponent({
+      ...params,
+      _progress: false,
+      _uniqueStoryID: '-story3-2',
     })}`,
 };
 
