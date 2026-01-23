@@ -6,14 +6,14 @@ it-input {
     height: 100%;
 
     &::part(button) {
-      --bs-btn-border-radius: 0 var(--bs-form-control-border-radius) var(--bs-form-control-border-radius) 0;
-      --bs-btn-padding-y: 0;
+      --bsi-btn-border-radius: 0 var(--bsi-form-control-border-radius) var(--bsi-form-control-border-radius) 0;
+      --bsi-btn-padding-y: 0;
       height: 100%;
-      border-bottom: 1px solid var(--bs-form-control-border-color);
+      border-bottom: 1px solid var(--bsi-form-control-border-color);
     }
   }
 
   &:not(:defined) {
-    margin-bottom: var(--bs-spacing-m, 24px);
+    margin-bottom: var(--bsi-spacing-m, 24px);
   }
 }

@@ -43,6 +43,7 @@
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
     "bootstrap-italia": "catalog:",
+    "design-tokens-italia": "catalog:",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-html": "^7.1.0",

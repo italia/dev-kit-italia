@@ -1,0 +1,77 @@
+/* Titillium Sans Pro - Light 300 */
+@font-face {
+  font-display: swap;
+  font-family: 'Titillium Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src:
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Light.woff2') format('woff2'),
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Light.woff') format('woff');
+}
+
+/* Titillium Sans Pro - Regular 400 */
+@font-face {
+  font-display: swap;
+  font-family: 'Titillium Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Regular.woff2') format('woff2'),
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Regular.woff') format('woff');
+}
+
+/* Titillium Sans Pro - Italic 400 */
+@font-face {
+  font-display: swap;
+  font-family: 'Titillium Sans Pro';
+  font-style: italic;
+  font-weight: 400;
+  src:
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Italic.woff2') format('woff2'),
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Italic.woff') format('woff');
+}
+
+/* Titillium Sans Pro - Semibold 600 */
+@font-face {
+  font-display: swap;
+  font-family: 'Titillium Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src:
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Semibold.woff2') format('woff2'),
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Semibold.woff') format('woff');
+}
+
+/* Titillium Sans Pro - Semibold Italic 600 */
+@font-face {
+  font-display: swap;
+  font-family: 'Titillium Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+
+  src:
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-SemiboldItalic.woff2') format('woff2'),
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-SemiboldItalic.woff') format('woff');
+}
+
+/* Titillium Sans Pro - Bold 700 */
+@font-face {
+  font-display: swap;
+  font-family: 'Titillium Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Bold.woff2') format('woff2'),
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Bold.woff') format('woff');
+}
+
+/* Titillium Sans Pro - Bold Italic 700 */
+@font-face {
+  font-display: swap;
+  font-family: 'Titillium Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  src:
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-BoldItalic.woff2') format('woff2'),
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-BoldItalic.woff') format('woff');
+}
