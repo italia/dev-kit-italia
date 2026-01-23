@@ -1,5 +1,4 @@
 /* BOOTSTRAP ITALIA base styles */
-@import 'design-tokens-italia/dist/css/variables';
 @import 'bootstrap-italia/src/scss/base/version';
 @import 'bootstrap-italia/src/scss/base/functions';
 @import 'bootstrap-italia/src/scss/base/variables';
@@ -33,6 +32,8 @@
 @import 'bootstrap-italia/src/scss/components/sidebar';
 @import 'bootstrap-italia/src/scss/components/affix';
 @import 'bootstrap-italia/src/scss/components/badge';
+@import 'bootstrap-italia/src/scss/components/navscroll';
+@import 'bootstrap-italia/src/scss/components/progress-bars';
 
 /*dev-kit-italia global styles*/
 @import '@italia/avatar/styles/globals';
@@ -60,10 +61,10 @@
 @import './sidebar';
 
 .it-footer-main .it-brand-wrapper ::part(icon) {
-  width: var(--#{$prefix}footer-brand-icon-size);
-  height: var(--#{$prefix}footer-brand-icon-size);
+  width: var(--bs-footer-brand-icon-size);
+  height: var(--bs-footer-brand-icon-size);
   flex-shrink: 0;
-  margin-right: var(--#{$prefix}spacing-xs);
-  fill: var(--#{$prefix}footer-brand-icon-color);
+  margin-right: var(--bs-spacing-xs);
+  fill: var(--bs-footer-brand-icon-color);
 }
 // End footer
