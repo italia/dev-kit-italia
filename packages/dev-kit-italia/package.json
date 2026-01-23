@@ -73,6 +73,7 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
     "bootstrap-italia": "catalog:",
+    "design-tokens-italia": "catalog:",
     "rimraf": "^6.0.1",
     "rollup": "^4.42.0",
     "rollup-plugin-copy": "^3.5.0",
