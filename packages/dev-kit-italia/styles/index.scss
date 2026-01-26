@@ -55,8 +55,8 @@
 @import 'bootstrap-italia/src/scss/components/list';
 @import 'bootstrap-italia/src/scss/components/headercenter';
 
-@import './list';
-@import './sidebar';
+@import './components/list';
+@import './components/sidebar';
 
 .it-footer-main .it-brand-wrapper ::part(icon) {
   width: var(--#{$prefix}footer-brand-icon-size);
