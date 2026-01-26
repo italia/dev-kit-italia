@@ -34,7 +34,7 @@ const renderComponent = (params: BackToTopProps) => html`
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Back to top',
-  tags: ['a11y-ok', 'web-component', 'new'],
+  tags: ['a11y-ok', 'web-component', 'beta'],
   component: 'it-back-to-top',
   args: {
     offset: undefined,
