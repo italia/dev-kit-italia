@@ -6,7 +6,7 @@ import { CHIP_VARIANTS, CHIP_SIZES, type ChipProps } from '../src/types.ts';
 const meta = {
   title: 'Componenti/Chip',
   component: 'it-chip',
-  tags: ['autodocs', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   args: {
     size: 'sm',
     label: 'Etichetta',
