@@ -7,7 +7,7 @@ import '@italia/checkbox';
 
 const meta = {
   title: 'Componenti/List',
-  tags: ['beta'],
+  tags: ['beta', 'a11y-ok', 'documentation'],
   parameters: {
     layout: 'padded',
   },
@@ -858,6 +858,7 @@ export const LinkListAnnidataCollassabile: Story = {
     <div class="link-list-wrapper">
       <ul class="link-list">
         <li>
+          <<<<<<< HEAD
           <a
             class="list-item icon-left"
             href="#collapseList1"
@@ -931,6 +932,69 @@ export const LinkListAnnidataCollassabile: Story = {
               <a class="list-item" href="#"><span>Link lista 3</span></a>
             </li>
           </ul>
+          =======
+          <it-collapse>
+            <button class="list-item icon-right px-0 border-0 bg-transparent" slot="trigger">
+              <span class="list-item-title-icon-wrapper" slot="label">
+                <span class="list-item-title">Link lista 1</span>
+                <it-icon name="it-expand" color="primary" class="left"></it-icon>
+              </span>
+            </button>
+            <ul slot="content" class="link-sublist collapse">
+              <li>
+                <a class="list-item" href="#"><span>Link lista 1</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 2</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 3</span></a>
+              </li>
+            </ul>
+          </it-collapse>
+        </li>
+        <li>
+          <it-collapse>
+            <button class="list-item icon-right px-0 border-0 bg-transparent" slot="trigger">
+              <span class="list-item-title-icon-wrapper" slot="label">
+                <span class="list-item-title">Link lista 2</span>
+                <it-icon name="it-expand" color="primary" class="left"></it-icon>
+              </span>
+            </button>
+            <ul slot="content" class="link-sublist collapse">
+              <li>
+                <a class="list-item" href="#"><span>Link lista 1</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 2</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 3</span></a>
+              </li>
+            </ul>
+          </it-collapse>
+        </li>
+        <li>
+          <it-collapse>
+            <button class="list-item icon-right px-0 border-0 bg-transparent" slot="trigger">
+              <span class="list-item-title-icon-wrapper" slot="label">
+                <span class="list-item-title">Link lista 3</span>
+                <it-icon name="it-expand" color="primary" class="left"></it-icon>
+              </span>
+            </button>
+            <ul slot="content" class="link-sublist collapse">
+              <li>
+                <a class="list-item" href="#"><span>Link lista 1</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 2</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 3</span></a>
+              </li>
+            </ul>
+          </it-collapse>
+          >>>>>>> main
         </li>
       </ul>
     </div>
