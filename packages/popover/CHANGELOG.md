@@ -1,5 +1,14 @@
 # @italia/popover
 
+## 1.0.0-alpha.4
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.4
+  - @italia/globals@1.0.0-alpha.4
+
 ## 1.0.0-alpha.3
 
 ### Patch Changes

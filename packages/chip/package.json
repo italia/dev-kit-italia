@@ -1,7 +1,7 @@
 {
   "name": "@italia/chip",
   "description": "Web component it-chip del Design system .italia",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "publishConfig": {
     "access": "public"
   },

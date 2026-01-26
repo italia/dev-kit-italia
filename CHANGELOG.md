@@ -2,6 +2,179 @@
 
 This changelog contains all changes from all packages in the monorepo.
 
+## 1.0.0-alpha.4
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.4
+  - @italia/collapse@1.0.0-alpha.4
+  - @italia/globals@1.0.0-alpha.4
+  - @italia/icon@1.0.0-alpha.4
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.4
+  - @italia/i18n@1.0.0-alpha.4
+  - @italia/icon@1.0.0-alpha.4
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.4
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.4
+  - @italia/i18n@1.0.0-alpha.4
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.4
+  - @italia/button@1.0.0-alpha.4
+  - @italia/globals@1.0.0-alpha.4
+  - @italia/icon@1.0.0-alpha.4
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.4
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`7207967`](https://github.com/italia/dev-kit-italia/commit/7207967288d520767efd5c79908d6526e0f5219e)]:
+  - @italia/sticky@1.0.0-alpha.4
+  - @italia/accordion@1.0.0-alpha.4
+  - @italia/avatar@1.0.0-alpha.4
+  - @italia/button@1.0.0-alpha.4
+  - @italia/checkbox@1.0.0-alpha.4
+  - @italia/chip@1.0.0-alpha.4
+  - @italia/collapse@1.0.0-alpha.4
+  - @italia/dropdown@1.0.0-alpha.4
+  - @italia/i18n@1.0.0-alpha.4
+  - @italia/icon@1.0.0-alpha.4
+  - @italia/input@1.0.0-alpha.4
+  - @italia/popover@1.0.0-alpha.4
+  - @italia/radio@1.0.0-alpha.4
+  - @italia/section@1.0.0-alpha.4
+  - @italia/skiplinks@1.0.0-alpha.4
+  - @italia/video@1.0.0-alpha.4
+
+### `dropdown`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.4
+  - @italia/globals@1.0.0-alpha.4
+  - @italia/icon@1.0.0-alpha.4
+  - @italia/popover@1.0.0-alpha.4
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.4
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.4
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.4
+  - @italia/i18n@1.0.0-alpha.4
+  - @italia/icon@1.0.0-alpha.4
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.4
+  - @italia/globals@1.0.0-alpha.4
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.4
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.4
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.4
+
+### `sticky`
+
+### Patch Changes
+
+- [#239](https://github.com/italia/dev-kit-italia/pull/239) [`7207967`](https://github.com/italia/dev-kit-italia/commit/7207967288d520767efd5c79908d6526e0f5219e) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Fixed readme for installation
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.4
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.4
+  - @italia/checkbox@1.0.0-alpha.4
+  - @italia/globals@1.0.0-alpha.4
+  - @italia/i18n@1.0.0-alpha.4
+  - @italia/icon@1.0.0-alpha.4
+
 ## 1.0.0-alpha.3
 
 ### `accordion`

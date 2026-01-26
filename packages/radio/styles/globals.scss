@@ -7,7 +7,7 @@
   font-size: 0.75rem;
 
   &.just-validate-error-label {
-    color: var(--bs-color-text-danger);
+    color: var(--#{$prefix}color-text-danger);
   }
 }
 /* ========================================
@@ -18,11 +18,11 @@
 it-radio:not(:defined) {
   display: flex !important;
   align-items: center;
-  margin-bottom: var(--bs-spacing-xs);
+  margin-bottom: var(--#{$prefix}spacing-xs);
 
   [slot='label'] {
     font-size: 18px;
-    font-weight: var(--bs-font-weight-solid);
+    font-weight: var(--#{$prefix}font-weight-solid);
   }
 
   &[support-text] {
@@ -39,14 +39,14 @@ it-radio:not(:defined) {
       width: 100%;
       padding-right: 3.25rem;
       margin: 8px 0;
-      color: var(--bs-color-text-secondary);
+      color: var(--#{$prefix}color-text-secondary);
       content: attr(support-text) !important;
       font-size: smaller;
     }
   }
 
   &[disabled]::before {
-    border-color: var(--bs-color-border-disabled);
+    border-color: var(--#{$prefix}color-border-disabled);
   }
 }
 
@@ -54,15 +54,15 @@ it-radio:not(:defined) {
 it-radio-group:not(:defined) {
   display: flex !important;
   flex-direction: column;
-  margin-bottom: var(--bs-spacing-md, 16px);
+  margin-bottom: var(--#{$prefix}spacing-md, 16px);
 
   /* Show slotted label with proper group label styling */
 
   & > [slot='label'] {
     margin-bottom: 1rem;
-    color: var(--bs-form-control-label-color, #5c6f82);
-    font-size: var(--bs-label-sm, 14px);
-    font-weight: var(--bs-font-weight-solid, 600);
+    color: var(--#{$prefix}form-control-label-color, #5c6f82);
+    font-size: var(--#{$prefix}label-sm, 14px);
+    font-weight: var(--#{$prefix}font-weight-solid, 600);
   }
   /* Inline variant - label on top, radios in a row below */
   &[inline] {
@@ -108,7 +108,7 @@ it-radio-group:not(:defined) {
   }
 
   &[disabled] it-radio:not(:defined)::before {
-    border-color: var(--bs-color-border-disabled);
+    border-color: var(--#{$prefix}color-border-disabled);
   }
 }
 
