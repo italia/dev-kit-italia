@@ -11,6 +11,7 @@ import Dropdown from './pages/Dropdown.svelte';
 import Form from './pages/Form.svelte';
 import Icon from './pages/Icon.svelte';
 import Input from './pages/Input.svelte';
+import Overlay from './pages/Overlay.svelte';
 import Radio from './pages/Radio.svelte';
 import Section from './pages/Section.svelte';
 import Skiplinks from './pages/Skiplinks.svelte';
@@ -31,6 +32,7 @@ export const AppRoutes = [
   { path: '/form', element: Form, title: 'Form' },
   { path: '/icon', element: Icon, title: 'Icon' },
   { path: '/input', element: Input, title: 'Input' },
+  { path: '/overlay', element: Overlay, title: 'Overlay' },
   { path: '/radio', element: Radio, title: 'Radio' },
   { path: '/section', element: Section, title: 'Section' },
   { path: '/skiplinks', element: Skiplinks, title: 'Skiplinks' },
