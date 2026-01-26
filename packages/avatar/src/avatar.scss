@@ -43,8 +43,8 @@ slot[name='extra-text']::slotted(*) {
 }
 
 it-icon::part(icon) {
-  width: var(--bs-avatar-icon-size);
-  height: var(--bs-avatar-icon-size);
+  width: var(--#{$prefix}avatar-icon-size);
+  height: var(--#{$prefix}avatar-icon-size);
 }
 
 it-icon {
@@ -55,7 +55,7 @@ it-icon.presence-icon::part(icon),
 it-icon.status-icon::part(icon) {
   width: 12px;
   height: 12px;
-  stroke: var(--bs-icon-inverse);
+  stroke: var(--#{$prefix}icon-inverse);
   stroke-width: 2px;
 }
 
