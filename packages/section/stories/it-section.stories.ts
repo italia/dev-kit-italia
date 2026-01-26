@@ -123,9 +123,9 @@ export const PersonalizzazioneDegliStili: Story = {
         story: `
 Per la personalizzazione degli stili puoi usare il selettore \`::part\` passando il valore \`section\`. [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
 
-Quando si organizzano i contenuti usando le classi della griglia, non serve aggiungere spazio ai lati. Se proprio necessario, puoi aggiungere spazio laterale usando la variabile \`--bs-section-padding-x\`.
+Quando si organizzano i contenuti usando le classi della griglia, non serve aggiungere spazio ai lati. Se proprio necessario, puoi aggiungere spazio laterale usando la variabile \`--#{$prefix}section-padding-x\`.
 
-Puoi usare la variabile \`--bs-section-image-overlay\` per regolare l'opacità dell'overlay applicato all'immagine.
+Puoi usare la variabile \`--#{$prefix}section-image-overlay\` per regolare l'opacità dell'overlay applicato all'immagine.
 `,
       },
     },
