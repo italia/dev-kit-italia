@@ -11,11 +11,11 @@
   flex-direction: row-reverse;
   flex-wrap: wrap;
   align-items: center;
-  --bs-rating-icon-fill: var(--bs-icon-disabled);
-  --bs-rating-text: var(--bs-color-text-secondary);
-  --bs-rating-font-size: var(--bs-label-font-size-s);
-  --bs-rating-line-height: var(--bs-label-line-height);
-  --bs-rating-font-weight: var(--bs-font-weight-solid);
+  --#{$prefix}rating-icon-fill: var(--#{$prefix}icon-disabled);
+  --#{$prefix}rating-text: var(--#{$prefix}color-text-secondary);
+  --#{$prefix}rating-font-size: var(--#{$prefix}label-font-size-s);
+  --#{$prefix}rating-line-height: var(--#{$prefix}label-line-height);
+  --#{$prefix}rating-font-weight: var(--#{$prefix}font-weight-solid);
 }
 
 div.it-radio-group {
@@ -24,10 +24,10 @@ div.it-radio-group {
 
 ::slotted([slot='label']) {
   width: auto;
-  margin-left: var(--bs-spacing-xxs);
-  color: var(--bs-rating-text);
+  margin-left: var(--#{$prefix}spacing-xxs);
+  color: var(--#{$prefix}rating-text);
   float: right;
-  font-size: var(--bs-rating-font-size);
-  font-weight: var(--bs-rating-font-weight);
-  line-height: var(--bs-rating-line-height);
+  font-size: var(--#{$prefix}rating-font-size);
+  font-weight: var(--#{$prefix}rating-font-weight);
+  line-height: var(--#{$prefix}rating-line-height);
 }
