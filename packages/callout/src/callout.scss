@@ -75,5 +75,5 @@
 }
 
 ::slotted(it-icon[slot='icon']) {
-  --bs-icon-default: var(--it-color-border-secondary);
+  --#{$prefix}icon-default: var(--it-color-border-secondary);
 }

@@ -16,7 +16,7 @@ const renderComponent = (params: SkiplinksProps, defaultSlot: string | TemplateR
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Skiplinks',
-  tags: ['new'],
+  tags: ['new', 'a11y-ok', 'web-component'],
   component: 'it-skiplinks',
   args: {
     'it-aria-label': 'Aria label',

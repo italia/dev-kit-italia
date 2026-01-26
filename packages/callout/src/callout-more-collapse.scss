@@ -5,8 +5,8 @@
 
 :host {
   display: block;
-  font-family: var(--bs-callout-font-family, inherit);
-  font-size: var(--bs-callout-font-size, 1rem);
+  font-family: var(--#{$prefix}callout-font-family, inherit);
+  font-size: var(--#{$prefix}callout-font-size, 1rem);
 }
 
 /* Anti-FOUC: nascondi il contenuto finché il componente non è definito */
@@ -15,7 +15,7 @@
 }
 
 :host([big-text]) {
-  --bs-callout-text-size: 18px;
+  --#{$prefix}callout-text-size: 18px;
 }
 
 .collapse-div {
@@ -63,7 +63,7 @@
   padding: 0;
   border: none;
   background-color: transparent;
-  color: var(--bs-primary, #0066cc);
+  color: var(--#{$prefix}primary, #0066cc);
   cursor: pointer;
   font: inherit;
   font-weight: 400;
@@ -73,7 +73,7 @@
 .callout-more-toggle:hover,
 .callout-more-toggle:active {
   background: none;
-  color: var(--bs-primary-hover, var(--bs-primary, #0066cc));
+  color: var(--#{$prefix}primary-hover, var(--#{$prefix}primary, #0066cc));
 }
 
 .callout-more-toggle span {
@@ -116,10 +116,10 @@
 }
 
 .callout-more-toggle:focus-visible {
-  border-color: var(--bs-focus-outline-color) !important;
+  border-color: var(--#{$prefix}focus-outline-color) !important;
   box-shadow:
-    0 0 0 2px var(--bs-color-border-inverse),
-    0 0 0 5px var(--bs-color-outline-focus) !important;
+    0 0 0 2px var(--#{$prefix}color-border-inverse),
+    0 0 0 5px var(--#{$prefix}color-outline-focus) !important;
   outline: 3px solid transparent !important;
   outline-offset: 3px !important;
 }
@@ -128,7 +128,7 @@
   display: inline-flex;
   align-items: center;
   margin-left: auto;
-  color: var(--bs-primary, #0066cc);
+  color: var(--#{$prefix}primary, #0066cc);
   font-weight: 400;
   gap: var(--it-spacing-xxs, 0.5rem);
   text-decoration: none;

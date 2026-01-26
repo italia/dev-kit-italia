@@ -7,7 +7,7 @@ it-callout p.callout-big-text {
 }
 
 it-callout p {
-  font-size: var(--bs-callout-text-size);
+  font-size: var(--#{$prefix}callout-text-size);
 }
 
 it-callout:not(:defined)[highlight] {
@@ -22,9 +22,9 @@ it-callout:not(:defined)[highlight] {
 
 it-callout:not(:defined) {
   display: block;
-  padding: 8px var(--bs-callout-inner-spacing, 24px) var(--bs-callout-inner-spacing, 24px);
+  padding: 8px var(--#{$prefix}callout-inner-spacing, 24px) var(--#{$prefix}callout-inner-spacing, 24px);
   border-top: 0;
-  margin: var(--bs-callout-outer-spacing, 32px) 0;
+  margin: var(--#{$prefix}callout-outer-spacing, 32px) 0;
 
   > p {
     margin-top: 1.5rem;
@@ -35,9 +35,9 @@ it-callout:not(:defined) {
   }
 
   [slot='title'] {
-    color: var(--bs-callout-title-color);
-    font-size: var(--bs-callout-title-font-size, 18px);
-    font-weight: var(--bs-callout-title-font-weight, 600);
+    color: var(--#{$prefix}callout-title-color);
+    font-size: var(--#{$prefix}callout-title-font-size, 18px);
+    font-weight: var(--#{$prefix}callout-title-font-weight, 600);
     text-transform: uppercase;
   }
 }
