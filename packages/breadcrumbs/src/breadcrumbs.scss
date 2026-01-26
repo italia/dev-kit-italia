@@ -4,22 +4,16 @@
 @import 'bootstrap-italia/src/scss/base/maps';
 
 @import 'bootstrap-italia/src/scss/components/breadcrumb';
-// TODO: refactor once BSI styles are fixed and updated
-:host {
-  --it-breadcrumb-background-color: transparent;
-}
 
 .breadcrumb {
   &.dark {
-    padding-right: 1rem !important;
-    padding-left: 1rem !important;
-    --it-breadcrumb-background-color: hsl(210, 25%, 35.2%);
-    background: var(--it-breadcrumb-background-color);
+    --#{$prefix}breadcrumb-padding: var(--#{$prefix}spacing-3xs) var(--#{$prefix}spacing-s);
+    --#{$prefix}breadcrumb-background: hsl(210, 25%, 35.2%);
 
     ::slotted(it-breadcrumb-item) {
-      --bs-breadcrumb-link-color: #fff;
-      --bs-breadcrumb-item-active-color: #fff;
-      --bs-breadcrumb-separator-color: #fff;
+      --#{$prefix}breadcrumb-link-color: #fff;
+      --#{$prefix}breadcrumb-item-active-color: #fff;
+      --#{$prefix}breadcrumb-separator-color: #fff;
     }
   }
 }

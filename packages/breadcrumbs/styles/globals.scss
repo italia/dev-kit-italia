@@ -14,13 +14,13 @@ it-breadcrumbs:not(:defined) {
     a {
       display: var(--it-host-display);
       align-items: center;
-      color: var(--bs-breadcrumb-link-color, var(--it-breadcrumb-text-color));
-      font-weight: var(--bs-breadcrumb-link-font-weight, 600);
+      color: var(--#{$prefix}breadcrumb-link-color, var(--it-breadcrumb-text-color));
+      font-weight: var(--#{$prefix}breadcrumb-link-font-weight, 600);
     }
 
     &:not(:last-child)::after {
       padding: 0 0.5rem;
-      color: var(--bs-breadcrumb-separator-color);
+      color: var(--#{$prefix}breadcrumb-separator-color);
       content: '/';
     }
 
@@ -29,7 +29,7 @@ it-breadcrumbs:not(:defined) {
       content: '';
     }
 
-    color: var(--bs-breadcrumb-link-color);
+    color: var(--#{$prefix}breadcrumb-link-color);
   }
 
   it-icon {
@@ -48,7 +48,7 @@ it-breadcrumbs[dark]:not(:defined) {
     a {
       display: var(--it-host-display);
       color: var(--it-breadcrumb-text-color);
-      font-weight: var(--bs-breadcrumb-link-font-weight, 600);
+      font-weight: var(--#{$prefix}breadcrumb-link-font-weight, 600);
     }
 
     &:not(:last-child)::after {
