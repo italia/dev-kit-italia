@@ -10,6 +10,7 @@ import Dropdown from './components/Dropdown.vue';
 import Form from './components/Form.vue';
 import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
+import Overlay from './components/Overlay.vue';
 import Popover from './components/Popover.vue';
 import Radio from './components/Radio.vue';
 import Section from './components/Section.vue';
@@ -32,6 +33,7 @@ const routes = [
   { path: '/form', name: 'Form', component: Form },
   { path: '/icon', name: 'Icon', component: Icon },
   { path: '/input', name: 'Input', component: Input },
+  { path: '/overlay', name: 'Overlay', component: Overlay },
   { path: '/popover', name: 'Popover', component: Popover },
   { path: '/radio', name: 'Radio', component: Radio },
   { path: '/section', name: 'Section', component: Section },

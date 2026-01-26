@@ -9,6 +9,7 @@ import Dropdown from './pages/Dropdown';
 import Form from './pages/Form';
 import Icon from './pages/Icon';
 import Input from './pages/Input';
+import Overlay from './pages/Overlay';
 import Popover from './pages/Popover';
 import Radio from './pages/Radio';
 import Section from './pages/Section';
@@ -30,6 +31,7 @@ export const AppRoutes = [
   { path: '/form', element: <Form />, title: 'Form' },
   { path: '/icon', element: <Icon />, title: 'Icon' },
   { path: '/input', element: <Input />, title: 'Input' },
+  { path: '/overlay', element: <Overlay />, title: 'Overlay' },
   { path: '/popover', element: <Popover />, title: 'Popover' },
   { path: '/radio', element: <Radio />, title: 'Radio' },
   { path: '/section', element: <Section />, title: 'Section' },
