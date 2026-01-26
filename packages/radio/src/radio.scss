@@ -34,7 +34,7 @@
   display: flex;
   width: fit-content;
   align-items: center;
-  padding: var(--bs-form-input-padding-y) var(--bs-form-input-padding-x);
+  padding: var(--#{$prefix}form-input-padding-y) var(--#{$prefix}form-input-padding-x);
   cursor: pointer;
 }
 
@@ -42,11 +42,11 @@
   display: block;
   width: 100%;
   // Use CSS custom property from parent group if set (for success state), otherwise use default
-  color: var(--it-radio-label-color, var(--bs-form-control-label-color));
-  font-size: var(--bs-label-sm);
-  font-weight: var(--bs-font-weight-solid);
+  color: var(--it-radio-label-color, var(--#{$prefix}form-control-label-color));
+  font-size: var(--#{$prefix}label-sm);
+  font-weight: var(--#{$prefix}font-weight-solid);
   @media (min-width: 576px) {
-    font-size: var(--bs-label-font-size-m);
+    font-size: var(--#{$prefix}label-font-size-m);
   }
 }
 

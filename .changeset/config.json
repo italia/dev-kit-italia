@@ -13,7 +13,9 @@
       "@italia/avatar",
       "@italia/back-to-top",
       "@italia/button",
+      "@italia/checkbox",
       "@italia/chip",
+      "@italia/collapse",
       "@italia/dev-kit-italia",
       "@italia/dropdown",
       "@italia/globals",
@@ -23,6 +25,7 @@
       "@italia/popover",
       "@italia/radio",
       "@italia/section",
+      "@italia/skiplinks",
       "@italia/sticky",
       "@italia/video"
     ]
