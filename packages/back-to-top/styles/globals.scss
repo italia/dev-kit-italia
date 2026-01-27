@@ -1,0 +1,7 @@
+it-back-to-top {
+  &:not(:defined) {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+  }
+}

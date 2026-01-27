@@ -4,6 +4,7 @@ import Accordion from './components/Accordion.vue';
 import Avatar from './components/Avatar.vue';
 import Breadcrumbs from './components/Breadcrumbs.vue';
 import Affix from './components/Affix.vue';
+import BackToTop from './components/BackToTop.vue';
 import Badge from './components/Badge.vue';
 import Button from './components/Button.vue';
 import Checkbox from './components/Checkbox.vue';
@@ -13,6 +14,7 @@ import Dropdown from './components/Dropdown.vue';
 import Form from './components/Form.vue';
 import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
+import Modal from './components/Modal.vue';
 import Overlay from './components/Overlay.vue';
 import Radio from './components/Radio.vue';
 import Section from './components/Section.vue';
@@ -24,6 +26,7 @@ const routes = [
   { path: '/accordion', name: 'Accordion', component: Accordion },
   { path: '/affix', name: 'Affix', component: Affix },
   { path: '/avatar', name: 'Avatar', component: Avatar },
+  { path: '/back-to-top', name: 'BackToTop', component: BackToTop },
   { path: '/badge', name: 'Badge', component: Badge },
   { path: '/breadcrumbs', name: 'Breadcrumbs', component: Breadcrumbs },
   { path: '/button', name: 'Button', component: Button },
@@ -34,6 +37,7 @@ const routes = [
   { path: '/form', name: 'Form', component: Form },
   { path: '/icon', name: 'Icon', component: Icon },
   { path: '/input', name: 'Input', component: Input },
+  { path: '/modal', name: 'Modal', component: Modal },
   { path: '/overlay', name: 'Overlay', component: Overlay },
   { path: '/radio', name: 'Radio', component: Radio },
   { path: '/section', name: 'Section', component: Section },

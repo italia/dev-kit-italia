@@ -100,6 +100,11 @@ $it-components: (
   'it-avatar': (
     border-radius: 50%,
   ),
+  'it-back-to-top': (
+    border-radius: var(--bs-radius-circle, 100%),
+    height: 56px,
+    width: 56px,
+  ),
   'it-button': (
     border-radius: var(--#{$prefix}btn-border-radius, 4px),
     height: 44.8px,

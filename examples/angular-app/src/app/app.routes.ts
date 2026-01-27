@@ -19,6 +19,10 @@ export const routes: Routes = [
       import('./pages/breadcrumbs.component').then((c) => c.BreadcrumbsComponent),
   },
   {
+    path: 'back-to-top',
+    loadComponent: () => import('./pages/back-to-top.component').then((c) => c.BackToTopComponent),
+  },
+  {
     path: 'badge',
     loadComponent: () => import('./pages/badge.component').then((c) => c.BadgeComponent),
   },
@@ -53,6 +57,10 @@ export const routes: Routes = [
   {
     path: 'input',
     loadComponent: () => import('./pages/input.component').then((c) => c.InputComponent),
+  },
+  {
+    path: 'modal',
+    loadComponent: () => import('./pages/modal.component').then((c) => c.ModalComponent),
   },
   {
     path: 'overlay',

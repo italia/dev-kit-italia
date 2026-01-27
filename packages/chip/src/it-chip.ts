@@ -25,7 +25,7 @@ export class ItChip extends BaseComponent {
 
   @property({ type: String, reflect: true, attribute: 'a11y-description' }) a11yDescription = '';
 
-  @property({ type: String, reflect: true }) variant: ChipVariant = '';
+  @property({ type: String, reflect: true }) variant?: ChipVariant;
 
   @property({ type: Boolean, reflect: true, attribute: 'is-disabled' }) isDisabled = false;
 
@@ -49,7 +49,7 @@ export class ItChip extends BaseComponent {
       } else {
         icon.size = 'xs';
       }
-      icon.color = this.variant ?? '';
+      icon.color = this.variant;
     }
   }
 

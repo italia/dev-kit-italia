@@ -2,6 +2,7 @@ import Accordion from './pages/Accordion';
 import Avatar from './pages/Avatar';
 import Breadcrumbs from './pages/Breadcrumbs';
 import Affix from './pages/Affix';
+import BackToTop from './pages/BackToTop';
 import Badge from './pages/Badge';
 import Button from './pages/Button';
 import Checkbox from './pages/Checkbox';
@@ -11,6 +12,7 @@ import Dropdown from './pages/Dropdown';
 import Form from './pages/Form';
 import Icon from './pages/Icon';
 import Input from './pages/Input';
+import Modal from './pages/Modal';
 import Overlay from './pages/Overlay';
 import Radio from './pages/Radio';
 import Section from './pages/Section';
@@ -22,6 +24,7 @@ export const AppRoutes = [
   { path: '/accordion', element: <Accordion />, title: 'Accordion' },
   { path: '/affix', element: <Affix />, title: 'Affix' },
   { path: '/avatar', element: <Avatar />, title: 'Avatar' },
+  { path: '/back-to-top', element: <BackToTop />, title: 'Back to Top' },
   { path: '/badge', element: <Badge />, title: 'Badge' },
   { path: '/breadcrumbs', element: <Breadcrumbs />, title: 'Breadcrumbs' },
   { path: '/button', element: <Button />, title: 'Button' },
@@ -32,6 +35,7 @@ export const AppRoutes = [
   { path: '/form', element: <Form />, title: 'Form' },
   { path: '/icon', element: <Icon />, title: 'Icon' },
   { path: '/input', element: <Input />, title: 'Input' },
+  { path: '/modal', element: <Modal />, title: 'Modal' },
   { path: '/overlay', element: <Overlay />, title: 'Overlay' },
   { path: '/radio', element: <Radio />, title: 'Radio' },
   { path: '/section', element: <Section />, title: 'Section' },

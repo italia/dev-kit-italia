@@ -41,6 +41,9 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/avatar">
         Avatar
       </a>
+      <a href="/src/back-to-top">
+        Back to Top
+      </a>
       <a href="/src/badge">
         Badge
       </a>
@@ -70,6 +73,9 @@ document.querySelector('#app-header').innerHTML = `
       </a>
       <a href="/src/input">
         Input
+      </a>
+      <a href="/src/modal">
+        Modal
       </a>
       <a href="/src/overlay">
         Overlay
