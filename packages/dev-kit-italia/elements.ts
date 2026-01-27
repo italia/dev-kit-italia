@@ -1,6 +1,7 @@
 // import '@italia/collapse/it-collapse.js';
 import '@italia/accordion/it-accordion.js';
 import '@italia/accordion/it-accordion-item.js';
+import '@italia/back-to-top/it-back-to-top.js';
 import '@italia/button/it-button.js';
 import '@italia/checkbox/it-checkbox.js';
 import '@italia/checkbox/it-checkbox-group.js';

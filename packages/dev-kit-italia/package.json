@@ -53,6 +53,7 @@
   "dependencies": {
     "@italia/avatar": "workspace:^",
     "@italia/accordion": "workspace:^",
+    "@italia/back-to-top": "workspace:^",
     "@italia/button": "workspace:^",
     "@italia/checkbox": "workspace:^",
     "@italia/chip": "workspace:^",

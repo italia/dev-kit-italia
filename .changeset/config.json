@@ -11,6 +11,7 @@
     [
       "@italia/accordion",
       "@italia/avatar",
+      "@italia/back-to-top",
       "@italia/button",
       "@italia/checkbox",
       "@italia/chip",

@@ -14,6 +14,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/avatar.component').then((c) => c.AvatarComponent),
   },
   {
+    path: 'back-to-top',
+    loadComponent: () => import('./pages/back-to-top.component').then((c) => c.BackToTopComponent),
+  },
+  {
     path: 'badge',
     loadComponent: () => import('./pages/badge.component').then((c) => c.BadgeComponent),
   },
