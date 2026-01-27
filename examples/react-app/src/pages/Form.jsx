@@ -52,7 +52,7 @@ const Form = () => {
           <it-icon name="it-telephone" slot="prepend" size="sm"></it-icon>
           <span slot="label">Telefono</span>
         </it-input>
-        <it-input id="orario" name="orario-basic" type="time">
+        <it-input id="orario" name="orario-basic" type="time" required min="10:00" max="12:00" step="1800">
           <span slot="label">Orario</span>
         </it-input>
         <it-input id="disabilitato" name="disabilitato-basic" value="valore del campo" disabled>
@@ -103,6 +103,15 @@ const Form = () => {
             <span slot="label">Radio di esempio 3</span>
           </it-radio>
         </it-radio-group>
+
+        <it-select name="select-input" placeholder="Seleziona un'opzione" required>
+          <span slot="label">Select semplice</span>
+          <option value="Value 1">Opzione 1</option>
+          <option value="Value 2">Opzione 2</option>
+          <option value="Value 3">Opzione 3</option>
+          <option value="Value 4">Opzione 4</option>
+          <option value="Value 5">Opzione 5</option>
+        </it-select>
 
         <it-input id="messaggio-basic" name="messaggio" type="textarea" support-text="Inserisci il tuo messaggio">
           <span slot="label">Messaggio</span>

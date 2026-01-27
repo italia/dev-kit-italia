@@ -37,9 +37,11 @@
     "analyze": "cem analyze --litelement --exclude dist",
     "build": "rollup --config rollup.config.js",
     "clean": "rimraf node_modules .turbo .rollup.cache dist coverage",
-    "lint": "eslint --ext .ts \"src/**/*.ts\" \"test/**/*.ts\" && stylelint \"src/**/*.scss\" && prettier \"src/**/*.ts\" \"test/**/*.ts\" --check",
-    "format": "eslint --ext .ts \"src/**/*.ts\" \"test/**/*.ts\" --fix && stylelint \"src/**/*.scss\" --fix && prettier \"src/**/*.ts\" \"test/**/*.ts\" --write",
-    "test": "wtr --coverage --node-resolve --config web-test-runner.config.js"
+    "prepublish": "build",
+    "lint": "eslint --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" && stylelint \"styles/**/*.scss\" \"src/**/*.scss\" && prettier \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" --check",
+    "format": "eslint --fix --ext .ts \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\" && stylelint --fix \"styles/**/*.scss\" \"src/**/*.scss\" && prettier --write \"src/**/*.ts\" \"stories/**/*.ts\" \"test/**/*.ts\"",
+    "test": "wtr --coverage --node-resolve --config web-test-runner.config.js",
+    "test:watch": "wtr --coverage --node-resolve --config web-test-runner.config.js --watch"
   },
   "dependencies": {
     "@italia/globals": "workspace:^",

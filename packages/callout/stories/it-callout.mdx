@@ -1,0 +1,141 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle } from '@storybook/addon-docs/blocks';
+import * as CalloutStories from './it-callout.stories';
+
+<Meta of={CalloutStories} />
+
+# Callout
+
+<description>Box con uno stile visivo distintivo per evidenziare contenuti testuali importanti su pagine lunghe</description>
+
+## Cosa fa
+
+I callout possono essere utilizzati per evidenziare alcune parti del testo che richiedono particolare attenzione.
+Possono contenere messaggi di errore, avvertimento, suggerimenti, ecc.
+
+[Approfondisci quando e come usare il componente Callout](https://designers.italia.it/design-system/componenti/callout/)
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l’aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su <strong>Show code</strong>.
+
+<Canvas of={CalloutStories.EsempioInterattivo} />
+<Controls of={CalloutStories.EsempioInterattivo} />
+
+## Indicazioni generali
+
+Il componente `<it-callout>` espone i seguenti slot:
+
+- **(default)**: il contenuto principale, tipicamente uno o più elementi `<p>`, viene inserito direttamente nel componente.
+- **slot="title"**: per il titolo del callout, visualizzato accanto all'icona (se presente).
+- **slot="icon"**: per un'icona opzionale, mostrata prima del titolo. Il colore dell'icona si adatta automaticamente alla variante colore del callout.
+- **slot="more-content"**: per contenuti aggiuntivi opzionali, visualizzati in fondo al callout. Per i callout di tipo "approfondimento" (con attributo `callout-more`), questo slot contiene solitamente un componente `<it-callout-more>`.
+
+Per i [Callout di approfondimento](#callout-di-approfondimento), puoi inserire il componente `<it-callout-more>`, basato su [Collapse](/docs/componenti-collapse--documentazione), nello slot `more-content`. Questo fornirà la funzionalità di collassa/espandi per contenuti richiudibili.
+
+Il componente `<it-callout-more>` espone i seguenti slot:
+
+- **slot="label"**: testo del pulsante che attiva/disattiva il collapse (es. "Leggi tutto")
+- **slot="content"**: contenuto richiudibile, mostrato/nascosto al click del pulsante
+- **slot="extra"**: contenuto aggiuntivo visualizzato accanto al pulsante (es. link per download PDF)
+
+Vedi la sezione [Callout di approfondimento](#callout-di-approfondimento) per un esempio completo.
+
+## Accessibilità
+
+
+Il callout utilizza un elemento `<section>` con `aria-labelledby` che punta all'intestazione del titolo per assicurare una struttura semantica corretta.
+
+Per garantire una corretta gerarchia dei contenuti, usa l'attributo `heading-level` per specificare il livello di intestazione appropriato (h1-h6) in base al contesto della pagina.
+
+Il valore predefinito è `h2`. Assicurati di scegliere il livello corretto per mantenere una struttura gerarchica logica del documento.
+
+Se l'icona comunica un'informazione non presente nel testo (es. allarme, conferma), usa l'attributo `label` di `it-icon` per fornire una descrizione accessibile agli screen reader.
+
+[Consulta la sezione Accessibilità della documentazione di Icon](/docs/componenti-icon--docs#accessibilità).
+
+
+
+
+## Dimensione del testo
+
+Per aumentare la dimensione del testo dei paragrafi nel callout, aggiungi l'attributo <code>big-text</code> al componente
+
+<Canvas of={CalloutStories.CalloutBigText} />
+
+## Varianti di colore
+Il callout supporta diverse varianti di colore, selezionabili tramite l'attributo <code>variant</code>.
+### Callout primario
+Usa l'attributo <code>variant="primary"</code> per dare evidenza particolare.
+<Canvas of={CalloutStories.CalloutPrimario} />
+
+### Callout success
+Usa l'attributo <code>variant="success"</code> per indicare una procedura andata a buon fine.
+<Canvas of={CalloutStories.CalloutSuccess} />
+
+### Callout warning
+Usa l'attributo <code>variant="warning"</code> per richiamare l’attenzione dell’utente.
+<Canvas of={CalloutStories.CalloutWarning} />
+
+### Callout danger
+Usa l'attributo <code>variant="danger"</code> per errori o procedure pericolose.
+<Canvas of={CalloutStories.CalloutDanger} />
+
+## Callout Highlight
+
+Utilizza l'attributo <code>highlight</code> in combinazione con l'attributo <code>variant</code> per mostrare un bordo solo sul lato sinistro.
+
+### Highlight base
+<Canvas of={CalloutStories.HighlightBase} />
+
+### Highlight primario
+<Canvas of={CalloutStories.HighlightPrimario} />
+
+### Highlight success
+<Canvas of={CalloutStories.HighlightSuccess} />
+
+### Highlight warning
+<Canvas of={CalloutStories.HighlightWarning} />
+
+### Highlight danger
+<Canvas of={CalloutStories.HighlightDanger} />
+
+## Callout di approfondimento
+
+Il callout **approfondimento** ha uno stile visivo differente ed è indicato per contenuti testuali più estesi,
+spesso accompagnati da sezioni richiudibili (collapse) e link di download.
+
+Usa l'attributo <code>callout-more</code> di `it-callout` per applicare lo stile di approfondimento.
+
+Usa il componente `<it-callout-more>` nello slot `more-content` per aggiungere sezioni richiudibili.
+
+Usa lo slot `label` di `<it-callout-more>` per definire il testo del pulsante di espansione/contrazione.
+
+Usa lo slot `content` di `<it-callout-more>` per inserire il contenuto richiudibile.
+
+Usa lo slot `extra` di `<it-callout-more>` per aggiungere link di download o altri contenuti aggiuntivi accanto al pulsante di espansione.
+
+
+<Canvas of={CalloutStories.CalloutApprofondimento} />
+
+## Personalizzazione degli stili
+
+Per la personalizzazione degli stili si possono usare i selettori `::part` dedicati e le proprietà CSS personalizzabili elencate di seguito.
+
+#### Selettori di `it-callout`
+
+- `::part(callout)` - elemento contenitore principale del callout
+- `::part(inner)` - contenitore interno del callout
+- `::part(title)` - elemento titolo del callout
+
+#### Selettori di `it-callout-more` (approfondimento)
+
+- `::part(trigger)` - pulsante espandi/collassa
+- `::part(extra)` - contenitore per contenuti extra (es. link download)
+- `::part(content)` - contenitore del contenuto richiudibile
+
+#### Proprietà CSS personalizzabili
+
+- `--bsi-callout-text-size` - dimensione del font dei paragrafi (default: `16px`, con `big-text`: `18px`)
+- `--bsi-callout-font-family` - famiglia di font del testo (default: font serif di Bootstrap Italia)
+
+[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).

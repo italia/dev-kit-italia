@@ -1,0 +1,67 @@
+it-navscroll {
+  --it-host-display: block;
+
+  it-modal::part(modal) {
+    --#{$prefix}modal-width: calc(100vw - 48px);
+    --#{$prefix}modal-padding: 0;
+    --#{$prefix}modal-title-font-size: 1rem;
+    --#{$prefix}modal-bg: var(--#{$prefix}navscroll-background);
+  }
+
+  it-modal::part(modal-content-wrapper) {
+    width: 100%;
+  }
+
+  it-modal::part(modal-header) {
+    display: block;
+    //--#{$prefix}navscroll-bottom-box-shadow: 0 0px 30px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--#{$prefix}navscroll-bottom-box-shadow);
+  }
+
+  // it-modal::part(modal-body) {
+  //   .navbar.it-navscroll-wrapper .menu-wrapper {
+  //     padding-top: 0;
+  //   }
+  // }
+  @media (max-width: 767.98px) {
+    .navbar.it-navscroll-wrapper .menu-wrapper {
+      padding-top: 0;
+    }
+  }
+
+  it-button[slot='header']::part(button) {
+    text-align: left;
+    text-decoration: none;
+  }
+
+  it-button[slot='trigger']::part(button) {
+    --#{$prefix}btn-padding-y: 0;
+    --#{$prefix}btn-padding-x: 0;
+  }
+
+  .theme-dark-mobile {
+    it-button[slot='trigger']::part(button) {
+      color: var(--#{$prefix}navscroll-toggler-color); //$navscroll-dark-text-color;
+    }
+
+    it-modal,
+    it-modal it-button::part(button) {
+      --#{$prefix}btn-text-color: #fff;
+      --#{$prefix}color-link-hover: #fff;
+      --#{$prefix}color-text-muted: #fff;
+      --#{$prefix}icon-primary: var(--#{$prefix}icon-inverse);
+    }
+  }
+
+  .inline-menu {
+    > .link-list-wrapper {
+      > ul.link-list {
+        > li {
+          .list-item {
+            padding: var(--#{$prefix}navscroll-item-spacing);
+          }
+        }
+      }
+    }
+  }
+}

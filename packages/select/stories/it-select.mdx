@@ -1,0 +1,95 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './it-select.stories';
+
+<Meta of={Stories} />
+
+# Select
+
+<description>Campo di selezione di un form per scegliere una o più opzioni da una lista predefinita di valori.</description>
+
+## Cosa fa
+Il componente it-select, permette agli utenti di selezionare uno o più elementi elementi all'interno di un elenco di opzioni predefinite.
+
+[Approfondisci come e quando usare il componente Select](https://designers.italia.it/design-system/componenti/select/)
+
+### Alternative a questo componente
+ - [Radio](/docs/componenti-form-radio--documentazione): per selezionare una singola opzione da un insieme limitato di scelte visibili tutte insieme. Da preferire un gruppo di Radio button a livello di usabilità e se è necessario essere certi che l'utente sia consapevole di tutte le opzioni, consigliabile in particolare se il numero di scelte è limitato.
+ - [Checkbox](/docs/componenti-form-checkbox--documentazione): per selezionare una o più opzioni da un insieme limitato di scelte visibili tutte insieme. Da preferire un gruppo di Checkbox a livello di usabilità e se è necessario essere certi che l'utente sia consapevole di tutte le opzioni quando la modalità di scelta è multipla.
+ - Autocomplete (in lavorazione): per selezionare un'opzione da un elenco di scelte più ampio, con la possibilità di filtrare le opzioni digitando.
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+
+<Controls of={Stories.EsempioInterattivo} />
+
+## Accessibilità
+
+Tutti gli attributi `it-aria-*` passati a `<it-select>` vengono applicati alla select generata.
+
+Il componente impelementa una select di default del browser, pertanto eredita il comportamento accessibile nativo.
+
+L'etichetta viene associata automaticamente alla select tramite l'attributo `for` generato.
+
+## Select multipla
+Aggiungi l'attributo `multiple` per abilitare la selezione multipla di valori in una `it-select`.
+
+**Attenzione!** Per consentire la scelta multipla di valori in modo accessibile, in particolar modo per le tecnologie assistive, è preferibile utilizzare il componente [it-checkbox](/docs/componenti-form-checkbox--documentazione).
+
+
+<Canvas of={Stories.Multiple} />
+
+
+## Select disabilitata
+Aggiungi l'attributo `disabled` per disabilitare una `it-select`.
+<Canvas of={Stories.Disabled} />
+
+
+## Select con gruppi
+Per ottenere una `it-select` con raggruppamenti, utilizzare il tag HTML `<optgroup>` per raggruppare le `<option>` al suo interno.
+<Canvas of={Stories.Groups} />
+
+## Testo di supporto
+Per mostrare un testo di supporto alla select, aggiungi l'attributo `supportText` a `<it-select>`.
+<Canvas of={Stories.SupportText} />
+
+
+## Validazione e gestione degli errori
+
+<Canvas of={Stories.ValidazioneNativa} />
+
+### Personalizzazione dei messaggi di errore
+
+Puoi personalizzare alcuni dei messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
+
+- `validityRequired`: messaggio che viene mostrato quando `<it-select>` ha l'attributo `required` e non è compilato
+
+Per gli altri errori di validazione non indicati, verranno mostrati i messaggi di errore nativi del browser.
+
+### Validazione esterna (validazione custom)
+
+Puoi anche validare il campo esternamente (via js ad esempio, o lato server), impostando l'attributo `custom-validation="true"`.
+In questo modo la validazione di default del browser effettuata internamente al componente è disabilitata.
+
+#### Campo invalido
+
+Nel caso il campo non sia valido, devi invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo `validity-message="Messaggio di errore"`.
+
+<Canvas of={Stories.ValidazioneCustom} />
+
+#### Campo valido
+
+Per riportare il campo ad uno stato 'valido', è sufficiente impostare il messaggio di errore a vuoto: `validity-message=""`.
+
+ ## Gestione degli eventi
+
+<Description of={Stories.GestioneEventi} />
+<Canvas of={Stories.GestioneEventi} />
+
+
+## {Stories.MetodiEPropPubblici.name}
+<Description of={Stories.MetodiEPropPubblici} />
+<Canvas of={Stories.MetodiEPropPubblici} />

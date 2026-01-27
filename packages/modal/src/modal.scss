@@ -1,0 +1,124 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/utilities';
+
+// Utilities necessarie per il modal
+$utilities: (
+  'display': map-merge(
+      map-get($utilities, 'display'),
+      (
+        'values': (
+          none: none,
+          block: block,
+          flex: flex,
+        ),
+      )
+    ),
+  'overflow': map-merge(
+      map-get($utilities, 'overflow'),
+      (
+        'values': (
+          auto: auto,
+          hidden: hidden,
+        ),
+      )
+    ),
+);
+
+@import 'bootstrap-italia/src/scss/base/utilities/api';
+
+// Componente Modal di Bootstrap Italia
+@import 'bootstrap-italia/src/scss/components/modal';
+@import 'bootstrap-italia/src/scss/components/type';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+// Host styles
+:host {
+  display: block;
+}
+
+// Nascondi modal e backdrop quando chiuso (tramite attributo open)
+:host(:not([open])) {
+  .modal,
+  .modal-backdrop {
+    display: none !important;
+  }
+}
+
+// Assicura che il backdrop copra tutta la viewport
+.modal-backdrop {
+  position: fixed;
+  z-index: $zindex-modal-backdrop;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $modal-backdrop-bg;
+}
+
+// Modal container
+.modal {
+  position: fixed;
+  z-index: $zindex-modal;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  outline: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.it-dialog-scrollable {
+  overflow-y: hidden;
+}
+
+.modal-dialog {
+  height: fit-content;
+  @media (min-width: 768px) {
+    margin: 64px auto;
+  }
+}
+
+.modal-footer {
+  flex-shrink: 0;
+  padding-top: var(--#{$prefix}modal-padding);
+}
+
+.modal-dialog-scrollable {
+  height: unset;
+}
+
+.modal-dialog-centered {
+  min-height: unset;
+  margin: auto;
+}
+
+.modal.alert-modal .modal-dialog .modal-content .modal-header {
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--it-spacing-2x);
+}
+
+.modal.it-dialog-scrollable .modal-dialog.modal-dialog-right {
+  position: fixed;
+  right: 0;
+}
+// // Fix per il focus trap - assicura che gli elementi siano focusabili
+// .modal-content {
+//   &:focus {
+//     outline: none;
+//   }
+// }
+
+// // Migliora l'accessibilità del pulsante di chiusura
+// .btn-close {
+//   &:focus-visible {
+//     outline: 2px solid var(--#{$prefix}focus-ring-color, #{$primary});
+//     outline-offset: 2px;
+//   }
+// }

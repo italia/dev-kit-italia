@@ -1,0 +1,13 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/reboot'; //per il font dentro agli input
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/forms/forms';
+@import 'bootstrap-italia/src/scss/forms/form-control';
+
+@import 'bootstrap-italia/src/scss/forms/form-select';
+
+@import 'bootstrap-italia/src/scss/forms/just-validate';

@@ -1,0 +1,128 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-navscroll.stories';
+
+<Meta of={Stories} />
+
+<Title/>
+
+<description>Lista di link con ancore per navigare velocemente a una sezione specifica della pagina in cui è contenuto</description>
+
+## Cosa fa
+
+Navscroll è una declinazione di [Sidebar](?path=/docs/componenti-sidebar--documentazione). È una barra di navigazione laterale che, tramite una lista di àncore, permette di creare un indice utile a saltare velocemente alle sezioni e ai contenuti presenti su una stessa pagina.
+
+[Approfondisci come e quando usare il componente Navscroll](https://designers.italia.it/design-system/componenti/navscroll/)
+
+### Alternative a questo componente
+- [Sidebar](?path=/docs/componenti-sidebar--documentazione): quando hai bisogno di una barra di navigazione laterale classica per navigare verso altre pagine o sezioni del sito.
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi della tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+Restringi la larghezza della finestra per vedere cosa succede su dispositivi mobili.
+
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+## Indicazioni generali
+
+- Definisci le sezioni della pagina, utilizzando intestazioni semantiche come `h2` oppure `h3`, fai attenzione all'ordine corretto.
+- Aggiungi nel componente le voci e i link necessari per navigare a ciascuna sezione della pagina.
+- Assicurati che ogni link abbia un anchor tag che corrisponde all'ID della sezione di destinazione sulla pagina.
+**Ogni link all’interno del componente Navscroll deve avere l’attributo `href` con il valore dell’id relativo all’elemento correlato in pagina: `href="#idElemento"`.**
+- Posiziona il componente a destra o a sinistra del contenuto principale della pagina, a seconda delle esigenze.
+- Se non definisci nulla nell'attributo `for`, viene tenuto in considerazione tutto il documento.
+
+### Attenzione a
+- Testare il comportamento di scroll su vari dispositivi per assicurarti che sia fluido e funzioni come previsto.
+- Testare con utenti la navigazione da tastiera o con strumenti assistivi come lettori di schermo, poni particolare attenzione al focus al termine dell'azione di scorrimento e a come accedere o tornare al componente.
+
+### Buone pratiche sui contenuti
+- Il titolo della voce di navigazione deve corrispondere al titolo della sezione su pagina.
+- Scrivi titoli sintetici per poterli poi inserire facilmente all’interno del componente.
+
+## Accessibilità
+
+Il componente Navscroll segue le best practice per l'accessibilità, garantendo una navigazione intuitiva e fruibile da tutti gli utenti.
+È consigliato inserirlo all'interno di un elemento `<aside>`, che indica chiaramente il suo ruolo di navigazione laterale.
+
+Per garantire un'esperienza accessibile, segui queste linee guida:
+- Inserisci l'attributo `aria-label` sull'elemento `<aside>` che contiene il componente `<it-navscroll>`, per specificare meglio ai lettori di schermo di che cosa si tratta. Non è obbligatorio ma è consigliato.
+- Usa l'attributo `aria-disabled="true"` per i link disabilitati per garantire il corretto supporto alle tecnologie assistive.
+
+Per garantire una migliore esperienza di navigazione con gli screen reader, soprattutto per JAWS, inserisci in pagina un elemento con `aria-live="polite"` e `id="aria-navscroll-announcer"` che venga aggiornato con il titolo della sezione raggiunta dopo lo scroll:
+``` html
+<div id="aria-navscroll-announcer" aria-live="polite" aria-atomic="true" class="visually-hidden"></div>
+```
+
+## Posizionamento su desktop
+
+La Navscroll può essere posizionata a sinistra o a destra, a seconda dell'ordine in cui viene inserita nel markup HTML.
+
+Puoi decidere di mostrare o meno una linea di separazione sulla Navscroll, valorizzando opportunamente sull componente `<it-navscroll>` l'attributo `line-position`.
+
+### A sinistra
+In questo esempio la Navscroll è posizionata a sinistra con la linea di separazione impostata su `line-position="right"`.
+<Canvas of={Stories.DesktopOnLeft} />
+
+### A destra
+In questo esempio la Navscroll è posizionata a destra con la linea di separazione impostata su `line-position="left"`.
+<Canvas of={Stories.DesktopOnRight} />
+
+## Posizionamento su mobile
+
+Puoi decidere dove viene mostrato il trigger per l'apertura della Navscroll sui dispositivi mobili utilizzando l'attributo `position`.
+
+Restringi la larghezza della finestra per vedere cosa succede su dispositivi mobili.
+
+### Posizionata in fondo alla pagina
+
+Imposta l'attributo ``position="bottom"`` per mostrare il trigger di apertura della Navscroll in fondo alla pagina.
+
+Il posizionamento in fondo alla pagina è il default per il componente ``<it-navscroll>``.
+
+<Canvas of={Stories.MobileBottom} />
+
+### Posizionata in testa alla pagina
+
+Imposta l'attributo ``position="top"`` per mostrare il trigger di apertura della Navscroll in testa alla pagina.
+<Canvas of={Stories.MobileTop} />
+
+
+## Con barra di progresso
+Per mostrare la barra di progresso, aggiungi il markup della progressbar all'interno del div con classe `link-list-wrapper`.
+
+La progressbar deve vare l'attributo `role="progressbar"` per poter essere gestita dal componente Navscroll e per assicurarne l'accessibilità.
+
+```html
+<div class="progress-bar it-navscroll-progressbar"
+  role="progressbar"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-label="Progress bar"
+></div>
+```
+
+<Canvas of={Stories.Progress} />
+
+## Variante scura
+
+Hai la possibilità di attivare la variante scura su desktop, su mobile o su entrambi.
+
+Per attivare la variante scura, usa l'attributo `dark-mode` con uno dei seguenti valori:
+- `mobile`: attiva la variante scura solamente su mobile
+- `desktop`: attiva la variante scura solo su desktop
+- `always`: attiva la variante scura sia su desktop che su mobile.
+
+<Canvas of={Stories.DarkModeStory} />
+
+## Menu inline
+
+La classe distintiva del wrapper esterno è `.inline-menu`.
+
+Gli inline menu possono contenere liste di link di ogni tipo; nell'esempio che segue è stata inserita una lista di link collassabile.
+
+Per maggiori informazioni, si può fare riferimento alla [documentazione delle liste di link](?path=/docs/componenti-list--documentazione#liste-per-menu-di-navigazione).
+
+<Canvas of={Stories.MenuInline} />

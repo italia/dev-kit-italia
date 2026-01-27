@@ -13,8 +13,4 @@ it-input {
       border-bottom: 1px solid var(--#{$prefix}form-control-border-color);
     }
   }
-
-  &:not(:defined) {
-    margin-bottom: var(--#{$prefix}spacing-m, 24px);
-  }
 }
