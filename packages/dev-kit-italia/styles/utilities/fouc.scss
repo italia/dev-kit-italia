@@ -127,7 +127,7 @@ $it-components: (
   'it-input': (
     height: 74px,
     padding: 1rem,
-    margin: 0 0 var(--bs-spacing-m, 24px) 0,
+    margin: 0 0 var(--#{$prefix}spacing-m, 24px) 0,
   ),
   'it-radio': (
     pseudo: before,
@@ -143,7 +143,7 @@ $it-components: (
   'it-select': (
     height: 74px,
     padding: 1rem,
-    margin: 0 0 var(--bs-spacing-m, 24px) 0,
+    margin: 0 0 var(--#{$prefix}spacing-m, 24px) 0,
   ),
   'it-select[multiple]': (
     height: 161px,
