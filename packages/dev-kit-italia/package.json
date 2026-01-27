@@ -1,7 +1,7 @@
 {
   "name": "@italia/dev-kit-italia",
   "description": "Bundle dei web components del Design system .italia",
-  "version": "0.1.0-alpha.2",
+  "version": "1.0.0-alpha.4",
   "publishConfig": {
     "access": "public"
   },
@@ -61,6 +61,7 @@
     "@italia/i18n": "workspace:^",
     "@italia/icon": "workspace:^",
     "@italia/input": "workspace:^",
+    "@italia/modal": "workspace:^",
     "@italia/popover": "workspace:^",
     "@italia/section": "workspace:^",
     "@italia/select": "workspace:^",
@@ -74,6 +75,7 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
     "bootstrap-italia": "catalog:",
+    "design-tokens-italia": "catalog:",
     "rimraf": "^6.0.1",
     "rollup": "^4.42.0",
     "rollup-plugin-copy": "^3.5.0",

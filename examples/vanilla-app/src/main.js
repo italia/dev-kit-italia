@@ -68,6 +68,12 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/input">
         Input
       </a>
+      <a href="/src/modal">
+        Modal
+      </a>
+      <a href="/src/overlay">
+        Overlay
+      </a>
       <a href="/src/radio-examples.html">
         Radio
       </a>

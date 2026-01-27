@@ -8,6 +8,7 @@ import '../packages/chip/dist/src';
 import '../packages/dropdown/dist/src';
 import '../packages/icon/dist/src';
 import '../packages/input/dist/src';
+import '../packages/modal/dist/src';
 import '../packages/popover/dist/src';
 import '../packages/radio/dist/src';
 import '../packages/section/dist/src';
