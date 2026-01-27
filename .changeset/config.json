@@ -21,6 +21,7 @@
       "@italia/i18n",
       "@italia/icon",
       "@italia/input",
+      "@italia/modal",
       "@italia/popover",
       "@italia/radio",
       "@italia/rating",

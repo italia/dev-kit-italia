@@ -1,0 +1,210 @@
+import { Meta, Canvas, Controls, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-modal.stories';
+
+<Meta of={Stories} />
+
+<Title of={Stories} />
+
+<description>Finestra di interazione a comparsa in sovrapposizione sul contenuto principale per focalizzare l'attenzione su un'azione specifica o un messaggio importante.</description>
+
+## Cosa fa
+Il componente modal, in italiano modale, è utile per focalizzare l'attenzione dell'utente su informazioni cruciali o richiedere un'azione precisa, rimanendo nella pagina attuale.
+
+È il caso di conferme di azioni, form di accesso o registrazione, approfondimento di uno specifico contenuto.
+
+Tuttavia, un uso eccessivo delle modali interrompe il normale flusso di navigazione, quindi è raccomandato usarle con moderazione.
+
+[Approfondisci quando e come usare il componente Modal](https://designers.italia.it/design-system/componenti/modal/)
+
+### Alternative a questo componente
+Tooltip e popover (in lavorazione): per spiegare una funzione specifica o fornire informazioni aggiuntive, sono meno invasive di una finestra modale e si possono attivare in diversi modi.
+
+
+## Anteprima e attributi del componente
+
+Data la complessità del componente, si consiglia di esplorare i vari esempi interattivi per comprendere appieno le funzionalità. Vengono di seguito elencati gli attributi del componente: l'anteprima non verrà aggiornata in tempo reale al variare degli attributi.
+
+
+
+<Canvas of={Stories.EsempioInterattivo} />
+
+<Controls of={Stories.EsempioInterattivo} />
+
+## Informazioni generali
+Per la creazione di una modale usa il componente `<it-modal>`, avendo cura di inserire al suo interno il contenuto desiderato, intestazione e eventuali azioni.
+
+Il componente `<it-modal>` è composto dai seguenti slot:
+- `trigger`: obbligatorio. Utilizza questo slot per definire il pulsante o l'elemento interattivo che, quando cliccato, apre la modale.
+- `header`: per personalizzare l'intestazione della modale. Il contenuto di questo slot, in modo analogo all'attributo `modal-title` verrà associato all'attributo `aria-labelledby` della modale.
+- `header-icon`: per inserire un'icona nell'header della modale. Il contenuto di questo slot viene solitamente utilizzato per aggiungere un'icona decorativa o informativa accanto al titolo della modale ed è disponibile per la variante `alert`.
+- `description`: per una descrizione aggiuntiva della modale. Il contenuto di questo slot, in modo analogo all'attributo `modal-description` verrà associato all'attributo `aria-describedby` della modale.
+- `content`: obbligatorio. Utilizza questo slot per definire il contenuto principale della modale.
+- `footer`: per le azioni della modale, come pulsanti di conferma o cancellazione ed eventuali elementi aggiuntivi che ritieni necessari.
+
+Dovrai inserire il trigger per l'apertura della modale nello slot `trigger`, negli esempi viene mostrato l'utilizzo con il componente `it-button`.
+
+Dovrai specificare un titolo tramite lo slot `header`, l'attributo `modal-title` o, in caso tu non voglia mostrare il titolo della modale, un'etichetta accessibile tramite l'attributo `it-aria-label`.
+
+Eventuali azioni come pulsanti di conferma o cancellazione andranno inserite nello slot `footer`, e dovranno essere implementate manualmente le funzionalità di chiusura della modale, oltre ad eventuali altre funzionalità.
+
+Tutti gli esempi forniscono un'implementazione di base per la chiusura della modale, analoga alla seguente, attraverso event listener sul click dei pulsanti appartenenti allo slot `footer` dei vari esempi:
+
+
+```js
+const closeModal = (event: Event) => {
+  const el = event.currentTarget;
+  const modal = el.closest('it-modal');
+  modal?.hide();
+};
+```
+
+Il metodo `hide()` è disponibile come metodo pubblico e chiude la modale. Vedi la sezione "Proprietà, Metodi, ed Eventi accessibili via js" per maggiori dettagli sui metodi e gli eventi esposti dal componente.
+
+## Accessibilità
+
+Il componente `it-modal` implementa le specifiche ARIA [WAI-ARIA Authoring Practices 1.1 dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog/), e gestisce automaticamente gli attributi ARIA necessari per garantire l'accessibilità della modale.
+
+Il componente rispetta le preferenze di riduzione del movimento impostate dall'utente a livello di sistema operativo, disabilitando le animazioni se l'impostazione è rilevata a livello di browser.
+
+Il componente gestisce automaticamente il focus all'interno della modale quando questa viene aperta, spostandolo sul primo elemento interattivo disponibile, e ciclando poi il focus all'interno della modale stessa attraverso una focus trap.
+
+Il componente supporta la chiusura della modale tramite il tasto ESC e/o cliccando sul backdrop, a meno che non venga specificato l'attributo `static-backdrop`.
+
+Il focus viene ripristinato sull'elemento di trigger una volta che la modale viene chiusa.
+
+Segui le indicazioni sottostanti per assicurarti che la modale sia accessibile a tutti gli utenti:
+- Ricordati di popolare lo slot `header` o uno tra gli attributi `modal-title` e `it-aria-label` per fornire un'etichetta accessibile alla modale. Se non vuoi mostrare il titolo, al fine di garantire piena accessibilità, diventa obbligatorio l'uso dell'attributo `it-aria-label`.
+- In caso di contenuti che includono strutture semantiche, come liste, tabelle, paragrafi multipli, non valorizzare l'attributo `modal-description` e/o non inserire contenuto nello slot `description`. Maggiori informazioni [qui](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/#wai-ariaroles,states,andproperties).
+- Si consiglia sempre di includere un pulsante di chiusura all'interno della modale, che può essere aggiunto facilmente tramite l'attributo `close-button`, o implementato manualmente nello slot `footer` tramite, ad esempio, un pulsante `it-button`.
+
+## Con pulsante di chiusura
+Puoi mostrare o nascondere il pulsante di chiusura predefinito della modale tramite l'attributo `close-button`.
+Il pulsante di chiusura viene posizionato nell'angolo in alto a destra della modale e permette agli utenti di chiudere facilmente la finestra modale.
+
+Il valore di default è `true`, che mostra il pulsante di chiusura. Impostandolo a `false`, il pulsante non verrà visualizzato.
+
+Fornisci un'etichetta accessibile al pulsante di chiusura tramite l'attributo `close-label`.
+
+<Canvas of={Stories.ModaleBase} />
+
+## Con footer personalizzato
+Puoi personalizzare il footer della modale inserendo il contenuto desiderato nello slot `footer`.
+Questo ti permette di aggiungere pulsanti di azione, link o qualsiasi altro elemento HTML che ritieni opportuno per il footer della modale.
+
+<Canvas of={Stories.FooterCustom} />
+
+## Modale con elementi form
+
+Puoi inserire elementi Form all’interno della modale. Di seguito una modale con un elenco di radio button.
+<Canvas of={Stories.ConForm} />
+
+## Varianti
+Il componente `<it-modal>` offre alcune varianti predefinite per adattarsi a diversi scenari d'uso.
+
+
+### Modale con icona
+
+Per dare enfasi visiva, puoi aggiungere un'icona nell'header inserendo un componente `it-icon` nello slot `header-icon`. Valorizza l'attributo `variation` con valore `alert` per ottenere il layout corretto.
+
+<Canvas of={Stories.ConIcona} />
+
+### Modale con Link list
+Puoi inserire Liste di link all’interno della modale. Per formattare correttamente il contenuto di questa modale, valorizza l'attributo `variation` con valore `link-list` per ottenere il layout corretto.
+<Canvas of={Stories.ConLinkList} />
+
+
+### Modale popconfirm
+La modale di tipo popconfirm può essere utilizzata per brevi messaggi di conferma. Puoi ottenere questo layout valorizzando l'attributo `variant` con valore `popconfirm`.
+
+Il titolo della modale è facoltativo: nel caso non fosse necessario non devi né popolare lo slot `header` né valorizzare l'attributo `modal-title`, ma devi fornire un titolo alternativo tramite l'attributo `it-aria-label` per garantire accessibilità.
+
+<Canvas of={Stories.Popconfirm} />
+
+## Scroll di contenuti lunghi
+
+Quando le modali diventano troppo lunghe per il viewport o il dispositivo dell’utente, scorrono indipendentemente dalla pagina stessa.
+
+Puoi utilizzare l'attributo `footer-shadow` per aggiungere un'ombra al footer della modale per distinguere l'elemento footer.
+<Canvas of={Stories.ScrollLungo} />
+
+## Scroll interno alla modale
+
+Puoi abilitare lo scroll all'interno del corpo della modale utilizzando l'attributo `scrollable`.
+Quando abiliti questa funzionalità, l'altezza della modale viene limitata in base all'altezza del viewport, e il contenuto all'interno della modale diventa scrollabile se supera questa altezza massima.
+
+Quando è presente questo attributo, viene reso raggiungibile da tastiera il contenuto scrollabile all'interno della modale, secondo le [linee guida ARIA](https://dequeuniversity.com/rules/axe-devtools/4.6/scrollable-region-focusable).
+
+<Canvas of={Stories.ScrollInterno} />
+
+## Posizionamento
+
+### Centratura verticale
+
+Valorizza l'attributo `position` con il valore `center` per centrare verticalmente la modale.
+
+<Canvas of={Stories.CentraturaVerticale} />
+
+### Allineamento a sinistra
+
+Per aprire la modale da sinistra a destra valorizza l'attributo `position` con il valore `left`.
+
+Per questa variante di posizionamento, il contenuto della modale diventa scrollabile e raggiungibile da tastiera automaticamente.
+
+<Canvas of={Stories.AllineamentoSinistra} />
+
+### Allineamento a destra
+
+Per aprire la modale da destra a sinistra valorizza l'attributo `position` con il valore `right`.
+
+Per questa variante di posizionamento, il contenuto della modale diventa scrollabile e raggiungibile da tastiera automaticamente.
+
+<Canvas of={Stories.AllineamentoDestra} />
+
+## Dimensioni opzionali
+
+Usa l'attributo `size` per modificare la larghezza della modale. I valori disponibili sono `sm`, `lg`, `xl`.
+Queste dimensioni entrano in gioco in determinati breakpoint per evitare barre di scorrimento orizzontali su finestre più strette.
+
+<Canvas of={Stories.DimensioniOpzionali} />
+
+## Rimuovere l’animazione
+
+Per avere modali che appaiono senza animazione, aggiungi l'attributo `disable-animation`.
+
+Valorizzare questo attributo è una scelta stilistica e non influisce sull'accessibilità della modale: le animazioni rispettano già le preferenze di riduzione del movimento impostate dall'utente.
+
+<Canvas of={Stories.SenzaAnimazione} />
+
+## Backdrop statico
+
+Usa l'atributo `static-backdrop` per creare una modale che non si chiude cliccando sullo sfondo.
+La modale si chiuderà solo tramite il pulsante di chiusura o altre azioni specifiche all'interno della modale stessa, e da tastiera premendo `Esc`.
+
+<Canvas of={Stories.BackdropStatico} />
+
+## Proprietà, Metodi, ed Eventi accessibili via js
+Il componente espone dei metodi ed eventi, utili per eventuali interazioni via js.
+### Metodi
+
+Il componente espone i seguenti metodi pubblici:
+-  `show()`: apre la modale
+-  `hide()`: chiude la modale
+-  `toggle()`:  alterna lo stato
+
+### Eventi
+Il componente emette i seguenti eventi custom:
+
+- `it-modal-open`: emesso quando la modale si apre
+- `it-modal-close`: emesso quando la modale si chiude
+
+
+## Personalizzazione degli stili
+Per la personalizzazione degli stili puoi usare il selettore `::part` passando uno dei seguenti valori, a seconda delle parti su cui vuoi agire:
+-  `::part(modal)`
+-  `::part(modal-content-wrapper)`
+-  `::part(modal-content)`
+-  `::part(modal-header)`
+-  `::part(modal-body)`
+-  `::part(modal-footer)`
+
+[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).

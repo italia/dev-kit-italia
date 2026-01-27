@@ -62,6 +62,7 @@
     "@italia/rating": "workspace:^",
     "@italia/icon": "workspace:^",
     "@italia/input": "workspace:^",
+    "@italia/modal": "workspace:^",
     "@italia/popover": "workspace:^",
     "@italia/section": "workspace:^",
     "@italia/skiplinks": "workspace:^",

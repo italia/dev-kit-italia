@@ -20,6 +20,7 @@
 @import 'bootstrap-italia/src/scss/utilities/colors';
 @import 'bootstrap-italia/src/scss/components/type';
 @import 'bootstrap-italia/src/scss/components/grid';
+@import 'bootstrap-italia/src/scss/components/alert';
 
 @import 'bootstrap-italia/src/scss/forms/forms'; //perchè ci sono delle variabile definite nella :root
 
@@ -49,10 +50,13 @@
 @import '@italia/sticky/styles/globals';
 @import '@italia/radio/styles/globals';
 @import '@italia/rating/styles/globals';
+@import '@italia/modal/styles/globals';
 // Footer
 @import 'bootstrap-italia/src/scss/components/footer';
 @import 'bootstrap-italia/src/scss/components/list';
 @import 'bootstrap-italia/src/scss/components/headercenter';
+
+@import './components/list';
 
 .it-footer-main .it-brand-wrapper ::part(icon) {
   width: var(--#{$prefix}footer-brand-icon-size);

@@ -8,6 +8,7 @@ import * as AccordionStories from './it-accordion.stories';
 <description>Sezione di contenuti espandibile e richiudibile per ottimizzare spazio su pagina e creare collegamenti con contenuti correlati.</description>
 
 ## Cosa fa
+
 Il componente Accordion permette di espandere e collassare delle sezioni con contenuti molto lunghi e non di principale rilievo per la pagina, raggruppandole in una unica interfaccia. L’intestazione delle sezioni dà una panoramica dei contenuti e permette all’utente di scegliere quali leggere.
 
 Il componente Accordion è basato su [Collapse](?path=/docs/componenti-collapse--documentazione).
@@ -20,24 +21,22 @@ Il componente Accordion è basato su [Collapse](?path=/docs/componenti-collapse-
 
 - Tabs: mostrano i contenuti senza spingere altre sezioni verso il fondo della pagina e sono utili quando l'utente deve passare velocemente da una sezone all'altra.
 
-
-
 ## Anteprima e attributi del componente
 
 Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
 
 <Canvas of={AccordionStories.EsempioInterattivo} />
-
-
 <Controls of={AccordionStories.EsempioInterattivo} />
 
 ## Informazioni generali
+
 Il componente Accordion è composto da due elementi:
 
 - `it-accordion`: contenitore che raggruppa più elementi richiudibili
 - `it-accordion-item`: singolo elemento richiudibile all'interno dell'accordion
 
 ## Elemento richiudibile
+
 `it-accordion-item` rappresenta il singolo elemento richiudibile all'interno dell'accordion.
 
 Ogni `it-accordion-item` utilizza due slot distinti per definire intestazione e contenuto:
@@ -48,11 +47,12 @@ Ogni `it-accordion-item` utilizza due slot distinti per definire intestazione e 
 Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente `it-accordion-item`. Per vedere come cambia il codice, clicca su **Show code**.
 
 <Canvas of={AccordionStories.AccordionItem} />
-
 <Controls of={AccordionStories.AccordionItem} />
 
 ## Accessibilità
+
 L'Accordion implementa le specifiche ARIA [WAI-ARIA Authoring Practices 1.1 accordion pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/) per garantire un'esperienza accessibile a tutti gli utenti:
+
 - Navigazione da tastiera con tasti freccia per spostarsi tra gli elementi
 - Supporto per `Space` e `Enter` per attivare/disattivare elementi
 - Attributi ARIA appropriati per comunicare lo stato agli screen reader
@@ -60,6 +60,7 @@ L'Accordion implementa le specifiche ARIA [WAI-ARIA Authoring Practices 1.1 acco
 - Rispetto delle preferenze di riduzione del movimento definite dall'utente per le animazioni di apertura/chiusura
 
 ## Modalità esclusiva
+
 Di default, più sezioni dell'accordion possono essere aperte contemporaneamente.
 
 In modalità esclusiva, solo una sezione alla volta dell'accordion può essere aperta. Quando si espande una nuova sezione, quella precedentemente aperta si chiude automaticamente.
@@ -67,7 +68,6 @@ In modalità esclusiva, solo una sezione alla volta dell'accordion può essere a
 Per abilitare la modalità esclusiva, assegna all'attributo `mode` il valore `single`.
 
 <Canvas of={AccordionStories.Single} />
-
 
 ## Sfondo degli elementi attivi
 
@@ -90,11 +90,13 @@ Per applicare lo sfondo primario agli elementi al passaggio del mouse, imposta l
 L'icona di espansione/collasso può essere posizionata a sinistra del testo dell'header.
 
 Utilizzando l'attributo `left-icon` sull'elemento `<it-accordion>`, si ottiene una variante in cui l’icona chevron che indica lo stato di apertura è sostituita da segni meno/più allineati a sinistra del titolo dell’header.
+
 <Canvas of={AccordionStories.IconaASinistra} />
 
 ## Accordion annidati
 
 È possibile annidare accordion all'interno di altri accordion per creare strutture gerarchiche complesse.
+
 <div class="callout callout-warning">
 <div class="callout-inner">
 <div class="callout-title">

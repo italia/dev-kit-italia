@@ -7,6 +7,7 @@ export * from '@italia/avatar';
 export * from '@italia/dropdown';
 export * from '@italia/icon';
 export * from '@italia/input';
+export * from '@italia/modal';
 export * from '@italia/popover';
 export * from '@italia/radio';
 export * from '@italia/section';

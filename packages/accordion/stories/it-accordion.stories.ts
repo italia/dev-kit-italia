@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { CollapsibleOrHiddenContentGuidelines } from '@italia/globals';
 import { ACCORDION_MODES, type AccordionMode, type HeadingLevels } from '../src/types.js';
 
 interface AccordionProps {
@@ -72,7 +71,9 @@ const meta: Meta<AccordionProps> = {
     (Story, context) =>
       context?.parameters?.useMetaDecorator === false
         ? Story()
-        : html`<div style="min-height:350px;display:flex;align-items:center">${Story()}</div>`,
+        : html`<div style="min-height:350px;display:flex;align-items:center">
+            <div style="flex-grow:1">${Story()}</div>
+          </div>`,
   ],
   argTypes: {
     mode: {
@@ -156,11 +157,6 @@ Gli elementi richiudibili sono molto spesso mostrati in gruppo, tipicamente usat
 export default meta;
 type Story = StoryObj<AccordionProps>;
 
-export const Info: Story = {
-  ...CollapsibleOrHiddenContentGuidelines(),
-  tags: ['!dev'],
-};
-
 export const EsempioInterattivo: Story = {
   name: 'Esempio interattivo',
   tags: ['!autodocs', '!dev'],
@@ -205,7 +201,9 @@ export const AccordionItem = {
   decorators: [
     (Story: any) => html`
       <div style="min-height:150px;display:flex;align-items:center">
-        <it-accordion>${Story()}</it-accordion>
+        <div style="flex-grow:1">
+          <it-accordion>${Story()}</it-accordion>
+        </div>
       </div>
     `,
   ],
@@ -255,7 +253,12 @@ In modalità single, può essere aperto un solo elemento alla volta. Aprendo un 
 
 export const AccordionAnnidati: Story = {
   name: 'Accordion annidati',
-  decorators: [(Story) => html`<div style="min-height:575px;display:flex;align-items:center">${Story()}</div>`],
+  decorators: [
+    (Story) =>
+      html`<div style="min-height:575px;display:flex;align-items:center">
+        <div style="flex-grow:1">${Story()}</div>
+      </div>`,
+  ],
   parameters: {
     useMetaDecorator: false,
   },

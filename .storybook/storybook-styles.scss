@@ -268,10 +268,13 @@ table.docblock-argstable {
 //per rendere scollabili le storie di affix
 #story--componenti-affix--affix-top,
 #story--componenti-affix--affix-bottom {
-  height: 400px !important;
-  transform: translateZ(0);
-  overflow: auto !important;
-
   position: relative;
   display: block;
+  overflow: auto !important;
+  height: 400px !important;
+  transform: translateZ(0);
+}
+
+div[id^='story--componenti-modal'] {
+  overflow-y: clip;
 }
