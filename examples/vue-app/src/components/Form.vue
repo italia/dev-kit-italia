@@ -51,7 +51,7 @@ const handleSubmit = (e) => {
       <it-icon name="it-telephone" slot="prepend" size="sm"></it-icon>
       <span slot="label">Telefono</span>
     </it-input>
-    <it-input id="orario" name="orario" type="time">
+    <it-input id="orario" name="orario" type="time" min="10:00" max="12:00" step="1800" required>
       <span slot="label">Orario</span>
     </it-input>
     <it-input id="disabilitato" name="disabilitato" value="valore del campo" disabled>

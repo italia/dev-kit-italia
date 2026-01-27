@@ -1,0 +1,19 @@
+@import 'bootstrap-italia/src/scss/components/popover';
+
+.popover {
+  --#{$prefix}popover-notch-size: 1.125rem;
+  position: absolute;
+  visibility: hidden;
+  // Arrow styles - must be global since arrow is added to slotted content
+  .arrow {
+    position: absolute;
+    z-index: -1;
+    width: var(--#{$prefix}popover-notch-size);
+    height: var(--#{$prefix}popover-notch-size);
+    border-width: calc(var(--#{$prefix}popover-notch-size) * 0.5) var(--#{$prefix}popover-arrow-height, 1rem)
+      calc(var(--#{$prefix}popover-notch-size) * 0.5) 0;
+    border-color: transparent;
+    background-color: var(--#{$prefix}popover-bg);
+    pointer-events: none;
+  }
+}

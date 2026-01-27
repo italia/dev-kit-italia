@@ -2,6 +2,7 @@ import '../packages/i18n/dist/src';
 
 import '../packages/accordion/dist/src';
 import '../packages/avatar/dist/src';
+import '../packages/back-to-top/dist/src';
 import '../packages/button/dist/src';
 import '../packages/checkbox/dist/src';
 import '../packages/chip/dist/src';
@@ -11,8 +12,10 @@ import '../packages/input/dist/src';
 import '../packages/modal/dist/src';
 import '../packages/popover/dist/src';
 import '../packages/radio/dist/src';
+import '../packages/rating/dist/src';
 import '../packages/section/dist/src';
 import '../packages/select/dist/src';
 import '../packages/skiplinks/dist/src';
 import '../packages/sticky/dist/src';
 import '../packages/video/dist/src';
+import '../packages/callout/dist/src';

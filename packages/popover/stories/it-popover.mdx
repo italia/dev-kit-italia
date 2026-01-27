@@ -1,0 +1,150 @@
+import { Meta, Story, Canvas, Controls, Title } from '@storybook/addon-docs/blocks';
+import * as PopoverStories from './it-popover.stories';
+
+<Meta of={PopoverStories} />
+
+<Title of={PopoverStories} />
+
+<description>Suggerimento a comparsa che può contenere testo e link per mostrare informazioni o funzionalità aggiuntive</description>
+
+## Cosa fa
+
+Il componente Popover permette di visualizzare contenuti in overlay posizionati dinamicamente rispetto a un elemento trigger.
+Utilizza [Floating UI](https://floating-ui.com/) per il posizionamento intelligente e si adatta automaticamente allo spazio disponibile.
+
+Il componente implementa le best practices UX definite da [Polaris (Shopify)](https://polaris.shopify.com/components/overlays/popover), [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/popovers) e [Material Design](https://m3.material.io/).
+
+[Approfondisci quando e come usare il componente Popover](https://designers.italia.it/design-system/componenti/popover/)
+
+### Alternative a questo componente
+
+- Tooltip (in lavorazione): mostra brevi informazioni testuali al passaggio del mouse o al focus su un elemento.
+- Modal (in lavorazione): finestre di dialogo che richiedono l'attenzione dell'utente e bloccano l'interazione con il resto dell'interfaccia fino a quando non vengono chiuse.
+- [Dropdown](/docs/componenti-dropdown--documentazione): menu a discesa per la selezione di opzioni o azioni.
+
+### Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente.
+Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={PopoverStories.Base} />
+<Controls of={PopoverStories.Base} />
+
+## Accessibilità
+
+Il componente implementa le seguenti funzionalità per garantire l'accessibilità:
+
+- **Attributi ARIA**: gestisce automaticamente `aria-haspopup` e `aria-expanded` sul trigger
+- **Navigazione da tastiera**: supporta la chiusura con `Esc` sia dal trigger che dal contenuto
+- **Light dismiss**: si chiude automaticamente con click esterno
+- **Controllo programmatico**: espone i metodi `openPopover()`, `closePopover()` e `toggle()` per il controllo via codice
+
+<div className="callout callout-success">
+  <div className="callout-inner">
+    <div className="callout-title">
+      <span className="text">Titoli nei popover</span>
+    </div>
+    <div>
+      Come si vede dagli esempi presenti in questa pagina, puoi inserire titoli all'interno del popover.
+      Negli esempi usiamo il tag `<h4>` per i titoli, ma è importante che tu scelga il livello di intestazione più appropriato in base alla struttura del contenuto della tua pagina.
+    </div>
+  </div>
+</div>
+
+### Gestione del focus
+
+Il comportamento del focus è delegato all'utilizzatore per garantire massima flessibilità. Solo tu che conosci il contenuto specifico del popover puoi determinare quale elemento debba ricevere il focus e quando.
+
+**Raccomandazioni:**
+
+- Per menu con azioni, usa il componente [Dropdown](/docs/componenti-dropdown--documentazione) che gestisce automaticamente focus e navigazione
+- Per contenuti informativi, gestisci il focus manualmente in base al contesto
+- Quando il popover si chiude, il focus torna automaticamente al trigger
+
+## Posizione
+
+Il componente supporta 12 posizioni diverse tramite l'attributo `placement`. Usa `top`, `right`, `bottom` o `left` per posizioni centrate, oppure aggiungi `-start` o `-end` per allineamenti specifici.
+
+**Esempi:**
+- `bottom-start`: in basso, allineato a sinistra
+- `top-end`: in alto, allineato a destra
+- `right`: a destra, centrato verticalmente
+
+Il posizionamento si adatta automaticamente allo spazio disponibile.
+
+<Canvas of={PopoverStories.Posizione} />
+
+## Titolo con icona e link
+
+Puoi aggiungere un'icona in testa al titolo ed un link in coda al contenuto.
+
+L'icona va inclusa nell'elemento usato come intestazione (ad esempio l'elemento `<h4>` nell'esempio qui sotto) subito prima del vero e proprio titolo.
+
+Il link va inserito dopo il contenuto testuale, con classe `popover-inner-link`.
+
+<Canvas of={PopoverStories.ConIconaELink} />
+
+## Elementi disabilitati
+
+Elementi con l'attributo `disabled` non sono interattivi, il che significa che gli utenti non possono attivare il popover facendo click su di essi.
+Come soluzione ti consigliamo di attivare il popover al passaggio del mouse o al focus tramite tastiera,
+in modo che il popover appaia come feedback visivo immediato per gli utenti in quanto non possono aspettarsi di cliccare su un elemento disabilitato.
+
+Questo ti permette di specificare il motivo per cui l'elemento è disabilitato, migliorando l'esperienza utente.
+Ti consigliamo però di valutare anche l'utilizzo di un [Tooltip](/docs/componenti-tooltip--documentazione) per questo scopo, in quanto più adatto a fornire informazioni rapide e contestuali.
+
+<Canvas of={PopoverStories.ElementiDisabilitati} />
+
+### Attivazione tramite hover e focus
+
+Per implementare l'attivazione su hover ti serve un riferimento al pulsante `trigger` e al componente `it-popover` stesso nel tuo codice JavaScript.
+
+```javascript
+const trigger = document.querySelector('it-button[slot="trigger"]');
+const popover = document.querySelector('it-popover');
+
+trigger.addEventListener('mouseenter', () => {
+  popover.openPopover();
+});
+
+trigger.addEventListener('mouseleave', () => {
+  popover.closePopover();
+});
+
+trigger.addEventListener('focus', () => {
+  popover.openPopover();
+});
+
+trigger.addEventListener('blur', (e) => {
+  const target = e.relatedTarget;
+  if (target === null || !popover.contains(target)) {
+    popover.closePopover();
+  }
+});
+```
+
+<Canvas of={PopoverStories.ElementiDisabilitatiConHover} />
+
+## Attivazione controllata
+
+Impostando l'attributo `controlled`, il popover non gestisce automaticamente l'apertura e la chiusura. L'utilizzatore deve chiamare i metodi `openPopover()`, `closePopover()` o `toggle()` per controllarne lo stato.
+
+<Canvas of={PopoverStories.AttivazioneControllata} />
+
+## Eventi
+
+Il componente emette gli eventi `it-popover-open` quando viene aperto e `it-popover-close` quando viene chiuso. Apri la console del browser per vedere i log.
+
+```javascript
+const popover = document.querySelector('it-popover');
+
+popover.addEventListener('it-popover-open', (e) => {
+  console.log('Popover aperto', e);
+});
+
+popover.addEventListener('it-popover-close', (e) => {
+  console.log('Popover chiuso', e);
+});
+```
+
+<Canvas of={PopoverStories.Eventi} />

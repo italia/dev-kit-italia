@@ -1,0 +1,59 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-input-time.stories';
+
+<Meta of={Stories} />
+
+# Input Ora
+
+<description>Campo per selezionare un orario all'interno di un form</description>
+
+## Cosa fa
+Il componente input orario, o timepicker, consente all'utente di scegliere un orario, indicando ore e minuti.
+È utile per i flussi di interazione che prevedono la comunicazione di un orario, come la prenotazione di appuntamenti o di posti per un evento. Aiuta a prevenire errori, e rende più facile inserire i dati per l'utente.
+
+[Approfondisci come e quando usare il componente Input Ora](https://designers.italia.it/design-system/componenti/timepicker/)
+
+### Alternative a questo componente
+- Select (in lavorazione): se hai bisogno che gli utenti selezionino un orario da una lista di opzioni prestabilite, ad esempio con un intervallo di 5 o 10 minuti.
+
+## Anteprima e attributi del componente
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+## Indicazioni generali
+
+L’input di tipo ora è una variante del componente `<it-input>` con l'attributo `type=` impostato su `time` (`type="time"`).
+
+Pertanto, per quanto riguarda:
+
+- la **validazione** e la **gestione degli errori**
+- la **gestione degli eventi**
+- i **metodi e le proprietà** accessibili tramite JavaScript
+- il **supporto all’internazionalizzazione (i18n)**
+
+è necessario fare riferimento alla [documentazione di it-input](?path=/docs/componenti-form-input--documentazione).
+
+## Accessibilità
+
+Tutti gli attributi `it-aria-*` passati a `<it-input>` vengono applicati all'input generato.
+
+
+## Limiti e Step
+
+<Description of={Stories.LimitiEStep} />
+<Canvas of={Stories.LimitiEStep} />
+
+
+{/* ## Disabilitato
+
+<Description of={Stories.Disabilitato} />
+<Canvas of={Stories.Disabilitato} />
+
+## Stato readonly
+
+<Description of={Stories.Readonly} />
+<Canvas of={Stories.Readonly} /> */}
+
+

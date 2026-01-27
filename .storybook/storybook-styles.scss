@@ -275,6 +275,11 @@ table.docblock-argstable {
   transform: translateZ(0);
 }
 
+// Avoid overflow issues with Popover component stories
+.docs-story:has([id^='story--componenti-popover--']) > div {
+  overflow: hidden;
+}
+
 div[id^='story--componenti-modal'] {
   overflow-y: clip;
 }

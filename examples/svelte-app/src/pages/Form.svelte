@@ -46,7 +46,7 @@
     <it-icon name="it-telephone" slot="prepend" size="sm"></it-icon>
     <span slot="label">Telefono</span>
   </it-input>
-  <it-input id="orario" name="orario-basic" type="time">
+  <it-input id="orario" name="orario-basic" type="time" required min="10:00" max="12:00" step="1800">
     <span slot="label">Orario</span>
   </it-input>
   <it-input id="disabilitato" name="disabilitato-basic" value="valore del campo" disabled>
@@ -72,7 +72,7 @@
     <span slot="label">Campo readonly normalizzato come plaintext</span>
   </it-input>
 
-  <it-checkbox-group required group name="animali" class="mb-4" value='["gatto","topo"]'>
+  <it-checkbox-group required group name="animali" class="mb-4" value={['gatto', 'topo']}>
     <span slot="legend">Animali preferiti</span>
     <it-checkbox value="cane">
       <span slot="label">Cane</span>
