@@ -35,8 +35,8 @@ it-navscroll {
   }
 
   it-button[slot='trigger']::part(button) {
-    --bsi-btn-padding-y: 0;
-    --bsi-btn-padding-x: 0;
+    --#{$prefix}btn-padding-y: 0;
+    --#{$prefix}btn-padding-x: 0;
   }
 
   .theme-dark-mobile {
