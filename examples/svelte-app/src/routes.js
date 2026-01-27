@@ -2,6 +2,7 @@ import Accordion from './pages/Accordion.svelte';
 import Avatar from './pages/Avatar.svelte';
 import Breadcrumbs from './pages/Breadcrumbs.svelte';
 import Affix from './pages/Affix.svelte';
+import Avatar from './pages/Avatar.svelte';
 import BackToTop from './pages/BackToTop.svelte';
 import Badge from './pages/Badge.svelte';
 import Button from './pages/Button.svelte';
@@ -15,6 +16,7 @@ import Input from './pages/Input.svelte';
 import Modal from './pages/Modal.svelte';
 import Overlay from './pages/Overlay.svelte';
 import Radio from './pages/Radio.svelte';
+import Rating from './pages/Rating.svelte';
 import Section from './pages/Section.svelte';
 import Skiplinks from './pages/Skiplinks.svelte';
 import Sticky from './pages/Sticky.svelte';
@@ -38,6 +40,7 @@ export const AppRoutes = [
   { path: '/modal', element: Modal, title: 'Modal' },
   { path: '/overlay', element: Overlay, title: 'Overlay' },
   { path: '/radio', element: Radio, title: 'Radio' },
+  { path: '/rating', element: Rating, title: 'Rating' },
   { path: '/section', element: Section, title: 'Section' },
   { path: '/skiplinks', element: Skiplinks, title: 'Skiplinks' },
   { path: '/sticky', element: Sticky, title: 'Sticky' },

@@ -26,6 +26,7 @@
       "@italia/modal",
       "@italia/popover",
       "@italia/radio",
+      "@italia/rating",
       "@italia/section",
       "@italia/skiplinks",
       "@italia/sticky",

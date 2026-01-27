@@ -13,13 +13,15 @@ import '@italia/dropdown/it-dropdown.js';
 import '@italia/dropdown/it-dropdown-item.js';
 import '@italia/icon/it-icon.js';
 import '@italia/input/it-input.js';
+import '@italia/modal/it-modal.js';
 import '@italia/skiplinks/it-skiplinks.js';
 import '@italia/popover/it-popover.js';
 import '@italia/sticky/it-sticky.js';
 import '@italia/video/it-video.js';
 import '@italia/radio/it-radio.js';
 import '@italia/radio/it-radio-group.js';
-import '@italia/modal/it-modal.js';
+import '@italia/rating/it-rating.js';
+import '@italia/rating/it-rating-item.js';
 
 import { registerTranslation } from '@italia/i18n/i18n.js';
 

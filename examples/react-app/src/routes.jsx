@@ -15,6 +15,7 @@ import Input from './pages/Input';
 import Modal from './pages/Modal';
 import Overlay from './pages/Overlay';
 import Radio from './pages/Radio';
+import Rating from './pages/Rating';
 import Section from './pages/Section';
 import Skiplinks from './pages/Skiplinks';
 import Sticky from './pages/Sticky';
@@ -38,6 +39,7 @@ export const AppRoutes = [
   { path: '/modal', element: <Modal />, title: 'Modal' },
   { path: '/overlay', element: <Overlay />, title: 'Overlay' },
   { path: '/radio', element: <Radio />, title: 'Radio' },
+  { path: '/rating', element: <Rating />, title: 'Rating' },
   { path: '/section', element: <Section />, title: 'Section' },
   { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },

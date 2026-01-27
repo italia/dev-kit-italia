@@ -17,6 +17,7 @@ import Input from './components/Input.vue';
 import Modal from './components/Modal.vue';
 import Overlay from './components/Overlay.vue';
 import Radio from './components/Radio.vue';
+import Rating from './components/Rating.vue';
 import Section from './components/Section.vue';
 import Sticky from './components/Sticky.vue';
 import Video from './components/Video.vue';
@@ -40,6 +41,7 @@ const routes = [
   { path: '/modal', name: 'Modal', component: Modal },
   { path: '/overlay', name: 'Overlay', component: Overlay },
   { path: '/radio', name: 'Radio', component: Radio },
+  { path: '/rating', name: 'Rating', component: Rating },
   { path: '/section', name: 'Section', component: Section },
   { path: '/skiplinks', name: 'Skiplinks', component: Skiplinks },
   { path: '/sticky', name: 'Sticky', component: Sticky },

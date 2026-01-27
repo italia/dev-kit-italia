@@ -147,6 +147,15 @@ $it-components: (
     // height: 80px,
     bg: transparent,
   ),
+  'it-rating': (
+    // height: 28px,
+    bg: transparent,
+  ),
+  'it-rating-item': (
+    height: 24px,
+    width: 24px,
+    border-radius: 50%,
+  ),
   'it-video': (
     height: auto,
     width: 100%,
