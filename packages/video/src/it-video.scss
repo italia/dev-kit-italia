@@ -16,12 +16,12 @@
 }
 
 .acceptoverlay {
-  --bs-acceptoverlay-color-text: #fff;
-  --bs-form-control-label-color: #fff;
-  --bs-form-checkbox-border-color: #fff;
+  --#{$prefix}acceptoverlay-color-text: #fff;
+  --#{$prefix}form-control-label-color: #fff;
+  --#{$prefix}form-checkbox-border-color: #fff;
 
   a {
-    color: var(--bs-acceptoverlay-color-text);
+    color: var(--#{$prefix}acceptoverlay-color-text);
   }
 
   .bg-dark {

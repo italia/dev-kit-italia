@@ -86,7 +86,7 @@ $utilities: (
 
 .modal-footer {
   flex-shrink: 0;
-  padding-top: var(--bs-modal-padding);
+  padding-top: var(--#{$prefix}modal-padding);
 }
 
 .modal-dialog-scrollable {
@@ -118,7 +118,7 @@ $utilities: (
 // // Migliora l'accessibilità del pulsante di chiusura
 // .btn-close {
 //   &:focus-visible {
-//     outline: 2px solid var(--bs-focus-ring-color, #{$primary});
+//     outline: 2px solid var(--#{$prefix}focus-ring-color, #{$primary});
 //     outline-offset: 2px;
 //   }
 // }

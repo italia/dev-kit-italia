@@ -11,6 +11,7 @@ import Form from './components/Form.vue';
 import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
 import Modal from './components/Modal.vue';
+import Overlay from './components/Overlay.vue';
 import Radio from './components/Radio.vue';
 import Section from './components/Section.vue';
 import Sticky from './components/Sticky.vue';
@@ -33,6 +34,7 @@ const routes = [
   { path: '/icon', name: 'Icon', component: Icon },
   { path: '/input', name: 'Input', component: Input },
   { path: '/modal', name: 'Modal', component: Modal },
+  { path: '/overlay', name: 'Overlay', component: Overlay },
   { path: '/radio', name: 'Radio', component: Radio },
   { path: '/section', name: 'Section', component: Section },
   { path: '/skiplinks', name: 'Skiplinks', component: Skiplinks },

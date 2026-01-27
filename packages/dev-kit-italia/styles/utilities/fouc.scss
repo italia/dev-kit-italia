@@ -72,7 +72,7 @@
         &::after {
           display: inline-block;
           content: attr(#{$attr});
-          font-family: var(--bs-font-sans);
+          font-family: var(--#{$prefix}font-sans);
           white-space: nowrap;
         }
       }
@@ -101,7 +101,7 @@ $it-components: (
     border-radius: 50%,
   ),
   'it-button': (
-    border-radius: var(--bs-btn-border-radius, 4px),
+    border-radius: var(--#{$prefix}btn-border-radius, 4px),
     height: 44.8px,
     padding: 0 1rem,
   ),
@@ -116,7 +116,7 @@ $it-components: (
     attr: 'label',
   ),
   'it-dropdown': (
-    border-radius: var(--bs-btn-border-radius, 4px),
+    border-radius: var(--#{$prefix}btn-border-radius, 4px),
     height: 48px,
     padding: 0 1rem,
     attr: 'label',

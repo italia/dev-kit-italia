@@ -1,4 +1,4 @@
-export const CHIP_VARIANTS = ['primary', 'secondary', 'success', 'danger', 'warning', ''] as const;
+export const CHIP_VARIANTS = ['primary', 'secondary', 'success', 'danger', 'warning'] as const;
 export const CHIP_SIZES = ['sm', 'lg'] as const;
 
 export type ChipVariant = (typeof CHIP_VARIANTS)[number];
