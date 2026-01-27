@@ -100,6 +100,11 @@ $it-components: (
   'it-avatar': (
     border-radius: 50%,
   ),
+  'it-back-to-top': (
+    border-radius: var(--bs-radius-circle, 100%),
+    height: 56px,
+    width: 56px,
+  ),
   'it-button': (
     border-radius: var(--#{$prefix}btn-border-radius, 4px),
     height: 44.8px,
@@ -107,13 +112,11 @@ $it-components: (
   ),
   'it-chip': (
     height: 27.5px,
-    attr: 'label',
     border-radius: 40px,
   ),
   'it-checkbox': (
     height: 20px,
     width: 20px,
-    attr: 'label',
   ),
   'it-dropdown': (
     border-radius: var(--#{$prefix}btn-border-radius, 4px),
@@ -128,8 +131,8 @@ $it-components: (
   ),
   'it-input': (
     height: 74px,
-    attr: 'label',
     padding: 1rem,
+    margin: 0 0 var(--#{$prefix}spacing-m, 24px) 0,
   ),
   'it-radio': (
     pseudo: before,
@@ -141,6 +144,23 @@ $it-components: (
   'it-radio-group': (
     // height: 80px,
     bg: transparent,
+  ),
+  'it-select': (
+    height: 74px,
+    padding: 1rem,
+    margin: 0 0 var(--#{$prefix}spacing-m, 24px) 0,
+  ),
+  'it-select[multiple]': (
+    height: 161px,
+  ),
+  'it-rating': (
+    // height: 28px,
+    bg: transparent,
+  ),
+  'it-rating-item': (
+    height: 24px,
+    width: 24px,
+    border-radius: 50%,
   ),
   'it-video': (
     height: auto,

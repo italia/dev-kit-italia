@@ -1,0 +1,60 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+// TODO: refactor once BSI styles are fixed and updated
+it-breadcrumbs:not(:defined) {
+  --it-host-display: flex;
+  --it-breadcrumb-background-color: transparent;
+  --it-breadcrumb-text-color: inherit;
+  display: var(--it-host-display);
+
+  it-breadcrumb-item:not(:defined) {
+    display: inline-flex;
+    align-items: center;
+
+    a {
+      display: var(--it-host-display);
+      align-items: center;
+      color: var(--#{$prefix}breadcrumb-link-color, var(--it-breadcrumb-text-color));
+      font-weight: var(--#{$prefix}breadcrumb-link-font-weight, 600);
+    }
+
+    &:not(:last-child)::after {
+      padding: 0 0.5rem;
+      color: var(--#{$prefix}breadcrumb-separator-color);
+      content: '/';
+    }
+
+    &:has([slot='separator'])::after {
+      padding: 0;
+      content: '';
+    }
+
+    color: var(--#{$prefix}breadcrumb-link-color);
+  }
+
+  it-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+it-breadcrumbs[dark]:not(:defined) {
+  --it-breadcrumb-background-color: hsl(210, 25%, 35.2%);
+  --it-breadcrumb-text-color: #fff;
+  padding: 0.75rem 1rem;
+  background: var(--it-breadcrumb-background-color);
+
+  it-breadcrumb-item:not(:defined) {
+    a {
+      display: var(--it-host-display);
+      color: var(--it-breadcrumb-text-color);
+      font-weight: var(--#{$prefix}breadcrumb-link-font-weight, 600);
+    }
+
+    &:not(:last-child)::after {
+      color: var(--it-breadcrumb-text-color);
+    }
+
+    color: var(--it-breadcrumb-text-color);
+  }
+}

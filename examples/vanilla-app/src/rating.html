@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rating - Vanilla Example</title>
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+     <div id="root">
+      <div id="app-header"></div>
+    <div class="container my-5">
+      <h1 class="mb-4">Rating</h1>
+
+      <section class="mb-5">
+        <h2>Con valore preimpostato</h2>
+        <div style="display: flex;justify-content: center;">
+        <it-rating name="rating-preset" value="3">
+          <span slot="label">Valutazione</span>
+          <it-rating-item name="rating-preset" value="1"><span slot="label">1 stella</span></it-rating-item>
+          <it-rating-item name="rating-preset" value="2"><span slot="label">2 stelle</span></it-rating-item>
+          <it-rating-item name="rating-preset" value="3" checked><span slot="label">3 stelle</span></it-rating-item>
+          <it-rating-item name="rating-preset" value="4"><span slot="label">4 stelle</span></it-rating-item>
+          <it-rating-item name="rating-preset" value="5"><span slot="label">5 stelle</span></it-rating-item>
+        </it-rating>
+        </div>
+      </section>
+
+      <section class="mb-5">
+        <h2>Sola lettura</h2>
+        <div style="display: flex;justify-content: center;">
+        <it-rating name="rating-readonly" value="4" read-only>
+          <span slot="label">Sola lettura</span>
+          <it-rating-item name="rating-readonly" value="1"><span slot="label">1 stella</span></it-rating-item>
+          <it-rating-item name="rating-readonly" value="2"><span slot="label">2 stelle</span></it-rating-item>
+          <it-rating-item name="rating-readonly" value="3"><span slot="label">3 stelle</span></it-rating-item>
+          <it-rating-item name="rating-readonly" value="4" checked><span slot="label">4 stelle</span></it-rating-item>
+          <it-rating-item name="rating-readonly" value="5"><span slot="label">5 stelle</span></it-rating-item>
+        </it-rating>
+
+      </div>
+        <p class="mt-3 text-center">Valutazione 4 stelle su 5</p>
+      </section>
+
+      <section class="mb-5">
+        <h2>Con icone personalizzate</h2>
+        <div style="display: flex;justify-content: center;">
+         <it-rating name="rating-check" icon="it-check-circle" value="4">
+          <span slot="label">Valutazione con check</span>
+          <it-rating-item value="1"><span slot="label">1 check</span></it-rating-item>
+          <it-rating-item value="2"><span slot="label">2 check</span></it-rating-item>
+          <it-rating-item value="3"><span slot="label">3 check</span></it-rating-item>
+          <it-rating-item value="4"><span slot="label">4 check</span></it-rating-item>
+          <it-rating-item value="5"><span slot="label">5 check</span></it-rating-item>
+        </it-rating>
+        </div>
+      </section>
+
+      <section class="mb-5">
+        <h2>Obbligatorio</h2>
+        <div style="display: flex;justify-content: center;">
+        <form id="form-required">
+          <it-rating name="rating-required" required>
+            <span slot="label">Valutazione (obbligatoria)</span>
+            <it-rating-item name="rating-required" value="1"><span slot="label">1 stella</span></it-rating-item>
+            <it-rating-item name="rating-required" value="2"><span slot="label">2 stelle</span></it-rating-item>
+            <it-rating-item name="rating-required" value="3"><span slot="label">3 stelle</span></it-rating-item>
+            <it-rating-item name="rating-required" value="4"><span slot="label">4 stelle</span></it-rating-item>
+            <it-rating-item name="rating-required" value="5"><span slot="label">5 stelle</span></it-rating-item>
+          </it-rating>
+          <it-button type="submit" class="btn btn-primary mt-3">Invia</it-button>
+        </form>
+        </div>
+      </section>
+
+      <section class="mb-5">
+        <h2>Integrazione con form</h2>
+        <div style="display: flex;justify-content: center;">
+        <form id="review-form">
+          <div class="mb-4">
+            <it-rating name="rating" required>
+              <span slot="label">Valuta questo servizio (obbligatorio)</span>
+              <it-rating-item name="rating" value="1"><span slot="label">1 stella</span></it-rating-item>
+              <it-rating-item name="rating" value="2"><span slot="label">2 stelle</span></it-rating-item>
+              <it-rating-item name="rating" value="3"><span slot="label">3 stelle</span></it-rating-item>
+              <it-rating-item name="rating" value="4"><span slot="label">4 stelle</span></it-rating-item>
+              <it-rating-item name="rating" value="5"><span slot="label">5 stelle</span></it-rating-item>
+            </it-rating>
+          </div>
+
+          <div class="mb-4">
+            <div class="form-group">
+              <label for="comment">Commento</label>
+              <textarea id="comment" name="comment" class="form-control" rows="3" required></textarea>
+            </div>
+          </div>
+
+          <it-button type="submit" class="btn btn-primary">Invia recensione</it-button>
+          <it-button type="reset" class="btn btn-outline-primary ms-2">Reset</it-button>
+        </form>
+      </div>
+      </section>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+    <script type="module">
+      document.getElementById('form-required').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        console.log(`Rating selezionato: ${formData.get('rating-required')}`);
+        alert(`Rating selezionato: ${formData.get('rating-required')}`);
+      });
+
+      document.getElementById('review-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        console.log(`Form inviato! Rating: ${data.rating} Commento: ${data.comment}`);
+        alert(`Form inviato! Rating: ${data.rating} Commento: ${data.comment}`);
+      });
+    </script>
+  </body>
+</html>

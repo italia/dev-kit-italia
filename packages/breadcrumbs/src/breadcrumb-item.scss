@@ -1,0 +1,26 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
+@import 'bootstrap-italia/src/scss/components/breadcrumb';
+// TODO: refactor once BSI styles are fixed and updated
+// Styles for links in the light DOM (slotted)
+.breadcrumb-item ::slotted(a) {
+  display: inline-block;
+  color: var(--#{$prefix}breadcrumb-link-color) !important;
+  font-weight: var(--#{$prefix}breadcrumb-link-font-weight) !important;
+}
+
+// Styles for the current element (last in the breadcrumb)
+// When the li has the 'active' class, the link/text should have body style
+.breadcrumb-item.active {
+  ::slotted(a),
+  ::slotted(*) {
+    color: var(--#{$prefix}breadcrumb-item-active-color, var(--#{$prefix}body-color)) !important;
+    cursor: default;
+    font-weight: unset !important;
+    pointer-events: none;
+    text-decoration: none !important;
+  }
+}

@@ -1,0 +1,79 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@import 'bootstrap-italia/src/scss/components/callout';
+
+// Custom styles to handle slotted content
+:host {
+  display: block;
+  --#{$prefix}callout-text-size: 16px;
+  --#{$prefix}callout-font-family: #{$font-family-serif};
+}
+
+/* Anti-FOUC: nascondi il contenuto finché il componente non è definito */
+:host(:not(:defined)) {
+  visibility: hidden;
+}
+
+:host([big-text]) {
+  --#{$prefix}callout-text-size: 18px;
+}
+
+// Ensure proper styling for slotted icons (elements in light DOM with slot="icon")
+:host ::slotted(it-icon[slot='icon']) {
+  margin-right: var(--#{$prefix}spacing-xxs);
+}
+
+// Ensure proper spacing for slotted title text (elements with slot="title")
+:host ::slotted(*[slot='title']) {
+  margin: 0;
+}
+
+// Reset heading styles to maintain callout title appearance
+.callout-title {
+  display: flex;
+  align-items: center;
+
+  .text {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      display: inline-flex;
+      padding: 0;
+      border: 0;
+      margin: 0;
+      color: inherit;
+      font-size: var(--#{$prefix}callout-title-font-size);
+      font-weight: var(--#{$prefix}callout-title-font-weight);
+      line-height: inherit;
+      text-transform: uppercase;
+    }
+  }
+}
+
+// Ensure headings display inline-flex in highlight and callout-more variants
+.callout-highlight .callout-title .text,
+.callout-more .callout-title .text {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    display: inline-flex;
+  }
+}
+
+.callout-more .callout-title {
+  display: flex;
+  align-items: center;
+}
+
+::slotted(it-icon[slot='icon']) {
+  --#{$prefix}icon-default: var(--it-color-border-secondary);
+}

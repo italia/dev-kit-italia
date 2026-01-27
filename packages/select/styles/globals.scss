@@ -1,0 +1,9 @@
+it-select {
+  --it-host-display: block;
+  display: var(--it-host-display);
+
+  > option,
+  > optgroup {
+    display: none;
+  }
+}

@@ -1,0 +1,130 @@
+<h1>it-popover</h1>
+
+<!-- Base -->
+<section style="margin-bottom: 2rem">
+  <h2>Base</h2>
+  <it-popover placement="right">
+    <it-button slot="trigger" variant="primary">Opzioni utente, clicca per aprire</it-button>
+    <div slot="content" class="popover">
+      <h4 class="popover-header">Titolo del popover</h4>
+      <div class="popover-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.</div>
+    </div>
+  </it-popover>
+</section>
+
+<!-- Posizione -->
+<section style="margin-bottom: 2rem">
+  <h2>Posizione</h2>
+  <div style="display: grid; gap: .5rem; grid: 1fr 1fr 1fr / 1fr 1fr 1fr">
+    <it-popover placement="bottom-start" style="grid-column: 2">
+      <it-button slot="trigger" variant="primary">Giù</it-button>
+      <div slot="content" class="popover">
+        <h4 class="popover-header">Titolo del popover</h4>
+        <div class="popover-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.</div>
+      </div>
+    </it-popover>
+
+    <it-popover placement="top-start" style="grid-row: 3; grid-column: 2">
+      <it-button slot="trigger" variant="primary">Su</it-button>
+      <div slot="content" class="popover">
+        <h4 class="popover-header">Titolo del popover</h4>
+        <div class="popover-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.</div>
+      </div>
+    </it-popover>
+
+    <it-popover placement="left" style="grid-row: 2; grid-column: 3">
+      <it-button slot="trigger" variant="primary">Sinistra</it-button>
+      <div slot="content" class="popover">
+        <h4 class="popover-header">Titolo del popover</h4>
+        <div class="popover-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.</div>
+      </div>
+    </it-popover>
+
+    <it-popover placement="right" style="grid-row: 2; grid-column: 1">
+      <it-button slot="trigger" variant="primary">Destra</it-button>
+      <div slot="content" class="popover">
+        <h4 class="popover-header">Titolo del popover</h4>
+        <div class="popover-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.</div>
+      </div>
+    </it-popover>
+  </div>
+</section>
+
+<!-- Titolo con icona e link -->
+<section style="margin-bottom: 2rem">
+  <h2>Titolo con icona e link</h2>
+  <it-popover>
+    <it-button slot="trigger" variant="primary">Popover con icona e link</it-button>
+    <div slot="content" class="popover">
+      <h4 class="popover-header">
+        <it-icon name="it-help-circle" size="sm"></it-icon>
+        Titolo con icona
+      </h4>
+      <div class="popover-body">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.
+        <a href="#" class="popover-inner-link" (click)="handleLinkClick($event)">
+          Leggi tutto
+          <it-icon name="it-arrow-right" size="xs" color="primary"></it-icon>
+        </a>
+      </div>
+    </div>
+  </it-popover>
+</section>
+
+<!-- Elementi disabilitati -->
+<section style="margin-bottom: 2rem">
+  <h2>Elementi disabilitati</h2>
+  <it-popover placement="right">
+    <it-button slot="trigger" variant="primary" disabled>Pulsante disabilitato, il popover non si apre</it-button>
+    <div slot="content" class="popover">
+      <div class="popover-body">Popover disabilitato</div>
+    </div>
+  </it-popover>
+</section>
+
+<!-- Elementi disabilitati con hover -->
+<section style="margin-bottom: 2rem">
+  <h2>Elementi disabilitati con hover</h2>
+  <it-popover placement="right">
+    <it-button
+      slot="trigger"
+      variant="primary"
+      disabled
+      (mouseenter)="handleMouseEnter($event)"
+      (mouseleave)="handleMouseLeave($event)"
+      (focus)="handleFocus($event)"
+      (blur)="handleBlur($event)"
+    >
+      Pulsante disabilitato
+    </it-button>
+    <div slot="content" class="popover" (blur)="handleBlur($event)">
+      <div class="popover-body">Pulsante disabilitato, qui puoi spiegare il perché</div>
+    </div>
+  </it-popover>
+</section>
+
+<!-- Attivazione controllata -->
+<section style="margin-bottom: 2rem">
+  <h2>Attivazione controllata</h2>
+  <p>Non si apre semplicemente con il click, il comportamento dev'essere controllato tramite codice.</p>
+  <it-popover controlled placement="right">
+    <it-button slot="trigger" variant="primary">Popover controllato</it-button>
+    <div slot="content" class="popover">
+      <div class="popover-inner">
+        <div class="popover-body">Questo popover non si aprirà e questo testo non si vedrà.</div>
+      </div>
+    </div>
+  </it-popover>
+</section>
+
+<!-- Eventi -->
+<section style="margin-bottom: 2rem">
+  <h2>Eventi</h2>
+  <it-popover (it-popover-open)="handlePopoverOpen($event)" (it-popover-close)="handlePopoverClose($event)" placement="right">
+    <it-button slot="trigger" variant="primary">Popover con eventi</it-button>
+    <div slot="content" class="popover">
+      <h4 class="popover-header">Eventi del Popover</h4>
+      <div class="popover-body">Apri e chiudi questo popover per vedere gli eventi nella console.</div>
+    </div>
+  </it-popover>
+</section>
