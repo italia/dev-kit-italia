@@ -10,6 +10,8 @@ import Dropdown from './pages/Dropdown';
 import Form from './pages/Form';
 import Icon from './pages/Icon';
 import Input from './pages/Input';
+import Modal from './pages/Modal';
+import Overlay from './pages/Overlay';
 import Radio from './pages/Radio';
 import Section from './pages/Section';
 import Skiplinks from './pages/Skiplinks';
@@ -31,6 +33,8 @@ export const AppRoutes = [
   { path: '/form', element: <Form />, title: 'Form' },
   { path: '/icon', element: <Icon />, title: 'Icon' },
   { path: '/input', element: <Input />, title: 'Input' },
+  { path: '/modal', element: <Modal />, title: 'Modal' },
+  { path: '/overlay', element: <Overlay />, title: 'Overlay' },
   { path: '/radio', element: <Radio />, title: 'Radio' },
   { path: '/section', element: <Section />, title: 'Section' },
   { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },

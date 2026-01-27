@@ -4,21 +4,9 @@
 @import 'bootstrap-italia/src/scss/base/maps';
 @import 'bootstrap-italia/src/scss/components/buttons';
 
-:host {
-  display: inline-flex;
-}
-
-.collapse-wrapper {
-  width: 100%;
-}
-
 .collapse-content {
   overflow: hidden;
   height: 0;
-}
-
-.collapse-item {
-  width: fit-content;
 }
 
 button,
