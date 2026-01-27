@@ -11,6 +11,7 @@
     [
       "@italia/accordion",
       "@italia/avatar",
+      "@italia/back-to-top",
       "@italia/button",
       "@italia/checkbox",
       "@italia/chip",
@@ -21,8 +22,10 @@
       "@italia/i18n",
       "@italia/icon",
       "@italia/input",
+      "@italia/modal",
       "@italia/popover",
       "@italia/radio",
+      "@italia/rating",
       "@italia/section",
       "@italia/skiplinks",
       "@italia/sticky",

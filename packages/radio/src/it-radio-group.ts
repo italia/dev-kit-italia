@@ -57,7 +57,7 @@ export class ItRadioGroup extends FormControl {
    * Get all slotted radio buttons
    */
   @queryAssignedElements()
-  private _radios!: ItRadio[];
+  protected _radios!: ItRadio[];
 
   @queryAssignedElements({ slot: 'label' })
   private _label!: HTMLElement[];
@@ -65,7 +65,7 @@ export class ItRadioGroup extends FormControl {
   /**
    * Roving tabindex controller for keyboard navigation
    */
-  private rovingTabindex = new RovingTabindexController<ItRadio>(this, {
+  protected rovingTabindex = new RovingTabindexController<ItRadio>(this, {
     getItems: () => this._radios,
     onSelect: (radio, event) => this.selectRadio(radio, event),
     direction: 'both',
@@ -313,7 +313,7 @@ export class ItRadioGroup extends FormControl {
   /**
    * Synchronize radio button states with group state
    */
-  private _updateRadiosState() {
+  protected _updateRadiosState() {
     if (!this._radios || this._radios.length === 0) {
       return;
     }
@@ -404,14 +404,14 @@ export class ItRadioGroup extends FormControl {
   /**
    * Handle slot changes (when radios are added/removed)
    */
-  private _handleSlotChange = () => {
+  protected _handleSlotChange = () => {
     this._syncValueFromRadios();
     this._updateRadiosState();
     // Sync group state to newly added radios
     this._syncGroupStateToRadios();
   };
 
-  private _handleLabelSlotChange = () => {
+  protected _handleLabelSlotChange = () => {
     const labelId = this.generateId('it-radio-group-label');
     this._label[0]?.setAttribute('id', labelId);
     this.setAttribute('aria-labelledby', labelId);

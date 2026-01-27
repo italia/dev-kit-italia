@@ -279,3 +279,7 @@ table.docblock-argstable {
 .docs-story:has([id^='story--componenti-popover--']) > div {
   overflow: hidden;
 }
+
+div[id^='story--componenti-modal'] {
+  overflow-y: clip;
+}

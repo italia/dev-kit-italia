@@ -1,0 +1,15 @@
+// Global styles that need to be imported at page level
+// These styles affect elements outside the shadow DOM
+
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+
+// Body scroll lock when modal is open
+body.modal-open {
+  overflow: hidden;
+  padding-right: var(--modal-scrollbar-width, 0);
+}
+
+it-modal:not(:defined) :not([slot='trigger']) {
+  display: none;
+}

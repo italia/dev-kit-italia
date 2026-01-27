@@ -14,12 +14,20 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/avatar.component').then((c) => c.AvatarComponent),
   },
   {
+    path: 'back-to-top',
+    loadComponent: () => import('./pages/back-to-top.component').then((c) => c.BackToTopComponent),
+  },
+  {
     path: 'badge',
     loadComponent: () => import('./pages/badge.component').then((c) => c.BadgeComponent),
   },
   {
     path: 'button',
     loadComponent: () => import('./pages/button.component').then((c) => c.ButtonComponent),
+  },
+  {
+    path: 'callout',
+    loadComponent: () => import('./pages/callout.component').then((c) => c.CalloutComponent),
   },
   {
     path: 'checkbox',
@@ -50,6 +58,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/input.component').then((c) => c.InputComponent),
   },
   {
+    path: 'modal',
+    loadComponent: () => import('./pages/modal.component').then((c) => c.ModalComponent),
+  },
+  {
     path: 'overlay',
     loadComponent: () => import('./pages/overlay.component').then((c) => c.OverlayComponent),
   },
@@ -61,6 +73,10 @@ export const routes: Routes = [
     path: 'radio',
     loadComponent: () =>
       import('./pages/radio-examples.component').then((c) => c.RadioExamplesComponent),
+  },
+  {
+    path: 'rating',
+    loadComponent: () => import('./pages/rating.component').then((c) => c.RatingComponent),
   },
   {
     path: 'section',
