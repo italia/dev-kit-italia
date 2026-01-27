@@ -881,7 +881,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/ba6eddb24194f44d1080deb24701e0603457d176
+        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/5ebc4165ffe850e6627eee83ab2e95807c908816(style-dictionary@5.2.0(tslib@2.8.1))
       lit:
         specifier: 'catalog:'
         version: 3.3.0
