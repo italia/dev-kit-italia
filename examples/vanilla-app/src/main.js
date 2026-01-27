@@ -53,6 +53,9 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/button">
         Button
       </a>
+      <a href="/src/callout">
+        Callout
+      </a>
       <a href="/src/checkbox">
         Checkbox
       </a>

@@ -46,6 +46,7 @@
 @import '@italia/skiplinks/styles/globals';
 @import '@italia/section/styles/globals';
 @import '@italia/video/styles/globals';
+@import '@italia/callout/styles/globals';
 @import '@italia/checkbox/styles/globals';
 @import '@italia/chip/styles/globals';
 @import '@italia/collapse/styles/globals';
@@ -53,12 +54,15 @@
 @import '@italia/radio/styles/globals';
 @import '@italia/rating/styles/globals';
 @import '@italia/modal/styles/globals';
+
 // Footer
 @import 'bootstrap-italia/src/scss/components/footer';
 @import 'bootstrap-italia/src/scss/components/list';
 @import 'bootstrap-italia/src/scss/components/headercenter';
 
 @import './components/list';
+@import './components/footer';
+@import './components/go-back';
 
 .it-footer-main .it-brand-wrapper ::part(icon) {
   width: var(--#{$prefix}footer-brand-icon-size);
