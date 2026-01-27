@@ -18,9 +18,25 @@ it-navscroll {
     box-shadow: var(--#{$prefix}navscroll-bottom-box-shadow);
   }
 
+  // it-modal::part(modal-body) {
+  //   .navbar.it-navscroll-wrapper .menu-wrapper {
+  //     padding-top: 0;
+  //   }
+  // }
+  @media (max-width: 767.98px) {
+    .navbar.it-navscroll-wrapper .menu-wrapper {
+      padding-top: 0;
+    }
+  }
+
   it-button[slot='header']::part(button) {
     text-align: left;
     text-decoration: none;
+  }
+
+  it-button[slot='trigger']::part(button) {
+    --bsi-btn-padding-y: 0;
+    --bsi-btn-padding-x: 0;
   }
 
   .theme-dark-mobile {

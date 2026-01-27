@@ -17,7 +17,7 @@ Tuttavia, un uso eccessivo delle modali interrompe il normale flusso di navigazi
 [Approfondisci quando e come usare il componente Modal](https://designers.italia.it/design-system/componenti/modal/)
 
 ### Alternative a questo componente
-Tooltip e popover: per spiegare una funzione specifica o fornire informazioni aggiuntive, sono meno invasive di una finestra modale e si possono attivare in diversi modi.
+Tooltip e popover (in lavorazione): per spiegare una funzione specifica o fornire informazioni aggiuntive, sono meno invasive di una finestra modale e si possono attivare in diversi modi.
 
 
 ## Anteprima e attributi del componente
@@ -76,17 +76,6 @@ Segui le indicazioni sottostanti per assicurarti che la modale sia accessibile a
 - Ricordati di popolare lo slot `header` o uno tra gli attributi `modal-title` e `it-aria-label` per fornire un'etichetta accessibile alla modale. Se non vuoi mostrare il titolo, al fine di garantire piena accessibilità, diventa obbligatorio l'uso dell'attributo `it-aria-label`.
 - In caso di contenuti che includono strutture semantiche, come liste, tabelle, paragrafi multipli, non valorizzare l'attributo `modal-description` e/o non inserire contenuto nello slot `description`. Maggiori informazioni [qui](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/#wai-ariaroles,states,andproperties).
 - Si consiglia sempre di includere un pulsante di chiusura all'interno della modale, che può essere aggiunto facilmente tramite l'attributo `close-button`, o implementato manualmente nello slot `footer` tramite, ad esempio, un pulsante `it-button`.
-
-## Personalizzazione degli stili
-Per la personalizzazione degli stili puoi usare il selettore `::part` passando uno dei seguenti valori, a seconda delle parti su cui vuoi agire:
--  `::part(modal)`
--  `::part(modal-content-wrapper)`
--  `::part(modal-content)`
--  `::part(modal-header)`
--  `::part(modal-body)`
--  `::part(modal-footer)`
-
-[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
 
 ## Con pulsante di chiusura
 Puoi mostrare o nascondere il pulsante di chiusura predefinito della modale tramite l'attributo `close-button`.
@@ -207,3 +196,15 @@ Il componente emette i seguenti eventi custom:
 
 - `it-modal-open`: emesso quando la modale si apre
 - `it-modal-close`: emesso quando la modale si chiude
+
+
+## Personalizzazione degli stili
+Per la personalizzazione degli stili puoi usare il selettore `::part` passando uno dei seguenti valori, a seconda delle parti su cui vuoi agire:
+-  `::part(modal)`
+-  `::part(modal-content-wrapper)`
+-  `::part(modal-content)`
+-  `::part(modal-header)`
+-  `::part(modal-body)`
+-  `::part(modal-footer)`
+
+[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).

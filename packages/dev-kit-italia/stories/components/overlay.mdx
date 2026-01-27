@@ -1,0 +1,64 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle } from '@storybook/addon-docs/blocks';
+import * as Stories from './overlay.stories';
+
+<Meta of={Stories} />
+
+# Overlay
+
+<description>Etichetta opaca per aggiungere testo o icone in sovrimpressione a immagini</description>
+
+## Cosa fa
+
+Il componente Overlay consente di sovrapporre in modo elegante testo o icone ad un’immagine di sfondo, creando un layer visivo che rafforza il messaggio e guida l’utente.
+
+[Approfondisci come e quando usare il componente Overlay](https://designers.italia.it/design-system/componenti/overlay/)
+
+## Anteprima del componente
+
+La struttura base è composta da:
+
+- Un contenitore con classe `.overlay-wrapper`. L'elemento contenuto (ad esempio una immagine) conserva la sua dimensione naturale.
+- L’overlay con classe `.overlay-panel` si posiziona al piede del contenitore. Ha un’altezza fissa e una larghezza corrispondente a quella del contenitore.
+
+Nel caso il testo contenuto dell'overlay sia troppo lungo verrà troncato con l’utilizzo di ellissi.
+
+Aggiungendo all’Overlay la classe `.overlay-panel-fullheight` questo coprirà per intero il contenitore.
+
+<div class="text-muted fst-italic">Negli esempi seguenti mostreremo le classi applicate al caso di una immagine con contenitore `<figure>` . </div>
+
+<div class="callout callout-primary">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Stili</span>
+    </div>
+    <p>
+      In caso non si stia utilizzando il bundle unico, assicurarsi di avere importato tutti i fogli di stile necessari
+      da `bootstrap-italia`:
+
+
+      ```css
+      @import 'bootstrap-italia/src/scss/base/functions';
+      @import 'bootstrap-italia/src/scss/base/variables';
+      @import 'bootstrap-italia/src/scss/base/mixins';
+      @import 'bootstrap-italia/src/scss/components/_overlay-panel.scss';
+      ```
+
+    </p>
+  </div>
+</div>
+
+<Description of={Stories.Esempio} />
+
+<Canvas of={Stories.Esempio} />
+
+## Overlay nero
+
+<Description of={Stories.Nero} />
+
+<Canvas of={Stories.Nero} />
+
+## Overlay con icona
+
+<Description of={Stories.ConIcona} />
+
+<Canvas of={Stories.ConIcona} />

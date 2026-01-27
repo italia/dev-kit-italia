@@ -86,7 +86,7 @@ $utilities: (
 
 .modal-footer {
   flex-shrink: 0;
-  padding-top: var(--bs-modal-padding);
+  padding-top: var(--#{$prefix}modal-padding);
 }
 
 .modal-dialog-scrollable {
@@ -100,6 +100,7 @@ $utilities: (
 
 .modal.alert-modal .modal-dialog .modal-content .modal-header {
   align-items: center;
+  justify-content: space-between;
   gap: var(--it-spacing-2x);
 }
 
@@ -117,7 +118,7 @@ $utilities: (
 // // Migliora l'accessibilità del pulsante di chiusura
 // .btn-close {
 //   &:focus-visible {
-//     outline: 2px solid var(--bs-focus-ring-color, #{$primary});
+//     outline: 2px solid var(--#{$prefix}focus-ring-color, #{$primary});
 //     outline-offset: 2px;
 //   }
 // }

@@ -31,6 +31,7 @@
       <a href="#/input">Input</a>
       <a href="#/modal">Modal</a>
       <a href="#/navscroll">Navscroll</a>
+      <a href="#/overlay">Overlay</a>
       <a href="#/radio">Radio</a>
       <a href="#/section">Section</a>
       <a href="#/skiplinks">Skiplinks</a>

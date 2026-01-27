@@ -12,6 +12,7 @@ import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
 import Modal from './components/Modal.vue';
 import Navscroll from './components/Navscroll.vue';
+import Overlay from './components/Overlay.vue';
 import Radio from './components/Radio.vue';
 import Section from './components/Section.vue';
 import Sidebar from './components/Sidebar.vue';
@@ -36,6 +37,7 @@ const routes = [
   { path: '/input', name: 'Input', component: Input },
   { path: '/modal', name: 'Modal', component: Modal },
   { path: '/navscroll', name: 'Navscroll', component: Navscroll },
+  { path: '/overlay', name: 'Overlay', component: Overlay },
   { path: '/radio', name: 'Radio', component: Radio },
   { path: '/section', name: 'Section', component: Section },
   { path: '/sidebar', name: 'Sidebar', component: Sidebar },

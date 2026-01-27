@@ -58,6 +58,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/navscroll.component').then((c) => c.NavscrollComponent),
   },
   {
+    path: 'overlay',
+    loadComponent: () => import('./pages/overlay.component').then((c) => c.OverlayComponent),
+  },
+  {
     path: 'radio',
     loadComponent: () =>
       import('./pages/radio-examples.component').then((c) => c.RadioExamplesComponent),

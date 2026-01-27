@@ -29,6 +29,7 @@
 @import 'bootstrap-italia/src/scss/components/nav';
 @import 'bootstrap-italia/src/scss/components/header';
 @import 'bootstrap-italia/src/scss/components/headerslim';
+@import 'bootstrap-italia/src/scss/components/overlay-panel';
 @import 'bootstrap-italia/src/scss/components/avatar';
 @import 'bootstrap-italia/src/scss/components/sidebar';
 @import 'bootstrap-italia/src/scss/components/affix';
@@ -58,14 +59,14 @@
 @import 'bootstrap-italia/src/scss/components/list';
 @import 'bootstrap-italia/src/scss/components/headercenter';
 
-@import './list';
-@import './sidebar';
+@import './components/sidebar';
+@import './components/list';
 
 .it-footer-main .it-brand-wrapper ::part(icon) {
-  width: var(--bs-footer-brand-icon-size);
-  height: var(--bs-footer-brand-icon-size);
+  width: var(--#{$prefix}footer-brand-icon-size);
+  height: var(--#{$prefix}footer-brand-icon-size);
   flex-shrink: 0;
-  margin-right: var(--bs-spacing-xs);
-  fill: var(--bs-footer-brand-icon-color);
+  margin-right: var(--#{$prefix}spacing-xs);
+  fill: var(--#{$prefix}footer-brand-icon-color);
 }
 // End footer

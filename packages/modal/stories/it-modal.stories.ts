@@ -36,7 +36,7 @@ const meta = {
     docs: {
       story: {
         inline: false,
-        iframeHeight: 400,
+        iframeHeight: 420,
       },
     },
   },
@@ -286,6 +286,13 @@ export const Popconfirm: Story = {
 };
 
 export const ScrollLungo: Story = {
+  parameters: {
+    docs: {
+      story: {
+        iframeHeight: 600,
+      },
+    },
+  },
   name: 'Scroll di contenuti lunghi',
   render: () => html`
     <it-modal footer-shadow close-label="Chiudi finestra modale">
@@ -310,6 +317,13 @@ export const ScrollLungo: Story = {
 };
 
 export const ScrollInterno: Story = {
+  parameters: {
+    docs: {
+      story: {
+        iframeHeight: 600,
+      },
+    },
+  },
   name: 'Scroll interno alla modale',
   render: () => html`
     <it-modal scrollable footer-shadow close-label="Chiudi finestra modale">
@@ -352,6 +366,13 @@ export const CentraturaVerticale: Story = {
 };
 
 export const AllineamentoSinistra: Story = {
+  parameters: {
+    docs: {
+      story: {
+        iframeHeight: 600,
+      },
+    },
+  },
   name: 'Allineamento a sinistra',
   render: () => html`
     <it-modal position="left" close-label="Chiudi finestra modale" scrollable>
@@ -394,6 +415,14 @@ export const AllineamentoSinistra: Story = {
 };
 
 export const AllineamentoDestra: Story = {
+  parameters: {
+    docs: {
+      story: {
+        iframeHeight: 600,
+      },
+    },
+  },
+  decorators: [(story) => html` <div style="display:flex; height:100%; align-items:center;">${story()}</div> `],
   name: 'Allineamento a destra',
   render: () => html`
     <it-modal position="right" close-label="Chiudi finestra modale" scrollable>
@@ -436,6 +465,13 @@ export const AllineamentoDestra: Story = {
 };
 
 export const DimensioniOpzionali: Story = {
+  parameters: {
+    docs: {
+      story: {
+        iframeHeight: 600,
+      },
+    },
+  },
   name: 'Dimensioni opzionali',
   render: () => html`
     <div class="d-flex gap-3 flex-wrap">
