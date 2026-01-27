@@ -80,6 +80,7 @@ const Chip = () => {
             avatar="https://randomuser.me/api/portraits/men/46.jpg"
             avatar-alt="Avatar alt"
             id="chip-dismissable"
+            dismissable
           >
             <it-button
               slot="dismiss-button"
@@ -100,6 +101,7 @@ const Chip = () => {
             avatar="https://randomuser.me/api/portraits/men/46.jpg"
             avatar-alt="Avatar alt"
             id="chip-dismissable"
+            dismissable
           >
             <it-button
               slot="dismiss-button"
@@ -137,7 +139,6 @@ const Chip = () => {
               slot="dismiss-button"
               icon
               it-aria-label="Elimina chip"
-              disabled
               it-aria-description="Puoi premere per eliminare la chip."
               onClick={handleDismiss}
               onKeyDown={handleKeyDown}

@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { type Variants, type Sizes, BUTTON_VARIANTS, BUTTON_SIZES } from '@italia/button';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { CollapsibleOrHiddenContentGuidelines } from '@italia/globals';
 
 interface CollapseProps {
   label: string;
@@ -16,6 +15,7 @@ interface CollapseProps {
 }
 const CONTENT =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum';
+
 const renderComponent = (params: Partial<CollapseProps & { slot?: any }>) => html`
   <it-collapse
     ?expanded="${ifDefined(params.expanded)}"
@@ -85,12 +85,11 @@ const meta: Meta<CollapseProps> = {
   parameters: {
     layout: 'padded',
   },
+  decorators: [(story) => html`<div style="display:flex;flex-direction:column;gap:1rem">${story()}</div>`],
 };
 
 export default meta;
 type Story = StoryObj<CollapseProps>;
-
-export const Info: Story = { ...CollapsibleOrHiddenContentGuidelines(), tags: ['!dev'] };
 
 export const EsempioInterattivo: Story = {
   name: 'Esempio interattivo',
@@ -105,102 +104,58 @@ export const EsempioInterattivo: Story = {
   render: (args) => renderComponent(args),
 };
 
-export const PersonalizzazioneDegliStili: Story = {
-  name: 'Personalizzazione degli stili',
-  tags: ['!dev'],
-
-  render: () => html`<div class="hide-preview"></div>`,
-};
-
 export const Comportamento: Story = {
-  parameters: {},
   render: () => html`
-    <div>
-      ${renderComponent({
-        label: 'Apri sezione (button)',
-        as: 'button',
-        variant: 'primary',
-      })}
-      ${renderComponent({
-        label: 'Apri sezione (a)',
-        as: 'a',
-        variant: 'link',
-      })}
-    </div>
+    ${renderComponent({
+      label: 'Apri sezione (button)',
+      as: 'button',
+      variant: 'primary',
+    })}
+    ${renderComponent({
+      label: 'Apri sezione (a)',
+      as: 'a',
+      variant: 'link',
+    })}
   `,
 };
 
 export const TriggerClassi: Story = {
   name: 'Varianti del trigger',
-  parameters: {
-    docs: {
-      description: {
-        story: `
-
-        `,
-      },
-    },
-  },
   render: () => html`
-    <div style="display:flex;flex-direction:column;gap:1rem">
-      <div style="display:flex;flex-wrap:wrap;gap:1rem;flex-grow:1;">
-        ${renderComponent({ label: 'Pulsante primary', variant: 'primary', as: 'button' })}
-        ${renderComponent({ label: 'Pulsante secondary', variant: 'secondary', as: 'button' })}
-        ${renderComponent({ label: 'Pulsante success', variant: 'success', as: 'button' })}
-        ${renderComponent({ label: 'Pulsante danger', variant: 'danger', as: 'button' })}
-        ${renderComponent({ label: 'Pulsante warning', variant: 'warning', as: 'button' })}
-        ${renderComponent({ label: 'Pulsante link', variant: 'link', as: 'button' })}
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:1rem;">
-        ${renderComponent({ label: 'Pulsante outline primary', variant: 'primary', outline: true, as: 'button' })}
-        ${renderComponent({ label: 'Pulsante outline secondary', variant: 'secondary', outline: true, as: 'button' })}
-        ${renderComponent({ label: 'Pulsante outline success', variant: 'success', outline: true, as: 'button' })}
-        ${renderComponent({ label: 'Pulsante outline danger', variant: 'danger', outline: true, as: 'button' })}
-        ${renderComponent({ label: 'Pulsante outline warning', variant: 'warning', outline: true, as: 'button' })}
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:1rem;">
-        ${renderComponent({ label: 'Pulsante xs', size: 'xs', variant: 'primary', as: 'button' })}
-        ${renderComponent({ label: 'Pulsante default', size: '', variant: 'primary', as: 'button' })}
-        ${renderComponent({ label: 'Pulsante lg', size: 'lg', variant: 'primary', as: 'button' })}
-      </div>
-    </div>
+    ${renderComponent({ label: 'Pulsante primary', variant: 'primary', as: 'button' })}
+    ${renderComponent({ label: 'Pulsante secondary', variant: 'secondary', as: 'button' })}
+    ${renderComponent({ label: 'Pulsante success', variant: 'success', as: 'button' })}
+    ${renderComponent({ label: 'Pulsante danger', variant: 'danger', as: 'button' })}
+    ${renderComponent({ label: 'Pulsante warning', variant: 'warning', as: 'button' })}
+    ${renderComponent({ label: 'Pulsante link', variant: 'link', as: 'button' })}
+    ${renderComponent({ label: 'Pulsante outline primary', variant: 'primary', outline: true, as: 'button' })}
+    ${renderComponent({ label: 'Pulsante outline secondary', variant: 'secondary', outline: true, as: 'button' })}
+    ${renderComponent({ label: 'Pulsante outline success', variant: 'success', outline: true, as: 'button' })}
+    ${renderComponent({ label: 'Pulsante outline danger', variant: 'danger', outline: true, as: 'button' })}
+    ${renderComponent({ label: 'Pulsante outline warning', variant: 'warning', outline: true, as: 'button' })}
+    ${renderComponent({ label: 'Pulsante xs', size: 'xs', variant: 'primary', as: 'button' })}
+    ${renderComponent({ label: 'Pulsante default', size: '', variant: 'primary', as: 'button' })}
+    ${renderComponent({ label: 'Pulsante lg', size: 'lg', variant: 'primary', as: 'button' })}
   `,
 };
+
 export const Aperto: Story = {
   name: 'Stato iniziale aperto',
-  parameters: {
-    docs: {
-      description: {
-        story: `
-`,
-      },
-    },
-  },
   render: () => html`
-    <div>
-      ${renderComponent({
-        label: 'Apri sezione (espansa di default)',
-        defaultOpen: true,
-        as: 'button',
-      })}
-      ${renderComponent({
-        label: 'Apri sezione',
-        as: 'button',
-      })}
-    </div>
+    ${renderComponent({
+      label: 'Apri sezione (espansa di default)',
+      defaultOpen: true,
+      as: 'button',
+    })}
+    ${renderComponent({
+      label: 'Apri sezione',
+      as: 'button',
+    })}
   `,
 };
 
 export const LinkCollapse: Story = {
   name: 'Link come trigger',
-  parameters: {
-    docs: {
-      description: {
-        story: `
-`,
-      },
-    },
-  },
   render: () => html`
     ${renderComponent({
       label: 'Link per aprire il collapse',
@@ -211,16 +166,6 @@ export const LinkCollapse: Story = {
 
 export const TriggerPersonalizzato: Story = {
   name: 'Trigger personalizzato',
-  parameters: {
-    docs: {
-      description: {
-        story: `
-
-
-`,
-      },
-    },
-  },
   render: () => html`
     <it-collapse>
       <button class="my-custom-collapse-button" slot="trigger"><span slot="label">Trigger custom</span></button>

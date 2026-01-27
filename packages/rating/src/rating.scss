@@ -1,0 +1,33 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+
+@import 'bootstrap-italia/src/scss/base/reboot'; //per gli stili di ::before e ::after
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@import 'bootstrap-italia/src/scss/components/rating';
+
+:host {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-items: center;
+  --#{$prefix}rating-icon-fill: var(--#{$prefix}icon-disabled);
+  --#{$prefix}rating-text: var(--#{$prefix}color-text-secondary);
+  --#{$prefix}rating-font-size: var(--#{$prefix}label-font-size-s);
+  --#{$prefix}rating-line-height: var(--#{$prefix}label-line-height);
+  --#{$prefix}rating-font-weight: var(--#{$prefix}font-weight-solid);
+}
+
+div.it-radio-group {
+  display: flex;
+}
+
+::slotted([slot='label']) {
+  width: auto;
+  margin-left: var(--#{$prefix}spacing-xxs);
+  color: var(--#{$prefix}rating-text);
+  float: right;
+  font-size: var(--#{$prefix}rating-font-size);
+  font-weight: var(--#{$prefix}rating-font-weight);
+  line-height: var(--#{$prefix}rating-line-height);
+}

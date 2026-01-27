@@ -3,6 +3,8 @@ import javascriptLogo from './javascript.svg';
 // import '@italia/dev-kit-italia/fonts.css';
 // import '@italia/dev-kit-italia/styles.css';
 import '@italia/dev-kit-italia/elements.js';
+// pagina-specific scripts (es. examples per componenti)
+import './js/popover.js';
 
 const it = {
   $code: 'it',
@@ -41,11 +43,20 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/avatar">
         Avatar
       </a>
+      <a href="/src/back-to-top">
+        Back to Top
+      </a>
       <a href="/src/badge">
         Badge
       </a>
+      <a href="/src/breadcrumbs">
+        Breadcrumbs
+      </a>
       <a href="/src/button">
         Button
+      </a>
+      <a href="/src/callout">
+        Callout
       </a>
       <a href="/src/checkbox">
         Checkbox
@@ -68,11 +79,20 @@ document.querySelector('#app-header').innerHTML = `
       <a href="/src/input">
         Input
       </a>
+      <a href="/src/modal">
+        Modal
+      </a>
       <a href="/src/overlay">
         Overlay
       </a>
+      <a href="/src/popover">
+        Popover
+      </a>
       <a href="/src/radio-examples.html">
         Radio
+      </a>
+      <a href="/src/rating.html">
+        Rating
       </a>
       <a href="/src/section">
         Section

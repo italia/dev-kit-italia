@@ -3,8 +3,6 @@ import { html } from 'lit';
 import { property, query, queryAssignedElements } from 'lit/decorators.js';
 import { when } from 'lit/directives/when.js';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
-// The button package does not export Sizes/Variants types in this workspace
-// so use simple string-typed properties here to avoid type errors.
 import { isKeyboardEvent, isMouseEvent, PressEvent } from './types.js';
 import styles from './collapse.scss';
 
@@ -100,10 +98,10 @@ export class ItCollapseBase extends BaseComponent {
     if (this.contentElement) {
       if (this.expanded) {
         this.contentElement.style.height = 'auto';
-        this.contentElement.style.visibility = 'visible';
+        this.contentElement.style.display = 'block';
       } else {
         this.contentElement.style.height = '0px';
-        this.contentElement.style.visibility = 'hidden';
+        this.contentElement.style.display = 'none';
       }
     }
   }
@@ -192,7 +190,7 @@ export class ItCollapseBase extends BaseComponent {
 
     // Ensure overflow is hidden during animation
     this.contentElement.style.overflow = 'hidden';
-    this.contentElement.style.visibility = 'visible';
+    this.contentElement.style.display = 'block';
     const startHeight = this.contentElement.offsetHeight;
     const endHeight = this.contentElement.scrollHeight;
     const duration = this.prefersReducedMotion ? 0 : this.animationDuration;
@@ -205,8 +203,7 @@ export class ItCollapseBase extends BaseComponent {
     this.animation.finished
       .then(() => {
         this.contentElement.style.height = 'auto';
-        // Keep overflow hidden as per CSS
-        this.contentElement.style.overflow = 'hidden';
+        this.contentElement.style.overflow = 'initial';
       })
       .catch(() => {
         // Animation cancelled
@@ -239,8 +236,8 @@ export class ItCollapseBase extends BaseComponent {
     this.animation.finished
       .then(() => {
         el.style.height = '0px';
-        el.style.visibility = 'hidden';
-        el.style.overflow = 'hidden';
+        el.style.display = 'none';
+        el.style.overflow = 'initial';
       })
       .catch(() => {
         // Animation cancelled
@@ -250,7 +247,7 @@ export class ItCollapseBase extends BaseComponent {
       });
   }
 
-  private _onTriggerSlotChange = () => {
+  protected handleTriggerSlotChange = () => {
     // Aggiorna gli attributi ARIA quando il contenuto dello slot cambia
     this.updateAriaAttributes();
     // Forza un aggiornamento per il rendering, i getter sono stale altrimenti
@@ -292,7 +289,7 @@ export class ItCollapseBase extends BaseComponent {
       @keyup=${this.handleTriggerAction} tabindex="0" class="${buttonClasses}"><slot name="label"></slot></${Tag}>`}`;
   }
 
-  private hasSlottedTrigger(): boolean {
+  protected hasSlottedTrigger(): boolean {
     return !!this.triggerElement;
   }
 
@@ -312,7 +309,7 @@ export class ItCollapseBase extends BaseComponent {
       <div class="${classPrefix}item" part="${classPrefix}item">
         <div class="collapse-wrapper">
           ${when(!hasCustomTrigger, () => this.renderDefaultTrigger())}
-          <slot name="trigger" @slotchange=${this._onTriggerSlotChange} part="trigger"></slot>
+          <slot name="trigger" @slotchange=${this.handleTriggerSlotChange} part="trigger"></slot>
           <div
             class="collapse-content"
             part="content"

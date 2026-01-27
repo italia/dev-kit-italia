@@ -1,0 +1,23 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
+
+@import 'bootstrap-italia/src/scss/components/back-to-top';
+
+//ovveride utilities: get only needed utilities
+$utilities: (
+  'border-color': map-merge(map-get($utilities, 'border-color'), ()),
+);
+
+button {
+  border: none;
+  cursor: pointer;
+
+  &.back-to-top-border {
+    border: 2px solid #fff;
+  }
+}
+
+@import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities

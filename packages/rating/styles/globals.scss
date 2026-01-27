@@ -1,0 +1,44 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+
+.form-feedback.just-validate-error-label {
+  width: 100%;
+  margin-top: 0.25rem;
+  color: var(--#{$prefix}color-text-danger);
+  font-size: 0.75rem;
+}
+
+/* ========================================
+   FOUC Styles - Flash of Unstyled Content
+   ======================================== */
+
+/* it-rating: simulate radio circle + label from slot */
+it-rating-item:not(:defined) {
+  display: flex !important;
+  align-items: center;
+  margin-bottom: var(--#{$prefix}spacing-xs);
+
+  [slot='label'] {
+    display: none;
+  }
+}
+
+/* it-rating: container with group label styling */
+it-rating:not(:defined) {
+  display: flex !important;
+  flex-direction: row-reverse;
+  margin-bottom: var(--#{$prefix}spacing-md, 16px);
+
+  /* Show slotted label with proper group label styling */
+
+  & > [slot='label'] {
+    margin: 0 var(--#{$prefix}spacing-xs);
+    color: var(--#{$prefix}form-control-label-color, #5c6f82);
+    font-size: var(--#{$prefix}label-sm, 14px);
+    font-weight: var(--#{$prefix}font-weight-solid, 600);
+  }
+
+  &[disabled] it-rating:not(:defined)::before {
+    border-color: var(--#{$prefix}color-border-disabled);
+  }
+}
