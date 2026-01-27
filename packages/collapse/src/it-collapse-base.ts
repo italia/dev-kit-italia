@@ -100,10 +100,10 @@ export class ItCollapseBase extends BaseComponent {
     if (this.contentElement) {
       if (this.expanded) {
         this.contentElement.style.height = 'auto';
-        this.contentElement.style.visibility = 'visible';
+        this.contentElement.style.display = 'block';
       } else {
         this.contentElement.style.height = '0px';
-        this.contentElement.style.visibility = 'hidden';
+        this.contentElement.style.display = 'none';
       }
     }
   }
@@ -192,7 +192,7 @@ export class ItCollapseBase extends BaseComponent {
 
     // Ensure overflow is hidden during animation
     this.contentElement.style.overflow = 'hidden';
-    this.contentElement.style.visibility = 'visible';
+    this.contentElement.style.display = 'block';
     const startHeight = this.contentElement.offsetHeight;
     const endHeight = this.contentElement.scrollHeight;
     const duration = this.prefersReducedMotion ? 0 : this.animationDuration;
@@ -205,8 +205,7 @@ export class ItCollapseBase extends BaseComponent {
     this.animation.finished
       .then(() => {
         this.contentElement.style.height = 'auto';
-        // Keep overflow hidden as per CSS
-        this.contentElement.style.overflow = 'hidden';
+        this.contentElement.style.overflow = 'initial';
       })
       .catch(() => {
         // Animation cancelled
@@ -239,8 +238,8 @@ export class ItCollapseBase extends BaseComponent {
     this.animation.finished
       .then(() => {
         el.style.height = '0px';
-        el.style.visibility = 'hidden';
-        el.style.overflow = 'hidden';
+        el.style.display = 'none';
+        el.style.overflow = 'initial';
       })
       .catch(() => {
         // Animation cancelled

@@ -120,9 +120,9 @@ window.registerTranslation = registerTranslation;
  *   ${this.localize.date('2021-12-03')}
  *   ${this.localize.number(1000000)}
  */
-export class LocalizeController<UserTranslation extends Translation = DefaultTranslation>
-  implements ReactiveController
-{
+export class LocalizeController<
+  UserTranslation extends Translation = DefaultTranslation,
+> implements ReactiveController {
   host: ReactiveControllerHost & HTMLElement;
 
   constructor(host: ReactiveControllerHost & HTMLElement) {

@@ -14,6 +14,11 @@ export class WindowManager {
 
   private static ticking = false;
 
+  // Body scroll lock (ref counting per modal nested)
+  private static scrollLockCount = 0;
+
+  private static scrollbarWidth = 0;
+
   static init() {
     if (this.initialized) return;
 
@@ -58,5 +63,36 @@ export class WindowManager {
 
   static unsubscribe(cb: ScrollCallback) {
     this.subscribers.delete(cb);
+  }
+
+  /**
+   * Blocca lo scroll del body. Usa ref counting per gestire modal nested.
+   * Chiamare unlockBodyScroll() per ogni lockBodyScroll().
+   */
+  static lockBodyScroll(): void {
+    this.scrollLockCount += 1;
+    if (this.scrollLockCount === 1) {
+      this.scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.classList.add('modal-open');
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = `${this.scrollbarWidth}px`;
+    }
+  }
+
+  /**
+   * Sblocca lo scroll del body. Rimuove il lock solo quando tutti i consumer hanno chiamato unlock.
+   */
+  static unlockBodyScroll(): void {
+    this.scrollLockCount = Math.max(0, this.scrollLockCount - 1);
+    if (this.scrollLockCount === 0) {
+      document.body.classList.remove('modal-open');
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+    }
+  }
+
+  /** Ritorna la larghezza della scrollbar (utile per compensazioni) */
+  static getScrollbarWidth(): number {
+    return this.scrollbarWidth || window.innerWidth - document.documentElement.clientWidth;
   }
 }

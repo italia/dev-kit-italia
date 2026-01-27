@@ -1,0 +1,80 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+
+@import 'bootstrap-italia/src/scss/base/reboot';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+:host {
+  display: inline-flex;
+  padding: 0;
+  margin: 0;
+  box-shadow: none !important;
+  cursor: pointer;
+  -webkit-focus-ring-color: transparent;
+  outline: none !important;
+}
+
+:host([disabled]) {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Focus ring - mostra quando l'item è focalizzato via tastiera */
+:host(:focus-visible) #star {
+  border-radius: var(--#{$prefix}radius-xs);
+  box-shadow:
+    0 0 0 2px $focus-outline-color-in,
+    0 0 0 5px $focus-outline-color-out !important;
+  outline: none;
+}
+
+.rating-item-control {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+/* Nascondi completamente l'input invisibile */
+#input {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* Stile per l'icona stella */
+#star {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+
+  // Colore di default per stella vuota (non checked)
+  color: var(--#{$prefix}form-control-label-color, #5c6f82);
+  transition:
+    color var(--#{$prefix}transition-instant) ease-out,
+    transform 0.1s ease-out;
+
+  // Hover effect
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* Stella vuota quando non checked */
+:host(:not([checked])) #star,
+:host([aria-checked='false']) #star {
+  color: var(--#{$prefix}form-control-label-color, #5c6f82);
+}
+
+/* Stato disabled */
+:host([disabled]) #star {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

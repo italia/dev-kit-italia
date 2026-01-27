@@ -20,6 +20,7 @@
 @import 'bootstrap-italia/src/scss/utilities/colors';
 @import 'bootstrap-italia/src/scss/components/type';
 @import 'bootstrap-italia/src/scss/components/grid';
+@import 'bootstrap-italia/src/scss/components/alert';
 
 @import 'bootstrap-italia/src/scss/forms/forms'; //perchè ci sono delle variabile definite nella :root
 
@@ -36,6 +37,7 @@
 /*dev-kit-italia global styles*/
 @import '@italia/avatar/styles/globals';
 @import '@italia/accordion/styles/globals';
+@import '@italia/back-to-top/styles/globals';
 @import '@italia/button/styles/globals';
 @import '@italia/dropdown/styles/globals';
 @import '@italia/icon/styles/globals';
@@ -48,14 +50,17 @@
 @import '@italia/collapse/styles/globals';
 @import '@italia/sticky/styles/globals';
 @import '@italia/radio/styles/globals';
-
-@import './components/footer';
-@import './components/go-back';
+@import '@italia/rating/styles/globals';
+@import '@italia/modal/styles/globals';
 
 // Footer
 @import 'bootstrap-italia/src/scss/components/footer';
 @import 'bootstrap-italia/src/scss/components/list';
 @import 'bootstrap-italia/src/scss/components/headercenter';
+
+@import './components/list';
+@import './components/footer';
+@import './components/go-back';
 
 .it-footer-main .it-brand-wrapper ::part(icon) {
   width: var(--#{$prefix}footer-brand-icon-size);
