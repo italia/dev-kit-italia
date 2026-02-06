@@ -1,0 +1,15 @@
+it-card {
+  figure {
+    margin-bottom: 0;
+  }
+
+  img {
+    border-top-left-radius: var(--#{$prefix}it-card-border-radius-inner);
+    border-top-right-radius: var(--#{$prefix}it-card-border-radius-inner);
+  }
+
+  .it-card-date {
+    color: var(--#{$prefix}it-card-date-color);
+    font-size: var(--#{$prefix}it-card-date-font-size);
+  }
+}

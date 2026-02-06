@@ -1,0 +1,65 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
+@import 'bootstrap-italia/src/scss/base/helpers/ratio';
+
+@import 'bootstrap-italia/src/scss/components/card';
+@import 'bootstrap-italia/src/scss/components/type';
+
+//ovveride utilities: get only needed utilities
+$utilities: (
+  'rounded': map-merge(
+      map-get($utilities, 'rounded'),
+      (
+        values: (
+          null: map-get(map-get(map-get($utilities, 'rounded'), 'values'), null),
+        ),
+      )
+    ),
+  'display': map-merge(
+      map-get($utilities, 'display'),
+      (
+        values: none,
+      )
+    ),
+  'shadow': map-merge(
+      map-get($utilities, 'shadow'),
+      (
+        values: (
+          sm: map-get(map-get(map-get($utilities, 'shadow'), 'values'), sm),
+        ),
+      )
+    ),
+  'border': map-merge(
+      map-get($utilities, 'border'),
+      (
+        values: (
+          null: map-get(map-get(map-get($utilities, 'border'), 'values'), null),
+        ),
+      )
+    ),
+);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::slotted(figure) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+::slotted(img) {
+  // TODO fix styles for inline cards
+  border-top-left-radius: var(--#{$prefix}it-card-border-radius-inner);
+  border-top-right-radius: var(--#{$prefix}it-card-border-radius-inner);
+}
+
+@import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
