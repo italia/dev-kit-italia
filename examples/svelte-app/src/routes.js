@@ -4,6 +4,7 @@ import Affix from './pages/Affix.svelte';
 import Avatar from './pages/Avatar.svelte';
 import Breadcrumbs from './pages/Breadcrumbs.svelte';
 import BackToTop from './pages/BackToTop.svelte';
+import Back from './pages/Back.svelte';
 import Badge from './pages/Badge.svelte';
 import Button from './pages/Button.svelte';
 import Callout from './pages/Callout.svelte';
@@ -33,6 +34,7 @@ export const AppRoutes = [
   { path: '/affix', element: Affix, title: 'Affix' },
   { path: '/avatar', element: Avatar, title: 'Avatar' },
   { path: '/back-to-top', element: BackToTop, title: 'Back to Top' },
+  { path: '/back', element: Back, title: 'Back' },
   { path: '/badge', element: Badge, title: 'Badge' },
   { path: '/breadcrumbs', element: Breadcrumbs, title: 'Breadcrumbs' },
   { path: '/button', element: Button, title: 'Button' },

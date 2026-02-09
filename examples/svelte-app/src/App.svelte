@@ -23,6 +23,7 @@
         <a href="#/affix">Affix</a>
         <a href="#/avatar">Avatar</a>
         <a href="#/back-to-top">Back to Top</a>
+        <a href="#/back">Back</a>
         <a href="#/badge">Badge</a>
         <a href="#/button">Button</a>
         <a href="#/breadcrumbs">Breadcrumbs</a>

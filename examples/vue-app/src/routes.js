@@ -6,6 +6,7 @@ import Avatar from './components/Avatar.vue';
 import Breadcrumbs from './components/Breadcrumbs.vue';
 import Affix from './components/Affix.vue';
 import BackToTop from './components/BackToTop.vue';
+import Back from './components/Back.vue';
 import Badge from './components/Badge.vue';
 import Button from './components/Button.vue';
 import Checkbox from './components/Checkbox.vue';
@@ -35,6 +36,7 @@ const routes = [
   { path: '/affix', name: 'Affix', component: Affix },
   { path: '/avatar', name: 'Avatar', component: Avatar },
   { path: '/back-to-top', name: 'BackToTop', component: BackToTop },
+  { path: '/back', name: 'Back', component: Back },
   { path: '/badge', name: 'Badge', component: Badge },
   { path: '/breadcrumbs', name: 'Breadcrumbs', component: Breadcrumbs },
   { path: '/button', name: 'Button', component: Button },
