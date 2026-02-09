@@ -74,6 +74,9 @@ const meta = {
   component: 'it-autocomplete',
   parameters: {
     layout: 'padded',
+    docs: {
+      source: { excludeDecorators: true },
+    },
   },
   args: {
     id: 'autocomplete-regione',
@@ -260,32 +263,20 @@ export const MatriceComportamento: Story = {
         code: `<div class="row g-4">
 
   <div class="col-12 col-md-6">
-    <h6>1. Source Statica + Default Stringa</h6>
+    <h6>Source Statica + Default Stringa</h6>
     <it-autocomplete id="matrix-1" label="Città" default-value="rm" source="[{&quot;value&quot;:&quot;rm&quot;,&quot;label&quot;:&quot;Roma&quot;},{&quot;value&quot;:&quot;mi&quot;,&quot;label&quot;:&quot;Milano&quot;}]" >
       <span slot="label">Città</span>
     </it-autocomplete>
   </div>
 
+
   <div class="col-12 col-md-6">
-    <h6>2. Source Statica + Default Oggetto</h6>
-    <it-autocomplete id="matrix-2" label="Città" source="[{&quot;value&quot;:&quot;rm&quot;,&quot;label&quot;:&quot;Roma&quot;},{&quot;value&quot;:&quot;mi&quot;,&quot;label&quot;:&quot;Milano&quot;}]">
+    <h6>Source Function + Default Oggetto</h6>
+    <it-autocomplete id="matrix-2" label="Città">
       <span slot="label">Città</span>
     </it-autocomplete>
   </div>
 
-  <div class="col-12 col-md-6">
-    <h6>3. Source Function + Default Stringa</h6>
-    <it-autocomplete id="matrix-3" label="Città" default-value="rm">
-      <span slot="label">Città</span>
-    </it-autocomplete>
-  </div>
-
-  <div class="col-12 col-md-6">
-    <h6>4. Source Function + Default Oggetto</h6>
-    <it-autocomplete id="matrix-4" label="Città">
-      <span slot="label">Città</span>
-    </it-autocomplete>
-  </div>
 
 </div>
 
@@ -309,15 +300,11 @@ export const MatriceComportamento: Story = {
   // --- CONFIGURAZIONE JS ---
 
 
-  // CASO 3: Async + Stringa
+  // CASO 2: Async + Stringa
   // Qui il componente ha value="rm", ma non avendo la lista (è una funzione),
   // non sa che "rm" corrisponde a "Roma". L'input apparirà VUOTO.
-  document.getElementById('matrix-3').source = asyncSource;
+  document.getElementById('matrix-2').source = asyncSource;
 
-  // CASO 4: Async + Oggetto
-  // La pratica corretta per dati asincroni: forniamo value e label esplicitamente.
-  const el4 = document.getElementById('matrix-4');
-  el4.source = asyncSource;
 </script>`,
       },
     },
@@ -340,9 +327,7 @@ export const MatriceComportamento: Story = {
       <div class="row g-4" style-"height: 600px;">
         <div class="col-12 col-md-6">
           <div class="p-3 border rounded">
-            <h6 class="fw-bold">1. Source Statica + Default value Stringa</h6>
-            <p class="small text-muted mb-2">Il default value "rm" è presente nelle source statiche. Trova e mostra "Roma".</p>
-            <span class="badge badge-success mb-3">BEST PRACTICE</span>
+            <h6 class="fw-bold">Source Statica + Default value Stringa</h6>
             ${renderComponent({
               label: 'Città',
               name: 'matrix-1',
@@ -353,39 +338,11 @@ export const MatriceComportamento: Story = {
         </div>
 
         <div class="col-12 col-md-6">
-          <div class="p-3 border rounded">
-            <h6 class="fw-bold">2. Source Statica + Default value Oggetto</h6>
-            <p class="small text-muted mb-2">Il default value "to/Torino" non è in source, il componente suppone che source sia una funzione asincrona.</p>
-                       <span class="badge badge-danger mb-3">ERRORE IMPLEMENTATORE</span>
-
-            ${renderComponent({
-              label: 'Città',
-              name: 'matrix-2',
-              defaultValue: { value: 'to', label: 'Torino' },
-              source: staticSource,
-            })}
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6">
-          <div class="p-3 border rounded bg-light border-warning">
-            <h6 class="fw-bold">3. Source Function + Default value Stringa</h6>
-            <p class="small text-muted mb-2">Essendo la source una funzione asincrona, non è possibile risolvere la label associata al valore "rm".</p>
-            <span class="badge badge-danger mb-3">ERRORE IMPLEMENTATORE</span>
-            <it-autocomplete label="Città" name="matrix-3" default-value="rm" .source="${asyncSource}">
-              <span slot="label">Città</span>
-            </it-autocomplete>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6">
           <div class="p-3 border rounded border-success">
-            <h6 class="fw-bold">4. Source Function + Default value Oggetto</h6>
-            <p class="small text-muted mb-2">Passiamo un default value con Label e Value esplicitamente. A caricamento avvenuto questo oggetto è incluso nella source.</p>
-            <span class="badge badge-success mb-3">BEST PRACTICE</span>
+            <h6 class="fw-bold">Source Function + Default value Oggetto</h6>
             <it-autocomplete
               label="Città"
-              name="matrix-4"
+              name="matrix-2"
               default-value="${JSON.stringify({ value: 'rm', label: 'Roma' })}"
               .source="${asyncSource}"
             >
