@@ -10,21 +10,72 @@ it-callout p {
   font-size: var(--#{$prefix}callout-text-size);
 }
 
-it-callout:not(:defined)[highlight] {
-  padding: 0;
-  border-top: 0;
-  margin: 0;
-
-  > p {
-    margin-top: 0.5rem;
-  }
-}
-
 it-callout:not(:defined) {
   display: block;
-  padding: 8px var(--#{$prefix}callout-inner-spacing, 24px) var(--#{$prefix}callout-inner-spacing, 24px);
-  border-top: 0;
+  padding: var(--#{$prefix}callout-inner-spacing, 24px) var(--#{$prefix}callout-inner-spacing, 24px);
+  border: var(--#{$prefix}callout-border-size, 2px) solid var(--#{$prefix}color-border-secondary);
   margin: var(--#{$prefix}callout-outer-spacing, 32px) 0;
+
+  /* Varianti colore per il bordo esterno in assenza di JS */
+  &[variant='primary'] {
+    border-color: var(--#{$prefix}color-border-primary);
+  }
+
+  &[variant='success'] {
+    border-color: var(--#{$prefix}color-border-success);
+  }
+
+  &[variant='warning'] {
+    border-color: var(--#{$prefix}color-border-warning);
+  }
+
+  &[variant='danger'] {
+    border-color: var(--#{$prefix}color-border-danger);
+  }
+
+  &[highlight] {
+    padding: 0;
+    padding-left: var(--#{$prefix}callout-inner-spacing, 24px);
+    border-width: 0 0 0 4px;
+    border-left-color: var(--#{$prefix}color-border-secondary);
+
+    > p {
+      margin-top: 0.5rem;
+    }
+  }
+
+  /* Varianti per lo stato highlight (colore del bordo sinistro) */
+  &[highlight][variant='primary'] {
+    border-left-color: var(--#{$prefix}color-border-primary);
+  }
+
+  &[highlight][variant='success'] {
+    border-left-color: var(--#{$prefix}color-border-success);
+  }
+
+  &[highlight][variant='warning'] {
+    border-left-color: var(--#{$prefix}color-border-warning);
+  }
+
+  &[highlight][variant='danger'] {
+    border-left-color: var(--#{$prefix}color-border-danger);
+  }
+
+  &[variant='primary'] [slot='title'] {
+    color: var(--#{$prefix}color-border-primary);
+  }
+
+  &[variant='success'] [slot='title'] {
+    color: var(--#{$prefix}color-border-success);
+  }
+
+  &[variant='warning'] [slot='title'] {
+    color: var(--#{$prefix}color-border-warning);
+  }
+
+  &[variant='danger'] [slot='title'] {
+    color: var(--#{$prefix}color-border-danger);
+  }
 
   > p {
     margin-top: 1.5rem;
@@ -47,6 +98,7 @@ it-callout-more:not(:defined) {
   flex-direction: column;
 
   [slot='label'] {
+    display: none;
     order: 2;
   }
 
@@ -55,6 +107,8 @@ it-callout-more:not(:defined) {
   }
 
   [slot='extra'] {
+    display: flex;
+    justify-content: flex-end;
     order: 2;
   }
 }
