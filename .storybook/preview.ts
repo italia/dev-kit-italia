@@ -5,6 +5,12 @@ import prettier from 'prettier-v2';
 import HTMLParser from 'prettier-v2/parser-html';
 import './elements';
 
+const changelogs = import.meta.glob('../packages/*/CHANGELOG.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true
+});
+
 const preview: Preview = {
   parameters: {
     layout: 'centered',
@@ -59,7 +65,18 @@ const preview: Preview = {
 export default preview;
 
 export const decorators = [
-  (Story: any) => {
+  (Story: any, context: any) => {
+    const fileName = context.parameters.fileName || '';
+    const componentMatch = fileName.match(/packages\/([^/]+)\//);
+    
+    if (componentMatch) {
+      const componentName = componentMatch[1];
+      const changelogPath = `../packages/${componentName}/CHANGELOG.md`;
+      if (changelogs[changelogPath]) {
+        context.parameters.changelog = changelogs[changelogPath];
+      }
+    }
+    
     // Usa un effetto per agire sul documento dell'iframe dopo il mount
     // Funziona anche con React o senza (a seconda del setup)
 

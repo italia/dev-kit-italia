@@ -1,6 +1,7 @@
 import { addons } from 'storybook/manager-api';
 import { themes } from 'storybook/theming';
 import { defaultConfig, type TagBadgeParameters } from 'storybook-addon-tag-badges';
+import './addons/changelog-tab';
 
 // Colori per i badge dei tag
 const IT_DOCS_COLORS = {
