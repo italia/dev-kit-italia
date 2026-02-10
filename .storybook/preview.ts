@@ -32,6 +32,8 @@ const preview: Preview = {
             return input;
           }
         },
+
+        excludeDecorators: true, // permette di mettere dei decorator, e fare in modo che questi non appaiano nella preview del codice
       },
       toc: {
         headingSelector: 'h2',

@@ -1,48 +1,22 @@
 @import 'bootstrap-italia/src/scss/base/functions';
 @import 'bootstrap-italia/src/scss/base/variables';
-// @import 'bootstrap-italia/src/scss/base/mixins';
-// @import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/containers';
 
+@import 'bootstrap-italia/src/scss/components/imgresponsive';
+@import 'bootstrap-italia/src/scss/components/overlay-panel';
 @import 'bootstrap-italia/src/scss/components/hero';
 
-// .img-responsive-wrapper .img-responsive .img-wrapper img {
-//   width: 100%;
-//   display: block;
-//   height: 100%;
-//   object-fit: cover;
-// }
-
-:host ::slotted(*[slot='background']) {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-:host ::slotted(*[slot='content']) {
-  background-color: red;
-  span,
-  .h1,
-  .h2,
-  .h3,
-  .h4,
-  .h5,
-  .h6,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  .p {
-    color: var(--#{$prefix}hero-text-color);
-    margin-bottom: var(--#{$prefix}spacing-m);
-  }
-  .it-category {
+:host {
+  ::slotted(*[slot='background']) {
     display: block;
-    font-size: var(--#{$prefix}hero-category-font-size);
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: var(--#{$prefix}spacing-xxs);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .it-hero-wrapper.it-overlay.it-filter .img-responsive-wrapper ::slotted(*[slot='background']) {
+    mix-blend-mode: screen;
   }
 }

@@ -1,8 +1,3 @@
-// @import 'bootstrap-italia/src/scss/base/functions';
-// @import 'bootstrap-italia/src/scss/base/variables';
-
-@import 'bootstrap-italia/src/scss/components/hero';
-
 it-hero:not(:defined) {
   --it-host-display: block;
   display: var(--it-host-display);
@@ -10,4 +5,12 @@ it-hero:not(:defined) {
 
 it-hero {
   display: block;
+  @extend .it-hero-wrapper;
+
+  &[center] {
+    .it-hero-text-wrapper {
+      margin: 0 auto;
+      text-align: center;
+    }
+  }
 }
