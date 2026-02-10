@@ -111,6 +111,9 @@ document.querySelector('#app-header').innerHTML = `
         <a href="/src/sticky">
           Sticky
         </a>
+        <a href="/src/tables">
+          Tables
+        </a>
         <a href="/src/video">
           Video
         </a>

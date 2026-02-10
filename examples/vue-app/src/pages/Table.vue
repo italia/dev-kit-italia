@@ -112,33 +112,53 @@
       <p>Utilizza le classi contestuali per colorare l'intera tabella.</p>
 
       <table class="table table-primary mb-3">
-        <thead>
+        <tbody>
           <tr>
-            <th scope="col">Primary</th>
-            <th scope="col">Cella</th>
-            <th scope="col">Cella</th>
+            <th scope="row">Default</th>
+            <td>Cella</td>
+            <td>Cella</td>
           </tr>
-        </thead>
+        </tbody>
+      </table>
+
+      <table class="table table-secondary mb-3">
+        <tbody>
+          <tr>
+            <th scope="row">Secondary</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+        </tbody>
       </table>
 
       <table class="table table-success mb-3">
-        <thead>
+        <tbody>
           <tr>
-            <th scope="col">Success</th>
-            <th scope="col">Cella</th>
-            <th scope="col">Cella</th>
+            <th scope="row">Success</th>
+            <td>Cella</td>
+            <td>Cella</td>
           </tr>
-        </thead>
+        </tbody>
       </table>
 
       <table class="table table-danger mb-3">
-        <thead>
+        <tbody>
           <tr>
-            <th scope="col">Danger</th>
-            <th scope="col">Cella</th>
-            <th scope="col">Cella</th>
+            <th scope="row">Danger</th>
+            <td>Cella</td>
+            <td>Cella</td>
           </tr>
-        </thead>
+        </tbody>
+      </table>
+
+      <table class="table table-warning">
+        <tbody>
+          <tr>
+            <th scope="row">Warning</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+        </tbody>
       </table>
     </section>
 
@@ -155,6 +175,11 @@
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <th scope="row">Default</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
           <tr class="table-primary">
             <th scope="row">Primary</th>
             <td>Cella</td>
@@ -172,6 +197,26 @@
           </tr>
           <tr class="table-danger">
             <th scope="row">Danger</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+          <tr class="table-warning">
+            <th scope="row">Warning</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+          <tr class="table-info">
+            <th scope="row">Info</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+          <tr class="table-light">
+            <th scope="row">Light</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+          <tr class="table-dark">
+            <th scope="row">Dark</th>
             <td>Cella</td>
             <td>Cella</td>
           </tr>
@@ -285,9 +330,8 @@
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td class="table-active">Mario</td>
-            <td class="table-active">Verdi</td>
-            <td>@twitter</td>
+            <td class="table-active" colspan="2">Mario Verdi</td>
+            <td>alessandro.rossi</td>
           </tr>
         </tbody>
       </table>
@@ -296,9 +340,7 @@
     <!-- Tabella con bordi -->
     <section class="mb-5">
       <h2>Tabella con bordi</h2>
-      <p>
-        Aggiungi <code>.table-bordered</code> per avere i bordi a tutti i lati della tabella e su tutte le celle.
-      </p>
+      <p>Aggiungi <code>.table-bordered</code> per avere i bordi a tutti i lati della tabella e su tutte le celle.</p>
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -325,7 +367,7 @@
             <th scope="row">3</th>
             <td>Mario</td>
             <td>Verdi</td>
-            <td>@twitter</td>
+            <td>alessandro.rossi</td>
           </tr>
         </tbody>
       </table>
@@ -361,7 +403,7 @@
             <th scope="row">3</th>
             <td>Mario</td>
             <td>Verdi</td>
-            <td>@twitter</td>
+            <td>alessandro.rossi</td>
           </tr>
         </tbody>
       </table>
@@ -397,7 +439,7 @@
             <th scope="row">3</th>
             <td>Mario</td>
             <td>Verdi</td>
-            <td>@twitter</td>
+            <td>alessandro.rossi</td>
           </tr>
         </tbody>
       </table>
@@ -496,21 +538,21 @@
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>mario.verdi</td>
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <td>Mario</td>
+            <td>Verdi</td>
+            <td>francesco.bianchi</td>
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
           </tr>
         </tbody>
         <tfoot>
@@ -557,7 +599,7 @@
             <th scope="row">3</th>
             <td>Alessandro</td>
             <td>Rossi</td>
-            <td>@twitter</td>
+            <td>alessandro.rossi</td>
           </tr>
         </tbody>
       </table>
@@ -599,7 +641,7 @@
             <th scope="row">3</th>
             <td>Alessandro</td>
             <td>Rossi</td>
-            <td>@twitter</td>
+            <td>alessandro.rossi</td>
           </tr>
         </tbody>
       </table>

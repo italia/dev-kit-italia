@@ -309,84 +309,81 @@ const responsiveXxlTable = html`
 `;
 
 const coloredTables = html`
-  <table class="table table-default">
-    <thead>
+  <table class="table table-primary">
+    <tbody>
       <tr>
-        <th scope="col">Default</th>
-        <th scope="col">Cella</th>
-        <th scope="col">Cella</th>
+        <th scope="row">Default</th>
+        <td>Cella</td>
+        <td>Cella</td>
       </tr>
-    </thead>
+    </tbody>
   </table>
 
   <table class="table table-secondary">
-    <thead>
+    <tbody>
       <tr>
-        <th scope="col">Secondary</th>
-        <th scope="col">Cella</th>
-        <th scope="col">Cella</th>
+        <th scope="row">Secondary</th>
+        <td>Cella</td>
+        <td>Cella</td>
       </tr>
-    </thead>
+    </tbody>
   </table>
 
   <table class="table table-success">
-    <thead>
+    <tbody>
       <tr>
-        <th scope="col">Success</th>
-        <th scope="col">Cella</th>
-        <th scope="col">Cella</th>
+        <th scope="row">Success</th>
+        <td>Cella</td>
+        <td>Cella</td>
       </tr>
-    </thead>
+    </tbody>
   </table>
 
   <table class="table table-danger">
-    <thead>
+    <tbody>
       <tr>
-        <th scope="col">Danger</th>
-        <th scope="col">Cella</th>
-        <th scope="col">Cella</th>
+        <th scope="row">Danger</th>
+        <td>Cella</td>
+        <td>Cella</td>
       </tr>
-    </thead>
+    </tbody>
   </table>
 
   <table class="table table-warning">
-    <thead>
+    <tbody>
       <tr>
-        <th scope="col">Warning</th>
-        <th scope="col">Cella</th>
-        <th scope="col">Cella</th>
+        <th scope="row">Warning</th>
+        <td>Cella</td>
+        <td>Cella</td>
       </tr>
-    </thead>
+    </tbody>
   </table>
-
   <table class="table table-info">
-    <thead>
+    <tbody>
       <tr>
-        <th scope="col">Info</th>
-        <th scope="col">Cella</th>
-        <th scope="col">Cella</th>
+        <th scope="row">Info</th>
+        <td>Cella</td>
+        <td>Cella</td>
       </tr>
-    </thead>
+    </tbody>
   </table>
-
   <table class="table table-light">
-    <thead>
+    <tbody>
       <tr>
-        <th scope="col">Light</th>
-        <th scope="col">Cella</th>
-        <th scope="col">Cella</th>
+        <th scope="row">Light</th>
+        <td>Cella</td>
+        <td>Cella</td>
       </tr>
-    </thead>
+    </tbody>
   </table>
-
   <table class="table table-dark">
-    <thead>
+    <tbody>
       <tr>
-        <th scope="col">Dark</th>
-        <th scope="col">Cella</th>
-        <th scope="col">Cella</th>
+        <th scope="row">Dark</th>
+        <td>Cella</td>
+        <td>Cella</td>
       </tr>
-    </thead>
+    </tbody>
   </table>
 `;
 
@@ -400,7 +397,7 @@ const coloredRows = html`
       </tr>
     </thead>
     <tbody>
-      <tr class="table-default">
+      <tr>
         <th scope="row">Default</th>
         <td>Cella</td>
         <td>Cella</td>
@@ -450,21 +447,23 @@ const coloredRows = html`
 `;
 
 const coloredCells = html`
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col" class="table-default">Default</th>
-        <th scope="col" class="table-primary">Primary</th>
-        <th scope="col" class="table-secondary">Secondary</th>
-        <th scope="col" class="table-success">Success</th>
-        <th scope="col" class="table-danger">Danger</th>
-        <th scope="col" class="table-warning">Warning</th>
-        <th scope="col" class="table-info">Info</th>
-        <th scope="col" class="table-light">Light</th>
-        <th scope="col" class="table-dark">Dark</th>
-      </tr>
-    </thead>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-primary">
+      <tbody>
+        <tr>
+          <th scope="row">Default</th>
+          <td class="table-primary">Primary</td>
+          <td class="table-secondary">Secondary</td>
+          <td class="table-success">Success</td>
+          <td class="table-danger">Danger</td>
+          <td class="table-warning">Warning</td>
+          <td class="table-info">Info</td>
+          <td class="table-light">Light</td>
+          <td class="table-dark">Dark</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 `;
 
 const stripedTable = html`
@@ -624,9 +623,8 @@ const activeTable = html`
       </tr>
       <tr>
         <th scope="row">3</th>
-        <td class="table-active">Mario</td>
-        <td class="table-active">Verdi</td>
-        <td>@twitter</td>
+        <td colspan="2" class="table-active">Mario Verdi</td>
+        <td>alessandro.rossi</td>
       </tr>
     </tbody>
   </table>
@@ -645,9 +643,9 @@ const borderedTable = html`
     <tbody>
       <tr>
         <th scope="row">1</th>
-        <td>Alessandro</td>
-        <td>Rossi</td>
-        <td>alessandro.rossi</td>
+        <td>Mario</td>
+        <td>Verdi</td>
+        <td>mario.verdi</td>
       </tr>
       <tr>
         <th scope="row">2</th>
@@ -657,9 +655,9 @@ const borderedTable = html`
       </tr>
       <tr>
         <th scope="row">3</th>
-        <td>Mario</td>
-        <td>Verdi</td>
-        <td>@twitter</td>
+        <td>Alessandro</td>
+        <td>Rossi</td>
+        <td>alessandro.rossi</td>
       </tr>
     </tbody>
   </table>
@@ -678,9 +676,9 @@ const borderedPrimaryTable = html`
     <tbody>
       <tr>
         <th scope="row">1</th>
-        <td>Alessandro</td>
-        <td>Rossi</td>
-        <td>alessandro.rossi</td>
+        <td>Mario</td>
+        <td>Verdi</td>
+        <td>mario.verdi</td>
       </tr>
       <tr>
         <th scope="row">2</th>
@@ -690,9 +688,9 @@ const borderedPrimaryTable = html`
       </tr>
       <tr>
         <th scope="row">3</th>
-        <td>Mario</td>
-        <td>Verdi</td>
-        <td>@twitter</td>
+        <td>Alessandro</td>
+        <td>Rossi</td>
+        <td>alessandro.rossi</td>
       </tr>
     </tbody>
   </table>
@@ -711,9 +709,9 @@ const borderlessTable = html`
     <tbody>
       <tr>
         <th scope="row">1</th>
-        <td>Alessandro</td>
-        <td>Rossi</td>
-        <td>alessandro.rossi</td>
+        <td>Mario</td>
+        <td>Verdi</td>
+        <td>mario.verdi</td>
       </tr>
       <tr>
         <th scope="row">2</th>
@@ -723,9 +721,9 @@ const borderlessTable = html`
       </tr>
       <tr>
         <th scope="row">3</th>
-        <td>Mario</td>
-        <td>Verdi</td>
-        <td>@twitter</td>
+        <td>Alessandro</td>
+        <td>Rossi</td>
+        <td>alessandro.rossi</td>
       </tr>
     </tbody>
   </table>
@@ -744,9 +742,9 @@ const borderlessDarkTable = html`
     <tbody>
       <tr>
         <th scope="row">1</th>
-        <td>Alessandro</td>
-        <td>Rossi</td>
-        <td>alessandro.rossi</td>
+        <td>Mario</td>
+        <td>Verdi</td>
+        <td>mario.verdi</td>
       </tr>
       <tr>
         <th scope="row">2</th>
@@ -756,9 +754,9 @@ const borderlessDarkTable = html`
       </tr>
       <tr>
         <th scope="row">3</th>
-        <td>Mario</td>
-        <td>Verdi</td>
-        <td>@twitter</td>
+        <td>Alessandro</td>
+        <td>Rossi</td>
+        <td>alessandro.rossi</td>
       </tr>
     </tbody>
   </table>
@@ -777,9 +775,9 @@ const smallTable = html`
     <tbody>
       <tr>
         <th scope="row">1</th>
-        <td>Alessandro</td>
-        <td>Rossi</td>
-        <td>alessandro.rossi</td>
+        <td>Mario</td>
+        <td>Verdi</td>
+        <td>mario.verdi</td>
       </tr>
       <tr>
         <th scope="row">2</th>
@@ -789,9 +787,9 @@ const smallTable = html`
       </tr>
       <tr>
         <th scope="row">3</th>
-        <td>Mario</td>
-        <td>Verdi</td>
-        <td>@twitter</td>
+        <td>Alessandro</td>
+        <td>Rossi</td>
+        <td>alessandro.rossi</td>
       </tr>
     </tbody>
   </table>
@@ -814,8 +812,8 @@ const verticalAlignmentTable = html`
           <td>Questa cella eredita <code>vertical-align: middle;</code> dalla tabella</td>
           <td>Questa cella eredita <code>vertical-align: middle;</code> dalla tabella</td>
           <td>
-            This here is some placeholder text, intended to take up quite a bit of vertical space, to
-            demonstrate how the vertical alignment works in the preceding cells.
+            This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how
+            the vertical alignment works in the preceding cells.
           </td>
         </tr>
         <tr class="align-bottom">
@@ -823,8 +821,8 @@ const verticalAlignmentTable = html`
           <td>Questa cella eredita <code>vertical-align: bottom;</code> dalla riga</td>
           <td>Questa cella eredita <code>vertical-align: bottom;</code> dalla riga</td>
           <td>
-            This here is some placeholder text, intended to take up quite a bit of vertical space, to
-            demonstrate how the vertical alignment works in the preceding cells.
+            This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how
+            the vertical alignment works in the preceding cells.
           </td>
         </tr>
         <tr>
@@ -832,8 +830,8 @@ const verticalAlignmentTable = html`
           <td>Questa cella eredita <code>vertical-align: middle;</code> dalla tabella</td>
           <td class="align-top">This cell is aligned to the top.</td>
           <td>
-            This here is some placeholder text, intended to take up quite a bit of vertical space, to
-            demonstrate how the vertical alignment works in the preceding cells.
+            This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how
+            the vertical alignment works in the preceding cells.
           </td>
         </tr>
       </tbody>
@@ -863,26 +861,26 @@ const nestingTable = html`
           <table class="table mb-0">
             <thead>
               <tr>
-                <th scope="col">Intestazione</th>
-                <th scope="col">Intestazione</th>
-                <th scope="col">Intestazione</th>
+                <th scope="col">Header</th>
+                <th scope="col">Header</th>
+                <th scope="col">Header</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">A</th>
-                <td>Primo</td>
-                <td>Ultimo</td>
+                <td>Dato A</td>
+                <td>Dato B</td>
               </tr>
               <tr>
                 <th scope="row">B</th>
-                <td>Primo</td>
-                <td>Ultimo</td>
+                <td>Dato C</td>
+                <td>Dato D</td>
               </tr>
               <tr>
                 <th scope="row">C</th>
-                <td>Primo</td>
-                <td>Ultimo</td>
+                <td>Dato E</td>
+                <td>Dato F</td>
               </tr>
             </tbody>
           </table>
@@ -892,7 +890,7 @@ const nestingTable = html`
         <th scope="row">3</th>
         <td>Mario</td>
         <td>Verdi</td>
-        <td>@twitter</td>
+        <td>mario.verdi</td>
       </tr>
     </tbody>
   </table>
@@ -925,7 +923,7 @@ const theadLightTable = html`
         <th scope="row">3</th>
         <td>Alessandro</td>
         <td>Rossi</td>
-        <td>alessandro.rossi</td>
+        <td>alessandrio.rossi</td>
       </tr>
     </tbody>
   </table>
@@ -977,21 +975,21 @@ const footerTable = html`
     <tbody>
       <tr>
         <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <td>Mario</td>
+        <td>Verdi</td>
+        <td>mario.verdi</td>
       </tr>
       <tr>
         <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
+        <td>Francesco</td>
+        <td>Bianchi</td>
+        <td>francesco.bianchi</td>
       </tr>
       <tr>
         <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
+        <td>Alessandro</td>
+        <td>Rossi</td>
+        <td>alessandro.rossi</td>
       </tr>
     </tbody>
     <tfoot>
@@ -1003,9 +1001,9 @@ const footerTable = html`
 `;
 
 const captionTable = html`
-  <table class="table">
+  <table class="table table-sm">
     <caption>
-      Lista di utenti
+      Lista degli utenti
     </caption>
     <thead>
       <tr>
@@ -1032,16 +1030,16 @@ const captionTable = html`
         <th scope="row">3</th>
         <td>Alessandro</td>
         <td>Rossi</td>
-        <td>@twitter</td>
+        <td>alessandro.rossi</td>
       </tr>
     </tbody>
   </table>
 `;
 
 const captionTopTable = html`
-  <table class="table caption-top">
+  <table class="table sm caption-top">
     <caption>
-      Lista di utenti
+      Lista degli utenti
     </caption>
     <thead>
       <tr>
@@ -1068,16 +1066,25 @@ const captionTopTable = html`
         <th scope="row">3</th>
         <td>Alessandro</td>
         <td>Rossi</td>
-        <td>@twitter</td>
+        <td>alessandro.rossi</td>
       </tr>
     </tbody>
   </table>
 `;
 
 const meta = {
-  title: 'Componenti/Table',
+  title: 'Componenti/Tables',
   component: 'table',
-  tags: ['documentation', 'a11y-ok'],
+  tags: ['alpha', 'documentation', 'a11y-ok'],
+  parameters: {
+    docs: {
+      source: {
+        excludeDecorators: true,
+      },
+    },
+    layout: 'fullscreen',
+  },
+  decorators: [(Story: any) => html`<div class="container p-4">${Story()}</div>`],
 };
 
 export default meta;
@@ -1086,9 +1093,9 @@ type Story = StoryObj<{}>;
 export const Placeholder: Story = {
   tags: ['!autodocs', '!dev'],
   parameters: {
-    canvas: { hidden: true, sourceState: 'none' },
     viewMode: 'docs',
     docs: {
+      canvas: { hidden: true, sourceState: 'none' },
       page: null,
     },
   },
@@ -1099,6 +1106,7 @@ export const TabellaBase: Story = {
   name: 'Tabella base',
   parameters: {
     docs: {
+      canvas: { sourceState: 'shown' },
       description: {
         story: `Usando il markup di base della tabella, ecco come appaiono le tabelle che utilizzano la classe \`.table\` in Bootstrap Italia. Tutti gli stili di tabella sono ereditari, il che significa che tutte le tabelle annidate avranno lo stesso stile della tabella genitrice.`,
       },
