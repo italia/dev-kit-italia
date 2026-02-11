@@ -1,7 +1,7 @@
 {
   "name": "@italia/rating",
   "description": "Web component it-rating del Design system .italia",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha.5",
   "publishConfig": {
     "access": "public"
   },
