@@ -1,9 +1,11 @@
 import Home from './pages/Home.svelte';
 import Accordion from './pages/Accordion.svelte';
 import Affix from './pages/Affix.svelte';
+import Autocomplete from './pages/Autocomplete.svelte';
 import Avatar from './pages/Avatar.svelte';
 import Breadcrumbs from './pages/Breadcrumbs.svelte';
 import BackToTop from './pages/BackToTop.svelte';
+import Back from './pages/Back.svelte';
 import Badge from './pages/Badge.svelte';
 import Button from './pages/Button.svelte';
 import Callout from './pages/Callout.svelte';
@@ -32,8 +34,10 @@ export const AppRoutes = [
   { path: '/', element: Home, title: 'Homepage' },
   { path: '/accordion', element: Accordion, title: 'Accordion' },
   { path: '/affix', element: Affix, title: 'Affix' },
+  { path: '/autocomplete', element: Autocomplete, title: 'Autocomplete' },
   { path: '/avatar', element: Avatar, title: 'Avatar' },
   { path: '/back-to-top', element: BackToTop, title: 'Back to Top' },
+  { path: '/back', element: Back, title: 'Back' },
   { path: '/badge', element: Badge, title: 'Badge' },
   { path: '/breadcrumbs', element: Breadcrumbs, title: 'Breadcrumbs' },
   { path: '/button', element: Button, title: 'Button' },
@@ -53,7 +57,7 @@ export const AppRoutes = [
   { path: '/radio', element: Radio, title: 'Radio' },
   { path: '/rating', element: Rating, title: 'Rating' },
   { path: '/section', element: Section, title: 'Section' },
-  { path: '/select', element: Section, title: 'Select' },
+  { path: '/select', element: Select, title: 'Select' },
   { path: '/sidebar', element: Sidebar, title: 'Sidebar' },
   { path: '/skiplinks', element: Skiplinks, title: 'Skiplinks' },
   { path: '/sticky', element: Sticky, title: 'Sticky' },

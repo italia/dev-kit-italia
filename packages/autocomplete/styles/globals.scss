@@ -1,0 +1,10 @@
+it-autocomplete {
+  --it-host-display: block;
+  display: var(--it-host-display);
+
+  &:not(:defined) {
+    [slot='label'] {
+      display: block;
+    }
+  }
+}
