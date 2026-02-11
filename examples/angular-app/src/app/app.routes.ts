@@ -95,6 +95,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/overlay.component').then((c) => c.OverlayComponent),
   },
   {
+    path: 'pagination',
+    loadComponent: () => import('./pages/pagination.component').then((c) => c.PaginationComponent),
+  },
+  {
     path: 'popover',
     loadComponent: () => import('./pages/popover.component').then((c) => c.PopoverComponent),
   },

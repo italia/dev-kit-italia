@@ -30,6 +30,7 @@ import Sidebar from './pages/Sidebar';
 import Skiplinks from './pages/Skiplinks';
 import Sticky from './pages/Sticky';
 import Video from './pages/Video';
+import Pagination from './pages/Pagination';
 
 export const AppRoutes = [
   { path: '/', element: <Home />, title: 'Homepage' },
@@ -55,6 +56,7 @@ export const AppRoutes = [
   { path: '/modal', element: <Modal />, title: 'Modal' },
   { path: '/navscroll', element: <Navscroll />, title: 'Navscroll' },
   { path: '/overlay', element: <Overlay />, title: 'Overlay' },
+  { path: '/pagination', element: <Pagination />, title: 'Pagination' },
   { path: '/popover', element: <Popover />, title: 'Popover' },
   { path: '/radio', element: <Radio />, title: 'Radio' },
   { path: '/rating', element: <Rating />, title: 'Rating' },

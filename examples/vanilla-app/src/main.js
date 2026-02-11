@@ -99,6 +99,9 @@ document.querySelector('#app-header').innerHTML = `
         <a href="/src/overlay">
           Overlay
         </a>
+        <a href="/src/pagination.html">
+          Pagination
+        </a>
         <a href="/src/popover">
           Popover
         </a>

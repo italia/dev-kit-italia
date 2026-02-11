@@ -40,6 +40,7 @@
         <a href="#/modal">Modal</a>
         <a href="#/navscroll">Navscroll</a>
         <a href="#/overlay">Overlay</a>
+        <a href="#/pagination">Pagination</a>
         <a href="#/popover">Popover</a>
         <a href="#/radio">Radio</a>
         <a href="#/rating">Rating</a>

@@ -31,6 +31,7 @@ import Sidebar from './components/Sidebar.vue';
 import Sticky from './components/Sticky.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
+import Pagination from './components/Pagination.vue';
 import Forward from './components/Forward.vue';
 
 const routes = [
@@ -57,6 +58,7 @@ const routes = [
   { path: '/modal', name: 'Modal', component: Modal },
   { path: '/navscroll', name: 'Navscroll', component: Navscroll },
   { path: '/overlay', name: 'Overlay', component: Overlay },
+  { path: '/pagination', name: 'Pagination', component: Pagination },
   { path: '/popover', name: 'Popover', component: Popover },
   { path: '/radio', name: 'Radio', component: Radio },
   { path: '/rating', name: 'Rating', component: Rating },
