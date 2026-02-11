@@ -12,6 +12,7 @@ import Chip from './pages/Chip';
 import Collapse from './pages/Collapse';
 import Dropdown from './pages/Dropdown';
 import Form from './pages/Form';
+import Hero from './pages/Hero';
 import Icon from './pages/Icon';
 import Input from './pages/Input';
 import Modal from './pages/Modal';
@@ -42,6 +43,7 @@ export const AppRoutes = [
   { path: '/collapse', element: <Collapse />, title: 'Collapse' },
   { path: '/dropdown', element: <Dropdown />, title: 'Dropdown' },
   { path: '/form', element: <Form />, title: 'Form' },
+  { path: '/hero', element: <Hero />, title: 'Hero' },
   { path: '/icon', element: <Icon />, title: 'Icon' },
   { path: '/input', element: <Input />, title: 'Input' },
   { path: '/modal', element: <Modal />, title: 'Modal' },

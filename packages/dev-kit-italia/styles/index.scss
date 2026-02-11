@@ -38,6 +38,7 @@
 @import 'bootstrap-italia/src/scss/components/progress-bars';
 @import 'bootstrap-italia/src/scss/components/hero';
 @import 'bootstrap-italia/src/scss/components/buttons'; // serve per applicare le classi di stile dei bottoni agli elementi di tipo <a>
+@import 'bootstrap-italia/src/scss/components/card'; //serve per l'esempio HERO. TODO: da rimuovere quando arriva il componente card.
 
 /*dev-kit-italia global styles*/
 @import '@italia/avatar/styles/globals';

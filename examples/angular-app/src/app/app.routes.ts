@@ -59,6 +59,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/form.component').then((c) => c.FormComponent),
   },
   {
+    path: 'hero',
+    loadComponent: () => import('./pages/hero.component').then((c) => c.HeroComponent),
+  },
+  {
     path: 'icon',
     loadComponent: () => import('./pages/icon.component').then((c) => c.IconComponent),
   },

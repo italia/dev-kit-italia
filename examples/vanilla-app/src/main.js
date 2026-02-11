@@ -72,6 +72,9 @@ document.querySelector('#app-header').innerHTML = `
         <a href="/src/form">
           Form
         </a>
+        <a href="/src/hero">
+          Hero
+        </a>
         <a href="/src/icon">
           Icon
         </a>
