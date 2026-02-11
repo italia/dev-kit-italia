@@ -58,7 +58,7 @@ const routes = [
   { path: '/sidebar', name: 'Sidebar', component: Sidebar },
   { path: '/skiplinks', name: 'Skiplinks', component: Skiplinks },
   { path: '/sticky', name: 'Sticky', component: Sticky },
-  { path: '/table', name: 'Table', component: Table },
+  { path: '/tables', name: 'Tables', component: Table },
   { path: '/video', name: 'Video', component: Video },
 ];
 

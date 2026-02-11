@@ -3,7 +3,7 @@ import React from 'react';
 const Table = () => {
   return (
     <div className="container my-5">
-      <h1 className="mb-4">Esempi di Tabelle</h1>
+      <h1 className="mb-4">Tables</h1>
 
       {/* Tabella base */}
       <section className="mb-5">
@@ -626,8 +626,7 @@ const Table = () => {
       <section className="mb-5">
         <h2>Tabella bordi colorati</h2>
         <p>
-          Aggiungi classi di utilità per i bordi, come <code>.border-primary</code>, per colorare i bordi della
-          tabella.
+          Aggiungi classi di utilità per i bordi, come <code>.border-primary</code>, per colorare i bordi della tabella.
         </p>
         <table className="table table-bordered border-primary">
           <thead>
@@ -693,7 +692,7 @@ const Table = () => {
               <th scope="row">3</th>
               <td>Mario</td>
               <td>Verdi</td>
-              <td>alessandro.rossi</td>
+              <td>mario.verdi</td>
             </tr>
           </tbody>
         </table>
@@ -731,7 +730,7 @@ const Table = () => {
               <th scope="row">3</th>
               <td>Mario</td>
               <td>Verdi</td>
-              <td>alessandro.rossi</td>
+              <td>mario.verdi</td>
             </tr>
           </tbody>
         </table>
@@ -743,8 +742,8 @@ const Table = () => {
         <p>
           Le celle della tabella di <code>&lt;thead&gt;</code> sono sempre allineate verticalmente in basso. Le celle
           della tabella in <code>&lt;tbody&gt;</code> ereditano il loro allineamento da <code>&lt;table&gt;</code> e
-          sono allineate in alto per impostazione predefinita. Usa le classi di allineamento verticale per
-          ri-allineare dove necessario.
+          sono allineate in alto per impostazione predefinita. Usa le classi di allineamento verticale per ri-allineare
+          dove necessario.
         </p>
         <div className="table-responsive">
           <table className="table align-middle">

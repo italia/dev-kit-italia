@@ -112,7 +112,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/sticky.component').then((c) => c.StickyComponent),
   },
   {
-    path: 'table',
+    path: 'tables',
     loadComponent: () => import('./pages/table.component').then((c) => c.TableComponent),
   },
   {
