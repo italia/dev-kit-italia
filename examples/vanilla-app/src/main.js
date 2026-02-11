@@ -39,6 +39,9 @@ document.querySelector('#app-header').innerHTML = `
         <a href="/src/affix">
           Affix
         </a>
+        <a href="/src/alert">
+          Alert
+        </a>
         <a href="/src/autocomplete">
           Autocomplete
         </a>

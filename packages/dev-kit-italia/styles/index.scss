@@ -10,6 +10,7 @@
 @import 'bootstrap-italia/src/scss/base/reboot';
 
 @import 'bootstrap-italia/src/scss/base/containers';
+@import 'bootstrap-italia/src/scss/base/transitions';
 @import 'bootstrap-italia/src/scss/base/helpers';
 
 @import 'bootstrap-italia/src/scss/base/utilities/api';
@@ -67,6 +68,7 @@
 @import 'bootstrap-italia/src/scss/components/list';
 @import 'bootstrap-italia/src/scss/components/headercenter';
 
+@import './components/alert';
 @import './components/sidebar';
 @import './components/list';
 @import './components/footer';

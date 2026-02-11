@@ -1,6 +1,7 @@
 import Home from './pages/Home.svelte';
 import Accordion from './pages/Accordion.svelte';
 import Affix from './pages/Affix.svelte';
+import Alert from './pages/Alert.svelte';
 import Autocomplete from './pages/Autocomplete.svelte';
 import Avatar from './pages/Avatar.svelte';
 import Breadcrumbs from './pages/Breadcrumbs.svelte';
@@ -33,6 +34,7 @@ export const AppRoutes = [
   { path: '/', element: Home, title: 'Homepage' },
   { path: '/accordion', element: Accordion, title: 'Accordion' },
   { path: '/affix', element: Affix, title: 'Affix' },
+  { path: '/alert', element: Alert, title: 'Alert' },
   { path: '/autocomplete', element: Autocomplete, title: 'Autocomplete' },
   { path: '/avatar', element: Avatar, title: 'Avatar' },
   { path: '/back-to-top', element: BackToTop, title: 'Back to Top' },

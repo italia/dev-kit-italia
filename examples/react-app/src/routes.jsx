@@ -3,6 +3,7 @@ import Accordion from './pages/Accordion';
 import Avatar from './pages/Avatar';
 import Breadcrumbs from './pages/Breadcrumbs';
 import Affix from './pages/Affix';
+import Alert from './pages/Alert';
 import Autocomplete from './pages/Autocomplete';
 import BackToTop from './pages/BackToTop';
 import Back from './pages/Back';
@@ -33,6 +34,7 @@ export const AppRoutes = [
   { path: '/', element: <Home />, title: 'Homepage' },
   { path: '/accordion', element: <Accordion />, title: 'Accordion' },
   { path: '/affix', element: <Affix />, title: 'Affix' },
+  { path: '/alert', element: <Alert />, title: 'Alert' },
   { path: '/autocomplete', element: <Autocomplete />, title: 'Autocomplete' },
   { path: '/avatar', element: <Avatar />, title: 'Avatar' },
   { path: '/back-to-top', element: <BackToTop />, title: 'Back to Top' },
