@@ -214,33 +214,10 @@ Il componente espone dei metodi ed eventi, utili per eventuali interazioni via j
 
 Il componente espone i seguenti metodi pubblici:
 -  `show()`: apre la modale
-```js
-// Esempio di utilizzo del metodo show() per aprire la modale
-const openModal = (event) => {
-  const el = event.currentTarget;
-  const modal = el.closest('it-modal');
-  modal?.show();
-};
-```
 -  `hide()`: chiude la modale
-```js
-// Esempio di utilizzo del metodo hide() per chiudere la modale
-const closeModal = (event) => {
-  const el = event.currentTarget;
-  const modal = el.closest('it-modal');
-  modal?.hide();
-};
-
-```
 -  `toggle()`:  alterna lo stato tra aperto e chiuso
-```js
-// Esempio di utilizzo del metodo toggle() per commutare lo stato della modale
-const toggleModal = (event) => {
-  const el = event.currentTarget;
-  const modal = el.closest('it-modal');
-  modal?.toggle();
-};
-```
+
+<Canvas of={Stories.AttivazioneViaJS} />
 
 ### Eventi
 Il componente emette i seguenti eventi custom:
