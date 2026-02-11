@@ -1,0 +1,99 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/reboot';
+// @import 'bootstrap-italia/src/scss/components/pagination';
+@import 'bootstrap-italia/src/scss/components/page-scroll';
+
+:host {
+  display: flex;
+  @include list-unstyled();
+  height: fit-content;
+}
+
+::slotted(a.page-link) {
+  position: relative;
+  display: flex;
+  min-width: var(--#{$prefix}pagination-item-size);
+  align-items: center;
+  justify-content: center;
+  padding: var(--#{$prefix}pagination-padding-y) var(--#{$prefix}pagination-padding-x);
+  border: var(--#{$prefix}pagination-border-width) solid var(--#{$prefix}pagination-border-color);
+  border-radius: var(--#{$prefix}pagination-border-radius);
+  color: var(--#{$prefix}pagination-link-color) !important;
+  font-weight: var(--#{$prefix}font-weight-solid);
+  gap: 0.25rem;
+
+  @include font-size(var(--#{$prefix}pagination-font-size, #{$pagination-font-size}));
+  @include transition($pagination-transition);
+
+  &:hover {
+    --#{$prefix}pagination-border-color: var(--#{$prefix}color-border-primary-hover);
+    --#{$prefix}pagination-link-color: var(--#{$prefix}color-link-hover);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #0066cc !important;
+    outline-offset: 2px !important;
+  }
+}
+
+::slotted(span.page-link) {
+  position: relative;
+  display: flex;
+  min-width: var(--#{$prefix}pagination-item-size);
+  align-items: center;
+  justify-content: center;
+  padding: var(--#{$prefix}pagination-padding-y) var(--#{$prefix}pagination-padding-x);
+  border: var(--#{$prefix}pagination-border-width) solid var(--#{$prefix}pagination-border-color);
+  border-radius: var(--#{$prefix}pagination-border-radius);
+  color: var(--#{$prefix}pagination-link-color) !important;
+  font-weight: var(--#{$prefix}font-weight-solid);
+  gap: 0.25rem;
+
+  @include font-size(var(--#{$prefix}pagination-font-size, #{$pagination-font-size}));
+  @include transition($pagination-transition);
+}
+
+.page-item.active ::slotted(.page-link) {
+  --#{$prefix}pagination-border-color: var(--#{$prefix}color-border-primary-active);
+  --#{$prefix}pagination-link-color: var(--#{$prefix}color-link-active);
+  pointer-events: none;
+}
+
+// DISABLED
+// Se il contenitore interno .page-item ha classe .disabled
+.page-item.disabled ::slotted(.page-link) {
+  border-color: var(--#{$prefix}pagination-disabled-border-color);
+  background-color: var(--#{$prefix}pagination-disabled-bg);
+  color: var(--#{$prefix}pagination-disabled-color);
+  pointer-events: none;
+}
+
+// --- GESTIONE BORDI ARROTONDATI (Radius) ---
+// BSI applica il radius solo al primo e all'ultimo elemento se i margini sono collassati
+
+@if $pagination-margin-start == ($pagination-border-width * -1) {
+  // Primo elemento della lista -> Arrotonda sinistra
+  :host(:first-of-type) ::slotted(.page-link) {
+    @include border-start-radius(var(--#{$prefix}pagination-border-radius));
+  }
+
+  // Ultimo elemento della lista -> Arrotonda destra
+  :host(:last-of-type) ::slotted(.page-link) {
+    @include border-end-radius(var(--#{$prefix}pagination-border-radius));
+  }
+} @else {
+  // Fallback: tutti arrotondati se non c'è margin collapse
+  ::slotted(.page-link) {
+    @include border-radius(var(--#{$prefix}pagination-border-radius));
+  }
+}
+
+.page-link[aria-current] {
+  --#{$prefix}pagination-border-color: var(--#{$prefix}color-border-primary-active);
+  --#{$prefix}pagination-link-color: var(--#{$prefix}color-link-active);
+  pointer-events: none;
+}

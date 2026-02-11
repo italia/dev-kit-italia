@@ -21,8 +21,10 @@
         <a href="#/">Homepage</a>
         <a href="#/accordion">Accordion</a>
         <a href="#/affix">Affix</a>
+        <a href="#/autocomplete">Autocomplete</a>
         <a href="#/avatar">Avatar</a>
         <a href="#/back-to-top">Back to Top</a>
+        <a href="#/back">Back</a>
         <a href="#/badge">Badge</a>
         <a href="#/button">Button</a>
         <a href="#/breadcrumbs">Breadcrumbs</a>
@@ -32,12 +34,14 @@
         <a href="#/collapse">Collapse</a>
         <a href="#/dropdown">Dropdown</a>
         <a href="#/form">Form</a>
+        <a href="#/forward">Forward</a>
         <a href="#/hero">Hero</a>
         <a href="#/icon">Icon</a>
         <a href="#/input">Input</a>
         <a href="#/modal">Modal</a>
         <a href="#/navscroll">Navscroll</a>
         <a href="#/overlay">Overlay</a>
+        <a href="#/pagination">Pagination</a>
         <a href="#/popover">Popover</a>
         <a href="#/radio">Radio</a>
         <a href="#/rating">Rating</a>
