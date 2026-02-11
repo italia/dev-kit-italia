@@ -40,11 +40,13 @@ const meta: Meta = {
     },
     stickyClassName: {
       control: 'text',
+      type: 'string',
       description: "Classi CSS da applicare all'elemento quando viene attivata la funzionalità sticky",
       table: { defaultValue: { summary: '' } },
     },
     positionType: {
       control: { type: 'select' },
+      type: 'string',
       options: ['sticky', 'fixed'],
       description: 'Indica il valore della proprietà CSS `position`. I valori ammessi sono `sticky` o `fixed`',
       table: { defaultValue: { summary: 'sticky' } },
