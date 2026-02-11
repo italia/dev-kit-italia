@@ -31,6 +31,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/back-to-top.component').then((c) => c.BackToTopComponent),
   },
   {
+    path: 'back',
+    loadComponent: () => import('./pages/back.component').then((c) => c.BackComponent),
+  },
+  {
     path: 'badge',
     loadComponent: () => import('./pages/badge.component').then((c) => c.BadgeComponent),
   },

@@ -4,7 +4,7 @@ import '@italia/icon';
 import '@italia/button';
 
 const meta = {
-  title: 'Componenti/Torna indietro',
+  title: 'Componenti/Back',
   component: 'it-back',
   tags: ['alpha', 'documentation', 'a11y-ok'],
   render: () => html`<div class="hide-preview"></div>`,
@@ -62,9 +62,8 @@ export const Pulsante: Story = {
       }}
       icon
     >
-        <it-icon name="it-arrow-up" size="sm" color="inverse"></it-icon>
-        <span>Torna su</span>
-      </span>
+      <it-icon name="it-arrow-up" size="sm" color="inverse"></it-icon>
+      <span>Torna indietro</span>
     </it-button>
   `,
 };
@@ -96,28 +95,6 @@ export const PulsanteSolaIcona: Story = {
       }}
     >
       <it-icon name="it-arrow-up" size="sm" color="inverse"></it-icon>
-      <span class="visually-hidden">Torna indietro</span>
-    </it-button>
-    <it-button
-      variant="primary"
-      class="go-back"
-      icon
-      @click=${() => {
-        window.history.back();
-      }}
-    >
-      <it-icon name="it-arrow-right" size="sm" color="inverse"></it-icon>
-      <span class="visually-hidden">Torna indietro</span>
-    </it-button>
-    <it-button
-      variant="primary"
-      class="go-back"
-      icon
-      @click=${() => {
-        window.history.back();
-      }}
-    >
-      <it-icon name="it-arrow-down" size="sm" color="inverse"></it-icon>
       <span class="visually-hidden">Torna indietro</span>
     </it-button>
   `,

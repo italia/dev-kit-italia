@@ -5,6 +5,7 @@ import Breadcrumbs from './pages/Breadcrumbs';
 import Affix from './pages/Affix';
 import Autocomplete from './pages/Autocomplete';
 import BackToTop from './pages/BackToTop';
+import Back from './pages/Back';
 import Badge from './pages/Badge';
 import Button from './pages/Button';
 import Callout from './pages/Callout';
@@ -35,6 +36,7 @@ export const AppRoutes = [
   { path: '/autocomplete', element: <Autocomplete />, title: 'Autocomplete' },
   { path: '/avatar', element: <Avatar />, title: 'Avatar' },
   { path: '/back-to-top', element: <BackToTop />, title: 'Back to Top' },
+  { path: '/back', element: <Back />, title: 'Back' },
   { path: '/badge', element: <Badge />, title: 'Badge' },
   { path: '/breadcrumbs', element: <Breadcrumbs />, title: 'Breadcrumbs' },
   { path: '/button', element: <Button />, title: 'Button' },
