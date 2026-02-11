@@ -5,6 +5,7 @@ import Accordion from './components/Accordion.vue';
 import Avatar from './components/Avatar.vue';
 import Breadcrumbs from './components/Breadcrumbs.vue';
 import Affix from './components/Affix.vue';
+import Autocomplete from './components/AutocompletePage.vue';
 import BackToTop from './components/BackToTop.vue';
 import Back from './components/Back.vue';
 import Badge from './components/Badge.vue';
@@ -34,6 +35,7 @@ const routes = [
   { path: '/', name: 'Homepage', component: Home },
   { path: '/accordion', name: 'Accordion', component: Accordion },
   { path: '/affix', name: 'Affix', component: Affix },
+  { path: '/autocomplete', name: 'Autocomplete', component: Autocomplete },
   { path: '/avatar', name: 'Avatar', component: Avatar },
   { path: '/back-to-top', name: 'BackToTop', component: BackToTop },
   { path: '/back', name: 'Back', component: Back },

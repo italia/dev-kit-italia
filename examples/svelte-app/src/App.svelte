@@ -21,6 +21,7 @@
         <a href="#/">Homepage</a>
         <a href="#/accordion">Accordion</a>
         <a href="#/affix">Affix</a>
+        <a href="#/autocomplete">Autocomplete</a>
         <a href="#/avatar">Avatar</a>
         <a href="#/back-to-top">Back to Top</a>
         <a href="#/back">Back</a>
