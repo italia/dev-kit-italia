@@ -1,0 +1,85 @@
+import{j as e,M as u,C as n,a as h,D as t}from"./blocks-B5p0HTzn.js";import{useMDXComponents as p}from"./index-DJQEn02C.js";import{S as m,E as s,C as j,a as x,I as r,b as l,G as a,c as d,d as f}from"./it-video.stories-CNIJM78q.js";import"./preload-helper-PPVm8Dsz.js";import"./iframe-DcIH0XRX.js";function c(o){const i={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",h4:"h4",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...p(),...o.components};return e.jsxs(e.Fragment,{children:[e.jsx(u,{of:m}),`
+`,e.jsx(i.h1,{id:"video",children:"Video"}),`
+`,e.jsx("description",{children:"Lettore per mostrare video sul proprio sito o incorporarli da piattaforme terze rispettando privacy e accessibilità."}),`
+`,e.jsx(i.h2,{id:"cosa-fa",children:"Cosa fa"}),`
+`,e.jsxs(i.p,{children:["Il componente ",e.jsx(i.code,{children:"it-video"}),` consente di incorporare video all’interno delle pagine web, offrendo un lettore video accessibile e rispettoso della privacy degli utenti.
+Supporta sia la riproduzione di video ospitati localmente che l’incorporamento di video da piattaforme esterne come YouTube, garantendo un’esperienza utente coerente e personalizzabile.
+Questo componente utilizza la libreria `,e.jsx(i.a,{href:"https://videojs.com/",rel:"nofollow",children:"video.js"})," per implementare funzionalità avanzate come il supporto a diversi formati video, la personalizzazione dell’interfaccia utente e l’integrazione con API esterne."]}),`
+`,e.jsx(i.p,{children:e.jsx(i.a,{href:"https://designers.italia.it/design-system/componenti/video-player/",rel:"nofollow",children:"Approfondisci come e quando usare il componente Video"})}),`
+`,e.jsx(i.h2,{id:"anteprima-e-attributi-del-componente",children:"Anteprima e attributi del componente"}),`
+`,e.jsxs(i.p,{children:["Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su ",e.jsx(i.strong,{children:"Show code"}),"."]}),`
+`,e.jsx(n,{of:s}),`
+`,e.jsx(h,{of:s}),`
+`,e.jsx(i.h2,{id:"indicazioni-generali",children:"Indicazioni generali"}),`
+`,e.jsxs(i.p,{children:["Per aggiungere un video, è sufficiente utilizzare il componente ",e.jsx(i.code,{children:"<it-video />"})," ed i relativi attributi per gestirne la sorgente, e le opzioni del video player. - Usa l'attributo ",e.jsx(i.code,{children:"options"}),` per passare
+al player le opzioni definite qui `,e.jsx(i.a,{href:"https://videojs.com/guides/options/",rel:"nofollow",children:"https://videojs.com/guides/options/"}),"."]}),`
+`,e.jsxs(i.ul,{children:[`
+`,e.jsxs(i.li,{children:["Usa l'attributo ",e.jsx(i.code,{children:"translations"}),` per definire le traduzioni del player diverse dalla lingua italiana, o per
+sovrascrivere le traduzioni italiane pre-impostate.`]}),`
+`]}),`
+`,e.jsx(i.h3,{id:"font-per-le-icone-del-player",children:"Font per le icone del player"}),`
+`,e.jsxs(i.p,{children:["Per utilizzare le icone del player, è necessario includere il font ",e.jsx(i.code,{children:"VideoJS. Per utilizzare le icone del player, è necessario includere il font "}),"VideoJS.woff` nella tua applicazione. Puoi farlo aggiungendo il css compilato di dev-kit-italia nel tuo sorgente HTML:"]}),`
+`,e.jsx(i.pre,{children:e.jsx(i.code,{className:"language-html",children:`<link rel="stylesheet" href="dev-kit-italia/dist/styles.css" />
+`})}),`
+`,e.jsx(i.p,{children:"oppure se stai usando SCSS puoi definire il font direttamente nel tuo file SCSS:"}),`
+`,e.jsx(i.pre,{children:e.jsx(i.code,{className:"language-scss",children:`@font-face {
+  font-family: VideoJS;
+  src: url('./assets/fonts/VideoJS.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+`})}),`
+`,e.jsxs(i.p,{children:["copiando l'asset ",e.jsx(i.code,{children:"VideoJS.woff"})," nella tua cartella assets/fonts (lo puoi copiare dal package dev-kit-italia)."]}),`
+`,e.jsx(i.h3,{id:"plugin-per-videojs",children:"Plugin per Video.js"}),`
+`,e.jsx(i.p,{children:"Esistono numerosi plugin disponibili per Video.js, che consentono di aggiungere nuove funzionalità, come la riproduzione di video in VR, l’analisi delle statistiche di visualizzazione del video, le utility per la UI mobile e molto altro ancora."}),`
+`,e.jsx(i.h4,{id:"utilizzo-di-ulteriori-plugin",children:"Utilizzo di ulteriori plugin"}),`
+`,e.jsxs(i.p,{children:[e.jsx(t,{children:" (Ad esempio il plugin per l'embed di Vimeo)"}),`
+Con l'attributo  `,e.jsx(i.code,{children:"init-plugins"})," è possibile passare al componente ",e.jsx(i.code,{children:"<it-video>"})," il nome della propria funzione di inizializzazione dei plugin, che deve essere definita nella window."]}),`
+`,e.jsx(i.p,{children:"Esempio:"}),`
+`,e.jsx(i.pre,{children:e.jsx(i.code,{className:"language-html",children:`<it-video ...... init-plugins="myInitPlugin"></it-video>
+<script> const myInitPlugin = (videojs)=>{ /*my code*/ }<\/script>
+`})}),`
+`,e.jsx(i.h2,{id:"accessibilità",children:"Accessibilità"}),`
+`,e.jsxs(i.p,{children:["Le persone che utilizzano le tecnologie assistive possono agevolmente accedere ai comandi di questo player video, tuttavia per rendere accessibile un contenuto video è necessario soddisfare i Criteri di Successo contenuti nelle ",e.jsx(i.a,{href:"https://www.w3.org/Translations/WCAG21-it/#time-based-media",rel:"nofollow",children:"linee guida 1.2 Media temporizzati delle WCAG (versione corrente)"}),"."]}),`
+`,e.jsx(i.p,{children:"In particolare:"}),`
+`,e.jsxs(i.ul,{children:[`
+`,e.jsx(i.li,{children:"Se il contenuto è costituito da “solo video” oppure “solo audio”, è necessario fornire una trascrizione (Criterio di Successo 1.2.1)"}),`
+`,e.jsx(i.li,{children:"Fornire sempre sottotitoli (Criterio di Successo 1.2.2)."}),`
+`,e.jsx(i.li,{children:"Fornire audio descrizioni quando sono presenti scene o contenuti non descritte dalla traccia audio primaria. (Criteri di Successo 1.2.3 e 1.2.5)"}),`
+`]}),`
+`,e.jsx(i.h2,{id:"con-trascrizione",children:"Con trascrizione"}),`
+`,e.jsxs(i.p,{children:["Per aggiungere una trascrizione al video, utilizzare il componente ",e.jsx(i.code,{children:"<it-accordion>"})," come elemento figlio del componente ",e.jsx(i.code,{children:"<it-video>"}),`. All'interno dell'accordion, è possibile inserire il testo della trascrizione del video.
+Vedi la `,e.jsxs(i.a,{href:"?path=/docs/componenti-accordion--documentazione",children:["documentazione di ",e.jsx(i.code,{children:"<it-accordion>"})]})," per maggiori dettagli su come utilizzarlo."]}),`
+`,e.jsx(n,{of:j}),`
+`,e.jsx(i.h2,{id:"sottotitoli-didascalie-capitoli-e-descrizioni",children:"Sottotitoli, didascalie, capitoli e descrizioni"}),`
+`,e.jsxs(i.p,{children:["Tramite l'attributo ",e.jsx(i.code,{children:"track"}),` puoi aggiungere del testo accessibile presente in un file testuale; l’unico formato supportato è WebVTT.
+L'attributo `,e.jsx(i.code,{children:"track"})," accetta un elenco di valori con il seguente formato:"]}),`
+`,e.jsx(i.pre,{children:e.jsx(i.code,{className:"language-js",children:`[{kind:'captions', src:'https://example.com/captions.vtt', srclang:'it', label:'Italiano', default:true}, ...]
+`})}),`
+`,e.jsx(i.p,{children:"dove ogni singolo elemento rappresenta un file di sottotitoli, didascalie, capitoli o descrizioni."}),`
+`,e.jsxs(i.p,{children:["Valorizzando opportunamente la proprietà ",e.jsx(i.code,{children:"kind"})," puoi specificare se il file associato contiene:"]}),`
+`,e.jsxs(i.ul,{children:[`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"captions"}),": per i sottotitoli (trascrizione dei dialoghi)"]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"subtitles"}),": per le didascalie (trascrizione dei dialoghi, degli effetti sonori, trascrizione del tipo di emozioni rappresentate dalla musica, ecc)"]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"chapters"}),": per i capitoli"]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"descriptions"}),": per le descrizioni (testo che descrive il contenuto visivo del video, utile per le persone con disabilità visive)"]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"metadata"}),": per i metadati (informazioni aggiuntive sul video, come la durata, la risoluzione, ecc)"]}),`
+`]}),`
+`,e.jsxs(i.p,{children:["L'attributo ",e.jsx(i.code,{children:"default"})," indica se il file associato è quello predefinito da utilizzare di default quando il video viene caricato."]}),`
+`,e.jsxs(i.p,{children:["Approfondisci l’argomento consultando la documentazione di ",e.jsx(i.a,{href:"https://videojs.com/guides/text-tracks/",rel:"nofollow",children:"VideoJS"})," (Inglese)."]}),`
+`,e.jsx(i.p,{children:'Di seguito un esempio d’uso delle didascalie (kind:"captions") in diverse lingue.'}),`
+`,e.jsx(n,{of:x}),`
+`,e.jsx(i.h2,{id:"immagine-di-anteprima",children:"Immagine di anteprima"}),`
+`,e.jsx(t,{of:r}),`
+`,e.jsx(n,{of:r}),`
+`,e.jsx(i.h2,{id:"streaming",children:"Streaming"}),`
+`,e.jsx(t,{of:l}),`
+`,e.jsx(n,{of:l}),`
+`,e.jsx(i.h2,{id:"gestire-più-tracce-audio",children:"Gestire più tracce audio"}),`
+`,e.jsx(t,{of:a}),`
+`,e.jsx(n,{of:a}),`
+`,e.jsx(i.h2,{id:"embed-da-piattaforme-terze",children:"Embed da piattaforme terze"}),`
+`,e.jsx(t,{of:d}),`
+`,e.jsx(n,{of:d}),`
+`,e.jsx(i.h2,{id:"i18n",children:"i18n"}),`
+`,e.jsx(t,{of:f})]})}function y(o={}){const{wrapper:i}={...p(),...o.components};return i?e.jsx(i,{...o,children:e.jsx(c,{...o})}):c(o)}export{y as default};
