@@ -1,5 +1,18 @@
 # @italia/collapse
 
+## 1.0.0-alpha.5
+
+### Minor Changes
+
+- [#254](https://github.com/italia/dev-kit-italia/pull/254) [`1c1e6e8`](https://github.com/italia/dev-kit-italia/commit/1c1e6e813afe73fe15229a83bc445e59041af86e) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fix Voiceover specific issues in collapse component
+
+### Patch Changes
+
+- [#251](https://github.com/italia/dev-kit-italia/pull/251) [`21e8180`](https://github.com/italia/dev-kit-italia/commit/21e8180e49b83ca2be70d69e952a52d2e563b29e) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated bootstrap-italia and fixed design-tokens
+
+- Updated dependencies [[`57f1319`](https://github.com/italia/dev-kit-italia/commit/57f1319bb9db5d1b4a5811ccf16e46cc09e83e8f)]:
+  - @italia/globals@1.0.0-alpha.5
+
 ## 1.0.0-alpha.4
 
 ### Patch Changes
