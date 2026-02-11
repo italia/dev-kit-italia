@@ -27,6 +27,8 @@ import '@italia/sticky/it-sticky.js';
 import '@italia/video/it-video.js';
 import '@italia/radio/it-radio.js';
 import '@italia/radio/it-radio-group.js';
+import '@italia/pagination/it-pagination.js';
+import '@italia/pagination/it-pagination-item.js';
 import '@italia/rating/it-rating.js';
 import '@italia/rating/it-rating-item.js';
 

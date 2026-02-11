@@ -1,0 +1,8 @@
+// Inspired by Bootstrap Italia Alert component
+@each $color, $value in $colors-palette {
+  @if index(('danger', 'warning', 'success', 'secondary', 'primary'), $color) {
+    .alert-#{$color} .alert-icon {
+      --#{$prefix}icon-default: #{$value};
+    }
+  }
+}

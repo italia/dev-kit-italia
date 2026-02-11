@@ -1,6 +1,13 @@
 # @italia/i18n
 
+## 1.0.0-alpha.5
+
+### Patch Changes
+
+- [#230](https://github.com/italia/dev-kit-italia/pull/230) [`18e1e61`](https://github.com/italia/dev-kit-italia/commit/18e1e61c9e999713ffc1965a547d08919808dc77) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added input type="time" doc and examples
+
 ## 1.0.0-alpha.4
+
 - Aggiornamento della versione
 
 ## 1.0.0-alpha.3
