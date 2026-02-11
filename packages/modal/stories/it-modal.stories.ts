@@ -26,6 +26,16 @@ const closeModal = (event: Event) => {
   const modal = el.closest('it-modal') as unknown as ItModal;
   modal?.hide();
 };
+const openModal = (event: Event) => {
+  const el = event.currentTarget as HTMLElement;
+  const modal = el.closest('it-modal') as unknown as ItModal;
+  modal?.show();
+};
+const toggleModal = (event: Event) => {
+  const el = event.currentTarget as HTMLElement;
+  const modal = el.closest('it-modal') as unknown as ItModal;
+  modal?.toggle();
+};
 
 const meta = {
   title: 'Componenti/Modal',
@@ -542,6 +552,27 @@ export const SenzaAnimazione: Story = {
       <p slot="content">Questa modale appare immediatamente senza animazione di dissolvenza.</p>
       <it-button slot="footer" variant="outline-primary" @click="${closeModal}">Annulla</it-button>
       <it-button slot="footer" variant="primary" @click="${closeModal}">Conferma</it-button>
+    </it-modal>
+  `,
+};
+export const AttivazioneViaJS: Story = {
+  name: 'Attivazione manuale via JS',
+  render: () => html`
+    <it-modal disable-animation close-label="Chiudi finestra modale">
+      <it-button slot="trigger" variant="primary" @click="${openModal}">Modale con apertura manuale (show)</it-button>
+      <span slot="header">Modale con apertura manuale</span>
+      <p slot="content">Questa modale appare immediatamente senza animazione di dissolvenza.</p>
+      <it-button slot="footer" variant="outline-primary" @click="${closeModal}">Annulla</it-button>
+      <it-button slot="footer" variant="primary" @click="${closeModal}">Conferma</it-button>
+    </it-modal>
+    <it-modal disable-animation close-label="Chiudi finestra modale">
+      <it-button slot="trigger" variant="primary" @click="${toggleModal}"
+        >Modale con apertura manuale (toggle)</it-button
+      >
+      <span slot="header">Modale con toggle manuale</span>
+      <p slot="content">Questa modale appare immediatamente senza animazione di dissolvenza.</p>
+      <it-button slot="footer" variant="outline-primary" @click="${toggleModal}">Annulla</it-button>
+      <it-button slot="footer" variant="primary" @click="${toggleModal}">Conferma</it-button>
     </it-modal>
   `,
 };
