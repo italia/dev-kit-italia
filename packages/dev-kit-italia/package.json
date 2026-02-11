@@ -52,6 +52,7 @@
   ],
   "dependencies": {
     "@italia/avatar": "workspace:^",
+    "@italia/autocomplete": "workspace:^",
     "@italia/callout": "workspace:^",
     "@italia/accordion": "workspace:^",
     "@italia/breadcrumbs": "workspace:^",
@@ -73,6 +74,7 @@
     "@italia/skiplinks": "workspace:^",
     "@italia/sticky": "workspace:^",
     "@italia/video": "workspace:^",
+    "@italia/pagination": "workspace:^",
     "@italia/radio": "workspace:^"
   },
   "devDependencies": {

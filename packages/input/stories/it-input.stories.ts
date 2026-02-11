@@ -4,6 +4,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { StoryFormControlMethodAndProps } from '@italia/globals';
 
 import { INPUT_TYPES, type InputType, INPUT_SIZES, type Sizes } from '../src/types.js';
+import i18nIT from '../src/locales/it.js';
 
 interface InputProps {
   id: string;
@@ -618,3 +619,23 @@ document.querySelector('it-input#event-input-example').addEventListener('it-inpu
 };
 
 export const MetodiEPropPubblici: Story = { ...StoryFormControlMethodAndProps({}), tags: ['!dev'] };
+
+export const I18n: Story = {
+  name: 'i18n',
+  tags: ['!dev'],
+  render: () => html`<div class="hide-preview"></div>`,
+  parameters: {
+    viewMode: 'docs',
+    docs: {
+      description: {
+        story: `
+Per questo componente sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+
+\`\`\`js
+const translation = ${JSON.stringify(i18nIT, null, 2)}
+\`\`\`
+`,
+      },
+    },
+  },
+};

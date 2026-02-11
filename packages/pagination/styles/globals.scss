@@ -1,0 +1,167 @@
+$pagination-color: var(--#{$prefix}color-link);
+
+/* ========================================
+   FOUC Styles - Flash of Unstyled Content
+   ======================================== */
+
+/* it-pagination: simulate pagination wrapper */
+it-pagination:not(:defined) {
+  --it-host-display: flex;
+  display: flex !important;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+  overflow-x: clip;
+
+  /* Hide total slot until defined */
+  [slot='total'] {
+    display: none !important;
+  }
+
+  /* Alignment variants */
+  &[align='start'] {
+    justify-content: flex-start;
+  }
+
+  &[align='center'] {
+    justify-content: center;
+  }
+
+  &[align='end'] {
+    justify-content: flex-end;
+  }
+
+  it-input:not(:defined) {
+    display: contents;
+    margin: 0;
+  }
+
+  it-input:not(:defined)::after {
+    content: none !important;
+  }
+
+  &[simple-mode] {
+    a[slot='prev'] {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    a[slot='prev']::after {
+      display: inline-flex;
+      width: 8rem;
+      height: 3rem;
+      align-items: center;
+      justify-content: center;
+      padding: var(--#{$prefix}spacing-xxs, 4px) var(--#{$prefix}spacing-s, 12px);
+      border: 2px solid transparent;
+      border-radius: 4px;
+      color: var(--#{$prefix}color-link, #0066cc);
+      content: '';
+      font-size: var(--#{$prefix}label-font-size, 16px);
+      font-weight: var(--#{$prefix}font-weight-solid, 600);
+    }
+  }
+}
+
+/* it-pagination-item: simulate page-link appearance */
+it-pagination-item:not(:defined) {
+  --it-host-display: flex;
+  display: flex !important;
+  min-width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  padding: var(--#{$prefix}spacing-xxs, 4px) var(--#{$prefix}spacing-s, 12px);
+  border: 2px solid transparent;
+  border-radius: 4px;
+  color: var(--#{$prefix}color-link, #0066cc);
+  font-size: var(--#{$prefix}label-font-size, 16px);
+  font-weight: var(--#{$prefix}font-weight-solid, 600);
+
+  /* Show slotted link content with proper styling */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Simulate active state for specific pages if needed */
+  &[page='1']:first-of-type,
+  &[current] {
+    border-color: var(--#{$prefix}color-border-primary-active, #0059b3);
+    color: var(--#{$prefix}color-link-active, #0059b3);
+  }
+}
+
+/* Remove FOUC styles when components are defined */
+it-pagination:defined,
+it-pagination-item:defined {
+  &::before,
+  &::after {
+    content: none !important;
+  }
+}
+
+// Magic ahead: adapting bsi pagination styles to web components Shadow DOM scoping.
+// This is in globals because otherwise you cannot target slotted icons
+a.page-link {
+  it-icon::part(icon) {
+    fill: var(--#{$prefix}pagination-color);
+  }
+}
+
+a.page-link:not(.disabled):hover {
+  --#{$prefix}pagination-link-color: var(--#{$prefix}color-link-hover);
+  text-decoration: underline !important;
+
+  it-icon::part(icon) {
+    fill: var(--#{$prefix}pagination-link-color);
+  }
+}
+
+a.page-link[aria-disabled] {
+  --#{$prefix}pagination-link-color: var(--#{$prefix}pagination-disabled-color);
+  cursor: not-allowed;
+
+  it-icon::part(icon) {
+    fill: var(--#{$prefix}pagination-link-color);
+  }
+}
+
+it-pagination a[slot='next'],
+it-pagination a[slot='prev'] {
+  text-decoration: none !important;
+
+  &:not(.disabled):hover {
+    --#{$prefix}pagination-link-color: var(--#{$prefix}color-link-hover);
+    text-decoration: underline !important;
+  }
+}
+
+it-pagination it-pagination-item a {
+  text-decoration: unset;
+
+  &:not(.disabled):hover {
+    --#{$prefix}pagination-link-color: var(--#{$prefix}color-link-hover);
+    text-decoration: underline !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}color-border-primary-active);
+    outline-offset: 2px;
+  }
+}
+
+it-pagination it-pagination-item a.pagination-generated-link:focus-visible {
+  outline: 2px solid var(--#{$prefix}color-border-primary-active) !important;
+  outline-offset: 2px !important;
+}
+
+.page-link[aria-current] {
+  --#{$prefix}pagination-border-color: var(--#{$prefix}color-border-primary-active);
+  --#{$prefix}pagination-link-color: var(--#{$prefix}color-link-active);
+  pointer-events: none;
+}
+
+it-pagination it-input::part(input-wrapper) {
+  margin: 0;
+}

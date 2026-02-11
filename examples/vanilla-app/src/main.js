@@ -39,6 +39,12 @@ document.querySelector('#app-header').innerHTML = `
         <a href="/src/affix">
           Affix
         </a>
+        <a href="/src/alert">
+          Alert
+        </a>
+        <a href="/src/autocomplete">
+          Autocomplete
+        </a>
         <a href="/src/avatar">
           Avatar
         </a>
@@ -75,6 +81,9 @@ document.querySelector('#app-header').innerHTML = `
         <a href="/src/form">
           Form
         </a>
+        <a href="/src/forward">
+          Forward
+        </a>
         <a href="/src/icon">
           Icon
         </a>
@@ -89,6 +98,9 @@ document.querySelector('#app-header').innerHTML = `
         </a>
         <a href="/src/overlay">
           Overlay
+        </a>
+        <a href="/src/pagination.html">
+          Pagination
         </a>
         <a href="/src/popover">
           Popover
