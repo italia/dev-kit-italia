@@ -1,127 +1,109 @@
 /// <reference types="mocha"/>
-
+import '@italia/hero';
 import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
-import '@italia/breadcrumbs';
+import { type ItHero } from '@italia/hero';
 
 describe('it-hero component', () => {
   describe('structure and rendering', () => {
-    it('renders nav element with breadcrumb class', async () => {
-      const el = await fixture(html`
-        <it-hero>
-          <it-breadcrumb-item>Test</it-breadcrumb-item>
-        </it-hero>
-      `);
+    it('renders a Hero with the default class', async () => {
+      const el = await fixture<ItHero>(html`<it-hero></it-hero>`);
+      const section = el.shadowRoot?.querySelector('section');
 
-      await elementUpdated(el);
-
-      const nav = el.shadowRoot?.querySelector('nav');
-      expect(nav).to.exist;
-      expect(nav?.classList.contains('breadcrumb-container')).to.be.true;
+      expect(section).to.exist;
+      expect(section?.classList.contains('it-hero-wrapper')).to.be.true;
     });
 
-    it('renders breadcrumb list with correct classes', async () => {
-      const el = await fixture(html`
-        <it-hero>
-          <it-breadcrumb-item>Test</it-breadcrumb-item>
-        </it-hero>
-      `);
-      await elementUpdated(el);
-      const ol = el.shadowRoot?.querySelector('ol');
-      expect(ol).to.exist;
-      expect(ol?.classList.contains('breadcrumb')).to.be.true;
+    it('applies "it-text-centered" class when center attribute is true', async () => {
+      const el = await fixture<ItHero>(html`<it-hero center></it-hero>`);
+      const section = el.shadowRoot?.querySelector('section');
+
+      expect(section?.classList.contains('it-text-centered')).to.be.true;
     });
 
-    it('renders links in light DOM for progressive enhancement', async () => {
-      const el = await fixture(html`
-        <it-hero>
-          <it-breadcrumb-item><a href="/home">Home</a></it-breadcrumb-item>
-          <it-breadcrumb-item><a href="/library">Library</a></it-breadcrumb-item>
-        </it-hero>
-      `);
-      await elementUpdated(el);
+    it('applies "it-bottom-overlapping-content" class when overlap attribute is true', async () => {
+      const el = await fixture<ItHero>(html`<it-hero overlap></it-hero>`);
+      const section = el.shadowRoot?.querySelector('section');
 
-      const firstItem = el.querySelector('it-breadcrumb-item');
-      const link = firstItem?.querySelector('a');
-      expect(link).to.exist;
-      expect(link?.getAttribute('href')).to.equal('/home');
-      expect(link?.textContent).to.equal('Home');
+      expect(section?.classList.contains('it-bottom-overlapping-content')).to.be.true;
     });
 
-    it('passes aria-label to nav element', async () => {
-      const el = await fixture(html`
-        <it-hero it-aria-label="Navigation breadcrumb">
-          <it-breadcrumb-item>Test</it-breadcrumb-item>
-        </it-hero>
-      `);
-      await elementUpdated(el);
-      const nav = el.shadowRoot?.querySelector('nav');
-      expect(nav?.getAttribute('aria-label')).to.equal('Navigation breadcrumb');
-    });
+    it('passes it-aria-label to the section element', async () => {
+      const label = 'In evidenza test';
+      const el = await fixture<ItHero>(html`<it-hero it-aria-label="${label}"></it-hero>`);
+      const section = el.shadowRoot?.querySelector('section');
 
-    it('renders slotted breadcrumb items', async () => {
-      const el = await fixture(html`
-        <it-hero>
-          <it-breadcrumb-item><a href="/home">Home</a></it-breadcrumb-item>
-          <it-breadcrumb-item><a href="/library">Library</a></it-breadcrumb-item>
-          <it-breadcrumb-item>Data</it-breadcrumb-item>
-        </it-hero>
-      `);
-      await elementUpdated(el);
-      const slot = el.shadowRoot?.querySelector('slot');
-      expect(slot).to.exist;
-
-      const items = Array.from(el.querySelectorAll('it-breadcrumb-item'));
-      expect(items.length).to.equal(3);
+      expect(section?.getAttribute('aria-label')).to.equal(label);
     });
   });
 
-  describe('breadcrumb interactions', () => {
-    it('handles breadcrumb item current state', async () => {
-      const el = await fixture(html`
+  describe('slots and conditional layouts', () => {
+    it('renders the background wrapper only when background slot is populated', async () => {
+      const el = await fixture<ItHero>(html`
         <it-hero>
-          <it-breadcrumb-item><a href="/home">Home</a></it-breadcrumb-item>
-          <it-breadcrumb-item>Current Page</it-breadcrumb-item>
+          <img slot="background" src="test.jpg" alt="test" />
         </it-hero>
       `);
+
+      // Attendiamo il trigger del @slotchange
       await elementUpdated(el);
-      const items = Array.from(el.querySelectorAll('it-breadcrumb-item'));
-      const currentItem = items[1];
 
-      // Set the current state
-      currentItem.setCurrent(true);
-      await currentItem.updateComplete;
-
-      const listItem = currentItem.shadowRoot?.querySelector('li');
-      expect(listItem?.classList.contains('active')).to.be.true;
-      expect(listItem?.getAttribute('aria-current')).to.equal('page');
+      const bgWrapper = el.shadowRoot?.querySelector('.img-responsive-wrapper');
+      expect(bgWrapper).to.exist;
+      expect(bgWrapper?.getAttribute('part')).to.equal('img-responsive-wrapper');
     });
 
-    it('handles custom separators', async () => {
-      const el = await fixture(html`
-        <it-hero separator="&gt;">
-          <it-breadcrumb-item><a href="/home">Home</a></it-breadcrumb-item>
-          <it-breadcrumb-item><a href="/library">Library</a></it-breadcrumb-item>
-          <it-breadcrumb-item>Current</it-breadcrumb-item>
+    it('renders the text container only when text slot is populated', async () => {
+      const el = await fixture<ItHero>(html`
+        <it-hero>
+          <div slot="text"><h1>Hero Title</h1></div>
         </it-hero>
       `);
-      await elementUpdated(el);
-      const items = Array.from(el.querySelectorAll('it-breadcrumb-item'));
-      const firstItem = items[0];
 
-      const separator = firstItem.shadowRoot?.querySelector('.separator slot');
-      expect(separator?.textContent?.trim()).to.equal('>');
+      await elementUpdated(el);
+
+      const textContainer = el.shadowRoot?.querySelector('.container');
+      expect(textContainer).to.exist;
+      expect(textContainer?.getAttribute('part')).to.equal('text-container');
     });
 
-    it('applies dark mode styles when dark attribute is set', async () => {
-      const el = await fixture(html`
-        <it-hero dark>
-          <it-breadcrumb-item><a href="/home">Home</a></it-breadcrumb-item>
-          <it-breadcrumb-item>Current</it-breadcrumb-item>
+    it('manages overlay classes correctly based on slots and overlay-color', async () => {
+      // Caso 1: Entrambi gli slot presenti -> overlay default (dark)
+      const el = await fixture<ItHero>(html`
+        <it-hero>
+          <img slot="background" src="x.jpg" alt="x" />
+          <div slot="text">Text</div>
         </it-hero>
       `);
       await elementUpdated(el);
-      const ol = el.shadowRoot?.querySelector('ol');
-      expect(ol?.classList.contains('dark')).to.be.true;
+
+      const section = el.shadowRoot?.querySelector('section');
+      expect(section?.classList.contains('it-overlay')).to.be.true;
+      expect(section?.classList.contains('it-dark')).to.be.true;
+
+      // Caso 2: Colore overlay custom
+      el.overlayColor = 'primary';
+      await elementUpdated(el);
+      expect(section?.classList.contains('it-primary')).to.be.true;
+    });
+  });
+
+  describe('dynamic updates', () => {
+    it('updates state when slots are changed dynamically', async () => {
+      const el = await fixture<ItHero>(html`<it-hero></it-hero>`);
+
+      // Inizialmente non dovrebbe avere il wrapper dell'immagine
+      expect(el.shadowRoot?.querySelector('.img-responsive-wrapper')).to.not.exist;
+
+      // Aggiungiamo dinamicamente un elemento allo slot
+      const img = document.createElement('img');
+      img.setAttribute('slot', 'background');
+      img.src = 'test.jpg';
+      el.appendChild(img);
+
+      // Attendiamo lo slotchange e il re-render
+      await elementUpdated(el);
+
+      expect(el.shadowRoot?.querySelector('.img-responsive-wrapper')).to.exist;
     });
   });
 });

@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { StoryWidth100 } from 'dev-kit-italia/.storybook/it-decorators.ts';
 import { OVERLAY_COLORS, type OverlayColor } from '../src/types.js';
-
-import { StoryWidth100 } from '../../../.storybook/it-decorators';
 
 import '@italia/hero';
 
