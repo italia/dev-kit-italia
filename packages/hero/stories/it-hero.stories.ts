@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
+// eslint-disable-next-line import/no-relative-packages
 import { StoryWidth100 } from '../../../.storybook/it-decorators.ts';
 import { OVERLAY_COLORS, type OverlayColor } from '../src/types.js';
 
