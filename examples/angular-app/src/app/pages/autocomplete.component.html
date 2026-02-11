@@ -1,0 +1,135 @@
+<div class="container my-4">
+  <h1>Autocomplete</h1>
+  <p class="lead">Esempi di utilizzo del componente autocomplete con Angular</p>
+
+  <section class="example-section">
+    <h2>Esempio di autocompletamento</h2>
+    <p>Autocomplete base con regioni italiane</p>
+    <div class="form-group">
+      <it-autocomplete #autoBase name="regione" placeholder="Seleziona una regione...">
+        <span slot="label">Regione</span>
+      </it-autocomplete>
+    </div>
+  </section>
+
+  <section class="example-section">
+    <h2>Con placeholder</h2>
+    <p>Campo con testo segnaposto</p>
+    <it-autocomplete #autoPlaceholder name="regione" placeholder="Es: Lombardia">
+      <span slot="label">Cerca regione</span>
+    </it-autocomplete>
+  </section>
+
+  <section class="example-section">
+    <h2>Campo obbligatorio</h2>
+    <p>Campo con validazione required</p>
+    <form (submit)="handleRequiredSubmit($event)">
+      <it-autocomplete #autoRequired name="regione" required>
+        <span slot="label">Regione</span>
+      </it-autocomplete>
+      <it-button type="submit" variant="primary" class="mt-3">Valida</it-button>
+    </form>
+  </section>
+
+  <section class="example-section">
+    <h2>Con lunghezza minima</h2>
+    <p>Mostra suggerimenti solo dopo 3 caratteri</p>
+    <it-autocomplete #autoMinlength name="regione" min-length="3">
+      <span slot="label">Regione</span>
+    </it-autocomplete>
+  </section>
+
+  <section class="example-section">
+    <h2>Campo disabilitato</h2>
+    <p>Campo non modificabile</p>
+    <it-autocomplete #autoDisabled name="regione" disabled>
+      <span slot="label">Regione</span>
+    </it-autocomplete>
+  </section>
+
+  <section class="example-section">
+    <h2>Etichetta nascosta</h2>
+    <p>Label accessibile ma visualmente nascosta</p>
+    <it-autocomplete #autoHiddenLabel name="regione" label-hidden placeholder="Cerca regione...">
+      <span slot="label">Cerca regione</span>
+    </it-autocomplete>
+  </section>
+
+  <section class="example-section">
+    <h2>Valore predefinito (stringa)</h2>
+    <p>Autocomplete con valore predefinito come stringa</p>
+    <it-autocomplete #autoDefaultStr name="regione-default">
+      <span slot="label">Regione</span>
+    </it-autocomplete>
+  </section>
+
+  <section class="example-section">
+    <h2>Valore predefinito (oggetto)</h2>
+    <p>Autocomplete con valore predefinito come oggetto (utile per source asincrone)</p>
+    <it-autocomplete
+      #autoDefaultObj
+      name="regione-default-obj"
+      default-value='{"value":"lazio","label":"Lazio"}'
+    >
+      <span slot="label">Regione</span>
+    </it-autocomplete>
+  </section>
+
+  <section class="example-section">
+    <h2>Ricerca asincrona</h2>
+    <p>Usa una funzione per ricerche asincrone (API, database, ecc.)</p>
+    <it-autocomplete #autoAsync name="citta" min-length="2">
+      <span slot="label">Cerca città</span>
+    </it-autocomplete>
+  </section>
+
+  <section class="example-section">
+    <h2>Cambiare i valori dinamicamente</h2>
+    <p>L'autocomplete si aggiorna in base alla categoria selezionata</p>
+    <div class="row">
+      <div class="col-12 col-md-6 mb-3">
+        <div class="form-group">
+          <label for="categoria-select">Categoria alimento</label>
+          <select
+            id="categoria-select"
+            class="form-control"
+            (change)="handleCategoryChange($event)"
+          >
+            <option value="frutta">Frutta</option>
+            <option value="verdura">Verdura</option>
+            <option value="cereali">Cereali</option>
+            <option value="legumi">Legumi</option>
+            <option value="latticini">Latticini</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <it-autocomplete #autoAlimento name="alimento">
+          <span slot="label">Alimento</span>
+        </it-autocomplete>
+      </div>
+    </div>
+  </section>
+
+  <section class="example-section">
+    <h2>Integrazione con form</h2>
+    <p>Validazione nativa del browser e gestione FormData</p>
+    <form (submit)="handleFormSubmit($event)">
+      <div class="row">
+        <div class="col-12 col-md-6 mb-3">
+          <it-autocomplete #autoFormRegione name="regione" required>
+            <span slot="label">Regione</span>
+          </it-autocomplete>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+          <it-autocomplete #autoFormProvincia name="provincia">
+            <span slot="label">Provincia</span>
+          </it-autocomplete>
+        </div>
+      </div>
+      <it-button type="submit" variant="primary">Invia</it-button>
+
+      
+    </form>
+  </section>
+</div>

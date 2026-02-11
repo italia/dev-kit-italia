@@ -1,6 +1,7 @@
 import { registerTranslation } from '@italia/i18n/i18n.js';
 
 export * from '@italia/accordion';
+export * from '@italia/autocomplete';
 export * from '@italia/back-to-top';
 export * from '@italia/button';
 export * from '@italia/callout';

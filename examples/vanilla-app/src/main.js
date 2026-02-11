@@ -39,11 +39,17 @@ document.querySelector('#app-header').innerHTML = `
         <a href="/src/affix">
           Affix
         </a>
+        <a href="/src/autocomplete">
+          Autocomplete
+        </a>
         <a href="/src/avatar">
           Avatar
         </a>
         <a href="/src/back-to-top">
           Back to Top
+        </a>
+        <a href="/src/back">
+          Back
         </a>
         <a href="/src/badge">
           Badge

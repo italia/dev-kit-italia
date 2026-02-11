@@ -30,6 +30,12 @@ it-breadcrumbs:not(:defined) {
     }
 
     color: var(--#{$prefix}breadcrumb-link-color);
+
+    [slot='separator'] {
+      display: inline-flex;
+      align-items: center;
+      margin-inline: 0.5rem;
+    }
   }
 
   it-icon {
@@ -56,5 +62,11 @@ it-breadcrumbs[dark]:not(:defined) {
     }
 
     color: var(--it-breadcrumb-text-color);
+
+    [slot='separator'] {
+      display: inline-flex;
+      align-items: center;
+      margin-inline: 0.5rem;
+    }
   }
 }
