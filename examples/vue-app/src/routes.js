@@ -5,6 +5,7 @@ import Accordion from './components/Accordion.vue';
 import Avatar from './components/Avatar.vue';
 import Breadcrumbs from './components/Breadcrumbs.vue';
 import Affix from './components/Affix.vue';
+import Alert from './components/Alert.vue';
 import Autocomplete from './components/AutocompletePage.vue';
 import BackToTop from './components/BackToTop.vue';
 import Back from './components/Back.vue';
@@ -31,11 +32,13 @@ import Sticky from './components/Sticky.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Pagination from './components/Pagination.vue';
+import Forward from './components/Forward.vue';
 
 const routes = [
   { path: '/', name: 'Homepage', component: Home },
   { path: '/accordion', name: 'Accordion', component: Accordion },
   { path: '/affix', name: 'Affix', component: Affix },
+  { path: '/alert', name: 'Alert', component: Alert },
   { path: '/autocomplete', name: 'Autocomplete', component: Autocomplete },
   { path: '/avatar', name: 'Avatar', component: Avatar },
   { path: '/back-to-top', name: 'BackToTop', component: BackToTop },
@@ -49,6 +52,7 @@ const routes = [
   { path: '/collapse', name: 'Collapse', component: Collapse },
   { path: '/dropdown', name: 'Dropdown', component: Dropdown },
   { path: '/form', name: 'Form', component: Form },
+  { path: '/forward', name: 'Forward', component: Forward },
   { path: '/icon', name: 'Icon', component: Icon },
   { path: '/input', name: 'Input', component: Input },
   { path: '/modal', name: 'Modal', component: Modal },

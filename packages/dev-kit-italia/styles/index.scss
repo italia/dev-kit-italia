@@ -10,6 +10,7 @@
 @import 'bootstrap-italia/src/scss/base/reboot';
 
 @import 'bootstrap-italia/src/scss/base/containers';
+@import 'bootstrap-italia/src/scss/base/transitions';
 @import 'bootstrap-italia/src/scss/base/helpers';
 
 @import 'bootstrap-italia/src/scss/base/utilities/api';
@@ -34,6 +35,7 @@
 @import 'bootstrap-italia/src/scss/components/sidebar';
 @import 'bootstrap-italia/src/scss/components/affix';
 @import 'bootstrap-italia/src/scss/components/badge';
+@import 'bootstrap-italia/src/scss/components/forward';
 @import 'bootstrap-italia/src/scss/components/navscroll';
 @import 'bootstrap-italia/src/scss/components/progress-bars';
 
@@ -68,6 +70,7 @@
 @import 'bootstrap-italia/src/scss/components/list';
 @import 'bootstrap-italia/src/scss/components/headercenter';
 
+@import './components/alert';
 @import './components/sidebar';
 @import './components/list';
 @import './components/footer';

@@ -14,6 +14,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/affix.component').then((c) => c.AffixComponent),
   },
   {
+    path: 'alert',
+    loadComponent: () => import('./pages/alert.component').then((c) => c.AlertComponent),
+  },
+  {
     path: 'autocomplete',
     loadComponent: () => import('./pages/autocomplete.component').then((c) => c.AutocompleteComponent),
   },
@@ -65,6 +69,10 @@ export const routes: Routes = [
   {
     path: 'form',
     loadComponent: () => import('./pages/form.component').then((c) => c.FormComponent),
+  },
+  {
+    path: 'forward',
+    loadComponent: () => import('./pages/forward.component').then((c) => c.ForwardComponent),
   },
   {
     path: 'icon',
