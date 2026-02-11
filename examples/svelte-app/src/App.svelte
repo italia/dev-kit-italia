@@ -34,6 +34,7 @@
         <a href="#/collapse">Collapse</a>
         <a href="#/dropdown">Dropdown</a>
         <a href="#/form">Form</a>
+        <a href="#/forward">Forward</a>
         <a href="#/icon">Icon</a>
         <a href="#/input">Input</a>
         <a href="#/modal">Modal</a>

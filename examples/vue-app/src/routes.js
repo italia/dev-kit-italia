@@ -31,6 +31,7 @@ import Sidebar from './components/Sidebar.vue';
 import Sticky from './components/Sticky.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
+import Forward from './components/Forward.vue';
 
 const routes = [
   { path: '/', name: 'Homepage', component: Home },
@@ -50,6 +51,7 @@ const routes = [
   { path: '/collapse', name: 'Collapse', component: Collapse },
   { path: '/dropdown', name: 'Dropdown', component: Dropdown },
   { path: '/form', name: 'Form', component: Form },
+  { path: '/forward', name: 'Forward', component: Forward },
   { path: '/icon', name: 'Icon', component: Icon },
   { path: '/input', name: 'Input', component: Input },
   { path: '/modal', name: 'Modal', component: Modal },
