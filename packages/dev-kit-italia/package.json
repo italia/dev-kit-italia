@@ -1,7 +1,7 @@
 {
   "name": "@italia/dev-kit-italia",
   "description": "Bundle dei web components del Design system .italia",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "publishConfig": {
     "access": "public"
   },
@@ -52,6 +52,7 @@
   ],
   "dependencies": {
     "@italia/avatar": "workspace:^",
+    "@italia/autocomplete": "workspace:^",
     "@italia/callout": "workspace:^",
     "@italia/accordion": "workspace:^",
     "@italia/breadcrumbs": "workspace:^",
@@ -73,6 +74,7 @@
     "@italia/skiplinks": "workspace:^",
     "@italia/sticky": "workspace:^",
     "@italia/video": "workspace:^",
+    "@italia/pagination": "workspace:^",
     "@italia/radio": "workspace:^"
   },
   "devDependencies": {

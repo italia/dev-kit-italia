@@ -1,0 +1,129 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-autocomplete.stories';
+
+<Meta of={Stories} />
+
+# Autocomplete
+
+<description>Campo di input che suggerisce automaticamente opzioni di completamento man mano che l'utente digita</description>
+
+## Cosa fa
+Il componente Autocomplete consiste in un campo input con funzione di autocompletamento dei dati che fornisce all'utente suggerimenti pertinenti mentre inizia a digitare.
+
+Questi suggerimenti si basano sul testo inserito e aiutano l'utente a completare rapidamente il campo senza dover scrivere il testo per intero.
+
+
+[Approfondisci quando e come usare il componente Autocomplete](https://designers.italia.it/design-system/componenti/autocomplete/)
+
+## Anteprima e attributi del componente
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente.
+Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+
+## Accessibilità
+
+Il componente implementa il pattern [ARIA Combobox with List Autocomplete](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-autocomplete-list/)
+che garantisce:
+- corretti attributi ARIA per la navigazione assistita
+- annunci vocali per screen reader
+- gestione completa da tastiera
+- focus management appropriato
+
+Ricordati di includere sempre un'etichetta descrittiva, in modo che gli utenti comprendano chiaramente la sua funzione, dichiarandola nello slot `label`.
+
+## Testo segnaposto
+
+Puoi abbinare al componente un testo segnaposto per fornire indicazioni sul tipo di contenuto atteso valorizzando l'attributo `placeholder`.
+
+<Canvas of={Stories.Placeholder} />
+
+## Testo di supporto
+
+In caso di necessità, puoi utilizzare un ulteriore contenuto testuale sotto il campo, indicando nell'attributo `support-text`
+il testo da visualizzare.
+
+<Canvas of={Stories.TestoDiSupporto} />
+
+## Campo obbligatorio
+
+Per rendere il campo obbligatorio, aggiungi l'attributo `required`.
+
+<Canvas of={Stories.CampoObbligatorio} />
+
+## Lunghezza minima per i suggerimenti
+
+L'opzione `min-length` impedisce la visualizzazione dei suggerimenti se vengono digitati meno di N caratteri.
+Questo è particolarmente utile quando si lavora con grandi quantità di dati.
+
+<Canvas of={Stories.ConMinLength} />
+
+## Stato disabilitato
+
+Aggiungi l'attributo `disabled` per impedire l'interazione con il campo.
+
+<Canvas of={Stories.Disabilitato} />
+
+
+## Etichetta nascosta
+
+Se vuoi nascondere l'etichetta (ad esempio nei campi di ricerca), utilizza l'attributo `label-hidden`.
+
+L'etichetta sarà nascosta visivamente ma verrà letta dai lettori di schermo.
+
+<Canvas of={Stories.LabelHidden} />
+
+## Opzioni dinamiche
+
+Attraverso manipolazioni JavaScript e/o definendo una funzione da associare all'attributo `source` via JS, puoi popolare dinamicamente le opzioni del componente `it-autocomplete`.
+
+Il formato delle opzioni deve essere un array di oggetti con le proprietà `value` e `label`.
+
+### Dati dipendenti da un altro input
+
+In questo esempio viene mostrato come popolare il componente con dati che cambiano a fronte di un altro input,
+ad esempio il valore di un altro elemento di un form (come una select nell'esempio che segue).
+
+Espandi il codice degli esempi sottostanti per vedere un esempio di come implementare questa funzionalità.
+
+<Canvas of={Stories.DatiDinamici} />
+<Canvas of={Stories.RegioniEComuni} />
+
+### Ricerca asincrona
+
+Puoi passare come opzione `source` una funzione per filtrare i dati e popolare il componente dinamicamente.
+La funzione riceve come parametri la query di ricerca e una callback per popolare i risultati.
+
+```ts
+source: AutocompleteOption[]
+  | ((
+        query: string,
+        callback: (results: AutocompleteOption[]) => void
+      ) => void)
+```
+
+
+Espandi il codice dell'esempio sottostante per vedere come implementare questa funzionalità.
+
+<Canvas of={Stories.RicercaAsincrona} />
+
+## Valore di default
+Puoi impostare un valore iniziale utilizzando l'attributo `default-value`.
+Impostare un valore iniziale richiede un approccio diverso a seconda di come carichi i dati relativi alle opzioni (`source`).
+
+1. **Opzioni statiche: Usa una stringa**. Se passi un array statico alla `source`, imposta l'attributo `default-value` con il valore stringa del `value` corrispondente. Il componente troverà da solo l'etichetta corretta da mostrare.
+
+2. **Opzioni dinamiche: Usa un oggetto completo**. Se usi una funzione per caricare i dati nell'attributo `source`, il componente potrebbe non conoscere le opzioni all'avvio. Popola l'attributo `default-value` con un oggetto che contenga sia `value` che `label`.
+
+Se stai usando il componente in un framework (React, Angular, Vue, Svelte), segui le best practice del tuo framework per quanto riguarda gestione eventi, lifecycle events e fetching asincrono dei dati.
+
+Puoi esaminare gli esempi sottostanti per vedere i diversi comportamenti con esempi semplificati, clicca su Show code.
+<Canvas of={Stories.MatriceComportamento} />
+
+## {Stories.MetodiEPropPubblici.name}
+<Description of={Stories.MetodiEPropPubblici}/>
+
+## {Stories.I18n.name}
+<Description of={Stories.I18n}/>

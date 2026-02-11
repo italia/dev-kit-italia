@@ -155,24 +155,24 @@ export const EsempioInterattivo: Story = {
     })}`,
 };
 
-export const Multiple: Story = {
-  ...meta,
-  name: 'Select multipla',
-  parameters: {
-    docs: {
-      canvas: {
-        sourceState: 'shown',
-      },
-    },
-  },
-  render: (params) =>
-    html`${renderSelect({
-      ...params,
-      multiple: true,
-      placeholder: 'Seleziona una o più opzioni',
-      children: DefaultChildren,
-    })}`,
-};
+// export const Multiple: Story = {
+//   ...meta,
+//   name: 'Select multipla',
+//   parameters: {
+//     docs: {
+//       canvas: {
+//         sourceState: 'shown',
+//       },
+//     },
+//   },
+//   render: (params) =>
+//     html`${renderSelect({
+//       ...params,
+//       multiple: true,
+//       placeholder: 'Seleziona una o più opzioni',
+//       children: DefaultChildren,
+//     })}`,
+// };
 
 export const Disabled: Story = {
   ...meta,

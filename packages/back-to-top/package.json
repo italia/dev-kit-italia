@@ -1,7 +1,7 @@
 {
   "name": "@italia/back-to-top",
   "description": "Web component it-back-to-top del Design system .italia",
-  "version": "0.1.0-alpha.2",
+  "version": "1.0.0-alpha.5",
   "publishConfig": {
     "access": "public"
   },

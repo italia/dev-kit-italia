@@ -170,6 +170,21 @@ $it-components: (
     aspect-ratio: list.slash(16, 9),
   ),
   'it-collapse': (),
+  'it-pagination': (
+    height: 48px,
+    bg: transparent,
+  ),
+  'it-pagination-item': (
+    height: 48px,
+    width: 48px,
+    border-radius: 4px,
+  ),
+  'it-autocomplete': (
+    height: 74px,
+    attr: 'label',
+
+    padding: 1rem,
+  ),
 );
 
 @each $tag, $params in $it-components {
