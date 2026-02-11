@@ -16,7 +16,7 @@
 
   <section>
     <h2>Con contenuti testuali</h2>
-    <it-hero it-aria-label="In evidenza">
+    <it-hero>
       <div slot="text" class="it-hero-text-wrapper bg-dark">
         <span class="it-category">Titolo occhiello</span>
         <h2>Titolo della sezione</h2>
@@ -34,7 +34,7 @@
 
   <section>
     <h3>Con contenuti testuali centrati</h3>
-    <it-hero it-aria-label="In evidenza" center="">
+    <it-hero center="">
       <div slot="text" class="it-hero-text-wrapper bg-dark">
         <span class="it-category">Titolo occhiello</span>
         <h2>Titolo della sezione</h2>
@@ -52,7 +52,7 @@
 
   <section>
     <h2>Con testi e immagine di sfondo</h2>
-    <it-hero it-aria-label="In evidenza">
+    <it-hero>
       <img
         title="titolo immagine"
         alt="descrizione immagine"
@@ -76,7 +76,7 @@
 
   <section>
     <h3>Con overlay di colore primario</h3>
-    <it-hero it-aria-label="In evidenza" overlay-color="primary">
+    <it-hero overlay-color="primary">
       <img
         title="titolo immagine"
         alt="descrizione immagine"
@@ -112,7 +112,7 @@
 
     <section>
     <h2>Con immagine e margine negativo per contenuti sovrapposti</h2>
-    <it-hero it-aria-label="In evidenza" overlap="">
+    <it-hero overlap="">
       <img
         title="titolo immagine"
         alt="descrizione immagine"

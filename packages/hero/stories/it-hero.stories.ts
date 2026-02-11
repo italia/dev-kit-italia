@@ -20,7 +20,7 @@ const meta = {
   component: 'it-hero',
 
   args: {
-    'it-aria-label': 'In evidenza',
+    'it-aria-label': undefined,
     center: false,
     'overlay-color': undefined,
     overlap: false,
@@ -30,7 +30,6 @@ const meta = {
       control: 'text',
       description:
         "Testo usato come `aria-label` sul contenitore dell'Hero (es. \"In evidenza\"). Obbligatorio quando l'hero contiene solamente un'immagine.",
-      table: { defaultValue: { summary: 'In evidenza' } },
     },
     center: {
       control: 'boolean',
@@ -94,6 +93,7 @@ export const EsempioInterattivo: Story = {
   tags: ['!autodocs', '!dev'],
   parameters: { docs: { canvas: { sourceState: 'hidden' } } },
   decorators,
+  args: { ...meta.args, 'it-aria-label': 'In evidenza' },
   render: (args) =>
     html`${renderComponentWithImage({
       ...args,
@@ -103,6 +103,7 @@ export const EsempioInterattivo: Story = {
 export const ConImmagine: Story = {
   name: 'Con immagine',
   decorators,
+  args: { ...meta.args, 'it-aria-label': 'In evidenza' },
   render: (args) =>
     html`${renderComponentWithImage({
       ...args,
@@ -139,7 +140,7 @@ export const ConTestoEImmaginePrimary: Story = {
 export const ConTestoEImmaginePrimaryFilter: Story = {
   name: 'Con overlay e filtro di colore primario',
   decorators,
-  args: { ...meta.args, 'overlay-color': 'filter' },
+  args: { ...meta.args, 'overlay-color': 'filter', 'it-aria-label': 'In evidenza' },
   render: (args) => renderComponent({ ...args, children: html`${exampleSlotImage}` }),
 };
 

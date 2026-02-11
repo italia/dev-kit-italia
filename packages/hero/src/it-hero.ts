@@ -13,8 +13,6 @@ export class ItHero extends BaseComponent {
 
   @state() private _hasText = false;
 
-  @property({ type: String, reflect: true, attribute: 'it-aria-label' }) itAriaLabel = 'In evidenza';
-
   @property({ type: Boolean, reflect: true }) center = false;
 
   @property({ type: Boolean, reflect: true }) overlap = false;
