@@ -1,6 +1,7 @@
 import '../packages/i18n/dist/src';
 
 import '../packages/accordion/dist/src';
+import '../packages/autocomplete/dist/src';
 import '../packages/avatar/dist/src';
 import '../packages/back-to-top/dist/src';
 import '../packages/button/dist/src';

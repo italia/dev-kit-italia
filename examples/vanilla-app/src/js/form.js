@@ -105,6 +105,25 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         events: ['it-change'], // 👈 FORZA l’ascolto sul change
       },
+    )
+    .addField(
+      'it-autocomplete[id="autocomplete-regione"]',
+      [
+        {
+          rule: 'required',
+          errorMessage: 'Email obbligatoria',
+        },
+        {
+          validator: () => {
+            const value = getItInputValue('it-autocomplete[id="autocomplete-regione"]');
+            return value.trim() !== '';
+          },
+          errorMessage: 'Seleziona una regione',
+        },
+      ],
+      {
+        events: ['it-change'], // 👈 FORZA l’ascolto sul change
+      },
     );
 
   validate.onValidate((props) => {

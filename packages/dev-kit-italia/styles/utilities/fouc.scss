@@ -170,6 +170,12 @@ $it-components: (
     aspect-ratio: list.slash(16, 9),
   ),
   'it-collapse': (),
+  'it-autocomplete': (
+    height: 74px,
+    attr: 'label',
+
+    padding: 1rem,
+  ),
 );
 
 @each $tag, $params in $it-components {

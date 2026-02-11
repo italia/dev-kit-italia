@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Back - Test Web Components - vanilla-app</title>
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="root">
+      <header id="app-header"></header>
+      <main class="container my-4">
+        <h1>Back</h1>
+
+        <section class="mb-4">
+          <h2>Link</h2>
+          <a href="#" class="go-back">
+            <it-icon name="it-arrow-left" size="sm" color="primary"></it-icon>
+            <span>Back</span>
+          </a>
+        </section>
+
+        <section class="mb-4">
+          <h2>Pulsanti</h2>
+          <it-button variant="primary" class="go-back" icon>
+            <it-icon name="it-arrow-left" size="sm" color="inverse"></it-icon>
+            <span>Back</span>
+          </it-button>
+
+          <it-button variant="primary" class="go-back" icon>
+            <it-icon name="it-arrow-up" size="sm" color="inverse"></it-icon>
+            <span>Back</span>
+          </it-button>
+        </section>
+      </main>
+      <div id="app-footer"></div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/js/back.js"></script>
+  </body>
+</html>
