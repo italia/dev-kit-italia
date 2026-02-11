@@ -1,5 +1,16 @@
 # @italia/globals
 
+## 1.0.0-alpha.5
+
+### Minor Changes
+
+- [#225](https://github.com/italia/dev-kit-italia/pull/225) [`57f1319`](https://github.com/italia/dev-kit-italia/commit/57f1319bb9db5d1b4a5811ccf16e46cc09e83e8f) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added modal component
+
+### Patch Changes
+
+- Updated dependencies [[`18e1e61`](https://github.com/italia/dev-kit-italia/commit/18e1e61c9e999713ffc1965a547d08919808dc77)]:
+  - @italia/i18n@1.0.0-alpha.5
+
 ## 1.0.0-alpha.4
 
 ### Patch Changes
