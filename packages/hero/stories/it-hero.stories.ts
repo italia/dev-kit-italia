@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 // eslint-disable-next-line import/no-relative-packages
-import { StoryWidth100 } from '../../../.storybook/it-decorators.ts';
 import { OVERLAY_COLORS, type OverlayColor } from '../src/types.js';
 
 import '@italia/hero';
@@ -18,7 +17,7 @@ const meta = {
   title: 'Componenti/Hero',
   tags: ['alpha', 'web-component', 'a11y-ok'],
   component: 'it-hero',
-
+  parameters: { pageLayout: 'w-100' },
   args: {
     'it-aria-label': undefined,
     center: false,
@@ -86,13 +85,10 @@ const renderComponentWithImage = (args: any) =>
 export default meta;
 type Story = StoryObj<HeroProps>;
 
-const decorators = [StoryWidth100];
-
 export const EsempioInterattivo: Story = {
   name: 'Esempio interattivo',
   tags: ['!autodocs', '!dev'],
-  parameters: { docs: { canvas: { sourceState: 'hidden' } } },
-  decorators,
+  parameters: { docs: { canvas: { sourceState: 'hidden' } }, ...meta.parameters },
   args: { ...meta.args, 'it-aria-label': 'In evidenza' },
   render: (args) =>
     html`${renderComponentWithImage({
@@ -102,7 +98,6 @@ export const EsempioInterattivo: Story = {
 
 export const ConImmagine: Story = {
   name: 'Con immagine',
-  decorators,
   args: { ...meta.args, 'it-aria-label': 'In evidenza' },
   render: (args) =>
     html`${renderComponentWithImage({
@@ -112,34 +107,29 @@ export const ConImmagine: Story = {
 
 export const ConContenutiTestuali: Story = {
   name: 'Con contenuti testuali',
-  decorators,
   render: (args) => renderComponent({ ...args, children: exampleSlotText }),
 };
 
 export const ConContenutiTestualiCentrati: Story = {
   name: 'Con contenuti testuali centrati',
-  decorators,
   args: { ...meta.args, center: true },
   render: (args) => renderComponent({ ...args, children: exampleSlotText }),
 };
 
 export const ConTestoEImmagine: Story = {
   name: 'Con testi ed immagine di sfondo',
-  decorators,
   args: { ...meta.args },
   render: (args) => renderComponent({ ...args, children: html`${exampleSlotImage} ${exampleSlotText}` }),
 };
 
 export const ConTestoEImmaginePrimary: Story = {
   name: 'Con overlay di colore primario',
-  decorators,
   args: { ...meta.args, 'overlay-color': 'primary' },
   render: (args) => renderComponent({ ...args, children: html`${exampleSlotImage} ${exampleSlotText}` }),
 };
 
 export const ConTestoEImmaginePrimaryFilter: Story = {
   name: 'Con overlay e filtro di colore primario',
-  decorators,
   args: { ...meta.args, 'overlay-color': 'filter', 'it-aria-label': 'In evidenza' },
   render: (args) => renderComponent({ ...args, children: html`${exampleSlotImage}` }),
 };
@@ -147,7 +137,6 @@ export const ConTestoEImmaginePrimaryFilter: Story = {
 // TODO: Sostituire in questo esempio, lhtml della card con il componente <it-card>
 export const OverlapContent: Story = {
   name: 'Con immagine e margine negativo per contenuti sovrapposti',
-  decorators,
   args: { ...meta.args, overlap: true },
   render: (args) => html`
     ${renderComponent({ ...args, children: html`${exampleSlotImage} ${exampleSlotText}` })}

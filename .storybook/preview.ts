@@ -3,6 +3,7 @@ import './main.scss';
 import './storybook-styles.scss';
 import prettier from 'prettier-v2';
 import HTMLParser from 'prettier-v2/parser-html';
+import { StoryWidth100 } from './it-decorators';
 import './elements';
 
 const preview: Preview = {
@@ -61,7 +62,7 @@ const preview: Preview = {
 export default preview;
 
 export const decorators = [
-  (Story: any) => {
+  (Story: any, { parameters }) => {
     // Usa un effetto per agire sul documento dell'iframe dopo il mount
     // Funziona anche con React o senza (a seconda del setup)
 
@@ -71,6 +72,29 @@ export const decorators = [
         document.documentElement.lang = 'it'; // Cambia "it" con la lingua desiderata
       }
     }, 0); // Lascia tempo all'iframe di caricare
-    return Story();
+
+    const { pageLayout } = parameters;
+
+    switch (pageLayout) {
+      //
+      // case 'page':
+      //   return (
+      //     // Your page layout is probably a little more complex than this
+      //     <div className="page-layout">
+      //       <Story />
+      //     </div>
+      //   );
+      // case 'page-mobile':
+      //   return (
+      //     <div className="page-mobile-layout">
+      //       <Story />
+      //     </div>
+      //   );
+      case 'w-100':
+        return StoryWidth100(Story);
+      default:
+        // In the default case, don't apply a layout
+        return Story();
+    }
   },
 ];
