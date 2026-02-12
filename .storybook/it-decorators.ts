@@ -17,6 +17,9 @@ export const StoryWidth100 = (story) => html`
           display: block !important;
         }
       }
+      .docs-story div[scale='1']:has(.w100-layout) {
+        margin-bottom: 2rem;
+      }
     </style>
     ${story()}
   </div>
