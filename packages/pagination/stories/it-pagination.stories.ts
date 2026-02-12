@@ -406,7 +406,7 @@ export const ConPageChanger: Story = {
 export const ConJumpToPage: Story = {
   name: 'Con salto a pagina specifica',
   render: () => html`
-    <it-pagination id="jump" value="5" total="20">
+    <it-pagination id="jump" value="5" total="10">
       <a href="#" slot="prev">
         <it-icon name="it-chevron-left"></it-icon>
         <span class="visually-hidden">Pagina precedente</span>
@@ -426,6 +426,21 @@ export const ConJumpToPage: Story = {
       </it-pagination-item>
       <it-pagination-item page="5">
         <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>5</a>
+      </it-pagination-item>
+      <it-pagination-item page="6">
+        <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>6</a>
+      </it-pagination-item>
+      <it-pagination-item page="7">
+        <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>7</a>
+      </it-pagination-item>
+      <it-pagination-item page="8">
+        <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>8</a>
+      </it-pagination-item>
+      <it-pagination-item page="9">
+        <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>9</a>
+      </it-pagination-item>
+      <it-pagination-item page="10">
+        <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>10</a>
       </it-pagination-item>
 
       <a href="#" slot="next">

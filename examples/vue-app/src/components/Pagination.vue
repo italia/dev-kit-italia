@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 // Array per l'esempio "More Mode"
 const pagesList = Array.from({ length: 50 }, (_, i) => i + 1);
@@ -7,6 +7,25 @@ const pagesList = Array.from({ length: 50 }, (_, i) => i + 1);
 const handlePageSizeChange = (event) => {
   console.log('PageChanger:', event.target.value);
 };
+
+onMounted(() => {
+  // Jump to page event listener
+  const jumperInput = document.getElementById('jumper-example');
+  const pagination = document.getElementById('jump');
+  if (jumperInput && pagination) {
+    const pTot = parseInt(pagination.getAttribute('total') || '10', 10);
+
+    jumperInput.addEventListener('it-change', () => {
+      const pageNumber = jumperInput.value;
+      if (pageNumber < 1 || pageNumber > pTot) {
+        console.log('JumpToPage: Numero di pagina non valido', pageNumber);
+        return;
+      }
+      console.log('JumpToPage: Vai a pagina', pageNumber);
+      pagination.value = pageNumber.toString();
+    });
+  }
+});
 </script>
 
 <template>
@@ -148,21 +167,29 @@ const handlePageSizeChange = (event) => {
 
     <section class="mb-5">
       <h2>Con salto a pagina specifica</h2>
-      <it-pagination id="jump" value="5" total="20">
-        <a href="javascript:void(0)" slot="prev"><it-icon name="it-chevron-left"></it-icon><span class="visually-hidden">Pagina precedente</span></a>
-        <it-pagination-item v-for="n in 5" :key="n" :page="String(n)">
-          <a href="javascript:void(0)"> <span class="d-inline-block d-sm-none">Pagina </span>{{ n }} </a>
-        </it-pagination-item>
-        <a href="javascript:void(0)" slot="next"><it-icon name="it-chevron-right"></it-icon><span class="visually-hidden">Pagina successiva</span></a>
+      <it-pagination id="jump" value="5" total="10">
+        <a href="javascript:void(0)" slot="prev">
+          <it-icon name="it-chevron-left"></it-icon>
+          <span class="visually-hidden">Pagina precedente</span>
+        </a>
 
-        <div slot="jump-to-page" style="display: flex; align-items: center; gap: 0.5rem">
+        <it-pagination-item v-for="n in 10" :key="n" :page="String(n)">
+          <a href="javascript:void(0)"><span class="d-inline-block d-sm-none">Pagina </span>{{ n }}</a>
+        </it-pagination-item>
+
+        <a href="javascript:void(0)" slot="next">
+          <it-icon name="it-chevron-right"></it-icon>
+          <span class="visually-hidden">Pagina successiva</span>
+        </a>
+
+        <div slot="jump-to-page" style="display: flex; align-items: center; gap: 0.5rem;">
           <it-input
             id="jumper-example"
             type="number"
             name="jumper-example"
             placeholder="Vai a ..."
             label-hidden
-            style="width: 80px"
+            style="width: 80px;"
           >
             <span slot="label">Vai a ...</span>
           </it-input>
