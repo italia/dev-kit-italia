@@ -47,18 +47,43 @@ Dovrai specificare un titolo tramite lo slot `header`, l'attributo `modal-title`
 
 Eventuali azioni come pulsanti di conferma o cancellazione andranno inserite nello slot `footer`, e dovranno essere implementate manualmente le funzionalità di chiusura della modale, oltre ad eventuali altre funzionalità.
 
-Tutti gli esempi forniscono un'implementazione di base per la chiusura della modale, analoga alla seguente, attraverso event listener sul click dei pulsanti appartenenti allo slot `footer` dei vari esempi:
+<div class="callout callout-primary">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Attivazione via Javascript</span>
+    </div>
+    <p>
+      Il componente espone i metodi pubblici `show()`, `hide()` e `toggle()`, rispettivamente per aprire/chiudere la modale e commutarne lo stato via codice.
+    </p>
+    <p class="font-weight-bold">
+      <strong>Non è necessaria l'implementazione via JS per l'apertura della modale, in quanto il componente gestisce automaticamente l'apertura al click dell'`it-button` o del pulsante inserito nello slot `trigger`, ma è possibile implementare un'apertura manuale via JS qualora fosse necessario, ad esempio in caso di trigger non convenzionali o per esigenze specifiche di interazione e/o logiche di business.</strong>
+    </p>
+    <p class="font-weight-bold">
+    Al fine di garantire la completa compatibilità con tutti i moderni framework Javascript,
+      <strong>dovrai implementare autonomamente la chiusura della modale se vuoi inserire dei pulsanti di chiusura all'interno dello slot `footer`.</strong>
+    </p>
+    <p>
+      Tutti gli esempi seguenti forniscono un'implementazione di base per la chiusura della modale, analoga alla seguente, attraverso event listener sul click dei pulsanti appartenenti allo slot `footer` dei vari esempi:
+
+      ```js
+      const closeModal = (event: Event) => {
+        const el = event.currentTarget;
+        const modal = el.closest('it-modal');
+        modal?.hide();
+      };
+      ```
+    </p>
+    <p>
+      Se stai usando un framework moderno come React, Vue o Svelte, segui le best practice per l'implementazione dei Web Component all'interno del tuo framework, ad esempio gestendo le referenze agli elementi per l'attivazione manuale della modale via JS.
+    </p>
+    <p>
+      Vedi la sezione <strong>"Proprietà, Metodi, ed Eventi accessibili via JS"</strong> per maggiori dettagli sui metodi e gli eventi esposti dal componente.
+    </p>
+
+  </div>
+</div>
 
 
-```js
-const closeModal = (event: Event) => {
-  const el = event.currentTarget;
-  const modal = el.closest('it-modal');
-  modal?.hide();
-};
-```
-
-Il metodo `hide()` è disponibile come metodo pubblico e chiude la modale. Vedi la sezione "Proprietà, Metodi, ed Eventi accessibili via js" per maggiori dettagli sui metodi e gli eventi esposti dal componente.
 
 ## Accessibilità
 
@@ -73,6 +98,7 @@ Il componente supporta la chiusura della modale tramite il tasto ESC e/o cliccan
 Il focus viene ripristinato sull'elemento di trigger una volta che la modale viene chiusa.
 
 Segui le indicazioni sottostanti per assicurarti che la modale sia accessibile a tutti gli utenti:
+- Popola lo slot `trigger` esclusivamente con elementi interattivi semanticamente corretti, come `it-button`, `button` o che supportino il ruolo di button.
 - Ricordati di popolare lo slot `header` o uno tra gli attributi `modal-title` e `it-aria-label` per fornire un'etichetta accessibile alla modale. Se non vuoi mostrare il titolo, al fine di garantire piena accessibilità, diventa obbligatorio l'uso dell'attributo `it-aria-label`.
 - In caso di contenuti che includono strutture semantiche, come liste, tabelle, paragrafi multipli, non valorizzare l'attributo `modal-description` e/o non inserire contenuto nello slot `description`. Maggiori informazioni [qui](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/#wai-ariaroles,states,andproperties).
 - Si consiglia sempre di includere un pulsante di chiusura all'interno della modale, che può essere aggiunto facilmente tramite l'attributo `close-button`, o implementato manualmente nello slot `footer` tramite, ad esempio, un pulsante `it-button`.
@@ -189,7 +215,9 @@ Il componente espone dei metodi ed eventi, utili per eventuali interazioni via j
 Il componente espone i seguenti metodi pubblici:
 -  `show()`: apre la modale
 -  `hide()`: chiude la modale
--  `toggle()`:  alterna lo stato
+-  `toggle()`:  alterna lo stato tra aperto e chiuso
+
+<Canvas of={Stories.AttivazioneViaJS} />
 
 ### Eventi
 Il componente emette i seguenti eventi custom:
