@@ -69,6 +69,9 @@ const meta: Meta<PaginationProps> = {
   ],
   parameters: {
     layout: 'fullscreen',
+    docs: {
+      source: { excludeDecorators: true },
+    },
     a11y: {
       config: {
         rules: [
@@ -144,6 +147,7 @@ export default meta;
 type Story = StoryObj<PaginationProps>;
 
 export const EsempioInterattivo: Story = {
+  tags: ['!dev'],
   render: (args) => renderComponent(args, defaultItems),
 };
 

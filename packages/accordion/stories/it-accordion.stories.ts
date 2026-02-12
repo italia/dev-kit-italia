@@ -171,7 +171,7 @@ export const EsempioInterattivo: Story = {
 };
 
 export const AccordionItem = {
-  name: 'Informazioni generali',
+  name: 'Elemento richiudibile',
   argTypes: {
     mode: { table: { disable: true } },
     backgroundActive: { table: { disable: true } },
