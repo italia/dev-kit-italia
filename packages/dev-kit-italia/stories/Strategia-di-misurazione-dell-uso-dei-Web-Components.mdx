@@ -1,0 +1,124 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Strategia di misurazione dell’utilizzo del Kit" />
+
+# Strategia di misurazione dell’utilizzo del Kit
+
+Questa guida descrive una strategia per analizzare l’adozione del Dev Kit Italia nelle pagine web. L’obiettivo è fornire uno strumento semplice e scalabile per raccogliere dati utili a migliorare il design system.
+
+## Introduzione
+
+L’adozione di un design system è un processo che richiede monitoraggio e analisi costanti. Per comprendere l’efficacia dei Web Components forniti da Dev Kit Italia, è fondamentale misurare il loro utilizzo nelle pagine web.
+
+Questo documento propone una strategia basata sull’analisi del DOM, che consente di identificare i componenti utilizzati, il contesto tecnologico in cui sono integrati e il loro impatto complessivo.
+
+## Obiettivi della strategia
+
+La strategia proposta si pone tre obiettivi principali:
+- identificare i Web Components utilizzati nelle pagine web, sfruttando un prefisso standard (`it-`) che li rende facilmente riconoscibili.
+- rilevare l’uso di componenti classici, ovvero quelli implementati tramite classi CSS e HTML puro, per ottenere una visione completa dell’adozione del design system.
+- determinare il framework o CMS utilizzato nella pagina, un’informazione utile per analisi più approfondite e per orientare le future evoluzioni del progetto.
+
+## Principi della strategia
+
+La strategia si basa su un’analisi del DOM che permette di raccogliere dati in modo non invasivo.
+
+I Web Components vengono identificati tramite il loro prefisso (`it-`), mentre i componenti implementati via HTML vengono rilevati cercando specifiche classi CSS, documentate nelle schede dei rispettivi componenti.
+
+In questa documentazione puoi riconoscere i componenti puramente HTML da quelli implementati come Web Component attraverso i tag `Componente` e `Documentazione HTML` presenti nelle documentazioni dei rispettivi componenti.
+
+Per quanto riguarda il framework o CMS, l’approccio si basa su euristiche che analizzano oggetti globali, meta tag e pattern generati dai principali strumenti di sviluppo frontend.
+
+## Implementazione dello script di analisi
+
+Per mettere in pratica questa strategia, viene fornito uno script JavaScript di esempio che può essere facilmente integrato nel tuo progetto. Lo script analizza il DOM per identificare i Web Components e i componenti classici, e utilizza euristiche per rilevare il framework o CMS.
+
+Di seguito è riportato un esempio di implementazione dello script, che include le funzioni per rilevare i Web Components e i componenti classici, oltre alla funzione principale per aggregare i risultati.
+
+```javascript
+function detectWebComponents(prefix = 'it-') {
+  const allElements = document.getElementsByTagName('*');
+  const components = {};
+
+  Array.from(allElements).forEach(el => {
+    const tag = el.tagName.toLowerCase();
+
+    if (tag.startsWith(prefix)) {
+      if (!components[tag]) {
+        components[tag] = 0;
+      }
+      components[tag]++;
+    }
+  });
+
+  return components;
+}
+
+function detectClassicComponents() {
+  const components = {};
+
+  const classes = [
+    'affix-top',
+    'affix-bottom',
+    'badge',
+    'it-footer',
+    'form-group',
+  ];
+
+  classes.forEach(cl => {
+    const elements = document.getElementsByClassName(cl);
+    Array.from(elements).forEach(el => {
+      if (!components[cl]) {
+        components[cl] = 0;
+      }
+      components[cl]++;
+    });
+  });
+
+  return components;
+}
+
+function analyzeComponentsUsage(prefix = 'it-') {
+  if (!window._itAnalytics) return null;
+
+  const components = {
+    webComponents: detectWebComponents(prefix),
+    classicComponents: detectClassicComponents(),
+  };
+
+  const wcTotal = Object.values(components.webComponents).reduce((sum, value) => sum + value, 0);
+  const classicTotal = Object.values(components.classicComponents).reduce((sum, value) => sum + value, 0);
+
+  return {
+    total: wcTotal + classicTotal,
+    byComponent: components,
+  };
+}
+```
+
+## Esempio di output
+
+Eseguendo lo script su una pagina web, si ottiene un output strutturato che riassume i dati raccolti. Ad esempio:
+
+```json
+{
+  "webComponents": { "it-button": 5, "it-card": 3 },
+  "classicComponents": { "badge": 2 },
+  "framework": "React"
+}
+```
+
+Questo output mostra il numero di istanze per ciascun tipo di componente, sia Web Components che classici, e identifica il framework utilizzato.
+
+## Raccomandazioni operative
+
+Per ottenere risultati accurati, è importante eseguire lo script dopo che la pagina ha completato il rendering, ad esempio in risposta all’evento `load`.
+
+Inoltre, è fondamentale rispettare le normative sulla privacy, inviando i dati raccolti solo a endpoint conformi.
+
+## Limitazioni del rilevamento di CMS e framework
+
+È importante sottolineare che il rilevamento del framework o CMS utilizzato nella pagina si basa su un approccio "best effort". Lo script analizza oggetti globali, meta tag e pattern generati dai principali strumenti di sviluppo frontend. Tuttavia, queste informazioni possono variare nel tempo o essere assenti in alcuni contesti, rendendo il rilevamento non sempre accurato.
+
+Ad esempio, un framework potrebbe non esporre oggetti globali o utilizzare pattern non documentati, mentre un CMS potrebbe non includere meta tag identificativi. Per questo motivo, i risultati del rilevamento devono essere interpretati come indicazioni di massima e non come dati definitivi.
+
