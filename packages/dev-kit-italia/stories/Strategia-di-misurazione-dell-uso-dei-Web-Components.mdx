@@ -96,6 +96,80 @@ function analyzeComponentsUsage(prefix = 'it-') {
 }
 ```
 
+È possibile estendere la strategia di misurazione per rilevare anche il framework e / o il CMS frontend utilizzato dalla pagina (es. React, Angular, Vue, Svelte, CMS come WordPress e Drupal) e correlare l’uso dei Web Components al contesto tecnologico.
+
+
+
+
+## Implementazione CMS / framework detection
+
+Il rilevamento del framework / CMS è possibile attraverso l'analisi di vari indicatori, tra cui:
+
+- la presenza di oggetti globali;
+
+- i meta tag e attributi nel DOM;
+
+- i pattern generati dai principali framework e CMS.
+
+Esempio di implementazione:
+
+```js
+function detectFramework() {
+
+  // Framework / Library frontend
+  if (window.ng && window.getAllAngularRootElements) return 'Angular';
+
+  if (window.__REACT_DEVTOOLS_ATTACH__ || document.querySelector('[data-reactroot], [data-reactid], [data-react-helmet]')) return 'React';
+
+  if (window.__VUE_DEVTOOLS_GLOBAL_HOOK__ || document.querySelector('[data-v-app], [data-vue-meta]')) return 'Vue';
+
+  if (document.querySelector('[data-svelte-h]')) return 'Svelte';
+
+  if (window.__NEXT_DATA__) return 'Next.js';
+
+  if (window.__NUXT__ || document.querySelector('[data-n-head]')) return 'Nuxt.js';
+
+  if (document.querySelector('[data-astro-root]')) return 'Astro';
+
+  if (window.__SVELTEKIT_APP_VERSION__) return 'SvelteKit';
+
+  if (window.__REMIXX_CONTEXT__) return 'Remix';
+
+  if (document.querySelector('[data-hydrate]') && document.querySelector('script[type="module"]')) return 'Qwik';
+
+  // Altri framework noti
+  if (window.Ember) return 'Ember.js';
+
+  if (window.Backbone) return 'Backbone.js';
+
+  if (window.Meteor) return 'Meteor';
+
+  // Fallback
+  return 'Vanilla JS / Unknown';
+
+}
+
+
+
+function detectCMS() {
+  // CMS
+
+  if (window.wp && window.wp.data) return 'WordPress';
+
+  if (document.querySelector('meta[name="generator"][content*="WordPress"]')) return 'WordPress';
+
+  if (document.querySelector('meta[name="Generator"][content*="Drupal"]')) return 'Drupal';
+
+  if (document.querySelector('meta[name="Generator"][content*="Joomla"]')) return 'Joomla';
+
+  // Fallback
+  return null;
+
+}
+```
+
+Nota bene: questo esempio di implementazione potrebbe diventare obsoleto in qualsiasi momento, dato che si basa su variabili e/o informazioni impostate autonomamente dai diversi framework/CMS.
+
 ## Esempio di output
 
 Eseguendo lo script su una pagina web, si ottiene un output strutturato che riassume i dati raccolti. Ad esempio:
