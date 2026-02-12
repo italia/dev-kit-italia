@@ -62,7 +62,7 @@ const preview: Preview = {
 export default preview;
 
 export const decorators = [
-  (Story: any, { parameters }) => {
+  (Story: any, ctx) => {
     // Usa un effetto per agire sul documento dell'iframe dopo il mount
     // Funziona anche con React o senza (a seconda del setup)
 
@@ -73,7 +73,7 @@ export const decorators = [
       }
     }, 0); // Lascia tempo all'iframe di caricare
 
-    const { pageLayout } = parameters;
+    const { pageLayout } = ctx.parameters;
 
     switch (pageLayout) {
       //
@@ -91,7 +91,7 @@ export const decorators = [
       //     </div>
       //   );
       case 'w-100':
-        return StoryWidth100(Story);
+        return StoryWidth100(Story, ctx);
       default:
         // In the default case, don't apply a layout
         return Story();

@@ -40,9 +40,6 @@ const config: StorybookConfig = {
     config.optimizeDeps.exclude.push('@storybook/addon-docs/mdx-react-shim');
     config.optimizeDeps.exclude.push('@storybook/addon-docs');
     config.optimizeDeps.exclude.push('@mdx-js/react');
-
-    config.optimizeDeps.include = ['lit', 'lit/directives/style-map.js', 'lit/directives/class-map.js'];
-
     return config;
   },
 };

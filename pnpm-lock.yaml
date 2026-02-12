@@ -114,6 +114,9 @@ importers:
       lint-staged:
         specifier: ^15.2.7
         version: 15.5.2
+      lit:
+        specifier: 'catalog:'
+        version: 3.3.2
       playwright:
         specifier: ^1.54.1
         version: 1.58.0
