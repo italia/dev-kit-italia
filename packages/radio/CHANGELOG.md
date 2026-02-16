@@ -1,5 +1,18 @@
 # @italia/radio
 
+## 1.0.0-alpha.5
+
+### Minor Changes
+
+- [#135](https://github.com/italia/dev-kit-italia/pull/135) [`9fc2b8c`](https://github.com/italia/dev-kit-italia/commit/9fc2b8c2890e6139f2892490eb43f330da3cdb38) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added rating component
+
+### Patch Changes
+
+- [#251](https://github.com/italia/dev-kit-italia/pull/251) [`21e8180`](https://github.com/italia/dev-kit-italia/commit/21e8180e49b83ca2be70d69e952a52d2e563b29e) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated bootstrap-italia and fixed design-tokens
+
+- Updated dependencies [[`57f1319`](https://github.com/italia/dev-kit-italia/commit/57f1319bb9db5d1b4a5811ccf16e46cc09e83e8f)]:
+  - @italia/globals@1.0.0-alpha.5
+
 ## 1.0.0-alpha.4
 
 ### Patch Changes

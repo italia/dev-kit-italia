@@ -157,25 +157,31 @@
 
   <section class="mb-5">
     <h2>Con salto a pagina specifica</h2>
-    <it-pagination id="jump" value="5" total="20">
-      <a href="#" slot="prev"><it-icon name="it-chevron-left"></it-icon><span class="visually-hidden">Pagina precedente</span></a>
-      @for (page of getRange(5); track page) {
+    <it-pagination id="jump" value="5" total="10">
+      <a href="#" slot="prev">
+        <it-icon name="it-chevron-left"></it-icon>
+        <span class="visually-hidden">Pagina precedente</span>
+      </a>
+
+      @for (page of getRange(10); track page) {
         <it-pagination-item [attr.page]="page">
-          <a href="#">
-            <span class="d-inline-block d-sm-none">Pagina </span>{{ page }}
-          </a>
+          <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>{{ page }}</a>
         </it-pagination-item>
       }
-      <a href="#" slot="next"><it-icon name="it-chevron-right"></it-icon><span class="visually-hidden">Pagina successiva</span></a>
 
-      <div slot="jump-to-page" style="display: flex; align-items: center; gap: 0.5rem">
+      <a href="#" slot="next">
+        <it-icon name="it-chevron-right"></it-icon>
+        <span class="visually-hidden">Pagina successiva</span>
+      </a>
+
+      <div slot="jump-to-page" style="display: flex; align-items: center; gap: 0.5rem;">
         <it-input
           id="jumper-example"
           type="number"
           name="jumper-example"
           placeholder="Vai a ..."
           label-hidden
-          style="width: 80px"
+          style="width: 80px;"
         >
           <span slot="label">Vai a ...</span>
         </it-input>

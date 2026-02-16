@@ -93,6 +93,9 @@ document.querySelector('#app-header').innerHTML = `
         <a href="/src/input">
           Input
         </a>
+        <a href="/src/list">
+          List
+        </a>
         <a href="/src/modal">
           Modal
         </a>
