@@ -37,6 +37,7 @@
         <a href="#/forward">Forward</a>
         <a href="#/icon">Icon</a>
         <a href="#/input">Input</a>
+        <a href="#/list">List</a>
         <a href="#/modal">Modal</a>
         <a href="#/navscroll">Navscroll</a>
         <a href="#/overlay">Overlay</a>
