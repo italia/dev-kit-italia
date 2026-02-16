@@ -9,7 +9,7 @@ npm install @italia/callout
 npm install @italia/collapse
 ```
 
-Nel caso di non utilizzo del kit completo, la dipendenza `@itala/collapse` è necessaria per implementare la versione "Callout di approfondimento", che presenta una sezione collassabile implementata attraverso collapse.
+Nel caso di non utilizzo del kit completo, la dipendenza `@italia/collapse` è necessaria per implementare la versione "Callout di approfondimento", che presenta una sezione collassabile implementata attraverso collapse.
 
 ```js
 // it-callout-more-collapse.ts
