@@ -40,30 +40,30 @@
 @import 'bootstrap-italia/src/scss/components/progress-bars';
 
 /*dev-kit-italia global styles*/
-@import '@italia/avatar/styles/globals';
 @import '@italia/accordion/styles/globals';
-@import '@italia/breadcrumbs/styles/globals';
+@import '@italia/autocomplete/styles/globals';
+@import '@italia/avatar/styles/globals';
 @import '@italia/back-to-top/styles/globals';
+@import '@italia/breadcrumbs/styles/globals';
 @import '@italia/button/styles/globals';
-@import '@italia/dropdown/styles/globals';
-@import '@italia/icon/styles/globals';
-@import '@italia/input/styles/globals';
-@import '@italia/navscroll/styles/globals';
-@import '@italia/skiplinks/styles/globals';
-@import '@italia/section/styles/globals';
-@import '@italia/select/styles/globals';
-@import '@italia/video/styles/globals';
 @import '@italia/callout/styles/globals';
 @import '@italia/checkbox/styles/globals';
 @import '@italia/chip/styles/globals';
 @import '@italia/collapse/styles/globals';
-@import '@italia/popover/styles/globals';
-@import '@italia/sticky/styles/globals';
-@import '@italia/radio/styles/globals';
-@import '@italia/pagination/styles/globals';
-@import '@italia/autocomplete/styles/globals';
-@import '@italia/rating/styles/globals';
+@import '@italia/dropdown/styles/globals';
+@import '@italia/icon/styles/globals';
+@import '@italia/input/styles/globals';
 @import '@italia/modal/styles/globals';
+@import '@italia/navscroll/styles/globals';
+@import '@italia/pagination/styles/globals';
+@import '@italia/popover/styles/globals';
+@import '@italia/radio/styles/globals';
+@import '@italia/rating/styles/globals';
+@import '@italia/section/styles/globals';
+@import '@italia/select/styles/globals';
+@import '@italia/skiplinks/styles/globals';
+@import '@italia/sticky/styles/globals';
+@import '@italia/video/styles/globals';
 
 // Footer
 @import 'bootstrap-italia/src/scss/components/footer';
@@ -71,10 +71,10 @@
 @import 'bootstrap-italia/src/scss/components/headercenter';
 
 @import './components/alert';
-@import './components/sidebar';
-@import './components/list';
 @import './components/footer';
 @import './components/go-back';
+@import './components/list';
+@import './components/sidebar';
 
 .it-footer-main .it-brand-wrapper ::part(icon) {
   width: var(--#{$prefix}footer-brand-icon-size);

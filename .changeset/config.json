@@ -10,10 +10,10 @@
   "fixed": [
     [
       "@italia/accordion",
-      "@italia/avatar",
       "@italia/autocomplete",
-      "@italia/breadcrumbs",
+      "@italia/avatar",
       "@italia/back-to-top",
+      "@italia/breadcrumbs",
       "@italia/button",
       "@italia/callout",
       "@italia/checkbox",
