@@ -57,7 +57,7 @@ const closeModal = (event: Event) => {
 };
 ```
 
-Il metodo `hide()` è disponibile come metodo pubblico e chiude la modale. Per maggiori dettagli sui metodi e gli eventi esposti dal componente, vai alla sezione "Proprietà, Metodi, ed Eventi accessibili via js".
+Il metodo `hide()` è disponibile come metodo pubblico e chiude la modale. Per maggiori dettagli sui metodi e gli eventi esposti dal componente, vai alla sezione "Proprietà, metodi ed eventi accessibili via js".
 
 ## Accessibilità
 
@@ -69,9 +69,9 @@ Il componente `it-modal`:
 - ripristina il focus sull'elemento trigger una volta che la modale viene chiusa.
 
 Per realizzare modali accessibili a tutti gli utenti, assicurati di:
-- popolare lo slot `header` o uno tra gli attributi `modal-title` e `it-aria-label` per fornire un'etichetta accessibile alla modale. Se non vuoi mostrare il titolo, al fine di garantire piena accessibilità, diventa obbligatorio l'uso dell'attributo `it-aria-label`.
-- In caso di contenuti che includono strutture semantiche, come liste, tabelle, paragrafi multipli, non valorizzare l'attributo `modal-description` e/o non inserire contenuto nello slot `description`. Maggiori informazioni [qui](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/#wai-ariaroles,states,andproperties).
-- Si consiglia sempre di includere un pulsante di chiusura all'interno della modale, che può essere aggiunto facilmente tramite l'attributo `close-button`, o implementato manualmente nello slot `footer` tramite, ad esempio, un pulsante `it-button`.
+- popolare lo slot `header` o uno tra gli attributi `modal-title` e `it-aria-label` per fornire un'etichetta accessibile alla modale. Se non vuoi mostrare il titolo, devi usare l'attributo `it-aria-label`;
+- in caso di contenuti che includono strutture semantiche (come liste, tabelle, paragrafi multipli), non valorizzare l'attributo `modal-description` e/o non inserire contenuto nello slot `description` ([Approfondisci ruoli, stati e proprietà WAI-ARIA]((https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/#wai-ariaroles,states,andproperties));
+- includere sempre un pulsante di chiusura della modale tramite l'attributo `close-button` o implementato manualmente nello slot `footer` tramite un pulsante `it-button`.
 
 ## Con pulsante di chiusura
 
@@ -92,7 +92,7 @@ Questo ti permette di aggiungere pulsanti di azione, link o qualsiasi altro elem
 
 ## Modale con elementi form
 
-Puoi inserire elementi Form all’interno della modale. 
+Puoi inserire elementi form all’interno della modale. 
 
 Ad esempio, una modale con un elenco di radio button:
 
@@ -117,24 +117,26 @@ Per inserire liste di link all’interno della modale, valorizza l'attributo `va
 ### Modale popconfirm
 La modale di tipo popconfirm è utile per brevi messaggi di conferma. Per ottenere questo layout, valorizza l'attributo `variant` con valore `popconfirm`.
 
-Il titolo della modale è facoltativo: nel caso non fosse necessario non devi né popolare lo slot `header` né valorizzare l'attributo `modal-title`, ma devi fornire un titolo alternativo tramite l'attributo `it-aria-label` per garantire accessibilità.
+Il titolo della modale è facoltativo. Se non hai bisogno di un titolo, non popolare lo slot `header` né valorizzare l'attributo `modal-title`, ma fornisci un titolo alternativo tramite l'attributo `it-aria-label` per garantire accessibilità.
 
 <Canvas of={Stories.Popconfirm} />
 
 ## Scroll di contenuti lunghi
 
-Quando le modali diventano troppo lunghe per il viewport o il dispositivo dell’utente, scorrono indipendentemente dalla pagina stessa.
+Quando le modali sono troppo lunghe per il viewport o il dispositivo dell’utente, scorrono indipendentemente dalla pagina stessa.
 
-Puoi utilizzare l'attributo `footer-shadow` per aggiungere un'ombra al footer della modale per distinguere l'elemento footer.
+Puoi utilizzare l'attributo `footer-shadow` per distinguere l'elemento footer con un'ombra.
 
 <Canvas of={Stories.ScrollLungo} />
 
 ## Scroll interno alla modale
 
 Puoi abilitare lo scroll all'interno del corpo della modale utilizzando l'attributo `scrollable`.
-Quando abiliti questa funzionalità, l'altezza della modale viene limitata in base all'altezza del viewport, e il contenuto all'interno della modale diventa scrollabile se supera questa altezza massima.
 
-Quando è presente questo attributo, viene reso raggiungibile da tastiera il contenuto scrollabile all'interno della modale, secondo le [linee guida ARIA](https://dequeuniversity.com/rules/axe-devtools/4.6/scrollable-region-focusable).
+Quando abiliti questa funzionalità:
+- l'altezza della modale viene limitata in base all'altezza del viewport;
+- il contenuto all'interno della modale diventa scrollabile se supera questa altezza massima;
+- il contenuto all'interno della modale diventa raggiungibile da tastiera, secondo le [linee guida ARIA](https://dequeuniversity.com/rules/axe-devtools/4.6/scrollable-region-focusable).
 
 <Canvas of={Stories.ScrollInterno} />
 
@@ -142,23 +144,23 @@ Quando è presente questo attributo, viene reso raggiungibile da tastiera il con
 
 ### Centratura verticale
 
-Valorizza l'attributo `position` con il valore `center` per centrare verticalmente la modale.
+Per centrare verticalmente la modale, valorizza l'attributo `position` con il valore `center`.
 
 <Canvas of={Stories.CentraturaVerticale} />
 
 ### Allineamento a sinistra
 
-Per aprire la modale da sinistra a destra valorizza l'attributo `position` con il valore `left`.
+Per aprire la modale da sinistra a destra, valorizza l'attributo `position` con il valore `left`.
 
-Per questa variante di posizionamento, il contenuto della modale diventa scrollabile e raggiungibile da tastiera automaticamente.
+Il contenuto della modale diventa scrollabile e raggiungibile da tastiera automaticamente.
 
 <Canvas of={Stories.AllineamentoSinistra} />
 
 ### Allineamento a destra
 
-Per aprire la modale da destra a sinistra valorizza l'attributo `position` con il valore `right`.
+Per aprire la modale da destra a sinistra, valorizza l'attributo `position` con il valore `right`.
 
-Per questa variante di posizionamento, il contenuto della modale diventa scrollabile e raggiungibile da tastiera automaticamente.
+Il contenuto della modale diventa scrollabile e raggiungibile da tastiera automaticamente.
 
 <Canvas of={Stories.AllineamentoDestra} />
 
@@ -171,42 +173,42 @@ Queste dimensioni entrano in gioco in determinati breakpoint per evitare barre d
 
 ## Rimuovere l’animazione
 
-Per avere modali che appaiono senza animazione, aggiungi l'attributo `disable-animation`.
+Per far aprire una modale senza senza animazione, aggiungi l'attributo `disable-animation`.
 
-Valorizzare questo attributo è una scelta stilistica e non influisce sull'accessibilità della modale: le animazioni rispettano già le preferenze di riduzione del movimento impostate dall'utente.
+È una scelta stilistica e non influisce sull'accessibilità della modale: le animazioni rispettano già le preferenze di riduzione del movimento impostate dall'utente.
 
 <Canvas of={Stories.SenzaAnimazione} />
 
 ## Backdrop statico
 
-Usa l'atributo `static-backdrop` per creare una modale che non si chiude cliccando sullo sfondo.
-La modale si chiuderà solo tramite il pulsante di chiusura o altre azioni specifiche all'interno della modale stessa, e da tastiera premendo `Esc`.
+Per creare una modale che non si chiude cliccando sullo sfondo, usa l'atributo `static-backdrop`.
+La modale si chiuderà solo tramite il pulsante di chiusura, tramite altre azioni specifiche all'interno della modale stessa e premendo `Esc` da tastiera .
 
 <Canvas of={Stories.BackdropStatico} />
 
-## Proprietà, Metodi, ed Eventi accessibili via js
-Il componente espone dei metodi ed eventi, utili per eventuali interazioni via js.
+## Proprietà, metodi ed eventi accessibili via js
+Il componente espone dei metodi ed eventi utili per eventuali interazioni via js.
 ### Metodi
 
 Il componente espone i seguenti metodi pubblici:
--  `show()`: apre la modale
--  `hide()`: chiude la modale
--  `toggle()`:  alterna lo stato
+-  `show()`, apre la modale;
+-  `hide()`, chiude la modale;
+-  `toggle()`, alterna lo stato.
 
 ### Eventi
 Il componente emette i seguenti eventi custom:
 
-- `it-modal-open`: emesso quando la modale si apre
-- `it-modal-close`: emesso quando la modale si chiude
+- `it-modal-open`, quando la modale si apre;
+- `it-modal-close`, quando la modale si chiude.
 
 
 ## Personalizzazione degli stili
-Per la personalizzazione degli stili puoi usare il selettore `::part` passando uno dei seguenti valori, a seconda delle parti su cui vuoi agire:
--  `::part(modal)`
--  `::part(modal-content-wrapper)`
--  `::part(modal-content)`
--  `::part(modal-header)`
--  `::part(modal-body)`
--  `::part(modal-footer)`
+Per personalizzare stili, usa il selettore `::part` passando uno dei seguenti valori a seconda delle parti su cui vuoi agire:
+-  `::part(modal)`;
+-  `::part(modal-content-wrapper)`;
+-  `::part(modal-content)`;
+-  `::part(modal-header)`;
+-  `::part(modal-body)`;
+-  `::part(modal-footer)`.
 
-[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
