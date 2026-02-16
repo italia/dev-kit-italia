@@ -3,9 +3,9 @@ import * as Stories from './it-radio.stories';
 
 <Meta of={Stories} />
 
-# Radio
+# Radio button
 
-<description>Pulsante di selezione che consente di indicare un'unica scelta tra più elementi all'interno di un elenco di opzioni predefinite</description>
+<description>Pulsante di selezione che consente di indicare un'unica scelta tra più elementi all'interno di un elenco di opzioni predefinite.</description>
 
 ## Cosa fa
 Il componente `<it-radio-group>` permette di raggruppare una serie di `<it-radio>`, gestendo la selezione di un solo elemento alla volta.
@@ -19,10 +19,10 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 <Controls of={Stories.EsempioInterattivo} />
 
 ## Indicazioni generali
-Il componente `<it-radio>` deve essere sempre utilizzato all'interno di un `<it-radio-group>` e richiede obbligatoriamente:
+Usa il componente `<it-radio>` sempre all'interno di un `<it-radio-group>` e includi obbligatoriamente:
 
-- Un **attributo** `value` univoco per identificare l'opzione
-- Una **etichetta definita tramite slot** `<span slot="label">Testo dell'etichetta</span>`
+- un **attributo** `value` univoco per identificare l'opzione;
+- una **etichetta definita tramite slot** `<span slot="label">Testo dell'etichetta</span>`.
 
 
 #### Proprietà principali di it-radio
@@ -61,26 +61,26 @@ Il componente implementa completamente le specifiche ARIA per i gruppi di radio 
 
 A causa delle limitazioni architetturali dei Web Components e del Shadow DOM, non è possibile utilizzare il meccanismo nativo HTML basato su `<fieldset>` e `<legend>`. Questo approccio, pur essendo standard, presenta notevoli problematiche di compatibilità cross-browser con gli screen reader: test approfonditi hanno dimostrato comportamenti inconsistenti tra diverse combinazioni di browser, sistemi operativi e tecnologie assistive. In alcuni casi la `<legend>` non viene annunciata, in altri il gruppo non viene riconosciuto come tale, mentre in altri ancora mancano informazioni sulla posizione delle opzioni all'interno del gruppo. Per superare queste limitazioni e garantire un'esperienza uniforme e accessibile su tutte le piattaforme, il componente richiede che l'etichetta del gruppo venga fornita tramite lo slot `label`, assicurando così la corretta associazione semantica anche all'interno dello Shadow DOM.
 
-L'implementazione si conforma al pattern "Radio Group" definito nelle [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/radio/examples/radio/), adottando la gestione della tastiera e degli stati prevista dalle linee guida di accessibilità. Questo approccio garantisce che le tecnologie assistive, in particolare gli screen reader, comunichino correttamente la posizione di ogni opzione nel gruppo (es. "1 di 3", "2 di 3", "3 di 3"), migliorando significativamente l'esperienza utente per le persone con disabilità.
+L'implementazione si conforma al pattern "Radio Group" definito nelle [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/radio/examples/radio/), adottando la gestione della tastiera e degli stati prevista dalle linee guida di accessibilità. Questo approccio garantisce che le tecnologie assistive, in particolare gli screen reader, comunichino correttamente la posizione di ogni opzione nel gruppo (ad esempio, "1 di 3", "2 di 3", "3 di 3"), migliorando significativamente l'esperienza utente per le persone con disabilità.
 
 
 ## Definizione dell'etichetta
 
-Sia `<it-radio-group>` che `<it-radio>` espongono uno slot `label` per definire le rispettive etichette.
+Per definire le etichette, usa lo slot `label`:
+- per `<it-radio-group>`, lo slot `label` identifica l'intero gruppo di radio button;
+- per `<it-radio>`, l'etichetta nello slot 'label' identifica la singola opzione all'interno del gruppo ed è obbligatoria per ogni elemento.  
 
-L'etichetta del gruppo `<it-radio-group>` viene definita tramite lo slot `label` dell'elemento `<it-radio-group>` e identifica l'intero gruppo di radio button. È possibile utilizzare HTML all'interno dello slot per creare etichette formattate.
-
-Ogni `<it-radio>` richiede obbligatoriamente un'etichetta definita tramite il proprio slot `label`. L'etichetta identifica la singola opzione all'interno del gruppo. È possibile utilizzare anche HTML all'interno dello slot per creare etichette più complesse con formattazione o altri elementi.
+In entrambi i casi, puoi usare HTML all'interno dello slot per creare etichette più complesse con formattazione o altri elementi.
 
 <Canvas of={Stories.DefinizioneDellaLabel} />
 
 ## Testo di supporto
-In caso di necessità, è possibile utilizzare un contenuto testuale sotto il radio button tramite l'attributo `support-text` del componente `<it-radio>`.
+Per aggiungere un contenuto testiale sotto il radio buttom, usa l'attributo `support-text` del componente `<it-radio>`.
 
 <Canvas of={Stories.TestoDiSupporto} />
 
 ## Inline
-Per allineare orizzontalmente i radio button basterà aggiungere l'attributo `inline` a `<it-radio-group>`.
+Per allineare orizzontalmente i radio button, aggiungi l'attributo `inline` a `<it-radio-group>`.
 
 <Canvas of={Stories.Inline} />
 
@@ -88,22 +88,23 @@ Per allineare orizzontalmente i radio button basterà aggiungere l'attributo `in
 
 ### Radio singolo disabilitato
 
-Aggiungi l'attributo `disabled` ad un singolo `<it-radio>` per disabilitare quell'opzione.
+Per disabilitare un'opzione, aggiungi l'attributo `disabled`.
 
 ### Gruppo di radio disabilitato
 
-Se invece intendi disabilitare l'intero gruppo, aggiungi l'attributo `disabled` a `<it-radio-group>`. In questo modo tutti i radio al suo interno risulteranno disabilitati automaticamente.
+Se invece vuoi disabilitare l'intero gruppo, aggiungi l'attributo `disabled` a `<it-radio-group>`. In questo modo tutti i radio al suo interno risulteranno disabilitati automaticamente.
 
 <Canvas of={Stories.Disabilitato} />
 
 ## Raggruppati visivamente
-Per raggruppare visivamente i radio button occorrerà aggiungere l'attributo `group` a `<it-radio-group>`. L'elemento grafico di selezione verrà allineato alla destra del contenuto testuale.
+Per raggruppare visivamente i radio button, aggiungi l'attributo `group` a `<it-radio-group>`. L'elemento grafico di selezione verrà allineato a destra del contenuto testuale.
 
 <Canvas of={Stories.RaggruppatiVisivamente} />
 
 ## Validazione e gestione degli errori
-Se non è stata impostata la validazione custom tramite l'attributo `custom-validation`, e sono stati impostati attributi come `required`, viene effettuata una validazione interna utilizzando la validazione nativa del browser.
-Verranno mostrati i messaggi di errore nativi, e i componenti `<it-radio-group>` e `<it-radio>` riceveranno l'attributo `aria-invalid="true"` quando non validi.
+Se non hai impostato la validazione custom tramite l'attributo `custom-validation` e hai impostato attributi come `required`, viene effettuata una validazione interna utilizzando la validazione nativa del browser.
+
+Verranno mostrati i messaggi di errore nativi e i componenti `<it-radio-group>` e `<it-radio>` riceveranno l'attributo `aria-invalid="true"` quando non validi.
 
 ```html
 <form>
@@ -123,17 +124,17 @@ Verranno mostrati i messaggi di errore nativi, e i componenti `<it-radio-group>`
 <br/>
 ### Personalizzazione dei messaggi di errore
 
-E' possibile personalizzare alcuni dei messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
+Puoi personalizzare alcuni dei messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
 <ul>
   <li>`validityRequired`: messaggio che viene mostrato quando il radio group è obbligatorio e nessuna opzione è stata selezionata</li>
 </ul>
 
-Non esistono altre possibili validazioni native per questo tipo di input. Per validazioni custom dovrai fornire i tuoi messaggi di errore.
+Non esistono altre possibili validazioni native per questo tipo di input. Per validazioni custom, dovrai fornire i tuoi messaggi di errore.
 
 <Canvas of={Stories.RadioGroupRequired} />
 
 ## Personalizzazione degli stili
-Per la personalizzazione degli stili del componente `<it-radio>` si può usare il selettore `::part` con i seguenti valori:
+Per personalizzare gli stili del componente `<it-radio>`, puoi usare il selettore `::part` con i seguenti valori:
 
 <table>
   <thead>
@@ -166,9 +167,9 @@ Per la personalizzazione degli stili del componente `<it-radio>` si può usare i
   </tbody>
 </table>
 
-[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
 
-###  Esempio di personalizzazione:
+###  Esempio di personalizzazione
 
 ```css
 it-radio::part(button) {
