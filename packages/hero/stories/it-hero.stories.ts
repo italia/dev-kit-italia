@@ -4,8 +4,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 // eslint-disable-next-line import/no-relative-packages
 import { OVERLAY_COLORS, type OverlayColor } from '../src/types.js';
 
-import '@italia/hero';
-
 interface HeroProps {
   'it-aria-label'?: string;
   center?: boolean;
