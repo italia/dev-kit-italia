@@ -46,7 +46,7 @@ export const BottoniELink: Story = {
   parameters: {
     docs: {
       description: {
-        story: `I badge possono essere utilizzati come contatori all’interno di link o pulsanti. Per questi casi, si consiglia di utilizzare la classe \`.badge-sm\` che riduce la spaziatura laterale interna.
+        story: `Puoi usare i badge come contatori all’interno di link o pulsanti. In questi casi,usa la classe \`.badge-sm\` per riduce la spaziatura laterale interna.
 
 `,
       },
@@ -97,7 +97,7 @@ export const Arrotondato: Story = {
   parameters: {
     docs: {
       description: {
-        story: `Per rendere i badge arrotondati puoi usare la classe \`.rounded-pill\`.
+        story: `Per arrotondare i badge, usa la classe \`.rounded-pill\`.
 `,
       },
     },
@@ -116,7 +116,7 @@ export const Link: Story = {
   parameters: {
     docs: {
       description: {
-        story: `Se hai bisogno di trasformare un badge in un link, aggiungi una delle classi contestuali \`.badge-*\` all’elemento . In questo modo, il badge risponderà agli stati hover e focus.
+        story: `Per trasformare badge in un link, aggiungi una delle classi contestuali \`.badge-*\` all’elemento . In questo modo, il badge risponderà agli stati hover e focus.
 `,
       },
     },
