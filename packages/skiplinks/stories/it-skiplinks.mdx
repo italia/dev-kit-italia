@@ -27,7 +27,7 @@ Nell’esempio sono inclusi anche:
 
 ## Indicazioni generali
 
-Deve essere il primo contenuto della pagina. Se è presente l’elemento `<header>`, ti raccomandiamo di integrarlo come primo suo elemento figlio, così da includerlo sempre in un landmark di pagina.
+Il componente Skiplinks deve essere il primo contenuto della pagina, ma contenuto sempre in un landmark. Se è presente l’elemento `<header>`, ti raccomandiamo di integrarlo come primo suo elemento figlio.
 
 Per navigare tra gli elementi puoi usare il tasto: **TAB** (tabulazione).
 <div class="callout callout-primary">
@@ -36,15 +36,14 @@ Per navigare tra gli elementi puoi usare il tasto: **TAB** (tabulazione).
       <span class="text">Nota</span>
     </div>
     <p>
-      Ti raccomandiamo di limitare il numero di elementi scorciatoia per evitare che gli utenti debbano saltare le
-      scorciatoie stesse.
+      Limita il numero di elementi scorciatoia: un eccesso di link potrebbe costringere gli utenti a saltare le scorciatoie stesse prima di accedere ai contenuti principali.
     </p>
   </div>
 </div>
 
 ## Accessibilità
 
-Nel caso in cui il numero di link sia superiore a 2, è necessario passare al componente `it-skiplinks` l'attributo `it-aria-label` dedicato che ne spieghi l’uso. In questo caso infatti verrà generato un elemento `<nav>` a cui verrà applicato l'attributo `aria-label` per migliorarne l'accessibilità.
+Nel caso in cui il numero di link sia superiore a 2, ricorda di usare l'attributo `it-aria-label` per spiegare la funzione del componente. In questo caso, il componente genererà un elemento `<nav>` a cui verrà applicato l'attributo `aria-label` per semplificare la lettura dei lettori di schermo.
 
 
 ## Numero ridotto di link
@@ -52,28 +51,28 @@ Nel caso in cui il numero di link sia superiore a 2, è necessario passare al co
 <Description of={Stories.PochiLink} />
 <Canvas of={Stories.PochiLink} />
 
-## Come visualizzali su MacOS
+## Visualizzare gli skiplinks su MacOS
 
 ### Chrome
-Per attivare la funzionalità, digita da tastiera il tasto: **TAB**.
+Per attivare la funzionalità, digita da tastiera il tasto **TAB**.
 
 ### Safari
 Per attivare la navigazione via **TAB** devi:
 
-1. Aprire il menu Safari > Preferenze
-2. Cliccare sulla tab Avanzate
-3. Selezionare “Premi tabulatore per evidenziare tutti gli elementi della pagina web”.
+1. aprire il menu Safari > Preferenze;
+2. cliccare sulla tab Avanzate;
+3. selezionare “Premi tabulatore per evidenziare tutti gli elementi della pagina web”.
 
 Alternativamente, puoi navigare gli elementi usando _opzione+TAB_.
 
 ### Firefox
-Le impostazioni di default di macOS non consentono la navigazione di tutti gli elementi interattivi di un sito con l’uso
-del pulsante TAB. Per attivare questa modalità, devi modificare le preferenze di sistema come segue:
+Le impostazioni di default di MacOS non consentono la navigazione di tutti gli elementi interattivi di un sito con l’uso
+del pulsante TAB. Per attivare questa modalità, modifica le preferenze di sistema:
 
-1. Apri il Menu Apple > Preferenze di Sistema, quindi fai clic su “Tastiera“.
-2. Fai clic su “Abbreviazioni“.
-3. Nella parte inferiore della finestra delle preferenze, seleziona “Usa la navigazione da tastiera per spostare la selezione tra i controlli”.
+1. apri il Menu Apple > Preferenze di Sistema e fai clic su “Tastiera“;
+2. fai clic su “Abbreviazioni“;
+3. nella parte inferiore della finestra delle preferenze, seleziona “Usa la navigazione da tastiera per spostare la selezione tra i controlli”.
 
 Una volta selezionata questa opzione, gli skiplinks saranno attivabili su Firefox con il pulsante **TAB**.
 
-Vedi anche la [guida ufficiale di Apple](https://support.apple.com/it-it/HT204434).
+[Vai alla guida ufficiale di Apple](https://support.apple.com/it-it/HT204434)
