@@ -27,9 +27,9 @@
     "@angular/common": "^20.3.14",
     "@angular/compiler": "^20.3.16",
     "@angular/core": "^20.3.16",
-    "@angular/forms": "^20.2.3",
-    "@angular/platform-browser": "^20.2.3",
-    "@angular/router": "^20.2.3",
+    "@angular/forms": "^20.2.16",
+    "@angular/platform-browser": "^20.2.16",
+    "@angular/router": "^20.2.16",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
