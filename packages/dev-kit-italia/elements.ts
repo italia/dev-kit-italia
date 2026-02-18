@@ -18,6 +18,7 @@ import { defineItDropdown } from '@italia/dropdown';
 import '@italia/icon/it-icon.js';
 import '@italia/input/it-input.js';
 import '@italia/megamenu/it-megamenu.js';
+import '@italia/hero/it-hero.js';
 import '@italia/modal/it-modal.js';
 import '@italia/navscroll/it-navscroll.js';
 import '@italia/pagination/it-pagination-item.js';

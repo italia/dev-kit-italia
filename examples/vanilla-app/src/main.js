@@ -84,6 +84,9 @@ document.querySelector('#app-header').innerHTML = `
         <a href="/src/forward">
           Forward
         </a>
+        <a href="/src/hero">
+          Hero
+        </a>
         <a href="/src/icon">
           Icon
         </a>

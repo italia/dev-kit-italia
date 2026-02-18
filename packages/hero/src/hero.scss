@@ -1,0 +1,15 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/containers';
+
+@import 'bootstrap-italia/src/scss/components/imgresponsive';
+@import 'bootstrap-italia/src/scss/components/overlay-panel';
+@import 'bootstrap-italia/src/scss/components/hero';
+
+:host {
+  .it-hero-wrapper.it-overlay.it-filter .img-responsive-wrapper ::slotted(*[slot='background']) {
+    mix-blend-mode: screen;
+  }
+}

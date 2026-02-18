@@ -38,6 +38,9 @@
 @import 'bootstrap-italia/src/scss/components/forward';
 @import 'bootstrap-italia/src/scss/components/navscroll';
 @import 'bootstrap-italia/src/scss/components/progress-bars';
+@import 'bootstrap-italia/src/scss/components/hero';
+@import 'bootstrap-italia/src/scss/components/buttons'; // serve per applicare le classi di stile dei bottoni agli elementi di tipo <a>
+@import 'bootstrap-italia/src/scss/components/card'; //serve per l'esempio HERO. TODO: da rimuovere quando arriva il componente card.
 
 /*dev-kit-italia global styles*/
 @import '@italia/accordion/styles/globals';
@@ -51,6 +54,7 @@
 @import '@italia/chip/styles/globals';
 @import '@italia/collapse/styles/globals';
 @import '@italia/dropdown/styles/globals';
+@import '@italia/hero/styles/globals';
 @import '@italia/icon/styles/globals';
 @import '@italia/input/styles/globals';
 @import '@italia/modal/styles/globals';

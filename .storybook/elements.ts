@@ -10,6 +10,7 @@ import '../packages/checkbox/dist/src';
 import '../packages/chip/dist/src';
 import { defineItDropdown } from '../packages/dropdown/dist/src';
 defineItDropdown();
+import '../packages/hero/dist/src';
 import '../packages/icon/dist/src';
 import '../packages/input/dist/src';
 import '../packages/megamenu/dist/src';
