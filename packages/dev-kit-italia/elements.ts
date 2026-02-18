@@ -14,9 +14,10 @@ import '@italia/checkbox/it-checkbox.js';
 import '@italia/chip/it-chip.js';
 // import '@italia/collapse/it-collapse.js';
 import '@italia/dropdown/it-dropdown-item.js';
-import '@italia/dropdown/it-dropdown.js';
+import { defineItDropdown } from '@italia/dropdown';
 import '@italia/icon/it-icon.js';
 import '@italia/input/it-input.js';
+import '@italia/megamenu/it-megamenu.js';
 import '@italia/modal/it-modal.js';
 import '@italia/navscroll/it-navscroll.js';
 import '@italia/pagination/it-pagination-item.js';
@@ -35,3 +36,4 @@ import '@italia/video/it-video.js';
 import { registerTranslation } from '@italia/i18n/i18n.js';
 
 export { registerTranslation };
+defineItDropdown();

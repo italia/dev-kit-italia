@@ -1,7 +1,7 @@
 /* eslint-disable lit-a11y/list */
 import { BaseComponent, AriaKeyboardListController } from '@italia/globals';
 import { html, LitElement, nothing } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { /* customElement,*/ property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import styles from './dropdown.scss';
 import { type ItDropdownItem } from './it-dropdown-item.js';
@@ -9,7 +9,7 @@ import { type ItDropdownItem } from './it-dropdown-item.js';
 type Size = 'sm' | 'lg';
 type Variant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light';
 
-@customElement('it-dropdown')
+// @customElement('it-dropdown') --> spostata la definizione del customElement in it-dropdown.define.ts per permettere di rendere questa classe estendibile e usabile anche come webcomponent
 export class ItDropdown extends BaseComponent {
   static styles = styles;
 
@@ -36,11 +36,11 @@ export class ItDropdown extends BaseComponent {
 
   @property({ type: String, attribute: 'it-aria-label' }) itAriaLabel: string = '';
 
-  @state() private _popoverOpen = false;
+  @state() protected _popoverOpen = false;
 
-  private _buttonId = this.generateId('it-dropdown');
+  protected _buttonId = this.generateId('it-dropdown');
 
-  private _menuId = this.generateId('it-dropdown-menu');
+  protected _menuId = this.generateId('it-dropdown-menu');
 
   @query('slot:not([name])') private _slotEl!: HTMLSlotElement;
 
@@ -50,27 +50,27 @@ export class ItDropdown extends BaseComponent {
     return this.shadowRoot?.getElementById(this._buttonId) ?? null;
   }
 
-  private _onTriggerClick = () => {
+  protected _onTriggerClick = () => {
     if (this.disabled) return;
     this._popoverOpen = !this._popoverOpen;
   };
 
-  private _onPopoverOpen = () => {
+  protected _onPopoverOpen = () => {
     this._popoverOpen = true;
   };
 
-  private _onPopoverClose = () => {
+  protected _onPopoverClose = () => {
     this._popoverOpen = false;
   };
 
-  private get _menuItems() {
+  protected get _menuItems() {
     if (!this._slotEl) return [];
     return this._slotEl
       .assignedElements({ flatten: true })
       .filter((el) => el.tagName === 'IT-DROPDOWN-ITEM') as ItDropdownItem[];
   }
 
-  private _setChildrenProperties() {
+  protected _setChildrenProperties() {
     for (const item of this._menuItems) {
       item.dark = this.dark;
       item.fullWidth = this.fullWidth;
@@ -82,7 +82,7 @@ export class ItDropdown extends BaseComponent {
     }
   }
 
-  private _onKeyDown = (event: KeyboardEvent) => {
+  protected _onKeyDown = (event: KeyboardEvent) => {
     const items = this._menuItems.map((item) => item.getFocusableElement()).filter((el) => !!el);
     const active = this.getActiveElement<ItDropdownItem>();
     if (!active) return;

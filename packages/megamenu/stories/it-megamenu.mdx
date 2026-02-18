@@ -1,0 +1,45 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-megamenu.stories';
+
+<Meta of={Stories} />
+
+<Title of={Stories} />
+
+<description>Sottomenu di navigazione a comparsa che presenta i link e i contenuti correlati a una voce del menu principale</description>
+
+## Cosa fa
+
+Il componente Megamenu serve a implementare un sottomenu che semplifica l'accesso a un'intera sezione di un sito con un’architettura dell’informazione complessa ma ben strutturata.
+
+Il megamenu è una estensione del componente `it-dropdown` per la navbar `<nav>` del sito, che permette di esplorare elenchi di link e informazioni correlate.
+
+[Approfondisci quando e come usare il componente Megamenu](https://designers.italia.it/design-system/componenti/megamenu/)
+
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.Base} />
+<Controls of={Stories.Base} />
+
+{/* ## Informazioni generali
+
+Per la creazione di un Dropdown usa il componente `<it-dropdown>` e inserisci al suo interno uno o più `<it-dropdown-item>`.
+Dovrai specificare l'etichetta del menu tramite l'attributo `label`.
+Puoi specificare una variante tramite l'attributo `variant`, questa verrà applicata al pulsante di attivazione del menu.
+
+## Accessibilità
+
+Lo standard [WAI ARIA](https://www.w3.org/TR/wai-aria/) definisce un widget con proprietà [`role="menu"`](https://www.w3.org/TR/wai-aria/#menu), specifica per i menu applicativi con link o azioni.
+
+Questi menu possono contenere solo voci di menu, voci di menu di caselle di controllo, voci di menu dei pulsanti di opzione, gruppi di pulsanti di opzione e sottomenu.
+
+I dropdown di **Dev Kit Italia** sono progettati per essere invece generici e applicabili a una varietà di situazioni.
+Per questo motivo, il componente `it-dropdown` ha come ruolo predefinito il ruolo `menu` e gestisce automaticamente il ruolo degli elementi interni, ma puoi modificare il ruolo del Dropdown generato da questo componente ad una semplice lista impostando l'attributo `it-role="list"`.
+
+Questo componente comprende di base il supporto per la maggior parte delle interazioni standard del menu della tastiera, come la possibilità di spostarsi tra i singoli elementi `it-dropdown-item` usando i tasti freccia, e chiude il menu con il tasto ESC.
+
+Infine, dovrai inserire un'etichetta per il pulsante di attivazione del menu tramite l'attributo `label`, che verrà letta dagli screen reader.
+In alternativa, puoi omettere l'attributo `label` e aggiungere un attributo `it-aria-label` al componente `<it-dropdown>`.
+ */}
