@@ -17,6 +17,7 @@ import '@italia/dropdown/it-dropdown-item.js';
 import '@italia/dropdown/it-dropdown.js';
 import '@italia/icon/it-icon.js';
 import '@italia/input/it-input.js';
+import '@italia/hero/it-hero.js';
 import '@italia/modal/it-modal.js';
 import '@italia/navscroll/it-navscroll.js';
 import '@italia/pagination/it-pagination-item.js';

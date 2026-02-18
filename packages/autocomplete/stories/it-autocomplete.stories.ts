@@ -74,9 +74,6 @@ const meta = {
   component: 'it-autocomplete',
   parameters: {
     layout: 'padded',
-    docs: {
-      source: { excludeDecorators: true },
-    },
   },
   args: {
     id: 'autocomplete-regione',

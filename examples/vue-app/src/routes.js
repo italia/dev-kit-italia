@@ -17,6 +17,8 @@ import Chip from './components/Chip.vue';
 import Collapse from './components/Collapse.vue';
 import Dropdown from './components/Dropdown.vue';
 import Form from './components/Form.vue';
+import Forward from './components/Forward.vue';
+import Hero from './components/Hero.vue';
 import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
 import List from './components/List.vue';
@@ -33,7 +35,6 @@ import Sticky from './components/Sticky.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Pagination from './components/Pagination.vue';
-import Forward from './components/Forward.vue';
 
 const routes = [
   { path: '/', name: 'Homepage', component: Home },
@@ -54,6 +55,7 @@ const routes = [
   { path: '/dropdown', name: 'Dropdown', component: Dropdown },
   { path: '/form', name: 'Form', component: Form },
   { path: '/forward', name: 'Forward', component: Forward },
+  { path: '/hero', name: 'Hero', component: Hero },
   { path: '/icon', name: 'Icon', component: Icon },
   { path: '/input', name: 'Input', component: Input },
   { path: '/list', name: 'List', component: List },

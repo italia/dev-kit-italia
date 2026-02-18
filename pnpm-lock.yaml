@@ -114,6 +114,9 @@ importers:
       lint-staged:
         specifier: ^15.2.7
         version: 15.5.2
+      lit:
+        specifier: 'catalog:'
+        version: 3.3.2
       playwright:
         specifier: ^1.54.1
         version: 1.58.0
@@ -775,6 +778,9 @@ importers:
       '@italia/dropdown':
         specifier: workspace:^
         version: link:../dropdown
+      '@italia/hero':
+        specifier: workspace:^
+        version: link:../hero
       '@italia/i18n':
         specifier: workspace:^
         version: link:../i18n
@@ -955,6 +961,61 @@ importers:
       rimraf:
         specifier: ^6.0.1
         version: 6.1.2
+      tslib:
+        specifier: ^2.6.3
+        version: 2.8.1
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+
+  packages/hero:
+    dependencies:
+      '@italia/globals':
+        specifier: workspace:^
+        version: link:../globals
+      bootstrap-italia:
+        specifier: 'catalog:'
+        version: 3.0.0-alpha.0(style-dictionary@5.2.0(tslib@2.8.1))
+      lit:
+        specifier: 'catalog:'
+        version: 3.3.2
+    devDependencies:
+      '@custom-elements-manifest/analyzer':
+        specifier: ^0.10.3
+        version: 0.10.10
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
+      '@italia/test-config':
+        specifier: workspace:^
+        version: link:../test-config
+      '@italia/typescript-config':
+        specifier: workspace:^
+        version: link:../typescript-config
+      '@open-wc/testing':
+        specifier: 'catalog:'
+        version: 4.0.0
+      '@rollup/plugin-node-resolve':
+        specifier: ^16.0.1
+        version: 16.0.3(rollup@4.56.0)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.2
+        version: 12.3.0(rollup@4.56.0)(tslib@2.8.1)(typescript@5.9.3)
+      '@types/mocha':
+        specifier: 'catalog:'
+        version: 10.0.10
+      '@web/test-runner':
+        specifier: 'catalog:'
+        version: 0.18.3
+      rollup:
+        specifier: ^4.42.0
+        version: 4.56.0
+      rollup-plugin-scss-lit:
+        specifier: ^2.1.0
+        version: 2.1.0(lit@3.3.2)(rollup@4.56.0)
+      sass:
+        specifier: 'catalog:'
+        version: 1.97.3
       tslib:
         specifier: ^2.6.3
         version: 2.8.1
@@ -4977,7 +5038,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
-    deprecated: Glob versions prior to v9 are no longer supported
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   global-modules@2.0.0:
     resolution: {integrity: sha512-NGbfmJBp9x8IxyJSd1P+otYK8vonoJactOogrVfFRIAEY1ukil8RSKDz2Yo7wh1oihl51l/r6W4epkeKJHqL8A==}
