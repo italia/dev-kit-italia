@@ -46,7 +46,7 @@ export const BottoniELink: Story = {
   parameters: {
     docs: {
       description: {
-        story: `Puoi usare i badge come contatori all’interno di link o pulsanti. In questi casi,usa la classe \`.badge-sm\` per riduce la spaziatura laterale interna.
+        story: `Puoi usare i badge come contatori all’interno di link o pulsanti. In questi casi, usa la classe \`.badge-sm\` per ridurre la spaziatura laterale interna.
 
 `,
       },
