@@ -9,3 +9,9 @@
 @import 'bootstrap-italia/src/scss/forms/form-control';
 @import 'bootstrap-italia/src/scss/forms/form-check';
 @import 'bootstrap-italia/src/scss/forms/just-validate';
+
+.form-check {
+  input:focus:not(:focus-visible) + label {
+    box-shadow: none !important;
+  }
+}
