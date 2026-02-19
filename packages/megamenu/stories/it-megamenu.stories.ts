@@ -30,7 +30,7 @@ type Story = StoryObj<MegamenuProps>;
 const meta = {
   title: 'Componenti/Megamenu',
   component: 'it-megamenu',
-  parameters: { pageLayout: 'w-100' },
+  parameters: { wrapperClasses: 'w100-layout megamenu-story-layout' },
   tags: ['a11y-ok', 'web-component', 'alpha'],
   args: {
     label: 'Megamenu',
@@ -117,21 +117,44 @@ export default meta;
 
 export const Base: Story = {
   render: (args) => html`
-    <it-megamenu
-      label=${args.label}
-      ?disabled=${args.disabled}
-      alignment=${ifDefined(args.alignment)}
-      size=${ifDefined(args.size)}
-      variant=${args.variant}
-      it-role=${ifDefined(args['it-role'])}
-      ?dark=${args.dark}
-      ?full-width=${args['full-width']}
-      it-aria-label=${ifDefined(args['it-aria-label'])}
-    >
-      <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-      <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-      <it-dropdown-item href="#">Azione 3</it-dropdown-item>
-    </it-dropdown>
+    <nav class="navbar navbar-expand-lg has-megamenu" aria-label="Menu principale">
+      <it-button it-aria-label="Mostra o nascondi il menu" class="custom-navbar-toggler" it-aria-controls="navbar-A">
+        <span>
+          <svg role="img" class="icon"><use href="/dist/svg/sprites.svg#it-burger"></use></svg>
+        </span>
+      </it-button>
+      <div class="navbar-collapsable" id="navbar-A" tabindex="-1">
+        <div class="close-div">
+          <it-button it-aria-label="Chiudi il menu" variant="link" size="sm" class="close-menu">
+            <span
+              ><svg role="img" class="icon"><use href="/dist/svg/sprites.svg#it-close-big"></use></svg
+            ></span>
+          </it-button>
+        </div>
+        <div class="menu-wrapper justify-content-lg-between">
+          <ul class="navbar-nav">
+            <!-- megamenu 1 -->
+            <li class="nav-item dropdown megamenu">
+              <it-megamenu
+                label=${args.label}
+                ?disabled=${args.disabled}
+                alignment=${ifDefined(args.alignment)}
+                size=${ifDefined(args.size)}
+                variant=${args.variant}
+                it-role=${ifDefined(args['it-role'])}
+                ?dark=${args.dark}
+                ?full-width=${args['full-width']}
+                it-aria-label=${ifDefined(args['it-aria-label'])}
+              >
+                <div class="row"><div class="col-12">Contenuto del megamenu</div></div>
+              </it-megamenu>
+            </li>
+            <!-- megamenu 2 -->
+            <li class="nav-item dropdown megamenu"></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   `,
   tags: ['!autodocs', '!dev'],
 };

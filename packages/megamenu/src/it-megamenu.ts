@@ -16,9 +16,10 @@ export class ItMegamenu extends ItDropdown {
 
   @property({ type: String, attribute: 'it-role' }) itRole: string = '';
 
+  @property({ type: String, attribute: 'active' }) active: boolean = false;
+
   override render() {
     return html`
-      megamenu
       <it-popover
         placement=${this.alignment}
         @it-popover-open=${this._onPopoverOpen}
@@ -36,7 +37,7 @@ export class ItMegamenu extends ItDropdown {
           size=${ifDefined(this.size)}
           @click=${this._onTriggerClick}
           @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
-          class="dropdown-toggle"
+          class="dropdown-toggle nav-link px-lg-2 px-xl-3 ${this.active ? 'active' : ''}"
           it-aria-label=${ifDefined(this.itAriaLabel ? this.itAriaLabel : undefined)}
           exportparts="focusable, button"
           it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
@@ -60,25 +61,15 @@ export class ItMegamenu extends ItDropdown {
         </it-button>
         <div
           slot="content"
-          class="${this.composeClass('dropdown-menu', {
+          class="${this.composeClass('dropdown-menu', 'show-lg', {
             show: this._popoverOpen,
             dark: this.dark,
             'full-width': this.fullWidth,
           })}"
           aria-labelledby=${this._buttonId}
+          role="region"
         >
-          <div class="link-list-wrapper">
-            <slot name="header"></slot>
-            <ul
-              id=${this._menuId}
-              class="link-list"
-              role=${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}
-              @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
-              aria-orientation=${ifDefined(this.fullWidth ? 'horizontal' : undefined)}
-            >
-              <slot @slotchange=${this._setChildrenProperties}></slot>
-            </ul>
-          </div>
+          <slot></slot>
         </div>
       </it-popover>
     `;
