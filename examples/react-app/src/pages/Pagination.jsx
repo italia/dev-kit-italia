@@ -29,7 +29,7 @@ function Pagination() {
   console.log('Render Pagination with testState:', testState);
   return (
     <div className="container my-4">
-      <h1>Pagination Examples</h1>
+      <h1>Pagination</h1>
 
       {/* Con pulsanti avanti e indietro */}
       <section className="mb-5">

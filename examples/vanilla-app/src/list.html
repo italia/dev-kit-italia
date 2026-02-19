@@ -32,13 +32,16 @@
         <section>
           <h2>Tipologie di lista</h2>
           <p>
-            Le liste, costituite da tag <code>&lt;ul&gt;</code> con classe <code>.it-list</code> all'interno di un wrapper con
-            classe <code>.it-list-wrapper</code>, possono contenere testi, link, icone, avatar, immagini o una combinazione di
-            questi elementi.
+            Le liste, costituite da tag <code>&lt;ul&gt;</code> con classe <code>.it-list</code> all'interno di un
+            wrapper con classe <code>.it-list-wrapper</code>, possono contenere testi, link, icone, avatar, immagini o
+            una combinazione di questi elementi.
           </p>
 
           <h3>Lista con avatar</h3>
-          <p>Inserisci l'elemento <code>it-avatar</code> prima dell'elemento <code>.it-right-zone</code> che contiene il testo.</p>
+          <p>
+            Inserisci l'elemento <code>it-avatar</code> prima dell'elemento <code>.it-right-zone</code> che contiene il
+            testo.
+          </p>
           <div class="it-list-wrapper">
             <ul class="it-list">
               <li>
@@ -87,7 +90,10 @@
           </div>
 
           <h3>Lista con icona</h3>
-          <p>Inserisci l'elemento <code>.it-rounded-icon</code> prima dell'elemento <code>.it-right-zone</code> che contiene il testo.</p>
+          <p>
+            Inserisci l'elemento <code>.it-rounded-icon</code> prima dell'elemento <code>.it-right-zone</code> che
+            contiene il testo.
+          </p>
           <div class="it-list-wrapper">
             <ul class="it-list">
               <li>
@@ -125,8 +131,8 @@
 
           <h3>Lista con immagine</h3>
           <p>
-            Inserisci l'elemento <code>.it-thumb</code> prima dell'elemento <code>.it-right-zone</code> che contiene il testo. Ha
-            una dimensione massima di <code>5rem</code> che corrispondono a <code>80px</code>.
+            Inserisci l'elemento <code>.it-thumb</code> prima dell'elemento <code>.it-right-zone</code> che contiene il
+            testo. Ha una dimensione massima di <code>5rem</code> che corrispondono a <code>80px</code>.
           </p>
           <div class="it-list-wrapper">
             <ul class="it-list">
@@ -166,7 +172,9 @@
 
         <section>
           <h2>Lista con azioni</h2>
-          <p>Le liste con azioni hanno al loro interno icone o elementi interattivi da associare ad azioni specifiche.</p>
+          <p>
+            Le liste con azioni hanno al loro interno icone o elementi interattivi da associare ad azioni specifiche.
+          </p>
 
           <h3>Con freccia</h3>
           <p>Inserisci l'elemento <code>it-icon</code> dopo l'elemento <code>.text</code> che contiene il testo.</p>
@@ -340,8 +348,9 @@
 
           <h3>Con testo aggiuntivo, azioni multiple e metadata</h3>
           <p>
-            Per avere una lista che permetta paragrafi di testo aggiuntivo per ogni elemento, utilizza un approccio con titolo
-            (heading) e paragrafo <code>&lt;p&gt;</code>, mantenendo la classe <code>.text</code> per l'elemento titolo.
+            Per avere una lista che permetta paragrafi di testo aggiuntivo per ogni elemento, utilizza un approccio con
+            titolo (heading) e paragrafo <code>&lt;p&gt;</code>, mantenendo la classe <code>.text</code> per l'elemento
+            titolo.
           </p>
           <div class="it-list-wrapper">
             <ul class="it-list">
@@ -440,62 +449,94 @@
         <section>
           <h2>Liste per menu di navigazione</h2>
           <p>
-            Utilizza le liste per menu di navigazione, costituite da tag <code>&lt;ul&gt;</code> con classe <code>.link-list</code>
-            all'interno di un wrapper con classe <code>.link-list-wrapper</code>.
+            Utilizza le liste per menu di navigazione, costituite da tag <code>&lt;ul&gt;</code> con classe
+            <code>.link-list</code> all'interno di un wrapper con classe <code>.link-list-wrapper</code>.
           </p>
 
           <h3>Linea singola</h3>
           <div class="link-list-wrapper">
             <ul class="link-list">
-              <li><a class="list-item" href="#"><span>Link lista 1</span></a></li>
-              <li><a class="list-item" href="#"><span>Link lista 2</span></a></li>
-              <li><a class="list-item" href="#"><span>Link lista 3</span></a></li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 1</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 2</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 3</span></a>
+              </li>
             </ul>
           </div>
 
           <h4>Elemento con stato attivo</h4>
           <div class="link-list-wrapper">
             <ul class="link-list">
-              <li><a class="list-item" href="#"><span>Link lista 1</span></a></li>
-              <li><a class="list-item active" href="#"><span>Link lista 2 attivo</span></a></li>
-              <li><a class="list-item" href="#"><span>Link lista 3</span></a></li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 1</span></a>
+              </li>
+              <li>
+                <a class="list-item active" href="#"><span>Link lista 2 attivo</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 3</span></a>
+              </li>
             </ul>
           </div>
 
           <h4>Elemento con stato disabilitato</h4>
           <div class="link-list-wrapper">
             <ul class="link-list">
-              <li><a class="list-item" href="#"><span>Link lista 1</span></a></li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 1</span></a>
+              </li>
               <li>
                 <a class="list-item disabled" href="#" aria-disabled="true"><span>Link lista 2 disabilitato</span></a>
               </li>
-              <li><a class="list-item" href="#"><span>Link lista 3</span></a></li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 3</span></a>
+              </li>
             </ul>
           </div>
 
           <h4>Intestazione e divisore</h4>
           <p>
-            L'intestazione e` costituita dall'elemento <code>.link-list-heading</code>. Il divisore e` costituito dal tag
-            <code>&lt;span&gt;</code> con classe <code>.divider</code> e attributo <code>role="separator"</code>.
+            L'intestazione e` costituita dall'elemento <code>.link-list-heading</code>. Il divisore e` costituito dal
+            tag <code>&lt;span&gt;</code> con classe <code>.divider</code> e attributo <code>role="separator"</code>.
           </p>
           <div class="link-list-wrapper">
             <h4 class="link-list-heading">Intestazione</h4>
             <ul class="link-list">
-              <li><a class="list-item" href="#"><span>Link lista 1</span></a></li>
-              <li><a class="list-item" href="#"><span>Link lista 2</span></a></li>
-              <li><a class="list-item" href="#"><span>Link lista 3</span></a></li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 1</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 2</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 3</span></a>
+              </li>
               <li><span class="divider" role="separator"></span></li>
-              <li><a class="list-item" href="#"><span>Link lista 4</span></a></li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 4</span></a>
+              </li>
             </ul>
           </div>
           <div class="link-list-wrapper">
             <h4 class="link-list-heading"><a href="#">Intestazione con link</a></h4>
             <ul class="link-list">
-              <li><a class="list-item" href="#"><span>Link lista 1</span></a></li>
-              <li><a class="list-item" href="#"><span>Link lista 2</span></a></li>
-              <li><a class="list-item" href="#"><span>Link lista 3</span></a></li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 1</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 2</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 3</span></a>
+              </li>
               <li><span class="divider" role="separator"></span></li>
-              <li><a class="list-item" href="#"><span>Link lista 4</span></a></li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 4</span></a>
+              </li>
             </ul>
           </div>
 
@@ -503,11 +544,19 @@
           <div class="link-list-wrapper">
             <h4 class="link-list-heading">Intestazione</h4>
             <ul class="link-list">
-              <li><a class="list-item large" href="#"><span>Link lista 1</span></a></li>
-              <li><a class="list-item large" href="#"><span>Link lista 2</span></a></li>
-              <li><a class="list-item large" href="#"><span>Link lista 3</span></a></li>
+              <li>
+                <a class="list-item large" href="#"><span>Link lista 1</span></a>
+              </li>
+              <li>
+                <a class="list-item large" href="#"><span>Link lista 2</span></a>
+              </li>
+              <li>
+                <a class="list-item large" href="#"><span>Link lista 3</span></a>
+              </li>
               <li><span class="divider" role="separator"></span></li>
-              <li><a class="list-item large" href="#"><span>Link lista 4</span></a></li>
+              <li>
+                <a class="list-item large" href="#"><span>Link lista 4</span></a>
+              </li>
             </ul>
           </div>
 
@@ -549,8 +598,9 @@
 
           <h3>Lista con controlli</h3>
           <p>
-            Le liste di link con controlli sono caratterizzate da icone a destra e sinistra del testo. Quella di destra e`
-            descrittiva mentre quella di sinistra puo` essere un'eventuale azione aggiuntiva da gestire in JavaScript.
+            Le liste di link con controlli sono caratterizzate da icone a destra e sinistra del testo. Quella di destra
+            e` descrittiva mentre quella di sinistra puo` essere un'eventuale azione aggiuntiva da gestire in
+            JavaScript.
           </p>
 
           <h4>Azione primaria</h4>
@@ -649,7 +699,8 @@
           <div class="alert alert-warning" role="alert">
             <it-icon name="it-warning-circle" color="warning" class="me-2"></it-icon>
             <span class="font-sans-serif">
-              Questo caso d'uso e` in fase di sviluppo, sara` completo non appena sara` pronto il componente <code>it-toggle</code>.
+              Questo caso d'uso e` in fase di sviluppo, sara` completo non appena sara` pronto il componente
+              <code>it-toggle</code>.
             </span>
           </div>
           <div class="link-list-wrapper">
@@ -716,9 +767,15 @@
                   </span>
                 </a>
                 <ul class="link-sublist">
-                  <li><a class="list-item" href="#"><span>Link lista 1</span></a></li>
-                  <li><a class="list-item" href="#"><span>Link lista 2</span></a></li>
-                  <li><a class="list-item" href="#"><span>Link lista 3</span></a></li>
+                  <li>
+                    <a class="list-item" href="#"><span>Link lista 1</span></a>
+                  </li>
+                  <li>
+                    <a class="list-item" href="#"><span>Link lista 2</span></a>
+                  </li>
+                  <li>
+                    <a class="list-item" href="#"><span>Link lista 3</span></a>
+                  </li>
                 </ul>
               </li>
               <li>
@@ -744,9 +801,15 @@
                     </span>
                   </button>
                   <ul slot="content" class="link-sublist collapse">
-                    <li><a class="list-item" href="#"><span>Link lista 1</span></a></li>
-                    <li><a class="list-item" href="#"><span>Link lista 2</span></a></li>
-                    <li><a class="list-item" href="#"><span>Link lista 3</span></a></li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 1</span></a>
+                    </li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 2</span></a>
+                    </li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 3</span></a>
+                    </li>
                   </ul>
                 </it-collapse>
               </li>
@@ -759,9 +822,15 @@
                     </span>
                   </button>
                   <ul slot="content" class="link-sublist collapse">
-                    <li><a class="list-item" href="#"><span>Link lista 1</span></a></li>
-                    <li><a class="list-item" href="#"><span>Link lista 2</span></a></li>
-                    <li><a class="list-item" href="#"><span>Link lista 3</span></a></li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 1</span></a>
+                    </li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 2</span></a>
+                    </li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 3</span></a>
+                    </li>
                   </ul>
                 </it-collapse>
               </li>
@@ -774,9 +843,15 @@
                     </span>
                   </button>
                   <ul slot="content" class="link-sublist collapse">
-                    <li><a class="list-item" href="#"><span>Link lista 1</span></a></li>
-                    <li><a class="list-item" href="#"><span>Link lista 2</span></a></li>
-                    <li><a class="list-item" href="#"><span>Link lista 3</span></a></li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 1</span></a>
+                    </li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 2</span></a>
+                    </li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 3</span></a>
+                    </li>
                   </ul>
                 </it-collapse>
               </li>
@@ -784,7 +859,7 @@
           </div>
         </section>
       </main>
-      <footer id="app-footer"></footer>
+      <div id="app-footer"></div>
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>

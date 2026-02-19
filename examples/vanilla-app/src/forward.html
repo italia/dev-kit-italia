@@ -10,9 +10,8 @@
   </head>
   <body>
     <div id="root">
-      <div id="app-header">
-      </div>
-    <div class="container my-4">
+      <header id="app-header"></header>
+      <main class="container my-4">
       <h1>Forward</h1>
 
       <section class="mb-5">
@@ -67,7 +66,7 @@
           labore cillum sint adipisicing exercitation ipsum.
         </p>
       </div>
-    </div>
+    </main>
     <div id="app-footer"></div>
     </div>
     <script type="module" src="/src/main.js"></script>
@@ -84,6 +83,7 @@
               behavior: prefersReducedMotion ? 'auto' : 'smooth',
               block: 'start'
             });
+            targetElement.focus({ preventScroll: true })
           }
         });
       });
