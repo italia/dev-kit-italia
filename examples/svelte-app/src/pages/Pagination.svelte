@@ -29,7 +29,7 @@
 </script>
 
 <div class="container my-4">
-  <h1>Pagination Examples</h1>
+  <h1>Pagination</h1>
 
   <section class="mb-5">
     <h2>Con pulsanti avanti e indietro</h2>

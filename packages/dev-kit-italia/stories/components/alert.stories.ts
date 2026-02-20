@@ -6,9 +6,6 @@ const meta = {
   tags: ['alpha', 'a11y-ok', 'documentation'],
   parameters: {
     layout: 'padded',
-    docs: {
-      source: { excludeDecorators: true },
-    },
   },
 } satisfies Meta;
 

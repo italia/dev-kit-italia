@@ -154,6 +154,7 @@ const renderComponent = (params: NavscrollProps) => {
         id="scroll-container${uniqueStoryID}"
         class="col-lg-8 it-page-sections-container border-light"
         style="height:500px; overflow-y: scroll;"
+        tabindex="0"
       >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec congue eros. Maecenas sagittis commodo

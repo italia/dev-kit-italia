@@ -19,7 +19,8 @@ export const routes: Routes = [
   },
   {
     path: 'autocomplete',
-    loadComponent: () => import('./pages/autocomplete.component').then((c) => c.AutocompleteComponent),
+    loadComponent: () =>
+      import('./pages/autocomplete.component').then((c) => c.AutocompleteComponent),
   },
   {
     path: 'avatar',
@@ -73,6 +74,10 @@ export const routes: Routes = [
   {
     path: 'forward',
     loadComponent: () => import('./pages/forward.component').then((c) => c.ForwardComponent),
+  },
+  {
+    path: 'hero',
+    loadComponent: () => import('./pages/hero.component').then((c) => c.HeroComponent),
   },
   {
     path: 'icon',

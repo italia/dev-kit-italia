@@ -112,11 +112,6 @@ const meta = {
       type: 'string',
     },
   },
-  parameters: {
-    docs: {
-      source: { excludeDecorators: true },
-    },
-  },
 } satisfies Meta<DropdownProps>;
 
 export default meta;
