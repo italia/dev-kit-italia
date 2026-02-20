@@ -12,9 +12,9 @@ import * as AvatarStories from './it-avatar.stories';
 ## Cosa fa
 
 
-Il componente Avatar permette di rappresentare una persona, il suo stato e le sue azioni in contesti di interazione.
+Il componente Avatar (`it-avatar`) permette di rappresentare una persona, il suo stato e le sue azioni in contesti di interazione.
 
-Può essere utile ad esempio per indicare l'autore di un testo, il proprio profilo in un'area riservata e le persone che hanno interagito con un contenuto.
+Può essere utile, ad esempio, per indicare l'autore di un testo, il proprio profilo in un'area riservata e le persone che hanno interagito con un contenuto.
 
 [Approfondisci come e quando usare il componente Avatar](https://designers.italia.it/design-system/componenti/avatar/)
 ## Anteprima e attributi del componente
@@ -26,9 +26,9 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Accessibilità
 
-Il componente Avatar implementa automaticamente le seguenti feature di accessibilità:
+Il componente Avatar implementa automaticamente le seguenti caratteristiche di accessibilità:
 
-- supporta attributi ARIA;
+- supporto attributi ARIA;
 - gestione di testo alternativo per immagini;
 - stato e presenza comunicati tramite attributi;
 - testo per screen reader nelle varianti testuali e icona.
@@ -44,7 +44,9 @@ Il componente Avatar ridimensiona automaticamente l'immagine adattandola al form
 
 ## Avatar con testo
 
-La versione con testo contiene le iniziali dell'utente (una sola nel caso delle dimensioni `xs` e `sm`). Oltre ai colori di default, puoi utilizzare uno sfondo a scelta fra:
+La versione con testo contiene le iniziali dell'utente (una sola nel caso delle dimensioni `xs` e `sm`). 
+
+Oltre ai colori di default, puoi utilizzare uno sfondo a scelta fra:
 
 - **primario**, aggiungendo l'attributo `variant="primary"`;
 - **secondario**, aggiungendo l'attributo `variant="secondary"`.
@@ -57,7 +59,7 @@ Un avatar con testo conterrà uno `<span class="visually-hidden">Nome Utente</sp
 
 ## Avatar con icona
 
-Per mostrare un'icona all'interno di un avatar, usa l'attributo `icon` valorizzato con il nome dell'icona prescelta dalla [libreria icone](https://designers.italia.it/design-system/fondamenti/iconografia/). Puoi cambiare il colore del'icona usando una delle classi disponibili.
+Per mostrare un'icona all'interno di un avatar, usa l'attributo `icon` valorizzato con il nome dell'icona scelta dalla [libreria icone](https://designers.italia.it/design-system/fondamenti/iconografia/). Puoi cambiare il colore del'icona usando una delle classi disponibili.
 
 <Canvas of={AvatarStories.AvatarConIcona} />
 
@@ -82,7 +84,7 @@ Per aggiungere l'indicatore di presenza dell'utente a un avatar, usa l'attributo
 ### Personalizzazione con slot
 Puoi personalizzare il componente con stili o contenuti differenti tramite gli slot.
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>Ricordarti di includere sempre il testo per gli screen reader con `<span class="visually-hidden">` in caso di  personalizzazione.</p></div></div>
+<p>Ricordarti di includere sempre il testo per i lettori di schermo con `<span class="visually-hidden">` in caso di  personalizzazione.</p></div></div>
 
 Per personalizzare l'indicatore di presenza usa lo **`slot="presence"`**:
 
@@ -119,7 +121,7 @@ Per aggiungere l'indicatore di stato dell'account a un avatar, usa l'attributo `
 ### Personalizzazione con slot
 Puoi personalizzare il componente con stili o contenuti differenti tramite gli slot.
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>Ricordarti di includere sempre il testo per gli screen reader con `<span class="visually-hidden">` in caso di personalizzazione.</p></div></div>
+<p>Ricordarti di includere sempre il testo per i lettori di schermo con `<span class="visually-hidden">` in caso di personalizzazione.</p></div></div>
 
 Per personalizzare l'indicatore di stato usa lo **`slot="status"`**:
 
@@ -177,8 +179,8 @@ L'avatar dropdown eredita automaticamente la dimensione dal gruppo e può conten
 <Canvas of={AvatarStories.AvatarSovrapposti} />
 ### Avatar sovrapposti - varianti di dimensione
 Hai a disposizione due varianti di dimensione per gli avatar sovrapposti all'interno del gruppo:
-- **Piccola (sm)**: utilizzando avatar di dimensione `sm`
-- **Media (md)**: utilizzando avatar di dimensione `md`
+- **piccola (sm)**, utilizzando avatar di dimensione `sm`;
+- **media (md)**; utilizzando avatar di dimensione `md`.
 <Canvas of={AvatarStories.AvatarSovrappostiSM} />
 <Canvas of={AvatarStories.AvatarSovrappostiMD} />
 
@@ -193,12 +195,12 @@ Per il nome puoi usare i tag `<h3>` o `<h4>` tramite lo slot. Per il testo estes
 
 ## Personalizzazione degli stili
 
-Per personalizzare gli stili, puoi usare il selettori `::part` passando il valore `avatar`.
+Per personalizzare gli stili, puoi usare il selettore `::part` passando il valore `avatar`.
 
 Altri valori disponibili per il selettore part per i vari slot esposti dal componente sono:
 - `presence`, target dello slot dell'indicatore di presenza;
 - `status`, target dello slot dell'indicatore di stato;
 - `extra-text`, target dello slot dell'testo aggiuntivo.
 
-[Vai alla guida sui selettori part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
 
