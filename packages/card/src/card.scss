@@ -42,11 +42,38 @@ $utilities: (
     ),
 );
 
+/**
+ * Copied from bsi reboot
+ */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--#{$prefix}paragraph-spacing);
+}
+
+address {
+  margin-bottom: var(--#{$prefix}spacing-s);
+  font-style: normal;
+  line-height: inherit;
+}
+
+ol,
+ul {
+  padding-left: var(--#{$prefix}spacing-l);
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: var(--#{$prefix}spacing-s);
+}
+/* END copied from bsi reboot */
 
 ::slotted(figure) {
   position: absolute;
@@ -56,10 +83,39 @@ $utilities: (
   height: 100%;
 }
 
-::slotted(img) {
-  // TODO fix styles for inline cards
-  border-top-left-radius: var(--#{$prefix}it-card-border-radius-inner);
-  border-top-right-radius: var(--#{$prefix}it-card-border-radius-inner);
+.it-card {
+  .it-card-title.it-card-title-icon {
+    display: block;
+
+    slot[name='title'] {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    ::slotted(a) {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  .it-card-footer {
+    display: block;
+  }
+}
+
+slot[name='footer'] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-top: var(--#{$prefix}card-spacing-y);
+  color: var(--#{$prefix}card-footer-text-color);
+  gap: var(--#{$prefix}card-spacing-y);
+}
+
+::slotted(.it-card-taxonomy) {
+  flex-grow: 1;
 }
 
 @import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
