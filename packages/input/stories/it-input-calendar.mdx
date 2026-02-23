@@ -4,9 +4,9 @@ import * as Stories from './it-input-calendar.stories';
 
 <Meta of={Stories} />
 
-# Input Calendario
+# Datepicker
 
-<description>Campo per selezionare una data all'interno di un calendario.</description>
+<description>Campo per selezionare una data all'interno di un calendario o inserirla manualmente.</description>
 
 ## Cosa fa
 Il componente Datepicker (`it-input` con `type="date"`), consente all’utente di selezionare una data specifica, sia digitandola manualmente che scegliendola da un calendario.
@@ -32,16 +32,16 @@ Fai riferimento alla [documentazione di it-input](?path=/docs/componenti-form-in
 - i **metodi e le proprietà** accessibili tramite JavaScript;
 - il **supporto all’internazionalizzazione (i18n)**.
 
-## Restringere il periodo di validità
-Per limitare la selezione delle date in un intervallo specifico, imposta gli attributi `min` e/o `max` con una stringa nel formato `YYYY-MM-DD`. Non è necessario utilizzare entrambi: puoi impostarne anche solo uno, in base alle necessità.
+## Limitare la selezione a un intervallo specifico
+Per limitare la selezione delle date a un intervallo specifico, imposta gli attributi `min` e/o `max` con una stringa nel formato `YYYY-MM-DD`. Non è necessario utilizzare entrambi: puoi impostarne anche solo uno, in base alle necessità.
 
 Se non usi una validazione personalizzata, la validazione nativa terrà conto di questi range per validare il valore inserito nel campo.
 
 <Canvas of={Stories.MinMax} />
 
 
-## Impostare intervalli di date regolari
-Per limitare la selezione delle date in intervalli regolari, modifica il valore dell'attributo `step`. 
+## Limitare la selezione a intervalli regolari
+Per limitare la selezione delle date a intervalli regolari, modifica il valore dell'attributo `step`. 
 
 Il valore predefinito `1` permette di selezionare ogni giorno, quindi cambialo con un valore diverso da 1 in base all'intervallo che ti serve: `2` per intervalli di 2 giorni, `3` per 3 giorni, ecc.
 
