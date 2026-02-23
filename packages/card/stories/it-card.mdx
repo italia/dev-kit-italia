@@ -25,11 +25,150 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Accessibilità
 
-...
+### Icone nelle card
 
-## Versione con ...
+Le icone nelle card possono avere diversi ruoli semantici:
 
-...
+- Decorative: quando il significato è già chiaro dal contesto testuale, usa `aria-hidden="true"`.
+- Informative: quando comunicano informazioni aggiuntive (es. tipo di file, link esterno), aggiungi testo nascosto con `<span class="visually-hidden">` che descriva l'informazione se non già veicolata diversamente.
+- Funzionali: quando indicano un'azione o stato, assicurati che il significato sia comunicato anche testualmente.
+
+### Link nelle card
+
+Negli esempi non abbiamo usato il target del link per favorire la normale navigazione del browser.
+Se la pagina di destinazione si apre in una nuova tab o finestra, comunicalo in modo chiaro all'utente con un'icona di link esterno e un testo alternativo o nascosto per i lettori di schermo.
+
+### Date e orari nelle card
+
+Quando presenti date e orari, usa l'elemento `time` con l'appropriato attributo `datetime`.
+Inserisci eventuali contenuti guida per lettori di schermo solo se realmente necessari per evitare il rumore,
+ad esempio `<span class="visually-hidden">Data evento:</span>`.
+Comunica chiaramente agli utenti quando una data ha il ruolo di "Scadenza" aggiungendo un testo adeguato oltre alla data stessa, come negli esempi che trovi nella sezione "Card per servizi e bandi".
+Non usare solo il colore (negli esempi `.text-warning`) per veicolare l'importanza dell'informazione.
+
+Poni particolare attenzione che non si crei confusione se nella card fosse presente anche la data di pubblicazione,
+in caso valuta di non mostrarla.
+
+Consigliamo, inoltre, di svolgere sempre test di usabilità anche con utenti che utilizzano tecnologie assistive.
+
+### Titoli nelle card
+TODO
+Negli esempi abbiamo utilizzato il tag `h3` o `h4` per i titoli. Utilizza il tag h corretto a seconda del contesto.
+
+## Card per contenuti editoriali
+
+Le card per contenuti editoriali sono utili a fornire un'anteprima di notizie, articoli, pagine evento o pagine che presentano media (video o audio).
+Sono le classiche card con cui puoi comporre una sezione di copertina delle notizie in evidenza nella pagina principale del sito.
+
+### Card editoriali standard
+
+Esempi con descrizione e data di pubblicazione della scheda, con categoria oppure con argomenti (tag) di appartenenza, con e senza immagine.
+
+La struttura dei metadati include:
+
+- Categorie nell'elemento `.it-card-taxonomy`
+- Tag/argomenti in liste quando sono più di uno
+- Date in elementi HTML semantici `time`, con il corretto attributo `datetime`
+
+<Canvas of={Stories.EditorialiStandard} />
+
+### Card editoriali featured
+
+Usa queste card per presentare contenuti di approfondimento, anche quelli ospitati su piattaforme terze.
+Se i contenuti sono su piattaforme terze, comunica chiaramente all'utente dove si trova il contenuto e che sta per uscire dal sito.
+Puoi aggiungere un'icona a fianco del titolo, usando la classe `.it-card-title-icon-wrapper` come negli esempi che seguono.
+
+Per mostrare un sottotitolo sulle card, usa lo slot `subtitle`.
+
+Per indicare l'autore del contenuto, usa lo slot `signature`.
+
+<Canvas of={Stories.EditorialiFeatured} />
+
+### Card inline
+
+Usa questa variante inline per evidenziare una o due card rispetto alle altre.
+Usa questa variante solo quando per il contenuto è disponibile un'immagine.
+
+Per ottenere la disposizione inline, usa l'attributo `variant="inline"`.
+
+La card inline è orizzontale su viewport medio-grandi.
+Su dispositivi piccoli o con ingrandimento elevato adotta una disposizione verticale simile alla card base.
+
+Per invertire solamente l'ordine visivo tra destra e sinistra, usa invece l'attributo `variant="inline-reverse"`.
+
+<Canvas of={Stories.CardInline} />
+
+#### Card inline mini
+
+Usa la variante mini delle card orizzontali per raggruppare in poco spazio card editoriali con contenuti correlati secondari.
+In ragione di ciò, la card mini non ha il corpo (slot `text`) e il footer (slot `footer`) è visibile solo se presente.
+La dimensione del titolo è ridotta per adattarsi a questo layout.
+
+La variante mini rimane orizzontale anche in viewport piccole o viste ingrandite.
+Questa variante si ottiene applicando l'attributo `variant="inline-mini"`.
+
+Consigliamo di non aggiungere altri contenuti oltre al titolo (da mantenere breve),
+l'eventuale categoria o argomento principale e la data.
+
+<Canvas of={Stories.CardInlineMini} />
+
+### Card per eventi
+
+Per mostrare la data o la durata di un evento in una card, aggiungili in un paragrafo all'inizio del corpo della card usando lo slot `subtitle`.
+
+Usa lo slot `actions` per creare uno spazio dedicato a collegamenti o pulsanti secondari, come negli esempi seguenti.
+Questa impostazione è utile quando il titolo della card porta a una pagina di approfondimento (ad esempio, la descrizione dettagliata dell'evento),
+ma si vuole dare accesso diretto e immediato all'azione principale (ad esempio, l'iscrizione all'evento).
+
+Per applicare il colore secondario ai collegamenti `a` inseriti nel corpo o nel footer della card, usa la classe `.it-card-link`.
+
+<Canvas of={Stories.Eventi} />
+
+#### Card per eventi inline
+
+Per disporre le card eventi in orizzontale, usa la variante `inline`.
+
+Per invertire l'ordine visivo, usa la variante `inline-reverse`.
+
+<Canvas of={Stories.EventiInline} />
+
+### Card per media (video, audio)
+
+Usa queste varianti di card per presentare contenuti media come video o audio e rimandare alle relative pagine di dettaglio, anche se ospitate su piattaforme terze.
+Anche in questo caso, assicurati di comunicare all'utente la tipologia del contenuto e l'eventuale uscita dal sito stesso.
+Per farlo, puoi anche aggiungere un'icona a fianco del titolo, usando la classe `.it-card-title-icon-wrapper` come negli esempi che seguono.
+
+<Canvas of={Stories.Media} />
+
+#### Card per media video inline
+
+Per disporre le card media di tipo video in orizzontale, usa la variante `inline`.
+
+Usa le stesse regole delle card inline standard per struttura e inversione dell'ordine.
+
+<Canvas of={Stories.MediaVideoInline} />
+
+## Card informative e di servizio
+
+Le card informative e di servizio sono utili a fornire un'anteprima per pagine di dettaglio di servizi e bandi,
+oppure per rappresentare documenti e altri tipi di allegati.
+
+### Card per servizi e bandi
+
+Consigliamo di usare alternativamente un breve testo descrittivo nello slot `text` o nello slot `subtitle` per descrivere il contesto della card.
+
+Per aggiungere indicazioni sullo stato del servizio o bando e un'eventuale data di scadenza, come negli esempi seguenti, puoi usare l'elemento footer:
+
+- per lo stato del servizio o bando, usa un componente chip
+- per un'eventuale data di scadenza, usa la classe `.it-card-date` e un testo descrittivo.
+
+Per creare un ulteriore spazio dedicato a collegamenti o pulsanti secondari, come negli esempi seguenti, puoi usare lo slot `actions`.
+Questa impostazione è utile quando il titolo della card porta a una pagina di approfondimento (ad esempio, la descrizione dettagliata di un bando),
+ma si vuole dare accesso diretto e immediato all'azione principale (ad esempio, la candidatura al bando).
+
+Per applicare il colore secondario ai collegamenti `a` inseriti nel corpo o nel footer della card, usa la classe `.it-card-link`.
+
+<Canvas of={Stories.ServiziEBandi} />
 
 ## Personalizzazone degli stili
 
