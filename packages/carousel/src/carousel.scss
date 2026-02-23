@@ -1,0 +1,107 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
+
+@import 'bootstrap-italia/src/scss/components/carousel';
+@import 'bootstrap-italia/src/scss/components/card';
+@import 'bootstrap-italia/src/scss/components/imgresponsive';
+
+//ovveride utilities: get only needed utilities
+$utilities: (
+  'border-color': map-merge(map-get($utilities, 'border-color'), ()),
+);
+
+@import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
+
+// Splide core styles
+// @import '@splidejs/splide/css/core';
+
+// ---------------------------------------------------------------------------
+// Generic arrow styles for variants where BSI has no `-arrow-visible` class.
+// Targets sections that DON'T already have BSI's own arrow class (which covers
+// the 'simple' / three-cols variant). Mirrors BSI's arrow appearance exactly
+// but uses modern CSS: logical properties, translate, rotate, color-mix, grid.
+// ---------------------------------------------------------------------------
+
+// Arrows offset variables — mirrors BSI's $v-gap * 3 / $v-gap * 6 at lg.
+$_arrow-offset-sm: calc(#{$v-gap} * -3);
+$_arrow-offset-lg: calc(#{$v-gap} * -6);
+$_arrow-size: calc(#{$v-gap} * 5);
+$_arrow-icon-size: calc(#{$v-gap} * 2);
+
+:host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) {
+  // The track is position:relative via Splide; arrows sit on top of it.
+  .splide__track {
+    position: relative;
+  }
+
+  .splide__arrows {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    inset-block-start: 50%;
+    inset-inline-end: $_arrow-offset-sm;
+    inset-inline-start: $_arrow-offset-sm;
+    pointer-events: none;
+    translate: 0 -50%;
+  }
+
+  .splide__arrow {
+    display: grid;
+    width: $_arrow-size;
+    height: $_arrow-size;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background-color: ar(--#{$prefix}color-primary);
+    cursor: pointer;
+    place-items: center;
+    pointer-events: all;
+    transition: background-color 0.2s ease;
+
+    svg {
+      display: block;
+      width: $_arrow-icon-size;
+      height: $_arrow-icon-size;
+      fill: $white;
+    }
+
+    &.splide__arrow--prev {
+      rotate: 180deg;
+    }
+
+    @media (hover: hover) {
+      &:hover:not([disabled]) {
+        background-color: color-mix(in srgb, #{$primary} 85%, black);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--#{$prefix}color-outline-focus);
+      outline-offset: 2px;
+    }
+
+    &[disabled] {
+      // background-color: $gray-disabled;
+      cursor: not-allowed;
+    }
+  }
+
+  @media (min-width: #{map-get($grid-breakpoints, lg)}) {
+    .splide__arrows {
+      inset-inline-end: $_arrow-offset-lg;
+      inset-inline-start: $_arrow-offset-lg;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) {
+    .splide__arrow {
+      transition: none;
+    }
+  }
+}

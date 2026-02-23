@@ -1,0 +1,65 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-carousel.stories';
+
+<Meta of={Stories} />
+
+# Carousel
+
+<description>...</description>
+
+## Cosa fa
+...
+
+[Approfondisci come e quando usare il componente Carousel](https://designers.italia.it/design-system/componenti/carousel/)
+
+## Anteprima e attributi del componente
+
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+## Indicazioni generali
+...
+
+## Accessibilità
+...
+
+## Varianti
+Il componente Carousel supporta diverse varianti che possono essere selezionate tramite l'attributo `variant`. Ogni variante è progettata per adattarsi a specifici casi d'uso e
+contesti di design. Di seguito sono descritte le varianti disponibili:
+
+<Canvas of={Stories.VarianteSingola} />
+<Canvas of={Stories.Variante3Colonne} />
+<Canvas of={Stories.VarianteGallerySM} />
+<Canvas of={Stories.VarianteGalleryLG} />
+
+
+## Personalizzazione avanzata
+Per esigenze di personalizzazione avanzata, è possibile utilizzare l'attributo `config` per passare configurazioni specifiche a Splide, la libreria sottostante che gestisce il comportamento
+
+### Frecce di navigazione
+Il componente Carousel include frecce di navigazione per facilitare lo scorrimento tra gli elementi. Le frecce possono essere attivate o disattivate tramite l'attributo `arrows`. Quando le frecce sono attivate, è importante assicurarsi che siano chiaramente visibili e accessibili, soprattutto in contesti con molti elementi o quando la navigazione è essenziale per l'esperienza utente.
+
+<Canvas of={Stories.ConFrecce1} />
+<Canvas of={Stories.ConFrecce2} />
+
+### Fullscreen
+Il componente Carousel può essere visualizzato a schermo intero utilizzando l'attributo `
+fullscreen`. Questa opzione è particolarmente utile per le varianti di galleria, ma può essere applicata a qualsiasi variante per creare un'esperienza immersiva. Quando si utilizza la modalità fullscreen, è importante considerare l'impatto sull'usabilità e sull'accessibilità, assicurandosi che gli elementi di navigazione siano facilmente raggiungibili e che il contenuto sia ben organizzato.
+<Canvas of={Stories.Fullscreen} />
+
+### Modificare il comportamento di scorrimento
+Il comportamento di scorrimento del Carousel può essere personalizzato utilizzando l'attributo `type`, che consente di scegliere tra diverse modalità di scorrimento come "slide", "loop" o "fade". Questa opzione permette di adattare il comportamento del Carousel alle esigenze specifiche del contenuto e del design, offrendo un'esperienza più fluida e coinvolgente per gli utenti. Ad esempio, la modalità "loop" consente di scorrere continuamente attraverso gli elementi, mentre la modalità "fade" offre una transizione più morbida tra gli elementi.
+<Canvas of={Stories.TipoScorrimento} />
+
+### Configurazione avanzata con l'attributo `config`
+L'attributo `config` consente di passare configurazioni specifiche a Splide, la libreria sottostante che gestisce il comportamento del Carousel. Questo permette di personalizzare ulteriormente il comportamento del Carousel, ad esempio modificando la velocità di scorrimento, il numero di elementi visualizzati per pagina, o abilitando funzionalità avanzate come l'autoplay o il loop infinito. Per utilizzare l'attributo `config`, è necessario fornire un oggetto di configurazione che rispetti la struttura richiesta da Splide. Ecco un esempio di come utilizzare l'attributo `config` per personalizzare il comportamento del Carousel:
+
+```html
+<it-carousel variant="columns" config="{ perPage: 4, autoplay: true, interval: 3000 }">
+  <!-- Contenuto del Carousel -->
+</it-carousel>
+```
+In questo esempio, il Carousel è configurato per visualizzare 4 elementi per pagina, abilitare l'autoplay e impostare un intervallo di 3 secondi tra le transizioni. È importante consultare la documentazione di Splide per conoscere tutte le opzioni disponibili e assicurarsi che le configurazioni personalizzate siano compatibili con la struttura e il design del Carousel.
