@@ -5,14 +5,11 @@ import * as BackStories from './it-back.stories';
 
 <Title/>
 
-<description>Elemento di navigazione per tornare alla pagina o alla schermata precedente</description>
+<description>Elemento di navigazione per tornare alla pagina o alla schermata precedente.</description>
 
 ## Cosa fa
 
-Il componente "Back" guida l'utente a tornare alla pagina precedente da cui si proviene, utile nel caso di processi e moduli da compilare a più step, come può essere la compilazione di un questionario.
-Puoi utilizzarlo come link o pulsante.
-
-Può essere molto utile ad orientarsi nel contesto di un modulo (Form) composto da diversi passaggi.
+Il componente Back permette all’utente di tornare alla pagina precedente, risultando particolarmente utile processi a più step, come la compilazione di una richiesta di un servizio o di un questionario. Puoi implementarlo come link o pulsante.
 
 [Approfondisci quando e come usare il componente Back](https://designers.italia.it/design-system/componenti/back/)
 
@@ -26,13 +23,12 @@ Questo componente non possiede attributi, ma si basa su una struttura HTML prede
 
 ## Indicazioni generali
 
-La funzionalità "torna indietro" deve essere implementata dall'utilizzatore: questo garantisce la massima compatibilità con ogni possibile framework JavaScript.
+La funzionalità "torna indietro", per garantire la massima compatibilità con ogni possibile framework JavaScript, deve essere implementata manualmente:
 
-Se stai utilizzando framework moderni come React (NextJS, Remix, TanStack, etc.), Angular, Svelte o Vue.js, puoi integrare questa funzionalità seguendo le best practice specifiche del framework stesso.
+- se usi framework moderni come React (NextJS, Remix, TanStack, ecc.), Angular, Svelte o Vue.js, segui le indicazioni del framework stesso
+- se usi Javascript Vanilla, registra un event listener sull'elemento desiderato e invoca il metodo `window.history.back()` all'interno dell'handler dell'evento.
 
-Se vuoi implementare la funzionalità via Javascript Vanilla invece, registra un event listener sull'elemento desiderato e invoca il metodo `window.history.back()` all'interno dell'handler dell'evento.
-
-Questo metodo consente di navigare all'indietro di una singola entry nello stack della cronologia del browser, replicando il comportamento del pulsante "Indietro" nativo del browser.
+Questo metodo consente di navigare indietro di una singola entry nello stack della cronologia del browser, replicando il comportamento del pulsante "Indietro" nativo del browser.
 
 ```javascript
 const backButton = document.getElementById('backButton');
@@ -42,29 +38,30 @@ backButton.addEventListener('click', (e) => {
 });
 ```
 
-Gli esempi seguenti implementano questa funzionalità nel loro codice di esempio.
+Tutti gli esempi hanno questa funzionalità implementata nel loro codice.
 
 ## Accessibilità
 
-Assicurati di includere un testo alternativo per gli screen reader utilizzando un tag `<span>` con classe `.visually-hidden` ove necessario.
+Quando necessario, includi un testo alternativo per i lettori di schermo usando un tag `<span>` con classe `.visually-hidden`.
 
 ## Link
 
-Quando si utilizza un link (tag `<a>`) è necessario aggiungere un valore all'attributo `href` perché il link sia accessibile e navigabile via tastiera.
+Se vuoi implementare il componente come un link, aggiungi la classe `.go-back` al tag `<a>`. 
 
-Utilizza la classe `.go-back` per applicare lo stile appropriato.
+Per rendere il componente accessibile e navigabile da tastiera, specifica un valore per l'attributo `href`.
+
 
 <Canvas of={BackStories.Link} />
 
 ## Pulsante
 
 
-Applica la classe `.go-back` al componente `<it-button>` per applicare lo stile appropriato.
+Se vuoi implementare il componente come un pulsante, applica la classe `.go-back` al componente `<it-button>`.
 
 <Canvas of={BackStories.Pulsante} />
 
 ## Pulsante con sola icona
 
-Puoi creare pulsanti senza testo dotati di sola icona, avendo cura di includere il testo alternativo per gli screen reader in un tag `<span>` con classe `.visually-hidden`.
+Se vuoi ottenere un pulsante con sola icona e senza testo, includi il testo alternativo per i lettori di schermo in un tag `<span>` con classe `.visually-hidden`.
 
 <Canvas of={BackStories.PulsanteSolaIcona} />
