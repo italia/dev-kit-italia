@@ -69,7 +69,9 @@ export class ItMegamenu extends ItDropdown {
           aria-labelledby=${this._buttonId}
           role="region"
         >
-          <slot></slot>
+          <div class="megamenu pb-5 pt-3 py-lg-0">
+            <slot></slot>
+          </div>
         </div>
       </it-popover>
     `;
