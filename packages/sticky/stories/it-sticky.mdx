@@ -77,16 +77,17 @@ Quando ci sono più componenti sticky sulla pagina, puoi impilarli l'uno sull'al
 
 ### Eventi
 
-Il componente `it-sticky` emette eventi custom per notificare quando un elemento diventa sticky o smette di esserlo:
+Il componente `it-sticky` emette questi eventi custom:
 
-- **it-sticky-on**: Emesso quando l'elemento diventa sticky
-- **it-sticky-off**: Emesso quando l'elemento smette di essere sticky
+- **it-sticky-on**, quando l'elemento diventa sticky;
+- **it-sticky-off**, quando l'elemento smette di essere sticky.
 
 Entrambi gli eventi hanno le seguenti proprietà:
-- `bubbles: true` - L'evento si propaga attraverso il DOM
-- `composed: true` - L'evento attraversa i confini del Shadow DOM
-- `cancelable: true` - L'evento può essere cancellato
-- `detail: { id: string }` - Contiene l'ID dell'elemento sticky
+
+- `bubbles: true`, l'evento si propaga attraverso il DOM;
+- `composed: true`, l'evento attraversa i confini del Shadow DOM;
+- `cancelable: true`, l'evento può essere cancellato;
+- `detail: { id: string }`, contiene l'ID dell'elemento sticky.
 
 #### Esempio di utilizzo
 
