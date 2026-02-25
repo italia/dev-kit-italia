@@ -111,7 +111,7 @@ li span,
 
   // Increase font-size and spacing for list item link with large class
   &.large {
-    --#{$prefix}linklist-item-font-size: var(--#{$prefix}label-font-size-m);
+    --#{$prefix}linklist-item-font-size: var(--#{$prefix}label-font-size-l);
   }
 
   // Avatar position inside the list item

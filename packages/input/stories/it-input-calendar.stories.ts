@@ -180,6 +180,7 @@ type Story = StoryObj<InputCalendarProps>;
 export const EsempioInterattivo: Story = {
   ...meta,
   name: 'Esempio interattivo',
+  tags: ['!dev'],
   parameters: {
     docs: {
       canvas: {

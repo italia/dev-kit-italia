@@ -96,7 +96,9 @@ const meta = {
         'Nome della propria funzione presente nella window che verrà invocata da video.js per inizializzare eventuali plugin aggiuntivi definiti dallo sviluppatore.',
     },
   },
-  decorators: [(Story) => html`<div class="sbdocs-video-container">${Story()}</div>`],
+  parameters: {
+    pageLayout: 'w-100',
+  },
 } satisfies Meta<VideoProps>;
 
 export default meta;
@@ -107,7 +109,6 @@ export const EsempioInterattivo: Story = {
   tags: ['!dev'],
   parameters: {
     docs: {
-      source: { excludeDecorators: true },
       canvas: {
         sourceState: 'closed',
       },

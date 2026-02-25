@@ -140,6 +140,7 @@ const DefaultChildren = html`<option value="Value 1">Opzione 1</option>
 
 export const EsempioInterattivo: Story = {
   ...meta,
+  tags: ['!dev'],
   name: 'Esempio interattivo',
   parameters: {
     docs: {

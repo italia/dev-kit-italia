@@ -1,5 +1,5 @@
 <div class="container my-4">
-  <h1>Pagination Examples</h1>
+  <h1>Pagination</h1>
 
   <section class="mb-5">
     <h2>Con pulsanti avanti e indietro</h2>
@@ -11,9 +11,7 @@
 
       @for (page of getRange(5); track page) {
         <it-pagination-item [attr.page]="page">
-          <a href="#">
-            <span class="d-inline-block d-sm-none">Pagina </span>{{ page }}
-          </a>
+          <a href="#"> <span class="d-inline-block d-sm-none">Pagina </span>{{ page }} </a>
         </it-pagination-item>
       }
 
@@ -31,9 +29,7 @@
 
       @for (page of getRange(5); track page) {
         <it-pagination-item [attr.page]="page">
-          <a href="#">
-            <span class="d-inline-block d-sm-none">Pagina </span>{{ page }}
-          </a>
+          <a href="#"> <span class="d-inline-block d-sm-none">Pagina </span>{{ page }} </a>
         </it-pagination-item>
       }
 
@@ -50,9 +46,7 @@
       </a>
       @for (page of getRange(3); track page) {
         <it-pagination-item [attr.page]="page">
-          <a href="#">
-            <span class="d-inline-block d-sm-none">Pagina </span>{{ page }}
-          </a>
+          <a href="#"> <span class="d-inline-block d-sm-none">Pagina </span>{{ page }} </a>
         </it-pagination-item>
       }
       <a href="#" slot="next">
@@ -72,9 +66,7 @@
       </a>
       @for (page of getRange(3); track page) {
         <it-pagination-item [attr.page]="page">
-          <a href="#">
-            <span class="d-inline-block d-sm-none">Pagina </span>{{ page }}
-          </a>
+          <a href="#"> <span class="d-inline-block d-sm-none">Pagina </span>{{ page }} </a>
         </it-pagination-item>
       }
       <a href="#" slot="next">
@@ -95,9 +87,7 @@
         </a>
         @for (page of getRange(3); track page) {
           <it-pagination-item [attr.page]="page">
-            <a href="#">
-              <span class="d-inline-block d-sm-none">Pagina </span>{{ page }}
-            </a>
+            <a href="#"> <span class="d-inline-block d-sm-none">Pagina </span>{{ page }} </a>
           </it-pagination-item>
         }
         <a href="#" slot="next">
@@ -112,15 +102,19 @@
   <section class="mb-5">
     <h2>Paginazione responsive</h2>
     <it-pagination value="1">
-      <a href="#" slot="prev"><it-icon name="it-chevron-left"></it-icon><span class="visually-hidden">Pagina precedente</span></a>
+      <a href="#" slot="prev"
+        ><it-icon name="it-chevron-left"></it-icon
+        ><span class="visually-hidden">Pagina precedente</span></a
+      >
       @for (page of getRange(5); track page) {
         <it-pagination-item [attr.page]="page">
-          <a href="#">
-            <span class="d-inline-block d-sm-none">Pagina </span>{{ page }}
-          </a>
+          <a href="#"> <span class="d-inline-block d-sm-none">Pagina </span>{{ page }} </a>
         </it-pagination-item>
       }
-      <a href="#" slot="next"><it-icon name="it-chevron-right"></it-icon><span class="visually-hidden">Pagina successiva</span></a>
+      <a href="#" slot="next"
+        ><it-icon name="it-chevron-right"></it-icon
+        ><span class="visually-hidden">Pagina successiva</span></a
+      >
       <p slot="total">Totale 300 elementi</p>
     </it-pagination>
   </section>
@@ -128,15 +122,19 @@
   <section class="mb-5">
     <h2>Con selettore pagine</h2>
     <it-pagination value="3">
-      <a href="#" slot="prev"><it-icon name="it-chevron-left"></it-icon><span class="visually-hidden">Pagina precedente</span></a>
+      <a href="#" slot="prev"
+        ><it-icon name="it-chevron-left"></it-icon
+        ><span class="visually-hidden">Pagina precedente</span></a
+      >
       @for (page of getRange(5); track page) {
         <it-pagination-item [attr.page]="page">
-          <a href="#">
-            <span class="d-inline-block d-sm-none">Pagina </span>{{ page }}
-          </a>
+          <a href="#"> <span class="d-inline-block d-sm-none">Pagina </span>{{ page }} </a>
         </it-pagination-item>
       }
-      <a href="#" slot="next"><it-icon name="it-chevron-right"></it-icon><span class="visually-hidden">Pagina successiva</span></a>
+      <a href="#" slot="next"
+        ><it-icon name="it-chevron-right"></it-icon
+        ><span class="visually-hidden">Pagina successiva</span></a
+      >
 
       <div slot="page-changer">
         <label for="page-size" class="visually-hidden">Elementi per pagina:</label>
@@ -157,16 +155,22 @@
 
   <section class="mb-5">
     <h2>Con salto a pagina specifica</h2>
-    <it-pagination id="jump" value="5" total="20">
-      <a href="#" slot="prev"><it-icon name="it-chevron-left"></it-icon><span class="visually-hidden">Pagina precedente</span></a>
-      @for (page of getRange(5); track page) {
+    <it-pagination id="jump" value="5" total="10">
+      <a href="#" slot="prev">
+        <it-icon name="it-chevron-left"></it-icon>
+        <span class="visually-hidden">Pagina precedente</span>
+      </a>
+
+      @for (page of getRange(10); track page) {
         <it-pagination-item [attr.page]="page">
-          <a href="#">
-            <span class="d-inline-block d-sm-none">Pagina </span>{{ page }}
-          </a>
+          <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>{{ page }}</a>
         </it-pagination-item>
       }
-      <a href="#" slot="next"><it-icon name="it-chevron-right"></it-icon><span class="visually-hidden">Pagina successiva</span></a>
+
+      <a href="#" slot="next">
+        <it-icon name="it-chevron-right"></it-icon>
+        <span class="visually-hidden">Pagina successiva</span>
+      </a>
 
       <div slot="jump-to-page" style="display: flex; align-items: center; gap: 0.5rem">
         <it-input
@@ -207,9 +211,7 @@
 
       @for (page of pagesList; track page) {
         <it-pagination-item [attr.page]="page">
-          <a href="#">
-            <span class="d-inline-block d-sm-none">Pagina </span>{{ page }}
-          </a>
+          <a href="#"> <span class="d-inline-block d-sm-none">Pagina </span>{{ page }} </a>
         </it-pagination-item>
       }
 

@@ -16,8 +16,10 @@ import Collapse from './pages/Collapse';
 import Dropdown from './pages/Dropdown';
 import Form from './pages/Form';
 import Forward from './pages/Forward';
+import Hero from './pages/Hero';
 import Icon from './pages/Icon';
 import Input from './pages/Input';
+import List from './pages/List';
 import Modal from './pages/Modal';
 import Navscroll from './pages/Navscroll';
 import Overlay from './pages/Overlay';
@@ -52,8 +54,10 @@ export const AppRoutes = [
   { path: '/dropdown', element: <Dropdown />, title: 'Dropdown' },
   { path: '/form', element: <Form />, title: 'Form' },
   { path: '/forward', element: <Forward />, title: 'Forward' },
+  { path: '/hero', element: <Hero />, title: 'Hero' },
   { path: '/icon', element: <Icon />, title: 'Icon' },
   { path: '/input', element: <Input />, title: 'Input' },
+  { path: '/list', element: <List />, title: 'List' },
   { path: '/modal', element: <Modal />, title: 'Modal' },
   { path: '/navscroll', element: <Navscroll />, title: 'Navscroll' },
   { path: '/overlay', element: <Overlay />, title: 'Overlay' },

@@ -8,11 +8,28 @@ function Pagination() {
       console.log('Pagination changed to page:', event.detail.page, typeof event.detail.page);
       setTestState(parseInt(event.detail.page).toString());
     });
+
+    // Jump to page event listener
+    const jumperInput = document.getElementById('jumper-example');
+    const pagination = document.getElementById('jump');
+    if (jumperInput && pagination) {
+      const pTot = parseInt(pagination.getAttribute('total') || '10', 10);
+
+      jumperInput.addEventListener('it-change', () => {
+        const pageNumber = jumperInput.value;
+        if (pageNumber < 1 || pageNumber > pTot) {
+          console.log('JumpToPage: Numero di pagina non valido', pageNumber);
+          return;
+        }
+        console.log('JumpToPage: Vai a pagina', pageNumber);
+        pagination.value = pageNumber.toString();
+      });
+    }
   }, []);
   console.log('Render Pagination with testState:', testState);
   return (
     <div className="container my-4">
-      <h1>Pagination Examples</h1>
+      <h1>Pagination</h1>
 
       {/* Con pulsanti avanti e indietro */}
       <section className="mb-5">
@@ -341,7 +358,7 @@ function Pagination() {
       {/* Con salto a pagina specifica */}
       <section className="mb-5">
         <h2>Con salto a pagina specifica</h2>
-        <it-pagination id="jump" value="5" total="20">
+        <it-pagination id="jump" value="5" total="10">
           <a href="#" slot="prev">
             <it-icon name="it-chevron-left"></it-icon>
             <span class="visually-hidden">Pagina precedente</span>
@@ -370,6 +387,31 @@ function Pagination() {
           <it-pagination-item page="5">
             <a href="#">
               <span className="d-inline-block d-sm-none">Pagina </span>5
+            </a>
+          </it-pagination-item>
+          <it-pagination-item page="6">
+            <a href="#">
+              <span className="d-inline-block d-sm-none">Pagina </span>6
+            </a>
+          </it-pagination-item>
+          <it-pagination-item page="7">
+            <a href="#">
+              <span className="d-inline-block d-sm-none">Pagina </span>7
+            </a>
+          </it-pagination-item>
+          <it-pagination-item page="8">
+            <a href="#">
+              <span className="d-inline-block d-sm-none">Pagina </span>8
+            </a>
+          </it-pagination-item>
+          <it-pagination-item page="9">
+            <a href="#">
+              <span className="d-inline-block d-sm-none">Pagina </span>9
+            </a>
+          </it-pagination-item>
+          <it-pagination-item page="10">
+            <a href="#">
+              <span className="d-inline-block d-sm-none">Pagina </span>10
             </a>
           </it-pagination-item>
 

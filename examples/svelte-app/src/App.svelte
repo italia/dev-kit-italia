@@ -35,8 +35,10 @@
         <a href="#/dropdown">Dropdown</a>
         <a href="#/form">Form</a>
         <a href="#/forward">Forward</a>
+        <a href="#/hero">Hero</a>
         <a href="#/icon">Icon</a>
         <a href="#/input">Input</a>
+        <a href="#/list">List</a>
         <a href="#/modal">Modal</a>
         <a href="#/navscroll">Navscroll</a>
         <a href="#/overlay">Overlay</a>

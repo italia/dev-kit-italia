@@ -37,6 +37,8 @@ export const EsempioBase: Story = {
           behavior: prefersReducedMotion ? 'auto' : 'smooth',
           block: 'start'
         });
+        targetElement.setAttribute('tabindex', '-1');
+        targetElement.focus({ preventScroll: true });
       }
     });
   });
@@ -56,18 +58,19 @@ export const EsempioBase: Story = {
   render: () => {
     setTimeout(() => {
       document.querySelectorAll('a.forward').forEach((link) => {
-        const newLink = link.cloneNode(true);
-        link.parentNode?.replaceChild(newLink, link);
-        newLink.addEventListener('click', (e) => {
+        link.addEventListener('click', (e) => {
           e.preventDefault();
-          const targetId = newLink.getAttribute('href');
-          const targetElement = document.querySelector(targetId);
+          const targetId = link.getAttribute('href');
+          if (!targetId) return;
+          const targetElement = document.querySelector(targetId) as HTMLElement;
           if (targetElement) {
             const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             targetElement.scrollIntoView({
               behavior: prefersReducedMotion ? 'auto' : 'smooth',
               block: 'start',
             });
+            targetElement.setAttribute('tabindex', '-1');
+            targetElement.focus({ preventScroll: true });
           }
         });
       });

@@ -16,8 +16,10 @@ import Collapse from './pages/Collapse.svelte';
 import Dropdown from './pages/Dropdown.svelte';
 import Form from './pages/Form.svelte';
 import Forward from './pages/Forward.svelte';
+import Hero from './pages/Hero.svelte';
 import Icon from './pages/Icon.svelte';
 import Input from './pages/Input.svelte';
+import List from './pages/List.svelte';
 import Modal from './pages/Modal.svelte';
 import Navscroll from './pages/Navscroll.svelte';
 import Overlay from './pages/Overlay.svelte';
@@ -52,8 +54,10 @@ export const AppRoutes = [
   { path: '/dropdown', element: Dropdown, title: 'Dropdown' },
   { path: '/form', element: Form, title: 'Form' },
   { path: '/forward', element: Forward, title: 'Forward' },
+  { path: '/hero', element: Hero, title: 'Hero' },
   { path: '/icon', element: Icon, title: 'Icon' },
   { path: '/input', element: Input, title: 'Input' },
+  { path: '/list', element: List, title: 'List' },
   { path: '/modal', element: Modal, title: 'Modal' },
   { path: '/navscroll', element: Navscroll, title: 'Navscroll' },
   { path: '/overlay', element: Overlay, title: 'Overlay' },
