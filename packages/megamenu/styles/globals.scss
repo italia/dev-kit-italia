@@ -23,3 +23,29 @@
     }
   }
 }
+
+it-megamenu {
+  [slot='description'] {
+    img {
+      display: block;
+      width: 100%;
+      margin-bottom: var(--#{$prefix}spacing-s);
+    }
+
+    p {
+      font-size: var(--#{$prefix}label-font-size);
+      line-height: var(--#{$prefix}body-line-height);
+    }
+  }
+
+  it-dropdown-item::part(list-item) {
+    display: flex;
+    align-items: center;
+    white-space: normal;
+  }
+
+  it-dropdown-item::part(dropdown-item-text) {
+    display: inline-flex;
+    align-items: center;
+  }
+}

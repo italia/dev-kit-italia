@@ -2,6 +2,7 @@
 @import 'bootstrap-italia/src/scss/base/variables';
 @import 'bootstrap-italia/src/scss/base/mixins';
 @import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/components/grid';
 
 @import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
 
@@ -15,9 +16,37 @@ $utilities: (
   'padding-top': map-get($utilities, 'padding-top'),
   'padding-bottom': map-get($utilities, 'padding-bottom'),
   'padding-x': map-get($utilities, 'padding-x'),
+  'padding-start': map-get($utilities, 'padding-start'),
+  'margin-start': map-get($utilities, 'margin-start'),
+  'margin-end': map-get($utilities, 'margin-end'),
 );
 @import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
 
+// .megamenu {
+//   .row {
+//     --#{$prefix}gutter-x: 0;
+//   }
+// }
+
 .dropdown-menu {
   margin-top: -0.75rem;
+
+  --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}spacing-xxs);
+  --#{$prefix}dropdown-item-padding-y: var(--#{$prefix}spacing-xxs);
+  --#{$prefix}dropdown-spacer: 0;
+  width: 100%;
+  background: var(--#{$prefix}megamenu-background-color);
+
+  // Extra padding on large devices only
+  @include media-breakpoint-up(lg) {
+    --#{$prefix}dropdown-padding-y: var(--#{$prefix}spacing-m);
+    //--#{$prefix}dropdown-padding-x: var(--#{$prefix}spacing-xs);
+    .megamenu {
+      padding: var(--#{$prefix}spacing-xs);
+    }
+  }
+
+  ul.link-list {
+    column-gap: var(--#{$prefix}spacing-s); /* spazio tra colonne */
+  }
 }

@@ -141,102 +141,62 @@ export const Base: Story = {
                 ?dark=${args.dark}
                 ?full-width=${args['full-width']}
                 it-aria-label=${ifDefined(args['it-aria-label'])}
+                columns="2"
               >
-                <div class="row">
-                  <div class="col-xs-12 col-lg-4 px-0">
-                    <div class="row">
-                      <div class="col-12 it-vertical it-description pb-lg-3">
-                        <div class="description-content ps-4 ps-sm-5 ms-3">
-                          <div class="ratio ratio-21x9 lightgrey-bg-a1 mb-4 rounded">
-                            <figure class="figure">
-                              <img
-                                src="https://placehold.co/560x240/ebebeb/808080/?text=Immagine"
-                                class="figure-img img-fluid rounded"
-                                alt="Segnaposto"
-                              />
-                            </figure>
-                          </div>
-                          <p>
-                            Testo utile a fornire una descrizione dei contenuti della sezione
-                            <strong>megamenu 1</strong>.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                <!-- SLOT DESCRIPTION -->
+                <div slot="description">
+                  <div class="ratio ratio-21x9 lightgrey-bg-a1 mb-4 rounded">
+                    <figure class="figure">
+                      <img
+                        src="https://placehold.co/560x240/ebebeb/808080/?text=Immagine"
+                        class="figure-img img-fluid rounded"
+                        alt="Segnaposto"
+                      />
+                    </figure>
                   </div>
-                  <div class="col-12 col-lg-8">
-                    <div class="it-heading-link-wrapper">
-                      <a class="it-heading-link" href="#"
-                        ><svg role="img" class="icon icon-sm me-2 mb-1">
-                          <use href="/dist/svg/sprites.svg#it-arrow-right-triangle"></use>
-                        </svg>
-                        <span>Esplora la sezione megamenu 1</span>
-                      </a>
-                    </div>
-                    <div class="row">
-                      <div class="col-12 col-lg-6">
-                        <div class="link-list-wrapper">
-                          <ul class="link-list">
-                            <li>
-                              <a class="list-item dropdown-item" href="#">
-                                <svg role="img" class="icon icon-sm me-2">
-                                  <use href="/dist/svg/sprites.svg#it-arrow-right-triangle"></use>
-                                </svg>
-                                <span>Link lista 1</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="list-item dropdown-item" href="#">
-                                <svg role="img" class="icon icon-sm me-2">
-                                  <use href="/dist/svg/sprites.svg#it-arrow-right-triangle"></use>
-                                </svg>
-                                <span>Link lista 2</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="list-item dropdown-item " href="#">
-                                <svg role="img" class="icon icon-sm me-2">
-                                  <use href="/dist/svg/sprites.svg#it-arrow-right-triangle"></use>
-                                </svg>
-                                <span>Link lista 3</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="col-12 col-lg-6">
-                        <div class="link-list-wrapper">
-                          <ul class="link-list">
-                            <li>
-                              <a class="list-item dropdown-item" href="#">
-                                <svg role="img" class="icon icon-sm me-2">
-                                  <use href="/dist/svg/sprites.svg#it-arrow-right-triangle"></use>
-                                </svg>
-                                <span>Link lista 4</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="list-item dropdown-item" href="#">
-                                <svg role="img" class="icon icon-sm me-2">
-                                  <use href="/dist/svg/sprites.svg#it-arrow-right-triangle"></use>
-                                </svg>
-                                <span>Link lista 5</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="list-item dropdown-item " href="#">
-                                <svg role="img" class="icon icon-sm me-2">
-                                  <use href="/dist/svg/sprites.svg#it-arrow-right-triangle"></use>
-                                </svg>
-                                <span>Link lista 6</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <p>
+                    Testo utile a fornire una descrizione dei contenuti della sezione
+                    <strong>megamenu 1</strong>.
+                  </p>
                 </div>
+
+                <!-- SLOT HEADER -->
+                <!-- <div class="it-heading-link-wrapper">
+                  <a class="it-heading-link" href="#"
+                    ><svg role="img" class="icon icon-sm me-2 mb-1">
+                      <use href="/dist/svg/sprites.svg#it-arrow-right-triangle"></use>
+                    </svg>
+                    <span>Esplora la sezione megamenu 1</span>
+                  </a>
+                </div>-->
+
+                <!-- DROPDOWN LINKS ITEMS -->
+                <it-dropdown-item href="#">
+                  <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                  Link lista 1</it-dropdown-item
+                >
+                <it-dropdown-item href="#">
+                  <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                  Link lista 2
+                </it-dropdown-item>
+                <it-dropdown-item href="#">
+                  <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                  Link lista 3
+                </it-dropdown-item>
+                <it-dropdown-item href="#">
+                  <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                  Link lista 4
+                </it-dropdown-item>
+                <it-dropdown-item href="#">
+                  <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                  Link lista 5
+                </it-dropdown-item>
+                <it-dropdown-item href="#">
+                  <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                  Link lista 6
+                </it-dropdown-item>
+
+                <!-- SLOT FOOTER -->
               </it-megamenu>
             </li>
             <!-- megamenu 2 -->
