@@ -1,5 +1,4 @@
 /* eslint-disable lit-a11y/click-events-have-key-events */
-// import { type ItButton } from '@italia/button';
 import { BaseComponent, FocusTrapController, WindowManager } from '@italia/globals';
 import { html, PropertyValues } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
@@ -8,29 +7,13 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { type ModalSize, type ModalPosition, type ModalVariant, type ModalEventDetail } from './types.js';
 import styles from './modal.scss';
 
-/**
- * Componente Modal per finestre di dialogo modali.
- *
- * @element it-modal
- *
- * @slot trigger - Elemento che apre la modale (es. it-button)
- * @slot content - Contenuto principale della modale (body)
- * @slot header-icon - Icona opzionale nell'header
- * @slot footer - Azioni del footer (pulsanti)
- *
- * @fires it-modal-open - Quando la modale si apre
- * @fires it-modal-close - Quando la modale si chiude
- */
 @customElement('it-modal')
 export class ItModal extends BaseComponent {
   static styles = styles;
 
-  static override shadowRootOptions = {
-    ...BaseComponent.shadowRootOptions,
-    delegatesFocus: true,
-  };
+  static override shadowRootOptions = { ...BaseComponent.shadowRootOptions, delegatesFocus: true };
 
-  @property({ type: Boolean, reflect: true }) open = false;
+  @property({ type: Boolean, reflect: true }) open: boolean | undefined = undefined;
 
   @property({ type: String, attribute: 'modal-title', reflect: true }) modalTitle = '';
 
@@ -38,7 +21,7 @@ export class ItModal extends BaseComponent {
 
   @property({ type: String, reflect: true }) size: ModalSize = '';
 
-  @property({ type: String, reflect: true }) position?: ModalPosition | undefined;
+  @property({ type: String, reflect: true }) position?: ModalPosition;
 
   @property({ type: Boolean, reflect: true }) scrollable = false;
 
@@ -46,9 +29,9 @@ export class ItModal extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'hide-close-button', reflect: true }) hideCloseButton = false;
 
-  @property({ type: String, reflect: true }) variant?: ModalVariant | undefined;
+  @property({ type: String, reflect: true }) variant?: ModalVariant;
 
-  @property({ type: String, attribute: 'it-aria-label' }) itAriaLabel: string = '';
+  @property({ type: String, attribute: 'it-aria-label' }) itAriaLabel = '';
 
   @property({ type: String, attribute: 'close-label', reflect: true }) closeLabel = '';
 
@@ -76,117 +59,57 @@ export class ItModal extends BaseComponent {
 
   private isAnimating = false;
 
+  private _isSelfClosing = false;
+
+  private _originalTrigger: HTMLElement | null = null;
+
   private _dialogAnimation?: Animation;
 
   private _backdropAnimation?: Animation;
 
-  private readonly _dialogAnimationDuration = 300; // ms - matches Bootstrap Italia modal-transition
+  private readonly _dialogAnimationDuration = 300;
 
-  private readonly _backdropAnimationDuration = 150; // ms - standard fade
+  private readonly _backdropAnimationDuration = 150;
 
-  private _focusTrap = new FocusTrapController(this, {
-    getContainer: () => this._modalElement,
-    initialFocus: () => this._modalElement,
-    getTrigger: () => this._triggerElement,
-    onEscape: () => {
-      this.hide();
-    },
+  private _inertElements: HTMLElement[] = [];
 
-    disableEscape: false,
-  });
+  private _triggerPointerBefore: string | null = null;
 
-  get _triggerElement(): HTMLElement | null {
-    if (!this._triggerSlot) {
-      this.logger.error('No trigger provided');
-      return null;
-    }
-    const elements = this._triggerSlot.assignedElements({ flatten: true });
-    if (elements.length === 0) {
-      return null;
-    }
-    return elements[0] as HTMLElement | null;
-  }
+  private _focusTrap: FocusTrapController;
 
   constructor() {
     super();
     this._triggerId = this.generateId('modal-trigger');
     this._titleId = this.generateId('modal-title');
     this._descriptionId = this.generateId('modal-description');
+    this._focusTrap = new FocusTrapController(this, {
+      getContainer: () => this._modalElement,
+      initialFocus: () => this._modalElement,
+      getTrigger: () => this._triggerElement,
+      onEscape: () => this.hide(),
+    });
   }
 
-  connectedCallback(): void {
-    super.connectedCallback?.();
+  get _triggerElement(): HTMLElement | null {
+    const elements = this._triggerSlot?.assignedElements({ flatten: true });
+    return (elements?.[0] as HTMLElement) || null;
   }
-
-  disconnectedCallback(): void {
-    super.disconnectedCallback?.();
-    this._removeTriggerListeners();
-    this._cleanupAnimations();
-    WindowManager.unlockBodyScroll();
-  }
-
-  protected updated(changedProperties: PropertyValues): void {
-    if (changedProperties.has('open')) {
-      // Cancel any ongoing animations before starting new ones
-      this._cleanupAnimations();
-
-      if (this.open) {
-        this._showModal();
-      } else {
-        this._hideModal();
-      }
-    }
-  }
-
-  private _onTriggerSlotChange = (): void => {
-    this._setupTriggerListeners();
-  };
-
-  private _onHeaderSlotChange = (): void => {
-    this.requestUpdate();
-  };
-
-  private _setupTriggerListeners(): void {
-    const trigger = this._triggerElement;
-    if (!trigger) return;
-
-    trigger.setAttribute('id', this._triggerId);
-    // Rimuovi eventuali listener precedenti
-    trigger.removeEventListener('click', this._onTriggerClick);
-    trigger.removeEventListener('keydown', this._onTriggerKeydown);
-
-    // Aggiungi nuovi listener
-    trigger.addEventListener('click', this._onTriggerClick);
-    trigger.addEventListener('keydown', this._onTriggerKeydown);
-  }
-
-  private _removeTriggerListeners(): void {
-    const trigger = this._triggerElement;
-    if (!trigger) return;
-
-    trigger.removeEventListener('click', this._onTriggerClick);
-    trigger.removeEventListener('keydown', this._onTriggerKeydown);
-  }
-
-  private _onTriggerClick = (event: Event): void => {
-    event.stopPropagation();
-    this.show();
-  };
-
-  private _onTriggerKeydown = (event: Event): void => {
-    if ((event as KeyboardEvent).key === 'Enter' || (event as KeyboardEvent).key === ' ') {
-      event.preventDefault();
-      this.show();
-    }
-  };
 
   public show(): void {
     if (this.open || this.isAnimating) return;
+
+    this._originalTrigger = this._triggerElement;
+    this.dispatchEvent(
+      new CustomEvent<ModalEventDetail>('it-modal-open', { detail: { modal: this }, bubbles: true, composed: true }),
+    );
     this.open = true;
   }
 
   public hide(): void {
     if (!this.open || this.isAnimating) return;
+    this.dispatchEvent(
+      new CustomEvent<ModalEventDetail>('it-modal-close', { detail: { modal: this }, bubbles: true, composed: true }),
+    );
     this._hideModal();
   }
 
@@ -194,215 +117,160 @@ export class ItModal extends BaseComponent {
     this.open = !this.open;
   }
 
-  private _showModal(): void {
+  protected updated(changedProperties: PropertyValues): void {
+    if (changedProperties.has('open')) {
+      if (this._isSelfClosing) {
+        this._isSelfClosing = false;
+        return;
+      }
+      this._cleanupAnimations();
+      if (this.open !== undefined) {
+        if (this.open) this._showModal();
+        else this._hideModal();
+      }
+    }
+  }
+
+  private _applyInert(): void {
+    this._removeInert();
+    const trigger = this._triggerElement;
+    if (trigger) {
+      this._triggerPointerBefore = trigger.style.pointerEvents;
+      trigger.style.pointerEvents = 'none';
+    }
+    const ignored = new Set(['SCRIPT', 'STYLE', 'TEMPLATE', 'LINK']);
+    for (let cur: HTMLElement | null = this; cur && cur !== document.body; cur = cur.parentElement) {
+      const parent = cur.parentElement;
+      if (!parent) break;
+      Array.from(parent.children).forEach((node) => {
+        if (node !== cur && !ignored.has(node.tagName) && node instanceof HTMLElement) {
+          node.setAttribute('inert', '');
+          this._inertElements.push(node);
+        }
+      });
+    }
+  }
+
+  private _removeInert(): void {
+    this._inertElements.forEach((el) => el.removeAttribute('inert'));
+    if (this._triggerElement && this._triggerPointerBefore !== null) {
+      this._triggerElement.style.pointerEvents = this._triggerPointerBefore;
+    }
+    this._inertElements = [];
+    this._triggerPointerBefore = null;
+  }
+
+  private _exposeA11yOnHost(): void {
+    this.setAttribute('role', 'dialog');
+    this.setAttribute('aria-modal', 'true');
+    if (this._titleId) this.setAttribute('aria-labelledby', this._titleId);
+    if (this._descriptionId) this.setAttribute('aria-describedby', this._descriptionId);
+  }
+
+  private _removeA11yFromHost(): void {
+    ['role', 'aria-modal', 'aria-labelledby', 'aria-describedby'].forEach((a) => this.removeAttribute(a));
+  }
+
+  private async _showModal(): Promise<void> {
     if (this.isAnimating) return;
-
     this.isAnimating = true;
-
-    // Deactivate focus trap first if it was active
-    this._focusTrap.deactivate();
-
+    this._exposeA11yOnHost();
+    this._applyInert();
     WindowManager.lockBodyScroll();
 
+    // ASPETTA CHE LIT STAMPI IL DOM (risolve bug prima apertura)
+    await this.updateComplete;
+
     requestAnimationFrame(() => {
-      // Determine transform based on position
-      let dialogStartTransform = 'translate(0, 0)'; // default: no transform
-      if (this.position === 'center') {
-        dialogStartTransform = 'translate(0, -5%)';
-      } else if (this.position === 'left') {
-        dialogStartTransform = 'translateX(-100%)';
-      } else if (this.position === 'right') {
-        dialogStartTransform = 'translateX(100%)';
-      }
-
-      const dialogDuration = !this.disableAnimation && !this.prefersReducedMotion ? this._dialogAnimationDuration : 0;
-      const backdropDuration =
-        !this.disableAnimation && !this.prefersReducedMotion ? this._backdropAnimationDuration : 0;
-
-      // Animate backdrop fade in
-      if (this._backdropElement) {
-        this._backdropAnimation = this._backdropElement.animate([{ opacity: '0' }, { opacity: '0.8' }], {
-          duration: backdropDuration,
-          easing: 'linear',
+      const dDuration = !this.disableAnimation ? this._dialogAnimationDuration : 0;
+      const bDuration = !this.disableAnimation ? this._backdropAnimationDuration : 0;
+      if (this._backdropElement)
+        this._backdropAnimation = this._backdropElement.animate([{ opacity: 0 }, { opacity: 0.8 }], {
+          duration: bDuration,
           fill: 'forwards',
         });
-      }
-
-      // Animate dialog transform (slide/drop in)
-      if (this._dialogElement && dialogDuration > 0) {
+      if (this._dialogElement) {
         this._dialogAnimation = this._dialogElement.animate(
-          [{ transform: dialogStartTransform }, { transform: 'translate(0, 0)' }],
-          {
-            duration: dialogDuration,
-            easing: 'ease-in-out',
-            fill: 'forwards',
-          },
+          [
+            { opacity: 0, transform: 'scale(0.95)' },
+            { opacity: 1, transform: 'scale(1)' },
+          ],
+          { duration: dDuration, fill: 'forwards' },
         );
-
         this._dialogAnimation.finished
           .then(() => {
-            // Only activate focus trap if modal is still open
             if (this.open) {
-              try {
-                this._focusTrap.activate();
-              } catch {
-                // Swallow errors if focus trap fails
-              }
+              this._focusTrap.activate();
             }
-          })
-          .catch(() => {
-            // Animation cancelled or failed
           })
           .finally(() => {
             this.isAnimating = false;
           });
       } else {
-        // No dialog element or no animation, just finish
-        if (this.open) {
-          try {
-            this._focusTrap.activate();
-          } catch {
-            // Swallow errors if focus trap fails
-          }
-        }
+        // Fallback estremo se @query fallisce ancora
+        this._focusTrap.activate();
         this.isAnimating = false;
       }
     });
-
-    this.dispatchEvent(
-      new CustomEvent<ModalEventDetail>('it-modal-open', {
-        detail: { modal: this },
-        bubbles: true,
-        composed: true,
-      }),
-    );
   }
 
   private _hideModal(): void {
     if (this.isAnimating) return;
-
     this.isAnimating = true;
-
-    // Deactivate focus trap immediately to prevent focus issues
-    this._focusTrap.deactivate();
-
-    // Determine end transform based on position
-    let dialogEndTransform = 'translate(0, 0)'; // default: no transform
-    let dialogCloseDuration = this._dialogAnimationDuration / 1.33;
-
-    if (this.position === 'center') {
-      dialogEndTransform = 'translate(0, -5%)';
-      // Dialog più veloce quando è centrato per una chiusura più reattiva
-      dialogCloseDuration = this._dialogAnimationDuration / 2;
-    } else if (this.position === 'left') {
-      dialogEndTransform = 'translateX(-100%)';
-    } else if (this.position === 'right') {
-      dialogEndTransform = 'translateX(100%)';
-    }
-
-    const dialogDuration = !this.disableAnimation && !this.prefersReducedMotion ? dialogCloseDuration : 0;
-    const backdropDuration =
-      !this.disableAnimation && !this.prefersReducedMotion ? this._backdropAnimationDuration / 1.33 : 0;
-
-    const finishHide = () => {
-      // Ensure focus trap is deactivated
-      this._focusTrap.deactivate();
+    FocusTrapController.getActiveElement()?.blur();
+    this._focusTrap.deactivate({ skipFocusRestore: true });
+    const target = this._originalTrigger ?? this._triggerElement;
+    const finish = () => {
+      this._removeInert();
+      this._removeA11yFromHost();
       this._cleanupAnimations();
       WindowManager.unlockBodyScroll();
-      // Set open to false after animation completes
+      this._isSelfClosing = true;
       this.open = false;
+      this.isAnimating = false;
+      if (target)
+        setTimeout(() => {
+          if (!this.open) target.focus();
+        }, 20);
+      this._originalTrigger = null;
     };
-
-    // Animate dialog and backdrop in parallel for smoother close
-    const animations: Promise<Animation>[] = [];
-
-    if (this._dialogElement && dialogDuration > 0) {
-      this._dialogAnimation = this._dialogElement.animate(
-        [
-          { transform: 'translate(0, 0)', opacity: '1' },
-          { transform: dialogEndTransform, opacity: '0' },
-        ],
-        {
-          duration: dialogDuration,
-          easing: 'ease-in',
-          fill: 'forwards',
-        },
-      );
-      animations.push(this._dialogAnimation.finished);
-    }
-
-    if (this._backdropElement && backdropDuration > 0) {
-      this._backdropAnimation = this._backdropElement.animate([{ opacity: '0.8' }, { opacity: '0' }], {
-        duration: backdropDuration,
-        easing: 'linear',
+    if (this._dialogElement && !this.disableAnimation) {
+      this._dialogAnimation = this._dialogElement.animate([{ opacity: 1 }, { opacity: 0 }], {
+        duration: 150,
         fill: 'forwards',
       });
-      animations.push(this._backdropAnimation.finished);
-    }
-
-    if (animations.length > 0) {
-      Promise.all(animations)
-        .then(() => finishHide())
-        .catch(() => {
-          // Animation was cancelled
-          finishHide();
-        })
-        .finally(() => {
-          this.isAnimating = false;
-        });
+      this._dialogAnimation.finished.then(finish);
     } else {
-      // No animation, finish immediately
-      finishHide();
-      this.isAnimating = false;
+      finish();
     }
-
-    this.dispatchEvent(
-      new CustomEvent<ModalEventDetail>('it-modal-close', {
-        detail: { modal: this },
-        bubbles: true,
-        composed: true,
-      }),
-    );
   }
 
   private _cleanupAnimations(): void {
-    if (this._dialogAnimation) {
-      try {
-        this._dialogAnimation.cancel();
-      } catch {
-        /* ignore */
-      }
-      this._dialogAnimation = undefined;
-    }
-
-    if (this._backdropAnimation) {
-      try {
-        this._backdropAnimation.cancel();
-      } catch {
-        /* ignore */
-      }
-      this._backdropAnimation = undefined;
-    }
+    this._dialogAnimation?.cancel();
+    this._backdropAnimation?.cancel();
+    this._dialogAnimation = undefined;
+    this._backdropAnimation = undefined;
   }
 
-  private _handleCloseClick = (): void => {
-    this.hide();
-  };
+  private _onTriggerSlotChange = (): void => {
+    const trigger = this._triggerElement;
 
-  private _handleBackdropClick = (): void => {
-    if (!this.staticBackdrop) {
-      this.hide();
-    }
-  };
+    console.log('Trigger slot changed, trigger element:', trigger);
+    if (trigger) {
+      console.log('Setting up trigger with ID:', this._triggerId);
+      trigger.setAttribute('id', this._triggerId);
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.show();
+      });
+      trigger.addEventListener('keydown', (e: any) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
 
-  // eslint-disable-next-line class-methods-use-this
-  private _handleDialogClick = (event: Event): void => {
-    const path = event.composedPath();
-    // Check that is not footer or react synthetic events break on buttons
-    const isInFooter = path.some((el) => el instanceof HTMLElement && el.slot === 'footer');
-
-    if (!isInFooter) {
-      event.stopPropagation(); // solo per backdrop
+          this.show();
+        }
+      });
+      this.requestUpdate();
     }
   };
 
@@ -410,7 +278,7 @@ export class ItModal extends BaseComponent {
     return {
       modal: true,
       fade: !this.disableAnimation,
-      show: this.open && !this.disableAnimation,
+      show: Boolean(this.open) && !this.disableAnimation,
       'alert-modal': this.variant === 'alert',
       'popconfirm-modal': this.variant === 'popconfirm',
       'it-dialog-link-list': this.variant === 'link-list',
@@ -432,43 +300,43 @@ export class ItModal extends BaseComponent {
   }
 
   render() {
-    const hasHeader = this.modalTitle || this._headerSlot?.assignedElements({ flatten: true }).length > 0;
-    const ariaLabelledBy = hasHeader ? this._titleId : undefined;
-    const ariaLabel = !hasHeader ? this.itAriaLabel : undefined;
-    const headerClass = hasHeader || (this.variant !== 'popconfirm' && !this.hideCloseButton) ? 'modal-header' : '';
-    const hasDescription =
-      this.modalDescription || this._descriptionSlot?.assignedElements({ flatten: true }).length > 0;
-    const ariaDescribedBy = hasDescription ? this._descriptionId : undefined;
+    const hasHeader = this.modalTitle || (this._headerSlot?.assignedElements({ flatten: true }).length || 0) > 0;
+    const ariaLabel = !hasHeader ? this.itAriaLabel || undefined : undefined;
     const enableFocusContent = this.scrollable || this.position === 'left' || this.position === 'right';
+
     return html`
       <slot name="trigger" @slotchange=${this._onTriggerSlotChange}></slot>
-
       <div
         class="${classMap(this._modalClasses)}"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="${ifDefined(ariaLabelledBy)}"
-        aria-describedby="${ifDefined(ariaDescribedBy)}"
+        aria-labelledby="${ifDefined(hasHeader ? this._titleId : undefined)}"
+        aria-describedby="${ifDefined(this._descriptionId)}"
         aria-label="${ifDefined(ariaLabel)}"
         aria-hidden="${!this.open}"
         tabindex="-1"
-        @click="${this._handleBackdropClick}"
+        @click="${() => !this.staticBackdrop && this.hide()}"
         part="modal"
       >
         <div
           class="${classMap(this._modalBodyClasses)}"
           role="document"
-          @click="${this._handleDialogClick}"
+          @click="${(e: any) => {
+            if (!e.composedPath().some((el: any) => el.slot === 'footer')) e.stopPropagation();
+          }}"
           part="modal-content-wrapper"
         >
           <div class="visually-hidden" id="${this._descriptionId}">
-            <slot name="description" @slotchange="${this._onHeaderSlotChange}">${this.modalDescription}</slot>
+            <slot name="description" @slotchange="${() => this.requestUpdate()}">${this.modalDescription}</slot>
           </div>
           <div class="modal-content" part="modal-content">
-            <div class="${headerClass}" part="modal-header">
+            <div
+              class="${hasHeader || (this.variant !== 'popconfirm' && !this.hideCloseButton) ? 'modal-header' : ''}"
+              part="modal-header"
+            >
               <slot name="header-icon"></slot>
               <h2 id="${this._titleId}" class="modal-title">
-                <slot name="header" @slotchange="${this._onHeaderSlotChange}">${this.modalTitle}</slot>
+                <slot name="header" @slotchange="${() => this.requestUpdate()}">${this.modalTitle}</slot>
               </h2>
               ${!this.hideCloseButton && this.variant !== 'popconfirm'
                 ? html`<it-button
@@ -477,14 +345,12 @@ export class ItModal extends BaseComponent {
                     icon
                     size="lg"
                     exportparts="focusable, button"
-                    @click="${this._handleCloseClick}"
-                  >
-                    <it-icon name="it-close" size="lg"></it-icon>
-                    <span class="visually-hidden">${this.closeLabel}</span>
-                  </it-button>`
+                    @click="${() => this.hide()}"
+                    ><it-icon name="it-close" size="lg"></it-icon
+                    ><span class="visually-hidden">${this.closeLabel}</span></it-button
+                  >`
                 : ''}
             </div>
-
             <div class="modal-body" tabindex="${enableFocusContent ? '0' : '-1'}" part="focusable modal-body">
               <slot name="content"></slot>
             </div>
@@ -494,19 +360,12 @@ export class ItModal extends BaseComponent {
           </div>
         </div>
       </div>
-
       <div
         class="modal-backdrop ${this.disableAnimation ? 'fade' : ''} ${this.open ? 'show' : ''}"
         aria-hidden="true"
-        @click="${this._handleBackdropClick}"
+        @click="${() => !this.staticBackdrop && this.hide()}"
         part="modal-backdrop"
       ></div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'it-modal': ItModal;
   }
 }
