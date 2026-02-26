@@ -7,6 +7,7 @@ import '../packages/back-to-top/dist/src';
 import '../packages/button/dist/src';
 import '../packages/callout/dist/src';
 import '../packages/carousel/dist/src';
+import '../packages/card/dist/src';
 import '../packages/checkbox/dist/src';
 import '../packages/chip/dist/src';
 import '../packages/dropdown/dist/src';

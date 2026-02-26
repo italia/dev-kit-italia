@@ -91,18 +91,18 @@ describe('it-carousel', () => {
   // ---------------------------------------------------------------------------
 
   describe('shadow DOM structure', () => {
-    it('renders a <section> with role="region"', async () => {
+    it('renders a <div role="region"> as carousel root', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel></it-carousel>`);
-      const section = el.shadowRoot?.querySelector('section');
-      expect(section).to.exist;
-      expect(section?.getAttribute('role')).to.equal('region');
+      const root = el.shadowRoot?.querySelector('div[role="region"]');
+      expect(root).to.exist;
+      expect(root?.getAttribute('role')).to.equal('region');
     });
 
-    it('section always has "it-carousel-wrapper" and "splide" classes', async () => {
+    it('root element always has "it-carousel-wrapper" and "splide" classes', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel></it-carousel>`);
-      const section = el.shadowRoot?.querySelector('section');
-      expect(section?.classList.contains('it-carousel-wrapper')).to.be.true;
-      expect(section?.classList.contains('splide')).to.be.true;
+      const root = el.shadowRoot?.querySelector('div[role="region"]');
+      expect(root?.classList.contains('it-carousel-wrapper')).to.be.true;
+      expect(root?.classList.contains('splide')).to.be.true;
     });
 
     it('renders .splide__track and .splide__list', async () => {
@@ -125,26 +125,26 @@ describe('it-carousel', () => {
   describe('section class — variant mapping', () => {
     it('variant "single" → it-carousel-landscape-abstract', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="single"></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('section')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract');
     });
 
     it('variant "columns" → it-carousel-landscape-abstract-three-cols', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="columns"></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('section')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
     });
 
     it('variant "gallery-sm" → it-carousel-landscape-abstract-three-cols + it-standard-image', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="gallery-sm"></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('section')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
       expect(cls).to.include('it-standard-image');
     });
 
     it('variant "gallery-lg" → it-carousel-landscape-abstract-three-cols + it-big-img', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="gallery-lg"></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('section')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
       expect(cls).to.include('it-big-img');
     });
@@ -157,28 +157,28 @@ describe('it-carousel', () => {
   describe('arrows modifier class', () => {
     it('columns + arrows → adds it-carousel-landscape-abstract-three-cols-arrow-visible', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="columns" arrows></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('section')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols-arrow-visible');
     });
 
     it('single + arrows → does NOT add arrow-visible modifier', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="single" arrows></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('section')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
       expect(cls).not.to.include('arrow-visible');
     });
 
     it('gallery variants always include it-full-carousel regardless of fullscreen prop', async () => {
       for (const variant of ['gallery-sm', 'gallery-lg'] as const) {
         const el = await fixture<ItCarousel>(html`<it-carousel variant=${variant}></it-carousel>`);
-        const cls = el.shadowRoot?.querySelector('section')?.className ?? '';
+        const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
         expect(cls).to.include('it-full-carousel', `${variant} should always have it-full-carousel`);
       }
     });
 
     it('gallery-lg + arrows → does NOT add arrow-visible modifier', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="gallery-lg" arrows></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('section')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
       expect(cls).not.to.include('arrow-visible');
     });
   });
@@ -190,19 +190,19 @@ describe('it-carousel', () => {
   describe('fullscreen class', () => {
     it('adds it-full-carousel when fullscreen=true', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel fullscreen></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('section')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
       expect(cls).to.include('it-full-carousel');
     });
 
     it('does NOT add it-full-carousel when fullscreen=false', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('section')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
       expect(cls).not.to.include('it-full-carousel');
     });
 
     it('fullscreen + variant + arrows all compose together', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="columns" arrows fullscreen></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('section')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols-arrow-visible');
       expect(cls).to.include('it-full-carousel');
@@ -290,11 +290,246 @@ describe('it-carousel', () => {
   });
 
   // ---------------------------------------------------------------------------
+  // Inert on non-visible slides (tab order)
+  // ---------------------------------------------------------------------------
+
+  describe('inert on non-visible slides', () => {
+    it('visible slides do NOT have inert', async () => {
+      const el = await fixture<ItCarousel>(html`
+        <it-carousel>
+          <h2 slot="title">T</h2>
+          <it-carousel-slide><span>1</span></it-carousel-slide>
+          <it-carousel-slide><span>2</span></it-carousel-slide>
+          <it-carousel-slide><span>3</span></it-carousel-slide>
+        </it-carousel>
+      `);
+      await splideReady();
+      const visibleSlides = el.shadowRoot?.querySelectorAll('.splide__slide.is-visible');
+      expect(visibleSlides?.length).to.be.greaterThan(0);
+      visibleSlides?.forEach((slide) => {
+        expect(slide.hasAttribute('inert')).to.be.false;
+      });
+    });
+
+    it('non-visible slides have inert', async () => {
+      // perPage:1 ensures only one slide is visible at a time
+      const el = await fixture<ItCarousel>(html`
+        <it-carousel .config=${{ perPage: 1, type: 'slide' }}>
+          <h2 slot="title">T</h2>
+          <it-carousel-slide><a href="#">Link 1</a></it-carousel-slide>
+          <it-carousel-slide><a href="#">Link 2</a></it-carousel-slide>
+          <it-carousel-slide><a href="#">Link 3</a></it-carousel-slide>
+        </it-carousel>
+      `);
+      await splideReady();
+      const hiddenSlides = el.shadowRoot?.querySelectorAll('.splide__slide:not(.is-visible):not(.is-clone)');
+      expect(hiddenSlides?.length).to.be.greaterThan(0);
+      hiddenSlides?.forEach((slide) => {
+        expect(slide.hasAttribute('inert')).to.be.true;
+      });
+    });
+
+    it('clone slides (loop mode) are always inert', async () => {
+      const el = await fixture<ItCarousel>(html`
+        <it-carousel type="loop">
+          <h2 slot="title">T</h2>
+          <it-carousel-slide><span>1</span></it-carousel-slide>
+          <it-carousel-slide><span>2</span></it-carousel-slide>
+          <it-carousel-slide><span>3</span></it-carousel-slide>
+        </it-carousel>
+      `);
+      await splideReady();
+      const clones = el.shadowRoot?.querySelectorAll('.splide__slide.is-clone');
+      expect(clones?.length).to.be.greaterThan(0);
+      clones?.forEach((clone) => {
+        expect(clone.hasAttribute('inert')).to.be.true;
+      });
+    });
+  });
+
+  // ---------------------------------------------------------------------------
+  // Autoplay prop
+  // ---------------------------------------------------------------------------
+
+  describe('autoplay prop', () => {
+    it('defaults to false', async () => {
+      const el = await fixture<ItCarousel>(html`<it-carousel></it-carousel>`);
+      expect(el.autoplay).to.be.false;
+    });
+
+    it('reflects autoplay attribute', async () => {
+      const el = await fixture<ItCarousel>(html`<it-carousel autoplay></it-carousel>`);
+      expect(el.autoplay).to.be.true;
+      expect(el.hasAttribute('autoplay')).to.be.true;
+    });
+
+    it('autoplay=true renders .splide__controls with toggle', async () => {
+      const el = await fixture<ItCarousel>(html`
+        <it-carousel autoplay>
+          <h2 slot="title">T</h2>
+          <it-carousel-slide><span>1</span></it-carousel-slide>
+          <it-carousel-slide><span>2</span></it-carousel-slide>
+          <it-carousel-slide><span>3</span></it-carousel-slide>
+        </it-carousel>
+      `);
+      await splideReady();
+      expect(el.shadowRoot?.querySelector('.splide__controls')).to.exist;
+      expect(el.shadowRoot?.querySelector('.splide__toggle')).to.exist;
+    });
+
+    it('autoplay=true passes autoplay:"pause" to Splide (Splide sets aria-label on toggle)', async () => {
+      const el = await fixture<ItCarousel>(html`
+        <it-carousel autoplay>
+          <h2 slot="title">T</h2>
+          <it-carousel-slide><span>1</span></it-carousel-slide>
+          <it-carousel-slide><span>2</span></it-carousel-slide>
+        </it-carousel>
+      `);
+      await splideReady();
+      // Splide only sets aria-label on toggle when autoplay extension is active
+      const toggle = el.shadowRoot?.querySelector('.splide__toggle');
+      expect(toggle?.getAttribute('aria-label')).to.be.a('string').and.not.be.empty;
+    });
+
+    it('user config.autoplay overrides the prop (e.g. autoplay:true starts immediately)', async () => {
+      const el = await fixture<ItCarousel>(html`
+        <it-carousel autoplay .config=${{ autoplay: true }}>
+          <h2 slot="title">T</h2>
+          <it-carousel-slide><span>1</span></it-carousel-slide>
+          <it-carousel-slide><span>2</span></it-carousel-slide>
+        </it-carousel>
+      `);
+      await splideReady();
+      // Toggle button is still rendered (autoplay truthy)
+      expect(el.shadowRoot?.querySelector('.splide__toggle')).to.exist;
+    });
+
+    it('autoplay=false + no config → no toggle rendered', async () => {
+      const el = await fixture<ItCarousel>(html`
+        <it-carousel>
+          <h2 slot="title">T</h2>
+          <it-carousel-slide><span>1</span></it-carousel-slide>
+          <it-carousel-slide><span>2</span></it-carousel-slide>
+        </it-carousel>
+      `);
+      await splideReady();
+      expect(el.shadowRoot?.querySelector('.splide__toggle')).to.be.null;
+    });
+  });
+
+  // ---------------------------------------------------------------------------
+  // Autoplay toggle
+  // ---------------------------------------------------------------------------
+
+  describe('autoplay toggle', () => {
+    it('does not render toggle when autoplay is not set', async () => {
+      const el = await fixture<ItCarousel>(html`
+        <it-carousel>
+          <h2 slot="title">T</h2>
+          <it-carousel-slide><span>1</span></it-carousel-slide>
+          <it-carousel-slide><span>2</span></it-carousel-slide>
+        </it-carousel>
+      `);
+      await splideReady();
+      expect(el.shadowRoot?.querySelector('.splide__toggle')).to.be.null;
+    });
+
+    it('renders .splide__controls wrapper with toggle inside when autoplay is enabled', async () => {
+      const el = await fixture<ItCarousel>(html`
+        <it-carousel .config=${{ autoplay: true, interval: 3000 }}>
+          <h2 slot="title">T</h2>
+          <it-carousel-slide><span>1</span></it-carousel-slide>
+          <it-carousel-slide><span>2</span></it-carousel-slide>
+          <it-carousel-slide><span>3</span></it-carousel-slide>
+        </it-carousel>
+      `);
+      await splideReady();
+      const controls = el.shadowRoot?.querySelector('.splide__controls');
+      expect(controls).to.exist;
+      const toggle = controls?.querySelector('.splide__toggle');
+      expect(toggle).to.exist;
+    });
+
+    it('autoplay: pagination dots are rendered inside .splide__controls', async () => {
+      const el = await fixture<ItCarousel>(html`
+        <it-carousel .config=${{ autoplay: true, interval: 3000 }}>
+          <h2 slot="title">T</h2>
+          <it-carousel-slide><span>1</span></it-carousel-slide>
+          <it-carousel-slide><span>2</span></it-carousel-slide>
+          <it-carousel-slide><span>3</span></it-carousel-slide>
+        </it-carousel>
+      `);
+      await splideReady();
+      const controls = el.shadowRoot?.querySelector('.splide__controls');
+      const pagination = controls?.querySelector('.splide__pagination');
+      expect(pagination).to.exist;
+      expect(pagination?.querySelectorAll('.splide__pagination__page').length).to.be.greaterThan(0);
+    });
+
+    it('toggle button has part="autoplay-toggle"', async () => {
+      const el = await fixture<ItCarousel>(html`
+        <it-carousel .config=${{ autoplay: true }}>
+          <h2 slot="title">T</h2>
+          <it-carousel-slide><span>1</span></it-carousel-slide>
+          <it-carousel-slide><span>2</span></it-carousel-slide>
+        </it-carousel>
+      `);
+      await splideReady();
+      const toggle = el.shadowRoot?.querySelector('.splide__toggle');
+      expect(toggle?.getAttribute('part')).to.equal('autoplay-toggle');
+    });
+
+    it('play SVG has class splide__toggle__play and part="autoplay-play"', async () => {
+      const el = await fixture<ItCarousel>(html`
+        <it-carousel .config=${{ autoplay: true }}>
+          <h2 slot="title">T</h2>
+          <it-carousel-slide><span>1</span></it-carousel-slide>
+          <it-carousel-slide><span>2</span></it-carousel-slide>
+        </it-carousel>
+      `);
+      await splideReady();
+      const playSvg = el.shadowRoot?.querySelector('.splide__toggle__play');
+      expect(playSvg?.tagName.toLowerCase()).to.equal('svg');
+      expect(playSvg?.getAttribute('part')).to.equal('autoplay-play');
+      expect(playSvg?.getAttribute('aria-hidden')).to.equal('true');
+    });
+
+    it('pause SVG has class splide__toggle__pause and part="autoplay-pause"', async () => {
+      const el = await fixture<ItCarousel>(html`
+        <it-carousel .config=${{ autoplay: true }}>
+          <h2 slot="title">T</h2>
+          <it-carousel-slide><span>1</span></it-carousel-slide>
+          <it-carousel-slide><span>2</span></it-carousel-slide>
+        </it-carousel>
+      `);
+      await splideReady();
+      const pauseSvg = el.shadowRoot?.querySelector('.splide__toggle__pause');
+      expect(pauseSvg?.tagName.toLowerCase()).to.equal('svg');
+      expect(pauseSvg?.getAttribute('part')).to.equal('autoplay-pause');
+      expect(pauseSvg?.getAttribute('aria-hidden')).to.equal('true');
+    });
+
+    it('Splide sets non-empty aria-label on toggle button', async () => {
+      const el = await fixture<ItCarousel>(html`
+        <it-carousel .config=${{ autoplay: true }}>
+          <h2 slot="title">T</h2>
+          <it-carousel-slide><span>1</span></it-carousel-slide>
+          <it-carousel-slide><span>2</span></it-carousel-slide>
+        </it-carousel>
+      `);
+      await splideReady();
+      const toggle = el.shadowRoot?.querySelector('.splide__toggle');
+      const label = toggle?.getAttribute('aria-label') ?? '';
+      expect(label).to.be.a('string').and.not.be.empty;
+    });
+  });
+
+  // ---------------------------------------------------------------------------
   // CSS parts
   // ---------------------------------------------------------------------------
 
   describe('CSS parts', () => {
-    it('pagination gets part="pagination" after mount', async () => {
+    it('pagination gets part="pagination-track" after mount', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
           <h2 slot="title">T</h2>
@@ -305,10 +540,10 @@ describe('it-carousel', () => {
       `);
       await splideReady();
       const pagination = el.shadowRoot?.querySelector('.splide__pagination');
-      expect(pagination?.getAttribute('part')).to.equal('pagination');
+      expect(pagination?.getAttribute('part')).to.equal('pagination-track');
     });
 
-    it('each pagination dot button gets part="pagination-page"', async () => {
+    it('each pagination dot button gets part="pagination-dot"', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
           <h2 slot="title">T</h2>
@@ -321,24 +556,8 @@ describe('it-carousel', () => {
       const dots = el.shadowRoot?.querySelectorAll('.splide__pagination__page');
       expect(dots?.length).to.be.greaterThan(0);
       dots?.forEach((btn) => {
-        expect(btn.getAttribute('part')).to.equal('pagination-page');
+        expect(btn.getAttribute('part')).to.equal('pagination-dot');
       });
-    });
-
-    it('arrows wrapper and buttons get correct parts when arrows=true', async () => {
-      const el = await fixture<ItCarousel>(html`
-        <it-carousel ?arrows=${true}>
-          <h2 slot="title">T</h2>
-          <it-carousel-slide><span>1</span></it-carousel-slide>
-          <it-carousel-slide><span>2</span></it-carousel-slide>
-        </it-carousel>
-      `);
-      await splideReady();
-      const root = el.shadowRoot!;
-      console.log('cane lui', root, root.querySelector('.splide__arrows'));
-      expect(root.querySelector('.splide__arrows')?.getAttribute('part')).to.equal('arrows');
-      expect(root.querySelector('.splide__arrow--prev')?.getAttribute('part')).to.equal('arrow-prev');
-      expect(root.querySelector('.splide__arrow--next')?.getAttribute('part')).to.equal('arrow-next');
     });
 
     it('no arrows parts when arrows=false', async () => {
@@ -362,7 +581,7 @@ describe('it-carousel', () => {
   // ---------------------------------------------------------------------------
 
   describe('title slot — aria-labelledby', () => {
-    it('sets aria-labelledby on the section when title slot contains a heading', async () => {
+    it('sets aria-labelledby on the root element when title slot contains a heading', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
           <h2 slot="title">Titolo accessibile</h2>
@@ -371,8 +590,8 @@ describe('it-carousel', () => {
       `);
       await elementUpdated(el);
       await splideReady();
-      const section = el.shadowRoot?.querySelector('section');
-      const labelledBy = section?.getAttribute('aria-labelledby');
+      const rootEl = el.shadowRoot?.querySelector('div[role="region"]');
+      const labelledBy = rootEl?.getAttribute('aria-labelledby');
       expect(labelledBy).to.be.a('string').and.not.be.empty;
       // The id should be set on the heading in the light DOM
       const heading = el.querySelector('h2[slot="title"]');
@@ -388,8 +607,8 @@ describe('it-carousel', () => {
       `);
       await elementUpdated(el);
       await splideReady();
-      const section = el.shadowRoot?.querySelector('section');
-      expect(section?.hasAttribute('aria-labelledby')).to.be.false;
+      const rootEl = el.shadowRoot?.querySelector('div[role="region"]');
+      expect(rootEl?.hasAttribute('aria-labelledby')).to.be.false;
     });
   });
 

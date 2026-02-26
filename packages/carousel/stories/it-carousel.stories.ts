@@ -1,48 +1,101 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
-import { html } from 'lit';
+import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 const VARIANTS = ['single', 'columns', 'gallery-sm', 'gallert-lg'] as const;
 
-const renderSlide = (_content: string, image?: boolean) => {
-  if (image) {
+const renderSimpleCard = (image?: boolean, variant?: string) => {
+  if (variant === 'inline')
+    return html`<it-card variant="inline">
+      <a slot="title" href="#">Titolo contenuto editoriale</a>
+      <span slot="text">
+        Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe,
+        senza troncamento.
+      </span>
+      <div slot="footer" class="it-card-taxonomy">
+        <a href="#" class="it-card-category it-card-link">
+          <span class="visually-hidden">Categoria correlata: </span>
+          Categoria
+        </a>
+      </div>
+      <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+      <figure slot="image" class="figure img-full">
+        <img
+          src="https://placeholderimage.eu/api/city/800/600"
+          alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+        />
+      </figure>
+    </it-card>`;
+  return html` <it-card full-height="">
+    <a slot="title" href="#">
+      Titolo contenuto video
+      <div class="it-card-title-icon-wrapper">
+        <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+      </div>
+    </a>
+    ${image
+      ? html`<figure slot="image" class="figure img-full">
+          <img
+            src="https://placeholderimage.eu/api/city/800/600"
+            alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+          />
+        </figure>`
+      : nothing}
+    <span slot="text">
+      Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe,
+      senza troncamento.
+    </span>
+    <div slot="footer" class="it-card-taxonomy">
+      <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+        <li class="list-item">
+          <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+        </li>
+        <li class="list-item">
+          <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+        </li>
+      </ul>
+    </div>
+    <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+  </it-card>`;
+};
+
+const renderSlide = (
+  _content: string,
+  cardOptions?: { type: 'simpleCard' | 'image' | 'cardWithImage' | 'inline' | 'video' },
+) => {
+  if (cardOptions?.type === 'video') {
+    return html`<it-carousel-slide>
+      <it-video
+        src="https://vjs.zencdn.net/v/oceans.webm"
+        poster=""
+        type="video/mp4"
+        translations='{"it":{"Audio Player":"Lettore audio","Video Player":"Lettore video","Play":"Play","Pause":"Pausa","Replay":"Replay","Current Time":"Orario attuale","Duration":"Durata","Remaining Time":"Tempo rimanente","Stream Type":"Tipo di streaming","LIVE":"LIVE","Loaded":"Caricato","Progress":"Stato","Progress Bar":"Barra di avanzamento","progress bar timing: currentTime={1} duration={2}":"{1} di {2}","Fullscreen":"Schermo intero","Exit Fullscreen":"Chiudi Schermo intero","Mute":"Disattiva l’audio","Unmute":"Attiva l’audio","Playback Rate":"Velocità di riproduzione","Subtitles":"Sottotitoli","subtitles off":"Senza sottotitoli","Captions":"Sottotitoli non udenti","captions off":"Senza sottotitoli non udenti","Chapters":"Capitolo","Descriptions":"Descrizioni","descriptions off":"Descrizioni disattivate","Audio Track":"Traccia audio","Volume Level":"Livello del volume","You aborted the media playback":"La riproduzione del filmato è stata interrotta.","A network error caused the media download to fail part-way.":"Il download del filmato è stato interrotto a causa di un problema rete.","The media could not be loaded, either because the server or network failed or because the format is not supported.":"Il filmato non può essere caricato a causa di un errore nel server o nella rete o perché il formato non viene supportato.","The media playback was aborted due to a corruption problem or because the media used features your browser did not support.":"La riproduzione del filmato è stata interrotta a causa di un file danneggiato o per l’utilizzo di impostazioni non supportate dal browser.","No compatible source was found for this media.":"Non ci sono fonti compatibili per questo filmato.","The media is encrypted and we do not have the keys to decrypt it.":"Il contenuto multimediale è criptato e non disponiamo delle chiavi per decifrarlo.","Play Video":"Riproduci il video","Close":"Chiudi","Close Modal Dialog":"Chiudi la finestra di dialogo","Modal Window":"Finestra di dialogo","This is a modal window":"Questa è una finestra di dialogo","This modal can be closed by pressing the Escape key or activating the close button.":"Questa finestra di dialogo può essere chiusa premendo sul tasto Esc o attivando il pulsante di chiusura.",", opens captions settings dialog":", aprire i parametri della trascrizione dei sottotitoli",", opens subtitles settings dialog":", aprire i parametri dei sottotitoli",", opens descriptions settings dialog":", aprire i parametri delle descrizioni",", selected":", selezionato","captions settings":"Parametri sottotitoli non udenti","subtitles settings":"Parametri sottotitoli","descriptions settings":"Parametri descrizioni","Text":"Testo","White":"Bianco","Black":"Nero","Red":"Rosso","Green":"Verde","Blue":"Blu","Yellow":"Giallo","Magenta":"Magenta","Cyan":"Ciano","Background":"Sfondo","Window":"Finestra","Transparent":"Trasparente","Semi-Transparent":"Semi-Trasparente","Opaque":"Opaco","Font Size":"Dimensione dei caratteri","Text Edge Style":"Stile dei bordi del testo","None":"Nessuno","Uniform":"Uniforme","Drop shadow":"Ombra","Font Family":"Carattere","Proportional Sans-Serif":"Sans-Serif proporzionale","Monospace Sans-Serif":"Sans-Serif monospaziato","Proportional Serif":"Serif proporzionale","Monospace Serif":"Serif monospaziato","Small Caps":"Maiuscoletto","Reset":"Reinizializza","restore all settings to the default values":"Ripristina i valori predefiniti per tutti i parametri","Done":"Fatto","Caption Settings Dialog":"Finestra di dialogo dei parametri della trascrizione dei sottotitoli","Beginning of dialog window. Escape will cancel and close the window.":"Inizio della finestra di dialogo. Il tasto Esc annullerà l’operazione e chiuderà la finestra.","End of dialog window.":"Fine della finestra di dialogo.","{1} is loading.":"{1} in fase di caricamento.","Exit Picture-in-Picture":"Esci dalla modalità Picture-in-Picture","Picture-in-Picture":"Picture-in-Picture","Color":"Colore","Opacity":"Opacità","Text Background":"Sfondo testo","Caption Area Background":"Sfondo area sottotitoli","Skip forward {1} seconds":"Avanti {1} secondi","Skip backward {1} seconds":"Indietro {1} secondi"}}'
+        lang="it"
+        track="[]"
+      ></it-video>
+    </it-carousel-slide>`;
+  }
+  if (cardOptions?.type === 'image') {
     return html`<it-carousel-slide>
       <div class="card-wrapper">
-        <div class="card card-img no-after">
-          <div class="img-responsive-wrapper">
-            <div class="img-responsive">
-              <div class="img-wrapper">
-                <img
-                  src="https://placehold.co/480x360/ebebeb/808080/?text=Immagine"
-                  title="titolo immagine"
-                  alt="descrizione immagine"
-                />
-              </div>
+        <div class="img-responsive-wrapper">
+          <div class="img-responsive">
+            <div class="img-wrapper">
+              <img
+                src="https://placehold.co/480x360/ebebeb/808080/?text=Immagine"
+                title="titolo immagine"
+                alt="descrizione immagine"
+              />
             </div>
           </div>
         </div>
       </div>
     </it-carousel-slide>`;
   }
-  return html`<it-carousel-slide
-    ><article class="it-card rounded shadow-sm border">
-      <!--card first child is the title (link)-->
-      <h3 class="it-card-title ">
-        <a href="#">Titolo del contenuto</a>
-      </h3>
-      <!--card body content-->
-      <div class="it-card-body">
-        <p class="it-card-text">
-          Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe,
-          senza troncamento.
-        </p>
-      </div>
-      <!--finally the card footer metadata-->
-      <footer class="it-card-related it-card-footer">
-        <time class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
-      </footer>
-    </article></it-carousel-slide
-  >`;
+  if (cardOptions?.type === 'cardWithImage') {
+    return html`<it-carousel-slide>${renderSimpleCard(true)}</it-carousel-slide>`;
+  }
+  return html`<it-carousel-slide>${renderSimpleCard(false)}</it-carousel-slide>`;
 };
 const renderComponent = (params: any) => html`
   <it-carousel
@@ -52,12 +105,9 @@ const renderComponent = (params: any) => html`
     type=${ifDefined(params.type)}
     config=${ifDefined(params.config ? JSON.stringify(params.config) : undefined)}
     ><h2 slot="title">Titolo carousel</h2>
-    ${renderSlide('Slide1', params.variant.includes('gallery'))}
-    ${renderSlide('Slide2', params.variant.includes('gallery'))}
-    ${renderSlide('Slide3', params.variant.includes('gallery'))}
-    ${renderSlide('Slide4', params.variant.includes('gallery'))}
-    ${renderSlide('Slide5', params.variant.includes('gallery'))}
-    ${renderSlide('Slide6', params.variant.includes('gallery'))}
+    ${renderSlide('Slide1', params.cardOptions)} ${renderSlide('Slide2', params.cardOptions)}
+    ${renderSlide('Slide3', params.cardOptions)} ${renderSlide('Slide4', params.cardOptions)}
+    ${renderSlide('Slide5', params.cardOptions)} ${renderSlide('Slide6', params.cardOptions)}
   </it-carousel>
 `;
 
@@ -71,6 +121,7 @@ const meta: Meta<any> = {
     variant: 'single',
     type: undefined,
     config: undefined,
+    autoplay: false,
   },
   argTypes: {
     fullscreen: {
@@ -93,15 +144,24 @@ const meta: Meta<any> = {
     type: {
       control: 'select',
       description: 'Tipo di scorrimento del carousel. Se non specificato, viene usato il default della variante.',
-      options: [undefined, 'slide', 'loop', 'fade'],
+      options: ['slide', 'loop', 'fade'],
       type: 'string',
-      table: { defaultValue: { summary: 'variant default' } },
+      table: { defaultValue: { summary: '-' } },
     },
     config: {
-      control: 'object',
+      control: false,
       description:
         'Oggetto di configurazione avanzata da passare a Splide. Consulta la documentazione del componente Carousel e quella di Splide v4.x per conoscere le opzioni disponibili.',
-      table: { defaultValue: { summary: 'undefined' } },
+      table: { defaultValue: { summary: '-' } },
+    },
+    cardOptions: {
+      table: { disable: true },
+    },
+    autoplay: {
+      control: 'boolean',
+      description:
+        "Se true, abilita l'autoplay del carousel con modalità \"pause\" (il carousel avanza automaticamente ma parte in pausa, l'utente deve premere play per avviarlo). Viene renderizzato automaticamente un pulsante di toggle play/pause. Per personalizzare l'intervallo o altre opzioni dell'autoplay, usa config.autoplay.",
+      table: { defaultValue: { summary: 'false' } },
     },
   },
 
@@ -123,7 +183,7 @@ const meta: Meta<any> = {
       },
     },
   },
-  decorators: [(story) => html`<div style="padding:2rem;">${story()}</div>`],
+  decorators: [(story) => html`<div style="padding:2rem;background: #ececec;">${story()}</div>`],
 };
 
 export default meta;
@@ -139,11 +199,21 @@ export const EsempioInterattivo: Story = {
       },
     },
   },
+  args: {
+    cardOptions: {
+      type: 'simpleCard',
+    },
+  },
   render: (args) => renderComponent(args),
 };
 
 export const VarianteSingola: Story = {
   name: 'Variante singola',
+  args: {
+    cardOptions: {
+      type: 'inline',
+    },
+  },
   parameters: {
     docs: {
       description: {
@@ -158,6 +228,9 @@ export const Variante3Colonne: Story = {
   args: {
     variant: 'columns',
     arrows: false,
+    cardOptions: {
+      type: 'simpleCard',
+    },
   },
   render: (args) => renderComponent(args),
 };
@@ -166,6 +239,9 @@ export const VarianteGallerySM: Story = {
   args: {
     variant: 'gallery-sm',
     arrows: false,
+    cardOptions: {
+      type: 'image',
+    },
   },
   render: (args) => renderComponent(args),
 };
@@ -174,6 +250,9 @@ export const VarianteGalleryLG: Story = {
   args: {
     variant: 'gallery-lg',
     arrows: false,
+    cardOptions: {
+      type: 'image',
+    },
   },
   render: (args) => renderComponent(args),
 };
@@ -182,6 +261,9 @@ export const ConFrecce1: Story = {
   args: {
     variant: 'columns',
     arrows: true,
+    cardOptions: {
+      type: 'cardWithImage',
+    },
   },
   render: (args) => renderComponent(args),
 };
@@ -190,6 +272,9 @@ export const ConFrecce2: Story = {
   args: {
     variant: 'single',
     arrows: true,
+    cardOptions: {
+      type: 'cardWithImage',
+    },
   },
   render: (args) => renderComponent(args),
 };
@@ -199,6 +284,9 @@ export const Fullscreen: Story = {
     variant: 'single',
     arrows: true,
     fullscreen: true,
+    cardOptions: {
+      type: 'inline',
+    },
   },
   render: (args) => renderComponent(args),
 };
@@ -207,6 +295,9 @@ export const TipoScorrimento: Story = {
   args: {
     variant: 'single',
     type: 'loop',
+    cardOptions: {
+      type: 'cardWithImage',
+    },
   },
   render: (args) => renderComponent(args),
 };
@@ -215,15 +306,18 @@ export const ConfigurazioneAvanzata: Story = {
   name: 'Configurazione avanzata di Splide',
   args: {
     variant: 'columns',
+    cardOptions: {
+      type: 'cardWithImage',
+    },
     config: {
-      type: 'fade',
-      autoplay: true,
-      interval: 2000,
+      type: 'loop',
+      autoplay: 'pause',
+      interval: 3000,
       pauseOnHover: true,
       resetProgress: false,
       perPage: 2,
       arrows: true,
-      gap: 4,
+      gap: 16,
       padding: { left: 8, right: 8 },
       breakpoints: {
         560: {
@@ -245,6 +339,19 @@ export const ConfigurazioneAvanzata: Story = {
           arrows: false,
         },
       },
+    },
+  },
+  render: (args) => renderComponent(args),
+};
+
+export const VideoTest: Story = {
+  name: 'VideoTest',
+  args: {
+    variant: 'single',
+    arrows: true,
+    fullscreen: true,
+    cardOptions: {
+      type: 'video',
     },
   },
   render: (args) => renderComponent(args),

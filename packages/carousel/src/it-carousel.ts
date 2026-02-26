@@ -3,23 +3,28 @@
 import { BaseLocalizedComponent } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
 import { html } from 'lit';
+import { Intersection } from '@splidejs/splide-extension-intersection';
 import { customElement, property, query, queryAssignedElements } from 'lit/decorators.js';
 import { type Options, Splide } from '@splidejs/splide';
-import styles from './carousel.scss';
+import { when } from 'lit/directives/when.js';
 import { CONFIGS, VARIANT_MAP } from './constants.js';
 import { type CarouselVariants, type CarouselType } from './types.js';
-import it from './locales/it.js';
 import en from './locales/en.js';
+import it from './locales/it.js';
+import styles from './carousel.scss';
 
 registerTranslation(it);
 registerTranslation(en);
 
 /**
- * @csspart arrows         - Wrapper element containing the prev/next arrow buttons.
- * @csspart arrow-prev     - The "previous" arrow button.
- * @csspart arrow-next     - The "next" arrow button.
- * @csspart pagination     - The pagination list element (dots).
- * @csspart pagination-page - Each individual pagination dot button.
+ * @csspart arrows           - Wrapper element containing the prev/next arrow buttons.
+ * @csspart arrow-prev       - The "previous" arrow button.
+ * @csspart arrow-next       - The "next" arrow button.
+ * @csspart pagination-track - The pagination list element (dots). When autoplay is enabled it lives inside the controls wrapper; otherwise Splide appends it to the carousel root.
+ * @csspart pagination-dot   - Each individual pagination dot button.
+ * @csspart autoplay-toggle  - The play/pause toggle button (rendered when `autoplay` prop is true or `config.autoplay` is set).
+ * @csspart autoplay-play    - The play SVG icon inside the toggle button.
+ * @csspart autoplay-pause   - The pause SVG icon inside the toggle button.
  */
 @customElement('it-carousel')
 export class ItCarousel extends BaseLocalizedComponent {
@@ -46,16 +51,44 @@ export class ItCarousel extends BaseLocalizedComponent {
   @property({ type: String, attribute: 'type', reflect: true })
   type?: CarouselType;
 
+  /**
+   * If true, enables Splide autoplay in `'pause'` mode: the carousel
+   * auto-advances but starts paused so the user must explicitly press Play.
+   * A play/pause toggle button is rendered automatically.
+   * To customise the interval or other autoplay options use `config.autoplay`.
+   */
+  @property({ type: Boolean, attribute: 'autoplay', reflect: true })
+  autoplay: boolean = false;
+
+  /**
+   * Accessibility role for the carousel wrapper. Should be either `group` or `region`
+   * depending on the context of use. If not provided, region role is set.
+   * If a role is set, an accessible name must be provided via the "title" slot for `region`,
+   * or `aria-label` for `group`. See the documentation for details and examples.
+   */
+  @property({ type: String, attribute: 'it-role' })
+  itRole?: 'group' | 'region';
+
+  @property({ type: String, attribute: 'it-aria-label' }) itAriaLabel: string = '';
+
   @queryAssignedElements({ slot: 'title' })
   titleElements!: HTMLElement[];
 
-  @query('section')
+  @query('div[role="region"]')
   wrapper!: HTMLElement;
 
   @query('.splide__list')
   list!: HTMLElement;
 
   private _splide?: Splide;
+
+  public pauseAutoplay() {
+    this._splide?.Components.Autoplay.pause();
+  }
+
+  public playAutoplay() {
+    this._splide?.Components.Autoplay.play();
+  }
 
   override firstUpdated(_changedProperties: Map<string | number | symbol, unknown>) {
     super.firstUpdated?.(_changedProperties);
@@ -80,11 +113,6 @@ export class ItCarousel extends BaseLocalizedComponent {
 
     const { configKey } = VARIANT_MAP[this.variant];
     const baseConfig = CONFIGS[configKey];
-    console.log('Initializing Splide with config:', baseConfig, ' type override ', this.type, ' resultant ', {
-      ...baseConfig,
-      arrows: this.arrows,
-      ...this.config,
-    });
     const splideI18n = {
       prev: this.$t('carousel_prev'),
       next: this.$t('carousel_next'),
@@ -104,11 +132,66 @@ export class ItCarousel extends BaseLocalizedComponent {
       ...baseConfig,
       ...(this.type ? { type: this.type } : {}),
       arrows: this.arrows,
+      ...(this.autoplay
+        ? {
+            autoplay: 'pause',
+            intersection: {
+              outView: {
+                autoplay: false,
+              },
+            },
+          }
+        : {}),
       i18n: splideI18n,
+      label: this.itAriaLabel || splideI18n.carousel,
+      role: this.itRole || 'region',
+      // !!!! Ensure the carousel container is always announced as a live region for screen readers (depends on sr buffer timing)
+      live: true,
       ...this.config,
     });
-    this._splide.mount();
+    this._splide.mount({ Intersection });
     this._applyParts();
+    // Set inert on non-visible slides so their focusable children are excluded
+    // from the tab order. Splide sets aria-hidden but that alone isn't enough.
+    this._updateInert();
+    // On `move` (fires BEFORE the transition): pro-actively remove inert from
+    // the destination slide so AT can follow aria-controls and read its content.
+    // On `moved` (fires AFTER): re-sync all slides to the new visibility state.
+    this._splide.on('move', (_newIdx: number, _oldIdx: number, destIdx: number) => {
+      const root = this.shadowRoot;
+      if (!root) return;
+      const destSlide = root.querySelectorAll<HTMLElement>('.splide__slide:not(.is-clone)')[destIdx];
+      destSlide?.removeAttribute('inert');
+    });
+    this._splide.on('moved', () => this._updateInert());
+    // Safeguard: pause any possible playing it-video children when their slide becomes inactive.
+    this._splide.on('inactive', () => {
+      const itvideos = this.list.querySelectorAll('it-video');
+      itvideos.forEach((video) => {
+        const player = (video as any).getPlayer();
+        if (!player) return;
+        if (!player.paused()) player.pause();
+      });
+    });
+  }
+
+  /**
+   * Adds `inert` to every slide that Splide has not marked as visible,
+   * and removes it from the ones that are. Called after mount and on every
+   * `moved` event so the tab order always reflects what is on screen.
+   * Clone slides (loop mode) are always inert per splide docs.
+   */
+  private _updateInert() {
+    const root = this.shadowRoot;
+    if (!root) return;
+    root.querySelectorAll<HTMLElement>('.splide__slide').forEach((slide) => {
+      const visible = slide.classList.contains('is-visible') && !slide.classList.contains('is-clone');
+      if (visible) {
+        slide.removeAttribute('inert');
+      } else {
+        slide.setAttribute('inert', '');
+      }
+    });
   }
 
   /**
@@ -117,11 +200,11 @@ export class ItCarousel extends BaseLocalizedComponent {
    * can reach them from outside the shadow root with `::part()`.
    *
    * Exposed parts:
-   * - `arrows`          – the arrows wrapper element
-   * - `arrow-prev`      – the "previous" button
-   * - `arrow-next`      – the "next" button
-   * - `pagination`      – the pagination `<ul>` (dots)
-   * - `pagination-page` – each individual dot `<button>`
+   * - `arrows`            – the arrows wrapper element
+   * - `arrow-prev`        – the "previous" button
+   * - `arrow-next`        – the "next" button
+   * - `pagination-track`  – the pagination `<ul>` (dots)
+   * - `pagination-dot`    – each individual dot `<button>`
    */
   private _applyParts() {
     const root = this.shadowRoot;
@@ -130,9 +213,14 @@ export class ItCarousel extends BaseLocalizedComponent {
     root.querySelector('.splide__arrows')?.setAttribute('part', 'arrows');
     root.querySelector('.splide__arrow--prev')?.setAttribute('part', 'arrow-prev');
     root.querySelector('.splide__arrow--next')?.setAttribute('part', 'arrow-next');
-    root.querySelector('.splide__pagination')?.setAttribute('part', 'pagination');
+    // .splide__pagination already gets part="pagination-track" from the Lit template
+    // when autoplay is on; handle the non-autoplay case where Splide appends it dynamically.
+    const paginationEl = root.querySelector('.splide__pagination');
+    if (paginationEl && !paginationEl.hasAttribute('part')) {
+      paginationEl.setAttribute('part', 'pagination-track');
+    }
     root.querySelectorAll('.splide__pagination__page').forEach((btn) => {
-      btn.setAttribute('part', 'pagination-page');
+      btn.setAttribute('part', 'pagination-dot');
     });
   }
 
@@ -157,14 +245,6 @@ export class ItCarousel extends BaseLocalizedComponent {
   }
 
   private _sectionClass(): string {
-    console.log(
-      'Calculating section classes with variant:',
-      this.variant,
-      'arrows:',
-      this.arrows,
-      'fullscreen:',
-      this.fullscreen,
-    );
     const { wrapperClass, imageClass } = VARIANT_MAP[this.variant];
     const classes = ['it-carousel-wrapper', wrapperClass];
     if (this.arrows && this.variant === 'columns') {
@@ -181,18 +261,52 @@ export class ItCarousel extends BaseLocalizedComponent {
 
   override render() {
     // eslint-disable-next-line lit-a11y/no-redundant-role
-    return html`<section class=${this._sectionClass()} role="region">
+    return html`<div class=${this._sectionClass()} role="region">
       <div class="it-header-block">
         <div class="it-header-block-title">
           <slot name="title" @slotchange=${this.handleTitleSlotChange}></slot>
         </div>
       </div>
       <div class="splide__track">
+        <!-- ShadowDOM boundaries issues require div role="presentation" instead of ul -->
         <div class="splide__list it-carousel-all" role="presentation">
           <slot>Carousel</slot>
         </div>
       </div>
-    </section>`;
+      <div class="splide__progress">
+        <div class="splide__progress__bar"></div>
+      </div>
+      ${when(
+        this.autoplay || this.config?.autoplay,
+        () =>
+          html`<div class="splide__controls">
+            <button class="splide__toggle" type="button" part="autoplay-toggle">
+              <svg
+                class="splide__toggle__play"
+                part="autoplay-play"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m22 12-20 11v-22l10 5.5z" />
+              </svg>
+              <svg
+                class="splide__toggle__pause"
+                part="autoplay-pause"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+              </svg>
+            </button>
+            <!-- Placeholder: Splide finds this and populates dots in-place -->
+            <ul class="splide__pagination" part="pagination-track"></ul>
+          </div>`,
+      )}
+    </div>`;
   }
 }
 

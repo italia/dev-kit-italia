@@ -1,0 +1,49 @@
+it-card {
+  figure {
+    margin-bottom: 0;
+  }
+
+  img {
+    border-top-left-radius: var(--#{$prefix}card-border-radius-inner);
+    border-top-right-radius: var(--#{$prefix}card-border-radius-inner);
+  }
+
+  .it-card-title-icon-wrapper {
+    margin-left: var(--#{$prefix}icon-spacing);
+  }
+
+  .it-card-category {
+    display: inline-block;
+    margin-bottom: 0;
+    color: var(--#{$prefix}card-category-color);
+    font-size: var(--#{$prefix}card-category-font-size);
+    font-weight: var(--#{$prefix}card-category-font-weight);
+    text-transform: uppercase;
+  }
+
+  .it-card-chips {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-bottom: 0;
+    gap: calc(var(--#{$prefix}card-spacing-y) * 0.5); // use half spacing for gap
+    list-style-type: none;
+  }
+
+  .it-card-date {
+    color: var(--#{$prefix}card-date-color);
+    font-size: var(--#{$prefix}card-date-font-size);
+  }
+
+  .it-card-link {
+    color: var(--#{$prefix}card-link-color);
+
+    &:hover {
+      color: color-hover($color-text-secondary);
+    }
+
+    + .it-card-link {
+      margin-left: var(--#{$prefix}card-spacing-x);
+    }
+  }
+}

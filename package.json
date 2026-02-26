@@ -78,5 +78,8 @@
   "engines": {
     "node": "20.x || 22.x || 24.x"
   },
-  "packageManager": "pnpm@10.11.0"
+  "packageManager": "pnpm@10.11.0",
+  "dependencies": {
+    "@splidejs/splide-extension-intersection": "^0.2.0"
+  }
 }

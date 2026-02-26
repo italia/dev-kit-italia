@@ -6,11 +6,6 @@
 
 @import 'bootstrap-italia/src/scss/components/carousel';
 
-// Visually-hidden live region for screen reader announcements
-.it-carousel-sr-live {
-  @include visually-hidden();
-}
-
 $utilities: (
   'border-color': map-merge(map-get($utilities, 'border-color'), ()),
 );

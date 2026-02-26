@@ -59,6 +59,7 @@
     "@italia/back-to-top": "workspace:^",
     "@italia/button": "workspace:^",
     "@italia/carousel": "workspace:^",
+    "@italia/card": "workspace:^",
     "@italia/checkbox": "workspace:^",
     "@italia/chip": "workspace:^",
     "@italia/collapse": "workspace:^",

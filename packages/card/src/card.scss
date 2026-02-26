@@ -1,0 +1,121 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
+@import 'bootstrap-italia/src/scss/base/helpers/ratio';
+
+@import 'bootstrap-italia/src/scss/components/card';
+@import 'bootstrap-italia/src/scss/components/type';
+
+//ovveride utilities: get only needed utilities
+$utilities: (
+  'rounded': map-merge(
+      map-get($utilities, 'rounded'),
+      (
+        values: (
+          null: map-get(map-get(map-get($utilities, 'rounded'), 'values'), null),
+        ),
+      )
+    ),
+  'display': map-merge(
+      map-get($utilities, 'display'),
+      (
+        values: none,
+      )
+    ),
+  'shadow': map-merge(
+      map-get($utilities, 'shadow'),
+      (
+        values: (
+          sm: map-get(map-get(map-get($utilities, 'shadow'), 'values'), sm),
+        ),
+      )
+    ),
+  'border': map-merge(
+      map-get($utilities, 'border'),
+      (
+        values: (
+          null: map-get(map-get(map-get($utilities, 'border'), 'values'), null),
+        ),
+      )
+    ),
+);
+
+/**
+ * Copied from bsi reboot
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--#{$prefix}paragraph-spacing);
+}
+
+address {
+  margin-bottom: var(--#{$prefix}spacing-s);
+  font-style: normal;
+  line-height: inherit;
+}
+
+ol,
+ul {
+  padding-left: var(--#{$prefix}spacing-l);
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: var(--#{$prefix}spacing-s);
+}
+/* END copied from bsi reboot */
+
+::slotted(figure) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.it-card {
+  .it-card-title.it-card-title-icon {
+    display: block;
+
+    slot[name='title'] {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    ::slotted(a) {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  .it-card-footer {
+    display: block;
+  }
+}
+
+slot[name='footer'] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-top: var(--#{$prefix}card-spacing-y);
+  color: var(--#{$prefix}card-footer-text-color);
+  gap: var(--#{$prefix}card-spacing-y);
+}
+
+::slotted(.it-card-taxonomy) {
+  flex-grow: 1;
+}
+
+@import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities

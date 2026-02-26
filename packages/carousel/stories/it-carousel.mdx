@@ -58,8 +58,54 @@ Il comportamento di scorrimento del Carousel può essere personalizzato utilizza
 L'attributo `config` consente di passare configurazioni specifiche a Splide, la libreria sottostante che gestisce il comportamento del Carousel. Questo permette di personalizzare ulteriormente il comportamento del Carousel, ad esempio modificando la velocità di scorrimento, il numero di elementi visualizzati per pagina, o abilitando funzionalità avanzate come l'autoplay o il loop infinito. Per utilizzare l'attributo `config`, è necessario fornire un oggetto di configurazione che rispetti la struttura richiesta da Splide. Ecco un esempio di come utilizzare l'attributo `config` per personalizzare il comportamento del Carousel:
 
 ```html
-<it-carousel variant="columns" config="{ perPage: 4, autoplay: true, interval: 3000 }">
+<it-carousel variant="columns" config="{
+      type: 'loop',
+      autoplay: 'pause',
+      interval: 3000,
+      pauseOnHover: true,
+      resetProgress: false,
+      perPage: 2,
+      arrows: true,
+      gap: 16,
+      padding: { left: 8, right: 8 },
+      breakpoints: {
+        560: {
+          perPage: 1,
+          gap: 0,
+          padding: { left: 24, right: 24 },
+          arrows: false,
+        },
+        768: {
+          perPage: 2,
+          gap: 0,
+          padding: { left: 0, right: 0 },
+          arrows: false,
+        },
+        992: {
+          perPage: 3,
+          gap: 0,
+          padding: { left: 0, right: 0 },
+          arrows: false,
+        },
+      },
+    }">
   <!-- Contenuto del Carousel -->
 </it-carousel>
 ```
-In questo esempio, il Carousel è configurato per visualizzare 4 elementi per pagina, abilitare l'autoplay e impostare un intervallo di 3 secondi tra le transizioni. È importante consultare la documentazione di Splide per conoscere tutte le opzioni disponibili e assicurarsi che le configurazioni personalizzate siano compatibili con la struttura e il design del Carousel.
+In questo esempio, il Carousel è configurato per visualizzare 2 elementi per pagina, abilitare l'autoplay e il loop, e impostare un intervallo di 3 secondi tra le transizioni. È importante consultare la documentazione di Splide per conoscere tutte le opzioni disponibili e assicurarsi che le configurazioni personalizzate siano compatibili con la struttura e il design del Carousel.
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Accessibilità</span>
+    </div>
+    <p>
+      Il seguente esempio viene fornito a scopo illustrativo e potrebbe non essere adatto per tutti i contesti o esigenze di accessibilità.
+    </p>
+    <p>
+      Ad esempio, l'autoplay potrebbe non essere adatto per tutti gli utenti, in particolare per quelli con disabilità visive o cognitive. È importante considerare attentamente le esigenze degli utenti e testare il comportamento del Carousel con diverse configurazioni per garantire un'esperienza accessibile a tutti.
+    </p>
+  </div>
+</div>
+<Canvas of={Stories.ConfigurazioneAvanzata} />
+
+<Canvas of={Stories.VideoTest} />

@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <title>Test Web Components - vanilla-app</title>
+    <!-- Load compiled dev-kit CSS in <head> so styles are present even when JS is disabled -->
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+    <!-- Local app styles so layout (#root etc.) is present without JS -->
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="root">
+      <header id="app-header"></header>
+      <main class="container my-4">
+        <h1>Carousel</h1>
+        <!-- Colonne -->
+        <it-carousel variant="columns"
+          ><h2 slot="title">Variante colonne</h2>
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video 1
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+
+              <span slot="text">
+                1. Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
+                quattro righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video 2
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+
+              <span slot="text">
+                2. Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
+                quattro righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video 3
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+
+              <span slot="text">
+                3. Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
+                quattro righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video 4
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+
+              <span slot="text">
+                4. Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
+                quattro righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video 5
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+
+              <span slot="text">
+                5. Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
+                quattro righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video 6
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+
+              <span slot="text">
+                6. Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
+                quattro righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+        </it-carousel>
+        <!-- Autoplay -->
+        <it-carousel variant="columns" autoplay
+          ><h2 slot="title">Variante colonne con autoplay</h2>
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video 1
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+
+              <span slot="text">
+                1. Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
+                quattro righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video 2
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+
+              <span slot="text">
+                2. Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
+                quattro righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video 3
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+
+              <span slot="text">
+                3. Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
+                quattro righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video 4
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+
+              <span slot="text">
+                4. Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
+                quattro righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video 5
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+
+              <span slot="text">
+                5. Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
+                quattro righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video 6
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+
+              <span slot="text">
+                6. Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
+                quattro righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+        </it-carousel>
+        <it-carousel
+          variant="columns"
+          config='{"type":"loop","autoplay":"pause","interval":3000,"pauseOnHover":true,"resetProgress":false,"perPage":2,"arrows":true,"gap":16,"padding":{"left":8,"right":8},"breakpoints":{"560":{"perPage":1,"gap":0,"padding":{"left":24,"right":24},"arrows":false},"768":{"perPage":2,"gap":0,"padding":{"left":0,"right":0},"arrows":false},"992":{"perPage":3,"gap":0,"padding":{"left":0,"right":0},"arrows":false}}}'
+          ><h2 slot="title">Configurazione custom</h2>
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+              <figure slot="image" class="figure img-full">
+                <img
+                  src="https://placeholderimage.eu/api/city/800/600"
+                  alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+                />
+              </figure>
+              <span slot="text">
+                Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+                righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+              <figure slot="image" class="figure img-full">
+                <img
+                  src="https://placeholderimage.eu/api/city/800/600"
+                  alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+                />
+              </figure>
+              <span slot="text">
+                Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+                righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+              <figure slot="image" class="figure img-full">
+                <img
+                  src="https://placeholderimage.eu/api/city/800/600"
+                  alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+                />
+              </figure>
+              <span slot="text">
+                Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+                righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+              <figure slot="image" class="figure img-full">
+                <img
+                  src="https://placeholderimage.eu/api/city/800/600"
+                  alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+                />
+              </figure>
+              <span slot="text">
+                Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+                righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+              <figure slot="image" class="figure img-full">
+                <img
+                  src="https://placeholderimage.eu/api/city/800/600"
+                  alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+                />
+              </figure>
+              <span slot="text">
+                Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+                righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+          <it-carousel-slide>
+            <it-card full-height="">
+              <a slot="title" href="#">
+                Titolo contenuto video
+                <div class="it-card-title-icon-wrapper">
+                  <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
+                </div>
+              </a>
+              <figure slot="image" class="figure img-full">
+                <img
+                  src="https://placeholderimage.eu/api/city/800/600"
+                  alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+                />
+              </figure>
+              <span slot="text">
+                Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+                righe, senza troncamento.
+              </span>
+              <div slot="footer" class="it-card-taxonomy">
+                <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                  <li class="list-item">
+                    <it-chip label="Argomento 1" size="sm" href="#"></it-chip>
+                  </li>
+                  <li class="list-item">
+                    <it-chip label="Argomento 2" size="sm" href="#"></it-chip>
+                  </li>
+                </ul>
+              </div>
+              <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+            </it-card></it-carousel-slide
+          >
+        </it-carousel>
+      </main>
+      <div id="app-footer"></div>
+      <it-back-to-top it-aria-label="Torna su"></it-back-to-top>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

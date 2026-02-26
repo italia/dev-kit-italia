@@ -11,6 +11,7 @@ import '@italia/callout/it-callout-more.js';
 import '@italia/callout/it-callout.js';
 import '@italia/carousel/it-carousel.js';
 import '@italia/carousel/it-carousel-slide.js';
+import '@italia/card/it-card.js';
 import '@italia/checkbox/it-checkbox-group.js';
 import '@italia/checkbox/it-checkbox.js';
 import '@italia/chip/it-chip.js';

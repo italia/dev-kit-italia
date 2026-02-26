@@ -1,7 +1,7 @@
 {
-  "name": "@italia/carousel",
-  "description": "Web component it-carousel del Design system .italia",
-  "version": "1.0.0-alpha.5",
+  "name": "@italia/card",
+  "description": "Web component it-card del Design system .italia",
+  "version": "0.1.0-alpha.2",
   "publishConfig": {
     "access": "public"
   },
@@ -9,7 +9,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/italia/dev-kit-italia.git",
-    "directory": "packages/carousel"
+    "directory": "packages/card"
   },
   "author": "Presidenza del Consiglio dei Ministri",
   "homepage": "https://italia.github.io/dev-kit-italia",
@@ -22,8 +22,7 @@
   "types": "./dist/src/index.d.ts",
   "exports": {
     ".": "./dist/src/index.js",
-    "./it-carousel.js": "./dist/src/it-carousel.js",
-    "./it-carousel-slide.js": "./dist/src/it-carousel-slide.js",
+    "./it-card.js": "./dist/src/it-card.js",
     "./styles/*": "./styles/*"
   },
   "files": [
@@ -46,11 +45,8 @@
   },
   "dependencies": {
     "@italia/globals": "workspace:^",
-    "@italia/card": "workspace:^",
-    "@italia/i18n": "workspace:^",
     "bootstrap-italia": "catalog:",
-    "lit": "catalog:",
-    "@splidejs/splide": "^4.1.4"
+    "lit": "catalog:"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.3",
