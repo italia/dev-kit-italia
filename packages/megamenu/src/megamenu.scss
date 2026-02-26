@@ -27,26 +27,30 @@ $utilities: (
 //     --#{$prefix}gutter-x: 0;
 //   }
 // }
+:host {
+  .dropdown-menu {
+    margin-top: -0.75rem;
 
-.dropdown-menu {
-  margin-top: -0.75rem;
-
-  --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}spacing-xxs);
-  --#{$prefix}dropdown-item-padding-y: var(--#{$prefix}spacing-xxs);
-  --#{$prefix}dropdown-spacer: 0;
-  width: 100%;
-  background: var(--#{$prefix}megamenu-background-color);
-
-  // Extra padding on large devices only
-  @include media-breakpoint-up(lg) {
-    --#{$prefix}dropdown-padding-y: var(--#{$prefix}spacing-m);
-    //--#{$prefix}dropdown-padding-x: var(--#{$prefix}spacing-xs);
-    .megamenu {
-      padding: var(--#{$prefix}spacing-xs);
+    &,
+    * {
+      box-sizing: border-box;
     }
-  }
 
-  ul.link-list {
-    column-gap: var(--#{$prefix}spacing-s); /* spazio tra colonne */
+    --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}spacing-xxs);
+    --#{$prefix}dropdown-item-padding-y: var(--#{$prefix}spacing-xxs);
+    --#{$prefix}dropdown-spacer: 0;
+    width: 100%;
+    background: var(--#{$prefix}megamenu-background-color);
+
+    // Extra padding on large devices only
+    @include media-breakpoint-up(lg) {
+      --#{$prefix}dropdown-padding-y: var(--#{$prefix}spacing-m);
+      --#{$prefix}dropdown-padding-x: var(--#{$prefix}spacing-xs);
+    }
+
+    .link-list-wrapper ul.link-list {
+      display: block;
+      column-gap: var(--#{$prefix}spacing-s); /* spazio tra colonne */
+    }
   }
 }

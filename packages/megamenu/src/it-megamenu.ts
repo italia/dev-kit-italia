@@ -12,17 +12,25 @@ export class ItMegamenu extends ItDropdown {
 
   @state() private _hasDescription = false;
 
+  @state() private _hasHeader = false;
+
+  @state() private _hasFooter = false;
+
   // change default value for these properties
 
   @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = true;
 
-  @property({ type: String, attribute: 'it-role' }) itRole: string = ''; // TODO: valutare se serve davvero
+  @property({ type: String }) itRole: string = ''; // sovrascritto per settare un valore fisso e cambiarne il default
 
-  @property({ type: String, attribute: 'active' }) active: boolean = false;
+  @property({ type: Boolean, reflect: true }) active = false;
 
-  @property({ type: String, attribute: 'columns' }) columns: number = 3;
+  @property({ type: Number, attribute: 'columns', reflect: true }) columns: number = 2;
 
   @queryAssignedElements({ slot: 'description', flatten: true }) private _descriptionItems!: Array<HTMLElement>;
+
+  @queryAssignedElements({ slot: 'header', flatten: true }) private _headerItems!: Array<HTMLElement>;
+
+  @queryAssignedElements({ slot: 'footer', flatten: true }) private _footerItems!: Array<HTMLElement>;
 
   private _handleSlotDescriptionChange() {
     // Verifichiamo se l'array degli elementi assegnati è popolato
@@ -36,6 +44,16 @@ export class ItMegamenu extends ItDropdown {
     for (const item of this._menuItems) {
       item.fullWidth = false;
     }
+  }
+
+  private _onSlotHeaderChange() {
+    // Verifichiamo se l'array degli elementi assegnati è popolato
+    this._hasHeader = this._headerItems.length > 0;
+  }
+
+  private _onSlotFooterChange() {
+    // Verifichiamo se l'array degli elementi assegnati è popolato
+    this._hasFooter = this._footerItems.length > 0;
   }
 
   override render() {
@@ -87,20 +105,19 @@ export class ItMegamenu extends ItDropdown {
           slot="content"
           class="${this.composeClass('dropdown-menu', 'show-lg', {
             show: this._popoverOpen,
-            dark: this.dark,
             'full-width': this.fullWidth,
           })}"
           aria-labelledby=${this._buttonId}
           role="region"
         >
-          <div class="megamenu pb-5 pt-3 py-lg-0 _px-0">
+          <div class="megamenu megamenu-content pb-5 pt-3 py-lg-0">
             <div class="row">
                     ${
                       this._hasDescription
                         ? html`
                             <div class="col-xs-12 col-lg-4 px-0">
-                              <div class="row ms-0 me-0">
-                                <div class="col-12 it-vertical it-description pb-lg-3 px-0">
+                              <div class="row">
+                                <div class="col-12 it-vertical it-description pb-lg-3">
                                   <div class="description-content ps-4 ps-sm-5 ms-3">
                                     <slot name="description" @slotchange=${this._handleSlotDescriptionChange}></slot>
                                   </div>
@@ -110,16 +127,27 @@ export class ItMegamenu extends ItDropdown {
                           `
                         : html` <slot name="description" @slotchange=${this._handleSlotDescriptionChange}></slot> `
                     }
-            <div class="${this.composeClass('col-12 px-0', {
+            <div class="${this.composeClass('col-12', {
               'col-lg-8': this._hasDescription,
             })}">
-              <!-- HEADING PLACEHOLDER -->
+              <!-- HEADER PLACEHOLDER -->
+              ${
+                this._hasHeader
+                  ? html`
+                      <div class="it-heading-link-wrapper" part="megamenu-header">
+                        <slot name="header" @slotchange=${this._onSlotHeaderChange}></slot>
+                      </div>
+                    `
+                  : html`<slot name="header" @slotchange=${this._onSlotHeaderChange}></slot>`
+              }
+
+
               <!-- LINKS -->
               ${
                 this._menuItems.length > 0
-                  ? html` <div class="row ms-0 me-0">
-                      <div class="col-12 px-0">
-                        <div class="link-list-wrapper px-2">
+                  ? html` <div class="row">
+                      <div class="col-12">
+                        <div class="link-list-wrapper">
                           <ul
                             id=${this._menuId}
                             class="link-list"
@@ -133,7 +161,18 @@ export class ItMegamenu extends ItDropdown {
                     </div>`
                   : html`<slot @slotchange=${this._setChildrenProperties}></slot>`
               }
-              <!-- FOOTER PLACEHOLDER -->
+
+              <!-- FOOTER -->
+
+              ${
+                this._hasFooter
+                  ? html`
+                      <div class="it-footer-link-wrapper" part="megamenu-footer">
+                        <slot name="footer" @slotchange=${this._onSlotFooterChange}></slot>
+                      </div>
+                    `
+                  : html`<slot name="footer" @slotchange=${this._onSlotFooterChange}></slot>`
+              }
             </div>
           </div>
         </div>

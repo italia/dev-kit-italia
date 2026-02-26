@@ -48,4 +48,17 @@ it-megamenu {
     display: inline-flex;
     align-items: center;
   }
+
+  .it-heading-link,
+  .it-footer-link {
+    font-size: var(--#{$prefix}heading-6-font-size);
+    font-weight: var(--#{$prefix}font-weight-solid);
+    line-height: var(--#{$prefix}heading-leading);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
 }

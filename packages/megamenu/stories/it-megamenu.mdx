@@ -23,12 +23,16 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 <Canvas of={Stories.Base} />
 <Controls of={Stories.Base} />
 
-{/* ## Informazioni generali
+## Indicazioni generali
 
-Per la creazione di un Dropdown usa il componente `<it-dropdown>` e inserisci al suo interno uno o più `<it-dropdown-item>`.
-Dovrai specificare l'etichetta del menu tramite l'attributo `label`.
-Puoi specificare una variante tramite l'attributo `variant`, questa verrà applicata al pulsante di attivazione del menu.
+Il componente `<it-megamenu>` espone i seguenti slot:
 
+- **(default)**: il contenuto principale, tipicamente uno o più elementi `<it-dropdown-item>`, viene inserito direttamente nel componente ed'è l'area contenente i link principali del megamenu.
+- **slot="header"**: per l'intestazione del megamenu, visualizzata sopra i link principali. Può contenere un link alla sezione principale del menu. Il markup html deve essere come quello nell'esempio del Megamenu completo
+- **slot="footer"**: per il footer del megamenu, visualizzato sotto i link principali. Può contenere un link alla sezione principale del menu o altri link in evidenza. Puoi anche decidere di posizionarlo sulla parte destra tramite l'apposito attributo sul `<it-megamenu>`.
+- **slot="description"**: per contenuti aggiuntivi opzionali, visualizzati a sinistra dei link principali. Può contenere una immagine e del testo. Il markup html deve essere come quello nell'esempio del Megamenu completo.
+
+{/*
 ## Accessibilità
 
 Lo standard [WAI ARIA](https://www.w3.org/TR/wai-aria/) definisce un widget con proprietà [`role="menu"`](https://www.w3.org/TR/wai-aria/#menu), specifica per i menu applicativi con link o azioni.

@@ -5,24 +5,9 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 type MegamenuProps = {
   label?: string;
   disabled?: boolean;
-  alignment?:
-    | 'top'
-    | 'right'
-    | 'bottom'
-    | 'left'
-    | 'top-start'
-    | 'top-end'
-    | 'right-start'
-    | 'right-end'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'left-start'
-    | 'left-end';
+  active?: boolean;
   variant?: string;
-  size?: string;
-  'it-role'?: string;
-  dark?: boolean;
-  'full-width'?: boolean;
+  columns?: number;
   'it-aria-label'?: string;
 };
 type Story = StoryObj<MegamenuProps>;
@@ -35,12 +20,9 @@ const meta = {
   args: {
     label: 'Megamenu',
     disabled: false,
-    alignment: undefined,
+    active: false,
     variant: 'primary',
-    size: undefined,
-    'it-role': undefined,
-    dark: false,
-    'full-width': false,
+    columns: 2,
     'it-aria-label': undefined,
   },
   argTypes: {
@@ -53,25 +35,10 @@ const meta = {
       description: 'Disabilita il dropdown',
       table: { defaultValue: { summary: 'false' } },
     },
-    alignment: {
-      control: 'select',
-      description: 'Posizionamento del menu rispetto al pulsante',
-      options: [
-        'top',
-        'right',
-        'bottom',
-        'left',
-        'top-start',
-        'top-end',
-        'right-start',
-        'right-end',
-        'bottom-start',
-        'bottom-end',
-        'left-start',
-        'left-end',
-      ],
-      type: 'string',
-      table: { defaultValue: { summary: 'bottom-start' } },
+    active: {
+      control: 'boolean',
+      description: 'Imposta lo stato attivo del pulsante',
+      table: { defaultValue: { summary: 'false' } },
     },
     variant: {
       control: 'select',
@@ -80,29 +47,10 @@ const meta = {
       type: 'string',
       table: { defaultValue: { summary: 'primary' } },
     },
-    size: {
-      control: 'select',
-      description: 'Dimensione del pulsante',
-      options: ['sm', 'lg'],
-      type: 'string',
-      table: {},
-    },
-    'it-role': {
-      control: 'select',
-      description: 'Ruolo del pulsante (vedi la sezione Accessibilità)',
-      options: ['menu', 'list'],
-      type: 'string',
-      table: { defaultValue: { summary: 'menu' } },
-    },
-    dark: {
-      control: 'boolean',
-      description: 'Stile scuro per il menu dropdown',
-      table: { defaultValue: { summary: 'false' } },
-    },
-    'full-width': {
-      control: 'boolean',
-      description: 'Imposta la larghezza del menu dropdown al 100% del contenitore',
-      table: { defaultValue: { summary: 'false' } },
+    columns: {
+      control: 'number',
+      description: 'Numero di colonne su cui verranno suddivisi i link del menu',
+      table: { defaultValue: { summary: 2 } },
     },
     'it-aria-label': {
       control: 'text',
@@ -134,14 +82,10 @@ export const Base: Story = {
               <it-megamenu
                 label=${args.label}
                 ?disabled=${args.disabled}
-                alignment=${ifDefined(args.alignment)}
-                size=${ifDefined(args.size)}
+                ?active=${args.active}
                 variant=${args.variant}
-                it-role=${ifDefined(args['it-role'])}
-                ?dark=${args.dark}
-                ?full-width=${args['full-width']}
                 it-aria-label=${ifDefined(args['it-aria-label'])}
-                columns="2"
+                columns=${ifDefined(args.columns)}
               >
                 <!-- SLOT DESCRIPTION -->
                 <div slot="description">
@@ -161,14 +105,18 @@ export const Base: Story = {
                 </div>
 
                 <!-- SLOT HEADER -->
-                <!-- <div class="it-heading-link-wrapper">
-                  <a class="it-heading-link" href="#"
-                    ><svg role="img" class="icon icon-sm me-2 mb-1">
-                      <use href="/dist/svg/sprites.svg#it-arrow-right-triangle"></use>
-                    </svg>
+                <div slot="header">
+                  <a class="it-heading-link" href="#">
+                    <it-icon
+                      slot="prefix"
+                      name="it-arrow-right-triangle"
+                      size="sm"
+                      color="primary"
+                      class="me-2 mb-1"
+                    ></it-icon>
                     <span>Esplora la sezione megamenu 1</span>
                   </a>
-                </div>-->
+                </div>
 
                 <!-- DROPDOWN LINKS ITEMS -->
                 <it-dropdown-item href="#">
@@ -196,11 +144,70 @@ export const Base: Story = {
                   Link lista 6
                 </it-dropdown-item>
 
-                <!-- SLOT FOOTER -->
+                <!-- SLOT FOOTER
+
+                <div slot="footer">
+                  <a class="it-footer-link" href="#">
+                    <it-icon
+                      slot="prefix"
+                      name="it-arrow-right-triangle"
+                      size="sm"
+                      color="primary"
+                      class="me-2 mb-1"
+                    ></it-icon>
+                    <span>Esplora la sezione megamenu 1</span>
+                  </a>
+                </div>-->
               </it-megamenu>
             </li>
             <!-- megamenu 2 -->
-            <li class="nav-item dropdown megamenu"></li>
+            <li class="nav-item dropdown megamenu">
+              <it-megamenu
+                label="Megamenu 2"
+                variant=${args.variant}
+                columns="3"
+                it-aria-label=${ifDefined(args['it-aria-label'])}
+              >
+                <!-- DROPDOWN LINKS ITEMS -->
+                <it-dropdown-item href="#">
+                  <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                  Link lista 7</it-dropdown-item
+                >
+                <it-dropdown-item href="#">
+                  <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                  Link lista 8
+                </it-dropdown-item>
+                <it-dropdown-item href="#">
+                  <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                  Link lista 9
+                </it-dropdown-item>
+                <it-dropdown-item href="#">
+                  <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                  Link lista 10
+                </it-dropdown-item>
+                <it-dropdown-item href="#">
+                  <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                  Link lista 11
+                </it-dropdown-item>
+                <it-dropdown-item href="#">
+                  <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                  Link lista 12
+                </it-dropdown-item>
+
+                <div slot="footer">
+                  <a class="it-footer-link" href="#">
+                    <it-icon
+                      slot="prefix"
+                      name="it-arrow-right-triangle"
+                      size="sm"
+                      color="primary"
+                      class="me-2 mb-1"
+                    ></it-icon>
+                    <span>Esplora la sezione megamenu 2</span>
+                  </a>
+                </div>
+              </it-megamenu>
+            </li>
           </ul>
         </div>
       </div>
