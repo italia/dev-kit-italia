@@ -159,7 +159,7 @@ Consigliamo di usare alternativamente un breve testo descrittivo nello slot `tex
 
 Per aggiungere indicazioni sullo stato del servizio o bando e un'eventuale data di scadenza, come negli esempi seguenti, puoi usare l'elemento footer:
 
-- per lo stato del servizio o bando, usa un componente chip
+- per lo stato del servizio o bando, usa un componente [Chip](/docs/componenti-chip--documentazione)
 - per un'eventuale data di scadenza, usa la classe `.it-card-date` e un testo descrittivo.
 
 Per creare un ulteriore spazio dedicato a collegamenti o pulsanti secondari, come negli esempi seguenti, puoi usare lo slot `actions`.
@@ -170,9 +170,152 @@ Per applicare il colore secondario ai collegamenti `a` inseriti nel corpo o nel 
 
 <Canvas of={Stories.ServiziEBandi} />
 
-## Personalizzazone degli stili
+### Card per documenti e allegati
 
-Per personalizzare gli stili del bottone puoi usare il selettore `::part` passando il valore `body`.
+Usa questa variante per presentare documenti e allegati.
+Puoi aggiungere un'icona a fianco del titolo, usando la classe `.it-card-title-icon-wrapper` come negli esempi che seguono.
+
+Per creare un ulteriore spazio dedicato a collegamenti o pulsanti secondari, come negli esempi seguenti, puoi usare lo slot `actions`.
+Questa impostazione è utile quando il titolo della card porta a una pagina di approfondimento (ad esempio, la descrizione dettagliata del documento),
+ma si vuole dare accesso diretto e immediato all'azione principale (ad esempio, scaricare il file sul proprio dispositivo).
+
+<Canvas of={Stories.DocumentiEAllegati} />
+
+### Card per profili personali
+
+Usa questa variante per indicare schede personali o i relatori a un evento.
+Si attiva con l'attributo `variant="profile"`.
+
+L'immagine di profilo sulla destra è visualizzata integrando il componente [Avatar](/docs/componenti-avatar--documentazione), si consiglia di usarlo nelle varianti di dimensioni `xl`.
+
+La lista di metadati del profilo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `dd`-`dt` raccolta in un `div` contenitore.
+
+Per un effetto decorativo, puoi usare l'attributo `border-top` (vedi le varianti di colore disponibili nella [tabella degli attributi](#anteprima-e-attributi-del-componente)).
+Non usare questo attributo per comunicare significato semantico, ma solo come eventuale elemento decorativo.
+
+<Canvas of={Stories.ProfiliPersonali} />
+
+### Card per luoghi
+
+Usa questa variante per presentare schede località.
+Si attiva con con l'attributo `variant="location"`.
+
+Per i luoghi puoi inserire un'immagine in uno slot `image` o un'icona sulla destra.
+Racchiudi l'icona in un `div` con classe `.it-card-profile-image-icon-wrapper` per l'allineamento corretto.
+
+La lista di metadati del luogo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `dd`-`dt` raccolta in un `div` contenitore.
+
+Puoi combinare un piede con eventuali collegamenti o dettagli della mappa usando lo slot `footer`.
+
+<Canvas of={Stories.Luoghi} />
+
+### Card con liste di contenuti affini
+
+Per presentare liste di contenuti affini, puoi integrare liste strutturate di link nel corpo della card usando le classi `.list-group`.
+
+Usa questa variante con moderazione e solo quando è necessario facilitare l'accesso ai contenuti in evidenza di un sito web, come ad esempio:
+
+- i contenuti correlati a un argomento in evidenza
+- le varie pagine di approfondimento correlate a un evento in evidenza.
+
+<it-callout variant="success" heading-level="h4">
+  <span slot="title">Accessibilità: lista link correlati</span>
+  <p>Valuta caso per caso l'applicazione di un'eventuale aria-label all'elemento `ul`, per permettere ai lettori di schermo di comprendere la natura di questi link.</p>
+</it-callout>
+
+Valuta caso per caso l'uso del colore primario per la lista di link,
+oppure l'applicazione del colore secondario usando la classe dedicata `.it-card-link`.
+
+Puoi combinare questa impostazione con le funzionalità dello slot `footer` per ospitare link e pulsanti di servizio.
+
+<Canvas of={Stories.ListeDiContenutiAffini} />
+
+## Card presentazione
+
+Le card presentazione sono utili per mettere in evidenza l'accesso rapido a contenuti chiave oppure permettere la presentazione di dati.
+
+### Card banner
+
+Usa la variante banner per presentare una sezione principale del sito, un servizio chiave, oppure permettere l'accesso rapido a una funzionalità.
+Attivala con l'attributo `variant="banner"`.
+
+Per inserire l'icona inseriscila nello slot `image`.
+
+<Canvas of={Stories.Banner} />
+
+#### Card banner con azione
+
+Per guidare verso un'azione specifica, usa lo slot `footer` per ospitare un pulsante o link.
+In questo caso, evita di collegare il titolo della card.
+
+<Canvas of={Stories.BannerConAzione} />
+
+#### Card banner inline
+
+Per disporre le card banner in orizzontale, usa l'attributo `variant="inline-banner"`.
+
+Per mantenere il layout orizzontale anche su viewport piccole o fortemente ingrandite, usa `variant="inline-banner-mini` come nelle ultime card dell'esempio.
+
+<Canvas of={Stories.BannerInline} />
+
+## Personalizzazioni e stili
+
+Alcuni attributi utili a personalizzare le card.
+
+### Bordi e ombre
+
+La configurazione base delle card prevede un bordo e un'ombra leggera.
+Per aumentare la separazione visiva dal contesto, puoi utilizzare ombre più evidenti impostando gli attributi come segue:
+
+- `shadow="sm"` - ombra leggera (è il valore predefinito)
+- `shadow="md"` - ombra media
+- `shadow="lg"` - ombra pronunciata
+- `shadow="none"` - nessuna ombra
+
+Quando utilizzi ombre più evidenti, puoi rimuovere il bordo se la distinzione dallo sfondo è sufficientemente chiara, impostando `border="0"`.
+
+<it-callout variant="success" heading-level="h4">
+  <span slot="title">Accessibilità: contrasto con lo sfondo</span>
+  <p>Per garantire una buona accessibilità, mantieni un rapporto di contrasto colore di almeno 3:1 tra la card e lo sfondo. Le combinazioni di bordi, ombre e colori di sfondo possono aiutarti a raggiungere questo obiettivo.</p>
+</it-callout>
+
+<Canvas of={Stories.BordiEOmbre} />
+
+### Immagini
+
+Per definire il rapporto tra altezza e larghezza delle immagini in tutte le card di base, usa l'attributo `ratio`.
+
+Le opzioni disponibili sono:
+
+- `ratio="1x1"` - rapporto quadrato
+- `ratio="4x3"` - rapporto classico
+- `ratio="16x9"` - rapporto widescreen
+- `ratio="21x9"` - rapporto cinematografico
+
+Le varianti inline delle card hanno proporzioni immagini specifiche su desktop.
+Su dispositivi piccoli o con ingrandimento elevato (tranne le mini) usano il layout verticale con le proporzioni degli esempi seguenti.
+
+<Canvas of={Stories.Immagini} />
+
+### Altezze delle card
+
+Per la gestione delle altezze in caso di gruppi di card, l'impostazione di base è l’altezza basata sul contenuto.
+
+Puoi cambiare questo comportamento per ogni card usando l'attributo `full-height` (altezza basata su tutto lo spazio disponibile) sull'elemento `<it-card>`.
+Questa impostazione è presente in diversi degli esempi che precedono.
+
+Il contenuto dello slot `footer` si allinea verticalmente al bordo inferiore come la data nell'esempio che segue.
+
+<Canvas of={Stories.AltezzaDelleCard} />
+
+### Pulsanti a tutta larghezza su mobile
+
+Puoi personalizzare il comportamento dei pulsanti nell'area metadati della card per ottenere pulsanti a larghezza fluida su dispositivi mobili utilizzando le classi `.d-grid` e `.d-md-block`.
+Per maggiori informazioni sulla personalizzazione dei pulsanti, consulta la [documentazione sulle varianti di dimensioni dei buttons](/docs/componenti-button--documentazione#varianti-di-dimensione).
+
+<Canvas of={Stories.PulsantiMobile} />
+
+Per personalizzare gli stili del pulsante puoi usare il selettore `::part` passando il valore `body`.
 
 [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
 

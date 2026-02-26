@@ -46,4 +46,61 @@ it-card {
       margin-left: var(--#{$prefix}card-spacing-x);
     }
   }
+
+  .it-card-description-list {
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--#{$prefix}card-spacing-y);
+    padding-bottom: var(--#{$prefix}card-spacing-y);
+    border-top: var(--#{$prefix}card-border-separator-width) solid var(--#{$prefix}card-border-color);
+    border-bottom: var(--#{$prefix}card-border-separator-width) solid var(--#{$prefix}card-border-color);
+    color: var(--#{$prefix}card-description-color);
+    font-size: var(--#{$prefix}label-font-size);
+    gap: var(--#{$prefix}spacing-s);
+    line-height: var(--#{$prefix}label-leading);
+
+    @include media-breakpoint-down(sm) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    dt {
+      display: inline;
+      margin-right: 0.125rem;
+      font-weight: bold;
+    }
+
+    dd {
+      display: inline-block;
+      margin: 0;
+    }
+  }
+
+  .it-card-profile-image-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-background-primary-lighter;
+  }
+
+  .list-group {
+    border-top: var(--#{$prefix}card-border-separator-width) solid var(--#{$prefix}card-border-color);
+    border-bottom: var(--#{$prefix}card-border-separator-width) solid var(--#{$prefix}card-border-color);
+    margin-top: var(--#{$prefix}spacing-s);
+    margin-bottom: var(--#{$prefix}spacing-s);
+
+    .list-group-item {
+      padding: var(--#{$prefix}spacing-xs) 0;
+    }
+
+    &:first-child {
+      border-top-width: 0;
+      @include border-top-radius(var(--#{$prefix}card-border-radius-inner));
+    }
+
+    &:last-child {
+      border-bottom-width: 0;
+      @include border-bottom-radius(var(--#{$prefix}card-border-radius-inner));
+    }
+  }
 }

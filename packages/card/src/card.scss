@@ -24,22 +24,8 @@ $utilities: (
         values: none,
       )
     ),
-  'shadow': map-merge(
-      map-get($utilities, 'shadow'),
-      (
-        values: (
-          sm: map-get(map-get(map-get($utilities, 'shadow'), 'values'), sm),
-        ),
-      )
-    ),
-  'border': map-merge(
-      map-get($utilities, 'border'),
-      (
-        values: (
-          null: map-get(map-get(map-get($utilities, 'border'), 'values'), null),
-        ),
-      )
-    ),
+  'shadow': map-get($utilities, 'shadow'),
+  'border': map-get($utilities, 'border'),
 );
 
 /**
@@ -75,7 +61,8 @@ dl {
 }
 /* END copied from bsi reboot */
 
-::slotted(figure) {
+::slotted(figure),
+::slotted(.it-card-profile-image-icon-wrapper) {
   position: absolute;
   top: 0;
   left: 0;
@@ -104,7 +91,7 @@ dl {
   }
 }
 
-slot[name='footer'] {
+.it-card-footer slot[name='footer'] {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
