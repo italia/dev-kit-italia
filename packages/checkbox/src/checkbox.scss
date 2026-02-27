@@ -14,4 +14,15 @@
   input:focus:not(:focus-visible) + label {
     box-shadow: none !important;
   }
+
+  &.form-check-group {
+    input:focus,
+    input:focus + label {
+      width: 100%;
+    }
+  }
+
+  label {
+    display: table;
+  }
 }
