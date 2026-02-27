@@ -46,16 +46,7 @@ export class FocusTrapController implements ReactiveController {
       return true;
     }
 
-    // try {
-    //   if (el.getClientRects()?.length === 0) return false;
-    //   const style = window.getComputedStyle(el);
-    //   if (!style) return false;
-    //   if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') return false;
-    //   return true;
-    // } catch (e) {
-    //   return false;
-    // }
-    // Fix Race Condition: durante l'apertura non fidarti di getClientRects o opacità
+    // Fix Race Condition Safari: durante l'apertura non fidarti di getClientRects o opacità
     try {
       const style = window.getComputedStyle(el);
       return style && style.display !== 'none' && style.visibility !== 'hidden';
@@ -89,10 +80,9 @@ export class FocusTrapController implements ReactiveController {
   }
 
   activate(): void {
-    console.log('FocusTrap: attivazione richiesta');
     if (this._isActive) return;
     this._isActive = true;
-    console.log('FocusTrap: attivo, calcolo elementi focusabili');
+
     // FIX iOS: Safari non dà focus al tap. Se activeElement è body, salviamo il trigger della config.
     const currentActive = FocusTrapController.getActiveElement();
     this._previousActiveElement =
@@ -102,22 +92,25 @@ export class FocusTrapController implements ReactiveController {
     // indipendentemente da shadow DOM, delegatesFocus e slot retargeting.
     document.addEventListener('keydown', this._handleKeyDown, true);
     this.updateFocusableElements();
-    // FIX Safari: micro-delay per l'apertura
-    // setTimeout(() => {
+    // FIX Safari: trick engine
     // Diamo al browser un istante per processare il ricalcolo del layout
     requestAnimationFrame(() => {
-      console.log('FocusTrap: attivo, focus su', this._first);
       if (this.config.initialFocus) {
         const el = this.config.initialFocus();
         if (el) {
-          el.focus();
+          setTimeout(() => {
+            el.focus({ preventScroll: true });
+          }, 0);
         }
-      } else this.focusFirst();
+      } else {
+        console.warn("FocusTrap: missing 'initialFocus' callback, provide one");
+      }
     });
   }
 
   deactivate(options?: { skipFocusRestore?: boolean }): void {
     if (!this._isActive) return;
+    setTimeout(() => {}, 10); // FIX Safari: delay trick engine
     this._isActive = false;
     document.removeEventListener('keydown', this._handleKeyDown, true);
     if (!options?.skipFocusRestore) {
@@ -227,9 +220,14 @@ export class FocusTrapController implements ReactiveController {
 
   private _restoreFocus(): void {
     if (this._previousActiveElement && typeof this._previousActiveElement.focus === 'function') {
-      // FIX Safari: micro-delay per il restore
-      const el = this._previousActiveElement;
-      setTimeout(() => el.focus(), 10);
+      const el = this.config.getTrigger() as HTMLElement;
+      // Fix Safari: trick engine
+      FocusTrapController.getActiveElement()?.blur();
+
+      // FIX Safari: trick engine
+      setTimeout(() => {
+        el.focus({ preventScroll: true });
+      }, 0);
     }
     this._previousActiveElement = null;
   }

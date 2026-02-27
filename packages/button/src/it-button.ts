@@ -29,6 +29,8 @@ export class ItButton extends BaseComponent {
 
   @property({ type: String }) value = '';
 
+  @property({ type: Boolean, reflect: true, attribute: 'it-inert' }) itInert = false;
+
   @property() internals = this.attachInternals();
 
   @property({ type: Boolean, reflect: true }) disabled?: boolean;
@@ -129,6 +131,7 @@ export class ItButton extends BaseComponent {
         aria-disabled="${ifDefined(this.disabled ? this.disabled : undefined)}"
         ${setAttributes(this._ariaAttributes)}
         aria-expanded="${ifDefined(this.expanded !== undefined ? this.expanded : undefined)}"
+        ?inert="${this.itInert}"
       >
         <slot></slot>
       </button>

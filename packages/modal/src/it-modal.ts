@@ -1,11 +1,13 @@
 /* eslint-disable lit-a11y/click-events-have-key-events */
 import { BaseComponent, FocusTrapController, WindowManager } from '@italia/globals';
 import { html, PropertyValues } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { type ModalSize, type ModalPosition, type ModalVariant, type ModalEventDetail } from './types.js';
 import styles from './modal.scss';
+
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 @customElement('it-modal')
 export class ItModal extends BaseComponent {
@@ -63,6 +65,9 @@ export class ItModal extends BaseComponent {
 
   private _originalTrigger: HTMLElement | null = null;
 
+  @state()
+  private _safariMouseInteraction = false;
+
   private _dialogAnimation?: Animation;
 
   private _backdropAnimation?: Animation;
@@ -77,6 +82,11 @@ export class ItModal extends BaseComponent {
 
   private _focusTrap: FocusTrapController;
 
+  get _triggerElement(): HTMLElement | null {
+    const elements = this._triggerSlot?.assignedElements({ flatten: true });
+    return (elements?.[0] as HTMLElement) || null;
+  }
+
   constructor() {
     super();
     this._triggerId = this.generateId('modal-trigger');
@@ -86,13 +96,22 @@ export class ItModal extends BaseComponent {
       getContainer: () => this._modalElement,
       initialFocus: () => this._modalElement,
       getTrigger: () => this._triggerElement,
-      onEscape: () => this.hide(),
+      onEscape: () => {
+        this._safariMouseInteraction = false;
+        this.hide();
+      },
     });
   }
 
-  get _triggerElement(): HTMLElement | null {
-    const elements = this._triggerSlot?.assignedElements({ flatten: true });
-    return (elements?.[0] as HTMLElement) || null;
+  connectedCallback(): void {
+    super.connectedCallback?.();
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback?.();
+    this._removeTriggerListeners();
+    this._cleanupAnimations();
+    WindowManager.unlockBodyScroll();
   }
 
   public show(): void {
@@ -129,6 +148,21 @@ export class ItModal extends BaseComponent {
         else this._hideModal();
       }
     }
+    if (changedProperties.has('_safariMouseInteraction')) {
+      let realButton: HTMLElement | null = this._triggerElement;
+      if (realButton?.tagName.toLowerCase() === 'it-button') {
+        realButton = this._triggerElement?.shadowRoot?.querySelector('button')!;
+      }
+      if (!realButton) return;
+      // Fix Safari: se l'interazione è da mouse, rimuovi outline e box-shadow forzati per evitare il doppio focus ring
+      if (this._safariMouseInteraction) {
+        realButton.style.setProperty('outline', '0', 'important');
+        realButton.style.setProperty('box-shadow', 'none', 'important');
+      } else {
+        realButton.style.removeProperty('outline');
+        realButton.style.removeProperty('box-shadow');
+      }
+    }
   }
 
   private _applyInert(): void {
@@ -137,6 +171,10 @@ export class ItModal extends BaseComponent {
     if (trigger) {
       this._triggerPointerBefore = trigger.style.pointerEvents;
       trigger.style.pointerEvents = 'none';
+      trigger.setAttribute('inert', '');
+      if (trigger.tagName.toLowerCase().startsWith('it-')) {
+        trigger.setAttribute('it-inert', '');
+      }
     }
     const ignored = new Set(['SCRIPT', 'STYLE', 'TEMPLATE', 'LINK']);
     for (let cur: HTMLElement | null = this; cur && cur !== document.body; cur = cur.parentElement) {
@@ -145,6 +183,15 @@ export class ItModal extends BaseComponent {
       Array.from(parent.children).forEach((node) => {
         if (node !== cur && !ignored.has(node.tagName) && node instanceof HTMLElement) {
           node.setAttribute('inert', '');
+
+          // // FIX FOR SAFARI/VOICEOVER:
+          // // If it's a web component with a shadow root, VoiceOver might still
+          // // find the inner button.
+          if (node.shadowRoot && isSafari) {
+            node.setAttribute('inert', '');
+            node.setAttribute('it-inert', '');
+          }
+
           this._inertElements.push(node);
         }
       });
@@ -152,51 +199,80 @@ export class ItModal extends BaseComponent {
   }
 
   private _removeInert(): void {
-    this._inertElements.forEach((el) => el.removeAttribute('inert'));
+    this._inertElements.forEach((el) => {
+      el.removeAttribute('inert');
+      el.removeAttribute('it-inert');
+    });
     if (this._triggerElement && this._triggerPointerBefore !== null) {
       this._triggerElement.style.pointerEvents = this._triggerPointerBefore;
+      this._triggerElement.removeAttribute('inert');
+      this._triggerElement.removeAttribute('it-inert');
     }
     this._inertElements = [];
     this._triggerPointerBefore = null;
   }
 
-  private _exposeA11yOnHost(): void {
-    this.setAttribute('role', 'dialog');
-    this.setAttribute('aria-modal', 'true');
-    if (this._titleId) this.setAttribute('aria-labelledby', this._titleId);
-    if (this._descriptionId) this.setAttribute('aria-describedby', this._descriptionId);
-  }
+  // eslint-disable-next-line class-methods-use-this
+  private _handleDialogClick = (event: Event): void => {
+    const path = event.composedPath();
+    // Check that is not footer or react synthetic events break on buttons
+    const isInFooter = path.some((el) => el instanceof HTMLElement && el.slot === 'footer');
 
-  private _removeA11yFromHost(): void {
-    ['role', 'aria-modal', 'aria-labelledby', 'aria-describedby'].forEach((a) => this.removeAttribute(a));
-  }
+    if (!isInFooter) {
+      event.stopPropagation(); // solo per backdrop
+    }
+  };
+
+  private _handleBackdropClick = (): void => {
+    if (!this.staticBackdrop) {
+      this.hide();
+    }
+  };
 
   private async _showModal(): Promise<void> {
     if (this.isAnimating) return;
     this.isAnimating = true;
-    this._exposeA11yOnHost();
     this._applyInert();
     WindowManager.lockBodyScroll();
 
-    // ASPETTA CHE LIT STAMPI IL DOM (risolve bug prima apertura)
+    // ASPETTA LIT o race conditions solo per Safari
     await this.updateComplete;
 
     requestAnimationFrame(() => {
-      const dDuration = !this.disableAnimation ? this._dialogAnimationDuration : 0;
-      const bDuration = !this.disableAnimation ? this._backdropAnimationDuration : 0;
-      if (this._backdropElement)
-        this._backdropAnimation = this._backdropElement.animate([{ opacity: 0 }, { opacity: 0.8 }], {
-          duration: bDuration,
+      // Determine transform based on position
+      let dialogStartTransform = 'translate(0, 0)'; // default: no transform
+      if (this.position === 'center') {
+        dialogStartTransform = 'translate(0, -5%)';
+      } else if (this.position === 'left') {
+        dialogStartTransform = 'translateX(-100%)';
+      } else if (this.position === 'right') {
+        dialogStartTransform = 'translateX(100%)';
+      }
+
+      const dialogDuration = !this.disableAnimation && !this.prefersReducedMotion ? this._dialogAnimationDuration : 0;
+      const backdropDuration =
+        !this.disableAnimation && !this.prefersReducedMotion ? this._backdropAnimationDuration : 0;
+
+      // Animate backdrop fade in
+      if (this._backdropElement) {
+        this._backdropAnimation = this._backdropElement.animate([{ opacity: '0' }, { opacity: '0.8' }], {
+          duration: backdropDuration,
+          easing: 'linear',
           fill: 'forwards',
         });
-      if (this._dialogElement) {
+      }
+
+      // Animate dialog transform (slide/drop in)
+      if (this._dialogElement && dialogDuration > 0) {
         this._dialogAnimation = this._dialogElement.animate(
-          [
-            { opacity: 0, transform: 'scale(0.95)' },
-            { opacity: 1, transform: 'scale(1)' },
-          ],
-          { duration: dDuration, fill: 'forwards' },
+          [{ transform: dialogStartTransform }, { transform: 'translate(0, 0)' }],
+          {
+            duration: dialogDuration,
+            easing: 'ease-in-out',
+            fill: 'forwards',
+          },
         );
+
         this._dialogAnimation.finished
           .then(() => {
             if (this.open) {
@@ -207,7 +283,7 @@ export class ItModal extends BaseComponent {
             this.isAnimating = false;
           });
       } else {
-        // Fallback estremo se @query fallisce ancora
+        // Fallback estremo se @query è ancora stale
         this._focusTrap.activate();
         this.isAnimating = false;
       }
@@ -217,31 +293,82 @@ export class ItModal extends BaseComponent {
   private _hideModal(): void {
     if (this.isAnimating) return;
     this.isAnimating = true;
-    FocusTrapController.getActiveElement()?.blur();
-    this._focusTrap.deactivate({ skipFocusRestore: true });
-    const target = this._originalTrigger ?? this._triggerElement;
-    const finish = () => {
+
+    // Determine end transform based on position
+    let dialogEndTransform = 'translate(0, 0)'; // default: no transform
+    let dialogCloseDuration = this._dialogAnimationDuration / 1.33;
+
+    if (this.position === 'center') {
+      dialogEndTransform = 'translate(0, -5%)';
+      // Dialog più veloce quando è centrato per una chiusura più reattiva
+      dialogCloseDuration = this._dialogAnimationDuration / 2;
+    } else if (this.position === 'left') {
+      dialogEndTransform = 'translateX(-100%)';
+    } else if (this.position === 'right') {
+      dialogEndTransform = 'translateX(100%)';
+    }
+
+    const dialogDuration = !this.disableAnimation && !this.prefersReducedMotion ? dialogCloseDuration : 0;
+    const backdropDuration =
+      !this.disableAnimation && !this.prefersReducedMotion ? this._backdropAnimationDuration / 1.33 : 0;
+
+    const finishHide = () => {
+      const target = this._originalTrigger ?? this._triggerElement;
       this._removeInert();
-      this._removeA11yFromHost();
       this._cleanupAnimations();
+      this._focusTrap.deactivate();
       WindowManager.unlockBodyScroll();
       this._isSelfClosing = true;
-      this.open = false;
       this.isAnimating = false;
+      this.open = false;
       if (target)
         setTimeout(() => {
-          if (!this.open) target.focus();
+          if (!this.open) target.focus({ preventScroll: true });
         }, 20);
       this._originalTrigger = null;
+      if (isSafari) this._safariMouseInteraction = false;
     };
-    if (this._dialogElement && !this.disableAnimation) {
-      this._dialogAnimation = this._dialogElement.animate([{ opacity: 1 }, { opacity: 0 }], {
-        duration: 150,
+
+    // Animate dialog and backdrop in parallel for smoother close
+    const animations: Promise<Animation>[] = [];
+
+    if (this._dialogElement && dialogDuration > 0) {
+      this._dialogAnimation = this._dialogElement.animate(
+        [
+          { transform: 'translate(0, 0)', opacity: '1' },
+          { transform: dialogEndTransform, opacity: '0' },
+        ],
+        {
+          duration: dialogDuration,
+          easing: 'ease-in',
+          fill: 'forwards',
+        },
+      );
+      animations.push(this._dialogAnimation.finished);
+    }
+
+    if (this._backdropElement && backdropDuration > 0) {
+      this._backdropAnimation = this._backdropElement.animate([{ opacity: '0.8' }, { opacity: '0' }], {
+        duration: backdropDuration,
+        easing: 'linear',
         fill: 'forwards',
       });
-      this._dialogAnimation.finished.then(finish);
+      animations.push(this._backdropAnimation.finished);
+    }
+
+    if (animations.length > 0) {
+      Promise.all(animations)
+        .then(() => finishHide())
+        .catch(() => {
+          // Animation was cancelled
+          finishHide();
+        })
+        .finally(() => {
+          this.isAnimating = false;
+        });
     } else {
-      finish();
+      // No animation, finish immediately
+      finishHide();
     }
   }
 
@@ -253,24 +380,57 @@ export class ItModal extends BaseComponent {
   }
 
   private _onTriggerSlotChange = (): void => {
+    this._setupTriggerListeners();
+  };
+
+  private _onHeaderSlotChange = (): void => {
+    this.requestUpdate();
+  };
+
+  private _setupTriggerListeners(): void {
     const trigger = this._triggerElement;
+    if (!trigger) return;
 
-    console.log('Trigger slot changed, trigger element:', trigger);
-    if (trigger) {
-      console.log('Setting up trigger with ID:', this._triggerId);
-      trigger.setAttribute('id', this._triggerId);
-      trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.show();
-      });
-      trigger.addEventListener('keydown', (e: any) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
+    trigger.setAttribute('id', this._triggerId);
+    // Rimuovi eventuali listener precedenti
+    trigger.removeEventListener('click', this._onTriggerClick);
+    trigger.removeEventListener('keydown', this._onTriggerKeydown);
 
-          this.show();
-        }
-      });
-      this.requestUpdate();
+    // Aggiungi nuovi listener
+    trigger.addEventListener('click', this._onTriggerClick);
+    trigger.addEventListener('keydown', this._onTriggerKeydown);
+  }
+
+  private _removeTriggerListeners(): void {
+    const trigger = this._triggerElement;
+    if (!trigger) return;
+
+    trigger.removeEventListener('click', this._onTriggerClick);
+    trigger.removeEventListener('keydown', this._onTriggerKeydown);
+  }
+
+  private _onTriggerClick = async (event: Event): Promise<void> => {
+    event.stopPropagation();
+    const trigger = this._triggerElement;
+    if (!trigger) return;
+    if (isSafari) {
+      this._safariMouseInteraction = true;
+    }
+    await this.updateComplete; // Assicurati che l'update sia completo prima di applicare il focus workaround
+    this.show();
+  };
+
+  private _onTriggerKeydown = async (event: Event): Promise<void> => {
+    if ((event as KeyboardEvent).key === 'Enter' || (event as KeyboardEvent).key === ' ') {
+      event.preventDefault();
+      this.show();
+    } else {
+      const trigger = this._triggerElement;
+      if (!trigger) return;
+      if (isSafari) {
+        this._safariMouseInteraction = false;
+      }
+      await this.updateComplete; // Assicurati che l'update sia completo prima di applicare il focus workaround
     }
   };
 
@@ -302,6 +462,7 @@ export class ItModal extends BaseComponent {
   render() {
     const hasHeader = this.modalTitle || (this._headerSlot?.assignedElements({ flatten: true }).length || 0) > 0;
     const ariaLabel = !hasHeader ? this.itAriaLabel || undefined : undefined;
+
     const enableFocusContent = this.scrollable || this.position === 'left' || this.position === 'right';
 
     return html`
@@ -315,19 +476,24 @@ export class ItModal extends BaseComponent {
         aria-label="${ifDefined(ariaLabel)}"
         aria-hidden="${!this.open}"
         tabindex="-1"
-        @click="${() => !this.staticBackdrop && this.hide()}"
+        @click="${this._handleBackdropClick}"
         part="modal"
       >
+        <!-- TRICK SAFARI ENGINE -->
+        <div
+          id="safari-focus-anchor"
+          tabindex="-1"
+          aria-hidden="true"
+          style="position: absolute; width: 0; height: 0; outline: none;"
+        ></div>
         <div
           class="${classMap(this._modalBodyClasses)}"
           role="document"
-          @click="${(e: any) => {
-            if (!e.composedPath().some((el: any) => el.slot === 'footer')) e.stopPropagation();
-          }}"
+          @click="${this._handleDialogClick}"
           part="modal-content-wrapper"
         >
           <div class="visually-hidden" id="${this._descriptionId}">
-            <slot name="description" @slotchange="${() => this.requestUpdate()}">${this.modalDescription}</slot>
+            <slot name="description" @slotchange="${this._onHeaderSlotChange}">${this.modalDescription}</slot>
           </div>
           <div class="modal-content" part="modal-content">
             <div
@@ -336,7 +502,7 @@ export class ItModal extends BaseComponent {
             >
               <slot name="header-icon"></slot>
               <h2 id="${this._titleId}" class="modal-title">
-                <slot name="header" @slotchange="${() => this.requestUpdate()}">${this.modalTitle}</slot>
+                <slot name="header" @slotchange="${this._onHeaderSlotChange}">${this.modalTitle}</slot>
               </h2>
               ${!this.hideCloseButton && this.variant !== 'popconfirm'
                 ? html`<it-button
