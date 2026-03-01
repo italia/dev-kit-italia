@@ -55,7 +55,7 @@
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/mocha": "catalog:",
     "@web/test-runner": "catalog:",
-    "rollup": "^4.42.0",
+    "rollup": "^4.59.0",
     "rollup-plugin-scss-lit": "^2.1.0",
     "sass": "catalog:",
     "tslib": "^2.6.3",

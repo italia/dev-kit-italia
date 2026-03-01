@@ -54,7 +54,7 @@
     "@types/mocha": "catalog:",
     "@web/test-runner": "catalog:",
     "rimraf": "^6.0.1",
-    "rollup": "^4.42.0",
+    "rollup": "^4.59.0",
     "tslib": "^2.6.3",
     "typescript": "catalog:"
   },

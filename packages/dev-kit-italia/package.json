@@ -85,7 +85,7 @@
     "bootstrap-italia": "catalog:",
     "design-tokens-italia": "catalog:",
     "rimraf": "^6.0.1",
-    "rollup": "^4.42.0",
+    "rollup": "^4.59.0",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-scss": "^4.0.1",
     "sass": "catalog:",
