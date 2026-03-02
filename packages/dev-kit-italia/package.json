@@ -64,6 +64,7 @@
     "@italia/dropdown": "workspace:^",
     "@italia/i18n": "workspace:^",
     "@italia/rating": "workspace:^",
+    "@italia/hero": "workspace:^",
     "@italia/icon": "workspace:^",
     "@italia/input": "workspace:^",
     "@italia/navscroll": "workspace:^",

@@ -30,7 +30,7 @@ onMounted(() => {
 
 <template>
   <div class="container my-4">
-    <h1>Pagination Examples</h1>
+    <h1>Pagination</h1>
 
     <section class="mb-5">
       <h2>Con pulsanti avanti e indietro</h2>
@@ -123,11 +123,15 @@ onMounted(() => {
     <section class="mb-5">
       <h2>Paginazione responsive</h2>
       <it-pagination value="1">
-        <a href="javascript:void(0)" slot="prev"><it-icon name="it-chevron-left"></it-icon><span class="visually-hidden">Pagina precedente</span></a>
+        <a href="javascript:void(0)" slot="prev"
+          ><it-icon name="it-chevron-left"></it-icon><span class="visually-hidden">Pagina precedente</span></a
+        >
         <it-pagination-item v-for="n in 5" :key="n" :page="String(n)">
           <a href="javascript:void(0)"> <span class="d-inline-block d-sm-none">Pagina </span>{{ n }} </a>
         </it-pagination-item>
-        <a href="javascript:void(0)" slot="next"><it-icon name="it-chevron-right"></it-icon><span class="visually-hidden">Pagina successiva</span></a>
+        <a href="javascript:void(0)" slot="next"
+          ><it-icon name="it-chevron-right"></it-icon><span class="visually-hidden">Pagina successiva</span></a
+        >
         <p slot="total">Totale 300 elementi</p>
       </it-pagination>
     </section>
@@ -135,11 +139,15 @@ onMounted(() => {
     <section class="mb-5">
       <h2>Con numero totale di pagine</h2>
       <it-pagination value="3">
-        <a href="javascript:void(0)" slot="prev"><it-icon name="it-chevron-left"></it-icon><span class="visually-hidden">Pagina precedente</span></a>
+        <a href="javascript:void(0)" slot="prev"
+          ><it-icon name="it-chevron-left"></it-icon><span class="visually-hidden">Pagina precedente</span></a
+        >
         <it-pagination-item v-for="n in 5" :key="n" :page="String(n)">
           <a href="javascript:void(0)"> <span class="d-inline-block d-sm-none">Pagina </span>{{ n }} </a>
         </it-pagination-item>
-        <a href="javascript:void(0)" slot="next"><it-icon name="it-chevron-right"></it-icon><span class="visually-hidden">Pagina successiva</span></a>
+        <a href="javascript:void(0)" slot="next"
+          ><it-icon name="it-chevron-right"></it-icon><span class="visually-hidden">Pagina successiva</span></a
+        >
         <p slot="total">Totale 300 elementi</p>
       </it-pagination>
     </section>
@@ -147,11 +155,15 @@ onMounted(() => {
     <section class="mb-5">
       <h2>Con selettore pagine</h2>
       <it-pagination value="3">
-        <a href="javascript:void(0)" slot="prev"><it-icon name="it-chevron-left"></it-icon><span class="visually-hidden">Pagina precedente</span></a>
+        <a href="javascript:void(0)" slot="prev"
+          ><it-icon name="it-chevron-left"></it-icon><span class="visually-hidden">Pagina precedente</span></a
+        >
         <it-pagination-item v-for="n in 5" :key="n" :page="String(n)">
           <a href="javascript:void(0)"> <span class="d-inline-block d-sm-none">Pagina </span>{{ n }} </a>
         </it-pagination-item>
-        <a href="javascript:void(0)" slot="next"><it-icon name="it-chevron-right"></it-icon><span class="visually-hidden">Pagina successiva</span></a>
+        <a href="javascript:void(0)" slot="next"
+          ><it-icon name="it-chevron-right"></it-icon><span class="visually-hidden">Pagina successiva</span></a
+        >
 
         <div slot="page-changer">
           <label for="page-size" class="visually-hidden">Elementi per pagina:</label>
@@ -182,14 +194,14 @@ onMounted(() => {
           <span class="visually-hidden">Pagina successiva</span>
         </a>
 
-        <div slot="jump-to-page" style="display: flex; align-items: center; gap: 0.5rem;">
+        <div slot="jump-to-page" style="display: flex; align-items: center; gap: 0.5rem">
           <it-input
             id="jumper-example"
             type="number"
             name="jumper-example"
             placeholder="Vai a ..."
             label-hidden
-            style="width: 80px;"
+            style="width: 80px"
           >
             <span slot="label">Vai a ...</span>
           </it-input>

@@ -12,7 +12,7 @@
     "@italia/dev-kit-italia": "file:../../packages/dev-kit-italia"
   },
   "devDependencies": {
-    "vite": "^7.1.7"
+    "vite": "^7.1.11"
   },
   "packageManager": "npm@11.6.2"
 }
