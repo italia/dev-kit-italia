@@ -5,11 +5,11 @@ import * as Stories from './it-input-time.stories';
 
 # Timepicker
 
-<description>Campo per selezionare un orario all'interno di un form</description>
+<description>Campo per selezionare un orario all'interno di un form.</description>
 
 ## Cosa fa
-Il componente input orario, o timepicker, consente all'utente di scegliere un orario, indicando ore e minuti.
-È utile per i flussi di interazione che prevedono la comunicazione di un orario, come la prenotazione di appuntamenti o di posti per un evento. Aiuta a prevenire errori, e rende più facile inserire i dati per l'utente.
+Il componente Timepicker (`it-input` con `type="time"`) consente all'utente di selezionare un orario con ore e minuti, digitandolo manualmento o selezionando opzioni prestabiliti.
+È particolarmente utile per flussi di interazione che prevedono la comunicazione di un orario, come la prenotazione di appuntamenti o di posti per un evento.
 
 [Approfondisci come e quando usare il componente Timepicker](https://designers.italia.it/design-system/componenti/timepicker/)
 
@@ -24,16 +24,14 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Indicazioni generali
 
-L’input di tipo ora è una variante del componente `<it-input>` con l'attributo `type=` impostato su `time` (`type="time"`).
+Il componente Timepicker è una variante del componente `<it-input>` con l'attributo `type=` impostato su `time` (`type="time"`).
 
-Pertanto, per quanto riguarda:
+Fai riferimento alla [documentazione del componente Input](?path=/docs/componenti-form-input--documentazione) per:
 
-- la **validazione** e la **gestione degli errori**
-- la **gestione degli eventi**
-- i **metodi e le proprietà** accessibili tramite JavaScript
-- il **supporto all’internazionalizzazione (i18n)**
-
-è necessario fare riferimento alla [documentazione di it-input](?path=/docs/componenti-form-input--documentazione).
+- la **validazione** e la **gestione degli errori**;
+- la **gestione degli eventi**;
+- i **metodi e le proprietà** accessibili tramite JavaScript;
+- il **supporto all’internazionalizzazione (i18n)**.
 
 ## Accessibilità
 
@@ -51,7 +49,7 @@ Tutti gli attributi `it-aria-*` passati a `<it-input>` vengono applicati all'inp
 <Description of={Stories.Disabilitato} />
 <Canvas of={Stories.Disabilitato} />
 
-## Stato readonly
+## Stato read only
 
 <Description of={Stories.Readonly} />
 <Canvas of={Stories.Readonly} /> */}
