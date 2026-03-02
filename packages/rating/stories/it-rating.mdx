@@ -30,7 +30,7 @@ Il componente Rating implementa le specifiche ARIA [WAI-ARIA Authoring Practices
 - attributi ARIA appropriati per comunicare lo stato e il ruolo del componente agli screen reader;
 - gestone del focus attraverso roving tabindex per una migliore esperienza di navigazione tramite tastiera.
 
-Assicurati un'etichetta per ogni `<it-rating-item>` per il gruppo `<it-rating>`, tramite i rispettivi slot `label`.
+Assicurati di fornire un'etichetta per ogni `<it-rating-item>` e per il gruppo `<it-rating>`, tramite i rispettivi slot `label`.
 
 ## Con valore preimpostato
 
@@ -65,14 +65,14 @@ Puoi integrare il componente in un form.
 <Canvas of={RatingStories.InForm} />
 
 ## Personalizzazione degli stili
-Per personalizzare degli stili del componente `<it-rating-item>`, puoi usare il selettore `::part` con i seguenti valori:
+Per personalizzare gli stili del componente `<it-rating-item>`, puoi usare il selettore `::part` con i seguenti valori:
 
 ### it-rating-item
 
 - `input`, per il contenitore dell'input nascosto;
 - `star`, per l'icona (stella o icona personalizzata).
 
-[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+[Vai alla guida sui selettori part](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
 
 ## Proprietà, metodie ed eventi accessibili via js
 <Description of={RatingStories.MetodiEPropPubblici} />

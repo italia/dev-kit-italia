@@ -276,7 +276,7 @@ Quando si incorporano video di terze parti, alcune informazioni degli utenti (co
 </div></div>
 
 <div class="callout callout-info"><div class="callout-inner"><div class="callout-title"><span class="text">Responsabilità della privacy</span></div>
-<p>Coinvolgi il Responsabile per la protezione dei dati (RDP/DPO) della tua amministrazione e ricordati di aggiornare la cookie policy del sito. Puoi usare il [kit Privacy](https://designers.italia.it/risorse-per-progettare/organizzare/privacy/) di Designers Italiaper approfondire questi temi e [redarre la cookie policy](https://designers.italia.it/risorse-per-progettare/organizzare/privacy/rispetta-la-privacy-per-il-go-live-di-un-sito/).</p>
+<p>Coinvolgi il Responsabile per la protezione dei dati (RDP/DPO) della tua amministrazione e ricordati di aggiornare la cookie policy del sito. Puoi usare il [kit Privacy](https://designers.italia.it/risorse-per-progettare/organizzare/privacy/) di Designers Italia per approfondire questi temi e [redarre la cookie policy](https://designers.italia.it/risorse-per-progettare/organizzare/privacy/rispetta-la-privacy-per-il-go-live-di-un-sito/).</p>
 </div></div>
 
 ### Attivazione dell’overlay di consenso
