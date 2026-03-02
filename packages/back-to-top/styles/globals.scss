@@ -5,3 +5,9 @@ it-back-to-top {
     bottom: 2rem;
   }
 }
+
+body.navscroll-on-bottom {
+  it-back-to-top::part(button) {
+    bottom: calc(var(--#{$prefix}backtop-position) + 3rem);
+  }
+}

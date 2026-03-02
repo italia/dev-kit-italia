@@ -26,7 +26,7 @@ import Footer from './components/Footer.vue';
     <router-view></router-view>
   </main>
   <Footer />
-  <it-back-to-top it-aria-label="Torna su"></it-back-to-top>
+  <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
 </template>
 
 <style>
