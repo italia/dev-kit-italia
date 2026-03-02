@@ -57,7 +57,6 @@ type Story = StoryObj;
 // ============================================
 
 export const SidebarSemplice: Story = {
-  ...meta,
   name: 'Sidebar semplice',
 
   render: () => html`
@@ -118,7 +117,6 @@ export const SidebarSemplice: Story = {
 // ============================================
 
 export const SidebarConIcone: Story = {
-  ...meta,
   name: 'Sidebar con icone',
   render: () => html`
     <aside class="sidebar-wrapper" aria-labelledby="header">
@@ -183,7 +181,6 @@ export const SidebarConIcone: Story = {
 // ============================================
 
 export const SidebarLineaDestra: Story = {
-  ...meta,
   name: 'Sidebar con linea a destra',
   render: () => html`
     <aside class="sidebar-wrapper it-line-right-side" aria-labelledby="header">
@@ -244,7 +241,6 @@ export const SidebarLineaDestra: Story = {
 // ============================================
 
 export const SidebarLineaSinistra: Story = {
-  ...meta,
   name: 'Sidebar con linea a sinistra',
   render: () => html`
     <aside class="sidebar-wrapper it-line-left-side" aria-labelledby="header">
@@ -305,7 +301,6 @@ export const SidebarLineaSinistra: Story = {
 // ============================================
 
 export const SidebarAnnidata: Story = {
-  ...meta,
   name: 'Sidebar annidata',
   render: () => html`
     <aside class="sidebar-wrapper" aria-labelledby="header">
@@ -419,7 +414,6 @@ export const SidebarAnnidata: Story = {
 // ============================================
 
 export const SidebarTemaScuro: Story = {
-  ...meta,
   name: 'Sidebar tema scuro',
   render: () => html`
     <aside class="sidebar-wrapper theme-dark" aria-labelledby="header">

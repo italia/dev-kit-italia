@@ -1,0 +1,112 @@
+import { Meta, Story, Canvas, Controls, Description } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-sticky.stories';
+
+<Meta of={Stories} />
+
+# Sticky
+
+<description>Comportamento che rende un elemento costantemente visibile allo scorrere della pagina</description>
+
+## Cosa fa
+
+Utilizza il componente `it-sticky` per mantenere un elemento visibile mentre l'utente scorre la pagina. Questo è particolarmente utile per:
+
+- menu di navigazione che devono rimanere accessibili durante lo scorrimento della pagina;
+- call-to-action importanti che devono essere sempre visibili;
+- pulsanti di contatto o supporto che devono essere facilmente raggiungibili;
+
+[Approfondisci quando e come usare il componente Sticky](https://designers.italia.it/design-system/componenti/sticky/)
+
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+
+<Controls of={Stories.EsempioInterattivo} />
+
+## Informazioni generali
+
+Il componente `<it-sticky>` consente di mantenere visibile un elemento della pagina durante lo scroll, applicando automaticamente il comportamento "sticky".
+
+Per utilizzarlo, basta racchiudere il contenuto da fissare all'interno del tag `<it-sticky>`.
+Il componente gestisce in autonomia anche casi avanzati, come elementi impilabili o con padding e classi personalizzate, attraverso specifiche proprietà.
+
+È disponibile una [pagina di esempio](?path=/story/esempi-sticky--single-sticky) dedicata a questa funzionalità per comprenderne appieno significato ed utilizzo.
+
+## Accessibilità
+Per garantire un'esperienza utente ottimale, è importante utilizzare il componente Sticky con moderazione e in modo consapevole:
+- evita di utilizzare troppi componenti Sticky nella stessa pagina contemporaneamente, poiché ciò può creare confusione e sovraccaricare l'utente.
+- assicurati che il contenuto all'interno del componente Sticky sia chiaro e facilmente comprensibile e interagibile.
+## Offset
+
+Impostando la proprietà `padding-top`, è possibile definire un offset in pixel tra l'elemento e il margine superiore.
+
+È disponibile una [pagina di esempio](?path=/story/esempi-sticky--padded-sticky) dedicata a questa funzionalità per comprenderne appieno significato ed utilizzo.
+
+<Canvas of={Stories.Offset} />
+
+## Position fixed
+
+Il componente assegna di default all'elemento la proprietà CSS `position` con valore `sticky`.
+
+In alcuni casi, questo valore può causare problemi di posizionamento, specialmente se l'elemento cambia altezza quando diventa sticky.
+In questi casi, usa l'attributo `position-type:"fixed"` per modificare la sua posizione. 
+
+È disponibile una [pagina di esempio](?path=/story/esempi-sticky--fixed-sticky) dedicata a questa funzionalità per comprenderne appieno significato ed utilizzo.
+
+<Canvas of={Stories.PositionFixed} />
+
+## Classi personalizzate
+
+Per personalizzare lo stile dell'elemento quando è sticky o fixed, puoi usare la proprietà `sticky-class-name`:
+tutte le classi CSS che inserisci in questo attributo verranno aggiunte all'elemento quando diventa sticky e rimosse quando torna normale.
+
+È disponibile una [pagina di esempio](?path=/story/esempi-sticky--fixed-sticky-classname) dedicata a questa funzionalità per comprenderne appieno significato ed utilizzo.
+
+<Canvas of={Stories.ClassiPersonalizzate} />
+
+## Versione impilabile
+
+Se sono presenti più componenti sticky nella pagina, è possibile fare in modo che si impilino l'uno sull'altro utilizzando l'attributo `stackable`.
+
+È disponibile una [pagina di esempio](?path=/story/esempi-sticky--stackable-sticky) dedicata a questa funzionalità per comprenderne appieno significato ed utilizzo.
+
+Un'altra [pagina di esempio](?path=/story/esempi-sticky--stackable-sticky-resize) mostra invece il comportamento con media query e breakpoint.
+
+<Canvas of={Stories.VersioneImpilabile} />
+
+## Proprietà, Metodi, ed Eventi accessibili via js
+
+### Eventi
+
+Il componente `it-sticky` emette eventi custom per notificare quando un elemento diventa sticky o smette di esserlo:
+
+- **it-sticky-on**: Emesso quando l'elemento diventa sticky
+- **it-sticky-off**: Emesso quando l'elemento smette di essere sticky
+
+Entrambi gli eventi hanno le seguenti proprietà:
+- `bubbles: true` - L'evento si propaga attraverso il DOM
+- `composed: true` - L'evento attraversa i confini del Shadow DOM
+- `cancelable: true` - L'evento può essere cancellato
+- `detail: { id: string }` - Contiene l'ID dell'elemento sticky
+
+#### Esempio di utilizzo
+
+```javascript
+const stickyElement = document.querySelector('it-sticky');
+
+// Ascolta quando diventa sticky
+stickyElement.addEventListener('it-sticky-on', (event) => {
+  console.log('Elemento diventato sticky:', event.detail.id);
+  // Aggiungi logica personalizzata
+});
+
+// Ascolta quando smette di essere sticky
+stickyElement.addEventListener('it-sticky-off', (event) => {
+  console.log('Elemento non più sticky:', event.detail.id);
+  // Aggiungi logica personalizzata
+});
+```
+

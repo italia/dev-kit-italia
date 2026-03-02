@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pagination - Dev Kit Italia</title>
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="root">
+      <header id="app-header"></header>
+      <main class="container my-4">
+        <h1>Pagination</h1>
+
+        <!-- Con pulsanti avanti e indietro -->
+        <section class="mb-5">
+          <h2>Con pulsanti avanti e indietro</h2>
+          <it-pagination value="3">
+            <a href="#" slot="prev">
+              <it-icon name="it-chevron-left"></it-icon>
+              <span class="visually-hidden">Pagina precedente</span>
+            </a>
+
+            <it-pagination-item page="1">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>1</a>
+            </it-pagination-item>
+            <it-pagination-item page="2">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>2</a>
+            </it-pagination-item>
+            <it-pagination-item page="3">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>3</a>
+            </it-pagination-item>
+            <it-pagination-item page="4">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>4</a>
+            </it-pagination-item>
+            <it-pagination-item page="5">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>5</a>
+            </it-pagination-item>
+
+            <a href="#" slot="next">
+              <it-icon name="it-chevron-right"></it-icon>
+              <span class="visually-hidden">Pagina successiva</span>
+            </a>
+          </it-pagination>
+        </section>
+
+        <!-- Con link testuali -->
+        <section class="mb-5">
+          <h2>Con link testuali</h2>
+          <it-pagination value="3">
+            <a href="#" slot="prev">Precedente</a>
+
+            <it-pagination-item page="1">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>1</a>
+            </it-pagination-item>
+            <it-pagination-item page="2">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>2</a>
+            </it-pagination-item>
+            <it-pagination-item page="3">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>3</a>
+            </it-pagination-item>
+            <it-pagination-item page="4">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>4</a>
+            </it-pagination-item>
+            <it-pagination-item page="5">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>5</a>
+            </it-pagination-item>
+
+            <a href="#" slot="next">Successiva</a>
+          </it-pagination>
+        </section>
+
+        <!-- Allineamento a sinistra -->
+        <section class="mb-5">
+          <h2>Allineamento a sinistra</h2>
+          <it-pagination value="2" align="start">
+            <a href="#" slot="prev">
+              <it-icon name="it-chevron-left"></it-icon>
+              <span class="visually-hidden">Pagina precedente</span>
+            </a>
+            <it-pagination-item page="1">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>1</a>
+            </it-pagination-item>
+            <it-pagination-item page="2">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>2</a>
+            </it-pagination-item>
+            <it-pagination-item page="3">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>3</a>
+            </it-pagination-item>
+            <a href="#" slot="next">
+              <it-icon name="it-chevron-right"></it-icon>
+              <span class="visually-hidden">Pagina successiva</span>
+            </a>
+            <p slot="total">Totale 300 elementi</p>
+          </it-pagination>
+        </section>
+
+        <!-- Allineamento centrato -->
+        <section class="mb-5">
+          <h2>Allineamento centrato</h2>
+          <it-pagination value="2" align="center">
+            <a href="#" slot="prev">
+              <it-icon name="it-chevron-left"></it-icon>
+              <span class="visually-hidden">Pagina precedente</span>
+            </a>
+            <it-pagination-item page="1">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>1</a>
+            </it-pagination-item>
+            <it-pagination-item page="2">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>2</a>
+            </it-pagination-item>
+            <it-pagination-item page="3">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>3</a>
+            </it-pagination-item>
+            <a href="#" slot="next">
+              <it-icon name="it-chevron-right"></it-icon>
+              <span class="visually-hidden">Pagina successiva</span>
+            </a>
+            <p slot="total">Totale 300 elementi</p>
+          </it-pagination>
+        </section>
+
+        <!-- Allineamento a destra -->
+        <section class="mb-5">
+          <h2>Allineamento a destra</h2>
+          <div style="width: 100%">
+            <it-pagination value="2" align="end">
+              <a href="#" slot="prev">
+                <it-icon name="it-chevron-left"></it-icon>
+                <span class="visually-hidden">Pagina precedente</span>
+              </a>
+              <it-pagination-item page="1">
+                <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>1</a>
+              </it-pagination-item>
+              <it-pagination-item page="2">
+                <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>2</a>
+              </it-pagination-item>
+              <it-pagination-item page="3">
+                <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>3</a>
+              </it-pagination-item>
+              <a href="#" slot="next">
+                <it-icon name="it-chevron-right"></it-icon>
+                <span class="visually-hidden">Pagina successiva</span>
+              </a>
+              <p slot="total">Totale 300 elementi</p>
+            </it-pagination>
+          </div>
+        </section>
+
+        <!-- Paginazione responsive -->
+        <section class="mb-5">
+          <h2>Paginazione responsive</h2>
+          <it-pagination value="1">
+            <a href="#" slot="prev">
+              <it-icon name="it-chevron-left"></it-icon><span class="visually-hidden">Pagina precedente</span>
+            </a>
+
+            <it-pagination-item page="1">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>1</a>
+            </it-pagination-item>
+            <it-pagination-item page="2">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>2</a>
+            </it-pagination-item>
+            <it-pagination-item page="3">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>3</a>
+            </it-pagination-item>
+            <it-pagination-item page="4">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>4</a>
+            </it-pagination-item>
+            <it-pagination-item page="5">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina</span>5</a>
+            </it-pagination-item>
+
+            <a href="#" slot="next">
+              <it-icon name="it-chevron-right"></it-icon>
+              <span class="visually-hidden">Pagina successiva</span>
+            </a>
+            <p slot="total">Totale 300 elementi</p>
+          </it-pagination>
+        </section>
+
+        <!-- Con numero totale di pagine -->
+        <section class="mb-5">
+          <h2>Con numero totale di pagine</h2>
+          <it-pagination value="3">
+            <a href="#" slot="prev">
+              <it-icon name="it-chevron-left"></it-icon><span class="visually-hidden">Pagina precedente</span>
+            </a>
+
+            <it-pagination-item page="1">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>1</a>
+            </it-pagination-item>
+            <it-pagination-item page="2">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>2</a>
+            </it-pagination-item>
+            <it-pagination-item page="3">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>3</a>
+            </it-pagination-item>
+            <it-pagination-item page="4">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>4</a>
+            </it-pagination-item>
+            <it-pagination-item page="5">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>5</a>
+            </it-pagination-item>
+            <a href="#" slot="next">
+              <it-icon name="it-chevron-right"></it-icon><span class="visually-hidden">Pagina successiva</span>
+            </a>
+            <p slot="total">Totale 300 elementi</p>
+          </it-pagination>
+        </section>
+
+        <!-- Con selettore pagine -->
+        <section class="mb-5">
+          <h2>Con selettore pagine</h2>
+          <it-pagination value="3" id="page-changer-example">
+            <a href="#" slot="prev">
+              <it-icon name="it-chevron-left"></it-icon>
+              <span class="visually-hidden">Pagina precedente</span>
+            </a>
+
+            <it-pagination-item page="1">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>1</a>
+            </it-pagination-item>
+            <it-pagination-item page="2">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>2</a>
+            </it-pagination-item>
+            <it-pagination-item page="3">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>3</a>
+            </it-pagination-item>
+            <it-pagination-item page="4">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>4</a>
+            </it-pagination-item>
+            <it-pagination-item page="5">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>5</a>
+            </it-pagination-item>
+
+            <a href="#" slot="next">
+              <it-icon name="it-chevron-right"></it-icon>
+              <span class="visually-hidden">Pagina successiva</span>
+            </a>
+
+            <div slot="page-changer">
+              <label for="page-size" class="visually-hidden">Elementi per pagina:</label>
+              <select id="page-size" class="form-select" style="padding-right: 1.5rem">
+                <option value="10">10/pagina</option>
+                <option value="20" selected>20/pagina</option>
+                <option value="50">50/pagina</option>
+                <option value="100">100/pagina</option>
+              </select>
+            </div>
+          </it-pagination>
+        </section>
+
+        <!-- Con salto a pagina specifica -->
+        <section class="mb-5">
+          <h2>Con salto a pagina specifica</h2>
+          <it-pagination id="jump" value="5" total="10">
+            <a href="#" slot="prev">
+              <it-icon name="it-chevron-left"></it-icon>
+              <span class="visually-hidden">Pagina precedente</span>
+            </a>
+
+            <it-pagination-item page="1">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>1</a>
+            </it-pagination-item>
+            <it-pagination-item page="2">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>2</a>
+            </it-pagination-item>
+            <it-pagination-item page="3">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>3</a>
+            </it-pagination-item>
+            <it-pagination-item page="4">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>4</a>
+            </it-pagination-item>
+            <it-pagination-item page="5">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>5</a>
+            </it-pagination-item>
+            <it-pagination-item page="6">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>6</a>
+            </it-pagination-item>
+            <it-pagination-item page="7">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>7</a>
+            </it-pagination-item>
+            <it-pagination-item page="8">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>8</a>
+            </it-pagination-item>
+            <it-pagination-item page="9">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>9</a>
+            </it-pagination-item>
+            <it-pagination-item page="10">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>10</a>
+            </it-pagination-item>
+
+            <a href="#" slot="next">
+              <it-icon name="it-chevron-right"></it-icon>
+              <span class="visually-hidden">Pagina successiva</span>
+            </a>
+
+            <div slot="jump-to-page" style="display: flex; align-items: center; gap: 0.5rem">
+              <it-input
+                id="jumper-example"
+                type="number"
+                name="jumper-example"
+                placeholder="Vai a ..."
+                label-hidden
+                style="width: 80px"
+              >
+                <span slot="label">Vai a ...</span>
+              </it-input>
+            </div>
+          </it-pagination>
+        </section>
+
+        <!-- Simple Mode -->
+        <section class="mb-5">
+          <h2>Simple Mode</h2>
+          <it-pagination simple-mode value="1" total="5">
+            <a href="#" slot="prev">
+              <it-icon name="it-chevron-left"></it-icon>
+              <span class="visually-hidden">Pagina precedente</span>
+            </a>
+            <a href="#" slot="next">
+              <it-icon name="it-chevron-right"></it-icon>
+              <span class="visually-hidden">Pagina successiva</span>
+            </a>
+          </it-pagination>
+        </section>
+
+        <!-- More Mode -->
+        <section class="mb-5">
+          <h2>More Mode</h2>
+          <it-pagination value="25" total="50" visible-pages="5" disable-responsive id="more-pagination">
+            <a href="#" slot="prev">
+              <it-icon name="it-chevron-left"></it-icon>
+              <span class="visually-hidden">Pagina precedente</span>
+            </a>
+            <it-pagination-item page="1">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>1</a>
+            </it-pagination-item>
+            <it-pagination-item page="2">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>2</a>
+            </it-pagination-item>
+            <it-pagination-item page="3">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>3</a>
+            </it-pagination-item>
+            <it-pagination-item page="4">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>4</a>
+            </it-pagination-item>
+            <it-pagination-item page="5">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>5</a>
+            </it-pagination-item>
+            <it-pagination-item page="6">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>6</a>
+            </it-pagination-item>
+            <it-pagination-item page="7">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>7</a>
+            </it-pagination-item>
+            <it-pagination-item page="8">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>8</a>
+            </it-pagination-item>
+            <it-pagination-item page="9">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>9</a>
+            </it-pagination-item>
+            <it-pagination-item page="10">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>10</a>
+            </it-pagination-item>
+            <it-pagination-item page="11">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>11</a>
+            </it-pagination-item>
+            <it-pagination-item page="12">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>12</a>
+            </it-pagination-item>
+            <it-pagination-item page="13">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>13</a>
+            </it-pagination-item>
+            <it-pagination-item page="14">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>14</a>
+            </it-pagination-item>
+            <it-pagination-item page="15">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>15</a>
+            </it-pagination-item>
+            <it-pagination-item page="16">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>16</a>
+            </it-pagination-item>
+            <it-pagination-item page="17">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>17</a>
+            </it-pagination-item>
+            <it-pagination-item page="18">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>18</a>
+            </it-pagination-item>
+            <it-pagination-item page="19">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>19</a>
+            </it-pagination-item>
+            <it-pagination-item page="20">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>20</a>
+            </it-pagination-item>
+            <it-pagination-item page="21">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>21</a>
+            </it-pagination-item>
+            <it-pagination-item page="22">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>22</a>
+            </it-pagination-item>
+            <it-pagination-item page="23">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>23</a>
+            </it-pagination-item>
+            <it-pagination-item page="24">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>24</a>
+            </it-pagination-item>
+            <it-pagination-item page="25">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>25</a>
+            </it-pagination-item>
+            <it-pagination-item page="26">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>26</a>
+            </it-pagination-item>
+            <it-pagination-item page="27">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>27</a>
+            </it-pagination-item>
+            <it-pagination-item page="28">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>28</a>
+            </it-pagination-item>
+            <it-pagination-item page="29">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>29</a>
+            </it-pagination-item>
+            <it-pagination-item page="30">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>30</a>
+            </it-pagination-item>
+            <it-pagination-item page="31">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>31</a>
+            </it-pagination-item>
+            <it-pagination-item page="32">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>32</a>
+            </it-pagination-item>
+            <it-pagination-item page="33">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>33</a>
+            </it-pagination-item>
+            <it-pagination-item page="34">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>34</a>
+            </it-pagination-item>
+            <it-pagination-item page="35">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>35</a>
+            </it-pagination-item>
+            <it-pagination-item page="36">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>36</a>
+            </it-pagination-item>
+            <it-pagination-item page="37">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>37</a>
+            </it-pagination-item>
+            <it-pagination-item page="38">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>38</a>
+            </it-pagination-item>
+            <it-pagination-item page="39">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>39</a>
+            </it-pagination-item>
+            <it-pagination-item page="40">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>40</a>
+            </it-pagination-item>
+            <it-pagination-item page="41">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>41</a>
+            </it-pagination-item>
+            <it-pagination-item page="42">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>42</a>
+            </it-pagination-item>
+            <it-pagination-item page="43">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>43</a>
+            </it-pagination-item>
+            <it-pagination-item page="44">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>44</a>
+            </it-pagination-item>
+            <it-pagination-item page="45">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>45</a>
+            </it-pagination-item>
+            <it-pagination-item page="46">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>46</a>
+            </it-pagination-item>
+            <it-pagination-item page="47">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>47</a>
+            </it-pagination-item>
+            <it-pagination-item page="48">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>48</a>
+            </it-pagination-item>
+            <it-pagination-item page="49">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>49</a>
+            </it-pagination-item>
+            <it-pagination-item page="50">
+              <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>50</a>
+            </it-pagination-item>
+            <a href="#" slot="next">
+              <it-icon name="it-chevron-right"></it-icon>
+              <span class="visually-hidden">Pagina successiva</span>
+            </a>
+          </it-pagination>
+        </section>
+      </main>
+      <div id="app-footer"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module">
+      // Page changer event listener
+      const pageSizeSelect = document.getElementById('page-size');
+      if (pageSizeSelect) {
+        pageSizeSelect.addEventListener('change', (event) => {
+          const selectedValue = event.target.value;
+          console.log('PageChanger: Elementi per pagina selezionati:', selectedValue);
+        });
+      }
+
+      // Jump to page event listener
+      const jumperInput = document.getElementById('jumper-example');
+      const pagination = document.getElementById('jump');
+      if (jumperInput && pagination) {
+        const pTot = parseInt(pagination.getAttribute('total'), 10);
+
+        jumperInput.addEventListener('it-change', () => {
+          const pageNumber = jumperInput.value;
+          if (pageNumber < 1 || pageNumber > pTot) {
+            console.log('JumpToPage: Numero di pagina non valido', pageNumber);
+            return;
+          }
+          console.log('JumpToPage: Vai a pagina', pageNumber);
+          pagination.value = pageNumber.toString();
+        });
+      }
+    </script>
+  </body>
+</html>

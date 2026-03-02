@@ -26,7 +26,7 @@
   nav,
   .toc-wrapper ul {
     width: 100%;
-    font-family: var(--bsi-font-sans-serif);
+    font-family: var(--bsi-font-sans);
     font-size: 16px;
   }
 
@@ -51,7 +51,7 @@
   margin: 0 auto;
 
   :not(.sb-story *) {
-    font-family: var(--bsi-font-sans-serif);
+    font-family: var(--bsi-font-sans);
     font-size: var(--bsi-body-font-size); /* Mobile: 16px, Desktop: 18px */
     //font-weight: var(--bsi-body-font-weight); /* 400 */
     line-height: var(--bsi-body-line-height); /* 150% */
@@ -253,17 +253,31 @@ table.docblock-argstable {
   display: none;
 }
 
-@media (min-width: 1200px) {
-  .sbdocs-video-container {
-    min-width: 800px;
-  }
-}
-
 .docblock-argstable {
   ul {
     font-size: 13px;
   }
 }
+
+//w-100 layout
+.w100-layout {
+  width: 100%;
+}
+#storybook-root:has(.w100-layout) {
+  width: 80%;
+}
+
+.docs-story div[scale='1'],
+.innerZoomElementWrapper {
+  &:has(.w100-layout) {
+    width: 100% !important;
+    display: block !important;
+  }
+}
+.docs-story div[scale='1']:has(.w100-layout) {
+  margin-bottom: 2rem;
+}
+//------------
 
 //per rendere scollabili le storie di affix
 #story--componenti-affix--affix-top,

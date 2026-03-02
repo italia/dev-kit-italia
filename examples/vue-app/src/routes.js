@@ -5,7 +5,10 @@ import Accordion from './components/Accordion.vue';
 import Avatar from './components/Avatar.vue';
 import Breadcrumbs from './components/Breadcrumbs.vue';
 import Affix from './components/Affix.vue';
+import Alert from './components/Alert.vue';
+import Autocomplete from './components/AutocompletePage.vue';
 import BackToTop from './components/BackToTop.vue';
+import Back from './components/Back.vue';
 import Badge from './components/Badge.vue';
 import Button from './components/Button.vue';
 import Checkbox from './components/Checkbox.vue';
@@ -14,8 +17,11 @@ import Chip from './components/Chip.vue';
 import Collapse from './components/Collapse.vue';
 import Dropdown from './components/Dropdown.vue';
 import Form from './components/Form.vue';
+import Forward from './components/Forward.vue';
+import Hero from './components/Hero.vue';
 import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
+import List from './components/List.vue';
 import Modal from './components/Modal.vue';
 import Navscroll from './components/Navscroll.vue';
 import Overlay from './components/Overlay.vue';
@@ -28,13 +34,17 @@ import Sidebar from './components/Sidebar.vue';
 import Sticky from './components/Sticky.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
+import Pagination from './components/Pagination.vue';
 
 const routes = [
   { path: '/', name: 'Homepage', component: Home },
   { path: '/accordion', name: 'Accordion', component: Accordion },
   { path: '/affix', name: 'Affix', component: Affix },
+  { path: '/alert', name: 'Alert', component: Alert },
+  { path: '/autocomplete', name: 'Autocomplete', component: Autocomplete },
   { path: '/avatar', name: 'Avatar', component: Avatar },
   { path: '/back-to-top', name: 'BackToTop', component: BackToTop },
+  { path: '/back', name: 'Back', component: Back },
   { path: '/badge', name: 'Badge', component: Badge },
   { path: '/breadcrumbs', name: 'Breadcrumbs', component: Breadcrumbs },
   { path: '/button', name: 'Button', component: Button },
@@ -44,11 +54,15 @@ const routes = [
   { path: '/collapse', name: 'Collapse', component: Collapse },
   { path: '/dropdown', name: 'Dropdown', component: Dropdown },
   { path: '/form', name: 'Form', component: Form },
+  { path: '/forward', name: 'Forward', component: Forward },
+  { path: '/hero', name: 'Hero', component: Hero },
   { path: '/icon', name: 'Icon', component: Icon },
   { path: '/input', name: 'Input', component: Input },
+  { path: '/list', name: 'List', component: List },
   { path: '/modal', name: 'Modal', component: Modal },
   { path: '/navscroll', name: 'Navscroll', component: Navscroll },
   { path: '/overlay', name: 'Overlay', component: Overlay },
+  { path: '/pagination', name: 'Pagination', component: Pagination },
   { path: '/popover', name: 'Popover', component: Popover },
   { path: '/radio', name: 'Radio', component: Radio },
   { path: '/rating', name: 'Rating', component: Rating },

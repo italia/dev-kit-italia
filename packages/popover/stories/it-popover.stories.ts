@@ -54,9 +54,6 @@ const meta = {
   },
   parameters: {
     layout: 'padded',
-    docs: {
-      source: { excludeDecorators: true },
-    },
   },
 } satisfies Meta<PopoverProps>;
 

@@ -65,7 +65,7 @@ export class ItIcon extends BaseComponent {
   private handleTitleId() {
     if (this.label) {
       if (!this.titleId) {
-        this.titleId = `icon-label-${crypto.randomUUID()}`;
+        this.titleId = this.generateId('icon-label');
       }
     } else {
       this.titleId = undefined;

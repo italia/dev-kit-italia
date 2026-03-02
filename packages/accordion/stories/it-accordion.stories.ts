@@ -67,14 +67,6 @@ const meta: Meta<AccordionProps> = {
     backgroundHover: false,
     leftIcon: false,
   },
-  decorators: [
-    (Story, context) =>
-      context?.parameters?.useMetaDecorator === false
-        ? Story()
-        : html`<div style="min-height:350px;display:flex;align-items:center">
-            <div style="flex-grow:1">${Story()}</div>
-          </div>`,
-  ],
   argTypes: {
     mode: {
       control: 'select',
@@ -104,8 +96,8 @@ const meta: Meta<AccordionProps> = {
   },
   parameters: {
     layout: 'padded',
+    pageLayout: 'w-100',
     docs: {
-      source: { excludeDecorators: true },
       description: {
         component: `
 <Description>Costruisci accordion richiudibili verticalmente.</Description>
@@ -171,7 +163,7 @@ export const EsempioInterattivo: Story = {
 };
 
 export const AccordionItem = {
-  name: 'Informazioni generali',
+  name: 'Elemento richiudibile',
   argTypes: {
     mode: { table: { disable: true } },
     backgroundActive: { table: { disable: true } },
@@ -198,21 +190,7 @@ export const AccordionItem = {
       name: 'default-open',
     },
   },
-  decorators: [
-    (Story: any) => html`
-      <div style="min-height:150px;display:flex;align-items:center">
-        <div style="flex-grow:1">
-          <it-accordion>${Story()}</it-accordion>
-        </div>
-      </div>
-    `,
-  ],
-  parameters: {
-    useMetaDecorator: false,
-    docs: {
-      source: { excludeDecorators: true },
-    },
-  },
+  decorators: [(Story: any) => html` <it-accordion>${Story()}</it-accordion> `],
   render: (args: any) => html`
     <it-accordion-item as="${args.as || 'h2'}" ?default-open="${args.defaultOpen || false}">
       <span slot="heading">${args.label || 'Elemento richiudibile'}</span>
@@ -253,15 +231,6 @@ In modalità single, può essere aperto un solo elemento alla volta. Aprendo un 
 
 export const AccordionAnnidati: Story = {
   name: 'Accordion annidati',
-  decorators: [
-    (Story) =>
-      html`<div style="min-height:575px;display:flex;align-items:center">
-        <div style="flex-grow:1">${Story()}</div>
-      </div>`,
-  ],
-  parameters: {
-    useMetaDecorator: false,
-  },
   render: () =>
     html` <it-accordion>
       <it-accordion-item default-open>

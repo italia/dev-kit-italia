@@ -1,5 +1,18 @@
 # @italia/avatar
 
+## 1.0.0-alpha.5
+
+### Patch Changes
+
+- [#251](https://github.com/italia/dev-kit-italia/pull/251) [`21e8180`](https://github.com/italia/dev-kit-italia/commit/21e8180e49b83ca2be70d69e952a52d2e563b29e) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated bootstrap-italia and fixed design-tokens
+
+- [`f8d05ee`](https://github.com/italia/dev-kit-italia/commit/f8d05eed0c38744e77788499175ec85901c4e092) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated bootstrap-italia and fixed some stories
+
+- Updated dependencies [[`57f1319`](https://github.com/italia/dev-kit-italia/commit/57f1319bb9db5d1b4a5811ccf16e46cc09e83e8f), [`18e1e61`](https://github.com/italia/dev-kit-italia/commit/18e1e61c9e999713ffc1965a547d08919808dc77)]:
+  - @italia/globals@1.0.0-alpha.5
+  - @italia/i18n@1.0.0-alpha.5
+  - @italia/icon@1.0.0-alpha.5
+
 ## 1.0.0-alpha.4
 
 ### Patch Changes

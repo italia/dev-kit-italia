@@ -148,6 +148,7 @@ const ScrollToTopTemplate = (params: BackToTopProps, context: { viewMode: string
 
 export const EsempioInterattivo: Story = {
   ...meta,
+  tags: ['!dev'],
   name: 'Esempio interattivo',
   parameters: {
     docs: {

@@ -24,7 +24,20 @@ interface ModalProps {
 const closeModal = (event: Event) => {
   const el = event.currentTarget as HTMLElement;
   const modal = el.closest('it-modal') as unknown as ItModal;
+  console.log('closeModal -> modal', modal);
   modal?.hide();
+};
+const openModal = (event: Event) => {
+  const el = event.currentTarget as HTMLElement;
+  const modal = el.closest('it-modal') as unknown as ItModal;
+  console.log('openModal -> modal', modal);
+  modal?.show();
+};
+const toggleModal = (event: Event) => {
+  const el = event.currentTarget as HTMLElement;
+  const modal = el.closest('it-modal') as unknown as ItModal;
+  console.log('toggleModal -> modal', modal);
+  modal?.toggle();
 };
 
 const meta = {
@@ -542,6 +555,85 @@ export const SenzaAnimazione: Story = {
       <p slot="content">Questa modale appare immediatamente senza animazione di dissolvenza.</p>
       <it-button slot="footer" variant="outline-primary" @click="${closeModal}">Annulla</it-button>
       <it-button slot="footer" variant="primary" @click="${closeModal}">Conferma</it-button>
+    </it-modal>
+  `,
+};
+export const AttivazioneViaJS: Story = {
+  name: 'Attivazione manuale via JS',
+  decorators: [
+    (story) => html` <div style="display:flex; height:100%; align-items:center; gap:2rem;">${story()}</div> `,
+  ],
+  parameters: {
+    docs: {
+      source: {
+        excludeDecorators: true,
+        code: `
+        <it-modal disable-animation close-label="Chiudi finestra modale">
+          <it-button slot="trigger" variant="primary">Modale con apertura manuale (show)</it-button>
+          <span slot="header">Modale con apertura manuale</span>
+          <p slot="content">Questa modale appare immediatamente senza animazione di dissolvenza.</p>
+          <it-button slot="footer" variant="outline-primary">Annulla</it-button>
+          <it-button slot="footer" variant="primary">Conferma</it-button>
+        </it-modal>
+        <it-modal disable-animation close-label="Chiudi finestra modale">
+          <it-button slot="trigger" variant="primary">Modale con apertura manuale (toggle)</it-button
+          >
+          <span slot="header">Modale con toggle manuale</span>
+          <p slot="content">Questa modale appare immediatamente senza animazione di dissolvenza.</p>
+          <it-button slot="footer" variant="outline-primary">Annulla</it-button>
+          <it-button slot="footer" variant="primary">Conferma</it-button>
+        </it-modal>
+        <script>
+          // Script di esempio per mostrare come attivare la modale via JS utilizzando i metodi show(), hide() e toggle()
+          const modals = document.querySelectorAll('it-modal');
+          const [modalShow, modalToggle] = modals;
+
+          const openModal = (event) => {
+            const el = event.currentTarget;
+            const modal = el.closest('it-modal');
+            console.log('openModal -> modal', modal);
+            modal?.show();
+          };
+          const closeModal = (event) => {
+            const el = event.currentTarget;
+            const modal = el.closest('it-modal');
+            console.log('closeModal -> modal', modal);
+            modal?.hide();
+          };
+          const toggleModal = (event) => {
+            const el = event.currentTarget;
+            const modal = el.closest('it-modal');
+            console.log('toggleModal -> modal', modal);
+            modal?.toggle();
+          };
+
+          // Assegna gli event listener ai bottoni di trigger e footer
+          modalShow.querySelector('[slot="trigger"]').addEventListener('click', openModal);
+          modalShow.querySelectorAll('[slot="footer"] it-button').forEach((btn) => btn.addEventListener('click', closeModal));
+
+          modalToggle.querySelector('[slot="trigger"]').addEventListener('click', toggleModal);
+          modalToggle.querySelectorAll('[slot="footer"] it-button').forEach((btn) => btn.addEventListener('click', toggleModal));
+        </script>
+        `,
+      },
+    },
+  },
+  render: () => html`
+    <it-modal disable-animation close-label="Chiudi finestra modale">
+      <it-button slot="trigger" variant="primary" @click="${openModal}">Modale con apertura manuale (show)</it-button>
+      <span slot="header">Modale con apertura manuale</span>
+      <p slot="content">Questa modale appare immediatamente senza animazione di dissolvenza.</p>
+      <it-button slot="footer" variant="outline-primary" @click="${closeModal}">Annulla</it-button>
+      <it-button slot="footer" variant="primary" @click="${closeModal}">Conferma</it-button>
+    </it-modal>
+    <it-modal disable-animation close-label="Chiudi finestra modale">
+      <it-button slot="trigger" variant="primary" @click="${toggleModal}"
+        >Modale con apertura manuale (toggle)</it-button
+      >
+      <span slot="header">Modale con toggle manuale</span>
+      <p slot="content">Questa modale appare immediatamente senza animazione di dissolvenza.</p>
+      <it-button slot="footer" variant="outline-primary" @click="${toggleModal}">Annulla</it-button>
+      <it-button slot="footer" variant="primary" @click="${toggleModal}">Conferma</it-button>
     </it-modal>
   `,
 };

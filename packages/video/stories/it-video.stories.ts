@@ -35,7 +35,7 @@ const renderComponent = (params: any) => html`
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Componenti/Video',
+  title: 'Componenti/Video player',
   tags: ['a11y-ok', 'web-component'],
   component: 'it-video',
   args: {
@@ -96,7 +96,9 @@ const meta = {
         'Nome della propria funzione presente nella window che verrà invocata da video.js per inizializzare eventuali plug-in aggiuntivi definiti dallo sviluppatore.',
     },
   },
-  decorators: [(Story) => html`<div class="sbdocs-video-container">${Story()}</div>`],
+  parameters: {
+    pageLayout: 'w-100',
+  },
 } satisfies Meta<VideoProps>;
 
 export default meta;
@@ -107,7 +109,6 @@ export const EsempioInterattivo: Story = {
   tags: ['!dev'],
   parameters: {
     docs: {
-      source: { excludeDecorators: true },
       canvas: {
         sourceState: 'closed',
       },
@@ -327,9 +328,7 @@ export const I18n: Story = {
 Oltre all'attributo \`translations\` che permette di modificare le traduzioni interne al player, sono disponibili ulteriori stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
 
 \`\`\`js
-const translation = {
-  ${JSON.stringify(i18nIT).replaceAll('{"', '"').replaceAll('",', '",\n\t').replaceAll('"}', '"')}
-}
+const translation = ${JSON.stringify(i18nIT, null, 2)}
 \`\`\`
 `,
       },
