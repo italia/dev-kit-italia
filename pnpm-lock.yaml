@@ -19,8 +19,8 @@ catalogs:
       specifier: ^0.9.0
       version: 0.9.0
     bootstrap-italia:
-      specifier: 3.0.0-alpha.1
-      version: 3.0.0-alpha.1
+      specifier: 3.0.0-alpha.2
+      version: 3.0.0-alpha.2
     design-tokens-italia:
       specifier: ^1.3.3
       version: 1.3.3
@@ -74,7 +74,7 @@ importers:
         version: 7.18.0(eslint@8.57.1)(typescript@5.9.3)
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       design-tokens-italia:
         specifier: 'catalog:'
         version: 1.3.3
@@ -167,7 +167,7 @@ importers:
         version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -228,7 +228,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -289,7 +289,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -347,7 +347,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -402,7 +402,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -457,7 +457,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -512,7 +512,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -573,7 +573,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -628,7 +628,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -692,7 +692,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -838,7 +838,7 @@ importers:
         version: 12.3.0(rollup@4.59.0)(tslib@2.8.1)(typescript@5.9.3)
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       design-tokens-italia:
         specifier: 'catalog:'
         version: 1.3.3
@@ -868,7 +868,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -975,7 +975,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1073,7 +1073,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1137,7 +1137,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1195,7 +1195,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1256,7 +1256,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1317,7 +1317,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: ^3.2.1
         version: 3.3.2
@@ -1378,7 +1378,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1439,7 +1439,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1500,7 +1500,7 @@ importers:
         version: link:../radio
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1552,7 +1552,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1610,7 +1610,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1668,7 +1668,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1720,7 +1720,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1859,7 +1859,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.1
+        version: 3.0.0-alpha.2
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -3613,12 +3613,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@videojs/http-streaming@3.17.2':
-    resolution: {integrity: sha512-VBQ3W4wnKnVKb/limLdtSD2rAd5cmHN70xoMf4OmuDd0t2kfJX04G+sfw6u2j8oOm2BXYM9E1f4acHruqKnM1g==}
-    engines: {node: '>=8', npm: '>=5'}
-    peerDependencies:
-      video.js: ^8.19.0
-
   '@videojs/http-streaming@3.17.4':
     resolution: {integrity: sha512-XAvdG2dolBuV2Fx8bu1kjmQ2D4TonGzZH68Pgv/O9xMSFWdZtITSMFismeQLEAtMmGwze8qNJp3RgV+jStrJqg==}
     engines: {node: '>=8', npm: '>=5'}
@@ -4045,8 +4039,8 @@ packages:
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
 
-  bootstrap-italia@3.0.0-alpha.1:
-    resolution: {integrity: sha512-XZ3gjihIvjm1hf+iVXv2cHdpmt9E9VOovuLCVWJdems0Si/4EpWQnmBamIvcHog2SjXUArK591dkDVMZJYUcrA==}
+  bootstrap-italia@3.0.0-alpha.2:
+    resolution: {integrity: sha512-rPxvQE2OG6zkR0rdRyVSEMBK6cMGhO2M79TfnMFm+u0FeJR3+kHZ9dr0nQJDXQQkTf5ff6+L4HCQLYKKaQ+9LA==}
 
   brace-expansion@1.1.12:
     resolution: {integrity: sha512-9T9UjW3r0UW5c1Q7GTwllptXwhvYmEzFhzMfZ9H7FQWt+uZePjZPjBP/W1ZEyZ1twGWom5/56TF4lPcqjnDHcg==}
@@ -7020,9 +7014,6 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  video.js@8.23.4:
-    resolution: {integrity: sha512-qI0VTlYmKzEqRsz1Nppdfcaww4RSxZAq77z2oNSl3cNg2h6do5C8Ffl0KqWQ1OpD8desWXsCrde7tKJ9gGTEyQ==}
-
   video.js@8.23.7:
     resolution: {integrity: sha512-cG4HOygYt+Z8j6Sf5DuK6OgEOoM+g9oGP6vpqoZRaD13aHE4PMITbyjJUXZcIQbgB0wJEadBRaVm5lJIzo2jAA==}
 
@@ -8779,17 +8770,6 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@videojs/http-streaming@3.17.2(video.js@8.23.4)':
-    dependencies:
-      '@babel/runtime': 7.28.6
-      '@videojs/vhs-utils': 4.1.1
-      aes-decrypter: 4.0.2
-      global: 4.4.0
-      m3u8-parser: 7.2.0
-      mpd-parser: 1.3.1
-      mux.js: 7.1.0
-      video.js: 8.23.4
-
   '@videojs/http-streaming@3.17.4(video.js@8.23.7)':
     dependencies:
       '@babel/runtime': 7.28.6
@@ -9427,7 +9407,7 @@ snapshots:
 
   boolbase@1.0.0: {}
 
-  bootstrap-italia@3.0.0-alpha.1:
+  bootstrap-italia@3.0.0-alpha.2:
     dependencies:
       '@popperjs/core': 2.11.8
       '@splidejs/splide': 4.1.4
@@ -9438,7 +9418,7 @@ snapshots:
       minimasonry: 1.3.2
       progressbar.js: 1.1.1
       uuid: 8.3.2
-      video.js: 8.23.4
+      video.js: 8.23.7
 
   brace-expansion@1.1.12:
     dependencies:
@@ -12774,21 +12754,6 @@ snapshots:
 
   vary@1.1.2: {}
 
-  video.js@8.23.4:
-    dependencies:
-      '@babel/runtime': 7.28.6
-      '@videojs/http-streaming': 3.17.2(video.js@8.23.4)
-      '@videojs/vhs-utils': 4.1.1
-      '@videojs/xhr': 2.7.0
-      aes-decrypter: 4.0.2
-      global: 4.4.0
-      m3u8-parser: 7.2.0
-      mpd-parser: 1.3.1
-      mux.js: 7.1.0
-      videojs-contrib-quality-levels: 4.1.0(video.js@8.23.4)
-      videojs-font: 4.2.0
-      videojs-vtt.js: 0.15.5
-
   video.js@8.23.7:
     dependencies:
       '@babel/runtime': 7.28.6
@@ -12803,11 +12768,6 @@ snapshots:
       videojs-contrib-quality-levels: 4.1.0(video.js@8.23.7)
       videojs-font: 4.2.0
       videojs-vtt.js: 0.15.5
-
-  videojs-contrib-quality-levels@4.1.0(video.js@8.23.4):
-    dependencies:
-      global: 4.4.0
-      video.js: 8.23.4
 
   videojs-contrib-quality-levels@4.1.0(video.js@8.23.7):
     dependencies:
