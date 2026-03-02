@@ -5,11 +5,11 @@ import * as Stories from './overlay.stories';
 
 # Overlay
 
-<description>Etichetta opaca per aggiungere testo o icone in sovrimpressione a immagini</description>
+<description>Etichetta opaca per aggiungere testo o icone in sovrimpressione a immagini.</description>
 
 ## Cosa fa
 
-Il componente Overlay consente di sovrapporre in modo elegante testo o icone ad un’immagine di sfondo, creando un layer visivo che rafforza il messaggio e guida l’utente.
+Il componente Overlay sovrappone in modo elegante testo o icone a un’immagine di sfondo, creando un layer visivo che rafforza il messaggio e guida l’utente.
 
 [Approfondisci come e quando usare il componente Overlay](https://designers.italia.it/design-system/componenti/overlay/)
 
@@ -17,14 +17,14 @@ Il componente Overlay consente di sovrapporre in modo elegante testo o icone ad 
 
 La struttura base è composta da:
 
-- Un contenitore con classe `.overlay-wrapper`. L'elemento contenuto (ad esempio una immagine) conserva la sua dimensione naturale.
-- L’overlay con classe `.overlay-panel` si posiziona al piede del contenitore. Ha un’altezza fissa e una larghezza corrispondente a quella del contenitore.
+- un contenitore con classe `.overlay-wrapper`, all’interno del quale l’elemento (ad esempio un’immagine) mantiene le proprie dimensioni naturali;
+- l’overlay con classe `.overlay-panel`, posizionato nella parte inferiore del contenitore, con altezza fissa e larghezza pari a quella del contenitore stesso.
 
-Nel caso il testo contenuto dell'overlay sia troppo lungo verrà troncato con l’utilizzo di ellissi.
+Se il testo contenuto nell'overlay è troppo lungo, viene troncato con ellissi.
 
-Aggiungendo all’Overlay la classe `.overlay-panel-fullheight` questo coprirà per intero il contenitore.
+Aggiungendo la classe `.overlay-panel-fullheight`, l’overlay copre interamente il contenitore.
 
-<div class="text-muted fst-italic">Negli esempi seguenti mostreremo le classi applicate al caso di una immagine con contenitore `<figure>` . </div>
+<div class="text-muted fst-italic">Gli esempi mostrano le classi applicate al caso di un’immagine all’interno di un contenitore `<figure>`. </div>
 
 <div class="callout callout-primary">
   <div class="callout-inner">
@@ -32,7 +32,7 @@ Aggiungendo all’Overlay la classe `.overlay-panel-fullheight` questo coprirà 
       <span class="text">Stili</span>
     </div>
     <p>
-      In caso non si stia utilizzando il bundle unico, assicurarsi di avere importato tutti i fogli di stile necessari
+      Se non stai usando il bundle unico, assicurati di avere importato tutti i fogli di stile necessari
       da `bootstrap-italia`:
 
 

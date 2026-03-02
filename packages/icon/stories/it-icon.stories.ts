@@ -112,7 +112,9 @@ export const PersonalizzazioneDegliStili: Story = {
       canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
       description: {
         story: `
-Per la personalizzazione degli stili si può usare il selettore \`::part\` passando il valore \`icon\`. [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+Per la personalizzazione degli stili si può usare il selettore \`::part\` passando il valore \`icon\`.
+
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
 `,
       },
     },

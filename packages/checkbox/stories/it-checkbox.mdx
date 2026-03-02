@@ -5,10 +5,10 @@ import * as Stories from './it-checkbox.stories';
 
 # Checkbox
 
-<description>Casella di controllo accessibile e responsiva, che consente all'utente di attivare o disattivare un'opzione.</description>
+<description>Casella di controllo che consente di selezionare una o più opzioni da un elenco predefinito.</description>
 
 ## Cosa fa
-Il componente checkbox consente all’utente di selezionare o deselezionare una o più opzioni da un elenco di scelte predefinite.
+Il componente Checkbox (`it-checkbox`) permette all’utente di selezionare o deselezionare una o più opzioni in modo indipendente, utile quando sono consentite scelte multiple.
 
 [Approfondisci come e quando usare il componente Checkbox](https://designers.italia.it/design-system/componenti/checkbox/)
 
@@ -30,18 +30,20 @@ Per ottenere lo stato indeterminato di una checkbox, aggiungi l'attributo `indet
 <Canvas of={Stories.Indeterminate} />
 
 ## Gruppo di checkbox
-Per creare un gruppo di checkbox, racchiudi tutti gli elementi `<it-checkbox>` all'interno del componente `<it-checkbox-group>` e assegna al gruppo l'attributo `name` corrispondente al nome del campo da salvare nella form.
+Per creare un gruppo di checkbox, racchiudi tutti gli elementi `<it-checkbox>` all'interno del componente `<it-checkbox-group>` e assegna al gruppo l'attributo `name` corrispondente al nome del campo da salvare nel form.
 
-Sul componente `<it-checkbox-group>` sono disponibili alcuni attributi che si riflettono automaticamente sugli `<it-checkbox>` figli, e che non è necessario replicare in ognuno di essi. Questi attributi sono:
-- `name`: indica il nome del campo nella form in cui verranno salvati i valori selezionati nel gruppo di checkbox
-- `required`: rende obbligatorio il campo della form relativo al gruppo di checkbox
-- `disabled`: disabilita tutte le checkbox del gruppo di checkbox
-- `group`: applica lo stile *gruppo di checkbox*. È lo stile di default per il gruppo di checkbox
-- `inline`: applica lo stile *inline* al gruppo di checkbox.
+Sul componente `<it-checkbox-group>` sono disponibili alcuni attributi che si riflettono automaticamente sugli `<it-checkbox>` figli, senza doverli replicare in ognuno di essi. 
+
+Questi attributi sono:
+- `name`, indica il nome del campo nella form in cui verranno salvati i valori selezionati nel gruppo di checkbox;
+- `required`, rende obbligatorio il campo della form relativo al gruppo di checkbox;
+- `disabled`, disabilita tutte le checkbox del gruppo di checkbox;
+- `group`, applica lo stile i default *gruppo di checkbox*;
+- `inline`, applica lo stile *inline* al gruppo di checkbox.
 
 Inserisci l'etichetta del gruppo in un elemento con attributo `slot="legend"` all'interno di `<it-checkbox-group>`.
 
-Quando utilizzi il componente `it-checkbox-group` in una form, il modo corretto per estrarre il valore del campo al submit via JS è:
+Quando utilizzi il componente `it-checkbox-group` in un form, il modo corretto per estrarre il valore del campo al submit via JS è:
 
 ```js
 const formData = new FormData(document.getElementById('form'));
@@ -49,7 +51,7 @@ formData.getAll(field_name) // dove `field_name` è il valore dell'attributo `[n
 ```
 
 ### Allineati in colonna
-È lo stile di default del gruppo di checkbox, ed equivale ad impostare l'attributo `group` su `<it-checkbox-group>`.
+È lo stile di default del gruppo di checkbox ed equivale a impostare l'attributo `group` su `<it-checkbox-group>`.
 
 L’elemento grafico di spunta verrà allineato alla destra del contenuto testuale.
 
@@ -73,7 +75,7 @@ Per mostrare un testo di supporto alla checkbox, aggiungi l'attributo `supportTe
 Questa sezione si riferisce sia al componente `<it-checkbox>` che al componente `<it-checkbox-group>`.
 
 
-Se non hai impostato la validazione custom tramite l'attributo `custom-validation`, e hai impostato l'attributo `required`, viene effettuata una validazione interna utilizzando la validazione nativa del browser.
+Se non hai impostato la validazione custom tramite l'attributo `custom-validation` e hai impostato l'attributo `required`, viene effettuata una validazione interna utilizzando la validazione nativa del browser.
 
 <Canvas of={Stories.ValidazioneNativa} />
 
@@ -81,20 +83,20 @@ Se non hai impostato la validazione custom tramite l'attributo `custom-validatio
 
 Puoi personalizzare alcuni dei messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
 
-- `validityRequired`: messaggio che viene mostrato quando `<it-checkbox>` ha l'attributo `required` e non è compilato
-- `validityGroupRequired`: messaggio che viene mostrato quando il gruppo di checkbox è `required` e non è compilato
+- `validityRequired`, messaggio che viene mostrato quando `<it-checkbox>` ha l'attributo `required` e non è compilato;
+- `validityGroupRequired`, messaggio che viene mostrato quando il gruppo di checkbox è `required` e non è compilato.
 
 Per gli altri errori di validazione non indicati, verranno mostrati i messaggi di errore nativi del browser.
 
 ### Validazione esterna (validazione custom)
 
-Puoi anche validare il campo esternamente (via js ad esempio, o lato server), impostando l'attributo `custom-validation="true"`.
+Puoi anche validare il campo esternamente (ad esempio, via js o lato server), impostando l'attributo `custom-validation="true"`.
 In questo modo la validazione di default del browser effettuata internamente al componente è disabilitata.
 
 
 #### Campo invalido
 
-Nel caso il campo non sia valido, devi invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo `validity-message="Messaggio di errore"`.
+Nel caso il campo non sia valido, devi invalidarlo impostando il messaggio di errore da visualizzare attraverso l'attributo `validity-message="Messaggio di errore"`.
 
 #### Campo valido
 

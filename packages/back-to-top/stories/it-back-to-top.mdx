@@ -8,7 +8,7 @@ import * as Stories from './it-back-to-top.stories';
 <description>Pulsante per tornare rapidamente all'inizio di una pagina con contenuti lunghi</description>
 
 ## Cosa fa
-Il componente `it-back-to-top` ti consente di generare un pulsante che, al clic, riporta l'utente all'inizio della pagina. Fornisce quindi una scorciatoia per migliorare l'esperienza di navigazione in pagine con contenuti lunghi.
+Il componente Back to top (`it-back-to-top`) genera un pulsante scorciatoia che riporta l'utente in cima alla pagina, particolarmente utile quando ci sono contenuti molto lunghi.
 
 [Approfondisci come e quando usare il componente Back to Top](https://designers.italia.it/design-system/componenti/back-to-top/)
 
@@ -23,22 +23,22 @@ Nota: negli esempi sottostanti il valore di `scroll-limit` è impostato a `0` pe
 <Controls of={Stories.EsempioInterattivo} />
 
 ## Indicazioni generali
-Per vedere il componente in azione, scrolla la pagina verso il basso. Il pulsante "Torna su" apparirà nell'angolo in basso a destra.
+Per vedere il componente in azione, scrolla verso il basso la pagina su cui è stato implementato. Il pulsante "Torna su" apparirà nell'angolo in basso a destra.
+Puoi testarlo anche in questa pagina.
 
 
 ## Accessibilità
 
-Ti suggeriamo di impostare sempre l'attributo `border` per garantire una maggiore visibilità del pulsante su sfondi di colori simili al pulsante stesso.
-Puoi eventualmente cambiare il colore del bordo attraverso l'apposito attributo `border-color`.
+- Imposta sempre l'attributo `border` per garantire una maggiore visibilità del pulsante su sfondi di colori simili al pulsante stesso. Puoi cambiare il colore del bordo tramite l'attributo `border-color`.
 
-Su pagine scure (esempio pagine con tema scuro o con molte sezioni a sfondo scuro), utilizza l'attributo `inverse` per garantire il contrasto minimo richiesto dalle linee guida WCAG 2.1.
+- Su pagine con tema scuro o con molte sezioni a sfondo scuro, usa l'attributo `inverse` per garantire il contrasto minimo richiesto dalle linee guida WCAG 2.1.
 
-È importante fornire un'etichetta accessibile al pulsante tramite l'attributo `it-aria-label`, in modo che gli utenti di tecnologie assistive possano comprendere la funzione del pulsante.
+- Fornisci un'etichetta accessibile al pulsante tramite l'attributo `it-aria-label`, in modo che gli utenti di tecnologie assistive possano comprenderne la funzione.
 
 #### Note sugli attributi ARIA
 
-Tutti gli attributi `it-aria-*` passati a `<it-back-to-top>` vengono applicati al button generato come attributi `aria-*`.
-Anche l'attributo `it-role` viene passato al button come attributo `role`.
+Tutti gli attributi `it-aria-*` passati a `<it-back-to-top>` vengono applicati al pulsante generato come attributi `aria-*`.
+Anche l'attributo `it-role` viene passato al pulsante come attributo `role`.
 
 
 ## Versione con bordo
@@ -61,7 +61,7 @@ Aggiungi l'attributo `small` per ottenere un pulsante di dimensioni ridotte.
 
 ## Versione con ombra
 
-Aggiungi l'attributo `shadow` per aggiungere un'ombra al pulsante all'hover.
+Aggiungi l'attributo `shadow` per aggiungere un'ombra all'hover.
 
 <Canvas of={Stories.Shadow} />
 
@@ -73,26 +73,26 @@ Attraverso l'attributo `icon-color` puoi modificare il colore dell'icona.
 
 ## Versione su sfondo scuro
 
-Aggiungi l'attributo `inverse` per adattare il bottone a sfondi scuri.
+Aggiungi l'attributo `inverse` per adattare il pulsante a sfondi scuri.
 
 Tramite l'attributo `icon-color` puoi anche personalizzare il colore dell'icona.
 
-Tramite l'attributo `border-color` puoi anche personalizzare il colore del bordo. Se il pulsante è `inverse` il colore di default del bordo è `primary`.
+Tramite l'attributo `border-color` puoi anche personalizzare il colore del bordo. Se il pulsante è `inverse,` il colore di default del bordo è `primary`.
 
 <Canvas of={Stories.Dark} />
 
 ## Versione con ombra su sfondo scuro
 
-Combina gli attributi `inverse` e `shadow` per adattare il bottone a sfondi scuri e aggiungere l'ombra all'hover.
+Combina gli attributi `inverse` e `shadow` per adattare il pulsante a sfondi scuri e aggiungere l'ombra all'hover.
 
 <Canvas of={Stories.DarkShadow} />
 
 
 ## Personalizzazone degli stili
 
-Per personalizzare gli stili del bottone puoi usare il selettore `::part` passando il valore `button`.
+Per personalizzare gli stili del pulsante, usa il selettore `::part` passando il valore `button`.
 
 Per personalizzare l'icona, usa il selettore `::part` con il valore `icon`.
 
-[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
 

@@ -50,7 +50,7 @@ const renderTimeInput = (params: any) =>
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Componenti/Form/Input Ora',
+  title: 'Componenti/Form/Timepicker',
   tags: ['autodocs', 'a11y-ok', 'web-component', 'alpha'],
   component: 'it-input',
   args: {
