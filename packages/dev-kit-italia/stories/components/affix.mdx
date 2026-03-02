@@ -5,25 +5,20 @@ import * as AffixStories from './affix.stories';
 
 # Affix
 
-<description>Elemento ancorato su schermata durante lo scorrere di una specifica sezione di pagina</description>
+<description>Elemento ancorato su schermata durante lo scorrere di una specifica sezione di pagina.</description>
 
 ## Cosa fa
 
-Un elemento Affix rimane nella sua posizione originale fino a quando l’utente non scorre la pagina oltre l'elemento;
-a quel punto, l’elemento viene “ancorato” a una zona fissa dello schermo (ad esempio la parte superiore).
+Il comportamento Affix mantiene un elemento ancorato in una zona fissa dello schermo allo scorrere della pagina ed è particolarmente utile per mantenere visibili intestazioni, barre degli strumenti o pulsanti di azione. 
 
-Una volta che lo scorrimento della pagina supera l'area di ancoraggio dell'elemento, questo viene nascosto e non è più “ancorato”.
+Un affix rimane inizialmente nella sua posizione originale. Quando la pagina scorre oltre l’elemento, questo viene ancorato a una zona fissa dello schermo, ad esempio la parte superiore, fino alla fine dell'area di ancoraggio che è stata definita. Superata quest’area, l’elemento smette di essere ancorato e scorre insieme alla pagina fino a scomparire.
 
-Questo comportamento è utile, per esempio, per mantenere visibili intestazioni, barre degli strumenti o pulsanti di azione dopo che si è superata una certa sezione del contenuto.
-
-[Approfondisci come e quando usare il componente Affix](https://designers.italia.it/design-system/componenti/affix/)
+[Approfondisci come e quando usare il comportamento Affix](https://designers.italia.it/design-system/componenti/affix/)
 
 ## Indicazioni generali
 
-In generale, per utilizzare correttamente il comportamento Affix devi:
-
-- assegnare la classe `.affix-parent` al contenitore che delimita l’area in cui l’elemento deve rimanere ancorato. Questo contenitore rappresenta il riferimento spaziale entro cui l’elemento affix può muoversi o restare fissato.
-- applicare la classe `.affix-top` (oppure `.affix-bottom`) all'elemento da fissare durante lo scroll. Questo elemento è bene che sia un figlio diretto del contenitore con classe `.affix-parent`, poiché il calcolo della posizione ancorata viene effettuato in relazione a quest’ultimo.
+- Assegna la classe `.affix-parent` al contenitore che delimita l’area in cui l’elemento deve rimanere ancorato. Questo contenitore rappresenta il riferimento spaziale entro cui l’elemento affix può muoversi o restare fissato.
+- Applica la classe `.affix-top` oppure `.affix-bottom` all'elemento da fissare durante lo scroll. Questo elemento è bene che sia un figlio diretto del contenitore con classe `.affix-parent`, poiché il calcolo della posizione ancorata viene effettuato in relazione a quest’ultimo.
 
 <div class="callout callout-warning">
   <div class="callout-inner">

@@ -5,14 +5,14 @@ import * as PopoverStories from './it-popover.stories';
 
 <Title of={PopoverStories} />
 
-<description>Suggerimento a comparsa che può contenere testo e link per mostrare informazioni o funzionalità aggiuntive</description>
+<description>Suggerimento a comparsa che può contenere testo e link per mostrare informazioni o funzionalità aggiuntive.</description>
 
 ## Cosa fa
 
-Il componente Popover permette di visualizzare contenuti in overlay posizionati dinamicamente rispetto a un elemento trigger.
+Il componente Popover (`it-popover`) visualizza contenuti in overlay posizionati dinamicamente rispetto a un elemento trigger.
 Utilizza [Floating UI](https://floating-ui.com/) per il posizionamento intelligente e si adatta automaticamente allo spazio disponibile.
 
-Il componente implementa le best practices UX definite da [Polaris (Shopify)](https://polaris.shopify.com/components/overlays/popover), [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/popovers) e [Material Design](https://m3.material.io/).
+Il componente implementa le buone pratiche UX definite da [Polaris (Shopify)](https://polaris.shopify.com/components/overlays/popover), [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/popovers) e [Material Design](https://m3.material.io/).
 
 [Approfondisci quando e come usare il componente Popover](https://designers.italia.it/design-system/componenti/popover/)
 
@@ -34,10 +34,10 @@ Per vedere come cambia il codice, clicca su **Show code**.
 
 Il componente implementa le seguenti funzionalità per garantire l'accessibilità:
 
-- **Attributi ARIA**: gestisce automaticamente `aria-haspopup` e `aria-expanded` sul trigger
-- **Navigazione da tastiera**: supporta la chiusura con `Esc` sia dal trigger che dal contenuto
-- **Light dismiss**: si chiude automaticamente con click esterno
-- **Controllo programmatico**: espone i metodi `openPopover()`, `closePopover()` e `toggle()` per il controllo via codice
+- **attributi ARIA**, gestisce automaticamente `aria-haspopup` e `aria-expanded` sul trigger;
+- **navigazione da tastiera**, supporta la chiusura con `Esc` sia dal trigger che dal contenuto;
+- **light dismiss**, si chiude automaticamente con click esterno;
+- **controllo programmatico**, espone i metodi `openPopover()`, `closePopover()` e `toggle()` per il controllo via codice.
 
 <div className="callout callout-success">
   <div className="callout-inner">
@@ -45,30 +45,27 @@ Il componente implementa le seguenti funzionalità per garantire l'accessibilit�
       <span className="text">Titoli nei popover</span>
     </div>
     <div>
-      Come si vede dagli esempi presenti in questa pagina, puoi inserire titoli all'interno del popover.
-      Negli esempi usiamo il tag `<h4>` per i titoli, ma è importante che tu scelga il livello di intestazione più appropriato in base alla struttura del contenuto della tua pagina.
+      Puoi inserire un titolo all'interno del popover. Negli esempi in questa pagina viene usato il tag `<h4>`, ma assicurati di scegliere un livello di intestazione adeguato alla struttura semantica della pagina per garantire una corretta gerarchia dei contenuti.
     </div>
   </div>
 </div>
 
 ### Gestione del focus
 
-Il comportamento del focus è delegato all'utilizzatore per garantire massima flessibilità. Solo tu che conosci il contenuto specifico del popover puoi determinare quale elemento debba ricevere il focus e quando.
+Puoi determinare quale elemento debba ricevere il focus e quando.
 
-**Raccomandazioni:**
-
-- Per menu con azioni, usa il componente [Dropdown](/docs/componenti-dropdown--documentazione) che gestisce automaticamente focus e navigazione
-- Per contenuti informativi, gestisci il focus manualmente in base al contesto
-- Quando il popover si chiude, il focus torna automaticamente al trigger
+- Per menu con azioni, usa il componente [Dropdown](/docs/componenti-dropdown--documentazione) che gestisce automaticamente focus e navigazione.
+- Per contenuti informativi, gestisci il focus manualmente in base al contesto.
+- Quando il popover si chiude, il focus torna automaticamente al trigger.
 
 ## Posizione
 
 Il componente supporta 12 posizioni diverse tramite l'attributo `placement`. Usa `top`, `right`, `bottom` o `left` per posizioni centrate, oppure aggiungi `-start` o `-end` per allineamenti specifici.
 
-**Esempi:**
-- `bottom-start`: in basso, allineato a sinistra
-- `top-end`: in alto, allineato a destra
-- `right`: a destra, centrato verticalmente
+Ad esempio:
+- `bottom-start`, allineato in basso a sinistra;
+- `top-end`: allineato in alto a destra;
+- `right`: centrato verticalmente a destra.
 
 Il posizionamento si adatta automaticamente allo spazio disponibile.
 
@@ -76,22 +73,18 @@ Il posizionamento si adatta automaticamente allo spazio disponibile.
 
 ## Titolo con icona e link
 
-Puoi aggiungere un'icona in testa al titolo ed un link in coda al contenuto.
-
-L'icona va inclusa nell'elemento usato come intestazione (ad esempio l'elemento `<h4>` nell'esempio qui sotto) subito prima del vero e proprio titolo.
-
-Il link va inserito dopo il contenuto testuale, con classe `popover-inner-link`.
+Per aggiungere un'icona in testa al titolo e un link in coda al contenuto:
+- includi l'icona nell'elemento usato come intestazione (ad esempio, l'elemento `<h4>` nell'esempio), subito prima del vero e proprio titolo;
+- inserisci il link dopo il contenuto testuale, con classe `popover-inner-link`.
 
 <Canvas of={PopoverStories.ConIconaELink} />
 
 ## Elementi disabilitati
 
-Elementi con l'attributo `disabled` non sono interattivi, il che significa che gli utenti non possono attivare il popover facendo click su di essi.
-Come soluzione ti consigliamo di attivare il popover al passaggio del mouse o al focus tramite tastiera,
-in modo che il popover appaia come feedback visivo immediato per gli utenti in quanto non possono aspettarsi di cliccare su un elemento disabilitato.
+Gli elementi con l'attributo `disabled` non sono interattivi e gli utenti non possono attivare il popover facendo clic su di essi.
+In questi casi, attiva il popover al passaggio del mouse o al focus tramite tastiera per dare feedback visivo immediato per gli utenti. Questo ti permette di specificare il motivo per cui l'elemento è disabilitato, migliorando l'esperienza utente.
 
-Questo ti permette di specificare il motivo per cui l'elemento è disabilitato, migliorando l'esperienza utente.
-Ti consigliamo però di valutare anche l'utilizzo di un [Tooltip](/docs/componenti-tooltip--documentazione) per questo scopo, in quanto più adatto a fornire informazioni rapide e contestuali.
+Valuta anche l'utilizzo di un [Tooltip](/docs/componenti-tooltip--documentazione) per questo scopo, più adatto a fornire informazioni rapide e contestuali.
 
 <Canvas of={PopoverStories.ElementiDisabilitati} />
 
@@ -127,7 +120,7 @@ trigger.addEventListener('blur', (e) => {
 
 ## Attivazione controllata
 
-Impostando l'attributo `controlled`, il popover non gestisce automaticamente l'apertura e la chiusura. L'utilizzatore deve chiamare i metodi `openPopover()`, `closePopover()` o `toggle()` per controllarne lo stato.
+Impostando l'attributo `controlled`, il popover non gestisce automaticamente l'apertura e la chiusura. Per controllarne lo stato, richiama i metodi `openPopover()`, `closePopover()` o `toggle()`.
 
 <Canvas of={PopoverStories.AttivazioneControllata} />
 

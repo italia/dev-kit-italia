@@ -9,7 +9,7 @@ import * as AccordionStories from './it-accordion.stories';
 
 ## Cosa fa
 
-Il componente Accordion permette di espandere e collassare delle sezioni con contenuti molto lunghi e non di principale rilievo per la pagina, raggruppandole in una unica interfaccia. L’intestazione delle sezioni dà una panoramica dei contenuti e permette all’utente di scegliere quali leggere.
+Il componente Accordion permette di espandere e collassare delle sezioni con contenuti molto lunghi e non principali, raggruppandole in una unica interfaccia. L’intestazione delle sezioni dà una panoramica dei contenuti e permette all’utente di scegliere quali leggere.
 
 Il componente Accordion è basato su [Collapse](?path=/docs/componenti-collapse--documentazione).
 
@@ -28,12 +28,12 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 <Canvas of={AccordionStories.EsempioInterattivo} />
 <Controls of={AccordionStories.EsempioInterattivo} />
 
-## Informazioni generali
+## Indicazioni generali
 
 Il componente Accordion è composto da due elementi:
 
-- `it-accordion`: contenitore che raggruppa più elementi richiudibili
-- `it-accordion-item`: singolo elemento richiudibile all'interno dell'accordion
+- `it-accordion`: contenitore che raggruppa più elementi richiudibili;
+- `it-accordion-item`: singolo elemento richiudibile all'interno dell'accordion.
 
 ## Elemento richiudibile
 
@@ -41,7 +41,7 @@ Il componente Accordion è composto da due elementi:
 
 Ogni `it-accordion-item` utilizza due slot distinti per definire intestazione e contenuto:
 
-- `slot="heading"`: **obbligatorio**, il testo da mostrare nell'header dell'elemento.
+- `slot="heading"`: **obbligatorio**, il testo da mostrare nell'header dell'elemento;
 - `slot="content"`: **obbligatorio**, il contenuto da mostrare o nascondere.
 
 Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente `it-accordion-item`. Per vedere come cambia il codice, clicca su **Show code**.
@@ -53,11 +53,11 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 L'Accordion implementa le specifiche ARIA [WAI-ARIA Authoring Practices 1.1 accordion pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/) per garantire un'esperienza accessibile a tutti gli utenti:
 
-- Navigazione da tastiera con tasti freccia per spostarsi tra gli elementi
-- Supporto per `Space` e `Enter` per attivare/disattivare elementi
-- Attributi ARIA appropriati per comunicare lo stato agli screen reader
-- Heading semantici configurabili per una corretta struttura del documento
-- Rispetto delle preferenze di riduzione del movimento definite dall'utente per le animazioni di apertura/chiusura
+- navigazione da tastiera con tasti freccia per spostarsi tra gli elementi;
+- supporto per `Space` e `Enter` per attivare/disattivare elementi;
+- attributi ARIA appropriati per comunicare lo stato agli screen reader;
+- heading semantici configurabili per una corretta struttura del documento;
+- rispetto delle preferenze di riduzione del movimento definite dall'utente per le animazioni di apertura/chiusura.
 
 ## Modalità esclusiva
 
@@ -89,13 +89,13 @@ Per applicare lo sfondo primario agli elementi al passaggio del mouse, imposta l
 
 L'icona di espansione/collasso può essere posizionata a sinistra del testo dell'header.
 
-Utilizzando l'attributo `left-icon` sull'elemento `<it-accordion>`, si ottiene una variante in cui l’icona chevron che indica lo stato di apertura è sostituita da segni meno/più allineati a sinistra del titolo dell’header.
+Impostando l'attributo `left-icon` sull'elemento `<it-accordion>`, puoi ottenere una variante in cui l’icona chevron che indica lo stato di apertura è sostituita da segni meno/più allineati a sinistra del titolo dell’header.
 
 <Canvas of={AccordionStories.IconaASinistra} />
 
 ## Accordion annidati
 
-È possibile annidare accordion all'interno di altri accordion per creare strutture gerarchiche complesse.
+Puoi annidare accordion all'interno di altri accordion per creare strutture gerarchiche complesse.
 
 <div class="callout callout-warning">
 <div class="callout-inner">
@@ -103,7 +103,7 @@ Utilizzando l'attributo `left-icon` sull'elemento `<it-accordion>`, si ottiene u
 <span class="text">Accessibilità e accordion annidati</span>
 </div>
 <p>
-Utilizza questo approccio solo quando strettamente necessario: dal punto di vista dell'accessibilità non si tratta di una soluzione ottimale.
+Usa questo approccio solo quando strettamente necessario: dal punto di vista dell'accessibilità non si tratta di una soluzione ottimale.
 </p>
 </div>
 </div>
@@ -111,9 +111,9 @@ Utilizza questo approccio solo quando strettamente necessario: dal punto di vist
 
 ## Personalizzazione degli stili
 
-Per la personalizzazione degli stili puoi usare i seguenti selettori `::part` dedicati:
+Per personalizzare gli stili, puoi usare i selettori `::part` dedicati:
 
-- `::part(trigger)` - elemento trigger di ogni sezione
-- `::part(content)` - elemento contenitore del corpo di ogni sezione
+- `::part(trigger)` - elemento trigger di ogni sezione;
+- `::part(content)` - elemento contenitore del corpo di ogni sezione.
 
-[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
