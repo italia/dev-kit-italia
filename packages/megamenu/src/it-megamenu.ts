@@ -64,6 +64,7 @@ export class ItMegamenu extends ItDropdown {
         @it-popover-close=${this._onPopoverClose}
         exportparts="focusable, icon, button"
         ?open=${this._popoverOpen}
+        offset="0"
         controlled
       >
         <it-button
@@ -75,7 +76,7 @@ export class ItMegamenu extends ItDropdown {
           size=${ifDefined(this.size)}
           @click=${this._onTriggerClick}
           @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
-          class="dropdown-toggle nav-link px-lg-2 px-xl-3 ${this.active ? 'active' : ''}"
+          class="dropdown-toggle nav-link ${this.active ? 'active' : ''}"
           it-aria-label=${ifDefined(this.itAriaLabel ? this.itAriaLabel : undefined)}
           exportparts="focusable, button"
           it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
@@ -83,7 +84,7 @@ export class ItMegamenu extends ItDropdown {
         >
           ${
             this.alignment.startsWith('left')
-              ? html`<it-icon name="it-expand" class="icon-expand left" size="sm" exportparts="icon"></it-icon>`
+              ? html`<it-icon name="it-expand" class="icon-expand left" size="xs" exportparts="icon"></it-icon>`
               : ''
           }
           ${this.label}
@@ -96,7 +97,7 @@ export class ItMegamenu extends ItDropdown {
                     top: this.alignment.startsWith('top'),
                   })}
                   exportparts="icon"
-                  size="sm"
+                  size="xs"
                 ></it-icon>`
               : ''
           }
@@ -110,7 +111,7 @@ export class ItMegamenu extends ItDropdown {
           aria-labelledby=${this._buttonId}
           role="region"
         >
-          <div class="megamenu megamenu-content pb-5 pt-3 py-lg-0">
+          <div class="megamenu-content">
             <div class="row">
                     ${
                       this._hasDescription
@@ -118,7 +119,7 @@ export class ItMegamenu extends ItDropdown {
                             <div class="col-xs-12 col-lg-4 px-0">
                               <div class="row">
                                 <div class="col-12 it-vertical it-description pb-lg-3">
-                                  <div class="description-content ps-4 ps-sm-5 ms-3">
+                                  <div class="description-content px-4 ps-sm-5 ms-3">
                                     <slot name="description" @slotchange=${this._handleSlotDescriptionChange}></slot>
                                   </div>
                                 </div>

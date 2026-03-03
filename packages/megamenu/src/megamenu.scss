@@ -29,8 +29,6 @@ $utilities: (
 // }
 :host {
   .dropdown-menu {
-    margin-top: -0.75rem;
-
     &,
     * {
       box-sizing: border-box;
@@ -39,6 +37,7 @@ $utilities: (
     --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}spacing-xxs);
     --#{$prefix}dropdown-item-padding-y: var(--#{$prefix}spacing-xxs);
     --#{$prefix}dropdown-spacer: 0;
+    left: 0 !important; //override dello stile definito da floating-ui
     width: 100%;
     background: var(--#{$prefix}megamenu-background-color);
 
@@ -51,6 +50,14 @@ $utilities: (
     .link-list-wrapper ul.link-list {
       display: block;
       column-gap: var(--#{$prefix}spacing-s); /* spazio tra colonne */
+    }
+  }
+
+  it-popover it-button.nav-link {
+    --#{$prefix}label-font-size: var(--#{$prefix}navbar-link-font-size);
+
+    it-icon {
+      line-height: 0;
     }
   }
 }

@@ -50,6 +50,20 @@ export class ItDropdown extends BaseComponent {
     return this.shadowRoot?.getElementById(this._buttonId) ?? null;
   }
 
+  override connectedCallback() {
+    // eslint-disable-next-line wc/guard-super-call
+    super.connectedCallback();
+
+    // Ascolta i click fuori dal componente per chiudere il popover
+    document.addEventListener('click', this._onDocumentClick, true);
+  }
+
+  override disconnectedCallback() {
+    // eslint-disable-next-line wc/guard-super-call
+    super.disconnectedCallback();
+    document.removeEventListener('click', this._onDocumentClick, true);
+  }
+
   protected _onTriggerClick = () => {
     if (this.disabled) return;
     this._popoverOpen = !this._popoverOpen;
@@ -140,6 +154,12 @@ export class ItDropdown extends BaseComponent {
   protected override updated() {
     this._setChildrenProperties();
   }
+
+  private _onDocumentClick = (event: MouseEvent) => {
+    if (this._popoverOpen && !this.contains(event.target as Node)) {
+      this._popoverOpen = false;
+    }
+  };
 
   // https://github.com/primefaces/primeng/issues/14851 for conditional aria controls
   render() {

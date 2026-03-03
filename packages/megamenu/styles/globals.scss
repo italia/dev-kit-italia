@@ -14,17 +14,9 @@
 //   }
 // }
 
-.navbar.has-megamenu .menu-wrapper {
-  .nav-item.megamenu {
-    position: unset;
-
-    it-megamenu {
-      position: unset;
-    }
-  }
-}
-
 it-megamenu {
+  position: unset;
+
   [slot='description'] {
     img {
       display: block;

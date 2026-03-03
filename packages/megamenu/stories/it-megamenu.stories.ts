@@ -65,7 +65,7 @@ export default meta;
 
 export const Base: Story = {
   render: (args) => html`
-    <nav class="navbar navbar-expand-lg has-megamenu" aria-label="Menu principale">
+    <nav class="navbar navbar-expand-lg" aria-label="Menu principale">
       <it-button it-aria-label="Mostra o nascondi il menu" class="custom-navbar-toggler" it-aria-controls="navbar-A">
         <it-icon name="it-burger" color="inverse" size="sm"></it-icon>
       </it-button>
@@ -78,7 +78,7 @@ export const Base: Story = {
         <div class="menu-wrapper justify-content-lg-between">
           <ul class="navbar-nav">
             <!-- megamenu 1 -->
-            <li class="nav-item dropdown megamenu">
+            <li class="nav-item">
               <it-megamenu
                 label=${args.label}
                 ?disabled=${args.disabled}
@@ -161,7 +161,7 @@ export const Base: Story = {
               </it-megamenu>
             </li>
             <!-- megamenu 2 -->
-            <li class="nav-item dropdown megamenu">
+            <li class="nav-item">
               <it-megamenu
                 label="Megamenu 2"
                 variant=${args.variant}
