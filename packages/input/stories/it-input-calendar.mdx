@@ -4,12 +4,12 @@ import * as Stories from './it-input-calendar.stories';
 
 <Meta of={Stories} />
 
-# Input Calendario
+# Datepicker
 
-<description>Campo per selezionare una data all'interno di un calendario</description>
+<description>Campo per selezionare una data all'interno di un calendario o inserirla manualmente.</description>
 
 ## Cosa fa
-Il componente calendario, o datepicker, consente all’utente di selezionare una data specifica, sia digitando manualmente il valore, sia scegliendo il valore da un calendario.
+Il componente Datepicker (`it-input` con `type="date"`), consente all’utente di selezionare una data specifica, sia digitandola manualmente che scegliendola da un calendario.
 
 [Approfondisci come e quando usare il componente Datepicker](https://designers.italia.it/design-system/componenti/datepicker/)
 
@@ -23,29 +23,28 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Indicazioni generali
 
-L’input di tipo calendario è una variante del componente `<it-input>` con l'attributo `type` impostato su `date` (`type="date"`).
+Il componente Datepicker è una variante del componente `<it-input>` con l'attributo `type` impostato su `date` (`type="date"`).
 
-Pertanto, per quanto riguarda:
+Fai riferimento alla [documentazione del componente Input](?path=/docs/componenti-form-input--documentazione) per:
 
-- la **validazione** e la **gestione degli errori**
-- la **gestione degli eventi**
-- i **metodi e le proprietà** accessibili tramite JavaScript
-- il **supporto all’internazionalizzazione (i18n)**
+- la **validazione** e la **gestione degli errori**;
+- la **gestione degli eventi**;
+- i **metodi e le proprietà** accessibili tramite JavaScript;
+- il **supporto all’internazionalizzazione (i18n)**.
 
-è necessario fare riferimento alla [documentazione di it-input](?path=/docs/componenti-form-input--documentazione).
+## Limitare la selezione a un intervallo specifico
+Per limitare la selezione delle date a un intervallo specifico, imposta gli attributi `min` e/o `max` con una stringa nel formato `YYYY-MM-DD`. Non è necessario utilizzare entrambi: puoi impostarne anche solo uno, in base alle necessità.
 
-## Restringere il periodo di validità
-Puoi limitare l’intervallo di date selezionabili impostando gli attributi `min` e/o `max` con una stringa nel formato `YYYY-MM-DD`. Non è necessario utilizzare entrambi: puoi impostarne solo uno se vuoi.
-
-Se non usi una validazione custom, la validazione nativa terrà conto di questi range per validare il valore inserito nel campo.
+Se non usi una validazione personalizzata, la validazione nativa terrà conto di questi range per validare il valore inserito nel campo.
 
 <Canvas of={Stories.MinMax} />
 
 
-## Impostare intervalli di date regolari
-Puoi impostare intervalli di date regolari validi, utilizzando l'attributo `step`.
-Il valore predefinito di `step` è `1` (ogni giorno è selezionabile).
+## Limitare la selezione a intervalli regolari
+Per limitare la selezione delle date a intervalli regolari, modifica il valore dell'attributo `step`. 
 
-Nell'esempio qui sotto, lo step è stato impostato a `7` per permettere solo date a intervalli di 7 giorni (utile per selezionare solo i lunedì, ad esempio).
+Il valore predefinito `1` permette di selezionare ogni giorno, quindi cambialo con un valore diverso da 1 in base all'intervallo che ti serve: `2` per intervalli di 2 giorni, `3` per 3 giorni, ecc.
+
+In questo esempio, `step` è stato impostato a `7` per permettere solo date a intervalli di 7 giorni. Questa impostazione è utile per far selezionare solo uno specifico giorno della settimana, come ad esempio i lunedì.
 
 <Canvas of={Stories.Step} />

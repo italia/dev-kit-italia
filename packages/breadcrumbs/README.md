@@ -10,7 +10,7 @@ npm i @italia/breadcrumbs
 
 ## Usage
 
-```
+```html
 <it-breadcrumbs it-aria-label="Percorso di navigazione">
   <it-breadcrumb-item><a href="#">Home</a></it-breadcrumb-item>
   <it-breadcrumb-item><a href="#">Sezione</a></it-breadcrumb-item>

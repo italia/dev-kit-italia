@@ -50,7 +50,7 @@ const renderTimeInput = (params: any) =>
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Componenti/Form/Input Ora',
+  title: 'Componenti/Form/Timepicker',
   tags: ['autodocs', 'a11y-ok', 'web-component', 'alpha'],
   component: 'it-input',
   args: {
@@ -191,13 +191,17 @@ export const LimitiEStep: Story = {
     docs: {
       description: {
         story: `
-Aggiungendo gli attributi HTML \`min=""\`, \`max=""\` o \`step=""\` all'input, puoi limitare il valore minimo e massimo del campo e decidere un intervallo orario valido.
 
-Questi attributi sono utili solo ai fini della validazione, e non modificano l'interfaccia del selettore.
+Per aggiungere limitazioni ai valori orari selezionabili, usa questi attributi HTML:
 
-Gli attributi \`min=""\`, \`max=""\` accettano valori nel formato HH:MM.
+- \`min=""\`, per limitare il valore minimo;
+- \`max=""\`, per limitare il valore massimo;
+- \`step=""\`, per un intervallo orario valido.
 
-L'attributo \`step=""\` prevede l'inserimento di un intervallo in secondi.
+Gli attributi \`min=""\`, \`max=""\` accettano valori nel formato HH:MM. L'attributo \`step=""\` prevede l'inserimento di un intervallo in secondi.
+
+Questi attributi sono utili solo ai fini della validazione e non modificano l'interfaccia del selettore.
+
 `,
       },
     },
@@ -224,7 +228,7 @@ L'attributo \`step=""\` prevede l'inserimento di un intervallo in secondi.
 //     docs: {
 //       description: {
 //         story: `
-// Per disabilitare un Input Ora, aggiungi l'attributo \`disabled\` al componente \`<it-input>\`.
+// Per disabilitare un timepicker, aggiungi l'attributo \`disabled\` al componente \`<it-input>\`.
 // `,
 //       },
 //     },
@@ -249,7 +253,7 @@ L'attributo \`step=""\` prevede l'inserimento di un intervallo in secondi.
 //     docs: {
 //       description: {
 //         story: `
-// Per rendere un Input Ora \`readonly\`, aggiungi l'attributo \`readonly\` al componente \`<it-input>\`.
+// Per rendere un timepicker read only, aggiungi l'attributo \`readonly\` al componente \`<it-input>\`.
 // `,
 //       },
 //     },

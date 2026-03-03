@@ -615,8 +615,8 @@ Le traduzioni dei nomi degli stati sono gestite automaticamente tramite il [sist
       <div>
         <h4>Presenza personalizzata con slot</h4>
         <p>
-          L'esempio "Presenza personalizzata con slot" mostra come lo stesso componente possa essere adattato a stili o
-          contenuti differenti tramite gli slot, per illustrare la flessibilità dell'approccio.
+          Questo esempio mostra come lo stesso componente possa essere adattato a stili o contenuti differenti tramite
+          gli slot, per illustrare la flessibilità dell'approccio.
         </p>
         <div class="d-flex align-items-center gap-4 flex-wrap">
           <div class="text-center">
@@ -776,8 +776,8 @@ Le traduzioni sono gestite automaticamente tramite il [sistema @italia/i18n](/do
       <div>
         <h4>Status personalizzato con slot</h4>
         <p>
-          L'esempio "Status personalizzato con slot" mostra come lo stesso componente possa essere adattato a stili o
-          contenuti differenti tramite gli slot, per illustrare la flessibilità dell'approccio.
+          Questo esempio mostra come lo stesso componente possa essere adattato a stili o contenuti differenti tramite
+          gli slot, per illustrare la flessibilità dell'approccio.
         </p>
         <div class="d-flex align-items-center gap-4 flex-wrap">
           <div class="text-center">
