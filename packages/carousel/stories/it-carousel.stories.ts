@@ -4,10 +4,10 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 const VARIANTS = ['single', 'columns', 'gallery-sm', 'gallert-lg'] as const;
 
-const renderSimpleCard = (image?: boolean, variant?: string) => {
+const renderSimpleCard = (image?: boolean, variant?: string, index?: string) => {
   if (variant === 'inline')
     return html`<it-card variant="inline">
-      <a slot="title" href="#">Titolo contenuto editoriale</a>
+      <a slot="title" href="#">Titolo contenuto editoriale ${index}</a>
       <span slot="text">
         Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe,
         senza troncamento.
@@ -28,7 +28,7 @@ const renderSimpleCard = (image?: boolean, variant?: string) => {
     </it-card>`;
   return html` <it-card full-height="">
     <a slot="title" href="#">
-      Titolo contenuto video
+      Titolo contenuto video ${index}
       <div class="it-card-title-icon-wrapper">
         <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
       </div>
@@ -37,7 +37,7 @@ const renderSimpleCard = (image?: boolean, variant?: string) => {
       ? html`<figure slot="image" class="figure img-full">
           <img
             src="https://placeholderimage.eu/api/city/800/600"
-            alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+            alt="${index}. Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
           />
         </figure>`
       : nothing}
@@ -60,7 +60,7 @@ const renderSimpleCard = (image?: boolean, variant?: string) => {
 };
 
 const renderSlide = (
-  _content: string,
+  index?: string,
   cardOptions?: { type: 'simpleCard' | 'image' | 'cardWithImage' | 'inline' | 'video' },
 ) => {
   if (cardOptions?.type === 'video') {
@@ -82,9 +82,9 @@ const renderSlide = (
           <div class="img-responsive">
             <div class="img-wrapper">
               <img
-                src="https://placehold.co/480x360/ebebeb/808080/?text=Immagine"
-                title="titolo immagine"
-                alt="descrizione immagine"
+                src="https://www.placeholderimage.eu/api/800/600"
+                title="titolo immagine ${index}"
+                alt="descrizione immagine ${index}"
               />
             </div>
           </div>
@@ -93,9 +93,9 @@ const renderSlide = (
     </it-carousel-slide>`;
   }
   if (cardOptions?.type === 'cardWithImage') {
-    return html`<it-carousel-slide>${renderSimpleCard(true)}</it-carousel-slide>`;
+    return html`<it-carousel-slide>${renderSimpleCard(true, undefined, index)}</it-carousel-slide>`;
   }
-  return html`<it-carousel-slide>${renderSimpleCard(false)}</it-carousel-slide>`;
+  return html`<it-carousel-slide>${renderSimpleCard(false, undefined, index)}</it-carousel-slide>`;
 };
 const renderComponent = (params: any) => html`
   <it-carousel
@@ -104,10 +104,10 @@ const renderComponent = (params: any) => html`
     ?arrows=${params.arrows}
     type=${ifDefined(params.type)}
     config=${ifDefined(params.config ? JSON.stringify(params.config) : undefined)}
-    ><h2 slot="title">Titolo carousel</h2>
-    ${renderSlide('Slide1', params.cardOptions)} ${renderSlide('Slide2', params.cardOptions)}
-    ${renderSlide('Slide3', params.cardOptions)} ${renderSlide('Slide4', params.cardOptions)}
-    ${renderSlide('Slide5', params.cardOptions)} ${renderSlide('Slide6', params.cardOptions)}
+    ><h2 slot="title">${params.title || 'Titolo carousel'}</h2>
+    ${renderSlide('1', params.cardOptions)} ${renderSlide('2', params.cardOptions)}
+    ${renderSlide('3', params.cardOptions)} ${renderSlide('4', params.cardOptions)}
+    ${renderSlide('5', params.cardOptions)} ${renderSlide('6', params.cardOptions)}
   </it-carousel>
 `;
 
@@ -117,11 +117,12 @@ const meta: Meta<any> = {
   component: 'it-carousel',
   args: {
     fullscreen: false,
-    arrows: false,
     variant: 'single',
     type: undefined,
     config: undefined,
     autoplay: false,
+    arrows: false,
+    title: 'Titolo carousel',
   },
   argTypes: {
     fullscreen: {
@@ -148,6 +149,13 @@ const meta: Meta<any> = {
       type: 'string',
       table: { defaultValue: { summary: '-' } },
     },
+    autoplay: {
+      control: 'boolean',
+      description:
+        "Se true, abilita l'autoplay del carousel con modalità \"pause\" (il carousel avanza automaticamente ma parte in pausa, l'utente deve premere play per avviarlo). Viene renderizzato automaticamente un pulsante di toggle play/pause. Per personalizzare l'intervallo o altre opzioni dell'autoplay, usa config.autoplay.",
+      table: { defaultValue: { summary: 'false' } },
+    },
+
     config: {
       control: false,
       description:
@@ -157,11 +165,8 @@ const meta: Meta<any> = {
     cardOptions: {
       table: { disable: true },
     },
-    autoplay: {
-      control: 'boolean',
-      description:
-        "Se true, abilita l'autoplay del carousel con modalità \"pause\" (il carousel avanza automaticamente ma parte in pausa, l'utente deve premere play per avviarlo). Viene renderizzato automaticamente un pulsante di toggle play/pause. Per personalizzare l'intervallo o altre opzioni dell'autoplay, usa config.autoplay.",
-      table: { defaultValue: { summary: 'false' } },
+    title: {
+      table: { disable: true },
     },
   },
 
@@ -290,6 +295,7 @@ export const Fullscreen: Story = {
   },
   render: (args) => renderComponent(args),
 };
+
 export const TipoScorrimento: Story = {
   name: 'Modalità di scorrimento custom del Carousel',
   args: {

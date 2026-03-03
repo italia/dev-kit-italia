@@ -18,6 +18,8 @@ const translation: DefaultTranslation = {
   carousel_select: 'Select a slide to show',
   carousel_slide: 'slide',
   carousel_slideLabel: '%s of %s',
+  carousel_startautoplay: 'Start autoplay',
+  carousel_stopautoplay: 'Stop autoplay',
 };
 
 export default translation;

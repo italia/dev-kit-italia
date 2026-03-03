@@ -4,7 +4,7 @@ import { BaseLocalizedComponent } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
 import { html } from 'lit';
 import { Intersection } from '@splidejs/splide-extension-intersection';
-import { customElement, property, query, queryAssignedElements } from 'lit/decorators.js';
+import { customElement, property, query, queryAssignedElements, state } from 'lit/decorators.js';
 import { type Options, Splide } from '@splidejs/splide';
 import { when } from 'lit/directives/when.js';
 import { CONFIGS, VARIANT_MAP } from './constants.js';
@@ -46,7 +46,7 @@ export class ItCarousel extends BaseLocalizedComponent {
    * Splide movement type. Overrides the variant's default type.
    * - `slide` (default for most variants) — linear slide
    * - `loop`  — infinite loop
-   * - `fade`  — crossfade (perPage must be 1)
+   * - `fade`  — crossfade
    */
   @property({ type: String, attribute: 'type', reflect: true })
   type?: CarouselType;
@@ -60,25 +60,24 @@ export class ItCarousel extends BaseLocalizedComponent {
   @property({ type: Boolean, attribute: 'autoplay', reflect: true })
   autoplay: boolean = false;
 
-  /**
-   * Accessibility role for the carousel wrapper. Should be either `group` or `region`
-   * depending on the context of use. If not provided, region role is set.
-   * If a role is set, an accessible name must be provided via the "title" slot for `region`,
-   * or `aria-label` for `group`. See the documentation for details and examples.
-   */
-  @property({ type: String, attribute: 'it-role' })
-  itRole?: 'group' | 'region';
-
-  @property({ type: String, attribute: 'it-aria-label' }) itAriaLabel: string = '';
-
   @queryAssignedElements({ slot: 'title' })
   titleElements!: HTMLElement[];
+
+  @queryAssignedElements({})
+  mainSlot!: HTMLSlotElement;
 
   @query('div[role="region"]')
   wrapper!: HTMLElement;
 
   @query('.splide__list')
   list!: HTMLElement;
+
+  @state()
+  private _autoplayActive = false;
+
+  private _isInitialized = false;
+
+  private _liveAnnouncerTimeout?: number;
 
   private _splide?: Splide;
 
@@ -90,89 +89,145 @@ export class ItCarousel extends BaseLocalizedComponent {
     this._splide?.Components.Autoplay.play();
   }
 
-  override firstUpdated(_changedProperties: Map<string | number | symbol, unknown>) {
-    super.firstUpdated?.(_changedProperties);
-    const slot = this.shadowRoot!.querySelector('slot:not([name])') as HTMLSlotElement;
-    this._initSplide(slot);
+  // Move slotted elements physically into the shadow DOM list so Splide can find them.
+  // querySelectorAll() never crosses shadow boundaries, so elements must be real
+  // children — not just distributed via <slot>.
+  private _handleSlotChange(e: Event) {
+    if (this._isInitialized) return; // Evita loop quando spostiamo i nodi
+
+    const slot = e.target as HTMLSlotElement;
+    const slides = slot.assignedElements();
+
+    if (slides.length > 0) {
+      this._initSplide(slides);
+    }
   }
 
-  private _initSplide(slot: HTMLSlotElement) {
-    const slides = slot.assignedElements();
-    if (slides.length === 0) return;
+  // override firstUpdated(_changedProperties: Map<string | number | symbol, unknown>) {
+  //   super.firstUpdated?.(_changedProperties);
+  //   const slot = this.shadowRoot!.querySelector('slot:not([name])') as HTMLSlotElement;
+  //   this._slides = slot?.assignedElements();
+  //   // this._initSplide(slot.assignedElements());
+  // }
+
+  private _initSplide(slides?: Element[]) {
+    if (!slides || slides?.length === 0) return;
 
     this._splide?.destroy(true);
 
     // Move slotted elements physically into the shadow DOM list so Splide can find them.
     // querySelectorAll() never crosses shadow boundaries, so elements must be real
     // children — not just distributed via <slot>.
-    slot.remove();
     slides.forEach((el) => {
       el.classList.add('splide__slide');
       this.list.appendChild(el);
     });
+    requestAnimationFrame(() => {
+      if (!this.wrapper) return;
+      const { configKey } = VARIANT_MAP[this.variant];
+      const baseConfig = CONFIGS[configKey];
+      const splideI18n = {
+        prev: this.$t('carousel_prev'),
+        next: this.$t('carousel_next'),
+        first: this.$t('carousel_first'),
+        last: this.$t('carousel_last'),
+        slideX: this.$t('carousel_slideX'),
+        pageX: this.$t('carousel_pageX'),
+        play: this.$t('carousel_play'),
+        pause: this.$t('carousel_pause'),
+        carousel: this.$t('carousel_carousel'),
+        select: this.$t('carousel_select'),
+        slide: this.$t('carousel_slide'),
+        slideLabel: this.$t('carousel_slideLabel'),
+      };
 
-    const { configKey } = VARIANT_MAP[this.variant];
-    const baseConfig = CONFIGS[configKey];
-    const splideI18n = {
-      prev: this.$t('carousel_prev'),
-      next: this.$t('carousel_next'),
-      first: this.$t('carousel_first'),
-      last: this.$t('carousel_last'),
-      slideX: this.$t('carousel_slideX'),
-      pageX: this.$t('carousel_pageX'),
-      play: this.$t('carousel_play'),
-      pause: this.$t('carousel_pause'),
-      carousel: this.$t('carousel_carousel'),
-      select: this.$t('carousel_select'),
-      slide: this.$t('carousel_slide'),
-      slideLabel: this.$t('carousel_slideLabel'),
-    };
-
-    this._splide = new Splide(this.wrapper, {
-      ...baseConfig,
-      ...(this.type ? { type: this.type } : {}),
-      arrows: this.arrows,
-      ...(this.autoplay
-        ? {
-            autoplay: 'pause',
-            intersection: {
-              outView: {
-                autoplay: false,
+      this._splide = new Splide(this.wrapper, {
+        ...baseConfig,
+        ...(this.type ? { type: this.type } : {}),
+        arrows: this.arrows,
+        ...(this.autoplay
+          ? {
+              autoplay: 'pause',
+              intersection: {
+                outView: {
+                  autoplay: false,
+                },
               },
-            },
-          }
-        : {}),
-      i18n: splideI18n,
-      label: this.itAriaLabel || splideI18n.carousel,
-      role: this.itRole || 'region',
-      // !!!! Ensure the carousel container is always announced as a live region for screen readers (depends on sr buffer timing)
-      live: true,
-      ...this.config,
-    });
-    this._splide.mount({ Intersection });
-    this._applyParts();
-    // Set inert on non-visible slides so their focusable children are excluded
-    // from the tab order. Splide sets aria-hidden but that alone isn't enough.
-    this._updateInert();
-    // On `move` (fires BEFORE the transition): pro-actively remove inert from
-    // the destination slide so AT can follow aria-controls and read its content.
-    // On `moved` (fires AFTER): re-sync all slides to the new visibility state.
-    this._splide.on('move', (_newIdx: number, _oldIdx: number, destIdx: number) => {
-      const root = this.shadowRoot;
-      if (!root) return;
-      const destSlide = root.querySelectorAll<HTMLElement>('.splide__slide:not(.is-clone)')[destIdx];
-      destSlide?.removeAttribute('inert');
-    });
-    this._splide.on('moved', () => this._updateInert());
-    // Safeguard: pause any possible playing it-video children when their slide becomes inactive.
-    this._splide.on('inactive', () => {
-      const itvideos = this.list.querySelectorAll('it-video');
-      itvideos.forEach((video) => {
-        const player = (video as any).getPlayer();
-        if (!player) return;
-        if (!player.paused()) player.pause();
+            }
+          : {}),
+        i18n: splideI18n,
+        // label: splideI18n.carousel,
+        // role: 'region',
+        isNavigation: false,
+        ...this.config,
+        live: true,
+      });
+      this._splide.mount({ Intersection });
+      this._applyParts();
+      // Set inert on non-visible slides so their focusable children are excluded
+      // from the tab order. Splide sets aria-hidden but that alone isn't enough.
+      this._updateInert();
+      // On `move` (fires BEFORE the transition): pro-actively remove inert from
+      // the destination slide so AT can follow aria-controls and read its content.
+      // On `moved` (fires AFTER): re-sync all slides to the new visibility state.
+      this._splide.on('move', () => {
+        this._updateInert();
+      });
+      this._splide.on('moved', () => {
+        // 1. Aggiorna immediatamente l'albero di accessibilità del DOM
+        this._updateInert();
+        setTimeout(() => {}, 100);
+      });
+
+      // 2. PRIMA DELLA TRANSIZIONE: Sblocca le slide di destinazione in anticipo!
+      // In questo modo, quando Splide scatenerà l'annuncio live, l'albero accessibile è già pronto.
+
+      // 3. DOPO LA TRANSIZIONE: Nascondi tutto il resto
+      // this._splide.on('moved', () => {
+      //   // if (!this._splide) return;
+
+      //   // this._splide.Components.Slides.forEach((slideComponent) => {
+      //   //   const isVisible = slideComponent.slide.classList.contains('is-visible');
+
+      //   //   // Se la slide non è visibile, o è un clone, segregala
+      //   //   if (!isVisible || slideComponent.isClone) {
+      //   //     slideComponent.slide.setAttribute('inert', '');
+      //   //   } else {
+      //   //     // Safety check per garantire che le visibili siano attive
+      //   //     slideComponent.slide.removeAttribute('inert');
+      //   //   }
+      //   // });
+      //   console.log('Slide changed, updating inert states...');
+      //   this._updateInert();
+      //   setTimeout(() => {}, 10);
+      // });
+
+      // Safeguard: pause any possible playing it-video children when their slide becomes inactive.
+      this._splide.on('inactive', () => {
+        const itvideos = this.list.querySelectorAll('it-video');
+        itvideos.forEach((video) => {
+          const player = (video as any).getPlayer();
+          if (!player) return;
+          if (!player.paused()) player.pause();
+        });
+      });
+      this._splide.on('autoplay:play', () => {
+        this.dispatchEvent(
+          new CustomEvent('it-carousel-play', { bubbles: true, composed: true, detail: { id: this._splide?.root.id } }),
+        );
+      });
+      this._splide.on('autoplay:pause', () => {
+        this.dispatchEvent(
+          new CustomEvent('it-carousel-pause', {
+            bubbles: true,
+            composed: true,
+            detail: { id: this._splide?.root.id },
+          }),
+        );
       });
     });
+    this._isInitialized = true;
+    // await this.updateComplete; // Assicura che il DOM sia aggiornato prima di manipolarlo
   }
 
   /**
@@ -182,16 +237,17 @@ export class ItCarousel extends BaseLocalizedComponent {
    * Clone slides (loop mode) are always inert per splide docs.
    */
   private _updateInert() {
-    const root = this.shadowRoot;
-    if (!root) return;
-    root.querySelectorAll<HTMLElement>('.splide__slide').forEach((slide) => {
-      const visible = slide.classList.contains('is-visible') && !slide.classList.contains('is-clone');
-      if (visible) {
-        slide.removeAttribute('inert');
+    if (!this._splide) return;
+    this._splide.Components.Slides.forEach((slideComponent) => {
+      const isVisible = slideComponent.slide.classList.contains('is-visible');
+      if (!isVisible || slideComponent.isClone) {
+        slideComponent.slide.setAttribute('inert', '');
       } else {
-        slide.setAttribute('inert', '');
+        slideComponent.slide.removeAttribute('inert');
       }
     });
+    console.log('inerted slides updated', new Date().toISOString(), this.shadowRoot!.querySelectorAll('[inert]'));
+    setTimeout(() => {}, 50);
   }
 
   /**
@@ -270,7 +326,7 @@ export class ItCarousel extends BaseLocalizedComponent {
       <div class="splide__track">
         <!-- ShadowDOM boundaries issues require div role="presentation" instead of ul -->
         <div class="splide__list it-carousel-all" role="presentation">
-          <slot>Carousel</slot>
+          <slot @slotchange=${this._handleSlotChange}>Carousel</slot>
         </div>
       </div>
       <div class="splide__progress">

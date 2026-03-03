@@ -24,7 +24,17 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 ...
 
 ## Accessibilità
-...
+Il componente `it-carousel` integra Splide.js e si conforma alle specifiche [W3C Carousel Design Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/). Fai riferimento alla documentazione ufficiale di Splide per una panoramica completa delle [funzionalità di accessibilità](https://splidejs.com/guides/accessibility) offerte dalla libreria.
+
+- Il wrapper principale del componente utilizza role="region", permettendo agli utenti di screen reader di individuare e saltare rapidamente alla sezione.
+- Puoi assegnare un nome accessibile automaticamente: inserendo un elemento di testata (da h2 a h6) nello slot `title`, il componente genera un ID univoco e lo collega al carosello tramite `aria-labelledby`. Se vuoi nascondere la testata visivamente, puoi utilizzare la classe `visually-hidden` sull'elemento di testata.
+- Il componente applica l'attributo inert a tutte le slide non visibili. Questo garantisce che gli utenti che usano la tastiera non finiscano mai su elementi "fantasma" o nascosti.
+- I controlli (frecce e paginazione) sono realizzati con elementi `<button>` nativi. Durante la transizione, il componente rimuove preventivamente le restrizioni di focus dalla slide di destinazione per permettere alle tecnologie assistive di seguirne il contenuto.
+- Se attivi l'autoplay, viene reso disponibile un pulsante di Play/Pausa dedicato. Il componente è configurato in modalità "pause" di default: il movimento non parte automaticamente, e l'animazione di transizione viene disabilitata se l'utente fa hover o mette a fuoco il carosello, o se ha impostato una preferenza per ridurre le animazioni a livello di sistema operativo/browser.
+- Grazie all'estensione [Intersection](https://splidejs.com/extensions/intersection/), il carosello mette in pausa l'autoplay quando esce dal campo visivo dell'utente, risparmiando risorse e riducendo il rumore cognitivo.
+- Il componente mette automaticamente in pausa eventuali elementi `it-video` presenti all'interno di una slide quando questa diventa inattiva, evitando che l'audio continui a riprodursi in sottofondo.
+- Tutte le etichette ARIA (pulsanti "Precedente", "Successivo", "Vai alla slide X") sono localizzate in italiano e inglese, assicurando che lo screen reader annunci i comandi nella lingua corretta dell'utente.
+- Il pulsante di controllo utilizza aria-live="polite" per notificare l'utente del cambio di stato (avvio/arresto) senza interrompere le sue azioni correnti.
 
 ## Varianti
 Il componente Carousel supporta diverse varianti che possono essere selezionate tramite l'attributo `variant`. Ogni variante è progettata per adattarsi a specifici casi d'uso e
@@ -36,26 +46,27 @@ contesti di design. Di seguito sono descritte le varianti disponibili:
 <Canvas of={Stories.VarianteGalleryLG} />
 
 
-## Personalizzazione avanzata
-Per esigenze di personalizzazione avanzata, è possibile utilizzare l'attributo `config` per passare configurazioni specifiche a Splide, la libreria sottostante che gestisce il comportamento
-
-### Frecce di navigazione
+## Frecce di navigazione
 Il componente Carousel include frecce di navigazione per facilitare lo scorrimento tra gli elementi. Le frecce possono essere attivate o disattivate tramite l'attributo `arrows`. Quando le frecce sono attivate, è importante assicurarsi che siano chiaramente visibili e accessibili, soprattutto in contesti con molti elementi o quando la navigazione è essenziale per l'esperienza utente.
 
 <Canvas of={Stories.ConFrecce1} />
 <Canvas of={Stories.ConFrecce2} />
 
-### Fullscreen
+## Fullscreen
 Il componente Carousel può essere visualizzato a schermo intero utilizzando l'attributo `
 fullscreen`. Questa opzione è particolarmente utile per le varianti di galleria, ma può essere applicata a qualsiasi variante per creare un'esperienza immersiva. Quando si utilizza la modalità fullscreen, è importante considerare l'impatto sull'usabilità e sull'accessibilità, assicurandosi che gli elementi di navigazione siano facilmente raggiungibili e che il contenuto sia ben organizzato.
 <Canvas of={Stories.Fullscreen} />
 
-### Modificare il comportamento di scorrimento
+## Modificare il comportamento di scorrimento
 Il comportamento di scorrimento del Carousel può essere personalizzato utilizzando l'attributo `type`, che consente di scegliere tra diverse modalità di scorrimento come "slide", "loop" o "fade". Questa opzione permette di adattare il comportamento del Carousel alle esigenze specifiche del contenuto e del design, offrendo un'esperienza più fluida e coinvolgente per gli utenti. Ad esempio, la modalità "loop" consente di scorrere continuamente attraverso gli elementi, mentre la modalità "fade" offre una transizione più morbida tra gli elementi.
 <Canvas of={Stories.TipoScorrimento} />
 
-### Configurazione avanzata con l'attributo `config`
-L'attributo `config` consente di passare configurazioni specifiche a Splide, la libreria sottostante che gestisce il comportamento del Carousel. Questo permette di personalizzare ulteriormente il comportamento del Carousel, ad esempio modificando la velocità di scorrimento, il numero di elementi visualizzati per pagina, o abilitando funzionalità avanzate come l'autoplay o il loop infinito. Per utilizzare l'attributo `config`, è necessario fornire un oggetto di configurazione che rispetti la struttura richiesta da Splide. Ecco un esempio di come utilizzare l'attributo `config` per personalizzare il comportamento del Carousel:
+## Personalizzazione avanzata attraverso l'attributo `config`
+L'attributo `config` consente di passare configurazioni specifiche a Splide, la libreria sottostante che gestisce il comportamento del Carousel. Questo permette di personalizzare ulteriormente il comportamento del Carousel, ad esempio modificando la velocità di scorrimento, il numero di elementi visualizzati per pagina, o abilitando funzionalità avanzate come l'autoplay o il loop infinito.
+
+Dovrai fornire un oggetto di configurazione che rispetti [le opzioni rese disponibili da Splide](https://splidejs.com/guides/options).
+
+Ecco un esempio di come utilizzare l'attributo `config` per personalizzare il comportamento del Carousel:
 
 ```html
 <it-carousel variant="columns" config="{
@@ -101,9 +112,7 @@ In questo esempio, il Carousel è configurato per visualizzare 2 elementi per pa
     <p>
       Il seguente esempio viene fornito a scopo illustrativo e potrebbe non essere adatto per tutti i contesti o esigenze di accessibilità.
     </p>
-    <p>
-      Ad esempio, l'autoplay potrebbe non essere adatto per tutti gli utenti, in particolare per quelli con disabilità visive o cognitive. È importante considerare attentamente le esigenze degli utenti e testare il comportamento del Carousel con diverse configurazioni per garantire un'esperienza accessibile a tutti.
-    </p>
+
   </div>
 </div>
 <Canvas of={Stories.ConfigurazioneAvanzata} />
