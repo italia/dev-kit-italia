@@ -53,4 +53,15 @@ it-megamenu {
       text-decoration: underline;
     }
   }
+
+  @include media-breakpoint-up(lg) {
+    &[footer-position='right'] {
+      [slot='footer'] {
+        height: 100%;
+        .d-flex {
+          height: 100%;
+        }
+      }
+    }
+  }
 }

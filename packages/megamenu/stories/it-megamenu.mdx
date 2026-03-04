@@ -25,6 +25,13 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Indicazioni generali
 
+Si possono accostare più megamenu nella navbar per dare accesso a sezioni diverse del sito.
+
+Se il pulsante ha la classe `active` è riferito alla sezione corrente.
+
+Se un elemento `<it-dropdown-item>` interno al megamenu ha l'attributo `active`, è riferito alla pagina corrente.
+
+
 Il componente `<it-megamenu>` espone i seguenti slot:
 
 - **(default)**: il contenuto principale, tipicamente uno o più elementi `<it-dropdown-item>`, viene inserito direttamente nel componente ed'è l'area contenente i link principali del megamenu.
@@ -47,3 +54,45 @@ Questo componente comprende di base il supporto per la maggior parte delle inter
 Infine, dovrai inserire un'etichetta per il pulsante di attivazione del menu tramite l'attributo `label`, che verrà letta dagli screen reader.
 In alternativa, puoi omettere l'attributo `label` e aggiungere un attributo `it-aria-label` al componente `<it-dropdown>`.
  */}
+
+## Megamenu completo
+Variante completa per dare ad esempio accesso a una intera sezione di un sito con un’architettura dell’informazione ben strutturata.
+Permette all’utente di comprendere l’organizzazione dei contenuti e di saltare direttamente a pagine foglia.
+
+Permette di includere immagine e testo descrittivo per una introduzione ai contenuti della sezione.
+Può contenere un link **“Esplora la sezione X”** per dare accesso a una copertina della sezione.
+
+<Canvas of={Stories.MegamenuCompleto} />
+
+
+## Megamenu base
+Variante base che può contenere liste di link organizzate su più colonne ed eventuali link correlati come **“Esplora la sezione X”**, **“Esplora tutti i contenuti Y”** o di altro tipo.
+
+<Canvas of={Stories.MegamenuBase} />
+
+## Con link “Esplora la sezione”
+Come nella variante completa, puoi aggiungere un link **“Esplora la sezione X”** come primo link.
+
+Se il link con classe `it-heading-link` ha la classe `active` è riferito alla sezione corrente del sito.
+
+<Canvas of={Stories.MegamenuEsploraSezione} />
+
+## Con link “Esplora tutti”
+Nel caso le voci da mostrare fossero numerose, puoi aggiungere un link **“Esplora tutti i contenuti Y”** che porta a una lista completa.
+
+Se il link con classe `it-footer-link` ha la classe `active` è riferito alla sezione corrente del sito.
+<Canvas of={Stories.MegamenuEsploraTutti} />
+
+
+## Con call to action
+I megamenu possono contenere altri link correlati, che possono avere la funzione di “call to action” rispetto agli altri contenuti del megamenu.
+
+Questi seguono le liste di link, e puoi posizionarli in basso o in una colonna destra tramite l'attributo `footer-position`.
+
+### Con call to action in basso
+Usa l'attributo `footer-position="bottom"` per posizionare i link correlati in basso, sotto la liste di link principali.
+<Canvas of={Stories.MegamenuCTABottom} />
+
+### Con call to action a destra
+Usa l'attributo `footer-position="right"` per posizionare i link correlati in una colonna a destra, accanto alla lista di link principali.
+<Canvas of={Stories.MegamenuCTARight} />
