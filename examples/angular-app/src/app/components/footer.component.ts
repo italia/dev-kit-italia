@@ -168,7 +168,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
         </div>
       </div>
     </footer>
-    <it-back-to-top it-aria-label="Torna su"></it-back-to-top>
+    <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
   `,
   styles: [],
 })
