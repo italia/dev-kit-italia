@@ -1,7 +1,7 @@
 /* eslint-disable lit-a11y/list */
 import { BaseComponent, AriaKeyboardListController } from '@italia/globals';
 import { html, LitElement, nothing } from 'lit';
-import { /* customElement,*/ property, query, state } from 'lit/decorators.js';
+import { /* customElement, */ property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import styles from './dropdown.scss';
 import { type ItDropdownItem } from './it-dropdown-item.js';
@@ -44,7 +44,7 @@ export class ItDropdown extends BaseComponent {
 
   @query('slot:not([name])') private _slotEl!: HTMLSlotElement;
 
-  private _ariaNav = new AriaKeyboardListController(this);
+  protected _ariaNav = new AriaKeyboardListController(this);
 
   private get _triggerEl(): HTMLElement | null {
     return this.shadowRoot?.getElementById(this._buttonId) ?? null;
@@ -96,13 +96,7 @@ export class ItDropdown extends BaseComponent {
     }
   }
 
-  protected _onKeyDown = (event: KeyboardEvent) => {
-    const items = this._menuItems.map((item) => item.getFocusableElement()).filter((el) => !!el);
-    const active = this.getActiveElement<ItDropdownItem>();
-    if (!active) return;
-
-    const currentIndex = items.indexOf(active);
-
+  protected _onTabKeyDown = (event: KeyboardEvent, items: Element[], active: ItDropdownItem, currentIndex: number) => {
     if (event.key === 'Tab') {
       if (event.shiftKey && currentIndex === -1) {
         this._popoverOpen = false;
@@ -120,6 +114,18 @@ export class ItDropdown extends BaseComponent {
         }
       }
     }
+  };
+
+  protected _onKeyDown = (event: KeyboardEvent) => {
+    const items = this._menuItems.map((item) => item.getFocusableElement()).filter((el) => !!el);
+    const active = this.getActiveElement<ItDropdownItem>();
+
+    if (!active) return;
+
+    const currentIndex = items.indexOf(active);
+
+    // handle Tab keydown separately to anable overriding this bhv from consumer components that extend this.
+    this._onTabKeyDown(event, items, active, currentIndex);
 
     const handle = () => {
       this._ariaNav.setConfig({

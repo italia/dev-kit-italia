@@ -1,6 +1,7 @@
 /* eslint-disable lit-a11y/list */
 
 import { ItDropdown } from '@italia/dropdown/it-dropdown.js';
+import { type ItDropdownItem } from '@italia/dropdown/it-dropdown-item.js';
 import { html, nothing } from 'lit';
 import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -11,6 +12,8 @@ import styles from './megamenu.scss';
 @customElement('it-megamenu')
 export class ItMegamenu extends ItDropdown {
   static override styles = [ItDropdown.styles, styles];
+
+  private static readonly FOCUSABLE_SELECTORS = 'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
   @state() private _hasDescription = false;
 
@@ -61,6 +64,60 @@ export class ItMegamenu extends ItDropdown {
     // Verifichiamo se l'array degli elementi assegnati è popolato
     this._hasFooter = this._footerItems.length > 0;
   }
+
+  private _getMegamenuFocusableItems(): Element[] {
+    // Costruisce la lista completa: header items + menu items + footer items
+    const allItems: Element[] = [];
+
+    // Aggiungi elementi focusabili dall'header
+    for (const headerItem of this._headerItems) {
+      if (headerItem.matches(ItMegamenu.FOCUSABLE_SELECTORS)) {
+        allItems.push(headerItem);
+      }
+      allItems.push(...Array.from(headerItem.querySelectorAll(ItMegamenu.FOCUSABLE_SELECTORS)));
+    }
+
+    // Aggiungi menu items
+    const menuItems = this._menuItems.map((item) => item.getFocusableElement()).filter((el) => !!el);
+    allItems.push(...menuItems);
+
+    // Aggiungi elementi focusabili dal footer
+    for (const footerItem of this._footerItems) {
+      if (footerItem.matches(ItMegamenu.FOCUSABLE_SELECTORS)) {
+        allItems.push(footerItem);
+      }
+      allItems.push(...Array.from(footerItem.querySelectorAll(ItMegamenu.FOCUSABLE_SELECTORS)));
+    }
+
+    return allItems;
+  }
+
+  override _onTabKeyDown = (event: KeyboardEvent, items: Element[], active: HTMLElement) => {
+    if (event.key === 'Tab') {
+      // Usa la lista completa che include tutti gli elementi focusabili di header, i dropdown-item, e quelli di footer
+      const _items = this._getMegamenuFocusableItems();
+
+      const _currentIndex = _items.indexOf(active);
+
+      if (event.shiftKey && _currentIndex === -1) {
+        // Shift+Tab dal primo elemento della lista completa: chiudi
+        this._popoverOpen = false;
+      }
+      if (!event.shiftKey && _currentIndex === _items.length - 1) {
+        // Tab dall'ultimo elemento della lista completa: chiudi
+        this._popoverOpen = false;
+      }
+      if (active.ariaDisabled) {
+        // as of the day of this implementation, tabbing through disabled items doesn't work natively
+        // maybe because of some web components behavior
+        if (event.shiftKey) {
+          this._ariaNav.handleKeyDown(new KeyboardEvent('keydown', { ...event, key: 'ArrowUp' }));
+        } else {
+          this._ariaNav.handleKeyDown(new KeyboardEvent('keydown', { ...event, key: 'ArrowDown' }));
+        }
+      }
+    }
+  };
 
   override render() {
     return html`
@@ -137,10 +194,18 @@ export class ItMegamenu extends ItDropdown {
                 ${this._hasHeader
                   ? html`
                       <div class="it-heading-link-wrapper" part="megamenu-header">
-                        <slot name="header" @slotchange=${this._onSlotHeaderChange}></slot>
+                        <slot
+                          name="header"
+                          @slotchange=${this._onSlotHeaderChange}
+                          @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
+                        ></slot>
                       </div>
                     `
-                  : html`<slot name="header" @slotchange=${this._onSlotHeaderChange}></slot>`}
+                  : html`<slot
+                      name="header"
+                      @slotchange=${this._onSlotHeaderChange}
+                      @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
+                    ></slot>`}
 
                 <!-- LINKS -->
                 ${this._menuItems.length > 0
@@ -177,10 +242,18 @@ export class ItMegamenu extends ItDropdown {
                         })}"
                         part="megamenu-footer"
                       >
-                        <slot name="footer" @slotchange=${this._onSlotFooterChange}></slot>
+                        <slot
+                          name="footer"
+                          @slotchange=${this._onSlotFooterChange}
+                          @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
+                        ></slot>
                       </div>
                     `
-                  : html`<slot name="footer" @slotchange=${this._onSlotFooterChange}></slot>`}
+                  : html`<slot
+                      name="footer"
+                      @slotchange=${this._onSlotFooterChange}
+                      @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
+                    ></slot>`}
               </div>
             </div>
           </div>
