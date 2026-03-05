@@ -50,6 +50,7 @@
         <a href="#/sidebar">Sidebar</a>
         <a href="#/skiplinks">Skiplinks</a>
         <a href="#/sticky">Sticky</a>
+        <a href="#/tables">Tables</a>
         <a href="#/video">Video</a>
       </nav>
     </div>
