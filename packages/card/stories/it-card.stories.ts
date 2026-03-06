@@ -1,12 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { CARD_BORDER_COLORS, CARD_VARIANTS, type CardBorderColor, type CardVariant } from '../src/types.js';
+import {
+  CARD_BORDER_COLORS,
+  CARD_HEADING_LEVELS,
+  CARD_VARIANTS,
+  type CardHeadingLevel,
+  type CardBorderColor,
+  type CardVariant,
+} from '../src/types.js';
 
 interface CardProps {
   fullHeight?: boolean;
   variant: CardVariant;
   borderTop?: CardBorderColor;
+  headingLevel?: CardHeadingLevel;
 }
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
@@ -42,6 +50,14 @@ const meta = {
       options: CARD_BORDER_COLORS,
       description: 'Aggiunge un bordo superiore colorato alla card per evidenziarla',
     },
+    headingLevel: {
+      name: 'heading-level',
+      control: 'select',
+      type: 'string',
+      options: CARD_HEADING_LEVELS,
+      description:
+        'Livello di heading da usare per il titolo della card. Se non specificato, viene usato h3. Vedi la sezione "Accessibilità" della documentazione per maggiori dettagli.',
+    },
     // scrollLimit: {
     //   name: 'scroll-limit',
     //   control: 'number',
@@ -65,6 +81,15 @@ const meta = {
 export default meta;
 type Story = StoryObj<CardProps>;
 
+function disabledControls(except?: (keyof (typeof meta)['argTypes'])[]) {
+  return Object.keys(meta.argTypes).reduce<Record<string, { table: { disable: true } }>>((acc, key) => {
+    if (!except?.includes(key as keyof (typeof meta)['argTypes'])) {
+      acc[key] = { table: { disable: true } };
+    }
+    return acc;
+  }, {});
+}
+
 export const EsempioInterattivo: Story = {
   name: 'Esempio interattivo',
   tags: ['!dev'],
@@ -83,7 +108,12 @@ export const EsempioInterattivo: Story = {
     `,
   ],
   render: (args) => html`
-    <it-card variant=${ifDefined(args.variant)} ?full-height=${args.fullHeight} border-top=${ifDefined(args.borderTop)}>
+    <it-card
+      variant=${ifDefined(args.variant)}
+      ?full-height=${args.fullHeight}
+      border-top=${ifDefined(args.borderTop)}
+      heading-level=${ifDefined(args.headingLevel)}
+    >
       <a slot="title" href="#">Titolo del contenuto</a>
       <figure slot="image" class="figure img-full">
         <img
@@ -103,6 +133,7 @@ export const EsempioInterattivo: Story = {
 export const EditorialiStandard: Story = {
   name: 'Card editoriali standard',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card full-height>
       <a slot="title" href="#">Titolo del contenuto</a>
@@ -164,6 +195,7 @@ export const EditorialiStandard: Story = {
 export const EditorialiFeatured: Story = {
   name: 'Card editoriali featured',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card full-height>
       <a slot="title" href="#">
@@ -247,6 +279,7 @@ export const EditorialiFeatured: Story = {
 export const CardInline: Story = {
   name: 'Card inline',
   decorators: [(story) => html` <div style="display:flex;flex-direction:column;gap:24px;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card variant="inline">
       <a slot="title" href="#">Titolo contenuto editoriale</a>
@@ -295,6 +328,7 @@ export const CardInline: Story = {
 export const CardInlineMini: Story = {
   name: 'Card inline mini',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card variant="inline-mini">
       <a slot="title" href="#">Titolo contenuto editoriale</a>
@@ -335,6 +369,7 @@ export const CardInlineMini: Story = {
 export const Eventi: Story = {
   name: 'Card per eventi',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card full-height>
       <a slot="title" href="#">Titolo evento</a>
@@ -405,6 +440,7 @@ export const Eventi: Story = {
 export const EventiInline: Story = {
   name: 'Card per eventi inline',
   decorators: [(story) => html` <div style="display:flex;flex-direction:column;gap:24px;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card variant="inline">
       <a slot="title" href="#">Titolo evento</a>
@@ -466,6 +502,7 @@ export const EventiInline: Story = {
 export const Media: Story = {
   name: 'Card per media',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card full-height>
       <a slot="title" href="#">
@@ -572,6 +609,7 @@ export const Media: Story = {
 export const MediaVideoInline: Story = {
   name: 'Card per media video inline',
   decorators: [(story) => html` <div style="display:flex;flex-direction:column;gap:24px;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card variant="inline">
       <a slot="title" href="#">
@@ -630,6 +668,7 @@ export const MediaVideoInline: Story = {
 export const ServiziEBandi: Story = {
   name: 'Card per servizi e bandi',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card full-height>
       <a slot="title" href="#">Titolo servizio</a>
@@ -680,6 +719,7 @@ export const ServiziEBandi: Story = {
 export const DocumentiEAllegati: Story = {
   name: 'Card per documenti e allegati',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card>
       <a slot="title" href="#">
@@ -744,6 +784,7 @@ export const DocumentiEAllegati: Story = {
 export const ProfiliPersonali: Story = {
   name: 'Card per profili personali',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card full-height variant="profile">
       <a slot="title" href="#">Nome Personale</a>
@@ -816,6 +857,7 @@ export const ProfiliPersonali: Story = {
 export const Luoghi: Story = {
   name: 'Card per luoghi',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card full-height variant="location">
       <a slot="title" href="#">Toponimo o luogo</a>
@@ -897,6 +939,7 @@ export const Luoghi: Story = {
 export const ListeDiContenutiAffini: Story = {
   name: 'Card con liste di contenuti affini',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card full-height ratio="21x9">
       <a slot="title" href="#">Argomento Y</a>
@@ -953,6 +996,7 @@ export const ListeDiContenutiAffini: Story = {
 export const Banner: Story = {
   name: 'Card banner',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card variant="banner">
       <a slot="title" href="#">Titolo del contenuto</a>
@@ -965,6 +1009,7 @@ export const Banner: Story = {
 export const BannerConAzione: Story = {
   name: 'Card banner con azione',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card variant="banner">
       <span slot="title">Titolo del contenuto</span>
@@ -991,6 +1036,7 @@ export const BannerConAzione: Story = {
 export const BannerInline: Story = {
   name: 'Card banner inline',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card variant="inline-banner">
       <a slot="title" href="#">Titolo del contenuto</a>
@@ -1023,6 +1069,7 @@ export const BordiEOmbre: Story = {
   decorators: [
     (story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr 1fr;">${story()}</div> `,
   ],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card>
       <a slot="title" href="#">Titolo h3</a>
@@ -1073,6 +1120,7 @@ export const BordiEOmbre: Story = {
 
 export const Immagini: Story = {
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card ratio="21x9">
       <a slot="title" href="#">Titolo del contenuto</a>
@@ -1127,6 +1175,7 @@ export const Immagini: Story = {
 export const AltezzaDelleCard: Story = {
   name: 'Altezza delle card',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card full-height>
       <a slot="title" href="#">Titolo del contenuto</a>
@@ -1157,6 +1206,7 @@ export const AltezzaDelleCard: Story = {
 export const PulsantiMobile: Story = {
   name: 'Pulsanti a tutta larghezza su mobile',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card>
       <a slot="title" href="#">Titolo dell'evento</a>

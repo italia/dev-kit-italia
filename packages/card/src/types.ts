@@ -22,3 +22,6 @@ export type CardImageRatio = (typeof CARD_IMAGE_RATIOS)[number];
 
 export const CARD_SHADOWS = ['none', 'sm', 'md', 'lg'] as const;
 export type CardShadow = (typeof CARD_SHADOWS)[number];
+
+export const CARD_HEADING_LEVELS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
+export type CardHeadingLevel = (typeof CARD_HEADING_LEVELS)[number];

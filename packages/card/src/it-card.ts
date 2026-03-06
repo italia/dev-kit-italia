@@ -1,15 +1,18 @@
 import { BaseComponent } from '@italia/globals';
 import { html, PropertyValues } from 'lit';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
+import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import {
   CARD_BORDER_COLORS,
   CARD_IMAGE_RATIOS,
   CARD_SHADOWS,
   CARD_VARIANTS,
+  CARD_HEADING_LEVELS,
   CardShadow,
   type CardBorderColor,
   type CardImageRatio,
   type CardVariant,
+  type CardHeadingLevel,
 } from './types.js';
 import styles from './card.scss';
 
@@ -34,6 +37,9 @@ export class ItCard extends BaseComponent {
 
   @property({ type: String })
   border?: '0';
+
+  @property({ type: String, attribute: 'heading-level' })
+  headingLevel: CardHeadingLevel = 'h3';
 
   @queryAssignedElements({ slot: 'title' })
   _titleElements!: HTMLElement[];
@@ -88,6 +94,18 @@ export class ItCard extends BaseComponent {
     if (this.border && this.border !== '0') {
       this.logger.warn(`Invalid border value, falling back to default. Expected: '0' or undefined`);
     }
+    if (this.headingLevel && !CARD_HEADING_LEVELS.includes(this.headingLevel)) {
+      this.logger.warn(
+        `Invalid heading-level value, falling back to default. Expected one of: ${CARD_HEADING_LEVELS.join(', ')}`,
+      );
+    }
+  }
+
+  protected getHeadingLevel(): CardHeadingLevel {
+    if (CARD_HEADING_LEVELS.includes(this.headingLevel)) {
+      return this.headingLevel;
+    }
+    return 'h3';
   }
 
   protected getRatio(): CardImageRatio {
@@ -159,13 +177,24 @@ export class ItCard extends BaseComponent {
         this.variant === 'inline-mini-reverse' ||
         this.variant === 'profile' ||
         this.variant === 'location',
+      h3:
+        this.headingLevel !== 'h3' &&
+        !(
+          this.variant === 'inline-mini' ||
+          this.variant === 'inline-mini-reverse' ||
+          this.variant === 'profile' ||
+          this.variant === 'location'
+        ),
     });
 
-    // TODO custom h3 tag
+    const headingTag = unsafeStatic(this.getHeadingLevel());
+
     const cardTitle = html`
-      <h3 class="${titleClasses}">
-        <slot name="title"></slot>
-      </h3>
+      ${staticHtml`
+        <${headingTag} class="${titleClasses}">
+          <slot name="title"></slot>
+        </${headingTag}>
+      `}
     `;
 
     const cardImage = this.getImageTemplate();
