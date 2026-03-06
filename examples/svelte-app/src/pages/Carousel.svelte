@@ -1,5 +1,6 @@
 <script>
   const slides = Array.from({ length: 6 });
+  const advancedConfig = '{"type":"loop","autoplay":"pause","interval":3000,"pauseOnHover":true,"resetProgress":false,"perPage":2,"arrows":true,"gap":16,"padding":{"left":8,"right":8},"breakpoints":{"560":{"perPage":1,"gap":0,"padding":{"left":24,"right":24},"arrows":false},"768":{"perPage":2,"gap":0,"padding":{"left":0,"right":0},"arrows":false},"992":{"perPage":3,"gap":0,"padding":{"left":0,"right":0},"arrows":false}}}';
 </script>
 
 <h1>Carousel</h1>
@@ -143,7 +144,7 @@
 
 <section class="my-5">
   <h2>Configurazione avanzata</h2>
-  <it-carousel variant="columns" config='{"type":"loop","autoplay":"pause","interval":3000,"pauseOnHover":true,"resetProgress":false,"perPage":2,"arrows":true,"gap":16,"padding":{"left":8,"right":8},"breakpoints":{"560":{"perPage":1,"gap":0,"padding":{"left":24,"right":24},"arrows":false},"768":{"perPage":2,"gap":0,"padding":{"left":0,"right":0},"arrows":false},"992":{"perPage":3,"gap":0,"padding":{"left":0,"right":0},"arrows":false}}}'>
+  <it-carousel variant="columns" config={advancedConfig}>
     <h2 slot="title">Titolo carousel</h2>
     {#each slides as _, i}
       <it-carousel-slide>
@@ -159,14 +160,4 @@
   </it-carousel>
 </section>
 
-<section class="my-5">
-  <h2>Video</h2>
-  <it-carousel variant="single" arrows fullscreen>
-    <h2 slot="title">Titolo carousel</h2>
-    {#each slides as _, i}
-      <it-carousel-slide>
-        <it-video src="https://vjs.zencdn.net/v/oceans.webm" poster="" type="video/mp4" lang="it" track="[]"></it-video>
-      </it-carousel-slide>
-    {/each}
-  </it-carousel>
-</section>
+

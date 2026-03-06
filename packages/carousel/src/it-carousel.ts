@@ -103,13 +103,6 @@ export class ItCarousel extends BaseLocalizedComponent {
     }
   }
 
-  // override firstUpdated(_changedProperties: Map<string | number | symbol, unknown>) {
-  //   super.firstUpdated?.(_changedProperties);
-  //   const slot = this.shadowRoot!.querySelector('slot:not([name])') as HTMLSlotElement;
-  //   this._slides = slot?.assignedElements();
-  //   // this._initSplide(slot.assignedElements());
-  // }
-
   private _initSplide(slides?: Element[]) {
     if (!slides || slides?.length === 0) return;
 
@@ -179,29 +172,6 @@ export class ItCarousel extends BaseLocalizedComponent {
         setTimeout(() => {}, 100);
       });
 
-      // 2. PRIMA DELLA TRANSIZIONE: Sblocca le slide di destinazione in anticipo!
-      // In questo modo, quando Splide scatenerà l'annuncio live, l'albero accessibile è già pronto.
-
-      // 3. DOPO LA TRANSIZIONE: Nascondi tutto il resto
-      // this._splide.on('moved', () => {
-      //   // if (!this._splide) return;
-
-      //   // this._splide.Components.Slides.forEach((slideComponent) => {
-      //   //   const isVisible = slideComponent.slide.classList.contains('is-visible');
-
-      //   //   // Se la slide non è visibile, o è un clone, segregala
-      //   //   if (!isVisible || slideComponent.isClone) {
-      //   //     slideComponent.slide.setAttribute('inert', '');
-      //   //   } else {
-      //   //     // Safety check per garantire che le visibili siano attive
-      //   //     slideComponent.slide.removeAttribute('inert');
-      //   //   }
-      //   // });
-      //   console.log('Slide changed, updating inert states...');
-      //   this._updateInert();
-      //   setTimeout(() => {}, 10);
-      // });
-
       // Safeguard: pause any possible playing it-video children when their slide becomes inactive.
       this._splide.on('inactive', () => {
         const itvideos = this.list.querySelectorAll('it-video');
@@ -227,7 +197,6 @@ export class ItCarousel extends BaseLocalizedComponent {
       });
     });
     this._isInitialized = true;
-    // await this.updateComplete; // Assicura che il DOM sia aggiornato prima di manipolarlo
   }
 
   /**
@@ -246,7 +215,6 @@ export class ItCarousel extends BaseLocalizedComponent {
         slideComponent.slide.removeAttribute('inert');
       }
     });
-    console.log('inerted slides updated', new Date().toISOString(), this.shadowRoot!.querySelectorAll('[inert]'));
     setTimeout(() => {}, 50);
   }
 
@@ -324,9 +292,8 @@ export class ItCarousel extends BaseLocalizedComponent {
         </div>
       </div>
       <div class="splide__track">
-        <!-- ShadowDOM boundaries issues require div role="presentation" instead of ul -->
-        <div class="splide__list it-carousel-all" role="presentation">
-          <slot @slotchange=${this._handleSlotChange}>Carousel</slot>
+        <div class="splide__list it-carousel-all">
+          <slot @slotchange=${this._handleSlotChange}></slot>
         </div>
       </div>
       <div class="splide__progress">

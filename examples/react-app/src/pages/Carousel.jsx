@@ -106,10 +106,6 @@ const ImageSlide = () => (
   </div>
 );
 
-const VideoSlide = () => (
-  <it-video src="https://vjs.zencdn.net/v/oceans.webm" poster="" type="video/mp4" lang="it" track="[]"></it-video>
-);
-
 const Carousel = () => (
   <>
     <h1>Carousel</h1>
@@ -225,17 +221,6 @@ const Carousel = () => (
       </it-carousel>
     </section>
 
-    <section className="my-5">
-      <h2>Video</h2>
-      <it-carousel variant="single" arrows fullscreen>
-        <h2 slot="title">Titolo carousel</h2>
-        {slides.map((_, i) => (
-          <it-carousel-slide key={i}>
-            <VideoSlide />
-          </it-carousel-slide>
-        ))}
-      </it-carousel>
-    </section>
   </>
 );
 

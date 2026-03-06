@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 /// <reference types="mocha" />
 
 import { expect, fixture, html, aTimeout, elementUpdated } from '@open-wc/testing';
@@ -170,6 +171,7 @@ describe('it-carousel', () => {
 
     it('gallery variants always include it-full-carousel regardless of fullscreen prop', async () => {
       for (const variant of ['gallery-sm', 'gallery-lg'] as const) {
+        // eslint-disable-next-line no-await-in-loop
         const el = await fixture<ItCarousel>(html`<it-carousel variant=${variant}></it-carousel>`);
         const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
         expect(cls).to.include('it-full-carousel', `${variant} should always have it-full-carousel`);

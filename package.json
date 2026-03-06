@@ -28,7 +28,7 @@
     "test": "turbo run test --concurrency 1",
     "storybook:build": "pnpm build && storybook build",
     "storybook:deploy": "pnpm dlx gh-pages -d storybook-static -m 'chore: update documentation [ci skip]' --nojekyll",
-    "storybook": "storybook dev -p 6006 --host 0.0.0.0",
+    "storybook": "storybook dev -p 6006",
     "reinstall": "pnpm clean && pnpm install && pnpm build"
   },
   "devDependencies": {

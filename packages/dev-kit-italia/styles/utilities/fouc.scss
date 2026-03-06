@@ -185,6 +185,12 @@ $it-components: (
 
     padding: 1rem,
   ),
+  'it-carousel': (
+    height: auto,
+    width: 100%,
+    // Check the Heads up! section in the documentation // https://sass-lang.com/documentation/modules/list/#slash
+    aspect-ratio: list.slash(16, 9),
+  ),
 );
 
 @each $tag, $params in $it-components {

@@ -141,13 +141,4 @@
     </it-carousel>
   </section>
 
-  <section class="my-5">
-    <h2>Video</h2>
-    <it-carousel variant="single" arrows fullscreen>
-      <h2 slot="title">Titolo carousel</h2>
-      <it-carousel-slide v-for="i in 6" :key="i">
-        <it-video src="https://vjs.zencdn.net/v/oceans.webm" poster="" type="video/mp4" lang="it" track="[]"></it-video>
-      </it-carousel-slide>
-    </it-carousel>
-  </section>
 </template>

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import i18nIT from '../src/locales/it.js';
 
 const VARIANTS = ['single', 'columns', 'gallery-sm', 'gallert-lg'] as const;
 
@@ -126,38 +127,38 @@ const meta: Meta<any> = {
   },
   argTypes: {
     fullscreen: {
-      control: 'boolean',
+      control: { disable: true },
       description: 'Se true, il carousel occupa tutta la larghezza disponibile.',
       table: { defaultValue: { summary: 'false' } },
     },
     arrows: {
-      control: 'boolean',
+      control: { disable: true },
       description: 'Se true, mostra le frecce di navigazione del carousel.',
       table: { defaultValue: { summary: 'false' } },
     },
     variant: {
-      control: 'select',
+      control: { disable: true },
       description: 'Variante di layout del carousel.',
       options: VARIANTS,
       type: 'string',
       table: { defaultValue: { summary: 'single' } },
     },
     type: {
-      control: 'select',
+      control: { disable: true },
       description: 'Tipo di scorrimento del carousel. Se non specificato, viene usato il default della variante.',
       options: ['slide', 'loop', 'fade'],
       type: 'string',
       table: { defaultValue: { summary: '-' } },
     },
     autoplay: {
-      control: 'boolean',
+      control: { disable: true },
       description:
         "Se true, abilita l'autoplay del carousel con modalità \"pause\" (il carousel avanza automaticamente ma parte in pausa, l'utente deve premere play per avviarlo). Viene renderizzato automaticamente un pulsante di toggle play/pause. Per personalizzare l'intervallo o altre opzioni dell'autoplay, usa config.autoplay.",
       table: { defaultValue: { summary: 'false' } },
     },
 
     config: {
-      control: false,
+      control: { disable: true },
       description:
         'Oggetto di configurazione avanzata da passare a Splide. Consulta la documentazione del componente Carousel e quella di Splide v4.x per conoscere le opzioni disponibili.',
       table: { defaultValue: { summary: '-' } },
@@ -177,6 +178,7 @@ const meta: Meta<any> = {
       },
     },
     layout: 'padded',
+    controls: { disable: true },
     a11y: {
       config: {
         rules: [
@@ -262,7 +264,7 @@ export const VarianteGalleryLG: Story = {
   render: (args) => renderComponent(args),
 };
 export const ConFrecce1: Story = {
-  name: 'Con frecce di navigazione1',
+  name: 'Con frecce di navigazione',
   args: {
     variant: 'columns',
     arrows: true,
@@ -270,19 +272,13 @@ export const ConFrecce1: Story = {
       type: 'cardWithImage',
     },
   },
-  render: (args) => renderComponent(args),
+  render: (args) => html`
+    <div style="display: flex; flex-direction: column; gap: 4rem;">
+      ${renderComponent(args)} ${renderComponent({ ...args, variant: 'single' })}
+    </div>
+  `,
 };
-export const ConFrecce2: Story = {
-  name: 'Con frecce di navigazione2',
-  args: {
-    variant: 'single',
-    arrows: true,
-    cardOptions: {
-      type: 'cardWithImage',
-    },
-  },
-  render: (args) => renderComponent(args),
-};
+
 export const Fullscreen: Story = {
   name: 'Fullscreen',
   args: {
@@ -304,8 +300,14 @@ export const TipoScorrimento: Story = {
     cardOptions: {
       type: 'cardWithImage',
     },
+    title: 'Carousel con scorrimento in loop',
   },
-  render: (args) => renderComponent(args),
+  render: (args) => html`
+    <div style="display: flex; flex-direction: column; gap: 4rem;">
+      ${renderComponent(args)} ${renderComponent({ ...args, type: 'fade', title: 'Carousel con scorrimento fade' })}
+      ${renderComponent({ ...args, type: 'slide', title: 'Carousel con scorrimento slide' })}
+    </div>
+  `,
 };
 
 export const ConfigurazioneAvanzata: Story = {
@@ -352,6 +354,7 @@ export const ConfigurazioneAvanzata: Story = {
 
 export const VideoTest: Story = {
   name: 'VideoTest',
+  tags: ['!dev'],
   args: {
     variant: 'single',
     arrows: true,
@@ -361,4 +364,24 @@ export const VideoTest: Story = {
     },
   },
   render: (args) => renderComponent(args),
+};
+
+export const I18n: Story = {
+  name: 'i18n',
+  tags: ['!dev'],
+  render: () => html`<div class="hide-preview"></div>`,
+  parameters: {
+    viewMode: 'docs',
+    docs: {
+      description: {
+        story: `
+Per questo componente sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+
+\`\`\`js
+const translation = ${JSON.stringify(i18nIT, null, 2)}
+\`\`\`
+`,
+      },
+    },
+  },
 };
