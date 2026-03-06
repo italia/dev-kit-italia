@@ -45,7 +45,7 @@ $utilities: (
     --#{$prefix}dropdown-spacer: 0;
     left: 0 !important; //override dello stile definito da floating-ui
     width: 100%;
-    background: var(--#{$prefix}megamenu-background-color);
+    background: var(--#{$prefix}megamenu-background-color, #fff);
 
     // Extra padding on large devices only
     @include media-breakpoint-up(lg) {

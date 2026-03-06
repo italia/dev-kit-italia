@@ -12,7 +12,7 @@ import Back from './components/Back.vue';
 import Badge from './components/Badge.vue';
 import Button from './components/Button.vue';
 import Checkbox from './components/Checkbox.vue';
-import Callout from './pages/Callout.vue';
+import Callout from './components/Callout.vue';
 import Chip from './components/Chip.vue';
 import Collapse from './components/Collapse.vue';
 import Dropdown from './components/Dropdown.vue';
@@ -22,6 +22,7 @@ import Hero from './components/Hero.vue';
 import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
 import List from './components/List.vue';
+import Megamenu from './components/Megamenu.vue';
 import Modal from './components/Modal.vue';
 import Navscroll from './components/Navscroll.vue';
 import Overlay from './components/Overlay.vue';
@@ -59,6 +60,7 @@ const routes = [
   { path: '/icon', name: 'Icon', component: Icon },
   { path: '/input', name: 'Input', component: Input },
   { path: '/list', name: 'List', component: List },
+  { path: '/megamenu', name: 'Megamenu', component: Megamenu },
   { path: '/modal', name: 'Modal', component: Modal },
   { path: '/navscroll', name: 'Navscroll', component: Navscroll },
   { path: '/overlay', name: 'Overlay', component: Overlay },

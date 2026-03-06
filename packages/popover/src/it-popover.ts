@@ -19,6 +19,8 @@ export class ItPopover extends BaseComponent {
 
   @property({ type: Number }) offset: number = 12;
 
+  @property({ type: Boolean, attribute: 'no-flip' }) noFlip: boolean = false;
+
   @query('slot[name="trigger"]') private _triggerSlot!: HTMLSlotElement;
 
   @query('slot[name="content"]') private _contentSlot!: HTMLSlotElement;
@@ -121,12 +123,13 @@ export class ItPopover extends BaseComponent {
 
     this._createArrow();
 
+    console.log('flippable', this.noFlip);
     this._cleanup = autoUpdate(this._triggerElement, this._contentElement, () => {
       computePosition(this._triggerElement, this._contentElement, {
         placement: this.placement,
         middleware: [
           offset(this.offset),
-          flip(),
+          flip({ mainAxis: !this.noFlip, crossAxis: !this.noFlip }),
           shift({ padding: 8 }),
           size({
             apply({ rects, elements }) {

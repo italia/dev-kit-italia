@@ -118,6 +118,20 @@ export class ItMegamenu extends ItDropdown {
     }
   };
 
+  private _onClickItems = (event: MouseEvent) => {
+    // Chiudi il popover quando viene cliccato su uno degli elementi focusabili
+    const target = event.target as HTMLElement;
+    const focusableItems = [...this._getMegamenuFocusableItems(), ...this._menuItems];
+
+    // Controlla se il click è su uno degli elementi focusabili del megamenu
+    for (const focusableItem of focusableItems) {
+      if (focusableItem === target || focusableItem.contains(target)) {
+        this._popoverOpen = false;
+        break;
+      }
+    }
+  };
+
   override render() {
     return html`
       <it-popover
@@ -128,6 +142,7 @@ export class ItMegamenu extends ItDropdown {
         ?open=${this._popoverOpen}
         offset="0"
         controlled
+        ?no-flip=${true}
       >
         <it-button
           id=${this._buttonId}
@@ -197,6 +212,7 @@ export class ItMegamenu extends ItDropdown {
                           name="header"
                           @slotchange=${this._onSlotHeaderChange}
                           @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
+                          @click=${{ handleEvent: this._onClickItems, capture: true }}
                         ></slot>
                       </div>
                     `
@@ -204,6 +220,7 @@ export class ItMegamenu extends ItDropdown {
                       name="header"
                       @slotchange=${this._onSlotHeaderChange}
                       @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
+                      @click=${{ handleEvent: this._onClickItems, capture: true }}
                     ></slot>`}
 
                 <!-- LINKS -->
@@ -215,6 +232,7 @@ export class ItMegamenu extends ItDropdown {
                             id=${this._menuId}
                             class="link-list"
                             @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
+                            @click=${{ handleEvent: this._onClickItems, capture: true }}
                             style="columns: ${this.columns};"
                           >
                             <slot @slotchange=${this._setChildrenProperties}></slot>
@@ -245,6 +263,7 @@ export class ItMegamenu extends ItDropdown {
                           name="footer"
                           @slotchange=${this._onSlotFooterChange}
                           @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
+                          @click=${{ handleEvent: this._onClickItems, capture: true }}
                         ></slot>
                       </div>
                     `
@@ -252,6 +271,7 @@ export class ItMegamenu extends ItDropdown {
                       name="footer"
                       @slotchange=${this._onSlotFooterChange}
                       @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
+                      @click=${{ handleEvent: this._onClickItems, capture: true }}
                     ></slot>`}
               </div>
             </div>

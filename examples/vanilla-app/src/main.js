@@ -23,8 +23,46 @@ const en = {
 registerTranslation(it);
 registerTranslation(en);
 
+const componentsMenuItems = [
+  { label: 'Accordion', href: '/src/accordion' },
+  { label: 'Affix', href: '/src/affix' },
+  { label: 'Alert', href: '/src/alert' },
+  { label: 'Autocomplete', href: '/src/autocomplete' },
+  { label: 'Avatar', href: '/src/avatar' },
+  { label: 'Back to Top', href: '/src/back-to-top' },
+  { label: 'Back', href: '/src/back' },
+  { label: 'Badge', href: '/src/badge' },
+  { label: 'Breadcrumbs', href: '/src/breadcrumbs' },
+  { label: 'Button', href: '/src/button' },
+  { label: 'Callout', href: '/src/callout' },
+  { label: 'Checkbox', href: '/src/checkbox' },
+  { label: 'Chip', href: '/src/chip' },
+  { label: 'Collapse', href: '/src/collapse ' },
+  { label: 'Dropdown', href: '/src/dropdown' },
+  { label: 'Form', href: '/src/form' },
+  { label: 'Forward', href: '/src/forward' },
+  { label: 'Hero', href: '/src/hero' },
+  { label: 'Icon', href: '/src/icon' },
+  { label: 'Input', href: '/src/input' },
+  { label: 'List', href: '/src/list' },
+  { label: 'Megamenu', href: '/src/megamenu' },
+  { label: 'Modal', href: '/src/modal' },
+  { label: 'Navscroll', href: '/src/navscroll' },
+  { label: 'Overlay', href: '/src/overlay' },
+  { label: 'Pagination', href: '/src/pagination.html' },
+  { label: 'Popover', href: '/src/popover' },
+  { label: 'Radio', href: '/src/radio-examples.html' },
+  { label: 'Rating', href: '/src/rating.html' },
+  { label: 'Section', href: '/src/section' },
+  { label: 'Select', href: '/src/select' },
+  { label: 'Sidebar', href: '/src/sidebar' },
+  { label: 'Skiplinks', href: '/src/skiplinks' },
+  { label: 'Sticky', href: '/src/sticky' },
+  { label: 'Video', href: '/src/video' },
+];
+
 document.querySelector('#app-header').innerHTML = `
-  <div class="app-header">
+  <div class="app-header bg-primary">
     <div class="container">
       <a href="https://vite.dev" target="_blank">
         <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -32,109 +70,31 @@ document.querySelector('#app-header').innerHTML = `
       <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
         <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
       </a>
-      <nav class="app-nav">
-        <a href="/src/accordion">
-          Accordion
-        </a>
-        <a href="/src/affix">
-          Affix
-        </a>
-        <a href="/src/alert">
-          Alert
-        </a>
-        <a href="/src/autocomplete">
-          Autocomplete
-        </a>
-        <a href="/src/avatar">
-          Avatar
-        </a>
-        <a href="/src/back-to-top">
-          Back to Top
-        </a>
-        <a href="/src/back">
-          Back
-        </a>
-        <a href="/src/badge">
-          Badge
-        </a>
-        <a href="/src/breadcrumbs">
-          Breadcrumbs
-        </a>
-        <a href="/src/button">
-          Button
-        </a>
-        <a href="/src/callout">
-          Callout
-        </a>
-        <a href="/src/checkbox">
-          Checkbox
-        </a>
-        <a href="/src/chip">
-          Chip
-        </a>
-        <a href="/src/collapse">
-          Collapse
-        </a>
-        <a href="/src/dropdown">
-          Dropdown
-        </a>
-        <a href="/src/form">
-          Form
-        </a>
-        <a href="/src/forward">
-          Forward
-        </a>
-        <a href="/src/hero">
-          Hero
-        </a>
-        <a href="/src/icon">
-          Icon
-        </a>
-        <a href="/src/input">
-          Input
-        </a>
-        <a href="/src/list">
-          List
-        </a>
-        <a href="/src/modal">
-          Modal
-        </a>
-        <a href="/src/navscroll">
-          Navscroll
-        </a>
-        <a href="/src/overlay">
-          Overlay
-        </a>
-        <a href="/src/pagination.html">
-          Pagination
-        </a>
-        <a href="/src/popover">
-          Popover
-        </a>
-        <a href="/src/radio-examples.html">
-          Radio
-        </a>
-        <a href="/src/rating.html">
-          Rating
-        </a>
-        <a href="/src/section">
-          Section
-        </a>
-        <a href="/src/select">
-          Select
-        </a>
-        <a href="/src/sidebar">
-          Sidebar
-        </a>
-        <a href="/src/skiplinks">
-          Skiplinks
-        </a>
-        <a href="/src/sticky">
-          Sticky
-        </a>
-        <a href="/src/video">
-          Video
-        </a>
+      <nav class="navbar navbar-expand-lg" aria-label="Menu principale">
+        <div class="navbar-collapsable" id="navbar-A" tabindex="-1">
+          <div class="menu-wrapper justify-content-lg-between">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <it-megamenu label="Componenti" columns="6">
+                  <!-- DROPDOWN LINKS ITEMS -->
+                  ${componentsMenuItems
+                    .map(
+                      (item) => `<it-dropdown-item href="${item.href}">
+                                <it-icon
+                                  slot="prefix"
+                                  name="it-arrow-right-triangle"
+                                  size="sm"
+                                  color="primary"
+                                ></it-icon>
+                                ${item.label}
+                              </it-dropdown-item>`,
+                    )
+                    .join('')}
+                  </it-megamenu>
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
     </div>
   </div>

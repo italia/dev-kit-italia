@@ -24,11 +24,10 @@ body {
 
 .app-header {
   text-align: center;
-  border-bottom: 1px solid currentColor;
   margin-bottom: 2rem;
 }
 
-.app-nav{
+.app-nav {
   display: flex;
   justify-content: center;
   gap: 1rem;
