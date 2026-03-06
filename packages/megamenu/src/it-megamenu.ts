@@ -170,7 +170,7 @@ export class ItMegamenu extends ItDropdown {
           aria-labelledby=${this._buttonId}
           role="region"
         >
-          <div class="megamenu-content">
+          <div class="megamenu-content" part="megamenu-content">
             <div class="row">
               ${this._hasDescription
                 ? html`
