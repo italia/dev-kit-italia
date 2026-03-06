@@ -625,7 +625,7 @@ export const LinkListMultilineIcona: Story = {
           </a>
         </li>
         <li>
-          <span class="divider" role="separator"></span>
+          <span class="divider"></span>
         </li>
         <li>
           <a class="list-item icon-right" href="#">
@@ -636,7 +636,9 @@ export const LinkListMultilineIcona: Story = {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit…</p>
           </a>
         </li>
-        <li><span class="divider"></span></li>
+        <li>
+          <span class="divider"></span>
+        </li>
         <li>
           <a class="list-item disabled icon-right" href="#" aria-disabled="true">
             <span class="list-item-title-icon-wrapper">

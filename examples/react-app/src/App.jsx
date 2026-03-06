@@ -36,7 +36,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
-      <it-back-to-top it-aria-label="Torna su"></it-back-to-top>
+      <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
     </BrowserRouter>
   );
 }

@@ -1,0 +1,1030 @@
+<template>
+  <div class="container my-5">
+    <h1 class="mb-4">Tables</h1>
+
+    <!-- Tabella base -->
+    <section class="mb-5">
+      <h2>Tabella base</h2>
+      <p>
+        Usando il markup di base della tabella, ecco come appaiono le tabelle che utilizzano la classe
+        <code>.table</code> in Bootstrap Italia.
+      </p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mario</td>
+            <td>Verdi</td>
+            <td>mario.verdi</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Francesco</td>
+            <td>Bianchi</td>
+            <td>francesco.bianchi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Tabella responsive -->
+    <section class="mb-5">
+      <h2>Tabella responsive</h2>
+      <p>
+        Le tabelle responsive consentono di scorrere le tabelle orizzontalmente con facilità. Usa
+        <code>.table-responsive</code> per tabelle con scorrimento orizzontale.
+      </p>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tabella responsive sm -->
+    <section class="mb-5">
+      <h2>Tabella responsive sm</h2>
+      <p>Usa <code>.table-responsive-sm</code> per rendere la tabella scorrevole su schermi più piccoli di 576px.</p>
+      <div class="table-responsive-sm">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tabella responsive md -->
+    <section class="mb-5">
+      <h2>Tabella responsive md</h2>
+      <p>Usa <code>.table-responsive-md</code> per rendere la tabella scorrevole su schermi più piccoli di 768px.</p>
+      <div class="table-responsive-md">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tabella responsive lg -->
+    <section class="mb-5">
+      <h2>Tabella responsive lg</h2>
+      <p>Usa <code>.table-responsive-lg</code> per rendere la tabella scorrevole su schermi più piccoli di 992px.</p>
+      <div class="table-responsive-lg">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tabella responsive xl -->
+    <section class="mb-5">
+      <h2>Tabella responsive xl</h2>
+      <p>Usa <code>.table-responsive-xl</code> per rendere la tabella scorrevole su schermi più piccoli di 1200px.</p>
+      <div class="table-responsive-xl">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tabella responsive xxl -->
+    <section class="mb-5">
+      <h2>Tabella responsive xxl</h2>
+      <p>Usa <code>.table-responsive-xxl</code> per rendere la tabella scorrevole su schermi più piccoli di 1400px.</p>
+      <div class="table-responsive-xxl">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+              <th scope="col">Intestazione</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+              <td>Cella</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tabelle colorate -->
+    <section class="mb-5">
+      <h2>Tabelle colorate</h2>
+      <p>Utilizza le classi contestuali per colorare l'intera tabella.</p>
+
+      <table class="table table-primary mb-3">
+        <tbody>
+          <tr>
+            <th scope="row">Default</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-secondary mb-3">
+        <tbody>
+          <tr>
+            <th scope="row">Secondary</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-success mb-3">
+        <tbody>
+          <tr>
+            <th scope="row">Success</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-danger mb-3">
+        <tbody>
+          <tr>
+            <th scope="row">Danger</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-warning">
+        <tbody>
+          <tr>
+            <th scope="row">Warning</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Righe colorate -->
+    <section class="mb-5">
+      <h2>Righe colorate</h2>
+      <p>Utilizza le classi contestuali per colorare singole righe della tabella.</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Classe</th>
+            <th scope="col">Intestazione</th>
+            <th scope="col">Intestazione</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Default</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+          <tr class="table-primary">
+            <th scope="row">Primary</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+          <tr class="table-secondary">
+            <th scope="row">Secondary</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+          <tr class="table-success">
+            <th scope="row">Success</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Danger</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+          <tr class="table-warning">
+            <th scope="row">Warning</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+          <tr class="table-info">
+            <th scope="row">Info</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+          <tr class="table-light">
+            <th scope="row">Light</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+          <tr class="table-dark">
+            <th scope="row">Dark</th>
+            <td>Cella</td>
+            <td>Cella</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Tabella striata -->
+    <section class="mb-5">
+      <h2>Tabella striata</h2>
+      <p>
+        Usa <code>.table-striped</code> per aggiungere delle striature zebrate ad ogni riga della tabella contenute in
+        <code>&lt;tbody&gt;</code>.
+      </p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mario</td>
+            <td>Verdi</td>
+            <td>mario.verdi</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Francesco</td>
+            <td>Bianchi</td>
+            <td>francesco.bianchi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Tabella hover -->
+    <section class="mb-5">
+      <h2>Tabella con hover</h2>
+      <p>
+        Aggiungi <code>.table-hover</code> per abilitare lo stato hover sulle righe della tabella contenute in
+        <code>&lt;tbody&gt;</code>.
+      </p>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mario</td>
+            <td>Verdi</td>
+            <td>mario.verdi</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Francesco</td>
+            <td>Bianchi</td>
+            <td>francesco.bianchi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Tabella attiva -->
+    <section class="mb-5">
+      <h2>Tabella attiva</h2>
+      <p>Evidenzia una riga o cella della tabella aggiungendo la classe <code>.table-active</code>.</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-active">
+            <th scope="row">1</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Francesco</td>
+            <td>Bianchi</td>
+            <td>francesco.bianchi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td class="table-active" colspan="2">Mario Verdi</td>
+            <td>mario.verdi</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Tabella con bordi -->
+    <section class="mb-5">
+      <h2>Tabella con bordi</h2>
+      <p>Aggiungi <code>.table-bordered</code> per avere i bordi a tutti i lati della tabella e su tutte le celle.</p>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Francesco</td>
+            <td>Bianchi</td>
+            <td>francesco.bianchi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Mario</td>
+            <td>Verdi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Tabella bordi primary -->
+    <section class="mb-5">
+      <h2>Tabella bordi colorati</h2>
+      <p>
+        Aggiungi classi di utilità per i bordi, come <code>.border-primary</code>, per colorare i bordi della tabella.
+      </p>
+      <table class="table table-bordered border-primary">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mario</td>
+            <td>Verdi</td>
+            <td>mario.verdi</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Francesco</td>
+            <td>Bianchi</td>
+            <td>francesco.bianchi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Tabella senza bordi -->
+    <section class="mb-5">
+      <h2>Tabella senza bordi</h2>
+      <p>Aggiungi la classe <code>.table-borderless</code> per una tabella senza bordi.</p>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Francesco</td>
+            <td>Bianchi</td>
+            <td>francesco.bianchi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Mario</td>
+            <td>Verdi</td>
+            <td>mario.verdi</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Tabella compatta -->
+    <section class="mb-5">
+      <h2>Tabella compatta</h2>
+      <p>Aggiungi <code>.table-sm</code> per rendere le tabelle più compatte dimezzando il cell padding.</p>
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Francesco</td>
+            <td>Bianchi</td>
+            <td>francesco.bianchi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Mario</td>
+            <td>Verdi</td>
+            <td>mario.verdi</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Allineamento verticale -->
+    <section class="mb-5">
+      <h2>Allineamento verticale</h2>
+      <p>
+        Le celle della tabella di <code>&lt;thead&gt;</code> sono sempre allineate verticalmente in basso. Le celle
+        della tabella in <code>&lt;tbody&gt;</code> ereditano il loro allineamento da <code>&lt;table&gt;</code> e sono
+        allineate in alto per impostazione predefinita. Usa le classi di allineamento verticale per ri-allineare dove
+        necessario.
+      </p>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead>
+            <tr>
+              <th scope="col" class="w-25">Intestazione 1</th>
+              <th scope="col" class="w-25">Intestazione 2</th>
+              <th scope="col" class="w-25">Intestazione 3</th>
+              <th scope="col" class="w-25">Intestazione 4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Questa cella eredita <code>vertical-align: middle;</code> dalla tabella</td>
+              <td>Questa cella eredita <code>vertical-align: middle;</code> dalla tabella</td>
+              <td>Questa cella eredita <code>vertical-align: middle;</code> dalla tabella</td>
+              <td>
+                This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate
+                how the vertical alignment works in the preceding cells.
+              </td>
+            </tr>
+            <tr class="align-bottom">
+              <td>Questa cella eredita <code>vertical-align: bottom;</code> dalla riga</td>
+              <td>Questa cella eredita <code>vertical-align: bottom;</code> dalla riga</td>
+              <td>Questa cella eredita <code>vertical-align: bottom;</code> dalla riga</td>
+              <td>
+                This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate
+                how the vertical alignment works in the preceding cells.
+              </td>
+            </tr>
+            <tr>
+              <td>Questa cella eredita <code>vertical-align: middle;</code> dalla tabella</td>
+              <td>Questa cella eredita <code>vertical-align: middle;</code> dalla tabella</td>
+              <td class="align-top">This cell is aligned to the top.</td>
+              <td>
+                This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate
+                how the vertical alignment works in the preceding cells.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Annidamento -->
+    <section class="mb-5">
+      <h2>Annidamento</h2>
+      <p>Gli stili dei bordi, gli stili attivi e le varianti di tabella non sono ereditati dalle tabelle nidificate.</p>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <table class="table mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col">Header</th>
+                    <th scope="col">Header</th>
+                    <th scope="col">Header</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">A</th>
+                    <td>Dato A</td>
+                    <td>Dato B</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">B</th>
+                    <td>Dato C</td>
+                    <td>Dato D</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">C</th>
+                    <td>Dato E</td>
+                    <td>Dato F</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Mario</td>
+            <td>Verdi</td>
+            <td>mario.verdi</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Intestazione light -->
+    <section class="mb-5">
+      <h2>Intestazione light</h2>
+      <p>
+        Come per le tabelle utilizza le classi varianti come <code>.table-light</code> per modificare l'aspetto di
+        <code>&lt;thead&gt;</code>.
+      </p>
+      <table class="table">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mario</td>
+            <td>Verdi</td>
+            <td>mario.verdi</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Francesco</td>
+            <td>Bianchi</td>
+            <td>francesco.bianchi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Intestazione dark -->
+    <section class="mb-5">
+      <h2>Intestazione dark</h2>
+      <p>
+        Utilizza <code>.table-dark</code> per modificare l'aspetto di <code>&lt;thead&gt;</code> con uno stile scuro.
+      </p>
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mario</td>
+            <td>Verdi</td>
+            <td>mario.verdi</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Francesco</td>
+            <td>Bianchi</td>
+            <td>francesco.bianchi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Tabella con footer -->
+    <section class="mb-5">
+      <h2>Tabella con footer</h2>
+      <p>Le tabelle possono avere un footer utilizzando l'elemento <code>&lt;tfoot&gt;</code>.</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>mario.verdi</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Mario</td>
+            <td>Verdi</td>
+            <td>francesco.bianchi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">Footer</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- Tabella con caption -->
+    <section class="mb-5">
+      <h2>Tabella con caption</h2>
+      <p>
+        Un <code>&lt;caption&gt;</code> funziona come un'intestazione per una tabella. Aiuta gli utenti con screen
+        reader a trovare una tabella e capire di cosa si tratta e decidere se vogliono leggerla.
+      </p>
+      <table class="table">
+        <caption>
+          Lista di utenti
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mario</td>
+            <td>Verdi</td>
+            <td>mario.verdi</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Francesco</td>
+            <td>Bianchi</td>
+            <td>francesco.bianchi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Tabella con caption-top -->
+    <section class="mb-5">
+      <h2>Tabella con caption in alto</h2>
+      <p>
+        Per renderizzare la <code>&lt;caption&gt;</code> in cima alla tabella utilizza la classe
+        <code>.caption-top</code>.
+      </p>
+      <table class="table caption-top">
+        <caption>
+          Lista di utenti
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mario</td>
+            <td>Verdi</td>
+            <td>mario.verdi</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Francesco</td>
+            <td>Bianchi</td>
+            <td>francesco.bianchi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Alessandro</td>
+            <td>Rossi</td>
+            <td>alessandro.rossi</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</template>

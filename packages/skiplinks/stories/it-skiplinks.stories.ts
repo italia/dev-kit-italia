@@ -96,7 +96,7 @@ export const PochiLink: Story = {
     docs: {
       description: {
         story: `
-Quando sono presenti uno o due link, il componente evita di generare un elemento \`<nav>\` al fine di ridurre la complessità di lettura per gli screen reader.
+Quando sono presenti uno o due link, il componente non genera un elemento \`<nav>\` per ridurre la complessità di lettura per i lettori di schermo.
 `,
       },
     },

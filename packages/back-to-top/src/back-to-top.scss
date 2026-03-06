@@ -19,6 +19,8 @@ button.back-to-top {
   &.back-to-top-border {
     border: 2px solid #fff;
   }
+
+  --#{$prefix}icon-size-m: calc(var(--#{$prefix}backtop-sizing) / 2);
 }
 
 @import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
