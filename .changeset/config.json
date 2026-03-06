@@ -16,6 +16,7 @@
       "@italia/breadcrumbs",
       "@italia/button",
       "@italia/callout",
+      "@italia/carousel",
       "@italia/card",
       "@italia/checkbox",
       "@italia/chip",
