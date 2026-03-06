@@ -5,9 +5,11 @@ import {
   CARD_BORDER_COLORS,
   CARD_HEADING_LEVELS,
   CARD_VARIANTS,
+  CARD_SHADOWS,
   type CardHeadingLevel,
   type CardBorderColor,
   type CardVariant,
+  type CardShadow,
 } from '../src/types.js';
 
 interface CardProps {
@@ -15,6 +17,8 @@ interface CardProps {
   variant: CardVariant;
   borderTop?: CardBorderColor;
   headingLevel?: CardHeadingLevel;
+  shadow?: CardShadow;
+  border?: '0';
 }
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
@@ -57,6 +61,18 @@ const meta = {
       options: CARD_HEADING_LEVELS,
       description:
         'Livello di heading da usare per il titolo della card. Se non specificato, viene usato h3. Vedi la sezione "Accessibilità" della documentazione per maggiori dettagli.',
+    },
+    shadow: {
+      control: 'select',
+      type: 'string',
+      options: CARD_SHADOWS,
+      description: "Modifica l'ombra della card.",
+    },
+    border: {
+      control: 'select',
+      type: 'string',
+      options: [undefined, '0'],
+      description: 'Imposta il valore 0 per rimuovere il bordo della card.',
     },
     // scrollLimit: {
     //   name: 'scroll-limit',
@@ -113,6 +129,8 @@ export const EsempioInterattivo: Story = {
       ?full-height=${args.fullHeight}
       border-top=${ifDefined(args.borderTop)}
       heading-level=${ifDefined(args.headingLevel)}
+      shadow=${ifDefined(args.shadow)}
+      border=${ifDefined(args.border)}
     >
       <a slot="title" href="#">Titolo del contenuto</a>
       <figure slot="image" class="figure img-full">
@@ -1215,7 +1233,8 @@ export const PulsantiMobile: Story = {
         Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe,
         senza troncamento.
       </span>
-      <div slot="footer" class="d-grid gap-2 d-md-block">
+      <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+      <div slot="actions" class="d-grid gap-2 d-md-block">
         <a href="#" class="btn btn-outline-secondary">
           Prenota
           <span class="visually-hidden">per Titolo dell'evento</span>
