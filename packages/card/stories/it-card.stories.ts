@@ -1243,3 +1243,209 @@ export const PulsantiMobile: Story = {
     </it-card>
   `,
 };
+
+export const ListeCardNumerose: Story = {
+  name: 'Liste per gruppi numerosi di card',
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <ul class="it-card-list row" aria-label="Risultati della ricerca: ">
+      <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+        <it-card>
+          <a slot="title" href="#">Primo risultato</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </li>
+      <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+        <it-card>
+          <a slot="title" href="#">Secondo risultato</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </li>
+      <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+        <it-card>
+          <a slot="title" href="#">Terzo risultato</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </li>
+      <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+        <it-card>
+          <a slot="title" href="#">Quarto risultato</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </li>
+      <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+        <it-card>
+          <a slot="title" href="#">Quinto risultato</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </li>
+      <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+        <it-card>
+          <a slot="title" href="#">Sesto risultato</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </li>
+    </ul>
+  `,
+};
+
+export const ClassiDedicate: Story = {
+  name: 'Uso di classi dedicate (per piccoli gruppi)',
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <div class="it-card-group">
+      <it-card>
+        <a slot="title" href="#">Titolo della prima card</a>
+        <span slot="text"> Questo è un testo breve che riassume il contenuto della pagina di destinazione. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Titolo della seconda card</a>
+        <span slot="text"> Questo è un testo breve che riassume il contenuto della pagina di destinazione. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Titolo della terza card</a>
+        <span slot="text"> Questo è un testo breve che riassume il contenuto della pagina di destinazione. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Titolo della quarta card</a>
+        <span slot="text"> Questo è un testo breve che riassume il contenuto della pagina di destinazione. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+    </div>
+  `,
+};
+
+export const ClassiDedicateColonne: Story = {
+  name: 'Numero di colonne specifiche',
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <div class="it-card-group it-card-group-2-cols">
+      <it-card>
+        <a slot="title" href="#">Card in due colonne</a>
+        <span slot="text"> Questo gruppo mostra sempre due colonne su viewport medie e grandi. </span>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Card in due colonne</a>
+        <span slot="text"> Questo gruppo mostra sempre due colonne su viewport medie e grandi. </span>
+      </it-card>
+    </div>
+  `,
+};
+
+export const ClassiDedicateCentrate: Story = {
+  name: 'Centrate orizzontalmente',
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <div class="it-card-group it-card-group-center">
+      <it-card>
+        <a slot="title" href="#">Card centrata</a>
+        <span slot="text"> Questo gruppo ha le card centrate nella pagina. </span>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Card centrata</a>
+        <span slot="text"> Questo gruppo ha le card centrate nella pagina. </span>
+      </it-card>
+    </div>
+  `,
+};
+
+export const ClassiDedicateContainer: Story = {
+  name: 'Uso rispetto al contenitore (sperimentale)',
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <div class="it-card-group it-card-group-container-aware">
+      <it-card>
+        <a slot="title" href="#">Card con Container Queries</a>
+        <span slot="text"> Questa card si adatta alla dimensione del suo contenitore, non della viewport. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Card con Container Queries</a>
+        <span slot="text"> Questa card si adatta alla dimensione del suo contenitore, non della viewport. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Card con Container Queries</a>
+        <span slot="text"> Questa card si adatta alla dimensione del suo contenitore, non della viewport. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Card con Container Queries</a>
+        <span slot="text"> Questa card si adatta alla dimensione del suo contenitore, non della viewport. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+    </div>
+  `,
+};
+
+export const ClassiDedicateConfrontoColonne: Story = {
+  name: 'Confronto in colonne diverse',
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <div class="row">
+      <div class="col-12 col-lg-8 mb-4">
+        <div class="p-3 bg-light">
+          <div class="it-card-group it-card-group-container-aware">
+            <it-card>
+              <a slot="title" href="#">Card in colonna larga</a>
+              <span slot="text"> In questa colonna larga, le card si distribuiscono su più colonne. </span>
+            </it-card>
+            <it-card>
+              <a slot="title" href="#">Card in colonna larga</a>
+              <span slot="text"> In questa colonna larga, le card si distribuiscono su più colonne. </span>
+            </it-card>
+            <it-card>
+              <a slot="title" href="#">Card in colonna larga</a>
+              <span slot="text"> In questa colonna larga, le card si distribuiscono su più colonne. </span>
+            </it-card>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4 mb-4">
+        <div class="p-3 bg-light">
+          <div class="it-card-group it-card-group-container-aware">
+            <it-card>
+              <a slot="title" href="#">Card in colonna stretta</a>
+              <span slot="text"> In questa colonna stretta, le card si dispongono su una singola colonna. </span>
+            </it-card>
+            <it-card>
+              <a slot="title" href="#">Card in colonna stretta</a>
+              <span slot="text"> In questa colonna stretta, le card si dispongono su una singola colonna. </span>
+            </it-card>
+            <it-card>
+              <a slot="title" href="#">Card in colonna stretta</a>
+              <span slot="text"> In questa colonna stretta, le card si dispongono su una singola colonna. </span>
+            </it-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+};

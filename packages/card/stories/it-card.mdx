@@ -359,3 +359,105 @@ Per personalizzare gli stili del componente puoi usare il selettore `::part` pas
 
 [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
 
+## Organizzazione e layout
+
+### Uso di contenitori responsive
+
+Se il tuo layout di pagina lo permette ti consigliamo di comprendere ogni gruppo di card in contenitori responsive,
+usando le classi `.container-xl` oppure `.container-xxl` su un elemento `div` che contenga tutto il gruppo e il suo sistema di griglie.
+Così potrai sfruttare al massimo tutto lo spazio a disposizione in tutte le combinazioni di dimensioni della viewport e fattori di ingrandimento.
+
+```html
+<div class="container-xl">
+  <div class="row">...</div>
+  <div class="row">...</div>
+</div>
+```
+
+Usando contenitori con breakpoint fissi `.container` potresti sprecare un eccessivo spazio vuoto a destra e sinistra in alcune combinazioni.
+
+### Uso della griglia
+
+Usando le griglie puoi organizzare le card in righe e colonne con le classi `.row` e `.col-*` per definire il numero di colonne desiderate.
+
+```html
+<div class="container-xl">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+      <it-card>...</it-card>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+      <it-card>...</it-card>
+    </div>
+  </div>
+</div>
+```
+
+Negli esempi precedenti abbiamo usato per esempio `.col-12 col-md-6 col-lg-4` per ottenere 1 colonna su dispositivi piccoli o viewport strette, 2 colonne su viewport medie e 3 colonne su viewport grandi.
+Sono esempi puramente dimostrativi, **puoi usare qualsiasi combinazione** di colonne per ottenere il layout desiderato.
+
+La scelta del **numero di colonne** dipende dal layout della tua pagina e ha un **impatto sullo spazio interno** alla card per il contenuto.
+È importante quindi **bilanciare la dimensione** dei contenuti della card per garantire una buona leggibilità e un aspetto visivamente gradevole a tutte le dimensioni e/o fattori di ingrandimento della viewport.
+
+### Liste per gruppi numerosi di card
+
+Per **gruppi numerosi di card** (come pagine di listini, cataloghi, risultati di ricerca), usa liste semantiche `<ul>` con classe `.it-card-list` combinandole con il sistema di colonne.
+
+<it-callout variant="success" heading-level="h4">
+  <span slot="title">Accessibilità: lista link correlati</span>
+  <p>Con le liste, le tecnologie assistive permettono agli utenti di conoscere il numero totale di componenti card che si stanno esplorando e navigare più facilmente.</p>
+  <p>Se necessario nel contesto aggiungi una <code>aria-label</code> che spieghi i contenuti della lista come nell'esempio che segue.</p>
+</it-callout>
+
+```html
+<div class="container-xl">
+  <ul class="it-card-list row" aria-label="Risultati della ricerca: ">
+    <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+      <it-card>...</it-card>
+    </li>
+    <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+      <it-card>...</it-card>
+    </li>
+  </ul>
+</div>
+```
+
+Esempio di lista card:
+
+<Canvas of={Stories.ListeCardNumerose} />
+
+### Uso di classi dedicate (per piccoli gruppi)
+
+Solo per piccoli gruppi di card (2-6 card) puoi inoltre usare `.it-card-group` per creare facilmente un layout responsive in un `div` contenitore.
+Di default il numero di colonne su desktop è impostato a 4.
+
+<Canvas of={Stories.ClassiDedicate} />
+
+#### Numero di colonne specifiche
+
+Usa `.it-card-group-N-cols`, dove modificando `N` si possono ottenere layout con 2 o 3 colonne su desktop.
+
+<Canvas of={Stories.ClassiDedicateColonne} />
+
+#### Centrate orizzontalmente
+
+Usa `.it-card-group-center` per centrare orizzontalmente il gruppo di card all'interno del contenitore.
+
+<Canvas of={Stories.ClassiDedicateCentrate} />
+
+#### Uso di classi dedicate rispetto al contenitore (sperimentale)
+
+Gruppo di card che risponde a Container Queries attivabile usando la classe dedicata `.it-card-group-container-aware` per adattarsi responsive alla dimensione del contenitore invece che alla viewport.
+Ridimensiona la viewport o prova a visualizzare questa pagina su dispositivi di diverse dimensioni per apprezzare la differenza di approccio.
+
+Le Container Queries sono una tecnologia CSS moderna supportata nella maggior parte dei browser recenti.
+Per i browser che non supportano questa funzionalità, si applica automaticamente un fallback basato su Media Queries standard.
+
+<Canvas of={Stories.ClassiDedicateContainer} />
+
+#### Confronto in colonne diverse
+
+Qui puoi esplorare come lo stesso gruppo di card "container-aware" si adatta a diverse larghezze di colonna, permettendo di realizzare layout complessi:
+
+<Canvas of={Stories.ClassiDedicateConfrontoColonne} />
+
