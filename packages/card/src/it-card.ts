@@ -192,7 +192,7 @@ export class ItCard extends BaseComponent {
     const cardTitle = html`
       ${staticHtml`
         <${headingTag} class="${titleClasses}" part="title">
-          <slot name="title"></slot>
+          <slot name="title" @slotchange=${this.handleSlotChange}></slot>
         </${headingTag}>
       `}
     `;
@@ -223,7 +223,7 @@ export class ItCard extends BaseComponent {
                   </p>
                 `
               : html`<slot name="text" @slotchange=${this.handleSlotChange}></slot>`}
-            <slot name="body"></slot>
+            <slot name="body" @slotchange=${this.handleSlotChange}></slot>
           </div>
         `
       : html`
