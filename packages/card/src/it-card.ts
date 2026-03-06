@@ -191,7 +191,7 @@ export class ItCard extends BaseComponent {
 
     const cardTitle = html`
       ${staticHtml`
-        <${headingTag} class="${titleClasses}">
+        <${headingTag} class="${titleClasses}" part="title">
           <slot name="title"></slot>
         </${headingTag}>
       `}

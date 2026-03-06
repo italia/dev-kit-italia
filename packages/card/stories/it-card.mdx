@@ -5,10 +5,11 @@ import * as Stories from './it-card.stories';
 
 # Card
 
-<description>...</description>
+<description>Aiutano a presentare un gruppo di contenuti correlati, come articoli o sezioni di un sito web e permettono di continuare la navigazione verso le rispettive pagine di dettaglio</description>
 
 ## Cosa fa
-...
+
+Le card sono contenitori flessibili e versatili per organizzare e presentare contenuti strutturati in modo coerente, adattabili a diversi contesti e necessità.
 
 [Approfondisci come e quando usare il componente Card](https://designers.italia.it/design-system/componenti/card/)
 
@@ -21,11 +22,25 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Indicazioni generali
 
-...
+- Rendi la card azionabile poiché è una sintesi di informazioni più dettagliate. Ogni card deve puntare a una pagina di dettaglio tramite link.
+- Includi contenuti unici, evitando di ripetere immagini o informazioni che sono presenti in altre card.
+- Non usare la card a scopo decorativo, creando un contorno per qualunque tipologia di contenuto.
+- Scegli immagini della dimensione corretta, assicurandoti che funzionino bene su qualsiasi dispositivo e dimensione.
+- Scrivi titoli concisi che stimolino l'interesse dell'utente ad approfondire il contenuto.
+- Usa la descrizione per contenuti secondari, non per informazioni essenziali, in quanto gli utenti potrebbero prestarvi minore attenzione.
 
 ## Accessibilità
 
-### Icone nelle card
+Le card implementano diverse caratteristiche per garantire un’esperienza accessibile a tutte le persone,
+la maggior parte di esse sono implementato nel componente stesso,
+ma è importante che anche i contenuti inseriti nelle card siano accessibili.
+
+### Metadati e contenuti descrittivi
+
+Per migliorare la comprensione dei metadati da parte delle tecnologie assistive aggiungi testi descrittivi nascosti con `.visually-hidden` (es. “Categoria correlata: “, “Argomento correlato: “) o applicati con `aria-label` (es. “Argomenti correlati: “).
+Valuta attentamente se gli elementi come le liste (es. di contenuti affini, link secondari o una stessa lista di card) abbiano o meno bisogno di etichette `aria-label` o `aria-labelledby` per descriverne le finalità.
+
+### Icone e contenuti visivi
 
 Le icone nelle card possono avere diversi ruoli semantici:
 
@@ -33,7 +48,14 @@ Le icone nelle card possono avere diversi ruoli semantici:
 - Informative: quando comunicano informazioni aggiuntive (es. tipo di file, link esterno), aggiungi testo nascosto con `<span class="visually-hidden">` che descriva l'informazione se non già veicolata diversamente.
 - Funzionali: quando indicano un'azione o stato, assicurati che il significato sia comunicato anche testualmente.
 
-### Link nelle card
+Per le immagini aggiungi una breve descrizione immagine (con l'attributo `alt="Breve descrizione."`) se ha senso nel contesto,
+marcale altrimenti come decorative lasciando l'attributo `alt` applicato ma vuoto.
+
+### Collegamenti e navigazione
+
+Usa `a` per i collegamenti di navigazione e `button` per azioni nella stessa pagina.
+Per contenuti esterni, comunica chiaramente la destinazione, ad esempio con testo nascosto e icone appropriate.
+Privilegia il titolo come elemento principale di navigazione, evitando troppi collegamenti nella stessa card.
 
 Negli esempi non abbiamo usato il target del link per favorire la normale navigazione del browser.
 Se la pagina di destinazione si apre in una nuova tab o finestra, comunicalo in modo chiaro all'utente con un'icona di link esterno e un testo alternativo o nascosto per i lettori di schermo.
@@ -51,9 +73,16 @@ in caso valuta di non mostrarla.
 
 Consigliamo, inoltre, di svolgere sempre test di usabilità anche con utenti che utilizzano tecnologie assistive.
 
-### Titoli nelle card
-TODO
-Negli esempi abbiamo utilizzato il tag `h3` o `h4` per i titoli. Utilizza il tag h corretto a seconda del contesto.
+### Gerarchia dei titoli
+
+Utilizza gli elementi di intestazione (`h2`, `h3`, etc.) appropriati per il contesto intorno alle card.
+Negli esempi abbiamo usato quasi sempre `h3` per le card editoriali e `h4` per quelle informative.
+Adatta la gerarchia alla struttura complessiva della tua pagina in modo da rispettare l'ordine.
+
+### Contrasto e visibilità
+
+Mantieni un rapporto di contrasto di almeno 3:1 tra le card e lo sfondo.
+Le combinazioni di bordi, ombre e colori di sfondo possono aiutarti a raggiungere questo obiettivo.
 
 ## Card per contenuti editoriali
 
@@ -315,7 +344,18 @@ Per maggiori informazioni sulla personalizzazione dei pulsanti, consulta la [doc
 
 <Canvas of={Stories.PulsantiMobile} />
 
-Per personalizzare gli stili del pulsante puoi usare il selettore `::part` passando il valore `body`.
+### Personalizzazione degli stili
+
+Per personalizzare gli stili del componente puoi usare il selettore `::part` passando i seguenti valori:
+
+- `title` - per personalizzare il titolo
+- `body` - per personalizzare il corpo
+- `subtitle` - per personalizzare il sottotitolo
+- `signature` - per personalizzare la porzione dell'autore
+- `text` - per personalizzare il testo
+- `footer` - per personalizzare il piede
+- `actions` - per personalizzare le azioni aggiuntive della card
+- `image-wrapper` - per personalizzare il contenitore dell'immagine
 
 [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
 
