@@ -127,38 +127,38 @@ const meta: Meta<any> = {
   },
   argTypes: {
     fullscreen: {
-      control: { disable: true },
+      control: 'boolean',
       description: 'Se true, il carousel occupa tutta la larghezza disponibile.',
       table: { defaultValue: { summary: 'false' } },
     },
     arrows: {
-      control: { disable: true },
+      control: 'boolean',
       description: 'Se true, mostra le frecce di navigazione del carousel.',
       table: { defaultValue: { summary: 'false' } },
     },
     variant: {
-      control: { disable: true },
+      control: 'select',
       description: 'Variante di layout del carousel.',
       options: VARIANTS,
       type: 'string',
       table: { defaultValue: { summary: 'single' } },
     },
     type: {
-      control: { disable: true },
+      control: 'select',
       description: 'Tipo di scorrimento del carousel. Se non specificato, viene usato il default della variante.',
       options: ['slide', 'loop', 'fade'],
       type: 'string',
       table: { defaultValue: { summary: '-' } },
     },
     autoplay: {
-      control: { disable: true },
+      control: 'boolean',
       description:
         "Se true, abilita l'autoplay del carousel con modalità \"pause\" (il carousel avanza automaticamente ma parte in pausa, l'utente deve premere play per avviarlo). Viene renderizzato automaticamente un pulsante di toggle play/pause. Per personalizzare l'intervallo o altre opzioni dell'autoplay, usa config.autoplay.",
       table: { defaultValue: { summary: 'false' } },
     },
 
     config: {
-      control: { disable: true },
+      control: false,
       description:
         'Oggetto di configurazione avanzata da passare a Splide. Consulta la documentazione del componente Carousel e quella di Splide v4.x per conoscere le opzioni disponibili.',
       table: { defaultValue: { summary: '-' } },
