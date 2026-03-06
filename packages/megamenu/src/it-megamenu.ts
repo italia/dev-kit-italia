@@ -1,7 +1,6 @@
 /* eslint-disable lit-a11y/list */
 
 import { ItDropdown } from '@italia/dropdown/it-dropdown.js';
-import { type ItDropdownItem } from '@italia/dropdown/it-dropdown-item.js';
 import { html, nothing } from 'lit';
 import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
