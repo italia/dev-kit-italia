@@ -141,4 +141,22 @@
     </it-carousel>
   </section>
 
+  <section class="my-5">
+    <h2>Autoplay</h2>
+    <it-carousel variant="single" autoplay>
+      <h2 slot="title">Titolo carousel</h2>
+      <it-carousel-slide v-for="i in 6" :key="i">
+        <it-card variant="inline">
+          <a slot="title" href="#">Titolo contenuto editoriale</a>
+          <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+          <div slot="footer" class="it-card-taxonomy">
+            <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoria</a>
+          </div>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+          <figure slot="image" class="figure img-full"><img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." /></figure>
+        </it-card>
+      </it-carousel-slide>
+    </it-carousel>
+  </section>
+
 </template>

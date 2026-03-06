@@ -221,6 +221,18 @@ const Carousel = () => (
       </it-carousel>
     </section>
 
+    <section className="my-5">
+      <h2>Autoplay</h2>
+      <it-carousel variant="single" autoplay>
+        <h2 slot="title">Titolo carousel</h2>
+        {slides.map((_, i) => (
+          <it-carousel-slide key={i}>
+            <InlineCard />
+          </it-carousel-slide>
+        ))}
+      </it-carousel>
+    </section>
+
   </>
 );
 

@@ -90,6 +90,10 @@ Il componente Carousel include frecce di navigazione per facilitare lo scorrimen
 Il componente Carousel può essere visualizzato a schermo intero utilizzando l'attributo `fullscreen`. Questa opzione è particolarmente utile per le varianti di galleria, ma può essere applicata a qualsiasi variante per creare un'esperienza immersiva. Quando si utilizza la modalità fullscreen, è importante considerare l'impatto sull'usabilità e sull'accessibilità, assicurandosi che gli elementi di navigazione siano facilmente raggiungibili e che il contenuto sia ben organizzato.
 <Canvas of={Stories.Fullscreen} />
 
+## Autoplay
+Il Carousel supporta l'autoplay. Quando l'attributo `autoplay` è presente viene renderizzato un pulsante toggle Play/Pausa. Di default il componente usa la modalità `pause` (viene mostrato il toggle in stato Pausa; l'utente deve premere Play per avviare lo scorrimento automatico).
+<Canvas of={Stories.Autoplay} />
+
 ## Modificare il comportamento di scorrimento
 Il comportamento di scorrimento del Carousel può essere personalizzato tramite l'attributo `type`. I valori più comuni sono:
 

@@ -103,6 +103,7 @@ const renderComponent = (params: any) => html`
     variant=${params.variant}
     ?fullscreen=${params.fullscreen}
     ?arrows=${params.arrows}
+    ?autoplay=${params.autoplay}
     type=${ifDefined(params.type)}
     config=${ifDefined(params.config ? JSON.stringify(params.config) : undefined)}
     ><h2 slot="title">${params.title || 'Titolo carousel'}</h2>
@@ -361,6 +362,26 @@ export const VideoTest: Story = {
     fullscreen: true,
     cardOptions: {
       type: 'video',
+    },
+  },
+  render: (args) => renderComponent(args),
+};
+
+export const Autoplay: Story = {
+  name: 'Autoplay',
+  args: {
+    variant: 'single',
+    autoplay: true,
+    cardOptions: {
+      type: 'inline',
+    },
+    title: 'Carousel con autoplay',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Esempio che mostra il pulsante Play/Pausa e l'autoplay abilitato (modalità 'pause').",
+      },
     },
   },
   render: (args) => renderComponent(args),
