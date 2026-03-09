@@ -33,7 +33,7 @@ import Section from './components/Section.vue';
 import Select from './components/Select.vue';
 import Sidebar from './components/Sidebar.vue';
 import Sticky from './components/Sticky.vue';
-import Table from './pages/Table.vue';
+import Table from './components/Table.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Pagination from './components/Pagination.vue';
