@@ -1,5 +1,5 @@
 <template>
-  <h1>it-icon</h1>
+  <h1>Icon</h1>
 
   <it-icon name="it-star-full" align="middle"></it-icon>
   <section>
