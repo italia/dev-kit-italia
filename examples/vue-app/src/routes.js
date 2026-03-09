@@ -13,6 +13,7 @@ import Badge from './components/Badge.vue';
 import Button from './components/Button.vue';
 import Checkbox from './components/Checkbox.vue';
 import Callout from './pages/Callout.vue';
+import Card from './pages/Card.vue';
 import Chip from './components/Chip.vue';
 import Collapse from './components/Collapse.vue';
 import Dropdown from './components/Dropdown.vue';
@@ -52,6 +53,7 @@ const routes = [
   { path: '/button', name: 'Button', component: Button },
   { path: '/callout', name: 'Callout', component: Callout },
   { path: '/carousel', name: 'Carousel', component: Carousel },
+  { path: '/card', name: 'Card', component: Card },
   { path: '/checkbox', name: 'Checkbox', component: Checkbox },
   { path: '/chip', name: 'Chip', component: Chip },
   { path: '/collapse', name: 'Collapse', component: Collapse },

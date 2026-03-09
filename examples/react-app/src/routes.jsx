@@ -10,6 +10,7 @@ import Back from './pages/Back';
 import Badge from './pages/Badge';
 import Button from './pages/Button';
 import Callout from './pages/Callout';
+import Card from './pages/Card';
 import Checkbox from './pages/Checkbox';
 import Chip from './pages/Chip';
 import Collapse from './pages/Collapse';
@@ -50,6 +51,7 @@ export const AppRoutes = [
   { path: '/button', element: <Button />, title: 'Button' },
   { path: '/callout', element: <Callout />, title: 'Callout' },
   { path: '/carousel', element: <Carousel />, title: 'Carousel' },
+  { path: '/card', element: <Card />, title: 'Card' },
   { path: '/checkbox', element: <Checkbox />, title: 'Checkbox' },
   { path: '/chip', element: <Chip />, title: 'Chip' },
   { path: '/collapse', element: <Collapse />, title: 'Collapse' },

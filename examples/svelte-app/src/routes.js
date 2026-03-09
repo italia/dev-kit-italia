@@ -10,6 +10,7 @@ import Back from './pages/Back.svelte';
 import Badge from './pages/Badge.svelte';
 import Button from './pages/Button.svelte';
 import Callout from './pages/Callout.svelte';
+import Card from './pages/Card.svelte';
 import Checkbox from './pages/Checkbox.svelte';
 import Chip from './pages/Chip.svelte';
 import Collapse from './pages/Collapse.svelte';
@@ -50,6 +51,7 @@ export const AppRoutes = [
   { path: '/button', element: Button, title: 'Button' },
   { path: '/callout', element: Callout, title: 'Callout' },
   { path: '/carousel', element: Carousel, title: 'Carousel' },
+  { path: '/card', element: Card, title: 'Card' },
   { path: '/checkbox', element: Checkbox, title: 'Checkbox' },
   { path: '/chip', element: Chip, title: 'Chip' },
   { path: '/collapse', element: Collapse, title: 'Collapse' },

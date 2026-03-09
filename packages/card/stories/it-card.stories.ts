@@ -1,11 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { CARD_VARIANTS, type CardVariant } from '../src/types.js';
+import {
+  CARD_BORDER_COLORS,
+  CARD_HEADING_LEVELS,
+  CARD_VARIANTS,
+  CARD_SHADOWS,
+  type CardHeadingLevel,
+  type CardBorderColor,
+  type CardVariant,
+  type CardShadow,
+} from '../src/types.js';
 
 interface CardProps {
   fullHeight?: boolean;
   variant: CardVariant;
+  borderTop?: CardBorderColor;
+  headingLevel?: CardHeadingLevel;
+  shadow?: CardShadow;
+  border?: '0';
 }
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
@@ -15,9 +28,6 @@ const meta = {
   component: 'it-card',
   parameters: {
     layout: 'padded',
-    docs: {
-      source: { excludeDecorators: true },
-    },
   },
   decorators: [(story) => html` <div class="container p-0">${story()}</div> `],
   args: {
@@ -37,50 +47,39 @@ const meta = {
       description: 'Variante di layout della card',
       table: { defaultValue: { summary: 'default' } },
     },
-    // offset: {
-    //   control: 'number',
-    //   type: 'number',
-    //   description: "Posizione Y espressa in pixel alla quale ritornarne al click sull'elemento",
-    //   table: { defaultValue: { summary: '0' } },
-    // },
+    borderTop: {
+      name: 'border-top',
+      control: 'select',
+      type: 'string',
+      options: CARD_BORDER_COLORS,
+      description: 'Aggiunge un bordo superiore colorato alla card per evidenziarla',
+    },
+    headingLevel: {
+      name: 'heading-level',
+      control: 'select',
+      type: 'string',
+      options: CARD_HEADING_LEVELS,
+      description:
+        'Livello di heading da usare per il titolo della card. Se non specificato, viene usato h3. Vedi la sezione "Accessibilità" della documentazione per maggiori dettagli.',
+    },
+    shadow: {
+      control: 'select',
+      type: 'string',
+      options: CARD_SHADOWS,
+      description: "Modifica l'ombra della card.",
+    },
+    border: {
+      control: 'select',
+      type: 'string',
+      options: [undefined, '0'],
+      description: 'Imposta il valore 0 per rimuovere il bordo della card.',
+    },
     // scrollLimit: {
     //   name: 'scroll-limit',
     //   control: 'number',
     //   type: 'number',
     //   description: "Posizione Y espressa in pixel alla quale far comparire l'elemento",
     //   table: { defaultValue: { summary: '100' } },
-    // },
-    // duration: {
-    //   control: 'number',
-    //   type: 'number',
-    //   description: "Durata dell'animazione di scroll espressa in millisecondi",
-    //   table: { defaultValue: { summary: '800' } },
-    // },
-    // small: {
-    //   control: 'boolean',
-    //   type: 'boolean',
-    //   description: 'Dimensione ridotta',
-    //   table: { defaultValue: { summary: 'false' } },
-    // },
-    // inverse: {
-    //   control: 'boolean',
-    //   type: 'boolean',
-    //   description: 'Variante di colore invertito',
-    //   table: { defaultValue: { summary: 'false' } },
-    // },
-    // shadow: {
-    //   control: 'boolean',
-    //   type: 'boolean',
-    //   description: "Aggiunge un'ombra al pulsante",
-    //   table: { defaultValue: { summary: 'false' } },
-    // },
-    // border: {
-    //   control: 'boolean',
-    //   type: 'boolean',
-    //   defaultValue: false,
-    //   description:
-    //     'Abilita / disabilita il bordo sul bottone per garantire il contrasto del pulsante su sfondi non a contrasto',
-    //   table: { defaultValue: { summary: 'false' } },
     // },
     // borderColor: {
     //   name: 'border-color',
@@ -92,24 +91,20 @@ const meta = {
     //     defaultValue: { summary: 'Default: "white". Se è attivo l\'attributo "inverse", il default è "primary".' },
     //   },
     // },
-    // iconColor: {
-    //   name: 'icon-color',
-    //   control: 'text',
-    //   type: 'string',
-    //   description: "Colore dell'icona",
-    //   table: { defaultValue: { summary: 'inverse' } },
-    // },
-    // itAriaLabel: {
-    //   name: 'it-aria-label',
-    //   control: 'text',
-    //   type: 'string',
-    //   description: "Etichetta aria per l'accessibilità",
-    // },
   },
 } satisfies Meta<CardProps>;
 
 export default meta;
 type Story = StoryObj<CardProps>;
+
+function disabledControls(except?: (keyof (typeof meta)['argTypes'])[]) {
+  return Object.keys(meta.argTypes).reduce<Record<string, { table: { disable: true } }>>((acc, key) => {
+    if (!except?.includes(key as keyof (typeof meta)['argTypes'])) {
+      acc[key] = { table: { disable: true } };
+    }
+    return acc;
+  }, {});
+}
 
 export const EsempioInterattivo: Story = {
   name: 'Esempio interattivo',
@@ -129,7 +124,14 @@ export const EsempioInterattivo: Story = {
     `,
   ],
   render: (args) => html`
-    <it-card variant=${ifDefined(args.variant)} ?full-height=${args.fullHeight}>
+    <it-card
+      variant=${ifDefined(args.variant)}
+      ?full-height=${args.fullHeight}
+      border-top=${ifDefined(args.borderTop)}
+      heading-level=${ifDefined(args.headingLevel)}
+      shadow=${ifDefined(args.shadow)}
+      border=${ifDefined(args.border)}
+    >
       <a slot="title" href="#">Titolo del contenuto</a>
       <figure slot="image" class="figure img-full">
         <img
@@ -149,6 +151,7 @@ export const EsempioInterattivo: Story = {
 export const EditorialiStandard: Story = {
   name: 'Card editoriali standard',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card full-height>
       <a slot="title" href="#">Titolo del contenuto</a>
@@ -210,6 +213,7 @@ export const EditorialiStandard: Story = {
 export const EditorialiFeatured: Story = {
   name: 'Card editoriali featured',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card full-height>
       <a slot="title" href="#">
@@ -293,6 +297,7 @@ export const EditorialiFeatured: Story = {
 export const CardInline: Story = {
   name: 'Card inline',
   decorators: [(story) => html` <div style="display:flex;flex-direction:column;gap:24px;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card variant="inline">
       <a slot="title" href="#">Titolo contenuto editoriale</a>
@@ -341,6 +346,7 @@ export const CardInline: Story = {
 export const CardInlineMini: Story = {
   name: 'Card inline mini',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card variant="inline-mini">
       <a slot="title" href="#">Titolo contenuto editoriale</a>
@@ -381,6 +387,7 @@ export const CardInlineMini: Story = {
 export const Eventi: Story = {
   name: 'Card per eventi',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card full-height>
       <a slot="title" href="#">Titolo evento</a>
@@ -451,6 +458,7 @@ export const Eventi: Story = {
 export const EventiInline: Story = {
   name: 'Card per eventi inline',
   decorators: [(story) => html` <div style="display:flex;flex-direction:column;gap:24px;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card variant="inline">
       <a slot="title" href="#">Titolo evento</a>
@@ -512,6 +520,7 @@ export const EventiInline: Story = {
 export const Media: Story = {
   name: 'Card per media',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card full-height>
       <a slot="title" href="#">
@@ -618,6 +627,7 @@ export const Media: Story = {
 export const MediaVideoInline: Story = {
   name: 'Card per media video inline',
   decorators: [(story) => html` <div style="display:flex;flex-direction:column;gap:24px;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card variant="inline">
       <a slot="title" href="#">
@@ -676,6 +686,7 @@ export const MediaVideoInline: Story = {
 export const ServiziEBandi: Story = {
   name: 'Card per servizi e bandi',
   decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
   render: () => html`
     <it-card full-height>
       <a slot="title" href="#">Titolo servizio</a>
@@ -720,5 +731,721 @@ export const ServiziEBandi: Story = {
         Compila il form di candidatura
       </it-button>
     </it-card>
+  `,
+};
+
+export const DocumentiEAllegati: Story = {
+  name: 'Card per documenti e allegati',
+  decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <it-card>
+      <a slot="title" href="#">
+        Titolo del documento
+        <div class="it-card-title-icon-wrapper">
+          <it-icon color="primary" name="it-file"></it-icon>
+        </div>
+      </a>
+      <span slot="text">
+        Eventuale breve estratto descrittivo del documento.
+      </span>
+      <div slot="footer" class="it-card-taxonomy">
+        <a href="#" class="it-card-category it-card-link">
+          <span class="visually-hidden">Categoria correlata: </span>
+          Categoria
+        </a>
+      </div>
+    </it-card>
+
+    <it-card>
+      <a slot="title" href="#">
+        Titolo del documento
+        <div class="it-card-title-icon-wrapper"></div>
+          <it-icon color="primary" name="it-file"></it-icon>
+        </div>
+      </a>
+      <span slot="text">
+        Eventuale breve estratto descrittivo del documento. Formato PDF (200KB)
+      </span>
+      <div slot="footer" class="it-card-taxonomy">
+        <a href="#" class="it-card-category it-card-link">
+          <span class="visually-hidden">Categoria correlata: </span>
+          Categoria
+        </a>
+      </div>
+      <span slot="actions" class="me-2">Scarica come:</span>
+      <a slot="actions" href="#" class="it-card-link">
+        ODT (300KB)
+        <span class="visually-hidden">: Titolo del documento</span>
+      </a>
+      <a slot="actions" href="#" class="it-card-link">
+        ODS (400KB)
+        <span class="visually-hidden">: Titolo del documento</span>
+      </a>
+    </it-card>
+
+    <it-card>
+      <a slot="title" href="#">
+        Titolo del file allegato
+        <span class="visually-hidden">(Formato ODT, 200KB)</span>
+        <div class="it-card-title-icon-wrapper">
+          <it-icon color="primary" name="it-file-odt"></it-icon>
+        </div>
+      </a>
+      <span slot="text" aria-hidden="true">
+        Formato ODT (200KB)
+      </span>
+    </it-card>
+  `,
+};
+
+export const ProfiliPersonali: Story = {
+  name: 'Card per profili personali',
+  decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <it-card full-height variant="profile">
+      <a slot="title" href="#">Nome Personale</a>
+      <span slot="subtitle">Ruolo nell'organizzazione</span>
+      <it-avatar slot="image" type="text" size="xl" text="Nome Personale" avatar-title="Nome Personale"></it-avatar>
+    </it-card>
+
+    <it-card full-height variant="profile" border-top="secondary">
+      <a slot="title" href="#">Nome Personale</a>
+      <span slot="subtitle">Ruolo nell'organizzazione</span>
+      <it-avatar
+        slot="image"
+        size="xl"
+        text="Nome Personale"
+        src="https://randomuser.me/api/portraits/women/14.jpg"
+        alt="Woman image"
+      ></it-avatar>
+    </it-card>
+
+    <it-card full-height variant="profile">
+      <a slot="title" href="#">Nome Personale</a>
+      <span slot="subtitle">Ruolo nell'organizzazione</span>
+      <it-avatar slot="image" type="text" size="xl" text="Nome Personale" avatar-title="Nome Personale"></it-avatar>
+      <dl slot="body" class="it-card-description-list">
+        <div>
+          <dt>Area:</dt>
+          <dd><a class="it-card-link" href="#">Nome dell'area di appartenenza</a></dd>
+        </div>
+        <div>
+          <dt>Email:</dt>
+          <dd>me@mail.com</dd>
+        </div>
+        <div>
+          <dt>Tel:</dt>
+          <dd>340.4050600</dd>
+        </div>
+        <div>
+          <dt>Indirizzo:</dt>
+          <dd>Via della città, 5 - 00100 Città</dd>
+        </div>
+      </dl>
+    </it-card>
+
+    <it-card full-height variant="profile" border-top="secondary">
+      <a slot="title" href="#">Nome Personale</a>
+      <span slot="subtitle">Ruolo nell'organizzazione</span>
+      <it-avatar slot="image" type="text" size="xl" text="Nome Personale" avatar-title="Nome Personale"></it-avatar>
+      <dl slot="body" class="it-card-description-list">
+        <div>
+          <dt>Area:</dt>
+          <dd><a class="it-card-link" href="#">Nome dell'area di appartenenza</a></dd>
+        </div>
+        <div>
+          <dt>Email:</dt>
+          <dd>me@mail.com</dd>
+        </div>
+        <div>
+          <dt>Tel:</dt>
+          <dd>340.4050600</dd>
+        </div>
+        <div>
+          <dt>Indirizzo:</dt>
+          <dd>Via della città, 5 - 00100 Città</dd>
+        </div>
+      </dl>
+    </it-card>
+  `,
+};
+
+export const Luoghi: Story = {
+  name: 'Card per luoghi',
+  decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <it-card full-height variant="location">
+      <a slot="title" href="#">Toponimo o luogo</a>
+      <span slot="subtitle">Tipologia di luogo</span>
+      <div slot="image" class="it-card-profile-image-icon-wrapper">
+        <it-icon color="primary" name="it-pa" size="lg"></it-icon>
+      </div>
+    </it-card>
+
+    <it-card full-height variant="location" border-top="secondary">
+      <a slot="title" href="#">Toponimo o luogo</a>
+      <span slot="subtitle">Tipologia di luogo</span>
+      <figure slot="image" class="figure img-full">
+        <img
+          src="https://placeholderimage.eu/api/monument/320/320"
+          alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+        />
+      </figure>
+    </it-card>
+
+    <it-card full-height variant="location">
+      <a slot="title" href="#">Toponimo o luogo</a>
+      <span slot="subtitle">Tipologia di luogo</span>
+      <div slot="image" class="it-card-profile-image-icon-wrapper">
+        <it-icon color="primary" name="it-pa" size="lg"></it-icon>
+      </div>
+      <dl slot="body" class="it-card-description-list border-bottom-0 mb-0">
+        <div>
+          <dt>Email:</dt>
+          <dd>me@mail.com</dd>
+        </div>
+        <div>
+          <dt>Tel:</dt>
+          <dd>340.4050600</dd>
+        </div>
+        <div>
+          <dt>Indirizzo:</dt>
+          <dd>Via della città, 5 - 00100 Città</dd>
+        </div>
+      </dl>
+    </it-card>
+
+    <it-card full-height variant="location" border-top="secondary">
+      <a slot="title" href="#">Toponimo o luogo</a>
+      <span slot="subtitle">Tipologia di luogo</span>
+      <figure slot="image" class="figure img-full">
+        <img
+          src="https://placeholderimage.eu/api/monument/320/320"
+          alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+        />
+      </figure>
+      <dl slot="body" class="it-card-description-list border-bottom-0 mb-0">
+        <div>
+          <dt>Email:</dt>
+          <dd>me@mail.com</dd>
+        </div>
+        <div>
+          <dt>Tel:</dt>
+          <dd>340.4050600</dd>
+        </div>
+        <div>
+          <dt>Indirizzo:</dt>
+          <dd>Via della città, 5 - 00100 Città</dd>
+        </div>
+      </dl>
+      <div slot="footer" style="flex-grow:1">
+        <it-icon color="secondary" name="it-map-marker" size="sm"></it-icon>
+        <strong>Distanza:</strong> 900 metri
+      </div>
+      <a slot="footer" href="#" target="_blank" class="it-card-link">
+        Apri in mappa
+        <span class="visually-hidden"> Toponimo o Luogo (si apre in una nuova finestra)</span>
+        <it-icon class="ms-2" color="secondary" name="it-external-link" size="sm"></it-icon>
+      </a>
+    </it-card>
+  `,
+};
+
+export const ListeDiContenutiAffini: Story = {
+  name: 'Card con liste di contenuti affini',
+  decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <it-card full-height ratio="21x9">
+      <a slot="title" href="#">Argomento Y</a>
+      <figure slot="image" class="figure img-full">
+        <img
+          src="https://placeholderimage.eu/api/nature/800/600"
+          alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+        />
+      </figure>
+      <span slot="text">Descrizione breve dell'argomento in poche righe non troncate.</span>
+      <ul slot="body" class="list-group list-group-flush" aria-label="Contenuti in evidenza:">
+        <li class="list-group-item"><a href="#">Titolo notizia affine</a></li>
+        <li class="list-group-item"><a href="#">Titolo media affine</a></li>
+        <li class="list-group-item"><a href="#">Altro titolo scheda affine</a></li>
+        <li class="list-group-item"><a href="#">Pagina profilo affine</a></li>
+      </ul>
+    </it-card>
+
+    <it-card full-height ratio="21x9">
+      <a slot="title" href="#">Titolo evento</a>
+      <figure slot="image" class="figure img-full">
+        <img src="https://placeholderimage.eu/api/monument/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto.">
+      </figure>
+      <span slot="subtitle">Dal 17 al 22 novembre</span>
+      <span slot="text">Descrizione breve dell'evento in poche righe non troncate.</span>
+      <ul slot="body" class="list-group list-group-flush" aria-label="Contenuti in evidenza:">
+        <li class="list-group-item"><a href="#">Gli artisti</a></li>
+        <li class="list-group-item"><a href="#">Il luogo</a></li>
+        <li class="list-group-item"><a href="#">Il programma dettagliato</a></li>
+      </ul>
+      <div slot="footer" style="flex-grow:1">
+        <a class="it-card-link" href="#">Iscriviti per rimanere aggiornato</a>
+      </div>
+      <a slot="footer" href="#" target="_blank" class="it-card-link">
+        Apri la mappa
+        <span class="visually-hidden"> di Titolo evento (si apre in una nuova finestra)</span>
+        <it-icon class="ms-2" color="secondary" name="it-external-link" size="sm"></it-icon>
+      </a>
+    </it-card>
+
+    <it-card full-height">
+      <a slot="title" href="#">Argomento X</a>
+      <span slot="text">Descrizione breve dell'argomento in poche righe non troncate.</span>
+      <ul slot="body" class="list-group list-group-flush" aria-label="Contenuti in evidenza:">
+        <li class="list-group-item"><a href="#" class="it-card-link">Titolo notizia affine</a></li>
+        <li class="list-group-item"><a href="#" class="it-card-link">Titolo media affine</a></li>
+        <li class="list-group-item"><a href="#" class="it-card-link">Altro titolo scheda affine</a></li>
+        <li class="list-group-item"><a href="#" class="it-card-link">Pagina profilo affine</a></li>
+      </ul>
+    </it-card>
+  `,
+};
+
+export const Banner: Story = {
+  name: 'Card banner',
+  decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <it-card variant="banner">
+      <a slot="title" href="#">Titolo del contenuto</a>
+      <it-icon slot="image" color="secondary" name="it-chart-line" size="xl"></it-icon>
+      <span slot="subtitle">Sottotitolo</span>
+    </it-card>
+  `,
+};
+
+export const BannerConAzione: Story = {
+  name: 'Card banner con azione',
+  decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <it-card variant="banner">
+      <span slot="title">Titolo del contenuto</span>
+      <it-icon slot="image" color="secondary" name="it-chart-line" size="xl"></it-icon>
+      <span slot="subtitle">Sottotitolo</span>
+      <a slot="footer" href="#">
+        Scopri maggiori informazioni
+        <span class="visually-hidden">su Titolo del contenuto</span>
+      </a>
+    </it-card>
+
+    <it-card variant="banner">
+      <span slot="title">Titolo del contenuto</span>
+      <it-icon slot="image" color="secondary" name="it-chart-line" size="xl"></it-icon>
+      <span slot="subtitle">Sottotitolo</span>
+      <it-button slot="footer" variant="primary" outline>
+        Apri il form di iscrizione
+        <span class="visually-hidden">per Titolo del contenuto</span>
+      </it-button>
+    </it-card>
+  `,
+};
+
+export const BannerInline: Story = {
+  name: 'Card banner inline',
+  decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <it-card variant="inline-banner">
+      <a slot="title" href="#">Titolo del contenuto</a>
+      <it-icon slot="image" color="secondary" name="it-chart-line" size="xl"></it-icon>
+      <span slot="subtitle">Sottotitolo</span>
+    </it-card>
+
+    <it-card variant="inline-banner-reverse">
+      <a slot="title" href="#">Titolo del contenuto</a>
+      <it-icon slot="image" color="secondary" name="it-chart-line" size="xl"></it-icon>
+      <span slot="subtitle">Sottotitolo</span>
+    </it-card>
+
+    <it-card variant="inline-banner-mini">
+      <a slot="title" href="#">Titolo del contenuto</a>
+      <it-icon slot="image" color="secondary" name="it-chart-line" size="xl"></it-icon>
+      <span slot="subtitle">Versione inline anche su mobile</span>
+    </it-card>
+
+    <it-card variant="inline-banner-mini-reverse">
+      <a slot="title" href="#">Titolo del contenuto</a>
+      <it-icon slot="image" color="secondary" name="it-chart-line" size="xl"></it-icon>
+      <span slot="subtitle">Versione inline anche su mobile</span>
+    </it-card>
+  `,
+};
+
+export const BordiEOmbre: Story = {
+  name: 'Bordi e ombre',
+  decorators: [
+    (story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr 1fr;">${story()}</div> `,
+  ],
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <it-card>
+      <a slot="title" href="#">Titolo h3</a>
+      <span slot="text">
+        Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe,
+        senza troncamento.
+      </span>
+      <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+    </it-card>
+
+    <it-card shadow="md">
+      <a slot="title" href="#">Titolo h3</a>
+      <span slot="text">
+        Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe,
+        senza troncamento.
+      </span>
+      <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+    </it-card>
+
+    <it-card shadow="lg">
+      <a slot="title" href="#">Titolo h3</a>
+      <span slot="text">
+        Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe,
+        senza troncamento.
+      </span>
+      <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+    </it-card>
+
+    <it-card shadow="md" border="0" style="grid-column:2">
+      <a slot="title" href="#">Titolo h3</a>
+      <span slot="text">
+        Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe,
+        senza troncamento.
+      </span>
+      <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+    </it-card>
+
+    <it-card shadow="lg" border="0" style="grid-column:3">
+      <a slot="title" href="#">Titolo h3</a>
+      <span slot="text">
+        Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe,
+        senza troncamento.
+      </span>
+      <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+    </it-card>
+  `,
+};
+
+export const Immagini: Story = {
+  decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <it-card ratio="21x9">
+      <a slot="title" href="#">Titolo del contenuto</a>
+      <figure slot="image" class="figure img-full">
+        <img
+          src="https://placeholderimage.eu/api/city/800/600"
+          alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+        />
+      </figure>
+      <span slot="text">Card con immagine con proporzioni 21:9.</span>
+      <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+    </it-card>
+
+    <it-card ratio="16x9">
+      <a slot="title" href="#">Titolo del contenuto</a>
+      <figure slot="image" class="figure img-full">
+        <img
+          src="https://placeholderimage.eu/api/city/800/600"
+          alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+        />
+      </figure>
+      <span slot="text">Card con immagine con proporzioni 16:9.</span>
+      <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+    </it-card>
+
+    <it-card ratio="4x3">
+      <a slot="title" href="#">Titolo del contenuto</a>
+      <figure slot="image" class="figure img-full">
+        <img
+          src="https://placeholderimage.eu/api/city/800/600"
+          alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+        />
+      </figure>
+      <span slot="text">Card con immagine con proporzioni 4:3.</span>
+      <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+    </it-card>
+
+    <it-card ratio="1x1">
+      <a slot="title" href="#">Titolo del contenuto</a>
+      <figure slot="image" class="figure img-full">
+        <img
+          src="https://placeholderimage.eu/api/city/800/600"
+          alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+        />
+      </figure>
+      <span slot="text">Card con immagine con proporzioni 1:1.</span>
+      <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+    </it-card>
+  `,
+};
+
+export const AltezzaDelleCard: Story = {
+  name: 'Altezza delle card',
+  decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <it-card full-height>
+      <a slot="title" href="#">Titolo del contenuto</a>
+      <figure slot="image" class="figure img-full">
+        <img
+          src="https://placeholderimage.eu/api/city/800/600"
+          alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+        />
+      </figure>
+      <span slot="text">
+        Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe,
+        senza troncamento.
+      </span>
+      <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+    </it-card>
+
+    <it-card full-height>
+      <a slot="title" href="#">Titolo del contenuto</a>
+      <span slot="text">
+        Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe,
+        senza troncamento.
+      </span>
+      <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+    </it-card>
+  `,
+};
+
+export const PulsantiMobile: Story = {
+  name: 'Pulsanti a tutta larghezza su mobile',
+  decorators: [(story) => html` <div style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div> `],
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <it-card>
+      <a slot="title" href="#">Titolo dell'evento</a>
+      <span slot="subtitle">Dal 4 al 6 agosto</span>
+      <span slot="text">
+        Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe,
+        senza troncamento.
+      </span>
+      <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+      <div slot="actions" class="d-grid gap-2 d-md-block">
+        <a href="#" class="btn btn-outline-secondary">
+          Prenota
+          <span class="visually-hidden">per Titolo dell'evento</span>
+        </a>
+      </div>
+    </it-card>
+  `,
+};
+
+export const ListeCardNumerose: Story = {
+  name: 'Liste per gruppi numerosi di card',
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <ul class="it-card-list row" aria-label="Risultati della ricerca: ">
+      <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+        <it-card>
+          <a slot="title" href="#">Primo risultato</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </li>
+      <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+        <it-card>
+          <a slot="title" href="#">Secondo risultato</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </li>
+      <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+        <it-card>
+          <a slot="title" href="#">Terzo risultato</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </li>
+      <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+        <it-card>
+          <a slot="title" href="#">Quarto risultato</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </li>
+      <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+        <it-card>
+          <a slot="title" href="#">Quinto risultato</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </li>
+      <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
+        <it-card>
+          <a slot="title" href="#">Sesto risultato</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </li>
+    </ul>
+  `,
+};
+
+export const ClassiDedicate: Story = {
+  name: 'Uso di classi dedicate (per piccoli gruppi)',
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <div class="it-card-group">
+      <it-card>
+        <a slot="title" href="#">Titolo della prima card</a>
+        <span slot="text"> Questo è un testo breve che riassume il contenuto della pagina di destinazione. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Titolo della seconda card</a>
+        <span slot="text"> Questo è un testo breve che riassume il contenuto della pagina di destinazione. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Titolo della terza card</a>
+        <span slot="text"> Questo è un testo breve che riassume il contenuto della pagina di destinazione. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Titolo della quarta card</a>
+        <span slot="text"> Questo è un testo breve che riassume il contenuto della pagina di destinazione. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+    </div>
+  `,
+};
+
+export const ClassiDedicateColonne: Story = {
+  name: 'Numero di colonne specifiche',
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <div class="it-card-group it-card-group-2-cols">
+      <it-card>
+        <a slot="title" href="#">Card in due colonne</a>
+        <span slot="text"> Questo gruppo mostra sempre due colonne su viewport medie e grandi. </span>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Card in due colonne</a>
+        <span slot="text"> Questo gruppo mostra sempre due colonne su viewport medie e grandi. </span>
+      </it-card>
+    </div>
+  `,
+};
+
+export const ClassiDedicateCentrate: Story = {
+  name: 'Centrate orizzontalmente',
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <div class="it-card-group it-card-group-center">
+      <it-card>
+        <a slot="title" href="#">Card centrata</a>
+        <span slot="text"> Questo gruppo ha le card centrate nella pagina. </span>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Card centrata</a>
+        <span slot="text"> Questo gruppo ha le card centrate nella pagina. </span>
+      </it-card>
+    </div>
+  `,
+};
+
+export const ClassiDedicateContainer: Story = {
+  name: 'Uso rispetto al contenitore (sperimentale)',
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <div class="it-card-group it-card-group-container-aware">
+      <it-card>
+        <a slot="title" href="#">Card con Container Queries</a>
+        <span slot="text"> Questa card si adatta alla dimensione del suo contenitore, non della viewport. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Card con Container Queries</a>
+        <span slot="text"> Questa card si adatta alla dimensione del suo contenitore, non della viewport. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Card con Container Queries</a>
+        <span slot="text"> Questa card si adatta alla dimensione del suo contenitore, non della viewport. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+      <it-card>
+        <a slot="title" href="#">Card con Container Queries</a>
+        <span slot="text"> Questa card si adatta alla dimensione del suo contenitore, non della viewport. </span>
+        <time slot="footer" class="it-card-date" datetime="2026-10-12"> 12 ottobre, 2026 </time>
+      </it-card>
+    </div>
+  `,
+};
+
+export const ClassiDedicateConfrontoColonne: Story = {
+  name: 'Confronto in colonne diverse',
+  argTypes: { ...disabledControls() },
+  render: () => html`
+    <div class="row">
+      <div class="col-12 col-lg-8 mb-4">
+        <div class="p-3 bg-light">
+          <div class="it-card-group it-card-group-container-aware">
+            <it-card>
+              <a slot="title" href="#">Card in colonna larga</a>
+              <span slot="text"> In questa colonna larga, le card si distribuiscono su più colonne. </span>
+            </it-card>
+            <it-card>
+              <a slot="title" href="#">Card in colonna larga</a>
+              <span slot="text"> In questa colonna larga, le card si distribuiscono su più colonne. </span>
+            </it-card>
+            <it-card>
+              <a slot="title" href="#">Card in colonna larga</a>
+              <span slot="text"> In questa colonna larga, le card si distribuiscono su più colonne. </span>
+            </it-card>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4 mb-4">
+        <div class="p-3 bg-light">
+          <div class="it-card-group it-card-group-container-aware">
+            <it-card>
+              <a slot="title" href="#">Card in colonna stretta</a>
+              <span slot="text"> In questa colonna stretta, le card si dispongono su una singola colonna. </span>
+            </it-card>
+            <it-card>
+              <a slot="title" href="#">Card in colonna stretta</a>
+              <span slot="text"> In questa colonna stretta, le card si dispongono su una singola colonna. </span>
+            </it-card>
+            <it-card>
+              <a slot="title" href="#">Card in colonna stretta</a>
+              <span slot="text"> In questa colonna stretta, le card si dispongono su una singola colonna. </span>
+            </it-card>
+          </div>
+        </div>
+      </div>
+    </div>
   `,
 };
