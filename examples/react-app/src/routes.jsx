@@ -20,6 +20,7 @@ import Hero from './pages/Hero';
 import Icon from './pages/Icon';
 import Input from './pages/Input';
 import List from './pages/List';
+import Megamenu from './pages/Megamenu';
 import Modal from './pages/Modal';
 import Navscroll from './pages/Navscroll';
 import Overlay from './pages/Overlay';
@@ -57,6 +58,7 @@ export const AppRoutes = [
   { path: '/icon', element: <Icon />, title: 'Icon' },
   { path: '/input', element: <Input />, title: 'Input' },
   { path: '/list', element: <List />, title: 'List' },
+  { path: '/megamenu', element: <Megamenu />, title: 'Megamenu' },
   { path: '/modal', element: <Modal />, title: 'Modal' },
   { path: '/navscroll', element: <Navscroll />, title: 'Navscroll' },
   { path: '/overlay', element: <Overlay />, title: 'Overlay' },

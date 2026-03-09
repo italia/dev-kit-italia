@@ -17,8 +17,6 @@
       </a>
     </div>
     <div class="container">
-      <div>Vite + Svelte</div>
-
       <nav class="navbar navbar-expand-lg" aria-label="Menu principale">
         <div class="navbar-collapsable" id="navbar-A" tabindex="-1">
           <div class="menu-wrapper justify-content-lg-between">

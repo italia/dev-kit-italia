@@ -54,7 +54,7 @@
 </style>
 
 <div class="main-body">
-  <header class="app-header">
+  <header class="app-header bg-primary">
     <div class="container">
       <div>
         <svg
@@ -96,40 +96,30 @@
           </defs>
         </svg>
       </div>
-      <nav class="app-nav">
-        <a routerLink="/accordion">Accordion</a>
-        <a routerLink="/affix">Affix</a>
-        <a routerLink="/autocomplete">Autocomplete</a>
-        <a routerLink="/avatar">Avatar</a>
-        <a routerLink="/back-to-top">Back to Top</a>
-        <a routerLink="/back">Back</a>
-        <a routerLink="/badge">Badge</a>
-        <a routerLink="/breadcrumbs">Breadcrumbs</a>
-        <a routerLink="/button">Button</a>
-        <a routerLink="/callout">Callout</a>
-        <a routerLink="/checkbox">Checkbox</a>
-        <a routerLink="/chip">Chip</a>
-        <a routerLink="/collapse">Collapse</a>
-        <a routerLink="/dropdown">Dropdown</a>
-        <a routerLink="/form">Form</a>
-        <a routerLink="/forward">Forward</a>
-        <a routerLink="/hero">Hero</a>
-        <a routerLink="/icon">Icon</a>
-        <a routerLink="/input">Input</a>
-        <a routerLink="/list">List</a>
-        <a routerLink="/modal">Modal</a>
-        <a routerLink="/navscroll">Navscroll</a>
-        <a routerLink="/overlay">Overlay</a>
-        <a routerLink="/pagination">Pagination</a>
-        <a routerLink="/popover">Popover</a>
-        <a routerLink="/rating">Rating</a>
-        <a routerLink="/radio">Radio</a>
-        <a routerLink="/section">Section</a>
-        <a routerLink="/select">Select</a>
-        <a routerLink="/sidebar">Sidebar</a>
-        <a routerLink="/skiplinks">Skiplinks</a>
-        <a routerLink="/sticky">Sticky</a>
-        <a routerLink="/video">Video</a>
+      <nav class="navbar navbar-expand-lg" aria-label="Menu principale">
+        <div class="navbar-collapsable" id="navbar-A" tabindex="-1">
+          <div class="menu-wrapper justify-content-lg-between">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <it-megamenu label="Componenti" columns="6">
+                  <!-- DROPDOWN LINKS ITEMS -->
+                  <ng-container *ngFor="let route of approutes">
+                    <it-dropdown-item
+                      [routerLink]="route.path">
+                      <it-icon
+                        slot="prefix"
+                        name="it-arrow-right-triangle"
+                        size="sm"
+                        color="primary"
+                      ></it-icon>
+                      {{ route.title }}
+                    </it-dropdown-item>
+                  </ng-container>
+                </it-megamenu>
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
     </div>
   </header>

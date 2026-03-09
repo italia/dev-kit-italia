@@ -2,9 +2,12 @@
 :root {
 }
 
+.angular-logo {
+  background-color: #fff;
+}
 .app-header {
-  margin-top: 1rem;
-  border-bottom: 1px solid currentColor;
+  width: 100%;
+  padding-top: 1rem;
   margin-bottom: 2rem;
   text-align: center;
 }

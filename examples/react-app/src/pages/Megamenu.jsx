@@ -1,142 +1,521 @@
 export default function Megamenu() {
   return (
     <>
-      <h1>it-megamenu</h1>
+      <h1>Megamenu</h1>
 
-      {/* Base */}
+      {/* completo */}
       <section>
-        <h2>Base</h2>
-        <it-megamenu label="Megamenu base" variant="primary">
-          <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 3</it-dropdown-item>
-        </it-megamenu>
-      </section>
+        <h2>Megamenu completo</h2>
+        <nav className="navbar navbar-expand-lg" aria-label="Menu principale">
+          <it-button
+            it-aria-label="Mostra o nascondi il menu"
+            className="custom-navbar-toggler"
+            it-aria-controls="navbar-A"
+          >
+            <it-icon name="it-burger" color="inverse" size="sm"></it-icon>
+          </it-button>
+          <div className="navbar-collapsable" id="navbar-A" tabindex="-1">
+            <div className="close-div">
+              <it-button it-aria-label="Chiudi il menu" variant="link" size="sm" className="close-menu">
+                <it-icon name="it-close" color="inverse" size="sm"></it-icon>
+              </it-button>
+            </div>
+            <div className="menu-wrapper justify-content-lg-between">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <it-megamenu label="Megamenu" columns="2" footer-align="right">
+                    {/* SLOT DESCRIPTION */}
+                    <div slot="description">
+                      <div className="ratio ratio-21x9 lightgrey-bg-a1 mb-4 rounded">
+                        <figure className="figure">
+                          <img
+                            src="https://placehold.co/560x240/ebebeb/808080/?text=Immagine"
+                            className="figure-img img-fluid rounded"
+                            alt="Segnaposto"
+                          />
+                        </figure>
+                      </div>
+                      <p>
+                        Testo utile a fornire una descrizione dei contenuti della sezione
+                        <strong>Megamenu</strong>.
+                      </p>
+                    </div>
 
-      {/* Con Header */}
-      <section>
-        <h2>Con Header</h2>
-        <it-megamenu label="Con header" variant="primary">
-          <div slot="header" style={{ padding: '1rem', background: '#f5f5f5' }}>
-            <h3>Sezione Header</h3>
-            <p>Contenuto nell'header del megamenu</p>
+                    {/* SLOT HEADER */}
+                    <div slot="header">
+                      <a className="it-heading-link" href="#">
+                        <it-icon
+                          name="it-arrow-right-triangle"
+                          size="sm"
+                          color="primary"
+                          className="me-2 mb-1"
+                        ></it-icon>
+                        <span>Esplora la sezione Megamenu</span>
+                      </a>
+                    </div>
+
+                    {/* DROPDOWN LINKS ITEMS  */}
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 1
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 2
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 3
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 4
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 5
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 6
+                    </it-dropdown-item>
+                  </it-megamenu>
+                </li>
+              </ul>
+            </div>
           </div>
-          <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 3</it-dropdown-item>
-        </it-megamenu>
+        </nav>
       </section>
 
-      {/* Con Footer */}
+      {/* base */}
       <section>
-        <h2>Con Footer</h2>
-        <it-megamenu label="Con footer" variant="primary">
-          <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 3</it-dropdown-item>
-          <div slot="footer" style={{ padding: '1rem', background: '#f5f5f5', borderTop: '1px solid #ddd' }}>
-            <p>Contenuto nel footer del megamenu</p>
-            <it-button variant="primary" size="sm">
-              Visualizza tutto
-            </it-button>
+        <h2>Megamenu base</h2>
+        <nav className="navbar navbar-expand-lg" aria-label="Menu principale">
+          <it-button
+            it-aria-label="Mostra o nascondi il menu"
+            className="custom-navbar-toggler"
+            it-aria-controls="navbar-A"
+          >
+            <it-icon name="it-burger" color="inverse" size="sm"></it-icon>
+          </it-button>
+          <div className="navbar-collapsable" id="navbar-A" tabindex="-1">
+            <div className="close-div">
+              <it-button it-aria-label="Chiudi il menu" variant="link" size="sm" className="close-menu">
+                <it-icon name="it-close" color="inverse" size="sm"></it-icon>
+              </it-button>
+            </div>
+            <div className="menu-wrapper justify-content-lg-between">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <it-megamenu label="Megamenu" columns="3" footer-align="right">
+                    {/* DROPDOWN LINKS ITEMS */}
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 1
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 2
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 3
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 4
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 5
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 6
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 7
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 8
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 9
+                    </it-dropdown-item>
+                  </it-megamenu>
+                </li>
+              </ul>
+            </div>
           </div>
-        </it-megamenu>
+        </nav>
       </section>
 
-      {/* Con Description */}
+      {/* con link esplora la sezione */}
       <section>
-        <h2>Con Description</h2>
-        <it-megamenu label="Con descrizione" variant="primary">
-          <div slot="description" style={{ padding: '1rem', color: '#666' }}>
-            Descrizione breve del megamenu che appare sotto le azioni
+        <h2>Megamenu con link “Esplora la sezione”</h2>
+        <nav className="navbar navbar-expand-lg" aria-label="Menu principale">
+          <it-button
+            it-aria-label="Mostra o nascondi il menu"
+            className="custom-navbar-toggler"
+            it-aria-controls="navbar-A"
+          >
+            <it-icon name="it-burger" color="inverse" size="sm"></it-icon>
+          </it-button>
+          <div className="navbar-collapsable" id="navbar-A" tabindex="-1">
+            <div className="close-div">
+              <it-button it-aria-label="Chiudi il menu" variant="link" size="sm" className="close-menu">
+                <it-icon name="it-close" color="inverse" size="sm"></it-icon>
+              </it-button>
+            </div>
+            <div className="menu-wrapper justify-content-lg-between">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <it-megamenu label="Megamenu" columns="3" footer-align="right">
+                    {/* DROPDOWN LINKS ITEMS */}
+                    {/* SLOT HEADER */}
+                    <div slot="header">
+                      <a className="it-heading-link" href="#">
+                        <it-icon
+                          name="it-arrow-right-triangle"
+                          size="sm"
+                          color="primary"
+                          className="me-2 mb-1"
+                        ></it-icon>
+                        <span>Esplora la sezione Megamenu</span>
+                      </a>
+                    </div>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 1
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 2
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 3
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 4
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 5
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 6
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 7
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 8
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 9
+                    </it-dropdown-item>
+                  </it-megamenu>
+                </li>
+              </ul>
+            </div>
           </div>
-          <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 3</it-dropdown-item>
-        </it-megamenu>
+        </nav>
       </section>
 
-      {/* Completo: Header + Items + Description + Footer */}
+      {/* con link esplora tutti */}
       <section>
-        <h2>Completo</h2>
-        <it-megamenu label="Megamenu completo" variant="primary" columns={3}>
-          <div slot="header" style={{ padding: '1rem', background: '#f5f5f5' }}>
-            <h3>Header</h3>
-            <p>Sezione superiore del megamenu</p>
+        <h2>Megamenu con link “Esplora tutti”</h2>
+        <nav className="navbar navbar-expand-lg" aria-label="Menu principale">
+          <it-button
+            it-aria-label="Mostra o nascondi il menu"
+            className="custom-navbar-toggler"
+            it-aria-controls="navbar-A"
+          >
+            <it-icon name="it-burger" color="inverse" size="sm"></it-icon>
+          </it-button>
+          <div className="navbar-collapsable" id="navbar-A" tabindex="-1">
+            <div className="close-div">
+              <it-button it-aria-label="Chiudi il menu" variant="link" size="sm" className="close-menu">
+                <it-icon name="it-close" color="inverse" size="sm"></it-icon>
+              </it-button>
+            </div>
+            <div className="menu-wrapper justify-content-lg-between">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <it-megamenu label="Megamenu" columns="3" footer-align="right">
+                    {/* DROPDOWN LINKS ITEMS */}
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 1
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 2
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 3
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 4
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 5
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 6
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 7
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 8
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 9
+                    </it-dropdown-item>
+
+                    {/* SLOT FOOTER */}
+                    <div slot="footer">
+                      <a className="it-footer-link" href="#">
+                        <span>Esplora tutti i contenuti del megamenu</span>
+                        <it-icon name="it-arrow-right" size="sm" color="primary" className="ms-2"></it-icon>
+                      </a>
+                    </div>
+                  </it-megamenu>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div slot="description" style={{ padding: '0.5rem', color: '#666', fontSize: '0.9rem' }}>
-            Descrizione dettagliata delle azioni disponibili
+        </nav>
+      </section>
+
+      {/* con call to action in basso */}
+      <section>
+        <h2>Megamenu con call to action in basso</h2>
+
+        <nav className="navbar navbar-expand-lg" aria-label="Menu principale">
+          <it-button
+            it-aria-label="Mostra o nascondi il menu"
+            className="custom-navbar-toggler"
+            it-aria-controls="navbar-A"
+          >
+            <it-icon name="it-burger" color="inverse" size="sm"></it-icon>
+          </it-button>
+          <div className="navbar-collapsable" id="navbar-A" tabindex="-1">
+            <div className="close-div">
+              <it-button it-aria-label="Chiudi il menu" variant="link" size="sm" className="close-menu">
+                <it-icon name="it-close" color="inverse" size="sm"></it-icon>
+              </it-button>
+            </div>
+            <div className="menu-wrapper justify-content-lg-between">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <it-megamenu label="Megamenu" columns="3" footer-align="" footer-position="bottom">
+                    {/* DROPDOWN LINKS ITEMS */}
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 1
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 2
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 3
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 4
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 5
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 6
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 7
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 8
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 9
+                    </it-dropdown-item>
+
+                    {/* SLOT FOOTER */}
+                    <div slot="footer">
+                      <div className="d-flex flex-column flex-lg-row">
+                        <a className="it-footer-link flex-grow-1" href="#">
+                          <it-icon name="it-bookmark" size="sm" color="primary" className="me-2"></it-icon>
+                          <span>Call to action 1</span>
+                        </a>
+                        <a className="it-footer-link flex-grow-1" href="#">
+                          <it-icon name="it-bookmark" size="sm" color="primary" className="me-2"></it-icon>
+                          <span>Call to action 2</span>
+                        </a>
+                      </div>
+                    </div>
+                  </it-megamenu>
+                </li>
+              </ul>
+            </div>
           </div>
-          <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 3</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 4</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 5</it-dropdown-item>
-          <div slot="footer" style={{ padding: '1rem', background: '#f5f5f5', borderTop: '1px solid #ddd' }}>
-            <p>Footer con azioni aggiuntive</p>
-            <it-button variant="primary" size="sm">
-              Vai al menu completo
-            </it-button>
+        </nav>
+      </section>
+
+      {/* con call to action a destra */}
+      <section>
+        <h2>Megamenu con call to action a destra</h2>
+
+        <nav className="navbar navbar-expand-lg" aria-label="Menu principale">
+          <it-button
+            it-aria-label="Mostra o nascondi il menu"
+            className="custom-navbar-toggler"
+            it-aria-controls="navbar-A"
+          >
+            <it-icon name="it-burger" color="inverse" size="sm"></it-icon>
+          </it-button>
+          <div className="navbar-collapsable" id="navbar-A" tabindex="-1">
+            <div className="close-div">
+              <it-button it-aria-label="Chiudi il menu" variant="link" size="sm" className="close-menu">
+                <it-icon name="it-close" color="inverse" size="sm"></it-icon>
+              </it-button>
+            </div>
+            <div className="menu-wrapper justify-content-lg-between">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <it-megamenu label="Megamenu" columns="3" footer-align="" footer-position="right">
+                    {/* DROPDOWN LINKS ITEMS */}
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 1
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 2
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 3
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 4
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 5
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 6
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 7
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 8
+                    </it-dropdown-item>
+
+                    <it-dropdown-item href="#">
+                      <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                      Link lista 9
+                    </it-dropdown-item>
+
+                    {/* SLOT FOOTER */}
+                    <div slot="footer">
+                      <div className="d-flex flex-column justify-content-around">
+                        <a className="it-footer-link" href="#">
+                          <it-icon name="it-bookmark" size="sm" color="primary" className="me-2"></it-icon>
+                          <span>Call to action 1</span>
+                        </a>
+                        <a className="it-footer-link" href="#">
+                          <it-icon name="it-bookmark" size="sm" color="primary" className="me-2"></it-icon>
+                          <span>Call to action 2</span>
+                        </a>
+                      </div>
+                    </div>
+                  </it-megamenu>
+                </li>
+              </ul>
+            </div>
           </div>
-        </it-megamenu>
-      </section>
-
-      {/* Varianti Button */}
-      <section>
-        <h2>Varianti Button</h2>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <it-megamenu label="Primary" variant="primary">
-            <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-            <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-          </it-megamenu>
-          <it-megamenu label="Secondary" variant="secondary">
-            <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-            <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-          </it-megamenu>
-          <it-megamenu label="Tertiary" variant="tertiary">
-            <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-            <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-          </it-megamenu>
-        </div>
-      </section>
-
-      {/* Dimensioni */}
-      <section>
-        <h2>Dimensioni</h2>
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-          <it-megamenu label="Small" variant="primary" size="sm">
-            <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-            <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-          </it-megamenu>
-          <it-megamenu label="Medium" variant="primary" size="md">
-            <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-            <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-          </it-megamenu>
-          <it-megamenu label="Large" variant="primary" size="lg">
-            <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-            <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-          </it-megamenu>
-        </div>
-      </section>
-
-      {/* Disabilitato */}
-      <section>
-        <h2>Disabilitato</h2>
-        <it-megamenu label="Disabilitato" variant="primary" disabled>
-          <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-        </it-megamenu>
-      </section>
-
-      {/* Colonne Multiple */}
-      <section>
-        <h2>Colonne Multiple</h2>
-        <it-megamenu label="2 Colonne" variant="primary" columns={2} style={{ minWidth: '300px' }}>
-          <it-dropdown-item href="#">Azione 1</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 2</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 3</it-dropdown-item>
-          <it-dropdown-item href="#">Azione 4</it-dropdown-item>
-        </it-megamenu>
+        </nav>
       </section>
     </>
   );

@@ -1,5 +1,5 @@
 <template>
-  <h1>it-megamenu</h1>
+  <h1>Megamenu</h1>
 <!-- completo -->
   <section>
     <h2>Megamenu completo</h2>
