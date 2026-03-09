@@ -32,6 +32,7 @@ import Select from './pages/Select';
 import Sidebar from './pages/Sidebar';
 import Skiplinks from './pages/Skiplinks';
 import Sticky from './pages/Sticky';
+import Table from './pages/Table';
 import Video from './pages/Video';
 import Pagination from './pages/Pagination';
 
@@ -71,5 +72,6 @@ export const AppRoutes = [
   { path: '/sidebar', element: <Sidebar />, title: 'Sidebar' },
   { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
+  { path: '/tables', element: <Table />, title: 'Tables' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];

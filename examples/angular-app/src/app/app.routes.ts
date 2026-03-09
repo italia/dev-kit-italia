@@ -180,6 +180,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/sticky.component').then((c) => c.StickyComponent),
   },
   {
+    title: 'Tables',
+    path: 'tables',
+    loadComponent: () => import('./pages/table.component').then((c) => c.TableComponent),
+  },
+  {
     title: 'Video',
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),

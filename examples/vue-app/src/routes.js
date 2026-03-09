@@ -33,6 +33,7 @@ import Section from './components/Section.vue';
 import Select from './components/Select.vue';
 import Sidebar from './components/Sidebar.vue';
 import Sticky from './components/Sticky.vue';
+import Table from './pages/Table.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Pagination from './components/Pagination.vue';
@@ -73,6 +74,7 @@ const routes = [
   { path: '/sidebar', name: 'Sidebar', component: Sidebar },
   { path: '/skiplinks', name: 'Skiplinks', component: Skiplinks },
   { path: '/sticky', name: 'Sticky', component: Sticky },
+  { path: '/tables', name: 'Tables', component: Table },
   { path: '/video', name: 'Video', component: Video },
 ];
 
