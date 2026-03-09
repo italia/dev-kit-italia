@@ -185,6 +185,12 @@ $it-components: (
 
     padding: 1rem,
   ),
+  'it-megamenu': (
+    border-radius: var(--#{$prefix}btn-border-radius, 4px),
+    height: 48px,
+    padding: 0 1rem,
+    attr: 'label',
+  ),
 );
 
 @each $tag, $params in $it-components {

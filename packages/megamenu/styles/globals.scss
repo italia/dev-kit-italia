@@ -1,4 +1,17 @@
 it-megamenu {
+  &:not(:defined) {
+    --it-fouc-bg: transparent;
+    --it-host-display: inline-flex;
+    align-items: center;
+
+    it-dropdown-item:not(:defined),
+    [slot='description'],
+    [slot='header'],
+    [slot='footer'] {
+      display: none;
+    }
+  }
+
   position: unset;
 
   [slot='description'] {
