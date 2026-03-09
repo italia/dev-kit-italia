@@ -5,12 +5,11 @@ import * as ForwardStories from './forward.stories';
 
 # Forward
 
-<description>Pulsante per scorrere rapidamente a un contenuto specifico su una pagina lunga</description>
+<description>Pulsante per scorrere rapidamente a un contenuto specifico su una pagina lunga.</description>
 
 ## Cosa fa
 
-Il componente Forward permette di creare link che, quando cliccati, scorrono automaticamente la pagina fino a un'àncora specifica con un'animazione fluida.
-Puoi utilizzare il componente Forward su pagine lunghe, per permettere agli utenti di scorrere direttamente a un contenuto specifico.
+Il componente Forward crea link ancore che permettono di scorrere automaticamente la pagina fino a un contenuto specifico con un'animazione fluida. È particolarmente utile su pagine molto lunghe.
 
 [Approfondisci quando e come usare il componente Forward](https://designers.italia.it/design-system/componenti/forward/)
 
@@ -19,13 +18,12 @@ Questo componente non possiede attributi, ma si basa su una struttura HTML prede
 <Canvas of={ForwardStories.EsempioBase} />
 ## Indicazioni generali
 
-Per attivare lo scorrimento automatico del documento all'àncora indicata nell'attributo `href`, è sufficiente aggiungere al tag link la classe `.forward` e un semplice script JavaScript che gestisce l'evento di click: viene fornito un esempio associato all'esempio interattivo.
-
+Per attivare lo scorrimento automatico della pagina all'àncora indicata nell'attributo `href`, aggiungi al tag link la classe `.forward` e un semplice script JavaScript che gestisca l'evento di clic. Un esempio è fornito insieme all’esempio interattivo.
 
 Fai attenzione a:
-- Non usare più componenti Forward sulla stessa pagina.
-- Rendere coerente la funzione nel contesto dello stesso sito o servizio se presente su più pagine.
-- Testare il funzionamento e il risultato dell'azione, in particolare ponendo attenzione che al compiersi dell'azione alcuni contenuti non siano nascosti da elementi sticky o barre di navigazione.
+- non usare più forward sulla stessa pagina;
+- mantenerne coerente la funzione se il componente è presente su più pagine dello stesso sito o servizio;
+- testarne il funzionamento, verificando che al completamento dell’azione nessun contenuto venga nascosto da elementi sticky o barre di navigazione.
 
 <div class="callout callout-primary">
   <div class="callout-inner">
@@ -33,7 +31,7 @@ Fai attenzione a:
       <span class="text">Stili</span>
     </div>
     <p>
-      In caso non si stia utilizzando il bundle unico, assicurarsi di avere importato tutti i fogli di stile necessari
+      Se non stai utilizzando il bundle unico, assicurarti di avere importato tutti i fogli di stile necessari
       da `bootstrap-italia`:
 
 
@@ -50,8 +48,6 @@ Fai attenzione a:
 
 ## Accessibilità
 
-Per garantire l'accessibilità del componente Forward, segui queste linee guida:
-- Assicurati di considerare le preferenze di riduzione del movimento degli utenti.
-Lo script di esempio incluso nell'esempio interattivo tiene conto di queste preferenze, disabilitando l'animazione di scorrimento fluido se l'utente ha indicato una preferenza per ridurre il movimento.
-
-- Assicurati  che il link sia chiaramente identificabile come tale e che il testo/testo di supporto del link descriva in modo accurato la destinazione dello scorrimento.
+Per garantire l'accessibilità del componente Forward:
+- considera le preferenze di riduzione del movimento degli utenti. Lo script incluso negli esempi interattivi gestisce automaticamente questa impostazione, disabilitando l’animazione di scorrimento fluido se l’utente ha richiesto di ridurre il movimento;
+- assicurati che il link sia chiaramente identificabile come tale e che il testo, o il testo di supporto, descriva in modo accurato la destinazione dello scorrimento.

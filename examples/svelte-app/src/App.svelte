@@ -50,6 +50,7 @@
         <a href="#/sidebar">Sidebar</a>
         <a href="#/skiplinks">Skiplinks</a>
         <a href="#/sticky">Sticky</a>
+        <a href="#/tables">Tables</a>
         <a href="#/video">Video</a>
       </nav>
     </div>
@@ -58,7 +59,7 @@
     <Router />
   </main>
   <Footer />
-  <it-back-to-top it-aria-label="Torna su"></it-back-to-top>
+  <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
 </main>
 
 <style>

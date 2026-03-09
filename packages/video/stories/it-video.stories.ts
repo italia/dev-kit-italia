@@ -35,7 +35,7 @@ const renderComponent = (params: any) => html`
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Componenti/Video',
+  title: 'Componenti/Video player',
   tags: ['a11y-ok', 'web-component'],
   component: 'it-video',
   args: {
@@ -65,13 +65,13 @@ const meta = {
         },
       },
       description:
-        'Tracce per didascalie, sottotitoli, capitoli e descrizioni. Nel campo `kind` è necessario indicare la tipologia di traccia fra <ul><li>captions</li><li>subtitles</li><li>description</li><li>chapters</li><li>metadata</li></ul>',
+        'Tracce per didascalie, sottotitoli, capitoli e descrizioni. Nel campo `kind`, indica la tipologia di traccia fra <ul><li>captions</li><li>subtitles</li><li>description</li><li>chapters</li><li>metadata</li></ul>',
     },
     consentOptions: {
       name: 'consent-options',
       control: 'object',
       description:
-        'Oggetto per la configurazione del consenso dei cookie. <br/>Di default viene salvata una variabile nel localstorage con lo stesso nome del type del video, ma è possibile personalizzarla passando in `consentOptions` un valore per `consentKey`. <br/>Inoltre, quando viene dato il consenso permanente per i cookie, è possibile personalizzare il comportamento passando in questo oggetto due funzioni specifiche per la gestione della memorizzazione del consenso: `onAccept` e `isAccepted`.',
+        'Oggetto per la configurazione del consenso dei cookie. <br/>Di default viene salvata una variabile nel localstorage con lo stesso nome del type del video, ma puoi personalizzarla passando in `consentOptions` un valore per `consentKey`. <br/>Inoltre, quando viene dato il consenso permanente per i cookie, puoi personalizzare il comportamento passando in questo oggetto due funzioni specifiche per la gestione della memorizzazione del consenso: `onAccept` e `isAccepted`.',
       table: {
         defaultValue: {
           summary: '{}',
@@ -87,13 +87,13 @@ const meta = {
     translations: {
       control: 'object',
       description:
-        'Traduzioni del player per le diverse lingue. Di base è disponibile solo la lingua it. Usare questa prop per aggiungere le traduzioni in altre lingue. ',
+        'Traduzioni del player per le diverse lingue. Di base è disponibile solo la lingua italiana. Usa questa prop per aggiungere le traduzioni in altre lingue. ',
     },
     initPlugins: {
       name: 'init-plugins',
       control: 'text',
       description:
-        'Nome della propria funzione presente nella window che verrà invocata da video.js per inizializzare eventuali plugin aggiuntivi definiti dallo sviluppatore.',
+        'Nome della propria funzione presente nella window che verrà invocata da video.js per inizializzare eventuali plug-in aggiuntivi definiti dallo sviluppatore.',
     },
   },
   parameters: {
@@ -162,7 +162,7 @@ export const ImmagineDiAnteprima: Story = {
     docs: {
       description: {
         story: `
-Per aggiungere un’immagine di anteprima come copertina al video, utilizza l’attributo \`poster\` inizializzato con la url dell’anteprima.
+Per aggiungere un’immagine di anteprima come copertina al video, usa l’attributo \`poster\` inizializzato con l'url dell’anteprima.
 
 <div class="callout callout-warning"><div class="callout-inner"><div class="callout-title"><span class="text">Attenzione</span></div>
 <p>Le immagini caricate come copertina devono rispettare la stessa \`aspect ratio\` del video per una corretta visualizzazione.
@@ -188,27 +188,23 @@ export const Streaming: Story = {
     docs: {
       description: {
         story: `
-Servire i video tramite dei file in formato mp4 o webm (che sono i formati più supportati) non è la migliore soluzione in termini di performance e di ottimizzazione della banda.
-
 Per garantire una buona esperienza utente è fondamentale scegliere il formato di riproduzione più adatto.
 
-In questo contesto, i formati di streaming HLS e DASH offrono importanti vantaggi rispetto al tradizionale file MP4.
+I formati video MP4 o WEBM, pur essendo i più supportati, non sono la soluzione migliore in termini di performance e ottimizzazione della banda.
 
-L’uso dei formati di streaming permette una riproduzione fluida dei video online grazie alla loro
-capacità di adattarsi alla larghezza di banda disponibile. In questo modo si evitano interruzioni o rallentamenti durante la visualizzazione, migliorando l’esperienza utente. Inoltre, questi formati consentono di distribuire il contenuto su diverse piattaforme e dispositivi, aumentando la portabilità del video.
+I formati di streaming HLS e DASH, invece, si adattano alla larghezza di banda disponibile, evitando così interruzioni o rallentamenti durante la visualizzazione, e consentono di distribuire il contenuto su diverse piattaforme e dispositivi, aumentando la portabilità del video.
 
-<div class="callout callout-info"><div class="callout-inner"><div class="callout-title"><span class="text">Suggerimento</span></div><p>FFmpeg è uno strumento di conversione multimediale open-source che consente di convertire facilmente i
-file MP4 in formati adattivi come HLS o DASH, ti permette la conversione del video MP4 in un formato a
-bitrate variabile per adattare la qualità del video alle diverse velocità di connessione degli utenti.
-Approfondisci su <a href="https://ffmpeg.org/">FFmpeg</a>.</p></div></div>
+<div class="callout callout-info"><div class="callout-inner"><div class="callout-title"><span class="text">Suggerimento</span></div><p>FFmpeg è uno strumento di conversione multimediale open-source che ti consente di convertire facilmente i
+file MP4 in formati adattivi come HLS o DASH a bitrate variabile per adattare la qualità del video alle diverse velocità di connessione degli utenti.
+
+Approfondisci sul <a href="https://ffmpeg.org/">sito di FFmpeg</a>.</p></div></div>
 
 
 
 Le playlist HLS e DASH possono essere riprodotte su più domini condividendo solo l’URL.
-Tuttavia, a causa delle restrizioni imposte dalle politiche di sicurezza del browser, l’utilizzo di queste playlist in domini diversi da quello originale può causare errori CORS (Cross-Origin Resource Sharing).
-In altre parole, il browser può rifiutare l’accesso alle risorse audio e video, impedendo la corretta riproduzione del contenuto multimediale.
+Tuttavia, a causa delle restrizioni imposte dalle politiche di sicurezza del browser, l’utilizzo di queste playlist in domini diversi da quello originale può causare errori CORS (Cross-Origin Resource Sharing): il browser può rifiutare l’accesso alle risorse audio e video, impedendo la corretta riproduzione del contenuto multimediale.
 
-Per superare questo problema, è necessario configurare correttamente il server che fornisce le risorse audio e video, consentendo l’accesso a domini esterni tramite le policy CORS.
+Per superare questo problema, configura correttamente il server che fornisce le risorse audio e video, consentendo l’accesso a domini esterni tramite le policy CORS.
 
 Di seguito un esempio in formato MPEG-DASH:
 `,
@@ -240,23 +236,17 @@ export const GestirePiuTracceAudio: Story = {
     docs: {
       description: {
         story: `
-L’uso di più tracce audio nei video è una buona tecnica per migliorare l’accessibilità dei contenuti multimediali.
-Ad esempio, è possibile creare una traccia audio aggiuntiva che descrive in dettaglio le immagini e le azioni che si svolgono nel video, per aiutare le persone non vedenti a comprendere il contenuto visivo.
-Inoltre, l’aggiunta di tracce audio in lingue diverse consente di offrire il video in più lingue.
+Usare più tracce audio in un video può migliorare l'accessibilità del contenuto, ad esempio aggiungendo tracce audio descrittive per le persone non vedenti o tracce audio in lingue diverse.
 
-<div class="callout callout-info"><div class="callout-inner"><div class="callout-title"><span class="text">Tieni presente che</span></div>
-<p>Video.js offre un’implementazione cross-browser delle tracce audio, a condizione che la
-tecnologia di riproduzione supporti le tracce audio. Le tracce audio per i file mp4 sono
-supportate solo da Safari, altri browser non supportano la riproduzione mp4 con più tracce
-audio. L’unico modo per fornire l’audio multi-traccia cross-browser è l’uso dei formati
-HLS e/o DASH.
-Approfondisci su <a href="https://videojs.com/guides/audio-tracks/">Video.js</a></p>
+<div class="callout callout-info"><div class="callout-inner"><div class="callout-title"><span class="text">Formati supportati</span></div>
+<p>Video.js offre un’implementazione cross-browser delle tracce audio, a condizione che la tecnologia di riproduzione le supporti. Poiché la riproduzione multi-traccia in formato MP4 è supportata solo da Safari, l'uso dei formati HLS e/o DASH è l'unica soluzione per offrire audio multi-traccia cross-browser.
+
+<a href="https://videojs.com/guides/audio-tracks/">Approfondisci la guida di Video.js sulle tracce audio</a></p>
 </div></div>
 
+Per tutte le opzioni disponibili, [consulta la documentazione di VideoJS](https://videojs.com/guides/options/)
 
-Per vedere tutte le opzioni disponibili, consultare la documentazione di [VideoJS](https://videojs.com/guides/options/).
-
-Di seguito un esempio in formato HLS multilingua.
+Di seguito un esempio in formato HLS multilingua:
 `,
       },
     },
@@ -278,18 +268,16 @@ export const EmbedDaPiattaformeTerze: Story = {
     docs: {
       description: {
         story: `
-Oltre a consentire la riproduzione di video direttamente sulle proprie pagine web, il player video.js offre anche la possibilità di incorporare video provenienti da altre piattaforme come YouTube.
+Il player Video.js permette anche di incorporare video provenienti da altre piattaforme come YouTube, senza doverli caricare sul proprio sito web.
 
-Questa funzionalità consente di sfruttare i video già disponibili su queste piattaforme, senza doverli caricare sul proprio sito web.
-Tuttavia, è importante tenere in considerazione la questione della privacy: quando si incorporano video di terze parti, si può finire per condividere con queste piattaforme i dati degli utenti che visualizzano i video, come ad esempio le informazioni sulla navigazione o l’indirizzo IP.
-È quindi importante l’utilizzo di questa funzionalità assieme al componente di accettazione del consenso per garantire la protezione della privacy degli utenti.
+Quando si incorporano video di terze parti, alcune informazioni degli utenti (come dati di navigazione o indirizzo IP) possono essere condivise con le piattaforme terze. Per garantire la conformità ai requisiti di privacy, usa questa funzionalità insieme all'overlay di accettazione del consenso.
 
 <div class="callout callout-warning"><div class="callout-inner"><div class="callout-title"><span class="text">Nota</span></div>
 <p>Gli esempi che seguono fanno tutti riferimento alla piattaforma di terze parti YouTube.</p>
 </div></div>
 
 <div class="callout callout-info"><div class="callout-inner"><div class="callout-title"><span class="text">Responsabilità della privacy</span></div>
-<p>Coinvolgi il Responsabile per la protezione dei dati (RDP/DPO) della tua amministrazione e ricordati di aggiornare la cookie policy del sito. Designers Italia mette a disposizione il [kit Privacy](https://designers.italia.it/risorse-per-progettare/organizzare/privacy/) per approfondire questi temi e in particolare uno strumento dedicato alla redazione della Cookie policy che trovi in [questa azione del kit](https://designers.italia.it/risorse-per-progettare/organizzare/privacy/rispetta-la-privacy-per-il-go-live-di-un-sito/).</p>
+<p>Coinvolgi il Responsabile per la protezione dei dati (RDP/DPO) della tua amministrazione e ricordati di aggiornare la cookie policy del sito. Puoi usare il [kit Privacy](https://designers.italia.it/risorse-per-progettare/organizzare/privacy/) di Designers Italia per approfondire questi temi e [redarre la cookie policy](https://designers.italia.it/risorse-per-progettare/organizzare/privacy/rispetta-la-privacy-per-il-go-live-di-un-sito/).</p>
 </div></div>
 
 ### Attivazione dell’overlay di consenso

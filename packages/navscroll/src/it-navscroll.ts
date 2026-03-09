@@ -186,6 +186,10 @@ export class ItNavscroll extends BaseComponent {
     // if (!this.shadowRoot?.contains(this.modalEl)) {
     //   this.shadowRoot?.appendChild(this.modalEl);
     // }
+
+    if (this.position === 'bottom') {
+      document.body.classList.add('navscroll-on-bottom');
+    }
     this.updateTriggerText();
   }
 
@@ -195,6 +199,9 @@ export class ItNavscroll extends BaseComponent {
       // this.shadowRoot?.appendChild(this.navEl);
     }
 
+    if (this.position === 'bottom') {
+      document.body.classList.remove('navscroll-on-bottom');
+    }
     this.modalEl?.remove();
     this.modalEl = undefined;
     this.menuWrapper.removeAttribute('slot');
