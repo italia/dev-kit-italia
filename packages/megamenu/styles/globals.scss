@@ -27,15 +27,10 @@ it-megamenu {
     }
   }
 
-  it-dropdown-item::part(list-item) {
+  it-dropdown-item::part(dropdown-item-text) {
     display: flex;
     align-items: center;
     white-space: normal;
-  }
-
-  it-dropdown-item::part(dropdown-item-text) {
-    display: inline-flex;
-    align-items: center;
   }
 
   .it-heading-link,

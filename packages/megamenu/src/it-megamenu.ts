@@ -24,7 +24,7 @@ export class ItMegamenu extends ItDropdown {
 
   @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = true; // sovrascritto per settare un valore fisso e cambiarne il default
 
-  @property({ type: String }) itRole: string = ''; // sovrascritto per settare un valore fisso e cambiarne il default
+  @property({ type: String }) itRole: string = 'menu'; // sovrascritto per settare un valore fisso e cambiarne il default
 
   @property({ type: Boolean, reflect: true }) active = false;
 
@@ -183,6 +183,8 @@ export class ItMegamenu extends ItDropdown {
           })}"
           aria-labelledby=${this._buttonId}
           role="region"
+          @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
+          @click=${{ handleEvent: this._onClickItems, capture: true }}
         >
           <div class="megamenu-content" part="megamenu-content">
             <div class="row">
@@ -208,20 +210,10 @@ export class ItMegamenu extends ItDropdown {
                 ${this._hasHeader
                   ? html`
                       <div class="it-heading-link-wrapper" part="megamenu-header">
-                        <slot
-                          name="header"
-                          @slotchange=${this._onSlotHeaderChange}
-                          @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
-                          @click=${{ handleEvent: this._onClickItems, capture: true }}
-                        ></slot>
+                        <slot name="header" @slotchange=${this._onSlotHeaderChange}></slot>
                       </div>
                     `
-                  : html`<slot
-                      name="header"
-                      @slotchange=${this._onSlotHeaderChange}
-                      @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
-                      @click=${{ handleEvent: this._onClickItems, capture: true }}
-                    ></slot>`}
+                  : html`<slot name="header" @slotchange=${this._onSlotHeaderChange}></slot>`}
 
                 <!-- LINKS -->
                 ${this._menuItems.length > 0
@@ -231,9 +223,8 @@ export class ItMegamenu extends ItDropdown {
                           <ul
                             id=${this._menuId}
                             class="link-list"
-                            @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
-                            @click=${{ handleEvent: this._onClickItems, capture: true }}
                             style="columns: ${this.columns};"
+                            role="${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}"
                           >
                             <slot @slotchange=${this._setChildrenProperties}></slot>
                           </ul>
@@ -259,20 +250,10 @@ export class ItMegamenu extends ItDropdown {
                         })}"
                         part="megamenu-footer"
                       >
-                        <slot
-                          name="footer"
-                          @slotchange=${this._onSlotFooterChange}
-                          @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
-                          @click=${{ handleEvent: this._onClickItems, capture: true }}
-                        ></slot>
+                        <slot name="footer" @slotchange=${this._onSlotFooterChange}></slot>
                       </div>
                     `
-                  : html`<slot
-                      name="footer"
-                      @slotchange=${this._onSlotFooterChange}
-                      @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
-                      @click=${{ handleEvent: this._onClickItems, capture: true }}
-                    ></slot>`}
+                  : html`<slot name="footer" @slotchange=${this._onSlotFooterChange}></slot>`}
               </div>
             </div>
           </div>

@@ -119,6 +119,7 @@ export class ItDropdown extends BaseComponent {
   protected _onKeyDown = (event: KeyboardEvent) => {
     const items = this._menuItems.map((item) => item.getFocusableElement()).filter((el) => !!el);
     const active = this.getActiveElement<ItDropdownItem>();
+    console.log('active', active, items);
 
     if (!active) return;
 
@@ -128,9 +129,13 @@ export class ItDropdown extends BaseComponent {
     this._onTabKeyDown(event, items, active, currentIndex);
 
     const handle = () => {
+      console.log('handle', items);
       this._ariaNav.setConfig({
         getItems: () => items,
-        setActive: (idx) => items[idx]?.focus(),
+        setActive: (idx) => {
+          console.log('setactive', idx);
+          items[idx]?.focus();
+        },
         closeMenu: () => {
           this.addEventListener(
             'it-popover-close',
@@ -148,6 +153,7 @@ export class ItDropdown extends BaseComponent {
     };
 
     if (['ArrowDown', 'ArrowUp'].includes(event.key)) {
+      console.log('arrow pressed', { disabled: this.disabled, popoverOpen: this._popoverOpen, currentIndex });
       if (!this.disabled && !this._popoverOpen && currentIndex === -1) {
         this.addEventListener('it-popover-open', handle, { once: true });
         this._popoverOpen = true;
