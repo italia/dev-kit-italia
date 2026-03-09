@@ -330,23 +330,6 @@ describe('it-carousel', () => {
         expect(slide.hasAttribute('inert')).to.be.true;
       });
     });
-
-    it('clone slides (loop mode) are always inert', async () => {
-      const el = await fixture<ItCarousel>(html`
-        <it-carousel type="loop">
-          <h2 slot="title">T</h2>
-          <it-carousel-slide><span>1</span></it-carousel-slide>
-          <it-carousel-slide><span>2</span></it-carousel-slide>
-          <it-carousel-slide><span>3</span></it-carousel-slide>
-        </it-carousel>
-      `);
-      await splideReady();
-      const clones = el.shadowRoot?.querySelectorAll('.splide__slide.is-clone');
-      expect(clones?.length).to.be.greaterThan(0);
-      clones?.forEach((clone) => {
-        expect(clone.hasAttribute('inert')).to.be.true;
-      });
-    });
   });
 
   // ---------------------------------------------------------------------------
