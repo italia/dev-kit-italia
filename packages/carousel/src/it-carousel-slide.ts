@@ -11,7 +11,7 @@ export class ItCarouselSlide extends BaseComponent {
   // the 'splide__slide' class added programmatically.
   //  <!-- ShadowDOM boundaries issues require div instead of li -->
   override render() {
-    return html`<div class="splide__slide__container it-single-slide-wrapper"><slot></slot></div>`;
+    return html`<div class="splide__slide__container it-single-slide-wrapper" part="slide"><slot></slot></div>`;
   }
 }
 

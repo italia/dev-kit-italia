@@ -42,6 +42,9 @@ export class ItCarousel extends BaseLocalizedComponent {
   @property({ type: Boolean, attribute: 'arrows', reflect: true })
   arrows: boolean = false;
 
+  @property({ type: Boolean, attribute: 'separator', reflect: true })
+  separator: boolean = false;
+
   /**
    * Splide movement type. Overrides the variant's default type.
    * - `slide` (default for most variants) — linear slide
@@ -73,20 +76,16 @@ export class ItCarousel extends BaseLocalizedComponent {
   list!: HTMLElement;
 
   @state()
-  private _autoplayActive = false;
-
   private _isInitialized = false;
-
-  private _liveAnnouncerTimeout?: number;
 
   private _splide?: Splide;
 
   public pauseAutoplay() {
-    this._splide?.Components.Autoplay.pause();
+    if (this.autoplay || this.config?.autoplay) this._splide?.Components.Autoplay.pause();
   }
 
   public playAutoplay() {
-    this._splide?.Components.Autoplay.play();
+    if (this.autoplay || this.config?.autoplay) this._splide?.Components.Autoplay.play();
   }
 
   // Move slotted elements physically into the shadow DOM list so Splide can find them.
@@ -113,6 +112,9 @@ export class ItCarousel extends BaseLocalizedComponent {
     // children — not just distributed via <slot>.
     slides.forEach((el) => {
       el.classList.add('splide__slide');
+      if (this.separator) {
+        el.classList.add('lined_slide');
+      }
       this.list.appendChild(el);
     });
     requestAnimationFrame(() => {
@@ -149,8 +151,6 @@ export class ItCarousel extends BaseLocalizedComponent {
             }
           : {}),
         i18n: splideI18n,
-        // label: splideI18n.carousel,
-        // role: 'region',
         isNavigation: false,
         ...this.config,
         live: true,
@@ -167,7 +167,6 @@ export class ItCarousel extends BaseLocalizedComponent {
         this._updateInert();
       });
       this._splide.on('moved', () => {
-        // 1. Aggiorna immediatamente l'albero di accessibilità del DOM
         this._updateInert();
         setTimeout(() => {}, 100);
       });

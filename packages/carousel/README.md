@@ -6,6 +6,7 @@ This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) reco
 
 ```bash
 npm i @italia/carousel
+npm i @italia/card
 ```
 
 ## Usage
@@ -13,9 +14,10 @@ npm i @italia/carousel
 ```html
 <script type="module">
   import '@italia/carousel';
+  import '@italia/card';
 </script>
 
-<it-carousel></it-carousel>
+<it-carousel>...</it-carousel>
 ```
 
 ## Linting and formatting

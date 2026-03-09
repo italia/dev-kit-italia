@@ -154,40 +154,6 @@
           </it-carousel>
         </section>
 
-        <!-- ===== Autoplay ===== -->
-        <section class="my-5">
-          <h2>Autoplay</h2>
-          <it-carousel variant="single" autoplay>
-            <h2 slot="title">Titolo carousel</h2>
-            <it-carousel-slide>
-              <it-card variant="inline">
-                <a slot="title" href="#">Titolo contenuto editoriale</a>
-                <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
-                <div slot="footer" class="it-card-taxonomy">
-                  <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoría</a>
-                </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-              </it-card>
-            </it-carousel-slide>
-            <it-carousel-slide>
-              <it-card variant="inline">
-                <a slot="title" href="#">Titolo contenuto editoriale</a>
-                <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
-                <div slot="footer" class="it-card-taxonomy">
-                  <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoria</a>
-                </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-              </it-card>
-            </it-carousel-slide>
-          </it-carousel>
-        </section>
-
         <!-- ===== Variante 3 colonne (simpleCard senza immagine) ===== -->
         <section class="my-5">
           <h2>Variante 3 colonne</h2>
@@ -320,7 +286,7 @@
         <section class="my-5">
           <h2>Variante gallery small</h2>
           <it-carousel variant="gallery-sm">
-            <h2 slot="title">Titolo carousel</h2>
+            <h2 slot="title">Variante gallery small</h2>
             <it-carousel-slide
               ><div class="card-wrapper">
                 <div class="img-responsive-wrapper">
@@ -412,7 +378,7 @@
         <section class="my-5">
           <h2>Variante gallery large</h2>
           <it-carousel variant="gallery-lg">
-            <h2 slot="title">Titolo carousel</h2>
+            <h2 slot="title">Variante gallery large</h2>
             <it-carousel-slide
               ><div class="card-wrapper">
                 <div class="img-responsive-wrapper">
@@ -500,296 +466,296 @@
           </it-carousel>
         </section>
 
-        <!-- ===== Con frecce di navigazione — colonne (cardWithImage) ===== -->
+        <!-- 5. Con separatore tra le slide -->
         <section class="my-5">
-          <h2>Con frecce di navigazione — colonne</h2>
-          <it-carousel variant="columns" arrows>
+          <h2>Con separatore tra le slide</h2>
+          <it-carousel variant="columns" separator>
             <h2 slot="title">Titolo carousel</h2>
             <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
+              <it-card variant="inline">
+                <a slot="title" href="#">Titolo contenuto editoriale</a>
+                <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
                 <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
+                  <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoria</a>
                 </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
+                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                <figure slot="image" class="figure img-full">
+                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                </figure>
+              </it-card>
             </it-carousel-slide>
             <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
+              <it-card variant="inline">
+                <a slot="title" href="#">Titolo contenuto editoriale</a>
+                <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
                 <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
+                  <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoria</a>
                 </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
+                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                <figure slot="image" class="figure img-full">
+                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                </figure>
+              </it-card>
             </it-carousel-slide>
             <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
+              <it-card variant="inline">
+                <a slot="title" href="#">Titolo contenuto editoriale</a>
+                <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
                 <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
+                  <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoria</a>
                 </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
+                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                <figure slot="image" class="figure img-full">
+                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                </figure>
+              </it-card>
             </it-carousel-slide>
             <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
+              <it-card variant="inline">
+                <a slot="title" href="#">Titolo contenuto editoriale</a>
+                <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
                 <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
+                  <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoria</a>
                 </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
+                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                <figure slot="image" class="figure img-full">
+                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                </figure>
+              </it-card>
             </it-carousel-slide>
             <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
+              <it-card variant="inline">
+                <a slot="title" href="#">Titolo contenuto editoriale</a>
+                <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
                 <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
+                  <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoria</a>
                 </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
+                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                <figure slot="image" class="figure img-full">
+                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                </figure>
+              </it-card>
             </it-carousel-slide>
             <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
+              <it-card variant="inline">
+                <a slot="title" href="#">Titolo contenuto editoriale</a>
+                <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
                 <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
+                  <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoria</a>
                 </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
+                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                <figure slot="image" class="figure img-full">
+                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                </figure>
+              </it-card>
             </it-carousel-slide>
           </it-carousel>
         </section>
 
-        <!-- ===== Con frecce di navigazione — singola (cardWithImage) ===== -->
+        <!-- 6. Con frecce di navigazione -->
         <section class="my-5">
-          <h2>Con frecce di navigazione — singola</h2>
-          <it-carousel variant="single" arrows>
-            <h2 slot="title">Titolo carousel</h2>
-            <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
-                <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
-                </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
-            </it-carousel-slide>
-            <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
-                <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
-                </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
-            </it-carousel-slide>
-            <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
-                <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
-                </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
-            </it-carousel-slide>
-            <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
-                <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
-                </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
-            </it-carousel-slide>
-            <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
-                <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
-                </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
-            </it-carousel-slide>
-            <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
-                <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
-                </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
-            </it-carousel-slide>
-          </it-carousel>
+          <h2>Con frecce di navigazione</h2>
+          <div style="display: flex; flex-direction: column; gap: 4rem;">
+            <it-carousel variant="columns" arrows>
+              <h2 slot="title">Titolo carousel</h2>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+            </it-carousel>
+
+            <it-carousel variant="single" arrows>
+              <h2 slot="title">Titolo carousel</h2>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+            </it-carousel>
+          </div>
         </section>
 
         <!-- ===== Fullscreen (singola + frecce + fullscreen, inline cards) ===== -->
@@ -926,148 +892,392 @@
           </it-carousel>
         </section>
 
-        <!-- ===== Modalità di scorrimento loop (singola + type=loop) ===== -->
+        <!-- ===== Tipo di scorrimento ===== -->
         <section class="my-5">
-          <h2>Modalità di scorrimento loop</h2>
-          <it-carousel variant="single" type="loop">
-            <h2 slot="title">Titolo carousel</h2>
+          <h2>Tipo di scorrimento</h2>
+          <div style="display: flex; flex-direction: column; gap: 4rem;">
+            <it-carousel variant="single" type="loop">
+              <h2 slot="title">Carousel con scorrimento in loop</h2>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+            </it-carousel>
+            <it-carousel variant="single" type="fade">
+              <h2 slot="title">Carousel con scorrimento fade</h2>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+            </it-carousel>
+            <it-carousel variant="single" type="slide">
+              <h2 slot="title">Carousel con scorrimento slide</h2>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+              <it-carousel-slide>
+                <it-card full-height="">
+                  <a slot="title" href="#">Titolo contenuto editoriale <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div></a>
+                  <figure slot="image" class="figure img-full">
+                    <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                  </figure>
+                  <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
+                  <div slot="footer" class="it-card-taxonomy">
+                    <ul class="it-card-chips" aria-label="Argomenti correlati: ">
+                      <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
+                      <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
+                    </ul>
+                  </div>
+                  <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                </it-card>
+              </it-carousel-slide>
+            </it-carousel>
+          </div>
+        </section>
+
+        <!-- ===== Autoplay ===== -->
+        <section class="my-5">
+          <h2>Autoplay</h2>
+          <it-carousel variant="single" autoplay>
+            <h2 slot="title">Carousel con autoplay</h2>
             <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
+              <it-card variant="inline">
+                <a slot="title" href="#">Titolo contenuto editoriale</a>
+                <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
                 <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
+                  <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoria</a>
                 </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
+                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                <figure slot="image" class="figure img-full">
+                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                </figure>
+              </it-card>
             </it-carousel-slide>
             <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
+              <it-card variant="inline">
+                <a slot="title" href="#">Titolo contenuto editoriale</a>
+                <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
                 <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
+                  <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoria</a>
                 </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
+                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                <figure slot="image" class="figure img-full">
+                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                </figure>
+              </it-card>
             </it-carousel-slide>
             <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
+              <it-card variant="inline">
+                <a slot="title" href="#">Titolo contenuto editoriale</a>
+                <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
                 <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
+                  <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoria</a>
                 </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
+                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                <figure slot="image" class="figure img-full">
+                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                </figure>
+              </it-card>
             </it-carousel-slide>
             <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
+              <it-card variant="inline">
+                <a slot="title" href="#">Titolo contenuto editoriale</a>
+                <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
                 <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
+                  <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoria</a>
                 </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
+                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                <figure slot="image" class="figure img-full">
+                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                </figure>
+              </it-card>
             </it-carousel-slide>
             <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
+              <it-card variant="inline">
+                <a slot="title" href="#">Titolo contenuto editoriale</a>
+                <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
                 <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
+                  <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoria</a>
                 </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
+                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                <figure slot="image" class="figure img-full">
+                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                </figure>
+              </it-card>
             </it-carousel-slide>
             <it-carousel-slide>
-              <it-card full-height=""
-                ><a slot="title" href="#"
-                  >Titolo contenuto editoriale
-                  <div class="it-card-title-icon-wrapper">
-                    <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div
-                ></a>
-                <figure slot="image" class="figure img-full">
-                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine." />
-                </figure>
-                <span slot="text"
-                  >Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o
-                  quattro righe, senza troncamento.</span
-                >
+              <it-card variant="inline">
+                <a slot="title" href="#">Titolo contenuto editoriale</a>
+                <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
                 <div slot="footer" class="it-card-taxonomy">
-                  <ul class="it-card-chips" aria-label="Argomenti correlati: ">
-                    <li class="list-item"><it-chip label="Argomento 1" size="sm" href="#"></it-chip></li>
-                    <li class="list-item"><it-chip label="Argomento 2" size="sm" href="#"></it-chip></li>
-                  </ul>
+                  <a href="#" class="it-card-category it-card-link"><span class="visually-hidden">Categoria correlata: </span>Categoria</a>
                 </div>
-                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time></it-card
-              >
+                <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+                <figure slot="image" class="figure img-full">
+                  <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+                </figure>
+              </it-card>
             </it-carousel-slide>
           </it-carousel>
         </section>
@@ -1220,6 +1430,7 @@
             </it-carousel-slide>
           </it-carousel>
         </section>
+
       </main>
       <div id="app-footer"></div>
       <it-back-to-top it-aria-label="Torna su"></it-back-to-top>

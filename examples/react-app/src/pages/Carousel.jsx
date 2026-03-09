@@ -110,6 +110,7 @@ const Carousel = () => (
   <>
     <h1>Carousel</h1>
 
+    {/* 1. Variante singola */}
     <section className="my-5">
       <h2>Variante singola</h2>
       <it-carousel variant="single">
@@ -122,6 +123,7 @@ const Carousel = () => (
       </it-carousel>
     </section>
 
+    {/* 2. Variante 3 colonne */}
     <section className="my-5">
       <h2>Variante 3 colonne</h2>
       <it-carousel variant="columns">
@@ -134,10 +136,11 @@ const Carousel = () => (
       </it-carousel>
     </section>
 
+    {/* 3. Variante gallery small */}
     <section className="my-5">
       <h2>Variante gallery small</h2>
       <it-carousel variant="gallery-sm">
-        <h2 slot="title">Titolo carousel</h2>
+        <h2 slot="title">Variante gallery small</h2>
         {slides.map((_, i) => (
           <it-carousel-slide key={i}>
             <ImageSlide />
@@ -146,10 +149,11 @@ const Carousel = () => (
       </it-carousel>
     </section>
 
+    {/* 4. Variante gallery large */}
     <section className="my-5">
       <h2>Variante gallery large</h2>
       <it-carousel variant="gallery-lg">
-        <h2 slot="title">Titolo carousel</h2>
+        <h2 slot="title">Variante gallery large</h2>
         {slides.map((_, i) => (
           <it-carousel-slide key={i}>
             <ImageSlide />
@@ -158,30 +162,43 @@ const Carousel = () => (
       </it-carousel>
     </section>
 
+    {/* 5. Con separatore tra le slide */}
     <section className="my-5">
-      <h2>Con frecce di navigazione — colonne</h2>
-      <it-carousel variant="columns" arrows>
+      <h2>Con separatore tra le slide</h2>
+      <it-carousel variant="columns" separator>
         <h2 slot="title">Titolo carousel</h2>
         {slides.map((_, i) => (
           <it-carousel-slide key={i}>
-            <CardWithImage />
+            <InlineCard />
           </it-carousel-slide>
         ))}
       </it-carousel>
     </section>
 
+    {/* 6. Con frecce di navigazione */}
     <section className="my-5">
-      <h2>Con frecce di navigazione — singola</h2>
-      <it-carousel variant="single" arrows>
-        <h2 slot="title">Titolo carousel</h2>
-        {slides.map((_, i) => (
-          <it-carousel-slide key={i}>
-            <CardWithImage />
-          </it-carousel-slide>
-        ))}
-      </it-carousel>
+      <h2>Con frecce di navigazione</h2>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+        <it-carousel variant="columns" arrows>
+          <h2 slot="title">Titolo carousel</h2>
+          {slides.map((_, i) => (
+            <it-carousel-slide key={i}>
+              <CardWithImage />
+            </it-carousel-slide>
+          ))}
+        </it-carousel>
+        <it-carousel variant="single" arrows>
+          <h2 slot="title">Titolo carousel</h2>
+          {slides.map((_, i) => (
+            <it-carousel-slide key={i}>
+              <CardWithImage />
+            </it-carousel-slide>
+          ))}
+        </it-carousel>
+      </div>
     </section>
 
+    {/* 7. Fullscreen */}
     <section className="my-5">
       <h2>Fullscreen</h2>
       <it-carousel variant="single" arrows fullscreen>
@@ -194,18 +211,51 @@ const Carousel = () => (
       </it-carousel>
     </section>
 
+    {/* 8. Modalità di scorrimento */}
     <section className="my-5">
-      <h2>Modalità di scorrimento loop</h2>
-      <it-carousel variant="single" type="loop">
-        <h2 slot="title">Titolo carousel</h2>
+      <h2>Modalità di scorrimento</h2>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+        <it-carousel variant="single" type="loop">
+          <h2 slot="title">Carousel con scorrimento in loop</h2>
+          {slides.map((_, i) => (
+            <it-carousel-slide key={i}>
+              <CardWithImage />
+            </it-carousel-slide>
+          ))}
+        </it-carousel>
+        <it-carousel variant="single" type="fade">
+          <h2 slot="title">Carousel con scorrimento fade</h2>
+          {slides.map((_, i) => (
+            <it-carousel-slide key={i}>
+              <CardWithImage />
+            </it-carousel-slide>
+          ))}
+        </it-carousel>
+        <it-carousel variant="single" type="slide">
+          <h2 slot="title">Carousel con scorrimento slide</h2>
+          {slides.map((_, i) => (
+            <it-carousel-slide key={i}>
+              <CardWithImage />
+            </it-carousel-slide>
+          ))}
+        </it-carousel>
+      </div>
+    </section>
+
+    {/* 9. Autoplay */}
+    <section className="my-5">
+      <h2>Autoplay</h2>
+      <it-carousel variant="single" autoplay>
+        <h2 slot="title">Carousel con autoplay</h2>
         {slides.map((_, i) => (
           <it-carousel-slide key={i}>
-            <CardWithImage />
+            <InlineCard />
           </it-carousel-slide>
         ))}
       </it-carousel>
     </section>
 
+    {/* 10. Configurazione avanzata */}
     <section className="my-5">
       <h2>Configurazione avanzata</h2>
       <it-carousel
@@ -220,19 +270,6 @@ const Carousel = () => (
         ))}
       </it-carousel>
     </section>
-
-    <section className="my-5">
-      <h2>Autoplay</h2>
-      <it-carousel variant="single" autoplay>
-        <h2 slot="title">Titolo carousel</h2>
-        {slides.map((_, i) => (
-          <it-carousel-slide key={i}>
-            <InlineCard />
-          </it-carousel-slide>
-        ))}
-      </it-carousel>
-    </section>
-
   </>
 );
 

@@ -249,3 +249,17 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
   display: flex;
   justify-content: center;
 }
+@media (min-width: 992px) {
+  .lined_slide {
+    &:after {
+      position: absolute;
+      top: 0;
+      right: -$v-gap * 1.5;
+      bottom: 0;
+      display: block;
+      width: 1px;
+      background-color: $neutral-2; // Missing in the UI kit
+      content: '';
+    }
+  }
+}

@@ -104,6 +104,7 @@ const renderComponent = (params: any) => html`
     ?fullscreen=${params.fullscreen}
     ?arrows=${params.arrows}
     ?autoplay=${params.autoplay}
+    ?separator=${params.separator}
     type=${ifDefined(params.type)}
     config=${ifDefined(params.config ? JSON.stringify(params.config) : undefined)}
     ><h2 slot="title">${params.title || 'Titolo carousel'}</h2>
@@ -115,15 +116,16 @@ const renderComponent = (params: any) => html`
 
 const meta: Meta<any> = {
   title: 'Componenti/Carousel',
-  tags: ['new', 'web-component', 'a11y-ok'],
+  tags: ['alpha', 'web-component', 'a11y-ok'],
   component: 'it-carousel',
   args: {
-    fullscreen: false,
-    variant: 'single',
-    type: undefined,
-    config: undefined,
-    autoplay: false,
     arrows: false,
+    autoplay: false,
+    fullscreen: false,
+    separator: false,
+    type: undefined,
+    variant: 'single',
+    config: undefined,
     title: 'Titolo carousel',
   },
   argTypes: {
@@ -135,6 +137,11 @@ const meta: Meta<any> = {
     arrows: {
       control: 'boolean',
       description: 'Se true, mostra le frecce di navigazione del carousel.',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    separator: {
+      control: 'boolean',
+      description: 'Se true, mostra un separatore verticale tra le slide.',
       table: { defaultValue: { summary: 'false' } },
     },
     variant: {
@@ -179,7 +186,6 @@ const meta: Meta<any> = {
       },
     },
     layout: 'padded',
-    controls: { disable: true },
     a11y: {
       config: {
         rules: [
@@ -191,7 +197,7 @@ const meta: Meta<any> = {
       },
     },
   },
-  decorators: [(story) => html`<div style="padding:2rem;background: #ececec;">${story()}</div>`],
+  decorators: [(story) => html`<div style="padding:2rem">${story()}</div>`],
 };
 
 export default meta;
@@ -250,6 +256,7 @@ export const VarianteGallerySM: Story = {
     cardOptions: {
       type: 'image',
     },
+    title: 'Variante gallery small',
   },
   render: (args) => renderComponent(args),
 };
@@ -261,6 +268,7 @@ export const VarianteGalleryLG: Story = {
     cardOptions: {
       type: 'image',
     },
+    title: 'Variante gallery large',
   },
   render: (args) => renderComponent(args),
 };
@@ -293,6 +301,18 @@ export const Fullscreen: Story = {
   render: (args) => renderComponent(args),
 };
 
+export const Separator: Story = {
+  name: 'Con separatore tra le slide',
+  args: {
+    variant: 'columns',
+    separator: true,
+    cardOptions: {
+      type: 'inline',
+    },
+  },
+  render: (args) => renderComponent(args),
+};
+
 export const TipoScorrimento: Story = {
   name: 'Modalità di scorrimento custom del Carousel',
   args: {
@@ -309,6 +329,26 @@ export const TipoScorrimento: Story = {
       ${renderComponent({ ...args, type: 'slide', title: 'Carousel con scorrimento slide' })}
     </div>
   `,
+};
+
+export const Autoplay: Story = {
+  name: 'Autoplay',
+  args: {
+    variant: 'single',
+    autoplay: true,
+    cardOptions: {
+      type: 'inline',
+    },
+    title: 'Carousel con autoplay',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Esempio che mostra il pulsante Play/Pausa e l'autoplay abilitato (modalità 'pause').",
+      },
+    },
+  },
+  render: (args) => renderComponent(args),
 };
 
 export const ConfigurazioneAvanzata: Story = {
@@ -362,26 +402,6 @@ export const VideoTest: Story = {
     fullscreen: true,
     cardOptions: {
       type: 'video',
-    },
-  },
-  render: (args) => renderComponent(args),
-};
-
-export const Autoplay: Story = {
-  name: 'Autoplay',
-  args: {
-    variant: 'single',
-    autoplay: true,
-    cardOptions: {
-      type: 'inline',
-    },
-    title: 'Carousel con autoplay',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Esempio che mostra il pulsante Play/Pausa e l'autoplay abilitato (modalità 'pause').",
-      },
     },
   },
   render: (args) => renderComponent(args),
