@@ -123,7 +123,6 @@ export class ItPopover extends BaseComponent {
 
     this._createArrow();
 
-    console.log('flippable', this.noFlip);
     this._cleanup = autoUpdate(this._triggerElement, this._contentElement, () => {
       computePosition(this._triggerElement, this._contentElement, {
         placement: this.placement,
