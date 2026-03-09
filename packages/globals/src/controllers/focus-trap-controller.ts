@@ -1,10 +1,15 @@
 import { ReactiveController, ReactiveControllerHost } from 'lit';
 
 export interface FocusTrapConfig {
+  /** Funzione che ritorna l'elemento contenitore del trap */
   getContainer: () => HTMLElement | ShadowRoot | null;
+  /** Funzione che ritorna l'elemento trigger che ha attivato il focus trap */
   getTrigger: () => HTMLElement | ShadowRoot | null;
+  /** Opzionale: funzione che ritorna l'elemento da mettere a fuoco all'apertura (può essere tabindex -1) */
   initialFocus?: () => HTMLElement | null;
+  /** Callback quando viene premuto Escape */
   onEscape?: () => void;
+  /** Se true, non chiude con Escape */
   disableEscape?: boolean;
 }
 
@@ -35,6 +40,10 @@ export class FocusTrapController implements ReactiveController {
     'it-button:not([disabled])',
   ].join(',');
 
+  /**
+   * Verifica se un elemento è effettivamente focusabile e tabbabile.
+   * Elementi con tabindex="-1" sono focusabili programmaticamente ma non tabbabili.
+   */
   private static isFocusable(el: HTMLElement): boolean {
     if (typeof el.focus !== 'function') return false;
     if (el.hasAttribute('disabled') || el.hasAttribute('inert')) return false;
@@ -120,6 +129,10 @@ export class FocusTrapController implements ReactiveController {
     }
   }
 
+  /**
+   * Aggiorna la lista degli elementi focusabili.
+   * Chiamare dopo modifiche al DOM.
+   */
   updateFocusableElements(): void {
     const container = this.config.getContainer();
     const trigger = this.config.getTrigger();
@@ -134,6 +147,7 @@ export class FocusTrapController implements ReactiveController {
     const direct = Array.from(container.querySelectorAll<HTMLElement>(FocusTrapController.FOCUSABLE_SELECTORS));
     candidates.push(...direct);
 
+    // Tutti gli elementi slottati
     const slots = Array.from(container.querySelectorAll('slot'));
     slots.forEach((slot) => {
       slot.assignedElements({ flatten: true }).forEach((el) => {
@@ -146,15 +160,19 @@ export class FocusTrapController implements ReactiveController {
       });
     });
 
+    // Filtra solo elementi veramente focusabili e rimuovi duplicati
     this._focusableElements = Array.from(new Set(candidates)).filter((el) => {
+      // Escludi esplicitamente il container/dialog stesso
       if (el === this.config.getContainer()) return false;
       return FocusTrapController.isFocusable(el);
     });
 
+    // Aggiorna primo/ultimo
     this._first = this._focusableElements?.[0];
     this._last = this._focusableElements[this._focusableElements.length - 1];
   }
 
+  /** Sposta il focus sul primo elemento focusabile */
   focusFirst(): void {
     if (this._first) this._first.focus();
   }
