@@ -1,5 +1,17 @@
 # @italia/checkbox
 
+## 1.0.0-alpha.6
+
+### Patch Changes
+
+- [#283](https://github.com/italia/dev-kit-italia/pull/283) [`efd4340`](https://github.com/italia/dev-kit-italia/commit/efd4340195ebe84a8a8135035125b83db56172d0) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed checkbox focus styles on click
+
+- [#286](https://github.com/italia/dev-kit-italia/pull/286) [`01aa2d7`](https://github.com/italia/dev-kit-italia/commit/01aa2d7850660d72c6e09a6b1118005fd75f9420) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fixed help text, label styles and focous on checkbox group"
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.6
+  - @italia/i18n@1.0.0-alpha.6
+
 ## 1.0.0-alpha.5
 
 ### Minor Changes
