@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.0-alpha.6
+
+### Minor Changes
+
+- [#274](https://github.com/italia/dev-kit-italia/pull/274) [`1a76d13`](https://github.com/italia/dev-kit-italia/commit/1a76d13c61c4836508ccdf54ccc018114c7408cb) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Update it-modal docs
+
+### Patch Changes
+
+- Updated dependencies [[`e556822`](https://github.com/italia/dev-kit-italia/commit/e55682290e80bcfc68cd8d835d96b77abd276b46)]:
+  - @italia/button@1.0.0-alpha.6
+  - @italia/icon@1.0.0-alpha.6
+  - @italia/globals@1.0.0-alpha.6
+
 ## 1.0.0-alpha.5
 
 ### Minor Changes
