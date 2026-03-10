@@ -9,8 +9,8 @@ import '../packages/callout/dist/src';
 import '../packages/card/dist/src';
 import '../packages/checkbox/dist/src';
 import '../packages/chip/dist/src';
-import { defineItDropdown } from '../packages/dropdown/dist/src';
-defineItDropdown();
+import '../packages/dropdown/dist/src';
+
 import '../packages/hero/dist/src';
 import '../packages/icon/dist/src';
 import '../packages/input/dist/src';

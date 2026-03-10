@@ -1,6 +1,6 @@
 /* eslint-disable lit-a11y/list */
 
-import { ItDropdown } from '@italia/dropdown/it-dropdown.js';
+import { ItDropdownBase } from '@italia/dropdown/it-dropdown-base.js';
 import { html, nothing } from 'lit';
 import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -9,8 +9,8 @@ import { FooterAlign, FooterPosition } from './types.js';
 import styles from './megamenu.scss';
 
 @customElement('it-megamenu')
-export class ItMegamenu extends ItDropdown {
-  static override styles = [ItDropdown.styles, styles];
+export class ItMegamenu extends ItDropdownBase {
+  static override styles = [ItDropdownBase.styles, styles];
 
   private static readonly FOCUSABLE_SELECTORS = 'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
