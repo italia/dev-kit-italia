@@ -66,6 +66,9 @@ document.querySelector('#app-header').innerHTML = `
         <a href="/src/callout">
           Callout
         </a>
+        <a href="/src/card">
+          Card
+        </a>
         <a href="/src/checkbox">
           Checkbox
         </a>
