@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.0-alpha.6
+
+### Patch Changes
+
+- [#289](https://github.com/italia/dev-kit-italia/pull/289) [`4a4577c`](https://github.com/italia/dev-kit-italia/commit/4a4577c727cb224b74123e2298ea416a5eb9e0a7) Thanks [@danielenole](https://github.com/danielenole)! - Enhanced docs
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.6
+
 ## 1.0.0-alpha.5
 
 ### Minor Changes

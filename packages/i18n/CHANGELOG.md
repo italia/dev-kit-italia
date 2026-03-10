@@ -1,5 +1,7 @@
 # @italia/i18n
 
+## 1.0.0-alpha.6
+
 ## 1.0.0-alpha.5
 
 ### Patch Changes
