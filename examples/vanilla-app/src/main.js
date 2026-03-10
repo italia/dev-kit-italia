@@ -68,7 +68,7 @@ document.querySelector('#app-header').innerHTML = `
         </a>
         <a href="/src/carousel">
           Carousel
-          </a>
+        </a>
         <a href="/src/card">
           Card
         </a>

@@ -16,7 +16,10 @@
       "@italia/breadcrumbs",
       "@italia/button",
       "@italia/callout",
+<<<<<<< HEAD
       "@italia/carousel",
+=======
+>>>>>>> main
       "@italia/card",
       "@italia/checkbox",
       "@italia/chip",
