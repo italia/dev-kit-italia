@@ -24,6 +24,7 @@
       "@italia/dev-kit-italia",
       "@italia/dropdown",
       "@italia/globals",
+      "@italia/hero",
       "@italia/i18n",
       "@italia/icon",
       "@italia/input",

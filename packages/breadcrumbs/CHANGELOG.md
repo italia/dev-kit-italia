@@ -1,5 +1,14 @@
 # @italia/breadcrumbs
 
+## 1.0.0-alpha.6
+
+### Patch Changes
+
+- [#299](https://github.com/italia/dev-kit-italia/pull/299) [`e556822`](https://github.com/italia/dev-kit-italia/commit/e55682290e80bcfc68cd8d835d96b77abd276b46) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Enhanced docs
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.6
+
 ## 1.0.0-alpha.5
 
 ### Minor Changes
