@@ -234,3 +234,8 @@ li span,
     text-decoration: underline;
   }
 }
+
+.list-item > .dropdown-item-link {
+  display: flex;
+  align-items: center;
+}
