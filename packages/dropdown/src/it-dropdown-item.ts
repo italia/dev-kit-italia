@@ -74,7 +74,7 @@ export class ItDropdownItem extends BaseComponent {
               aria-disabled=${ifDefined(this.disabled || undefined)}
               @keydown=${this.handlePress}
               @click=${this.handlePress}
-              ><span part="dropdown-item-text">${content}</span></a
+              ><span class="dropdown-item-link" part="dropdown-item-text">${content}</span></a
             >`
           : html`<span class="dropdown-item-text" part="dropdown-item-text">${content}</span>`}
       </li>
