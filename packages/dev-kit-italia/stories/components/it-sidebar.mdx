@@ -9,7 +9,7 @@ import * as SidebarStories from './it-sidebar.stories';
 
 ## Cosa fa
 
-Utilizza il componente Sidebar per navigare tra le pagine che appartengono a una sezione di un sito. A seconda dell'organizzazione dei contenuti, la barra di navigazione può presentare liste di link diretti o annidati sotto una voce che li raccoglie.
+Il componente Sidebar permette di navigare tra le pagine che appartengono a una sezione di un sito. A seconda dell'organizzazione dei contenuti, la barra di navigazione può presentare liste di link diretti o annidati sotto una voce che li raccoglie.
 
 [Approfondisci quando e come usare il componente Sidebar](https://designers.italia.it/design-system/componenti/sidebar/)
 
@@ -27,50 +27,48 @@ Questo componente non possiede attributi, ma si basa su una struttura HTML prede
 
 ## Accessibilità
 
-Il componente Sidebar segue le best practice per l'accessibilità, garantendo una navigazione intuitiva e fruibile da tutti gli utenti.
+Il componente Sidebar segue le migliori pratiche di accessibilità e garantisce una navigazione intuitiva e fruibile per tutte le persone.
 Viene implementato come una lista di navigazione all'interno di un elemento `<aside>`, che indica chiaramente il suo ruolo di navigazione laterale.
 
-Per garantire un'esperienza accessibile, segui queste linee guida:
+Per garantire un'esperienza accessibile, assicurati di:
 
-- Indica sempre **visivamente** la pagina corrente utilizzando la classe `.active` sul link corrispondente
-- Indica sempre **alle tecnologie assistive** la pagina corrente utilizzando l'attributo `aria-current="page"` sul link corrispondente
-- Usa l'attributo `aria-disabled="true"` per i link disabilitati per garantire il corretto supporto alle tecnologie assistive
-- Per le liste collassabili, il componente `it-collapse` gestisce automaticamente gli attributi ARIA necessari (`aria-expanded`, `aria-controls`, `role`) per garantire l'accessibilità
-- Disabilita via JavaScript la navigazione dei link/collapse disabilitati per evitare comportamenti inattesi: le diverse varianti forniscono un'implementazione di esempio.
+- indicare sempre **visivamente** la pagina corrente, usando la classe `.active` sul link corrispondente;
+- indicare sempre **alle tecnologie assistive** la pagina corrente, usando l'attributo `aria-current="page"` sul link corrispondente;
+- segnalare i link disabilitati alle tecnologie assistive, usando l'attributo `aria-disabled="true"`;
+- usare il componente `it-collapse` per le liste collassabili, che gestisce automaticamente gli attributi ARIA necessari (`aria-expanded`, `aria-controls`, `role`);
+- disabilitare via JavaScript la navigazione dei link/collapse disabilitati per evitare comportamenti inattesi: le diverse varianti forniscono un'implementazione di esempio.
 
 
 ## Sidebar con icone
 
-Per aggiungere icone alla lista di link contenuta nella sidebar, utilizza il componente `<it-icon>` all'interno dei link con classe `.icon-left`.
+Per aggiungere icone alla lista di link contenuta nella sidebar, usa il componente `<it-icon>` all'interno dei link con classe `.icon-left`.
 
 <Canvas of={SidebarStories.SidebarConIcone} />
 
 ## Sidebar con linea a destra
 
-Per creare una sidebar con linea separatrice a destra è aggiungi a a `<aside class="sidebar-wrapper">` la classe `.it-line-right-side`.
+Per creare una sidebar con linea separatrice a destra, aggiungi la classe `.it-line-right-side` a `<aside class="sidebar-wrapper">`.
 
 <Canvas of={SidebarStories.SidebarLineaDestra} />
 
 ## Sidebar con linea a sinistra
 
-Per creare una sidebar con linea separatrice a sinistra è aggiungi a a `<aside class="sidebar-wrapper">` la classe `.it-line-left-side`.
+Per creare una sidebar con linea separatrice a sinistra, aggiungi la classe `.it-line-left-side` a `<aside class="sidebar-wrapper">`.
 
 <Canvas of={SidebarStories.SidebarLineaSinistra} />
 
 ## Sidebar annidata
 
-La Sidebar può contenere una lista di link primaria annidata utilizzando la classe `.link-sublist` per le sotto-liste espanse.
+Una sidebar può contenere una lista di link primaria annidata, tramite la classe `.link-sublist` per le sotto-liste espanse.
 
-Per rendere collassabili le sottosezioni della sidebar, utilizza il componente `it-collapse` integrato nelle liste di navigazione.
+Per rendere collassabili le sottosezioni della sidebar, usa il componente `it-collapse` integrato nelle liste di navigazione. Il componente `it-collapse` permette di espandere e comprimere le sottosezioni in modo interattivo, migliorando l'esperienza di navigazione su sidebar con molte voci.
 
-Il componente `it-collapse` permette di espandere e comprimere le sottosezioni in modo interattivo, migliorando l'esperienza di navigazione su sidebar con molte voci.
-
-Consulta la documentazione del [componente Collapse](/docs/componenti-collapse--documentazione) per maggiori dettagli sull'uso di `it-collapse`.
+Consulta la [documentazione del componente Collapse](/docs/componenti-collapse--documentazione) per maggiori dettagli sull'uso di `it-collapse`.
 
 <Canvas of={SidebarStories.SidebarAnnidata} />
 
 
 ## Sidebar tema scuro
 
-Per cambiare il tema della sidebar e renderla scura aggiungi a `<aside class="sidebar-wrapper">` la classe `.theme-dark`.
+Per cambiare il tema della sidebar e renderla scura, aggiungi la classe `.theme-dark` a `<aside class="sidebar-wrapper">`.
 <Canvas of={SidebarStories.SidebarTemaScuro} />

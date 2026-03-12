@@ -1,0 +1,45 @@
+it-card:not(:defined) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 1em;
+
+  [slot='image'] {
+    width: 100%;
+    order: -1;
+  }
+
+  &:not([ratio]),
+  &[ratio='16x9'] {
+    [slot='image'] img {
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  &[ratio='21x9'] [slot='image'] img {
+    aspect-ratio: 21 / 9;
+  }
+
+  &[ratio='4x3'] [slot='image'] img {
+    aspect-ratio: 4 / 3;
+  }
+
+  &[ratio='1x1'] [slot='image'] img {
+    aspect-ratio: 1 / 1;
+  }
+
+  [slot='title'] {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 0;
+    margin-bottom: var(--#{$prefix}heading-spacing);
+    font-size: var(--#{$prefix}heading-3-font-size);
+    font-weight: var(--#{$prefix}heading-font-weight);
+    line-height: var(--#{$prefix}heading-line-height);
+  }
+
+  [slot='text'] {
+    width: 100%;
+  }
+}

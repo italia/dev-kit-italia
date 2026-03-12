@@ -1,5 +1,17 @@
 # @italia/dropdown
 
+## 1.0.0-alpha.6
+
+### Patch Changes
+
+- [`526c4d8`](https://github.com/italia/dev-kit-italia/commit/526c4d8f13a6974d6290f7ca9726fac349218fc5) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed styles
+
+- Updated dependencies [[`e556822`](https://github.com/italia/dev-kit-italia/commit/e55682290e80bcfc68cd8d835d96b77abd276b46)]:
+  - @italia/button@1.0.0-alpha.6
+  - @italia/icon@1.0.0-alpha.6
+  - @italia/globals@1.0.0-alpha.6
+  - @italia/popover@1.0.0-alpha.6
+
 ## 1.0.0-alpha.5
 
 ### Patch Changes

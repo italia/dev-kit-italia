@@ -1,5 +1,14 @@
 # @italia/popover
 
+## 1.0.0-alpha.6
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`e556822`](https://github.com/italia/dev-kit-italia/commit/e55682290e80bcfc68cd8d835d96b77abd276b46)]:
+  - @italia/button@1.0.0-alpha.6
+  - @italia/globals@1.0.0-alpha.6
+
 ## 1.0.0-alpha.5
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @italia/skiplinks
 
+## 1.0.0-alpha.6
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.6
+
 ## 1.0.0-alpha.5
 
 ### Patch Changes

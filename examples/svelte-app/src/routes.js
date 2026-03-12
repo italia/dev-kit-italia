@@ -10,14 +10,17 @@ import Back from './pages/Back.svelte';
 import Badge from './pages/Badge.svelte';
 import Button from './pages/Button.svelte';
 import Callout from './pages/Callout.svelte';
+import Card from './pages/Card.svelte';
 import Checkbox from './pages/Checkbox.svelte';
 import Chip from './pages/Chip.svelte';
 import Collapse from './pages/Collapse.svelte';
 import Dropdown from './pages/Dropdown.svelte';
 import Form from './pages/Form.svelte';
 import Forward from './pages/Forward.svelte';
+import Hero from './pages/Hero.svelte';
 import Icon from './pages/Icon.svelte';
 import Input from './pages/Input.svelte';
+import List from './pages/List.svelte';
 import Modal from './pages/Modal.svelte';
 import Navscroll from './pages/Navscroll.svelte';
 import Overlay from './pages/Overlay.svelte';
@@ -30,6 +33,7 @@ import Select from './pages/Select.svelte';
 import Sidebar from './pages/Sidebar.svelte';
 import Skiplinks from './pages/Skiplinks.svelte';
 import Sticky from './pages/Sticky.svelte';
+import Table from './pages/Table.svelte';
 import Video from './pages/Video.svelte';
 
 export const AppRoutes = [
@@ -45,14 +49,17 @@ export const AppRoutes = [
   { path: '/breadcrumbs', element: Breadcrumbs, title: 'Breadcrumbs' },
   { path: '/button', element: Button, title: 'Button' },
   { path: '/callout', element: Callout, title: 'Callout' },
+  { path: '/card', element: Card, title: 'Card' },
   { path: '/checkbox', element: Checkbox, title: 'Checkbox' },
   { path: '/chip', element: Chip, title: 'Chip' },
   { path: '/collapse', element: Collapse, title: 'Collapse' },
   { path: '/dropdown', element: Dropdown, title: 'Dropdown' },
   { path: '/form', element: Form, title: 'Form' },
   { path: '/forward', element: Forward, title: 'Forward' },
+  { path: '/hero', element: Hero, title: 'Hero' },
   { path: '/icon', element: Icon, title: 'Icon' },
   { path: '/input', element: Input, title: 'Input' },
+  { path: '/list', element: List, title: 'List' },
   { path: '/modal', element: Modal, title: 'Modal' },
   { path: '/navscroll', element: Navscroll, title: 'Navscroll' },
   { path: '/overlay', element: Overlay, title: 'Overlay' },
@@ -65,6 +72,7 @@ export const AppRoutes = [
   { path: '/sidebar', element: Sidebar, title: 'Sidebar' },
   { path: '/skiplinks', element: Skiplinks, title: 'Skiplinks' },
   { path: '/sticky', element: Sticky, title: 'Sticky' },
+  { path: '/tables', element: Table, title: 'Tables' },
   { path: '/video', element: Video, title: 'Video' },
 ];
 

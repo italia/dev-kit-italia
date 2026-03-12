@@ -19,7 +19,8 @@ export const routes: Routes = [
   },
   {
     path: 'autocomplete',
-    loadComponent: () => import('./pages/autocomplete.component').then((c) => c.AutocompleteComponent),
+    loadComponent: () =>
+      import('./pages/autocomplete.component').then((c) => c.AutocompleteComponent),
   },
   {
     path: 'avatar',
@@ -51,6 +52,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/callout.component').then((c) => c.CalloutComponent),
   },
   {
+    path: 'card',
+    loadComponent: () => import('./pages/card.component').then((c) => c.CardComponent),
+  },
+  {
     path: 'checkbox',
     loadComponent: () => import('./pages/checkbox.component').then((c) => c.CheckboxComponent),
   },
@@ -75,12 +80,20 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/forward.component').then((c) => c.ForwardComponent),
   },
   {
+    path: 'hero',
+    loadComponent: () => import('./pages/hero.component').then((c) => c.HeroComponent),
+  },
+  {
     path: 'icon',
     loadComponent: () => import('./pages/icon.component').then((c) => c.IconComponent),
   },
   {
     path: 'input',
     loadComponent: () => import('./pages/input.component').then((c) => c.InputComponent),
+  },
+  {
+    path: 'list',
+    loadComponent: () => import('./pages/list.component').then((c) => c.ListComponent),
   },
   {
     path: 'modal',
@@ -130,6 +143,10 @@ export const routes: Routes = [
   {
     path: 'sticky',
     loadComponent: () => import('./pages/sticky.component').then((c) => c.StickyComponent),
+  },
+  {
+    path: 'tables',
+    loadComponent: () => import('./pages/table.component').then((c) => c.TableComponent),
   },
   {
     path: 'video',

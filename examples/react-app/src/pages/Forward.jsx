@@ -5,13 +5,16 @@ const Forward = () => {
     const handleForwardClick = (e) => {
       e.preventDefault();
       const targetId = e.currentTarget.getAttribute('href');
+      if (!targetId) return;
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        targetElement.scrollIntoView({ 
-          behavior: prefersReducedMotion ? 'auto' : 'smooth', 
-          block: 'start' 
+        targetElement.scrollIntoView({
+          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+          block: 'start',
         });
+        targetElement.setAttribute('tabindex', '-1');
+        targetElement.focus({ preventScroll: true });
       }
     };
 

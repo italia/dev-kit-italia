@@ -1,5 +1,16 @@
 # @italia/radio
 
+## 1.0.0-alpha.6
+
+### Patch Changes
+
+- [#280](https://github.com/italia/dev-kit-italia/pull/280) [`d2d9687`](https://github.com/italia/dev-kit-italia/commit/d2d9687c8baacc655c2dd9aa6fcd938f46b8f4a3) Thanks [@pnicolli](https://github.com/pnicolli)! - Updated names in the docs to be consistent with UI Kit
+
+- [#299](https://github.com/italia/dev-kit-italia/pull/299) [`e556822`](https://github.com/italia/dev-kit-italia/commit/e55682290e80bcfc68cd8d835d96b77abd276b46) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Enhanced docs
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.6
+
 ## 1.0.0-alpha.5
 
 ### Minor Changes

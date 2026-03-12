@@ -29,14 +29,17 @@
         <a href="#/button">Button</a>
         <a href="#/breadcrumbs">Breadcrumbs</a>
         <a href="#/callout">Callout</a>
+        <a href="#/card">Card</a>
         <a href="#/checkbox">Checkbox</a>
         <a href="#/chip">Chip</a>
         <a href="#/collapse">Collapse</a>
         <a href="#/dropdown">Dropdown</a>
         <a href="#/form">Form</a>
         <a href="#/forward">Forward</a>
+        <a href="#/hero">Hero</a>
         <a href="#/icon">Icon</a>
         <a href="#/input">Input</a>
+        <a href="#/list">List</a>
         <a href="#/modal">Modal</a>
         <a href="#/navscroll">Navscroll</a>
         <a href="#/overlay">Overlay</a>
@@ -48,6 +51,7 @@
         <a href="#/sidebar">Sidebar</a>
         <a href="#/skiplinks">Skiplinks</a>
         <a href="#/sticky">Sticky</a>
+        <a href="#/tables">Tables</a>
         <a href="#/video">Video</a>
       </nav>
     </div>
@@ -56,7 +60,7 @@
     <Router />
   </main>
   <Footer />
-  <it-back-to-top it-aria-label="Torna su"></it-back-to-top>
+  <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
 </main>
 
 <style>
