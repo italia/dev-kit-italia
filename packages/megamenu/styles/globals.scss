@@ -27,12 +27,6 @@ it-megamenu {
     }
   }
 
-  it-dropdown-item::part(dropdown-item-text) {
-    display: flex;
-    align-items: center;
-    white-space: normal;
-  }
-
   .it-heading-link,
   .it-footer-link {
     font-size: var(--#{$prefix}heading-6-font-size);
