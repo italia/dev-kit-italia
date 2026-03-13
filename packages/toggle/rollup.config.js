@@ -1,17 +1,12 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import { litScss } from 'rollup-plugin-scss-lit';
+
 /**
  * @type {import('rollup').RollupOptions}
  */
 export default {
-  input: [
-    'src/index.ts',
-    'src/it-checkbox-base.ts',
-    'src/it-checkbox.ts',
-    'src/it-checkbox-group-base.ts',
-    'src/it-checkbox-group.ts',
-  ],
+  input: ['src/index.ts', 'src/it-toggle.ts', 'src/it-toggle-group.ts'],
   output: {
     dir: 'dist',
     sourcemap: true,
@@ -32,5 +27,5 @@ export default {
       },
     }),
   ],
-  external: [/^lit(\/|$)/],
+  external: [/^lit(\/|$)/, /^@italia(\/|$)/, /^bootstrap-italia(\/|$)/],
 };

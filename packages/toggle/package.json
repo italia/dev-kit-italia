@@ -1,7 +1,7 @@
 {
-  "name": "@italia/checkbox",
-  "description": "Web component it-checkbox del Design system .italia",
-  "version": "1.0.0-alpha.6",
+  "name": "@italia/toggle",
+  "description": "Web component it-toggle del Design system .italia",
+  "version": "1.0.0-alpha.1",
   "publishConfig": {
     "access": "public"
   },
@@ -9,7 +9,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/italia/dev-kit-italia.git",
-    "directory": "packages/checkbox"
+    "directory": "packages/toggle"
   },
   "author": "Presidenza del Consiglio dei Ministri",
   "homepage": "https://italia.github.io/dev-kit-italia",
@@ -22,10 +22,8 @@
   "types": "./dist/src/index.d.ts",
   "exports": {
     ".": "./dist/src/index.js",
-    "./it-checkbox.js": "./dist/src/it-checkbox.js",
-    "./it-checkbox-base.js": "./dist/src/it-checkbox-base.js",
-    "./it-checkbox-group.js": "./dist/src/it-checkbox-group.js",
-    "./it-checkbox-group-base.js": "./dist/src/it-checkbox-group-base.js",
+    "./it-toggle.js": "./dist/src/it-toggle.js",
+    "./it-toggle-group.js": "./dist/src/it-toggle-group.js",
     "./styles/*": "./styles/*"
   },
   "files": [
@@ -46,6 +44,7 @@
     "test": "wtr --coverage --node-resolve --config web-test-runner.config.js"
   },
   "dependencies": {
+    "@italia/checkbox": "workspace:^",
     "@italia/globals": "workspace:^",
     "@italia/i18n": "workspace:^",
     "bootstrap-italia": "catalog:",
