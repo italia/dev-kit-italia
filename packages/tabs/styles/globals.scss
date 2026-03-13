@@ -1,0 +1,22 @@
+it-tabs[auto] {
+  flex-wrap: no-wrap;
+
+  it-tab {
+    flex: 1 0 auto;
+  }
+}
+
+it-tabs {
+  it-tab {
+    flex-grow: 0;
+    gap: 0.5rem;
+
+    it-icon {
+      display: contents;
+    }
+  }
+}
+
+it-tabs[vertical] {
+  display: flex;
+}

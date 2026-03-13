@@ -31,6 +31,9 @@ import '@italia/section/it-section.js';
 import '@italia/select/it-select.js';
 import '@italia/skiplinks/it-skiplinks.js';
 import '@italia/sticky/it-sticky.js';
+import '@italia/tabs/it-tabs.js';
+import '@italia/tabs/it-tab.js';
+import '@italia/tabs/it-tab-panel.js';
 import '@italia/video/it-video.js';
 
 import { registerTranslation } from '@italia/i18n/i18n.js';

@@ -42,7 +42,8 @@
 @import 'bootstrap-italia/src/scss/components/buttons'; // serve per applicare le classi di stile dei bottoni agli elementi di tipo <a>
 @import 'bootstrap-italia/src/scss/components/card'; //serve per l'esempio HERO. TODO: da rimuovere quando arriva il componente card.
 
-/*dev-kit-italia global styles*/
+@import 'bootstrap-italia/src/scss/components/tab';
+
 @import '@italia/accordion/styles/globals';
 @import '@italia/autocomplete/styles/globals';
 @import '@italia/avatar/styles/globals';
@@ -67,6 +68,7 @@
 @import '@italia/select/styles/globals';
 @import '@italia/skiplinks/styles/globals';
 @import '@italia/sticky/styles/globals';
+@import '@italia/tabs/styles/globals';
 @import '@italia/video/styles/globals';
 
 // Footer

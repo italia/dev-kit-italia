@@ -1,0 +1,180 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
+// L'host it-tab è il trigger interattivo (role="tab"). Non importiamo i componenti
+// nav/tab di BSI perché i selettori compositi (.nav-tabs .nav-link) non attraversano
+// il confine shadow DOM: tutto viene stilato su :host direttamente.
+//
+// Le custom properties --#{$it-tab-prefix}_* viaggiano via flat tree:
+//   it-tabs shadow (.nav-tabs, .nav-tabs-vertical, …) → slot → it-tab :host
+
+// Prefisso SCSS per le custom properties strutturali condivise con it-tabs.scss
+$it-tab-prefix: 'it-tab';
+
+// Variabili + stili base
+:host {
+  // Token BSI sizing/spacing -- OK come valori propri: non bloccano ereditarieta' colore.
+  --#{$prefix}tab-border-width:        3px;
+  --#{$prefix}tab-padding-x:           var(--#{$prefix}spacing-m, 1rem);
+  --#{$prefix}tab-padding-y:           var(--#{$prefix}spacing-s, 0.5rem);
+  --#{$prefix}tab-font-size:           var(--#{$prefix}label-font-size, 0.875rem);
+  --#{$prefix}tab-font-weight:         600;
+  --#{$prefix}tab-border-radius:       var(--#{$prefix}radius-smooth);
+  --#{$prefix}tab-shadow:              0 12px 25px -20px rgba(0, 0, 0, 0.5);
+  --#{$prefix}tab-background-light:    var(--#{$prefix}color-background-primary-lighter);
+  --#{$prefix}tab-border-width-cards:  1px;
+  --#{$prefix}tab-border-color-cards:  var(--#{$prefix}color-border-subtle);
+  // NOTA: nessuna variabile --it-tab_* e' inizializzata qui come valore "own".
+  // Un valore own su :host batte SEMPRE il valore ereditato via flat tree dagli
+  // antenati nella shadow di it-tabs (.nav-tabs-vertical, .nav-tabs-cards, .nav-dark).
+  // Tutti i valori di default sono espressi come fallback nel punto di consumo:
+  //   border-bottom-width: var(--it-tab_bw-bottom, var(--bsi-tab-border-width))
+  // Cosi' .nav-tabs-vertical puo' impostare --it-tab_bw-bottom: 0 e avere effetto.
+
+  // Stili base
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: var(--#{$it-tab-prefix}_justify, center);
+
+  padding: var(--#{$prefix}tab-padding-y) var(--#{$prefix}tab-padding-x);
+
+  border-style: solid;
+  border-top-color:    var(--#{$it-tab-prefix}_bc-top, transparent);
+  border-right-color:  var(--#{$it-tab-prefix}_bc-right, transparent);
+  border-bottom-color: var(--#{$it-tab-prefix}_bc-bottom, transparent);
+  border-left-color:   var(--#{$it-tab-prefix}_bc-left, transparent);
+  border-radius: var(--#{$it-tab-prefix}_border-radius, 0);
+  border-top-width:    var(--#{$it-tab-prefix}_bw-top, 0);
+  border-right-width:  var(--#{$it-tab-prefix}_bw-right, 0);
+  border-bottom-width: var(--#{$it-tab-prefix}_bw-bottom, var(--#{$prefix}tab-border-width));
+  border-left-width:   var(--#{$it-tab-prefix}_bw-left, 0);
+  // Compensa il padding verticale che .nav-tabs aggiunge per far emergere il focus ring.
+  // --#{$it-tab-prefix}_focus-bleed e' definita in it-tabs.scss su .nav-tabs e arriva
+  // via flat tree (.nav-tabs shadow -> slot -> it-tab :host).
+  margin-top:    calc(-1 * var(--#{$it-tab-prefix}_focus-bleed, 0px));
+  margin-bottom: calc(-1 * var(--#{$it-tab-prefix}_focus-bleed, 0px));
+
+  appearance: none;
+  background: var(--it-tab_bg, transparent);
+  outline: none;
+  opacity: var(--it-tab_opacity, 1);
+  // Fallback esplicito: --bsi-tab-text-color non e' inizializzato in :host
+  // cosi' il valore ereditato da .nav-dark (via flat tree) puo' vincere.
+  color: var(--#{$prefix}tab-text-color, var(--#{$prefix}color-text-secondary));
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--#{$prefix}tab-font-size);
+  font-weight: var(--#{$prefix}tab-font-weight);
+  gap: var(--#{$it-tab-prefix}_gap, 0);
+  line-height: 1rem;
+  text-decoration: none;
+  white-space: var(--#{$it-tab-prefix}_white-space, nowrap);
+
+  @include media-breakpoint-up(lg) {
+    --#{$prefix}tab-font-size: var(--#{$prefix}label-font-size-l);
+  }
+
+  // Icona: --bsi-icon-default e' letto da .icon { fill: var(--bsi-icon-default) }
+  // nella shadow SCSS di it-icon. Impostandolo su ::slotted(it-icon) (light DOM)
+  // il valore eredita nella shadow di it-icon senza bisogno di ::part().
+  ::slotted(it-icon) {
+    --#{$prefix}icon-default: var(--#{$prefix}tab-icon-color, var(--#{$prefix}icon-secondary));
+  }
+}
+
+// Stato: hover
+// Le var --it-tab_hover-text-color / --it-tab_hover-icon-color sono impostate
+// in it-tabs.scss su .nav-dark per mantenerle bianche su sfondo scuro.
+// In light mode i fallback usano i token di hover standard BSI.
+:host(:hover) {
+  --#{$prefix}tab-text-color: var(--it-tab_hover-text-color, var(--#{$prefix}color-text-secondary-hover));
+  --#{$prefix}tab-icon-color: var(--it-tab_hover-icon-color, var(--#{$prefix}icon-secondary-hover));
+  // Ripristina opacità piena in dark mode (batte l'ereditato 0.75 con OWN value).
+  --it-tab_opacity: 1;
+}
+
+// Stato: attivo
+// Le --#{$it-tab-prefix}_active-bc-* sono sovrascritte da it-tabs.scss per variante.
+// --#{$it-tab-prefix}_active-mb-offset e' usato da .nav-tabs-cards per far emergere
+// il tab attivo di 1px sopra il bordo inferiore della tablist (effetto card aperta).
+:host([active]) {
+  border-top-color:    var(--#{$it-tab-prefix}_active-bc-top, transparent);
+  border-right-color:  var(--#{$it-tab-prefix}_active-bc-right, transparent);
+  border-bottom-color: var(--#{$it-tab-prefix}_active-bc-bottom, var(--#{$prefix}color-border-primary));
+  border-left-color:   var(--#{$it-tab-prefix}_active-bc-left, transparent);
+  background: var(--#{$it-tab-prefix}_active-bg, transparent);
+  color: var(--#{$it-tab-prefix}_color-active, var(--#{$prefix}color-text-primary));
+  // Ripristina opacità piena: batte il 0.75 ereditato da .nav-dark via flat tree.
+  --it-tab_opacity: 1;
+  margin-bottom: calc(
+    -1 * var(--#{$it-tab-prefix}_focus-bleed, 0px)
+    + var(--#{$it-tab-prefix}_active-mb-offset, 0px)
+  );
+
+  ::slotted(it-icon) {
+    --#{$prefix}icon-default: var(--#{$it-tab-prefix}_icon-color-active, var(--#{$prefix}icon-primary));
+  }
+}
+
+// Stato: focus-visible
+// Focus ring manuale (senza @extend %focus) per evitare border-color: !important
+// che sovrascrive il bordo usato come indicatore-attivo.
+// position: relative + z-index: 10 → il tab focalizzato emerge sopra i sibling
+// (altrimenti il box-shadow è coperto dagli it-tab adiacenti nel flusso flex).
+// outline: none è già impostato su :host base; qui ripetiamo per sicurezza.
+:host(:focus-visible) {
+  position: relative;
+  z-index: 10;
+  outline: 3px solid transparent;
+  outline-offset: 3px;
+  box-shadow:
+    0 0 0 2px var(--#{$prefix}color-border-inverse),
+    0 0 0 5px var(--#{$prefix}color-outline-focus) !important;
+}
+
+// Stato: disabilitato
+:host([disabled]) {
+  color: var(--#{$prefix}color-link-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+
+  ::slotted(it-icon) {
+    --#{$prefix}icon-default: var(--#{$prefix}icon-disabled);
+  }
+
+  // Nasconde il pulsante × nei tab disabilitati
+  ::slotted(.it-tab-close) {
+    display: none !important;
+  }
+}
+
+// Pulsante × iniettato automaticamente in modalità cards.
+// È un <a role="button" tabindex="-1"> così non aggiunge stop di tasto Tab.
+::slotted(.it-tab-close) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-inline-start: 0.375rem;
+  padding: 0.125rem;
+  border-radius: 50%;
+  color: currentColor;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.6;
+  text-decoration: none;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+    background-color: rgb(0 0 0 / 8%);
+    box-shadow:
+      0 0 0 2px var(--#{$prefix}color-border-inverse),
+      0 0 0 5px var(--#{$prefix}color-outline-focus);
+    outline: 3px solid transparent;
+  }
+}

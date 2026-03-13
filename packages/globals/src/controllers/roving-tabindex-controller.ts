@@ -18,10 +18,12 @@ export interface RovingTabindexConfig<T extends HTMLElement> {
   wrap?: boolean;
 
   /**
-   * Direction of navigation
+   * Direction of navigation. Può essere una stringa statica o una funzione
+   * che restituisce la direzione dinamicamente (utile quando la direzione
+   * dipende dallo stato del componente, es. orientamento verticale/orizzontale).
    * @default 'both'
    */
-  direction?: 'horizontal' | 'vertical' | 'both';
+  direction?: 'horizontal' | 'vertical' | 'both' | (() => 'horizontal' | 'vertical' | 'both');
 
   /**
    * Whether to select items on focus (vs just focusing)
@@ -55,7 +57,7 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
 
   private config: RovingTabindexConfig<T> & {
     wrap: boolean;
-    direction: 'horizontal' | 'vertical' | 'both';
+    direction: 'horizontal' | 'vertical' | 'both' | (() => 'horizontal' | 'vertical' | 'both');
     selectOnFocus: boolean;
     skipItem: (item: T) => boolean;
   };
@@ -123,7 +125,8 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
    * @returns true if the event was handled, false otherwise
    */
   handleKeydown(currentItem: T, event: KeyboardEvent): boolean {
-    const { direction } = this.config;
+    const direction =
+      typeof this.config.direction === 'function' ? this.config.direction() : this.config.direction;
     const { key } = event;
 
     // Determine if this key should be handled based on direction

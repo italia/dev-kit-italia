@@ -34,6 +34,7 @@ import Sticky from './pages/Sticky';
 import Table from './pages/Table';
 import Video from './pages/Video';
 import Pagination from './pages/Pagination';
+import Tabs from './pages/Tabs';
 
 export const AppRoutes = [
   { path: '/', element: <Home />, title: 'Homepage' },
@@ -71,5 +72,6 @@ export const AppRoutes = [
   { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/tables', element: <Table />, title: 'Tables' },
+  { path: '/tabs', element: <Tabs />, title: 'Tabs' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];

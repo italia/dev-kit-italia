@@ -1,0 +1,156 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as TabsStories from './it-tabs.stories';
+
+<Meta of={TabsStories} />
+
+# Tabs
+
+<description>Organizza contenuti equivalenti in schede navigabili, mostrando un pannello alla volta.</description>
+
+## Cosa fa
+
+Il componente Tabs permette di organizzare contenuti correlati in schede (tab) navigabili. Solo un pannello è visibile alla volta, e l'utente può passare da uno all'altro tramite click o navigazione da tastiera.
+
+[Approfondisci quando e come usare il componente Tabs](https://designers.italia.it/design-system/componenti/tabs/)
+
+### Alternative a questo componente
+
+- [Accordion](?path=/docs/componenti-accordion--documentazione): visivamente più compatto, utile quando più sezioni devono essere espandibili contemporaneamente o quando ci sono molti contenuti verticali.
+- [Collapse](?path=/docs/componenti-collapse--documentazione): per una singola sezione di contenuto secondario da mostrare o nascondere.
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={TabsStories.EsempioInterattivo} />
+<Controls of={TabsStories.EsempioInterattivo} />
+
+## Indicazioni generali
+
+Il componente Tabs è composto da tre elementi:
+
+- `it-tabs`: contenitore principale che gestisce selezione, ARIA e navigazione da tastiera;
+- `it-tab`: singola scheda trigger — va inserita tramite `slot="tab"` e il suo contenuto in light DOM diventa l'etichetta;
+- `it-tab-panel`: singolo pannello di contenuto — il suo contenuto in light DOM è il corpo della scheda.
+
+Il collegamento tra trigger e pannello avviene tramite:
+- attributo `panel="nome"` su `it-tab`
+- attributo `name="nome"` su `it-tab-panel`
+
+```html
+<it-tabs label="Navigazione principale">
+  <it-tab slot="tab" panel="p1">Tab 1</it-tab>
+  <it-tab slot="tab" panel="p2">Tab 2</it-tab>
+
+  <it-tab-panel name="p1">Contenuto del primo pannello</it-tab-panel>
+  <it-tab-panel name="p2">Contenuto del secondo pannello</it-tab-panel>
+</it-tabs>
+```
+
+## Accessibilità
+
+Il componente implementa le specifiche del [WAI-ARIA Authoring Practices — Tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/):
+
+- `role="tablist"` sul contenitore, `role="tab"` sui trigger, `role="tabpanel"` sui pannelli;
+- `aria-selected` e roving tabindex (`tabindex="0"` sul tab attivo, `tabindex="-1"` sugli altri) gestiti automaticamente;
+- `aria-controls` su ogni tab punta all'id del pannello associato;
+- `aria-labelledby` su ogni pannello punta all'id del bottone del tab corrispondente;
+- L'attributo `label` su `it-tabs` fornisce l'`aria-label` della tablist — **obbligatorio** quando non è presente un'intestazione visiva adiacente.
+
+<div class="callout callout-warning">
+<div class="callout-inner">
+<div class="callout-title"><span class="text">Attributo label</span></div>
+<p>Imposta sempre l'attributo <code>label</code> su <code>it-tabs</code> con una descrizione contestuale. Questo testo viene letto dagli screen reader all'accesso alla tablist.</p>
+</div>
+</div>
+
+### Navigazione da tastiera
+
+| Tasto | Comportamento |
+|---|---|
+| `Tab` | Porta il focus sulla tablist (sul tab attivo) o sul pannello attivo |
+| `→` / `←` | Sposta il focus al tab precedente/successivo (layout orizzontale) |
+| `↑` / `↓` | Sposta il focus al tab precedente/successivo (layout verticale) |
+| `Home` | Porta il focus al primo tab |
+| `End` | Porta il focus all'ultimo tab |
+
+La navigazione con frecce attiva automaticamente il tab (automatic activation, consigliata dal WAI-ARIA APG quando i pannelli si aggiornano velocemente).
+
+## Tab orizzontali
+
+Variante di default: i tab sono dimensionati in base al contenuto.
+
+<Canvas of={TabsStories.TabOrizzontale} />
+
+## Tab a tutta larghezza
+
+Con l'attributo `auto`, i tab si espandono per occupare l'intera larghezza disponibile. Su schermi molto piccoli, se le etichette superano la larghezza dello schermo, viene attivato lo scrolling orizzontale.
+
+<Canvas of={TabsStories.TabATuttaLarghezza} />
+
+## Tab con icona
+
+Le etichette dei tab possono contenere icone. Usare sempre un testo con classe `.visually-hidden` all'interno del tag del tab per garantire l'accessibilità agli screen reader.
+
+<Canvas of={TabsStories.TabConIcona} />
+
+## Tab con testo e icona
+
+Con l'attributo `icon-text` su `it-tabs`, il margine tra icona e testo è ottimizzato. L'allineamento verticale tra i due elementi è automatico.
+
+<Canvas of={TabsStories.TabConTestoEIcona} />
+
+## Tab verticali
+
+Con l'attributo `vertical`, la tablist si orienta verticalmente. La navigazione da tastiera usa le frecce Su/Giù invece di Sinistra/Destra.
+
+<Canvas of={TabsStories.TabVerticale} />
+
+## Tab verticali con sfondo
+
+Con `vertical-background` (in combinazione con `vertical`), il tab selezionato mostra uno sfondo primario chiaro.
+
+<Canvas of={TabsStories.TabVerticaleConSfondo} />
+
+## Tab tipo card
+
+Con l'attributo `cards`, i tab assumono un design "card" con bordi su tre lati del tab attivo.
+
+<Canvas of={TabsStories.TabCard} />
+
+## Tab con sfondo scuro
+
+Con l'attributo `dark`, la tablist ottiene sfondo scuro e testo chiaro.
+
+<Canvas of={TabsStories.TabScuro} />
+
+<Canvas of={TabsStories.TabScuroVerticale} />
+
+## Posizionamento
+
+### Tab in basso
+
+Con `placement="bottom"`, la tablist si posiziona sotto il contenuto. Il bordo attivo si sposta dal basso all'alto.
+
+<Canvas of={TabsStories.PosizionamentoBasso} />
+
+### Tab a sinistra
+
+Con `placement="start"`, la tablist verticale si posiziona a sinistra del contenuto.
+
+<Canvas of={TabsStories.PosizionamentoSinistra} />
+
+### Tab a destra
+
+Con `placement="end"`, la tablist verticale si posiziona a destra del contenuto. Il bordo attivo si sposta sul lato sinistro.
+
+<Canvas of={TabsStories.PosizionamentoDestra} />
+
+## Personalizzazione degli stili
+
+Per personalizzare gli stili, puoi usare i selettori `::part` dedicati:
+
+- `it-tab::part(trigger)` — bottone interno di ogni scheda trigger;
+- `it-tab-panel::part(panel)` — div contenitore del corpo di ogni pannello.
+
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)

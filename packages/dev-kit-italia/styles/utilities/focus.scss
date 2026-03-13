@@ -5,7 +5,10 @@ MEMO:
 - :focus:not(:focus-visible) --> solo da mouse
 */
 
-:focus-visible,
+// it-tab e it-tab-panel gestiscono il focus ring internamente nel proprio shadow SCSS.
+// Sono esclusi dalla regola globale per evitare collisioni con border-color !important
+// che sovrascriverebbero l'indicatore di tab attivo.
+:focus-visible:not(it-tab):not(it-tab-panel),
 button:focus-visible,
 ::part(focusable):focus-visible,
 .it-carousel-wrapper .splide__pagination button:focus-visible,
@@ -21,7 +24,7 @@ button:focus-visible,
   box-shadow: none !important;
 }
 
-:focus:not(:focus-visible):not(.btn),
+:focus:not(:focus-visible):not(.btn):not(it-tab):not(it-tab-panel),
 ::part(focusable):focus-visible:not(.btn) {
   @extend %focusmouse;
 }
