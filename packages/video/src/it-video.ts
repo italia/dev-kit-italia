@@ -51,6 +51,10 @@ export class ItVideo extends BaseLocalizedComponent {
   @state()
   private consentAccepted: boolean = false;
 
+  public getPlayer() {
+    return this.player;
+  }
+
   /**
    * Funzione risolta da window[initPluginsName]
    */

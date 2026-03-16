@@ -29,6 +29,7 @@
         <a href="#/button">Button</a>
         <a href="#/breadcrumbs">Breadcrumbs</a>
         <a href="#/callout">Callout</a>
+        <a href="#/carousel">Carousel</a>
         <a href="#/card">Card</a>
         <a href="#/checkbox">Checkbox</a>
         <a href="#/chip">Chip</a>
