@@ -1,5 +1,48 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-alpha.6
+
+### Minor Changes
+
+- [#261](https://github.com/italia/dev-kit-italia/pull/261) [`36ea0c7`](https://github.com/italia/dev-kit-italia/commit/36ea0c7371522af5d50794d6657e8e65ecabea49) Thanks [@pnicolli](https://github.com/pnicolli)! - Added card component
+
+- [#270](https://github.com/italia/dev-kit-italia/pull/270) [`7c3f181`](https://github.com/italia/dev-kit-italia/commit/7c3f18160ed0ef3a0aa1b058cb22d0911cff74fd) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add Tables HTML documentation
+
+### Patch Changes
+
+- [#273](https://github.com/italia/dev-kit-italia/pull/273) [`fc1c229`](https://github.com/italia/dev-kit-italia/commit/fc1c229cb2229c5ea290c3068c59f3daac84ca7d) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added Hero component
+
+- [#289](https://github.com/italia/dev-kit-italia/pull/289) [`4a4577c`](https://github.com/italia/dev-kit-italia/commit/4a4577c727cb224b74123e2298ea416a5eb9e0a7) Thanks [@danielenole](https://github.com/danielenole)! - Enhanced docs
+
+- Updated dependencies [[`efd4340`](https://github.com/italia/dev-kit-italia/commit/efd4340195ebe84a8a8135035125b83db56172d0), [`36ea0c7`](https://github.com/italia/dev-kit-italia/commit/36ea0c7371522af5d50794d6657e8e65ecabea49), [`d2d9687`](https://github.com/italia/dev-kit-italia/commit/d2d9687c8baacc655c2dd9aa6fcd938f46b8f4a3), [`fc1c229`](https://github.com/italia/dev-kit-italia/commit/fc1c229cb2229c5ea290c3068c59f3daac84ca7d), [`e556822`](https://github.com/italia/dev-kit-italia/commit/e55682290e80bcfc68cd8d835d96b77abd276b46), [`01aa2d7`](https://github.com/italia/dev-kit-italia/commit/01aa2d7850660d72c6e09a6b1118005fd75f9420), [`1a76d13`](https://github.com/italia/dev-kit-italia/commit/1a76d13c61c4836508ccdf54ccc018114c7408cb), [`b0d65d7`](https://github.com/italia/dev-kit-italia/commit/b0d65d724a42c92d92e2f09b8c061a00bdaa0492), [`526c4d8`](https://github.com/italia/dev-kit-italia/commit/526c4d8f13a6974d6290f7ca9726fac349218fc5), [`4a4577c`](https://github.com/italia/dev-kit-italia/commit/4a4577c727cb224b74123e2298ea416a5eb9e0a7)]:
+  - @italia/checkbox@1.0.0-alpha.6
+  - @italia/card@1.0.0-alpha.6
+  - @italia/input@1.0.0-alpha.6
+  - @italia/radio@1.0.0-alpha.6
+  - @italia/video@1.0.0-alpha.6
+  - @italia/hero@1.0.0-alpha.6
+  - @italia/back-to-top@1.0.0-alpha.6
+  - @italia/breadcrumbs@1.0.0-alpha.6
+  - @italia/accordion@1.0.0-alpha.6
+  - @italia/navscroll@1.0.0-alpha.6
+  - @italia/collapse@1.0.0-alpha.6
+  - @italia/callout@1.0.0-alpha.6
+  - @italia/section@1.0.0-alpha.6
+  - @italia/button@1.0.0-alpha.6
+  - @italia/rating@1.0.0-alpha.6
+  - @italia/chip@1.0.0-alpha.6
+  - @italia/icon@1.0.0-alpha.6
+  - @italia/modal@1.0.0-alpha.6
+  - @italia/sticky@1.0.0-alpha.6
+  - @italia/dropdown@1.0.0-alpha.6
+  - @italia/pagination@1.0.0-alpha.6
+  - @italia/autocomplete@1.0.0-alpha.6
+  - @italia/avatar@1.0.0-alpha.6
+  - @italia/i18n@1.0.0-alpha.6
+  - @italia/popover@1.0.0-alpha.6
+  - @italia/select@1.0.0-alpha.6
+  - @italia/skiplinks@1.0.0-alpha.6
+
 ## 1.0.0-alpha.5
 
 ### Minor Changes

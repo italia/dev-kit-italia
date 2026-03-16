@@ -1,0 +1,98 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/components/grid';
+
+@import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
+
+// @import 'bootstrap-italia/src/scss/components/nav';
+@import 'bootstrap-italia/src/scss/components/megamenu';
+
+//ovveride utilities: get only needed utilities
+$utilities: (
+  'padding': map-get($utilities, 'padding'),
+  'padding-y': map-get($utilities, 'padding-y'),
+  'padding-top': map-get($utilities, 'padding-top'),
+  'padding-bottom': map-get($utilities, 'padding-bottom'),
+  'padding-x': map-get($utilities, 'padding-x'),
+  'padding-start': map-get($utilities, 'padding-start'),
+  'margin-start': map-get($utilities, 'margin-start'),
+  'margin-end': map-get($utilities, 'margin-end'),
+  'text-align': map-merge(
+      map-get($utilities, 'text-align'),
+      (
+        'values': end,
+      )
+    ),
+);
+@import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
+
+// .megamenu {
+//   .row {
+//     --#{$prefix}gutter-x: 0;
+//   }
+// }
+:host {
+  .dropdown-menu {
+    &,
+    * {
+      box-sizing: border-box;
+    }
+
+    --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}spacing-xxs);
+    --#{$prefix}dropdown-item-padding-y: var(--#{$prefix}spacing-xxs);
+    --#{$prefix}dropdown-spacer: 0;
+    left: 0 !important; //override dello stile definito da floating-ui
+    width: 100%;
+    background: var(--#{$prefix}megamenu-background-color, #fff);
+
+    // Extra padding on large devices only
+    @include media-breakpoint-up(lg) {
+      --#{$prefix}dropdown-padding-y: var(--#{$prefix}spacing-m);
+      --#{$prefix}dropdown-padding-x: var(--#{$prefix}spacing-xs);
+    }
+
+    .link-list-wrapper ul.link-list {
+      display: block;
+      column-gap: var(--#{$prefix}spacing-s); /* spazio tra colonne */
+    }
+  }
+
+  it-popover it-button.nav-link {
+    //--#{$prefix}navbar-link-border-color: rgba(0, 0, 0, 0);
+    --#{$prefix}label-font-size: var(--#{$prefix}navbar-link-font-size);
+    --#{$prefix}navbar-link-border-color: transparent;
+
+    it-icon {
+      line-height: 0;
+    }
+
+    &::part(button) {
+      --#{$prefix}btn-background: transparent;
+      --#{$prefix}btn-border-radius: 0;
+      --#{$prefix}btn-text-color: var(--#{$prefix}navbar-link-color);
+      border-left: var(--#{$prefix}navbar-link-border-size) solid var(--#{$prefix}navbar-link-border-color);
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      &:focus-visible {
+        border-bottom-color: transparent !important;
+      }
+    }
+
+    @media (min-width: #{map-get($grid-breakpoints, lg)}) {
+      &::part(button) {
+        border-bottom: var(--#{$prefix}navbar-link-border-size) solid var(--#{$prefix}navbar-link-border-color);
+        border-left: none;
+      }
+
+      &.active {
+        --#{$prefix}navbar-link-border-color: var(--#{$prefix}navbar-link-color);
+      }
+    }
+  }
+}

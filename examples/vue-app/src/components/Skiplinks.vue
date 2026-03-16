@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <h1>it-skiplinks</h1>
+  <h1>Skiplinks</h1>
 
   <it-skiplinks it-aria-label="Vai a:">
     <a href="#menu">Vai al menu</a>
