@@ -21,6 +21,7 @@ import Hero from './pages/Hero.svelte';
 import Icon from './pages/Icon.svelte';
 import Input from './pages/Input.svelte';
 import List from './pages/List.svelte';
+import Megamenu from './pages/Megamenu.svelte';
 import Modal from './pages/Modal.svelte';
 import Navscroll from './pages/Navscroll.svelte';
 import Overlay from './pages/Overlay.svelte';
@@ -33,6 +34,7 @@ import Select from './pages/Select.svelte';
 import Sidebar from './pages/Sidebar.svelte';
 import Skiplinks from './pages/Skiplinks.svelte';
 import Sticky from './pages/Sticky.svelte';
+import Carousel from './pages/Carousel.svelte';
 import Table from './pages/Table.svelte';
 import Video from './pages/Video.svelte';
 
@@ -49,6 +51,7 @@ export const AppRoutes = [
   { path: '/breadcrumbs', element: Breadcrumbs, title: 'Breadcrumbs' },
   { path: '/button', element: Button, title: 'Button' },
   { path: '/callout', element: Callout, title: 'Callout' },
+  { path: '/carousel', element: Carousel, title: 'Carousel' },
   { path: '/card', element: Card, title: 'Card' },
   { path: '/checkbox', element: Checkbox, title: 'Checkbox' },
   { path: '/chip', element: Chip, title: 'Chip' },
@@ -60,6 +63,7 @@ export const AppRoutes = [
   { path: '/icon', element: Icon, title: 'Icon' },
   { path: '/input', element: Input, title: 'Input' },
   { path: '/list', element: List, title: 'List' },
+  { path: '/megamenu', element: Megamenu, title: 'Megamenu' },
   { path: '/modal', element: Modal, title: 'Modal' },
   { path: '/navscroll', element: Navscroll, title: 'Navscroll' },
   { path: '/overlay', element: Overlay, title: 'Overlay' },

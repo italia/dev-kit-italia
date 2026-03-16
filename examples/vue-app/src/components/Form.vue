@@ -32,7 +32,7 @@ const handleSubmit = (e) => {
 </script>
 
 <template>
-  <h1>it-form</h1>
+  <h1>Form</h1>
 
   <form id="form" @submit="{ handleSubmit }" class="mb-4">
     <it-input id="nome" name="nome">

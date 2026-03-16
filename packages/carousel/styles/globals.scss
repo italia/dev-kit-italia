@@ -1,0 +1,12 @@
+/* Lo shimmer è gestito da fouc.scss tramite il mixin it-shimmer.
+   Qui aggiungiamo solo i comportamenti non coperti dal mixin globale. */
+
+it-carousel:not(:defined) {
+  overflow: hidden;
+
+  /* nasconde tutto il contenuto slottato (card, immagini, video)
+     evitando il flash di contenuto prima che Splide monti */
+  > * {
+    visibility: hidden;
+  }
+}

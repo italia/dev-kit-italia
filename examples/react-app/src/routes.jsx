@@ -21,6 +21,7 @@ import Hero from './pages/Hero';
 import Icon from './pages/Icon';
 import Input from './pages/Input';
 import List from './pages/List';
+import Megamenu from './pages/Megamenu';
 import Modal from './pages/Modal';
 import Navscroll from './pages/Navscroll';
 import Overlay from './pages/Overlay';
@@ -34,6 +35,7 @@ import Skiplinks from './pages/Skiplinks';
 import Sticky from './pages/Sticky';
 import Table from './pages/Table';
 import Video from './pages/Video';
+import Carousel from './pages/Carousel';
 import Pagination from './pages/Pagination';
 
 export const AppRoutes = [
@@ -49,6 +51,7 @@ export const AppRoutes = [
   { path: '/breadcrumbs', element: <Breadcrumbs />, title: 'Breadcrumbs' },
   { path: '/button', element: <Button />, title: 'Button' },
   { path: '/callout', element: <Callout />, title: 'Callout' },
+  { path: '/carousel', element: <Carousel />, title: 'Carousel' },
   { path: '/card', element: <Card />, title: 'Card' },
   { path: '/checkbox', element: <Checkbox />, title: 'Checkbox' },
   { path: '/chip', element: <Chip />, title: 'Chip' },
@@ -60,6 +63,7 @@ export const AppRoutes = [
   { path: '/icon', element: <Icon />, title: 'Icon' },
   { path: '/input', element: <Input />, title: 'Input' },
   { path: '/list', element: <List />, title: 'List' },
+  { path: '/megamenu', element: <Megamenu />, title: 'Megamenu' },
   { path: '/modal', element: <Modal />, title: 'Modal' },
   { path: '/navscroll', element: <Navscroll />, title: 'Navscroll' },
   { path: '/overlay', element: <Overlay />, title: 'Overlay' },

@@ -2,7 +2,11 @@
   let popoverRef;
 
   function handleTriggerClick(e) {
-    if (e.currentTarget.tagName && e.currentTarget.tagName.toLowerCase() === 'a' && e.currentTarget.getAttribute('href') === '#') {
+    if (
+      e.currentTarget.tagName &&
+      e.currentTarget.tagName.toLowerCase() === 'a' &&
+      e.currentTarget.getAttribute('href') === '#'
+    ) {
       e.preventDefault();
     }
     e.currentTarget.closest('it-popover')?.toggle();
@@ -35,12 +39,12 @@
   }
 </script>
 
-<h1>it-popover</h1>
+<h1>Popover</h1>
 
 <div class="alert alert-info" role="alert">
-  <strong>Nota:</strong> Il componente <code>it-popover</code> non gestisce automaticamente il click sul trigger.
-  È necessario aggiungere un event handler <code>on:click</code> che chiama <code>toggle()</code> sul popover.
-  Vedi gli esempi sotto per i pattern da usare.
+  <strong>Nota:</strong> Il componente <code>it-popover</code> non gestisce automaticamente il click sul trigger. È
+  necessario aggiungere un event handler <code>on:click</code> che chiama <code>toggle()</code> sul popover. Vedi gli esempi
+  sotto per i pattern da usare.
 </div>
 
 <!-- Base - Menu utente -->
@@ -55,11 +59,29 @@
         <div class="popover-body">
           <div style="display: flex; flex-direction: column; gap: 8px">
             <!-- svelte-ignore a11y-invalid-attribute -->
-            <a href="#" on:click={(e) => handleAction(e, 'Modifica profilo')} style="color: var(--bs-primary); text-decoration: none"> 📝 Modifica profilo </a>
+            <a
+              href="#"
+              on:click={(e) => handleAction(e, 'Modifica profilo')}
+              style="color: var(--bs-primary); text-decoration: none"
+            >
+              📝 Modifica profilo
+            </a>
             <!-- svelte-ignore a11y-invalid-attribute -->
-            <a href="#" on:click={(e) => handleAction(e, 'Impostazioni')} style="color: var(--bs-primary); text-decoration: none"> ⚙️ Impostazioni </a>
+            <a
+              href="#"
+              on:click={(e) => handleAction(e, 'Impostazioni')}
+              style="color: var(--bs-primary); text-decoration: none"
+            >
+              ⚙️ Impostazioni
+            </a>
             <!-- svelte-ignore a11y-invalid-attribute -->
-            <a href="#" on:click={(e) => handleAction(e, 'Esci')} style="color: var(--bs-danger); text-decoration: none"> 🚪 Esci </a>
+            <a
+              href="#"
+              on:click={(e) => handleAction(e, 'Esci')}
+              style="color: var(--bs-danger); text-decoration: none"
+            >
+              🚪 Esci
+            </a>
           </div>
         </div>
       </div>
@@ -79,7 +101,13 @@
           <h3 class="popover-header">Azioni rapide</h3>
           <div class="popover-body">
             <!-- svelte-ignore a11y-invalid-attribute -->
-            <a href="#" on:click={(e) => handleAction(e, 'Copia link')} style="color: var(--bs-primary); display: block"> 📋 Copia link </a>
+            <a
+              href="#"
+              on:click={(e) => handleAction(e, 'Copia link')}
+              style="color: var(--bs-primary); display: block"
+            >
+              📋 Copia link
+            </a>
           </div>
         </div>
       </div>
@@ -92,7 +120,9 @@
           <h3 class="popover-header">Azioni rapide</h3>
           <div class="popover-body">
             <!-- svelte-ignore a11y-invalid-attribute -->
-            <a href="#" on:click={(e) => handleAction(e, 'Condividi')} style="color: var(--bs-primary); display: block"> 📤 Condividi </a>
+            <a href="#" on:click={(e) => handleAction(e, 'Condividi')} style="color: var(--bs-primary); display: block">
+              📤 Condividi
+            </a>
           </div>
         </div>
       </div>
@@ -105,7 +135,9 @@
           <h3 class="popover-header">Azioni rapide</h3>
           <div class="popover-body">
             <!-- svelte-ignore a11y-invalid-attribute -->
-            <a href="#" on:click={(e) => handleAction(e, 'Scarica')} style="color: var(--bs-primary); display: block"> ⬇️ Scarica </a>
+            <a href="#" on:click={(e) => handleAction(e, 'Scarica')} style="color: var(--bs-primary); display: block">
+              ⬇️ Scarica
+            </a>
           </div>
         </div>
       </div>
@@ -118,7 +150,13 @@
           <h3 class="popover-header">Azioni rapide</h3>
           <div class="popover-body">
             <!-- svelte-ignore a11y-invalid-attribute -->
-            <a href="#" on:click={(e) => handleAction(e, 'Aggiungi ai preferiti')} style="color: var(--bs-primary); display: block"> ⭐ Aggiungi ai preferiti </a>
+            <a
+              href="#"
+              on:click={(e) => handleAction(e, 'Aggiungi ai preferiti')}
+              style="color: var(--bs-primary); display: block"
+            >
+              ⭐ Aggiungi ai preferiti
+            </a>
           </div>
         </div>
       </div>
@@ -139,9 +177,12 @@
           Informazioni documento
         </h3>
         <div class="popover-body">
-          Questo documento contiene informazioni sensibili. Prima di procedere assicurati di avere le autorizzazioni necessarie.
+          Questo documento contiene informazioni sensibili. Prima di procedere assicurati di avere le autorizzazioni
+          necessarie.
           <!-- svelte-ignore a11y-invalid-attribute -->
-          <a href="#" class="popover-inner-link" on:click={(e) => handleAction(e, 'Policy completa')}>Leggi la policy completa</a>
+          <a href="#" class="popover-inner-link" on:click={(e) => handleAction(e, 'Policy completa')}
+            >Leggi la policy completa</a
+          >
         </div>
       </div>
     </div>
@@ -156,18 +197,43 @@
     Per maggiori informazioni sulla privacy e su come trattiamo i tuoi dati,
     <it-popover placement="top">
       <!-- svelte-ignore a11y-invalid-attribute -->
-      <a href="#" slot="trigger" style="text-decoration: underline; color: var(--bs-primary)" on:click={handleTriggerClick}> consulta le nostre policy </a>
+      <a
+        href="#"
+        slot="trigger"
+        style="text-decoration: underline; color: var(--bs-primary)"
+        on:click={handleTriggerClick}
+      >
+        consulta le nostre policy
+      </a>
       <div slot="content" class="popover">
         <div class="popover-inner">
           <h3 class="popover-header">Informazioni sulla privacy</h3>
           <div class="popover-body">
             <div style="display: flex; flex-direction: column; gap: 8px">
               <!-- svelte-ignore a11y-invalid-attribute -->
-              <a href="#" on:click={(e) => handleAction(e, 'Privacy Policy')} style="color: var(--bs-primary); text-decoration: none"> 🔒 Privacy Policy </a>
+              <a
+                href="#"
+                on:click={(e) => handleAction(e, 'Privacy Policy')}
+                style="color: var(--bs-primary); text-decoration: none"
+              >
+                🔒 Privacy Policy
+              </a>
               <!-- svelte-ignore a11y-invalid-attribute -->
-              <a href="#" on:click={(e) => handleAction(e, 'Cookie Policy')} style="color: var(--bs-primary); text-decoration: none"> 🍪 Cookie Policy </a>
+              <a
+                href="#"
+                on:click={(e) => handleAction(e, 'Cookie Policy')}
+                style="color: var(--bs-primary); text-decoration: none"
+              >
+                🍪 Cookie Policy
+              </a>
               <!-- svelte-ignore a11y-invalid-attribute -->
-              <a href="#" on:click={(e) => handleAction(e, 'Gestisci consensi')} style="color: var(--bs-primary); text-decoration: none"> ⚙️ Gestisci consensi </a>
+              <a
+                href="#"
+                on:click={(e) => handleAction(e, 'Gestisci consensi')}
+                style="color: var(--bs-primary); text-decoration: none"
+              >
+                ⚙️ Gestisci consensi
+              </a>
             </div>
           </div>
         </div>
@@ -186,9 +252,7 @@
     <div slot="content" class="popover">
       <div class="popover-inner">
         <h3 class="popover-header">Eventi del Popover</h3>
-        <div class="popover-body">
-          Apri e chiudi questo popover per vedere gli eventi nella console del browser.
-        </div>
+        <div class="popover-body">Apri e chiudi questo popover per vedere gli eventi nella console del browser.</div>
       </div>
     </div>
   </it-popover>

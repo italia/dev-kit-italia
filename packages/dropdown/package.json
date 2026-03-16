@@ -24,6 +24,7 @@
     ".": "./dist/src/index.js",
     "./it-dropdown.js": "./dist/src/it-dropdown.js",
     "./it-dropdown-item.js": "./dist/src/it-dropdown-item.js",
+    "./it-dropdown-base.js": "./dist/src/it-dropdown-base.js",
     "./styles/*": "./styles/*"
   },
   "files": [
