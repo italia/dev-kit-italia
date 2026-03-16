@@ -1,0 +1,200 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Misurare l'adozione del Kit" />
+
+# Misurare l'adozione del Kit
+
+Misura l'utilizzo del Dev Kit Italia nel tuo sito o servizio per valutarne l'impatto e guidarne le evoluzioni future.
+
+## Perché misurare l'adozione del Kit
+
+Misurare l’utilizzo dei Web Components del Dev Kit Italia ti permette di capire quali componenti vengono effettivamente impiegati, in quali contesti tecnologici e qual è la loro efficacia. Questi dati ti aiutano a valutarne l'impatto complessivo, ottimizzare le integrazioni esistenti e guidare le future evoluzioni del tuo sito o servizio.
+
+
+
+La strategia proposta si pone tre obiettivi principali:
+- identificare i Web Components utilizzati nelle pagine web, sfruttando un prefisso standard (`it-`) che li rende facilmente riconoscibili;
+- rilevare l’uso di componenti classici, ovvero quelli implementati tramite classi CSS e HTML puro, per ottenere una visione completa dell’adozione del design system;
+- determinare il framework o CMS utilizzato nella pagina, un’informazione utile per analisi più approfondite e per orientare le future evoluzioni del progetto.
+
+## Come misurare l'adozione del Kit
+
+Per misurare l'adozione del Kit, ti suggeriamo di usare una tecnica basata sull'analisi del DOM. Questa tecnica non è invasiva e ti permette di:
+
+- identificare i Web Components utilizzati nelle pagine web;
+- rilevare l’uso di componenti classici implementati tramite classi CSS e HTML puro;
+- determinare il framework o CMS utilizzato nella pagina.
+
+I Web Components vengono identificati tramite il loro prefisso standard (`it-`), mentre i componenti implementati via HTML vengono rilevati cercando le specifiche classi CSS documentate nelle pagine dei componenti. Puoi riconoscere i due tipi di componenti dai tag presenti in alto a ciascuna pagina: `Componente` per i Web Components e `Documentazione HTML` per i componenti HTML.
+
+Per quanto riguarda il framework o CMS, vengono usate euristiche che analizzano oggetti globali, meta-tag e pattern generati dai principali strumenti di sviluppo front-end.
+
+
+## Implementazione dello script di analisi
+
+Per usare questa tecnica di misurazione, integra nel tuo progetto questo script JavaScript. 
+
+Lo script è già impostato per identificare Web Components e componenti HTML tramite analisi del DOM, rilevare il framework o CMS tramite l'uso di euristiche, e aggregare i risultati.
+
+
+```javascript
+function detectWebComponents(prefix = 'it-') {
+  const allElements = document.getElementsByTagName('*');
+  const components = {};
+
+  Array.from(allElements).forEach(el => {
+    const tag = el.tagName.toLowerCase();
+
+    if (tag.startsWith(prefix)) {
+      if (!components[tag]) {
+        components[tag] = 0;
+      }
+      components[tag]++;
+    }
+  });
+
+  return components;
+}
+
+function detectClassicComponents() {
+  const components = {};
+
+  const classes = [
+    'affix-top',
+    'affix-bottom',
+    'badge',
+    'it-footer',
+    'form-group',
+  ];
+
+  classes.forEach(cl => {
+    const elements = document.getElementsByClassName(cl);
+    Array.from(elements).forEach(el => {
+      if (!components[cl]) {
+        components[cl] = 0;
+      }
+      components[cl]++;
+    });
+  });
+
+  return components;
+}
+
+function analyzeComponentsUsage(prefix = 'it-') {
+  if (!window._itAnalytics) return null;
+
+  const components = {
+    webComponents: detectWebComponents(prefix),
+    classicComponents: detectClassicComponents(),
+  };
+
+  const wcTotal = Object.values(components.webComponents).reduce((sum, value) => sum + value, 0);
+  const classicTotal = Object.values(components.classicComponents).reduce((sum, value) => sum + value, 0);
+
+  return {
+    total: wcTotal + classicTotal,
+    byComponent: components,
+  };
+}
+```
+
+Puoi usare questa tecnica per rilevare anche il framework e/o il CMS frontend utilizzato dalla pagina (ad esempio, React, Angular, Vue, Svelte, CMS come WordPress e Drupal) e correlare l’uso dei Web Components al contesto tecnologico.
+
+
+
+
+## Implementazione CMS / framework detection
+
+Il rilevamento del framework / CMS è possibile attraverso l'analisi di vari indicatori, tra cui:
+
+- la presenza di oggetti globali;
+
+- i meta tag e attributi nel DOM;
+
+- i pattern generati dai principali framework e CMS.
+
+Esempio di implementazione:
+
+```js
+function detectFramework() {
+
+  // Framework / Library frontend
+  if (window.ng && window.getAllAngularRootElements) return 'Angular';
+
+  if (window.__REACT_DEVTOOLS_ATTACH__ || document.querySelector('[data-reactroot], [data-reactid], [data-react-helmet]')) return 'React';
+
+  if (window.__VUE_DEVTOOLS_GLOBAL_HOOK__ || document.querySelector('[data-v-app], [data-vue-meta]')) return 'Vue';
+
+  if (document.querySelector('[data-svelte-h]')) return 'Svelte';
+
+  if (window.__NEXT_DATA__) return 'Next.js';
+
+  if (window.__NUXT__ || document.querySelector('[data-n-head]')) return 'Nuxt.js';
+
+  if (document.querySelector('[data-astro-root]')) return 'Astro';
+
+  if (window.__SVELTEKIT_APP_VERSION__) return 'SvelteKit';
+
+  if (window.__REMIXX_CONTEXT__) return 'Remix';
+
+  if (document.querySelector('[data-hydrate]') && document.querySelector('script[type="module"]')) return 'Qwik';
+
+  // Altri framework noti
+  if (window.Ember) return 'Ember.js';
+
+  if (window.Backbone) return 'Backbone.js';
+
+  if (window.Meteor) return 'Meteor';
+
+  // Fallback
+  return 'Vanilla JS / Unknown';
+
+}
+
+
+
+function detectCMS() {
+  // CMS
+
+  if (window.wp && window.wp.data) return 'WordPress';
+
+  if (document.querySelector('meta[name="generator"][content*="WordPress"]')) return 'WordPress';
+
+  if (document.querySelector('meta[name="Generator"][content*="Drupal"]')) return 'Drupal';
+
+  if (document.querySelector('meta[name="Generator"][content*="Joomla"]')) return 'Joomla';
+
+  // Fallback
+  return null;
+
+}
+```
+
+Nota bene: questo esempio di implementazione potrebbe diventare obsoleto in qualsiasi momento, dato che si basa su variabili e/o informazioni impostate autonomamente dai diversi framework/CMS.
+
+## Esempio di output
+
+Eseguendo lo script su una pagina web, ottieni un output strutturato che riassume i dati raccolti. Ad esempio:
+
+```json
+{
+  "webComponents": { "it-button": 5, "it-card": 3 },
+  "classicComponents": { "badge": 2 },
+  "framework": "React"
+}
+```
+
+Questo output mostra il numero di istanze per ciascun tipo di componente, sia Web Components che classici, e identifica il framework utilizzato.
+
+## Raccomandazioni operative
+
+Per ottenere risultati accurati, esegui lo script dopo che la pagina ha completato il rendering, ad esempio in risposta all’evento `load`.
+
+Inoltre, ricorda di rispettare la normativa sulla privacy, inviando i dati raccolti solo a endpoint conformi.
+
+## Limitazioni del rilevamento di CMS e framework
+
+Il rilevamento del framework o CMS si basa su un approccio “best effort”: lo script controlla oggetti globali, meta tag e pattern generati dai principali strumenti front-end. Alcune di queste informazioni possono cambiare nel tempo o non essere presenti, quindi i risultati potrebbero non essere sempre precisi.
+
+Ad esempio, un framework potrebbe non esporre oggetti globali o utilizzare pattern non documentati, mentre un CMS potrebbe non includere meta tag identificativi. Per questo motivo, interpreta sempre i risultati come indicazioni di massima e non come dati definitivi.
+
