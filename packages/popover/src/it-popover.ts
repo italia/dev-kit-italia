@@ -17,6 +17,10 @@ export class ItPopover extends BaseComponent {
 
   @property({ type: String }) placement: PopoverPlacement = 'bottom-start';
 
+  @property({ type: Number }) offset: number = 12;
+
+  @property({ type: Boolean, attribute: 'no-flip' }) noFlip: boolean = false;
+
   @query('slot[name="trigger"]') private _triggerSlot!: HTMLSlotElement;
 
   @query('slot[name="content"]') private _contentSlot!: HTMLSlotElement;
@@ -123,8 +127,8 @@ export class ItPopover extends BaseComponent {
       computePosition(this._triggerElement, this._contentElement, {
         placement: this.placement,
         middleware: [
-          offset(12),
-          flip(),
+          offset(this.offset),
+          flip({ mainAxis: !this.noFlip, crossAxis: !this.noFlip }),
           shift({ padding: 8 }),
           size({
             apply({ rects, elements }) {
@@ -150,8 +154,14 @@ export class ItPopover extends BaseComponent {
             left: 'right',
           }[placement.split('-')[0]];
 
+          const triggerRect = this._triggerElement.getBoundingClientRect();
+          const contentRect = this._contentElement.getBoundingClientRect();
+          const triggerCenter = triggerRect.left + triggerRect.width / 2;
+          const arrowLeft = triggerCenter - contentRect.left - this._triggerElement.offsetWidth / 2 + 20;
+
           Object.assign(this._arrowElement!.style, {
-            left: arrowX != null ? '20px' : '',
+            left: arrowX != null ? `${arrowLeft}px` : '',
+
             top: arrowY != null ? `${arrowY}px` : '',
             right: '',
             bottom: '',

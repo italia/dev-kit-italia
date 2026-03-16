@@ -1,3 +1,4 @@
+import { html } from 'lit';
 import type { Preview } from '@storybook/web-components-vite';
 import './main.scss';
 import './storybook-styles.scss';
@@ -62,7 +63,7 @@ const preview: Preview = {
 export default preview;
 
 export const decorators = [
-  (Story: any, ctx) => {
+  (Story: any, ctx: any) => {
     // Usa un effetto per agire sul documento dell'iframe dopo il mount
     // Funziona anche con React o senza (a seconda del setup)
 
@@ -73,7 +74,7 @@ export const decorators = [
       }
     }, 0); // Lascia tempo all'iframe di caricare
 
-    const { pageLayout } = ctx.parameters;
+    const { pageLayout, wrapperClasses } = ctx.parameters;
 
     switch (pageLayout) {
       //
@@ -94,6 +95,10 @@ export const decorators = [
         return StoryWidth100(Story, ctx);
       default:
         // In the default case, don't apply a layout
+
+        if (wrapperClasses) {
+          return html`<div class="${wrapperClasses}">${Story()}</div>`;
+        }
         return Story();
     }
   },

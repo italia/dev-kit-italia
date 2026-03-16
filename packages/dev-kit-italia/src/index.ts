@@ -12,6 +12,7 @@ export * from '@italia/chip';
 export * from '@italia/dropdown';
 export * from '@italia/icon';
 export * from '@italia/input';
+export * from '@italia/megamenu';
 export * from '@italia/modal';
 export * from '@italia/navscroll';
 export * from '@italia/pagination';

@@ -14,6 +14,7 @@ import '../packages/dropdown/dist/src';
 import '../packages/hero/dist/src';
 import '../packages/icon/dist/src';
 import '../packages/input/dist/src';
+import '../packages/megamenu/dist/src';
 import '../packages/modal/dist/src';
 import '../packages/navscroll/dist/src';
 import '../packages/pagination/dist/src';

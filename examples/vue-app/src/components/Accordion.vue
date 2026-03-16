@@ -1,6 +1,6 @@
 <template>
   <div class="container my-4" @keydown="handleTabKey">
-    <h1>it-accordion</h1>
+    <h1>Accordion</h1>
 
     <!-- Accordion Base -->
     <section>
