@@ -165,6 +165,7 @@ export const Inline: Story = {
       ${renderComponent({
         ...params,
         label: 'Interruttore 1',
+        value: 'option1',
         required: undefined,
         name: undefined,
         group: undefined,
@@ -173,6 +174,7 @@ export const Inline: Story = {
       ${renderComponent({
         ...params,
         label: 'Interruttore 2',
+        value: 'option2',
         checked: true,
         required: undefined,
         name: undefined,
@@ -182,6 +184,7 @@ export const Inline: Story = {
       ${renderComponent({
         ...params,
         label: 'Interruttore 3',
+        value: 'option3',
         required: undefined,
         name: undefined,
         group: undefined,
@@ -209,6 +212,7 @@ export const Raggruppati: Story = {
         ${renderComponent({
           ...params,
           label: 'Interruttore acceso',
+          value: 'option1',
           checked: true,
           required: undefined,
           name: undefined,
@@ -218,6 +222,7 @@ export const Raggruppati: Story = {
         ${renderComponent({
           ...params,
           label: 'Interruttore spento',
+          value: 'option2',
           required: undefined,
           name: undefined,
           group: undefined,
@@ -226,6 +231,7 @@ export const Raggruppati: Story = {
         ${renderComponent({
           ...params,
           label: 'Interruttore disabilitato',
+          value: 'option3',
           disabled: true,
           required: undefined,
           name: undefined,
@@ -250,6 +256,7 @@ export const Raggruppati: Story = {
           group: undefined,
           inline: undefined,
           label: 'Interruttore acceso',
+          value: 'option1',
           checked: true,
           supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
         })}
@@ -260,6 +267,7 @@ export const Raggruppati: Story = {
           group: undefined,
           inline: undefined,
           label: 'Interruttore spento',
+          value: 'option2',
           supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
         })}
         ${renderComponent({
@@ -270,6 +278,7 @@ export const Raggruppati: Story = {
           inline: undefined,
           disabled: true,
           label: 'Interruttore disabilitato',
+          value: 'option3',
           supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
         })}
       </it-toggle-group>
