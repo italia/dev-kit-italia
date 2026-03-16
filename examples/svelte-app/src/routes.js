@@ -33,6 +33,7 @@ import Select from './pages/Select.svelte';
 import Sidebar from './pages/Sidebar.svelte';
 import Skiplinks from './pages/Skiplinks.svelte';
 import Sticky from './pages/Sticky.svelte';
+import Carousel from './pages/Carousel.svelte';
 import Table from './pages/Table.svelte';
 import Video from './pages/Video.svelte';
 
@@ -49,6 +50,7 @@ export const AppRoutes = [
   { path: '/breadcrumbs', element: Breadcrumbs, title: 'Breadcrumbs' },
   { path: '/button', element: Button, title: 'Button' },
   { path: '/callout', element: Callout, title: 'Callout' },
+  { path: '/carousel', element: Carousel, title: 'Carousel' },
   { path: '/card', element: Card, title: 'Card' },
   { path: '/checkbox', element: Checkbox, title: 'Checkbox' },
   { path: '/chip', element: Chip, title: 'Chip' },

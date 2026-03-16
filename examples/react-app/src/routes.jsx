@@ -34,6 +34,7 @@ import Skiplinks from './pages/Skiplinks';
 import Sticky from './pages/Sticky';
 import Table from './pages/Table';
 import Video from './pages/Video';
+import Carousel from './pages/Carousel';
 import Pagination from './pages/Pagination';
 
 export const AppRoutes = [
@@ -49,6 +50,7 @@ export const AppRoutes = [
   { path: '/breadcrumbs', element: <Breadcrumbs />, title: 'Breadcrumbs' },
   { path: '/button', element: <Button />, title: 'Button' },
   { path: '/callout', element: <Callout />, title: 'Callout' },
+  { path: '/carousel', element: <Carousel />, title: 'Carousel' },
   { path: '/card', element: <Card />, title: 'Card' },
   { path: '/checkbox', element: <Checkbox />, title: 'Checkbox' },
   { path: '/chip', element: <Chip />, title: 'Chip' },
