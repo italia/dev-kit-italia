@@ -10,3 +10,40 @@
 @import 'bootstrap-italia/src/scss/forms/form-check';
 @import 'bootstrap-italia/src/scss/forms/form-toggles';
 @import 'bootstrap-italia/src/scss/forms/just-validate';
+
+::part(checkbox) {
+  &:focus:focus-visible {
+    box-shadow: none !important;
+  }
+}
+
+.toggles label {
+  //annullo gli stili di focus da bsi perchè sono sbagliati
+  input[type='checkbox'] {
+    outline: none !important;
+
+    &:focus {
+      border-color: inherit !important;
+      box-shadow: none !important;
+      outline: none !important;
+
+      + .lever {
+        border-color: inherit !important;
+        box-shadow: none !important;
+        outline: none !important;
+      }
+    }
+  }
+
+  //definisco gli stili di focus corretti
+  &:has(input[type='checkbox']:focus-visible) {
+    @extend %focus;
+
+    input,
+    .lever {
+      border-color: inherit !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+  }
+}

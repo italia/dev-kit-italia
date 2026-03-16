@@ -197,6 +197,12 @@ $it-components: (
     // Check the Heads up! section in the documentation // https://sass-lang.com/documentation/modules/list/#slash
     aspect-ratio: list.slash(16, 9),
   ),
+  'it-toggle': (
+    height: 24px,
+    width: 48px,
+    pseudo: after,
+    border-radius: var(--#{$prefix}radius-rounded, 40px),
+  ),
 );
 
 @each $tag, $params in $it-components {

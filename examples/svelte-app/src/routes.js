@@ -36,6 +36,7 @@ import Skiplinks from './pages/Skiplinks.svelte';
 import Sticky from './pages/Sticky.svelte';
 import Carousel from './pages/Carousel.svelte';
 import Table from './pages/Table.svelte';
+import Toggle from './pages/Toggle.svelte';
 import Video from './pages/Video.svelte';
 
 export const AppRoutes = [
@@ -77,6 +78,7 @@ export const AppRoutes = [
   { path: '/skiplinks', element: Skiplinks, title: 'Skiplinks' },
   { path: '/sticky', element: Sticky, title: 'Sticky' },
   { path: '/tables', element: Table, title: 'Tables' },
+  { path: '/toggle', element: Toggle, title: 'Toggle' },
   { path: '/video', element: Video, title: 'Video' },
 ];
 

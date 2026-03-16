@@ -8,14 +8,15 @@ it-toggle {
   }
 
   &:not(:defined) {
+    display: flex;
+    justify-content: space-between;
+
     &[group] {
       margin-bottom: 1rem;
     }
 
     [slot='label'] {
-      margin-left: 25px;
-      width: max-content;
-      display: inline-block;
+      margin-bottom: var(--#{$prefix}spacing-xxs);
     }
   }
 }

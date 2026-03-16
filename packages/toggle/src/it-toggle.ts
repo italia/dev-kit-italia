@@ -30,7 +30,7 @@ export class ItToggle extends ItCheckboxBase {
     return html`
       <div class="${wrapperClasses}" part="toggle-wrapper input-wrapper">
         <div class="toggles">
-          <label for="${this._id}" part="label">
+          <label for="${this._id}" part="label focusable">
             <slot name="label"></slot>
             ${this._renderInput(supportTextId, invalid, validityMessage)}
             <span class="lever"></span>
