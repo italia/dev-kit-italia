@@ -37,6 +37,7 @@ import Sticky from './components/Sticky.vue';
 import Table from './components/Table.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
+import Carousel from './components/Carousel.vue';
 import Pagination from './components/Pagination.vue';
 
 const routes = [
@@ -52,6 +53,7 @@ const routes = [
   { path: '/breadcrumbs', name: 'Breadcrumbs', component: Breadcrumbs },
   { path: '/button', name: 'Button', component: Button },
   { path: '/callout', name: 'Callout', component: Callout },
+  { path: '/carousel', name: 'Carousel', component: Carousel },
   { path: '/card', name: 'Card', component: Card },
   { path: '/checkbox', name: 'Checkbox', component: Checkbox },
   { path: '/chip', name: 'Chip', component: Chip },

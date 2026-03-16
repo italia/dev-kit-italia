@@ -59,6 +59,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/button.component').then((c) => c.ButtonComponent),
   },
   {
+    title: 'Carousel',
+    path: 'carousel',
+    loadComponent: () => import('./pages/carousel.component').then((c) => c.CarouselComponent),
+  },
+  {
     title: 'Callout',
     path: 'callout',
     loadComponent: () => import('./pages/callout.component').then((c) => c.CalloutComponent),

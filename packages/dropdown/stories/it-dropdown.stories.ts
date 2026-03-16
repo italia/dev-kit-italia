@@ -88,13 +88,7 @@ const meta = {
       type: 'string',
       table: {},
     },
-    'it-role': {
-      control: 'select',
-      description: 'Ruolo del pulsante (vedi la sezione Accessibilità)',
-      options: ['menu', 'list'],
-      type: 'string',
-      table: { defaultValue: { summary: 'menu' } },
-    },
+
     dark: {
       control: 'boolean',
       description: 'Stile scuro per il menu dropdown',
