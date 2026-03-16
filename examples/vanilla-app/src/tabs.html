@@ -102,7 +102,7 @@
         <!-- Tab verticali -->
         <section>
           <h2>Tab verticali</h2>
-          <it-tabs vertical label="Navigazione verticale">
+          <it-tabs placement="start" label="Navigazione verticale">
             <it-tab slot="tab" panel="v1">Tab 1</it-tab>
             <it-tab slot="tab" panel="v2">Tab 2</it-tab>
             <it-tab slot="tab" panel="v3">Tab 3</it-tab>
@@ -115,7 +115,7 @@
         <!-- Tab verticali con sfondo -->
         <section>
           <h2>Tab verticali con sfondo</h2>
-          <it-tabs vertical vertical-background label="Navigazione verticale con sfondo">
+          <it-tabs placement="start" vertical-background label="Navigazione verticale con sfondo">
             <it-tab slot="tab" panel="vb1">Tab 1</it-tab>
             <it-tab slot="tab" panel="vb2">Tab 2</it-tab>
             <it-tab slot="tab" panel="vb3">Tab 3</it-tab>
@@ -158,7 +158,7 @@
         <!-- Tab scuri verticali -->
         <section>
           <h2>Tab scuri verticali</h2>
-          <it-tabs dark vertical icon-text label="Navigazione scura verticale">
+          <it-tabs dark placement="start" icon-text label="Navigazione scura verticale">
             <it-tab slot="tab" panel="dv1">
               <it-icon name="it-star-outline" class="icon icon-sm"></it-icon>
               Tab 1
@@ -227,6 +227,29 @@
           </it-tabs>
         </section>
 
+        <!-- Larghezza tablist verticale (--it-tabs-nav-size) -->
+        <section>
+          <h2>Larghezza tablist verticale (--it-tabs-nav-size)</h2>
+          <p>Larghezza fissa con <code>--it-tabs-nav-size: 220px</code>:</p>
+          <it-tabs placement="start" label="Nav size fissa" style="--it-tabs-nav-size: 220px;">
+            <it-tab slot="tab" panel="ns1">Tab 1</it-tab>
+            <it-tab slot="tab" panel="ns2">Tab 2</it-tab>
+            <it-tab slot="tab" panel="ns3">Tab 3</it-tab>
+            <it-tab-panel name="ns1">Pannello 1</it-tab-panel>
+            <it-tab-panel name="ns2">Pannello 2</it-tab-panel>
+            <it-tab-panel name="ns3">Pannello 3</it-tab-panel>
+          </it-tabs>
+          <p>Larghezza proporzionale con <code>--it-tabs-nav-size: 30%</code> (placement start):</p>
+          <it-tabs placement="start" label="Nav size proporzionale" style="--it-tabs-nav-size: 30%;">
+            <it-tab slot="tab" panel="np1">Tab 1 con etichetta lunga</it-tab>
+            <it-tab slot="tab" panel="np2">Tab 2</it-tab>
+            <it-tab slot="tab" panel="np3">Tab 3</it-tab>
+            <it-tab-panel name="np1">Pannello 1</it-tab-panel>
+            <it-tab-panel name="np2">Pannello 2</it-tab-panel>
+            <it-tab-panel name="np3">Pannello 3</it-tab-panel>
+          </it-tabs>
+        </section>
+
         <!-- Tab con effetto fade -->
         <section>
           <h2>Tab con effetto fade</h2>
@@ -245,12 +268,12 @@
           <h2>Tab card con pulsanti aggiungi/elimina</h2>
           <!-- it-tabs[cards] inietta automaticamente un pulsante × in ogni it-tab.
                Al click emette l'evento `it-tab-close` con detail.panel. -->
-          <it-tabs id="editable-tabs" cards label="Tab card con pulsanti">
+          <it-tabs id="editable-tabs" cards dismissible label="Tab card con pulsanti">
             <it-tab slot="tab" panel="ec1">Tab 1</it-tab>
             <it-tab slot="tab" panel="ec2">Tab 2</it-tab>
             <it-tab slot="tab" panel="ec3">Tab 3</it-tab>
             <it-tab slot="tab" panel="ec4" disabled>Tab 4 Disabilitato</it-tab>
-            <it-button slot="after-tablist" id="add-tab-btn" variant="primary" outline icon size="sm" it-aria-label="Aggiungi tab">
+            <it-button slot="after-tablist" id="add-tab-btn" variant="link" icon size="sm" it-aria-label="Aggiungi tab">
               <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
             </it-button>
             <it-tab-panel name="ec1">Pannello 1</it-tab-panel>

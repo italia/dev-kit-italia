@@ -33,14 +33,17 @@ import styles from './it-tabs.scss';
  * @slot      - Slot di default per gli elementi `it-tab-panel` (contenuto)
  *
  * @cssprop [--it-tabs-nav-size=auto] - Larghezza (flex-basis) della tablist in modalità
- *   verticale (`vertical`, `placement=start|end`). Accetta qualsiasi valore CSS valido
+ *   verticale (`placement=start|end`). Accetta qualsiasi valore CSS valido
  *   per `flex-basis` (es. `200px`, `25%`, `12rem`). Non ha effetto in modalità orizzontale.
  *
  * @fires it-tabs-change - Emesso quando cambia il pannello attivo.
  *   `detail.panel` contiene il nome del pannello attivato.
- * @fires it-tab-close - Emesso (in modalità `cards`) quando si clicca il pulsante ×
- *   iniettato automaticamente. `detail.panel` contiene il nome del pannello da chiudere.
- *   L'effettiva rimozione del tab è responsabilità dell'utente.
+ * @fires it-tab-close - Emesso (quando `dismissible` è attivo) quando si clicca il pulsante × o si premia
+ *   Delete/Backspace. `detail.panel` contiene il nome del pannello da chiudere.
+ *   L'evento è **cancelable**: chiamare `preventDefault()` impedisce la rimozione automatica
+ *   (utile per sostituirla con logica applicativa personalizzata, es. conferma modale).
+ *   Se non viene chiamato `preventDefault()`, il componente rimuove automaticamente
+ *   l'`it-tab` e l'`it-tab-panel` corrispondenti dal DOM.
  */
 @customElement('it-tabs')
 export class ItTabs extends BaseComponent {
@@ -63,14 +66,7 @@ export class ItTabs extends BaseComponent {
   auto = false;
 
   /**
-   * Layout verticale dei tab (orientamento verticale della tablist).
-   * Attiva anche la funzione di navigazione con frecce Su/Giù.
-   */
-  @property({ type: Boolean, reflect: true })
-  vertical = false;
-
-  /**
-   * Sfondo primario chiaro sul tab selezionato (solo in modalità verticale).
+   * Sfondo primario chiaro sul tab selezionato (solo in layout verticale: `placement="start"` o `placement="end"`).
    * Corrisponde alla classe Bootstrap Italia `.nav-tabs-vertical-background`.
    */
   @property({ type: Boolean, attribute: 'vertical-background', reflect: true })
@@ -79,6 +75,7 @@ export class ItTabs extends BaseComponent {
   /**
    * Variante con sfondo scuro per la tablist.
    * Corrisponde alla classe Bootstrap Italia `.nav-dark`.
+   * Ignorato quando `cards` è attivo: le due varianti non sono compatibili.
    */
   @property({ type: Boolean, reflect: true })
   dark = false;
@@ -89,6 +86,15 @@ export class ItTabs extends BaseComponent {
    */
   @property({ type: Boolean, reflect: true })
   cards = false;
+
+  /**
+   * Abilita la chiusura dei tab tramite il pulsante × e i tasti Delete/Backspace.
+   * Indipendente da `cards`: può essere usato con qualsiasi variante di tab.
+   * Quando attivo, ogni `it-tab` mostra il pulsante × e risponde
+   * ai tasti Delete/Backspace con l'evento cancelable `it-tab-close`.
+   */
+  @property({ type: Boolean, reflect: true })
+  dismissible = false;
 
   /**
    * Attiva l'animazione "a comparsa" (fade in/out) sui pannelli.
@@ -129,7 +135,7 @@ export class ItTabs extends BaseComponent {
    * Usato sia per il layout che per la direzione della navigazione da tastiera.
    */
   private get _isVertical(): boolean {
-    return this.vertical || this.placement === 'start' || this.placement === 'end';
+    return this.placement === 'start' || this.placement === 'end';
   }
 
   /**
@@ -137,7 +143,7 @@ export class ItTabs extends BaseComponent {
    * tra gli elementi `it-tab` secondo il pattern WAI-ARIA.
    *
    * La direzione è dinamica: `'horizontal'` per layout orizzontali,
-   * `'vertical'` per layout verticali (o placement start/end).
+   * `'vertical'` per layout verticali (placement start/end).
    */
   protected rovingTabindex = new RovingTabindexController<ItTab>(this, {
     getItems: () => this._tabs,
@@ -153,17 +159,27 @@ export class ItTabs extends BaseComponent {
     super.connectedCallback?.();
     this.addEventListener('keydown', this._onKeyDown);
     this.addEventListener('it-tab-select', this._onTabSelect as EventListener);
+    this.addEventListener('it-tab-close-request', this._onTabCloseRequest as EventListener);
   }
 
   override disconnectedCallback(): void {
     this.removeEventListener('keydown', this._onKeyDown);
     this.removeEventListener('it-tab-select', this._onTabSelect as EventListener);
+    this.removeEventListener('it-tab-close-request', this._onTabCloseRequest as EventListener);
     super.disconnectedCallback?.();
   }
 
   override firstUpdated(changedProperties: Map<string | number | symbol, unknown>): void {
     super.firstUpdated?.(changedProperties);
     this._initTabs();
+  }
+
+  override updated(changedProperties: Map<string | number | symbol, unknown>): void {
+    super.updated?.(changedProperties);
+    // Re-sync tab state when dismissible (or cards/fade) change at runtime.
+    if (changedProperties.has('dismissible') || changedProperties.has('cards') || changedProperties.has('fade')) {
+      this._initTabs();
+    }
   }
 
   // ─── Internal state management ───────────────────────────────────────────
@@ -201,53 +217,112 @@ export class ItTabs extends BaseComponent {
         panel.active = isActive;
       }
 
-      // In modalità cards, inietta il pulsante × come <a aria-hidden> (visuale only).
-      // Non <button>: would be nested-interactive inside role="tab".
-      // Keyboard close: tasto Delete gestito in _onKeyDown.
-      if (this.cards && !tab.querySelector('.it-tab-close')) {
-        this._injectCloseButton(tab);
-      }
-      // Rimuove il bottone × se cards è stata tolta dopo l'init
-      if (!this.cards) {
-        tab.querySelector('.it-tab-close')?.remove();
-        tab.removeAttribute('aria-keyshortcuts');
-      }
-      // ARIA: shortcut keyboard per chiudere in cards mode
-      if (this.cards && !tab.disabled) {
-        tab.setAttribute('aria-keyshortcuts', 'Delete');
-      } else if (!this.cards) {
+      // Propaga la variante cards su ogni it-tab — CSS :host([cards]) può stilare direttamente.
+      // eslint-disable-next-line no-param-reassign
+      tab.cards = this.cards;
+      // Abilita il pulsante × nello shadow DOM di it-tab quando dismissible è attivo.
+      // Nessuna manipolazione del light DOM: sicuro per SSR e framework re-render.
+      // eslint-disable-next-line no-param-reassign
+      tab.dismissible = this.dismissible;
+      // ARIA: shortcut keyboard Delete + Backspace se la chiusura è abilitata.
+      // aria-keyshortcuts è supportato dai browser come attributo; l'annuncio
+      // da parte degli screen reader è best-effort (varia per SR/versione).
+      if (this.dismissible && !tab.disabled) {
+        tab.setAttribute('aria-keyshortcuts', 'Delete Backspace');
+      } else {
         tab.removeAttribute('aria-keyshortcuts');
       }
     });
   }
 
   /**
-   * Inietta un elemento `<a class="it-tab-close">` con `<it-icon>` nel light DOM
-   * dell'`it-tab` per la modalità cards. Usa `<a>` perché `<button>` dentro
-   * `role="tab"` crea nested interactive content (pattern ARIA non valido).
-   * Il click sull'<a> emette l'evento `it-tab-close` sull'`it-tabs` e fa da
-   * hook per l'utente per rimuovere il tab programmaticamente.
+   * Intercetta `it-tab-close-request` emesso dal bottone × nello shadow DOM di `it-tab`.
+   * Prima di dispatchiare `it-tab-close` all'esterno, sposta il focus su un tab adiacente
+   * in modo che l'utente da tastiera non perda il punto di navigazione.
    */
-  private _injectCloseButton(tab: ItTab): void {
-    const a = document.createElement('a');
-    a.className = 'it-tab-close';
-    // aria-hidden="true": rimuove dall'albero AT — evita nested-interactive violation.
-    // L'accesso keyboard avviene via tasto Delete (gestito in _onKeyDown).
-    a.setAttribute('aria-hidden', 'true');
-    a.setAttribute('tabindex', '-1');
-    // it-icon nel light DOM: eredita stili BSI globali
-    a.innerHTML = '<it-icon name="it-close" aria-hidden="true"></it-icon>';
-    a.addEventListener('click', (e: Event) => {
-      e.stopPropagation(); // non triggerare selezione del tab
-      this.dispatchEvent(
-        new CustomEvent('it-tab-close', {
-          bubbles: true,
-          composed: true,
-          detail: { panel: tab.panel },
-        }),
-      );
+  private _onTabCloseRequest = (e: CustomEvent<{ panel: string }>): void => {
+    const tab = this._tabs.find((t) => t.panel === e.detail.panel);
+    if (tab) this._closeTabWithFocusShift(tab);
+  };
+
+  /**
+   * Sposta il focus sul tab adiacente (successivo, altrimenti precedente) e
+   * dispatcha `it-tab-close` verso l'esterno.
+   *
+   * Perché NON usiamo `_selectTab` né `rovingTabindex.focusItem`:
+   * - `_selectTab` dispatcha `it-tabs-change`, che può far reagire il consumer
+   *   in modo inaspettato (re-render, rimozione sync, ecc.) prima che il focus
+   *   sia spostato — causa il "salto" di un tab.
+   * - `rovingTabindex.focusItem` chiama `getItems()` che potrebbe leggere
+   *   una lista di tab parzialmente aggiornata se il DOM è cambiato tra
+   *   `_selectTab` e la chiamata a `focusItem`.
+   *
+   * Approccio diretto:
+   * 1. Se il tab da chiudere era attivo, aggiorniamo active + pannelli
+   *    direttamente (senza eventi intermedi) — così `_initTabs` post-rimozione
+   *    trova `alreadyActive = target` e non sceglie il primo della lista.
+   * 2. `target.tabIndex = 0` + `target.focus()` — atomici, nessun `getItems()`
+   *    intermedio che potrebbe restituire una lista stale.
+   * 3. Dispatch `it-tab-close` — il consumer rimuove il tab.
+   *
+   * Pattern: WAI-ARIA APG tabs § keyboard Delete.
+   */
+  /**
+   * Sposta il focus sul tab adiacente (successivo, altrimenti precedente),
+   * dispatcha `it-tab-close` (cancelable) e — se non viene chiamato `preventDefault()` —
+   * rimuove automaticamente l'`it-tab` e l'`it-tab-panel` dal DOM.
+   *
+   * Pattern: calcola target PRIMA di qualsiasi modifica al DOM,
+   * poi applica focus + stato active, poi dispatcha l'evento,
+   * poi esegue la default action (rimozione) a meno di preventDefault.
+   */
+  private _closeTabWithFocusShift(closingTab: ItTab): void {
+    const tabs = this._tabs;
+    const idx = tabs.indexOf(closingTab);
+    // Calcola il target PRIMA di qualunque modifica al DOM.
+    const after = tabs.slice(idx + 1).find((t) => !t.disabled);
+    const before = tabs
+      .slice(0, idx)
+      .reverse()
+      .find((t) => !t.disabled);
+    const target = after ?? before ?? null;
+
+    if (target) {
+      if (closingTab.active) {
+        // Trasferisce lo stato active al target in modo sincrono,
+        // prima del dispatch, così _initTabs (dopo lo slotchange) lo trova già attivo.
+        tabs.forEach((t) => {
+          // eslint-disable-next-line no-param-reassign
+          t.active = t === target;
+        });
+        this._panels.forEach((p) => {
+          // eslint-disable-next-line no-param-reassign
+          p.active = p.name === target.panel;
+        });
+      }
+      // Focus sincrono: tabIndex=0 garantisce che focus() funzioni anche se Lit
+      // non ha ancora aggiornato il DOM (active → tabIndex avviene async in updated).
+      target.tabIndex = 0;
+      target.focus();
+    }
+
+    // Dispatcha l'evento cancelable. Il consumer può chiamare preventDefault()
+    // per gestire la rimozione in modo personalizzato (es. conferma modale).
+    const event = new CustomEvent('it-tab-close', {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: { panel: closingTab.panel },
     });
-    tab.appendChild(a);
+    this.dispatchEvent(event);
+
+    // Default action: rimuove tab e panel dal DOM.
+    // Saltata se il consumer ha chiamato preventDefault().
+    if (!event.defaultPrevented) {
+      const panelEl = this._panels.find((p) => p.name === closingTab.panel);
+      closingTab.remove();
+      panelEl?.remove();
+    }
   }
 
   /**
@@ -303,22 +378,17 @@ export class ItTabs extends BaseComponent {
     // Risale il composedPath per trovare l'it-tab che ha originato l'evento
     // (attraversa i confini dello shadow DOM).
     const path = e.composedPath();
-    const currentTab = this._tabs.find(
-      (tab) => path.includes(tab) || (tab.shadowRoot && tab.shadowRoot.contains(path[0] as Node)),
-    );
+    const currentTab = path.find(
+      (el): el is HTMLElement => el instanceof HTMLElement && el.tagName.toLowerCase() === 'it-tab',
+    ) as ItTab | undefined;
 
-    if (!currentTab || currentTab.disabled) return;
+    if (!currentTab || (currentTab as ItTab).disabled) return;
 
-    // Delete key in cards mode: chiude il tab corrente (accessibilità keyboard).
-    if (e.key === 'Delete' && this.cards) {
+    // Delete/Backspace quando dismissible è attivo: sposta il focus su un tab adiacente,
+    // poi notifica l'esterno di chiudere il tab corrente.
+    if ((e.key === 'Delete' || e.key === 'Backspace') && this.dismissible) {
       e.preventDefault();
-      this.dispatchEvent(
-        new CustomEvent('it-tab-close', {
-          bubbles: true,
-          composed: true,
-          detail: { panel: currentTab.panel },
-        }),
-      );
+      this._closeTabWithFocusShift(currentTab);
       return;
     }
 
@@ -349,11 +419,16 @@ export class ItTabs extends BaseComponent {
       nav: true,
       'nav-tabs': true,
       auto: this.auto && !isVertical,
-      'nav-dark': this.dark,
+      'nav-dark': this.dark && !this.cards,
       'nav-tabs-vertical': isVertical,
       'nav-tabs-vertical-background': isVertical && this.verticalBackground,
       'nav-tabs-icon-text': this.iconText,
       'nav-tabs-cards': this.cards,
+    });
+
+    const rowClasses = classMap({
+      'nav-row': true,
+      auto: this.auto && !isVertical,
     });
 
     const wrapperClasses = classMap({
@@ -366,7 +441,7 @@ export class ItTabs extends BaseComponent {
 
     return html`
       <div class=${wrapperClasses}>
-        <div class="nav-row">
+        <div class=${rowClasses}>
           <div
             class=${tablistClasses}
             role="tablist"

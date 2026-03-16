@@ -30,13 +30,14 @@ $it-tab-prefix: 'it-tab';
 // I modifier BEM ridefiniscono solo ciò che cambia; le proprietà CSS consumano le var.
 .tabs-wrapper {
   display: flex;
+  max-width: 100%;
   flex: 1;
   flex-direction: var(--#{$it-tab-prefix}_wrapper-flex-dir);
   align-items: var(--#{$it-tab-prefix}_wrapper-align);
+  margin-block: 0.75rem;
   --#{$it-tab-prefix}_wrapper-flex-dir: column;
   --#{$it-tab-prefix}_wrapper-align: stretch;
   --#{$it-tab-prefix}_wrapper-content-flex: initial;
-  margin-block: 0.75rem;
 
   &--vertical {
     --#{$it-tab-prefix}_wrapper-flex-dir: row;
@@ -44,11 +45,13 @@ $it-tab-prefix: 'it-tab';
   }
 
   &--start {
+    gap: 24px;
     --#{$it-tab-prefix}_wrapper-flex-dir: row;
     --#{$it-tab-prefix}_wrapper-content-flex: 1;
   }
 
   &--end {
+    gap: 24px;
     --#{$it-tab-prefix}_wrapper-flex-dir: row-reverse;
     --#{$it-tab-prefix}_wrapper-content-flex: 1;
   }
@@ -58,13 +61,18 @@ $it-tab-prefix: 'it-tab';
 // Non fa parte del div[role="tablist"] per rispettare aria-required-children.
 .nav-row {
   display: flex;
-  align-items: flex-end; // allinea il bottone aggiungi
+  align-items: center; // allinea il bottone aggiungi
+  overflow-y: visible;
 }
 
 // In layout verticale, after-tablist si impila sotto la tablist.
+// --it-tabs-nav-size controlla la LARGHEZZA della colonna tablist:
+// consumata qui (flex-basis nel wrapper row-direction),
+// non in .nav-tabs-vertical (che è in un column-flex → flex-basis lì controlla l'altezza).
 .tabs-wrapper--vertical .nav-row,
 .tabs-wrapper--start .nav-row,
 .tabs-wrapper--end .nav-row {
+  flex: 0 0 var(--it-tabs-nav-size, auto);
   flex-direction: column;
   align-items: stretch;
 }
@@ -91,30 +99,14 @@ $it-tab-prefix: 'it-tab';
   --#{$it-tab-prefix}_content-mt: 0;
 }
 
-// .nav-tabs - fix overflow per il focus ring
-// BSI imposta overflow-x: auto (scroll mobile) e overflow-y: hidden su .nav-tabs.
-// overflow: hidden clippa al padding edge. Aggiungendo --#{$it-tab-prefix}_focus-bleed
-// di padding verticale + margin negativo speculare si crea una zona interna al clip
-// boundary dove il box-shadow del focus ring (BSI: doppio anello 2px+5px) può emergere
-// senza toccare lo scroll orizzontale né il layout visivo risultante.
-//
-// Questa variabile attraversa il confine shadow DOM via flat tree ed è consumata
-// anche da it-tab :host (margin-top/bottom speculari per compensare il padding).
-.nav-tabs {
-  --#{$it-tab-prefix}_focus-bleed: 8px;
-
-  padding-top: var(--#{$it-tab-prefix}_focus-bleed);
-  padding-bottom: var(--#{$it-tab-prefix}_focus-bleed);
-  margin-top: calc(-1 * var(--#{$it-tab-prefix}_focus-bleed));
-  margin-bottom: calc(-1 * var(--#{$it-tab-prefix}_focus-bleed));
-}
-
-// Varianti tablist
-// Ogni variante/placement ridefinisce le --#{$it-tab-prefix}_* che viaggiano
 // via flat tree (.nav-tabs shadow → slot → it-tab :host) e vengono consumate
 // in it-tab.scss per bordi, colori attivi, layout e spaziatura.
 
 // Variante: bottom — bordo di attivazione sul lato superiore
+.tabs-wrapper--bottom {
+  flex-direction: column-reverse;
+}
+
 .tabs-wrapper--bottom .nav-tabs {
   order: 1;
   border-top-width: 1px;
@@ -135,12 +127,10 @@ $it-tab-prefix: 'it-tab';
 }
 
 // Variante: vertical -- bordo di attivazione sul lato destro, label allineata a sinistra
-// --it-tabs-nav-size controlla il flex-basis (larghezza) della tablist nel layout a riga.
-// L'utente la imposta dall'esterno: it-tabs { --it-tabs-nav-size: 200px; }
+// --it-tabs-nav-size: vedi .nav-row sopra — la variabile è consumata lì (asse corretto).
 .nav-tabs-vertical {
   height: 100%;
-  flex: 0 0 var(--it-tabs-nav-size, auto);
-  align-self: flex-start;
+  flex: 1; // riempie l'altezza del .nav-row (column flex)
   gap: 1rem;
   --#{$it-tab-prefix}_bw-right: var(--#{$prefix}tab-border-width);
   --#{$it-tab-prefix}_bw-bottom: 0;
@@ -188,50 +178,20 @@ $it-tab-prefix: 'it-tab';
 
   // Indicatore bordo attivo: color-border-inverse = bianco su dark.
   // Token adattivo: non hardcoded a #fff, cambia se il design system cambia.
-  --#{$it-tab-prefix}_active-bc-top:    var(--#{$prefix}color-border-inverse);
-  --#{$it-tab-prefix}_active-bc-right:  var(--#{$prefix}color-border-inverse);
+  --#{$it-tab-prefix}_active-bc-top: var(--#{$prefix}color-border-inverse);
+  --#{$it-tab-prefix}_active-bc-right: var(--#{$prefix}color-border-inverse);
   --#{$it-tab-prefix}_active-bc-bottom: var(--#{$prefix}color-border-inverse);
-  --#{$it-tab-prefix}_active-bc-left:   var(--#{$prefix}color-border-inverse);
+  --#{$it-tab-prefix}_active-bc-left: var(--#{$prefix}color-border-inverse);
 }
 
-// Variante: cards — border 1px, raggio top 8px, sfondo su ogni it-tab.
-// Non-attivo: bg secondary + border sottile su top/left/right, bottom transparent.
-// Attivo: bg bianco + border subtle + bottom transparent (apre sul pannello, -1px offset).
+// Variante: cards.
+// Il markup propaga `cards` come attributo su ogni it-tab (_initTabs → tab.cards = this.cards).
+// Gli stili strutturali (height, border-radius, border-width, bg) sono in :host([cards]) di it-tab.scss.
+// Qui solo layout del container + colori dark-mode via flat-tree (--it-tab_cards-*).
 .nav-tabs-cards {
+  overflow: visible; // necessario: active tab estende di -1px sotto il border-bottom del parent
+  align-items: flex-end;
   border-bottom: 1px solid var(--#{$prefix}color-border-subtle);
-  --#{$it-tab-prefix}_bw-top: var(--#{$prefix}tab-border-width-cards);
-  --#{$it-tab-prefix}_bw-right: var(--#{$prefix}tab-border-width-cards);
-  --#{$it-tab-prefix}_bw-bottom: var(--#{$prefix}tab-border-width-cards);
-  --#{$it-tab-prefix}_bw-left: var(--#{$prefix}tab-border-width-cards);
-
-  --#{$it-tab-prefix}_border-radius: 8px 8px 0 0;
-
-  // Bordo non-attivo: subtle sui 3 lati visibili.
-  --#{$it-tab-prefix}_bc-top:    var(--#{$prefix}tab-border-color-cards);
-  --#{$it-tab-prefix}_bc-right:  var(--#{$prefix}tab-border-color-cards);
-  --#{$it-tab-prefix}_bc-bottom: transparent;
-  --#{$it-tab-prefix}_bc-left:   var(--#{$prefix}tab-border-color-cards);
-
-  // Sfondo: secondary (lieve) sui tab non-attivi, bianco sull'attivo.
-  --it-tab_bg:        var(--#{$prefix}color-background-secondary);
-  --it-tab_active-bg: #fff;
-
-  // Bordo attivo: stessi colori subtle, bottom transparent.
-  --#{$it-tab-prefix}_active-bc-top:    var(--#{$prefix}tab-border-color-cards);
-  --#{$it-tab-prefix}_active-bc-right:  var(--#{$prefix}tab-border-color-cards);
-  --#{$it-tab-prefix}_active-bc-bottom: transparent;
-  --#{$it-tab-prefix}_active-bc-left:   var(--#{$prefix}tab-border-color-cards);
-  --#{$it-tab-prefix}_active-mb-offset: -1px;
-}
-
-// Dark + cards: sfondo translucido sui tab; bordi bianchi semitrasparenti.
-.nav-dark.nav-tabs-cards {
-  --it-tab_bg:        rgba(255, 255, 255, 0.08);
-  --it-tab_active-bg: rgba(255, 255, 255, 0.18);
-  --#{$it-tab-prefix}_bc-top:    rgba(255, 255, 255, 0.2);
-  --#{$it-tab-prefix}_bc-right:  rgba(255, 255, 255, 0.2);
-  --#{$it-tab-prefix}_bc-bottom: transparent;
-  --#{$it-tab-prefix}_bc-left:   rgba(255, 255, 255, 0.2);
 }
 
 // Variante: icon-text — gap tra icona e testo nel trigger
@@ -239,6 +199,43 @@ $it-tab-prefix: 'it-tab';
   --#{$it-tab-prefix}_gap: var(--#{$prefix}spacing-xs, 0.25rem);
 }
 
+.nav-tabs {
+  overflow-x: visible !important;
+  overflow-y: unset !important;
+}
+
 .nav-tabs.nav-tabs-cards::after {
   content: none; // Override del bordo inferiore di .nav-tabs per l'effetto "card aperta"
+}
+
+// Variante: auto — tab a tutta larghezza con scroll orizzontale su overflow.
+// Applicato solo a .nav-row.auto (non a .nav-tabs.auto che ha già overflow BSI).
+// La classe è aggiunta solo quando this.auto && !isVertical in it-tabs.ts,
+// quindi non arriva mai ai layout verticali.
+//
+// IMPORTANTE: overflow-x va su > .nav-tabs, NON su .nav-row.
+// Se .nav-row avesse overflow-x: auto, il browser forza overflow-y su auto
+// (CSS overflow value interaction spec) anche se impostato a visible,
+// clippando la shadow di BSI che scende di 12px sotto il nav-tabs.
+.nav-row.auto {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  > .nav-tabs {
+    flex: 1;
+    overflow-x: auto !important; // batte il nostro 'visible !important' sul selettore base
+  }
+}
+
+// BSI applica la shadow solo su mobile (max-width: 767.98px).
+// In auto mode la shadow sarebbe clippata da overflow-x su .nav-tabs,
+// quindi la rimuoviamo da lì e la rimettiamo su .nav-row (che non ha overflow).
+@media (max-width: 767.98px) {
+  .nav-row.auto {
+    box-shadow: 0 12px 25px -20px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-row.auto > .nav-tabs {
+    box-shadow: none !important;
+  }
 }

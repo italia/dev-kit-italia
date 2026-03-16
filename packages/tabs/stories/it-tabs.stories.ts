@@ -1,80 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
-import { LitElement, html } from 'lit';
+import { html } from 'lit';
 import { TAB_PLACEMENTS, type TabPlacement } from '../src/types.js';
-
-// ─── Demo element per la story "Tab card con pulsanti" ──────────────────────
-// Piccolo LitElement con light DOM per ereditare gli stili BSI globali.
-// Registrato una sola volta (guard HMR).
-class ItTabsEditableDemo extends LitElement {
-  static properties = { _tabs: { state: true } };
-
-  declare _tabs: Array<{ label: string; panel: string; disabled: boolean }>;
-  declare _counter: number;
-
-  constructor() {
-    super();
-    this._tabs = [
-      { label: 'Tab 1', panel: 'et1', disabled: false },
-      { label: 'Tab 2', panel: 'et2', disabled: false },
-      { label: 'Tab 3', panel: 'et3', disabled: false },
-      { label: 'Tab 4 Disabilitato', panel: 'et4', disabled: true },
-    ];
-    this._counter = 5;
-  }
-
-  // Light DOM: gli stili BSI globali si propagano dentro questo elemento
-  override createRenderRoot() {
-    return this;
-  }
-
-  private _addTab() {
-    const n = this._counter++;
-    this._tabs = [...this._tabs, { label: `Tab ${n}`, panel: `et${n}`, disabled: false }];
-  }
-
-  // Ascolta l'evento it-tab-close emesso automaticamente dal bottone × iniettato
-  // da it-tabs in modalità cards. Non servono più bottoni manuali nei template.
-  private _onTabClose(e: CustomEvent<{ panel: string }>) {
-    this._tabs = this._tabs.filter((t) => t.panel !== e.detail.panel);
-  }
-
-  override render() {
-    return html`
-      <it-tabs cards label="Tab card con pulsanti" @it-tab-close=${this._onTabClose}>
-        ${this._tabs.map(
-          (t) => html`
-            <it-tab slot="tab" panel=${t.panel} ?disabled=${t.disabled}>${t.label}</it-tab>
-            <it-tab-panel name=${t.panel}>Contenuto del pannello <strong>${t.label}</strong></it-tab-panel>
-          `,
-        )}
-        <it-button
-          slot="after-tablist"
-          variant="primary"
-          outline
-          icon
-          size="sm"
-          it-aria-label="Aggiungi tab"
-          @click=${() => this._addTab()}
-        >
-          <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
-        </it-button>
-      </it-tabs>
-    `;
-  }
-}
-
-if (!customElements.get('it-tabs-editable-demo')) {
-  customElements.define('it-tabs-editable-demo', ItTabsEditableDemo);
-}
 
 // Props
 interface TabsProps {
   label?: string;
   auto?: boolean;
-  vertical?: boolean;
   verticalBackground?: boolean;
   dark?: boolean;
   cards?: boolean;
+  dismissible?: boolean;
   iconText?: boolean;
   placement?: TabPlacement;
 }
@@ -88,10 +23,10 @@ const renderTabs = (props: TabsProps, tabs: { label: string; panel: string; disa
   <it-tabs
     label=${props.label ?? 'Navigazione principale'}
     ?auto=${props.auto}
-    ?vertical=${props.vertical}
     ?vertical-background=${props.verticalBackground}
     ?dark=${props.dark}
     ?cards=${props.cards}
+    ?dismissible=${props.dismissible}
     ?icon-text=${props.iconText}
     placement=${props.placement ?? 'top'}
   >
@@ -119,10 +54,10 @@ const meta: Meta<TabsProps> = {
   args: {
     label: 'Navigazione principale',
     auto: false,
-    vertical: false,
     verticalBackground: false,
     dark: false,
     cards: false,
+    dismissible: false,
     iconText: false,
     placement: 'top',
   },
@@ -141,22 +76,17 @@ const meta: Meta<TabsProps> = {
       name: 'auto',
       table: { defaultValue: { summary: 'false' } },
     },
-    vertical: {
-      control: 'boolean',
-      description: 'Se `true`, la tablist è orientata verticalmente.',
-      name: 'vertical',
-      table: { defaultValue: { summary: 'false' } },
-    },
     verticalBackground: {
       control: 'boolean',
       description:
-        'Sfondo primario chiaro sul tab selezionato (solo con `vertical`). Corrisponde a `.nav-tabs-vertical-background`.',
+        'Sfondo primario chiaro sul tab selezionato (solo in layout verticale: `placement="start"` o `placement="end"`). Corrisponde a `.nav-tabs-vertical-background`.',
       name: 'vertical-background',
+      if: { arg: 'placement', eq: 'start' },
       table: { defaultValue: { summary: 'false' } },
     },
     dark: {
       control: 'boolean',
-      description: 'Variante con sfondo scuro per la tablist. Corrisponde alla classe `.nav-dark`.',
+      description: 'Variante con sfondo scuro per la tablist. Corrisponde alla classe `.nav-dark`. **Ignorato se `cards` è attivo** (le due varianti non sono compatibili).',
       name: 'dark',
       table: { defaultValue: { summary: 'false' } },
     },
@@ -164,6 +94,13 @@ const meta: Meta<TabsProps> = {
       control: 'boolean',
       description: 'Stile "card" per i tab. Corrisponde a `.nav-tabs-cards`.',
       name: 'cards',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    dismissible: {
+      control: 'boolean',
+      description:
+        'Abilita la chiusura dei tab tramite il pulsante × e i tasti Delete/Backspace. Indipendente da `cards`.',
+      name: 'dismissible',
       table: { defaultValue: { summary: 'false' } },
     },
     iconText: {
@@ -185,7 +122,9 @@ const meta: Meta<TabsProps> = {
     layout: 'padded',
     pageLayout: 'w-100',
   },
-  decorators: [(Story) => html` <div style="min-height:250px; margin: auto;">${Story()}</div> `],
+  decorators: [
+    (Story) => html` <div style="min-height:250px; backgrond-color: #ececec; margin: auto;">${Story()}</div> `,
+  ],
 };
 
 export default meta;
@@ -331,12 +270,12 @@ export const TabVerticale: Story = {
     docs: {
       description: {
         story:
-          "Con l'attributo `vertical`, i tab si orientano verticalmente. La navigazione da tastiera usa le frecce Su/Giù invece di Sinistra/Destra.",
+          'Con `placement="start"`, i tab si orientano verticalmente con la tablist a sinistra. La navigazione da tastiera usa le frecce Su/Giù invece di Sinistra/Destra.',
       },
     },
   },
   render: () => html`
-    <it-tabs vertical label="Navigazione verticale">
+    <it-tabs placement="start" label="Navigazione verticale">
       <it-tab slot="tab" panel="v1">Tab 1</it-tab>
       <it-tab slot="tab" panel="v2">Tab 2</it-tab>
       <it-tab slot="tab" panel="v3">Tab 3</it-tab>
@@ -359,7 +298,7 @@ export const TabVerticaleConSfondo: Story = {
     },
   },
   render: () => html`
-    <it-tabs vertical vertical-background label="Navigazione verticale con sfondo">
+    <it-tabs placement="start" vertical-background label="Navigazione verticale con sfondo">
       <it-tab slot="tab" panel="vb1">Tab 1</it-tab>
       <it-tab slot="tab" panel="vb2">Tab 2</it-tab>
       <it-tab slot="tab" panel="vb3">Tab 3</it-tab>
@@ -424,12 +363,12 @@ export const TabScuroVerticale: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Combinazione `dark` + `vertical` con icone e testo.',
+        story: 'Combinazione `dark` + `placement="start"` con icone e testo.',
       },
     },
   },
   render: () => html`
-    <it-tabs dark vertical icon-text label="Navigazione scura verticale">
+    <it-tabs dark placement="start" icon-text label="Navigazione scura verticale">
       <it-tab slot="tab" panel="dv1">
         <it-icon name="it-star-outline" class="icon icon-sm"></it-icon>
         Tab 1
@@ -532,7 +471,7 @@ export const LarghezzaTablistVerticale: Story = {
     docs: {
       description: {
         story: `La custom property CSS \`--it-tabs-nav-size\` controlla la larghezza (flex-basis) della tablist
-nei layout verticali (\`vertical\`, \`placement="start"\`, \`placement="end"\`).
+nei layout verticali (\`placement="start"\`, \`placement="end"\`).
 
 Accetta qualsiasi valore CSS valido per \`flex-basis\` (es. \`200px\`, \`25%\`, \`12rem\`).
 Non ha effetto nei layout orizzontali.
@@ -549,17 +488,13 @@ it-tabs { --it-tabs-nav-size: 30%; }
   },
   decorators: [
     (Story) => html`
-      <div style="min-height: 300px; display: flex; flex-direction: column; gap: 2rem; margin: auto;">
-        ${Story()}
-      </div>
+      <div style="min-height: 300px; display: flex; flex-direction: column; gap: 2rem; margin: auto;">${Story()}</div>
     `,
   ],
   render: () => html`
     <div>
-      <p style="margin-bottom: 0.5rem; font-weight: 600;">
-        <code>--it-tabs-nav-size: 220px</code> — larghezza fissa
-      </p>
-      <it-tabs vertical label="Nav size fissa" style="--it-tabs-nav-size: 220px;">
+      <p style="margin-bottom: 0.5rem; font-weight: 600;"><code>--it-tabs-nav-size: 220px</code> — larghezza fissa</p>
+      <it-tabs placement="start" label="Nav size fissa" style="--it-tabs-nav-size: 220px;">
         <it-tab slot="tab" panel="ns1">Tab 1</it-tab>
         <it-tab slot="tab" panel="ns2">Tab 2</it-tab>
         <it-tab slot="tab" panel="ns3">Tab 3</it-tab>
@@ -602,15 +537,9 @@ Il primo pannello è visibile di default appena il componente si inizializza.`,
       <it-tab slot="tab" panel="f1">Tab 1</it-tab>
       <it-tab slot="tab" panel="f2">Tab 2</it-tab>
       <it-tab slot="tab" panel="f3">Tab 3</it-tab>
-      <it-tab-panel fade name="f1"
-        >Pannello 1 — contenuto con dissolvenza in entrata.</it-tab-panel
-      >
-      <it-tab-panel fade name="f2"
-        >Pannello 2 — contenuto con dissolvenza in entrata.</it-tab-panel
-      >
-      <it-tab-panel fade name="f3"
-        >Pannello 3 — contenuto con dissolvenza in entrata.</it-tab-panel
-      >
+      <it-tab-panel fade name="f1">Pannello 1 — contenuto con dissolvenza in entrata.</it-tab-panel>
+      <it-tab-panel fade name="f2">Pannello 2 — contenuto con dissolvenza in entrata.</it-tab-panel>
+      <it-tab-panel fade name="f3">Pannello 3 — contenuto con dissolvenza in entrata.</it-tab-panel>
     </it-tabs>
   `,
 };
@@ -618,19 +547,28 @@ Il primo pannello è visibile di default appena il componente si inizializza.`,
 // Tab card con pulsanti aggiungi/elimina
 export const TabCardConPulsanti: Story = {
   name: 'Tab card con pulsanti aggiungi/elimina',
+  args: {
+    auto: true,
+  },
   parameters: {
     docs: {
       description: {
-        story: `Le \`it-tabs\` in modalità \`cards\` iniettano automaticamente un pulsante ×
-(\`<a class="it-tab-close" role="button">\` con \`<it-icon name="it-close">\`) in ogni \`it-tab\`.
+        story: `Combinando \`cards\` con l'attributo \`dismissible\`, ogni tab mostra un pulsante ×
+e risponde ai tasti Delete/Backspace. \`it-tabs\` emette l'evento cancelable \`it-tab-close\`
+con \`detail.panel\` e — se nessuno chiama \`preventDefault()\` — rimuove automaticamente
+l'elemento \`it-tab\` e il relativo \`it-tab-panel\` dal DOM.
 
-Quando l'utente clicca il ×, \`it-tabs\` emette l'evento \`it-tab-close\` con \`detail.panel\`.
-L'effettiva rimozione del tab rimane responsabilità dell'applicazione:
+\`cards\` controlla solo lo stile visivo e può essere usato senza \`dismissible\`.
+
+Per personalizzare il comportamento (es. conferma modale prima della rimozione):
 
 \`\`\`js
 document.querySelector('it-tabs').addEventListener('it-tab-close', (e) => {
-  document.querySelector(\`it-tab[panel="\${e.detail.panel}"]\`)?.remove();
-  document.querySelector(\`it-tab-panel[name="\${e.detail.panel}"]\`)?.remove();
+  e.preventDefault(); // blocca la rimozione automatica
+  if (confirm('Chiudere il tab?')) {
+    document.querySelector(\`it-tab[panel="\${e.detail.panel}"]\`)?.remove();
+    document.querySelector(\`it-tab-panel[name="\${e.detail.panel}"]\`)?.remove();
+  }
 });
 \`\`\`
 
@@ -644,5 +582,46 @@ Il pulsante aggiungi va in \`slot="after-tablist"\`:
       },
     },
   },
-  render: () => html`<it-tabs-editable-demo></it-tabs-editable-demo>`,
+  render: () => {
+    let counter = 5;
+
+    const onAdd = (e: Event) => {
+      const addBtn = e.currentTarget as Element;
+      const itTabs = addBtn.closest('it-tabs')!;
+      const n = counter++;
+      const tab = document.createElement('it-tab');
+      tab.setAttribute('slot', 'tab');
+      tab.setAttribute('panel', `et${n}`);
+      tab.textContent = `Tab ${n}`;
+      const panel = document.createElement('it-tab-panel');
+      panel.setAttribute('name', `et${n}`);
+      panel.innerHTML = `Contenuto del pannello <strong>Tab ${n}</strong>`;
+      addBtn.insertAdjacentElement('beforebegin', tab);
+      itTabs.appendChild(panel);
+    };
+
+    return html`
+      <it-tabs cards dismissible label="Tab card con pulsanti">
+        <it-tab slot="tab" panel="et1">Tab 1</it-tab>
+        <it-tab slot="tab" panel="et2">Tab 2</it-tab>
+        <it-tab slot="tab" panel="et3">Tab 3</it-tab>
+        <it-tab slot="tab" panel="et4" disabled>Tab 4 Disabilitato</it-tab>
+        <it-tab-panel name="et1">Contenuto del pannello <strong>Tab 1</strong></it-tab-panel>
+        <it-tab-panel name="et2">Contenuto del pannello <strong>Tab 2</strong></it-tab-panel>
+        <it-tab-panel name="et3">Contenuto del pannello <strong>Tab 3</strong></it-tab-panel>
+        <it-tab-panel name="et4">Contenuto del pannello <strong>Tab 4 Disabilitato</strong></it-tab-panel>
+        <it-button
+          slot="after-tablist"
+          class="after-tablist"
+          variant="link"
+          icon
+          size="sm"
+          it-aria-label="Aggiungi tab"
+          @click=${onAdd}
+        >
+          <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
+        </it-button>
+      </it-tabs>
+    `;
+  },
 };

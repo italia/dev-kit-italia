@@ -39,6 +39,22 @@ export class ItTab extends BaseComponent {
   active = false;
 
   /**
+   * In variante card: impostato automaticamente dall'`it-tabs` padre quando `cards` è attivo.
+   * Porta gli stili card direttamente su :host([cards]) in it-tab.scss.
+   */
+  @property({ type: Boolean, reflect: true })
+  cards = false;
+
+  /**
+   * Mostra il pulsante × per chiudere il tab.
+   * Impostato automaticamente dall'`it-tabs` padre (da `dismissible` sul container);
+   * non richiede manipolazione del light DOM (il bottone vive nello shadow DOM di `it-tab`).
+   * Al click emette `it-tab-close-request` (bubbles + composed) verso `it-tabs`.
+   */
+  @property({ type: Boolean, reflect: true })
+  dismissible = false;
+
+  /**
    * Restituisce l'`id` dell'host, usato dall'`it-tabs` padre per
    * impostare `aria-labelledby` sul pannello associato (tutto in light DOM,
    * nessun cross-shadow ARIA necessario).
@@ -100,8 +116,26 @@ export class ItTab extends BaseComponent {
     }
   };
 
+  private _handleCloseClick = (e: Event): void => {
+    e.stopPropagation(); // non triggerare selezione del tab
+    this.dispatchEvent(
+      new CustomEvent('it-tab-close-request', {
+        bubbles: true,
+        composed: true,
+        detail: { panel: this.panel },
+      }),
+    );
+  };
+
   render() {
-    return html`<slot></slot>`;
+    return html`
+      <slot></slot>
+      ${this.dismissible
+        ? html`<span class="it-tab-close" aria-hidden="true" @click=${this._handleCloseClick}>
+            <it-icon name="it-close"></it-icon>
+          </span>`
+        : ''}
+    `;
   }
 }
 

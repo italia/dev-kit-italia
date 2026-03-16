@@ -1,6 +1,24 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 const Tabs = () => {
+  const ecCounterRef = useRef(5);
+
+  const handleAddTab = (e) => {
+    const addBtn = e.currentTarget;
+    const itTabs = addBtn.closest('it-tabs');
+    const n = ecCounterRef.current++;
+    const panel = `et${n}`;
+    const tab = document.createElement('it-tab');
+    tab.setAttribute('slot', 'tab');
+    tab.setAttribute('panel', panel);
+    tab.textContent = `Tab ${n}`;
+    const tabPanel = document.createElement('it-tab-panel');
+    tabPanel.setAttribute('name', panel);
+    tabPanel.innerHTML = `Contenuto del pannello <strong>Tab ${n}</strong>`;
+    addBtn.insertAdjacentElement('beforebegin', tab);
+    itTabs.appendChild(tabPanel);
+  };
+
   return (
     <div>
       <h1>Tabs</h1>
@@ -92,7 +110,7 @@ const Tabs = () => {
       {/* Tab verticali */}
       <section>
         <h2>Tab verticali</h2>
-        <it-tabs vertical label="Navigazione verticale">
+        <it-tabs placement="start" label="Navigazione verticale">
           <it-tab slot="tab" panel="v1">Tab 1</it-tab>
           <it-tab slot="tab" panel="v2">Tab 2</it-tab>
           <it-tab slot="tab" panel="v3">Tab 3</it-tab>
@@ -105,7 +123,7 @@ const Tabs = () => {
       {/* Tab verticali con sfondo */}
       <section>
         <h2>Tab verticali con sfondo</h2>
-        <it-tabs vertical vertical-background label="Navigazione verticale con sfondo">
+        <it-tabs placement="start" vertical-background label="Navigazione verticale con sfondo">
           <it-tab slot="tab" panel="vb1">Tab 1</it-tab>
           <it-tab slot="tab" panel="vb2">Tab 2</it-tab>
           <it-tab slot="tab" panel="vb3">Tab 3</it-tab>
@@ -148,7 +166,7 @@ const Tabs = () => {
       {/* Tab scuri verticali */}
       <section>
         <h2>Tab scuri verticali</h2>
-        <it-tabs dark vertical icon-text label="Navigazione scura verticale">
+        <it-tabs dark placement="start" icon-text label="Navigazione scura verticale">
           <it-tab slot="tab" panel="dv1">
             <it-icon name="it-star-outline" class="icon icon-sm"></it-icon>
             Tab 1
@@ -214,6 +232,67 @@ const Tabs = () => {
           <it-tab-panel name="e1">Pannello 1</it-tab-panel>
           <it-tab-panel name="e2">Pannello 2</it-tab-panel>
           <it-tab-panel name="e3">Pannello 3</it-tab-panel>
+        </it-tabs>
+      </section>
+
+      {/* Larghezza tablist verticale (--it-tabs-nav-size) */}
+      <section>
+        <h2>Larghezza tablist verticale (--it-tabs-nav-size)</h2>
+        <p>Larghezza fissa con <code>--it-tabs-nav-size: 220px</code>:</p>
+        <it-tabs placement="start" label="Nav size fissa" style={{'--it-tabs-nav-size': '220px'}}>
+          <it-tab slot="tab" panel="ns1">Tab 1</it-tab>
+          <it-tab slot="tab" panel="ns2">Tab 2</it-tab>
+          <it-tab slot="tab" panel="ns3">Tab 3</it-tab>
+          <it-tab-panel name="ns1">Pannello 1</it-tab-panel>
+          <it-tab-panel name="ns2">Pannello 2</it-tab-panel>
+          <it-tab-panel name="ns3">Pannello 3</it-tab-panel>
+        </it-tabs>
+        <p>Larghezza proporzionale con <code>--it-tabs-nav-size: 30%</code> (placement start):</p>
+        <it-tabs placement="start" label="Nav size proporzionale" style={{'--it-tabs-nav-size': '30%'}}>
+          <it-tab slot="tab" panel="np1">Tab 1 con etichetta lunga</it-tab>
+          <it-tab slot="tab" panel="np2">Tab 2</it-tab>
+          <it-tab slot="tab" panel="np3">Tab 3</it-tab>
+          <it-tab-panel name="np1">Pannello 1</it-tab-panel>
+          <it-tab-panel name="np2">Pannello 2</it-tab-panel>
+          <it-tab-panel name="np3">Pannello 3</it-tab-panel>
+        </it-tabs>
+      </section>
+
+      {/* Tab con effetto fade */}
+      <section>
+        <h2>Tab con effetto fade</h2>
+        <it-tabs label="Tab con effetto fade">
+          <it-tab slot="tab" panel="f1">Tab 1</it-tab>
+          <it-tab slot="tab" panel="f2">Tab 2</it-tab>
+          <it-tab slot="tab" panel="f3">Tab 3</it-tab>
+          <it-tab-panel fade name="f1">Pannello 1 — contenuto con dissolvenza in entrata.</it-tab-panel>
+          <it-tab-panel fade name="f2">Pannello 2 — contenuto con dissolvenza in entrata.</it-tab-panel>
+          <it-tab-panel fade name="f3">Pannello 3 — contenuto con dissolvenza in entrata.</it-tab-panel>
+        </it-tabs>
+      </section>
+
+      {/* Tab card con pulsanti aggiungi/elimina */}
+      <section>
+        <h2>Tab card con pulsanti aggiungi/elimina</h2>
+        <it-tabs cards dismissible label="Tab card con pulsanti">
+          <it-tab slot="tab" panel="et1">Tab 1</it-tab>
+          <it-tab slot="tab" panel="et2">Tab 2</it-tab>
+          <it-tab slot="tab" panel="et3">Tab 3</it-tab>
+          <it-tab slot="tab" panel="et4" disabled>Tab 4 Disabilitato</it-tab>
+          <it-tab-panel name="et1">Contenuto del pannello <strong>Tab 1</strong></it-tab-panel>
+          <it-tab-panel name="et2">Contenuto del pannello <strong>Tab 2</strong></it-tab-panel>
+          <it-tab-panel name="et3">Contenuto del pannello <strong>Tab 3</strong></it-tab-panel>
+          <it-tab-panel name="et4">Contenuto del pannello <strong>Tab 4 Disabilitato</strong></it-tab-panel>
+          <it-button
+            slot="after-tablist"
+            variant="link"
+            icon
+            size="sm"
+            it-aria-label="Aggiungi tab"
+            onClick={handleAddTab}
+          >
+            <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
+          </it-button>
         </it-tabs>
       </section>
     </div>

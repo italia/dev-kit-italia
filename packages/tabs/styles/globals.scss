@@ -20,3 +20,21 @@ it-tabs {
 it-tabs[vertical] {
   display: flex;
 }
+
+it-tabs .after-tablist {
+  display: flex;
+  height: 100%;
+  border-bottom: 1px solid var(--#{$prefix}color-border-subtle);
+  margin-left: 0 !important;
+  background-color: var(--#{$prefix}color-background-inverse) !important;
+  padding-inline: 1rem;
+}
+
+it-tabs[cards] it-tab {
+  padding-bottom: 17px;
+  border-bottom: 1px solid transparent;
+}
+
+it-tab-panel {
+  height: 100%;
+}

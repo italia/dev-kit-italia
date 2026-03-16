@@ -73,6 +73,7 @@ Il componente implementa le specifiche del [WAI-ARIA Authoring Practices — Tab
 | `↑` / `↓` | Sposta il focus al tab precedente/successivo (layout verticale) |
 | `Home` | Porta il focus al primo tab |
 | `End` | Porta il focus all'ultimo tab |
+| `Delete` / `Backspace` | Chiude il tab corrente (solo in modalità `cards`). Il focus si sposta automaticamente sul tab adiacente. Il consumer riceve l'evento `it-tab-close` e si occupa di rimuovere il nodo. |
 
 La navigazione con frecce attiva automaticamente il tab (automatic activation, consigliata dal WAI-ARIA APG quando i pannelli si aggiornano velocemente).
 
@@ -114,9 +115,32 @@ Con `vertical-background` (in combinazione con `vertical`), il tab selezionato m
 
 ## Tab tipo card
 
-Con l'attributo `cards`, i tab assumono un design "card" con bordi su tre lati del tab attivo.
+Con l'attributo `cards`, i tab assumono un design "card" con bordi su tre lati e sfondo differenziato per il tab attivo. In modalità `cards`, ogni tab mostra automaticamente un pulsante × per la chiusura.
 
 <Canvas of={TabsStories.TabCard} />
+
+## Tab card con pulsanti aggiungi/elimina
+
+In modalità `cards`, `it-tabs` inietta automaticamente in ogni `it-tab` un pulsante × (shadow DOM, `aria-hidden`). Al click, emette l'evento `it-tab-close` con `detail.panel` — il consumer rimuove il nodo.
+
+Il focus si sposta automaticamente sul tab adiacente (successivo o, se non esiste, precedente) prima della rimozione, seguendo il pattern WAI-ARIA APG.
+
+Per aggiungere tab dinamicamente, usa `slot="after-tablist"`:
+
+```html
+<it-button slot="after-tablist" variant="primary" outline icon size="sm" it-aria-label="Aggiungi tab">
+  <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
+</it-button>
+```
+
+```js
+document.querySelector('it-tabs').addEventListener('it-tab-close', (e) => {
+  document.querySelector(`it-tab[panel="${e.detail.panel}"]`)?.remove();
+  document.querySelector(`it-tab-panel[name="${e.detail.panel}"]`)?.remove();
+});
+```
+
+<Canvas of={TabsStories.TabCardConPulsanti} />
 
 ## Tab con sfondo scuro
 
@@ -125,6 +149,12 @@ Con l'attributo `dark`, la tablist ottiene sfondo scuro e testo chiaro.
 <Canvas of={TabsStories.TabScuro} />
 
 <Canvas of={TabsStories.TabScuroVerticale} />
+
+## Effetto fade
+
+Aggiungendo l'attributo `fade` a `it-tabs` (o ai singoli `it-tab-panel`), i pannelli appaiono con un'animazione di dissolvenza al cambio tab.
+
+<Canvas of={TabsStories.TabFade} />
 
 ## Posizionamento
 
@@ -145,6 +175,16 @@ Con `placement="start"`, la tablist verticale si posiziona a sinistra del conten
 Con `placement="end"`, la tablist verticale si posiziona a destra del contenuto. Il bordo attivo si sposta sul lato sinistro.
 
 <Canvas of={TabsStories.PosizionamentoDestra} />
+
+### Larghezza tablist verticale
+
+La custom property `--it-tabs-nav-size` controlla il `flex-basis` (larghezza) della tablist nei layout verticali. Accetta qualsiasi valore CSS valido per `flex-basis`.
+
+```css
+it-tabs { --it-tabs-nav-size: 220px; }
+```
+
+<Canvas of={TabsStories.LarghezzaTablistVerticale} />
 
 ## Personalizzazione degli stili
 

@@ -271,9 +271,9 @@ describe('it-tabs — varianti', () => {
     expect(tablist?.classList.contains('auto')).to.be.true;
   });
 
-  it('attributo vertical aggiunge classe .nav-tabs-vertical', async () => {
+  it('placement="start" aggiunge classe .nav-tabs-vertical', async () => {
     const el = await fixture<ItTabs>(html`
-      <it-tabs vertical label="Test">
+      <it-tabs placement="start" label="Test">
         <it-tab slot="tab" panel="p1">Tab 1</it-tab>
         <it-tab-panel name="p1">Panel 1</it-tab-panel>
       </it-tabs>
