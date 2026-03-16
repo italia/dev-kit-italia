@@ -66,6 +66,22 @@ export class ItTabs extends BaseComponent {
   auto = false;
 
   /**
+   * Nasconde visivamente la scrollbar orizzontale della tablist su viewport intermedi
+   * (≥ 768px e < 1200px), dove Bootstrap Italia mostra normalmente il tab overflow con scrollbar.
+   * Su mobile (< 768px) e su desktop wide (≥ 1200px) il meccanismo viene disattivato automaticamente.
+   *
+   * Il meccanismo BSI: il wrapper `.nav-row` riceve `overflow: hidden` + altezza fissa che
+   * stoppa la scrollbar; `.nav-tabs` riceve `padding-bottom: 20px` che spinge il
+   * track della scrollbar sotto il bordo di clip, rendendola invisibile ma preservando lo scroll.
+   *
+   * Corrisponde alla classe Bootstrap Italia `.nav-tabs-hidescroll` sul wrapper.
+   * Ignorato nei layout verticali (`placement="start"` / `placement="end"`) e con `cards`.
+   * Usato tipicamente insieme ad `auto`.
+   */
+  @property({ type: Boolean, attribute: 'hide-scrollbar', reflect: true })
+  hideScrollbar = false;
+
+  /**
    * Sfondo primario chiaro sul tab selezionato (solo in layout verticale: `placement="start"` o `placement="end"`).
    * Corrisponde alla classe Bootstrap Italia `.nav-tabs-vertical-background`.
    */
@@ -240,9 +256,10 @@ export class ItTabs extends BaseComponent {
    * Prima di dispatchiare `it-tab-close` all'esterno, sposta il focus su un tab adiacente
    * in modo che l'utente da tastiera non perda il punto di navigazione.
    */
-  private _onTabCloseRequest = (e: CustomEvent<{ panel: string }>): void => {
+  private _onTabCloseRequest = (e: CustomEvent<{ panel: string; type: string }>): void => {
     const tab = this._tabs.find((t) => t.panel === e.detail.panel);
-    if (tab) this._closeTabWithFocusShift(tab);
+    console.log('it-tab-close-request received for panel:', e, e.type);
+    if (tab) this._closeTabWithFocusShift(tab, e.detail.type !== 'click');
   };
 
   /**
@@ -276,49 +293,56 @@ export class ItTabs extends BaseComponent {
    * poi applica focus + stato active, poi dispatcha l'evento,
    * poi esegue la default action (rimozione) a meno di preventDefault.
    */
-  private _closeTabWithFocusShift(closingTab: ItTab): void {
-    const tabs = this._tabs;
-    const idx = tabs.indexOf(closingTab);
-    // Calcola il target PRIMA di qualunque modifica al DOM.
-    const after = tabs.slice(idx + 1).find((t) => !t.disabled);
-    const before = tabs
-      .slice(0, idx)
-      .reverse()
-      .find((t) => !t.disabled);
-    const target = after ?? before ?? null;
-
-    if (target) {
-      if (closingTab.active) {
-        // Trasferisce lo stato active al target in modo sincrono,
-        // prima del dispatch, così _initTabs (dopo lo slotchange) lo trova già attivo.
-        tabs.forEach((t) => {
-          // eslint-disable-next-line no-param-reassign
-          t.active = t === target;
-        });
-        this._panels.forEach((p) => {
-          // eslint-disable-next-line no-param-reassign
-          p.active = p.name === target.panel;
-        });
-      }
-      // Focus sincrono: tabIndex=0 garantisce che focus() funzioni anche se Lit
-      // non ha ancora aggiornato il DOM (active → tabIndex avviene async in updated).
-      target.tabIndex = 0;
-      target.focus();
-    }
-
+  private _closeTabWithFocusShift(closingTab: ItTab, moveFocus: boolean): void {
     // Dispatcha l'evento cancelable. Il consumer può chiamare preventDefault()
     // per gestire la rimozione in modo personalizzato (es. conferma modale).
     const event = new CustomEvent('it-tab-close', {
       bubbles: true,
       composed: true,
       cancelable: true,
-      detail: { panel: closingTab.panel },
+      detail: { panel: closingTab.panel, type: moveFocus ? 'keydown' : 'click' },
     });
     this.dispatchEvent(event);
-
-    // Default action: rimuove tab e panel dal DOM.
+    // Default focus logic
     // Saltata se il consumer ha chiamato preventDefault().
     if (!event.defaultPrevented) {
+      const tabs = this._tabs;
+      const idx = tabs.indexOf(closingTab);
+      // Calcola il target PRIMA di qualunque modifica al DOM.
+      const after = tabs.slice(idx + 1).find((t) => !t.disabled);
+      const before = tabs
+        .slice(0, idx)
+        .reverse()
+        .find((t) => !t.disabled);
+      const target = after ?? before ?? null;
+
+      if (target) {
+        if (closingTab.active) {
+          // Trasferisce lo stato active al target in modo sincrono,
+          // prima del dispatch, così _initTabs (dopo lo slotchange) lo trova già attivo.
+          tabs.forEach((t) => {
+            // eslint-disable-next-line no-param-reassign
+            t.active = t === target;
+          });
+          this._panels.forEach((p) => {
+            // eslint-disable-next-line no-param-reassign
+            p.active = p.name === target.panel;
+          });
+        }
+        // Focus sincrono: tabIndex=0 garantisce che focus() funzioni anche se Lit
+        // non ha ancora aggiornato il DOM (active → tabIndex avviene async in updated).
+        // Lo spostamento del focus avviene solo se moveFocus è true, altrimenti ci limitiamo ad aggiornare lo stato active
+        // In pratica: avviene solo da tastiera (Delete/Backspace), non da click sul pulsante ×, per evitare di spostare il
+        // focus quando l'utente clicca esplicitamente sul tab da chiudere.
+        if (moveFocus) {
+          target.tabIndex = 0;
+          target.focus();
+        }
+      }
+
+      // Default action: rimuove tab e panel dal DOM.
+      // Saltata se il consumer ha chiamato preventDefault().
+
       const panelEl = this._panels.find((p) => p.name === closingTab.panel);
       closingTab.remove();
       panelEl?.remove();
@@ -388,7 +412,7 @@ export class ItTabs extends BaseComponent {
     // poi notifica l'esterno di chiudere il tab corrente.
     if ((e.key === 'Delete' || e.key === 'Backspace') && this.dismissible) {
       e.preventDefault();
-      this._closeTabWithFocusShift(currentTab);
+      this._closeTabWithFocusShift(currentTab, true);
       return;
     }
 
@@ -429,6 +453,8 @@ export class ItTabs extends BaseComponent {
     const rowClasses = classMap({
       'nav-row': true,
       auto: this.auto && !isVertical,
+      'nav-tabs-hidescroll': this.hideScrollbar && !isVertical && !this.cards,
+      // 'hidescroll-ico': this.hideScrollbar && this.iconText && !isVertical && !this.cards,
     });
 
     const wrapperClasses = classMap({

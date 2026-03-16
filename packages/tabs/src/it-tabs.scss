@@ -239,3 +239,25 @@ $it-tab-prefix: 'it-tab';
     box-shadow: none !important;
   }
 }
+
+// Variante: hide-scrollbar — nasconde la scrollbar orizzontale della tablist.
+// IMPORTANTE: la scrollbar è su .nav-tabs (l'elemento che fa overflow), NON su .nav-row (il wrapper).
+// scrollbar-width e ::-webkit-scrollbar vanno quindi sul figlio che scrolla.
+.nav-row.nav-tabs-hidescroll > .nav-tabs {
+  -ms-overflow-style: none; /* IE / Edge */
+  overflow-x: auto !important; // abilita lo scroll (batte il 'visible !important' base)
+  scrollbar-width: none; /* Firefox */
+}
+
+.nav-row.nav-tabs-hidescroll > .nav-tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, WebKit */
+}
+
+.nav-tabs-hidescroll {
+  overflow: hidden;
+  height: unset !important; // Override dell'altezza fissa di .nav-tabs in BSI, che altrimenti clipperebbe lo scroll
+}
+
+.nav-tabs-hidescroll .nav-tabs {
+  padding-bottom: 0 !important; // Override del padding-bottom di BSI che crea spazio inutile sotto le tab
+}

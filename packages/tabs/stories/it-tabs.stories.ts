@@ -6,6 +6,7 @@ import { TAB_PLACEMENTS, type TabPlacement } from '../src/types.js';
 interface TabsProps {
   label?: string;
   auto?: boolean;
+  hideScrollbar?: boolean;
   verticalBackground?: boolean;
   dark?: boolean;
   cards?: boolean;
@@ -23,6 +24,7 @@ const renderTabs = (props: TabsProps, tabs: { label: string; panel: string; disa
   <it-tabs
     label=${props.label ?? 'Navigazione principale'}
     ?auto=${props.auto}
+    ?hide-scrollbar=${props.hideScrollbar}
     ?vertical-background=${props.verticalBackground}
     ?dark=${props.dark}
     ?cards=${props.cards}
@@ -54,6 +56,7 @@ const meta: Meta<TabsProps> = {
   args: {
     label: 'Navigazione principale',
     auto: false,
+    hideScrollbar: false,
     verticalBackground: false,
     dark: false,
     cards: false,
@@ -76,6 +79,14 @@ const meta: Meta<TabsProps> = {
       name: 'auto',
       table: { defaultValue: { summary: 'false' } },
     },
+    hideScrollbar: {
+      control: 'boolean',
+      description:
+        "Nasconde visivamente la scrollbar orizzontale su viewport intermedi (≥ 768px, < 1200px). Il meccanismo BSI use `overflow: hidden` sul wrapper e `padding-bottom: 20px` su `.nav-tabs` per spingere il track della scrollbar fuori dall'area visibile. Su mobile e su wide desktop la scrollbar comportamento normale. Ignorato con `cards` o in layout verticali. Si usa tipicamente insieme ad `auto`.",
+      name: 'hide-scrollbar',
+      if: { arg: 'auto', truthy: true },
+      table: { defaultValue: { summary: 'false' } },
+    },
     verticalBackground: {
       control: 'boolean',
       description:
@@ -86,7 +97,8 @@ const meta: Meta<TabsProps> = {
     },
     dark: {
       control: 'boolean',
-      description: 'Variante con sfondo scuro per la tablist. Corrisponde alla classe `.nav-dark`. **Ignorato se `cards` è attivo** (le due varianti non sono compatibili).',
+      description:
+        'Variante con sfondo scuro per la tablist. Corrisponde alla classe `.nav-dark`. **Ignorato se `cards` è attivo** (le due varianti non sono compatibili).',
       name: 'dark',
       table: { defaultValue: { summary: 'false' } },
     },
@@ -185,6 +197,44 @@ export const TabATuttaLarghezza: Story = {
       <it-tab-panel name="a2">${panelContent(2)}</it-tab-panel>
       <it-tab-panel name="a3">${panelContent(3)}</it-tab-panel>
       <it-tab-panel name="a4">${panelContent(4)}</it-tab-panel>
+    </it-tabs>
+  `,
+};
+
+// Tab a tutta larghezza con scrollbar nascosta
+export const TabScrollbarNascosta: Story = {
+  name: 'Tab con scrollbar nascosta',
+  parameters: {
+    docs: {
+      description: {
+        story: `L'attributo \`hide-scrollbar\` nasconde visivamente la scrollbar orizzontale su viewport intermedi
+(≥ 768 px e < 1200 px), dove Bootstrap Italia attiverebbe normalmente lo scroll con scrollbar visibile.
+
+**Come funziona (meccanismo BSI \`.nav-tabs-hidescroll\`):**
+- Il wrapper \`.nav-row\` riceve \`overflow: hidden\` e un'altezza fissa che taglia fuori la scrollbar.
+- \`.nav-tabs\` riceve \`padding-bottom: 20px\` che spinge il track della scrollbar sotto il bordo di clip.
+- Lo scroll rimane funzionale (touch, tastiera, scroll programmático); solo il track visivo è nascosto.
+- Su mobile (< 768 px) e su desktop wide (≥ 1200 px) il meccanismo si disattiva automaticamente.
+
+Ignorato in layout verticali (\`placement="start"/"end"\`) e con \`cards\`.
+Si usa tipicamente insieme ad \`auto\`.`,
+      },
+    },
+  },
+  render: () => html`
+    <it-tabs auto hide-scrollbar label="Navigazione con scrollbar nascosta">
+      <it-tab slot="tab" panel="hs1">Voce di menu 1</it-tab>
+      <it-tab slot="tab" panel="hs2">Voce di menu 2</it-tab>
+      <it-tab slot="tab" panel="hs3">Voce di menu 3</it-tab>
+      <it-tab slot="tab" panel="hs4">Voce di menu 4</it-tab>
+      <it-tab slot="tab" panel="hs5">Voce di menu 5</it-tab>
+      <it-tab slot="tab" panel="hs6" disabled>Disabilitato</it-tab>
+      <it-tab-panel name="hs1">${panelContent(1)}</it-tab-panel>
+      <it-tab-panel name="hs2">${panelContent(2)}</it-tab-panel>
+      <it-tab-panel name="hs3">${panelContent(3)}</it-tab-panel>
+      <it-tab-panel name="hs4">${panelContent(4)}</it-tab-panel>
+      <it-tab-panel name="hs5">${panelContent(5)}</it-tab-panel>
+      <it-tab-panel name="hs6">${panelContent(6)}</it-tab-panel>
     </it-tabs>
   `,
 };
@@ -610,6 +660,133 @@ Il pulsante aggiungi va in \`slot="after-tablist"\`:
         <it-tab-panel name="et2">Contenuto del pannello <strong>Tab 2</strong></it-tab-panel>
         <it-tab-panel name="et3">Contenuto del pannello <strong>Tab 3</strong></it-tab-panel>
         <it-tab-panel name="et4">Contenuto del pannello <strong>Tab 4 Disabilitato</strong></it-tab-panel>
+        <it-button
+          slot="after-tablist"
+          class="after-tablist"
+          variant="link"
+          icon
+          size="sm"
+          it-aria-label="Aggiungi tab"
+          @click=${onAdd}
+        >
+          <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
+        </it-button>
+      </it-tabs>
+    `;
+  },
+};
+
+// Tab card con pulsanti — chiusura personalizzata (preventDefault)
+export const TabCardConPulsantiCustomClose: Story = {
+  name: 'Tab card con chiusura personalizzata',
+  parameters: {
+    docs: {
+      description: {
+        story: `Chiamando \`e.preventDefault()\` su \`it-tab-close\` si blocca la rimozione automatica
+e si può implementare logica personalizzata — ad es. una modale di conferma.
+
+\`it-tabs\` esegue comunque lo shift del focus **prima** di emettere l'evento, ma poiché
+qui gestiamo noi la rimozione dobbiamo replicare quella logica manualmente,
+specchiando \`_closeTabWithFocusShift\` interno al componente:
+
+\`\`\`js
+itTabs.addEventListener('it-tab-close', (e) => {
+  e.preventDefault(); // blocca la rimozione automatica
+
+  const { panel } = e.detail;
+  const tabs = [...itTabs.querySelectorAll('it-tab[slot="tab"]')];
+  const closingTab = tabs.find((t) => t.getAttribute('panel') === panel);
+  const idx = tabs.indexOf(closingTab);
+
+  // Cerca il successivo non-disabilitato, poi il precedente
+  const after  = tabs.slice(idx + 1).find((t) => !t.hasAttribute('disabled'));
+  const before = tabs.slice(0, idx).reverse().find((t) => !t.hasAttribute('disabled'));
+  const target = after ?? before ?? null;
+
+  if (target) {
+    if (closingTab.active) {
+      tabs.forEach((t) => { t.active = t === target; });
+      itTabs.querySelectorAll('it-tab-panel').forEach((p) => {
+        p.active = p.getAttribute('name') === target.getAttribute('panel');
+      });
+    }
+    target.tabIndex = 0;
+    target.focus();
+  }
+
+  // Logica personalizzata: rimozione condizionale
+  if (!confirm(\`Chiudere "\${closingTab.textContent.trim()}"?\`)) return;
+  closingTab.remove();
+  itTabs.querySelector(\`it-tab-panel[name="\${panel}"]\`)?.remove();
+});
+\`\`\``,
+      },
+    },
+  },
+  render: () => {
+    let counter = 5;
+
+    const onClose = (e: CustomEvent<{ panel: string; type: 'keydown' | 'click' }>) => {
+      e.preventDefault();
+
+      const itTabs = e.currentTarget as HTMLElement;
+      const { panel, type } = e.detail;
+      const tabs = [...itTabs.querySelectorAll<HTMLElement>('it-tab[slot="tab"]')];
+      const closingTab = tabs.find((t) => t.getAttribute('panel') === panel)!;
+      const idx = tabs.indexOf(closingTab);
+
+      const after = tabs.slice(idx + 1).find((t) => !t.hasAttribute('disabled'));
+      const before = tabs
+        .slice(0, idx)
+        .reverse()
+        .find((t) => !t.hasAttribute('disabled'));
+      const target = after ?? before ?? null;
+
+      if (target) {
+        if ((closingTab as any).active) {
+          tabs.forEach((t: any) => {
+            t.active = t === target;
+          });
+          itTabs.querySelectorAll('it-tab-panel').forEach((p: any) => {
+            p.active = p.getAttribute('name') === target.getAttribute('panel');
+          });
+        }
+        if (type === 'keydown') {
+          target.tabIndex = 0;
+          target.focus();
+        }
+      }
+
+      if (!confirm(`Chiudere "${closingTab.textContent?.trim()}"?`)) return;
+      closingTab.remove();
+      itTabs.querySelector(`it-tab-panel[name="${panel}"]`)?.remove();
+    };
+
+    const onAdd = (e: Event) => {
+      const addBtn = e.currentTarget as Element;
+      const itTabs = addBtn.closest('it-tabs')!;
+      const n = counter++;
+      const tab = document.createElement('it-tab');
+      tab.setAttribute('slot', 'tab');
+      tab.setAttribute('panel', `cp${n}`);
+      tab.textContent = `Tab ${n}`;
+      const panel = document.createElement('it-tab-panel');
+      panel.setAttribute('name', `cp${n}`);
+      panel.innerHTML = `Contenuto del pannello <strong>Tab ${n}</strong>`;
+      addBtn.insertAdjacentElement('beforebegin', tab);
+      itTabs.appendChild(panel);
+    };
+
+    return html`
+      <it-tabs cards dismissible label="Tab card con chiusura personalizzata" @it-tab-close=${onClose}>
+        <it-tab slot="tab" panel="cp1">Tab 1</it-tab>
+        <it-tab slot="tab" panel="cp2">Tab 2</it-tab>
+        <it-tab slot="tab" panel="cp3">Tab 3</it-tab>
+        <it-tab slot="tab" panel="cp4" disabled>Tab 4 Disabilitato</it-tab>
+        <it-tab-panel name="cp1">Contenuto del pannello <strong>Tab 1</strong></it-tab-panel>
+        <it-tab-panel name="cp2">Contenuto del pannello <strong>Tab 2</strong></it-tab-panel>
+        <it-tab-panel name="cp3">Contenuto del pannello <strong>Tab 3</strong></it-tab-panel>
+        <it-tab-panel name="cp4">Contenuto del pannello <strong>Tab 4 Disabilitato</strong></it-tab-panel>
         <it-button
           slot="after-tablist"
           class="after-tablist"

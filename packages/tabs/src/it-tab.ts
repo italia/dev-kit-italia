@@ -122,7 +122,7 @@ export class ItTab extends BaseComponent {
       new CustomEvent('it-tab-close-request', {
         bubbles: true,
         composed: true,
-        detail: { panel: this.panel },
+        detail: { panel: this.panel, type: e.type },
       }),
     );
   };

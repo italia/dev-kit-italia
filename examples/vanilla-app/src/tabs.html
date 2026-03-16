@@ -45,6 +45,25 @@
           </it-tabs>
         </section>
 
+        <!-- Tab a tutta larghezza con scrollbar nascosta -->
+        <section>
+          <h2>Tab con scrollbar nascosta</h2>
+          <it-tabs auto hide-scrollbar label="Navigazione con scrollbar nascosta">
+            <it-tab slot="tab" panel="hs1">Voce di menu 1</it-tab>
+            <it-tab slot="tab" panel="hs2">Voce di menu 2</it-tab>
+            <it-tab slot="tab" panel="hs3">Voce di menu 3</it-tab>
+            <it-tab slot="tab" panel="hs4">Voce di menu 4</it-tab>
+            <it-tab slot="tab" panel="hs5">Voce di menu 5</it-tab>
+            <it-tab slot="tab" panel="hs6" disabled>Disabilitato</it-tab>
+            <it-tab-panel name="hs1">Pannello 1</it-tab-panel>
+            <it-tab-panel name="hs2">Pannello 2</it-tab-panel>
+            <it-tab-panel name="hs3">Pannello 3</it-tab-panel>
+            <it-tab-panel name="hs4">Pannello 4</it-tab-panel>
+            <it-tab-panel name="hs5">Pannello 5</it-tab-panel>
+            <it-tab-panel name="hs6">Pannello 6</it-tab-panel>
+          </it-tabs>
+        </section>
+
         <!-- Tab con icona -->
         <section>
           <h2>Tab con icona</h2>
@@ -231,7 +250,7 @@
         <section>
           <h2>Larghezza tablist verticale (--it-tabs-nav-size)</h2>
           <p>Larghezza fissa con <code>--it-tabs-nav-size: 220px</code>:</p>
-          <it-tabs placement="start" label="Nav size fissa" style="--it-tabs-nav-size: 220px;">
+          <it-tabs placement="start" label="Nav size fissa" style="--it-tabs-nav-size: 220px">
             <it-tab slot="tab" panel="ns1">Tab 1</it-tab>
             <it-tab slot="tab" panel="ns2">Tab 2</it-tab>
             <it-tab slot="tab" panel="ns3">Tab 3</it-tab>
@@ -240,7 +259,7 @@
             <it-tab-panel name="ns3">Pannello 3</it-tab-panel>
           </it-tabs>
           <p>Larghezza proporzionale con <code>--it-tabs-nav-size: 30%</code> (placement start):</p>
-          <it-tabs placement="start" label="Nav size proporzionale" style="--it-tabs-nav-size: 30%;">
+          <it-tabs placement="start" label="Nav size proporzionale" style="--it-tabs-nav-size: 30%">
             <it-tab slot="tab" panel="np1">Tab 1 con etichetta lunga</it-tab>
             <it-tab slot="tab" panel="np2">Tab 2</it-tab>
             <it-tab slot="tab" panel="np3">Tab 3</it-tab>
@@ -269,37 +288,64 @@
           <!-- it-tabs[cards] inietta automaticamente un pulsante × in ogni it-tab.
                Al click emette l'evento `it-tab-close` con detail.panel. -->
           <it-tabs id="editable-tabs" cards dismissible label="Tab card con pulsanti">
-            <it-tab slot="tab" panel="ec1">Tab 1</it-tab>
-            <it-tab slot="tab" panel="ec2">Tab 2</it-tab>
-            <it-tab slot="tab" panel="ec3">Tab 3</it-tab>
-            <it-tab slot="tab" panel="ec4" disabled>Tab 4 Disabilitato</it-tab>
-            <it-button slot="after-tablist" id="add-tab-btn" variant="link" icon size="sm" it-aria-label="Aggiungi tab">
+            <it-tab slot="tab" panel="et1">Tab 1</it-tab>
+            <it-tab slot="tab" panel="et2">Tab 2</it-tab>
+            <it-tab slot="tab" panel="et3">Tab 3</it-tab>
+            <it-tab slot="tab" panel="et4" disabled>Tab 4 Disabilitato</it-tab>
+            <it-button
+              slot="after-tablist"
+              id="add-tab-btn"
+              class="after-tablist"
+              variant="link"
+              icon
+              size="sm"
+              it-aria-label="Aggiungi tab"
+            >
               <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
             </it-button>
-            <it-tab-panel name="ec1">Pannello 1</it-tab-panel>
-            <it-tab-panel name="ec2">Pannello 2</it-tab-panel>
-            <it-tab-panel name="ec3">Pannello 3</it-tab-panel>
-            <it-tab-panel name="ec4">Pannello 4</it-tab-panel>
+            <it-tab-panel name="et1">Pannello 1</it-tab-panel>
+            <it-tab-panel name="et2">Pannello 2</it-tab-panel>
+            <it-tab-panel name="et3">Pannello 3</it-tab-panel>
+            <it-tab-panel name="et4">Pannello 4</it-tab-panel>
+          </it-tabs>
+        </section>
+        <section>
+          <h2>Tab card con pulsanti aggiungi/elimina con logica personalizzata</h2>
+          <!-- Chiama e.preventDefault() sull'evento it-tab-close per gestire manualmente
+               la rimozione e lo shift del focus (es. con conferma modale). -->
+          <it-tabs id="editable-tabs-2" cards dismissible label="Tab card con pulsanti personalizzati">
+            <it-tab slot="tab" panel="et21">Tab 1</it-tab>
+            <it-tab slot="tab" panel="et22">Tab 2</it-tab>
+            <it-tab slot="tab" panel="et23">Tab 3</it-tab>
+            <it-tab slot="tab" panel="et24" disabled>Tab 4 Disabilitato</it-tab>
+            <it-button
+              slot="after-tablist"
+              id="add-tab-btn-2"
+              class="after-tablist"
+              variant="link"
+              icon
+              size="sm"
+              it-aria-label="Aggiungi tab"
+            >
+              <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
+            </it-button>
+            <it-tab-panel name="et21">Pannello 1</it-tab-panel>
+            <it-tab-panel name="et22">Pannello 2</it-tab-panel>
+            <it-tab-panel name="et23">Pannello 3</it-tab-panel>
+            <it-tab-panel name="et24">Pannello 4</it-tab-panel>
           </it-tabs>
         </section>
       </main>
     </div>
     <script type="module" src="/src/main.js"></script>
     <script type="module">
-      let ecCounter = 5;
-      const editableTabs = document.getElementById('editable-tabs');
+      // ── Sezione 1: comportamento automatico (rimoz. delegata a it-tabs) ───────
+      let et1Counter = 5;
+      const et1 = document.getElementById('editable-tabs');
 
-      // Rimozione tab: it-tabs[cards] emette `it-tab-close` al click sul × iniettato.
-      editableTabs.addEventListener('it-tab-close', (e) => {
-        const { panel } = e.detail;
-        editableTabs.querySelector(`it-tab[panel="${panel}"]`)?.remove();
-        editableTabs.querySelector(`it-tab-panel[name="${panel}"]`)?.remove();
-      });
-
-      // Aggiunta nuovo tab: click sul pulsante +
       document.getElementById('add-tab-btn').addEventListener('click', () => {
-        const n = ecCounter++;
-        const panel = `ec${n}`;
+        const n = et1Counter++;
+        const panel = `et${n}`;
         const tab = document.createElement('it-tab');
         tab.setAttribute('slot', 'tab');
         tab.setAttribute('panel', panel);
@@ -307,8 +353,66 @@
         const tabPanel = document.createElement('it-tab-panel');
         tabPanel.setAttribute('name', panel);
         tabPanel.textContent = `Pannello ${n}`;
-        editableTabs.appendChild(tab);
-        editableTabs.appendChild(tabPanel);
+        // Inserisce il tab prima del pulsante (che è in slot="after-tablist")
+        document.getElementById('add-tab-btn').insertAdjacentElement('beforebegin', tab);
+        et1.appendChild(tabPanel);
+      });
+
+      // ── Sezione 2: preventDefault + focus shift manuale ──────────────────────
+      let et2Counter = 5;
+      const et2 = document.getElementById('editable-tabs-2');
+
+      et2.addEventListener('it-tab-close', (e) => {
+        // Blocca la rimozione automatica di it-tabs per gestirla manualmente.
+        e.preventDefault();
+
+        const { panel, type } = e.detail;
+        const tabs = [...et2.querySelectorAll('it-tab[slot="tab"]')];
+        const closingTab = tabs.find((t) => t.getAttribute('panel') === panel);
+        const idx = tabs.indexOf(closingTab);
+
+        // Specchia _closeTabWithFocusShift di it-tabs:
+        // cerca il successivo non-disabilitato, poi il precedente.
+        const after = tabs.slice(idx + 1).find((t) => !t.hasAttribute('disabled'));
+        const before = tabs
+          .slice(0, idx)
+          .reverse()
+          .find((t) => !t.hasAttribute('disabled'));
+        const target = after ?? before ?? null;
+
+        if (target) {
+          if (closingTab.active) {
+            // Trasferisce lo stato active al target prima della rimozione.
+            tabs.forEach((t) => (t.active = t === target));
+            et2.querySelectorAll('it-tab-panel').forEach((p) => {
+              p.active = p.getAttribute('name') === target.getAttribute('panel');
+            });
+          }
+          if (type === 'keydown') {
+            // Se la chiusura è da tastiera, sposta il focus sul tab target.
+            target.tabIndex = 0;
+            target.focus();
+          }
+        }
+
+        // Logica personalizzata: rimozione condizionale con conferma.
+        if (!confirm(`Chiudere "${closingTab.textContent.trim()}"?`)) return;
+        closingTab.remove();
+        et2.querySelector(`it-tab-panel[name="${panel}"]`)?.remove();
+      });
+
+      document.getElementById('add-tab-btn-2').addEventListener('click', () => {
+        const n = et2Counter++;
+        const panel = `et2${n}`;
+        const tab = document.createElement('it-tab');
+        tab.setAttribute('slot', 'tab');
+        tab.setAttribute('panel', panel);
+        tab.textContent = `Tab ${n}`;
+        const tabPanel = document.createElement('it-tab-panel');
+        tabPanel.setAttribute('name', panel);
+        tabPanel.textContent = `Pannello ${n}`;
+        document.getElementById('add-tab-btn-2').insertAdjacentElement('beforebegin', tab);
+        et2.appendChild(tabPanel);
       });
     </script>
   </body>

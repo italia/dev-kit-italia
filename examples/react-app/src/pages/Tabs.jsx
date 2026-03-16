@@ -53,6 +53,25 @@ const Tabs = () => {
         </it-tabs>
       </section>
 
+      {/* Tab con scrollbar nascosta */}
+      <section>
+        <h2>Tab con scrollbar nascosta</h2>
+        <it-tabs auto hide-scrollbar label="Navigazione con scrollbar nascosta">
+          <it-tab slot="tab" panel="hs1">Voce di menu 1</it-tab>
+          <it-tab slot="tab" panel="hs2">Voce di menu 2</it-tab>
+          <it-tab slot="tab" panel="hs3">Voce di menu 3</it-tab>
+          <it-tab slot="tab" panel="hs4">Voce di menu 4</it-tab>
+          <it-tab slot="tab" panel="hs5">Voce di menu 5</it-tab>
+          <it-tab slot="tab" panel="hs6" disabled>Disabilitato</it-tab>
+          <it-tab-panel name="hs1">Pannello 1</it-tab-panel>
+          <it-tab-panel name="hs2">Pannello 2</it-tab-panel>
+          <it-tab-panel name="hs3">Pannello 3</it-tab-panel>
+          <it-tab-panel name="hs4">Pannello 4</it-tab-panel>
+          <it-tab-panel name="hs5">Pannello 5</it-tab-panel>
+          <it-tab-panel name="hs6">Pannello 6</it-tab-panel>
+        </it-tabs>
+      </section>
+
       {/* Tab con icona */}
       <section>
         <h2>Tab con icona</h2>
@@ -285,6 +304,7 @@ const Tabs = () => {
           <it-tab-panel name="et4">Contenuto del pannello <strong>Tab 4 Disabilitato</strong></it-tab-panel>
           <it-button
             slot="after-tablist"
+            class="after-tablist"
             variant="link"
             icon
             size="sm"
