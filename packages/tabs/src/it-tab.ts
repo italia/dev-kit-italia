@@ -173,7 +173,17 @@ export class ItTab extends BaseLocalizedComponent {
   private _handleKeydown = (e: KeyboardEvent): void => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      this._handleClick();
+      // Space/Enter attivano il tab, mai la chiusura.
+      // La chiusura tramite tastiera è esclusiva di Delete/Backspace,
+      // gestiti da it-tabs._onKeyDown.
+      if (this.disabled || this.active) return;
+      this.dispatchEvent(
+        new CustomEvent('it-tab-select', {
+          bubbles: true,
+          composed: true,
+          detail: { panel: this.panel },
+        }),
+      );
     }
   };
 

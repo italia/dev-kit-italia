@@ -30,52 +30,62 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 Il componente Tabs è composto da tre elementi:
 
 - `it-tabs`: contenitore principale che gestisce selezione, ARIA e navigazione da tastiera;
-- `it-tab`: singola scheda trigger — va inserita tramite `slot="tab"` e il suo contenuto in light DOM diventa l'etichetta;
-- `it-tab-panel`: singolo pannello di contenuto — il suo contenuto in light DOM è il corpo della scheda.
+- `it-tab`: singola scheda trigger, assegnata allo `slot="tab". Testo o markup inseriti al suo interno rappresentano l'etichetta;
+- `it-tab-panel`: singolo pannello di contenuto; testo o markup inseriti al suo interno rappresentano il corpo della scheda.
 
 Il collegamento tra trigger e pannello avviene tramite:
 - attributo `panel="nome"` su `it-tab`
 - attributo `name="nome"` su `it-tab-panel`
 
-```html
-<it-tabs label="Navigazione principale">
-  <it-tab slot="tab" panel="p1">Tab 1</it-tab>
-  <it-tab slot="tab" panel="p2">Tab 2</it-tab>
-
-  <it-tab-panel name="p1">Contenuto del primo pannello</it-tab-panel>
-  <it-tab-panel name="p2">Contenuto del secondo pannello</it-tab-panel>
-</it-tabs>
-```
+Assicurati che ogni coppia `it-tab`/`it-tab-panel` in pagina abbia un valore univoco per questi attributi.
 
 ## Accessibilità
 
-Il componente implementa le specifiche del [WAI-ARIA Authoring Practices — Tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/):
-
+Il componente implementa le specifiche del [WAI-ARIA Authoring Practices — Tabs with Automatic Activation](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/):
+Il componente gestisce automaticamente gli attributi ARIA necessari per l'accessibilità, tra cui:
 - `role="tablist"` sul contenitore, `role="tab"` sui trigger, `role="tabpanel"` sui pannelli;
-- `aria-selected` e roving tabindex (`tabindex="0"` sul tab attivo, `tabindex="-1"` sugli altri) gestiti automaticamente;
+- `aria-selected` e roving tabindex su tastiera via frecce gestiti automaticamente;
 - `aria-controls` su ogni tab punta all'id del pannello associato;
 - `aria-labelledby` su ogni pannello punta all'id del bottone del tab corrispondente;
-- L'attributo `label` su `it-tabs` fornisce l'`aria-label` della tablist — **obbligatorio** quando non è presente un'intestazione visiva adiacente.
+- L'attributo `label` su `it-tabs` fornisce l'`aria-label` della tablist, **consigliato** in termini di accessibilità quando non è presente un'intestazione visiva adiacente. In tal caso, assegna un'id univoco all'intestazione e usa `aria-labelledby` su `it-tabs` per collegarla.
+
+<table>
+<thead>
+<tr>
+<th>Tasto</th>
+<th>Comportamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Tab</code></td>
+<td>Porta il focus sulla tablist (sul tab attivo) o sul pannello attivo. Rispetta l'ordine semantico e non quello visivo.</td>
+</tr>
+<tr>
+<td><code>→</code> / <code>←</code> / <code>↑</code> / <code>↓</code></td>
+<td>Sposta il focus al tab precedente/successivo su tutti i layout</td>
+</tr>
+<tr>
+<td><code>Del</code> / <code>Backspace</code></td>
+<td>Nel caso delle tab rimuovibili, shortcut da tastiera per eliminare la tab selezionata. Su dispositivi mobile, la gesture collegata è Double Tap.</td>
+</tr>
+<tr>
+<td><code>Home</code></td>
+<td>Porta il focus al primo tab</td>
+</tr>
+<tr>
+<td><code>End</code></td>
+<td>Porta il focus all'ultimo tab</td>
+</tr>
+</tbody>
+</table>
 
 <div class="callout callout-warning">
 <div class="callout-inner">
 <div class="callout-title"><span class="text">Attributo label</span></div>
-<p>Imposta sempre l'attributo <code>label</code> su <code>it-tabs</code> con una descrizione contestuale. Questo testo viene letto dagli screen reader all'accesso alla tablist.</p>
+<p>Quando non è presente un'intestazione collegata ad `it-tabs` tramite `aria-labelledby` o un'intestazione, imposta sempre l'attributo <code>label</code> su <code>it-tabs</code> con una descrizione contestuale. Questo testo viene letto dagli screen reader all'accesso alla tablist.</p>
 </div>
 </div>
-
-### Navigazione da tastiera
-
-| Tasto | Comportamento |
-|---|---|
-| `Tab` | Porta il focus sulla tablist (sul tab attivo) o sul pannello attivo |
-| `→` / `←` | Sposta il focus al tab precedente/successivo (layout orizzontale) |
-| `↑` / `↓` | Sposta il focus al tab precedente/successivo (layout verticale) |
-| `Home` | Porta il focus al primo tab |
-| `End` | Porta il focus all'ultimo tab |
-| `Delete` / `Backspace` | Chiude il tab corrente (solo in modalità `cards`). Il focus si sposta automaticamente sul tab adiacente. Il consumer riceve l'evento `it-tab-close` e si occupa di rimuovere il nodo. |
-
-La navigazione con frecce attiva automaticamente il tab (automatic activation, consigliata dal WAI-ARIA APG quando i pannelli si aggiornano velocemente).
 
 ## Tab orizzontali
 

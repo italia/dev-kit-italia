@@ -133,7 +133,6 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
     const isHorizontal = key === 'ArrowLeft' || key === 'ArrowRight';
     const isHome = key === 'Home';
     const isEnd = key === 'End';
-
     const shouldHandle =
       isHome ||
       isEnd ||
@@ -141,6 +140,7 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
       (direction === 'vertical' && isVertical) ||
       (direction === 'horizontal' && isHorizontal);
 
+    console.log('Caccone', { key, shouldHandle });
     if (!shouldHandle) {
       return false;
     }
@@ -179,6 +179,7 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
 
     if (nextIndex !== -1 && nextIndex !== currentIndex) {
       const nextItem = items[nextIndex];
+      console.log('Caccone 2', { nextIndex, nextItem });
 
       // Update tabindices
       this.updateTabindices(nextIndex);

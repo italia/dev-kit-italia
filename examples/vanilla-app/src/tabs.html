@@ -311,8 +311,9 @@
         </section>
         <section>
           <h2>Tab card con pulsanti aggiungi/elimina con logica personalizzata</h2>
-          <!-- Chiama e.preventDefault() su it-tab-close e poi e.detail.close()
-               per delegare al componente la chiusura standard (focus shift + rimozione DOM). -->
+          <!-- Chiama e.preventDefault() su it-tab-close e poi il metodo pubblico
+               et2.close(e.detail.panel) per delegare al componente la chiusura standard
+               (focus shift + rimozione DOM). -->
           <it-tabs id="editable-tabs-2" cards dismissible label="Tab card con pulsanti personalizzati">
             <it-tab slot="tab" panel="et21">Tab 1</it-tab>
             <it-tab slot="tab" panel="et22">Tab 2</it-tab>
@@ -336,6 +337,8 @@
           </it-tabs>
         </section>
       </main>
+      <div id="app-footer"></div>
+      <it-back-to-top it-aria-label="Torna su"></it-back-to-top>
     </div>
     <script type="module" src="/src/main.js"></script>
     <script type="module">
@@ -353,22 +356,19 @@
         const tabPanel = document.createElement('it-tab-panel');
         tabPanel.setAttribute('name', panel);
         tabPanel.textContent = `Pannello ${n}`;
-        // Inserisce il tab prima del pulsante (che è in slot="after-tablist")
-        document.getElementById('add-tab-btn').insertAdjacentElement('beforebegin', tab);
-        et1.appendChild(tabPanel);
+        // Inserisce il tab prima del pulsante (slot="after-tablist") e aggiunge il pannello.
+        et1.addTab(tab, tabPanel);
       });
 
-      // ── Sezione 2: preventDefault + e.detail.close() ──────────────────────
+      // ── Sezione 2: preventDefault + et2.close(panel) ─────────────────────
       let et2Counter = 5;
       const et2 = document.getElementById('editable-tabs-2');
 
       et2.addEventListener('it-tab-close', (e) => {
         // Blocca la rimozione automatica: la gestiamo noi con conferma.
         e.preventDefault();
-        // e.detail.close() esegue la chiusura standard (focus shift + rimozione DOM).
-        // Non è necessario replicare la logica interna del componente.
         const label = et2.querySelector(`it-tab[panel="${e.detail.panel}"]`)?.textContent.trim();
-        if (confirm(`Chiudere "${label}"?`)) e.detail.close();
+        if (confirm(`Chiudere "${label}"?`)) et2.close(e.detail.panel);
       });
 
       document.getElementById('add-tab-btn-2').addEventListener('click', () => {
@@ -381,8 +381,7 @@
         const tabPanel = document.createElement('it-tab-panel');
         tabPanel.setAttribute('name', panel);
         tabPanel.textContent = `Pannello ${n}`;
-        document.getElementById('add-tab-btn-2').insertAdjacentElement('beforebegin', tab);
-        et2.appendChild(tabPanel);
+        et2.addTab(tab, tabPanel);
       });
     </script>
   </body>

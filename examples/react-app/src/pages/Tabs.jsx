@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 const Tabs = () => {
   const ecCounterRef = useRef(5);
@@ -15,8 +15,38 @@ const Tabs = () => {
     const tabPanel = document.createElement('it-tab-panel');
     tabPanel.setAttribute('name', panel);
     tabPanel.innerHTML = `Contenuto del pannello <strong>Tab ${n}</strong>`;
-    addBtn.insertAdjacentElement('beforebegin', tab);
-    itTabs.appendChild(tabPanel);
+    itTabs.addTab(tab, tabPanel);
+  };
+
+  const ecCounter2Ref = useRef(5);
+  const customTabsRef = useRef(null);
+
+  useEffect(() => {
+    const el = customTabsRef.current;
+    if (!el) return undefined;
+    const handler = (e) => {
+      e.preventDefault();
+      const label = el.querySelector(`it-tab[panel="${e.detail.panel}"]`)?.textContent?.trim();
+      // eslint-disable-next-line no-alert
+      if (confirm(`Chiudere "${label}"?`)) el.close(e.detail.panel);
+    };
+    el.addEventListener('it-tab-close', handler);
+    return () => el.removeEventListener('it-tab-close', handler);
+  }, []);
+
+  const handleAddTabCustom = (e) => {
+    const addBtn = e.currentTarget;
+    const itTabs = addBtn.closest('it-tabs');
+    const n = ecCounter2Ref.current++;
+    const panel = `et2${n}`;
+    const tab = document.createElement('it-tab');
+    tab.setAttribute('slot', 'tab');
+    tab.setAttribute('panel', panel);
+    tab.textContent = `Tab ${n}`;
+    const tabPanel = document.createElement('it-tab-panel');
+    tabPanel.setAttribute('name', panel);
+    tabPanel.innerHTML = `Contenuto del pannello <strong>Tab ${n}</strong>`;
+    itTabs.addTab(tab, tabPanel);
   };
 
   return (
@@ -310,6 +340,32 @@ const Tabs = () => {
             size="sm"
             it-aria-label="Aggiungi tab"
             onClick={handleAddTab}
+          >
+            <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
+          </it-button>
+        </it-tabs>
+      </section>
+
+      {/* Tab card con pulsanti aggiungi/elimina con logica personalizzata */}
+      <section>
+        <h2>Tab card con pulsanti aggiungi/elimina con logica personalizzata</h2>
+        <it-tabs ref={customTabsRef} cards dismissible label="Tab card con pulsanti con logica personalizzata">
+          <it-tab slot="tab" panel="et21">Tab 1</it-tab>
+          <it-tab slot="tab" panel="et22">Tab 2</it-tab>
+          <it-tab slot="tab" panel="et23">Tab 3</it-tab>
+          <it-tab slot="tab" panel="et24" disabled>Tab 4 Disabilitato</it-tab>
+          <it-tab-panel name="et21">Contenuto del pannello <strong>Tab 1</strong></it-tab-panel>
+          <it-tab-panel name="et22">Contenuto del pannello <strong>Tab 2</strong></it-tab-panel>
+          <it-tab-panel name="et23">Contenuto del pannello <strong>Tab 3</strong></it-tab-panel>
+          <it-tab-panel name="et24">Contenuto del pannello <strong>Tab 4 Disabilitato</strong></it-tab-panel>
+          <it-button
+            slot="after-tablist"
+            class="after-tablist"
+            variant="link"
+            icon
+            size="sm"
+            it-aria-label="Aggiungi tab"
+            onClick={handleAddTabCustom}
           >
             <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
           </it-button>

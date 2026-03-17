@@ -476,7 +476,7 @@ describe('it-tabs — click su tab attivo dismissibile (mobile SR)', () => {
   });
 });
 
-describe('it-tabs — e.detail.close() API', () => {
+describe('it-tabs — metodi pubblici close() e addTab()', () => {
   it('preventDefault blocca la rimozione automatica', async () => {
     const el = await fixture<ItTabs>(dismissibleTabs());
     await elementUpdated(el);
@@ -491,13 +491,13 @@ describe('it-tabs — e.detail.close() API', () => {
     expect(el.querySelectorAll('it-tab')).to.have.length(3);
   });
 
-  it('e.detail.close() rimuove tab e pannello anche dopo preventDefault', async () => {
+  it('close() rimuove tab e pannello anche dopo preventDefault', async () => {
     const el = await fixture<ItTabs>(dismissibleTabs());
     await elementUpdated(el);
 
     el.addEventListener('it-tab-close', (e) => {
       e.preventDefault();
-      (e as CustomEvent).detail.close();
+      el.close((e as CustomEvent).detail.panel);
     });
 
     const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
@@ -508,13 +508,13 @@ describe('it-tabs — e.detail.close() API', () => {
     expect(el.querySelectorAll('it-tab-panel')).to.have.length(2);
   });
 
-  it('e.detail.close() trasferisce active al tab successivo', async () => {
+  it('close() trasferisce active al tab successivo', async () => {
     const el = await fixture<ItTabs>(dismissibleTabs());
     await elementUpdated(el);
 
     el.addEventListener('it-tab-close', (e) => {
       e.preventDefault();
-      (e as CustomEvent).detail.close();
+      el.close((e as CustomEvent).detail.panel);
     });
 
     const tabsBefore = [...el.querySelectorAll<ItTab>('it-tab')];
@@ -525,5 +525,53 @@ describe('it-tabs — e.detail.close() API', () => {
     const tabsAfter = [...el.querySelectorAll<ItTab>('it-tab')];
     expect(tabsAfter[0].getAttribute('panel')).to.equal('d2');
     expect(tabsAfter[0].active).to.be.true;
+  });
+
+  it('close() è noop se dismissible non è attivo', async () => {
+    const el = await fixture<ItTabs>(html`
+      <it-tabs label="test">
+        <it-tab slot="tab" panel="t1">Tab 1</it-tab>
+        <it-tab slot="tab" panel="t2">Tab 2</it-tab>
+        <it-tab-panel name="t1">Pannello 1</it-tab-panel>
+        <it-tab-panel name="t2">Pannello 2</it-tab-panel>
+      </it-tabs>
+    `);
+    await elementUpdated(el);
+
+    el.close('t1');
+    await elementUpdated(el);
+
+    expect(el.querySelectorAll('it-tab')).to.have.length(2);
+  });
+
+  it('addTab() aggiunge tab e pannello prima dello slot after-tablist', async () => {
+    const el = await fixture<ItTabs>(html`
+      <it-tabs dismissible label="test">
+        <it-tab slot="tab" panel="a1">Tab 1</it-tab>
+        <it-tab-panel name="a1">Pannello 1</it-tab-panel>
+        <button slot="after-tablist" id="add-btn">+</button>
+      </it-tabs>
+    `);
+    await elementUpdated(el);
+
+    const tab = document.createElement('it-tab') as ItTab;
+    tab.setAttribute('slot', 'tab');
+    tab.setAttribute('panel', 'a2');
+    tab.textContent = 'Tab 2';
+    const panel = document.createElement('it-tab-panel') as ItTabPanel;
+    panel.setAttribute('name', 'a2');
+    panel.textContent = 'Pannello 2';
+
+    el.addTab(tab, panel);
+    await elementUpdated(el);
+
+    const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+    expect(tabs).to.have.length(2);
+    expect(tabs[1].getAttribute('panel')).to.equal('a2');
+    // Il tab deve essere inserito PRIMA del pulsante add
+    const addBtn = el.querySelector('#add-btn')!;
+    expect(el.compareDocumentPosition(tab) & Node.DOCUMENT_POSITION_PRECEDING).to.equal(0);
+    expect(tab.compareDocumentPosition(addBtn) & Node.DOCUMENT_POSITION_FOLLOWING).to.equal(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(el.querySelectorAll('it-tab-panel')).to.have.length(2);
   });
 });

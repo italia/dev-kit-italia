@@ -5,17 +5,16 @@ export type TabPlacement = (typeof TAB_PLACEMENTS)[number];
  * Payload dell'evento `it-tab-close` emesso da `it-tabs`.
  *
  * Quando si chiama `e.preventDefault()` per intercettare la chiusura
- * (es. modale di conferma asincrona), richiamare `e.detail.close()` per
- * delegare al componente l'intera logica di chiusura standard:
- * trasferimento dello stato `active`, spostamento del focus sul tab
- * adiacente e rimozione di `it-tab` + `it-tab-panel` dal DOM.
+ * (es. modale di conferma asincrona), richiamare il metodo pubblico
+ * `itTabs.close(e.detail.panel)` per delegare al componente la chiusura
+ * standard (focus shift + rimozione DOM) nel momento desiderato.
  *
  * @example
  * ```js
  * itTabs.addEventListener('it-tab-close', async (e) => {
  *   e.preventDefault();
  *   const ok = await myModal.confirm(`Chiudere?`);
- *   if (ok) e.detail.close();
+ *   if (ok) itTabs.close(e.detail.panel);
  * });
  * ```
  */
@@ -25,18 +24,7 @@ export interface ItTabCloseEventDetail {
   /**
    * Origine dell'azione:
    * - `'keydown'` — tasto Delete o Backspace
-   * - `'click'`   — pulsante × cliccato con il mouse
+   * - `'click'`   — pulsante × o doppio tap (click su tab già attivo con `dismissible`)
    */
   type: 'keydown' | 'click';
-  /**
-   * Esegue la chiusura predefinita del componente:
-   * trasferisce lo stato `active` al tab adiacente, sposta il focus
-   * (solo quando l'azione era da tastiera) e rimuove `it-tab` +
-   * `it-tab-panel` dal DOM.
-   *
-   * Chiamare solo dopo aver già invocato `e.preventDefault()`;
-   * se l'evento non è stato cancellato, la chiusura avviene già
-   * automaticamente come default action.
-   */
-  close: () => void;
 }

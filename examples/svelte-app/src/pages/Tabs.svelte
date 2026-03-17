@@ -13,8 +13,32 @@
     const tabPanel = document.createElement('it-tab-panel');
     tabPanel.setAttribute('name', panel);
     tabPanel.innerHTML = `Contenuto del pannello <strong>Tab ${n}</strong>`;
-    addBtn.insertAdjacentElement('beforebegin', tab);
-    itTabs.appendChild(tabPanel);
+    itTabs.addTab(tab, tabPanel);
+  }
+
+  let ecCounter2 = 5;
+
+  function handleCloseCustom(e) {
+    e.preventDefault();
+    const itTabs = e.currentTarget;
+    const label = itTabs.querySelector(`it-tab[panel="${e.detail.panel}"]`)?.textContent?.trim();
+    // eslint-disable-next-line no-alert
+    if (confirm(`Chiudere "${label}"?`)) itTabs.close(e.detail.panel);
+  }
+
+  function handleAddTabCustom(e) {
+    const addBtn = e.currentTarget;
+    const itTabs = addBtn.closest('it-tabs');
+    const n = ecCounter2++;
+    const panel = `et2${n}`;
+    const tab = document.createElement('it-tab');
+    tab.setAttribute('slot', 'tab');
+    tab.setAttribute('panel', panel);
+    tab.textContent = `Tab ${n}`;
+    const tabPanel = document.createElement('it-tab-panel');
+    tabPanel.setAttribute('name', panel);
+    tabPanel.innerHTML = `Contenuto del pannello <strong>Tab ${n}</strong>`;
+    itTabs.addTab(tab, tabPanel);
   }
 </script>
 
@@ -300,6 +324,24 @@
     <it-tab-panel name="et3">Contenuto del pannello <strong>Tab 3</strong></it-tab-panel>
     <it-tab-panel name="et4">Contenuto del pannello <strong>Tab 4 Disabilitato</strong></it-tab-panel>
     <it-button slot="after-tablist" class="after-tablist" variant="link" icon size="sm" it-aria-label="Aggiungi tab" on:click={handleAddTab}>
+      <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
+    </it-button>
+  </it-tabs>
+</section>
+
+<!-- Tab card con pulsanti aggiungi/elimina con logica personalizzata -->
+<section>
+  <h2>Tab card con pulsanti aggiungi/elimina con logica personalizzata</h2>
+  <it-tabs cards dismissible label="Tab card con pulsanti con logica personalizzata" on:it-tab-close={handleCloseCustom}>
+    <it-tab slot="tab" panel="et21">Tab 1</it-tab>
+    <it-tab slot="tab" panel="et22">Tab 2</it-tab>
+    <it-tab slot="tab" panel="et23">Tab 3</it-tab>
+    <it-tab slot="tab" panel="et24" disabled>Tab 4 Disabilitato</it-tab>
+    <it-tab-panel name="et21">Contenuto del pannello <strong>Tab 1</strong></it-tab-panel>
+    <it-tab-panel name="et22">Contenuto del pannello <strong>Tab 2</strong></it-tab-panel>
+    <it-tab-panel name="et23">Contenuto del pannello <strong>Tab 3</strong></it-tab-panel>
+    <it-tab-panel name="et24">Contenuto del pannello <strong>Tab 4 Disabilitato</strong></it-tab-panel>
+    <it-button slot="after-tablist" class="after-tablist" variant="link" icon size="sm" it-aria-label="Aggiungi tab" on:click={handleAddTabCustom}>
       <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
     </it-button>
   </it-tabs>

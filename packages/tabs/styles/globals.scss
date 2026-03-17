@@ -1,5 +1,5 @@
 it-tabs[auto] {
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
 
   it-tab {
     flex: 1 0 auto;
@@ -17,11 +17,7 @@ it-tabs {
   }
 }
 
-it-tabs[vertical] {
-  display: flex;
-}
-
-it-tabs .after-tablist {
+it-tabs:defined .after-tablist {
   display: flex;
   height: 100%;
   border-bottom: 1px solid var(--#{$prefix}color-border-subtle);
@@ -30,11 +26,48 @@ it-tabs .after-tablist {
   padding-inline: 1rem;
 }
 
-it-tabs[cards] it-tab {
+it-tabs:defined[cards] it-tab {
   padding-bottom: 17px;
   border-bottom: 1px solid transparent;
 }
 
 it-tab-panel {
   height: 100%;
+}
+
+it-tabs:not(:defined) {
+  --it-host-display: flex;
+
+  &[placement='start'],
+  &[placement='end'] {
+    height: 100%;
+    flex-direction: column;
+  }
+
+  &[placement='start'] {
+    align-items: flex-start;
+  }
+
+  &[placement='end'] {
+    align-items: flex-end;
+  }
+
+  &[placement='bottom'] {
+    width: 100%;
+    align-items: end;
+  }
+
+  it-button.after-tablist {
+    height: 54px;
+  }
+}
+
+it-tab:not(:defined) {
+  width: var(--it-tabs-nav-size, auto);
+  align-items: center;
+  justify-content: center;
+}
+
+it-tab-panel:not(:defined) {
+  --it-host-display: none;
 }

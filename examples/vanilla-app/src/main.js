@@ -58,6 +58,8 @@ const componentsMenuItems = [
   { label: 'Sidebar', href: '/src/sidebar' },
   { label: 'Skiplinks', href: '/src/skiplinks' },
   { label: 'Sticky', href: '/src/sticky' },
+  { label: 'Tables', href: '/src/tables' },
+  { label: 'Tabs', href: '/src/tabs' },
   { label: 'Video', href: '/src/video' },
 ];
 
