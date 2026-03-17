@@ -1,6 +1,11 @@
-import { playwrightLauncher } from '@web/test-runner-playwright';
-import { getTestConfig } from '@italia/test-config';
+import baseConfig from '@italia/test-config/web-test-runner.config.js';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 
-export default getTestConfig({
-  browsers: [playwrightLauncher({ product: 'chromium' })],
-});
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+export default {
+  ...baseConfig,
+  rootDir: __dirname,
+  files: 'test/**/*.test.ts',
+};

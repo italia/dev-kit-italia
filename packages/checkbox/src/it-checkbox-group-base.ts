@@ -3,7 +3,7 @@ import { html, PropertyValues } from 'lit';
 import { property, queryAssignedElements, state } from 'lit/decorators.js';
 import { when } from 'lit/directives/when.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { ItCheckbox } from '@italia/checkbox';
+import { ItCheckboxBase } from './it-checkbox-base.js';
 import styles from './checkbox-group.scss';
 
 export class ItCheckboxGroupBase extends FormControl {
@@ -25,7 +25,7 @@ export class ItCheckboxGroupBase extends FormControl {
 
   // Query per le checkbox assegnate nello slot
   @queryAssignedElements({ selector: 'it-checkbox' })
-  checkboxes!: ItCheckbox[];
+  checkboxes!: ItCheckboxBase[];
 
   @queryAssignedElements({ slot: 'legend' })
   private _label!: HTMLElement[];
