@@ -1,5 +1,18 @@
 # @italia/sticky
 
+## 1.0.0-alpha.6
+
+### Minor Changes
+
+- [#269](https://github.com/italia/dev-kit-italia/pull/269) [`b0d65d7`](https://github.com/italia/dev-kit-italia/commit/b0d65d724a42c92d92e2f09b8c061a00bdaa0492) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Move stories to mdx format and fix broken link
+
+### Patch Changes
+
+- [#289](https://github.com/italia/dev-kit-italia/pull/289) [`4a4577c`](https://github.com/italia/dev-kit-italia/commit/4a4577c727cb224b74123e2298ea416a5eb9e0a7) Thanks [@danielenole](https://github.com/danielenole)! - Enhanced docs
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.6
+
 ## 1.0.0-alpha.5
 
 ### Patch Changes

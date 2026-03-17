@@ -1,7 +1,7 @@
 {
   "name": "@italia/dropdown",
   "description": "Web component it-dropdown del Design system .italia",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "publishConfig": {
     "access": "public"
   },
@@ -24,6 +24,7 @@
     ".": "./dist/src/index.js",
     "./it-dropdown.js": "./dist/src/it-dropdown.js",
     "./it-dropdown-item.js": "./dist/src/it-dropdown-item.js",
+    "./it-dropdown-base.js": "./dist/src/it-dropdown-base.js",
     "./styles/*": "./styles/*"
   },
   "files": [

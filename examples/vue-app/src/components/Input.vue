@@ -10,7 +10,7 @@ registerTranslation(it);
 </script>
 
 <template>
-  <h1>it-input</h1>
+  <h1>Input</h1>
 
   <it-input id="exampleInputText" type="text" name="testo"><span slot="label">Campo di testo</span></it-input>
   <it-input id="exampleInputEmail" type="email" name="email"><span slot="label">Campo email</span></it-input>

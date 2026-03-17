@@ -1,6 +1,6 @@
 <template>
   <div class="container my-4">
-    <h1>it-breadcrumbs</h1>
+    <h1>Breadcrumbs</h1>
 
     <!-- Breadcrumb con link -->
     <section>

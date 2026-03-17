@@ -1,5 +1,5 @@
 <template>
-  <h1>it-popover</h1>
+  <h1>Popover</h1>
 
   <!-- Base -->
   <section style="margin-bottom: 2rem">

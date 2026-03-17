@@ -1,5 +1,5 @@
 <template>
-  <h1>it-video</h1>
+  <h1>Video</h1>
 
   <div class="mb-5">
     <it-video src="https://vjs.zencdn.net/v/oceans.webm"></it-video>
