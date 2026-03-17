@@ -125,8 +125,7 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
    * @returns true if the event was handled, false otherwise
    */
   handleKeydown(currentItem: T, event: KeyboardEvent): boolean {
-    const direction =
-      typeof this.config.direction === 'function' ? this.config.direction() : this.config.direction;
+    const direction = typeof this.config.direction === 'function' ? this.config.direction() : this.config.direction;
     const { key } = event;
 
     // Determine if this key should be handled based on direction

@@ -5,7 +5,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { BaseComponent, RovingTabindexController } from '@italia/globals';
 import type { ItTab } from './it-tab.js';
 import type { ItTabPanel } from './it-tab-panel.js';
-import type { TabPlacement } from './types.js';
+import type { TabPlacement, ItTabCloseEventDetail } from './types.js';
 
 import styles from './it-tabs.scss';
 
@@ -39,11 +39,13 @@ import styles from './it-tabs.scss';
  * @fires it-tabs-change - Emesso quando cambia il pannello attivo.
  *   `detail.panel` contiene il nome del pannello attivato.
  * @fires it-tab-close - Emesso (quando `dismissible` è attivo) quando si clicca il pulsante × o si premia
- *   Delete/Backspace. `detail.panel` contiene il nome del pannello da chiudere.
- *   L'evento è **cancelable**: chiamare `preventDefault()` impedisce la rimozione automatica
- *   (utile per sostituirla con logica applicativa personalizzata, es. conferma modale).
- *   Se non viene chiamato `preventDefault()`, il componente rimuove automaticamente
- *   l'`it-tab` e l'`it-tab-panel` corrispondenti dal DOM.
+ *   Delete/Backspace. L'interfaccia del `detail` è {@link ItTabCloseEventDetail}:
+ *   `detail.panel` (nome del pannello), `detail.type` (`'click'` | `'keydown'`),
+ *   `detail.close()` (chiude il tab con la logica standard).
+ *
+ *   L'evento è **cancelable**: chiamare `e.preventDefault()` blocca la rimozione automatica.
+ *   Richiamare poi `e.detail.close()` per eseguire la chiusura standard (focus shift +
+ *   rimozione DOM) in un momento a scelta — ad esempio dopo conferma utente asincrona.
  */
 @customElement('it-tabs')
 export class ItTabs extends BaseComponent {
@@ -258,7 +260,6 @@ export class ItTabs extends BaseComponent {
    */
   private _onTabCloseRequest = (e: CustomEvent<{ panel: string; type: string }>): void => {
     const tab = this._tabs.find((t) => t.panel === e.detail.panel);
-    console.log('it-tab-close-request received for panel:', e, e.type);
     if (tab) this._closeTabWithFocusShift(tab, e.detail.type !== 'click');
   };
 
@@ -294,58 +295,64 @@ export class ItTabs extends BaseComponent {
    * poi esegue la default action (rimozione) a meno di preventDefault.
    */
   private _closeTabWithFocusShift(closingTab: ItTab, moveFocus: boolean): void {
-    // Dispatcha l'evento cancelable. Il consumer può chiamare preventDefault()
-    // per gestire la rimozione in modo personalizzato (es. conferma modale).
-    const event = new CustomEvent('it-tab-close', {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: { panel: closingTab.panel, type: moveFocus ? 'keydown' : 'click' },
-    });
-    this.dispatchEvent(event);
-    // Default focus logic
-    // Saltata se il consumer ha chiamato preventDefault().
-    if (!event.defaultPrevented) {
-      const tabs = this._tabs;
-      const idx = tabs.indexOf(closingTab);
-      // Calcola il target PRIMA di qualunque modifica al DOM.
-      const after = tabs.slice(idx + 1).find((t) => !t.disabled);
-      const before = tabs
-        .slice(0, idx)
-        .reverse()
-        .find((t) => !t.disabled);
-      const target = after ?? before ?? null;
+    // Calcola il target PRIMA di qualunque modifica al DOM, così `doClose()`
+    // usa sempre la lista stale-free catturata in questo momento.
+    const tabs = this._tabs;
+    const idx = tabs.indexOf(closingTab);
+    const after = tabs.slice(idx + 1).find((t) => !t.disabled);
+    const before = tabs
+      .slice(0, idx)
+      .reverse()
+      .find((t) => !t.disabled);
+    const target = after ?? before ?? null;
 
+    /**
+     * Chiusura standard: trasferisce lo stato `active`, sposta il focus
+     * (solo se `moveFocus`) e rimuove `it-tab` + `it-tab-panel` dal DOM.
+     *
+     * Viene eseguita come default action (se nessuno chiama `preventDefault()`)
+     * oppure esplicitamente dal consumer tramite `e.detail.close()`.
+     */
+    const doClose = (): void => {
       if (target) {
         if (closingTab.active) {
           // Trasferisce lo stato active al target in modo sincrono,
-          // prima del dispatch, così _initTabs (dopo lo slotchange) lo trova già attivo.
+          // così _initTabs (dopo lo slotchange) lo trova già attivo.
           tabs.forEach((t) => {
             // eslint-disable-next-line no-param-reassign
             t.active = t === target;
           });
           this._panels.forEach((p) => {
             // eslint-disable-next-line no-param-reassign
-            p.active = p.name === target.panel;
+            p.active = p.name === target!.panel;
           });
         }
         // Focus sincrono: tabIndex=0 garantisce che focus() funzioni anche se Lit
         // non ha ancora aggiornato il DOM (active → tabIndex avviene async in updated).
-        // Lo spostamento del focus avviene solo se moveFocus è true, altrimenti ci limitiamo ad aggiornare lo stato active
-        // In pratica: avviene solo da tastiera (Delete/Backspace), non da click sul pulsante ×, per evitare di spostare il
-        // focus quando l'utente clicca esplicitamente sul tab da chiudere.
+        // Avviene solo da tastiera (Delete/Backspace), non da click ×.
         if (moveFocus) {
           target.tabIndex = 0;
           target.focus();
         }
       }
-
-      // Default action: rimuove tab e panel dal DOM.
-      // Saltata se il consumer ha chiamato preventDefault().
-
+      // Rimuove tab e panel dal DOM.
       const panelEl = this._panels.find((p) => p.name === closingTab.panel);
       closingTab.remove();
       panelEl?.remove();
+    };
+
+    const event = new CustomEvent<ItTabCloseEventDetail>('it-tab-close', {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: { panel: closingTab.panel, type: moveFocus ? 'keydown' : 'click', close: doClose },
+    });
+    this.dispatchEvent(event);
+
+    // Default action: eseguita solo se il consumer non ha chiamato preventDefault().
+    // Chi usa preventDefault() può richiamare e.detail.close() in un secondo momento.
+    if (!event.defaultPrevented) {
+      doClose();
     }
   }
 

@@ -1,8 +1,13 @@
 import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { BaseComponent } from '@italia/globals';
+import { BaseLocalizedComponent } from '@italia/globals';
+import { registerTranslation } from '@italia/i18n';
+import it from './locales/it.js';
+import en from './locales/en.js';
 
 import styles from './it-tab.scss';
+
+registerTranslation(it, en);
 
 /**
  * `it-tab` rappresenta il singolo tab (trigger) all'interno di un componente `it-tabs`.
@@ -11,13 +16,30 @@ import styles from './it-tab.scss';
  * gli attributi ARIA direttamente nel light DOM. Lo shadow DOM contiene solo
  * `<slot>` per il contenuto — nessun elemento interattivo annidato (no nested-interactive).
  *
+ * ## Accessibilità dismissible
+ *
+ * Quando `dismissible` è attivo, il componente imposta automaticamente sull'host:
+ *
+ * - `aria-keyshortcuts="Delete Backspace"` — annuncia le scorciatoie da tastiera
+ *   agli screen reader desktop (NVDA, JAWS, VoiceOver+Mac).
+ * - `aria-description="Attiva di nuovo per chiudere."` (testo localizzato) — presente
+ *   **solo** quando il tab è anche `active`; informa l'utente di screen reader mobile
+ *   (VoiceOver+iOS, TalkBack+Android) che può chiudere il tab ri-attivando l'elemento
+ *   (doppio tap nel DOM virtuale), senza bisogno di shortcut tastiera.
+ *
+ * Il click sull'host quando `active && dismissible` emette `it-tab-close-request`
+ * invece di `it-tab-select`, coprendo il gesto doppio-tap mobile nello screen reader.
+ *
  * @slot - Etichetta del tab: testo, icona o icona+testo
  *
- * @fires it-tab-select - Emesso al click (non disabilitato). `detail.panel` contiene
- *   il nome del pannello associato.
+ * @fires it-tab-select - Emesso al click (non disabilitato, non già attivo+dismissibile).
+ *   `detail.panel` contiene il nome del pannello associato.
+ * @fires it-tab-close-request - Emesso al click quando `active && dismissible`
+ *   (doppio tap SR mobile), oppure dal pulsante × interno.
+ *   `detail.panel` e `detail.type` (`'click'`) propagano verso `it-tabs`.
  */
 @customElement('it-tab')
-export class ItTab extends BaseComponent {
+export class ItTab extends BaseLocalizedComponent {
   static styles = styles;
 
   /**
@@ -78,6 +100,7 @@ export class ItTab extends BaseComponent {
     this.setAttribute('aria-controls', this.panel);
     // L'host è l'elemento interattivo: porta lui il tabindex del roving pattern.
     this.tabIndex = this.active ? 0 : -1;
+    this._updateDismissibleAria();
     this.addEventListener('click', this._handleClick);
     this.addEventListener('keydown', this._handleKeydown);
   }
@@ -96,10 +119,48 @@ export class ItTab extends BaseComponent {
     }
     if (changed.has('disabled')) this.setAttribute('aria-disabled', String(this.disabled));
     if (changed.has('panel')) this.setAttribute('aria-controls', this.panel);
+    if (changed.has('active') || changed.has('dismissible')) this._updateDismissibleAria();
+  }
+
+  /**
+   * Aggiorna gli attributi ARIA legati alla funzionalità dismissible:
+   *
+   * - `aria-keyshortcuts="Delete Backspace"` — presente sempre quando il tab è dismissibile;
+   *   annuncia la scorciatoia da tastiera agli screen reader (NVDA, JAWS, VoiceOver+Mac).
+   *
+   * - `aria-description` — presente solo quando il tab è **sia attivo sia dismissibile**;
+   *   contiene il testo localizzato (es. "Attiva di nuovo per chiudere.") che informa
+   *   l'utente mobile (VoiceOver/TalkBack) che può chiudere ri-attivando l'elemento
+   *   (doppio tap), oltre ai tasti Delete/Backspace già coperti da aria-keyshortcuts.
+   */
+  private _updateDismissibleAria(): void {
+    if (this.dismissible) {
+      this.setAttribute('aria-keyshortcuts', 'Delete Backspace');
+    } else {
+      this.removeAttribute('aria-keyshortcuts');
+    }
+
+    if (this.dismissible && this.active) {
+      this.setAttribute('aria-description', this.localize.term('closeActiveTabHint'));
+    } else {
+      this.removeAttribute('aria-description');
+    }
   }
 
   private _handleClick = (): void => {
     if (this.disabled) return;
+    // Tab già attivo + dismissibile: doppio tap mobile SR / click ripetuto →
+    // trattato come richiesta di chiusura invece di ri-selezione.
+    if (this.dismissible && this.active) {
+      this.dispatchEvent(
+        new CustomEvent('it-tab-close-request', {
+          bubbles: true,
+          composed: true,
+          detail: { panel: this.panel, type: 'click' },
+        }),
+      );
+      return;
+    }
     this.dispatchEvent(
       new CustomEvent('it-tab-select', {
         bubbles: true,

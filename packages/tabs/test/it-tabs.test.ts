@@ -357,3 +357,173 @@ describe('it-tabs — accessibilità', () => {
   });
 });
 
+// ─── Dismissible — ARIA e comportamento ──────────────────────────────────────
+
+function dismissibleTabs() {
+  return html`
+    <it-tabs cards dismissible label="Dismissible test">
+      <it-tab slot="tab" panel="d1">Tab 1</it-tab>
+      <it-tab slot="tab" panel="d2">Tab 2</it-tab>
+      <it-tab slot="tab" panel="d3">Tab 3</it-tab>
+      <it-tab-panel name="d1">Panel 1</it-tab-panel>
+      <it-tab-panel name="d2">Panel 2</it-tab-panel>
+      <it-tab-panel name="d3">Panel 3</it-tab-panel>
+    </it-tabs>
+  `;
+}
+
+describe('it-tabs — dismissible ARIA', () => {
+  it('imposta aria-keyshortcuts="Delete Backspace" su ogni tab dismissibile', async () => {
+    const el = await fixture<ItTabs>(dismissibleTabs());
+    await elementUpdated(el);
+    const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+    await Promise.all(tabs.map((t) => elementUpdated(t)));
+
+    for (const tab of tabs) {
+      expect(tab.getAttribute('aria-keyshortcuts')).to.equal('Delete Backspace');
+    }
+  });
+
+  it('imposta aria-description solo sul tab attivo', async () => {
+    const el = await fixture<ItTabs>(dismissibleTabs());
+    await elementUpdated(el);
+    const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+    await Promise.all(tabs.map((t) => elementUpdated(t)));
+
+    // Solo il primo (attivo) deve avere aria-description
+    expect(tabs[0].hasAttribute('aria-description')).to.be.true;
+    expect(tabs[0].getAttribute('aria-description')).to.be.a('string').and.not.empty;
+    expect(tabs[1].hasAttribute('aria-description')).to.be.false;
+    expect(tabs[2].hasAttribute('aria-description')).to.be.false;
+  });
+
+  it('sposta aria-description sul nuovo tab attivo dopo cambio selezione', async () => {
+    const el = await fixture<ItTabs>(dismissibleTabs());
+    await elementUpdated(el);
+    const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+
+    // Seleziona il secondo tab
+    tabs[1].click();
+    await elementUpdated(el);
+    await Promise.all(tabs.map((t) => elementUpdated(t)));
+
+    expect(tabs[0].hasAttribute('aria-description')).to.be.false;
+    expect(tabs[1].hasAttribute('aria-description')).to.be.true;
+    expect(tabs[2].hasAttribute('aria-description')).to.be.false;
+  });
+
+  it('non imposta aria-keyshortcuts né aria-description su tab non dismissibili', async () => {
+    const el = await fixture<ItTabs>(basicTabs());
+    await elementUpdated(el);
+    const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+    await Promise.all(tabs.map((t) => elementUpdated(t)));
+
+    for (const tab of tabs) {
+      expect(tab.hasAttribute('aria-keyshortcuts')).to.be.false;
+      expect(tab.hasAttribute('aria-description')).to.be.false;
+    }
+  });
+});
+
+describe('it-tabs — click su tab attivo dismissibile (mobile SR)', () => {
+  it('click sul tab attivo emette it-tab-close (default action rimuove tab)', async () => {
+    const el = await fixture<ItTabs>(dismissibleTabs());
+    await elementUpdated(el);
+    const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+
+    let closeDetail: { panel: string } | null = null;
+    el.addEventListener('it-tab-close', (e) => {
+      closeDetail = (e as CustomEvent).detail;
+    });
+
+    // Click sul tab già attivo (tab 1)
+    tabs[0].click();
+    await elementUpdated(el);
+
+    expect(closeDetail).to.not.be.null;
+    expect((closeDetail as any).panel).to.equal('d1');
+  });
+
+  it('dopo click su tab attivo, il tab viene rimosso dal DOM (default action)', async () => {
+    const el = await fixture<ItTabs>(dismissibleTabs());
+    await elementUpdated(el);
+    const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+
+    tabs[0].click();
+    await elementUpdated(el);
+
+    const remaining = [...el.querySelectorAll<ItTab>('it-tab')];
+    expect(remaining).to.have.length(2);
+    expect(remaining.find((t) => t.getAttribute('panel') === 'd1')).to.be.undefined;
+  });
+
+  it('click su tab NON attivo con dismissible non emette it-tab-close', async () => {
+    const el = await fixture<ItTabs>(dismissibleTabs());
+    await elementUpdated(el);
+    const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+
+    let fired = false;
+    el.addEventListener('it-tab-close', () => {
+      fired = true;
+    });
+
+    // Click sul secondo tab (non attivo)
+    tabs[1].click();
+    await elementUpdated(el);
+
+    expect(fired).to.be.false;
+    expect(tabs[1].active).to.be.true;
+  });
+});
+
+describe('it-tabs — e.detail.close() API', () => {
+  it('preventDefault blocca la rimozione automatica', async () => {
+    const el = await fixture<ItTabs>(dismissibleTabs());
+    await elementUpdated(el);
+
+    el.addEventListener('it-tab-close', (e) => e.preventDefault());
+
+    const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+    tabs[0].click();
+    await elementUpdated(el);
+
+    // Il tab deve essere ancora nel DOM
+    expect(el.querySelectorAll('it-tab')).to.have.length(3);
+  });
+
+  it('e.detail.close() rimuove tab e pannello anche dopo preventDefault', async () => {
+    const el = await fixture<ItTabs>(dismissibleTabs());
+    await elementUpdated(el);
+
+    el.addEventListener('it-tab-close', (e) => {
+      e.preventDefault();
+      (e as CustomEvent).detail.close();
+    });
+
+    const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+    tabs[0].click();
+    await elementUpdated(el);
+
+    expect(el.querySelectorAll('it-tab')).to.have.length(2);
+    expect(el.querySelectorAll('it-tab-panel')).to.have.length(2);
+  });
+
+  it('e.detail.close() trasferisce active al tab successivo', async () => {
+    const el = await fixture<ItTabs>(dismissibleTabs());
+    await elementUpdated(el);
+
+    el.addEventListener('it-tab-close', (e) => {
+      e.preventDefault();
+      (e as CustomEvent).detail.close();
+    });
+
+    const tabsBefore = [...el.querySelectorAll<ItTab>('it-tab')];
+    // Chiudi il primo tab (attivo): il secondo deve diventare attivo
+    tabsBefore[0].click();
+    await elementUpdated(el);
+
+    const tabsAfter = [...el.querySelectorAll<ItTab>('it-tab')];
+    expect(tabsAfter[0].getAttribute('panel')).to.equal('d2');
+    expect(tabsAfter[0].active).to.be.true;
+  });
+});

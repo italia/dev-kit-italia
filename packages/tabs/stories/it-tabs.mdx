@@ -121,23 +121,37 @@ Con l'attributo `cards`, i tab assumono un design "card" con bordi su tre lati e
 
 ## Tab card con pulsanti aggiungi/elimina
 
-In modalità `cards`, `it-tabs` inietta automaticamente in ogni `it-tab` un pulsante × (shadow DOM, `aria-hidden`). Al click, emette l'evento `it-tab-close` con `detail.panel` — il consumer rimuove il nodo.
+In modalità `cards`, `it-tabs` inietta automaticamente in ogni `it-tab` un pulsante × (shadow DOM, `aria-hidden`). Al click emette l'evento cancelable `it-tab-close` con `detail.panel` e — se non viene chiamato `preventDefault()` — **rimuove automaticamente** `it-tab` e `it-tab-panel` dal DOM.
 
-Il focus si sposta automaticamente sul tab adiacente (successivo o, se non esiste, precedente) prima della rimozione, seguendo il pattern WAI-ARIA APG.
+Il focus si sposta sul tab adiacente (successivo o, se non esiste, precedente) prima della rimozione, seguendo il pattern WAI-ARIA APG.
+
+Per intercettare la chiusura (es. conferma modale) chiamare `e.preventDefault()` e poi `e.detail.close()` quando si vuole procedere:
+
+```js
+// Caso base: nessun handler necessario — la rimozione è automatica.
+
+// Caso con conferma:
+document.querySelector('it-tabs').addEventListener('it-tab-close', (e) => {
+  e.preventDefault();
+  if (confirm('Chiudere il tab?')) e.detail.close();
+});
+
+// Caso con modale asincrona:
+document.querySelector('it-tabs').addEventListener('it-tab-close', async (e) => {
+  e.preventDefault();
+  const ok = await myModal.confirm('Chiudere il tab?');
+  if (ok) e.detail.close();
+});
+```
+
+`e.detail.close()` esegue l'intera chiusura standard: trasferimento dell'`active`, spostamento del focus al tab adiacente e rimozione dal DOM.
 
 Per aggiungere tab dinamicamente, usa `slot="after-tablist"`:
 
 ```html
-<it-button slot="after-tablist" variant="primary" outline icon size="sm" it-aria-label="Aggiungi tab">
+<it-button slot="after-tablist" class="after-tablist" variant="link" icon size="sm" it-aria-label="Aggiungi tab">
   <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
 </it-button>
-```
-
-```js
-document.querySelector('it-tabs').addEventListener('it-tab-close', (e) => {
-  document.querySelector(`it-tab[panel="${e.detail.panel}"]`)?.remove();
-  document.querySelector(`it-tab-panel[name="${e.detail.panel}"]`)?.remove();
-});
 ```
 
 <Canvas of={TabsStories.TabCardConPulsanti} />

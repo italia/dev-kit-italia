@@ -311,8 +311,8 @@
         </section>
         <section>
           <h2>Tab card con pulsanti aggiungi/elimina con logica personalizzata</h2>
-          <!-- Chiama e.preventDefault() sull'evento it-tab-close per gestire manualmente
-               la rimozione e lo shift del focus (es. con conferma modale). -->
+          <!-- Chiama e.preventDefault() su it-tab-close e poi e.detail.close()
+               per delegare al componente la chiusura standard (focus shift + rimozione DOM). -->
           <it-tabs id="editable-tabs-2" cards dismissible label="Tab card con pulsanti personalizzati">
             <it-tab slot="tab" panel="et21">Tab 1</it-tab>
             <it-tab slot="tab" panel="et22">Tab 2</it-tab>
@@ -358,47 +358,17 @@
         et1.appendChild(tabPanel);
       });
 
-      // ── Sezione 2: preventDefault + focus shift manuale ──────────────────────
+      // ── Sezione 2: preventDefault + e.detail.close() ──────────────────────
       let et2Counter = 5;
       const et2 = document.getElementById('editable-tabs-2');
 
       et2.addEventListener('it-tab-close', (e) => {
-        // Blocca la rimozione automatica di it-tabs per gestirla manualmente.
+        // Blocca la rimozione automatica: la gestiamo noi con conferma.
         e.preventDefault();
-
-        const { panel, type } = e.detail;
-        const tabs = [...et2.querySelectorAll('it-tab[slot="tab"]')];
-        const closingTab = tabs.find((t) => t.getAttribute('panel') === panel);
-        const idx = tabs.indexOf(closingTab);
-
-        // Specchia _closeTabWithFocusShift di it-tabs:
-        // cerca il successivo non-disabilitato, poi il precedente.
-        const after = tabs.slice(idx + 1).find((t) => !t.hasAttribute('disabled'));
-        const before = tabs
-          .slice(0, idx)
-          .reverse()
-          .find((t) => !t.hasAttribute('disabled'));
-        const target = after ?? before ?? null;
-
-        if (target) {
-          if (closingTab.active) {
-            // Trasferisce lo stato active al target prima della rimozione.
-            tabs.forEach((t) => (t.active = t === target));
-            et2.querySelectorAll('it-tab-panel').forEach((p) => {
-              p.active = p.getAttribute('name') === target.getAttribute('panel');
-            });
-          }
-          if (type === 'keydown') {
-            // Se la chiusura è da tastiera, sposta il focus sul tab target.
-            target.tabIndex = 0;
-            target.focus();
-          }
-        }
-
-        // Logica personalizzata: rimozione condizionale con conferma.
-        if (!confirm(`Chiudere "${closingTab.textContent.trim()}"?`)) return;
-        closingTab.remove();
-        et2.querySelector(`it-tab-panel[name="${panel}"]`)?.remove();
+        // e.detail.close() esegue la chiusura standard (focus shift + rimozione DOM).
+        // Non è necessario replicare la logica interna del componente.
+        const label = et2.querySelector(`it-tab[panel="${e.detail.panel}"]`)?.textContent.trim();
+        if (confirm(`Chiudere "${label}"?`)) e.detail.close();
       });
 
       document.getElementById('add-tab-btn-2').addEventListener('click', () => {

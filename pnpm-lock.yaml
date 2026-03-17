@@ -1773,6 +1773,9 @@ importers:
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
+      '@italia/i18n':
+        specifier: workspace:^
+        version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
         version: 3.0.0-alpha.3

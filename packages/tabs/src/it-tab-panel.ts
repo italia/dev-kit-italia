@@ -47,7 +47,7 @@ export class ItTabPanel extends BaseComponent {
   fade = false;
 
   override connectedCallback(): void {
-    super.connectedCallback();
+    super.connectedCallback?.();
     // L'id sull'host fa da target per aria-controls del tab
     if (this.name && !this.id) {
       this.id = this.name;
@@ -78,9 +78,11 @@ export class ItTabPanel extends BaseComponent {
         // Forza display prima che il browser risolva la cascade, poi anima
         // l'host stesso (più semplice e affidabile dell'animare il figlio shadow).
         this.style.display = 'flex';
-        void this.offsetHeight; // forza reflow: l'elemento è ora nel flusso
-        this.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 150, easing: 'linear', fill: 'none' })
-          .finished.then(() => this.style.removeProperty('display'));
+        // eslint-disable-next-line no-unused-expressions
+        this.offsetHeight; // forza reflow: l'elemento è ora nel flusso
+        this.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: 'linear', fill: 'none' }).finished.then(
+          () => this.style.removeProperty('display'),
+        );
       }
     }
   }

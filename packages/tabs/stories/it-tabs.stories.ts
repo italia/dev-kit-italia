@@ -1,6 +1,9 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-restricted-globals */
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import { TAB_PLACEMENTS, type TabPlacement } from '../src/types.js';
+import { TAB_PLACEMENTS, type TabPlacement, type ItTabCloseEventDetail } from '../src/types.js';
 
 // Props
 interface TabsProps {
@@ -572,16 +575,6 @@ it-tabs { --it-tabs-nav-size: 30%; }
 // Tab con effetto fade
 export const TabFade: Story = {
   name: 'Effetto fade',
-  parameters: {
-    docs: {
-      description: {
-        story: `Aggiungendo l\'attributo \`fade\` a ogni \`it-tab-panel\`, il contenuto appare con
-an\'animazione di dissolvenza al cambio tab (transizione \`opacity\` di 150 ms).
-
-Il primo pannello è visibile di default appena il componente si inizializza.`,
-      },
-    },
-  },
   render: () => html`
     <it-tabs label="Tab con effetto fade">
       <it-tab slot="tab" panel="f1">Tab 1</it-tab>
@@ -610,15 +603,13 @@ l'elemento \`it-tab\` e il relativo \`it-tab-panel\` dal DOM.
 
 \`cards\` controlla solo lo stile visivo e può essere usato senza \`dismissible\`.
 
-Per personalizzare il comportamento (es. conferma modale prima della rimozione):
+Per personalizzare il comportamento (es. conferma modale prima della rimozione),
+chiamare \`e.preventDefault()\` e poi \`e.detail.close()\` quando si vuole procedere:
 
 \`\`\`js
 document.querySelector('it-tabs').addEventListener('it-tab-close', (e) => {
-  e.preventDefault(); // blocca la rimozione automatica
-  if (confirm('Chiudere il tab?')) {
-    document.querySelector(\`it-tab[panel="\${e.detail.panel}"]\`)?.remove();
-    document.querySelector(\`it-tab-panel[name="\${e.detail.panel}"]\`)?.remove();
-  }
+  e.preventDefault();
+  if (confirm('Chiudere il tab?')) e.detail.close();
 });
 \`\`\`
 
@@ -683,41 +674,32 @@ export const TabCardConPulsantiCustomClose: Story = {
     docs: {
       description: {
         story: `Chiamando \`e.preventDefault()\` su \`it-tab-close\` si blocca la rimozione automatica
-e si può implementare logica personalizzata — ad es. una modale di conferma.
+e si può implementare qualsiasi logica personalizzata — ad es. una modale di conferma.
 
-\`it-tabs\` esegue comunque lo shift del focus **prima** di emettere l'evento, ma poiché
-qui gestiamo noi la rimozione dobbiamo replicare quella logica manualmente,
-specchiando \`_closeTabWithFocusShift\` interno al componente:
+Il payload dell'evento è tipizzato come \`ItTabCloseEventDetail\`:
+- \`detail.panel\` — nome del pannello da chiudere
+- \`detail.type\` — \`'click'\` | \`'keydown'\` (origine dell'azione)
+- \`detail.close()\` — **API pubblica** che esegue la chiusura standard:
+  trasferimento dell'\`active\`, spostamento del focus al tab adiacente (solo da tastiera)
+  e rimozione di \`it-tab\` + \`it-tab-panel\` dal DOM.
+
+Esempio con conferma sincrona:
 
 \`\`\`js
 itTabs.addEventListener('it-tab-close', (e) => {
-  e.preventDefault(); // blocca la rimozione automatica
+  e.preventDefault();
+  const label = itTabs.querySelector(\`it-tab[panel="\${e.detail.panel}"]\`)?.textContent?.trim();
+  if (confirm(\`Chiudere "\${label}"?\`)) e.detail.close();
+});
+\`\`\`
 
-  const { panel } = e.detail;
-  const tabs = [...itTabs.querySelectorAll('it-tab[slot="tab"]')];
-  const closingTab = tabs.find((t) => t.getAttribute('panel') === panel);
-  const idx = tabs.indexOf(closingTab);
+Esempio con modale asincrona:
 
-  // Cerca il successivo non-disabilitato, poi il precedente
-  const after  = tabs.slice(idx + 1).find((t) => !t.hasAttribute('disabled'));
-  const before = tabs.slice(0, idx).reverse().find((t) => !t.hasAttribute('disabled'));
-  const target = after ?? before ?? null;
-
-  if (target) {
-    if (closingTab.active) {
-      tabs.forEach((t) => { t.active = t === target; });
-      itTabs.querySelectorAll('it-tab-panel').forEach((p) => {
-        p.active = p.getAttribute('name') === target.getAttribute('panel');
-      });
-    }
-    target.tabIndex = 0;
-    target.focus();
-  }
-
-  // Logica personalizzata: rimozione condizionale
-  if (!confirm(\`Chiudere "\${closingTab.textContent.trim()}"?\`)) return;
-  closingTab.remove();
-  itTabs.querySelector(\`it-tab-panel[name="\${panel}"]\`)?.remove();
+\`\`\`js
+itTabs.addEventListener('it-tab-close', async (e) => {
+  e.preventDefault();
+  const ok = await myModal.confirm(\`Chiudere il tab?\`);
+  if (ok) e.detail.close();
 });
 \`\`\``,
       },
@@ -726,40 +708,11 @@ itTabs.addEventListener('it-tab-close', (e) => {
   render: () => {
     let counter = 5;
 
-    const onClose = (e: CustomEvent<{ panel: string; type: 'keydown' | 'click' }>) => {
+    const onClose = (e: CustomEvent<ItTabCloseEventDetail>) => {
       e.preventDefault();
-
       const itTabs = e.currentTarget as HTMLElement;
-      const { panel, type } = e.detail;
-      const tabs = [...itTabs.querySelectorAll<HTMLElement>('it-tab[slot="tab"]')];
-      const closingTab = tabs.find((t) => t.getAttribute('panel') === panel)!;
-      const idx = tabs.indexOf(closingTab);
-
-      const after = tabs.slice(idx + 1).find((t) => !t.hasAttribute('disabled'));
-      const before = tabs
-        .slice(0, idx)
-        .reverse()
-        .find((t) => !t.hasAttribute('disabled'));
-      const target = after ?? before ?? null;
-
-      if (target) {
-        if ((closingTab as any).active) {
-          tabs.forEach((t: any) => {
-            t.active = t === target;
-          });
-          itTabs.querySelectorAll('it-tab-panel').forEach((p: any) => {
-            p.active = p.getAttribute('name') === target.getAttribute('panel');
-          });
-        }
-        if (type === 'keydown') {
-          target.tabIndex = 0;
-          target.focus();
-        }
-      }
-
-      if (!confirm(`Chiudere "${closingTab.textContent?.trim()}"?`)) return;
-      closingTab.remove();
-      itTabs.querySelector(`it-tab-panel[name="${panel}"]`)?.remove();
+      const label = itTabs.querySelector(`it-tab[panel="${e.detail.panel}"]`)?.textContent?.trim();
+      if (confirm(`Chiudere "${label}"?`)) e.detail.close();
     };
 
     const onAdd = (e: Event) => {

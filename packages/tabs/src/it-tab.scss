@@ -177,12 +177,12 @@ $it-tab-prefix: 'it-tab';
   position: relative;
   z-index: 1;
   height: 55px;
-  margin-bottom: -1px;
   border-top-color: var(--it-tab_cards-border-color, var(--#{$prefix}color-border-subtle));
   border-right-color: var(--it-tab_cards-border-color, var(--#{$prefix}color-border-subtle));
   border-bottom-width: 0;
   border-bottom-color: transparent;
   border-left-color: var(--it-tab_cards-border-color, var(--#{$prefix}color-border-subtle));
+  margin-bottom: -1px;
   background: var(--it-tab_cards-bg, var(--#{$prefix}color-background-inverse));
 }
 
