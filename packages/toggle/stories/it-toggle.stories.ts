@@ -9,6 +9,11 @@ interface ToggleProps {
   value: string;
   checked?: boolean;
   disabled?: boolean;
+
+  form: string;
+  customValidation: boolean;
+  validityMessage: string;
+
   required: boolean;
   inline: boolean;
   group: boolean;
@@ -23,6 +28,10 @@ const renderComponent = (params: any) =>
     value="${ifDefined(params.value?.length > 0 ? params.value : undefined)}"
     ?checked="${params.checked}"
     ?disabled="${params.disabled}"
+    ?inline="${params.inline}"
+    form="${ifDefined(params.form?.length > 0 ? params.form : undefined)}"
+    ?custom-validation="${params.customValidation}"
+    validity-message="${ifDefined(params.validityMessage || undefined)}"
     ?required="${params.required}"
     support-text="${ifDefined(params.supportText || undefined)}"
     class="${ifDefined(params.className || undefined)}"
@@ -39,10 +48,16 @@ const meta = {
     id: '',
     label: "Label dell'interruttore",
     name: 'toggle-esempio',
-    value: 'on',
+    value: undefined,
     checked: false,
     disabled: false,
+
+    form: undefined,
+    customValidation: false,
+    validityMessage: '',
+
     required: false,
+
     inline: false,
     group: false,
     supportText: '',
@@ -55,7 +70,7 @@ const meta = {
     },
     label: {
       control: 'text',
-      description: 'Etichetta del toggle',
+      description: 'Etichetta del campo',
       type: 'string',
     },
     name: {
@@ -65,26 +80,44 @@ const meta = {
     },
     value: {
       control: 'text',
-      description: 'Valore del campo quando è selezionato',
+      description: 'Valore del campo',
       type: 'string',
     },
     checked: {
       control: 'boolean',
       type: 'boolean',
       table: { defaultValue: { summary: 'false' } },
-      description: 'Stato selezionato/attivo del toggle',
     },
     disabled: {
       control: 'boolean',
       type: 'boolean',
       table: { defaultValue: { summary: 'false' } },
-      description: 'Disabilita il toggle',
+    },
+
+    form: {
+      control: 'text',
+      type: 'string',
+      description: "ID html del form a cui è associato il campo, se il campo non si trova all'interno di una form ",
+    },
+    customValidation: {
+      name: 'custom-validation',
+      control: 'boolean',
+      type: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
+      description:
+        'Se la validazione del campo è fatta esternamente (lato server o con plugin js - validazione custom), impostare questo attributo a `true`.',
+    },
+    validityMessage: {
+      name: 'validity-message',
+      control: 'text',
+      type: 'string',
+      description:
+        "Messaggio da mostrare quando il campo è invalido nel caso di validazione esterna (validazione custom). Se impostato a '' (stringa vuota) il campo viene considerato valido.",
     },
     required: {
       control: 'boolean',
       type: 'boolean',
       table: { defaultValue: { summary: 'false' } },
-      description: 'Rende il campo obbligatorio',
     },
     inline: {
       control: 'boolean',
