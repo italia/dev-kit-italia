@@ -1,0 +1,101 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import * as ProgressStories from './it-progress.stories';
+
+<Meta of={ProgressStories} />
+
+# Progress
+
+Indicatori di stato attivo e di avanzamento di un’operazione.
+
+## Cosa fa
+
+Il componente `it-progress` rappresenta lo stato di avanzamento o di elaborazione di un'operazione.
+Può essere usato in tre modalità, tramite l'attributo `type`:
+
+- `bar`: barra di avanzamento lineare;
+- `donut`: avanzamento circolare;
+- `spinner`: stato di caricamento/attesa.
+
+## Anteprima componente (type="bar")
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={ProgressStories.EsempioInterattivoBar} />
+
+<Controls of={ProgressStories.EsempioInterattivoBar} />
+
+
+## Accessibilità
+
+- Per le varianti `bar` e `donut`, il componente espone gli attributi ARIA utili a descrivere l'avanzamento (`role="progressbar"`, `aria-valuenow`, `aria-valuemin`, `aria-valuemax`).
+- Imposta sempre una `label` significativa quando il contesto non è già chiaro.
+- Per la variante `spinner`, fornisci un testo per tecnologie assistive nello slot, oppure usa il fallback predefinito.
+
+
+## Progress bar
+
+### Con etichetta
+
+<Canvas of={ProgressStories.ConEtichetta} />
+
+### Indeterminato
+
+<Canvas of={ProgressStories.Indeterminato} />
+
+### Colori
+
+<Canvas of={ProgressStories.Colori} />
+
+### Pulsante con progress bar
+todo: aggiungere esempio con progress bar in un pulsante, come da design system
+
+## Donut
+
+Usa il donut quando vuoi mostrare una percentuale di completamento con una rappresentazione circolare.
+
+<Canvas of={ProgressStories.EsempioInterattivoDonut} />
+
+<Controls of={ProgressStories.EsempioInterattivoDonut} />
+
+### Stato iniziale
+
+<Canvas of={ProgressStories.StatoIniziale} />
+
+### Attivo (75%)
+
+<Canvas of={ProgressStories.Attivo75} />
+
+## Spinner
+
+Usa lo spinner quando non è disponibile una percentuale precisa di avanzamento.
+È utile quindi quando non è possibile determinare il tempo necessario a completare una procedura.
+
+<Canvas of={ProgressStories.EsempioInterattivoSpinner} />
+
+<Controls of={ProgressStories.EsempioInterattivoSpinner} />
+
+### Standard
+
+<Canvas of={ProgressStories.Standard} />
+
+### Spinner doppio
+
+<Canvas of={ProgressStories.Doppio} />
+
+### Dimensioni
+
+<Canvas of={ProgressStories.Small} />
+<Canvas of={ProgressStories.Large} />
+<Canvas of={ProgressStories.ExtraLarge} />
+
+
+## Personalizzazione degli stili
+
+Per personalizzare gli stili del componente, usa i selettori `::part`:
+
+- `::part(progress)` e `::part(progress-bar)` per la variante `bar`;
+- `::part(donut-wrapper)` e `::part(donut)` per la variante `donut`;
+- `::part(spinner)` per la variante `spinner`.
+
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)

@@ -934,6 +934,9 @@ importers:
       '@italia/popover':
         specifier: workspace:^
         version: link:../popover
+      '@italia/progress':
+        specifier: workspace:^
+        version: link:../progress
       '@italia/radio':
         specifier: workspace:^
         version: link:../radio
@@ -1588,6 +1591,64 @@ importers:
       '@italia/icon':
         specifier: workspace:^
         version: link:../icon
+      '@italia/test-config':
+        specifier: workspace:^
+        version: link:../test-config
+      '@italia/typescript-config':
+        specifier: workspace:^
+        version: link:../typescript-config
+      '@open-wc/testing':
+        specifier: 'catalog:'
+        version: 4.0.0
+      '@rollup/plugin-node-resolve':
+        specifier: ^16.0.1
+        version: 16.0.3(rollup@4.59.0)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.2
+        version: 12.3.0(rollup@4.59.0)(tslib@2.8.1)(typescript@5.9.3)
+      '@types/mocha':
+        specifier: 'catalog:'
+        version: 10.0.10
+      '@web/test-runner':
+        specifier: 'catalog:'
+        version: 0.18.3
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.1.3
+      rollup:
+        specifier: ^4.42.0
+        version: 4.59.0
+      rollup-plugin-scss-lit:
+        specifier: ^2.1.0
+        version: 2.1.0(lit@3.3.2)(rollup@4.59.0)
+      sass:
+        specifier: 'catalog:'
+        version: 1.97.3
+      tslib:
+        specifier: ^2.6.3
+        version: 2.8.1
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+
+  packages/progress:
+    dependencies:
+      '@italia/globals':
+        specifier: workspace:^
+        version: link:../globals
+      bootstrap-italia:
+        specifier: 'catalog:'
+        version: 3.0.0-alpha.4
+      lit:
+        specifier: 'catalog:'
+        version: 3.3.2
+      progressbar.js:
+        specifier: ^1.1.1
+        version: 1.1.1
+    devDependencies:
+      '@custom-elements-manifest/analyzer':
+        specifier: ^0.10.3
+        version: 0.10.10
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config

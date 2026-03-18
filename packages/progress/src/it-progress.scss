@@ -1,0 +1,38 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/reboot';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+// Required because progress-spinners extends %progress defined in progress-bars
+@import 'bootstrap-italia/src/scss/components/progress-bars';
+@import 'bootstrap-italia/src/scss/components/progress-donuts';
+@import 'bootstrap-italia/src/scss/components/progress-spinners';
+
+// // Allow color utilities in bar mode inside shadow DOM
+// .bg-success {
+//   background-color: var(--#{$prefix}color-success) !important;
+// }
+
+// .bg-info {
+//   background-color: var(--#{$prefix}color-info) !important;
+// }
+
+// .bg-warning {
+//   background-color: var(--#{$prefix}color-warning) !important;
+// }
+
+// .bg-danger {
+//   background-color: var(--#{$prefix}color-danger) !important;
+// }
+
+// .progress-spinner {
+//   position: relative;
+// }
+
+// .progress-donut-wrapper {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
