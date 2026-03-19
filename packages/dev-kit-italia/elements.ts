@@ -36,7 +36,6 @@ import '@italia/skiplinks/it-skiplinks.js';
 import '@italia/sticky/it-sticky.js';
 import '@italia/timeline/it-timeline.js';
 import '@italia/timeline/it-timeline-element.js';
-import '@italia/timeline/it-timeline-point-list.js';
 import '@italia/timeline/it-timeline-point.js';
 import '@italia/video/it-video.js';
 

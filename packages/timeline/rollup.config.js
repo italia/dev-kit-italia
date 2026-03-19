@@ -5,12 +5,7 @@ import { litScss } from 'rollup-plugin-scss-lit';
  * @type {import('rollup').RollupOptions}
  */
 export default {
-  input: [
-    'src/index.ts',
-    'src/it-timeline.ts',
-    'src/it-timeline-element.ts',
-    'src/it-timeline-point.ts',
-  ],
+  input: ['src/index.ts', 'src/it-timeline.ts', 'src/it-timeline-element.ts', 'src/it-timeline-point.ts'],
   output: {
     dir: 'dist',
     sourcemap: true,
@@ -26,7 +21,8 @@ export default {
       minify: process.env.NODE_ENV === 'production',
       options: {
         loadPaths: ['node_modules'],
-        silenceDeprecations: ['import', 'global-builtin', 'if-function', 'color-functions'],
+        quietDeps: true,
+        silenceDeprecations: ['import'],
       },
     }),
   ],

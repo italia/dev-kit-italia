@@ -24,7 +24,6 @@
     ".": "./dist/src/index.js",
     "./it-timeline.js": "./dist/src/it-timeline.js",
     "./it-timeline-element.js": "./dist/src/it-timeline-element.js",
-    "./it-timeline-point-list.js": "./dist/src/it-timeline-point-list.js",
     "./it-timeline-point.js": "./dist/src/it-timeline-point.js",
     "./styles/*": "./styles/*"
   },
