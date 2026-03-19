@@ -53,7 +53,8 @@ Il componente gestisce automaticamente gli attributi ARIA necessari per l'access
 - `aria-controls` su ogni tab punta all'id del pannello associato;
 - `aria-labelledby` su ogni pannello punta all'id del bottone del tab corrispondente;
 - L'attributo `label` su `it-tabs` fornisce l'`aria-label` della tablist, **consigliato** in termini di accessibilità quando non è presente un'intestazione visiva adiacente. In tal caso, assegna un'id univoco all'intestazione e usa `aria-labelledby` su `it-tabs` per collegarla.
-
+- `aria-keyshortcuts` su ogni tab, dichiara le shortcut da tastiera supportate, che vengono lette dagli screen reader che supportano questo attributo ARIA all'accesso alla tablist. Indicazioni di fallback per screen reader che non supportano `aria-keyshortcuts` sono associate all'attributo `aria-description` del tab attivo, e lette all'accesso al pannello attivo.
+- `aria-description` con indicazioni di fallback per le shortcut da tastiera, lette da tutti gli screen reader all'accesso al pannello attivo. Il testo di questa descrizione è internazionalizzato e personalizzabile tramite la chiave `closeActiveTabHint`.
 <table>
 <thead>
 <tr>
