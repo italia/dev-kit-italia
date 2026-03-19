@@ -10,40 +10,60 @@ Indicatori di stato attivo e di avanzamento di un’operazione.
 
 ## Cosa fa
 
-Il componente `it-progress` rappresenta lo stato di avanzamento o di elaborazione di un'operazione.
+Il componente `it-progress` rappresenta lo stato di avanzamento o di elaborazione di un'operazione come il caricamento di un file o l’invio dei dati di un modulo.
+
 Può essere usato in tre modalità, tramite l'attributo `type`:
 
 - `bar`: barra di avanzamento lineare;
 - `donut`: avanzamento circolare;
 - `spinner`: stato di caricamento/attesa.
 
-## Anteprima componente (type="bar")
+### Alternative a questo componente
+
+- Notifications (in lavorazione): visivamente meno prominente, utile quando ci sono una o due sezioni di contenuti brevi meno importanti.
+
+
+## Anteprima componente
 
 Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
 
-<Canvas of={ProgressStories.EsempioInterattivoBar} />
+<Canvas of={ProgressStories.EsempioInterattivo} />
 
-<Controls of={ProgressStories.EsempioInterattivoBar} />
+<Controls of={ProgressStories.EsempioInterattivo} />
 
 
 ## Accessibilità
 
-- Per le varianti `bar` e `donut`, il componente espone gli attributi ARIA utili a descrivere l'avanzamento (`role="progressbar"`, `aria-valuenow`, `aria-valuemin`, `aria-valuemax`).
-- Imposta sempre una `label` significativa quando il contesto non è già chiaro.
-- Per la variante `spinner`, fornisci un testo per tecnologie assistive nello slot, oppure usa il fallback predefinito.
+- Imposta sempre una `it-aria-label` significativa quando il contesto non è già chiaro.
+- Per la variante `spinner`, fornisci un testo per tecnologie assistive nell'attributo `it-aria-label`, oppure usa il fallback predefinito.
 
 
 ## Progress bar
 
 ### Con etichetta
 
+Per aggiungere etichette con testo che indica il progresso, puoi usare gli attributi:
+- `show-value` per mostrare un'etichetta con il valore percentuale calcolato automaticamente in base al valore di `value`.
+- Oppure, puoi inserire un testo personalizzato all'interno del componente, che verrà mostrato al posto della percentuale, utilizzando l'attributo `label`.
+
+Non dimenticare di fornire un testo esplicativo per gli Screen Reader tramite l'attributo `it-aria-label`.
+
 <Canvas of={ProgressStories.ConEtichetta} />
 
 ### Indeterminato
 
+Quando non è possibile stabilire una percentuale di progressione,
+utilizza una Progress Bar di tipo indeterminato, aggiungendo l'attributo `indeterminate` al componente `it-progress`.
+
 <Canvas of={ProgressStories.Indeterminato} />
 
 ### Colori
+
+Puoi modificare il colore della barra di avanzamento usando l'attributo `color` con i seguenti valori:
+- `success`
+- `info`
+- `warning`
+- `danger`
 
 <Canvas of={ProgressStories.Colori} />
 
@@ -54,40 +74,38 @@ todo: aggiungere esempio con progress bar in un pulsante, come da design system
 
 Usa il donut quando vuoi mostrare una percentuale di completamento con una rappresentazione circolare.
 
-<Canvas of={ProgressStories.EsempioInterattivoDonut} />
+<Canvas of={ProgressStories.Donut} />
 
-<Controls of={ProgressStories.EsempioInterattivoDonut} />
-
-### Stato iniziale
-
-<Canvas of={ProgressStories.StatoIniziale} />
-
-### Attivo (75%)
-
-<Canvas of={ProgressStories.Attivo75} />
 
 ## Spinner
 
 Usa lo spinner quando non è disponibile una percentuale precisa di avanzamento.
+
 È utile quindi quando non è possibile determinare il tempo necessario a completare una procedura.
 
-<Canvas of={ProgressStories.EsempioInterattivoSpinner} />
+Puoi scegliere tra tre dimensioni (small, large, extralarge) e due varianti (standard e double).
 
-<Controls of={ProgressStories.EsempioInterattivoSpinner} />
+Usa l'attributo `size` per scegliere la dimensione (`sm`, `lg`, `xl`)
 
-### Standard
+Usa l'attributo `active` per attivare l'animazione dello spinner.
 
-<Canvas of={ProgressStories.Standard} />
+Usa l'attributo `it-aria-label` per fornire una descrizione testuale dello stato di caricamento, utile per tecnologie assistive.
+
+<Canvas of={ProgressStories.Spinner} />
+
 
 ### Spinner doppio
+La variante double dello spinner, mostra due cerchi concentrici che ruotano in senso opposto, per un effetto più dinamico.
 
-<Canvas of={ProgressStories.Doppio} />
+Usa l'attributo `double` per attivare la variante double.
 
-### Dimensioni
+Usa l'attributo `size` per scegliere la dimensione (`sm`, `lg`, `xl`)
 
-<Canvas of={ProgressStories.Small} />
-<Canvas of={ProgressStories.Large} />
-<Canvas of={ProgressStories.ExtraLarge} />
+Usa l'attributo `active` per attivare l'animazione dello spinner.
+
+Usa l'attributo `it-aria-label` per fornire una descrizione testuale dello stato di caricamento, utile per tecnologie assistive.
+
+<Canvas of={ProgressStories.SpinnerDoppio} />
 
 
 ## Personalizzazione degli stili

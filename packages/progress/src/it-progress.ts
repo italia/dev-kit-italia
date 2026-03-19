@@ -1,6 +1,7 @@
-import { BaseComponent } from '@italia/globals';
-import { html, nothing } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+/* eslint-disable lit-a11y/accessible-name */
+import { BaseComponent, setAttributes } from '@italia/globals';
+import { html } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { when } from 'lit/directives/when.js';
@@ -18,14 +19,14 @@ export class ItProgress extends BaseComponent {
   @property({ type: Number, reflect: true })
   value = 0;
 
-  @property({ type: String, reflect: true })
-  label = 'Caricamento';
+  @property({ type: String, reflect: true, attribute: 'it-aria-label' })
+  itAriaLabel = 'Caricamento';
 
-  @property({ type: Boolean, reflect: true, attribute: 'show-label' })
-  showLabel = false;
+  @property({ type: Boolean, reflect: true, attribute: 'show-value' })
+  showValue = false;
 
-  @property({ type: String, reflect: true, attribute: 'label-text' })
-  labelText = '';
+  @property({ type: String, reflect: true, attribute: 'label' })
+  label = '';
 
   @property({ type: Boolean, reflect: true })
   indeterminate = false;
@@ -33,23 +34,17 @@ export class ItProgress extends BaseComponent {
   @property({ type: String, reflect: true })
   color: ProgressBarColor | string = 'default';
 
-  @property({ type: String, reflect: true, attribute: 'trail-color' })
-  trailColor = '#D4E9FF';
+  private trailColor = '#D4E9FF';
 
-  @property({ type: Number, reflect: true, attribute: 'stroke-width' })
-  strokeWidth = 24;
+  private strokeWidth = 24;
 
-  @property({ type: Number, reflect: true, attribute: 'trail-width' })
-  trailWidth = 12;
+  private trailWidth = 12;
 
-  @property({ type: String, reflect: true })
-  easing = 'easeInOut';
+  private easing = 'easeInOut';
 
-  @property({ type: Number, reflect: true })
-  duration = 1400;
+  private duration = 1400;
 
-  @property({ type: Boolean, reflect: true, attribute: 'animate' })
-  animated = true;
+  private animated = true;
 
   @property({ type: Boolean, reflect: true })
   active = false;
@@ -59,9 +54,6 @@ export class ItProgress extends BaseComponent {
 
   @property({ type: String, reflect: true })
   size: ProgressSpinnerSize = 'md';
-
-  @state()
-  private _hasSlotContent = false;
 
   private _bar: ProgressDonut | null = null;
 
@@ -81,10 +73,6 @@ export class ItProgress extends BaseComponent {
         this._bar.destroy();
         this._bar = null;
       }
-
-      if (this.type === 'donut') {
-        this.updateComplete.then(() => this._initDonutBar());
-      }
     }
 
     if (this.type === 'donut') {
@@ -94,7 +82,8 @@ export class ItProgress extends BaseComponent {
         changedProperties.has('strokeWidth') ||
         changedProperties.has('trailWidth') ||
         changedProperties.has('easing') ||
-        changedProperties.has('duration');
+        changedProperties.has('duration') ||
+        changedProperties.has('type');
 
       if (configChanged && this._bar) {
         this._bar.destroy();
@@ -118,11 +107,6 @@ export class ItProgress extends BaseComponent {
     this.value = progress;
   }
 
-  private _onSlotChange(e: Event) {
-    const slot = e.target as HTMLSlotElement;
-    this._hasSlotContent = slot.assignedNodes({ flatten: true }).length > 0;
-  }
-
   private static _isBarColorVariant(color: string): color is ProgressBarColor {
     return ['default', 'success', 'info', 'warning', 'danger'].includes(color);
   }
@@ -132,13 +116,13 @@ export class ItProgress extends BaseComponent {
     return this.color === 'default' ? '' : `bg-${this.color}`;
   }
 
-  private get _displayLabelText() {
-    return this.labelText || `${this.value}%`;
+  private get _displayLabel() {
+    return this.label || `${this.value}%`;
   }
 
   private _setDonutProgress(progress: number) {
     if (!this._bar) return;
-    this._bar.setValue(progress, this.animated);
+    this._bar.setValue(progress / 100, this.animated);
   }
 
   private async _initDonutBar() {
@@ -147,20 +131,21 @@ export class ItProgress extends BaseComponent {
     this._donutContainer = this.shadowRoot.querySelector('.progress-donut');
     if (!this._donutContainer) return;
 
-    this._donutContainer.setAttribute('aria-valuenow', String(Math.round(this.value * 100)));
+    this._donutContainer.setAttribute('aria-label', this.itAriaLabel);
+    this._donutContainer.setAttribute('aria-valuenow', this.value.toString());
     this._donutContainer.setAttribute('aria-valuemin', '0');
     this._donutContainer.setAttribute('aria-valuemax', '100');
     this._donutContainer.setAttribute('role', 'progressbar');
 
     this._bar = await ProgressDonut.create(this._donutContainer, {
-      color: ItProgress._isBarColorVariant(this.color) ? '#0073E6' : this.color,
+      color: ItProgress._isBarColorVariant(this.color) ? 'var(--bsi-secondary)' : this.color,
       trailColor: this.trailColor,
       strokeWidth: this.strokeWidth,
       trailWidth: this.trailWidth,
       easing: this.easing,
       duration: this.duration,
       animate: this.animated,
-      value: this.value,
+      value: this.value / 100,
       onStep: (value) => {
         this._donutContainer?.setAttribute('aria-valuenow', String(value));
       },
@@ -178,21 +163,23 @@ export class ItProgress extends BaseComponent {
           class="${barClasses}"
           role="progressbar"
           style="${styleMap(barStyle)}"
+          ${setAttributes(this._ariaAttributes)}
+          aria-label="${ifDefined(this.itAriaLabel || undefined)}"
           aria-valuenow="${ifDefined(this.indeterminate ? undefined : this.value)}"
           aria-valuemin="0"
           aria-valuemax="100"
-          aria-label="${ifDefined(this.label || undefined)}"
           part="progress-bar"
         ></div>
       </div>
     `;
 
     return when(
-      this.showLabel,
+      this.showValue || this.label,
       () => html`
         <div class="progress-bar-wrapper">
           <div class="progress-bar-label">
-            <slot name="label"><span class="visually-hidden">Progresso </span>${this._displayLabelText}</slot>
+            <span class="visually-hidden">${this.itAriaLabel} </span>
+            ${this._displayLabel}
           </div>
           ${bar}
         </div>
@@ -206,8 +193,9 @@ export class ItProgress extends BaseComponent {
       <div class="progress-donut-wrapper" part="donut-wrapper">
         <div
           class="progress-donut"
-          aria-label="${this.label || nothing}"
-          aria-valuenow="${Math.round(this.value * 100)}"
+          ${setAttributes(this._ariaAttributes)}
+          aria-label="${ifDefined(this.itAriaLabel || undefined)}"
+          aria-valuenow="${this.value}"
           aria-valuemin="0"
           aria-valuemax="100"
           role="progressbar"
@@ -235,9 +223,7 @@ export class ItProgress extends BaseComponent {
               <div class="progress-spinner-inner"></div>
             `
           : ''}
-        <slot @slotchange="${this._onSlotChange}">
-          ${!this._hasSlotContent ? html`<span class="visually-hidden">Caricamento...</span>` : ''}
-        </slot>
+        <span class="visually-hidden">${this.itAriaLabel}</span>
       </div>
     `;
   }

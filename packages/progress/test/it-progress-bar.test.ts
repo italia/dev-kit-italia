@@ -24,4 +24,12 @@ describe('it-progress (bar)', () => {
     expect(label).to.exist;
     expect(label?.textContent).to.include('35%');
   });
+
+  it('renders custom label from default slot when show-label is true', async () => {
+    const el = await fixture<ItProgress>(html`<it-progress type="bar" value="35" show-label>Completato</it-progress>`);
+    const label = el.shadowRoot?.querySelector('.progress-bar-label');
+
+    expect(label).to.exist;
+    expect(label?.textContent).to.include('Completato');
+  });
 });

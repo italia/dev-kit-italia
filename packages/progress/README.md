@@ -19,7 +19,7 @@ npm install @italia/progress
 ## Donut
 
 ```html
-<it-progress type="donut" value="0.75" label="Caricamento"></it-progress>
+<it-progress type="donut" value="75" it-aria-label="Caricamento"></it-progress>
 ```
 
 ### Proprietà principali donut
@@ -32,19 +32,21 @@ npm install @italia/progress
 - `easing` (string)
 - `duration` (number)
 - `animate` (boolean)
+- `it-aria-label` (string)
 
 ## Progress bar
 
 ```html
-<it-progress type="bar" value="50" label="Caricamento"></it-progress>
+<it-progress type="bar" value="50" it-aria-label="Caricamento"></it-progress>
 ```
 
 ### Varianti bar
 
 ```html
 <it-progress type="bar" value="35" show-label></it-progress>
-<it-progress type="bar" indeterminate label="In elaborazione..."></it-progress>
-<it-progress type="bar" value="66" color="danger"></it-progress>
+<it-progress type="bar" value="35" show-label>35%</it-progress>
+<it-progress type="bar" indeterminate it-aria-label="In elaborazione..."></it-progress>
+<it-progress type="bar" value="66" color="danger" it-aria-label="Caricamento errore"></it-progress>
 ```
 
 ## Spinner
