@@ -173,6 +173,8 @@ $it-tab-prefix: 'it-tab';
 
 // Card attiva: bordi top/left/right visibili, bottom=0.
 // margin-bottom: -1px copre il border-bottom di .nav-tabs-cards (overflow: visible).
+// --it-tab_active-bg va impostato qui via custom property perché :host([active]) lo
+// consuma con !important: il background shorthand in bassa importanza non vincerebbe.
 :host([cards][active]) {
   position: relative;
   z-index: 1;
@@ -183,7 +185,8 @@ $it-tab-prefix: 'it-tab';
   border-bottom-color: transparent;
   border-left-color: var(--it-tab_cards-border-color, var(--#{$prefix}color-border-subtle));
   margin-bottom: -1px;
-  background: var(--it-tab_cards-bg, var(--#{$prefix}color-background-inverse));
+  // Override del --it-tab_active-bg consumato da :host([active]) { background-color: !important }
+  --#{$it-tab-prefix}_active-bg: var(--it-tab_cards-bg, var(--#{$prefix}color-background-inverse));
 }
 
 // Pulsante × reso nello shadow DOM di it-tab quando dismissible=true.
