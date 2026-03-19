@@ -32,6 +32,12 @@ export interface RovingTabindexConfig<T extends HTMLElement> {
   selectOnFocus?: boolean;
 
   /**
+   * Whether Home/End should *activate* (select) the item in addition to focusing it.
+   * Default false to avoid changing downstream components; opt-in when needed.
+   */
+  selectOnHomeEnd?: boolean;
+
+  /**
    * Custom logic to determine if an item should be skipped
    * @default (item) => item.hasAttribute('disabled')
    */
@@ -59,6 +65,7 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
     wrap: boolean;
     direction: 'horizontal' | 'vertical' | 'both' | (() => 'horizontal' | 'vertical' | 'both');
     selectOnFocus: boolean;
+    selectOnHomeEnd: boolean;
     skipItem: (item: T) => boolean;
   };
 
@@ -68,6 +75,7 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
       wrap: true,
       direction: 'both',
       selectOnFocus: false,
+      selectOnHomeEnd: false,
       skipItem: (item) => item.hasAttribute('disabled') || (item as any).disabled === true,
       ...config,
     };
@@ -140,7 +148,6 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
       (direction === 'vertical' && isVertical) ||
       (direction === 'horizontal' && isHorizontal);
 
-    console.log('Caccone', { key, shouldHandle });
     if (!shouldHandle) {
       return false;
     }
@@ -174,12 +181,13 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
       }
     }
 
-    // Skip disabled items
-    nextIndex = this.findNextValidIndex(items, nextIndex, nextIndex > currentIndex ? 1 : -1);
+    // Skip disabled items — Home always searches forward, End always searches backward
+    // eslint-disable-next-line no-nested-ternary
+    const searchDirection: 1 | -1 = isHome ? 1 : isEnd ? -1 : nextIndex > currentIndex ? 1 : -1;
+    nextIndex = this.findNextValidIndex(items, nextIndex, searchDirection);
 
     if (nextIndex !== -1 && nextIndex !== currentIndex) {
       const nextItem = items[nextIndex];
-      console.log('Caccone 2', { nextIndex, nextItem });
 
       // Update tabindices
       this.updateTabindices(nextIndex);
@@ -187,8 +195,13 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
       // Focus the next item
       nextItem.focus();
 
-      // Optionally select/activate the item
-      if (this.config.selectOnFocus && this.config.onSelect) {
+      // Optionally select/activate the item.
+      // Select when `selectOnFocus` is enabled, or when Home/End keys
+      // were used and the consumer explicitly opted in via `selectOnHomeEnd`.
+      const shouldSelect =
+        this.config.selectOnFocus === true || ((isHome || isEnd) && this.config.selectOnHomeEnd === true);
+
+      if (shouldSelect && this.config.onSelect) {
         this.config.onSelect(nextItem, event);
       }
 

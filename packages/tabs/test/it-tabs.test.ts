@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 /// <reference types="mocha"/>
 
 import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
@@ -474,6 +475,57 @@ describe('it-tabs — click su tab attivo dismissibile (mobile SR)', () => {
     expect(fired).to.be.false;
     expect(tabs[1].active).to.be.true;
   });
+
+  it('Space su tab attivo dismissibile NON emette it-tab-close', async () => {
+    const el = await fixture<ItTabs>(dismissibleTabs());
+    await elementUpdated(el);
+    const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+
+    let fired = false;
+    el.addEventListener('it-tab-close', () => {
+      fired = true;
+    });
+
+    // Simula Space sul tab attivo
+    tabs[0].dispatchEvent(
+      new KeyboardEvent('keydown', {
+        key: ' ',
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      }),
+    );
+    await elementUpdated(el);
+
+    expect(fired).to.be.false;
+    // il tab non deve essere rimosso
+    expect(el.querySelectorAll('it-tab')).to.have.length(3);
+  });
+
+  it('Enter su tab attivo dismissibile NON emette it-tab-close', async () => {
+    const el = await fixture<ItTabs>(dismissibleTabs());
+    await elementUpdated(el);
+    const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+
+    let fired = false;
+    el.addEventListener('it-tab-close', () => {
+      fired = true;
+    });
+
+    // Simula Enter sul tab attivo
+    tabs[0].dispatchEvent(
+      new KeyboardEvent('keydown', {
+        key: 'Enter',
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      }),
+    );
+    await elementUpdated(el);
+
+    expect(fired).to.be.false;
+    expect(el.querySelectorAll('it-tab')).to.have.length(3);
+  });
 });
 
 describe('it-tabs — metodi pubblici close() e addTab()', () => {
@@ -571,7 +623,9 @@ describe('it-tabs — metodi pubblici close() e addTab()', () => {
     // Il tab deve essere inserito PRIMA del pulsante add
     const addBtn = el.querySelector('#add-btn')!;
     expect(el.compareDocumentPosition(tab) & Node.DOCUMENT_POSITION_PRECEDING).to.equal(0);
-    expect(tab.compareDocumentPosition(addBtn) & Node.DOCUMENT_POSITION_FOLLOWING).to.equal(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(tab.compareDocumentPosition(addBtn) & Node.DOCUMENT_POSITION_FOLLOWING).to.equal(
+      Node.DOCUMENT_POSITION_FOLLOWING,
+    );
     expect(el.querySelectorAll('it-tab-panel')).to.have.length(2);
   });
 });

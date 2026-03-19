@@ -26,8 +26,6 @@ $it-tab-prefix: 'it-tab';
   margin-inline-start: 0.25rem;
 }
 
-// Variabili strutturali del wrapper — default = placement top (colonna, tablist sopra).
-// I modifier BEM ridefiniscono solo ciò che cambia; le proprietà CSS consumano le var.
 .tabs-wrapper {
   display: flex;
   max-width: 100%;
@@ -116,6 +114,7 @@ $it-tab-prefix: 'it-tab';
   --#{$it-tab-prefix}_bw-bottom: 0;
   --#{$it-tab-prefix}_active-bc-top: var(--#{$prefix}color-border-primary);
   --#{$it-tab-prefix}_active-bc-bottom: transparent;
+  background-color: var(--it-tab_active-bg, var(--#{$prefix}tabs-background-color));
 }
 
 // Propaga il margin-block ai pannelli (it-tab-panel) solo in layout verticale.
@@ -131,7 +130,6 @@ $it-tab-prefix: 'it-tab';
 .nav-tabs-vertical {
   height: 100%;
   flex: 1; // riempie l'altezza del .nav-row (column flex)
-  gap: 1rem;
   --#{$it-tab-prefix}_bw-right: var(--#{$prefix}tab-border-width);
   --#{$it-tab-prefix}_bw-bottom: 0;
   --#{$it-tab-prefix}_active-bc-right: var(--#{$prefix}color-border-primary);

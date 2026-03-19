@@ -11,7 +11,8 @@ const translation: DefaultTranslation = {
    * (doppio tap con VoiceOver/TalkBack, Invio/Spazio con tastiera)
    * oppure premendo Delete/Backspace sulla tastiera fisica.
    */
-  closeActiveTabHint: 'Su dispositivi touch, doppio tap per chiudere questa tab.',
+  closeActiveTabHint:
+    'Puoi chiudere questo tab premendo Delete o Backspace da tastiera. Su dispositivi touch, doppio tap per chiudere questa tab.',
 };
 
 export default translation;

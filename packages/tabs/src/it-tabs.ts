@@ -166,6 +166,8 @@ export class ItTabs extends BaseComponent {
     getItems: () => this._tabs,
     onSelect: (tab) => this._selectTab(tab),
     selectOnFocus: true,
+    // Home/End should activate tabs per WAI-ARIA for this component.
+    selectOnHomeEnd: true,
     direction: 'both',
     skipItem: (tab) => tab.disabled,
   });

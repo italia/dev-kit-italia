@@ -106,7 +106,7 @@ $it-tab-prefix: 'it-tab';
   border-bottom-color: var(--#{$it-tab-prefix}_active-bc-bottom, var(--#{$prefix}color-border-primary));
   border-left-color: var(--#{$it-tab-prefix}_active-bc-left, transparent);
   margin-bottom: var(--#{$it-tab-prefix}_active-mb-offset, 0px);
-  background: var(--#{$it-tab-prefix}_active-bg, transparent);
+  background-color: var(--#{$it-tab-prefix}_active-bg, transparent) !important;
   color: var(--#{$it-tab-prefix}_color-active, var(--#{$prefix}color-text-primary));
   // Ripristina opacità piena: batte il 0.75 ereditato da .nav-dark via flat tree.
   --it-tab_opacity: 1;

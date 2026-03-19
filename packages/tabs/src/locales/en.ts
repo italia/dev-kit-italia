@@ -11,7 +11,8 @@ const translation: DefaultTranslation = {
    * (double-tap on VoiceOver/TalkBack, Enter/Space on keyboard)
    * or by pressing Delete/Backspace on a physical keyboard.
    */
-  closeActiveTabHint: 'Activate again to close.',
+  closeActiveTabHint:
+    'You can close this tab by pressing Delete or Backspace on your keyboard. On touch devices, double tap to close this tab.',
 };
 
 export default translation;

@@ -7,6 +7,7 @@ import { TAB_PLACEMENTS, type TabPlacement, type ItTabCloseEventDetail } from '.
 import type { ItTabs } from '../src/it-tabs.js';
 import type { ItTab } from '../src/it-tab.js';
 import type { ItTabPanel } from '../src/it-tab-panel.js';
+import i18nIT from '../src/locales/it.js';
 
 // Props
 interface TabsProps {
@@ -57,7 +58,7 @@ const defaultTabs = [
 // Meta
 const meta: Meta<TabsProps> = {
   title: 'Componenti/Tabs',
-  tags: ['a11y-ok', 'web-component'],
+  tags: ['alpha', 'a11y-ok', 'web-component'],
   component: 'it-tabs',
   args: {
     label: 'Navigazione principale',
@@ -80,15 +81,13 @@ const meta: Meta<TabsProps> = {
     },
     auto: {
       control: 'boolean',
-      description:
-        "Se `true`, i tab si espandono per occupare l'intera larghezza disponibile (classe `.auto` su `.nav-tabs`).",
+      description: "Se `true`, i tab si espandono per occupare l'intera larghezza disponibile.",
       name: 'auto',
       table: { defaultValue: { summary: 'false' } },
     },
     hideScrollbar: {
       control: 'boolean',
-      description:
-        "Nasconde visivamente la scrollbar orizzontale su viewport intermedi (≥ 768px, < 1200px). Il meccanismo BSI use `overflow: hidden` sul wrapper e `padding-bottom: 20px` su `.nav-tabs` per spingere il track della scrollbar fuori dall'area visibile. Su mobile e su wide desktop la scrollbar comportamento normale. Ignorato con `cards` o in layout verticali. Si usa tipicamente insieme ad `auto`.",
+      description: 'Se `true`, nasconde visivamente la scrollbar orizzontale.',
       name: 'hide-scrollbar',
       if: { arg: 'auto', truthy: true },
       table: { defaultValue: { summary: 'false' } },
@@ -96,7 +95,7 @@ const meta: Meta<TabsProps> = {
     verticalBackground: {
       control: 'boolean',
       description:
-        'Sfondo primario chiaro sul tab selezionato (solo in layout verticale: `placement="start"` o `placement="end"`). Corrisponde a `.nav-tabs-vertical-background`.',
+        'Se `true`, applica uno sfondo primario chiaro sul tab selezionato. Disponibile **solo in layout verticale: `placement="start"` o `placement="end"`**.',
       name: 'vertical-background',
       if: { arg: 'placement', eq: 'start' },
       table: { defaultValue: { summary: 'false' } },
@@ -104,26 +103,25 @@ const meta: Meta<TabsProps> = {
     dark: {
       control: 'boolean',
       description:
-        'Variante con sfondo scuro per la tablist. Corrisponde alla classe `.nav-dark`. **Ignorato se `cards` è attivo** (le due varianti non sono compatibili).',
+        'Se `true`, abilita la variante con sfondo scuro per la tablist. **Ignorato se `cards` è attivo** (le due varianti non sono compatibili).',
       name: 'dark',
       table: { defaultValue: { summary: 'false' } },
     },
     cards: {
       control: 'boolean',
-      description: 'Stile "card" per i tab. Corrisponde a `.nav-tabs-cards`.',
+      description: 'Se `true`, applica lo stile "card".',
       name: 'cards',
       table: { defaultValue: { summary: 'false' } },
     },
     dismissible: {
       control: 'boolean',
-      description:
-        'Abilita la chiusura dei tab tramite il pulsante × e i tasti Delete/Backspace. Indipendente da `cards`.',
+      description: 'Se `true`, abilita la chiusura dei tab. **Disponibile solo per la variante "cards".**',
       name: 'dismissible',
       table: { defaultValue: { summary: 'false' } },
     },
     iconText: {
       control: 'boolean',
-      description: 'Ottimizza i margini per la combinazione icona + testo. Corrisponde a `.nav-tabs-icon-text`.',
+      description: 'Se `true` ottimizza i margini per la combinazione icona + testo.',
       name: 'icon-text',
       table: { defaultValue: { summary: 'false' } },
     },
@@ -576,5 +574,124 @@ export const TabCardConPulsantiCustomClose: Story = {
         </it-button>
       </it-tabs>
     `;
+  },
+};
+
+// Tab card con pulsanti — chiusura personalizzata (JS in source + play)
+export const TabCardConPulsantiCustomCloseJS: Story = {
+  name: 'Tab card con chiusura personalizzata (JS source)',
+  parameters: {
+    docs: {
+      source: {
+        language: 'html',
+        code: `<it-tabs id="editable-tabs" cards dismissible label="Tab card con chiusura personalizzata">
+  <it-tab slot="tab" panel="cj1">Tab 1</it-tab>
+  <it-tab slot="tab" panel="cj2">Tab 2</it-tab>
+  <it-tab slot="tab" panel="cj3">Tab 3</it-tab>
+  <it-tab slot="tab" panel="cj4" disabled>Tab 4 Disabilitato</it-tab>
+
+  <it-tab-panel name="cj1">Contenuto del pannello <strong>Tab 1</strong></it-tab-panel>
+  <it-tab-panel name="cj2">Contenuto del pannello <strong>Tab 2</strong></it-tab-panel>
+  <it-tab-panel name="cj3">Contenuto del pannello <strong>Tab 3</strong></it-tab-panel>
+  <it-tab-panel name="cj4">Contenuto del pannello <strong>Tab 4 Disabilitato</strong></it-tab-panel>
+
+  <it-button slot="after-tablist" id="add-tab-btn" variant="link" icon size="sm" it-aria-label="Aggiungi tab">
+    <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
+  </it-button>
+</it-tabs>
+
+<script>
+  const host = document.getElementById('editable-tabs');
+  let counter = 5;
+
+  host.addEventListener('it-tab-close', (e) => {
+    e.preventDefault();
+    const label = host.querySelector('it-tab[panel="' + e.detail.panel + '"]')?.textContent.trim();
+    if (confirm('Chiudere "' + label + '"?')) host.close(e.detail.panel);
+  });
+
+  document.getElementById('add-tab-btn').addEventListener('click', () => {
+    const n = counter++;
+    const tab = document.createElement('it-tab');
+    tab.setAttribute('slot', 'tab');
+    tab.setAttribute('panel', 'cj' + n);
+    tab.textContent = 'Tab ' + n;
+    const panel = document.createElement('it-tab-panel');
+    panel.setAttribute('name', 'cj' + n);
+    panel.innerHTML = 'Contenuto del pannello <strong>Tab ' + n + '</strong>';
+    host.addTab(tab, panel);
+  });
+</script>`,
+      },
+      canvas: { sourceState: 'shown' },
+    },
+  },
+
+  render: () => {
+    let counter = 5;
+
+    const onClose = (e: CustomEvent<ItTabCloseEventDetail>) => {
+      e.preventDefault();
+      const itTabs = e.currentTarget as ItTabs;
+      const label = itTabs.querySelector(`it-tab[panel="${e.detail.panel}"]`)?.textContent?.trim();
+      if (confirm(`Chiudere "${label}"?`)) itTabs.close(e.detail.panel);
+    };
+
+    const onAdd = (e: Event) => {
+      const itTabs = (e.currentTarget as Element).closest('it-tabs')! as ItTabs;
+      const n = counter++;
+      const tab = document.createElement('it-tab') as ItTab;
+      tab.setAttribute('slot', 'tab');
+      tab.setAttribute('panel', `cj${n}`);
+      tab.textContent = `Tab ${n}`;
+      const panel = document.createElement('it-tab-panel') as ItTabPanel;
+      panel.setAttribute('name', `cj${n}`);
+      panel.innerHTML = `Contenuto del pannello <strong>Tab ${n}</strong>`;
+      itTabs.addTab(tab, panel);
+    };
+
+    return html`
+      <it-tabs cards dismissible label="Tab card con chiusura personalizzata" @it-tab-close=${onClose}>
+        <it-tab slot="tab" panel="cj1">Tab 1</it-tab>
+        <it-tab slot="tab" panel="cj2">Tab 2</it-tab>
+        <it-tab slot="tab" panel="cj3">Tab 3</it-tab>
+        <it-tab slot="tab" panel="cj4" disabled>Tab 4 Disabilitato</it-tab>
+        <it-tab-panel name="cj1">Contenuto del pannello <strong>Tab 1</strong></it-tab-panel>
+        <it-tab-panel name="cj2">Contenuto del pannello <strong>Tab 2</strong></it-tab-panel>
+        <it-tab-panel name="cj3">Contenuto del pannello <strong>Tab 3</strong></it-tab-panel>
+        <it-tab-panel name="cj4">Contenuto del pannello <strong>Tab 4 Disabilitato</strong></it-tab-panel>
+        <it-button
+          slot="after-tablist"
+          class="after-tablist"
+          variant="link"
+          icon
+          size="sm"
+          it-aria-label="Aggiungi tab"
+          @click=${onAdd}
+        >
+          <it-icon name="it-plus-circle" color="primary" size="sm"></it-icon>
+        </it-button>
+      </it-tabs>
+    `;
+  },
+};
+
+export const I18n: Story = {
+  name: 'i18n',
+  tags: ['!dev'],
+  render: () => html`<div class="hide-preview"></div>`,
+  parameters: {
+    viewMode: 'docs',
+    docs: {
+      description: {
+        story: `
+Per questo componente sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+
+\`\`\`js
+const translation = ${JSON.stringify(i18nIT, null, 2)}
+\`\`\`
+`,
+      },
+    },
   },
 };
