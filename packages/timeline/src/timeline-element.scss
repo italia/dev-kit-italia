@@ -1,0 +1,223 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
+@import 'bootstrap-italia/src/scss/components/grid';
+@import 'bootstrap-italia/src/scss/components/type';
+// BSI timeline variables used below:
+// $timeline-padding, $timeline-content-padding, $timeline-content-padding-reverse
+// $timeline-pin-circle-size, $timeline-pin-circle-border, $timeline-pin-size
+// $timeline-pin-background, $timeline-width, $timeline-border-color
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:host {
+  display: block;
+}
+
+.col-12 {
+  padding-right: calc(var(--#{$prefix}gutter-x) * 0.5);
+  padding-left: calc(var(--#{$prefix}gutter-x) * 0.5);
+}
+
+// Inner content wrapper
+.timeline-element {
+  position: relative;
+  z-index: 1;
+  min-height: 80px; // ensure space for the absolutely-positioned pin
+  padding: $timeline-content-padding;
+
+  @include media-breakpoint-down(lg) {
+    margin-top: 32px;
+    margin-bottom: 30px;
+  }
+}
+
+// ── Pin ──────────────────────────────────────────────────────────────────────
+.it-pin-wrapper {
+  position: absolute;
+  z-index: 4;
+  top: -$timeline-pin-circle-size * 0.5;
+  right: auto;
+  left: calc(4px + #{$timeline-padding} / 2);
+  display: flex;
+  align-items: center;
+
+  .pin-icon {
+    display: flex;
+    width: $timeline-pin-circle-size;
+    height: $timeline-pin-circle-size;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border: $timeline-pin-circle-border;
+    border-radius: 50%;
+    margin-right: $v-gap * 2;
+    background: $white;
+    box-shadow: $card-shadow;
+
+    svg {
+      width: $timeline-pin-size;
+      height: $timeline-pin-size;
+      fill: $primary;
+    }
+
+    // it-icon slotted into pin-icon slot
+    ::slotted(*) {
+      width: $timeline-pin-size;
+      height: $timeline-pin-size;
+    }
+  }
+
+  // Date badge
+  .pin-text {
+    border-radius: $border-radius;
+    background: $timeline-pin-background;
+    color: $white;
+    font-family: $font-family-sans-serif;
+    font-size: var(--bs-body-font-size);
+    font-weight: 600;
+    line-height: var(--bs-body-line-height);
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    span {
+      position: relative;
+      display: block;
+      padding: $v-gap * 0.5 $v-gap * 2;
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        left: -4px;
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+        background: $timeline-pin-background;
+        content: '';
+        transform: translateY(-50%) rotate(45deg);
+      }
+    }
+  }
+
+  // ── Variant: current (it-now) — primary blue ──────────────────────────────
+  &.it-now {
+    .pin-icon {
+      background: $primary;
+
+      svg {
+        fill: $white;
+      }
+    }
+
+    .pin-text {
+      background: $primary;
+
+      span::after {
+        background: $primary;
+      }
+    }
+  }
+
+  // ── Variant: past (it-evidence) — dark navy ───────────────────────────────
+  &.it-evidence {
+    .pin-icon {
+      background: $timeline-pin-background;
+
+      svg {
+        fill: $white;
+      }
+    }
+
+    .pin-text {
+      background: $timeline-pin-background;
+
+      span::after {
+        background: $timeline-pin-background;
+      }
+    }
+  }
+}
+
+// Slotted card / content block
+::slotted(*) {
+  display: block;
+}
+
+// Push slotted card below the absolutely-positioned pin (pin bottom = 24px from
+// element top; padding-top = 18px → without margin the card overlaps pin by 6px)
+::slotted(it-card) {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+// Mobile: pin sits in the 32px inter-element margin above; give card more room
+@include media-breakpoint-down(lg) {
+  ::slotted(it-card) {
+    margin-top: 36px;
+    margin-bottom: 0px;
+    margin-left: -22px;
+  }
+}
+
+// ── Desktop layout via CSS custom props set by <it-timeline> ─────────────────
+// <it-timeline> sets these on ::slotted(:nth-child(odd/even)), they inherit
+// across the shadow boundary into the element's own shadow root.
+@include media-breakpoint-up(lg) {
+  .timeline-element {
+    padding: var(--it-timeline-content-padding, #{$timeline-content-padding});
+  }
+
+  .it-pin-wrapper {
+    right: var(--it-timeline-pin-right, auto);
+    left: var(--it-timeline-pin-left, calc(#{$timeline-padding} / 2));
+    flex-direction: var(--it-timeline-pin-direction, row);
+
+    .pin-icon {
+      margin-right: var(--it-timeline-pin-icon-mr, #{$v-gap * 2});
+      margin-left: var(--it-timeline-pin-icon-ml, 0);
+    }
+
+    .pin-text {
+      font-size: 1rem; // BSI explicit override at desktop
+
+      span::after {
+        right: var(--it-timeline-pin-arrow-right, auto);
+        left: var(--it-timeline-pin-arrow-left, -4px);
+      }
+    }
+  }
+}
+
+.it-now-label {
+  position: absolute;
+  z-index: 5;
+  top: calc(50% - 16px);
+  right: var(--it-timeline-now-label-right);
+  left: var(--it-timeline-now-label-left);
+  display: flex;
+  flex-direction: var(--it-timeline-pin-direction, row);
+  align-items: center;
+  color: $primary;
+  font-family: var(--#{$prefix}font-mono);
+  font-weight: 600;
+  gap: 16px;
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+
+  &::after {
+    width: 16px;
+    height: 1px;
+    background-color: $primary;
+    content: '';
+    // transform: translateY(-50%) rotate(45deg);
+  }
+}

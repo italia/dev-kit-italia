@@ -1,0 +1,168 @@
+import { Meta, Canvas, Controls, Description } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-timeline.stories';
+
+<Meta of={Stories} />
+
+# Timeline
+
+<description>Componente per la visualizzazione cronologica di eventi, roadmap e scadenze temporali.</description>
+
+## Cosa fa
+
+Il componente timeline è disponibile in due varianti distinte:
+
+- **Timeline classica** — per presentare una storia o l'avanzamento di una roadmap di cose da fare.
+- **Timeline point list** — per presentare una breve sequenza di cose da fare e scadenze temporali.
+
+[Approfondisci come e quando usare il componente Timeline](https://designers.italia.it/design-system/componenti/timeline/)
+
+
+## Accessibilità
+
+- L'elemento contenitore del pin `<it-timeline-element>` (internamente un elemento heading), dovrà avere il livello intestazione corretto a seconda della gerarchia in pagina tramite l'attributo `heading-level`. Lo stesso concetto è valido per il titolo della card se usi una card come contenuto slottato (usa `heading-level` su `<it-card>`).
+- **Per punti data**: usa l'elemento semantico `<time>` con l'attributo `datetime` in formato ISO (es. `2025-10-14`). Inserisci un `<span class="visually-hidden">` con la data scritta per esteso.
+- **Per punti non temporali**: usa un `<div>` nello slot `milestone` e usa `<span class="visually-hidden">` per descrivere il contenuto in linguaggio naturale seguendo l'ordine visivo (es. "Categoria AB, passo 1 di 3").
+
+## Anteprima e attributi del componente Timeline "classica"
+
+Il componente nella sua versione "classica" è composto da `<it-timeline>` (contenitore) e `<it-timeline-element>` (singolo elemento).
+
+Ogni `<it-timeline-element>` contiene:
+
+- **PIN**: intestazione con icona (slot `pin-icon`) e label del periodo (attributo `date`).
+- **Contenuto**: uno o più `<it-card>` (o altri elementi HTML) nel default slot.
+
+Il pin ha tre varianti di colore controllate tramite l'attributo `variant`:
+
+<table>
+  <thead>
+    <tr>
+      <th>Valore</th>
+      <th>Significato temporale</th>
+      <th>Colore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>(nessuno)</em></td>
+      <td>Futuro</td>
+      <td>Bianco</td>
+    </tr>
+    <tr>
+      <td><code>current</code></td>
+      <td>Presente</td>
+      <td>Primario</td>
+    </tr>
+    <tr>
+      <td><code>past</code></td>
+      <td>Passato</td>
+      <td>Primario scuro</td>
+    </tr>
+  </tbody>
+</table>
+
+
+Viene in seguito mostrato un esempio di timeline classica con tutte e tre le varianti di pin. Per vedere l'anteprima del codice, clicca su **Show code**.
+
+<Canvas of={Stories.TimelineClassica} />
+
+
+## Anteprima e attributi del componente Timeline "point list"
+
+La timeline point list permette la rappresentazione di una sequenza di eventi o informazioni in maniera più compatta rispetto alla timeline classica. È particolarmente indicata per presentare una breve sequenza di cose da fare e scadenze temporali.
+
+Il componente è formato da:
+
+- `<it-timeline variant="point-list">` - contenitore lista (renderizza `<ol>` o `<ul>`).
+- `<it-timeline-point>` - singolo punto della lista, il suo contenuto deve essere inserito nello slot `content`.
+
+### Anteprima e attributi del componente
+
+<Canvas of={Stories.EsempioInterattivoPointList} />
+<Controls of={Stories.EsempioInterattivoPointList} />
+
+
+
+### Struttura della sezione laterale
+
+La sezione laterale è rappresentata dagli `slot="milestone"` e `slot="time"`, e visualizza informazioni in tre posizioni verticali tramite classi posizionali nei contenuti dello slot `date` o `milestone`:
+
+- `.point-top` — elemento superiore (opzionale, es. anno, categoria, versione)
+- `.point-main` — elemento principale (obbligatorio, es. giorno, numero step, icona milestone)
+- `.point-bottom` — elemento inferiore (opzionale, es. mese, frazione, label)
+
+Questi elementi vanno inseriti in un elemento (negli esempi uno `span`) con classe `.point-visual`. Per rendere il contenuto accessibile,  ricordati di:
+
+- Utilizzare sempre un elemento `<time>` con attributo `datetime` per le date
+- Aggiungere `<span class="visually-hidden">` **obbligatoriamente** per contenuti non temporali, __opzionalmente__ per date, al fine di fornire una descrizione testuale completa ai lettori di schermo.
+
+### Date specifiche
+
+Se l'informazione per la sezione laterale è una data, utilizza lo slot `date` e inserisci un elemento `<time>` con l'attributo `datetime` in formato ISO (es. `2025-10-14`).
+Attraverso i contenitori posizionali è possibile scegliere di visualizzare solo il giorno, o anche mese e anno.
+
+#### Con giorno e mese
+
+Puoi aggiungere e visualizzare il mese insieme al giorno inserendo il giorno in un contenitore con classe `.point-main` e il mese in un contenitore con classe `.point-bottom`.
+
+<Canvas of={Stories.PointListConGiornoEMese} />
+
+#### Con anno, giorno e mese
+
+Puoi aggiungere e visualizzare anche l'anno inserendolo in un contenitore con classe `.point-top`.
+
+<Canvas of={Stories.PointListConAnnoGiornoEMese} />
+
+### Layout compatto su desktop
+
+Puoi applicare l'attributo `compact` all'elemento `<it-timeline>` per rendere più compatta la visualizzazione del blocco aside anche su desktop, facendola corrispondere alla visualizzazione per dispositivi mobile.
+
+<Canvas of={Stories.PointListCompatto} />
+
+### Traguardi e milestone
+
+Puoi utilizzare la sezione laterale anche per visualizzare progressi, step o milestone tramite numeri, sigle o icone. In questo caso si usa lo slot `milestone` al posto di `date`.
+
+#### Traguardi con numeri e sigle
+
+Puoi utilizzare i contenitori posizionali per presentare informazioni diverse dalle date, come numeri di step, frazioni o sigle. In questo caso si usa un `<div>` generico nello slot `milestone`.
+
+<Canvas of={Stories.PointListTraguardiNumeri} />
+
+#### Traguardi con icone
+
+Puoi utilizzare  un'icona `it-icon` nel contenitore `.point-main` per rappresentare milestone o stati, accompagnata da eventuali micro-testi nei contenitori `.point-top` e `.point-bottom`.
+
+<Canvas of={Stories.PointListMilestoneIcone} />
+
+### Varianti colore
+
+Puoi modificare l'attributo `color` di `<it-timeline-point>` per personalizzare il colore della sezione laterale. I valori disponibili sono `primary`, `secondary`, `success`, `danger`, `warning`, `info` e `dark` (i colori del Design System .italia).
+
+Se non viene specificato, il colore di default è `primary`.
+
+<Canvas of={Stories.PointListVariantiColoreFull} />
+
+Puoi anche avere punti con colori diversi all'interno della stessa timeline specificando l'attributo `color` solo sui punti desiderati.
+
+In questo caso, gli elementi `it-timeline-point` senza l'attributo `color` prenderanno il colore di default `primary` o il valre assegnato all'attributo `color` dell'elemento `it-timeline`, mentre i punti con l'attributo `color` prenderanno il colore specificato
+
+<Canvas of={Stories.PointListVariantiColore} />
+
+### Timeline stile servizi pubblici
+
+Puoi creare un layout ottimizzato per presentare scadenze e procedure amministrative utilizzando come contenuto slottato nello slot `content` card semplici con data in evidenza e descrizione breve, e sfruttando la sezione laterale per evidenziare la data di scadenza o il numero di giorni mancanti alla scadenza.
+
+Puoi fissare verticalmente il punto dell'elenco all'inizio del contenuto usa l'attributo `align-top` sull'elemento `<it-timeline-point>`. Nell'esempio è applicata all'ultimo punto elenco particolarmente lungo.
+
+<Canvas of={Stories.PointListServiziPubblici} />
+
+### Esempio complesso con card complete
+
+Di seguito un esempio che integra card nel contenuto della timeline.
+
+Per fissare verticalmente il punto dell'elenco all'inizio del contenuto usa l'attributo `align-top` sull'elemento `<it-timeline-point>`. Nell'esempio è applicato a tutti i punti in elenco essendo particolarmente lunghi nei contenuti.
+
+Nota bene: usa l'attributo `stack-mobile` sull'elemento `<it-timeline variant="point-list">` per permettere su mobile di disporre verticalmente la sezione laterale in alto al contenuto, ottimizzando lo spazio per card complesse a risoluzioni mobile. In questo caso è bene che il contenuto sia sempre raccolto in elementi di tipo card o almeno con un fondale colorato per sovrastare gerarchicamente la linea.
+
+<Canvas of={Stories.PointListComplessa} />

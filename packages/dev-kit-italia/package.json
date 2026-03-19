@@ -79,6 +79,7 @@
     "@italia/sticky": "workspace:^",
     "@italia/video": "workspace:^",
     "@italia/pagination": "workspace:^",
+    "@italia/timeline": "workspace:^",
     "@italia/radio": "workspace:^"
   },
   "devDependencies": {
