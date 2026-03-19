@@ -28,14 +28,15 @@ registerTranslation(it, en);
  *   (doppio tap nel DOM virtuale), senza bisogno di shortcut tastiera.
  *
  * Il click sull'host quando `active && dismissible` emette `it-tab-close-request`
- * invece di `it-tab-select`, coprendo il gesto doppio-tap mobile nello screen reader.
+ * **solo** se il gesto viene da touch o pen (doppio tap SR mobile).
+ * Un click mouse sull'host non chiude il tab: l'utente usa la × esplicita.
  *
  * @slot - Etichetta del tab: testo, icona o icona+testo
  *
  * @fires it-tab-select - Emesso al click (non disabilitato, non già attivo+dismissibile).
  *   `detail.panel` contiene il nome del pannello associato.
- * @fires it-tab-close-request - Emesso al click quando `active && dismissible`
- *   (doppio tap SR mobile), oppure dal pulsante × interno.
+ * @fires it-tab-close-request - Emesso al doppio-tap touch/pen quando `active && dismissible`
+ *   (SR mobile), oppure dal pulsante × interno.
  *   `detail.panel` e `detail.type` (`'click'`) propagano verso `it-tabs`.
  */
 @customElement('it-tab')
@@ -85,6 +86,9 @@ export class ItTab extends BaseLocalizedComponent {
     return this.id || this._id || '';
   }
 
+  /** Tipo di pointer dell'ultimo pointerdown: 'mouse' | 'touch' | 'pen' | '' */
+  private _lastPointerType = '';
+
   /** Porta il focus sull'host. Chiamato dal `RovingTabindexController`. */
   focusTab(): void {
     this.focus();
@@ -101,12 +105,14 @@ export class ItTab extends BaseLocalizedComponent {
     // L'host è l'elemento interattivo: porta lui il tabindex del roving pattern.
     this.tabIndex = this.active ? 0 : -1;
     this._updateDismissibleAria();
+    this.addEventListener('pointerdown', this._handlePointerDown);
     this.addEventListener('click', this._handleClick);
     this.addEventListener('keydown', this._handleKeydown);
   }
 
   override disconnectedCallback(): void {
     super.disconnectedCallback?.();
+    this.removeEventListener('pointerdown', this._handlePointerDown);
     this.removeEventListener('click', this._handleClick);
     this.removeEventListener('keydown', this._handleKeydown);
   }
@@ -147,11 +153,15 @@ export class ItTab extends BaseLocalizedComponent {
     }
   }
 
+  private _handlePointerDown = (e: PointerEvent): void => {
+    this._lastPointerType = e.pointerType;
+  };
+
   private _handleClick = (): void => {
     if (this.disabled) return;
-    // Tab già attivo + dismissibile: doppio tap mobile SR / click ripetuto →
-    // trattato come richiesta di chiusura invece di ri-selezione.
-    if (this.dismissible && this.active) {
+    // Tab già attivo + dismissibile: doppio tap touch/pen (SR mobile) → close-request.
+    // Mouse click sull'host NON chiude: l'utente usa la × esplicita.
+    if (this.dismissible && this.active && (this._lastPointerType === 'touch' || this._lastPointerType === 'pen')) {
       this.dispatchEvent(
         new CustomEvent('it-tab-close-request', {
           bubbles: true,

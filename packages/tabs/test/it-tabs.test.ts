@@ -437,7 +437,8 @@ describe('it-tabs — click su tab attivo dismissibile (mobile SR)', () => {
       closeDetail = (e as CustomEvent).detail;
     });
 
-    // Click sul tab già attivo (tab 1)
+    // Simula doppio tap touch SR mobile: pointerdown(touch) + click
+    tabs[0].dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, composed: true, pointerType: 'touch' }));
     tabs[0].click();
     await elementUpdated(el);
 
@@ -450,6 +451,8 @@ describe('it-tabs — click su tab attivo dismissibile (mobile SR)', () => {
     await elementUpdated(el);
     const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
 
+    // Simula doppio tap touch SR mobile
+    tabs[0].dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, composed: true, pointerType: 'touch' }));
     tabs[0].click();
     await elementUpdated(el);
 
@@ -526,6 +529,44 @@ describe('it-tabs — click su tab attivo dismissibile (mobile SR)', () => {
     expect(fired).to.be.false;
     expect(el.querySelectorAll('it-tab')).to.have.length(3);
   });
+
+  it('click mouse su tab attivo dismissibile NON emette it-tab-close', async () => {
+    const el = await fixture<ItTabs>(dismissibleTabs());
+    await elementUpdated(el);
+    const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+
+    let fired = false;
+    el.addEventListener('it-tab-close', () => {
+      fired = true;
+    });
+
+    // Simula pointerdown mouse + click sull'host del tab attivo
+    tabs[0].dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, composed: true, pointerType: 'mouse' }));
+    tabs[0].click();
+    await elementUpdated(el);
+
+    expect(fired).to.be.false;
+    expect(el.querySelectorAll('it-tab')).to.have.length(3);
+  });
+
+  it('tap touch su tab attivo dismissibile emette it-tab-close', async () => {
+    const el = await fixture<ItTabs>(dismissibleTabs());
+    await elementUpdated(el);
+    const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+
+    let fired = false;
+    el.addEventListener('it-tab-close', (e) => {
+      e.preventDefault(); // blocca rimozione DOM nel test
+      fired = true;
+    });
+
+    // Simula pointerdown touch + click (doppio tap SR mobile)
+    tabs[0].dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, composed: true, pointerType: 'touch' }));
+    tabs[0].click();
+    await elementUpdated(el);
+
+    expect(fired).to.be.true;
+  });
 });
 
 describe('it-tabs — metodi pubblici close() e addTab()', () => {
@@ -553,6 +594,7 @@ describe('it-tabs — metodi pubblici close() e addTab()', () => {
     });
 
     const tabs = [...el.querySelectorAll<ItTab>('it-tab')];
+    tabs[0].dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, composed: true, pointerType: 'touch' }));
     tabs[0].click();
     await elementUpdated(el);
 
@@ -571,6 +613,9 @@ describe('it-tabs — metodi pubblici close() e addTab()', () => {
 
     const tabsBefore = [...el.querySelectorAll<ItTab>('it-tab')];
     // Chiudi il primo tab (attivo): il secondo deve diventare attivo
+    tabsBefore[0].dispatchEvent(
+      new PointerEvent('pointerdown', { bubbles: true, composed: true, pointerType: 'touch' }),
+    );
     tabsBefore[0].click();
     await elementUpdated(el);
 
