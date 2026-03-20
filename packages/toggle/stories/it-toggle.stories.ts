@@ -232,90 +232,87 @@ export const Raggruppati: Story = {
   args: { group: true },
   parameters: { pageLayout: 'w-100' },
   render: (params) => html`
-    <div class="row">
-      <it-toggle-group
-        name=${params.name}
-        ?required=${params.required}
-        ?group=${params.group}
-        ?inline=${params.inline}
-        ?disabled=${params.disabled}
-        class="col-12 col-md-6"
-      >
-        <span slot="legend">Gruppo di toggle</span>
-        ${renderComponent({
-          ...params,
-          label: 'Interruttore acceso',
-          value: 'option1',
-          checked: true,
-          required: undefined,
-          name: undefined,
-          group: undefined,
-          inline: undefined,
-        })}
-        ${renderComponent({
-          ...params,
-          label: 'Interruttore spento',
-          value: 'option2',
-          required: undefined,
-          name: undefined,
-          group: undefined,
-          inline: undefined,
-        })}
-        ${renderComponent({
-          ...params,
-          label: 'Interruttore disabilitato',
-          value: 'option3',
-          disabled: true,
-          required: undefined,
-          name: undefined,
-          group: undefined,
-          inline: undefined,
-        })}
-      </it-toggle-group>
+    <it-toggle-group
+      name=${params.name}
+      ?required=${params.required}
+      ?group=${params.group}
+      ?inline=${params.inline}
+      ?disabled=${params.disabled}
+    >
+      <span slot="legend">Gruppo di toggle</span>
+      ${renderComponent({
+        ...params,
+        label: 'Interruttore acceso',
+        value: 'option1',
+        checked: true,
+        required: undefined,
+        name: undefined,
+        group: undefined,
+        inline: undefined,
+      })}
+      ${renderComponent({
+        ...params,
+        label: 'Interruttore spento',
+        value: 'option2',
+        required: undefined,
+        name: undefined,
+        group: undefined,
+        inline: undefined,
+      })}
+      ${renderComponent({
+        ...params,
+        label: 'Interruttore disabilitato',
+        value: 'option3',
+        disabled: true,
+        required: undefined,
+        name: undefined,
+        group: undefined,
+        inline: undefined,
+      })}
+    </it-toggle-group>
 
-      <it-toggle-group
-        name=${`${params.name}-1`}
-        ?required=${params.required}
-        ?group=${params.group}
-        ?inline=${params.inline}
-        ?disabled=${params.disabled}
-        class="col-12 col-md-6"
-      >
-        <span slot="legend">Gruppo di toggle</span>
-        ${renderComponent({
-          ...params,
-          required: undefined,
-          name: undefined,
-          group: undefined,
-          inline: undefined,
-          label: 'Interruttore acceso',
-          value: 'option1',
-          checked: true,
-          supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
-        })}
-        ${renderComponent({
-          ...params,
-          required: undefined,
-          name: undefined,
-          group: undefined,
-          inline: undefined,
-          label: 'Interruttore spento',
-          value: 'option2',
-          supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
-        })}
-        ${renderComponent({
-          ...params,
-          required: undefined,
-          name: undefined,
-          group: undefined,
-          inline: undefined,
-          disabled: true,
-          label: 'Interruttore disabilitato',
-          value: 'option3',
-          supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
-        })}
-      </it-toggle-group>
-    </div>
+    <it-toggle-group
+      name=${`${params.name}-1`}
+      ?required=${params.required}
+      ?group=${params.group}
+      ?inline=${params.inline}
+      ?disabled=${params.disabled}
+      style="margin-top: 24px;"
+    >
+      <span slot="legend">Gruppo di toggle</span>
+      ${renderComponent({
+        ...params,
+        required: undefined,
+        name: undefined,
+        group: undefined,
+        inline: undefined,
+        label: 'Interruttore acceso',
+        value: 'option1',
+        checked: true,
+        supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
+      })}
+      ${renderComponent({
+        ...params,
+        required: undefined,
+        name: undefined,
+        group: undefined,
+        inline: undefined,
+        label: 'Interruttore spento',
+        value: 'option2',
+        supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
+      })}
+      ${renderComponent({
+        ...params,
+        required: undefined,
+        name: undefined,
+        group: undefined,
+        inline: undefined,
+        disabled: true,
+        label: 'Interruttore disabilitato',
+        value: 'option3',
+        supportText: "Testo descrittivo di supporto per l'opzione selezionabile",
+      })}
+    </it-toggle-group>
   `,
 };
 
