@@ -86,7 +86,7 @@ const meta = {
     showValue: {
       name: 'show-value',
       control: 'boolean',
-      description: '<strong>Progress bar:</strong>: mostra la percentuale di avanzamento',
+      description: 'mostra la percentuale di avanzamento <br/><i>(solo per `type="bar"`)</i>',
       table: { defaultValue: { summary: 'false' } },
     },
     'it-aria-label': {
@@ -98,34 +98,34 @@ const meta = {
       name: 'label',
       control: 'text',
       description:
-        "<strong>Progress bar:</strong> se si vuole mostrare un testo personalizzato per l'etichetta, invece della percentuale di avanzamento",
+        'se si vuole mostrare un testo personalizzato per l\'etichetta, invece della percentuale di avanzamento <br/><i>(solo per `type="bar"`)</i>',
     },
     indeterminate: {
       control: 'boolean',
-      description: '<strong>Progress bar:</strong> stato indeterminato (animazione infinita)',
+      description: 'stato indeterminato (animazione infinita) <br/><i>(solo per `type="bar"`)</i>',
       table: { defaultValue: { summary: 'false' } },
     },
     color: {
       control: 'text',
       description:
-        '<strong>Progress bar:</strong> default|success|info|warning|danger. <br/><br/><strong>Donut:</strong>  colore CSS della barra (default: `var(--bsi-secondary)`)',
+        '<strong>Bar:</strong> default|success|info|warning|danger. <br/><br/><strong>Donut:</strong>  colore CSS della barra (default: `var(--bsi-secondary)`)<br/><br/><i>(solo per `type="bar"` e `type="donut"`)</i>',
       table: { defaultValue: { summary: 'default' } },
     },
 
     active: {
       control: 'boolean',
-      description: "<strong>Spinner:</strong> attiva/disattiva l'animazione",
+      description: 'attiva/disattiva l\'animazione <br/><i>(solo per `type="spinner"`)</i>',
       table: { defaultValue: { summary: 'true' } },
     },
     double: {
       control: 'boolean',
-      description: '<strong>Spinner:</strong> variante doppia',
+      description: 'variante doppia <br/><i>(solo per `type="spinner"`)</i>',
       table: { defaultValue: { summary: 'false' } },
     },
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg', 'xl'],
-      description: '<strong>Spinner:</strong> dimensione',
+      description: 'dimensione <br/><i>(solo per `type="spinner"`)</i>',
       table: { defaultValue: { summary: 'md' } },
     },
   },
@@ -154,13 +154,19 @@ export const EsempioInterattivo: Story = {
   render: renderComponent,
 };
 
-export const Base: Story = {
+export const Bar: Story = {
   args: { type: 'bar', value: 50 },
+  parameters: {
+    controls: {
+      exclude: ['active', 'double', 'size'],
+    },
+  },
   render: renderComponent,
 };
 
 export const ConEtichetta: Story = {
   name: 'Con etichetta',
+  tags: ['!dev'],
   args: { type: 'bar', value: 35, showValue: true, label: '35%' },
   render: (params) => html`
     <it-progress type="bar" value="${params.value}" ?show-value="${params.showValue}" it-aria-label="Progresso">
@@ -171,12 +177,14 @@ export const ConEtichetta: Story = {
 
 export const Indeterminato: Story = {
   args: { type: 'bar', indeterminate: true },
+  tags: ['!dev'],
   render: (params) => html`
     <it-progress type="bar" ?indeterminate="${params.indeterminate}" it-aria-label="In elaborazione..."></it-progress>
   `,
 };
 
 export const Colori: Story = {
+  tags: ['!dev'],
   name: 'Varianti di colore',
   render: () => html`
     <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -193,6 +201,11 @@ export const Donut: Story = {
     type: 'donut',
     value: 75,
     'it-aria-label': 'Caricamento',
+  },
+  parameters: {
+    controls: {
+      exclude: ['show-value', 'label', 'indeterminate', 'active', 'double', 'size'],
+    },
   },
   render: (params: ProgressStoryProps) => html`
     <div class="row">
@@ -253,6 +266,11 @@ export const Spinner: Story = {
     active: true,
     double: false,
     size: 'md',
+  },
+  parameters: {
+    controls: {
+      exclude: ['show-value', 'label', 'indeterminate'],
+    },
   },
   render: (params) => renderSpinner(params, 'Spinner'),
 };

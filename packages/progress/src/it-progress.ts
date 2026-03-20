@@ -169,6 +169,7 @@ export class ItProgress extends BaseComponent {
           aria-valuemin="0"
           aria-valuemax="100"
           part="progress-bar"
+          id="${this._id}"
         ></div>
       </div>
     `;
@@ -177,8 +178,7 @@ export class ItProgress extends BaseComponent {
       this.showValue || this.label,
       () => html`
         <div class="progress-bar-wrapper">
-          <div class="progress-bar-label">
-            <span class="visually-hidden">${this.itAriaLabel} </span>
+          <div class="progress-bar-label" aria-describedby="${this._id}" part="progress-bar-label">
             ${this._displayLabel}
           </div>
           ${bar}
@@ -216,14 +216,21 @@ export class ItProgress extends BaseComponent {
     );
 
     return html`
-      <div class="${classes}" part="spinner">
+      <div
+        class="${classes}"
+        part="spinner"
+        role="progressbar"
+        aria-label="${ifDefined(this.itAriaLabel || undefined)}"
+        aria-valuetext="${ifDefined(this.itAriaLabel || undefined)}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      >
         ${this.double
           ? html`
               <div class="progress-spinner-inner"></div>
               <div class="progress-spinner-inner"></div>
             `
           : ''}
-        <span class="visually-hidden">${this.itAriaLabel}</span>
       </div>
     `;
   }
