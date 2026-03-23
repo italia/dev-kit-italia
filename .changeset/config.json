@@ -38,6 +38,7 @@
       "@italia/select",
       "@italia/skiplinks",
       "@italia/sticky",
+      "@italia/timeline",
       "@italia/video"
     ]
   ],
