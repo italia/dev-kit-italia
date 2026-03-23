@@ -5,7 +5,7 @@ import * as Stories from './it-timeline.stories';
 
 # Timeline
 
-<description>Componente per la visualizzazione cronologica di eventi, roadmap e scadenze temporali.</description>
+<description>Rappresentazione grafica di una serie di eventi in ordine cronologico per descrivere la storia di un’istituzione o il progresso di un progetto</description>
 
 ## Cosa fa
 
@@ -18,6 +18,8 @@ Il componente timeline è disponibile in due varianti distinte:
 
 
 ## Accessibilità
+
+Segui queste indicazioni per garantire l'accessibilità del componente:
 
 - L'elemento contenitore del pin `<it-timeline-element>` (internamente un elemento heading), dovrà avere il livello intestazione corretto a seconda della gerarchia in pagina tramite l'attributo `heading-level`. Lo stesso concetto è valido per il titolo della card se usi una card come contenuto slottato (usa `heading-level` su `<it-card>`).
 - **Per punti data**: usa l'elemento semantico `<time>` con l'attributo `datetime` in formato ISO (es. `2025-10-14`). Inserisci un `<span class="visually-hidden">` con la data scritta per esteso.
@@ -145,7 +147,7 @@ Se non viene specificato, il colore di default è `primary`.
 
 Puoi anche avere punti con colori diversi all'interno della stessa timeline specificando l'attributo `color` solo sui punti desiderati.
 
-In questo caso, gli elementi `it-timeline-point` senza l'attributo `color` prenderanno il colore di default `primary` o il valre assegnato all'attributo `color` dell'elemento `it-timeline`, mentre i punti con l'attributo `color` prenderanno il colore specificato
+In questo caso, gli elementi `it-timeline-point` senza l'attributo `color` prenderanno il colore di default `primary` o il valore assegnato all'attributo `color` dell'elemento `it-timeline`, mentre i punti con l'attributo `color` prenderanno il colore specificato
 
 <Canvas of={Stories.PointListVariantiColore} />
 

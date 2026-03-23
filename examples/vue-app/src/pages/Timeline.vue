@@ -1,124 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
-import { html } from 'lit';
-import { ifDefined } from 'lit/directives/if-defined.js';
-import {
-  TIMELINE_ELEMENT_VARIANTS,
-  TIMELINE_HEADING_LEVELS,
-  TIMELINE_POINT_COLORS,
-  TIMELINE_POINT_LIST_TAGS,
-  type TimelineElementVariant,
-  type TimelineHeadingLevel,
-  type TimelinePointColor,
-  type TimelinePointListTag,
-} from '../src/types.js';
+<template>
+  <h1>Timeline</h1>
 
-interface TimelineElementProps {
-  variant: TimelineElementVariant;
-  date: string;
-  headingLevel: TimelineHeadingLevel;
-}
+  <!-- ============================================================ -->
+  <!-- Timeline classica -->
+  <!-- ============================================================ -->
 
-interface TimelinePointListProps {
-  as: TimelinePointListTag;
-  stackMobile: boolean;
-}
-
-interface TimelinePointProps {
-  color: TimelinePointColor;
-  alignTop: boolean;
-  compact: boolean;
-}
-
-const metaTimeline = {
-  title: 'Componenti/Timeline',
-  tags: ['a11y-ok', 'web-component', 'new'],
-  component: 'it-timeline',
-  parameters: {
-    layout: 'padded',
-  },
-} satisfies Meta;
-
-export default metaTimeline;
-type Story = StoryObj;
-
-// ---------------------------------------------------------------------------
-// Timeline classica
-// ---------------------------------------------------------------------------
-
-export const EsempioInterattivoClassica: Story = {
-  name: 'Esempio interattivo – Timeline classica',
-  tags: ['!dev'],
-  parameters: {
-    docs: {
-      canvas: {
-        sourceState: 'shown',
-      },
-    },
-  },
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: TIMELINE_ELEMENT_VARIANTS,
-      description:
-        'Variante colore del pin: vuota (futuro), `current` (presente, azzurro), `past` (passato, blu scuro)',
-      table: { defaultValue: { summary: '' } },
-    },
-    date: {
-      control: 'text',
-      description: 'Etichetta testuale del periodo (es. MAGGIO 2026)',
-      table: { defaultValue: { summary: '' } },
-    },
-    headingLevel: {
-      name: 'heading-level',
-      control: 'select',
-      options: TIMELINE_HEADING_LEVELS,
-      description: 'Livello heading del pin. Adattare alla gerarchia della pagina.',
-      table: { defaultValue: { summary: 'h3' } },
-    },
-  } as Meta<TimelineElementProps>['argTypes'],
-  args: {
-    variant: '',
-    date: 'MAGGIO 2026',
-    headingLevel: 'h3',
-  } as TimelineElementProps,
-  render: (args: Record<string, unknown>) => html`
-    <it-timeline>
-      <it-timeline-element
-        variant=${ifDefined((args.variant as string) || undefined)}
-        date=${ifDefined(args.date as string)}
-        heading-level=${ifDefined(args.headingLevel as string)}
-      >
-        <it-icon slot="pin-icon" name="it-file"></it-icon>
-        <it-card>
-          <a slot="title" href="#">Titolo del contenuto</a>
-          <figure slot="image" class="figure img-full">
-            <img
-              src="https://placeholderimage.eu/api/city/800/600"
-              alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
-            />
-          </figure>
-          <span slot="text">
-            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
-            righe, senza troncamento.
-          </span>
-          <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
-        </it-card>
-      </it-timeline-element>
-    </it-timeline>
-  `,
-};
-
-export const TimelineClassica: Story = {
-  name: 'Timeline classica',
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Il componente timeline classica mostra eventi passati, presenti e futuri lungo un asse verticale (mobile) o centrale (desktop). Il pin ha tre varianti di colore: `past` (blu scuro, passato), `current` (azzurro, presente) e senza classe (bianco, futuro).',
-      },
-    },
-  },
-  render: () => html`
+  <!-- Timeline classica -->
+  <section>
+    <h2>Timeline classica</h2>
+    <p>
+      Il componente timeline classica mostra eventi passati, presenti e futuri lungo un asse verticale (mobile) o
+      centrale (desktop). Il pin ha tre varianti di colore: <code>past</code> (blu scuro, passato),
+      <code>current</code> (azzurro, presente) e senza classe (bianco, futuro).
+    </p>
     <it-timeline>
       <it-timeline-element variant="past" date="MAGGIO 2026" heading-level="h3">
         <it-icon slot="pin-icon" name="it-file"></it-icon>
@@ -134,7 +28,7 @@ export const TimelineClassica: Story = {
             Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
             righe, senza troncamento.
           </span>
-          <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
         </it-card>
       </it-timeline-element>
 
@@ -146,7 +40,7 @@ export const TimelineClassica: Story = {
             Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
             righe, senza troncamento.
           </span>
-          <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
         </it-card>
       </it-timeline-element>
 
@@ -158,7 +52,7 @@ export const TimelineClassica: Story = {
             Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
             righe, senza troncamento.
           </span>
-          <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
         </it-card>
       </it-timeline-element>
 
@@ -170,7 +64,7 @@ export const TimelineClassica: Story = {
             Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
             righe, senza troncamento.
           </span>
-          <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
         </it-card>
       </it-timeline-element>
 
@@ -182,78 +76,22 @@ export const TimelineClassica: Story = {
             Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
             righe, senza troncamento.
           </span>
-          <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
         </it-card>
       </it-timeline-element>
     </it-timeline>
-  `,
-};
+  </section>
 
-// ---------------------------------------------------------------------------
-// Timeline point list – base
-// ---------------------------------------------------------------------------
+  <!-- ============================================================ -->
+  <!-- Timeline point list – base -->
+  <!-- ============================================================ -->
 
-export const EsempioInterattivoPointList: Story = {
-  name: 'Esempio interattivo – Timeline point list',
-  tags: ['!dev'],
-  parameters: {
-    docs: {
-      canvas: {
-        sourceState: 'shown',
-      },
-      description: {
-        story:
-          'La timeline point list è una variante compatta per presentare brevi sequenze di eventi o scadenze temporali.',
-      },
-    },
-  },
-  argTypes: {
-    as: {
-      control: 'select',
-      options: TIMELINE_POINT_LIST_TAGS,
-      description: 'Tag HTML della lista. `ol` è raccomandato per sequenze cronologiche.',
-      table: { defaultValue: { summary: 'ol' } },
-    },
-    stackMobile: {
-      name: 'stack-mobile',
-      control: 'boolean',
-      description: 'Su mobile dispone la sezione laterale in verticale sopra il contenuto. Usare con card complete.',
-      table: { defaultValue: { summary: 'false' } },
-    },
-    color: {
-      control: 'select',
-      options: TIMELINE_POINT_COLORS,
-      description:
-        'Colore predefinito della linea e del cerchio per tutti i punti. Singoli punti possono sovrascriverlo.',
-      table: { defaultValue: { summary: 'primary' } },
-    },
-    alignTop: {
-      name: 'align-top',
-      control: 'boolean',
-      description: 'Fissa il punto in cima al contenuto. Utile per contenuti lunghi.',
-      table: { defaultValue: { summary: 'false' } },
-    },
-    compact: {
-      control: 'boolean',
-      description: 'Rende la sezione laterale più compatta anche su desktop.',
-      table: { defaultValue: { summary: 'false' } },
-    },
-  } as Meta<TimelinePointListProps & TimelinePointProps>['argTypes'],
-  args: {
-    as: 'ol',
-    stackMobile: false,
-    color: 'primary',
-    alignTop: false,
-    compact: false,
-  } as TimelinePointListProps & TimelinePointProps,
-  render: (args: Record<string, unknown>) => html`
-    <it-timeline
-      variant="point-list"
-      as=${ifDefined(args.as as string)}
-      color=${ifDefined(args.color as string)}
-      ?stack-mobile=${args.stackMobile}
-    >
-      <it-timeline-point ?align-top=${args.alignTop} ?compact=${args.compact}>
+  <!-- Timeline point list -->
+  <section>
+    <h2>Timeline point list</h2>
+    <p>La timeline point list è una variante compatta per presentare brevi sequenze di eventi o scadenze temporali.</p>
+    <it-timeline variant="point-list" as="ol">
+      <it-timeline-point>
         <time slot="date" datetime="2025-10-14">
           <span class="visually-hidden">14 ottobre 2025</span>
           <span class="point-visual">
@@ -263,7 +101,7 @@ export const EsempioInterattivoPointList: Story = {
         </time>
         <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </it-timeline-point>
-      <it-timeline-point ?align-top=${args.alignTop} ?compact=${args.compact}>
+      <it-timeline-point>
         <time slot="date" datetime="2025-12-14">
           <span class="visually-hidden">14 dicembre 2025</span>
           <span class="point-visual">
@@ -274,12 +112,11 @@ export const EsempioInterattivoPointList: Story = {
         <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </it-timeline-point>
     </it-timeline>
-  `,
-};
+  </section>
 
-export const PointListConGiornoEMese: Story = {
-  name: 'Con giorno e mese',
-  render: () => html`
+  <!-- Con giorno e mese -->
+  <section>
+    <h2>Con giorno e mese</h2>
     <it-timeline variant="point-list">
       <it-timeline-point>
         <time slot="date" datetime="2025-10-14">
@@ -292,12 +129,11 @@ export const PointListConGiornoEMese: Story = {
         <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </it-timeline-point>
     </it-timeline>
-  `,
-};
+  </section>
 
-export const PointListConAnnoGiornoEMese: Story = {
-  name: 'Con anno, giorno e mese',
-  render: () => html`
+  <!-- Con anno, giorno e mese -->
+  <section>
+    <h2>Con anno, giorno e mese</h2>
     <it-timeline variant="point-list">
       <it-timeline-point>
         <time slot="date" datetime="2025-10-14">
@@ -311,12 +147,11 @@ export const PointListConAnnoGiornoEMese: Story = {
         <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </it-timeline-point>
     </it-timeline>
-  `,
-};
+  </section>
 
-export const PointListCompatto: Story = {
-  name: 'Layout compatto su desktop',
-  render: () => html`
+  <!-- Layout compatto su desktop -->
+  <section>
+    <h2>Layout compatto su desktop</h2>
     <it-timeline variant="point-list" compact>
       <it-timeline-point>
         <time slot="date" datetime="2025-10-14">
@@ -349,12 +184,11 @@ export const PointListCompatto: Story = {
         <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </it-timeline-point>
     </it-timeline>
-  `,
-};
+  </section>
 
-export const PointListTraguardiNumeri: Story = {
-  name: 'Traguardi con numeri e sigle',
-  render: () => html`
+  <!-- Traguardi con numeri e sigle -->
+  <section>
+    <h2>Traguardi con numeri e sigle</h2>
     <it-timeline variant="point-list">
       <it-timeline-point>
         <div slot="milestone">
@@ -387,12 +221,11 @@ export const PointListTraguardiNumeri: Story = {
         <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </it-timeline-point>
     </it-timeline>
-  `,
-};
+  </section>
 
-export const PointListMilestoneIcone: Story = {
-  name: 'Traguardi con icone',
-  render: () => html`
+  <!-- Traguardi con icone -->
+  <section>
+    <h2>Traguardi con icone</h2>
     <it-timeline variant="point-list">
       <it-timeline-point color="success">
         <div slot="milestone">
@@ -430,56 +263,78 @@ export const PointListMilestoneIcone: Story = {
         <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </it-timeline-point>
     </it-timeline>
-  `,
-};
+  </section>
 
-export const PointListVariantiColoreFull: Story = {
-  name: 'Varianti colore',
-  decorators: [(Story) => html` <div style="display: flex; gap: 2rem; flex-wrap: wrap;">${Story()}</div>`],
-  render: () => html`
-    ${(['primary', 'secondary', 'success', 'danger', 'warning', 'info'] as TimelinePointColor[]).map(
-      (color) =>
-        html` <it-timeline variant="point-list">
-          <it-timeline-point color=${color}>
-            <time slot="date" datetime="2025-10-14">
-              <span class="visually-hidden">14 ottobre 2025</span>
-              <span class="point-visual">
-                <span class="point-main font-monospace">14</span>
-                <span class="point-bottom font-monospace">ott</span>
-              </span>
-            </time>
-            <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </it-timeline-point>
-        </it-timeline>`,
-    )}
-  `,
-};
-
-export const PointListVariantiColore: Story = {
-  name: 'Varianti colore punti indipendenti',
-  render: () => html`
+  <!-- Varianti colore punti indipendenti -->
+  <section>
+    <h2>Varianti colore punti indipendenti</h2>
     <it-timeline variant="point-list">
-      ${([undefined, 'secondary', 'success', 'danger', 'warning', 'info'] as TimelinePointColor[]).map(
-        (color) => html`
-          <it-timeline-point color=${ifDefined(color)}>
-            <time slot="date" datetime="2025-10-14">
-              <span class="visually-hidden">14 ottobre 2025</span>
-              <span class="point-visual">
-                <span class="point-main font-monospace">14</span>
-                <span class="point-bottom font-monospace">ott</span>
-              </span>
-            </time>
-            <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </it-timeline-point>
-        `,
-      )}
+      <it-timeline-point>
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point color="secondary">
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point color="success">
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point color="danger">
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point color="warning">
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point color="info">
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
     </it-timeline>
-  `,
-};
+  </section>
 
-export const PointListServiziPubblici: Story = {
-  name: 'Timeline stile servizi pubblici',
-  render: () => html`
+  <!-- Timeline stile servizi pubblici -->
+  <section>
+    <h2>Timeline stile servizi pubblici</h2>
     <it-timeline variant="point-list" color="secondary">
       <it-timeline-point>
         <time slot="date" datetime="2022-01-04">
@@ -541,12 +396,11 @@ export const PointListServiziPubblici: Story = {
         </it-card>
       </it-timeline-point>
     </it-timeline>
-  `,
-};
+  </section>
 
-export const PointListComplessa: Story = {
-  name: 'Esempio complesso con card complete',
-  render: () => html`
+  <!-- Esempio complesso con card complete -->
+  <section>
+    <h2>Esempio complesso con card complete</h2>
     <it-timeline variant="point-list" stack-mobile>
       <it-timeline-point align-top>
         <time slot="date" datetime="2025-10-14">
@@ -562,7 +416,7 @@ export const PointListComplessa: Story = {
             Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
             righe, senza troncamento.
           </span>
-          <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
         </it-card>
       </it-timeline-point>
       <it-timeline-point align-top color="danger">
@@ -573,7 +427,7 @@ export const PointListComplessa: Story = {
             <span class="point-bottom font-monospace">ott</span>
           </span>
         </time>
-        <it-card slot="content" variant="inline-mini">
+        <it-card slot="content" variant="inline">
           <a slot="title" href="#">Titolo contenuto editoriale</a>
           <div slot="footer" class="it-card-taxonomy">
             <a href="#" class="it-card-category it-card-link">
@@ -581,7 +435,7 @@ export const PointListComplessa: Story = {
               Categoria
             </a>
           </div>
-          <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile, 2026</time>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile, 2026 </time>
           <figure slot="image" class="figure img-full">
             <img
               src="https://placeholderimage.eu/api/city/800/600"
@@ -599,7 +453,7 @@ export const PointListComplessa: Story = {
             </span>
           </span>
         </div>
-        <it-card slot="content" variant="inline-mini-reverse">
+        <it-card slot="content">
           <a slot="title" href="#">Titolo del contenuto</a>
           <figure slot="image" class="figure img-full">
             <img
@@ -611,9 +465,9 @@ export const PointListComplessa: Story = {
             Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
             righe, senza troncamento.
           </span>
-          <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
         </it-card>
       </it-timeline-point>
     </it-timeline>
-  `,
-};
+  </section>
+</template>

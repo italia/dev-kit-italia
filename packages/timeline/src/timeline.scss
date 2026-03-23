@@ -121,7 +121,10 @@
 // Point-list host
 .it-timeline-point-list {
   padding-left: 0;
-  list-style: none;
+
+  &::marker {
+    font-size: 0px;
+  }
 }
 
 // Slotted points take full width

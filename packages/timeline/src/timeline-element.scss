@@ -22,11 +22,6 @@
   display: block;
 }
 
-.col-12 {
-  padding-right: calc(var(--#{$prefix}gutter-x) * 0.5);
-  padding-left: calc(var(--#{$prefix}gutter-x) * 0.5);
-}
-
 // Inner content wrapper
 .timeline-element {
   position: relative;
