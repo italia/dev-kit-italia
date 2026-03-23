@@ -45,7 +45,7 @@
     position: absolute;
     z-index: 1;
     top: var(--it-timeline-point-stack-mobile-after-top, 0);
-    left: 63px;
+    left: 2rem;
     width: 2px;
     height: calc(100% + #{$v-gap * 3});
     background-color: var(--point-color, #{$primary});
@@ -158,6 +158,47 @@
 // Last item: line stops at bottom, no gap extension
 :host(:last-child) .point-aside::before {
   height: 100%;
+}
+
+// ── stack-mobile: on mobile the aside sits at top, dot must be repositioned ──
+// `stack-mobile` attr is toggled by it-timeline._onSlotChange() when the
+// parent it-timeline has stack-mobile set, so :host([stack-mobile]) is reliable.
+@include media-breakpoint-down(md) {
+  :host([stack-mobile]) {
+    .timeline-point .point-aside {
+      width: auto;
+      flex-direction: row-reverse;
+      padding-right: 0.5rem;
+      padding-left: 2.5rem;
+
+      // The row ::before takes over the vertical line role
+      &::before {
+        display: none;
+      }
+
+      // Dot sits on the vertical line at left: 2rem
+      &::after {
+        top: 50%;
+        right: auto;
+        left: 1.75rem;
+        transform: translateY(-50%);
+      }
+    }
+
+    .timeline-point .point-content {
+      flex: 1 1 100%;
+      margin-top: #{$v-gap * 2};
+      margin-left: 0;
+    }
+
+    // align-top: dot stays at the top of the text block
+    .timeline-point.timeline-point-align-top .point-aside::after {
+      top: 2.6rem;
+      right: auto;
+      left: 1.75rem;
+      transform: translateY(-5px);
+    }
+  }
 }
 
 // ── Content column ────────────────────────────────────────────────────────────

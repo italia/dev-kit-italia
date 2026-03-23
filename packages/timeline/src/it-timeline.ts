@@ -144,6 +144,8 @@ export class ItTimeline extends BaseComponent {
         if (this.compact && !point._hasExplicitCompact) {
           point.compact = this.compact;
         }
+        // Propagate stack-mobile so timeline-point.scss can use :host([stack-mobile])
+        point.toggleAttribute('stack-mobile', this.stackMobile);
       }
     }
   };

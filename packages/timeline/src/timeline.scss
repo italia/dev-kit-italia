@@ -15,7 +15,7 @@
 :host {
   display: block;
   --it-timeline-point-content-flex-basis: 0%;
-  --it-timeline-point-margin-bottom: $v-gap * 3;
+  --it-timeline-point-margin-bottom: 24px;
   --it-timeline-point-content-z-index: 1;
   --it-timeline-point-after-content: '';
   --it-timeline-point-stack-mobile-after-content: none;
@@ -26,7 +26,6 @@
     ::slotted(it-timeline-point) {
       --it-timeline-point-content-flex-basis: 100%;
       --it-timeline-point-content-flex-wrap: wrap;
-      --it-timeline-point-margin-bottom: 24px;
       --it-timeline-point-margin-top: 24px;
       --it-timeline-point-content-z-index: 2;
       --it-timeline-point-after-content: none;
@@ -112,7 +111,7 @@
 
   ::slotted(it-timeline-point) {
     --it-timeline-point-content-flex-basis: 0%;
-    --it-timeline-point-margin-bottom: #{$v-gap * 3};
+    --it-timeline-point-margin-bottom: 24px;
     --it-timeline-point-content-z-index: 1;
     --it-timeline-point-after-content: '';
     --it-timeline-point-stack-mobile-after-content: none;
