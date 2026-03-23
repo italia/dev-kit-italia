@@ -165,8 +165,7 @@ export const Bar: Story = {
 };
 
 export const ConEtichetta: Story = {
-  name: 'Con etichetta',
-  tags: ['!dev'],
+  name: 'Bar con etichetta',
   args: { type: 'bar', value: 35, showValue: true, label: '35%' },
   render: (params) => html`
     <it-progress type="bar" value="${params.value}" ?show-value="${params.showValue}" it-aria-label="Progresso">
@@ -176,16 +175,15 @@ export const ConEtichetta: Story = {
 };
 
 export const Indeterminato: Story = {
+  name: 'Bar indeterminata',
   args: { type: 'bar', indeterminate: true },
-  tags: ['!dev'],
   render: (params) => html`
     <it-progress type="bar" ?indeterminate="${params.indeterminate}" it-aria-label="In elaborazione..."></it-progress>
   `,
 };
 
 export const Colori: Story = {
-  tags: ['!dev'],
-  name: 'Varianti di colore',
+  name: 'Bar: varianti di colore',
   render: () => html`
     <div style="display: flex; flex-direction: column; gap: 12px;">
       <it-progress type="bar" value="25" color="success" it-aria-label="Caricamento - successo"></it-progress>
@@ -193,6 +191,27 @@ export const Colori: Story = {
       <it-progress type="bar" value="50" color="warning" it-aria-label="Caricamento - warning"></it-progress>
       <it-progress type="bar" value="66" color="danger" it-aria-label="Caricamento - danger"></it-progress>
     </div>
+  `,
+};
+
+export const Button: Story = {
+  name: 'Pulsante con progress bar',
+  args: { type: 'bar', showValue: false },
+  parameters: {
+    pageLayout: '',
+  },
+  render: (params) => html`
+    <it-button variant="primary" disabled class="m-4">
+      Label del pulsante
+      <it-icon name="it-github" color="inverse"></it-icon>
+      ${renderComponent({ ...params, type: 'bar' })}
+    </it-button>
+
+    <it-button variant="secondary" disabled class="m-4">
+      Label del pulsante
+      <it-icon name="it-github" color="inverse"></it-icon>
+      ${renderComponent({ ...params, type: 'bar' })}
+    </it-button>
   `,
 };
 
@@ -206,15 +225,16 @@ export const Donut: Story = {
     controls: {
       exclude: ['show-value', 'label', 'indeterminate', 'active', 'double', 'size'],
     },
+    pageLayout: 'center',
   },
   render: (params: ProgressStoryProps) => html`
     <div class="row">
-      <div class="col-6">
-        Stato iniziale (0%):<br /><br />
+      <div class="col-6 px-5">
+        <div class="text-center mb-3">Stato iniziale<br />(0%):</div>
         ${renderComponent({ ...params, value: 0 })}
       </div>
-      <div class="col-6">
-        Stato avanzamento (75%):<br /><br />
+      <div class="col-6 px-5">
+        <div class="text-center mb-3">Stato di avanzamento<br />(75%):</div>
         ${renderComponent({ ...params })}
       </div>
     </div>
@@ -276,7 +296,6 @@ export const Spinner: Story = {
 };
 
 export const SpinnerDoppio: Story = {
-  tags: ['!dev'],
   name: 'Spinner doppio',
   args: { type: 'spinner', active: true, double: true, size: 'md' },
   render: (params) => renderSpinner(params, 'Spinner doppio'),

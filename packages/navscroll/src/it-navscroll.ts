@@ -226,7 +226,6 @@ export class ItNavscroll extends BaseComponent {
     const backButton = document.createElement('it-button');
     backButton.setAttribute('slot', 'header');
     backButton.setAttribute('variant', 'link');
-    backButton.setAttribute('icon', 'it');
     backButton.setAttribute('block', '');
     backButton.innerHTML = `<it-icon name="it-chevron-left" size="sm" color="primary"></it-icon> <span>${this.backLabel}</span>`;
     backButton.addEventListener('click', () => {

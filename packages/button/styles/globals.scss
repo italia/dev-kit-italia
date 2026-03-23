@@ -8,6 +8,19 @@ it-button {
     --it-host-display: inline-flex;
     align-items: center;
   }
+
+  it-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+
+    width: 100%;
+
+    &::part(progress) {
+      --#{$prefix}progress-border-radius: 0 0 var(--#{$prefix}radius-smooth) var(--#{$prefix}radius-smooth);
+    }
+  }
 }
 
 .bg-dark {
