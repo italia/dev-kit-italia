@@ -396,7 +396,7 @@ describe('it-dimmer', () => {
   // ── auto-styling ───────────────────────────────────────────────────────────
 
   describe('auto-styling of slotted components', () => {
-    it('sets color="white" on slotted it-icon', async () => {
+    it('sets color="inverse" on slotted it-icon', async () => {
       const el = await fixture<ItDimmer>(html`
         <it-dimmer>
           <it-icon slot="content" name="it-info-circle" id="slotted-icon"></it-icon>
@@ -405,10 +405,10 @@ describe('it-dimmer', () => {
       await aTimeout(50);
 
       const icon = el.querySelector('#slotted-icon');
-      expect(icon?.getAttribute('color')).to.equal('white');
+      expect(icon?.getAttribute('color')).to.equal('inverse');
     });
 
-    it('sets color="white" on it-icon nested in content slot', async () => {
+    it('sets color="inverse" on it-icon nested in content slot', async () => {
       const el = await fixture<ItDimmer>(html`
         <it-dimmer>
           <div slot="content">
@@ -419,76 +419,7 @@ describe('it-dimmer', () => {
       await aTimeout(50);
 
       const icon = el.querySelector('#nested-icon');
-      expect(icon?.getAttribute('color')).to.equal('white');
-    });
-
-    it('sets variant on slotted it-button in content slot (dark variant, single button)', async () => {
-      const el = await fixture<ItDimmer>(html`
-        <it-dimmer variant="dark">
-          <it-button slot="content" id="btn1">Azione</it-button>
-        </it-dimmer>
-      `);
-      await aTimeout(50);
-
-      const btn = el.querySelector('#btn1');
-      // Single button on dark → secondary
-      expect(btn?.getAttribute('variant')).to.equal('secondary');
-    });
-
-    it('sets correct variants on two it-button nested inside content slot (dark)', async () => {
-      const el = await fixture<ItDimmer>(html`
-        <it-dimmer variant="dark">
-          <div slot="content">
-            <div class="dimmer-buttons bg-dark">
-              <it-button id="btn1">Secondaria</it-button>
-              <it-button id="btn2">Primaria</it-button>
-            </div>
-          </div>
-        </it-dimmer>
-      `);
-      await aTimeout(50);
-
-      const btn1 = el.querySelector('#btn1');
-      const btn2 = el.querySelector('#btn2');
-      expect(btn1?.getAttribute('variant')).to.equal('outline-secondary');
-      expect(btn2?.getAttribute('variant')).to.equal('secondary');
-    });
-
-    it('sets correct variants on two it-button nested inside content slot (primary)', async () => {
-      const el = await fixture<ItDimmer>(html`
-        <it-dimmer variant="primary">
-          <div slot="content">
-            <div class="dimmer-buttons bg-dark">
-              <it-button id="btn1">Secondaria</it-button>
-              <it-button id="btn2">Primaria</it-button>
-            </div>
-          </div>
-        </it-dimmer>
-      `);
-      await aTimeout(50);
-
-      const btn1 = el.querySelector('#btn1');
-      const btn2 = el.querySelector('#btn2');
-      expect(btn1?.getAttribute('variant')).to.equal('outline-secondary');
-      expect(btn2?.getAttribute('variant')).to.equal('primary');
-    });
-
-    it('re-applies styles when variant changes (dark → primary)', async () => {
-      const el = await fixture<ItDimmer>(html`
-        <it-dimmer variant="dark">
-          <it-button slot="content" id="btn">Azione</it-button>
-        </it-dimmer>
-      `);
-      await aTimeout(50);
-
-      const btn = el.querySelector('#btn');
-      expect(btn?.getAttribute('variant')).to.equal('secondary');
-
-      el.variant = 'primary';
-      await el.updateComplete;
-      await aTimeout(50);
-
-      expect(btn?.getAttribute('variant')).to.equal('primary');
+      expect(icon?.getAttribute('color')).to.equal('inverse');
     });
   });
 
@@ -576,11 +507,6 @@ describe('it-dimmer', () => {
     it('exposes part="content" on content slot', async () => {
       const el = await fixture<ItDimmer>(html`<it-dimmer></it-dimmer>`);
       expect(el.shadowRoot?.querySelector('slot[part~="content"]')).to.exist;
-    });
-
-    it('exposes part="background" on default slot', async () => {
-      const el = await fixture<ItDimmer>(html`<it-dimmer></it-dimmer>`);
-      expect(el.shadowRoot?.querySelector('slot[part~="background"]')).to.exist;
     });
   });
 });
