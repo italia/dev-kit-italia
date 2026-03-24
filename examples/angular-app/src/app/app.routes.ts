@@ -89,6 +89,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/collapse.component').then((c) => c.CollapseComponent),
   },
   {
+    title: 'Dimmer',
+    path: 'dimmer',
+    loadComponent: () => import('./pages/dimmer.component').then((c) => c.DimmerComponent),
+  },
+  {
     title: 'Dropdown',
     path: 'dropdown',
     loadComponent: () => import('./pages/dropdown.component').then((c) => c.DropdownComponent),

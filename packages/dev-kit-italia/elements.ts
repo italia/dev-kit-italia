@@ -17,6 +17,7 @@ import '@italia/chip/it-chip.js';
 // import '@italia/collapse/it-collapse.js';
 import '@italia/dropdown/it-dropdown-item.js';
 import '@italia/dropdown/it-dropdown.js';
+import '@italia/dimmer/it-dimmer.js';
 import '@italia/icon/it-icon.js';
 import '@italia/input/it-input.js';
 import '@italia/megamenu/it-megamenu.js';

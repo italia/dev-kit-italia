@@ -63,6 +63,7 @@
     "@italia/checkbox": "workspace:^",
     "@italia/chip": "workspace:^",
     "@italia/collapse": "workspace:^",
+    "@italia/dimmer": "workspace:^",
     "@italia/dropdown": "workspace:^",
     "@italia/i18n": "workspace:^",
     "@italia/rating": "workspace:^",

@@ -38,6 +38,7 @@ const componentsMenuItems = [
   { label: 'Checkbox', href: '/src/checkbox' },
   { label: 'Chip', href: '/src/chip' },
   { label: 'Collapse', href: '/src/collapse ' },
+  { label: 'Dimmer', href: '/src/dimmer' },
   { label: 'Dropdown', href: '/src/dropdown' },
   { label: 'Form', href: '/src/form' },
   { label: 'Forward', href: '/src/forward' },

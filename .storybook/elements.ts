@@ -10,6 +10,7 @@ import '../packages/carousel/dist/src';
 import '../packages/card/dist/src';
 import '../packages/checkbox/dist/src';
 import '../packages/chip/dist/src';
+import '../packages/dimmer/dist/src';
 import '../packages/dropdown/dist/src';
 import '../packages/hero/dist/src';
 import '../packages/icon/dist/src';

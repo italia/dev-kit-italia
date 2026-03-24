@@ -14,6 +14,7 @@ import Card from './pages/Card.svelte';
 import Checkbox from './pages/Checkbox.svelte';
 import Chip from './pages/Chip.svelte';
 import Collapse from './pages/Collapse.svelte';
+import Dimmer from './pages/Dimmer.svelte';
 import Dropdown from './pages/Dropdown.svelte';
 import Form from './pages/Form.svelte';
 import Forward from './pages/Forward.svelte';
@@ -56,6 +57,7 @@ export const AppRoutes = [
   { path: '/checkbox', element: Checkbox, title: 'Checkbox' },
   { path: '/chip', element: Chip, title: 'Chip' },
   { path: '/collapse', element: Collapse, title: 'Collapse' },
+  { path: '/dimmer', element: Dimmer, title: 'Dimmer' },
   { path: '/dropdown', element: Dropdown, title: 'Dropdown' },
   { path: '/form', element: Form, title: 'Form' },
   { path: '/forward', element: Forward, title: 'Forward' },
