@@ -84,17 +84,12 @@ Imposta l'attributo ``position="top"`` per mostrare il trigger di apertura della
 
 
 ## Con barra di progresso
-Per mostrare la barra di progresso, aggiungi il markup della progressbar all'interno del div con classe `link-list-wrapper`.
+Per mostrare la barra di progresso, aggiungi il componente `<it-progress>` all'interno del div con classe `link-list-wrapper`, assegnandogli la classe `class="it-navscroll-progressbar"`.
 
-La progressbar deve avere l'attributo `role="progressbar"` per poter essere gestita dal componente Navscroll e per assicurarne l'accessibilità.
+
 
 ```html
-<div class="progress-bar it-navscroll-progressbar"
-  role="progressbar"
-  aria-valuemin="0"
-  aria-valuemax="100"
-  aria-label="Progress bar"
-></div>
+ <it-progress type="bar" value="0" class="it-navscroll-progressbar" aria-label="Progress bar"></it-progress>
 ```
 
 <Canvas of={Stories.Progress} />

@@ -7,6 +7,14 @@ it-button {
   &:not(:defined) {
     --it-host-display: inline-flex;
     align-items: center;
+
+    &:has(it-progress) {
+      position: relative;
+
+      it-progress {
+        --it-fouc-bg: #ccc;
+      }
+    }
   }
 
   it-progress {

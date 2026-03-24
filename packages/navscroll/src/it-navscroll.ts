@@ -272,7 +272,7 @@ export class ItNavscroll extends BaseComponent {
       window.addEventListener('scroll', () => this.onScroll());
     }
 
-    this.progressEl = this.querySelector('[role="progressbar"]')!; // diventerà this.querySelector('it-progress');
+    this.progressEl = this.querySelector('it-progress')!;
     if (!this.progressEl) return;
 
     // init a 0%
@@ -385,8 +385,7 @@ export class ItNavscroll extends BaseComponent {
     let percent = (scrollTop / maxScrollable) * 100;
     percent = Math.min(100, Math.max(0, percent));
 
-    this.progressEl.setAttribute('aria-valuenow', percent.toFixed(0));
-    this.progressEl.style.width = `${percent.toFixed(0)}%`;
+    this.progressEl.setAttribute('value', percent.toFixed(0));
   }
 
   /*

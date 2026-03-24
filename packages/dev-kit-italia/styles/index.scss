@@ -90,6 +90,10 @@
 @import './components/list';
 @import './components/sidebar';
 
+.navbar-collapsable .menu-wrapper {
+  z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page
+}
+
 .it-footer-main .it-brand-wrapper ::part(icon) {
   width: var(--#{$prefix}footer-brand-icon-size);
   height: var(--#{$prefix}footer-brand-icon-size);
