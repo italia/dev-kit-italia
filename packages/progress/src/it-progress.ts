@@ -117,7 +117,7 @@ export class ItProgress extends BaseComponent {
   }
 
   private get _displayLabel() {
-    return this.label || `${this.value}%`;
+    return this.label || html`<span aria-hidden="true">${this.value}%</span>`;
   }
 
   private _setDonutProgress(progress: number) {

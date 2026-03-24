@@ -202,11 +202,6 @@ $it-components: (
     width: 100%,
     border-radius: var(--#{$prefix}radius-smooth, 4px),
   ),
-  'it-progress[type="bar"]': (
-    height: 4px,
-    width: 100%,
-    border-radius: var(--#{$prefix}radius-smooth, 4px),
-  ),
   'it-progress[type="spinner"]': (
     height: 48px,
     width: 48px,
