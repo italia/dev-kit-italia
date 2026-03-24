@@ -1659,7 +1659,7 @@ importers:
         specifier: 'catalog:'
         version: 4.0.0
       '@rollup/plugin-commonjs':
-        specifier: ^28.0.0
+        specifier: ^28.0.6
         version: 28.0.9(rollup@4.59.0)
       '@rollup/plugin-node-resolve':
         specifier: ^16.0.1

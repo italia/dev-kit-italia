@@ -44,9 +44,9 @@
 
     <h3 class="mt-4">Dimensioni dello spinner</h3>
     <div class="d-flex flex-wrap gap-4 align-items-center">
-      <it-progress type="spinner" size="sm" it-aria-label="Spinner small"></it-progress>
-      <it-progress type="spinner" size="lg" it-aria-label="Spinner large"></it-progress>
-      <it-progress type="spinner" size="xl" it-aria-label="Spinner extra large"></it-progress>
+      <it-progress type="spinner" active size="sm" it-aria-label="Spinner small"></it-progress>
+      <it-progress type="spinner" active size="lg" it-aria-label="Spinner large"></it-progress>
+      <it-progress type="spinner" active size="xl" it-aria-label="Spinner extra large"></it-progress>
     </div>
 
     <h3 class="mt-4">Spinner doppio</h3>

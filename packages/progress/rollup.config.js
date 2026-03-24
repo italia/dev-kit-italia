@@ -1,5 +1,8 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
+
+import commonjs from '@rollup/plugin-commonjs';
+
 import { litScss } from 'rollup-plugin-scss-lit';
 
 /**
@@ -14,6 +17,7 @@ export default {
   },
   plugins: [
     resolve(),
+    commonjs({}),
     typescript({
       tsconfig: './tsconfig.build.json',
       module: 'NodeNext',
@@ -26,5 +30,5 @@ export default {
       },
     }),
   ],
-  external: [/^lit(\/|$)/, /^@italia\//, 'progressbar.js'],
+  external: [/^lit(\/|$)/, /^@italia\//],
 };

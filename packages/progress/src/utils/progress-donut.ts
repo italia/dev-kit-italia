@@ -1,3 +1,6 @@
+import ProgressBarCircle from 'progressbar.js/src/circle.js';
+import ProgressBar from 'progressbar.js';
+
 export type ProgressDonutConfig = {
   color: string;
   trailColor: string;
@@ -42,6 +45,7 @@ export class ProgressDonut {
   }
 
   static async create(container: HTMLElement, config: ProgressDonutConfig) {
+    console.log(ProgressBarCircle, ProgressBar);
     const CircleConstructor = await this._loadCircleConstructor();
 
     const bar = new CircleConstructor(container, {
