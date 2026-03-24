@@ -53,6 +53,7 @@
   "dependencies": {
     "@italia/avatar": "workspace:^",
     "@italia/autocomplete": "workspace:^",
+    "@italia/bottom-nav": "workspace:^",
     "@italia/callout": "workspace:^",
     "@italia/accordion": "workspace:^",
     "@italia/breadcrumbs": "workspace:^",

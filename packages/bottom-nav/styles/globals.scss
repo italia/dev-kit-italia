@@ -1,0 +1,103 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+
+// Light DOM styles for content inside the slotted <a>.
+// ::slotted() in shadow DOM cannot reach descendants of the slotted element,
+// so .bottom-nav-label, .bottom-nav-badge, .bottom-nav-alert and .icon
+// must be styled here in the global / host-page stylesheet.
+
+:root {
+  --it-bottom-nav-height: 64px;
+}
+
+it-bottom-nav-item {
+  a {
+    .icon {
+      fill: var(--#{$prefix}color-text-secondary);
+    }
+
+    .badge-wrapper {
+      position: relative;
+    }
+
+    .bottom-nav-label {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.625rem;
+      font-weight: 600;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .bottom-nav-badge,
+    .bottom-nav-alert {
+      position: absolute;
+      display: block;
+      border: 1px solid var(--#{$prefix}color-text-inverse);
+      background-color: var(--#{$prefix}color-background-primary);
+    }
+
+    .bottom-nav-badge {
+      top: 0;
+      right: 0;
+      min-width: 1.15rem;
+      padding: 4px 6px;
+      border-radius: 2rem;
+      color: var(--#{$prefix}color-text-inverse);
+      font-size: 0.625rem;
+      font-style: normal;
+      line-height: 1;
+    }
+
+    .bottom-nav-alert {
+      top: 0;
+      right: 4px;
+      min-width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      it-icon::part(icon) {
+        fill: var(--#{$prefix}color-text-primary);
+      }
+
+      .bottom-nav-label {
+        color: var(--#{$prefix}color-text-primary);
+      }
+    }
+  }
+
+  &[active] a {
+    it-icon::part(icon) {
+      fill: var(--#{$prefix}color-text-primary);
+    }
+  }
+}
+
+// Progressive enhancement: styles applied when custom elements are NOT yet defined
+
+it-bottom-nav:not(:defined) {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  overflow: hidden;
+  height: 64px;
+
+  it-bottom-nav-item:not(:defined) {
+    margin: 8px;
+    text-align: center;
+
+    a {
+      display: block;
+      color: var(--#{$prefix}color-text-secondary);
+      text-decoration: none;
+
+      &.active {
+        color: var(--#{$prefix}color-primary);
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
+@import 'bootstrap-italia/src/scss/components/bottomnav';
+
+.bottom-nav {
+  position: relative !important;
+  height: var(--it-bottom-nav-height) !important;
+}
+
+:host {
+  position: fixed;
+  z-index: 1030;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.bottom-nav-label {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.bottom-nav:before {
+  top: 0px !important;
+}
