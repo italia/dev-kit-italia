@@ -34,7 +34,10 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Accessibilità
 
-- Imposta sempre una `it-aria-label` significativa quando il contesto non è già chiaro.
+Il componente e' progettato per essere accessibile e utilizza l'attributo aria `role=progressbar` con `aria-valuenow` impostato al valore dell'attributo `value` di `<it-progress>`. 
+Gli attributi `aria-value-min` e `aria-value-max` sono sempre impostati rispettivamente a `0` e `100` dal componente, pertanto l'attributo `value` dovrà essere sempre un valore compreso tra 0 e 100. 
+
+- Imposta sempre una `it-aria-label` significativa quando il contesto non è già chiaro. 
 - Per la variante `spinner`, fornisci un testo per tecnologie assistive nell'attributo `it-aria-label`, oppure usa il fallback predefinito.
 
 
