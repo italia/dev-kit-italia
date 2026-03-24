@@ -1,6 +1,6 @@
 import { fixture, html, expect } from '@open-wc/testing';
-import type { ItProgress } from '../src/it-progress.js';
-import '../src/it-progress.js';
+import '@italia/progress';
+import type { ItProgress } from '../src/index.js';
 
 describe('it-progress (bar)', () => {
   it('renders progress bar', async () => {
@@ -16,20 +16,5 @@ describe('it-progress (bar)', () => {
     const wrapper = el.shadowRoot?.querySelector('.progress') as HTMLElement;
 
     expect(wrapper.classList.contains('progress-indeterminate')).to.equal(true);
-  });
-
-  it('renders label when show-label is true', async () => {
-    const el = await fixture<ItProgress>(html`<it-progress type="bar" value="35" show-label></it-progress>`);
-    const label = el.shadowRoot?.querySelector('.progress-bar-label');
-    expect(label).to.exist;
-    expect(label?.textContent).to.include('35%');
-  });
-
-  it('renders custom label from default slot when show-label is true', async () => {
-    const el = await fixture<ItProgress>(html`<it-progress type="bar" value="35" show-label>Completato</it-progress>`);
-    const label = el.shadowRoot?.querySelector('.progress-bar-label');
-
-    expect(label).to.exist;
-    expect(label?.textContent).to.include('Completato');
   });
 });

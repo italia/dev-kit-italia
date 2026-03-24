@@ -1,6 +1,6 @@
 import { fixture, html, expect } from '@open-wc/testing';
-import type { ItProgress } from '../src/it-progress.js';
-import '../src/it-progress.js';
+import '@italia/progress';
+import type { ItProgress } from '../src/index.js';
 
 describe('it-progress (spinner)', () => {
   it('renders standard spinner', async () => {

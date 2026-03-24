@@ -1,6 +1,6 @@
-import { fixture, html, expect } from '@open-wc/testing';
-import type { ItProgress } from '../src/it-progress.js';
-import '../src/it-progress.js';
+import { fixture, html, expect, oneEvent } from '@open-wc/testing';
+import '@italia/progress';
+import type { ItProgress } from '../src/index.js';
 
 describe('it-progress (donut)', () => {
   it('renders donut wrapper', async () => {
@@ -21,9 +21,16 @@ describe('it-progress (donut)', () => {
   });
 
   it('reflects aria-valuenow', async () => {
-    const el = await fixture<ItProgress>(html`<it-progress type="donut" value="0.33"></it-progress>`);
-    const donut = el.shadowRoot?.querySelector('.progress-donut') as HTMLElement;
+    const el = await fixture<ItProgress>(html`<it-progress type="donut" value="33"></it-progress>`);
 
-    expect(donut.getAttribute('aria-valuenow')).to.equal('33');
+    const eventPromise = oneEvent(el, 'it-donut-updated') as Promise<CustomEvent<{ value: string | number }>>;
+
+    await el.updateComplete;
+
+    const event = await eventPromise;
+
+    const value = el.shadowRoot?.querySelector('.progress-donut')?.getAttribute('aria-valuenow');
+    expect(event.detail.value).to.equal(33);
+    expect(value).to.equal('33');
   });
 });

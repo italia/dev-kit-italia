@@ -148,6 +148,15 @@ export class ItProgress extends BaseComponent {
       value: this.value / 100,
       onStep: (value) => {
         this._donutContainer?.setAttribute('aria-valuenow', String(value));
+        if (this.value === value) {
+          this.dispatchEvent(
+            new CustomEvent('it-donut-updated', {
+              detail: { value, el: this._donutContainer },
+              bubbles: true,
+              composed: true,
+            }),
+          );
+        }
       },
     });
   }
