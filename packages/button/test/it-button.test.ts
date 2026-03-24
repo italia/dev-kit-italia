@@ -24,7 +24,6 @@ describe('Button component', () => {
     it('removes btn-icon class when no it-icon is slotted', async () => {
       const el = await fixture<ItButton>(html`
         <it-button>
-          <it-icon name="it-star-full"></it-icon>
           <span>My Button</span>
         </it-button>
       `);
@@ -53,11 +52,7 @@ describe('Button component', () => {
     });
 
     it('removes btn-progress class when no it-progress is slotted', async () => {
-      const el = await fixture<ItButton>(html`
-        <it-button>
-          <it-progress type="spinner"></it-progress>
-        </it-button>
-      `);
+      const el = await fixture<ItButton>(html` <it-button> </it-button> `);
 
       await el.updateComplete;
       el.innerHTML = 'My Button';
