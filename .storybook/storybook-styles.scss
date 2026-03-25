@@ -263,6 +263,7 @@ table.docblock-argstable {
 .w100-layout {
   width: 100%;
 }
+
 #storybook-root:has(.w100-layout) {
   width: 80%;
 }
@@ -270,13 +271,39 @@ table.docblock-argstable {
 .docs-story div[scale='1'],
 .innerZoomElementWrapper {
   &:has(.w100-layout) {
-    width: 100% !important;
     display: block !important;
+    width: 100% !important;
   }
 }
+
 .docs-story div[scale='1']:has(.w100-layout) {
   margin-bottom: 2rem;
 }
+//------------
+
+//toolbar layout
+.toolbar-layout {
+  position: relative;
+  width: 50%;
+  margin: auto;
+  border: 1px solid #ccc;
+  min-height: 400px;
+  border-radius: 4px;
+  background-color: #eaeaea;
+}
+
+#storybook-root:has(.toolbar-layout) {
+  width: 50%;
+}
+
+.docs-story div[scale='1'],
+.innerZoomElementWrapper {
+  &:has(.toolbar-layout) {
+    display: block !important;
+    width: 100% !important;
+  }
+}
+
 //------------
 
 //per rendere scollabili le storie di affix

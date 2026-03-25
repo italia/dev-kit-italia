@@ -1,0 +1,14 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/components/toolbar';
+
+@import 'bootstrap-italia/src/scss/base/mixins/visually-hidden';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+:host {
+  display: block;
+}
+
+.toolbar-vertical > ul {
+  overflow-y: scroll;
+}

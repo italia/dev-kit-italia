@@ -1,0 +1,22 @@
+it-toolbar {
+  --it-host-display: block;
+
+  --toolbar-icon-color: var(--#{$prefix}secondary);
+  --toolbar-color: var(--#{$prefix}color-text-secondary);
+  --toolbar-active-color: var(--#{$prefix}color-link);
+  --toolbar-disabled-color: var(--#{$prefix}300);
+  --toolbar-hover-color: var(--#{$prefix}color-link-hover);
+
+  &[size='sm'] {
+    it-toolbar-item::part(icon) {
+      --#{$prefix}icon-size-m: var(--#{$prefix}icon-size-s);
+    }
+  }
+}
+
+it-toolbar-item {
+  &::part(toolbar-item-element) {
+    --#{$prefix}spacing-xs: 0;
+    --#{$prefix}spacing-s: 0;
+  }
+}

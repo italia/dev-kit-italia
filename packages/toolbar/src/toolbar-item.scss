@@ -1,0 +1,64 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins/visually-hidden';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+li {
+  list-style-type: none;
+  margin: 0 8px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+a,
+li > * {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &,
+  .toolbar-label {
+    color: var(--toolbar-color);
+  }
+
+  it-icon {
+    --#{$prefix}icon-default: var(--toolbar-icon-color);
+  }
+
+  &.active {
+    --toolbar-color: var(--toolbar-active-color);
+    --toolbar-icon-color: var(--toolbar-active-color);
+  }
+
+  &.disabled {
+    --toolbar-color: var(--toolbar-disabled-color);
+    --toolbar-icon-color: var(--toolbar-disabled-color);
+    cursor: not-allowed;
+  }
+
+  &:not(.disabled):hover {
+    text-decoration: underline;
+    --toolbar-color: var(--toolbar-hover-color);
+    --toolbar-icon-color: var(--toolbar-hover-color);
+  }
+
+  // hover fix for ie11
+  /* stylelint-disable */
+  _:-ms-fullscreen,
+  &:not(.disabled):hover {
+    text-decoration: none;
+  }
+}
+
+// text label
+.toolbar-label {
+  margin-top: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  display: block;
+}

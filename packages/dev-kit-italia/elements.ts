@@ -34,6 +34,8 @@ import '@italia/section/it-section.js';
 import '@italia/select/it-select.js';
 import '@italia/skiplinks/it-skiplinks.js';
 import '@italia/sticky/it-sticky.js';
+import '@italia/toolbar/it-toolbar.js';
+import '@italia/toolbar/it-toolbar-item.js';
 import '@italia/video/it-video.js';
 
 import { registerTranslation } from '@italia/i18n/i18n.js';

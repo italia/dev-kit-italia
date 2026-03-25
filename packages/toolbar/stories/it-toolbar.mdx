@@ -1,0 +1,94 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-toolbar.stories';
+
+<Meta of={Stories} />
+
+# Toolbar
+
+<description>Menu di navigazione a icone che può contenere link, pulsanti e dropdown</description>
+
+## Cosa fa
+Il componente `it-toolbar` è un elemento contenitore di link, pulsanti o dropdown.
+È particolarmente utile per realizzare applicazioni molto specifiche, come ad esempio dashboard o strumenti di monitoraggio.
+Consiste in un elenco `<ul>` con tanti elementi `<li>` quante sono le voci richieste.
+Occupa tutta la larghezza del suo contenitore, adattandosi di conseguenza, e può essere di tre dimensioni diverse: grande, media e piccola per meglio adattarsi allo spazio disponibile.
+
+[Approfondisci come e quando usare il componente Toolbar](https://designers.italia.it/design-system/componenti/toolbar/)
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+
+<Controls of={Stories.EsempioInterattivo} />
+
+## Accessibilità [[TODO]]
+Il componente `it-toolbar` è progettato per essere accessibile e conforme agli standard di accessibilità. Ecco alcune linee guida per garantire che il tuo utilizzo del componente sia accessibile:
+- **Etichette chiare**: Assicurati che ogni elemento all'interno della toolbar abbia un'etichetta chiara e descrittiva. Utilizza testo visibile o, se le etichette sono nascoste, assicurati di fornire una descrizione accessibile tramite attributi ARIA o elementi visivamente nascosti.
+
+
+
+
+## Varianti di dimensione
+
+La Toolbar si adatta automaticamente in larghezza al suo contenitore. Per ottimizzare lo spazio disponibile l'elemento è fornito in tre versioni: grande, media e piccola.
+
+### Toolbar grande
+
+La versione predefinita dell'elemento è quella con icone grandi e label.
+
+<Canvas of={Stories.ToolbarGrande} />
+
+### Toolbar media
+
+Applicando l'attributo `size="md"` alla Toolbar si ottiene una versione di dimensioni medie. In questo caso le label, vengono automaticamente nascoste visivamente dal componente tramite la classe `.visually-hidden`, per rendere disponibile la descrizione agli screen reader.
+
+<Canvas of={Stories.ToolbarMedia} />
+
+### Toolbar piccola
+
+Applicando l'attributo `size="sm"` alla Toolbar si ottiene la versione più piccola. Anche in questo caso le label, vengono automaticamente nascoste visivamente dal componente tramite la classe `.visually-hidden`, per rendere disponibile la descrizione agli screen reader.
+
+<Canvas of={Stories.ToolbarPiccola} />
+
+## Orientamento verticale
+
+Applicando l'attributo `orientation="vertical"` alla Toolbar gli elementi vengono visualizzati in colonna.
+
+<Canvas of={Stories.ToolbarVertical} />
+
+## Stato degli elementi
+
+### Elemento attivo
+Al tag `<a>` dell'elemento attivo va applicata la classe `.active`.
+
+### Elemento disabilitato
+Gli elementi disabilitati avranno una classe `.disabled` con ulteriori accorgimenti relativi all'accessibilità:
+- link (`<a>`): aggiungere l'attributo HTML `disabled` al tag
+- pulsante (`<button>`): aggiungere l'attributo `aria-disabled="true"`.
+
+<Canvas of={Stories.ToolbarDisabilitata} />
+
+## Con divisori
+
+Per aggiungere degli elementi divisori fra gli elementi utilizzare dei tag `<li>` con classe `.toolbar-divider`, aggiungendo il ruolo separatore `role="separator"` per indicarne la presenza agli screen reader e `aria-orientation="vertical"` per indicarne l'orientamento.
+
+<Canvas of={Stories.ToolbarConDivisori} />
+
+## Con badge
+
+I Badge possono essere utilizzati per indicare contenuti non letti o alert di vario tipo. Il numero dei contenuti non letti o nuovi va indicato anche all'interno della label in uno `<span>` con classe `.visually-hidden` riservato agli screen reader.
+
+<Canvas of={Stories.ToolbarConBadge} />
+
+## Accessibilità
+
+Lo stato delle verifiche di accessibilità effettuate sul componente Bootstrap Italia:
+
+- **Visivamente accessibile**: Uso e contrasto dei colori, leggibilità
+- **Amichevole con lettori di schermo**: Struttura titolazioni, etichette e testi alternativi
+- **Navigabile**: Focus, struttura, navigazione da tastiera o altri device
+- **Comprensibile**: Comprensibile, prevedibile, gestione semplice dell'errore
+
+Per le label non visive, utilizzare gli `<span>` con classe `.visually-hidden` per garantire l'accessibilità ai lettori di schermo.

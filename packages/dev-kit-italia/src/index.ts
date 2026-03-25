@@ -21,6 +21,7 @@ export * from '@italia/radio';
 export * from '@italia/section';
 export * from '@italia/skiplinks';
 export * from '@italia/sticky';
+export * from '@italia/toolbar';
 export * from '@italia/video';
 
 export { registerTranslation };
