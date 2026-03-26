@@ -57,6 +57,7 @@ const componentsMenuItems = [
   { label: 'Select', href: '/src/select' },
   { label: 'Sidebar', href: '/src/sidebar' },
   { label: 'Skiplinks', href: '/src/skiplinks' },
+  { label: 'Bottom Nav', href: '/src/bottom-nav' },
   { label: 'Sticky', href: '/src/sticky' },
   { label: 'Video', href: '/src/video' },
 ];

@@ -187,24 +187,37 @@ export class StickyController<T extends StickyElement = StickyElement> implement
     return !!(a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING);
   }
 
-  protected getPreviousActiveStickies(): StickyElement[] {
-    const allActiveStickies = Array.from(
-      document.querySelectorAll('it-sticky[stackable].bs-is-sticky, it-sticky[stackable].bs-is-fixed'),
-    ) as StickyElement[];
-
-    return allActiveStickies.filter((sticky) => {
-      if (sticky === this.hostElement) return false;
-      return this.isBeforeInDOM(sticky, this.hostElement);
+  /**
+   * Walks the DOM from `document.body` using a TreeWalker and collects every
+   * element for which `predicate` returns true.
+   *
+   * Compared to `querySelectorAll` this avoids allocating a static NodeList,
+   * allows arbitrary JS predicates (not just CSS selectors), and is the
+   * idiomatic API for programmatic DOM traversal.
+   */
+  // eslint-disable-next-line class-methods-use-this
+  private walkElements(predicate: (el: HTMLElement) => boolean): StickyElement[] {
+    const results: StickyElement[] = [];
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
+      acceptNode: (node) => (predicate(node as HTMLElement) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP),
     });
+    for (let node = walker.nextNode(); node !== null; node = walker.nextNode()) {
+      results.push(node as unknown as StickyElement);
+    }
+    return results;
   }
 
   protected getPreviousFixedStickiesHeight(): number {
-    const allFixedStickies = Array.from(
-      document.querySelectorAll('it-sticky[stackable][position-type="fixed"]'),
-    ) as StickyElement[];
-
-    return allFixedStickies
-      .filter((sticky) => sticky !== this.hostElement && this.isBeforeInDOM(sticky, this.hostElement))
+    const myContainingBlock = this.getFixedContainingBlockFor(this.hostElement);
+    return this.walkElements(
+      (el) => !!(el as StickyElement)._stickyController && !!(el as StickyElement).stackable && (el as StickyElement).positionType === 'fixed',
+    )
+      .filter(
+        (sticky) =>
+          sticky !== this.hostElement &&
+          this.getFixedContainingBlockFor(sticky) === myContainingBlock &&
+          this.isBeforeInDOM(sticky, this.hostElement),
+      )
       .reduce((acc, sticky) => {
         const rect = sticky.getBoundingClientRect();
         return acc + rect.height + Number(sticky.paddingTop || 0);
@@ -221,10 +234,19 @@ export class StickyController<T extends StickyElement = StickyElement> implement
   protected computeOffset(): number {
     if (!this.hostElement.stackable) return 0;
 
-    const allStickies = Array.from(document.querySelectorAll('it-sticky[stackable]')) as StickyElement[];
+    const myContainingBlock = this.getFixedContainingBlockFor(this.hostElement);
+
+    // Only consider fixed-top stickies within the same CSS containing block.
+    const scopedFixed = activeFixedTopStickies.filter(
+      (el) => this.getFixedContainingBlockFor(el) === myContainingBlock,
+    );
+
+    const allStickies = this.walkElements(
+      (el) => !!(el as StickyElement)._stickyController && !!(el as StickyElement).stackable,
+    );
     const visualOrderList = [
-      ...activeFixedTopStickies,
-      ...allStickies.filter((el) => el.positionType !== 'fixed' && !activeFixedTopStickies.includes(el)),
+      ...scopedFixed,
+      ...allStickies.filter((el) => el.positionType !== 'fixed' && !scopedFixed.includes(el)),
     ];
     visualOrderList.forEach((el, idx) => {
       if (el._stickyController) el._stickyController.setVisualOrder(idx);
@@ -396,20 +418,34 @@ export class StickyController<T extends StickyElement = StickyElement> implement
     );
   }
 
-  /** Restacks all active top-fixed stickies from the top of the viewport downward. */
-  // eslint-disable-next-line class-methods-use-this
+  /**
+   * Restacks all active top-fixed stickies from the top of their respective
+   * containing block downward.
+   *
+   * Symmetric with `updateAllActiveFixedBottomPositions`: elements grouped by
+   * CSS containing block so that stickies in separate containers (e.g. different
+   * Storybook previews) each start at `top: 0` independently.
+   */
   private updateAllActiveFixedTopPositions() {
-    let offset = 0;
-    activeFixedTopStickies.forEach((elParam) => {
-      const el = elParam;
-      const ctrl = el._stickyController;
-      if (ctrl) {
-        const paddingTop = Number(el.paddingTop || 0);
-        el.style.top = `${offset + paddingTop}px`;
+    const groups = new Map<Element | null, StickyElement[]>();
+    activeFixedTopStickies.forEach((el) => {
+      const cb = this.getFixedContainingBlockFor(el);
+      if (!groups.has(cb)) groups.set(cb, []);
+      groups.get(cb)!.push(el);
+    });
 
-        const rect = el.getBoundingClientRect();
-        offset += rect.height + paddingTop;
-      }
+    groups.forEach((elements) => {
+      let offset = 0;
+      elements.forEach((elParam) => {
+        const el = elParam;
+        const ctrl = el._stickyController;
+        if (ctrl) {
+          const paddingTop = Number(el.paddingTop || 0);
+          el.style.top = `${offset + paddingTop}px`;
+          const rect = el.getBoundingClientRect();
+          offset += rect.height + paddingTop;
+        }
+      });
     });
   }
 

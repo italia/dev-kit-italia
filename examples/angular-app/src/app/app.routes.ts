@@ -185,6 +185,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/skiplinks.component').then((c) => c.SkiplinksComponent),
   },
   {
+    title: 'BottomNav',
+    path: 'bottom-nav',
+    loadComponent: () => import('./pages/bottom-nav.component').then((c) => c.BottomNavComponent),
+  },
+  {
     title: 'Sticky',
     path: 'sticky',
     loadComponent: () => import('./pages/sticky.component').then((c) => c.StickyComponent),

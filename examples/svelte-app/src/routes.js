@@ -34,6 +34,7 @@ import Select from './pages/Select.svelte';
 import Sidebar from './pages/Sidebar.svelte';
 import Skiplinks from './pages/Skiplinks.svelte';
 import Sticky from './pages/Sticky.svelte';
+import BottomNav from './pages/BottomNav.svelte';
 import Carousel from './pages/Carousel.svelte';
 import Table from './pages/Table.svelte';
 import Video from './pages/Video.svelte';
@@ -75,6 +76,7 @@ export const AppRoutes = [
   { path: '/select', element: Select, title: 'Select' },
   { path: '/sidebar', element: Sidebar, title: 'Sidebar' },
   { path: '/skiplinks', element: Skiplinks, title: 'Skiplinks' },
+  { path: '/bottom-nav', element: BottomNav, title: 'BottomNav' },
   { path: '/sticky', element: Sticky, title: 'Sticky' },
   { path: '/tables', element: Table, title: 'Tables' },
   { path: '/video', element: Video, title: 'Video' },
