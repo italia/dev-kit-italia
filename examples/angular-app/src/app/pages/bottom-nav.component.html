@@ -1,0 +1,149 @@
+<h1>BottomNav</h1>
+<p>Componente di navigazione fisso in fondo allo schermo, pensato per dispositivi mobile.</p>
+
+<section>
+  <h2>Tre voci</h2>
+  <p>Barra di navigazione con tre voci.</p>
+  <div [ngStyle]="previewStyle">
+    <div [ngStyle]="previewContentStyle">
+      <div [ngStyle]="scrollAreaStyle">Scorri per vedere la barra in basso.</div>
+    </div>
+    <it-bottom-nav it-aria-label="Navigazione principale">
+      <it-bottom-nav-item active>
+        <a href="#">
+          <it-icon name="it-comment"></it-icon>
+          <span class="bottom-nav-label">messaggi</span>
+        </a>
+      </it-bottom-nav-item>
+      <it-bottom-nav-item>
+        <a href="#">
+          <it-icon name="it-camera"></it-icon>
+          <span class="bottom-nav-label">immagini</span>
+        </a>
+      </it-bottom-nav-item>
+      <it-bottom-nav-item>
+        <a href="#">
+          <it-icon name="it-file"></it-icon>
+          <span class="bottom-nav-label">documenti</span>
+        </a>
+      </it-bottom-nav-item>
+    </it-bottom-nav>
+  </div>
+</section>
+
+<section>
+  <h2>Quattro voci</h2>
+  <p>Barra di navigazione con quattro voci.</p>
+  <div [ngStyle]="previewStyle">
+    <div [ngStyle]="previewContentStyle">
+      <div [ngStyle]="scrollAreaStyle">Scorri per vedere la barra in basso.</div>
+    </div>
+    <it-bottom-nav it-aria-label="Navigazione principale">
+      <it-bottom-nav-item active>
+        <a href="#">
+          <it-icon name="it-comment"></it-icon>
+          <span class="bottom-nav-label">messaggi</span>
+        </a>
+      </it-bottom-nav-item>
+      <it-bottom-nav-item>
+        <a href="#">
+          <it-icon name="it-camera"></it-icon>
+          <span class="bottom-nav-label">immagini</span>
+        </a>
+      </it-bottom-nav-item>
+      <it-bottom-nav-item>
+        <a href="#">
+          <it-icon name="it-file"></it-icon>
+          <span class="bottom-nav-label">documenti</span>
+        </a>
+      </it-bottom-nav-item>
+      <it-bottom-nav-item>
+        <a href="#">
+          <it-icon name="it-star-outline"></it-icon>
+          <span class="bottom-nav-label">preferiti</span>
+        </a>
+      </it-bottom-nav-item>
+    </it-bottom-nav>
+  </div>
+</section>
+
+<section>
+  <h2>Con badge</h2>
+  <p>
+    Badge e alert sono nascosti agli screen reader (<code>aria-hidden="true"</code>). Per garantire
+    l'accessibilità aggiungi uno <code>&lt;span class="visually-hidden"&gt;</code> con un testo descrittivo.
+  </p>
+  <div [ngStyle]="previewStyle">
+    <div [ngStyle]="previewContentStyle">
+      <div [ngStyle]="scrollAreaStyle">Scorri per vedere la barra in basso.</div>
+    </div>
+    <it-bottom-nav it-aria-label="Navigazione principale">
+      <it-bottom-nav-item active>
+        <a href="#">
+          <div class="badge-wrapper">
+            <span class="bottom-nav-badge" aria-hidden="true">1</span>
+          </div>
+          <it-icon name="it-comment"></it-icon>
+          <span class="bottom-nav-label">
+            messaggi
+            <span class="visually-hidden">1 messaggio da leggere</span>
+          </span>
+        </a>
+      </it-bottom-nav-item>
+      <it-bottom-nav-item>
+        <a href="#">
+          <it-icon name="it-camera"></it-icon>
+          <span class="bottom-nav-label">
+            immagini
+            <span class="visually-hidden">2 immagini da visualizzare</span>
+          </span>
+        </a>
+      </it-bottom-nav-item>
+      <it-bottom-nav-item>
+        <a href="#">
+          <div class="badge-wrapper">
+            <span class="bottom-nav-badge" aria-hidden="true">42</span>
+          </div>
+          <it-icon name="it-file"></it-icon>
+          <span class="bottom-nav-label">documenti</span>
+        </a>
+      </it-bottom-nav-item>
+    </it-bottom-nav>
+  </div>
+</section>
+
+<section>
+  <h2>Con alert</h2>
+  <p>Indicatore di notifica senza contatore — segnala la presenza di nuovi contenuti.</p>
+  <div [ngStyle]="previewStyle">
+    <div [ngStyle]="previewContentStyle">
+      <div [ngStyle]="scrollAreaStyle">Scorri per vedere la barra in basso.</div>
+    </div>
+    <it-bottom-nav it-aria-label="Navigazione principale">
+      <it-bottom-nav-item active>
+        <a href="#">
+          <div class="badge-wrapper">
+            <span class="bottom-nav-alert" aria-hidden="true"></span>
+          </div>
+          <it-icon name="it-comment"></it-icon>
+          <span class="bottom-nav-label">
+            messaggi
+            <span class="visually-hidden">ci sono nuovi messaggi da leggere</span>
+          </span>
+        </a>
+      </it-bottom-nav-item>
+      <it-bottom-nav-item>
+        <a href="#">
+          <it-icon name="it-camera"></it-icon>
+          <span class="bottom-nav-label">immagini</span>
+        </a>
+      </it-bottom-nav-item>
+      <it-bottom-nav-item>
+        <a href="#">
+          <it-icon name="it-file"></it-icon>
+          <span class="bottom-nav-label">documenti</span>
+        </a>
+      </it-bottom-nav-item>
+    </it-bottom-nav>
+  </div>
+</section>
