@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@italia/globals": "workspace:^",
+    "@italia/sticky": "workspace:^",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:"
   },

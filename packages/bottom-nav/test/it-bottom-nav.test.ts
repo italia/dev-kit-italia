@@ -4,6 +4,10 @@ import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
 import '@italia/bottom-nav';
 
 describe('it-bottom-nav component', () => {
+  afterEach(() => {
+    document.querySelectorAll('it-bottom-nav').forEach((el) => el.remove());
+  });
+
   describe('structure and rendering', () => {
     it('renders nav element with bottom-nav class', async () => {
       const el = await fixture(html`
@@ -71,6 +75,56 @@ describe('it-bottom-nav component', () => {
 
       const items = el.querySelectorAll('it-bottom-nav-item');
       expect(items.length).to.equal(3);
+    });
+  });
+
+  describe('fixed positioning via StickyController', () => {
+    it('has bs-is-fixed-bottom class immediately on connect', async () => {
+      const el = await fixture(html`
+        <it-bottom-nav>
+          <it-bottom-nav-item><a href="#">Test</a></it-bottom-nav-item>
+        </it-bottom-nav>
+      `);
+      await elementUpdated(el);
+
+      expect(el.classList.contains('bs-is-fixed-bottom')).to.be.true;
+    });
+
+    it('removes bs-is-fixed-bottom when disconnected', async () => {
+      const el = await fixture(html`
+        <it-bottom-nav>
+          <it-bottom-nav-item><a href="#">Test</a></it-bottom-nav-item>
+        </it-bottom-nav>
+      `);
+      await elementUpdated(el);
+
+      expect(el.classList.contains('bs-is-fixed-bottom')).to.be.true;
+      el.remove();
+
+      // Allow disconnectedCallback to run
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+      expect(el.classList.contains('bs-is-fixed-bottom')).to.be.false;
+    });
+
+    it('stacks two bottom-nav elements upward when both present', async () => {
+      const nav1 = document.createElement('it-bottom-nav') as HTMLElement;
+      nav1.innerHTML = '<it-bottom-nav-item><a href="#">A</a></it-bottom-nav-item>';
+      const nav2 = document.createElement('it-bottom-nav') as HTMLElement;
+      nav2.innerHTML = '<it-bottom-nav-item><a href="#">B</a></it-bottom-nav-item>';
+
+      document.body.appendChild(nav1);
+      document.body.appendChild(nav2);
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+
+      expect(nav1.classList.contains('bs-is-fixed-bottom')).to.be.true;
+      expect(nav2.classList.contains('bs-is-fixed-bottom')).to.be.true;
+
+      // nav2 connects after nav1, so it must be pushed upward
+      const nav2Bottom = parseInt((nav2 as HTMLElement).style.bottom || '0', 10);
+      expect(nav2Bottom).to.be.greaterThanOrEqual(0);
+
+      nav1.remove();
+      nav2.remove();
     });
   });
 

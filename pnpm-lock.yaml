@@ -404,6 +404,9 @@ importers:
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
+      '@italia/sticky':
+        specifier: workspace:^
+        version: link:../sticky
       bootstrap-italia:
         specifier: 'catalog:'
         version: 3.0.0-alpha.4

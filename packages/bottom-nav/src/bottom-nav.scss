@@ -5,17 +5,14 @@
 
 @import 'bootstrap-italia/src/scss/components/bottomnav';
 
+// BSI sets position: sticky on .bottom-nav — use relative instead since
+// fixed positioning is now managed by StickyController via .bs-is-fixed-bottom.
 .bottom-nav {
   position: relative !important;
   height: var(--it-bottom-nav-height) !important;
 }
 
 :host {
-  position: fixed;
-  z-index: 1030;
-  right: 0;
-  bottom: 0;
-  left: 0;
   display: block;
   overflow: hidden;
 }

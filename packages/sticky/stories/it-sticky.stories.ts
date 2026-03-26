@@ -3,13 +3,14 @@ import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import type { StickyOptions } from '../src/sticky-controller.js';
 
-function renderSticky({ stackable, paddingTop, stickyClassName, positionType }: StickyOptions) {
+function renderSticky({ stackable, paddingTop, stickyClassName, positionType, position }: StickyOptions & { position?: 'top' | 'bottom' }) {
   return html`
     <it-sticky
       ?stackable=${ifDefined(stackable)}
       padding-top=${ifDefined(paddingTop || nothing)}
       sticky-class-name=${ifDefined(stickyClassName || nothing)}
       position-type=${ifDefined(positionType || nothing)}
+      position=${ifDefined(position || nothing)}
     >
       <div class="bg-primary text-white p-3">Elemento Sticky</div>
     </it-sticky>
@@ -24,6 +25,7 @@ const meta: Meta = {
     paddingTop: 0,
     stickyClassName: undefined,
     positionType: undefined,
+    position: undefined,
   },
   parameters: {
     docs: {
@@ -68,6 +70,13 @@ Il componente gestisce in autonomia anche casi avanzati, come elementi impilabil
       options: ['sticky', 'fixed'],
       description: 'Indica il valore della proprietà CSS `position`. I valori ammessi sono `sticky` o `fixed`',
       table: { defaultValue: { summary: 'sticky' } },
+    },
+    position: {
+      control: { type: 'select' },
+      options: ['top', 'bottom'],
+      description:
+        "Indica il bordo del viewport a cui agganciare l'elemento. Usa `'bottom'` con `position-type=\"fixed\"` per una barra persistente in fondo alla pagina.",
+      table: { defaultValue: { summary: 'top' } },
     },
   },
   render: (args) => renderSticky(args),
@@ -218,6 +227,48 @@ stickyElement.addEventListener('it-sticky-off', (event) => {
 \`\`\`
 
 \`\`\`
+        `,
+      },
+    },
+  },
+};
+
+export const FixedBottom: Story = {
+  name: 'Position fixed bottom',
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Usando <code>position="bottom"</code> insieme a <code>position-type="fixed"</code> l'elemento viene agganciato
+al bordo inferiore del viewport immediatamente al caricamento — senza attendere lo scroll.
+Questo è il comportamento usato internamente da <code>it-bottom-nav</code>.
+<br>
+
+È disponibile una <a href="iframe.html?globals=&id=esempi-sticky--fixed-bottom-sticky&viewMode=story" target="_blank" rel="noopener">
+  pagina di esempio
+</a> dedicata a questa funzionalità.
+        `,
+      },
+      source: {
+        code: `<it-sticky position="bottom" position-type="fixed">\n  <div class="bg-primary text-white p-3">Barra fissa in fondo</div>\n</it-sticky>`,
+      },
+    },
+  },
+};
+
+export const StackableBottom: Story = {
+  name: 'Versione impilabile bottom',
+  args: {
+    stackable: true,
+    position: 'bottom',
+    positionType: 'fixed',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Più elementi con <code>position="bottom"</code>, <code>position-type="fixed"</code> e <code>stackable</code>
+si impilano verso l'alto dal bordo inferiore del viewport, in ordine di connessione al DOM.
         `,
       },
     },

@@ -39,7 +39,7 @@ const meta = {
   decorators: [
     (Story) => html`
       <div
-        style="height: 400px;width:400px;background-color:#f5f5f5;border:1px solid #cecece;position:relative;margin:-0.5rem;"
+        style="height: 400px;width:400px;background-color:#f5f5f5;border:1px solid #cecece;position:relative;margin:-0.5rem;transform:translateZ(0);overflow:hidden;"
       >
         <div style="height: calc(100% - var(--it-bottom-nav-height)); overflow-y: scroll;">
           <div style="height: 600px;"></div>
