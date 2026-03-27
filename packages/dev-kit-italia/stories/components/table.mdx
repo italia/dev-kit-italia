@@ -3,12 +3,12 @@ import * as TableStories from './table.stories';
 
 <Meta of={TableStories} />
 
-# Tables
+# Table
 
-<description>Rappresentazione organizzata di dati in righe e colonne per visualizzare informazioni in modo strutturato e facilitare il confronto tra più elementi</description>
+<description>Rappresentazione organizzata di dati in righe e colonne per visualizzare informazioni in modo strutturato e facilitare il confronto tra più elementi.</description>
 
 ## Cosa fa
-Il componente table, in italiano tabella, è ideale quando si desidera presentare dati strutturati in modo chiaro e organizzato. Una tabella consente di organizzare in modo logico le informazioni, raggruppando elementi simili, favorendo la comparazione e facilitando la comprensione di contenuti complessi.
+Il componente Table, in italiano tabella, organizza i dati in righe e colonne strutturate, facilitando il raggruppamento di elementi simili e il confronto tra valori.
 
 [Approfondisci quando e come usare il componente Tables](https://designers.italia.it/design-system/componenti/tables)
 
@@ -18,9 +18,9 @@ Il componente table, in italiano tabella, è ideale quando si desidera presentar
 
 ## Anteprima del componente
 
-A causa dell'uso diffuso di tabelle su widget di terze parti come calendari e campi di selezione data, o come elemento di presentazione sintetica di informazioni e layout di pagina, le tabelle di Dev Kit Italia sono implementate via HTML classico e senza forzarne lo stile.
+Dato l'uso diffuso di tabelle in widget di terze parti, il componente Table è implementato in HTML classico, senza imporre stili predefiniti. 
 
-È sufficiente aggiungere la classe `.table` a qualsiasi `<table>`, quindi estendere con stili personalizzati o con le nostre varie classi incluse di modificatori.
+Per usare le tabelle, aggiungi la classe `.table` a qualsiasi `<table>`. puoi poi applicare i tuoi stili personalizzati o le classi di stile messe a disposizione.
 
 <div class="callout callout-primary">
   <div class="callout-inner">
@@ -28,7 +28,7 @@ A causa dell'uso diffuso di tabelle su widget di terze parti come calendari e ca
       <span class="text">Stili</span>
     </div>
     <p>
-      In caso non si stia utilizzando il bundle unico, assicurarsi di avere importato tutti i fogli di stile necessari
+      Se non stai usando il bundle unico, assicurati di aver importato tutti i fogli di stile necessari.
       da `bootstrap-italia`:
 
 
@@ -47,9 +47,7 @@ A causa dell'uso diffuso di tabelle su widget di terze parti come calendari e ca
 <Canvas of={TableStories.TabellaBase} />
 
 ## Accessibilità
-Nel caso di tabelle colorate, l'uso del colore per aggiungere un significato fornisce solo un'indicazione visiva, che non sarà trasmesso agli utenti di tecnologie assistive – come gli screen reader.
-
-Assicurati che le informazioni denotate dal colore siano rese disponibili anche dal contenuto stesso (es.: il testo visibile), o siano incluse attraverso mezzi alternativi, come testo aggiuntivo nascosto con la classe `.visually-hidden`.
+Se usi tabelle colorate, ricorda che il significato associato ai colori (ad esempio, giallo per "attenzione", rosso per “pericolo”) non viene veicolato dalle tecnologie assistive come i lettori di schermo. Assicurati quindi che le informazioni espresse tramite il colore siano disponibili anche nel testo visibile oppure tramite testo aggiuntivo nascosto con la classe `.visually-hidden`.
 
 ## Tabelle responsive
 
