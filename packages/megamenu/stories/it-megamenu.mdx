@@ -29,9 +29,9 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 - Puoi accostare più megamenu nella navbar per dare accesso a sezioni diverse del sito.
 
-- Se il pulsante ha la classe `active`, indica la sezione corrente.
+- Un link con classe `active` indica la sezione corrente.
 
-- Se un elemento `<it-dropdown-item>` interno al megamenu ha la classe `active`, indica la pagina corrente.
+- Un elemento `<it-dropdown-item>` interno al megamenu con classe `active` indica la pagina corrente.
 
 
 Il componente `<it-megamenu>` espone i seguenti slot:
@@ -62,14 +62,15 @@ La variante base può contenere liste di voci di navigazione organizzate su più
 ## Con link “Esplora la sezione”
 Come nella variante completa, puoi aggiungere un link **“Esplora la sezione X”** come primo link.
 
-Se il link con classe `it-heading-link` ha la classe `active`, indica la sezione corrente del sito.
+Un link `it-heading-link` con classe `active` indica la sezione corrente del sito.
 
 <Canvas of={Stories.MegamenuEsploraSezione} />
 
 ## Con link “Esplora tutti”
 Nel caso le voci da mostrare fossero numerose, puoi aggiungere un link **“Esplora tutti i contenuti Y”** che porta a una lista completa.
 
-Se il link con classe `it-footer-link` ha la classe `active`, indica la sezione corrente del sito.
+Un link `it-footer-link` con classe `active` indica la sezione corrente del sito.
+
 <Canvas of={Stories.MegamenuEsploraTutti} />
 
 
