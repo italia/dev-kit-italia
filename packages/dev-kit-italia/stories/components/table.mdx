@@ -28,8 +28,7 @@ Per usare le tabelle, aggiungi la classe `.table` a qualsiasi `<table>`. puoi po
       <span class="text">Stili</span>
     </div>
     <p>
-      Se non stai usando il bundle unico, assicurati di aver importato tutti i fogli di stile necessari.
-      da `bootstrap-italia`:
+      Se non stai usando il bundle unico, assicurati di aver importato tutti i fogli di stile necessari da `bootstrap-italia`:
 
 
       ```css
@@ -51,15 +50,17 @@ Se usi tabelle colorate, ricorda che il significato associato ai colori (ad esem
 
 ## Tabelle responsive
 
-Le tabelle responsive consentono di scorrere le tabelle orizzontalmente con facilità. Rendi ogni tabella responsive su tutti i viewports racchiudendo una  `<table class="table">` in un `<div class="table-responsive">`. Oppure, scegli un breakpoint massimo con il quale ottenere una tabella responsive usando `.table-responsive{-sm|-md|-lg|-xl|-xxl}`.
+Le tabelle responsive consentono di scorrere i contenuti orizzontalmente con facilità. 
+
+Rendi la tabella responsive su tutti i viewport racchiudendo `<table class="table">` in un `<div class="table-responsive">`, oppure scegli un breakpoint massimo usando `.table-responsive{-sm|-md|-lg|-xl|-xxl}`.
 
 <div class="callout callout-warning">
   <div class="callout-inner">
     <div class="callout-title">
-      <span class="text">Ritaglio / troncamento verticale</span>
+      <span class="text">Troncamento verticale</span>
     </div>
     <p>
-Le tabelle responsive fanno uso di `overflow-y: hidden`, che rimuove qualsiasi contenuto che va oltre i bordi inferiore o superiore della tabella. In particolare, questo può ritagliare i menu a discesa e altri widget di terze parti.
+Le tabelle responsive usano `overflow-y: hidden` per nascondere il contenuto che supera il bordo inferiore o superiore. Questo può troncare i menu a discesa e altri widget di terze parti.
     </p>
   </div>
 </div>
@@ -67,13 +68,13 @@ Le tabelle responsive fanno uso di `overflow-y: hidden`, che rimuove qualsiasi c
 
 ### Sempre responsive
 
-Inserisci la tabella in un `<div>` con classe `.table-responsive` per ottenere tabelle con scorrimento orizzontale responsive ad ogni punto di interruzione.
+Per avere lo scorrimento orizzontale su tutti i breakpoint, inserisci la tabella in un `<div>` con classe `.table-responsive`.
 
 <Canvas of={TableStories.TabellaResponsive} />
 
 ### Breakpoint specifici
 
-Usa la classe `.table-responsive{-sm|-md|-lg|-xl|-xxl}` per creare tabelle responsive fino a un punto di interruzione particolare. Da quel punto di interruzione in su, la tabella si comporterà normalmente e non scorrerà orizzontalmente.
+Per rendere la tabella responsive fino a uno specifico breakpoint, usa la classe `.table-responsive{-sm|-md|-lg|-xl|-xxl}`. Fino al breakpoint, la tabella si comporterà normalmente e non scorrerà orizzontalmente.
 
 <Canvas of={TableStories.TabellaResponsiveSm} />
 
@@ -87,89 +88,89 @@ Usa la classe `.table-responsive{-sm|-md|-lg|-xl|-xxl}` per creare tabelle respo
 
 ## Varianti
 
-Utilizza le classi contestuali per colorare tabelle, righe o celle individuali.
+Usa le classi contestuali per colorare tabelle, righe o celle individuali.
 
 ### Tabelle colorate
 
-Applica le classi `.table-{color}` a `<table>` per colorare l'intera tabella. Sostituisci `{color}` con uno dei colori disponibili: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light` o `dark`.
+Per colorare l'intera tabella, applica la classe `.table-{color}` a `<table>`. Sostituisci `{color}` con uno dei colori disponibili: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light` o `dark`.
 
 <Canvas of={TableStories.TabelleColorate} />
 
 ### Righe colorate
 
-Applica le classi `.table-{color}` a `<tr>` per colorare una riga specifica. Sostituisci `{color}` con uno dei colori disponibili: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light` o `dark`.
+Per colorare una riga specifica, applica la classe `.table-{color}` a `<tr>`. Sostituisci `{color}` con uno dei colori disponibili: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light` o `dark`.
 
 <Canvas of={TableStories.RigheColorate} />
 
 ### Celle colorate
 
-Applica le classi `.table-{color}` a `<td>` o `<th>` per colorare una cella specifica. Sostituisci `{color}` con uno dei colori disponibili: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light` o `dark`.
+Per colorare una cella specifica, applica le classi `.table-{color}` a `<td>` o `<th>`. Sostituisci `{color}` con uno dei colori disponibili: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light` o `dark`.
 
 <Canvas of={TableStories.CelleColorate} />
 
 
 ### Righe striate
 
-Applica la classe `.table-striped` a `<table>` per aggiungere delle striature zebrate ad ogni riga della tabella contenute in `<tbody>`.
+Per aggiungere delle striature zebrate ad ogni riga della tabella contenute in `<tbody>`, applica la classe `.table-striped` a `<table>`.
 
 <Canvas of={TableStories.TabellaStriata} />
 
-La classe `.table-striped` è applicabile anche alle varianti colorate, ad esempio `.table-dark`:
+Puoi applicare la classe `.table-striped` anche alle varianti colorate, ad esempio `.table-dark`:
 
 <Canvas of={TableStories.TabellaStriataDark} />
 
 ### Righe e hover
 
-Applica la classe `.table-hover` a `<table>` per abilitare lo stato hover sulle righe della tabella contenute in `<tbody>`.
+Per abilitare lo stato hover sulle righe della tabella contenute in `<tbody>`, applica la classe `.table-hover` a `<table>`.
 
 <Canvas of={TableStories.TabellaHover} />
 
-Le tabelle con hover possono essere combinate con la variante striata.
+Puoi combinare le tabelle con hover con la variante striata.
 
 <Canvas of={TableStories.TabellaHoverStriata} />
 
 ### Tabelle attive
 
-Evidenzia una riga `<tr>` o cella `<td>` della tabella aggiungendo la classe `.table-active` al rispettivo tag HTML.
+Per evidenziare una riga o una cella, aggiungi la classe `.table-active` al tag `<tr>` della riga o al tag `<td>` della cella.
 
 <Canvas of={TableStories.TabellaAttiva} />
 
 ## Tabella con bordi
 
-Aggiungi la classe `.table-bordered` a `<table>` per avere i bordi a tutti i lati della tabella e su tutte le celle. Sostituisci `{color}` con uno dei colori disponibili: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light` o `dark`.
-
+Per avere i bordi su tutti i lati della tabella e su tutte le celle, aggiungi la classe `.table-bordered` a `<table>`.
 <Canvas of={TableStories.TabellaBordata} />
 
-Le utilities di colorazione dei bordi `border-{color}` possono essere utilizzate in combinazione a `.table-bordered` per cambiarne i colori.
+Per colorare i bordi, usa la classe `border-{color}` in combinazione con `.table-bordered`. Sostituisci `{color}` con uno dei colori disponibili: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light` o `dark`.
 
 <Canvas of={TableStories.TabellaBordataPrimary} />
 
 ## Tabella senza bordi
 
-Aggiungi la classe `.table-borderless` a `<table>` per una tabella senza bordi.
+Per una tabella senza bordi, aggiungi la classe `.table-borderless` a `<table>`.
 
 <Canvas of={TableStories.TabellaSenzaBordi} />
 
-Le utilities di colorazione degli sfondi `table-{color}` possono essere utilizzate in combinazione a `.table-borderless` per cambiarne i colori.
+Per colorare lo sfondo, usa la classe `table-{color}` in combinazione con `.table-borderless`.
 
 <Canvas of={TableStories.TabellaSenzaBordiDark} />
 
 ## Tabella compatta
 
-Aggiungi la classe `.table-sm` a `<table>` per rendere le tabelle più compatte dimezzando il cell padding.
+Per dimezzare il cell padding e rendere le tabelle più compatte, aggiungi la classe `.table-sm` a `<table>`.
 
 <Canvas of={TableStories.TabellaCompatta} />
 
 ## Allineamento verticale
 
-Le celle contenute nel `<thead>` sono sempre allineate verticalmente al bottom. Le celle del `<tbody>` ereditano l'allineamento da `<table>` e sono allineate al top per default.
-Utilizza le classi di allineamento verticale `align-{position}` per riallineare dove necessario.
+Le celle in `<thead>` sono sempre allineate verticalmente in basso (bottom). Le celle in `<tbody>` ereditano l'allineamento da `<table>` e sono allineate verticalmente in alto (top).
+
+Per modificare l'allineamento, usa le le classi di allineamento verticale `align-{position}`.
 
 <Canvas of={TableStories.AllineamentoVerticale} />
 
 ## Annidamento
 
-Gli stili di bordi, gli stili attivi e le varianti non sono ereditati dalle tabelle annidate.
+Le tabelle annidate non ereditano gli stili dei bordi, gli stili attivi e le varianti.
 
 <Canvas of={TableStories.TabellaAnnidamento} />
 
@@ -177,7 +178,7 @@ Gli stili di bordi, gli stili attivi e le varianti non sono ereditati dalle tabe
 
 ### Intestazione
 
-Come per le tabelle utilizza le classi varianti come `.table-light` o `.table-dark` per modificare l'aspetto di `<thead>`.
+Per modificare l'aspetto dell'intestazione, applica le classi varianti come `.table-light` o `.table-dark` a `<thead>`.
 
 <Canvas of={TableStories.IntestazioneLight} />
 
@@ -185,16 +186,16 @@ Come per le tabelle utilizza le classi varianti come `.table-light` o `.table-da
 
 ### Footer
 
-Le tabelle possono avere un footer utilizzando l'elemento `<tfoot>`.
+Per aggiunger un footer alla tabella, usa l'elemento `<tfoot>`.
 
 <Canvas of={TableStories.TabellaFooter} />
 
 ### Caption
 
-Un `<caption>` funziona come un'intestazione per una tabella. Aiuta gli utenti con screen reader a trovare una tabella e capire di cosa si tratta e decidere se vogliono leggerla.
+La `<caption>` di una tabella funziona come un'intestazione descrittiva e aiuta gli utenti di lettori di schermo a capire di cosa trattano i contenuti.
 
 <Canvas of={TableStories.TabellaCaption} />
 
-Per renderizzare la `<caption>` in cima alla tabella utilizza la classe `.caption-top`.
+Per posizionare la `<caption>` in cima alla tabella, usa la classe `.caption-top`.
 
 <Canvas of={TableStories.TabellaCaptionTop} />
