@@ -5,13 +5,13 @@ import * as Stories from './it-megamenu.stories';
 
 <Title of={Stories} />
 
-<description>Sottomenu di navigazione a comparsa che presenta i link e i contenuti correlati a una voce del menu principale</description>
+<description>Sottomenu di navigazione a comparsa che presenta i link e i contenuti correlati a una voce del menu principale.</description>
 
 ## Cosa fa
 
-Il componente Megamenu serve a implementare un sottomenu che semplifica l'accesso a un'intera sezione di un sito con un’architettura dell’informazione complessa ma ben strutturata.
+Il componente Megamenu (`it-megamenu`) implementare un sottomenu con elenchi di link e informazioni correlate per semplificare la navigazione di una sezione di un sito.
 
-Il megamenu è una estensione del componente `it-dropdown` per la navbar `<nav>` del sito, che permette di esplorare elenchi di link e informazioni correlate.
+Il megamenu è una estensione del componente `it-dropdown` per la navbar `<nav>` del sito.
 
 [Approfondisci quando e come usare il componente Megamenu](https://designers.italia.it/design-system/componenti/megamenu/)
 
@@ -25,71 +25,64 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Indicazioni generali
 
-- Usa il componente solo come modulo della navigazione principale.
+- Usa i megamenu solo per la navigazione principale del sito e con moderazione, testando sempre la sua efficacia con gli utenti.
 
-- Usa il megamenu con parsimonia per via della sua natura di interazione complessa, testando sempre la sua efficacia con gli utenti.
+- Puoi accostare più megamenu nella navbar per dare accesso a sezioni diverse del sito.
 
-- Si possono accostare più megamenu nella navbar per dare accesso a sezioni diverse del sito.
+- Se il pulsante ha la classe `active`, indica la sezione corrente.
 
-- Se il pulsante ha la classe `active` è riferito alla sezione corrente.
-
-- Se un elemento `<it-dropdown-item>` interno al megamenu ha l'attributo `active`, è riferito alla pagina corrente.
+- Se un elemento `<it-dropdown-item>` interno al megamenu ha la classe `active`, indica pagina corrente.
 
 
 Il componente `<it-megamenu>` espone i seguenti slot:
 
-- **(default)**: il contenuto principale, tipicamente uno o più elementi `<it-dropdown-item>`, viene inserito direttamente nel componente ed'è l'area contenente i link principali del megamenu.
-- **slot="header"**: per l'intestazione del megamenu, visualizzata sopra i link principali. Può contenere un link alla sezione principale del menu. Il markup html deve essere come quello nell'esempio del Megamenu completo
-- **slot="footer"**: per il footer del megamenu, visualizzato sotto i link principali. Può contenere un link alla sezione principale del menu o altri link in evidenza. Puoi anche decidere di posizionarlo sulla parte destra tramite l'apposito attributo sul `<it-megamenu>`.
-- **slot="description"**: per contenuti aggiuntivi opzionali, visualizzati a sinistra dei link principali. Può contenere una immagine e del testo. Il markup html deve essere come quello nell'esempio del Megamenu completo.
+- **(default)**, per il contenuto principale, ovvero l'area contenente i link principali del megamenu tramite elementi `<it-dropdown-item>`, viene inserito direttamente nel componente;
+- **slot="header"**: per l'intestazione del megamenu, visualizzata sopra i link principali. Può contenere un link alla sezione principale del menu. Il markup html deve essere come quello nell'esempio del Megamenu completo;
+- **slot="footer"**, per il footer del megamenu, visualizzato sotto i link principali. Può contenere un link alla sezione principale del menu o altri link in evidenza. Puoi anche posizionarlo sulla parte destra tramite l'apposito attributo sul `<it-megamenu>`;
+- **slot="description"**, per contenuti aggiuntivi opzionali, visualizzati a sinistra dei link principali. Può contenere una immagine e del testo. Il markup HTML deve essere come quello nell'esempio del megamenu completo.
 
 ## Accessibilità
-Il megamenu è un componente della navigazione principale del sito che richiede particolari attenzioni dal punto di vista dell’accessibilità:
+Il megamenu è un componente della navigazione principale del sito che richiede particolari attenzioni di accessibilità:
 
-- applica correttamente gli attributi ARIA presenti negli esempi;
-- usa le icone in modo appropriato (freccia negli esempi) per contraddistinguere i link anche nelle situazioni o condizioni in cui non sia possibile percepirne il colore, in particolar modo se presente del testo descrittivo o non cliccabile;
-- distingui le etichette dei link in modo chiaro: non devono essere presenti link con la stessa etichetta che portino a destinazioni diverse. Nel caso di più link **“Esplora tutti”** si può ad esempio aggiungere **“ i contenuti della sezione X”**, oppure, si può usare `<span class="visually-hidden"> i contenuti della sezione X</span>` per comunicare la distinzione almeno alle tecnologie assistive.
+- applica correttamente gli attributi ARIA, come mostrato negli esempi;
+- usa le icone in modo appropriato (ad esempio la freccia) per distinguere i link anche quando il colore non è percepibile, soprattutto in presenza di testo descrittivo o non cliccabile;
+- distingui le etichette dei link in modo chiaro, differenziandole per ogni voce di navigazione. In caso di più link **“Esplora tutti”**, puoi aggiungere una specifica come **“i contenuti della sezione X”** oppure usare `<span class="visually-hidden"> i contenuti della sezione X</span>` per comunicare la distinzione almeno alle tecnologie assistive.
 
 ## Megamenu completo
-Variante completa per dare ad esempio accesso a una intera sezione di un sito con un’architettura dell’informazione ben strutturata.
-Permette all’utente di comprendere l’organizzazione dei contenuti e di saltare direttamente a pagine foglia.
-
-Permette di includere immagine e testo descrittivo per una introduzione ai contenuti della sezione.
-Può contenere un link **“Esplora la sezione X”** per dare accesso a una copertina della sezione.
+La variante completa può contenere un'introduzione ai contenuti della sezione, con immagine e testo descrittivo, e un **“Esplora la sezione X”** per dare accesso alla pagina principale della sezione del sito.
 
 <Canvas of={Stories.MegamenuCompleto} />
 
 
 ## Megamenu base
-Variante base che può contenere liste di link organizzate su più colonne ed eventuali link correlati come **“Esplora la sezione X”**, **“Esplora tutti i contenuti Y”** o di altro tipo.
+La variante base può contenere liste di voci di navigazione organizzate su più colonne ed eventuali link correlati, come **“Esplora la sezione X”**, **“Esplora tutti i contenuti Y”** o di altro tipo.
 
 <Canvas of={Stories.MegamenuBase} />
 
 ## Con link “Esplora la sezione”
-Come nella variante completa, puoi aggiungere un link **“Esplora la sezione X”** come primo link.
+Come nella variante completa, puoi aggiungere un link **“Esplora la sezione X”** come prima link.
 
-Se il link con classe `it-heading-link` ha la classe `active` è riferito alla sezione corrente del sito.
+Se il link con classe `it-heading-link` ha la classe `active`, indica la sezione corrente del sito.
 
 <Canvas of={Stories.MegamenuEsploraSezione} />
 
 ## Con link “Esplora tutti”
 Nel caso le voci da mostrare fossero numerose, puoi aggiungere un link **“Esplora tutti i contenuti Y”** che porta a una lista completa.
 
-Se il link con classe `it-footer-link` ha la classe `active` è riferito alla sezione corrente del sito.
+Se il link con classe `it-footer-link` ha la classe `active`, indica la sezione corrente del sito.
 <Canvas of={Stories.MegamenuEsploraTutti} />
 
 
 ## Con call to action
-I megamenu possono contenere altri link correlati, che possono avere la funzione di “call to action” rispetto agli altri contenuti del megamenu.
 
-Questi seguono le liste di link, e puoi posizionarli in basso o in una colonna destra tramite l'attributo `footer-position`.
+Puoi aggiungere una lista di call to action in basso o a destra rispetto le voci di navigazione, tramite l'attributo `footer-position`.
 
 ### Con call to action in basso
-Usa l'attributo `footer-position="bottom"` per posizionare i link correlati in basso, sotto la liste di link principali.
+Usa l'attributo `footer-position="bottom"` per posizionare i link call to action in basso, sotto le voci di navigazione del megamenu.
 <Canvas of={Stories.MegamenuCTABottom} />
 
 ### Con call to action a destra
-Usa l'attributo `footer-position="right"` per posizionare i link correlati in una colonna a destra, accanto alla lista di link principali.
+Usa l'attributo `footer-position="right"` per posizionare i link call to action in una colonna a destra, accanto alle voci di navigazione del megamenu.
 <Canvas of={Stories.MegamenuCTARight} />
 
 
