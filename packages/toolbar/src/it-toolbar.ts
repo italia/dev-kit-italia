@@ -46,12 +46,6 @@ export class ItToolbar extends BaseComponent {
   @property({ type: String, reflect: true, attribute: 'it-aria-label' })
   itAriaLabel = 'Toolbar';
 
-  /**
-   * Dark mode variant
-   */
-  @property({ type: Boolean, reflect: true })
-  dark = false;
-
   override updated(changedProperties: Map<string | number | symbol, unknown>) {
     // Propaga le proprietà ai figli quando cambiano
     if (changedProperties.has('size') || changedProperties.has('orientation')) {
@@ -69,10 +63,22 @@ export class ItToolbar extends BaseComponent {
     this.toolbarItems.forEach((item) => {
       if (this.size === 'md' || this.size === 'sm') {
         item.setAttribute('hide-label', '');
+        if (this.size === 'md') {
+          item.setAttribute('hide-badge', '');
+        }
       } else {
         item.removeAttribute('hide-label');
+        item.removeAttribute('hide-badge');
       }
 
+      if (item.divider) {
+        if (this.orientation === 'vertical') {
+          item.setAttribute('it-aria-orientation', 'horizontal');
+        } else {
+          item.setAttribute('it-aria-orientation', 'vertical');
+        }
+        return; // I divisori non devono ricevere altre modifiche
+      }
       if (this.orientation === 'vertical') {
         item.setAttribute('it-aria-orientation', 'vertical');
       } else {
@@ -93,7 +99,6 @@ export class ItToolbar extends BaseComponent {
         'toolbar-medium': this.size === 'md',
         'toolbar-small': this.size === 'sm',
         'toolbar-vertical': this.orientation === 'vertical',
-        dark: this.dark,
       },
       this.className,
     );

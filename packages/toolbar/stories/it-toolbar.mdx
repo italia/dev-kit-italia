@@ -24,11 +24,16 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 <Controls of={Stories.EsempioInterattivo} />
 
 ## Accessibilità [[TODO]]
-Il componente `it-toolbar` è progettato per essere accessibile e conforme agli standard di accessibilità. Ecco alcune linee guida per garantire che il tuo utilizzo del componente sia accessibile:
-- **Etichette chiare**: Assicurati che ogni elemento all'interno della toolbar abbia un'etichetta chiara e descrittiva. Utilizza testo visibile o, se le etichette sono nascoste, assicurati di fornire una descrizione accessibile tramite attributi ARIA o elementi visivamente nascosti.
+I componenti `it-toolbar` e `it-toolbar-item` sono progettati per essere accessibili e conformi agli standard di accessibilità.
 
+Ecco alcune linee guida per garantire che il tuo utilizzo del componente sia accessibile:
+- **Etichette chiare**: Assicurati che ogni elemento all'interno della toolbar (che non sia un elemento divisorio) abbia un'etichetta chiara e descrittiva.
 
+  Utilizza testo visibile impostando l'attributo dedicato `label` ed eventualmente testo aggiuntivo per i soli lettori di schermo tramite l'attributo `label-extended`.
 
+  Se le etichette sono nascoste tramite l'attributo `hide-label` assicurati di fornire una descrizione accessibile tramite gli attributi `label`, `it-aria-label` ed eventualmente `label-extended`.
+
+- Se un elemento della toolbar mostra un badge, imposta sempre l'attributo `label-extended` sul componente `it-toolbar-item` per fornire una descrizione più dettagliata del badge ai lettori di schermo.
 
 ## Varianti di dimensione
 
@@ -52,43 +57,73 @@ Applicando l'attributo `size="sm"` alla Toolbar si ottiene la versione più picc
 
 <Canvas of={Stories.ToolbarPiccola} />
 
+## Stato degli elementi
+
+### Elemento attivo
+
+Puoi rendere attivo un elemento della Toolbar aggiungendo l'attributo `active` all'elemento `<it-toolbar-item>`.
+
+
+### Elemento disabilitato
+
+Puoi disabilitare un elemento della Toolbar aggiungendo l'attributo `disabled` all'elemento `<it-toolbar-item>`.
+
+Agli elementi disabilitati verranno applicati automaticamente dal componente `<it-toolbar-item>` alcuni accorgimenti relativi all'accessibilità:
+- ai link (`<a>`) verranno aggiunti automaticamente gli attributi HTML `disabled` e `aria-disabled="true"`.
+- al pulsante (`<it-button>`) verrà aggiunto automaticamente l'attributo `disabled` che di conseguenza imposta l'attributo `aria-disabled="true"` al `<button>` generato.
+
+
+## Divisori
+
+Puoi aggiungere degli elementi divisori fra gli elementi inserendo un elemento di tipo `<it-toolbar-item divider></it-toolbar-item>`
+
+Il componente `<it-toolbar-item>` si occuperà di gestire autonomamente gli attributi per l'accessiblità dell'elemento divisorio.
+
+<Canvas of={Stories.ToolbarConDivisori} />
+
+## Con badge
+
+I Badge possono essere utilizzati per contenere numeri al fine di indicare, ad esempio, contenuti non letti.
+
+Utilizza l'attributo `badge` sul componente `it-toolbar-item` per specificare il numero da visualizzare all'interno del badge.
+
+Utilizza l'attributo `label-extended` per fornire una descrizione più dettagliata del badge ai lettori di schermo.
+
+
+<Canvas of={Stories.ToolbarConBadge} />
+
+### Toolbar media e piccola con badge
+Nelle versioni media e piccola della toolbar (`<it-toolbar size="md">` e `<it-toolbar size="sm">`), i Badge non contengono numeri ma possono essere usati come alert generici. Il numero dei contenuti non letti o nuovi va indicato nell'attributo `label-extended` riservato agli screen reader.
+
+<Canvas of={Stories.ToolbarMediaSmallConBadge} />
+
+
+## Toolbar con dropdown
+All’interno della Toolbar è possibile implementare dei pulsanti dropdown con relativo sottomenù.
+
+Aggiungi l'attributo `dropdown` al componente `<it-toolbar-item>` per trasformarlo in un elemento dropdown. Le voci del menu di tipo `<it-dropdown-item>` vanno inserite nello slot dedicato `items` in questo modo:
+
+```html
+<it-toolbar-item dropdown>
+  <div slot="label">Dropdown</div>
+  <it-dropdown-item slot="items">Voce 1</it-dropdown-item>
+  <it-dropdown-item slot="items">Voce 2</it-dropdown-item>
+</it-toolbar-item>
+```
+
+Se aggiungi la classe `no-expand` al componente `<it-toolbar-item>`, l'icona di espansione del menu non verrà mostrata. Questo è utile quando hai un menu del tipo `altro` o `more` il cui simbolo di espansione è già implicito nell'icona stessa e quindi l'icona di espansione risulterebbe ridondante.
+
+[TODO]
+
 ## Orientamento verticale
 
 Applicando l'attributo `orientation="vertical"` alla Toolbar gli elementi vengono visualizzati in colonna.
 
 <Canvas of={Stories.ToolbarVertical} />
 
-## Stato degli elementi
+### Toolbar media verticale
+<Canvas of={Stories.ToolbarMediumVertical} />
 
-### Elemento attivo
-Al tag `<a>` dell'elemento attivo va applicata la classe `.active`.
+### Toolbar piccola verticale
+<Canvas of={Stories.ToolbarSmallVertical} />
 
-### Elemento disabilitato
-Gli elementi disabilitati avranno una classe `.disabled` con ulteriori accorgimenti relativi all'accessibilità:
-- link (`<a>`): aggiungere l'attributo HTML `disabled` al tag
-- pulsante (`<button>`): aggiungere l'attributo `aria-disabled="true"`.
-
-<Canvas of={Stories.ToolbarDisabilitata} />
-
-## Con divisori
-
-Per aggiungere degli elementi divisori fra gli elementi utilizzare dei tag `<li>` con classe `.toolbar-divider`, aggiungendo il ruolo separatore `role="separator"` per indicarne la presenza agli screen reader e `aria-orientation="vertical"` per indicarne l'orientamento.
-
-<Canvas of={Stories.ToolbarConDivisori} />
-
-## Con badge
-
-I Badge possono essere utilizzati per indicare contenuti non letti o alert di vario tipo. Il numero dei contenuti non letti o nuovi va indicato anche all'interno della label in uno `<span>` con classe `.visually-hidden` riservato agli screen reader.
-
-<Canvas of={Stories.ToolbarConBadge} />
-
-## Accessibilità
-
-Lo stato delle verifiche di accessibilità effettuate sul componente Bootstrap Italia:
-
-- **Visivamente accessibile**: Uso e contrasto dei colori, leggibilità
-- **Amichevole con lettori di schermo**: Struttura titolazioni, etichette e testi alternativi
-- **Navigabile**: Focus, struttura, navigazione da tastiera o altri device
-- **Comprensibile**: Comprensibile, prevedibile, gestione semplice dell'errore
-
-Per le label non visive, utilizzare gli `<span>` con classe `.visually-hidden` per garantire l'accessibilità ai lettori di schermo.

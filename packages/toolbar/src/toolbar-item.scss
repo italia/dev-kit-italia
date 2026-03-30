@@ -4,9 +4,27 @@
 @import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
 
 li {
+  border: 1px solid red;
   list-style-type: none;
   margin: 0 8px;
   text-align: center;
+
+  &.toolbar-divider {
+    margin: 0;
+    width: 1px;
+    min-width: 1px; // fix for IE11
+    max-width: 1px;
+    height: 100%;
+    background: var(--#{$prefix}gray-300);
+
+    &[aria-orientation='horizontal'] {
+      height: 1px;
+      min-height: 1px; // fix for IE11
+      max-height: 1px;
+      width: 100%;
+      min-width: 100%;
+    }
+  }
 }
 
 a {
@@ -25,7 +43,8 @@ li > * {
     color: var(--toolbar-color);
   }
 
-  it-icon {
+  it-icon,
+  &::part(icon) /*La part(icon) è l'icona di expand del dropdown*/ {
     --#{$prefix}icon-default: var(--toolbar-icon-color);
   }
 
@@ -37,6 +56,7 @@ li > * {
   &.disabled {
     --toolbar-color: var(--toolbar-disabled-color);
     --toolbar-icon-color: var(--toolbar-disabled-color);
+
     cursor: not-allowed;
   }
 
@@ -61,4 +81,46 @@ li > * {
   font-weight: 600;
   line-height: 1;
   display: block;
+}
+
+// icon badges ------------------
+.badge-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+// icon badge
+.toolbar-badge {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  background-color: var(--toolbar-badge-color);
+  border: 1px solid var(--#{$prefix}white);
+  top: var(--toolbar-badge-top);
+  right: 0px;
+  width: var(--toolbar-badge-size);
+  height: var(--toolbar-badge-size);
+  padding: 0;
+  color: $white;
+  font-size: 0.5rem;
+  line-height: 1rem;
+  border-radius: 50%;
+  font-style: normal;
+}
+
+it-dropdown {
+  &::part(button) {
+    display: inline-flex;
+  }
+
+  &::part(icon) {
+    --#{$prefix}icon-size-s: var(--#{$prefix}icon-size-xs);
+    height: 100%;
+  }
+
+  &[alignment='right-start'] {
+    &::part(icon) {
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { BaseComponent, setAttributes } from '@italia/globals';
 
 import styles from './toolbar-item.scss';
@@ -17,6 +18,12 @@ import styles from './toolbar-item.scss';
 @customElement('it-toolbar-item')
 export class ItToolbarItem extends BaseComponent {
   static styles = styles;
+
+  /**
+   * Whether the item is a divider
+   */
+  @property({ type: Boolean, reflect: true })
+  divider = false;
 
   /**
    * Label text for the toolbar item
@@ -43,6 +50,12 @@ export class ItToolbarItem extends BaseComponent {
    */
   @property({ type: String, reflect: true })
   badge: string | null = null;
+
+  /**
+   * To hide the badge number visually but keep it accessible for screen readers
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'hide-badge' })
+  hideBadge = false;
 
   /**
    * Whether the item is active
@@ -75,6 +88,18 @@ export class ItToolbarItem extends BaseComponent {
   @property({ type: String, reflect: true, attribute: 'label-extended' })
   labelExtended: string | null = null;
 
+  /**
+   * Whether the item has a dropdown
+   */
+  @property({ type: Boolean, reflect: true })
+  dropdown = false;
+
+  /**
+   * Orientation
+   */
+  @property({ type: String, reflect: true, attribute: 'it-aria-orientation' })
+  itAriaOrientation: 'horizontal' | 'vertical' = 'horizontal';
+
   private handleClick = (event: MouseEvent) => {
     if (this.disabled) {
       event.preventDefault();
@@ -94,7 +119,7 @@ export class ItToolbarItem extends BaseComponent {
   private renderLabel() {
     if (!this.label) return null;
     return this.hideLabel
-      ? html`<span class="visually-hidden">${this.label} ${this.labelExtended ?? ''}</span>`
+      ? html`<span class="visually-hidden">${`${this.label} ${this.labelExtended ?? ''}`}</span>`
       : html`
           <span class="toolbar-label">
             ${this.label}
@@ -105,7 +130,16 @@ export class ItToolbarItem extends BaseComponent {
 
   private renderBadge() {
     if (!this.badge) return null;
-    return html`<span class="badge">${this.badge}</span>`;
+    return html`<div class="badge-wrapper" part="badge-wrapper">
+      <span class="toolbar-badge" part="badge">${!this.hideBadge ? this.badge : ''}</span>
+    </div>`;
+  }
+
+  private renderItemContent() {
+    return html`
+      ${this.renderBadge()} ${this.renderIcon()} ${this.renderLabel()}
+      <slot></slot>
+    `;
   }
 
   private renderTag() {
@@ -122,25 +156,42 @@ export class ItToolbarItem extends BaseComponent {
           href="${this.href}"
           class="${classes}"
           ?disabled="${this.disabled}"
-          aria-label="${this.itAriaLabel || this.label}"
+          ?aria-label="${this.itAriaLabel}"
+          aria-disabled="${ifDefined(this.disabled ? this.disabled : undefined)}"
           @click="${this.handleClick}"
           part="focusable toolbar-item-element"
         >
-          ${this.renderIcon()} ${this.renderLabel()} ${this.renderBadge()}
+          ${this.renderItemContent()}
         </a>
       `;
+    }
+
+    if (this.dropdown) {
+      return html`<it-dropdown
+        class="${classes}"
+        ?disabled="${this.disabled}"
+        ?aria-label="${this.itAriaLabel}"
+        @click="${this.handleClick}"
+        part="toolbar-item-element"
+        exportparts="focusable, button, icon, icon:expand-icon"
+        variant=""
+        alignment=${this.itAriaOrientation === 'vertical' ? 'right-start' : 'bottom-start'}
+      >
+        <div slot="label">${this.renderItemContent()}</div>
+        <slot name="items"></slot>
+      </it-dropdown>`;
     }
 
     return html`
       <it-button
         class="${classes}"
         ?disabled="${this.disabled}"
-        aria-label="${this.itAriaLabel || this.label}"
+        ?aria-label="${this.itAriaLabel}"
         @click="${this.handleClick}"
         part="toolbar-item-element"
         exportparts="focusable, button"
       >
-        ${this.renderIcon()} ${this.renderLabel()} ${this.renderBadge()}
+        ${this.renderItemContent()}
       </it-button>
     `;
   }
@@ -149,8 +200,15 @@ export class ItToolbarItem extends BaseComponent {
     const ariaAttributes: Record<string, string> = { ...this._ariaAttributes };
     delete ariaAttributes['aria-disabled']; // Rimuove aria-disabled se presente, gestito a livello di focusable element
     delete ariaAttributes['aria-label']; // Rimuove aria-label se presente, gestito a livello di focusable element
-    console.log(ariaAttributes, this._ariaAttributes);
-    return html` <li part="toolbar-item" ${setAttributes(ariaAttributes)}>${this.renderTag()}</li> `;
+
+    return this.divider
+      ? html`<li
+          part="toolbar-item toolbar-divider"
+          class="toolbar-divider"
+          role="separator"
+          ${setAttributes(ariaAttributes)}
+        ></li>`
+      : html` <li part="toolbar-item" ${setAttributes(ariaAttributes)}>${this.renderTag()}</li> `;
   }
 }
 

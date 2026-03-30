@@ -7,16 +7,59 @@ it-toolbar {
   --toolbar-disabled-color: var(--#{$prefix}300);
   --toolbar-hover-color: var(--#{$prefix}color-link-hover);
 
+  --toolbar-badge-color: var(--#{$prefix}primary);
+  --toolbar-badge-size: 18px;
+  --toolbar-badge-top: -4px;
+
   &[size='sm'] {
+    --toolbar-badge-size: 8px;
+    --toolbar-badge-top: 2px;
+
     it-toolbar-item::part(icon) {
       --#{$prefix}icon-size-m: var(--#{$prefix}icon-size-s);
+    }
+  }
+
+  &[size='md'] {
+    --toolbar-badge-size: 10px;
+    --toolbar-badge-top: -2px;
+  }
+
+  &[orientation='vertical'] {
+    it-toolbar-item {
+      &[divider] {
+        height: 1px;
+        width: calc(100% - 16px);
+      }
+      position: relative;
+
+      &::part(expand-icon) {
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        transform: translateY(-50%);
+      }
     }
   }
 }
 
 it-toolbar-item {
+  max-width: 100%;
+
   &::part(toolbar-item-element) {
     --#{$prefix}spacing-xs: 0;
     --#{$prefix}spacing-s: 0;
+  }
+
+  &::part(button) {
+    --bsi-btn-disabled-opacity: 1;
+  }
+
+  &[divider] {
+    height: calc(100% - 16px);
+  }
+
+  &.no-expand::part(expand-icon) {
+    display: none;
   }
 }
