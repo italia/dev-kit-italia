@@ -5,11 +5,11 @@ import * as Stories from './it-card.stories';
 
 # Card
 
-<description>Aiutano a presentare un gruppo di contenuti correlati, come articoli o sezioni di un sito web e permettono di continuare la navigazione verso le rispettive pagine di dettaglio</description>
+<description>Aiutano a presentare un gruppo di contenuti correlati, come articoli o sezioni di un sito web e permettono di continuare la navigazione verso le rispettive pagine di dettaglio.</description>
 
 ## Cosa fa
 
-Le card sono contenitori flessibili e versatili per organizzare e presentare contenuti strutturati in modo coerente, adattabili a diversi contesti e necessità.
+Il componente Card (`it-card`) organizza e presenta contenuti strutturati in modo coerente, offrendo un contenitore flessibile e adattabile a diversi contesti e necessità.
 
 [Approfondisci come e quando usare il componente Card](https://designers.italia.it/design-system/componenti/card/)
 
@@ -22,62 +22,57 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Indicazioni generali
 
-- Rendi la card azionabile poiché è una sintesi di informazioni più dettagliate. Ogni card deve puntare a una pagina di dettaglio tramite link.
-- Includi contenuti unici, evitando di ripetere immagini o informazioni che sono presenti in altre card.
-- Non usare la card a scopo decorativo, creando un contorno per qualunque tipologia di contenuto.
+- Rendi la card cliccabile, collegandola a una pagina che approfondisce le informazioni.
+- Includi contenuti unici, evitando di ripetere informazioni presenti in altre card.
+- Non usare le card a semplice scopo decorativo.
+- Scrivi titoli concisi che invoglino a approfondire e usa la descrizione per contenuti secondari.
 - Scegli immagini della dimensione corretta, assicurandoti che funzionino bene su qualsiasi dispositivo e dimensione.
-- Scrivi titoli concisi che stimolino l'interesse dell'utente ad approfondire il contenuto.
-- Usa la descrizione per contenuti secondari, non per informazioni essenziali, in quanto gli utenti potrebbero prestarvi minore attenzione.
+
 
 ## Accessibilità
 
-Le card implementano diverse caratteristiche per garantire un’esperienza accessibile a tutte le persone,
-la maggior parte di esse sono implementato nel componente stesso,
-ma è importante che anche i contenuti inseriti nelle card siano accessibili.
+Il componente implementa automaticamente diverse caratteristiche per garantire l'accessibilità, ma è importante che anche i contenuti inseriti nelle card siano accessibili.
 
 ### Metadati e contenuti descrittivi
 
-Per migliorare la comprensione dei metadati da parte delle tecnologie assistive aggiungi testi descrittivi nascosti con `.visually-hidden` (es. “Categoria correlata: “, “Argomento correlato: “) o applicati con `aria-label` (es. “Argomenti correlati: “).
-Valuta attentamente se gli elementi come le liste (es. di contenuti affini, link secondari o una stessa lista di card) abbiano o meno bisogno di etichette `aria-label` o `aria-labelledby` per descriverne le finalità.
+Per migliorare la comprensione dei metadati da parte delle tecnologie assistive, aggiungi testi descrittivi nascosti con `.visually-hidden` (ad esempio, “Categoria correlata: “, “Argomento correlato: “) o applicati con `aria-label` (es. “Argomenti correlati: “).
+
+Valuta attentamente se le liste di contenuti affini, link secondari o più card abbiano bisogno di etichette `aria-label` o `aria-labelledby` per descriverne le finalità.
 
 ### Icone e contenuti visivi
 
-Le icone nelle card possono avere diversi ruoli semantici:
+Le icone delle card possono avere diversi ruoli semantici:
 
-- Decorative: quando il significato è già chiaro dal contesto testuale, usa `aria-hidden="true"`.
-- Informative: quando comunicano informazioni aggiuntive (es. tipo di file, link esterno), aggiungi testo nascosto con `<span class="visually-hidden">` che descriva l'informazione se non già veicolata diversamente.
-- Funzionali: quando indicano un'azione o stato, assicurati che il significato sia comunicato anche testualmente.
+- se sono **decorative** (il loro significato è già chiaro dal contesto testuale), usa `aria-hidden="true"`;
+- se sono **informative** (comunicano informazioni aggiuntive, come il tipo di file o la presenza di un link esterno), aggiungi testo nascosto con `<span class="visually-hidden">` che descriva l'informazione se non già veicolata diversamente;
+- se sono **funzionali** (indicano un'azione o stato), assicurati che il significato sia comunicato anche testualmente.
 
-Per le immagini aggiungi una breve descrizione immagine (con l'attributo `alt="Breve descrizione."`) se ha senso nel contesto,
-marcale altrimenti come decorative lasciando l'attributo `alt` applicato ma vuoto.
+Per le immagini, aggiungi una breve descrizione usando l'attributo `alt="Breve descrizione."`). Se sono puramente decorative, mantieni l'attributo `alt` ma lascialo vuoto.
 
 ### Collegamenti e navigazione
 
-Usa `a` per i collegamenti di navigazione e `button` per azioni nella stessa pagina.
-Per contenuti esterni, comunica chiaramente la destinazione, ad esempio con testo nascosto e icone appropriate.
-Privilegia il titolo come elemento principale di navigazione, evitando troppi collegamenti nella stessa card.
+- Usa `a` per i collegamenti di navigazione e `button` per azioni nella stessa pagina.
+- Segnala chiaramente la destinazione dei link esterno con testo nascosto e icone appropriate.
+- Usa i titoli come elementi principale di navigazione, evitando troppi collegamenti nella stessa card.
 
-Negli esempi non abbiamo usato il target del link per favorire la normale navigazione del browser.
-Se la pagina di destinazione si apre in una nuova tab o finestra, comunicalo in modo chiaro all'utente con un'icona di link esterno e un testo alternativo o nascosto per i lettori di schermo.
+Negli esempi non abbiamo usato il target del link per favorire la normale navigazione del browser. Se la pagina di destinazione si apre in una nuova tab o finestra, comunicalo in modo chiaro all'utente con un'icona di link esterno e un testo alternativo o nascosto per i lettori di schermo.
 
 ### Date e orari nelle card
 
-Quando presenti date e orari, usa l'elemento `time` con l'appropriato attributo `datetime`.
-Inserisci eventuali contenuti guida per lettori di schermo solo se realmente necessari per evitare il rumore,
-ad esempio `<span class="visually-hidden">Data evento:</span>`.
-Comunica chiaramente agli utenti quando una data ha il ruolo di "Scadenza" aggiungendo un testo adeguato oltre alla data stessa, come negli esempi che trovi nella sezione "Card per servizi e bandi".
-Non usare solo il colore (negli esempi `.text-warning`) per veicolare l'importanza dell'informazione.
-
-Poni particolare attenzione che non si crei confusione se nella card fosse presente anche la data di pubblicazione,
-in caso valuta di non mostrarla.
-
-Consigliamo, inoltre, di svolgere sempre test di usabilità anche con utenti che utilizzano tecnologie assistive.
+- Quando presenti date e orari, usa l'elemento `time` con l'appropriato attributo `datetime`.
+- Inserisci eventuali contenuti guida per lettori di schermo solo se realmente necessari per evitare il rumore, ad esempio `<span class="visually-hidden">Data evento:</span>`.
+- Comunica chiaramente agli utenti quando una data ha il ruolo di "Scadenza" aggiungendo un testo adeguato oltre alla data stessa, come negli esempi che trovi nella sezione "Card per servizi e bandi".
+- Non usare solo il colore (negli esempi `.text-warning`) per veicolare l'importanza dell'informazione.
+- Se sono presenti altre date, valuta di non mostrare la data di pubblicazione per non creare confusione.
+- Svolgi sempre test di usabilità anche con utenti che utilizzano tecnologie assistive.
 
 ### Gerarchia dei titoli
 
-Utilizza gli elementi di intestazione (`h2`, `h3`, etc.) appropriati per il contesto intorno alle card.
-Negli esempi abbiamo usato quasi sempre `h3` per le card editoriali e `h4` per quelle informative.
-Adatta la gerarchia alla struttura complessiva della tua pagina in modo da rispettare l'ordine.
+Usa il corretto livello di intestazione (`h2`, `h3`, ecc.) per il titolo delle card.
+
+Negli esempi abbiamo usato quasi sempre `h3` per le card editoriali e `h4` per quelle informative, ma ricorda di adattare il codice in base alla gerarchia dei contenuti sulle tue pagine.
+.
+
 
 ### Contrasto e visibilità
 
