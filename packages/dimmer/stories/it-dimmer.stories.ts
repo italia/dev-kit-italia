@@ -65,7 +65,7 @@ const backgroundCards = html`
 const meta: Meta<DimmerProps> = {
   title: 'Componenti/Dimmer',
   component: 'it-dimmer',
-  tags: ['alpha', 'web-component'],
+  tags: ['new', 'web-component'],
   parameters: {
     layout: 'padded',
     docs: {
