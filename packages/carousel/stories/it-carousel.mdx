@@ -118,18 +118,18 @@ Il tempo di intervallo è impostato a 5000 ms (5 secondi) di default. Per person
 <Canvas of={Stories.Autoplay} />
 
 ## Personalizzazione avanzata attraverso l'attributo `config`
-Puoi fornire configurazioni specifiche a Splide, la libreria sottostante che gestisce il comportamento del Carousel valorizzando l'attributo `config`. Questo permette di personalizzare ulteriormente il comportamento del Carousel, ad esempio modificando la velocità di scorrimento, il numero di elementi visualizzati per pagina, o abilitando funzionalità avanzate breakpoints e stili personalizzati.
 
-Dovrai fornire un oggetto di configurazione che rispetti [le opzioni rese disponibili da Splide](https://splidejs.com/guides/options).
+Per personalizzare ulteriormente stile e comportamento del carousel (ad esempio velocità di scorrimento, numero di elementi visualizzati per pagina, funzionalità avanzate dei breakpoint), usa l'attributo `config` per passare un [oggetto di configurazione conforme alle opzioni di Splide](https://splidejs.com/guides/options).
 
-In questo esempio, il Carousel è configurato per visualizzare 2 elementi per pagina, abilitare l'autoplay e il loop, e impostare un intervallo di 3 secondi tra le transizioni. È importante consultare la documentazione di Splide per conoscere tutte le opzioni disponibili e assicurarsi che le configurazioni personalizzate siano compatibili con la struttura e il design del Carousel.
+In questo esempio, il carousel è configurato per mostrare 2 elementi per pagina, con autoplay e loop attivi e un intervallo di 3 secondi tra le transizioni.
+
 <div class="callout callout-warning">
   <div class="callout-inner">
     <div class="callout-title">
       <span class="text">Accessibilità</span>
     </div>
     <p>
-      Il seguente esempio viene fornito a scopo illustrativo e potrebbe non essere adatto per tutti i contesti o esigenze di accessibilità.
+      Questo esempio ha scopo illustrativo e potrebbe non essere adatto per tutti i contesti o esigenze di accessibilità.
     </p>
 
   </div>
@@ -178,27 +178,27 @@ In questo esempio, il Carousel è configurato per visualizzare 2 elementi per pa
 Il componente espone i seguenti metodi e eventi accessibili via JavaScript.
 
 ### Metodi
-- `playAutoplay()` — avvia l'autoplay (se configurato).
-- `pauseAutoplay()` — mette in pausa l'autoplay.
+- `playAutoplay()`, avvia l'autoplay (se configurato).
+- `pauseAutoplay()`, mette in pausa l'autoplay.
 
 ### Eventi
-- `it-carousel-play` — emesso quando l'autoplay viene avviato. Evento configurato con `bubbles: true` e `composed: true`. Nel `detail` contiene `{ id: string }` (id della istanza Splide).
-- `it-carousel-pause` — emesso quando l'autoplay viene messo in pausa. Evento configurato con `bubbles: true` e `composed: true`. Nel `detail` contiene `{ id: string }`.
+- `it-carousel-play`, emesso quando l'autoplay viene avviato. Evento configurato con `bubbles: true` e `composed: true`. Nel `detail` contiene `{ id: string }` (id della istanza Splide).
+- `it-carousel-pause`, emesso quando l'autoplay viene messo in pausa. Evento configurato con `bubbles: true` e `composed: true`. Nel `detail` contiene `{ id: string }`.
 
 ## {Stories.I18n.name}
 <Description of={Stories.I18n}/>
 
 
 ## Personalizzazione degli stili
-Per personalizzare l'aspetto del componente `it-carousel` dall'esterno dello shadow DOM puoi utilizzare il selettore `::part()` sui seguenti part esposti dal componente:
+Per personalizzare l'aspetto di `it-carousel` dall'esterno dello shadow DOM, usa il selettore `::part()` sui seguenti part esposti dal componente:
 
-- `arrows` — wrapper che contiene i pulsanti freccia (prev/next).
-- `arrow-prev` — il pulsante "precedente".
-- `arrow-next` — il pulsante "successivo".
-- `pagination-track` — il contenitore della paginazione (lista di dot).
-- `pagination-dot` — ogni singolo dot/pulsante della paginazione.
-- `autoplay-toggle` — il bottone toggle Play/Pausa (renderizzato quando `autoplay` è attivo o `config.autoplay` è configurato).
-- `autoplay-play` — icona SVG di Play all'interno del toggle.
-- `autoplay-pause` — icona SVG di Pause all'interno del toggle.
+- `arrows`, per il wrapper che contiene i pulsanti freccia (prev/next);
+- `arrow-prev`, per il pulsante "precedente";
+- `arrow-next`, per il pulsante "successivo";
+- `pagination-track`, per il contenitore della paginazione (lista di dot);
+- `pagination-dot`, per ogni singolo dot/pulsante della paginazione;
+- `autoplay-toggle`, per il toggle Play/Pausa peresente quando `autoplay` è attivo o `config.autoplay` è configurato;
+- `autoplay-play`, per l'icona SVG di Play all'interno del toggle;
+- `autoplay-pause`, per l'icona SVG di Pause all'interno del toggle.
 
-[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
