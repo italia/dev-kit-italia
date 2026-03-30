@@ -37,6 +37,7 @@ import Table from './pages/Table';
 import Video from './pages/Video';
 import Carousel from './pages/Carousel';
 import Pagination from './pages/Pagination';
+import Notification from './pages/Notification';
 
 export const AppRoutes = [
   { path: '/', element: <Home />, title: 'Homepage' },
@@ -66,6 +67,7 @@ export const AppRoutes = [
   { path: '/megamenu', element: <Megamenu />, title: 'Megamenu' },
   { path: '/modal', element: <Modal />, title: 'Modal' },
   { path: '/navscroll', element: <Navscroll />, title: 'Navscroll' },
+  { path: '/notification', element: <Notification />, title: 'Notification' },
   { path: '/overlay', element: <Overlay />, title: 'Overlay' },
   { path: '/pagination', element: <Pagination />, title: 'Pagination' },
   { path: '/popover', element: <Popover />, title: 'Popover' },

@@ -1,0 +1,111 @@
+import { Meta, Canvas, Controls, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-notification.stories';
+
+<Meta of={Stories} />
+
+<Title of={Stories} />
+
+<description>Messaggio di testo a comparsa per informare l'utente di eventi, aggiornamenti o azioni che richiedono la sua attenzione</description>
+
+## Cosa fa
+
+Usa il componente notification, in italiano notifica, per aggiornare l'utente su modifiche o aggiornamenti minori all'interno dell'applicazione.
+Questi messaggi temporanei appaiono in sovrimpressione e tendono a scomparire dopo pochi secondi, quindi potrebbero non essere sempre notati o letti attentamente.
+
+[Approfondisci come e quando usare il componente Notifications](https://designers.italia.it/design-system/componenti/notifications/)
+
+### Alternative a questo componente
+
+- [Alert](/docs/componenti-alert--documentazione): per mostrare all'utente messaggi di avviso importanti che restano nel corpo della pagina senza scomparire automaticamente.
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+## Indicazioni generali
+
+Lo stato naturale dell'elemento è invisibile.
+Gli esempi di questa pagina sono stati resi statici per facilitare un confronto fra le varie tipologie.
+
+Passa alla sezione [Attivazione tramite codice](#attivazione-tramite-codice) per vedere gli esempi di notifica funzionanti.
+
+## Accessibilità
+
+Il componente utilizza il tag `h2` per il titolo delle notifiche per impostazione predefinita.
+Utilizza il tag `h` corretto a seconda del contesto.
+Usa l'attributo `heading-level` per impostarlo.
+
+## Notifica con messaggio
+
+Puoi aggiungere un breve testo al di sotto del titolo utilizzando un tag `<p>`.
+
+<Canvas of={Stories.ConMessaggio} />
+
+## Eliminabili
+
+Le notifiche eliminabili non vengono nascoste dopo un intervallo di tempo ma vengono chiuse solo quando si clicca sul rispettivo pulsante di chiusura.
+
+Utilizza un attributo aggiuntivo `dismissable` per ottenere questo comportamento.
+
+<Canvas of={Stories.Eliminabili} />
+
+## Stati
+
+Alle notifiche possono essere applicati attributi aggiuntivi che ne determinano lo stato modificando il colore delle icone e del bordo.
+Utilizza l'attributo `status` con uno di questi valori:
+
+* `success` - per messaggi di procedure andate a buon fine
+* `error` - per messaggi di errore
+* `info` - per info generiche
+* `warning` - per messaggi di precauzione
+
+<Canvas of={Stories.Stati} />
+
+## Posizione e arrotondamento degli angoli
+
+La posizione predefinita delle notifiche è nella parte destra inferiore della finestra.
+
+Utilizzando gli attributi aggiuntivi di posizione fissa elencati di seguito la notifica verrà posizionata a filo di uno dei margini indicati,
+modificando l'arrotondamento degli angoli di conseguenza.
+
+**N.B. questi attributi non influenzano il posizionamento su device mobile, in questo caso la Notification è sempre a piede della finestra e ne occupa tutta la larghezza**
+
+<Canvas of={Stories.PosizioneEAngoli} />
+
+### Posizione predefinita
+
+Posizionamento predefinito della notifica.
+
+<Canvas of={Stories.PosizionePredefinita} />
+
+### Posizione fissa
+
+Esempi delle quattro posizioni fisse possibili.
+
+<Canvas of={Stories.PosizioneFissa} />
+
+## Attivazione tramite codice
+
+Puoi mostrare una notifica chiamando il metodo `show` di un elemento `it-notification`.
+Puoi passare come parametro il valore in millisecondi di permanenza della notifica.
+Se non viene specificato viene usato il valore dell'attributo `timeout`, oppure viene usato il valore predefinito di 3 secondi.
+
+Trovi qui sotto due esempi su come usare le notifiche.
+
+### Notifiche a scomparsa automatica
+
+Questo è il comportamento di default che ottieni quando non imposti l'attributo `dismissable`.
+
+<Canvas of={Stories.Attivazione} />
+
+### Notifiche a scomparsa manuale
+
+Questo è un esempio di come rimuovere manualmente le notifiche quando imposti l'attributo `dismissable`.
+Il click sul pulsante di chiusura interno alla notifica è automaticamente configurato per nasconderla.
+
+Puoi inoltre controllarne la chiusura dall'esterno programmaticamente, chiamando il metodo `hide` dell'elemento `it-notification`.
+
+<Canvas of={Stories.AttivazioneEdEliminazione} />

@@ -30,6 +30,7 @@
       "@italia/input",
       "@italia/modal",
       "@italia/navscroll",
+      "@italia/notification",
       "@italia/pagination",
       "@italia/popover",
       "@italia/radio",

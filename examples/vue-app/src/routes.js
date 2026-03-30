@@ -39,6 +39,7 @@ import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Carousel from './components/Carousel.vue';
 import Pagination from './components/Pagination.vue';
+import Notification from './components/Notification.vue';
 
 const routes = [
   { path: '/', name: 'Homepage', component: Home },
@@ -68,6 +69,7 @@ const routes = [
   { path: '/megamenu', name: 'Megamenu', component: Megamenu },
   { path: '/modal', name: 'Modal', component: Modal },
   { path: '/navscroll', name: 'Navscroll', component: Navscroll },
+  { path: '/notification', name: 'Notification', component: Notification },
   { path: '/overlay', name: 'Overlay', component: Overlay },
   { path: '/pagination', name: 'Pagination', component: Pagination },
   { path: '/popover', name: 'Popover', component: Popover },

@@ -1,0 +1,40 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
+
+@import 'bootstrap-italia/src/scss/base/transitions';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/components/notifications';
+@import 'bootstrap-italia/src/scss/components/type';
+
+//ovveride utilities: get only needed utilities
+$utilities: ();
+
+/**
+ * Copied from bsi reboot
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--#{$prefix}paragraph-spacing);
+}
+/* END copied from bsi reboot */
+
+.notification-close {
+  --#{$prefix}icon-default: #{$icon-secondary};
+  border: 0;
+
+  &:hover {
+    --#{$prefix}icon-default: #{$icon-primary};
+  }
+}
+
+@import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
