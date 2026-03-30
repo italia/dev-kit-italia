@@ -1252,7 +1252,7 @@ export const GestioneEventi: Story = {
 };
 
 export const MetodiEPropPubblici: Story = {
-  name: 'Proprietà, metodi ed eventi accessibili via js',
+  name: 'Proprietà, metodi ed eventi accessibili via JS',
   tags: ['!dev'],
   render: () => html`<div class="hide-preview"></div>`,
   parameters: {
