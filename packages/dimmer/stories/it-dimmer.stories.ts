@@ -112,9 +112,6 @@ type Story = StoryObj<DimmerProps>;
 
 export const EsempioInterattivo: Story = {
   render: (args) => html`
-    <div class="mb-3">
-      <it-button variant="primary" @click="${toggleDimmer}"> Toggle dimmer </it-button>
-    </div>
     <it-dimmer
       ?active="${args.active}"
       variant="${ifDefined(args.variant || undefined)}"
