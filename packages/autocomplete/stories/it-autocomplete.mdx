@@ -8,7 +8,7 @@ import * as Stories from './it-autocomplete.stories';
 <description>Campo di input che suggerisce automaticamente opzioni di completamento man mano che l'utente digita.</description>
 
 ## Cosa fa
-Il componente Autocomplete (`it-autocomplete`) suggerisce opzioni di autompletamento mentre l'utente digita in un campo input. I suggerimenti si basano sul testo inserito e aiutano l'utente a completare rapidamente il campo senza dover scrivere il testo per intero.
+Il componente Autocomplete (`it-autocomplete`) suggerisce opzioni di autocompletamento mentre l'utente digita in un campo input. I suggerimenti si basano sul testo inserito e aiutano l'utente a compilare rapidamente il campo senza dover scrivere il testo per intero.
 
 [Approfondisci quando e come usare il componente Autocomplete](https://designers.italia.it/design-system/form/autocompletamento/)
 
@@ -105,13 +105,13 @@ Per impostare un valore iniziale, usa l'attributo `default-value`.
 
 Impostare un valore iniziale richiede un approccio diverso a seconda di come carichi i dati relativi alle opzioni (`source`):
 
-1. **Opzioni statiche: Usa una stringa**. Se passi un array statico alla `source`, imposta l'attributo `default-value` con il valore stringa del `value` corrispondente. Il componente troverà da solo l'etichetta corretta da mostrare.
+1. Per **opzioni statiche**, **usa una stringa**. Se passi un array statico a `source`, imposta l'attributo `default-value` con il valore stringa del `value` corrispondente. Il componente troverà da solo l'etichetta corretta da mostrare.
 
-2. **Opzioni dinamiche: Usa un oggetto completo**. Se usi una funzione per caricare i dati nell'attributo `source`, il componente potrebbe non conoscere le opzioni all'avvio. Popola l'attributo `default-value` con un oggetto che contenga sia `value` che `label`.
+2. Per **opzioni dinamiche**, **usa un oggetto completo**. Se usi una funzione per caricare i dati nell'attributo `source`, il componente potrebbe non conoscere le opzioni all'avvio. Popola l'attributo `default-value` con un oggetto che contenga sia `value` che `label`.
 
-Se stai usando il componente in un framework (React, Angular, Vue, Svelte), segui le best practice del tuo framework per quanto riguarda gestione eventi, lifecycle events e fetching asincrono dei dati.
+Se stai usando il componente in un framework (React, Angular, Vue, Svelte), segui le indicazioni del tuo framework per quanto riguarda gestione eventi, lifecycle events e fetching asincrono dei dati.
 
-Puoi esaminare gli esempi sottostanti per vedere i diversi comportamenti con esempi semplificati, clicca su Show code.
+Per vedere i diversi comportamenti, clicca su Show code negli gli esempi.
 <Canvas of={Stories.MatriceComportamento} />
 
 ## {Stories.MetodiEPropPubblici.name}
