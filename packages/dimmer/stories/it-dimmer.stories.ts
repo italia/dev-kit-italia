@@ -98,11 +98,10 @@ const meta: Meta<DimmerProps> = {
       table: { defaultValue: { summary: "''" } },
     },
     contentText: {
-      control: 'text',
-      description: "(Demo) Testo di esempio nell'overlay",
+      table: { disable: true },
     },
   },
-  decorators: [(Story) => html` <div data-demo-wrapper style="min-width:50vw;">${Story()}</div> `],
+  decorators: [(Story) => html` <div data-demo-wrapper>${Story()}</div> `],
 };
 
 export default meta;
