@@ -25,7 +25,12 @@ Segui queste indicazioni per garantire l'accessibilità del componente:
 - **Per punti data**: usa l'elemento semantico `<time>` con l'attributo `datetime` in formato ISO (es. `2025-10-14`). Inserisci un `<span class="visually-hidden">` con la data scritta per esteso.
 - **Per punti non temporali**: usa un `<div>` nello slot `milestone` e usa `<span class="visually-hidden">` per descrivere il contenuto in linguaggio naturale seguendo l'ordine visivo (es. "Categoria AB, passo 1 di 3").
 
-## Anteprima e attributi del componente Timeline "classica"
+## Timeline "classica"
+Viene in seguito mostrato un esempio di timeline classica con tutte e tre le varianti di pin. Per vedere l'anteprima del codice, clicca su **Show code**.
+
+<Canvas of={Stories.TimelineClassica} />
+
+### Indicazioni generali
 
 Il componente nella sua versione "classica" è composto da `<it-timeline>` (contenitore) e `<it-timeline-element>` (singolo elemento).
 
@@ -64,28 +69,25 @@ Il pin ha tre varianti di colore controllate tramite l'attributo `variant`:
 </table>
 
 
-Viene in seguito mostrato un esempio di timeline classica con tutte e tre le varianti di pin. Per vedere l'anteprima del codice, clicca su **Show code**.
-
-<Canvas of={Stories.TimelineClassica} />
-
-
-## Anteprima e attributi del componente Timeline "point list"
+## Timeline "point list"
 
 La timeline point list permette la rappresentazione di una sequenza di eventi o informazioni in maniera più compatta rispetto alla timeline classica. È particolarmente indicata per presentare una breve sequenza di cose da fare e scadenze temporali.
 
-Il componente è formato da:
-
-- `<it-timeline variant="point-list">` - contenitore lista (renderizza `<ol>` o `<ul>`).
-- `<it-timeline-point>` - singolo punto della lista, il suo contenuto deve essere inserito nello slot `content`.
 
 ### Anteprima e attributi del componente
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
 
 <Canvas of={Stories.EsempioInterattivoPointList} />
 <Controls of={Stories.EsempioInterattivoPointList} />
 
 
+### Indicazioni generali
 
-### Struttura della sezione laterale
+Il componente nella sua versione "point list" è composto da:
+
+- `<it-timeline variant="point-list">` - contenitore lista (renderizza `<ol>` o `<ul>`).
+- `<it-timeline-point>` - singolo punto della lista, il suo contenuto deve essere inserito nello slot `content`.
 
 La sezione laterale è rappresentata dagli `slot="milestone"` e `slot="time"`, e visualizza informazioni in tre posizioni verticali tramite classi posizionali nei contenuti dello slot `date` o `milestone`:
 
