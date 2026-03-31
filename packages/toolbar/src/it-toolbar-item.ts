@@ -131,7 +131,9 @@ export class ItToolbarItem extends BaseComponent {
   private renderBadge() {
     if (!this.badge) return null;
     return html`<div class="badge-wrapper" part="badge-wrapper">
-      <span class="toolbar-badge" part="badge">${!this.hideBadge ? this.badge : ''}</span>
+      <span class="toolbar-badge ${this.hideBadge ? 'no-text' : ''}" part="badge"
+        >${!this.hideBadge ? this.badge : ''}</span
+      >
     </div>`;
   }
 

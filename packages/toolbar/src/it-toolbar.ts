@@ -63,9 +63,7 @@ export class ItToolbar extends BaseComponent {
     this.toolbarItems.forEach((item) => {
       if (this.size === 'md' || this.size === 'sm') {
         item.setAttribute('hide-label', '');
-        if (this.size === 'md') {
-          item.setAttribute('hide-badge', '');
-        }
+        item.setAttribute('hide-badge', '');
       } else {
         item.removeAttribute('hide-label');
         item.removeAttribute('hide-badge');

@@ -4,9 +4,9 @@
 @import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
 
 li {
-  border: 1px solid red;
+  // border: 1px solid red;
   list-style-type: none;
-  margin: 0 8px;
+  margin: 0 var(--#{$prefix}toolbar-item-margin-x);
   text-align: center;
 
   &.toolbar-divider {
@@ -15,7 +15,7 @@ li {
     min-width: 1px; // fix for IE11
     max-width: 1px;
     height: 100%;
-    background: var(--#{$prefix}gray-300);
+    background: var(--#{$prefix}toolbar-divider-color);
 
     &[aria-orientation='horizontal'] {
       height: 1px;
@@ -40,30 +40,30 @@ li > * {
 
   &,
   .toolbar-label {
-    color: var(--toolbar-color);
+    color: var(--#{$prefix}toolbar-link-color);
   }
 
   it-icon,
   &::part(icon) /*La part(icon) è l'icona di expand del dropdown*/ {
-    --#{$prefix}icon-default: var(--toolbar-icon-color);
+    --#{$prefix}icon-default: var(--#{$prefix}toolbar-icon-color);
   }
 
   &.active {
-    --toolbar-color: var(--toolbar-active-color);
-    --toolbar-icon-color: var(--toolbar-active-color);
+    --#{$prefix}toolbar-link-color: var(--#{$prefix}color-text-primary);
+    --#{$prefix}toolbar-icon-color: var(--#{$prefix}icon-primary);
   }
 
   &.disabled {
-    --toolbar-color: var(--toolbar-disabled-color);
-    --toolbar-icon-color: var(--toolbar-disabled-color);
+    --#{$prefix}toolbar-link-color: var(--#{$prefix}color-text-disabled);
+    --#{$prefix}toolbar-icon-color: var(--#{$prefix}icon-disabled);
 
     cursor: not-allowed;
   }
 
   &:not(.disabled):hover {
     text-decoration: underline;
-    --toolbar-color: var(--toolbar-hover-color);
-    --toolbar-icon-color: var(--toolbar-hover-color);
+    --#{$prefix}toolbar-link-color: var(--#{$prefix}color-link-hover);
+    --#{$prefix}toolbar-icon-color: var(--#{$prefix}icon-primary-hover);
   }
 
   // hover fix for ie11
@@ -76,8 +76,8 @@ li > * {
 
 // text label
 .toolbar-label {
-  margin-top: 8px;
-  font-size: 0.75rem;
+  margin-top: var(--#{$prefix}toolbar-label-margin-top);
+  font-size: var(--#{$prefix}toolbar-label-font-size);
   font-weight: 600;
   line-height: 1;
   display: block;
@@ -95,18 +95,24 @@ li > * {
   box-sizing: border-box;
   display: block;
   position: absolute;
-  background-color: var(--toolbar-badge-color);
-  border: 1px solid var(--#{$prefix}white);
-  top: var(--toolbar-badge-top);
+
+  border: 1px solid var(--#{$prefix}toolbar-badge-border-color);
+  background-color: var(--#{$prefix}toolbar-badge-background-color);
+
+  top: var(--#{$prefix}toolbar-badge-top);
   right: 0px;
-  width: var(--toolbar-badge-size);
-  height: var(--toolbar-badge-size);
-  padding: 0;
-  color: $white;
-  font-size: 0.5rem;
+  min-width: var(--#{$prefix}toolbar-badge-size);
+  height: var(--#{$prefix}toolbar-badge-size);
+  padding: 0 var(--#{$prefix}toolbar-badge-padding-x);
+  color: var(--#{$prefix}toolbar-badge-text-color);
+  font-size: var(--#{$prefix}toolbar-badge-font-size);
   line-height: 1rem;
-  border-radius: 50%;
+  border-radius: var(--#{$prefix}toolbar-badge-border-radius);
   font-style: normal;
+
+  &.no-text {
+    --#{$prefix}toolbar-badge-padding-x: 0;
+  }
 }
 
 it-dropdown {

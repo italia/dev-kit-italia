@@ -9,6 +9,21 @@
   display: block;
 }
 
+.toolbar {
+  --#{$prefix}toolbar-badge-size: 18px;
+  --#{$prefix}toolbar-badge-top: -4px;
+
+  &.toolbar-small {
+    --#{$prefix}toolbar-badge-size: 8px;
+    --#{$prefix}toolbar-badge-top: 2px;
+  }
+
+  &.toolbar-medium {
+    --#{$prefix}toolbar-badge-size: 10px;
+    --#{$prefix}toolbar-badge-top: -2px;
+  }
+}
+
 .toolbar-vertical > ul {
   overflow-y: scroll;
 }

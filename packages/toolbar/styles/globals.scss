@@ -1,28 +1,10 @@
 it-toolbar {
   --it-host-display: block;
 
-  --toolbar-icon-color: var(--#{$prefix}secondary);
-  --toolbar-color: var(--#{$prefix}color-text-secondary);
-  --toolbar-active-color: var(--#{$prefix}color-link);
-  --toolbar-disabled-color: var(--#{$prefix}300);
-  --toolbar-hover-color: var(--#{$prefix}color-link-hover);
-
-  --toolbar-badge-color: var(--#{$prefix}primary);
-  --toolbar-badge-size: 18px;
-  --toolbar-badge-top: -4px;
-
   &[size='sm'] {
-    --toolbar-badge-size: 8px;
-    --toolbar-badge-top: 2px;
-
     it-toolbar-item::part(icon) {
       --#{$prefix}icon-size-m: var(--#{$prefix}icon-size-s);
     }
-  }
-
-  &[size='md'] {
-    --toolbar-badge-size: 10px;
-    --toolbar-badge-top: -2px;
   }
 
   &[orientation='vertical'] {
