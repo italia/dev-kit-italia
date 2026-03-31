@@ -186,7 +186,7 @@ Usa queste varianti per fornire un'anteprima per pagine di dettaglio di servizi 
 Usa questa variante per rappresentare profili personali o i relatori di un evento.
 
 - Attivala usando l'attributo `variant="profile"`.
-- Per un'immagine di profilo sulla destra, integraè il componente [Avatar](/docs/componenti-avatar--documentazione), idealmente nelle varianti di dimensioni `xl`.
+- Per un'immagine di profilo sulla destra, integra il componente [Avatar](/docs/componenti-avatar--documentazione), idealmente nelle varianti di dimensioni `xl`.
 - La lista di metadati del profilo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `dd`-`dt` raccolta in un `div` contenitore.
 - Per un effetto decorativo, usa l'attributo `border-top` e le [varianti di colore disponibili nella tabella degli attributi](#anteprima-e-attributi-del-componente).
 
@@ -194,42 +194,39 @@ Usa questa variante per rappresentare profili personali o i relatori di un event
 
 ### Card per luoghi
 
-Usa questa variante per presentare schede località.
-Si attiva con con l'attributo `variant="location"`.
+Usa questa variante per rappresentare dei luoghi.
 
-Per i luoghi puoi inserire un'immagine in uno slot `image` o un'icona sulla destra.
-Racchiudi l'icona in un `div` con classe `.it-card-profile-image-icon-wrapper` per l'allineamento corretto.
-
-La lista di metadati del luogo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `dd`-`dt` raccolta in un `div` contenitore.
-
-Puoi combinare un piede con eventuali collegamenti o dettagli della mappa usando lo slot `footer`.
+- Attivala usando l'attributo `variant="location"`.
+- Per aggiungere un'immagine, usa lo slot `imagez.
+- Per aggiungere un'icona sulla destra e allinearla correttamente, racchiudila in un `div` con classe `.it-card-profile-image-icon-wrapper`.
+- La lista di metadati del luogo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `dd`-`dt` raccolta in un `div` contenitore.
+- Per eventuali collegamenti o dettagli della mappa, puoi usare lo slot `footer`.
 
 <Canvas of={Stories.Luoghi} />
 
 ### Card con liste di contenuti affini
 
-Per presentare liste di contenuti affini, puoi integrare liste strutturate di link nel corpo della card usando le classi `.list-group`.
+Usa questa variante quando è necessario facilitare l'accesso a contenuti importanti, come i correlati o gli approfondimenti di un argomento in evidenza o di un evento.
 
-Usa questa variante con moderazione e solo quando è necessario facilitare l'accesso ai contenuti in evidenza di un sito web, come ad esempio:
+per presentare liste di contenuti affini, 
 
-- i contenuti correlati a un argomento in evidenza
-- le varie pagine di approfondimento correlate a un evento in evidenza.
+- Integra liste strutturate di link nel corpo della card usando le classi `.list-group`.
+- Applica il colore primario o secondario alla lista dei link usando la classe `.it-card-link`.
+- Aggiungi link o pulsanti di servizio nello slot `footer`.
+
 
 <it-callout variant="success" heading-level="h4">
-  <span slot="title">Accessibilità: lista link correlati</span>
-  <p>Valuta caso per caso l'applicazione di un'eventuale aria-label all'elemento `ul`, per permettere ai lettori di schermo di comprendere la natura di questi link.</p>
+  <span slot="title">Accessibilità dei link</span>
+  <p>Valuta se applicare un aria-label all'elemento `ul` per permettere ai lettori di schermo di comprendere la natura di questi link.</p>
 </it-callout>
 
-Valuta caso per caso l'uso del colore primario per la lista di link,
-oppure l'applicazione del colore secondario usando la classe dedicata `.it-card-link`.
 
-Puoi combinare questa impostazione con le funzionalità dello slot `footer` per ospitare link e pulsanti di servizio.
 
 <Canvas of={Stories.ListeDiContenutiAffini} />
 
 ## Card presentazione
 
-Le card presentazione sono utili per mettere in evidenza l'accesso rapido a contenuti chiave oppure permettere la presentazione di dati.
+Queste varianti sono utili per facilitare l'accesso a contenuti chiave oppure presentare dati.
 
 ### Card banner
 
