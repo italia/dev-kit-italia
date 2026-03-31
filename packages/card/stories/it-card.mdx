@@ -132,7 +132,7 @@ La variante mini rimane orizzontale anche in viewport piccole o viste ingrandite
 
 Usa questa variante per mostrare contenuti relativi a eventi.
 
-- Per mostrare la data o la durata di un evento in una card, aggiungili in un paragrafo all'inizio del corpo della card usando lo slot `subtitle`.
+- Per mostrare la data o la durata di un evento, aggiungili in un paragrafo all'inizio del corpo della card usando lo slot `subtitle`.
 - Usa lo slot `actions` per collegamenti o pulsanti secondari, utile quando il titolo porta alla pagina di descrizione dell'evento ma vuoi dare accesso diretto all'azione principale (ad esempio, l'iscrizione all'evento).
 - Per applicare il colore secondario ai collegamenti `a` inseriti nel corpo o nel footer della card, usa la classe `.it-card-link`.
 
@@ -140,72 +140,55 @@ Usa questa variante per mostrare contenuti relativi a eventi.
 
 #### Card per eventi inline
 
-- Per disporre le card eventi in orizzontale, usa l'attributo `variant="inline"`.
-- Per invertire solamente l'ordine visivo tra destra e sinistra, usa invece l'attributo `variant="inline-reverse"`.
+- Per disporre le card eventi in orizzontale, usa la struttura della variante `inline`.
+- Per invertire solamente l'ordine visivo tra destra e sinistra, usa la struttura della variante `inline-reverse`.
 
 
 <Canvas of={Stories.EventiInline} />
 
-### Card per media (video, audio)
+### Card per media video e audio
 
-Usa queste varianti di card per presentare contenuti media come video o audio e rimandare alle relative pagine di dettaglio, anche se ospitate su piattaforme terze.
-Anche in questo caso, assicurati di comunicare all'utente la tipologia del contenuto e l'eventuale uscita dal sito stesso.
-Per farlo, puoi anche aggiungere un'icona a fianco del titolo, usando la classe `.it-card-title-icon-wrapper` come negli esempi che seguono.
+Usa queste varianti per presentare un'anteprima di contenuti video o audio e rimandare alle relative pagine di dettaglio, anche su piattaforme terze.
+
+Assicurati di comunicare all'utente la tipologia del contenuto e l'eventuale uscita dal sito stesso. Per farlo, puoi anche aggiungere un'icona a fianco del titolo, usando la classe `.it-card-title-icon-wrapper` come negli esempi.
 
 <Canvas of={Stories.Media} />
 
 #### Card per media video inline
 
-Per disporre le card media di tipo video in orizzontale, usa la variante `inline`.
-
-Usa le stesse regole delle card inline standard per struttura e inversione dell'ordine.
+Per disporre le card video in orizzontale o invertire l'ordine visivo tra sinistra e destra, usa la struttura e gli attributi della variante `inline`.
 
 <Canvas of={Stories.MediaVideoInline} />
 
 ## Card informative e di servizio
 
-Le card informative e di servizio sono utili a fornire un'anteprima per pagine di dettaglio di servizi e bandi,
-oppure per rappresentare documenti e altri tipi di allegati.
+Usa queste varianti per fornire un'anteprima per pagine di dettaglio di servizi e bandi, documenti o altri tipi di allegati.
 
 ### Card per servizi e bandi
 
-Consigliamo di usare alternativamente un breve testo descrittivo nello slot `text` o nello slot `subtitle` per descrivere il contesto della card.
-
-Per aggiungere indicazioni sullo stato del servizio o bando e un'eventuale data di scadenza, come negli esempi seguenti, puoi usare l'elemento footer:
-
-- per lo stato del servizio o bando, usa un componente [Chip](/docs/componenti-chip--documentazione)
-- per un'eventuale data di scadenza, usa la classe `.it-card-date` e un testo descrittivo.
-
-Per creare un ulteriore spazio dedicato a collegamenti o pulsanti secondari, come negli esempi seguenti, puoi usare lo slot `actions`.
-Questa impostazione è utile quando il titolo della card porta a una pagina di approfondimento (ad esempio, la descrizione dettagliata di un bando),
-ma si vuole dare accesso diretto e immediato all'azione principale (ad esempio, la candidatura al bando).
-
-Per applicare il colore secondario ai collegamenti `a` inseriti nel corpo o nel footer della card, usa la classe `.it-card-link`.
+- Usa un breve testo descrittivo nello slot `text` o nello slot `subtitle` per descrivere il contesto del contenuto della card.
+- Per fornire indicazioni sullo stato del servizio o del bando, usa un componente [Chip](/docs/componenti-chip--documentazione) nell'elemento `footer`.
+- Per indicare una data di scadenza, usa la classe `.it-card-date` e un testo descrittivo nell'elemento `footer`.
+- Usa lo slot `actions` per collegamenti o pulsanti secondari, utile quando il titolo porta alla pagina di approfondimento ma vuoi dare accesso diretto all'azione principale (ad esempio, la candidatura al bando).
+- Usa la classe `.it-card-link` per applicare il colore secondario ai collegamenti `a` inseriti nel corpo o nel footer della card.
 
 <Canvas of={Stories.ServiziEBandi} />
 
 ### Card per documenti e allegati
 
-Usa questa variante per presentare documenti e allegati.
-Puoi aggiungere un'icona a fianco del titolo, usando la classe `.it-card-title-icon-wrapper` come negli esempi che seguono.
-
-Per creare un ulteriore spazio dedicato a collegamenti o pulsanti secondari, come negli esempi seguenti, puoi usare lo slot `actions`.
-Questa impostazione è utile quando il titolo della card porta a una pagina di approfondimento (ad esempio, la descrizione dettagliata del documento),
-ma si vuole dare accesso diretto e immediato all'azione principale (ad esempio, scaricare il file sul proprio dispositivo).
+- Per aggiungere un'icona a fianco del titolo, usa la classe `.it-card-title-icon-wrapper`.
+- Usa lo slot `actions` per collegamenti o pulsanti secondari, utile quando il titolo porta alla pagina di approfondimento ma vuoi dare accesso diretto all'azione principale (ad esempio, scaricare il file).
 
 <Canvas of={Stories.DocumentiEAllegati} />
 
 ### Card per profili personali
 
-Usa questa variante per indicare schede personali o i relatori a un evento.
-Si attiva con l'attributo `variant="profile"`.
+Usa questa variante per rappresentare profili personali o i relatori di un evento.
 
-L'immagine di profilo sulla destra è visualizzata integrando il componente [Avatar](/docs/componenti-avatar--documentazione), si consiglia di usarlo nelle varianti di dimensioni `xl`.
-
-La lista di metadati del profilo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `dd`-`dt` raccolta in un `div` contenitore.
-
-Per un effetto decorativo, puoi usare l'attributo `border-top` (vedi le varianti di colore disponibili nella [tabella degli attributi](#anteprima-e-attributi-del-componente)).
-Non usare questo attributo per comunicare significato semantico, ma solo come eventuale elemento decorativo.
+- Attivala usando l'attributo `variant="profile"`.
+- Per un'immagine di profilo sulla destra, integraè il componente [Avatar](/docs/componenti-avatar--documentazione), idealmente nelle varianti di dimensioni `xl`.
+- La lista di metadati del profilo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `dd`-`dt` raccolta in un `div` contenitore.
+- Per un effetto decorativo, usa l'attributo `border-top` e le [varianti di colore disponibili nella tabella degli attributi](#anteprima-e-attributi-del-componente).
 
 <Canvas of={Stories.ProfiliPersonali} />
 
