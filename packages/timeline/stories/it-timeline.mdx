@@ -25,6 +25,18 @@ Segui queste indicazioni per garantire l'accessibilità del componente:
 - **Per punti data**: usa l'elemento semantico `<time>` con l'attributo `datetime` in formato ISO (es. `2025-10-14`). Inserisci un `<span class="visually-hidden">` con la data scritta per esteso.
 - **Per punti non temporali**: usa un `<div>` nello slot `milestone` e usa `<span class="visually-hidden">` per descrivere il contenuto in linguaggio naturale seguendo l'ordine visivo (es. "Categoria AB, passo 1 di 3").
 
+
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Nota sui test di accessibilità</span>
+    </div>
+    <p>
+      Axe e altri strumenti di analisi statica possono segnalare falsi positivi quando analizzano il componente `it-breadcrumbs` a causa del limitato supporto per i Web Components. La struttura accessibile effettiva è corretta, come confermato dall'Accessibility Tree e dai test manuali con screen reader.
+    </p>
+  </div>
+</div>
+
 ## Timeline "classica"
 Viene in seguito mostrato un esempio di timeline classica con tutte e tre le varianti di pin. Per vedere l'anteprima del codice, clicca su **Show code**.
 
