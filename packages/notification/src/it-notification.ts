@@ -1,8 +1,9 @@
-import { BaseComponent } from '@italia/globals';
+import { BaseLocalizedComponent } from '@italia/globals';
 import { html, PropertyValues } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { registerTranslation } from '@italia/i18n';
 import {
   NOTIFICATION_FIX,
   NOTIFICATION_HEADING_LEVELS,
@@ -14,8 +15,14 @@ import {
 } from './types.js';
 import styles from './notification.scss';
 
+import it from './locales/it.js';
+import en from './locales/en.js';
+
+registerTranslation(it);
+registerTranslation(en);
+
 @customElement('it-notification')
-export class ItNotification extends BaseComponent {
+export class ItNotification extends BaseLocalizedComponent {
   static styles = styles;
 
   static CLASS_NAME_FADE = 'fade';
@@ -169,7 +176,7 @@ export class ItNotification extends BaseComponent {
           ? html`
               <button type="button" class="btn notification-close" @click=${this.hide}>
                 <it-icon class="icon" name="it-close"></it-icon>
-                <span class="visually-hidden">Chiudi notifica</span>
+                <span class="visually-hidden">${this.$t('notification_close_label')}</span>
               </button>
             `
           : ''}

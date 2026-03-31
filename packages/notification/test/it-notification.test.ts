@@ -228,7 +228,7 @@ describe('<it-notification>', () => {
   // RENDERING - attributo icon
   // ---------------------------------------------------------------------------
   describe('rendering - attributo icon', () => {
-    it('mostra l\'icona quando icon è impostato', async () => {
+    it("mostra l'icona quando icon è impostato", async () => {
       const el = await fixture<ItNotification>(html`
         <it-notification icon="it-check-circle">
           <span slot="title">Titolo</span>
@@ -239,7 +239,7 @@ describe('<it-notification>', () => {
       expect(icon?.getAttribute('name')).to.equal('it-check-circle');
     });
 
-    it('non mostra l\'icona quando icon non è impostato', async () => {
+    it("non mostra l'icona quando icon non è impostato", async () => {
       const el = await fixture<ItNotification>(html`
         <it-notification>
           <span slot="title">Titolo</span>
@@ -309,7 +309,7 @@ describe('<it-notification>', () => {
       expect(icon?.getAttribute('color')).to.equal('primary');
     });
 
-    it('non imposta color sull\'icona senza status', async () => {
+    it("non imposta color sull'icona senza status", async () => {
       const el = await fixture<ItNotification>(html`
         <it-notification icon="it-info-circle">
           <span slot="title">Titolo</span>
@@ -794,7 +794,7 @@ describe('<it-notification>', () => {
       expect(el.isShown).to.be.false;
     });
 
-    it('il pulsante di chiusura contiene un\'icona it-close', async () => {
+    it("il pulsante di chiusura contiene un'icona it-close", async () => {
       const el = await fixture<ItNotification>(html`
         <it-notification dismissable>
           <span slot="title">Titolo</span>
