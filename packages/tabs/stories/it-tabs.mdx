@@ -118,7 +118,7 @@ Utilizzando l'attributo `placement="end"`, la tablist verticale si posiziona a d
 <Canvas of={TabsStories.PosizionamentoDestra} />
 ### Larghezza tablist verticale
 
-Puoi controllare la larghezza delle tab verticali attraverso la custom property `--it-tabs-nav-size` . Questa custom property controlla il `flex-basis` della tablist nei layout verticali, e ccetta qualsiasi valore CSS valido per `flex-basis`.
+Puoi controllare la larghezza delle tab verticali attraverso la custom property `--it-tabs-nav-size`, il cui default è `30%` . Questa custom property controlla il `flex-basis` della tablist nei layout verticali, e accetta qualsiasi valore CSS valido per `flex-basis`.
 
 ```css
 it-tabs { --it-tabs-nav-size: 220px; }
@@ -150,12 +150,6 @@ In questo caso, ricordati sempre di associare un testo con classe `.visually-hid
 Se vuoi variare la dimensione delle icone, utilizza l'attributo `size` di `it-icon` o personalizza la dimensione con CSS.
 
 <Canvas of={TabsStories.TabConIcona} />
-
-## Tab con testo e icona
-
-Puoi utilizzare l'attributo `icon-text` su `it-tabs` per inserire come etichetta delle tab del testo corredato da icone. Il margine tra icona e testo verrà ottimizzato, e l'allineamento verticale tra i due elementi è automatico.
-
-<Canvas of={TabsStories.TabConTestoEIcona} />
 
 
 

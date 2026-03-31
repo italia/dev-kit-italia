@@ -12,7 +12,7 @@ const translation: DefaultTranslation = {
    * oppure premendo Delete/Backspace sulla tastiera fisica.
    */
   closeActiveTabHint:
-    'Puoi chiudere questo tab premendo Delete o Backspace da tastiera. Su dispositivi touch, doppio tap per chiudere questa tab.',
+    'Puoi chiudere questo tab premendo Delete o Backspace da tastiera. Su dispositivi touch, doppio tap per chiudere questo tab.',
 };
 
 export default translation;

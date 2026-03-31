@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
+import { customElement, property, state, queryAssignedElements } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { BaseComponent, RovingTabindexController } from '@italia/globals';
@@ -121,13 +121,6 @@ export class ItTabs extends BaseComponent {
   fade = false;
 
   /**
-   * Spazio ottimizzato per la combinazione icona + testo nei tab.
-   * Corrisponde alla classe Bootstrap Italia `.nav-tabs-icon-text`.
-   */
-  @property({ type: Boolean, attribute: 'icon-text', reflect: true })
-  iconText = false;
-
-  /**
    * Posizione della tablist rispetto ai pannelli.
    * - `top` (default): tablist sopra il contenuto
    * - `bottom`: tablist sotto il contenuto
@@ -136,6 +129,16 @@ export class ItTabs extends BaseComponent {
    */
   @property({ type: String, reflect: true })
   placement: TabPlacement = 'top';
+
+  // ─── Internal state ───────────────────────────────────────────────────────
+
+  /**
+   * Traccia se almeno uno dei tab contiene un elemento `it-icon`.
+   * Determina se applicare la classe `.nav-tabs-icon-text` per ottimizzare
+   * lo spazio tra icona e testo.
+   */
+  @state()
+  private _hasIcons = false;
 
   // ─── Slot queries ─────────────────────────────────────────────────────────
 
@@ -212,6 +215,9 @@ export class ItTabs extends BaseComponent {
     const panels = this._panels;
 
     if (!tabs.length) return;
+
+    // Rileva se almeno un tab contiene un elemento it-icon per applicare la classe icon-text
+    this._hasIcons = tabs.some((tab) => tab.querySelector('it-icon') !== null);
 
     const alreadyActive = tabs.find((t) => t.active && !t.disabled);
     const toActivate = alreadyActive ?? tabs.find((t) => !t.disabled) ?? null;
@@ -501,7 +507,7 @@ export class ItTabs extends BaseComponent {
       'nav-dark': this.dark && !this.cards,
       'nav-tabs-vertical': isVertical,
       'nav-tabs-vertical-background': isVertical && this.verticalBackground,
-      'nav-tabs-icon-text': this.iconText,
+      'nav-tabs-icon-text': this._hasIcons,
       'nav-tabs-cards': this.cards,
     });
 

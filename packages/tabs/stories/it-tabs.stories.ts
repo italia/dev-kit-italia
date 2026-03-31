@@ -18,7 +18,6 @@ interface TabsProps {
   dark?: boolean;
   cards?: boolean;
   dismissible?: boolean;
-  iconText?: boolean;
   placement?: TabPlacement;
 }
 
@@ -36,7 +35,6 @@ const renderTabs = (props: TabsProps, tabs: { label: string; panel: string; disa
     ?dark=${props.dark}
     ?cards=${props.cards}
     ?dismissible=${props.dismissible}
-    ?icon-text=${props.iconText}
     placement=${props.placement ?? 'top'}
   >
     ${tabs.map(
@@ -68,14 +66,13 @@ const meta: Meta<TabsProps> = {
     dark: false,
     cards: false,
     dismissible: false,
-    iconText: false,
     placement: 'top',
   },
   argTypes: {
     label: {
       control: 'text',
       description:
-        "Testo dell'`aria-label` per la tablist. Obbligatorio quando non è presente un'intestazione visiva adiacente al componente.",
+        "Testo dell'`aria-label` per la tablist. Consigliato quando non è presente un'intestazione visiva adiacente al componente.",
       name: 'label',
       table: { defaultValue: { summary: '' } },
     },
@@ -87,42 +84,36 @@ const meta: Meta<TabsProps> = {
     },
     hideScrollbar: {
       control: 'boolean',
-      description: 'Se `true`, nasconde visivamente la scrollbar orizzontale.',
+      description:
+        'Se `true`, nasconde visivamente la scrollbar orizzontale. **Effetto visibile solo con `auto: true` in viewport intermedi (≥768px e <1200px).**',
       name: 'hide-scrollbar',
-      if: { arg: 'auto', truthy: true },
       table: { defaultValue: { summary: 'false' } },
     },
     verticalBackground: {
       control: 'boolean',
       description:
-        'Se `true`, applica uno sfondo primario chiaro sul tab selezionato. Disponibile **solo in layout verticale: `placement="start"` o `placement="end"`**.',
+        'Se `true`, applica uno sfondo primario chiaro sul tab selezionato. **Effetto visibile solo in layout verticale: `placement="start"` o `placement="end"`**.',
       name: 'vertical-background',
-      if: { arg: 'placement', eq: 'start' },
       table: { defaultValue: { summary: 'false' } },
     },
     dark: {
       control: 'boolean',
       description:
-        'Se `true`, abilita la variante con sfondo scuro per la tablist. **Ignorato se `cards` è attivo** (le due varianti non sono compatibili).',
+        'Se `true`, abilita la variante con sfondo scuro per la tablist. **Ignorato quando `cards: true`, le due varianti non sono compatibili.**',
       name: 'dark',
       table: { defaultValue: { summary: 'false' } },
     },
     cards: {
       control: 'boolean',
-      description: 'Se `true`, applica lo stile "card".',
+      description: 'Se `true`, applica lo stile "card". Nota: `dismissible` è disponibile solo con `cards: true`.',
       name: 'cards',
       table: { defaultValue: { summary: 'false' } },
     },
     dismissible: {
       control: 'boolean',
-      description: 'Se `true`, abilita la chiusura dei tab. **Disponibile solo per la variante "cards".**',
+      description:
+        'Se `true`, abilita la chiusura dei tab tramite pulsante × e tasti Delete/Backspace. **Funziona solo con `cards: true`, altrimenti non ha effetto.**',
       name: 'dismissible',
-      table: { defaultValue: { summary: 'false' } },
-    },
-    iconText: {
-      control: 'boolean',
-      description: 'Se `true` ottimizza i margini per la combinazione icona + testo.',
-      name: 'icon-text',
       table: { defaultValue: { summary: 'false' } },
     },
     placement: {
@@ -249,7 +240,7 @@ export const TabConTestoEIcona: Story = {
   name: 'Tab con testo e icona',
 
   render: () => html`
-    <it-tabs icon-text label="Navigazione con icona e testo">
+    <it-tabs label="Navigazione con icona e testo">
       <it-tab slot="tab" panel="it1">
         <it-icon name="it-star-outline" class="icon icon-sm"></it-icon>
         Tab 1
@@ -345,18 +336,18 @@ export const TabScuroVerticale: Story = {
   name: 'Tab scuri verticali',
 
   render: () => html`
-    <it-tabs dark placement="start" icon-text label="Navigazione scura verticale">
+    <it-tabs dark placement="start" label="Navigazione scura verticale">
       <it-tab slot="tab" panel="dv1">
-        <it-icon name="it-star-outline" class="icon icon-sm"></it-icon>
         Tab 1
+        <it-icon name="it-star-outline" class="icon icon-sm"></it-icon>
       </it-tab>
       <it-tab slot="tab" panel="dv2">
-        <it-icon name="it-mail" class="icon icon-sm"></it-icon>
         Tab 2
+        <it-icon name="it-mail" class="icon icon-sm"></it-icon>
       </it-tab>
       <it-tab slot="tab" panel="dv3">
-        <it-icon name="it-settings" class="icon icon-sm"></it-icon>
         Tab 3
+        <it-icon name="it-settings" class="icon icon-sm"></it-icon>
       </it-tab>
       <it-tab-panel name="dv1">${panelContent(1)}</it-tab-panel>
       <it-tab-panel name="dv2">${panelContent(2)}</it-tab-panel>
@@ -404,16 +395,16 @@ export const PosizionamentoDestra: Story = {
   render: () => html`
     <it-tabs placement="end" label="Navigazione a destra">
       <it-tab slot="tab" panel="e1">
-        <it-icon name="it-star-outline" class="icon icon-sm"></it-icon>
         Tab 1
+        <it-icon name="it-star-outline" class="icon icon-sm"></it-icon>
       </it-tab>
       <it-tab slot="tab" panel="e2">
-        <it-icon name="it-mail" class="icon icon-sm"></it-icon>
         Tab 2
+        <it-icon name="it-mail" class="icon icon-sm"></it-icon>
       </it-tab>
       <it-tab slot="tab" panel="e3">
-        <it-icon name="it-settings" class="icon icon-sm"></it-icon>
         Tab 3
+        <it-icon name="it-settings" class="icon icon-sm"></it-icon>
       </it-tab>
       <it-tab-panel name="e1">${panelContent(1)}</it-tab-panel>
       <it-tab-panel name="e2">${panelContent(2)}</it-tab-panel>
@@ -444,9 +435,9 @@ export const LarghezzaTablistVerticale: Story = {
     </div>
     <div>
       <p style="margin-bottom: 0.5rem; font-weight: 600;">
-        <code>--it-tabs-nav-size: 30%</code> — larghezza proporzionale (placement start)
+        <code>--it-tabs-nav-size: 50%</code> — larghezza proporzionale (placement start)
       </p>
-      <it-tabs placement="start" label="Nav size proporzionale" style="--it-tabs-nav-size: 30%;">
+      <it-tabs placement="start" label="Nav size proporzionale" style="--it-tabs-nav-size: 50%;">
         <it-tab slot="tab" panel="np1">Tab 1 con etichetta lunga</it-tab>
         <it-tab slot="tab" panel="np2">Tab 2</it-tab>
         <it-tab slot="tab" panel="np3">Tab 3</it-tab>

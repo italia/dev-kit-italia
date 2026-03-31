@@ -70,7 +70,7 @@ $it-tab-prefix: 'it-tab';
 .tabs-wrapper--vertical .nav-row,
 .tabs-wrapper--start .nav-row,
 .tabs-wrapper--end .nav-row {
-  flex: 0 0 var(--it-tabs-nav-size, auto);
+  flex: 0 0 var(--it-tabs-nav-size, 30%);
   flex-direction: column;
   align-items: stretch;
 }

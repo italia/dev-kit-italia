@@ -126,7 +126,7 @@ function handleAddTabCustom(e) {
   <!-- Tab con testo e icona -->
   <section>
     <h2>Tab con testo e icona</h2>
-    <it-tabs icon-text label="Navigazione con icona e testo">
+    <it-tabs label="Navigazione con icona e testo">
       <it-tab slot="tab" panel="it1">
         <it-icon name="it-star-outline" class="icon icon-sm"></it-icon>
         Tab 1
@@ -209,7 +209,7 @@ function handleAddTabCustom(e) {
   <!-- Tab scuri verticali -->
   <section>
     <h2>Tab scuri verticali</h2>
-    <it-tabs dark placement="start" icon-text label="Navigazione scura verticale">
+    <it-tabs dark placement="start" label="Navigazione scura verticale">
       <it-tab slot="tab" panel="dv1">
         <it-icon name="it-star-outline" class="icon icon-sm"></it-icon>
         Tab 1

@@ -3,6 +3,7 @@ it-tabs[auto] {
 
   it-tab {
     flex: 1 0 auto;
+    justify-content: center;
   }
 }
 
@@ -10,9 +11,30 @@ it-tabs {
   it-tab {
     flex-grow: 0;
     gap: 0.5rem;
+    justify-content: space-between;
 
+    // Icon responsive sizing strategy
     it-icon {
       display: contents;
+
+      // Target SVG in shadow DOM via ::part(icon)
+      // On mobile: use 'sm' size (24x24px, --spacing-lg)
+      @include media-breakpoint-down(md) {
+        --icon-size: var(--#{$prefix}spacing-lg, 1.5rem); // 24px
+      }
+
+      &::part(icon) {
+        @include media-breakpoint-down(md) {
+          width: var(--#{$prefix}spacing-lg, 1.5rem) !important; // 24px
+          height: var(--#{$prefix}spacing-lg, 1.5rem) !important; // 24px
+        }
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      flex-wrap: wrap;
+      flex-shrink: 1;
+      justify-content: center;
     }
   }
 }
