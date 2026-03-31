@@ -116,7 +116,7 @@ export const EsempioInterattivo: Story = {
       <p class="mb-4"><strong>Notification con icona</strong></p>
       <it-notification
         heading-level=${ifDefined(args.headingLevel)}
-        icon=${ifDefined(args.icon)}
+        icon=${ifDefined(args.icon || undefined)}
         status=${ifDefined(args.status)}
         ?dismissable=${args.dismissable}
         ?fix=${args.fix}
@@ -149,7 +149,7 @@ export const ConMessaggio: Story = {
       <p class="mb-4"><strong>Notifica con icona e testo</strong></p>
       <it-notification
         heading-level=${ifDefined(args.headingLevel)}
-        icon=${ifDefined(args.icon)}
+        icon=${ifDefined(args.icon || undefined)}
         status=${ifDefined(args.status)}
       >
         <span slot="title">Titolo notifica</span>
@@ -176,7 +176,7 @@ export const Eliminabili: Story = {
 
     <div>
       <p class="mb-4"><strong>Notification con icona</strong></p>
-      <it-notification icon=${ifDefined(args.icon)} status="success" dismissable>
+      <it-notification icon=${ifDefined(args.icon || undefined)} status="success" dismissable>
         <span slot="title">Titolo notifica</span>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor…</p>
       </it-notification>
@@ -299,7 +299,7 @@ export const Attivazione: Story = {
   render: (args) => html`
     <div id="esempio-attivazione">
       <it-button type="button" variant="primary">Inviami una notifica</it-button>
-      <it-button type="button" variant="primary" id="five-sec">Inviami una notifica (durata 5 secondi)</it-button>
+      <it-button type="button" variant="primary" id="five-sec"> Inviami una notifica (durata 5 secondi) </it-button>
       <it-notification icon="it-check-circle" status="success" timeout="${ifDefined(args.timeout || undefined)}">
         <span slot="title">Titolo notifica</span>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor…</p>
@@ -323,7 +323,7 @@ export const AttivazioneEdEliminazione: Story = {
   render: () => html`
     <div id="esempio-eliminazione">
       <it-button type="button" variant="primary">Inviami una notifica</it-button>
-      <it-button type="button" variant="primary" id="delete-notification">Rimuovi notifica</it-button>
+      <it-button type="button" variant="primary" id="delete-notification"> Rimuovi notifica </it-button>
       <it-notification icon="it-check-circle" status="success" dismissable>
         <span slot="title">Titolo notifica</span>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor…</p>
