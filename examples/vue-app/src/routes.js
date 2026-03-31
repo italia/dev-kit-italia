@@ -10,6 +10,7 @@ import Autocomplete from './components/AutocompletePage.vue';
 import BackToTop from './components/BackToTop.vue';
 import Back from './components/Back.vue';
 import Badge from './components/Badge.vue';
+import BottomNav from './components/BottomNav.vue';
 import Button from './components/Button.vue';
 import Checkbox from './components/Checkbox.vue';
 import Callout from './components/Callout.vue';
@@ -50,6 +51,7 @@ const routes = [
   { path: '/back-to-top', name: 'BackToTop', component: BackToTop },
   { path: '/back', name: 'Back', component: Back },
   { path: '/badge', name: 'Badge', component: Badge },
+  { path: '/bottom-nav', name: 'BottomNav', component: BottomNav },
   { path: '/breadcrumbs', name: 'Breadcrumbs', component: Breadcrumbs },
   { path: '/button', name: 'Button', component: Button },
   { path: '/callout', name: 'Callout', component: Callout },

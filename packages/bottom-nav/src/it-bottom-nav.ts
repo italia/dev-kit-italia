@@ -1,3 +1,4 @@
+/* eslint-disable lit-a11y/list */
 import { BaseComponent } from '@italia/globals';
 import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';

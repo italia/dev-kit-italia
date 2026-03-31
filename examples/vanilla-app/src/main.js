@@ -32,6 +32,7 @@ const componentsMenuItems = [
   { label: 'Back to Top', href: '/src/back-to-top' },
   { label: 'Back', href: '/src/back' },
   { label: 'Badge', href: '/src/badge' },
+  { label: 'Bottom Nav', href: '/src/bottom-nav' },
   { label: 'Breadcrumbs', href: '/src/breadcrumbs' },
   { label: 'Button', href: '/src/button' },
   { label: 'Callout', href: '/src/callout' },

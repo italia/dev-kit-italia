@@ -1,90 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
-import { html } from 'lit';
-import { ifDefined } from 'lit/directives/if-defined.js';
+<h1>Bottom Nav</h1>
 
-interface BottomNavProps {
-  'it-aria-label'?: string;
-}
-
-const meta = {
-  title: 'Componenti/Bottomnav',
-  tags: ['alpha', 'web-component', 'a11y-ok'],
-  component: 'it-bottom-nav',
-  parameters: {
-    docs: { excludeDecorators: true },
-    a11y: {
-      config: {
-        rules: [
-          {
-            id: 'list',
-            enabled: false,
-          },
-          {
-            id: 'listitem',
-            enabled: false,
-          },
-        ],
-      },
-    },
-  },
-  args: {
-    'it-aria-label': 'Navigazione principale',
-  },
-  argTypes: {
-    'it-aria-label': {
-      control: 'text',
-      description: 'Testo usato come `aria-label` sul contenitore di navigazione.',
-    },
-  },
-  decorators: [
-    (Story) => html`
-      <div
-        style="height: 400px;width:400px;background-color:#f5f5f5;border:1px solid #cecece;position:relative;margin:-0.5rem;"
-      >
-        <div style="height: calc(100% - var(--it-bottom-nav-height)); overflow-y: scroll;">
-          <div style="height: 600px;"></div>
-        </div>
-        ${Story()}
-      </div>
-    `,
-  ],
-} satisfies Meta<BottomNavProps>;
-
-export default meta;
-type Story = StoryObj<BottomNavProps>;
-
-export const EsempioInterattivo: Story = {
-  name: 'Esempio interattivo',
-  tags: ['!autodocs', '!dev'],
-  parameters: { docs: { canvas: { sourceState: 'hidden' } } },
-
-  render: (args) => html`
-    <it-bottom-nav it-aria-label=${ifDefined(args['it-aria-label'])}>
-      <it-bottom-nav-item active>
-        <a href="#">
-          <it-icon name="it-comment"></it-icon>
-          <span class="bottom-nav-label">messaggi</span>
-        </a>
-      </it-bottom-nav-item>
-      <it-bottom-nav-item>
-        <a href="#">
-          <it-icon name="it-camera"></it-icon>
-          <span class="bottom-nav-label">immagini</span>
-        </a>
-      </it-bottom-nav-item>
-      <it-bottom-nav-item>
-        <a href="#">
-          <it-icon name="it-file"></it-icon>
-          <span class="bottom-nav-label">documenti</span>
-        </a>
-      </it-bottom-nav-item>
-    </it-bottom-nav>
-  `,
-};
-
-export const TreVoci: Story = {
-  name: 'Tre voci',
-  render: () => html`
+<!-- Esempio Interattivo -->
+<section>
+  <h2>Esempio interattivo</h2>
+  <p>Barra di navigazione di base con tre voci.</p>
+  <div style="height: 400px;width:400px;background-color:#f5f5f5;border:1px solid #cecece;position:relative;margin:-0.5rem;">
+    <div style="height: calc(100% - 56px); overflow-y: scroll;">
+      <div style="height: 600px;"></div>
+    </div>
     <it-bottom-nav it-aria-label="Navigazione principale">
       <it-bottom-nav-item active>
         <a href="#">
@@ -105,12 +28,48 @@ export const TreVoci: Story = {
         </a>
       </it-bottom-nav-item>
     </it-bottom-nav>
-  `,
-};
+  </div>
+</section>
 
-export const QuattroVoci: Story = {
-  name: 'Quattro voci',
-  render: () => html`
+<!-- Tre Voci -->
+<section>
+  <h2>Tre voci</h2>
+  <p>Bottom nav con tre elementi di navigazione.</p>
+  <div style="height: 400px;width:400px;background-color:#f5f5f5;border:1px solid #cecece;position:relative;margin:-0.5rem;">
+    <div style="height: calc(100% - 56px); overflow-y: scroll;">
+      <div style="height: 600px;"></div>
+    </div>
+    <it-bottom-nav it-aria-label="Navigazione principale">
+      <it-bottom-nav-item active>
+        <a href="#">
+          <it-icon name="it-comment"></it-icon>
+          <span class="bottom-nav-label">messaggi</span>
+        </a>
+      </it-bottom-nav-item>
+      <it-bottom-nav-item>
+        <a href="#">
+          <it-icon name="it-camera"></it-icon>
+          <span class="bottom-nav-label">immagini</span>
+        </a>
+      </it-bottom-nav-item>
+      <it-bottom-nav-item>
+        <a href="#">
+          <it-icon name="it-file"></it-icon>
+          <span class="bottom-nav-label">documenti</span>
+        </a>
+      </it-bottom-nav-item>
+    </it-bottom-nav>
+  </div>
+</section>
+
+<!-- Quattro Voci -->
+<section>
+  <h2>Quattro voci</h2>
+  <p>Bottom nav con quattro elementi di navigazione.</p>
+  <div style="height: 400px;width:400px;background-color:#f5f5f5;border:1px solid #cecece;position:relative;margin:-0.5rem;">
+    <div style="height: calc(100% - 56px); overflow-y: scroll;">
+      <div style="height: 600px;"></div>
+    </div>
     <it-bottom-nav it-aria-label="Navigazione principale">
       <it-bottom-nav-item active>
         <a href="#">
@@ -137,12 +96,17 @@ export const QuattroVoci: Story = {
         </a>
       </it-bottom-nav-item>
     </it-bottom-nav>
-  `,
-};
+  </div>
+</section>
 
-export const ConBadge: Story = {
-  name: 'Con badge',
-  render: () => html`
+<!-- Con Badge -->
+<section>
+  <h2>Con badge</h2>
+  <p>Bottom nav con badge per indicare notifiche.</p>
+  <div style="height: 400px;width:400px;background-color:#f5f5f5;border:1px solid #cecece;position:relative;margin:-0.5rem;">
+    <div style="height: calc(100% - 56px); overflow-y: scroll;">
+      <div style="height: 600px;"></div>
+    </div>
     <it-bottom-nav it-aria-label="Navigazione principale">
       <it-bottom-nav-item active>
         <a href="#">
@@ -175,12 +139,17 @@ export const ConBadge: Story = {
         </a>
       </it-bottom-nav-item>
     </it-bottom-nav>
-  `,
-};
+  </div>
+</section>
 
-export const ConAlert: Story = {
-  name: 'Con alert',
-  render: () => html`
+<!-- Con Alert -->
+<section>
+  <h2>Con alert</h2>
+  <p>Bottom nav con alert per indicare nuovi contenuti.</p>
+  <div style="height: 400px;width:400px;background-color:#f5f5f5;border:1px solid #cecece;position:relative;margin:-0.5rem;">
+    <div style="height: calc(100% - 56px); overflow-y: scroll;">
+      <div style="height: 600px;"></div>
+    </div>
     <it-bottom-nav it-aria-label="Navigazione principale">
       <it-bottom-nav-item active>
         <a href="#">
@@ -207,5 +176,5 @@ export const ConAlert: Story = {
         </a>
       </it-bottom-nav-item>
     </it-bottom-nav>
-  `,
-};
+  </div>
+</section>
