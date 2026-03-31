@@ -354,14 +354,14 @@ describe('<it-notification>', () => {
       expect(closeBtn?.getAttribute('type')).to.equal('button');
     });
 
-    it('il pulsante di chiusura ha etichetta accessibile "Chiudi notifica"', async () => {
+    it('il pulsante di chiusura ha etichetta accessibile "Close notification"', async () => {
       const el = await fixture<ItNotification>(html`
         <it-notification dismissable>
           <span slot="title">Titolo</span>
         </it-notification>
       `);
       const label = el.shadowRoot?.querySelector('.notification-close .visually-hidden');
-      expect(label?.textContent).to.equal('Chiudi notifica');
+      expect(label?.textContent).to.equal('Close notification');
     });
 
     it('aggiunge la classe "dismissable" al container', async () => {
