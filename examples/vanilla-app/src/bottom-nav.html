@@ -8,6 +8,21 @@
     <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
     <link rel="stylesheet" href="/src/style.css" />
     <style>
+      body {
+        padding-bottom: var(--it-bottom-nav-height, 64px);
+      }
+
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1;
+        overflow-y: auto;
+      }
+
       .preview-wrapper {
         transform: translateZ(0);
         overflow: hidden;
@@ -30,6 +45,17 @@
         padding: 1rem;
         color: #666;
         font-size: 0.875rem;
+      }
+
+      /* Page-scope bottom nav styling */
+      it-bottom-nav[data-page-scope] {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 9999;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
       }
     </style>
   </head>
@@ -188,11 +214,56 @@
         </section>
       </main>
       <div id="app-footer"></div>
+
+      <!-- Page-Scope BottomNav Component for Testing -->
+      <it-bottom-nav it-aria-label="Navigazione pagina" data-page-scope>
+        <it-bottom-nav-item active>
+          <a href="#bn-1">
+            <it-icon name="it-comment"></it-icon>
+            <span class="bottom-nav-label">messaggi</span>
+          </a>
+        </it-bottom-nav-item>
+        <it-bottom-nav-item>
+          <a href="#bn-2">
+            <it-icon name="it-camera"></it-icon>
+            <span class="bottom-nav-label">immagini</span>
+          </a>
+        </it-bottom-nav-item>
+        <it-bottom-nav-item>
+          <a href="#bn-3">
+            <it-icon name="it-file"></it-icon>
+            <span class="bottom-nav-label">documenti</span>
+          </a>
+        </it-bottom-nav-item>
+        <it-bottom-nav-item>
+          <a href="#bn-4">
+            <it-icon name="it-star-outline"></it-icon>
+            <span class="bottom-nav-label">dettagli</span>
+          </a>
+        </it-bottom-nav-item>
+      </it-bottom-nav>
     </div>
 
     <script type="module" src="/src/main.js"></script>
     <script type="module">
       import '@italia/dev-kit-italia/elements.js';
+
+      // Smooth scroll to sections when clicking nav items
+      document.querySelectorAll('it-bottom-nav[data-page-scope] a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const target = document.querySelector(link.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Update active states
+            document.querySelectorAll('it-bottom-nav[data-page-scope] it-bottom-nav-item').forEach(item => {
+              item.removeAttribute('active');
+            });
+            link.closest('it-bottom-nav-item').setAttribute('active', '');
+          }
+        });
+      });
     </script>
   </body>
 </html>
