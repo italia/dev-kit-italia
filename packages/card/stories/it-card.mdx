@@ -26,7 +26,7 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 - Includi contenuti unici, evitando di ripetere informazioni presenti in altre card.
 - Non usare le card a semplice scopo decorativo.
 - Scrivi titoli concisi che invoglino a approfondire e usa la descrizione per contenuti secondari.
-- Scegli immagini della dimensione corretta, assicurandoti che funzionino bene su qualsiasi dispositivo e dimensione.
+- Scegli immagini della dimensione corretta, assicurandoti che si visualizzino bene su qualsiasi dispositivo.
 
 
 ## Accessibilità
@@ -35,25 +35,27 @@ Il componente implementa automaticamente diverse caratteristiche per garantire l
 
 ### Metadati e contenuti descrittivi
 
-Per migliorare la comprensione dei metadati da parte delle tecnologie assistive, aggiungi testi descrittivi nascosti con `.visually-hidden` (ad esempio, “Categoria correlata: “, “Argomento correlato: “) o applicati con `aria-label` (es. “Argomenti correlati: “).
-
-Valuta attentamente se le liste di contenuti affini, link secondari o più card abbiano bisogno di etichette `aria-label` o `aria-labelledby` per descriverne le finalità.
+Per migliorare la comprensione dei metadati da parte delle tecnologie assistive:
+- aggiungi testi descrittivi nascosti con `.visually-hidden` (ad esempio, “Categoria correlata: “, “Argomento correlato: “) o applicati con `aria-label` (ad esempio, “Argomenti correlati: “);
+- valuta attentamente se le liste di contenuti affini, link secondari o più card abbiano bisogno di etichette `aria-label` o `aria-labelledby` per descriverne le finalità.
 
 ### Icone e contenuti visivi
 
-Le icone delle card possono avere diversi ruoli semantici:
+Le **icone** delle card possono avere diversi ruoli semantici:
 
 - se sono **decorative** (il loro significato è già chiaro dal contesto testuale), usa `aria-hidden="true"`;
 - se sono **informative** (comunicano informazioni aggiuntive, come il tipo di file o la presenza di un link esterno), aggiungi testo nascosto con `<span class="visually-hidden">` che descriva l'informazione se non già veicolata diversamente;
 - se sono **funzionali** (indicano un'azione o stato), assicurati che il significato sia comunicato anche testualmente.
 
-Per le immagini, aggiungi una breve descrizione usando l'attributo `alt="Breve descrizione."`). Se sono puramente decorative, mantieni l'attributo `alt` ma lascialo vuoto.
+Per le **immagini**, usa l'attributo `alt`:
+- se il loro contenuto è funzionale alla comprensione delle informazioni, aggiungi una breve descrizione testuale: `alt="Breve descrizione."`; 
+- se sono puramente decorative, lascialo vuoto: `alt=""`.
 
 ### Collegamenti e navigazione
 
 - Usa `a` per i collegamenti di navigazione e `button` per azioni nella stessa pagina.
-- Segnala chiaramente la destinazione dei link esterno con testo nascosto e icone appropriate.
-- Usa i titoli come elementi principale di navigazione, evitando troppi collegamenti nella stessa card.
+- Segnala chiaramente la destinazione dei link esterni con testo nascosto e icone appropriate.
+- Usa i titoli come elementi principali di navigazione, evitando troppi collegamenti nella stessa card.
 
 Negli esempi non abbiamo usato il target del link per favorire la normale navigazione del browser. Se la pagina di destinazione si apre in una nuova tab o finestra, comunicalo in modo chiaro all'utente con un'icona di link esterno e un testo alternativo o nascosto per i lettori di schermo.
 
@@ -61,9 +63,9 @@ Negli esempi non abbiamo usato il target del link per favorire la normale naviga
 
 - Quando presenti date e orari, usa l'elemento `time` con l'appropriato attributo `datetime`.
 - Inserisci eventuali contenuti guida per lettori di schermo solo se realmente necessari per evitare il rumore, ad esempio `<span class="visually-hidden">Data evento:</span>`.
-- Comunica chiaramente agli utenti quando una data ha il ruolo di "Scadenza" aggiungendo un testo adeguato oltre alla data stessa, come negli esempi che trovi nella sezione "Card per servizi e bandi".
+- Comunica chiaramente agli utenti quando una data ha il ruolo di "Scadenza" aggiungendo un testo adeguato oltre alla data stessa, come negli esempi che trovi per la variante "Card per servizi e bandi".
 - Non usare solo il colore (negli esempi `.text-warning`) per veicolare l'importanza dell'informazione.
-- Se sono presenti altre date, valuta di non mostrare la data di pubblicazione per non creare confusione.
+- Se sono presenti altre date, valuta di nascondere la data di pubblicazione per non creare confusione.
 - Svolgi sempre test di usabilità anche con utenti che utilizzano tecnologie assistive.
 
 ### Gerarchia dei titoli
@@ -71,7 +73,6 @@ Negli esempi non abbiamo usato il target del link per favorire la normale naviga
 Usa il corretto livello di intestazione (`h2`, `h3`, ecc.) per il titolo delle card.
 
 Negli esempi abbiamo usato quasi sempre `h3` per le card editoriali e `h4` per quelle informative, ma ricorda di adattare il codice in base alla gerarchia dei contenuti sulle tue pagine.
-.
 
 
 ### Contrasto e visibilità
