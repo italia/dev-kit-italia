@@ -3,15 +3,17 @@ import * as BottomNavStories from './it-bottom-nav.stories';
 
 <Meta of={BottomNavStories} />
 
-# BottomNav
+# Bottomnav
 
-<description>Componente di navigazione fisso in fondo allo schermo, pensato per dispositivi mobile.</description>
+<description>Barra di navigazione fissa a fondo pagina per dispositivi mobile</description>
 
 ## Cosa fa
+Usa il componente Bottomnav per fornire una barra di navigazione ancorata al fondo della pagina su dispositivi mobile, come avviene sulla maggior parte delle app mobile.
 
-Il componente BottomNav (`it-bottom-nav`) fornisce una barra di navigazione fissa ancorata al fondo della pagina, con larghezza pari a quella del viewport. È composto da un numero arbitrario di `it-bottom-nav-item`, ognuno dei quali contiene un link di navigazione con un'icona e un'etichetta testuale.
+### Alternative a questo componente
+- Header (in lavorazione): quando vuoi fornire una navigazione di primo livello ancorata in cima al viewport di un sito o una app.
 
-[Approfondisci quando e come usare il componente BottomNav](https://italia.github.io/dev-kit-italia)
+[Approfondisci quando e come usare il componente Bottomnav](https://designers.italia.it/design-system/componenti/bottomnav/)
 
 ## Anteprima e attributi del componente
 
@@ -23,6 +25,7 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 ## Indicazioni generali
 
 Il componente `it-bottom-nav` è il contenitore principale e include uno o più elementi `it-bottom-nav-item`.
+
 Il componente `it-bottom-nav-item` è una singola voce di navigazione e va sempre usato come figlio di `it-bottom-nav`.
 
 Ogni `it-bottom-nav-item` espone uno **slot default** in cui inserire il link di navigazione:
@@ -30,27 +33,46 @@ Ogni `it-bottom-nav-item` espone uno **slot default** in cui inserire il link di
 - La voce attiva si indica aggiungendo l'attributo `active` sull'elemento `it-bottom-nav-item`
 - Il componente imposta automaticamente `aria-current="page"` sul link della voce attiva
 
-Poiché il link è sempre in light DOM, ogni framework di routing funziona nativamente:
-```html
-<!-- Vanilla HTML -->
-<it-bottom-nav-item active>
-  <a href="/messaggi">...</a>
-</it-bottom-nav-item>
+Se utilizzi un framework JavaScript come React, Angular, Svelte o Vue.js, segui le best practice del framework per la gestione della navigazione e dello stato attivo, assicurandoti di applicare l'attributo `active` all'elemento `it-bottom-nav-item` corrispondente alla pagina corrente.
+<div class="callout callout-primary">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Stili</span>
+    </div>
+    <p>
+      Alcune classi provenienti da Boostrap Italia sono usate all'interno del link (`bottom-nav-label`, `bottom-nav-badge`, `bottom-nav-alert`, `.icon`). Queste classi si trovano nel light DOM e non possono essere raggiunte dal shadow DOM del componente. Se non stai utilizzando il bundle completo, includi il foglio di stile globale nel tuo progetto per applicare questi stili:
 
-<!-- Angular -->
-<it-bottom-nav-item [active]="isActive('/messaggi')">
-  <a routerLink="/messaggi">...</a>
-</it-bottom-nav-item>
-
-<!-- Vue -->
-<it-bottom-nav-item :active="$route.path === '/messaggi'">
-  <RouterLink to="/messaggi">...</RouterLink>
-</it-bottom-nav-item>
+```scss
+@import '@italia/bottom-nav/styles/globals';
 ```
+
+    </p>
+  </div>
+</div>
+## Accessibilità
+
+Il componente è progettato per essere accessibile e supporta la navigazione da tastiera e l'uso di screen reader:
+
+- Il componente fornisce automaticamente `aria-current="page"` sul link della voce attiva
+- L'attributo `aria-label` sul `<nav>` è configurabile tramite `it-aria-label` (default: "Navigazione principale")
+
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Accessibilità e semantica</span>
+    </div>
+    <p>
+      Inserisci il testo descrittivo del link all'interno del tag `<a>` per garantire una corretta semantica e accessibilità.
+</p>
+<p>
+      Valorizza sempre l'attributo `href` per rendere il link effettivamente navigabile e semanticamente corretto.
+    </p>
+  </div>
+</div>
 
 ## Badge e Alert
 
-Aggiungi uno `<span class="bottom-nav-badge">` o uno `<span class="bottom-nav-alert">` all'interno di un wrapper posizionato relativo attorno all'icona per indicare notifiche o nuovi contenuti.
+Aggiungi uno `<span class="bottom-nav-badge">` o uno `<span class="bottom-nav-alert">` all'interno di un `<div class="badge-wrapper">` posizionato prima dell'icona per indicare notifiche o nuovi contenuti.
 
 <div class="callout callout-warning">
   <div class="callout-inner">
@@ -68,16 +90,14 @@ Aggiungi uno `<span class="bottom-nav-badge">` o uno `<span class="bottom-nav-al
 <Canvas of={BottomNavStories.ConBadge} />
 <Canvas of={BottomNavStories.ConAlert} />
 
-## Stili globali
+## Personalizzazione degli stili
 
-Alcune classi BSI usate all'interno del link (`bottom-nav-label`, `bottom-nav-badge`, `bottom-nav-alert`, `.icon`) si trovano nel light DOM e non possono essere raggiunte dal shadow DOM del componente. Includi il foglio di stile globale nel tuo progetto per applicare questi stili:
+Per personalizzare gli stili, puoi utilizzare i selettori `::part` dedicati:
 
-```scss
-@import '@italia/bottom-nav/styles/globals';
-```
+- `::part(bottom-nav)`, per il container `<nav>`
+- `::part(bottom-nav-item)`, per ogni singolo item `<li>`
 
-## Accessibilità
 
-- Il componente fornisce automaticamente `aria-current="page"` sul link della voce attiva
-- L'attributo `aria-label` sul `<nav>` è configurabile tramite `it-aria-label` (default: "Navigazione principale")
-- Usa elementi semantici (`<nav>`, `<ul>`, `<li>`, `<a>`) per una corretta struttura del documento
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
+
+

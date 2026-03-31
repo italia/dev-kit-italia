@@ -7,7 +7,7 @@ interface BottomNavProps {
 }
 
 const meta = {
-  title: 'Componenti/BottomNav',
+  title: 'Componenti/Bottomnav',
   tags: ['alpha', 'web-component', 'a11y-ok'],
   component: 'it-bottom-nav',
   parameters: {

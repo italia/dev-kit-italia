@@ -14,6 +14,7 @@ export interface StickyConfig {
   positionType?: 'fixed' | 'sticky';
   /** Which viewport edge to stick to. Defaults to `'top'`. */
   position?: 'top' | 'bottom';
+  // eslint-disable-next-line no-use-before-define
   _stickyController?: StickyController<any>;
 }
 
@@ -37,7 +38,7 @@ export interface StickyOptions {
 // `globalThis` type without emitting a runtime `var` statement.
 
 declare global {
-  // eslint-disable-next-line no-var
+  // eslint-disable-next-line no-var, vars-on-top
   var __itStickyState:
     | { activeFixedTopStickies: StickyElement[]; activeFixedBottomStickies: StickyElement[] }
     | undefined;
@@ -210,7 +211,10 @@ export class StickyController<T extends StickyElement = StickyElement> implement
   protected getPreviousFixedStickiesHeight(): number {
     const myContainingBlock = this.getFixedContainingBlockFor(this.hostElement);
     return this.walkElements(
-      (el) => !!(el as StickyElement)._stickyController && !!(el as StickyElement).stackable && (el as StickyElement).positionType === 'fixed',
+      (el) =>
+        !!(el as StickyElement)._stickyController &&
+        !!(el as StickyElement).stackable &&
+        (el as StickyElement).positionType === 'fixed',
     )
       .filter(
         (sticky) =>
@@ -278,11 +282,7 @@ export class StickyController<T extends StickyElement = StickyElement> implement
     let parent: Element | null = el.parentElement;
     while (parent && parent !== document.documentElement) {
       const style = getComputedStyle(parent);
-      if (
-        style.transform !== 'none' ||
-        style.filter !== 'none' ||
-        style.perspective !== 'none'
-      ) {
+      if (style.transform !== 'none' || style.filter !== 'none' || style.perspective !== 'none') {
         return parent;
       }
       parent = parent.parentElement;

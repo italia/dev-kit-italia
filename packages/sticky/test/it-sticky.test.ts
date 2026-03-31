@@ -708,7 +708,9 @@ describe('ItSticky', () => {
       el.style.height = '64px';
       el.innerHTML = '<div>Bottom</div>';
 
-      el.addEventListener('it-sticky-on', () => { eventFired = true; });
+      el.addEventListener('it-sticky-on', () => {
+        eventFired = true;
+      });
       document.body.appendChild(el);
       await waitForFrame();
 
@@ -783,4 +785,3 @@ describe('ItSticky', () => {
     });
   });
 });
-

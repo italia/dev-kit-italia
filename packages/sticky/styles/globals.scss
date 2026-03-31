@@ -14,10 +14,10 @@ it-sticky[position='bottom'] {
 // Used both by it-sticky[position="bottom"] and by it-bottom-nav.
 .bs-is-fixed-bottom {
   position: fixed !important;
+  z-index: 1030;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1030;
 }
 
 // Applied by StickyController when positionType === 'sticky' and position === 'bottom'.

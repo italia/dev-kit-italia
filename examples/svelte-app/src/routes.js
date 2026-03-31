@@ -8,6 +8,7 @@ import Breadcrumbs from './pages/Breadcrumbs.svelte';
 import BackToTop from './pages/BackToTop.svelte';
 import Back from './pages/Back.svelte';
 import Badge from './pages/Badge.svelte';
+import BottomNav from './pages/BottomNav.svelte';
 import Button from './pages/Button.svelte';
 import Callout from './pages/Callout.svelte';
 import Card from './pages/Card.svelte';
@@ -48,6 +49,7 @@ export const AppRoutes = [
   { path: '/avatar', element: Avatar, title: 'Avatar' },
   { path: '/back-to-top', element: BackToTop, title: 'Back to Top' },
   { path: '/back', element: Back, title: 'Back' },
+  { path: '/bottom-nav', element: BottomNav, title: 'Bottom Nav' },
   { path: '/badge', element: Badge, title: 'Badge' },
   { path: '/breadcrumbs', element: Breadcrumbs, title: 'Breadcrumbs' },
   { path: '/button', element: Button, title: 'Button' },
