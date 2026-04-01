@@ -206,9 +206,7 @@ Usa questa variante per rappresentare dei luoghi.
 
 ### Card con liste di contenuti affini
 
-Usa questa variante quando è necessario facilitare l'accesso a contenuti importanti, come i correlati o gli approfondimenti di un argomento in evidenza o di un evento.
-
-per presentare liste di contenuti affini, 
+Usa questa variante quando vuoi facilitare l'accesso a contenuti importanti, come i correlati o gli approfondimenti di un argomento in evidenza o di un evento.
 
 - Integra liste strutturate di link nel corpo della card usando le classi `.list-group`.
 - Applica il colore primario o secondario alla lista dei link usando la classe `.it-card-link`.
@@ -226,20 +224,20 @@ per presentare liste di contenuti affini,
 
 ## Card presentazione
 
-Queste varianti sono utili per facilitare l'accesso a contenuti chiave oppure presentare dati.
+Queste varianti sono utili per facilitare l'accesso a contenuti importanti oppure presentare dati.
 
 ### Card banner
 
-Usa la variante banner per presentare una sezione principale del sito, un servizio chiave, oppure permettere l'accesso rapido a una funzionalità.
-Attivala con l'attributo `variant="banner"`.
+Usa la variante banner per presentare una sezione principale del sito, un servizio importante, oppure permettere l'accesso rapido a una funzionalità.
 
-Per inserire l'icona inseriscila nello slot `image`.
+- Attivala con l'attributo `variant="banner"`.
+- Per inserire l'icona, usa lo slot `image`.
 
 <Canvas of={Stories.Banner} />
 
 #### Card banner con azione
 
-Per guidare verso un'azione specifica, usa lo slot `footer` per ospitare un pulsante o link.
+Per guidare verso un'azione specifica, usa lo slot `footer` per aggiungere un pulsante o link.
 In questo caso, evita di collegare il titolo della card.
 
 <Canvas of={Stories.BannerConAzione} />
@@ -259,14 +257,14 @@ Alcuni attributi utili a personalizzare le card.
 ### Bordi e ombre
 
 La configurazione base delle card prevede un bordo e un'ombra leggera.
-Per aumentare la separazione visiva dal contesto, puoi utilizzare ombre più evidenti impostando gli attributi come segue:
+Per aumentare la separazione visiva dal contesto, puoi utilizzare ombre più evidenti impostando questi attributi:
 
-- `shadow="sm"` - ombra leggera (è il valore predefinito)
-- `shadow="md"` - ombra media
-- `shadow="lg"` - ombra pronunciata
-- `shadow="none"` - nessuna ombra
+- `shadow="sm"`, per ombra leggera (valore predefinito);
+- `shadow="md"`, per ombra media;
+- `shadow="lg"`, per ombra pronunciata;
+- `shadow="none"`, nessuna ombra.
 
-Quando utilizzi ombre più evidenti, puoi rimuovere il bordo se la distinzione dallo sfondo è sufficientemente chiara, impostando `border="0"`.
+Quando usi ombre più evidenti, puoi rimuovere il bordo se la distinzione dallo sfondo è sufficientemente chiara, impostando `border="0"`.
 
 <it-callout variant="success" heading-level="h4">
   <span slot="title">Accessibilità: contrasto con lo sfondo</span>
@@ -281,13 +279,13 @@ Per definire il rapporto tra altezza e larghezza delle immagini in tutte le card
 
 Le opzioni disponibili sono:
 
-- `ratio="1x1"` - rapporto quadrato
-- `ratio="4x3"` - rapporto classico
-- `ratio="16x9"` - rapporto widescreen
-- `ratio="21x9"` - rapporto cinematografico
+- `ratio="1x1"`, rapporto quadrato;
+- `ratio="4x3"`, rapporto classico;
+- `ratio="16x9"`, rapporto widescreen;
+- `ratio="21x9"`, rapporto cinematografico.
 
 Le varianti inline delle card hanno proporzioni immagini specifiche su desktop.
-Su dispositivi piccoli o con ingrandimento elevato (tranne le mini) usano il layout verticale con le proporzioni degli esempi seguenti.
+Su dispositivi piccoli o con ingrandimento elevato usano il layout verticale con le proporzioni presenti in questi esempi, ad eccezione della variante mini.
 
 <Canvas of={Stories.Immagini} />
 
@@ -296,6 +294,7 @@ Su dispositivi piccoli o con ingrandimento elevato (tranne le mini) usano il lay
 Per la gestione delle altezze in caso di gruppi di card, l'impostazione di base è l’altezza basata sul contenuto.
 
 Puoi cambiare questo comportamento per ogni card usando l'attributo `full-height` (altezza basata su tutto lo spazio disponibile) sull'elemento `<it-card>`.
+
 Questa impostazione è presente in diversi degli esempi che precedono.
 
 Il contenuto dello slot `footer` si allinea verticalmente al bordo inferiore come la data nell'esempio che segue.
@@ -311,18 +310,18 @@ Per maggiori informazioni sulla personalizzazione dei pulsanti, consulta la [doc
 
 ### Personalizzazione degli stili
 
-Per personalizzare gli stili del componente puoi usare il selettore `::part` passando i seguenti valori:
+Per personalizzare gli stili del componente, puoi usare il selettore `::part` con questi valori:
 
-- `title` - per personalizzare il titolo
-- `body` - per personalizzare il corpo
-- `subtitle` - per personalizzare il sottotitolo
-- `signature` - per personalizzare la porzione dell'autore
-- `text` - per personalizzare il testo
-- `footer` - per personalizzare il piede
-- `actions` - per personalizzare le azioni aggiuntive della card
-- `image-wrapper` - per personalizzare il contenitore dell'immagine
+- `title`, per il titolo;
+- `body`, per il corpo;
+- `subtitle`, per il sottotitolo;
+- `signature`, per l'autore;
+- `text`, per il testo;
+- `footer`, per il footer;
+- `actions`, per le azioni aggiuntive;
+- `image-wrapper`, per il contenitore dell'immagine.
 
-[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
 
 ## Organizzazione e layout
 
