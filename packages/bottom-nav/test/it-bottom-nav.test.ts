@@ -196,5 +196,149 @@ describe('it-bottom-nav component', () => {
 
       expect(typeof (item as any).syncAriaOnLink).to.equal('function');
     });
+
+    it('works with complex link structure (icon + label)', async () => {
+      const item = await fixture(html`
+        <it-bottom-nav-item active>
+          <a href="#">
+            <it-icon name="it-comment"></it-icon>
+            <span class="bottom-nav-label">messaggi</span>
+          </a>
+        </it-bottom-nav-item>
+      `);
+      await elementUpdated(item);
+
+      const link = item.querySelector('a');
+      expect(link?.getAttribute('aria-current')).to.equal('page');
+      expect(link?.querySelector('it-icon')).to.exist;
+      expect(link?.querySelector('.bottom-nav-label')).to.exist;
+    });
+
+    it('syncs aria-current when slot content changes', async () => {
+      const item = await fixture<HTMLElement>(html`
+        <it-bottom-nav-item active><a href="#">Old</a></it-bottom-nav-item>
+      `);
+      await elementUpdated(item);
+
+      let link = item.querySelector('a');
+      expect(link?.getAttribute('aria-current')).to.equal('page');
+
+      // Replace slot content
+      item.innerHTML = '<a href="#">New</a>';
+      await elementUpdated(item);
+
+      link = item.querySelector('a');
+      expect(link?.getAttribute('aria-current')).to.equal('page');
+    });
+
+    it('handles multiple links in slot (sets aria-current on first anchor)', async () => {
+      const item = await fixture(html`
+        <it-bottom-nav-item active>
+          <a href="#1">Link 1</a>
+          <span>Text</span>
+          <a href="#2">Link 2</a>
+        </it-bottom-nav-item>
+      `);
+      await elementUpdated(item);
+
+      const links = item.querySelectorAll('a');
+      expect(links[0]?.getAttribute('aria-current')).to.equal('page');
+      expect(links[1]?.hasAttribute('aria-current')).to.be.false;
+    });
+
+    it('renders li with part="bottom-nav-item" for styling', async () => {
+      const item = await fixture(html`
+        <it-bottom-nav-item><a href="#">Test</a></it-bottom-nav-item>
+      `);
+      await elementUpdated(item);
+
+      const li = item.shadowRoot?.querySelector('li');
+      expect(li?.getAttribute('part')).to.equal('bottom-nav-item');
+    });
+
+    it('slot change event triggers aria sync', async () => {
+      const item = await fixture<HTMLElement>(html`
+        <it-bottom-nav-item active></it-bottom-nav-item>
+      `);
+      await elementUpdated(item);
+
+      // Add content after render
+      const link = document.createElement('a');
+      link.href = '#';
+      link.textContent = 'Dynamic';
+      item.appendChild(link);
+
+      await elementUpdated(item);
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+
+      expect(link.getAttribute('aria-current')).to.equal('page');
+    });
+
+    it('active attribute can be set and removed dynamically', async () => {
+      const item = await fixture<HTMLElement & { active: boolean }>(html`
+        <it-bottom-nav-item><a href="#">Test</a></it-bottom-nav-item>
+      `);
+      await elementUpdated(item);
+
+      expect(item.hasAttribute('active')).to.be.false;
+
+      item.setAttribute('active', '');
+      await elementUpdated(item);
+      expect(item.hasAttribute('active')).to.be.true;
+
+      item.removeAttribute('active');
+      await elementUpdated(item);
+      expect(item.hasAttribute('active')).to.be.false;
+    });
+
+    it('works correctly within it-bottom-nav parent', async () => {
+      const parent = await fixture(html`
+        <it-bottom-nav>
+          <it-bottom-nav-item active>
+            <a href="#home">Home</a>
+          </it-bottom-nav-item>
+          <it-bottom-nav-item>
+            <a href="#docs">Docs</a>
+          </it-bottom-nav-item>
+        </it-bottom-nav>
+      `);
+      await elementUpdated(parent);
+
+      const items = parent.querySelectorAll('it-bottom-nav-item');
+      const firstLink = items[0].querySelector('a');
+      const secondLink = items[1].querySelector('a');
+
+      expect(firstLink?.getAttribute('aria-current')).to.equal('page');
+      expect(secondLink?.hasAttribute('aria-current')).to.be.false;
+    });
+
+    it('does not set aria-current on non-anchor elements', async () => {
+      const item = await fixture(html`
+        <it-bottom-nav-item active>
+          <span>Not a link</span>
+          <div>Other content</div>
+        </it-bottom-nav-item>
+      `);
+      await elementUpdated(item);
+
+      const span = item.querySelector('span');
+      const div = item.querySelector('div');
+
+      expect(span?.hasAttribute('aria-current')).to.be.false;
+      expect(div?.hasAttribute('aria-current')).to.be.false;
+    });
+
+    it('progressively enhances: link is functional without JavaScript', async () => {
+      const item = await fixture(html`
+        <it-bottom-nav-item active>
+          <a href="/home">Home Page</a>
+        </it-bottom-nav-item>
+      `);
+      await elementUpdated(item);
+
+      const link = item.querySelector('a') as HTMLAnchorElement;
+      expect(link?.href).to.include('/home');
+      expect(link?.textContent).to.equal('Home Page');
+    });
   });
 });
