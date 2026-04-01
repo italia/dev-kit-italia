@@ -13,6 +13,7 @@
       "@italia/autocomplete",
       "@italia/avatar",
       "@italia/back-to-top",
+      "@italia/bottom-nav",
       "@italia/breadcrumbs",
       "@italia/button",
       "@italia/callout",
