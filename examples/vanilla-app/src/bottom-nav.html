@@ -214,7 +214,6 @@
         </section>
       </main>
       <div id="app-footer"></div>
-
       <!-- Page-Scope BottomNav Component for Testing -->
       <it-bottom-nav it-aria-label="Navigazione pagina" data-page-scope>
         <it-bottom-nav-item active>
@@ -242,28 +241,9 @@
           </a>
         </it-bottom-nav-item>
       </it-bottom-nav>
+
     </div>
 
     <script type="module" src="/src/main.js"></script>
-    <script type="module">
-      import '@italia/dev-kit-italia/elements.js';
-
-      // Smooth scroll to sections when clicking nav items
-      document.querySelectorAll('it-bottom-nav[data-page-scope] a[href^="#"]').forEach(link => {
-        link.addEventListener('click', (e) => {
-          const target = document.querySelector(link.getAttribute('href'));
-          if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-            // Update active states
-            document.querySelectorAll('it-bottom-nav[data-page-scope] it-bottom-nav-item').forEach(item => {
-              item.removeAttribute('active');
-            });
-            link.closest('it-bottom-nav-item').setAttribute('active', '');
-          }
-        });
-      });
-    </script>
   </body>
 </html>
