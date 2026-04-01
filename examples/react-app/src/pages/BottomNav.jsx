@@ -125,7 +125,6 @@ const BottomNav = () => {
                 <it-icon name="it-camera"></it-icon>
                 <span className="bottom-nav-label">
                   immagini
-                  <span className="visually-hidden">2 immagini da visualizzare</span>
                 </span>
               </a>
             </it-bottom-nav-item>
@@ -135,7 +134,7 @@ const BottomNav = () => {
                   <span className="bottom-nav-badge" aria-hidden="true">42</span>
                 </div>
                 <it-icon name="it-file"></it-icon>
-                <span className="bottom-nav-label">documenti</span>
+                <span className="bottom-nav-label">documenti <span className="visually-hidden">42 documenti da visualizzare</span></span>
               </a>
             </it-bottom-nav-item>
           </it-bottom-nav>

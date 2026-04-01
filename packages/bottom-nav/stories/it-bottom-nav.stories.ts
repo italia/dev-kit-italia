@@ -161,7 +161,6 @@ export const ConBadge: Story = {
           <it-icon name="it-camera"></it-icon>
           <span class="bottom-nav-label">
             immagini
-            <span class="visually-hidden">2 immagini da visualizzare</span>
           </span>
         </a>
       </it-bottom-nav-item>
@@ -171,7 +170,7 @@ export const ConBadge: Story = {
             <span class="bottom-nav-badge" aria-hidden="true">42</span>
           </div>
           <it-icon name="it-file"></it-icon>
-          <span class="bottom-nav-label">documenti</span>
+          <span class="bottom-nav-label">documenti <span class="visually-hidden">42 documenti da visualizzare</span></span>
         </a>
       </it-bottom-nav-item>
     </it-bottom-nav>
