@@ -95,7 +95,7 @@ export const EsempioInterattivo: Story = {
   },
   decorators: [
     (story) => html`
-      <div class="test-docs" style="display:grid;gap:24px;grid-template-columns:1fr 1fr;"">${story()}</div>
+      <div class="test-docs" style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div>
     `,
   ],
   render: (args) => html`
@@ -132,7 +132,7 @@ export const ConMessaggio: Story = {
   name: 'Notifica con messaggio',
   decorators: [
     (story) => html`
-      <div class="test-docs" style="display:grid;gap:24px;grid-template-columns:1fr 1fr;"">${story()}</div>
+      <div class="test-docs" style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div>
     `,
   ],
   argTypes: { ...disabledControls(['headingLevel', 'status']) },
@@ -162,7 +162,7 @@ export const ConMessaggio: Story = {
 export const Eliminabili: Story = {
   decorators: [
     (story) => html`
-      <div class="test-docs" style="display:grid;gap:24px;grid-template-columns:1fr 1fr;"">${story()}</div>
+      <div class="test-docs" style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div>
     `,
   ],
   argTypes: { ...disabledControls() },
@@ -223,6 +223,7 @@ export const Stati: Story = {
 };
 
 export const PosizioneEAngoli: Story = {
+  name: 'Posizione e angoli arrotondati',
   decorators: [
     (story) => html`
       <div class="test-docs" style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div>
@@ -259,6 +260,7 @@ export const PosizioneEAngoli: Story = {
 };
 
 export const PosizionePredefinita: Story = {
+  name: 'Posizione predefinita',
   decorators: [(story) => html` <div class="test-desktop">${story()}</div> `],
   argTypes: { ...disabledControls() },
   render: () => html`
@@ -270,8 +272,9 @@ export const PosizionePredefinita: Story = {
 };
 
 export const PosizioneFissa: Story = {
+  name: 'Posizione fissa',
   parameters: {
-    layout: 'w-100',
+    layout: 'fullscreen',
   },
   decorators: [(story) => html` <div class="test-desktop">${story()}</div> `],
   argTypes: { ...disabledControls() },
@@ -294,6 +297,7 @@ export const PosizioneFissa: Story = {
 };
 
 export const Attivazione: Story = {
+  name: 'A scomparsa automatica',
   decorators: [(story) => html` <div style="position:relative;width:100%;height:400px">${story()}</div> `],
   argTypes: { ...disabledControls(['timeout']) },
   render: (args) => html`
@@ -318,6 +322,7 @@ export const Attivazione: Story = {
 };
 
 export const AttivazioneEdEliminazione: Story = {
+  name: 'A scomparsa manuale',
   decorators: [(story) => html` <div style="position:relative;width:100%;height:400px">${story()}</div> `],
   argTypes: { ...disabledControls() },
   render: () => html`

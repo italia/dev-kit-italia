@@ -341,6 +341,10 @@ it-select {
   display: block;
 }
 
+#storybook-root:has(.test-desktop) {
+  width: unset;
+}
+
 // END Notification specific styles
 
 .megamenu-story-layout {
