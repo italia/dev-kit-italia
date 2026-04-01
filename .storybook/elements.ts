@@ -26,4 +26,5 @@ import '../packages/section/dist/src';
 import '../packages/select/dist/src';
 import '../packages/skiplinks/dist/src';
 import '../packages/sticky/dist/src';
+import '../packages/upload/dist/src';
 import '../packages/video/dist/src';

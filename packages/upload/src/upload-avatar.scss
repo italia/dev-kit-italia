@@ -1,0 +1,26 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/reboot';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/components/avatar';
+@import 'bootstrap-italia/src/scss/forms/form-input-upload';
+
+:host {
+  display: inline-block;
+  position: relative;
+}
+
+// The avatar-upload-wrapper in shadow DOM needs position relative for the badge
+.avatar-upload-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+// Focus-visible replicated for the hidden file input (doesn't cross shadow boundary)
+.upload-avatar:focus-visible + label {
+  outline: 2px solid var(--#{$prefix}focus-outline-color, #ff9900);
+  outline-offset: 2px;
+}

@@ -1,0 +1,29 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/reboot';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/forms/form-input-upload';
+
+:host {
+  display: inline-flex;
+}
+
+// The progress component is positioned inside .upload-dragdrop-image.
+// it-progress as a host element naturally fills the container via its own :host { display: block }
+// We size it via the wrapper to avoid crossing the it-progress shadow boundary.
+.upload-dragdrop-image {
+  it-progress {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Focus-visible for the hidden file input (global rules don't cross shadow boundary)
+.upload-dragdrop-input:focus-visible + label {
+  outline: 2px solid var(--#{$prefix}focus-outline-color, #ff9900);
+  outline-offset: 2px;
+}

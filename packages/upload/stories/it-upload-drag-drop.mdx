@@ -1,0 +1,56 @@
+import { Meta, Canvas, Controls, Description } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-upload-drag-drop.stories';
+
+<Meta of={Stories} />
+
+# Upload Drag & Drop
+
+<description>Componente per il caricamento file tramite trascinamento con indicatore di progresso a ciambella</description>
+
+## Cosa fa
+
+Il componente `it-upload-drag-drop` consente all'utente di caricare un file trascinandolo nell'area apposita o selezionandolo tramite il link testuale. Integra un indicatore di progresso a ciambella (`it-progress type="donut"`) durante il caricamento e mostra un feedback visivo al completamento.
+
+Il ciclo di vita del componente è gestito dall'applicazione tramite i metodi pubblici `start()`, `progress()`, `success()` e `reset()`.
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+## Stato iniziale
+
+Il componente parte nello stato `idle`, pronto per ricevere un file tramite drag & drop o selezione da dispositivo.
+
+<Canvas of={Stories.Default} />
+
+## Stato dragover
+
+<Description of={Stories.StatoDragOver} />
+<Canvas of={Stories.StatoDragOver} />
+
+## Stato caricamento
+
+<Description of={Stories.StatoCaricamento} />
+<Canvas of={Stories.StatoCaricamento} />
+
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Come aggiornare il progresso</span></div>
+<p>Chiama <code>el.progress(value)</code> passando un valore compreso tra 0 e 1 per aggiornare l'indicatore di avanzamento. Il componente converte automaticamente il valore in percentuale.</p>
+</div></div>
+
+## Stato completato
+
+<Description of={Stories.StatoSuccesso} />
+<Canvas of={Stories.StatoSuccesso} />
+
+## Restrizione tipi file
+
+<Description of={Stories.TipiFile} />
+<Canvas of={Stories.TipiFile} />
+
+## Demo uso programmatico
+
+<Description of={Stories.UsoProgrammatico} />
+<Canvas of={Stories.UsoProgrammatico} />

@@ -1,0 +1,64 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/reboot';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/components/buttons';
+@import 'bootstrap-italia/src/scss/components/progress-bars';
+
+@import 'bootstrap-italia/src/scss/forms/forms';
+@import 'bootstrap-italia/src/scss/forms/form-control';
+@import 'bootstrap-italia/src/scss/forms/form-input-upload';
+
+@import 'bootstrap-italia/src/scss/forms/just-validate';
+
+@import 'bootstrap-italia/src/scss/base/utilities';
+
+$utilities: (
+  'display': map-merge(
+      map-get($utilities, 'display'),
+      (
+        'values': (
+          'none': none,
+          'inline-block': inline-block,
+          'flex': flex,
+        ),
+      )
+    ),
+  'margin': map-merge(
+      map-get($utilities, 'margin'),
+      (
+        'values': (
+          0: 0,
+        ),
+      )
+    ),
+);
+
+@import 'bootstrap-italia/src/scss/base/utilities/api';
+
+// Host display
+:host {
+  display: block;
+}
+
+// Focus-visible replicated from global focus.scss (doesn't cross shadow boundary)
+.upload:focus-visible + label {
+  outline: 2px solid var(--#{$prefix}focus-outline-color, #ff9900);
+  outline-offset: 2px;
+}
+
+// Invalid state on the upload label (mirrors just-validate styling)
+:host([required]) .upload-required-feedback {
+  display: block;
+}
+
+.invalid-feedback {
+  display: none;
+}
+
+.invalid-feedback[aria-hidden='false'] {
+  display: block;
+}

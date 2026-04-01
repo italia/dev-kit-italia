@@ -80,6 +80,7 @@
     "@italia/sticky": "workspace:^",
     "@italia/video": "workspace:^",
     "@italia/pagination": "workspace:^",
+    "@italia/upload": "workspace:^",
     "@italia/radio": "workspace:^"
   },
   "devDependencies": {

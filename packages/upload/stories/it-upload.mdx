@@ -1,0 +1,63 @@
+import { Meta, Story, Canvas, Controls, Description } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-upload.stories';
+
+<Meta of={Stories} />
+
+# Upload
+
+<description>Componente per il caricamento di file all'interno di un form, con supporto per selezione singola e multipla, anteprima immagini e variante galleria</description>
+
+## Cosa fa
+
+Il componente `it-upload` consente all'utente di selezionare uno o più file dal proprio dispositivo da allegare a un form. Può mostrare anteprime delle immagini caricate e supporta due varianti di layout: lista verticale (default) e griglia a galleria.
+
+[Approfondisci come e quando usare il componente Upload](https://designers.italia.it/design-system/componenti/upload/)
+
+## Anteprima e attributi del componente
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+## Upload base
+
+L'uso base del componente consente la selezione di un singolo file. Il nome del campo è passato tramite l'attributo `name` ed è obbligatorio per il corretto funzionamento all'interno di un form.
+
+<Canvas of={Stories.Default} />
+
+## Selezione multipla
+
+Con l'attributo `multiple` l'utente può selezionare più file contemporaneamente. Ogni file viene aggiunto alla lista e può essere rimosso singolarmente.
+
+<Canvas of={Stories.Multiplo} />
+
+## Anteprima immagine
+
+<Description of={Stories.ConAnteprimaImmagine} />
+<Canvas of={Stories.ConAnteprimaImmagine} />
+
+## Variante galleria
+
+<Description of={Stories.Galleria} />
+<Canvas of={Stories.Galleria} />
+
+## Testo di supporto
+
+Puoi aggiungere un testo descrittivo sotto il pulsante di caricamento tramite l'attributo `support-text`, ad esempio per indicare i formati o la dimensione massima accettati.
+
+<Canvas of={Stories.TestoDiSupporto} />
+
+## Campo obbligatorio
+
+<Description of={Stories.Richiesto} />
+<Canvas of={Stories.Richiesto} />
+
+## Stato disabilitato
+
+Con l'attributo `disabled` il componente viene disabilitato e non consente la selezione di file.
+
+<Canvas of={Stories.Disabilitato} />
+
+## Proprietà, Metodi ed Eventi
+
+<Canvas of={Stories.MetodiEPropPubblici} />
