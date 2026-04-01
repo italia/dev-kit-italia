@@ -228,17 +228,16 @@ Queste varianti sono utili per facilitare l'accesso a contenuti importanti oppur
 
 ### Card banner
 
-Usa la variante banner per presentare una sezione principale del sito, un servizio importante, oppure permettere l'accesso rapido a una funzionalità.
+Usa la variante banner per presentare e facilitare l'accesso a una sezione principale del sito, a un servizio importante o a una funzionalità.
 
 - Attivala con l'attributo `variant="banner"`.
-- Per inserire l'icona, usa lo slot `image`.
+- Per inserire un'icona, usa lo slot `image`.
 
 <Canvas of={Stories.Banner} />
 
 #### Card banner con azione
 
-Per guidare verso un'azione specifica, usa lo slot `footer` per aggiungere un pulsante o link.
-In questo caso, evita di collegare il titolo della card.
+Per guidare verso un'azione specifica, aggiungi un pulsante o un link nello slot `footer`, senza collegare il titolo della card.
 
 <Canvas of={Stories.BannerConAzione} />
 
@@ -250,21 +249,20 @@ Per mantenere il layout orizzontale anche su viewport piccole o fortemente ingra
 
 <Canvas of={Stories.BannerInline} />
 
-## Personalizzazioni e stili
-
-Alcuni attributi utili a personalizzare le card.
+## Personalizzazione del componente
 
 ### Bordi e ombre
 
 La configurazione base delle card prevede un bordo e un'ombra leggera.
-Per aumentare la separazione visiva dal contesto, puoi utilizzare ombre più evidenti impostando questi attributi:
+
+Per aumentare la separazione visiva dal contesto, puoi utilizzare ombre più evidenti con questi attributi:
 
 - `shadow="sm"`, per ombra leggera (valore predefinito);
 - `shadow="md"`, per ombra media;
 - `shadow="lg"`, per ombra pronunciata;
 - `shadow="none"`, nessuna ombra.
 
-Quando usi ombre più evidenti, puoi rimuovere il bordo se la distinzione dallo sfondo è sufficientemente chiara, impostando `border="0"`.
+Quando usi ombre più evidenti e la distinzione dallo sfondo è sufficientemente chiara, puoi rimuovere il bordo impostando `border="0"`.
 
 <it-callout variant="success" heading-level="h4">
   <span slot="title">Accessibilità: contrasto con lo sfondo</span>
@@ -291,24 +289,21 @@ Su dispositivi piccoli o con ingrandimento elevato usano il layout verticale con
 
 ### Altezze delle card
 
-Per la gestione delle altezze in caso di gruppi di card, l'impostazione di base è l’altezza basata sul contenuto.
+Per impostazione predefinita, l’altezza delle singole card nei gruppi è determinata dal loro contenuto, come negli esempi che precedono.
 
-Puoi cambiare questo comportamento per ogni card usando l'attributo `full-height` (altezza basata su tutto lo spazio disponibile) sull'elemento `<it-card>`.
-
-Questa impostazione è presente in diversi degli esempi che precedono.
-
-Il contenuto dello slot `footer` si allinea verticalmente al bordo inferiore come la data nell'esempio che segue.
+Per farla estendere su tutta l’altezza disponibile, usa l'attributo `full-height` sull'elemento `<it-card>`. Il contenuto dello slot `footer` si allinea verticalmente al bordo inferiore, come la data nell'esempio che segue.
 
 <Canvas of={Stories.AltezzaDelleCard} />
 
 ### Pulsanti a tutta larghezza su mobile
 
-Puoi personalizzare il comportamento dei pulsanti nell'area metadati della card per ottenere pulsanti a larghezza fluida su dispositivi mobili utilizzando le classi `.d-grid` e `.d-md-block`.
-Per maggiori informazioni sulla personalizzazione dei pulsanti, consulta la [documentazione sulle varianti di dimensioni dei buttons](/docs/componenti-button--documentazione#varianti-di-dimensione).
+Per ottenere pulsanti a larghezza fluida su dispositivi mobili, usa le classi `.d-grid` e `.d-md-block` nell'area metadati della card.
+
+Per maggiori informazioni, consulta la [documentazione sulle varianti di dimensioni dei button](/docs/componenti-button--documentazione#varianti-di-dimensione).
 
 <Canvas of={Stories.PulsantiMobile} />
 
-### Personalizzazione degli stili
+### Stili
 
 Per personalizzare gli stili del componente, puoi usare il selettore `::part` con questi valori:
 
@@ -327,9 +322,9 @@ Per personalizzare gli stili del componente, puoi usare il selettore `::part` co
 
 ### Uso di contenitori responsive
 
-Se il tuo layout di pagina lo permette ti consigliamo di comprendere ogni gruppo di card in contenitori responsive,
-usando le classi `.container-xl` oppure `.container-xxl` su un elemento `div` che contenga tutto il gruppo e il suo sistema di griglie.
-Così potrai sfruttare al massimo tutto lo spazio a disposizione in tutte le combinazioni di dimensioni della viewport e fattori di ingrandimento.
+Se il layout lo consente, racchiudi ogni gruppo di card in un contenitore responsive, usando le classi `.container-xl` o `.container-xxl` su un elemento `div` che includa l'intero gruppo e il suo sistema di griglie.
+
+In questo modo sfrutti al meglio lo spazio disponibile su tutte le dimensioni di viewport e livelli di ingrandimento. L’uso di contenitori con breakpoint fissi come `.container` può invece lasciare troppo spazio vuoto ai lati in alcune configurazioni.
 
 ```html
 <div class="container-xl">
@@ -338,11 +333,14 @@ Così potrai sfruttare al massimo tutto lo spazio a disposizione in tutte le com
 </div>
 ```
 
-Usando contenitori con breakpoint fissi `.container` potresti sprecare un eccessivo spazio vuoto a destra e sinistra in alcune combinazioni.
-
 ### Uso della griglia
 
-Usando le griglie puoi organizzare le card in righe e colonne con le classi `.row` e `.col-*` per definire il numero di colonne desiderate.
+Usa il sistema di griglie per organizzare le card in righe e colonne, tramite le classi `.row` e `.col-*`.
+
+La scelta del **numero di colonne dipende dal layout della pagina** e influisce sullo spazio disponibile per i contenuti. Bilancia quindi dimensioni e quantità di contenuto per garantire una buona leggibilità e un aspetto visivamente equilibrato a tutte le dimensioni di viewport e livelli di ingrandimento.
+
+In questi esempi abbiamo usato la combinazione `.col-12 col-md-6 col-lg-4` per ottenere 1 colonna su viewport piccole, 2 su viewport medie e 3 su viewport grandi.
+
 
 ```html
 <div class="container-xl">
@@ -356,12 +354,6 @@ Usando le griglie puoi organizzare le card in righe e colonne con le classi `.ro
   </div>
 </div>
 ```
-
-Negli esempi precedenti abbiamo usato per esempio `.col-12 col-md-6 col-lg-4` per ottenere 1 colonna su dispositivi piccoli o viewport strette, 2 colonne su viewport medie e 3 colonne su viewport grandi.
-Sono esempi puramente dimostrativi, **puoi usare qualsiasi combinazione** di colonne per ottenere il layout desiderato.
-
-La scelta del **numero di colonne** dipende dal layout della tua pagina e ha un **impatto sullo spazio interno** alla card per il contenuto.
-È importante quindi **bilanciare la dimensione** dei contenuti della card per garantire una buona leggibilità e un aspetto visivamente gradevole a tutte le dimensioni e/o fattori di ingrandimento della viewport.
 
 ### Liste per gruppi numerosi di card
 
@@ -386,42 +378,44 @@ Per **gruppi numerosi di card** (come pagine di listini, cataloghi, risultati di
 </div>
 ```
 
-Esempio di lista card:
+Esempio di lista di card:
 
 <Canvas of={Stories.ListeCardNumerose} />
 
 ### Uso di classi dedicate (per piccoli gruppi)
 
-Solo per piccoli gruppi di card (2-6 card) puoi inoltre usare `.it-card-group` per creare facilmente un layout responsive in un `div` contenitore.
-Di default il numero di colonne su desktop è impostato a 4.
+Per piccoli gruppi di card (2–6 elementi), puoi usare `.it-card-group` per creare facilmente un layout responsive all’interno di un `div` contenitore.
+
+Di default, il layout prevede 4 colonne su desktop.
+
 
 <Canvas of={Stories.ClassiDedicate} />
 
 #### Numero di colonne specifiche
 
-Usa `.it-card-group-N-cols`, dove modificando `N` si possono ottenere layout con 2 o 3 colonne su desktop.
+Per ottenere layout con 2 o 3 colonne su desktop, usa `.it-card-group-N-cols` sostituendo `N` con 2 o 3.
 
 <Canvas of={Stories.ClassiDedicateColonne} />
 
 #### Centrate orizzontalmente
 
-Usa `.it-card-group-center` per centrare orizzontalmente il gruppo di card all'interno del contenitore.
+Per centrare orizzontalmente il gruppo di card all'interno del contenitore, usa `.it-card-group-center`.
 
 <Canvas of={Stories.ClassiDedicateCentrate} />
 
-#### Uso di classi dedicate rispetto al contenitore (sperimentale)
+#### Responsive rispetto il contenitore (sperimentale)
 
-Gruppo di card che risponde a Container Queries attivabile usando la classe dedicata `.it-card-group-container-aware` per adattarsi responsive alla dimensione del contenitore invece che alla viewport.
-Ridimensiona la viewport o prova a visualizzare questa pagina su dispositivi di diverse dimensioni per apprezzare la differenza di approccio.
+Per far adattare un gruppo di card alla dimensione del contenitore tramite Container Queries, invece che alla viewport, usa la classe `.it-card-group-container-aware`.
 
-Le Container Queries sono una tecnologia CSS moderna supportata nella maggior parte dei browser recenti.
-Per i browser che non supportano questa funzionalità, si applica automaticamente un fallback basato su Media Queries standard.
+Ridimensiona la viewport o visualizza la pagina su dispositivi diversi per notare la differenza.
+
+Le Container Queries sono una tecnologia CSS moderna supportata dalla maggior parte dei browser recenti. Nei browser non compatibili viene applicato automaticamente un fallback basato su Media Queries standard.
 
 <Canvas of={Stories.ClassiDedicateContainer} />
 
 #### Confronto in colonne diverse
 
-Qui puoi esplorare come lo stesso gruppo di card "container-aware" si adatta a diverse larghezze di colonna, permettendo di realizzare layout complessi:
+In questo esempio puoi vedere come lo stesso gruppo di card “container-aware” si adatta automaticamente a larghezze di colonna diverse, permettendo di creare layout complessi.
 
 <Canvas of={Stories.ClassiDedicateConfrontoColonne} />
 
