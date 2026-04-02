@@ -23,6 +23,11 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 <Controls of={Stories.EsempioInterattivo} />
 
+### Anteprima e attributi del componente `it-toolbar-item`
+Ogni elemento della toolbar, deve essere un componente `it-toolbar-item` che rappresenta un link, un pulsante o un dropdown. Puoi personalizzare ogni elemento modificando i suoi attributi.
+<Canvas of={Stories.ToolbarItemBase} />
+<Controls of={Stories.ToolbarItemBase} />
+
 ## Accessibilità
 I componenti `it-toolbar` e `it-toolbar-item` sono progettati per essere accessibili e conformi agli standard di accessibilità.
 
@@ -106,8 +111,7 @@ All’interno della Toolbar è possibile implementare dei pulsanti dropdown con 
 Aggiungi l'attributo `dropdown` al componente `<it-toolbar-item>` per trasformarlo in un elemento dropdown. Le voci del menu di tipo `<it-dropdown-item>` vanno inserite nello slot dedicato `items` in questo modo:
 
 ```html
-<it-toolbar-item dropdown>
-  <div slot="label">Dropdown</div>
+<it-toolbar-item dropdown label="Dropdown">
   <it-dropdown-item slot="items">Voce 1</it-dropdown-item>
   <it-dropdown-item slot="items">Voce 2</it-dropdown-item>
 </it-toolbar-item>

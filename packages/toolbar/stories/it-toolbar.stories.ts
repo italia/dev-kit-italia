@@ -11,17 +11,15 @@ interface ToolbarProps {
 }
 
 // Renderizza il wc it-toolbar di default
-const renderComponent = (params: ToolbarProps, slot: any = '') => {
-  return html`
-    <it-toolbar
-      size="${ifDefined(params.size)}"
-      orientation="${ifDefined(params.orientation)}"
-      it-aria-label="${ifDefined(params.itAriaLabel)}"
-    >
-      ${slot}
-    </it-toolbar>
-  `;
-};
+const renderComponent = (params: ToolbarProps, slot: any = '') => html`
+  <it-toolbar
+    size="${ifDefined(params.size)}"
+    orientation="${ifDefined(params.orientation)}"
+    it-aria-label="${ifDefined(params.itAriaLabel)}"
+  >
+    ${slot}
+  </it-toolbar>
+`;
 
 // Slot template per toolbar base
 const baseToolbarSlot = html`
@@ -68,6 +66,7 @@ const meta = {
       },
     },
     itAriaLabel: {
+      name: 'it-aria-label',
       control: 'text',
       description: 'Aria label per la navigazione',
       table: {
@@ -213,8 +212,8 @@ export const ToolbarMediaSmallConBadge: Story = {
     )} `,
 };
 
-const renderWithDropdown = (args: ToolbarProps) => {
-  return html`${renderComponent(
+const renderWithDropdown = (args: ToolbarProps) =>
+  html`${renderComponent(
     args,
     html` <it-toolbar-item
         dropdown
@@ -252,7 +251,6 @@ const renderWithDropdown = (args: ToolbarProps) => {
         <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
       </it-toolbar-item>`,
   )}`;
-};
 
 export const ToolbarDropdown: Story = {
   name: 'Toolbar con dropdown',
@@ -277,7 +275,7 @@ export const ToolbarSmallDropdown: Story = {
   render: (args) => renderWithDropdown(args),
 };
 
-const renderVerticalToolbar = (args) =>
+const renderVerticalToolbar = (args: ToolbarProps) =>
   html`${renderComponent(
     args,
     html` <it-toolbar-item
@@ -327,4 +325,122 @@ export const ToolbarSmallVertical: Story = {
     size: 'sm',
   },
   render: (args) => renderVerticalToolbar(args),
+};
+
+// Meta e story per it-toolbar-item
+interface ToolbarItemProps {
+  active: boolean;
+  disabled: boolean;
+  label: string;
+  icon: string;
+  href: string;
+  badge: string;
+  labelExtended: string;
+  divider: boolean;
+  dropdown: boolean;
+}
+
+const toolbarItemArgs: ToolbarItemProps = {
+  active: false,
+  disabled: false,
+  label: 'Messaggi',
+  icon: 'it-comment',
+  href: '#',
+  badge: '',
+  labelExtended: '',
+  divider: false,
+  dropdown: false,
+};
+
+const toolbarItemArgTypes = {
+  active: {
+    control: 'boolean',
+    description: 'Elemento attivo',
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+  },
+  disabled: {
+    control: 'boolean',
+    description: 'Elemento disabilitato',
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+  },
+  label: {
+    control: 'text',
+    description: "Etichetta dell'elemento",
+  },
+  icon: {
+    control: 'text',
+    description: "Icona dell'elemento (es. it-comment)",
+  },
+  href: {
+    control: 'text',
+    description: 'URL di destinazione',
+  },
+  badge: {
+    control: 'text',
+    description: 'Testo del badge (es. numero di notifiche)',
+  },
+  labelExtended: {
+    name: 'label-extended',
+    control: 'text',
+    description: 'Etichetta estesa (tooltip)',
+  },
+  divider: {
+    control: 'boolean',
+    description: 'Mostra come divisore',
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+  },
+  dropdown: {
+    control: 'boolean',
+    description: 'Elemento con dropdown',
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+  },
+} satisfies Meta<ToolbarItemProps>['argTypes'];
+
+type ToolbarItemStory = StoryObj<ToolbarItemProps>;
+
+export const ToolbarItemBase: ToolbarItemStory = {
+  name: 'Toolbar Item',
+  tags: ['!dev'],
+  args: toolbarItemArgs,
+  argTypes: toolbarItemArgTypes,
+  parameters: {
+    controls: {
+      include: ['active', 'disabled', 'label', 'icon', 'href', 'badge', 'labelExtended', 'divider', 'dropdown'],
+    },
+    docs: {
+      controls: {
+        include: ['active', 'disabled', 'label', 'icon', 'href', 'badge', 'labelExtended', 'divider', 'dropdown'],
+      },
+      source: {
+        language: 'html',
+      },
+    },
+  },
+  render: (args) =>
+    html`<it-toolbar>
+      <it-toolbar-item
+        ?active="${args.active}"
+        ?disabled="${args.disabled}"
+        label="${ifDefined(args.label)}"
+        icon="${ifDefined(args.icon)}"
+        ?href="${ifDefined(args.href) && args.dropdown == false}"
+        badge="${ifDefined(args.badge)}"
+        label-extended="${ifDefined(args.labelExtended)}"
+        ?divider="${args.divider}"
+        ?dropdown="${args.dropdown}"
+        >${args.dropdown
+          ? html` <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+              <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
+              <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>`
+          : ''}</it-toolbar-item
+      ></it-toolbar
+    >`,
 };
