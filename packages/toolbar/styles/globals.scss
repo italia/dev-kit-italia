@@ -31,8 +31,8 @@ it-toolbar {
 
       &::part(toolbar-item) {
         position: relative;
-        margin: var(--#{$prefix}toolbar-item-margin-y) 0;
         align-items: center;
+        margin: var(--#{$prefix}toolbar-item-margin-y) 0;
       }
 
       &::part(it-button) {

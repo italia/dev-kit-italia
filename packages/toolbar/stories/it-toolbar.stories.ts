@@ -431,7 +431,7 @@ export const ToolbarItemBase: ToolbarItemStory = {
         ?disabled="${args.disabled}"
         label="${ifDefined(args.label)}"
         icon="${ifDefined(args.icon)}"
-        ?href="${ifDefined(args.href) && args.dropdown == false}"
+        ?href="${ifDefined(args.href) && args.dropdown === false}"
         badge="${ifDefined(args.badge)}"
         label-extended="${ifDefined(args.labelExtended)}"
         ?divider="${args.divider}"

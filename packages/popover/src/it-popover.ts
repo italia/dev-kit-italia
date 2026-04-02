@@ -2,7 +2,7 @@ import { type ItButton } from '@italia/button';
 import { BaseComponent } from '@italia/globals';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html, PropertyValues } from 'lit';
-import { computePosition, offset, flip, shift, autoUpdate, arrow, type Placement, size } from '@floating-ui/dom';
+import { computePosition, offset, flip, shift, autoUpdate, arrow, type Placement /* , size */ } from '@floating-ui/dom';
 import styles from './popover.scss';
 
 type PopoverPlacement = Placement;
