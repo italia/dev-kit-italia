@@ -5,7 +5,7 @@ import * as Stories from './it-carousel.stories';
 
 # Carousel
 
-<description>Componente di presentazione per scorrere orizzontalmente una sequenza di elementi, immagini o diapositive di testo,</description>
+<description>Componente di presentazione per scorrere orizzontalmente una sequenza di elementi, immagini o diapositive di testo.</description>
 
 ## Cosa fa
 Il componente Carousel (`it-carousel`) mostra contenuti correlati che non possono essere visualizzati tutti insieme, permettendo di sfogliarli orizzontalmente.
@@ -40,7 +40,7 @@ Il componente espone i seguenti attributi:
 - `config`, oggetto per personalizzazioni avanzate che estende le opzioni offerte da Splide, passato come stringa JSON nell'attributo.
 
 ## Accessibilità
-Il componente `it-carousel` integra Splide.js e segue le specifiche [W3C Carousel Design Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/).Per tutte le funzionalità di accessibilità offerte dalla libreria, [consulta la documentazione di Splide](https://splidejs.com/guides/accessibility).
+Il componente `it-carousel` integra Splide.js e segue le specifiche [W3C Carousel Design Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/). Per tutte le funzionalità di accessibilità offerte dalla libreria, [consulta la documentazione di Splide](https://splidejs.com/guides/accessibility).
 
 - Il wrapper principale usa `role="region"` per permettere agli utenti di lettori di schermo di individuare e saltare rapidamente alla sezione.
 - Puoi assegnare un nome accessibile automaticamente: inserendo un elemento `h` (`h2`-`h6`) nello slot `title`. Il componente genera un ID univoco e lo collega al carousel tramite `aria-labelledby`. Se vuoi nascondere l'intestazione visivamente, puoi utilizzare la classe `visually-hidden` sull'elemento di intestazione.
