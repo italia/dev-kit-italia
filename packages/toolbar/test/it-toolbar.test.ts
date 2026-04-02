@@ -52,9 +52,9 @@ describe('Toolbar component', () => {
       await expect(el).to.be.accessible();
     });
 
-    it('dark variant is accessible', async () => {
+    it('with custom aria label is accessible', async () => {
       const el = await fixture<ItToolbar>(html`
-        <it-toolbar dark>
+        <it-toolbar it-aria-label="Toolbar custom">
           <li><a href="#">Link 1</a></li>
           <li><a href="#">Link 2</a></li>
         </it-toolbar>
@@ -64,9 +64,9 @@ describe('Toolbar component', () => {
   });
 
   describe('properties', () => {
-    it('default size is empty', async () => {
+    it('default size is lg', async () => {
       const el = await fixture<ItToolbar>(html`<it-toolbar></it-toolbar>`);
-      expect(el.size).to.equal('');
+      expect(el.size).to.equal('lg');
     });
 
     it('size property can be set to md', async () => {
@@ -79,24 +79,14 @@ describe('Toolbar component', () => {
       expect(el.size).to.equal('sm');
     });
 
-    it('default orientation is empty', async () => {
+    it('default orientation is horizontal', async () => {
       const el = await fixture<ItToolbar>(html`<it-toolbar></it-toolbar>`);
-      expect(el.orientation).to.equal('');
+      expect(el.orientation).to.equal('horizontal');
     });
 
     it('orientation property can be set to vertical', async () => {
       const el = await fixture<ItToolbar>(html`<it-toolbar orientation="vertical"></it-toolbar>`);
       expect(el.orientation).to.equal('vertical');
-    });
-
-    it('dark property defaults to false', async () => {
-      const el = await fixture<ItToolbar>(html`<it-toolbar></it-toolbar>`);
-      expect(el.dark).to.be.false;
-    });
-
-    it('dark property can be set to true', async () => {
-      const el = await fixture<ItToolbar>(html`<it-toolbar dark></it-toolbar>`);
-      expect(el.dark).to.be.true;
     });
 
     it('itAriaLabel defaults to Toolbar', async () => {
@@ -127,12 +117,6 @@ describe('Toolbar component', () => {
       const el = await fixture<ItToolbar>(html`<it-toolbar orientation="vertical"></it-toolbar>`);
       const nav = el.shadowRoot?.querySelector('nav');
       expect(nav?.classList.contains('toolbar-vertical')).to.be.true;
-    });
-
-    it('should apply dark class when dark is true', async () => {
-      const el = await fixture<ItToolbar>(html`<it-toolbar dark></it-toolbar>`);
-      const nav = el.shadowRoot?.querySelector('nav');
-      expect(nav?.classList.contains('dark')).to.be.true;
     });
 
     it('should always have toolbar class', async () => {
