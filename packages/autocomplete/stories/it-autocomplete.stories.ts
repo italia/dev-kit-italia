@@ -1260,7 +1260,7 @@ export const MetodiEPropPubblici: Story = {
     docs: {
       description: {
         story: `
-Il componente espone delle proprietà, metodi, ed eventi, utili per eventuali interazioni via js.
+Il componente espone delle proprietà, metodi, ed eventi, utili per eventuali interazioni via JavaScript.
 
 
 
