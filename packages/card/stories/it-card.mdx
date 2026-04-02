@@ -23,7 +23,7 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 ## Indicazioni generali
 
 - Rendi la card cliccabile, collegandola a una pagina che approfondisce le informazioni.
-- Includi contenuti unici, evitando di ripetere informazioni presenti in altre card.
+- Includi contenuti unici in ogni card, evitando di ripetere informazioni presenti già in altre.
 - Non usare le card a semplice scopo decorativo.
 - Scrivi titoli concisi che invoglino a approfondire e usa la descrizione per contenuti secondari.
 - Scegli immagini della dimensione corretta, assicurandoti che si visualizzino bene su qualsiasi dispositivo.
@@ -36,8 +36,8 @@ Il componente implementa automaticamente diverse caratteristiche per garantire l
 ### Metadati e contenuti descrittivi
 
 Per migliorare la comprensione dei metadati da parte delle tecnologie assistive:
-- aggiungi testi descrittivi nascosti con `.visually-hidden` (ad esempio, “Categoria correlata: “, “Argomento correlato: “) o applicati con `aria-label` (ad esempio, “Argomenti correlati: “);
-- valuta attentamente se le liste di contenuti affini, link secondari o più card abbiano bisogno di etichette `aria-label` o `aria-labelledby` per descriverne le finalità.
+- aggiungi testi descrittivi nascosti (ad esempio, “Categoria correlata: “, “Argomento correlato: “) con `.visually-hidden` o `aria-label`;
+- valuta attentamente se le liste di elementi (come contenuti affini, link secondari o più card) abbiano bisogno di etichette `aria-label` o `aria-labelledby` per descriverne le finalità.
 
 ### Icone e contenuti visivi
 
@@ -197,7 +197,7 @@ Usa questa variante per rappresentare profili personali o i relatori di un event
 Usa questa variante per rappresentare dei luoghi.
 
 - Attivala usando l'attributo `variant="location"`.
-- Per aggiungere un'immagine, usa lo slot `imagez.
+- Per aggiungere un'immagine, usa lo slot `image`.
 - Per aggiungere un'icona sulla destra e allinearla correttamente, racchiudila in un `div` con classe `.it-card-profile-image-icon-wrapper`.
 - La lista di metadati del luogo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `dd`-`dt` raccolta in un `div` contenitore.
 - Per eventuali collegamenti o dettagli della mappa, puoi usare lo slot `footer`.
