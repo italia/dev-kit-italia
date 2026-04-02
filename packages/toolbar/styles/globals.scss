@@ -8,33 +8,92 @@ it-toolbar {
   }
 
   &[orientation='vertical'] {
+    --it-toolbar-expand-icon-size: var(--#{$prefix}icon-size-s);
+
     it-toolbar-item {
-      &[divider] {
-        height: 1px;
-        width: calc(100% - 16px);
+      &[dropdown] {
+        width: 100%;
       }
-      position: relative;
+
+      &::part(popover) {
+        display: block;
+        width: 100%;
+      }
+
+      &[divider] {
+        width: calc(100% - 16px);
+        height: 1px;
+
+        &::part(toolbar-item) {
+          margin: 0;
+        }
+      }
+
+      &::part(toolbar-item) {
+        position: relative;
+        margin: var(--#{$prefix}toolbar-item-margin-y) 0;
+        align-items: center;
+      }
+
+      &::part(it-button) {
+        position: relative;
+        display: block;
+      }
 
       &::part(expand-icon) {
+        height: auto;
+      }
+
+      &::part(it-icon) {
         position: absolute;
         top: 50%;
-        left: 100%;
-        transform: translateY(-50%);
+        right: -3px;
+
+        height: auto;
+
+        margin-top: calc(-1 * var(--it-toolbar-expand-icon-size) / 2);
+        //display: none;
       }
+
+      // &::part(button) {
+      //   &:after {
+      //     position: absolute;
+      //     top: 16px;
+      //     right: 2px;
+      //     content: '';
+      //     width: 0;
+      //     height: 0;
+      //     margin-left: 0;
+      //     border-width: 4px 3px 0 3px;
+      //     border-style: solid;
+      //     border-color: var(--#{$prefix}toolbar-dropdown-caret-color) transparent transparent transparent;
+
+      //     transform: rotate(-90deg);
+      //   }
+      //   &[aria-expanded='true']::after {
+      //     transform: rotate(90deg);
+      //   }
+      // }
+    }
+
+    &[size='md'],
+    &[size='sm'] {
+      --it-toolbar-expand-icon-size: var(--#{$prefix}icon-size-xs);
     }
   }
 }
 
 it-toolbar-item {
-  max-width: 100%;
-
-  &::part(toolbar-item-element) {
-    --#{$prefix}spacing-xs: 0;
-    --#{$prefix}spacing-s: 0;
+  &:not(:defined) {
+    display: none;
   }
 
+  max-width: 100%;
+
+  //&::part(toolbar-item-element) {
   &::part(button) {
-    --bsi-btn-disabled-opacity: 1;
+    --#{$prefix}spacing-xs: 0;
+    --#{$prefix}spacing-s: 0;
   }
 
   &[divider] {

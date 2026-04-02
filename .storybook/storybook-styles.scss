@@ -290,10 +290,11 @@ table.docblock-argstable {
   min-height: 400px;
   border-radius: 4px;
   background-color: #eaeaea;
+  overflow: scroll;
 }
 
 #storybook-root:has(.toolbar-layout) {
-  width: 50%;
+  width: 100%;
 }
 
 .docs-story div[scale='1'],

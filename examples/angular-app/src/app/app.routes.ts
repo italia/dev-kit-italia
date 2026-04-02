@@ -195,6 +195,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/table.component').then((c) => c.TableComponent),
   },
   {
+    title: 'Toolbar',
+    path: 'toolbar',
+    loadComponent: () => import('./pages/toolbar.component').then((c) => c.ToolbarComponent),
+  },
+  {
     title: 'Video',
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),

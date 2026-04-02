@@ -130,13 +130,14 @@ export class ItPopover extends BaseComponent {
           offset(this.offset),
           flip({ mainAxis: !this.noFlip, crossAxis: !this.noFlip }),
           shift({ padding: 8 }),
-          size({
-            apply({ rects, elements }) {
-              Object.assign(elements.floating.style, {
-                minWidth: `${rects.reference.width}px`,
-              });
-            },
-          }),
+          // Commentato perchè nella toolbar con dropdown che ha position absolute, vogliamo il min-width impostato da css con var(--bsi-dropdown-min-width)
+          // size({
+          //   apply({ rects, elements }) {
+          //     Object.assign(elements.floating.style, {
+          //       minWidth: `${rects.reference.width}px`,
+          //     });
+          //   },
+          // }),
           arrow({ element: this._arrowElement! }),
         ],
       }).then(({ x, y, placement, middlewareData }) => {

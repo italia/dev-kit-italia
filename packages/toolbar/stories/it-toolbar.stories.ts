@@ -25,25 +25,25 @@ const renderComponent = (params: ToolbarProps, slot: any = '') => {
 
 // Slot template per toolbar base
 const baseToolbarSlot = html`
-  <it-toolbar-item active label="messaggi" icon="it-comment" href="#" active="true"></it-toolbar-item>
-  <it-toolbar-item label="immagini" icon="it-camera" href="#"></it-toolbar-item>
-  <it-toolbar-item label="documenti" icon="it-file" href="#"></it-toolbar-item>
-  <it-toolbar-item label="privacy" icon="it-locked"></it-toolbar-item>
-  <it-toolbar-item disabled label="preferiti" icon="it-star-outline" href="#"></it-toolbar-item>
+  <it-toolbar-item active label="Messaggi" icon="it-comment" href="#" active="true"></it-toolbar-item>
+  <it-toolbar-item label="Immagini" icon="it-camera" href="#"></it-toolbar-item>
+  <it-toolbar-item label="Documenti" icon="it-file" href="#"></it-toolbar-item>
+  <it-toolbar-item label="Privacy" icon="it-locked"></it-toolbar-item>
+  <it-toolbar-item disabled label="Preferiti" icon="it-star-outline" href="#"></it-toolbar-item>
 `;
 
 const smallToolbarSlot = html`
-  <it-toolbar-item active label="messaggi" icon="it-comment" href="#" active="true"></it-toolbar-item>
-  <it-toolbar-item label="immagini" icon="it-camera" href="#"></it-toolbar-item>
-  <it-toolbar-item label="documenti" icon="it-file" href="#"></it-toolbar-item>
-  <it-toolbar-item label="privacy" icon="it-locked" href="#"></it-toolbar-item>
-  <it-toolbar-item label="preferiti" icon="it-star-outline" href="#"></it-toolbar-item>
-  <it-toolbar-item disabled label="downloads" icon="it-download" href="#"></it-toolbar-item>
+  <it-toolbar-item active label="Messaggi" icon="it-comment" href="#" active="true"></it-toolbar-item>
+  <it-toolbar-item label="Immagini" icon="it-camera" href="#"></it-toolbar-item>
+  <it-toolbar-item label="Documenti" icon="it-file" href="#"></it-toolbar-item>
+  <it-toolbar-item label="Privacy" icon="it-locked" href="#"></it-toolbar-item>
+  <it-toolbar-item label="Preferiti" icon="it-star-outline" href="#"></it-toolbar-item>
+  <it-toolbar-item disabled label="Downloads" icon="it-download" href="#"></it-toolbar-item>
 `;
 
 const meta = {
   title: 'Componenti/Toolbar',
-  tags: ['a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component', 'new'],
   component: 'it-toolbar',
   args: {
     size: 'lg',
@@ -146,13 +146,13 @@ export const ToolbarConDivisori: Story = {
   render: (args) =>
     html`${renderComponent(
       args,
-      html` <it-toolbar-item label="messaggi" icon="it-comment" href="#" active="true"></it-toolbar-item>
-        <it-toolbar-item label="immagini" icon="it-camera" href="#"></it-toolbar-item>
+      html` <it-toolbar-item label="Messaggi" icon="it-comment" href="#" active="true"></it-toolbar-item>
+        <it-toolbar-item label="Immagini" icon="it-camera" href="#"></it-toolbar-item>
         <it-toolbar-item divider></it-toolbar-item>
-        <it-toolbar-item label="documenti" icon="it-file" href="#"></it-toolbar-item>
-        <it-toolbar-item label="privacy" icon="it-locked" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Documenti" icon="it-file" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Privacy" icon="it-locked" href="#"></it-toolbar-item>
         <it-toolbar-item divider></it-toolbar-item>
-        <it-toolbar-item disabled label="preferiti" icon="it-star-outline" href="#"></it-toolbar-item>`,
+        <it-toolbar-item disabled label="Preferiti" icon="it-star-outline" href="#"></it-toolbar-item>`,
     )}`,
 };
 
@@ -162,7 +162,7 @@ export const ToolbarConBadge: Story = {
     html`${renderComponent(
       args,
       html` <it-toolbar-item
-          label="messaggi"
+          label="Messaggi"
           icon="it-comment"
           href="#"
           badge="1"
@@ -170,15 +170,15 @@ export const ToolbarConBadge: Story = {
           label-extended="da leggere"
         ></it-toolbar-item>
         <it-toolbar-item
-          label="documenti"
+          label="Documenti"
           icon="it-file"
           href="#"
           badge="42"
           label-extended="da esaminare"
         ></it-toolbar-item>
-        <it-toolbar-item label="immagini" icon="it-camera" href="#"></it-toolbar-item>
-        <it-toolbar-item label="privacy" icon="it-locked" href="#"></it-toolbar-item>
-        <it-toolbar-item disabled label="preferiti" icon="it-star-outline" href="#"></it-toolbar-item>`,
+        <it-toolbar-item label="Immagini" icon="it-camera" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Privacy" icon="it-locked" href="#"></it-toolbar-item>
+        <it-toolbar-item disabled label="Preferiti" icon="it-star-outline" href="#"></it-toolbar-item>`,
     )}`,
 };
 
@@ -192,7 +192,7 @@ export const ToolbarMediaSmallConBadge: Story = {
     html`${renderComponent(
       args,
       html` <it-toolbar-item
-          label="messaggi"
+          label="Messaggi"
           icon="it-comment"
           href="#"
           badge="1"
@@ -200,17 +200,105 @@ export const ToolbarMediaSmallConBadge: Story = {
           label-extended="c'è 1 nuovo messaggio dal leggere"
         ></it-toolbar-item>
         <it-toolbar-item
-          label="documenti"
+          label="Documenti"
           icon="it-file"
           href="#"
           badge="42"
           label-extended="ci sono 42 documenti da esaminare"
         ></it-toolbar-item>
-        <it-toolbar-item label="immagini" icon="it-camera" href="#"></it-toolbar-item>
-        <it-toolbar-item label="privacy" icon="it-locked" href="#"></it-toolbar-item>
-        <it-toolbar-item disabled label="preferiti" icon="it-star-outline" href="#"></it-toolbar-item>`,
+        <it-toolbar-item label="Immagini" icon="it-camera" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Privacy" icon="it-locked" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Preferiti" icon="it-star-outline" href="#"></it-toolbar-item>
+        <it-toolbar-item disabled label="Download" icon="it-download" href="#"></it-toolbar-item>`,
     )} `,
 };
+
+const renderWithDropdown = (args: ToolbarProps) => {
+  return html`${renderComponent(
+    args,
+    html` <it-toolbar-item
+        dropdown
+        active
+        label="Messaggi"
+        icon="it-comment"
+        badge="1"
+        active="true"
+        label-extended="da leggere"
+      >
+        <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+        <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
+        <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
+      </it-toolbar-item>
+      <it-toolbar-item dropdown label="Immagini" icon="it-camera" badge="42" label-extended="da visualizzare">
+        <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+        <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
+        <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
+      </it-toolbar-item>
+      <it-toolbar-item divider></it-toolbar-item>
+      <it-toolbar-item dropdown label="Documenti" icon="it-file">
+        <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+        <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
+        <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
+      </it-toolbar-item>
+      <it-toolbar-item dropdown label="Privacy" icon="it-locked">
+        <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+        <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
+        <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
+      </it-toolbar-item>
+      <it-toolbar-item dropdown disabled label="Preferiti" icon="it-star-outline"></it-toolbar-item>
+      <it-toolbar-item dropdown label="Altro" icon="it-more-actions" class="no-expand">
+        <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+        <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
+        <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
+      </it-toolbar-item>`,
+  )}`;
+};
+
+export const ToolbarDropdown: Story = {
+  name: 'Toolbar con dropdown',
+  render: (args) => renderWithDropdown(args),
+};
+
+export const ToolbarMediumDropdown: Story = {
+  name: 'Toolbar media con dropdown',
+  tags: ['!dev'],
+  args: {
+    size: 'md',
+  },
+  render: (args) => renderWithDropdown(args),
+};
+
+export const ToolbarSmallDropdown: Story = {
+  name: 'Toolbar piccola con dropdown',
+  tags: ['!dev'],
+  args: {
+    size: 'sm',
+  },
+  render: (args) => renderWithDropdown(args),
+};
+
+const renderVerticalToolbar = (args) =>
+  html`${renderComponent(
+    args,
+    html` <it-toolbar-item
+        active
+        label="Messaggi"
+        icon="it-comment"
+        badge="42"
+        href="#"
+        active="true"
+        label-extended="da leggere"
+      ></it-toolbar-item>
+      <it-toolbar-item dropdown label="Immagini" icon="it-camera" badge="1" label-extended="da visualizzare">
+        <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+        <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
+        <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
+      </it-toolbar-item>
+      <it-toolbar-item divider></it-toolbar-item>
+      <it-toolbar-item label="Documenti" icon="it-file" href="#"></it-toolbar-item>
+      <it-toolbar-item label="Privacy" icon="it-locked"></it-toolbar-item>
+      <it-toolbar-item disabled label="Preferiti" icon="it-star-outline" href="#"></it-toolbar-item>`,
+  )}`;
 
 export const ToolbarVertical: Story = {
   name: 'Toolbar verticale',
@@ -218,30 +306,7 @@ export const ToolbarVertical: Story = {
     orientation: 'vertical',
   },
 
-  render: (args) =>
-    html`${renderComponent(
-      args,
-      html` <it-toolbar-item
-          active
-          label="messaggi"
-          icon="it-comment"
-          badge="42"
-          href="#"
-          active="true"
-          label-extended="da leggere"
-        ></it-toolbar-item>
-        <it-toolbar-item
-          label="immagini"
-          icon="it-camera"
-          badge="1"
-          href="#"
-          label-extended="da visualizzare"
-        ></it-toolbar-item>
-        <it-toolbar-item divider></it-toolbar-item>
-        <it-toolbar-item label="documenti" icon="it-file" href="#"></it-toolbar-item>
-        <it-toolbar-item label="privacy" icon="it-locked"></it-toolbar-item>
-        <it-toolbar-item disabled label="preferiti" icon="it-star-outline" href="#"></it-toolbar-item>`,
-    )}`,
+  render: (args) => renderVerticalToolbar(args),
 };
 
 export const ToolbarMediumVertical: Story = {
@@ -251,30 +316,7 @@ export const ToolbarMediumVertical: Story = {
     orientation: 'vertical',
     size: 'md',
   },
-  render: (args) =>
-    html`${renderComponent(
-      args,
-      html` <it-toolbar-item
-          active
-          label="messaggi"
-          icon="it-comment"
-          badge="42"
-          href="#"
-          active="true"
-          label-extended="ci sono 42 messaggi da leggere"
-        ></it-toolbar-item>
-        <it-toolbar-item
-          label="immagini"
-          icon="it-camera"
-          badge="1"
-          href="#"
-          label-extended="1 immagine da visualizzare"
-        ></it-toolbar-item>
-        <it-toolbar-item divider></it-toolbar-item>
-        <it-toolbar-item label="documenti" icon="it-file" href="#"></it-toolbar-item>
-        <it-toolbar-item label="privacy" icon="it-locked"></it-toolbar-item>
-        <it-toolbar-item disabled label="preferiti" icon="it-star-outline" href="#"></it-toolbar-item>`,
-    )}`,
+  render: (args) => renderVerticalToolbar(args),
 };
 
 export const ToolbarSmallVertical: Story = {
@@ -284,72 +326,5 @@ export const ToolbarSmallVertical: Story = {
     orientation: 'vertical',
     size: 'sm',
   },
-  render: (args) =>
-    html`${renderComponent(
-      args,
-      html` <it-toolbar-item
-          active
-          label="messaggi"
-          icon="it-comment"
-          badge="42"
-          href="#"
-          active="true"
-          label-extended="ci sono 42 messaggi da leggere"
-        ></it-toolbar-item>
-        <it-toolbar-item
-          label="immagini"
-          icon="it-camera"
-          badge="1"
-          href="#"
-          label-extended="c'è 1 immagine da visualizzare"
-        ></it-toolbar-item>
-        <it-toolbar-item divider></it-toolbar-item>
-        <it-toolbar-item label="documenti" icon="it-file" href="#"></it-toolbar-item>
-        <it-toolbar-item label="privacy" icon="it-locked"></it-toolbar-item>
-        <it-toolbar-item label="preferiti" icon="it-star-outline" href="#"></it-toolbar-item>
-        <it-toolbar-item disabled label="downloads" icon="it-download" href="#"></it-toolbar-item>`,
-    )}`,
-};
-
-export const ToolbarDropdown: Story = {
-  name: 'Toolbar con dropdown',
-  render: (args) =>
-    html`${renderComponent(
-      args,
-      html` <it-toolbar-item
-          dropdown
-          active
-          label="messaggi"
-          icon="it-comment"
-          badge="1"
-          active="true"
-          label-extended="da leggere"
-        >
-          <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
-          <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
-          <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
-        </it-toolbar-item>
-        <it-toolbar-item dropdown label="immagini" icon="it-camera" badge="42" label-extended="da visualizzare">
-          <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
-          <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
-          <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
-        </it-toolbar-item>
-        <it-toolbar-item divider></it-toolbar-item>
-        <it-toolbar-item dropdown label="documenti" icon="it-file">
-          <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
-          <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
-          <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
-        </it-toolbar-item>
-        <it-toolbar-item dropdown label="privacy" icon="it-locked">
-          <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
-          <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
-          <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
-        </it-toolbar-item>
-        <it-toolbar-item dropdown disabled label="preferiti" icon="it-star-outline"></it-toolbar-item>
-        <it-toolbar-item dropdown label="altro" icon="it-more-actions" class="no-expand">
-          <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
-          <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
-          <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
-        </it-toolbar-item>`,
-    )}`,
+  render: (args) => renderVerticalToolbar(args),
 };

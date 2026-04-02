@@ -124,9 +124,4 @@ it-dropdown {
     --#{$prefix}icon-size-s: var(--#{$prefix}icon-size-xs);
     height: 100%;
   }
-
-  &[alignment='right-start'] {
-    &::part(icon) {
-    }
-  }
 }

@@ -22,8 +22,10 @@
     --#{$prefix}toolbar-badge-size: 10px;
     --#{$prefix}toolbar-badge-top: -2px;
   }
-}
 
-.toolbar-vertical > ul {
-  overflow-y: scroll;
+  &.toolbar-vertical {
+    > ul {
+      min-height: fit-content;
+    }
+  }
 }
