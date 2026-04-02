@@ -210,7 +210,7 @@ export class ItToolbarItem extends BaseComponent {
           role="separator"
           ${setAttributes(ariaAttributes)}
         ></li>`
-      : html` <li part="toolbar-item" ${setAttributes(ariaAttributes)}>${this.renderTag()}</li> `;
+      : html` <li role="none" part="toolbar-item" ${setAttributes(ariaAttributes)}>${this.renderTag()}</li> `;
   }
 }
 
