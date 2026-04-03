@@ -103,7 +103,7 @@ export class ItToolbar extends BaseComponent {
 
     return html`
       <nav aria-label="${this.itAriaLabel}" part="toolbar-container" class="${navClasses}">
-        <ul role="toolbar" part="toolbar-list">
+        <ul part="toolbar-list">
           <slot @slotchange="${this._onSlotChange}"></slot>
         </ul>
       </nav>

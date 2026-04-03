@@ -52,6 +52,17 @@ it-popover {
   display: inline-flex;
 }
 
+it-popover[placement='right-start'],
+it-popover[placement='right'],
+it-popover[placement='right-end'],
+it-popover[placement='left-start'],
+it-popover[placement='left'],
+it-popover[placement='left-end'] {
+  .dropdown-menu {
+    border-radius: var(--#{$prefix}dropdown-border-radius);
+  }
+}
+
 .dropdown-toggle {
   .icon-expand {
     &.top {

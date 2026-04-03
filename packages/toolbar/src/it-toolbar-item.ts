@@ -100,6 +100,14 @@ export class ItToolbarItem extends BaseComponent {
   @property({ type: String, reflect: true, attribute: 'it-aria-orientation' })
   itAriaOrientation: 'horizontal' | 'vertical' = 'horizontal';
 
+  connectedCallback() {
+    super.connectedCallback?.();
+
+    if (!this.divider) {
+      this.setAttribute('role', 'listitem');
+    }
+  }
+
   private handleClick = (event: MouseEvent) => {
     if (this.disabled) {
       event.preventDefault();
@@ -210,7 +218,7 @@ export class ItToolbarItem extends BaseComponent {
           role="separator"
           ${setAttributes(ariaAttributes)}
         ></li>`
-      : html` <li role="none" part="toolbar-item" ${setAttributes(ariaAttributes)}>${this.renderTag()}</li> `;
+      : html` <li role="none" part="toolbar-item" ${setAttributes(ariaAttributes)}>${this.renderTag()}</li>`;
   }
 }
 
