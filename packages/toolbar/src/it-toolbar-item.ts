@@ -121,33 +121,29 @@ export class ItToolbarItem extends BaseComponent {
 
   private renderIcon() {
     if (!this.icon) return null;
-    return html`<it-icon name="${this.icon}" exportparts="icon"></it-icon>`;
+    return html`<it-icon name="${this.icon}" exportparts="icon" aria-hidden="true"></it-icon>`;
   }
 
   private renderLabel() {
     if (!this.label) return null;
-    return this.hideLabel
-      ? html`<span class="visually-hidden">${`${this.label} ${this.labelExtended ?? ''}`}</span>`
-      : html`
-          <span class="toolbar-label">
-            ${this.label}
-            ${this.labelExtended ? html`<span class="visually-hidden">${this.labelExtended}</span>` : null}
-          </span>
-        `;
+    return !this.hideLabel ? html` <span class="toolbar-label" aria-hidden="true"> ${this.label} </span> ` : html``;
   }
 
   private renderBadge() {
     if (!this.badge) return null;
-    return html`<div class="badge-wrapper" part="badge-wrapper">
-      <span class="toolbar-badge ${this.hideBadge ? 'no-text' : ''}" part="badge"
-        >${!this.hideBadge ? this.badge : ''}</span
-      >
+    return html`<div class="badge-wrapper" part="badge-wrapper" aria-hidden="true">
+      <span class="toolbar-badge ${this.hideBadge ? 'no-text' : ''}" part="badge">
+        ${!this.hideBadge ? this.badge : ''}
+      </span>
     </div>`;
   }
 
   private renderItemContent() {
+    const ariaText = [this.badge ?? '', this.label ?? '', this.labelExtended ?? ''].filter(Boolean).join(' ');
+
     return html`
       ${this.renderBadge()} ${this.renderIcon()} ${this.renderLabel()}
+      <span class="visually-hidden">${ariaText}</span>
       <slot></slot>
     `;
   }
