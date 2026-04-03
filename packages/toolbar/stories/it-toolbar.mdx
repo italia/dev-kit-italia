@@ -28,6 +28,27 @@ Ogni elemento della toolbar, deve essere un componente `it-toolbar-item` che rap
 <Canvas of={Stories.ToolbarItemBase} />
 <Controls of={Stories.ToolbarItemBase} />
 
+### Eventi click di `it-toolbar-item`
+Se `it-toolbar-item` viene renderizzato come pulsante, il componente genera internamente un `it-button` nello shadow DOM. Gli attributi inline del tipo `onclick` non vengono forwardati automaticamente a quell'elemento interno.
+
+Per intercettare l'azione di click, aggancia il listener direttamente a `it-toolbar-item` oppure ascolta l'evento custom `it-toolbar-item-click`, emesso dal componente in bubbling.
+
+```html
+<it-toolbar-item label="Messaggi" icon="it-comment"></it-toolbar-item>
+
+<script>
+  const item = document.querySelector('it-toolbar-item');
+
+  item?.addEventListener('click', (event) => {
+    console.log('Click nativo sul componente', event);
+  });
+
+  item?.addEventListener('it-toolbar-item-click', (event) => {
+    console.log('Evento custom della toolbar', event.detail);
+  });
+</script>
+```
+
 ## Accessibilità
 I componenti `it-toolbar` e `it-toolbar-item` sono progettati per essere accessibili e conformi agli standard di accessibilità.
 
@@ -138,6 +159,14 @@ Applicando l'attributo `orientation="vertical"` alla Toolbar gli elementi vengon
 
 ### Toolbar piccola verticale
 <Canvas of={Stories.ToolbarSmallVertical} />
+
+## Proprietà, metodi ed eventi accessibili via js
+
+Il componente `<it-toolbar-item>` espone le seguenti proprietà, metodi ed eventi accessibili via JavaScript.
+
+### Eventi
+Il componente `<it-toolbar-item>` emette i seguenti eventi custom:
+- `it-toolbar-item-click`, quando l'elemento viene cliccato. L'evento fornisce il dettaglio dell'elemento cliccato (`event.detail`). E'utile soprattuto quando l'elemento renderizza un bottone sul quale è necessario definire un comportamento custom al click.
 
 ## Personalizzazione degli stili
 
