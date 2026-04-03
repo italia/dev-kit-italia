@@ -78,6 +78,7 @@
     "@italia/select": "workspace:^",
     "@italia/skiplinks": "workspace:^",
     "@italia/sticky": "workspace:^",
+    "@italia/toggle": "workspace:^",
     "@italia/video": "workspace:^",
     "@italia/pagination": "workspace:^",
     "@italia/radio": "workspace:^"

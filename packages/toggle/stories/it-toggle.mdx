@@ -1,0 +1,88 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-toggle.stories';
+
+<Meta of={Stories} />
+
+# Toggle
+
+<description>Pulsante di tipo 'interruttore' che permette di alternare tra due stati e semplificare la gestione di opzioni o impostazioni.</description>
+
+## Cosa fa
+Il componente Toggle (`it-toggle`) permette all'utente di attivare o disattivare una singola opzione attraverso un'interfaccia di tipo interruttore a levetta, visivamente più intuitiva di una semplice checkbox per questo tipo di interazione.
+
+È un'opzione utile per permettere di modificare velocemente le impostazioni di un account o le preferenze di un servizio, soprattutto quando lo spazio a disposizione è poco, come sui dispositivi mobile.
+
+[Approfondisci come e quando usare il componente Toggle](https://designers.italia.it/design-system/componenti/toggle/)
+
+### Alternative a questo componente
+ - [Checkbox](/docs/componenti-form-checkbox--documentazione): interfaccia grafica più adatta per scelte multiple o filtri, quando è importante mostrare tutte le opzioni disponibili contemporaneamente
+ - [Radio button](/docs/componenti-form-radio--documentazione): interfaccia grafica più adatta per scelte singole, quando è importante mostrare tutte le opzioni disponibili contemporaneamente
+
+## Anteprima e attributi del componente
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+## Accessibilità
+Tutti gli attributi `it-aria-*` passati a `<it-toggle>` vengono applicati all'input generato. Il componente toggle mantiene la semantica corretta di un input type="checkbox" per garantire la massima accessibilità con screen reader e dispositivi di assistenza.
+
+
+## Stato attivo
+Per attivare un toggle, aggiungi l'attributo `checked` al componente `<it-toggle>`.
+
+<Canvas of={Stories.Attivo} />
+
+## Stato disabilitato
+Per disabilitare un toggle, aggiungi l'attributo `disabled` al componente `<it-toggle>`. Un toggle disabilitato non può essere interattivo fino a quando non viene rimosso l'attributo.
+
+<Canvas of={Stories.Disabilitato} />
+
+## Testo di supporto
+Per mostrare un testo di supporto al toggle, aggiungi l'attributo `support-text="Testo di supporto"` al componente `<it-toggle>`.
+
+<Canvas of={Stories.ConTestoSupporto} />
+
+## Inline
+Per allineare orizzontalmente più interruttori, racchiudili in elementi con classe `.form-check-inline`.
+
+<Canvas of={Stories.Inline} />
+
+
+## Raggruppati visivamente
+Per raggruppare visivamente gli interruttori, racchiudi tutti gli elementi `<it-toggle>` all'interno del componente `<it-toggle-group>` e assegna al gruppo l'attributo `name` corrispondente al nome del campo da salvare nel form.
+
+Sul componente `<it-toggle-group>` sono disponibili alcuni attributi che si riflettono automaticamente sugli `<it-toggle>` figli, senza doverli replicare in ognuno di essi.
+
+Questi attributi sono:
+- `name`, indica il nome del campo nella form in cui verranno salvati i valori selezionati nel gruppo di toggle;
+- `required`, rende obbligatorio il campo della form relativo al gruppo di toggle;
+- `disabled`, disabilita tutti gli interruttori del gruppo di toggle;
+- `group`, applica lo stile di default *gruppo di toggle*;
+- `inline`, applica lo stile *inline* al gruppo di toggle.
+
+Inserisci l'etichetta del gruppo in un elemento con attributo `slot="legend"` all'interno di `<it-toggle-group>`.
+
+Quando utilizzi il componente `it-toggle-group` in un form, il modo corretto per estrarre il valore del campo al submit via JS è:
+
+```js
+const formData = new FormData(document.getElementById('form'));
+formData.getAll(field_name) // dove `field_name` è il valore dell'attributo `[name]`
+```
+<Canvas of={Stories.Raggruppati} />
+
+
+## Validazione e gestione degli errori
+Essendo una estensione del componente checkbox, il toggle supporta gli stessi meccanismi di validazione (nativa e custom) del componente checkbox.
+
+Per maggiori dettagli, consulta la sezione dedicata alla validazione del componente [Checkbox](/docs/componenti-form-checkbox--documentazione#validazione).
+
+## Gestione degli eventi
+Essendo una estensione del componente checkbox, il toggle supporta gli stessi meccanismi di gestione degli eventi del componente checkbox.
+
+Per maggiori dettagli, consulta la sezione dedicata alla gestione degli eventi del componente [Checkbox](/docs/componenti-form-checkbox--documentazione#gestione-degli-eventi).
+
+## Proprietà, Metodi ed Eventi accessibili via js
+Essendo una estensione del componente checkbox, il toggle supporta le stesse proprietà, metodi ed eventi accessibili via js del componente checkbox.
+
+Per maggiori dettagli, consulta la sezione dedicata alle proprietà, metodi ed eventi accessibili via js del componente [Checkbox](/docs/componenti-form-checkbox--documentazione#propriet%C3%A0-metodi-ed-eventi-accessibili-via-js).

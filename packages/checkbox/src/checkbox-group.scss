@@ -8,3 +8,7 @@
 @import 'bootstrap-italia/src/scss/forms/forms';
 @import 'bootstrap-italia/src/scss/forms/form-control';
 @import 'bootstrap-italia/src/scss/forms/just-validate';
+
+:host {
+  display: block;
+}
