@@ -197,6 +197,36 @@ $it-components: (
     // Check the Heads up! section in the documentation // https://sass-lang.com/documentation/modules/list/#slash
     aspect-ratio: list.slash(16, 9),
   ),
+  'it-progress': (
+    height: 4px,
+    width: 100%,
+    border-radius: var(--#{$prefix}radius-smooth, 4px),
+  ),
+  'it-progress[type="spinner"]': (
+    height: 48px,
+    width: 48px,
+    border-radius: 50%,
+  ),
+  'it-progress[type="spinner"][size="sm"]': (
+    height: 32px,
+    width: 32px,
+    border-radius: 50%,
+  ),
+  'it-progress[type="spinner"][size="lg"]': (
+    height: 64px,
+    width: 64px,
+    border-radius: 50%,
+  ),
+  'it-progress[type="spinner"][size="xl"]': (
+    height: 80px,
+    width: 80px,
+    border-radius: 50%,
+  ),
+  'it-progress[type="donut"]': (
+    height: 180px,
+    width: 180px,
+    border-radius: 50%,
+  ),
   'it-toggle': (
     height: 24px,
     width: 48px,

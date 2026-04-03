@@ -154,6 +154,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/popover.component').then((c) => c.PopoverComponent),
   },
   {
+    title: 'Progress',
+    path: 'progress',
+    loadComponent: () => import('./pages/progress.component').then((c) => c.ProgressComponent),
+  },
+  {
     title: 'Radio',
     path: 'radio',
     loadComponent: () =>

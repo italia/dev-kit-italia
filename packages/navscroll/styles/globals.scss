@@ -23,6 +23,10 @@ it-navscroll {
   //     padding-top: 0;
   //   }
   // }
+  .navbar.it-navscroll-wrapper .menu-wrapper {
+    width: 100%;
+  }
+
   @media (max-width: 767.98px) {
     .navbar.it-navscroll-wrapper .menu-wrapper {
       padding-top: 0;

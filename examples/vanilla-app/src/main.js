@@ -51,6 +51,7 @@ const componentsMenuItems = [
   { label: 'Overlay', href: '/src/overlay' },
   { label: 'Pagination', href: '/src/pagination.html' },
   { label: 'Popover', href: '/src/popover' },
+  { label: 'Progress', href: '/src/progress' },
   { label: 'Radio', href: '/src/radio-examples.html' },
   { label: 'Rating', href: '/src/rating.html' },
   { label: 'Section', href: '/src/section' },

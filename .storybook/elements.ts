@@ -19,6 +19,7 @@ import '../packages/modal/dist/src';
 import '../packages/navscroll/dist/src';
 import '../packages/pagination/dist/src';
 import '../packages/popover/dist/src';
+import '../packages/progress/dist/src';
 import '../packages/radio/dist/src';
 import '../packages/rating/dist/src';
 import '../packages/section/dist/src';

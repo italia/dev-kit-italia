@@ -28,6 +28,7 @@ import Modal from './components/Modal.vue';
 import Navscroll from './components/Navscroll.vue';
 import Overlay from './components/Overlay.vue';
 import Popover from './components/Popover.vue';
+import Progress from './components/Progress.vue';
 import Radio from './components/Radio.vue';
 import Rating from './components/Rating.vue';
 import Section from './components/Section.vue';
@@ -72,6 +73,7 @@ const routes = [
   { path: '/overlay', name: 'Overlay', component: Overlay },
   { path: '/pagination', name: 'Pagination', component: Pagination },
   { path: '/popover', name: 'Popover', component: Popover },
+  { path: '/progress', name: 'Progress', component: Progress },
   { path: '/radio', name: 'Radio', component: Radio },
   { path: '/rating', name: 'Rating', component: Rating },
   { path: '/section', name: 'Section', component: Section },

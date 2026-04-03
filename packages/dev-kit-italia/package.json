@@ -73,6 +73,7 @@
     "@italia/megamenu": "workspace:^",
     "@italia/modal": "workspace:^",
     "@italia/popover": "workspace:^",
+    "@italia/progress": "workspace:^",
     "@italia/section": "workspace:^",
     "@italia/select": "workspace:^",
     "@italia/skiplinks": "workspace:^",
