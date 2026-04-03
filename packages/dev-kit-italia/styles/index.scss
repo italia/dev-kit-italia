@@ -66,6 +66,7 @@
 @import '@italia/navscroll/styles/globals';
 @import '@italia/pagination/styles/globals';
 @import '@italia/popover/styles/globals';
+@import '@italia/progress/styles/globals';
 @import '@italia/radio/styles/globals';
 @import '@italia/rating/styles/globals';
 @import '@italia/section/styles/globals';
@@ -88,6 +89,10 @@
 @import './components/go-back';
 @import './components/list';
 @import './components/sidebar';
+
+.navbar-collapsable .menu-wrapper {
+  z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page
+}
 
 .it-footer-main .it-brand-wrapper ::part(icon) {
   width: var(--#{$prefix}footer-brand-icon-size);

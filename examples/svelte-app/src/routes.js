@@ -27,6 +27,7 @@ import Navscroll from './pages/Navscroll.svelte';
 import Overlay from './pages/Overlay.svelte';
 import Pagination from './pages/Pagination.svelte';
 import Popover from './pages/Popover.svelte';
+import Progress from './pages/Progress.svelte';
 import Radio from './pages/Radio.svelte';
 import Rating from './pages/Rating.svelte';
 import Section from './pages/Section.svelte';
@@ -69,6 +70,7 @@ export const AppRoutes = [
   { path: '/overlay', element: Overlay, title: 'Overlay' },
   { path: '/pagination', element: Pagination, title: 'Pagination' },
   { path: '/popover', element: Popover, title: 'Popover' },
+  { path: '/progress', element: Progress, title: 'Progress' },
   { path: '/radio', element: Radio, title: 'Radio' },
   { path: '/rating', element: Rating, title: 'Rating' },
   { path: '/section', element: Section, title: 'Section' },
