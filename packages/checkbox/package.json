@@ -23,7 +23,9 @@
   "exports": {
     ".": "./dist/src/index.js",
     "./it-checkbox.js": "./dist/src/it-checkbox.js",
+    "./it-checkbox-base.js": "./dist/src/it-checkbox-base.js",
     "./it-checkbox-group.js": "./dist/src/it-checkbox-group.js",
+    "./it-checkbox-group-base.js": "./dist/src/it-checkbox-group-base.js",
     "./styles/*": "./styles/*"
   },
   "files": [

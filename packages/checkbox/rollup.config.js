@@ -5,7 +5,13 @@ import { litScss } from 'rollup-plugin-scss-lit';
  * @type {import('rollup').RollupOptions}
  */
 export default {
-  input: ['src/index.ts', 'src/it-checkbox.ts', 'src/it-checkbox-group.ts'],
+  input: [
+    'src/index.ts',
+    'src/it-checkbox-base.ts',
+    'src/it-checkbox.ts',
+    'src/it-checkbox-group-base.ts',
+    'src/it-checkbox-group.ts',
+  ],
   output: {
     dir: 'dist',
     sourcemap: true,
