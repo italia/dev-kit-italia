@@ -142,7 +142,7 @@ export class ItToolbarItem extends BaseComponent {
     const ariaText = [this.badge ?? '', this.label ?? '', this.labelExtended ?? ''].filter(Boolean).join(' ');
 
     return html`
-      ${this.renderBadge()} ${this.renderIcon()} ${this.renderLabel()}
+      <span aria-hidden="true"> ${this.renderBadge()} ${this.renderIcon()} ${this.renderLabel()}</span>
       <span class="visually-hidden">${ariaText}</span>
       <slot></slot>
     `;
