@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <h1>Navscroll</h1>
@@ -9,15 +8,7 @@
       <it-navscroll breakpoint="1024" open-label="Naviga fra le sezioni" sticky="" for="#scroll-container">
         <div class="link-list-wrapper">
           <h3>Header</h3>
-          <div class="progress">
-            <div
-              class="progress-bar it-navscroll-progressbar"
-              role="progressbar"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              aria-label="Progress bar"
-            ></div>
-          </div>
+          <it-progress type="bar" value="0" class="it-navscroll-progressbar" aria-label="Progress bar"></it-progress>
           <nav>
             <ul class="link-list">
               <li class="nav-item">
@@ -95,177 +86,144 @@
       </it-navscroll>
     </aside>
 
-      <main id="scroll-container" class="col-lg-8 it-page-sections-container border-light">
-
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec congue eros. Maecenas sagittis commodo libero
-            nec porta. Nunc semper velit venenatis
-            ligula condimentum ultricies. In hac habitasse platea dictumst. In malesuada pharetra nulla, id aliquam metus
-            egestas ut. Nulla sollicitudin cursus
-            felis, eu sagittis ante porta id. Suspendisse pellentesque ex non sem tincidunt, aliquam rhoncus turpis maximus.
-            Vivamus eget massa turpis. Proin
-            placerat ipsum massa, ac commodo velit tempor quis. In ante augue, sodales ac rhoncus in, ultricies a neque.
-            Morbi non semper felis, at lacinia nibh.
-            Nam quis elit massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam laoreet, diam quis
-            blandit porttitor, leo erat semper sem,
-            vel sagittis dolor quam eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada vel
-            ut quam. Cras vehicula rutrum vehicula.
-            Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non ullamcorper lorem euismod
-            vel. Orci varius natoque penatibus et
-            magnis dis parturient montes, nascetur ridiculus mus. Integer feugiat et massa nec rhoncus. Morbi vitae metus et
-            sapien suscipit mattis vitae ac ex.
-            Proin pharetra, sem vitae varius malesuada, risus tortor sodales arcu, eu aliquam lorem libero vel urna. Aliquam
-            massa lacus, faucibus quis urna ac,
-            pharetra pretium ex. In facilisis urna non urna luctus, a bibendum tortor facilisis. Mauris sed risus justo. In
-            et erat fermentum eros hendrerit tempor.
-            Quisque accumsan magna ac risus ultricies, vel condimentum ipsum accumsan. Proin blandit mauris sed sodales
-            sollicitudin.
-          </p>
-          <h2 class="it-page-section" id="p1">Introduzione</h2>
-          <p>
-            Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue, sodales ac rhoncus in, ultricies a
-            neque. Morbi non semper felis, at lacinia
-            nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam laoreet, diam
-            quis blandit porttitor, leo erat semper
-            sem, vel sagittis dolor quam eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada
-            vel ut quam. Cras vehicula rutrum
-            vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non ullamcorper
-            lorem euismod vel. Orci varius natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </p>
-          <h3 class="it-page-section" id="p1_1">Elemento annidato 1.1</h3>
-          <p>
-            Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
-            neque. Morbi non semper felis, at lacinia
-            nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam laoreet, diam
-            quis blandit porttitor, leo erat semper
-            sem, vel sagittis dolor quam eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada
-            vel ut quam. Cras vehicula rutrum
-            vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non ullamcorper
-            lorem euismod vel. Orci varius natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </p>
-          <h4 class="it-page-section" id="p1_1_1">Elemento annidato 1.1.1</h4>
-          <p>
-            Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
-            neque. Morbi non semper felis, at lacinia
-            nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam laoreet, diam
-            quis blandit porttitor, leo erat semper
-            sem, vel sagittis dolor quam eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada
-            vel ut quam. Cras vehicula rutrum
-            vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non ullamcorper
-            lorem euismod vel. Orci varius natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </p>
-          <h4 class="it-page-section" id="p1_1_2">Elemento annidato 1.1.2</h4>
-          <p>
-            Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
-            neque. Morbi non semper felis, at lacinia
-            nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam laoreet, diam
-            quis blandit porttitor, leo erat semper
-            sem, vel sagittis dolor quam eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada
-            vel ut quam. Cras vehicula rutrum
-            vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non ullamcorper
-            lorem euismod vel. Orci varius natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </p>
-          <h4 class="it-page-section" id="p1_1_3">Elemento annidato 1.1.3</h4>
-          <p>
-            Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
-            neque. Morbi non semper felis, at lacinia
-            nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam laoreet, diam
-            quis blandit porttitor, leo erat semper
-            sem, vel sagittis dolor quam eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada
-            vel ut quam. Cras vehicula rutrum
-            vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non ullamcorper
-            lorem euismod vel. Orci varius natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </p>
-          <h3 class="it-page-section" id="p1_2">Elemento annidato 1.2</h3>
-          <p>
-            Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
-            neque. Morbi non semper felis, at lacinia
-            nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam laoreet, diam
-            quis blandit porttitor, leo erat semper
-            sem, vel sagittis dolor quam eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada
-            vel ut quam. Cras vehicula rutrum
-            vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non ullamcorper
-            lorem euismod vel. Orci varius natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </p>
-          <h3 class="it-page-section" id="p1_3">Elemento annidato 1.3</h3>
-          <p>
-            Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
-            neque. Morbi non semper felis, at lacinia
-            nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam laoreet, diam
-            quis blandit porttitor, leo erat semper
-            sem, vel sagittis dolor quam eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada
-            vel ut quam. Cras vehicula rutrum
-            vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non ullamcorper
-            lorem euismod vel. Orci varius natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </p>
-          <h2 class="it-page-section" id="p2">Seconda sezione</h2>
-          <p>
-            Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
-            neque. Morbi non semper felis, at lacinia
-            nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam laoreet, diam
-            quis blandit porttitor, leo erat semper
-            sem, vel sagittis dolor quam eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada
-            vel ut quam. Cras vehicula rutrum
-            vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non ullamcorper
-            lorem euismod vel. Orci varius natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </p>
-          <h3 class="it-page-section" id="p2_1">Elemento annidato 2.1</h3>
-          <p>
-            Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
-            neque. Morbi non semper felis, at lacinia
-            nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam laoreet, diam
-            quis blandit porttitor, leo erat semper
-            sem, vel sagittis dolor quam eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada
-            vel ut quam. Cras vehicula rutrum
-            vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non ullamcorper
-            lorem euismod vel. Orci varius natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </p>
-          <h4 class="it-page-section" id="p2_1_1">Elemento annidato 2.1.1</h4>
-          <p>
-            Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
-            neque. Morbi non semper felis, at lacinia
-            nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam laoreet, diam
-            quis blandit porttitor, leo erat semper
-            sem, vel sagittis dolor quam eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada
-            vel ut quam. Cras vehicula rutrum
-            vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non ullamcorper
-            lorem euismod vel. Orci varius natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </p>
-          <h4 class="it-page-section" id="p2_1_2">Elemento annidato 2.1.2</h4>
-          <p>
-            Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
-            neque. Morbi non semper felis, at lacinia
-            nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam laoreet, diam
-            quis blandit porttitor, leo erat semper
-            sem, vel sagittis dolor quam eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada
-            vel ut quam. Cras vehicula rutrum
-            vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non ullamcorper
-            lorem euismod vel. Orci varius natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </p>
-          <h4 class="it-page-section" id="p2_1_3">Elemento annidato 2.1.3</h4>
-          <p>
-            Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
-            neque. Morbi non semper felis, at lacinia
-            nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam laoreet, diam
-            quis blandit porttitor, leo erat semper
-            sem, vel sagittis dolor quam eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada
-            vel ut quam. Cras vehicula rutrum
-            vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non ullamcorper
-            lorem euismod vel. Orci varius natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </p>
-
+    <main id="scroll-container" class="col-lg-8 it-page-sections-container border-light">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec congue eros. Maecenas sagittis commodo libero
+        nec porta. Nunc semper velit venenatis ligula condimentum ultricies. In hac habitasse platea dictumst. In
+        malesuada pharetra nulla, id aliquam metus egestas ut. Nulla sollicitudin cursus felis, eu sagittis ante porta
+        id. Suspendisse pellentesque ex non sem tincidunt, aliquam rhoncus turpis maximus. Vivamus eget massa turpis.
+        Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue, sodales ac rhoncus in, ultricies a
+        neque. Morbi non semper felis, at lacinia nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum
+        primis in faucibus. Aliquam laoreet, diam quis blandit porttitor, leo erat semper sem, vel sagittis dolor quam
+        eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada vel ut quam. Cras vehicula
+        rutrum vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non
+        ullamcorper lorem euismod vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus. Integer feugiat et massa nec rhoncus. Morbi vitae metus et sapien suscipit mattis vitae ac ex. Proin
+        pharetra, sem vitae varius malesuada, risus tortor sodales arcu, eu aliquam lorem libero vel urna. Aliquam massa
+        lacus, faucibus quis urna ac, pharetra pretium ex. In facilisis urna non urna luctus, a bibendum tortor
+        facilisis. Mauris sed risus justo. In et erat fermentum eros hendrerit tempor. Quisque accumsan magna ac risus
+        ultricies, vel condimentum ipsum accumsan. Proin blandit mauris sed sodales sollicitudin.
+      </p>
+      <h2 class="it-page-section" id="p1">Introduzione</h2>
+      <p>
+        Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue, sodales ac rhoncus in, ultricies a
+        neque. Morbi non semper felis, at lacinia nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum
+        primis in faucibus. Aliquam laoreet, diam quis blandit porttitor, leo erat semper sem, vel sagittis dolor quam
+        eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada vel ut quam. Cras vehicula
+        rutrum vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non
+        ullamcorper lorem euismod vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus.
+      </p>
+      <h3 class="it-page-section" id="p1_1">Elemento annidato 1.1</h3>
+      <p>
+        Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
+        neque. Morbi non semper felis, at lacinia nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum
+        primis in faucibus. Aliquam laoreet, diam quis blandit porttitor, leo erat semper sem, vel sagittis dolor quam
+        eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada vel ut quam. Cras vehicula
+        rutrum vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non
+        ullamcorper lorem euismod vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus.
+      </p>
+      <h4 class="it-page-section" id="p1_1_1">Elemento annidato 1.1.1</h4>
+      <p>
+        Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
+        neque. Morbi non semper felis, at lacinia nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum
+        primis in faucibus. Aliquam laoreet, diam quis blandit porttitor, leo erat semper sem, vel sagittis dolor quam
+        eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada vel ut quam. Cras vehicula
+        rutrum vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non
+        ullamcorper lorem euismod vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus.
+      </p>
+      <h4 class="it-page-section" id="p1_1_2">Elemento annidato 1.1.2</h4>
+      <p>
+        Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
+        neque. Morbi non semper felis, at lacinia nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum
+        primis in faucibus. Aliquam laoreet, diam quis blandit porttitor, leo erat semper sem, vel sagittis dolor quam
+        eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada vel ut quam. Cras vehicula
+        rutrum vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non
+        ullamcorper lorem euismod vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus.
+      </p>
+      <h4 class="it-page-section" id="p1_1_3">Elemento annidato 1.1.3</h4>
+      <p>
+        Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
+        neque. Morbi non semper felis, at lacinia nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum
+        primis in faucibus. Aliquam laoreet, diam quis blandit porttitor, leo erat semper sem, vel sagittis dolor quam
+        eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada vel ut quam. Cras vehicula
+        rutrum vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non
+        ullamcorper lorem euismod vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus.
+      </p>
+      <h3 class="it-page-section" id="p1_2">Elemento annidato 1.2</h3>
+      <p>
+        Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
+        neque. Morbi non semper felis, at lacinia nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum
+        primis in faucibus. Aliquam laoreet, diam quis blandit porttitor, leo erat semper sem, vel sagittis dolor quam
+        eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada vel ut quam. Cras vehicula
+        rutrum vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non
+        ullamcorper lorem euismod vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus.
+      </p>
+      <h3 class="it-page-section" id="p1_3">Elemento annidato 1.3</h3>
+      <p>
+        Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
+        neque. Morbi non semper felis, at lacinia nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum
+        primis in faucibus. Aliquam laoreet, diam quis blandit porttitor, leo erat semper sem, vel sagittis dolor quam
+        eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada vel ut quam. Cras vehicula
+        rutrum vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non
+        ullamcorper lorem euismod vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus.
+      </p>
+      <h2 class="it-page-section" id="p2">Seconda sezione</h2>
+      <p>
+        Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
+        neque. Morbi non semper felis, at lacinia nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum
+        primis in faucibus. Aliquam laoreet, diam quis blandit porttitor, leo erat semper sem, vel sagittis dolor quam
+        eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada vel ut quam. Cras vehicula
+        rutrum vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non
+        ullamcorper lorem euismod vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus.
+      </p>
+      <h3 class="it-page-section" id="p2_1">Elemento annidato 2.1</h3>
+      <p>
+        Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
+        neque. Morbi non semper felis, at lacinia nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum
+        primis in faucibus. Aliquam laoreet, diam quis blandit porttitor, leo erat semper sem, vel sagittis dolor quam
+        eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada vel ut quam. Cras vehicula
+        rutrum vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non
+        ullamcorper lorem euismod vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus.
+      </p>
+      <h4 class="it-page-section" id="p2_1_1">Elemento annidato 2.1.1</h4>
+      <p>
+        Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
+        neque. Morbi non semper felis, at lacinia nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum
+        primis in faucibus. Aliquam laoreet, diam quis blandit porttitor, leo erat semper sem, vel sagittis dolor quam
+        eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada vel ut quam. Cras vehicula
+        rutrum vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non
+        ullamcorper lorem euismod vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus.
+      </p>
+      <h4 class="it-page-section" id="p2_1_2">Elemento annidato 2.1.2</h4>
+      <p>
+        Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
+        neque. Morbi non semper felis, at lacinia nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum
+        primis in faucibus. Aliquam laoreet, diam quis blandit porttitor, leo erat semper sem, vel sagittis dolor quam
+        eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada vel ut quam. Cras vehicula
+        rutrum vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non
+        ullamcorper lorem euismod vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus.
+      </p>
+      <h4 class="it-page-section" id="p2_1_3">Elemento annidato 2.1.3</h4>
+      <p>
+        Proin placerat ipsum massa, ac commodo velit tempor quis. In ante augue,sodales ac rhoncus in, ultricies a
+        neque. Morbi non semper felis, at lacinia nibh. Nam quis elit massa. Interdum et malesuada fames ac ante ipsum
+        primis in faucibus. Aliquam laoreet, diam quis blandit porttitor, leo erat semper sem, vel sagittis dolor quam
+        eu magna. Nunc feugiat pretium tempor. Nam eget augue quis tellus viverra malesuada vel ut quam. Cras vehicula
+        rutrum vehicula. Suspendisse efficitur eget purus vitae convallis. Integer euismod pharetra lorem, non
+        ullamcorper lorem euismod vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus.
+      </p>
     </main>
   </div>
 </template>

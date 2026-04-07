@@ -33,6 +33,7 @@
       "@italia/notification",
       "@italia/pagination",
       "@italia/popover",
+      "@italia/progress",
       "@italia/radio",
       "@italia/rating",
       "@italia/section",
