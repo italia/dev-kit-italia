@@ -51,6 +51,7 @@ export class ItMegamenu extends ItDropdownBase {
     // disable full-width for dropdown items inside megamenu to let them inherit the width of their container and not stretch to the full width of the megamenu
     for (const item of this._menuItems) {
       item.fullWidth = false;
+      item.itRole = 'menuitem';
     }
   }
 
@@ -185,6 +186,7 @@ export class ItMegamenu extends ItDropdownBase {
           role="region"
           @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
           @click=${{ handleEvent: this._onClickItems, capture: true }}
+          id=${this._menuId}
         >
           <div class="megamenu-content" part="megamenu-content">
             <div class="row">
@@ -220,12 +222,7 @@ export class ItMegamenu extends ItDropdownBase {
                   ? html` <div class="row">
                       <div class="col-12">
                         <div class="link-list-wrapper">
-                          <ul
-                            id=${this._menuId}
-                            class="link-list"
-                            style="columns: ${this.columns};"
-                            role="${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}"
-                          >
+                          <ul class="link-list" style="columns: ${this.columns};">
                             <slot @slotchange=${this._setChildrenProperties}></slot>
                           </ul>
                         </div>

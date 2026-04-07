@@ -40,6 +40,12 @@ it-megamenu {
     }
   }
 
+  it-dropdown-item {
+    &::part(list-item) {
+      position: unset;
+    }
+  }
+
   @include media-breakpoint-up(lg) {
     &[footer-position='right'] {
       [slot='footer'] {
