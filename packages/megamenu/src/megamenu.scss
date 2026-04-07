@@ -40,6 +40,10 @@ $utilities: (
       box-sizing: border-box;
     }
 
+    &[role='region']:focus {
+      outline: none !important;
+    }
+
     --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}spacing-xxs);
     --#{$prefix}dropdown-item-padding-y: var(--#{$prefix}spacing-xxs);
     --#{$prefix}dropdown-spacer: 0;

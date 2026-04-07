@@ -187,6 +187,7 @@ export class ItMegamenu extends ItDropdownBase {
           @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
           @click=${{ handleEvent: this._onClickItems, capture: true }}
           id=${this._menuId}
+          tabindex="-1"
         >
           <div class="megamenu-content" part="megamenu-content">
             <div class="row">
