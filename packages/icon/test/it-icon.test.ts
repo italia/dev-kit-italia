@@ -42,7 +42,6 @@ describe('<it-icon>', () => {
   it('is decorative by default', async () => {
     const el = await fixtureWithDelay<ItIcon>(html`<it-icon name="it-star-full"></it-icon>`);
     const svg = el.shadowRoot?.querySelector('svg');
-    console.log(svg);
     expect(svg?.getAttribute('aria-hidden')).to.equal('true');
     expect(svg?.getAttribute('role')).to.equal('presentation');
     expect(svg?.querySelector('title')).to.be.null;
@@ -52,7 +51,7 @@ describe('<it-icon>', () => {
   it('is accessible when label is set', async () => {
     const el = await fixtureWithDelay<ItIcon>(html`<it-icon name="it-star-full" label="Stella piena"></it-icon>`);
     const svg = el.shadowRoot?.querySelector('svg');
-    expect(svg?.getAttribute('aria-hidden')).to.equal('false');
+    expect(svg?.getAttribute('aria-hidden')).to.not.exist;
     expect(svg?.getAttribute('role')).to.equal('img');
     const title = svg?.querySelector('title');
     expect(title?.textContent).to.equal('Stella piena');
@@ -87,9 +86,7 @@ describe('<it-icon>', () => {
   });
 
   it('passes a11y checks with overridden aria-hidden and provided label', async () => {
-    const el = await fixtureWithDelay<ItIcon>(
-      html`<it-icon name="it-user" aria-hidden="false" label="Label"></it-icon>`,
-    );
+    const el = await fixtureWithDelay<ItIcon>(html`<it-icon name="it-user" label="Label"></it-icon>`);
     await expect(el).to.be.accessible();
   });
 
@@ -160,7 +157,7 @@ describe('<it-icon>', () => {
       expect(svg.getAttribute('class')).to.include('icon-padded');
       expect(svg.getAttribute('part')).to.equal('icon');
       expect(svg.getAttribute('role')).to.equal('img');
-      expect(svg.getAttribute('aria-hidden')).to.equal('false');
+      expect(svg.getAttribute('aria-hidden')).to.not.exist;
 
       const title = svg.querySelector('title');
       expect(title?.textContent).to.equal('Custom title');

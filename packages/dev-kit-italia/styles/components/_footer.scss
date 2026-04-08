@@ -1,0 +1,11 @@
+@import 'bootstrap-italia/src/scss/components/footer';
+@import 'bootstrap-italia/src/scss/components/list';
+@import 'bootstrap-italia/src/scss/components/headercenter';
+
+.it-footer-main .it-brand-wrapper ::part(icon) {
+  width: var(--#{$prefix}footer-brand-icon-size);
+  height: var(--#{$prefix}footer-brand-icon-size);
+  flex-shrink: 0;
+  margin-right: var(--#{$prefix}spacing-xs);
+  fill: var(--#{$prefix}footer-brand-icon-color);
+}

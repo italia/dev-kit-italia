@@ -1,0 +1,18 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
+@import 'bootstrap-italia/src/scss/components/breadcrumb';
+
+.breadcrumb {
+  &.dark {
+    --#{$prefix}breadcrumb-padding: var(--#{$prefix}spacing-3xs) var(--#{$prefix}spacing-s);
+
+    ::slotted(it-breadcrumb-item) {
+      --#{$prefix}breadcrumb-link-color: #fff;
+      --#{$prefix}breadcrumb-item-active-color: #fff;
+      --#{$prefix}breadcrumb-separator-color: #fff;
+    }
+  }
+}

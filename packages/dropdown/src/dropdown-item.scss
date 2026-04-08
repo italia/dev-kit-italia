@@ -6,6 +6,7 @@
 @import 'bootstrap-italia/src/scss/components/dropdown';
 
 :host {
+  --#{$prefix}dropdown-animation-speed: #{$dropdown-menu-animation-speed};
   display: block;
 }
 
@@ -110,7 +111,7 @@ li span,
 
   // Increase font-size and spacing for list item link with large class
   &.large {
-    --#{$prefix}linklist-item-font-size: var(--#{$prefix}label-font-size-m);
+    --#{$prefix}linklist-item-font-size: var(--#{$prefix}label-font-size-l);
   }
 
   // Avatar position inside the list item
@@ -158,7 +159,7 @@ li span,
     }
 
     .icon {
-      transition: transform $dropdown-menu-animation-speed;
+      transition: transform var(--#{$prefix}dropdown-animation-speed);
 
       &.secondary {
         color: var(--#{$prefix}icon-secondary);
@@ -232,4 +233,10 @@ li span,
     background: none;
     text-decoration: underline;
   }
+}
+
+.list-item > .dropdown-item-link {
+  display: flex;
+  align-items: center;
+  white-space: normal;
 }

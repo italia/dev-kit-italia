@@ -1,0 +1,50 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
+  "changelog": [
+    "@changesets/changelog-github",
+    {
+      "repo": "italia/dev-kit-italia"
+    }
+  ],
+  "commit": false,
+  "fixed": [
+    [
+      "@italia/accordion",
+      "@italia/autocomplete",
+      "@italia/avatar",
+      "@italia/back-to-top",
+      "@italia/breadcrumbs",
+      "@italia/button",
+      "@italia/callout",
+      "@italia/carousel",
+      "@italia/card",
+      "@italia/checkbox",
+      "@italia/chip",
+      "@italia/collapse",
+      "@italia/dev-kit-italia",
+      "@italia/dropdown",
+      "@italia/globals",
+      "@italia/hero",
+      "@italia/i18n",
+      "@italia/icon",
+      "@italia/input",
+      "@italia/modal",
+      "@italia/navscroll",
+      "@italia/pagination",
+      "@italia/popover",
+      "@italia/progress",
+      "@italia/radio",
+      "@italia/rating",
+      "@italia/section",
+      "@italia/select",
+      "@italia/skiplinks",
+      "@italia/sticky",
+      "@italia/video"
+    ]
+  ],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": ["@italia/tabs"]
+}

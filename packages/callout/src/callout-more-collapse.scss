@@ -1,0 +1,143 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
+:host {
+  display: block;
+  font-family: var(--#{$prefix}callout-font-family, inherit);
+  font-size: var(--#{$prefix}callout-font-size, 1rem);
+}
+
+/* Anti-FOUC: nascondi il contenuto finché il componente non è definito */
+:host(:not(:defined)) {
+  visibility: hidden;
+}
+
+:host([big-text]) {
+  --#{$prefix}callout-text-size: 18px;
+}
+
+.collapse-div {
+  display: flex;
+  flex-direction: column-reverse;
+  border-bottom: none;
+}
+
+.collapse-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: stretch;
+  gap: var(--it-spacing-xs, 0.75rem);
+}
+
+.collapse-header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding-top: var(--it-spacing-sm, 1rem);
+  border-top: 1px solid var(--it-border-color, #e6e9f2);
+  margin-top: 0;
+  gap: var(--it-spacing-sm, 1rem);
+}
+
+.collapse-content {
+  width: 100%;
+}
+
+.collapse-body {
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.collapse-body ::slotted(p:last-child) {
+  margin-bottom: var(--it-spacing-sm, 1rem);
+}
+
+.callout-more-toggle {
+  display: inline-flex;
+  width: auto;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: var(--#{$prefix}primary, #0066cc);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 400;
+  gap: var(--it-spacing-xxs, 0.5rem);
+}
+
+.callout-more-toggle:hover,
+.callout-more-toggle:active {
+  background: none;
+  color: var(--#{$prefix}primary-hover, var(--#{$prefix}primary, #0066cc));
+}
+
+.callout-more-toggle span {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  box-sizing: border-box;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  margin-top: 0.111rem;
+  margin-left: 0.444rem;
+}
+
+.callout-more-toggle span::before,
+.callout-more-toggle span::after {
+  position: absolute;
+  background: currentColor;
+  content: '';
+}
+
+.callout-more-toggle span::before {
+  top: 6px;
+  left: 2px;
+  width: 9px;
+  height: 1px;
+}
+
+.callout-more-toggle span::after {
+  top: 0;
+  left: 6px;
+  width: 1px;
+  height: 9px;
+  transform: translateY(2px);
+  transition: transform 0.2s ease;
+}
+
+.callout-more-toggle[aria-expanded='true'] span::after {
+  transform: translateY(2px) rotate(90deg);
+}
+
+.callout-more-toggle:focus-visible {
+  border-color: var(--#{$prefix}focus-outline-color) !important;
+  box-shadow:
+    0 0 0 2px var(--#{$prefix}color-border-inverse),
+    0 0 0 5px var(--#{$prefix}color-outline-focus) !important;
+  outline: 3px solid transparent !important;
+  outline-offset: 3px !important;
+}
+
+.collapse-header ::slotted(*) {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  color: var(--#{$prefix}primary, #0066cc);
+  font-weight: 400;
+  gap: var(--it-spacing-xxs, 0.5rem);
+  text-decoration: none;
+}
+
+.collapse-header ::slotted(.callout-more-download) {
+  font-weight: 400;
+}
+
+.collapse-header ::slotted(*) svg {
+  fill: currentColor;
+}

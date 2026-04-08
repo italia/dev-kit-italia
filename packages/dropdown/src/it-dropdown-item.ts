@@ -8,24 +8,25 @@ import styles from './dropdown-item.scss';
 export class ItDropdownItem extends BaseComponent {
   static styles = styles;
 
-  // static override shadowRootOptions = {
-  //   ...LitElement.shadowRootOptions,
-  //   delegatesFocus: true,
-  // };
-
   @property({ type: String }) label = '';
 
   @property({ type: String }) value = '';
 
   @property({ type: String }) href?: string;
 
-  @property({ type: Boolean, reflect: true }) disabled = false;
-
   @property({ type: Boolean, reflect: true }) active = false;
 
   @property({ type: Boolean, reflect: true }) large = false;
 
   @property({ type: Boolean, reflect: true }) separator = false;
+
+  @property({ type: Boolean, reflect: true }) dark = false;
+
+  @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = false;
+
+  @property({ type: String, attribute: 'it-role' }) itRole?: string;
+
+  @property({ type: Boolean, reflect: true }) disabled?: boolean;
 
   public getFocusableElement(): HTMLElement | null {
     return this.shadowRoot?.querySelector('a, button') ?? null;
@@ -41,8 +42,8 @@ export class ItDropdownItem extends BaseComponent {
     }
 
     const itemClasses = this.composeClass({
-      dark: this.closest('it-dropdown')?.hasAttribute('dark'),
-      fw: this.closest('it-dropdown')?.hasAttribute('full-width'),
+      dark: this.dark,
+      fw: this.fullWidth,
     });
 
     const linkClasses = this.composeClass('list-item', 'dropdown-item', {
@@ -51,12 +52,6 @@ export class ItDropdownItem extends BaseComponent {
       large: this.large,
     });
 
-    const roleParent = this.closest('it-dropdown')?.getAttribute('role') ?? 'list';
-    let roleAttr: string | undefined;
-
-    if (roleParent === 'menu') roleAttr = 'menuitem';
-    else if (roleParent === 'listbox') roleAttr = 'option';
-
     const content = html`
       <slot name="prefix"></slot>
       <slot>${this.label}${this.active ? html`<span class="visually-hidden"> attivo</span>` : null}</slot>
@@ -64,18 +59,24 @@ export class ItDropdownItem extends BaseComponent {
     `;
 
     return html`
-      <li role="none" class=${ifDefined(itemClasses || undefined)}>
+      <li
+        role="${ifDefined(
+          this.itRole === 'menuitem' || this.itRole === 'option' || this.itRole === 'treeitem' ? 'none' : undefined,
+        )}"
+        class=${ifDefined(itemClasses || undefined)}
+      >
         ${this.href
           ? html`<a
               class=${linkClasses}
+              part="focusable list-item"
               href=${this.href}
-              role=${ifDefined(roleAttr)}
+              role=${ifDefined(this.itRole)}
               aria-disabled=${ifDefined(this.disabled || undefined)}
               @keydown=${this.handlePress}
               @click=${this.handlePress}
-              ><span>${content}</span></a
+              ><span class="dropdown-item-link" part="dropdown-item-text">${content}</span></a
             >`
-          : html`<span class="dropdown-item-text">${content}</span>`}
+          : html`<span class="dropdown-item-text" part="dropdown-item-text">${content}</span>`}
       </li>
     `;
   }

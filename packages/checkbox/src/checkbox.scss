@@ -1,0 +1,28 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+
+@import 'bootstrap-italia/src/scss/base/reboot'; //per gli stili di ::before e ::after
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/forms/forms';
+@import 'bootstrap-italia/src/scss/forms/form-control';
+@import 'bootstrap-italia/src/scss/forms/form-check';
+@import 'bootstrap-italia/src/scss/forms/just-validate';
+
+.form-check {
+  input:focus:not(:focus-visible) + label {
+    box-shadow: none !important;
+  }
+
+  &.form-check-group {
+    input:focus,
+    input:focus + label {
+      width: 100%;
+    }
+  }
+
+  label {
+    display: table;
+  }
+}

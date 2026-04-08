@@ -6,5 +6,15 @@
   },
   "include": ["src/**/*.ts", "../../typings.d.ts"],
   "exclude": ["dist", "build", "node_modules"],
+<<<<<<< HEAD
   "references": [{ "path": "../typescript-config" }, { "path": "../globals" }, { "path": "../icon" }]
+=======
+  "references": [
+    { "path": "../typescript-config" },
+    { "path": "../globals" },
+    { "path": "../icon" },
+    { "path": "../button" },
+    { "path": "../popover" }
+  ]
+>>>>>>> main
 }

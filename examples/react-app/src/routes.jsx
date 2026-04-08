@@ -1,0 +1,85 @@
+import Home from './pages/Home';
+import Accordion from './pages/Accordion';
+import Avatar from './pages/Avatar';
+import Breadcrumbs from './pages/Breadcrumbs';
+import Affix from './pages/Affix';
+import Alert from './pages/Alert';
+import Autocomplete from './pages/Autocomplete';
+import BackToTop from './pages/BackToTop';
+import Back from './pages/Back';
+import Badge from './pages/Badge';
+import Button from './pages/Button';
+import Callout from './pages/Callout';
+import Card from './pages/Card';
+import Checkbox from './pages/Checkbox';
+import Chip from './pages/Chip';
+import Collapse from './pages/Collapse';
+import Dropdown from './pages/Dropdown';
+import Form from './pages/Form';
+import Forward from './pages/Forward';
+import Hero from './pages/Hero';
+import Icon from './pages/Icon';
+import Input from './pages/Input';
+import List from './pages/List';
+import Megamenu from './pages/Megamenu';
+import Modal from './pages/Modal';
+import Navscroll from './pages/Navscroll';
+import Overlay from './pages/Overlay';
+import Popover from './pages/Popover';
+import Radio from './pages/Radio';
+import Rating from './pages/Rating';
+import Section from './pages/Section';
+import Select from './pages/Select';
+import Sidebar from './pages/Sidebar';
+import Skiplinks from './pages/Skiplinks';
+import Sticky from './pages/Sticky';
+import Table from './pages/Table';
+import Toggle from './pages/Toggle';
+import Video from './pages/Video';
+import Carousel from './pages/Carousel';
+import Pagination from './pages/Pagination';
+import Progress from './pages/Progress';
+
+export const AppRoutes = [
+  { path: '/', element: <Home />, title: 'Homepage' },
+  { path: '/accordion', element: <Accordion />, title: 'Accordion' },
+  { path: '/affix', element: <Affix />, title: 'Affix' },
+  { path: '/alert', element: <Alert />, title: 'Alert' },
+  { path: '/autocomplete', element: <Autocomplete />, title: 'Autocomplete' },
+  { path: '/avatar', element: <Avatar />, title: 'Avatar' },
+  { path: '/back-to-top', element: <BackToTop />, title: 'Back to Top' },
+  { path: '/back', element: <Back />, title: 'Back' },
+  { path: '/badge', element: <Badge />, title: 'Badge' },
+  { path: '/breadcrumbs', element: <Breadcrumbs />, title: 'Breadcrumbs' },
+  { path: '/button', element: <Button />, title: 'Button' },
+  { path: '/callout', element: <Callout />, title: 'Callout' },
+  { path: '/carousel', element: <Carousel />, title: 'Carousel' },
+  { path: '/card', element: <Card />, title: 'Card' },
+  { path: '/checkbox', element: <Checkbox />, title: 'Checkbox' },
+  { path: '/chip', element: <Chip />, title: 'Chip' },
+  { path: '/collapse', element: <Collapse />, title: 'Collapse' },
+  { path: '/dropdown', element: <Dropdown />, title: 'Dropdown' },
+  { path: '/form', element: <Form />, title: 'Form' },
+  { path: '/forward', element: <Forward />, title: 'Forward' },
+  { path: '/hero', element: <Hero />, title: 'Hero' },
+  { path: '/icon', element: <Icon />, title: 'Icon' },
+  { path: '/input', element: <Input />, title: 'Input' },
+  { path: '/list', element: <List />, title: 'List' },
+  { path: '/megamenu', element: <Megamenu />, title: 'Megamenu' },
+  { path: '/modal', element: <Modal />, title: 'Modal' },
+  { path: '/navscroll', element: <Navscroll />, title: 'Navscroll' },
+  { path: '/overlay', element: <Overlay />, title: 'Overlay' },
+  { path: '/pagination', element: <Pagination />, title: 'Pagination' },
+  { path: '/popover', element: <Popover />, title: 'Popover' },
+  { path: '/progress', element: <Progress />, title: 'Progress' },
+  { path: '/radio', element: <Radio />, title: 'Radio' },
+  { path: '/rating', element: <Rating />, title: 'Rating' },
+  { path: '/section', element: <Section />, title: 'Section' },
+  { path: '/select', element: <Select />, title: 'Select' },
+  { path: '/sidebar', element: <Sidebar />, title: 'Sidebar' },
+  { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },
+  { path: '/sticky', element: <Sticky />, title: 'Sticky' },
+  { path: '/tables', element: <Table />, title: 'Tables' },
+  { path: '/toggle', element: <Toggle />, title: 'Toggle' },
+  { path: '/video', element: <Video />, title: 'Video' },
+];

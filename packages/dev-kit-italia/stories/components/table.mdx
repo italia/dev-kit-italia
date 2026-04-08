@@ -1,0 +1,202 @@
+import { Meta, Canvas, Controls, Description, Subtitle } from '@storybook/addon-docs/blocks';
+import * as TableStories from './table.stories';
+
+<Meta of={TableStories} />
+
+# Tables
+
+<description>Rappresentazione organizzata di dati in righe e colonne per visualizzare informazioni in modo strutturato e facilitare il confronto tra più elementi</description>
+
+## Cosa fa
+Il componente table, in italiano tabella, è ideale quando si desidera presentare dati strutturati in modo chiaro e organizzato. Una tabella consente di organizzare in modo logico le informazioni, raggruppando elementi simili, favorendo la comparazione e facilitando la comprensione di contenuti complessi.
+
+[Approfondisci quando e come usare il componente Tables](https://designers.italia.it/design-system/componenti/tables)
+
+### Alternative a questo componente
+- [List](/docs/componenti-list--documentazione): nel caso siano presenti dati o informazioni non struttutrati.
+- [Card](/docs/componenti-card--documentazione): per mostrare contenuti in sequenza e permettere la navigazione a pagine di dettaglio.
+
+## Anteprima del componente
+
+A causa dell'uso diffuso di tabelle su widget di terze parti come calendari e campi di selezione data, o come elemento di presentazione sintetica di informazioni e layout di pagina, le tabelle di Dev Kit Italia sono implementate via HTML classico e senza forzarne lo stile.
+
+È sufficiente aggiungere la classe `.table` a qualsiasi `<table>`, quindi estendere con stili personalizzati o con le nostre varie classi incluse di modificatori.
+
+<div class="callout callout-primary">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Stili</span>
+    </div>
+    <p>
+      In caso non si stia utilizzando il bundle unico, assicurarsi di avere importato tutti i fogli di stile necessari
+      da `bootstrap-italia`:
+
+
+      ```css
+      @import 'bootstrap-italia/src/scss/base/functions';
+      @import 'bootstrap-italia/src/scss/base/variables';
+      @import 'bootstrap-italia/src/scss/base/mixins';
+      @import 'bootstrap-italia/src/scss/components/tables';
+      ```
+
+    </p>
+  </div>
+</div>
+
+
+<Canvas of={TableStories.TabellaBase} />
+
+## Accessibilità
+Nel caso di tabelle colorate, l'uso del colore per aggiungere un significato fornisce solo un'indicazione visiva, che non sarà trasmesso agli utenti di tecnologie assistive – come gli screen reader.
+
+Assicurati che le informazioni denotate dal colore siano rese disponibili anche dal contenuto stesso (es.: il testo visibile), o siano incluse attraverso mezzi alternativi, come testo aggiuntivo nascosto con la classe `.visually-hidden`.
+
+## Tabelle responsive
+
+Le tabelle responsive consentono di scorrere le tabelle orizzontalmente con facilità. Rendi ogni tabella responsive su tutti i viewports racchiudendo una  `<table class="table">` in un `<div class="table-responsive">`. Oppure, scegli un breakpoint massimo con il quale ottenere una tabella responsive usando `.table-responsive{-sm|-md|-lg|-xl|-xxl}`.
+
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Ritaglio / troncamento verticale</span>
+    </div>
+    <p>
+Le tabelle responsive fanno uso di `overflow-y: hidden`, che rimuove qualsiasi contenuto che va oltre i bordi inferiore o superiore della tabella. In particolare, questo può ritagliare i menu a discesa e altri widget di terze parti.
+    </p>
+  </div>
+</div>
+
+
+### Sempre responsive
+
+Inserisci la tabella in un `<div>` con classe `.table-responsive` per ottenere tabelle con scorrimento orizzontale responsive ad ogni punto di interruzione.
+
+<Canvas of={TableStories.TabellaResponsive} />
+
+### Breakpoint specifici
+
+Usa la classe `.table-responsive{-sm|-md|-lg|-xl|-xxl}` per creare tabelle responsive fino a un punto di interruzione particolare. Da quel punto di interruzione in su, la tabella si comporterà normalmente e non scorrerà orizzontalmente.
+
+<Canvas of={TableStories.TabellaResponsiveSm} />
+
+<Canvas of={TableStories.TabellaResponsiveMd} />
+
+<Canvas of={TableStories.TabellaResponsiveLg} />
+
+<Canvas of={TableStories.TabellaResponsiveXl} />
+
+<Canvas of={TableStories.TabellaResponsiveXxl} />
+
+## Varianti
+
+Utilizza le classi contestuali per colorare tabelle, righe o celle individuali.
+
+### Tabelle colorate
+
+Applica le classi `.table-{color}` a `<table>` per colorare l'intera tabella. Sostituisci `{color}` con uno dei colori disponibili: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light` o `dark`.
+
+<Canvas of={TableStories.TabelleColorate} />
+
+### Righe colorate
+
+Applica le classi `.table-{color}` a `<tr>` per colorare una riga specifica. Sostituisci `{color}` con uno dei colori disponibili: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light` o `dark`.
+
+<Canvas of={TableStories.RigheColorate} />
+
+### Celle colorate
+
+Applica le classi `.table-{color}` a `<td>` o `<th>` per colorare una cella specifica. Sostituisci `{color}` con uno dei colori disponibili: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light` o `dark`.
+
+<Canvas of={TableStories.CelleColorate} />
+
+
+### Righe striate
+
+Applica la classe `.table-striped` a `<table>` per aggiungere delle striature zebrate ad ogni riga della tabella contenute in `<tbody>`.
+
+<Canvas of={TableStories.TabellaStriata} />
+
+La classe `.table-striped` è applicabile anche alle varianti colorate, ad esempio `.table-dark`:
+
+<Canvas of={TableStories.TabellaStriataDark} />
+
+### Righe e hover
+
+Applica la classe `.table-hover` a `<table>` per abilitare lo stato hover sulle righe della tabella contenute in `<tbody>`.
+
+<Canvas of={TableStories.TabellaHover} />
+
+Le tabelle con hover possono essere combinate con la variante striata.
+
+<Canvas of={TableStories.TabellaHoverStriata} />
+
+### Tabelle attive
+
+Evidenzia una riga `<tr>` o cella `<td>` della tabella aggiungendo la classe `.table-active` al rispettivo tag HTML.
+
+<Canvas of={TableStories.TabellaAttiva} />
+
+## Tabella con bordi
+
+Aggiungi la classe `.table-bordered` a `<table>` per avere i bordi a tutti i lati della tabella e su tutte le celle. Sostituisci `{color}` con uno dei colori disponibili: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light` o `dark`.
+
+<Canvas of={TableStories.TabellaBordata} />
+
+Le utilities di colorazione dei bordi `border-{color}` possono essere utilizzate in combinazione a `.table-bordered` per cambiarne i colori.
+
+<Canvas of={TableStories.TabellaBordataPrimary} />
+
+## Tabella senza bordi
+
+Aggiungi la classe `.table-borderless` a `<table>` per una tabella senza bordi.
+
+<Canvas of={TableStories.TabellaSenzaBordi} />
+
+Le utilities di colorazione degli sfondi `table-{color}` possono essere utilizzate in combinazione a `.table-borderless` per cambiarne i colori.
+
+<Canvas of={TableStories.TabellaSenzaBordiDark} />
+
+## Tabella compatta
+
+Aggiungi la classe `.table-sm` a `<table>` per rendere le tabelle più compatte dimezzando il cell padding.
+
+<Canvas of={TableStories.TabellaCompatta} />
+
+## Allineamento verticale
+
+Le celle contenute nel `<thead>` sono sempre allineate verticalmente al bottom. Le celle del `<tbody>` ereditano l'allineamento da `<table>` e sono allineate al top per default.
+Utilizza le classi di allineamento verticale `align-{position}` per riallineare dove necessario.
+
+<Canvas of={TableStories.AllineamentoVerticale} />
+
+## Annidamento
+
+Gli stili di bordi, gli stili attivi e le varianti non sono ereditati dalle tabelle annidate.
+
+<Canvas of={TableStories.TabellaAnnidamento} />
+
+## Struttura
+
+### Intestazione
+
+Come per le tabelle utilizza le classi varianti come `.table-light` o `.table-dark` per modificare l'aspetto di `<thead>`.
+
+<Canvas of={TableStories.IntestazioneLight} />
+
+<Canvas of={TableStories.IntestazioneDark} />
+
+### Footer
+
+Le tabelle possono avere un footer utilizzando l'elemento `<tfoot>`.
+
+<Canvas of={TableStories.TabellaFooter} />
+
+### Caption
+
+Un `<caption>` funziona come un'intestazione per una tabella. Aiuta gli utenti con screen reader a trovare una tabella e capire di cosa si tratta e decidere se vogliono leggerla.
+
+<Canvas of={TableStories.TabellaCaption} />
+
+Per renderizzare la `<caption>` in cima alla tabella utilizza la classe `.caption-top`.
+
+<Canvas of={TableStories.TabellaCaptionTop} />

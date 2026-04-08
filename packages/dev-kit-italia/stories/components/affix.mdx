@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle } from '@storybook/addon-docs/blocks';
+import * as AffixStories from './affix.stories';
+
+<Meta of={AffixStories} />
+
+# Affix
+
+<description>Elemento ancorato su schermata durante lo scorrere di una specifica sezione di pagina.</description>
+
+## Cosa fa
+
+Il comportamento Affix mantiene un elemento ancorato in una zona fissa dello schermo allo scorrere della pagina ed è particolarmente utile per mantenere visibili intestazioni, barre degli strumenti o pulsanti di azione. 
+
+Un affix rimane inizialmente nella sua posizione originale. Quando la pagina scorre oltre l’elemento, questo viene ancorato a una zona fissa dello schermo, ad esempio la parte superiore, fino alla fine dell'area di ancoraggio che è stata definita. Superata quest’area, l’elemento smette di essere ancorato e scorre insieme alla pagina fino a scomparire.
+
+[Approfondisci come e quando usare il comportamento Affix](https://designers.italia.it/design-system/componenti/affix/)
+
+## Indicazioni generali
+
+- Assegna la classe `.affix-parent` al contenitore che delimita l’area in cui l’elemento deve rimanere ancorato. Questo contenitore rappresenta il riferimento spaziale entro cui l’elemento affix può muoversi o restare fissato.
+- Applica la classe `.affix-top` oppure `.affix-bottom` all'elemento da fissare durante lo scroll. Questo elemento è bene che sia un figlio diretto del contenitore con classe `.affix-parent`, poiché il calcolo della posizione ancorata viene effettuato in relazione a quest’ultimo.
+
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Nota</span>
+    </div>
+    <p>
+      Assicurati che un elemento Affix non nasconda il contenuto della pagina, soprattutto quando la dimensione della
+      finestra del browser è ridotta.
+    </p>
+  </div>
+</div>
+
+## Affix top
+
+<Description of={AffixStories.AffixTop} />
+<Canvas of={AffixStories.AffixTop} />
+
+## Affix bottom
+
+<Description of={AffixStories.AffixBottom} />
+<Canvas of={AffixStories.AffixBottom} />

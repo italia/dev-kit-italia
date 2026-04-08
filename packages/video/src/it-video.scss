@@ -1,18 +1,27 @@
+@use 'sass:list';
 @import 'bootstrap-italia/src/scss/base/functions';
 @import 'bootstrap-italia/src/scss/base/variables';
 @import 'bootstrap-italia/src/scss/base/mixins';
 @import 'bootstrap-italia/src/scss/base/maps';
 
 @import 'bootstrap-italia/src/scss/base/utilities';
-@import 'bootstrap-italia/src/scss/utilities/focus';
+
 @import 'bootstrap-italia/src/scss/components/videoplayer';
 @import 'bootstrap-italia/src/scss/components/accept-overlay';
 
+.acceptoverlayable {
+  // Check the Heads up! section in the documentation
+  // https://sass-lang.com/documentation/modules/list/#slash
+  aspect-ratio: list.slash(16, 9);
+}
+
 .acceptoverlay {
-  --bs-acceptoverlay-color-text: #fff;
+  --#{$prefix}acceptoverlay-color-text: #fff;
+  --#{$prefix}form-control-label-color: #fff;
+  --#{$prefix}form-checkbox-border-color: #fff;
 
   a {
-    color: var(--bs-acceptoverlay-color-text);
+    color: var(--#{$prefix}acceptoverlay-color-text);
   }
 
   .bg-dark {
@@ -62,7 +71,7 @@
 
 :host {
   /*
-    * Regole spostate in design-web-components/styles/index.scss
+    * Regole spostate in dev-kit-italia/styles/index.scss
   display: block;
   min-width: var(--it-videojs-default-width);
   */
@@ -77,8 +86,32 @@ video:not([width]) {
 .video-js {
   width: var(--it-videojs-default-width);
   height: var(--it-videojs-default-height);
+
+  .vjs-tech {
+    position: inherit !important;
+    height: auto !important;
+  }
+
+  &.vjs-youtube {
+    .vjs-tech {
+      // Check the Heads up! section in the documentation
+      // https://sass-lang.com/documentation/modules/list/#slash
+      aspect-ratio: list.slash(16, 9);
+    }
+  }
+
+  &:not(.vjs-audio-only-mode) {
+    &.vjs-fluid,
+    &.vjs-16-9,
+    &.vjs-4-3,
+    &.vjs-9-16,
+    &.vjs-1-1,
+    &.vjs-youtube {
+      height: auto;
+    }
+  }
 }
 
-.vjs-fluid:not(.vjs-audio-only-mode) {
-  padding-top: 56.25%;
-}
+// .vjs-fluid:not(.vjs-audio-only-mode) {
+//   padding-top: 56.25%;
+// }

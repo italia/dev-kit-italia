@@ -1,0 +1,41 @@
+.it-list-wrapper .it-list .list-item it-avatar {
+  flex-shrink: 0;
+  margin-right: var(--#{$prefix}icon-spacing);
+}
+
+.link-list-wrapper {
+  .list-item {
+    &:hover:not(.disabled) {
+      it-icon {
+        --#{$prefix}icon-default: var(--#{$prefix}icon-primary-hover);
+      }
+    }
+
+    &.icon-left {
+      it-icon {
+        left: 0;
+        flex-shrink: 0;
+        margin-right: var(--#{$prefix}icon-spacing);
+      }
+    }
+
+    &.right-icon {
+      it-icon {
+        transition: transform $dropdown-menu-animation-speed;
+      }
+    }
+
+    &[aria-expanded='true'] it-icon {
+      transform: rotate(180deg);
+    }
+
+    it-icon {
+      display: inline-block;
+      flex-shrink: 0;
+    }
+  }
+
+  button.list-item it-icon {
+    transition: transform 0.3s;
+  }
+}

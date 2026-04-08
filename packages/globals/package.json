@@ -1,20 +1,20 @@
 {
   "name": "@italia/globals",
   "description": "Utilities per i Web components del Design System .italia",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha.6",
   "publishConfig": {
     "access": "public"
   },
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/italia/design-web-components.git",
+    "url": "https://github.com/italia/dev-kit-italia.git",
     "directory": "packages/button"
   },
   "author": "Presidenza del Consiglio dei Ministri",
-  "homepage": "https://italia.github.io/design-web-components",
+  "homepage": "https://italia.github.io/dev-kit-italia",
   "bugs": {
-    "url": "https://github.com/italia/design-web-components/issues"
+    "url": "https://github.com/italia/dev-kit-italia/issues"
   },
   "type": "module",
   "main": "./dist/src/index.js",
@@ -22,7 +22,7 @@
   "types": "./dist/src/index.d.ts",
   "exports": {
     ".": "./dist/src/index.js",
-    "./globals.js": "./dist/src/globals.js"
+    "./globals.js": "./dist/src/index.js"
   },
   "files": [
     "dist/src",
@@ -34,13 +34,14 @@
   "scripts": {
     "analyze": "cem analyze --litelement --exclude dist",
     "build": "tsc --build tsconfig.build.json",
-    "clean": "rimraf node_modules .turbo",
-    "prepublish": "build",
+    "clean": "rimraf node_modules .turbo dist",
+    "prepublish": "pnpm build",
     "lint": "eslint --ext .ts \"src/**/*.ts\" && prettier \"src/**/*.ts\" --check",
-    "format": "eslint --ext .ts \"src/**/*.ts\" --fix && prettier \"src/**/*.ts\" --write",
-    "test-disabled": "wtr --coverage --node-resolve --config web-test-runner.config.js"
+    "format": "eslint --ext .ts \"src/**/*.ts\" --fix && prettier \"src/**/*.ts\" --write"
   },
   "dependencies": {
+    "@italia/i18n": "workspace:^",
+    "@floating-ui/dom": "^1.7.1",
     "clsx": "^2.1.1",
     "lit": "catalog:"
   },

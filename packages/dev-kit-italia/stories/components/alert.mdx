@@ -1,0 +1,78 @@
+import { Meta, Story, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as Stories from './alert.stories';
+
+<Meta of={Stories} />
+
+# Alert
+
+<description>Breve messaggio di testo con uno stile grafico distintivo per avvisare gli utenti di un evento o di un'azione che richiede la loro attenzione.</description>
+
+## Cosa fa
+
+Il componente Alert permette di creare messaggi di avviso contestuali che non interrompono il flusso di navigazione. Questi messaggi sono utili per **errori o problemi tecnici**, **conferme di completamento**, **eventi importanti** come scadenze e imprevisti.
+
+[Approfondisci come e quando usare il componente Alert](https://designers.italia.it/design-system/componenti/alert/)
+
+### Alternative a questo componente
+
+- [Callout](/docs/componenti-callout--documentazione): permette di evidenziare delle informazioni testuali in pagina.
+- [Modal](/docs/componenti-modal--documentazione): avvisa l'utente di azioni necessarie da compiere.
+- Notifications (in lavorazione): avvisi a comparsa temporanei in sovraimpressione sulla schermata.
+
+## Anteprima del componente
+
+Gli alert sono disponibili in quattro tipologie diverse e sono adatti a qualsiasi lunghezza di testo.
+
+<Canvas of={Stories.Esempi} />
+
+## Accessibilità
+
+Il colore dell'alert trasmette un significato (errore, conferma, ecc.) che non viene però percepito da chi usa tecnologie assistive come i lettori di schermo. Assicurati quindi che le informazioni veicolate dal colore siano disponibili anche nel contenuto stesso, ad esempio nel testo visibile oppure con un testo aggiuntivo nascosto tramite la classe `.visually-hidden`.
+
+Se l’alert include un pulsante di chiusura, valorizza l’attributo `aria-label` dell’icona con un testo coerente con il contesto (ad esempio, “Chiudi nota”, “Chiudi”, “Nascondi”, ecc.).
+
+
+## Link evidenziato
+
+Per dare risalto a un link all'interno dell'alert, usa la classe `.alert-link`.
+
+<Canvas of={Stories.LinkEvidenziato} />
+
+## Contenuto aggiuntivo
+
+Puoi aggiungere elementi HTML all'interno di un alert, come intestazioni, paragrafi e divisori.
+
+**Nota bene**: nell'esempio è stata usata l'intestazione `h4` soltanto a scopo dimostrativo.
+Usa sempre i tag di intestazione in modo coerente con la gerarchia dei contenuti della pagina che stai creando.
+
+<Canvas of={Stories.ContenutoAggiuntivo} />
+
+## Chiusura
+
+Per permettere agli utenti di chiudere un alert:
+
+- aggiungi il pulsante di chiusura e la classe `.alert-dismissible`, così il padding destro verrà adattato automaticamente e il pulsante con classe `.btn-close` si posizionerà correttamente;
+- usa l'elemento `<it-button>` per un comportamento corretto del pulsante di chiusura su tutti i dispositivi;
+- aggiungi le classi `.fade` e `.show` per animare l'alert alla chiusura.
+
+Questo è un esempio di implementazione del codice JavaScript necessario per la chiusura dell’alert. Puoi utilizzarlo così com’è o adattarlo alle tue esigenze.
+
+```javascript
+function handleClose(event) {
+  const alertElement = event.target.closest('.alert');
+  if (alertElement) {
+    alertElement.classList.remove('show');
+    setTimeout(() => {
+      alertElement.remove();
+    }, 150);
+  }
+}
+
+document.querySelectorAll('.alert .btn-close').forEach(button => {
+  button.addEventListener('click', handleClose);
+});
+```
+
+Clicca sul pulsante in questo esempio per vedere il comportamento di chiusura dell'alert.
+
+<Canvas of={Stories.Chiusura} />

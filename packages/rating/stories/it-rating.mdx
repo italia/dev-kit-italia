@@ -1,0 +1,78 @@
+import { Meta, Canvas, Controls, Description } from '@storybook/addon-docs/blocks';
+
+import * as RatingStories from './it-rating.stories';
+
+<Meta of={RatingStories} />
+
+# Rating
+
+<description>Scala di valori grafica a stelline per esprimere una valutazione su un servizio o un contenuto.</description>
+
+
+## Cosa fa
+Il componente Rating (`it-rating`) permette alle persone di esprimere una valutazione in modo semplice e intuitivo su un prodotto, un servizio digitale o la chiarezza informativa di una pagina.
+
+[Approfondisci quando e come usare il componente Rating](https://designers.italia.it/design-system/componenti/rating/)
+
+## Anteprima del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={RatingStories.EsempioInterattivo} />
+
+<Controls of={RatingStories.EsempioInterattivo} />
+
+## Accessibilità
+Il componente Rating implementa le specifiche ARIA [WAI-ARIA Authoring Practices 1.2 Radio Group pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) per garantire piena accessibilità:
+
+- navigazione da tastiera con tasti freccia per spostarsi tra gli elementi `Home`/`End` per andare rispettivamente alla prima e ultima opzione;
+- supporto per `Space` ed `Enter` per selezionare il valore corrente;
+- attributi ARIA appropriati per comunicare lo stato e il ruolo del componente agli screen reader;
+- gestone del focus attraverso roving tabindex per una migliore esperienza di navigazione tramite tastiera.
+
+Assicurati di fornire un'etichetta per ogni `<it-rating-item>` e per il gruppo `<it-rating>`, tramite i rispettivi slot `label`.
+
+## Con valore preimpostato
+
+Puoi impostare il componente con un valore di partenza, usa l'attributo `value`.
+
+<Canvas of={RatingStories.ValorePreimpostato} />
+
+## Sola lettura
+
+Per impostare il componente in modalità sola lettura, usa l'attributo `read-only`. In questa modalità, il rating non è interattivo e serve solo per visualizzare una valutazione esistente.
+
+<Canvas of={RatingStories.SolaLettura} />
+
+## Icone personalizzate
+
+Di default viene utilizzata l'icona `it-star-full`. Se vuoi personalizzarla, usa l'attributo `icon` su `<it-rating>`.
+
+Puoi usare qualsiasi [icona disponibile nel design system](?path=/story/componenti-icon--icone-disponibili).
+
+<Canvas of={RatingStories.IconePersonalizzate} />
+
+## Obbligatorio
+
+Per impostare la valutazione come obbligatoria, usa l'attributo `required`. L'utente dovrà selezionare una valutazione prima di poter inviare il modulo.
+
+<Canvas of={RatingStories.Obbligatorio} />
+
+## Integrazione con form
+
+Puoi integrare il componente in un form.
+
+<Canvas of={RatingStories.InForm} />
+
+## Personalizzazione degli stili
+Per personalizzare gli stili del componente `<it-rating-item>`, puoi usare il selettore `::part` con i seguenti valori:
+
+### it-rating-item
+
+- `input`, per il contenitore dell'input nascosto;
+- `star`, per l'icona (stella o icona personalizzata).
+
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+
+## Proprietà, metodie ed eventi accessibili via js
+<Description of={RatingStories.MetodiEPropPubblici} />

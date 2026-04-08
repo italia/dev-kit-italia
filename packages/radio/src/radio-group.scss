@@ -1,0 +1,36 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+
+@import 'bootstrap-italia/src/scss/base/reboot'; //per gli stili di ::before e ::after
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/forms/forms';
+@import 'bootstrap-italia/src/scss/forms/form-control';
+@import 'bootstrap-italia/src/scss/forms/form-check';
+@import 'bootstrap-italia/src/scss/forms/just-validate';
+
+::slotted([slot='label']) {
+  display: block;
+  padding: 0 var(--#{$prefix}form-input-spacing-x);
+  margin-bottom: var(--#{$prefix}spacing-s);
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--#{$prefix}form-control-text-color);
+  font-size: var(--#{$prefix}label-sm);
+  font-weight: var(--#{$prefix}font-weight-solid);
+}
+
+.it-radio-group {
+  margin-bottom: var(--#{$prefix}spacing-xs);
+}
+
+.it-radio-group-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--#{$prefix}spacing-s);
+}
+
+.form-feedaback {
+  font-weight: bold;
+}

@@ -1,6 +1,7 @@
+import { type ItButton } from '@italia/button';
 import { BaseComponent } from '@italia/globals';
 import { customElement, property, query } from 'lit/decorators.js';
-import { html } from 'lit';
+import { html, PropertyValues } from 'lit';
 import { computePosition, offset, flip, shift, autoUpdate, arrow, type Placement, size } from '@floating-ui/dom';
 import styles from './popover.scss';
 
@@ -12,23 +13,72 @@ export class ItPopover extends BaseComponent {
 
   @property({ type: Boolean, reflect: true }) open = false;
 
+  @property({ type: Boolean }) controlled = false;
+
   @property({ type: String }) placement: PopoverPlacement = 'bottom-start';
+
+  @property({ type: Number }) offset: number = 12;
+
+  @property({ type: Boolean, attribute: 'no-flip' }) noFlip: boolean = false;
 
   @query('slot[name="trigger"]') private _triggerSlot!: HTMLSlotElement;
 
   @query('slot[name="content"]') private _contentSlot!: HTMLSlotElement;
 
-  private _triggerElement!: HTMLElement;
+  private get _triggerElement() {
+    return this._triggerSlot?.assignedElements({ flatten: true })[0] as ItButton | HTMLElement;
+  }
 
-  private _contentElement!: HTMLElement;
+  private get _contentElement() {
+    return this._contentSlot?.assignedElements({ flatten: true })[0] as HTMLElement;
+  }
 
   private _arrowElement?: HTMLElement;
 
   private _cleanup?: () => void;
 
-  connectedCallback() {
-    super.connectedCallback?.();
+  private _setChildrenProperties() {
+    if (this._triggerElement && this._triggerElement.tagName === 'IT-BUTTON') {
+      if ((this._triggerElement as ItButton).disabled) {
+        this._triggerElement.removeAttribute('it-aria-haspopup');
+        (this._triggerElement as ItButton).expanded = undefined;
+        return;
+      }
+      if (!this._triggerElement.hasAttribute('it-aria-haspopup')) {
+        this._triggerElement?.setAttribute('it-aria-haspopup', 'true');
+      }
+      (this._triggerElement as ItButton).expanded = this.open;
+    } else {
+      if (this._triggerElement?.hasAttribute('disabled')) {
+        this._triggerElement.removeAttribute('aria-haspopup');
+        this._triggerElement.removeAttribute('aria-expanded');
+        return;
+      }
+      if (!this._triggerElement?.hasAttribute('aria-haspopup')) {
+        this._triggerElement?.setAttribute('aria-haspopup', 'true');
+      }
+      this._triggerElement?.setAttribute('aria-expanded', String(this.open));
+    }
+  }
+
+  protected setupStandardEvents() {
     document.addEventListener('click', this._onDocumentClick);
+    this._triggerElement?.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.toggle();
+    });
+    this._triggerElement?.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.open) {
+        this.closePopover();
+        this._triggerElement?.focus();
+      }
+    });
+    this._contentElement?.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.open) {
+        this.closePopover();
+        this._triggerElement?.focus();
+      }
+    });
   }
 
   disconnectedCallback() {
@@ -37,24 +87,20 @@ export class ItPopover extends BaseComponent {
     this._cleanup?.();
   }
 
+  protected firstUpdated(_changedProperties: PropertyValues): void {
+    super.firstUpdated(_changedProperties);
+    if (!this.controlled) this.setupStandardEvents();
+  }
+
   updated(changedProps: Map<string, any>) {
+    this._setChildrenProperties();
     if (changedProps.has('open')) {
-      const triggerNodes = this._triggerSlot?.assignedElements({ flatten: true }) ?? [];
-      const contentNodes = this._contentSlot?.assignedElements({ flatten: true }) ?? [];
-
-      this._triggerElement = triggerNodes[0] as HTMLElement;
-      this._contentElement = contentNodes[0] as HTMLElement;
-
-      if (this._triggerElement) {
-        this._triggerElement.setAttribute('aria-expanded', String(this.open));
-      }
-
       if (this.open) {
         this._show();
-        this.dispatchEvent(new CustomEvent('popover-open', { bubbles: true, composed: true }));
+        this.dispatchEvent(new CustomEvent('it-popover-open', { bubbles: true, composed: true }));
       } else {
         this._hide();
-        this.dispatchEvent(new CustomEvent('popover-close', { bubbles: true, composed: true }));
+        this.dispatchEvent(new CustomEvent('it-popover-close', { bubbles: true, composed: true }));
       }
     }
   }
@@ -65,11 +111,11 @@ export class ItPopover extends BaseComponent {
     if (!this._arrowElement) {
       this._arrowElement = document.createElement('div');
       this._arrowElement.className = 'arrow';
-      this._contentElement.appendChild(this._arrowElement);
+      this._contentElement.prepend(this._arrowElement);
     }
   }
 
-  private async _show() {
+  private _show() {
     if (!this._triggerElement || !this._contentElement) return;
 
     this._contentElement.style.position = 'absolute';
@@ -81,8 +127,8 @@ export class ItPopover extends BaseComponent {
       computePosition(this._triggerElement, this._contentElement, {
         placement: this.placement,
         middleware: [
-          offset(8),
-          flip(),
+          offset(this.offset),
+          flip({ mainAxis: !this.noFlip, crossAxis: !this.noFlip }),
           shift({ padding: 8 }),
           size({
             apply({ rects, elements }) {
@@ -108,12 +154,18 @@ export class ItPopover extends BaseComponent {
             left: 'right',
           }[placement.split('-')[0]];
 
+          const triggerRect = this._triggerElement.getBoundingClientRect();
+          const contentRect = this._contentElement.getBoundingClientRect();
+          const triggerCenter = triggerRect.left + triggerRect.width / 2;
+          const arrowLeft = triggerCenter - contentRect.left - this._triggerElement.offsetWidth / 2 + 20;
+
           Object.assign(this._arrowElement!.style, {
-            left: arrowX != null ? `${arrowX}px` : '',
+            left: arrowX != null ? `${arrowLeft}px` : '',
+
             top: arrowY != null ? `${arrowY}px` : '',
             right: '',
             bottom: '',
-            [staticSide as string]: '-6px',
+            [staticSide as string]: `-8px`,
             position: 'absolute',
             transform: 'rotate(45deg)',
           });
@@ -157,7 +209,7 @@ export class ItPopover extends BaseComponent {
 
   render() {
     return html`
-      <slot name="trigger" part="trigger"></slot>
+      <slot name="trigger" part="trigger" @slotchange=${this._setChildrenProperties}></slot>
       <slot name="content"></slot>
     `;
   }

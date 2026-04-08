@@ -1,0 +1,51 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle } from '@storybook/addon-docs/blocks';
+import * as Stories from './badge.stories';
+
+<Meta of={Stories} />
+
+# Badge
+
+<description>Indicatore grafico affiancabile ad altri elementi per creare contatori ed etichette.</description>
+
+## Cosa fa
+
+Il componente Badge crea un'etichetta in relazione a un altro elemento Sono utili per segnalare stati o quantità, come notifiche non lette, nuovi contenuti o elementi in attesa.
+
+[Approfondisci come e quando usare il componente Badge](https://designers.italia.it/design-system/componenti/badge/)
+
+## Anteprima del componente
+
+<Description of={Stories.Dimensione} />
+
+<Canvas of={Stories.Dimensione} />
+
+## Accessibilità
+
+Le tecnologie assistive leggono semplicemente il contenuto del badge, che può quindi risultare come parole o numeri aggiuntivi casuali alla fine di una frase, un collegamento o un pulsante.
+
+Se il contesto non chiarisce a cosa si riferisce il contenuto di un badge, includi un testo aggiuntivo nascosto con la classe `.visually-hidden`. Puoi consultare un esempio nella sezione _'Bottoni e link'_.
+
+
+## Bottoni e link
+
+<Description of={Stories.BottoniELink} />
+
+<Canvas of={Stories.BottoniELink} />
+
+## Variazioni di colore
+
+<Description of={Stories.VariazioniColore} />
+
+<Canvas of={Stories.VariazioniColore} />
+
+## Badges arrotondati
+
+<Description of={Stories.Arrotondato} />
+
+<Canvas of={Stories.Arrotondato} />
+
+## Link
+
+<Description of={Stories.Link} />
+
+<Canvas of={Stories.Link} />

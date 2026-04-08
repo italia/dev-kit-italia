@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { LitElement } from 'lit';
+import { LocalizeMixin } from '@italia/i18n';
 import { Constructor } from '../index.js';
 import { Logger } from '../utils/logger.js';
 
@@ -20,8 +21,6 @@ export type BaseComponentType = typeof LitElement & Constructor<BaseComponentInt
 export class BaseComponent extends LitElement {
   protected logger: Logger;
 
-  protected _ariaAttributes: Record<string, string> = {}; // tutti gli attributi aria-* passati al Web component
-
   protected composeClass = clsx;
 
   protected _id?: string; // id interno del componente, da usare sui veri elementi HTML
@@ -29,6 +28,18 @@ export class BaseComponent extends LitElement {
   constructor() {
     super();
     this.logger = new Logger(this.tagName.toLowerCase());
+  }
+
+  protected get _ariaAttributes(): Record<string, string> {
+    const attributes: Record<string, string> = {};
+    for (const attr of this.getAttributeNames()) {
+      if (attr === 'it-role') {
+        attributes.role = this.getAttribute(attr)!;
+      } else if (attr.startsWith('it-aria-')) {
+        attributes[attr.replace(/^it-/, '')] = this.getAttribute(attr)!;
+      }
+    }
+    return attributes;
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -42,29 +53,30 @@ export class BaseComponent extends LitElement {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  protected getActiveElement(): HTMLElement | null {
+  protected getActiveElement<T extends HTMLElement>(): T | null {
     let active = document.activeElement;
     while (active && active.shadowRoot && active.shadowRoot.activeElement) {
       active = active.shadowRoot.activeElement;
     }
-    return active as HTMLElement | null;
+    return active as T | null;
   }
 
-  getAriaAttributes() {
-    for (const attr of this.getAttributeNames()) {
-      if (attr.startsWith('aria-')) {
-        this._ariaAttributes[attr] = this.getAttribute(attr)!;
-      }
-    }
+  get focusElement(): HTMLElement | null {
+    return this;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  protected get prefersReducedMotion(): boolean {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
   connectedCallback() {
-    super.connectedCallback?.();
-
-    this.getAriaAttributes();
+    super.connectedCallback();
 
     // generate internal _id
     const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
     this._id = this.generateId(prefix);
   }
 }
+
+export const BaseLocalizedComponent = LocalizeMixin(BaseComponent);

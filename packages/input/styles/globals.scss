@@ -1,0 +1,16 @@
+it-input {
+  --it-host-display: block;
+  display: var(--it-host-display);
+
+  it-button[slot='append'] {
+    height: 100%;
+
+    &::part(button) {
+      --#{$prefix}btn-border-radius: 0 var(--#{$prefix}form-control-border-radius)
+        var(--#{$prefix}form-control-border-radius) 0;
+      --#{$prefix}btn-padding-y: 0;
+      height: 100%;
+      border-bottom: 1px solid var(--#{$prefix}form-control-border-color);
+    }
+  }
+}

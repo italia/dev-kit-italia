@@ -1,16 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { type AvailableIcons, registry } from '../src/icon-registry.ts';
 import { type Sizes, type Alignments, type Colors, ICON_SIZES, ICON_COLORS, ICON_ALIGNMENTS } from '../src/types.ts';
-import '@italia/icon';
 
 interface IconProps {
   name?: string;
   size?: Sizes;
   label?: string;
   color?: Colors;
-  background?: string;
   align?: Alignments;
   padded?: boolean;
   src?: string;
@@ -20,20 +18,19 @@ const iconNames = Object.keys(registry) as AvailableIcons[];
 
 const renderComponent = (params: IconProps) => html`
   <it-icon
-    name=${ifDefined(params.name)}
-    size=${ifDefined(params.size)}
-    label=${ifDefined(params.label)}
-    color=${ifDefined(params.color)}
-    background=${ifDefined(params.background)}
-    align=${ifDefined(params.align)}
+    name=${ifDefined(params.name || undefined)}
+    size=${ifDefined(params.size || undefined)}
+    label=${ifDefined(params.label || undefined)}
+    color=${ifDefined(params.color || undefined)}
+    align=${ifDefined(params.align || undefined)}
     ?padded=${params.padded ?? false}
-    src=${ifDefined(params.src)}
+    src=${ifDefined(params.src || undefined)}
   ></it-icon>
 `;
 
 const meta: Meta<IconProps> = {
   title: 'Componenti/Icon',
-  tags: ['autodocs'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-icon',
   args: {
     name: 'it-star-full',
@@ -51,7 +48,8 @@ const meta: Meta<IconProps> = {
       control: 'select',
       options: ICON_SIZES,
       description: "Dimensione dell'icona: 'xs' | 'sm' | (stringa vuota) | 'lg' | 'xl'",
-      table: { defaultValue: { summary: 'undefined' } },
+      table: { defaultValue: { summary: undefined } },
+      type: 'string',
     },
     align: {
       control: 'select',
@@ -63,20 +61,19 @@ const meta: Meta<IconProps> = {
       control: 'select',
       options: ICON_COLORS,
       description: 'Varianti di colore',
+      type: 'string',
     },
-    background: {
-      control: 'select',
-      options: ICON_COLORS,
-      description: 'Colore di Background',
-    },
+
     label: {
       control: 'text',
       description: 'Testo accessibile per le tecnologie assistive (A11Y)',
       table: { defaultValue: { summary: undefined } },
+      type: 'string',
     },
     src: {
       control: 'text',
       description: 'Attributo per caricare un SVG esterno',
+      type: 'string',
     },
     padded: {
       control: 'boolean',
@@ -86,21 +83,6 @@ const meta: Meta<IconProps> = {
   },
   parameters: {
     layout: 'padded',
-    docs: {
-      description: {
-        component: `
-<Description>Componente per l’utilizzo di icone da Bootstrap Italia e/o custom.</Description>
-Il componente \`<it-icon>\` consente di visualizzare una delle icone SVG disponibili nel Design System, usare un icona SVG proprietaria o un icona SVG tramite URL.
-Tutte le icone vengono caricate unicamente in modalià asincrona.
-
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>
-Di default, le icone sono considerate decorative: il componente aggiunge automaticamente \`role="presentation"\` e \`aria-hidden="true"\` all'elemento SVG, così da essere ignorate dalle tecnologie assistive.\n
-Se invece viene valorizzato l'attributo \`label\`, viene inserito dal componente \`<it-icon>\` un tag \`<title>\` all'interno dell'SVG, corredato da relativo \`aria-labelledBy\` per supportare tecnologie assistive come gli screen reader, oltre a \`role="img"\` e \`aria-hidden="false"\`. \n
-</p></div></div>
-`,
-      },
-    },
   },
 };
 
@@ -130,7 +112,9 @@ export const PersonalizzazioneDegliStili: Story = {
       canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
       description: {
         story: `
-Per la personalizzazione degli stili si può usare il selettore \`::part\` passando il valore \`icon\`. [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+Per la personalizzazione degli stili si può usare il selettore \`::part\` passando il valore \`icon\`.
+
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
 `,
       },
     },
@@ -143,19 +127,8 @@ export const VariantiColore: Story = {
   render: () => html`
     <div style="display:flex; gap:20px; align-items:center; background-color:#ddd;padding:2rem">
       ${ICON_COLORS.map((color) => renderComponent({ name: 'it-star-full', label: `col ${color}`, color }))}
-      <span class="bg-light"> ${renderComponent({ name: 'it-star-full', label: 'bg-light' })} </span>
-      <span class="bg-dark"> ${renderComponent({ name: 'it-star-full', label: 'bg-dark' })} </span>
     </div>
   `,
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Esempi di colore e sfondo.
-        `,
-      },
-    },
-  },
 };
 
 export const VariantiDimensione: Story = {
@@ -184,7 +157,7 @@ Il componente \`<it-icon>\` supporta quattro dimensioni predefinite: \`xs\`, \`s
 export const VariantiAllineamento: Story = {
   name: 'Varianti di allineamento',
   render: () => html`
-    <div>
+    <div style="line-height: 5rem">
       ${['top', 'middle', 'bottom'].map((align) =>
         // @ts-ignore
         renderComponent({ name: 'it-star-full', label: `align ${align}`, align, size: 'lg' }),
@@ -334,8 +307,6 @@ export const IconeDisponibili: Story = {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
           gap: 16px;
-          font-family: 'Titillium Web', sans-serif;
-          font-size: 16px;
         }
 
         .icon-item {
@@ -452,11 +423,7 @@ export const IconeDisponibili: Story = {
         disable: true,
       },
     },
-    role: {
-      table: {
-        disable: true,
-      },
-    },
+
     background: {
       table: {
         disable: true,

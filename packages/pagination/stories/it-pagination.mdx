@@ -1,0 +1,173 @@
+import { Meta, Story, Canvas, Controls, Description } from '@storybook/addon-docs/blocks';
+import * as PaginationStories from './it-pagination.stories';
+
+<Meta of={PaginationStories} />
+
+# Pagination
+
+<description>Barra di navigazione per scorrere una lista di contenuti disposti su più pagine.</description>
+
+## Cosa fa
+Il componente Pagination (`it-pagination`) permette di suddividere in più pagine elenchi di contenuti o dati correlati che non possono essere visualizzati tutti insieme. È particolarmente utile per risultati di ricerca ed elenchi di prodotti, servizi o notizie.
+
+[Approfondisci quando e come usare il componente Pagination](https://designers.italia.it/design-system/componenti/paginazione/)
+
+### Alternative a questo componente
+- [Button](/docs/componenti-button--documentazione): usa un pulsante “mostra di più” per caricare più contenuti al click/tap per fornire un flusso continuo di contenuti sulla stessa pagina (infinite scroll).
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={PaginationStories.EsempioInterattivo} />
+
+<Controls of={PaginationStories.EsempioInterattivo} />
+
+## Indicazioni generali
+
+Il componente Pagination è composto da due elementi:
+
+- `it-pagination`, il contenitore della paginazione che gestisce lo stato della pagina corrente;
+- `it-pagination-item`, il singolo elemento della paginazione che contiene il link alla pagina.
+
+Per garantire la massima flessibilità e compatibilità con diversi framework, il componente `it-pagination` non genera automaticamente gli elementi di paginazione. È necessario aggiungere manualmente gli elementi `it-pagination-item` come figli di `it-pagination`, in modo da poter personalizzare i link e il loro comportamento.
+
+All'interno di ogni `it-pagination-item`, puoi inserire un link (ad esempio un elemento `<a>`) per gestire la navigazione tra le pagine: se stai usando un framework come React, NextJS, Angular o Vue.js, puoi integrare i componenti di routing del framework all'interno degli elementi `it-pagination-item`. Segui le indicazioni del framework che stai usando per gestire la navigazione tra le pagine e/o integrare il tuo sistema di paginazione.
+
+Il componente `it-pagination` supporta i seguenti slot:
+
+- **default**, per gli elementi `it-pagination-item`;
+- **prev**, per il pulsante/link di navigazione alla pagina precedente;
+- **next**, per il pulsante/link di navigazione alla pagina successiva;
+- **page-changer**, per un eventuale selettore di pagina;
+- **jump-to-page**, per un eventuale campo di salto a una pagina specifica;
+- **total**, per mostrare il numero totale di pagine.
+
+Il componente `it-pagination-item` supporta i seguenti attributi:
+- `page` (**obbligatorio**), numero della pagina rappresentata dall'elemento;
+- `current` (opzionale), indica se l'elemento rappresenta la pagina corrente;
+- `disabled` (opzionale), indica se l'elemento è disabilitato.
+
+Il componente `it-pagination-item` espone il solo slot **default** per inserire il link alla pagina.
+
+## Accessibilità
+
+Il componente `it-pagination` è progettato per essere accessibile e conforme alle linee guida WCAG:
+- gli elementi di paginazione sono implementati come link, consentendo agli utenti di navigare tra le pagine utilizzando il tasto Tab e attivare i link con il tasto Invio o la barra spaziatrice;
+- il componente utilizza ruoli ARIA appropriati per indicare la struttura della paginazione ai lettori di schermo;
+- l'elemento della pagina corrente è indicato con l'attributo `aria-current="page"` per informare gli utenti dei lettori di schermo;
+- i link di navigazione alla pagina precedente e successiva sono etichettati in modo chiaro per i lettori di schermo;
+- i link di navigazione alla pagina precedente o successiva sono disabilitati quando l'utente si trova all'inizio o alla fine della paginazione, assumono uno stato visivo disabilitato e viene aggiunto l'attributo `aria-disabled="true"`;
+- eventuali separatori o ellissi utilizzati per indicare pagine non visualizzate non sono interattivi e non sono inclusi nella tabulazione.
+
+Per garantire la massma accesibilità, ricordati di:
+- fornire etichette significative per i link di navigazione alla pagina precedente e successiva quando utilizzi gli slot `prev` e `next`;
+- fornire sempre un link semanticamente valido all'interno di ogni elemento `it-pagination-item`;
+- valorizzare sempre l'attributo `it-aria-label` sull'elemento `it-pagination` per descrivere il contesto della paginazione (ad esempio "Paginazione articoli", "Paginazione risultati di ricerca", ecc.).
+
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Nota sui test di accessibilità</span>
+    </div>
+    <p>
+      Axe e altri strumenti di analisi statica possono segnalare falsi positivi quando analizzano il componente `it-pagination` a causa del limitato supporto per i Web Components. La struttura accessibile effettiva è corretta, come confermato dall'Accessibility Tree e dai test manuali con lettori di schermo.
+    </p>
+  </div>
+</div>
+
+## Navigazione con icone
+
+Per mostrare un'icona (ad esempio l'icona `chevron`) come pulsante di navigazione tra le pagine, usa gli slot `prev` e `next`.
+
+Aggiungi un elemento con classe `.visually-hidden` all'interno del link per comunicare correttamente la funzionalità del pulsante ai lettori di schermo.
+
+<Canvas of={PaginationStories.ConNavigazione} />
+
+## Navigazione con link testuali
+
+Per mostrare del testo come pulsante di navigazione, usa gli slot `prev` e `next` per inserire il link con testo personalizzato.
+
+<Canvas of={PaginationStories.ConNavigazioneTestuale} />
+
+## Modalità responsive
+
+In modalità responsive (attiva di default), su schermi di piccole dimensioni, il componente nasconde gli elementi di paginazione non attivi e mostra soltanto l'elemento della pagina corrente.
+
+Se vuoi disabilitare questo comportamento, aggiungi l'attributo `disable-responsive` a `it-pagination`. Dovrai poi gestire autonomamento l'aspetto della paginazione sui diversi dispositivi.
+
+<Canvas of={PaginationStories.Responsive} />
+
+## Numero totale di pagine
+
+Per aggiungere un indicatore del numero totale di pagine, usa lo slot `total` e inserisci al suo interno un elemento `<p>`
+
+<Canvas of={PaginationStories.ConTotale} />
+
+## More
+
+Quando il numero di pagine è elevato, è consigliabile mostrare solo quelle più vicine alla pagina corrente, inserendo delle ellissi (…) tra queste e la prima e l’ultima pagina.
+
+Per ottenere questo comportamento, usa l'attributo `visible-pages` per indicare il numero di pagine visibili intorno a quella corrente. Di default è impostato a 5.
+
+Il componente aggiunge automaticamente le ellissi quando necessario, mantenendo sempre visibili la prima e l’ultima pagina disponibile.
+
+<Canvas of={PaginationStories.MoreMode} />
+
+## Simple mode
+
+Per mostrare solo i pulsanti di navigazione alla pagina precedente e successiva, senza gli altri elementi di paginazione, usa l'attributo `simple-mode`.
+
+Questa versione è ottimizzata per i dispositivi mobile, ma può essere utilizzata anche su tablet e desktop quando il numero di pagine è ridotto.
+<Canvas of={PaginationStories.SimpleMode} />
+
+## Selettore elementi per pagina
+
+Per aggiungere un selettore per cambiare il numero di elementi mostrati per pagina, usa lo slot `page-changer`. Dovrai gestire in modo autonomo il comportamento del selettore e l'aggiornamento della paginazione in base al valore selezionato.
+
+Questo esempio di implementazione usa un elemento `<select>` come selettore.
+
+<Canvas of={PaginationStories.ConPageChanger} />
+
+## Salto a una pagina specifica
+
+Per aggiungere un campo input per saltare direttamente a una pagina specifica, usa lo slot `jump-to-page`. Dovrai gestire in modo autonomo il comportamento del campo di input e l'aggiornamento della paginazione in base al valore inserito.
+
+Questo esempio di implementazione usa un elemento `<it-input>` di tipo numero.
+
+<Canvas of={PaginationStories.ConJumpToPage} />
+
+
+## Allineamento
+
+Per gestire l'allineamento del componente `it-pagination`, usa gli attributi:
+
+- `start` (default), per allinearlo a sinistra;
+- `center`, per allinearlo al centro;
+- `end`, per allinearlo a destra.
+
+### Allineamento a sinistra
+
+<Canvas of={PaginationStories.AllineamentoStart} />
+### Allineamento centrato
+
+<Canvas of={PaginationStories.AllineamentoCenter} />
+
+### Allineamento a destra
+
+<Canvas of={PaginationStories.AllineamentoEnd} />
+
+## Proprietà, metodi ed eventi accessibili via js
+
+Il componente espone le seguenti proprietà, metodi ed eventi accessibili via JavaScript.
+### Eventi
+Il componente emette i seguenti eventi custom:
+- `it-pagination-change`, quando la pagina corrente cambia. L'evento fornisce il numero della nuova pagina selezionata nel dettaglio dell'evento (`event.detail`).
+
+## Personalizzazione degli stili
+Per personalizzare gli stili, usa i selettori `::part` dedicati di `it-pagination`:
+- `::part(pagination-list)`, per lo stile dell'elemento `<ul>` che contiene gli elementi di paginazione;
+- `::part(current-page-simple-mode)`, per lo stile dell'elemento che rappresenta la pagina corrente in modalità simple;
+- `::part(total-pages-simple-mode)`, per lo stile dell'elemento che rappresenta il numero totale di pagine in modalità simple.
+
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)

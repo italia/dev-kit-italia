@@ -1,6 +1,6 @@
 import { BaseComponent, setAttributes } from '@italia/globals';
-import { html, PropertyValues } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { html, type PropertyValues } from 'lit';
+import { customElement, property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { type Sizes, type Variants } from './types.js';
 import styles from './button.scss';
@@ -13,46 +13,60 @@ export class ItButton extends BaseComponent {
     return true;
   }
 
-  @property({ type: String })
-  type = 'button';
+  @query('button') private _nativeButton!: HTMLButtonElement;
 
-  @property({ type: String })
-  variant: Variants = '';
+  @property({ type: String, reflect: true }) type = 'button';
 
-  @property({ type: String })
-  size: Sizes = 'sm';
+  @property({ type: String, reflect: true }) variant: Variants = '';
 
-  @property({ type: Boolean })
-  outline = false;
+  @property({ type: String, reflect: true }) size: Sizes = '';
 
-  @property({ type: Boolean })
-  block = false;
+  @property({ type: Boolean, reflect: true }) outline = false;
 
-  @property({ type: Boolean })
-  icon = false;
+  @property({ type: Boolean, reflect: true }) block = false;
 
-  @property({ type: String })
-  value = '';
+  @property({ type: String }) value = '';
 
-  @property()
-  internals = this.attachInternals();
+  @property() internals = this.attachInternals();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  protected override firstUpdated(_changedProperties: PropertyValues): void {
-    const button = this.renderRoot.querySelector('button');
-    if (button) {
-      this.addFocus(button);
-    }
-  }
+  @property({ type: Boolean, reflect: true }) disabled?: boolean;
+
+  @property({ type: Boolean, reflect: true, attribute: 'it-aria-expanded' }) expanded?: boolean;
+
+  @state() private _hasIcon = false;
+
+  @state() private _hasProgress = false;
 
   surfaceSubmitEvent(event: any) {
-    const disabled = 'aria-disabled' in this._ariaAttributes;
-    if (this.form && !disabled) {
+    if (this.form && !this.disabled) {
       event.preventDefault();
       event.stopPropagation();
-      this.form.requestSubmit();
+
+      let someInvalid = false;
+      // valido ogni campo
+      const itItems = Array.from(this.form.querySelectorAll('*')).filter((el: any) =>
+        el.tagName.toLowerCase().startsWith('it-'),
+      );
+
+      itItems.forEach((itItem: any) => {
+        // Accedi allo Shadow DOM del web component
+        if (itItem.checkValidity) {
+          itItem.checkValidity();
+        }
+        const isValid = itItem?.isValid ? itItem.isValid() : true;
+
+        // Controlla se l'input interno esiste e se non è valido
+        if (!isValid) {
+          someInvalid = true;
+          // eslint-disable-next-line no-console
+          console.error(`Invalid field: [name]=${itItem.name}, [id]=${itItem.id}`);
+        }
+      });
+      if (!someInvalid) {
+        this.form.requestSubmit();
+      }
     }
-    if (disabled) {
+    if (this.disabled) {
       event.preventDefault();
       event.stopPropagation();
     }
@@ -62,17 +76,56 @@ export class ItButton extends BaseComponent {
     return this.internals ? this.internals.form : null;
   }
 
+  public override focus() {
+    this._nativeButton?.focus();
+  }
+
+  private _onKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      if (!this.disabled) {
+        this._nativeButton?.click();
+      } else {
+        e.stopPropagation();
+      }
+    }
+  };
+
   connectedCallback(): void {
     super.connectedCallback?.();
 
     if (this.block) {
       this.classList.add('d-block', 'w-100');
     }
-    if (this.variant === 'link') {
-      const label = this._ariaAttributes['aria-label'] ? `${this._ariaAttributes['aria-label']} - ` : '';
-      this._ariaAttributes['aria-label'] = `${label}Pulsante link`;
-    }
+
+    this.addEventListener('keydown', this._onKeyDown);
   }
+
+  disconnectedCallback(): void {
+    this.removeEventListener('keydown', this._onKeyDown);
+    super.disconnectedCallback?.();
+  }
+
+  private static hasMatchingElement(elements: Element[], selector: string): boolean {
+    return elements.some((element) => element.matches(selector) || element.querySelector(selector) !== null);
+  }
+
+  override firstUpdated(changedProperties: PropertyValues<this>): void {
+    super.firstUpdated?.(changedProperties);
+    this._updateSlottedStates(Array.from(this.children));
+  }
+
+  private _updateSlottedStates = (elements: Element[]) => {
+    this._hasIcon = ItButton.hasMatchingElement(elements, 'it-icon');
+    this._hasProgress = ItButton.hasMatchingElement(elements, 'it-progress');
+  };
+
+  private _onSlotChange = (event: Event) => {
+    const slot = event.target as HTMLSlotElement;
+    const assignedElements = slot.assignedElements({ flatten: true });
+
+    this._updateSlottedStates(assignedElements);
+  };
 
   // Render the UI as a function of component state
   override render() {
@@ -80,21 +133,28 @@ export class ItButton extends BaseComponent {
       [`btn-${this.variant}`]: !!this.variant && !this.outline,
       [`btn-outline-${this.variant}`]: !!this.variant && this.outline,
       [`btn-${this.size}`]: !!this.size,
-      disabled: 'aria-disabled' in this._ariaAttributes,
-      'btn-icon': this.icon,
+      disabled: this.disabled,
+      'btn-icon': this._hasIcon,
+      'btn-progress': this._hasProgress,
       'd-block w-100': this.block,
+    });
+    const part = this.composeClass('button', 'focusable', {
+      [this.variant]: this.variant?.length > 0,
+      outline: this.outline,
     });
     return html`
       <button
         id=${ifDefined(this.id || undefined)}
-        part="button ${this.variant} ${this.outline ? 'outline' : ''}"
+        part="${part}"
         type="${this.type}"
         class="${classes}"
         @click="${this.type === 'submit' ? this.surfaceSubmitEvent : undefined}"
         .value="${ifDefined(this.value ? this.value : undefined)}"
+        aria-disabled="${ifDefined(this.disabled ? this.disabled : undefined)}"
         ${setAttributes(this._ariaAttributes)}
+        aria-expanded="${ifDefined(this.expanded !== undefined ? this.expanded : undefined)}"
       >
-        <slot></slot>
+        <slot @slotchange="${this._onSlotChange}"></slot>
       </button>
     `;
   }

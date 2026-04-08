@@ -1,0 +1,72 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-input-number.stories';
+
+<Meta of={Stories} />
+
+# Number input
+
+<description>Campo di inserimento di un valore numerico, con pulsanti per incrementarlo o decrementarlo.</description>
+
+## Cosa fa
+Il componente Number input (`it-input` con `type="number"`) permette all’utente di inserire un numero specifico digitandolo manualmente o selezionandolo tramite appositi pulsanti che incremenatano o diminuiscono un valore numerico di partenza.
+
+Aiuta a prevenire errori e facilita l'inserimento dei dati, per questo è particolarmente utile quando bisogna indicare quantità, codici numerici e intervalli di valori con precisione.
+
+[Approfondisci come e quando usare il componente Number input](https://designers.italia.it/design-system/componenti/number-input/)
+
+## Anteprima e attributi del componente
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+## Indicazioni generali
+
+Il componente Number input è una variante del componente `<it-input>` con l'attributo `type=` impostato su `number` (`type="number"`).
+
+Fai riferimento alla [documentazione del componente Input](?path=/docs/componenti-form-input--documentazione) per:
+
+- la **validazione** e la **gestione degli errori**;
+- la **gestione degli eventi**;
+- i **metodi e le proprietà** accessibili tramite JavaScript;
+- il **supporto all’internazionalizzazione (i18n)**.
+
+## Accessibilità
+
+Tutti gli attributi `it-aria-*` passati a `<it-input>` vengono applicati all'input generato.
+
+
+## Esempi
+
+<Description of={Stories.Esempi} />
+<Canvas of={Stories.Esempi} />
+
+## Limiti e Step
+
+<Description of={Stories.LimitiEStep} />
+<Canvas of={Stories.LimitiEStep} />
+
+## Valuta
+
+<Description of={Stories.Valuta} />
+<Canvas of={Stories.Valuta} />
+
+## Percentuale
+
+<Description of={Stories.Percentuale} />
+<Canvas of={Stories.Percentuale} />
+
+## Disabilitato
+
+<Description of={Stories.Disabilitato} />
+<Canvas of={Stories.Disabilitato} />
+
+## Stato read only
+
+<Description of={Stories.Readonly} />
+<Canvas of={Stories.Readonly} />
+
+## Ridimensionamento
+
+<Description of={Stories.Ridimensionamento} />
+<Canvas of={Stories.Ridimensionamento} />

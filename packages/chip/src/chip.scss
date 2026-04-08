@@ -1,0 +1,38 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@import 'bootstrap-italia/src/scss/components/chips';
+
+::slotted(it-icon) {
+  display: inline-flex;
+}
+
+:host([is-disabled]) ::slotted(it-icon) {
+  --#{$prefix}icon-primary: var(--#{$prefix}icon-disabled);
+  --#{$prefix}icon-secondary: var(--#{$prefix}icon-disabled);
+  --#{$prefix}icon-success: var(--#{$prefix}icon-disabled);
+  --#{$prefix}icon-danger: var(--#{$prefix}icon-disabled);
+  --#{$prefix}icon-warning: var(--#{$prefix}icon-disabled);
+  --#{$prefix}icon-default: var(--#{$prefix}icon-disabled);
+}
+
+:host ::slotted(it-icon) {
+  --#{$prefix}icon-default: var(--#{$prefix}chip-icon-color);
+}
+
+:host([is-disabled]) ::slotted(it-button) {
+  cursor: not-allowed !important;
+}
+
+/* Hover on the chip */
+:host a:hover ::slotted(it-icon) {
+  --#{$prefix}icon-primary: var(--#{$prefix}chip-text-color);
+  --#{$prefix}icon-secondary: var(--#{$prefix}chip-text-color);
+  --#{$prefix}icon-success: var(--#{$prefix}chip-text-color);
+  --#{$prefix}icon-danger: var(--#{$prefix}chip-text-color);
+  --#{$prefix}icon-warning: var(--#{$prefix}chip-text-color);
+  --#{$prefix}icon-default: var(--#{$prefix}chip-text-color);
+  --#{$prefix}chip-icon-color: var(--#{$prefix}chip-text-color);
+}

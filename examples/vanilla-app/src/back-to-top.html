@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Web Components - vanilla-app</title>
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="root">
+      <header id="app-header">
+      </header>
+      <main class="container my-4">
+        <h1>Back to top</h1>
+
+
+        <div style="height: 2000px; background: linear-gradient(white, lightgray); margin-top: 20px;">
+          <p>Scrolla la pagina per vedere il pulsante "Torna su" apparire nell'angolo in basso a destra.</p>
+          <p class="small">Il componente è stato inserito nel file index.html per fare in modo che la sua posizione nel DOM sia dopo il footer. In questo modo è anche presente in tutte le pagine dell'applicazione di esempio. </p>
+        </div>
+
+
+
+
+
+      </main>
+      <div id="app-footer"></div>
+      <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/js/button.js"></script>
+
+  </body>
+</html>

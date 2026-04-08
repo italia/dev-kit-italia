@@ -41,15 +41,15 @@ class AriaKeyboardListController implements ReactiveController {
     const currentIndex = items.indexOf(this.getActiveElement() as HTMLElement);
     switch (event.key) {
       case 'ArrowDown':
-      case 'ArrowRight':
+        // case 'ArrowRight':
         event.preventDefault();
-        if (items.length) this.config.setActive(currentIndex < 0 ? 0 : (currentIndex + 1) % items.length);
+        if (items.length && currentIndex < items.length - 1)
+          this.config.setActive(currentIndex < 0 ? 0 : currentIndex + 1);
         break;
       case 'ArrowUp':
-      case 'ArrowLeft':
+        // case 'ArrowLeft':
         event.preventDefault();
-        if (items.length)
-          this.config.setActive(currentIndex < 0 ? items.length - 1 : (currentIndex - 1 + items.length) % items.length);
+        if (items.length) this.config.setActive(currentIndex < 0 ? items.length - 1 : currentIndex - 1);
         break;
       case 'Home':
         event.preventDefault();

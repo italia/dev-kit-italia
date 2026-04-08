@@ -1,15 +1,15 @@
-<h1 align="center">Design Web Components</h1>
+<h1 align="center">Dev Kit Italia</h1>
 
 <p align="center">
   <img src="public/favicons/android-chrome-512x512.png" alt="logo del design system .italia" width="120px" height="auto"/>
   <br>
-  <i>Design Web Components è un toolkit
+  <i>Dev Kit Italia è un toolkit
     <br> che implementa il Design system .italia</i>
   <br>
 </p>
 
 <p align="center">
-  <a href="https://italia.github.io/design-web-components"><strong>italia.github.io/design-web-components</strong></a>
+  <a href="https://italia.github.io/dev-kit-italia"><strong>italia.github.io/dev-kit-italia</strong></a>
   <br>
 </p>
 
@@ -17,8 +17,8 @@
     <!-- <a href="https://www.npmjs.com/package/design-react-kit"><img src="https://img.shields.io/npm/v/design-react-kit.svg" alt="NPM"></a>
     <a href="https://github.com/italia/design-react-kit/actions"><img src="https://github.com/italia/design-react-kit/actions/workflows/ci.yml/badge.svg" alt="Build"></a>
     <a href="https://codecov.io/gh/italia/design-react-kit"><img src="https://codecov.io/gh/italia/design-react-kit/branch/main/graph/badge.svg?token=0Ud6YSFi0r" alt="codecov"></a> -->
-    <a href="https://github.com/italia/design-web-components/blob/main/LICENSE"><img src="https://img.shields.io/github/license/italia/design-web-components.svg" alt="License"></a>
-    <a href="https://github.com/italia/design-web-components/issues"><img src="https://img.shields.io/github/issues/italia/design-web-components.svg" alt="GitHub issues"></a>
+    <a href="https://github.com/italia/dev-kit-italia/blob/main/LICENSE"><img src="https://img.shields.io/github/license/italia/dev-kit-italia.svg" alt="License"></a>
+    <a href="https://github.com/italia/dev-kit-italia/issues"><img src="https://img.shields.io/github/issues/italia/dev-kit-italia.svg" alt="GitHub issues"></a>
 </p>
 
 <!-- <p align="center">
@@ -36,17 +36,17 @@ _⚠️ Attenzione: questo repository e i relativi pacchetti sono in lavorazione
 
 ## Intro
 
-**Design Web Components** è un set di Web components che implementa il Design system .italia e i componenti presenti su [UI Kit Italia](https://github.com/italia/design-ui-kit).
+**Dev Kit Italia** è un set di Web components che implementa il Design system .italia e i componenti presenti su [UI Kit Italia](https://github.com/italia/design-ui-kit).
 Per navigare la libreria e visualizzare i componenti, è stato utilizzato [Storybook](https://storybook.js.org/).
-La versione pubblica dello Storybook è disponibile [qui](https://italia.github.io/design-web-components) per l'ultima release stabile pubblicata.
+La documentazione è disponibile [qui](https://italia.github.io/dev-kit-italia) per l'ultima release stabile pubblicata.
 
 ## Come usare la libreria
 
-Per utilizzare Design Web Components come dipendenza in un'app è possibile installarla da [npm](https://www.npmjs.com/~italia).
+Per utilizzare Dev Kit Italia come dipendenza in un'app è possibile installarla da [npm](https://www.npmjs.com/~italia).
 
 ## Come contribuire 💙
 
-Per installare la libreria e avviare lo Storybook in locale, è necessario avere installato [Node.js](https://nodejs.org/) e [pnpm](https://pnpm.io/).
+Per installare la libreria e avviare Storybook in locale, è necessario avere installato [Node.js](https://nodejs.org/) e [pnpm](https://pnpm.io/).
 
 Per installare le dipendenze:
 
@@ -54,8 +54,39 @@ Per installare le dipendenze:
 pnpm install
 ```
 
-Per avviare lo Storybook in locale:
+Per compilare tutti i componenti (necessario la prima volta):
+
+```sh
+pnpm build
+```
+
+Per avviare Storybook in locale:
 
 ```sh
 pnpm storybook
 ```
+
+**Durante lo sviluppo:**
+
+- Documentazione/Storie e tipi: si aggiornano automaticamente ✨
+- Componenti: puoi ricompilare il solo package modificato
+
+```sh
+# Per esempio, se stai modificando il componente button:
+pnpm build --filter=@italia/button
+# Poi ricarica la pagina del browser
+```
+
+**Nota:** È necessario eseguire `pnpm build` prima di avviare Storybook la prima volta per compilare i pacchetti TypeScript in JavaScript.
+
+### Esempi di integrazione dei Web Components in altri framework JavaScript
+
+Sono disponibili delle applicazioni di esempio che mostrano come integrare i Web Components in diversi framework JavaScript.
+
+Per maggiori dettagli, consulta il file [examples/README.md](./examples/README.md).
+
+## Processo di Rilascio 🚀
+
+Il progetto utilizza [Changesets](https://github.com/changesets/changesets) per gestire i rilasci di tutti i pacchetti. Per informazioni dettagliate, consulta la [documentazione di rilascio](./RELEASE.md).
+
+Il workflow GitHub Actions pubblicherà automaticamente tutti i pacchetti su NPM.

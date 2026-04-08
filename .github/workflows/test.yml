@@ -17,11 +17,15 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Install playwright browsers
+        shell: bash
+        run: pnpm test:setup:ci
+
       - name: Test
         run: pnpm test
 
       - name: Upload coverage
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: unittests

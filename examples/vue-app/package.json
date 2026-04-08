@@ -1,0 +1,21 @@
+{
+  "name": "vue-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --base=/vue-app/",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@italia/dev-kit-italia": "file:../../packages/dev-kit-italia",
+    "vue": "^3.5.18",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "^7.3.2"
+  },
+  "packageManager": "npm@11.6.2"
+}

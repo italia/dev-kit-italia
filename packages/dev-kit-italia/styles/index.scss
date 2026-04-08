@@ -1,0 +1,106 @@
+/* BOOTSTRAP ITALIA base styles */
+@import 'design-tokens-italia/dist/css/variables';
+@import 'bootstrap-italia/src/scss/base/version';
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/utilities';
+@import 'bootstrap-italia/src/scss/base/root';
+@import 'bootstrap-italia/src/scss/base/reboot';
+
+@import 'bootstrap-italia/src/scss/base/containers';
+@import 'bootstrap-italia/src/scss/base/transitions';
+@import 'bootstrap-italia/src/scss/base/helpers';
+
+@import 'bootstrap-italia/src/scss/base/utilities/api';
+@import './utilities/focus';
+@import './utilities/fouc';
+// @import 'bootstrap-italia/src/scss/utilities/focus';
+@import 'bootstrap-italia/src/scss/utilities/icons';
+@import 'bootstrap-italia/src/scss/utilities/colors';
+@import 'bootstrap-italia/src/scss/components/type';
+@import 'bootstrap-italia/src/scss/components/grid';
+@import 'bootstrap-italia/src/scss/components/alert';
+
+@import 'bootstrap-italia/src/scss/forms/forms'; //perchè ci sono delle variabile definite nella :root
+
+@import 'bootstrap-italia/src/scss/components/images';
+@import 'bootstrap-italia/src/scss/components/linklist';
+@import 'bootstrap-italia/src/scss/components/dropdown';
+@import 'bootstrap-italia/src/scss/components/nav';
+@import 'bootstrap-italia/src/scss/components/navbar';
+@import 'bootstrap-italia/src/scss/components/header';
+@import 'bootstrap-italia/src/scss/components/headerslim';
+@import 'bootstrap-italia/src/scss/components/overlay-panel';
+@import 'bootstrap-italia/src/scss/components/avatar';
+@import 'bootstrap-italia/src/scss/components/sidebar';
+@import 'bootstrap-italia/src/scss/components/affix';
+@import 'bootstrap-italia/src/scss/components/badge';
+@import 'bootstrap-italia/src/scss/components/forward';
+@import 'bootstrap-italia/src/scss/components/navscroll';
+@import 'bootstrap-italia/src/scss/components/progress-bars';
+@import 'bootstrap-italia/src/scss/components/hero';
+@import 'bootstrap-italia/src/scss/components/buttons'; // serve per applicare le classi di stile dei bottoni agli elementi di tipo <a>
+@import 'bootstrap-italia/src/scss/components/card'; //serve per l'esempio HERO. TODO: da rimuovere quando arriva il componente card.
+
+/*dev-kit-italia global styles*/
+@import '@italia/accordion/styles/globals';
+@import '@italia/autocomplete/styles/globals';
+@import '@italia/avatar/styles/globals';
+@import '@italia/back-to-top/styles/globals';
+@import '@italia/breadcrumbs/styles/globals';
+@import '@italia/button/styles/globals';
+@import '@italia/callout/styles/globals';
+@import '@italia/card/styles/globals';
+@import '@italia/carousel/styles/globals';
+@import '@italia/checkbox/styles/globals';
+@import '@italia/chip/styles/globals';
+@import '@italia/collapse/styles/globals';
+@import '@italia/dropdown/styles/globals';
+@import '@italia/hero/styles/globals';
+@import '@italia/icon/styles/globals';
+@import '@italia/input/styles/globals';
+@import '@italia/megamenu/styles/globals';
+@import '@italia/modal/styles/globals';
+@import '@italia/navscroll/styles/globals';
+@import '@italia/pagination/styles/globals';
+@import '@italia/popover/styles/globals';
+@import '@italia/progress/styles/globals';
+@import '@italia/radio/styles/globals';
+@import '@italia/rating/styles/globals';
+@import '@italia/section/styles/globals';
+@import '@italia/select/styles/globals';
+@import '@italia/skiplinks/styles/globals';
+@import '@italia/sticky/styles/globals';
+@import '@italia/toggle/styles/globals';
+@import '@italia/video/styles/globals';
+
+// Footer
+@import 'bootstrap-italia/src/scss/components/footer';
+@import 'bootstrap-italia/src/scss/components/list';
+@import 'bootstrap-italia/src/scss/components/list-group';
+@import 'bootstrap-italia/src/scss/components/headercenter';
+
+// Table
+@import 'bootstrap-italia/src/scss/components/tables';
+
+@import './components/alert';
+@import './components/footer';
+@import './components/go-back';
+@import './components/list';
+@import './components/sidebar';
+
+.navbar-collapsable .menu-wrapper {
+  //z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page
+  z-index: auto; // to avoid megamenu dropdowns in header to be overlapped by navscroll or other items in page
+}
+
+.it-footer-main .it-brand-wrapper ::part(icon) {
+  width: var(--#{$prefix}footer-brand-icon-size);
+  height: var(--#{$prefix}footer-brand-icon-size);
+  flex-shrink: 0;
+  margin-right: var(--#{$prefix}spacing-xs);
+  fill: var(--#{$prefix}footer-brand-icon-color);
+}
+// End footer

@@ -1,51 +1,48 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { type Sizes, type Variants, BUTTON_SIZES, BUTTON_VARIANTS } from '../src/types.ts';
-import '@italia/button';
-import '@italia/icon';
 
 interface ButtonProps {
   variant: Variants;
   outline: boolean;
-  ariaDisabled: boolean;
+  disabled: boolean;
   slot: string;
   size: Sizes;
   type: string;
   block: boolean;
-  icon?: boolean;
   value: string;
 }
 
 // Renderizza il wc it-button di default
-const renderComponent = (params: any, defaultSlot = '') => {
+const renderComponent = (params: ButtonProps, defaultSlot = '') => {
   const slot = params.slot?.length > 0 ? params.slot : defaultSlot;
   return html`
     <it-button
-      variant="${params.variant}"
+      variant="${ifDefined(params.variant)}"
       ?outline="${params.outline}"
-      size="${params.size}"
+      size="${ifDefined(params.size)}"
       ?block="${params.block}"
-      aria-disabled="${ifDefined(params.ariaDisabled ? 'true' : undefined)}"
-      ?icon="${params.icon}"
-      type="${params.type}"
-      >${slot}</it-button
+      ?disabled="${ifDefined(params.disabled ? 'true' : undefined)}"
+      type="${ifDefined(params.type)}"
     >
+      ${slot}
+    </it-button>
   `;
 };
 
-const renderDefault = (params: any) => html`
+const renderDefault = (params: ButtonProps) => html`
   <div class="flex">
     ${renderComponent(params)}
     ${renderComponent({
       ...params,
-      ariaDisabled: true,
+      disabled: true,
       slot: `${params.slot} disabled`,
     })}
   </div>
 `;
 
-const renderVariant = (args, defaultText) => {
+const renderVariant = (args: ButtonProps, defaultText: string) => {
   const slot = args.slot?.length > 0 ? args.slot : null;
   return html`<div class="flex p-0">
     ${renderDefault({
@@ -62,7 +59,7 @@ const renderVariant = (args, defaultText) => {
   </div>`;
 };
 
-const renderSizeVariant = (args, defaultText) =>
+const renderSizeVariant = (args: ButtonProps, defaultText: string) =>
   html`<div class="flex">
     ${renderComponent(
       {
@@ -83,16 +80,15 @@ const renderSizeVariant = (args, defaultText) =>
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Button',
-  tags: ['autodocs'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-button',
   args: {
     slot: 'Testo del pulsante',
     variant: 'primary',
-    size: 'sm',
+    size: undefined,
     block: false,
     outline: false,
-    ariaDisabled: false,
-    icon: false,
+    disabled: false,
     type: 'button',
     value: '',
   },
@@ -106,7 +102,6 @@ const meta = {
       control: 'select',
       description: 'Dimensione del pulsante',
       options: BUTTON_SIZES,
-      table: { defaultValue: { summary: 'sm' } },
     },
     block: {
       control: 'boolean',
@@ -114,21 +109,15 @@ const meta = {
       description: 'Quando abilitato, estende il componente Button fino a prendere tutta la larghezza disponibile',
       table: { defaultValue: { summary: 'false' } },
     },
-    ariaDisabled: {
+    disabled: {
       control: 'boolean',
       type: 'boolean',
-      name: 'aria-disabled',
       table: { defaultValue: { summary: 'false' } },
     },
     outline: {
       control: 'boolean',
       type: 'boolean',
       description: 'Applica il colore solamente al bordo, usando il colore di sfondo come colore interno del pulsante.',
-      table: { defaultValue: { summary: 'false' } },
-    },
-    icon: {
-      control: 'boolean',
-      type: 'boolean',
       table: { defaultValue: { summary: 'false' } },
     },
     slot: {
@@ -145,17 +134,6 @@ const meta = {
       control: 'text',
     },
   },
-  parameters: {
-    docs: {
-      description: {
-        component: `
-<Description>Pulsante con etichetta di testo o icona che al click inizia un'azione o un evento.</Description>
-
-Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del design-system](https://designers.italia.it/design-system/componenti/buttons/).
-`,
-      },
-    },
-  },
 } satisfies Meta<ButtonProps>;
 
 export default meta;
@@ -167,7 +145,7 @@ export const EsempioInterattivo: Story = {
   args: {
     variant: 'primary',
   },
-  tags: ['!autodocs', '!dev'],
+  tags: ['!dev'],
   parameters: {
     docs: {
       canvas: {
@@ -181,21 +159,34 @@ export const EsempioInterattivo: Story = {
     })}`,
 };
 
-export const PersonalizzazioneDegliStili: Story = {
-  name: 'Personalizzazione degli stili',
-  tags: ['!dev'],
-  parameters: {
-    viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
-    docs: {
-      canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
-      description: {
-        story: `
-Per la personalizzazione degli stili si può usare il selettore \`::part\` passando il valore \`button\`. [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
-`,
+export const Disabilitato: Story = {
+  name: 'Stato disabilitato',
+  args: { slot: '', disabled: true },
+  argTypes: {
+    variant: {
+      table: {
+        disable: true,
+      },
+    },
+    outline: {
+      table: {
+        disable: true,
+      },
+    },
+    disabled: {
+      table: {
+        disable: true,
       },
     },
   },
-  render: () => html`<div class="hide-preview"></div>`,
+  render: (args) => html`
+    ${renderComponent({ ...args, variant: 'primary' }, 'Primary')}
+    ${renderComponent({ ...args, variant: 'secondary' }, 'Secondary')}
+    ${renderComponent({ ...args, variant: 'success' }, 'Success')}
+    ${renderComponent({ ...args, variant: 'danger' }, 'Danger')}
+    ${renderComponent({ ...args, variant: 'warning' }, 'Warning')}
+    ${renderComponent({ ...args, variant: 'link' }, 'Pulsante link')}
+  `,
 };
 
 export const VariantiColore: Story = {
@@ -212,32 +203,9 @@ export const VariantiColore: Story = {
         disable: true,
       },
     },
-    ariaDisabled: {
+    disabled: {
       table: {
         disable: true,
-      },
-    },
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Gli stili definiti da Bootstrap Italia utilizzano un naming consistente con Bootstrap, con alcune personalizzazioni.
-
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>
-Le classi \`.btn\` e \`.btn-\` conferiscono agli elementi html l’aspetto visivo di un pulsante. Anche elementi \`<a>\` o \`<span>\` possono subire questa trasformazione provocando discrepanza tra ciò che si rappresenta e la funzione semantica dell’elemento.
-<br/>
-Questo può provocare complesse problematiche di accessibilità.
-<br/><br/>
-Dove il click sul pulsante non genera un cambio di pagina utilizzare esclusivamente il componente \`<it-button>\`.
-<br/><br/>
-Qualora non fosse possibile, è necessario applicare in modo appropriato l’attributo \`role="button"\` per trasmetterne lo scopo alle tecnologie assistive.</p></div></div>
-
-#### Note sullo stato disabilitato
-I pulsanti disabilitati dovranno avere l'attributo \`aria-disabled="true"\` per indicare lo stato dell’elemento alle tecnologie assistive. Quando si utilizza l'attributo \`aria-disabled\` è consigliato usare anche l'attributo \`aria-describedby\` (o un elemento all'interno del bottone con classe \`.sr-only\`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
-<br/> E' sconsigliato l'uso dell'attributo \`disabled\`.
-`,
       },
     },
   },
@@ -246,7 +214,8 @@ I pulsanti disabilitati dovranno avere l'attributo \`aria-disabled="true"\` per 
     ${renderVariant({ ...args, variant: 'secondary' }, 'Secondary')}
     ${renderVariant({ ...args, variant: 'success' }, 'Success')}
     ${renderVariant({ ...args, variant: 'danger' }, 'Danger')}
-    ${renderVariant({ ...args, variant: 'warning' }, 'Warning')} ${renderVariant({ ...args, variant: 'link' }, 'Link')}
+    ${renderVariant({ ...args, variant: 'warning' }, 'Warning')}
+    ${renderVariant({ ...args, variant: 'link' }, 'Pulsante link')}
   `,
 };
 
@@ -270,19 +239,8 @@ export const VariantiDimensione: Story = {
       },
     },
   },
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Per ottenere pulsanti di dimensione più grande o più piccola, è sufficiente utilizzare l'attributo \`size\` con i valori \`"lg"\`, \`"sm"\`, \`"xs"\`.
-
-Utilizzando invece l'attributo \`block\` si ottengono pulsanti che prendono tutta l’ampiezza a loro disposizione, a seconda delle dimensioni del loro contenitore.
-`,
-      },
-    },
-  },
   render: (args) => html`
-    ${renderSizeVariant({ ...args, size: 'lg' }, 'Large')} ${renderSizeVariant({ ...args, size: 'sm' }, 'Small')}
+    ${renderSizeVariant({ ...args, size: 'lg' }, 'Large')} ${renderSizeVariant({ ...args }, 'Default')}
     ${renderSizeVariant({ ...args, size: 'xs' }, 'Extra Small')}
     <div class="flex">
       ${renderComponent(
@@ -348,7 +306,7 @@ export const SfondoScuro: Story = {
         disable: true,
       },
     },
-    ariaDisabled: {
+    disabled: {
       table: {
         disable: true,
       },
@@ -371,7 +329,7 @@ visibile), o siano incluse attraverso mezzi alternativi, come testo aggiuntivo n
     <div class="bg-dark p-4">
       ${renderVariant({ ...args, variant: 'primary' }, 'Primary')}
       ${renderVariant({ ...args, variant: 'secondary' }, 'Secondary')}
-      ${renderVariant({ ...args, variant: 'link' }, 'Link')}
+      ${renderVariant({ ...args, variant: 'link' }, 'Pulsante link')}
     </div>
   `,
 };
@@ -396,15 +354,6 @@ export const ConIcona: Story = {
     docs: {
       description: {
         story: `
-L’icona può essere posizionata a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.
-<br/><br/>
-#### Dimensione dell'icona
-- Nei pulsanti di dimensione \`lg\` e \`sm\` è necessario passare l'attributo \`size="sm"\` all'icona.
-- Nei pulsaanti di dimensione \`xs\`, è necessario passare l'attributo \`size="xs"\` all'icona .
-
-#### Allineamento e spaziatura dell’icona
-Nel caso si utilizzi un’icona all’interno di un elemento \`<it-button>\` è necessario inserire il testo del pulsante all’interno di un tag \`<span/>\` al fine di garantire un perfetto allineamento ed una corretta spaziatura tra l’icona e lo stesso testo.
-
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
 <p>
 Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba essere un elemento decorativo, è necessario utilizzare correttamente gli attributi \`label\`, \`role\` e \`aria-hidden\` sul componente \`<it-icon>\`. Per maggiori dettagli visita la [guida dedicata](?path=/docs/componenti-icon--documentazione) al componente \`<it-icon>\`.</p></div></div>
@@ -414,55 +363,51 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
   },
   render: (params) => {
     const slot = params.slot?.length > 0 ? params.slot : null;
-    return html` <div class="flex">
+    return html` <div class="flex align-items-center">
       <it-button
         variant="success"
         size="lg"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
-        <it-icon name="it-star-full" color="white" size="sm"></it-icon>
+        <it-icon name="it-star-full" color="inverse" size="sm"></it-icon>
         <span>${slot ?? 'Pulsante Large con icona'}</span>
       </it-button>
 
       <it-button
         variant="primary"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
-        <it-icon name="it-star-full" color="white" size="sm"></it-icon> <span>${slot ?? 'Pulsante con icona'}</span>
+        <it-icon name="it-star-full" color="inverse" size="sm"></it-icon> <span>${slot ?? 'Pulsante con icona'}</span>
       </it-button>
 
       <it-button
         variant="danger"
         size="xs"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
-        <it-icon name="it-star-full" color="white" size="xs"></it-icon>
-        <span>${slot ?? 'Pulsante Small con icona'}</span>
+        <it-icon name="it-star-full" color="inverse" size="xs"></it-icon>
+        <span>${slot ?? 'Pulsante Extra Small con icona'}</span>
       </it-button>
 
       <it-button
         variant="link"
         size="xs"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <it-icon name="it-star-full" color="primary" size="xs"></it-icon>
-        <span>${slot ?? 'Pulsante Extra Small con icona'}</span>
+        <span>${slot ?? 'Pulsante Link Extra Small con icona'}</span>
       </it-button>
     </div>`;
   },
@@ -488,60 +433,41 @@ export const ConIconaCerchiata: Story = {
       },
     },
   },
-  parameters: {
-    docs: {
-      description: {
-        story: `
-L’icona può essere posizionata a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.
-Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` per poter avere il contorno circolare.
-<br/><br/>
-#### Dimensione dell'icona
-- Nei pulsanti di dimensione \`lg\` e \`sm\` è necessario assegnare l'attributo \`size="sm"\` all'icona.
-- Nei pulsanti di dimensione \`xs\`, è necessario passare l'attributo \`size="xs"\` all'icona .
-`,
-      },
-    },
-  },
   render: (params) => {
     const slot = params.slot?.length > 0 ? params.slot : null;
-    return html` <div class="flex">
+    return html` <div class="flex align-items-center">
       <it-button
         variant="success"
         size="lg"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon">
-          <it-icon name="it-user" color="success" size="sm"></it-icon>
+          <it-icon name="it-user" color="success" size="xs"></it-icon>
         </span>
         <span>${slot ?? 'Pulsante Large con icona'}</span>
       </it-button>
 
       <it-button
         variant="primary"
-        size="sm"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon" size="sm">
-          <it-icon name="it-user" color="primary" size="sm"></it-icon>
+          <it-icon name="it-user" color="primary" size="xs"></it-icon>
         </span>
         <span>${slot ?? 'Pulsante con icona'}</span>
       </it-button>
 
       <it-button
         variant="danger"
-        size="xs"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
         <span class="rounded-icon">
@@ -551,18 +477,17 @@ Deve essere contenuta all'interno di uno elemento con classe\`.rounded-icon\` pe
       </it-button>
 
       <it-button
-        variant="primary"
+        variant="secondary"
         size="xs"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
-        ?aria-disabled="${params.ariaDisabled}"
+        ?disabled="${params.disabled}"
         type="${params.type}"
       >
-        <span class="rounded-icon bg-primary">
-          <it-icon name="it-user" color="white" size="xs"></it-icon>
+        <span class="rounded-icon">
+          <it-icon name="it-user" color="secondary" size="xs"></it-icon>
         </span>
-        <span>${slot ?? 'Pulsante Extra Small con icona'}</span>
+        <span>${slot ?? 'Pulsante Link Extra Small con icona'}</span>
       </it-button>
     </div>`;
   },

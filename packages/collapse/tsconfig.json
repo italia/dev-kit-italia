@@ -1,0 +1,9 @@
+{
+  "extends": "@italia/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": ".",
+    "composite": true
+  },
+  "include": ["src/**/*.ts", "stories/**/*.ts", "test/**/*.ts"]
+}

@@ -1,3 +1,5 @@
+@import './prism';
+
 #storybook-root {
   width: fit-content;
   max-height: 100%;
@@ -6,16 +8,210 @@
   margin: auto;
 }
 
-#storybook-root:has(#header-sb-wrapper) {
-  width: 100%;
+.sbdocs-wrapper {
+  justify-content: start !important;
+}
+
+// Indice laterale destro
+.sbdocs-toc--custom {
+  width: 100% !important;
+
+  &,
+  nav,
+  .toc-wrapper ul {
+    min-width: 0px;
+    max-width: 20rem;
+  }
+
+  nav,
+  .toc-wrapper ul {
+    width: 100%;
+    font-family: var(--bsi-font-sans);
+    font-size: 16px;
+  }
+
+  nav .toc-list-item {
+    > a:hover {
+      color: var(--bsi-color-link);
+    }
+
+    &.is-active-li > a {
+      color: var(--bsi-color-link);
+
+      &:hover {
+        color: var(--bsi-color-link-hover);
+      }
+    }
+  }
+}
+
+/* Applica stili SOLO alla documentazione, MAI alle preview */
+/* Esclude esplicitamente .sb-story che contiene le preview */
+.sbdocs-content {
+  margin: 0 auto;
+
+  :not(.sb-story *) {
+    font-family: var(--bsi-font-sans);
+    font-size: var(--bsi-body-font-size); /* Mobile: 16px, Desktop: 18px */
+    //font-weight: var(--bsi-body-font-weight); /* 400 */
+    line-height: var(--bsi-body-line-height); /* 150% */
+
+    &.docblock-code-toggle {
+      font-size: 80%;
+      font-weight: 600;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    &.small {
+      font-size: var(--bsi-caption-font-size);
+    }
+
+    &.docblock-argstable *:not(code) {
+      font-size: 1rem;
+    }
+  }
+
+  pre:not(.sb-story pre),
+  code:not(.sb-story code),
+  kbd:not(.sb-story kbd),
+  samp:not(.sb-story samp) {
+    font-family: var(--bsi-font-mono);
+  }
+
+  code:not(.sb-story code) {
+    background-color: var(--bsi-code-background);
+    color: var(--bsi-color-code);
+    font-size: 85%;
+    word-wrap: break-word;
+  }
+
+  pre:not(.sb-story pre) span {
+    font-family: var(--bsi-font-mono);
+    font-size: 88.9%;
+  }
+
+  a:not(.sb-story a) {
+    color: var(--bsi-color-link);
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--bsi-color-link-hover);
+    }
+  }
+}
+
+/* stylelint-disable-next-line selector-type-no-unknown */
+.sbdocs-content description:not(.sb-story description),
+.sbdocs-content p.lead:not(.sb-story p.lead) {
+  display: block;
+  margin-bottom: 2rem !important;
+  font-size: var(--bsi-lead-font-size) !important; /* 1.25rem mobile, 1.5rem desktop */
+  font-weight: var(--bsi-lead-font-weight) !important;
+  line-height: var(--bsi-lead-line-height) !important;
+}
+
+/* Tipografia Bootstrap Italia usando variabili CSS native */
+/* Applica SOLO al contenuto della documentazione, non alle preview */
+/* Gli h1-h6 nelle preview (.sb-story) NON devono essere toccati */
+.sbdocs-content h1:not(.sb-story h1) {
+  margin-bottom: 1.5rem;
+  font-size: var(--bsi-heading-1-font-size); /* Mobile: 40px, Desktop: 48px */
+  font-weight: var(--bsi-heading-font-weight); /* 700 */
+  letter-spacing: var(--bsi-font-tracking-narrow, -1px);
+  line-height: var(--bsi-heading-line-height); /* 120% */
+}
+
+.sbdocs-content h2:not(.sb-story h2) {
+  margin-bottom: 1.25rem;
+  font-size: var(--bsi-heading-2-font-size); /* Mobile: 32px, Desktop: 40px */
+  font-weight: var(--bsi-heading-font-weight);
+  line-height: var(--bsi-heading-line-height);
+}
+
+.sbdocs-content h3:not(.sb-story h3) {
+  margin-bottom: 1rem;
+  font-size: var(--bsi-heading-3-font-size); /* Mobile: 28px, Desktop: 32px */
+  font-weight: var(--bsi-heading-font-weight);
+  line-height: var(--bsi-heading-line-height);
+}
+
+.sbdocs-content h4:not(.sb-story h4) {
+  margin-bottom: 0.875rem;
+  font-size: var(--bsi-heading-4-font-size); /* Mobile: 24px, Desktop: 28px */
+  font-weight: var(--bsi-heading-font-weight-weak); /* 600 */
+  line-height: var(--bsi-heading-line-height);
+}
+
+.sbdocs-content h5:not(.sb-story h5) {
+  margin-bottom: 0.75rem;
+  font-size: var(--bsi-heading-5-font-size); /* Mobile: 20px, Desktop: 24px */
+  font-weight: var(--bsi-heading-font-weight-weak);
+  line-height: var(--bsi-heading-line-height);
+}
+
+.sbdocs-content h6:not(.sb-story h6) {
+  margin-bottom: 0.625rem;
+  font-size: var(--bsi-heading-6-font-size); /* Mobile: 16px, Desktop: 18px */
+  font-weight: var(--bsi-heading-font-weight-weak);
+  line-height: var(--bsi-heading-line-height);
+}
+
+/* Margin top solo per il primo h3 nella documentazione principale, non nelle preview */
+.sbdocs-content > h3:first-of-type {
+  margin-top: 20px;
+}
+
+.sbdocs-content p:not(.sb-story p),
+.sbdocs-content li:not(.toc-list-item):not(.sb-story li) {
+  max-width: 75ch;
+  font-size: var(--bsi-body-font-size); /* Mobile: 16px, Desktop: 18px */
+  font-weight: var(--bsi-body-font-weight); /* 400 */
+  line-height: var(--bsi-body-line-height); /* 150% */
+}
+
+.sbdocs-content .callout:not(.sb-story .callout) {
+  max-width: 75ch;
+}
+
+.sbdocs-content li.toc-list-item:not(.sb-story li.toc-list-item) {
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+
+.docblock-source.sb-unstyled {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  pre.prismjs {
+    font-size: 16px;
+    line-height: 1.55;
+  }
 }
 
 .docs-story {
   background-color: #f9f9f9;
 }
 
+div:has(.docblock-argstable) {
+  overflow-x: auto;
+}
+
+table.docblock-argstable {
+  min-width: 960px;
+
+  label:has([role='switch'][type='checkbox']) {
+    span {
+      padding: 2px 10px;
+    }
+  }
+}
+
 .flex {
   display: flex;
+  flex-wrap: wrap;
   align-items: start;
   padding: 0.3rem 0;
   gap: 0.6rem;
@@ -34,8 +230,20 @@
 }
 
 #anchor--componenti-icona--informazioni-utili .sbdocs-preview,
+#anchor--componenti-sticky--custom-events .sbdocs-preview,
+#anchor--componenti-footer--placeholder .sbdocs-preview,
 #anchor--componenti-header--preview .sbdocs-preview {
   display: none;
+}
+
+#anchor--componenti-skiplinks--esempio-interattivo {
+  .docs-story {
+    > div:first-of-type {
+      > div:first-of-type {
+        width: 100%;
+      }
+    }
+  }
 }
 
 .sbdocs.sbdocs-preview:has(.hide-preview) {
@@ -46,8 +254,59 @@
   display: none;
 }
 
-@media (min-width: 1200px) {
-  .sbdocs-video-container {
-    min-width: 800px;
+.docblock-argstable {
+  ul {
+    font-size: 13px;
   }
+}
+
+//w-100 layout
+.w100-layout {
+  width: 100%;
+}
+
+#storybook-root:has(.w100-layout) {
+  width: 80%;
+}
+
+.docs-story div[scale='1'],
+.innerZoomElementWrapper {
+  &:has(.w100-layout) {
+    display: block !important;
+    width: 100% !important;
+  }
+}
+
+.docs-story div[scale='1']:has(.w100-layout) {
+  margin-bottom: 2rem;
+}
+//------------
+
+//per rendere scollabili le storie di affix
+#story--componenti-affix--affix-top,
+#story--componenti-affix--affix-bottom {
+  position: relative;
+  display: block;
+  overflow: auto !important;
+  height: 400px !important;
+  transform: translateZ(0);
+}
+
+// Avoid overflow issues with Popover component stories
+.docs-story:has([id^='story--componenti-popover--']) > div {
+  overflow: hidden;
+}
+
+div[id^='story--componenti-modal'] {
+  overflow-y: clip;
+}
+
+//per dare una larghezza minima alle stories di select
+it-select {
+  display: block;
+  min-width: 250px;
+}
+
+.megamenu-story-layout {
+  min-height: 300px;
 }
