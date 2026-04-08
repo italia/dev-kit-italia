@@ -1,8 +1,16 @@
 it-megamenu {
   &:not(:defined) {
     --it-fouc-bg: transparent;
+    --it-fouc-color: #fff;
     --it-host-display: inline-flex;
+    --#{$prefix}btn-border-radius: 0;
+
+    &:after {
+      margin-right: 28px;
+    }
+
     align-items: center;
+    font-weight: 600;
 
     it-dropdown-item:not(:defined),
     [slot='description'],
