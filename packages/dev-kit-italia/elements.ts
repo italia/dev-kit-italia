@@ -26,6 +26,7 @@ import '@italia/navscroll/it-navscroll.js';
 import '@italia/pagination/it-pagination-item.js';
 import '@italia/pagination/it-pagination.js';
 import '@italia/popover/it-popover.js';
+import '@italia/tooltip/it-tooltip.js';
 import '@italia/progress/it-progress.js';
 import '@italia/radio/it-radio-group.js';
 import '@italia/radio/it-radio.js';

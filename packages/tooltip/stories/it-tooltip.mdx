@@ -1,0 +1,95 @@
+import { Meta, Canvas, Controls, Title } from '@storybook/addon-docs/blocks';
+import * as TooltipStories from './it-tooltip.stories';
+
+<Meta of={TooltipStories} />
+
+<Title of={TooltipStories} />
+
+<description>Breve messaggio a comparsa per fornire spiegazioni contestuali e suggerimenti</description>
+
+## Cosa fa
+
+Il componente Tooltip (`it-tooltip`) visualizza una breve etichetta testuale in overlay, posizionata dinamicamente rispetto a un elemento trigger.
+Utilizza [Floating UI](https://floating-ui.com/) per il posizionamento intelligente e si adatta automaticamente allo spazio disponibile.
+
+A differenza del [Popover](/docs/componenti-popover--documentazione), il tooltip è pensato per contenuti brevissimi (una frase o poche parole) e si attiva automaticamente al passaggio del mouse o al focus da tastiera, senza richiedere un click.
+
+[Approfondisci quando e come usare il componente Tooltip](https://designers.italia.it/design-system/componenti/tooltip/)
+
+### Alternative a questo componente
+
+- [Popover](/docs/componenti-popover--documentazione): contenuti più strutturati con titolo, testo e link.
+- [Modal](/docs/componenti-modal--documentazione): finestre di dialogo che richiedono l'attenzione dell'utente e bloccano l'interazione con il resto dell'interfaccia.
+
+### Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente.
+Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={TooltipStories.Base} />
+<Controls of={TooltipStories.Base} />
+
+## Indicazioni generali
+
+Il tooltip si attiva automaticamente al passaggio del mouse (`mouseenter`) o al focus da tastiera (`focusin`) su qualsiasi elemento interattivo inserito nello slot `trigger`.
+È adatto sia per `it-button` che per elementi nativi come `<button>` o `<a>`.
+
+<Canvas of={TooltipStories.SuLink} />
+
+## Accessibilità
+
+Il componente implementa le seguenti funzionalità per garantire l'accessibilità:
+
+- **attributi ARIA**: gestisce automaticamente `role="tooltip"` sul pannello e `aria-describedby` sul trigger;
+- **navigazione da tastiera**: supporta la chiusura con `Esc` quando il tooltip è aperto tramite focus;
+- **stato nascosto**: imposta `aria-hidden="true"` sul pannello quando il tooltip non è visibile;
+- **nessun focus steal**: il tooltip non sposta il focus quando viene mostrato.
+
+È importante usare come `trigger` solo elementi HTML che sono tradizionalmente attivabili da tastiera e interattivi (link, pulsanti o elementi di form).
+
+Sebbene arbitrariamente gli elementi HTML (come `<span>`) possano essere resi attivabili tramite l'attributo `tabindex="0"`,
+ciò aggiungerà interruzioni di tabulazioni potenzialmente dannose per gli utenti che usano la tastiera per navigare.
+Inoltre, la maggior parte delle tecnologie assistive in questa situazione non annuncia il tooltip come ci si potrebbe invece attendere.
+
+## Posizione
+
+Il componente supporta 12 posizioni tramite l'attributo `placement`. Usa `top`, `right`, `bottom` o `left` per posizioni centrate, oppure aggiungi `-start` o `-end` per allineamenti specifici.
+
+Il posizionamento si adatta automaticamente allo spazio disponibile.
+
+<Canvas of={TooltipStories.Posizione} />
+
+## Attivazione controllata
+
+Impostando l'attributo `controlled`, il tooltip non gestisce automaticamente l'apertura e la chiusura.
+Per controllarne lo stato, richiama i metodi `showTooltip()`, `hideTooltip()` o `toggle()`.
+
+<Canvas of={TooltipStories.AttivazioneControllata} />
+
+## Metodi
+
+```javascript
+const tooltip = document.querySelector('it-tooltip');
+
+tooltip.showTooltip();  // Mostra il tooltip
+tooltip.hideTooltip();  // Nasconde il tooltip
+tooltip.toggle();       // Alterna la visibilità
+```
+
+## Eventi
+
+Il componente emette l'evento `it-tooltip-open` quando viene mostrato e `it-tooltip-close` quando viene nascosto. Apri la console del browser per vedere i log.
+
+```javascript
+const tooltip = document.querySelector('it-tooltip');
+
+tooltip.addEventListener('it-tooltip-open', (e) => {
+  console.log('Tooltip aperto', e);
+});
+
+tooltip.addEventListener('it-tooltip-close', (e) => {
+  console.log('Tooltip chiuso', e);
+});
+```
+
+<Canvas of={TooltipStories.Eventi} />
