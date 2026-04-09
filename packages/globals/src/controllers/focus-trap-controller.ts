@@ -13,6 +13,29 @@ export interface FocusTrapConfig {
   disableEscape?: boolean;
 }
 
+/**
+ * Safari/VoiceOver iOS workarounds catalogue — why timers exist here:
+ *
+ * 1. `activate()` rAF + setTimeout(50): Safari does not reliably update the VoiceOver
+ *    accessibility tree synchronously. rAF ensures the element is painted before we
+ *    attempt to focus it. setTimeout(50) yields 50ms so VoiceOver can settle its
+ *    accessibility tree before announcing the newly focused element.
+ *    Empirically, VoiceOver iOS needs 100–300ms; the animated path in it-modal already
+ *    provides ~316ms naturally via animation.finished, so the 50ms here only truly
+ *    matters for the no-animation / prefers-reduced-motion path.
+ *
+ * 2. `_restoreFocus()` setTimeout(0): Same settle reason on close. The caller
+ *    (it-modal finishHide) adds a belt-and-suspenders 20ms setTimeout; _restoreFocus
+ *    is skipped via { skipFocusRestore: true } in that case to avoid double-focus.
+ *
+ * 3. `activate()` iOS body-focus fallback: On iOS Safari, tapping a button does not
+ *    reliably move document.activeElement away from body. We fall back to getTrigger()
+ *    so _previousActiveElement is always a real DOM element to restore focus to on close.
+ *
+ * There is no WebKit/Safari API to detect when VoiceOver has settled its accessibility
+ * tree. setTimeout-based workarounds are the same pattern used by Bootstrap 5, the
+ * focus-trap npm package, and a11y-dialog.
+ */
 export class FocusTrapController implements ReactiveController {
   private host: ReactiveControllerHost & HTMLElement;
 
@@ -30,6 +53,10 @@ export class FocusTrapController implements ReactiveController {
 
   private _last: any;
 
+  /** Timer ID for the focus call scheduled inside activate(). Cancelled by deactivate()
+   *  to prevent focus firing after the trap has been torn down (fast open/close, unmount). */
+  private _pendingFocusTimer: ReturnType<typeof setTimeout> | null = null;
+
   private static readonly FOCUSABLE_SELECTORS = [
     'a[href]',
     'button:not([disabled])',
@@ -46,7 +73,7 @@ export class FocusTrapController implements ReactiveController {
    */
   private static isFocusable(el: HTMLElement): boolean {
     if (typeof el.focus !== 'function') return false;
-    if (el.hasAttribute('disabled') || el.hasAttribute('inert')) return false;
+    if (el.hasAttribute('disabled') || el.hasAttribute('inert') || el.hasAttribute('it-inert')) return false;
     const tabindex = el.getAttribute('tabindex');
     if (tabindex && parseInt(tabindex, 10) < 0) return false;
 
@@ -107,9 +134,12 @@ export class FocusTrapController implements ReactiveController {
       if (this.config.initialFocus) {
         const el = this.config.initialFocus();
         if (el) {
-          setTimeout(() => {
+          // 50ms gives VoiceOver iOS time to settle its accessibility tree before
+          // announcing the focused element. See class-level comment for details.
+          this._pendingFocusTimer = setTimeout(() => {
+            this._pendingFocusTimer = null;
             el.focus({ preventScroll: true });
-          }, 0);
+          }, 50);
         }
       } else {
         console.warn("FocusTrap: missing 'initialFocus' callback, provide one");
@@ -119,7 +149,12 @@ export class FocusTrapController implements ReactiveController {
 
   deactivate(options?: { skipFocusRestore?: boolean }): void {
     if (!this._isActive) return;
-    setTimeout(() => {}, 10); // FIX Safari: delay trick engine
+    // Cancel any in-flight focus timer so it cannot fire after the trap is torn down
+    // (e.g. fast open/close cycle, component unmounted while opening).
+    if (this._pendingFocusTimer !== null) {
+      clearTimeout(this._pendingFocusTimer);
+      this._pendingFocusTimer = null;
+    }
     this._isActive = false;
     document.removeEventListener('keydown', this._handleKeyDown, true);
     if (!options?.skipFocusRestore) {
@@ -216,7 +251,6 @@ export class FocusTrapController implements ReactiveController {
     if (this._focusableElements.length === 0) return; // Se è ancora vuoto, non bloccare il Tab
 
     event.preventDefault();
-    if (this._focusableElements.length === 0) return;
 
     const activeElement = FocusTrapController.getActiveElement();
     let currentIndex = this._focusableElements.indexOf(activeElement as HTMLElement);
@@ -237,16 +271,17 @@ export class FocusTrapController implements ReactiveController {
   }
 
   private _restoreFocus(): void {
-    if (this._previousActiveElement && typeof this._previousActiveElement.focus === 'function') {
-      const el = this.config.getTrigger() as HTMLElement;
-      // Fix Safari: trick engine
+    const target = this._previousActiveElement;
+    this._previousActiveElement = null;
+    if (target && typeof target.focus === 'function' && document.contains(target)) {
+      // FIX Safari: blur the current element first so VoiceOver doesn't stay on the
+      // modal element while the accessibility tree processes the focus change.
       FocusTrapController.getActiveElement()?.blur();
-
-      // FIX Safari: trick engine
+      // FIX Safari/VoiceOver iOS: defer to the next macrotask so the accessibility
+      // tree has time to process the DOM mutation before announcing the restored element.
       setTimeout(() => {
-        el.focus({ preventScroll: true });
+        target.focus({ preventScroll: true });
       }, 0);
     }
-    this._previousActiveElement = null;
   }
 }

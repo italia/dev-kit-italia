@@ -80,6 +80,10 @@ export class ItModal extends BaseComponent {
 
   private _triggerPointerBefore: string | null = null;
 
+  /** Timer ID for the focus-restore call in finishHide. Cancelled on reconnect/unmount
+   *  to prevent a stale focus from a previous close cycle firing during a new open. */
+  private _restoreFocusTimer: ReturnType<typeof setTimeout> | null = null;
+
   private _focusTrap: FocusTrapController;
 
   get _triggerElement(): HTMLElement | null {
@@ -111,6 +115,11 @@ export class ItModal extends BaseComponent {
     super.disconnectedCallback?.();
     this._removeTriggerListeners();
     this._cleanupAnimations();
+    this._removeInert();
+    if (this._restoreFocusTimer !== null) {
+      clearTimeout(this._restoreFocusTimer);
+      this._restoreFocusTimer = null;
+    }
     WindowManager.unlockBodyScroll();
   }
 
@@ -231,6 +240,11 @@ export class ItModal extends BaseComponent {
 
   private async _showModal(): Promise<void> {
     if (this.isAnimating) return;
+    // Cancel any stale close-focus-restore timer so it doesn't fire during the new open.
+    if (this._restoreFocusTimer !== null) {
+      clearTimeout(this._restoreFocusTimer);
+      this._restoreFocusTimer = null;
+    }
     this.isAnimating = true;
     this._applyInert();
     WindowManager.lockBodyScroll();
@@ -283,7 +297,9 @@ export class ItModal extends BaseComponent {
             this.isAnimating = false;
           });
       } else {
-        // Fallback estremo se @query è ancora stale
+        // No animation: activate immediately. The 50ms inside activate()'s setTimeout
+        // gives VoiceOver iOS enough time to settle its accessibility tree.
+        // See FocusTrapController class comment for full rationale.
         this._focusTrap.activate();
         this.isAnimating = false;
       }
@@ -316,15 +332,20 @@ export class ItModal extends BaseComponent {
       const target = this._originalTrigger ?? this._triggerElement;
       this._removeInert();
       this._cleanupAnimations();
-      this._focusTrap.deactivate();
+      // skipFocusRestore: we manage focus restore ourselves with the timer below.
+      // Without this, _restoreFocus() fires at 0ms and the timer fires at 20ms,
+      // causing VoiceOver to announce the restored element twice.
+      this._focusTrap.deactivate({ skipFocusRestore: true });
       WindowManager.unlockBodyScroll();
       this._isSelfClosing = true;
       this.isAnimating = false;
       this.open = false;
-      if (target)
-        setTimeout(() => {
+      if (target) {
+        this._restoreFocusTimer = setTimeout(() => {
+          this._restoreFocusTimer = null;
           if (!this.open) target.focus({ preventScroll: true });
         }, 20);
+      }
       this._originalTrigger = null;
       if (isSafari) this._safariMouseInteraction = false;
     };
