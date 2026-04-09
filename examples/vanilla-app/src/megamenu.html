@@ -8,18 +8,7 @@
     <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
     <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
     <link rel="stylesheet" href="/src/style.css" />
-    <style>
-      /* Assicura che i popover del megamenu stiano sempre sopra agli altri elementi */
-      it-megamenu::part(popover),
-      it-popover {
-        z-index: 1050 !important;
-      }
 
-      /* Aumenta lo z-index del contenuto del popover */
-      [role="dialog"] {
-        z-index: 1050 !important;
-      }
-    </style>
   </head>
   <body>
     <div id="root">

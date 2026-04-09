@@ -27,6 +27,7 @@ import '@italia/navscroll/it-navscroll.js';
 import '@italia/pagination/it-pagination-item.js';
 import '@italia/pagination/it-pagination.js';
 import '@italia/popover/it-popover.js';
+import '@italia/progress/it-progress.js';
 import '@italia/radio/it-radio-group.js';
 import '@italia/radio/it-radio.js';
 import '@italia/rating/it-rating-item.js';
@@ -35,6 +36,8 @@ import '@italia/section/it-section.js';
 import '@italia/select/it-select.js';
 import '@italia/skiplinks/it-skiplinks.js';
 import '@italia/sticky/it-sticky.js';
+import '@italia/toggle/it-toggle-group.js';
+import '@italia/toggle/it-toggle.js';
 import '@italia/video/it-video.js';
 
 import { registerTranslation } from '@italia/i18n/i18n.js';

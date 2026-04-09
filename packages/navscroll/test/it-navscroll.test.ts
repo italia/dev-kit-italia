@@ -26,15 +26,7 @@ describe('ItNavscroll', () => {
       <it-navscroll breakpoint="1024" open-label="Naviga fra le sezioni" sticky="" for="#scroll-container">
         <div class="link-list-wrapper">
           <h3>Header</h3>
-          <div class="progress">
-            <div
-              class="progress-bar it-navscroll-progressbar"
-              role="progressbar"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              aria-label="Progress bar"
-            ></div>
-          </div>
+          <it-progress class="it-navscroll-progressbar" aria-label="Progress bar"></it-progress>
           <nav>
             <ul class="link-list">
               <li class="nav-item">
@@ -94,9 +86,8 @@ describe('ItNavscroll', () => {
 
   it('renders wrapper, progress bar e nav', () => {
     expect(el.querySelector('.link-list-wrapper')).to.exist;
-    const progress = el.querySelector<HTMLElement>('.progress-bar.it-navscroll-progressbar');
+    const progress = el.querySelector<HTMLElement>('it-progress');
     expect(progress).to.exist;
-    expect(progress?.getAttribute('role')).to.equal('progressbar');
 
     const nav = el.querySelector('nav');
     expect(nav).to.exist;
@@ -133,11 +124,11 @@ describe('ItNavscroll', () => {
   });
 
   it('scroll container aggiorna progress bar', () => {
-    const progress = el.querySelector<HTMLElement>('.progress-bar.it-navscroll-progressbar')!;
+    const progress = el.querySelector<HTMLElement>('it-progress')!;
     scrollContainer.scrollTop = 50;
     scrollContainer.dispatchEvent(new Event('scroll'));
-    console.log('aria-valuenow', progress.getAttribute('aria-valuenow'));
-    expect(Number(progress.getAttribute('aria-valuenow'))).to.be.greaterThan(0);
+    console.log('value', progress.getAttribute('value'));
+    expect(Number(progress.getAttribute('value'))).to.be.greaterThan(0);
   });
 
   it('modal mobile mostra trigger con label e si aggiorna su link annidato', () => {

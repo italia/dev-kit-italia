@@ -285,11 +285,11 @@ export const Group: Story = {
       </it-checkbox-group>
 
       <it-checkbox-group
-        name=${params.name}
+        name=${`${params.name}-1`}
         ?required=${params.required}
         ?group=${params.group}
         ?inline=${params.inline}
-        ?disabled=${Group.disabled}
+        ?disabled=${params.disabled}
         class="col-12 col-md-6"
       >
         <span slot="legend">Gruppo di checkbox</span>

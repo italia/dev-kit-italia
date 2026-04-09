@@ -28,6 +28,7 @@ import Navscroll from './pages/Navscroll.svelte';
 import Overlay from './pages/Overlay.svelte';
 import Pagination from './pages/Pagination.svelte';
 import Popover from './pages/Popover.svelte';
+import Progress from './pages/Progress.svelte';
 import Radio from './pages/Radio.svelte';
 import Rating from './pages/Rating.svelte';
 import Section from './pages/Section.svelte';
@@ -37,6 +38,7 @@ import Skiplinks from './pages/Skiplinks.svelte';
 import Sticky from './pages/Sticky.svelte';
 import Carousel from './pages/Carousel.svelte';
 import Table from './pages/Table.svelte';
+import Toggle from './pages/Toggle.svelte';
 import Video from './pages/Video.svelte';
 
 export const AppRoutes = [
@@ -71,6 +73,7 @@ export const AppRoutes = [
   { path: '/overlay', element: Overlay, title: 'Overlay' },
   { path: '/pagination', element: Pagination, title: 'Pagination' },
   { path: '/popover', element: Popover, title: 'Popover' },
+  { path: '/progress', element: Progress, title: 'Progress' },
   { path: '/radio', element: Radio, title: 'Radio' },
   { path: '/rating', element: Rating, title: 'Rating' },
   { path: '/section', element: Section, title: 'Section' },
@@ -79,6 +82,7 @@ export const AppRoutes = [
   { path: '/skiplinks', element: Skiplinks, title: 'Skiplinks' },
   { path: '/sticky', element: Sticky, title: 'Sticky' },
   { path: '/tables', element: Table, title: 'Tables' },
+  { path: '/toggle', element: Toggle, title: 'Toggle' },
   { path: '/video', element: Video, title: 'Video' },
 ];
 

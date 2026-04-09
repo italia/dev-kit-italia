@@ -105,7 +105,6 @@ const dismissTemplate = (label = 'Elimina etichetta', disabled = false, descript
     it-aria-label="${label}"
     ?disabled="${disabled}"
     it-aria-description="${description}"
-    ?icon=${true}
     @click=${(e: Event) => {
       if (disabled) {
         e.preventDefault();
@@ -203,7 +202,7 @@ export const VarianteConLink: Story = {
   name: 'Variante con link',
   args: {
     size: 'sm',
-    variant: '',
+    variant: undefined,
     href: '#',
   },
   render: () => html` <it-chip label="Etichetta" size="sm" variant="" href="#"></it-chip> `,
@@ -240,7 +239,7 @@ export const VariantiDimensione: Story = {
   name: 'Varianti di dimensione',
   args: {
     size: 'sm',
-    variant: '',
+    variant: undefined,
     dismissable: true,
   },
   render: () => html`
@@ -257,7 +256,6 @@ export const ChipConChiusura: Story = {
     <it-chip label="Etichetta" size="sm" variant="primary" dismissable id="chip-dismissable">
       <it-button
         slot="dismiss-button"
-        icon
         it-aria-label="Elimina etichetta"
         it-aria-description="Puoi premere per eliminare la chip."
         @click=${(e: Event) => {
@@ -285,7 +283,6 @@ export const ChipConChiusura: Story = {
         code: `<it-chip label="Etichetta" size="sm" variant="primary" dismissable id="chip-dismissable">
   <it-button
     slot="dismiss-button"
-    icon
     it-aria-label="Elimina etichetta"
     it-aria-description="Puoi premere per eliminare la chip."
   >
@@ -327,7 +324,6 @@ export const ChipDisabilitata: Story = {
     <it-chip label="Etichetta" size="sm" variant="${args.variant}" dismissable ?is-disabled="${args.isDisabled}">
       <it-button
         slot="dismiss-button"
-        icon
         it-aria-label="Elimina etichetta"
         ?disabled="${args.isDisabled}"
         it-aria-description="Questa chip è disabilitata e non può essere rimossa."
@@ -352,7 +348,6 @@ export const ChipConAvatar: Story = {
       >
         <it-button
           slot="dismiss-button"
-          icon
           it-aria-label="Rimuovi Mario Rossi"
           it-aria-description="Puoi premere per rimuovere questo utente."
         >
@@ -369,7 +364,6 @@ export const ChipConAvatar: Story = {
       >
         <it-button
           slot="dismiss-button"
-          icon
           it-aria-label="Rimuovi Anna Verdi"
           it-aria-description="Puoi premere per rimuovere questo utente."
         >
@@ -388,7 +382,6 @@ export const ChipConIcona: Story = {
         <it-icon slot="icon" name="it-download"></it-icon>
         <it-button
           slot="dismiss-button"
-          icon
           it-aria-label="Rimuovi download"
           it-aria-description="Puoi premere per rimuovere questa azione."
         >
@@ -399,7 +392,6 @@ export const ChipConIcona: Story = {
         <it-icon slot="icon" name="it-upload"></it-icon>
         <it-button
           slot="dismiss-button"
-          icon
           it-aria-label="Rimuovi carica file"
           it-aria-description="Puoi premere per rimuovere questa azione."
         >
