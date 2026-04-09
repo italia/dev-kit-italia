@@ -11,7 +11,6 @@ interface ButtonProps {
   size: Sizes;
   type: string;
   block: boolean;
-  icon?: boolean;
   value: string;
 }
 
@@ -25,7 +24,6 @@ const renderComponent = (params: ButtonProps, defaultSlot = '') => {
       size="${ifDefined(params.size)}"
       ?block="${params.block}"
       ?disabled="${ifDefined(params.disabled ? 'true' : undefined)}"
-      ?icon="${params.icon}"
       type="${ifDefined(params.type)}"
     >
       ${slot}
@@ -91,7 +89,6 @@ const meta = {
     block: false,
     outline: false,
     disabled: false,
-    icon: false,
     type: 'button',
     value: '',
   },
@@ -121,12 +118,6 @@ const meta = {
       control: 'boolean',
       type: 'boolean',
       description: 'Applica il colore solamente al bordo, usando il colore di sfondo come colore interno del pulsante.',
-      table: { defaultValue: { summary: 'false' } },
-    },
-    icon: {
-      control: 'boolean',
-      type: 'boolean',
-      description: "Se il pulsante mostra un'icona, è necessario aggiungere questo attributo.",
       table: { defaultValue: { summary: 'false' } },
     },
     slot: {
@@ -376,7 +367,6 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
       <it-button
         variant="success"
         size="lg"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
         ?disabled="${params.disabled}"
@@ -388,7 +378,6 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
 
       <it-button
         variant="primary"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
         ?disabled="${params.disabled}"
@@ -400,7 +389,6 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
       <it-button
         variant="danger"
         size="xs"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
         ?disabled="${params.disabled}"
@@ -413,7 +401,6 @@ Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba
       <it-button
         variant="link"
         size="xs"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
         ?disabled="${params.disabled}"
@@ -452,7 +439,6 @@ export const ConIconaCerchiata: Story = {
       <it-button
         variant="success"
         size="lg"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
         ?disabled="${params.disabled}"
@@ -466,7 +452,6 @@ export const ConIconaCerchiata: Story = {
 
       <it-button
         variant="primary"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
         ?disabled="${params.disabled}"
@@ -480,7 +465,6 @@ export const ConIconaCerchiata: Story = {
 
       <it-button
         variant="danger"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
         ?disabled="${params.disabled}"
@@ -495,7 +479,6 @@ export const ConIconaCerchiata: Story = {
       <it-button
         variant="secondary"
         size="xs"
-        icon
         ?outline="${params.outline}"
         ?block="${params.block}"
         ?disabled="${params.disabled}"
