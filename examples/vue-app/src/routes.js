@@ -29,6 +29,7 @@ import Modal from './components/Modal.vue';
 import Navscroll from './components/Navscroll.vue';
 import Overlay from './components/Overlay.vue';
 import Popover from './components/Popover.vue';
+import Progress from './components/Progress.vue';
 import Radio from './components/Radio.vue';
 import Rating from './components/Rating.vue';
 import Section from './components/Section.vue';
@@ -37,6 +38,7 @@ import Sidebar from './components/Sidebar.vue';
 import Sticky from './components/Sticky.vue';
 import BottomNav from './components/BottomNav.vue';
 import Table from './components/Table.vue';
+import Toggle from './components/Toggle.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Carousel from './components/Carousel.vue';
@@ -74,6 +76,7 @@ const routes = [
   { path: '/overlay', name: 'Overlay', component: Overlay },
   { path: '/pagination', name: 'Pagination', component: Pagination },
   { path: '/popover', name: 'Popover', component: Popover },
+  { path: '/progress', name: 'Progress', component: Progress },
   { path: '/radio', name: 'Radio', component: Radio },
   { path: '/rating', name: 'Rating', component: Rating },
   { path: '/section', name: 'Section', component: Section },
@@ -83,6 +86,7 @@ const routes = [
   { path: '/bottom-nav', name: 'BottomNav', component: BottomNav },
   { path: '/sticky', name: 'Sticky', component: Sticky },
   { path: '/tables', name: 'Tables', component: Table },
+  { path: '/toggle', name: 'Toggle', component: Toggle },
   { path: '/video', name: 'Video', component: Video },
 ];
 

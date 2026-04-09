@@ -159,6 +159,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/popover.component').then((c) => c.PopoverComponent),
   },
   {
+    title: 'Progress',
+    path: 'progress',
+    loadComponent: () => import('./pages/progress.component').then((c) => c.ProgressComponent),
+  },
+  {
     title: 'Radio',
     path: 'radio',
     loadComponent: () =>
@@ -203,6 +208,11 @@ export const routes: Routes = [
     title: 'Tables',
     path: 'tables',
     loadComponent: () => import('./pages/table.component').then((c) => c.TableComponent),
+  },
+  {
+    title: 'Toggle',
+    path: 'toggle',
+    loadComponent: () => import('./pages/toggle.component').then((c) => c.ToggleComponent),
   },
   {
     title: 'Video',

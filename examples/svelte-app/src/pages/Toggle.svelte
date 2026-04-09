@@ -1,0 +1,77 @@
+>
+<h1>Toggle</h1>
+
+<it-toggle id="tgExample" name="esempioToggle" value="on">
+  <span slot="label">Interruttore di esempio</span>
+</it-toggle>
+
+<section>
+  <h2>Checked</h2>
+  <it-toggle id="checked" name="esempioToggleChecked" value="on" checked>
+    <span slot="label">Interruttore di esempio attivo</span>
+  </it-toggle>
+</section>
+
+<section>
+  <h2>Disabilitato</h2>
+  <it-toggle id="disabled-off" name="esempioToggleDisabledOff" value="on" disabled>
+    <span slot="label">Interruttore disabilitato (spento)</span>
+  </it-toggle>
+  <it-toggle id="disabled-on" name="esempioToggleDisabledOn" value="on" checked disabled>
+    <span slot="label">Interruttore disabilitato (acceso)</span>
+  </it-toggle>
+</section>
+
+<section>
+  <h2>Required</h2>
+  <it-toggle id="required" name="esempioToggleRequired" value="on" required>
+    <span slot="label">Interruttore required</span>
+  </it-toggle>
+</section>
+
+<section>
+  <h2>Inline</h2>
+  <it-toggle-group name="toggleInline" inline>
+    <span slot="legend">Gruppo di toggle</span>
+    <it-toggle id="inline-1" value="opt1">
+      <span slot="label">Interruttore inline 1</span>
+    </it-toggle>
+    <it-toggle id="inline-2" value="opt2" checked>
+      <span slot="label">Interruttore inline 2</span>
+    </it-toggle>
+  </it-toggle-group>
+</section>
+
+<section>
+  <h2>Raggruppamento</h2>
+  <it-toggle-group name="toggleGroup" group>
+    <span slot="legend">Gruppo di toggle</span>
+    <it-toggle id="group-1" value="opt1">
+      <span slot="label">Interruttore gruppo 1</span>
+    </it-toggle>
+    <it-toggle id="group-2" value="opt2">
+      <span slot="label">Interruttore gruppo 2</span>
+    </it-toggle>
+  </it-toggle-group>
+</section>
+
+<section>
+  <h2>Testo di supporto</h2>
+  <it-toggle id="supporttext" name="esempioToggleSupport" value="on" support-text="Testo di supporto">
+    <span slot="label">Interruttore di esempio</span>
+  </it-toggle>
+</section>
+
+<section>
+  <h2>Validazione custom</h2>
+  <it-toggle
+    id="customvalidation"
+    name="esempioToggleCustomValidation"
+    value="on"
+    support-text="Testo di supporto"
+    custom-validation
+    validity-message="Obbligatorio!"
+  >
+    <span slot="label">Interruttore di esempio</span>
+  </it-toggle>
+</section>

@@ -52,6 +52,7 @@ const componentsMenuItems = [
   { label: 'Overlay', href: '/src/overlay' },
   { label: 'Pagination', href: '/src/pagination.html' },
   { label: 'Popover', href: '/src/popover' },
+  { label: 'Progress', href: '/src/progress' },
   { label: 'Radio', href: '/src/radio-examples.html' },
   { label: 'Rating', href: '/src/rating.html' },
   { label: 'Section', href: '/src/section' },
@@ -60,6 +61,7 @@ const componentsMenuItems = [
   { label: 'Skiplinks', href: '/src/skiplinks' },
   { label: 'Bottom Nav', href: '/src/bottom-nav' },
   { label: 'Sticky', href: '/src/sticky' },
+  { label: 'Toggle', href: '/src/toggle' },
   { label: 'Video', href: '/src/video' },
 ];
 

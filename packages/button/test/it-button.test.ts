@@ -6,6 +6,63 @@ import { expect, fixture, html } from '@open-wc/testing';
 import { type ItButton } from '@italia/button';
 
 describe('Button component', () => {
+  describe('icon state', () => {
+    it('adds btn-icon class when an it-icon is slotted', async () => {
+      const el = await fixture<ItButton>(html`
+        <it-button>
+          <it-icon name="it-star-full"></it-icon>
+          <span>My Button</span>
+        </it-button>
+      `);
+
+      await el.updateComplete;
+      const button = el.shadowRoot?.querySelector('button');
+
+      expect(button?.classList.contains('btn-icon')).to.be.true;
+    });
+
+    it('removes btn-icon class when no it-icon is slotted', async () => {
+      const el = await fixture<ItButton>(html`
+        <it-button>
+          <span>My Button</span>
+        </it-button>
+      `);
+
+      await el.updateComplete;
+      el.innerHTML = '<span>My Button</span>';
+      await el.updateComplete;
+
+      const button = el.shadowRoot?.querySelector('button');
+      expect(button?.classList.contains('btn-icon')).to.be.false;
+    });
+  });
+
+  describe('progress state', () => {
+    it('adds btn-progress class when an it-progress is slotted', async () => {
+      const el = await fixture<ItButton>(html`
+        <it-button>
+          <it-progress type="spinner"></it-progress>
+        </it-button>
+      `);
+
+      await el.updateComplete;
+      const button = el.shadowRoot?.querySelector('button');
+
+      expect(button?.classList.contains('btn-progress')).to.be.true;
+    });
+
+    it('removes btn-progress class when no it-progress is slotted', async () => {
+      const el = await fixture<ItButton>(html` <it-button> </it-button> `);
+
+      await el.updateComplete;
+      el.innerHTML = 'My Button';
+      await el.updateComplete;
+
+      const button = el.shadowRoot?.querySelector('button');
+      expect(button?.classList.contains('btn-progress')).to.be.false;
+    });
+  });
+
   describe('accessibility', () => {
     it('default is accessible', async () => {
       const el = await fixture<ItButton>(html`<it-button>My Button</it-button>`);
