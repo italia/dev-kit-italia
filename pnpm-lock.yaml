@@ -1009,7 +1009,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-alpha.4
+        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
       lit:
         specifier: 'catalog:'
         version: 3.3.2
