@@ -117,6 +117,7 @@ describe('<it-checkbox-group> integration with FormData', () => {
 
     // fd.getAll() ritorna tutti i valori selezionati
     const values = fd.getAll('fruits');
+    console.log(values);
     expect(values).to.have.members(['apple', 'banana']);
     expect(values).to.not.include('cherry');
   });

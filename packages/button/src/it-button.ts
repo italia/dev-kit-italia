@@ -1,6 +1,6 @@
 import { BaseComponent, setAttributes } from '@italia/globals';
-import { html } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { html, type PropertyValues } from 'lit';
+import { customElement, property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { type Sizes, type Variants } from './types.js';
 import styles from './button.scss';
@@ -25,8 +25,6 @@ export class ItButton extends BaseComponent {
 
   @property({ type: Boolean, reflect: true }) block = false;
 
-  @property({ type: Boolean, reflect: true }) icon = false;
-
   @property({ type: String }) value = '';
 
   @property({ type: Boolean, reflect: true, attribute: 'it-inert' }) itInert = false;
@@ -36,6 +34,10 @@ export class ItButton extends BaseComponent {
   @property({ type: Boolean, reflect: true }) disabled?: boolean;
 
   @property({ type: Boolean, reflect: true, attribute: 'it-aria-expanded' }) expanded?: boolean;
+
+  @state() private _hasIcon = false;
+
+  @state() private _hasProgress = false;
 
   surfaceSubmitEvent(event: any) {
     if (this.form && !this.disabled) {
@@ -106,6 +108,27 @@ export class ItButton extends BaseComponent {
     super.disconnectedCallback?.();
   }
 
+  private static hasMatchingElement(elements: Element[], selector: string): boolean {
+    return elements.some((element) => element.matches(selector) || element.querySelector(selector) !== null);
+  }
+
+  override firstUpdated(changedProperties: PropertyValues<this>): void {
+    super.firstUpdated?.(changedProperties);
+    this._updateSlottedStates(Array.from(this.children));
+  }
+
+  private _updateSlottedStates = (elements: Element[]) => {
+    this._hasIcon = ItButton.hasMatchingElement(elements, 'it-icon');
+    this._hasProgress = ItButton.hasMatchingElement(elements, 'it-progress');
+  };
+
+  private _onSlotChange = (event: Event) => {
+    const slot = event.target as HTMLSlotElement;
+    const assignedElements = slot.assignedElements({ flatten: true });
+
+    this._updateSlottedStates(assignedElements);
+  };
+
   // Render the UI as a function of component state
   override render() {
     const classes = this.composeClass('btn', this.className, {
@@ -113,7 +136,8 @@ export class ItButton extends BaseComponent {
       [`btn-outline-${this.variant}`]: !!this.variant && this.outline,
       [`btn-${this.size}`]: !!this.size,
       disabled: this.disabled,
-      'btn-icon': this.icon,
+      'btn-icon': this._hasIcon,
+      'btn-progress': this._hasProgress,
       'd-block w-100': this.block,
     });
     const part = this.composeClass('button', 'focusable', {
@@ -133,7 +157,7 @@ export class ItButton extends BaseComponent {
         aria-expanded="${ifDefined(this.expanded !== undefined ? this.expanded : undefined)}"
         ?inert="${this.itInert}"
       >
-        <slot></slot>
+        <slot @slotchange="${this._onSlotChange}"></slot>
       </button>
     `;
   }

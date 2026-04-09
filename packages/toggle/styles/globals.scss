@@ -1,0 +1,22 @@
+it-toggle {
+  --it-host-display: block;
+  display: var(--it-host-display);
+
+  &[inline] {
+    --it-host-display: inline-block;
+    margin-right: 1rem;
+  }
+
+  &:not(:defined) {
+    display: flex;
+    justify-content: space-between;
+
+    &[group] {
+      margin-bottom: 1rem;
+    }
+
+    [slot='label'] {
+      margin-bottom: var(--#{$prefix}spacing-xxs);
+    }
+  }
+}

@@ -23,15 +23,7 @@ const getBody = (id: string, progress = true) =>
     <h3>Header</h3>
     ${progress
       ? html`
-          <div class="progress">
-            <div
-              class="progress-bar it-navscroll-progressbar"
-              role="progressbar"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              aria-label="Progress bar"
-            ></div>
-          </div>
+          <it-progress type="bar" value="0" class="it-navscroll-progressbar" aria-label="Progress bar"></it-progress>
         `
       : html``}
     <nav>

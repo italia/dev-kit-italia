@@ -508,7 +508,6 @@ export class ItModal extends BaseComponent {
                 ? html`<it-button
                     class="btn-close"
                     variant="link"
-                    icon
                     size="lg"
                     exportparts="focusable, button"
                     @click="${() => this.hide()}"
