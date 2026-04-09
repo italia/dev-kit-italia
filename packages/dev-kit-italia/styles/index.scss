@@ -90,6 +90,7 @@
 @import './components/go-back';
 @import './components/list';
 @import './components/sidebar';
+@import './components/header';
 
 .navbar-collapsable .menu-wrapper {
   //z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page

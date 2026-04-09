@@ -1,43 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import '@italia/button';
-import '@italia/dropdown';
-import '@italia/icon';
+// import '@italia/button';
+// import '@italia/dropdown';
+// import '@italia/icon';
 
 const meta: Meta<{}> = {
   title: 'Componenti/Header',
-  tags: ['autodocs'],
-  decorators: (Story) => html`<div id="header-sb-wrapper" style="width:100%;margin:0;">${Story()}</div>`,
-  parameters: {
-    docs: {
-      description: {
-        component: `
-L'header di un sito della Pubblica Amministrazione è solitamente composto di 3 elementi principali:
-
-- **Slim Header**: una sottile fascia dello stesso colore o, preferibilmente, di colore lievemente diverso rispetto al tema principale del sito, che mostra appartenenza e alcuni link funzionali con impatto globale o esterno al sito stesso.
-- **Header Centrale**: che identifica in modo chiaro il sito attraverso logo, testo e social, e può contenere un link per effettuare ricerche sul sito.
-- **Header Nav**: dedicato alla navigazione, visibile su schermi di grandi dimensioni e attraverso il classico pulsante di tipo "burger menu" su dispositivi mobili.
-
-Per indicazioni su "Come e Quando usarlo" si fa riferimento alla [guida del design-system](https://designers.italia.it/design-system/componenti/header/).
-
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>Considerando l'importanza dell'Header per la navigazione, si ricorda porre particolare attenzione all'utilizzo della corretta semantica HTML, alle etichette e agli attributi ARIA, oltre a validare e testare sempre con utenti il risultato.</p>
-<p>Il titolo del sito, "Nome dell'Istituzione" negli esempi, è contenuto in un <code>&lt;div&gt;</code> generico e non un tag <code>&lt;h1&gt;</code> per evitare conflitti con gli <code>&lt;h1&gt;</code> presenti nelle singole pagine. Nel caso in cui la home page fosse priva di un titolo (es: primo contenuto è una ultima notizia in evidenza) si può applicare il tag <code>&lt;h1&gt;</code> al titolo dell'header unicamente in quella pagina oppure creare un <code>h1</code> nei contenuti principali di pagina con classe <code>.visually-hidden</code>.</p>
-<p>Questa ultima soluzione sarà anche utile a dare focus direttamente al tag <code>&lt;h1&gt;</code> laddove siano presenti <a href="https://bootstrap-italia-occbc2i3f-dip-trasformazione-digitale.vercel.app/docs/menu-di-navigazione/skiplinks/">skiplinks</a> che permettano agli utenti che navigano da tastiera o con tecnologie assistive di saltare i contenuti dell'Header.</p>
-</div></div>
-`,
-      },
-    },
-  },
 };
 
 export default meta;
 type Story = StoryObj<{}>;
-
-export const Preview: Story = {
-  tags: ['!autodocs', '!dev'],
-  render: () => html``,
-};
 
 export const SlimHeader: Story = {
   parameters: {
