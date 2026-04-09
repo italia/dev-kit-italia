@@ -255,22 +255,3 @@ Questo è il comportamento usato internamente da <code>it-bottom-nav</code>.
     },
   },
 };
-
-export const StackableBottom: Story = {
-  name: 'Versione impilabile bottom',
-  args: {
-    stackable: true,
-    position: 'bottom',
-    positionType: 'fixed',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: `
-Più elementi con <code>position="bottom"</code>, <code>position-type="fixed"</code> e <code>stackable</code>
-si impilano verso l'alto dal bordo inferiore del viewport, in ordine di connessione al DOM.
-        `,
-      },
-    },
-  },
-};

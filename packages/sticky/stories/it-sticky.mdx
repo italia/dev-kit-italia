@@ -47,9 +47,9 @@ Per definire un offset in pixel tra l'elemento e il margine superiore, imposta l
 
 ## Position fixed
 
-Il componente assegna di default all'elemento da fissare la proprietà CSS `position` con valore `sticky`. In alcuni casi, questo può causare problemi di posizionamento, soprattutto se l'elemento cambia altezza quando diventa sticky. 
+Il componente assegna di default all'elemento da fissare la proprietà CSS `position` con valore `sticky`. In alcuni casi, questo può causare problemi di posizionamento, soprattutto se l'elemento cambia altezza quando diventa sticky.
 
-Puoi modificare la posizione dell'elemento, usa l'attributo `position-type:"fixed"`. 
+Puoi modificare la posizione dell'elemento, usa l'attributo `position-type:"fixed"`.
 
 [Vai all'esempio per questa funzionalità](?path=/story/esempi-sticky--fixed-sticky)
 
@@ -67,7 +67,7 @@ Per personalizzare lo stile dell'elemento quando è sticky o fixed, usa la propr
 
 Quando ci sono più componenti sticky sulla pagina, puoi impilarli l'uno sull'altro utilizzando l'attributo `stackable`.
 
-[Vai all'esempio per questa funzionalità](?path=/story/esempi-sticky--stackable-sticky) 
+[Vai all'esempio per questa funzionalità](?path=/story/esempi-sticky--stackable-sticky)
 
 [Vai all'esempio per questa funzionalità con media query e breakpoint](?path=/story/esempi-sticky--stackable-sticky-resize)
 
@@ -78,19 +78,12 @@ Quando ci sono più componenti sticky sulla pagina, puoi impilarli l'uno sull'al
 Impostando `position="bottom"` insieme a `position-type="fixed"`, l'elemento viene agganciato al bordo inferiore del viewport **immediatamente al caricamento della pagina**, senza attendere lo scroll.
 Questo è il comportamento usato internamente da `it-bottom-nav`.
 
-```html
-<it-sticky position="bottom" position-type="fixed">
-  <nav>…</nav>
-</it-sticky>
-```
-
 Aggiungendo l'attributo `stackable` è possibile sovrapporre più barre fisse in fondo, che si impileranno verso l'alto in ordine di connessione al DOM.
 
 [Vai all'esempio per questa funzionalità](?path=/story/esempi-sticky--fixed-bottom-sticky)
 
 <Canvas of={Stories.FixedBottom} />
 
-<Canvas of={Stories.StackableBottom} />
 
 ## Proprietà, metodi ed eventi accessibili via js
 
