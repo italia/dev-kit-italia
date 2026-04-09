@@ -1,0 +1,8 @@
+{
+  "extends": "@italia/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*.ts", "stories/**/*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules", "dist", "**/*.spec.ts"]
+}

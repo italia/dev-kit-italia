@@ -34,10 +34,12 @@ import Sidebar from './pages/Sidebar';
 import Skiplinks from './pages/Skiplinks';
 import Sticky from './pages/Sticky';
 import Table from './pages/Table';
+import Toggle from './pages/Toggle';
 import Video from './pages/Video';
 import Carousel from './pages/Carousel';
 import Pagination from './pages/Pagination';
 import Tabs from './pages/Tabs';
+import Progress from './pages/Progress';
 
 export const AppRoutes = [
   { path: '/', element: <Home />, title: 'Homepage' },
@@ -70,6 +72,7 @@ export const AppRoutes = [
   { path: '/overlay', element: <Overlay />, title: 'Overlay' },
   { path: '/pagination', element: <Pagination />, title: 'Pagination' },
   { path: '/popover', element: <Popover />, title: 'Popover' },
+  { path: '/progress', element: <Progress />, title: 'Progress' },
   { path: '/radio', element: <Radio />, title: 'Radio' },
   { path: '/rating', element: <Rating />, title: 'Rating' },
   { path: '/section', element: <Section />, title: 'Section' },
@@ -79,5 +82,6 @@ export const AppRoutes = [
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/tables', element: <Table />, title: 'Tables' },
   { path: '/tabs', element: <Tabs />, title: 'Tabs' },
+  { path: '/toggle', element: <Toggle />, title: 'Toggle' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];

@@ -49,7 +49,6 @@ export const Pulsante: Story = {
       @click=${() => {
         window.history.back();
       }}
-      icon
     >
       <it-icon name="it-arrow-left" size="sm" color="inverse"></it-icon>
       <span>Torna indietro</span>
@@ -60,7 +59,6 @@ export const Pulsante: Story = {
       @click=${() => {
         window.history.back();
       }}
-      icon
     >
       <it-icon name="it-arrow-up" size="sm" color="inverse"></it-icon>
       <span>Torna indietro</span>
@@ -78,7 +76,6 @@ export const PulsanteSolaIcona: Story = {
     <it-button
       variant="primary"
       class="go-back"
-      icon
       @click=${() => {
         window.history.back();
       }}
@@ -89,7 +86,6 @@ export const PulsanteSolaIcona: Story = {
     <it-button
       variant="primary"
       class="go-back"
-      icon
       @click=${() => {
         window.history.back();
       }}

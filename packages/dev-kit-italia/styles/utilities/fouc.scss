@@ -2,6 +2,7 @@
 
 :root {
   --it-fouc-bg: #ddd;
+  --it-fouc-color: #000;
   --it-host-display: inline-block;
 }
 
@@ -48,6 +49,7 @@
       background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
       background-repeat: no-repeat;
       background-size: 200% 100%;
+      color: var(--it-fouc-color);
       vertical-align: middle;
 
       // dimensioni condizionali
@@ -209,6 +211,42 @@ $it-components: (
   'it-tab-panel': (
     height: 100%,
     display: none !important,
+  ),
+  'it-progress': (
+    height: 4px,
+    width: 100%,
+    border-radius: var(--#{$prefix}radius-smooth, 4px),
+  ),
+  'it-progress[type="spinner"]': (
+    height: 48px,
+    width: 48px,
+    border-radius: 50%,
+  ),
+  'it-progress[type="spinner"][size="sm"]': (
+    height: 32px,
+    width: 32px,
+    border-radius: 50%,
+  ),
+  'it-progress[type="spinner"][size="lg"]': (
+    height: 64px,
+    width: 64px,
+    border-radius: 50%,
+  ),
+  'it-progress[type="spinner"][size="xl"]': (
+    height: 80px,
+    width: 80px,
+    border-radius: 50%,
+  ),
+  'it-progress[type="donut"]': (
+    height: 180px,
+    width: 180px,
+    border-radius: 50%,
+  ),
+  'it-toggle': (
+    height: 24px,
+    width: 48px,
+    pseudo: after,
+    border-radius: var(--#{$prefix}radius-rounded, 40px),
   ),
 );
 

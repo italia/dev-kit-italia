@@ -1,0 +1,123 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import * as ProgressStories from './it-progress.stories';
+
+<Meta of={ProgressStories} />
+
+# Progress
+
+Indicatori di stato attivo e di avanzamento di un’operazione.
+
+## Cosa fa
+
+Il componente `it-progress` rappresenta lo stato di avanzamento o di elaborazione di un'operazione come il caricamento di un file o l’invio dei dati di un modulo.
+
+Può essere usato in tre modalità, tramite l'attributo `type`:
+
+- `bar`: barra di avanzamento lineare;
+- `donut`: avanzamento circolare;
+- `spinner`: stato di caricamento/attesa.
+
+### Alternative a questo componente
+
+- Notifications (in lavorazione): visivamente meno prominente, utile quando ci sono una o due sezioni di contenuti brevi meno importanti.
+
+
+## Anteprima e attributi delcomponente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={ProgressStories.EsempioInterattivo} />
+
+<Controls of={ProgressStories.EsempioInterattivo} />
+
+
+## Accessibilità
+
+Il componente e' progettato per essere accessibile e utilizza l'attributo aria `role=progressbar` con `aria-valuenow` impostato al valore dell'attributo `value` di `<it-progress>`. 
+Gli attributi `aria-value-min` e `aria-value-max` sono sempre impostati rispettivamente a `0` e `100` dal componente, pertanto l'attributo `value` dovrà essere sempre un valore compreso tra 0 e 100. 
+
+- Imposta sempre una `it-aria-label` significativa quando il contesto non è già chiaro. 
+- Per la variante `spinner`, fornisci un testo per tecnologie assistive nell'attributo `it-aria-label`, oppure usa il fallback predefinito.
+
+
+## Progress bar
+
+### Con etichetta
+
+Per aggiungere etichette con testo che indica il progresso, puoi usare gli attributi:
+- `show-value` per mostrare un'etichetta con il valore percentuale calcolato automaticamente in base al valore di `value`.
+- Oppure, puoi inserire un testo personalizzato all'interno del componente, che verrà mostrato al posto della percentuale, utilizzando l'attributo `label`.
+
+Non dimenticare di fornire un testo esplicativo per gli Screen Reader tramite l'attributo `it-aria-label`.
+
+<Canvas of={ProgressStories.ConEtichetta} />
+
+### Indeterminato
+
+Quando non è possibile stabilire una percentuale di progressione,
+utilizza una Progress Bar di tipo indeterminato, aggiungendo l'attributo `indeterminate` al componente `it-progress`.
+
+<Canvas of={ProgressStories.Indeterminato} />
+
+### Colori
+
+Puoi modificare il colore della barra di avanzamento usando l'attributo `color` con i seguenti valori:
+- `success`
+- `info`
+- `warning`
+- `danger`
+
+<Canvas of={ProgressStories.Colori} />
+
+### Pulsante con progress bar
+Puoi integrare la progress bar all'interno di un pulsante per indicare un'azione in corso, come l'invio di un modulo o il caricamento di una pagina. In questo caso, la progress bar viene visualizzata all'interno del pulsante stesso.
+<Canvas of={ProgressStories.Button} />
+
+## Donut
+
+Usa il donut quando vuoi mostrare una percentuale di completamento con una rappresentazione circolare.
+
+<Canvas of={ProgressStories.Donut} />
+
+
+## Spinner
+
+Usa lo spinner quando non è disponibile una percentuale precisa di avanzamento.
+
+È utile quindi quando non è possibile determinare il tempo necessario a completare una procedura.
+
+Puoi scegliere tra tre dimensioni (small, large, extralarge) e due varianti (standard e double).
+
+Usa l'attributo `size` per scegliere la dimensione (`sm`, `lg`, `xl`)
+
+Usa l'attributo `active` per attivare l'animazione dello spinner.
+
+Usa l'attributo `it-aria-label` per fornire una descrizione testuale dello stato di caricamento, utile per tecnologie assistive.
+
+<Canvas of={ProgressStories.Spinner} />
+
+
+### Spinner doppio
+La variante double dello spinner, mostra due cerchi concentrici che ruotano in senso opposto, per un effetto più dinamico.
+
+Usa l'attributo `double` per attivare la variante double.
+
+Usa l'attributo `size` per scegliere la dimensione (`sm`, `lg`, `xl`)
+
+Usa l'attributo `active` per attivare l'animazione dello spinner.
+
+Usa l'attributo `it-aria-label` per fornire una descrizione testuale dello stato di caricamento, utile per tecnologie assistive.
+
+<Canvas of={ProgressStories.SpinnerDoppio} />
+
+
+## Personalizzazione degli stili
+
+Per personalizzare gli stili del componente, usa i selettori `::part`:
+
+- `::part(progress)` e `::part(progress-bar)` per la variante `bar`;
+- `::part(donut-wrapper)` e `::part(donut)` per la variante `donut`;
+- `::part(spinner)` per la variante `spinner`.
+
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
