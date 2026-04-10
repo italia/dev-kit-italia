@@ -1,10 +1,11 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
 
-@import 'bootstrap-italia/src/scss/base/reboot'; //per gli stili di ::before e ::after
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
-@import 'bootstrap-italia/src/scss/components/rating';
+@use 'bootstrap-italia/src/scss/base/reboot'; //per gli stili di ::before e ::after
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
+@use 'bootstrap-italia/src/scss/components/rating' as *;
 
 :host {
   display: flex;

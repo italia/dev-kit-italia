@@ -32,11 +32,12 @@ A causa dell'uso diffuso di tabelle su widget di terze parti come calendari e ca
       da `bootstrap-italia`:
 
 
-      ```css
-      @import 'bootstrap-italia/src/scss/base/functions';
-      @import 'bootstrap-italia/src/scss/base/variables';
-      @import 'bootstrap-italia/src/scss/base/mixins';
-      @import 'bootstrap-italia/src/scss/components/tables';
+      ```scss
+      @use 'bootstrap-italia/src/scss/base/functions' as *;
+      @use 'bootstrap-italia/src/scss/base/config' as *;
+      @use 'bootstrap-italia/src/scss/base/variables' as *;
+      @use 'bootstrap-italia/src/scss/base/mixins' as *;
+      @use 'bootstrap-italia/src/scss/components/tables' as *;
       ```
 
     </p>

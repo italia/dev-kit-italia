@@ -1,8 +1,8 @@
 // Global styles that need to be imported at page level
 // These styles affect elements outside the shadow DOM
 
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
 
 // Body scroll lock when modal is open
 body.modal-open {

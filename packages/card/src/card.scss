@@ -1,32 +1,35 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
-@import 'bootstrap-italia/src/scss/base/helpers/ratio';
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
+@use 'bootstrap-italia/src/scss/base/helpers/ratio' as *;
 
-@import 'bootstrap-italia/src/scss/components/card';
-@import 'bootstrap-italia/src/scss/components/type';
+@use 'bootstrap-italia/src/scss/components/card' as *;
+@use 'bootstrap-italia/src/scss/components/type' as *;
 
-//ovveride utilities: get only needed utilities
-$utilities: (
-  'rounded': map-merge(
-      map-get($utilities, 'rounded'),
+utilities.$utilities: (
+  'rounded': map.merge(
+      map.get(utilities.$utilities, 'rounded'),
       (
         values: (
-          null: map-get(map-get(map-get($utilities, 'rounded'), 'values'), null),
+          null: map.get(map.get(map.get(utilities.$utilities, 'rounded'), 'values'), null),
         ),
       )
     ),
-  'display': map-merge(
-      map-get($utilities, 'display'),
+  'display': map.merge(
+      map.get(utilities.$utilities, 'display'),
       (
         values: none,
       )
     ),
-  'shadow': map-get($utilities, 'shadow'),
-  'border': map-get($utilities, 'border'),
+  'shadow': map.get(utilities.$utilities, 'shadow'),
+  'border': map.get(utilities.$utilities, 'border')
 );
+
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 /**
  * Copied from bsi reboot
@@ -104,5 +107,3 @@ dl {
 ::slotted(.it-card-taxonomy) {
   flex-grow: 1;
 }
-
-@import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities

@@ -1,4 +1,6 @@
 @use 'sass:list';
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/config' as *;
 
 :root {
   --it-fouc-bg: #ddd;
@@ -274,14 +276,14 @@ $it-components: (
 @each $tag, $params in $it-components {
   @include it-shimmer(
     $tag,
-    map-get($params, height),
-    if(map-has-key($params, width), map-get($params, width), null),
-    if(map-has-key($params, attr), map-get($params, attr), null),
-    if(map-has-key($params, border-radius), map-get($params, border-radius), 0),
-    if(map-has-key($params, bg), map-get($params, bg), null),
-    if(map-has-key($params, padding), map-get($params, padding), null),
-    if(map-has-key($params, margin), map-get($params, margin), null),
-    if(map-has-key($params, aspect-ratio), map-get($params, aspect-ratio), null),
-    if(map-has-key($params, pseudo), map-get($params, pseudo), null)
+    map.get($params, height),
+    if(map.has-key($params, width), map.get($params, width), null),
+    if(map.has-key($params, attr), map.get($params, attr), null),
+    if(map.has-key($params, border-radius), map.get($params, border-radius), 0),
+    if(map.has-key($params, bg), map.get($params, bg), null),
+    if(map.has-key($params, padding), map.get($params, padding), null),
+    if(map.has-key($params, margin), map.get($params, margin), null),
+    if(map.has-key($params, aspect-ratio), map.get($params, aspect-ratio), null),
+    if(map.has-key($params, pseudo), map.get($params, pseudo), null)
   );
 }

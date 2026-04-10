@@ -1,15 +1,16 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/mixins/focus' as *;
 
-@import 'bootstrap-italia/src/scss/base/reboot'; //per gli stili di ::before e ::after
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@use 'bootstrap-italia/src/scss/base/reboot'; //per gli stili di ::before e ::after
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
-@import 'bootstrap-italia/src/scss/forms/forms';
-@import 'bootstrap-italia/src/scss/forms/form-control';
-@import 'bootstrap-italia/src/scss/forms/form-check';
-@import 'bootstrap-italia/src/scss/forms/form-toggles';
-@import 'bootstrap-italia/src/scss/forms/just-validate';
+@use 'bootstrap-italia/src/scss/forms/forms' as *;
+@use 'bootstrap-italia/src/scss/forms/form-control' as *;
+@use 'bootstrap-italia/src/scss/forms/form-check' as *;
+@use 'bootstrap-italia/src/scss/forms/form-toggles' as *;
+@use 'bootstrap-italia/src/scss/forms/just-validate' as *;
 
 ::part(checkbox) {
   &:focus:focus-visible {
@@ -37,7 +38,7 @@
 
   //definisco gli stili di focus corretti
   &:has(input[type='checkbox']:focus-visible) {
-    @extend %focus;
+    @include focus;
 
     input,
     .lever {

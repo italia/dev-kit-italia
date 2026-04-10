@@ -1,3 +1,7 @@
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+
 it-megamenu {
   &:not(:defined) {
     --it-fouc-bg: transparent;

@@ -1,29 +1,33 @@
-/* stylelint-disable rule-empty-line-before */
-/* stylelint-disable prettier/prettier */
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/components/grid';
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
+@use 'bootstrap-italia/src/scss/components/grid' as *;
 
-@import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
+// @use 'bootstrap-italia/src/scss/components/nav' as *;
+@use 'bootstrap-italia/src/scss/components/megamenu' as *;
 
-// @import 'bootstrap-italia/src/scss/components/nav';
-@import 'bootstrap-italia/src/scss/components/megamenu';
-
-//ovveride utilities: get only needed utilities
-$utilities: (
-  'padding': map-get($utilities, 'padding'),
-  'padding-y': map-get($utilities, 'padding-y'),
-  'padding-top': map-get($utilities, 'padding-top'),
-  'padding-bottom': map-get($utilities, 'padding-bottom'),
-  'padding-x': map-get($utilities, 'padding-x'),
-  'padding-start': map-get($utilities, 'padding-start'),
-  'margin-start': map-get($utilities, 'margin-start'),
-  'margin-end': map-get($utilities, 'margin-end'),
-  'text-align': map-merge(map-get($utilities, 'text-align'), ('values': end, )),
+utilities.$utilities: (
+  'padding': map.get(utilities.$utilities, 'padding'),
+  'padding-y': map.get(utilities.$utilities, 'padding-y'),
+  'padding-top': map.get(utilities.$utilities, 'padding-top'),
+  'padding-bottom': map.get(utilities.$utilities, 'padding-bottom'),
+  'padding-x': map.get(utilities.$utilities, 'padding-x'),
+  'padding-start': map.get(utilities.$utilities, 'padding-start'),
+  'margin-start': map.get(utilities.$utilities, 'margin-start'),
+  'margin-end': map.get(utilities.$utilities, 'margin-end'),
+  'text-align': map.merge(
+      map.get(utilities.$utilities, 'text-align'),
+      (
+        'values': end,
+      )
+    )
 );
-@import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
+
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 :host {
   .dropdown-menu {
@@ -83,7 +87,7 @@ $utilities: (
       }
     }
 
-    @media (min-width: #{map-get($grid-breakpoints, lg)}) {
+    @media (min-width: #{map.get($grid-breakpoints, lg)}) {
       &::part(button) {
         border-bottom: var(--#{$prefix}navbar-link-border-size) solid var(--#{$prefix}navbar-link-border-color);
         border-left: none;

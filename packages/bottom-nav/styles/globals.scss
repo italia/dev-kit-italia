@@ -1,5 +1,6 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
 
 // Light DOM styles for content inside the slotted <a>.
 // ::slotted() in shadow DOM cannot reach descendants of the slotted element,
@@ -88,9 +89,9 @@ it-bottom-nav:not(:defined) {
   justify-content: space-around;
 
   it-bottom-nav-item:not(:defined) {
+    display: flex;
     margin: 8px;
     text-align: center;
-    display: flex;
 
     a {
       display: block;

@@ -1,13 +1,13 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/reboot'; //per il font dentro agli input
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/reboot'; //per il font dentro agli input
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
-@import 'bootstrap-italia/src/scss/forms/forms';
-@import 'bootstrap-italia/src/scss/forms/form-control';
+@use 'bootstrap-italia/src/scss/forms/forms' as *;
+@use 'bootstrap-italia/src/scss/forms/form-control' as *;
 
-@import 'bootstrap-italia/src/scss/forms/form-select';
+@use 'bootstrap-italia/src/scss/forms/form-select' as *;
 
-@import 'bootstrap-italia/src/scss/forms/just-validate';
+@use 'bootstrap-italia/src/scss/forms/just-validate' as *;

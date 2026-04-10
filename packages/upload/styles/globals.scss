@@ -1,3 +1,5 @@
+@use 'bootstrap-italia/src/scss/base/config' as *;
+
 it-upload {
   --it-host-display: block;
   display: var(--it-host-display);

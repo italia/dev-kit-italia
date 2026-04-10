@@ -1,14 +1,19 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
 
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/utilities';
+// Componente Modal di Bootstrap Italia
+@use 'bootstrap-italia/src/scss/components/modal' as *;
+@use 'bootstrap-italia/src/scss/components/type' as *;
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
-// Utilities necessarie per il modal
-$utilities: (
-  'display': map-merge(
-      map-get($utilities, 'display'),
+utilities.$utilities: (
+  'display': map.merge(
+      map.get(utilities.$utilities, 'display'),
       (
         'values': (
           none: none,
@@ -17,23 +22,18 @@ $utilities: (
         ),
       )
     ),
-  'overflow': map-merge(
-      map-get($utilities, 'overflow'),
+  'overflow': map.merge(
+      map.get(utilities.$utilities, 'overflow'),
       (
         'values': (
           auto: auto,
           hidden: hidden,
         ),
       )
-    ),
+    )
 );
 
-@import 'bootstrap-italia/src/scss/base/utilities/api';
-
-// Componente Modal di Bootstrap Italia
-@import 'bootstrap-italia/src/scss/components/modal';
-@import 'bootstrap-italia/src/scss/components/type';
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 // Host styles
 :host {

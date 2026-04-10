@@ -1,22 +1,21 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/reboot';
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
-
-@import 'bootstrap-italia/src/scss/base/utilities';
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
+@use 'bootstrap-italia/src/scss/base/reboot';
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
 // Required because progress-spinners extends %progress defined in progress-bars
-@import 'bootstrap-italia/src/scss/components/progress-bars';
-@import 'bootstrap-italia/src/scss/components/progress-donuts';
-@import 'bootstrap-italia/src/scss/components/progress-spinners';
+@use 'bootstrap-italia/src/scss/components/progress-bars' as *;
+@use 'bootstrap-italia/src/scss/components/progress-donuts' as *;
+@use 'bootstrap-italia/src/scss/components/progress-spinners' as *;
 
-$utilities: (
-  'background-color': map-get($utilities, 'background-color'),
-);
+utilities.$utilities: ('background-color': map.get(utilities.$utilities, 'background-color'));
 
-@import 'bootstrap-italia/src/scss/base/utilities/api';
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 // Allow the track background circle color to be overridden from outside the shadow DOM
 // via CSS custom property. Used by it-upload-drag-drop to show the illustration image
