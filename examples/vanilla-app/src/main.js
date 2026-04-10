@@ -41,6 +41,7 @@ const componentsMenuItems = [
   { label: 'Dropdown', href: '/src/dropdown' },
   { label: 'Form', href: '/src/form' },
   { label: 'Forward', href: '/src/forward' },
+  { label: 'Header', href: '/src/header' },
   { label: 'Hero', href: '/src/hero' },
   { label: 'Icon', href: '/src/icon' },
   { label: 'Input', href: '/src/input' },

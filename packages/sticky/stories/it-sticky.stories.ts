@@ -54,16 +54,19 @@ Il componente gestisce in autonomia anche casi avanzati, come elementi impilabil
       table: { defaultValue: { summary: false } },
     },
     paddingTop: {
+      name: 'padding-top',
       control: 'number',
       description: "Indica la distanza dall'elemento in sticky dal margine superiore",
       table: { defaultValue: { summary: 0 } },
     },
     stickyClassName: {
+      name: 'sticky-class-name',
       control: 'text',
       description: "Classi CSS da applicare all'elemento quando viene attivata la funzionalità sticky",
       table: { defaultValue: { summary: '' } },
     },
     positionType: {
+      name: 'position-type',
       control: { type: 'select' },
       options: ['sticky', 'fixed'],
       description: 'Indica il valore della proprietà CSS `position`. I valori ammessi sono `sticky` o `fixed`',

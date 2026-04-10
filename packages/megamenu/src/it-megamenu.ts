@@ -139,7 +139,8 @@ export class ItMegamenu extends ItDropdownBase {
         placement=${this.alignment}
         @it-popover-open=${this._onPopoverOpen}
         @it-popover-close=${this._onPopoverClose}
-        exportparts="focusable, icon, button"
+        exportparts="focusable, icon, button, dropdown-button, dropdown-icon-expand"
+        part="dropdown-popover"
         ?open=${this._popoverOpen}
         offset="0"
         controlled
@@ -157,11 +158,18 @@ export class ItMegamenu extends ItDropdownBase {
           class="dropdown-toggle nav-link ${this.active ? 'active' : ''}"
           it-aria-label=${ifDefined(this.itAriaLabel ? this.itAriaLabel : undefined)}
           exportparts="focusable, button"
+          part="dropdown-button"
           it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
           it-aria-controls=${this._popoverOpen ? this._menuId : nothing}
         >
           ${this.alignment.startsWith('left')
-            ? html`<it-icon name="it-expand" class="icon-expand left" size="xs" exportparts="icon"></it-icon>`
+            ? html`<it-icon
+                name="it-expand"
+                class="icon-expand left"
+                size="xs"
+                exportparts="icon"
+                part="dropdown-icon-expand"
+              ></it-icon>`
             : ''}
           ${this.label}
           ${!this.alignment.startsWith('left')
@@ -172,6 +180,7 @@ export class ItMegamenu extends ItDropdownBase {
                   top: this.alignment.startsWith('top'),
                 })}
                 exportparts="icon"
+                part="dropdown-icon-expand"
                 size="xs"
               ></it-icon>`
             : ''}
