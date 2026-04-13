@@ -1,3 +1,8 @@
+.navbar-collapsable .menu-wrapper {
+  //z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page
+  z-index: auto; // to avoid megamenu dropdowns in header to be overlapped by navscroll or other items in page
+}
+
 // HEADER SLIM
 .it-header-slim-wrapper {
   .btn.btn-full {

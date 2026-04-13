@@ -18,6 +18,8 @@ export interface StickyOptions {
 export class StickyController<T extends ItSticky = ItSticky> implements ReactiveController {
   public visualOrder: number = 0;
 
+  private readonly windowUpdateHandler = this.onWindowUpdate.bind(this);
+
   public setVisualOrder(order: number) {
     this.visualOrder = order;
   }
@@ -31,6 +33,8 @@ export class StickyController<T extends ItSticky = ItSticky> implements Reactive
   private height = 0;
 
   private prevHeight = 0;
+
+  private reservedHeight = 0;
 
   private hostElement: T;
 
@@ -52,17 +56,18 @@ export class StickyController<T extends ItSticky = ItSticky> implements Reactive
   hostConnected() {
     WindowManager.init();
     this.computeLimit();
-    this.originalLimit = this.hostElement.offsetTop;
-    WindowManager.subscribe(this.onWindowUpdate.bind(this));
+    WindowManager.subscribe(this.windowUpdateHandler);
 
     // Setup ResizeObserver
     if (this.hostElement.firstElementChild) {
       const content = this.hostElement.firstElementChild;
       this.resizeObserver = new ResizeObserver(() => {
-        const currentHeight =
-          this.hostElement.getBoundingClientRect().height + Number(this.hostElement.paddingTop || 0);
+        const currentHeight = this.measureHeight();
         if (currentHeight !== this.height) {
           this.height = currentHeight;
+          if (!this._isSticky) {
+            this.reservedHeight = currentHeight;
+          }
           this.computeLimit();
 
           if (this.hostElement.stackable && this._isSticky) {
@@ -76,7 +81,7 @@ export class StickyController<T extends ItSticky = ItSticky> implements Reactive
   }
 
   hostDisconnected() {
-    WindowManager.unsubscribe(this.onWindowUpdate.bind(this));
+    WindowManager.unsubscribe(this.windowUpdateHandler);
     this.host.removeController(this);
     this.resizeObserver?.disconnect();
   }
@@ -84,7 +89,10 @@ export class StickyController<T extends ItSticky = ItSticky> implements Reactive
   hostUpdate() {
     // Compute limit on every update
     this.computeLimit();
-    this.prevHeight = this.hostElement.getBoundingClientRect().height + Number(this.hostElement.paddingTop || 0);
+    this.prevHeight = this.measureHeight();
+    if (!this._isSticky) {
+      this.reservedHeight = this.prevHeight;
+    }
     // If sticky, recalculate position
     if (this._isSticky) {
       const offset = this.hostElement.stackable ? this.computeOffset() : 0;
@@ -102,8 +110,13 @@ export class StickyController<T extends ItSticky = ItSticky> implements Reactive
       const rect = this.hostElement.getBoundingClientRect();
       const { scrollY } = window;
       this.limit = rect.top + scrollY;
-      this.height = rect.height + Number(this.hostElement.paddingTop || 0);
+      this.originalLimit = this.limit;
+      this.height = rect.height;
     }
+  }
+
+  protected measureHeight() {
+    return this.hostElement.getBoundingClientRect().height;
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -178,10 +191,13 @@ export class StickyController<T extends ItSticky = ItSticky> implements Reactive
   }
 
   protected onWindowUpdate(state: ScrollState, forceRecalc?: boolean) {
-    const currentHeight = this.hostElement.getBoundingClientRect().height;
+    const currentHeight = this.measureHeight();
     if (forceRecalc && currentHeight !== this.prevHeight) {
       this.computeLimit();
       this.prevHeight = currentHeight;
+      if (!this._isSticky) {
+        this.reservedHeight = currentHeight;
+      }
     }
 
     let offset = 0;
@@ -224,6 +240,10 @@ export class StickyController<T extends ItSticky = ItSticky> implements Reactive
       // so getBoundingClientRect() returns correct dimensions
       this.updateAllActiveFixedPositions();
     } else {
+      const layoutHeight = this.reservedHeight || this.measureHeight();
+      if (layoutHeight > 0) {
+        this.hostElement.style.minHeight = `${layoutHeight}px`;
+      }
       this.hostElement.classList.add(...classes, 'bs-is-sticky');
       this.hostElement.style.top = `${offset + Number(this.hostElement.paddingTop || 0)}px`;
     }
@@ -251,6 +271,7 @@ export class StickyController<T extends ItSticky = ItSticky> implements Reactive
       this.hostElement.classList.remove(...classes, 'bs-is-sticky');
     }
     this.hostElement.style.top = '';
+    this.hostElement.style.minHeight = '';
 
     this.hostElement.dispatchEvent(
       new CustomEvent('it-sticky-off', {

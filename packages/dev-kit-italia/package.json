@@ -64,6 +64,7 @@
     "@italia/chip": "workspace:^",
     "@italia/collapse": "workspace:^",
     "@italia/dropdown": "workspace:^",
+    "@italia/header": "workspace:^",
     "@italia/i18n": "workspace:^",
     "@italia/rating": "workspace:^",
     "@italia/hero": "workspace:^",

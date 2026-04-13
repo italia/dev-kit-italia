@@ -104,6 +104,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/forward.component').then((c) => c.ForwardComponent),
   },
   {
+    title: 'Header',
+    path: 'header',
+    loadComponent: () => import('./pages/header.component').then((c) => c.HeaderComponent),
+  },
+  {
     title: 'Hero',
     path: 'hero',
     loadComponent: () => import('./pages/hero.component').then((c) => c.HeroComponent),

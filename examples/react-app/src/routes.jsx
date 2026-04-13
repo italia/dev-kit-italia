@@ -17,6 +17,7 @@ import Collapse from './pages/Collapse';
 import Dropdown from './pages/Dropdown';
 import Form from './pages/Form';
 import Forward from './pages/Forward';
+import Header from './pages/Header';
 import Hero from './pages/Hero';
 import Icon from './pages/Icon';
 import Input from './pages/Input';
@@ -61,6 +62,7 @@ export const AppRoutes = [
   { path: '/dropdown', element: <Dropdown />, title: 'Dropdown' },
   { path: '/form', element: <Form />, title: 'Form' },
   { path: '/forward', element: <Forward />, title: 'Forward' },
+  { path: '/header', element: <Header />, title: 'Header' },
   { path: '/hero', element: <Hero />, title: 'Hero' },
   { path: '/icon', element: <Icon />, title: 'Icon' },
   { path: '/input', element: <Input />, title: 'Input' },
