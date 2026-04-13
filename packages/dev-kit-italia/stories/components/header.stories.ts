@@ -30,18 +30,9 @@ const renderHeaderSlim = ({ accessButton = 'default', theme = 'default' } = {}) 
       <div class="row">
         <div class="col-12">
           <div class="it-header-slim-wrapper-content">
-            <a class="d-none d-lg-block navbar-brand" href="#">Ente appartenenza</a>
+            <a class="d-block navbar-brand" href="#">Ente appartenenza</a>
             <div class="nav-mobile">
               <nav aria-label="Navigazione accessoria">
-                <it-dropdown label="Ente appartenenza" size="sm" alignment="bottom-end" class="d-lg-none">
-                  <it-dropdown-item href="#">
-                    <span>Link 1</span>
-                  </it-dropdown-item>
-                  <it-dropdown-item href="#" active>
-                    <span>Link 2 (Attivo)</span>
-                  </it-dropdown-item>
-                </it-dropdown>
-
                 <div class="link-list-wrapper d-none d-lg-flex">
                   <ul class="link-list">
                     <li><a class="dropdown-item list-item" href="#" data-focus-mouse="false">Link 1</a></li>
