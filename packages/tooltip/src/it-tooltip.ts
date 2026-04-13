@@ -17,15 +17,13 @@ const BSI_PLACEMENT_CLASSES = {
 export class ItTooltip extends BaseComponent {
   static styles = styles;
 
+  static OFFSET = 0;
+
   @property({ type: Boolean, reflect: true }) open = false;
 
   @property({ type: Boolean }) controlled = false;
 
   @property({ type: String }) placement: TooltipPlacement = 'top';
-
-  @property({ type: Number }) offset: number = 8;
-
-  @property({ type: String, reflect: true }) label = '';
 
   @property({ type: Boolean, attribute: 'no-flip' }) noFlip: boolean = false;
 
@@ -127,7 +125,7 @@ export class ItTooltip extends BaseComponent {
       computePosition(trigger, this._tooltipElement, {
         placement: this.placement,
         middleware: [
-          offset(this.offset),
+          offset(ItTooltip.OFFSET),
           flip({ mainAxis: !this.noFlip, crossAxis: !this.noFlip }),
           shift({ padding: 8 }),
           arrow({ element: this._arrowElement }),
@@ -189,7 +187,7 @@ export class ItTooltip extends BaseComponent {
       ></slot>
       <div class="tooltip" role="tooltip" id=${ifDefined(this._id)} aria-hidden="true">
         <div class="tooltip-arrow"></div>
-        <div class="tooltip-inner">${this.label}</div>
+        <div class="tooltip-inner"><slot name="content"></slot></div>
       </div>
     `;
   }

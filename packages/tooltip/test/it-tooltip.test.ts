@@ -9,8 +9,9 @@ describe('Tooltip component', () => {
   describe('accessibility', () => {
     it('default is accessible', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo del tooltip">
+        <it-tooltip>
           <it-button slot="trigger">Trigger</it-button>
+          <span slot="content">Testo del tooltip</span>
         </it-tooltip>
       `);
       await expect(el).to.be.accessible();
@@ -18,8 +19,9 @@ describe('Tooltip component', () => {
 
     it('tooltip div has role="tooltip"', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo del tooltip">
+        <it-tooltip>
           <it-button slot="trigger">Trigger</it-button>
+          <span slot="content">Testo del tooltip</span>
         </it-tooltip>
       `);
       const tooltipDiv = el.shadowRoot!.querySelector('.tooltip');
@@ -28,8 +30,9 @@ describe('Tooltip component', () => {
 
     it('sets it-aria-describedby on it-button trigger', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo del tooltip">
+        <it-tooltip>
           <it-button slot="trigger">Trigger</it-button>
+          <span slot="content">Testo del tooltip</span>
         </it-tooltip>
       `);
       await el.updateComplete;
@@ -40,8 +43,9 @@ describe('Tooltip component', () => {
 
     it('sets aria-describedby on plain HTML trigger', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo del tooltip">
+        <it-tooltip>
           <button slot="trigger">Trigger</button>
+          <span slot="content">Testo del tooltip</span>
         </it-tooltip>
       `);
       await el.updateComplete;
@@ -52,8 +56,9 @@ describe('Tooltip component', () => {
 
     it('tooltip is aria-hidden when closed', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo del tooltip">
+        <it-tooltip>
           <it-button slot="trigger">Trigger</it-button>
+          <span slot="content">Testo del tooltip</span>
         </it-tooltip>
       `);
       const tooltipDiv = el.shadowRoot!.querySelector('.tooltip');
@@ -62,8 +67,9 @@ describe('Tooltip component', () => {
 
     it('tooltip is not aria-hidden when open', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo del tooltip">
+        <it-tooltip>
           <it-button slot="trigger">Trigger</it-button>
+          <span slot="content">Testo del tooltip</span>
         </it-tooltip>
       `);
       el.showTooltip();
@@ -76,8 +82,9 @@ describe('Tooltip component', () => {
   describe('functionality', () => {
     it('renders with default placement top', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo">
+        <it-tooltip>
           <button slot="trigger">Trigger</button>
+          <span slot="content">Testo</span>
         </it-tooltip>
       `);
       expect(el.placement).to.equal('top');
@@ -85,27 +92,31 @@ describe('Tooltip component', () => {
 
     it('renders with default closed state', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo">
+        <it-tooltip>
           <button slot="trigger">Trigger</button>
+          <span slot="content">Testo</span>
         </it-tooltip>
       `);
       expect(el.open).to.be.false;
     });
 
-    it('renders label text', async () => {
+    it('renders content slot text', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo del tooltip">
+        <it-tooltip>
           <button slot="trigger">Trigger</button>
+          <span slot="content">Testo del tooltip</span>
         </it-tooltip>
       `);
-      const inner = el.shadowRoot!.querySelector('.tooltip-inner');
-      expect(inner?.textContent?.trim()).to.equal('Testo del tooltip');
+      const slot = el.shadowRoot!.querySelector('slot[name="content"]') as HTMLSlotElement;
+      const text = slot?.assignedNodes({ flatten: true })[0]?.textContent?.trim();
+      expect(text).to.equal('Testo del tooltip');
     });
 
     it('opens and closes programmatically', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo">
+        <it-tooltip>
           <button slot="trigger">Trigger</button>
+          <span slot="content">Testo</span>
         </it-tooltip>
       `);
       el.showTooltip();
@@ -119,8 +130,9 @@ describe('Tooltip component', () => {
 
     it('toggles open state', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo">
+        <it-tooltip>
           <button slot="trigger">Trigger</button>
+          <span slot="content">Testo</span>
         </it-tooltip>
       `);
       el.toggle();
@@ -134,8 +146,9 @@ describe('Tooltip component', () => {
 
     it('supports different placements', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo" placement="bottom">
+        <it-tooltip placement="bottom">
           <button slot="trigger">Trigger</button>
+          <span slot="content">Testo</span>
         </it-tooltip>
       `);
       expect(el.placement).to.equal('bottom');
@@ -145,8 +158,9 @@ describe('Tooltip component', () => {
   describe('events', () => {
     it('emits it-tooltip-open when opened', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo">
+        <it-tooltip>
           <button slot="trigger">Trigger</button>
+          <span slot="content">Testo</span>
         </it-tooltip>
       `);
       let fired = false;
@@ -160,8 +174,9 @@ describe('Tooltip component', () => {
 
     it('emits it-tooltip-close when closed', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo">
+        <it-tooltip>
           <button slot="trigger">Trigger</button>
+          <span slot="content">Testo</span>
         </it-tooltip>
       `);
       let fired = false;
@@ -179,8 +194,9 @@ describe('Tooltip component', () => {
   describe('interaction', () => {
     it('shows on mouseenter and hides on mouseleave', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo">
+        <it-tooltip>
           <button slot="trigger">Trigger</button>
+          <span slot="content">Testo</span>
         </it-tooltip>
       `);
       const trigger = el.querySelector('[slot="trigger"]') as HTMLElement;
@@ -196,8 +212,9 @@ describe('Tooltip component', () => {
 
     it('shows on focusin and hides on focusout', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo">
+        <it-tooltip>
           <button slot="trigger">Trigger</button>
+          <span slot="content">Testo</span>
         </it-tooltip>
       `);
       const trigger = el.querySelector('[slot="trigger"]') as HTMLElement;
@@ -213,8 +230,9 @@ describe('Tooltip component', () => {
 
     it('closes on Escape key', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo">
+        <it-tooltip>
           <button slot="trigger">Trigger</button>
+          <span slot="content">Testo</span>
         </it-tooltip>
       `);
       el.showTooltip();
@@ -230,8 +248,9 @@ describe('Tooltip component', () => {
     it('does not steal focus when shown', async () => {
       const container = await fixture<HTMLDivElement>(html`
         <div>
-          <it-tooltip label="Testo">
+          <it-tooltip>
             <button slot="trigger" id="trigger-btn">Trigger</button>
+            <span slot="content">Testo</span>
           </it-tooltip>
         </div>
       `);
@@ -245,13 +264,16 @@ describe('Tooltip component', () => {
 
     it('does not respond to events when controlled', async () => {
       const el = await fixture<ItTooltip>(html`
-        <it-tooltip label="Testo" controlled>
+        <it-tooltip controlled>
           <button slot="trigger">Trigger</button>
+          <span slot="content">Testo</span>
         </it-tooltip>
       `);
       const trigger = el.querySelector('[slot="trigger"]') as HTMLElement;
       trigger.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
-      await new Promise((r) => setTimeout(r, 50));
+      await new Promise((r) => {
+        setTimeout(r, 50);
+      });
       expect(el.open).to.be.false;
     });
   });

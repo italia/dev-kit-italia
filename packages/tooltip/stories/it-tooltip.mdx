@@ -45,6 +45,10 @@ Il componente implementa le seguenti funzionalità per garantire l'accessibilit�
 - **stato nascosto**: imposta `aria-hidden="true"` sul pannello quando il tooltip non è visibile;
 - **nessun focus steal**: il tooltip non sposta il focus quando viene mostrato.
 
+I tooltip di Dev Kit Italia restano visibili quando il puntatore si sposta dal trigger al tooltip stesso,
+migliorando così la conformità al criterio WCAG 2.1 **1.4.13 - Content on Hover or Focus**.
+Per gli utenti da tastiera il requisito è già soddisfatto tramite la gestione del focus.
+
 È importante usare come `trigger` solo elementi HTML che sono tradizionalmente attivabili da tastiera e interattivi (link, pulsanti o elementi di form).
 
 Sebbene arbitrariamente gli elementi HTML (come `<span>`) possano essere resi attivabili tramite l'attributo `tabindex="0"`,
@@ -58,6 +62,13 @@ Il componente supporta 12 posizioni tramite l'attributo `placement`. Usa `top`, 
 Il posizionamento si adatta automaticamente allo spazio disponibile.
 
 <Canvas of={TooltipStories.Posizione} />
+
+## Codice HTML personalizzato
+
+Puoi inserire codice HTML personalizzato nello slot `content`.
+Non è consigliato inserire elementi interattivi, valuta l'uso di [Popover](/docs/componenti-popover--documentazione) per casi d'uso più complessi.
+
+<Canvas of={TooltipStories.TestoFormattato} />
 
 ## Attivazione controllata
 
