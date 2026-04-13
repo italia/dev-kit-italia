@@ -296,3 +296,10 @@ export const HeaderFullLight: Story = {
       })}
     </header>`,
 };
+
+export const HeaderSticky: Story = {
+  render: () =>
+    html`<it-sticky class="it-header-wrapper it-header-sticky" sticky-class-name="is-sticky">
+      <header>${renderHeaderSlim()}${renderHeaderCenter()}${renderHeaderNav()}</header>
+    </it-sticky>`,
+};
