@@ -1,5 +1,62 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-alpha.7
+
+### Minor Changes
+
+- [#307](https://github.com/italia/dev-kit-italia/pull/307) [`37e516b`](https://github.com/italia/dev-kit-italia/commit/37e516ba5750b2d4dd7d13bebdafd4fe778f022d) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added Carousel component
+
+- [#276](https://github.com/italia/dev-kit-italia/pull/276) [`56a02b8`](https://github.com/italia/dev-kit-italia/commit/56a02b8072dbf1259cff380cf78bdd69ac5a813c) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add dev-kit tracking documentation
+
+- [#330](https://github.com/italia/dev-kit-italia/pull/330) [`5cf5bb0`](https://github.com/italia/dev-kit-italia/commit/5cf5bb0a3a62ef46c808f92250a4c016f9abddad) Thanks [@pnicolli](https://github.com/pnicolli)! - Added styles file `full.css` which contains all bootstrap-italia styles. It is meant to help with the migration process from bootstrap-italia to dev-kit-italia.
+
+### Patch Changes
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-progress component
+
+- [#316](https://github.com/italia/dev-kit-italia/pull/316) [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toggle component as an extension of it-checkbox
+
+- [`22eb901`](https://github.com/italia/dev-kit-italia/commit/22eb901eae2c2a4cae23b981f39ec838805e2c8c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated docs with link to components
+
+- [#343](https://github.com/italia/dev-kit-italia/pull/343) [`e725862`](https://github.com/italia/dev-kit-italia/commit/e7258623365aa6597da53da3c52abeb1bf84521b) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fixed megamenu styles
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-progress component
+
+- [#308](https://github.com/italia/dev-kit-italia/pull/308) [`07eea32`](https://github.com/italia/dev-kit-italia/commit/07eea3205e1cdd19ecd2bd069d337003c5c6f730) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-megamenu component
+
+- Updated dependencies [[`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40), [`22eb901`](https://github.com/italia/dev-kit-italia/commit/22eb901eae2c2a4cae23b981f39ec838805e2c8c), [`37e516b`](https://github.com/italia/dev-kit-italia/commit/37e516ba5750b2d4dd7d13bebdafd4fe778f022d), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`e725862`](https://github.com/italia/dev-kit-italia/commit/e7258623365aa6597da53da3c52abeb1bf84521b), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`07eea32`](https://github.com/italia/dev-kit-italia/commit/07eea3205e1cdd19ecd2bd069d337003c5c6f730)]:
+  - @italia/navscroll@1.0.0-alpha.7
+  - @italia/progress@1.0.0-alpha.7
+  - @italia/button@1.0.0-alpha.7
+  - @italia/modal@1.0.0-alpha.7
+  - @italia/chip@1.0.0-alpha.7
+  - @italia/checkbox@1.0.0-alpha.7
+  - @italia/toggle@1.0.0-alpha.7
+  - @italia/dropdown@1.0.0-alpha.7
+  - @italia/popover@1.0.0-alpha.7
+  - @italia/select@1.0.0-alpha.7
+  - @italia/carousel@1.0.0-alpha.7
+  - @italia/video@1.0.0-alpha.7
+  - @italia/megamenu@1.0.0-alpha.7
+  - @italia/accordion@1.0.0-alpha.7
+  - @italia/autocomplete@1.0.0-alpha.7
+  - @italia/avatar@1.0.0-alpha.7
+  - @italia/back-to-top@1.0.0-alpha.7
+  - @italia/breadcrumbs@1.0.0-alpha.7
+  - @italia/callout@1.0.0-alpha.7
+  - @italia/card@1.0.0-alpha.7
+  - @italia/collapse@1.0.0-alpha.7
+  - @italia/hero@1.0.0-alpha.7
+  - @italia/i18n@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+  - @italia/input@1.0.0-alpha.7
+  - @italia/pagination@1.0.0-alpha.7
+  - @italia/radio@1.0.0-alpha.7
+  - @italia/rating@1.0.0-alpha.7
+  - @italia/section@1.0.0-alpha.7
+  - @italia/skiplinks@1.0.0-alpha.7
+  - @italia/sticky@1.0.0-alpha.7
+
 ## 1.0.0-alpha.6
 
 ### Minor Changes
