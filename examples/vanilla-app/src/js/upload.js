@@ -9,29 +9,11 @@ const THUMBS = [
   'https://picsum.photos/seed/upload4/128/128',
 ];
 
-// ── Event log ─────────────────────────────────────────────────────────────────
-
-function logEvent(label, detail) {
-  const log = document.getElementById('events-log');
-  if (!log) return;
-  const empty = log.querySelector('em');
-  if (empty) empty.remove();
-  const entry = document.createElement('div');
-  entry.style.borderBottom = '1px solid #ddd';
-  entry.style.paddingBottom = '0.25rem';
-  entry.style.marginBottom = '0.25rem';
-  const files = detail?.files ?? (detail?.file ? [detail.file] : []);
-  const names = files.map((f) => f?.name ?? '?').join(', ') || '—';
-  entry.textContent = `[${new Date().toLocaleTimeString()}] ${label}: ${names}`;
-  log.prepend(entry);
-}
-
 // ── Upload con stati file ─────────────────────────────────────────────────────
 
 async function setupUploadFileStates() {
   const upload = document.getElementById('upload-states');
   if (!upload) return;
-  // Wait for Lit element to finish first render
   if (typeof upload.updateComplete !== 'undefined') {
     await upload.updateComplete;
   }
@@ -77,7 +59,7 @@ async function setupGalleryPrefilled() {
 function setupDDLoading() {
   const dd = document.getElementById('dd-loading');
   if (!dd) return;
-  dd.simulateUpload('nome_file.pdf', 3_900_000);
+  dd.start();
 }
 
 // ── Drag & Drop — success state ───────────────────────────────────────────────
@@ -85,7 +67,7 @@ function setupDDLoading() {
 function setupDDSuccess() {
   const dd = document.getElementById('dd-success');
   if (!dd) return;
-  dd.simulateUpload('nome_file.pdf', 3_900_000);
+  dd.start();
   dd.progress(1);
   dd.success();
 }
@@ -101,10 +83,9 @@ function setupDDInteractive() {
 
   const simulate = () => {
     clearInterval(timer);
-    if (dd._state !== 'loading') {
-      dd.simulateUpload('nome_file.pdf', 3_900_000);
-    }
-    let p = (dd._progress || 0) / 100;
+    dd.reset();
+    dd.start();
+    let p = 0;
     timer = setInterval(() => {
       p = Math.min(1, p + 0.1);
       dd.progress(p);
@@ -116,45 +97,7 @@ function setupDDInteractive() {
   };
 
   btn.addEventListener('click', simulate);
-  dd.addEventListener('it-change', simulate);
-}
-
-// ── Avatar event log ──────────────────────────────────────────────────────────
-
-function setupAvatarLog() {
-  const log = document.getElementById('avatar-log');
-  if (!log) return;
-  ['avatar-standard', 'avatar-small', 'avatar-empty'].forEach((id) => {
-    const avatar = document.getElementById(id);
-    if (!avatar) return;
-    avatar.addEventListener('it-change', (event) => {
-      const file = event.detail?.files?.[0];
-      log.textContent = file ? `Nuovo avatar selezionato (${id}): ${file.name} (${(file.size / 1024).toFixed(1)} KB)` : '';
-      logEvent(`it-change [${id}]`, event.detail);
-    });
-  });
-}
-
-// ── Upload base it-change log ─────────────────────────────────────────────────
-
-function setupUploadEventListeners() {
-  // Log it-change for the base upload
-  const uploadBase = document.querySelector('it-upload[name="upload-base"]');
-  if (uploadBase) {
-    uploadBase.addEventListener('it-change', (e) => logEvent('it-change [upload-base]', e.detail));
-  }
-
-  // Log it-change for the gallery upload
-  const galleryEmpty = document.getElementById('upload-gallery-empty');
-  if (galleryEmpty) {
-    galleryEmpty.addEventListener('it-change', (e) => logEvent('it-change [upload-gallery-empty]', e.detail));
-  }
-
-  // Log it-change for dd-interactive
-  const ddInteractive = document.getElementById('dd-interactive');
-  if (ddInteractive) {
-    ddInteractive.addEventListener('it-change', (e) => logEvent('it-change [dd-interactive]', e.detail));
-  }
+  dd.addEventListener('it-dd-drop', (e) => { e.preventDefault(); simulate(); });
 }
 
 // ── Form integration ──────────────────────────────────────────────────────────
@@ -169,22 +112,19 @@ function setupUploadForm() {
     if (result) {
       result.innerHTML = '<strong style="color: green;">✔ Form inviato con successo!</strong>';
     }
-    console.log('Upload form submitted');
   });
 }
 
 // ── Bootstrap ─────────────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Use setTimeout(0) to let custom-elements upgrade before we call their methods
   setTimeout(() => {
     setupUploadFileStates();
     setupGalleryPrefilled();
     setupDDLoading();
     setupDDSuccess();
     setupDDInteractive();
-    setupAvatarLog();
-    setupUploadEventListeners();
     setupUploadForm();
   }, 0);
 });
+

@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
           validator: () => {
             const el = fmc.querySelector('it-upload-drag-drop[id="documento-custom"]');
-            return Array.isArray(el?.files) && el.files.length > 0;
+            return el?._currentFile != null;
           },
           errorMessage: 'Carica un documento',
         },

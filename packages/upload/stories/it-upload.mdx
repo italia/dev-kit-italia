@@ -13,6 +13,43 @@ Il componente Upload consente l'upload di file attraverso diverse modalità: lis
 
 [Approfondisci come e quando usare il componente Upload](https://designers.italia.it/design-system/componenti/upload/)
 
+## Indicazioni generali
+
+Il Kit offre tre componenti distinti che coprono i principali casi d'uso per l'upload di file:
+
+- `<it-upload>` — lista verticale dei file caricati, con supporto per anteprima immagini e variante gallery. Adatto a form che richiedono l'allegato di uno o più documenti.
+- `<it-upload-avatar>` — caricamento e anteprima immediata di una foto profilo circolare. Ideale per sezioni di impostazioni account o profilo utente.
+- `<it-upload-drag-drop>` — area di trascinamento per il caricamento di un singolo file, con stati di progresso gestibili via JavaScript. Adatto a flussi che richiedono un'esperienza di upload più guidata.
+
+Ognuno dei tre componenti delega la selezione dei file a un `<input type="file">` nativo, accessibile da tastiera e compatibile con le tecnologie assistive. In `<it-upload-avatar>` e `<it-upload-drag-drop>` l'input è nascosto visivamente ma rimane accessibile agli screen reader tramite l'etichetta ARIA associata.
+
+Tutti e tre i componenti partecipano alla validazione nativa HTML: aggiungi l'attributo `required` per rendere il campo obbligatorio all'interno di un `<form>`. Assegna sempre un `name` significativo per identificare il campo nei dati del form.
+
+Gli attributi condivisi dai tre componenti sono:
+- `name` — nome del campo, inviato con il valore nella sottomissione del form.
+- `required` — rende il campo obbligatorio; in assenza di un file selezionato il form non può essere inviato.
+- `disabled` — disabilita il componente e ne impedisce l'interazione.
+- `accept` — limita i tipi di file accettati (es. `"image/*"`, `".pdf,.docx"`).
+
+Per `<it-upload>`, fornisci sempre un'etichetta nello slot `label` (`<span slot="label">Carica documenti</span>`): il componente la usa come testo del pulsante e come nome accessibile del campo.
+
+Se vuoi modificare l'icona del pulsante di `<it-upload>`, usa un componente `it-icon` nello slot `icon` per sostituire l'icona predefinita con una a tua scelta.
+
+## Accessibilità
+
+I tre componenti Upload sono progettati per supportare la navigazione da tastiera, gli screen reader e le best practice ARIA.
+
+In particolare:
+- In `<it-upload>`, il testo dello slot `label` è usato sia come etichetta visibile sia come nome accessibile dell'input nativo. Il componente emette un avviso in console se l'etichetta manca.
+- In `<it-upload-avatar>`, l'etichetta dell'input file è generata automaticamente tramite il sistema i18n del componente.
+- In `<it-upload-drag-drop>`, l'area di drop espone `role="region"` con un nome accessibile; il link "selezionalo dal dispositivo" consente la selezione da tastiera senza necessità di trascinamento.
+
+
+Per garantire l'accessibilità dei componenti Upload, segui queste linee guida:
+- Fornisci sempre un'etichetta descrittiva per ogni campo upload.
+- Usa l'attributo `support-text` di `<it-upload>` per informare l'utente sui requisiti del campo (formati accettati, dimensione massima) prima dell'interazione.
+- Per `<it-upload-drag-drop>`, completa sempre il ciclo di caricamento via JavaScript (progresso, successo o errore): lo stato viene comunicato esplicitamente anche agli utenti di screen reader.
+
 ## Upload con lista di file
 
 Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
@@ -20,19 +57,15 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 <Canvas of={Stories.EsempioInterattivoUpload} />
 <Controls of={Stories.EsempioInterattivoUpload} />
 
-Il componente `<it-upload>` mostra i file caricati in una lista verticale con icone file e la possibilità di rimozione singola.
+## Con anteprima delle immagini
 
-<Canvas of={Stories.UploadConListaDiFile} />
+Aggiungi `image-preview` per sostituire l'icona generica che rappresenta un file con un'anteprima thumbnail delle immagini caricate: è consigliato quando il campo accetta prevalentemente immagini.
 
-### Anteprima immagini
-
-Aggiungendo l'attributo `image-preview`, le immagini caricate mostrano un'anteprima thumbnail al posto dell'icona generica. È consigliato quando il campo accetta prevalentemente immagini.
-
-### Stati dei file
+Il componente ottimizza la visualizzazione delle immagini anche quando queste non hanno proporzione quadrata, si consiglia comunque di utilizzare immagini dal peso contenuto.
 
 Ogni file nella lista può trovarsi in uno dei seguenti stati: `loading` (con percentuale di avanzamento), `success` (caricamento completato) o `error` (caricamento fallito).
 
-Usa i metodi `addFile()`, `setFileStatus()` e `setFileThumbnail()` per gestire la lista programmaticamente — consulta la sezione **{Stories.MetodiEPropPubblici.name}** per i dettagli.
+Usa i metodi `addFile()`, `setFileStatus()` e `setFileThumbnail()` per gestire la lista programmaticamente — consulta la sezione **Proprietà, Metodi ed Eventi** per i dettagli.
 
 <Canvas of={Stories.UploadConStatoFile} />
 
@@ -40,31 +73,81 @@ Usa i metodi `addFile()`, `setFileStatus()` e `setFileThumbnail()` per gestire l
 
 Con `variant="gallery"` le foto caricate vengono visualizzate in una griglia a "pictures wall", ideale per gestire upload multipli di immagini.
 
+Anche in questo caso, nonostante il componente ottimizzi la visualizzazione delle immagini quando queste non hanno proporzione quadrata, si consiglia comunque di utilizzare immagini dal peso contenuto.
+
 <Canvas of={Stories.UploadGallery} />
 
 ## Upload con Avatar
 
-Il componente `<it-upload-avatar>` combina la visualizzazione di un avatar circolare con un input file per permettere il caricamento di una foto profilo.
+Questo elemento combina la visualizzazione dell’immagine Avatar con l’input tipo file per permettere l’upload di una nuova immagine.
 
-Modifica gli attributi nella tabella per personalizzare il componente.
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
 
 <Canvas of={Stories.EsempioInterattivoAvatar} />
 <Controls of={Stories.EsempioInterattivoAvatar} />
 
-Sono disponibili due dimensioni tramite l'attributo `size`: `xxl` (standard) e `xl` (piccola). Aggiorna l'avatar selezionando un nuovo file: l'anteprima viene aggiornata immediatamente nel componente.
+Puoi scegliere tra due dimensioni tramite l'attributo `size`: `xxl` (standard) e `xl` (compatta). L'anteprima viene aggiornata immediatamente dopo la selezione di un nuovo file.
+
+**Ci si aspetta venga caricato un solo file (immagine)**.
+
+**L’elemento ha design e comportamento differenti in versione mobile**, si consiglia quindi di ridurre le dimensioni della finestra del browser per testare questa versione.
 
 <Canvas of={Stories.UploadConAvatar} />
 
 ## Upload Drag & Drop
 
-Il componente `<it-upload-drag-drop>` consente di caricare un file trascinandolo sull'area dedicata oppure tramite la selezione manuale.
+Usa `<it-upload-drag-drop>` per proporre un'area di trascinamento dedicata dove l'utente può caricare un file trascinandolo sull'area, oppure tramite il link di selezione manuale.
 
-Modifica gli attributi nella tabella per personalizzare il componente.
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
 
 <Canvas of={Stories.EsempioInterattivoDragDrop} />
 <Controls of={Stories.EsempioInterattivoDragDrop} />
 
-Lo stato del caricamento è rappresentato da un indicatore di progresso circolare (ciambella). Chiama `el.progress(value)` passando un valore compreso tra 0 e 1 per aggiornare il progresso; il componente converte automaticamente il valore in percentuale. Al termine chiama `el.success()` per mostrare lo stato completato. Chiama `el.reset()` per tornare allo stato iniziale.
+### Gestione automatica e manuale dello stato
+
+Il componente supporta due modalità per gestire il caricamento:
+
+**Modalità automatica (consigliata per casi semplici):** Il componente auto-gestisce l'avvio e lo stato indeterminato
+- Al completamento del **dragenter**: emette l'evento annullabile `it-dd-start`. Se non prevenuto, chiama `start()` e mostra l'indicatore di progresso indeterminato.
+- Al completamento del **drop** (o selezione da file input): emette l'evento annullabile `it-dd-drop`. Se non prevenuto, chiama `start()` e attiva la visualizzazione indeterminata.
+
+**Modalità manuale (per scenari complessi):** Tu assumi il controllo totale del ciclo di caricamento
+- Ascolta gli eventi `it-dd-start` e `it-dd-drop`
+- Chiama `e.preventDefault()` per annullare il comportamento automatico
+- Invoca manualmente `el.start()`, `el.progress(value)`, `el.success()`, oppure `el.reset()` nei tempi che preferisci
+
+Esempo di controllo manuale:
+
+```js
+const dd = document.getElementById('my-upload');
+
+// Annulla il comportamento automatico e gestisci manualmente
+dd.addEventListener('it-dd-drop', (event) => {
+  event.preventDefault();
+
+  // Inizia il caricamento
+  dd.start();
+
+  // Simula la progressione
+  let progress = 0;
+  const interval = setInterval(() => {
+    progress += 0.1;
+    dd.progress(Math.min(progress, 1));
+
+    if (progress >= 1) {
+      clearInterval(interval);
+      // Completa l'operazione
+      dd.success();
+    }
+  }, 500);
+});
+```
+
+Lo stato di success dipende dal caricamento corretto del file sul server e va quindi gestito da chi svilupperà il front-end/back-end del sito o webapp.
+
+Per tornare allo stato iniziale (inattivo, senza file selezionato, progresso a 0), chiama `el.reset()`.
+
+Consulta la sezione **Proprietà, Metodi ed Eventi**. Viene mostrato di seguito un esempio interattivo simulato.
 
 <Canvas of={Stories.UploadDragDrop} />
 
@@ -77,5 +160,36 @@ Per `<it-upload-avatar>`, se `src` è già valorizzato, il requisito è soddisfa
 <Description of={Stories.UploadFormIntegrazione} />
 <Canvas of={Stories.UploadFormIntegrazione} />
 
-## {Stories.MetodiEPropPubblici.name}
-<Description of={Stories.MetodiEPropPubblici} />
+## Proprietà, Metodi, ed Eventi accessibili via JS
+### `<it-upload>`
+<Description of={Stories.MetodiEPropUpload} />
+
+### `<it-upload-avatar>`
+<Description of={Stories.MetodiEPropAvatar} />
+
+### `<it-upload-drag-drop>`
+<Description of={Stories.MetodiEPropDragDrop} />
+
+## i18n
+
+<Description of={Stories.I18n} />
+
+## Personalizzazione degli stili
+
+Puoi personalizzare lo stile interno dei componenti tramite il selettore `::part`.
+
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
+
+### it-upload
+
+- **`input-label`** - Il pulsante/etichetta "Carica file" (elemento `<label>` associato all'input).
+- **`file-remove-button`** - Il pulsante di rimozione di ogni riga nella lista file.
+- **`gallery-remove-button`** - Il pulsante di rimozione circolare su ogni immagine nella gallery.
+
+### it-upload-avatar
+
+- **`overlay-label`** - L'etichetta overlay che copre l'avatar al passaggio del mouse / focus.
+
+### it-upload-drag-drop
+
+- **`drop-zone`** - L'area di trascinamento principale (il `<div role="region">`).

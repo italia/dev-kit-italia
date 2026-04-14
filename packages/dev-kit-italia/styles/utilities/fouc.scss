@@ -227,6 +227,22 @@ $it-components: (
     width: 180px,
     border-radius: 50%,
   ),
+  'it-upload': (
+    border-radius: var(--#{$prefix}btn-border-radius, 4px),
+    height: 44.8px,
+    padding: 0 1rem,
+  ),
+  'it-upload-drag-drop': (
+    border-radius: var(--#{$prefix}btn-border-radius, 4px),
+    width: 483.3px,
+    height: 180px,
+  ),
+  'it-upload-avatar': (
+    border-radius: 50%,
+    height: 112px,
+    width: 112px,
+    padding: 0,
+  ),
 );
 
 @each $tag, $params in $it-components {

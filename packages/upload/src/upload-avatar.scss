@@ -88,14 +88,12 @@ input.upload-avatar {
   }
 }
 
-// Validation feedback display (toggled via aria-hidden by it-upload-avatar.ts)
-.invalid-feedback {
-  display: none;
-}
-
-.invalid-feedback[aria-hidden='false'] {
+// Counter BSI's form-validation-state mixin which sets .invalid-feedback { display: none }.
+// We control visibility via the HTML `hidden` attribute (?hidden in Lit) instead.
+.invalid-feedback:not([hidden]) {
   display: block;
 }
+
 // Show focus ring ONLY for keyboard navigation (not when user hovers/clicks with mouse).
 // At desktop the overlay itself is the visual focus indicator; the ring is redundant on hover
 // and clips awkwardly alongside the semi-transparent overlay (see :focus-within + :hover state).

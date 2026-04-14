@@ -39,11 +39,6 @@ $utilities: (
 
 @import 'bootstrap-italia/src/scss/base/utilities/api';
 
-// Host display
-:host {
-  display: block;
-}
-
 .upload[type='file'] + label {
   display: flex;
   width: fit-content;
@@ -54,14 +49,6 @@ $utilities: (
 
 // Invalid state on the upload label (mirrors just-validate styling)
 :host([required]) .upload-required-feedback {
-  display: block;
-}
-
-.invalid-feedback {
-  display: none;
-}
-
-.invalid-feedback[aria-hidden='false'] {
   display: block;
 }
 
@@ -89,4 +76,29 @@ $utilities: (
     0 0 0 5px $focus-outline-color-out !important;
   outline: 3px solid rgba(0, 0, 0, 0) !important;
   outline-offset: 3px !important;
+}
+
+// Gallery remove button — BSI-style circular primary icon button, pinned top-right
+.upload-image {
+  position: relative;
+
+  .upload-image-remove {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border-radius: 50%;
+    line-height: 1;
+  }
+}
+
+.upload-pictures-wall .upload[type='file'] + label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // This is in figma, it's not accessible, won't use
+  // background-color: var(--#{$prefix}color-primary-lighter, #bfdfff);
 }

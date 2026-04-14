@@ -1,6 +1,6 @@
 import { FormControl, FormControlController } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
-import { html } from 'lit';
+import { html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -112,21 +112,6 @@ export class ItUploadAvatar extends FormControl {
 
   // Forward wrapper clicks to the hidden file input.
   // If the click already originated from the label (which has a `for` association), skip to
-  // avoid double-firing. This is needed because at desktop breakpoints the overlay label only
-  // covers the bottom 60%; clicks on the top portion hit it-avatar but must still open the picker.
-  private _openFilePicker(e: MouseEvent) {
-    if (this.disabled) return;
-    const input = this.shadowRoot?.querySelector<HTMLInputElement>('input.upload-avatar');
-    const label = this.shadowRoot?.querySelector<HTMLElement>('.upload-avatar-container label');
-    if (!input || label?.contains(e.target as Node)) return;
-    input.click();
-  }
-
-
-
-  private get _inputId(): string {
-    return this._id ?? `upload-avatar-${Math.random().toString(36).slice(2)}`;
-  }
 
   override render() {
     const labelText = this.$t('upload_avatar_label');
@@ -135,7 +120,7 @@ export class ItUploadAvatar extends FormControl {
     const isInvalid = this.formControlController.submittedOnce && this.validationMessage.length > 0;
 
     return html`
-      <div class="avatar-upload-wrapper size-${this.size}" @click="${this._openFilePicker}">
+      <div class="avatar-upload-wrapper size-${this.size}">
         <it-avatar
           type="image"
           size="${this.size}"
@@ -148,20 +133,20 @@ export class ItUploadAvatar extends FormControl {
           <input
             type="file"
             class="upload-avatar"
-            id="${this._inputId}"
+            id="${this._id!}"
             accept="${this.accept}"
             ?disabled="${this.disabled}"
             aria-label="${labelText}"
             @change="${this._handleFileChange}"
           />
-          <label for="${this._inputId}" class="it-upload-avatar-label-container">
+          <label part="overlay-label" for="${this._id!}" class="it-upload-avatar-label-container">
             <it-icon name="it-camera" size="sm" color="inverse" aria-hidden="true"></it-icon>
             <span class="it-upload-avatar-label">${overlayText}</span>
           </label>
         </div>
 
         <div class="avatar-upload-icon" aria-hidden="true">
-          <it-icon name="it-camera" size="${this.size === 'xl'? 'xs': 'sm'}"></it-icon>
+          <it-icon name="it-camera" size="${this.size === 'xl' ? 'xs' : 'sm'}"></it-icon>
         </div>
       </div>
 
@@ -176,10 +161,12 @@ export class ItUploadAvatar extends FormControl {
       />
 
       <div
-        class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
+        class="invalid-feedback form-feedback form-text just-validate-error-label"
         role="alert"
-        aria-hidden="${!isInvalid}"
-      >${this.validationMessage}</div>
+        ?hidden=${!isInvalid}
+      >
+        ${isInvalid ? this.validationMessage : nothing}
+      </div>
     `;
   }
 }

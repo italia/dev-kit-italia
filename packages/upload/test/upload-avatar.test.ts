@@ -1,4 +1,4 @@
-import '@italia/upload'
+import '../src/it-upload-avatar.js';
 import { expect, fixture, html, oneEvent } from '@open-wc/testing';
 import type { ItUploadAvatar } from '../src/it-upload-avatar.js';
 
@@ -29,18 +29,14 @@ describe('<it-upload-avatar>', () => {
   });
 
   it('_currentSrc is empty when no src is supplied', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar"></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar"></it-upload-avatar>`);
     expect((el as any)._currentSrc).to.equal('');
   });
 
   // ── Size prop ────────────────────────────────────────────────────────────────
 
   it('renders sm wrapper class when size=sm', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar" size="sm"></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar" size="sm"></it-upload-avatar>`);
     // handleValidationMessages() in updated() schedules a second Lit cycle; flush it.
     await el.updateComplete;
     await el.updateComplete;
@@ -50,9 +46,7 @@ describe('<it-upload-avatar>', () => {
   });
 
   it('does not add size-sm class for standard size', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar" size="xxl"></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar" size="xxl"></it-upload-avatar>`);
     await el.updateComplete;
 
     const wrapper = el.shadowRoot!.querySelector('.avatar-upload-wrapper')!;
@@ -62,9 +56,7 @@ describe('<it-upload-avatar>', () => {
   // ── Disabled ─────────────────────────────────────────────────────────────────
 
   it('disables the hidden file input when disabled=true', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar" disabled></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar" disabled></it-upload-avatar>`);
     await el.updateComplete;
 
     const input = el.shadowRoot!.querySelector('input[type="file"]')! as HTMLInputElement;
@@ -72,9 +64,7 @@ describe('<it-upload-avatar>', () => {
   });
 
   it('does not disable input when disabled is not set', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar"></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar"></it-upload-avatar>`);
     await el.updateComplete;
 
     const input = el.shadowRoot!.querySelector('input[type="file"]')! as HTMLInputElement;
@@ -94,9 +84,7 @@ describe('<it-upload-avatar>', () => {
   });
 
   it('defaults accept to image/*', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar"></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar"></it-upload-avatar>`);
     await el.updateComplete;
 
     const input = el.shadowRoot!.querySelector('input[type="file"]')! as HTMLInputElement;
@@ -106,9 +94,7 @@ describe('<it-upload-avatar>', () => {
   // ── File selection ───────────────────────────────────────────────────────────
 
   it('emits it-change when a file is selected', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar"></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar"></it-upload-avatar>`);
     await el.updateComplete;
 
     const eventPromise = oneEvent(el, 'it-change') as Promise<CustomEvent>;
@@ -122,9 +108,7 @@ describe('<it-upload-avatar>', () => {
   });
 
   it('does not emit it-change when no files are provided', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar"></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar"></it-upload-avatar>`);
     await el.updateComplete;
 
     let fired = false;
@@ -155,9 +139,7 @@ describe('<it-upload-avatar>', () => {
   // ── Snapshot: hidden input structure ─────────────────────────────────────────
 
   it('renders a hidden file input inside the shadow root', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar"></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar"></it-upload-avatar>`);
     await el.updateComplete;
 
     const input = el.shadowRoot!.querySelector('input[type="file"]');
@@ -166,9 +148,7 @@ describe('<it-upload-avatar>', () => {
   });
 
   it('renders the upload-avatar-container overlay', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar"></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar"></it-upload-avatar>`);
     await el.updateComplete;
 
     expect(el.shadowRoot!.querySelector('.upload-avatar-container')).to.exist;
@@ -192,9 +172,7 @@ describe('<it-upload-avatar>', () => {
   });
 
   it('checkValidity() returns false when required and no src and no file', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar" required></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar" required></it-upload-avatar>`);
     await el.updateComplete;
     expect(el.checkValidity()).to.be.false;
   });
@@ -208,9 +186,7 @@ describe('<it-upload-avatar>', () => {
   });
 
   it('checkValidity() returns true when required and a file has been selected', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar" required></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar" required></it-upload-avatar>`);
     await el.updateComplete;
 
     const file = new File(['data'], 'photo.jpg', { type: 'image/jpeg' });
@@ -239,9 +215,7 @@ describe('<it-upload-avatar>', () => {
   // ── overlayLabel ─────────────────────────────────────────────────────────────
 
   it('renders default i18n overlay label in the label element', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar"></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar"></it-upload-avatar>`);
     await el.updateComplete;
     await el.updateComplete;
 
@@ -264,9 +238,7 @@ describe('<it-upload-avatar>', () => {
   });
 
   it('renders it-icon inside the overlay label', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar"></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar"></it-upload-avatar>`);
     await el.updateComplete;
 
     const label = el.shadowRoot!.querySelector('.upload-avatar-container label');
@@ -276,9 +248,7 @@ describe('<it-upload-avatar>', () => {
   // ── it-change carries name + id ──────────────────────────────────────────────
 
   it('it-change event detail includes name and id', async () => {
-    const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="my-avatar" id="avatar1"></it-upload-avatar>`,
-    );
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="my-avatar" id="avatar1"></it-upload-avatar>`);
     await el.updateComplete;
 
     const eventPromise = oneEvent(el, 'it-change') as Promise<CustomEvent>;
@@ -292,9 +262,9 @@ describe('<it-upload-avatar>', () => {
     expect(ev.detail.id).to.equal('avatar1');
   });
 
-  // ── Validation message display ────────────────────────────────────────────────
+  // ── Validation message display (A2+A3) ───────────────────────────────────────
 
-  it('invalid-feedback has aria-hidden=false after form submission when invalid', async () => {
+  it('error div shows validation message after form submission when required and empty', async () => {
     const container = await fixture<HTMLDivElement>(html`
       <div>
         <form>
@@ -314,6 +284,17 @@ describe('<it-upload-avatar>', () => {
 
     const feedback = el.shadowRoot!.querySelector('.invalid-feedback');
     expect(feedback).to.exist;
-    expect(feedback!.getAttribute('aria-hidden')).to.equal('false');
+    expect(feedback!.hasAttribute('aria-hidden')).to.be.false;
+    expect(feedback!.textContent?.trim()).to.have.length.greaterThan(0);
+  });
+
+  it('error div is empty and has no aria-hidden when not submitted', async () => {
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar" required></it-upload-avatar>`);
+    await el.updateComplete;
+
+    const feedback = el.shadowRoot!.querySelector('.invalid-feedback');
+    expect(feedback).to.exist;
+    expect(feedback!.hasAttribute('aria-hidden')).to.be.false;
+    expect(feedback!.textContent?.trim()).to.equal('');
   });
 });

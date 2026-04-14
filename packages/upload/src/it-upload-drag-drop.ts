@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import { FormControl, FormControlController } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
 import { html, nothing } from 'lit';
@@ -7,6 +8,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import it from './locales/it.js';
 import en from './locales/en.js';
 import styles from './upload-drag-drop.scss';
+import { formatSize } from './utils.js';
 
 registerTranslation(it);
 registerTranslation(en);
@@ -58,9 +60,10 @@ export class ItUploadDragDrop extends FormControl {
   @state()
   private _fileType = '';
 
-  private get _inputId(): string {
-    return this._id ?? `upload-dd-${Math.random().toString(36).slice(2)}`;
-  }
+  @state()
+  private _indeterminate = false;
+
+  private _autoStarted = false;
 
   private get _formClass(): string {
     return this.composeClass(
@@ -73,6 +76,7 @@ export class ItUploadDragDrop extends FormControl {
 
   /** Advance the donut progress. Value must be between 0 and 1. */
   public progress(value: number) {
+    this._indeterminate = false;
     const clamped = Math.min(1, Math.max(0, value));
     this._progress = Math.round(clamped * 100);
   }
@@ -91,22 +95,12 @@ export class ItUploadDragDrop extends FormControl {
   public reset() {
     this._state = 'idle';
     this._progress = 0;
+    this._indeterminate = false;
+    this._autoStarted = false;
     this._fileName = '';
     this._fileWeight = '';
     this._fileType = '';
     this._currentFile = null;
-  }
-
-  /**
-   * Simulate an upload with mock file metadata.
-   * Sets the file name and size visible in the UI then transitions to loading state.
-   * Useful for demos and automated tests that bypass real file selection.
-   */
-  public simulateUpload(fileName: string, fileSize = 0) {
-    this._fileName = fileName;
-    this._fileWeight = fileSize > 0 ? this._formatSize(fileSize) : '';
-    this._fileType = this._extractFileType(fileName);
-    this.start();
   }
 
   private _extractFileType(fileName: string): string {
@@ -121,32 +115,44 @@ export class ItUploadDragDrop extends FormControl {
 
   private _onDragEnter(e: DragEvent) {
     this._preventEvent(e);
-    if (this.disabled) return;
-    if (this._state !== 'success') {
+    if (this.disabled || this._state === 'success' || this._state === 'loading') return;
+    const cancelled = !this.dispatchEvent(
+      new CustomEvent('it-dd-start', {
+        cancelable: true,
+        bubbles: true,
+        composed: true,
+        detail: {},
+      }),
+    );
+    if (!cancelled) {
+      this.start();
+      this._autoStarted = true;
+    } else {
       this._state = 'dragover';
     }
   }
 
   private _onDragOver(e: DragEvent) {
-    this._preventEvent(e);
-    if (this.disabled) return;
-    if (this._state !== 'success') {
-      this._state = 'dragover';
-    }
+    e.preventDefault();
+    if (this.disabled || this._state === 'success') return;
+    if (this._state === 'idle') this._state = 'dragover';
   }
 
   private _onDragLeave(e: DragEvent) {
     this._preventEvent(e);
     if (this.disabled) return;
-    if (this._state !== 'success') {
+    if (this._state === 'dragover') {
       this._state = 'idle';
+    } else if (this._state === 'loading' && this._autoStarted && !this._currentFile) {
+      this._state = 'idle';
+      this._autoStarted = false;
     }
   }
 
   private _onDragEnd(e: DragEvent) {
     this._preventEvent(e);
     if (this.disabled) return;
-    if (this._state !== 'success') {
+    if (this._state === 'dragover') {
       this._state = 'idle';
     }
   }
@@ -160,9 +166,22 @@ export class ItUploadDragDrop extends FormControl {
 
     this._currentFile = file;
     this._fileName = file.name;
-    this._fileWeight = this._formatSize(file.size);
+    this._fileWeight = formatSize(file.size);
     this._fileType = this._extractFileType(file.name);
-    this.start();
+    this._autoStarted = false;
+
+    const dropCancelled = !this.dispatchEvent(
+      new CustomEvent('it-dd-drop', {
+        cancelable: true,
+        bubbles: true,
+        composed: true,
+        detail: { file, name: this.name, id: this.id },
+      }),
+    );
+    if (!dropCancelled) {
+      if (this._state !== 'loading') this.start();
+      this._indeterminate = true;
+    }
 
     this.dispatchEvent(
       new CustomEvent('it-change', {
@@ -180,11 +199,22 @@ export class ItUploadDragDrop extends FormControl {
 
     this._currentFile = file;
     this._fileName = file.name;
-    this._fileWeight = this._formatSize(file.size);
+    this._fileWeight = formatSize(file.size);
     this._fileType = this._extractFileType(file.name);
-    this.start();
-
     input.value = '';
+
+    const dropCancelled = !this.dispatchEvent(
+      new CustomEvent('it-dd-drop', {
+        cancelable: true,
+        bubbles: true,
+        composed: true,
+        detail: { file, name: this.name, id: this.id },
+      }),
+    );
+    if (!dropCancelled) {
+      this.start();
+      this._indeterminate = true;
+    }
 
     this.dispatchEvent(
       new CustomEvent('it-change', {
@@ -193,14 +223,6 @@ export class ItUploadDragDrop extends FormControl {
         composed: true,
       }),
     );
-  }
-
-  private _formatSize(bytes: number): string {
-    if (bytes === 0) return '0 B';
-    const k = 1024;
-    const sizes = ['B', 'KB', 'MB', 'GB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return `${parseFloat((bytes / k ** i).toFixed(1))} ${sizes[i]}`;
   }
 
   private _getStatusText(): string {
@@ -227,7 +249,7 @@ export class ItUploadDragDrop extends FormControl {
         ${hasFile && this._fileWeight
           ? html`
               <p class="upload-dragdrop-weight">
-              <it-icon name="it-file" size="xs" aria-hidden="true" color="secondary"></it-icon>
+                <it-icon name="it-file" size="xs" aria-hidden="true" color="secondary"></it-icon>
                 <span>${this._fileType ? `${this._fileType} ` : ''}(${this._fileWeight})</span>
               </p>
             `
@@ -244,22 +266,18 @@ export class ItUploadDragDrop extends FormControl {
                 <input
                   type="file"
                   class="upload-dragdrop-input"
-                  id="${this._inputId}"
+                  id="${this._id!}"
                   accept="${ifDefined(this.accept)}"
                   ?disabled="${this.disabled}"
                   aria-label="${this.$t('upload_label')}"
                   @change="${this._onFileInputChange}"
                 />
-                <label for="${this._inputId}">${this.$t('upload_dd_select')}</label>
+                <label for="${this._id!}">${this.$t('upload_dd_select')}</label>
               </p>
             `
           : nothing}
-        ${this._state === 'loading'
-          ? html`<p>${this.$t('upload_dd_status_loading')}</p>`
-          : nothing}
-        ${this._state === 'success'
-          ? html`<p>${this.$t('upload_dd_status_success')}</p>`
-          : nothing}
+        ${this._state === 'loading' ? html`<p>${this.$t('upload_dd_status_loading')}</p>` : nothing}
+        ${this._state === 'success' ? html`<p>${this.$t('upload_dd_status_success')}</p>` : nothing}
       </div>
     `;
   }
@@ -270,9 +288,8 @@ export class ItUploadDragDrop extends FormControl {
 
     return html`
       <div
+        part="drop-zone"
         class="${this._formClass}"
-        role="region"
-        aria-label="${this.$t('upload_dd_title')}"
         @drag="${this._preventEvent}"
         @dragstart="${this._preventEvent}"
         @dragend="${this._onDragEnd}"
@@ -286,9 +303,9 @@ export class ItUploadDragDrop extends FormControl {
           <div class="upload-dragdrop-loading" aria-hidden="${this._state !== 'loading' ? 'true' : nothing}">
             <it-progress
               type="donut"
-              .value="${this._progress}"
+              .value="${this._indeterminate ? 0 : this._progress}"
               it-aria-label="${this.$t('upload_dd_progress_label')}"
-              show-value
+              ?show-value="${!this._indeterminate}"
             ></it-progress>
           </div>
           <div class="upload-dragdrop-success" aria-hidden="${this._state !== 'success' ? 'true' : nothing}">
@@ -299,14 +316,7 @@ export class ItUploadDragDrop extends FormControl {
         ${this._renderTextContent()}
 
         <!-- Accessible live region for state announcements -->
-        <div
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-          class="visually-hidden"
-        >
-          ${statusText}
-        </div>
+        <div role="status" aria-live="polite" aria-atomic="true" class="visually-hidden">${statusText}</div>
       </div>
 
       <!-- Hidden proxy input: drives native required/validity checking via FormControl base class -->
@@ -319,11 +329,9 @@ export class ItUploadDragDrop extends FormControl {
         aria-hidden="true"
       />
 
-      <div
-        class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
-        role="alert"
-        aria-hidden="${!isInvalid}"
-      >${this.validationMessage}</div>
+      <div class="invalid-feedback form-feedback form-text just-validate-error-label" role="alert">
+        ${isInvalid ? this.validationMessage : nothing}
+      </div>
     `;
   }
 }

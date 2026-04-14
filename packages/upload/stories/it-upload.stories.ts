@@ -23,7 +23,7 @@ const THUMBS = [
   'https://picsum.photos/seed/upload1/128/128',
   'https://picsum.photos/seed/upload2/128/128',
   'https://picsum.photos/seed/upload3/128/128',
-  'https://picsum.photos/seed/upload4/128/128'
+  'https://picsum.photos/seed/upload4/128/128',
 ];
 /** Populates an inner <it-upload> with files in loading, success and error states. */
 class StoryUploadFileStates extends HTMLElement {
@@ -34,7 +34,9 @@ class StoryUploadFileStates extends HTMLElement {
       await upload.updateComplete;
 
       const id1 = upload.addFile(new File(['x'.repeat(71_303_168)], 'nome-file-01.jpg', { type: 'image/jpeg' }));
-      const id2 = upload.addFile(new File(['x'.repeat(9_437_184)], 'nome-file-02-nome-file-lungo-per-ellissi.jpg', { type: 'image/jpeg' }));
+      const id2 = upload.addFile(
+        new File(['x'.repeat(9_437_184)], 'nome-file-02-nome-file-lungo-per-ellissi.jpg', { type: 'image/jpeg' }),
+      );
       const id3 = upload.addFile(new File(['x'.repeat(3_145_728)], 'nome-file-03.jpg', { type: 'image/jpeg' }));
       const id4 = upload.addFile(new File(['x'.repeat(2_097_152)], 'nome-file-04.jpg', { type: 'image/jpeg' }));
 
@@ -60,7 +62,10 @@ class StoryUploadDDLoading extends HTMLElement {
     setTimeout(async () => {
       const dd = this.querySelector<ItUploadDragDrop>('it-upload-drag-drop');
       if (!dd) return;
-      dd.simulateUpload('nome_file.pdf', 3_900_000);
+      (dd as any)._fileName = 'nome_file.pdf';
+      (dd as any)._fileWeight = '3.7 MB';
+      (dd as any)._fileType = 'PDF';
+      dd.start();
     }, 0);
   }
 }
@@ -74,7 +79,10 @@ class StoryUploadDDSuccess extends HTMLElement {
     setTimeout(async () => {
       const dd = this.querySelector<ItUploadDragDrop>('it-upload-drag-drop');
       if (!dd) return;
-      dd.simulateUpload('nome_file.pdf', 3_900_000);
+      (dd as any)._fileName = 'nome_file.pdf';
+      (dd as any)._fileWeight = '3.7 MB';
+      (dd as any)._fileType = 'PDF';
+      dd.start();
       dd.progress(1);
       dd.success();
     }, 0);
@@ -100,7 +108,10 @@ class StoryUploadDDInteractive extends HTMLElement {
     btn.addEventListener('click', () => this._simulate());
     this.prepend(btn);
 
-    this.addEventListener('it-change', () => this._simulate());
+    this.addEventListener('it-dd-drop', (e) => {
+      e.preventDefault();
+      this._simulate();
+    });
   }
 
   disconnectedCallback() {
@@ -111,10 +122,12 @@ class StoryUploadDDInteractive extends HTMLElement {
     const dd = this.querySelector<ItUploadDragDrop>('it-upload-drag-drop');
     if (!dd) return;
     clearInterval(this._timer);
-    if (dd._state !== 'loading') {
-      dd.simulateUpload('nome_file.pdf', 3_900_000);
-    }
-    let p = dd._progress / 100;
+    dd.reset();
+    (dd as any)._fileName = 'nome_file.pdf';
+    (dd as any)._fileWeight = '3.7 MB';
+    (dd as any)._fileType = 'PDF';
+    dd.start();
+    let p = 0;
     this._timer = setInterval(() => {
       p = Math.min(1, p + 0.1);
       dd.progress(p);
@@ -219,7 +232,7 @@ const renderUploadDragDrop = (params: Partial<UploadDragDropProps>) => html`
 
 const meta = {
   title: 'Componenti/Form/Upload',
-  tags: ['a11y-ok', 'web-component'],
+  tags: ['new', 'a11y-ok', 'web-component'],
   component: 'it-upload',
   parameters: {
     docs: {
@@ -265,7 +278,7 @@ export const EsempioInterattivoUpload: Story = {
       control: 'boolean',
     },
     imagePreview: {
-      description: 'Mostra un\'anteprima thumbnail per le immagini caricate.',
+      description: "Mostra un'anteprima thumbnail per le immagini caricate.",
       control: 'boolean',
     },
     accept: {
@@ -309,11 +322,11 @@ export const EsempioInterattivoAvatar: Story = {
   },
   argTypes: {
     src: {
-      description: 'URL dell\'immagine avatar corrente.',
+      description: "URL dell'immagine avatar corrente.",
       control: 'text',
     },
     alt: {
-      description: 'Testo alternativo per l\'immagine.',
+      description: "Testo alternativo per l'immagine.",
       control: 'text',
     },
     size: {
@@ -326,7 +339,8 @@ export const EsempioInterattivoAvatar: Story = {
       control: 'boolean',
     },
     required: {
-      description: 'Rende il campo obbligatorio nella validazione del form. Se src è già valorizzato, il requisito è soddisfatto.',
+      description:
+        'Rende il campo obbligatorio nella validazione del form. Se src è già valorizzato, il requisito è soddisfatto.',
       control: 'boolean',
     },
   },
@@ -473,7 +487,6 @@ export const UploadConStatoFile: Story = {
  * Upload Gallery — visualizza le foto in una griglia a "pictures wall"
  */
 export const UploadGallery: Story = {
-  name: 'Upload Gallery',
   parameters: {
     docs: {
       description: {
@@ -612,7 +625,7 @@ export const UploadDragDrop: Story = {
     docs: {
       description: {
         story:
-          'Componente per il caricamento tramite trascinamento. Mostra diversi stati: idle (inattivo), dragover (file trascinato), loading (caricamento), success (completato). L\'avanzamento è visualizzato con un indicatore di progresso a ciambella.',
+          "Componente per il caricamento tramite trascinamento. Mostra diversi stati: idle (inattivo), dragover (file trascinato), loading (caricamento), success (completato).\nL'avanzamento è visualizzato con un indicatore di progresso a ciambella.",
       },
       source: {
         language: 'html',
@@ -645,17 +658,13 @@ export const UploadDragDrop: Story = {
 <script>
   // -- 2. Setup Loading State --
   const ddLoading = document.getElementById('dd-loading');
-  // Imposta file e lo blocca allo stato 'loading'
-  ddLoading.simulateUpload('nome_file.pdf', 3900000);
-
+  ddLoading.start();
 
   // -- 3. Setup Success State --
   const ddSuccess = document.getElementById('dd-success');
-  // Imposta file, spinge il progresso al 100% e chiama success()
-  ddSuccess.simulateUpload('nome_file.pdf', 3900000);
+  ddSuccess.start();
   ddSuccess.progress(1);
   ddSuccess.success();
-
 
   // -- 4. Setup Interactive/Animated --
   const ddInteractive = document.getElementById('dd-interactive');
@@ -664,14 +673,9 @@ export const UploadDragDrop: Story = {
 
   const startSimulation = () => {
     clearInterval(simulationTimer);
-
-    // Inizializza i metadati se non sta già caricando
-    if (ddInteractive._state !== 'loading') {
-      ddInteractive.simulateUpload('nome_file.pdf', 3900000);
-    }
-
-    // Recupera il progresso attuale (da 0 a 1)
-    let p = (ddInteractive._progress || 0) / 100;
+    ddInteractive.reset();
+    ddInteractive.start();
+    let p = 0;
 
     simulationTimer = setInterval(() => {
       p = Math.min(1, p + 0.1);
@@ -686,7 +690,7 @@ export const UploadDragDrop: Story = {
 
   // Avvia l'animazione al click del bottone o quando l'utente seleziona/trascina un file reale
   btnSimulate.addEventListener('click', startSimulation);
-  ddInteractive.addEventListener('it-change', startSimulation);
+  ddInteractive.addEventListener('it-dd-drop', (e) => { e.preventDefault(); startSimulation(); });
 </script>
         `,
       },
@@ -732,9 +736,9 @@ export const UploadFormIntegrazione: Story = {
     docs: {
       description: {
         story:
-          'Esempio con tutti e tre i componenti upload obbligatori all\'interno di un form. ' +
-          '`<it-upload>` e `<it-upload-drag-drop>` e `<it-upload-avatar>` richiedono che l\'utente selezioni un file. ' +
-          'Prova a inviare il form per vedere la validazione in azione.',
+          "Esempio con tutti e tre i componenti upload obbligatori all'interno di un form. " +
+          "`<it-upload>` e `<it-upload-drag-drop>` e `<it-upload-avatar>` richiedono che l'utente selezioni un file. " +
+          '\nProva a inviare il form per vedere la validazione in azione.',
       },
       source: {
         language: 'html',
@@ -787,11 +791,7 @@ export const UploadFormIntegrazione: Story = {
 
       <div>
         <h5>Avatar (obbligatorio)</h5>
-        <it-upload-avatar
-          name="foto-profilo"
-          required
-          alt="Mario Rossi"
-        ></it-upload-avatar>
+        <it-upload-avatar name="foto-profilo" required alt="Mario Rossi"></it-upload-avatar>
       </div>
 
       <div>
@@ -807,33 +807,91 @@ export const UploadFormIntegrazione: Story = {
 };
 
 /**
- * Proprietà, Metodi e Eventi accessibili via JavaScript
+ * Proprietà, Metodi e Eventi di `<it-upload>`
  */
-export const MetodiEPropPubblici: Story = {
+export const MetodiEPropUpload: Story = {
   ...StoryFormControlMethodAndProps({
     componentName: 'it-upload',
 
-    // Attenzione: nessun 'a capo' dopo il primo backtick!
-    otherProps: `|\`files\`| Array dei file caricati (\`UploadFile[]\`). Disponibile in tutti e tre i componenti. |
-|\`validity\`| Restituisce l'oggetto ValidityState nativo del campo input. |
-|\`validationMessage\`| Messaggio di errore di validazione. |
-|\`auto-success\` *it-upload*| Se presente, i file passano automaticamente allo stato \`success\` appena selezionati (senza dover chiamare \`setFileStatus()\`). Utile per scenari solo client-side. |
-|\`illustration\` *it-upload-drag-drop*| URL dell'illustrazione mostrata nel componente. Se omesso viene usata l'illustrazione predefinita inclusa nel bundle. |
-|\`overlay-label\` *it-upload-avatar*| Testo visibile nell'overlay desktop al passaggio del mouse / focus. Default: "Aggiorna" (i18n). |`,
+    otherProps: `|\`files\`| Array di sola lettura dei file caricati (\`UploadFile[]\`). |
+|\`auto-success\`| Se presente, i file passano automaticamente allo stato \`success\` appena selezionati. |
+|\`variant\`| Layout: \`default\` (lista verticale) oppure \`gallery\` (griglia immagini). |
+|\`multiple\`| Consente la selezione di più file contemporaneamente. |
+|\`accept\`| Tipi di file accettati, es. \`"image/*,.pdf"\`. |
+|\`image-preview\`| Mostra thumbnail in anteprima al posto dell'icona file (consigliato per immagini). |
+|\`support-text\`| Testo di supporto visualizzato sotto il pulsante. |`,
 
-    otherMethods: `|\`addFile()\` *it-upload*| Aggiunge programmaticamente un file con stato 'loading'. Ritorna l'id generato. | file |
-|\`setFileStatus()\` *it-upload*| Aggiorna lo stato e il progresso (0-100) di un file. | id, status, progress? |
-|\`setFileThumbnail()\` *it-upload*| Imposta una thumbnail (data URL) per un file. | id, dataUrl |
-|\`removeFile()\` *it-upload*| Rimuove un file dalla lista. | id |
-|\`start()\` *it-upload-drag-drop*| Avvia lo stato di caricamento mostrando il progress. | - |
-|\`progress()\` *it-upload-drag-drop*| Aggiorna il progresso (valore 0-1). | value |
-|\`success()\` *it-upload-drag-drop*| Segna il caricamento come completato. | - |
-|\`reset()\` *it-upload-drag-drop*| Ripristina lo stato iniziale. | - |
-|\`simulateUpload()\` *it-upload-drag-drop*| Imposta metadati file e avvia lo stato loading (utile per demo e test). | fileName, fileSize? |`,
+    otherMethods: `|\`addFile(file)\`| Aggiunge un file con stato \`loading\`. Ritorna l'id interno generato. | file: File |
+|\`setFileStatus(id, status, progress?)\`| Aggiorna lo stato (\`loading\`, \`success\`, \`error\`) e il progresso (0–100) di un file. | id, status, progress? |
+|\`setFileThumbnail(id, dataUrl)\`| Imposta una thumbnail (data URL) per un file. | id, dataUrl |
+|\`removeFile(id)\`| Rimuove un file dalla lista. | id |`,
 
-    otherEvents: `|\`it-upload-add\` *it-upload*| Emesso quando file vengono selezionati. \`detail: { files: File[], name, id }\` |
-|\`it-upload-remove\` *it-upload*| Emesso quando un file viene rimosso. \`detail: { id, name, componentName, componentId }\` |
-|\`it-change\` *it-upload*, *it-upload-avatar* e *it-upload-drag-drop*| Emesso ad ogni modifica. \`detail: { files?: File[], file?: File, name, id }\` |`,
+    otherEvents: `|\`it-upload-add\`| Emesso quando uno o più file vengono selezionati. \`detail: { files: File[], name, id }\` |
+|\`it-upload-remove\`| Emesso quando un file viene rimosso. \`detail: { id, name, componentName, componentId }\` |
+|\`it-change\`| Emesso a ogni modifica alla lista. \`detail: { files: File[], name, id }\` |`,
   }),
   tags: ['!dev'],
+};
+
+/**
+ * Proprietà, Metodi e Eventi di `<it-upload-avatar>`
+ */
+export const MetodiEPropAvatar: Story = {
+  ...StoryFormControlMethodAndProps({
+    componentName: 'it-upload-avatar',
+
+    otherProps: `|\`src\`| URL dell'immagine avatar corrente. Se valorizzato soddisfa il requisito \`required\`. |
+|\`alt\`| Testo alternativo per l'immagine avatar. |
+|\`size\`| Dimensione del componente: \`xxl\` (standard) oppure \`xl\` (piccola). |
+|\`accept\`| Tipi di file accettati (default: \`image/*\`). |
+|\`overlay-label\`| Testo dell'overlay al passaggio del mouse / focus. Default: "Aggiorna" (i18n). |
+|\`files\`| Array di sola lettura: contiene il file selezionato (\`UploadFile[]\`). |`,
+
+    otherMethods: '',
+
+    otherEvents: `|\`it-change\`| Emesso quando l'utente seleziona un nuovo file. \`detail: { files: File[], name, id }\` |`,
+  }),
+  tags: ['!dev'],
+};
+
+/**
+ * Proprietà, Metodi e Eventi di `<it-upload-drag-drop>`
+ */
+export const MetodiEPropDragDrop: Story = {
+  ...StoryFormControlMethodAndProps({
+    componentName: 'it-upload-drag-drop',
+    otherProps: `|\`accept\`| Tipi di file accettati, es. \`"image/*,.pdf"\`. |
+|\`illustration\`| URL illustrazione personalizzata. Se omesso viene usata quella predefinita inclusa nel bundle. |
+|\`files\`| Array di sola lettura: contiene il file selezionato (\`UploadFile[]\`). |`,
+
+    otherMethods: `|\`start()\`| Avvia lo stato di caricamento mostrando il progress circolare. | - |
+|\`progress(value)\`| Aggiorna il progresso (valore 0–1). | value: number |
+|\`success()\`| Segna il caricamento come completato. | - |
+|\`reset()\`| Ripristina lo stato iniziale. | - |`,
+
+    otherEvents: `|\`it-dd-start\`| Emesso al dragenter. Annullabile via \`preventDefault()\`: se non annullato parte \`start()\` automaticamente. \`detail: {}\` |
+|\`it-dd-drop\`| Emesso al drop o selezione da file input. Annullabile via \`preventDefault()\`: se non annullato parte \`start()\` + progress indeterminato automaticamente. \`detail: { file: File, name, id }\` |
+|\`it-change\`| Emesso sempre al drop/selezione (retrocompatibilità). \`detail: { file: File, name, id }\` |`,
+  }),
+  tags: ['!dev'],
+};
+
+export const I18n: Story = {
+  name: 'i18n',
+  tags: ['!dev'],
+  render: () => html`<div class="hide-preview"></div>`,
+  parameters: {
+    viewMode: 'docs',
+    docs: {
+      description: {
+        story: `
+Per questi componenti sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+
+\`\`\`js
+const translation = ${JSON.stringify(i18nIT, null, 2)}
+\`\`\`
+`,
+      },
+    },
+  },
 };

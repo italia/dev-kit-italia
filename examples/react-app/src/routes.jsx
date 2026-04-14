@@ -38,6 +38,7 @@ import Video from './pages/Video';
 import Carousel from './pages/Carousel';
 import Pagination from './pages/Pagination';
 import Progress from './pages/Progress';
+import Upload from './pages/Upload';
 
 export const AppRoutes = [
   { path: '/', element: <Home />, title: 'Homepage' },
@@ -79,5 +80,6 @@ export const AppRoutes = [
   { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/tables', element: <Table />, title: 'Tables' },
+  { path: '/upload', element: <Upload />, title: 'Upload' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];

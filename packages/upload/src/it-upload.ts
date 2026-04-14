@@ -1,3 +1,5 @@
+/* eslint-disable lit-a11y/no-redundant-role */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { FormControl, FormControlController } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
 import { html, nothing } from 'lit';
@@ -9,6 +11,7 @@ import type { UploadFile, UploadFileStatus, UploadVariant, UploadInternalFile } 
 import it from './locales/it.js';
 import en from './locales/en.js';
 import styles from './upload.scss';
+import { formatSize } from './utils.js';
 
 registerTranslation(it);
 registerTranslation(en);
@@ -93,16 +96,12 @@ export class ItUpload extends FormControl {
 
   /** Update the status (and optional progress 0–100) of a file by id. No-op for unknown ids. */
   setFileStatus(id: string, status: UploadFileStatus, progress?: number) {
-    this._files = this._files.map((f) =>
-      f.id === id ? { ...f, status, progress: progress ?? f.progress } : f,
-    );
+    this._files = this._files.map((f) => (f.id === id ? { ...f, status, progress: progress ?? f.progress } : f));
   }
 
   /** Set a thumbnail data URL for a file entry by id. No-op for unknown ids. */
   setFileThumbnail(id: string, dataUrl: string) {
-    this._files = this._files.map((f) =>
-      f.id === id ? { ...f, thumbnail: dataUrl } : f,
-    );
+    this._files = this._files.map((f) => (f.id === id ? { ...f, thumbnail: dataUrl } : f));
   }
 
   /** Remove a file entry by id. No-op for unknown ids. */
@@ -210,14 +209,6 @@ export class ItUpload extends FormControl {
     );
   }
 
-  private _formatSize(bytes: number): string {
-    if (bytes === 0) return '0 B';
-    const k = 1024;
-    const sizes = ['B', 'KB', 'MB', 'GB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return `${parseFloat((bytes / k ** i).toFixed(1))} ${sizes[i]}`;
-  }
-
   private _getStatusLabel(status: UploadFileStatus): string {
     switch (status) {
       case 'loading':
@@ -231,8 +222,20 @@ export class ItUpload extends FormControl {
   }
 
   private _getRemoveLabel(f: UploadInternalFile): string {
-    const template =
-      f.status === 'loading' ? this.$t('upload_remove_loading') : this.$t('upload_remove_done');
+    let key: string;
+    switch (f.status) {
+      case 'loading':
+        key = 'upload_remove_loading';
+        break;
+      case 'error':
+        key = 'upload_remove_error';
+        break;
+      case 'success':
+      default:
+        key = 'upload_remove_done';
+        break;
+    }
+    const template = this.$t(key);
     return template.replace('{name}', f.name);
   }
 
@@ -240,7 +243,6 @@ export class ItUpload extends FormControl {
   private _iconForStatus(status: UploadFileStatus) {
     switch (status) {
       case 'loading':
-        return 'it-file';
       case 'success':
         return 'it-file';
       case 'error':
@@ -267,16 +269,13 @@ export class ItUpload extends FormControl {
   }
 
   private _renderFileItem(f: UploadInternalFile) {
-    const liClass = this.composeClass(
-      'upload-file',
-      f.status === 'loading' ? 'uploading' : f.status,
-    );
+    const liClass = this.composeClass('upload-file', f.status === 'loading' ? 'uploading' : f.status);
 
     const statusLabel = this._getStatusLabel(f.status);
     const removeLabel = this._getRemoveLabel(f);
 
     return html`
-      <li class="${liClass}">
+      <li class="${liClass}" role="listitem">
         ${when(
           this.imagePreview && f.thumbnail,
           () => html`
@@ -284,20 +283,30 @@ export class ItUpload extends FormControl {
               <img src="${f.thumbnail!}" alt="${f.name}" />
             </div>
           `,
-          () => html`<it-icon name="${this._iconForStatus(f.status)}" size="sm" color="${this._colorForStatus(f.status)}" aria-hidden="true"></it-icon>`,
+          () =>
+            html`<it-icon
+              name="${this._iconForStatus(f.status)}"
+              size="sm"
+              color="${this._colorForStatus(f.status)}"
+              aria-hidden="true"
+            ></it-icon>`,
         )}
         <p>
           <span class="visually-hidden">${statusLabel}</span>${f.name}${when(
             f.status === 'success',
-            () => html`<span class="upload-file-weight">${this._formatSize(f.size)}</span>`,
+            () => html`<span class="upload-file-weight">${formatSize(f.size)}</span>`,
           )}
         </p>
 
         <button
+          part="file-remove-button"
           type="button"
-          @click="${() => this._handleRemove(f.id, f.name)}"
+          @click="${() => {
+            if (f.status !== 'success') this._handleRemove(f.id, f.name);
+          }}"
           aria-label="${removeLabel}"
-          ?disabled="${this.disabled||f.status === 'success'}"
+          ?disabled="${this.disabled || f.status === 'success'}"
+          aria-disabled="${f.status === 'success' || this.disabled ? 'true' : nothing}"
         >
           <it-icon
             name="${this._actionIconForStatus(f.status)}"
@@ -307,27 +316,30 @@ export class ItUpload extends FormControl {
         </button>
         ${when(
           f.status === 'loading',
-          () => html`
-            <it-progress
-              type="line"
-              .value="${f.progress ?? 0}"
-              it-aria-label="${f.name}"
-            ></it-progress>
-          `,
+          () => html` <it-progress type="line" .value="${f.progress ?? 0}" it-aria-label="${f.name}"></it-progress> `,
         )}
       </li>
     `;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   private _renderGalleryItem(f: UploadInternalFile) {
+    // NOTE: BSI reference HTML does not include a remove button for gallery items.
+    // Added here as a critical accessibility addition: without it there is no way
+    // to remove a photo once added (WCAG 2.1 SC 3.3.4 Error Prevention).
+    const removeLabel = this._getRemoveLabel(f);
     return html`
-      <li class="upload-image">
-        ${when(
-          f.thumbnail,
-          () => html`<img src="${f.thumbnail!}" alt="${f.name}" />`,
-        )}
-
+      <li class="upload-image" role="listitem">
+        ${when(f.thumbnail, () => html`<img src="${f.thumbnail!}" alt="${f.name}" />`)}
+        <button
+          part="gallery-remove-button"
+          type="button"
+          class="btn btn-primary btn-icon btn-xs upload-image-remove"
+          @click="${() => this._handleRemove(f.id, f.name)}"
+          aria-label="${removeLabel}"
+          ?disabled="${this.disabled}"
+        >
+          <it-icon name="it-close" size="xs" color="inverse" aria-hidden="true"></it-icon>
+        </button>
       </li>
     `;
   }
@@ -336,27 +348,20 @@ export class ItUpload extends FormControl {
     if (this._files.length === 0) return nothing;
 
     if (this.variant === 'gallery') {
-      return html`
-        ${this._files.map((f) => this._renderGalleryItem(f))}
-      `;
+      return html` ${this._files.map((f) => this._renderGalleryItem(f))} `;
     }
 
-    const listClass = this.composeClass(
-      'upload-file-list',
-      this.imagePreview ? 'upload-file-list-image' : '',
-    );
+    const listClass = this.composeClass('upload-file-list', this.imagePreview ? 'upload-file-list-image' : '');
     return html`
-      <ul class="${listClass}" aria-label="File caricati">
+      <ul class="${listClass}" aria-label="${this.$t('upload_file_list_label')}" role="list">
         ${this._files.map((f) => this._renderFileItem(f))}
       </ul>
     `;
   }
 
   private _renderUploadInput() {
-    const inputId = this._id ?? `upload-${Math.random().toString(36).slice(2)}`;
-    const labelText = this.variant === 'gallery'
-      ? this.$t('upload_gallery_label')
-      : this.$t('upload_label');
+    const inputId = this._id!;
+    const labelText = this.variant === 'gallery' ? this.$t('upload_gallery_label') : this.$t('upload_label');
 
     const showValidation = this.formControlController.submittedOnce;
     const isInvalid = showValidation && this.validationMessage.length > 0;
@@ -373,28 +378,30 @@ export class ItUpload extends FormControl {
           ?disabled="${this.disabled}"
           ?required="${this.required && this._files.length === 0}"
           aria-invalid="${isInvalid ? 'true' : 'false'}"
-          aria-describedby="${ifDefined(
-            isInvalid ? `invalid-feedback-${inputId}` : undefined,
-          )}"
+          aria-describedby="${ifDefined(isInvalid ? `invalid-feedback-${inputId}` : undefined)}"
           @change="${this._handleFileChange}"
         />
-        <label for="${inputId}">
-          <it-icon name="it-upload" size="sm" aria-hidden="true" color="${this.variant === 'gallery'? 'primary':'inverse'}"></it-icon>
+        <label part="input-label" for="${inputId}">
+          <slot name="icon">
+            <it-icon
+              name="${this.variant === 'gallery' ? 'it-plus' : 'it-upload'}"
+              size="${this.variant === 'gallery' ? 'lg' : 'sm'}"
+              aria-hidden="true"
+              color="${this.variant === 'gallery' ? 'primary' : 'inverse'}"
+            ></it-icon>
+          </slot>
           <slot name="label">${labelText}</slot>
         </label>
 
-        ${when(
-          this.supportText,
-          () => html`<small class="form-text">${this.supportText}</small>`,
-        )}
+        ${when(this.supportText, () => html`<small class="form-text">${this.supportText}</small>`)}
 
         <div
           role="alert"
           id="invalid-feedback-${inputId}"
-          class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
-          aria-hidden="${!isInvalid}"
+          class="invalid-feedback form-feedback form-text just-validate-error-label"
+          ?hidden=${!isInvalid}
         >
-          <span class="visually-hidden">${this.label}: </span>${this.validationMessage}
+          ${isInvalid ? html`<span class="visually-hidden">${this.label}: </span>${this.validationMessage}` : nothing}
         </div>
       </div>
     `;
@@ -403,19 +410,14 @@ export class ItUpload extends FormControl {
   override render() {
     if (this.variant === 'gallery') {
       return html`
-        <ul class="upload-pictures-wall">
+        <ul class="upload-pictures-wall" role="list">
           ${this._renderFileList()}
-          <li>
-            ${this._renderUploadInput()}
-          </li>
+          <li>${this._renderUploadInput()}</li>
         </ul>
       `;
     }
 
-    return html`
-      ${this._renderUploadInput()}
-      ${this._renderFileList()}
-    `;
+    return html` ${this._renderUploadInput()} ${this._renderFileList()} `;
   }
 }
 

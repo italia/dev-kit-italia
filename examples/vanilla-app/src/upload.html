@@ -16,81 +16,54 @@
         <h1>Upload</h1>
 
         <!-- ──────────────────────────────────────────────────────────────────── -->
-        <!-- it-upload — lista file                                               -->
+        <!-- Upload con lista di file                                             -->
         <!-- ──────────────────────────────────────────────────────────────────── -->
         <section>
-          <h2>Upload base (auto-success)</h2>
-          <p>I file passano automaticamente allo stato <code>success</code> appena selezionati.</p>
-          <it-upload name="upload-base" multiple accept="image/*" image-preview auto-success>
+          <h2>Upload con lista di file</h2>
+          <it-upload name="upload-list" multiple accept="image/*" image-preview auto-success>
             <span slot="label">Carica file</span>
           </it-upload>
         </section>
 
+        <!-- ──────────────────────────────────────────────────────────────────── -->
+        <!-- Upload con lista di file — stati                                     -->
+        <!-- ──────────────────────────────────────────────────────────────────── -->
         <section>
-          <h2>Upload con stati file</h2>
-          <p>
-            Esempio con file pre-caricati in tutti gli stati supportati: <code>success</code>,
-            <code>loading</code> al 43%, <code>error</code>.
-          </p>
-          <div id="upload-file-states-wrapper">
-            <it-upload id="upload-states" multiple image-preview name="upload-states">
-              <span slot="label">Carica file</span>
-            </it-upload>
-          </div>
-        </section>
-
-        <section>
-          <h2>Upload disabilitato</h2>
-          <it-upload name="upload-disabled" disabled>
-            <span slot="label">Carica file (disabilitato)</span>
-          </it-upload>
-        </section>
-
-        <section>
-          <h2>Upload con testo di supporto</h2>
-          <it-upload name="upload-support" support-text="Formati accettati: JPG, PNG, PDF. Dimensione massima: 5 MB." multiple accept="image/*,.pdf" auto-success>
-            <span slot="label">Carica documenti</span>
+          <h2>Upload con lista di file — stati</h2>
+          <it-upload id="upload-states" multiple image-preview name="upload-states">
+            <span slot="label">Carica file</span>
           </it-upload>
         </section>
 
         <!-- ──────────────────────────────────────────────────────────────────── -->
-        <!-- it-upload — gallery                                                  -->
+        <!-- Upload Gallery                                                       -->
         <!-- ──────────────────────────────────────────────────────────────────── -->
         <section>
           <h2>Upload Gallery</h2>
-          <p>
-            Con <code>variant="gallery"</code> le immagini caricate vengono visualizzate in una griglia a "pictures
-            wall".
-          </p>
           <div style="display: flex; flex-direction: column; gap: 3rem;">
             <div>
-              <h3>Vuota</h3>
-              <it-upload id="upload-gallery-empty" variant="gallery" multiple accept="image/*" name="upload-gallery-empty">
+              <it-upload variant="gallery" multiple accept="image/*" name="upload-gallery">
                 <span slot="label">Carica immagini</span>
               </it-upload>
             </div>
             <div>
-              <h3>Con immagini pre-caricate</h3>
-              <div id="upload-gallery-prefilled-wrapper">
-                <it-upload id="upload-gallery-filled" variant="gallery" multiple accept="image/*" name="upload-gallery-filled">
-                  <span slot="label">Carica immagini</span>
-                </it-upload>
-              </div>
+              <h3>Esempio immagini caricate</h3>
+              <it-upload id="upload-gallery-filled" variant="gallery" multiple accept="image/*" name="upload-gallery-filled">
+                <span slot="label">Carica immagini</span>
+              </it-upload>
             </div>
           </div>
         </section>
 
         <!-- ──────────────────────────────────────────────────────────────────── -->
-        <!-- it-upload-avatar                                                     -->
+        <!-- Upload con Avatar                                                    -->
         <!-- ──────────────────────────────────────────────────────────────────── -->
         <section>
-          <h2>Upload Avatar</h2>
-          <p>Permette il caricamento di una foto profilo. Disponibile in due dimensioni.</p>
+          <h2>Upload con Avatar</h2>
           <div style="display: flex; gap: 3rem; flex-wrap: wrap; align-items: flex-start;">
             <div>
-              <h3>Dimensione Standard (xxl)</h3>
+              <h3 style="margin-top: 0;">Dimensione Standard</h3>
               <it-upload-avatar
-                id="avatar-standard"
                 src="https://randomuser.me/api/portraits/men/21.jpg"
                 alt="Mario Rossi"
                 size="xxl"
@@ -98,88 +71,53 @@
               ></it-upload-avatar>
             </div>
             <div>
-              <h3>Dimensione Piccola (xl)</h3>
+              <h3 style="margin-top: 0;">Dimensione Piccola</h3>
               <it-upload-avatar
-                id="avatar-small"
                 src="https://randomuser.me/api/portraits/women/21.jpg"
                 alt="Laura Bianchi"
                 size="xl"
-                name="avatar-small"
-              ></it-upload-avatar>
-            </div>
-            <div>
-              <h3>Senza immagine iniziale</h3>
-              <it-upload-avatar
-                id="avatar-empty"
-                alt="Nuovo utente"
-                size="xxl"
-                name="avatar-empty"
-              ></it-upload-avatar>
-            </div>
-            <div>
-              <h3>Disabilitato</h3>
-              <it-upload-avatar
-                id="avatar-disabled"
-                src="https://randomuser.me/api/portraits/men/42.jpg"
-                alt="Utente disabilitato"
-                size="xxl"
-                name="avatar-disabled"
-                disabled
+                name="avatar-sm"
               ></it-upload-avatar>
             </div>
           </div>
-          <div id="avatar-log" style="margin-top: 1rem; font-size: 0.875rem; color: #555;"></div>
         </section>
 
         <!-- ──────────────────────────────────────────────────────────────────── -->
-        <!-- it-upload-drag-drop                                                  -->
+        <!-- Upload Drag & Drop                                                   -->
         <!-- ──────────────────────────────────────────────────────────────────── -->
         <section>
           <h2>Upload Drag &amp; Drop</h2>
-          <p>
-            Componente per il caricamento tramite trascinamento. Mostra diversi stati: idle, dragover, loading,
-            success.
-          </p>
           <div style="display: flex; flex-direction: column; gap: 3rem;">
             <div>
-              <h3>Default (idle)</h3>
+              <h3>Default</h3>
               <it-upload-drag-drop name="upload-dd-idle"></it-upload-drag-drop>
             </div>
 
             <div>
-              <h3>Stato: loading</h3>
+              <h3>Simula caricamento</h3>
               <it-upload-drag-drop id="dd-loading" name="upload-dd-loading"></it-upload-drag-drop>
             </div>
 
             <div>
-              <h3>Stato: success</h3>
+              <h3>Processo completato</h3>
               <it-upload-drag-drop id="dd-success" name="upload-dd-success"></it-upload-drag-drop>
             </div>
 
             <div>
               <h3>Esempio animato</h3>
-              <div id="dd-interactive-wrapper" style="display: flex; flex-direction: column; align-items: flex-start; gap: 1rem;">
+              <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 1rem;">
                 <it-button type="button" variant="primary" size="sm" id="btn-simulate-dd">Simula Upload</it-button>
                 <it-upload-drag-drop id="dd-interactive" name="upload-dd-demo"></it-upload-drag-drop>
               </div>
-            </div>
-
-            <div>
-              <h3>Disabilitato</h3>
-              <it-upload-drag-drop id="dd-disabled" name="upload-dd-disabled" disabled></it-upload-drag-drop>
             </div>
           </div>
         </section>
 
         <!-- ──────────────────────────────────────────────────────────────────── -->
-        <!-- Integrazione form con validazione native required                    -->
+        <!-- Integrazione form e validazione                                      -->
         <!-- ──────────────────────────────────────────────────────────────────── -->
         <section>
           <h2>Integrazione form e validazione</h2>
-          <p>
-            Esempio con tutti e tre i componenti upload obbligatori all'interno di un form.
-            Prova a inviare il form per vedere la validazione in azione.
-          </p>
           <form id="upload-form" style="display: flex; flex-direction: column; gap: 2rem;">
             <div>
               <h3>Lista file (obbligatorio)</h3>
@@ -190,11 +128,7 @@
 
             <div>
               <h3>Avatar (obbligatorio)</h3>
-              <it-upload-avatar
-                name="foto-profilo"
-                required
-                alt="Mario Rossi"
-              ></it-upload-avatar>
+              <it-upload-avatar name="foto-profilo" required alt="Mario Rossi"></it-upload-avatar>
             </div>
 
             <div>
@@ -202,24 +136,11 @@
               <it-upload-drag-drop name="documento" required></it-upload-drag-drop>
             </div>
 
-            <div>
+            <div style="margin-top: 0.5rem;">
               <it-button type="submit" variant="primary">Invia</it-button>
             </div>
           </form>
           <div id="upload-form-result" style="margin-top: 1rem; font-size: 0.875rem;"></div>
-        </section>
-
-        <!-- ──────────────────────────────────────────────────────────────────── -->
-        <!-- it-change event log                                                  -->
-        <!-- ──────────────────────────────────────────────────────────────────── -->
-        <section>
-          <h2>Log eventi (it-change)</h2>
-          <p>
-            Ascolta gli eventi <code>it-change</code> emessi dai componenti sopra.
-          </p>
-          <div id="events-log" style="font-size: 0.8rem; background: #f5f5f5; padding: 1rem; border-radius: 4px; max-height: 200px; overflow-y: auto;">
-            <em>Nessun evento ancora.</em>
-          </div>
         </section>
       </main>
       <div id="app-footer"></div>

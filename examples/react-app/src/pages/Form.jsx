@@ -149,6 +149,38 @@ const Form = () => {
           <span slot="label">Campo password</span>
         </it-input>
 
+        <div className="mb-4">
+          <it-upload
+            id="allegati-basic"
+            name="allegati"
+            required
+            multiple
+            accept="image/*,.pdf"
+            auto-success
+          >
+            <span slot="label">Allega documenti</span>
+          </it-upload>
+        </div>
+
+        <div className="mb-4">
+          <p className="fw-semibold mb-1">Foto profilo (obbligatoria)</p>
+          <it-upload-avatar
+            id="avatar-basic"
+            name="foto-profilo"
+            required
+            alt="Mario Rossi"
+          ></it-upload-avatar>
+        </div>
+
+        <div className="mb-4">
+          <p className="fw-semibold mb-1">Documento (trascina o seleziona, obbligatorio)</p>
+          <it-upload-drag-drop
+            id="documento-basic"
+            name="documento"
+            required
+          ></it-upload-drag-drop>
+        </div>
+
         <it-button type="submit" variant="primary" block>
           Invia
         </it-button>

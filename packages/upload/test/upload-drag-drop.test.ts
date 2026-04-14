@@ -1,4 +1,4 @@
-import '@italia/upload'
+import '../src/it-upload-drag-drop.js';
 import { expect, fixture, html, oneEvent } from '@open-wc/testing';
 import type { ItUploadDragDrop } from '../src/it-upload-drag-drop.js';
 
@@ -55,9 +55,22 @@ describe('<it-upload-drag-drop>', () => {
 
   // ── Drag interactions ─────────────────────────────────────────────────────────
 
-  it('enters dragover state on dragenter', async () => {
+  it('enters loading state on dragenter (auto-start via it-dd-start)', async () => {
     const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
     await el.updateComplete;
+
+    const zone = el.shadowRoot!.querySelector('.upload-dragdrop')!;
+    zone.dispatchEvent(dragEvent('dragenter', [mkFile()]));
+    await el.updateComplete;
+
+    expect((el as any)._state).to.equal('loading');
+    expect(zone.classList.contains('loading')).to.be.true;
+  });
+
+  it('enters dragover state on dragenter when it-dd-start is cancelled', async () => {
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
+    await el.updateComplete;
+    el.addEventListener('it-dd-start', (e) => e.preventDefault());
 
     const zone = el.shadowRoot!.querySelector('.upload-dragdrop')!;
     zone.dispatchEvent(dragEvent('dragenter', [mkFile()]));
@@ -244,7 +257,7 @@ describe('<it-upload-drag-drop>', () => {
     expect(progressEl).to.exist;
   });
 
-  it("it-progress receives the updated .value after progress()", async () => {
+  it('it-progress receives the updated .value after progress()', async () => {
     const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
     el.start();
     el.progress(0.42);
@@ -253,8 +266,7 @@ describe('<it-upload-drag-drop>', () => {
     const progressEl = el.shadowRoot!.querySelector('it-progress') as any;
     expect(progressEl).to.exist;
     // Either the property binding or aria-valuenow reflects the value
-    const valuenow =
-      progressEl?.value ?? progressEl?.getAttribute('aria-valuenow') ?? progressEl?.value;
+    const valuenow = progressEl?.value ?? progressEl?.getAttribute('aria-valuenow') ?? progressEl?.value;
     expect(Number(valuenow)).to.be.closeTo(42, 1);
   });
 
@@ -299,6 +311,61 @@ describe('<it-upload-drag-drop>', () => {
     expect(assigned.length).to.be.greaterThan(0);
   });
 
+  it('dragleave during loading state does NOT return to idle (B5)', async () => {
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
+    el.start();
+    await el.updateComplete;
+
+    const zone = el.shadowRoot!.querySelector('.upload-dragdrop')!;
+    zone.dispatchEvent(dragEvent('dragleave'));
+    await el.updateComplete;
+
+    expect((el as any)._state).to.equal('loading');
+  });
+
+  it('dragend during loading state does NOT return to idle (B5)', async () => {
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
+    el.start();
+    await el.updateComplete;
+
+    const zone = el.shadowRoot!.querySelector('.upload-dragdrop')!;
+    zone.dispatchEvent(new DragEvent('dragend', { bubbles: true, cancelable: true }));
+    await el.updateComplete;
+
+    expect((el as any)._state).to.equal('loading');
+  });
+
+  // ── Error div: no aria-hidden (A2+A3) ────────────────────────────────────────
+
+  it('error div has no aria-hidden attribute and is empty by default', async () => {
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
+    await el.updateComplete;
+
+    const div = el.shadowRoot!.querySelector('[role="alert"]');
+    expect(div).to.exist;
+    expect(div!.hasAttribute('aria-hidden')).to.be.false;
+    expect(div!.textContent?.trim()).to.equal('');
+  });
+
+  it('error div shows message when required and form submitted without file', async () => {
+    const container = await fixture<HTMLDivElement>(html`
+      <div>
+        <form>
+          <it-upload-drag-drop required></it-upload-drag-drop>
+          <button type="submit">Invia</button>
+        </form>
+      </div>
+    `);
+    const el = container.querySelector('it-upload-drag-drop')! as ItUploadDragDrop;
+    await el.updateComplete;
+
+    container.querySelector('button')!.click();
+    await el.updateComplete;
+
+    const div = el.shadowRoot!.querySelector('[role="alert"]');
+    expect(div!.textContent?.trim()).to.have.length.greaterThan(0);
+  });
+
   // ── FormControl ──────────────────────────────────────────────────────────────
 
   it('participates in form submission with name', async () => {
@@ -316,17 +383,13 @@ describe('<it-upload-drag-drop>', () => {
   });
 
   it('checkValidity() returns false when required and no file', async () => {
-    const el = await fixture<ItUploadDragDrop>(
-      html`<it-upload-drag-drop required></it-upload-drag-drop>`,
-    );
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop required></it-upload-drag-drop>`);
     await el.updateComplete;
     expect(el.checkValidity()).to.be.false;
   });
 
   it('checkValidity() returns true when required and file selected via input', async () => {
-    const el = await fixture<ItUploadDragDrop>(
-      html`<it-upload-drag-drop required></it-upload-drag-drop>`,
-    );
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop required></it-upload-drag-drop>`);
     await el.updateComplete;
 
     const file = mkFile('report.pdf');
@@ -338,9 +401,7 @@ describe('<it-upload-drag-drop>', () => {
   });
 
   it('checkValidity() returns true when required and file dropped', async () => {
-    const el = await fixture<ItUploadDragDrop>(
-      html`<it-upload-drag-drop required></it-upload-drag-drop>`,
-    );
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop required></it-upload-drag-drop>`);
     await el.updateComplete;
 
     const zone = el.shadowRoot!.querySelector('.upload-dragdrop')!;
@@ -351,9 +412,7 @@ describe('<it-upload-drag-drop>', () => {
   });
 
   it('reset() clears form value — checkValidity() false again when required', async () => {
-    const el = await fixture<ItUploadDragDrop>(
-      html`<it-upload-drag-drop required></it-upload-drag-drop>`,
-    );
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop required></it-upload-drag-drop>`);
     await el.updateComplete;
 
     const file = mkFile('report.pdf');

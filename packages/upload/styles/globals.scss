@@ -2,3 +2,23 @@ it-upload {
   --it-host-display: block;
   display: var(--it-host-display);
 }
+
+it-upload:not(:defined) {
+  --it-host-display: inline-flex;
+  align-items: center;
+  gap: var(--#{$prefix}spacing-xxs, 8px);
+
+  &[variant='gallery'] {
+    width: 128px;
+    height: 128px;
+    justify-content: center;
+    border: 2px dashed var(--#{$prefix}color-border);
+    border-radius: 4px;
+    text-align: center;
+  }
+}
+
+it-upload-avatar[size='xl'] {
+  width: 80px;
+  height: 80px;
+}

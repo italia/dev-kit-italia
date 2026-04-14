@@ -1,4 +1,6 @@
-import '@italia/upload';
+import '../src/it-upload.js';
+import '../src/it-upload-avatar.js';
+import '../src/it-upload-drag-drop.js';
 import '@italia/progress';
 import { expect, fixture, html, oneEvent } from '@open-wc/testing';
 import type { ItUpload } from '../src/it-upload.js';
@@ -10,9 +12,7 @@ describe('<it-upload>', () => {
   // ── Accessibility ────────────────────────────────────────────────────────────
 
   it('is accessible by default', async () => {
-    const el = await fixture<ItUpload>(
-      html`<it-upload name="files"><span slot="label">Carica file</span></it-upload>`,
-    );
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Carica file</span></it-upload>`);
     await expect(el).to.be.accessible();
   });
 
@@ -43,13 +43,11 @@ describe('<it-upload>', () => {
   // ── addFile() / removeFile() / setFileStatus() ──────────────────────────────
 
   it('addFile() adds an entry with loading status', async () => {
-    const el = await fixture<ItUpload>(
-      html`<it-upload name="files"><span slot="label">Files</span></it-upload>`,
-    );
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
     const id = el.addFile(mkFile('report.pdf'));
     await el.updateComplete;
 
-    const files = el.files;
+    const { files } = el;
     expect(files).to.have.length(1);
     expect(files[0].name).to.equal('report.pdf');
     expect(files[0].status).to.equal('loading');
@@ -70,9 +68,7 @@ describe('<it-upload>', () => {
   });
 
   it('removeFile() removes the correct entry', async () => {
-    const el = await fixture<ItUpload>(
-      html`<it-upload name="files"><span slot="label">Files</span></it-upload>`,
-    );
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
     const id1 = el.addFile(mkFile('keep.pdf'));
     el.addFile(mkFile('remove.pdf'));
     await el.updateComplete;
@@ -85,9 +81,7 @@ describe('<it-upload>', () => {
   });
 
   it('removeFile() is a no-op for unknown id', async () => {
-    const el = await fixture<ItUpload>(
-      html`<it-upload name="files"><span slot="label">Files</span></it-upload>`,
-    );
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
     el.addFile(mkFile('file.pdf'));
     await el.updateComplete;
 
@@ -98,9 +92,7 @@ describe('<it-upload>', () => {
   });
 
   it('setFileStatus() updates status to success', async () => {
-    const el = await fixture<ItUpload>(
-      html`<it-upload name="files"><span slot="label">Files</span></it-upload>`,
-    );
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
     const id = el.addFile(mkFile('doc.pdf'));
     el.setFileStatus(id, 'success');
     await el.updateComplete;
@@ -113,9 +105,7 @@ describe('<it-upload>', () => {
   });
 
   it('setFileStatus() updates status to error', async () => {
-    const el = await fixture<ItUpload>(
-      html`<it-upload name="files"><span slot="label">Files</span></it-upload>`,
-    );
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
     const id = el.addFile(mkFile('broken.jpg'));
     el.setFileStatus(id, 'error');
     await el.updateComplete;
@@ -124,9 +114,7 @@ describe('<it-upload>', () => {
   });
 
   it('setFileStatus() is a no-op for unknown id', async () => {
-    const el = await fixture<ItUpload>(
-      html`<it-upload name="files"><span slot="label">Files</span></it-upload>`,
-    );
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
     el.addFile(mkFile('ok.pdf'));
     // should not throw
     el.setFileStatus('ghost-id', 'success');
@@ -136,9 +124,7 @@ describe('<it-upload>', () => {
   });
 
   it('setFileStatus() updates progress value', async () => {
-    const el = await fixture<ItUpload>(
-      html`<it-upload name="files"><span slot="label">Files</span></it-upload>`,
-    );
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
     const id = el.addFile(mkFile('large.pdf'));
     el.setFileStatus(id, 'loading', 60);
     await el.updateComplete;
@@ -206,6 +192,30 @@ describe('<it-upload>', () => {
     expect(btn.disabled).to.be.true;
   });
 
+  it('success-state remove button has aria-disabled="true" and is not natively disabled', async () => {
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
+    const id = el.addFile(mkFile('done.pdf'));
+    el.setFileStatus(id, 'success');
+    await el.updateComplete;
+
+    const btn = el.shadowRoot!.querySelector('.upload-file button') as HTMLButtonElement;
+    expect(btn.getAttribute('aria-disabled')).to.equal('true');
+    expect(btn.disabled).to.be.false;
+  });
+
+  it('clicking the success-state remove button does not remove the file', async () => {
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
+    const id = el.addFile(mkFile('done.pdf'));
+    el.setFileStatus(id, 'success');
+    await el.updateComplete;
+
+    const btn = el.shadowRoot!.querySelector('.upload-file button') as HTMLButtonElement;
+    btn.click();
+    await el.updateComplete;
+
+    expect(el.files).to.have.length(1);
+  });
+
   // ── Variant: gallery ─────────────────────────────────────────────────────────
 
   it('renders upload-pictures-wall when variant=gallery', async () => {
@@ -225,6 +235,35 @@ describe('<it-upload>', () => {
     expect(el.shadowRoot!.querySelector('.upload-file-list')).to.not.exist;
   });
 
+  it('gallery item renders a remove button', async () => {
+    const el = await fixture<ItUpload>(
+      html`<it-upload name="photos" variant="gallery"><span slot="label">Foto</span></it-upload>`,
+    );
+    const id = el.addFile(mkFile('img.jpg', 512, 'image/jpeg'));
+    el.setFileThumbnail(id, 'data:image/png;base64,AA==');
+    el.setFileStatus(id, 'success');
+    await el.updateComplete;
+
+    const btn = el.shadowRoot!.querySelector('.upload-image button') as HTMLButtonElement;
+    expect(btn).to.exist;
+  });
+
+  it('gallery item remove button click emits it-upload-remove', async () => {
+    const el = await fixture<ItUpload>(
+      html`<it-upload name="photos" variant="gallery"><span slot="label">Foto</span></it-upload>`,
+    );
+    const id = el.addFile(mkFile('img.jpg', 512, 'image/jpeg'));
+    el.setFileThumbnail(id, 'data:image/png;base64,AA==');
+    await el.updateComplete;
+
+    const eventPromise = oneEvent(el, 'it-upload-remove') as Promise<CustomEvent>;
+    const btn = el.shadowRoot!.querySelector('.upload-image button') as HTMLButtonElement;
+    btn.click();
+
+    const ev = await eventPromise;
+    expect(ev.detail.id).to.equal(id);
+  });
+
   // ── image-preview ─────────────────────────────────────────────────────────────
 
   it('adds upload-file-list-image class when image-preview is set', async () => {
@@ -239,9 +278,7 @@ describe('<it-upload>', () => {
   // ── Events ────────────────────────────────────────────────────────────────────
 
   it('emits it-upload-add when a file is added via addFile()', async () => {
-    const el = await fixture<ItUpload>(
-      html`<it-upload name="files"><span slot="label">Files</span></it-upload>`,
-    );
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
     // addFile() is programmatic and doesn't trigger it-upload-add
     // The event is fired from _handleFileChange. Simulate it:
     const eventPromise = oneEvent(el, 'it-upload-add') as Promise<CustomEvent>;
@@ -255,9 +292,7 @@ describe('<it-upload>', () => {
   });
 
   it('emits it-upload-remove when removeFile() is called', async () => {
-    const el = await fixture<ItUpload>(
-      html`<it-upload name="files"><span slot="label">Files</span></it-upload>`,
-    );
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
     const id = el.addFile(mkFile('to-remove.pdf'));
     await el.updateComplete;
 
@@ -316,12 +351,113 @@ describe('<it-upload>', () => {
     expect(entries).to.have.length(2);
   });
 
-  // ── _formatSize() ─────────────────────────────────────────────────────────────
+  // ── _formatSize() (now in utils.ts) ──────────────────────────────────────────
 
-  it('formats byte sizes correctly', () => {
-    const el = document.createElement('it-upload') as ItUpload;
-    expect((el as any)._formatSize(0)).to.equal('0 B');
-    expect((el as any)._formatSize(1024)).to.equal('1 KB');
-    expect((el as any)._formatSize(1024 * 1024)).to.equal('1 MB');
+  it('formats byte sizes correctly via formatSize utility', async () => {
+    // formatSize is extracted from the component — test it via a fresh import
+    const { formatSize } = await import('../src/utils.js');
+    expect(formatSize(0)).to.equal('0 B');
+    expect(formatSize(1024)).to.equal('1 KB');
+    expect(formatSize(1024 * 1024)).to.equal('1 MB');
+  });
+
+  // ── aria-label on file list (A1) ──────────────────────────────────────────
+
+  it('file list aria-label is a non-empty translated string', async () => {
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
+    el.addFile(mkFile('report.pdf'));
+    await el.updateComplete;
+
+    const ul = el.shadowRoot!.querySelector('ul.upload-file-list');
+    expect(ul).to.exist;
+    expect(ul!.getAttribute('aria-label')).to.have.length.greaterThan(0);
+  });
+
+  // ── Error div: no aria-hidden, message driven by content (A2+A3) ─────────
+
+  it('error div has no aria-hidden attribute and is empty when valid', async () => {
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
+    await el.updateComplete;
+
+    const div = el.shadowRoot!.querySelector('[role="alert"]');
+    expect(div).to.exist;
+    expect(div!.hasAttribute('aria-hidden')).to.be.false;
+    expect(div!.textContent?.trim()).to.equal('');
+  });
+
+  it('error div shows validation message when field is invalid after submit', async () => {
+    const container = await fixture<HTMLDivElement>(html`
+      <div>
+        <form>
+          <it-upload name="files" required><span slot="label">Files</span></it-upload>
+          <button type="submit">Invia</button>
+        </form>
+      </div>
+    `);
+    const el = container.querySelector('it-upload')! as ItUpload;
+    await el.updateComplete;
+
+    container.querySelector('button')!.click();
+    await el.updateComplete;
+
+    const div = el.shadowRoot!.querySelector('[role="alert"]');
+    expect(div!.textContent?.trim()).to.have.length.greaterThan(0);
+  });
+
+  // ── A5: success-state remove button ──────────────────────────────────────
+
+  it('success-state remove button has aria-disabled="true" and is not natively disabled', async () => {
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
+    const id = el.addFile(mkFile('done.pdf'));
+    el.setFileStatus(id, 'success');
+    await el.updateComplete;
+
+    const btn = el.shadowRoot!.querySelector('.upload-file button') as HTMLButtonElement;
+    expect(btn.getAttribute('aria-disabled')).to.equal('true');
+    expect(btn.disabled).to.be.false;
+  });
+
+  it('clicking the success-state remove button does not remove the file', async () => {
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
+    const id = el.addFile(mkFile('done.pdf'));
+    el.setFileStatus(id, 'success');
+    await el.updateComplete;
+
+    const btn = el.shadowRoot!.querySelector('.upload-file button') as HTMLButtonElement;
+    btn.click();
+    await el.updateComplete;
+
+    expect(el.files).to.have.length(1);
+  });
+
+  // ── A4: gallery remove button ─────────────────────────────────────────────
+
+  it('gallery item renders a remove button', async () => {
+    const el = await fixture<ItUpload>(
+      html`<it-upload name="photos" variant="gallery"><span slot="label">Foto</span></it-upload>`,
+    );
+    const id = el.addFile(mkFile('img.jpg', 512, 'image/jpeg'));
+    el.setFileThumbnail(id, 'data:image/png;base64,AA==');
+    el.setFileStatus(id, 'success');
+    await el.updateComplete;
+
+    const btn = el.shadowRoot!.querySelector('.upload-image button') as HTMLButtonElement;
+    expect(btn).to.exist;
+  });
+
+  it('gallery item remove button click emits it-upload-remove', async () => {
+    const el = await fixture<ItUpload>(
+      html`<it-upload name="photos" variant="gallery"><span slot="label">Foto</span></it-upload>`,
+    );
+    const id = el.addFile(mkFile('img.jpg', 512, 'image/jpeg'));
+    el.setFileThumbnail(id, 'data:image/png;base64,AA==');
+    await el.updateComplete;
+
+    const eventPromise = oneEvent(el, 'it-upload-remove') as Promise<CustomEvent>;
+    const btn = el.shadowRoot!.querySelector('.upload-image button') as HTMLButtonElement;
+    btn.click();
+
+    const ev = await eventPromise;
+    expect(ev.detail.id).to.equal(id);
   });
 });
