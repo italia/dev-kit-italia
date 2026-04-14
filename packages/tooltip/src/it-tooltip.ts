@@ -43,8 +43,22 @@ export class ItTooltip extends BaseComponent {
     if (!this.controlled) this.showTooltip();
   };
 
-  private _onMouseLeave = () => {
-    if (!this.controlled) this.hideTooltip();
+  private _onMouseLeave = (e: MouseEvent) => {
+    if (!this.controlled) {
+      const rt = e.relatedTarget as Node | null;
+      // When mouse moves to the tooltip (shadow DOM), relatedTarget is retargeted to the host
+      if (rt === this || this._tooltipElement?.contains(rt)) return;
+      this.hideTooltip();
+    }
+  };
+
+  private _onTooltipMouseLeave = (e: MouseEvent) => {
+    if (!this.controlled) {
+      const rt = e.relatedTarget as Node | null;
+      // When mouse moves back to trigger (light DOM), relatedTarget is retargeted to the host
+      if (rt === this || rt === this._triggerElement || this._triggerElement?.contains(rt)) return;
+      this.hideTooltip();
+    }
   };
 
   private _onFocusIn = () => {
@@ -121,6 +135,8 @@ export class ItTooltip extends BaseComponent {
     this._tooltipElement.removeAttribute('aria-hidden');
     this._tooltipElement.classList.add('show');
 
+    this._tooltipElement.addEventListener('mouseleave', this._onTooltipMouseLeave);
+
     this._cleanup = autoUpdate(trigger, this._tooltipElement, () => {
       computePosition(trigger, this._tooltipElement, {
         placement: this.placement,
@@ -156,6 +172,7 @@ export class ItTooltip extends BaseComponent {
   }
 
   private _hide(): void {
+    this._tooltipElement.removeEventListener('mouseleave', this._onTooltipMouseLeave);
     this._cleanup?.();
     this._tooltipElement.classList.remove('show');
     this._tooltipElement.style.visibility = 'hidden';

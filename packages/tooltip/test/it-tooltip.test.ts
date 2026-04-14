@@ -262,6 +262,48 @@ describe('Tooltip component', () => {
       expect(document.activeElement).to.equal(trigger);
     });
 
+    it('does not hide when mouse moves from trigger to tooltip', async () => {
+      const el = await fixture<ItTooltip>(html`
+        <it-tooltip>
+          <button slot="trigger">Trigger</button>
+          <span slot="content">Testo</span>
+        </it-tooltip>
+      `);
+      const trigger = el.querySelector('[slot="trigger"]') as HTMLElement;
+
+      trigger.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
+      await waitUntil(() => el.open);
+
+      // relatedTarget = el simulates the browser's shadow DOM retargeting
+      trigger.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true, relatedTarget: el }));
+
+      expect(el.open).to.be.true;
+    });
+
+    it('hides after mouse leaves tooltip', async () => {
+      const el = await fixture<ItTooltip>(html`
+        <it-tooltip>
+          <button slot="trigger">Trigger</button>
+          <span slot="content">Testo</span>
+        </it-tooltip>
+      `);
+      const trigger = el.querySelector('[slot="trigger"]') as HTMLElement;
+
+      trigger.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
+      await waitUntil(() => el.open);
+
+      // Move to tooltip (doesn't hide)
+      trigger.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true, relatedTarget: el }));
+      expect(el.open).to.be.true;
+
+      // Move away from tooltip entirely (no relatedTarget = outside component)
+      const tooltipEl = el.shadowRoot!.querySelector('.tooltip') as HTMLElement;
+      tooltipEl.dispatchEvent(new MouseEvent('mouseleave', { bubbles: false }));
+
+      await waitUntil(() => !el.open, 'Tooltip should close after mouse leaves tooltip');
+      expect(el.open).to.be.false;
+    });
+
     it('does not respond to events when controlled', async () => {
       const el = await fixture<ItTooltip>(html`
         <it-tooltip controlled>
