@@ -1,5 +1,13 @@
 # @italia/skiplinks
 
+## 1.0.0-alpha.7
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
 ## 1.0.0-alpha.6
 
 ### Patch Changes
