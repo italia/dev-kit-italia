@@ -13,7 +13,8 @@ const translation: DefaultTranslation = {
   upload_status_error: 'Upload error:',
   upload_gallery_label: 'Upload photo',
 
-  upload_avatar_label: 'Upload your photo',
+  upload_avatar_label: 'Update avatar photo',
+  upload_avatar_overlay_label: 'Update',
 
   upload_dd_title: 'Drag file here to upload',
   upload_dd_description: 'or select it from your device',

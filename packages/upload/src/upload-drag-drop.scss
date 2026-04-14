@@ -6,24 +6,49 @@
 @import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
 
 @import 'bootstrap-italia/src/scss/forms/form-input-upload';
+@import 'bootstrap-italia/src/scss/forms/just-validate';
+@import 'bootstrap-italia/src/scss/components/type';
+@import 'bootstrap-italia/src/scss/forms/just-validate';
 
 :host {
-  display: inline-flex;
+  display: inline-block;
 }
 
-// The progress component is positioned inside .upload-dragdrop-image.
+// Hidden proxy input used by FormControl for required/validity — not visible to users.
+.it-form__control {
+  display: none;
+}
+
+// The progress component is positioned inside .upload-dragdrop-loading.
 // it-progress as a host element naturally fills the container via its own :host { display: block }
 // We size it via the wrapper to avoid crossing the it-progress shadow boundary.
-.upload-dragdrop-image {
+.upload-dragdrop-loading {
   it-progress {
     display: block;
     width: 100%;
     height: 100%;
+    // BSI's .progress-donut-wrapper::before is a light-colored ring that obstructs the
+    // illustration behind the overlay. Make it transparent so the image shows through.
+    // The white center circle (::after on the same wrapper) is kept as-is for text legibility.
+    --it-progress-donut-track-color: transparent;
   }
 }
 
-// Focus-visible for the hidden file input (global rules don't cross shadow boundary)
-.upload-dragdrop-input:focus-visible + label {
-  outline: 2px solid var(--#{$prefix}focus-outline-color, #ff9900);
-  outline-offset: 2px;
+:focus-visible,
+.upload:focus-visible + label,
+.upload-dragdrop-input:focus-visible[type='file'] + label,
+.avatar-upload:focus-within:focus-visible {
+  border-color: #000 !important;
+  box-shadow:
+    0 0 0 2px $focus-outline-color-in,
+    0 0 0 5px $focus-outline-color-out !important;
+  outline: 3px solid rgba(0, 0, 0, 0) !important;
+  outline-offset: 3px !important;
+}
+
+
+.upload-dragdrop-weight {
+  display: flex;
+  align-items: center;
+  gap: var(--#{$prefix}spacing-xxs, 8px);
 }

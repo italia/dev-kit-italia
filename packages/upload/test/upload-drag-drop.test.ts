@@ -298,4 +298,86 @@ describe('<it-upload-drag-drop>', () => {
     const assigned = slot.assignedNodes({ flatten: true });
     expect(assigned.length).to.be.greaterThan(0);
   });
+
+  // ── FormControl ──────────────────────────────────────────────────────────────
+
+  it('participates in form submission with name', async () => {
+    const container = await fixture<HTMLDivElement>(html`
+      <div>
+        <form>
+          <it-upload-drag-drop name="documento"></it-upload-drag-drop>
+          <button type="submit">Invia</button>
+        </form>
+      </div>
+    `);
+    const el = container.querySelector('it-upload-drag-drop')! as ItUploadDragDrop;
+    await el.updateComplete;
+    expect(el.getForm()).to.equal(container.querySelector('form'));
+  });
+
+  it('checkValidity() returns false when required and no file', async () => {
+    const el = await fixture<ItUploadDragDrop>(
+      html`<it-upload-drag-drop required></it-upload-drag-drop>`,
+    );
+    await el.updateComplete;
+    expect(el.checkValidity()).to.be.false;
+  });
+
+  it('checkValidity() returns true when required and file selected via input', async () => {
+    const el = await fixture<ItUploadDragDrop>(
+      html`<it-upload-drag-drop required></it-upload-drag-drop>`,
+    );
+    await el.updateComplete;
+
+    const file = mkFile('report.pdf');
+    const fakeInput = { files: [file] } as unknown as HTMLInputElement;
+    (el as any)._onFileInputChange({ target: fakeInput } as Event);
+    await el.updateComplete;
+
+    expect(el.checkValidity()).to.be.true;
+  });
+
+  it('checkValidity() returns true when required and file dropped', async () => {
+    const el = await fixture<ItUploadDragDrop>(
+      html`<it-upload-drag-drop required></it-upload-drag-drop>`,
+    );
+    await el.updateComplete;
+
+    const zone = el.shadowRoot!.querySelector('.upload-dragdrop')!;
+    zone.dispatchEvent(dragEvent('drop', [mkFile('archive.zip')]));
+    await el.updateComplete;
+
+    expect(el.checkValidity()).to.be.true;
+  });
+
+  it('reset() clears form value — checkValidity() false again when required', async () => {
+    const el = await fixture<ItUploadDragDrop>(
+      html`<it-upload-drag-drop required></it-upload-drag-drop>`,
+    );
+    await el.updateComplete;
+
+    const file = mkFile('report.pdf');
+    const fakeInput = { files: [file] } as unknown as HTMLInputElement;
+    (el as any)._onFileInputChange({ target: fakeInput } as Event);
+    await el.updateComplete;
+    expect(el.checkValidity()).to.be.true;
+
+    el.reset();
+    await el.updateComplete;
+    expect(el.checkValidity()).to.be.false;
+  });
+
+  it('disabled removes element from form', async () => {
+    const container = await fixture<HTMLDivElement>(html`
+      <div>
+        <form>
+          <it-upload-drag-drop name="documento" disabled></it-upload-drag-drop>
+          <button type="submit">Invia</button>
+        </form>
+      </div>
+    `);
+    const el = container.querySelector('it-upload-drag-drop')! as ItUploadDragDrop;
+    await el.updateComplete;
+    expect(el.disabled).to.be.true;
+  });
 });

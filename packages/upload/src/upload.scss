@@ -6,13 +6,13 @@
 @import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
 
 @import 'bootstrap-italia/src/scss/components/buttons';
-@import 'bootstrap-italia/src/scss/components/progress-bars';
 
 @import 'bootstrap-italia/src/scss/forms/forms';
 @import 'bootstrap-italia/src/scss/forms/form-control';
 @import 'bootstrap-italia/src/scss/forms/form-input-upload';
 
 @import 'bootstrap-italia/src/scss/forms/just-validate';
+@import 'bootstrap-italia/src/scss/components/type';
 
 @import 'bootstrap-italia/src/scss/base/utilities';
 
@@ -44,10 +44,12 @@ $utilities: (
   display: block;
 }
 
-// Focus-visible replicated from global focus.scss (doesn't cross shadow boundary)
-.upload:focus-visible + label {
-  outline: 2px solid var(--#{$prefix}focus-outline-color, #ff9900);
-  outline-offset: 2px;
+.upload[type='file'] + label {
+  display: flex;
+  width: fit-content;
+  max-width: unset !important; // Override BSI's `label { max-width: 80% }` for the upload label, which needs to shrink to fit its content.
+  align-items: center;
+  gap: var(--#{$prefix}spacing-xxs, 8px);
 }
 
 // Invalid state on the upload label (mirrors just-validate styling)
@@ -61,4 +63,30 @@ $utilities: (
 
 .invalid-feedback[aria-hidden='false'] {
   display: block;
+}
+
+// Icon mode (default): 24px icon + 12px gap = 36px
+.upload-file it-progress {
+  position: absolute;
+  bottom: -4px;
+  left: 36px;
+  width: calc(100% - 45px);
+}
+
+// Image-preview mode: 40px thumbnail + 12px gap = 52px
+.upload-file-list-image .upload-file it-progress {
+  left: 52px;
+  width: calc(100% - 60px);
+}
+
+:focus-visible,
+.upload:focus-visible + label,
+.upload-dragdrop-input:focus-visible[type='file'] + label,
+.avatar-upload:focus-within:focus-visible {
+  border-color: #000 !important;
+  box-shadow:
+    0 0 0 2px $focus-outline-color-in,
+    0 0 0 5px $focus-outline-color-out !important;
+  outline: 3px solid rgba(0, 0, 0, 0) !important;
+  outline-offset: 3px !important;
 }

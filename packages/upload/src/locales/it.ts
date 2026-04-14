@@ -13,7 +13,8 @@ const translation: DefaultTranslation = {
   upload_status_error: 'Errore caricamento file:',
   upload_gallery_label: 'Carica foto',
 
-  upload_avatar_label: 'Carica la tua foto',
+  upload_avatar_label: "Aggiorna foto dell'avatar",
+  upload_avatar_overlay_label: 'Aggiorna',
 
   upload_dd_title: 'Trascina il file per caricarlo',
   upload_dd_description: 'oppure selezionalo dal dispositivo',

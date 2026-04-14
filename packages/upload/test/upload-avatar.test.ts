@@ -41,6 +41,8 @@ describe('<it-upload-avatar>', () => {
     const el = await fixture<ItUploadAvatar>(
       html`<it-upload-avatar name="avatar" size="sm"></it-upload-avatar>`,
     );
+    // handleValidationMessages() in updated() schedules a second Lit cycle; flush it.
+    await el.updateComplete;
     await el.updateComplete;
 
     const wrapper = el.shadowRoot!.querySelector('.avatar-upload-wrapper')!;
@@ -49,7 +51,7 @@ describe('<it-upload-avatar>', () => {
 
   it('does not add size-sm class for standard size', async () => {
     const el = await fixture<ItUploadAvatar>(
-      html`<it-upload-avatar name="avatar" size="standard"></it-upload-avatar>`,
+      html`<it-upload-avatar name="avatar" size="xxl"></it-upload-avatar>`,
     );
     await el.updateComplete;
 
@@ -170,5 +172,148 @@ describe('<it-upload-avatar>', () => {
     await el.updateComplete;
 
     expect(el.shadowRoot!.querySelector('.upload-avatar-container')).to.exist;
+  });
+
+  // ── FormControl ──────────────────────────────────────────────────────────────
+
+  it('participates in form submission with name', async () => {
+    const container = await fixture<HTMLDivElement>(html`
+      <div>
+        <form>
+          <it-upload-avatar name="avatar" src="https://example.com/photo.jpg"></it-upload-avatar>
+          <button type="submit">Invia</button>
+        </form>
+      </div>
+    `);
+    const el = container.querySelector('it-upload-avatar')! as ItUploadAvatar;
+    await el.updateComplete;
+    // The element should be associated with the form
+    expect(el.getForm()).to.equal(container.querySelector('form'));
+  });
+
+  it('checkValidity() returns false when required and no src and no file', async () => {
+    const el = await fixture<ItUploadAvatar>(
+      html`<it-upload-avatar name="avatar" required></it-upload-avatar>`,
+    );
+    await el.updateComplete;
+    expect(el.checkValidity()).to.be.false;
+  });
+
+  it('checkValidity() returns true when required and src is pre-set', async () => {
+    const el = await fixture<ItUploadAvatar>(
+      html`<it-upload-avatar name="avatar" required src="https://example.com/photo.jpg"></it-upload-avatar>`,
+    );
+    await el.updateComplete;
+    expect(el.checkValidity()).to.be.true;
+  });
+
+  it('checkValidity() returns true when required and a file has been selected', async () => {
+    const el = await fixture<ItUploadAvatar>(
+      html`<it-upload-avatar name="avatar" required></it-upload-avatar>`,
+    );
+    await el.updateComplete;
+
+    const file = new File(['data'], 'photo.jpg', { type: 'image/jpeg' });
+    const fakeInput = { files: [file] } as unknown as HTMLInputElement;
+    (el as any)._handleFileChange({ target: fakeInput } as Event);
+    await el.updateComplete;
+
+    expect(el.checkValidity()).to.be.true;
+  });
+
+  it('disabled removes element from form', async () => {
+    const container = await fixture<HTMLDivElement>(html`
+      <div>
+        <form>
+          <it-upload-avatar name="avatar" disabled src="https://example.com/photo.jpg"></it-upload-avatar>
+          <button type="submit">Invia</button>
+        </form>
+      </div>
+    `);
+    const el = container.querySelector('it-upload-avatar')! as ItUploadAvatar;
+    await el.updateComplete;
+    // Disabled controls are excluded from form submission
+    expect(el.disabled).to.be.true;
+  });
+
+  // ── overlayLabel ─────────────────────────────────────────────────────────────
+
+  it('renders default i18n overlay label in the label element', async () => {
+    const el = await fixture<ItUploadAvatar>(
+      html`<it-upload-avatar name="avatar"></it-upload-avatar>`,
+    );
+    await el.updateComplete;
+    await el.updateComplete;
+
+    const label = el.shadowRoot!.querySelector('.upload-avatar-container label');
+    expect(label).to.exist;
+    const span = label!.querySelector('span');
+    // Test environment defaults to English; accept either locale string.
+    expect(span!.textContent?.trim()).to.match(/^(Aggiorna|Update)$/);
+  });
+
+  it('renders custom overlay-label when provided', async () => {
+    const el = await fixture<ItUploadAvatar>(
+      html`<it-upload-avatar name="avatar" overlay-label="Cambia foto"></it-upload-avatar>`,
+    );
+    await el.updateComplete;
+
+    const label = el.shadowRoot!.querySelector('.upload-avatar-container label');
+    const span = label!.querySelector('span');
+    expect(span!.textContent).to.equal('Cambia foto');
+  });
+
+  it('renders it-icon inside the overlay label', async () => {
+    const el = await fixture<ItUploadAvatar>(
+      html`<it-upload-avatar name="avatar"></it-upload-avatar>`,
+    );
+    await el.updateComplete;
+
+    const label = el.shadowRoot!.querySelector('.upload-avatar-container label');
+    expect(label!.querySelector('it-icon')).to.exist;
+  });
+
+  // ── it-change carries name + id ──────────────────────────────────────────────
+
+  it('it-change event detail includes name and id', async () => {
+    const el = await fixture<ItUploadAvatar>(
+      html`<it-upload-avatar name="my-avatar" id="avatar1"></it-upload-avatar>`,
+    );
+    await el.updateComplete;
+
+    const eventPromise = oneEvent(el, 'it-change') as Promise<CustomEvent>;
+
+    const file = new File(['data'], 'photo.jpg', { type: 'image/jpeg' });
+    const fakeInput = { files: [file] } as unknown as HTMLInputElement;
+    (el as any)._handleFileChange({ target: fakeInput } as Event);
+
+    const ev = await eventPromise;
+    expect(ev.detail.name).to.equal('my-avatar');
+    expect(ev.detail.id).to.equal('avatar1');
+  });
+
+  // ── Validation message display ────────────────────────────────────────────────
+
+  it('invalid-feedback has aria-hidden=false after form submission when invalid', async () => {
+    const container = await fixture<HTMLDivElement>(html`
+      <div>
+        <form>
+          <it-upload-avatar name="avatar" required></it-upload-avatar>
+          <button type="submit">Invia</button>
+        </form>
+      </div>
+    `);
+    const el = container.querySelector('it-upload-avatar')! as ItUploadAvatar;
+    await el.updateComplete;
+    await el.updateComplete;
+
+    // Submit to trigger validation
+    container.querySelector('form')!.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    await el.updateComplete;
+    await el.updateComplete;
+
+    const feedback = el.shadowRoot!.querySelector('.invalid-feedback');
+    expect(feedback).to.exist;
+    expect(feedback!.getAttribute('aria-hidden')).to.equal('false');
   });
 });

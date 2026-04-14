@@ -1,63 +1,81 @@
-import { Meta, Story, Canvas, Controls, Description } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas, Controls, Description } from '@storybook/addon-docs/blocks';
 import * as Stories from './it-upload.stories';
 
 <Meta of={Stories} />
 
 # Upload
 
-<description>Componente per il caricamento di file all'interno di un form, con supporto per selezione singola e multipla, anteprima immagini e variante galleria</description>
+<description>Elementi dei form dedicati al caricamento file</description>
 
 ## Cosa fa
 
-Il componente `it-upload` consente all'utente di selezionare uno o più file dal proprio dispositivo da allegare a un form. Può mostrare anteprime delle immagini caricate e supporta due varianti di layout: lista verticale (default) e griglia a galleria.
+Il componente Upload consente l'upload di file attraverso diverse modalità: lista verticale, anteprima immagini, gallery, avatar, o drag & drop.
 
 [Approfondisci come e quando usare il componente Upload](https://designers.italia.it/design-system/componenti/upload/)
 
-## Anteprima e attributi del componente
+## Upload con lista di file
+
 Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
 
-<Canvas of={Stories.EsempioInterattivo} />
-<Controls of={Stories.EsempioInterattivo} />
+<Canvas of={Stories.EsempioInterattivoUpload} />
+<Controls of={Stories.EsempioInterattivoUpload} />
 
-## Upload base
+Il componente `<it-upload>` mostra i file caricati in una lista verticale con icone file e la possibilità di rimozione singola.
 
-L'uso base del componente consente la selezione di un singolo file. Il nome del campo è passato tramite l'attributo `name` ed è obbligatorio per il corretto funzionamento all'interno di un form.
+<Canvas of={Stories.UploadConListaDiFile} />
 
-<Canvas of={Stories.Default} />
+### Anteprima immagini
 
-## Selezione multipla
+Aggiungendo l'attributo `image-preview`, le immagini caricate mostrano un'anteprima thumbnail al posto dell'icona generica. È consigliato quando il campo accetta prevalentemente immagini.
 
-Con l'attributo `multiple` l'utente può selezionare più file contemporaneamente. Ogni file viene aggiunto alla lista e può essere rimosso singolarmente.
+### Stati dei file
 
-<Canvas of={Stories.Multiplo} />
+Ogni file nella lista può trovarsi in uno dei seguenti stati: `loading` (con percentuale di avanzamento), `success` (caricamento completato) o `error` (caricamento fallito).
 
-## Anteprima immagine
+Usa i metodi `addFile()`, `setFileStatus()` e `setFileThumbnail()` per gestire la lista programmaticamente — consulta la sezione **{Stories.MetodiEPropPubblici.name}** per i dettagli.
 
-<Description of={Stories.ConAnteprimaImmagine} />
-<Canvas of={Stories.ConAnteprimaImmagine} />
+<Canvas of={Stories.UploadConStatoFile} />
 
-## Variante galleria
+### Upload Gallery
 
-<Description of={Stories.Galleria} />
-<Canvas of={Stories.Galleria} />
+Con `variant="gallery"` le foto caricate vengono visualizzate in una griglia a "pictures wall", ideale per gestire upload multipli di immagini.
 
-## Testo di supporto
+<Canvas of={Stories.UploadGallery} />
 
-Puoi aggiungere un testo descrittivo sotto il pulsante di caricamento tramite l'attributo `support-text`, ad esempio per indicare i formati o la dimensione massima accettati.
+## Upload con Avatar
 
-<Canvas of={Stories.TestoDiSupporto} />
+Il componente `<it-upload-avatar>` combina la visualizzazione di un avatar circolare con un input file per permettere il caricamento di una foto profilo.
 
-## Campo obbligatorio
+Modifica gli attributi nella tabella per personalizzare il componente.
 
-<Description of={Stories.Richiesto} />
-<Canvas of={Stories.Richiesto} />
+<Canvas of={Stories.EsempioInterattivoAvatar} />
+<Controls of={Stories.EsempioInterattivoAvatar} />
 
-## Stato disabilitato
+Sono disponibili due dimensioni tramite l'attributo `size`: `xxl` (standard) e `xl` (piccola). Aggiorna l'avatar selezionando un nuovo file: l'anteprima viene aggiornata immediatamente nel componente.
 
-Con l'attributo `disabled` il componente viene disabilitato e non consente la selezione di file.
+<Canvas of={Stories.UploadConAvatar} />
 
-<Canvas of={Stories.Disabilitato} />
+## Upload Drag & Drop
 
-## Proprietà, Metodi ed Eventi
+Il componente `<it-upload-drag-drop>` consente di caricare un file trascinandolo sull'area dedicata oppure tramite la selezione manuale.
 
-<Canvas of={Stories.MetodiEPropPubblici} />
+Modifica gli attributi nella tabella per personalizzare il componente.
+
+<Canvas of={Stories.EsempioInterattivoDragDrop} />
+<Controls of={Stories.EsempioInterattivoDragDrop} />
+
+Lo stato del caricamento è rappresentato da un indicatore di progresso circolare (ciambella). Chiama `el.progress(value)` passando un valore compreso tra 0 e 1 per aggiornare il progresso; il componente converte automaticamente il valore in percentuale. Al termine chiama `el.success()` per mostrare lo stato completato. Chiama `el.reset()` per tornare allo stato iniziale.
+
+<Canvas of={Stories.UploadDragDrop} />
+
+## Integrazione form e validazione
+
+Tutti e tre i componenti partecipano alla validazione nativa HTML tramite il meccanismo `FormControlController`. Aggiungendo l'attributo `required` il campo impedisce l'invio del form se non è valorizzato.
+
+Per `<it-upload-avatar>`, se `src` è già valorizzato, il requisito è soddisfatto anche senza un nuovo caricamento: l'immagine esistente è considerata un valore valido.
+
+<Description of={Stories.UploadFormIntegrazione} />
+<Canvas of={Stories.UploadFormIntegrazione} />
+
+## {Stories.MetodiEPropPubblici.name}
+<Description of={Stories.MetodiEPropPubblici} />

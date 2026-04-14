@@ -58,6 +58,14 @@ export class ItUpload extends FormControl {
   @property({ type: String, attribute: 'support-text' })
   supportText = '';
 
+  /**
+   * If true, files transition to 'success' automatically as soon as they are added
+   * (useful for purely client-side scenarios).
+   * Leave false (default) when you need to call setFileStatus() after a real HTTP upload.
+   */
+  @property({ type: Boolean, attribute: 'auto-success' })
+  autoSuccess = false;
+
   @state()
   private _files: UploadInternalFile[] = [];
 
@@ -87,6 +95,13 @@ export class ItUpload extends FormControl {
   setFileStatus(id: string, status: UploadFileStatus, progress?: number) {
     this._files = this._files.map((f) =>
       f.id === id ? { ...f, status, progress: progress ?? f.progress } : f,
+    );
+  }
+
+  /** Set a thumbnail data URL for a file entry by id. No-op for unknown ids. */
+  setFileThumbnail(id: string, dataUrl: string) {
+    this._files = this._files.map((f) =>
+      f.id === id ? { ...f, thumbnail: dataUrl } : f,
     );
   }
 
@@ -142,7 +157,19 @@ export class ItUpload extends FormControl {
     if (!fileList || fileList.length === 0) return;
 
     const newFiles = Array.from(fileList);
-    newFiles.forEach((file) => this.addFile(file));
+    newFiles.forEach((file) => {
+      const id = this.addFile(file);
+      if (file.type.startsWith('image/') && (this.imagePreview || this.variant === 'gallery')) {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          this.setFileThumbnail(id, ev.target?.result as string);
+          if (this.autoSuccess) this.setFileStatus(id, 'success');
+        };
+        reader.readAsDataURL(file);
+      } else if (this.autoSuccess) {
+        this.setFileStatus(id, 'success');
+      }
+    });
 
     // Reset the native input so the same file can be re-selected
     input.value = '';
@@ -151,14 +178,14 @@ export class ItUpload extends FormControl {
 
     this.dispatchEvent(
       new CustomEvent('it-upload-add', {
-        detail: { files: newFiles },
+        detail: { files: newFiles, name: this.name, id: this.id },
         bubbles: true,
         composed: true,
       }),
     );
     this.dispatchEvent(
       new CustomEvent('it-change', {
-        detail: { files: this._files.map((f) => f._raw) },
+        detail: { files: this._files.map((f) => f._raw), name: this.name, id: this.id },
         bubbles: true,
         composed: true,
       }),
@@ -169,14 +196,14 @@ export class ItUpload extends FormControl {
     this.removeFile(id);
     this.dispatchEvent(
       new CustomEvent('it-upload-remove', {
-        detail: { id, name },
+        detail: { id, name, componentName: this.name, componentId: this.id },
         bubbles: true,
         composed: true,
       }),
     );
     this.dispatchEvent(
       new CustomEvent('it-change', {
-        detail: { files: this._files.map((f) => f._raw) },
+        detail: { files: this._files.map((f) => f._raw), name: this.name, id: this.id },
         bubbles: true,
         composed: true,
       }),
@@ -198,6 +225,7 @@ export class ItUpload extends FormControl {
       case 'success':
         return this.$t('upload_status_success');
       case 'error':
+      default:
         return this.$t('upload_status_error');
     }
   }
@@ -208,6 +236,7 @@ export class ItUpload extends FormControl {
     return template.replace('{name}', f.name);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   private _iconForStatus(status: UploadFileStatus) {
     switch (status) {
       case 'loading':
@@ -215,8 +244,26 @@ export class ItUpload extends FormControl {
       case 'success':
         return 'it-file';
       case 'error':
+      default:
         return 'it-close-circle';
     }
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  private _colorForStatus(status: UploadFileStatus): string {
+    switch (status) {
+      case 'success':
+        return 'success';
+      case 'error':
+        return 'danger';
+      default:
+        return '';
+    }
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  private _actionIconForStatus(status: UploadFileStatus): string {
+    return status === 'success' ? 'it-check' : 'it-close';
   }
 
   private _renderFileItem(f: UploadInternalFile) {
@@ -237,7 +284,7 @@ export class ItUpload extends FormControl {
               <img src="${f.thumbnail!}" alt="${f.name}" />
             </div>
           `,
-          () => html`<it-icon name="${this._iconForStatus(f.status)}" size="sm" aria-hidden="true"></it-icon>`,
+          () => html`<it-icon name="${this._iconForStatus(f.status)}" size="sm" color="${this._colorForStatus(f.status)}" aria-hidden="true"></it-icon>`,
         )}
         <p>
           <span class="visually-hidden">${statusLabel}</span>${f.name}${when(
@@ -245,55 +292,42 @@ export class ItUpload extends FormControl {
             () => html`<span class="upload-file-weight">${this._formatSize(f.size)}</span>`,
           )}
         </p>
+
         <button
           type="button"
           @click="${() => this._handleRemove(f.id, f.name)}"
           aria-label="${removeLabel}"
-          ?disabled="${this.disabled}"
+          ?disabled="${this.disabled||f.status === 'success'}"
         >
           <it-icon
-            name="${f.status === 'loading' ? 'it-close' : 'it-delete'}"
-            size="sm"
+            name="${this._actionIconForStatus(f.status)}"
+            color="${this._colorForStatus(f.status)}"
             aria-hidden="true"
           ></it-icon>
         </button>
         ${when(
           f.status === 'loading',
           () => html`
-            <div
-              class="progress"
-              style="width: calc(100% - 45px)"
-              role="progressbar"
-              aria-valuenow="${f.progress ?? 0}"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              <div
-                class="progress-bar"
-                style="width:${f.progress ?? 0}%"
-              ></div>
-            </div>
+            <it-progress
+              type="line"
+              .value="${f.progress ?? 0}"
+              it-aria-label="${f.name}"
+            ></it-progress>
           `,
         )}
       </li>
     `;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   private _renderGalleryItem(f: UploadInternalFile) {
-    const removeLabel = this._getRemoveLabel(f);
     return html`
       <li class="upload-image">
         ${when(
           f.thumbnail,
           () => html`<img src="${f.thumbnail!}" alt="${f.name}" />`,
         )}
-        <button
-          type="button"
-          class="visually-hidden"
-          @click="${() => this._handleRemove(f.id, f.name)}"
-          aria-label="${removeLabel}"
-          ?disabled="${this.disabled}"
-        ></button>
+
       </li>
     `;
   }
@@ -345,8 +379,8 @@ export class ItUpload extends FormControl {
           @change="${this._handleFileChange}"
         />
         <label for="${inputId}">
-          <it-icon name="it-upload" size="sm" aria-hidden="true"></it-icon>
-          <span><slot name="label">${labelText}</slot></span>
+          <it-icon name="it-upload" size="sm" aria-hidden="true" color="${this.variant === 'gallery'? 'primary':'inverse'}"></it-icon>
+          <slot name="label">${labelText}</slot>
         </label>
 
         ${when(
@@ -370,10 +404,10 @@ export class ItUpload extends FormControl {
     if (this.variant === 'gallery') {
       return html`
         <ul class="upload-pictures-wall">
+          ${this._renderFileList()}
           <li>
             ${this._renderUploadInput()}
           </li>
-          ${this._renderFileList()}
         </ul>
       `;
     }

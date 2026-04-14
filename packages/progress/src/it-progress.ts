@@ -34,7 +34,8 @@ export class ItProgress extends BaseComponent {
   @property({ type: String, reflect: true })
   color: ProgressBarColor | string = 'default';
 
-  private trailColor = '#D4E9FF';
+  @property({ type: String, attribute: 'trail-color' })
+  trailColor = '#D4E9FF';
 
   private strokeWidth = 24;
 

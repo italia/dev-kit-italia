@@ -1,4 +1,5 @@
 import '@italia/upload';
+import '@italia/progress';
 import { expect, fixture, html, oneEvent } from '@open-wc/testing';
 import type { ItUpload } from '../src/it-upload.js';
 
@@ -143,7 +144,9 @@ describe('<it-upload>', () => {
     await el.updateComplete;
 
     expect(el.files[0].progress).to.equal(60);
-    const progressbar = el.shadowRoot!.querySelector('[role="progressbar"]');
+    const itProgress = el.shadowRoot!.querySelector('it-progress')!;
+    await (itProgress as any).updateComplete;
+    const progressbar = itProgress.shadowRoot!.querySelector('[role="progressbar"]');
     expect(progressbar?.getAttribute('aria-valuenow')).to.equal('60');
   });
 

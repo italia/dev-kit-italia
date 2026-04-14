@@ -48,11 +48,13 @@
   "dependencies": {
     "@italia/globals": "workspace:^",
     "@italia/i18n": "workspace:^",
-    "@italia/icon": "workspace:^",
-    "@italia/avatar": "workspace:^",
-    "@italia/progress": "workspace:^",
     "bootstrap-italia": "catalog:",
     "lit": "catalog:"
+  },
+  "peerDependencies": {
+    "@italia/icon": "workspace:^",
+    "@italia/avatar": "workspace:^",
+    "@italia/progress": "workspace:^"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.3",

@@ -123,8 +123,51 @@ document.addEventListener('DOMContentLoaded', () => {
       ],
       {
         events: ['it-change'], // 👈 FORZA l’ascolto sul change
+      },    )
+    .addField(
+      'it-upload[id="allegati-custom"]',
+      [
+        {
+          validator: () => {
+            const el = fmc.querySelector('it-upload[id="allegati-custom"]');
+            return Array.isArray(el?.files) && el.files.length > 0;
+          },
+          errorMessage: 'Carica almeno un file',
+        },
+      ],
+      {
+        events: ['it-change'],
       },
-    );
+    )
+    .addField(
+      'it-upload-avatar[id="avatar-custom"]',
+      [
+        {
+          validator: () => {
+            const el = fmc.querySelector('it-upload-avatar[id="avatar-custom"]');
+            return Array.isArray(el?.files) && el.files.length > 0;
+          },
+          errorMessage: 'Seleziona una foto profilo',
+        },
+      ],
+      {
+        events: ['it-change'],
+      },
+    )
+    .addField(
+      'it-upload-drag-drop[id="documento-custom"]',
+      [
+        {
+          validator: () => {
+            const el = fmc.querySelector('it-upload-drag-drop[id="documento-custom"]');
+            return Array.isArray(el?.files) && el.files.length > 0;
+          },
+          errorMessage: 'Carica un documento',
+        },
+      ],
+      {
+        events: ['it-change'],
+      },    );
 
   validate.onValidate((props) => {
     const { fields } = props;
