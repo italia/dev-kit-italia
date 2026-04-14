@@ -11,11 +11,11 @@ export class ItHeader extends BaseComponent {
   @property({ type: Number })
   breakpoint = 991;
 
-  @property({ type: String, attribute: 'open-label' })
-  openLabel = 'Menu';
-
   @property({ type: String, attribute: 'open-aria-label' })
-  openAriaLabel = 'Apri/Chiudi menu del sito';
+  openAriaLabel = 'Mostra la navigazione';
+
+  @property({ type: String, attribute: 'close-aria-label' })
+  closeAriaLabel = 'Chiudi la navigazione';
 
   @property({ type: String, attribute: 'back-label' })
   backLabel = 'Indietro';
@@ -24,7 +24,13 @@ export class ItHeader extends BaseComponent {
 
   private mode: 'inline' | 'modal' = 'inline';
 
-  private wrapper?: HTMLElement;
+  private headerCenterWrapper?: HTMLElement;
+
+  private headerSlimMenu?: HTMLElement;
+
+  private brandWrapper?: HTMLElement;
+
+  private socialsWrapper?: HTMLElement;
 
   private menuWrapper?: HTMLElement;
 
@@ -47,17 +53,26 @@ export class ItHeader extends BaseComponent {
   }
 
   protected firstUpdated() {
-    this.wrapper = this.querySelector('.it-header-responsive-wrapper') as HTMLElement;
-    this.menuWrapper = this.querySelector('.menu-wrapper') as HTMLElement;
+    this.headerCenterWrapper = this.querySelector('.it-header-center-wrapper') as HTMLElement;
 
-    if (!this.wrapper || !this.menuWrapper) {
+    this.brandWrapper = this.querySelector('.it-header-center-wrapper .it-brand-wrapper') as HTMLElement;
+    this.headerSlimMenu = this.querySelector('.it-header-slim-wrapper ul') as HTMLElement;
+    this.socialsWrapper = this.querySelector('.it-header-center-wrapper .it-socials') as HTMLElement;
+    this.menuWrapper = this.querySelector('.it-header-navbar-wrapper nav') as HTMLElement;
+
+    if (
+      !this.headerCenterWrapper ||
+      !this.headerSlimMenu ||
+      !this.brandWrapper ||
+      !this.socialsWrapper ||
+      !this.menuWrapper
+    ) {
       this.logger.error('<it-header> could not initialize wrappers.');
       return;
     }
 
-    const children = Array.from(this.childNodes).filter((node) => node !== this.wrapper);
-    children.forEach((child) => this.menuWrapper?.appendChild(child));
-    this.wrapper.appendChild(this.menuWrapper);
+    // const children = Array.from(this.childNodes).filter((node) => node !== this.headerCenterWrapper);
+    // children.forEach((child) => this.headerCenterWrapper?.appendChild(child));
 
     this.updateMode(this.mql?.matches ?? false);
   }
@@ -96,29 +111,59 @@ export class ItHeader extends BaseComponent {
   }
 
   private enterModal() {
-    if (!this.wrapper || !this.menuWrapper) return;
+    if (
+      !this.headerCenterWrapper ||
+      !this.headerSlimMenu ||
+      !this.brandWrapper ||
+      !this.socialsWrapper ||
+      !this.menuWrapper
+    )
+      return;
 
     if (!this.modalEl) {
       this.modalEl = this.createModal();
     }
 
-    if (!this.modalEl.contains(this.menuWrapper)) {
+    if (this.brandWrapper) {
+      const brandClone = this.brandWrapper.cloneNode(true) as HTMLElement;
+      brandClone.setAttribute('slot', 'custom-header');
+      this.modalEl.appendChild(brandClone);
+    }
+
+    if (this.menuWrapper && !this.modalEl.contains(this.menuWrapper)) {
       this.menuWrapper.setAttribute('slot', 'content');
       this.modalEl.appendChild(this.menuWrapper);
     }
 
-    if (!this.wrapper.contains(this.modalEl)) {
-      this.wrapper.appendChild(this.modalEl);
+    if (this.headerSlimMenu && !this.modalEl.contains(this.headerSlimMenu)) {
+      this.headerSlimMenu.setAttribute('slot', 'content');
+      this.modalEl.appendChild(this.headerSlimMenu);
+    }
+
+    if (this.socialsWrapper && !this.modalEl.contains(this.socialsWrapper)) {
+      this.socialsWrapper.setAttribute('slot', 'content');
+      this.modalEl.appendChild(this.socialsWrapper);
+    }
+
+    if (!this.headerCenterWrapper.contains(this.modalEl)) {
+      this.headerCenterWrapper.prepend(this.modalEl);
     }
   }
 
   private exitModal() {
-    if (!this.wrapper || !this.menuWrapper) return;
+    if (
+      !this.headerCenterWrapper ||
+      !this.menuWrapper ||
+      !this.brandWrapper ||
+      !this.socialsWrapper ||
+      !this.headerSlimMenu
+    )
+      return;
 
-    if (this.modalEl?.contains(this.menuWrapper)) {
-      this.menuWrapper.removeAttribute('slot');
-      this.wrapper.appendChild(this.menuWrapper);
-    }
+    // if (this.modalEl?.contains(this.menuWrapper)) {
+    //   this.menuWrapper.removeAttribute('slot');
+    //   this.headerCenterWrapper.appendChild(this.menuWrapper);
+    // }
 
     this.modalEl?.remove();
     this.modalEl = undefined;
@@ -128,7 +173,9 @@ export class ItHeader extends BaseComponent {
     const modal = document.createElement('it-modal');
     modal.setAttribute('position', 'left');
     modal.setAttribute('scrollable', 'true');
-    modal.setAttribute('hide-close-button', 'true');
+    modal.setAttribute('close-label', this.closeAriaLabel);
+    modal.setAttribute('close-button-placement', 'backdrop');
+    modal.setAttribute('id', 'it-nav-modal');
 
     const trigger = document.createElement('it-button');
     trigger.setAttribute('class', 'custom-navbar-toggler');
@@ -136,21 +183,8 @@ export class ItHeader extends BaseComponent {
     trigger.setAttribute('slot', 'trigger');
     trigger.setAttribute('it-aria-label', this.openAriaLabel);
     trigger.innerHTML = `
-      <it-icon name="it-burger" size="sm" color="primary"></it-icon>
-      <span>${this.openLabel}</span>
+      <it-icon name="it-burger" size="sm"></it-icon>
     `;
-
-    const backButton = document.createElement('it-button');
-    backButton.setAttribute('slot', 'header');
-    backButton.setAttribute('variant', 'link');
-    backButton.setAttribute('block', '');
-    backButton.innerHTML = `
-      <it-icon name="it-chevron-left" size="sm" color="primary"></it-icon>
-      <span>${this.backLabel}</span>
-    `;
-    backButton.addEventListener('click', () => {
-      (modal as unknown as { hide?: () => void }).hide?.();
-    });
 
     modal.addEventListener('it-modal-open', () => {
       document.body.classList.add('navbar-open');
@@ -161,17 +195,12 @@ export class ItHeader extends BaseComponent {
     });
 
     modal.appendChild(trigger);
-    modal.appendChild(backButton);
 
     return modal;
   }
 
   render() {
-    return html`
-      <div class="it-header-responsive-wrapper">
-        <div class="menu-wrapper"></div>
-      </div>
-    `;
+    return html``;
   }
 }
 

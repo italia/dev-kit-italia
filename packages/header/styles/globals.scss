@@ -1,7 +1,22 @@
-.navbar-collapsable .menu-wrapper {
-  //z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page
-  z-index: auto; // to avoid megamenu dropdowns in header to be overlapped by navscroll or other items in page
+//FOUC STYLES
+.it-header-wrapper {
+  .it-header-slim-wrapper:not(.theme-light):not(.theme-light-desk) {
+    --it-fouc-bg: var(--#{$prefix}header-slim-background);
+    --it-fouc-color: var(--#{$prefix}header-slim-text-color);
+  }
+
+  .it-header-center-wrapper:not(.theme-light):not(.theme-light-desk) {
+    --it-fouc-bg: var(--#{$prefix}header-center-background);
+    --it-fouc-color: var(--#{$prefix}header-center-text-color);
+  }
+
+  .it-header-navbar-wrapper:not(.theme-light):not(.theme-light-desk) {
+    --it-fouc-bg: var(--#{$prefix}header-nav-background);
+    --it-fouc-color: var(--#{$prefix}header-nav-text-color);
+  }
 }
+
+
 
 // HEADER SLIM
 .it-header-slim-wrapper {
@@ -44,11 +59,28 @@
 }
 
 // HEADER CENTER
-.it-brand-wrapper it-icon::part(icon) {
-  width: var(--#{$prefix}header-brand-size);
-  height: var(--#{$prefix}header-brand-size);
-  margin-right: var(--#{$prefix}spacing-xxs);
-  fill: var(--#{$prefix}header-brand-icon-color);
+.it-brand-wrapper {
+  --#{$prefix}header-brand-spacing: 0;
+
+  it-icon {
+    &:not(:defined) {
+
+      &,
+      &:not([size]),
+      &[size=''] {
+        width: var(--#{$prefix}header-brand-size);
+        height: var(--#{$prefix}header-brand-size);
+        margin-right: var(--#{$prefix}spacing-xxs);
+      }
+    }
+
+    &::part(icon) {
+      width: var(--#{$prefix}header-brand-size);
+      height: var(--#{$prefix}header-brand-size);
+      margin-right: var(--#{$prefix}spacing-xxs);
+      fill: var(--#{$prefix}header-brand-icon-color);
+    }
+  }
 }
 
 .it-right-zone .it-socials {
@@ -86,6 +118,12 @@
 
 
 // HEADER NAV
+.it-header-navbar-wrapper {
+  it-dropdown {
+    --#{$prefix}btn-border-radius: 0;
+  }
+}
+
 .navbar-nav {
   li.nav-item {
     a.nav-link {
@@ -150,5 +188,48 @@
         }
       }
     }
+  }
+}
+
+
+//OTHERS
+
+.navbar-collapsable .menu-wrapper {
+  //z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page
+  z-index: auto; // to avoid megamenu dropdowns in header to be overlapped by navscroll or other items in page
+}
+
+
+// IT-NAV-MODAL
+it-modal#it-nav-modal {
+  --it-nav-modal-header-background: var(--#{$prefix}header-center-background);
+  --it-nav-modal-header-text-color: var(--#{$prefix}header-center-text-color);
+
+  &::part(modal-header) {
+    background-color: var(--it-nav-modal-header-background);
+    color: var(--it-nav-modal-header-text-color);
+  }
+
+  &::part(close-button) {
+    // position: absolute;
+    // right: calc(-1 * var(--#{$prefix}icon-size-l));
+    --#{$prefix}-icon-default: white;
+  }
+
+  &::part(modal-content) {
+    position: unset; //per posizionare il bottone di chiusura sul backdrop
+  }
+
+  .custom-navbar-toggler {
+    --#{$prefix}icon-default: var(--#{$prefix}header-center-text-color);
+    margin-top: 0;
+
+    &::part(button) {
+      --#{$prefix}btn-text-color: var(--#{$prefix}header-center-text-color);
+    }
+  }
+
+  .it-brand-wrapper {
+    --#{$prefix}header-brand-spacing: 0;
   }
 }

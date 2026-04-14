@@ -7,25 +7,17 @@
 
 // Utilities necessarie per il modal
 $utilities: (
-  'display': map-merge(
-      map-get($utilities, 'display'),
-      (
-        'values': (
-          none: none,
-          block: block,
-          flex: flex,
-        ),
-      )
-    ),
-  'overflow': map-merge(
-      map-get($utilities, 'overflow'),
-      (
-        'values': (
-          auto: auto,
-          hidden: hidden,
-        ),
-      )
-    ),
+  'display': map-merge(map-get($utilities, 'display'),
+    ('values': (none: none,
+        block: block,
+        flex: flex,
+      ),
+    )),
+  'overflow': map-merge(map-get($utilities, 'overflow'),
+    ('values': (auto: auto,
+        hidden: hidden,
+      ),
+    )),
 );
 
 @import 'bootstrap-italia/src/scss/base/utilities/api';
@@ -42,6 +34,7 @@ $utilities: (
 
 // Nascondi modal e backdrop quando chiuso (tramite attributo open)
 :host(:not([open])) {
+
   .modal,
   .modal-backdrop {
     display: none !important;
@@ -73,12 +66,29 @@ $utilities: (
   overflow-y: auto;
 }
 
+.btn-close[part~='close-button'] {
+  position: fixed;
+  z-index: calc(#{$zindex-modal} + 1);
+  top: var(--it-modal-backdrop-close-top, 1rem);
+  right: var(--it-modal-backdrop-close-right, 1rem);
+}
+
+:host([close-button-placement='header']) {
+  .btn-close[part~='close-button'] {
+    position: static;
+    z-index: auto;
+    top: auto;
+    right: auto;
+  }
+}
+
 .it-dialog-scrollable {
   overflow-y: hidden;
 }
 
 .modal-dialog {
   height: fit-content;
+
   @media (min-width: 768px) {
     margin: 64px auto;
   }
@@ -108,6 +118,7 @@ $utilities: (
   position: fixed;
   right: 0;
 }
+
 // // Fix per il focus trap - assicura che gli elementi siano focusabili
 // .modal-content {
 //   &:focus {

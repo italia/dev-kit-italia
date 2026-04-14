@@ -1,7 +1,5 @@
 it-megamenu {
   &:not(:defined) {
-    --it-fouc-bg: transparent;
-    --it-fouc-color: #fff;
     --it-host-display: inline-flex;
     --#{$prefix}btn-border-radius: 0;
 

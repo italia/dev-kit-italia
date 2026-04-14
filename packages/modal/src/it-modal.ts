@@ -20,6 +20,8 @@ import styles from './modal.scss';
  *
  * @fires it-modal-open - Quando la modale si apre
  * @fires it-modal-close - Quando la modale si chiude
+ *
+ * @prop {string} close-button-placement - Posizione del pulsante di chiusura: `header` (default) o `backdrop` (sopra lo sfondo scuro, utile per menu offcanvas)
  */
 @customElement('it-modal')
 export class ItModal extends BaseComponent {
@@ -45,6 +47,10 @@ export class ItModal extends BaseComponent {
   @property({ type: Boolean, attribute: 'static-backdrop', reflect: true }) staticBackdrop = false;
 
   @property({ type: Boolean, attribute: 'hide-close-button', reflect: true }) hideCloseButton = false;
+
+  @property({ type: String, attribute: 'close-button-placement', reflect: true }) closeButtonPlacement:
+    | 'header'
+    | 'backdrop' = 'header';
 
   @property({ type: String, reflect: true }) variant?: ModalVariant | undefined;
 
@@ -431,10 +437,29 @@ export class ItModal extends BaseComponent {
     };
   }
 
+  private _renderCloseButton() {
+    if (this.hideCloseButton || this.variant === 'popconfirm') {
+      return '';
+    }
+
+    return html`<it-button
+      class="btn-close"
+      variant="link"
+      size="lg"
+      part="close-button"
+      exportparts="focusable, button:close-button-button"
+      @click="${this._handleCloseClick}"
+    >
+      <it-icon name="it-close" size="lg"></it-icon>
+      <span class="visually-hidden">${this.closeLabel}</span>
+    </it-button>`;
+  }
+
   render() {
     const hasHeader = this.modalTitle || this._headerSlot?.assignedElements({ flatten: true }).length > 0;
     const ariaLabelledBy = hasHeader ? this._titleId : undefined;
     const ariaLabel = !hasHeader ? this.itAriaLabel : undefined;
+
     const headerClass = hasHeader || (this.variant !== 'popconfirm' && !this.hideCloseButton) ? 'modal-header' : '';
     const hasDescription =
       this.modalDescription || this._descriptionSlot?.assignedElements({ flatten: true }).length > 0;
@@ -467,21 +492,12 @@ export class ItModal extends BaseComponent {
           <div class="modal-content" part="modal-content">
             <div class="${headerClass}" part="modal-header">
               <slot name="header-icon"></slot>
-              <h2 id="${this._titleId}" class="modal-title">
-                <slot name="header" @slotchange="${this._onHeaderSlotChange}">${this.modalTitle}</slot>
-              </h2>
-              ${!this.hideCloseButton && this.variant !== 'popconfirm'
-                ? html`<it-button
-                    class="btn-close"
-                    variant="link"
-                    size="lg"
-                    exportparts="focusable, button"
-                    @click="${this._handleCloseClick}"
-                  >
-                    <it-icon name="it-close" size="lg"></it-icon>
-                    <span class="visually-hidden">${this.closeLabel}</span>
-                  </it-button>`
-                : ''}
+              ${hasHeader
+                ? html`<h2 id="${this._titleId}" class="modal-title">
+                    <slot name="header" @slotchange="${this._onHeaderSlotChange}">${this.modalTitle}</slot>
+                  </h2>`
+                : html`<div><slot name="custom-header" @slotchange="${this._onHeaderSlotChange}"></slot></div>`}
+              ${this.closeButtonPlacement === 'header' ? this._renderCloseButton() : ''}
             </div>
 
             <div class="modal-body" tabindex="${enableFocusContent ? '0' : '-1'}" part="focusable modal-body">
@@ -492,6 +508,8 @@ export class ItModal extends BaseComponent {
             </div>
           </div>
         </div>
+
+        ${this.closeButtonPlacement === 'backdrop' ? this._renderCloseButton() : ''}
       </div>
 
       <div
