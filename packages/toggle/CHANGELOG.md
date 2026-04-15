@@ -1,5 +1,15 @@
 # @italia/toggle
 
+## 1.0.0-alpha.8
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+
 ## 1.0.0-alpha.7
 
 ### Patch Changes

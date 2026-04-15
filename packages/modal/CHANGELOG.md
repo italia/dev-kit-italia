@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.0-alpha.8
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
 ## 1.0.0-alpha.7
 
 ### Patch Changes
