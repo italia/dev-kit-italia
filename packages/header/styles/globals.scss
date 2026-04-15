@@ -130,6 +130,12 @@
       z-index: 1; //per evitare che il focus sul link venga coperto da altri elementi
     }
 
+    .nav-link,
+    it-dropdown,
+    it-megamenu {
+      --#{$prefix}navbar-link-border-color: transparent;
+    }
+
     it-dropdown::part(icon) {
       --#{$prefix}icon-size-s: var(--#{$prefix}icon-size-xs);
     }
@@ -137,7 +143,6 @@
     it-dropdown,
     it-megamenu {
       --#{$prefix}label-font-size: var(--#{$prefix}navbar-link-font-size);
-      --#{$prefix}navbar-link-border-color: transparent;
 
       &,
       &::part(dropdown-popover),
@@ -210,10 +215,8 @@ it-modal#it-nav-modal {
     color: var(--it-nav-modal-header-text-color);
   }
 
-  &::part(close-button) {
-    // position: absolute;
-    // right: calc(-1 * var(--#{$prefix}icon-size-l));
-    --#{$prefix}-icon-default: white;
+  &::part(modal-body) {
+    --#{$prefix}modal-padding: 20px;
   }
 
   &::part(modal-content) {
@@ -231,5 +234,52 @@ it-modal#it-nav-modal {
 
   .it-brand-wrapper {
     --#{$prefix}header-brand-spacing: 0;
+  }
+
+  //NAV
+  .modal-nav {
+    &.navbar {
+      --#{$prefix}navbar-background: unset;
+      --#{$prefix}navbar-link-padding-x: 0;
+      --#{$prefix}navbar-link-active-border-color: var(--#{$prefix}navbar-link-color);
+      --it-ul-spacer-background: var(--#{$prefix}300);
+    }
+
+    &.navbar-collapsable {
+      position: unset;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+    }
+
+    ul.navbar-nav {
+      width: 100%;
+
+      li a.nav-link {
+        border-left: var(--#{$prefix}navbar-link-border-size) solid var(--#{$prefix}navbar-link-border-color);
+
+        &.active {
+          --#{$prefix}navbar-link-border-color: var(--#{$prefix}navbar-link-active-border-color);
+        }
+      }
+    }
+
+    +ul.navbar-nav {
+      &:before {
+        width: 100%;
+        max-width: 65px;
+        height: 1px;
+        margin-bottom: var(--#{$prefix}spacing-m);
+        background: var(--it-ul-spacer-background);
+        content: "";
+      }
+    }
+
+    it-dropdown,
+    it-megamenu {
+      &::part(button) {
+        --#{$prefix}btn-padding-x: 0;
+      }
+    }
   }
 }

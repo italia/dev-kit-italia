@@ -66,19 +66,14 @@ $utilities: (
   overflow-y: auto;
 }
 
-.btn-close[part~='close-button'] {
-  position: fixed;
-  z-index: calc(#{$zindex-modal} + 1);
-  top: var(--it-modal-backdrop-close-top, 1rem);
-  right: var(--it-modal-backdrop-close-right, 1rem);
-}
 
-:host([close-button-placement='header']) {
+
+:host([close-button-placement='backdrop']) {
   .btn-close[part~='close-button'] {
-    position: static;
-    z-index: auto;
-    top: auto;
-    right: auto;
+    --#{$prefix}icon-default: white;
+    position: absolute;
+    top: 1rem;
+    right: -2.5rem;
   }
 }
 

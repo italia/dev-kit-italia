@@ -38,6 +38,8 @@ export class ItModal extends BaseComponent {
 
   @property({ type: String, attribute: 'modal-description', reflect: true }) modalDescription = '';
 
+  @property({ type: Boolean, attribute: 'custom-header', reflect: true }) customHeader = false;
+
   @property({ type: String, reflect: true }) size: ModalSize = '';
 
   @property({ type: String, reflect: true }) position?: ModalPosition | undefined;
@@ -456,7 +458,9 @@ export class ItModal extends BaseComponent {
   }
 
   render() {
-    const hasHeader = this.modalTitle || this._headerSlot?.assignedElements({ flatten: true }).length > 0;
+    const hasHeader =
+      (this.modalTitle || this._headerSlot?.assignedElements({ flatten: true }).length > 0) && !this.customHeader;
+
     const ariaLabelledBy = hasHeader ? this._titleId : undefined;
     const ariaLabel = !hasHeader ? this.itAriaLabel : undefined;
 
@@ -486,6 +490,7 @@ export class ItModal extends BaseComponent {
           @click="${this._handleDialogClick}"
           part="modal-content-wrapper"
         >
+          ${this.closeButtonPlacement === 'backdrop' ? this._renderCloseButton() : ''}
           <div class="visually-hidden" id="${this._descriptionId}">
             <slot name="description" @slotchange="${this._onHeaderSlotChange}">${this.modalDescription}</slot>
           </div>
@@ -496,7 +501,7 @@ export class ItModal extends BaseComponent {
                 ? html`<h2 id="${this._titleId}" class="modal-title">
                     <slot name="header" @slotchange="${this._onHeaderSlotChange}">${this.modalTitle}</slot>
                   </h2>`
-                : html`<div><slot name="custom-header" @slotchange="${this._onHeaderSlotChange}"></slot></div>`}
+                : html`<div><slot name="header" @slotchange="${this._onHeaderSlotChange}"></slot></div>`}
               ${this.closeButtonPlacement === 'header' ? this._renderCloseButton() : ''}
             </div>
 
@@ -508,8 +513,6 @@ export class ItModal extends BaseComponent {
             </div>
           </div>
         </div>
-
-        ${this.closeButtonPlacement === 'backdrop' ? this._renderCloseButton() : ''}
       </div>
 
       <div
