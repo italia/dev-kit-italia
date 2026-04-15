@@ -23,6 +23,7 @@
     ".": "./dist/src/index.js",
     "./elements.js": "./dist/elements.js",
     "./styles.css": "./dist/styles.css",
+    "./full.css": "./dist/full.css",
     "./fonts.css": "./dist/fonts.css"
   },
   "scripts": {
