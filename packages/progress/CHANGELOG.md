@@ -1,5 +1,13 @@
 # @italia/progress
 
+## 1.0.0-alpha.8
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
 ## 1.0.0-alpha.7
 
 ### Patch Changes
