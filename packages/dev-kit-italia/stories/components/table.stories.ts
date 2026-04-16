@@ -1075,7 +1075,7 @@ const captionTopTable = html`
 const meta = {
   title: 'Componenti/Tables',
   component: 'table',
-  tags: ['alpha', 'documentation', 'a11y-ok'],
+  tags: ['new', 'documentation', 'a11y-ok'],
   parameters: {
     docs: {
       source: {

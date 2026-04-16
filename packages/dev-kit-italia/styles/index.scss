@@ -74,6 +74,7 @@
 @import '@italia/skiplinks/styles/globals';
 @import '@italia/sticky/styles/globals';
 @import '@italia/upload/styles/globals';
+@import '@italia/toggle/styles/globals';
 @import '@italia/video/styles/globals';
 
 // Footer
@@ -92,7 +93,8 @@
 @import './components/sidebar';
 
 .navbar-collapsable .menu-wrapper {
-  z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page
+  //z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page
+  z-index: auto; // to avoid megamenu dropdowns in header to be overlapped by navscroll or other items in page
 }
 
 .it-footer-main .it-brand-wrapper ::part(icon) {

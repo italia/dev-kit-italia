@@ -38,6 +38,7 @@ import Sticky from './pages/Sticky.svelte';
 import Carousel from './pages/Carousel.svelte';
 import Upload from './pages/Upload.svelte';
 import Table from './pages/Table.svelte';
+import Toggle from './pages/Toggle.svelte';
 import Video from './pages/Video.svelte';
 
 export const AppRoutes = [
@@ -81,6 +82,7 @@ export const AppRoutes = [
   { path: '/sticky', element: Sticky, title: 'Sticky' },
   { path: '/tables', element: Table, title: 'Tables' },
   { path: '/upload', element: Upload, title: 'Upload' },
+  { path: '/toggle', element: Toggle, title: 'Toggle' },
   { path: '/video', element: Video, title: 'Video' },
 ];
 

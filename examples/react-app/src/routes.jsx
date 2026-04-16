@@ -34,11 +34,15 @@ import Sidebar from './pages/Sidebar';
 import Skiplinks from './pages/Skiplinks';
 import Sticky from './pages/Sticky';
 import Table from './pages/Table';
+import Toggle from './pages/Toggle';
 import Video from './pages/Video';
 import Carousel from './pages/Carousel';
 import Pagination from './pages/Pagination';
 import Progress from './pages/Progress';
+<<<<<<< HEAD
 import Upload from './pages/Upload';
+=======
+>>>>>>> main
 
 export const AppRoutes = [
   { path: '/', element: <Home />, title: 'Homepage' },
@@ -81,5 +85,6 @@ export const AppRoutes = [
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/tables', element: <Table />, title: 'Tables' },
   { path: '/upload', element: <Upload />, title: 'Upload' },
+  { path: '/toggle', element: <Toggle />, title: 'Toggle' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];

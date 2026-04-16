@@ -205,6 +205,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/upload.component').then((c) => c.UploadComponent),
   },
   {
+    title: 'Toggle',
+    path: 'toggle',
+    loadComponent: () => import('./pages/toggle.component').then((c) => c.ToggleComponent),
+  },
+  {
     title: 'Video',
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
