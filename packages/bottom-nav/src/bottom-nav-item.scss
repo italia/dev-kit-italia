@@ -17,12 +17,12 @@
 }
 
 ::slotted(a:hover) {
-  color: $primary;
+  color: var(--#{$prefix}color-primary);
   text-decoration: none !important;
 }
 
 :host([active]) ::slotted(a) {
-  color: $primary !important;
+  color: var(--#{$prefix}color-primary);
   --#{$prefix}icon-default: var(--#{$prefix}icon-primary);
 }
 
