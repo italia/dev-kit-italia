@@ -120,11 +120,13 @@ export class ItHeader extends BaseComponent {
     Array.from(ulClone.children).forEach((li) => {
       if (li instanceof HTMLElement) {
         const active = li.classList.contains('active');
-        li.setAttribute('class', `nav-item${active ? ' active' : ''}`);
+        const disabled = li.classList.contains('disabled');
+        li.setAttribute('class', `nav-item${active ? ' active' : ''}${disabled ? ' disabled' : ''}`);
 
         const link = li.querySelector('a');
         if (link) {
-          link.setAttribute('class', `nav-link${active ? ' active' : ''}`);
+          const aDisabled = link.classList.contains('disabled');
+          link.setAttribute('class', `nav-link${active ? ' active' : ''}${aDisabled || disabled ? ' disabled' : ''}`);
         }
       }
     });

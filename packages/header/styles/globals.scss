@@ -124,16 +124,19 @@
   }
 }
 
+.navbar {
+  --#{$prefix}navbar-link-border-color: transparent; //to avoid color contrast issue from tools a11y checker
+}
+
 .navbar-nav {
   li.nav-item {
     a.nav-link {
       z-index: 1; //per evitare che il focus sul link venga coperto da altri elementi
     }
 
-    .nav-link,
-    it-dropdown,
-    it-megamenu {
-      --#{$prefix}navbar-link-border-color: transparent;
+    &.active,
+    .active {
+      --#{$prefix}navbar-link-border-color: var(--#{$prefix}navbar-link-color);
     }
 
     it-dropdown::part(icon) {
@@ -187,10 +190,6 @@
           border-bottom: var(--#{$prefix}navbar-link-border-size) solid var(--#{$prefix}navbar-link-border-color);
           border-left: none;
         }
-
-        &.active {
-          --#{$prefix}navbar-link-border-color: var(--#{$prefix}navbar-link-color);
-        }
       }
     }
   }
@@ -216,7 +215,7 @@ it-modal#it-nav-modal {
   }
 
   &::part(modal-body) {
-    --#{$prefix}modal-padding: 20px;
+    --#{$prefix}modal-padding: 0;
   }
 
   &::part(modal-content) {
@@ -240,7 +239,7 @@ it-modal#it-nav-modal {
   .modal-nav {
     &.navbar {
       --#{$prefix}navbar-background: unset;
-      --#{$prefix}navbar-link-padding-x: 0;
+      // --#{$prefix}navbar-link-padding-x: 0;
       --#{$prefix}navbar-link-active-border-color: var(--#{$prefix}navbar-link-color);
       --it-ul-spacer-background: var(--#{$prefix}300);
     }
@@ -252,15 +251,26 @@ it-modal#it-nav-modal {
       flex-direction: column;
     }
 
+    it-dropdown,
+    it-megamenu {
+      &::part(button) {
+        --#{$prefix}btn-padding-x: var(--#{$prefix}navbar-link-padding-x);
+      }
+    }
+
     ul.navbar-nav {
       width: 100%;
 
-      li a.nav-link {
-        border-left: var(--#{$prefix}navbar-link-border-size) solid var(--#{$prefix}navbar-link-border-color);
-
+      li {
         &.active {
           --#{$prefix}navbar-link-border-color: var(--#{$prefix}navbar-link-active-border-color);
         }
+
+        a.nav-link {
+          border-left: var(--#{$prefix}navbar-link-border-size) solid;
+          border-color: var(--#{$prefix}navbar-link-border-color);
+        }
+
       }
     }
 
@@ -272,13 +282,6 @@ it-modal#it-nav-modal {
         margin-bottom: var(--#{$prefix}spacing-m);
         background: var(--it-ul-spacer-background);
         content: "";
-      }
-    }
-
-    it-dropdown,
-    it-megamenu {
-      &::part(button) {
-        --#{$prefix}btn-padding-x: 0;
       }
     }
   }
