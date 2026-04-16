@@ -254,6 +254,7 @@ export class ItCarousel extends BaseLocalizedComponent {
 
   private handleTitleSlotChange() {
     if (this.titleElements.length === 0) {
+      // eslint-disable-next-line no-console
       console.warn(
         'ItCarousel: no title element found in the "title" slot. Please provide a heading element (h1-h6) with the "title" slot for better accessibility.',
       );
