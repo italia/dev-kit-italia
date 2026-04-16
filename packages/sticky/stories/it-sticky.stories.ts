@@ -19,7 +19,7 @@ function renderSticky({ stackable, paddingTop, stickyClassName, positionType, po
 const meta: Meta = {
   title: 'Componenti/Sticky',
   component: 'it-sticky',
-  tags: ['autodocs', 'alpha', 'a11y-ok', 'web-component'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   args: {
     stackable: false,
     paddingTop: 0,

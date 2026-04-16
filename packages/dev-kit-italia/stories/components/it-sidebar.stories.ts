@@ -4,7 +4,7 @@ import { html } from 'lit';
 
 const meta = {
   title: 'Componenti/Sidebar',
-  tags: ['alpha', 'a11y-ok', 'documentation'],
+  tags: ['new', 'a11y-ok', 'documentation'],
   parameters: {
     docs: {
       layout: 'fullscreen',

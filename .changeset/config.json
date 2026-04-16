@@ -17,8 +17,8 @@
       "@italia/breadcrumbs",
       "@italia/button",
       "@italia/callout",
-      "@italia/carousel",
       "@italia/card",
+      "@italia/carousel",
       "@italia/checkbox",
       "@italia/chip",
       "@italia/collapse",
@@ -29,6 +29,7 @@
       "@italia/i18n",
       "@italia/icon",
       "@italia/input",
+      "@italia/megamenu",
       "@italia/modal",
       "@italia/navscroll",
       "@italia/pagination",
@@ -40,6 +41,7 @@
       "@italia/select",
       "@italia/skiplinks",
       "@italia/sticky",
+      "@italia/toggle",
       "@italia/video"
     ]
   ],
