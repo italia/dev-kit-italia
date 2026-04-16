@@ -192,28 +192,53 @@ describe('<it-upload>', () => {
     expect(btn.disabled).to.be.true;
   });
 
-  it('success-state remove button has aria-disabled="true" and is not natively disabled', async () => {
+  it('success-state visual indicator is not an interactive element', async () => {
     const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
     const id = el.addFile(mkFile('done.pdf'));
     el.setFileStatus(id, 'success');
     await el.updateComplete;
 
-    const btn = el.shadowRoot!.querySelector('.upload-file button') as HTMLButtonElement;
-    expect(btn.getAttribute('aria-disabled')).to.equal('true');
-    expect(btn.disabled).to.be.false;
+    const indicator = el.shadowRoot!.querySelector('[part="file-status-indicator"]');
+    expect(indicator).to.exist;
+    expect(indicator!.tagName.toLowerCase()).to.not.equal('button');
   });
 
-  it('clicking the success-state remove button does not remove the file', async () => {
+  it('success-state has a separate enabled remove button', async () => {
     const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
     const id = el.addFile(mkFile('done.pdf'));
     el.setFileStatus(id, 'success');
     await el.updateComplete;
 
-    const btn = el.shadowRoot!.querySelector('.upload-file button') as HTMLButtonElement;
-    btn.click();
+    const removeBtn = el.shadowRoot!.querySelector('[part="file-remove-button"]') as HTMLButtonElement;
+    expect(removeBtn).to.exist;
+    expect(removeBtn.disabled).to.be.false;
+  });
+
+  it('clicking the success-state remove button removes the file', async () => {
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
+    const id = el.addFile(mkFile('done.pdf'));
+    el.setFileStatus(id, 'success');
     await el.updateComplete;
 
-    expect(el.files).to.have.length(1);
+    const removeBtn = el.shadowRoot!.querySelector('[part="file-remove-button"]') as HTMLButtonElement;
+    removeBtn.click();
+    await el.updateComplete;
+
+    expect(el.files).to.have.length(0);
+  });
+
+  it('clicking the success-state remove button emits it-upload-remove', async () => {
+    const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
+    const id = el.addFile(mkFile('done.pdf'));
+    el.setFileStatus(id, 'success');
+    await el.updateComplete;
+
+    const eventPromise = oneEvent(el, 'it-upload-remove') as Promise<CustomEvent>;
+    const removeBtn = el.shadowRoot!.querySelector('[part="file-remove-button"]') as HTMLButtonElement;
+    removeBtn.click();
+
+    const ev = await eventPromise;
+    expect(ev.detail.id).to.equal(id);
   });
 
   // ── Variant: gallery ─────────────────────────────────────────────────────────
@@ -406,28 +431,29 @@ describe('<it-upload>', () => {
 
   // ── A5: success-state remove button ──────────────────────────────────────
 
-  it('success-state remove button has aria-disabled="true" and is not natively disabled', async () => {
+  it('success-state visual indicator contains no interactive button - a11y', async () => {
     const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
     const id = el.addFile(mkFile('done.pdf'));
     el.setFileStatus(id, 'success');
     await el.updateComplete;
 
-    const btn = el.shadowRoot!.querySelector('.upload-file button') as HTMLButtonElement;
-    expect(btn.getAttribute('aria-disabled')).to.equal('true');
-    expect(btn.disabled).to.be.false;
+    const indicator = el.shadowRoot!.querySelector('[part="file-status-indicator"]');
+    expect(indicator).to.exist;
+    expect(indicator!.tagName.toLowerCase()).to.not.equal('button');
   });
 
-  it('clicking the success-state remove button does not remove the file', async () => {
+  it('success-state remove button has visually-hidden label with filename - a11y', async () => {
     const el = await fixture<ItUpload>(html`<it-upload name="files"><span slot="label">Files</span></it-upload>`);
     const id = el.addFile(mkFile('done.pdf'));
     el.setFileStatus(id, 'success');
     await el.updateComplete;
 
-    const btn = el.shadowRoot!.querySelector('.upload-file button') as HTMLButtonElement;
-    btn.click();
-    await el.updateComplete;
-
-    expect(el.files).to.have.length(1);
+    const removeBtn = el.shadowRoot!.querySelector('[part="file-remove-button"]') as HTMLButtonElement;
+    expect(removeBtn).to.exist;
+    expect(removeBtn.disabled).to.be.false;
+    const label = removeBtn.querySelector('.visually-hidden');
+    expect(label).to.exist;
+    expect(label!.textContent).to.include('done.pdf');
   });
 
   // ── A4: gallery remove button ─────────────────────────────────────────────

@@ -78,6 +78,19 @@ $utilities: (
   outline-offset: 3px !important;
 }
 
+// Success state: check indicator + remove button grouped on the right
+.upload-file-actions {
+  display: flex;
+  align-items: center;
+  padding-left: var(--#{$prefix}spacing-xs, 12px);
+  margin-left: auto;
+  gap: calc(var(--#{$prefix}spacing-xxs, 8px) / 2);
+
+  .upload-file-success {
+    margin-bottom: calc(var(--#{$prefix}spacing-xxs, 8px) / 2);
+  }
+}
+
 // Gallery remove button — BSI-style circular primary icon button, pinned top-right
 .upload-image {
   position: relative;

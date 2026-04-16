@@ -139,7 +139,7 @@ export class ItUploadAvatar extends FormControl {
             aria-label="${labelText}"
             @change="${this._handleFileChange}"
           />
-          <label part="overlay-label" for="${this._id!}" class="it-upload-avatar-label-container">
+          <label part="overlay-label" for="${this._id!}" class="it-upload-avatar-label-container" aria-hidden="true">
             <it-icon name="it-camera" size="sm" color="inverse" aria-hidden="true"></it-icon>
             <span class="it-upload-avatar-label">${overlayText}</span>
           </label>

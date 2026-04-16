@@ -168,12 +168,12 @@ interface UploadProps {
   name: string;
   multiple: boolean;
   accept: string;
-  imagePreview: boolean;
+  'image-preview': boolean;
   variant: UploadVariant;
-  supportText: string;
+  'support-text': string;
   disabled: boolean;
   required: boolean;
-  autoSuccess: boolean;
+  'auto-success': boolean;
 }
 
 interface UploadAvatarProps {
@@ -198,12 +198,12 @@ const renderUpload = (params: Partial<UploadProps>) => html`
     name="${ifDefined(params.name || undefined)}"
     ?multiple="${params.multiple}"
     accept="${ifDefined(params.accept || undefined)}"
-    ?image-preview="${params.imagePreview}"
+    ?image-preview="${params['image-preview']}"
     variant="${ifDefined(params.variant || undefined)}"
-    support-text="${ifDefined(params.supportText || undefined)}"
+    support-text="${ifDefined(params['support-text'] || undefined)}"
     ?disabled="${params.disabled}"
     ?required="${params.required}"
-    ?auto-success="${params.autoSuccess}"
+    ?auto-success="${params['auto-success']}"
   >
     <span slot="label">${i18nIT.upload_label}</span>
   </it-upload>
@@ -260,46 +260,52 @@ export const EsempioInterattivoUpload: Story = {
   args: {
     variant: 'default',
     multiple: false,
-    imagePreview: false,
+    'image-preview': false,
     accept: '',
-    supportText: '',
+    'support-text': '',
     disabled: false,
     required: false,
-    autoSuccess: true,
+    'auto-success': true,
   },
   argTypes: {
     variant: {
       description: 'Layout del componente.',
       control: { type: 'select' },
       options: ['default', 'gallery'],
+      table: { defaultValue: { summary: 'default' } },
     },
     multiple: {
       description: 'Consente la selezione multipla di file.',
       control: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
     },
-    imagePreview: {
+    'image-preview': {
       description: "Mostra un'anteprima thumbnail per le immagini caricate.",
       control: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
     },
     accept: {
       description: 'Tipi di file accettati, es. "image/*,.pdf".',
       control: 'text',
     },
-    supportText: {
+    'support-text': {
       description: 'Testo di supporto visualizzato sotto il pulsante.',
       control: 'text',
     },
     disabled: {
       description: 'Disabilita il componente.',
       control: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
     },
     required: {
       description: 'Rende il campo obbligatorio nella validazione del form.',
       control: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
     },
-    autoSuccess: {
+    'auto-success': {
       description: 'I file passano automaticamente allo stato success appena selezionati.',
       control: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
     },
   },
   parameters: {
@@ -333,15 +339,18 @@ export const EsempioInterattivoAvatar: Story = {
       description: 'Dimensione del componente.',
       control: { type: 'select' },
       options: ['xl', 'xxl'],
+      table: { defaultValue: { summary: 'xxl' } },
     },
     disabled: {
       description: 'Disabilita il componente.',
       control: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
     },
     required: {
       description:
         'Rende il campo obbligatorio nella validazione del form. Se src è già valorizzato, il requisito è soddisfatto.',
       control: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
     },
   },
   parameters: {
@@ -373,10 +382,12 @@ export const EsempioInterattivoDragDrop: Story = {
     disabled: {
       description: 'Disabilita il componente.',
       control: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
     },
     required: {
       description: 'Rende il campo obbligatorio nella validazione del form.',
       control: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
     },
   },
   parameters: {
@@ -423,8 +434,8 @@ export const UploadConListaDiFile: Story = {
       name: 'upload-list',
       multiple: true,
       accept: 'image/*',
-      imagePreview: true,
-      autoSuccess: true,
+      'image-preview': true,
+      'auto-success': true,
     })}
   `,
 };
@@ -438,7 +449,7 @@ export const UploadConStatoFile: Story = {
     docs: {
       description: {
         story:
-          'Esempio con file pre-caricati in tutti gli stati supportati: `success` (caricato), `loading` al 43% di avanzamento, `error` (fallito), e `loading` a 0% (avvio).',
+          "Esempio con file pre-caricati in tutti gli stati supportati: `success` (caricato), `loading` al 43% di avanzamento, `error` (fallito), e `loading` a 0% (avvio). I file in stato `success` mostrano un'icona di conferma e un pulsante X separato: l'utente può rimuoverli anche dopo il caricamento, senza dover ricaricare il form.",
       },
       source: {
         language: 'html',
@@ -477,7 +488,7 @@ export const UploadConStatoFile: Story = {
       ${renderUpload({
         name: 'upload-states',
         multiple: true,
-        imagePreview: true,
+        'image-preview': true,
       })}
     </story-upload-file-states>
   `,

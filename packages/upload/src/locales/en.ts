@@ -8,7 +8,7 @@ const translation: DefaultTranslation = {
   upload_label: 'Upload file',
   upload_file_list_label: 'Uploaded files',
   upload_remove_loading: 'Cancel upload of {name}',
-  upload_remove_done: 'Uploaded file successfully',
+  upload_remove_done: 'Remove uploaded file {name}',
   upload_remove_error: 'Retry upload of {name}',
   upload_status_loading: 'Uploading file',
   upload_status_success: 'File uploaded:',

@@ -65,6 +65,8 @@ Il componente ottimizza la visualizzazione delle immagini anche quando queste no
 
 Ogni file nella lista può trovarsi in uno dei seguenti stati: `loading` (con percentuale di avanzamento), `success` (caricamento completato) o `error` (caricamento fallito).
 
+I file in stato `success` possono essere rimossi tramite il pulsante X aggiuntivo: l'utente può così correggere la selezione senza dover ricaricare il form.
+
 Usa i metodi `addFile()`, `setFileStatus()` e `setFileThumbnail()` per gestire la lista programmaticamente — consulta la sezione **Proprietà, Metodi ed Eventi** per i dettagli.
 
 <Canvas of={Stories.UploadConStatoFile} />
@@ -147,7 +149,7 @@ Lo stato di success dipende dal caricamento corretto del file sul server e va qu
 
 Per tornare allo stato iniziale (inattivo, senza file selezionato, progresso a 0), chiama `el.reset()`.
 
-Consulta la sezione **Proprietà, Metodi ed Eventi**. Viene mostrato di seguito un esempio interattivo simulato.
+Viene mostrato di seguito un esempio interattivo simulato.
 
 <Canvas of={Stories.UploadDragDrop} />
 

@@ -39,6 +39,7 @@
       "@italia/select",
       "@italia/skiplinks",
       "@italia/sticky",
+      "@italia/upload",
       "@italia/video"
     ]
   ],

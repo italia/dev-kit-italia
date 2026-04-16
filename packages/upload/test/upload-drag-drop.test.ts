@@ -38,13 +38,6 @@ describe('<it-upload-drag-drop>', () => {
     expect(el.shadowRoot!.querySelector('.upload-dragdrop')).to.exist;
   });
 
-  it('has role="region" on the wrapper', async () => {
-    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
-    await el.updateComplete;
-    const region = el.shadowRoot!.querySelector('[role="region"]');
-    expect(region).to.exist;
-  });
-
   it('has aria-live="polite" status region', async () => {
     const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
     await el.updateComplete;

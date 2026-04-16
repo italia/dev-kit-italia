@@ -259,7 +259,7 @@ export class ItUpload extends FormControl {
       case 'error':
         return 'danger';
       default:
-        return '';
+        return 'secondary';
     }
   }
 
@@ -298,22 +298,44 @@ export class ItUpload extends FormControl {
           )}
         </p>
 
-        <button
-          part="file-remove-button"
-          type="button"
-          @click="${() => {
-            if (f.status !== 'success') this._handleRemove(f.id, f.name);
-          }}"
-          aria-label="${removeLabel}"
-          ?disabled="${this.disabled || f.status === 'success'}"
-          aria-disabled="${f.status === 'success' || this.disabled ? 'true' : nothing}"
-        >
-          <it-icon
-            name="${this._actionIconForStatus(f.status)}"
-            color="${this._colorForStatus(f.status)}"
-            aria-hidden="true"
-          ></it-icon>
-        </button>
+        ${when(
+          f.status === 'success',
+          () => html`
+            <div class="upload-file-actions" part="file-status-indicator">
+              <it-icon
+                name="it-check"
+                size="xs"
+                color="success"
+                aria-hidden="true"
+                class="upload-file-success"
+              ></it-icon>
+              <button
+                part="file-remove-button"
+                type="button"
+                @click="${() => this._handleRemove(f.id, f.name)}"
+                ?disabled="${this.disabled}"
+              >
+                <span class="visually-hidden">${removeLabel}</span>
+                <it-icon name="it-close" aria-hidden="true" color="secondary"></it-icon>
+              </button>
+            </div>
+          `,
+          () => html`
+            <button
+              part="file-remove-button"
+              type="button"
+              @click="${() => this._handleRemove(f.id, f.name)}"
+              ?disabled="${this.disabled}"
+            >
+              <span class="visually-hidden">${removeLabel}</span>
+              <it-icon
+                name="${this._actionIconForStatus(f.status)}"
+                color="${this._colorForStatus(f.status)}"
+                aria-hidden="true"
+              ></it-icon>
+            </button>
+          `,
+        )}
         ${when(
           f.status === 'loading',
           () => html` <it-progress type="line" .value="${f.progress ?? 0}" it-aria-label="${f.name}"></it-progress> `,
@@ -335,9 +357,9 @@ export class ItUpload extends FormControl {
           type="button"
           class="btn btn-primary btn-icon btn-xs upload-image-remove"
           @click="${() => this._handleRemove(f.id, f.name)}"
-          aria-label="${removeLabel}"
           ?disabled="${this.disabled}"
         >
+          <span class="visually-hidden">${removeLabel}</span>
           <it-icon name="it-close" size="xs" color="inverse" aria-hidden="true"></it-icon>
         </button>
       </li>

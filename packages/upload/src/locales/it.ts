@@ -8,7 +8,7 @@ const translation: DefaultTranslation = {
   upload_label: 'Carica file',
   upload_file_list_label: 'File caricati',
   upload_remove_loading: 'Annulla caricamento file {name}',
-  upload_remove_done: 'File caricato con successo',
+  upload_remove_done: 'Rimuovi file {name}',
   upload_remove_error: 'Riprova caricamento file {name}',
   upload_status_loading: 'Caricamento file:',
   upload_status_success: 'File caricato:',
