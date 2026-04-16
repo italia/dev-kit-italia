@@ -1,7 +1,7 @@
 {
   "name": "@italia/collapse",
   "description": "Web component it-collapse del Design system .italia",
-  "version": "1.0.0-alpha.7",
+  "version": "1.0.0-alpha.8",
   "publishConfig": {
     "access": "public"
   },

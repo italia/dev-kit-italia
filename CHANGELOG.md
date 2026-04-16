@@ -2,6 +2,334 @@
 
 This changelog contains all changes from all packages in the monorepo.
 
+## 1.0.0-alpha.8
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/collapse@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+
+### `card`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/card@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.8
+  - @italia/button@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- [`c0234ba`](https://github.com/italia/dev-kit-italia/commit/c0234ba6192c5bfae44826b1b4161deb225e4aea) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed dist export for full.css
+
+- Updated dependencies []:
+  - @italia/accordion@1.0.0-alpha.8
+  - @italia/autocomplete@1.0.0-alpha.8
+  - @italia/avatar@1.0.0-alpha.8
+  - @italia/back-to-top@1.0.0-alpha.8
+  - @italia/breadcrumbs@1.0.0-alpha.8
+  - @italia/button@1.0.0-alpha.8
+  - @italia/callout@1.0.0-alpha.8
+  - @italia/card@1.0.0-alpha.8
+  - @italia/carousel@1.0.0-alpha.8
+  - @italia/checkbox@1.0.0-alpha.8
+  - @italia/chip@1.0.0-alpha.8
+  - @italia/collapse@1.0.0-alpha.8
+  - @italia/dropdown@1.0.0-alpha.8
+  - @italia/hero@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+  - @italia/input@1.0.0-alpha.8
+  - @italia/megamenu@1.0.0-alpha.8
+  - @italia/modal@1.0.0-alpha.8
+  - @italia/navscroll@1.0.0-alpha.8
+  - @italia/pagination@1.0.0-alpha.8
+  - @italia/popover@1.0.0-alpha.8
+  - @italia/progress@1.0.0-alpha.8
+  - @italia/radio@1.0.0-alpha.8
+  - @italia/rating@1.0.0-alpha.8
+  - @italia/section@1.0.0-alpha.8
+  - @italia/select@1.0.0-alpha.8
+  - @italia/skiplinks@1.0.0-alpha.8
+  - @italia/sticky@1.0.0-alpha.8
+  - @italia/toggle@1.0.0-alpha.8
+  - @italia/video@1.0.0-alpha.8
+
+### `dropdown`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+  - @italia/popover@1.0.0-alpha.8
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.8
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `megamenu`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/dropdown@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+  - @italia/modal@1.0.0-alpha.8
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+  - @italia/radio@1.0.0-alpha.8
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/checkbox@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
 ## 1.0.0-alpha.7
 
 ### `accordion`

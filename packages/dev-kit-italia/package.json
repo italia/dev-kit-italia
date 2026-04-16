@@ -1,7 +1,7 @@
 {
   "name": "@italia/dev-kit-italia",
   "description": "Bundle dei web components del Design system .italia",
-  "version": "1.0.0-alpha.7",
+  "version": "1.0.0-alpha.8",
   "publishConfig": {
     "access": "public"
   },
@@ -23,6 +23,7 @@
     ".": "./dist/src/index.js",
     "./elements.js": "./dist/elements.js",
     "./styles.css": "./dist/styles.css",
+    "./full.css": "./dist/full.css",
     "./fonts.css": "./dist/fonts.css"
   },
   "scripts": {
