@@ -200,6 +200,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/table.component').then((c) => c.TableComponent),
   },
   {
+    title: 'Thumbnav',
+    path: 'thumbnav',
+    loadComponent: () => import('./pages/thumbnav.component').then((c) => c.ThumbnnavComponent),
+  },
+  {
     title: 'Toggle',
     path: 'toggle',
     loadComponent: () => import('./pages/toggle.component').then((c) => c.ToggleComponent),

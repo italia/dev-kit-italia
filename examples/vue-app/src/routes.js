@@ -36,6 +36,7 @@ import Select from './components/Select.vue';
 import Sidebar from './components/Sidebar.vue';
 import Sticky from './components/Sticky.vue';
 import Table from './components/Table.vue';
+import Thumbnav from './components/Thumbnav.vue';
 import Toggle from './components/Toggle.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
@@ -82,6 +83,7 @@ const routes = [
   { path: '/skiplinks', name: 'Skiplinks', component: Skiplinks },
   { path: '/sticky', name: 'Sticky', component: Sticky },
   { path: '/tables', name: 'Tables', component: Table },
+  { path: '/thumbnav', name: 'Thumbnav', component: Thumbnav },
   { path: '/toggle', name: 'Toggle', component: Toggle },
   { path: '/video', name: 'Video', component: Video },
 ];

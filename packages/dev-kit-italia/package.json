@@ -80,6 +80,7 @@
     "@italia/select": "workspace:^",
     "@italia/skiplinks": "workspace:^",
     "@italia/sticky": "workspace:^",
+    "@italia/thumbnav": "workspace:^",
     "@italia/toggle": "workspace:^",
     "@italia/video": "workspace:^"
   },

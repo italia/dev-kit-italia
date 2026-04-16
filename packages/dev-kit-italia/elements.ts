@@ -35,6 +35,8 @@ import '@italia/section/it-section.js';
 import '@italia/select/it-select.js';
 import '@italia/skiplinks/it-skiplinks.js';
 import '@italia/sticky/it-sticky.js';
+import '@italia/thumbnav/it-thumbnav-item.js';
+import '@italia/thumbnav/it-thumbnav.js';
 import '@italia/toggle/it-toggle-group.js';
 import '@italia/toggle/it-toggle.js';
 import '@italia/video/it-video.js';
