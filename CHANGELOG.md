@@ -2,6 +2,714 @@
 
 This changelog contains all changes from all packages in the monorepo.
 
+## 1.0.0-alpha.8
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/collapse@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+
+### `card`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/card@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.8
+  - @italia/button@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- [`c0234ba`](https://github.com/italia/dev-kit-italia/commit/c0234ba6192c5bfae44826b1b4161deb225e4aea) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed dist export for full.css
+
+- Updated dependencies []:
+  - @italia/accordion@1.0.0-alpha.8
+  - @italia/autocomplete@1.0.0-alpha.8
+  - @italia/avatar@1.0.0-alpha.8
+  - @italia/back-to-top@1.0.0-alpha.8
+  - @italia/breadcrumbs@1.0.0-alpha.8
+  - @italia/button@1.0.0-alpha.8
+  - @italia/callout@1.0.0-alpha.8
+  - @italia/card@1.0.0-alpha.8
+  - @italia/carousel@1.0.0-alpha.8
+  - @italia/checkbox@1.0.0-alpha.8
+  - @italia/chip@1.0.0-alpha.8
+  - @italia/collapse@1.0.0-alpha.8
+  - @italia/dropdown@1.0.0-alpha.8
+  - @italia/hero@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+  - @italia/input@1.0.0-alpha.8
+  - @italia/megamenu@1.0.0-alpha.8
+  - @italia/modal@1.0.0-alpha.8
+  - @italia/navscroll@1.0.0-alpha.8
+  - @italia/pagination@1.0.0-alpha.8
+  - @italia/popover@1.0.0-alpha.8
+  - @italia/progress@1.0.0-alpha.8
+  - @italia/radio@1.0.0-alpha.8
+  - @italia/rating@1.0.0-alpha.8
+  - @italia/section@1.0.0-alpha.8
+  - @italia/select@1.0.0-alpha.8
+  - @italia/skiplinks@1.0.0-alpha.8
+  - @italia/sticky@1.0.0-alpha.8
+  - @italia/toggle@1.0.0-alpha.8
+  - @italia/video@1.0.0-alpha.8
+
+### `dropdown`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+  - @italia/popover@1.0.0-alpha.8
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.8
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `megamenu`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/dropdown@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+  - @italia/modal@1.0.0-alpha.8
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+  - @italia/radio@1.0.0-alpha.8
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/checkbox@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+## 1.0.0-alpha.7
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c)]:
+  - @italia/button@1.0.0-alpha.7
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/collapse@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/i18n@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/i18n@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+### `button`
+
+### Patch Changes
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-progress component
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Removed attribute "icon" from it-button because self-managed
+
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/collapse@1.0.0-alpha.7
+
+### `card`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+### `carousel`
+
+### Minor Changes
+
+- [#307](https://github.com/italia/dev-kit-italia/pull/307) [`37e516b`](https://github.com/italia/dev-kit-italia/commit/37e516ba5750b2d4dd7d13bebdafd4fe778f022d) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added Carousel component
+
+### Patch Changes
+
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/card@1.0.0-alpha.7
+  - @italia/i18n@1.0.0-alpha.7
+
+### `checkbox`
+
+### Patch Changes
+
+- [#316](https://github.com/italia/dev-kit-italia/pull/316) [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toggle component as an extension of it-checkbox
+
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/i18n@1.0.0-alpha.7
+
+### `chip`
+
+### Patch Changes
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-progress component
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Removed attribute "icon" from it-button because self-managed
+
+- Updated dependencies [[`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c)]:
+  - @italia/button@1.0.0-alpha.7
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/avatar@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+### `dev-kit-italia`
+
+### Minor Changes
+
+- [#307](https://github.com/italia/dev-kit-italia/pull/307) [`37e516b`](https://github.com/italia/dev-kit-italia/commit/37e516ba5750b2d4dd7d13bebdafd4fe778f022d) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added Carousel component
+
+- [#276](https://github.com/italia/dev-kit-italia/pull/276) [`56a02b8`](https://github.com/italia/dev-kit-italia/commit/56a02b8072dbf1259cff380cf78bdd69ac5a813c) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add dev-kit tracking documentation
+
+- [#330](https://github.com/italia/dev-kit-italia/pull/330) [`5cf5bb0`](https://github.com/italia/dev-kit-italia/commit/5cf5bb0a3a62ef46c808f92250a4c016f9abddad) Thanks [@pnicolli](https://github.com/pnicolli)! - Added styles file `full.css` which contains all bootstrap-italia styles. It is meant to help with the migration process from bootstrap-italia to dev-kit-italia.
+
+### Patch Changes
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-progress component
+
+- [#316](https://github.com/italia/dev-kit-italia/pull/316) [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toggle component as an extension of it-checkbox
+
+- [`22eb901`](https://github.com/italia/dev-kit-italia/commit/22eb901eae2c2a4cae23b981f39ec838805e2c8c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated docs with link to components
+
+- [#343](https://github.com/italia/dev-kit-italia/pull/343) [`e725862`](https://github.com/italia/dev-kit-italia/commit/e7258623365aa6597da53da3c52abeb1bf84521b) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fixed megamenu styles
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-progress component
+
+- [#308](https://github.com/italia/dev-kit-italia/pull/308) [`07eea32`](https://github.com/italia/dev-kit-italia/commit/07eea3205e1cdd19ecd2bd069d337003c5c6f730) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-megamenu component
+
+- Updated dependencies [[`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40), [`22eb901`](https://github.com/italia/dev-kit-italia/commit/22eb901eae2c2a4cae23b981f39ec838805e2c8c), [`37e516b`](https://github.com/italia/dev-kit-italia/commit/37e516ba5750b2d4dd7d13bebdafd4fe778f022d), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`e725862`](https://github.com/italia/dev-kit-italia/commit/e7258623365aa6597da53da3c52abeb1bf84521b), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`07eea32`](https://github.com/italia/dev-kit-italia/commit/07eea3205e1cdd19ecd2bd069d337003c5c6f730)]:
+  - @italia/navscroll@1.0.0-alpha.7
+  - @italia/progress@1.0.0-alpha.7
+  - @italia/button@1.0.0-alpha.7
+  - @italia/modal@1.0.0-alpha.7
+  - @italia/chip@1.0.0-alpha.7
+  - @italia/checkbox@1.0.0-alpha.7
+  - @italia/toggle@1.0.0-alpha.7
+  - @italia/dropdown@1.0.0-alpha.7
+  - @italia/popover@1.0.0-alpha.7
+  - @italia/select@1.0.0-alpha.7
+  - @italia/carousel@1.0.0-alpha.7
+  - @italia/video@1.0.0-alpha.7
+  - @italia/megamenu@1.0.0-alpha.7
+  - @italia/accordion@1.0.0-alpha.7
+  - @italia/autocomplete@1.0.0-alpha.7
+  - @italia/avatar@1.0.0-alpha.7
+  - @italia/back-to-top@1.0.0-alpha.7
+  - @italia/breadcrumbs@1.0.0-alpha.7
+  - @italia/callout@1.0.0-alpha.7
+  - @italia/card@1.0.0-alpha.7
+  - @italia/collapse@1.0.0-alpha.7
+  - @italia/hero@1.0.0-alpha.7
+  - @italia/i18n@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+  - @italia/input@1.0.0-alpha.7
+  - @italia/pagination@1.0.0-alpha.7
+  - @italia/radio@1.0.0-alpha.7
+  - @italia/rating@1.0.0-alpha.7
+  - @italia/section@1.0.0-alpha.7
+  - @italia/skiplinks@1.0.0-alpha.7
+  - @italia/sticky@1.0.0-alpha.7
+
+### `dropdown`
+
+### Patch Changes
+
+- [`22eb901`](https://github.com/italia/dev-kit-italia/commit/22eb901eae2c2a4cae23b981f39ec838805e2c8c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated docs with link to components
+
+- [#308](https://github.com/italia/dev-kit-italia/pull/308) [`07eea32`](https://github.com/italia/dev-kit-italia/commit/07eea3205e1cdd19ecd2bd069d337003c5c6f730) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-megamenu component
+
+- Updated dependencies [[`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40), [`22eb901`](https://github.com/italia/dev-kit-italia/commit/22eb901eae2c2a4cae23b981f39ec838805e2c8c), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`07eea32`](https://github.com/italia/dev-kit-italia/commit/07eea3205e1cdd19ecd2bd069d337003c5c6f730)]:
+  - @italia/button@1.0.0-alpha.7
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/popover@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+
+### `globals`
+
+### Patch Changes
+
+- [#316](https://github.com/italia/dev-kit-italia/pull/316) [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toggle component as an extension of it-checkbox
+
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.7
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/i18n@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+
+### `megamenu`
+
+### Patch Changes
+
+- [#343](https://github.com/italia/dev-kit-italia/pull/343) [`e725862`](https://github.com/italia/dev-kit-italia/commit/e7258623365aa6597da53da3c52abeb1bf84521b) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fixed megamenu styles
+
+- [#308](https://github.com/italia/dev-kit-italia/pull/308) [`07eea32`](https://github.com/italia/dev-kit-italia/commit/07eea3205e1cdd19ecd2bd069d337003c5c6f730) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-megamenu component
+
+- Updated dependencies [[`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40), [`22eb901`](https://github.com/italia/dev-kit-italia/commit/22eb901eae2c2a4cae23b981f39ec838805e2c8c), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`07eea32`](https://github.com/italia/dev-kit-italia/commit/07eea3205e1cdd19ecd2bd069d337003c5c6f730)]:
+  - @italia/button@1.0.0-alpha.7
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/dropdown@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+
+### `modal`
+
+### Patch Changes
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-progress component
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Removed attribute "icon" from it-button because self-managed
+
+- Updated dependencies [[`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c)]:
+  - @italia/button@1.0.0-alpha.7
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+
+### `navscroll`
+
+### Patch Changes
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-progress component
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Removed attribute "icon" from it-button because self-managed
+
+- Updated dependencies [[`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c)]:
+  - @italia/button@1.0.0-alpha.7
+  - @italia/modal@1.0.0-alpha.7
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+### `popover`
+
+### Patch Changes
+
+- [`22eb901`](https://github.com/italia/dev-kit-italia/commit/22eb901eae2c2a4cae23b981f39ec838805e2c8c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated docs with link to components
+
+- [#308](https://github.com/italia/dev-kit-italia/pull/308) [`07eea32`](https://github.com/italia/dev-kit-italia/commit/07eea3205e1cdd19ecd2bd069d337003c5c6f730) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-megamenu component
+
+- Updated dependencies [[`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c)]:
+  - @italia/button@1.0.0-alpha.7
+  - @italia/globals@1.0.0-alpha.7
+
+### `progress`
+
+### Patch Changes
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-progress component
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-progress component
+
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/i18n@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+  - @italia/radio@1.0.0-alpha.7
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+### `select`
+
+### Patch Changes
+
+- [`22eb901`](https://github.com/italia/dev-kit-italia/commit/22eb901eae2c2a4cae23b981f39ec838805e2c8c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated docs with link to components
+
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/i18n@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+### `toggle`
+
+### Patch Changes
+
+- [#316](https://github.com/italia/dev-kit-italia/pull/316) [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toggle component as an extension of it-checkbox
+
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/checkbox@1.0.0-alpha.7
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/i18n@1.0.0-alpha.7
+
+### `video`
+
+### Minor Changes
+
+- [#307](https://github.com/italia/dev-kit-italia/pull/307) [`37e516b`](https://github.com/italia/dev-kit-italia/commit/37e516ba5750b2d4dd7d13bebdafd4fe778f022d) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added Carousel component
+
+### Patch Changes
+
+- Updated dependencies [[`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c)]:
+  - @italia/button@1.0.0-alpha.7
+  - @italia/checkbox@1.0.0-alpha.7
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/i18n@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+
 ## 1.0.0-alpha.6
 
 ### `accordion`
@@ -254,6 +962,17 @@ This changelog contains all changes from all packages in the monorepo.
 - Aggiornamento della versione
 - Updated dependencies [[`e556822`](https://github.com/italia/dev-kit-italia/commit/e55682290e80bcfc68cd8d835d96b77abd276b46)]:
   - @italia/button@1.0.0-alpha.6
+  - @italia/globals@1.0.0-alpha.6
+
+### `progress`
+
+### Minor Changes
+
+- Added unified progress indicator component `it-progress` with `type="bar" | "donut" | "spinner"`.
+
+### Patch Changes
+
+- Updated dependencies:
   - @italia/globals@1.0.0-alpha.6
 
 ### `radio`

@@ -7,7 +7,7 @@ import '@italia/checkbox';
 
 const meta = {
   title: 'Componenti/List',
-  tags: ['alpha', 'a11y-ok', 'documentation'],
+  tags: ['new', 'a11y-ok', 'documentation'],
   parameters: {
     layout: 'padded',
   },
@@ -764,20 +764,14 @@ export const LinkListToggle: Story = {
     <div class="link-list-wrapper">
       <ul class="link-list">
         <li>
-          <div class="toggles">
-            <label for="toggle1">
-              Label per toggle
-              <input type="checkbox" id="toggle1" /><span class="lever"></span>
-            </label>
-          </div>
+          <it-toggle name="toggle1">
+            <span slot="label">Label per toggle</span>
+          </it-toggle>
         </li>
         <li>
-          <div class="toggles">
-            <label for="toggle2">
-              Label per toggle disabilitato
-              <input type="checkbox" id="toggle2" disabled aria-disabled="true" /><span class="lever"></span>
-            </label>
-          </div>
+          <it-toggle name="toggle2" disabled>
+            <span slot="label">Label per toggle disabilitato</span>
+          </it-toggle>
         </li>
       </ul>
     </div>

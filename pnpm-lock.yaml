@@ -6,18 +6,6 @@ settings:
 
 catalogs:
   default:
-    '@open-wc/testing':
-      specifier: ^4.0.0
-      version: 4.0.0
-    '@types/mocha':
-      specifier: ^10.0.10
-      version: 10.0.10
-    '@web/test-runner':
-      specifier: ^0.18.2
-      version: 0.18.3
-    '@web/test-runner-commands':
-      specifier: ^0.9.0
-      version: 0.9.0
     bootstrap-italia:
       specifier: github:italia/bootstrap-italia#8c67506065fb844becbec9cc74f2d11de7101404
       version: 3.0.0-alpha.4
@@ -27,12 +15,6 @@ catalogs:
     lit:
       specifier: ^3.3.0
       version: 3.3.2
-    sass:
-      specifier: ^1.89.0
-      version: 1.97.3
-    typescript:
-      specifier: ^5.5.3
-      version: 5.9.3
 
 overrides:
   react: 19.2.0
@@ -977,6 +959,9 @@ importers:
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
         version: 12.3.0(rollup@4.59.0)(tslib@2.8.1)(typescript@5.9.3)
+      '@splidejs/splide':
+        specifier: ^4.1.4
+        version: 4.1.4
       bootstrap-italia:
         specifier: 'catalog:'
         version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
@@ -1001,6 +986,12 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
+      video.js:
+        specifier: ^8.23.7
+        version: 8.23.7
+      videojs-font:
+        specifier: ^4.2.0
+        version: 4.2.0
 
   packages/dimmer:
     dependencies:
@@ -4138,6 +4129,7 @@ packages:
   '@xmldom/xmldom@0.8.11':
     resolution: {integrity: sha512-cQzWCtO6C8TQiYl1ruKNn2U6Ao4o4WBBcbL61yJl84x+j5sOWWFU9X7DpND8XZG3daDppSsigMdfAIl2upQBRw==}
     engines: {node: '>=10.0.0'}
+    deprecated: this version has critical issues, please update to the latest version
 
   '@xn-sakina/rml-darwin-arm64@2.6.0':
     resolution: {integrity: sha512-RuFHj6ro6Q24gPqNQGvH4uxpsvbgqBBy+ZUK+jbMuMaw4wyti7F6klQWuikBJAxhWpmRbhAB/jrq0PC82qlh5A==}
