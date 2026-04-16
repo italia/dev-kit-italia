@@ -35,6 +35,7 @@ import Skiplinks from './pages/Skiplinks';
 import Sticky from './pages/Sticky';
 import Table from './pages/Table';
 import Toggle from './pages/Toggle';
+import Tooltip from './pages/Tooltip';
 import Video from './pages/Video';
 import Carousel from './pages/Carousel';
 import Pagination from './pages/Pagination';
@@ -81,5 +82,6 @@ export const AppRoutes = [
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/tables', element: <Table />, title: 'Tables' },
   { path: '/toggle', element: <Toggle />, title: 'Toggle' },
+  { path: '/tooltip', element: <Tooltip />, title: 'Tooltip' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];
