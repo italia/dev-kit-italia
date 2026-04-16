@@ -128,11 +128,54 @@ it-timeline-point:not(:defined) {
 // ── Color mapping ─────────────────────────────────────────────────────────────
 // BSI sets --point-color inside .it-timeline-point-list which is in the shadow
 // root of <it-timeline>, not here. We define it on the class directly.
-@each $color, $value in $theme-colors {
-  it-timeline-point[color='#{$color}']:not(:defined),
-  it-timeline[color='#{$color}']:not(:defined) {
-    --point-color: #{$value};
-  }
+it-timeline-point[color='primary']:not(:defined),
+it-timeline[color='primary']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textprimary);
+}
+
+it-timeline-point[color='secondary']:not(:defined),
+it-timeline[color='secondary']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textsecondary);
+}
+
+it-timeline-point[color='success']:not(:defined),
+it-timeline[color='success']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textsuccess);
+}
+
+it-timeline-point[color='info']:not(:defined),
+it-timeline[color='info']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textinfo);
+}
+
+it-timeline-point[color='warning']:not(:defined),
+it-timeline[color='warning']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textwarning);
+}
+
+it-timeline-point[color='danger']:not(:defined),
+it-timeline[color='danger']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textdanger);
+}
+
+it-timeline-point[color='light']:not(:defined),
+it-timeline[color='light']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textlight);
+}
+
+it-timeline-point[color='dark']:not(:defined),
+it-timeline[color='dark']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textdark);
+}
+
+it-timeline-point[color='black']:not(:defined),
+it-timeline[color='black']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textblack);
+}
+
+it-timeline-point[color='white']:not(:defined),
+it-timeline[color='white']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textwhite);
 }
 
 // Desktop: each element takes 50% width, alternating left/right column
