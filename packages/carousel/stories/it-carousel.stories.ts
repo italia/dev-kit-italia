@@ -289,7 +289,6 @@ export const ConFrecce1: Story = {
 };
 
 export const Fullscreen: Story = {
-  name: 'Fullscreen',
   args: {
     variant: 'single',
     arrows: true,
@@ -332,7 +331,6 @@ export const TipoScorrimento: Story = {
 };
 
 export const Autoplay: Story = {
-  name: 'Autoplay',
   args: {
     variant: 'single',
     autoplay: true,

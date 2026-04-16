@@ -44,7 +44,7 @@ const renderSelect = (params: any) =>
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Form/Select',
-  tags: ['a11y-ok', 'web-component', 'alpha'],
+  tags: ['a11y-ok', 'web-component', 'new'],
   component: 'it-select',
   args: {
     id: '',
