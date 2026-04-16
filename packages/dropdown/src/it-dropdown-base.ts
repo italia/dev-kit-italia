@@ -182,7 +182,7 @@ export class ItDropdownBase extends BaseComponent {
         placement=${this.alignment}
         @it-popover-open=${this._onPopoverOpen}
         @it-popover-close=${this._onPopoverClose}
-        exportparts="focusable, icon, button, dropdown-button, dropdown-icon-expand"
+        exportparts="focusable, icon, button, dropdown-button, dropdown-icon-expand, popover-content"
         part="dropdown-popover"
         ?open=${this._popoverOpen}
         offset=${ifDefined(this.offset)}
@@ -230,6 +230,7 @@ export class ItDropdownBase extends BaseComponent {
         </it-button>
         <div
           slot="content"
+          part="popover-content"
           class="${this.composeClass('dropdown-menu', {
             show: this._popoverOpen,
             dark: this.dark,

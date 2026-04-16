@@ -139,7 +139,7 @@ export class ItMegamenu extends ItDropdownBase {
         placement=${this.alignment}
         @it-popover-open=${this._onPopoverOpen}
         @it-popover-close=${this._onPopoverClose}
-        exportparts="focusable, icon, button, dropdown-button, dropdown-icon-expand"
+        exportparts="focusable, icon, button, dropdown-button, dropdown-icon-expand, popover-content"
         part="dropdown-popover"
         ?open=${this._popoverOpen}
         offset="0"
@@ -187,6 +187,7 @@ export class ItMegamenu extends ItDropdownBase {
         </it-button>
         <div
           slot="content"
+          part="popover-content"
           class="${this.composeClass('dropdown-menu', 'show-lg', {
             show: this._popoverOpen,
             'full-width': this.fullWidth,
