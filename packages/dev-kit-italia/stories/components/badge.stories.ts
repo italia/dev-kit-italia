@@ -3,7 +3,7 @@ import { html } from 'lit';
 
 const meta = {
   title: 'Componenti/Badge',
-  tags: ['documentation', 'new', 'a11y-ok'],
+  tags: ['documentation', 'a11y-ok'],
 
   //   parameters: {
   //     docs: {
