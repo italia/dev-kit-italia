@@ -15,12 +15,12 @@
 // or use `&` inside. We keep it flat to avoid nesting confusion.
 // 'primary' overrides BI’s hardcoded solid .dimmer-primary with opacity;
 // 'dark' is the explicit dark variant.
-@each $color, $value in $theme-colors {
-  @if $color == 'primary' or $color == 'dark' {
-    .dimmer.dimmer-#{$color} {
-      background-color: rgba($value, 0.9);
-    }
-  }
+.dimmer.dimmer-primary {
+  background-color: rgba(var(--#{$prefix}primary-rgb), 0.9);
+}
+
+.dimmer.dimmer-dark {
+  background-color: rgba(var(--#{$prefix}dark-rgb), 0.9);
 }
 
 // Nessuna transition CSS — le animazioni di fade-in/out sono gestite via JS
