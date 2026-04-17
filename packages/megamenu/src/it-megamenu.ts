@@ -206,7 +206,7 @@ export class ItMegamenu extends ItDropdownBase {
                     <div class="col-xs-12 col-lg-4 px-0">
                       <div class="row">
                         <div class="col-12 it-vertical it-description pb-lg-3">
-                          <div class="description-content px-4 ps-sm-5 ms-3">
+                          <div class="description-content px-4 ps-sm-5 ms-4 ms-lg-3">
                             <slot name="description" @slotchange=${this._handleSlotDescriptionChange}></slot>
                           </div>
                         </div>
@@ -232,8 +232,8 @@ export class ItMegamenu extends ItDropdownBase {
                 ${this._menuItems.length > 0
                   ? html` <div class="row">
                       <div class="col-12">
-                        <div class="link-list-wrapper">
-                          <ul class="link-list" style="columns: ${this.columns};">
+                        <div class="link-list-wrapper" part="megamenu-link-list-wrapper">
+                          <ul class="link-list" part="megamenu-link-list" style="columns: ${this.columns};">
                             <slot @slotchange=${this._setChildrenProperties}></slot>
                           </ul>
                         </div>
