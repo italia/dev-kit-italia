@@ -212,6 +212,13 @@ it-modal#it-nav-modal {
   --it-nav-modal-header-background: var(--#{$prefix}header-center-background);
   --it-nav-modal-header-text-color: var(--#{$prefix}header-center-text-color);
 
+  &.hide-header-brand {
+    &::part(modal-header) {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
   &::part(modal-header) {
     background-color: var(--it-nav-modal-header-background);
     color: var(--it-nav-modal-header-text-color);
@@ -219,6 +226,11 @@ it-modal#it-nav-modal {
 
   &::part(modal-body) {
     --#{$prefix}modal-padding: 0;
+  }
+
+  &::part(modal-content-wrapper) {
+    width: 100%;
+    margin-right: 3rem;
   }
 
   &::part(modal-content) {
@@ -271,7 +283,7 @@ it-modal#it-nav-modal {
         position: unset !important;
         min-width: unset !important;
         --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}navbar-link-padding-x);
-        --#{$prefix}dropdown-padding-x: 0;
+        // padding-left: var(--#{$prefix}navbar-link-padding-x);
       }
 
       it-dropdown-item {
@@ -308,8 +320,22 @@ it-modal#it-nav-modal {
       }
     }
 
+    .navbar-ul-descriptor {
+      display: block;
+      width: 100%;
+      padding: var(--#{$prefix}spacing-m) var(--#{$prefix}navbar-link-padding-x) 0;
+      border-color: var(--#{$prefix}navbar-link-border-color);
+      border-left: var(--#{$prefix}navbar-link-border-size) solid transparent;
+      font-size: var(--#{$prefix}font-size-2);
+      text-transform: uppercase;
+    }
+
     ul.navbar-nav {
       width: 100%;
+
+      &.secondary {
+        --#{$prefix}navbar-link-font-weight: var(--#{$prefix}font-weight-base);
+      }
 
       li {
         &.active {
@@ -322,16 +348,46 @@ it-modal#it-nav-modal {
         }
 
       }
-    }
 
-    +ul.navbar-nav {
-      &:before {
-        width: 100%;
-        max-width: 65px;
-        height: 1px;
-        margin-bottom: var(--#{$prefix}spacing-m);
-        background: var(--it-ul-spacer-background);
-        content: "";
+      +ul.navbar-nav,
+      +.navbar-ul-descriptor {
+        &:before {
+          display: block;
+
+          width: 100%;
+          max-width: 65px;
+          height: 1px;
+          margin-bottom: var(--#{$prefix}spacing-m);
+          margin-left: var(--#{$prefix}navbar-link-padding-x);
+          background: var(--it-ul-spacer-background);
+          content: '';
+        }
+      }
+
+      +.navbar-ul-descriptor {
+        &:before {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  .it-socials {
+    padding: 0 var(--#{$prefix}spacing-m);
+    margin-top: var(--#{$prefix}spacing-l);
+    color: var(--#{$prefix}color-link);
+
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      list-style-type: none;
+      padding: 0;
+      margin: var(--#{$prefix}spacing-xs) 0 0 0;
+
+      it-icon::part(icon) {
+        --#{$prefix}icon-size-m: var(--#{$prefix}icon-size-s);
+        --#{$prefix}icon-default: currentColor;
       }
     }
   }

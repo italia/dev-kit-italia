@@ -20,6 +20,9 @@ export class ItHeader extends BaseComponent {
   @property({ type: String, attribute: 'back-label' })
   backLabel = 'Indietro';
 
+  @property({ type: Boolean, attribute: 'hide-header-brand' })
+  hideHeaderBrand = false;
+
   private mql?: MediaQueryList;
 
   private mode: 'inline' | 'modal' = 'inline';
@@ -114,9 +117,10 @@ export class ItHeader extends BaseComponent {
     }
   }
 
-  private cloneULForModalMenu(ul: HTMLElement) {
+  private cloneULForModalMenu = (ul: HTMLElement, className = '') => {
     const ulClone = ul.cloneNode(true) as HTMLElement;
-    ulClone.setAttribute('class', 'navbar-nav');
+    ulClone.setAttribute('class', `navbar-nav pippo ${className}`);
+
     Array.from(ulClone.children).forEach((li) => {
       if (li instanceof HTMLElement) {
         const active = li.classList.contains('active');
@@ -130,8 +134,17 @@ export class ItHeader extends BaseComponent {
         }
       }
     });
-    return ulClone;
-  }
+
+    let divUlDescriptor: HTMLElement | null = null;
+    if (ulClone.getAttribute('aria-label')) {
+      divUlDescriptor = document.createElement('div');
+      divUlDescriptor.setAttribute('class', 'navbar-ul-descriptor');
+      divUlDescriptor.setAttribute('aria-hidden', 'true');
+      // divUlDescriptor.setAttribute('part', 'navbar-ul-descriptor');
+      divUlDescriptor.textContent = ulClone.getAttribute('aria-label');
+    }
+    return { ul: ulClone, descriptor: divUlDescriptor };
+  };
 
   private enterModal() {
     if (
@@ -147,15 +160,13 @@ export class ItHeader extends BaseComponent {
       this.modalEl = this.createModal();
     }
 
-    if (this.brandWrapper) {
+    if (this.brandWrapper && !this.hideHeaderBrand) {
       const brandClone = this.brandWrapper.cloneNode(true) as HTMLElement;
       brandClone.setAttribute('slot', 'header');
       this.modalEl.appendChild(brandClone);
     }
 
-    console.log(this.modalContentEl, this.menuNav, this.headerSlimMenu, this.socialsWrapper); // DEBUG
-
-    //genero il contenuto della modale solo la prima volta che entro in modalità mobile
+    // genero il contenuto della modale solo la prima volta che entro in modalità mobile
     if (!this.modalContentEl) {
       this.modalContentEl = document.createElement('div');
       this.modalContentEl.setAttribute('slot', 'content');
@@ -166,41 +177,55 @@ export class ItHeader extends BaseComponent {
         this.modalNavEl.setAttribute('aria-label', 'Menu di navigazione');
       }
 
-      //aggiungo il nav principale: dentro al nav principale del sito, possono esserci piu ul, per esempio uno per la navigazione principale e uno per la navigazione secondaria, in questo modo clono tutti gli ul e li aggiungo alla modale
+      // aggiungo il nav principale: dentro al nav principale del sito, possono esserci piu ul, per esempio uno per la navigazione principale e uno per la navigazione secondaria, in questo modo clono tutti gli ul e li aggiungo alla modale
       if (this.menuNav) {
         if (this.menuNav.getAttribute('aria-label')) {
           this.modalNavEl.setAttribute('aria-label', this.menuNav.getAttribute('aria-label') ?? 'Menu di navigazione');
         }
 
-        this.menuNav.querySelectorAll('.menu-wrapper > ul').forEach((ul) => {
-          const ulClone = this.cloneULForModalMenu(ul as HTMLElement);
-          this.modalNavEl?.appendChild(ulClone);
+        this.menuNav.querySelectorAll('.menu-wrapper > ul').forEach((ul, index) => {
+          const clone = this.cloneULForModalMenu(ul as HTMLElement, index > 0 ? 'secondary' : '');
+
+          if (clone.descriptor) {
+            this.modalNavEl?.appendChild(clone.descriptor);
+          }
+          if (clone.ul) {
+            this.modalNavEl?.appendChild(clone.ul);
+          }
         });
       }
 
       // aggiungo il menu dell'headerslim
       if (this.headerSlimMenu) {
-        const ulHeaderSlim = this.cloneULForModalMenu(this.headerSlimMenu as HTMLElement);
-        this.modalNavEl?.appendChild(ulHeaderSlim);
+        const cloneHeaderSlim = this.cloneULForModalMenu(
+          this.headerSlimMenu as HTMLElement,
+          'secondary header-slim-menu',
+        );
+        if (cloneHeaderSlim.descriptor) {
+          this.modalNavEl?.appendChild(cloneHeaderSlim.descriptor);
+        }
+        if (cloneHeaderSlim.ul) {
+          this.modalNavEl?.appendChild(cloneHeaderSlim.ul);
+        }
       }
 
-      //aggiungo il nav al contenuto della modale
+      // aggiungo il nav al contenuto della modale
       this.modalContentEl.appendChild(this.modalNavEl);
 
-      //aggiungo i social al contenuto della modale
+      // aggiungo i social al contenuto della modale
       if (this.socialsWrapper) {
         const socialsWrapperClone = this.socialsWrapper.cloneNode(true) as HTMLElement;
         socialsWrapperClone.setAttribute('class', 'it-socials');
         this.modalContentEl.appendChild(socialsWrapperClone);
       }
 
-      //aggiungo il contenuto (modalContentEl) alla modale
+      // aggiungo il contenuto (modalContentEl) alla modale
       if (!this.modalEl?.contains(this.modalContentEl)) {
         this.modalEl.appendChild(this.modalContentEl);
       }
     }
 
-    //aggiungo la modale in pagina
+    // aggiungo la modale in pagina
     if (!this.headerCenterWrapper.contains(this.modalEl)) {
       this.headerCenterWrapper.prepend(this.modalEl);
     }
@@ -238,6 +263,7 @@ export class ItHeader extends BaseComponent {
     modal.setAttribute('close-button-placement', 'backdrop');
     modal.setAttribute('custom-header', 'true');
     modal.setAttribute('id', 'it-nav-modal');
+    modal.setAttribute('class', this.hideHeaderBrand ? 'hide-header-brand' : '');
 
     const trigger = document.createElement('it-button');
     trigger.setAttribute('class', 'custom-navbar-toggler');

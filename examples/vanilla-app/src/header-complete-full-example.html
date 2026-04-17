@@ -13,7 +13,7 @@
 
 <body>
   <div id="root">
-    <it-header>
+    <it-header hide-header-brand>
       <header class="it-header-wrapper">
         <div class="it-header-slim-wrapper">
           <div class="container-xxl">
@@ -24,7 +24,7 @@
                   <div class="nav-mobile">
                     <nav aria-label="Navigazione accessoria slim standard">
                       <div class="link-list-wrapper d-none d-lg-flex">
-                        <ul class="link-list">
+                        <ul class="link-list" aria-label="Link utili">
                           <li><a class="list-item" href="#" data-focus-mouse="false">Link 1</a></li>
                           <li><a class="list-item active" href="#" aria-current="page">Link 2 (Attivo)</a></li>
                         </ul>
@@ -118,7 +118,6 @@
                             <it-dropdown-item href="#">Link lista 1</it-dropdown-item>
                             <it-dropdown-item href="#">Link lista 2</it-dropdown-item>
                             <it-dropdown-item href="#">Link lista 3</it-dropdown-item>
-                            <it-dropdown-item separator></it-dropdown-item>
                             <it-dropdown-item href="#">Link lista 4</it-dropdown-item>
                           </it-dropdown>
                         </li>
