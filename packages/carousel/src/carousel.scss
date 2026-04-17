@@ -99,7 +99,8 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     padding: 0;
     border: none;
     border-radius: 0;
-    background-color: ar(--#{$prefix}color-primary);
+    // fix bsi missing tokens
+    background-color: var(--#{$prefix}color-text-primary);
     cursor: pointer;
     place-items: center;
     pointer-events: all;
@@ -118,7 +119,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
 
     @media (hover: hover) {
       &:hover:not([disabled]) {
-        background-color: color-mix(in srgb, #{$primary} 85%, black);
+        background-color: color-mix(in srgb, var(--#{$prefix}color-text-primary) 85%, black);
       }
     }
 
@@ -166,7 +167,8 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     align-items: center;
     justify-content: center;
     border: none;
-    background: #{$primary};
+    // fix bsi missing tokens
+    background: var(--#{$prefix}color-text-primary) !important;
     pointer-events: all;
 
     svg {
@@ -180,7 +182,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     }
 
     &[disabled] {
-      background: $gray-disabled;
+      background: $gray-disabled !important;
     }
   }
 }
@@ -204,8 +206,8 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
   border-color: transparent;
   border-radius: 50%;
   margin: 0;
-  background: #{$primary};
-  color: $white;
+  background: var(--#{$prefix}color-text-primary) !important;
+  color: var(--#{$prefix}color-text-inverse) !important;
   cursor: pointer;
   outline: none;
   transition: background-color 0.2s ease;
@@ -214,7 +216,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     width: 1rem;
     height: 1rem;
     margin-left: 4px;
-    fill: $white;
+    fill: var(--#{$prefix}color-text-inverse) !important;
   }
 
   &.is-active svg {
@@ -235,12 +237,13 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     border: none;
     border-radius: 50px !important;
     margin: 0 $v-gap;
-    background: $crs-dots-color;
+    background: var(--#{$prefix}color-background-subtle) !important;
     box-shadow: none;
     transition: all 0.3s;
 
+    // fix bsi missing tokens
     &.is-active {
-      background: #{$primary};
+      background: var(--#{$prefix}color-text-primary) !important;
     }
   }
 }

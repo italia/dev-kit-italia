@@ -64,7 +64,7 @@ const renderCalendarInput = (params: any) =>
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Form/Datepicker',
-  tags: ['a11y-ok', 'web-component', 'new'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-input',
   args: {
     id: '',

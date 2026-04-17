@@ -1,13 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modal - Dev Kit Italia</title>
-     <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
     <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
     <link rel="stylesheet" href="/src/style.css" />
-
   </head>
   <body>
     <div id="root">
@@ -22,14 +21,18 @@
             <it-modal close-label="Chiudi finestra modale" modal-description="Descrizione della modale">
               <it-button variant="primary" slot="trigger">Lancia la demo della modale</it-button>
               <span slot="header">Titolo modale</span>
-              <p slot="content">Testo che descrive lo scopo della modale e quali sono le azioni richieste all'utente.</p>
+              <p slot="content">
+                Testo che descrive lo scopo della modale e quali sono le azioni richieste all'utente.
+              </p>
               <it-button slot="footer" variant="outline-primary" class="close-modal">Annulla</it-button>
               <it-button slot="footer" variant="primary" class="close-modal">Conferma</it-button>
             </it-modal>
             <it-modal hide-close-button>
               <it-button variant="primary" slot="trigger">Lancia la demo della modale senza close button</it-button>
               <span slot="header">Titolo modale</span>
-              <p slot="content">Testo che descrive lo scopo della modale e quali sono le azioni richieste all'utente.</p>
+              <p slot="content">
+                Testo che descrive lo scopo della modale e quali sono le azioni richieste all'utente.
+              </p>
               <it-button slot="footer" variant="outline-primary" class="close-modal">Annulla</it-button>
               <it-button slot="footer" variant="primary" class="close-modal">Conferma</it-button>
             </it-modal>
@@ -54,7 +57,9 @@
           <it-modal close-label="Chiudi finestra modale">
             <it-button variant="primary" slot="trigger">Lancia la demo della modale</it-button>
             <span slot="header">Con footer personalizzato</span>
-            <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+            <p slot="content">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+            </p>
             <div slot="footer" class="d-flex justify-content-between gap-2 align-items-center" style="width: 100%">
               <a href="#">Link di supporto</a>
               <div class="d-flex justify-content-end gap-2">
@@ -446,7 +451,6 @@
           }
         });
       });
-
     </script>
   </body>
 </html>

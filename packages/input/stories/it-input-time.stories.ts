@@ -51,7 +51,7 @@ const renderTimeInput = (params: any) =>
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Form/Timepicker',
-  tags: ['autodocs', 'a11y-ok', 'web-component', 'alpha'],
+  tags: ['autodocs', 'a11y-ok', 'web-component', 'new'],
   component: 'it-input',
   args: {
     id: '',
