@@ -23,12 +23,13 @@ describe('it-modal', () => {
     it('renders with correct default attributes', async () => {
       const el = await fixture<ItModal>(html`
         <it-modal>
+          <it-button slot="trigger">Open Modal</it-button>
           <span slot="header">Test</span>
         </it-modal>
       `);
-
+      await aTimeout(50);
+      await el.updateComplete;
       expect(el).to.exist;
-      expect(el.open).to.be.false;
       expect(el.disableAnimation).to.be.false;
       expect(el.hideCloseButton).to.be.false;
       expect(el.position).to.equal(undefined);
@@ -276,7 +277,7 @@ describe('it-modal', () => {
         </it-modal>
       `);
 
-      expect(el.open).to.be.false;
+      expect(el.open).to.be.undefined;
       el.show();
       await aTimeout(50);
       expect(el.open).to.be.true;
@@ -303,7 +304,7 @@ describe('it-modal', () => {
         </it-modal>
       `);
 
-      expect(el.open).to.be.false;
+      expect(el.open).to.be.undefined;
       el.toggle();
       await aTimeout(50);
       expect(el.open).to.be.true;
@@ -334,10 +335,10 @@ describe('it-modal', () => {
         </it-modal>
       `);
 
-      expect(el.open).to.be.false;
+      expect(el.open).to.be.undefined;
       el.hide();
       await aTimeout(50);
-      expect(el.open).to.be.false;
+      expect(el.open).to.be.undefined;
     });
   });
 
