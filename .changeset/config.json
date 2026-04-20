@@ -40,6 +40,7 @@
       "@italia/select",
       "@italia/skiplinks",
       "@italia/sticky",
+      "@italia/tabs",
       "@italia/toggle",
       "@italia/video"
     ]
@@ -48,5 +49,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@italia/tabs"]
+  "ignore": []
 }

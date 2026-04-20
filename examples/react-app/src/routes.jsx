@@ -38,6 +38,7 @@ import Toggle from './pages/Toggle';
 import Video from './pages/Video';
 import Carousel from './pages/Carousel';
 import Pagination from './pages/Pagination';
+import Tabs from './pages/Tabs';
 import Progress from './pages/Progress';
 
 export const AppRoutes = [
@@ -80,6 +81,7 @@ export const AppRoutes = [
   { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/tables', element: <Table />, title: 'Tables' },
+  { path: '/tabs', element: <Tabs />, title: 'Tabs' },
   { path: '/toggle', element: <Toggle />, title: 'Toggle' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];
