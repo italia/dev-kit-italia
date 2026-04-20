@@ -1,0 +1,367 @@
+<h1>Dimmer</h1>
+
+<p>
+  Componente per focalizzare l'attenzione su un contenuto sovrapposto, oscurando il contenuto
+  principale sottostante.
+</p>
+
+<!-- Attivo di default -->
+<section class="my-5">
+  <h2>Attivo di default</h2>
+  <div data-demo-wrapper>
+    <div class="mb-3">
+      <it-button variant="primary" (click)="toggle($event)">Toggle dimmer</it-button>
+    </div>
+    <it-dimmer active icon-name="it-info-circle">
+      <p slot="content">
+        Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.
+      </p>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <it-card>
+            <figure slot="image" class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine"
+              />
+            </figure>
+            <a slot="title" href="#">Titolo del contenuto</a>
+            <span slot="text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in
+              massimo tre o quattro righe, senza troncamento.
+            </span>
+            <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          </it-card>
+        </div>
+        <div class="col-12 col-md-6">
+          <it-card>
+            <figure slot="image" class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine"
+              />
+            </figure>
+            <a slot="title" href="#">Titolo del contenuto</a>
+            <span slot="text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in
+              massimo tre o quattro righe, senza troncamento.
+            </span>
+            <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          </it-card>
+        </div>
+      </div>
+    </it-dimmer>
+  </div>
+</section>
+
+<!-- Colore primario -->
+<section class="my-5">
+  <h2>Colore primario</h2>
+  <div data-demo-wrapper>
+    <div class="mb-3">
+      <it-button variant="primary" (click)="toggle($event)">Toggle dimmer</it-button>
+    </div>
+    <it-dimmer active variant="primary" icon-name="it-pa">
+      <p slot="content">
+        Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Dictum
+        sit amet justo donec enim diam vulputate ut. Eu nisl nunc mi ipsum faucibus. Nulla vulputate
+        luctus sem, eu maximus lacus faucibus eget.
+      </p>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <it-card>
+            <figure slot="image" class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine"
+              />
+            </figure>
+            <a slot="title" href="#">Titolo del contenuto</a>
+            <span slot="text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in
+              massimo tre o quattro righe, senza troncamento.
+            </span>
+            <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          </it-card>
+        </div>
+        <div class="col-12 col-md-6">
+          <it-card>
+            <figure slot="image" class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine"
+              />
+            </figure>
+            <a slot="title" href="#">Titolo del contenuto</a>
+            <span slot="text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in
+              massimo tre o quattro righe, senza troncamento.
+            </span>
+            <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          </it-card>
+        </div>
+      </div>
+    </it-dimmer>
+  </div>
+</section>
+
+<!-- Colore scuro -->
+<section class="my-5">
+  <h2>Colore scuro</h2>
+  <div data-demo-wrapper>
+    <div class="mb-3">
+      <it-button variant="primary" (click)="toggle($event)">Toggle dimmer</it-button>
+    </div>
+    <it-dimmer active variant="dark" icon-name="it-pa">
+      <p slot="content">
+        Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Dictum
+        sit amet justo donec enim diam vulputate ut. Eu nisl nunc mi ipsum faucibus. Nulla vulputate
+        luctus sem, eu maximus lacus faucibus eget.
+      </p>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <it-card>
+            <figure slot="image" class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine"
+              />
+            </figure>
+            <a slot="title" href="#">Titolo del contenuto</a>
+            <span slot="text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in
+              massimo tre o quattro righe, senza troncamento.
+            </span>
+            <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          </it-card>
+        </div>
+        <div class="col-12 col-md-6">
+          <it-card>
+            <figure slot="image" class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine"
+              />
+            </figure>
+            <a slot="title" href="#">Titolo del contenuto</a>
+            <span slot="text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in
+              massimo tre o quattro righe, senza troncamento.
+            </span>
+            <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          </it-card>
+        </div>
+      </div>
+    </it-dimmer>
+  </div>
+</section>
+
+<!-- Con azioni -->
+<section class="my-5">
+  <h2>Con azioni</h2>
+  <div data-demo-wrapper>
+    <div class="mb-3">
+      <it-button variant="primary" (click)="toggle($event)">Toggle dimmer</it-button>
+    </div>
+    <it-dimmer active variant="dark" icon-name="it-info-circle">
+      <div slot="content">
+        <h4>Titolo Dimmer</h4>
+        <p>Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.</p>
+        <div class="dimmer-buttons bg-dark">
+          <it-button variant="primary">Azione primaria</it-button>
+          <it-button variant="primary" outline>Azione secondaria</it-button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <it-card>
+            <figure slot="image" class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine"
+              />
+            </figure>
+            <a slot="title" href="#">Titolo del contenuto</a>
+            <span slot="text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in
+              massimo tre o quattro righe, senza troncamento.
+            </span>
+            <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          </it-card>
+        </div>
+        <div class="col-12 col-md-6">
+          <it-card>
+            <figure slot="image" class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine"
+              />
+            </figure>
+            <a slot="title" href="#">Titolo del contenuto</a>
+            <span slot="text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in
+              massimo tre o quattro righe, senza troncamento.
+            </span>
+            <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          </it-card>
+        </div>
+      </div>
+    </it-dimmer>
+  </div>
+</section>
+
+<!-- Con azioni - colore primario -->
+<section class="my-5">
+  <h2>Con azioni - colore primario</h2>
+  <div data-demo-wrapper>
+    <div class="mb-3">
+      <it-button variant="primary" (click)="toggle($event)">Toggle dimmer</it-button>
+    </div>
+    <it-dimmer active variant="primary" icon-name="it-pa">
+      <div slot="content">
+        <h4>Titolo Dimmer</h4>
+        <div class="dimmer-buttons bg-dark">
+          <it-button variant="primary">Azione primaria</it-button>
+          <it-button variant="primary" outline>Azione secondaria</it-button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <it-card>
+            <figure slot="image" class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine"
+              />
+            </figure>
+            <a slot="title" href="#">Titolo del contenuto</a>
+            <span slot="text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in
+              massimo tre o quattro righe, senza troncamento.
+            </span>
+            <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          </it-card>
+        </div>
+        <div class="col-12 col-md-6">
+          <it-card>
+            <figure slot="image" class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine"
+              />
+            </figure>
+            <a slot="title" href="#">Titolo del contenuto</a>
+            <span slot="text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in
+              massimo tre o quattro righe, senza troncamento.
+            </span>
+            <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          </it-card>
+        </div>
+      </div>
+    </it-dimmer>
+  </div>
+</section>
+
+<!-- Con azioni - azione singola -->
+<section class="my-5">
+  <h2>Con azioni - azione singola</h2>
+  <div data-demo-wrapper>
+    <div class="mb-3">
+      <it-button variant="primary" (click)="toggle($event)">Toggle dimmer</it-button>
+    </div>
+    <it-dimmer active variant="primary" icon-name="it-pa">
+      <div slot="content">
+        <h4>Titolo Dimmer</h4>
+        <div class="dimmer-buttons bg-dark">
+          <it-button variant="primary">Azione primaria</it-button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <it-card>
+            <figure slot="image" class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine"
+              />
+            </figure>
+            <a slot="title" href="#">Titolo del contenuto</a>
+            <span slot="text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in
+              massimo tre o quattro righe, senza troncamento.
+            </span>
+            <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          </it-card>
+        </div>
+        <div class="col-12 col-md-6">
+          <it-card>
+            <figure slot="image" class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine"
+              />
+            </figure>
+            <a slot="title" href="#">Titolo del contenuto</a>
+            <span slot="text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in
+              massimo tre o quattro righe, senza troncamento.
+            </span>
+            <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          </it-card>
+        </div>
+      </div>
+    </it-dimmer>
+  </div>
+</section>
+
+<!-- Attivazione via JS -->
+<section class="my-5">
+  <h2>Attivazione via JS</h2>
+  <div data-demo-wrapper>
+    <div class="mb-3 d-flex gap-2">
+      <it-button variant="primary" (click)="show($event)">show()</it-button>
+      <it-button variant="primary" outline (click)="hide($event)">hide()</it-button>
+      <it-button variant="secondary" outline (click)="toggle($event)">toggle()</it-button>
+    </div>
+    <it-dimmer icon-name="it-info-circle">
+      <p slot="content">
+        Controllato via <code>show()</code>, <code>hide()</code> e <code>toggle()</code>.
+      </p>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <it-card>
+            <figure slot="image" class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine"
+              />
+            </figure>
+            <a slot="title" href="#">Titolo del contenuto</a>
+            <span slot="text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in
+              massimo tre o quattro righe, senza troncamento.
+            </span>
+            <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          </it-card>
+        </div>
+        <div class="col-12 col-md-6">
+          <it-card>
+            <figure slot="image" class="figure img-full">
+              <img
+                src="https://placeholderimage.eu/api/city/800/600"
+                alt="Breve descrizione immagine"
+              />
+            </figure>
+            <a slot="title" href="#">Titolo del contenuto</a>
+            <span slot="text">
+              Questo è un testo breve che riassume il contenuto della pagina di destinazione in
+              massimo tre o quattro righe, senza troncamento.
+            </span>
+            <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile 2026</time>
+          </it-card>
+        </div>
+      </div>
+    </it-dimmer>
+  </div>
+</section>

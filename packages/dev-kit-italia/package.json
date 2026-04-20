@@ -68,6 +68,7 @@
     "@italia/checkbox": "workspace:^",
     "@italia/chip": "workspace:^",
     "@italia/collapse": "workspace:^",
+    "@italia/dimmer": "workspace:^",
     "@italia/dropdown": "workspace:^",
     "@italia/hero": "workspace:^",
     "@italia/i18n": "workspace:^",
@@ -86,8 +87,8 @@
     "@italia/skiplinks": "workspace:^",
     "@italia/sticky": "workspace:^",
     "@italia/toggle": "workspace:^",
-    "@italia/radio": "workspace:^",
     "@italia/tabs": "workspace:^",
+    "@italia/timeline": "workspace:^",
     "@italia/video": "workspace:^"
   },
   "devDependencies": {

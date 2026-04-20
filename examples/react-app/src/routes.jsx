@@ -1,5 +1,6 @@
 import Home from './pages/Home';
 import Accordion from './pages/Accordion';
+import Dimmer from './pages/Dimmer';
 import Avatar from './pages/Avatar';
 import Breadcrumbs from './pages/Breadcrumbs';
 import Affix from './pages/Affix';
@@ -36,6 +37,7 @@ import Skiplinks from './pages/Skiplinks';
 import BottomNav from './pages/BottomNav';
 import Sticky from './pages/Sticky';
 import Table from './pages/Table';
+import Timeline from './pages/Timeline';
 import Toggle from './pages/Toggle';
 import Video from './pages/Video';
 import Carousel from './pages/Carousel';
@@ -62,6 +64,7 @@ export const AppRoutes = [
   { path: '/checkbox', element: <Checkbox />, title: 'Checkbox' },
   { path: '/chip', element: <Chip />, title: 'Chip' },
   { path: '/collapse', element: <Collapse />, title: 'Collapse' },
+  { path: '/dimmer', element: <Dimmer />, title: 'Dimmer' },
   { path: '/dropdown', element: <Dropdown />, title: 'Dropdown' },
   { path: '/form', element: <Form />, title: 'Form' },
   { path: '/forward', element: <Forward />, title: 'Forward' },
@@ -85,7 +88,11 @@ export const AppRoutes = [
   { path: '/bottom-nav', element: <BottomNav />, title: 'BottomNav' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/tables', element: <Table />, title: 'Tables' },
+<<<<<<< HEAD
+  { path: '/timeline', element: <Timeline />, title: 'Timeline' },
+=======
   { path: '/tabs', element: <Tabs />, title: 'Tabs' },
+>>>>>>> main
   { path: '/toggle', element: <Toggle />, title: 'Toggle' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];

@@ -17,6 +17,7 @@ import Callout from './components/Callout.vue';
 import Card from './pages/Card.vue';
 import Chip from './components/Chip.vue';
 import Collapse from './components/Collapse.vue';
+import Dimmer from './components/Dimmer.vue';
 import Dropdown from './components/Dropdown.vue';
 import Form from './components/Form.vue';
 import Forward from './components/Forward.vue';
@@ -38,6 +39,7 @@ import Sidebar from './components/Sidebar.vue';
 import Sticky from './components/Sticky.vue';
 import BottomNav from './components/BottomNav.vue';
 import Table from './components/Table.vue';
+import Timeline from './pages/Timeline.vue';
 import Toggle from './components/Toggle.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
@@ -64,6 +66,7 @@ const routes = [
   { path: '/checkbox', name: 'Checkbox', component: Checkbox },
   { path: '/chip', name: 'Chip', component: Chip },
   { path: '/collapse', name: 'Collapse', component: Collapse },
+  { path: '/dimmer', name: 'Dimmer', component: Dimmer },
   { path: '/dropdown', name: 'Dropdown', component: Dropdown },
   { path: '/form', name: 'Form', component: Form },
   { path: '/forward', name: 'Forward', component: Forward },
@@ -87,6 +90,7 @@ const routes = [
   { path: '/bottom-nav', name: 'BottomNav', component: BottomNav },
   { path: '/sticky', name: 'Sticky', component: Sticky },
   { path: '/tables', name: 'Tables', component: Table },
+  { path: '/timeline', name: 'Timeline', component: Timeline },
   { path: '/tabs', name: 'Tabs', component: Tabs },
   { path: '/toggle', name: 'Toggle', component: Toggle },
   { path: '/video', name: 'Video', component: Video },
