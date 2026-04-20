@@ -37,7 +37,6 @@ import Section from './components/Section.vue';
 import Select from './components/Select.vue';
 import Sidebar from './components/Sidebar.vue';
 import Sticky from './components/Sticky.vue';
-import BottomNav from './components/BottomNav.vue';
 import Table from './components/Table.vue';
 import Timeline from './pages/Timeline.vue';
 import Toggle from './components/Toggle.vue';
@@ -87,7 +86,6 @@ const routes = [
   { path: '/select', name: 'Select', component: Select },
   { path: '/sidebar', name: 'Sidebar', component: Sidebar },
   { path: '/skiplinks', name: 'Skiplinks', component: Skiplinks },
-  { path: '/bottom-nav', name: 'BottomNav', component: BottomNav },
   { path: '/sticky', name: 'Sticky', component: Sticky },
   { path: '/tables', name: 'Tables', component: Table },
   { path: '/timeline', name: 'Timeline', component: Timeline },

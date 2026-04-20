@@ -34,7 +34,6 @@ import Section from './pages/Section';
 import Select from './pages/Select';
 import Sidebar from './pages/Sidebar';
 import Skiplinks from './pages/Skiplinks';
-import BottomNav from './pages/BottomNav';
 import Sticky from './pages/Sticky';
 import Table from './pages/Table';
 import Timeline from './pages/Timeline';
@@ -85,14 +84,10 @@ export const AppRoutes = [
   { path: '/select', element: <Select />, title: 'Select' },
   { path: '/sidebar', element: <Sidebar />, title: 'Sidebar' },
   { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },
-  { path: '/bottom-nav', element: <BottomNav />, title: 'BottomNav' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/tables', element: <Table />, title: 'Tables' },
-<<<<<<< HEAD
-  { path: '/timeline', element: <Timeline />, title: 'Timeline' },
-=======
   { path: '/tabs', element: <Tabs />, title: 'Tabs' },
->>>>>>> main
+  { path: '/timeline', element: <Timeline />, title: 'Timeline' },
   { path: '/toggle', element: <Toggle />, title: 'Toggle' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];
