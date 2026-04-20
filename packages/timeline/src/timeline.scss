@@ -1,0 +1,134 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+// No BSI component imports here — their selectors need ancestors (.it-timeline-wrapper,
+// .it-timeline-point-list > .timeline-point) that live in child shadow roots,
+// unreachable from this shadow root. We write all rules ourselves.
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+  --it-timeline-point-content-flex-basis: 0%;
+  --it-timeline-point-margin-bottom: 24px;
+  --it-timeline-point-content-z-index: 1;
+  --it-timeline-point-after-content: '';
+  --it-timeline-point-stack-mobile-after-content: none;
+}
+
+:host([stack-mobile]) {
+  @include media-breakpoint-down(md) {
+    ::slotted(it-timeline-point) {
+      --it-timeline-point-content-flex-basis: 100%;
+      --it-timeline-point-content-flex-wrap: wrap;
+      --it-timeline-point-margin-top: 24px;
+      --it-timeline-point-content-z-index: 2;
+      --it-timeline-point-after-content: none;
+      --it-timeline-point-stack-mobile-after-content: '';
+      --it-timeline-point-stack-mobile-after-top: 0;
+    }
+  }
+}
+
+// Classic wrapper — wraps .row
+.it-timeline-wrapper {
+  display: block;
+}
+
+// Vertical center line on the row
+.it-timeline-wrapper.it-timeline-wrapper--classic .row {
+  position: relative;
+  padding-top: $v-gap * 8;
+
+  &::after {
+    position: absolute;
+    top: -$v-gap * 2;
+    bottom: -$v-gap * 2;
+    left: $v-gap * 5;
+    width: $timeline-width;
+    background: $timeline-border-color;
+    content: '';
+  }
+
+  @include media-breakpoint-up(lg) {
+    &::after {
+      left: calc(50% - #{$timeline-width});
+    }
+  }
+}
+
+// Slotted it-timeline-element — full width mobile, half on desktop
+::slotted(it-timeline-element) {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-left: $v-gap;
+}
+
+// Desktop: each element takes 50% width, alternating left/right column
+@include media-breakpoint-up(lg) {
+  ::slotted(it-timeline-element) {
+    width: 50%;
+  }
+
+  // Odd items (1st, 3rd…) = left column: pin on the right side near center line
+  ::slotted(it-timeline-element:nth-child(odd)) {
+    --it-timeline-now-label-base-displacement: 68px;
+    --it-timeline-now-label-left: calc(4px + #{$timeline-padding} / 2 + $timeline-pin-circle-size + $v-gap * 2);
+    --it-timeline-now-label-right: calc(-1 * var(--it-timeline-now-label-base-displacement));
+
+    --it-timeline-pin-left: auto;
+    --it-timeline-pin-right: -22px;
+    --it-timeline-pin-direction: row-reverse;
+    --it-timeline-pin-icon-mr: 0;
+    --it-timeline-pin-icon-ml: #{$v-gap * 2};
+    --it-timeline-pin-arrow-left: auto;
+    --it-timeline-pin-arrow-right: -4px;
+    --it-timeline-content-padding: #{$timeline-content-padding-reverse};
+  }
+
+  // Even items (2nd, 4th…) = right column: offset 50%, pin on the left near center line
+  ::slotted(it-timeline-element:nth-child(even)) {
+    margin-left: 50%;
+    --it-timeline-now-label-base-displacement: 80px;
+    --it-timeline-now-label-left: calc(-1 * var(--it-timeline-now-label-base-displacement));
+    --it-timeline-now-label-right: unset;
+
+    --it-timeline-pin-left: -34px;
+    --it-timeline-pin-right: auto;
+    --it-timeline-pin-direction: row;
+    --it-timeline-pin-icon-mr: #{$v-gap * 2};
+    --it-timeline-pin-icon-ml: 0;
+    --it-timeline-pin-arrow-left: -4px;
+    --it-timeline-pin-arrow-right: auto;
+    --it-timeline-content-padding: #{$timeline-content-padding};
+  }
+
+  ::slotted(it-timeline-point) {
+    --it-timeline-point-content-flex-basis: 0%;
+    --it-timeline-point-margin-bottom: 24px;
+    --it-timeline-point-content-z-index: 1;
+    --it-timeline-point-after-content: '';
+    --it-timeline-point-stack-mobile-after-content: none;
+  }
+}
+
+// Point-list host
+.it-timeline-point-list {
+  padding-left: 0;
+
+  &::marker {
+    font-size: 0px;
+  }
+}
+
+// Slotted points take full width
+::slotted(it-timeline-point) {
+  display: block;
+  width: 100%;
+}

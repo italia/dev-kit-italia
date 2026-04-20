@@ -42,6 +42,7 @@
       "@italia/skiplinks",
       "@italia/sticky",
       "@italia/tabs",
+      "@italia/timeline",
       "@italia/toggle",
       "@italia/video"
     ]

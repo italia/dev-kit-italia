@@ -60,6 +60,7 @@ const componentsMenuItems = [
   { label: 'Sidebar', href: '/src/sidebar' },
   { label: 'Skiplinks', href: '/src/skiplinks' },
   { label: 'Sticky', href: '/src/sticky' },
+  { label: 'Timeline', href: '/src/timeline' },
   { label: 'Tables', href: '/src/tables' },
   { label: 'Tabs', href: '/src/tabs' },
   { label: 'Toggle', href: '/src/toggle' },
