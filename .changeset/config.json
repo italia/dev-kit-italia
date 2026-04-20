@@ -41,6 +41,7 @@
       "@italia/skiplinks",
       "@italia/sticky",
       "@italia/toggle",
+      "@italia/transfer",
       "@italia/video"
     ]
   ],

@@ -60,6 +60,7 @@ const componentsMenuItems = [
   { label: 'Skiplinks', href: '/src/skiplinks' },
   { label: 'Sticky', href: '/src/sticky' },
   { label: 'Toggle', href: '/src/toggle' },
+  { label: 'Transfer', href: '/src/transfer' },
   { label: 'Video', href: '/src/video' },
 ];
 

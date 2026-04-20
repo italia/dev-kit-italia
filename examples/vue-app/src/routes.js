@@ -37,6 +37,7 @@ import Sidebar from './components/Sidebar.vue';
 import Sticky from './components/Sticky.vue';
 import Table from './components/Table.vue';
 import Toggle from './components/Toggle.vue';
+import Transfer from './components/Transfer.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Carousel from './components/Carousel.vue';
@@ -83,6 +84,7 @@ const routes = [
   { path: '/sticky', name: 'Sticky', component: Sticky },
   { path: '/tables', name: 'Tables', component: Table },
   { path: '/toggle', name: 'Toggle', component: Toggle },
+  { path: '/transfer', name: 'Transfer', component: Transfer },
   { path: '/video', name: 'Video', component: Video },
 ];
 
