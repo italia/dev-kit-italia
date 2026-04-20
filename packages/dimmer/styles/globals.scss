@@ -1,0 +1,66 @@
+// Global styles for it-dimmer — to be imported at page level.
+// These styles affect elements outside the shadow DOM.
+it-dimmer[active]:not(:defined) {
+  // FOUC shimmer effect on the host element before the component is upgraded.
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: var(--it-host-display, inline-block);
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 0;
+    animation: fouc-shimmer 1.5s linear infinite;
+    background-color: var(--it-fouc-bg);
+    background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+    background-repeat: no-repeat;
+    background-size: 200% 100%;
+    content: '';
+    vertical-align: middle;
+  }
+
+  [slot='content'] {
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    width: 100%;
+    max-width: 480px;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+}
+
+it-dimmer .dimmer-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 32px;
+  background-color: transparent !important;
+  gap: 16px;
+
+  button,
+  it-button,
+  it-button::part(button) {
+    width: 100%;
+  }
+
+  //Tablet vertical
+  @include media-breakpoint-up(md) {
+    flex-wrap: nowrap;
+
+    button,
+    it-button,
+    it-button::part(button) {
+      margin-top: 0 !important;
+    }
+  }
+}

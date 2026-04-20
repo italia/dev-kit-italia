@@ -16,6 +16,7 @@ import Callout from './components/Callout.vue';
 import Card from './pages/Card.vue';
 import Chip from './components/Chip.vue';
 import Collapse from './components/Collapse.vue';
+import Dimmer from './components/Dimmer.vue';
 import Dropdown from './components/Dropdown.vue';
 import Form from './components/Form.vue';
 import Forward from './components/Forward.vue';
@@ -62,6 +63,7 @@ const routes = [
   { path: '/checkbox', name: 'Checkbox', component: Checkbox },
   { path: '/chip', name: 'Chip', component: Chip },
   { path: '/collapse', name: 'Collapse', component: Collapse },
+  { path: '/dimmer', name: 'Dimmer', component: Dimmer },
   { path: '/dropdown', name: 'Dropdown', component: Dropdown },
   { path: '/form', name: 'Form', component: Form },
   { path: '/forward', name: 'Forward', component: Forward },

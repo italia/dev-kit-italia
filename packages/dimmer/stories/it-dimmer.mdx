@@ -1,0 +1,151 @@
+import { Meta, Canvas, Controls, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-dimmer.stories';
+
+<Meta of={Stories} />
+
+<Title of={Stories} />
+
+<description>Elemento che oscura una porzione di pagina per focalizzare l'attenzione su un contenuto specifico</description>
+
+## Cosa fa
+
+Il componente Dimmer può essere utilizzato per focalizzare l’attenzione dell'utente su un contenuto di particolare rilevanza, posizionandosi in sovrapposizione ad una porzione o sezione di pagina esistente.
+
+### Alternative a questo componente
+- Notifications (in lavorazione): per comunicare all’utente il risultato di un’operazione o un cambiamento di stato del sistema.
+- [Modal](?path=/docs/componenti-modal--documentazione): quando l'utente deve compiere un'azione consapevole per proseguire.
+
+[Approfondisci quando e come usare il Dimmer](https://designers.italia.it/design-system/componenti/dimmer/)
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+
+<Controls of={Stories.EsempioInterattivo} />
+
+## Indicazioni generali
+
+Inserisci il contenuto da oscurare nel **default slot**, e inserisci il contenuto dell'overlay nello **slot `content`**.
+
+**Slot disponibili:**
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Descrizione</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(default)</code></td>
+      <td>Contenuto di sfondo da oscurare (card, immagini, testo, ecc.)</td>
+    </tr>
+    <tr>
+      <td><code>content</code></td>
+      <td>Contenuto libero dell'overlay: testi, titoli, pulsanti. Completamente a carico dell'utilizzatore</td>
+    </tr>
+  </tbody>
+</table>
+
+**Proprietà icona:** usa l'attributo `icon-name` con un nome icona Bootstrap Italia per aggiungere automaticamente una `<it-icon>` nell'header del dimmer, senza dover inserire markup aggiuntivo.
+
+
+
+## Accessibilità
+
+Il componente dimmer è progettato per essere accessibile, ma è importante seguire alcune linee guida per garantire un'esperienza accessibile:
+
+- includi sempre una descrizione significativa nello slot `content` quando il dimmer è usato per comunicare un messaggio;
+- se il dimmer contiene pulsanti d'azione, assicurati che abbiano etichette comprensibili;
+
+
+## Varianti
+
+Il dimmer supporta una variante cromatica primaria, con sfondo del colore primario, attivabile tramite l'attributo `variant="primary"`, e una variante scura `variant="dark"`.
+
+### Variante primaria
+
+Puoi utilizzare l'attributo `variant` con valore `"primary"` per ottenere una versione con sfondo del colore primario. Questa è anche la variante di default del dimmer nel caso in cui l'attributo `variant` non sia specificato.
+
+<Canvas of={Stories.ColorePrimario} />
+
+### Variante scura
+
+Puoi utilizzare l'attributo `variant` con valore `"dark"` per ottenere una versione con sfondo scuro.
+<Canvas of={Stories.ColoreDark} />
+
+## Dimmer con Azioni
+
+Un dimmer può contenere titoli e pulsanti d'azione. Inseriscili nello slot `content` all'interno di un contenitore con classi `dimmer-buttons bg-dark`. Gli esempi seguenti mostrano le possibili combinazioni di varianti e pulsanti azione.
+
+<Canvas of={Stories.ConAzioniPrimario} />
+
+### Dimmer con azioni nella variante scura
+
+<Canvas of={Stories.ConAzioni} />
+
+### Azione singola
+<Canvas of={Stories.ConAzioneSingola} />
+
+
+## Attivo di default
+
+Puoi creare un dimmer inizialmente visibile valorizzando l'attributo `active`. Il dimmer può anche essere attivato via codice usando i metodi pubblici `show()`, `hide()` e `toggle()`.
+
+<Canvas of={Stories.AttivoDefault} />
+
+
+## Proprietà, metodi ed eventi accessibili via js
+
+Il componente espone dei metodi ed eventi utili per eventuali interazioni via js.
+
+### Metodi
+
+Il componente espone i seguenti metodi pubblici per la gestione programmatica:
+
+- `show()` — mostra il dimmer;
+- `hide()` — nasconde il dimmer;
+- `toggle()` — alterna lo stato di visibilità.
+
+```js
+const dimmerEl = document.getElementById('myDimmer');
+
+dimmerEl.show();   // mostra
+dimmerEl.hide();   // nasconde
+dimmerEl.toggle(); // alterna
+```
+
+<Canvas of={Stories.AttivazioneViaJS} />
+
+### Eventi
+
+Il componente emette i seguenti eventi custom:
+
+- `it-dimmer-show`:  Emesso quando il dimmer diventa visibile
+- `it-dimmer-hide`:  Emesso quando il dimmer viene nascosto
+
+```js
+const dimmerEl = document.getElementById('myDimmer');
+
+dimmerEl.addEventListener('it-dimmer-show', (e) => {
+  console.log('Dimmer visibile', e.detail.dimmer);
+});
+
+dimmerEl.addEventListener('it-dimmer-hide', (e) => {
+  console.log('Dimmer nascosto', e.detail.dimmer);
+});
+```
+
+## Personalizzazione degli stili
+
+Per personalizzare gli stili usa il selettore `::part` con uno dei seguenti valori:
+
+- `::part(dimmable)` — il wrapper che racchiude l'intero componente;
+- `::part(dimmer)` — l'elemento overlay;
+- `::part(dimmer-inner)` — il contenitore centrale del contenuto dell'overlay;
+- `::part(dimmer-icon)` — il wrapper dell'icona (presente solo se `icon-name` è valorizzato);
+
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part).

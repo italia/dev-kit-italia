@@ -1,5 +1,6 @@
 import Home from './pages/Home';
 import Accordion from './pages/Accordion';
+import Dimmer from './pages/Dimmer';
 import Avatar from './pages/Avatar';
 import Breadcrumbs from './pages/Breadcrumbs';
 import Affix from './pages/Affix';
@@ -60,6 +61,7 @@ export const AppRoutes = [
   { path: '/checkbox', element: <Checkbox />, title: 'Checkbox' },
   { path: '/chip', element: <Chip />, title: 'Chip' },
   { path: '/collapse', element: <Collapse />, title: 'Collapse' },
+  { path: '/dimmer', element: <Dimmer />, title: 'Dimmer' },
   { path: '/dropdown', element: <Dropdown />, title: 'Dropdown' },
   { path: '/form', element: <Form />, title: 'Form' },
   { path: '/forward', element: <Forward />, title: 'Forward' },
