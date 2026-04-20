@@ -9,6 +9,7 @@ import Autocomplete from './pages/Autocomplete';
 import BackToTop from './pages/BackToTop';
 import Back from './pages/Back';
 import Badge from './pages/Badge';
+import BottomNav from './pages/BottomNav';
 import Button from './pages/Button';
 import Callout from './pages/Callout';
 import Card from './pages/Card';
@@ -52,6 +53,7 @@ export const AppRoutes = [
   { path: '/avatar', element: <Avatar />, title: 'Avatar' },
   { path: '/back-to-top', element: <BackToTop />, title: 'Back to Top' },
   { path: '/back', element: <Back />, title: 'Back' },
+  { path: '/bottom-nav', element: <BottomNav />, title: 'Bottom Nav' },
   { path: '/badge', element: <Badge />, title: 'Badge' },
   { path: '/breadcrumbs', element: <Breadcrumbs />, title: 'Breadcrumbs' },
   { path: '/button', element: <Button />, title: 'Button' },
@@ -84,11 +86,8 @@ export const AppRoutes = [
   { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/tables', element: <Table />, title: 'Tables' },
-<<<<<<< HEAD
-  { path: '/timeline', element: <Timeline />, title: 'Timeline' },
-=======
   { path: '/tabs', element: <Tabs />, title: 'Tabs' },
->>>>>>> main
+  { path: '/timeline', element: <Timeline />, title: 'Timeline' },
   { path: '/toggle', element: <Toggle />, title: 'Toggle' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];

@@ -3,6 +3,8 @@ import '@italia/accordion/it-accordion.js';
 import '@italia/autocomplete/it-autocomplete.js';
 import '@italia/avatar/it-avatar.js';
 import '@italia/back-to-top/it-back-to-top.js';
+import '@italia/bottom-nav/it-bottom-nav-item.js';
+import '@italia/bottom-nav/it-bottom-nav.js';
 import '@italia/breadcrumbs/it-breadcrumb-item.js';
 import '@italia/breadcrumbs/it-breadcrumbs.js';
 import '@italia/button/it-button.js';

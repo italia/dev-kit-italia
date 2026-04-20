@@ -54,6 +54,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/badge.component').then((c) => c.BadgeComponent),
   },
   {
+    title: 'Bottom Nav',
+    path: 'bottom-nav',
+    loadComponent: () => import('./pages/bottom-nav.component').then((c) => c.BottomNavComponent),
+  },
+  {
     title: 'Button',
     path: 'button',
     loadComponent: () => import('./pages/button.component').then((c) => c.ButtonComponent),
@@ -193,6 +198,11 @@ export const routes: Routes = [
     title: 'Skiplinks',
     path: 'skiplinks',
     loadComponent: () => import('./pages/skiplinks.component').then((c) => c.SkiplinksComponent),
+  },
+  {
+    title: 'BottomNav',
+    path: 'bottom-nav',
+    loadComponent: () => import('./pages/bottom-nav.component').then((c) => c.BottomNavComponent),
   },
   {
     title: 'Sticky',

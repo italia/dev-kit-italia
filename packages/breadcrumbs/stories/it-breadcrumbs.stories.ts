@@ -14,21 +14,6 @@ const meta = {
   title: 'Componenti/Breadcrumbs',
   tags: ['new', 'web-component', 'a11y-ok'],
   component: 'it-breadcrumbs',
-
-  args: {
-    'it-aria-label': 'Percorso di navigazione',
-    dark: false,
-  },
-  argTypes: {
-    'it-aria-label': {
-      control: 'text',
-      description: 'Testo usato come `aria-label` sul contenitore di navigazione (es. "Percorso di navigazione").',
-    },
-    dark: {
-      control: 'boolean',
-      description: 'Imposta la variante a tema scuro.',
-    },
-  },
   parameters: {
     a11y: {
       config: {
@@ -43,6 +28,20 @@ const meta = {
           },
         ],
       },
+    },
+  },
+  args: {
+    'it-aria-label': 'Percorso di navigazione',
+    dark: false,
+  },
+  argTypes: {
+    'it-aria-label': {
+      control: 'text',
+      description: 'Testo usato come `aria-label` sul contenitore di navigazione (es. "Percorso di navigazione").',
+    },
+    dark: {
+      control: 'boolean',
+      description: 'Imposta la variante a tema scuro.',
     },
   },
 } satisfies Meta<BreadcrumbProps>;
