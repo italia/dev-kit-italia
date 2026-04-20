@@ -200,6 +200,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/table.component').then((c) => c.TableComponent),
   },
   {
+    title: 'Timeline',
+    path: 'timeline',
+    loadComponent: () => import('./pages/timeline.component').then((c) => c.TimelineComponent),
+  },
+  {
     title: 'Tabs',
     path: 'tabs',
     loadComponent: () => import('./pages/tabs.component').then((c) => c.TabsComponent),

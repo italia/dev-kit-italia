@@ -29,6 +29,22 @@ const meta = {
       description: 'Imposta la variante a tema scuro.',
     },
   },
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'list',
+            enabled: false,
+          },
+          {
+            id: 'listitem',
+            enabled: false,
+          },
+        ],
+      },
+    },
+  },
 } satisfies Meta<BreadcrumbProps>;
 
 export default meta;

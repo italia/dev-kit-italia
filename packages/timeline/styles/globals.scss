@@ -1,0 +1,231 @@
+// Stili globali per @italia/timeline
+// Da importare nell'applicazione host tramite dev-kit-italia/styles/index.scss
+
+// Bootstrap Italia timeline component styles
+@import 'bootstrap-italia/src/scss/components/timeline';
+
+// Queste classi sono nei figli slottati di <it-timeline-point> (light DOM).
+// Il CSS del shadow root non può raggiungerle (limit ::slotted ai figli diretti),
+// quindi le definiamo qui nel foglio globale.
+it-timeline-point {
+  .point-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .point-main {
+    display: flex;
+    min-width: 53px;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-family-sans-serif;
+    font-size: 2.75rem;
+    line-height: 1.1;
+
+    @include media-breakpoint-down(md) {
+      min-width: 32px;
+      font-size: 1.5rem;
+    }
+
+    // Icone slottate dentro point-main (es. it-icon)
+    it-icon::part(icon) {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  .point-top,
+  .point-bottom {
+    font-family: $font-family-sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+
+    @include media-breakpoint-down(md) {
+      font-size: 0.875rem;
+    }
+  }
+
+  // Compact variant overrides (mirrored from it-timeline-point[compact])
+  &[compact] {
+    .point-main {
+      min-width: 32px;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .point-bottom {
+      font-size: 0.875rem;
+    }
+  }
+}
+
+it-timeline-point it-icon::part(icon) {
+  vertical-align: unset !important;
+}
+
+// ── FOUC prevention: stili per it-timeline e figli non definiti ─────────────
+// Stili FOUC (Flash of Unstyled Content) per it-timeline
+// Questi stili vengono applicati prima che i web component vengano definiti
+// per evitare il flash di contenuto non stilizzato.
+
+it-timeline:not(:defined) {
+  display: block;
+
+  // Simula la struttura di base della timeline
+  > * {
+    display: block;
+  }
+}
+
+it-timeline-element:not(:defined) {
+  position: relative;
+  display: block;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 2.5rem;
+
+  [slot='pin-icon'] {
+    display: none;
+  }
+}
+
+// Timeline point list FOUC
+it-timeline-point-list:not(:defined) {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+
+  &::marker {
+    font-size: 0;
+  }
+}
+
+it-timeline-point:not(:defined) {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  [slot='date'],
+  [slot='milestone'] {
+    width: 5rem;
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  [slot='content'] {
+    flex: 1;
+    margin-left: 1rem;
+  }
+}
+
+// Colora gli slot testuali del colore della variante assegnata
+[slot='date'],
+[slot='milestone'] {
+  color: var(--point-color, var(--#{$prefix}color-text-primary));
+}
+
+// ── Color mapping ─────────────────────────────────────────────────────────────
+// BSI sets --point-color inside .it-timeline-point-list which is in the shadow
+// root of <it-timeline>, not here. We define it on the class directly.
+it-timeline-point[color='primary']:not(:defined),
+it-timeline[color='primary']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textprimary);
+}
+
+it-timeline-point[color='secondary']:not(:defined),
+it-timeline[color='secondary']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textsecondary);
+}
+
+it-timeline-point[color='success']:not(:defined),
+it-timeline[color='success']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textsuccess);
+}
+
+it-timeline-point[color='info']:not(:defined),
+it-timeline[color='info']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textinfo);
+}
+
+it-timeline-point[color='warning']:not(:defined),
+it-timeline[color='warning']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textwarning);
+}
+
+it-timeline-point[color='danger']:not(:defined),
+it-timeline[color='danger']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textdanger);
+}
+
+it-timeline-point[color='light']:not(:defined),
+it-timeline[color='light']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textlight);
+}
+
+it-timeline-point[color='dark']:not(:defined),
+it-timeline[color='dark']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textdark);
+}
+
+it-timeline-point[color='black']:not(:defined),
+it-timeline[color='black']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textblack);
+}
+
+it-timeline-point[color='white']:not(:defined),
+it-timeline[color='white']:not(:defined) {
+  --point-color: var(--#{$prefix}color-textwhite);
+}
+
+// Desktop: each element takes 50% width, alternating left/right column
+@include media-breakpoint-up(lg) {
+  it-timeline-element:not(:defined) {
+    width: 50%;
+  }
+
+  // Odd items (1st, 3rd… = left column: pin on the right side near center line
+  it-timeline-element:nth-child(odd):not(:defined) {
+    --it-timeline-now-label-base-displacement: 68px;
+    --it-timeline-now-label-left: calc(4px + #{$timeline-padding} / 2 + $timeline-pin-circle-size + $v-gap * 2);
+    --it-timeline-now-label-right: calc(-1 * var(--it-timeline-now-label-base-displacement));
+
+    --it-timeline-pin-left: auto;
+    --it-timeline-pin-right: -22px;
+    --it-timeline-pin-direction: row-reverse;
+    --it-timeline-pin-icon-mr: 0;
+    --it-timeline-pin-icon-ml: #{$v-gap * 2};
+    --it-timeline-pin-arrow-left: auto;
+    --it-timeline-pin-arrow-right: -4px;
+    --it-timeline-content-padding: #{$timeline-content-padding-reverse};
+  }
+
+  // Even items (2nd, 4th…) = right column: offset 50%, pin on the left near center line
+  it-timeline-element:nth-child(even):not(:defined) {
+    margin-left: 50%;
+    --it-timeline-now-label-base-displacement: 80px;
+    --it-timeline-now-label-left: calc(-1 * var(--it-timeline-now-label-base-displacement));
+    --it-timeline-now-label-right: unset;
+
+    --it-timeline-pin-left: -34px;
+    --it-timeline-pin-right: auto;
+    --it-timeline-pin-direction: row;
+    --it-timeline-pin-icon-mr: #{$v-gap * 2};
+    --it-timeline-pin-icon-ml: 0;
+    --it-timeline-pin-arrow-left: -4px;
+    --it-timeline-pin-arrow-right: auto;
+    --it-timeline-content-padding: #{$timeline-content-padding};
+  }
+
+  it-timeline-point:not(:defined) {
+    --it-timeline-point-content-flex-basis: 0%;
+    --it-timeline-point-margin-bottom: 24px;
+    --it-timeline-point-content-z-index: 1;
+    --it-timeline-point-after-content: '';
+    --it-timeline-point-stack-mobile-after-content: none;
+  }
+
+  it-timeline-element:not(:defined)::before {
+    content: attr(date);
+  }
+}
