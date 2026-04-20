@@ -86,6 +86,8 @@
     "@italia/skiplinks": "workspace:^",
     "@italia/sticky": "workspace:^",
     "@italia/toggle": "workspace:^",
+    "@italia/radio": "workspace:^",
+    "@italia/tabs": "workspace:^",
     "@italia/video": "workspace:^"
   },
   "devDependencies": {
