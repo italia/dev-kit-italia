@@ -42,6 +42,7 @@ import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Carousel from './components/Carousel.vue';
 import Pagination from './components/Pagination.vue';
+import Tabs from './pages/Tabs.vue';
 
 const routes = [
   { path: '/', name: 'Homepage', component: Home },
@@ -84,6 +85,7 @@ const routes = [
   { path: '/sticky', name: 'Sticky', component: Sticky },
   { path: '/tables', name: 'Tables', component: Table },
   { path: '/timeline', name: 'Timeline', component: Timeline },
+  { path: '/tabs', name: 'Tabs', component: Tabs },
   { path: '/toggle', name: 'Toggle', component: Toggle },
   { path: '/video', name: 'Video', component: Video },
 ];

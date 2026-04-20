@@ -6,6 +6,18 @@ settings:
 
 catalogs:
   default:
+    '@open-wc/testing':
+      specifier: ^4.0.0
+      version: 4.0.0
+    '@types/mocha':
+      specifier: ^10.0.10
+      version: 10.0.10
+    '@web/test-runner':
+      specifier: ^0.18.2
+      version: 0.18.3
+    '@web/test-runner-commands':
+      specifier: ^0.9.0
+      version: 0.9.0
     bootstrap-italia:
       specifier: github:italia/bootstrap-italia#8c67506065fb844becbec9cc74f2d11de7101404
       version: 3.0.0-alpha.4
@@ -15,6 +27,12 @@ catalogs:
     lit:
       specifier: ^3.3.0
       version: 3.3.2
+    sass:
+      specifier: ^1.89.0
+      version: 1.97.3
+    typescript:
+      specifier: ^5.5.3
+      version: 5.9.3
 
 overrides:
   react: 19.2.0
@@ -937,6 +955,9 @@ importers:
       '@italia/sticky':
         specifier: workspace:^
         version: link:../sticky
+      '@italia/tabs':
+        specifier: workspace:^
+        version: link:../tabs
       '@italia/timeline':
         specifier: workspace:^
         version: link:../timeline
@@ -2024,6 +2045,15 @@ importers:
 
   packages/tabs:
     dependencies:
+      '@italia/globals':
+        specifier: workspace:^
+        version: link:../globals
+      '@italia/i18n':
+        specifier: workspace:^
+        version: link:../i18n
+      bootstrap-italia:
+        specifier: 'catalog:'
+        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -2052,6 +2082,9 @@ importers:
       '@web/test-runner':
         specifier: 'catalog:'
         version: 0.18.3
+      '@web/test-runner-commands':
+        specifier: 'catalog:'
+        version: 0.9.0
       rimraf:
         specifier: ^6.0.1
         version: 6.1.3
@@ -2061,6 +2094,9 @@ importers:
       rollup-plugin-scss-lit:
         specifier: ^2.1.0
         version: 2.1.0(lit@3.3.2)(rollup@4.59.0)
+      sass:
+        specifier: 'catalog:'
+        version: 1.97.3
       tslib:
         specifier: ^2.6.3
         version: 2.8.1

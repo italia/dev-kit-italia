@@ -205,12 +205,18 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/timeline.component').then((c) => c.TimelineComponent),
   },
   {
+    title: 'Tabs',
+    path: 'tabs',
+    loadComponent: () => import('./pages/tabs.component').then((c) => c.TabsComponent),
+  },
+{
     title: 'Toggle',
     path: 'toggle',
     loadComponent: () => import('./pages/toggle.component').then((c) => c.ToggleComponent),
   },
   {
     title: 'Video',
+
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
   },

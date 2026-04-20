@@ -34,14 +34,12 @@ import Sidebar from './pages/Sidebar';
 import Skiplinks from './pages/Skiplinks';
 import Sticky from './pages/Sticky';
 import Table from './pages/Table';
-<<<<<<< HEAD
 import Timeline from './pages/Timeline';
-=======
 import Toggle from './pages/Toggle';
->>>>>>> main
 import Video from './pages/Video';
 import Carousel from './pages/Carousel';
 import Pagination from './pages/Pagination';
+import Tabs from './pages/Tabs';
 import Progress from './pages/Progress';
 
 export const AppRoutes = [
@@ -84,7 +82,11 @@ export const AppRoutes = [
   { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/tables', element: <Table />, title: 'Tables' },
+<<<<<<< HEAD
   { path: '/timeline', element: <Timeline />, title: 'Timeline' },
+=======
+  { path: '/tabs', element: <Tabs />, title: 'Tabs' },
+>>>>>>> main
   { path: '/toggle', element: <Toggle />, title: 'Toggle' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];
