@@ -94,6 +94,20 @@ const Sticky = () => {
         </section>
       </div>
 
+      <section>
+        <h2>it-sticky: position bottom fixed</h2>
+        <p>
+          La barra in fondo è fissa dal caricamento della pagina — nessuno scroll necessario.
+          Aggiungendo l&apos;attributo <code>stackable</code> è possibile impilarne più d&apos;una verso l&apos;alto.
+        </p>
+        <it-sticky position="bottom" position-type="fixed" stackable className="bg-primary text-white p-3 w-100">
+          <div className="w-100 text-center">Barra fissa in fondo — primo livello</div>
+        </it-sticky>
+        <it-sticky position="bottom" position-type="fixed" stackable className="bg-success text-white p-2 w-100">
+          <div className="w-100 text-center">Barra fissa in fondo — secondo livello (impilata)</div>
+        </it-sticky>
+      </section>
+
       <style jsx>{`
         .resizable-content {
           height: 40px;

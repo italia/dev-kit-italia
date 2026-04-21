@@ -52,6 +52,10 @@
     "lit-html"
   ],
   "dependencies": {
+    "@italia/avatar": "workspace:^",
+    "@italia/autocomplete": "workspace:^",
+    "@italia/bottom-nav": "workspace:^",
+    "@italia/callout": "workspace:^",
     "@italia/accordion": "workspace:^",
     "@italia/autocomplete": "workspace:^",
     "@italia/avatar": "workspace:^",
@@ -64,6 +68,7 @@
     "@italia/checkbox": "workspace:^",
     "@italia/chip": "workspace:^",
     "@italia/collapse": "workspace:^",
+    "@italia/dimmer": "workspace:^",
     "@italia/dropdown": "workspace:^",
     "@italia/hero": "workspace:^",
     "@italia/i18n": "workspace:^",
@@ -81,6 +86,8 @@
     "@italia/select": "workspace:^",
     "@italia/skiplinks": "workspace:^",
     "@italia/sticky": "workspace:^",
+    "@italia/tabs": "workspace:^",
+    "@italia/timeline": "workspace:^",
     "@italia/toggle": "workspace:^",
     "@italia/tooltip": "workspace:^",
     "@italia/video": "workspace:^"

@@ -664,4 +664,124 @@ describe('ItSticky', () => {
       expect(nav?.getAttribute('aria-label')).to.equal('Primary');
     });
   });
+
+  describe('Bottom position (position="bottom")', () => {
+    it('should default position attribute to "top"', async () => {
+      const el = await fixture<ItSticky>(html`<it-sticky>Content</it-sticky>`);
+      expect(el.position).to.equal('top');
+    });
+
+    it('should accept position="bottom"', async () => {
+      const el = await fixture<ItSticky>(html`<it-sticky position="bottom">Content</it-sticky>`);
+      expect(el.position).to.equal('bottom');
+    });
+
+    it('should apply bs-is-fixed-bottom immediately on connect (no scroll needed)', async () => {
+      const el = await fixture<ItSticky>(html`
+        <it-sticky position="bottom" position-type="fixed" style="height: 64px;">
+          <div>Bottom bar</div>
+        </it-sticky>
+      `);
+      await waitForFrame();
+
+      expect(el.classList.contains('bs-is-fixed-bottom')).to.be.true;
+      expect(el._stickyController.isSticky).to.be.true;
+    });
+
+    it('should NOT apply bs-is-fixed-bottom without scroll even for top elements', async () => {
+      const el = await fixture<ItSticky>(html`
+        <it-sticky position="top" position-type="fixed" style="height: 50px;">
+          <div>Top bar</div>
+        </it-sticky>
+      `);
+      await waitForFrame();
+
+      // Top-fixed requires scrolling past the element first
+      expect(el.classList.contains('bs-is-fixed-bottom')).to.be.false;
+    });
+
+    it('should emit it-sticky-on immediately for bottom-fixed on connect', async () => {
+      let eventFired = false;
+      const el = document.createElement('it-sticky') as ItSticky;
+      el.setAttribute('position', 'bottom');
+      el.setAttribute('position-type', 'fixed');
+      el.style.height = '64px';
+      el.innerHTML = '<div>Bottom</div>';
+
+      el.addEventListener('it-sticky-on', () => {
+        eventFired = true;
+      });
+      document.body.appendChild(el);
+      await waitForFrame();
+
+      expect(eventFired).to.be.true;
+      el.remove();
+    });
+
+    it('should emit it-sticky-off and remove bs-is-fixed-bottom on disconnect', async () => {
+      const el = await fixture<ItSticky>(html`
+        <it-sticky position="bottom" position-type="fixed" style="height: 64px;">
+          <div>Bottom bar</div>
+        </it-sticky>
+      `);
+      await waitForFrame();
+      expect(el.classList.contains('bs-is-fixed-bottom')).to.be.true;
+
+      el.remove();
+      await waitForFrame();
+
+      // After removal the class must be gone
+      expect(el.classList.contains('bs-is-fixed-bottom')).to.be.false;
+    });
+
+    it('should stack two bottom-fixed stackable elements upward', async () => {
+      const bar1 = document.createElement('it-sticky') as ItSticky;
+      bar1.setAttribute('position', 'bottom');
+      bar1.setAttribute('position-type', 'fixed');
+      bar1.setAttribute('stackable', '');
+      bar1.style.height = '64px';
+      bar1.innerHTML = '<div style="height:64px">Bar 1</div>';
+
+      const bar2 = document.createElement('it-sticky') as ItSticky;
+      bar2.setAttribute('position', 'bottom');
+      bar2.setAttribute('position-type', 'fixed');
+      bar2.setAttribute('stackable', '');
+      bar2.style.height = '48px';
+      bar2.innerHTML = '<div style="height:48px">Bar 2</div>';
+
+      document.body.appendChild(bar1);
+      document.body.appendChild(bar2);
+      await waitForFrame();
+
+      expect(bar1.classList.contains('bs-is-fixed-bottom')).to.be.true;
+      expect(bar2.classList.contains('bs-is-fixed-bottom')).to.be.true;
+
+      // bar1 connects first → sits at bottom: 0
+      expect(bar1.style.bottom).to.equal('0px');
+      // bar2 stacks above bar1
+      const bar2Bottom = parseInt(bar2.style.bottom || '0', 10);
+      expect(bar2Bottom).to.be.greaterThan(0);
+
+      bar1.remove();
+      bar2.remove();
+      await waitForFrame();
+    });
+
+    it('should apply sticky-class-name for bottom-fixed elements', async () => {
+      const el = await fixture<ItSticky>(html`
+        <it-sticky position="bottom" position-type="fixed" sticky-class-name="custom-bottom" style="height: 64px;">
+          <div>Bottom bar</div>
+        </it-sticky>
+      `);
+      await waitForFrame();
+
+      expect(el.classList.contains('bs-is-fixed-bottom')).to.be.true;
+      expect(el.classList.contains('custom-bottom')).to.be.true;
+
+      el.remove();
+      await waitForFrame();
+
+      expect(el.classList.contains('custom-bottom')).to.be.false;
+    });
+  });
 });

@@ -1,0 +1,273 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+// No BSI component imports: content classes (.point-main etc.) are light DOM
+// descendants of slotted elements — unreachable from this shadow root.
+// They are styled in globals.scss. ::slotted() only reaches direct children.
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:host {
+  display: block;
+  font-family: $font-family-sans-serif;
+  font-size: var(--bs-body-font-size);
+  line-height: var(--bs-body-line-height);
+}
+
+// ── Color mapping ─────────────────────────────────────────────────────────────
+// BSI sets --point-color inside .it-timeline-point-list which is in the shadow
+// root of <it-timeline>, not here. We define it on the class directly.
+.point-aside-primary,
+.timeline-point-primary {
+  --point-color: var(--#{$prefix}color-text-primary);
+}
+
+.point-aside-secondary,
+.timeline-point-secondary {
+  --point-color: var(--#{$prefix}color-text-secondary);
+}
+
+.point-aside-success,
+.timeline-point-success {
+  --point-color: var(--#{$prefix}color-text-success);
+}
+
+.point-aside-info,
+.timeline-point-info {
+  --point-color: var(--#{$prefix}color-text-info);
+}
+
+.point-aside-warning,
+.timeline-point-warning {
+  --point-color: var(--#{$prefix}color-text-warning);
+}
+
+.point-aside-danger,
+.timeline-point-danger {
+  --point-color: var(--#{$prefix}color-text-danger);
+}
+
+.point-aside-light,
+.timeline-point-light {
+  --point-color: var(--#{$prefix}color-text-light);
+}
+
+.point-aside-dark,
+.timeline-point-dark {
+  --point-color: var(--#{$prefix}color-text-dark);
+}
+
+.point-aside-black,
+.timeline-point-black {
+  --point-color: var(--#{$prefix}color-text-black);
+}
+
+.point-aside-white,
+.timeline-point-white {
+  --point-color: var(--#{$prefix}color-text-white);
+}
+
+// ── Row ───────────────────────────────────────────────────────────────────────
+.timeline-point {
+  position: relative;
+  display: flex;
+  flex-wrap: var(--it-timeline-point-content-flex-wrap, nowrap);
+  align-items: center;
+  margin-bottom: var(--it-timeline-point-margin-bottom, $v-gap * 3);
+
+  &::before {
+    position: absolute;
+    z-index: 1;
+    top: var(--it-timeline-point-stack-mobile-after-top, 0);
+    left: 2rem;
+    width: 2px;
+    height: calc(100% + #{$v-gap * 3});
+    background-color: var(--point-color, var(--#{$prefix}color-text-primary));
+    content: var(--it-timeline-point-stack-mobile-after-content, none);
+  }
+
+  // Align-top variant
+  &.timeline-point-align-top {
+    align-items: flex-start;
+
+    .point-aside {
+      align-self: stretch;
+      justify-content: flex-start;
+      padding-top: 0.5rem;
+
+      &::after {
+        // base: point-main only — or point-main + point-bottom (no point-top)
+        // dot centered on main = padding-top(0.5) + main-height(~2.75*1.1)/2 ≈ 2.6rem
+        top: 2.6rem;
+        transform: translateY(-5px);
+      }
+
+      // NOTE: :has() on a shadow element can't pierce to slotted light DOM children.
+      // All point-visual combinations are handled via :host(:has()) blocks below.
+    }
+  }
+
+  // Compact variant
+  &.timeline-point-xs {
+    .point-aside {
+      width: 3.5rem;
+      padding: 0.5rem 0.75rem 0.5rem 0;
+
+      @include media-breakpoint-down(md) {
+        width: 3rem;
+        padding: 0.5rem 0.5rem 0.5rem 0;
+      }
+    }
+  }
+}
+
+// ── align-top: dot position for all .point-visual combinations ───────────────
+// `:host(:has(.point-top))` piercing to slotted-descendant classes is
+// inconsistent across browsers. Instead, it-timeline-point.ts listens to
+// slotchange on date/milestone slots and sets `has-point-top` / `has-point-bottom`
+// boolean attributes on the host. We use plain attribute selectors here.
+//
+// Combinations (padding-top: 0.5rem; point-top/bottom line-height ~1.5rem):
+//   main only                       → top: 2.6rem  (base, no override)
+//   has-point-top, no has-point-bottom → top: 3.5rem (0.5 + 1.5 + half-main)
+//   no has-point-top, has-point-bottom → top: 2.6rem (bottom after main, no change)
+//   has-point-top + has-point-bottom   → top: 3.5rem (same as top-only case)
+
+// point-top present (with or without point-bottom: same top value)
+:host([has-point-top]) {
+  .timeline-point.timeline-point-align-top .point-aside::after {
+    top: 3.5rem;
+
+    @include media-breakpoint-down(md) {
+      top: 2.7rem;
+    }
+  }
+}
+
+// ── Aside column ─────────────────────────────────────────────────────────────
+.point-aside {
+  position: relative;
+  display: flex;
+  width: 5rem;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-self: stretch;
+  justify-content: center;
+  padding: 0.5rem 1rem 0.5rem 0;
+  color: var(--point-color, var(--#{$prefix}color-text-primary));
+  text-align: center;
+
+  @include media-breakpoint-down(md) {
+    width: 4rem;
+    padding: 0.5rem 0.75rem 0.5rem 0;
+  }
+
+  // Vertical line — extends into the gap below to connect to next item
+  &::before {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: calc(100% + #{$v-gap * 3});
+    background-color: var(--point-color, var(--#{$prefix}color-text-primary));
+    content: var(--it-timeline-point-after-content, '');
+  }
+
+  // Dot
+  &::after {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: -4px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: var(--point-color, var(--#{$prefix}color-text-primary));
+    content: '';
+    transform: translateY(-50%);
+  }
+}
+
+// Last item: line stops at bottom, no gap extension
+:host(:last-child) .point-aside::before {
+  height: 100%;
+}
+
+// ── stack-mobile: on mobile the aside sits at top, dot must be repositioned ──
+// `stack-mobile` attr is toggled by it-timeline._onSlotChange() when the
+// parent it-timeline has stack-mobile set, so :host([stack-mobile]) is reliable.
+@include media-breakpoint-down(md) {
+  :host([stack-mobile]) {
+    .timeline-point .point-aside {
+      width: auto;
+      flex-direction: row-reverse;
+      padding-right: 0.5rem;
+      padding-left: 2.5rem;
+
+      // The row ::before takes over the vertical line role
+      &::before {
+        display: none;
+      }
+
+      // Dot sits on the vertical line at left: 2rem
+      &::after {
+        top: 50%;
+        right: auto;
+        left: 1.75rem;
+        transform: translateY(-50%);
+      }
+    }
+
+    .timeline-point .point-content {
+      flex: 1 1 100%;
+      margin-top: #{$v-gap * 2};
+      margin-left: 0;
+    }
+
+    // align-top: dot stays at the top of the text block
+    .timeline-point.timeline-point-align-top .point-aside::after {
+      top: 2.6rem;
+      right: auto;
+      left: 1.75rem;
+      transform: translateY(-5px);
+    }
+  }
+}
+
+// ── Content column ────────────────────────────────────────────────────────────
+.point-content {
+  z-index: var(--it-timeline-point-content-z-index, 1);
+  min-width: 0;
+  flex: 1 1 var(--it-timeline-point-content-flex-basis, 0) !important;
+  margin-top: var(--it-timeline-point-margin-top, 0);
+  margin-left: 1rem;
+
+  ::slotted(*:last-child) {
+    margin-bottom: 0 !important;
+  }
+}
+
+// Direct slotted children display
+::slotted([slot='date']),
+::slotted([slot='milestone']),
+::slotted([slot='content']) {
+  display: block;
+}
+
+::slotted([slot='content']) {
+  *:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+.it-timeline-point-list .timeline-point .point-content > *:last-child {
+  margin-bottom: 0;
+}
