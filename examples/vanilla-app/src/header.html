@@ -647,85 +647,86 @@
           Per rendere sticky l'Header, aggiungi la classe <code>it-header-sticky</code> al wrapper principale.
         </p>
         <it-sticky class="it-header-wrapper it-header-sticky" sticky-class-name="is-sticky">
-          <header>
-            <div class="it-header-slim-wrapper">
-              <div class="container-xxl">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="it-header-slim-wrapper-content">
-                      <a class="d-block navbar-brand" href="#">Ente appartenenza</a>
-                      <div class="nav-mobile">
-                        <nav aria-label="Navigazione accessoria slim standard">
-                          <div class="link-list-wrapper d-none d-lg-flex">
-                            <ul class="link-list">
-                              <li><a class="list-item" href="#" data-focus-mouse="false">Link 1</a></li>
-                              <li><a class="list-item active" href="#" aria-current="page">Link 2 (Attivo)</a></li>
+          <it-header>
+            <header>
+              <div class="it-header-slim-wrapper">
+                <div class="container-xxl">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="it-header-slim-wrapper-content">
+                        <a class="d-block navbar-brand" href="#">Ente appartenenza</a>
+                        <div class="nav-mobile">
+                          <nav aria-label="Navigazione accessoria slim standard">
+                            <div class="link-list-wrapper d-none d-lg-flex">
+                              <ul class="link-list">
+                                <li><a class="list-item" href="#" data-focus-mouse="false">Link 1</a></li>
+                                <li><a class="list-item active" href="#" aria-current="page">Link 2 (Attivo)</a></li>
+                              </ul>
+                            </div>
+                          </nav>
+                        </div>
+                        <div class="it-header-slim-right-zone">
+                          <it-dropdown label="ITA" size="sm" alignment="bottom-end">
+                            <it-dropdown-item href="#" active>
+                              <span>ITA <span class="visually-hidden">selezionata</span></span>
+                            </it-dropdown-item>
+                            <it-dropdown-item href="#">
+                              <span>ENG</span>
+                            </it-dropdown-item>
+                          </it-dropdown>
+                          <div class="it-access-top-wrapper">
+                            <it-button variant="primary" size="xs">Accedi</it-button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="it-header-center-wrapper">
+                <div class="container-xxl">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="it-header-center-content-wrapper">
+                        <div class="it-brand-wrapper">
+                          <a href="#">
+                            <it-icon name="it-pa"></it-icon>
+                            <div class="it-brand-text">
+                              <div class="it-brand-title">Nome dell'Istituzione</div>
+                              <div class="it-brand-tagline d-none d-md-block">Tag line dell'Istituzione</div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="it-header-navbar-wrapper">
+                <div class="container-xxl">
+                  <div class="row">
+                    <div class="col-12">
+                      <nav class="navbar navbar-expand-lg" aria-label="Navigazione principale header sticky">
+                        <div class="navbar-collapsable" id="nav-header-sticky" tabindex="-1">
+                          <div class="menu-wrapper">
+                            <ul class="navbar-nav">
+                              <li class="nav-item active">
+                                <a class="nav-link active" href="#" aria-current="page"><span>Link attivo</span></a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#"><span>Link</span></a>
+                              </li>
                             </ul>
                           </div>
-                        </nav>
-                      </div>
-                      <div class="it-header-slim-right-zone">
-                        <it-dropdown label="ITA" size="sm" alignment="bottom-end">
-                          <it-dropdown-item href="#" active>
-                            <span>ITA <span class="visually-hidden">selezionata</span></span>
-                          </it-dropdown-item>
-                          <it-dropdown-item href="#">
-                            <span>ENG</span>
-                          </it-dropdown-item>
-                        </it-dropdown>
-                        <div class="it-access-top-wrapper">
-                          <it-button variant="primary" size="xs">Accedi</it-button>
                         </div>
-                      </div>
+                      </nav>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div class="it-header-center-wrapper">
-              <div class="container-xxl">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="it-header-center-content-wrapper">
-                      <div class="it-brand-wrapper">
-                        <a href="#">
-                          <it-icon name="it-pa"></it-icon>
-                          <div class="it-brand-text">
-                            <div class="it-brand-title">Nome dell'Istituzione</div>
-                            <div class="it-brand-tagline d-none d-md-block">Tag line dell'Istituzione</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="it-header-navbar-wrapper">
-              <div class="container-xxl">
-                <div class="row">
-                  <div class="col-12">
-                    <nav class="navbar navbar-expand-lg" aria-label="Navigazione principale header sticky">
-                      <div class="navbar-collapsable" id="nav-header-sticky" tabindex="-1">
-                        <div class="menu-wrapper">
-                          <ul class="navbar-nav">
-                            <li class="nav-item active">
-                              <a class="nav-link active" href="#" aria-current="page"><span>Link attivo</span></a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#"><span>Link</span></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </nav>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </header>
+            </header>
+          </it-header>
         </it-sticky>
         <div style="height:500px">Simulazione contenuto, per testare lo sticky header</div>
       </section>

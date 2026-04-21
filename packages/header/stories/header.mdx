@@ -1,4 +1,4 @@
-import { Meta, Canvas, Description } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas, Controls, Description } from '@storybook/addon-docs/blocks';
 import * as HeaderStories from './header.stories';
 
 <Meta of={HeaderStories} />
@@ -18,6 +18,20 @@ L'header di un sito della Pubblica Amministrazione è solitamente composto da 3 
 - **Header Nav**: dedicato alla navigazione, visibile su schermi di grandi dimensioni e attraverso il classico pulsante di tipo "burger menu" su dispositivi mobili.
 
 [Approfondisci quando e come usare il componente Header](https://designers.italia.it/design-system/componenti/header/)
+
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={HeaderStories.HeaderFull} />
+<Controls of={HeaderStories.HeaderFull} />
+
+
+## Informazioni generali
+
+Non è consigliato modificare il valore dell'attributo `breakpoint` del componente `<it-header>`, che di default è impostato a `lg` (992px), in quanto è stato studiato per adattarsi al meglio alla maggior parte dei siti della PA ed è coerente con le regole css di visibilità dei vari elementi che compongono l'header (es: il menu di navigazione principale è nascosto su schermi più piccoli di `lg`).
+Se vuoi implementare un breakpoint personalizzato, assicurati di modificare anche le regole css di visibilità dei vari elementi dell'header, in modo da mantenere una coerenza tra il breakpoint di attivazione del menu mobile e la visualizzazione degli elementi che lo compongono.
 
 
 ## Accessibilità
@@ -113,20 +127,58 @@ Al menu di navigazione principale puoi aggiungere anche un menu di navigazione s
 <Canvas of={HeaderStories.HeaderNavSecondary} />
 
 ## Header Completa
+
+L'anteprima mostra la struttura HTML statica dell'header completo. Per abilitare la **navigazione mobile interattiva** (menu burger) devi wrappare l'intera struttura con il componente `<it-header>`, che gestisce automaticamente la transizione tra layout desktop e mobile creando una modale di navigazione al di sotto del breakpoint configurato.
+
+La classe `.it-header-wrapper` va applicata al tag `<header>` semantico interno a `<it-header>`:
+
+```html
+<it-header>
+  <header class="it-header-wrapper">
+    <!-- slim, center e navbar -->
+  </header>
+</it-header>
+```
+
 <Canvas of={HeaderStories.HeaderFull} />
 
 ### Versione chiara
-Nella versione light è consigliabile aggiungere la classe `.it-shadow` al tag `<div class="it-header-wrapper">` per creare un'ombra per enfatizzare l'Header rispetto alla pagina in cui è contenuto.
+Nella versione light è consigliabile aggiungere la classe `.it-shadow` al tag `<header class="it-header-wrapper">` per creare un'ombra per enfatizzare l'Header rispetto alla pagina in cui è contenuto.
 
 <Canvas of={HeaderStories.HeaderFullLight} />
 
 
+### Tema dell'Header Centrale nella modale mobile
+
+Puoi usare l'attributo `modal-header-theme` sul componente `<it-header>` per forzare il tema della testata della modale di navigazione mobile.
+
+Di defualt, il tema della testata della modale coincide con il tema dell'Header Centrale, ma se vuoi forzare un tema specifico indipendentemente da quello dell'Header Centrale, puoi usare questo attributo.
+
+Valori supportati:
+- `dark`
+- `light`
+
+Se l'attributo non è valorizzato, il comportamento resta quello di default: il colore della testata della modale rimane coerente con il tema dell'Header Centrale.
+
+Esempio:
+
+```html
+<it-header modal-header-theme="dark">
+  <header class="it-header-wrapper">
+    <!-- slim, center e navbar -->
+  </header>
+</it-header>
+```
+
+
 ## Header Sticky
-Per rendere sticky l'header durante lo scroll della pagina, wrappa l'intero `<it-header>` con il componente `<it-sticky>` e assegnagli le classi `it-header-wrapper it-header-sticky`.
+Per rendere sticky l'header durante lo scroll della pagina, wrappa l'intera struttura con il componente `<it-sticky>`.
+
+In questo caso la classe `.it-header-wrapper` (e `it-header-sticky`) va spostata su `<it-sticky>` — e **non** sul tag `<header>` interno:
 
 Ricordati di:
-- aggiungere anche l'attributo `sticky-class-name="is-sticky"` per applicare la classe `is-sticky` quando l'header diventa sticky, in modo da poter gestire eventuali stili specifici per questo stato.
-- aggiungere l'attributo `trigger-selector="#header-complete-full"` per indicare al componente `it-sticky` di considerare come punto di trigger per l'effetto sticky la fine dell'elemento con id `header-complete-full`, ovvero l'header completo, in modo che l'effetto sticky si attivi solo quando si supera l'altezza dell'header completo.
+- aggiungere l'attributo `sticky-class-name="is-sticky"` per applicare la classe `is-sticky` quando l'header diventa sticky, in modo da poter gestire eventuali stili specifici per questo stato.
+- aggiungere l'attributo `trigger-selector` con l'`id` dell'`<it-header>` interno, in modo che lo sticky si attivi solo dopo che l'intero header ha superato il bordo superiore della viewport (e non immediatamente al primo pixel di scroll).
 
 Esempio:
 

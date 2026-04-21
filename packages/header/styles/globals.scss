@@ -213,6 +213,16 @@ it-modal#it-nav-modal {
   --it-nav-modal-header-background: var(--#{$prefix}header-center-background);
   --it-nav-modal-header-text-color: var(--#{$prefix}header-center-text-color);
 
+  &.theme-dark {
+    --it-nav-modal-header-background: var(--#{$prefix}color-background-primary);
+    --it-nav-modal-header-text-color: var(--#{$prefix}color-text-inverse);
+  }
+
+  &.theme-light {
+    --it-nav-modal-header-background: var(--#{$prefix}color-background-inverse);
+    --it-nav-modal-header-text-color: var(--#{$prefix}color-link);
+  }
+
   &.hide-header-brand {
     &::part(modal-header) {
       padding-top: 0;

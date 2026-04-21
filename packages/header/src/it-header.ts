@@ -17,11 +17,11 @@ export class ItHeader extends BaseComponent {
   @property({ type: String, attribute: 'close-aria-label' })
   closeAriaLabel = 'Chiudi la navigazione';
 
-  @property({ type: String, attribute: 'back-label' })
-  backLabel = 'Indietro';
-
   @property({ type: Boolean, attribute: 'hide-header-brand' })
   hideHeaderBrand = false;
+
+  @property({ type: String, attribute: 'modal-header-theme' })
+  modalHeaderTheme?: 'dark' | 'light';
 
   private mql?: MediaQueryList;
 
@@ -89,6 +89,51 @@ export class ItHeader extends BaseComponent {
       this.setupMediaQuery();
       this.updateMode(this.mql?.matches ?? false);
     }
+
+    if (
+      changedProperties.has('openAriaLabel') ||
+      changedProperties.has('closeAriaLabel') ||
+      changedProperties.has('hideHeaderBrand') ||
+      changedProperties.has('modalHeaderTheme')
+    ) {
+      this.syncModalState();
+    }
+  }
+
+  private syncModalState() {
+    if (!this.modalEl) return;
+
+    this.modalEl.setAttribute('close-label', this.closeAriaLabel);
+    this.modalEl.classList.toggle('hide-header-brand', this.hideHeaderBrand);
+    this.applyModalHeaderTheme();
+
+    const trigger = this.modalEl.querySelector('it-button.custom-navbar-toggler');
+    if (trigger) {
+      trigger.setAttribute('it-aria-label', this.openAriaLabel);
+    }
+
+    const currentHeader = this.modalEl.querySelector('[slot="header"]');
+    if (this.hideHeaderBrand) {
+      currentHeader?.remove();
+      return;
+    }
+
+    if (!currentHeader && this.brandWrapper) {
+      const brandClone = this.brandWrapper.cloneNode(true) as HTMLElement;
+      brandClone.setAttribute('slot', 'header');
+      this.modalEl.appendChild(brandClone);
+    }
+  }
+
+  private applyModalHeaderTheme(targetModal: HTMLElement = this.modalEl as HTMLElement) {
+    if (!targetModal) return;
+
+    targetModal.classList.remove('theme-dark', 'theme-light');
+    if (this.modalHeaderTheme === 'dark') {
+      targetModal.classList.add('theme-dark');
+    } else if (this.modalHeaderTheme === 'light') {
+      targetModal.classList.add('theme-light');
+    }
   }
 
   private setupMediaQuery() {
@@ -110,8 +155,6 @@ export class ItHeader extends BaseComponent {
 
     this.mode = nextMode;
 
-    console.log(`Switching to ${this.mode} mode`);
-
     if (this.mode === 'modal') {
       this.enterModal();
     } else {
@@ -119,7 +162,7 @@ export class ItHeader extends BaseComponent {
     }
   }
 
-  private cloneULForModalMenu = (ul: HTMLElement, className = '') => {
+  private static cloneULForModalMenu(ul: HTMLElement, className = '') {
     const ulClone = ul.cloneNode(true) as HTMLElement;
     ulClone.setAttribute('class', `navbar-nav pippo ${className}`);
 
@@ -146,7 +189,7 @@ export class ItHeader extends BaseComponent {
       divUlDescriptor.textContent = ulClone.getAttribute('aria-label');
     }
     return { ul: ulClone, descriptor: divUlDescriptor };
-  };
+  }
 
   private enterModal() {
     if (
@@ -186,7 +229,7 @@ export class ItHeader extends BaseComponent {
         }
 
         this.menuNav.querySelectorAll('.menu-wrapper > ul').forEach((ul, index) => {
-          const clone = this.cloneULForModalMenu(ul as HTMLElement, index > 0 ? 'secondary' : '');
+          const clone = ItHeader.cloneULForModalMenu(ul as HTMLElement, index > 0 ? 'secondary' : '');
 
           if (clone.descriptor) {
             this.modalNavEl?.appendChild(clone.descriptor);
@@ -199,7 +242,7 @@ export class ItHeader extends BaseComponent {
 
       // aggiungo il menu dell'headerslim
       if (this.headerSlimMenu) {
-        const cloneHeaderSlim = this.cloneULForModalMenu(
+        const cloneHeaderSlim = ItHeader.cloneULForModalMenu(
           this.headerSlimMenu as HTMLElement,
           'secondary header-slim-menu',
         );
@@ -265,6 +308,7 @@ export class ItHeader extends BaseComponent {
     modal.setAttribute('close-button-placement', 'backdrop');
     modal.setAttribute('custom-header', 'true');
     modal.setAttribute('id', 'it-nav-modal');
+
     modal.setAttribute('class', this.hideHeaderBrand ? 'hide-header-brand' : '');
 
     const trigger = document.createElement('it-button');
@@ -285,6 +329,8 @@ export class ItHeader extends BaseComponent {
     });
 
     modal.appendChild(trigger);
+
+    this.applyModalHeaderTheme(modal);
 
     return modal;
   }

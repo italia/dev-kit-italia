@@ -4,16 +4,63 @@ import '@italia/button';
 import '@italia/dropdown';
 import '@italia/icon';
 
+type HeaderStoryArgs = {
+  breakpoint: number;
+  openAriaLabel: string;
+  closeAriaLabel: string;
+  hideHeaderBrand: boolean;
+  modalHeaderTheme?: 'dark' | 'light';
+};
+const defaultArgs = {
+  breakpoint: 991,
+  openAriaLabel: 'Mostra la navigazione',
+  closeAriaLabel: 'Chiudi la navigazione',
+  hideHeaderBrand: false,
+  modalHeaderTheme: undefined,
+};
 const meta = {
   title: 'Componenti/Header',
   tags: ['alpha', 'documentation', 'a11y-ok'],
   parameters: {
     pageLayout: 'w-100',
   },
-} satisfies Meta;
+  argTypes: {
+    breakpoint: {
+      control: { type: 'number' },
+      description: 'Larghezza in pixel sotto la quale si attiva la modalita mobile.',
+      table: { defaultValue: { summary: 991 } },
+    },
+    openAriaLabel: {
+      name: 'open-aria-label',
+      control: { type: 'text' },
+      description: 'Etichetta ARIA del pulsante che apre la navigazione mobile.',
+      table: { defaultValue: { summary: 'Mostra la navigazione' } },
+    },
+    closeAriaLabel: {
+      name: 'close-aria-label',
+      control: { type: 'text' },
+      description: 'Etichetta ARIA del pulsante che chiude la navigazione mobile.',
+      table: { defaultValue: { summary: 'Chiudi la navigazione' } },
+    },
+    hideHeaderBrand: {
+      name: 'hide-header-brand',
+      control: { type: 'boolean' },
+      description: 'Nasconde la fascia contente il brand, nell header della modale del menu su mobile.',
+      table: { defaultValue: { summary: false } },
+    },
+    modalHeaderTheme: {
+      name: 'modal-header-theme',
+      control: { type: 'select' },
+      options: ['dark', 'light'],
+      description:
+        "Tema del background dell'header della modale mobile. Se non valorizzato, usa il tema di default usato nell'Header Center.",
+      table: { defaultValue: { summary: 'default (auto)' } },
+    },
+  },
+} satisfies Meta<HeaderStoryArgs>;
 
 export default meta;
-type Story = StoryObj;
+type Story = StoryObj<HeaderStoryArgs>;
 
 const renderHeaderSlim = ({ accessButton = 'default', theme = 'default' } = {}) => {
   let renderAccessButton = html`<it-button variant="primary" size="xs">Accedi</it-button>`;
@@ -59,11 +106,12 @@ const renderHeaderSlim = ({ accessButton = 'default', theme = 'default' } = {}) 
   </div>`;
 };
 export const SlimHeader: Story = {
+  name: 'Slim Header',
   render: () => renderHeaderSlim(),
 };
 
 export const SlimHeaderActionFull: Story = {
-  name: 'Slim Header - Pulsante full-responsive',
+  name: 'Slim Header con Pulsante full-responsive',
   render: () => renderHeaderSlim({ accessButton: 'full' }),
 };
 
@@ -124,6 +172,7 @@ const renderHeaderCenter = ({ theme = 'default', compact = false } = {}) =>
   </div>`;
 
 export const HeaderCenter: Story = {
+  name: 'Header Centrale',
   render: () => renderHeaderCenter({}),
 };
 
@@ -133,6 +182,7 @@ export const HeaderCenterCompact: Story = {
 };
 
 export const HeaderCenterLight: Story = {
+  name: 'Header Centrale - Versione chiara',
   render: () => renderHeaderCenter({ theme: 'light' }),
 };
 
@@ -232,14 +282,17 @@ const renderHeaderNav = ({ wrapperClassName = '' } = {}) =>
   </div>`;
 
 export const HeaderNav: Story = {
+  name: 'Header Nav',
   render: () => renderHeaderNav(),
 };
 
 export const HeaderNavDesktopLight: Story = {
+  name: 'Header Nav - Versione chiara',
   render: () => renderHeaderNav({ wrapperClassName: 'theme-light' }),
 };
 
 export const HeaderNavSecondary: Story = {
+  name: 'Header Nav con Navigazione secondaria',
   render: () =>
     html`<div class="it-header-navbar-wrapper">
       <div class="container-xxl">
@@ -280,16 +333,36 @@ export const HeaderNavSecondary: Story = {
 };
 
 export const HeaderFull: Story = {
-  render: () =>
-    html`<header class="it-header-wrapper">${renderHeaderSlim()} ${renderHeaderCenter()}${renderHeaderNav()}</header>`,
+  name: 'Header completo',
+  args: defaultArgs,
+  render: (args) =>
+    html`<it-header
+      .breakpoint=${args.breakpoint}
+      .openAriaLabel=${args.openAriaLabel}
+      .closeAriaLabel=${args.closeAriaLabel}
+      .hideHeaderBrand=${args.hideHeaderBrand}
+      .modalHeaderTheme=${args.modalHeaderTheme}
+    >
+      <header class="it-header-wrapper">${renderHeaderSlim()} ${renderHeaderCenter()}${renderHeaderNav()}</header>
+    </it-header>`,
 };
 
 export const HeaderFullLight: Story = {
+  name: 'Header completo - Versione chiara',
+  args: defaultArgs,
   render: () =>
-    html`<header class="it-header-wrapper it-shadow">
-      ${renderHeaderSlim({ theme: 'light' })}
-      ${renderHeaderCenter({ theme: 'light' })}${renderHeaderNav({
-        wrapperClassName: 'theme-light',
-      })}
-    </header>`,
+    html`<it-header
+      .breakpoint=${defaultArgs.breakpoint}
+      .openAriaLabel=${defaultArgs.openAriaLabel}
+      .closeAriaLabel=${defaultArgs.closeAriaLabel}
+      .hideHeaderBrand=${defaultArgs.hideHeaderBrand}
+      .modalHeaderTheme=${defaultArgs.modalHeaderTheme}
+    >
+      <header class="it-header-wrapper it-shadow">
+        ${renderHeaderSlim({ theme: 'light' })}
+        ${renderHeaderCenter({ theme: 'light' })}${renderHeaderNav({
+          wrapperClassName: 'theme-light',
+        })}
+      </header>
+    </it-header>`,
 };
