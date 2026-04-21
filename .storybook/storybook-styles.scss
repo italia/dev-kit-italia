@@ -292,6 +292,7 @@ table.docblock-argstable {
 }
 
 // Avoid overflow issues with Popover component stories
+.docs-story:has([id^='story--componenti-tooltip--']) > div,
 .docs-story:has([id^='story--componenti-popover--']) > div {
   overflow: hidden;
 }

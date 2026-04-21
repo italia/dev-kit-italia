@@ -40,6 +40,7 @@ import Sticky from './components/Sticky.vue';
 import Table from './components/Table.vue';
 import Timeline from './pages/Timeline.vue';
 import Toggle from './components/Toggle.vue';
+import Tooltip from './components/Tooltip.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Carousel from './components/Carousel.vue';
@@ -91,6 +92,7 @@ const routes = [
   { path: '/timeline', name: 'Timeline', component: Timeline },
   { path: '/tabs', name: 'Tabs', component: Tabs },
   { path: '/toggle', name: 'Toggle', component: Toggle },
+  { path: '/tooltip', name: 'Tooltip', component: Tooltip },
   { path: '/video', name: 'Video', component: Video },
 ];
 

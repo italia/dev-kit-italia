@@ -45,6 +45,7 @@
       "@italia/tabs",
       "@italia/timeline",
       "@italia/toggle",
+      "@italia/tooltip",
       "@italia/video"
     ]
   ],
