@@ -17,8 +17,8 @@
 :host {
   display: block;
   font-family: $font-family-sans-serif;
-  font-size: var(--bs-body-font-size);
-  line-height: var(--bs-body-line-height);
+  font-size: var(--#{$prefix}body-font-size);
+  line-height: var(--#{$prefix}body-leading);
 }
 
 // ── Color mapping ─────────────────────────────────────────────────────────────
