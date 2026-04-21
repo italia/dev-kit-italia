@@ -23,6 +23,7 @@ const meta = {
     placement: {
       control: 'select',
       options: TOOLTIP_PLACEMENTS,
+      description: 'Posizione del Tooltip rispetto al suo elemento trigger',
       table: { defaultValue: { summary: 'top' } },
     },
   },
@@ -52,7 +53,6 @@ export const Base: Story = {
 
 export const SuLink: Story = {
   name: 'Su link e testo',
-  argTypes: { ...disabledControls(['placement']) },
   render: (args) => html`
     <p style="max-width:400px;line-height:2">
       Il tooltip può essere usato su qualsiasi elemento interattivo, come i

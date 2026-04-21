@@ -263,6 +263,7 @@ table.docblock-argstable {
 .w100-layout {
   width: 100%;
 }
+
 #storybook-root:has(.w100-layout) {
   width: 80%;
 }
@@ -270,10 +271,11 @@ table.docblock-argstable {
 .docs-story div[scale='1'],
 .innerZoomElementWrapper {
   &:has(.w100-layout) {
-    width: 100% !important;
     display: block !important;
+    width: 100% !important;
   }
 }
+
 .docs-story div[scale='1']:has(.w100-layout) {
   margin-bottom: 2rem;
 }
@@ -290,6 +292,7 @@ table.docblock-argstable {
 }
 
 // Avoid overflow issues with Popover component stories
+.docs-story:has([id^='story--componenti-tooltip--']) > div,
 .docs-story:has([id^='story--componenti-popover--']) > div {
   overflow: hidden;
 }
@@ -300,8 +303,8 @@ div[id^='story--componenti-modal'] {
 
 //per dare una larghezza minima alle stories di select
 it-select {
-  min-width: 250px;
   display: block;
+  min-width: 250px;
 }
 
 .megamenu-story-layout {

@@ -12,7 +12,7 @@ import * as TooltipStories from './it-tooltip.stories';
 Il componente Tooltip (`it-tooltip`) visualizza una breve etichetta testuale in overlay, posizionata dinamicamente rispetto a un elemento trigger.
 Utilizza [Floating UI](https://floating-ui.com/) per il posizionamento intelligente e si adatta automaticamente allo spazio disponibile.
 
-A differenza del [Popover](/docs/componenti-popover--documentazione), il tooltip è pensato per contenuti brevissimi (una frase o poche parole) e si attiva automaticamente al passaggio del mouse o al focus da tastiera, senza richiedere un click.
+A differenza del Popover, il Tooltip è pensato per contenuti brevissimi (una frase o poche parole) e si attiva automaticamente al passaggio del mouse o al focus da tastiera, senza richiedere un click.
 
 [Approfondisci quando e come usare il componente Tooltip](https://designers.italia.it/design-system/componenti/tooltip/)
 
@@ -46,14 +46,16 @@ Il componente implementa le seguenti funzionalità per garantire l'accessibilit�
 - **nessun focus steal**: il tooltip non sposta il focus quando viene mostrato.
 
 I tooltip di Dev Kit Italia restano visibili quando il puntatore si sposta dal trigger al tooltip stesso,
-migliorando così la conformità al criterio WCAG 2.1 **1.4.13 - Content on Hover or Focus**.
+migliorando così la conformità al criterio [WCAG 2.1 **1.4.13 - Content on Hover or Focus**](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html).
 Per gli utenti da tastiera il requisito è già soddisfatto tramite la gestione del focus.
 
-È importante usare come `trigger` solo elementi HTML che sono tradizionalmente attivabili da tastiera e interattivi (link, pulsanti o elementi di form).
-
-Sebbene arbitrariamente gli elementi HTML (come `<span>`) possano essere resi attivabili tramite l'attributo `tabindex="0"`,
+<it-callout variant="warning" heading-level="h3">
+<span slot="title">Attenzione</span>
+<p>È importante usare come `trigger` solo elementi HTML che sono tradizionalmente attivabili da tastiera e interattivi (link, pulsanti o elementi di form).</p>
+<p>Sebbene arbitrariamente gli elementi HTML (come `<span>`) possano essere resi attivabili tramite l'attributo `tabindex="0"`,
 ciò aggiungerà interruzioni di tabulazioni potenzialmente dannose per gli utenti che usano la tastiera per navigare.
-Inoltre, la maggior parte delle tecnologie assistive in questa situazione non annuncia il tooltip come ci si potrebbe invece attendere.
+Inoltre, la maggior parte delle tecnologie assistive in questa situazione non annuncia il tooltip come ci si potrebbe invece attendere.</p>
+</it-callout>
 
 ## Posizione
 
@@ -77,7 +79,9 @@ Per controllarne lo stato, richiama i metodi `showTooltip()`, `hideTooltip()` o 
 
 <Canvas of={TooltipStories.AttivazioneControllata} />
 
-## Metodi
+## Metodi ed eventi
+
+Puoi controllare programmaticamente il tooltip utilizzando i seguenti metodi:
 
 ```javascript
 const tooltip = document.querySelector('it-tooltip');
@@ -87,9 +91,8 @@ tooltip.hideTooltip();  // Nasconde il tooltip
 tooltip.toggle();       // Alterna la visibilità
 ```
 
-## Eventi
-
-Il componente emette l'evento `it-tooltip-open` quando viene mostrato e `it-tooltip-close` quando viene nascosto. Apri la console del browser per vedere i log.
+Il componente emette l'evento `it-tooltip-open` quando viene mostrato e `it-tooltip-close` quando viene nascosto.
+Apri la console del browser per vedere i log.
 
 ```javascript
 const tooltip = document.querySelector('it-tooltip');

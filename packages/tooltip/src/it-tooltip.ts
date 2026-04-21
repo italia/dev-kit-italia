@@ -19,6 +19,8 @@ export class ItTooltip extends BaseComponent {
 
   static OFFSET = 0;
 
+  static TRANSITION_DURATION = 150;
+
   @property({ type: Boolean, reflect: true }) open = false;
 
   @property({ type: Boolean }) controlled = false;
@@ -32,6 +34,8 @@ export class ItTooltip extends BaseComponent {
   @query('.tooltip') private _tooltipElement!: HTMLElement;
 
   @query('.tooltip-arrow') private _arrowElement!: HTMLElement;
+
+  isTransitioning = false;
 
   private get _triggerElement(): HTMLElement | null {
     return (this._triggerSlot?.assignedElements({ flatten: true })[0] as HTMLElement) ?? null;
@@ -129,6 +133,9 @@ export class ItTooltip extends BaseComponent {
   }
 
   private _show(): void {
+    if (this.isTransitioning) {
+      return;
+    }
     const trigger = this._triggerElement;
     if (!trigger || !this._tooltipElement) return;
 
@@ -172,12 +179,16 @@ export class ItTooltip extends BaseComponent {
   }
 
   private _hide(): void {
+    this.isTransitioning = true;
     this._tooltipElement.removeEventListener('mouseleave', this._onTooltipMouseLeave);
     this._cleanup?.();
     this._tooltipElement.classList.remove('show');
-    this._tooltipElement.style.visibility = 'hidden';
-    Object.values(BSI_PLACEMENT_CLASSES).forEach((c) => this._tooltipElement.classList.remove(c));
-    this._tooltipElement.setAttribute('aria-hidden', 'true');
+    setTimeout(() => {
+      this._tooltipElement.style.visibility = 'hidden';
+      Object.values(BSI_PLACEMENT_CLASSES).forEach((c) => this._tooltipElement.classList.remove(c));
+      this._tooltipElement.setAttribute('aria-hidden', 'true');
+      this.isTransitioning = false;
+    }, ItTooltip.TRANSITION_DURATION);
   }
 
   public showTooltip(): void {
@@ -202,7 +213,7 @@ export class ItTooltip extends BaseComponent {
           if (!this.controlled) this._setupStandardEvents();
         }}
       ></slot>
-      <div class="tooltip" role="tooltip" id=${ifDefined(this._id)} aria-hidden="true">
+      <div class="tooltip fade" role="tooltip" id=${ifDefined(this._id)} aria-hidden="true">
         <div class="tooltip-arrow"></div>
         <div class="tooltip-inner"><slot name="content"></slot></div>
       </div>
