@@ -62,7 +62,7 @@ Per applicargli l'aspetto *full-responsive*, a seconda dei due casi puoi:
 <Canvas of={HeaderStories.SlimHeaderActionFull} />
 
 ### Versione chiara
-Per cambiare tema all’Header Slim è sufficiente aggiungere la classe theme-light al tag`<div class="it-header-slim-wrapper">`.
+Per cambiare tema all’Header Slim è sufficiente aggiungere la classe `theme-light` al tag`<div class="it-header-slim-wrapper">`.
 
 <Canvas of={HeaderStories.SlimHeaderLight} />
 
@@ -88,20 +88,22 @@ L'Header Nav mostra il menu di navigazione principale del sito, e può essere co
 <Canvas of={HeaderStories.HeaderNav} />
 
 ### Temi colore disponibili
-I’Header Nav ha due temi colore, uno chiaro (“light”) e uno scuro (“dark”). Lo stile di default ha differenti caratteristiche colore a seconda della versione desktop e mobile:
+I’Header Nav ha due temi colore:
+- uno di default uguale al **colore primario** del sito
+- un chiaro (“light”)
 
-- Su **desktop** lo stile di default ha un **background di colore primario e link bianchi**. Gli elementi **Dropdown** e **Megamenu** hanno background bianco, testi neri e link di colore primario.
-- Su **mobile** lo stile di default ha un **background bianco e testi e link di colore primario**.
+Su **mobile** lo stile del menu è sempre uguale, indifferentemente dal tema scelto: ha un **background bianco e testi e link di colore primario**.
 
-Per modificare il tema dell’Header Nav è sufficiente aggiungere una o tutte e due le seguenti classi al tag `<nav class="it-header-navbar-wrapper">`:
-- la classe `.theme-dark-mobile` riguarda la versione **mobile** dell’Header Nav, impostando lo sfondo di colore primario con testi e link bianchi;
-- la classe `.theme-light-desk` riguarda la versione **desktop** dell’Header Nav, impostando lo sfondo bianco con testi e link di colore primario. Gli elementi **Dropdown** e **Megamenu** in questo caso assumono sfondo di colore primario con testi e link bianchi.
+Per modificare il tema dell’Header Nav e impostarlo alla versione chiara, è sufficiente aggiungere la classe `theme-light` al tag `<nav class="it-header-navbar-wrapper">`:
 
-#### Header Nav standard
+```html
+<nav class="it-header-navbar-wrapper theme-light">...</nav>
+```
+
+<br/>
+
+#### Header Nav standard (default)
 <Canvas of={HeaderStories.HeaderNav} />
-
-#### Header Nav mobile scura
-<Canvas of={HeaderStories.HeaderNavMobileDark} />
 
 #### Header Nav desktop chiara
 <Canvas of={HeaderStories.HeaderNavDesktopLight} />

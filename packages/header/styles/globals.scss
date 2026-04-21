@@ -1,22 +1,20 @@
 //FOUC STYLES
 .it-header-wrapper {
-  .it-header-slim-wrapper:not(.theme-light):not(.theme-light-desk) {
+  .it-header-slim-wrapper:not(.theme-light) {
     --it-fouc-bg: var(--#{$prefix}header-slim-background);
     --it-fouc-color: var(--#{$prefix}header-slim-text-color);
   }
 
-  .it-header-center-wrapper:not(.theme-light):not(.theme-light-desk) {
+  .it-header-center-wrapper:not(.theme-light) {
     --it-fouc-bg: var(--#{$prefix}header-center-background);
     --it-fouc-color: var(--#{$prefix}header-center-text-color);
   }
 
-  .it-header-navbar-wrapper:not(.theme-light):not(.theme-light-desk) {
+  .it-header-navbar-wrapper:not(.theme-light) {
     --it-fouc-bg: var(--#{$prefix}header-nav-background);
     --it-fouc-color: var(--#{$prefix}header-nav-text-color);
   }
 }
-
-
 
 // HEADER SLIM
 .it-header-slim-wrapper {
@@ -119,6 +117,8 @@
 
 // HEADER NAV
 .it-header-navbar-wrapper {
+  background-color: var(--#{$prefix}header-nav-background);
+
   it-dropdown {
     --#{$prefix}btn-border-radius: 0;
   }
@@ -166,6 +166,8 @@
         --#{$prefix}btn-background: var(--#{$prefix}navbar-background);
         --#{$prefix}btn-border-radius: 0;
         --#{$prefix}btn-text-color: var(--#{$prefix}navbar-link-color);
+        --#{$prefix}btn-padding-y: var(--#{$prefix}navbar-link-padding-y);
+        --#{$prefix}btn-line-height: var(--#{$prefix}navbar-link-line-height);
         border-left: var(--#{$prefix}navbar-link-border-size) solid var(--#{$prefix}navbar-link-border-color);
 
         &:hover {
@@ -190,6 +192,7 @@
 
       @media (min-width: #{map-get($grid-breakpoints, lg)}) {
         &::part(button) {
+          padding-bottom: calc(var(--#{$prefix}navbar-link-padding-y) - var(--#{$prefix}navbar-link-border-size));
           border-bottom: var(--#{$prefix}navbar-link-border-size) solid var(--#{$prefix}navbar-link-border-color);
           border-left: none;
         }
@@ -198,14 +201,12 @@
   }
 }
 
-
 //OTHERS
 
 .navbar-collapsable .menu-wrapper {
   //z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page
   z-index: auto; // to avoid megamenu dropdowns in header to be overlapped by navscroll or other items in page
 }
-
 
 // IT-NAV-MODAL
 it-modal#it-nav-modal {

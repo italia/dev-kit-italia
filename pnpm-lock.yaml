@@ -6,15 +6,33 @@ settings:
 
 catalogs:
   default:
+    '@open-wc/testing':
+      specifier: ^4.0.0
+      version: 4.0.0
+    '@types/mocha':
+      specifier: ^10.0.10
+      version: 10.0.10
+    '@web/test-runner':
+      specifier: ^0.18.2
+      version: 0.18.3
+    '@web/test-runner-commands':
+      specifier: ^0.9.0
+      version: 0.9.0
     bootstrap-italia:
-      specifier: github:italia/bootstrap-italia#8c67506065fb844becbec9cc74f2d11de7101404
-      version: 3.0.0-alpha.4
+      specifier: 3.0.0-alpha.8
+      version: 3.0.0-alpha.8
     design-tokens-italia:
       specifier: ^1.3.3
       version: 1.3.3
     lit:
       specifier: ^3.3.0
       version: 3.3.2
+    sass:
+      specifier: ^1.89.0
+      version: 1.97.3
+    typescript:
+      specifier: ^5.5.3
+      version: 5.9.3
 
 overrides:
   react: 19.2.0
@@ -60,7 +78,7 @@ importers:
         version: 7.18.0(eslint@8.57.1)(typescript@5.9.3)
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       design-tokens-italia:
         specifier: 'catalog:'
         version: 1.3.3
@@ -153,7 +171,7 @@ importers:
         version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -214,7 +232,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -275,7 +293,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -333,7 +351,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -388,7 +406,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -443,7 +461,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -498,7 +516,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -556,7 +574,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -620,7 +638,7 @@ importers:
         version: 4.1.4
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -678,7 +696,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -733,7 +751,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -797,7 +815,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -964,7 +982,7 @@ importers:
         version: 4.1.4
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       design-tokens-italia:
         specifier: 'catalog:'
         version: 1.3.3
@@ -1000,7 +1018,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1110,7 +1128,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1171,7 +1189,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1269,7 +1287,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1333,7 +1351,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1391,7 +1409,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1455,7 +1473,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1516,7 +1534,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1577,7 +1595,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: ^3.2.1
         version: 3.3.2
@@ -1638,7 +1656,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1699,7 +1717,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1760,7 +1778,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1821,7 +1839,7 @@ importers:
         version: link:../radio
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1873,7 +1891,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1931,7 +1949,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -1989,7 +2007,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -2041,7 +2059,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -2181,7 +2199,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -2241,7 +2259,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404
+        version: 3.0.0-alpha.8
       lit:
         specifier: 'catalog:'
         version: 3.3.2
@@ -4425,9 +4443,8 @@ packages:
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
 
-  bootstrap-italia@https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404:
-    resolution: {tarball: https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404}
-    version: 3.0.0-alpha.4
+  bootstrap-italia@3.0.0-alpha.8:
+    resolution: {integrity: sha512-PjaWXyG9LmauP2T//QZq9gpoCCk73+ltfGHHnlgc9Y72AHL/iOcCcv/rhBWdINN4Gvi5bHYtjvLsIwoVB4lgMg==}
 
   brace-expansion@1.1.12:
     resolution: {integrity: sha512-9T9UjW3r0UW5c1Q7GTwllptXwhvYmEzFhzMfZ9H7FQWt+uZePjZPjBP/W1ZEyZ1twGWom5/56TF4lPcqjnDHcg==}
@@ -9796,7 +9813,7 @@ snapshots:
 
   boolbase@1.0.0: {}
 
-  bootstrap-italia@https://codeload.github.com/italia/bootstrap-italia/tar.gz/8c67506065fb844becbec9cc74f2d11de7101404:
+  bootstrap-italia@3.0.0-alpha.8:
     dependencies:
       '@popperjs/core': 2.11.8
       '@splidejs/splide': 4.1.4

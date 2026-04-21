@@ -397,13 +397,13 @@
           </div>
         </div>
 
-        <h3>Header Nav desktop chiara</h3>
-        <div class="it-header-navbar-wrapper theme-light-desk mb-5">
+        <h3>Header Nav chiara</h3>
+        <div class="it-header-navbar-wrapper theme-light mb-5">
           <div class="container-xxl">
             <div class="row">
               <div class="col-12">
-                <nav class="navbar navbar-expand-lg" aria-label="Navigazione principale header nav desktop chiara">
-                  <div class="navbar-collapsable" id="nav-header-desktop-light" tabindex="-1">
+                <nav class="navbar navbar-expand-lg" aria-label="Navigazione principale header nav chiara">
+                  <div class="navbar-collapsable" id="nav-header-light" tabindex="-1">
                     <div class="menu-wrapper">
                       <ul class="navbar-nav">
                         <li class="nav-item active">
@@ -626,7 +626,7 @@
             </div>
           </div>
 
-          <div class="it-header-navbar-wrapper theme-light-desk">
+          <div class="it-header-navbar-wrapper theme-light">
             <div class="container-xxl">
               <div class="row">
                 <div class="col-12">

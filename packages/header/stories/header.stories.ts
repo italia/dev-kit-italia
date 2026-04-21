@@ -235,12 +235,8 @@ export const HeaderNav: Story = {
   render: () => renderHeaderNav(),
 };
 
-export const HeaderNavMobileDark: Story = {
-  render: () => renderHeaderNav({ wrapperClassName: 'theme-dark-mobile' }),
-};
-
 export const HeaderNavDesktopLight: Story = {
-  render: () => renderHeaderNav({ wrapperClassName: 'theme-light-desk' }),
+  render: () => renderHeaderNav({ wrapperClassName: 'theme-light' }),
 };
 
 export const HeaderNavSecondary: Story = {
@@ -285,14 +281,15 @@ export const HeaderNavSecondary: Story = {
 
 export const HeaderFull: Story = {
   render: () =>
-    html`<header class="it-header-wrapper">${renderHeaderSlim()}${renderHeaderCenter()}${renderHeaderNav()}</header>`,
+    html`<header class="it-header-wrapper">${renderHeaderSlim()} ${renderHeaderCenter()}${renderHeaderNav()}</header>`,
 };
 
 export const HeaderFullLight: Story = {
   render: () =>
     html`<header class="it-header-wrapper it-shadow">
-      ${renderHeaderSlim({ theme: 'light' })}${renderHeaderCenter({ theme: 'light' })}${renderHeaderNav({
-        wrapperClassName: 'theme-light-desk',
+      ${renderHeaderSlim({ theme: 'light' })}
+      ${renderHeaderCenter({ theme: 'light' })}${renderHeaderNav({
+        wrapperClassName: 'theme-light',
       })}
     </header>`,
 };
@@ -300,6 +297,6 @@ export const HeaderFullLight: Story = {
 export const HeaderSticky: Story = {
   render: () =>
     html`<it-sticky class="it-header-wrapper it-header-sticky" sticky-class-name="is-sticky">
-      <header>${renderHeaderSlim()}${renderHeaderCenter()}${renderHeaderNav()}</header>
+      <header>${renderHeaderSlim()} ${renderHeaderCenter()}${renderHeaderNav()}</header>
     </it-sticky>`,
 };
