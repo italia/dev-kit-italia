@@ -44,11 +44,13 @@
 @import 'bootstrap-italia/src/scss/components/buttons'; // serve per applicare le classi di stile dei bottoni agli elementi di tipo <a>
 @import 'bootstrap-italia/src/scss/components/card'; //serve per l'esempio HERO. TODO: da rimuovere quando arriva il componente card.
 
-/*dev-kit-italia global styles*/
+@import 'bootstrap-italia/src/scss/components/tab';
+
 @import '@italia/accordion/styles/globals';
 @import '@italia/autocomplete/styles/globals';
 @import '@italia/avatar/styles/globals';
 @import '@italia/back-to-top/styles/globals';
+@import '@italia/bottom-nav/styles/globals';
 @import '@italia/breadcrumbs/styles/globals';
 @import '@italia/button/styles/globals';
 @import '@italia/callout/styles/globals';
@@ -57,6 +59,7 @@
 @import '@italia/checkbox/styles/globals';
 @import '@italia/chip/styles/globals';
 @import '@italia/collapse/styles/globals';
+@import '@italia/dimmer/styles/globals';
 @import '@italia/dropdown/styles/globals';
 @import '@italia/hero/styles/globals';
 @import '@italia/icon/styles/globals';
@@ -74,6 +77,8 @@
 @import '@italia/select/styles/globals';
 @import '@italia/skiplinks/styles/globals';
 @import '@italia/sticky/styles/globals';
+@import '@italia/timeline/styles/globals';
+@import '@italia/tabs/styles/globals';
 @import '@italia/toggle/styles/globals';
 @import '@italia/video/styles/globals';
 
@@ -93,7 +98,8 @@
 @import './components/sidebar';
 
 .navbar-collapsable .menu-wrapper {
-  z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page
+  //z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page
+  z-index: auto; // to avoid megamenu dropdowns in header to be overlapped by navscroll or other items in page
 }
 
 .it-footer-main .it-brand-wrapper ::part(icon) {

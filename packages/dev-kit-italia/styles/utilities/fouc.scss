@@ -2,6 +2,7 @@
 
 :root {
   --it-fouc-bg: #ddd;
+  --it-fouc-color: #000;
   --it-host-display: inline-block;
 }
 
@@ -48,6 +49,7 @@
       background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
       background-repeat: no-repeat;
       background-size: 200% 100%;
+      color: var(--it-fouc-color);
       vertical-align: middle;
 
       // dimensioni condizionali
@@ -196,6 +198,19 @@ $it-components: (
     width: 100%,
     // Check the Heads up! section in the documentation // https://sass-lang.com/documentation/modules/list/#slash
     aspect-ratio: list.slash(16, 9),
+  ),
+  'it-tabs': (
+    height: 250px,
+    width: 100%,
+  ),
+  'it-tab': (
+    height: 54px,
+    display: inline-flex,
+    padding: 0 1rem,
+  ),
+  'it-tab-panel': (
+    height: 100%,
+    display: none !important,
   ),
   'it-progress': (
     height: 4px,

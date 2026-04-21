@@ -1,0 +1,89 @@
+//
+// Dimmer component styles
+// Imports Bootstrap Italia SCSS and adds host-level overrides
+//
+
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
+// Import dimmer component styles from Bootstrap Italia
+@import 'bootstrap-italia/src/scss/components/dimmer';
+
+// .dimmer.dimmer-{color} — same element, so the @each must live OUTSIDE .dimmer,
+// or use `&` inside. We keep it flat to avoid nesting confusion.
+// 'primary' overrides BI’s hardcoded solid .dimmer-primary with opacity;
+// 'dark' is the explicit dark variant.
+.dimmer.dimmer-primary {
+  background-color: rgba(var(--#{$prefix}primary-rgb), 0.9);
+}
+
+.dimmer.dimmer-dark {
+  background-color: rgba(var(--#{$prefix}dark-rgb), 0.9);
+}
+
+// Nessuna transition CSS — le animazioni di fade-in/out sono gestite via JS
+// con l'API Web Animations (element.animate()). La visibilità è controllata
+// da aria-hidden="true" → Bootstrap Italia applica display:none.
+.dimmer {
+  @include media-breakpoint-up(md) {
+    align-items: center;
+  }
+
+  .dimmer-inner {
+    display: flex;
+    max-width: 480px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .dimmer-buttons {
+    justify-content: center;
+    gap: var(--it-spacing-2x);
+
+    button {
+      width: auto;
+      flex: 0 1 auto;
+
+      &:last-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+// Host reset
+:host {
+  display: block;
+}
+
+// The .dimmable wrapper fills the host element
+.dimmable {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+
+  @include media-breakpoint-up(md) {
+    padding-block: 24px;
+  }
+}
+
+// Slotted content styling
+::slotted(*) {
+  width: 100%;
+
+  color: var(--#{$prefix}color-text-inverse);
+}
+
+::slotted(h4),
+::slotted(h1),
+::slotted(h2),
+::slotted(h3),
+::slotted(h5),
+::slotted(h6) {
+  margin-bottom: 0;
+}

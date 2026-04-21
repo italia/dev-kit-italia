@@ -8,12 +8,14 @@ import Breadcrumbs from './pages/Breadcrumbs.svelte';
 import BackToTop from './pages/BackToTop.svelte';
 import Back from './pages/Back.svelte';
 import Badge from './pages/Badge.svelte';
+import BottomNav from './pages/BottomNav.svelte';
 import Button from './pages/Button.svelte';
 import Callout from './pages/Callout.svelte';
 import Card from './pages/Card.svelte';
 import Checkbox from './pages/Checkbox.svelte';
 import Chip from './pages/Chip.svelte';
 import Collapse from './pages/Collapse.svelte';
+import Dimmer from './pages/Dimmer.svelte';
 import Dropdown from './pages/Dropdown.svelte';
 import Form from './pages/Form.svelte';
 import Forward from './pages/Forward.svelte';
@@ -37,6 +39,8 @@ import Skiplinks from './pages/Skiplinks.svelte';
 import Sticky from './pages/Sticky.svelte';
 import Carousel from './pages/Carousel.svelte';
 import Table from './pages/Table.svelte';
+import Timeline from './pages/Timeline.svelte';
+import Tabs from './pages/Tabs.svelte';
 import Toggle from './pages/Toggle.svelte';
 import Video from './pages/Video.svelte';
 import Notification from './pages/Notification.svelte';
@@ -50,6 +54,7 @@ export const AppRoutes = [
   { path: '/avatar', element: Avatar, title: 'Avatar' },
   { path: '/back-to-top', element: BackToTop, title: 'Back to Top' },
   { path: '/back', element: Back, title: 'Back' },
+  { path: '/bottom-nav', element: BottomNav, title: 'Bottom Nav' },
   { path: '/badge', element: Badge, title: 'Badge' },
   { path: '/breadcrumbs', element: Breadcrumbs, title: 'Breadcrumbs' },
   { path: '/button', element: Button, title: 'Button' },
@@ -59,6 +64,7 @@ export const AppRoutes = [
   { path: '/checkbox', element: Checkbox, title: 'Checkbox' },
   { path: '/chip', element: Chip, title: 'Chip' },
   { path: '/collapse', element: Collapse, title: 'Collapse' },
+  { path: '/dimmer', element: Dimmer, title: 'Dimmer' },
   { path: '/dropdown', element: Dropdown, title: 'Dropdown' },
   { path: '/form', element: Form, title: 'Form' },
   { path: '/forward', element: Forward, title: 'Forward' },
@@ -82,6 +88,8 @@ export const AppRoutes = [
   { path: '/skiplinks', element: Skiplinks, title: 'Skiplinks' },
   { path: '/sticky', element: Sticky, title: 'Sticky' },
   { path: '/tables', element: Table, title: 'Tables' },
+  { path: '/timeline', element: Timeline, title: 'Timeline' },
+  { path: '/tabs', element: Tabs, title: 'Tabs' },
   { path: '/toggle', element: Toggle, title: 'Toggle' },
   { path: '/video', element: Video, title: 'Video' },
 ];

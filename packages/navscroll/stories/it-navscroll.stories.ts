@@ -254,7 +254,7 @@ const renderComponent = (params: NavscrollProps) => {
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Navscroll',
-  tags: ['alpha', 'web-component', 'a11y-ok'],
+  tags: ['new', 'web-component', 'a11y-ok'],
   component: 'it-navscroll',
   args: {
     for: '#scroll-container',
