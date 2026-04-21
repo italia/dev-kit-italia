@@ -211,7 +211,6 @@ describe('<it-transfer>', () => {
     expect(action).to.equal('reset');
   });
 
-
   it('source-label attribute overrides i18n default', async () => {
     const el = await fixture<ItTransfer>(html`
       <it-transfer name="items" source-label="Disponibili">

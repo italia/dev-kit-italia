@@ -237,9 +237,9 @@ $it-components: (
   ),
   // Transfer: 1px border-top + header (24px pt + 20px checkbox + 8px pb + 1px divider) + 240px scroll area + 1px border-bottom
   'it-transfer': (
-    height: 296px,
-    width: 100%,
-  ),
+      height: 296px,
+      width: 100%,
+    ),
 );
 
 @each $tag, $params in $it-components {
