@@ -1,3 +1,4 @@
+/* eslint-disable lit-a11y/accessible-name */
 import { BaseComponent } from '@italia/globals';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html, PropertyValues } from 'lit';
@@ -139,11 +140,6 @@ export class ItTooltip extends BaseComponent {
     const trigger = this._triggerElement;
     if (!trigger || !this._tooltipElement) return;
 
-    this._tooltipElement.removeAttribute('aria-hidden');
-    this._tooltipElement.classList.add('show');
-
-    this._tooltipElement.addEventListener('mouseleave', this._onTooltipMouseLeave);
-
     this._cleanup = autoUpdate(trigger, this._tooltipElement, () => {
       computePosition(trigger, this._tooltipElement, {
         placement: this.placement,
@@ -180,13 +176,10 @@ export class ItTooltip extends BaseComponent {
 
   private _hide(): void {
     this.isTransitioning = true;
-    this._tooltipElement.removeEventListener('mouseleave', this._onTooltipMouseLeave);
     this._cleanup?.();
-    this._tooltipElement.classList.remove('show');
     setTimeout(() => {
       this._tooltipElement.style.visibility = 'hidden';
       Object.values(BSI_PLACEMENT_CLASSES).forEach((c) => this._tooltipElement.classList.remove(c));
-      this._tooltipElement.setAttribute('aria-hidden', 'true');
       this.isTransitioning = false;
     }, ItTooltip.TRANSITION_DURATION);
   }
@@ -204,6 +197,10 @@ export class ItTooltip extends BaseComponent {
   }
 
   render() {
+    const classes = this.composeClass('tooltip fade', {
+      show: this.open,
+    });
+
     return html`
       <slot
         name="trigger"
@@ -213,7 +210,13 @@ export class ItTooltip extends BaseComponent {
           if (!this.controlled) this._setupStandardEvents();
         }}
       ></slot>
-      <div class="tooltip fade" role="tooltip" id=${ifDefined(this._id)} aria-hidden="true">
+      <div
+        class=${classes}
+        role="tooltip"
+        id=${ifDefined(this._id)}
+        aria-hidden=${ifDefined(this.open ? undefined : 'true')}
+        @mouseleave=${this._onTooltipMouseLeave}
+      >
         <div class="tooltip-arrow"></div>
         <div class="tooltip-inner"><slot name="content"></slot></div>
       </div>
