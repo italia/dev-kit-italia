@@ -20,7 +20,7 @@ jobs:
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
       - name: Build documentation
-        run: pnpm storybook:build
+        run: pnpm storybook:build && sh type ./scripts/examples-preview.sh &>/dev/null && sh ./scripts/examples-preview.sh
 
       - name: Publish on gh-pages
         run: |
