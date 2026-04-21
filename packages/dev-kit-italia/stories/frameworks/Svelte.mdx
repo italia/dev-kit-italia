@@ -1,0 +1,132 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Code } from 'storybook/internal/components';
+
+<Meta title="Framework/Svelte" />
+
+# Svelte
+
+Dev Kit Italia si integra nativamente con Svelte tramite i Custom Elements standard del browser. I componenti si usano direttamente nel markup senza wrapper aggiuntivi.
+
+## Installazione
+
+Installa il pacchetto nel tuo progetto Svelte:
+
+```bash
+npm install @italia/dev-kit-italia
+# oppure
+pnpm add @italia/dev-kit-italia
+# oppure
+yarn add @italia/dev-kit-italia
+```
+
+## Importazione
+
+Nel punto di ingresso dell'applicazione (`main.js`), importa i componenti e i fogli di stile:
+
+```javascript
+// main.js
+import '@italia/dev-kit-italia/elements.js';
+import '@italia/dev-kit-italia/fonts.css';
+import '@italia/dev-kit-italia/full.css';
+```
+
+## Utilizzo
+
+Usa i componenti direttamente nel markup Svelte e gestisci gli eventi con la direttiva `on:`:
+
+```javascript
+// Button.svelte
+
+<it-button
+  variant="primary"
+  type="button"
+  on:click={() => {
+    alert('Mi hai cliccato!');
+  }}
+>
+  Cliccami
+</it-button>
+```
+
+## Routing
+
+Dev Kit Italia è progettato in modo che ogni elemento interattivo che normalmente contiene un tag `<a>` lo esponga come slot. Questo ti permette di passare il componente di navigazione della tua libreria di routing — come `<a use:link>` di svelte-routing o qualsiasi altra soluzione — senza alcun wrapper aggiuntivo.
+
+```javascript
+// NavItem.svelte
+
+<script>
+  import { link } from 'svelte-routing';
+</script>
+
+<it-dropdown-item>
+  <a href="/pagina" use:link>Vai alla pagina</a>
+</it-dropdown-item>
+```
+
+## Internazionalizzazione
+
+Per gestire l'internazionalizzazione in una applicazione Svelte, è necessario importare `registerTranslation` e registrare le traduzioni.
+Questo può essere fatto nel punto di ingresso dell'applicazione, se le traduzioni sono centralizzate in un unico punto:
+
+```javascript
+// main.js
+import App from './App.svelte';
+import { registerTranslation } from '@italia/dev-kit-italia/elements.js';
+import '@italia/dev-kit-italia/fonts.css';
+import '@italia/dev-kit-italia/styles.css';
+
+const it = {
+  $code: 'it',
+  $name: 'Italiano',
+  $dir: 'ltr',
+  showHidePassword: 'Mostra/Nascondi Password CUSTOM.',
+};
+
+registerTranslation(it);
+
+const app = new App({
+  target: document.getElementById('app'),
+});
+
+export default app;
+```
+
+Oppure all'interno dei propri componenti:
+
+```javascript
+// MyPassword.svelte
+
+<script>
+  import { onMount } from 'svelte';
+  import { registerTranslation } from '@italia/dev-kit-italia/elements.js';
+
+  const it = {
+    $code: 'it',
+    $name: 'Italiano',
+    $dir: 'ltr',
+    showHidePassword: 'Mostra/Nascondi Password (in CUSTOM COMPONENT).',
+  };
+
+  let translationsLoaded = false;
+
+  onMount(() => {
+    registerTranslation(it);
+    translationsLoaded = true;
+  });
+</script>
+
+{#if translationsLoaded}
+  <it-input
+    id="campo-password"
+    type="password"
+    name="campo-password"
+    support-text="Inserisci almeno 8 caratteri e alcuni caratteri speciali."
+    strength-meter={true}
+    minlength="8"
+    suggestions={true}
+  >
+    <span slot="label">Campo password</span>
+  </it-input>
+{/if}
+```

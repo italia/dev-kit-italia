@@ -1,0 +1,106 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Code } from 'storybook/internal/components';
+
+<Meta title="Framework/Vanilla" />
+
+# Vanilla JS
+
+Dev Kit Italia può essere usato direttamente in qualsiasi pagina HTML, senza bundler né framework. È sufficiente includere i file CSS e JS del pacchetto tramite tag standard.
+
+## Installazione
+
+Installa il pacchetto tramite npm o scarica i file dalla [pagina delle release](https://github.com/italia/dev-kit-italia/releases):
+
+```bash
+npm install @italia/dev-kit-italia
+# oppure
+pnpm add @italia/dev-kit-italia
+# oppure
+yarn add @italia/dev-kit-italia
+```
+
+## Importazione
+
+Nell'`<head>` della pagina HTML, collega i fogli di stile e carica i componenti come modulo ES:
+
+```html
+<!-- index.html -->
+<link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
+<link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/full.css" />
+<script type="module" src="/node_modules/@italia/dev-kit-italia/dist/elements.js"></script>
+```
+
+## Utilizzo
+
+Usa i componenti direttamente nell'HTML e aggiungi i gestori degli eventi tramite `addEventListener`:
+
+```html
+<!-- button.html -->
+<it-button variant="primary" type="button" id="btn-principale">
+  Cliccami
+</it-button>
+
+<script type="module">
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.querySelector('it-button#btn-principale');
+    if (button) {
+      button.addEventListener('click', () => {
+        alert('Mi hai cliccato!');
+      });
+    }
+  });
+</script>
+```
+## Routing
+
+Dev Kit Italia è progettato in modo che ogni elemento interattivo che normalmente contiene un tag `<a>` lo esponga come slot. In Vanilla JS puoi usare direttamente un tag `<a>` standard, oppure gestire la navigazione lato client aggiornando `href` via JavaScript.
+
+```html
+<it-dropdown-item>
+  <a href="/pagina">Vai alla pagina</a>
+</it-dropdown-item>
+```
+## Internazionalizzazione
+
+Per gestire l'internazionalizzazione in una applicazione Vanilla JS, è necessario importare `registerTranslation` e registrare le traduzioni.
+Questo può essere fatto nel file di ingresso dell'applicazione, se le traduzioni sono centralizzate in un unico punto:
+
+```javascript
+// main.js
+import { registerTranslation } from '@italia/dev-kit-italia/elements.js';
+import '@italia/dev-kit-italia/fonts.css';
+import '@italia/dev-kit-italia/styles.css';
+
+const it = {
+  $code: 'it',
+  $name: 'Italiano',
+  $dir: 'ltr',
+  showHidePassword: 'Mostra/Nascondi Password CUSTOM.',
+};
+
+registerTranslation(it);
+```
+
+Oppure all'interno di un modulo specifico per pagina:
+
+```javascript
+// js/accordion.js
+
+import { registerTranslation } from '@italia/dev-kit-italia/elements.js';
+
+const it = {
+  $code: 'it',
+  $name: 'Italiano',
+  $dir: 'ltr',
+  showHidePassword: 'Mostra/Nascondi Password (in CUSTOM MODULE).',
+};
+
+registerTranslation(it);
+```
+
+Il modulo va incluso nella pagina HTML corrispondente:
+
+```html
+<!-- accordion.html -->
+<script type="module" src="./js/accordion.js"></script>
+```
