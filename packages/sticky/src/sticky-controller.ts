@@ -13,6 +13,8 @@ export interface StickyOptions {
   stackable?: boolean;
   stickyClassName?: string;
   positionType?: 'fixed' | 'sticky';
+  triggerOffset?: number;
+  triggerSelector?: string;
 }
 
 export class StickyController<T extends ItSticky = ItSticky> implements ReactiveController {
@@ -184,6 +186,14 @@ export class StickyController<T extends ItSticky = ItSticky> implements Reactive
     }, 0);
   }
 
+  protected getExtraTriggerOffset(): number {
+    if (this.hostElement.triggerSelector) {
+      const el = document.querySelector(this.hostElement.triggerSelector);
+      if (el instanceof HTMLElement) return el.offsetHeight;
+    }
+    return Number(this.hostElement.triggerOffset || 0);
+  }
+
   protected getClasses() {
     if (!this.hostElement.stickyClassName) return [];
     const stickyClasses = this.hostElement.stickyClassName.split(' ').filter((c) => c.trim());
@@ -213,8 +223,8 @@ export class StickyController<T extends ItSticky = ItSticky> implements Reactive
       triggerPoint = this.limit - prevFixedHeight - 40;
     }
 
-    const shouldBeSticky = state.scrollY > triggerPoint - (offset + Number(this.hostElement.paddingTop || 0));
-
+    const shouldBeSticky =
+      state.scrollY > triggerPoint - (offset + Number(this.hostElement.paddingTop || 0)) + this.getExtraTriggerOffset();
     if (shouldBeSticky && !this._isSticky) {
       this.applySticky(offset);
       this._isSticky = true;

@@ -47,9 +47,9 @@ Per definire un offset in pixel tra l'elemento e il margine superiore, imposta l
 
 ## Position fixed
 
-Il componente assegna di default all'elemento da fissare la proprietà CSS `position` con valore `sticky`. In alcuni casi, questo può causare problemi di posizionamento, soprattutto se l'elemento cambia altezza quando diventa sticky. 
+Il componente assegna di default all'elemento da fissare la proprietà CSS `position` con valore `sticky`. In alcuni casi, questo può causare problemi di posizionamento, soprattutto se l'elemento cambia altezza quando diventa sticky.
 
-Puoi modificare la posizione dell'elemento, usa l'attributo `position-type:"fixed"`. 
+Puoi modificare la posizione dell'elemento, usa l'attributo `position-type:"fixed"`.
 
 [Vai all'esempio per questa funzionalità](?path=/story/esempi-sticky--fixed-sticky)
 
@@ -63,11 +63,37 @@ Per personalizzare lo stile dell'elemento quando è sticky o fixed, usa la propr
 
 <Canvas of={Stories.CustomClass} />
 
+## Trigger offset
+
+Per ritardare l'attivazione dello sticky, in modo che scatti solo dopo che l'utente ha scrollato di un numero specifico di pixel oltre la posizione naturale dell'elemento, usa la proprietà `trigger-offset`.
+
+Questo è utile ad esempio quando un header di grandi dimensioni precede l'elemento sticky e si vuole che quest'ultimo si attivi solo dopo che l'header è uscito dalla viewport.
+
+```html
+<it-sticky trigger-offset="180">
+  ...
+</it-sticky>
+```
+
+## Trigger selector
+
+In alternativa a `trigger-offset`, puoi usare `trigger-selector` per indicare un selettore CSS di un elemento della pagina: l'altezza di quell'elemento verrà usata automaticamente come soglia di attivazione. Quando fornito, `trigger-selector` ha precedenza su `trigger-offset`.
+
+Utile per sincronizzare l'attivazione dello sticky con la scomparsa di un elemento specifico (es. l'`<header>` completo):
+
+```html
+<it-sticky trigger-selector="#header-complete">
+  <header id="header-complete">
+    ...
+  </header>
+</it-sticky>
+```
+
 ## Versione impilabile
 
 Quando ci sono più componenti sticky sulla pagina, puoi impilarli l'uno sull'altro utilizzando l'attributo `stackable`.
 
-[Vai all'esempio per questa funzionalità](?path=/story/esempi-sticky--stackable-sticky) 
+[Vai all'esempio per questa funzionalità](?path=/story/esempi-sticky--stackable-sticky)
 
 [Vai all'esempio per questa funzionalità con media query e breakpoint](?path=/story/esempi-sticky--stackable-sticky-resize)
 

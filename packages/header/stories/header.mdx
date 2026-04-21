@@ -122,7 +122,22 @@ Nella versione light è consigliabile aggiungere la classe `.it-shadow` al tag `
 
 
 ## Header Sticky
-Per rendere sticky l'header durante lo scroll della pagina, wrappa l'intero `<header>` con il componente `<it-sticky>` e assegnagli le classi `it-header-wrapper it-header-sticky`. Ricordati di aggiungere anche l'attributo `sticky-class-name="is-sticky"` per applicare la classe `is-sticky` quando l'header diventa sticky, in modo da poter gestire eventuali stili specifici per questo stato.
+Per rendere sticky l'header durante lo scroll della pagina, wrappa l'intero `<it-header>` con il componente `<it-sticky>` e assegnagli le classi `it-header-wrapper it-header-sticky`.
 
+Ricordati di:
+- aggiungere anche l'attributo `sticky-class-name="is-sticky"` per applicare la classe `is-sticky` quando l'header diventa sticky, in modo da poter gestire eventuali stili specifici per questo stato.
+- aggiungere l'attributo `trigger-selector="#header-complete-full"` per indicare al componente `it-sticky` di considerare come punto di trigger per l'effetto sticky la fine dell'elemento con id `header-complete-full`, ovvero l'header completo, in modo che l'effetto sticky si attivi solo quando si supera l'altezza dell'header completo.
+
+Esempio:
+
+```html
+<it-sticky class="it-header-wrapper it-header-sticky" sticky-class-name="is-sticky" trigger-selector="#header-complete-full">
+  <it-header id="header-complete-full">
+    <header>
+      <!-- Contenuto dell'header -->
+    </header>
+  </it-header>
+</it-sticky>
+```
 Per maggiori dettagli su come utilizzare il componente `it-sticky` e le sue funzionalità, consulta la [documentazione dedicata](?path=/docs/componenti-sticky--documentazione).
-<Canvas of={HeaderStories.HeaderSticky} />
+

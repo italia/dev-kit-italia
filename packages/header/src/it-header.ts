@@ -110,6 +110,8 @@ export class ItHeader extends BaseComponent {
 
     this.mode = nextMode;
 
+    console.log(`Switching to ${this.mode} mode`);
+
     if (this.mode === 'modal') {
       this.enterModal();
     } else {

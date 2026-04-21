@@ -3,12 +3,21 @@ import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import type { StickyOptions } from '../src/sticky-controller.js';
 
-function renderSticky({ stackable, paddingTop, stickyClassName, positionType }: StickyOptions) {
+function renderSticky({
+  stackable,
+  paddingTop,
+  stickyClassName,
+  positionType,
+  triggerOffset,
+  triggerSelector,
+}: StickyOptions) {
   return html`
     <it-sticky
       ?stackable=${ifDefined(stackable)}
       padding-top=${ifDefined(paddingTop || nothing)}
       sticky-class-name=${ifDefined(stickyClassName || nothing)}
+      trigger-offset=${ifDefined(triggerOffset || nothing)}
+      trigger-selector=${ifDefined(triggerSelector || nothing)}
       position-type=${ifDefined(positionType || nothing)}
     >
       <div class="bg-primary text-white p-3">Elemento Sticky</div>
@@ -24,6 +33,8 @@ const meta: Meta = {
     paddingTop: 0,
     stickyClassName: undefined,
     positionType: undefined,
+    triggerOffset: undefined,
+    triggerSelector: undefined,
   },
   parameters: {
     docs: {
@@ -71,6 +82,19 @@ Il componente gestisce in autonomia anche casi avanzati, come elementi impilabil
       options: ['sticky', 'fixed'],
       description: 'Indica il valore della proprietà CSS `position`. I valori ammessi sono `sticky` o `fixed`',
       table: { defaultValue: { summary: 'sticky' } },
+    },
+    triggerOffset: {
+      name: 'trigger-offset',
+      control: 'number',
+      description:
+        "Definisce un offset in pixel tra l'elemento e il margine superiore per ritardare l'attivazione dello sticky",
+      table: { defaultValue: { summary: undefined } },
+    },
+    triggerSelector: {
+      name: 'trigger-selector',
+      control: 'text',
+      description: 'Selettore CSS di un elemento della pagina da usare come soglia di attivazione dello sticky',
+      table: { defaultValue: { summary: undefined } },
     },
   },
   render: (args) => renderSticky(args),

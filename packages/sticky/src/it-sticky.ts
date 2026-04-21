@@ -12,6 +12,19 @@ export class ItSticky extends BaseComponent {
 
   @property({ reflect: true, type: Boolean }) stackable?: StickyOptions['stackable'] = false;
 
+  /**
+   * Extra pixels to scroll past the element's natural position before sticky activates.
+   * Useful when you want sticky to kick in only after a preceding element (e.g. a header) has scrolled away.
+   */
+  @property({ reflect: true, type: Number, attribute: 'trigger-offset' })
+  triggerOffset?: StickyOptions['triggerOffset'] = 0;
+
+  /**
+   * CSS selector of an element whose height is used as the trigger offset.
+   * When provided, takes precedence over `trigger-offset`.
+   */
+  @property({ reflect: true, attribute: 'trigger-selector' }) triggerSelector?: StickyOptions['triggerSelector'];
+
   public _stickyController = new StickyController(this, this);
 
   protected override updated(): void {
