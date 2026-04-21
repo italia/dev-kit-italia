@@ -18,16 +18,24 @@ export interface RovingTabindexConfig<T extends HTMLElement> {
   wrap?: boolean;
 
   /**
-   * Direction of navigation
+   * Direction of navigation. Può essere una stringa statica o una funzione
+   * che restituisce la direzione dinamicamente (utile quando la direzione
+   * dipende dallo stato del componente, es. orientamento verticale/orizzontale).
    * @default 'both'
    */
-  direction?: 'horizontal' | 'vertical' | 'both';
+  direction?: 'horizontal' | 'vertical' | 'both' | (() => 'horizontal' | 'vertical' | 'both');
 
   /**
    * Whether to select items on focus (vs just focusing)
    * @default false
    */
   selectOnFocus?: boolean;
+
+  /**
+   * Whether Home/End should *activate* (select) the item in addition to focusing it.
+   * Default false to avoid changing downstream components; opt-in when needed.
+   */
+  selectOnHomeEnd?: boolean;
 
   /**
    * Custom logic to determine if an item should be skipped
@@ -55,8 +63,9 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
 
   private config: RovingTabindexConfig<T> & {
     wrap: boolean;
-    direction: 'horizontal' | 'vertical' | 'both';
+    direction: 'horizontal' | 'vertical' | 'both' | (() => 'horizontal' | 'vertical' | 'both');
     selectOnFocus: boolean;
+    selectOnHomeEnd: boolean;
     skipItem: (item: T) => boolean;
   };
 
@@ -66,6 +75,7 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
       wrap: true,
       direction: 'both',
       selectOnFocus: false,
+      selectOnHomeEnd: false,
       skipItem: (item) => item.hasAttribute('disabled') || (item as any).disabled === true,
       ...config,
     };
@@ -123,7 +133,7 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
    * @returns true if the event was handled, false otherwise
    */
   handleKeydown(currentItem: T, event: KeyboardEvent): boolean {
-    const { direction } = this.config;
+    const direction = typeof this.config.direction === 'function' ? this.config.direction() : this.config.direction;
     const { key } = event;
 
     // Determine if this key should be handled based on direction
@@ -131,7 +141,6 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
     const isHorizontal = key === 'ArrowLeft' || key === 'ArrowRight';
     const isHome = key === 'Home';
     const isEnd = key === 'End';
-
     const shouldHandle =
       isHome ||
       isEnd ||
@@ -172,8 +181,10 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
       }
     }
 
-    // Skip disabled items
-    nextIndex = this.findNextValidIndex(items, nextIndex, nextIndex > currentIndex ? 1 : -1);
+    // Skip disabled items — Home always searches forward, End always searches backward
+    // eslint-disable-next-line no-nested-ternary
+    const searchDirection: 1 | -1 = isHome ? 1 : isEnd ? -1 : nextIndex > currentIndex ? 1 : -1;
+    nextIndex = this.findNextValidIndex(items, nextIndex, searchDirection);
 
     if (nextIndex !== -1 && nextIndex !== currentIndex) {
       const nextItem = items[nextIndex];
@@ -184,8 +195,13 @@ export class RovingTabindexController<T extends HTMLElement> implements Reactive
       // Focus the next item
       nextItem.focus();
 
-      // Optionally select/activate the item
-      if (this.config.selectOnFocus && this.config.onSelect) {
+      // Optionally select/activate the item.
+      // Select when `selectOnFocus` is enabled, or when Home/End keys
+      // were used and the consumer explicitly opted in via `selectOnHomeEnd`.
+      const shouldSelect =
+        this.config.selectOnFocus === true || ((isHome || isEnd) && this.config.selectOnHomeEnd === true);
+
+      if (shouldSelect && this.config.onSelect) {
         this.config.onSelect(nextItem, event);
       }
 

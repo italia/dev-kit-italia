@@ -115,6 +115,20 @@ const handleResize = (event) => {
       </div>
     </section>
 
+    <section>
+      <h2>it-sticky: position bottom fixed</h2>
+      <p>
+        La barra in fondo è fissa dal caricamento della pagina — nessuno scroll necessario.
+        Aggiungendo l'attributo <code>stackable</code> è possibile impilarne più d'una verso l'alto.
+      </p>
+      <it-sticky position="bottom" position-type="fixed" stackable class="bg-primary text-white p-3 w-100">
+        <div class="w-100 text-center">Barra fissa in fondo — primo livello</div>
+      </it-sticky>
+      <it-sticky position="bottom" position-type="fixed" stackable class="bg-success text-white p-2 w-100">
+        <div class="w-100 text-center">Barra fissa in fondo — secondo livello (impilata)</div>
+      </it-sticky>
+    </section>
+
   </div>
 </template>
 

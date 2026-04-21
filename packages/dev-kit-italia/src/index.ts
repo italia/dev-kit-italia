@@ -9,6 +9,7 @@ export * from '@italia/button';
 export * from '@italia/card';
 export * from '@italia/callout';
 export * from '@italia/chip';
+export * from '@italia/dimmer';
 export * from '@italia/dropdown';
 export * from '@italia/icon';
 export * from '@italia/input';
