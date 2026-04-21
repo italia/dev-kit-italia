@@ -54,7 +54,7 @@
     font-family: var(--bsi-font-sans);
     font-size: var(--bsi-body-font-size); /* Mobile: 16px, Desktop: 18px */
     //font-weight: var(--bsi-body-font-weight); /* 400 */
-    line-height: var(--bsi-body-line-height); /* 150% */
+    line-height: var(--bsi-body-leading); /* 150% */
 
     &.docblock-code-toggle {
       font-size: 80%;
@@ -110,7 +110,7 @@
   margin-bottom: 2rem !important;
   font-size: var(--bsi-lead-font-size) !important; /* 1.25rem mobile, 1.5rem desktop */
   font-weight: var(--bsi-lead-font-weight) !important;
-  line-height: var(--bsi-lead-line-height) !important;
+  line-height: var(--bsi-lead-leading) !important;
 }
 
 /* Tipografia Bootstrap Italia usando variabili CSS native */
@@ -169,7 +169,7 @@
   max-width: 75ch;
   font-size: var(--bsi-body-font-size); /* Mobile: 16px, Desktop: 18px */
   font-weight: var(--bsi-body-font-weight); /* 400 */
-  line-height: var(--bsi-body-line-height); /* 150% */
+  line-height: var(--bsi-body-leading); /* 150% */
 }
 
 .sbdocs-content .callout:not(.sb-story .callout) {
