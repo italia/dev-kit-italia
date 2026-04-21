@@ -4,18 +4,7 @@
 @import 'bootstrap-italia/src/scss/base/maps';
 @import 'bootstrap-italia/src/scss/components/tooltip';
 
-:host {
-  // position: relative;
-  // display: inline-block;
-}
-
 .tooltip {
   position: absolute;
   visibility: hidden;
-  // pointer-events: none;
-
-  // .tooltip-arrow {
-  //   position: absolute;
-  //   display: block;
-  // }
 }
