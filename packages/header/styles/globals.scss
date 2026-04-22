@@ -117,7 +117,7 @@
 
 // HEADER NAV
 .it-header-navbar-wrapper {
-  background-color: var(--#{$prefix}header-nav-background);
+  background-color: var(--#{$prefix}header-nav-background); // TODO: probabilmente da rimuovere quando sia aggiorna la versione di bsi che include questa https://github.com/italia/bootstrap-italia/pull/1770
 
   it-dropdown {
     --#{$prefix}btn-border-radius: 0;

@@ -170,6 +170,29 @@ Esempio:
 </it-header>
 ```
 
+### Comportamento su mobile (sotto il breakpoint)
+
+Quando la larghezza viewport scende sotto il valore di `breakpoint` (di default `991`), `<it-header>` passa dalla modalità inline a quella mobile e crea automaticamente una modale laterale (`it-modal`) che contiene una copia strutturata della navigazione.
+
+Durante questa transizione, il componente **clona** e inserisce nella modale questi elementi in questo ordine (se presenti):
+
+- il `brand wrapper` (`.it-brand-wrapper`) nello slot `header` della modale (se `hide-header-brand` non è attivo)
+- il `nav` principale (`.it-header-navbar-wrapper nav`) con tutte le liste `.menu-wrapper > ul`:
+  - prima la lista principale
+  - poi eventuali liste successive (es: menu secondario) a cui aggiunge la classe `secondary`
+- il menu dell'Header Slim (`.it-header-slim-wrapper ul`), a cui assegna le classi `secondary header-slim-menu`
+- il blocco social (`.it-socials`)
+
+L'ordine finale nel menu laterale è il seguente:
+
+1. header della modale con brand (se non nascosto)
+2. contenuto modale (`slot="content"`)
+3. dentro al contenuto: `nav.modal-nav`
+4. dentro al `nav.modal-nav`: liste del nav principale (in ordine), poi il menu dell'Header Slim
+5. in coda al contenuto: i social
+
+Questo comportamento è automatico: tornando sopra breakpoint, la modale viene rimossa e l'header torna alla composizione desktop originale.
+
 
 ## Header Sticky
 Per rendere sticky l'header durante lo scroll della pagina, wrappa l'intera struttura con il componente `<it-sticky>`.
