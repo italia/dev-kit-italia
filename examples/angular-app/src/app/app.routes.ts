@@ -109,6 +109,22 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/header.component').then((c) => c.HeaderComponent),
   },
   {
+    title: 'Header Complete Full Example',
+    path: 'header-complete-full-example',
+    loadComponent: () =>
+      import('./pages/header-complete-full-example.component').then(
+        (c) => c.HeaderCompleteFullExampleComponent,
+      ),
+  },
+  {
+    title: 'Header Complete Full Sticky Example',
+    path: 'header-complete-full-sticky-example',
+    loadComponent: () =>
+      import('./pages/header-complete-full-sticky-example.component').then(
+        (c) => c.HeaderCompleteFullStickyExampleComponent,
+      ),
+  },
+  {
     title: 'Hero',
     path: 'hero',
     loadComponent: () => import('./pages/hero.component').then((c) => c.HeroComponent),

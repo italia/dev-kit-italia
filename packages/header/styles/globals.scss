@@ -53,6 +53,10 @@
 
   it-button {
     --#{$prefix}color-background-primary-hover: var(--#{$prefix}color-background-primary-deep);
+
+    //questi stili (color e background-color) servono per evitare problemi di contrasto con gli strumenti di verifica dell'accessibilità, che altrimenti segnalerebbero un contrasto insufficiente tra testo e sfondo
+    color: var(--#{$prefix}header-slim-text-color);
+    background-color: var(--#{$prefix}header-slim-background);
   }
 }
 
