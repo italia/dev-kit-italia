@@ -213,12 +213,12 @@ it-modal#it-nav-modal {
   --it-nav-modal-header-background: var(--#{$prefix}header-center-background);
   --it-nav-modal-header-text-color: var(--#{$prefix}header-center-text-color);
 
-  &.theme-dark {
+  &.modal-header-theme-dark {
     --it-nav-modal-header-background: var(--#{$prefix}color-background-primary);
     --it-nav-modal-header-text-color: var(--#{$prefix}color-text-inverse);
   }
 
-  &.theme-light {
+  &.modal-header-theme-light {
     --it-nav-modal-header-background: var(--#{$prefix}color-background-inverse);
     --it-nav-modal-header-text-color: var(--#{$prefix}color-link);
   }
@@ -233,6 +233,8 @@ it-modal#it-nav-modal {
   &::part(modal-header) {
     background-color: var(--it-nav-modal-header-background);
     color: var(--it-nav-modal-header-text-color);
+    --#{$prefix}header-brand-color: var(--it-nav-modal-header-text-color);
+    --#{$prefix}header-brand-icon-color: var(--it-nav-modal-header-text-color);
   }
 
   &::part(modal-body) {
@@ -335,6 +337,7 @@ it-modal#it-nav-modal {
       display: block;
       width: 100%;
       padding: var(--#{$prefix}spacing-m) var(--#{$prefix}navbar-link-padding-x) 0;
+      padding-left: calc(var(--#{$prefix}navbar-link-padding-x) - var(--#{$prefix}navbar-link-border-size));
       border-color: var(--#{$prefix}navbar-link-border-color);
       border-left: var(--#{$prefix}navbar-link-border-size) solid transparent;
       font-size: var(--#{$prefix}font-size-2);

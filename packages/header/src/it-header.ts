@@ -128,11 +128,11 @@ export class ItHeader extends BaseComponent {
   private applyModalHeaderTheme(targetModal: HTMLElement = this.modalEl as HTMLElement) {
     if (!targetModal) return;
 
-    targetModal.classList.remove('theme-dark', 'theme-light');
+    targetModal.classList.remove('modal-header-theme-dark', 'modal-header-theme-light');
     if (this.modalHeaderTheme === 'dark') {
-      targetModal.classList.add('theme-dark');
+      targetModal.classList.add('modal-header-theme-dark');
     } else if (this.modalHeaderTheme === 'light') {
-      targetModal.classList.add('theme-light');
+      targetModal.classList.add('modal-header-theme-light');
     }
   }
 
