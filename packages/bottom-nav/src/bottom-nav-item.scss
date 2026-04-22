@@ -28,7 +28,7 @@
 
 :host ::slotted(a) {
   position: relative;
-  color: $secondary !important;
+  color: var(--#{$prefix}color-background-primary) !important;
   --#{$prefix}icon-default: var(--#{$prefix}icon-secondary);
 }
 
