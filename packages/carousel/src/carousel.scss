@@ -15,6 +15,17 @@ $utilities: (
 // ----------------------------------------------------
 // ShadowDOM and cross composing issues monkey patches
 // ----------------------------------------------------
+// Deliberately NOT replaced as of alpha.4
+// Value	Reason
+// transition: background-color 0.2s ease	$transition-base = all 0.2s ease-in-out — different property AND easing
+// outline: 2px solid / outline-offset: 2px	No BSI focus-ring-width / focus-offset variable found
+// width: 1.8rem; height: 1.8rem (toggle)	No BSI variable
+// border-radius: 50% (toggle)	$border-radius-pill = 50rem — different unit, different visual
+// transition: all 0.3s (pagination)	BSI also hardcodes it — no variable exists
+// border-radius: 50px (pagination)	BSI also hardcodes it — no variable exists
+// max-height: 600px (.figure.img-full)	No BSI variable
+// 85% in color-mix(...)	CSS function parameter, not a SCSS context
+// ----------------------------------------------------
 @import 'bootstrap-italia/src/scss/base/reboot';
 @import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
 @import 'bootstrap-italia/src/scss/components/imgresponsive';
@@ -47,7 +58,7 @@ p a {
     /* focus da mouse o script, esclusi anche i .btn */
     background: $focus-outline-color-in;
     box-shadow: none !important;
-    color: $link-color !important;
+    color: var(--#{$prefix}-color-link) !important;
 
     outline: 3px $focus-outline-color-out solid !important;
     outline-offset: 0px !important;
@@ -99,7 +110,8 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     padding: 0;
     border: none;
     border-radius: 0;
-    background-color: ar(--#{$prefix}color-primary);
+    // fix bsi missing tokens
+    background-color: var(--#{$prefix}color-text-primary);
     cursor: pointer;
     place-items: center;
     pointer-events: all;
@@ -109,7 +121,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
       display: block;
       width: $_arrow-icon-size;
       height: $_arrow-icon-size;
-      fill: $white;
+      fill: var(--#{$prefix}-color-white, #fff);
     }
 
     &.splide__arrow--prev {
@@ -118,7 +130,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
 
     @media (hover: hover) {
       &:hover:not([disabled]) {
-        background-color: color-mix(in srgb, #{$primary} 85%, black);
+        background-color: color-mix(in srgb, var(--#{$prefix}color-text-primary) 85%, black);
       }
     }
 
@@ -166,13 +178,14 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     align-items: center;
     justify-content: center;
     border: none;
-    background: #{$primary};
+    // fix bsi missing tokens
+    background: var(--#{$prefix}color-text-primary) !important;
     pointer-events: all;
 
     svg {
       width: $v-gap * 2;
       height: $v-gap * 2;
-      fill: $white;
+      fill: var(--#{$prefix}-color-white, #fff);
     }
 
     &.splide__arrow--prev {
@@ -180,7 +193,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     }
 
     &[disabled] {
-      background: $gray-disabled;
+      background: $gray-disabled !important;
     }
   }
 }
@@ -189,8 +202,8 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
   display: flex;
   align-items: baseline;
   justify-content: center;
-  margin-top: 1rem;
-  gap: 0.5rem;
+  margin-top: $spacer;
+  gap: $spacer * 0.5;
 }
 
 .splide__toggle {
@@ -204,17 +217,17 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
   border-color: transparent;
   border-radius: 50%;
   margin: 0;
-  background: #{$primary};
-  color: $white;
+  background: var(--#{$prefix}color-text-primary) !important;
+  color: var(--#{$prefix}color-text-inverse) !important;
   cursor: pointer;
   outline: none;
   transition: background-color 0.2s ease;
 
   svg {
-    width: 1rem;
-    height: 1rem;
-    margin-left: 4px;
-    fill: $white;
+    width: $spacer;
+    height: $spacer;
+    margin-left: $v-gap * 0.5;
+    fill: var(--#{$prefix}color-text-inverse) !important;
   }
 
   &.is-active svg {
@@ -235,12 +248,13 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     border: none;
     border-radius: 50px !important;
     margin: 0 $v-gap;
-    background: $crs-dots-color;
+    background: var(--#{$prefix}color-background-subtle) !important;
     box-shadow: none;
     transition: all 0.3s;
 
+    // fix bsi missing tokens
     &.is-active {
-      background: #{$primary};
+      background: var(--#{$prefix}color-text-primary) !important;
     }
   }
 }

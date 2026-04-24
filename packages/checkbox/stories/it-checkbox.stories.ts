@@ -47,7 +47,7 @@ const renderComponent = (params: any) =>
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Form/Checkbox',
-  tags: ['new', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-checkbox',
   args: {
     id: '',
@@ -285,11 +285,11 @@ export const Group: Story = {
       </it-checkbox-group>
 
       <it-checkbox-group
-        name=${params.name}
+        name=${`${params.name}-1`}
         ?required=${params.required}
         ?group=${params.group}
         ?inline=${params.inline}
-        ?disabled=${Group.disabled}
+        ?disabled=${params.disabled}
         class="col-12 col-md-6"
       >
         <span slot="legend">Gruppo di checkbox</span>

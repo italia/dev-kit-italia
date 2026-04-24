@@ -238,6 +238,7 @@ export class FormControlController implements ReactiveController {
           }
           break;
         case 'it-checkbox':
+        case 'it-toggle':
           if ((this.host as any).checked) {
             if (event.formData.getAll(name).indexOf(value as string) < 0) {
               // handle group checkbox
@@ -246,6 +247,7 @@ export class FormControlController implements ReactiveController {
           }
           break;
         case 'it-checkbox-group':
+        case 'it-toggle-group':
           // non settare valori in formData, perchè ogni singola checkbox setta il suo valore
           break;
         default:

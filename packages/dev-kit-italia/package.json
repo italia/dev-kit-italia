@@ -1,7 +1,7 @@
 {
   "name": "@italia/dev-kit-italia",
   "description": "Bundle dei web components del Design system .italia",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.8",
   "publishConfig": {
     "access": "public"
   },
@@ -23,6 +23,7 @@
     ".": "./dist/src/index.js",
     "./elements.js": "./dist/elements.js",
     "./styles.css": "./dist/styles.css",
+    "./full.css": "./dist/full.css",
     "./fonts.css": "./dist/fonts.css"
   },
   "scripts": {
@@ -53,38 +54,49 @@
   "dependencies": {
     "@italia/avatar": "workspace:^",
     "@italia/autocomplete": "workspace:^",
+    "@italia/bottom-nav": "workspace:^",
     "@italia/callout": "workspace:^",
     "@italia/accordion": "workspace:^",
-    "@italia/breadcrumbs": "workspace:^",
+    "@italia/autocomplete": "workspace:^",
+    "@italia/avatar": "workspace:^",
     "@italia/back-to-top": "workspace:^",
+    "@italia/breadcrumbs": "workspace:^",
     "@italia/button": "workspace:^",
-    "@italia/carousel": "workspace:^",
+    "@italia/callout": "workspace:^",
     "@italia/card": "workspace:^",
+    "@italia/carousel": "workspace:^",
     "@italia/checkbox": "workspace:^",
     "@italia/chip": "workspace:^",
     "@italia/collapse": "workspace:^",
+    "@italia/dimmer": "workspace:^",
     "@italia/dropdown": "workspace:^",
-    "@italia/i18n": "workspace:^",
-    "@italia/rating": "workspace:^",
     "@italia/hero": "workspace:^",
+    "@italia/i18n": "workspace:^",
     "@italia/icon": "workspace:^",
     "@italia/input": "workspace:^",
-    "@italia/navscroll": "workspace:^",
     "@italia/megamenu": "workspace:^",
     "@italia/modal": "workspace:^",
+    "@italia/navscroll": "workspace:^",
+    "@italia/pagination": "workspace:^",
     "@italia/popover": "workspace:^",
+    "@italia/progress": "workspace:^",
+    "@italia/radio": "workspace:^",
+    "@italia/rating": "workspace:^",
     "@italia/section": "workspace:^",
     "@italia/select": "workspace:^",
     "@italia/skiplinks": "workspace:^",
     "@italia/sticky": "workspace:^",
-    "@italia/video": "workspace:^",
-    "@italia/pagination": "workspace:^",
-    "@italia/radio": "workspace:^"
+    "@italia/tabs": "workspace:^",
+    "@italia/timeline": "workspace:^",
+    "@italia/toggle": "workspace:^",
+    "@italia/tooltip": "workspace:^",
+    "@italia/video": "workspace:^"
   },
   "devDependencies": {
     "@italia/typescript-config": "workspace:^",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
+    "@splidejs/splide": "^4.1.4",
     "bootstrap-italia": "catalog:",
     "design-tokens-italia": "catalog:",
     "rimraf": "^6.0.1",
@@ -92,7 +104,9 @@
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-scss": "^4.0.1",
     "sass": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "video.js": "^8.23.7",
+    "videojs-font": "^4.2.0"
   },
   "peerDependencies": {
     "lit": "catalog:"

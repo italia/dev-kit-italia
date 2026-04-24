@@ -293,3 +293,27 @@ correttamente impilati uno sopra l’altro durante lo scroll.
     </div>
   `,
 };
+
+export const FixedBottomSticky: StoryObj = {
+  parameters: {
+    heading: 'Esempio it-sticky: position bottom fixed',
+    description:
+      "La barra in fondo è fissa dal caricamento della pagina — nessuno scroll necessario. Aggiungendo l'attributo stackable è possibile impilarne più d'una verso l'alto.",
+  },
+  render: () => html`
+    <div style="height: 400px; display: flex; align-items: center; justify-content: center;">
+      <p style="text-align:center; color:#666;">
+        La barra è agganciata al bordo inferiore del viewport.<br />
+        Prova a ridimensionare la finestra del browser.
+      </p>
+    </div>
+
+    <it-sticky position="bottom" position-type="fixed" stackable class="bg-primary text-white p-3 w-100">
+      <div class="w-100 text-center">Barra fissa in fondo — primo livello</div>
+    </it-sticky>
+
+    <it-sticky position="bottom" position-type="fixed" stackable class="bg-success text-white p-2 w-100">
+      <div class="w-100 text-center">Barra fissa in fondo — secondo livello (impilata)</div>
+    </it-sticky>
+  `,
+};
