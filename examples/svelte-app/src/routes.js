@@ -42,6 +42,7 @@ import Table from './pages/Table.svelte';
 import Timeline from './pages/Timeline.svelte';
 import Tabs from './pages/Tabs.svelte';
 import Toggle from './pages/Toggle.svelte';
+import Tooltip from './pages/Tooltip.svelte';
 import Video from './pages/Video.svelte';
 import Notification from './pages/Notification.svelte';
 
@@ -91,6 +92,7 @@ export const AppRoutes = [
   { path: '/timeline', element: Timeline, title: 'Timeline' },
   { path: '/tabs', element: Tabs, title: 'Tabs' },
   { path: '/toggle', element: Toggle, title: 'Toggle' },
+  { path: '/tooltip', element: Tooltip, title: 'Tooltip' },
   { path: '/video', element: Video, title: 'Video' },
 ];
 

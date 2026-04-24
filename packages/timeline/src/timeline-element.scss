@@ -26,12 +26,12 @@
 .timeline-element {
   position: relative;
   z-index: 1;
-  min-height: 80px; // ensure space for the absolutely-positioned pin
+  min-height: 80px; // $v-gap * 10; no BSI semantic variable for element min-height
   padding: $timeline-content-padding;
 
   @include media-breakpoint-down(lg) {
-    margin-top: 32px;
-    margin-bottom: 30px;
+    margin-top: $v-gap * 4;
+    margin-bottom: 30px; // not a clean $v-gap multiple; no BSI variable
   }
 }
 
@@ -55,13 +55,13 @@
     border: $timeline-pin-circle-border;
     border-radius: 50%;
     margin-right: $v-gap * 2;
-    background: $white;
+    background: var(--#{$prefix}color-white, #fff);
     box-shadow: $card-shadow;
 
     svg {
       width: $timeline-pin-size;
       height: $timeline-pin-size;
-      fill: $primary;
+      fill: var(--#{$prefix}color-background-primary);
     }
 
     // it-icon slotted into pin-icon slot
@@ -74,12 +74,12 @@
   // Date badge
   .pin-text {
     border-radius: $border-radius;
-    background: $timeline-pin-background;
-    color: $white;
+    background: var(--#{$prefix}color-background-primary-deep);
+    color: var(--#{$prefix}color-white, #fff);
     font-family: $font-family-sans-serif;
-    font-size: var(--bs-body-font-size);
+    font-size: var(--#{$prefix}body-font-size);
     font-weight: 600;
-    line-height: var(--bs-body-line-height);
+    line-height: var(--#{$prefix}body-leading);
     text-transform: uppercase;
     white-space: nowrap;
 
@@ -91,10 +91,10 @@
       &::after {
         position: absolute;
         top: 50%;
-        left: -4px;
-        width: 10px;
-        height: 10px;
-        border-radius: 3px;
+        left: -4px; // half $timeline-pin-circle-border ($v-gap) for optical alignment; no BSI variable
+        width: 10px; // arrow pseudo size; no BSI variable
+        height: 10px; // arrow pseudo size; no BSI variable
+        border-radius: 3px; // intentionally smaller than $border-radius (4px) for pin arrow appearance
         background: $timeline-pin-background;
         content: '';
         transform: translateY(-50%) rotate(45deg);
@@ -105,18 +105,18 @@
   // ── Variant: current (it-now) — primary blue ──────────────────────────────
   &.it-now {
     .pin-icon {
-      background: $primary;
+      background: var(--#{$prefix}color-background-primary);
 
       svg {
-        fill: $white;
+        fill: var(--#{$prefix}color-white, #fff);
       }
     }
 
     .pin-text {
-      background: $primary;
+      background: var(--#{$prefix}color-background-primary);
 
       span::after {
-        background: $primary;
+        background: var(--#{$prefix}color-background-primary);
       }
     }
   }
@@ -124,18 +124,18 @@
   // ── Variant: past (it-evidence) — dark navy ───────────────────────────────
   &.it-evidence {
     .pin-icon {
-      background: $timeline-pin-background;
+      background: var(--#{$prefix}color-background-primary-deep);
 
       svg {
-        fill: $white;
+        fill: var(--#{$prefix}color-white, #fff);
       }
     }
 
     .pin-text {
-      background: $timeline-pin-background;
+      background: var(--#{$prefix}color-background-primary-deep);
 
       span::after {
-        background: $timeline-pin-background;
+        background: var(--#{$prefix}color-background-primary-deep);
       }
     }
   }
@@ -149,16 +149,16 @@
 // Push slotted card below the absolutely-positioned pin (pin bottom = 24px from
 // element top; padding-top = 18px → without margin the card overlaps pin by 6px)
 ::slotted(it-card) {
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: $v-gap * 2;
+  margin-bottom: $v-gap * 2;
 }
 
 // Mobile: pin sits in the 32px inter-element margin above; give card more room
 @include media-breakpoint-down(lg) {
   ::slotted(it-card) {
-    margin-top: 36px;
+    margin-top: 36px; // not a clean $v-gap multiple; no BSI variable
     margin-bottom: 0px;
-    margin-left: -22px;
+    margin-left: -22px; // layout offset matching shadow-root pin position; no BSI variable
   }
 }
 
@@ -181,7 +181,7 @@
     }
 
     .pin-text {
-      font-size: 1rem; // BSI explicit override at desktop
+      font-size: $font-size-base; // BSI explicit override at desktop
 
       span::after {
         right: var(--it-timeline-pin-arrow-right, auto);
@@ -194,24 +194,24 @@
 .it-now-label {
   position: absolute;
   z-index: 5;
-  top: calc(50% - 16px);
+  top: calc(50% - #{$v-gap * 2});
   right: var(--it-timeline-now-label-right);
   left: var(--it-timeline-now-label-left);
   display: flex;
   flex-direction: var(--it-timeline-pin-direction, row);
   align-items: center;
-  color: $primary;
+  color: var(--#{$prefix}color-background-primary);
   font-family: var(--#{$prefix}font-mono);
   font-weight: 600;
-  gap: 16px;
+  gap: $v-gap * 2;
   @include media-breakpoint-down(lg) {
     display: none;
   }
 
   &::after {
-    width: 16px;
-    height: 1px;
-    background-color: $primary;
+    width: $v-gap * 2;
+    height: 1px; // decorative line; no BSI variable
+    background-color: var(--#{$prefix}color-background-primary);
     content: '';
     // transform: translateY(-50%) rotate(45deg);
   }

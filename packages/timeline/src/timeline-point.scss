@@ -17,8 +17,8 @@
 :host {
   display: block;
   font-family: $font-family-sans-serif;
-  font-size: var(--bs-body-font-size);
-  line-height: var(--bs-body-line-height);
+  font-size: var(--#{$prefix}body-font-size);
+  line-height: var(--#{$prefix}body-leading);
 }
 
 // ── Color mapping ─────────────────────────────────────────────────────────────
@@ -86,7 +86,7 @@
     position: absolute;
     z-index: 1;
     top: var(--it-timeline-point-stack-mobile-after-top, 0);
-    left: 2rem;
+    left: $spacer * 2;
     width: 2px;
     height: calc(100% + #{$v-gap * 3});
     background-color: var(--point-color, var(--#{$prefix}color-text-primary));
@@ -105,7 +105,7 @@
       &::after {
         // base: point-main only — or point-main + point-bottom (no point-top)
         // dot centered on main = padding-top(0.5) + main-height(~2.75*1.1)/2 ≈ 2.6rem
-        top: 2.6rem;
+        top: 2.6rem; // layout-computed from padding-top + line-height; no BSI variable
         transform: translateY(-5px);
       }
 
@@ -118,7 +118,7 @@
   &.timeline-point-xs {
     .point-aside {
       width: 3.5rem;
-      padding: 0.5rem 0.75rem 0.5rem 0;
+      padding: 0.5rem 0.75rem 0.5rem 0; // 0.75rem has no clean $spacer fraction; no BSI variable
 
       @include media-breakpoint-down(md) {
         width: 3rem;
@@ -143,10 +143,10 @@
 // point-top present (with or without point-bottom: same top value)
 :host([has-point-top]) {
   .timeline-point.timeline-point-align-top .point-aside::after {
-    top: 3.5rem;
+    top: 3.5rem; // layout-computed from padding-top + line-height; no BSI variable
 
     @include media-breakpoint-down(md) {
-      top: 2.7rem;
+      top: 2.7rem; // layout-computed from padding-top + line-height; no BSI variable
     }
   }
 }
@@ -186,9 +186,9 @@
     position: absolute;
     z-index: 2;
     top: 50%;
-    right: -4px;
-    width: 9px;
-    height: 9px;
+    right: -4px; // BSI _timeline.scss also hardcodes this value
+    width: 9px; // dot size; no BSI variable
+    height: 9px; // dot size; no BSI variable
     border-radius: 50%;
     background-color: var(--point-color, var(--#{$prefix}color-text-primary));
     content: '';
@@ -210,7 +210,7 @@
       width: auto;
       flex-direction: row-reverse;
       padding-right: 0.5rem;
-      padding-left: 2.5rem;
+      padding-left: 2.5rem; // clears the $spacer * 2 vertical line + dot width; no BSI variable
 
       // The row ::before takes over the vertical line role
       &::before {
@@ -221,7 +221,7 @@
       &::after {
         top: 50%;
         right: auto;
-        left: 1.75rem;
+        left: 1.75rem; // aligns dot to the $spacer * 2 vertical line; no BSI variable
         transform: translateY(-50%);
       }
     }
@@ -234,9 +234,9 @@
 
     // align-top: dot stays at the top of the text block
     .timeline-point.timeline-point-align-top .point-aside::after {
-      top: 2.6rem;
+      top: 2.6rem; // layout-computed from padding-top + line-height; no BSI variable
       right: auto;
-      left: 1.75rem;
+      left: 1.75rem; // aligns dot to the $spacer * 2 vertical line; no BSI variable
       transform: translateY(-5px);
     }
   }
@@ -248,7 +248,7 @@
   min-width: 0;
   flex: 1 1 var(--it-timeline-point-content-flex-basis, 0) !important;
   margin-top: var(--it-timeline-point-margin-top, 0);
-  margin-left: 1rem;
+  margin-left: $spacer;
 
   ::slotted(*:last-child) {
     margin-bottom: 0 !important;
