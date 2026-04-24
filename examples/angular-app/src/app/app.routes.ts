@@ -54,6 +54,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/badge.component').then((c) => c.BadgeComponent),
   },
   {
+    title: 'Bottom Nav',
+    path: 'bottom-nav',
+    loadComponent: () => import('./pages/bottom-nav.component').then((c) => c.BottomNavComponent),
+  },
+  {
     title: 'Button',
     path: 'button',
     loadComponent: () => import('./pages/button.component').then((c) => c.ButtonComponent),
@@ -87,6 +92,11 @@ export const routes: Routes = [
     title: 'Collapse',
     path: 'collapse',
     loadComponent: () => import('./pages/collapse.component').then((c) => c.CollapseComponent),
+  },
+  {
+    title: 'Dimmer',
+    path: 'dimmer',
+    loadComponent: () => import('./pages/dimmer.component').then((c) => c.DimmerComponent),
   },
   {
     title: 'Dropdown',
@@ -190,6 +200,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/skiplinks.component').then((c) => c.SkiplinksComponent),
   },
   {
+    title: 'BottomNav',
+    path: 'bottom-nav',
+    loadComponent: () => import('./pages/bottom-nav.component').then((c) => c.BottomNavComponent),
+  },
+  {
     title: 'Sticky',
     path: 'sticky',
     loadComponent: () => import('./pages/sticky.component').then((c) => c.StickyComponent),
@@ -200,12 +215,28 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/table.component').then((c) => c.TableComponent),
   },
   {
+    title: 'Timeline',
+    path: 'timeline',
+    loadComponent: () => import('./pages/timeline.component').then((c) => c.TimelineComponent),
+  },
+  {
+    title: 'Tabs',
+    path: 'tabs',
+    loadComponent: () => import('./pages/tabs.component').then((c) => c.TabsComponent),
+  },
+{
     title: 'Toggle',
     path: 'toggle',
     loadComponent: () => import('./pages/toggle.component').then((c) => c.ToggleComponent),
   },
   {
+    title: 'Tooltip',
+    path: 'tooltip',
+    loadComponent: () => import('./pages/tooltip.component').then((c) => c.TooltipComponent),
+  },
+  {
     title: 'Video',
+
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
   },

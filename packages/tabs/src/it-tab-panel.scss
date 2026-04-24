@@ -1,0 +1,45 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
+$it-tab-panel-prefix: 'it-tab-panel';
+
+// Variabili + stili host
+// Il pannello e' nascosto di default; si mostra solo quando active e' true.
+// Evita il flash di contenuto visibile prima che it-tabs inizializzi gli stati.
+:host {
+  display: none;
+  margin-block: calc(
+    -1 * var(--#{$prefix}spacing-sm)
+  ); // Compensa il padding verticale di div.tab-pane per evitare scroll indesiderati quando il pannello diventa attivo.
+  // Rimuove l'outline del browser: il focus ring è gestito in :host(:focus-visible).
+  outline: none;
+}
+
+// Stato: attivo
+:host([active]) {
+  display: flex;
+}
+
+// Panel interno
+// --it-tab-panel_margin-block è impostata a 0.75rem da it-tabs.scss solo quando
+// il layout è verticale (--vertical, --start, --end), e si propaga via flat tree
+// inheritance dentro l'host. Default a 0 per il layout orizzontale.
+.tab-pane {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: var(--#{$prefix}spacing-m, 1rem);
+}
+
+// Focus visibile sull'host (role="tabpanel", tabindex="0").
+// Non gestiamo il focus via focus.scss globale perché quello stile attraversa
+// solo il light DOM. Il focus ring è replicato qui dentro lo shadow.
+:host(:focus-visible) {
+  box-shadow:
+    inset 0 0 0 2px var(--#{$prefix}color-outline-focus),
+    inset 0 0 0 5px var(--#{$prefix}color-border-inverse);
+  outline: 3px solid transparent;
+  outline-offset: 3px;
+}

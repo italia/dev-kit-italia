@@ -3,6 +3,7 @@ import javascriptLogo from './javascript.svg';
 import '@italia/dev-kit-italia/elements.js';
 // pagina-specific scripts (es. examples per componenti)
 import './js/popover.js';
+import './js/tooltip.js';
 
 const it = {
   $code: 'it',
@@ -32,12 +33,14 @@ const componentsMenuItems = [
   { label: 'Back to Top', href: '/src/back-to-top' },
   { label: 'Back', href: '/src/back' },
   { label: 'Badge', href: '/src/badge' },
+  { label: 'Bottom Nav', href: '/src/bottom-nav' },
   { label: 'Breadcrumbs', href: '/src/breadcrumbs' },
   { label: 'Button', href: '/src/button' },
   { label: 'Callout', href: '/src/callout' },
   { label: 'Checkbox', href: '/src/checkbox' },
   { label: 'Chip', href: '/src/chip' },
   { label: 'Collapse', href: '/src/collapse ' },
+  { label: 'Dimmer', href: '/src/dimmer' },
   { label: 'Dropdown', href: '/src/dropdown' },
   { label: 'Form', href: '/src/form' },
   { label: 'Forward', href: '/src/forward' },
@@ -58,8 +61,13 @@ const componentsMenuItems = [
   { label: 'Select', href: '/src/select' },
   { label: 'Sidebar', href: '/src/sidebar' },
   { label: 'Skiplinks', href: '/src/skiplinks' },
+  { label: 'Bottom Nav', href: '/src/bottom-nav' },
   { label: 'Sticky', href: '/src/sticky' },
+  { label: 'Timeline', href: '/src/timeline' },
+  { label: 'Tables', href: '/src/tables' },
+  { label: 'Tabs', href: '/src/tabs' },
   { label: 'Toggle', href: '/src/toggle' },
+  { label: 'Tooltip', href: '/src/tooltip' },
   { label: 'Video', href: '/src/video' },
 ];
 

@@ -36,7 +36,7 @@ it-card:not(:defined) {
     margin-bottom: var(--#{$prefix}heading-spacing);
     font-size: var(--#{$prefix}heading-3-font-size);
     font-weight: var(--#{$prefix}heading-font-weight);
-    line-height: var(--#{$prefix}heading-line-height);
+    line-height: var(--#{$prefix}heading-leading);
   }
 
   [slot='text'] {

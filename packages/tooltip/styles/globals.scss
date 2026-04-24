@@ -1,0 +1,6 @@
+it-tooltip:not(:defined) {
+  [slot='content'] {
+    position: absolute;
+    visibility: hidden;
+  }
+}
