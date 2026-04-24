@@ -1,0 +1,61 @@
+@use 'sass:map';
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
+
+@import 'bootstrap-italia/src/scss/base/transitions';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/components/notifications';
+@import 'bootstrap-italia/src/scss/components/type';
+
+//ovveride utilities: get only needed utilities
+$utilities: (
+  'margin-end': map.merge(
+      map.get($utilities, 'margin-end'),
+      (
+        values: (
+          2: map.get($spacers, 2),
+        ),
+      )
+    ),
+);
+
+/**
+ * Copied from bsi reboot
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* END copied from bsi reboot */
+
+::slotted(p) {
+  margin-top: var(--#{$prefix}spacing-xxs) !important;
+  color: var(--#{$prefix}notification-text-color);
+  font-size: var(--#{$prefix}notification-text-font-size) !important;
+  line-height: var(--#{$prefix}body-leading) !important;
+}
+
+::slotted(p:last-child) {
+  margin-bottom: 0 !important;
+}
+
+.with-icon ::slotted(p) {
+  margin-bottom: 0 !important;
+  margin-left: var(--#{$prefix}spacing-xl);
+}
+
+.notification-close {
+  --#{$prefix}icon-default: #{$icon-secondary};
+  border: 0;
+
+  &:hover {
+    --#{$prefix}icon-default: #{$icon-primary};
+  }
+}
+
+@import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities

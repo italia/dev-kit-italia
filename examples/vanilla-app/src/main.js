@@ -51,6 +51,7 @@ const componentsMenuItems = [
   { label: 'Megamenu', href: '/src/megamenu' },
   { label: 'Modal', href: '/src/modal' },
   { label: 'Navscroll', href: '/src/navscroll' },
+  { label: 'Notification', href: '/src/notification' },
   { label: 'Overlay', href: '/src/overlay' },
   { label: 'Pagination', href: '/src/pagination.html' },
   { label: 'Popover', href: '/src/popover' },

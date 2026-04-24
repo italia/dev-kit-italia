@@ -33,6 +33,7 @@
       "@italia/megamenu",
       "@italia/modal",
       "@italia/navscroll",
+      "@italia/notification",
       "@italia/pagination",
       "@italia/popover",
       "@italia/progress",

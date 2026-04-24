@@ -26,6 +26,7 @@ import '@italia/megamenu/it-megamenu.js';
 import '@italia/hero/it-hero.js';
 import '@italia/modal/it-modal.js';
 import '@italia/navscroll/it-navscroll.js';
+import '@italia/notification/it-notification.js';
 import '@italia/pagination/it-pagination-item.js';
 import '@italia/pagination/it-pagination.js';
 import '@italia/popover/it-popover.js';

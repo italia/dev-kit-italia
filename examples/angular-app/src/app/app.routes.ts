@@ -240,4 +240,9 @@ export const routes: Routes = [
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
   },
+  {
+    title: 'Notification',
+    path: 'notification',
+    loadComponent: () => import('./pages/notification.component').then((c) => c.NotificationComponent),
+  },
 ];

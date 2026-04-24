@@ -307,6 +307,47 @@ it-select {
   min-width: 250px;
 }
 
+// Notification specific styles
+.test-docs {
+  it-notification::part(notification) {
+    position: static;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    display: block;
+    opacity: 1;
+    transform: none;
+  }
+
+  it-notification[dismissable]::part(notification) {
+    position: relative;
+  }
+}
+
+.test-desktop,
+.test-animation {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 500px;
+
+  it-notification::part(notification) {
+    opacity: 1;
+  }
+}
+
+.test-desktop it-notification::part(notification) {
+  position: absolute;
+  display: block;
+}
+
+#storybook-root:has(.test-desktop) {
+  width: unset;
+}
+
+// END Notification specific styles
+
 .megamenu-story-layout {
   min-height: 300px;
 }
