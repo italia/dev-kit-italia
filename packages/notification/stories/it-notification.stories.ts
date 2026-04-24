@@ -21,7 +21,7 @@ interface NotificationProps {
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Componenti/Notifications',
+  title: 'Componenti/Notification',
   tags: ['a11y-ok', 'web-component', 'alpha'],
   component: 'it-notification',
   parameters: {
