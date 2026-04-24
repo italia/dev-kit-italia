@@ -29,7 +29,7 @@ const meta = {
   },
   // decorators: [(story) => html` <div class="container p-0">${story()}</div> `],
   args: {
-    icon: 'it-check-circle',
+    icon: 'it-info-circle',
     dismissable: false,
   },
   argTypes: {
@@ -216,43 +216,6 @@ export const Stati: Story = {
     <div>
       <p class="mb-4"><strong>Precauzione</strong></p>
       <it-notification status="warning" icon="it-error">
-        <span slot="title">Titolo notifica</span>
-      </it-notification>
-    </div>
-  `,
-};
-
-export const PosizioneEAngoli: Story = {
-  name: 'Posizione e angoli arrotondati',
-  decorators: [
-    (story) => html`
-      <div class="test-docs" style="display:grid;gap:24px;grid-template-columns:1fr 1fr;">${story()}</div>
-    `,
-  ],
-  argTypes: { ...disabledControls() },
-  render: () => html`
-    <div>
-      <p class="mb-4"><strong>Basico (arrotondamento ai 4 angoli)</strong></p>
-      <it-notification icon="it-check-circle" status="success">
-        <span slot="title">Titolo notifica</span>
-      </it-notification>
-    </div>
-
-    <div>
-      <p class="mb-4"><strong>top-fix</strong></p>
-      <it-notification icon="it-check-circle" status="success" fix="top">
-        <span slot="title">Titolo notifica</span>
-      </it-notification>
-      <p class="my-4"><strong>bottom-fix</strong></p>
-      <it-notification icon="it-check-circle" status="success" fix="bottom">
-        <span slot="title">Titolo notifica</span>
-      </it-notification>
-      <p class="my-4"><strong>left-fix</strong></p>
-      <it-notification icon="it-check-circle" status="success" fix="left">
-        <span slot="title">Titolo notifica</span>
-      </it-notification>
-      <p class="my-4"><strong>right-fix</strong></p>
-      <it-notification icon="it-check-circle" status="success" fix="right">
         <span slot="title">Titolo notifica</span>
       </it-notification>
     </div>

@@ -40,15 +40,15 @@ Usa l'attributo `heading-level` per impostarlo.
 
 Il componente si occupa automaticamente di impostare e gestire gli attributi necessari per l'accessibilità, sia `role` che `aria-hidden`.
 
-## Notifica con messaggio
+## Testo supplementare
 
 Puoi aggiungere un breve testo al di sotto del titolo utilizzando un tag `<p>`.
 
 <Canvas of={Stories.ConMessaggio} />
 
-## Eliminabili
+## Pulsante di chiusura
 
-Le notifiche eliminabili non vengono nascoste dopo un intervallo di tempo ma vengono chiuse solo quando si clicca sul rispettivo pulsante di chiusura.
+Le notifiche con pulsante di chiusura non vengono nascoste dopo un intervallo di tempo ma vengono chiuse solo quando si clicca sul rispettivo pulsante di chiusura.
 
 Utilizza un attributo aggiuntivo `dismissable` per ottenere questo comportamento.
 
@@ -66,16 +66,17 @@ Utilizza l'attributo `status` con uno di questi valori:
 
 <Canvas of={Stories.Stati} />
 
-## Posizione e arrotondamento degli angoli
+## Posizione
 
 La posizione predefinita delle notifiche è nella parte destra inferiore della finestra.
 
 Utilizzando gli attributi aggiuntivi di posizione fissa elencati di seguito la notifica verrà posizionata a filo di uno dei margini indicati,
 modificando l'arrotondamento degli angoli di conseguenza.
 
-**N.B. questi attributi non influenzano il posizionamento su device mobile, in questo caso la Notification è sempre a piede della finestra e ne occupa tutta la larghezza**
-
-<Canvas of={Stories.PosizioneEAngoli} />
+<it-callout variant="warning" heading-level="h3">
+  <span slot="title">Posizione su mobile</span>
+  <p>Questi attributi non influenzano il posizionamento su device mobile, in questo caso la Notification è sempre a piede della finestra e ne occupa tutta la larghezza</p>
+</it-callout>
 
 ### Posizione predefinita
 

@@ -339,6 +339,7 @@ it-select {
 
 .test-desktop it-notification::part(notification) {
   position: absolute;
+  display: block;
 }
 
 #storybook-root:has(.test-desktop) {

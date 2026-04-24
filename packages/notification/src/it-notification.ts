@@ -147,6 +147,10 @@ export class ItNotification extends BaseLocalizedComponent {
       [`${this.fix}-fix`]: this.fix,
     });
 
+    const headingClasses = this.composeClass('notification-title', {
+      'd-flex align-items-center': !!this.icon,
+    });
+
     const headingTag = unsafeStatic(this.getHeadingLevel());
 
     return html`
@@ -158,11 +162,12 @@ export class ItNotification extends BaseLocalizedComponent {
         aria-hidden="${ifDefined(this.isShown ? undefined : 'true')}"
       >
         ${staticHtml`
-          <${headingTag} class="h5" id="heading" part="title">
+          <${headingTag} class=${headingClasses} id="heading" part="title">
             ${
               this.icon
                 ? html`<it-icon
-                    class="icon"
+                    class="icon me-2"
+                    size="sm"
                     color=${ifDefined(this.status ? NOTIFICATION_STATUS_COLORS[this.status] : undefined)}
                     name="${this.icon}"
                     align="none"

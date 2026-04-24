@@ -1,26 +1,3 @@
-it-notification {
-  p {
-    margin-top: 1rem;
-    color: $color-text-secondary;
-    font-size: 0.875rem;
-    line-height: 1.5rem;
-  }
-
-  p:last-child {
-    margin-bottom: 0;
-  }
-
-  &[icon] {
-    p {
-      margin-left: 2rem;
-    }
-
-    @include media-breakpoint-up(sm) {
-      p {
-        margin-left: 1.778rem;
-      }
-    }
-  }
-}
+// it-notification {}
 
 @import './fouc';
