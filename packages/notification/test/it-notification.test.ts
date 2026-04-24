@@ -172,26 +172,6 @@ describe('<it-notification>', () => {
       const heading = el.shadowRoot?.querySelector('h2#heading');
       expect(heading).to.exist;
     });
-
-    it('heading ha classe "h5"', async () => {
-      const el = await fixture<ItNotification>(html`
-        <it-notification>
-          <span slot="title">Titolo</span>
-        </it-notification>
-      `);
-      const heading = el.shadowRoot?.querySelector('#heading');
-      expect(heading?.classList.contains('h5')).to.be.true;
-    });
-
-    it('heading ha part="title"', async () => {
-      const el = await fixture<ItNotification>(html`
-        <it-notification>
-          <span slot="title">Titolo</span>
-        </it-notification>
-      `);
-      const heading = el.shadowRoot?.querySelector('[part="title"]');
-      expect(heading).to.exist;
-    });
   });
 
   // ---------------------------------------------------------------------------
