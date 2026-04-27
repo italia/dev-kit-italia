@@ -1,5 +1,44 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-alpha.8
+
+### Patch Changes
+
+- [`c0234ba`](https://github.com/italia/dev-kit-italia/commit/c0234ba6192c5bfae44826b1b4161deb225e4aea) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed dist export for full.css
+
+- Updated dependencies []:
+  - @italia/accordion@1.0.0-alpha.8
+  - @italia/autocomplete@1.0.0-alpha.8
+  - @italia/avatar@1.0.0-alpha.8
+  - @italia/back-to-top@1.0.0-alpha.8
+  - @italia/breadcrumbs@1.0.0-alpha.8
+  - @italia/button@1.0.0-alpha.8
+  - @italia/callout@1.0.0-alpha.8
+  - @italia/card@1.0.0-alpha.8
+  - @italia/carousel@1.0.0-alpha.8
+  - @italia/checkbox@1.0.0-alpha.8
+  - @italia/chip@1.0.0-alpha.8
+  - @italia/collapse@1.0.0-alpha.8
+  - @italia/dropdown@1.0.0-alpha.8
+  - @italia/hero@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+  - @italia/input@1.0.0-alpha.8
+  - @italia/megamenu@1.0.0-alpha.8
+  - @italia/modal@1.0.0-alpha.8
+  - @italia/navscroll@1.0.0-alpha.8
+  - @italia/pagination@1.0.0-alpha.8
+  - @italia/popover@1.0.0-alpha.8
+  - @italia/progress@1.0.0-alpha.8
+  - @italia/radio@1.0.0-alpha.8
+  - @italia/rating@1.0.0-alpha.8
+  - @italia/section@1.0.0-alpha.8
+  - @italia/select@1.0.0-alpha.8
+  - @italia/skiplinks@1.0.0-alpha.8
+  - @italia/sticky@1.0.0-alpha.8
+  - @italia/toggle@1.0.0-alpha.8
+  - @italia/video@1.0.0-alpha.8
+
 ## 1.0.0-alpha.7
 
 ### Minor Changes
