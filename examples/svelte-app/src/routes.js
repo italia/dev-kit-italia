@@ -39,14 +39,13 @@ import Skiplinks from './pages/Skiplinks.svelte';
 import Sticky from './pages/Sticky.svelte';
 import Carousel from './pages/Carousel.svelte';
 import Table from './pages/Table.svelte';
-import Timeline from './pages/Timeline.svelte';
 import Tabs from './pages/Tabs.svelte';
+import Thumbnav from './pages/Thumbnav.svelte';
+import Timeline from './pages/Timeline.svelte';
 import Toggle from './pages/Toggle.svelte';
-<<<<<<< HEAD
 import Transfer from './pages/Transfer.svelte';
-=======
 import Tooltip from './pages/Tooltip.svelte';
->>>>>>> main
+import Upload from './pages/Upload.svelte';
 import Video from './pages/Video.svelte';
 import Notification from './pages/Notification.svelte';
 
@@ -93,11 +92,13 @@ export const AppRoutes = [
   { path: '/skiplinks', element: Skiplinks, title: 'Skiplinks' },
   { path: '/sticky', element: Sticky, title: 'Sticky' },
   { path: '/tables', element: Table, title: 'Tables' },
+  { path: '/thumbnav', element: Thumbnav, title: 'Thumbnav' },
   { path: '/timeline', element: Timeline, title: 'Timeline' },
   { path: '/tabs', element: Tabs, title: 'Tabs' },
   { path: '/toggle', element: Toggle, title: 'Toggle' },
   { path: '/transfer', element: Transfer, title: 'Transfer' },
   { path: '/tooltip', element: Tooltip, title: 'Tooltip' },
+  { path: '/upload', element: Upload, title: 'Upload' },
   { path: '/video', element: Video, title: 'Video' },
 ];
 

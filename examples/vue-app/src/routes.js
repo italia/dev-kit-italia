@@ -38,6 +38,7 @@ import Select from './components/Select.vue';
 import Sidebar from './components/Sidebar.vue';
 import Sticky from './components/Sticky.vue';
 import Table from './components/Table.vue';
+import Thumbnav from './components/Thumbnav.vue';
 import Timeline from './pages/Timeline.vue';
 import Toggle from './components/Toggle.vue';
 <<<<<<< HEAD
@@ -49,6 +50,7 @@ import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Carousel from './components/Carousel.vue';
 import Pagination from './components/Pagination.vue';
+import Upload from './components/Upload.vue';
 import Notification from './components/Notification.vue';
 import Tabs from './pages/Tabs.vue';
 
@@ -95,11 +97,13 @@ const routes = [
   { path: '/skiplinks', name: 'Skiplinks', component: Skiplinks },
   { path: '/sticky', name: 'Sticky', component: Sticky },
   { path: '/tables', name: 'Tables', component: Table },
+  { path: '/thumbnav', name: 'Thumbnav', component: Thumbnav },
   { path: '/timeline', name: 'Timeline', component: Timeline },
   { path: '/tabs', name: 'Tabs', component: Tabs },
   { path: '/toggle', name: 'Toggle', component: Toggle },
   { path: '/transfer', name: 'Transfer', component: Transfer },
   { path: '/tooltip', name: 'Tooltip', component: Tooltip },
+  { path: '/upload', name: 'Upload', component: Upload },
   { path: '/video', name: 'Video', component: Video },
 ];
 

@@ -25,8 +25,10 @@ export * from '@italia/radio';
 export * from '@italia/section';
 export * from '@italia/skiplinks';
 export * from '@italia/sticky';
+export * from '@italia/upload';
 export * from '@italia/toggle';
 export * from '@italia/transfer';
 export * from '@italia/video';
+export * from '@italia/thumbnav';
 
 export { registerTranslation };

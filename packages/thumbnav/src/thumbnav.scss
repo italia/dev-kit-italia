@@ -1,0 +1,77 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
+@import 'bootstrap-italia/src/scss/components/thumbnav';
+
+:host {
+  display: block;
+}
+
+ul {
+  list-style: none;
+  @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+    list-style: disc;
+  }
+}
+
+// Pass sizing to slotted items as flex children
+.thumb-nav ::slotted(it-thumbnav-item) {
+  position: relative;
+  width: 240px;
+  flex: 0 1 auto;
+  margin: 8px;
+}
+
+// Small variant: half-size items
+.thumb-nav.thumb-nav-small ::slotted(it-thumbnav-item) {
+  width: 120px;
+}
+
+// Vertical + small: fix item height
+.thumb-nav.thumb-nav-vertical.thumb-nav-small ::slotted(it-thumbnav-item) {
+  height: 80px;
+}
+
+// Fixed grid: flex-basis based sizing
+.thumb-nav.thumb-nav-fixed ::slotted(it-thumbnav-item) {
+  width: auto;
+  flex-basis: 240px;
+}
+
+.thumb-nav.thumb-nav-fixed.thumb-nav-small ::slotted(it-thumbnav-item) {
+  flex-basis: 120px;
+}
+
+// Auto grid: proportional columns
+.thumb-nav.thumb-nav-auto ::slotted(it-thumbnav-item) {
+  width: auto;
+}
+
+.thumb-nav.thumb-nav-auto.thumb-nav-auto-2 ::slotted(it-thumbnav-item) {
+  flex-basis: calc(50% - 16px);
+}
+
+.thumb-nav.thumb-nav-auto.thumb-nav-auto-3 ::slotted(it-thumbnav-item) {
+  flex-basis: calc(33.3333% - 16px);
+}
+
+.thumb-nav.thumb-nav-auto.thumb-nav-auto-4 ::slotted(it-thumbnav-item) {
+  flex-basis: calc(25% - 16px);
+}
+
+.thumb-nav.thumb-nav-auto.thumb-nav-auto-5 ::slotted(it-thumbnav-item) {
+  flex-basis: calc(20% - 16px);
+}
+
+// Pass overlay colour via custom property so item shadow can read it
+:host([hover='black']) {
+  --it-thumbnav-overlay-bg: rgb(0, 0, 0);
+  --it-thumbnav-overlay-hover-opacity: 0.8;
+}
+
+:host([hover='primary']) {
+  --it-thumbnav-overlay-bg: var(--#{$prefix}color-background-primary);
+  --it-thumbnav-overlay-hover-opacity: 0.8;
+}
