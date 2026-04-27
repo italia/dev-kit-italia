@@ -192,7 +192,7 @@ export class ItDropdownBase extends BaseComponent {
           @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
           class="dropdown-toggle"
           it-aria-label=${ifDefined(this.itAriaLabel ? this.itAriaLabel : undefined)}
-          exportparts="focusable, button, icon it-icon"
+          exportparts="focusable, button, icon, it-icon"
           part="it-button"
           it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
           it-aria-controls=${this._popoverOpen ? this._menuId : nothing}
