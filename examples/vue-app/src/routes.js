@@ -41,11 +41,8 @@ import Table from './components/Table.vue';
 import Thumbnav from './components/Thumbnav.vue';
 import Timeline from './pages/Timeline.vue';
 import Toggle from './components/Toggle.vue';
-<<<<<<< HEAD
 import Transfer from './components/Transfer.vue';
-=======
 import Tooltip from './components/Tooltip.vue';
->>>>>>> main
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Carousel from './components/Carousel.vue';

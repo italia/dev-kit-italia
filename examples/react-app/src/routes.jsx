@@ -39,11 +39,8 @@ import Table from './pages/Table';
 import Thumbnav from './pages/Thumbnav';
 import Timeline from './pages/Timeline';
 import Toggle from './pages/Toggle';
-<<<<<<< HEAD
 import Transfer from './pages/Transfer';
-=======
 import Tooltip from './pages/Tooltip';
->>>>>>> main
 import Video from './pages/Video';
 import Carousel from './pages/Carousel';
 import Pagination from './pages/Pagination';
