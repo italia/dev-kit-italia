@@ -40,11 +40,16 @@ import Sticky from './components/Sticky.vue';
 import Table from './components/Table.vue';
 import Timeline from './pages/Timeline.vue';
 import Toggle from './components/Toggle.vue';
+<<<<<<< HEAD
 import Transfer from './components/Transfer.vue';
+=======
+import Tooltip from './components/Tooltip.vue';
+>>>>>>> main
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Carousel from './components/Carousel.vue';
 import Pagination from './components/Pagination.vue';
+import Notification from './components/Notification.vue';
 import Tabs from './pages/Tabs.vue';
 
 const routes = [
@@ -77,6 +82,7 @@ const routes = [
   { path: '/megamenu', name: 'Megamenu', component: Megamenu },
   { path: '/modal', name: 'Modal', component: Modal },
   { path: '/navscroll', name: 'Navscroll', component: Navscroll },
+  { path: '/notification', name: 'Notification', component: Notification },
   { path: '/overlay', name: 'Overlay', component: Overlay },
   { path: '/pagination', name: 'Pagination', component: Pagination },
   { path: '/popover', name: 'Popover', component: Popover },
@@ -93,6 +99,7 @@ const routes = [
   { path: '/tabs', name: 'Tabs', component: Tabs },
   { path: '/toggle', name: 'Toggle', component: Toggle },
   { path: '/transfer', name: 'Transfer', component: Transfer },
+  { path: '/tooltip', name: 'Tooltip', component: Tooltip },
   { path: '/video', name: 'Video', component: Video },
 ];
 

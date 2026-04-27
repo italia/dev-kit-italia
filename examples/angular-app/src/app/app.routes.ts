@@ -235,9 +235,19 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/transfer.component').then((c) => c.TransferComponent),
   },
   {
+    title: 'Tooltip',
+    path: 'tooltip',
+    loadComponent: () => import('./pages/tooltip.component').then((c) => c.TooltipComponent),
+  },
+  {
     title: 'Video',
 
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
+  },
+  {
+    title: 'Notification',
+    path: 'notification',
+    loadComponent: () => import('./pages/notification.component').then((c) => c.NotificationComponent),
   },
 ];

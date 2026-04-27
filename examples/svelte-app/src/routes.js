@@ -42,8 +42,13 @@ import Table from './pages/Table.svelte';
 import Timeline from './pages/Timeline.svelte';
 import Tabs from './pages/Tabs.svelte';
 import Toggle from './pages/Toggle.svelte';
+<<<<<<< HEAD
 import Transfer from './pages/Transfer.svelte';
+=======
+import Tooltip from './pages/Tooltip.svelte';
+>>>>>>> main
 import Video from './pages/Video.svelte';
+import Notification from './pages/Notification.svelte';
 
 export const AppRoutes = [
   { path: '/', element: Home, title: 'Homepage' },
@@ -75,6 +80,7 @@ export const AppRoutes = [
   { path: '/megamenu', element: Megamenu, title: 'Megamenu' },
   { path: '/modal', element: Modal, title: 'Modal' },
   { path: '/navscroll', element: Navscroll, title: 'Navscroll' },
+  { path: '/notification', element: Notification, title: 'Notification' },
   { path: '/overlay', element: Overlay, title: 'Overlay' },
   { path: '/pagination', element: Pagination, title: 'Pagination' },
   { path: '/popover', element: Popover, title: 'Popover' },
@@ -91,6 +97,7 @@ export const AppRoutes = [
   { path: '/tabs', element: Tabs, title: 'Tabs' },
   { path: '/toggle', element: Toggle, title: 'Toggle' },
   { path: '/transfer', element: Transfer, title: 'Transfer' },
+  { path: '/tooltip', element: Tooltip, title: 'Tooltip' },
   { path: '/video', element: Video, title: 'Video' },
 ];
 

@@ -3,6 +3,7 @@ import javascriptLogo from './javascript.svg';
 import '@italia/dev-kit-italia/elements.js';
 // pagina-specific scripts (es. examples per componenti)
 import './js/popover.js';
+import './js/tooltip.js';
 
 const it = {
   $code: 'it',
@@ -50,6 +51,7 @@ const componentsMenuItems = [
   { label: 'Megamenu', href: '/src/megamenu' },
   { label: 'Modal', href: '/src/modal' },
   { label: 'Navscroll', href: '/src/navscroll' },
+  { label: 'Notification', href: '/src/notification' },
   { label: 'Overlay', href: '/src/overlay' },
   { label: 'Pagination', href: '/src/pagination.html' },
   { label: 'Popover', href: '/src/popover' },
@@ -67,6 +69,7 @@ const componentsMenuItems = [
   { label: 'Tabs', href: '/src/tabs' },
   { label: 'Toggle', href: '/src/toggle' },
   { label: 'Transfer', href: '/src/transfer' },
+  { label: 'Tooltip', href: '/src/tooltip' },
   { label: 'Video', href: '/src/video' },
 ];
 

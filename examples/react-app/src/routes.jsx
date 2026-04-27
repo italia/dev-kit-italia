@@ -38,10 +38,15 @@ import Sticky from './pages/Sticky';
 import Table from './pages/Table';
 import Timeline from './pages/Timeline';
 import Toggle from './pages/Toggle';
+<<<<<<< HEAD
 import Transfer from './pages/Transfer';
+=======
+import Tooltip from './pages/Tooltip';
+>>>>>>> main
 import Video from './pages/Video';
 import Carousel from './pages/Carousel';
 import Pagination from './pages/Pagination';
+import Notification from './pages/Notification';
 import Tabs from './pages/Tabs';
 import Progress from './pages/Progress';
 
@@ -75,6 +80,7 @@ export const AppRoutes = [
   { path: '/megamenu', element: <Megamenu />, title: 'Megamenu' },
   { path: '/modal', element: <Modal />, title: 'Modal' },
   { path: '/navscroll', element: <Navscroll />, title: 'Navscroll' },
+  { path: '/notification', element: <Notification />, title: 'Notification' },
   { path: '/overlay', element: <Overlay />, title: 'Overlay' },
   { path: '/pagination', element: <Pagination />, title: 'Pagination' },
   { path: '/popover', element: <Popover />, title: 'Popover' },
@@ -91,5 +97,6 @@ export const AppRoutes = [
   { path: '/timeline', element: <Timeline />, title: 'Timeline' },
   { path: '/toggle', element: <Toggle />, title: 'Toggle' },
   { path: '/transfer', element: <Transfer />, title: 'Transfer' },
+  { path: '/tooltip', element: <Tooltip />, title: 'Tooltip' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];
