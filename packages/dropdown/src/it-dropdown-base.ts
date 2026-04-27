@@ -176,7 +176,7 @@ export class ItDropdownBase extends BaseComponent {
         placement=${this.alignment}
         @it-popover-open=${this._onPopoverOpen}
         @it-popover-close=${this._onPopoverClose}
-        exportparts="focusable, icon, button it-icon, it-button"
+        exportparts="focusable, icon, button, it-icon, it-button"
         part="popover"
         ?open=${this._popoverOpen}
         controlled
