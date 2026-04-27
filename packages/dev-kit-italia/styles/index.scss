@@ -92,7 +92,6 @@
 @import './components/list';
 @import './components/sidebar';
 
-
 .it-footer-main .it-brand-wrapper ::part(icon) {
   width: var(--#{$prefix}footer-brand-icon-size);
   height: var(--#{$prefix}footer-brand-icon-size);
