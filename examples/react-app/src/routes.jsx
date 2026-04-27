@@ -36,11 +36,8 @@ import Sidebar from './pages/Sidebar';
 import Skiplinks from './pages/Skiplinks';
 import Sticky from './pages/Sticky';
 import Table from './pages/Table';
-<<<<<<< HEAD
 import Thumbnav from './pages/Thumbnav';
-=======
 import Timeline from './pages/Timeline';
->>>>>>> main
 import Toggle from './pages/Toggle';
 import Tooltip from './pages/Tooltip';
 import Video from './pages/Video';
@@ -49,6 +46,7 @@ import Pagination from './pages/Pagination';
 import Notification from './pages/Notification';
 import Tabs from './pages/Tabs';
 import Progress from './pages/Progress';
+import Upload from './pages/Upload';
 
 export const AppRoutes = [
   { path: '/', element: <Home />, title: 'Homepage' },
@@ -98,5 +96,6 @@ export const AppRoutes = [
   { path: '/timeline', element: <Timeline />, title: 'Timeline' },
   { path: '/toggle', element: <Toggle />, title: 'Toggle' },
   { path: '/tooltip', element: <Tooltip />, title: 'Tooltip' },
+  { path: '/upload', element: <Upload />, title: 'Upload' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];

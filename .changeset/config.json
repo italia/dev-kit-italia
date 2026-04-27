@@ -48,6 +48,7 @@
       "@italia/toggle",
       "@italia/thumbnav",
       "@italia/tooltip",
+      "@italia/upload",
       "@italia/video"
     ]
   ],

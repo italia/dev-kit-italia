@@ -39,14 +39,12 @@ import Skiplinks from './pages/Skiplinks.svelte';
 import Sticky from './pages/Sticky.svelte';
 import Carousel from './pages/Carousel.svelte';
 import Table from './pages/Table.svelte';
-<<<<<<< HEAD
-import Thumbnav from './pages/Thumbnav.svelte';
-=======
-import Timeline from './pages/Timeline.svelte';
 import Tabs from './pages/Tabs.svelte';
->>>>>>> main
+import Thumbnav from './pages/Thumbnav.svelte';
+import Timeline from './pages/Timeline.svelte';
 import Toggle from './pages/Toggle.svelte';
 import Tooltip from './pages/Tooltip.svelte';
+import Upload from './pages/Upload.svelte';
 import Video from './pages/Video.svelte';
 import Notification from './pages/Notification.svelte';
 
@@ -98,6 +96,7 @@ export const AppRoutes = [
   { path: '/tabs', element: Tabs, title: 'Tabs' },
   { path: '/toggle', element: Toggle, title: 'Toggle' },
   { path: '/tooltip', element: Tooltip, title: 'Tooltip' },
+  { path: '/upload', element: Upload, title: 'Upload' },
   { path: '/video', element: Video, title: 'Video' },
 ];
 

@@ -70,6 +70,7 @@ const componentsMenuItems = [
   { label: 'Tabs', href: '/src/tabs' },
   { label: 'Toggle', href: '/src/toggle' },
   { label: 'Tooltip', href: '/src/tooltip' },
+  { label: 'Upload', href: '/src/upload' },
   { label: 'Video', href: '/src/video' },
 ];
 

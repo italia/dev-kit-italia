@@ -38,17 +38,15 @@ import Select from './components/Select.vue';
 import Sidebar from './components/Sidebar.vue';
 import Sticky from './components/Sticky.vue';
 import Table from './components/Table.vue';
-<<<<<<< HEAD
 import Thumbnav from './components/Thumbnav.vue';
-=======
 import Timeline from './pages/Timeline.vue';
->>>>>>> main
 import Toggle from './components/Toggle.vue';
 import Tooltip from './components/Tooltip.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Carousel from './components/Carousel.vue';
 import Pagination from './components/Pagination.vue';
+import Upload from './components/Upload.vue';
 import Notification from './components/Notification.vue';
 import Tabs from './pages/Tabs.vue';
 
@@ -100,6 +98,7 @@ const routes = [
   { path: '/tabs', name: 'Tabs', component: Tabs },
   { path: '/toggle', name: 'Toggle', component: Toggle },
   { path: '/tooltip', name: 'Tooltip', component: Tooltip },
+  { path: '/upload', name: 'Upload', component: Upload },
   { path: '/video', name: 'Video', component: Video },
 ];
 

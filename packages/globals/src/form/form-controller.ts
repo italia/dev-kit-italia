@@ -250,6 +250,14 @@ export class FormControlController implements ReactiveController {
         case 'it-toggle-group':
           // non settare valori in formData, perchè ogni singola checkbox setta il suo valore
           break;
+        case 'it-upload':
+          // value is File[] — append each File object directly (not as string)
+          if (Array.isArray(value)) {
+            (value as File[]).forEach((file) => {
+              event.formData.append(name, file);
+            });
+          }
+          break;
         default:
           if (Array.isArray(value)) {
             (value as unknown[]).forEach((val) => {

@@ -166,6 +166,38 @@
               </it-autocomplete>
             </div>
 
+            <div class="mb-4">
+              <it-upload
+                id="allegati-basic"
+                name="allegati"
+                required
+                multiple
+                accept="image/*,.pdf"
+                auto-success
+              >
+                <span slot="label">Allega documenti</span>
+              </it-upload>
+            </div>
+
+            <div class="mb-4">
+              <p class="fw-semibold mb-1">Foto profilo (obbligatoria)</p>
+              <it-upload-avatar
+                id="avatar-basic"
+                name="foto-profilo"
+                required
+                alt="Mario Rossi"
+              ></it-upload-avatar>
+            </div>
+
+            <div class="mb-4">
+              <p class="fw-semibold mb-1">Documento (trascina o seleziona, obbligatorio)</p>
+              <it-upload-drag-drop
+                id="documento-basic"
+                name="documento"
+                required
+              ></it-upload-drag-drop>
+            </div>
+
             <it-button type="submit" variant="primary" block> Invia </it-button>
           </form>
         </section>
@@ -217,6 +249,38 @@
                 <span slot="label">Regione</span>
               </it-autocomplete>
             </div>
+            <div class="mb-4">
+              <it-upload
+                id="allegati-custom"
+                name="allegati"
+                required
+                multiple
+                accept="image/*,.pdf"
+                auto-success
+              >
+                <span slot="label">Allega documenti</span>
+              </it-upload>
+            </div>
+
+            <div class="mb-4">
+              <p class="fw-semibold mb-1">Foto profilo (obbligatoria)</p>
+              <it-upload-avatar
+                id="avatar-custom"
+                name="foto-profilo"
+                required
+                alt="Mario Rossi"
+              ></it-upload-avatar>
+            </div>
+
+            <div class="mb-4">
+              <p class="fw-semibold mb-1">Documento (trascina o seleziona, obbligatorio)</p>
+              <it-upload-drag-drop
+                id="documento-custom"
+                name="documento"
+                required
+              ></it-upload-drag-drop>
+            </div>
+
             <it-button type="submit" variant="primary" block> Invia </it-button>
           </form>
         </section>
@@ -227,7 +291,6 @@
 
     <script type="module" src="/src/main.js"></script>
 
-    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
     <script type="module" src="/src/js/form.js"></script>
   </body>
