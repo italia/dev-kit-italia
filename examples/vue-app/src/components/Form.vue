@@ -88,6 +88,19 @@ const handleSubmit = (e) => {
       </it-checkbox>
     </it-checkbox-group>
 
+    <it-toggle-group required group name="animali" class="mb-4" value='["gatto","topo"]'>
+      <span slot="legend">Animali preferiti - Gruppo di toggle</span>
+      <it-toggle value="cane">
+        <span slot="label">Cane</span>
+      </it-toggle>
+      <it-toggle value="gatto">
+        <span slot="label">Gatto</span>
+      </it-toggle>
+      <it-toggle value="topo">
+        <span slot="label">Topo</span>
+      </it-toggle>
+    </it-toggle-group>
+
     <it-radio-group name="gruppo1" required>
       <span slot="label">Gruppo di radio</span>
       <it-radio id="radio1"  value="opzione1">
@@ -109,6 +122,10 @@ const handleSubmit = (e) => {
       <option value="Value 4">Opzione 4</option>
       <option value="Value 5">Opzione 5</option>
     </it-select>
+
+    <it-toggle id="toggle1" name="toggle1">
+      <span slot="label">Toggle isolato</span>
+    </it-toggle>
 
     <it-input
       id="messaggio"

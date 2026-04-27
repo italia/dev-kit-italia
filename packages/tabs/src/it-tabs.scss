@@ -1,5 +1,261 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
+@import 'bootstrap-italia/src/scss/components/nav';
+@import 'bootstrap-italia/src/scss/components/tab';
+
+// Prefisso
+// $it-tab-prefix genera i nomi delle custom properties strutturali condivise
+// via flat tree con it-tab: --it-tab_bw-*, --it-tab_active-bc-*, ecc.
+$it-tab-prefix: 'it-tab';
+
+// Variabili + stili host
 :host {
-  display: block;
-  padding: 25px;
-  color: var(--it-tabs-text-color, #000);
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+// Slot after-tablist: pulsante aggiuntivo (es. aggiungi tab) inline con la tablist.
+// Essendo un figlio flex del contenitore .nav, si allinea automaticamente in riga.
+::slotted([slot='after-tablist']) {
+  flex-shrink: 0;
+  align-self: center;
+  margin-inline-start: 0.25rem;
+}
+
+.tabs-wrapper {
+  display: flex;
+  max-width: 100%;
+  flex: 1;
+  flex-direction: var(--#{$it-tab-prefix}_wrapper-flex-dir);
+  align-items: var(--#{$it-tab-prefix}_wrapper-align);
+  margin-block: 0.75rem;
+  --#{$it-tab-prefix}_wrapper-flex-dir: column;
+  --#{$it-tab-prefix}_wrapper-align: stretch;
+  --#{$it-tab-prefix}_wrapper-content-flex: initial;
+
+  &--vertical {
+    --#{$it-tab-prefix}_wrapper-flex-dir: row;
+    --#{$it-tab-prefix}_wrapper-content-flex: 1;
+  }
+
+  &--start {
+    gap: 24px;
+    --#{$it-tab-prefix}_wrapper-flex-dir: row;
+    --#{$it-tab-prefix}_wrapper-content-flex: 1;
+  }
+
+  &--end {
+    gap: 24px;
+    --#{$it-tab-prefix}_wrapper-flex-dir: row-reverse;
+    --#{$it-tab-prefix}_wrapper-content-flex: 1;
+  }
+}
+
+// .nav-row: contenitore flex che raggruppa tablist + slot after-tablist.
+// Non fa parte del div[role="tablist"] per rispettare aria-required-children.
+.nav-row {
+  display: flex;
+  align-items: center; // allinea il bottone aggiungi
+  overflow-y: visible;
+}
+
+// In layout verticale, after-tablist si impila sotto la tablist.
+// --it-tabs-nav-size controlla la LARGHEZZA della colonna tablist:
+// consumata qui (flex-basis nel wrapper row-direction),
+// non in .nav-tabs-vertical (che è in un column-flex → flex-basis lì controlla l'altezza).
+.tabs-wrapper--vertical .nav-row,
+.tabs-wrapper--start .nav-row,
+.tabs-wrapper--end .nav-row {
+  flex: 0 0 var(--it-tabs-nav-size, 30%);
+  flex-direction: column;
+  align-items: stretch;
+}
+
+// .tab-content
+// Consuma --#{$it-tab-prefix}_wrapper-content-flex dal modifier del wrapper padre.
+// margin-top crea lo spazio visivo tra tablist e pannelli nel layout orizzontale.
+// Per i layout verticali viene azzerato (tablist e pannelli sono affiancati).
+.tab-content {
+  min-width: 0;
+  flex: var(--#{$it-tab-prefix}_wrapper-content-flex, initial);
+  margin-top: var(--#{$it-tab-prefix}_content-mt, 0.5rem);
+
+  // Sicurezza: nasconde tutto cio' che non e' it-tab-panel nello slot default
+  ::slotted(:not(it-tab-panel)) {
+    display: none;
+  }
+}
+
+// Layout verticale: tablist e contenuto affiancati, nessun margin-top sul content.
+.tabs-wrapper--vertical .tab-content,
+.tabs-wrapper--start .tab-content,
+.tabs-wrapper--end .tab-content {
+  --#{$it-tab-prefix}_content-mt: 0;
+}
+
+// via flat tree (.nav-tabs shadow → slot → it-tab :host) e vengono consumate
+// in it-tab.scss per bordi, colori attivi, layout e spaziatura.
+
+// Variante: bottom — bordo di attivazione sul lato superiore
+.tabs-wrapper--bottom {
+  flex-direction: column-reverse;
+}
+
+.tabs-wrapper--bottom .nav-tabs {
+  order: 1;
+  border-top-width: 1px;
+  border-bottom-width: 0;
+  margin-top: 0.75rem;
+  --#{$it-tab-prefix}_bw-top: var(--#{$prefix}tab-border-width);
+  --#{$it-tab-prefix}_bw-bottom: 0;
+  --#{$it-tab-prefix}_active-bc-top: var(--#{$prefix}color-border-primary);
+  --#{$it-tab-prefix}_active-bc-bottom: transparent;
+  background-color: var(--it-tab_active-bg, var(--#{$prefix}tabs-background-color));
+}
+
+// Propaga il margin-block ai pannelli (it-tab-panel) solo in layout verticale.
+// La custom property eredita via flat tree fino al .tab-pane nel shadow DOM del pannello.
+.tabs-wrapper--vertical,
+.tabs-wrapper--start,
+.tabs-wrapper--end {
+  --it-tab-panel_margin-block: -0.75rem;
+}
+
+// Variante: vertical -- bordo di attivazione sul lato destro, label allineata a sinistra
+// --it-tabs-nav-size: vedi .nav-row sopra — la variabile è consumata lì (asse corretto).
+.nav-tabs-vertical {
+  height: 100%;
+  flex: 1; // riempie l'altezza del .nav-row (column flex)
+  --#{$it-tab-prefix}_bw-right: var(--#{$prefix}tab-border-width);
+  --#{$it-tab-prefix}_bw-bottom: 0;
+  --#{$it-tab-prefix}_active-bc-right: var(--#{$prefix}color-border-primary);
+  --#{$it-tab-prefix}_active-bc-bottom: transparent;
+  --#{$it-tab-prefix}_justify: flex-start;
+  --#{$it-tab-prefix}_white-space: normal;
+}
+
+// Variante: end — bordo di attivazione sul lato sinistro (speculare di vertical)
+.tabs-wrapper--end .nav-tabs-vertical {
+  border-right-width: 0;
+  border-left-width: 1px;
+
+  --#{$it-tab-prefix}_bw-right: 0;
+  --#{$it-tab-prefix}_bw-left: var(--#{$prefix}tab-border-width);
+  --#{$it-tab-prefix}_active-bc-right: transparent;
+  --#{$it-tab-prefix}_active-bc-left: var(--#{$prefix}color-border-primary);
+}
+
+// Variante: vertical-background — sfondo primario chiaro sul tab attivo
+.nav-tabs-vertical-background {
+  --#{$it-tab-prefix}_active-bg: var(--#{$prefix}tab-background-light);
+}
+
+// Variante: dark — token colore invertiti per sfondo scuro.
+// Viaggiano via flat tree: .nav-tabs.nav-dark (shadow) → slot → it-tab :host.
+// Funziona SOLO perché it-tab :host NON inizializza questi token come valori propri.
+.nav-dark {
+  // Testo tab non attivo: color-text-inverse (bianco in light mode su sfondo dark).
+  // --it-tab_opacity 0.75 → dim BSI; hover/active lo riportano a 1 via it-tab.scss.
+  --#{$prefix}tab-text-color: var(--#{$prefix}color-text-inverse);
+  --#{$prefix}tab-icon-color: var(--#{$prefix}color-text-inverse);
+  --it-tab_opacity: 0.75;
+
+  // Hover in dark: colore rimane inverse; --it-tab_opacity: 1 viene impostato
+  // come OWN value in :host(:hover) di it-tab.scss, quindi batte i 0.75 ereditati.
+  // Queste var sono lette da :host(:hover) in it-tab.scss come fallback del var hover.
+  --it-tab_hover-text-color: var(--#{$prefix}color-text-inverse);
+  --it-tab_hover-icon-color: var(--#{$prefix}color-text-inverse);
+
+  // Attivo: testo/icona inverse, opacità 1 gestita in it-tab.scss :host([active]).
+  --#{$it-tab-prefix}_color-active: var(--#{$prefix}color-text-inverse);
+  --#{$it-tab-prefix}_icon-color-active: var(--#{$prefix}color-text-inverse);
+
+  // Indicatore bordo attivo: color-border-inverse = bianco su dark.
+  // Token adattivo: non hardcoded a #fff, cambia se il design system cambia.
+  --#{$it-tab-prefix}_active-bc-top: var(--#{$prefix}color-border-inverse);
+  --#{$it-tab-prefix}_active-bc-right: var(--#{$prefix}color-border-inverse);
+  --#{$it-tab-prefix}_active-bc-bottom: var(--#{$prefix}color-border-inverse);
+  --#{$it-tab-prefix}_active-bc-left: var(--#{$prefix}color-border-inverse);
+}
+
+// Variante: cards.
+// Il markup propaga `cards` come attributo su ogni it-tab (_initTabs → tab.cards = this.cards).
+// Gli stili strutturali (height, border-radius, border-width, bg) sono in :host([cards]) di it-tab.scss.
+// Qui solo layout del container + colori dark-mode via flat-tree (--it-tab_cards-*).
+.nav-tabs-cards {
+  overflow: visible; // necessario: active tab estende di -1px sotto il border-bottom del parent
+  align-items: flex-end;
+  border-bottom: 1px solid var(--#{$prefix}color-border-subtle);
+}
+
+// Variante: icon-text — gap tra icona e testo nel trigger
+.nav-tabs-icon-text {
+  --#{$it-tab-prefix}_gap: var(--#{$prefix}spacing-xs, 0.25rem);
+}
+
+.nav-tabs {
+  overflow-x: visible !important;
+  overflow-y: unset !important;
+}
+
+.nav-tabs.nav-tabs-cards::after {
+  content: none; // Override del bordo inferiore di .nav-tabs per l'effetto "card aperta"
+}
+
+// Variante: auto — tab a tutta larghezza con scroll orizzontale su overflow.
+// Applicato solo a .nav-row.auto (non a .nav-tabs.auto che ha già overflow BSI).
+// La classe è aggiunta solo quando this.auto && !isVertical in it-tabs.ts,
+// quindi non arriva mai ai layout verticali.
+//
+// IMPORTANTE: overflow-x va su > .nav-tabs, NON su .nav-row.
+// Se .nav-row avesse overflow-x: auto, il browser forza overflow-y su auto
+// (CSS overflow value interaction spec) anche se impostato a visible,
+// clippando la shadow di BSI che scende di 12px sotto il nav-tabs.
+.nav-row.auto {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  > .nav-tabs {
+    flex: 1;
+    overflow-x: auto !important; // batte il nostro 'visible !important' sul selettore base
+  }
+}
+
+// BSI applica la shadow solo su mobile (max-width: 767.98px).
+// In auto mode la shadow sarebbe clippata da overflow-x su .nav-tabs,
+// quindi la rimuoviamo da lì e la rimettiamo su .nav-row (che non ha overflow).
+@media (max-width: 767.98px) {
+  .nav-row.auto {
+    box-shadow: 0 12px 25px -20px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-row.auto > .nav-tabs {
+    box-shadow: none !important;
+  }
+}
+
+// Variante: hide-scrollbar — nasconde la scrollbar orizzontale della tablist.
+// IMPORTANTE: la scrollbar è su .nav-tabs (l'elemento che fa overflow), NON su .nav-row (il wrapper).
+// scrollbar-width e ::-webkit-scrollbar vanno quindi sul figlio che scrolla.
+.nav-row.nav-tabs-hidescroll > .nav-tabs {
+  -ms-overflow-style: none; /* IE / Edge */
+  overflow-x: auto !important; // abilita lo scroll (batte il 'visible !important' base)
+  scrollbar-width: none; /* Firefox */
+}
+
+.nav-row.nav-tabs-hidescroll > .nav-tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, WebKit */
+}
+
+.nav-tabs-hidescroll {
+  overflow: hidden;
+  height: unset !important; // Override dell'altezza fissa di .nav-tabs in BSI, che altrimenti clipperebbe lo scroll
+}
+
+.nav-tabs-hidescroll .nav-tabs {
+  padding-bottom: 0 !important; // Override del padding-bottom di BSI che crea spazio inutile sotto le tab
 }

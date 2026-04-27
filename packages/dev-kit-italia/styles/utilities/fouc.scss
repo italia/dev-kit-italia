@@ -2,6 +2,7 @@
 
 :root {
   --it-fouc-bg: #ddd;
+  --it-fouc-color: #000;
   --it-host-display: inline-block;
 }
 
@@ -15,8 +16,7 @@
   }
 }
 
-@mixin it-shimmer(
-  $tag,
+@mixin it-shimmer($tag,
   $height: null,
   $width: null,
   $attr: null,
@@ -25,8 +25,7 @@
   $padding: null,
   $margin: null,
   $aspectRatio: null,
-  $pseudo: null
-) {
+  $pseudo: null) {
   @at-root {
     // costruzione selettore base
     $selector: if($pseudo, '#{$tag}:not(:defined)::#{$pseudo}', '#{$tag}:not(:defined)');
@@ -44,31 +43,36 @@
       // look shimmer
       border-radius: $border-radius;
       animation: fouc-shimmer 1.5s linear infinite;
-      background-color: if($bg != null, $bg, var(--it-fouc-bg));
+      background-color: if($bg !=null, $bg, var(--it-fouc-bg));
       background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
       background-repeat: no-repeat;
       background-size: 200% 100%;
+      color: var(--it-fouc-color);
       vertical-align: middle;
 
       // dimensioni condizionali
-      @if $height != null {
+      @if $height !=null {
         height: $height;
       }
-      @if $width != null {
+
+      @if $width !=null {
         width: $width;
       }
-      @if $padding != null {
+
+      @if $padding !=null {
         padding: $padding;
       }
-      @if $margin != null {
+
+      @if $margin !=null {
         margin: $margin;
       }
-      @if $aspectRatio != null {
+
+      @if $aspectRatio !=null {
         aspect-ratio: $aspectRatio;
       }
 
       // pseudo-elemento per simulare larghezza testo attributo
-      @if $attr != null and $width == null {
+      @if $attr !=null and $width ==null {
         &::after {
           display: inline-block;
           content: attr(#{$attr});
@@ -97,121 +101,134 @@
 
 $it-components: (
   'it-accordion-item': (),
-  'it-avatar': (
-    border-radius: 50%,
+  'it-avatar': (border-radius: 50%,
   ),
-  'it-back-to-top': (
-    border-radius: var(--#{$prefix}radius-circle, 100%),
+  'it-back-to-top': (border-radius: var(--#{$prefix}radius-circle, 100%),
     height: 56px,
     width: 56px,
   ),
-  'it-button': (
-    border-radius: var(--#{$prefix}btn-border-radius, 4px),
+  'it-button': (border-radius: var(--#{$prefix}btn-border-radius, 4px),
     height: 44.8px,
     padding: 0 1rem,
   ),
-  'it-chip': (
-    height: 27.5px,
+  'it-chip': (height: 27.5px,
     border-radius: 40px,
   ),
-  'it-checkbox': (
-    height: 20px,
+  'it-checkbox': (height: 20px,
     width: 20px,
   ),
-  'it-dropdown': (
-    border-radius: var(--#{$prefix}btn-border-radius, 4px),
+  'it-dropdown': (border-radius: var(--#{$prefix}btn-border-radius, 4px),
     height: 48px,
     padding: 0 1rem,
     attr: 'label',
   ),
-  'it-icon': (
-    border-radius: 50%,
+  'it-icon': (border-radius: 50%,
     height: 32px,
     width: 32px,
   ),
-  'it-input': (
-    height: 74px,
+  'it-input': (height: 74px,
     padding: 1rem,
     margin: 0 0 var(--#{$prefix}spacing-m, 24px) 0,
   ),
-  'it-radio': (
-    pseudo: before,
+  'it-radio': (pseudo: before,
     height: 20px,
     width: 20px,
     border-radius: 100%,
     margin: 0 0.5rem 0 0,
   ),
-  'it-radio-group': (
-    // height: 80px,
+  'it-radio-group': ( // height: 80px,
     bg: transparent,
   ),
-  'it-select': (
-    height: 74px,
+  'it-select': (height: 74px,
     padding: 1rem,
     margin: 0 0 var(--#{$prefix}spacing-m, 24px) 0,
   ),
-  'it-select[multiple]': (
-    height: 161px,
+  'it-select[multiple]': (height: 161px,
   ),
-  'it-rating': (
-    // height: 28px,
+  'it-rating': ( // height: 28px,
     bg: transparent,
   ),
-  'it-rating-item': (
-    height: 24px,
+  'it-rating-item': (height: 24px,
     width: 24px,
     border-radius: 50%,
   ),
-  'it-video': (
-    height: auto,
+  'it-video': (height: auto,
     width: 100%,
     // Check the Heads up! section in the documentation
     // https://sass-lang.com/documentation/modules/list/#slash
     aspect-ratio: list.slash(16, 9),
   ),
   'it-collapse': (),
-  'it-pagination': (
-    height: 48px,
+  'it-pagination': (height: 48px,
     bg: transparent,
   ),
-  'it-pagination-item': (
-    height: 48px,
+  'it-pagination-item': (height: 48px,
     width: 48px,
     border-radius: 4px,
   ),
-  'it-autocomplete': (
-    height: 74px,
+  'it-autocomplete': (height: 74px,
     attr: 'label',
-
     padding: 1rem,
   ),
-  'it-megamenu': (
-    border-radius: var(--#{$prefix}btn-border-radius, 4px),
+  'it-megamenu': (border-radius: var(--#{$prefix}btn-border-radius, 4px),
     height: 48px,
     padding: 0 1rem,
     attr: 'label',
   ),
-  'it-carousel': (
-    height: auto,
+  'it-carousel': (height: auto,
     width: 100%,
     // Check the Heads up! section in the documentation // https://sass-lang.com/documentation/modules/list/#slash
     aspect-ratio: list.slash(16, 9),
   ),
-  'it-toolbar': (
-    height: 64px,
+  'it-tabs': (height: 250px,
     width: 100%,
   ),
-  'it-toolbar[size="md"]': (
-    height: 48px,
+  'it-tab': (height: 54px,
+    display: inline-flex,
+    padding: 0 1rem,
   ),
-  'it-toolbar[size="sm"]': (
-    height: 40px,
+  'it-tab-panel': (height: 100%,
+    display: none !important,
+  ),
+  'it-toolbar': (height: 64px,
+    width: 100%,
+  ),
+  'it-toolbar[size="md"]': (height: 48px,
+  ),
+  'it-toolbar[size="sm"]': (height: 40px, ),
+  'it-progress': (height: 4px,
+    width: 100%,
+    border-radius: var(--#{$prefix}radius-smooth, 4px),
+  ),
+  'it-progress[type="spinner"]': (height: 48px,
+    width: 48px,
+    border-radius: 50%,
+  ),
+  'it-progress[type="spinner"][size="sm"]': (height: 32px,
+    width: 32px,
+    border-radius: 50%,
+  ),
+  'it-progress[type="spinner"][size="lg"]': (height: 64px,
+    width: 64px,
+    border-radius: 50%,
+  ),
+  'it-progress[type="spinner"][size="xl"]': (height: 80px,
+    width: 80px,
+    border-radius: 50%,
+  ),
+  'it-progress[type="donut"]': (height: 180px,
+    width: 180px,
+    border-radius: 50%,
+  ),
+  'it-toggle': (height: 24px,
+    width: 48px,
+    pseudo: after,
+    border-radius: var(--#{$prefix}radius-rounded, 40px),
   ),
 );
 
 @each $tag, $params in $it-components {
-  @include it-shimmer(
-    $tag,
+  @include it-shimmer($tag,
     map-get($params, height),
     if(map-has-key($params, width), map-get($params, width), null),
     if(map-has-key($params, attr), map-get($params, attr), null),
@@ -220,6 +237,5 @@ $it-components: (
     if(map-has-key($params, padding), map-get($params, padding), null),
     if(map-has-key($params, margin), map-get($params, margin), null),
     if(map-has-key($params, aspect-ratio), map-get($params, aspect-ratio), null),
-    if(map-has-key($params, pseudo), map-get($params, pseudo), null)
-  );
+    if(map-has-key($params, pseudo), map-get($params, pseudo), null));
 }

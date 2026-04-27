@@ -26,7 +26,7 @@ type Story = StoryObj<PopoverProps>;
 const meta = {
   title: 'Componenti/Popover',
   component: 'it-popover',
-  tags: ['alpha', 'web-component', 'a11y-ok'],
+  tags: ['new', 'web-component', 'a11y-ok'],
   args: {
     placement: 'right',
   },
@@ -47,6 +47,7 @@ const meta = {
         'left-start',
         'left-end',
       ],
+      description: 'Posizione del Popover rispetto al suo elemento trigger',
       table: {
         defaultValue: { summary: 'bottom-start' },
       },

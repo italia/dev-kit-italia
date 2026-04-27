@@ -6,7 +6,7 @@ import '@italia/button';
 const meta = {
   title: 'Componenti/Back',
   component: 'it-back',
-  tags: ['alpha', 'documentation', 'a11y-ok'],
+  tags: ['new', 'documentation', 'a11y-ok'],
   render: () => html`<div class="hide-preview"></div>`,
   parameters: {
     docs: {
@@ -49,7 +49,6 @@ export const Pulsante: Story = {
       @click=${() => {
         window.history.back();
       }}
-      icon
     >
       <it-icon name="it-arrow-left" size="sm" color="inverse"></it-icon>
       <span>Torna indietro</span>
@@ -60,7 +59,6 @@ export const Pulsante: Story = {
       @click=${() => {
         window.history.back();
       }}
-      icon
     >
       <it-icon name="it-arrow-up" size="sm" color="inverse"></it-icon>
       <span>Torna indietro</span>
@@ -78,7 +76,6 @@ export const PulsanteSolaIcona: Story = {
     <it-button
       variant="primary"
       class="go-back"
-      icon
       @click=${() => {
         window.history.back();
       }}
@@ -89,7 +86,6 @@ export const PulsanteSolaIcona: Story = {
     <it-button
       variant="primary"
       class="go-back"
-      icon
       @click=${() => {
         window.history.back();
       }}
