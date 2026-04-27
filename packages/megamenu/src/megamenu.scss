@@ -1,3 +1,5 @@
+/* stylelint-disable rule-empty-line-before */
+/* stylelint-disable prettier/prettier */
 @import 'bootstrap-italia/src/scss/base/functions';
 @import 'bootstrap-italia/src/scss/base/variables';
 @import 'bootstrap-italia/src/scss/base/mixins';
@@ -19,9 +21,7 @@ $utilities: (
   'padding-start': map-get($utilities, 'padding-start'),
   'margin-start': map-get($utilities, 'margin-start'),
   'margin-end': map-get($utilities, 'margin-end'),
-  'text-align': map-merge(map-get($utilities, 'text-align'),
-    ('values': end,
-    )),
+  'text-align': map-merge(map-get($utilities, 'text-align'), ('values': end, )),
 );
 @import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
 

@@ -17,6 +17,7 @@ const defineTestElement = (
     class extends HTMLElement {
       connectedCallback(): void {
         if (this.shadowRoot) return;
+        // eslint-disable-next-line wc/attach-shadow-constructor
         const root = this.attachShadow(options ?? { mode: 'open' });
         renderShadow(this, root);
       }
