@@ -10,22 +10,18 @@
 
 //ovveride utilities: get only needed utilities
 $utilities: (
-  'rounded': map-merge(
-      map-get($utilities, 'rounded'),
-      (
-        values: (
-          null: map-get(map-get(map-get($utilities, 'rounded'), 'values'), null),
-        ),
-      )
-    ),
-  'display': map-merge(
-      map-get($utilities, 'display'),
-      (
-        values: none,
-      )
-    ),
+  'rounded': map-merge(map-get($utilities, 'rounded'),
+    (values: (null: map-get(map-get(map-get($utilities, 'rounded'), 'values'), null),
+      ),
+    )),
+  'display': map-merge(map-get($utilities, 'display'),
+    (values: none,
+    )),
   'shadow': map-get($utilities, 'shadow'),
   'border': map-get($utilities, 'border'),
+  'padding': map-get($utilities, 'padding'),
+  'padding-x': map-get($utilities, 'padding-x'),
+  'padding-y': map-get($utilities, 'padding-y'),
 );
 
 /**
@@ -59,6 +55,7 @@ dl {
   margin-top: 0;
   margin-bottom: var(--#{$prefix}spacing-s);
 }
+
 /* END copied from bsi reboot */
 
 ::slotted(figure),
