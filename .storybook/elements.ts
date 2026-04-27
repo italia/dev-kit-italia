@@ -35,3 +35,4 @@ import '../packages/toggle/dist/src';
 import '../packages/tooltip/dist/src';
 import '../packages/upload/dist/src';
 import '../packages/video/dist/src';
+import '../packages/thumbnav/dist/src';

@@ -28,5 +28,6 @@ export * from '@italia/sticky';
 export * from '@italia/upload';
 export * from '@italia/toggle';
 export * from '@italia/video';
+export * from '@italia/thumbnav';
 
 export { registerTranslation };

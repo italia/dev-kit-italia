@@ -40,6 +40,8 @@ import '@italia/section/it-section.js';
 import '@italia/select/it-select.js';
 import '@italia/skiplinks/it-skiplinks.js';
 import '@italia/sticky/it-sticky.js';
+import '@italia/thumbnav/it-thumbnav-item.js';
+import '@italia/thumbnav/it-thumbnav.js';
 import '@italia/timeline/it-timeline.js';
 import '@italia/timeline/it-timeline-element.js';
 import '@italia/timeline/it-timeline-point.js';

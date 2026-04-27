@@ -215,9 +215,9 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/table.component').then((c) => c.TableComponent),
   },
   {
-    title: 'Upload',
-    path: 'upload',
-    loadComponent: () => import('./pages/upload.component').then((c) => c.UploadComponent),
+    title: 'Thumbnav',
+    path: 'thumbnav',
+    loadComponent: () => import('./pages/thumbnav.component').then((c) => c.ThumbnnavComponent),
   },
   {
     title: 'Timeline',
@@ -240,8 +240,12 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/tooltip.component').then((c) => c.TooltipComponent),
   },
   {
+    title: 'Upload',
+    path: 'upload',
+    loadComponent: () => import('./pages/upload.component').then((c) => c.UploadComponent),
+  },
+  {
     title: 'Video',
-
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
   },

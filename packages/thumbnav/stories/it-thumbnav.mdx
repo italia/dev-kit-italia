@@ -1,0 +1,145 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-thumbnav.stories';
+
+<Meta of={Stories} />
+
+# Thumbnav
+
+<description>Raccoglitore di miniature di immagini per facilitare la visualizzazione e la navigazione di contenuti multipli</description>
+
+## Cosa fa
+
+Il componente Thumbnav può essere utilizzato per fornire una navigazione rapida tra immagini in un formato compatto e visivamente interessante, come ad esempio tra le immagini di una galleria.
+
+
+
+[Approfondisci quando e come usare il componente Thumbnav](https://designers.italia.it/design-system/componenti/thumbnav/)
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente.
+Per vedere come cambia il codice, clicca su **Show code**.
+
+L'attributo `position` non ha effetto in questa anteprima: richiede una struttura HTML specifica con un contenitore esterno. Vedi la sezione [Posizione in overlay](#posizione-in-overlay) per gli esempi dedicati.
+
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+
+## Indicazioni generali
+Il componente Thumbnav è composto da due elementi:
+
+- `it-thumbnav`: contenitore che raggruppa le thumbnail e gestisce il layout;
+- `it-thumbnav-item`: singolo elemento, che accetta nello slot un anchor con immagine.
+
+Inserisci nell'anchor la classe Bootstrap Italia `.ratio` per mantenere un rapporto d'aspetto consistente:
+
+```html
+<it-thumbnav>
+  <it-thumbnav-item>
+    <a href="#" class="ratio ratio-3x2">
+      <img src="…" alt="Visualizza immagine 1">
+    </a>
+  </it-thumbnav-item>
+</it-thumbnav>
+```
+
+Se stai utilizzando il componente in un framework JS (React, Vue, Angular), utilizza il tag di navigazione del framework (ad esempio `<Link>` in React) al posto dell'anchor HTML, mantenendo la struttura interna con classe `.ratio` e immagine.
+
+Ricordati di assegnare la classe `.active` all'elemento `it-thumbnav-item` corrispondente alla pagina o immagine attiva, per indicarlo visivamente agli utenti.
+
+
+## Accessibilità
+
+Al fine di garantire un'esperienza accessibile a tutti gli utenti, assicurati di seguire queste indicazioni:
+
+- Indica sempre nell'attributo `alt` dell'immagine l'azione associata al link, in modo che gli utenti che usano tecnologie assistive possano ottenere una descrizione testuale del contenuto dell'immagine.
+- Valorizza sempre l'attributo `href` per rendere il link effettivamente navigabile e semanticamente corretto.
+
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Nota sui test di accessibilità</span>
+    </div>
+    <p>
+      Axe e altri strumenti di analisi statica possono segnalare falsi positivi quando analizzano il componente `it-thumbnav` a causa del limitato supporto per i Web Components. La struttura accessibile effettiva è corretta, come confermato dall'Accessibility Tree e dai test manuali con screen reader.
+    </p>
+  </div>
+</div>
+
+## Versione small
+
+Aggiungi l'attributo `small` al contenitore `it-thumbnav` per ottenere thumbnail di dimensione ridotta (120px invece di 240px).
+
+<Canvas of={Stories.VersioneSmall} />
+
+## Effetti hover
+
+Usa l'attributo `hover` per personalizzare il comportamento al passaggio del mouse.
+
+### Hover senza zoom
+
+Aggiungi `hover="nozoom"` per disabilitare l'effetto di zoom sull'immagine.
+
+<Canvas of={Stories.HoverSenzaZoom} />
+
+### Hover con layer nero
+
+Aggiungi `hover="black"` per mostrare un overlay nero semitrasparente al passaggio del mouse.
+
+<Canvas of={Stories.HoverLayerNero} />
+
+### Hover con layer primary
+
+Aggiungi `hover="primary"` per mostrare un overlay di colore primary al passaggio del mouse.
+
+<Canvas of={Stories.HoverLayerPrimary} />
+
+## Thumbnav verticale
+
+Aggiungi l'attributo `vertical` per disporre le thumbnail in colonna.
+
+<Canvas of={Stories.Verticale} />
+
+## Posizione in overlay
+
+Inserisci la Thumbnav in overlay all'interno di un contenitore con classe `.position-relative`, ad esempio una galleria immagini. Usa l'attributo `position` per controllare il lato in cui viene ancorata:
+
+- `bottom` per posizionarla nella parte inferiore
+- `top` per posizionarla nella parte superiore
+- `left` per ancorare la thumbnav al lato sinistro (il layout verticale viene applicato automaticamente)
+- `right` per ancorare la thumbnav al lato destro (il layout verticale viene applicato automaticamente)
+
+### Overlay orizzontale inferiore
+
+<Canvas of={Stories.OverlayInferiore} />
+
+### Overlay orizzontale superiore
+
+<Canvas of={Stories.OverlaySuperiore} />
+
+### Overlay verticale a sinistra
+
+<Canvas of={Stories.OverlayVerticaleLeft} />
+
+### Overlay verticale a destra
+
+<Canvas of={Stories.OverlayVerticaleRight} />
+
+## Griglia a larghezza fissa
+
+Aggiungi l'attributo `fixed` per assegnare a ogni thumbnail una larghezza fissa di 240px. Combinalo con `small` per ridurla a 120px.
+
+<Canvas of={Stories.GrigliaFissa} />
+
+## Griglia a larghezza automatica
+
+Usa l'attributo `auto` per distribuire le thumbnail su tutta la larghezza del contenitore, specificando il numero di colonne desiderato (2, 3, 4 o 5).
+
+### 3 thumbnail per riga
+
+<Canvas of={Stories.GrigliaAutomatica3} />
+
+### 5 thumbnail per riga
+
+<Canvas of={Stories.GrigliaAutomatica5} />

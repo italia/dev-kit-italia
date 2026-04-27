@@ -36,6 +36,7 @@ import Sidebar from './pages/Sidebar';
 import Skiplinks from './pages/Skiplinks';
 import Sticky from './pages/Sticky';
 import Table from './pages/Table';
+import Thumbnav from './pages/Thumbnav';
 import Timeline from './pages/Timeline';
 import Toggle from './pages/Toggle';
 import Tooltip from './pages/Tooltip';
@@ -90,10 +91,11 @@ export const AppRoutes = [
   { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/tables', element: <Table />, title: 'Tables' },
-  { path: '/upload', element: <Upload />, title: 'Upload' },
+  { path: '/thumbnav', element: <Thumbnav />, title: 'Thumbnav' },
   { path: '/tabs', element: <Tabs />, title: 'Tabs' },
   { path: '/timeline', element: <Timeline />, title: 'Timeline' },
   { path: '/toggle', element: <Toggle />, title: 'Toggle' },
   { path: '/tooltip', element: <Tooltip />, title: 'Tooltip' },
+  { path: '/upload', element: <Upload />, title: 'Upload' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];
