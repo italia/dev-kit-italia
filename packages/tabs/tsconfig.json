@@ -4,7 +4,7 @@
     "rootDir": ".",
     "outDir": "dist"
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "stories/**/*.ts", "test/**/*.ts"],
   "exclude": ["dist", "build", "node_modules"],
   "references": [{ "path": "../typescript-config" }]
 }
