@@ -47,6 +47,7 @@
       "@italia/timeline",
       "@italia/toggle",
       "@italia/tooltip",
+      "@italia/upload",
       "@italia/video"
     ]
   ],

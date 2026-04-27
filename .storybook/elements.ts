@@ -33,4 +33,5 @@ import '../packages/tabs/dist/src';
 import '../packages/timeline/dist/src';
 import '../packages/toggle/dist/src';
 import '../packages/tooltip/dist/src';
+import '../packages/upload/dist/src';
 import '../packages/video/dist/src';

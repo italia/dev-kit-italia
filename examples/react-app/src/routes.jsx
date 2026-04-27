@@ -45,6 +45,7 @@ import Pagination from './pages/Pagination';
 import Notification from './pages/Notification';
 import Tabs from './pages/Tabs';
 import Progress from './pages/Progress';
+import Upload from './pages/Upload';
 
 export const AppRoutes = [
   { path: '/', element: <Home />, title: 'Homepage' },
@@ -89,6 +90,7 @@ export const AppRoutes = [
   { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/tables', element: <Table />, title: 'Tables' },
+  { path: '/upload', element: <Upload />, title: 'Upload' },
   { path: '/tabs', element: <Tabs />, title: 'Tabs' },
   { path: '/timeline', element: <Timeline />, title: 'Timeline' },
   { path: '/toggle', element: <Toggle />, title: 'Toggle' },

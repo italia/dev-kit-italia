@@ -215,6 +215,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/table.component').then((c) => c.TableComponent),
   },
   {
+    title: 'Upload',
+    path: 'upload',
+    loadComponent: () => import('./pages/upload.component').then((c) => c.UploadComponent),
+  },
+  {
     title: 'Timeline',
     path: 'timeline',
     loadComponent: () => import('./pages/timeline.component').then((c) => c.TimelineComponent),

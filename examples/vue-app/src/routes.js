@@ -45,6 +45,7 @@ import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Carousel from './components/Carousel.vue';
 import Pagination from './components/Pagination.vue';
+import Upload from './components/Upload.vue';
 import Notification from './components/Notification.vue';
 import Tabs from './pages/Tabs.vue';
 
@@ -91,6 +92,7 @@ const routes = [
   { path: '/skiplinks', name: 'Skiplinks', component: Skiplinks },
   { path: '/sticky', name: 'Sticky', component: Sticky },
   { path: '/tables', name: 'Tables', component: Table },
+  { path: '/upload', name: 'Upload', component: Upload },
   { path: '/timeline', name: 'Timeline', component: Timeline },
   { path: '/tabs', name: 'Tabs', component: Tabs },
   { path: '/toggle', name: 'Toggle', component: Toggle },

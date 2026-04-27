@@ -17,3 +17,10 @@ $utilities: (
 );
 
 @import 'bootstrap-italia/src/scss/base/utilities/api';
+
+// Allow the track background circle color to be overridden from outside the shadow DOM
+// via CSS custom property. Used by it-upload-drag-drop to show the illustration image
+// through the track area (set --it-progress-donut-track-color: transparent on the host).
+.progress-donut-wrapper::before {
+  background: var(--it-progress-donut-track-color, var(--#{$prefix}color-background-secondary-lighter));
+}

@@ -38,6 +38,7 @@ import Sidebar from './pages/Sidebar.svelte';
 import Skiplinks from './pages/Skiplinks.svelte';
 import Sticky from './pages/Sticky.svelte';
 import Carousel from './pages/Carousel.svelte';
+import Upload from './pages/Upload.svelte';
 import Table from './pages/Table.svelte';
 import Timeline from './pages/Timeline.svelte';
 import Tabs from './pages/Tabs.svelte';
@@ -89,6 +90,7 @@ export const AppRoutes = [
   { path: '/skiplinks', element: Skiplinks, title: 'Skiplinks' },
   { path: '/sticky', element: Sticky, title: 'Sticky' },
   { path: '/tables', element: Table, title: 'Tables' },
+  { path: '/upload', element: Upload, title: 'Upload' },
   { path: '/timeline', element: Timeline, title: 'Timeline' },
   { path: '/tabs', element: Tabs, title: 'Tabs' },
   { path: '/toggle', element: Toggle, title: 'Toggle' },
