@@ -72,7 +72,7 @@
     <span slot="label">Campo readonly normalizzato come plaintext</span>
   </it-input>
 
-  <it-checkbox-group required group name="animali" class="mb-4" value="["gatto","topo"]">
+  <it-checkbox-group required group name="animali" class="mb-4">
     <span slot="legend">Animali preferiti</span>
     <it-checkbox value="cane">
       <span slot="label">Cane</span>
@@ -98,7 +98,7 @@
     </it-radio>
   </it-radio-group>
 
-  <it-toggle-group required group name="animali-toggle" class="mb-4" value='["gatto","topo"]'>
+  <it-toggle-group required group name="animali-toggle" class="mb-4">
     <span slot="legend">Animali preferiti - Gruppo di toggle</span>
     <it-toggle value="cane">
       <span slot="label">Cane</span>
