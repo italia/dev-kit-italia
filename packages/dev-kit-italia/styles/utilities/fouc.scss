@@ -199,6 +199,19 @@ $it-components: (
     // Check the Heads up! section in the documentation // https://sass-lang.com/documentation/modules/list/#slash
     aspect-ratio: list.slash(16, 9),
   ),
+  'it-tabs': (
+    height: 250px,
+    width: 100%,
+  ),
+  'it-tab': (
+    height: 54px,
+    display: inline-flex,
+    padding: 0 1rem,
+  ),
+  'it-tab-panel': (
+    height: 100%,
+    display: none !important,
+  ),
   'it-progress': (
     height: 4px,
     width: 100%,

@@ -13,6 +13,7 @@
       "@italia/autocomplete",
       "@italia/avatar",
       "@italia/back-to-top",
+      "@italia/bottom-nav",
       "@italia/breadcrumbs",
       "@italia/button",
       "@italia/callout",
@@ -22,6 +23,7 @@
       "@italia/chip",
       "@italia/collapse",
       "@italia/dev-kit-italia",
+      "@italia/dimmer",
       "@italia/dropdown",
       "@italia/globals",
       "@italia/hero",
@@ -31,6 +33,7 @@
       "@italia/megamenu",
       "@italia/modal",
       "@italia/navscroll",
+      "@italia/notification",
       "@italia/pagination",
       "@italia/popover",
       "@italia/progress",
@@ -40,8 +43,11 @@
       "@italia/select",
       "@italia/skiplinks",
       "@italia/sticky",
-      "@italia/upload",
+      "@italia/tabs",
+      "@italia/timeline",
       "@italia/toggle",
+      "@italia/tooltip",
+      "@italia/upload",
       "@italia/video"
     ]
   ],
@@ -49,5 +55,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@italia/tabs"]
+  "ignore": []
 }

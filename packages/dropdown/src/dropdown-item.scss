@@ -190,7 +190,7 @@ li span,
   > p {
     color: var(--#{$prefix}color-text-secondary);
     font-size: var(--#{$prefix}caption-font-size);
-    line-height: var(--#{$prefix}caption-line-height);
+    line-height: var(--#{$prefix}caption-leading);
   }
 
   // Listed item label wrapped in the <a> tag

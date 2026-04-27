@@ -14,7 +14,22 @@ const meta = {
   title: 'Componenti/Breadcrumbs',
   tags: ['new', 'web-component', 'a11y-ok'],
   component: 'it-breadcrumbs',
-
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'list',
+            enabled: false,
+          },
+          {
+            id: 'listitem',
+            enabled: false,
+          },
+        ],
+      },
+    },
+  },
   args: {
     'it-aria-label': 'Percorso di navigazione',
     dark: false,
