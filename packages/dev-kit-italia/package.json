@@ -86,6 +86,7 @@
     "@italia/select": "workspace:^",
     "@italia/skiplinks": "workspace:^",
     "@italia/sticky": "workspace:^",
+    "@italia/stepper": "workspace:^",
     "@italia/tabs": "workspace:^",
     "@italia/timeline": "workspace:^",
     "@italia/toggle": "workspace:^",

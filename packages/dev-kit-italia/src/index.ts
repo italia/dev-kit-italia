@@ -19,6 +19,7 @@ export * from '@italia/navscroll';
 export * from '@italia/pagination';
 export * from '@italia/progress';
 export * from '@italia/popover';
+export * from '@italia/stepper';
 export * from '@italia/tooltip';
 export * from '@italia/radio';
 export * from '@italia/section';

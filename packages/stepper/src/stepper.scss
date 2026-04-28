@@ -1,0 +1,74 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/reboot';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/base/utilities';
+
+$utilities: (
+  'display': map-get($utilities, 'display'),
+  'flex': map-get($utilities, 'flex'),
+  'float': map-get($utilities, 'float'),
+  'align': map-get($utilities, 'align'),
+  'background-color': map-get($utilities, 'background-color'),
+  'border': map-get($utilities, 'border'),
+  'border-color': map-get($utilities, 'border-color'),
+  'border-width': map-get($utilities, 'border-width'),
+  'border-opacity': map-get($utilities, 'border-opacity'),
+  'border-radius': map-get($utilities, 'border-radius'),
+  'margin': map-get($utilities, 'margin'),
+  'margin-x': map-get($utilities, 'margin-x'),
+  'margin-y': map-get($utilities, 'margin-y'),
+  'margin-top': map-get($utilities, 'margin-top'),
+  'margin-end': map-get($utilities, 'margin-end'),
+  'margin-bottom': map-get($utilities, 'margin-bottom'),
+  'margin-start': map-get($utilities, 'margin-start'),
+  'padding': map-get($utilities, 'padding'),
+  'padding-x': map-get($utilities, 'padding-x'),
+  'padding-y': map-get($utilities, 'padding-y'),
+  'padding-top': map-get($utilities, 'padding-top'),
+  'padding-end': map-get($utilities, 'padding-end'),
+  'padding-bottom': map-get($utilities, 'padding-bottom'),
+  'padding-start': map-get($utilities, 'padding-start'),
+  'text-align': map-get($utilities, 'text-align'),
+  'text-decoration': map-get($utilities, 'text-decoration'),
+  'text-transform': map-get($utilities, 'text-transform'),
+  'font-size': map-get($utilities, 'font-size'),
+  'font-weight': map-get($utilities, 'font-weight'),
+  'font-style': map-get($utilities, 'font-style'),
+  'line-height': map-get($utilities, 'line-height'),
+  'color': map-get($utilities, 'color'),
+);
+
+@import 'bootstrap-italia/src/scss/base/utilities/api';
+
+@import 'bootstrap-italia/src/scss/components/buttons';
+@import 'bootstrap-italia/src/scss/components/progress-bars';
+@import 'bootstrap-italia/src/scss/components/steppers';
+
+// Override: BSI hides nav icons via `.icon { display: none }` at desktop breakpoint,
+// but we use `it-icon` web components which render in their own shadow DOM.
+// The `.icon` class selector from BSI won't reach inside it-icon's shadow DOM,
+// so we target the `it-icon` host element directly.
+@include media-breakpoint-up(lg) {
+  .steppers-nav button it-icon {
+    display: none;
+  }
+}
+
+// The steppers-success checkmark icon in the header (it-icon) needs to act as
+// the margin-left: auto spacer that BSI's .steppers-success SVG provides.
+.steppers-header ul li it-icon.steppers-success {
+  margin-left: auto;
+}
+
+// Step number circle needs proper centering for the check icon inside it
+.steppers-number it-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}

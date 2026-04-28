@@ -1,0 +1,95 @@
+import { Meta, Canvas, Controls, Title } from '@storybook/addon-docs/blocks';
+
+import * as StepperStories from './it-stepper.stories';
+
+<Meta of={StepperStories} />
+
+<Title of={StepperStories} />
+
+<description>Gli stepper mostrano i progressi attraverso una sequenza di passaggi logici e numerati.</description>
+
+## Introduzione
+
+Il componente `it-stepper` consente di guidare l'utente attraverso una procedura articolata in più passaggi sequenziali. I passi sono definiti tramite elementi `it-stepper-step` annidati all'interno del componente.
+
+L'intestazione dello stepper mostra tutti i passi disponibili e il loro stato (attivo, confermato, futuro). L'area contenuto visualizza solo il passo attivo. La barra di navigazione permette di avanzare e tornare indietro tra i passi.
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={StepperStories.Esempio} />
+
+<Controls of={StepperStories.Esempio} />
+
+## Intestazione
+
+L'intestazione può essere personalizzata tramite l'attributo `header-variant`. Sono disponibili tre varianti.
+
+### Solo testo
+
+La variante predefinita (`text`) mostra solo il testo dell'etichetta accanto allo stato del passo.
+
+<Canvas of={StepperStories.SoloTesto} />
+
+### Testo e icone
+
+La variante `icons` mostra un'icona prima dell'etichetta di ciascun passo. Per ogni `it-stepper-step` è necessario specificare il nome dell'icona tramite l'attributo `icon` (ad esempio `it-calendar`, `it-lock`, `it-settings`).
+
+<Canvas of={StepperStories.TestoEIcone} />
+
+### Testo e numeri
+
+La variante `numbers` mostra il numero ordinale del passo all'interno di un cerchio. I passi confermati mostrano una spunta al posto del numero.
+
+<Canvas of={StepperStories.TestoENumeri} />
+
+## Navigazione
+
+La barra di navigazione contiene i pulsanti "Indietro" e "Avanti" per spostarsi tra i passi. I pulsanti possono essere personalizzati tramite gli attributi `prev-label` e `next-label`.
+
+È possibile anche navigare programmaticamente tramite i metodi pubblici `next()` e `prev()` sul componente, oppure modificando direttamente l'attributo `current`.
+
+Ogni cambio di step emette un evento `it-stepper-change` con `detail.step` (nuovo indice) e `detail.prevStep` (indice precedente).
+
+### Progress bar
+
+Imposta `mobile-progress="bar"` per mostrare una barra di progresso tra i pulsanti di navigazione, visibile solo su mobile. La barra calcola automaticamente la percentuale in base alla posizione corrente.
+
+<Canvas of={StepperStories.ProgressBar} />
+
+### Pallini
+
+Imposta `mobile-progress="dots"` per mostrare dei pallini indicatori tra i pulsanti di navigazione, visibili solo su mobile. I pallini completati vengono evidenziati.
+
+<Canvas of={StepperStories.Pallini} />
+
+## Salva
+
+È possibile aggiungere un'area di salvataggio sotto la barra di navigazione tramite l'attributo `save-label`. Quando l'utente clicca sul pulsante di salvataggio, viene emesso l'evento `it-stepper-save`. Il titolo e la descrizione dell'area di salvataggio possono essere personalizzati tramite `save-title` e `save-description`.
+
+<Canvas of={StepperStories.Salva} />
+
+## Conferma
+
+Imposta `show-confirm` per sostituire il pulsante "Avanti" con il pulsante "Conferma". Questa modalità è utile per l'ultimo passo della procedura o per passi che richiedono una conferma esplicita. Quando l'utente clicca sul pulsante, viene emesso l'evento `it-stepper-confirm`.
+
+<Canvas of={StepperStories.Conferma} />
+
+## Versione su sfondo scuro
+
+L'attributo `dark` attiva la variante con sfondo scuro.
+
+<Canvas of={StepperStories.SfondoScuro} />
+
+Le varianti dell'intestazione sono disponibili anche su sfondo scuro.
+
+<Canvas of={StepperStories.SfondoScuroVarianti} />
+
+## Accessibilità
+
+- L'area contenuto utilizza `aria-live="polite"` per notificare i lettori di schermo quando il contenuto cambia.
+- I passi confermati includono uno `span.visually-hidden` con il testo "Confermato".
+- Il passo attivo include uno `span.visually-hidden` con il testo "Attivo".
+- Per la variante `numbers`, ogni numero di passo include uno `span.visually-hidden` con "Step ".
+- I pulsanti di navigazione sono disabilitati tramite l'attributo `disabled` quando si raggiunge il primo o l'ultimo passo.
