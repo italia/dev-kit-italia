@@ -17,18 +17,19 @@ describe('Tooltip component', () => {
       await expect(el).to.be.accessible();
     });
 
-    it('tooltip div has role="tooltip"', async () => {
+    it('content slot element has role="tooltip"', async () => {
       const el = await fixture<ItTooltip>(html`
         <it-tooltip>
           <it-button slot="trigger">Trigger</it-button>
           <span slot="content">Testo del tooltip</span>
         </it-tooltip>
       `);
-      const tooltipDiv = el.shadowRoot!.querySelector('.tooltip');
-      expect(tooltipDiv?.getAttribute('role')).to.equal('tooltip');
+      await el.updateComplete;
+      const content = el.querySelector('[slot="content"]');
+      expect(content?.getAttribute('role')).to.equal('tooltip');
     });
 
-    it('sets it-aria-describedby on it-button trigger', async () => {
+    it('sets aria-describedby on it-button trigger', async () => {
       const el = await fixture<ItTooltip>(html`
         <it-tooltip>
           <it-button slot="trigger">Trigger</it-button>
@@ -37,8 +38,8 @@ describe('Tooltip component', () => {
       `);
       await el.updateComplete;
       const trigger = el.querySelector('[slot="trigger"]') as HTMLElement;
-      const tooltipId = el.shadowRoot!.querySelector('.tooltip')?.id;
-      expect(trigger.getAttribute('it-aria-describedby')).to.equal(tooltipId);
+      const contentId = (el.querySelector('[slot="content"]') as HTMLElement)?.id;
+      expect(trigger.getAttribute('aria-describedby')).to.equal(contentId);
     });
 
     it('sets aria-describedby on plain HTML trigger', async () => {
@@ -50,8 +51,8 @@ describe('Tooltip component', () => {
       `);
       await el.updateComplete;
       const trigger = el.querySelector('[slot="trigger"]') as HTMLElement;
-      const tooltipId = el.shadowRoot!.querySelector('.tooltip')?.id;
-      expect(trigger.getAttribute('aria-describedby')).to.equal(tooltipId);
+      const contentId = (el.querySelector('[slot="content"]') as HTMLElement)?.id;
+      expect(trigger.getAttribute('aria-describedby')).to.equal(contentId);
     });
 
     it('tooltip is aria-hidden when closed', async () => {
@@ -61,8 +62,9 @@ describe('Tooltip component', () => {
           <span slot="content">Testo del tooltip</span>
         </it-tooltip>
       `);
-      const tooltipDiv = el.shadowRoot!.querySelector('.tooltip');
-      expect(tooltipDiv?.getAttribute('aria-hidden')).to.equal('true');
+      await el.updateComplete;
+      const content = el.querySelector('[slot="content"]');
+      expect(content?.getAttribute('aria-hidden')).to.equal('true');
     });
 
     it('tooltip is not aria-hidden when open', async () => {
@@ -74,8 +76,8 @@ describe('Tooltip component', () => {
       `);
       el.showTooltip();
       await el.updateComplete;
-      const tooltipDiv = el.shadowRoot!.querySelector('.tooltip');
-      expect(tooltipDiv?.hasAttribute('aria-hidden')).to.be.false;
+      const content = el.querySelector('[slot="content"]');
+      expect(content?.hasAttribute('aria-hidden')).to.be.false;
     });
   });
 

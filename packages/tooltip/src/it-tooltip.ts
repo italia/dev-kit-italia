@@ -3,7 +3,6 @@ import { BaseComponent } from '@italia/globals';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html, PropertyValues } from 'lit';
 import { computePosition, offset, flip, shift, autoUpdate, arrow } from '@floating-ui/dom';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import styles from './tooltip.scss';
 import type { TooltipPlacement } from './types.js';
 
@@ -32,11 +31,17 @@ export class ItTooltip extends BaseComponent {
 
   @query('slot[name="trigger"]') private _triggerSlot!: HTMLSlotElement;
 
+  @query('slot[name="content"]') private _contentSlot!: HTMLSlotElement;
+
   @query('.tooltip') private _tooltipElement!: HTMLElement;
 
   @query('.tooltip-arrow') private _arrowElement!: HTMLElement;
 
   isTransitioning = false;
+
+  private _contentElement: HTMLElement | null = null;
+
+  private _lastTrigger: HTMLElement | null = null;
 
   private get _triggerElement(): HTMLElement | null {
     return (this._triggerSlot?.assignedElements({ flatten: true })[0] as HTMLElement) ?? null;
@@ -82,6 +87,10 @@ export class ItTooltip extends BaseComponent {
     super.disconnectedCallback?.();
     this._removeListeners();
     this._cleanup?.();
+    this._contentElement?.removeAttribute('role');
+    this._contentElement?.removeAttribute('id');
+    this._contentElement?.removeAttribute('aria-hidden');
+    this._lastTrigger?.removeAttribute('aria-describedby');
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
@@ -93,9 +102,11 @@ export class ItTooltip extends BaseComponent {
   protected updated(changedProps: Map<string, unknown>): void {
     if (changedProps.has('open')) {
       if (this.open) {
+        this._contentElement?.removeAttribute('aria-hidden');
         this._show();
         this.dispatchEvent(new CustomEvent('it-tooltip-open', { bubbles: true, composed: true }));
       } else {
+        this._contentElement?.setAttribute('aria-hidden', 'true');
         this._hide();
         this.dispatchEvent(new CustomEvent('it-tooltip-close', { bubbles: true, composed: true }));
       }
@@ -103,13 +114,27 @@ export class ItTooltip extends BaseComponent {
   }
 
   private _setupAria(): void {
+    this._contentElement?.removeAttribute('role');
+    this._contentElement?.removeAttribute('id');
+    this._lastTrigger?.removeAttribute('aria-describedby');
+
     const trigger = this._triggerElement;
-    if (!trigger || !this._id) return;
-    if (trigger.tagName === 'IT-BUTTON') {
-      trigger.setAttribute('it-aria-describedby', this._id);
+    const content = this._contentSlot?.assignedElements({ flatten: true })[0] as HTMLElement | null;
+    if (!trigger || !content || !this._id) return;
+
+    this._contentElement = content;
+    this._lastTrigger = trigger;
+
+    if (!content.id) content.id = this._id;
+    content.setAttribute('role', 'tooltip');
+    if (this.open) {
+      content.removeAttribute('aria-hidden');
     } else {
-      trigger.setAttribute('aria-describedby', this._id);
+      content.setAttribute('aria-hidden', 'true');
     }
+
+    trigger.setAttribute('aria-describedby', content.id);
+    // trigger.removeAttribute('it-aria-describedby');
   }
 
   private _setupStandardEvents(): void {
@@ -176,8 +201,8 @@ export class ItTooltip extends BaseComponent {
 
   private _hide(): void {
     this.isTransitioning = true;
-    this._cleanup?.();
     setTimeout(() => {
+      this._cleanup?.();
       this._tooltipElement.style.visibility = 'hidden';
       Object.values(BSI_PLACEMENT_CLASSES).forEach((c) => this._tooltipElement.classList.remove(c));
       this.isTransitioning = false;
@@ -210,15 +235,9 @@ export class ItTooltip extends BaseComponent {
           if (!this.controlled) this._setupStandardEvents();
         }}
       ></slot>
-      <div
-        class=${classes}
-        role="tooltip"
-        id=${ifDefined(this._id)}
-        aria-hidden=${ifDefined(this.open ? undefined : 'true')}
-        @mouseleave=${this._onTooltipMouseLeave}
-      >
+      <div class=${classes} @mouseleave=${this._onTooltipMouseLeave}>
         <div class="tooltip-arrow"></div>
-        <div class="tooltip-inner"><slot name="content"></slot></div>
+        <div class="tooltip-inner"><slot name="content" @slotchange=${() => this._setupAria()}></slot></div>
       </div>
     `;
   }
