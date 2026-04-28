@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Web Components - vanilla-app</title>
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
+    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="root">
+      <header id="app-header"></header>
+      <main class="container my-4">
+        <h1>Upload</h1>
+
+        <!-- ──────────────────────────────────────────────────────────────────── -->
+        <!-- Upload con lista di file                                             -->
+        <!-- ──────────────────────────────────────────────────────────────────── -->
+        <section>
+          <h2>Upload con lista di file</h2>
+          <it-upload name="upload-list" multiple accept="image/*" image-preview auto-success>
+            <span slot="label">Carica file</span>
+          </it-upload>
+        </section>
+
+        <!-- ──────────────────────────────────────────────────────────────────── -->
+        <!-- Upload con lista di file — stati                                     -->
+        <!-- ──────────────────────────────────────────────────────────────────── -->
+        <section>
+          <h2>Upload con lista di file — stati</h2>
+          <it-upload id="upload-states" multiple image-preview name="upload-states">
+            <span slot="label">Carica file</span>
+          </it-upload>
+        </section>
+
+        <!-- ──────────────────────────────────────────────────────────────────── -->
+        <!-- Upload Gallery                                                       -->
+        <!-- ──────────────────────────────────────────────────────────────────── -->
+        <section>
+          <h2>Upload Gallery</h2>
+          <div style="display: flex; flex-direction: column; gap: 3rem;">
+            <div>
+              <it-upload variant="gallery" multiple accept="image/*" name="upload-gallery">
+                <span slot="label">Carica immagini</span>
+              </it-upload>
+            </div>
+            <div>
+              <h3>Esempio immagini caricate</h3>
+              <it-upload id="upload-gallery-filled" variant="gallery" multiple accept="image/*" name="upload-gallery-filled">
+                <span slot="label">Carica immagini</span>
+              </it-upload>
+            </div>
+          </div>
+        </section>
+
+        <!-- ──────────────────────────────────────────────────────────────────── -->
+        <!-- Upload con Avatar                                                    -->
+        <!-- ──────────────────────────────────────────────────────────────────── -->
+        <section>
+          <h2>Upload con Avatar</h2>
+          <div style="display: flex; gap: 3rem; flex-wrap: wrap; align-items: flex-start;">
+            <div>
+              <h3 style="margin-top: 0;">Dimensione Standard</h3>
+              <it-upload-avatar
+                src="https://randomuser.me/api/portraits/men/21.jpg"
+                alt="Mario Rossi"
+                size="xxl"
+                name="avatar-standard"
+              ></it-upload-avatar>
+            </div>
+            <div>
+              <h3 style="margin-top: 0;">Dimensione Piccola</h3>
+              <it-upload-avatar
+                src="https://randomuser.me/api/portraits/women/21.jpg"
+                alt="Laura Bianchi"
+                size="xl"
+                name="avatar-sm"
+              ></it-upload-avatar>
+            </div>
+          </div>
+        </section>
+
+        <!-- ──────────────────────────────────────────────────────────────────── -->
+        <!-- Upload Drag & Drop                                                   -->
+        <!-- ──────────────────────────────────────────────────────────────────── -->
+        <section>
+          <h2>Upload Drag &amp; Drop</h2>
+          <div style="display: flex; flex-direction: column; gap: 3rem;">
+            <div>
+              <h3>Default</h3>
+              <it-upload-drag-drop name="upload-dd-idle"></it-upload-drag-drop>
+            </div>
+
+            <div>
+              <h3>Simula caricamento</h3>
+              <it-upload-drag-drop id="dd-loading" name="upload-dd-loading"></it-upload-drag-drop>
+            </div>
+
+            <div>
+              <h3>Processo completato</h3>
+              <it-upload-drag-drop id="dd-success" name="upload-dd-success"></it-upload-drag-drop>
+            </div>
+
+            <div>
+              <h3>Esempio animato</h3>
+              <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 1rem;">
+                <it-button type="button" variant="primary" size="sm" id="btn-simulate-dd">Simula Upload</it-button>
+                <it-upload-drag-drop id="dd-interactive" name="upload-dd-demo"></it-upload-drag-drop>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ──────────────────────────────────────────────────────────────────── -->
+        <!-- Integrazione form e validazione                                      -->
+        <!-- ──────────────────────────────────────────────────────────────────── -->
+        <section>
+          <h2>Integrazione form e validazione</h2>
+          <form id="upload-form" style="display: flex; flex-direction: column; gap: 2rem;">
+            <div>
+              <h3>Lista file (obbligatorio)</h3>
+              <it-upload name="allegati" required multiple accept="image/*,.pdf">
+                <span slot="label">Allega documenti</span>
+              </it-upload>
+            </div>
+
+            <div>
+              <h3>Avatar (obbligatorio)</h3>
+              <it-upload-avatar name="foto-profilo" required alt="Mario Rossi"></it-upload-avatar>
+            </div>
+
+            <div>
+              <h3>Drag &amp; Drop (obbligatorio)</h3>
+              <it-upload-drag-drop name="documento" required></it-upload-drag-drop>
+            </div>
+
+            <div style="margin-top: 0.5rem;">
+              <it-button type="submit" variant="primary">Invia</it-button>
+            </div>
+          </form>
+          <div id="upload-form-result" style="margin-top: 1rem; font-size: 0.875rem;"></div>
+        </section>
+      </main>
+      <div id="app-footer"></div>
+      <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/js/upload.js"></script>
+  </body>
+</html>

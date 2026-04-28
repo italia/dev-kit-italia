@@ -46,7 +46,7 @@ $utilities: (
 
 .with-icon ::slotted(p) {
   margin-bottom: 0 !important;
-  margin-left: var(--#{$prefix}spacing-xl);
+  margin-left: var(--#{$prefix}spacing-l);
 }
 
 .notification-close {

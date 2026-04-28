@@ -1,0 +1,117 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/reboot';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/components/buttons';
+
+@import 'bootstrap-italia/src/scss/forms/forms';
+@import 'bootstrap-italia/src/scss/forms/form-control';
+@import 'bootstrap-italia/src/scss/forms/form-input-upload';
+
+@import 'bootstrap-italia/src/scss/forms/just-validate';
+@import 'bootstrap-italia/src/scss/components/type';
+
+@import 'bootstrap-italia/src/scss/base/utilities';
+
+$utilities: (
+  'display': map-merge(
+      map-get($utilities, 'display'),
+      (
+        'values': (
+          'none': none,
+          'inline-block': inline-block,
+          'flex': flex,
+        ),
+      )
+    ),
+  'margin': map-merge(
+      map-get($utilities, 'margin'),
+      (
+        'values': (
+          0: 0,
+        ),
+      )
+    ),
+);
+
+@import 'bootstrap-italia/src/scss/base/utilities/api';
+
+.upload[type='file'] + label {
+  display: flex;
+  width: fit-content;
+  max-width: unset !important; // Override BSI's `label { max-width: 80% }` for the upload label, which needs to shrink to fit its content.
+  align-items: center;
+  gap: var(--#{$prefix}spacing-xxs, 8px);
+}
+
+// Invalid state on the upload label (mirrors just-validate styling)
+:host([required]) .upload-required-feedback {
+  display: block;
+}
+
+// Icon mode (default): 24px icon + 12px gap = 36px
+.upload-file it-progress {
+  position: absolute;
+  bottom: -4px;
+  left: 36px;
+  width: calc(100% - 45px);
+}
+
+// Image-preview mode: 40px thumbnail + 12px gap = 52px
+.upload-file-list-image .upload-file it-progress {
+  left: 52px;
+  width: calc(100% - 60px);
+}
+
+:focus-visible,
+.upload:focus-visible + label,
+.upload-dragdrop-input:focus-visible[type='file'] + label,
+.avatar-upload:focus-within:focus-visible {
+  border-color: #000 !important;
+  box-shadow:
+    0 0 0 2px $focus-outline-color-in,
+    0 0 0 5px $focus-outline-color-out !important;
+  outline: 3px solid rgba(0, 0, 0, 0) !important;
+  outline-offset: 3px !important;
+}
+
+// Success state: check indicator + remove button grouped on the right
+.upload-file-actions {
+  display: flex;
+  align-items: center;
+  padding-left: var(--#{$prefix}spacing-xs, 12px);
+  margin-left: auto;
+  gap: calc(var(--#{$prefix}spacing-xxs, 8px) / 2);
+
+  .upload-file-success {
+    margin-bottom: calc(var(--#{$prefix}spacing-xxs, 8px) / 2);
+  }
+}
+
+// Gallery remove button — BSI-style circular primary icon button, pinned top-right
+.upload-image {
+  position: relative;
+
+  .upload-image-remove {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border-radius: 50%;
+    line-height: 1;
+  }
+}
+
+.upload-pictures-wall .upload[type='file'] + label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // This is in figma, it's not accessible, won't use
+  // background-color: var(--#{$prefix}color-primary-lighter, #bfdfff);
+}

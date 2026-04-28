@@ -64,11 +64,14 @@ const componentsMenuItems = [
   { label: 'Skiplinks', href: '/src/skiplinks' },
   { label: 'Bottom Nav', href: '/src/bottom-nav' },
   { label: 'Sticky', href: '/src/sticky' },
+  { label: 'Thumbnav', href: '/src/thumbnav' },
   { label: 'Timeline', href: '/src/timeline' },
   { label: 'Tables', href: '/src/tables' },
   { label: 'Tabs', href: '/src/tabs' },
   { label: 'Toggle', href: '/src/toggle' },
+  { label: 'Transfer', href: '/src/transfer' },
   { label: 'Tooltip', href: '/src/tooltip' },
+  { label: 'Upload', href: '/src/upload' },
   { label: 'Video', href: '/src/video' },
 ];
 

@@ -242,12 +242,33 @@ $it-components: (
     width: 180px,
     border-radius: 50%,
   ),
+  'it-upload': (
+    border-radius: var(--#{$prefix}btn-border-radius, 4px),
+    height: 44.8px,
+    padding: 0 1rem,
+  ),
+  'it-upload-drag-drop': (
+    border-radius: var(--#{$prefix}btn-border-radius, 4px),
+    width: 483.3px,
+    height: 180px,
+  ),
+  'it-upload-avatar': (
+    border-radius: 50%,
+    height: 112px,
+    width: 112px,
+    padding: 0,
+  ),
   'it-toggle': (
     height: 24px,
     width: 48px,
     pseudo: after,
     border-radius: var(--#{$prefix}radius-rounded, 40px),
   ),
+  // Transfer: 1px border-top + header (24px pt + 20px checkbox + 8px pb + 1px divider) + 240px scroll area + 1px border-bottom
+  'it-transfer': (
+      height: 296px,
+      width: 100%,
+    ),
 );
 
 @each $tag, $params in $it-components {

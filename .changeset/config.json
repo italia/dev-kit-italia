@@ -46,7 +46,10 @@
       "@italia/tabs",
       "@italia/timeline",
       "@italia/toggle",
+      "@italia/thumbnav",
       "@italia/tooltip",
+      "@italia/transfer",
+      "@italia/upload",
       "@italia/video"
     ]
   ],
