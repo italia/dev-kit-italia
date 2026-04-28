@@ -1,21 +1,28 @@
-# \<it-tabs>
+# \<it-bottom-nav>
 
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
 ## Installation
 
 ```bash
-npm i @italia/tabs
+npm i @italia/bottom-nav
 ```
 
 ## Usage
 
 ```html
 <script type="module">
-  import '@italia/tabs';
+  import '@italia/bottom-nav';
 </script>
 
-<it-tabs></it-tabs>
+<it-bottom-nav>
+  <it-bottom-nav-item>
+    <a href="/">
+      <it-icon name="it-pa"></it-icon>
+      Home
+    </a>
+  </it-bottom-nav-item>
+</it-bottom-nav>
 ```
 
 ## Linting and formatting
