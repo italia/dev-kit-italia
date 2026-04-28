@@ -377,3 +377,9 @@ it-select {
 .megamenu-story-layout {
   min-height: 300px;
 }
+
+#story--componenti-carousel--variante-gallery-lg {
+  & > div {
+    overflow: hidden;
+  }
+}

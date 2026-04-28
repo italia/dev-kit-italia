@@ -85,10 +85,12 @@
     "@italia/skiplinks": "workspace:^",
     "@italia/sticky": "workspace:^",
     "@italia/toolbar": "workspace:^",
+    "@italia/thumbnav": "workspace:^",
     "@italia/tabs": "workspace:^",
     "@italia/timeline": "workspace:^",
     "@italia/toggle": "workspace:^",
     "@italia/tooltip": "workspace:^",
+    "@italia/upload": "workspace:^",
     "@italia/video": "workspace:^"
   },
   "devDependencies": {

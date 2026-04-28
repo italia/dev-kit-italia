@@ -3,7 +3,7 @@ import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import i18nIT from '../src/locales/it.js';
 
-const VARIANTS = ['single', 'columns', 'gallery-sm', 'gallert-lg'] as const;
+const VARIANTS = ['single', 'columns', 'gallery-sm', 'gallery-lg'] as const;
 
 const renderSimpleCard = (image?: boolean, variant?: string, index?: string) => {
   if (variant === 'inline')
@@ -270,6 +270,26 @@ export const VarianteGalleryLG: Story = {
     },
     title: 'Variante gallery large',
   },
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      story: {
+        inline: false,
+        iframeHeight: 550,
+      },
+    },
+  },
+  decorators: [
+    (story) => {
+      if (!document.head.querySelector('#gallery-lg-fix')) {
+        const s = document.createElement('style');
+        s.id = 'gallery-lg-fix';
+        s.textContent = '#storybook-root{width:100%!important}';
+        document.head.appendChild(s);
+      }
+      return html`<div style="overflow:hidden;width:100%;">${story()}</div>`;
+    },
+  ],
   render: (args) => renderComponent(args),
 };
 export const ConFrecce1: Story = {

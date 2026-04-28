@@ -1,0 +1,176 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/reboot';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/components/avatar';
+@import 'bootstrap-italia/src/scss/forms/form-input-upload';
+@import 'bootstrap-italia/src/scss/forms/validation';
+@import 'bootstrap-italia/src/scss/components/type';
+@import 'bootstrap-italia/src/scss/forms/just-validate';
+
+:host {
+  position: relative;
+  display: inline-block;
+}
+
+// Hidden proxy input used by FormControl for required/validity — not visible to users.
+.it-form__control {
+  display: none;
+}
+
+// Override BSI's z-index: -1 which paints the input behind the stacking context,
+// making even the native focus ring invisible.
+// On mobile, BSI sets the input to 0.1px × 0.1px — iOS Safari will not open the
+// native media picker when tapping a <label> whose associated <input type="file">
+// has near-zero dimensions. Expand it to fill the full avatar tap target.
+input.upload-avatar {
+  position: absolute;
+  z-index: 1; // above it-avatar, below the label overlay at desktop
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  opacity: 0;
+
+  // At desktop the label overlay handles all interaction; restore tiny dimensions
+  // so the input doesn't block hover transitions on the overlay.
+  @include media-breakpoint-up(xl) {
+    width: 0.1px;
+    height: 0.1px;
+  }
+}
+
+// The avatar-upload-wrapper in shadow DOM needs position relative for the badge.
+// line-height: 0 removes the inline-block baseline gap that mispositions the badge.
+// border-radius: 50% confines the :focus-within ring to the circle shape.
+.avatar-upload-wrapper {
+  position: relative;
+  display: inline-block;
+  @include media-breakpoint-up(xl) {
+    overflow: hidden; // Clip the focus ring to the avatar shape
+  }
+
+  border-radius: 50%;
+  cursor: default;
+  line-height: 0;
+
+  .avatar-upload-icon {
+    z-index: 10;
+    right: 0;
+    bottom: 0px;
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+  }
+}
+
+.it-upload-avatar-label-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .it-upload-avatar-label {
+    font-weight: var(--#{$prefix}font-weight-solid, 600);
+  }
+}
+
+:host([size='xl']) {
+  .it-upload-avatar-label {
+    display: none !important;
+  }
+
+  .avatar-upload-wrapper .avatar-upload-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.upload-avatar-container {
+  // At mobile/tablet the container label covers the full avatar but should be invisible;
+  // BSI hides SVG icons inside the label at base breakpoint via `svg { display: none }`.
+  // Since <it-icon> encapsulates the SVG in its own shadow DOM, we must hide the host element.
+  .upload-avatar {
+    &[type='file'] + label {
+      it-icon {
+        display: none;
+      }
+    }
+  }
+}
+
+// Counter BSI's form-validation-state mixin which sets .invalid-feedback { display: none }.
+// We control visibility via the HTML `hidden` attribute (?hidden in Lit) instead.
+.invalid-feedback:not([hidden]) {
+  display: block;
+}
+
+// Show focus ring ONLY for keyboard navigation (not when user hovers/clicks with mouse).
+// At desktop the overlay itself is the visual focus indicator; the ring is redundant on hover
+// and clips awkwardly alongside the semi-transparent overlay (see :focus-within + :hover state).
+.avatar-upload-wrapper:focus-within:not(:hover) {
+  box-shadow:
+    0 0 0 2px $focus-outline-color-in,
+    0 0 0 5px $focus-outline-color-out !important;
+  outline: 3px solid rgba(0, 0, 0, 0) !important;
+  outline-offset: 3px !important;
+}
+
+// BSI's desktop rule targets `.avatar-upload:hover .upload-avatar-container` (descendant).
+// In shadow DOM, `.avatar-upload` is on <it-avatar> and `.upload-avatar-container` is its
+// sibling — not a descendant — so the BSI rule never fires. Override with the correct selector.
+@include media-breakpoint-up(xl) {
+  .upload-avatar:focus-visible + label {
+    box-shadow: 0 0 0 2px $focus-outline-color-in !important;
+    outline: none !important;
+  }
+
+  .upload-avatar-container .upload-avatar[type='file'] + label {
+    padding-top: calc(var(--#{$prefix}spacing-xxs, 8px) / 2);
+  }
+
+  :host([size='xl']) .upload-avatar-container .upload-avatar[type='file'] + label {
+    padding-top: 6px;
+  }
+
+  .avatar-upload-wrapper .upload-avatar-container {
+    top: auto;
+    right: 0;
+    bottom: -10%;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background-color: var(--bsi-overlay-background-primary-muted);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s;
+
+    // Reveal it-icon inside the label on desktop overlay
+    .upload-avatar {
+      &[type='file'] + label {
+        it-icon {
+          display: block;
+        }
+      }
+    }
+  }
+
+  // Hide the mobile badge at desktop (overlay takes over)
+  // Needs :host prefix to match the specificity of the base rule above.
+  .avatar-upload-wrapper .avatar-upload-icon {
+    display: none !important;
+  }
+
+  .avatar-upload-wrapper:hover .upload-avatar-container,
+  .avatar-upload-wrapper:focus-within .upload-avatar-container {
+    z-index: 5;
+    opacity: 1;
+    transition: opacity 0.25s;
+  }
+}

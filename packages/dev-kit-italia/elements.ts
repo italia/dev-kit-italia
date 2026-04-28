@@ -42,6 +42,8 @@ import '@italia/skiplinks/it-skiplinks.js';
 import '@italia/sticky/it-sticky.js';
 import '@italia/toolbar/it-toolbar.js';
 import '@italia/toolbar/it-toolbar-item.js';
+import '@italia/thumbnav/it-thumbnav-item.js';
+import '@italia/thumbnav/it-thumbnav.js';
 import '@italia/timeline/it-timeline.js';
 import '@italia/timeline/it-timeline-element.js';
 import '@italia/timeline/it-timeline-point.js';
@@ -50,6 +52,9 @@ import '@italia/tabs/it-tab.js';
 import '@italia/tabs/it-tab-panel.js';
 import '@italia/toggle/it-toggle-group.js';
 import '@italia/toggle/it-toggle.js';
+import '@italia/upload/it-upload.js';
+import '@italia/upload/it-upload-avatar.js';
+import '@italia/upload/it-upload-drag-drop.js';
 import '@italia/video/it-video.js';
 
 import { registerTranslation } from '@italia/i18n/i18n.js';
