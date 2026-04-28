@@ -57,6 +57,7 @@ export class ItMegamenu extends ItDropdownBase {
 
   private _onSlotHeaderChange() {
     // Verifichiamo se l'array degli elementi assegnati è popolato
+    console.log('Header items:', this._headerItems, this._headerItems.length);
     this._hasHeader = this._headerItems.length > 0;
   }
 
@@ -188,7 +189,7 @@ export class ItMegamenu extends ItDropdownBase {
         <div
           slot="content"
           part="popover-content"
-          class="${this.composeClass('dropdown-menu', 'show-lg', {
+          class="${this.composeClass('dropdown-menu megamenu', 'show-lg', {
             show: this._popoverOpen,
             'full-width': this.fullWidth,
           })}"
@@ -220,6 +221,7 @@ export class ItMegamenu extends ItDropdownBase {
                 })}"
               >
                 <!-- HEADER PLACEHOLDER -->
+
                 ${this._hasHeader
                   ? html`
                       <div class="it-heading-link-wrapper" part="megamenu-header">

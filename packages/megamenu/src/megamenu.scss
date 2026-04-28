@@ -56,5 +56,12 @@ $utilities: (
       column-gap: var(--#{$prefix}spacing-s);
       /* spazio tra colonne */
     }
+
+    // .it-heading-link-wrapper {
+    //   margin-bottom: var(--#{$prefix}spacing-s);
+    //   border-bottom-width: 1px;
+    //   border-bottom-style: solid;
+    //   border-color: var( --#{$prefix}megamenu-content-border-color);
+    // }
   }
 }
