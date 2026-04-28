@@ -41,6 +41,7 @@ import Table from './components/Table.vue';
 import Thumbnav from './components/Thumbnav.vue';
 import Timeline from './pages/Timeline.vue';
 import Toggle from './components/Toggle.vue';
+import Transfer from './components/Transfer.vue';
 import Tooltip from './components/Tooltip.vue';
 import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
@@ -97,6 +98,7 @@ const routes = [
   { path: '/timeline', name: 'Timeline', component: Timeline },
   { path: '/tabs', name: 'Tabs', component: Tabs },
   { path: '/toggle', name: 'Toggle', component: Toggle },
+  { path: '/transfer', name: 'Transfer', component: Transfer },
   { path: '/tooltip', name: 'Tooltip', component: Tooltip },
   { path: '/upload', name: 'Upload', component: Upload },
   { path: '/video', name: 'Video', component: Video },

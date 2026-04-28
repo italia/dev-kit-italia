@@ -89,6 +89,7 @@
     "@italia/timeline": "workspace:^",
     "@italia/toggle": "workspace:^",
     "@italia/tooltip": "workspace:^",
+    "@italia/transfer": "workspace:^",
     "@italia/upload": "workspace:^",
     "@italia/video": "workspace:^"
   },
