@@ -10,13 +10,20 @@
 
 //ovveride utilities: get only needed utilities
 $utilities: (
-  'rounded': map-merge(map-get($utilities, 'rounded'),
-    (values: (null: map-get(map-get(map-get($utilities, 'rounded'), 'values'), null),
-      ),
-    )),
-  'display': map-merge(map-get($utilities, 'display'),
-    (values: none,
-    )),
+  'rounded': map-merge(
+      map-get($utilities, 'rounded'),
+      (
+        values: (
+          null: map-get(map-get(map-get($utilities, 'rounded'), 'values'), null),
+        ),
+      )
+    ),
+  'display': map-merge(
+      map-get($utilities, 'display'),
+      (
+        values: none,
+      )
+    ),
   'shadow': map-get($utilities, 'shadow'),
   'border': map-get($utilities, 'border'),
   'padding': map-get($utilities, 'padding'),
