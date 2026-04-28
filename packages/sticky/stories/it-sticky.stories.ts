@@ -8,6 +8,7 @@ function renderSticky({
   paddingTop,
   stickyClassName,
   positionType,
+  position,
   triggerOffset,
   triggerSelector,
 }: StickyOptions) {
@@ -19,6 +20,7 @@ function renderSticky({
       trigger-offset=${ifDefined(triggerOffset || nothing)}
       trigger-selector=${ifDefined(triggerSelector || nothing)}
       position-type=${ifDefined(positionType || nothing)}
+      position=${ifDefined(position || nothing)}
     >
       <div class="bg-primary text-white p-3">Elemento Sticky</div>
     </it-sticky>
@@ -35,6 +37,7 @@ const meta: Meta = {
     positionType: undefined,
     triggerOffset: undefined,
     triggerSelector: undefined,
+    position: undefined,
   },
   parameters: {
     docs: {
@@ -95,6 +98,13 @@ Il componente gestisce in autonomia anche casi avanzati, come elementi impilabil
       control: 'text',
       description: 'Selettore CSS di un elemento della pagina da usare come soglia di attivazione dello sticky',
       table: { defaultValue: { summary: undefined } },
+    },
+    position: {
+      control: { type: 'select' },
+      options: ['top', 'bottom'],
+      description:
+        "Indica il bordo del viewport a cui agganciare l'elemento. Usa `'bottom'` con `position-type=\"fixed\"` per una barra persistente in fondo alla pagina.",
+      table: { defaultValue: { summary: 'top' } },
     },
   },
   render: (args) => renderSticky(args),
@@ -246,6 +256,29 @@ stickyElement.addEventListener('it-sticky-off', (event) => {
 
 \`\`\`
         `,
+      },
+    },
+  },
+};
+
+export const FixedBottom: Story = {
+  name: 'Position fixed bottom',
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Usando <code>position="bottom"</code> insieme a <code>position-type="fixed"</code> l'elemento viene agganciato
+al bordo inferiore del viewport immediatamente al caricamento — senza attendere lo scroll.
+Questo è il comportamento usato internamente da <code>it-bottom-nav</code>.
+<br>
+
+È disponibile una <a href="iframe.html?globals=&id=esempi-sticky--fixed-bottom-sticky&viewMode=story" target="_blank" rel="noopener">
+  pagina di esempio
+</a> dedicata a questa funzionalità.
+        `,
+      },
+      source: {
+        code: `<it-sticky position="bottom" position-type="fixed">\n  <div class="bg-primary text-white p-3">Barra fissa in fondo</div>\n</it-sticky>`,
       },
     },
   },

@@ -99,6 +99,18 @@ Quando ci sono più componenti sticky sulla pagina, puoi impilarli l'uno sull'al
 
 <Canvas of={Stories.Stackable} />
 
+## Position bottom
+
+Impostando `position="bottom"` insieme a `position-type="fixed"`, l'elemento viene agganciato al bordo inferiore del viewport **immediatamente al caricamento della pagina**, senza attendere lo scroll.
+Questo è il comportamento usato internamente da `it-bottom-nav`.
+
+Aggiungendo l'attributo `stackable` è possibile sovrapporre più barre fisse in fondo, che si impileranno verso l'alto in ordine di connessione al DOM.
+
+[Vai all'esempio per questa funzionalità](?path=/story/esempi-sticky--fixed-bottom-sticky)
+
+<Canvas of={Stories.FixedBottom} />
+
+
 ## Proprietà, metodi ed eventi accessibili via js
 
 ### Eventi

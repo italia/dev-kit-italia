@@ -1,0 +1,107 @@
+@import 'bootstrap-italia/src/scss/components/thumbnav';
+
+// Zoom immagine al passaggio del mouse:
+// non è gestibile da shadow DOM perché richiede di stilizzare
+// un elemento discendente di un elemento slottato (a img).
+it-thumbnav-item a:hover {
+  img {
+    transform: scale(1.05);
+    transition-duration: 1s;
+  }
+
+  &:after {
+    transition-duration: 1s;
+  }
+}
+
+// Disabilita lo zoom quando hover="nozoom" è impostato sul contenitore.
+it-thumbnav[hover='nozoom'] it-thumbnav-item a:hover {
+  img {
+    transform: none;
+  }
+}
+
+it-thumbnav-item a img {
+  transition: transform 0.4s cubic-bezier(0.15, 0.7, 0.36, 0.99);
+}
+
+// Progressive enhancement: nasconde il contenuto non ancora definito
+it-thumbnav:not(:defined) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &[small] it-thumbnav-item:not(:defined) {
+    width: 120px;
+  }
+
+  &[position='bottom'] {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 90%;
+    margin-bottom: 16px;
+    transform: translateX(-50%);
+  }
+
+  &[position='top'] {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 90%;
+    margin-top: 16px;
+    transform: translateX(-50%);
+  }
+
+  &[position='left'] {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    display: flex;
+    height: 90%;
+    flex-direction: column;
+    align-items: baseline;
+    margin-left: 16px;
+    transform: translateY(-50%);
+  }
+
+  &[position='right'] {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    display: flex;
+    height: 90%;
+    flex-direction: column;
+    align-items: baseline;
+    margin-right: 16px;
+    transform: translateY(-50%);
+  }
+}
+
+it-thumbnav-item:not(:defined) {
+  position: relative;
+  width: 240px;
+  flex: 0 1 auto;
+  margin: 8px;
+
+  a {
+    display: block;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: var(--it-thumbnav-overlay-bg, transparent);
+      content: '';
+      opacity: 0;
+      transition: opacity 0.4s cubic-bezier(0.15, 0.7, 0.36, 0.99);
+    }
+
+    &.active::after {
+      background: var(--#{$prefix}color-background-primary);
+      opacity: 0.6;
+    }
+  }
+}

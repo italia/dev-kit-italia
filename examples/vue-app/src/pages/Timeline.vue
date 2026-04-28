@@ -1,0 +1,473 @@
+<template>
+  <h1>Timeline</h1>
+
+  <!-- ============================================================ -->
+  <!-- Timeline classica -->
+  <!-- ============================================================ -->
+
+  <!-- Timeline classica -->
+  <section>
+    <h2>Timeline classica</h2>
+    <p>
+      Il componente timeline classica mostra eventi passati, presenti e futuri lungo un asse verticale (mobile) o
+      centrale (desktop). Il pin ha tre varianti di colore: <code>past</code> (blu scuro, passato),
+      <code>current</code> (azzurro, presente) e senza classe (bianco, futuro).
+    </p>
+    <it-timeline>
+      <it-timeline-element variant="past" date="MAGGIO 2026" heading-level="h3">
+        <it-icon slot="pin-icon" name="it-file"></it-icon>
+        <it-card>
+          <a slot="title" href="#">Titolo del contenuto</a>
+          <figure slot="image" class="figure img-full">
+            <img
+              src="https://placeholderimage.eu/api/city/800/600"
+              alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+            />
+          </figure>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </it-timeline-element>
+
+      <it-timeline-element variant="past" date="GIUGNO 2026" heading-level="h3">
+        <it-icon slot="pin-icon" name="it-calendar"></it-icon>
+        <it-card>
+          <a slot="title" href="#">Titolo del contenuto</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </it-timeline-element>
+
+      <it-timeline-element variant="current" date="LUGLIO 2026" heading-level="h3">
+        <it-icon slot="pin-icon" name="it-check-circle"></it-icon>
+        <it-card>
+          <a slot="title" href="#">Titolo del contenuto</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </it-timeline-element>
+
+      <it-timeline-element variant="current" date="LUGLIO 2026" heading-level="h3">
+        <it-icon slot="pin-icon" name="it-check-circle"></it-icon>
+        <it-card>
+          <a slot="title" href="#">Titolo del contenuto</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </it-timeline-element>
+
+      <it-timeline-element date="AGOSTO 2026" heading-level="h3">
+        <it-icon slot="pin-icon" name="it-star-outline"></it-icon>
+        <it-card>
+          <a slot="title" href="#">Titolo del contenuto</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </it-timeline-element>
+    </it-timeline>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Timeline point list – base -->
+  <!-- ============================================================ -->
+
+  <!-- Timeline point list -->
+  <section>
+    <h2>Timeline point list</h2>
+    <p>La timeline point list è una variante compatta per presentare brevi sequenze di eventi o scadenze temporali.</p>
+    <it-timeline variant="point-list" as="ol">
+      <it-timeline-point>
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point>
+        <time slot="date" datetime="2025-12-14">
+          <span class="visually-hidden">14 dicembre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">dic</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+    </it-timeline>
+  </section>
+
+  <!-- Con giorno e mese -->
+  <section>
+    <h2>Con giorno e mese</h2>
+    <it-timeline variant="point-list">
+      <it-timeline-point>
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ottobre</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+    </it-timeline>
+  </section>
+
+  <!-- Con anno, giorno e mese -->
+  <section>
+    <h2>Con anno, giorno e mese</h2>
+    <it-timeline variant="point-list">
+      <it-timeline-point>
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-top font-monospace">2025</span>
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ottobre</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+    </it-timeline>
+  </section>
+
+  <!-- Layout compatto su desktop -->
+  <section>
+    <h2>Layout compatto su desktop</h2>
+    <it-timeline variant="point-list" compact>
+      <it-timeline-point>
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point>
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point compact="false">
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+    </it-timeline>
+  </section>
+
+  <!-- Traguardi con numeri e sigle -->
+  <section>
+    <h2>Traguardi con numeri e sigle</h2>
+    <it-timeline variant="point-list">
+      <it-timeline-point>
+        <div slot="milestone">
+          <span class="visually-hidden">Passo 1</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">1</span>
+          </span>
+        </div>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point>
+        <div slot="milestone">
+          <span class="visually-hidden">Passo 1 di 3</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">1</span>
+            <span class="point-bottom font-monospace">/ 3</span>
+          </span>
+        </div>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point>
+        <div slot="milestone">
+          <span class="visually-hidden">Categoria AB, passo 1 di 3</span>
+          <span class="point-visual">
+            <span class="point-top font-monospace">AB</span>
+            <span class="point-main font-monospace">1</span>
+            <span class="point-bottom font-monospace">/ 3</span>
+          </span>
+        </div>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+    </it-timeline>
+  </section>
+
+  <!-- Traguardi con icone -->
+  <section>
+    <h2>Traguardi con icone</h2>
+    <it-timeline variant="point-list">
+      <it-timeline-point color="success">
+        <div slot="milestone">
+          <span class="visually-hidden">Milestone completata</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">
+              <it-icon name="it-check-circle"></it-icon>
+            </span>
+          </span>
+        </div>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point color="primary">
+        <div slot="milestone">
+          <span class="visually-hidden">Documento rilasciato</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">
+              <it-icon name="it-file"></it-icon>
+            </span>
+          </span>
+        </div>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point color="warning">
+        <div slot="milestone">
+          <span class="visually-hidden">Versione 2, codice JavaScript</span>
+          <span class="point-visual">
+            <span class="point-top font-monospace">v2</span>
+            <span class="point-main font-monospace">
+              <it-icon name="it-code-circle"></it-icon>
+            </span>
+            <span class="point-bottom font-monospace">JS</span>
+          </span>
+        </div>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+    </it-timeline>
+  </section>
+
+  <!-- Varianti colore punti indipendenti -->
+  <section>
+    <h2>Varianti colore punti indipendenti</h2>
+    <it-timeline variant="point-list">
+      <it-timeline-point>
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point color="secondary">
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point color="success">
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point color="danger">
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point color="warning">
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+      <it-timeline-point color="info">
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </it-timeline-point>
+    </it-timeline>
+  </section>
+
+  <!-- Timeline stile servizi pubblici -->
+  <section>
+    <h2>Timeline stile servizi pubblici</h2>
+    <it-timeline variant="point-list" color="secondary">
+      <it-timeline-point>
+        <time slot="date" datetime="2022-01-04">
+          <span class="visually-hidden">4 gennaio 2022</span>
+          <span class="point-visual" aria-hidden="true">
+            <span class="point-top font-monospace">2022</span>
+            <span class="point-main font-monospace">04</span>
+            <span class="point-bottom font-monospace">GEN</span>
+          </span>
+        </time>
+        <it-card full-height border-top="secondary" slot="content">
+          <span slot="title">Apertura iscrizioni</span>
+          <div slot="body">Inizio del periodo per presentare la domanda di iscrizione all'asilo.</div>
+        </it-card>
+      </it-timeline-point>
+      <it-timeline-point>
+        <time slot="date" datetime="2022-02-04">
+          <span class="visually-hidden">4 febbraio 2022</span>
+          <span class="point-visual" aria-hidden="true">
+            <span class="point-top font-monospace">2022</span>
+            <span class="point-main font-monospace">04</span>
+            <span class="point-bottom font-monospace">FEB</span>
+          </span>
+        </time>
+        <it-card full-height border-top="secondary" slot="content">
+          <span slot="title">Termine presentazione domande</span>
+        </it-card>
+      </it-timeline-point>
+      <it-timeline-point>
+        <time slot="date" datetime="2022-03-02">
+          <span class="visually-hidden">2 marzo 2022</span>
+          <span class="point-visual" aria-hidden="true">
+            <span class="point-top font-monospace">2022</span>
+            <span class="point-main font-monospace">02</span>
+            <span class="point-bottom font-monospace">MAR</span>
+          </span>
+        </time>
+        <it-card full-height border-top="secondary" slot="content">
+          <span slot="title">Pubblicazione graduatorie</span>
+          <div slot="body">Pubblicazione delle graduatorie provvisorie sul sito istituzionale.</div>
+        </it-card>
+      </it-timeline-point>
+      <it-timeline-point align-top>
+        <time slot="date" datetime="2022-04-02">
+          <span class="visually-hidden">2 aprile 2022</span>
+          <span class="point-visual" aria-hidden="true">
+            <span class="point-top font-monospace">2022</span>
+            <span class="point-main font-monospace">02</span>
+            <span class="point-bottom font-monospace">APR</span>
+          </span>
+        </time>
+        <it-card full-height border-top="secondary" slot="content">
+          <span slot="title">Perfezionamento domande</span>
+          <div slot="body">
+            Termine ultimo per la conferma dell'iscrizione e il pagamento della quota. Fino al secondo o anche anche
+            terzo riga utile per ulteriori istruzioni relative a questa scadenza. Se diventa così lungo bene avere la
+            data allineata al to.
+          </div>
+        </it-card>
+      </it-timeline-point>
+    </it-timeline>
+  </section>
+
+  <!-- Esempio complesso con card complete -->
+  <section>
+    <h2>Esempio complesso con card complete</h2>
+    <it-timeline variant="point-list" stack-mobile>
+      <it-timeline-point align-top>
+        <time slot="date" datetime="2025-10-14">
+          <span class="visually-hidden">14 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">14</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <it-card slot="content">
+          <a slot="title" href="#">Titolo del contenuto</a>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </it-timeline-point>
+      <it-timeline-point align-top color="danger">
+        <time slot="date" datetime="2025-10-31">
+          <span class="visually-hidden">31 ottobre 2025</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">31</span>
+            <span class="point-bottom font-monospace">ott</span>
+          </span>
+        </time>
+        <it-card slot="content" variant="inline">
+          <a slot="title" href="#">Titolo contenuto editoriale</a>
+          <div slot="footer" class="it-card-taxonomy">
+            <a href="#" class="it-card-category it-card-link">
+              <span class="visually-hidden">Categoria correlata: </span>
+              Categoria
+            </a>
+          </div>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile, 2026 </time>
+          <figure slot="image" class="figure img-full">
+            <img
+              src="https://placeholderimage.eu/api/city/800/600"
+              alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+            />
+          </figure>
+        </it-card>
+      </it-timeline-point>
+      <it-timeline-point color="success" align-top>
+        <div slot="milestone">
+          <span class="visually-hidden">Milestone completata</span>
+          <span class="point-visual">
+            <span class="point-main font-monospace">
+              <it-icon name="it-check-circle"></it-icon>
+            </span>
+          </span>
+        </div>
+        <it-card slot="content">
+          <a slot="title" href="#">Titolo del contenuto</a>
+          <figure slot="image" class="figure img-full">
+            <img
+              src="https://placeholderimage.eu/api/city/800/600"
+              alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+            />
+          </figure>
+          <span slot="text">
+            Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
+            righe, senza troncamento.
+          </span>
+          <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
+        </it-card>
+      </it-timeline-point>
+    </it-timeline>
+  </section>
+</template>

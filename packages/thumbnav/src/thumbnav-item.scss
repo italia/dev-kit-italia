@@ -1,0 +1,61 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+
+@import 'bootstrap-italia/src/scss/components/thumbnav';
+
+// The host element IS the flex item inside .thumb-nav
+:host {
+  display: block;
+}
+
+// li inside the shadow is the structural container
+li {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  li::marker {
+    font-size: 0;
+  }
+}
+// Slotted anchor: structural and overflow rules
+::slotted(a) {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+// Overlay pseudo-element for hover/active effects.
+// Colour is provided via CSS custom properties from the parent (it-thumbnav).
+::slotted(a)::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--it-thumbnav-overlay-bg, transparent);
+  content: '';
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.15, 0.7, 0.36, 0.99);
+}
+
+// Show overlay on hover when a colour is set
+::slotted(a:hover)::after {
+  opacity: var(--it-thumbnav-overlay-hover-opacity, 0);
+  transition-duration: 1s;
+}
+
+// Active state: full overlay using the primary colour
+::slotted(a.active) {
+  pointer-events: none;
+}
+
+::slotted(a.active)::after {
+  background: var(--#{$prefix}color-background-primary);
+  opacity: 0.6;
+}

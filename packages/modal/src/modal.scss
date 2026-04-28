@@ -7,17 +7,25 @@
 
 // Utilities necessarie per il modal
 $utilities: (
-  'display': map-merge(map-get($utilities, 'display'),
-    ('values': (none: none,
-        block: block,
-        flex: flex,
-      ),
-    )),
-  'overflow': map-merge(map-get($utilities, 'overflow'),
-    ('values': (auto: auto,
-        hidden: hidden,
-      ),
-    )),
+  'display': map-merge(
+      map-get($utilities, 'display'),
+      (
+        'values': (
+          none: none,
+          block: block,
+          flex: flex,
+        ),
+      )
+    ),
+  'overflow': map-merge(
+      map-get($utilities, 'overflow'),
+      (
+        'values': (
+          auto: auto,
+          hidden: hidden,
+        ),
+      )
+    ),
 );
 
 @import 'bootstrap-italia/src/scss/base/utilities/api';
@@ -56,7 +64,6 @@ $utilities: (
 
 // Nascondi modal e backdrop quando chiuso (tramite attributo open)
 :host(:not([open])) {
-
   .modal,
   .modal-backdrop {
     display: none !important;
@@ -87,8 +94,6 @@ $utilities: (
   overflow-x: hidden;
   overflow-y: auto;
 }
-
-
 
 :host([close-button-placement='backdrop']) {
   .btn-close[part~='close-button'] {

@@ -47,6 +47,7 @@ const meta = {
         'left-start',
         'left-end',
       ],
+      description: 'Posizione del Popover rispetto al suo elemento trigger',
       table: {
         defaultValue: { summary: 'bottom-start' },
       },

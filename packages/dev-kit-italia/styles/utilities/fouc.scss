@@ -199,6 +199,19 @@ $it-components: (
     // Check the Heads up! section in the documentation // https://sass-lang.com/documentation/modules/list/#slash
     aspect-ratio: list.slash(16, 9),
   ),
+  'it-tabs': (
+    height: 250px,
+    width: 100%,
+  ),
+  'it-tab': (
+    height: 54px,
+    display: inline-flex,
+    padding: 0 1rem,
+  ),
+  'it-tab-panel': (
+    height: 100%,
+    display: none !important,
+  ),
   'it-progress': (
     height: 4px,
     width: 100%,
@@ -228,6 +241,22 @@ $it-components: (
     height: 180px,
     width: 180px,
     border-radius: 50%,
+  ),
+  'it-upload': (
+    border-radius: var(--#{$prefix}btn-border-radius, 4px),
+    height: 44.8px,
+    padding: 0 1rem,
+  ),
+  'it-upload-drag-drop': (
+    border-radius: var(--#{$prefix}btn-border-radius, 4px),
+    width: 483.3px,
+    height: 180px,
+  ),
+  'it-upload-avatar': (
+    border-radius: 50%,
+    height: 112px,
+    width: 112px,
+    padding: 0,
   ),
   'it-toggle': (
     height: 24px,
