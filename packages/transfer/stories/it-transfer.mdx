@@ -1,0 +1,166 @@
+import { Meta, Story, Canvas, Controls, Description } from '@storybook/addon-docs/blocks';
+import * as TransferStories from './it-transfer.stories';
+
+<Meta of={TransferStories} />
+
+# Transfer
+
+<description>Componente per la creazione e gestione di liste di checkbox con trasferimento di elementi tra una lista sorgente e una lista destinazione.</description>
+
+## Cosa fa
+
+Il componente Transfer permette di spostare facilmente elementi tra due liste affiancate. È particolarmente indicato per:
+
+- gestire selezioni multiple di elementi;
+- organizzare e classificare contenuti;
+- filtrare dati in modo interattivo;
+- personalizzare preferenze o configurazioni utente.
+
+[Approfondisci quando e come usare il componente Transfer](https://designers.italia.it/design-system/componenti/transfer/)
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={TransferStories.EsempioInterattivo} />
+<Controls of={TransferStories.EsempioInterattivo} />
+
+## Indicazioni generali
+
+Il componente è composto da tre parti principali:
+
+- **Lista sorgente** (sinistra): gli elementi disponibili tra cui scegliere;
+- **Pulsanti di azione** (centro): per trasferire, ritrasferire e ripristinare;
+- **Lista destinazione** (destra): gli elementi selezionati.
+
+
+Il componente Transfer è composto da due elementi:
+
+- `it-transfer`: il contenitore principale che gestisce la logica e l'integrazione con il form;
+- `it-transfer-item`: il singolo elemento trasferibile, da inserire come figlio diretto di `it-transfer`.
+
+```html
+<it-transfer name="my-field">
+  <it-transfer-item value="item1">Voce 1</it-transfer-item>
+  <it-transfer-item value="item2">Voce 2</it-transfer-item>
+</it-transfer>
+```
+
+### Singolo elemento trasferibile
+
+`it-transfer-item` rappresenta il singolo elemento che può essere spostato tra le due liste, ed espone i seguenti attributi:
+- `value`: il valore univoco dell'elemento, che viene inviato nel form se l'elemento è presente nella lista destinazione;
+- `disabled`: se impostato, l'elemento non può essere trasferito;
+- `target`: se impostato, l'elemento parte già nella lista destinazione al caricamento.
+
+Il testo all'interno di `it-transfer-item` rappresenta l'etichetta visualizzata per l'elemento: questa può essere inserita nello slot di default, come testo semplice.
+
+## Accessibilità
+
+Il componente Transfer implementa le seguenti specifiche per garantire un'esperienza accessibile:
+
+- navigazione da tastiera: `Tab` per spostarsi tra gli elementi, `Space` per selezionare/deselezionare le checkbox, `Enter` o `Space` per attivare i pulsanti di trasferimento;
+- ogni lista ha un `role="group"` con `aria-labelledby` che punta all'intestazione;
+- i pulsanti di azione hanno `aria-label` descrittivo e `aria-disabled` per comunicare lo stato agli screen reader;
+- il checkbox di selezione totale nell'header riflette lo stato intermedio (`indeterminate`) quando solo alcuni elementi sono selezionati;
+
+
+## Con valori preimpostati
+
+Puoi impostare elementi nella lista destinazione al caricamento aggiungendo l'attributo `target` agli `it-transfer-item` desiderati.
+
+<Canvas of={TransferStories.ConValoriPreimpostati} />
+
+## Etichette personalizzate
+
+Le etichette delle intestazioni delle due liste possono essere personalizzate con gli attributi `source-label` e `target-label`. Di default vengono utilizzate le etichette in lingua italiana ("Sorgente" e "Destinazione").
+Il testo di queste etichette è importante per l'accessibilità, in quanto viene letto dagli screen reader per identificare le liste. Assicurati che siano descrittive e coerenti con il contesto d'uso.
+
+
+<Canvas of={TransferStories.EtichettePersonalizzate} />
+
+## Elemento singolo non trasferibile
+
+Puoi rendere un singolo elemento non trasferibile con l'attributo `disabled` sull'`it-transfer-item`.
+
+<Canvas of={TransferStories.ElementoDisabilitato} />
+
+## Stato disabilitato
+
+Impostando l'attributo `disabled` su `it-transfer`, l'intero componente viene disabilitato: le checkbox e i pulsanti non sono interagibili.
+
+<Canvas of={TransferStories.Disabilitato} />
+
+## Integrazione con il form
+
+Il componente `it-transfer` si integra nativamente con i form HTML. Il valore inviato alla sottomissione è un array JSON dei valori (`value`) degli elementi presenti nella lista destinazione.
+
+**Esempio di valore nel form:**
+```
+selections=["item10","item11","item12"]
+```
+
+## Validazione e gestione degli errori
+
+Se non hai impostato la validazione custom tramite l'attributo `custom-validation` e hai impostato l'attributo `required`, viene effettuata una validazione interna utilizzando la validazione nativa del browser.
+
+<Canvas of={TransferStories.ValidazioneNativa} />
+
+### Personalizzazione dei messaggi di errore
+
+Puoi personalizzare i messaggi di errore di validazione, traducendo le seguenti stringhe tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione):
+
+- `validityGroupRequired`, messaggio che viene mostrato quando la lista destinazione è vuota e il componente ha l'attributo `required`.
+
+Per gli altri errori di validazione non indicati, verranno mostrati i messaggi di errore nativi del browser.
+
+### Validazione esterna (validazione custom)
+
+Puoi anche validare il campo esternamente (ad esempio, via js o lato server), impostando l'attributo `custom-validation="true"`.
+In questo modo la validazione di default del browser effettuata internamente al componente è disabilitata.
+
+#### Campo invalido
+
+Nel caso il campo non sia valido, devi invalidarlo impostando il messaggio di errore da visualizzare attraverso l'attributo `validity-message="Messaggio di errore"`.
+
+#### Campo valido
+
+Per riportare il campo ad uno stato 'valido', è sufficiente impostare il messaggio di errore a vuoto: `validity-message=""`.
+
+<Canvas of={TransferStories.ValidazioneCustom} />
+
+
+## Gestione degli eventi
+
+<Description of={TransferStories.GestioneEventi} />
+<Canvas of={TransferStories.GestioneEventi} />
+
+## {TransferStories.I18n.name}
+
+<Description of={TransferStories.I18n} />
+
+## {TransferStories.MetodiEPropPubblici.name}
+
+<Description of={TransferStories.MetodiEPropPubblici} />
+<Canvas of={TransferStories.MetodiEPropPubblici} />
+
+## Personalizzazione degli stili
+
+Per personalizzare l'aspetto del componente `it-transfer` dall'esterno dello shadow DOM puoi utilizzare il selettore `::part()` sui seguenti part esposti dal componente:
+
+- `base` — il `div` radice che avvolge l'intero componente.
+- `row` — la riga Bootstrap che affianca le due liste e la colonna dei pulsanti.
+- `source-col` — la colonna che contiene la lista sorgente (sinistra).
+- `buttons-col` — la colonna centrale che contiene i pulsanti di azione.
+- `target-col` — la colonna che contiene la lista destinazione (destra).
+- `source-wrapper` — il `div` della lista sorgente con bordo e intestazione (è anche il nodo `role="group"`).
+- `target-wrapper` — il `div` della lista destinazione con bordo e intestazione (è anche il nodo `role="group"`).
+- `header` — l'intestazione di ciascuna lista, contenente la checkbox "seleziona tutto" e il contatore degli elementi. Presente in entrambe le liste.
+- `scroll` — l'area a scorrimento verticale contenente le checkbox degli elementi. Presente in entrambe le liste.
+- `group` — il `div` interno che raggruppa le singole checkbox degli elementi. Presente in entrambe le liste.
+- `buttons` — il `div` che raggruppa i tre pulsanti di azione (trasferisci, ritrasferisci, ripristina).
+- `forward-button` — il pulsante che sposta gli elementi selezionati dalla lista sorgente alla lista destinazione.
+- `back-button` — il pulsante che riporta gli elementi selezionati dalla lista destinazione alla lista sorgente.
+- `reset-button` — il pulsante che ripristina entrambe le liste allo stato iniziale.
+
+[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).

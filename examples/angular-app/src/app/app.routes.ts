@@ -240,6 +240,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/toolbar.component').then((c) => c.ToolbarComponent),
   },
   {
+    title: 'Transfer',
+    path: 'transfer',
+    loadComponent: () => import('./pages/transfer.component').then((c) => c.TransferComponent),
+  },
+  {
     title: 'Tooltip',
     path: 'tooltip',
     loadComponent: () => import('./pages/tooltip.component').then((c) => c.TooltipComponent),
