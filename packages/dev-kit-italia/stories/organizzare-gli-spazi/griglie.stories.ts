@@ -3,7 +3,7 @@ import { html } from 'lit';
 import { wrapExample } from './organizzare-gli-spazi.helpers';
 
 const meta = {
-  title: 'Organizzare gli spazi/Le Griglie',
+  title: 'Organizzare gli spazi/Griglie',
 } satisfies Meta;
 
 export default meta;

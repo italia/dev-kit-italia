@@ -46,24 +46,14 @@ const helperStyles = html`<style>
     width: 5rem;
     height: 5rem;
     margin: 0.25rem;
-    background-color: #f8f9fa;
+    background-color: #f2f2f2;
     vertical-align: top;
   }
 
   .dki-organizzare-gli-spazi-example.bd-example-border-utils-0 span,
   .dki-organizzare-gli-spazi-example .bd-example-border-utils-0 span {
-    border: 1px solid #dee2e6;
-    background-image:
-      linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
-      linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%),
-      linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%);
-    background-position:
-      0 0,
-      0 0.5rem,
-      0.5rem -0.5rem,
-      -0.5rem 0;
-    background-size: 1rem 1rem;
+    border: 1px solid #c5c7c9;
+    background-color: #f2f2f2;
   }
 
   .dki-organizzare-gli-spazi-example .bd-example {
@@ -141,8 +131,8 @@ const helperStyles = html`<style>
     }
   }
 
-  .dki-organizzare-gli-spazi-example [class^='float-'],
-  .dki-organizzare-gli-spazi-example [class*=' float-'] {
+  .dki-organizzare-gli-spazi-example [class^='float-']:not(.btn),
+  .dki-organizzare-gli-spazi-example [class*=' float-']:not(.btn) {
     display: inline-block;
     padding: 0.75rem 1rem;
     margin: 0.25rem;

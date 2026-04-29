@@ -58,7 +58,7 @@ export const PerEstesoEOverflow: Story = {
     pageLayout: 'w-100',
     docs: {
       source: {
-        code: `<div class="text-nowrap bd-highlight" style="width: 8rem;">
+        code: `<div class="text-nowrap bd-highlight" style="width: 10rem;">
   Questo testo oltrepassa il contenitore.
 </div>`,
       },
@@ -66,7 +66,7 @@ export const PerEstesoEOverflow: Story = {
   },
   render: () =>
     wrapExample(
-      html`<div class="text-nowrap bd-highlight" style="width: 8rem;">
+      html`<div class="text-nowrap bd-highlight" style="width: 10rem;overflow:hidden;">
   Questo testo oltrepassa il contenitore.
 </div>`,
     ),
