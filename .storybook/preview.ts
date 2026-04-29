@@ -44,45 +44,21 @@ const preview: Preview = {
       },
     },
     options: {
-      storySort: {
-        method: 'alphabetical',
-        order: [
-          'Introduzione',
-          'Personalizzazione degli stili',
-          'Font',
-          'i18n - Internazionalizzazione',
-          'Documentazione tecnica',
-          'Componenti',
-          'Framework',
-          [
-            'Organizzare gli spazi',
-            [
-              'Introduzione',
-              'Allineamento verticale',
-              'Bordi',
-              'Clearfix',
-              'Dimensionamento',
-              'Display',
-              'Flex',
-              'Float',
-              'Griglie',
-              'Ombreggiature',
-              'Posizionamento',
-              'Proporzioni',
-              'Spaziatura',
-            ],
-          ],
-          [
-            'Organizzare i contenuti',
-            [
-              'Introduzione',
-              'Codice',
-              'Immagini',
-              'Testo',
-              'Tipografia',
-            ],
-          ],
-        ],
+      storySort: (a, b) => {
+        // Debug: log what we're comparing
+        const aPath = a.id?.split('--')[0] || '';
+        const bPath = b.id?.split('--')[0] || '';
+
+        // If one contains 'introduzione' and the other doesn't, prioritize introduzione
+        if (aPath.includes('organizzare') && bPath.includes('organizzare')) {
+          const aHasIntro = aPath.includes('introduzione');
+          const bHasIntro = bPath.includes('introduzione');
+          
+          if (aHasIntro && !bHasIntro) return -1;
+          if (!aHasIntro && bHasIntro) return 1;
+        }
+
+        return a.id?.localeCompare(b.id) || 0;
       },
     },
   },
