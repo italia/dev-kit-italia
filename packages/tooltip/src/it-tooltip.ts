@@ -90,7 +90,16 @@ export class ItTooltip extends BaseComponent {
     this._contentElement?.removeAttribute('role');
     this._contentElement?.removeAttribute('id');
     this._contentElement?.removeAttribute('aria-hidden');
-    this._lastTrigger?.removeAttribute('aria-describedby');
+    this._cleanupDescribedBy();
+  }
+
+  private _cleanupDescribedBy(): void {
+    if (!this._lastTrigger) return;
+    if ('setDescribedBy' in this._lastTrigger && typeof (this._lastTrigger as any).setDescribedBy === 'function') {
+      (this._lastTrigger as any).setDescribedBy(null);
+    } else {
+      this._lastTrigger.removeAttribute('aria-describedby');
+    }
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
@@ -116,7 +125,7 @@ export class ItTooltip extends BaseComponent {
   private _setupAria(): void {
     this._contentElement?.removeAttribute('role');
     this._contentElement?.removeAttribute('id');
-    this._lastTrigger?.removeAttribute('aria-describedby');
+    this._cleanupDescribedBy();
 
     const trigger = this._triggerElement;
     const content = this._contentSlot?.assignedElements({ flatten: true })[0] as HTMLElement | null;
@@ -133,8 +142,11 @@ export class ItTooltip extends BaseComponent {
       content.setAttribute('aria-hidden', 'true');
     }
 
-    trigger.setAttribute('aria-describedby', content.id);
-    // trigger.removeAttribute('it-aria-describedby');
+    if ('setDescribedBy' in trigger && typeof (trigger as any).setDescribedBy === 'function') {
+      (trigger as any).setDescribedBy(content);
+    } else {
+      trigger.setAttribute('aria-describedby', content.id);
+    }
   }
 
   private _setupStandardEvents(): void {
