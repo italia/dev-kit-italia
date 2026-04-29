@@ -1,3 +1,4 @@
+/* eslint-disable storybook/no-redundant-story-name */
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { wrapExample } from './organizzare-gli-spazi.helpers';
@@ -38,9 +39,12 @@ export const InlineFlexbox: Story = {
     },
   },
   render: () =>
-    wrapExample(html`<div class="d-inline-flex p-2 bd-highlight-primary">Io sono un contenitore inline flexbox!</div>`, {
-      className: 'bd-example-row',
-    }),
+    wrapExample(
+      html`<div class="d-inline-flex p-2 bd-highlight-primary">Io sono un contenitore inline flexbox!</div>`,
+      {
+        className: 'bd-example-row',
+      },
+    ),
 };
 
 export const VariantiDiDirezione: Story = {

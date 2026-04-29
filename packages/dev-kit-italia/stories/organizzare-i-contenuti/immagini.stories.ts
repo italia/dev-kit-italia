@@ -1,3 +1,4 @@
+/* eslint-disable storybook/no-redundant-story-name */
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 
@@ -18,7 +19,12 @@ export const Base: Story = {
       },
     },
   },
-  render: () => html`<img src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine" class="img-fluid" alt="Immagine responsive generica">`,
+  render: () =>
+    html`<img
+      src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine"
+      class="img-fluid"
+      alt="Immagine responsive generica"
+    />`,
 };
 
 export const Thumbnail: Story = {
@@ -31,7 +37,12 @@ export const Thumbnail: Story = {
       },
     },
   },
-  render: () => html`<img src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine" class="img-thumbnail" alt="Una generica immagine segnaposto quadrata con un bordo bianco attorno ad essa, che la rende simile a una foto scattata con una vecchia macchina fotografica istantanea">`,
+  render: () =>
+    html`<img
+      src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine"
+      class="img-thumbnail"
+      alt="Una generica immagine segnaposto quadrata con un bordo bianco attorno ad essa, che la rende simile a una foto scattata con una vecchia macchina fotografica istantanea"
+    />`,
 };
 
 export const AllineamentiStartEnd: Story = {
@@ -46,10 +57,19 @@ export const AllineamentiStartEnd: Story = {
       },
     },
   },
-  render: () => html`<div style="min-height: 150px;">
-    <img src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine" class="rounded float-start me-3" alt="Un'immagine generica segnaposto con angoli arrotondati">
-    <img src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine" class="rounded float-end ms-3" alt="Un'immagine generica segnaposto con angoli arrotondati">
-  </div>`,
+  render: () =>
+    html`<div style="min-height: 150px;">
+      <img
+        src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine"
+        class="rounded float-start me-3"
+        alt="Un'immagine generica segnaposto con angoli arrotondati"
+      />
+      <img
+        src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine"
+        class="rounded float-end ms-3"
+        alt="Un'immagine generica segnaposto con angoli arrotondati"
+      />
+    </div>`,
 };
 
 export const AllineamentoCentrato: Story = {
@@ -63,7 +83,12 @@ export const AllineamentoCentrato: Story = {
       },
     },
   },
-  render: () => html`<img src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine" class="rounded mx-auto d-block" alt="Un'immagine generica segnaposto con angoli arrotondati">`,
+  render: () =>
+    html`<img
+      src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine"
+      class="rounded mx-auto d-block"
+      alt="Un'immagine generica segnaposto con angoli arrotondati"
+    />`,
 };
 
 export const AllineamentoCentratoAlternativa: Story = {
@@ -79,9 +104,14 @@ export const AllineamentoCentratoAlternativa: Story = {
       },
     },
   },
-  render: () => html`<div class="text-center">
-    <img src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine" class="rounded" alt="Un'immagine generica segnaposto con angoli arrotondati">
-  </div>`,
+  render: () =>
+    html`<div class="text-center">
+      <img
+        src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine"
+        class="rounded"
+        alt="Un'immagine generica segnaposto con angoli arrotondati"
+      />
+    </div>`,
 };
 
 export const Figure: Story = {
@@ -97,10 +127,15 @@ export const Figure: Story = {
       },
     },
   },
-  render: () => html`<figure class="figure">
-  <img src="https://placehold.co/280x120/ebebeb/808080/?text=Immagine" class="figure-img img-fluid rounded" alt="Un'immagine generica segnaposto con angoli arrotondati in una figura.">
-  <figcaption class="figure-caption">Una didascalia per l'immagine sopra.</figcaption>
-</figure>`,
+  render: () =>
+    html`<figure class="figure">
+      <img
+        src="https://placehold.co/280x120/ebebeb/808080/?text=Immagine"
+        class="figure-img img-fluid rounded"
+        alt="Un'immagine generica segnaposto con angoli arrotondati in una figura."
+      />
+      <figcaption class="figure-caption">Una didascalia per l'immagine sopra.</figcaption>
+    </figure>`,
 };
 
 export const FigureConDidascaliaAllineataADestra: Story = {
@@ -116,8 +151,13 @@ export const FigureConDidascaliaAllineataADestra: Story = {
       },
     },
   },
-  render: () => html`<figure class="figure">
-  <img src="https://placehold.co/280x120/ebebeb/808080/?text=Immagine" class="figure-img img-fluid rounded" alt="Un'immagine generica segnaposto con angoli arrotondati in una figura.">
-  <figcaption class="figure-caption text-end">Una didascalia per l'immagine sopra.</figcaption>
-</figure>`,
+  render: () =>
+    html`<figure class="figure">
+      <img
+        src="https://placehold.co/280x120/ebebeb/808080/?text=Immagine"
+        class="figure-img img-fluid rounded"
+        alt="Un'immagine generica segnaposto con angoli arrotondati in una figura."
+      />
+      <figcaption class="figure-caption text-end">Una didascalia per l'immagine sopra.</figcaption>
+    </figure>`,
 };

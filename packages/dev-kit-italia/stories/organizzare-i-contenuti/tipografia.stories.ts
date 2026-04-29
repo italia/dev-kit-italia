@@ -1,3 +1,4 @@
+/* eslint-disable storybook/no-redundant-story-name */
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 
@@ -20,9 +21,10 @@ export const TitilliumWeb: Story = {
       },
     },
   },
-  render: () => html`<p class="font-sans-serif">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
-<p class="font-sans-serif">abcdefghijklmnopqrstuvwxyz</p>
-<p class="font-sans-serif">0123456789</p>`,
+  render: () =>
+    html`<p class="font-sans-serif">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+      <p class="font-sans-serif">abcdefghijklmnopqrstuvwxyz</p>
+      <p class="font-sans-serif">0123456789</p>`,
 };
 
 export const Lora: Story = {
@@ -37,9 +39,10 @@ export const Lora: Story = {
       },
     },
   },
-  render: () => html`<p class="font-serif">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
-<p class="font-serif">abcdefghijklmnopqrstuvwxyz</p>
-<p class="font-serif">0123456789</p>`,
+  render: () =>
+    html`<p class="font-serif">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+      <p class="font-serif">abcdefghijklmnopqrstuvwxyz</p>
+      <p class="font-serif">0123456789</p>`,
 };
 
 export const RobotoMono: Story = {
@@ -54,9 +57,10 @@ export const RobotoMono: Story = {
       },
     },
   },
-  render: () => html`<p class="font-monospace">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
-<p class="font-monospace">abcdefghijklmnopqrstuvwxyz</p>
-<p class="font-monospace">0123456789</p>`,
+  render: () =>
+    html`<p class="font-monospace">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+      <p class="font-monospace">abcdefghijklmnopqrstuvwxyz</p>
+      <p class="font-monospace">0123456789</p>`,
 };
 
 export const Intestazioni: Story = {
@@ -74,12 +78,13 @@ export const Intestazioni: Story = {
       },
     },
   },
-  render: () => html`<h1 class="no_toc">Intestazione di tipo h1</h1>
-<h2 class="no_toc">Intestazione di tipo h2</h2>
-<h3 class="no_toc">Intestazione di tipo h3</h3>
-<h4 class="no_toc">Intestazione di tipo h4</h4>
-<h5 class="no_toc">Intestazione di tipo h5</h5>
-<h6 class="no_toc">Intestazione di tipo h6</h6>`,
+  render: () =>
+    html`<h1 class="no_toc">Intestazione di tipo h1</h1>
+      <h2 class="no_toc">Intestazione di tipo h2</h2>
+      <h3 class="no_toc">Intestazione di tipo h3</h3>
+      <h4 class="no_toc">Intestazione di tipo h4</h4>
+      <h5 class="no_toc">Intestazione di tipo h5</h5>
+      <h6 class="no_toc">Intestazione di tipo h6</h6>`,
 };
 
 export const StiliIntestazioni: Story = {
@@ -97,12 +102,13 @@ export const StiliIntestazioni: Story = {
       },
     },
   },
-  render: () => html`<p class="h1">Testo con classe .h1</p>
-<p class="h2">Testo con classe .h2</p>
-<p class="h3">Testo con classe .h3</p>
-<p class="h4">Testo con classe .h4</p>
-<p class="h5">Testo con classe .h5</p>
-<p class="h6">Testo con classe .h6</p>`,
+  render: () =>
+    html`<p class="h1">Testo con classe .h1</p>
+      <p class="h2">Testo con classe .h2</p>
+      <p class="h3">Testo con classe .h3</p>
+      <p class="h4">Testo con classe .h4</p>
+      <p class="h5">Testo con classe .h5</p>
+      <p class="h6">Testo con classe .h6</p>`,
 };
 
 export const IntestazioneH1InEvidenza: Story = {
@@ -129,8 +135,17 @@ export const ParagrafiContenuti: Story = {
       },
     },
   },
-  render: () => html`<p>Ullamco laboris nisi ut aliquid ex ea commodi consequat. Curabitur blandit tempus ardua ridiculus sed magna. Curabitur est gravida et libero vitae dictum. Phasellus laoreet lorem vel dolor tempus vehicula. Magna pars studiorum, prodita quaerimus.</p>
-<p>Ullamco laboris nisi ut aliquid ex ea commodi consequat. Curabitur blandit tempus ardua ridiculus sed magna. Curabitur est gravida et libero vitae dictum. Phasellus laoreet lorem vel dolor tempus vehicula. Magna pars studiorum, prodita quaerimus.</p>`,
+  render: () =>
+    html`<p>
+        Ullamco laboris nisi ut aliquid ex ea commodi consequat. Curabitur blandit tempus ardua ridiculus sed magna.
+        Curabitur est gravida et libero vitae dictum. Phasellus laoreet lorem vel dolor tempus vehicula. Magna pars
+        studiorum, prodita quaerimus.
+      </p>
+      <p>
+        Ullamco laboris nisi ut aliquid ex ea commodi consequat. Curabitur blandit tempus ardua ridiculus sed magna.
+        Curabitur est gravida et libero vitae dictum. Phasellus laoreet lorem vel dolor tempus vehicula. Magna pars
+        studiorum, prodita quaerimus.
+      </p>`,
 };
 
 export const ParagrafiInEvidenza: Story = {
@@ -163,14 +178,15 @@ export const MarkupSemanticoNeiParagrafi: Story = {
       },
     },
   },
-  render: () => html`<p>Esempio di testo <u>sottolineato</u>.</p>
-<p>Esempio di testo <mark>evidenziato</mark>.</p>
-<p>Esempio di testo <em>corsivo</em>.</p>
-<p>Esempio di testo <strong>in grassetto</strong>.</p>
-<p>Esempio di testo <small>rimpicciolito</small>.</p>
-<p>Esempio di <code>codice</code> in un paragrafo di testo.</p>
-<ins>Testo aggiunto</ins>
-<del>Testo rimosso</del>`,
+  render: () =>
+    html`<p>Esempio di testo <u>sottolineato</u>.</p>
+      <p>Esempio di testo <mark>evidenziato</mark>.</p>
+      <p>Esempio di testo <em>corsivo</em>.</p>
+      <p>Esempio di testo <strong>in grassetto</strong>.</p>
+      <p>Esempio di testo <small>rimpicciolito</small>.</p>
+      <p>Esempio di <code>codice</code> in un paragrafo di testo.</p>
+      <ins>Testo aggiunto</ins>
+      <del>Testo rimosso</del>`,
 };
 
 export const Link: Story = {
@@ -180,12 +196,21 @@ export const Link: Story = {
     docs: {
       source: {
         code: `<p>Esempio di <a href="#">link normale</a>.</p>
-<p>Esempio di <a href="#">link con icona <svg role="img" class="icon icon-sm icon-primary"><title>Freccia destra</title><use href="/dist/svg/sprites.svg#it-arrow-right"></use></svg></a></p>`,
+<p>Esempio di <a href="#">link con icona <svg role="presentation" class="icon icon-sm icon-primary"><title>Freccia destra</title><use href="/dist/svg/sprites.svg#it-arrow-right"></use></svg></a></p>`,
       },
     },
   },
-  render: () => html`<p>Esempio di <a href="#">link normale</a>.</p>
-<p>Esempio di <a href="#">link con icona <svg role="img" class="icon icon-sm icon-primary"><title>Freccia destra</title><use href="/dist/svg/sprites.svg#it-arrow-right"></use></svg></a></p>`,
+  render: () =>
+    html`<p>Esempio di <a href="#">link normale</a>.</p>
+      <p>
+        Esempio di
+        <a href="#"
+          >link con icona
+          <svg role="presentation" class="icon icon-sm icon-primary">
+            <title>Freccia destra</title>
+            <use href="/dist/svg/sprites.svg#it-arrow-right"></use></svg
+        ></a>
+      </p>`,
 };
 
 export const Abbreviazioni: Story = {
@@ -199,8 +224,9 @@ export const Abbreviazioni: Story = {
       },
     },
   },
-  render: () => html`<p><abbr title="attribute">attr</abbr></p>
-<p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>`,
+  render: () =>
+    html`<p><abbr title="attribute">attr</abbr></p>
+      <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>`,
 };
 
 export const Citazioni: Story = {
@@ -215,9 +241,13 @@ export const Citazioni: Story = {
       },
     },
   },
-  render: () => html`<blockquote class="blockquote">
-  <p class="mb-0">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt sequi eos ratione.</p>
-</blockquote>`,
+  render: () =>
+    html`<blockquote class="blockquote">
+      <p class="mb-0">
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+        eos qui ratione voluptatem sequi nesciunt sequi eos ratione.
+      </p>
+    </blockquote>`,
 };
 
 export const CitazioniConFonte: Story = {
@@ -233,10 +263,14 @@ export const CitazioniConFonte: Story = {
       },
     },
   },
-  render: () => html`<blockquote class="blockquote">
-  <p class="mb-0">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt sequi eos ratione.</p>
-  <footer class="blockquote-footer">Nome Cognome da <cite title="Titolo fonte">Titolo fonte</cite></footer>
-</blockquote>`,
+  render: () =>
+    html`<blockquote class="blockquote">
+      <p class="mb-0">
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+        eos qui ratione voluptatem sequi nesciunt sequi eos ratione.
+      </p>
+      <footer class="blockquote-footer">Nome Cognome da <cite title="Titolo fonte">Titolo fonte</cite></footer>
+    </blockquote>`,
 };
 
 export const CitazioneCentrata: Story = {
@@ -252,10 +286,14 @@ export const CitazioneCentrata: Story = {
       },
     },
   },
-  render: () => html`<blockquote class="blockquote text-center">
-  <p class="mb-0">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt sequi eos ratione.</p>
-  <footer class="blockquote-footer">Nome Cognome da <cite title="Titolo fonte">Titolo fonte</cite></footer>
-</blockquote>`,
+  render: () =>
+    html`<blockquote class="blockquote text-center">
+      <p class="mb-0">
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+        eos qui ratione voluptatem sequi nesciunt sequi eos ratione.
+      </p>
+      <footer class="blockquote-footer">Nome Cognome da <cite title="Titolo fonte">Titolo fonte</cite></footer>
+    </blockquote>`,
 };
 
 export const CitazioneADestra: Story = {
@@ -271,10 +309,14 @@ export const CitazioneADestra: Story = {
       },
     },
   },
-  render: () => html`<blockquote class="blockquote text-end">
-  <p class="mb-0">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt sequi eos ratione.</p>
-  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>`,
+  render: () =>
+    html`<blockquote class="blockquote text-end">
+      <p class="mb-0">
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+        eos qui ratione voluptatem sequi nesciunt sequi eos ratione.
+      </p>
+      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+    </blockquote>`,
 };
 
 export const CitazioneBase: Story = {
@@ -289,9 +331,13 @@ export const CitazioneBase: Story = {
       },
     },
   },
-  render: () => html`<blockquote class="blockquote blockquote-simple">
-  <p class="mb-0">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt sequi eos ratione.</p>
-</blockquote>`,
+  render: () =>
+    html`<blockquote class="blockquote blockquote-simple">
+      <p class="mb-0">
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+        eos qui ratione voluptatem sequi nesciunt sequi eos ratione.
+      </p>
+    </blockquote>`,
 };
 
 export const CitazioneCard: Story = {
@@ -307,10 +353,14 @@ export const CitazioneCard: Story = {
       },
     },
   },
-  render: () => html`<blockquote class="blockquote blockquote-card">
-  <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt sequi eos ratione.</p>
-  <footer class="blockquote-footer"><cite title="Titolo fonte">Titolo fonte</cite></footer>
-</blockquote>`,
+  render: () =>
+    html`<blockquote class="blockquote blockquote-card">
+      <p>
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+        eos qui ratione voluptatem sequi nesciunt sequi eos ratione.
+      </p>
+      <footer class="blockquote-footer"><cite title="Titolo fonte">Titolo fonte</cite></footer>
+    </blockquote>`,
 };
 
 export const CitazioneCardConSfondoScuro: Story = {
@@ -326,10 +376,14 @@ export const CitazioneCardConSfondoScuro: Story = {
       },
     },
   },
-  render: () => html`<blockquote class="blockquote blockquote-card dark">
-  <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt sequi eos ratione.</p>
-  <footer class="blockquote-footer"><cite title="Titolo fonte">Titolo fonte</cite></footer>
-</blockquote>`,
+  render: () =>
+    html`<blockquote class="blockquote blockquote-card dark">
+      <p>
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+        eos qui ratione voluptatem sequi nesciunt sequi eos ratione.
+      </p>
+      <footer class="blockquote-footer"><cite title="Titolo fonte">Titolo fonte</cite></footer>
+    </blockquote>`,
 };
 
 export const ListaSenzaStile: Story = {
@@ -358,23 +412,25 @@ export const ListaSenzaStile: Story = {
       },
     },
   },
-  render: () => html`<ul class="list-unstyled">
-  <li>Lorem ipsum dolor sit amet</li>
-  <li>Consectetur adipiscing elit</li>
-  <li>Integer molestie lorem at massa</li>
-  <li>Facilisis in pretium nisl aliquet</li>
-  <li>Nulla volutpat aliquam velit
-    <ul class="list-unstyled">
-      <li>Phasellus iaculis neque</li>
-      <li>Purus sodales ultricies</li>
-      <li>Vestibulum laoreet porttitor sem</li>
-      <li>Ac tristique libero volutpat at</li>
-    </ul>
-  </li>
-  <li>Faucibus porta lacus fringilla vel</li>
-  <li>Aenean sit amet erat nunc</li>
-  <li>Eget porttitor lorem</li>
-</ul>`,
+  render: () =>
+    html`<ul class="list-unstyled">
+      <li>Lorem ipsum dolor sit amet</li>
+      <li>Consectetur adipiscing elit</li>
+      <li>Integer molestie lorem at massa</li>
+      <li>Facilisis in pretium nisl aliquet</li>
+      <li>
+        Nulla volutpat aliquam velit
+        <ul class="list-unstyled">
+          <li>Phasellus iaculis neque</li>
+          <li>Purus sodales ultricies</li>
+          <li>Vestibulum laoreet porttitor sem</li>
+          <li>Ac tristique libero volutpat at</li>
+        </ul>
+      </li>
+      <li>Faucibus porta lacus fringilla vel</li>
+      <li>Aenean sit amet erat nunc</li>
+      <li>Eget porttitor lorem</li>
+    </ul>`,
 };
 
 export const ListaInline: Story = {
@@ -391,11 +447,12 @@ export const ListaInline: Story = {
       },
     },
   },
-  render: () => html`<ul class="list-inline">
-  <li class="list-inline-item">Lorem ipsum</li>
-  <li class="list-inline-item">Phasellus iaculis</li>
-  <li class="list-inline-item">Nulla volutpat</li>
-</ul>`,
+  render: () =>
+    html`<ul class="list-inline">
+      <li class="list-inline-item">Lorem ipsum</li>
+      <li class="list-inline-item">Phasellus iaculis</li>
+      <li class="list-inline-item">Nulla volutpat</li>
+    </ul>`,
 };
 
 export const ListaAllineamentoDescrizione: Story = {
@@ -431,28 +488,32 @@ export const ListaAllineamentoDescrizione: Story = {
       },
     },
   },
-  render: () => html`<dl class="row">
-  <dt class="col-sm-3">Lista descrizioni</dt>
-  <dd class="col-sm-9">Una lista di discrezioni è lo strumento ideale per definire dei termini.</dd>
+  render: () =>
+    html`<dl class="row">
+      <dt class="col-sm-3">Lista descrizioni</dt>
+      <dd class="col-sm-9">Una lista di discrezioni è lo strumento ideale per definire dei termini.</dd>
 
-  <dt class="col-sm-3">Euismod</dt>
-  <dd class="col-sm-9">
-    <p>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</p>
-    <p>Donec id elit non mi porta gravida at eget metus.</p>
-  </dd>
+      <dt class="col-sm-3">Euismod</dt>
+      <dd class="col-sm-9">
+        <p>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</p>
+        <p>Donec id elit non mi porta gravida at eget metus.</p>
+      </dd>
 
-  <dt class="col-sm-3">Malesuada porta</dt>
-  <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+      <dt class="col-sm-3">Malesuada porta</dt>
+      <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
 
-  <dt class="col-sm-3 text-truncate">Testo troncato: questo testo troppo lungo verrà troncato</dt>
-  <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+      <dt class="col-sm-3 text-truncate">Testo troncato: questo testo troppo lungo verrà troncato</dt>
+      <dd class="col-sm-9">
+        Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet
+        risus.
+      </dd>
 
-  <dt class="col-sm-3">Annidamento</dt>
-  <dd class="col-sm-9">
-    <dl class="row">
-      <dt class="col-sm-4">Lista descrizione annidata</dt>
-      <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
-    </dl>
-  </dd>
-</dl>`,
+      <dt class="col-sm-3">Annidamento</dt>
+      <dd class="col-sm-9">
+        <dl class="row">
+          <dt class="col-sm-4">Lista descrizione annidata</dt>
+          <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
+        </dl>
+      </dd>
+    </dl>`,
 };
