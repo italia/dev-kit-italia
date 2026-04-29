@@ -38,6 +38,7 @@ export const AllineamentiStartEnd: Story = {
   name: 'Allineamenti start-end',
   tags: ['!dev'],
   parameters: {
+    pageLayout: 'w-100',
     docs: {
       source: {
         code: `<img src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine" class="rounded float-start" alt="Un'immagine generica segnaposto con angoli arrotondati">
@@ -45,14 +46,19 @@ export const AllineamentiStartEnd: Story = {
       },
     },
   },
-  render: () => html`<img src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine" class="rounded float-start" alt="Un'immagine generica segnaposto con angoli arrotondati">
-  <img src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine" class="rounded float-end" alt="Un'immagine generica segnaposto con angoli arrotondati">`,
+  render: () => html`<div>
+    <img src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine" class="rounded float-start me-3" alt="Un'immagine generica segnaposto con angoli arrotondati">
+    <p>Esempio di float a sinistra per tutte le dimensioni</p>
+    <img src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine" class="rounded float-end ms-3" alt="Un'immagine generica segnaposto con angoli arrotondati">
+    <p>Esempio di float a destra per tutte le dimensioni</p>
+  </div>`,
 };
 
 export const AllineamentoCentrato: Story = {
   name: 'Allineamento centrato',
   tags: ['!dev'],
   parameters: {
+    pageLayout: 'w-100',
     docs: {
       source: {
         code: `<img src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine" class="rounded mx-auto d-block" alt="Un'immagine generica segnaposto con angoli arrotondati">`,
@@ -66,6 +72,7 @@ export const AllineamentoCentratoAlternativa: Story = {
   name: 'Allineamento centrato, alternativa',
   tags: ['!dev'],
   parameters: {
+    pageLayout: 'w-100',
     docs: {
       source: {
         code: `<div class="text-center">
