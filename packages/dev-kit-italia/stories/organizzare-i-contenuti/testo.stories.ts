@@ -12,6 +12,7 @@ export const AllineatoASinistra: Story = {
   name: 'Allineato a sinistra',
   tags: ['!dev'],
   parameters: {
+    pageLayout: 'w-100',
     docs: {
       source: {
         code: `<p class="text-start">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.</p>`,
@@ -25,6 +26,7 @@ export const VariantiDiAllineamento: Story = {
   name: 'Varianti di allineamento',
   tags: ['!dev'],
   parameters: {
+    pageLayout: 'w-100',
     docs: {
       source: {
         code: `<p class="text-start">Testo allineato a sinistra per tutte le dimensioni del viewport.</p>
@@ -52,6 +54,7 @@ export const PerEstesoEOverflow: Story = {
   name: 'Per esteso e overflow',
   tags: ['!dev'],
   parameters: {
+    pageLayout: 'w-100',
     docs: {
       source: {
         code: `<div class="text-nowrap bd-highlight" style="width: 8rem;">
@@ -69,6 +72,7 @@ export const ConTroncamentoInPuntiDiSospensione: Story = {
   name: 'Con troncamento in punti di sospensione',
   tags: ['!dev'],
   parameters: {
+    pageLayout: 'w-100',
     docs: {
       source: {
         code: `<!-- Block level -->

@@ -46,11 +46,9 @@ export const AllineamentiStartEnd: Story = {
       },
     },
   },
-  render: () => html`<div>
+  render: () => html`<div style="min-height: 150px;">
     <img src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine" class="rounded float-start me-3" alt="Un'immagine generica segnaposto con angoli arrotondati">
-    <p>Esempio di float a sinistra per tutte le dimensioni</p>
     <img src="https://placehold.co/120x120/ebebeb/808080/?text=Immagine" class="rounded float-end ms-3" alt="Un'immagine generica segnaposto con angoli arrotondati">
-    <p>Esempio di float a destra per tutte le dimensioni</p>
   </div>`,
 };
 
