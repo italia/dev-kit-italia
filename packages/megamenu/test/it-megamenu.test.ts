@@ -1,6 +1,7 @@
 /// <reference types="mocha"/>
 
 import { fixture, expect, html } from '@open-wc/testing';
+import '@italia/dropdown';
 import '@italia/megamenu';
 import { ItMegamenu } from '../src/index.js';
 
