@@ -39,7 +39,7 @@ const renderTransfer = (params: TransferProps) => html`
 
 const meta: Meta<TransferProps> = {
   title: 'Componenti/Form/Transfer',
-  tags: ['a11y-ok', 'web-component', 'new'],
+  tags: ['a11y-ok', 'web-component', 'alpha'],
   component: 'it-transfer',
   args: {
     name: 'transfer-items',

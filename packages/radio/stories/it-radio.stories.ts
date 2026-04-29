@@ -35,7 +35,7 @@ const renderComponent = (params: any) =>
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Form/Radio button',
-  tags: ['new', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-radio-group',
   args: {
     id: '',
