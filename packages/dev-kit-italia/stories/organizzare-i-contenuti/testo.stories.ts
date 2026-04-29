@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
+import { wrapExample } from './organizzare-i-contenuti.helpers';
 
 const meta = {
   title: 'Organizzare i contenuti/Testo',
@@ -63,9 +64,12 @@ export const PerEstesoEOverflow: Story = {
       },
     },
   },
-  render: () => html`<div class="text-nowrap bd-highlight" style="width: 8rem;">
+  render: () =>
+    wrapExample(
+      html`<div class="text-nowrap bd-highlight" style="width: 8rem;">
   Questo testo oltrepassa il contenitore.
 </div>`,
+    ),
 };
 
 export const ConTroncamentoInPuntiDiSospensione: Story = {
@@ -89,7 +93,9 @@ export const ConTroncamentoInPuntiDiSospensione: Story = {
       },
     },
   },
-  render: () => html`<!-- Block level -->
+  render: () =>
+    wrapExample(
+      html`<!-- Block level -->
 <div class="row">
   <div class="col-2 text-truncate">
     Praeterea iter est quasdam res quas ex communi.
@@ -100,6 +106,7 @@ export const ConTroncamentoInPuntiDiSospensione: Story = {
 <span class="d-inline-block text-truncate" style="max-width: 150px;">
   Praeterea iter est quasdam res quas ex communi.
 </span>`,
+    ),
 };
 
 export const Trasformazioni: Story = {
@@ -114,9 +121,12 @@ export const Trasformazioni: Story = {
       },
     },
   },
-  render: () => html`<p class="text-lowercase">Testo tutto minuscolo.</p>
+  render: () =>
+    wrapExample(
+      html`<p class="text-lowercase">Testo tutto minuscolo.</p>
 <p class="text-uppercase">Testo tutto maiuscolo.</p>
 <p class="text-capitalize">Testo con prime lettere MaiuscOLE.</p>`,
+    ),
 };
 
 export const Stile: Story = {
@@ -133,11 +143,14 @@ export const Stile: Story = {
       },
     },
   },
-  render: () => html`<p class="fw-bold">Testo in grassetto.</p>
+  render: () =>
+    wrapExample(
+      html`<p class="fw-bold">Testo in grassetto.</p>
 <p class="fw-semibold">Testo in semi-grassetto.</p>
 <p class="fw-normal">Testo normale.</p>
 <p class="fw-light">Testo sottile.</p>
 <p class="fst-italic">Testo in corsivo.</p>`,
+    ),
 };
 
 export const Monospaziato: Story = {
@@ -150,5 +163,5 @@ export const Monospaziato: Story = {
       },
     },
   },
-  render: () => html`<p class="font-monospace">Testo monospace</p>`,
+  render: () => wrapExample(html`<p class="font-monospace">Testo monospace</p>`),
 };
