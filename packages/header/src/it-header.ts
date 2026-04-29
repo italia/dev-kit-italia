@@ -170,9 +170,14 @@ export class ItHeader extends BaseComponent {
       if (li instanceof HTMLElement) {
         const active = li.classList.contains('active');
         const disabled = li.classList.contains('disabled');
-        li.setAttribute('class', `nav-item${active ? ' active' : ''}${disabled ? ' disabled' : ''}`);
+        const isMegamenu = li.classList.contains('megamenu');
+        li.setAttribute(
+          'class',
+          `nav-item${isMegamenu ? ' megamenu' : ''}${active ? ' active' : ''}${disabled ? ' disabled' : ''}`,
+        );
 
-        const link = li.querySelector('a');
+        // Update only the direct nav link and avoid touching anchors inside component slots.
+        const link = li.querySelector(':scope > a');
         if (link) {
           const aDisabled = link.classList.contains('disabled');
           link.setAttribute('class', `nav-link${active ? ' active' : ''}${aDisabled || disabled ? ' disabled' : ''}`);

@@ -313,8 +313,8 @@ it-modal#it-nav-modal {
         }
 
         &::part(list-item) {
-          border-left: var(--#{$prefix}navbar-link-border-size) solid transparent;
           border-color: var(--#{$prefix}navbar-link-border-color);
+          border-left: var(--#{$prefix}navbar-link-border-size) solid transparent;
         }
       }
     }
@@ -334,6 +334,18 @@ it-modal#it-nav-modal {
 
       &::part(megamenu-link-list) {
         columns: 1 !important;
+      }
+
+      it-dropdown-item {
+        &::part(list-item) {
+          --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}spacing-xxs);
+        }
+      }
+
+      [slot='footer'] {
+        .it-footer-link {
+         margin-bottom: var(--bsi-spacing-m);
+        }
       }
     }
 
