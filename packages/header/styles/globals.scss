@@ -270,7 +270,7 @@ it-modal#it-nav-modal {
   //NAV
   .modal-nav {
     &.navbar {
-      --#{$prefix}navbar-background: unset;
+      --#{$prefix}navbar-background: none;
       // --#{$prefix}navbar-link-padding-x: 0;
       --#{$prefix}navbar-link-active-border-color: var(--#{$prefix}navbar-link-color);
       --it-ul-spacer-background: var(--#{$prefix}300);

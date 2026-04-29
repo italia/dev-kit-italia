@@ -67,12 +67,12 @@ export class ItHeader extends BaseComponent {
     this.headerSlimMenu = this.querySelector('.it-header-slim-wrapper ul') as HTMLElement;
     this.menuNav = this.querySelector('.it-header-navbar-wrapper nav') as HTMLElement;
 
+    if (!this.brandWrapper) {
+      this.hideHeaderBrand = true;
+    }
+
     if (
-      !this.headerCenterWrapper ||
-      !this.headerSlimMenu ||
-      !this.brandWrapper ||
-      !this.socialsWrapper ||
-      !this.menuNav
+      !(this.headerCenterWrapper || this.headerSlimMenu || this.brandWrapper || this.socialsWrapper || this.menuNav)
     ) {
       this.logger.error('<it-header> could not initialize wrappers.');
       return;
@@ -164,7 +164,7 @@ export class ItHeader extends BaseComponent {
 
   private static cloneULForModalMenu(ul: HTMLElement, className = '') {
     const ulClone = ul.cloneNode(true) as HTMLElement;
-    ulClone.setAttribute('class', `navbar-nav pippo ${className}`);
+    ulClone.setAttribute('class', `navbar-nav ${className}`);
 
     Array.from(ulClone.children).forEach((li) => {
       if (li instanceof HTMLElement) {
@@ -192,13 +192,7 @@ export class ItHeader extends BaseComponent {
   }
 
   private enterModal() {
-    if (
-      !this.headerCenterWrapper ||
-      !this.headerSlimMenu ||
-      !this.brandWrapper ||
-      !this.socialsWrapper ||
-      !this.menuNav
-    )
+    if (!(this.headerCenterWrapper || this.headerSlimMenu || this.brandWrapper || this.socialsWrapper || this.menuNav))
       return;
 
     if (!this.modalEl) {
@@ -271,8 +265,15 @@ export class ItHeader extends BaseComponent {
     }
 
     // aggiungo la modale in pagina
-    if (!this.headerCenterWrapper.contains(this.modalEl)) {
-      this.headerCenterWrapper.prepend(this.modalEl);
+    const prependTarget =
+      this.headerCenterWrapper ||
+      this.menuNav ||
+      this.brandWrapper ||
+      this.headerSlimMenu ||
+      this.socialsWrapper ||
+      this;
+    if (!prependTarget.contains(this.modalEl)) {
+      prependTarget.prepend(this.modalEl);
     }
   }
 

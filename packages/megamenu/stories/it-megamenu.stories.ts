@@ -72,23 +72,19 @@ const meta = {
 } satisfies Meta<MegamenuProps>;
 
 const renderNav = (args: MegamenuProps, children: any) => html`
-  <nav class="navbar navbar-expand-lg" aria-label="Menu principale">
-    <it-button it-aria-label="Mostra o nascondi il menu" class="custom-navbar-toggler" it-aria-controls="navbar-A">
-      <it-icon name="it-burger" color="inverse" size="sm"></it-icon>
-    </it-button>
-    <div class="navbar-collapsable" id="navbar-A" tabindex="-1">
-      <div class="close-div">
-        <it-button it-aria-label="Chiudi il menu" variant="link" size="sm" class="close-menu">
-          <it-icon name="it-close" color="inverse" size="sm"></it-icon>
-        </it-button>
-      </div>
-      <div class="menu-wrapper justify-content-lg-between">
-        <ul class="navbar-nav">
-          ${children}
-        </ul>
-      </div>
+  <it-header>
+    <div class="it-header-navbar-wrapper">
+      <nav class="navbar navbar-expand-lg" aria-label="Navigazione principale">
+        <div class="navbar-collapsable" id="navbar-A" tabindex="-1">
+          <div class="menu-wrapper">
+            <ul class="navbar-nav">
+              ${children}
+            </ul>
+          </div>
+        </div>
+      </nav>
     </div>
-  </nav>
+  </it-header>
 `;
 
 const renderMegamenu = (args: MegamenuProps, children: any) => html`
