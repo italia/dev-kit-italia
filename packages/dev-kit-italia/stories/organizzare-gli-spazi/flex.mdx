@@ -1,0 +1,331 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as Stories from './flex.stories';
+
+<Meta of={Stories} />
+
+# Flex
+
+> **Nota**
+>
+> **Se sei poco pratico di flexbox**, puoi iniziare da [questa pratica guida su flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-background)
+> (in inglese) per informazioni di carattere generale, terminologia, linee guida, e frammenti di codice, oppure giocando con
+> [questo simpatico tutorial](http://flexboxfroggy.com/#it).
+
+## Abilita il comportamento flex
+
+Applica le regole [`display`](/docs/organizzare-gli-spazi-display--documentazione) per creare un contenitore flexbox e trasformare **i suoi figli** in elementi flex. Il contenitore flex e i suoi elementi potranno essere personalizzati con le ulteriori proprietà flex.
+
+<Canvas of={Stories.Flexbox} />
+
+<Canvas of={Stories.InlineFlexbox} />
+
+Sono previste anche seguenti le varianti responsive per `.d-flex` e `.d-inline-flex`:
+
+- `.d-flex`
+- `.d-inline-flex`
+- `.d-sm-flex`
+- `.d-sm-inline-flex`
+- `.d-md-flex`
+- `.d-md-inline-flex`
+- `.d-lg-flex`
+- `.d-lg-inline-flex`
+- `.d-xl-flex`
+- `.d-xl-inline-flex`
+- `.d-xxl-flex`
+- `.d-xxl-inline-flex`
+
+## Direzione
+
+La direzione degli elementi flex è dettata dall'impostazione predefinita del browser. Tuttavia è possibile che si verifichino situazioni in cui è necessario impostare in modo esplicito questo valore, come ad esempio nei layout responsive.
+
+Usa `.flex-row` per impostare la direzione orizzontale dell'elemento flex come quella predefinita dal browser. Oppure usa `.flex-row-reverse` per invertire la direzione del contenuto rispetto a quella predefinita.
+
+<Canvas of={Stories.VariantiDiDirezione} />
+
+Usa `.flex-column` per impostare la direzione verticale, oppure `.flex-column-reverse` per far partire gli elementi dal lato opposto.
+
+<Canvas of={Stories.VariantiDiDirezioneVerticale} />
+
+Sono previste anche seguenti le varianti responsive per `flex-direction`:
+
+- `.flex-row`
+- `.flex-row-reverse`
+- `.flex-column`
+- `.flex-column-reverse`
+- `.flex-sm-row`
+- `.flex-sm-row-reverse`
+- `.flex-sm-column`
+- `.flex-sm-column-reverse`
+- `.flex-md-row`
+- `.flex-md-row-reverse`
+- `.flex-md-column`
+- `.flex-md-column-reverse`
+- `.flex-lg-row`
+- `.flex-lg-row-reverse`
+- `.flex-lg-column`
+- `.flex-lg-column-reverse`
+- `.flex-xl-row`
+- `.flex-xl-row-reverse`
+- `.flex-xl-column`
+- `.flex-xl-column-reverse`
+- `.flex-xxl-row`
+- `.flex-xxl-row-reverse`
+- `.flex-xxl-column`
+- `.flex-xxl-column-reverse`
+
+## Contenuto giustificato
+
+Usa le utility `justify-content` col contenitore flexbox per cambiare l'allineamento dei suoi elementi flex rispetto all'asse orizzontale (l'asse x predefinito, l'asse y se `flex-direction: column`). Scegli tra `start` (predefinito dal browser), `end`, `center`, `between` o `around`.
+
+<Canvas of={Stories.ContenutoGiustificato} />
+
+Sono previste anche seguenti le varianti responsive per `justify-content`:
+
+- `.justify-content-start`
+- `.justify-content-end`
+- `.justify-content-center`
+- `.justify-content-between`
+- `.justify-content-around`
+- `.justify-content-sm-start`
+- `.justify-content-sm-end`
+- `.justify-content-sm-center`
+- `.justify-content-sm-between`
+- `.justify-content-sm-around`
+- `.justify-content-md-start`
+- `.justify-content-md-end`
+- `.justify-content-md-center`
+- `.justify-content-md-between`
+- `.justify-content-md-around`
+- `.justify-content-lg-start`
+- `.justify-content-lg-end`
+- `.justify-content-lg-center`
+- `.justify-content-lg-between`
+- `.justify-content-lg-around`
+- `.justify-content-xl-start`
+- `.justify-content-xl-end`
+- `.justify-content-xl-center`
+- `.justify-content-xl-between`
+- `.justify-content-xl-around`
+- `.justify-content-xxl-start`
+- `.justify-content-xxl-end`
+- `.justify-content-xxl-center`
+- `.justify-content-xxl-between`
+- `.justify-content-xxl-around`
+
+## Allineamento elementi
+
+Usa le utility `align-items` col contenitore flexbox per cambiare l'allineamento dei suoi elementi flex rispetto all'asse verticale (l'asse y predefinito, l'asse x se `flex-direction: column`). Scegli tra `start`, `end`, `center`, `baseline` o `stretch` (predefinito dal browser).
+
+<Canvas of={Stories.AllineamentoElementi} />
+
+Sono previste anche seguenti le varianti responsive per `align-items`:
+
+- `.align-items-start`
+- `.align-items-end`
+- `.align-items-center`
+- `.align-items-baseline`
+- `.align-items-stretch`
+- `.align-items-sm-start`
+- `.align-items-sm-end`
+- `.align-items-sm-center`
+- `.align-items-sm-baseline`
+- `.align-items-sm-stretch`
+- `.align-items-md-start`
+- `.align-items-md-end`
+- `.align-items-md-center`
+- `.align-items-md-baseline`
+- `.align-items-md-stretch`
+- `.align-items-lg-start`
+- `.align-items-lg-end`
+- `.align-items-lg-center`
+- `.align-items-lg-baseline`
+- `.align-items-lg-stretch`
+- `.align-items-xl-start`
+- `.align-items-xl-end`
+- `.align-items-xl-center`
+- `.align-items-xl-baseline`
+- `.align-items-xl-stretch`
+- `.align-items-xxl-start`
+- `.align-items-xxl-end`
+- `.align-items-xxl-center`
+- `.align-items-xxl-baseline`
+- `.align-items-xxl-stretch`
+
+## Auto allineamento
+
+Usa le utility `align-self` con i singoli elementi flex per cambiarne l'allineamento rispetto all'asse verticale (l'asse y predefinito, l'asse x se `flex-direction: column`). Scegli tra `start`, `end`, `center`, `baseline` o `stretch` (predefinito dal browser).
+
+<Canvas of={Stories.AutoAllineamento} />
+
+Sono previste anche seguenti le varianti responsive per `align-self`:
+
+- `.align-self-start`
+- `.align-self-end`
+- `.align-self-center`
+- `.align-self-baseline`
+- `.align-self-stretch`
+- `.align-self-sm-start`
+- `.align-self-sm-end`
+- `.align-self-sm-center`
+- `.align-self-sm-baseline`
+- `.align-self-sm-stretch`
+- `.align-self-md-start`
+- `.align-self-md-end`
+- `.align-self-md-center`
+- `.align-self-md-baseline`
+- `.align-self-md-stretch`
+- `.align-self-lg-start`
+- `.align-self-lg-end`
+- `.align-self-lg-center`
+- `.align-self-lg-baseline`
+- `.align-self-lg-stretch`
+- `.align-self-xl-start`
+- `.align-self-xl-end`
+- `.align-self-xl-center`
+- `.align-self-xl-baseline`
+- `.align-self-xl-stretch`
+- `.align-self-xxl-start`
+- `.align-self-xxl-end`
+- `.align-self-xxl-center`
+- `.align-self-xxl-baseline`
+- `.align-self-xxl-stretch`
+
+## Margini automatici
+
+Flexbox può fare cose meravigliose quando si mescolano gli allineamenti flessibili con i margini automatici. Di seguito sono mostrati tre esempi di controllo degli elementi flex tramite margini automatici: predefinito (nessun margine automatico), inserito con due elementi a destra (`.me-auto`) e inserito con due elementi a sinistra (`.ms-auto`).
+
+<Canvas of={Stories.MarginiAutomatici} />
+
+### Con 'align-items'
+
+Spostare verticalmente un elemento flex in cima o in fondo a un contenitore mescolando `align-items`,` flex-direction: column` e `margin-top: auto` o` margin-bottom: auto`.
+
+<Canvas of={Stories.ConElementiSpostatiInCimaOInFondo} />
+
+## Wrap
+
+Cambia il modo con cui gli elementi flex si dispongono nel contenitore. Scegli da nessun wrap a tutto (predefinito dal browser) con `.flex-nowrap`, wrap con `.flex-wrap` o invertire il wrap con `.flex-wrap-reverse`.
+
+<Canvas of={Stories.NoWrap} />
+
+<Canvas of={Stories.Wrap} />
+
+<Canvas of={Stories.WrapReverse} />
+
+Sono previste anche seguenti le varianti responsive per `flex-wrap`:
+
+- `.flex-nowrap`
+- `.flex-wrap`
+- `.flex-wrap-reverse`
+- `.flex-sm-nowrap`
+- `.flex-sm-wrap`
+- `.flex-sm-wrap-reverse`
+- `.flex-md-nowrap`
+- `.flex-md-wrap`
+- `.flex-md-wrap-reverse`
+- `.flex-lg-nowrap`
+- `.flex-lg-wrap`
+- `.flex-lg-wrap-reverse`
+- `.flex-xl-nowrap`
+- `.flex-xl-wrap`
+- `.flex-xl-wrap-reverse`
+- `.flex-xxl-nowrap`
+- `.flex-xxl-wrap`
+- `.flex-xxl-wrap-reverse`
+
+## Ordinamento
+
+Modifica l'ordine in _visualizzazione_ di elementi flex specifici con l'utility `order-`. Sono disponibili le opzioni per il primo elemento o l'ultimo, come anche il reset dell'ordinamento DOM.
+Le classi `order-` sono accompagnate da un ordinale intero (`1`, `2`, `3`, e così via), per cui puoi creare delle classi personalizzate per aggiungere i valori di cui hai bisogno.
+
+<Canvas of={Stories.Ordinamento} />
+
+Sono previste anche seguenti le varianti responsive per `order`:
+
+- `.order-0`
+- `.order-1`
+- `.order-2`
+- `.order-3`
+- `.order-4`
+- `.order-5`
+- `.order-sm-0`
+- `.order-sm-1`
+- `.order-sm-2`
+- `.order-sm-3`
+- `.order-sm-4`
+- `.order-sm-5`
+- `.order-md-0`
+- `.order-md-1`
+- `.order-md-2`
+- `.order-md-3`
+- `.order-md-4`
+- `.order-md-5`
+- `.order-lg-0`
+- `.order-lg-1`
+- `.order-lg-2`
+- `.order-lg-3`
+- `.order-lg-4`
+- `.order-lg-5`
+- `.order-xl-0`
+- `.order-xl-1`
+- `.order-xl-2`
+- `.order-xl-3`
+- `.order-xl-4`
+- `.order-xl-5`
+- `.order-xxl-0`
+- `.order-xxl-1`
+- `.order-xxl-2`
+- `.order-xxl-3`
+- `.order-xxl-4`
+- `.order-xxl-5`
+
+## Align content
+
+Usa le utility `align-content` sul contenitore flexbox per cambiare l'allineamento dei suoi elementi flex _insieme_ all'asse verticale. Scegli tra `start` (predefinito dal browser), `end`, `center`, `between`, `around` o `stretch`. Per mostrare meglio il funzionamento di queste utility abbiamo forzato il contenitore con `flex-wrap: wrap` e aumentato il numero di elementi flex.
+
+**Heads up!** Questa proprietà non ha effetto sulle singole righe di elementi flex.
+
+<Canvas of={Stories.AlignContentStart} />
+
+<Canvas of={Stories.AlignContentEnd} />
+
+<Canvas of={Stories.AlignContentCenter} />
+
+<Canvas of={Stories.AlignContentBetween} />
+
+<Canvas of={Stories.AlignContentAround} />
+
+<Canvas of={Stories.AlignContentStretch} />
+
+Sono previste anche seguenti le varianti responsive per `align-content`.
+
+- `.align-content-start`
+- `.align-content-end`
+- `.align-content-center`
+- `.align-content-around`
+- `.align-content-stretch`
+- `.align-content-sm-start`
+- `.align-content-sm-end`
+- `.align-content-sm-center`
+- `.align-content-sm-around`
+- `.align-content-sm-stretch`
+- `.align-content-md-start`
+- `.align-content-md-end`
+- `.align-content-md-center`
+- `.align-content-md-around`
+- `.align-content-md-stretch`
+- `.align-content-lg-start`
+- `.align-content-lg-end`
+- `.align-content-lg-center`
+- `.align-content-lg-around`
+- `.align-content-lg-stretch`
+- `.align-content-xl-start`
+- `.align-content-xl-end`
+- `.align-content-xl-center`
+- `.align-content-xl-around`
+- `.align-content-xl-stretch`
+- `.align-content-xxl-start`
+- `.align-content-xxl-end`
+- `.align-content-xxl-center`
+- `.align-content-xxl-around`
+- `.align-content-xxl-stretch`

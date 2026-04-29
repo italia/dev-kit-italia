@@ -1,0 +1,51 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as Stories from './immagini.stories';
+
+<Meta of={Stories} />
+
+# Immagini
+
+Documentazione ed esempi per l'inserimento di immagini responsive, che quindi non diventano mai più grandi dei loro elementi genitore.
+
+Le immagini in Bootstrap Italia sono rese responsive con la classe `.img-fluid`, così che vengano applicate all'immagine le proprietà `max-width: 100%;` e `height: auto;` in modo che sia ridimensionata attraverso l'elemento padre.
+
+<Canvas of={Stories.Base} />
+
+### Thumbnails
+
+Oltre alle [utilità sull'arrotondamento dei bordi](https://bootstrap-italia-git-3x-dip-trasformazione-digitale.vercel.app/docs/organizzare-gli-spazi/bordi/), puoi usare `.img-thumbnail` per aggiungere a un'immagine una cornice e un bordo arrotondato.
+
+<Canvas of={Stories.Thumbnail} />
+
+### Allineamento
+
+Puoi allineare le immagini con le [classi di supporto sul float](https://bootstrap-italia-git-3x-dip-trasformazione-digitale.vercel.app/docs/organizzare-gli-spazi/float) o con le [classi sull'allineamento dei testi](/docs/organizzare-i-contenuti-testo--documentazione). Le immagini a livello `block` possono essere centrate usando [la classe di utilità margin `.mx-auto`](https://bootstrap-italia-git-3x-dip-trasformazione-digitale.vercel.app/docs/organizzare-gli-spazi/spaziature/).
+
+<Canvas of={Stories.AllineamentiStartEnd} />
+
+<Canvas of={Stories.AllineamentoCentrato} />
+
+<Canvas of={Stories.AllineamentoCentratoAlternativa} />
+
+## Picture
+
+Se stai usando l'elemento `<picture>` per specificare multipli elementi `<source>` per una specifica `<img>`, assicurati di aggiungere la classe `.img-*` al tag `<img>` e non al tag `<picture>`.
+
+```html
+​<picture>
+  <source srcset="..." type="image/svg+xml" />
+  <img src="..." alt="..." class="img-fluid img-thumbnail" />
+</picture>
+```
+
+## Figure
+
+Ogni qual volta sia necessario visualizzare un contenuto, ad esempio un'immagine, associandola ad una didascalia, è bene considerare l'utilizzo di `<figure>`.
+
+Puoi usare le classi `.figure`, `.figure-img` e `.figure-caption` per fornire alcuni stili di base per gli elementi HTML5 `<figure>` e `<figcaption>`. Le immagini in `<figure>` non hanno dimensioni determinate, assicurati quindi di aggiungere la classe `.img-fluid` al tuo elemento `<img>` per renderlo responsive.
+
+<Canvas of={Stories.Figure} />
+
+Allineare la didascalia di una figura è semplice con le [utilità di testo](/docs/organizzare-i-contenuti-testo--documentazione).
+
+<Canvas of={Stories.FigureConDidascaliaAllineataADestra} />
