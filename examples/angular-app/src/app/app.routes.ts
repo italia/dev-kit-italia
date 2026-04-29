@@ -256,6 +256,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/toggle.component').then((c) => c.ToggleComponent),
   },
   {
+    title: 'Transfer',
+    path: 'transfer',
+    loadComponent: () => import('./pages/transfer.component').then((c) => c.TransferComponent),
+  },
+  {
     title: 'Tooltip',
     path: 'tooltip',
     loadComponent: () => import('./pages/tooltip.component').then((c) => c.TooltipComponent),

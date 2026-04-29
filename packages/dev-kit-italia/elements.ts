@@ -39,6 +39,8 @@ import '@italia/rating/it-rating-item.js';
 import '@italia/rating/it-rating.js';
 import '@italia/section/it-section.js';
 import '@italia/select/it-select.js';
+import '@italia/transfer/it-transfer-item.js';
+import '@italia/transfer/it-transfer.js';
 import '@italia/skiplinks/it-skiplinks.js';
 import '@italia/sticky/it-sticky.js';
 import '@italia/thumbnav/it-thumbnav-item.js';

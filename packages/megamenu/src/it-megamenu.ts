@@ -24,8 +24,6 @@ export class ItMegamenu extends ItDropdownBase {
 
   @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = true; // sovrascritto per settare un valore fisso e cambiarne il default
 
-  @property({ type: String }) itRole: string = 'menu'; // sovrascritto per settare un valore fisso e cambiarne il default
-
   @property({ type: Boolean, reflect: true }) active = false;
 
   @property({ type: Number, attribute: 'columns', reflect: true }) columns: number = 2;
@@ -40,6 +38,8 @@ export class ItMegamenu extends ItDropdownBase {
 
   @queryAssignedElements({ slot: 'footer', flatten: true }) private _footerItems!: Array<HTMLElement>;
 
+  private _clickCloseTargets = new Set<HTMLElement>();
+
   private _handleSlotDescriptionChange() {
     // Verifichiamo se l'array degli elementi assegnati è popolato
     this._hasDescription = this._descriptionItems.length > 0;
@@ -51,19 +51,24 @@ export class ItMegamenu extends ItDropdownBase {
     // disable full-width for dropdown items inside megamenu to let them inherit the width of their container and not stretch to the full width of the megamenu
     for (const item of this._menuItems) {
       item.fullWidth = false;
-      item.itRole = 'menuitem';
+      if (this.itRole === 'list') {
+        item.role = 'listitem';
+      }
     }
+
+    this._syncClickCloseTargets();
   }
 
   private _onSlotHeaderChange() {
     // Verifichiamo se l'array degli elementi assegnati è popolato
-    console.log('Header items:', this._headerItems, this._headerItems.length);
     this._hasHeader = this._headerItems.length > 0;
+    this._syncClickCloseTargets();
   }
 
   private _onSlotFooterChange() {
     // Verifichiamo se l'array degli elementi assegnati è popolato
     this._hasFooter = this._footerItems.length > 0;
+    this._syncClickCloseTargets();
   }
 
   private _getMegamenuFocusableItems(): Element[] {
@@ -120,19 +125,49 @@ export class ItMegamenu extends ItDropdownBase {
     }
   };
 
-  private _onClickItems = (event: MouseEvent) => {
-    // Chiudi il popover quando viene cliccato su uno degli elementi focusabili
-    const target = event.target as HTMLElement;
-    const focusableItems = [...this._getMegamenuFocusableItems(), ...this._menuItems];
+  private _onInteractiveItemClick = () => {
+    this._popoverOpen = false;
+  };
 
-    // Controlla se il click è su uno degli elementi focusabili del megamenu
-    for (const focusableItem of focusableItems) {
-      if (focusableItem === target || focusableItem.contains(target)) {
-        this._popoverOpen = false;
-        break;
+  private _syncClickCloseTargets() {
+    const nextTargets = new Set<HTMLElement>();
+
+    for (const item of this._getMegamenuFocusableItems()) {
+      if (item instanceof HTMLElement) {
+        nextTargets.add(item);
       }
     }
-  };
+
+    for (const item of this._menuItems) {
+      if (item instanceof HTMLElement) {
+        nextTargets.add(item);
+      }
+    }
+
+    for (const target of this._clickCloseTargets) {
+      if (!nextTargets.has(target)) {
+        target.removeEventListener('click', this._onInteractiveItemClick);
+      }
+    }
+
+    for (const target of nextTargets) {
+      if (!this._clickCloseTargets.has(target)) {
+        target.addEventListener('click', this._onInteractiveItemClick);
+      }
+    }
+
+    this._clickCloseTargets = nextTargets;
+  }
+
+  override disconnectedCallback() {
+    for (const target of this._clickCloseTargets) {
+      target.removeEventListener('click', this._onInteractiveItemClick);
+    }
+    this._clickCloseTargets.clear();
+
+    // eslint-disable-next-line wc/guard-super-call
+    super.disconnectedCallback();
+  }
 
   override render() {
     return html`
@@ -196,7 +231,6 @@ export class ItMegamenu extends ItDropdownBase {
           aria-labelledby=${this._buttonId}
           role="region"
           @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
-          @click=${{ handleEvent: this._onClickItems, capture: true }}
           id=${this._menuId}
           tabindex="-1"
         >
@@ -235,7 +269,12 @@ export class ItMegamenu extends ItDropdownBase {
                   ? html` <div class="row">
                       <div class="col-12">
                         <div class="link-list-wrapper" part="megamenu-link-list-wrapper">
-                          <ul class="link-list" part="megamenu-link-list" style="columns: ${this.columns};">
+                          <ul
+                            class="link-list"
+                            part="megamenu-link-list"
+                            style="columns: ${this.columns};"
+                            role=${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}
+                          >
                             <slot @slotchange=${this._setChildrenProperties}></slot>
                           </ul>
                         </div>

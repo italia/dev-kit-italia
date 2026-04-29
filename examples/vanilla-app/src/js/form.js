@@ -106,8 +106,25 @@ document.addEventListener('DOMContentLoaded', () => {
         events: ['it-change'], // 👈 FORZA l’ascolto sul change
       },
     )
-    .addField(
-      'it-autocomplete[id="autocomplete-regione"]',
+    .addField(      'it-transfer[id="transfer-ext"]',
+      [
+        {
+          validator: () => {
+            const el = fmc.querySelector('it-transfer[id="transfer-ext"]');
+            try {
+              return JSON.parse(el?.value || '[]').length > 0;
+            } catch {
+              return false;
+            }
+          },
+          errorMessage: 'Sposta almeno un elemento nella lista destinazione',
+        },
+      ],
+      {
+        events: ['it-change'],
+      },
+    )
+    .addField(      'it-autocomplete[id="autocomplete-regione"]',
       [
         {
           rule: 'required',

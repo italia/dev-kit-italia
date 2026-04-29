@@ -42,6 +42,7 @@ import Table from './pages/Table';
 import Thumbnav from './pages/Thumbnav';
 import Timeline from './pages/Timeline';
 import Toggle from './pages/Toggle';
+import Transfer from './pages/Transfer';
 import Tooltip from './pages/Tooltip';
 import Video from './pages/Video';
 import Carousel from './pages/Carousel';
@@ -109,6 +110,7 @@ export const AppRoutes = [
   { path: '/tabs', element: <Tabs />, title: 'Tabs' },
   { path: '/timeline', element: <Timeline />, title: 'Timeline' },
   { path: '/toggle', element: <Toggle />, title: 'Toggle' },
+  { path: '/transfer', element: <Transfer />, title: 'Transfer' },
   { path: '/tooltip', element: <Tooltip />, title: 'Tooltip' },
   { path: '/upload', element: <Upload />, title: 'Upload' },
   { path: '/video', element: <Video />, title: 'Video' },

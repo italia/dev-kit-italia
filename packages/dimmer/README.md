@@ -4,6 +4,18 @@ Web component `it-dimmer` del [Design system .italia](https://designers.italia.i
 
 Il dimmer focalizza l'attenzione dell'utente su un contenuto sovrapposto, oscurando il contenuto principale sottostante.
 
+## Installazione
+
+```bash
+npm i @italia/dimmer
+```
+
+```html
+<script type="module">
+  import '@italia/dimmer';
+</script>
+```
+
 ## Utilizzo
 
 ```html
