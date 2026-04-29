@@ -13,6 +13,7 @@ export const VariantiStartEndNone: Story = {
   name: 'Varianti start-end-none',
   tags: ['!dev'],
   parameters: {
+    pageLayout: 'w-100',
     docs: {
       source: {
         code: `<div class="float-start">Esempio di float a sinistra per tutte le dimensioni</div><br />
@@ -35,6 +36,7 @@ export const VariantiResponsive: Story = {
   name: 'Varianti responsive',
   tags: ['!dev'],
   parameters: {
+    pageLayout: 'w-100',
     docs: {
       source: {
         code: `<div class="float-sm-end">Esempio di float a destra per dimensioni SM (small) o maggiori.</div><br />

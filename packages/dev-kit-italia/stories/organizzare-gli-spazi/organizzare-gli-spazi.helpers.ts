@@ -89,8 +89,8 @@ const helperStyles = html`<style>
   .dki-organizzare-gli-spazi-example .bd-example-container-sidebar,
   .dki-organizzare-gli-spazi-example .bd-example-container-body {
     position: absolute;
-    background-color: rgba(13, 110, 253, 0.2);
-    border: 1px solid rgba(13, 110, 253, 0.35);
+    background-color: rgba(0, 102, 204, 0.35);
+    border: 1px solid rgba(0, 102, 204, 0.5);
   }
 
   .dki-organizzare-gli-spazi-example .bd-example-container-header {
@@ -139,6 +139,16 @@ const helperStyles = html`<style>
     .dki-organizzare-gli-spazi-example .ratio-example-breakpoint {
       --bs-aspect-ratio: 50%;
     }
+  }
+
+  .dki-organizzare-gli-spazi-example [class^='float-'],
+  .dki-organizzare-gli-spazi-example [class*=' float-'] {
+    display: inline-block;
+    padding: 0.75rem 1rem;
+    margin: 0.25rem;
+    background-color: rgba(13, 110, 253, 0.15);
+    border: 1px solid rgba(13, 110, 253, 0.25);
+    border-radius: 0.25rem;
   }
 </style>`;
 
