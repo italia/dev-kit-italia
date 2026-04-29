@@ -36,14 +36,18 @@ import Sidebar from './pages/Sidebar';
 import Skiplinks from './pages/Skiplinks';
 import Sticky from './pages/Sticky';
 import Table from './pages/Table';
+import Thumbnav from './pages/Thumbnav';
 import Timeline from './pages/Timeline';
 import Toggle from './pages/Toggle';
+import Transfer from './pages/Transfer';
 import Tooltip from './pages/Tooltip';
 import Video from './pages/Video';
 import Carousel from './pages/Carousel';
 import Pagination from './pages/Pagination';
+import Notification from './pages/Notification';
 import Tabs from './pages/Tabs';
 import Progress from './pages/Progress';
+import Upload from './pages/Upload';
 
 export const AppRoutes = [
   { path: '/', element: <Home />, title: 'Homepage' },
@@ -75,6 +79,7 @@ export const AppRoutes = [
   { path: '/megamenu', element: <Megamenu />, title: 'Megamenu' },
   { path: '/modal', element: <Modal />, title: 'Modal' },
   { path: '/navscroll', element: <Navscroll />, title: 'Navscroll' },
+  { path: '/notification', element: <Notification />, title: 'Notification' },
   { path: '/overlay', element: <Overlay />, title: 'Overlay' },
   { path: '/pagination', element: <Pagination />, title: 'Pagination' },
   { path: '/popover', element: <Popover />, title: 'Popover' },
@@ -87,9 +92,12 @@ export const AppRoutes = [
   { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/tables', element: <Table />, title: 'Tables' },
+  { path: '/thumbnav', element: <Thumbnav />, title: 'Thumbnav' },
   { path: '/tabs', element: <Tabs />, title: 'Tabs' },
   { path: '/timeline', element: <Timeline />, title: 'Timeline' },
   { path: '/toggle', element: <Toggle />, title: 'Toggle' },
+  { path: '/transfer', element: <Transfer />, title: 'Transfer' },
   { path: '/tooltip', element: <Tooltip />, title: 'Tooltip' },
+  { path: '/upload', element: <Upload />, title: 'Upload' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];

@@ -33,6 +33,7 @@
       "@italia/megamenu",
       "@italia/modal",
       "@italia/navscroll",
+      "@italia/notification",
       "@italia/pagination",
       "@italia/popover",
       "@italia/progress",
@@ -46,7 +47,10 @@
       "@italia/tabs",
       "@italia/timeline",
       "@italia/toggle",
+      "@italia/thumbnav",
       "@italia/tooltip",
+      "@italia/transfer",
+      "@italia/upload",
       "@italia/video"
     ]
   ],
