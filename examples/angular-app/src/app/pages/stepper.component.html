@@ -1,0 +1,152 @@
+<div
+  class="stepper-examples"
+  (it-stepper-change)="logStepperEvent($event)"
+  (it-stepper-save)="logStepperEvent($event)"
+  (it-stepper-confirm)="logStepperEvent($event)"
+>
+  <h1>Stepper</h1>
+
+  <section>
+    <h2>Anteprima e attributi del componente</h2>
+    <it-stepper current="1" total-steps="6">
+      <it-stepper-step
+        *ngFor="let step of steps; let index = index"
+        [attr.label]="step.label"
+        [attr.icon]="step.icon"
+      >
+        <p>Contenuto dello step {{ index + 1 }}</p>
+      </it-stepper-step>
+    </it-stepper>
+  </section>
+
+  <section class="stepper-example-stack">
+    <h2>Intestazione</h2>
+    <it-stepper current="1" total-steps="3" header-variant="text" hide-content hide-nav>
+      <it-stepper-step
+        *ngFor="let step of headerSteps; let index = index"
+        [attr.label]="step.label"
+        [attr.icon]="step.icon"
+      >
+        <p>Contenuto dello step {{ index + 1 }}</p>
+      </it-stepper-step>
+    </it-stepper>
+    <it-stepper current="1" total-steps="3" header-variant="icons" hide-content hide-nav>
+      <it-stepper-step
+        *ngFor="let step of headerSteps; let index = index"
+        [attr.label]="step.label"
+        [attr.icon]="step.icon"
+      >
+        <p>Contenuto dello step {{ index + 1 }}</p>
+      </it-stepper-step>
+    </it-stepper>
+    <it-stepper current="1" total-steps="3" header-variant="numbers" hide-content hide-nav>
+      <it-stepper-step
+        *ngFor="let step of headerSteps; let index = index"
+        [attr.label]="step.label"
+        [attr.icon]="step.icon"
+      >
+        <p>Contenuto dello step {{ index + 1 }}</p>
+      </it-stepper-step>
+    </it-stepper>
+  </section>
+
+  <section class="stepper-example-stack">
+    <h2>Navigazione e avanzamento</h2>
+    <it-stepper
+      current="1"
+      total-steps="6"
+      mobile-progress="bar"
+      mobile-progress-on-desktop
+      hide-header
+    >
+      <it-stepper-step
+        *ngFor="let step of steps; let index = index"
+        [attr.label]="step.label"
+        [attr.icon]="step.icon"
+      >
+        <p>Contenuto dello step {{ index + 1 }}</p>
+      </it-stepper-step>
+    </it-stepper>
+    <it-stepper
+      current="1"
+      total-steps="6"
+      mobile-progress="dots"
+      mobile-progress-on-desktop
+      hide-header
+    >
+      <it-stepper-step
+        *ngFor="let step of steps; let index = index"
+        [attr.label]="step.label"
+        [attr.icon]="step.icon"
+      >
+        <p>Contenuto dello step {{ index + 1 }}</p>
+      </it-stepper-step>
+    </it-stepper>
+  </section>
+
+  <section>
+    <h2>Salva</h2>
+    <it-stepper current="1" total-steps="6" save-label="Salva" hide-header>
+      <it-stepper-step
+        *ngFor="let step of steps; let index = index"
+        [attr.label]="step.label"
+        [attr.icon]="step.icon"
+      >
+        <p>Contenuto dello step {{ index + 1 }}</p>
+      </it-stepper-step>
+    </it-stepper>
+  </section>
+
+  <section>
+    <h2>Conferma</h2>
+    <it-stepper current="1" total-steps="6" show-confirm hide-header>
+      <it-stepper-step
+        *ngFor="let step of steps; let index = index"
+        [attr.label]="step.label"
+        [attr.icon]="step.icon"
+      >
+        <p>Contenuto dello step {{ index + 1 }}</p>
+      </it-stepper-step>
+    </it-stepper>
+  </section>
+
+  <section class="stepper-example-stack stepper-dark-demo">
+    <h2 class="text-white">Sfondo scuro</h2>
+    <it-stepper current="1" total-steps="6" dark>
+      <it-stepper-step
+        *ngFor="let step of steps; let index = index"
+        [attr.label]="step.label"
+        [attr.icon]="step.icon"
+      >
+        <p>Contenuto dello step {{ index + 1 }}</p>
+      </it-stepper-step>
+    </it-stepper>
+    <it-stepper current="1" total-steps="3" dark header-variant="text" hide-content hide-nav>
+      <it-stepper-step
+        *ngFor="let step of headerSteps; let index = index"
+        [attr.label]="step.label"
+        [attr.icon]="step.icon"
+      >
+        <p>Contenuto dello step {{ index + 1 }}</p>
+      </it-stepper-step>
+    </it-stepper>
+    <it-stepper current="1" total-steps="3" dark header-variant="icons" hide-content hide-nav>
+      <it-stepper-step
+        *ngFor="let step of headerSteps; let index = index"
+        [attr.label]="step.label"
+        [attr.icon]="step.icon"
+      >
+        <p>Contenuto dello step {{ index + 1 }}</p>
+      </it-stepper-step>
+    </it-stepper>
+    <it-stepper current="1" total-steps="3" dark header-variant="numbers" hide-content hide-nav>
+      <it-stepper-step
+        *ngFor="let step of headerSteps; let index = index"
+        [attr.label]="step.label"
+        [attr.icon]="step.icon"
+      >
+        <p>Contenuto dello step {{ index + 1 }}</p>
+      </it-stepper-step>
+    </it-stepper>
+  </section>
+</div>

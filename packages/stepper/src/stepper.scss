@@ -48,27 +48,81 @@ $utilities: (
 @import 'bootstrap-italia/src/scss/components/progress-bars';
 @import 'bootstrap-italia/src/scss/components/steppers';
 
+:host {
+  display: block;
+  width: 100%;
+}
+
+.steppers {
+  width: 100%;
+}
+
+.steppers it-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.steppers it-icon::part(icon) {
+  width: 100%;
+  height: 100%;
+}
+
+.steppers-header ul li > it-icon:not(.steppers-success) {
+  width: var(--#{$prefix}stepper-icon-size);
+  height: var(--#{$prefix}stepper-icon-size);
+  margin-right: var(--#{$prefix}spacing-xxs);
+}
+
+.steppers-header ul li.confirmed it-icon.steppers-success {
+  color: var(--#{$prefix}stepper-icon-confirmed);
+}
+
+.steppers.bg-dark it-icon {
+  color: var(--#{$prefix}icon-inverse);
+}
+
+.steppers.bg-dark .steppers-header ul li.confirmed it-icon.steppers-success {
+  color: var(--#{$prefix}stepper-icon-confirmed);
+}
+
+.steppers-nav button it-icon {
+  width: var(--#{$prefix}stepper-icon-size);
+  height: var(--#{$prefix}stepper-icon-size);
+}
+
 // Override: BSI hides nav icons via `.icon { display: none }` at desktop breakpoint,
 // but we use `it-icon` web components which render in their own shadow DOM.
 // The `.icon` class selector from BSI won't reach inside it-icon's shadow DOM,
 // so we target the `it-icon` host element directly.
 @include media-breakpoint-up(lg) {
-  .steppers-nav button it-icon {
+  .steppers-nav button it-icon.icon {
     display: none;
   }
+}
+
+:host([mobile-progress-on-desktop]) .steppers-nav .steppers-progress {
+  display: block;
+}
+
+:host([mobile-progress-on-desktop]) .steppers-nav .steppers-dots {
+  display: flex;
 }
 
 // The steppers-success checkmark icon in the header (it-icon) needs to act as
 // the margin-left: auto spacer that BSI's .steppers-success SVG provides.
 .steppers-header ul li it-icon.steppers-success {
+  margin-right: 0;
   margin-left: auto;
 }
 
 // Step number circle needs proper centering for the check icon inside it
 .steppers-number it-icon {
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0;
 }

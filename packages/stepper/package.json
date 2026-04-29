@@ -65,5 +65,8 @@
     "tslib": "^2.6.3",
     "typescript": "catalog:"
   },
+  "peerDependencies": {
+    "@italia/icon": "workspace:^"
+  },
   "customElements": "custom-elements.json"
 }

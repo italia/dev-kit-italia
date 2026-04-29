@@ -15,7 +15,7 @@ npm install @italia/stepper
   import '@italia/stepper';
 </script>
 
-<it-stepper header-variant="numbers">
+<it-stepper header-variant="numbers" current="1" total-steps="6">
   <it-stepper-step label="Primo contenuto">
     <p>Contenuto del primo step</p>
   </it-stepper-step>

@@ -2197,6 +2197,9 @@ importers:
       '@italia/globals':
         specifier: workspace:^
         version: link:../globals
+      '@italia/icon':
+        specifier: workspace:^
+        version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
         version: 3.0.0-alpha.9

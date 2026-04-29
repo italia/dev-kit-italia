@@ -37,6 +37,7 @@ import Select from './pages/Select.svelte';
 import Sidebar from './pages/Sidebar.svelte';
 import Skiplinks from './pages/Skiplinks.svelte';
 import Sticky from './pages/Sticky.svelte';
+import Stepper from './pages/Stepper.svelte';
 import Carousel from './pages/Carousel.svelte';
 import Table from './pages/Table.svelte';
 import Tabs from './pages/Tabs.svelte';
@@ -91,6 +92,7 @@ export const AppRoutes = [
   { path: '/sidebar', element: Sidebar, title: 'Sidebar' },
   { path: '/skiplinks', element: Skiplinks, title: 'Skiplinks' },
   { path: '/sticky', element: Sticky, title: 'Sticky' },
+  { path: '/stepper', element: Stepper, title: 'Stepper' },
   { path: '/tables', element: Table, title: 'Tables' },
   { path: '/thumbnav', element: Thumbnav, title: 'Thumbnav' },
   { path: '/timeline', element: Timeline, title: 'Timeline' },

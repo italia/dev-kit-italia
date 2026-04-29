@@ -210,6 +210,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/sticky.component').then((c) => c.StickyComponent),
   },
   {
+    title: 'Stepper',
+    path: 'stepper',
+    loadComponent: () => import('./pages/stepper.component').then((c) => c.StepperComponent),
+  },
+  {
     title: 'Tables',
     path: 'tables',
     loadComponent: () => import('./pages/table.component').then((c) => c.TableComponent),
@@ -229,7 +234,7 @@ export const routes: Routes = [
     path: 'tabs',
     loadComponent: () => import('./pages/tabs.component').then((c) => c.TabsComponent),
   },
-{
+  {
     title: 'Toggle',
     path: 'toggle',
     loadComponent: () => import('./pages/toggle.component').then((c) => c.ToggleComponent),
@@ -257,6 +262,7 @@ export const routes: Routes = [
   {
     title: 'Notification',
     path: 'notification',
-    loadComponent: () => import('./pages/notification.component').then((c) => c.NotificationComponent),
+    loadComponent: () =>
+      import('./pages/notification.component').then((c) => c.NotificationComponent),
   },
 ];
