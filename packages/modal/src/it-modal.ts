@@ -524,8 +524,12 @@ export class ItModal extends BaseComponent {
     const hasHeader =
       (this.modalTitle || this._headerSlot?.assignedElements({ flatten: true }).length > 0) && !this.customHeader;
 
-    const ariaLabel = !hasHeader ? this.itAriaLabel || undefined : undefined;
     const enableFocusContent = this.scrollable || this.position === 'left' || this.position === 'right';
+    let ariaLabelledBy = hasHeader ? this._titleId : undefined;
+
+    if (this.itAriaLabel) {
+      ariaLabelledBy = undefined;
+    }
 
     return html`
       <slot name="trigger" @slotchange=${this._onTriggerSlotChange}></slot>
@@ -533,9 +537,9 @@ export class ItModal extends BaseComponent {
         class="${classMap(this._modalClasses)}"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="${ifDefined(hasHeader ? this._titleId : undefined)}"
+        aria-labelledby="${ifDefined(ariaLabelledBy)}"
         aria-describedby="${ifDefined(this._descriptionId)}"
-        aria-label="${ifDefined(ariaLabel)}"
+        aria-label="${ifDefined(this.itAriaLabel || undefined)}"
         aria-hidden="${!this.open}"
         tabindex="-1"
         @click="${this._handleBackdropClick}"

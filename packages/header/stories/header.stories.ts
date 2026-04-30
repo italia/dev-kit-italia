@@ -8,6 +8,7 @@ type HeaderStoryArgs = {
   breakpoint: number;
   openAriaLabel: string;
   closeAriaLabel: string;
+  modalAriaLabel: string;
   hideHeaderBrand: boolean;
   modalHeaderTheme?: 'dark' | 'light';
 };
@@ -15,6 +16,7 @@ const defaultArgs = {
   breakpoint: 991,
   openAriaLabel: 'Mostra la navigazione',
   closeAriaLabel: 'Chiudi la navigazione',
+  modalAriaLabel: 'Navigazione del sito',
   hideHeaderBrand: false,
   modalHeaderTheme: undefined,
 };
@@ -41,6 +43,12 @@ const meta = {
       control: { type: 'text' },
       description: 'Etichetta ARIA del pulsante che chiude la navigazione mobile.',
       table: { defaultValue: { summary: 'Chiudi la navigazione' } },
+    },
+    modalAriaLabel: {
+      name: 'modal-aria-label',
+      control: { type: 'text' },
+      description: 'Etichetta ARIA della modale usata per la navigazione mobile.',
+      table: { defaultValue: { summary: 'Navigazione del sito' } },
     },
     hideHeaderBrand: {
       name: 'hide-header-brand',

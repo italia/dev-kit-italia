@@ -17,6 +17,9 @@ export class ItHeader extends BaseComponent {
   @property({ type: String, attribute: 'close-aria-label' })
   closeAriaLabel = 'Chiudi la navigazione';
 
+  @property({ type: String, attribute: 'modal-aria-label' })
+  modalAriaLabel = 'Navigazione del sito';
+
   @property({ type: Boolean, attribute: 'hide-header-brand' })
   hideHeaderBrand = false;
 
@@ -314,6 +317,7 @@ export class ItHeader extends BaseComponent {
     modal.setAttribute('close-button-placement', 'backdrop');
     modal.setAttribute('custom-header', 'true');
     modal.setAttribute('id', 'it-nav-modal');
+    modal.setAttribute('it-aria-label', this.modalAriaLabel);
 
     modal.setAttribute('class', this.hideHeaderBrand ? 'hide-header-brand' : '');
 
