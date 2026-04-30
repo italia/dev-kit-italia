@@ -44,21 +44,19 @@ const preview: Preview = {
       },
     },
     options: {
-      storySort: (a, b) => {
-        // Debug: log what we're comparing
-        const aPath = a.id?.split('--')[0] || '';
-        const bPath = b.id?.split('--')[0] || '';
-
-        // If one contains 'introduzione' and the other doesn't, prioritize introduzione
-        if (aPath.includes('organizzare') && bPath.includes('organizzare')) {
-          const aHasIntro = aPath.includes('introduzione');
-          const bHasIntro = bPath.includes('introduzione');
-          
-          if (aHasIntro && !bHasIntro) return -1;
-          if (!aHasIntro && bHasIntro) return 1;
-        }
-
-        return a.id?.localeCompare(b.id) || 0;
+      storySort: {
+        method: 'alphabetical',
+        order: [
+          'Introduzione',
+          'Personalizzazione degli stili',
+          'Font',
+          'i18n - Internazionalizzazione',
+          'Documentazione tecnica',
+          'Organizzare i contenuti',
+          'Organizzare gli spazi',
+          'Componenti',
+          'Framework',
+        ],
       },
     },
   },
