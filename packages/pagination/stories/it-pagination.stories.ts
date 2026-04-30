@@ -54,7 +54,7 @@ const defaultItems: PaginationItemProps[] = [
 
 const meta: Meta<PaginationProps> = {
   title: 'Componenti/Pagination',
-  tags: ['a11y-ok', 'web-component', 'new'],
+  tags: ['a11y-ok', 'web-component'],
   decorators: [
     (story, context) => {
       if (context.parameters.overrideMetaWrapper) return story();

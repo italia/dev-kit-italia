@@ -232,7 +232,7 @@ const renderUploadDragDrop = (params: Partial<UploadDragDropProps>) => html`
 
 const meta = {
   title: 'Componenti/Form/Upload',
-  tags: ['new', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-upload',
   parameters: {
     docs: {

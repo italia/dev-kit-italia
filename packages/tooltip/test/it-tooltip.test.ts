@@ -41,8 +41,10 @@ describe('Tooltip component', () => {
       const contentId = (el.querySelector('[slot="content"]') as HTMLElement)?.id;
       // it-button uses setDescribedBy: either cross-root ariaDescribedByElements or
       // a direct aria-describedby on the inner native button (fallback for older browsers)
-      const innerBtn = trigger.shadowRoot?.querySelector('button') as HTMLElement | null;
-      const ariaRefs: Element[] = trigger.internals?.ariaDescribedByElements ?? [];
+      const innerBtn = trigger.shadowRoot?.querySelector('button') as any;
+      // setDescribedBy sets ariaDescribedByElements on the native button when supported,
+      // or falls back to the aria-describedby string attribute
+      const ariaRefs: Element[] = innerBtn?.ariaDescribedByElements ?? [];
       const hasRelationship =
         ariaRefs.some((ref: Element) => ref.id === contentId) ||
         innerBtn?.getAttribute('aria-describedby') === contentId;
