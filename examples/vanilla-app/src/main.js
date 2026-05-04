@@ -44,6 +44,7 @@ const componentsMenuItems = [
   { label: 'Dropdown', href: '/src/dropdown' },
   { label: 'Form', href: '/src/form' },
   { label: 'Forward', href: '/src/forward' },
+  { label: 'Header', href: '/src/header' },
   { label: 'Hero', href: '/src/hero' },
   { label: 'Icon', href: '/src/icon' },
   { label: 'Input', href: '/src/input' },
@@ -76,7 +77,9 @@ const componentsMenuItems = [
   { label: 'Video', href: '/src/video' },
 ];
 
-document.querySelector('#app-header').innerHTML = `
+const appHeader = document.querySelector('#app-header');
+if (appHeader) {
+  appHeader.innerHTML = `
   <div class="app-header bg-primary">
     <div class="container">
       <a href="https://vite.dev" target="_blank">
@@ -114,8 +117,11 @@ document.querySelector('#app-header').innerHTML = `
     </div>
   </div>
 `;
+}
 
-document.querySelector('#app-footer').innerHTML = `
+const appFooter = document.querySelector('#app-footer');
+if (appFooter) {
+  appFooter.innerHTML = `
   <footer class="it-footer">
     <div class="it-footer-main">
       <div class="container">
@@ -278,3 +284,4 @@ document.querySelector('#app-footer').innerHTML = `
     </div>
   </footer>
 `;
+}

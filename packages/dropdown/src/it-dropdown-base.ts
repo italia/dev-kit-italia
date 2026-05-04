@@ -32,9 +32,13 @@ export class ItDropdownBase extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = false;
 
-  @property({ type: String, attribute: 'it-role' }) itRole: string = 'menu';
+  @property({ type: String, attribute: 'it-role' }) itRole: string = 'list';
 
   @property({ type: String, attribute: 'it-aria-label' }) itAriaLabel: string = '';
+
+  @property({ type: Number, attribute: 'offset' }) offset: number | null = null;
+
+  @property({ type: Boolean, attribute: 'no-flip' }) noFlip: boolean = false;
 
   @state() protected _popoverOpen = false;
 
@@ -71,10 +75,12 @@ export class ItDropdownBase extends BaseComponent {
 
   protected _onPopoverOpen = () => {
     this._popoverOpen = true;
+    this.setAttribute('data-it-aria-expanded', 'true');
   };
 
   protected _onPopoverClose = () => {
     this._popoverOpen = false;
+    this.setAttribute('data-it-aria-expanded', 'false');
   };
 
   protected get _menuItems() {
@@ -176,9 +182,11 @@ export class ItDropdownBase extends BaseComponent {
         placement=${this.alignment}
         @it-popover-open=${this._onPopoverOpen}
         @it-popover-close=${this._onPopoverClose}
-        exportparts="focusable, icon, button, it-icon, it-button"
-        part="popover"
+        exportparts="focusable, icon, button, it-icon, it-button, dropdown-button, dropdown-icon-expand, popover-content"
+        part="dropdown-popover"
         ?open=${this._popoverOpen}
+        offset=${ifDefined(this.offset)}
+        ?no-flip=${this.noFlip}
         controlled
       >
         <it-button
@@ -193,17 +201,17 @@ export class ItDropdownBase extends BaseComponent {
           class="dropdown-toggle"
           it-aria-label=${ifDefined(this.itAriaLabel ? this.itAriaLabel : undefined)}
           exportparts="focusable, button, icon, it-icon"
-          part="it-button"
+          part="dropdown-button"
           it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
           it-aria-controls=${this._popoverOpen ? this._menuId : nothing}
         >
           ${this.alignment.startsWith('left')
             ? html`<it-icon
-                part="it-icon"
                 name="it-expand"
                 class="icon-expand left"
                 size="sm"
                 exportparts="icon"
+                part="dropdown-icon-expand"
               ></it-icon>`
             : ''}
 
@@ -216,13 +224,14 @@ export class ItDropdownBase extends BaseComponent {
                   top: this.alignment.startsWith('top'),
                 })}
                 exportparts="icon"
-                part="it-icon"
+                part="dropdown-icon-expand"
                 size="sm"
               ></it-icon>`
             : ''}
         </it-button>
         <div
           slot="content"
+          part="popover-content"
           class="${this.composeClass('dropdown-menu', {
             show: this._popoverOpen,
             dark: this.dark,

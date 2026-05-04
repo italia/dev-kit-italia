@@ -1,7 +1,7 @@
 {
   "name": "@italia/tooltip",
   "description": "Web component it-tooltip del Design system .italia",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.9",
   "publishConfig": {
     "access": "public"
   },

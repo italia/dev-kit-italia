@@ -15,7 +15,7 @@ it-toolbar {
         width: 100%;
       }
 
-      &::part(popover) {
+      &::part(dropdown-popover) {
         display: block;
         width: 100%;
       }
@@ -35,7 +35,7 @@ it-toolbar {
         margin: var(--#{$prefix}toolbar-item-margin-y) 0;
       }
 
-      &::part(it-button) {
+      &::part(dropdown-button) {
         position: relative;
         display: block;
       }
@@ -44,7 +44,7 @@ it-toolbar {
         height: auto;
       }
 
-      &::part(it-icon) {
+      &::part(dropdown-icon-expand) {
         position: absolute;
         top: 50%;
         right: -3px;

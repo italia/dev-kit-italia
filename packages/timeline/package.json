@@ -1,7 +1,7 @@
 {
   "name": "@italia/timeline",
   "description": "Web components it-timeline e it-timeline-point-list del Design system .italia",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.9",
   "publishConfig": {
     "access": "public"
   },

@@ -15,7 +15,7 @@ export class ItButton extends BaseComponent {
 
   @query('button') private _nativeButton!: HTMLButtonElement;
 
-  @property({ type: String, reflect: true }) type = 'button';
+  @property({ type: String, reflect: true }) type: HTMLButtonElement['type'] = 'button';
 
   @property({ type: String, reflect: true }) variant: Variants = '';
 
@@ -80,6 +80,18 @@ export class ItButton extends BaseComponent {
 
   public override focus() {
     this._nativeButton?.focus();
+  }
+
+  public setDescribedBy(element: Element | null): void {
+    const btn = this.shadowRoot?.querySelector('button');
+    if (!btn) return;
+    if ('ariaDescribedByElements' in Element.prototype) {
+      btn.ariaDescribedByElements = element ? [element] : null;
+    } else if (element?.id) {
+      btn?.setAttribute('aria-describedby', element.id);
+    } else {
+      btn?.removeAttribute('aria-describedby');
+    }
   }
 
   private _onKeyDown = (e: KeyboardEvent) => {

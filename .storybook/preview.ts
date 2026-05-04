@@ -54,6 +54,8 @@ const preview: Preview = {
           'Documentazione tecnica',
           'Componenti',
           'Framework',
+          'Organizzare i contenuti',
+          'Organizzare gli spazi',
         ],
       },
     },

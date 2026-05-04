@@ -62,6 +62,7 @@
 @import '@italia/dimmer/styles/globals';
 @import '@italia/dropdown/styles/globals';
 @import '@italia/hero/styles/globals';
+@import '@italia/header/styles/globals';
 @import '@italia/icon/styles/globals';
 @import '@italia/input/styles/globals';
 @import '@italia/megamenu/styles/globals';
@@ -101,11 +102,6 @@
 @import './components/go-back';
 @import './components/list';
 @import './components/sidebar';
-
-.navbar-collapsable .menu-wrapper {
-  //z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page
-  z-index: auto; // to avoid megamenu dropdowns in header to be overlapped by navscroll or other items in page
-}
 
 .it-footer-main .it-brand-wrapper ::part(icon) {
   width: var(--#{$prefix}footer-brand-icon-size);

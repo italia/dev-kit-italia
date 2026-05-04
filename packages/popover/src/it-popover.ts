@@ -211,7 +211,7 @@ export class ItPopover extends BaseComponent {
   render() {
     return html`
       <slot name="trigger" part="trigger" @slotchange=${this._setChildrenProperties}></slot>
-      <slot name="content"></slot>
+      <slot name="content" part="popover-content"></slot>
     `;
   }
 }
