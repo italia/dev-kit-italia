@@ -1,0 +1,229 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as Stories from './tipografia.stories';
+
+<Meta of={Stories} />
+
+# Tipografia
+
+Documentazione sulla gestione della tipografia, come intestazioni, paragrafi, citazioni, elenchi e altro.
+
+Bootstrap imposta alcune proprietà di base per la tipografia e gli stili dei
+link. Quando è necessario un maggiore controllo, fornisce delle
+[classi di utilità testuali](/docs/organizzare-i-contenuti-testo--documentazione).
+
+Le scelte tipografiche di Bootstrap Italia seguono le indicazioni del [Design system .italia](https://designers.italia.it/design-system/fondamenti/tipografia/). Per approfondimenti su gerarchia visiva, spaziature e uso dei caratteri, consulta la documentazione ufficiale.
+
+## Famiglie di caratteri
+
+Bootstrap Italia include tre famiglie di caratteri tipografici per garantire leggibilità e coerenza visiva:
+- **Titillium** (Web o Sans Pro): font principale sans-serif per interfacce e testi brevi
+- **Lora**: font serif per contenuti editoriali e testi lunghi
+- **Roboto Mono**: font monospace per codice, dati tabulari e numeri
+
+Per informazioni su come caricare i font (via JavaScript, CSS o bundle) e scegliere tra le varianti Titillium Web e Titillium Sans Pro, consulta la [**pagina dedicata Font**](https://bootstrap-italia-git-3x-dip-trasformazione-digitale.vercel.app/docs/come-iniziare/font/).
+
+### Titillium (font principale)
+
+Bootstrap Italia supporta due varianti del carattere Titillium:
+- **Titillium Web** (default): versione originale e carattere di riferimento del Design system .italia
+- **Titillium Sans Pro**: evoluzione con supporto linguistico esteso e simboli matematici.
+
+Nella documentazione puoi esplorare la resa delle due versioni usando il selettore "Font principale" nella barra laterale.
+
+Il font Titillium è utilizzato di default, per cui di norma non è necessario applicarlo esplicitamente. In caso si renda necessario è possibile utilizzare la classe `.font-sans-serif`.
+
+<Canvas of={Stories.TitilliumWeb} />
+
+### Lora (font serif)
+
+Lora è un carattere serif progettato espressamente per la lettura su display, particolarmente adatto per testi lunghi e contenuti editoriali. Può essere utilizzato applicando la classe `.font-serif`.
+
+<Canvas of={Stories.Lora} />
+
+### Roboto Mono (font monospace)
+
+Roboto Mono è una famiglia di caratteri monospace adatta alla rappresentazione di codice, numeri, calcoli matematici e dati tabulari. Per utilizzarlo, è sufficiente usare la classe `.font-monospace`.
+
+<Canvas of={Stories.RobotoMono} />
+
+## Tipografia responsive
+
+Bootstrap Italia ridimensiona la dimensione di intestazioni e testo modificando
+le proprietà `font-size` e `line-height` dell'elemento tramite una media query che imposta dimensioni
+lievemente maggiori per schermi con dimensioni maggiori di _576px_. Questa
+impostazione, unita all'utilizzo di dimensioni in `rem` o in semplici valori
+numerici all'interno del CSS, fa sì che testo e altre proprietà occupino più
+spazio quando lo schermo lo permette.
+
+## Intestazioni
+
+Tutte le intestazioni HTML, da `<h1>` fino a `<h6>`, sono disponibili, anche se
+è buona norma non utilizzare più di 4 livelli di intestazione.
+
+L'interlinea è impostata con il rapporto di  `1.2` per tutte le intestazioni.
+
+<Canvas of={Stories.Intestazioni} />
+
+Nel caso in cui si voglia presentare il testo nello stesso stile delle
+intestazioni, ma non sia possibile utilizzare l'elemento HTML appropriato,
+sono disponibili anche classi di tipo `.h1`, `.h2`, `.h3`, `.h4`, `.h5`, `.h6`.
+
+<Canvas of={Stories.StiliIntestazioni} />
+
+Queste le dimensioni nel dettaglio (dimensione del testo, peso del font e interlinea):
+
+| Intestazione | Mobile | Schermo > 576px |
+| --- | --- | --- |
+| h1 | 40px (2.5rem); font-weight: 700; line-height: 1.2 | 48px (3rem); font-weight: 700; line-height: 1.2 |
+| h2 | 32px (2rem); font-weight: 700; line-height: 1.2 | 40px (2.5rem); font-weight: 700; line-height: 1.2 |
+| h3 | 28px (1.75rem); font-weight: 700; line-height: 1.2 | 32px (2rem); font-weight: 700; line-height: 1.2 |
+| h4 | 24px (1.5rem); font-weight: 600; line-height: 1.2 | 28px (1.75rem); font-weight: 600; line-height: 1.2 |
+| h5 | 20px (1.25rem); font-weight: 600; line-height: 1.2 | 24px (1.5rem); font-weight: 600; line-height: 1.2 |
+| h6 | 16px (1rem); font-weight: 600; line-height: 1.2 | 18px (1.125rem); font-weight: 600; line-height: 1.2 |
+
+### Intestazione in evidenza
+
+Gli elementi di intestazione tradizionali sono progettati per funzionare al
+meglio nel contesto della pagina. Nel caso sia necessario mettere in ulteriore
+evidenza un'intestazione di tipo `<h1>`, si può prendere in considerazione l'uso
+della classe `.display-1`, che restituirà una dimensione sensibilmente più
+grande.
+
+<Canvas of={Stories.IntestazioneH1InEvidenza} />
+
+ 
+
+## Paragrafi
+
+Il semplice paragrafo prevede una dimensione del testo di
+`16px/1rem` su dispositivi mobili e `18px/1.125rem` su schermi con dimensioni
+maggiori di 576px. 
+
+L'interlinea è impostata con il rapporto di  `1.5`.
+
+<Canvas of={Stories.ParagrafiContenuti} />
+
+Per una lettura più confortevole, è buona norma mantenere la lunghezza di un paragrafo
+compresa tra 45 e 74 caratteri. Per testo su colonne multiple, si considera una
+lunghezza compresa tra 40 e 50 caratteri. Per i testi a margine la lunghezza
+minima è di 12-15 caratteri.
+
+### Paragrafi in evidenza
+
+Per mettere in risalto un paragrafo è sufficiente aggiungere la classe `.lead`.
+
+<Canvas of={Stories.ParagrafiInEvidenza} />
+
+### Personalizzazione dei paragrafi
+
+È possibile stilizzare correttamente lo stile anche nel caso vengano utilizzati
+semplicemente gli elementi HTML5 per il trattamento di testo.
+
+<Canvas of={Stories.MarkupSemanticoNeiParagrafi} />
+
+Le classi `.mark` e `.small` sono disponibili anche per applicare gli stessi
+stili di `<mark>` e `<small>` evitando eventuali implicazioni semantiche
+indesiderate che i tag porterebbero con sé.
+
+È possibile sfruttare le classi di Bootstrap anche per modificare allineamento,
+stile, peso e colore del testo. Per questo, si può fare riferimento alla
+documentazione delle [utilità di testo](/docs/organizzare-i-contenuti-testo--documentazione)
+e [utilità di colore](https://bootstrap-italia-git-3x-dip-trasformazione-digitale.vercel.app/docs/utilities/colori/).
+
+### Link
+
+#### Accessibilità
+
+È fondamentale evidenziare i link presenti in un paragrafo in modo adeguato, utilizzando la sottolineatura oltre al colore per indicare la presenza di un collegamento ipertestuale.
+
+Nel rispetto delle regole di accessibilità vigenti, Bootstrap Italia mantiene la sottolineatura ai link di tipo `<a>`. Nel caso in cui si voglia aggiungere un'icona a fianco del link, questa può essere inserita direttamente all'interno del tag `<a>`, come mostrato nell'esempio seguente.
+
+<Canvas of={Stories.Link} />
+
+ Nel caso di link già in evidenza (menu di navigazione, dropdown menu, liste di link, ecc.), è possibile rimuovere la sottolineatura utilizzando la classe `.text-decoration-none`. Vai agli esempi di [link senza sottolineatura](https://bootstrap-italia-git-3x-dip-trasformazione-digitale.vercel.app/docs/organizzare-i-contenuti/liste/#liste-per-menu-di-navigazione).
+
+## Abbreviazioni
+
+Implementazione stilizzata dell'elemento HTML `<abbr>` per abbreviazioni e
+acronimi per mostrare la versione espansa sull' hover. Le abbreviazioni hanno
+una sottolineatura predefinita e ottengono un cursore di aiuto per fornire un
+contesto aggiuntivo al passaggio del mouse e agli utenti delle tecnologie
+assistive.
+
+Aggiungi `.initialism` a un'abbreviazione per una dimensione del font
+leggermente più piccola.
+
+<Canvas of={Stories.Abbreviazioni} />
+
+## Citazioni
+
+Per citare blocchi di contenuti da un'altra fonte all'interno del documento.
+Racchiudi ogni HTML all'interno
+di un `<blockquote class="blockquote">` come la citazione.
+
+<Canvas of={Stories.Citazioni} />
+
+### Citare una fonte
+
+Aggiungi un `<footer class="blockquote-footer">` per identificare la fonte.
+Includi il nome della fonte di origine in `<cite>`.
+
+<Canvas of={Stories.CitazioniConFonte} />
+
+### Allineamento
+
+Utilizza le utilità di testo necessarie per modificare l'allineamento del tuo
+blockquote.
+
+<Canvas of={Stories.CitazioneCentrata} />
+
+<Canvas of={Stories.CitazioneADestra} />
+
+### Semplice
+
+Aggiungendo la classe `.blockquote-simple` si ottiene una versione base del Blockquote.
+
+<Canvas of={Stories.CitazioneBase} />
+
+### Card
+
+Aggiungendo la classe `.blockquote-card` si ottiene un Blockquote di tipo card.
+
+<Canvas of={Stories.CitazioneCard} />
+
+Aggiungendo un'ulteriore classe `.dark` si ottiene un Blockquote card scuro.
+
+<Canvas of={Stories.CitazioneCardConSfondoScuro} />
+
+## Liste
+
+Rimuovi il predefinito `list-style` e il margine sinistro sugli elementi
+elenco (solo per i figli diretti). **Questo si applica solo agli elementi della 
+lista che sono figli diretti**, il che significa che dovrai aggiungere la classe
+per tutti gli elenchi annidati.
+
+<Canvas of={Stories.ListaSenzaStile} />
+
+### Inline
+
+Rimuovi i punti elenco di una lista e applica un leggero `margin` con una
+combinazione di due classi, `.list-inline` e `.list-inline-item`.
+
+<Canvas of={Stories.ListaInline} />
+
+### Allineamento lista descrizione
+
+Allineare i termini e le descrizioni orizzontalmente utilizzando le classi
+predefinite del nostro sistema di griglia. Per termini più lunghi, puoi
+facoltativamente aggiungere la classe `.text-truncate` per troncare il testo
+con un `ellipsis`.
+
+<Canvas of={Stories.ListaAllineamentoDescrizione} />
+
+## Breaking change
+
+- Reimpostata la dimensione del carattere di base su `16px` su `body`.
+- Sostituite le unità `em` con `rem`.
+- Aggiornati i valori `font-size` per corrispondere al nuovo calcolo dell'unità `rem`.
+- Rimosse le variabili obsolete e inutilizzate da `_variables.scss`.
+- Variabili specifiche dei componenti aggiornate e allineate a `UI Kit Italia v3`.

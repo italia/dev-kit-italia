@@ -1,0 +1,69 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as Stories from './proporzioni.stories';
+
+<Meta of={Stories} />
+
+# Proporzioni
+
+Utilizza queste classi helper per gestire le proporzioni di contenuti esterni come `<iframe>`, `<embed>`, `<video>` e `<object>`. Queste classi possono inoltre essere utilizzate per ridimensionare qualsiasi elemento HTML standard come `<div>` o `<img>`. Gli stili vengono applicati dall'elemento contenitore `.ratio` all'elemento contenuto.
+
+Le proporzioni predefinite sono dichiarate in una mappa Sass ed incluse in ogni classe con una variabile CSS, la quale permette di generare [proporzioni custom](#proporzioni-custom).
+
+> **Attenzione**
+>
+> ##### Nota
+>
+> Le seguenti classi utilizzate negli esempi servono unicamente per gli stessi e vanno ignorate:
+>
+> - `ratio-example`
+> - `ratio-example-breakpoint`
+
+**Pro-Tip!** Non hai bisogno di includere l'attributo `frameborder="0"` nei tuoi `<iframe>`, questo viene automaticamente
+sovrascritto.
+
+## Esempio
+
+Estendi ogni oggetto, ad esempio un `<iframe>`, aggiungendo al suo contenitore la classe `.ratio` e le proporzioni
+richieste. L'elemento contenuto viene automaticamente ridimensionato grazie al selettore universale `ratio > *`.
+
+<Canvas of={Stories.EsempioProporzione16x9} />
+
+## Proporzioni predefinite
+
+Le proporzioni possono essere personalizzate con delle classi apposite.  
+Vengono fornite le seguenti proporzioni pre-impostate:
+
+<Canvas of={Stories.VariantiDiProporzioni} />
+
+## Proporzioni custom
+
+Ogni classe `.ratio-*` include una variabile CSS nel selettore. Puoi fare un override di questa variabile per creare una proporzione custom _al volo_ facendo un rapido calcolo.
+
+Ad esempio, per creare una proporzione custom 2x1, utilizza il valore `--bs-aspect-ratio: 50%` sull'elemento `.ratio`.
+
+<Canvas of={Stories.ProporzionePersonalizzata} />
+
+Questa variabile CSS rende semplice modificare la proporzione a seconda del breakpoint. Il seguente esempio è un 4x3 inizialmente ma cambia a 2x1 al breakpoint `md`.
+
+```scss
+.ratio-4x3 {
+  @include media-breakpoint-up(md) {
+    --bs-aspect-ratio: 50%; // 2x1
+  }
+}
+```
+
+<Canvas of={Stories.ProporzionePersonalizzataResponsive} />
+
+## Sass map
+
+All'interno del file `src\scss\_variables.scss` è possibile modificare e aggiungere proporzioni predefinite. Questa è la mappa utilizzata di default. Modifica la mappa a piacimento e ricompila il CSS per utilizzarla.
+
+```scss
+$aspect-ratios: (
+  '1x1': 100%,
+  '4x3': calc(3 / 4 * 100%),
+  '16x9': calc(9 / 16 * 100%),
+  '21x9': calc(9 / 21 * 100%),
+);
+```
