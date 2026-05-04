@@ -284,13 +284,12 @@ table.docblock-argstable {
 //toolbar layout
 .toolbar-layout {
   position: relative;
-  width: 50%;
+  width: 550px;
   margin: auto;
   border: 1px solid #ccc;
   min-height: 400px;
   border-radius: 4px;
   background-color: #eaeaea;
-  overflow: scroll;
 }
 
 #storybook-root:has(.toolbar-layout) {

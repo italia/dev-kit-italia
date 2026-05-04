@@ -179,7 +179,7 @@ export class ItToolbarItem extends BaseComponent {
         ?aria-label="${this.itAriaLabel}"
         @click="${this.handleClick}"
         part="toolbar-item-element dropdown"
-        exportparts="focusable, button, icon, icon:expand-icon, it-icon, it-button, popover"
+        exportparts="focusable, button, icon, icon:expand-icon, dropdown-icon-expand, dropdown-button, popover"
         variant=""
         alignment=${this.itAriaOrientation === 'vertical' ? 'right-start' : 'bottom-start'}
       >
