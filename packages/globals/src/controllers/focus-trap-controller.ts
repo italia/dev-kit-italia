@@ -1,3 +1,4 @@
+/* eslint-disable no-continue */
 import { ReactiveController, ReactiveControllerHost } from 'lit';
 
 export interface FocusTrapConfig {
@@ -47,11 +48,16 @@ export class FocusTrapController implements ReactiveController {
 
   private _previousActiveElement: HTMLElement | null = null;
 
-  private _focusableElements: any[] = [];
+  private _focusableElements: HTMLElement[] = [];
 
-  private _first: any;
+  private _first?: HTMLElement;
 
-  private _last: any;
+  private _last?: HTMLElement;
+
+  /** Last known index resolved from real focusin events inside the trap.
+   *  Used as a fallback when assistive tech retargeting makes activeElement
+   *  temporarily unmappable during Tab navigation. */
+  private _lastKnownFocusIndex = -1;
 
   /** Timer ID for the focus call scheduled inside activate(). Cancelled by deactivate()
    *  to prevent focus firing after the trap has been torn down (fast open/close, unmount). */
@@ -65,7 +71,199 @@ export class FocusTrapController implements ReactiveController {
     'select:not([disabled])',
     '[tabindex]',
     'it-button:not([disabled])',
+    'it-dropdown:not([disabled])',
+    'it-megamenu:not([disabled])',
   ].join(',');
+
+  private static readonly NATIVE_FOCUSABLE_SELECTORS = [
+    'a[href]',
+    'button:not([disabled])',
+    'textarea:not([disabled])',
+    'input:not([disabled]):not([type="hidden"])',
+    'select:not([disabled])',
+    '[tabindex]:not([tabindex="-1"])',
+  ].join(',');
+
+  private static readonly MANAGED_HOST_SELECTORS = [
+    'it-button:not([disabled])',
+    'it-dropdown:not([disabled])',
+    'it-megamenu:not([disabled])',
+  ].join(',');
+
+  private static readonly MANAGED_MENU_HOST_SELECTORS = [
+    'it-dropdown:not([disabled])',
+    'it-megamenu:not([disabled])',
+  ].join(',');
+
+  private static getManagedHostAncestor(element: HTMLElement): HTMLElement | null {
+    let current: Node | null = element;
+
+    while (current) {
+      const parentEl: HTMLElement | null = current instanceof HTMLElement ? current.parentElement : null;
+      if (parentEl && parentEl.matches(FocusTrapController.MANAGED_HOST_SELECTORS)) return parentEl;
+
+      if (parentEl) {
+        current = parentEl;
+        continue;
+      }
+
+      const rootNode: Node = current.getRootNode();
+      if (rootNode instanceof ShadowRoot) {
+        const hostElement: Element = rootNode.host;
+        if (hostElement instanceof HTMLElement) {
+          if (hostElement.matches(FocusTrapController.MANAGED_HOST_SELECTORS)) return hostElement;
+          current = hostElement;
+          continue;
+        }
+      }
+
+      break;
+    }
+
+    return null;
+  }
+
+  private static isInsideManagedHost(element: HTMLElement): boolean {
+    return FocusTrapController.getManagedHostAncestor(element) !== null;
+  }
+
+  private static getManagedMenuHostAncestor(element: HTMLElement): HTMLElement | null {
+    let current: Node | null = element;
+
+    while (current) {
+      const parentEl: HTMLElement | null = current instanceof HTMLElement ? current.parentElement : null;
+      if (parentEl && parentEl.matches(FocusTrapController.MANAGED_MENU_HOST_SELECTORS)) return parentEl;
+
+      if (parentEl) {
+        current = parentEl;
+        continue;
+      }
+
+      const rootNode: Node = current.getRootNode();
+      if (rootNode instanceof ShadowRoot) {
+        const hostElement: Element = rootNode.host;
+        if (hostElement instanceof HTMLElement) {
+          if (hostElement.matches(FocusTrapController.MANAGED_MENU_HOST_SELECTORS)) return hostElement;
+          current = hostElement;
+          continue;
+        }
+      }
+
+      break;
+    }
+
+    return null;
+  }
+
+  private static collectFocusableCandidates(
+    root: ParentNode,
+    candidates: HTMLElement[],
+    trigger: HTMLElement | ShadowRoot | null,
+    visited: Set<Node>,
+  ): void {
+    const rootAsNode = root as Node;
+    if (visited.has(rootAsNode)) return;
+    visited.add(rootAsNode);
+
+    const elements = Array.from(root.querySelectorAll<HTMLElement>('*'));
+    elements.forEach((el) => {
+      if (el === trigger) return;
+
+      // Keep custom host components as single tab stops: their internal light/shadow
+      // descendants must not appear as separate trap candidates.
+      if (FocusTrapController.isInsideManagedHost(el)) return;
+
+      if (el.matches(FocusTrapController.FOCUSABLE_SELECTORS)) {
+        candidates.push(el);
+        // Stop here: focusCandidate() handles delegation to the inner focusable.
+        // Prevent recursion into this element's shadow DOM so inner buttons/triggers
+        // are not added as separate tab stops.
+        if (el.shadowRoot) visited.add(el.shadowRoot);
+        return;
+      }
+
+      if (el instanceof HTMLSlotElement) {
+        el.assignedElements({ flatten: true }).forEach((assigned) => {
+          if (!(assigned instanceof HTMLElement) || assigned === trigger) return;
+
+          if (assigned.matches(FocusTrapController.FOCUSABLE_SELECTORS)) {
+            candidates.push(assigned);
+            // Same rule: don't recurse into a focusable element.
+            if (assigned.shadowRoot) visited.add(assigned.shadowRoot);
+            return;
+          }
+
+          FocusTrapController.collectFocusableCandidates(assigned, candidates, trigger, visited);
+
+          if (assigned.shadowRoot) {
+            FocusTrapController.collectFocusableCandidates(assigned.shadowRoot, candidates, trigger, visited);
+          }
+        });
+        return;
+      }
+
+      if (el.shadowRoot) {
+        FocusTrapController.collectFocusableCandidates(el.shadowRoot, candidates, trigger, visited);
+      }
+    });
+  }
+
+  private static getFirstFocusableInShadow(host: HTMLElement): HTMLElement | null {
+    const visited = new Set<Node>();
+
+    const walk = (root: ParentNode): HTMLElement | null => {
+      const rootAsNode = root as Node;
+      if (visited.has(rootAsNode)) return null;
+      visited.add(rootAsNode);
+
+      const direct = Array.from(root.querySelectorAll<HTMLElement>(FocusTrapController.NATIVE_FOCUSABLE_SELECTORS));
+      const firstDirect = direct.find((el) => FocusTrapController.isFocusable(el));
+      if (firstDirect) return firstDirect;
+
+      const all = Array.from(root.querySelectorAll<HTMLElement>('*'));
+      for (const el of all) {
+        if (el instanceof HTMLSlotElement) {
+          const assigned = el.assignedElements({ flatten: true });
+          for (const assignedEl of assigned) {
+            if (!(assignedEl instanceof HTMLElement)) continue;
+            if (assignedEl.matches(FocusTrapController.NATIVE_FOCUSABLE_SELECTORS)) {
+              if (FocusTrapController.isFocusable(assignedEl)) return assignedEl;
+            }
+            const nestedAssigned = walk(assignedEl);
+            if (nestedAssigned) return nestedAssigned;
+            if (assignedEl.shadowRoot) {
+              const nestedAssignedShadow = walk(assignedEl.shadowRoot);
+              if (nestedAssignedShadow) return nestedAssignedShadow;
+            }
+          }
+        }
+
+        if (el.shadowRoot) {
+          const nested = walk(el.shadowRoot);
+          if (nested) return nested;
+        }
+      }
+
+      return null;
+    };
+
+    if (!host.shadowRoot) return null;
+    return walk(host.shadowRoot);
+  }
+
+  private static focusCandidate(target: HTMLElement | undefined): void {
+    if (!target) return;
+
+    if (target.tagName.toLowerCase().startsWith('it-')) {
+      const innerFocusable = FocusTrapController.getFirstFocusableInShadow(target);
+      if (innerFocusable) {
+        innerFocusable.focus({ preventScroll: true });
+        return;
+      }
+    }
+
+    target.focus({ preventScroll: true });
+  }
 
   /**
    * Verifica se un elemento è effettivamente focusabile e tabbabile.
@@ -127,7 +325,9 @@ export class FocusTrapController implements ReactiveController {
     // Usa document capture: cattura Tab/Escape prima di qualsiasi handler,
     // indipendentemente da shadow DOM, delegatesFocus e slot retargeting.
     document.addEventListener('keydown', this._handleKeyDown, true);
+    document.addEventListener('focusin', this._handleFocusIn, true);
     this.updateFocusableElements();
+    this._lastKnownFocusIndex = -1;
     // FIX Safari: trick engine
     // Diamo al browser un istante per processare il ricalcolo del layout
     requestAnimationFrame(() => {
@@ -157,6 +357,8 @@ export class FocusTrapController implements ReactiveController {
     }
     this._isActive = false;
     document.removeEventListener('keydown', this._handleKeyDown, true);
+    document.removeEventListener('focusin', this._handleFocusIn, true);
+    this._lastKnownFocusIndex = -1;
     if (!options?.skipFocusRestore) {
       this._restoreFocus();
     } else {
@@ -179,20 +381,24 @@ export class FocusTrapController implements ReactiveController {
     }
 
     const candidates: HTMLElement[] = [];
-    const direct = Array.from(container.querySelectorAll<HTMLElement>(FocusTrapController.FOCUSABLE_SELECTORS));
-    candidates.push(...direct);
+    FocusTrapController.collectFocusableCandidates(container, candidates, trigger, new Set<Node>());
 
-    // Tutti gli elementi slottati
-    const slots = Array.from(container.querySelectorAll('slot'));
-    slots.forEach((slot) => {
-      slot.assignedElements({ flatten: true }).forEach((el) => {
-        if (!(el instanceof HTMLElement)) return;
-        if (el === trigger) return;
-        if (el.matches(FocusTrapController.FOCUSABLE_SELECTORS)) candidates.push(el);
-        Array.from(el.querySelectorAll<HTMLElement>(FocusTrapController.FOCUSABLE_SELECTORS)).forEach((nested) =>
-          candidates.push(nested),
-        );
-      });
+    // Include anche i figli light DOM dell'host (es. contenuti slottati della modale)
+    Array.from(this.host.children).forEach((child) => {
+      if (!(child instanceof HTMLElement) || child === trigger) return;
+
+      if (child.matches(FocusTrapController.FOCUSABLE_SELECTORS)) {
+        candidates.push(child);
+        // Don't recurse: same stop-on-focusable rule.
+        return;
+      }
+
+      const childVisited = new Set<Node>();
+      FocusTrapController.collectFocusableCandidates(child, candidates, trigger, childVisited);
+
+      if (child.shadowRoot) {
+        FocusTrapController.collectFocusableCandidates(child.shadowRoot, candidates, trigger, childVisited);
+      }
     });
 
     // Filtra solo elementi veramente focusabili e rimuovi duplicati
@@ -245,17 +451,58 @@ export class FocusTrapController implements ReactiveController {
     }
   };
 
+  private _handleFocusIn = (event: FocusEvent): void => {
+    if (!this._isActive) return;
+
+    if (this._focusableElements.length === 0) {
+      this.updateFocusableElements();
+      if (this._focusableElements.length === 0) return;
+    }
+
+    const path = event.composedPath();
+    let index = this._focusableElements.findIndex((candidate) => path.includes(candidate));
+
+    if (index === -1) {
+      const target = path[0];
+      if (target instanceof HTMLElement) {
+        index = this._focusableElements.indexOf(target);
+      }
+    }
+
+    if (index === -1) {
+      const active = FocusTrapController.getActiveElement();
+      if (active) {
+        index = this._focusableElements.findIndex((candidate) => candidate.contains(active));
+      }
+    }
+
+    if (index !== -1) {
+      this._lastKnownFocusIndex = index;
+    }
+  };
+
   private _handleTab(event: KeyboardEvent): void {
-    // ANTI RACE CONDITION: se l'utente è troppo veloce, forza un ricalcolo immediato
-    if (this._focusableElements.length === 0) this.updateFocusableElements();
+    const activeElement = FocusTrapController.getActiveElement();
+
+    // Let native Tab behavior handle navigation inside open dropdown/megamenu.
+    // This allows entering and traversing internal menu items correctly.
+    if (activeElement) {
+      const managedHost = FocusTrapController.getManagedMenuHostAncestor(activeElement);
+      if (managedHost && managedHost.getAttribute('data-it-aria-expanded') === 'true') {
+        return;
+      }
+    }
+
+    // Ricalcola sempre al Tab: gli elementi slottati possono completare il render
+    // del proprio shadow DOM dopo l'attivazione iniziale del trap.
+    this.updateFocusableElements();
     if (this._focusableElements.length === 0) return; // Se è ancora vuoto, non bloccare il Tab
 
     event.preventDefault();
-
-    const activeElement = FocusTrapController.getActiveElement();
     let currentIndex = this._focusableElements.indexOf(activeElement as HTMLElement);
 
     if (currentIndex === -1 && activeElement) {
+      // 1. Walk shadow host chain (covers delegatesFocus custom elements)
       let parent = (activeElement.getRootNode() as ShadowRoot)?.host;
       while (parent && currentIndex === -1) {
         currentIndex = this._focusableElements.indexOf(parent as HTMLElement);
@@ -263,11 +510,46 @@ export class FocusTrapController implements ReactiveController {
       }
     }
 
+    if (currentIndex === -1) {
+      // 2. Composed path fallback: handles focus inside nested shadow/slotted
+      //    content (e.g. anchors inside it-dropdown-item) by mapping the active
+      //    target to the first focusable host found in the event path.
+      const composedPath = event.composedPath();
+      currentIndex = this._focusableElements.findIndex((candidate) => composedPath.includes(candidate));
+    }
+
+    if (currentIndex === -1 && activeElement) {
+      // 3. contains() fallback: handles focus inside an open dropdown/megamenu whose
+      //    items live in light DOM (not shadow DOM), so the parent-walk above doesn't
+      //    reach the host.  Map to the host's index so Tab/Shift+Tab move to the
+      //    correct adjacent element.
+      currentIndex = this._focusableElements.findIndex((candidate) => candidate.contains(activeElement));
+    }
+
+    if (currentIndex === -1) {
+      // 4. AT fallback: with some screen readers, document.activeElement and/or
+      //    event target can be unreliable while navigating inside composite widgets.
+      //    If a dropdown/megamenu is currently open, use its host index as anchor
+      //    so forward/backward Tab continue from that position instead of wrapping.
+      currentIndex = this._focusableElements.findIndex(
+        (candidate) =>
+          candidate.matches('it-dropdown, it-megamenu') && candidate.getAttribute('data-it-aria-expanded') === 'true',
+      );
+    }
+
+    if (currentIndex === -1 && this._lastKnownFocusIndex >= 0) {
+      // 5. Last-known fallback: if assistive tech retargeting hides the active
+      //    element for this key event, continue from the most recent resolved
+      //    focus index captured via focusin.
+      currentIndex = Math.min(this._lastKnownFocusIndex, this._focusableElements.length - 1);
+    }
+
     if (event.shiftKey) {
-      if (currentIndex <= 0) this._last?.focus();
-      else this._focusableElements[currentIndex - 1]?.focus();
-    } else if (currentIndex === -1 || currentIndex >= this._focusableElements.length - 1) this._first?.focus();
-    else this._focusableElements[currentIndex + 1]?.focus();
+      if (currentIndex <= 0) FocusTrapController.focusCandidate(this._last);
+      else FocusTrapController.focusCandidate(this._focusableElements[currentIndex - 1]);
+    } else if (currentIndex === -1 || currentIndex >= this._focusableElements.length - 1)
+      FocusTrapController.focusCandidate(this._first);
+    else FocusTrapController.focusCandidate(this._focusableElements[currentIndex + 1]);
   }
 
   private _restoreFocus(): void {

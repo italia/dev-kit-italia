@@ -21,6 +21,9 @@ import Dimmer from './components/Dimmer.vue';
 import Dropdown from './components/Dropdown.vue';
 import Form from './components/Form.vue';
 import Forward from './components/Forward.vue';
+import Header from './components/Header.vue';
+import HeaderCompleteFullExample from './components/HeaderCompleteFullExample.vue';
+import HeaderCompleteFullStickyExample from './components/HeaderCompleteFullStickyExample.vue';
 import Hero from './components/Hero.vue';
 import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
@@ -74,6 +77,17 @@ const routes = [
   { path: '/dropdown', name: 'Dropdown', component: Dropdown },
   { path: '/form', name: 'Form', component: Form },
   { path: '/forward', name: 'Forward', component: Forward },
+  { path: '/header', name: 'Header', component: Header },
+  {
+    path: '/header-complete-full-example',
+    name: 'HeaderCompleteFullExample',
+    component: HeaderCompleteFullExample,
+  },
+  {
+    path: '/header-complete-full-sticky-example',
+    name: 'HeaderCompleteFullStickyExample',
+    component: HeaderCompleteFullStickyExample,
+  },
   { path: '/hero', name: 'Hero', component: Hero },
   { path: '/icon', name: 'Icon', component: Icon },
   { path: '/input', name: 'Input', component: Input },

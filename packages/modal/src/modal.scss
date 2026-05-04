@@ -46,6 +46,7 @@ $utilities: (
   box-shadow: var(--it-focus-ring-safari-fix) !important;
   outline: var(--it-focus-ring-safari-fix) !important;
 }
+
 // Impedisce a Safari di mostrare il ring di focus sul container
 // o sui figli quando il focus è indotto da script
 [role='dialog']:focus,
@@ -94,12 +95,22 @@ $utilities: (
   overflow-y: auto;
 }
 
+:host([close-button-placement='backdrop']) {
+  .btn-close[part~='close-button'] {
+    --#{$prefix}icon-default: white;
+    position: absolute;
+    top: 1rem;
+    right: -2.5rem;
+  }
+}
+
 .it-dialog-scrollable {
   overflow-y: hidden;
 }
 
 .modal-dialog {
   height: fit-content;
+
   @media (min-width: 768px) {
     margin: 64px auto;
   }

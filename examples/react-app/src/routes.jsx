@@ -19,6 +19,9 @@ import Collapse from './pages/Collapse';
 import Dropdown from './pages/Dropdown';
 import Form from './pages/Form';
 import Forward from './pages/Forward';
+import Header from './pages/Header';
+import HeaderCompleteFullExample from './pages/HeaderCompleteFullExample';
+import HeaderCompleteFullStickyExample from './pages/HeaderCompleteFullStickyExample';
 import Hero from './pages/Hero';
 import Icon from './pages/Icon';
 import Input from './pages/Input';
@@ -72,6 +75,17 @@ export const AppRoutes = [
   { path: '/dropdown', element: <Dropdown />, title: 'Dropdown' },
   { path: '/form', element: <Form />, title: 'Form' },
   { path: '/forward', element: <Forward />, title: 'Forward' },
+  { path: '/header', element: <Header />, title: 'Header' },
+  {
+    path: '/header-complete-full-example',
+    element: <HeaderCompleteFullExample />,
+    title: 'Header Complete Full Example',
+  },
+  {
+    path: '/header-complete-full-sticky-example',
+    element: <HeaderCompleteFullStickyExample />,
+    title: 'Header Complete Full Sticky Example',
+  },
   { path: '/hero', element: <Hero />, title: 'Hero' },
   { path: '/icon', element: <Icon />, title: 'Icon' },
   { path: '/input', element: <Input />, title: 'Input' },

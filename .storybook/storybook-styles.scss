@@ -231,7 +231,7 @@ table.docblock-argstable {
 
 #anchor--componenti-icona--informazioni-utili .sbdocs-preview,
 #anchor--componenti-sticky--custom-events .sbdocs-preview,
-#anchor--componenti-footer--placeholder .sbdocs-preview {
+#anchor--componenti-footer--placeholder .sbdocs-preview{
   display: none;
 }
 
@@ -340,6 +340,7 @@ it-select {
 .test-desktop it-notification::part(notification) {
   position: absolute;
   display: block;
+  min-width: 250px;
 }
 
 #storybook-root:has(.test-desktop) {

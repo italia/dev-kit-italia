@@ -7,11 +7,13 @@ import { MODAL_SIZES, MODAL_POSITIONS, MODAL_VARIANTS } from '../src/types.ts';
 interface ModalProps {
   'modal-title': string;
   'modal-description': string;
+  'custom-header': boolean;
   size: string;
   position: string;
   scrollable: boolean;
   'static-backdrop': boolean;
   'hide-close-button': boolean;
+  'close-button-placement': string;
   variant: string;
   'close-label': string;
   'disable-animation': boolean;
@@ -56,11 +58,13 @@ const meta = {
   args: {
     'modal-title': 'Titolo modale',
     'modal-description': 'Descrizione della modale',
+    'custom-header': false,
     size: '',
     position: undefined,
     scrollable: false,
     'static-backdrop': false,
     'hide-close-button': false,
+    'close-button-placement': 'header',
     variant: '',
     'close-label': 'Chiudi finestra modale',
     'disable-animation': false,
@@ -77,6 +81,12 @@ const meta = {
       control: 'text',
       description:
         'Descrizione della modale (usa slot `description` per contenuto custom), verrrà inserita in un elemento visivamente nascosto per i lettori di schermo.',
+    },
+    'custom-header': {
+      control: 'boolean',
+      description:
+        "Abilita header custom. In questo modo è possibile inserire un header personalizzato tramite slot, altrimenti lo slot header verrà inserito all'interno di un `h2` con classi predefinite per garantire la corretta semantica e accessibilità.",
+      table: { defaultValue: { summary: 'false' } },
     },
     size: {
       control: 'select',
@@ -103,6 +113,12 @@ const meta = {
     'hide-close-button': {
       control: 'boolean',
       description: 'Nasconde il pulsante di chiusura',
+    },
+    'close-button-placement': {
+      control: 'select',
+      options: ['header', 'backdrop'],
+      description: 'Posizione del pulsante di chiusura: `header` (default) o `backdrop`',
+      table: { defaultValue: { summary: 'header' } },
     },
     variant: {
       control: 'select',
@@ -155,8 +171,10 @@ export const EsempioInterattivo: Story = {
       ?static-backdrop="${args['static-backdrop']}"
       ?footer-shadow="${args['footer-shadow']}"
       close-label="${args['close-label']}"
+      close-button-placement="${args['close-button-placement']}"
       modal-title="${args['modal-title']}"
       modal-description="${args['modal-description']}"
+      custom-header="${args['custom-header']}"
     >
       <it-button variant="primary" slot="trigger">Lancia la demo della modale</it-button>
       <span slot="header">${args['modal-title']}</span>

@@ -27,6 +27,7 @@ $utilities: (
 
 :host {
   .dropdown-menu {
+
     &,
     * {
       box-sizing: border-box;
@@ -51,47 +52,15 @@ $utilities: (
 
     .link-list-wrapper ul.link-list {
       display: block;
-      column-gap: var(--#{$prefix}spacing-s); /* spazio tra colonne */
-    }
-  }
-
-  it-popover it-button.nav-link {
-    //--#{$prefix}navbar-link-border-color: rgba(0, 0, 0, 0);
-    --#{$prefix}label-font-size: var(--#{$prefix}navbar-link-font-size);
-    --#{$prefix}navbar-link-border-color: transparent;
-
-    background-color: var(--#{$prefix}navbar-background); //to avoid color contrast issue from tools a11y checker
-    color: var(--#{$prefix}navbar-link-color); //to avoid color contrast issue from tools a11y checker
-
-    it-icon {
-      line-height: 0;
+      column-gap: var(--#{$prefix}spacing-s);
+      /* spazio tra colonne */
     }
 
-    &::part(button) {
-      --#{$prefix}btn-background: var(--#{$prefix}navbar-background);
-      --#{$prefix}btn-border-radius: 0;
-      --#{$prefix}btn-text-color: var(--#{$prefix}navbar-link-color);
-      border-left: var(--#{$prefix}navbar-link-border-size) solid var(--#{$prefix}navbar-link-border-color);
-
-      &:hover {
-        text-decoration: underline;
-        text-underline-offset: 2px;
-      }
-
-      &:focus-visible {
-        border-bottom-color: transparent !important;
-      }
-    }
-
-    @media (min-width: #{map-get($grid-breakpoints, lg)}) {
-      &::part(button) {
-        border-bottom: var(--#{$prefix}navbar-link-border-size) solid var(--#{$prefix}navbar-link-border-color);
-        border-left: none;
-      }
-
-      &.active {
-        --#{$prefix}navbar-link-border-color: var(--#{$prefix}navbar-link-color);
-      }
-    }
+    // .it-heading-link-wrapper {
+    //   margin-bottom: var(--#{$prefix}spacing-s);
+    //   border-bottom-width: 1px;
+    //   border-bottom-style: solid;
+    //   border-color: var( --#{$prefix}megamenu-content-border-color);
+    // }
   }
 }

@@ -12,6 +12,8 @@ export interface StickyConfig {
   stackable?: boolean;
   stickyClassName?: string;
   positionType?: 'fixed' | 'sticky';
+  triggerOffset?: number;
+  triggerSelector?: string;
   /** Which viewport edge to stick to. Defaults to `'top'`. */
   position?: 'top' | 'bottom';
   // eslint-disable-next-line no-use-before-define
@@ -29,6 +31,9 @@ export interface StickyOptions {
   stackable?: boolean;
   stickyClassName?: string;
   positionType?: 'fixed' | 'sticky';
+  triggerOffset?: number;
+  triggerSelector?: string;
+  position?: 'top' | 'bottom';
 }
 
 // ─── Global singleton state ──────────────────────────────────────────────────
@@ -56,6 +61,8 @@ const { activeFixedTopStickies, activeFixedBottomStickies } = globalThis.__itSti
 export class StickyController<T extends StickyElement = StickyElement> implements ReactiveController {
   public visualOrder: number = 0;
 
+  private readonly windowUpdateHandler = this.onWindowUpdate.bind(this);
+
   public setVisualOrder(order: number) {
     this.visualOrder = order;
   }
@@ -69,6 +76,8 @@ export class StickyController<T extends StickyElement = StickyElement> implement
   private height = 0;
 
   private prevHeight = 0;
+
+  private reservedHeight = 0;
 
   private hostElement: T;
 
@@ -116,10 +125,14 @@ export class StickyController<T extends StickyElement = StickyElement> implement
             if (this._isSticky) this.updateAllActiveFixedBottomPositions();
           }
         } else {
-          const currentHeight =
-            this.hostElement.getBoundingClientRect().height + Number(this.hostElement.paddingTop || 0);
+          const currentHeight = this.measureHeight();
+          // const currentHeight =
+          //   this.hostElement.getBoundingClientRect().height + Number(this.hostElement.paddingTop || 0);
           if (currentHeight !== this.height) {
             this.height = currentHeight;
+            if (!this._isSticky) {
+              this.reservedHeight = currentHeight;
+            }
             this.computeLimit();
 
             if (this.hostElement.stackable && this._isSticky) {
@@ -159,7 +172,13 @@ export class StickyController<T extends StickyElement = StickyElement> implement
 
     // Top elements: recompute limit and enforce correct top position.
     this.computeLimit();
-    this.prevHeight = this.hostElement.getBoundingClientRect().height + Number(this.hostElement.paddingTop || 0);
+    this.prevHeight = this.measureHeight();
+    // this.prevHeight = this.hostElement.getBoundingClientRect().height + Number(this.hostElement.paddingTop || 0);
+    if (!this._isSticky) {
+      this.reservedHeight = this.prevHeight;
+    }
+    // If sticky, recalculate position
+
     if (this._isSticky) {
       const offset = this.hostElement.stackable ? this.computeOffset() : 0;
       this.hostElement.style.top = `${offset + Number(this.hostElement.paddingTop || 0)}px`;
@@ -176,8 +195,13 @@ export class StickyController<T extends StickyElement = StickyElement> implement
       const rect = this.hostElement.getBoundingClientRect();
       const { scrollY } = window;
       this.limit = rect.top + scrollY;
-      this.height = rect.height + Number(this.hostElement.paddingTop || 0);
+      this.originalLimit = this.limit;
+      this.height = rect.height;
     }
+  }
+
+  protected measureHeight() {
+    return this.hostElement.getBoundingClientRect().height;
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -268,6 +292,13 @@ export class StickyController<T extends StickyElement = StickyElement> implement
     }, 0);
   }
 
+  protected getExtraTriggerOffset(): number {
+    if (this.hostElement.triggerSelector) {
+      const el = document.querySelector(this.hostElement.triggerSelector);
+      if (el instanceof HTMLElement) return el.offsetHeight;
+    }
+    return Number(this.hostElement.triggerOffset || 0);
+  }
   /**
    * Returns the nearest ancestor element that creates a CSS fixed-position
    * containing block (i.e. has a non-none `transform`, `filter`, or
@@ -277,9 +308,11 @@ export class StickyController<T extends StickyElement = StickyElement> implement
    * stack against each other; elements in different containing blocks
    * (e.g. separate Storybook story previews) are fully independent.
    */
+
   // eslint-disable-next-line class-methods-use-this
   private getFixedContainingBlockFor(el: Element): Element | null {
     let parent: Element | null = el.parentElement;
+
     while (parent && parent !== document.documentElement) {
       const style = getComputedStyle(parent);
       if (style.transform !== 'none' || style.filter !== 'none' || style.perspective !== 'none') {
@@ -320,10 +353,14 @@ export class StickyController<T extends StickyElement = StickyElement> implement
     // Bottom-fixed elements activate immediately on connect and never scroll-toggle.
     if (this.isBottom) return;
 
-    const currentHeight = this.hostElement.getBoundingClientRect().height;
+    const currentHeight = this.measureHeight();
+    // const currentHeight = this.hostElement.getBoundingClientRect().height;
     if (forceRecalc && currentHeight !== this.prevHeight) {
       this.computeLimit();
       this.prevHeight = currentHeight;
+      if (!this._isSticky) {
+        this.reservedHeight = currentHeight;
+      }
     }
 
     let offset = 0;
@@ -339,8 +376,8 @@ export class StickyController<T extends StickyElement = StickyElement> implement
       triggerPoint = this.limit - prevFixedHeight - 40;
     }
 
-    const shouldBeSticky = state.scrollY > triggerPoint - (offset + Number(this.hostElement.paddingTop || 0));
-
+    const shouldBeSticky =
+      state.scrollY > triggerPoint - (offset + Number(this.hostElement.paddingTop || 0)) + this.getExtraTriggerOffset();
     if (shouldBeSticky && !this._isSticky) {
       this.applySticky(offset);
       this._isSticky = true;
@@ -374,6 +411,10 @@ export class StickyController<T extends StickyElement = StickyElement> implement
       // so getBoundingClientRect() returns correct dimensions.
       this.updateAllActiveFixedTopPositions();
     } else {
+      const layoutHeight = this.reservedHeight || this.measureHeight();
+      if (layoutHeight > 0) {
+        this.hostElement.style.minHeight = `${layoutHeight}px`;
+      }
       this.hostElement.classList.add(...classes, 'bs-is-sticky');
       this.hostElement.style.top = `${offset + Number(this.hostElement.paddingTop || 0)}px`;
     }

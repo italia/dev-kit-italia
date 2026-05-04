@@ -19,6 +19,9 @@ import Dimmer from './pages/Dimmer.svelte';
 import Dropdown from './pages/Dropdown.svelte';
 import Form from './pages/Form.svelte';
 import Forward from './pages/Forward.svelte';
+import Header from './pages/Header.svelte';
+import HeaderCompleteFullExample from './pages/HeaderCompleteFullExample.svelte';
+import HeaderCompleteFullStickyExample from './pages/HeaderCompleteFullStickyExample.svelte';
 import Hero from './pages/Hero.svelte';
 import Icon from './pages/Icon.svelte';
 import Input from './pages/Input.svelte';
@@ -72,6 +75,17 @@ export const AppRoutes = [
   { path: '/dropdown', element: Dropdown, title: 'Dropdown' },
   { path: '/form', element: Form, title: 'Form' },
   { path: '/forward', element: Forward, title: 'Forward' },
+  { path: '/header', element: Header, title: 'Header' },
+  {
+    path: '/header-complete-full-example',
+    element: HeaderCompleteFullExample,
+    title: 'Header Complete Full Example',
+  },
+  {
+    path: '/header-complete-full-sticky-example',
+    element: HeaderCompleteFullStickyExample,
+    title: 'Header Complete Full Sticky Example',
+  },
   { path: '/hero', element: Hero, title: 'Hero' },
   { path: '/icon', element: Icon, title: 'Icon' },
   { path: '/input', element: Input, title: 'Input' },

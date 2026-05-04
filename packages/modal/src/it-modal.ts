@@ -7,6 +7,22 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { type ModalSize, type ModalPosition, type ModalVariant, type ModalEventDetail } from './types.js';
 import styles from './modal.scss';
 
+/**
+ * Componente Modal per finestre di dialogo modali.
+ *
+ * @element it-modal
+ *
+ * @slot trigger - Elemento che apre la modale (es. it-button)
+ * @slot content - Contenuto principale della modale (body)
+ * @slot header-icon - Icona opzionale nell'header
+ * @slot footer - Azioni del footer (pulsanti)
+ *
+ * @fires it-modal-open - Quando la modale si apre
+ * @fires it-modal-close - Quando la modale si chiude
+ *
+ * @prop {string} close-button-placement - Posizione del pulsante di chiusura: `header` (default) o `backdrop` (sopra lo sfondo scuro, utile per menu offcanvas)
+ */
+
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 @customElement('it-modal')
@@ -21,6 +37,8 @@ export class ItModal extends BaseComponent {
 
   @property({ type: String, attribute: 'modal-description', reflect: true }) modalDescription = '';
 
+  @property({ type: Boolean, attribute: 'custom-header', reflect: true }) customHeader = false;
+
   @property({ type: String, reflect: true }) size: ModalSize = '';
 
   @property({ type: String, reflect: true }) position?: ModalPosition;
@@ -30,6 +48,10 @@ export class ItModal extends BaseComponent {
   @property({ type: Boolean, attribute: 'static-backdrop', reflect: true }) staticBackdrop = false;
 
   @property({ type: Boolean, attribute: 'hide-close-button', reflect: true }) hideCloseButton = false;
+
+  @property({ type: String, attribute: 'close-button-placement', reflect: true }) closeButtonPlacement:
+    | 'header'
+    | 'backdrop' = 'header';
 
   @property({ type: String, reflect: true }) variant?: ModalVariant;
 
@@ -480,11 +502,34 @@ export class ItModal extends BaseComponent {
     };
   }
 
+  private _renderCloseButton() {
+    if (this.hideCloseButton || this.variant === 'popconfirm') {
+      return '';
+    }
+
+    return html`<it-button
+      class="btn-close"
+      variant="link"
+      size="lg"
+      part="close-button"
+      exportparts="focusable, button,  button:close-button-button"
+      @click="${() => this.hide()}"
+    >
+      <it-icon name="it-close" size="lg"></it-icon>
+      <span class="visually-hidden">${this.closeLabel}</span>
+    </it-button>`;
+  }
+
   render() {
-    const hasHeader = this.modalTitle || (this._headerSlot?.assignedElements({ flatten: true }).length || 0) > 0;
-    const ariaLabel = !hasHeader ? this.itAriaLabel || undefined : undefined;
+    const hasHeader =
+      (this.modalTitle || this._headerSlot?.assignedElements({ flatten: true }).length > 0) && !this.customHeader;
 
     const enableFocusContent = this.scrollable || this.position === 'left' || this.position === 'right';
+    let ariaLabelledBy = hasHeader ? this._titleId : undefined;
+
+    if (this.itAriaLabel) {
+      ariaLabelledBy = undefined;
+    }
 
     return html`
       <slot name="trigger" @slotchange=${this._onTriggerSlotChange}></slot>
@@ -492,9 +537,9 @@ export class ItModal extends BaseComponent {
         class="${classMap(this._modalClasses)}"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="${ifDefined(hasHeader ? this._titleId : undefined)}"
+        aria-labelledby="${ifDefined(ariaLabelledBy)}"
         aria-describedby="${ifDefined(this._descriptionId)}"
-        aria-label="${ifDefined(ariaLabel)}"
+        aria-label="${ifDefined(this.itAriaLabel || undefined)}"
         aria-hidden="${!this.open}"
         tabindex="-1"
         @click="${this._handleBackdropClick}"
@@ -513,6 +558,7 @@ export class ItModal extends BaseComponent {
           @click="${this._handleDialogClick}"
           part="modal-content-wrapper"
         >
+          ${this.closeButtonPlacement === 'backdrop' ? this._renderCloseButton() : ''}
           <div class="visually-hidden" id="${this._descriptionId}">
             <slot name="description" @slotchange="${this._onHeaderSlotChange}">${this.modalDescription}</slot>
           </div>
@@ -522,20 +568,12 @@ export class ItModal extends BaseComponent {
               part="modal-header"
             >
               <slot name="header-icon"></slot>
-              <h2 id="${this._titleId}" class="modal-title">
-                <slot name="header" @slotchange="${this._onHeaderSlotChange}">${this.modalTitle}</slot>
-              </h2>
-              ${!this.hideCloseButton && this.variant !== 'popconfirm'
-                ? html`<it-button
-                    class="btn-close"
-                    variant="link"
-                    size="lg"
-                    exportparts="focusable, button"
-                    @click="${() => this.hide()}"
-                    ><it-icon name="it-close" size="lg"></it-icon
-                    ><span class="visually-hidden">${this.closeLabel}</span></it-button
-                  >`
-                : ''}
+              ${hasHeader
+                ? html`<h2 id="${this._titleId}" class="modal-title">
+                    <slot name="header" @slotchange="${this._onHeaderSlotChange}">${this.modalTitle}</slot>
+                  </h2>`
+                : html`<div><slot name="header" @slotchange="${this._onHeaderSlotChange}"></slot></div>`}
+              ${this.closeButtonPlacement === 'header' ? this._renderCloseButton() : ''}
             </div>
             <div class="modal-body" tabindex="${enableFocusContent ? '0' : '-1'}" part="focusable modal-body">
               <slot name="content"></slot>
