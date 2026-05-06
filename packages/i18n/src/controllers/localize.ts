@@ -99,8 +99,9 @@ declare global {
   }
 }
 
-window.registerTranslation = registerTranslation;
-
+if (typeof window !== 'undefined') {
+  window.registerTranslation = registerTranslation;
+}
 /**
  * Localize Reactive Controller for components built with Lit
  *
