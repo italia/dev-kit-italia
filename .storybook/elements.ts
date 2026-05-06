@@ -33,6 +33,7 @@ import '../packages/sticky/dist/src';
 import '../packages/tabs/dist/src';
 import '../packages/timeline/dist/src';
 import '../packages/toggle/dist/src';
+import '../packages/toolbar/dist/src';
 import '../packages/tooltip/dist/src';
 import '../packages/transfer/dist/src';
 import '../packages/upload/dist/src';

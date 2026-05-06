@@ -65,6 +65,7 @@ const componentsMenuItems = [
   { label: 'Skiplinks', href: '/src/skiplinks' },
   { label: 'Bottom Nav', href: '/src/bottom-nav' },
   { label: 'Sticky', href: '/src/sticky' },
+  { label: 'Toolbar', href: '/src/toolbar' },
   { label: 'Thumbnav', href: '/src/thumbnav' },
   { label: 'Timeline', href: '/src/timeline' },
   { label: 'Tables', href: '/src/tables' },

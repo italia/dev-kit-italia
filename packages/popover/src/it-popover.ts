@@ -2,7 +2,7 @@ import { type ItButton } from '@italia/button';
 import { BaseComponent } from '@italia/globals';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html, PropertyValues } from 'lit';
-import { computePosition, offset, flip, shift, autoUpdate, arrow, type Placement, size } from '@floating-ui/dom';
+import { computePosition, offset, flip, shift, autoUpdate, arrow, type Placement /* , size */ } from '@floating-ui/dom';
 import styles from './popover.scss';
 
 type PopoverPlacement = Placement;
@@ -130,13 +130,14 @@ export class ItPopover extends BaseComponent {
           offset(this.offset),
           flip({ mainAxis: !this.noFlip, crossAxis: !this.noFlip }),
           shift({ padding: 8 }),
-          size({
-            apply({ rects, elements }) {
-              Object.assign(elements.floating.style, {
-                minWidth: `${rects.reference.width}px`,
-              });
-            },
-          }),
+          // Commentato perchè nella toolbar con dropdown che ha position absolute, vogliamo il min-width impostato da css con var(--bsi-dropdown-min-width)
+          // size({
+          //   apply({ rects, elements }) {
+          //     Object.assign(elements.floating.style, {
+          //       minWidth: `${rects.reference.width}px`,
+          //     });
+          //   },
+          // }),
           arrow({ element: this._arrowElement! }),
         ],
       }).then(({ x, y, placement, middlewareData }) => {

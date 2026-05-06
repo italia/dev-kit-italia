@@ -56,15 +56,19 @@
       @if $height != null {
         height: $height;
       }
+
       @if $width != null {
         width: $width;
       }
+
       @if $padding != null {
         padding: $padding;
       }
+
       @if $margin != null {
         margin: $margin;
       }
+
       @if $aspectRatio != null {
         aspect-ratio: $aspectRatio;
       }
@@ -184,7 +188,6 @@ $it-components: (
   'it-autocomplete': (
     height: 74px,
     attr: 'label',
-
     padding: 1rem,
   ),
   'it-megamenu': (
@@ -211,6 +214,16 @@ $it-components: (
   'it-tab-panel': (
     height: 100%,
     display: none !important,
+  ),
+  'it-toolbar': (
+    height: 64px,
+    width: 100%,
+  ),
+  'it-toolbar[size="md"]': (
+    height: 48px,
+  ),
+  'it-toolbar[size="sm"]': (
+    height: 40px,
   ),
   'it-progress': (
     height: 4px,

@@ -43,6 +43,8 @@ import '@italia/transfer/it-transfer-item.js';
 import '@italia/transfer/it-transfer.js';
 import '@italia/skiplinks/it-skiplinks.js';
 import '@italia/sticky/it-sticky.js';
+import '@italia/toolbar/it-toolbar.js';
+import '@italia/toolbar/it-toolbar-item.js';
 import '@italia/thumbnav/it-thumbnav-item.js';
 import '@italia/thumbnav/it-thumbnav.js';
 import '@italia/timeline/it-timeline.js';

@@ -1,0 +1,158 @@
+<template>
+  <h1>Toolbar</h1>
+  <p>Menu di navigazione a icone che può contenere link, pulsanti e dropdown.</p>
+
+  <section>
+    <h2>Toolbar grande</h2>
+    <p>Versione predefinita con icone grandi e label visibili.</p>
+    <div style="position: relative; min-height: 500px; width: 80%; margin: auto; background-color: #ccc; border: 1px solid #ccc;">
+      <it-toolbar it-aria-label="Toolbar grande">
+        <it-toolbar-item active label="Messaggi" icon="it-comment" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Immagini" icon="it-camera" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Documenti" icon="it-file" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Privacy" icon="it-locked"></it-toolbar-item>
+        <it-toolbar-item disabled label="Preferiti" icon="it-star-outline" href="#"></it-toolbar-item>
+      </it-toolbar>
+    </div>
+  </section>
+
+  <section>
+    <h2>Toolbar media</h2>
+    <p>Nella versione media (<code>size="md"</code>) le label vengono nascoste visivamente.</p>
+    <div style="position: relative; min-height: 500px; width: 80%; margin: auto; background-color: #ccc; border: 1px solid #ccc;">
+      <it-toolbar size="md" it-aria-label="Toolbar media">
+        <it-toolbar-item active label="Messaggi" icon="it-comment" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Immagini" icon="it-camera" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Documenti" icon="it-file" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Privacy" icon="it-locked"></it-toolbar-item>
+        <it-toolbar-item disabled label="Preferiti" icon="it-star-outline" href="#"></it-toolbar-item>
+      </it-toolbar>
+    </div>
+  </section>
+
+  <section>
+    <h2>Toolbar piccola</h2>
+    <p>La versione piccola (<code>size="sm"</code>) nasconde anch'essa le label visivamente.</p>
+    <div style="position: relative; min-height: 500px; width: 80%; margin: auto; background-color: #ccc; border: 1px solid #ccc;">
+      <it-toolbar size="sm" it-aria-label="Toolbar piccola">
+        <it-toolbar-item active label="Messaggi" icon="it-comment" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Immagini" icon="it-camera" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Documenti" icon="it-file" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Privacy" icon="it-locked" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Preferiti" icon="it-star-outline" href="#"></it-toolbar-item>
+        <it-toolbar-item disabled label="Downloads" icon="it-download" href="#"></it-toolbar-item>
+      </it-toolbar>
+    </div>
+  </section>
+
+  <section>
+    <h2>Toolbar con divisori</h2>
+    <p>È possibile aggiungere divisori per raggruppare logicamente gli elementi.</p>
+    <div style="position: relative; min-height: 500px; width: 80%; margin: auto; background-color: #ccc; border: 1px solid #ccc;">
+      <it-toolbar it-aria-label="Toolbar con divisori">
+        <it-toolbar-item active label="Messaggi" icon="it-comment" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Immagini" icon="it-camera" href="#"></it-toolbar-item>
+        <it-toolbar-item divider></it-toolbar-item>
+        <it-toolbar-item label="Documenti" icon="it-file" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Privacy" icon="it-locked" href="#"></it-toolbar-item>
+        <it-toolbar-item divider></it-toolbar-item>
+        <it-toolbar-item disabled label="Preferiti" icon="it-star-outline" href="#"></it-toolbar-item>
+      </it-toolbar>
+    </div>
+  </section>
+
+  <section>
+    <h2>Toolbar con badge</h2>
+    <p>
+      I badge indicano contenuti non letti o notifiche. Usa <code>label-extended</code> per una descrizione accessibile
+      agli screen reader.
+    </p>
+    <div style="position: relative; min-height: 500px; width: 80%; margin: auto; background-color: #ccc; border: 1px solid #ccc;">
+      <it-toolbar it-aria-label="Toolbar con badge">
+        <it-toolbar-item
+          active
+          label="Messaggi"
+          icon="it-comment"
+          href="#"
+          badge="1"
+          label-extended="da leggere"
+        ></it-toolbar-item>
+        <it-toolbar-item
+          label="Documenti"
+          icon="it-file"
+          href="#"
+          badge="42"
+          label-extended="da esaminare"
+        ></it-toolbar-item>
+        <it-toolbar-item label="Immagini" icon="it-camera" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Privacy" icon="it-locked" href="#"></it-toolbar-item>
+        <it-toolbar-item disabled label="Preferiti" icon="it-star-outline" href="#"></it-toolbar-item>
+      </it-toolbar>
+    </div>
+  </section>
+
+  <section>
+    <h2>Toolbar con dropdown</h2>
+    <p>
+      Aggiungendo l'attributo <code>dropdown</code> a <code>it-toolbar-item</code> si ottiene un elemento con menu a
+      tendina. Le voci del menu vanno inserite nello slot <code>items</code>.
+    </p>
+    <div style="position: relative; min-height: 500px; width: 80%; margin: auto; background-color: #ccc; border: 1px solid #ccc;">
+      <it-toolbar it-aria-label="Toolbar con dropdown">
+        <it-toolbar-item dropdown active label="Messaggi" icon="it-comment" badge="1" label-extended="da leggere">
+          <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+          <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
+          <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
+        </it-toolbar-item>
+        <it-toolbar-item dropdown label="Immagini" icon="it-camera" badge="42" label-extended="da visualizzare">
+          <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+          <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
+          <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
+        </it-toolbar-item>
+        <it-toolbar-item divider></it-toolbar-item>
+        <it-toolbar-item dropdown label="Documenti" icon="it-file">
+          <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+          <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
+          <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
+        </it-toolbar-item>
+        <it-toolbar-item dropdown label="Privacy" icon="it-locked">
+          <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+          <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
+          <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
+        </it-toolbar-item>
+        <it-toolbar-item dropdown disabled label="Preferiti" icon="it-star-outline"></it-toolbar-item>
+        <it-toolbar-item dropdown label="Altro" icon="it-more-actions" class="no-expand">
+          <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+          <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
+          <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
+        </it-toolbar-item>
+      </it-toolbar>
+    </div>
+  </section>
+
+  <section>
+    <h2>Toolbar verticale</h2>
+    <p>Applicando l'attributo <code>orientation="vertical"</code> gli elementi vengono visualizzati in colonna.</p>
+    <div style="position: relative; min-height: 500px; width: 80%; margin: auto; background-color: #ccc; border: 1px solid #ccc;">
+      <it-toolbar orientation="vertical" it-aria-label="Toolbar verticale">
+        <it-toolbar-item
+          active
+          label="Messaggi"
+          icon="it-comment"
+          badge="42"
+          href="#"
+          label-extended="da leggere"
+        ></it-toolbar-item>
+        <it-toolbar-item dropdown label="Immagini" icon="it-camera" badge="1" label-extended="da visualizzare">
+          <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+          <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
+          <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>
+        </it-toolbar-item>
+        <it-toolbar-item divider></it-toolbar-item>
+        <it-toolbar-item label="Documenti" icon="it-file" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Privacy" icon="it-locked"></it-toolbar-item>
+        <it-toolbar-item disabled label="Preferiti" icon="it-star-outline" href="#"></it-toolbar-item>
+      </it-toolbar>
+    </div>
+  </section>
+</template>

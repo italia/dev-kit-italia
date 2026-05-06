@@ -281,6 +281,31 @@ table.docblock-argstable {
 }
 //------------
 
+//toolbar layout
+.toolbar-layout {
+  position: relative;
+  width: 550px;
+  margin: auto;
+  border: 1px solid #ccc;
+  min-height: 400px;
+  border-radius: 4px;
+  background-color: #eaeaea;
+}
+
+#storybook-root:has(.toolbar-layout) {
+  width: 100%;
+}
+
+.docs-story div[scale='1'],
+.innerZoomElementWrapper {
+  &:has(.toolbar-layout) {
+    display: block !important;
+    width: 100% !important;
+  }
+}
+
+//------------
+
 //per rendere scollabili le storie di affix
 #story--componenti-affix--affix-top,
 #story--componenti-affix--affix-bottom {

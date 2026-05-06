@@ -182,7 +182,7 @@ export class ItDropdownBase extends BaseComponent {
         placement=${this.alignment}
         @it-popover-open=${this._onPopoverOpen}
         @it-popover-close=${this._onPopoverClose}
-        exportparts="focusable, icon, button, dropdown-button, dropdown-icon-expand, popover-content"
+        exportparts="focusable, icon, button, it-icon, it-button, dropdown-button, dropdown-icon-expand, popover-content"
         part="dropdown-popover"
         ?open=${this._popoverOpen}
         offset=${ifDefined(this.offset)}
@@ -200,7 +200,7 @@ export class ItDropdownBase extends BaseComponent {
           @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
           class="dropdown-toggle"
           it-aria-label=${ifDefined(this.itAriaLabel ? this.itAriaLabel : undefined)}
-          exportparts="focusable, button"
+          exportparts="focusable, button, icon, it-icon"
           part="dropdown-button"
           it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
           it-aria-controls=${this._popoverOpen ? this._menuId : nothing}
@@ -214,7 +214,8 @@ export class ItDropdownBase extends BaseComponent {
                 part="dropdown-icon-expand"
               ></it-icon>`
             : ''}
-          ${this.label}
+
+          <slot name="label">${this.label}</slot>
           ${!this.alignment.startsWith('left')
             ? html`<it-icon
                 name="it-expand"
