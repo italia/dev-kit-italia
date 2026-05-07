@@ -41,6 +41,9 @@ export class ItCard extends BaseComponent {
   @property({ type: String, attribute: 'heading-level' })
   headingLevel: CardHeadingLevel = 'h3';
 
+  @property({ type: String, attribute: 'it-class' })
+  itClass: string | undefined;
+
   @queryAssignedElements({ slot: 'title' })
   _titleElements!: HTMLElement[];
 
@@ -157,7 +160,7 @@ export class ItCard extends BaseComponent {
     const hasTitleIcon = this._titleElements.some((el) => el.querySelector('.it-card-title-icon-wrapper') !== null);
     const isInline = this.variant.startsWith('inline');
 
-    const classes = this.composeClass('it-card', 'rounded', shadowClass, borderClass, {
+    const classes = this.composeClass('it-card', 'rounded', shadowClass, borderClass, this.itClass, {
       'it-card-inline': isInline,
       'it-card-inline-reverse': this.variant.endsWith('reverse'),
       'it-card-inline-mini': this.variant.includes('mini'),

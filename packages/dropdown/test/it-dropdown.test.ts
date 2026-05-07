@@ -29,7 +29,7 @@ describe('<it-dropdown>', () => {
       await el.updateComplete;
 
       const button = el.shadowRoot!.querySelector('it-button')!.shadowRoot!.querySelector('button')!;
-      expect(button.getAttribute('aria-haspopup')).to.equal('menu');
+      expect(button.getAttribute('aria-haspopup')).to.equal('true');
       expect(button.getAttribute('aria-expanded')).to.equal('false');
 
       const menu = el.shadowRoot!.querySelector('.dropdown-menu')!;

@@ -1,0 +1,193 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-toolbar.stories';
+
+<Meta of={Stories} />
+
+# Toolbar
+
+<description>Menu di navigazione a icone che può contenere link, pulsanti e dropdown</description>
+
+## Cosa fa
+Il componente `it-toolbar` è un elemento contenitore di link, pulsanti o dropdown.
+È particolarmente utile per realizzare applicazioni molto specifiche, come ad esempio dashboard o strumenti di monitoraggio.
+Consiste in un elenco `<ul>` con tanti elementi `<li>` quante sono le voci richieste.
+Occupa tutta la larghezza del suo contenitore, adattandosi di conseguenza, e può essere di tre dimensioni diverse: grande, media e piccola per meglio adattarsi allo spazio disponibile.
+
+[Approfondisci come e quando usare il componente Toolbar](https://designers.italia.it/design-system/componenti/toolbar/)
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+
+<Controls of={Stories.EsempioInterattivo} />
+
+### Anteprima e attributi del componente `it-toolbar-item`
+Ogni elemento della toolbar, deve essere un componente `it-toolbar-item` che rappresenta un link, un pulsante o un dropdown. Puoi personalizzare ogni elemento modificando i suoi attributi.
+<Canvas of={Stories.ToolbarItemBase} />
+<Controls of={Stories.ToolbarItemBase} />
+
+### Eventi click di `it-toolbar-item`
+Se `it-toolbar-item` viene renderizzato come pulsante, il componente genera internamente un `it-button` nello shadow DOM. Gli attributi inline del tipo `onclick` non vengono forwardati automaticamente a quell'elemento interno.
+
+Per intercettare l'azione di click, aggancia il listener direttamente a `it-toolbar-item` oppure ascolta l'evento custom `it-toolbar-item-click`, emesso dal componente in bubbling.
+
+```html
+<it-toolbar-item label="Messaggi" icon="it-comment"></it-toolbar-item>
+
+<script>
+  const item = document.querySelector('it-toolbar-item');
+
+  item?.addEventListener('click', (event) => {
+    console.log('Click nativo sul componente', event);
+  });
+
+  item?.addEventListener('it-toolbar-item-click', (event) => {
+    console.log('Evento custom della toolbar', event.detail);
+  });
+</script>
+```
+
+## Accessibilità
+I componenti `it-toolbar` e `it-toolbar-item` sono progettati per essere accessibili e conformi agli standard di accessibilità.
+
+Ecco alcune linee guida per garantire che il tuo utilizzo del componente sia accessibile:
+- **Etichette chiare**: Assicurati che ogni elemento all'interno della toolbar (che non sia un elemento divisorio) abbia un'etichetta chiara e descrittiva.
+
+  Utilizza testo visibile impostando l'attributo dedicato `label` ed eventualmente testo aggiuntivo per i soli lettori di schermo tramite l'attributo `label-extended`.
+
+  Se le etichette sono nascoste tramite l'attributo `hide-label` assicurati di fornire una descrizione accessibile tramite gli attributi `label`, `it-aria-label` ed eventualmente `label-extended`.
+
+- Se un elemento della toolbar mostra un badge, imposta sempre l'attributo `label-extended` sul componente `it-toolbar-item` per fornire una descrizione più dettagliata del badge ai lettori di schermo.
+
+## Varianti di dimensione
+
+La Toolbar si adatta automaticamente in larghezza al suo contenitore. Per ottimizzare lo spazio disponibile l'elemento è fornito in tre versioni: grande, media e piccola.
+
+### Toolbar grande
+
+La versione predefinita dell'elemento è quella con icone grandi e label.
+
+<Canvas of={Stories.ToolbarGrande} />
+
+### Toolbar media
+
+Applicando l'attributo `size="md"` alla Toolbar si ottiene una versione di dimensioni medie. In questo caso le label, vengono automaticamente nascoste visivamente dal componente tramite la classe `.visually-hidden`, per rendere disponibile la descrizione agli screen reader.
+
+<Canvas of={Stories.ToolbarMedia} />
+
+### Toolbar piccola
+
+Applicando l'attributo `size="sm"` alla Toolbar si ottiene la versione più piccola. Anche in questo caso le label, vengono automaticamente nascoste visivamente dal componente tramite la classe `.visually-hidden`, per rendere disponibile la descrizione agli screen reader.
+
+<Canvas of={Stories.ToolbarPiccola} />
+
+## Stato degli elementi
+
+### Elemento attivo
+
+Puoi rendere attivo un elemento della Toolbar aggiungendo l'attributo `active` all'elemento `<it-toolbar-item>`.
+
+
+### Elemento disabilitato
+
+Puoi disabilitare un elemento della Toolbar aggiungendo l'attributo `disabled` all'elemento `<it-toolbar-item>`.
+
+Agli elementi disabilitati verranno applicati automaticamente dal componente `<it-toolbar-item>` alcuni accorgimenti relativi all'accessibilità:
+- ai link (`<a>`) verranno aggiunti automaticamente gli attributi HTML `disabled` e `aria-disabled="true"`.
+- al pulsante (`<it-button>`) verrà aggiunto automaticamente l'attributo `disabled` che di conseguenza imposta l'attributo `aria-disabled="true"` al `<button>` generato.
+
+
+## Divisori
+
+Puoi aggiungere degli elementi divisori fra gli elementi inserendo un elemento di tipo `<it-toolbar-item divider></it-toolbar-item>`
+
+Il componente `<it-toolbar-item>` si occuperà di gestire autonomamente gli attributi per l'accessiblità dell'elemento divisorio.
+
+<Canvas of={Stories.ToolbarConDivisori} />
+
+## Con badge
+
+I Badge possono essere utilizzati per contenere numeri al fine di indicare, ad esempio, contenuti non letti.
+
+Utilizza l'attributo `badge` sul componente `it-toolbar-item` per specificare il numero da visualizzare all'interno del badge.
+
+Utilizza l'attributo `label-extended` per fornire una descrizione più dettagliata del badge ai lettori di schermo.
+
+
+<Canvas of={Stories.ToolbarConBadge} />
+
+### Toolbar media e piccola con badge
+Nelle versioni media e piccola della toolbar (`<it-toolbar size="md">` e `<it-toolbar size="sm">`), i Badge non contengono numeri ma possono essere usati come alert generici. Il numero dei contenuti non letti o nuovi va indicato nell'attributo `label-extended` riservato agli screen reader.
+
+<Canvas of={Stories.ToolbarMediaSmallConBadge} />
+
+
+## Toolbar con dropdown
+All’interno della Toolbar è possibile implementare dei pulsanti dropdown con relativo sottomenù.
+
+Aggiungi l'attributo `dropdown` al componente `<it-toolbar-item>` per trasformarlo in un elemento dropdown. Le voci del menu di tipo `<it-dropdown-item>` vanno inserite nello slot dedicato `items` in questo modo:
+
+```html
+<it-toolbar-item dropdown label="Dropdown">
+  <it-dropdown-item slot="items">Voce 1</it-dropdown-item>
+  <it-dropdown-item slot="items">Voce 2</it-dropdown-item>
+</it-toolbar-item>
+```
+
+Se aggiungi la classe `no-expand` al componente `<it-toolbar-item>`, l'icona di espansione del menu non verrà mostrata. Questo è utile quando hai un menu del tipo `altro` o `more` il cui simbolo di espansione è già implicito nell'icona stessa e quindi l'icona di espansione risulterebbe ridondante.
+(Negli esempi sottostanti, nell'elemento 'Altro' è stata rimossa l'icona di espansione del menu tramite la classe `no-expand`).
+
+### Toolbar grande con dropdown
+<Canvas of={Stories.ToolbarDropdown} />
+
+### Toolbar media con dropdown
+<Canvas of={Stories.ToolbarMediumDropdown} />
+
+### Toolbar piccola con dropdown
+<Canvas of={Stories.ToolbarSmallDropdown} />
+
+## Toolbar verticale
+
+Applicando l'attributo `orientation="vertical"` alla Toolbar gli elementi vengono visualizzati in colonna.
+
+<Canvas of={Stories.ToolbarVertical} />
+
+### Toolbar media verticale
+<Canvas of={Stories.ToolbarMediumVertical} />
+
+### Toolbar piccola verticale
+<Canvas of={Stories.ToolbarSmallVertical} />
+
+## Proprietà, metodi ed eventi accessibili via js
+
+Il componente `<it-toolbar-item>` espone le seguenti proprietà, metodi ed eventi accessibili via JavaScript.
+
+### Eventi
+Il componente `<it-toolbar-item>` emette i seguenti eventi custom:
+- `it-toolbar-item-click`, quando l'elemento viene cliccato. L'evento fornisce il dettaglio dell'elemento cliccato (`event.detail`). E'utile soprattuto quando l'elemento renderizza un bottone sul quale è necessario definire un comportamento custom al click.
+
+## Personalizzazione degli stili
+
+Per la personalizzazione degli stili puoi usare i selettori `::part` dedicati.
+
+### Selettori di `it-toolbar`
+
+- `::part(toolbar-container)` — elemento `<nav>` contenitore della toolbar
+- `::part(toolbar-list)` — elemento `<ul>` della lista degli item
+
+### Selettori di `it-toolbar-item`
+
+- `::part(toolbar-item)` — elemento `<li>` wrapper di ogni voce
+- `::part(toolbar-divider)` — aggiunto insieme a `toolbar-item` quando l'elemento è un divisore
+- `::part(toolbar-item-element)` — elemento interno della voce (link, bottone o dropdown)
+- `::part(focusable)` — elemento su cui cade il focus (link o bottone interno)
+- `::part(button)` — bottone interno (solo variante pulsante e dropdown)
+- `::part(icon)` — icona dell'elemento
+- `::part(expand-icon)` — icona di espansione del dropdown (solo variante `dropdown`)
+- `::part(badge-wrapper)` — contenitore del badge
+- `::part(badge)` — elemento `<span>` del badge
+
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
+

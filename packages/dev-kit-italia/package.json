@@ -1,7 +1,7 @@
 {
   "name": "@italia/dev-kit-italia",
   "description": "Bundle dei web components del Design system .italia",
-  "version": "1.0.0-alpha.8",
+  "version": "1.0.0-alpha.9",
   "publishConfig": {
     "access": "public"
   },
@@ -67,6 +67,7 @@
     "@italia/collapse": "workspace:^",
     "@italia/dimmer": "workspace:^",
     "@italia/dropdown": "workspace:^",
+    "@italia/header": "workspace:^",
     "@italia/hero": "workspace:^",
     "@italia/i18n": "workspace:^",
     "@italia/icon": "workspace:^",
@@ -83,12 +84,13 @@
     "@italia/section": "workspace:^",
     "@italia/select": "workspace:^",
     "@italia/skiplinks": "workspace:^",
-    "@italia/sticky": "workspace:^",
     "@italia/stepper": "workspace:^",
-    "@italia/thumbnav": "workspace:^",
+    "@italia/sticky": "workspace:^",
     "@italia/tabs": "workspace:^",
+    "@italia/thumbnav": "workspace:^",
     "@italia/timeline": "workspace:^",
     "@italia/toggle": "workspace:^",
+    "@italia/toolbar": "workspace:^",
     "@italia/tooltip": "workspace:^",
     "@italia/transfer": "workspace:^",
     "@italia/upload": "workspace:^",

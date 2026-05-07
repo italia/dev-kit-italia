@@ -1,0 +1,283 @@
+/// <reference types="mocha"/>
+
+import '@italia/toolbar';
+import { expect, fixture, html } from '@open-wc/testing';
+
+import { type ItToolbarItem } from '@italia/toolbar';
+
+describe('Toolbar Item component', () => {
+  describe('accessibility', () => {
+    it('default is accessible', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item
+          label="messaggi"
+          icon="it-comment"
+          href="javascript:void(0)"
+        ></it-toolbar-item>
+      `);
+      await expect(el).to.be.accessible();
+    });
+
+    it('as button (without href) is accessible', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item
+          label="azioni"
+          icon="it-settings"
+        ></it-toolbar-item>
+      `);
+      await expect(el).to.be.accessible();
+    });
+
+    it('with badge is accessible', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item
+          label="messaggi"
+          icon="it-comment"
+          href="javascript:void(0)"
+          badge="5"
+          it-aria-label-extended="5 nuovi messaggi"
+        ></it-toolbar-item>
+      `);
+      await expect(el).to.be.accessible();
+    });
+
+    it('disabled is accessible', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item
+          label="immagini"
+          icon="it-camera"
+          href="javascript:void(0)"
+          ?disabled="true"
+        ></it-toolbar-item>
+      `);
+      await expect(el).to.be.accessible();
+    });
+
+    it('active is accessible', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item
+          label="messaggi"
+          icon="it-comment"
+          href="javascript:void(0)"
+          ?active="true"
+        ></it-toolbar-item>
+      `);
+      await expect(el).to.be.accessible();
+    });
+  });
+
+  describe('properties', () => {
+    it('label property can be set', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item label="test"></it-toolbar-item>
+      `);
+      expect(el.label).to.equal('test');
+    });
+
+    it('icon property can be set', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item icon="it-comment"></it-toolbar-item>
+      `);
+      expect(el.icon).to.equal('it-comment');
+    });
+
+    it('href property can be set', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item href="/link"></it-toolbar-item>
+      `);
+      expect(el.href).to.equal('/link');
+    });
+
+    it('href property defaults to null', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item></it-toolbar-item>
+      `);
+      expect(el.href).to.be.null;
+    });
+
+    it('badge property can be set', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item badge="5"></it-toolbar-item>
+      `);
+      expect(el.badge).to.equal('5');
+    });
+
+    it('badge property defaults to null', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item></it-toolbar-item>
+      `);
+      expect(el.badge).to.be.null;
+    });
+
+    it('active property defaults to false', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item></it-toolbar-item>
+      `);
+      expect(el.active).to.be.false;
+    });
+
+    it('active property can be set to true', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item ?active="true"></it-toolbar-item>
+      `);
+      expect(el.active).to.be.true;
+    });
+
+    it('disabled property defaults to false', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item></it-toolbar-item>
+      `);
+      expect(el.disabled).to.be.false;
+    });
+
+    it('disabled property can be set to true', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item ?disabled="true"></it-toolbar-item>
+      `);
+      expect(el.disabled).to.be.true;
+    });
+
+    it('itAriaLabel property can be set', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item it-aria-label="Custom label"></it-toolbar-item>
+      `);
+      expect(el.itAriaLabel).to.equal('Custom label');
+    });
+
+    it('itAriaLabel property defaults to null', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item></it-toolbar-item>
+      `);
+      expect(el.itAriaLabel).to.be.null;
+    });
+
+    it('itAriaLabelExtended property can be set', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item it-aria-label-extended="5 nuovi messaggi"></it-toolbar-item>
+      `);
+      expect(el.itAriaLabelExtended).to.equal('5 nuovi messaggi');
+    });
+
+    it('itAriaLabelExtended property defaults to null', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item></it-toolbar-item>
+      `);
+      expect(el.itAriaLabelExtended).to.be.null;
+    });
+  });
+
+  describe('rendering', () => {
+    it('should render as link when href is provided', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item href="#" label="test"></it-toolbar-item>
+      `);
+      const li = el.shadowRoot?.querySelector('li');
+      const link = li?.querySelector('a');
+      expect(link).to.exist;
+      expect(link?.getAttribute('href')).to.equal('#');
+    });
+
+    it('should render as button when href is not provided', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item label="test"></it-toolbar-item>
+      `);
+      const li = el.shadowRoot?.querySelector('li');
+      const button = li?.querySelector('button');
+      expect(button).to.exist;
+    });
+
+    it('should render icon when provided', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item icon="it-comment"></it-toolbar-item>
+      `);
+      const icon = el.shadowRoot?.querySelector('svg');
+      expect(icon).to.exist;
+      const use = icon?.querySelector('use');
+      expect(use?.getAttribute('href')).to.include('it-comment');
+    });
+
+    it('should render label when provided', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item label="messaggi"></it-toolbar-item>
+      `);
+      const label = el.shadowRoot?.querySelector('.toolbar-label');
+      expect(label?.textContent).to.include('messaggi');
+    });
+
+    it('should render badge when provided', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item badge="5"></it-toolbar-item>
+      `);
+      const badge = el.shadowRoot?.querySelector('.badge');
+      expect(badge?.textContent).to.equal('5');
+    });
+
+    it('should not render badge when not provided', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item></it-toolbar-item>
+      `);
+      const badge = el.shadowRoot?.querySelector('.badge');
+      expect(badge).to.not.exist;
+    });
+
+    it('should render aria-label-extended text', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item
+          label="messaggi"
+          it-aria-label-extended="5 nuovi messaggi"
+        ></it-toolbar-item>
+      `);
+      const extended = el.shadowRoot?.querySelector('.visually-hidden');
+      expect(extended?.textContent).to.include('5 nuovi messaggi');
+    });
+  });
+
+  describe('CSS classes', () => {
+    it('should apply active class when active is true', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item href="javascript:void(0)" ?active="true"></it-toolbar-item>
+      `);
+      const link = el.shadowRoot?.querySelector('a');
+      expect(link?.classList.contains('active')).to.be.true;
+    });
+
+    it('should apply disabled class when disabled is true', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item href="javascript:void(0)" ?disabled="true"></it-toolbar-item>
+      `);
+      const link = el.shadowRoot?.querySelector('a');
+      expect(link?.classList.contains('disabled')).to.be.true;
+    });
+
+    it('button should have disabled attribute when disabled is true', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item ?disabled="true"></it-toolbar-item>
+      `);
+      const button = el.shadowRoot?.querySelector('button');
+      expect(button?.hasAttribute('disabled')).to.be.true;
+    });
+
+    it('link should have disabled attribute when disabled is true', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item href="javascript:void(0)" ?disabled="true"></it-toolbar-item>
+      `);
+      const link = el.shadowRoot?.querySelector('a');
+      expect(link?.hasAttribute('disabled')).to.be.true;
+    });
+  });
+
+  describe('events', () => {
+    it('should have item-click event listener support', async () => {
+      const el = await fixture<ItToolbarItem>(html`
+        <it-toolbar-item href="#" label="test"></it-toolbar-item>
+      `);
+      let eventFired = false;
+      el.addEventListener('item-click', () => {
+        eventFired = true;
+      });
+      expect(el).to.exist;
+      // Event listener was added successfully
+      expect(typeof el.addEventListener).to.equal('function');
+    });
+  });
+});

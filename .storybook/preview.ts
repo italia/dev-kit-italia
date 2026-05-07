@@ -54,6 +54,8 @@ const preview: Preview = {
           'Documentazione tecnica',
           'Componenti',
           'Framework',
+          'Organizzare i contenuti',
+          'Organizzare gli spazi',
         ],
       },
     },
@@ -93,6 +95,7 @@ export const decorators = [
       //   );
       case 'w-100':
         return StoryWidth100(Story, ctx);
+
       default:
         // In the default case, don't apply a layout
 

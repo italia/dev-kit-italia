@@ -21,6 +21,9 @@ import Dimmer from './components/Dimmer.vue';
 import Dropdown from './components/Dropdown.vue';
 import Form from './components/Form.vue';
 import Forward from './components/Forward.vue';
+import Header from './components/Header.vue';
+import HeaderCompleteFullExample from './components/HeaderCompleteFullExample.vue';
+import HeaderCompleteFullStickyExample from './components/HeaderCompleteFullStickyExample.vue';
 import Hero from './components/Hero.vue';
 import Icon from './components/Icon.vue';
 import Input from './components/Input.vue';
@@ -48,6 +51,7 @@ import Video from './components/Video.vue';
 import Skiplinks from './components/Skiplinks.vue';
 import Carousel from './components/Carousel.vue';
 import Pagination from './components/Pagination.vue';
+import Toolbar from './components/Toolbar.vue';
 import Upload from './components/Upload.vue';
 import Notification from './components/Notification.vue';
 import Tabs from './pages/Tabs.vue';
@@ -75,6 +79,17 @@ const routes = [
   { path: '/dropdown', name: 'Dropdown', component: Dropdown },
   { path: '/form', name: 'Form', component: Form },
   { path: '/forward', name: 'Forward', component: Forward },
+  { path: '/header', name: 'Header', component: Header },
+  {
+    path: '/header-complete-full-example',
+    name: 'HeaderCompleteFullExample',
+    component: HeaderCompleteFullExample,
+  },
+  {
+    path: '/header-complete-full-sticky-example',
+    name: 'HeaderCompleteFullStickyExample',
+    component: HeaderCompleteFullStickyExample,
+  },
   { path: '/hero', name: 'Hero', component: Hero },
   { path: '/icon', name: 'Icon', component: Icon },
   { path: '/input', name: 'Input', component: Input },
@@ -96,6 +111,7 @@ const routes = [
   { path: '/sticky', name: 'Sticky', component: Sticky },
   { path: '/stepper', name: 'Stepper', component: Stepper },
   { path: '/tables', name: 'Tables', component: Table },
+  { path: '/toolbar', name: 'Toolbar', component: Toolbar },
   { path: '/thumbnav', name: 'Thumbnav', component: Thumbnav },
   { path: '/timeline', name: 'Timeline', component: Timeline },
   { path: '/tabs', name: 'Tabs', component: Tabs },

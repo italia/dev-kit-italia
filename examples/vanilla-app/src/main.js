@@ -44,6 +44,7 @@ const componentsMenuItems = [
   { label: 'Dropdown', href: '/src/dropdown' },
   { label: 'Form', href: '/src/form' },
   { label: 'Forward', href: '/src/forward' },
+  { label: 'Header', href: '/src/header' },
   { label: 'Hero', href: '/src/hero' },
   { label: 'Icon', href: '/src/icon' },
   { label: 'Input', href: '/src/input' },
@@ -62,21 +63,23 @@ const componentsMenuItems = [
   { label: 'Select', href: '/src/select' },
   { label: 'Sidebar', href: '/src/sidebar' },
   { label: 'Skiplinks', href: '/src/skiplinks' },
-  { label: 'Bottom Nav', href: '/src/bottom-nav' },
-  { label: 'Sticky', href: '/src/sticky' },
   { label: 'Stepper', href: '/src/stepper' },
-  { label: 'Thumbnav', href: '/src/thumbnav' },
-  { label: 'Timeline', href: '/src/timeline' },
+  { label: 'Sticky', href: '/src/sticky' },
   { label: 'Tables', href: '/src/tables' },
   { label: 'Tabs', href: '/src/tabs' },
+  { label: 'Thumbnav', href: '/src/thumbnav' },
+  { label: 'Timeline', href: '/src/timeline' },
   { label: 'Toggle', href: '/src/toggle' },
-  { label: 'Transfer', href: '/src/transfer' },
+  { label: 'Toolbar', href: '/src/toolbar' },
   { label: 'Tooltip', href: '/src/tooltip' },
+  { label: 'Transfer', href: '/src/transfer' },
   { label: 'Upload', href: '/src/upload' },
   { label: 'Video', href: '/src/video' },
 ];
 
-document.querySelector('#app-header').innerHTML = `
+const appHeader = document.querySelector('#app-header');
+if (appHeader) {
+  appHeader.innerHTML = `
   <div class="app-header bg-primary">
     <div class="container">
       <a href="https://vite.dev" target="_blank">
@@ -114,8 +117,11 @@ document.querySelector('#app-header').innerHTML = `
     </div>
   </div>
 `;
+}
 
-document.querySelector('#app-footer').innerHTML = `
+const appFooter = document.querySelector('#app-footer');
+if (appFooter) {
+  appFooter.innerHTML = `
   <footer class="it-footer">
     <div class="it-footer-main">
       <div class="container">
@@ -278,3 +284,4 @@ document.querySelector('#app-footer').innerHTML = `
     </div>
   </footer>
 `;
+}

@@ -19,6 +19,7 @@ interface CardProps {
   headingLevel?: CardHeadingLevel;
   shadow?: CardShadow;
   border?: '0';
+  'it-class'?: string;
 }
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
@@ -73,6 +74,11 @@ const meta = {
       type: 'string',
       options: [undefined, '0'],
       description: 'Imposta il valore 0 per rimuovere il bordo della card.',
+    },
+    'it-class': {
+      type: 'string',
+      description:
+        "Aggiunge classi custom alla card generata. Utile per impostare padding custom all'interno della Card.",
     },
     // scrollLimit: {
     //   name: 'scroll-limit',
@@ -131,6 +137,7 @@ export const EsempioInterattivo: Story = {
       heading-level=${ifDefined(args.headingLevel)}
       shadow=${ifDefined(args.shadow)}
       border=${ifDefined(args.border)}
+      it-class=${ifDefined(args['it-class'])}
     >
       <a slot="title" href="#">Titolo del contenuto</a>
       <figure slot="image" class="figure img-full">

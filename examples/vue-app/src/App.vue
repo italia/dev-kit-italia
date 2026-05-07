@@ -1,10 +1,17 @@
 <script setup>
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 import { AppRoutes } from './routes';
 import Footer from './components/Footer.vue';
+
+const route = useRoute();
+const isFullHeaderPage = computed(() =>
+  ['/header-complete-full-example', '/header-complete-full-sticky-example'].includes(route.path),
+);
 </script>
 
 <template>
-
+  <template v-if="!isFullHeaderPage">
     <header class="app-header bg-primary">
       <div class="container">
         <div>
@@ -35,11 +42,15 @@ import Footer from './components/Footer.vue';
         </nav>
       </div>
     </header>
+  </template>
 
-  <main class="container my-4">
+  <main :class="isFullHeaderPage ? '' : 'container my-4'">
     <router-view></router-view>
   </main>
-  <Footer />
-  <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
+
+
+    <Footer />
+    <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
+
 </template>
 
