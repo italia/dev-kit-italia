@@ -244,13 +244,11 @@ export class ItStepper extends BaseComponent {
     const isActive = index === this._currentIndex;
     const isConfirmed = index < this._currentIndex;
 
-    const liClasses = [
-      isActive ? 'active' : '',
-      isConfirmed ? 'confirmed' : '',
-      this.headerVariant === 'numbers' && isActive ? 'no-line' : '',
-    ]
-      .filter(Boolean)
-      .join(' ');
+    const liClasses = this.composeClass({
+      active: isActive,
+      confirmed: isConfirmed,
+      'no-line': this.headerVariant === 'numbers' && isActive,
+    });
 
     const confirmedIcon = html`
       <it-icon class="icon steppers-success" name="it-check" aria-hidden="true"></it-icon>
@@ -421,7 +419,12 @@ export class ItStepper extends BaseComponent {
                   ?disabled=${isPrevDisabled}
                   @click=${this._handlePrev}
                 >
-                  <it-icon class="icon" name="it-chevron-left" color=${this.dark ? 'inverse' : 'primary'}></it-icon>
+                  <it-icon
+                    class="icon"
+                    name="it-chevron-left"
+                    color=${this.dark ? 'inverse' : 'primary'}
+                    size="sm"
+                  ></it-icon>
                   ${this.prevLabel}
                 </button>
 
@@ -444,7 +447,12 @@ export class ItStepper extends BaseComponent {
                         @click=${this._handleNext}
                       >
                         ${this.nextLabel}
-                        <it-icon class="icon" name="it-chevron-right" color="inverse"></it-icon>
+                        <it-icon
+                          class="icon"
+                          name="it-chevron-right"
+                          color=${this.dark ? 'primary' : 'inverse'}
+                          size="sm"
+                        ></it-icon>
                       </button>
                     `}
               </nav>

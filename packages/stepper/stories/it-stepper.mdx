@@ -5,20 +5,22 @@ import * as Stories from './it-stepper.stories';
 
 # Stepper
 
-<description>Indicatore di avanzamento che guida l'utente in una procedura suddivisa in passaggi sequenziali</description>
+<description>Elementi di navigazione che mostrano l'avanzamento dell'utente all'interno di una procedura complessa e permettono di navigare tra i vari passaggi di interazione</description>
 
 ## Cosa fa
 
 Il componente `it-stepper` mostra lo stato di avanzamento di una procedura composta da più passaggi logici.
 Ogni passaggio viene definito con un elemento `it-stepper-step` inserito all'interno del componente.
 
-Lo stepper è composto da intestazione, area contenuto e navigazione. Puoi mostrare tutte le aree insieme oppure nasconderne alcune quando devi riprodurre solo l'intestazione, solo l'avanzamento o un flusso con salvataggio e conferma.
+Lo stepper è composto da intestazione, area contenuto e navigazione.
+Puoi mostrare tutte le aree insieme oppure nasconderne alcune quando devi riprodurre solo l'intestazione, solo l'avanzamento o un flusso con salvataggio e conferma.
 
 [Approfondisci come e quando usare il componente Stepper](https://designers.italia.it/design-system/componenti/steppers/)
 
 ## Anteprima e attributi del componente
 
-Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente.
+Per vedere come cambia il codice, clicca su **Show code**.
 
 <Canvas of={Stories.EsempioInterattivo} />
 
@@ -36,7 +38,8 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Intestazione
 
-L'intestazione può essere personalizzata tramite l'attributo `header-variant`. Sono disponibili tre varianti.
+L'intestazione può essere personalizzata tramite l'attributo `header-variant`.
+Sono disponibili tre varianti.
 
 ### Solo testo
 
@@ -46,39 +49,48 @@ La variante predefinita (`text`) mostra l'etichetta di ciascun passo e il suo st
 
 ### Testo e icone
 
-La variante `icons` mostra un'icona prima dell'etichetta di ciascun passo. Per ogni `it-stepper-step` puoi specificare il nome dell'icona tramite l'attributo `icon`, ad esempio `it-calendar`, `it-lock` o `it-settings`.
+La variante `icons` mostra un'icona prima dell'etichetta di ciascun passo.
+Per ogni `it-stepper-step` puoi specificare il nome dell'icona tramite l'attributo `icon`, ad esempio `it-calendar`, `it-lock` o `it-settings`.
 
 <Canvas of={Stories.TestoEIcone} />
 
 ### Testo e numeri
 
-La variante `numbers` mostra il numero ordinale del passo all'interno di un cerchio. I passi confermati mostrano una spunta al posto del numero.
+La variante `numbers` mostra il numero ordinale del passo all'interno di un cerchio.
+I passi confermati mostrano una spunta al posto del numero.
 
 <Canvas of={Stories.TestoENumeri} />
 
-## Navigazione e avanzamento
+## Navigazione degli step
 
-La barra di navigazione contiene i pulsanti "Indietro" e "Avanti". Le etichette possono essere personalizzate tramite gli attributi `prev-label` e `next-label`.
+La barra di navigazione contiene i pulsanti "Indietro" e "Avanti".
+Le etichette possono essere personalizzate tramite gli attributi `prev-label` e `next-label`.
 
-Puoi navigare anche via JavaScript tramite i metodi pubblici `next()` e `prev()`, oppure modificando l'attributo `current`. Ogni cambio di step emette un evento `it-stepper-change` con `detail.step` e `detail.prevStep`.
+Puoi navigare anche via JavaScript tramite i metodi pubblici `next()` e `prev()`, oppure modificando l'attributo `current`.
+Ogni cambio di step emette un evento `it-stepper-change` con `detail.step` e `detail.prevStep`.
 
-Puoi nascondere singole aree con `hide-header`, `hide-content` e `hide-nav`. L'attributo `total-steps` imposta il totale usato da indice mobile, progress bar e pallini. Se non viene impostato, il totale coincide con il numero di elementi `it-stepper-step` presenti nello slot.
+Puoi nascondere singole aree con `hide-header`, `hide-content` e `hide-nav`.
+L'attributo `total-steps` imposta il totale usato da indice mobile, progress bar e pallini.
+Se non viene impostato, il totale coincide con il numero di elementi `it-stepper-step` presenti nello slot.
 
 ### Progress bar
 
-Imposta `mobile-progress="bar"` per mostrare una barra di progresso tra i pulsanti di navigazione. Per impostazione predefinita l'indicatore segue il comportamento Bootstrap Italia ed è visibile solo su mobile.
+Imposta `mobile-progress="bar"` per mostrare una barra di progresso tra i pulsanti di navigazione.
+Per impostazione predefinita l'indicatore segue il comportamento Bootstrap Italia ed è visibile solo su mobile.
 
 <Canvas of={Stories.ProgressBar} />
 
 ### Pallini
 
-Imposta `mobile-progress="dots"` per mostrare dei pallini indicatori tra i pulsanti di navigazione. I pallini completati vengono evidenziati e il pallino corrente espone testo accessibile.
+Imposta `mobile-progress="dots"` per mostrare dei pallini indicatori tra i pulsanti di navigazione.
+I pallini completati vengono evidenziati e il pallino corrente espone testo accessibile.
 
 <Canvas of={Stories.Pallini} />
 
 ## Salva
 
-Per aggiungere un'area di salvataggio sotto la barra di navigazione, usa l'attributo `save-label`. Quando l'utente clicca sul pulsante di salvataggio, il componente emette l'evento `it-stepper-save`.
+Per aggiungere un'area di salvataggio sotto la barra di navigazione, usa l'attributo `save-label`.
+Quando l'utente clicca sul pulsante di salvataggio, il componente emette l'evento `it-stepper-save`.
 
 Il titolo e la descrizione dell'area possono essere personalizzati tramite `save-title` e `save-description`.
 
@@ -86,7 +98,8 @@ Il titolo e la descrizione dell'area possono essere personalizzati tramite `save
 
 ## Conferma
 
-Imposta `show-confirm` per sostituire il pulsante "Avanti" con il pulsante "Conferma". Quando l'utente clicca sul pulsante, il componente emette l'evento `it-stepper-confirm`.
+Aggiungi l'attributo `show-confirm` per sostituire il pulsante "Avanti" con il pulsante "Conferma".
+Quando l'utente clicca sul pulsante, il componente emette l'evento `it-stepper-confirm`.
 
 <Canvas of={Stories.Conferma} />
 
@@ -102,7 +115,8 @@ Le varianti dell'intestazione sono disponibili anche su sfondo scuro.
 
 ## Personalizzazione degli stili
 
-Il componente usa gli stili e le variabili tokenizzate di Bootstrap Italia. Per personalizzazioni locali puoi usare il selettore `::part` con questi valori:
+Il componente usa gli stili e le variabili tokenizzate di Bootstrap Italia.
+Per personalizzazioni locali puoi usare il selettore `::part` con questi valori:
 
 - `stepper` - contenitore principale.
 - `header` - area intestazione.

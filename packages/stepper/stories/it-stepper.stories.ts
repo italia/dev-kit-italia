@@ -35,13 +35,6 @@ const headerSteps = [
   { label: 'Terzo contenuto', icon: 'it-settings' },
 ];
 
-const defaultSteps = [
-  ...headerSteps,
-  { label: 'Quarto contenuto', icon: 'it-mail' },
-  { label: 'Quinto contenuto', icon: 'it-file' },
-  { label: 'Sesto contenuto', icon: 'it-check' },
-];
-
 const demoStyles = html`
   <style>
     .stepper-reference-demo {
@@ -64,12 +57,7 @@ const demoStyles = html`
       font-size: var(--bsi-font-size-sm);
     }
 
-    .stepper-reference-demo.is-dark {
-      padding: var(--bsi-spacing-l);
-      background: var(--bsi-color-background-inverse);
-    }
-
-    .stepper-reference-demo.is-dark it-stepper::part(content) {
+    .stepper-reference-demo.bg-dark it-stepper::part(content) {
       border-color: var(--bsi-color-border-inverse, var(--bsi-color-border-subtle));
       background: transparent;
       color: var(--bsi-color-text-inverse);
@@ -89,7 +77,7 @@ const demoDecorators: NonNullable<Meta<StepperArgs>['decorators']> = [
     const isDark = stepperDemo.dark ?? context.args.dark;
     const wrapperClasses = [
       'stepper-reference-demo',
-      isDark ? 'is-dark' : '',
+      isDark ? 'bg-dark p-4' : '',
       stepperDemo.stack ? 'stepper-variant-stack' : '',
     ]
       .filter(Boolean)
@@ -102,7 +90,7 @@ const demoDecorators: NonNullable<Meta<StepperArgs>['decorators']> = [
   },
 ];
 
-const renderStepper = (args: StepperArgs, steps = defaultSteps) => html`
+const renderStepper = (args: StepperArgs, steps = headerSteps) => html`
   <it-stepper
     current=${args.current}
     ?dark=${args.dark}
@@ -268,6 +256,7 @@ export default meta;
 
 export const EsempioInterattivo: Story = {
   name: 'Esempio interattivo',
+  tags: ['!dev'],
   parameters: { docs: { canvas: { sourceState: 'shown' } } },
   render: (args) => renderStepper(args),
 };
@@ -275,19 +264,19 @@ export const EsempioInterattivo: Story = {
 export const SoloTesto: Story = {
   name: 'Solo testo',
   args: { 'header-variant': 'text', 'total-steps': 3, 'hide-content': true, 'hide-nav': true },
-  render: (args) => renderStepper(args, headerSteps),
+  render: (args) => renderStepper(args),
 };
 
 export const TestoEIcone: Story = {
   name: 'Testo e icone',
   args: { 'header-variant': 'icons', 'total-steps': 3, 'hide-content': true, 'hide-nav': true },
-  render: (args) => renderStepper(args, headerSteps),
+  render: (args) => renderStepper(args),
 };
 
 export const TestoENumeri: Story = {
   name: 'Testo e numeri',
   args: { 'header-variant': 'numbers', 'total-steps': 3, 'hide-content': true, 'hide-nav': true },
-  render: (args) => renderStepper(args, headerSteps),
+  render: (args) => renderStepper(args),
 };
 
 export const ProgressBar: Story = {
