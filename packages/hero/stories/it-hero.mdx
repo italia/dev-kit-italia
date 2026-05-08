@@ -38,6 +38,7 @@ Puoi facoltativamente estendere la larghezza del componente Hero all’intera fi
 
 - Valuta attentamente l'utilizzo di più hero nella stessa pagina.
 - Nel caso in cui utilizzi il componente Hero con sola immagine, imposta sempre l'attributo `it-aria-label` sul tag `<it-hero>` per annunciare tramite i lettori di schermo di cosa si tratta.
+- Se non imposti l'attributo `it-aria-label`, il componente calcolerà in automatico l'attributo `aria-labelledby` basandosi sul contenuto testuale presente e facendolo puntare al primo heading disponibile. Nei casi in cui non ci siano heading nel testo dell'header, i lettori di schermo annunceranno il componente come "sezione" generica senza ulteriori dettagli, rendendo difficile per gli utenti comprendere il suo scopo o contenuto. Assicurati quindi di includere sempre un heading all'interno del componente Hero o di impostare l'attributo `it-aria-label` per garantire una buona esperienza utente a tutti, compresi quelli che utilizzano tecnologie assistive.
 - Nel caso in cui inserisci contenuti testuali, utilizza per il titolo il livello `h` corretto a seconda del contesto.
 - Nel caso in cui utilizzi il componente Hero nella versione con testo e immagine di sfondo, verifica che l’immagine utilizzata assicuri sempre un adeguato contrasto rispetto al testo.
 
