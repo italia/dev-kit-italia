@@ -87,6 +87,10 @@ dl {
       display: flex;
       width: 100%;
       justify-content: space-between;
+
+      &:focus-visible {
+        display: inline-block;
+      }
     }
   }
 

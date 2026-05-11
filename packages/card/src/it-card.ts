@@ -44,6 +44,9 @@ export class ItCard extends BaseComponent {
   @property({ type: String, attribute: 'it-class' })
   itClass: string | undefined;
 
+  @property({ type: String, attribute: 'actions-aria-label' })
+  actionsAriaLabel?: string;
+
   @queryAssignedElements({ slot: 'title' })
   _titleElements!: HTMLElement[];
 
@@ -246,7 +249,12 @@ export class ItCard extends BaseComponent {
 
     const cardActions = hasActions
       ? html`
-          <div class="it-card-actions" part="actions">
+          <div
+            class="it-card-actions"
+            role="group"
+            part="actions"
+            aria-label=${this.actionsAriaLabel ? this.actionsAriaLabel : 'Link correlati:'}
+          >
             <slot name="actions" @slotchange=${this.handleSlotChange}></slot>
           </div>
         `
