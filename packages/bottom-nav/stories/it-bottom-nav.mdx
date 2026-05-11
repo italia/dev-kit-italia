@@ -8,12 +8,13 @@ import * as BottomNavStories from './it-bottom-nav.stories';
 <description>Barra di navigazione fissa a fondo pagina per dispositivi mobile.</description>
 
 ## Cosa fa
-Usa il componente Bottomnav per fornire una barra di navigazione ancorata al fondo della pagina su dispositivi mobile, come avviene sulla maggior parte delle app mobile.
+Il componente Bottomnav (`it-bottom-nav`) fornisce una barra di navigazione per dispositivi mobili ancorata al fondo della pagina.
+
+[Approfondisci quando e come usare il componente Bottomnav](https://designers.italia.it/design-system/componenti/bottomnav/)
 
 ### Alternative a questo componente
 - Header (in lavorazione): quando vuoi fornire una navigazione di primo livello ancorata in cima al viewport di un sito o una app.
 
-[Approfondisci quando e come usare il componente Bottomnav](https://designers.italia.it/design-system/componenti/bottomnav/)
 
 ## Anteprima e attributi del componente
 
@@ -29,11 +30,11 @@ Il componente `it-bottom-nav` è il contenitore principale e include uno o più 
 Il componente `it-bottom-nav-item` è una singola voce di navigazione e va sempre usato come figlio di `it-bottom-nav`.
 
 Ogni `it-bottom-nav-item` espone uno **slot default** in cui inserire il link di navigazione:
-- Inserisci un normale link `<a href="...">` con al suo interno un'icona e uno `<span class="bottom-nav-label">` per il testo
-- La voce attiva si indica aggiungendo l'attributo `active` sull'elemento `it-bottom-nav-item`
-- Il componente imposta automaticamente `aria-current="page"` sul link della voce attiva
+- inserisci un link `<a href="...">` con al suo interno un'icona e uno `<span class="bottom-nav-label">` per l'etichetta;
+- aggiungi l'attributo `active` a `it-bottom-nav-item` per indicare la voce attiva;
+- il componente imposta automaticamente `aria-current="page"` sul link della voce attiva.
 
-Se utilizzi un framework JavaScript come React, Angular, Svelte o Vue.js, segui le best practice del framework per la gestione della navigazione e dello stato attivo, assicurandoti di applicare l'attributo `active` all'elemento `it-bottom-nav-item` corrispondente alla pagina corrente.
+Se utilizzi framework come React, Angular, Svelte o Vue, segui le convenzioni del framework per gestire la navigazione e lo stato attivo, assicurandoti di applicare l'attributo `active` all'elemento `it-bottom-nav-item` corrispondente alla pagina corrente.
 <div class="callout callout-primary">
   <div class="callout-inner">
     <div class="callout-title">
@@ -51,10 +52,10 @@ Se utilizzi un framework JavaScript come React, Angular, Svelte o Vue.js, segui 
 </div>
 ## Accessibilità
 
-Il componente è progettato per essere accessibile e supporta la navigazione da tastiera e l'uso di screen reader:
+Il componente supporta la navigazione da tastiera e l’utilizzo con lettori di schermo:
 
-- Il componente fornisce automaticamente `aria-current="page"` sul link della voce attiva
-- L'attributo `aria-label` sul `<nav>` è configurabile tramite `it-aria-label` (default: "Navigazione principale")
+- imposta automaticamente `aria-current="page"` sul link della voce attiva;
+- consente di configurare l’attributo `aria-label` dell’elemento `<nav>` tramite `it-aria-label` (valore predefinito: "Navigazione principale").
 
 <div class="callout callout-warning">
   <div class="callout-inner">
@@ -62,7 +63,7 @@ Il componente è progettato per essere accessibile e supporta la navigazione da 
       <span class="text">Accessibilità e semantica</span>
     </div>
     <p>
-      Inserisci il testo descrittivo del link all'interno del tag `<a>` per garantire una corretta semantica e accessibilità.
+      Inserisci sempre un testo descrittivo del link all'interno del tag `<a>` per garantire una navigazione chiara e accessibile.
 </p>
 <p>
       Valorizza sempre l'attributo `href` per rendere il link effettivamente navigabile e semanticamente corretto.
@@ -70,9 +71,11 @@ Il componente è progettato per essere accessibile e supporta la navigazione da 
   </div>
 </div>
 
-## Badge e Alert
+## Badge e alert
 
-Aggiungi uno `<span class="bottom-nav-badge">` o uno `<span class="bottom-nav-alert">` all'interno di un `<div class="badge-wrapper">` posizionato prima dell'icona per indicare notifiche o nuovi contenuti.
+Per segnalare notifiche, nuovi contenuti o aggiornamenti sulle icone delle voci di navigazione, puoi utilizzare badge e alert.
+
+Aggiungi uno `<span class="bottom-nav-badge">` o uno `<span class="bottom-nav-alert">` all'interno di un `<div class="badge-wrapper">` e posizionalo prima dell'icona.
 
 <div class="callout callout-warning">
   <div class="callout-inner">
@@ -80,8 +83,8 @@ Aggiungi uno `<span class="bottom-nav-badge">` o uno `<span class="bottom-nav-al
       <span class="text">Accessibilità</span>
     </div>
     <p>
-      Badge e alert sono nascosti agli screen reader (<code>aria-hidden="true"</code>).
-      Per garantire l'accessibilità aggiungi uno <code>&lt;span class="visually-hidden"&gt;</code>
+      Badge e alert sono nascosti ai lettori di schermo (<code>aria-hidden="true"</code>).
+      Per fornire un’informazione accessibile, aggiungi uno <code>&lt;span class="visually-hidden"&gt;</code>
       all'interno della label con un testo descrittivo, ad esempio "1 messaggio da leggere".
     </p>
   </div>
@@ -94,8 +97,8 @@ Aggiungi uno `<span class="bottom-nav-badge">` o uno `<span class="bottom-nav-al
 
 Per personalizzare gli stili, puoi utilizzare i selettori `::part` dedicati:
 
-- `::part(bottom-nav)`, per il container `<nav>`
-- `::part(bottom-nav-item)`, per ogni singolo item `<li>`
+- `::part(bottom-nav)`, per il container `<nav>`;
+- `::part(bottom-nav-item)`, per ogni singolo item `<li>`.
 
 
 [Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
