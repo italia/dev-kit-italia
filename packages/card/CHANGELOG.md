@@ -1,5 +1,16 @@
 # @italia/card
 
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- [#369](https://github.com/italia/dev-kit-italia/pull/369) [`381996d`](https://github.com/italia/dev-kit-italia/commit/381996d969682981ba0615641f7ac573be0a76c4) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added attribute it-class to it-card component to set additional custom classes on card. Updated hero docs"
+
+- [`fe786d5`](https://github.com/italia/dev-kit-italia/commit/fe786d58fec7212d612baa0b251885dd5ce07fe0) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed examples, and added attribute 'actions-aria-label'
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
 ## 1.0.0-alpha.9
 
 ### Minor Changes

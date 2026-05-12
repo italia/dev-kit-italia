@@ -1,5 +1,14 @@
 # Changelog - Toolbar Component
 
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- [#333](https://github.com/italia/dev-kit-italia/pull/333) [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toolbar component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
 ## [1.0.0-alpha.6] - Initial Release
 
 ### Added

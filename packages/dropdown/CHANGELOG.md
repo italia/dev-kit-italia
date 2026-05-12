@@ -1,5 +1,23 @@
 # @italia/dropdown
 
+## 1.0.0-alpha.10
+
+### Minor Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added offset property to chage offset position of dropdown menu
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- [#333](https://github.com/italia/dev-kit-italia/pull/333) [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toolbar component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/popover@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
 ## 1.0.0-alpha.9
 
 ### Minor Changes
