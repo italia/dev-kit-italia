@@ -1,7 +1,7 @@
 {
   "name": "@italia/transfer",
   "description": "Web component it-transfer del Design system .italia",
-  "version": "1.0.0-alpha.10",
+  "version": "1.0.0-alpha.11",
   "publishConfig": {
     "access": "public"
   },
