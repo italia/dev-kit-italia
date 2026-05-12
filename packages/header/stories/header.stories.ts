@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import '@italia/button';
-import '@italia/dropdown';
-import '@italia/icon';
 
 type HeaderStoryArgs = {
   breakpoint: number;
@@ -22,7 +19,7 @@ const defaultArgs = {
 };
 const meta = {
   title: 'Componenti/Header',
-  tags: ['alpha', 'documentation', 'a11y-ok'],
+  tags: ['alpha', 'web-component', 'a11y-ok'],
   parameters: {
     pageLayout: 'w-100',
   },
