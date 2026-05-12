@@ -8,7 +8,7 @@ on:
 jobs:
   linting:
     runs-on: ubuntu-latest
-    concurrency: ci-test-${{ github.ref }}
+    concurrency: ci-lint-${{ github.ref }}
     steps:
       - uses: actions/checkout@v4
 
