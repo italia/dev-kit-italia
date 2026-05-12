@@ -1,5 +1,17 @@
 # @italia/video
 
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/checkbox@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
 ## 1.0.0-alpha.10
 
 ### Patch Changes

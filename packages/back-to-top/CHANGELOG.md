@@ -1,5 +1,13 @@
 # @italia/back-to-top
 
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
 ## 1.0.0-alpha.10
 
 ### Patch Changes
