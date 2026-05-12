@@ -1,5 +1,15 @@
 # @italia/carousel
 
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`381996d`](https://github.com/italia/dev-kit-italia/commit/381996d969682981ba0615641f7ac573be0a76c4), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fe786d5`](https://github.com/italia/dev-kit-italia/commit/fe786d58fec7212d612baa0b251885dd5ce07fe0)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/card@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+
 ## 1.0.0-alpha.9
 
 ### Patch Changes

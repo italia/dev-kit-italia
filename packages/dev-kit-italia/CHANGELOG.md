@@ -1,5 +1,57 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- [#333](https://github.com/italia/dev-kit-italia/pull/333) [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toolbar component
+
+- Updated dependencies [[`88c1ad8`](https://github.com/italia/dev-kit-italia/commit/88c1ad8b49db4cec7167ba762fb82b0bd86e93fa), [`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`381996d`](https://github.com/italia/dev-kit-italia/commit/381996d969682981ba0615641f7ac573be0a76c4), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321), [`fe786d5`](https://github.com/italia/dev-kit-italia/commit/fe786d58fec7212d612baa0b251885dd5ce07fe0), [`88bdc22`](https://github.com/italia/dev-kit-italia/commit/88bdc22f0a1c2322bf5ebf3d1a7bfaa3fbc83f02)]:
+  - @italia/hero@1.0.0-alpha.10
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/card@1.0.0-alpha.10
+  - @italia/sticky@1.0.0-alpha.10
+  - @italia/dropdown@1.0.0-alpha.10
+  - @italia/megamenu@1.0.0-alpha.10
+  - @italia/popover@1.0.0-alpha.10
+  - @italia/header@1.0.0-alpha.10
+  - @italia/modal@1.0.0-alpha.10
+  - @italia/toolbar@1.0.0-alpha.10
+  - @italia/accordion@1.0.0-alpha.10
+  - @italia/autocomplete@1.0.0-alpha.10
+  - @italia/avatar@1.0.0-alpha.10
+  - @italia/back-to-top@1.0.0-alpha.10
+  - @italia/bottom-nav@1.0.0-alpha.10
+  - @italia/breadcrumbs@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/callout@1.0.0-alpha.10
+  - @italia/carousel@1.0.0-alpha.10
+  - @italia/checkbox@1.0.0-alpha.10
+  - @italia/chip@1.0.0-alpha.10
+  - @italia/collapse@1.0.0-alpha.10
+  - @italia/dimmer@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+  - @italia/input@1.0.0-alpha.10
+  - @italia/navscroll@1.0.0-alpha.10
+  - @italia/notification@1.0.0-alpha.10
+  - @italia/pagination@1.0.0-alpha.10
+  - @italia/progress@1.0.0-alpha.10
+  - @italia/radio@1.0.0-alpha.10
+  - @italia/rating@1.0.0-alpha.10
+  - @italia/section@1.0.0-alpha.10
+  - @italia/select@1.0.0-alpha.10
+  - @italia/skiplinks@1.0.0-alpha.10
+  - @italia/tabs@1.0.0-alpha.10
+  - @italia/timeline@1.0.0-alpha.10
+  - @italia/toggle@1.0.0-alpha.10
+  - @italia/thumbnav@1.0.0-alpha.10
+  - @italia/tooltip@1.0.0-alpha.10
+  - @italia/transfer@1.0.0-alpha.10
+  - @italia/upload@1.0.0-alpha.10
+  - @italia/video@1.0.0-alpha.10
+
 ## 1.0.0-alpha.9
 
 ### Minor Changes
