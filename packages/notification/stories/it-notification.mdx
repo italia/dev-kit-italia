@@ -93,25 +93,24 @@ Il componente adatta automaticamente il posizionamento e l’arrotondamento degl
 
 ## Attivazione tramite codice
 
-
 Puoi mostrare una notifica chiamando il metodo `show` su un elemento `it-notification`.
-Puoi passare come parametro il valore in millisecondi di permanenza della notifica.
-Se non viene specificato viene usato il valore dell'attributo `timeout`, oppure viene usato il valore predefinito di 3 secondi.
-
-Trovi qui sotto due esempi su come usare le notifiche.
 
 ### Notifiche a scomparsa automatica
 
-Questo è il comportamento di default che ottieni quando non imposti l'attributo `dismissable`.
+Se **non** imposti l’attributo `dismissable`, la notifica si chiude automaticamente dopo un intervallo di tempo.
+
+Puoi passare un valore in millisecondi al metodo `show()` per definire la durata della notifica. Se non specifichi alcun valore, viene utilizzata una durata predefinita di 3000 millisecondi (3 secondi).
 
 <Canvas of={Stories.Attivazione} />
 
 ### Notifiche a scomparsa manuale
 
-Questo è un esempio di come rimuovere manualmente le notifiche quando imposti l'attributo `dismissable`.
-Il click sul pulsante di chiusura interno alla notifica è automaticamente configurato per nasconderla.
+Se imposti l’attributo `dismissable`, la notifica non si chiude automaticamente e resta visibile fino alla chiusura manuale da parte dell'utente.
 
-Puoi inoltre controllarne la chiusura dall'esterno programmaticamente, chiamando il metodo `hide` dell'elemento `it-notification`.
+Il pulsante di chiusura interno alla notifica è già configurato per nasconderla.
+
+Puoi anche chiudere la notifica da altri elementi della pagina chiamando il metodo `hide()` sull’elemento it-notification.
+
 
 <Canvas of={Stories.AttivazioneEdEliminazione} />
 
