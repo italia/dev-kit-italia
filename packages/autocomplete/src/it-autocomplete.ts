@@ -378,7 +378,7 @@ export class ItAutocomplete extends FormControl {
 
   render() {
     const showValidation = this.formControlController.submittedOnce || this.customValidation;
-    const inputId = this.id || this.generateId('it-autocomplete');
+    const inputId = `${this.id || this.generateId('it-autocomplete')}-input`;
     const labelId = `${inputId}-label`;
     const listboxId = `${inputId}-listbox`;
     const assistiveHintId = `${inputId}-assistiveHint`;
@@ -408,7 +408,7 @@ export class ItAutocomplete extends FormControl {
             aria-invalid=${ifDefined(this.invalid ? 'true' : undefined)}
             role="combobox"
             aria-autocomplete="list"
-            aria-controls="${listboxId}"
+            aria-controls=${ifDefined(this._isOpen && this._filteredOptions.length > 0 ? listboxId : undefined)}
             aria-expanded="${this._isOpen ? 'true' : 'false'}"
             aria-haspopup="listbox"
             aria-labelledby="${labelId}"
@@ -476,7 +476,7 @@ export class ItAutocomplete extends FormControl {
         </div>
 
         ${this.supportText
-          ? html`<small id="${inputId}-support" class="form-text text-muted"
+          ? html`<small id="${inputId}-support" class="form-text"
               ><slot name="support-text">${this.supportText}</slot></small
             >`
           : nothing}
