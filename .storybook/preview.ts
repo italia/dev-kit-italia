@@ -6,7 +6,7 @@ import prettier from 'prettier-v2';
 import HTMLParser from 'prettier-v2/parser-html';
 import { StoryWidth100 } from './it-decorators';
 import './elements';
-import { version } from '../packages/button/package.json';
+import { version } from '../packages/dev-kit-italia/package.json';
 
 const versionMatch = version.match(/^(\d+)\.(\d+)\.(\d+)(?:-(.+))?$/);
 const [, major, minor, patch, postfix] = versionMatch || ['', '1', '0', '0', ''];
