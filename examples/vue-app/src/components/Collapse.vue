@@ -1,6 +1,6 @@
 <template>
-  <h1>it-collapse</h1>
-  
+  <h1>Collapse</h1>
+
   <p>
     Il componente Collapse permette di mostrare e nascondere contenuti con un'animazione fluida.
   </p>
@@ -8,7 +8,7 @@
   <section>
     <h2>Comportamento base</h2>
     <p>La proprietà <code>as</code> seleziona il tag del trigger di default.</p>
-    
+
     <div class="mb-3">
       <it-collapse as="button" variant="primary">
         <span slot="label">Apri sezione (button)</span>
@@ -31,7 +31,7 @@
   <section>
     <h2>Varianti del trigger</h2>
     <p>Usa l'attributo <code>variant</code> per applicare le varianti Bootstrap Italia ai trigger di Collapse.</p>
-    
+
     <h3>Varianti colore</h3>
     <div class="d-flex flex-column gap-3 mb-4">
       <it-collapse variant="primary" as="button">
@@ -40,35 +40,35 @@
           Contenuto del collapse primary
         </div>
       </it-collapse>
-      
+
       <it-collapse variant="secondary" as="button">
         <span slot="label">Pulsante secondary</span>
         <div slot="content" style="padding: 1.5rem 1rem; background-color: #fff; border: 1px solid black; border-radius:4px;">
           Contenuto del collapse secondary
         </div>
       </it-collapse>
-      
+
       <it-collapse variant="success" as="button">
         <span slot="label">Pulsante success</span>
         <div slot="content" style="padding: 1.5rem 1rem; background-color: #fff; border: 1px solid black; border-radius:4px;">
           Contenuto del collapse success
         </div>
       </it-collapse>
-      
+
       <it-collapse variant="danger" as="button">
         <span slot="label">Pulsante danger</span>
         <div slot="content" style="padding: 1.5rem 1rem; background-color: #fff; border: 1px solid black; border-radius:4px;">
           Contenuto del collapse danger
         </div>
       </it-collapse>
-      
+
       <it-collapse variant="warning" as="button">
         <span slot="label">Pulsante warning</span>
         <div slot="content" style="padding: 1.5rem 1rem; background-color: #fff; border: 1px solid black; border-radius:4px;">
           Contenuto del collapse warning
         </div>
       </it-collapse>
-      
+
       <it-collapse variant="link" as="button">
         <span slot="label">Pulsante link</span>
         <div slot="content" style="padding: 1.5rem 1rem; background-color: #fff; border: 1px solid black; border-radius:4px;">
@@ -85,35 +85,35 @@
           Contenuto del collapse outline primary
         </div>
       </it-collapse>
-      
+
       <it-collapse variant="secondary" :outline="true" as="button">
         <span slot="label">Pulsante outline secondary</span>
         <div slot="content" style="padding: 1.5rem 1rem; background-color: #fff; border: 1px solid black; border-radius:4px;">
           Contenuto del collapse outline secondary
         </div>
       </it-collapse>
-      
+
       <it-collapse variant="success" :outline="true" as="button">
         <span slot="label">Pulsante outline success</span>
         <div slot="content" style="padding: 1.5rem 1rem; background-color: #fff; border: 1px solid black; border-radius:4px;">
           Contenuto del collapse outline success
         </div>
       </it-collapse>
-      
+
       <it-collapse variant="danger" :outline="true" as="button">
         <span slot="label">Pulsante outline danger</span>
         <div slot="content" style="padding: 1.5rem 1rem; background-color: #fff; border: 1px solid black; border-radius:4px;">
           Contenuto del collapse outline danger
         </div>
       </it-collapse>
-      
+
       <it-collapse variant="warning" :outline="true" as="button">
         <span slot="label">Pulsante outline warning</span>
         <div slot="content" style="padding: 1.5rem 1rem; background-color: #fff; border: 1px solid black; border-radius:4px;">
           Contenuto del collapse outline warning
         </div>
       </it-collapse>
-      
+
       <it-collapse variant="link" :outline="true" as="button">
         <span slot="label">Pulsante outline link</span>
         <div slot="content" style="padding: 1.5rem 1rem; background-color: #fff; border: 1px solid black; border-radius:4px;">
@@ -130,14 +130,14 @@
           Contenuto del collapse xs
         </div>
       </it-collapse>
-      
+
       <it-collapse size="sm" variant="primary" as="button">
         <span slot="label">Pulsante sm</span>
         <div slot="content" style="padding: 1.5rem 1rem; background-color: #fff; border: 1px solid black; border-radius:4px;">
           Contenuto del collapse sm
         </div>
       </it-collapse>
-      
+
       <it-collapse size="lg" variant="primary" as="button">
         <span slot="label">Pulsante lg</span>
         <div slot="content" style="padding: 1.5rem 1rem; background-color: #fff; border: 1px solid black; border-radius:4px;">
@@ -150,7 +150,7 @@
   <section>
     <h2>Stato iniziale aperto</h2>
     <p>L'attributo <code>default-open</code> permette di avere il collapse aperto al primo rendering.</p>
-    
+
     <div class="mb-3">
       <it-collapse :default-open="true" as="button">
         <span slot="label">Apri sezione (button)</span>
@@ -173,7 +173,7 @@
   <section>
     <h2>Link come trigger</h2>
     <p>È possibile utilizzare un link come trigger del collapse.</p>
-    
+
     <it-collapse as="a">
       <span slot="label">Link per aprire il collapse</span>
       <div slot="content" style="padding: 1.5rem 1rem; background-color: #fff; border: 1px solid black; border-radius:4px;">
@@ -185,7 +185,7 @@
   <section>
     <h2>Trigger personalizzato</h2>
     <p>È possibile utilizzare un trigger personalizzato inserendo un elemento nello slot <code>trigger</code>.</p>
-    
+
     <it-collapse>
       <button class="my-custom-collapse-button" slot="trigger">
         <span slot="label">Trigger custom</span>

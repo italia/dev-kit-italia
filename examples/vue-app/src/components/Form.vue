@@ -32,7 +32,7 @@ const handleSubmit = (e) => {
 </script>
 
 <template>
-  <h1>it-form</h1>
+  <h1>Form</h1>
 
   <form id="form" @submit="{ handleSubmit }" class="mb-4">
     <it-input id="nome" name="nome">
@@ -88,6 +88,19 @@ const handleSubmit = (e) => {
       </it-checkbox>
     </it-checkbox-group>
 
+    <it-toggle-group required group name="animali" class="mb-4" value='["gatto","topo"]'>
+      <span slot="legend">Animali preferiti - Gruppo di toggle</span>
+      <it-toggle value="cane">
+        <span slot="label">Cane</span>
+      </it-toggle>
+      <it-toggle value="gatto">
+        <span slot="label">Gatto</span>
+      </it-toggle>
+      <it-toggle value="topo">
+        <span slot="label">Topo</span>
+      </it-toggle>
+    </it-toggle-group>
+
     <it-radio-group name="gruppo1" required>
       <span slot="label">Gruppo di radio</span>
       <it-radio id="radio1"  value="opzione1">
@@ -109,6 +122,10 @@ const handleSubmit = (e) => {
       <option value="Value 4">Opzione 4</option>
       <option value="Value 5">Opzione 5</option>
     </it-select>
+
+    <it-toggle id="toggle1" name="toggle1">
+      <span slot="label">Toggle isolato</span>
+    </it-toggle>
 
     <it-input
       id="messaggio"
@@ -139,6 +156,38 @@ const handleSubmit = (e) => {
       strength-meter suggestions required>
         <span slot="label">Campo password</span>
     </it-input>
+    <div class="mb-4">
+      <it-upload
+        id="allegati-basic"
+        name="allegati"
+        required
+        multiple
+        accept="image/*,.pdf"
+        auto-success
+      >
+        <span slot="label">Allega documenti</span>
+      </it-upload>
+    </div>
+
+    <div class="mb-4">
+      <p class="fw-semibold mb-1">Foto profilo (obbligatoria)</p>
+      <it-upload-avatar
+        id="avatar-basic"
+        name="foto-profilo"
+        required
+        alt="Mario Rossi"
+      ></it-upload-avatar>
+    </div>
+
+    <div class="mb-4">
+      <p class="fw-semibold mb-1">Documento (trascina o seleziona, obbligatorio)</p>
+      <it-upload-drag-drop
+        id="documento-basic"
+        name="documento"
+        required
+      ></it-upload-drag-drop>
+    </div>
+
     <it-button type="submit" variant="primary" block> Invia </it-button>
   </form>
 </template>

@@ -1,5 +1,77 @@
 # @italia/popover
 
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- [#333](https://github.com/italia/dev-kit-italia/pull/333) [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toolbar component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+
+## 1.0.0-alpha.9
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+
+## 1.0.0-alpha.8
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+
+## 1.0.0-alpha.7
+
+### Patch Changes
+
+- [`22eb901`](https://github.com/italia/dev-kit-italia/commit/22eb901eae2c2a4cae23b981f39ec838805e2c8c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated docs with link to components
+
+- [#308](https://github.com/italia/dev-kit-italia/pull/308) [`07eea32`](https://github.com/italia/dev-kit-italia/commit/07eea3205e1cdd19ecd2bd069d337003c5c6f730) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-megamenu component
+
+- Updated dependencies [[`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c)]:
+  - @italia/button@1.0.0-alpha.7
+  - @italia/globals@1.0.0-alpha.7
+
+## 1.0.0-alpha.6
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`e556822`](https://github.com/italia/dev-kit-italia/commit/e55682290e80bcfc68cd8d835d96b77abd276b46)]:
+  - @italia/button@1.0.0-alpha.6
+  - @italia/globals@1.0.0-alpha.6
+
+## 1.0.0-alpha.5
+
+### Patch Changes
+
+- [#251](https://github.com/italia/dev-kit-italia/pull/251) [`21e8180`](https://github.com/italia/dev-kit-italia/commit/21e8180e49b83ca2be70d69e952a52d2e563b29e) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated bootstrap-italia and fixed design-tokens
+
+- [#129](https://github.com/italia/dev-kit-italia/pull/129) [`0b53eba`](https://github.com/italia/dev-kit-italia/commit/0b53ebabfead90e66cc621c9e3ed4d1b0296554d) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Popover documentation and global styling
+
+- Updated dependencies [[`57f1319`](https://github.com/italia/dev-kit-italia/commit/57f1319bb9db5d1b4a5811ccf16e46cc09e83e8f), [`f8d05ee`](https://github.com/italia/dev-kit-italia/commit/f8d05eed0c38744e77788499175ec85901c4e092)]:
+  - @italia/globals@1.0.0-alpha.5
+  - @italia/button@1.0.0-alpha.5
+
 ## 1.0.0-alpha.4
 
 ### Patch Changes

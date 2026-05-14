@@ -1,0 +1,26 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/reboot';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/base/utilities';
+
+// Required because progress-spinners extends %progress defined in progress-bars
+@import 'bootstrap-italia/src/scss/components/progress-bars';
+@import 'bootstrap-italia/src/scss/components/progress-donuts';
+@import 'bootstrap-italia/src/scss/components/progress-spinners';
+
+$utilities: (
+  'background-color': map-get($utilities, 'background-color'),
+);
+
+@import 'bootstrap-italia/src/scss/base/utilities/api';
+
+// Allow the track background circle color to be overridden from outside the shadow DOM
+// via CSS custom property. Used by it-upload-drag-drop to show the illustration image
+// through the track area (set --it-progress-donut-track-color: transparent on the host).
+.progress-donut-wrapper::before {
+  background: var(--it-progress-donut-track-color, var(--#{$prefix}color-background-secondary-lighter));
+}

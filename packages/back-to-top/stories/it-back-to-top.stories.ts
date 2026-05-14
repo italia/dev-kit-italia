@@ -34,7 +34,7 @@ const renderComponent = (params: BackToTopProps) => html`
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Back to top',
-  tags: ['a11y-ok', 'web-component', 'alpha'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-back-to-top',
   args: {
     offset: undefined,
@@ -148,6 +148,7 @@ const ScrollToTopTemplate = (params: BackToTopProps, context: { viewMode: string
 
 export const EsempioInterattivo: Story = {
   ...meta,
+  tags: ['!dev'],
   name: 'Esempio interattivo',
   parameters: {
     docs: {

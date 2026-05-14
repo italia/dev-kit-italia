@@ -5,6 +5,55 @@ import '@italia/button';
 import { expect, fixture, html, aTimeout } from '@open-wc/testing';
 import { type ItModal } from '@italia/modal';
 
+const defineTestElement = (
+  tagName: string,
+  renderShadow: (el: HTMLElement, root: ShadowRoot) => void,
+  options?: ShadowRootInit,
+) => {
+  if (customElements.get(tagName)) return;
+
+  customElements.define(
+    tagName,
+    class extends HTMLElement {
+      connectedCallback(): void {
+        if (this.shadowRoot) return;
+        // eslint-disable-next-line wc/attach-shadow-constructor
+        const root = this.attachShadow(options ?? { mode: 'open' });
+        renderShadow(this, root);
+      }
+    },
+  );
+};
+
+defineTestElement(
+  'it-dropdown',
+  (el, root) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = el.getAttribute('label') ?? 'Trigger';
+    root.append(button);
+  },
+  { mode: 'open', delegatesFocus: true },
+);
+
+defineTestElement(
+  'it-megamenu',
+  (el, root) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = el.getAttribute('label') ?? 'Trigger';
+    root.append(button);
+  },
+  { mode: 'open', delegatesFocus: true },
+);
+
+defineTestElement('it-dropdown-item', (el, root) => {
+  const link = document.createElement('a');
+  link.href = '#';
+  link.textContent = el.getAttribute('label') ?? 'Item';
+  root.append(link);
+});
+
 // Helper per simulare pressione tasti
 const pressKey = (element: HTMLElement, key: string, shiftKey = false) => {
   element.dispatchEvent(
@@ -18,17 +67,26 @@ const pressKey = (element: HTMLElement, key: string, shiftKey = false) => {
   );
 };
 
+const getDeepActiveElement = (): HTMLElement | null => {
+  let active = document.activeElement as HTMLElement | null;
+  while (active?.shadowRoot?.activeElement) {
+    active = active.shadowRoot.activeElement as HTMLElement;
+  }
+  return active;
+};
+
 describe('it-modal', () => {
   describe('rendering', () => {
     it('renders with correct default attributes', async () => {
       const el = await fixture<ItModal>(html`
         <it-modal>
+          <it-button slot="trigger">Open Modal</it-button>
           <span slot="header">Test</span>
         </it-modal>
       `);
-
+      await aTimeout(50);
+      await el.updateComplete;
       expect(el).to.exist;
-      expect(el.open).to.be.false;
       expect(el.disableAnimation).to.be.false;
       expect(el.hideCloseButton).to.be.false;
       expect(el.position).to.equal(undefined);
@@ -276,7 +334,7 @@ describe('it-modal', () => {
         </it-modal>
       `);
 
-      expect(el.open).to.be.false;
+      expect(el.open).to.be.undefined;
       el.show();
       await aTimeout(50);
       expect(el.open).to.be.true;
@@ -303,7 +361,7 @@ describe('it-modal', () => {
         </it-modal>
       `);
 
-      expect(el.open).to.be.false;
+      expect(el.open).to.be.undefined;
       el.toggle();
       await aTimeout(50);
       expect(el.open).to.be.true;
@@ -334,10 +392,10 @@ describe('it-modal', () => {
         </it-modal>
       `);
 
-      expect(el.open).to.be.false;
+      expect(el.open).to.be.undefined;
       el.hide();
       await aTimeout(50);
-      expect(el.open).to.be.false;
+      expect(el.open).to.be.undefined;
     });
   });
 
@@ -587,6 +645,122 @@ describe('it-modal', () => {
 
       expect(link).to.exist;
       expect(btn).to.exist;
+    });
+
+    it('includes dropdown and megamenu hosts with delegated focus', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal open disable-animation>
+          <span slot="header">Test</span>
+          <it-dropdown slot="content" label="Apri menu"></it-dropdown>
+          <it-megamenu slot="content" label="Apri megamenu"></it-megamenu>
+          <it-button slot="footer" id="confirm">Confirm</it-button>
+        </it-modal>
+      `);
+      await aTimeout(150);
+
+      const closeBtn = el.shadowRoot?.querySelector('.btn-close') as HTMLElement;
+      const dropdownTrigger = el.querySelector('it-dropdown')?.shadowRoot?.querySelector('button') as HTMLElement;
+      const megamenuTrigger = el.querySelector('it-megamenu')?.shadowRoot?.querySelector('button') as HTMLElement;
+
+      expect(closeBtn).to.exist;
+      expect(dropdownTrigger).to.exist;
+      expect(megamenuTrigger).to.exist;
+
+      closeBtn.focus();
+      await aTimeout(50);
+
+      pressKey(closeBtn, 'Tab');
+      await aTimeout(50);
+      expect(getDeepActiveElement()).to.equal(dropdownTrigger);
+
+      pressKey(dropdownTrigger, 'Tab');
+      await aTimeout(50);
+      expect(getDeepActiveElement()).to.equal(megamenuTrigger);
+    });
+
+    it('tabs from shadow dropdown item to next host', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal open disable-animation>
+          <span slot="header">Test</span>
+          <it-dropdown slot="content" label="Apri menu">
+            <it-dropdown-item label="Link 1"></it-dropdown-item>
+            <it-dropdown-item label="Link 2"></it-dropdown-item>
+          </it-dropdown>
+          <it-megamenu slot="content" label="Apri megamenu"></it-megamenu>
+        </it-modal>
+      `);
+      await aTimeout(150);
+
+      const item2Link = el.querySelectorAll('it-dropdown-item').item(1)?.shadowRoot?.querySelector('a') as HTMLElement;
+      const megamenuTrigger = el.querySelector('it-megamenu')?.shadowRoot?.querySelector('button') as HTMLElement;
+
+      expect(item2Link).to.exist;
+      expect(megamenuTrigger).to.exist;
+
+      item2Link.focus();
+      await aTimeout(50);
+
+      pressKey(item2Link, 'Tab');
+      await aTimeout(50);
+      expect(getDeepActiveElement()).to.equal(megamenuTrigger);
+    });
+
+    it('uses open dropdown host as fallback anchor when active element is unresolved', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal open disable-animation>
+          <span slot="header">Test</span>
+          <it-dropdown slot="content" label="Apri menu"></it-dropdown>
+          <it-megamenu slot="content" label="Apri megamenu"></it-megamenu>
+        </it-modal>
+      `);
+      await aTimeout(150);
+
+      const dropdownHost = el.querySelector('it-dropdown') as HTMLElement;
+      const megamenuTrigger = el.querySelector('it-megamenu')?.shadowRoot?.querySelector('button') as HTMLElement;
+
+      expect(dropdownHost).to.exist;
+      expect(megamenuTrigger).to.exist;
+
+      dropdownHost.setAttribute('data-it-aria-expanded', 'true');
+      (document.activeElement as HTMLElement | null)?.blur?.();
+      await aTimeout(10);
+
+      pressKey(el, 'Tab');
+      await aTimeout(50);
+
+      expect(getDeepActiveElement()).to.equal(megamenuTrigger);
+    });
+
+    it('uses last known focus index when active element is unresolved', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal open disable-animation>
+          <span slot="header">Test</span>
+          <it-dropdown slot="content" label="Apri menu"></it-dropdown>
+          <it-megamenu slot="content" label="Apri megamenu"></it-megamenu>
+        </it-modal>
+      `);
+      await aTimeout(150);
+
+      const dropdownTrigger = el.querySelector('it-dropdown')?.shadowRoot?.querySelector('button') as HTMLElement;
+      const dropdownHost = el.querySelector('it-dropdown') as HTMLElement;
+      const megamenuTrigger = el.querySelector('it-megamenu')?.shadowRoot?.querySelector('button') as HTMLElement;
+
+      expect(dropdownTrigger).to.exist;
+      expect(dropdownHost).to.exist;
+      expect(megamenuTrigger).to.exist;
+
+      // Store a valid focus anchor on dropdown, then simulate an unresolved active element.
+      dropdownTrigger.focus();
+      await aTimeout(20);
+
+      dropdownHost.setAttribute('data-it-aria-expanded', 'false');
+      (document.activeElement as HTMLElement | null)?.blur?.();
+      await aTimeout(10);
+
+      pressKey(el, 'Tab');
+      await aTimeout(50);
+
+      expect(getDeepActiveElement()).to.equal(megamenuTrigger);
     });
   });
 

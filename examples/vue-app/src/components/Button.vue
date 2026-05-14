@@ -7,7 +7,7 @@ const clickHandler = () => {
 </script>
 
 <template>
-  <h1>it-button</h1>
+  <h1>Button</h1>
 
   <it-button variant="primary" size="sm" type="button"> Testo del pulsante </it-button>
   <section>

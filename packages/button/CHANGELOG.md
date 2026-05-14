@@ -1,5 +1,71 @@
 # @italia/button
 
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+## 1.0.0-alpha.9
+
+### Minor Changes
+
+- [#293](https://github.com/italia/dev-kit-italia/pull/293) [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Handle Safari bugs and quirks in it-modal and focus-trap-controller
+
+- [#352](https://github.com/italia/dev-kit-italia/pull/352) [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add upload component
+
+### Patch Changes
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+## 1.0.0-alpha.8
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+## 1.0.0-alpha.7
+
+### Patch Changes
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-progress component
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Removed attribute "icon" from it-button because self-managed
+
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+## 1.0.0-alpha.6
+
+### Patch Changes
+
+- [#299](https://github.com/italia/dev-kit-italia/pull/299) [`e556822`](https://github.com/italia/dev-kit-italia/commit/e55682290e80bcfc68cd8d835d96b77abd276b46) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Enhanced docs
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.6
+
+## 1.0.0-alpha.5
+
+### Patch Changes
+
+- [`f8d05ee`](https://github.com/italia/dev-kit-italia/commit/f8d05eed0c38744e77788499175ec85901c4e092) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated bootstrap-italia and fixed some stories
+
+- Updated dependencies [[`57f1319`](https://github.com/italia/dev-kit-italia/commit/57f1319bb9db5d1b4a5811ccf16e46cc09e83e8f)]:
+  - @italia/globals@1.0.0-alpha.5
+
 ## 1.0.0-alpha.4
 
 ### Patch Changes

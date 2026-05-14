@@ -12,7 +12,7 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  align-items: flex-start;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -24,11 +24,25 @@ body {
 
 .app-header {
   text-align: center;
-  border-bottom: 1px solid currentColor;
   margin-bottom: 2rem;
 }
 
-.app-nav{
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+.app-nav {
   display: flex;
   justify-content: center;
   gap: 1rem;

@@ -17,7 +17,7 @@ interface RatingProps {
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Rating',
-  tags: ['alpha', 'web-component', 'a11y-ok'],
+  tags: ['web-component', 'a11y-ok'],
   component: 'it-rating',
   args: {
     name: 'rating',

@@ -2,6 +2,9 @@ name: Update documentation
 
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - '*'
 
 jobs:
   deploy:

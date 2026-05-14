@@ -1,0 +1,210 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-carousel.stories';
+
+<Meta of={Stories} />
+
+# Carousel
+
+<description>Componente di presentazione per scorrere orizzontalmente una sequenza di elementi, immagini o diapositive di testo</description>
+
+## Cosa fa
+Puoi utilizzare il componente Carousel per presentare una serie di contenuti correlati che non possono essere visualizzati contemporaneamente sullo schermo.
+
+È particolarmente utile per elementi come eventi, notizie o servizi in evidenza.
+
+[Approfondisci come e quando usare il componente Carousel](https://designers.italia.it/design-system/componenti/carousel/)
+
+## Anteprima e attributi del componente
+
+Nella tabella trovi gli attributi per personalizzare l'aspetto e il comportamento del componente. Data la complessità del componente, l'anteprima non verrà aggiornata in tempo reale al variare degli attributi.
+
+Per comprendere appieno le funzionalità del componente e delle sue varianti, consulta gli esempi interattivi contenuti nelle altre sezioni di questa pagina.
+
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+## Indicazioni generali
+Il componente `it-carousel` consente di creare una sequenza orizzontale di slide che possono contenere qualsiasi contenuto HTML (card, immagini, video, ecc.).
+Segui queste indicazioni per implementare correttamente il componente:
+- Usa il tag `<it-carousel>` come wrapper principale.
+- Inserisci ogni elemento "slide" all'interno di un elemento `<it-carousel-slide>`, nel suo slot di default.
+- Fornisci un'intestazione nello slot `title` usando un elemento di testata (`h2`–`h6`).
+
+Il componente espone i seguenti attributi:
+- `variant`: per selezionare la variante di layout.
+- `arrows`: per mostrare le frecce di navigazione.
+- `fullscreen`: per visualizzare il Carousel a tutto schermo.
+- `type`: per controllare il comportamento di scorrimento. Se non impostato viene usato il valore di default della variante.
+- `config`: oggetto di configurazione avanzata (passato come stringa JSON nell'attributo). Permette di estendere le opzioni offerte da Splide (perPage, gap, breakpoints, autoplay, interval, ecc.).
+- `autoplay`: abilita il comportamento Play/Pause; di default il componente usa la modalità `pause` (è renderizzato un pulsante Play/Pausa per l'utente).
+- `config`: per personalizzazioni avanzate. Vedi la sezione dedicata per ulteriori informazioni.
+
+## Accessibilità
+Il componente `it-carousel` integra Splide.js e si conforma alle specifiche [W3C Carousel Design Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/). Fai riferimento alla documentazione ufficiale di Splide per una panoramica completa delle [funzionalità di accessibilità](https://splidejs.com/guides/accessibility) offerte dalla libreria.
+
+- Il wrapper principale del componente utilizza `role="region"`, permettendo agli utenti di screen reader di individuare e saltare rapidamente alla sezione.
+- Puoi assegnare un nome accessibile automaticamente: inserendo un elemento di testata (da h2 a h6) nello slot `title`, il componente genera un ID univoco e lo collega al carosello tramite `aria-labelledby`. Se vuoi nascondere l'intestazione visivamente, puoi utilizzare la classe `visually-hidden` sull'elemento di intestazione.
+- Il componente applica l'attributo inert a tutte le slide non visibili. Questo garantisce che gli utenti che usano la tastiera non finiscano mai su elementi "fantasma" o nascosti.
+- I controlli (frecce e paginazione) sono realizzati con elementi `<button>` nativi. Durante la transizione, il componente rimuove preventivamente le restrizioni di focus dalla slide di destinazione per permettere alle tecnologie assistive di seguirne il contenuto.
+- Se attivi l'autoplay, viene reso disponibile un pulsante di Play/Pausa dedicato. Il componente è configurato in modalità "pause" di default: il movimento non parte automaticamente, e l'animazione di transizione viene disabilitata se l'utente fa hover o mette a fuoco il carosello, o se ha impostato una preferenza per ridurre le animazioni a livello di sistema operativo/browser.
+- Grazie all'estensione [Intersection](https://splidejs.com/extensions/intersection/), il carosello mette in pausa l'autoplay quando esce dal campo visivo dell'utente, risparmiando risorse e riducendo il rumore cognitivo.
+
+Per garantire un'esperienza utente ottimale ed accessibile, fai attenzione a:
+- Evitare che le transizioni tra i contenuti del carousel siano troppo veloci, per permettere alle persone di assimilare le informazioni.
+- Controllare che il carousel non intralci l'esperienza dell'utente se viene ignorato o non utilizzato.
+- Verificare che le immagini o i contenuti del carousel siano di alta qualità e chiaramente visibili su tutti i dispositivi, e che includano testo alternativo descrittivo.
+- Non utilizzare il carousel come unico mezzo di navigazione sul tuo sito o applicazione.
+- Fornisci sempre un'intestazione chiara e descrittiva per il carousel, in modo che gli utenti di screen reader possano comprendere il suo scopo e il tipo di contenuto che contiene. Se l'intestazione è puramente decorativa, puoi nasconderla visivamente usando la classe `visually-hidden`.
+- Assicurati che il carousel non interferisca con altri elementi interattivi sulla pagina.
+
+## Varianti
+Il componente supporta diverse varianti che possono essere selezionate tramite l'attributo `variant`. Ogni variante è progettata per adattarsi a specifici casi d'uso e
+contesti di design.
+
+Di seguito sono mostrate le varianti disponibili.
+
+### Variante singola
+La variante `single` è progettata per visualizzare un singolo elemento alla volta, con frecce di navigazione per scorrere tra gli elementi.
+<Canvas of={Stories.VarianteSingola} />
+
+### Variante a tre colonne
+La variante `columns` consente di visualizzare più elementi contemporaneamente, organizzati in colonne.
+
+<Canvas of={Stories.Variante3Colonne} />
+
+### Varianti galleria
+Le varianti `gallery-sm` e `gallery-lg` sono progettate per presentare una serie di immagini o contenuti visivi in un formato di galleria.
+
+La variante `gallery-sm` è adatta per gallerie più compatte, mentre la variante `gallery-lg` offre una visualizzazione più ampia e immersiva.
+
+<Canvas of={Stories.VarianteGallerySM} />
+<Canvas of={Stories.VarianteGalleryLG} />
+
+
+## Aggiungere un separatore tra le slide
+
+Puoi aggiungere un separatore verticale visivo tra le slide in tutte le varianti del Carousel utilizzando l'attributo `separator`. Questa opzione è particolarmente utile per migliorare la distinzione visiva tra gli elementi, soprattutto quando il contenuto delle slide è simile o quando si utilizzano varianti che mostrano più elementi contemporaneamente (come `columns`).
+<Canvas of={Stories.Separator} />
+
+## Frecce di navigazione
+Il componente include frecce di navigazione per facilitare lo scorrimento tra gli elementi. Puoi abilitare le frecce di navigazione aggiungendo l'attributo `arrows`.
+
+Le frecce di navigazione sono abilitate/disabilitate durante la navigazione in modo dinamico in base alla posizione corrente all'interno del carosello (ad esempio, la freccia "precedente" è disabilitata quando si è sulla prima slide), al tipo di scorrimento e alla variante selezionata.
+
+
+<Canvas of={Stories.ConFrecce1} />
+
+## Fullscreen
+Per visualizzare il componente a tutto schermo puoi aggiungere l'attributo `fullscreen`.
+Questa opzione è particolarmente utile per le varianti di galleria, ma può essere applicata a qualsiasi variante per creare un'esperienza immersiva.
+<Canvas of={Stories.Fullscreen} />
+
+## Modificare il comportamento di scorrimento
+Puoi modificare il comportamento di scorrimento del Carousel tramite l'attributo `type`. Se valorizzato, questo attributo sovrascrive le impostazioni predefinite della variante selezionata.
+
+I valori disponibili sono:
+
+- `slide`: la transizione sposta le slide lateralmente.
+- `loop`: permette uno scorrimento circolare senza interruzioni tra l'ultima e la prima slide.
+- `fade`: le slide si dissolvono l'una nell'altra offrendo una transizione più morbida.
+
+Se hai bisogno di opzioni di transizione più avanzate (durata, easing, comportamento su breakpoint, ecc.), passa un oggetto compatibile a Splide tramite l'attributo `config`.
+
+Per dettagli completi sulle opzioni e sulle relative impostazioni, consulta la [documentazione ufficiale di Splide](https://splidejs.com/guides/options/#type).
+
+<Canvas of={Stories.TipoScorrimento} />
+
+## Autoplay
+Il componente supporta la funzionalità di autoplay, che consente di far scorrere automaticamente le slide dopo un intervallo di tempo specificato. Per abilitare l'autoplay, puoi utilizzare l'attributo `autoplay`.
+
+Quando viene abilitato l'autoplay, il componente è configurato in modalità "pause" di default: l'animazione di transizione viene disabilitata se l'utente fa hover o mette a fuoco il carosello, o se ha impostato una preferenza per ridurre le animazioni a livello di sistema operativo/browser.
+
+Il tempo di intervallo tra le transizioni può essere personalizzato tramite l'attributo `config`, passando un oggetto compatibile a Splide con la proprietà `interval` (espressa in millisecondi). Di default, l'intervallo è impostato a 5000 ms (5 secondi).
+
+<Canvas of={Stories.Autoplay} />
+
+## Personalizzazione avanzata attraverso l'attributo `config`
+Puoi fornire configurazioni specifiche a Splide, la libreria sottostante che gestisce il comportamento del Carousel valorizzando l'attributo `config`. Questo permette di personalizzare ulteriormente il comportamento del Carousel, ad esempio modificando la velocità di scorrimento, il numero di elementi visualizzati per pagina, o abilitando funzionalità avanzate breakpoints e stili personalizzati.
+
+Dovrai fornire un oggetto di configurazione che rispetti [le opzioni rese disponibili da Splide](https://splidejs.com/guides/options).
+
+In questo esempio, il Carousel è configurato per visualizzare 2 elementi per pagina, abilitare l'autoplay e il loop, e impostare un intervallo di 3 secondi tra le transizioni. È importante consultare la documentazione di Splide per conoscere tutte le opzioni disponibili e assicurarsi che le configurazioni personalizzate siano compatibili con la struttura e il design del Carousel.
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Accessibilità</span>
+    </div>
+    <p>
+      Il seguente esempio viene fornito a scopo illustrativo e potrebbe non essere adatto per tutti i contesti o esigenze di accessibilità.
+    </p>
+
+  </div>
+</div>
+
+```html
+<it-carousel variant="columns" config="{
+      type: 'loop',
+      autoplay: 'pause',
+      interval: 3000,
+      pauseOnHover: true,
+      resetProgress: false,
+      perPage: 2,
+      arrows: true,
+      gap: 16,
+      padding: { left: 8, right: 8 },
+      breakpoints: {
+        560: {
+          perPage: 1,
+          gap: 0,
+          padding: { left: 24, right: 24 },
+          arrows: false,
+        },
+        768: {
+          perPage: 2,
+          gap: 0,
+          padding: { left: 0, right: 0 },
+          arrows: false,
+        },
+        992: {
+          perPage: 3,
+          gap: 0,
+          padding: { left: 0, right: 0 },
+          arrows: false,
+        },
+      },
+    }">
+  <!-- Contenuto del Carousel -->
+</it-carousel>
+```
+
+<Canvas of={Stories.ConfigurazioneAvanzata} />
+
+## Proprietà, Metodi, ed Eventi accessibili via JS
+
+Il componente espone i seguenti metodi e eventi accessibili via JavaScript.
+
+### Metodi
+- `playAutoplay()` — avvia l'autoplay (se configurato).
+- `pauseAutoplay()` — mette in pausa l'autoplay.
+
+### Eventi
+- `it-carousel-play` — emesso quando l'autoplay viene avviato. Evento configurato con `bubbles: true` e `composed: true`. Nel `detail` contiene `{ id: string }` (id della istanza Splide).
+- `it-carousel-pause` — emesso quando l'autoplay viene messo in pausa. Evento configurato con `bubbles: true` e `composed: true`. Nel `detail` contiene `{ id: string }`.
+
+## {Stories.I18n.name}
+<Description of={Stories.I18n}/>
+
+
+## Personalizzazione degli stili
+Per personalizzare l'aspetto del componente `it-carousel` dall'esterno dello shadow DOM puoi utilizzare il selettore `::part()` sui seguenti part esposti dal componente:
+
+- `arrows` — wrapper che contiene i pulsanti freccia (prev/next).
+- `arrow-prev` — il pulsante "precedente".
+- `arrow-next` — il pulsante "successivo".
+- `pagination-track` — il contenitore della paginazione (lista di dot).
+- `pagination-dot` — ogni singolo dot/pulsante della paginazione.
+- `autoplay-toggle` — il bottone toggle Play/Pausa (renderizzato quando `autoplay` è attivo o `config.autoplay` è configurato).
+- `autoplay-play` — icona SVG di Play all'interno del toggle.
+- `autoplay-pause` — icona SVG di Pause all'interno del toggle.
+
+[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).

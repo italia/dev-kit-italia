@@ -1,8 +1,10 @@
+import { html } from 'lit';
 import type { Preview } from '@storybook/web-components-vite';
 import './main.scss';
 import './storybook-styles.scss';
 import prettier from 'prettier-v2';
 import HTMLParser from 'prettier-v2/parser-html';
+import { StoryWidth100 } from './it-decorators';
 import './elements';
 import { version } from '../packages/button/package.json';
 
@@ -45,6 +47,8 @@ const preview: Preview = {
             return input;
           }
         },
+
+        excludeDecorators: true, // permette di mettere dei decorator, e fare in modo che questi non appaiano nella preview del codice
       },
       toc: {
         headingSelector: 'h2',
@@ -63,6 +67,8 @@ const preview: Preview = {
           'Documentazione tecnica',
           'Componenti',
           'Framework',
+          'Organizzare i contenuti',
+          'Organizzare gli spazi',
         ],
       },
     },
@@ -72,7 +78,7 @@ const preview: Preview = {
 export default preview;
 
 export const decorators = [
-  (Story: any) => {
+  (Story: any, ctx: any) => {
     // Usa un effetto per agire sul documento dell'iframe dopo il mount
     // Funziona anche con React o senza (a seconda del setup)
 
@@ -82,6 +88,34 @@ export const decorators = [
         document.documentElement.lang = 'it'; // Cambia "it" con la lingua desiderata
       }
     }, 0); // Lascia tempo all'iframe di caricare
-    return Story();
+
+    const { pageLayout, wrapperClasses } = ctx.parameters;
+
+    switch (pageLayout) {
+      //
+      // case 'page':
+      //   return (
+      //     // Your page layout is probably a little more complex than this
+      //     <div className="page-layout">
+      //       <Story />
+      //     </div>
+      //   );
+      // case 'page-mobile':
+      //   return (
+      //     <div className="page-mobile-layout">
+      //       <Story />
+      //     </div>
+      //   );
+      case 'w-100':
+        return StoryWidth100(Story, ctx);
+
+      default:
+        // In the default case, don't apply a layout
+
+        if (wrapperClasses) {
+          return html`<div class="${wrapperClasses}">${Story()}</div>`;
+        }
+        return Story();
+    }
   },
 ];

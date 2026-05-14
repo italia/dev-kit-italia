@@ -1,5 +1,101 @@
 # @italia/dropdown
 
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+  - @italia/popover@1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### Minor Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added offset property to chage offset position of dropdown menu
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- [#333](https://github.com/italia/dev-kit-italia/pull/333) [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toolbar component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/popover@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+## 1.0.0-alpha.9
+
+### Minor Changes
+
+- [#358](https://github.com/italia/dev-kit-italia/pull/358) [`95cb4d6`](https://github.com/italia/dev-kit-italia/commit/95cb4d62fa58c497960fdf602345dc91afe99e99) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Typography variables changes introduced in bsi recent alphas
+
+- [#352](https://github.com/italia/dev-kit-italia/pull/352) [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add upload component
+
+### Patch Changes
+
+- [`4c41b98`](https://github.com/italia/dev-kit-italia/commit/4c41b982c1f726769e4c3636c46d66d68eceb174) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fixed default role for dropdown
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+  - @italia/popover@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+## 1.0.0-alpha.8
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+  - @italia/popover@1.0.0-alpha.8
+
+## 1.0.0-alpha.7
+
+### Patch Changes
+
+- [`22eb901`](https://github.com/italia/dev-kit-italia/commit/22eb901eae2c2a4cae23b981f39ec838805e2c8c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated docs with link to components
+
+- [#308](https://github.com/italia/dev-kit-italia/pull/308) [`07eea32`](https://github.com/italia/dev-kit-italia/commit/07eea3205e1cdd19ecd2bd069d337003c5c6f730) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-megamenu component
+
+- Updated dependencies [[`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40), [`22eb901`](https://github.com/italia/dev-kit-italia/commit/22eb901eae2c2a4cae23b981f39ec838805e2c8c), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`07eea32`](https://github.com/italia/dev-kit-italia/commit/07eea3205e1cdd19ecd2bd069d337003c5c6f730)]:
+  - @italia/button@1.0.0-alpha.7
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/popover@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+
+## 1.0.0-alpha.6
+
+### Patch Changes
+
+- [`526c4d8`](https://github.com/italia/dev-kit-italia/commit/526c4d8f13a6974d6290f7ca9726fac349218fc5) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed styles
+
+- Updated dependencies [[`e556822`](https://github.com/italia/dev-kit-italia/commit/e55682290e80bcfc68cd8d835d96b77abd276b46)]:
+  - @italia/button@1.0.0-alpha.6
+  - @italia/icon@1.0.0-alpha.6
+  - @italia/globals@1.0.0-alpha.6
+  - @italia/popover@1.0.0-alpha.6
+
+## 1.0.0-alpha.5
+
+### Patch Changes
+
+- [#230](https://github.com/italia/dev-kit-italia/pull/230) [`18e1e61`](https://github.com/italia/dev-kit-italia/commit/18e1e61c9e999713ffc1965a547d08919808dc77) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added input type="time" doc and examples
+
+- Updated dependencies [[`21e8180`](https://github.com/italia/dev-kit-italia/commit/21e8180e49b83ca2be70d69e952a52d2e563b29e), [`57f1319`](https://github.com/italia/dev-kit-italia/commit/57f1319bb9db5d1b4a5811ccf16e46cc09e83e8f), [`0b53eba`](https://github.com/italia/dev-kit-italia/commit/0b53ebabfead90e66cc621c9e3ed4d1b0296554d), [`f8d05ee`](https://github.com/italia/dev-kit-italia/commit/f8d05eed0c38744e77788499175ec85901c4e092)]:
+  - @italia/popover@1.0.0-alpha.5
+  - @italia/globals@1.0.0-alpha.5
+  - @italia/button@1.0.0-alpha.5
+  - @italia/icon@1.0.0-alpha.5
+
 ## 1.0.0-alpha.4
 
 ### Patch Changes

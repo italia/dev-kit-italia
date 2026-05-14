@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import '@italia/icon';
 
 const meta = {
   title: 'Componenti/Overlay',
-  tags: ['documentation', 'alpha', 'a11y-ok'],
+  tags: ['documentation', 'a11y-ok'],
 
   //   parameters: {
   //     docs: {
@@ -41,7 +40,7 @@ export const Esempio: Story = {
     docs: {
       description: {
         story: `
-Il colore predefinito dell’Overlay corrisponde al colore \`primary\`.
+Il colore predefinito dell’overlay corrisponde al colore \`primary\`.
 `,
       },
     },
@@ -81,7 +80,7 @@ export const Nero: Story = {
     docs: {
       description: {
         story: `
-Aggiungendo all’Overlay la classe \`.overlay-black\` si ottiene un overlay di colore nero.
+Per ottnere un overlay di colore nero, aggiungi la classe \`.overlay-black\`.
 `,
       },
     },
@@ -123,10 +122,10 @@ export const ConIcona: Story = {
     docs: {
       description: {
         story: `
-Per ottenere un Overlay con icona centrata in verticale ed orizzontale aggiungere la classe \`.overlay-icon\`.
+Per ottenere un overlay con icona centrata in verticale e orizzontale, aggiungi la classe \`.overlay-icon\`.
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
-<p>Ricordarsi di aggiungere un testo alternativo per screen reader che comunichi lo stesso messaggio dell’icona.</p></div></div>
+<p>Assicurati di fornire un testo alternativo per i lettori di schermo che trasmetta lo stesso significato dell’icona.</p></div></div>
 `,
       },
     },

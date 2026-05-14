@@ -1,58 +1,57 @@
 <script>
+  import { location } from 'svelte-spa-router';
   import Router from './Router.svelte';
   import Footer from './components/Footer.svelte';
   import svelteLogo from './assets/svelte.svg';
   import viteLogo from '/vite.svg';
+  import { AppRoutes } from './routes';
+
+  $: currentPath = ($location ?? '/').split('?')[0];
+  $: isFullHeaderPage =
+    currentPath === '/header-complete-full-example' || currentPath === '/header-complete-full-sticky-example';
 </script>
 
 <main>
-  <header class="app-header">
-    <div>
-      <a href="https://vite.dev" target="_blank">
-        <img src={viteLogo} class="logo" alt="Vite logo" />
-      </a>
-      <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-        <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-      </a>
-    </div>
-    <div class="container">
-      <div>Vite + Svelte</div>
-      <nav class="app-nav">
-        <a href="#/">Homepage</a>
-        <a href="#/accordion">Accordion</a>
-        <a href="#/affix">Affix</a>
-        <a href="#/avatar">Avatar</a>
-        <a href="#/back-to-top">Back to Top</a>
-        <a href="#/badge">Badge</a>
-        <a href="#/button">Button</a>
-        <a href="#/breadcrumbs">Breadcrumbs</a>
-        <a href="#/callout">Callout</a>
-        <a href="#/checkbox">Checkbox</a>
-        <a href="#/chip">Chip</a>
-        <a href="#/collapse">Collapse</a>
-        <a href="#/dropdown">Dropdown</a>
-        <a href="#/form">Form</a>
-        <a href="#/icon">Icon</a>
-        <a href="#/input">Input</a>
-        <a href="#/modal">Modal</a>
-        <a href="#/navscroll">Navscroll</a>
-        <a href="#/overlay">Overlay</a>
-        <a href="#/popover">Popover</a>
-        <a href="#/radio">Radio</a>
-        <a href="#/rating">Rating</a>
-        <a href="#/section">Section</a>
-        <a href="#/sidebar">Sidebar</a>
-        <a href="#/skiplinks">Skiplinks</a>
-        <a href="#/sticky">Sticky</a>
-        <a href="#/video">Video</a>
-      </nav>
-    </div>
-  </header>
-  <main class="container mb-4">
+  {#if !isFullHeaderPage}
+    <header class="app-header bg-primary">
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} class="logo" alt="Vite logo" />
+        </a>
+        <a href="https://svelte.dev" target="_blank" rel="noreferrer">
+          <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
+        </a>
+      </div>
+      <div class="container">
+        <nav class="navbar navbar-expand-lg" aria-label="Menu principale">
+          <div class="navbar-collapsable" id="navbar-A" tabindex="-1">
+            <div class="menu-wrapper justify-content-lg-between">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <it-megamenu label="Componenti" columns="6">
+                    <!-- DROPDOWN LINKS ITEMS -->
+                    {#each AppRoutes as route}
+                      <it-dropdown-item href="#{route.path}">
+                        <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                        {route.title}
+                      </it-dropdown-item>
+                    {/each}
+                  </it-megamenu>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  {/if}
+
+  <main class={isFullHeaderPage ? '' : 'container mb-4'}>
     <Router />
   </main>
+
   <Footer />
-  <it-back-to-top it-aria-label="Torna su"></it-back-to-top>
+  <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
 </main>
 
 <style>
@@ -72,7 +71,6 @@
   }
 
   .app-header {
-    border-bottom: 1px solid currentColor;
     margin-bottom: 2rem;
   }
 

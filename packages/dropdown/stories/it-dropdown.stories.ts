@@ -23,6 +23,8 @@ type DropdownProps = {
   'it-role'?: string;
   dark?: boolean;
   'full-width'?: boolean;
+  offset: number | null;
+  'no-flip'?: boolean;
   'it-aria-label'?: string;
 };
 type Story = StoryObj<DropdownProps>;
@@ -42,6 +44,8 @@ const meta = {
     'it-role': undefined,
     dark: false,
     'full-width': false,
+    offset: undefined,
+    'no-flip': false,
     'it-aria-label': undefined,
   },
   argTypes: {
@@ -88,13 +92,7 @@ const meta = {
       type: 'string',
       table: {},
     },
-    'it-role': {
-      control: 'select',
-      description: 'Ruolo del pulsante (vedi la sezione Accessibilità)',
-      options: ['menu', 'list'],
-      type: 'string',
-      table: { defaultValue: { summary: 'menu' } },
-    },
+
     dark: {
       control: 'boolean',
       description: 'Stile scuro per il menu dropdown',
@@ -105,16 +103,20 @@ const meta = {
       description: 'Imposta la larghezza del menu dropdown al 100% del contenitore',
       table: { defaultValue: { summary: 'false' } },
     },
+    offset: {
+      control: 'number',
+      description: "Imposta l'offset del menu dropdown rispetto al pulsante",
+    },
+    'no-flip': {
+      control: 'boolean',
+      description: 'Disabilita il comportamento di flip del menu dropdown',
+      table: { defaultValue: { summary: 'false' } },
+    },
     'it-aria-label': {
       control: 'text',
       description:
         "Valore per l'attributo `aria-label` del pulsante (obbligatorio per accessibilità se `label` è vuoto)",
       type: 'string',
-    },
-  },
-  parameters: {
-    docs: {
-      source: { excludeDecorators: true },
     },
   },
 } satisfies Meta<DropdownProps>;
@@ -141,6 +143,8 @@ export const Base: Story = {
       it-role=${ifDefined(args['it-role'])}
       ?dark=${args.dark}
       ?full-width=${args['full-width']}
+      offset=${ifDefined(args.offset)}
+      ?no-flip=${args['no-flip']}
       it-aria-label=${ifDefined(args['it-aria-label'])}
     >
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
@@ -285,8 +289,10 @@ export const MenuATuttaLarghezza: Story = {
       it-role=${ifDefined(args['it-role'])}
       ?dark=${args.dark}
       ?full-width=${args['full-width']}
+      ?no-flip=${args['no-flip']}
       style="width: 100%;"
       it-aria-label=${ifDefined(args['it-aria-label'])}
+      offset=${ifDefined(args.offset)}
     >
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item href="#">Azione 2</it-dropdown-item>
@@ -341,7 +347,7 @@ export const MenuIconaSinistra: Story = {
 export const MenuScuro: Story = {
   args: { dark: true },
   render: (args) => html`
-    <it-dropdown label=${args.label} variant=${args.variant} dark>
+    <it-dropdown label=${args.label} variant=${args.variant} dark ?no-flip=${args['no-flip']}>
       <h4 slot="header" class="link-list-heading dropdown-header">Intestazione</h4>
       <it-dropdown-item href="#">Azione 1</it-dropdown-item>
       <it-dropdown-item href="#">Azione 2</it-dropdown-item>

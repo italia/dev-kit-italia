@@ -11,9 +11,9 @@ const handleResize = (event) => {
 </script>
 
 <template>
-  <h1>it-sticky</h1>
+  <h1>Sticky</h1>
   <div style="height: 4000px; background: linear-gradient(#eee, #ccc); padding: 20px;">
-    
+
     <section>
       <h2>Esempio componente it-sticky</h2>
       <p>Scrollare la pagina per vedere l'effetto sticky</p>
@@ -37,9 +37,9 @@ const handleResize = (event) => {
     <section>
       <h2>Esempio componente it-sticky: position-type fixed</h2>
       <p>Scrollare la pagina per vedere l'effetto sticky: vedrai applicate la classi bg-warning w-100 l-0 fornite a sticky-class-name</p>
-      <it-sticky 
-        sticky-class-name="bg-warning w-100 l-0" 
-        position-type="fixed" 
+      <it-sticky
+        sticky-class-name="bg-warning w-100 l-0"
+        position-type="fixed"
         class="w-100 bg-primary p-2 text-white"
       >
         <div class="w-100">Elemento sticky Fixed</div>
@@ -51,25 +51,25 @@ const handleResize = (event) => {
     <section>
       <h2>Esempio componente it-sticky: stackable</h2>
       <p>Scrollare la pagina per vedere l'effetto sticky: vedrai il componenti impilarsi uno sopra l'altro, e l'ultimo mantenere il suo top offset di 50px</p>
-      
+
       <it-sticky class="bg-primary p-2 text-white w-100" stackable>
         <div>Elemento sticky stackable</div>
       </it-sticky>
-      
+
       <div style="height: 500px;"></div>
-      
+
       <it-sticky class="bg-success p-2 text-white w-100" stackable>
         <div>Elemento sticky stackable</div>
       </it-sticky>
-      
+
       <div style="height: 500px;"></div>
-      
+
       <it-sticky class="bg-danger p-2 text-white w-100" stackable>
         <div>Elemento sticky stackable</div>
       </it-sticky>
-      
+
       <div style="height: 500px;"></div>
-      
+
       <it-sticky class="bg-warning p-2 text-white w-100" stackable padding-top="50">
         <div>Elemento sticky stackable con top offset 50px</div>
       </it-sticky>
@@ -80,7 +80,7 @@ const handleResize = (event) => {
     <section>
       <h2>Sticky impilabili con resize</h2>
       <p>Questo esempio mostra più componenti it-sticky con attributo stackable e la gestione dei resize del suo contenitore (ie media query).</p>
-      
+
       <div style="container-type: inline-size; height: 100%; transition: width 0.3s; padding: 1rem;">
         <label for="size">Seleziona la larghezza del contenuto:</label>
         <select
@@ -113,6 +113,20 @@ const handleResize = (event) => {
           </it-sticky>
         </div>
       </div>
+    </section>
+
+    <section>
+      <h2>it-sticky: position bottom fixed</h2>
+      <p>
+        La barra in fondo è fissa dal caricamento della pagina — nessuno scroll necessario.
+        Aggiungendo l'attributo <code>stackable</code> è possibile impilarne più d'una verso l'alto.
+      </p>
+      <it-sticky position="bottom" position-type="fixed" stackable class="bg-primary text-white p-3 w-100">
+        <div class="w-100 text-center">Barra fissa in fondo — primo livello</div>
+      </it-sticky>
+      <it-sticky position="bottom" position-type="fixed" stackable class="bg-success text-white p-2 w-100">
+        <div class="w-100 text-center">Barra fissa in fondo — secondo livello (impilata)</div>
+      </it-sticky>
     </section>
 
   </div>

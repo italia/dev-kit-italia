@@ -1,0 +1,123 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/reboot';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/components/grid';
+@import 'bootstrap-italia/src/scss/components/type';
+
+@import 'bootstrap-italia/src/scss/forms/forms';
+@import 'bootstrap-italia/src/scss/forms/form-control';
+@import 'bootstrap-italia/src/scss/forms/just-validate';
+
+// Import autocomplete styles from bootstrap-italia
+@import 'bootstrap-italia/src/scss/forms/accessible-autocomplete';
+@import 'bootstrap-italia/src/scss/forms/autocomplete';
+
+@import 'bootstrap-italia/src/scss/base/utilities';
+
+$utilities: (
+  'position': map-merge(
+      map-get($utilities, 'position'),
+      (
+        'values': absolute relative,
+      )
+    ),
+  'width': map-merge(
+      map-get($utilities, 'width'),
+      (
+        'values': (
+          100: 100%,
+        ),
+      )
+    ),
+  'display': map-merge(
+      map-get($utilities, 'display'),
+      (
+        'values': none block,
+      )
+    ),
+);
+
+@import 'bootstrap-italia/src/scss/base/utilities/api';
+
+// Custom styles for web component
+:host {
+  display: block;
+  --autocomplete-min-width: 300px;
+}
+
+.autocomplete-wrapper {
+  position: relative;
+}
+
+.autocomplete-combobox-wrapper {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+
+  input {
+    flex: 1;
+  }
+}
+
+.autocomplete-input-wrapper {
+  position: relative;
+}
+
+.autocomplete-listbox {
+  position: absolute;
+  z-index: 1000;
+  top: 100%;
+  right: 0;
+  left: 0;
+  max-height: 300px;
+  padding: 0;
+  border: 1px solid var(--#{$prefix}color-border-subtle);
+  border-top: none;
+  margin: 0;
+  background-color: var(--#{$prefix}color-background-inverse);
+  border-bottom-left-radius: var(--#{$prefix}radius-smooth);
+  border-bottom-right-radius: var(--#{$prefix}radius-smooth);
+  box-shadow: var(--#{$prefix}elevation-high);
+  list-style: none;
+  overflow-y: auto;
+}
+
+.autocomplete-option {
+  padding: var(--#{$prefix}spacing-xs) var(--#{$prefix}spacing-m);
+  color: var(--#{$prefix}color-text-secondary);
+  cursor: pointer;
+  font-size: var(--#{$prefix}body-font-size);
+  transition:
+    background-color var(--#{$prefix}transition-instant),
+    color var(--#{$prefix}transition-instant);
+
+  &:hover,
+  &.active {
+    background-color: var(--#{$prefix}color-background-primary-lighter);
+    color: var(--#{$prefix}color-text-primary);
+    font-weight: bold;
+    outline: 2px solid var(--#{$prefix}color-outline-focus);
+    outline-offset: -2px;
+  }
+
+  &:focus {
+    outline: 2px solid var(--#{$prefix}color-outline-focus);
+    outline-offset: -2px;
+  }
+}
+
+.invalid-feedback {
+  display: block;
+  margin-top: var(--#{$prefix}spacing-3xs);
+  color: var(--#{$prefix}color-text-danger);
+  font-size: var(--#{$prefix}label-font-size-xs);
+}
+
+.required {
+  margin-left: var(--#{$prefix}spacing-4xs);
+  color: var(--#{$prefix}color-text-danger);
+}

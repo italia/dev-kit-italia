@@ -38,6 +38,28 @@ $utilities: (
 // Host styles
 :host {
   display: block;
+  --it-focus-ring-safari-fix: none;
+}
+
+/* Rimuovi il flash visivo solo durante l'apertura programmata */
+[part='modal']:focus {
+  box-shadow: var(--it-focus-ring-safari-fix) !important;
+  outline: var(--it-focus-ring-safari-fix) !important;
+}
+
+// Impedisce a Safari di mostrare il ring di focus sul container
+// o sui figli quando il focus è indotto da script
+[role='dialog']:focus,
+[role='dialog']:focus-visible,
+.btn-close:focus:not(:focus-visible) {
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+// Mantieni il focus visibile SOLO se l'utente sta effettivamente
+// usando il tasto TAB (Accessibilità garantita)
+.btn-close:focus-visible {
+  outline: 2px solid var(--it-focus-color) !important;
 }
 
 // Nascondi modal e backdrop quando chiuso (tramite attributo open)
@@ -73,12 +95,22 @@ $utilities: (
   overflow-y: auto;
 }
 
+:host([close-button-placement='backdrop']) {
+  .btn-close[part~='close-button'] {
+    --#{$prefix}icon-default: white;
+    position: absolute;
+    top: 1rem;
+    right: -2.5rem;
+  }
+}
+
 .it-dialog-scrollable {
   overflow-y: hidden;
 }
 
 .modal-dialog {
   height: fit-content;
+
   @media (min-width: 768px) {
     margin: 64px auto;
   }
@@ -108,17 +140,3 @@ $utilities: (
   position: fixed;
   right: 0;
 }
-// // Fix per il focus trap - assicura che gli elementi siano focusabili
-// .modal-content {
-//   &:focus {
-//     outline: none;
-//   }
-// }
-
-// // Migliora l'accessibilità del pulsante di chiusura
-// .btn-close {
-//   &:focus-visible {
-//     outline: 2px solid var(--#{$prefix}focus-ring-color, #{$primary});
-//     outline-offset: 2px;
-//   }
-// }

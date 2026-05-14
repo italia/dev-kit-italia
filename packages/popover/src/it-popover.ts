@@ -2,7 +2,7 @@ import { type ItButton } from '@italia/button';
 import { BaseComponent } from '@italia/globals';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html, PropertyValues } from 'lit';
-import { computePosition, offset, flip, shift, autoUpdate, arrow, type Placement, size } from '@floating-ui/dom';
+import { computePosition, offset, flip, shift, autoUpdate, arrow, type Placement /* , size */ } from '@floating-ui/dom';
 import styles from './popover.scss';
 
 type PopoverPlacement = Placement;
@@ -16,6 +16,10 @@ export class ItPopover extends BaseComponent {
   @property({ type: Boolean }) controlled = false;
 
   @property({ type: String }) placement: PopoverPlacement = 'bottom-start';
+
+  @property({ type: Number }) offset: number = 12;
+
+  @property({ type: Boolean, attribute: 'no-flip' }) noFlip: boolean = false;
 
   @query('slot[name="trigger"]') private _triggerSlot!: HTMLSlotElement;
 
@@ -123,16 +127,17 @@ export class ItPopover extends BaseComponent {
       computePosition(this._triggerElement, this._contentElement, {
         placement: this.placement,
         middleware: [
-          offset(12),
-          flip(),
+          offset(this.offset),
+          flip({ mainAxis: !this.noFlip, crossAxis: !this.noFlip }),
           shift({ padding: 8 }),
-          size({
-            apply({ rects, elements }) {
-              Object.assign(elements.floating.style, {
-                minWidth: `${rects.reference.width}px`,
-              });
-            },
-          }),
+          // Commentato perchè nella toolbar con dropdown che ha position absolute, vogliamo il min-width impostato da css con var(--bsi-dropdown-min-width)
+          // size({
+          //   apply({ rects, elements }) {
+          //     Object.assign(elements.floating.style, {
+          //       minWidth: `${rects.reference.width}px`,
+          //     });
+          //   },
+          // }),
           arrow({ element: this._arrowElement! }),
         ],
       }).then(({ x, y, placement, middlewareData }) => {
@@ -150,8 +155,14 @@ export class ItPopover extends BaseComponent {
             left: 'right',
           }[placement.split('-')[0]];
 
+          const triggerRect = this._triggerElement.getBoundingClientRect();
+          const contentRect = this._contentElement.getBoundingClientRect();
+          const triggerCenter = triggerRect.left + triggerRect.width / 2;
+          const arrowLeft = triggerCenter - contentRect.left - this._triggerElement.offsetWidth / 2 + 20;
+
           Object.assign(this._arrowElement!.style, {
-            left: arrowX != null ? '20px' : '',
+            left: arrowX != null ? `${arrowLeft}px` : '',
+
             top: arrowY != null ? `${arrowY}px` : '',
             right: '',
             bottom: '',
@@ -200,7 +211,7 @@ export class ItPopover extends BaseComponent {
   render() {
     return html`
       <slot name="trigger" part="trigger" @slotchange=${this._setChildrenProperties}></slot>
-      <slot name="content"></slot>
+      <slot name="content" part="popover-content"></slot>
     `;
   }
 }

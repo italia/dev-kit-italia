@@ -16,7 +16,7 @@ const renderComponent = (params: SkiplinksProps, defaultSlot: string | TemplateR
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Skiplinks',
-  tags: ['new', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-skiplinks',
   args: {
     'it-aria-label': 'Aria label',
@@ -96,7 +96,7 @@ export const PochiLink: Story = {
     docs: {
       description: {
         story: `
-Quando sono presenti uno o due link, il componente evita di generare un elemento \`<nav>\` al fine di ridurre la complessità di lettura per gli screen reader.
+Quando sono presenti uno o due link, il componente non genera un elemento \`<nav>\` per ridurre la complessità di lettura per i lettori di schermo.
 `,
       },
     },

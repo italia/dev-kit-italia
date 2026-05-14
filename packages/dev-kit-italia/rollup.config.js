@@ -27,7 +27,7 @@ export default [
     output: {
       dir: 'dist',
       sourcemap: true,
-      output: { file: 'styles.js', format: 'esm' },
+      format: 'esm',
     },
     plugins: [
       resolve(),
@@ -53,11 +53,41 @@ export default [
     ],
   },
   {
+    input: 'src/full.js',
+    output: {
+      dir: 'dist',
+      sourcemap: true,
+      format: 'esm',
+    },
+    plugins: [
+      resolve(),
+      copy({
+        targets: [
+          // gli assets di tutti i packages del monorepo
+          {
+            src: '../*/assets/*',
+            dest: 'dist/assets',
+            flatten: true,
+          },
+        ],
+        verbose: true,
+        copyOnce: false,
+        // flatten: false, // Mantiene la struttura interna
+      }),
+      scss({
+        fileName: 'full.css',
+        outputStyle: 'compressed',
+        quietDeps: true,
+        silenceDeprecations: ['import', 'if-function'],
+      }),
+    ],
+  },
+  {
     input: 'src/fonts.js',
     output: {
       dir: 'dist',
       sourcemap: true,
-      output: { file: 'fonts.js', format: 'esm' },
+      format: 'esm',
     },
     plugins: [
       resolve(),

@@ -1,5 +1,69 @@
 # @italia/sticky
 
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - fixed sticky to prevent flapping on scroll
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+## 1.0.0-alpha.9
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+## 1.0.0-alpha.8
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.8
+
+## 1.0.0-alpha.7
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40)]:
+  - @italia/globals@1.0.0-alpha.7
+
+## 1.0.0-alpha.6
+
+### Minor Changes
+
+- [#269](https://github.com/italia/dev-kit-italia/pull/269) [`b0d65d7`](https://github.com/italia/dev-kit-italia/commit/b0d65d724a42c92d92e2f09b8c061a00bdaa0492) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Move stories to mdx format and fix broken link
+
+### Patch Changes
+
+- [#289](https://github.com/italia/dev-kit-italia/pull/289) [`4a4577c`](https://github.com/italia/dev-kit-italia/commit/4a4577c727cb224b74123e2298ea416a5eb9e0a7) Thanks [@danielenole](https://github.com/danielenole)! - Enhanced docs
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.6
+
+## 1.0.0-alpha.5
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`57f1319`](https://github.com/italia/dev-kit-italia/commit/57f1319bb9db5d1b4a5811ccf16e46cc09e83e8f)]:
+  - @italia/globals@1.0.0-alpha.5
+
 ## 1.0.0-alpha.4
 
 ### Patch Changes

@@ -3,13 +3,24 @@ import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import type { StickyOptions } from '../src/sticky-controller.js';
 
-function renderSticky({ stackable, paddingTop, stickyClassName, positionType }: StickyOptions) {
+function renderSticky({
+  stackable,
+  paddingTop,
+  stickyClassName,
+  positionType,
+  position,
+  triggerOffset,
+  triggerSelector,
+}: StickyOptions) {
   return html`
     <it-sticky
       ?stackable=${ifDefined(stackable)}
       padding-top=${ifDefined(paddingTop || nothing)}
       sticky-class-name=${ifDefined(stickyClassName || nothing)}
+      trigger-offset=${ifDefined(triggerOffset || nothing)}
+      trigger-selector=${ifDefined(triggerSelector || nothing)}
       position-type=${ifDefined(positionType || nothing)}
+      position=${ifDefined(position || nothing)}
     >
       <div class="bg-primary text-white p-3">Elemento Sticky</div>
     </it-sticky>
@@ -18,12 +29,15 @@ function renderSticky({ stackable, paddingTop, stickyClassName, positionType }: 
 const meta: Meta = {
   title: 'Componenti/Sticky',
   component: 'it-sticky',
-  tags: ['autodocs', 'alpha', 'a11y-ok', 'web-component'],
+  tags: ['autodocs', 'a11y-ok', 'web-component'],
   args: {
     stackable: false,
     paddingTop: 0,
     stickyClassName: undefined,
     positionType: undefined,
+    triggerOffset: undefined,
+    triggerSelector: undefined,
+    position: undefined,
   },
   parameters: {
     docs: {
@@ -54,20 +68,43 @@ Il componente gestisce in autonomia anche casi avanzati, come elementi impilabil
       table: { defaultValue: { summary: false } },
     },
     paddingTop: {
+      name: 'padding-top',
       control: 'number',
       description: "Indica la distanza dall'elemento in sticky dal margine superiore",
       table: { defaultValue: { summary: 0 } },
     },
     stickyClassName: {
+      name: 'sticky-class-name',
       control: 'text',
       description: "Classi CSS da applicare all'elemento quando viene attivata la funzionalità sticky",
       table: { defaultValue: { summary: '' } },
     },
     positionType: {
+      name: 'position-type',
       control: { type: 'select' },
       options: ['sticky', 'fixed'],
       description: 'Indica il valore della proprietà CSS `position`. I valori ammessi sono `sticky` o `fixed`',
       table: { defaultValue: { summary: 'sticky' } },
+    },
+    triggerOffset: {
+      name: 'trigger-offset',
+      control: 'number',
+      description:
+        "Definisce un offset in pixel tra l'elemento e il margine superiore per ritardare l'attivazione dello sticky",
+      table: { defaultValue: { summary: undefined } },
+    },
+    triggerSelector: {
+      name: 'trigger-selector',
+      control: 'text',
+      description: 'Selettore CSS di un elemento della pagina da usare come soglia di attivazione dello sticky',
+      table: { defaultValue: { summary: undefined } },
+    },
+    position: {
+      control: { type: 'select' },
+      options: ['top', 'bottom'],
+      description:
+        "Indica il bordo del viewport a cui agganciare l'elemento. Usa `'bottom'` con `position-type=\"fixed\"` per una barra persistente in fondo alla pagina.",
+      table: { defaultValue: { summary: 'top' } },
     },
   },
   render: (args) => renderSticky(args),
@@ -219,6 +256,29 @@ stickyElement.addEventListener('it-sticky-off', (event) => {
 
 \`\`\`
         `,
+      },
+    },
+  },
+};
+
+export const FixedBottom: Story = {
+  name: 'Position fixed bottom',
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Usando <code>position="bottom"</code> insieme a <code>position-type="fixed"</code> l'elemento viene agganciato
+al bordo inferiore del viewport immediatamente al caricamento — senza attendere lo scroll.
+Questo è il comportamento usato internamente da <code>it-bottom-nav</code>.
+<br>
+
+È disponibile una <a href="iframe.html?globals=&id=esempi-sticky--fixed-bottom-sticky&viewMode=story" target="_blank" rel="noopener">
+  pagina di esempio
+</a> dedicata a questa funzionalità.
+        `,
+      },
+      source: {
+        code: `<it-sticky position="bottom" position-type="fixed">\n  <div class="bg-primary text-white p-3">Barra fissa in fondo</div>\n</it-sticky>`,
       },
     },
   },

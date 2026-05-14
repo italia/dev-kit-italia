@@ -1,5 +1,379 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- [`60c9cd3`](https://github.com/italia/dev-kit-italia/commit/60c9cd347cfc6ef61b5bfc30be15e9d44bca8d5b) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed full css generation after latest bootstrap-italia upgrade.
+
+- Updated dependencies []:
+  - @italia/accordion@1.0.0-alpha.11
+  - @italia/autocomplete@1.0.0-alpha.11
+  - @italia/avatar@1.0.0-alpha.11
+  - @italia/back-to-top@1.0.0-alpha.11
+  - @italia/bottom-nav@1.0.0-alpha.11
+  - @italia/breadcrumbs@1.0.0-alpha.11
+  - @italia/button@1.0.0-alpha.11
+  - @italia/callout@1.0.0-alpha.11
+  - @italia/card@1.0.0-alpha.11
+  - @italia/carousel@1.0.0-alpha.11
+  - @italia/checkbox@1.0.0-alpha.11
+  - @italia/chip@1.0.0-alpha.11
+  - @italia/collapse@1.0.0-alpha.11
+  - @italia/dimmer@1.0.0-alpha.11
+  - @italia/dropdown@1.0.0-alpha.11
+  - @italia/header@1.0.0-alpha.11
+  - @italia/hero@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+  - @italia/input@1.0.0-alpha.11
+  - @italia/megamenu@1.0.0-alpha.11
+  - @italia/modal@1.0.0-alpha.11
+  - @italia/navscroll@1.0.0-alpha.11
+  - @italia/notification@1.0.0-alpha.11
+  - @italia/pagination@1.0.0-alpha.11
+  - @italia/popover@1.0.0-alpha.11
+  - @italia/progress@1.0.0-alpha.11
+  - @italia/radio@1.0.0-alpha.11
+  - @italia/rating@1.0.0-alpha.11
+  - @italia/section@1.0.0-alpha.11
+  - @italia/select@1.0.0-alpha.11
+  - @italia/skiplinks@1.0.0-alpha.11
+  - @italia/sticky@1.0.0-alpha.11
+  - @italia/tabs@1.0.0-alpha.11
+  - @italia/timeline@1.0.0-alpha.11
+  - @italia/toggle@1.0.0-alpha.11
+  - @italia/thumbnav@1.0.0-alpha.11
+  - @italia/toolbar@1.0.0-alpha.11
+  - @italia/tooltip@1.0.0-alpha.11
+  - @italia/transfer@1.0.0-alpha.11
+  - @italia/upload@1.0.0-alpha.11
+  - @italia/video@1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- [#333](https://github.com/italia/dev-kit-italia/pull/333) [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toolbar component
+
+- Updated dependencies [[`88c1ad8`](https://github.com/italia/dev-kit-italia/commit/88c1ad8b49db4cec7167ba762fb82b0bd86e93fa), [`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`381996d`](https://github.com/italia/dev-kit-italia/commit/381996d969682981ba0615641f7ac573be0a76c4), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321), [`fe786d5`](https://github.com/italia/dev-kit-italia/commit/fe786d58fec7212d612baa0b251885dd5ce07fe0), [`88bdc22`](https://github.com/italia/dev-kit-italia/commit/88bdc22f0a1c2322bf5ebf3d1a7bfaa3fbc83f02)]:
+  - @italia/hero@1.0.0-alpha.10
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/card@1.0.0-alpha.10
+  - @italia/sticky@1.0.0-alpha.10
+  - @italia/dropdown@1.0.0-alpha.10
+  - @italia/megamenu@1.0.0-alpha.10
+  - @italia/popover@1.0.0-alpha.10
+  - @italia/header@1.0.0-alpha.10
+  - @italia/modal@1.0.0-alpha.10
+  - @italia/toolbar@1.0.0-alpha.10
+  - @italia/accordion@1.0.0-alpha.10
+  - @italia/autocomplete@1.0.0-alpha.10
+  - @italia/avatar@1.0.0-alpha.10
+  - @italia/back-to-top@1.0.0-alpha.10
+  - @italia/bottom-nav@1.0.0-alpha.10
+  - @italia/breadcrumbs@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/callout@1.0.0-alpha.10
+  - @italia/carousel@1.0.0-alpha.10
+  - @italia/checkbox@1.0.0-alpha.10
+  - @italia/chip@1.0.0-alpha.10
+  - @italia/collapse@1.0.0-alpha.10
+  - @italia/dimmer@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+  - @italia/input@1.0.0-alpha.10
+  - @italia/navscroll@1.0.0-alpha.10
+  - @italia/notification@1.0.0-alpha.10
+  - @italia/pagination@1.0.0-alpha.10
+  - @italia/progress@1.0.0-alpha.10
+  - @italia/radio@1.0.0-alpha.10
+  - @italia/rating@1.0.0-alpha.10
+  - @italia/section@1.0.0-alpha.10
+  - @italia/select@1.0.0-alpha.10
+  - @italia/skiplinks@1.0.0-alpha.10
+  - @italia/tabs@1.0.0-alpha.10
+  - @italia/timeline@1.0.0-alpha.10
+  - @italia/toggle@1.0.0-alpha.10
+  - @italia/thumbnav@1.0.0-alpha.10
+  - @italia/tooltip@1.0.0-alpha.10
+  - @italia/transfer@1.0.0-alpha.10
+  - @italia/upload@1.0.0-alpha.10
+  - @italia/video@1.0.0-alpha.10
+
+## 1.0.0-alpha.9
+
+### Minor Changes
+
+- [#317](https://github.com/italia/dev-kit-italia/pull/317) [`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added tabs component
+
+- [`1201f1e`](https://github.com/italia/dev-kit-italia/commit/1201f1e4399f21beb25042a40917d6ad20e8b1dc) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added timeline component
+
+- [#329](https://github.com/italia/dev-kit-italia/pull/329) [`0aa17c5`](https://github.com/italia/dev-kit-italia/commit/0aa17c545f8b0ba9d8e4b3550c0161c73f866148) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add bottom-nav component
+
+- [#359](https://github.com/italia/dev-kit-italia/pull/359) [`d144c97`](https://github.com/italia/dev-kit-italia/commit/d144c972493b2b9d6af7fb3898b3520e7c6fb034) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add transfer component
+
+- [#328](https://github.com/italia/dev-kit-italia/pull/328) [`cfe1a3c`](https://github.com/italia/dev-kit-italia/commit/cfe1a3c5c85fae70323b4f3da7fb5764beac78f9) Thanks [@pnicolli](https://github.com/pnicolli)! - Added it-notification component
+
+- [#321](https://github.com/italia/dev-kit-italia/pull/321) [`b7e062a`](https://github.com/italia/dev-kit-italia/commit/b7e062ab6e6fd79121918e388caf852b53c0ddad) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added dimmer component
+
+- [#353](https://github.com/italia/dev-kit-italia/pull/353) [`21924f1`](https://github.com/italia/dev-kit-italia/commit/21924f1698d0e521e4c5e5d4e05ec2fd197f18b1) Thanks [@pnicolli](https://github.com/pnicolli)! - Added `it-tooltip` component
+
+- [#352](https://github.com/italia/dev-kit-italia/pull/352) [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add upload component
+
+### Patch Changes
+
+- [#354](https://github.com/italia/dev-kit-italia/pull/354) [`7032706`](https://github.com/italia/dev-kit-italia/commit/70327060fecef3bdc649e4f890ca81217e94d9aa) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added it-thumbnav component
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`4c41b98`](https://github.com/italia/dev-kit-italia/commit/4c41b982c1f726769e4c3636c46d66d68eceb174), [`d12b0cb`](https://github.com/italia/dev-kit-italia/commit/d12b0cbcd0862320e601c24fd85d82ff7f7e657d), [`1201f1e`](https://github.com/italia/dev-kit-italia/commit/1201f1e4399f21beb25042a40917d6ad20e8b1dc), [`4c41b98`](https://github.com/italia/dev-kit-italia/commit/4c41b982c1f726769e4c3636c46d66d68eceb174), [`0aa17c5`](https://github.com/italia/dev-kit-italia/commit/0aa17c545f8b0ba9d8e4b3550c0161c73f866148), [`d144c97`](https://github.com/italia/dev-kit-italia/commit/d144c972493b2b9d6af7fb3898b3520e7c6fb034), [`cfe1a3c`](https://github.com/italia/dev-kit-italia/commit/cfe1a3c5c85fae70323b4f3da7fb5764beac78f9), [`21924f1`](https://github.com/italia/dev-kit-italia/commit/21924f1698d0e521e4c5e5d4e05ec2fd197f18b1), [`95cb4d6`](https://github.com/italia/dev-kit-italia/commit/95cb4d62fa58c497960fdf602345dc91afe99e99), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/tabs@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+  - @italia/modal@1.0.0-alpha.9
+  - @italia/dropdown@1.0.0-alpha.9
+  - @italia/breadcrumbs@1.0.0-alpha.9
+  - @italia/timeline@1.0.0-alpha.9
+  - @italia/megamenu@1.0.0-alpha.9
+  - @italia/bottom-nav@1.0.0-alpha.9
+  - @italia/transfer@1.0.0-alpha.9
+  - @italia/notification@1.0.0-alpha.9
+  - @italia/tooltip@1.0.0-alpha.9
+  - @italia/rating@1.0.0-alpha.9
+  - @italia/card@1.0.0-alpha.9
+  - @italia/chip@1.0.0-alpha.9
+  - @italia/navscroll@1.0.0-alpha.9
+  - @italia/progress@1.0.0-alpha.9
+  - @italia/upload@1.0.0-alpha.9
+  - @italia/dimmer@1.0.0-alpha.9
+  - @italia/popover@1.0.0-alpha.9
+  - @italia/video@1.0.0-alpha.9
+  - @italia/accordion@1.0.0-alpha.9
+  - @italia/autocomplete@1.0.0-alpha.9
+  - @italia/avatar@1.0.0-alpha.9
+  - @italia/back-to-top@1.0.0-alpha.9
+  - @italia/callout@1.0.0-alpha.9
+  - @italia/carousel@1.0.0-alpha.9
+  - @italia/checkbox@1.0.0-alpha.9
+  - @italia/collapse@1.0.0-alpha.9
+  - @italia/hero@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+  - @italia/input@1.0.0-alpha.9
+  - @italia/pagination@1.0.0-alpha.9
+  - @italia/radio@1.0.0-alpha.9
+  - @italia/section@1.0.0-alpha.9
+  - @italia/select@1.0.0-alpha.9
+  - @italia/skiplinks@1.0.0-alpha.9
+  - @italia/sticky@1.0.0-alpha.9
+  - @italia/toggle@1.0.0-alpha.9
+  - @italia/thumbnav@1.0.0-alpha.9
+
+## 1.0.0-alpha.8
+
+### Patch Changes
+
+- [`c0234ba`](https://github.com/italia/dev-kit-italia/commit/c0234ba6192c5bfae44826b1b4161deb225e4aea) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed dist export for full.css
+
+- Updated dependencies []:
+  - @italia/accordion@1.0.0-alpha.8
+  - @italia/autocomplete@1.0.0-alpha.8
+  - @italia/avatar@1.0.0-alpha.8
+  - @italia/back-to-top@1.0.0-alpha.8
+  - @italia/breadcrumbs@1.0.0-alpha.8
+  - @italia/button@1.0.0-alpha.8
+  - @italia/callout@1.0.0-alpha.8
+  - @italia/card@1.0.0-alpha.8
+  - @italia/carousel@1.0.0-alpha.8
+  - @italia/checkbox@1.0.0-alpha.8
+  - @italia/chip@1.0.0-alpha.8
+  - @italia/collapse@1.0.0-alpha.8
+  - @italia/dropdown@1.0.0-alpha.8
+  - @italia/hero@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+  - @italia/input@1.0.0-alpha.8
+  - @italia/megamenu@1.0.0-alpha.8
+  - @italia/modal@1.0.0-alpha.8
+  - @italia/navscroll@1.0.0-alpha.8
+  - @italia/pagination@1.0.0-alpha.8
+  - @italia/popover@1.0.0-alpha.8
+  - @italia/progress@1.0.0-alpha.8
+  - @italia/radio@1.0.0-alpha.8
+  - @italia/rating@1.0.0-alpha.8
+  - @italia/section@1.0.0-alpha.8
+  - @italia/select@1.0.0-alpha.8
+  - @italia/skiplinks@1.0.0-alpha.8
+  - @italia/sticky@1.0.0-alpha.8
+  - @italia/toggle@1.0.0-alpha.8
+  - @italia/video@1.0.0-alpha.8
+
+## 1.0.0-alpha.7
+
+### Minor Changes
+
+- [#307](https://github.com/italia/dev-kit-italia/pull/307) [`37e516b`](https://github.com/italia/dev-kit-italia/commit/37e516ba5750b2d4dd7d13bebdafd4fe778f022d) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added Carousel component
+
+- [#276](https://github.com/italia/dev-kit-italia/pull/276) [`56a02b8`](https://github.com/italia/dev-kit-italia/commit/56a02b8072dbf1259cff380cf78bdd69ac5a813c) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add dev-kit tracking documentation
+
+- [#330](https://github.com/italia/dev-kit-italia/pull/330) [`5cf5bb0`](https://github.com/italia/dev-kit-italia/commit/5cf5bb0a3a62ef46c808f92250a4c016f9abddad) Thanks [@pnicolli](https://github.com/pnicolli)! - Added styles file `full.css` which contains all bootstrap-italia styles. It is meant to help with the migration process from bootstrap-italia to dev-kit-italia.
+
+### Patch Changes
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-progress component
+
+- [#316](https://github.com/italia/dev-kit-italia/pull/316) [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toggle component as an extension of it-checkbox
+
+- [`22eb901`](https://github.com/italia/dev-kit-italia/commit/22eb901eae2c2a4cae23b981f39ec838805e2c8c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated docs with link to components
+
+- [#343](https://github.com/italia/dev-kit-italia/pull/343) [`e725862`](https://github.com/italia/dev-kit-italia/commit/e7258623365aa6597da53da3c52abeb1bf84521b) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fixed megamenu styles
+
+- [#320](https://github.com/italia/dev-kit-italia/pull/320) [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-progress component
+
+- [#308](https://github.com/italia/dev-kit-italia/pull/308) [`07eea32`](https://github.com/italia/dev-kit-italia/commit/07eea3205e1cdd19ecd2bd069d337003c5c6f730) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-megamenu component
+
+- Updated dependencies [[`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40), [`22eb901`](https://github.com/italia/dev-kit-italia/commit/22eb901eae2c2a4cae23b981f39ec838805e2c8c), [`37e516b`](https://github.com/italia/dev-kit-italia/commit/37e516ba5750b2d4dd7d13bebdafd4fe778f022d), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`e725862`](https://github.com/italia/dev-kit-italia/commit/e7258623365aa6597da53da3c52abeb1bf84521b), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`07eea32`](https://github.com/italia/dev-kit-italia/commit/07eea3205e1cdd19ecd2bd069d337003c5c6f730)]:
+  - @italia/navscroll@1.0.0-alpha.7
+  - @italia/progress@1.0.0-alpha.7
+  - @italia/button@1.0.0-alpha.7
+  - @italia/modal@1.0.0-alpha.7
+  - @italia/chip@1.0.0-alpha.7
+  - @italia/checkbox@1.0.0-alpha.7
+  - @italia/toggle@1.0.0-alpha.7
+  - @italia/dropdown@1.0.0-alpha.7
+  - @italia/popover@1.0.0-alpha.7
+  - @italia/select@1.0.0-alpha.7
+  - @italia/carousel@1.0.0-alpha.7
+  - @italia/video@1.0.0-alpha.7
+  - @italia/megamenu@1.0.0-alpha.7
+  - @italia/accordion@1.0.0-alpha.7
+  - @italia/autocomplete@1.0.0-alpha.7
+  - @italia/avatar@1.0.0-alpha.7
+  - @italia/back-to-top@1.0.0-alpha.7
+  - @italia/breadcrumbs@1.0.0-alpha.7
+  - @italia/callout@1.0.0-alpha.7
+  - @italia/card@1.0.0-alpha.7
+  - @italia/collapse@1.0.0-alpha.7
+  - @italia/hero@1.0.0-alpha.7
+  - @italia/i18n@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+  - @italia/input@1.0.0-alpha.7
+  - @italia/pagination@1.0.0-alpha.7
+  - @italia/radio@1.0.0-alpha.7
+  - @italia/rating@1.0.0-alpha.7
+  - @italia/section@1.0.0-alpha.7
+  - @italia/skiplinks@1.0.0-alpha.7
+  - @italia/sticky@1.0.0-alpha.7
+
+## 1.0.0-alpha.6
+
+### Minor Changes
+
+- [#261](https://github.com/italia/dev-kit-italia/pull/261) [`36ea0c7`](https://github.com/italia/dev-kit-italia/commit/36ea0c7371522af5d50794d6657e8e65ecabea49) Thanks [@pnicolli](https://github.com/pnicolli)! - Added card component
+
+- [#270](https://github.com/italia/dev-kit-italia/pull/270) [`7c3f181`](https://github.com/italia/dev-kit-italia/commit/7c3f18160ed0ef3a0aa1b058cb22d0911cff74fd) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add Tables HTML documentation
+
+### Patch Changes
+
+- [#273](https://github.com/italia/dev-kit-italia/pull/273) [`fc1c229`](https://github.com/italia/dev-kit-italia/commit/fc1c229cb2229c5ea290c3068c59f3daac84ca7d) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added Hero component
+
+- [#289](https://github.com/italia/dev-kit-italia/pull/289) [`4a4577c`](https://github.com/italia/dev-kit-italia/commit/4a4577c727cb224b74123e2298ea416a5eb9e0a7) Thanks [@danielenole](https://github.com/danielenole)! - Enhanced docs
+
+- Updated dependencies [[`efd4340`](https://github.com/italia/dev-kit-italia/commit/efd4340195ebe84a8a8135035125b83db56172d0), [`36ea0c7`](https://github.com/italia/dev-kit-italia/commit/36ea0c7371522af5d50794d6657e8e65ecabea49), [`d2d9687`](https://github.com/italia/dev-kit-italia/commit/d2d9687c8baacc655c2dd9aa6fcd938f46b8f4a3), [`fc1c229`](https://github.com/italia/dev-kit-italia/commit/fc1c229cb2229c5ea290c3068c59f3daac84ca7d), [`e556822`](https://github.com/italia/dev-kit-italia/commit/e55682290e80bcfc68cd8d835d96b77abd276b46), [`01aa2d7`](https://github.com/italia/dev-kit-italia/commit/01aa2d7850660d72c6e09a6b1118005fd75f9420), [`1a76d13`](https://github.com/italia/dev-kit-italia/commit/1a76d13c61c4836508ccdf54ccc018114c7408cb), [`b0d65d7`](https://github.com/italia/dev-kit-italia/commit/b0d65d724a42c92d92e2f09b8c061a00bdaa0492), [`526c4d8`](https://github.com/italia/dev-kit-italia/commit/526c4d8f13a6974d6290f7ca9726fac349218fc5), [`4a4577c`](https://github.com/italia/dev-kit-italia/commit/4a4577c727cb224b74123e2298ea416a5eb9e0a7)]:
+  - @italia/checkbox@1.0.0-alpha.6
+  - @italia/card@1.0.0-alpha.6
+  - @italia/input@1.0.0-alpha.6
+  - @italia/radio@1.0.0-alpha.6
+  - @italia/video@1.0.0-alpha.6
+  - @italia/hero@1.0.0-alpha.6
+  - @italia/back-to-top@1.0.0-alpha.6
+  - @italia/breadcrumbs@1.0.0-alpha.6
+  - @italia/accordion@1.0.0-alpha.6
+  - @italia/navscroll@1.0.0-alpha.6
+  - @italia/collapse@1.0.0-alpha.6
+  - @italia/callout@1.0.0-alpha.6
+  - @italia/section@1.0.0-alpha.6
+  - @italia/button@1.0.0-alpha.6
+  - @italia/rating@1.0.0-alpha.6
+  - @italia/chip@1.0.0-alpha.6
+  - @italia/icon@1.0.0-alpha.6
+  - @italia/modal@1.0.0-alpha.6
+  - @italia/sticky@1.0.0-alpha.6
+  - @italia/dropdown@1.0.0-alpha.6
+  - @italia/pagination@1.0.0-alpha.6
+  - @italia/autocomplete@1.0.0-alpha.6
+  - @italia/avatar@1.0.0-alpha.6
+  - @italia/i18n@1.0.0-alpha.6
+  - @italia/popover@1.0.0-alpha.6
+  - @italia/select@1.0.0-alpha.6
+  - @italia/skiplinks@1.0.0-alpha.6
+
+## 1.0.0-alpha.5
+
+### Minor Changes
+
+- [#228](https://github.com/italia/dev-kit-italia/pull/228) [`13c773f`](https://github.com/italia/dev-kit-italia/commit/13c773fa2aee43082c8af460cb7a5a72803bab4e) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added Forward documentation
+
+- [#147](https://github.com/italia/dev-kit-italia/pull/147) [`7e0ab9c`](https://github.com/italia/dev-kit-italia/commit/7e0ab9c8235bbe58eec625fa8bb1b9ee05b0c388) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added Go Back documentation
+
+- [#236](https://github.com/italia/dev-kit-italia/pull/236) [`7a6fa3d`](https://github.com/italia/dev-kit-italia/commit/7a6fa3dcbabbb85ed638c1daba4501c45f47966e) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added Pagination component
+
+- [#212](https://github.com/italia/dev-kit-italia/pull/212) [`16a09a0`](https://github.com/italia/dev-kit-italia/commit/16a09a09cbd8af4596c44ed3d58a925cf9c3cc95) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-back-to-top component
+
+- [#135](https://github.com/italia/dev-kit-italia/pull/135) [`9fc2b8c`](https://github.com/italia/dev-kit-italia/commit/9fc2b8c2890e6139f2892490eb43f330da3cdb38) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added rating component
+
+- [#152](https://github.com/italia/dev-kit-italia/pull/152) [`c8f2aa6`](https://github.com/italia/dev-kit-italia/commit/c8f2aa6e6a23bfc21a514bc35eae88d63edfb8cb) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - feat: added overlay docs
+
+- [#225](https://github.com/italia/dev-kit-italia/pull/225) [`57f1319`](https://github.com/italia/dev-kit-italia/commit/57f1319bb9db5d1b4a5811ccf16e46cc09e83e8f) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added modal component
+
+- [#145](https://github.com/italia/dev-kit-italia/pull/145) [`a1a7f34`](https://github.com/italia/dev-kit-italia/commit/a1a7f343c9374374aae7d49ec90bc16077d41ea8) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added breadcrumbs component
+
+- [#255](https://github.com/italia/dev-kit-italia/pull/255) [`7e9a9be`](https://github.com/italia/dev-kit-italia/commit/7e9a9be9346207bcc8be4760662b1cee4aa620cf) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add it-autocomplete component
+
+- [#146](https://github.com/italia/dev-kit-italia/pull/146) [`a9a5365`](https://github.com/italia/dev-kit-italia/commit/a9a53659c168f846f344129d6b78f974942a8dce) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added callout component
+
+- [#133](https://github.com/italia/dev-kit-italia/pull/133) [`5be67a2`](https://github.com/italia/dev-kit-italia/commit/5be67a2c1c2b5515ff66298fdcff046c5d44641b) Thanks [@pnicolli](https://github.com/pnicolli)! - Added list component
+
+- [#238](https://github.com/italia/dev-kit-italia/pull/238) [`d53c48c`](https://github.com/italia/dev-kit-italia/commit/d53c48cae3b8d524f465e47070ecf8e6a2358510) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-select component
+
+- [#265](https://github.com/italia/dev-kit-italia/pull/265) [`179d7b8`](https://github.com/italia/dev-kit-italia/commit/179d7b814d9debfbe325e14593ff86ace4c4be34) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Updated Back docs and examples
+
+- [#250](https://github.com/italia/dev-kit-italia/pull/250) [`883d4d9`](https://github.com/italia/dev-kit-italia/commit/883d4d9d56a4810eb38c5d72cc42d872bc8fe619) Thanks [@pnicolli](https://github.com/pnicolli)! - Added Alert component
+
+### Patch Changes
+
+- [#251](https://github.com/italia/dev-kit-italia/pull/251) [`21e8180`](https://github.com/italia/dev-kit-italia/commit/21e8180e49b83ca2be70d69e952a52d2e563b29e) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated bootstrap-italia and fixed design-tokens
+
+- [#129](https://github.com/italia/dev-kit-italia/pull/129) [`0b53eba`](https://github.com/italia/dev-kit-italia/commit/0b53ebabfead90e66cc621c9e3ed4d1b0296554d) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Popover documentation and global styling
+
+- [`f8d05ee`](https://github.com/italia/dev-kit-italia/commit/f8d05eed0c38744e77788499175ec85901c4e092) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated bootstrap-italia and fixed some stories
+
+- Updated dependencies [[`21e8180`](https://github.com/italia/dev-kit-italia/commit/21e8180e49b83ca2be70d69e952a52d2e563b29e), [`7a6fa3d`](https://github.com/italia/dev-kit-italia/commit/7a6fa3dcbabbb85ed638c1daba4501c45f47966e), [`16a09a0`](https://github.com/italia/dev-kit-italia/commit/16a09a09cbd8af4596c44ed3d58a925cf9c3cc95), [`9fc2b8c`](https://github.com/italia/dev-kit-italia/commit/9fc2b8c2890e6139f2892490eb43f330da3cdb38), [`1c1e6e8`](https://github.com/italia/dev-kit-italia/commit/1c1e6e813afe73fe15229a83bc445e59041af86e), [`57f1319`](https://github.com/italia/dev-kit-italia/commit/57f1319bb9db5d1b4a5811ccf16e46cc09e83e8f), [`a1a7f34`](https://github.com/italia/dev-kit-italia/commit/a1a7f343c9374374aae7d49ec90bc16077d41ea8), [`7e9a9be`](https://github.com/italia/dev-kit-italia/commit/7e9a9be9346207bcc8be4760662b1cee4aa620cf), [`a9a5365`](https://github.com/italia/dev-kit-italia/commit/a9a53659c168f846f344129d6b78f974942a8dce), [`0b53eba`](https://github.com/italia/dev-kit-italia/commit/0b53ebabfead90e66cc621c9e3ed4d1b0296554d), [`d53c48c`](https://github.com/italia/dev-kit-italia/commit/d53c48cae3b8d524f465e47070ecf8e6a2358510), [`18e1e61`](https://github.com/italia/dev-kit-italia/commit/18e1e61c9e999713ffc1965a547d08919808dc77), [`f8d05ee`](https://github.com/italia/dev-kit-italia/commit/f8d05eed0c38744e77788499175ec85901c4e092)]:
+  - @italia/accordion@1.0.0-alpha.5
+  - @italia/collapse@1.0.0-alpha.5
+  - @italia/popover@1.0.0-alpha.5
+  - @italia/section@1.0.0-alpha.5
+  - @italia/avatar@1.0.0-alpha.5
+  - @italia/input@1.0.0-alpha.5
+  - @italia/radio@1.0.0-alpha.5
+  - @italia/video@1.0.0-alpha.5
+  - @italia/chip@1.0.0-alpha.5
+  - @italia/pagination@1.0.0-alpha.5
+  - @italia/back-to-top@1.0.0-alpha.5
+  - @italia/rating@1.0.0-alpha.5
+  - @italia/modal@1.0.0-alpha.5
+  - @italia/breadcrumbs@1.0.0-alpha.5
+  - @italia/autocomplete@1.0.0-alpha.5
+  - @italia/callout@1.0.0-alpha.5
+  - @italia/checkbox@1.0.0-alpha.5
+  - @italia/select@1.0.0-alpha.5
+  - @italia/dropdown@1.0.0-alpha.5
+  - @italia/i18n@1.0.0-alpha.5
+  - @italia/button@1.0.0-alpha.5
+  - @italia/navscroll@1.0.0-alpha.5
+  - @italia/icon@1.0.0-alpha.5
+  - @italia/skiplinks@1.0.0-alpha.5
+  - @italia/sticky@1.0.0-alpha.5
+
 ## 1.0.0-alpha.4
 
 ### Patch Changes

@@ -111,7 +111,7 @@ li span,
 
   // Increase font-size and spacing for list item link with large class
   &.large {
-    --#{$prefix}linklist-item-font-size: var(--#{$prefix}label-font-size-m);
+    --#{$prefix}linklist-item-font-size: var(--#{$prefix}label-font-size-l);
   }
 
   // Avatar position inside the list item
@@ -190,7 +190,7 @@ li span,
   > p {
     color: var(--#{$prefix}color-text-secondary);
     font-size: var(--#{$prefix}caption-font-size);
-    line-height: var(--#{$prefix}caption-line-height);
+    line-height: var(--#{$prefix}caption-leading);
   }
 
   // Listed item label wrapped in the <a> tag
@@ -233,4 +233,10 @@ li span,
     background: none;
     text-decoration: underline;
   }
+}
+
+.list-item > .dropdown-item-link {
+  display: flex;
+  align-items: center;
+  white-space: normal;
 }

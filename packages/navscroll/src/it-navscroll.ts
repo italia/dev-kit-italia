@@ -186,6 +186,10 @@ export class ItNavscroll extends BaseComponent {
     // if (!this.shadowRoot?.contains(this.modalEl)) {
     //   this.shadowRoot?.appendChild(this.modalEl);
     // }
+
+    if (this.position === 'bottom') {
+      document.body.classList.add('navscroll-on-bottom');
+    }
     this.updateTriggerText();
   }
 
@@ -195,6 +199,9 @@ export class ItNavscroll extends BaseComponent {
       // this.shadowRoot?.appendChild(this.navEl);
     }
 
+    if (this.position === 'bottom') {
+      document.body.classList.remove('navscroll-on-bottom');
+    }
     this.modalEl?.remove();
     this.modalEl = undefined;
     this.menuWrapper.removeAttribute('slot');
@@ -219,7 +226,6 @@ export class ItNavscroll extends BaseComponent {
     const backButton = document.createElement('it-button');
     backButton.setAttribute('slot', 'header');
     backButton.setAttribute('variant', 'link');
-    backButton.setAttribute('icon', 'it');
     backButton.setAttribute('block', '');
     backButton.innerHTML = `<it-icon name="it-chevron-left" size="sm" color="primary"></it-icon> <span>${this.backLabel}</span>`;
     backButton.addEventListener('click', () => {
@@ -266,7 +272,7 @@ export class ItNavscroll extends BaseComponent {
       window.addEventListener('scroll', () => this.onScroll());
     }
 
-    this.progressEl = this.querySelector('[role="progressbar"]')!; // diventerà this.querySelector('it-progress');
+    this.progressEl = this.querySelector('it-progress')!;
     if (!this.progressEl) return;
 
     // init a 0%
@@ -379,8 +385,7 @@ export class ItNavscroll extends BaseComponent {
     let percent = (scrollTop / maxScrollable) * 100;
     percent = Math.min(100, Math.max(0, percent));
 
-    this.progressEl.setAttribute('aria-valuenow', percent.toFixed(0));
-    this.progressEl.style.width = `${percent.toFixed(0)}%`;
+    this.progressEl.setAttribute('value', percent.toFixed(0));
   }
 
   /*

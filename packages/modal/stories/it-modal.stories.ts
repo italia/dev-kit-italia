@@ -7,11 +7,13 @@ import { MODAL_SIZES, MODAL_POSITIONS, MODAL_VARIANTS } from '../src/types.ts';
 interface ModalProps {
   'modal-title': string;
   'modal-description': string;
+  'custom-header': boolean;
   size: string;
   position: string;
   scrollable: boolean;
   'static-backdrop': boolean;
   'hide-close-button': boolean;
+  'close-button-placement': string;
   variant: string;
   'close-label': string;
   'disable-animation': boolean;
@@ -24,7 +26,20 @@ interface ModalProps {
 const closeModal = (event: Event) => {
   const el = event.currentTarget as HTMLElement;
   const modal = el.closest('it-modal') as unknown as ItModal;
+  console.log('closeModal -> modal', modal);
   modal?.hide();
+};
+const openModal = (event: Event) => {
+  const el = event.currentTarget as HTMLElement;
+  const modal = el.closest('it-modal') as unknown as ItModal;
+  console.log('openModal -> modal', modal);
+  modal?.show();
+};
+const toggleModal = (event: Event) => {
+  const el = event.currentTarget as HTMLElement;
+  const modal = el.closest('it-modal') as unknown as ItModal;
+  console.log('toggleModal -> modal', modal);
+  modal?.toggle();
 };
 
 const meta = {
@@ -43,11 +58,13 @@ const meta = {
   args: {
     'modal-title': 'Titolo modale',
     'modal-description': 'Descrizione della modale',
+    'custom-header': false,
     size: '',
     position: undefined,
     scrollable: false,
     'static-backdrop': false,
     'hide-close-button': false,
+    'close-button-placement': 'header',
     variant: '',
     'close-label': 'Chiudi finestra modale',
     'disable-animation': false,
@@ -64,6 +81,12 @@ const meta = {
       control: 'text',
       description:
         'Descrizione della modale (usa slot `description` per contenuto custom), verrrà inserita in un elemento visivamente nascosto per i lettori di schermo.',
+    },
+    'custom-header': {
+      control: 'boolean',
+      description:
+        "Abilita header custom. In questo modo è possibile inserire un header personalizzato tramite slot, altrimenti lo slot header verrà inserito all'interno di un `h2` con classi predefinite per garantire la corretta semantica e accessibilità.",
+      table: { defaultValue: { summary: 'false' } },
     },
     size: {
       control: 'select',
@@ -90,6 +113,12 @@ const meta = {
     'hide-close-button': {
       control: 'boolean',
       description: 'Nasconde il pulsante di chiusura',
+    },
+    'close-button-placement': {
+      control: 'select',
+      options: ['header', 'backdrop'],
+      description: 'Posizione del pulsante di chiusura: `header` (default) o `backdrop`',
+      table: { defaultValue: { summary: 'header' } },
     },
     variant: {
       control: 'select',
@@ -142,8 +171,10 @@ export const EsempioInterattivo: Story = {
       ?static-backdrop="${args['static-backdrop']}"
       ?footer-shadow="${args['footer-shadow']}"
       close-label="${args['close-label']}"
+      close-button-placement="${args['close-button-placement']}"
       modal-title="${args['modal-title']}"
       modal-description="${args['modal-description']}"
+      custom-header="${args['custom-header']}"
     >
       <it-button variant="primary" slot="trigger">Lancia la demo della modale</it-button>
       <span slot="header">${args['modal-title']}</span>
@@ -542,6 +573,85 @@ export const SenzaAnimazione: Story = {
       <p slot="content">Questa modale appare immediatamente senza animazione di dissolvenza.</p>
       <it-button slot="footer" variant="outline-primary" @click="${closeModal}">Annulla</it-button>
       <it-button slot="footer" variant="primary" @click="${closeModal}">Conferma</it-button>
+    </it-modal>
+  `,
+};
+export const AttivazioneViaJS: Story = {
+  name: 'Attivazione manuale via JS',
+  decorators: [
+    (story) => html` <div style="display:flex; height:100%; align-items:center; gap:2rem;">${story()}</div> `,
+  ],
+  parameters: {
+    docs: {
+      source: {
+        excludeDecorators: true,
+        code: `
+        <it-modal disable-animation close-label="Chiudi finestra modale">
+          <it-button slot="trigger" variant="primary">Modale con apertura manuale (show)</it-button>
+          <span slot="header">Modale con apertura manuale</span>
+          <p slot="content">Questa modale appare immediatamente senza animazione di dissolvenza.</p>
+          <it-button slot="footer" variant="outline-primary">Annulla</it-button>
+          <it-button slot="footer" variant="primary">Conferma</it-button>
+        </it-modal>
+        <it-modal disable-animation close-label="Chiudi finestra modale">
+          <it-button slot="trigger" variant="primary">Modale con apertura manuale (toggle)</it-button
+          >
+          <span slot="header">Modale con toggle manuale</span>
+          <p slot="content">Questa modale appare immediatamente senza animazione di dissolvenza.</p>
+          <it-button slot="footer" variant="outline-primary">Annulla</it-button>
+          <it-button slot="footer" variant="primary">Conferma</it-button>
+        </it-modal>
+        <script>
+          // Script di esempio per mostrare come attivare la modale via JS utilizzando i metodi show(), hide() e toggle()
+          const modals = document.querySelectorAll('it-modal');
+          const [modalShow, modalToggle] = modals;
+
+          const openModal = (event) => {
+            const el = event.currentTarget;
+            const modal = el.closest('it-modal');
+            console.log('openModal -> modal', modal);
+            modal?.show();
+          };
+          const closeModal = (event) => {
+            const el = event.currentTarget;
+            const modal = el.closest('it-modal');
+            console.log('closeModal -> modal', modal);
+            modal?.hide();
+          };
+          const toggleModal = (event) => {
+            const el = event.currentTarget;
+            const modal = el.closest('it-modal');
+            console.log('toggleModal -> modal', modal);
+            modal?.toggle();
+          };
+
+          // Assegna gli event listener ai bottoni di trigger e footer
+          modalShow.querySelector('[slot="trigger"]').addEventListener('click', openModal);
+          modalShow.querySelectorAll('[slot="footer"] it-button').forEach((btn) => btn.addEventListener('click', closeModal));
+
+          modalToggle.querySelector('[slot="trigger"]').addEventListener('click', toggleModal);
+          modalToggle.querySelectorAll('[slot="footer"] it-button').forEach((btn) => btn.addEventListener('click', toggleModal));
+        </script>
+        `,
+      },
+    },
+  },
+  render: () => html`
+    <it-modal disable-animation close-label="Chiudi finestra modale">
+      <it-button slot="trigger" variant="primary" @click="${openModal}">Modale con apertura manuale (show)</it-button>
+      <span slot="header">Modale con apertura manuale</span>
+      <p slot="content">Questa modale appare immediatamente senza animazione di dissolvenza.</p>
+      <it-button slot="footer" variant="outline-primary" @click="${closeModal}">Annulla</it-button>
+      <it-button slot="footer" variant="primary" @click="${closeModal}">Conferma</it-button>
+    </it-modal>
+    <it-modal disable-animation close-label="Chiudi finestra modale">
+      <it-button slot="trigger" variant="primary" @click="${toggleModal}"
+        >Modale con apertura manuale (toggle)</it-button
+      >
+      <span slot="header">Modale con toggle manuale</span>
+      <p slot="content">Questa modale appare immediatamente senza animazione di dissolvenza.</p>
+      <it-button slot="footer" variant="outline-primary" @click="${toggleModal}">Annulla</it-button>
+      <it-button slot="footer" variant="primary" @click="${toggleModal}">Conferma</it-button>
     </it-modal>
   `,
 };

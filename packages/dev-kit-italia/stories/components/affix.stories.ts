@@ -3,7 +3,7 @@ import { html } from 'lit';
 
 const meta = {
   title: 'Componenti/Affix',
-  tags: ['documentation', 'new', 'a11y-ok'],
+  tags: ['documentation', 'a11y-ok'],
   //   parameters: {
   //     docs: {
   //       description: {
@@ -37,7 +37,7 @@ export const AffixTop: Story = {
         story: `
 Per ancorare un elemento alla parte **alta** della pagina è sufficiente applicare la classe \`.affix-parent\` all’elemento che lo contiene e la classe **\`.affix-top\`** all’elemento stesso.
 
-<div class="mt-5" style="font-size:0.9rem">Scorri il contenuto dell'esempio qui sotto per vedere l'effetto dell'affix.</div>
+<div class="mt-5" style="font-size:0.9rem">Scorri il contenuto di questo esempio per vedere l'effetto dell'affix.</div>
 `,
       },
     },
@@ -128,7 +128,7 @@ export const AffixBottom: Story = {
       description: {
         story: `
 Per ancorare un elemento alla parte **bassa** della pagina è sufficiente applicare la classe \`.affix-parent\` all’elemento che lo contiene e la classe **\`.affix-bottom\`** all’elemento stesso.
-<div class="mt-5" style="font-size:0.9rem">Scorri il contenuto dell'esempio qui sotto per vedere l'effetto dell'affix.</div>`,
+<div class="mt-5" style="font-size:0.9rem">Scorri il contenuto in questo esempio per vedere l'effetto dell'affix.</div>`,
       },
     },
   },

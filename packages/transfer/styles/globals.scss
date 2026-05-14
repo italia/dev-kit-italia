@@ -1,0 +1,9 @@
+it-transfer {
+  --it-host-display: block;
+  display: var(--it-host-display);
+}
+
+// it-transfer-item is a data carrier only; its content is always rendered inside it-transfer's shadow DOM.
+it-transfer-item {
+  display: none;
+}

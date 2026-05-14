@@ -10,12 +10,12 @@ import * as BreadcrumbsStories from './it-breadcrumbs.stories';
 
 ## Cosa fa
 
-Usa il componente Breadcrumbs quando un sito presenta molti contenuti organizzati su più di due livelli gerarchici e gli utenti hanno bisogno di spostarsi velocemente tra i vari livelli.
+Il componente Breadcrumbs (`it-breadcrumbs`) indica la posizione delle pagine all’interno del sito, utile quando i contenuti sono organizzati su più livelli e gli utenti hanno bisogno di spostarsi velocemente tra i vari livelli.
 
 [Approfondisci quando e come usare il componente Breadcrumbs](https://designers.italia.it/design-system/componenti/breadcrumbs/)
 
 ### Alternative a questo componente
-- Progress indicators: utile a indicare il progresso di un flusso transazionale lineare, come la richiesta di un servizio o un pagamento.
+- [Progress](/docs/componenti-progress--documentazione): utile a indicare il progresso di un flusso transazionale lineare, come la richiesta di un servizio o un pagamento.
 
 
 ## Anteprima e attributi del componente
@@ -27,12 +27,12 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l’aspet
 
 ## Indicazioni generali
 
-Il componente `it-breadcrumbs` rappresenta il contenitore principale delle breadcrumbs e include uno o più elementi `it-breadcrumb-item`.
-Il componente `it-breadcrumb-item` rappresenta un singolo elemento breadcrumb e va sempre usato come figlio di `it-breadcrumbs`.
+Il componente `it-breadcrumbs` è il contenitore principale delle breadcrumbs e include uno o più elementi `it-breadcrumb-item`.
+Il componente `it-breadcrumb-item` è un singolo elemento breadcrumb e va sempre usato come figlio di `it-breadcrumbs`.
 
 Il componente `it-breadcrumb-item` espone i seguenti slot:
-- **default**: voce breadcrumb. Inserisci un normale link `<a>`, eventualmente accompagnato da altri elementi inline
-- **separator**: elemento separatore personalizzato (ad esempio un'icona)
+- **default**, per ogni singola voce delle breadcrumbs. Inserisci un normale link `<a>`, eventualmente accompagnato da altri elementi inline;
+- **separator**, per l'elemento separatore personalizzato (ad esempio un'icona).
 
 <div class="callout callout-warning">
   <div class="callout-inner">
@@ -40,10 +40,10 @@ Il componente `it-breadcrumb-item` espone i seguenti slot:
       <span class="text">Accessibilità e semantica</span>
     </div>
     <p>
-      Ricordati di inserire il testo descrittivo del link all'interno del tag `<a>` per garantire una corretta semantica e accessibilità.
-    </p>
-    <p>
-      Ricordati di valorizzare sempre l'attributo `href` per rendere il link effettivamente navigabile e semanticamente corretto.
+      Inserisci il testo descrittivo del link all'interno del tag `<a>` per garantire una corretta semantica e accessibilità.
+</p>
+<p>
+      Valorizza sempre l'attributo `href` per rendere il link effettivamente navigabile e semanticamente corretto.
     </p>
   </div>
 </div>
@@ -51,9 +51,9 @@ Il componente `it-breadcrumb-item` espone i seguenti slot:
 ## Accessibilità
 
 Il componente Breadcrumbs implementa le specifiche ARIA [WAI-ARIA Authoring Practices 1.2 breadcrumbs](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/) per garantire un'esperienza accessibile a tutti gli utenti:
-- Fornisce automaticamente l'attributo `aria-current="page"` sull'ultimo elemento per indicare la pagina corrente agli screen reader.
-- Il separatore viene nascosto agli screen reader tramite `aria-hidden="true"` per evitare annunci ridondanti.
-- Usa elementi semantici (`<nav>`, `<ol>`, `<li>`) per una corretta struttura del documento.
+- fornisce automaticamente l'attributo `aria-current="page"` sull'ultimo elemento per indicare la pagina corrente agli screen reader;
+- il separatore viene nascosto agli screen reader tramite `aria-hidden="true"` per evitare annunci ridondanti;
+- usa elementi semantici (`<nav>`, `<ol>`, `<li>`) per una corretta struttura del documento.
 
 <div class="callout callout-warning">
   <div class="callout-inner">
@@ -69,21 +69,21 @@ Il componente Breadcrumbs implementa le specifiche ARIA [WAI-ARIA Authoring Prac
 
 ## Con icona
 
-Puoi aggiungere un'icona a un elemento `it-breadcrumb-item` inserendo un componente `it-icon` all'interno del tag `<a>`.
+Per aggiungere un'icona a un elemento `it-breadcrumb-item`, inserisci un componente `it-icon` all'interno del tag `<a>`.
 
 <Canvas of={BreadcrumbsStories.ConIcona} />
 
 ## Separatore personalizzato
 
 Di default, il componente Breadcrumbs usa `/` come separatore tra gli elementi. Puoi personalizzarlo in due modi:
-- utilizzando l'attributo `separator` su `it-breadcrumbs` (es. `>`)
+- utilizzando l'attributo `separator` su `it-breadcrumbs` (ad esempio, `>`);
 - inserendo un elemento personalizzato (come un'icona) nello slot `separator` di ogni `it-breadcrumb-item`.
 
 <Canvas of={BreadcrumbsStories.SeparatorePersonalizzato} />
 
 ## Sfondo scuro
 
-Aggiungi l'attributo `dark` per utilizzare la versione su sfondo scuro delle breadcrumbs.
+Aggiungi l'attributo `dark` per utilizzare la versione delle breadcrumbs su sfondo scuro.
 
 <div class="callout callout-warning">
   <div class="callout-inner">
@@ -100,11 +100,11 @@ Aggiungi l'attributo `dark` per utilizzare la versione su sfondo scuro delle bre
 
 ## Personalizzazione degli stili
 
-Per la personalizzazione degli stili puoi usare i selettori `::part` dedicati:
+Per personalizzare gli stili, puoi usare i selettori `::part` dedicati:
 
-- `::part(breadcrumbs-container)` - elemento `nav` che contiene le breadcrumbs
-- `::part(breadcrumbs)` - elemento `ol` che contiene le voci
-- `::part(breadcrumb-item)` - ogni singolo elemento `li` della lista
-- `::part(separator)` - elemento usato come separatore tra le voci
+- `::part(breadcrumbs-container)`, per l'elemento `nav` che contiene le breadcrumbs;
+- `::part(breadcrumbs)`, per l'elemento `ol` che contiene le voci;
+- `::part(breadcrumb-item)`, per ogni singolo elemento `li` della lista;
+- `::part(separator)`, per l'elemento usato come separatore tra le voci.
 
-[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)

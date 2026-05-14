@@ -10,6 +10,7 @@
 @import 'bootstrap-italia/src/scss/base/reboot';
 
 @import 'bootstrap-italia/src/scss/base/containers';
+@import 'bootstrap-italia/src/scss/base/transitions';
 @import 'bootstrap-italia/src/scss/base/helpers';
 
 @import 'bootstrap-italia/src/scss/base/utilities/api';
@@ -24,9 +25,11 @@
 
 @import 'bootstrap-italia/src/scss/forms/forms'; //perchè ci sono delle variabile definite nella :root
 
+@import 'bootstrap-italia/src/scss/components/images';
 @import 'bootstrap-italia/src/scss/components/linklist';
 @import 'bootstrap-italia/src/scss/components/dropdown';
 @import 'bootstrap-italia/src/scss/components/nav';
+@import 'bootstrap-italia/src/scss/components/navbar';
 @import 'bootstrap-italia/src/scss/components/header';
 @import 'bootstrap-italia/src/scss/components/headerslim';
 @import 'bootstrap-italia/src/scss/components/overlay-panel';
@@ -34,42 +37,71 @@
 @import 'bootstrap-italia/src/scss/components/sidebar';
 @import 'bootstrap-italia/src/scss/components/affix';
 @import 'bootstrap-italia/src/scss/components/badge';
+@import 'bootstrap-italia/src/scss/components/forward';
 @import 'bootstrap-italia/src/scss/components/navscroll';
 @import 'bootstrap-italia/src/scss/components/progress-bars';
+@import 'bootstrap-italia/src/scss/components/hero';
+@import 'bootstrap-italia/src/scss/components/buttons'; // serve per applicare le classi di stile dei bottoni agli elementi di tipo <a>
+@import 'bootstrap-italia/src/scss/components/card'; //serve per l'esempio HERO. TODO: da rimuovere quando arriva il componente card.
 
-/*dev-kit-italia global styles*/
-@import '@italia/avatar/styles/globals';
+@import 'bootstrap-italia/src/scss/components/tab';
+
 @import '@italia/accordion/styles/globals';
-@import '@italia/breadcrumbs/styles/globals';
+@import '@italia/autocomplete/styles/globals';
+@import '@italia/avatar/styles/globals';
 @import '@italia/back-to-top/styles/globals';
+@import '@italia/bottom-nav/styles/globals';
+@import '@italia/breadcrumbs/styles/globals';
 @import '@italia/button/styles/globals';
-@import '@italia/dropdown/styles/globals';
-@import '@italia/icon/styles/globals';
-@import '@italia/input/styles/globals';
-@import '@italia/navscroll/styles/globals';
-@import '@italia/skiplinks/styles/globals';
-@import '@italia/section/styles/globals';
-@import '@italia/select/styles/globals';
-@import '@italia/video/styles/globals';
 @import '@italia/callout/styles/globals';
+@import '@italia/card/styles/globals';
+@import '@italia/carousel/styles/globals';
 @import '@italia/checkbox/styles/globals';
 @import '@italia/chip/styles/globals';
 @import '@italia/collapse/styles/globals';
+@import '@italia/dimmer/styles/globals';
+@import '@italia/dropdown/styles/globals';
+@import '@italia/hero/styles/globals';
+@import '@italia/header/styles/globals';
+@import '@italia/icon/styles/globals';
+@import '@italia/input/styles/globals';
+@import '@italia/megamenu/styles/globals';
+@import '@italia/modal/styles/globals';
+@import '@italia/navscroll/styles/globals';
+@import '@italia/notification/styles/globals';
+@import '@italia/pagination/styles/globals';
 @import '@italia/popover/styles/globals';
-@import '@italia/sticky/styles/globals';
+@import '@italia/progress/styles/globals';
 @import '@italia/radio/styles/globals';
 @import '@italia/rating/styles/globals';
-@import '@italia/modal/styles/globals';
+@import '@italia/section/styles/globals';
+@import '@italia/select/styles/globals';
+@import '@italia/skiplinks/styles/globals';
+@import '@italia/sticky/styles/globals';
+@import '@italia/toolbar/styles/globals';
+@import '@italia/thumbnav/styles/globals';
+@import '@italia/timeline/styles/globals';
+@import '@italia/tabs/styles/globals';
+@import '@italia/toggle/styles/globals';
+@import '@italia/tooltip/styles/globals';
+@import '@italia/transfer/styles/globals';
+@import '@italia/upload/styles/globals';
+@import '@italia/video/styles/globals';
 
 // Footer
 @import 'bootstrap-italia/src/scss/components/footer';
 @import 'bootstrap-italia/src/scss/components/list';
+@import 'bootstrap-italia/src/scss/components/list-group';
 @import 'bootstrap-italia/src/scss/components/headercenter';
 
-@import './components/sidebar';
-@import './components/list';
+// Table
+@import 'bootstrap-italia/src/scss/components/tables';
+
+@import './components/alert';
 @import './components/footer';
 @import './components/go-back';
+@import './components/list';
+@import './components/sidebar';
 
 .it-footer-main .it-brand-wrapper ::part(icon) {
   width: var(--#{$prefix}footer-brand-icon-size);
@@ -78,4 +110,5 @@
   margin-right: var(--#{$prefix}spacing-xs);
   fill: var(--#{$prefix}footer-brand-icon-color);
 }
+
 // End footer

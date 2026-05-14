@@ -1,5 +1,98 @@
 # @italia/video
 
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/checkbox@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/checkbox@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+## 1.0.0-alpha.9
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+  - @italia/checkbox@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+## 1.0.0-alpha.8
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.8
+  - @italia/checkbox@1.0.0-alpha.8
+  - @italia/globals@1.0.0-alpha.8
+  - @italia/i18n@1.0.0-alpha.8
+  - @italia/icon@1.0.0-alpha.8
+
+## 1.0.0-alpha.7
+
+### Minor Changes
+
+- [#307](https://github.com/italia/dev-kit-italia/pull/307) [`37e516b`](https://github.com/italia/dev-kit-italia/commit/37e516ba5750b2d4dd7d13bebdafd4fe778f022d) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added Carousel component
+
+### Patch Changes
+
+- Updated dependencies [[`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c), [`572df4d`](https://github.com/italia/dev-kit-italia/commit/572df4dfe4e249cc98aa6650a2bf8f9726794f40), [`8373579`](https://github.com/italia/dev-kit-italia/commit/83735794eec3ec027554983823830cb28fe3b68c)]:
+  - @italia/button@1.0.0-alpha.7
+  - @italia/checkbox@1.0.0-alpha.7
+  - @italia/globals@1.0.0-alpha.7
+  - @italia/i18n@1.0.0-alpha.7
+  - @italia/icon@1.0.0-alpha.7
+
+## 1.0.0-alpha.6
+
+### Patch Changes
+
+- [#280](https://github.com/italia/dev-kit-italia/pull/280) [`d2d9687`](https://github.com/italia/dev-kit-italia/commit/d2d9687c8baacc655c2dd9aa6fcd938f46b8f4a3) Thanks [@pnicolli](https://github.com/pnicolli)! - Updated names in the docs to be consistent with UI Kit
+
+- [#299](https://github.com/italia/dev-kit-italia/pull/299) [`e556822`](https://github.com/italia/dev-kit-italia/commit/e55682290e80bcfc68cd8d835d96b77abd276b46) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Enhanced docs
+
+- Updated dependencies [[`efd4340`](https://github.com/italia/dev-kit-italia/commit/efd4340195ebe84a8a8135035125b83db56172d0), [`e556822`](https://github.com/italia/dev-kit-italia/commit/e55682290e80bcfc68cd8d835d96b77abd276b46), [`01aa2d7`](https://github.com/italia/dev-kit-italia/commit/01aa2d7850660d72c6e09a6b1118005fd75f9420)]:
+  - @italia/checkbox@1.0.0-alpha.6
+  - @italia/button@1.0.0-alpha.6
+  - @italia/icon@1.0.0-alpha.6
+  - @italia/globals@1.0.0-alpha.6
+  - @italia/i18n@1.0.0-alpha.6
+
+## 1.0.0-alpha.5
+
+### Patch Changes
+
+- [#251](https://github.com/italia/dev-kit-italia/pull/251) [`21e8180`](https://github.com/italia/dev-kit-italia/commit/21e8180e49b83ca2be70d69e952a52d2e563b29e) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated bootstrap-italia and fixed design-tokens
+
+- [`f8d05ee`](https://github.com/italia/dev-kit-italia/commit/f8d05eed0c38744e77788499175ec85901c4e092) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Updated bootstrap-italia and fixed some stories
+
+- Updated dependencies [[`57f1319`](https://github.com/italia/dev-kit-italia/commit/57f1319bb9db5d1b4a5811ccf16e46cc09e83e8f), [`d53c48c`](https://github.com/italia/dev-kit-italia/commit/d53c48cae3b8d524f465e47070ecf8e6a2358510), [`18e1e61`](https://github.com/italia/dev-kit-italia/commit/18e1e61c9e999713ffc1965a547d08919808dc77), [`f8d05ee`](https://github.com/italia/dev-kit-italia/commit/f8d05eed0c38744e77788499175ec85901c4e092)]:
+  - @italia/globals@1.0.0-alpha.5
+  - @italia/checkbox@1.0.0-alpha.5
+  - @italia/i18n@1.0.0-alpha.5
+  - @italia/button@1.0.0-alpha.5
+  - @italia/icon@1.0.0-alpha.5
+
 ## 1.0.0-alpha.4
 
 ### Patch Changes

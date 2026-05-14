@@ -1,7 +1,7 @@
 {
   "name": "@italia/checkbox",
   "description": "Web component it-checkbox del Design system .italia",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.11",
   "publishConfig": {
     "access": "public"
   },
@@ -23,7 +23,9 @@
   "exports": {
     ".": "./dist/src/index.js",
     "./it-checkbox.js": "./dist/src/it-checkbox.js",
+    "./it-checkbox-base.js": "./dist/src/it-checkbox-base.js",
     "./it-checkbox-group.js": "./dist/src/it-checkbox-group.js",
+    "./it-checkbox-group-base.js": "./dist/src/it-checkbox-group-base.js",
     "./styles/*": "./styles/*"
   },
   "files": [

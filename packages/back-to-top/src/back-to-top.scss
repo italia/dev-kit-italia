@@ -11,13 +11,16 @@ $utilities: (
   'border-color': map-merge(map-get($utilities, 'border-color'), ()),
 );
 
-button {
+button.back-to-top {
+  z-index: 9999; //per evitare che venga coperto da altri elementi tipo navscroll bottom su mobile
   border: none;
   cursor: pointer;
 
   &.back-to-top-border {
     border: 2px solid #fff;
   }
+
+  --#{$prefix}icon-size-m: calc(var(--#{$prefix}backtop-sizing) / 2);
 }
 
 @import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities

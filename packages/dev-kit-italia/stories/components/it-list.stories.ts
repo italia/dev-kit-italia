@@ -1,13 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import '@italia/icon';
-import '@italia/button';
-import '@italia/avatar';
-import '@italia/checkbox';
 
 const meta = {
   title: 'Componenti/List',
-  tags: ['alpha', 'a11y-ok', 'documentation'],
+  tags: ['a11y-ok', 'documentation'],
   parameters: {
     layout: 'padded',
   },
@@ -625,7 +621,7 @@ export const LinkListMultilineIcona: Story = {
           </a>
         </li>
         <li>
-          <span class="divider" role="separator"></span>
+          <span class="divider"></span>
         </li>
         <li>
           <a class="list-item icon-right" href="#">
@@ -636,7 +632,9 @@ export const LinkListMultilineIcona: Story = {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit…</p>
           </a>
         </li>
-        <li><span class="divider"></span></li>
+        <li>
+          <span class="divider"></span>
+        </li>
         <li>
           <a class="list-item disabled icon-right" href="#" aria-disabled="true">
             <span class="list-item-title-icon-wrapper">
@@ -762,20 +760,14 @@ export const LinkListToggle: Story = {
     <div class="link-list-wrapper">
       <ul class="link-list">
         <li>
-          <div class="toggles">
-            <label for="toggle1">
-              Label per toggle
-              <input type="checkbox" id="toggle1" /><span class="lever"></span>
-            </label>
-          </div>
+          <it-toggle name="toggle1">
+            <span slot="label">Label per toggle</span>
+          </it-toggle>
         </li>
         <li>
-          <div class="toggles">
-            <label for="toggle2">
-              Label per toggle disabilitato
-              <input type="checkbox" id="toggle2" disabled aria-disabled="true" /><span class="lever"></span>
-            </label>
-          </div>
+          <it-toggle name="toggle2" disabled>
+            <span slot="label">Label per toggle disabilitato</span>
+          </it-toggle>
         </li>
       </ul>
     </div>

@@ -44,7 +44,7 @@ const renderSelect = (params: any) =>
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Form/Select',
-  tags: ['a11y-ok', 'web-component', 'alpha'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-select',
   args: {
     id: '',
@@ -140,6 +140,7 @@ const DefaultChildren = html`<option value="Value 1">Opzione 1</option>
 
 export const EsempioInterattivo: Story = {
   ...meta,
+  tags: ['!dev'],
   name: 'Esempio interattivo',
   parameters: {
     docs: {
@@ -155,24 +156,24 @@ export const EsempioInterattivo: Story = {
     })}`,
 };
 
-export const Multiple: Story = {
-  ...meta,
-  name: 'Select multipla',
-  parameters: {
-    docs: {
-      canvas: {
-        sourceState: 'shown',
-      },
-    },
-  },
-  render: (params) =>
-    html`${renderSelect({
-      ...params,
-      multiple: true,
-      placeholder: 'Seleziona una o più opzioni',
-      children: DefaultChildren,
-    })}`,
-};
+// export const Multiple: Story = {
+//   ...meta,
+//   name: 'Select multipla',
+//   parameters: {
+//     docs: {
+//       canvas: {
+//         sourceState: 'shown',
+//       },
+//     },
+//   },
+//   render: (params) =>
+//     html`${renderSelect({
+//       ...params,
+//       multiple: true,
+//       placeholder: 'Seleziona una o più opzioni',
+//       children: DefaultChildren,
+//     })}`,
+// };
 
 export const Disabled: Story = {
   ...meta,
