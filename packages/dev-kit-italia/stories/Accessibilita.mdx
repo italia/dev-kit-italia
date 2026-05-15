@@ -2,21 +2,23 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Accessibilità" />
 
-# Accessibilità: verificabilità delle pagine che usano Dev Kit Italia
+# Accessibilità
 
-Questa guida estende il [fondamento Accessibilità del design system .italia](https://designers.italia.it/design-system/fondamenti/accessibilita/) per il contesto di pagine realizzate con Dev Kit Italia documentando come si comportano alcuni dei principali tool di verifica automatica.
+**Questa guida estende il [fondamento Accessibilità del design system .italia](https://designers.italia.it/design-system/fondamenti/accessibilita/)** documentando come si comportano alcuni dei principali strumenti di verifica automatica nell'analizzare pagine realizzate con web component Dev Kit Italia. 
 
-Dev Kit Italia adotta un [approccio HTML-first con slot](/?path=/docs/documentazione-tecnica--documentazione): il contenuto significativo vive nel light DOM, il componente lo proietta nel shadow DOM e l'accessibility tree del browser lo espone alle tecnologie assistive. Questo fa sì che i tool di verifica automatica si comportino in modo molto diverso. Alcuni attraversano correttamente il shadow DOM, altri lo ignorano, altri producono falsi positivi. I risultati che seguono riguardano i tool testati al momento della stesura: nuovi tool o versioni future potrebbero comportarsi diversamente.
+**Dev Kit Italia adotta un [approccio HTML-first con slot](/?path=/docs/documentazione-tecnica--documentazione)**: il contenuto significativo vive nel light DOM, il componente lo proietta nel shadow DOM e l'accessibility tree del browser lo espone alle tecnologie assistive. Alcuni strumenti di verifica attraversano correttamente il shadow DOM, altri lo ignorano, altri producono falsi positivi e negativi. 
 
-Ricordati che i tool automatici rilevano solo una parte degli errori di accessibilità. La maggioranza dei criteri di successo WCAG richiedono valutazione umana. I controlli manuali sono sempre necessari e per flussi critici è indispensabile coinvolgere esperti di accessibilità e, ove necessario, testarne l'usabilità con utenti reali. Vedi la sezione [Verifiche manuali](#verifiche-manuali) per le indicazioni specifiche sui web component.
+**Ricordati che i tool automatici rilevano solo una parte degli errori di accessibilità**. I controlli manuali sono sempre necessari e per flussi critici è indispensabile coinvolgere esperti di accessibilità e, ove necessario, testarne l'usabilità con utenti reali. Nella sezione [verifiche manuali](#verifiche-manuali) alcune indicazioni specifiche per i web component Dev Kit Italia.
 
-Feedback benvenuti: apri una issue su [italia/dev-kit-italia](https://github.com/italia/dev-kit-italia). L'analisi è basata su questa [pagina di test dedicata](https://italia.github.io/design-jekyll-devkit-theme/test-a11y/).
+**È disponibile una [pagina di test dedicata](https://italia.github.io/design-jekyll-devkit-theme/test-a11y/)** che potrà essere integrata di volta in volta con nuovi componenti e casi di test. Quanto segue riguarda i tool testati al momento della stesura (axe-core v4.11.1, Siteimprove v2.0, ARC Toolkit v5.7.10, WAVE 3.2.7.1, MAUVE++ 4.0.2): nuovi tool o versioni future potrebbero comportarsi diversamente.
+
+**Feedback e contributi benvenuti**: [apri una nuova segnalazione](https://github.com/italia/bootstrap-italia/issues/new?assignees=&labels=design%20system&projects=&template=apri-una-segnalazione.it.yaml) sul repository [italia/dev-kit-italia](https://github.com/italia/dev-kit-italia). 
 
 ---
 
-## Tool consigliati
+## Strumenti consigliati
 
-I principali tool di verifica automatica hanno comportamenti molto diversi tra loro sul shadow DOM. La tabella seguente riassume alcuni dei comportamenti osservati su una pagina che usa i web component di Dev Kit Italia.
+I principali tool di verifica automatica hanno comportamenti molto diversi tra loro su web component che usano shadow DOM come quelli di Dev Kit Italia. La tabella seguente riassume alcuni dei comportamenti osservati sulla pagina di test.
 
 <table>
   <thead>
@@ -34,14 +36,14 @@ I principali tool di verifica automatica hanno comportamenti molto diversi tra l
       <td>Sì, con "best practices" attive</td>
       <td>Sì</td>
       <td>Sì</td>
-      <td>Tool principale consigliato</td>
+      <td>Tool consigliato</td>
     </tr>
     <tr>
       <td><strong>pa11y con axe runner</strong></td>
       <td>Sì</td>
       <td>Sì</td>
       <td>Sì</td>
-      <td>Tool CLI più completo tra quelli testati</td>
+      <td>Tool CLI consigliato</td>
     </tr>
     <tr>
       <td><strong>Siteimprove</strong></td>
@@ -69,21 +71,21 @@ I principali tool di verifica automatica hanno comportamenti molto diversi tra l
       <td>No</td>
       <td>No</td>
       <td>No</td>
-      <td>Non entra nel shadow DOM</td>
+      <td>Ignora il shadow DOM</td>
     </tr>
     <tr>
       <td><strong>pa11y con default htmlcs runner</strong></td>
       <td>No</td>
       <td>No</td>
       <td>No</td>
-      <td>Non entra nel shadow DOM</td>
+      <td>Ignora il shadow DOM</td>
     </tr>
   </tbody>
 </table>
 
-Tra i tool elencati, **axe-core** è quello che classifica in modo più affidabile sia i `Passes` — componenti correttamente implementati — sia gli errori reali. È il tool consigliato per le verifiche durante lo sviluppo. Per una copertura più ampia, combinarlo con **pa11y con axe runner** o **Siteimprove**.
+Tool automatico più affidabile tra quelli testati è **axe-core**, classificando casi di test corretti ed errori reali. Per una copertura più ampia durante lo sviluppo, suggeriamo di combinarlo con **pa11y con axe runner** e/o **Siteimprove**.
 
-### Per CI/CD
+### Per CLI e CI/CD
 
 ```bash
 npx pa11y <url> --standard WCAG2AA --runner axe
@@ -105,15 +107,15 @@ Esempio di configurazione `.pa11yci`:
 }
 ```
 
-Aggiungere eventualmente all'ignore list i falsi positivi noti, ad esempio `list` per i breadcrumbs documentato nelle storie. Verificare periodicamente caso per caso che le regole ignorate siano effettivamente falsi positivi.
+Aggiungere all'ignore list gli eventuali falsi positivi se documentati, ad esempio `list` per i breadcrumbs. Verificare periodicamente caso per caso che le regole ignorate siano effettivamente falsi positivi.
 
 ---
 
 ## Slot obbligatori
 
-Quando uno slot che alimenta un elemento semantico non è popolato, il componente genera un nodo accessibile con nome vuoto nell'accessibility tree — un heading `""` o una label `""`. Dev Kit Italia segnala il problema in console (es. `[it-card] no title slot content found`).
+Quando uno slot che alimenta un elemento semantico non è popolato, il componente genera un nodo accessibile con nome vuoto nell'accessibility tree — un heading `""` o una label `""`. Il kit segnala il problema nella console del browser (esempio di messaggio: `[it-card] no title slot content found`). Ti suggeriamo di trattare questi warning di sviluppo come errori in CI.
 
-Esempi con gli slot obbligatori non popolati:
+Esempi con slot obbligatori non popolati:
 
 <table>
   <thead>
@@ -175,9 +177,9 @@ Esempi con gli slot obbligatori non popolati:
 
 ## Falsi positivi noti
 
-Alcuni tool segnalano errori su componenti correttamente implementati. I casi documentati di seguito non corrispondono a problemi reali e non richiedono azioni correttive.
+Alcuni tool segnalano errori su componenti correttamente implementati. I casi documentati di seguito non corrispondono a problemi reali e non richiedono azioni correttive. La lista non è esaustiva ma da considerare esempio e guida. 
 
-### ARC Toolkit: falsi positivi sistematici
+### ARC Toolkit
 
 ARC Toolkit entra nel shadow DOM ma non risolve correttamente la proiezione degli slot. Con componenti **correttamente popolati** segnala molti falsi positivi come:
 
@@ -188,7 +190,7 @@ ARC Toolkit entra nel shadow DOM ma non risolve correttamente la proiezione degl
 - `<it-select>` con slot `label`: errore label (WCAG 1.3.1)
 - `<it-checkbox>` con slot `label`: errore label (WCAG 1.3.1)
 
-**Non usarlo come tool principale.** I risultati mescolano errori reali e falsi positivi senza distinzione.
+Nella configurazione attuale produce quindi un numero elevato di falsi positivi sui web component Dev Kit Italia, rendendo difficile distinguere errori reali. Non consigliato come tool primario.
 
 ### axe-core e pa11y con axe runner: breadcrumbs
 
@@ -196,12 +198,12 @@ ARC Toolkit entra nel shadow DOM ma non risolve correttamente la proiezione degl
 
 ### pa11y con htmlcs runner: form e attributi
 
-- "Form non contiene submit button" quando il submit è un `<it-button type="submit">`. HTML_CodeSniffer non riconosce il web component.
-- Attributo `align` su `<td>` segnalato come HTML 4.01. È un attributo usato internamente dal componente, non eliminabile dal consumer.
+- "Form non contiene submit button" quando il submit è un `<it-button type="submit">`. Non riconosce il web component.
+- Attributo `align` su `<td>` segnalato come HTML 4.01. È un attributo usato internamente dal componente.
 
 ### WAVE: contrasto radio group
 
-Falso positivo noto di WAVE su radio group con contrasto 1.4.3.
+Falso positivo con contrasto 1.4.3.
 
 ---
 
@@ -209,34 +211,32 @@ Falso positivo noto di WAVE su radio group con contrasto 1.4.3.
 
 ### ARIA cross-shadow-root
 
-Quando si usano gli attributi `it-aria-describedby` o `it-aria-labelledby` su `<it-input>`, questi vengono applicati correttamente all'elemento `<input>` generato nel shadow DOM. Tuttavia, se l'ID referenziato appartiene a un elemento nel light DOM esterno al componente, la descrizione o la label **non viene annunciata dai lettori di schermo**. È un limite della specifica W3C: questi attributi fanno sempre riferimento a ID nello stesso scope DOM. Lo stesso limite si applica verosimilmente agli altri componenti form (`<it-select>`, `<it-checkbox>`, `<it-radio>`, ...).
+Qualora si usino attributi `it-aria-describedby` o `it-aria-labelledby` ad esempio su `<it-input>`, questi vengono applicati all'elemento `<input>` generato nel shadow DOM. Tuttavia, se l'ID referenziato appartiene a un elemento nel light DOM esterno allo shadow DOM del componente, la descrizione o la label **non viene annunciata dai lettori di schermo**. È un limite della specifica W3C: questi attributi fanno sempre riferimento a ID nello stesso scope DOM. 
 
-Esempi di attributi da usare nel componente `<it-input>` che funzionano:
+Per `<it-input>`, come per altri componenti, Dev Kit Italia fornisce attributi alternativi che evitano il problema by default quando usati correttamente:
 - `support-text`: testo di supporto interno al componente
 - `validity-message`: messaggio di validazione
 - `custom-validation`: validazione custom
 
-La proposta W3C [Cross-root ARIA Delegation](https://github.com/leobalter/cross-root-aria-delegation) affronterebbe questo limite a livello di piattaforma.
-
 ### Tool di verifica senza supporto shadow DOM
 
-Strumenti basati su serializzazione DOM standard **non entrano nel shadow DOM**: 
+L'analisi conferma che strumenti basati su serializzazione DOM standard **non entrano nel shadow DOM**: 
 
 - Non percepiscono elementi semantici (heading, label, button) e ruoli ARIA generati nel shadow DOM
-- Non segnalano errori né pass sui componenti
+- Non segnalano errori né componenti implementati correttamente
 - Segnalano solo elementi nel light DOM (slot con `style` inline, elementi HTML della pagina)
 
-Una pagina che usa web component Dev Kit Italia è quindi non verificabile con questo tipo di strumenti, non necessariamente non conforme. 
+Una pagina che usa web component Dev Kit Italia è quindi non verificabile con questo tipo di strumenti.
 
 ---
 
 ## Verifiche manuali 
 
-Le verifiche automatiche non sono sufficienti: molti criteri WCAG richiedono valutazione umana, e alcuni tool hanno i limiti specifici sul shadow DOM documentati in questa pagina. Ingrandimento, navigazione da tastiera e lettori di schermo vanno sempre verificati manualmente.
+Ricorda che le verifiche automatiche non sono sufficienti, molti criteri WCAG richiedono valutazione umana e alcuni tool hanno i limiti specifici sul shadow DOM documentati in questa pagina. Corretta semantica degli elementi, ingrandimento, navigazione da tastiera e lettori di schermo vanno sempre verificati manualmente.
 
 **Combinazioni consigliate:**
 
-Il [fondamento Accessibilità](https://designers.italia.it/design-system/fondamenti/accessibilita/) indica **Windows + Chrome + JAWS** come combinazione di riferimento. Data la relativa novità dei web component, verificare su più combinazioni per rilevare comportamenti difformi tra browser e lettori di schermo. Un setup minimo:
+Il [fondamento Accessibilità](https://designers.italia.it/design-system/fondamenti/accessibilita/) indica **Windows + Chrome + JAWS** come combinazione di riferimento. Data la relativa novità della tecnologia web component con shadow DOM, verifica su più combinazioni per rilevare comportamenti difformi tra browser e lettori di schermo. Un setup minimo:
 
 Desktop:
 - Windows + Chrome o Edge + JAWS o NVDA
@@ -248,8 +248,8 @@ Mobile:
 
 **In aggiunta al [workflow descritto nel fondamento](https://designers.italia.it/design-system/fondamenti/accessibilita/), per i web component:**
 
-1. **Console browser**: durante lo sviluppo, Dev Kit segnala gli slot vuoti obbligatori con warning specifici.
-2. **Tab Accessibility di Chrome DevTools**: selezionare l'elemento semantico nel shadow DOM del componente (es. `<h3>` dentro `<it-card>`). Verificare `Name`, `Role` e attributi ARIA.
+1. **Console browser**: durante lo sviluppo, Dev Kit segnala gli slot vuoti obbligatori con warning specifici
+2. **Tab Accessibility di Chrome DevTools**: selezionare l'elemento semantico nel shadow DOM del componente (es. `<h3>` dentro `<it-card>`). Verificare `Name`, `Role` e attributi ARIA
 
 ---
 
@@ -259,7 +259,7 @@ Storybook integra strumenti di verifica automatica dell'accessibilità per le si
 
 ### Plugin axe
 
-Il plugin axe verifica automaticamente ogni storia. I risultati sono visibili nel tab "Accessibility" presente in ogni storia.
+I risultati delle verifiche del plugin axe sono disponibili nel tab "Accessibility" della storia.
 
 ### @web/test-runner con a11ySnapshot
 
@@ -267,10 +267,6 @@ Complementare al plugin axe, permetterà di verificare programmaticamente:
 - Accessibility tree effettivo
 - Navigazione da tastiera con eventi nativi
 - Stati dinamici post-interazione
-
-Riferimenti:
-- [Testing Accessibility with Shadow Roots](https://dev.to/westbrook/testing-accessibility-with-shadow-roots-55cm) — Westbrook Johnson (Adobe Spectrum)
-- [Testing Web Components with @web/test-runner](https://open-wc.org/blog/testing-web-components-with-web-test-runner/) — Open Web Components
 
 ---
 
@@ -283,3 +279,5 @@ Riferimenti:
 - [Cross-root ARIA Delegation — proposta W3C](https://github.com/leobalter/cross-root-aria-delegation)
 - [Shadow DOM and accessibility: the trouble with ARIA](https://nolanlawson.com/2022/11/28/shadow-dom-and-accessibility-the-trouble-with-aria/) — Nolan Lawson
 - [How Shadow DOM and accessibility are in conflict](https://alice.pages.igalia.com/blog/how-shadow-dom-and-accessibility-are-in-conflict/) — Alice Boxhall (Igalia)
+- [Testing Accessibility with Shadow Roots](https://dev.to/westbrook/testing-accessibility-with-shadow-roots-55cm) — Westbrook Johnson (Adobe Spectrum)
+- [Testing Web Components with @web/test-runner](https://open-wc.org/blog/testing-web-components-with-web-test-runner/) — Open Web Components
