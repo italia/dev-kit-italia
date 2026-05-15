@@ -5,12 +5,12 @@ import * as HeroStories from './it-hero.stories';
 
 # Hero
 
-<description>Sezione a tutta larghezza per mettere in evidenza combinazioni di contenuti testuali, immagini e pulsanti</description>
+<description>Sezione a tutta larghezza per mettere in evidenza combinazioni di contenuti testuali, immagini e pulsanti.</description>
 
 
 ## Cosa fa
 
-Il componente Hero puoi usarlo per guidare l'utente verso un contenuto in evidenza e una call to action, oppure come apertura di grande impatto visivo della pagina che possa invogliare gli utenti a scorrere ulteriori contenuti.
+Il componente Hero (`it-hero`) è una sezione a tutta larghezza che mette in evidenza contenuti in apertura di pagina con un grande impatto visivo, per invogliare gli utenti a continuare la navigazione.
 
 [Approfondisci quando e come usare il componente Hero](https://designers.italia.it/design-system/componenti/hero/)
 
@@ -24,40 +24,37 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l’aspet
 
 ## Indicazioni generali
 
-Puoi facoltativamente estendere la larghezza del componente Hero all’intera finestra, per mostrare messaggi in evidenza sul tuo sito.
+Considera un hero come una copertina o un banner molto in evidenza:
 
-### Attenzione a
-- Non usare più hero sulla stessa pagina.
-- Usa il componente Hero con moderazione, consideralo come fosse una copertina o un banner molto in evidenza. Difficilmente avrai bisogno di troppe copertine o banner nell'ambito dello stesso sito o servizio.
-- Fai attenzione al corretto contrasto (minimo) tra testo e sfondo nella variante "Con testo e immagine di sfondo"
-- Scegli il corretto livello di heading `h1`-`h6` per il titolo a seconda del contesto e della struttura di pagina.
-- Usa la corretta semantica html per le call to action laddove presenti: `<a>` per link di navigazione o ancore, `<it-button>` per azioni.
-- Quando usi il componente Hero con approccio "fullwidth", sfrutta tutta la larghezza della viewport.
+- non usare più hero sulla stessa pagina e moderane l'uso all'interno dello stesso sito o servizio;
+- puoi estendere la larghezza del componente Hero all’intera finestra, per mostrare messaggi in evidenza sul tuo sito;
+- quando usi hero con approccio "fullwidth", sfrutta tutta la larghezza della viewport;
+- se sono presenti call to action, usa la corretta semantica HTML (`<a>` per link di navigazione o ancore, `<it-button>` per azioni).
+
 
 ## Accessibilità
 
-- Valuta attentamente l'utilizzo di più hero nella stessa pagina.
-- Nel caso in cui utilizzi il componente Hero con sola immagine, imposta sempre l'attributo `it-aria-label` sul tag `<it-hero>` per annunciare tramite i lettori di schermo di cosa si tratta.
-- Se non imposti l'attributo `it-aria-label`, il componente calcolerà in automatico l'attributo `aria-labelledby` basandosi sul contenuto testuale presente e facendolo puntare al primo heading disponibile. Nei casi in cui non ci siano heading nel testo dell'header, i lettori di schermo annunceranno il componente come "sezione" generica senza ulteriori dettagli, rendendo difficile per gli utenti comprendere il suo scopo o contenuto. Assicurati quindi di includere sempre un heading all'interno del componente Hero o di impostare l'attributo `it-aria-label` per garantire una buona esperienza utente a tutti, compresi quelli che utilizzano tecnologie assistive.
-- Nel caso in cui inserisci contenuti testuali, utilizza per il titolo il livello `h` corretto a seconda del contesto.
-- Nel caso in cui utilizzi il componente Hero nella versione con testo e immagine di sfondo, verifica che l’immagine utilizzata assicuri sempre un adeguato contrasto rispetto al testo.
+- Se includi contenuti testuali, usa il corretto livello `h` per il titolo (`h1`-`h6`), in base alla gerarchia dei contenuti della pagina.  Il componente calcolerà automaticamente l'attributo `aria-labelledby` facendolo puntare al primo heading disponibile.
+- Se non è presente alcun heading nel testo del componente, i lettori di schermo annunceranno la sezione in modo generico, senza ulteriori dettagli. In questo caso, oppure se usi la variante con sola immagine, imposta sempre l'attributo `it-aria-label` sul tag `<it-hero>` per fornire un'etichetta descrittiva.
+- Se usi la variante con testo e immagine di sfondo, verifica che ci sia sempre contrasto adeguato tra testo e sfondo.
+- Valuta sempre con attenzione l'opportunità di usare più Hero nella stessa pagina.
 
 ## Con immagine
 Per mostrare una immagine di sfondo nel componente `it-hero`, inserisci l'immagine nello slot `background` dedicato.
 
-Ricordati di impostare l'attributo `it-aria-label` sul tag `<it-hero>` per annunciare tramite lettori di schermo di cosa si tratta.
+Ricordati di impostare l'attributo `it-aria-label` sul tag `<it-hero>` per indicare ai lettori di schermo di cosa si tratta.
 
 <Canvas of={HeroStories.ConImmagine} />
 
 ## Con contenuti testuali
-Inserisci il testo nello slot `text` dedicato.
+Per aggiungere contenuti testuali, inserisci il testo nello slot `text` dedicato.
 <div class="callout callout-success">
 <div class="callout-inner mt-0">
 <div class="callout-title">
-<span class="text">Accessibilità contenuti testuali</span>
+<span class="text">Accessibilità dei contenuti testuali</span>
 </div>
 <p>
-Nei casi in cui fossero presenti contenuti testuali, utilizza per il titolo il livello `h` corretto a seconda del contesto.
+Usa il corretto livello `h` per il titolo (`h1`-`h6`), in base alla gerarchia dei contenuti su pagina.
 </p>
 </div>
 </div>
@@ -65,7 +62,7 @@ Nei casi in cui fossero presenti contenuti testuali, utilizza per il titolo il l
 <Canvas of={HeroStories.ConContenutiTestuali} />
 
 ### Con contenuti testuali centrati
-Per ottenere il componente Hero con testi centrati orizzontalmente, aggiungi l'attributo `center` al tag `<it-hero>`.
+Per coentrare i testi orizzontalmente, aggiungi l'attributo `center` al tag `<it-hero>`.
 
 <Canvas of={HeroStories.ConContenutiTestualiCentrati} />
 
@@ -79,7 +76,7 @@ Per visualizzare i testi in overlay sulle immagini, viene creato automaticamente
 <span class="text">Accessibilità e contrasto</span>
 </div>
 <p>
-Verifica che l’immagine utilizzata assicuri sempre un adeguato contrasto rispetto al testo.
+Verifica che ci sia sempre contrasto adeguato tra testo e sfondo.
 </p>
 </div>
 </div>
@@ -101,18 +98,20 @@ Per aggiungere un filtro di tipo “screen”, aggiungi l'attributo `overlay-col
 ## Con immagine e margine negativo per contenuti sovrapposti
 In alcuni casi, il contenuto che segue può sovrapporsi al componente Hero.
 
-Aggiungi l'attributo `overlap` al tag `<it-hero>` per far sì che il contenuto seguente si sovrapponga al componente Hero (in questo caso il componente seguente è una card).
+Per far sovrappore al margine inferiore dell'hero il contenuto che segue, aggiungi l'attributo `overlap` al tag `<it-hero>`. 
+
+Nell'esempio viene mostrata la sovrapposizione con una card.
 
 <Canvas of={HeroStories.OverlapContent} />
 
 ## Personalizzazione degli stili
 
-Per la personalizzazione degli stili puoi usare i selettori `::part` dedicati:
+Per personalizzare gli stili, usa i selettori `::part` dedicati:
 
-- `::part(img-responsive-wrapper)` - wrapper dell'immagine di sfondo
-- `::part(text-container)` - contenitore dello slot del testo
+- `::part(img-responsive-wrapper)`, per il wrapper dell'immagine di sfondo;
+- `::part(text-container)`, per il contenitore dello slot del testo.
 
-Puoi cambiare il valore delle seguenti variabili css per:
+Puoi cambiare il valore delle seguenti variabili CSS per:
 <table>
 <thead>
 <tr>
@@ -169,4 +168,4 @@ Puoi cambiare il valore delle seguenti variabili css per:
 </tbody>
 </table>
 
-[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
