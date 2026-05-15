@@ -4,13 +4,13 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Accessibilità: verificabilità delle pagine che usano Dev Kit Italia
 
-Questa guida estende il [fondamento Accessibilità del design system .italia](https://designers.italia.it/design-system/fondamenti/accessibilita/) per il contesto di pagine realizzate con Dev Kit Italia: documenta come si comportano alcuni dei principali tool di verifica automatica.
+Questa guida estende il [fondamento Accessibilità del design system .italia](https://designers.italia.it/design-system/fondamenti/accessibilita/) per il contesto di pagine realizzate con Dev Kit Italia documentando come si comportano alcuni dei principali tool di verifica automatica.
 
 Dev Kit Italia adotta un [approccio HTML-first con slot](/?path=/docs/documentazione-tecnica--documentazione): il contenuto significativo vive nel light DOM, il componente lo proietta nel shadow DOM e l'accessibility tree del browser lo espone alle tecnologie assistive. Questo fa sì che i tool di verifica automatica si comportino in modo molto diverso. Alcuni attraversano correttamente il shadow DOM, altri lo ignorano, altri producono falsi positivi. I risultati che seguono riguardano i tool testati al momento della stesura: nuovi tool o versioni future potrebbero comportarsi diversamente.
 
 Ricordati che i tool automatici rilevano solo una parte degli errori di accessibilità. La maggioranza dei criteri di successo WCAG richiedono valutazione umana. I controlli manuali sono sempre necessari e per flussi critici è indispensabile coinvolgere esperti di accessibilità e, ove necessario, testarne l'usabilità con utenti reali. Vedi la sezione [Verifiche manuali](#verifiche-manuali) per le indicazioni specifiche sui web component.
 
-Feedback benvenuti: apri una issue su [italia/dev-kit-italia](https://github.com/italia/dev-kit-italia).
+Feedback benvenuti: apri una issue su [italia/dev-kit-italia](https://github.com/italia/dev-kit-italia). L'analisi è basata su questa [pagina di test dedicata](https://italia.github.io/design-jekyll-devkit-theme/test-a11y/).
 
 ---
 
