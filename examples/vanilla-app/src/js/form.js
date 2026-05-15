@@ -106,8 +106,25 @@ document.addEventListener('DOMContentLoaded', () => {
         events: ['it-change'], // 👈 FORZA l’ascolto sul change
       },
     )
-    .addField(
-      'it-autocomplete[id="autocomplete-regione"]',
+    .addField(      'it-transfer[id="transfer-ext"]',
+      [
+        {
+          validator: () => {
+            const el = fmc.querySelector('it-transfer[id="transfer-ext"]');
+            try {
+              return JSON.parse(el?.value || '[]').length > 0;
+            } catch {
+              return false;
+            }
+          },
+          errorMessage: 'Sposta almeno un elemento nella lista destinazione',
+        },
+      ],
+      {
+        events: ['it-change'],
+      },
+    )
+    .addField(      'it-autocomplete[id="autocomplete-regione"]',
       [
         {
           rule: 'required',
@@ -123,8 +140,51 @@ document.addEventListener('DOMContentLoaded', () => {
       ],
       {
         events: ['it-change'], // 👈 FORZA l’ascolto sul change
+      },    )
+    .addField(
+      'it-upload[id="allegati-custom"]',
+      [
+        {
+          validator: () => {
+            const el = fmc.querySelector('it-upload[id="allegati-custom"]');
+            return Array.isArray(el?.files) && el.files.length > 0;
+          },
+          errorMessage: 'Carica almeno un file',
+        },
+      ],
+      {
+        events: ['it-change'],
       },
-    );
+    )
+    .addField(
+      'it-upload-avatar[id="avatar-custom"]',
+      [
+        {
+          validator: () => {
+            const el = fmc.querySelector('it-upload-avatar[id="avatar-custom"]');
+            return Array.isArray(el?.files) && el.files.length > 0;
+          },
+          errorMessage: 'Seleziona una foto profilo',
+        },
+      ],
+      {
+        events: ['it-change'],
+      },
+    )
+    .addField(
+      'it-upload-drag-drop[id="documento-custom"]',
+      [
+        {
+          validator: () => {
+            const el = fmc.querySelector('it-upload-drag-drop[id="documento-custom"]');
+            return el?._currentFile != null;
+          },
+          errorMessage: 'Carica un documento',
+        },
+      ],
+      {
+        events: ['it-change'],
+      },    );
 
   validate.onValidate((props) => {
     const { fields } = props;

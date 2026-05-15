@@ -1,12 +1,24 @@
 it-card:not(:defined) {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: var(--#{$prefix}spacing-s) var(--#{$prefix}spacing-s);
+  border: var(--#{$prefix}border-base) var(--#{$prefix}border-style) var(--#{$prefix}border-color);
   column-gap: 1em;
 
   [slot='image'] {
-    width: 100%;
-    order: -1;
+    &:not(it-avatar):not(it-icon):not(.it-card-profile-image-icon-wrapper) {
+      width: 100%;
+      order: -1;
+    }
+  }
+
+  it-avatar[slot='image'],
+  .it-card-profile-image-icon-wrapper {
+    position: absolute;
+    top: var(--#{$prefix}spacing-s);
+    right: var(--#{$prefix}spacing-s);
   }
 
   &:not([ratio]),
@@ -28,6 +40,41 @@ it-card:not(:defined) {
     aspect-ratio: 1 / 1;
   }
 
+  &[variant='banner'] {
+    it-icon[slot='image'] {
+      order: -1;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+
+  &[variant^='inline-banner'] {
+    * {
+      margin-left: calc(var(--#{$prefix}spacing-xl) + 2 * var(--#{$prefix}spacing-s));
+    }
+
+    it-icon[slot='image'] {
+      position: absolute;
+      top: var(--#{$prefix}spacing-s);
+      left: var(--#{$prefix}spacing-s);
+      margin-left: 0;
+    }
+
+    &[variant$='reverse'] {
+      * {
+        margin-right: calc(var(--#{$prefix}spacing-xl) + 2 * var(--#{$prefix}spacing-s));
+        margin-left: 0;
+      }
+
+      it-icon[slot='image'] {
+        right: var(--#{$prefix}spacing-s);
+        left: unset;
+        margin-right: 0;
+        margin-left: unset;
+      }
+    }
+  }
+
   [slot='title'] {
     display: flex;
     width: 100%;
@@ -39,7 +86,8 @@ it-card:not(:defined) {
     line-height: var(--#{$prefix}heading-leading);
   }
 
-  [slot='text'] {
+  [slot='text'],
+  [slot='body'] {
     width: 100%;
   }
 }

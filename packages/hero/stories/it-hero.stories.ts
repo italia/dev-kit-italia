@@ -132,7 +132,6 @@ export const ConTestoEImmaginePrimaryFilter: Story = {
   render: (args) => renderComponent({ ...args, children: html`${exampleSlotImage}` }),
 };
 
-// TODO: Sostituire in questo esempio, lhtml della card con il componente <it-card>
 export const OverlapContent: Story = {
   name: 'Con immagine e margine negativo per contenuti sovrapposti',
   args: { ...meta.args, overlap: true },
@@ -141,28 +140,23 @@ export const OverlapContent: Story = {
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <!-- <div class="col-12 col-lg-10 offset-lg-1"> e card-space nel wrapper>-->
           <div class="col-12 mb-3 mb-md-4">
-            <!--start it-card-->
-            <article class="it-card rounded shadow border px-5 py-4">
+            <it-card shadow="md" it-class="px-5 py-4">
               <!--card first child is the title (link)-->
-              <h3 class="it-card-title no_toc h4">Titolo del contenuto</h3>
+              <h3 slot="title" class="h4">Titolo del contenuto</h3>
               <!--card body content-->
-              <div class="it-card-body">
-                <p class="it-card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div>
-              <div class="it-card-footer border-0" aria-label="Link correlati:">
+              <span slot="text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </span>
+              <div slot="footer">
                 <a href="#" class="it-card-link"
                   >Scopri di più <span class="visually-hidden">su Titolo del contenuto</span></a
                 >
               </div>
-            </article>
-            <!--end it-card-->
+            </it-card>
           </div>
         </div>
       </div>

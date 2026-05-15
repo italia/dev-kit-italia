@@ -56,15 +56,19 @@
       @if $height != null {
         height: $height;
       }
+
       @if $width != null {
         width: $width;
       }
+
       @if $padding != null {
         padding: $padding;
       }
+
       @if $margin != null {
         margin: $margin;
       }
+
       @if $aspectRatio != null {
         aspect-ratio: $aspectRatio;
       }
@@ -184,7 +188,6 @@ $it-components: (
   'it-autocomplete': (
     height: 74px,
     attr: 'label',
-
     padding: 1rem,
   ),
   'it-megamenu': (
@@ -211,6 +214,16 @@ $it-components: (
   'it-tab-panel': (
     height: 100%,
     display: none !important,
+  ),
+  'it-toolbar': (
+    height: 64px,
+    width: 100%,
+  ),
+  'it-toolbar[size="md"]': (
+    height: 48px,
+  ),
+  'it-toolbar[size="sm"]': (
+    height: 40px,
   ),
   'it-progress': (
     height: 4px,
@@ -242,12 +255,33 @@ $it-components: (
     width: 180px,
     border-radius: 50%,
   ),
+  'it-upload': (
+    border-radius: var(--#{$prefix}btn-border-radius, 4px),
+    height: 44.8px,
+    padding: 0 1rem,
+  ),
+  'it-upload-drag-drop': (
+    border-radius: var(--#{$prefix}btn-border-radius, 4px),
+    width: 483.3px,
+    height: 180px,
+  ),
+  'it-upload-avatar': (
+    border-radius: 50%,
+    height: 112px,
+    width: 112px,
+    padding: 0,
+  ),
   'it-toggle': (
     height: 24px,
     width: 48px,
     pseudo: after,
     border-radius: var(--#{$prefix}radius-rounded, 40px),
   ),
+  // Transfer: 1px border-top + header (24px pt + 20px checkbox + 8px pb + 1px divider) + 240px scroll area + 1px border-bottom
+  'it-transfer': (
+      height: 296px,
+      width: 100%,
+    ),
 );
 
 @each $tag, $params in $it-components {

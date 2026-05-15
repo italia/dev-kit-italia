@@ -1,7 +1,7 @@
 {
   "name": "@italia/dev-kit-italia",
   "description": "Bundle dei web components del Design system .italia",
-  "version": "1.0.0-alpha.8",
+  "version": "1.0.0-alpha.11",
   "publishConfig": {
     "access": "public"
   },
@@ -52,14 +52,11 @@
     "lit-html"
   ],
   "dependencies": {
-    "@italia/avatar": "workspace:^",
-    "@italia/autocomplete": "workspace:^",
-    "@italia/bottom-nav": "workspace:^",
-    "@italia/callout": "workspace:^",
     "@italia/accordion": "workspace:^",
     "@italia/autocomplete": "workspace:^",
     "@italia/avatar": "workspace:^",
     "@italia/back-to-top": "workspace:^",
+    "@italia/bottom-nav": "workspace:^",
     "@italia/breadcrumbs": "workspace:^",
     "@italia/button": "workspace:^",
     "@italia/callout": "workspace:^",
@@ -70,6 +67,7 @@
     "@italia/collapse": "workspace:^",
     "@italia/dimmer": "workspace:^",
     "@italia/dropdown": "workspace:^",
+    "@italia/header": "workspace:^",
     "@italia/hero": "workspace:^",
     "@italia/i18n": "workspace:^",
     "@italia/icon": "workspace:^",
@@ -77,6 +75,7 @@
     "@italia/megamenu": "workspace:^",
     "@italia/modal": "workspace:^",
     "@italia/navscroll": "workspace:^",
+    "@italia/notification": "workspace:^",
     "@italia/pagination": "workspace:^",
     "@italia/popover": "workspace:^",
     "@italia/progress": "workspace:^",
@@ -86,10 +85,14 @@
     "@italia/select": "workspace:^",
     "@italia/skiplinks": "workspace:^",
     "@italia/sticky": "workspace:^",
+    "@italia/toolbar": "workspace:^",
+    "@italia/thumbnav": "workspace:^",
     "@italia/tabs": "workspace:^",
     "@italia/timeline": "workspace:^",
     "@italia/toggle": "workspace:^",
     "@italia/tooltip": "workspace:^",
+    "@italia/transfer": "workspace:^",
+    "@italia/upload": "workspace:^",
     "@italia/video": "workspace:^"
   },
   "devDependencies": {

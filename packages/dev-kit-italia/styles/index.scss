@@ -62,11 +62,13 @@
 @import '@italia/dimmer/styles/globals';
 @import '@italia/dropdown/styles/globals';
 @import '@italia/hero/styles/globals';
+@import '@italia/header/styles/globals';
 @import '@italia/icon/styles/globals';
 @import '@italia/input/styles/globals';
 @import '@italia/megamenu/styles/globals';
 @import '@italia/modal/styles/globals';
 @import '@italia/navscroll/styles/globals';
+@import '@italia/notification/styles/globals';
 @import '@italia/pagination/styles/globals';
 @import '@italia/popover/styles/globals';
 @import '@italia/progress/styles/globals';
@@ -76,10 +78,14 @@
 @import '@italia/select/styles/globals';
 @import '@italia/skiplinks/styles/globals';
 @import '@italia/sticky/styles/globals';
+@import '@italia/toolbar/styles/globals';
+@import '@italia/thumbnav/styles/globals';
 @import '@italia/timeline/styles/globals';
 @import '@italia/tabs/styles/globals';
 @import '@italia/toggle/styles/globals';
 @import '@italia/tooltip/styles/globals';
+@import '@italia/transfer/styles/globals';
+@import '@italia/upload/styles/globals';
 @import '@italia/video/styles/globals';
 
 // Footer
@@ -97,11 +103,6 @@
 @import './components/list';
 @import './components/sidebar';
 
-.navbar-collapsable .menu-wrapper {
-  //z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page
-  z-index: auto; // to avoid megamenu dropdowns in header to be overlapped by navscroll or other items in page
-}
-
 .it-footer-main .it-brand-wrapper ::part(icon) {
   width: var(--#{$prefix}footer-brand-icon-size);
   height: var(--#{$prefix}footer-brand-icon-size);
@@ -109,4 +110,5 @@
   margin-right: var(--#{$prefix}spacing-xs);
   fill: var(--#{$prefix}footer-brand-icon-color);
 }
+
 // End footer

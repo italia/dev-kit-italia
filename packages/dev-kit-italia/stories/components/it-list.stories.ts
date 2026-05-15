@@ -1,13 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import '@italia/icon';
-import '@italia/button';
-import '@italia/avatar';
-import '@italia/checkbox';
 
 const meta = {
   title: 'Componenti/List',
-  tags: ['new', 'a11y-ok', 'documentation'],
+  tags: ['a11y-ok', 'documentation'],
   parameters: {
     layout: 'padded',
   },

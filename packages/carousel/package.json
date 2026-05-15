@@ -1,7 +1,7 @@
 {
   "name": "@italia/carousel",
   "description": "Web component it-carousel del Design system .italia",
-  "version": "1.0.0-alpha.8",
+  "version": "1.0.0-alpha.11",
   "publishConfig": {
     "access": "public"
   },

@@ -56,7 +56,7 @@ const defaultTabs = [
 // Meta
 const meta: Meta<TabsProps> = {
   title: 'Componenti/Tabs',
-  tags: ['new', 'a11y-ok', 'web-component'],
+  tags: ['alpha', 'a11y-ok', 'web-component'],
   component: 'it-tabs',
   args: {
     label: 'Navigazione principale',

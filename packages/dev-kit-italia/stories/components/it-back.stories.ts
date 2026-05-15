@@ -1,12 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import '@italia/icon';
-import '@italia/button';
 
 const meta = {
   title: 'Componenti/Back',
   component: 'it-back',
-  tags: ['new', 'documentation', 'a11y-ok'],
+  tags: ['documentation', 'a11y-ok'],
   render: () => html`<div class="hide-preview"></div>`,
   parameters: {
     docs: {

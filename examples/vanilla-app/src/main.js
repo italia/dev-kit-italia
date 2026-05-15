@@ -37,6 +37,7 @@ const componentsMenuItems = [
   { label: 'Breadcrumbs', href: '/src/breadcrumbs' },
   { label: 'Button', href: '/src/button' },
   { label: 'Callout', href: '/src/callout' },
+  { label: 'Card', href: '/src/card' },
   { label: 'Checkbox', href: '/src/checkbox' },
   { label: 'Chip', href: '/src/chip' },
   { label: 'Collapse', href: '/src/collapse ' },
@@ -44,6 +45,7 @@ const componentsMenuItems = [
   { label: 'Dropdown', href: '/src/dropdown' },
   { label: 'Form', href: '/src/form' },
   { label: 'Forward', href: '/src/forward' },
+  { label: 'Header', href: '/src/header' },
   { label: 'Hero', href: '/src/hero' },
   { label: 'Icon', href: '/src/icon' },
   { label: 'Input', href: '/src/input' },
@@ -51,6 +53,7 @@ const componentsMenuItems = [
   { label: 'Megamenu', href: '/src/megamenu' },
   { label: 'Modal', href: '/src/modal' },
   { label: 'Navscroll', href: '/src/navscroll' },
+  { label: 'Notification', href: '/src/notification' },
   { label: 'Overlay', href: '/src/overlay' },
   { label: 'Pagination', href: '/src/pagination.html' },
   { label: 'Popover', href: '/src/popover' },
@@ -63,15 +66,21 @@ const componentsMenuItems = [
   { label: 'Skiplinks', href: '/src/skiplinks' },
   { label: 'Bottom Nav', href: '/src/bottom-nav' },
   { label: 'Sticky', href: '/src/sticky' },
+  { label: 'Toolbar', href: '/src/toolbar' },
+  { label: 'Thumbnav', href: '/src/thumbnav' },
   { label: 'Timeline', href: '/src/timeline' },
   { label: 'Tables', href: '/src/tables' },
   { label: 'Tabs', href: '/src/tabs' },
   { label: 'Toggle', href: '/src/toggle' },
+  { label: 'Transfer', href: '/src/transfer' },
   { label: 'Tooltip', href: '/src/tooltip' },
+  { label: 'Upload', href: '/src/upload' },
   { label: 'Video', href: '/src/video' },
 ];
 
-document.querySelector('#app-header').innerHTML = `
+const appHeader = document.querySelector('#app-header');
+if (appHeader) {
+  appHeader.innerHTML = `
   <div class="app-header bg-primary">
     <div class="container">
       <a href="https://vite.dev" target="_blank">
@@ -109,8 +118,11 @@ document.querySelector('#app-header').innerHTML = `
     </div>
   </div>
 `;
+}
 
-document.querySelector('#app-footer').innerHTML = `
+const appFooter = document.querySelector('#app-footer');
+if (appFooter) {
+  appFooter.innerHTML = `
   <footer class="it-footer">
     <div class="it-footer-main">
       <div class="container">
@@ -273,3 +285,4 @@ document.querySelector('#app-footer').innerHTML = `
     </div>
   </footer>
 `;
+}

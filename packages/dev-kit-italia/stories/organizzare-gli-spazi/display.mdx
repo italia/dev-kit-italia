@@ -1,0 +1,179 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as Stories from './display.stories';
+
+<Meta of={Stories} />
+
+# Display
+
+## Come funziona
+
+Modifica il valore della [proprietà `display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) con le classi apposite.
+Sono presenti solo una parte dei tipi di valori previsti dalla proprietà. Puoi combinare le classi per ottenere l'effetto di cui hai bisogno.
+
+## Responsive
+
+Le classi _display_ che si applicano a tutte le dimensioni dello schermo, da `xs` fino a `xxl`, non hanno bisogno di alcuna
+indicazione di breakpoints, per cui ad esempio sarà sufficiente usare `.d-none` per nascondere un elemento ad ogni risoluzione.
+In caso contrario, è sufficiente utilizzare i classici breakpoints utilizzando il formato:
+
+- `.d-{value}` per `xs`
+- `.d-{breakpoint}-{value}` per `sm`, `md`, `lg`, `xl` e `xxl`.
+
+Dove il _valore_ è uno tra:
+
+- `none`
+- `inline`
+- `inline-block`
+- `block`
+- `table`
+- `table-cell`
+- `table-row`
+- `flex`
+- `inline-flex`
+
+L'utilizzo delle classi `d-` con breakpoint ha effetto su dispositivi dal breakpoint indicato _fino a xxl_.
+Per esempio, `.d-lg-none` imposta `display: none;` nella visualizzazione in `lg`, in `xl` ed in `xxl`.
+
+## Esempi
+
+<Canvas of={Stories.Inline} />
+
+<Canvas of={Stories.Block} />
+
+### Elementi nascosti
+
+Utilizza le classi responsive per mostrare e nascondere un elemento a seconda dei vari dispositivi. Evita di creare
+versioni completamente diverse dello stesso sito, piuttosto scegli di nascondere l'elemento per dimensioni dello
+schermo di non interesse.
+
+Per nascondere elementi puoi usare semplicemente la classe `.d-none` o una delle classi `.d-{sm,md,lg,xl}-none` per
+qualsiasi variazione di dimensione dello schermo.
+
+Per mostrare un elemento solo su un dato intervallo di dimensioni dello schermo, puoi combinare una classe `.d-*-none`
+con una classe `.d-*-*`. Ad esempio `.d-none .d-md-block .d-xl-none` nasconderà l'elemento per tutti gli schermi tranne
+che per i dispositivi di medie e grandi dimensioni (fino alla dimensione `xl`, oltre la quale tornerà ad essere
+nascosto).
+
+<table>
+  <thead>
+    <tr>
+      <th>Dimensione dello schermo</th>
+      <th>Classe</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Nascosto a tutti</td>
+      <td><code>.d-none</code></td>
+    </tr>
+    <tr>
+      <td>Nascosto solo su xs</td>
+      <td><code>.d-none .d-sm-block</code></td>
+    </tr>
+    <tr>
+      <td>Nascosto solo su sm</td>
+      <td><code>.d-sm-none .d-md-block</code></td>
+    </tr>
+    <tr>
+      <td>Nascosto solo su md</td>
+      <td><code>.d-md-none .d-lg-block</code></td>
+    </tr>
+    <tr>
+      <td>Nascosto solo su lg</td>
+      <td><code>.d-lg-none .d-xl-block</code></td>
+    </tr>
+    <tr>
+      <td>Nascosto solo su xl</td>
+      <td><code>.d-xl-none</code></td>
+    </tr>
+    <tr>
+      <td>Nascosto solo su xxl</td>
+      <td><code>.d-xxl-none</code></td>
+    </tr>
+    <tr>
+      <td>Visibile a tutti</td>
+      <td><code>.d-block</code></td>
+    </tr>
+    <tr>
+      <td>Visibile solo su xs</td>
+      <td><code>.d-block .d-sm-none</code></td>
+    </tr>
+    <tr>
+      <td>Visibile solo su sm</td>
+      <td><code>.d-none .d-sm-block .d-md-none</code></td>
+    </tr>
+    <tr>
+      <td>Visibile solo su md</td>
+      <td><code>.d-none .d-md-block .d-lg-none</code></td>
+    </tr>
+    <tr>
+      <td>Visibile solo su lg</td>
+      <td><code>.d-none .d-lg-block .d-xl-none</code></td>
+    </tr>
+    <tr>
+      <td>Visibile solo su xl</td>
+      <td><code>.d-none .d-xl-block</code></td>
+    </tr>
+    <tr>
+      <td>Visibile solo su xxl</td>
+      <td><code>.d-none .d-xxl-block</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<Canvas of={Stories.Responsive} />
+
+## Visualizzazione di stampa
+
+Modifica il valore `display` degli elementi per la stampa con le classi apposite. Sono presenti gli stessi valori usati per le classi `display`.
+
+- `.d-print-none`
+- `.d-print-inline`
+- `.d-print-inline-block`
+- `.d-print-block`
+- `.d-print-table`
+- `.d-print-table-row`
+- `.d-print-table-cell`
+- `.d-print-flex`
+- `.d-print-inline-flex`
+
+Le classi di stampa e di visualizzazione possono essere combinate insieme:
+
+<Canvas of={Stories.Stampa} />
+
+## Visibilità
+
+Imposta la `visibility` degli elementi con le nostre utilità di visibilità. Queste non modificano il valore `display`
+e sono utili per nascondere i contenuti alla maggior parte degli utenti, ma conservandoli per gli screen reader.
+
+Applica `.visible` oppure `.invisible` al bisogno.
+
+```html
+<div class="visible">...</div>
+<div class="invisible">...</div>
+```
+
+```scss
+// Classi
+.visible {
+  visibility: visible;
+}
+.invisible {
+  visibility: hidden;
+}
+```
+
+## Screenreaders
+
+Nascondi un elemento su tutti i dispositivi **eccetto screen readers** con la classe `.visually-hidden`. Utilizza `.visually-hidden-focusable` per mostrare l'elemento quando è attivo in focus (es.: da un utente che utilizza la tastiera). Possono anche essere usati come mixin.
+
+```html
+<a class="visually-hidden-focusable" href="#content">Vai al contenuto principale</a>
+```
+
+```scss
+// Usato come mixin
+.skip-navigation {
+  @include visually-hidden-focusable;
+}
+```

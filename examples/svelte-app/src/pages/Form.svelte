@@ -72,7 +72,7 @@
     <span slot="label">Campo readonly normalizzato come plaintext</span>
   </it-input>
 
-  <it-checkbox-group required group name="animali" class="mb-4" value='["gatto","topo"]'>
+  <it-checkbox-group required group name="animali" class="mb-4" value="["gatto","topo"]">
     <span slot="legend">Animali preferiti</span>
     <it-checkbox value="cane">
       <span slot="label">Cane</span>
@@ -98,7 +98,7 @@
     </it-radio>
   </it-radio-group>
 
-  <it-toggle-group required group name="animali-toggle" class="mb-4" value='["gatto","topo"]'>
+  <it-toggle-group required group name="animali-toggle" class="mb-4">
     <span slot="legend">Animali preferiti - Gruppo di toggle</span>
     <it-toggle value="cane">
       <span slot="label">Cane</span>
@@ -156,5 +156,21 @@
   >
     <span slot="label">Campo password</span>
   </it-input>
+  <div class="mb-4">
+    <it-upload id="allegati-basic" name="allegati" required multiple accept="image/*,.pdf" auto-success>
+      <span slot="label">Allega documenti</span>
+    </it-upload>
+  </div>
+
+  <div class="mb-4">
+    <p class="fw-semibold mb-1">Foto profilo (obbligatoria)</p>
+    <it-upload-avatar id="avatar-basic" name="foto-profilo" required alt="Mario Rossi"></it-upload-avatar>
+  </div>
+
+  <div class="mb-4">
+    <p class="fw-semibold mb-1">Documento (trascina o seleziona, obbligatorio)</p>
+    <it-upload-drag-drop id="documento-basic" name="documento" required></it-upload-drag-drop>
+  </div>
+
   <it-button type="submit" variant="primary" block name="submit"> Invia </it-button>
 </form>

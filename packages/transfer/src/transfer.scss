@@ -1,0 +1,97 @@
+@import 'bootstrap-italia/src/scss/base/functions';
+@import 'bootstrap-italia/src/scss/base/variables';
+@import 'bootstrap-italia/src/scss/base/mixins';
+@import 'bootstrap-italia/src/scss/base/maps';
+@import 'bootstrap-italia/src/scss/base/reboot';
+@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+
+@import 'bootstrap-italia/src/scss/forms/forms';
+@import 'bootstrap-italia/src/scss/forms/form-control';
+@import 'bootstrap-italia/src/scss/forms/form-check';
+@import 'bootstrap-italia/src/scss/forms/form-transfer';
+@import 'bootstrap-italia/src/scss/forms/just-validate';
+
+@import 'bootstrap-italia/src/scss/components/grid';
+
+// ── Custom properties ────────────────────────────────────────────────────────
+// These allow per-instance and theme-level overrides at runtime.
+:host {
+  --it-transfer-border: #{$transfer-border};
+  --it-transfer-height: #{$transfer-height};
+  --it-transfer-header-color: #{$transfer-descr-color};
+  --it-transfer-btn-size: #{$v-gap * 5};
+  --it-transfer-btn-active-color: var(--#{$prefix}color-text-primary);
+  display: block;
+}
+
+// ── Apply custom properties to BSI selectors ─────────────────────────────────
+.it-transfer-wrapper {
+  border: var(--it-transfer-border);
+
+  .transfer-scroll {
+    height: var(--it-transfer-height);
+  }
+
+  .transfer-header .form-check .descr {
+    color: var(--it-transfer-header-color);
+  }
+
+  .transfer-group .form-check {
+    // Customize the height of the form-check to match the height of BSI reference, so that the checkboxes are vertically centered.
+    height: 24px;
+  }
+}
+
+.it-transfer-buttons a {
+  width: var(--it-transfer-btn-size);
+  height: var(--it-transfer-btn-size);
+  border: var(--it-transfer-border);
+  outline: none;
+
+  // it-icon uses shadow DOM; BSI's .icon selector can't reach through, use ::part instead
+  it-icon {
+    display: flex;
+  }
+
+  it-icon::part(icon) {
+    fill: $transfer-header-line-color;
+  }
+
+  &.active {
+    border-color: var(--it-transfer-btn-active-color);
+
+    it-icon::part(icon) {
+      fill: var(--it-transfer-btn-active-color);
+    }
+  }
+
+  &:focus-visible {
+    border-color: #000 !important;
+    box-shadow:
+      0 0 0 2px var(--#{$prefix}color-border-inverse),
+      0 0 0 5px var(--#{$prefix}color-outline-focus) !important;
+    outline: 3px solid transparent !important;
+    outline-offset: 3px !important;
+  }
+}
+
+// ── Disabled host ─────────────────────────────────────────────────────────────
+:host([disabled]) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+// ── Focus visible ─────────────────────────────────────────────────────────────
+.form-check {
+  input:focus:not(:focus-visible) + label {
+    box-shadow: none !important;
+  }
+}
+
+// ── Validation ────────────────────────────────────────────────────────────────
+.it-transfer {
+  .invalid-feedback {
+    display: block;
+    margin-top: $v-gap;
+  }
+}

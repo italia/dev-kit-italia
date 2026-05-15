@@ -19,6 +19,9 @@ import Collapse from './pages/Collapse';
 import Dropdown from './pages/Dropdown';
 import Form from './pages/Form';
 import Forward from './pages/Forward';
+import Header from './pages/Header';
+import HeaderCompleteFullExample from './pages/HeaderCompleteFullExample';
+import HeaderCompleteFullStickyExample from './pages/HeaderCompleteFullStickyExample';
 import Hero from './pages/Hero';
 import Icon from './pages/Icon';
 import Input from './pages/Input';
@@ -36,14 +39,19 @@ import Sidebar from './pages/Sidebar';
 import Skiplinks from './pages/Skiplinks';
 import Sticky from './pages/Sticky';
 import Table from './pages/Table';
+import Thumbnav from './pages/Thumbnav';
 import Timeline from './pages/Timeline';
 import Toggle from './pages/Toggle';
+import Toolbar from './pages/Toolbar';
+import Transfer from './pages/Transfer';
 import Tooltip from './pages/Tooltip';
 import Video from './pages/Video';
 import Carousel from './pages/Carousel';
 import Pagination from './pages/Pagination';
+import Notification from './pages/Notification';
 import Tabs from './pages/Tabs';
 import Progress from './pages/Progress';
+import Upload from './pages/Upload';
 
 export const AppRoutes = [
   { path: '/', element: <Home />, title: 'Homepage' },
@@ -68,6 +76,17 @@ export const AppRoutes = [
   { path: '/dropdown', element: <Dropdown />, title: 'Dropdown' },
   { path: '/form', element: <Form />, title: 'Form' },
   { path: '/forward', element: <Forward />, title: 'Forward' },
+  { path: '/header', element: <Header />, title: 'Header' },
+  {
+    path: '/header-complete-full-example',
+    element: <HeaderCompleteFullExample />,
+    title: 'Header Complete Full Example',
+  },
+  {
+    path: '/header-complete-full-sticky-example',
+    element: <HeaderCompleteFullStickyExample />,
+    title: 'Header Complete Full Sticky Example',
+  },
   { path: '/hero', element: <Hero />, title: 'Hero' },
   { path: '/icon', element: <Icon />, title: 'Icon' },
   { path: '/input', element: <Input />, title: 'Input' },
@@ -75,6 +94,7 @@ export const AppRoutes = [
   { path: '/megamenu', element: <Megamenu />, title: 'Megamenu' },
   { path: '/modal', element: <Modal />, title: 'Modal' },
   { path: '/navscroll', element: <Navscroll />, title: 'Navscroll' },
+  { path: '/notification', element: <Notification />, title: 'Notification' },
   { path: '/overlay', element: <Overlay />, title: 'Overlay' },
   { path: '/pagination', element: <Pagination />, title: 'Pagination' },
   { path: '/popover', element: <Popover />, title: 'Popover' },
@@ -87,9 +107,13 @@ export const AppRoutes = [
   { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
   { path: '/tables', element: <Table />, title: 'Tables' },
+  { path: '/thumbnav', element: <Thumbnav />, title: 'Thumbnav' },
   { path: '/tabs', element: <Tabs />, title: 'Tabs' },
   { path: '/timeline', element: <Timeline />, title: 'Timeline' },
   { path: '/toggle', element: <Toggle />, title: 'Toggle' },
+  { path: '/toolbar', element: <Toolbar />, title: 'Toolbar' },
+  { path: '/transfer', element: <Transfer />, title: 'Transfer' },
   { path: '/tooltip', element: <Tooltip />, title: 'Tooltip' },
+  { path: '/upload', element: <Upload />, title: 'Upload' },
   { path: '/video', element: <Video />, title: 'Video' },
 ];

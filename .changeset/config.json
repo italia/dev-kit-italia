@@ -26,6 +26,7 @@
       "@italia/dimmer",
       "@italia/dropdown",
       "@italia/globals",
+      "@italia/header",
       "@italia/hero",
       "@italia/i18n",
       "@italia/icon",
@@ -33,6 +34,7 @@
       "@italia/megamenu",
       "@italia/modal",
       "@italia/navscroll",
+      "@italia/notification",
       "@italia/pagination",
       "@italia/popover",
       "@italia/progress",
@@ -45,7 +47,11 @@
       "@italia/tabs",
       "@italia/timeline",
       "@italia/toggle",
+      "@italia/thumbnav",
+      "@italia/toolbar",
       "@italia/tooltip",
+      "@italia/transfer",
+      "@italia/upload",
       "@italia/video"
     ]
   ],

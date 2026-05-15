@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import '@italia/icon';
 
 const meta = {
   title: 'Componenti/Overlay',
-  tags: ['documentation', 'new', 'a11y-ok'],
+  tags: ['documentation', 'a11y-ok'],
 
   //   parameters: {
   //     docs: {

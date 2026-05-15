@@ -2,6 +2,521 @@
 
 This changelog contains all changes from all packages in the monorepo.
 
+## 1.0.0-alpha.9
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+  - @italia/collapse@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `bottom-nav`
+
+### Minor Changes
+
+- [#329](https://github.com/italia/dev-kit-italia/pull/329) [`0aa17c5`](https://github.com/italia/dev-kit-italia/commit/0aa17c545f8b0ba9d8e4b3550c0161c73f866148) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add bottom-nav component
+
+### Patch Changes
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/sticky@1.0.0-alpha.9
+
+### `breadcrumbs`
+
+### Minor Changes
+
+- [#329](https://github.com/italia/dev-kit-italia/pull/329) [`0aa17c5`](https://github.com/italia/dev-kit-italia/commit/0aa17c545f8b0ba9d8e4b3550c0161c73f866148) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add bottom-nav component
+
+### Patch Changes
+
+- [`d12b0cb`](https://github.com/italia/dev-kit-italia/commit/d12b0cbcd0862320e601c24fd85d82ff7f7e657d) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed docs link to others components
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `button`
+
+### Minor Changes
+
+- [#293](https://github.com/italia/dev-kit-italia/pull/293) [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Handle Safari bugs and quirks in it-modal and focus-trap-controller
+
+- [#352](https://github.com/italia/dev-kit-italia/pull/352) [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add upload component
+
+### Patch Changes
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/collapse@1.0.0-alpha.9
+
+### `card`
+
+### Minor Changes
+
+- [#358](https://github.com/italia/dev-kit-italia/pull/358) [`95cb4d6`](https://github.com/italia/dev-kit-italia/commit/95cb4d62fa58c497960fdf602345dc91afe99e99) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Typography variables changes introduced in bsi recent alphas
+
+### Patch Changes
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`95cb4d6`](https://github.com/italia/dev-kit-italia/commit/95cb4d62fa58c497960fdf602345dc91afe99e99), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/card@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+
+### `chip`
+
+### Minor Changes
+
+- [#358](https://github.com/italia/dev-kit-italia/pull/358) [`95cb4d6`](https://github.com/italia/dev-kit-italia/commit/95cb4d62fa58c497960fdf602345dc91afe99e99) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Typography variables changes introduced in bsi recent alphas
+
+- [#352](https://github.com/italia/dev-kit-italia/pull/352) [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add upload component
+
+### Patch Changes
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+  - @italia/avatar@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `dev-kit-italia`
+
+### Minor Changes
+
+- [#317](https://github.com/italia/dev-kit-italia/pull/317) [`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added tabs component
+
+- [`1201f1e`](https://github.com/italia/dev-kit-italia/commit/1201f1e4399f21beb25042a40917d6ad20e8b1dc) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added timeline component
+
+- [#329](https://github.com/italia/dev-kit-italia/pull/329) [`0aa17c5`](https://github.com/italia/dev-kit-italia/commit/0aa17c545f8b0ba9d8e4b3550c0161c73f866148) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add bottom-nav component
+
+- [#359](https://github.com/italia/dev-kit-italia/pull/359) [`d144c97`](https://github.com/italia/dev-kit-italia/commit/d144c972493b2b9d6af7fb3898b3520e7c6fb034) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add transfer component
+
+- [#328](https://github.com/italia/dev-kit-italia/pull/328) [`cfe1a3c`](https://github.com/italia/dev-kit-italia/commit/cfe1a3c5c85fae70323b4f3da7fb5764beac78f9) Thanks [@pnicolli](https://github.com/pnicolli)! - Added it-notification component
+
+- [#321](https://github.com/italia/dev-kit-italia/pull/321) [`b7e062a`](https://github.com/italia/dev-kit-italia/commit/b7e062ab6e6fd79121918e388caf852b53c0ddad) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added dimmer component
+
+- [#353](https://github.com/italia/dev-kit-italia/pull/353) [`21924f1`](https://github.com/italia/dev-kit-italia/commit/21924f1698d0e521e4c5e5d4e05ec2fd197f18b1) Thanks [@pnicolli](https://github.com/pnicolli)! - Added `it-tooltip` component
+
+- [#352](https://github.com/italia/dev-kit-italia/pull/352) [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add upload component
+
+### Patch Changes
+
+- [#354](https://github.com/italia/dev-kit-italia/pull/354) [`7032706`](https://github.com/italia/dev-kit-italia/commit/70327060fecef3bdc649e4f890ca81217e94d9aa) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added it-thumbnav component
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`4c41b98`](https://github.com/italia/dev-kit-italia/commit/4c41b982c1f726769e4c3636c46d66d68eceb174), [`d12b0cb`](https://github.com/italia/dev-kit-italia/commit/d12b0cbcd0862320e601c24fd85d82ff7f7e657d), [`1201f1e`](https://github.com/italia/dev-kit-italia/commit/1201f1e4399f21beb25042a40917d6ad20e8b1dc), [`4c41b98`](https://github.com/italia/dev-kit-italia/commit/4c41b982c1f726769e4c3636c46d66d68eceb174), [`0aa17c5`](https://github.com/italia/dev-kit-italia/commit/0aa17c545f8b0ba9d8e4b3550c0161c73f866148), [`d144c97`](https://github.com/italia/dev-kit-italia/commit/d144c972493b2b9d6af7fb3898b3520e7c6fb034), [`cfe1a3c`](https://github.com/italia/dev-kit-italia/commit/cfe1a3c5c85fae70323b4f3da7fb5764beac78f9), [`21924f1`](https://github.com/italia/dev-kit-italia/commit/21924f1698d0e521e4c5e5d4e05ec2fd197f18b1), [`95cb4d6`](https://github.com/italia/dev-kit-italia/commit/95cb4d62fa58c497960fdf602345dc91afe99e99), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/tabs@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+  - @italia/modal@1.0.0-alpha.9
+  - @italia/dropdown@1.0.0-alpha.9
+  - @italia/breadcrumbs@1.0.0-alpha.9
+  - @italia/timeline@1.0.0-alpha.9
+  - @italia/megamenu@1.0.0-alpha.9
+  - @italia/bottom-nav@1.0.0-alpha.9
+  - @italia/transfer@1.0.0-alpha.9
+  - @italia/notification@1.0.0-alpha.9
+  - @italia/tooltip@1.0.0-alpha.9
+  - @italia/rating@1.0.0-alpha.9
+  - @italia/card@1.0.0-alpha.9
+  - @italia/chip@1.0.0-alpha.9
+  - @italia/navscroll@1.0.0-alpha.9
+  - @italia/progress@1.0.0-alpha.9
+  - @italia/upload@1.0.0-alpha.9
+  - @italia/dimmer@1.0.0-alpha.9
+  - @italia/popover@1.0.0-alpha.9
+  - @italia/video@1.0.0-alpha.9
+  - @italia/accordion@1.0.0-alpha.9
+  - @italia/autocomplete@1.0.0-alpha.9
+  - @italia/avatar@1.0.0-alpha.9
+  - @italia/back-to-top@1.0.0-alpha.9
+  - @italia/callout@1.0.0-alpha.9
+  - @italia/carousel@1.0.0-alpha.9
+  - @italia/checkbox@1.0.0-alpha.9
+  - @italia/collapse@1.0.0-alpha.9
+  - @italia/hero@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+  - @italia/input@1.0.0-alpha.9
+  - @italia/pagination@1.0.0-alpha.9
+  - @italia/radio@1.0.0-alpha.9
+  - @italia/section@1.0.0-alpha.9
+  - @italia/select@1.0.0-alpha.9
+  - @italia/skiplinks@1.0.0-alpha.9
+  - @italia/sticky@1.0.0-alpha.9
+  - @italia/toggle@1.0.0-alpha.9
+  - @italia/thumbnav@1.0.0-alpha.9
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+### `dropdown`
+
+### Minor Changes
+
+- [#358](https://github.com/italia/dev-kit-italia/pull/358) [`95cb4d6`](https://github.com/italia/dev-kit-italia/commit/95cb4d62fa58c497960fdf602345dc91afe99e99) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Typography variables changes introduced in bsi recent alphas
+
+- [#352](https://github.com/italia/dev-kit-italia/pull/352) [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add upload component
+
+### Patch Changes
+
+- [`4c41b98`](https://github.com/italia/dev-kit-italia/commit/4c41b982c1f726769e4c3636c46d66d68eceb174) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fixed default role for dropdown
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+  - @italia/popover@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+### `globals`
+
+### Minor Changes
+
+- [#317](https://github.com/italia/dev-kit-italia/pull/317) [`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added tabs component
+
+- [#293](https://github.com/italia/dev-kit-italia/pull/293) [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Handle Safari bugs and quirks in it-modal and focus-trap-controller
+
+- [#352](https://github.com/italia/dev-kit-italia/pull/352) [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add upload component
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.9
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+### `megamenu`
+
+### Minor Changes
+
+- [#358](https://github.com/italia/dev-kit-italia/pull/358) [`95cb4d6`](https://github.com/italia/dev-kit-italia/commit/95cb4d62fa58c497960fdf602345dc91afe99e99) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Typography variables changes introduced in bsi recent alphas
+
+### Patch Changes
+
+- [`4c41b98`](https://github.com/italia/dev-kit-italia/commit/4c41b982c1f726769e4c3636c46d66d68eceb174) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed bhv for mac/voiceover/firefox on description text. Fixed role
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`4c41b98`](https://github.com/italia/dev-kit-italia/commit/4c41b982c1f726769e4c3636c46d66d68eceb174), [`95cb4d6`](https://github.com/italia/dev-kit-italia/commit/95cb4d62fa58c497960fdf602345dc91afe99e99), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+  - @italia/dropdown@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+### `modal`
+
+### Minor Changes
+
+- [#293](https://github.com/italia/dev-kit-italia/pull/293) [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Handle Safari bugs and quirks in it-modal and focus-trap-controller
+
+- [#352](https://github.com/italia/dev-kit-italia/pull/352) [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add upload component
+
+### Patch Changes
+
+- [`d12b0cb`](https://github.com/italia/dev-kit-italia/commit/d12b0cbcd0862320e601c24fd85d82ff7f7e657d) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed docs link to others components
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+### `navscroll`
+
+### Minor Changes
+
+- [#352](https://github.com/italia/dev-kit-italia/pull/352) [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add upload component
+
+### Patch Changes
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`d12b0cb`](https://github.com/italia/dev-kit-italia/commit/d12b0cbcd0862320e601c24fd85d82ff7f7e657d), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+  - @italia/modal@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+### `notification`
+
+### Minor Changes
+
+- [#328](https://github.com/italia/dev-kit-italia/pull/328) [`cfe1a3c`](https://github.com/italia/dev-kit-italia/commit/cfe1a3c5c85fae70323b4f3da7fb5764beac78f9) Thanks [@pnicolli](https://github.com/pnicolli)! - Added it-notification component
+
+### Patch Changes
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+
+### `progress`
+
+### Minor Changes
+
+- [#352](https://github.com/italia/dev-kit-italia/pull/352) [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add upload component
+
+### Patch Changes
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `rating`
+
+### Minor Changes
+
+- [#358](https://github.com/italia/dev-kit-italia/pull/358) [`95cb4d6`](https://github.com/italia/dev-kit-italia/commit/95cb4d62fa58c497960fdf602345dc91afe99e99) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Typography variables changes introduced in bsi recent alphas
+
+### Patch Changes
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+  - @italia/radio@1.0.0-alpha.9
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `tabs`
+
+### Minor Changes
+
+- [#317](https://github.com/italia/dev-kit-italia/pull/317) [`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added tabs component
+
+### Patch Changes
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `timeline`
+
+### Minor Changes
+
+- [`1201f1e`](https://github.com/italia/dev-kit-italia/commit/1201f1e4399f21beb25042a40917d6ad20e8b1dc) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added timeline component
+
+- [#358](https://github.com/italia/dev-kit-italia/pull/358) [`95cb4d6`](https://github.com/italia/dev-kit-italia/commit/95cb4d62fa58c497960fdf602345dc91afe99e99) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Typography variables changes introduced in bsi recent alphas
+
+### Patch Changes
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/checkbox@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+
+### `tooltip`
+
+### Minor Changes
+
+- [#353](https://github.com/italia/dev-kit-italia/pull/353) [`21924f1`](https://github.com/italia/dev-kit-italia/commit/21924f1698d0e521e4c5e5d4e05ec2fd197f18b1) Thanks [@pnicolli](https://github.com/pnicolli)! - Added `it-tooltip` component
+
+### Patch Changes
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+
+### `transfer`
+
+### Minor Changes
+
+- [#359](https://github.com/italia/dev-kit-italia/pull/359) [`d144c97`](https://github.com/italia/dev-kit-italia/commit/d144c972493b2b9d6af7fb3898b3520e7c6fb034) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add transfer component
+
+### Patch Changes
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+### `upload`
+
+### Minor Changes
+
+- [#352](https://github.com/italia/dev-kit-italia/pull/352) [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add upload component
+
+### Patch Changes
+
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/progress@1.0.0-alpha.9
+  - @italia/avatar@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b00d9b2`](https://github.com/italia/dev-kit-italia/commit/b00d9b262bec00d3a036e6a38ec8a0e4975d0474), [`fef3f8b`](https://github.com/italia/dev-kit-italia/commit/fef3f8bdde69cebe93c4b5d3b0fd75701f588188), [`a5ee60f`](https://github.com/italia/dev-kit-italia/commit/a5ee60f85c77c681a5c61a87970388318e794188)]:
+  - @italia/globals@1.0.0-alpha.9
+  - @italia/button@1.0.0-alpha.9
+  - @italia/checkbox@1.0.0-alpha.9
+  - @italia/i18n@1.0.0-alpha.9
+  - @italia/icon@1.0.0-alpha.9
+
 ## 1.0.0-alpha.8
 
 ### `accordion`
@@ -1878,6 +2393,942 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - @italia/icon@1.0.0-alpha.3
   - @italia/i18n@1.0.0-alpha.3
 
+## 1.0.0-alpha.11
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/collapse@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/sticky@1.0.0-alpha.11
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+
+### `card`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/card@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.11
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- [`60c9cd3`](https://github.com/italia/dev-kit-italia/commit/60c9cd347cfc6ef61b5bfc30be15e9d44bca8d5b) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed full css generation after latest bootstrap-italia upgrade.
+
+- Updated dependencies []:
+  - @italia/accordion@1.0.0-alpha.11
+  - @italia/autocomplete@1.0.0-alpha.11
+  - @italia/avatar@1.0.0-alpha.11
+  - @italia/back-to-top@1.0.0-alpha.11
+  - @italia/bottom-nav@1.0.0-alpha.11
+  - @italia/breadcrumbs@1.0.0-alpha.11
+  - @italia/button@1.0.0-alpha.11
+  - @italia/callout@1.0.0-alpha.11
+  - @italia/card@1.0.0-alpha.11
+  - @italia/carousel@1.0.0-alpha.11
+  - @italia/checkbox@1.0.0-alpha.11
+  - @italia/chip@1.0.0-alpha.11
+  - @italia/collapse@1.0.0-alpha.11
+  - @italia/dimmer@1.0.0-alpha.11
+  - @italia/dropdown@1.0.0-alpha.11
+  - @italia/header@1.0.0-alpha.11
+  - @italia/hero@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+  - @italia/input@1.0.0-alpha.11
+  - @italia/megamenu@1.0.0-alpha.11
+  - @italia/modal@1.0.0-alpha.11
+  - @italia/navscroll@1.0.0-alpha.11
+  - @italia/notification@1.0.0-alpha.11
+  - @italia/pagination@1.0.0-alpha.11
+  - @italia/popover@1.0.0-alpha.11
+  - @italia/progress@1.0.0-alpha.11
+  - @italia/radio@1.0.0-alpha.11
+  - @italia/rating@1.0.0-alpha.11
+  - @italia/section@1.0.0-alpha.11
+  - @italia/select@1.0.0-alpha.11
+  - @italia/skiplinks@1.0.0-alpha.11
+  - @italia/sticky@1.0.0-alpha.11
+  - @italia/tabs@1.0.0-alpha.11
+  - @italia/timeline@1.0.0-alpha.11
+  - @italia/toggle@1.0.0-alpha.11
+  - @italia/thumbnav@1.0.0-alpha.11
+  - @italia/toolbar@1.0.0-alpha.11
+  - @italia/tooltip@1.0.0-alpha.11
+  - @italia/transfer@1.0.0-alpha.11
+  - @italia/upload@1.0.0-alpha.11
+  - @italia/video@1.0.0-alpha.11
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `dropdown`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+  - @italia/popover@1.0.0-alpha.11
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.11
+
+### `header`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/dropdown@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+  - @italia/modal@1.0.0-alpha.11
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `megamenu`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/dropdown@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+  - @italia/modal@1.0.0-alpha.11
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+  - @italia/radio@1.0.0-alpha.11
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+
+### `toolbar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `upload`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+  - @italia/progress@1.0.0-alpha.11
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/checkbox@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/collapse@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/sticky@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/collapse@1.0.0-alpha.10
+
+### `card`
+
+### Patch Changes
+
+- [#369](https://github.com/italia/dev-kit-italia/pull/369) [`381996d`](https://github.com/italia/dev-kit-italia/commit/381996d969682981ba0615641f7ac573be0a76c4) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added attribute it-class to it-card component to set additional custom classes on card. Updated hero docs"
+
+- [`fe786d5`](https://github.com/italia/dev-kit-italia/commit/fe786d58fec7212d612baa0b251885dd5ce07fe0) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed examples, and added attribute 'actions-aria-label'
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`381996d`](https://github.com/italia/dev-kit-italia/commit/381996d969682981ba0615641f7ac573be0a76c4), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fe786d5`](https://github.com/italia/dev-kit-italia/commit/fe786d58fec7212d612baa0b251885dd5ce07fe0)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/card@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/avatar@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- [#333](https://github.com/italia/dev-kit-italia/pull/333) [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toolbar component
+
+- Updated dependencies [[`88c1ad8`](https://github.com/italia/dev-kit-italia/commit/88c1ad8b49db4cec7167ba762fb82b0bd86e93fa), [`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`381996d`](https://github.com/italia/dev-kit-italia/commit/381996d969682981ba0615641f7ac573be0a76c4), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321), [`fe786d5`](https://github.com/italia/dev-kit-italia/commit/fe786d58fec7212d612baa0b251885dd5ce07fe0), [`88bdc22`](https://github.com/italia/dev-kit-italia/commit/88bdc22f0a1c2322bf5ebf3d1a7bfaa3fbc83f02)]:
+  - @italia/hero@1.0.0-alpha.10
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/card@1.0.0-alpha.10
+  - @italia/sticky@1.0.0-alpha.10
+  - @italia/dropdown@1.0.0-alpha.10
+  - @italia/megamenu@1.0.0-alpha.10
+  - @italia/popover@1.0.0-alpha.10
+  - @italia/header@1.0.0-alpha.10
+  - @italia/modal@1.0.0-alpha.10
+  - @italia/toolbar@1.0.0-alpha.10
+  - @italia/accordion@1.0.0-alpha.10
+  - @italia/autocomplete@1.0.0-alpha.10
+  - @italia/avatar@1.0.0-alpha.10
+  - @italia/back-to-top@1.0.0-alpha.10
+  - @italia/bottom-nav@1.0.0-alpha.10
+  - @italia/breadcrumbs@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/callout@1.0.0-alpha.10
+  - @italia/carousel@1.0.0-alpha.10
+  - @italia/checkbox@1.0.0-alpha.10
+  - @italia/chip@1.0.0-alpha.10
+  - @italia/collapse@1.0.0-alpha.10
+  - @italia/dimmer@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+  - @italia/input@1.0.0-alpha.10
+  - @italia/navscroll@1.0.0-alpha.10
+  - @italia/notification@1.0.0-alpha.10
+  - @italia/pagination@1.0.0-alpha.10
+  - @italia/progress@1.0.0-alpha.10
+  - @italia/radio@1.0.0-alpha.10
+  - @italia/rating@1.0.0-alpha.10
+  - @italia/section@1.0.0-alpha.10
+  - @italia/select@1.0.0-alpha.10
+  - @italia/skiplinks@1.0.0-alpha.10
+  - @italia/tabs@1.0.0-alpha.10
+  - @italia/timeline@1.0.0-alpha.10
+  - @italia/toggle@1.0.0-alpha.10
+  - @italia/thumbnav@1.0.0-alpha.10
+  - @italia/tooltip@1.0.0-alpha.10
+  - @italia/transfer@1.0.0-alpha.10
+  - @italia/upload@1.0.0-alpha.10
+  - @italia/video@1.0.0-alpha.10
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `dropdown`
+
+### Minor Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added offset property to chage offset position of dropdown menu
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- [#333](https://github.com/italia/dev-kit-italia/pull/333) [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toolbar component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/popover@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `globals`
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b)]:
+  - @italia/i18n@1.0.0-alpha.10
+
+### `header`
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321)]:
+  - @italia/dropdown@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/modal@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `hero`
+
+### Patch Changes
+
+- [`88c1ad8`](https://github.com/italia/dev-kit-italia/commit/88c1ad8b49db4cec7167ba762fb82b0bd86e93fa) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed section aria-label and examples markup
+
+- [#369](https://github.com/italia/dev-kit-italia/pull/369) [`381996d`](https://github.com/italia/dev-kit-italia/commit/381996d969682981ba0615641f7ac573be0a76c4) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added attribute it-class to it-card component to set additional custom classes on card. Updated hero docs"
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `i18n`
+
+### Patch Changes
+
+- [#374](https://github.com/italia/dev-kit-italia/pull/374) [`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed window undefined
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `megamenu`
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- [`88bdc22`](https://github.com/italia/dev-kit-italia/commit/88bdc22f0a1c2322bf5ebf3d1a7bfaa3fbc83f02) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fix megamenu items width and fouc styles
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321)]:
+  - @italia/dropdown@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `modal`
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/modal@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `popover`
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- [#333](https://github.com/italia/dev-kit-italia/pull/333) [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toolbar component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+  - @italia/radio@1.0.0-alpha.10
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `sticky`
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - fixed sticky to prevent flapping on scroll
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/checkbox@1.0.0-alpha.10
+
+### `toolbar`
+
+### Patch Changes
+
+- [#333](https://github.com/italia/dev-kit-italia/pull/333) [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toolbar component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `upload`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/avatar@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+  - @italia/progress@1.0.0-alpha.10
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/checkbox@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+## 1.0.0-alpha.1
+
+### `timeline`
+
+### Minor Changes
+
+- Added timeline component (`it-timeline`, `it-timeline-element`, `it-timeline-point-list`, `it-timeline-point`)
+
+## 1.0.0-alpha.0
+
+### `dimmer`
+
+### Primo rilascio
+
+- Primo rilascio del componente `it-dimmer`.
+
 ## 0.1.0-alpha.2
 
 ### `accordion`
@@ -2280,4 +3731,66 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Posizionamento: center, left, right
 - Focus trap e gestione tastiera
 - Eventi: it-modal-show, it-modal-shown, it-modal-hide, it-modal-hidden
+
+## [1.0.0-alpha.6] - Initial Release
+
+### `toolbar`
+
+### Added
+
+- New `it-toolbar` web component for navigation menus with icon-based items
+- Support for three size variants:
+  - `lg` (large, default): Shows labels and icons
+  - `md` (medium): Hides labels visually, uses `.visually-hidden` spans for accessibility
+  - `sm` (small): Hides labels visually, uses `.visually-hidden` spans for accessibility
+- Support for two orientation variants:
+  - `horizontal` (default): Items arranged in a row
+  - `vertical`: Items arranged in a column
+- Badge support for notifications and unread content indicators
+- Divider support for grouping logical menu sections
+- Active state support via `.active` CSS class on items
+- Disabled state support via `.disabled` class and `disabled` attribute
+- Full WCAG 2.1 AA accessibility compliance
+- Complete Storybook documentation with multiple story examples
+- Comprehensive test suite covering accessibility and properties
+- Example implementations for all supported frameworks:
+  - React
+  - Angular
+  - Vue
+  - Svelte
+  - Vanilla JavaScript
+
+### Features
+
+- Accessible navigation component following Bootstrap Italia design system
+- Responsive design that adapts to container width
+- Dark mode support via `dark` attribute
+- Customizable aria-label via `it-aria-label` attribute
+- Slot-based content model for flexible item structure
+- CSS part exposure for styling via `::part()` pseudo-elements:
+  - `toolbar-container`: Main nav element
+  - `toolbar-list`: The ul element
+
+### Documentation
+
+- MDX documentation file with examples and usage guidelines
+- README with installation and usage instructions
+- References to Designers Italia and Bootstrap Italia design documentation
+
+### Files Created
+
+- `/packages/toolbar/src/it-toolbar.ts` - Main component
+- `/packages/toolbar/src/types.ts` - TypeScript types
+- `/packages/toolbar/src/index.ts` - Module exports
+- `/packages/toolbar/src/toolbar.scss` - Placeholder for styles (FOUC prevention not implemented)
+- `/packages/toolbar/stories/it-toolbar.stories.ts` - Storybook stories
+- `/packages/toolbar/stories/it-toolbar.mdx` - Storybook documentation
+- `/packages/toolbar/test/it-toolbar.test.ts` - Test suite
+- `/packages/toolbar/package.json` - Package configuration
+- Configuration files (tsconfig.json, rollup.config.js, web-test-runner.config.js)
+- `/examples/react-app/src/pages/Toolbar.jsx` - React example
+- `/examples/angular-app/src/app/pages/toolbar.component.ts|html` - Angular example
+- `/examples/vue-app/src/pages/Toolbar.vue` - Vue example
+- `/examples/svelte-app/src/pages/Toolbar.svelte` - Svelte example
+- `/examples/vanilla-app/src/toolbar.html` - Vanilla JavaScript example
 

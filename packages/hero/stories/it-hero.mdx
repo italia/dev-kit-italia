@@ -34,9 +34,10 @@ Considera un hero come una copertina o un banner molto in evidenza:
 
 ## Accessibilità
 
-- Se usi la variante con sola immagine, imposta sempre l'attributo `it-aria-label` sul tag `<it-hero>` per indicare ai lettori di schermo di cosa si tratta.
-- Se includi contenuti testuali, usa il corretto livello `h` per il titolo (`h1`-`h6`), in base alla gerarchia dei contenuti su pagina.
+- Se includi contenuti testuali, usa il corretto livello `h` per il titolo (`h1`-`h6`), in base alla gerarchia dei contenuti della pagina.  Il componente calcolerà automaticamente l'attributo `aria-labelledby` facendolo puntare al primo heading disponibile.
+- Se non è presente alcun heading nel testo del componente, i lettori di schermo annunceranno la sezione in modo generico, senza ulteriori dettagli. In questo caso, oppure se usi la variante con sola immagine, imposta sempre l'attributo `it-aria-label` sul tag `<it-hero>` per fornire un'etichetta descrittiva.
 - Se usi la variante con testo e immagine di sfondo, verifica che ci sia sempre contrasto adeguato tra testo e sfondo.
+- Valuta sempre con attenzione l'opportunità di usare più Hero nella stessa pagina.
 
 ## Con immagine
 Per mostrare una immagine di sfondo nel componente `it-hero`, inserisci l'immagine nello slot `background` dedicato.

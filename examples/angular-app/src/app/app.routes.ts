@@ -114,6 +114,27 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/forward.component').then((c) => c.ForwardComponent),
   },
   {
+    title: 'Header',
+    path: 'header',
+    loadComponent: () => import('./pages/header.component').then((c) => c.HeaderComponent),
+  },
+  {
+    title: 'Header Complete Full Example',
+    path: 'header-complete-full-example',
+    loadComponent: () =>
+      import('./pages/header-complete-full-example.component').then(
+        (c) => c.HeaderCompleteFullExampleComponent,
+      ),
+  },
+  {
+    title: 'Header Complete Full Sticky Example',
+    path: 'header-complete-full-sticky-example',
+    loadComponent: () =>
+      import('./pages/header-complete-full-sticky-example.component').then(
+        (c) => c.HeaderCompleteFullStickyExampleComponent,
+      ),
+  },
+  {
     title: 'Hero',
     path: 'hero',
     loadComponent: () => import('./pages/hero.component').then((c) => c.HeroComponent),
@@ -215,6 +236,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/table.component').then((c) => c.TableComponent),
   },
   {
+    title: 'Thumbnav',
+    path: 'thumbnav',
+    loadComponent: () => import('./pages/thumbnav.component').then((c) => c.ThumbnnavComponent),
+  },
+  {
     title: 'Timeline',
     path: 'timeline',
     loadComponent: () => import('./pages/timeline.component').then((c) => c.TimelineComponent),
@@ -224,10 +250,20 @@ export const routes: Routes = [
     path: 'tabs',
     loadComponent: () => import('./pages/tabs.component').then((c) => c.TabsComponent),
   },
-{
+  {
     title: 'Toggle',
     path: 'toggle',
     loadComponent: () => import('./pages/toggle.component').then((c) => c.ToggleComponent),
+  },
+  {
+    title: 'Toolbar',
+    path: 'toolbar',
+    loadComponent: () => import('./pages/toolbar.component').then((c) => c.ToolbarComponent),
+  },
+  {
+    title: 'Transfer',
+    path: 'transfer',
+    loadComponent: () => import('./pages/transfer.component').then((c) => c.TransferComponent),
   },
   {
     title: 'Tooltip',
@@ -235,9 +271,19 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/tooltip.component').then((c) => c.TooltipComponent),
   },
   {
+    title: 'Upload',
+    path: 'upload',
+    loadComponent: () => import('./pages/upload.component').then((c) => c.UploadComponent),
+  },
+  {
     title: 'Video',
-
     path: 'video',
     loadComponent: () => import('./pages/video.component').then((c) => c.VideoComponent),
+  },
+  {
+    title: 'Notification',
+    path: 'notification',
+    loadComponent: () =>
+      import('./pages/notification.component').then((c) => c.NotificationComponent),
   },
 ];

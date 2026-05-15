@@ -1,6 +1,19 @@
 # @italia/i18n
 
+## 1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- [#374](https://github.com/italia/dev-kit-italia/pull/374) [`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed window undefined
+
+## 1.0.0-alpha.9
+
+- Aggiornamento della versione
+
 ## 1.0.0-alpha.8
+
 - Aggiornamento della versione
 
 ## 1.0.0-alpha.7

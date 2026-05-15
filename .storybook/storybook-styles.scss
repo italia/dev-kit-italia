@@ -231,7 +231,7 @@ table.docblock-argstable {
 
 #anchor--componenti-icona--informazioni-utili .sbdocs-preview,
 #anchor--componenti-sticky--custom-events .sbdocs-preview,
-#anchor--componenti-footer--placeholder .sbdocs-preview {
+#anchor--componenti-footer--placeholder .sbdocs-preview{
   display: none;
 }
 
@@ -281,6 +281,31 @@ table.docblock-argstable {
 }
 //------------
 
+//toolbar layout
+.toolbar-layout {
+  position: relative;
+  width: 550px;
+  margin: auto;
+  border: 1px solid #ccc;
+  min-height: 400px;
+  border-radius: 4px;
+  background-color: #eaeaea;
+}
+
+#storybook-root:has(.toolbar-layout) {
+  width: 100%;
+}
+
+.docs-story div[scale='1'],
+.innerZoomElementWrapper {
+  &:has(.toolbar-layout) {
+    display: block !important;
+    width: 100% !important;
+  }
+}
+
+//------------
+
 //per rendere scollabili le storie di affix
 #story--componenti-affix--affix-top,
 #story--componenti-affix--affix-bottom {
@@ -307,6 +332,54 @@ it-select {
   min-width: 250px;
 }
 
+// Notification specific styles
+.test-docs {
+  it-notification::part(notification) {
+    position: static;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    display: block;
+    opacity: 1;
+    transform: none;
+  }
+
+  it-notification[dismissable]::part(notification) {
+    position: relative;
+  }
+}
+
+.test-desktop,
+.test-animation {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 500px;
+
+  it-notification::part(notification) {
+    opacity: 1;
+  }
+}
+
+.test-desktop it-notification::part(notification) {
+  position: absolute;
+  display: block;
+  min-width: 250px;
+}
+
+#storybook-root:has(.test-desktop) {
+  width: unset;
+}
+
+// END Notification specific styles
+
 .megamenu-story-layout {
   min-height: 300px;
+}
+
+#story--componenti-carousel--variante-gallery-lg {
+  & > div {
+    overflow: hidden;
+  }
 }
