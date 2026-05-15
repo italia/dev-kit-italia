@@ -19,7 +19,7 @@
         <a slot="title" href="#">Titolo del contenuto</a>
         <figure slot="image" class="figure img-full">
           <img
-            src="https://placeholderimage.eu/api/city/800/600"
+            src="https://picsum.photos/seed/city/800/600"
             alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
           />
         </figure>
@@ -453,7 +453,7 @@
         </time>
         <figure slot="image" class="figure img-full">
           <img
-            src="https://placeholderimage.eu/api/city/800/600"
+            src="https://picsum.photos/seed/city/800/600"
             alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
           />
         </figure>
@@ -472,7 +472,7 @@
         <a slot="title" href="#">Titolo del contenuto</a>
         <figure slot="image" class="figure img-full">
           <img
-            src="https://placeholderimage.eu/api/city/800/600"
+            src="https://picsum.photos/seed/city/800/600"
             alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
           />
         </figure>

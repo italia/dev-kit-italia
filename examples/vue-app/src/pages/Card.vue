@@ -15,7 +15,7 @@
             <a slot="title" href="#">Titolo del contenuto</a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -37,7 +37,7 @@
             <a slot="title" href="#">Titolo del contenuto</a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/nature/800/600"
+                src="https://picsum.photos/seed/nature/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -88,7 +88,7 @@
             </a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -118,7 +118,7 @@
             </a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/nature/800/600"
+                src="https://picsum.photos/seed/nature/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -183,7 +183,7 @@
             <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -205,7 +205,7 @@
             <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -232,7 +232,7 @@
             <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -250,7 +250,7 @@
             <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -270,7 +270,7 @@
             <a slot="title" href="#">Titolo evento</a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -297,7 +297,7 @@
             <a slot="title" href="#">Titolo evento</a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/nature/800/600"
+                src="https://picsum.photos/seed/nature/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -365,7 +365,7 @@
             </a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -392,7 +392,7 @@
             </it-button>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/nature/800/600"
+                src="https://picsum.photos/seed/nature/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -417,7 +417,7 @@
             </a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -444,7 +444,7 @@
             </a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/nature/800/600"
+                src="https://picsum.photos/seed/nature/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -541,7 +541,7 @@
             <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -568,7 +568,7 @@
             <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/nature/800/600"
+                src="https://picsum.photos/seed/nature/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -819,7 +819,7 @@
             <span slot="subtitle">Tipologia di luogo</span>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/monument/320/320"
+                src="https://picsum.photos/seed/monument/320/320"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -854,7 +854,7 @@
             <span slot="subtitle">Tipologia di luogo</span>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/monument/320/320"
+                src="https://picsum.photos/seed/monument/320/320"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -897,7 +897,7 @@
             <a slot="title" href="#">Argomento Y</a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/nature/800/600"
+                src="https://picsum.photos/seed/nature/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -915,7 +915,7 @@
             <a slot="title" href="#">Titolo evento</a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/monument/800/600"
+                src="https://picsum.photos/seed/monument/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -1117,7 +1117,7 @@
             <a slot="title" href="#">Titolo del contenuto</a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -1130,7 +1130,7 @@
             <a slot="title" href="#">Titolo del contenuto</a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -1143,7 +1143,7 @@
             <a slot="title" href="#">Titolo del contenuto</a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -1156,7 +1156,7 @@
             <a slot="title" href="#">Titolo del contenuto</a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -1178,7 +1178,7 @@
             <a slot="title" href="#">Titolo del contenuto</a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>

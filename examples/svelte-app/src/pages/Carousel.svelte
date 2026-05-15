@@ -20,7 +20,7 @@
           </div>
           <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
           <figure slot="image" class="figure img-full">
-            <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
           </figure>
         </it-card>
       </it-carousel-slide>
@@ -111,7 +111,7 @@
           </div>
           <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
           <figure slot="image" class="figure img-full">
-            <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
           </figure>
         </it-card>
       </it-carousel-slide>
@@ -133,7 +133,7 @@
               <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div>
             </a>
             <figure slot="image" class="figure img-full">
-              <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+              <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
             </figure>
             <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
             <div slot="footer" class="it-card-taxonomy">
@@ -157,7 +157,7 @@
               <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div>
             </a>
             <figure slot="image" class="figure img-full">
-              <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+              <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
             </figure>
             <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
             <div slot="footer" class="it-card-taxonomy">
@@ -189,7 +189,7 @@
           </div>
           <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
           <figure slot="image" class="figure img-full">
-            <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
           </figure>
         </it-card>
       </it-carousel-slide>
@@ -211,7 +211,7 @@
               <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div>
             </a>
             <figure slot="image" class="figure img-full">
-              <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+              <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
             </figure>
             <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
             <div slot="footer" class="it-card-taxonomy">
@@ -235,7 +235,7 @@
               <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div>
             </a>
             <figure slot="image" class="figure img-full">
-              <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+              <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
             </figure>
             <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
             <div slot="footer" class="it-card-taxonomy">
@@ -259,7 +259,7 @@
               <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div>
             </a>
             <figure slot="image" class="figure img-full">
-              <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+              <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
             </figure>
             <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
             <div slot="footer" class="it-card-taxonomy">
@@ -291,7 +291,7 @@
           </div>
           <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
           <figure slot="image" class="figure img-full">
-            <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
           </figure>
         </it-card>
       </it-carousel-slide>
@@ -312,7 +312,7 @@
             <div class="it-card-title-icon-wrapper"><it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon></div>
           </a>
           <figure slot="image" class="figure img-full">
-            <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
+            <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto." />
           </figure>
           <span slot="text">Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe, senza troncamento.</span>
           <div slot="footer" class="it-card-taxonomy">

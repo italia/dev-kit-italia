@@ -149,7 +149,7 @@ export const EsempioInterattivo: Story = {
       <a slot="title" href="#">Titolo del contenuto</a>
       <figure slot="image" class="figure img-full">
         <img
-          src="https://placeholderimage.eu/api/city/800/600"
+          src="https://picsum.photos/seed/city/800/600"
           alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
         />
       </figure>
@@ -173,7 +173,7 @@ export const EditorialiStandard: Story = {
           <a slot="title" href="#">Titolo del contenuto</a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -195,7 +195,7 @@ export const EditorialiStandard: Story = {
           <a slot="title" href="#">Titolo del contenuto</a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/nature/800/600"
+              src="https://picsum.photos/seed/nature/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -246,7 +246,7 @@ export const EditorialiFeatured: Story = {
           </a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -275,7 +275,7 @@ export const EditorialiFeatured: Story = {
           </a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/nature/800/600"
+              src="https://picsum.photos/seed/nature/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -340,7 +340,7 @@ export const CardInline: Story = {
           <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -362,7 +362,7 @@ export const CardInline: Story = {
           <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -390,7 +390,7 @@ export const CardInlineMini: Story = {
           <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -408,7 +408,7 @@ export const CardInlineMini: Story = {
           <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -429,7 +429,7 @@ export const Eventi: Story = {
           <a slot="title" href="#">Titolo evento</a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -456,7 +456,7 @@ export const Eventi: Story = {
           <a slot="title" href="#">Titolo evento</a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/nature/800/600"
+              src="https://picsum.photos/seed/nature/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -525,7 +525,7 @@ export const EventiInline: Story = {
           </a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -552,7 +552,7 @@ export const EventiInline: Story = {
           </it-button>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/nature/800/600"
+              src="https://picsum.photos/seed/nature/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -578,7 +578,7 @@ export const Media: Story = {
           </a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -605,7 +605,7 @@ export const Media: Story = {
           </a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/nature/800/600"
+              src="https://picsum.photos/seed/nature/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -703,7 +703,7 @@ export const MediaVideoInline: Story = {
           <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -730,7 +730,7 @@ export const MediaVideoInline: Story = {
           <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/nature/800/600"
+              src="https://picsum.photos/seed/nature/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -969,7 +969,7 @@ export const Luoghi: Story = {
           <span slot="subtitle">Tipologia di luogo</span>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/monument/320/320"
+              src="https://picsum.photos/seed/monument/320/320"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -1004,7 +1004,7 @@ export const Luoghi: Story = {
           <span slot="subtitle">Tipologia di luogo</span>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/monument/320/320"
+              src="https://picsum.photos/seed/monument/320/320"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -1048,7 +1048,7 @@ export const ListeDiContenutiAffini: Story = {
           <a slot="title" href="#">Argomento Y</a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/nature/800/600"
+              src="https://picsum.photos/seed/nature/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -1065,7 +1065,7 @@ export const ListeDiContenutiAffini: Story = {
         <it-card full-height ratio="21x9">
           <a slot="title" href="#">Titolo evento</a>
           <figure slot="image" class="figure img-full">
-            <img src="https://placeholderimage.eu/api/monument/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto.">
+            <img src="https://picsum.photos/seed/monument/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto.">
           </figure>
           <span slot="subtitle">Dal 17 al 22 novembre</span>
           <span slot="text">Descrizione breve dell'evento in poche righe non troncate.</span>
@@ -1256,7 +1256,7 @@ export const Immagini: Story = {
           <a slot="title" href="#">Titolo del contenuto</a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -1269,7 +1269,7 @@ export const Immagini: Story = {
           <a slot="title" href="#">Titolo del contenuto</a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -1282,7 +1282,7 @@ export const Immagini: Story = {
           <a slot="title" href="#">Titolo del contenuto</a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -1295,7 +1295,7 @@ export const Immagini: Story = {
           <a slot="title" href="#">Titolo del contenuto</a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -1317,7 +1317,7 @@ export const AltezzaDelleCard: Story = {
           <a slot="title" href="#">Titolo del contenuto</a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>

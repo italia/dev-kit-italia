@@ -52,7 +52,7 @@ const InlineCard = () => (
     </time>
     <figure slot="image" className="figure img-full">
       <img
-        src="https://placeholderimage.eu/api/city/800/600"
+        src="https://picsum.photos/seed/city/800/600"
         alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
       />
     </figure>
@@ -69,7 +69,7 @@ const CardWithImage = () => (
     </a>
     <figure slot="image" className="figure img-full">
       <img
-        src="https://placeholderimage.eu/api/city/800/600"
+        src="https://picsum.photos/seed/city/800/600"
         alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
       />
     </figure>
