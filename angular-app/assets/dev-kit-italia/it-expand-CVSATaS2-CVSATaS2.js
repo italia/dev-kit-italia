@@ -1,0 +1,8 @@
+// Auto-generated icon module
+const svg = `<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="11.6,15.4 6,9.8 6.7,9 11.6,13.9 16.5,9 17.2,9.8" />
+</svg>
+`;
+
+export { svg as default };
+//# sourceMappingURL=it-expand-CVSATaS2-CVSATaS2.js.map

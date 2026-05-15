@@ -1,0 +1,8 @@
+// Auto-generated icon module
+const svg = `<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	<path d="M12.7,12l3.7,3.6l-0.8,0.8L12,12.7l-3.6,3.7l-0.8-0.8l3.7-3.6L7.6,8.4l0.8-0.8l3.6,3.7l3.6-3.7l0.8,0.8L12.7,12z" />
+</svg>
+`;
+
+export { svg as default };
+//# sourceMappingURL=it-close-D7B7LVFn-D7B7LVFn.js.map

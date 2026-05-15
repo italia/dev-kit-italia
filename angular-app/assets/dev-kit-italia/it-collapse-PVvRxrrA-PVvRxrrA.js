@@ -1,0 +1,8 @@
+// Auto-generated icon module
+const svg = `<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="16.5,15.4 11.6,10.5 6.7,15.4 6,14.6 11.6,9 17.2,14.6 " />
+</svg>
+`;
+
+export { svg as default };
+//# sourceMappingURL=it-collapse-PVvRxrrA-PVvRxrrA.js.map
