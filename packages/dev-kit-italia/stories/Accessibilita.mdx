@@ -196,14 +196,6 @@ Nella configurazione attuale produce quindi un numero elevato di falsi positivi 
 
 `list` e `listitem` segnalati su `<it-breadcrumbs>`. L'accessibility tree è corretto. Falso positivo documentato nella storia del componente al [paragrafo Accessibilità](/?path=/docs/componenti-breadcrumbs--documentazione#accessibilità).
 
-### pa11y con htmlcs runner: form e attributi
-
-- "Form non contiene submit button" quando il submit è un `<it-button type="submit">`. Non riconosce il web component.
-- Attributo `align` su `<td>` segnalato come HTML 4.01. È un attributo usato internamente dal componente.
-
-### WAVE: contrasto radio group
-
-Falso positivo con contrasto 1.4.3.
 
 ---
 
@@ -213,14 +205,14 @@ Falso positivo con contrasto 1.4.3.
 
 Qualora si usino attributi `it-aria-describedby` o `it-aria-labelledby` ad esempio su `<it-input>`, questi vengono applicati all'elemento `<input>` generato nel shadow DOM. Tuttavia, se l'ID referenziato appartiene a un elemento nel light DOM esterno allo shadow DOM del componente, la descrizione o la label **non viene annunciata dai lettori di schermo**. È un limite della specifica W3C: questi attributi fanno sempre riferimento a ID nello stesso scope DOM. 
 
-Per `<it-input>`, come per altri componenti, Dev Kit Italia fornisce attributi alternativi che evitano il problema by default quando usati correttamente:
+Per `<it-input>` Dev Kit Italia fornisce attributi alternativi che generano i corretti attributi aria dentro lo shadow DOM:
 - `support-text`: testo di supporto interno al componente
 - `validity-message`: messaggio di validazione
 - `custom-validation`: validazione custom
 
 ### Tool di verifica senza supporto shadow DOM
 
-L'analisi conferma che strumenti basati su serializzazione DOM standard **non entrano nel shadow DOM**: 
+Strumenti basati su serializzazione DOM standard **non entrano nel shadow DOM**: 
 
 - Non percepiscono elementi semantici (heading, label, button) e ruoli ARIA generati nel shadow DOM
 - Non segnalano errori né componenti implementati correttamente
