@@ -16,7 +16,7 @@ Feedback e contributi: [apri una segnalazione](https://github.com/italia/dev-kit
 
 ---
 
-## Strumenti consigliati
+## Tool consigliati
 
 I principali tool di verifica automatica hanno comportamenti molto diversi tra loro su web component che usano shadow DOM come quelli di Dev Kit Italia. La tabella seguente riassume alcuni dei comportamenti osservati sulla pagina di test.
 
@@ -83,7 +83,7 @@ I principali tool di verifica automatica hanno comportamenti molto diversi tra l
   </tbody>
 </table>
 
-Tool automatico più affidabile tra quelli testati è **axe-core**, classificando casi di test corretti ed errori reali. Per una copertura più ampia durante lo sviluppo, combinarlo con **pa11y con axe runner** e/o **Siteimprove**.
+Tra i tool testati, **axe-core** è quello più affidabile, classificando correttamente sia i casi implementati bene sia gli errori reali. Per una copertura più ampia durante lo sviluppo, combinarlo con **pa11y con axe runner** e/o **Siteimprove**.
 
 ### Per CLI e CI/CD
 
@@ -177,7 +177,7 @@ Esempi con slot obbligatori non popolati:
 
 ## Falsi positivi noti
 
-Alcuni tool segnalano errori su componenti correttamente implementati. I casi documentati di seguito non corrispondono a problemi reali e non richiedono azioni correttive. La lista non è esaustiva ma da considerare esempio e guida. 
+Alcuni tool segnalano errori su componenti correttamente implementati. I casi documentati di seguito non corrispondono a problemi reali e non richiedono azioni correttive. La lista non è esaustiva: altri falsi positivi potrebbero emergere con tool, versioni o componenti non testati.
 
 ### ARC Toolkit
 
@@ -190,7 +190,7 @@ ARC Toolkit entra nel shadow DOM ma non risolve correttamente la proiezione degl
 - `<it-select>` con slot `label`: errore label (WCAG 1.3.1)
 - `<it-checkbox>` con slot `label`: errore label (WCAG 1.3.1)
 
-Nella configurazione attuale produce quindi un numero elevato di falsi positivi sui web component Dev Kit Italia, rendendo difficile distinguere errori reali. Non consigliato come tool primario.
+Nella configurazione attuale produce quindi un numero elevato di falsi positivi, rendendo difficile distinguere errori reali. Non consigliato come tool primario.
 
 ### axe-core e pa11y con axe runner: breadcrumbs
 
@@ -203,14 +203,14 @@ Nella configurazione attuale produce quindi un numero elevato di falsi positivi 
 
 ### ARIA cross-shadow-root
 
-Qualora si usino attributi `it-aria-describedby` o `it-aria-labelledby` su `<it-input>`, questi vengono applicati all'elemento `<input>` generato nel shadow DOM. Tuttavia, se l'ID referenziato appartiene a un elemento nel light DOM esterno allo shadow DOM del componente, la descrizione o la label **non viene annunciata dai lettori di schermo**. È un limite della specifica W3C: questi attributi aria fanno sempre riferimento a ID nello stesso scope DOM. 
+Quando si usano gli attributi `it-aria-describedby` o `it-aria-labelledby` su `<it-input>`, questi vengono applicati all'elemento `<input>` generato nel shadow DOM. Tuttavia, se l'ID referenziato appartiene a un elemento nel light DOM esterno allo shadow DOM del componente, la descrizione o la label **non viene annunciata dai lettori di schermo**. È un limite della specifica W3C: questi attributi aria fanno sempre riferimento a ID nello stesso scope DOM. 
 
 Per `<it-input>` Dev Kit Italia mette a disposizione attributi dedicati che generano automaticamente tutti gli attributi necessari dentro lo shadow DOM:
 - `support-text`: testo di supporto interno al componente
 - `validity-message`: messaggio di validazione
 - `custom-validation`: validazione custom
 
-### Tool di verifica senza supporto shadow DOM
+### Tool senza supporto shadow DOM
 
 Strumenti basati su serializzazione DOM standard **non entrano nel shadow DOM**: 
 
@@ -224,7 +224,7 @@ Una pagina che usa web component Dev Kit Italia è quindi non verificabile con q
 
 ## Verifiche manuali 
 
-Le verifiche automatiche non sono sufficienti, molti criteri WCAG richiedono valutazione umana e alcuni tool hanno i limiti specifici sul shadow DOM documentati in questa pagina. Corretta semantica degli elementi, ingrandimento, navigazione da tastiera e lettori di schermo vanno sempre verificati manualmente.
+Le verifiche automatiche non sono sufficienti, molti criteri WCAG richiedono valutazione umana e alcuni tool hanno i limiti specifici sul shadow DOM documentati in questa pagina. Semantica degli elementi, ingrandimento, navigazione da tastiera e lettori di schermo vanno sempre verificati manualmente.
 
 **Combinazioni consigliate:**
 
@@ -245,7 +245,7 @@ Mobile:
 
 ---
 
-## Verifica automatica in Storybook
+## Verifiche automatiche in Storybook
 
 Storybook integra strumenti di verifica automatica dell'accessibilità per le singole varianti dei componenti.
 
