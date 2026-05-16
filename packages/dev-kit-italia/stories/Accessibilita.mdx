@@ -4,15 +4,15 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Accessibilità
 
-**Questa guida estende il [fondamento Accessibilità del design system .italia](https://designers.italia.it/design-system/fondamenti/accessibilita/)** documentando come si comportano alcuni dei principali strumenti di verifica automatica nell'analizzare pagine realizzate con web component Dev Kit Italia. 
+Questa guida estende il [fondamento Accessibilità del design system .italia](https://designers.italia.it/design-system/fondamenti/accessibilita/) documentando come si comportano alcuni dei principali strumenti di verifica automatica nell'analizzare pagine realizzate con web component Dev Kit Italia.
 
-**Dev Kit Italia adotta un [approccio HTML-first con slot](/?path=/docs/documentazione-tecnica--documentazione)**: il contenuto significativo vive nel light DOM, il componente lo proietta nel shadow DOM e l'accessibility tree del browser lo espone alle tecnologie assistive. Alcuni strumenti di verifica attraversano correttamente il shadow DOM, altri lo ignorano, altri producono falsi positivi e negativi. 
+Dev Kit Italia adotta un [approccio HTML-first con slot](/?path=/docs/documentazione-tecnica--documentazione): il contenuto significativo vive nel light DOM, il componente lo proietta nel shadow DOM e l'accessibility tree del browser lo espone alle tecnologie assistive. Alcuni strumenti di verifica attraversano correttamente il shadow DOM, altri lo ignorano, altri producono falsi positivi.
 
-**Ricordati che i tool automatici rilevano solo una parte degli errori di accessibilità**. I controlli manuali sono sempre necessari e per flussi critici è indispensabile coinvolgere esperti di accessibilità e, ove necessario, testarne l'usabilità con utenti reali. Nella sezione [verifiche manuali](#verifiche-manuali) alcune indicazioni specifiche per i web component Dev Kit Italia.
+I tool automatici rilevano solo una parte degli errori di accessibilità: molti criteri WCAG richiedono valutazione umana. I controlli manuali sono sempre necessari e per flussi critici è indispensabile coinvolgere esperti di accessibilità e, ove necessario, utenti reali. Vedi la sezione [Verifiche manuali](#verifiche-manuali) per le indicazioni specifiche sui web component.
 
-**È disponibile una [pagina di test dedicata](https://italia.github.io/design-jekyll-devkit-theme/test-a11y/)** che potrà essere integrata di volta in volta con nuovi componenti e casi di test. Quanto segue riguarda i tool testati al momento della stesura (axe-core v4.11.1, Siteimprove v2.0, ARC Toolkit v5.7.10, WAVE 3.2.7.1, MAUVE++ 4.0.2): nuovi tool o versioni future potrebbero comportarsi diversamente.
+I risultati che seguono riguardano i tool testati al momento della stesura (axe-core v4.11.1, Siteimprove v2.0, ARC Toolkit v5.7.10, WAVE 3.2.7.1, MAUVE++ 4.0.2) su questi componenti: Accordion, Breadcrumbs, Button, Callout, Card, Checkbox, Chip, Dropdown, Hero, Input, Modal, Radio button, Select. La [pagina di test dedicata](https://italia.github.io/design-jekyll-devkit-theme/test-a11y/) e questa guida potranno essere integrate nel tempo con nuovi componenti, casi di test e tool aggiuntivi.
 
-**Feedback e contributi benvenuti**: [apri una nuova segnalazione](https://github.com/italia/bootstrap-italia/issues/new?assignees=&labels=design%20system&projects=&template=apri-una-segnalazione.it.yaml) sul repository [italia/dev-kit-italia](https://github.com/italia/dev-kit-italia). 
+**Feedback e contributi**: [apri una segnalazione](https://github.com/italia/dev-kit-italia/issues) su `italia/dev-kit-italia`.
 
 ---
 
@@ -83,7 +83,7 @@ I principali tool di verifica automatica hanno comportamenti molto diversi tra l
   </tbody>
 </table>
 
-Tool automatico più affidabile tra quelli testati è **axe-core**, classificando casi di test corretti ed errori reali. Per una copertura più ampia durante lo sviluppo, suggeriamo di combinarlo con **pa11y con axe runner** e/o **Siteimprove**.
+Tool automatico più affidabile tra quelli testati è **axe-core**, classificando casi di test corretti ed errori reali. Per una copertura più ampia durante lo sviluppo, combinarlo con **pa11y con axe runner** e/o **Siteimprove**.
 
 ### Per CLI e CI/CD
 
@@ -113,7 +113,7 @@ Aggiungere all'ignore list gli eventuali falsi positivi se documentati, ad esemp
 
 ## Slot obbligatori
 
-Quando uno slot che alimenta un elemento semantico non è popolato, il componente genera un nodo accessibile con nome vuoto nell'accessibility tree — un heading `""` o una label `""`. Il kit segnala il problema nella console del browser (esempio di messaggio: `[it-card] no title slot content found`). Ti suggeriamo di trattare questi warning di sviluppo come errori in CI.
+Quando uno slot che alimenta un elemento semantico non è popolato, il componente genera un nodo accessibile con nome vuoto nell'accessibility tree — un heading `""` o una label `""`. Il kit segnala il problema nella console del browser (esempio di messaggio: `[it-card] no title slot content found`). Questi warning di sviluppo vanno trattati come errori in CI.
 
 Esempi con slot obbligatori non popolati:
 
@@ -203,9 +203,9 @@ Nella configurazione attuale produce quindi un numero elevato di falsi positivi 
 
 ### ARIA cross-shadow-root
 
-Qualora si usino attributi `it-aria-describedby` o `it-aria-labelledby` ad esempio su `<it-input>`, questi vengono applicati all'elemento `<input>` generato nel shadow DOM. Tuttavia, se l'ID referenziato appartiene a un elemento nel light DOM esterno allo shadow DOM del componente, la descrizione o la label **non viene annunciata dai lettori di schermo**. È un limite della specifica W3C: questi attributi fanno sempre riferimento a ID nello stesso scope DOM. 
+Qualora si usino attributi `it-aria-describedby` o `it-aria-labelledby` su `<it-input>`, questi vengono applicati all'elemento `<input>` generato nel shadow DOM. Tuttavia, se l'ID referenziato appartiene a un elemento nel light DOM esterno allo shadow DOM del componente, la descrizione o la label **non viene annunciata dai lettori di schermo**. È un limite della specifica W3C: questi attributi aria fanno sempre riferimento a ID nello stesso scope DOM. 
 
-Per `<it-input>` Dev Kit Italia fornisce attributi alternativi che generano i corretti attributi aria dentro lo shadow DOM:
+Per `<it-input>` Dev Kit Italia mette a disposizione attributi dedicati che generano automaticamente tutti gli attributi necessari dentro lo shadow DOM:
 - `support-text`: testo di supporto interno al componente
 - `validity-message`: messaggio di validazione
 - `custom-validation`: validazione custom
@@ -228,7 +228,7 @@ Ricorda che le verifiche automatiche non sono sufficienti, molti criteri WCAG ri
 
 **Combinazioni consigliate:**
 
-Il [fondamento Accessibilità](https://designers.italia.it/design-system/fondamenti/accessibilita/) indica **Windows + Chrome + JAWS** come combinazione di riferimento. Data la relativa novità della tecnologia web component con shadow DOM, verifica su più combinazioni per rilevare comportamenti difformi tra browser e lettori di schermo. Un setup minimo:
+Il [fondamento Accessibilità](https://designers.italia.it/design-system/fondamenti/accessibilita/) indica **Windows + Chrome + JAWS** come combinazione di riferimento. Data la relativa novità della tecnologia web component con shadow DOM, verificare su più combinazioni per rilevare comportamenti difformi tra browser e lettori di schermo. Un setup minimo:
 
 Desktop:
 - Windows + Chrome o Edge + JAWS o NVDA
