@@ -37,7 +37,7 @@
           <div class="col-12 col-md-6">
             <it-card>
               <figure slot="image" class="figure img-full">
-                <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine" />
               </figure>
               <a slot="title" href="#">Titolo del contenuto</a>
               <span slot="text">
@@ -50,7 +50,7 @@
           <div class="col-12 col-md-6">
             <it-card>
               <figure slot="image" class="figure img-full">
-                <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine" />
               </figure>
               <a slot="title" href="#">Titolo del contenuto</a>
               <span slot="text">
@@ -82,7 +82,7 @@
           <div class="col-12 col-md-6">
             <it-card>
               <figure slot="image" class="figure img-full">
-                <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine" />
               </figure>
               <a slot="title" href="#">Titolo del contenuto</a>
               <span slot="text">
@@ -95,7 +95,7 @@
           <div class="col-12 col-md-6">
             <it-card>
               <figure slot="image" class="figure img-full">
-                <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine" />
               </figure>
               <a slot="title" href="#">Titolo del contenuto</a>
               <span slot="text">
@@ -127,7 +127,7 @@
           <div class="col-12 col-md-6">
             <it-card>
               <figure slot="image" class="figure img-full">
-                <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine" />
               </figure>
               <a slot="title" href="#">Titolo del contenuto</a>
               <span slot="text">
@@ -140,7 +140,7 @@
           <div class="col-12 col-md-6">
             <it-card>
               <figure slot="image" class="figure img-full">
-                <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine" />
               </figure>
               <a slot="title" href="#">Titolo del contenuto</a>
               <span slot="text">
@@ -175,7 +175,7 @@
           <div class="col-12 col-md-6">
             <it-card>
               <figure slot="image" class="figure img-full">
-                <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine" />
               </figure>
               <a slot="title" href="#">Titolo del contenuto</a>
               <span slot="text">
@@ -188,7 +188,7 @@
           <div class="col-12 col-md-6">
             <it-card>
               <figure slot="image" class="figure img-full">
-                <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine" />
               </figure>
               <a slot="title" href="#">Titolo del contenuto</a>
               <span slot="text">
@@ -222,7 +222,7 @@
           <div class="col-12 col-md-6">
             <it-card>
               <figure slot="image" class="figure img-full">
-                <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine" />
               </figure>
               <a slot="title" href="#">Titolo del contenuto</a>
               <span slot="text">
@@ -235,7 +235,7 @@
           <div class="col-12 col-md-6">
             <it-card>
               <figure slot="image" class="figure img-full">
-                <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine" />
               </figure>
               <a slot="title" href="#">Titolo del contenuto</a>
               <span slot="text">
@@ -268,7 +268,7 @@
           <div class="col-12 col-md-6">
             <it-card>
               <figure slot="image" class="figure img-full">
-                <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine" />
               </figure>
               <a slot="title" href="#">Titolo del contenuto</a>
               <span slot="text">
@@ -281,7 +281,7 @@
           <div class="col-12 col-md-6">
             <it-card>
               <figure slot="image" class="figure img-full">
-                <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine" />
               </figure>
               <a slot="title" href="#">Titolo del contenuto</a>
               <span slot="text">
@@ -311,7 +311,7 @@
           <div class="col-12 col-md-6">
             <it-card>
               <figure slot="image" class="figure img-full">
-                <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine" />
               </figure>
               <a slot="title" href="#">Titolo del contenuto</a>
               <span slot="text">
@@ -324,7 +324,7 @@
           <div class="col-12 col-md-6">
             <it-card>
               <figure slot="image" class="figure img-full">
-                <img src="https://placeholderimage.eu/api/city/800/600" alt="Breve descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" alt="Breve descrizione immagine" />
               </figure>
               <a slot="title" href="#">Titolo del contenuto</a>
               <span slot="text">

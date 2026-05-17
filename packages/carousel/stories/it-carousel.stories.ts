@@ -22,7 +22,7 @@ const renderSimpleCard = (image?: boolean, variant?: string, index?: string) => 
       <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
       <figure slot="image" class="figure img-full">
         <img
-          src="https://placeholderimage.eu/api/city/800/600"
+          src="https://picsum.photos/seed/city/800/600"
           alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
         />
       </figure>
@@ -37,7 +37,7 @@ const renderSimpleCard = (image?: boolean, variant?: string, index?: string) => 
     ${image
       ? html`<figure slot="image" class="figure img-full">
           <img
-            src="https://placeholderimage.eu/api/city/800/600"
+            src="https://picsum.photos/seed/city/800/600"
             alt="${index}. Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
           />
         </figure>`
