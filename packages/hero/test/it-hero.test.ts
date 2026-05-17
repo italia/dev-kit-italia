@@ -1,6 +1,6 @@
 /// <reference types="mocha"/>
 import '@italia/hero';
-import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
+import { html, fixture, expect, elementUpdated, waitUntil } from '@open-wc/testing';
 import { type ItHero } from '@italia/hero';
 
 describe('it-hero component', () => {
@@ -33,6 +33,64 @@ describe('it-hero component', () => {
       const section = el.shadowRoot?.querySelector('section');
 
       expect(section?.getAttribute('aria-label')).to.equal(label);
+    });
+
+    it('adds aria-labelledby when it-aria-label is not present and heading is in text slot', async () => {
+      const el = await fixture<ItHero>(html`
+        <it-hero>
+          <div slot="text"><h2 id="hero-title">Titolo hero</h2></div>
+        </it-hero>
+      `);
+
+      await elementUpdated(el);
+      await waitUntil(
+        () => !!el.shadowRoot?.querySelector('.container') || !!el.shadowRoot?.querySelector('slot[name="text"]'),
+        'hero text slot did not render as expected',
+      );
+      await elementUpdated(el);
+
+      const section = el.shadowRoot?.querySelector('section');
+      const textContainer = el.shadowRoot?.querySelector('.container');
+      const heading = el.querySelector('[slot="text"] h2') as HTMLHeadingElement | null;
+
+      expect(section).to.exist;
+      expect(textContainer).to.exist;
+      expect(heading).to.exist;
+      expect(heading?.id).to.equal('hero-title');
+      expect(section?.getAttribute('aria-labelledby')).to.equal(heading?.id);
+    });
+
+    it('does not add aria-labelledby when it-aria-label is present', async () => {
+      const el = await fixture<ItHero>(html`
+        <it-hero it-aria-label="Hero accessibile">
+          <div slot="text"><h3>Titolo hero</h3></div>
+        </it-hero>
+      `);
+
+      await elementUpdated(el);
+
+      const section = el.shadowRoot?.querySelector('section');
+      expect(section?.getAttribute('aria-label')).to.equal('Hero accessibile');
+      expect(section?.hasAttribute('aria-labelledby')).to.be.false;
+    });
+
+    it('removes aria-labelledby when it-aria-label is added dynamically', async () => {
+      const el = await fixture<ItHero>(html`
+        <it-hero>
+          <div slot="text"><h2 id="hero-dynamic-title">Titolo hero</h2></div>
+        </it-hero>
+      `);
+
+      await elementUpdated(el);
+
+      const section = el.shadowRoot?.querySelector('section');
+      expect(section?.getAttribute('aria-labelledby')).to.equal('hero-dynamic-title');
+
+      el.setAttribute('it-aria-label', 'Hero aggiornata');
+      await elementUpdated(el);
+
+      expect(section?.getAttribute('aria-label')).to.equal('Hero aggiornata');
+      expect(section?.hasAttribute('aria-labelledby')).to.be.false;
     });
   });
 

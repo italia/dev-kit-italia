@@ -63,6 +63,7 @@
 @forward '@italia/dimmer/styles/globals';
 @forward '@italia/dropdown/styles/globals';
 @forward '@italia/hero/styles/globals';
+@forward '@italia/header/styles/globals';
 @forward '@italia/icon/styles/globals';
 @forward '@italia/input/styles/globals';
 @forward '@italia/megamenu/styles/globals';
@@ -78,9 +79,10 @@
 @forward '@italia/select/styles/globals';
 @forward '@italia/skiplinks/styles/globals';
 @forward '@italia/sticky/styles/globals';
-@forward '@italia/tabs/styles/globals';
+@forward '@italia/toolbar/styles/globals';
 @forward '@italia/thumbnav/styles/globals';
 @forward '@italia/timeline/styles/globals';
+@forward '@italia/tabs/styles/globals';
 @forward '@italia/toggle/styles/globals';
 @forward '@italia/tooltip/styles/globals';
 @forward '@italia/transfer/styles/globals';
@@ -102,11 +104,6 @@
 @forward './components/list';
 @forward './components/sidebar';
 
-.navbar-collapsable .menu-wrapper {
-  //z-index: 10; //to avoid megamenu dropdowns in header to be hidden when navscroll is in page
-  z-index: auto; // to avoid megamenu dropdowns in header to be overlapped by navscroll or other items in page
-}
-
 .it-footer-main .it-brand-wrapper ::part(icon) {
   width: var(--#{$prefix}footer-brand-icon-size);
   height: var(--#{$prefix}footer-brand-icon-size);
@@ -114,4 +111,5 @@
   margin-right: var(--#{$prefix}spacing-xs);
   fill: var(--#{$prefix}footer-brand-icon-color);
 }
+
 // End footer

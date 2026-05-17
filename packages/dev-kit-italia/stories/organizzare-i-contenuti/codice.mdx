@@ -1,0 +1,38 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as Stories from './codice.stories';
+
+<Meta of={Stories} />
+
+# Codice
+
+Documentazione ed esempi per la visualizzazione di blocchi di codice in linea e multilinea.
+
+## Codice inline
+
+Racchiudi piccoli pezzi di codice con `<code>`. Assicurati di evitare i caratteri di markup "maggiore di" e "minore di".
+
+<Canvas of={Stories.CodiceInline} />
+
+## Blocchi di codice
+
+Utilizzare `<pre>` per più righe di codice. Ancora una volta, assicurati di evitare qualsiasi parentesi angolare nel codice per il rendering appropriato.
+
+<Canvas of={Stories.BlocchiDiCodice} />
+
+## Variabili
+
+Per indicare le variabili usa il tag `<var>`.
+
+<Canvas of={Stories.Variabili} />
+
+## User input
+
+Utilizzare `<kbd>` per indicare l'input che viene in genere immesso tramite tastiera.
+
+<Canvas of={Stories.InputUtente} />
+
+## Output di esempio
+
+Per indicare l'output di esempio da un programma usa il tag `<samp>`.
+
+<Canvas of={Stories.OutputDiEsempio} />

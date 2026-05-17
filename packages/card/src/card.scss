@@ -26,7 +26,10 @@ utilities.$utilities: (
       )
     ),
   'shadow': map.get(utilities.$utilities, 'shadow'),
-  'border': map.get(utilities.$utilities, 'border')
+  'border': map.get(utilities.$utilities, 'border'),
+  'padding': map.get(utilities.$utilities, 'padding'),
+  'padding-x': map.get(utilities.$utilities, 'padding-x'),
+  'padding-y': map.get(utilities.$utilities, 'padding-y'),
 );
 
 @use 'bootstrap-italia/src/scss/base/utilities/api' as *;
@@ -62,6 +65,7 @@ dl {
   margin-top: 0;
   margin-bottom: var(--#{$prefix}spacing-s);
 }
+
 /* END copied from bsi reboot */
 
 ::slotted(figure),
@@ -86,6 +90,10 @@ dl {
       display: flex;
       width: 100%;
       justify-content: space-between;
+
+      &:focus-visible {
+        display: inline-block;
+      }
     }
   }
 

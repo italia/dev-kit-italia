@@ -15,6 +15,14 @@ it-card {
     border-top-right-radius: var(--#{$prefix}card-border-radius-inner);
   }
 
+  //focus
+  a[slot='title'],
+  a {
+    &:focus-visible {
+      display: inline-flex;
+    }
+  }
+
   .it-card-title-icon-wrapper {
     margin-left: var(--#{$prefix}icon-spacing);
   }

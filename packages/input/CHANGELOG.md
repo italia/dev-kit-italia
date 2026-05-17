@@ -1,5 +1,25 @@
 # @italia/input
 
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
 ## 1.0.0-alpha.9
 
 ### Patch Changes

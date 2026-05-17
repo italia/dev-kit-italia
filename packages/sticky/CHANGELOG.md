@@ -1,5 +1,24 @@
 # @italia/sticky
 
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - fixed sticky to prevent flapping on scroll
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
 ## 1.0.0-alpha.9
 
 ### Patch Changes

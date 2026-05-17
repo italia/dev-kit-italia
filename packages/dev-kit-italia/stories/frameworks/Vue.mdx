@@ -1,0 +1,137 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Code } from 'storybook/internal/components';
+
+<Meta title="Framework/Vue" />
+
+# Vue
+
+Dev Kit Italia si integra nativamente con Vue 3 tramite i Custom Elements standard del browser. I componenti si usano direttamente nei template senza registrazione né wrapper aggiuntivi.
+
+## Installazione
+
+Installa il pacchetto nel tuo progetto Vue:
+
+```bash
+npm install @italia/dev-kit-italia
+# oppure
+pnpm add @italia/dev-kit-italia
+# oppure
+yarn add @italia/dev-kit-italia
+```
+
+## Importazione
+
+Nel punto di ingresso dell'applicazione (`main.js`), importa i componenti e i fogli di stile:
+
+```javascript
+// main.js
+import '@italia/dev-kit-italia/elements.js';
+import '@italia/dev-kit-italia/fonts.css';
+import '@italia/dev-kit-italia/full.css';
+```
+
+## Utilizzo
+
+Usa i componenti direttamente nel template e gestisci gli eventi con la sintassi Vue:
+
+```javascript
+// Button.vue
+
+<script setup>
+const handleClick = () => {
+  alert('Mi hai cliccato!');
+};
+</script>
+
+<template>
+  <it-button variant="primary" type="button" @click="handleClick">
+    Cliccami
+  </it-button>
+</template>
+```
+
+## Routing
+
+Dev Kit Italia è progettato in modo che ogni elemento interattivo che normalmente contiene un tag `<a>` lo esponga come slot.
+
+Questo ti permette di passare direttamente il componente `<RouterLink>` di Vue Router — senza alcun wrapper aggiuntivo.
+
+```javascript
+// NavItem.vue
+
+<script setup>
+import { RouterLink } from 'vue-router';
+</script>
+
+<template>
+  <it-dropdown-item>
+    <RouterLink to="/pagina">Vai alla pagina</RouterLink>
+  </it-dropdown-item>
+</template>
+```
+
+## Internazionalizzazione
+
+Per gestire l'internazionalizzazione in una applicazione Vue, è necessario importare `registerTranslation` e registrare le traduzioni.
+Questo può essere fatto nel punto di ingresso dell'applicazione, se le traduzioni sono centralizzate in un unico punto:
+
+```javascript
+// main.js
+import { createApp } from 'vue';
+import { registerTranslation } from '@italia/dev-kit-italia/elements.js';
+import '@italia/dev-kit-italia/fonts.css';
+import '@italia/dev-kit-italia/styles.css';
+import App from './App.vue';
+import router from './routes.js';
+
+const it = {
+  $code: 'it',
+  $name: 'Italiano',
+  $dir: 'ltr',
+  showHidePassword: 'Mostra/Nascondi Password CUSTOM.',
+};
+
+registerTranslation(it);
+
+createApp(App).use(router).mount('#app');
+```
+
+Oppure all'interno dei propri componenti:
+
+```typescript
+// MyPassword.vue
+
+<script setup>
+import { onMounted, ref } from 'vue';
+import { registerTranslation } from '@italia/dev-kit-italia/elements.js';
+
+const it = {
+  $code: 'it',
+  $name: 'Italiano',
+  $dir: 'ltr',
+  showHidePassword: 'Mostra/Nascondi Password (in CUSTOM COMPONENT).',
+};
+
+const translationsLoaded = ref(false);
+
+onMounted(() => {
+  registerTranslation(it);
+  translationsLoaded.value = true;
+});
+</script>
+
+<template>
+  <it-input
+    v-if="translationsLoaded"
+    id="campo-password"
+    type="password"
+    name="campo-password"
+    support-text="Inserisci almeno 8 caratteri e alcuni caratteri speciali."
+    :strength-meter="true"
+    minlength="8"
+    :suggestions="true"
+  >
+    <span slot="label">Campo password</span>
+  </it-input>
+</template>
+```

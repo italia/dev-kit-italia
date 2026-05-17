@@ -6,9 +6,22 @@ import prettier from 'prettier-v2';
 import HTMLParser from 'prettier-v2/parser-html';
 import { StoryWidth100 } from './it-decorators';
 import './elements';
+import { version } from '../packages/dev-kit-italia/package.json';
+
+const versionMatch = version.match(/^(\d+)\.(\d+)\.(\d+)(?:-(.+))?$/);
+const [, major, minor, patch, postfix] = versionMatch || ['', '1', '0', '0', ''];
 
 const preview: Preview = {
   parameters: {
+    version: {
+      major,
+      minor,
+      patch,
+      postfix: postfix || undefined, // 'alpha.X' | 'beta.X' | 'rc.X' | undefined
+      style: {
+        'font-family': 'Roboto, monospace',
+      }
+    },
     layout: 'centered',
     controls: {
       matchers: {
@@ -54,6 +67,8 @@ const preview: Preview = {
           'Documentazione tecnica',
           'Componenti',
           'Framework',
+          'Organizzare i contenuti',
+          'Organizzare gli spazi',
         ],
       },
     },
@@ -93,6 +108,7 @@ export const decorators = [
       //   );
       case 'w-100':
         return StoryWidth100(Story, ctx);
+
       default:
         // In the default case, don't apply a layout
 

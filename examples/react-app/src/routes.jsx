@@ -19,6 +19,9 @@ import Collapse from './pages/Collapse';
 import Dropdown from './pages/Dropdown';
 import Form from './pages/Form';
 import Forward from './pages/Forward';
+import Header from './pages/Header';
+import HeaderCompleteFullExample from './pages/HeaderCompleteFullExample';
+import HeaderCompleteFullStickyExample from './pages/HeaderCompleteFullStickyExample';
 import Hero from './pages/Hero';
 import Icon from './pages/Icon';
 import Input from './pages/Input';
@@ -39,6 +42,7 @@ import Table from './pages/Table';
 import Thumbnav from './pages/Thumbnav';
 import Timeline from './pages/Timeline';
 import Toggle from './pages/Toggle';
+import Toolbar from './pages/Toolbar';
 import Transfer from './pages/Transfer';
 import Tooltip from './pages/Tooltip';
 import Video from './pages/Video';
@@ -72,6 +76,17 @@ export const AppRoutes = [
   { path: '/dropdown', element: <Dropdown />, title: 'Dropdown' },
   { path: '/form', element: <Form />, title: 'Form' },
   { path: '/forward', element: <Forward />, title: 'Forward' },
+  { path: '/header', element: <Header />, title: 'Header' },
+  {
+    path: '/header-complete-full-example',
+    element: <HeaderCompleteFullExample />,
+    title: 'Header Complete Full Example',
+  },
+  {
+    path: '/header-complete-full-sticky-example',
+    element: <HeaderCompleteFullStickyExample />,
+    title: 'Header Complete Full Sticky Example',
+  },
   { path: '/hero', element: <Hero />, title: 'Hero' },
   { path: '/icon', element: <Icon />, title: 'Icon' },
   { path: '/input', element: <Input />, title: 'Input' },
@@ -96,6 +111,7 @@ export const AppRoutes = [
   { path: '/tabs', element: <Tabs />, title: 'Tabs' },
   { path: '/timeline', element: <Timeline />, title: 'Timeline' },
   { path: '/toggle', element: <Toggle />, title: 'Toggle' },
+  { path: '/toolbar', element: <Toolbar />, title: 'Toolbar' },
   { path: '/transfer', element: <Transfer />, title: 'Transfer' },
   { path: '/tooltip', element: <Tooltip />, title: 'Tooltip' },
   { path: '/upload', element: <Upload />, title: 'Upload' },

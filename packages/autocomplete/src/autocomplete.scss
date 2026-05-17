@@ -100,6 +100,9 @@ utilities.$utilities: (
   &.active {
     background-color: var(--#{$prefix}color-background-primary-lighter);
     color: var(--#{$prefix}color-text-primary);
+    font-weight: bold;
+    outline: 2px solid var(--#{$prefix}color-outline-focus);
+    outline-offset: -2px;
   }
 
   &:focus {

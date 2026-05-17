@@ -2,7 +2,7 @@
 
 import { ItDropdownBase } from '@italia/dropdown/it-dropdown-base.js';
 import { html, nothing } from 'lit';
-import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { FooterAlign, FooterPosition } from './types.js';
 
@@ -32,17 +32,29 @@ export class ItMegamenu extends ItDropdownBase {
 
   @property({ type: String, attribute: 'footer-position', reflect: true }) footerPosition: FooterPosition = 'bottom'; // posizione del footer
 
-  @queryAssignedElements({ slot: 'description', flatten: true }) private _descriptionItems!: Array<HTMLElement>;
-
-  @queryAssignedElements({ slot: 'header', flatten: true }) private _headerItems!: Array<HTMLElement>;
-
-  @queryAssignedElements({ slot: 'footer', flatten: true }) private _footerItems!: Array<HTMLElement>;
-
   private _clickCloseTargets = new Set<HTMLElement>();
 
+  private _getAssignedSlotElements(slotName: 'header' | 'footer' | 'description'): HTMLElement[] {
+    const slot = this.renderRoot.querySelector(`slot[name="${slotName}"]`) as HTMLSlotElement | null;
+    if (!slot) return [];
+    return slot.assignedElements({ flatten: true }).filter((el): el is HTMLElement => el instanceof HTMLElement);
+  }
+
+  private _refreshSlotState() {
+    const descriptionSlot = this.renderRoot.querySelector('slot[name="description"]') as HTMLSlotElement | null;
+    const headerSlot = this.renderRoot.querySelector('slot[name="header"]') as HTMLSlotElement | null;
+    const footerSlot = this.renderRoot.querySelector('slot[name="footer"]') as HTMLSlotElement | null;
+
+    this._hasDescription = (descriptionSlot?.assignedElements({ flatten: true }).length ?? 0) > 0;
+    this._hasHeader = (headerSlot?.assignedElements({ flatten: true }).length ?? 0) > 0;
+    this._hasFooter = (footerSlot?.assignedElements({ flatten: true }).length ?? 0) > 0;
+  }
+
   private _handleSlotDescriptionChange() {
-    // Verifichiamo se l'array degli elementi assegnati è popolato
-    this._hasDescription = this._descriptionItems.length > 0;
+    // Defer al microtask successivo per evitare race di distribuzione slot su mobile.
+    queueMicrotask(() => {
+      this._refreshSlotState();
+    });
   }
 
   override _setChildrenProperties() {
@@ -60,23 +72,29 @@ export class ItMegamenu extends ItDropdownBase {
   }
 
   private _onSlotHeaderChange() {
-    // Verifichiamo se l'array degli elementi assegnati è popolato
-    this._hasHeader = this._headerItems.length > 0;
-    this._syncClickCloseTargets();
+    // Defer al microtask successivo per evitare race di distribuzione slot su mobile.
+    queueMicrotask(() => {
+      this._refreshSlotState();
+      this._syncClickCloseTargets();
+    });
   }
 
   private _onSlotFooterChange() {
-    // Verifichiamo se l'array degli elementi assegnati è popolato
-    this._hasFooter = this._footerItems.length > 0;
-    this._syncClickCloseTargets();
+    // Defer al microtask successivo per evitare race di distribuzione slot su mobile.
+    queueMicrotask(() => {
+      this._refreshSlotState();
+      this._syncClickCloseTargets();
+    });
   }
 
   private _getMegamenuFocusableItems(): Element[] {
     // Costruisce la lista completa: header items + menu items + footer items
     const allItems: Element[] = [];
+    const headerItems = this._getAssignedSlotElements('header');
+    const footerItems = this._getAssignedSlotElements('footer');
 
     // Aggiungi elementi focusabili dall'header
-    for (const headerItem of this._headerItems) {
+    for (const headerItem of headerItems) {
       if (headerItem.matches(ItMegamenu.FOCUSABLE_SELECTORS)) {
         allItems.push(headerItem);
       }
@@ -88,7 +106,7 @@ export class ItMegamenu extends ItDropdownBase {
     allItems.push(...menuItems);
 
     // Aggiungi elementi focusabili dal footer
-    for (const footerItem of this._footerItems) {
+    for (const footerItem of footerItems) {
       if (footerItem.matches(ItMegamenu.FOCUSABLE_SELECTORS)) {
         allItems.push(footerItem);
       }
@@ -169,6 +187,16 @@ export class ItMegamenu extends ItDropdownBase {
     super.disconnectedCallback();
   }
 
+  protected override firstUpdated() {
+    this._refreshSlotState();
+    this._syncClickCloseTargets();
+  }
+
+  protected override updated() {
+    super.updated();
+    this._refreshSlotState();
+  }
+
   override render() {
     return html`
       <it-popover
@@ -223,6 +251,7 @@ export class ItMegamenu extends ItDropdownBase {
         </it-button>
         <div
           slot="content"
+          part="popover-content"
           class="${this.composeClass('dropdown-menu megamenu', 'show-lg', {
             show: this._popoverOpen,
             'full-width': this.fullWidth,
@@ -240,7 +269,7 @@ export class ItMegamenu extends ItDropdownBase {
                     <div class="col-xs-12 col-lg-4 px-0">
                       <div class="row">
                         <div class="col-12 it-vertical it-description pb-lg-3">
-                          <div class="description-content px-4 ps-sm-5 ms-4 ms-lg-3" role="presentation">
+                          <div class="description-content px-3 px-lg-4 ps-sm-5 ms-lg-3">
                             <slot name="description" @slotchange=${this._handleSlotDescriptionChange}></slot>
                           </div>
                         </div>
@@ -254,6 +283,7 @@ export class ItMegamenu extends ItDropdownBase {
                 })}"
               >
                 <!-- HEADER PLACEHOLDER -->
+
                 ${this._hasHeader
                   ? html`
                       <div class="it-heading-link-wrapper" part="megamenu-header">
@@ -266,9 +296,10 @@ export class ItMegamenu extends ItDropdownBase {
                 ${this._menuItems.length > 0
                   ? html` <div class="row">
                       <div class="col-12">
-                        <div class="link-list-wrapper">
+                        <div class="link-list-wrapper" part="megamenu-link-list-wrapper">
                           <ul
                             class="link-list"
+                            part="megamenu-link-list"
                             style="columns: ${this.columns};"
                             role=${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}
                           >

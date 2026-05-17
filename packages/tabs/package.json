@@ -1,7 +1,7 @@
 {
   "name": "@italia/tabs",
   "description": "Web component it-tabs del Design system .italia",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.11",
   "publishConfig": {
     "access": "public"
   },

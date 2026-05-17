@@ -41,6 +41,12 @@ export class ItCard extends BaseComponent {
   @property({ type: String, attribute: 'heading-level' })
   headingLevel: CardHeadingLevel = 'h3';
 
+  @property({ type: String, attribute: 'it-class' })
+  itClass: string | undefined;
+
+  @property({ type: String, attribute: 'actions-aria-label' })
+  actionsAriaLabel?: string;
+
   @queryAssignedElements({ slot: 'title' })
   _titleElements!: HTMLElement[];
 
@@ -157,7 +163,7 @@ export class ItCard extends BaseComponent {
     const hasTitleIcon = this._titleElements.some((el) => el.querySelector('.it-card-title-icon-wrapper') !== null);
     const isInline = this.variant.startsWith('inline');
 
-    const classes = this.composeClass('it-card', 'rounded', shadowClass, borderClass, {
+    const classes = this.composeClass('it-card', 'rounded', shadowClass, borderClass, this.itClass, {
       'it-card-inline': isInline,
       'it-card-inline-reverse': this.variant.endsWith('reverse'),
       'it-card-inline-mini': this.variant.includes('mini'),
@@ -243,7 +249,12 @@ export class ItCard extends BaseComponent {
 
     const cardActions = hasActions
       ? html`
-          <div class="it-card-actions" part="actions">
+          <div
+            class="it-card-actions"
+            role="group"
+            part="actions"
+            aria-label=${this.actionsAriaLabel ? this.actionsAriaLabel : 'Link correlati:'}
+          >
             <slot name="actions" @slotchange=${this.handleSlotChange}></slot>
           </div>
         `

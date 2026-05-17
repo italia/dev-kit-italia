@@ -1,5 +1,25 @@
 # @italia/dimmer
 
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
 ## 1.0.0-alpha.9
 
 ### Patch Changes

@@ -93,7 +93,7 @@ export const EsempioInterattivoClassica: Story = {
           <a slot="title" href="#">Titolo del contenuto</a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -126,7 +126,7 @@ export const TimelineClassica: Story = {
           <a slot="title" href="#">Titolo del contenuto</a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -584,7 +584,7 @@ export const PointListComplessa: Story = {
           <time slot="footer" class="it-card-date" datetime="2026-04-22">22 aprile, 2026</time>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -603,7 +603,7 @@ export const PointListComplessa: Story = {
           <a slot="title" href="#">Titolo del contenuto</a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>

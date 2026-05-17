@@ -1,7 +1,7 @@
 {
   "name": "@italia/card",
   "description": "Web component it-card del Design system .italia",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.11",
   "publishConfig": {
     "access": "public"
   },

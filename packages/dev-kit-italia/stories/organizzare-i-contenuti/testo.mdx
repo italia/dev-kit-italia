@@ -1,0 +1,48 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as Stories from './testo.stories';
+
+<Meta of={Stories} />
+
+# Testo
+
+Documentazione e esempi di strumenti per il controllo dell'allineamento nelle aree di testo, dello stile del carattere e altro.
+
+## Allineamento del testo
+
+Riallinea facilmente il contenuto dei componenti con le classi di allineamento testo.
+
+<Canvas of={Stories.AllineatoASinistra} />
+
+Per l'allineamento a sinistra, a destra e centrale sono disponibili classi che si adattano in base alla griglia utilizzata.
+
+<Canvas of={Stories.VariantiDiAllineamento} />
+
+## Testo per esteso e overflow
+
+Previeni l'andare a capo del testo con la classe `.text-nowrap`.
+
+<Canvas of={Stories.PerEstesoEOverflow} />
+
+Per contenuti più lunghi puoi aggiungere la classe `.text-truncate` per troncare il testo con i punti di sospensione. Necessita della classe `display: inline-block` oppure `display: block`.
+
+<Canvas of={Stories.ConTroncamentoInPuntiDiSospensione} />
+
+## Trasformazione del testo
+
+Trasforma il testo con una delle classi per la scrittura in maiuscolo.
+
+<Canvas of={Stories.Trasformazioni} />
+
+Nota come la classe `text-capitalize` cambi solamente la prima lettera di ogni parola lasciando le altre inalterate.
+
+## Carattere grassetto e corsivo
+
+Modifica rapidamente il testo in grassetto o in corsivo.
+
+<Canvas of={Stories.Stile} />
+
+## Monospace
+
+Formatta il testo con carattere a larghezza costante con la classe `.font-monospace`.
+
+<Canvas of={Stories.Monospaziato} />

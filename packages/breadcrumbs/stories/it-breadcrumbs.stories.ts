@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import '@italia/breadcrumbs';
-import '@italia/icon';
 
 interface BreadcrumbProps {
   'it-aria-label'?: string;

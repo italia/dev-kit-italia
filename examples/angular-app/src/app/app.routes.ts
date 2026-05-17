@@ -114,6 +114,27 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/forward.component').then((c) => c.ForwardComponent),
   },
   {
+    title: 'Header',
+    path: 'header',
+    loadComponent: () => import('./pages/header.component').then((c) => c.HeaderComponent),
+  },
+  {
+    title: 'Header Complete Full Example',
+    path: 'header-complete-full-example',
+    loadComponent: () =>
+      import('./pages/header-complete-full-example.component').then(
+        (c) => c.HeaderCompleteFullExampleComponent,
+      ),
+  },
+  {
+    title: 'Header Complete Full Sticky Example',
+    path: 'header-complete-full-sticky-example',
+    loadComponent: () =>
+      import('./pages/header-complete-full-sticky-example.component').then(
+        (c) => c.HeaderCompleteFullStickyExampleComponent,
+      ),
+  },
+  {
     title: 'Hero',
     path: 'hero',
     loadComponent: () => import('./pages/hero.component').then((c) => c.HeroComponent),
@@ -229,10 +250,15 @@ export const routes: Routes = [
     path: 'tabs',
     loadComponent: () => import('./pages/tabs.component').then((c) => c.TabsComponent),
   },
-{
+  {
     title: 'Toggle',
     path: 'toggle',
     loadComponent: () => import('./pages/toggle.component').then((c) => c.ToggleComponent),
+  },
+  {
+    title: 'Toolbar',
+    path: 'toolbar',
+    loadComponent: () => import('./pages/toolbar.component').then((c) => c.ToolbarComponent),
   },
   {
     title: 'Transfer',
@@ -257,6 +283,7 @@ export const routes: Routes = [
   {
     title: 'Notification',
     path: 'notification',
-    loadComponent: () => import('./pages/notification.component').then((c) => c.NotificationComponent),
+    loadComponent: () =>
+      import('./pages/notification.component').then((c) => c.NotificationComponent),
   },
 ];

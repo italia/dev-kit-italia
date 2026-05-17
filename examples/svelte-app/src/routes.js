@@ -19,6 +19,9 @@ import Dimmer from './pages/Dimmer.svelte';
 import Dropdown from './pages/Dropdown.svelte';
 import Form from './pages/Form.svelte';
 import Forward from './pages/Forward.svelte';
+import Header from './pages/Header.svelte';
+import HeaderCompleteFullExample from './pages/HeaderCompleteFullExample.svelte';
+import HeaderCompleteFullStickyExample from './pages/HeaderCompleteFullStickyExample.svelte';
 import Hero from './pages/Hero.svelte';
 import Icon from './pages/Icon.svelte';
 import Input from './pages/Input.svelte';
@@ -40,6 +43,7 @@ import Sticky from './pages/Sticky.svelte';
 import Carousel from './pages/Carousel.svelte';
 import Table from './pages/Table.svelte';
 import Tabs from './pages/Tabs.svelte';
+import Toolbar from './pages/Toolbar.svelte';
 import Thumbnav from './pages/Thumbnav.svelte';
 import Timeline from './pages/Timeline.svelte';
 import Toggle from './pages/Toggle.svelte';
@@ -72,6 +76,17 @@ export const AppRoutes = [
   { path: '/dropdown', element: Dropdown, title: 'Dropdown' },
   { path: '/form', element: Form, title: 'Form' },
   { path: '/forward', element: Forward, title: 'Forward' },
+  { path: '/header', element: Header, title: 'Header' },
+  {
+    path: '/header-complete-full-example',
+    element: HeaderCompleteFullExample,
+    title: 'Header Complete Full Example',
+  },
+  {
+    path: '/header-complete-full-sticky-example',
+    element: HeaderCompleteFullStickyExample,
+    title: 'Header Complete Full Sticky Example',
+  },
   { path: '/hero', element: Hero, title: 'Hero' },
   { path: '/icon', element: Icon, title: 'Icon' },
   { path: '/input', element: Input, title: 'Input' },
@@ -92,6 +107,7 @@ export const AppRoutes = [
   { path: '/skiplinks', element: Skiplinks, title: 'Skiplinks' },
   { path: '/sticky', element: Sticky, title: 'Sticky' },
   { path: '/tables', element: Table, title: 'Tables' },
+  { path: '/toolbar', element: Toolbar, title: 'Toolbar' },
   { path: '/thumbnav', element: Thumbnav, title: 'Thumbnav' },
   { path: '/timeline', element: Timeline, title: 'Timeline' },
   { path: '/tabs', element: Tabs, title: 'Tabs' },
