@@ -48,7 +48,6 @@ export default [
         fileName: 'styles.css',
         outputStyle: 'compressed',
         quietDeps: true,
-        silenceDeprecations: ['import'],
       }),
     ],
   },

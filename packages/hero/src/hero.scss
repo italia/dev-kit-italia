@@ -1,12 +1,12 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/containers';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/containers' as *;
 
-@import 'bootstrap-italia/src/scss/components/imgresponsive';
-@import 'bootstrap-italia/src/scss/components/overlay-panel';
-@import 'bootstrap-italia/src/scss/components/hero';
+@use 'bootstrap-italia/src/scss/components/imgresponsive' as *;
+@use 'bootstrap-italia/src/scss/components/overlay-panel' as *;
+@use 'bootstrap-italia/src/scss/components/hero' as *;
 
 :host {
   .it-hero-wrapper.it-overlay.it-filter .img-responsive-wrapper ::slotted(*[slot='background']) {

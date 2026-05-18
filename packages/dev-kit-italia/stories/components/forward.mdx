@@ -35,11 +35,12 @@ Fai attenzione a:
       da `bootstrap-italia`:
 
 
-      ```css
-      @import 'bootstrap-italia/src/scss/base/functions';
-      @import 'bootstrap-italia/src/scss/base/variables';
-      @import 'bootstrap-italia/src/scss/base/mixins';
-      @import 'bootstrap-italia/src/scss/components/forward';
+      ```scss
+      @use 'bootstrap-italia/src/scss/base/functions' as *;
+      @use 'bootstrap-italia/src/scss/base/config' as *;
+      @use 'bootstrap-italia/src/scss/base/variables' as *;
+      @use 'bootstrap-italia/src/scss/base/mixins' as *;
+      @use 'bootstrap-italia/src/scss/components/forward' as *;
       ```
 
     </p>

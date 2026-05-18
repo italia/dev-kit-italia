@@ -21,15 +21,7 @@ const config: StorybookConfig = {
     config.css = config.css || {};
     config.css.preprocessorOptions = config.css.preprocessorOptions || {};
     config.css.preprocessorOptions.scss = {
-      // Modificare gli import ora significherebbe una riscrittura pesante di bootstrap-italia.
-      silenceDeprecations: [
-        'import',
-        'global-builtin',
-        'function-units',
-        'color-functions',
-        'mixed-decls',
-        'abs-percent',
-      ],
+      silenceDeprecations: ['if-function'],
     };
 
     // console.log('OptimizeDeps include:', config.optimizeDeps?.include);

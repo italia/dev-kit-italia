@@ -1,24 +1,25 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/reboot';
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
+@use 'bootstrap-italia/src/scss/base/reboot' as *;
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
-@import 'bootstrap-italia/src/scss/components/buttons';
+@use 'bootstrap-italia/src/scss/components/buttons' as *;
 
-@import 'bootstrap-italia/src/scss/forms/forms';
-@import 'bootstrap-italia/src/scss/forms/form-control';
-@import 'bootstrap-italia/src/scss/forms/form-input-upload';
+@use 'bootstrap-italia/src/scss/forms/forms' as *;
+@use 'bootstrap-italia/src/scss/forms/form-control' as *;
+@use 'bootstrap-italia/src/scss/forms/form-input-upload' as *;
 
-@import 'bootstrap-italia/src/scss/forms/just-validate';
-@import 'bootstrap-italia/src/scss/components/type';
+@use 'bootstrap-italia/src/scss/forms/just-validate' as *;
+@use 'bootstrap-italia/src/scss/components/type' as *;
 
-@import 'bootstrap-italia/src/scss/base/utilities';
-
-$utilities: (
-  'display': map-merge(
-      map-get($utilities, 'display'),
+utilities.$utilities: (
+  'display': map.merge(
+      map.get(utilities.$utilities, 'display'),
       (
         'values': (
           'none': none,
@@ -27,17 +28,17 @@ $utilities: (
         ),
       )
     ),
-  'margin': map-merge(
-      map-get($utilities, 'margin'),
+  'margin': map.merge(
+      map.get(utilities.$utilities, 'margin'),
       (
         'values': (
           0: 0,
         ),
       )
-    ),
+    )
 );
 
-@import 'bootstrap-italia/src/scss/base/utilities/api';
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 .upload[type='file'] + label {
   display: flex;

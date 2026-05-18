@@ -1,3 +1,10 @@
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use './fouc';
+
 it-card {
   figure {
     margin-bottom: 0;
@@ -239,5 +246,3 @@ ul.it-card-list {
     justify-content: flex-end;
   }
 }
-
-@import './fouc';

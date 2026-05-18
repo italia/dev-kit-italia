@@ -1,3 +1,9 @@
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+
 it-tabs[auto] {
   flex-wrap: nowrap;
 
@@ -10,8 +16,8 @@ it-tabs[auto] {
 it-tabs {
   it-tab {
     flex-grow: 0;
-    gap: 0.5rem;
     justify-content: space-between;
+    gap: 0.5rem;
 
     // Icon responsive sizing strategy
     it-icon {
@@ -32,8 +38,8 @@ it-tabs {
     }
 
     @include media-breakpoint-down(md) {
-      flex-wrap: wrap;
       flex-shrink: 1;
+      flex-wrap: wrap;
       justify-content: center;
     }
   }

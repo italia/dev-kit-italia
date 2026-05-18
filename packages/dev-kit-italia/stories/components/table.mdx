@@ -31,11 +31,12 @@ Per usare le tabelle, aggiungi la classe `.table` a qualsiasi `<table>`. Puoi po
       Se non stai usando il bundle unico, assicurati di aver importato tutti i fogli di stile necessari da `bootstrap-italia`:
 
 
-      ```css
-      @import 'bootstrap-italia/src/scss/base/functions';
-      @import 'bootstrap-italia/src/scss/base/variables';
-      @import 'bootstrap-italia/src/scss/base/mixins';
-      @import 'bootstrap-italia/src/scss/components/tables';
+      ```scss
+      @use 'bootstrap-italia/src/scss/base/functions' as *;
+      @use 'bootstrap-italia/src/scss/base/config' as *;
+      @use 'bootstrap-italia/src/scss/base/variables' as *;
+      @use 'bootstrap-italia/src/scss/base/mixins' as *;
+      @use 'bootstrap-italia/src/scss/components/tables' as *;
       ```
 
     </p>

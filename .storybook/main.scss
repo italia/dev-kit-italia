@@ -1,5 +1,5 @@
-@import '../packages/dev-kit-italia/styles/index';
-@import 'bootstrap-italia/src/scss/components/callout';
+@use '../packages/dev-kit-italia/styles/index';
+@use 'bootstrap-italia/src/scss/components/callout' as *;
 
 $font-path: './assets/fonts';
 

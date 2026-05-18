@@ -97,7 +97,7 @@ export class ItBackToTop extends BaseComponent {
       dark: this.inverse,
       shadow: this.shadow,
       'back-to-top-show': this.visible,
-      'back-to-top-border': this.border,
+      border: this.border,
       [`border-${_borderColor}`]: this.border,
     });
 
