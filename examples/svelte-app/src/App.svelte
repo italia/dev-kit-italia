@@ -3,7 +3,6 @@
   import Router from './Router.svelte';
   import Footer from './components/Footer.svelte';
   import svelteLogo from './assets/svelte.svg';
-  import viteLogo from '/vite.svg';
   import { AppRoutes } from './routes';
 
   $: currentPath = ($location ?? '/').split('?')[0];
@@ -15,9 +14,6 @@
   {#if !isFullHeaderPage}
     <header class="app-header bg-primary">
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} class="logo" alt="Vite logo" />
-        </a>
         <a href="https://svelte.dev" target="_blank" rel="noreferrer">
           <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
         </a>
