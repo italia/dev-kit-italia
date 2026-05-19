@@ -3,3 +3,7 @@
 @use 'bootstrap-italia/src/scss/components/skiplinks' as *;
 @use 'bootstrap-italia/src/scss/base/mixins/visually-hidden' as *;
 @use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
+
+.skiplinks ul {
+  margin: 0;
+}
