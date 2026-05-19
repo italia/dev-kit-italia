@@ -3,11 +3,13 @@ import { Code } from 'storybook/internal/components';
 
 <Meta title="Framework/Vue" />
 
+export const path = process.env.GH_PAGES_PATH + '/vue-app';
+
 # Vue
 
 Dev Kit Italia si integra nativamente con Vue 3 tramite i Custom Elements standard del browser. I componenti si usano direttamente nei template senza registrazione né wrapper aggiuntivi.
 
-<a href="/vue-app/" title="Vai all'esempio di integrazione Vue">Esempio di integrazione</a> - <a href="https://github.com/italia/dev-kit-italia/tree/main/examples/vue-app" title="Vai al codice su GitHub">Codice GitHub</a>
+<a href={path} title="Vai all'esempio di integrazione Vue">Esempio di integrazione</a> - <a href="https://github.com/italia/dev-kit-italia/tree/main/examples/vue-app" title="Vai al codice su GitHub">Codice GitHub</a>
 
 ## Installazione
 

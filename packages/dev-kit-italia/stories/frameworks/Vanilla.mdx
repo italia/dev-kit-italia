@@ -3,11 +3,13 @@ import { Code } from 'storybook/internal/components';
 
 <Meta title="Framework/Vanilla" />
 
+export const path = process.env.GH_PAGES_PATH + '/vanilla-app';
+
 # Vanilla JS
 
 Dev Kit Italia può essere usato direttamente in qualsiasi pagina HTML, senza bundler né framework. È sufficiente includere i file CSS e JS del pacchetto tramite tag standard.
 
-<a href="/vanilla-app/" title="Vai all'esempio di integrazione Vanilla">Esempio di integrazione</a> - <a href="https://github.com/italia/dev-kit-italia/tree/main/examples/vanilla-app" title="Vai al codice su GitHub">Codice GitHub</a>
+<a href={path} title="Vai all'esempio di integrazione Vanilla">Esempio di integrazione</a> - <a href="https://github.com/italia/dev-kit-italia/tree/main/examples/vanilla-app" title="Vai al codice su GitHub">Codice GitHub</a>
 
 ## Installazione
 

@@ -24,6 +24,8 @@ jobs:
 
       - name: Build documentation
         run: pnpm storybook:build && sh ./scripts/examples-preview.sh
+        env:
+          GH_PAGES_PATH: /dev-kit-italia
 
       - name: Publish on gh-pages
         run: |

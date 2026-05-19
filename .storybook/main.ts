@@ -23,6 +23,12 @@ const config: StorybookConfig = {
     config.css.preprocessorOptions.scss = {
       silenceDeprecations: ['if-function'],
     };
+    config.define = {
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+        GH_PAGES_PATH: JSON.stringify(process.env.GH_PAGES_PATH || '').replace(/\"/g, '')
+      }
+    };
 
     // console.log('OptimizeDeps include:', config.optimizeDeps?.include);
     // console.log('OptimizeDeps exclude:', config.optimizeDeps?.exclude);
