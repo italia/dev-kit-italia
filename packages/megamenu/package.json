@@ -1,7 +1,7 @@
 {
   "name": "@italia/megamenu",
   "description": "Web component it-megamenu del Design system .italia",
-  "version": "1.0.0-alpha.11",
+  "version": "1.0.0-alpha.12",
   "publishConfig": {
     "access": "public"
   },

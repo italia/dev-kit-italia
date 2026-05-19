@@ -1,5 +1,18 @@
 # @italia/skiplinks
 
+## 1.0.0-alpha.12
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- [`502aa3a`](https://github.com/italia/dev-kit-italia/commit/502aa3a7d760e6546153e64c6a23d96464a385db) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fixed ul margin for skiplinks
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
 ## 1.0.0-alpha.11
 
 ### Patch Changes
