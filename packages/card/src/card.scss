@@ -46,6 +46,10 @@ utilities.$utilities: (
 p {
   margin-top: 0;
   margin-bottom: var(--#{$prefix}paragraph-spacing);
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 address {
@@ -107,7 +111,7 @@ dl {
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: flex-end;
-  margin-top: var(--#{$prefix}card-spacing-y);
+  // margin-top: var(--#{$prefix}card-spacing-y);
   color: var(--#{$prefix}card-footer-text-color);
   gap: var(--#{$prefix}card-spacing-y);
 }
