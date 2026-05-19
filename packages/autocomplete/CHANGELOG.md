@@ -1,5 +1,20 @@
 # @italia/autocomplete
 
+## 1.0.0-alpha.12
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- [`1943e3c`](https://github.com/italia/dev-kit-italia/commit/1943e3c959f5abc15caa4595ccf57ad4ff50a135) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed a11y
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
 ## 1.0.0-alpha.11
 
 ### Patch Changes
