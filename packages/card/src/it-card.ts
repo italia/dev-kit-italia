@@ -262,7 +262,7 @@ export class ItCard extends BaseComponent {
 
     if (this.variant === 'profile') {
       return html`
-        <article class="${classes}">
+        <article class="${classes}" part="card">
           <div class="it-card-profile-header">
             <div class="it-card-profile-content">
               ${cardTitle}
@@ -282,7 +282,7 @@ export class ItCard extends BaseComponent {
     }
     if (this.variant === 'location') {
       return html`
-        <article class="${classes}">
+        <article class="${classes}" part="card">
           <div class="it-card-profile-header">
             <div class="it-card-profile">
               ${cardTitle}
@@ -302,13 +302,15 @@ export class ItCard extends BaseComponent {
     }
     if (isInline) {
       return html`
-        <article class="${classes}">
+        <article class="${classes}" part="card">
           <div class="it-card-inline-content">${cardTitle}${cardBody}${cardFooter}${cardActions}</div>
           ${cardImage}
         </article>
       `;
     }
-    return html` <article class="${classes}">${cardTitle}${cardImage}${cardBody}${cardFooter}${cardActions}</article> `;
+    return html`
+      <article class="${classes}" part="card">${cardTitle}${cardImage}${cardBody}${cardFooter}${cardActions}</article>
+    `;
   }
 }
 
