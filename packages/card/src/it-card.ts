@@ -241,7 +241,7 @@ export class ItCard extends BaseComponent {
 
     const cardFooter = hasFooter
       ? html`
-          <footer class="it-card-footer" part="footer">
+          <footer class="it-card-footer ${this.variant === 'location' ? 'border-top pt-3' : ''}" part="footer">
             <slot name="footer" @slotchange=${this.handleSlotChange}></slot>
           </footer>
         `

@@ -27,9 +27,11 @@ utilities.$utilities: (
     ),
   'shadow': map.get(utilities.$utilities, 'shadow'),
   'border': map.get(utilities.$utilities, 'border'),
+  'border-top': map.get(utilities.$utilities, 'border-top'),
   'padding': map.get(utilities.$utilities, 'padding'),
   'padding-x': map.get(utilities.$utilities, 'padding-x'),
-  'padding-y': map.get(utilities.$utilities, 'padding-y')
+  'padding-y': map.get(utilities.$utilities, 'padding-y'),
+  'padding-top': map.get(utilities.$utilities, 'padding-top')
 );
 
 @use 'bootstrap-italia/src/scss/base/utilities/api' as *;
