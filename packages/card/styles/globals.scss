@@ -72,7 +72,7 @@ it-card {
     color: var(--#{$prefix}card-description-color);
     font-size: var(--#{$prefix}label-font-size);
     gap: var(--#{$prefix}spacing-s);
-    line-height: var(--#{$prefix}label-leading);
+    line-height: var(--#{$prefix}body-leading);
 
     @include media-breakpoint-down(sm) {
       display: flex;
