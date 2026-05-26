@@ -2107,7 +2107,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -3995,7 +3995,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -5235,7 +5235,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -9821,7 +9821,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -11634,7 +11634,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -12970,7 +12970,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -14199,7 +14199,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -15946,7 +15946,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -17317,7 +17317,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -19025,7 +19025,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -20998,7 +20998,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -22568,7 +22568,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -23843,6 +23843,14 @@ blockquote.blockquote-card.dark .blockquote-footer,
   border: 0 !important;
 }
 
+.border-top {
+  border-top: var(--bsi-border-base) var(--bsi-border-style) var(--bsi-border-color) !important;
+}
+
+.border-top-0 {
+  border-top: 0 !important;
+}
+
 .p-0 {
   padding: 0 !important;
 }
@@ -23927,6 +23935,30 @@ blockquote.blockquote-card.dark .blockquote-footer,
   padding-bottom: 3rem !important;
 }
 
+.pt-0 {
+  padding-top: 0 !important;
+}
+
+.pt-1 {
+  padding-top: 0.25rem !important;
+}
+
+.pt-2 {
+  padding-top: 0.5rem !important;
+}
+
+.pt-3 {
+  padding-top: 1rem !important;
+}
+
+.pt-4 {
+  padding-top: 1.5rem !important;
+}
+
+.pt-5 {
+  padding-top: 3rem !important;
+}
+
 @media (min-width: 576px) {
   .d-sm-none {
     display: none !important;
@@ -23996,6 +24028,24 @@ blockquote.blockquote-card.dark .blockquote-footer,
   .py-sm-5 {
     padding-top: 3rem !important;
     padding-bottom: 3rem !important;
+  }
+  .pt-sm-0 {
+    padding-top: 0 !important;
+  }
+  .pt-sm-1 {
+    padding-top: 0.25rem !important;
+  }
+  .pt-sm-2 {
+    padding-top: 0.5rem !important;
+  }
+  .pt-sm-3 {
+    padding-top: 1rem !important;
+  }
+  .pt-sm-4 {
+    padding-top: 1.5rem !important;
+  }
+  .pt-sm-5 {
+    padding-top: 3rem !important;
   }
 }
 @media (min-width: 768px) {
@@ -24068,6 +24118,24 @@ blockquote.blockquote-card.dark .blockquote-footer,
     padding-top: 3rem !important;
     padding-bottom: 3rem !important;
   }
+  .pt-md-0 {
+    padding-top: 0 !important;
+  }
+  .pt-md-1 {
+    padding-top: 0.25rem !important;
+  }
+  .pt-md-2 {
+    padding-top: 0.5rem !important;
+  }
+  .pt-md-3 {
+    padding-top: 1rem !important;
+  }
+  .pt-md-4 {
+    padding-top: 1.5rem !important;
+  }
+  .pt-md-5 {
+    padding-top: 3rem !important;
+  }
 }
 @media (min-width: 992px) {
   .d-lg-none {
@@ -24138,6 +24206,24 @@ blockquote.blockquote-card.dark .blockquote-footer,
   .py-lg-5 {
     padding-top: 3rem !important;
     padding-bottom: 3rem !important;
+  }
+  .pt-lg-0 {
+    padding-top: 0 !important;
+  }
+  .pt-lg-1 {
+    padding-top: 0.25rem !important;
+  }
+  .pt-lg-2 {
+    padding-top: 0.5rem !important;
+  }
+  .pt-lg-3 {
+    padding-top: 1rem !important;
+  }
+  .pt-lg-4 {
+    padding-top: 1.5rem !important;
+  }
+  .pt-lg-5 {
+    padding-top: 3rem !important;
   }
 }
 @media (min-width: 1200px) {
@@ -24210,6 +24296,24 @@ blockquote.blockquote-card.dark .blockquote-footer,
     padding-top: 3rem !important;
     padding-bottom: 3rem !important;
   }
+  .pt-xl-0 {
+    padding-top: 0 !important;
+  }
+  .pt-xl-1 {
+    padding-top: 0.25rem !important;
+  }
+  .pt-xl-2 {
+    padding-top: 0.5rem !important;
+  }
+  .pt-xl-3 {
+    padding-top: 1rem !important;
+  }
+  .pt-xl-4 {
+    padding-top: 1.5rem !important;
+  }
+  .pt-xl-5 {
+    padding-top: 3rem !important;
+  }
 }
 @media (min-width: 1400px) {
   .d-xxl-none {
@@ -24280,6 +24384,24 @@ blockquote.blockquote-card.dark .blockquote-footer,
   .py-xxl-5 {
     padding-top: 3rem !important;
     padding-bottom: 3rem !important;
+  }
+  .pt-xxl-0 {
+    padding-top: 0 !important;
+  }
+  .pt-xxl-1 {
+    padding-top: 0.25rem !important;
+  }
+  .pt-xxl-2 {
+    padding-top: 0.5rem !important;
+  }
+  .pt-xxl-3 {
+    padding-top: 1rem !important;
+  }
+  .pt-xxl-4 {
+    padding-top: 1.5rem !important;
+  }
+  .pt-xxl-5 {
+    padding-top: 3rem !important;
   }
 }
 @media print {
@@ -24362,6 +24484,17 @@ dl {
 
 ::slotted(.it-card-taxonomy) {
   flex-grow: 1;
+}
+
+.it-card-place-type {
+  margin-top: 0.25rem;
+}
+
+.it-card-place-address {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }`;
 
 let ItCard = class ItCard extends BaseComponent$s {
@@ -24443,6 +24576,7 @@ let ItCard = class ItCard extends BaseComponent$s {
         const shadowClass = CARD_SHADOWS.includes(this.shadow) ? `shadow-${this.shadow}` : 'shadow-sm';
         const borderClass = this.border === '0' ? 'border-0' : 'border';
         const hasSubtitle = this._subtitleElements.length > 0;
+        const hasAddress = this._addressElements.length > 0;
         const hasSignature = this._signatureElements.length > 0;
         const hasText = this._textElements.length > 0;
         const hasBody = this._bodyElements.length > 0 || hasText || hasSubtitle || hasSignature;
@@ -24519,7 +24653,7 @@ let ItCard = class ItCard extends BaseComponent$s {
         `;
         const cardFooter = hasFooter
             ? b `
-          <footer class="it-card-footer" part="footer">
+          <footer class="it-card-footer ${this.variant === 'location' ? 'border-top pt-3' : ''}" part="footer">
             <slot name="footer" @slotchange=${this.handleSlotChange}></slot>
           </footer>
         `
@@ -24569,6 +24703,13 @@ let ItCard = class ItCard extends BaseComponent$s {
                     </p>
                   `
                 : b `<slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>`}
+              ${hasAddress
+                ? b `
+                    <p class="it-card-place-address" part="address">
+                      <slot name="address" @slotchange=${this.handleSlotChange}></slot>
+                    </p>
+                  `
+                : b `<slot name="address" @slotchange=${this.handleSlotChange}></slot>`}
             </div>
             ${cardImage}
           </div>
@@ -24634,6 +24775,10 @@ __decorate$v([
     o$4({ slot: 'subtitle' }),
     __metadata$v("design:type", Array)
 ], ItCard.prototype, "_subtitleElements", void 0);
+__decorate$v([
+    o$4({ slot: 'address' }),
+    __metadata$v("design:type", Array)
+], ItCard.prototype, "_addressElements", void 0);
 __decorate$v([
     o$4({ slot: 'signature' }),
     __metadata$v("design:type", Array)
@@ -25728,7 +25873,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -26610,7 +26755,7 @@ it-card .it-card-description-list {
   color: var(--bsi-card-description-color);
   font-size: var(--bsi-label-font-size);
   gap: var(--bsi-spacing-s);
-  line-height: var(--bsi-label-leading);
+  line-height: var(--bsi-body-leading);
 }
 @media (max-width: 575.98px) {
   it-card .it-card-description-list {
@@ -32068,7 +32213,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -35526,7 +35671,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -36932,7 +37077,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -39831,7 +39976,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -41185,7 +41330,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -42647,7 +42792,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -44351,7 +44496,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -49577,7 +49722,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -54650,7 +54795,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -56695,7 +56840,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -59532,7 +59677,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -61053,7 +61198,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -63154,7 +63299,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -65493,7 +65638,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -68391,7 +68536,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -72530,7 +72675,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -77710,7 +77855,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -78927,7 +79072,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -81497,7 +81642,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -85590,7 +85735,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -86816,7 +86961,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -88385,7 +88530,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -90173,7 +90318,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -91757,7 +91902,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -95685,7 +95830,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -99830,7 +99975,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
@@ -176721,7 +176866,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.12',
+        version: '1.0.0-alpha.13',
     };
 }
 
