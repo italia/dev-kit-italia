@@ -1,5 +1,16 @@
 # @italia/dropdown
 
+## 1.0.0-alpha.13
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+  - @italia/popover@1.0.0-alpha.13
+
 ## 1.0.0-alpha.12
 
 ### Minor Changes

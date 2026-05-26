@@ -1,5 +1,15 @@
 # @italia/carousel
 
+## 1.0.0-alpha.13
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a225c54`](https://github.com/italia/dev-kit-italia/commit/a225c54a737a3c31e489706e7aa4a9c7b5e1cce7), [`29c534c`](https://github.com/italia/dev-kit-italia/commit/29c534c4792a0bc3fd10d596b494e360713d2c25)]:
+  - @italia/card@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+
 ## 1.0.0-alpha.12
 
 ### Minor Changes
