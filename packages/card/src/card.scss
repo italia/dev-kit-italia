@@ -121,3 +121,14 @@ dl {
 ::slotted(.it-card-taxonomy) {
   flex-grow: 1;
 }
+
+.it-card-place-type {
+  margin-top: 0.25rem;
+}
+
+.it-card-place-address {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}

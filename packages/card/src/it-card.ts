@@ -53,6 +53,9 @@ export class ItCard extends BaseComponent {
   @queryAssignedElements({ slot: 'subtitle' })
   _subtitleElements!: HTMLElement[];
 
+  @queryAssignedElements({ slot: 'address' })
+  _addressElements!: HTMLElement[];
+
   @queryAssignedElements({ slot: 'signature' })
   _signatureElements!: HTMLElement[];
 
@@ -154,6 +157,7 @@ export class ItCard extends BaseComponent {
     const shadowClass = CARD_SHADOWS.includes(this.shadow) ? `shadow-${this.shadow}` : 'shadow-sm';
     const borderClass = this.border === '0' ? 'border-0' : 'border';
     const hasSubtitle = this._subtitleElements.length > 0;
+    const hasAddress = this._addressElements.length > 0;
     const hasSignature = this._signatureElements.length > 0;
     const hasText = this._textElements.length > 0;
     const hasBody = this._bodyElements.length > 0 || hasText || hasSubtitle || hasSignature;
@@ -293,6 +297,13 @@ export class ItCard extends BaseComponent {
                     </p>
                   `
                 : html`<slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>`}
+              ${hasAddress
+                ? html`
+                    <p class="it-card-place-address" part="address">
+                      <slot name="address" @slotchange=${this.handleSlotChange}></slot>
+                    </p>
+                  `
+                : html`<slot name="address" @slotchange=${this.handleSlotChange}></slot>`}
             </div>
             ${cardImage}
           </div>

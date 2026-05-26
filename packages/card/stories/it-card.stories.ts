@@ -811,9 +811,7 @@ export const DocumentiEAllegati: Story = {
               <it-icon color="primary" name="it-file"></it-icon>
             </div>
           </a>
-          <span slot="text">
-            Eventuale breve estratto descrittivo del documento.
-          </span>
+          <span slot="text"> Eventuale breve estratto descrittivo del documento. </span>
           <div slot="footer" class="it-card-taxonomy">
             <a href="#" class="it-card-category it-card-link">
               <span class="visually-hidden">Categoria correlata: </span>
@@ -826,13 +824,11 @@ export const DocumentiEAllegati: Story = {
         <it-card>
           <a slot="title" href="#">
             Titolo del documento
-            <div class="it-card-title-icon-wrapper"></div>
+            <div class="it-card-title-icon-wrapper">
               <it-icon color="primary" name="it-file"></it-icon>
             </div>
           </a>
-          <span slot="text">
-            Eventuale breve estratto descrittivo del documento. Formato PDF (200KB)
-          </span>
+          <span slot="text"> Eventuale breve estratto descrittivo del documento. Formato PDF (200KB) </span>
           <div slot="footer" class="it-card-taxonomy">
             <a href="#" class="it-card-category it-card-link">
               <span class="visually-hidden">Categoria correlata: </span>
@@ -859,9 +855,7 @@ export const DocumentiEAllegati: Story = {
               <it-icon color="primary" name="it-file-odt"></it-icon>
             </div>
           </a>
-          <span slot="text" aria-hidden="true">
-            Formato ODT (200KB)
-          </span>
+          <span slot="text" aria-hidden="true">Formato ODT (200KB)</span>
         </it-card>
       </div>
     </div>
@@ -958,6 +952,7 @@ export const Luoghi: Story = {
         <it-card full-height variant="location">
           <a slot="title" href="#">Toponimo o luogo</a>
           <span slot="subtitle">Tipologia di luogo</span>
+          <span slot="address">Indirizzo del luogo</span>
           <div slot="image" class="it-card-profile-image-icon-wrapper">
             <it-icon color="primary" name="it-pa" size="lg"></it-icon>
           </div>
@@ -979,6 +974,7 @@ export const Luoghi: Story = {
         <it-card full-height variant="location">
           <a slot="title" href="#">Toponimo o luogo</a>
           <span slot="subtitle">Tipologia di luogo</span>
+          <span slot="address">Indirizzo del luogo</span>
           <div slot="image" class="it-card-profile-image-icon-wrapper">
             <it-icon color="primary" name="it-pa" size="lg"></it-icon>
           </div>
