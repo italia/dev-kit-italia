@@ -1,5 +1,13 @@
 # @italia/button
 
+## 1.0.0-alpha.13
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
 ## 1.0.0-alpha.12
 
 ### Minor Changes

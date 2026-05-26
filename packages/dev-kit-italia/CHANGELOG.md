@@ -1,5 +1,54 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-alpha.13
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a225c54`](https://github.com/italia/dev-kit-italia/commit/a225c54a737a3c31e489706e7aa4a9c7b5e1cce7), [`29c534c`](https://github.com/italia/dev-kit-italia/commit/29c534c4792a0bc3fd10d596b494e360713d2c25)]:
+  - @italia/card@1.0.0-alpha.13
+  - @italia/accordion@1.0.0-alpha.13
+  - @italia/autocomplete@1.0.0-alpha.13
+  - @italia/avatar@1.0.0-alpha.13
+  - @italia/back-to-top@1.0.0-alpha.13
+  - @italia/bottom-nav@1.0.0-alpha.13
+  - @italia/breadcrumbs@1.0.0-alpha.13
+  - @italia/button@1.0.0-alpha.13
+  - @italia/callout@1.0.0-alpha.13
+  - @italia/carousel@1.0.0-alpha.13
+  - @italia/checkbox@1.0.0-alpha.13
+  - @italia/chip@1.0.0-alpha.13
+  - @italia/collapse@1.0.0-alpha.13
+  - @italia/dimmer@1.0.0-alpha.13
+  - @italia/dropdown@1.0.0-alpha.13
+  - @italia/header@1.0.0-alpha.13
+  - @italia/hero@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+  - @italia/input@1.0.0-alpha.13
+  - @italia/megamenu@1.0.0-alpha.13
+  - @italia/modal@1.0.0-alpha.13
+  - @italia/navscroll@1.0.0-alpha.13
+  - @italia/notification@1.0.0-alpha.13
+  - @italia/pagination@1.0.0-alpha.13
+  - @italia/popover@1.0.0-alpha.13
+  - @italia/progress@1.0.0-alpha.13
+  - @italia/radio@1.0.0-alpha.13
+  - @italia/rating@1.0.0-alpha.13
+  - @italia/section@1.0.0-alpha.13
+  - @italia/select@1.0.0-alpha.13
+  - @italia/skiplinks@1.0.0-alpha.13
+  - @italia/sticky@1.0.0-alpha.13
+  - @italia/tabs@1.0.0-alpha.13
+  - @italia/timeline@1.0.0-alpha.13
+  - @italia/toggle@1.0.0-alpha.13
+  - @italia/thumbnav@1.0.0-alpha.13
+  - @italia/toolbar@1.0.0-alpha.13
+  - @italia/tooltip@1.0.0-alpha.13
+  - @italia/transfer@1.0.0-alpha.13
+  - @italia/upload@1.0.0-alpha.13
+  - @italia/video@1.0.0-alpha.13
+
 ## 1.0.0-alpha.12
 
 ### Minor Changes

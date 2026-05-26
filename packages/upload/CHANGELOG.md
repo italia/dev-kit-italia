@@ -1,5 +1,17 @@
 # @italia/upload
 
+## 1.0.0-alpha.13
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+  - @italia/progress@1.0.0-alpha.13
+
 ## 1.0.0-alpha.12
 
 ### Minor Changes

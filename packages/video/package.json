@@ -1,7 +1,7 @@
 {
   "name": "@italia/video",
   "description": "Web component it-video del Design system .italia",
-  "version": "1.0.0-alpha.12",
+  "version": "1.0.0-alpha.13",
   "publishConfig": {
     "access": "public"
   },
