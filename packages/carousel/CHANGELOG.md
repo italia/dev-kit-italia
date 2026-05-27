@@ -1,5 +1,16 @@
 # @italia/carousel
 
+## 1.0.0-alpha.14
+
+### Patch Changes
+
+- [`49ecd58`](https://github.com/italia/dev-kit-italia/commit/49ecd5851d03ba0f02ab054488d5e651be28e80f) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fix it-carousel-slide width in single image variant
+
+- Updated dependencies []:
+  - @italia/card@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+
 ## 1.0.0-alpha.13
 
 ### Patch Changes
