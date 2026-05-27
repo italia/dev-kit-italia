@@ -25,7 +25,7 @@ jobs:
       - name: Build documentation
         run: pnpm storybook:build && sh ./scripts/examples-preview.sh
         env:
-          GH_PAGES_PATH: /dev-kit-italia
+          GH_PAGES_PATH: https://design-web-components.vercel.app
 
       - name: Publish on gh-pages
         run: |
