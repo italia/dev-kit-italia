@@ -1,5 +1,15 @@
 # @italia/avatar
 
+## 1.0.0-alpha.15
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+
 ## 1.0.0-alpha.14
 
 ### Patch Changes

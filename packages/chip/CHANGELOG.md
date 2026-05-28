@@ -1,5 +1,16 @@
 # @italia/chip
 
+## 1.0.0-alpha.15
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.15
+  - @italia/button@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+
 ## 1.0.0-alpha.14
 
 ### Patch Changes

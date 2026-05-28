@@ -1,5 +1,13 @@
 # @italia/progress
 
+## 1.0.0-alpha.15
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
 ## 1.0.0-alpha.14
 
 ### Patch Changes
