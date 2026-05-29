@@ -2355,7 +2355,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -3593,7 +3593,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -5486,7 +5486,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -10097,7 +10097,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -11910,7 +11910,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -13268,7 +13268,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -14639,7 +14639,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -16339,7 +16339,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -19417,7 +19417,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -21009,7 +21009,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -22984,7 +22984,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -24412,7 +24412,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -25896,7 +25896,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -28817,7 +28817,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -30521,7 +30521,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -35769,7 +35769,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -41415,7 +41415,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -44278,7 +44278,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -45821,7 +45821,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -47944,7 +47944,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -51333,7 +51333,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -54253,7 +54253,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -57380,7 +57380,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -61568,7 +61568,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -62785,7 +62785,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -64033,7 +64033,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -65602,7 +65602,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -67415,7 +67415,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -74316,7 +74316,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -78987,7 +78987,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -153152,7 +153152,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
@@ -157689,7 +157689,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.15',
+        version: '1.0.0-alpha.16',
     };
 }
 
