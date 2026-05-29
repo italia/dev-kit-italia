@@ -1,5 +1,15 @@
 # @italia/select
 
+## 1.0.0-alpha.16
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+
 ## 1.0.0-alpha.15
 
 ### Patch Changes

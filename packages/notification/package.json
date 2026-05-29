@@ -1,7 +1,7 @@
 {
   "name": "@italia/notification",
   "description": "Web component it-notification del Design system .italia",
-  "version": "1.0.0-alpha.15",
+  "version": "1.0.0-alpha.16",
   "publishConfig": {
     "access": "public"
   },
