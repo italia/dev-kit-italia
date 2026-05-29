@@ -1,5 +1,57 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-alpha.16
+
+### Minor Changes
+
+- [`22f9430`](https://github.com/italia/dev-kit-italia/commit/22f94308513ed418b1e988f56227fd740f266428) Thanks [@pnicolli](https://github.com/pnicolli)! - Added `w-33` and `w-66` classes. Added responsive variants for the `w-\*` classes.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/accordion@1.0.0-alpha.16
+  - @italia/autocomplete@1.0.0-alpha.16
+  - @italia/avatar@1.0.0-alpha.16
+  - @italia/back-to-top@1.0.0-alpha.16
+  - @italia/bottom-nav@1.0.0-alpha.16
+  - @italia/breadcrumbs@1.0.0-alpha.16
+  - @italia/button@1.0.0-alpha.16
+  - @italia/callout@1.0.0-alpha.16
+  - @italia/card@1.0.0-alpha.16
+  - @italia/carousel@1.0.0-alpha.16
+  - @italia/checkbox@1.0.0-alpha.16
+  - @italia/chip@1.0.0-alpha.16
+  - @italia/collapse@1.0.0-alpha.16
+  - @italia/dimmer@1.0.0-alpha.16
+  - @italia/dropdown@1.0.0-alpha.16
+  - @italia/header@1.0.0-alpha.16
+  - @italia/hero@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+  - @italia/input@1.0.0-alpha.16
+  - @italia/megamenu@1.0.0-alpha.16
+  - @italia/modal@1.0.0-alpha.16
+  - @italia/navscroll@1.0.0-alpha.16
+  - @italia/notification@1.0.0-alpha.16
+  - @italia/pagination@1.0.0-alpha.16
+  - @italia/popover@1.0.0-alpha.16
+  - @italia/progress@1.0.0-alpha.16
+  - @italia/radio@1.0.0-alpha.16
+  - @italia/rating@1.0.0-alpha.16
+  - @italia/section@1.0.0-alpha.16
+  - @italia/select@1.0.0-alpha.16
+  - @italia/skiplinks@1.0.0-alpha.16
+  - @italia/sticky@1.0.0-alpha.16
+  - @italia/tabs@1.0.0-alpha.16
+  - @italia/timeline@1.0.0-alpha.16
+  - @italia/toggle@1.0.0-alpha.16
+  - @italia/thumbnav@1.0.0-alpha.16
+  - @italia/toolbar@1.0.0-alpha.16
+  - @italia/tooltip@1.0.0-alpha.16
+  - @italia/transfer@1.0.0-alpha.16
+  - @italia/upload@1.0.0-alpha.16
+  - @italia/video@1.0.0-alpha.16
+
 ## 1.0.0-alpha.15
 
 ### Patch Changes
