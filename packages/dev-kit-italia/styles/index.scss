@@ -14,6 +14,7 @@
 @forward 'bootstrap-italia/src/scss/base/transitions';
 @forward 'bootstrap-italia/src/scss/base/helpers';
 
+@forward './utilities/width';
 @forward 'bootstrap-italia/src/scss/base/utilities/api';
 @forward './utilities/focus';
 @forward './utilities/fouc';
