@@ -2,6 +2,7 @@
 import { FormControl, FormControlController } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
 import { html, nothing } from 'lit';
+import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -9,6 +10,7 @@ import it from './locales/it.js';
 import en from './locales/en.js';
 import styles from './upload-drag-drop.scss';
 import { formatSize } from './utils.js';
+import { type DragDropHeadingLevel, DRAG_DROP_HEADING_LEVELS } from './types.js';
 
 registerTranslation(it);
 registerTranslation(en);
@@ -41,6 +43,10 @@ export class ItUploadDragDrop extends FormControl {
   @property({ type: String })
   illustration?: string;
 
+  /** Heading level for the title element. Defaults to 'h3'; visual size stays at h5. */
+  @property({ type: String, attribute: 'heading-level' })
+  headingLevel: DragDropHeadingLevel = 'h3';
+
   /** The currently selected File (null until file is chosen/dropped). */
   @state()
   private _currentFile: File | null = null;
@@ -64,6 +70,10 @@ export class ItUploadDragDrop extends FormControl {
   private _indeterminate = false;
 
   private _autoStarted = false;
+
+  protected getHeadingLevel(): DragDropHeadingLevel {
+    return DRAG_DROP_HEADING_LEVELS.includes(this.headingLevel) ? this.headingLevel : 'h3';
+  }
 
   private get _formClass(): string {
     return this.composeClass(
@@ -243,6 +253,7 @@ export class ItUploadDragDrop extends FormControl {
 
     // Title: slot or default per state
     const titleText = hasFile ? this._fileName : this.$t('upload_dd_title');
+    const headingTag = unsafeStatic(this.getHeadingLevel());
 
     return html`
       <div class="upload-dragdrop-text">
@@ -254,10 +265,9 @@ export class ItUploadDragDrop extends FormControl {
               </p>
             `
           : nothing}
-        <h5>
+        ${staticHtml`<${headingTag} class="h5">
           <slot name="title">${titleText}</slot>
-        </h5>
-        ${this._state === 'idle' || this._state === 'dragover'
+        </${headingTag}>`} ${this._state === 'idle' || this._state === 'dragover'
           ? html`
               <p>
                 <slot name="description">${this.$t('upload_dd_description')}</slot>
@@ -270,6 +280,7 @@ export class ItUploadDragDrop extends FormControl {
                   accept="${ifDefined(this.accept)}"
                   ?disabled="${this.disabled}"
                   aria-label="${this.$t('upload_label')}"
+                  aria-required="${this.required ? 'true' : nothing}"
                   @change="${this._onFileInputChange}"
                 />
                 <label for="${this._id!}">${this.$t('upload_dd_select')}</label>

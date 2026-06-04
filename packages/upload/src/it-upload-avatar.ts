@@ -137,6 +137,7 @@ export class ItUploadAvatar extends FormControl {
             accept="${this.accept}"
             ?disabled="${this.disabled}"
             aria-label="${labelText}"
+            aria-required="${this.required ? 'true' : nothing}"
             @change="${this._handleFileChange}"
           />
           <label part="overlay-label" for="${this._id!}" class="it-upload-avatar-label-container" aria-hidden="true">

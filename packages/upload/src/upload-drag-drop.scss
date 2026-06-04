@@ -51,3 +51,12 @@
   align-items: center;
   gap: var(--#{$prefix}spacing-xxs, 8px);
 }
+
+// BSI's form-input-upload only styles `h5` inside .upload-dragdrop-text.
+// When heading-level is set to anything else, apply the same base rules.
+.upload-dragdrop-text {
+  :is(h1, h2, h3, h4, h6) {
+    margin: 0;
+    color: var(--#{$prefix}color-text-base);
+  }
+}
