@@ -471,6 +471,19 @@ describe('it-dimmer', () => {
       expect(bg.hasAttribute('inert')).to.be.false;
     });
 
+    it('keeps inert after firstUpdated rAF re-application (Firefox first-load guard)', async () => {
+      const el = await fixture<ItDimmer>(html`
+        <it-dimmer active>
+          <div id="bg">Sfondo</div>
+        </it-dimmer>
+      `);
+      const bg = el.querySelector('#bg')!;
+      await new Promise<void>((resolve) => {
+        requestAnimationFrame(() => resolve());
+      });
+      expect(bg.hasAttribute('inert')).to.be.true;
+    });
+
     it('has part="dimmable" on wrapper', async () => {
       const el = await fixture<ItDimmer>(html`<it-dimmer></it-dimmer>`);
 

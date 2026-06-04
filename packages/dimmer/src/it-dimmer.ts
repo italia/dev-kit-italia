@@ -92,6 +92,16 @@ export class ItDimmer extends BaseComponent {
     return this.active ? this.hide() : this.show();
   }
 
+  protected override firstUpdated(changedProperties: PropertyValues): void {
+    super.firstUpdated(changedProperties);
+    // Re-apply inert after the next animation frame so Firefox/VoiceOver sees
+    // the attribute AFTER child custom elements (e.g. it-card) have fully
+    // upgraded their shadow DOM. Without this, VoiceOver can reach background
+    // headings on first page load before Firefox's AT settles the inert state.
+    // Same rAF pattern used in focus-trap-controller for AT settlement.
+    requestAnimationFrame(() => this._updateBackgroundInert());
+  }
+
   protected updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('active')) {
       if (this.active) {

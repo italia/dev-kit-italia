@@ -10,6 +10,8 @@
 @use 'bootstrap-italia/src/scss/base/maps' as *;
 
 // Import dimmer component styles from Bootstrap Italia
+// TODO: track BSI#1165 (https://github.com/italia/bootstrap-italia/issues/1165) —
+// upstream dimmer a11y issue; apply override here once BSI ships a fix.
 @use 'bootstrap-italia/src/scss/components/dimmer' as *;
 
 // .dimmer.dimmer-{color} — same element, so the @each must live OUTSIDE .dimmer,
