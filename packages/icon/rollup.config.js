@@ -12,6 +12,7 @@ export default {
     dir: 'dist',
     sourcemap: true,
     entryFileNames: 'src/[name].js',
+    chunkFileNames: 'src/[name]-[hash].js',
   },
   plugins: [
     resolve(),
