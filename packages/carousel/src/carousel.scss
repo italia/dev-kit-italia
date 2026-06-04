@@ -88,7 +88,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
   vertical-align: bottom;
 }
 
-:host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) {
+:host([arrows]) div:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) {
   // The track is position:relative via Splide; arrows sit on top of it.
   .splide__track {
     position: relative;
@@ -157,7 +157,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) {
+  :host([arrows]) div:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) {
     .splide__arrow {
       transition: none;
     }
@@ -250,7 +250,6 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     padding: 0;
     border: none;
     border-radius: 50px !important;
-    margin: 0 $v-gap;
     background: var(--#{$prefix}color-background-subtle) !important;
     box-shadow: none;
     transition: all 0.3s;

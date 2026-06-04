@@ -92,16 +92,14 @@ describe('it-carousel', () => {
   // ---------------------------------------------------------------------------
 
   describe('shadow DOM structure', () => {
-    it('renders a <div role="region"> as carousel root', async () => {
+    it('host element has role="region"', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel></it-carousel>`);
-      const root = el.shadowRoot?.querySelector('div[role="region"]');
-      expect(root).to.exist;
-      expect(root?.getAttribute('role')).to.equal('region');
+      expect(el.getAttribute('role')).to.equal('region');
     });
 
     it('root element always has "it-carousel-wrapper" and "splide" classes', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel></it-carousel>`);
-      const root = el.shadowRoot?.querySelector('div[role="region"]');
+      const root = el.shadowRoot?.querySelector('.it-carousel-wrapper');
       expect(root?.classList.contains('it-carousel-wrapper')).to.be.true;
       expect(root?.classList.contains('splide')).to.be.true;
     });
@@ -126,26 +124,26 @@ describe('it-carousel', () => {
   describe('section class — variant mapping', () => {
     it('variant "single" → it-carousel-landscape-abstract', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="single"></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract');
     });
 
     it('variant "columns" → it-carousel-landscape-abstract-three-cols', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="columns"></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
     });
 
     it('variant "gallery-sm" → it-carousel-landscape-abstract-three-cols + it-standard-image', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="gallery-sm"></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
       expect(cls).to.include('it-standard-image');
     });
 
     it('variant "gallery-lg" → it-carousel-landscape-abstract-three-cols + it-big-img', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="gallery-lg"></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
       expect(cls).to.include('it-big-img');
     });
@@ -158,14 +156,14 @@ describe('it-carousel', () => {
   describe('arrows modifier class', () => {
     it('columns + arrows → adds it-carousel-landscape-abstract-three-cols-arrow-visible', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="columns" arrows></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols-arrow-visible');
     });
 
     it('single + arrows → does NOT add arrow-visible modifier', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="single" arrows></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).not.to.include('arrow-visible');
     });
 
@@ -173,14 +171,14 @@ describe('it-carousel', () => {
       for (const variant of ['gallery-sm', 'gallery-lg'] as const) {
         // eslint-disable-next-line no-await-in-loop
         const el = await fixture<ItCarousel>(html`<it-carousel variant=${variant}></it-carousel>`);
-        const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+        const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
         expect(cls).to.include('it-full-carousel', `${variant} should always have it-full-carousel`);
       }
     });
 
     it('gallery-lg + arrows → does NOT add arrow-visible modifier', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="gallery-lg" arrows></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).not.to.include('arrow-visible');
     });
   });
@@ -192,19 +190,19 @@ describe('it-carousel', () => {
   describe('fullscreen class', () => {
     it('adds it-full-carousel when fullscreen=true', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel fullscreen></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).to.include('it-full-carousel');
     });
 
     it('does NOT add it-full-carousel when fullscreen=false', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).not.to.include('it-full-carousel');
     });
 
     it('fullscreen + variant + arrows all compose together', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="columns" arrows fullscreen></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols-arrow-visible');
       expect(cls).to.include('it-full-carousel');
@@ -576,8 +574,9 @@ describe('it-carousel', () => {
       `);
       await elementUpdated(el);
       await splideReady();
-      const rootEl = el.shadowRoot?.querySelector('div[role="region"]');
-      const labelledBy = rootEl?.getAttribute('aria-labelledby');
+      // aria-labelledby is now on the host element (light DOM) to avoid
+      // cross-shadow ID resolution issues with AT and static analysis tools.
+      const labelledBy = el.getAttribute('aria-labelledby');
       expect(labelledBy).to.be.a('string').and.not.be.empty;
       // The id should be set on the heading in the light DOM
       const heading = el.querySelector('h2[slot="title"]');
@@ -593,8 +592,7 @@ describe('it-carousel', () => {
       `);
       await elementUpdated(el);
       await splideReady();
-      const rootEl = el.shadowRoot?.querySelector('div[role="region"]');
-      expect(rootEl?.hasAttribute('aria-labelledby')).to.be.false;
+      expect(el.hasAttribute('aria-labelledby')).to.be.false;
     });
   });
 
