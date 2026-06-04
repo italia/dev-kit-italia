@@ -1,5 +1,57 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-alpha.17
+
+### Minor Changes
+
+- [`be1fa1d`](https://github.com/italia/dev-kit-italia/commit/be1fa1d984353281e83c202293a351ac482fccb6) Thanks [@pnicolli](https://github.com/pnicolli)! - Upgraded bootstrap-italia to version 3.0.0-beta.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/accordion@1.0.0-alpha.17
+  - @italia/autocomplete@1.0.0-alpha.17
+  - @italia/avatar@1.0.0-alpha.17
+  - @italia/back-to-top@1.0.0-alpha.17
+  - @italia/bottom-nav@1.0.0-alpha.17
+  - @italia/breadcrumbs@1.0.0-alpha.17
+  - @italia/button@1.0.0-alpha.17
+  - @italia/callout@1.0.0-alpha.17
+  - @italia/card@1.0.0-alpha.17
+  - @italia/carousel@1.0.0-alpha.17
+  - @italia/checkbox@1.0.0-alpha.17
+  - @italia/chip@1.0.0-alpha.17
+  - @italia/collapse@1.0.0-alpha.17
+  - @italia/dimmer@1.0.0-alpha.17
+  - @italia/dropdown@1.0.0-alpha.17
+  - @italia/header@1.0.0-alpha.17
+  - @italia/hero@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+  - @italia/input@1.0.0-alpha.17
+  - @italia/megamenu@1.0.0-alpha.17
+  - @italia/modal@1.0.0-alpha.17
+  - @italia/navscroll@1.0.0-alpha.17
+  - @italia/notification@1.0.0-alpha.17
+  - @italia/pagination@1.0.0-alpha.17
+  - @italia/popover@1.0.0-alpha.17
+  - @italia/progress@1.0.0-alpha.17
+  - @italia/radio@1.0.0-alpha.17
+  - @italia/rating@1.0.0-alpha.17
+  - @italia/section@1.0.0-alpha.17
+  - @italia/select@1.0.0-alpha.17
+  - @italia/skiplinks@1.0.0-alpha.17
+  - @italia/sticky@1.0.0-alpha.17
+  - @italia/tabs@1.0.0-alpha.17
+  - @italia/timeline@1.0.0-alpha.17
+  - @italia/toggle@1.0.0-alpha.17
+  - @italia/thumbnav@1.0.0-alpha.17
+  - @italia/toolbar@1.0.0-alpha.17
+  - @italia/tooltip@1.0.0-alpha.17
+  - @italia/transfer@1.0.0-alpha.17
+  - @italia/upload@1.0.0-alpha.17
+  - @italia/video@1.0.0-alpha.17
+
 ## 1.0.0-alpha.16
 
 ### Minor Changes

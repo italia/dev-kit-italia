@@ -2393,6 +2393,451 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - @italia/icon@1.0.0-alpha.3
   - @italia/i18n@1.0.0-alpha.3
 
+## 1.0.0-alpha.17
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/collapse@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/sticky@1.0.0-alpha.17
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+
+### `card`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/card@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.17
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `dev-kit-italia`
+
+### Minor Changes
+
+- [`be1fa1d`](https://github.com/italia/dev-kit-italia/commit/be1fa1d984353281e83c202293a351ac482fccb6) Thanks [@pnicolli](https://github.com/pnicolli)! - Upgraded bootstrap-italia to version 3.0.0-beta.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/accordion@1.0.0-alpha.17
+  - @italia/autocomplete@1.0.0-alpha.17
+  - @italia/avatar@1.0.0-alpha.17
+  - @italia/back-to-top@1.0.0-alpha.17
+  - @italia/bottom-nav@1.0.0-alpha.17
+  - @italia/breadcrumbs@1.0.0-alpha.17
+  - @italia/button@1.0.0-alpha.17
+  - @italia/callout@1.0.0-alpha.17
+  - @italia/card@1.0.0-alpha.17
+  - @italia/carousel@1.0.0-alpha.17
+  - @italia/checkbox@1.0.0-alpha.17
+  - @italia/chip@1.0.0-alpha.17
+  - @italia/collapse@1.0.0-alpha.17
+  - @italia/dimmer@1.0.0-alpha.17
+  - @italia/dropdown@1.0.0-alpha.17
+  - @italia/header@1.0.0-alpha.17
+  - @italia/hero@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+  - @italia/input@1.0.0-alpha.17
+  - @italia/megamenu@1.0.0-alpha.17
+  - @italia/modal@1.0.0-alpha.17
+  - @italia/navscroll@1.0.0-alpha.17
+  - @italia/notification@1.0.0-alpha.17
+  - @italia/pagination@1.0.0-alpha.17
+  - @italia/popover@1.0.0-alpha.17
+  - @italia/progress@1.0.0-alpha.17
+  - @italia/radio@1.0.0-alpha.17
+  - @italia/rating@1.0.0-alpha.17
+  - @italia/section@1.0.0-alpha.17
+  - @italia/select@1.0.0-alpha.17
+  - @italia/skiplinks@1.0.0-alpha.17
+  - @italia/sticky@1.0.0-alpha.17
+  - @italia/tabs@1.0.0-alpha.17
+  - @italia/timeline@1.0.0-alpha.17
+  - @italia/toggle@1.0.0-alpha.17
+  - @italia/thumbnav@1.0.0-alpha.17
+  - @italia/toolbar@1.0.0-alpha.17
+  - @italia/tooltip@1.0.0-alpha.17
+  - @italia/transfer@1.0.0-alpha.17
+  - @italia/upload@1.0.0-alpha.17
+  - @italia/video@1.0.0-alpha.17
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `dropdown`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+  - @italia/popover@1.0.0-alpha.17
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.17
+
+### `header`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/dropdown@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+  - @italia/modal@1.0.0-alpha.17
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `megamenu`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/dropdown@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+  - @italia/modal@1.0.0-alpha.17
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+  - @italia/radio@1.0.0-alpha.17
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+
+### `toolbar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `upload`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+  - @italia/progress@1.0.0-alpha.17
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/checkbox@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
 ## 1.0.0-alpha.16
 
 ### `accordion`

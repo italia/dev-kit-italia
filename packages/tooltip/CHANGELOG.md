@@ -1,5 +1,14 @@
 # @italia/tooltip
 
+## 1.0.0-alpha.17
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+
 ## 1.0.0-alpha.16
 
 ### Patch Changes
