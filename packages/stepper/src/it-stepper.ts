@@ -1,5 +1,6 @@
 import { html, nothing, type PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { BaseLocalizedComponent } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
 import type { ItStepperStep } from './it-stepper-step.js';
@@ -239,7 +240,7 @@ export class ItStepper extends BaseLocalizedComponent {
 
     if (this.headerVariant === 'icons') {
       return html`
-        <li class=${liClasses} aria-current=${isActive ? 'step' : nothing}>
+        <li class=${liClasses} aria-current=${ifDefined(isActive ? 'step' : undefined)}>
           ${step.icon ? html`<it-icon class="icon" name=${step.icon} aria-hidden="true"></it-icon>` : nothing}
           ${labelContent} ${isActive ? activeHint : ''} ${isConfirmed ? confirmedIcon : ''}
         </li>
@@ -255,7 +256,7 @@ export class ItStepper extends BaseLocalizedComponent {
         : html`<span class="visually-hidden">${isActive ? this.$t('active') : ''} ${this.$t('step')} </span>${index + 1}`;
 
       return html`
-        <li class=${liClasses} aria-current=${isActive ? 'step' : nothing}>
+        <li class=${liClasses} aria-current=${ifDefined(isActive ? 'step' : undefined)}>
           <span class="steppers-number">${numberContent}</span>
           ${labelContent}
         </li>
@@ -264,7 +265,7 @@ export class ItStepper extends BaseLocalizedComponent {
 
     // Default: text only
     return html`
-      <li class=${liClasses} aria-current=${isActive ? 'step' : nothing}>
+      <li class=${liClasses} aria-current=${ifDefined(isActive ? 'step' : undefined)}>
         ${labelContent} ${isActive ? activeHint : ''} ${isConfirmed ? confirmedIcon : ''}
       </li>
     `;
@@ -278,7 +279,7 @@ export class ItStepper extends BaseLocalizedComponent {
       return html`
         <span class="steppers-index" aria-hidden="true">
           ${Array.from({ length: total }, (_, i) => i).map(
-            (i) => html`<span class=${i === currentIndex ? 'active' : undefined}>${i + 1}</span>`,
+            (i) => html`<span class=${ifDefined(i === currentIndex ? 'active' : undefined)}>${i + 1}</span>`,
           )}
         </span>
       `;
@@ -314,7 +315,7 @@ export class ItStepper extends BaseLocalizedComponent {
       <ul class="steppers-dots" part="dots">
         ${Array.from({ length: total }, (_, i) => i).map(
           (i) => html`
-            <li class=${this._getDotClass(i)} aria-current=${i === currentIndex ? 'step' : nothing}>
+            <li class=${this._getDotClass(i)} aria-current=${ifDefined(i === currentIndex ? 'step' : undefined)}>
               <span class="visually-hidden"
                 >${this.$t('step')} ${i + 1} ${this.$t('outOf')} ${total}${this._getDotStateText(i)}</span
               >
@@ -345,9 +346,7 @@ export class ItStepper extends BaseLocalizedComponent {
           <p class="text-muted mb-0 small"><strong>${this.saveTitle}</strong></p>
           <p class="text-muted mb-0 small">${this.saveDescription}</p>
         </div>
-        <button type="button" class="btn btn-outline-secondary btn-sm" @click=${this._handleSave}>
-          ${this.saveLabel}
-        </button>
+        <it-button variant="secondary" outline type="button" @click=${this._handleSave}>${this.saveLabel}</it-button>
       </div>
     `;
   }
@@ -378,31 +377,41 @@ export class ItStepper extends BaseLocalizedComponent {
           <slot @slotchange=${this._handleSlotChange}></slot>
         </div>
         <nav class="steppers-nav mb-3" aria-label=${this.$t('navigation')} part="nav">
-          <button
+          <it-button
             type="button"
-            class="btn btn-icon btn-outline-primary btn-sm steppers-btn-prev"
+            variant="primary"
+            outline
+            size="sm"
+            class="steppers-btn-prev"
+            exportparts="focusable"
             ?disabled=${isPrevDisabled}
             @click=${this.prev}
           >
             <it-icon class="icon" name="it-chevron-left" color=${this.dark ? 'inverse' : 'primary'} size="sm"></it-icon>
             ${this.prevLabel || this.$t('back')}
-          </button>
+          </it-button>
 
           ${this._renderProgressIndicator()}
           ${this.showConfirm
             ? html`
-                <button
+                <it-button
                   type="button"
-                  class="btn btn-icon btn-primary btn-sm steppers-btn-confirm"
+                  variant="primary"
+                  size="sm"
+                  class="steppers-btn-confirm"
+                  exportparts="focusable"
                   @click=${this._handleConfirm}
                 >
                   ${this.confirmLabel || this.$t('confirm')}
-                </button>
+                </it-button>
               `
             : html`
-                <button
+                <it-button
                   type="button"
-                  class="btn btn-icon btn-primary btn-sm steppers-btn-next"
+                  variant="primary"
+                  size="sm"
+                  class="steppers-btn-next"
+                  exportparts="focusable"
                   ?disabled=${isNextDisabled}
                   @click=${this.next}
                 >
@@ -413,7 +422,7 @@ export class ItStepper extends BaseLocalizedComponent {
                     color=${this.dark ? 'primary' : 'inverse'}
                     size="sm"
                   ></it-icon>
-                </button>
+                </it-button>
               `}
         </nav>
         ${this._renderSaveArea()}

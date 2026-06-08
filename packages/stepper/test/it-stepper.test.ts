@@ -2,6 +2,8 @@
 
 import { expect, fixture, html, elementUpdated, oneEvent } from '@open-wc/testing';
 import '../src/index.js';
+import '@italia/button';
+import type { ItButton } from '@italia/button';
 import type { ItStepper } from '../src/it-stepper.js';
 import type { ItStepperStep } from '../src/it-stepper-step.js';
 
@@ -152,12 +154,12 @@ describe('<it-stepper>', () => {
     const el = await fixture<ItStepper>(html`<it-stepper current="2">${renderSteps()}</it-stepper>`);
     await waitForStepper(el);
 
-    const nextButton = el.shadowRoot?.querySelector('.steppers-btn-next') as HTMLButtonElement;
+    const nextButton = el.shadowRoot?.querySelector('.steppers-btn-next') as ItButton;
     expect(nextButton.disabled).to.be.true;
 
     el.current = 0;
     await waitForStepper(el);
-    const prevButton = el.shadowRoot?.querySelector('.steppers-btn-prev') as HTMLButtonElement;
+    const prevButton = el.shadowRoot?.querySelector('.steppers-btn-prev') as ItButton;
     expect(prevButton.disabled).to.be.true;
   });
 
@@ -188,11 +190,11 @@ describe('<it-stepper>', () => {
     await waitForStepper(el);
 
     const saveEvent = oneEvent(el, 'it-stepper-save');
-    (el.shadowRoot?.querySelector('.steppers-save button') as HTMLButtonElement).click();
+    (el.shadowRoot?.querySelector('.steppers-save it-button') as ItButton).click();
     await saveEvent;
 
     const confirmEvent = oneEvent(el, 'it-stepper-confirm');
-    (el.shadowRoot?.querySelector('.steppers-btn-confirm') as HTMLButtonElement).click();
+    (el.shadowRoot?.querySelector('.steppers-btn-confirm') as ItButton).click();
     await confirmEvent;
   });
 
