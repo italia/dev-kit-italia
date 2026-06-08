@@ -1,6 +1,26 @@
 # @italia/i18n
 
+## 1.0.0-alpha.17
+- Aggiornamento della versione
+
+## 1.0.0-alpha.16
+
+- Aggiornamento della versione
+
+## 1.0.0-alpha.15
+
+- Aggiornamento della versione
+
+## 1.0.0-alpha.14
+
+- Aggiornamento della versione
+
+## 1.0.0-alpha.13
+
+- Aggiornamento della versione
+
 ## 1.0.0-alpha.12
+
 - Aggiornamento della versione
 
 ## 1.0.0-alpha.11

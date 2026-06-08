@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/utilities';
+
+utilities.$utilities: map.merge(
+  utilities.$utilities,
+  (
+    'width': map.merge(
+        map.get(utilities.$utilities, 'width'),
+        (
+          responsive: true,
+          values: map.merge(
+              map.get(map.get(utilities.$utilities, 'width'), 'values'),
+              (
+                33: 33.333333%,
+                66: 66.666666%,
+              )
+            ),
+        )
+      ),
+  )
+);

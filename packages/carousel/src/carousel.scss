@@ -67,6 +67,10 @@ p a {
 it-icon {
   line-height: 0;
 }
+
+it-carousel-slide {
+  width: 100%;
+}
 // ---------------------------------------------------------------------------
 // Generic arrow styles for variants where BSI has no `-arrow-visible` class.
 // Targets sections that DON'T already have BSI's own arrow class (which covers

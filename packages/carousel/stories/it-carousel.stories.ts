@@ -83,7 +83,7 @@ const renderSlide = (
           <div class="img-responsive">
             <div class="img-wrapper">
               <img
-                src="https://www.placeholderimage.eu/api/800/600"
+                src="https://picsum.photos/800/600"
                 title="titolo immagine ${index}"
                 alt="descrizione immagine ${index}"
               />

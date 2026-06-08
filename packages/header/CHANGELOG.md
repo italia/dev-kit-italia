@@ -1,5 +1,65 @@
 # @italia/header
 
+## 1.0.0-alpha.17
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/dropdown@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+  - @italia/modal@1.0.0-alpha.17
+
+## 1.0.0-alpha.16
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.16
+  - @italia/dropdown@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+  - @italia/modal@1.0.0-alpha.16
+
+## 1.0.0-alpha.15
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.15
+  - @italia/dropdown@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+  - @italia/modal@1.0.0-alpha.15
+
+## 1.0.0-alpha.14
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.14
+  - @italia/dropdown@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+  - @italia/modal@1.0.0-alpha.14
+
+## 1.0.0-alpha.13
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.13
+  - @italia/dropdown@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+  - @italia/modal@1.0.0-alpha.13
+
 ## 1.0.0-alpha.12
 
 ### Minor Changes

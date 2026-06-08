@@ -1,5 +1,50 @@
 # @italia/card
 
+## 1.0.0-alpha.17
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+## 1.0.0-alpha.16
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+## 1.0.0-alpha.15
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+## 1.0.0-alpha.14
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+## 1.0.0-alpha.13
+
+### Minor Changes
+
+- [`a225c54`](https://github.com/italia/dev-kit-italia/commit/a225c54a737a3c31e489706e7aa4a9c7b5e1cce7) Thanks [@pnicolli](https://github.com/pnicolli)! - Added address line in location cards
+
+### Patch Changes
+
+- [`29c534c`](https://github.com/italia/dev-kit-italia/commit/29c534c4792a0bc3fd10d596b494e360713d2c25) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed variant 'location' to have border-top on footer
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
 ## 1.0.0-alpha.12
 
 ### Minor Changes
