@@ -57,7 +57,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
     "lit": "catalog:",
-    "playwright": "^1.54.1",
+    "playwright": "^1.60.0",
     "prettier": "^3.3.2",
     "prettier-v2": "npm:prettier@2.8.8",
     "rimraf": "^6.0.1",
@@ -73,7 +73,8 @@
   "pnpm": {
     "overrides": {
       "react": "19.2.0",
-      "react-dom": "19.2.0"
+      "react-dom": "19.2.0",
+      "esbuild@<=0.24.2": ">=0.25.0"
     }
   },
   "engines": {
