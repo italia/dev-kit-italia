@@ -1,5 +1,6 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
 
 .form-feedback.just-validate-error-label {
   width: 100%;

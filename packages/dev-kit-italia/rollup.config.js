@@ -27,7 +27,7 @@ export default [
     output: {
       dir: 'dist',
       sourcemap: true,
-      output: { file: 'styles.js', format: 'esm' },
+      format: 'esm',
     },
     plugins: [
       resolve(),
@@ -48,7 +48,6 @@ export default [
         fileName: 'styles.css',
         outputStyle: 'compressed',
         quietDeps: true,
-        silenceDeprecations: ['import'],
       }),
     ],
   },
@@ -57,7 +56,7 @@ export default [
     output: {
       dir: 'dist',
       sourcemap: true,
-      output: { file: 'full.js', format: 'esm' },
+      format: 'esm',
     },
     plugins: [
       resolve(),
@@ -87,7 +86,7 @@ export default [
     output: {
       dir: 'dist',
       sourcemap: true,
-      output: { file: 'fonts.js', format: 'esm' },
+      format: 'esm',
     },
     plugins: [
       resolve(),

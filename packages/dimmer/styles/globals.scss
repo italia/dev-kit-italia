@@ -1,5 +1,11 @@
 // Global styles for it-dimmer — to be imported at page level.
 // These styles affect elements outside the shadow DOM.
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+
 it-dimmer[active]:not(:defined) {
   // FOUC shimmer effect on the host element before the component is upgraded.
   position: relative;

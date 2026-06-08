@@ -1,16 +1,21 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
+@use 'bootstrap-italia/src/scss/base/mixins/focus' as *;
+@use 'bootstrap-italia/src/scss/components/carousel' as *;
+@use 'bootstrap-italia/src/scss/base/reboot';
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
+@use 'bootstrap-italia/src/scss/components/imgresponsive' as *;
+@use 'bootstrap-italia/src/scss/base/containers' as *;
+@use '@italia/card/styles/globals';
 
-@import 'bootstrap-italia/src/scss/components/carousel';
+utilities.$utilities: ('border-color': map.merge(map.get(utilities.$utilities, 'border-color'), ()));
 
-$utilities: (
-  'border-color': map-merge(map-get($utilities, 'border-color'), ()),
-);
-
-@import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 // ----------------------------------------------------
 // ShadowDOM and cross composing issues monkey patches
@@ -26,12 +31,6 @@ $utilities: (
 // max-height: 600px (.figure.img-full)	No BSI variable
 // 85% in color-mix(...)	CSS function parameter, not a SCSS context
 // ----------------------------------------------------
-@import 'bootstrap-italia/src/scss/base/reboot';
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
-@import 'bootstrap-italia/src/scss/components/imgresponsive';
-@import 'bootstrap-italia/src/scss/base/containers';
-@import '@italia/card/styles/globals';
-
 :focus-visible,
 button:focus-visible,
 ::part(focusable):focus-visible,
@@ -40,7 +39,7 @@ button:focus-visible,
 .upload-dragdrop-input:focus-visible[type='file'] + label,
 .avatar-upload:focus-within:focus-visible,
 .rating input:focus-visible + label svg {
-  @extend %focus;
+  @include focus;
 }
 
 [tabindex='-1']:focus:not(:focus-visible) {
@@ -50,7 +49,7 @@ button:focus-visible,
 
 :focus:not(:focus-visible):not(.btn),
 ::part(focusable):focus-visible:not(.btn) {
-  @extend %focusmouse;
+  @include focusmouse;
 }
 
 p a {
@@ -67,6 +66,10 @@ p a {
 
 it-icon {
   line-height: 0;
+}
+
+it-carousel-slide {
+  width: 100%;
 }
 // ---------------------------------------------------------------------------
 // Generic arrow styles for variants where BSI has no `-arrow-visible` class.
@@ -145,7 +148,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     }
   }
 
-  @media (min-width: #{map-get($grid-breakpoints, lg)}) {
+  @media (min-width: #{map.get($grid-breakpoints, lg)}) {
     .splide__arrows {
       inset-inline-end: $_arrow-offset-lg;
       inset-inline-start: $_arrow-offset-lg;

@@ -1,7 +1,7 @@
 {
   "name": "@italia/dropdown",
   "description": "Web component it-dropdown del Design system .italia",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.17",
   "publishConfig": {
     "access": "public"
   },

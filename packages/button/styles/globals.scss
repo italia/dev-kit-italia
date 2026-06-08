@@ -1,3 +1,5 @@
+@use 'bootstrap-italia/src/scss/base/config' as *;
+
 it-button {
   --it-host-display: inline-block;
   display: var(--it-host-display);

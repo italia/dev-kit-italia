@@ -1,23 +1,24 @@
 @use 'sass:map';
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/reboot';
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/reboot' as *;
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
-@import 'bootstrap-italia/src/scss/base/utilities';
+@use 'bootstrap-italia/src/scss/base/utilities';
 
-$utilities: (
+utilities.$utilities: (
   'display': map.merge(
-      map.get($utilities, 'display'),
+      map.get(utilities.$utilities, 'display'),
       (
         responsive: false,
         values: flex,
       )
     ),
   'background-color': map.merge(
-      map.get($utilities, 'background-color'),
+      map.get(utilities.$utilities, 'background-color'),
       (
         values: (
           'dark': map.get($utilities-bg-colors, 'dark'),
@@ -25,15 +26,15 @@ $utilities: (
       )
     ),
   'border-top': map.merge(
-      map.get($utilities, 'border-top'),
+      map.get(utilities.$utilities, 'border-top'),
       (
         values: (
-          null: map.get(map.get(map.get($utilities, 'border-top'), 'values'), null),
+          null: map.get(map.get(map.get(utilities.$utilities, 'border-top'), 'values'), null),
         ),
       )
     ),
   'margin-top': map.merge(
-      map.get($utilities, 'margin-top'),
+      map.get(utilities.$utilities, 'margin-top'),
       (
         responsive: false,
         values: (
@@ -42,7 +43,7 @@ $utilities: (
       )
     ),
   'margin-end': map.merge(
-      map.get($utilities, 'margin-end'),
+      map.get(utilities.$utilities, 'margin-end'),
       (
         values: (
           3: map.get($spacers, 3),
@@ -50,7 +51,7 @@ $utilities: (
       )
     ),
   'margin-bottom': map.merge(
-      map.get($utilities, 'margin-bottom'),
+      map.get(utilities.$utilities, 'margin-bottom'),
       (
         values: (
           0: map.get($spacers, 0),
@@ -60,7 +61,7 @@ $utilities: (
       )
     ),
   'padding-top': map.merge(
-      map.get($utilities, 'padding-top'),
+      map.get(utilities.$utilities, 'padding-top'),
       (
         responsive: false,
         values: (
@@ -69,29 +70,29 @@ $utilities: (
       )
     ),
   'text-align': map.merge(
-      map.get($utilities, 'text-align'),
+      map.get(utilities.$utilities, 'text-align'),
       (
         values: (
-          end: map.get(map.get(map.get($utilities, 'text-align'), 'values'), 'end'),
+          end: map.get(map.get(map.get(utilities.$utilities, 'text-align'), 'values'), 'end'),
         ),
       )
     ),
   'color': map.merge(
-      map.get($utilities, 'color'),
+      map.get(utilities.$utilities, 'color'),
       (
         values: (
-          'muted': map.get(map.get(map.get($utilities, 'color'), 'values'), 'muted'),
+          'muted': map.get(map.get(map.get(utilities.$utilities, 'color'), 'values'), 'muted'),
         ),
       )
-    ),
+    )
 );
 
-@import 'bootstrap-italia/src/scss/base/utilities/api';
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
-@import 'bootstrap-italia/src/scss/components/buttons';
-@import 'bootstrap-italia/src/scss/components/type';
-@import 'bootstrap-italia/src/scss/components/progress-bars';
-@import 'bootstrap-italia/src/scss/components/steppers';
+@use 'bootstrap-italia/src/scss/components/buttons' as *;
+@use 'bootstrap-italia/src/scss/components/type' as *;
+@use 'bootstrap-italia/src/scss/components/progress-bars' as *;
+@use 'bootstrap-italia/src/scss/components/steppers' as *;
 
 :host {
   display: block;

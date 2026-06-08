@@ -9,6 +9,7 @@ on:
 jobs:
   test-docs:
     runs-on: ubuntu-latest
+    concurrency: ci-test-docs-${{ github.ref }}
     steps:
       - uses: actions/checkout@v4
 

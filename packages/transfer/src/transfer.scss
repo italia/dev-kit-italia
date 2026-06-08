@@ -1,17 +1,18 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/reboot';
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/reboot' as *;
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
-@import 'bootstrap-italia/src/scss/forms/forms';
-@import 'bootstrap-italia/src/scss/forms/form-control';
-@import 'bootstrap-italia/src/scss/forms/form-check';
-@import 'bootstrap-italia/src/scss/forms/form-transfer';
-@import 'bootstrap-italia/src/scss/forms/just-validate';
+@use 'bootstrap-italia/src/scss/forms/forms' as *;
+@use 'bootstrap-italia/src/scss/forms/form-control' as *;
+@use 'bootstrap-italia/src/scss/forms/form-check' as *;
+@use 'bootstrap-italia/src/scss/forms/form-transfer' as *;
+@use 'bootstrap-italia/src/scss/forms/just-validate' as *;
 
-@import 'bootstrap-italia/src/scss/components/grid';
+@use 'bootstrap-italia/src/scss/components/grid' as *;
 
 // ── Custom properties ────────────────────────────────────────────────────────
 // These allow per-instance and theme-level overrides at runtime.

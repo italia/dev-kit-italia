@@ -21,7 +21,6 @@ export default {
       minify: process.env.NODE_ENV === 'production',
       options: {
         loadPaths: ['node_modules'],
-        silenceDeprecations: ['import', 'global-builtin', 'if-function', 'color-functions'],
       },
     }),
   ],

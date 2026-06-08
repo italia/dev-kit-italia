@@ -1,5 +1,84 @@
 # @italia/card
 
+## 1.0.0-alpha.17
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+## 1.0.0-alpha.16
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+## 1.0.0-alpha.15
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+## 1.0.0-alpha.14
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+## 1.0.0-alpha.13
+
+### Minor Changes
+
+- [`a225c54`](https://github.com/italia/dev-kit-italia/commit/a225c54a737a3c31e489706e7aa4a9c7b5e1cce7) Thanks [@pnicolli](https://github.com/pnicolli)! - Added address line in location cards
+
+### Patch Changes
+
+- [`29c534c`](https://github.com/italia/dev-kit-italia/commit/29c534c4792a0bc3fd10d596b494e360713d2c25) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed variant 'location' to have border-top on footer
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+## 1.0.0-alpha.12
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- [`fe80563`](https://github.com/italia/dev-kit-italia/commit/fe8056309b71d74af3e9981429518850ff890f15) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fix last paragraph margin bottom and footer margin
+
+- [`2773adc`](https://github.com/italia/dev-kit-italia/commit/2773adc7e09b56e0bdfaf3be7ba866a83ab8b2b4) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added part="card" to customize card variables from outside
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- [#369](https://github.com/italia/dev-kit-italia/pull/369) [`381996d`](https://github.com/italia/dev-kit-italia/commit/381996d969682981ba0615641f7ac573be0a76c4) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added attribute it-class to it-card component to set additional custom classes on card. Updated hero docs"
+
+- [`fe786d5`](https://github.com/italia/dev-kit-italia/commit/fe786d58fec7212d612baa0b251885dd5ce07fe0) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed examples, and added attribute 'actions-aria-label'
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
 ## 1.0.0-alpha.9
 
 ### Minor Changes

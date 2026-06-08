@@ -44,11 +44,17 @@ export class ItCard extends BaseComponent {
   @property({ type: String, attribute: 'it-class' })
   itClass: string | undefined;
 
+  @property({ type: String, attribute: 'actions-aria-label' })
+  actionsAriaLabel?: string;
+
   @queryAssignedElements({ slot: 'title' })
   _titleElements!: HTMLElement[];
 
   @queryAssignedElements({ slot: 'subtitle' })
   _subtitleElements!: HTMLElement[];
+
+  @queryAssignedElements({ slot: 'address' })
+  _addressElements!: HTMLElement[];
 
   @queryAssignedElements({ slot: 'signature' })
   _signatureElements!: HTMLElement[];
@@ -151,6 +157,7 @@ export class ItCard extends BaseComponent {
     const shadowClass = CARD_SHADOWS.includes(this.shadow) ? `shadow-${this.shadow}` : 'shadow-sm';
     const borderClass = this.border === '0' ? 'border-0' : 'border';
     const hasSubtitle = this._subtitleElements.length > 0;
+    const hasAddress = this._addressElements.length > 0;
     const hasSignature = this._signatureElements.length > 0;
     const hasText = this._textElements.length > 0;
     const hasBody = this._bodyElements.length > 0 || hasText || hasSubtitle || hasSignature;
@@ -238,7 +245,7 @@ export class ItCard extends BaseComponent {
 
     const cardFooter = hasFooter
       ? html`
-          <footer class="it-card-footer" part="footer">
+          <footer class="it-card-footer ${this.variant === 'location' ? 'border-top pt-3' : ''}" part="footer">
             <slot name="footer" @slotchange=${this.handleSlotChange}></slot>
           </footer>
         `
@@ -246,7 +253,12 @@ export class ItCard extends BaseComponent {
 
     const cardActions = hasActions
       ? html`
-          <div class="it-card-actions" part="actions">
+          <div
+            class="it-card-actions"
+            role="group"
+            part="actions"
+            aria-label=${this.actionsAriaLabel ? this.actionsAriaLabel : 'Link correlati:'}
+          >
             <slot name="actions" @slotchange=${this.handleSlotChange}></slot>
           </div>
         `
@@ -254,7 +266,7 @@ export class ItCard extends BaseComponent {
 
     if (this.variant === 'profile') {
       return html`
-        <article class="${classes}">
+        <article class="${classes}" part="card">
           <div class="it-card-profile-header">
             <div class="it-card-profile-content">
               ${cardTitle}
@@ -274,7 +286,7 @@ export class ItCard extends BaseComponent {
     }
     if (this.variant === 'location') {
       return html`
-        <article class="${classes}">
+        <article class="${classes}" part="card">
           <div class="it-card-profile-header">
             <div class="it-card-profile">
               ${cardTitle}
@@ -285,6 +297,13 @@ export class ItCard extends BaseComponent {
                     </p>
                   `
                 : html`<slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>`}
+              ${hasAddress
+                ? html`
+                    <p class="it-card-place-address" part="address">
+                      <slot name="address" @slotchange=${this.handleSlotChange}></slot>
+                    </p>
+                  `
+                : html`<slot name="address" @slotchange=${this.handleSlotChange}></slot>`}
             </div>
             ${cardImage}
           </div>
@@ -294,13 +313,15 @@ export class ItCard extends BaseComponent {
     }
     if (isInline) {
       return html`
-        <article class="${classes}">
+        <article class="${classes}" part="card">
           <div class="it-card-inline-content">${cardTitle}${cardBody}${cardFooter}${cardActions}</div>
           ${cardImage}
         </article>
       `;
     }
-    return html` <article class="${classes}">${cardTitle}${cardImage}${cardBody}${cardFooter}${cardActions}</article> `;
+    return html`
+      <article class="${classes}" part="card">${cardTitle}${cardImage}${cardBody}${cardFooter}${cardActions}</article>
+    `;
   }
 }
 

@@ -1,108 +1,110 @@
 /* BOOTSTRAP ITALIA base styles */
-@import 'design-tokens-italia/dist/css/variables';
-@import 'bootstrap-italia/src/scss/base/version';
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/utilities';
-@import 'bootstrap-italia/src/scss/base/root';
-@import 'bootstrap-italia/src/scss/base/reboot';
+@forward 'design-tokens-italia/dist/css/variables';
+@forward 'bootstrap-italia/src/scss/base/version';
+@forward 'bootstrap-italia/src/scss/base/functions';
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@forward 'bootstrap-italia/src/scss/base/variables';
+@forward 'bootstrap-italia/src/scss/base/mixins';
+@forward 'bootstrap-italia/src/scss/base/maps';
+@forward 'bootstrap-italia/src/scss/base/utilities';
+@forward 'bootstrap-italia/src/scss/base/root';
+@forward 'bootstrap-italia/src/scss/base/reboot';
 
-@import 'bootstrap-italia/src/scss/base/containers';
-@import 'bootstrap-italia/src/scss/base/transitions';
-@import 'bootstrap-italia/src/scss/base/helpers';
+@forward 'bootstrap-italia/src/scss/base/containers';
+@forward 'bootstrap-italia/src/scss/base/transitions';
+@forward 'bootstrap-italia/src/scss/base/helpers';
 
-@import 'bootstrap-italia/src/scss/base/utilities/api';
-@import './utilities/focus';
-@import './utilities/fouc';
-// @import 'bootstrap-italia/src/scss/utilities/focus';
-@import 'bootstrap-italia/src/scss/utilities/icons';
-@import 'bootstrap-italia/src/scss/utilities/colors';
-@import 'bootstrap-italia/src/scss/components/type';
-@import 'bootstrap-italia/src/scss/components/grid';
-@import 'bootstrap-italia/src/scss/components/alert';
+@forward './utilities/width';
+@forward 'bootstrap-italia/src/scss/base/utilities/api';
+@forward './utilities/focus';
+@forward './utilities/fouc';
+// @forward 'bootstrap-italia/src/scss/utilities/focus';
+@forward 'bootstrap-italia/src/scss/utilities/icons';
+@forward 'bootstrap-italia/src/scss/utilities/colors';
+@forward 'bootstrap-italia/src/scss/components/type';
+@forward 'bootstrap-italia/src/scss/components/grid';
+@forward 'bootstrap-italia/src/scss/components/alert';
 
-@import 'bootstrap-italia/src/scss/forms/forms'; //perchè ci sono delle variabile definite nella :root
+@forward 'bootstrap-italia/src/scss/forms/forms'; //perchè ci sono delle variabile definite nella :root
 
-@import 'bootstrap-italia/src/scss/components/images';
-@import 'bootstrap-italia/src/scss/components/linklist';
-@import 'bootstrap-italia/src/scss/components/dropdown';
-@import 'bootstrap-italia/src/scss/components/nav';
-@import 'bootstrap-italia/src/scss/components/navbar';
-@import 'bootstrap-italia/src/scss/components/header';
-@import 'bootstrap-italia/src/scss/components/headerslim';
-@import 'bootstrap-italia/src/scss/components/overlay-panel';
-@import 'bootstrap-italia/src/scss/components/avatar';
-@import 'bootstrap-italia/src/scss/components/sidebar';
-@import 'bootstrap-italia/src/scss/components/affix';
-@import 'bootstrap-italia/src/scss/components/badge';
-@import 'bootstrap-italia/src/scss/components/forward';
-@import 'bootstrap-italia/src/scss/components/navscroll';
-@import 'bootstrap-italia/src/scss/components/progress-bars';
-@import 'bootstrap-italia/src/scss/components/hero';
-@import 'bootstrap-italia/src/scss/components/buttons'; // serve per applicare le classi di stile dei bottoni agli elementi di tipo <a>
-@import 'bootstrap-italia/src/scss/components/card'; //serve per l'esempio HERO. TODO: da rimuovere quando arriva il componente card.
+@forward 'bootstrap-italia/src/scss/components/images';
+@forward 'bootstrap-italia/src/scss/components/linklist';
+@forward 'bootstrap-italia/src/scss/components/dropdown';
+@forward 'bootstrap-italia/src/scss/components/nav';
+@forward 'bootstrap-italia/src/scss/components/navbar';
+@forward 'bootstrap-italia/src/scss/components/header';
+@forward 'bootstrap-italia/src/scss/components/headerslim';
+@forward 'bootstrap-italia/src/scss/components/overlay-panel';
+@forward 'bootstrap-italia/src/scss/components/avatar';
+@forward 'bootstrap-italia/src/scss/components/sidebar';
+@forward 'bootstrap-italia/src/scss/components/affix';
+@forward 'bootstrap-italia/src/scss/components/badge';
+@forward 'bootstrap-italia/src/scss/components/forward';
+@forward 'bootstrap-italia/src/scss/components/navscroll';
+@forward 'bootstrap-italia/src/scss/components/progress-bars';
+@forward 'bootstrap-italia/src/scss/components/hero';
+@forward 'bootstrap-italia/src/scss/components/buttons'; // serve per applicare le classi di stile dei bottoni agli elementi di tipo <a>
+@forward 'bootstrap-italia/src/scss/components/card'; //serve per l'esempio HERO. TODO: da rimuovere quando arriva il componente card.
+@forward 'bootstrap-italia/src/scss/components/tab';
 
-@import 'bootstrap-italia/src/scss/components/tab';
-
-@import '@italia/accordion/styles/globals';
-@import '@italia/autocomplete/styles/globals';
-@import '@italia/avatar/styles/globals';
-@import '@italia/back-to-top/styles/globals';
-@import '@italia/bottom-nav/styles/globals';
-@import '@italia/breadcrumbs/styles/globals';
-@import '@italia/button/styles/globals';
-@import '@italia/callout/styles/globals';
-@import '@italia/card/styles/globals';
-@import '@italia/carousel/styles/globals';
-@import '@italia/checkbox/styles/globals';
-@import '@italia/chip/styles/globals';
-@import '@italia/collapse/styles/globals';
-@import '@italia/dimmer/styles/globals';
-@import '@italia/dropdown/styles/globals';
-@import '@italia/hero/styles/globals';
-@import '@italia/header/styles/globals';
-@import '@italia/icon/styles/globals';
-@import '@italia/input/styles/globals';
-@import '@italia/megamenu/styles/globals';
-@import '@italia/modal/styles/globals';
-@import '@italia/navscroll/styles/globals';
-@import '@italia/notification/styles/globals';
-@import '@italia/pagination/styles/globals';
-@import '@italia/popover/styles/globals';
-@import '@italia/progress/styles/globals';
-@import '@italia/radio/styles/globals';
-@import '@italia/rating/styles/globals';
-@import '@italia/section/styles/globals';
-@import '@italia/select/styles/globals';
-@import '@italia/skiplinks/styles/globals';
-@import '@italia/stepper/styles/globals';
-@import '@italia/sticky/styles/globals';
-@import '@italia/toolbar/styles/globals';
-@import '@italia/thumbnav/styles/globals';
-@import '@italia/timeline/styles/globals';
-@import '@italia/tabs/styles/globals';
-@import '@italia/toggle/styles/globals';
-@import '@italia/tooltip/styles/globals';
-@import '@italia/transfer/styles/globals';
-@import '@italia/upload/styles/globals';
-@import '@italia/video/styles/globals';
+/*dev-kit-italia global styles*/
+@forward '@italia/accordion/styles/globals';
+@forward '@italia/autocomplete/styles/globals';
+@forward '@italia/avatar/styles/globals';
+@forward '@italia/back-to-top/styles/globals';
+@forward '@italia/bottom-nav/styles/globals';
+@forward '@italia/breadcrumbs/styles/globals';
+@forward '@italia/button/styles/globals';
+@forward '@italia/callout/styles/globals';
+@forward '@italia/card/styles/globals';
+@forward '@italia/carousel/styles/globals';
+@forward '@italia/checkbox/styles/globals';
+@forward '@italia/chip/styles/globals';
+@forward '@italia/collapse/styles/globals';
+@forward '@italia/dimmer/styles/globals';
+@forward '@italia/dropdown/styles/globals';
+@forward '@italia/hero/styles/globals';
+@forward '@italia/header/styles/globals';
+@forward '@italia/icon/styles/globals';
+@forward '@italia/input/styles/globals';
+@forward '@italia/megamenu/styles/globals';
+@forward '@italia/modal/styles/globals';
+@forward '@italia/navscroll/styles/globals';
+@forward '@italia/notification/styles/globals';
+@forward '@italia/pagination/styles/globals';
+@forward '@italia/popover/styles/globals';
+@forward '@italia/progress/styles/globals';
+@forward '@italia/radio/styles/globals';
+@forward '@italia/rating/styles/globals';
+@forward '@italia/section/styles/globals';
+@forward '@italia/select/styles/globals';
+@forward '@italia/skiplinks/styles/globals';
+@forward '@italia/stepper/styles/globals';
+@forward '@italia/sticky/styles/globals';
+@forward '@italia/toolbar/styles/globals';
+@forward '@italia/thumbnav/styles/globals';
+@forward '@italia/timeline/styles/globals';
+@forward '@italia/tabs/styles/globals';
+@forward '@italia/toggle/styles/globals';
+@forward '@italia/tooltip/styles/globals';
+@forward '@italia/transfer/styles/globals';
+@forward '@italia/upload/styles/globals';
+@forward '@italia/video/styles/globals';
 
 // Footer
-@import 'bootstrap-italia/src/scss/components/footer';
-@import 'bootstrap-italia/src/scss/components/list';
-@import 'bootstrap-italia/src/scss/components/list-group';
-@import 'bootstrap-italia/src/scss/components/headercenter';
+@forward 'bootstrap-italia/src/scss/components/footer';
+@forward 'bootstrap-italia/src/scss/components/list';
+@forward 'bootstrap-italia/src/scss/components/list-group';
+@forward 'bootstrap-italia/src/scss/components/headercenter';
 
 // Table
-@import 'bootstrap-italia/src/scss/components/tables';
+@forward 'bootstrap-italia/src/scss/components/tables';
 
-@import './components/alert';
-@import './components/footer';
-@import './components/go-back';
-@import './components/list';
-@import './components/sidebar';
+@forward './components/alert';
+@forward './components/footer';
+@forward './components/go-back';
+@forward './components/list';
+@forward './components/sidebar';
 
 .it-footer-main .it-brand-wrapper ::part(icon) {
   width: var(--#{$prefix}footer-brand-icon-size);

@@ -4,7 +4,7 @@ import { html } from 'lit';
 import { wrapExample } from './organizzare-gli-spazi.helpers';
 
 const meta = {
-  title: 'Organizzare gli spazi/1.Introduzione',
+  title: 'Organizzare gli spazi/Introduzione',
 } satisfies Meta;
 
 export default meta;

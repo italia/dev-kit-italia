@@ -1,7 +1,7 @@
 {
   "name": "@italia/toolbar",
   "description": "Web component it-toolbar del Design system .italia",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.17",
   "publishConfig": {
     "access": "public"
   },

@@ -1,4 +1,5 @@
-@import 'bootstrap-italia/src/scss/components/accordion';
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/components/accordion' as *;
 
 it-accordion-item {
   display: block;

@@ -145,14 +145,12 @@ export const OverlapContent: Story = {
               <!--card first child is the title (link)-->
               <h3 slot="title" class="h4">Titolo del contenuto</h3>
               <!--card body content-->
-              <div slot="text">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div>
+              <span slot="text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </span>
               <div slot="footer">
                 <a href="#" class="it-card-link"
                   >Scopri di più <span class="visually-hidden">su Titolo del contenuto</span></a

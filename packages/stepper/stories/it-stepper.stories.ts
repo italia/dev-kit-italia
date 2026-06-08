@@ -169,14 +169,14 @@ const meta: Meta<StepperArgs> = {
       control: 'text',
       description: 'Titolo della sezione di salvataggio. Mostrato solamente se viene aggiunto anche `save-label`.',
       name: 'save-title',
-      table: { defaultValue: { summary: 'Vuoi salvare il progresso?' } },
+      table: { defaultValue: { summary: '' } },
     },
     'save-description': {
       control: 'text',
       description:
         'Testo descrittivo della sezione di salvataggio. Mostrato solamente se viene aggiunto anche `save-label`.',
       name: 'save-description',
-      table: { defaultValue: { summary: 'Potrai riprendere il flusso da questo punto in poi.' } },
+      table: { defaultValue: { summary: '' } },
     },
   },
   parameters: {

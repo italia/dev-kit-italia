@@ -1,3 +1,10 @@
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use './fouc';
+
 it-card {
   figure {
     margin-bottom: 0;
@@ -6,6 +13,14 @@ it-card {
   img {
     border-top-left-radius: var(--#{$prefix}card-border-radius-inner);
     border-top-right-radius: var(--#{$prefix}card-border-radius-inner);
+  }
+
+  //focus
+  a[slot='title'],
+  a {
+    &:focus-visible {
+      display: inline-flex;
+    }
   }
 
   .it-card-title-icon-wrapper {
@@ -57,7 +72,7 @@ it-card {
     color: var(--#{$prefix}card-description-color);
     font-size: var(--#{$prefix}label-font-size);
     gap: var(--#{$prefix}spacing-s);
-    line-height: var(--#{$prefix}label-leading);
+    line-height: var(--#{$prefix}body-leading);
 
     @include media-breakpoint-down(sm) {
       display: flex;
@@ -231,5 +246,3 @@ ul.it-card-list {
     justify-content: flex-end;
   }
 }
-
-@import './fouc';

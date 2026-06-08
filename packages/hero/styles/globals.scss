@@ -1,3 +1,6 @@
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/components/hero' as *;
+
 it-hero:not(:defined) {
   --it-host-display: block;
   display: var(--it-host-display);

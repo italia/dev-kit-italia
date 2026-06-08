@@ -1,4 +1,5 @@
-$pagination-color: var(--#{$prefix}color-link);
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
 
 /* ========================================
    FOUC Styles - Flash of Unstyled Content
