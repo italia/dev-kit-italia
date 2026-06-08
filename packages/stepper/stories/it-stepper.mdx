@@ -69,14 +69,13 @@ Le etichette possono essere personalizzate tramite gli attributi `prev-label` e 
 Puoi navigare anche via JavaScript tramite i metodi pubblici `next()` e `prev()`, oppure modificando l'attributo `current`.
 Ogni cambio di step emette un evento `it-stepper-change` con `detail.step` e `detail.prevStep`.
 
-Puoi nascondere singole aree con `hide-header`, `hide-content` e `hide-nav`.
-L'attributo `total-steps` imposta il totale usato da indice mobile, progress bar e pallini.
-Se non viene impostato, il totale coincide con il numero di elementi `it-stepper-step` presenti nello slot.
+<Canvas of={Stories.Navigazione} />
 
 ### Progress bar
 
 Imposta `mobile-progress="bar"` per mostrare una barra di progresso tra i pulsanti di navigazione.
 Per impostazione predefinita l'indicatore segue il comportamento Bootstrap Italia ed è visibile solo su mobile.
+Per modificare questa impostazione e mostrare l'indicatore su qualsiasi schermo, imposta l'attributo `mobile-progress-on-desktop`.
 
 <Canvas of={Stories.ProgressBar} />
 

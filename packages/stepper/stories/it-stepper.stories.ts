@@ -6,20 +6,16 @@ import { STEPPER_HEADER_VARIANTS, STEPPER_MOBILE_PROGRESS } from '../src/types.j
 interface StepperArgs {
   current: number;
   dark: boolean;
-  'header-variant': string;
-  'mobile-progress': string;
-  'total-steps': number;
-  'hide-header': boolean;
-  'hide-content': boolean;
-  'hide-nav': boolean;
-  'mobile-progress-on-desktop': boolean;
-  'prev-label': string;
-  'next-label': string;
-  'confirm-label': string;
-  'show-confirm': boolean;
-  'save-label': string;
-  'save-title': string;
-  'save-description': string;
+  'header-variant'?: string;
+  'mobile-progress'?: string;
+  'mobile-progress-on-desktop'?: boolean;
+  'prev-label'?: string;
+  'next-label'?: string;
+  'confirm-label'?: string;
+  'show-confirm'?: boolean;
+  'save-label'?: string;
+  'save-title'?: string;
+  'save-description'?: string;
 }
 
 type Story = StoryObj<StepperArgs>;
@@ -37,32 +33,6 @@ const headerSteps = [
 
 const demoStyles = html`
   <style>
-    .stepper-reference-demo {
-      width: 100%;
-    }
-
-    .stepper-reference-demo it-stepper::part(content) {
-      display: flex;
-      min-height: 9rem;
-      align-items: center;
-      justify-content: center;
-      border: 1px dashed var(--bsi-color-border-subtle, var(--bsi-border-color));
-      background: var(--bsi-color-background-secondary-lighter, var(--bsi-body-bg));
-      color: var(--bsi-body-color);
-      text-align: center;
-    }
-
-    .stepper-reference-demo it-stepper::part(content) p {
-      margin: 0;
-      font-size: var(--bsi-font-size-sm);
-    }
-
-    .stepper-reference-demo.bg-dark it-stepper::part(content) {
-      border-color: var(--bsi-color-border-inverse, var(--bsi-color-border-subtle));
-      background: transparent;
-      color: var(--bsi-color-text-inverse);
-    }
-
     .stepper-variant-stack {
       display: flex;
       flex-direction: column;
@@ -75,11 +45,7 @@ const demoDecorators: NonNullable<Meta<StepperArgs>['decorators']> = [
   (story, context) => {
     const stepperDemo = (context.parameters.stepperDemo ?? {}) as StepperDemoParameters;
     const isDark = stepperDemo.dark ?? context.args.dark;
-    const wrapperClasses = [
-      'stepper-reference-demo',
-      isDark ? 'bg-dark p-4' : '',
-      stepperDemo.stack ? 'stepper-variant-stack' : '',
-    ]
+    const wrapperClasses = [isDark ? 'bg-dark p-4' : '', stepperDemo.stack ? 'stepper-variant-stack' : '']
       .filter(Boolean)
       .join(' ');
 
@@ -94,25 +60,24 @@ const renderStepper = (args: StepperArgs, steps = headerSteps) => html`
   <it-stepper
     current=${args.current}
     ?dark=${args.dark}
-    header-variant=${args['header-variant']}
-    mobile-progress=${args['mobile-progress']}
-    total-steps=${ifDefined(args['total-steps'] > 0 ? args['total-steps'] : undefined)}
-    ?hide-header=${args['hide-header']}
-    ?hide-content=${args['hide-content']}
-    ?hide-nav=${args['hide-nav']}
+    header-variant=${ifDefined(args['header-variant'] || undefined)}
+    mobile-progress=${ifDefined(args['mobile-progress'] || undefined)}
     ?mobile-progress-on-desktop=${args['mobile-progress-on-desktop']}
-    prev-label=${args['prev-label']}
-    next-label=${args['next-label']}
-    confirm-label=${args['confirm-label']}
+    prev-label=${ifDefined(args['prev-label'] || undefined)}
+    next-label=${ifDefined(args['next-label'] || undefined)}
+    confirm-label=${ifDefined(args['confirm-label'] || undefined)}
     ?show-confirm=${args['show-confirm']}
     save-label=${ifDefined(args['save-label'] || undefined)}
-    save-title=${args['save-title']}
-    save-description=${args['save-description']}
+    save-title=${ifDefined(args['save-title'] || undefined)}
+    save-description=${ifDefined(args['save-description'] || undefined)}
   >
     ${steps.map(
       (step, i) => html`
-        <it-stepper-step label=${step.label} icon=${step.icon}>
-          <p>Contenuto dello step ${i + 1}</p>
+        <it-stepper-step icon=${step.icon}>
+          <span slot="label">${step.label}</span>
+          <div class="p-5 text-center border ${args.dark ? 'text-white' : 'bg-light'}">
+            <p class="m-0">Contenuto dello step ${i + 1}</p>
+          </div>
         </it-stepper-step>
       `,
     )}
@@ -126,20 +91,16 @@ const meta: Meta<StepperArgs> = {
   args: {
     current: 1,
     dark: false,
-    'header-variant': 'text',
+    'header-variant': '',
     'mobile-progress': '',
-    'total-steps': 6,
-    'hide-header': false,
-    'hide-content': false,
-    'hide-nav': false,
     'mobile-progress-on-desktop': false,
-    'prev-label': 'Indietro',
-    'next-label': 'Avanti',
-    'confirm-label': 'Conferma',
+    'prev-label': '',
+    'next-label': '',
+    'confirm-label': '',
     'show-confirm': false,
     'save-label': '',
-    'save-title': 'Vuoi salvare il progresso?',
-    'save-description': 'Potrai riprendere il flusso da questo punto in poi.',
+    'save-title': '',
+    'save-description': '',
   },
   argTypes: {
     current: {
@@ -167,30 +128,6 @@ const meta: Meta<StepperArgs> = {
       description: 'Indicatore di progresso mostrato su mobile tra i pulsanti di navigazione.',
       name: 'mobile-progress',
       table: { defaultValue: { summary: '' } },
-    },
-    'total-steps': {
-      control: { type: 'number', min: 0, step: 1 },
-      description: 'Numero totale di passi usato per indice mobile, progress bar e pallini.',
-      name: 'total-steps',
-      table: { defaultValue: { summary: 'numero di it-stepper-step' } },
-    },
-    'hide-header': {
-      control: 'boolean',
-      description: "Nasconde l'intestazione degli step.",
-      name: 'hide-header',
-      table: { defaultValue: { summary: 'false' } },
-    },
-    'hide-content': {
-      control: 'boolean',
-      description: "Nasconde l'area contenuto mantenendo gli step disponibili per intestazione e stato.",
-      name: 'hide-content',
-      table: { defaultValue: { summary: 'false' } },
-    },
-    'hide-nav': {
-      control: 'boolean',
-      description: 'Nasconde la navigazione dello stepper.',
-      name: 'hide-nav',
-      table: { defaultValue: { summary: 'false' } },
     },
     'mobile-progress-on-desktop': {
       control: 'boolean',
@@ -230,13 +167,14 @@ const meta: Meta<StepperArgs> = {
     },
     'save-title': {
       control: 'text',
-      description: 'Titolo della sezione di salvataggio.',
+      description: 'Titolo della sezione di salvataggio. Mostrato solamente se viene aggiunto anche `save-label`.',
       name: 'save-title',
       table: { defaultValue: { summary: 'Vuoi salvare il progresso?' } },
     },
     'save-description': {
       control: 'text',
-      description: 'Testo descrittivo della sezione di salvataggio.',
+      description:
+        'Testo descrittivo della sezione di salvataggio. Mostrato solamente se viene aggiunto anche `save-label`.',
       name: 'save-description',
       table: { defaultValue: { summary: 'Potrai riprendere il flusso da questo punto in poi.' } },
     },
@@ -263,39 +201,49 @@ export const EsempioInterattivo: Story = {
 
 export const SoloTesto: Story = {
   name: 'Solo testo',
-  args: { 'header-variant': 'text', 'total-steps': 3, 'hide-content': true, 'hide-nav': true },
+  args: { 'header-variant': 'text' },
   render: (args) => renderStepper(args),
 };
 
 export const TestoEIcone: Story = {
   name: 'Testo e icone',
-  args: { 'header-variant': 'icons', 'total-steps': 3, 'hide-content': true, 'hide-nav': true },
+  args: { 'header-variant': 'icons' },
   render: (args) => renderStepper(args),
 };
 
 export const TestoENumeri: Story = {
   name: 'Testo e numeri',
-  args: { 'header-variant': 'numbers', 'total-steps': 3, 'hide-content': true, 'hide-nav': true },
+  args: { 'header-variant': 'numbers' },
+  render: (args) => renderStepper(args),
+};
+
+export const Navigazione: Story = {
+  name: 'Navigazione degli step',
+  args: { 'next-label': 'Successivo', 'prev-label': 'Precedente' },
   render: (args) => renderStepper(args),
 };
 
 export const ProgressBar: Story = {
-  args: { 'hide-header': true, 'mobile-progress': 'bar', 'mobile-progress-on-desktop': true },
+  args: { 'mobile-progress': 'bar', 'mobile-progress-on-desktop': true },
   render: (args) => renderStepper(args),
 };
 
 export const Pallini: Story = {
-  args: { 'hide-header': true, 'mobile-progress': 'dots', 'mobile-progress-on-desktop': true },
+  args: { 'mobile-progress': 'dots', 'mobile-progress-on-desktop': true },
   render: (args) => renderStepper(args),
 };
 
 export const Salva: Story = {
-  args: { 'hide-header': true, 'save-label': 'Salva' },
+  args: {
+    'save-label': 'Salva',
+    'save-title': 'Vuoi salvare il progresso?',
+    'save-description': 'Potrai riprendere il flusso da questo punto in poi.',
+  },
   render: (args) => renderStepper(args),
 };
 
 export const Conferma: Story = {
-  args: { 'hide-header': true, 'show-confirm': true },
+  args: { 'show-confirm': true, 'confirm-label': 'Conferma' },
   render: (args) => renderStepper(args),
 };
 
@@ -310,10 +258,7 @@ export const SfondoScuroVarianti: Story = {
   parameters: { backgrounds: { default: 'dark' }, stepperDemo: { dark: true, stack: true } },
   render: (args) => html`
     ${(['text', 'icons', 'numbers'] as const).map((variant) =>
-      renderStepper(
-        { ...args, dark: true, 'header-variant': variant, 'total-steps': 3, 'hide-content': true, 'hide-nav': true },
-        headerSteps,
-      ),
+      renderStepper({ ...args, dark: true, 'header-variant': variant }, headerSteps),
     )}
   `,
 };

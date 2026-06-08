@@ -1,3 +1,4 @@
+@use 'sass:map';
 @import 'bootstrap-italia/src/scss/base/functions';
 @import 'bootstrap-italia/src/scss/base/variables';
 @import 'bootstrap-italia/src/scss/base/mixins';
@@ -8,39 +9,81 @@
 @import 'bootstrap-italia/src/scss/base/utilities';
 
 $utilities: (
-  'display': map-get($utilities, 'display'),
-  'flex': map-get($utilities, 'flex'),
-  'float': map-get($utilities, 'float'),
-  'align': map-get($utilities, 'align'),
-  'background-color': map-get($utilities, 'background-color'),
-  'border': map-get($utilities, 'border'),
-  'border-top': map-get($utilities, 'border-top'),
-  'border-color': map-get($utilities, 'border-color'),
-  'border-width': map-get($utilities, 'border-width'),
-  'border-opacity': map-get($utilities, 'border-opacity'),
-  'border-radius': map-get($utilities, 'border-radius'),
-  'margin': map-get($utilities, 'margin'),
-  'margin-x': map-get($utilities, 'margin-x'),
-  'margin-y': map-get($utilities, 'margin-y'),
-  'margin-top': map-get($utilities, 'margin-top'),
-  'margin-end': map-get($utilities, 'margin-end'),
-  'margin-bottom': map-get($utilities, 'margin-bottom'),
-  'margin-start': map-get($utilities, 'margin-start'),
-  'padding': map-get($utilities, 'padding'),
-  'padding-x': map-get($utilities, 'padding-x'),
-  'padding-y': map-get($utilities, 'padding-y'),
-  'padding-top': map-get($utilities, 'padding-top'),
-  'padding-end': map-get($utilities, 'padding-end'),
-  'padding-bottom': map-get($utilities, 'padding-bottom'),
-  'padding-start': map-get($utilities, 'padding-start'),
-  'text-align': map-get($utilities, 'text-align'),
-  'text-decoration': map-get($utilities, 'text-decoration'),
-  'text-transform': map-get($utilities, 'text-transform'),
-  'font-size': map-get($utilities, 'font-size'),
-  'font-weight': map-get($utilities, 'font-weight'),
-  'font-style': map-get($utilities, 'font-style'),
-  'line-height': map-get($utilities, 'line-height'),
-  'color': map-get($utilities, 'color'),
+  'display': map.merge(
+      map.get($utilities, 'display'),
+      (
+        responsive: false,
+        values: flex,
+      )
+    ),
+  'background-color': map.merge(
+      map.get($utilities, 'background-color'),
+      (
+        values: (
+          'dark': map.get($utilities-bg-colors, 'dark'),
+        ),
+      )
+    ),
+  'border-top': map.merge(
+      map.get($utilities, 'border-top'),
+      (
+        values: (
+          null: map.get(map.get(map.get($utilities, 'border-top'), 'values'), null),
+        ),
+      )
+    ),
+  'margin-top': map.merge(
+      map.get($utilities, 'margin-top'),
+      (
+        responsive: false,
+        values: (
+          2: map.get($spacers, 2),
+        ),
+      )
+    ),
+  'margin-end': map.merge(
+      map.get($utilities, 'margin-end'),
+      (
+        values: (
+          3: map.get($spacers, 3),
+        ),
+      )
+    ),
+  'margin-bottom': map.merge(
+      map.get($utilities, 'margin-bottom'),
+      (
+        values: (
+          0: map.get($spacers, 0),
+          2: map.get($spacers, 2),
+          3: map.get($spacers, 3),
+        ),
+      )
+    ),
+  'padding-top': map.merge(
+      map.get($utilities, 'padding-top'),
+      (
+        responsive: false,
+        values: (
+          3: map.get($spacers, 3),
+        ),
+      )
+    ),
+  'text-align': map.merge(
+      map.get($utilities, 'text-align'),
+      (
+        values: (
+          end: map.get(map.get(map.get($utilities, 'text-align'), 'values'), 'end'),
+        ),
+      )
+    ),
+  'color': map.merge(
+      map.get($utilities, 'color'),
+      (
+        values: (
+          'muted': map.get(map.get(map.get($utilities, 'color'), 'values'), 'muted'),
+        ),
+      )
+    ),
 );
 
 @import 'bootstrap-italia/src/scss/base/utilities/api';

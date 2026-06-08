@@ -10,3 +10,7 @@
 :host(:not([active])) {
   display: none;
 }
+
+slot[name='label'] {
+  display: none;
+}

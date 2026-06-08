@@ -1,9 +1,16 @@
-import { html, nothing } from 'lit';
+import { html, nothing, type PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { BaseComponent } from '@italia/globals';
+import { BaseLocalizedComponent } from '@italia/globals';
+import { registerTranslation } from '@italia/i18n';
 import type { ItStepperStep } from './it-stepper-step.js';
 import type { StepperHeaderVariant, StepperMobileProgress } from './types.js';
 import styles from './stepper.scss';
+
+import it from './locales/it.js';
+import en from './locales/en.js';
+
+registerTranslation(it);
+registerTranslation(en);
 
 /**
  * `it-stepper` è il componente contenitore per una procedura a più passi.
@@ -15,13 +22,16 @@ import styles from './stepper.scss';
  *
  * ```html
  * <it-stepper header-variant="numbers">
- *   <it-stepper-step label="Primo contenuto">
+ *   <it-stepper-step>
+ *     <span slot="label">Primo contenuto</span>
  *     <p>Contenuto del primo step</p>
  *   </it-stepper-step>
- *   <it-stepper-step label="Secondo contenuto">
+ *   <it-stepper-step>
+ *     <span slot="label">Secondo contenuto</span>
  *     <p>Contenuto del secondo step</p>
  *   </it-stepper-step>
- *   <it-stepper-step label="Terzo contenuto">
+ *   <it-stepper-step>
+ *     <span slot="label">Terzo contenuto</span>
  *     <p>Contenuto del terzo step</p>
  *   </it-stepper-step>
  * </it-stepper>
@@ -35,7 +45,7 @@ import styles from './stepper.scss';
  * @fires it-stepper-confirm - Emesso quando l'utente clicca il pulsante "Conferma".
  */
 @customElement('it-stepper')
-export class ItStepper extends BaseComponent {
+export class ItStepper extends BaseLocalizedComponent {
   static styles = styles;
 
   /**
@@ -55,7 +65,7 @@ export class ItStepper extends BaseComponent {
    * - `icons`: icona + testo (richiede l'attributo `icon` su ogni `it-stepper-step`)
    * - `numbers`: numero ordinale + testo
    */
-  @property({ type: String, reflect: true, attribute: 'header-variant' })
+  @property({ type: String, attribute: 'header-variant' })
   headerVariant: StepperHeaderVariant = 'text';
 
   /**
@@ -66,65 +76,46 @@ export class ItStepper extends BaseComponent {
    *
    * Su desktop l'indicatore è sempre nascosto (comportamento BSI nativo).
    */
-  @property({ type: String, reflect: true, attribute: 'mobile-progress' })
+  @property({ type: String, attribute: 'mobile-progress' })
   mobileProgress: StepperMobileProgress = '';
-
-  /**
-   * Numero totale di passi mostrati dagli indicatori mobile (indice, barra e pallini).
-   * Se non impostato, viene usato il numero di `it-stepper-step` nello slot.
-   */
-  @property({ type: Number, reflect: true, attribute: 'total-steps' })
-  totalSteps = 0;
-
-  /** Nasconde l'intestazione, mantenendo attiva la sincronizzazione degli step nello slot. */
-  @property({ type: Boolean, reflect: true, attribute: 'hide-header' })
-  hideHeader = false;
-
-  /** Nasconde l'area contenuto, utile per esempi di sola intestazione. */
-  @property({ type: Boolean, reflect: true, attribute: 'hide-content' })
-  hideContent = false;
-
-  /** Nasconde la barra di navigazione. */
-  @property({ type: Boolean, reflect: true, attribute: 'hide-nav' })
-  hideNav = false;
 
   /** Mostra progress bar o pallini anche a desktop, comportamento utile per anteprime e documentazione. */
   @property({ type: Boolean, reflect: true, attribute: 'mobile-progress-on-desktop' })
   mobileProgressOnDesktop = false;
 
   /** Etichetta del pulsante "Indietro". */
-  @property({ type: String, reflect: true, attribute: 'prev-label' })
-  prevLabel = 'Indietro';
+  @property({ type: String, attribute: 'prev-label' })
+  prevLabel?: string;
 
   /** Etichetta del pulsante "Avanti". */
-  @property({ type: String, reflect: true, attribute: 'next-label' })
-  nextLabel = 'Avanti';
+  @property({ type: String, attribute: 'next-label' })
+  nextLabel?: string;
 
   /** Etichetta del pulsante "Conferma". */
-  @property({ type: String, reflect: true, attribute: 'confirm-label' })
-  confirmLabel = 'Conferma';
+  @property({ type: String, attribute: 'confirm-label' })
+  confirmLabel?: string;
 
   /**
    * Mostra il pulsante "Conferma" al posto del pulsante "Avanti".
    * Utile per l'ultimo step o per step che richiedono conferma esplicita su mobile.
    */
-  @property({ type: Boolean, reflect: true, attribute: 'show-confirm' })
+  @property({ type: Boolean, attribute: 'show-confirm' })
   showConfirm = false;
 
   /**
    * Etichetta del pulsante "Salva".
    * Se vuoto (default), l'area di salvataggio non viene mostrata.
    */
-  @property({ type: String, reflect: true, attribute: 'save-label' })
-  saveLabel = '';
+  @property({ type: String, attribute: 'save-label' })
+  saveLabel?: string;
 
   /** Titolo del testo descrittivo nell'area di salvataggio. */
-  @property({ type: String, reflect: true, attribute: 'save-title' })
-  saveTitle = 'Vuoi salvare il progresso?';
+  @property({ type: String, attribute: 'save-title' })
+  saveTitle?: string;
 
   /** Testo descrittivo nell'area di salvataggio. */
-  @property({ type: String, reflect: true, attribute: 'save-description' })
-  saveDescription = 'Potrai riprendere il flusso da questo punto in poi.';
+  @property({ type: String, attribute: 'save-description' })
+  saveDescription?: string;
 
   private _stepCount = 0;
 
@@ -137,32 +128,23 @@ export class ItStepper extends BaseComponent {
     this._syncSteps(true);
   }
 
-  override willUpdate(changed: Map<string | number | symbol, unknown>) {
+  override willUpdate(changed: PropertyValues) {
     super.willUpdate?.(changed);
-    if ((changed.has('current') || changed.has('totalSteps')) && this._stepCount > 0) {
+    if (changed.has('current') && this._stepCount > 0) {
       const currentIndex = this._currentIndex;
       if (this.current !== currentIndex) this.current = currentIndex;
     }
   }
 
-  override updated(changed: Map<string | number | symbol, unknown>) {
+  protected override updated(changed: PropertyValues): void {
     super.updated?.(changed);
-    if (changed.has('current') || changed.has('totalSteps')) {
+    if (changed.has('current')) {
       this._syncSteps();
     }
   }
 
-  private get _effectiveTotalSteps() {
-    return Math.max(this._normalizedTotalSteps, this._stepCount, 1);
-  }
-
-  private get _normalizedTotalSteps() {
-    return Number.isFinite(this.totalSteps) && this.totalSteps > 0 ? Math.trunc(this.totalSteps) : 0;
-  }
-
   private get _maxNavigableIndex() {
-    const navigableTotal = this._stepCount > 0 ? this._stepCount : this._effectiveTotalSteps;
-    return Math.max(navigableTotal - 1, 0);
+    return Math.max(this._stepCount - 1, 0);
   }
 
   private get _currentIndex() {
@@ -220,14 +202,6 @@ export class ItStepper extends BaseComponent {
     this._goToStep(this._currentIndex - 1);
   }
 
-  private _handlePrev() {
-    this.prev();
-  }
-
-  private _handleNext() {
-    this.next();
-  }
-
   private _handleConfirm() {
     this.dispatchEvent(new CustomEvent('it-stepper-confirm', { bubbles: true, composed: true }));
   }
@@ -238,6 +212,11 @@ export class ItStepper extends BaseComponent {
 
   private _handleSlotChange() {
     this._syncSteps(true);
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  private _getStepLabel(step: ItStepperStep): Node | '' {
+    return step.querySelector(':scope > [slot="label"]')?.cloneNode(true) ?? '';
   }
 
   private _renderHeaderItem(step: ItStepperStep, index: number) {
@@ -252,16 +231,17 @@ export class ItStepper extends BaseComponent {
 
     const confirmedIcon = html`
       <it-icon class="icon steppers-success" name="it-check" aria-hidden="true"></it-icon>
-      <span class="visually-hidden">Confermato</span>
+      <span class="visually-hidden">${this.$t('confirmed')}</span>
     `;
 
-    const activeHint = isActive ? html`<span class="visually-hidden">Attivo</span>` : '';
+    const activeHint = isActive ? html`<span class="visually-hidden">${this.$t('active')}</span>` : '';
+    const labelContent = this._getStepLabel(step);
 
     if (this.headerVariant === 'icons') {
       return html`
         <li class=${liClasses} aria-current=${isActive ? 'step' : nothing}>
           ${step.icon ? html`<it-icon class="icon" name=${step.icon} aria-hidden="true"></it-icon>` : nothing}
-          ${step.label} ${isActive ? activeHint : ''} ${isConfirmed ? confirmedIcon : ''}
+          ${labelContent} ${isActive ? activeHint : ''} ${isConfirmed ? confirmedIcon : ''}
         </li>
       `;
     }
@@ -270,14 +250,14 @@ export class ItStepper extends BaseComponent {
       const numberContent = isConfirmed
         ? html`
             <it-icon class="icon steppers-success" name="it-check" aria-hidden="true"></it-icon>
-            <span class="visually-hidden">Confermato Step ${index + 1}</span>
+            <span class="visually-hidden">${this.$t('confirmed')} ${this.$t('step')} ${index + 1}</span>
           `
-        : html`<span class="visually-hidden">${isActive ? 'Attivo ' : ''}Step </span>${index + 1}`;
+        : html`<span class="visually-hidden">${isActive ? this.$t('active') : ''} ${this.$t('step')} </span>${index + 1}`;
 
       return html`
         <li class=${liClasses} aria-current=${isActive ? 'step' : nothing}>
           <span class="steppers-number">${numberContent}</span>
-          ${step.label}
+          ${labelContent}
         </li>
       `;
     }
@@ -285,14 +265,14 @@ export class ItStepper extends BaseComponent {
     // Default: text only
     return html`
       <li class=${liClasses} aria-current=${isActive ? 'step' : nothing}>
-        ${step.label} ${isActive ? activeHint : ''} ${isConfirmed ? confirmedIcon : ''}
+        ${labelContent} ${isActive ? activeHint : ''} ${isConfirmed ? confirmedIcon : ''}
       </li>
     `;
   }
 
   private _renderMobileIndex() {
     const currentIndex = this._currentIndex;
-    const total = this._effectiveTotalSteps;
+    const total = this._stepCount;
 
     if (this.headerVariant === 'numbers') {
       return html`
@@ -307,7 +287,7 @@ export class ItStepper extends BaseComponent {
   }
 
   private _renderProgressBar() {
-    const total = this._effectiveTotalSteps;
+    const total = this._stepCount;
     const percent = total > 1 ? Math.round((this._currentIndex / (total - 1)) * 100) : 100;
     return html`
       <div class="steppers-progress" part="progress">
@@ -316,7 +296,7 @@ export class ItStepper extends BaseComponent {
             class="progress-bar"
             role="progressbar"
             style="width: ${percent}%"
-            aria-label="Avanzamento dello stepper"
+            aria-label=${this.$t('progress')}
             aria-valuenow=${percent}
             aria-valuemin="0"
             aria-valuemax="100"
@@ -328,14 +308,16 @@ export class ItStepper extends BaseComponent {
 
   private _renderDots() {
     const currentIndex = this._currentIndex;
-    const total = this._effectiveTotalSteps;
+    const total = this._stepCount;
 
     return html`
       <ul class="steppers-dots" part="dots">
         ${Array.from({ length: total }, (_, i) => i).map(
           (i) => html`
             <li class=${this._getDotClass(i)} aria-current=${i === currentIndex ? 'step' : nothing}>
-              <span class="visually-hidden">Step ${i + 1} di ${total}${this._getDotStateText(i)}</span>
+              <span class="visually-hidden"
+                >${this.$t('step')} ${i + 1} ${this.$t('outOf')} ${total}${this._getDotStateText(i)}</span
+              >
             </li>
           `,
         )}
@@ -350,15 +332,15 @@ export class ItStepper extends BaseComponent {
   }
 
   private _getDotStateText(index: number) {
-    if (index < this._currentIndex) return ' - Confermato';
-    if (index === this._currentIndex) return ' - Attivo';
+    if (index < this._currentIndex) return ` - ${this.$t('confirmed')}`;
+    if (index === this._currentIndex) return ` - ${this.$t('active')}`;
     return '';
   }
 
   private _renderSaveArea() {
     if (!this.saveLabel) return '';
     return html`
-      <div class="steppers-save d-flex border-top border-subtle pt-3 mt-2" part="save">
+      <div class="steppers-save d-flex border-top pt-3 mt-2" part="save">
         <div class="text-lg-end mb-2 mb-lg-0 me-lg-3">
           <p class="text-muted mb-0 small"><strong>${this.saveTitle}</strong></p>
           <p class="text-muted mb-0 small">${this.saveDescription}</p>
@@ -366,18 +348,6 @@ export class ItStepper extends BaseComponent {
         <button type="button" class="btn btn-outline-secondary btn-sm" @click=${this._handleSave}>
           ${this.saveLabel}
         </button>
-      </div>
-    `;
-  }
-
-  private _renderContent() {
-    if (this.hideContent) {
-      return html`<div hidden><slot @slotchange=${this._handleSlotChange}></slot></div>`;
-    }
-
-    return html`
-      <div class="steppers-content mb-3" aria-live="polite" part="content">
-        <slot @slotchange=${this._handleSlotChange}></slot>
       </div>
     `;
   }
@@ -398,65 +368,54 @@ export class ItStepper extends BaseComponent {
 
     return html`
       <div class=${stepperClasses} part="stepper">
-        ${this.hideHeader
-          ? nothing
-          : html`
-              <div class="steppers-header mb-3" part="header">
-                <ul part="header-list">
-                  ${this._steps.map((step, i) => this._renderHeaderItem(step, i))}
-                </ul>
-                ${this._renderMobileIndex()}
-              </div>
-            `}
-        ${this._renderContent()}
-        ${this.hideNav
-          ? nothing
-          : html`
-              <nav class="steppers-nav mb-3" aria-label="Navigazione stepper" part="nav">
+        <div class="steppers-header mb-3" part="header">
+          <ul part="header-list">
+            ${this._steps.map((step, i) => this._renderHeaderItem(step, i))}
+          </ul>
+          ${this._renderMobileIndex()}
+        </div>
+        <div class="steppers-content mb-3" aria-live="polite" part="content">
+          <slot @slotchange=${this._handleSlotChange}></slot>
+        </div>
+        <nav class="steppers-nav mb-3" aria-label=${this.$t('navigation')} part="nav">
+          <button
+            type="button"
+            class="btn btn-icon btn-outline-primary btn-sm steppers-btn-prev"
+            ?disabled=${isPrevDisabled}
+            @click=${this.prev}
+          >
+            <it-icon class="icon" name="it-chevron-left" color=${this.dark ? 'inverse' : 'primary'} size="sm"></it-icon>
+            ${this.prevLabel || this.$t('back')}
+          </button>
+
+          ${this._renderProgressIndicator()}
+          ${this.showConfirm
+            ? html`
                 <button
                   type="button"
-                  class="btn btn-icon btn-outline-primary btn-sm steppers-btn-prev"
-                  ?disabled=${isPrevDisabled}
-                  @click=${this._handlePrev}
+                  class="btn btn-icon btn-primary btn-sm steppers-btn-confirm"
+                  @click=${this._handleConfirm}
                 >
+                  ${this.confirmLabel || this.$t('confirm')}
+                </button>
+              `
+            : html`
+                <button
+                  type="button"
+                  class="btn btn-icon btn-primary btn-sm steppers-btn-next"
+                  ?disabled=${isNextDisabled}
+                  @click=${this.next}
+                >
+                  ${this.nextLabel || this.$t('next')}
                   <it-icon
                     class="icon"
-                    name="it-chevron-left"
-                    color=${this.dark ? 'inverse' : 'primary'}
+                    name="it-chevron-right"
+                    color=${this.dark ? 'primary' : 'inverse'}
                     size="sm"
                   ></it-icon>
-                  ${this.prevLabel}
                 </button>
-
-                ${this._renderProgressIndicator()}
-                ${this.showConfirm
-                  ? html`
-                      <button
-                        type="button"
-                        class="btn btn-icon btn-primary btn-sm steppers-btn-confirm"
-                        @click=${this._handleConfirm}
-                      >
-                        ${this.confirmLabel}
-                      </button>
-                    `
-                  : html`
-                      <button
-                        type="button"
-                        class="btn btn-icon btn-primary btn-sm steppers-btn-next"
-                        ?disabled=${isNextDisabled}
-                        @click=${this._handleNext}
-                      >
-                        ${this.nextLabel}
-                        <it-icon
-                          class="icon"
-                          name="it-chevron-right"
-                          color=${this.dark ? 'primary' : 'inverse'}
-                          size="sm"
-                        ></it-icon>
-                      </button>
-                    `}
-              </nav>
-            `}
+              `}
+        </nav>
         ${this._renderSaveArea()}
       </div>
     `;

@@ -13,30 +13,29 @@ import styles from './it-stepper-step.scss';
  *
  * ```html
  * <it-stepper>
- *   <it-stepper-step label="Primo contenuto" icon="it-calendar">
+ *   <it-stepper-step icon="it-calendar">
+ *     <span slot="label">Primo contenuto</span>
  *     <p>Contenuto del primo step</p>
  *   </it-stepper-step>
- *   <it-stepper-step label="Secondo contenuto">
+ *   <it-stepper-step>
+ *     <span slot="label">Secondo contenuto</span>
  *     <p>Contenuto del secondo step</p>
  *   </it-stepper-step>
  * </it-stepper>
  * ```
  *
+ * @slot label - Etichetta del passo, mostrata nell'intestazione dello stepper dall'`it-stepper` padre.
  * @slot - Contenuto del passo, mostrato nell'area `steppers-content` quando il passo è attivo.
  */
 @customElement('it-stepper-step')
 export class ItStepperStep extends BaseComponent {
   static styles = styles;
 
-  /** Etichetta testuale del passo, mostrata nell'intestazione dello stepper. */
-  @property({ type: String, reflect: true })
-  label = '';
-
   /**
    * Nome dell'icona BSI da mostrare nell'intestazione del passo (variante `icons`).
    * Esempio: `'it-calendar'`, `'it-lock'`, `'it-settings'`.
    */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   icon = '';
 
   /**
@@ -54,7 +53,7 @@ export class ItStepperStep extends BaseComponent {
   confirmed = false;
 
   render() {
-    return html`<slot></slot>`;
+    return html`<slot name="label"></slot><slot></slot>`;
   }
 }
 

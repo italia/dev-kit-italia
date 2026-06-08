@@ -3,12 +3,7 @@ const steps = [
   { label: 'Primo contenuto', icon: 'it-calendar' },
   { label: 'Secondo contenuto', icon: 'it-lock' },
   { label: 'Terzo contenuto', icon: 'it-settings' },
-  { label: 'Quarto contenuto', icon: 'it-mail' },
-  { label: 'Quinto contenuto', icon: 'it-file' },
-  { label: 'Sesto contenuto', icon: 'it-check' },
 ];
-
-const headerSteps = steps.slice(0, 3);
 
 function logStepperEvent(event) {
   console.info(event.type, event.detail);
@@ -25,85 +20,118 @@ function logStepperEvent(event) {
     <h1>Stepper</h1>
 
     <section>
-      <h2>Anteprima e attributi del componente</h2>
-      <it-stepper current="1" total-steps="6">
-        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :label="step.label" :icon="step.icon">
-          <p>Contenuto dello step {{ index + 1 }}</p>
+      <h2>Solo testo</h2>
+      <it-stepper current="1" header-variant="text">
+        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :icon="step.icon">
+          <span slot="label">{{ step.label }}</span>
+          <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step {{ index + 1 }}</p></div>
         </it-stepper-step>
       </it-stepper>
     </section>
 
-    <section class="stepper-example-stack">
-      <h2>Intestazione</h2>
-      <it-stepper current="1" total-steps="3" header-variant="text" hide-content hide-nav>
-        <it-stepper-step v-for="(step, index) in headerSteps" :key="step.label" :label="step.label" :icon="step.icon">
-          <p>Contenuto dello step {{ index + 1 }}</p>
-        </it-stepper-step>
-      </it-stepper>
-      <it-stepper current="1" total-steps="3" header-variant="icons" hide-content hide-nav>
-        <it-stepper-step v-for="(step, index) in headerSteps" :key="step.label" :label="step.label" :icon="step.icon">
-          <p>Contenuto dello step {{ index + 1 }}</p>
-        </it-stepper-step>
-      </it-stepper>
-      <it-stepper current="1" total-steps="3" header-variant="numbers" hide-content hide-nav>
-        <it-stepper-step v-for="(step, index) in headerSteps" :key="step.label" :label="step.label" :icon="step.icon">
-          <p>Contenuto dello step {{ index + 1 }}</p>
+    <section>
+      <h2>Testo e icone</h2>
+      <it-stepper current="1" header-variant="icons">
+        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :icon="step.icon">
+          <span slot="label">{{ step.label }}</span>
+          <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step {{ index + 1 }}</p></div>
         </it-stepper-step>
       </it-stepper>
     </section>
 
-    <section class="stepper-example-stack">
-      <h2>Navigazione e avanzamento</h2>
-      <it-stepper current="1" total-steps="6" mobile-progress="bar" mobile-progress-on-desktop hide-header>
-        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :label="step.label" :icon="step.icon">
-          <p>Contenuto dello step {{ index + 1 }}</p>
+    <section>
+      <h2>Testo e numeri</h2>
+      <it-stepper current="1" header-variant="numbers">
+        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :icon="step.icon">
+          <span slot="label">{{ step.label }}</span>
+          <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step {{ index + 1 }}</p></div>
         </it-stepper-step>
       </it-stepper>
-      <it-stepper current="1" total-steps="6" mobile-progress="dots" mobile-progress-on-desktop hide-header>
-        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :label="step.label" :icon="step.icon">
-          <p>Contenuto dello step {{ index + 1 }}</p>
+    </section>
+
+    <section>
+      <h2>Navigazione degli step</h2>
+      <it-stepper current="1" prev-label="Precedente" next-label="Successivo">
+        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :icon="step.icon">
+          <span slot="label">{{ step.label }}</span>
+          <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step {{ index + 1 }}</p></div>
+        </it-stepper-step>
+      </it-stepper>
+    </section>
+
+    <section>
+      <h2>Progress bar</h2>
+      <it-stepper current="1" mobile-progress="bar" mobile-progress-on-desktop>
+        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :icon="step.icon">
+          <span slot="label">{{ step.label }}</span>
+          <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step {{ index + 1 }}</p></div>
+        </it-stepper-step>
+      </it-stepper>
+    </section>
+
+    <section>
+      <h2>Pallini</h2>
+      <it-stepper current="1" mobile-progress="dots" mobile-progress-on-desktop>
+        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :icon="step.icon">
+          <span slot="label">{{ step.label }}</span>
+          <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step {{ index + 1 }}</p></div>
         </it-stepper-step>
       </it-stepper>
     </section>
 
     <section>
       <h2>Salva</h2>
-      <it-stepper current="1" total-steps="6" save-label="Salva" hide-header>
-        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :label="step.label" :icon="step.icon">
-          <p>Contenuto dello step {{ index + 1 }}</p>
+      <it-stepper
+        current="1"
+        save-label="Salva"
+        save-title="Vuoi salvare il progresso?"
+        save-description="Potrai riprendere il flusso da questo punto in poi."
+      >
+        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :icon="step.icon">
+          <span slot="label">{{ step.label }}</span>
+          <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step {{ index + 1 }}</p></div>
         </it-stepper-step>
       </it-stepper>
     </section>
 
     <section>
       <h2>Conferma</h2>
-      <it-stepper current="1" total-steps="6" show-confirm hide-header>
-        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :label="step.label" :icon="step.icon">
-          <p>Contenuto dello step {{ index + 1 }}</p>
+      <it-stepper current="1" show-confirm confirm-label="Conferma">
+        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :icon="step.icon">
+          <span slot="label">{{ step.label }}</span>
+          <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step {{ index + 1 }}</p></div>
         </it-stepper-step>
       </it-stepper>
     </section>
 
-    <section class="stepper-example-stack stepper-dark-demo">
+    <section class="bg-dark p-4">
       <h2 class="text-white">Sfondo scuro</h2>
-      <it-stepper current="1" total-steps="6" dark>
-        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :label="step.label" :icon="step.icon">
-          <p>Contenuto dello step {{ index + 1 }}</p>
+      <it-stepper current="1" dark>
+        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :icon="step.icon">
+          <span slot="label">{{ step.label }}</span>
+          <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step {{ index + 1 }}</p></div>
         </it-stepper-step>
       </it-stepper>
-      <it-stepper current="1" total-steps="3" dark header-variant="text" hide-content hide-nav>
-        <it-stepper-step v-for="(step, index) in headerSteps" :key="step.label" :label="step.label" :icon="step.icon">
-          <p>Contenuto dello step {{ index + 1 }}</p>
+    </section>
+
+    <section class="stepper-variant-stack bg-dark p-4">
+      <h2 class="text-white">Sfondo scuro - varianti intestazione</h2>
+      <it-stepper current="1" dark header-variant="text">
+        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :icon="step.icon">
+          <span slot="label">{{ step.label }}</span>
+          <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step {{ index + 1 }}</p></div>
         </it-stepper-step>
       </it-stepper>
-      <it-stepper current="1" total-steps="3" dark header-variant="icons" hide-content hide-nav>
-        <it-stepper-step v-for="(step, index) in headerSteps" :key="step.label" :label="step.label" :icon="step.icon">
-          <p>Contenuto dello step {{ index + 1 }}</p>
+      <it-stepper current="1" dark header-variant="icons">
+        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :icon="step.icon">
+          <span slot="label">{{ step.label }}</span>
+          <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step {{ index + 1 }}</p></div>
         </it-stepper-step>
       </it-stepper>
-      <it-stepper current="1" total-steps="3" dark header-variant="numbers" hide-content hide-nav>
-        <it-stepper-step v-for="(step, index) in headerSteps" :key="step.label" :label="step.label" :icon="step.icon">
-          <p>Contenuto dello step {{ index + 1 }}</p>
+      <it-stepper current="1" dark header-variant="numbers">
+        <it-stepper-step v-for="(step, index) in steps" :key="step.label" :icon="step.icon">
+          <span slot="label">{{ step.label }}</span>
+          <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step {{ index + 1 }}</p></div>
         </it-stepper-step>
       </it-stepper>
     </section>
@@ -117,36 +145,9 @@ function logStepperEvent(event) {
   gap: var(--bsi-spacing-xl, 2rem);
 }
 
-.stepper-example-stack {
+.stepper-variant-stack {
   display: flex;
   flex-direction: column;
-  gap: var(--bsi-spacing-xl, 2rem);
-}
-
-.stepper-examples it-stepper::part(content) {
-  display: flex;
-  min-height: 9rem;
-  align-items: center;
-  justify-content: center;
-  border: 1px dashed var(--bsi-color-border-subtle, var(--bsi-border-color));
-  background: var(--bsi-color-background-secondary-lighter, var(--bsi-body-bg));
-  color: var(--bsi-body-color);
-  text-align: center;
-}
-
-.stepper-examples it-stepper-step p {
-  margin: 0;
-  font-size: var(--bsi-font-size-sm);
-}
-
-.stepper-dark-demo {
-  padding: var(--bsi-spacing-l, 1.5rem);
-  background: var(--bsi-color-background-inverse, #17324d);
-}
-
-.stepper-dark-demo it-stepper::part(content) {
-  border-color: var(--bsi-color-border-inverse, var(--bsi-color-border-subtle));
-  background: transparent;
-  color: var(--bsi-color-text-inverse, #fff);
+  gap: var(--bsi-spacing-xl);
 }
 </style>

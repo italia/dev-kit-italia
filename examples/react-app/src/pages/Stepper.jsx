@@ -4,35 +4,25 @@ const steps = [
   { label: 'Primo contenuto', icon: 'it-calendar' },
   { label: 'Secondo contenuto', icon: 'it-lock' },
   { label: 'Terzo contenuto', icon: 'it-settings' },
-  { label: 'Quarto contenuto', icon: 'it-mail' },
-  { label: 'Quinto contenuto', icon: 'it-file' },
-  { label: 'Sesto contenuto', icon: 'it-check' },
 ];
 
-const headerSteps = steps.slice(0, 3);
-
-function StepperExample({
-  dark = false,
-  headerVariant = 'text',
-  mobileProgress = '',
-  totalSteps = steps.length,
-  demoSteps = steps,
-  ...flags
-}) {
-  const attrs = {
+function StepperExample({ dark = false, headerVariant = '', mobileProgress = '', ...attrs }) {
+  const stepperAttrs = {
     current: 1,
     dark: dark || undefined,
-    'header-variant': headerVariant,
+    'header-variant': headerVariant || undefined,
     'mobile-progress': mobileProgress || undefined,
-    'total-steps': totalSteps,
-    ...flags,
+    ...attrs,
   };
 
   return (
-    <it-stepper {...attrs}>
-      {demoSteps.map((step, index) => (
-        <it-stepper-step key={step.label} label={step.label} icon={step.icon}>
-          <p>Contenuto dello step {index + 1}</p>
+    <it-stepper {...stepperAttrs}>
+      {steps.map((step, index) => (
+        <it-stepper-step key={step.label} icon={step.icon}>
+          <span slot="label">{step.label}</span>
+          <div className={`p-5 text-center border ${dark ? 'text-white' : 'bg-light'}`}>
+            <p className="m-0">Contenuto dello step {index + 1}</p>
+          </div>
         </it-stepper-step>
       ))}
     </it-stepper>
@@ -67,83 +57,71 @@ const Stepper = () => {
           gap: var(--bsi-spacing-xl, 2rem);
         }
 
-        .stepper-example-stack {
+        .stepper-variant-stack {
           display: flex;
           flex-direction: column;
-          gap: var(--bsi-spacing-xl, 2rem);
-        }
-
-        .stepper-examples it-stepper::part(content) {
-          display: flex;
-          min-height: 9rem;
-          align-items: center;
-          justify-content: center;
-          border: 1px dashed var(--bsi-color-border-subtle, var(--bsi-border-color));
-          background: var(--bsi-color-background-secondary-lighter, var(--bsi-body-bg));
-          color: var(--bsi-body-color);
-          text-align: center;
-        }
-
-        .stepper-examples it-stepper-step p {
-          margin: 0;
-          font-size: var(--bsi-font-size-sm);
-        }
-
-        .stepper-dark-demo {
-          padding: var(--bsi-spacing-l, 1.5rem);
-          background: var(--bsi-color-background-inverse, #17324d);
-        }
-
-        .stepper-dark-demo it-stepper::part(content) {
-          border-color: var(--bsi-color-border-inverse, var(--bsi-color-border-subtle));
-          background: transparent;
-          color: var(--bsi-color-text-inverse, #fff);
+          gap: var(--bsi-spacing-xl);
         }
       `}</style>
 
       <h1>Stepper</h1>
 
       <section>
-        <h2>Anteprima e attributi del componente</h2>
-        <StepperExample />
+        <h2>Solo testo</h2>
+        <StepperExample headerVariant="text" />
       </section>
 
-      <section className="stepper-example-stack">
-        <h2>Intestazione</h2>
-        <StepperExample totalSteps={3} demoSteps={headerSteps} hide-content="" hide-nav="" />
-        <StepperExample totalSteps={3} demoSteps={headerSteps} headerVariant="icons" hide-content="" hide-nav="" />
-        <StepperExample totalSteps={3} demoSteps={headerSteps} headerVariant="numbers" hide-content="" hide-nav="" />
+      <section>
+        <h2>Testo e icone</h2>
+        <StepperExample headerVariant="icons" />
       </section>
 
-      <section className="stepper-example-stack">
-        <h2>Navigazione e avanzamento</h2>
-        <StepperExample mobileProgress="bar" hide-header="" mobile-progress-on-desktop="" />
-        <StepperExample mobileProgress="dots" hide-header="" mobile-progress-on-desktop="" />
+      <section>
+        <h2>Testo e numeri</h2>
+        <StepperExample headerVariant="numbers" />
+      </section>
+
+      <section>
+        <h2>Navigazione degli step</h2>
+        <StepperExample {...{ 'prev-label': 'Precedente', 'next-label': 'Successivo' }} />
+      </section>
+
+      <section>
+        <h2>Progress bar</h2>
+        <StepperExample mobileProgress="bar" {...{ 'mobile-progress-on-desktop': '' }} />
+      </section>
+
+      <section>
+        <h2>Pallini</h2>
+        <StepperExample mobileProgress="dots" {...{ 'mobile-progress-on-desktop': '' }} />
       </section>
 
       <section>
         <h2>Salva</h2>
-        <StepperExample hide-header="" save-label="Salva" />
+        <StepperExample
+          {...{
+            'save-label': 'Salva',
+            'save-title': 'Vuoi salvare il progresso?',
+            'save-description': 'Potrai riprendere il flusso da questo punto in poi.',
+          }}
+        />
       </section>
 
       <section>
         <h2>Conferma</h2>
-        <StepperExample hide-header="" show-confirm="" />
+        <StepperExample {...{ 'show-confirm': '', 'confirm-label': 'Conferma' }} />
       </section>
 
-      <section className="stepper-example-stack stepper-dark-demo">
+      <section className="bg-dark p-4">
         <h2 className="text-white">Sfondo scuro</h2>
         <StepperExample dark />
-        <StepperExample dark totalSteps={3} demoSteps={headerSteps} hide-content="" hide-nav="" />
-        <StepperExample dark totalSteps={3} demoSteps={headerSteps} headerVariant="icons" hide-content="" hide-nav="" />
-        <StepperExample
-          dark
-          totalSteps={3}
-          demoSteps={headerSteps}
-          headerVariant="numbers"
-          hide-content=""
-          hide-nav=""
-        />
+      </section>
+
+      <section className="stepper-variant-stack bg-dark p-4">
+        <h2 className="text-white">Sfondo scuro - varianti intestazione</h2>
+        <StepperExample dark headerVariant="text" />
+        <StepperExample dark headerVariant="icons" />
+        <StepperExample dark headerVariant="numbers" />
       </section>
     </div>
   );
