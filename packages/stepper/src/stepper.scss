@@ -1,0 +1,134 @@
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/reboot' as *;
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
+
+@use 'bootstrap-italia/src/scss/base/utilities';
+
+utilities.$utilities: (
+  'display': map.merge(
+      map.get(utilities.$utilities, 'display'),
+      (
+        responsive: false,
+        values: flex,
+      )
+    ),
+  'background-color': map.merge(
+      map.get(utilities.$utilities, 'background-color'),
+      (
+        values: (
+          'dark': map.get($utilities-bg-colors, 'dark'),
+        ),
+      )
+    ),
+  'border-top': map.merge(
+      map.get(utilities.$utilities, 'border-top'),
+      (
+        values: (
+          null: map.get(map.get(map.get(utilities.$utilities, 'border-top'), 'values'), null),
+        ),
+      )
+    ),
+  'margin-top': map.merge(
+      map.get(utilities.$utilities, 'margin-top'),
+      (
+        responsive: false,
+        values: (
+          2: map.get($spacers, 2),
+        ),
+      )
+    ),
+  'margin-end': map.merge(
+      map.get(utilities.$utilities, 'margin-end'),
+      (
+        values: (
+          3: map.get($spacers, 3),
+        ),
+      )
+    ),
+  'margin-bottom': map.merge(
+      map.get(utilities.$utilities, 'margin-bottom'),
+      (
+        values: (
+          0: map.get($spacers, 0),
+          2: map.get($spacers, 2),
+          3: map.get($spacers, 3),
+        ),
+      )
+    ),
+  'padding-top': map.merge(
+      map.get(utilities.$utilities, 'padding-top'),
+      (
+        responsive: false,
+        values: (
+          3: map.get($spacers, 3),
+        ),
+      )
+    ),
+  'text-align': map.merge(
+      map.get(utilities.$utilities, 'text-align'),
+      (
+        values: (
+          end: map.get(map.get(map.get(utilities.$utilities, 'text-align'), 'values'), 'end'),
+        ),
+      )
+    ),
+  'color': map.merge(
+      map.get(utilities.$utilities, 'color'),
+      (
+        values: (
+          'muted': map.get(map.get(map.get(utilities.$utilities, 'color'), 'values'), 'muted'),
+        ),
+      )
+    )
+);
+
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
+
+@use 'bootstrap-italia/src/scss/components/buttons' as *;
+@use 'bootstrap-italia/src/scss/components/type' as *;
+@use 'bootstrap-italia/src/scss/components/progress-bars' as *;
+@use 'bootstrap-italia/src/scss/components/steppers' as *;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.steppers {
+  width: 100%;
+}
+
+.steppers it-icon {
+  --#{$prefix}icon-default: var(--#{$prefix}stepper-icon-color);
+}
+
+.steppers-header ul li.confirmed it-icon.steppers-success {
+  --#{$prefix}icon-default: var(--#{$prefix}stepper-icon-confirmed);
+}
+
+.steppers.bg-dark .steppers-header ul li.confirmed it-icon.steppers-success {
+  --#{$prefix}icon-default: var(--#{$prefix}stepper-icon-confirmed);
+}
+
+:host([mobile-progress-on-desktop]) .steppers-nav .steppers-progress {
+  display: block;
+}
+
+:host([mobile-progress-on-desktop]) .steppers-nav .steppers-dots {
+  display: flex;
+}
+
+// Step number circle needs proper centering for the check icon inside it
+.steppers-number it-icon {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0;
+}
