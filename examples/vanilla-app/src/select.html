@@ -54,17 +54,20 @@
           </optgroup>
         </it-select>
 
-        <form>
-          <it-select name="anno" placeholder="Seleziona un anno" it-aria-controls="results">
-            <span slot="label">Select semplice</span>
-            <option value="Value 1">Opzione 1</option>
-            <option value="Value 2">Opzione 2</option>
-            <option value="Value 3">Opzione 3</option>
-            <option value="Value 4">Opzione 4</option>
-            <option value="Value 5">Opzione 5</option>
-          </it-select>
-          <div id="results" aria-live="polite">results</div>
-        </form>
+        <section>
+          Test per aria-controls.:
+          <form>
+            <it-select name="anno" placeholder="Seleziona un anno" it-aria-controls="results">
+              <span slot="label">Select semplice</span>
+              <option value="Value 1">Opzione 1</option>
+              <option value="Value 2">Opzione 2</option>
+              <option value="Value 3">Opzione 3</option>
+              <option value="Value 4">Opzione 4</option>
+              <option value="Value 5">Opzione 5</option>
+            </it-select>
+            <div id="results" aria-live="polite">results</div>
+          </form>
+        </section>
       </main>
       <div id="app-footer"></div>
       <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
