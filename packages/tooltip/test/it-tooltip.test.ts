@@ -88,42 +88,6 @@ describe('Tooltip component', () => {
       const content = el.querySelector('[slot="content"]');
       expect(content?.hasAttribute('aria-hidden')).to.be.false;
     });
-
-    it('uses setDescribedBy on it-button trigger', async () => {
-      const el = await fixture<ItTooltip>(html`
-        <it-tooltip>
-          <it-button slot="trigger">Trigger</it-button>
-          <span slot="content">Testo del tooltip</span>
-        </it-tooltip>
-      `);
-      await el.updateComplete;
-      const trigger = el.querySelector('[slot="trigger"]') as any;
-      expect(typeof trigger.setDescribedBy).to.equal('function');
-    });
-
-    it('cleans up setDescribedBy when tooltip is disconnected', async () => {
-      const container = await fixture<HTMLDivElement>(html`
-        <div>
-          <it-tooltip>
-            <it-button slot="trigger">Trigger</it-button>
-            <span slot="content">Testo</span>
-          </it-tooltip>
-        </div>
-      `);
-      const tooltip = container.querySelector('it-tooltip') as unknown as ItTooltip;
-      const trigger = container.querySelector('[slot="trigger"]') as any;
-      await tooltip.updateComplete;
-
-      const original = trigger.setDescribedBy.bind(trigger);
-      let cleanupArg: Element | null | undefined;
-      trigger.setDescribedBy = (element: Element | null) => {
-        cleanupArg = element;
-        original(element);
-      };
-
-      container.removeChild(tooltip);
-      expect(cleanupArg).to.equal(null);
-    });
   });
 
   describe('functionality', () => {

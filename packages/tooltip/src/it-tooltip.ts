@@ -95,8 +95,9 @@ export class ItTooltip extends BaseComponent {
 
   private _cleanupDescribedBy(): void {
     if (!this._lastTrigger) return;
-    if ('setDescribedBy' in this._lastTrigger && typeof (this._lastTrigger as any).setDescribedBy === 'function') {
-      (this._lastTrigger as any).setDescribedBy(null);
+
+    if (this._lastTrigger.tagName.startsWith('IT-')) {
+      this._lastTrigger.removeAttribute('it-aria-describedby');
     } else {
       this._lastTrigger.removeAttribute('aria-describedby');
     }
@@ -142,8 +143,8 @@ export class ItTooltip extends BaseComponent {
       content.setAttribute('aria-hidden', 'true');
     }
 
-    if ('setDescribedBy' in trigger && typeof (trigger as any).setDescribedBy === 'function') {
-      (trigger as any).setDescribedBy(content);
+    if (trigger.tagName.startsWith('IT-')) {
+      trigger.setAttribute('it-aria-describedby', content.id);
     } else {
       trigger.setAttribute('aria-describedby', content.id);
     }
