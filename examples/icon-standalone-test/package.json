@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@italia/icon": "file:../../packages/icon/italia-icon-1.0.0-alpha.16.tgz",
+    "@italia/dev-kit-italia": "file:../../packages/dev-kit-italia",
     "lit": "^3.3.3"
   },
   "devDependencies": {
