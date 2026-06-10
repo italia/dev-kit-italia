@@ -49,22 +49,6 @@ Il componente `it-carousel` integra Splide.js e segue le specifiche [W3C Carouse
 - Con autoplay attivo, viene fornito un pulsante Play/Pausa. Per impostazione predefinita, il carousel è in modalità pausa: movimento e animazioni sono disabilitati durante hover, focus o se l'utente ha scelto di ridurre le animazioni nelle impostazioni del sistema operativo o del browser.
 - Grazie all'estensione [Intersection](https://splidejs.com/extensions/intersection/), l’autoplay si mette in pausa quando il carousel esce dal campo visivo dell’utente, risparmiando risorse e riducendo il rumore cognitivo.
 
-### Live region (`aria-live`) e comportamento nei screen reader
-
-Il componente imposta opzionalmente un attributo `aria-live` sul contenitore delle slide, come previsto dalla specifica W3C WAI-ARIA per il pattern Carousel ("_Optionally, an element wrapping the set of slide elements has aria-live set to polite_"). Il supporto a questa funzionalità è **incostante** e dipende da noti problemi di integrazione tra i motori di rendering dei browser (Blink/Gecko) e le API di accessibilità dei sistemi operativi, in particolare su macOS.
-
-| Sistema Operativo | Screen Reader | Browser | Comportamento Live Region |
-|---|---|---|---|
-| macOS | VoiceOver | Chrome / Firefox | Non funziona o si attiva casualmente |
-| macOS | VoiceOver | Safari | Funziona correttamente |
-| iOS | VoiceOver | Safari | Funziona correttamente |
-| Windows | NVDA / JAWS | Chrome / Edge | Funziona correttamente |
-| Windows | NVDA / JAWS | Firefox | Non funziona o si attiva casualmente |
-
-Queste discrepanze **non costituiscono una violazione WCAG** né un difetto del componente, per due motivi:
-- L'attributo `aria-live` per i carousel è definito dalla specifica W3C come **opzionale**: il suo mancato funzionamento in specifici contesti (VoiceOver su macOS + Chrome/Firefox) non può essere classificato come una violazione delle linee guida.
-- Il feedback primario per l'utente è fornito dal **pattern "Tabs"** implementato dal componente (`role="tablist"`, `role="tab"`, `role="tabpanel"`). Quando si interagisce con la navigazione, il lettore di schermo annuncia correttamente il cambio di stato tramite l'attributo `aria-selected="true"` (es. "_Tab 2 di 5, selezionato_"), indipendentemente dal funzionamento delle live region.
-
 Per garantire un'esperienza utente ottimale ed accessibile:
 - non usare il carousel come unica modalità di navigazione sul tuo sito o servizio;
 - assicurati che il carousel non intralci l’esperienza dell’utente se viene ignorato o non utilizzato;
@@ -88,7 +72,7 @@ La variante `columns` mostra più elementi contemporaneamente, organizzati in co
 ### Varianti galleria
 Le varianti galleria presentano una serie di immagini o contenuti visivi in un formato di galleria.
 
-- La variante `gallery-sm` offre una visualizzazione più compatta. 
+- La variante `gallery-sm` offre una visualizzazione più compatta.
 - La variante `gallery-lg` offre una visualizzazione più ampia e immersiva.
 
 <Canvas of={Stories.VarianteGallerySM} />
