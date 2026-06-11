@@ -43,9 +43,9 @@ export class ItUploadDragDrop extends FormControl {
   @property({ type: String })
   illustration?: string;
 
-  /** Heading level for the title element. Defaults to 'h3'; visual size stays at h5. */
+  /** Heading level for the title element. Defaults to 'h5'; visual size stays at h5. */
   @property({ type: String, attribute: 'heading-level' })
-  headingLevel: DragDropHeadingLevel = 'h3';
+  headingLevel: DragDropHeadingLevel = 'h5';
 
   /** The currently selected File (null until file is chosen/dropped). */
   @state()
@@ -72,7 +72,7 @@ export class ItUploadDragDrop extends FormControl {
   private _autoStarted = false;
 
   protected getHeadingLevel(): DragDropHeadingLevel {
-    return DRAG_DROP_HEADING_LEVELS.includes(this.headingLevel) ? this.headingLevel : 'h3';
+    return DRAG_DROP_HEADING_LEVELS.includes(this.headingLevel) ? this.headingLevel : 'h5';
   }
 
   private get _formClass(): string {
@@ -253,6 +253,14 @@ export class ItUploadDragDrop extends FormControl {
 
     // Title: slot or default per state
     const titleText = hasFile ? this._fileName : this.$t('upload_dd_title');
+    // `<input type="file">` is exposed as role=button, where `aria-required` is ignored by AT.
+    // Fold the required state into the accessible name so screen readers actually announce it.
+    const fileInputLabel = this.required
+      ? `${this.$t('upload_label')}, ${this.$t('upload_required')}`
+      : this.$t('upload_label');
+    const canSelect = this._state === 'idle' || this._state === 'dragover';
+    const isInvalid = this.formControlController.submittedOnce && this.validationMessage.length > 0;
+    const feedbackId = `invalid-feedback-${this._id}`;
     const headingTag = unsafeStatic(this.getHeadingLevel());
 
     return html`
@@ -267,26 +275,33 @@ export class ItUploadDragDrop extends FormControl {
           : nothing}
         ${staticHtml`<${headingTag} class="h5">
           <slot name="title">${titleText}</slot>
-        </${headingTag}>`} ${this._state === 'idle' || this._state === 'dragover'
+        </${headingTag}>`} ${canSelect
           ? html`
               <p>
                 <slot name="description">${this.$t('upload_dd_description')}</slot>
               </p>
-              <p>
-                <input
-                  type="file"
-                  class="upload-dragdrop-input"
-                  id="${this._id!}"
-                  accept="${ifDefined(this.accept)}"
-                  ?disabled="${this.disabled}"
-                  aria-label="${this.$t('upload_label')}"
-                  aria-required="${this.required ? 'true' : nothing}"
-                  @change="${this._onFileInputChange}"
-                />
-                <label for="${this._id!}">${this.$t('upload_dd_select')}</label>
-              </p>
             `
           : nothing}
+        <!-- The file input is the form-control validity participant, so it must exist in every
+             state for the FormControl base class to read its validity. It is the real focusable
+             control native required/validity now anchors to (no hidden proxy). The select affordance
+             (label) and this wrapper are hidden via CSS in loading/success states. -->
+        <p class="upload-dragdrop-select-wrap">
+          <input
+            type="file"
+            class="upload-dragdrop-input it-form__control"
+            id="${this._id!}"
+            accept="${ifDefined(this.accept)}"
+            ?disabled="${this.disabled}"
+            ?required="${this.required && !this._currentFile}"
+            aria-label="${fileInputLabel}"
+            aria-required="${this.required ? 'true' : nothing}"
+            aria-invalid="${isInvalid ? 'true' : 'false'}"
+            aria-describedby="${ifDefined(isInvalid ? feedbackId : undefined)}"
+            @change="${this._onFileInputChange}"
+          />
+          ${canSelect ? html`<label for="${this._id!}">${this.$t('upload_dd_select')}</label>` : nothing}
+        </p>
         ${this._state === 'loading' ? html`<p>${this.$t('upload_dd_status_loading')}</p>` : nothing}
         ${this._state === 'success' ? html`<p>${this.$t('upload_dd_status_success')}</p>` : nothing}
       </div>
@@ -296,6 +311,7 @@ export class ItUploadDragDrop extends FormControl {
   override render() {
     const statusText = this._getStatusText();
     const isInvalid = this.formControlController.submittedOnce && this.validationMessage.length > 0;
+    const feedbackId = `invalid-feedback-${this._id}`;
 
     return html`
       <div
@@ -330,17 +346,12 @@ export class ItUploadDragDrop extends FormControl {
         <div role="status" aria-live="polite" aria-atomic="true" class="visually-hidden">${statusText}</div>
       </div>
 
-      <!-- Hidden proxy input: drives native required/validity checking via FormControl base class -->
-      <input
-        type="text"
-        class="it-form__control"
-        .value="${this._currentFile?.name || ''}"
-        ?required="${this.required}"
-        tabindex="-1"
-        aria-hidden="true"
-      />
-
-      <div class="invalid-feedback form-feedback form-text just-validate-error-label" role="alert">
+      <div
+        id="${feedbackId}"
+        class="invalid-feedback form-feedback form-text just-validate-error-label"
+        role="alert"
+        ?hidden=${!isInvalid}
+      >
         ${isInvalid ? this.validationMessage : nothing}
       </div>
     `;

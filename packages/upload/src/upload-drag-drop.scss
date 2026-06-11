@@ -14,9 +14,18 @@
   display: inline-block;
 }
 
-// Hidden proxy input used by FormControl for required/validity — not visible to users.
-.it-form__control {
+// The file input is the form-control validity participant and must stay in the DOM in every
+// state, but the "select from device" affordance only makes sense before a file is chosen.
+// Hide its wrapper once a file is loading/uploaded (the input is no longer required there).
+.upload-dragdrop.loading .upload-dragdrop-select-wrap,
+.upload-dragdrop.success .upload-dragdrop-select-wrap {
   display: none;
+}
+
+// Counter BSI's form-validation-state mixin which sets .invalid-feedback { display: none }.
+// We control visibility via the HTML `hidden` attribute (?hidden in Lit) instead.
+.invalid-feedback:not([hidden]) {
+  display: block;
 }
 
 // The progress component is positioned inside .upload-dragdrop-loading.

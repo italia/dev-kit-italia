@@ -435,17 +435,17 @@ describe('<it-upload-drag-drop>', () => {
 
   // ── heading-level prop ────────────────────────────────────────────────────────
 
-  it('defaults to h3 heading tag', async () => {
+  it('defaults to h5 heading tag', async () => {
     const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
     await el.updateComplete;
-    const heading = el.shadowRoot!.querySelector('h3');
+    const heading = el.shadowRoot!.querySelector('h5');
     expect(heading).to.exist;
   });
 
   it('heading element has class h5 for visual sizing', async () => {
     const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
     await el.updateComplete;
-    const heading = el.shadowRoot!.querySelector('h3');
+    const heading = el.shadowRoot!.querySelector('h5');
     expect(heading!.classList.contains('h5')).to.be.true;
   });
 
@@ -462,11 +462,11 @@ describe('<it-upload-drag-drop>', () => {
     expect(el.shadowRoot!.querySelector('h4')).to.exist;
   });
 
-  it('invalid heading-level falls back to h3', async () => {
+  it('invalid heading-level falls back to h5', async () => {
     const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
     (el as any).headingLevel = 'h9';
     await el.updateComplete;
-    expect(el.shadowRoot!.querySelector('h3')).to.exist;
+    expect(el.shadowRoot!.querySelector('h5')).to.exist;
   });
 
   // ── aria-required on visible file input ───────────────────────────────────────

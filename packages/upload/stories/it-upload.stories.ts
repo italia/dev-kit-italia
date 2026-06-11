@@ -386,7 +386,7 @@ export const EsempioInterattivoDragDrop: Story = {
       description: 'Livello del titolo semantico nella gerarchia della pagina. La dimensione visiva rimane h5.',
       control: { type: 'select' },
       options: DRAG_DROP_HEADING_LEVELS,
-      table: { defaultValue: { summary: 'h3' } },
+      table: { defaultValue: { summary: 'h5' } },
     },
     disabled: {
       description: 'Disabilita il componente.',
