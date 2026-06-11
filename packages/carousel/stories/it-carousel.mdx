@@ -49,7 +49,7 @@ Il componente `it-carousel` integra Splide.js e segue le specifiche [W3C Carouse
 - Con autoplay attivo, viene fornito un pulsante Play/Pausa. Per impostazione predefinita, il carousel è in modalità pausa: movimento e animazioni sono disabilitati durante hover, focus o se l'utente ha scelto di ridurre le animazioni nelle impostazioni del sistema operativo o del browser.
 - Grazie all'estensione [Intersection](https://splidejs.com/extensions/intersection/), l’autoplay si mette in pausa quando il carousel esce dal campo visivo dell’utente, risparmiando risorse e riducendo il rumore cognitivo.
 
-### Live region (`aria-live`) e comportamento nei screen reader
+### Live region (`aria-live`) e comportamento con gli screen reader
 
 Il componente imposta opzionalmente un attributo `aria-live` sul contenitore delle slide, come previsto dalla specifica W3C WAI-ARIA per il pattern Carousel ("_Optionally, an element wrapping the set of slide elements has aria-live set to polite_"). Il supporto a questa funzionalità è **incostante** e dipende da noti problemi di integrazione tra i motori di rendering dei browser (Blink/Gecko) e le API di accessibilità dei sistemi operativi, in particolare su macOS.
 
