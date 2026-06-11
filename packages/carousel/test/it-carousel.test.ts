@@ -1,7 +1,8 @@
 /* eslint-disable no-await-in-loop */
+/* eslint-disable no-promise-executor-return */
 /// <reference types="mocha" />
 
-import { expect, fixture, html, aTimeout, elementUpdated } from '@open-wc/testing';
+import { expect, fixture, html, elementUpdated } from '@open-wc/testing';
 import '../src/index.js';
 import type { ItCarousel } from '../src/it-carousel.js';
 import type { ItCarouselSlide } from '../src/it-carousel-slide.js';
@@ -10,8 +11,23 @@ import type { ItCarouselSlide } from '../src/it-carousel-slide.js';
 // Helpers
 // ---------------------------------------------------------------------------
 
-/** Short pause to let Splide finish mounting DOM mutations */
-const splideReady = () => aTimeout(50);
+const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+
+/**
+ * Wait for Splide to finish mounting and for the post-mount DOM mutations
+ * (`is-visible` classes, `inert`, `part` attributes) to settle.
+ *
+ * `_initSplide()` defers `splide.mount()` behind a `requestAnimationFrame`, and
+ * `_updateInert()` runs synchronously right after mount in that same frame. A
+ * flat `aTimeout(50)` *guesses* that the frame has fired, which races the rAF on
+ * slower / coverage-instrumented runs (Chromium CI) where rAF can be throttled
+ * past 50ms — producing intermittent failures. Chaining to two animation frames
+ * is load-independent: we resume only once that deferred frame has actually run.
+ */
+const splideReady = async () => {
+  await nextFrame();
+  await nextFrame();
+};
 
 // ---------------------------------------------------------------------------
 // it-carousel-slide
@@ -579,7 +595,7 @@ describe('it-carousel', () => {
       const labelledBy = el.getAttribute('aria-labelledby');
       expect(labelledBy).to.be.a('string').and.not.be.empty;
       // The id should be set on the heading in the light DOM
-      const heading = el.querySelector('h2[slot="title"]');
+      const heading = el.querySelector('h3[slot="title"]');
       expect(heading?.getAttribute('id')).to.equal(labelledBy);
     });
 
