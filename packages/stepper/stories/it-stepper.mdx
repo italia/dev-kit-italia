@@ -1,0 +1,129 @@
+import { Meta, Story, Canvas, Controls, Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import * as Stories from './it-stepper.stories';
+
+<Meta of={Stories} />
+
+# Stepper
+
+<description>Elementi di navigazione che mostrano l'avanzamento dell'utente all'interno di una procedura complessa e permettono di navigare tra i vari passaggi di interazione</description>
+
+## Cosa fa
+
+Il componente `it-stepper` mostra lo stato di avanzamento di una procedura composta da più passaggi logici.
+Ogni passaggio viene definito con un elemento `it-stepper-step` inserito all'interno del componente.
+
+Lo stepper è composto da intestazione, area contenuto e navigazione.
+Puoi mostrare tutte le aree insieme oppure nasconderne alcune quando devi riprodurre solo l'intestazione, solo l'avanzamento o un flusso con salvataggio e conferma.
+
+[Approfondisci come e quando usare il componente Stepper](https://designers.italia.it/design-system/componenti/steppers/)
+
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente.
+Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+
+<Controls of={Stories.EsempioInterattivo} />
+
+## Accessibilità
+
+- L'area contenuto utilizza `aria-live="polite"` per notificare i lettori di schermo quando cambia lo step attivo.
+- Il passo attivo espone `aria-current="step"` nell'intestazione e nei pallini.
+- I passi confermati includono testo nascosto per screen reader con stato "Confermato".
+- Il passo attivo include testo nascosto con stato "Attivo".
+- Per la variante `numbers`, il testo nascosto include il numero dello step insieme allo stato, ad esempio "Confermato Step 1".
+- Progress bar e pallini usano il totale effettivo dei passi e comunicano lo stato corrente alle tecnologie assistive.
+- I pulsanti di navigazione vengono disabilitati quando si raggiunge il primo o l'ultimo passo disponibile.
+
+## Intestazione
+
+L'intestazione può essere personalizzata tramite l'attributo `header-variant`.
+Sono disponibili tre varianti.
+
+### Solo testo
+
+La variante predefinita (`text`) mostra l'etichetta di ciascun passo e il suo stato.
+
+<Canvas of={Stories.SoloTesto} />
+
+### Testo e icone
+
+La variante `icons` mostra un'icona prima dell'etichetta di ciascun passo.
+Per ogni `it-stepper-step` puoi specificare il nome dell'icona tramite l'attributo `icon`, ad esempio `it-calendar`, `it-lock` o `it-settings`.
+
+<Canvas of={Stories.TestoEIcone} />
+
+### Testo e numeri
+
+La variante `numbers` mostra il numero ordinale del passo all'interno di un cerchio.
+I passi confermati mostrano una spunta al posto del numero.
+
+<Canvas of={Stories.TestoENumeri} />
+
+## Navigazione degli step
+
+La barra di navigazione contiene i pulsanti "Indietro" e "Avanti".
+Le etichette possono essere personalizzate tramite gli attributi `prev-label` e `next-label`.
+
+Puoi navigare anche via JavaScript tramite i metodi pubblici `next()` e `prev()`, oppure modificando l'attributo `current`.
+Ogni cambio di step emette un evento `it-stepper-change` con `detail.step` e `detail.prevStep`.
+
+<Canvas of={Stories.Navigazione} />
+
+### Progress bar
+
+Imposta `mobile-progress="bar"` per mostrare una barra di progresso tra i pulsanti di navigazione.
+Per impostazione predefinita l'indicatore segue il comportamento Bootstrap Italia ed è visibile solo su mobile.
+Per modificare questa impostazione e mostrare l'indicatore su qualsiasi schermo, imposta l'attributo `mobile-progress-on-desktop`.
+
+<Canvas of={Stories.ProgressBar} />
+
+### Pallini
+
+Imposta `mobile-progress="dots"` per mostrare dei pallini indicatori tra i pulsanti di navigazione.
+I pallini completati vengono evidenziati e il pallino corrente espone testo accessibile.
+
+<Canvas of={Stories.Pallini} />
+
+## Salva
+
+Per aggiungere un'area di salvataggio sotto la barra di navigazione, usa l'attributo `save-label`.
+Quando l'utente clicca sul pulsante di salvataggio, il componente emette l'evento `it-stepper-save`.
+
+Il titolo e la descrizione dell'area possono essere personalizzati tramite `save-title` e `save-description`.
+
+<Canvas of={Stories.Salva} />
+
+## Conferma
+
+Aggiungi l'attributo `show-confirm` per sostituire il pulsante "Avanti" con il pulsante "Conferma".
+Quando l'utente clicca sul pulsante, il componente emette l'evento `it-stepper-confirm`.
+
+<Canvas of={Stories.Conferma} />
+
+## Sfondo scuro
+
+L'attributo `dark` attiva la variante per sfondo scuro.
+
+<Canvas of={Stories.SfondoScuro} />
+
+Le varianti dell'intestazione sono disponibili anche su sfondo scuro.
+
+<Canvas of={Stories.SfondoScuroVarianti} />
+
+## Personalizzazione degli stili
+
+Il componente usa gli stili e le variabili tokenizzate di Bootstrap Italia.
+Per personalizzazioni locali puoi usare il selettore `::part` con questi valori:
+
+- `stepper` - contenitore principale.
+- `header` - area intestazione.
+- `header-list` - lista degli step nell'intestazione.
+- `content` - area contenuto.
+- `nav` - navigazione.
+- `progress` - progress bar mobile.
+- `dots` - pallini mobile.
+- `save` - area di salvataggio.
+
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)

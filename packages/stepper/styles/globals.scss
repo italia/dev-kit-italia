@@ -1,0 +1,20 @@
+@use 'bootstrap-italia/src/scss/base/config' as *;
+
+it-stepper-step:not(:defined) {
+  display: none;
+
+  &:first-child {
+    display: block;
+  }
+
+  [slot='label'] {
+    display: block;
+    padding: 22px 12px;
+    border-left-width: 1px;
+    margin-bottom: 16px;
+    color: var(--#{$prefix}color-text-base);
+    font-size: var(--#{$prefix}label-font-size-l);
+    font-weight: var(--#{$prefix}font-weight-solid);
+    line-height: var(--#{$prefix}label-leading);
+  }
+}
