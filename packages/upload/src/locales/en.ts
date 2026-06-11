@@ -6,7 +6,6 @@ const translation: DefaultTranslation = {
   $dir: 'ltr',
 
   upload_label: 'Upload file',
-  upload_required: 'required',
   upload_file_list_label: 'Uploaded files',
   upload_remove_loading: 'Cancel upload of {name}',
   upload_remove_done: 'Remove uploaded file {name}',

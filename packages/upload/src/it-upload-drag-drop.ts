@@ -253,11 +253,7 @@ export class ItUploadDragDrop extends FormControl {
 
     // Title: slot or default per state
     const titleText = hasFile ? this._fileName : this.$t('upload_dd_title');
-    // `<input type="file">` is exposed as role=button, where `aria-required` is ignored by AT.
-    // Fold the required state into the accessible name so screen readers actually announce it.
-    const fileInputLabel = this.required
-      ? `${this.$t('upload_label')}, ${this.$t('upload_required')}`
-      : this.$t('upload_label');
+    const fileInputLabel = this.required ? this.$t('upload_label') : this.$t('upload_label');
     const canSelect = this._state === 'idle' || this._state === 'dragover';
     const isInvalid = this.formControlController.submittedOnce && this.validationMessage.length > 0;
     const feedbackId = `invalid-feedback-${this._id}`;

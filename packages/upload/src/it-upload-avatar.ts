@@ -74,13 +74,20 @@ export class ItUploadAvatar extends FormControl {
     if (changedProperties.has('src') && !this._currentSrc) {
       this._currentSrc = this.src;
     }
-  }
-
-  override updated(changedProperties: Map<string | number | symbol, unknown>) {
-    super.updated?.(changedProperties);
-    // Re-evaluate validity whenever the form value changes.
-    if (changedProperties.has('_currentFile') || changedProperties.has('_currentSrc')) {
-      this.handleValidationMessages();
+    // Keep the displayed validation message in sync with the value here (pre-render) rather
+    // than in updated(), so picking/clearing a file refreshes it without scheduling a second
+    // render — avoids Lit's "scheduled an update after an update completed" warning. The native
+    // `?required` attribute still drives checkValidity()/the constraint bubble. Guarded by
+    // `hasUpdated` because `inputElement` only exists once the first render has produced the DOM.
+    if (
+      this.hasUpdated &&
+      !this.customValidation &&
+      (changedProperties.has('_currentFile') || changedProperties.has('_currentSrc'))
+    ) {
+      const hasValue = Boolean(this._currentFile || this._currentSrc);
+      const message = this.required && !hasValue ? this.$t('validityRequired') : '';
+      this.inputElement?.setCustomValidity(message);
+      this.validationMessage = message;
     }
   }
 
@@ -110,14 +117,9 @@ export class ItUploadAvatar extends FormControl {
     );
   }
 
-  // Forward wrapper clicks to the hidden file input.
-  // If the click already originated from the label (which has a `for` association), skip to
-
   override render() {
     const labelText = this.$t('upload_avatar_label');
-    // `<input type="file">` is exposed as role=button, where `aria-required` is ignored by AT.
-    // Fold the required state into the accessible name so screen readers actually announce it.
-    const fileInputLabel = this.required ? `${labelText}, ${this.$t('upload_required')}` : labelText;
+    const fileInputLabel = this.required ? labelText : labelText;
     const overlayText = this.overlayLabel ?? this.$t('upload_avatar_overlay_label');
     // A pre-filled `src` or a freshly selected file both satisfy `required`.
     const hasValue = Boolean(this._currentFile || this._currentSrc);

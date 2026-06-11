@@ -40,6 +40,7 @@ import Section from './components/Section.vue';
 import Select from './components/Select.vue';
 import Sidebar from './components/Sidebar.vue';
 import Sticky from './components/Sticky.vue';
+import Stepper from './pages/Stepper.vue';
 import Table from './components/Table.vue';
 import Thumbnav from './components/Thumbnav.vue';
 import Timeline from './pages/Timeline.vue';
@@ -108,6 +109,7 @@ const routes = [
   { path: '/sidebar', name: 'Sidebar', component: Sidebar },
   { path: '/skiplinks', name: 'Skiplinks', component: Skiplinks },
   { path: '/sticky', name: 'Sticky', component: Sticky },
+  { path: '/stepper', name: 'Stepper', component: Stepper },
   { path: '/tables', name: 'Tables', component: Table },
   { path: '/toolbar', name: 'Toolbar', component: Toolbar },
   { path: '/thumbnav', name: 'Thumbnav', component: Thumbnav },
