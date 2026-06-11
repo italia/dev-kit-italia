@@ -68,6 +68,10 @@ it-icon {
   line-height: 0;
 }
 
+:host {
+  display: block;
+}
+
 it-carousel-slide {
   width: 100%;
 }
@@ -88,7 +92,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
   vertical-align: bottom;
 }
 
-:host([arrows]) div:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) {
+:host([arrows]) .it-carousel-wrapper:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) {
   // The track is position:relative via Splide; arrows sit on top of it.
   .splide__track {
     position: relative;
@@ -127,10 +131,6 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
       fill: var(--#{$prefix}-color-white, #fff);
     }
 
-    &.splide__arrow--prev {
-      rotate: 180deg;
-    }
-
     @media (hover: hover) {
       &:hover:not([disabled]) {
         background-color: color-mix(in srgb, var(--#{$prefix}color-text-primary) 85%, black);
@@ -157,7 +157,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :host([arrows]) div:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) {
+  :host([arrows]) .it-carousel-wrapper:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) {
     .splide__arrow {
       transition: none;
     }
@@ -173,6 +173,10 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
   display: flex;
   justify-content: space-between;
   pointer-events: none;
+
+  @media (max-width: #{map.get($grid-breakpoints, md) - 0.02px}) {
+    padding-inline: $spacer;
+  }
 
   .splide__arrow {
     display: flex;
@@ -206,7 +210,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
   align-items: baseline;
   justify-content: center;
   margin-top: $spacer;
-  gap: $spacer * 0.5;
+  gap: $spacer;
 }
 
 .splide__toggle {
@@ -238,10 +242,27 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
   }
 }
 
+.it-carousel-wrapper .it-header-block {
+  ::slotted(h2),
+  ::slotted(h3),
+  ::slotted(h4),
+  ::slotted(h5),
+  ::slotted(h6) {
+    padding-bottom: var(--bsi-carousel-pagination-spacing);
+    border-bottom: 1px solid var(--bsi-carousel-heading-border-color);
+    margin-bottom: 0;
+  }
+}
+
+:host([variant='gallery-sm']),
+:host([variant='gallery-lg']) {
+  .splide__pagination {
+    padding-top: 0;
+  }
+}
+
 .splide__pagination {
-  padding-left: 0;
-  margin-top: $v-gap * 2 !important; // override bsi's default margin
-  margin-left: 0;
+  padding-top: $spacer * 0.5;
 
   button {
     display: inline-block;

@@ -267,7 +267,7 @@ export class ItCarousel extends BaseLocalizedComponent {
   }
 
   override connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     // The host element is the landmark: it lives in the light DOM together with
     // the slotted heading, so aria-labelledby can be resolved without
     // crossing shadow boundaries (which some AT and static tools don't handle).

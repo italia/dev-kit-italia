@@ -111,7 +111,7 @@ describe('it-carousel', () => {
     });
 
     it('renders title slot', async () => {
-      const el = await fixture<ItCarousel>(html`<it-carousel><h2 slot="title">Titolo test</h2></it-carousel>`);
+      const el = await fixture<ItCarousel>(html`<it-carousel><h3 slot="title">Titolo test</h3></it-carousel>`);
       const titleSlot = el.shadowRoot?.querySelector('slot[name="title"]');
       expect(titleSlot).to.exist;
     });
@@ -218,7 +218,7 @@ describe('it-carousel', () => {
     it('moves slotted it-carousel-slide elements into .splide__list', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>A</span></it-carousel-slide>
           <it-carousel-slide><span>B</span></it-carousel-slide>
         </it-carousel>
@@ -232,7 +232,7 @@ describe('it-carousel', () => {
     it('adopted slides get the splide__slide class', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>A</span></it-carousel-slide>
         </it-carousel>
       `);
@@ -244,7 +244,7 @@ describe('it-carousel', () => {
     it('does not throw when there are zero slides', async () => {
       let error: unknown;
       try {
-        await fixture<ItCarousel>(html`<it-carousel><h2 slot="title">T</h2></it-carousel>`);
+        await fixture<ItCarousel>(html`<it-carousel><h3 slot="title">T</h3></it-carousel>`);
         await splideReady();
       } catch (e) {
         error = e;
@@ -261,7 +261,7 @@ describe('it-carousel', () => {
     it('mounts Splide and renders pagination dots', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -277,7 +277,7 @@ describe('it-carousel', () => {
     it('does not render arrows when arrows=false', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -297,7 +297,7 @@ describe('it-carousel', () => {
     it('visible slides do NOT have inert', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -315,7 +315,7 @@ describe('it-carousel', () => {
       // perPage:1 ensures only one slide is visible at a time
       const el = await fixture<ItCarousel>(html`
         <it-carousel .config=${{ perPage: 1, type: 'slide' }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><a href="#">Link 1</a></it-carousel-slide>
           <it-carousel-slide><a href="#">Link 2</a></it-carousel-slide>
           <it-carousel-slide><a href="#">Link 3</a></it-carousel-slide>
@@ -349,7 +349,7 @@ describe('it-carousel', () => {
     it('autoplay=true renders .splide__controls with toggle', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel autoplay>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -364,7 +364,7 @@ describe('it-carousel', () => {
     // it('autoplay=true passes autoplay:"pause" to Splide (Splide sets aria-label on toggle)', async () => {
     //   const el = await fixture<ItCarousel>(html`
     //     <it-carousel autoplay>
-    //       <h2 slot="title">T</h2>
+    //       <h3 slot="title">T</h3>
     //       <it-carousel-slide><span>1</span></it-carousel-slide>
     //       <it-carousel-slide><span>2</span></it-carousel-slide>
     //     </it-carousel>
@@ -378,7 +378,7 @@ describe('it-carousel', () => {
     it('user config.autoplay overrides the prop (e.g. autoplay:true starts immediately)', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel autoplay .config=${{ autoplay: true }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -391,7 +391,7 @@ describe('it-carousel', () => {
     it('autoplay=false + no config → no toggle rendered', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -409,7 +409,7 @@ describe('it-carousel', () => {
     it('does not render toggle when autoplay is not set', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -421,7 +421,7 @@ describe('it-carousel', () => {
     it('renders .splide__controls wrapper with toggle inside when autoplay is enabled', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel .config=${{ autoplay: true, interval: 3000 }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -437,7 +437,7 @@ describe('it-carousel', () => {
     it('autoplay: pagination dots are rendered inside .splide__controls', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel .config=${{ autoplay: true, interval: 3000 }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -453,7 +453,7 @@ describe('it-carousel', () => {
     it('toggle button has part="autoplay-toggle"', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel .config=${{ autoplay: true }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -466,7 +466,7 @@ describe('it-carousel', () => {
     it('play SVG has class splide__toggle__play and part="autoplay-play"', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel .config=${{ autoplay: true }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -481,7 +481,7 @@ describe('it-carousel', () => {
     it('pause SVG has class splide__toggle__pause and part="autoplay-pause"', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel .config=${{ autoplay: true }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -496,7 +496,7 @@ describe('it-carousel', () => {
     it('Splide sets non-empty aria-label on toggle button', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel .config=${{ autoplay: true }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -516,7 +516,7 @@ describe('it-carousel', () => {
     it('pagination gets part="pagination-track" after mount', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -530,7 +530,7 @@ describe('it-carousel', () => {
     it('each pagination dot button gets part="pagination-dot"', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -547,7 +547,7 @@ describe('it-carousel', () => {
     it('no arrows parts when arrows=false', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -568,7 +568,7 @@ describe('it-carousel', () => {
     it('sets aria-labelledby on the root element when title slot contains a heading', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">Titolo accessibile</h2>
+          <h3 slot="title">Titolo accessibile</h3>
           <it-carousel-slide><span>S</span></it-carousel-slide>
         </it-carousel>
       `);
@@ -686,7 +686,7 @@ describe('it-carousel', () => {
     it('mounts Splide with overridden type=loop', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel type="loop">
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -701,7 +701,7 @@ describe('it-carousel', () => {
     it('mounts Splide with type=slide (no is-loop class)', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel type="slide">
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -721,7 +721,7 @@ describe('it-carousel', () => {
     it('accepts a config object and Splide mounts without errors', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -741,7 +741,7 @@ describe('it-carousel', () => {
       // config.type = 'slide' should win over type='loop'
       const el = await fixture<ItCarousel>(html`
         <it-carousel type="loop">
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -774,7 +774,7 @@ describe('it-carousel', () => {
     it('does not throw when disconnected after Splide mounted', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>

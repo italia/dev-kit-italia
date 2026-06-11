@@ -260,6 +260,20 @@ export const VarianteGallerySM: Story = {
     },
     title: 'Variante gallery small',
   },
+  parameters: {
+    layout: 'fullscreen',
+  },
+  decorators: [
+    (story) => {
+      if (!document.head.querySelector('#gallery-sm-fix')) {
+        const s = document.createElement('style');
+        s.id = 'gallery-sm-fix';
+        s.textContent = '#storybook-root{width:100%!important}';
+        document.head.appendChild(s);
+      }
+      return html`<div style="max-width:1400px;margin:0 auto;">${story()}</div>`;
+    },
+  ],
   render: (args) => renderComponent(args),
 };
 export const VarianteGalleryLG: Story = {
@@ -289,7 +303,7 @@ export const VarianteGalleryLG: Story = {
         s.textContent = '#storybook-root{width:100%!important}';
         document.head.appendChild(s);
       }
-      return html`<div style="overflow:hidden;width:100%;">${story()}</div>`;
+      return html`<div style="max-width:1400px;margin:0 auto;overflow:hidden;">${story()}</div>`;
     },
   ],
   render: (args) => renderComponent(args),
@@ -406,7 +420,7 @@ export const ConfigurazioneAvanzata: Story = {
           arrows: false,
         },
         992: {
-          perPage: 3,
+          perPage: 2,
           gap: 0,
           padding: { left: 0, right: 0 },
           arrows: false,
