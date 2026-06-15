@@ -382,7 +382,7 @@ const imageAvatars = [
           <li>
             <it-avatar type="dropdown">
               <it-dropdown
-                label="4+"
+                label="+4"
                 slot="avatar-dropdown-content"
                 it-aria-label="Visualizza altri 4 utenti"
                 variant="secondary"
