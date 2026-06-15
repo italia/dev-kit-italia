@@ -92,16 +92,6 @@ export class ItDimmer extends BaseComponent {
     return this.active ? this.hide() : this.show();
   }
 
-  protected override firstUpdated(changedProperties: PropertyValues): void {
-    super.firstUpdated(changedProperties);
-    // Re-apply inert after the next animation frame so Firefox/VoiceOver sees
-    // the attribute AFTER child custom elements (e.g. it-card) have fully
-    // upgraded their shadow DOM. Without this, VoiceOver can reach background
-    // headings on first page load before Firefox's AT settles the inert state.
-    // Same rAF pattern used in focus-trap-controller for AT settlement.
-    requestAnimationFrame(() => this._updateBackgroundInert());
-  }
-
   protected updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('active')) {
       if (this.active) {
@@ -173,9 +163,13 @@ export class ItDimmer extends BaseComponent {
   }
 
   /**
-   * Applica/rimuove `inert` sugli elementi slottati nel background slot.
-   * Necessario per Safari, che non rispetta `aria-hidden` sull'overlay
-   * e lascia interagibili gli elementi sotto il dimmer.
+   * Applica/rimuove `inert` e `aria-hidden` sugli elementi slottati nel background slot.
+   *
+   * - `inert`: blocca interazione da tastiera/mouse (necessario per Safari, che non rispetta
+   *   `aria-hidden` sull'overlay).
+   * - `aria-hidden`: nasconde l'elemento dall'albero di accessibilità via DOM tree (non flat
+   *   tree). Necessario per Firefox: `inert` da solo non propaga correttamente attraverso
+   *   le slot boundary nelle custom elements al primo caricamento della pagina.
    */
   private _updateBackgroundInert(): void {
     const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot:not([name])');
@@ -183,8 +177,10 @@ export class ItDimmer extends BaseComponent {
     for (const el of slot.assignedElements({ flatten: true })) {
       if (this.active) {
         el.setAttribute('inert', '');
+        el.setAttribute('aria-hidden', 'true');
       } else {
         el.removeAttribute('inert');
+        el.removeAttribute('aria-hidden');
       }
     }
   }
