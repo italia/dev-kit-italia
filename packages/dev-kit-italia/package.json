@@ -1,7 +1,7 @@
 {
   "name": "@italia/dev-kit-italia",
   "description": "Bundle dei web components del Design system .italia",
-  "version": "1.0.0-alpha.16",
+  "version": "1.0.0-alpha.17",
   "publishConfig": {
     "access": "public"
   },
@@ -84,12 +84,13 @@
     "@italia/section": "workspace:^",
     "@italia/select": "workspace:^",
     "@italia/skiplinks": "workspace:^",
+    "@italia/stepper": "workspace:^",
     "@italia/sticky": "workspace:^",
-    "@italia/toolbar": "workspace:^",
-    "@italia/thumbnav": "workspace:^",
     "@italia/tabs": "workspace:^",
+    "@italia/thumbnav": "workspace:^",
     "@italia/timeline": "workspace:^",
     "@italia/toggle": "workspace:^",
+    "@italia/toolbar": "workspace:^",
     "@italia/tooltip": "workspace:^",
     "@italia/transfer": "workspace:^",
     "@italia/upload": "workspace:^",

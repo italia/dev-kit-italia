@@ -42,6 +42,8 @@ import '@italia/select/it-select.js';
 import '@italia/transfer/it-transfer-item.js';
 import '@italia/transfer/it-transfer.js';
 import '@italia/skiplinks/it-skiplinks.js';
+import '@italia/stepper/it-stepper-step.js';
+import '@italia/stepper/it-stepper.js';
 import '@italia/sticky/it-sticky.js';
 import '@italia/toolbar/it-toolbar.js';
 import '@italia/toolbar/it-toolbar-item.js';

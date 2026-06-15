@@ -11,3 +11,7 @@
 @use 'bootstrap-italia/src/scss/forms/form-select' as *;
 
 @use 'bootstrap-italia/src/scss/forms/just-validate' as *;
+
+select {
+  line-height: 1.528;
+}

@@ -38,6 +38,7 @@ import Select from './pages/Select';
 import Sidebar from './pages/Sidebar';
 import Skiplinks from './pages/Skiplinks';
 import Sticky from './pages/Sticky';
+import Stepper from './pages/Stepper';
 import Table from './pages/Table';
 import Thumbnav from './pages/Thumbnav';
 import Timeline from './pages/Timeline';
@@ -106,6 +107,7 @@ export const AppRoutes = [
   { path: '/sidebar', element: <Sidebar />, title: 'Sidebar' },
   { path: '/skiplinks', element: <Skiplinks />, title: 'Skiplinks' },
   { path: '/sticky', element: <Sticky />, title: 'Sticky' },
+  { path: '/stepper', element: <Stepper />, title: 'Stepper' },
   { path: '/tables', element: <Table />, title: 'Tables' },
   { path: '/thumbnav', element: <Thumbnav />, title: 'Thumbnav' },
   { path: '/tabs', element: <Tabs />, title: 'Tabs' },
