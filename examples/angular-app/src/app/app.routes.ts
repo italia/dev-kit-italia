@@ -231,6 +231,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/sticky.component').then((c) => c.StickyComponent),
   },
   {
+    title: 'Stepper',
+    path: 'stepper',
+    loadComponent: () => import('./pages/stepper.component').then((c) => c.StepperComponent),
+  },
+  {
     title: 'Tables',
     path: 'tables',
     loadComponent: () => import('./pages/table.component').then((c) => c.TableComponent),

@@ -43,6 +43,7 @@
       "@italia/section",
       "@italia/select",
       "@italia/skiplinks",
+      "@italia/stepper",
       "@italia/sticky",
       "@italia/tabs",
       "@italia/timeline",
