@@ -43,8 +43,13 @@ Per iniziare, è sufficiente installare il pacchetto `npm` attraverso il seguent
 npm install @italia/dev-kit-italia --save
 ```
 
-e seguire le istruzioni presenti [sulla pagina GitHub del
-progetto](https://github.com/italia/dev-kit-italia?tab=readme-ov-file#come-usare-la-libreria).
+e importare le risorse necessarie nel vostro progetto così:
+
+```javascript
+import '@italia/dev-kit-italia/fonts.css';
+import '@italia/dev-kit-italia/styles.css';
+import '@italia/dev-kit-italia/elements.js';
+```
 
 Il progetto è distribuito con licenza BSD-3 (consultabile nel file [LICENSE](https://github.com/italia/dev-kit-italia/blob/main/LICENSE)),
 un modello ancora più permissivo della classica licenza GPL, in quanto consente di modificare e ridistribuire
