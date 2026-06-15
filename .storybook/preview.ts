@@ -20,7 +20,7 @@ const preview: Preview = {
       postfix: postfix || undefined, // 'alpha.X' | 'beta.X' | 'rc.X' | undefined
       style: {
         'font-family': 'Roboto, monospace',
-      }
+      },
     },
     layout: 'centered',
     controls: {
@@ -68,7 +68,7 @@ const preview: Preview = {
           'Migrazione',
           'Come contribuire',
           'Documentazione tecnica',
-          'Misurare l\'adozione del Kit',
+          "Misurare l'adozione del Kit",
           'Organizzare gli spazi',
           ['Introduzione', '*'],
           'Organizzare i contenuti',
