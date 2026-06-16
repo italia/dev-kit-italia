@@ -40,6 +40,12 @@ export class ItDropdownBase extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'no-flip' }) noFlip: boolean = false;
 
+  /** When true, hides the expand (caret) icon next to the trigger label. Used e.g. by the avatar "+N" group balloon. */
+  @property({ type: Boolean, attribute: 'hide-expand-icon', reflect: true }) hideExpandIcon: boolean = false;
+
+  /** When true, centres the popover arrow on the trigger instead of the fixed notch position. Used by avatar dropdowns. */
+  @property({ type: Boolean, attribute: 'center-arrow', reflect: true }) centerArrow: boolean = false;
+
   @state() protected _popoverOpen = false;
 
   protected _buttonId = this.generateId('it-dropdown');
@@ -187,6 +193,7 @@ export class ItDropdownBase extends BaseComponent {
         ?open=${this._popoverOpen}
         offset=${ifDefined(this.offset)}
         ?no-flip=${this.noFlip}
+        ?center-arrow=${this.centerArrow}
         controlled
       >
         <it-button
@@ -205,7 +212,7 @@ export class ItDropdownBase extends BaseComponent {
           it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
           it-aria-controls=${this._popoverOpen ? this._menuId : nothing}
         >
-          ${this.alignment.startsWith('left')
+          ${this.alignment.startsWith('left') && !this.hideExpandIcon
             ? html`<it-icon
                 name="it-expand"
                 class="icon-expand left"
@@ -216,7 +223,7 @@ export class ItDropdownBase extends BaseComponent {
             : ''}
 
           <slot name="label">${this.label}</slot>
-          ${!this.alignment.startsWith('left')
+          ${!this.alignment.startsWith('left') && !this.hideExpandIcon
             ? html`<it-icon
                 name="it-expand"
                 class=${this.composeClass('icon-expand', {
