@@ -35,15 +35,15 @@ stili interni dei componenti. È la scelta consigliata per un prodotto finale, p
 
 Durante una migrazione, però, il progetto contiene ancora molto markup che usa le classi di Bootstrap Italia. Per
 fare in modo che quelle classi continuino a funzionare **mentre** si introducono i Web Components, sostituisci
-`styles.css` con `full.css`:
+`styles.css` con `styles-for-migration.css`:
 
 ```javascript
 import '@italia/dev-kit-italia/fonts.css';
-import '@italia/dev-kit-italia/full.css';
+import '@italia/dev-kit-italia/styles-for-migration.css';
 import '@italia/dev-kit-italia/elements.js';
 ```
 
-Il file `full.css` include **l'intero set di stili di Bootstrap Italia** oltre agli stili dei Web Components. In questo
+Il file `styles-for-migration.css` include **l'intero set di stili di Bootstrap Italia** oltre agli stili dei Web Components. In questo
 modo:
 
 - il markup esistente basato sulle classi di Bootstrap Italia continua a essere stilizzato correttamente;
@@ -53,19 +53,19 @@ modo:
 <it-callout variant="warning" heading-level="h3">
   <it-icon slot="icon" name="it-warning-circle" size="md"></it-icon>
   <span slot="title">Attenzione</span>
-  <p><code>full.css</code> è più pesante di <code>styles.css</code>, perché contiene l'intero CSS di Bootstrap Italia. È pensato come soluzione <strong>temporanea</strong> per la fase di migrazione e non è consigliato per il prodotto finale.</p>
+  <p><code>styles-for-migration.css</code> è più pesante di <code>styles.css</code>, perché contiene l'intero CSS di Bootstrap Italia. È pensato come soluzione <strong>temporanea</strong> per la fase di migrazione e non è consigliato per il prodotto finale.</p>
 </it-callout>
 
 ## Il JavaScript di Bootstrap Italia
 
-`full.css` fornisce soltanto gli **stili**. I componenti di Bootstrap Italia non ancora migrati che hanno
+`styles-for-migration.css` fornisce soltanto gli **stili**. I componenti di Bootstrap Italia non ancora migrati che hanno
 comportamenti interattivi (dropdown, collapse, modali, ecc.) continuano a dipendere dal **JavaScript di Bootstrap
 Italia**. Durante la migrazione, quindi, è necessario continuare a importare e inizializzare lo script di Bootstrap
 Italia, accanto agli `elements.js` di Dev Kit Italia:
 
 ```javascript
 import '@italia/dev-kit-italia/fonts.css';
-import '@italia/dev-kit-italia/full.css';
+import '@italia/dev-kit-italia/styles-for-migration.css';
 
 // JavaScript di Bootstrap Italia, per i componenti non ancora migrati
 import 'bootstrap-italia';
@@ -85,7 +85,7 @@ si riduce. Quando nessuna parte del progetto ne ha più bisogno, puoi rimuovere 
 
 ## Procedere componente per componente
 
-Una volta impostato l'import di `full.css`, il flusso di lavoro tipico è:
+Una volta impostato l'import di `styles-for-migration.css`, il flusso di lavoro tipico è:
 
 1. Scegli un componente da migrare (ad esempio un pulsante).
 2. Apri la sezione corrispondente in questa documentazione (_Componenti → Button_).
@@ -99,7 +99,7 @@ Bootstrap Italia.
 ## Completare la migrazione
 
 Quando tutto il markup è stato convertito ai Web Components e non dipendi più né dalle classi né dal JavaScript di
-Bootstrap Italia, puoi tornare a importare `styles.css` al posto di `full.css` e rimuovere l'import di
+Bootstrap Italia, puoi tornare a importare `styles.css` al posto di `styles-for-migration.css` e rimuovere l'import di
 `bootstrap-italia`, per alleggerire il bundle e ottimizzarlo per la produzione:
 
 ```javascript
