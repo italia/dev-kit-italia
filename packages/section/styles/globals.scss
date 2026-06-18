@@ -28,6 +28,14 @@
 
 it-section .container {
   @extend .container;
+}
+
+it-section .container-xxl,
+it-section .container-xl,
+it-section .container-lg,
+it-section .container-md,
+it-section .container-sm,
+it-section .container {
   position: relative;
   z-index: 2;
 }
