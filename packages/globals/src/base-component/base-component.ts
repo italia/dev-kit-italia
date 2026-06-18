@@ -25,6 +25,8 @@ export class BaseComponent extends LitElement {
 
   protected _id?: string; // id interno del componente, da usare sui veri elementi HTML
 
+  protected ariaAttributesObserver?: MutationObserver;
+
   constructor() {
     super();
     this.logger = new Logger(this.tagName.toLowerCase());
@@ -76,6 +78,31 @@ export class BaseComponent extends LitElement {
     // generate internal _id
     const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
     this._id = this.generateId(prefix);
+
+    this.ariaAttributesObserver = new MutationObserver((mutations) => {
+      const shouldUpdate = mutations.some((mutation) => {
+        if (mutation.type !== 'attributes' || !mutation.attributeName) {
+          return false;
+        }
+
+        return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+      });
+
+      if (shouldUpdate) {
+        this.requestUpdate();
+      }
+    });
+
+    this.ariaAttributesObserver.observe(this, {
+      attributes: true,
+      attributeOldValue: true,
+    });
+  }
+
+  disconnectedCallback() {
+    this.ariaAttributesObserver?.disconnect();
+    this.ariaAttributesObserver = undefined;
+    super.disconnectedCallback();
   }
 }
 

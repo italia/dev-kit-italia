@@ -14,7 +14,7 @@ export class FormControl extends BaseLocalizedComponent {
   // TODO: verificare se serve davvero con il fatto che usiamo form-controller
   // static formAssociated = true;
 
-  //   @property()
+  // @property()
   // internals = this.attachInternals();
 
   @state()

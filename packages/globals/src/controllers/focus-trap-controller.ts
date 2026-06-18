@@ -342,6 +342,7 @@ export class FocusTrapController implements ReactiveController {
           }, 50);
         }
       } else {
+        // eslint-disable-next-line no-console
         console.warn("FocusTrap: missing 'initialFocus' callback, provide one");
       }
     });
