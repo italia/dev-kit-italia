@@ -37,6 +37,7 @@ const componentsMenuItems = [
   { label: 'Breadcrumbs', href: '/src/breadcrumbs' },
   { label: 'Button', href: '/src/button' },
   { label: 'Callout', href: '/src/callout' },
+  { label: 'Carousel', href: '/src/carousel' },
   { label: 'Card', href: '/src/card' },
   { label: 'Checkbox', href: '/src/checkbox' },
   { label: 'Chip', href: '/src/chip' },

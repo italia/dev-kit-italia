@@ -196,6 +196,10 @@ Nella configurazione attuale produce quindi un numero elevato di falsi positivi,
 
 `list` e `listitem` segnalati su `<it-breadcrumbs>`. L'accessibility tree è corretto. Falso positivo documentato nella storia del componente al [paragrafo Accessibilità](/?path=/docs/componenti-breadcrumbs--documentazione#accessibilità).
 
+### `it-carousel`: live region (`aria-live`) e comportamento nei screen reader
+
+Il supporto all'`aria-live` region è incostante tra combinazioni di screen reader, sistemi operativi e browser (es. VoiceOver + Chrome/Firefox su macOS non funziona). Non costituisce una violazione WCAG: l'attributo è opzionale per la specifica W3C e il feedback primario è garantito dal pattern `role="tablist"` del componente. Dettagli e tabella di compatibilità nella storia del componente al [paragrafo Accessibilità](/?path=/docs/componenti-carousel--documentazione#accessibilità).
+
 
 ---
 
@@ -203,7 +207,7 @@ Nella configurazione attuale produce quindi un numero elevato di falsi positivi,
 
 ### ARIA cross-shadow-root
 
-Quando si usano gli attributi `it-aria-describedby` o `it-aria-labelledby` su `<it-input>`, questi vengono applicati all'elemento `<input>` generato nel shadow DOM. Tuttavia, se l'ID referenziato appartiene a un elemento nel light DOM esterno allo shadow DOM del componente, la descrizione o la label **non viene annunciata dai lettori di schermo**. È un limite della specifica W3C: questi attributi aria fanno sempre riferimento a ID nello stesso scope DOM. 
+Quando si usano gli attributi `it-aria-describedby` o `it-aria-labelledby` su `<it-input>`, questi vengono applicati all'elemento `<input>` generato nel shadow DOM. Tuttavia, se l'ID referenziato appartiene a un elemento nel light DOM esterno allo shadow DOM del componente, la descrizione o la label **non viene annunciata dai lettori di schermo**. È un limite della specifica W3C: questi attributi aria fanno sempre riferimento a ID nello stesso scope DOM.
 
 Per `<it-input>` Dev Kit Italia mette a disposizione attributi dedicati che generano automaticamente tutti gli attributi necessari dentro lo shadow DOM:
 - `support-text`: testo di supporto interno al componente
@@ -212,7 +216,7 @@ Per `<it-input>` Dev Kit Italia mette a disposizione attributi dedicati che gene
 
 ### Tool senza supporto shadow DOM
 
-Strumenti basati su serializzazione DOM standard **non entrano nel shadow DOM**: 
+Strumenti basati su serializzazione DOM standard **non entrano nel shadow DOM**:
 
 - Non percepiscono elementi semantici (heading, label, button) e ruoli ARIA generati nel shadow DOM
 - Non segnalano errori né componenti implementati correttamente
@@ -222,7 +226,7 @@ Una pagina che usa web component Dev Kit Italia è quindi non verificabile con q
 
 ---
 
-## Verifiche manuali 
+## Verifiche manuali
 
 Le verifiche automatiche non sono sufficienti, molti criteri WCAG richiedono valutazione umana e alcuni tool hanno i limiti specifici sul shadow DOM documentati in questa pagina. Semantica degli elementi, ingrandimento, navigazione da tastiera e lettori di schermo vanno sempre verificati manualmente.
 
