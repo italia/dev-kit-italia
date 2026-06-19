@@ -17,8 +17,9 @@ export class NotificationComponent {
 
   // eslint-disable-next-line class-methods-use-this
   showNotification(ref: any) {
-    if (ref && ref.nativeElement) {
-      ref.nativeElement.show();
+    const el = ref?.nativeElement ?? ref;
+    if (el) {
+      el.show();
     }
   }
 
