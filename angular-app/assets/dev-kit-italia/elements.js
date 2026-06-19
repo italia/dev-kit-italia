@@ -1427,6 +1427,26 @@ let BaseComponent$E = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$E = LocalizeMixin$E(BaseComponent$E);
@@ -1859,7 +1879,7 @@ let FormControl$E = class FormControl extends BaseLocalizedComponent$E {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -2107,7 +2127,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -3265,6 +3285,26 @@ let BaseComponent$D = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$D = LocalizeMixin$D(BaseComponent$D);
@@ -3747,7 +3787,7 @@ let FormControl$D = class FormControl extends BaseLocalizedComponent$D {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -3995,7 +4035,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -4555,6 +4595,26 @@ let BaseComponent$C = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$C = LocalizeMixin$C(BaseComponent$C);
@@ -4987,7 +5047,7 @@ let FormControl$C = class FormControl extends BaseLocalizedComponent$C {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -5235,7 +5295,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -9143,6 +9203,26 @@ let BaseComponent$B = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$B = LocalizeMixin$B(BaseComponent$B);
@@ -9575,7 +9655,7 @@ let FormControl$B = class FormControl extends BaseLocalizedComponent$B {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -9823,7 +9903,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -10133,6 +10213,36 @@ a .avatar:hover p {
 :host a .avatar:hover {
   text-decoration: none;
 }
+:host .avatar-presence {
+  bottom: var(--bsi-avatar-dot-offset-top);
+}
+:host .avatar-presence,
+:host .avatar-status {
+  box-sizing: border-box;
+}
+
+:host([size=xs]),
+:host([size=sm]) {
+  --bsi-avatar-dot-border-size: 1px;
+}
+
+:host([size=md]) {
+  --bsi-avatar-dot-offset-right: -4px;
+}
+
+:host([size=lg]) {
+  --bsi-avatar-dot-size: 14px;
+  --bsi-avatar-dot-offset-right: -4px;
+}
+
+:host([size=xl]) {
+  --bsi-avatar-dot-size: 16px;
+}
+
+:host([size=xxl]) {
+  --bsi-avatar-dot-size: 20px;
+  --bsi-avatar-dot-offset-right: 4px;
+}
 
 :host([type=text]) {
   cursor: default;
@@ -10217,6 +10327,20 @@ const translation$H = {
 
 registerTranslation$B(translation$1$8);
 registerTranslation$B(translation$H);
+// Avatar dropdowns (e.g. the "+N" group balloon) must not show the expand
+// caret — it pushes the label off-centre. Mirrors Bootstrap Italia, where the
+// avatar dropdown is a bare btn-dropdown with no caret. The "+N" trigger is a
+// tiny circle, so the popover arrow is centred on it rather than using the
+// fixed notch position standard dropdowns rely on. See issue #431.
+const onDropdownSlotChange = (event) => {
+    const slot = event.target;
+    slot.assignedElements().forEach((el) => {
+        if (el.tagName.toLowerCase() === 'it-dropdown') {
+            el.setAttribute('hide-expand-icon', '');
+            el.setAttribute('center-arrow', '');
+        }
+    });
+};
 let ItAvatar = class ItAvatar extends BaseLocalizedComponent$B {
     constructor() {
         super(...arguments);
@@ -10332,12 +10456,10 @@ let ItAvatar = class ItAvatar extends BaseLocalizedComponent$B {
         // Icone di default per i diversi stati di presenza
         let presenceIcon = '';
         switch (this.presence) {
-            case 'active':
-                presenceIcon = 'it-check';
-                break;
             case 'busy':
                 presenceIcon = 'it-minus';
                 break;
+            case 'active':
             case 'hidden':
                 presenceIcon = '';
                 break;
@@ -10434,7 +10556,9 @@ let ItAvatar = class ItAvatar extends BaseLocalizedComponent$B {
         const content = b `
       ${autoType === 'image' ? this.renderImage() : A} ${autoType === 'text' ? this.renderText() : A}
       ${autoType === 'icon' ? this.renderIcon() : A}
-      ${autoType === 'dropdown' ? b `<slot name="avatar-dropdown-content"></slot>` : A}
+      ${autoType === 'dropdown'
+            ? b `<slot name="avatar-dropdown-content" @slotchange="${onDropdownSlotChange}"></slot>`
+            : A}
     `;
         return content;
     }
@@ -10581,14 +10705,80 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
 };
 
+const ARIA_IDREF_ATTRIBUTES$8 = new Map([
+    ['aria-activedescendant', 'ariaActivedescendantElement'],
+    ['aria-controls', 'ariaControlsElements'],
+    ['aria-describedby', 'ariaDescribedByElements'],
+    ['aria-details', 'ariaDetailsElements'],
+    ['aria-errormessage', 'ariaErrormessageElements'],
+    ['aria-flowto', 'ariaFlowtoElements'],
+    ['aria-labelledby', 'ariaLabelledByElements'],
+    ['aria-owns', 'ariaOwnsElements'],
+]);
+function resolveAriaIdRefs$8(element, value) {
+    const ids = value
+        .trim()
+        .split(/\s+/)
+        .filter((id) => id.length > 0);
+    if (ids.length === 0)
+        return null;
+    const root = element.getRootNode();
+    let resolvedElements = [];
+    if (root instanceof ShadowRoot) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else if (root instanceof Document) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    if (resolvedElements.filter((el) => el !== null).length === 0) {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    const validElements = resolvedElements.filter((el) => el !== null);
+    return validElements.length === ids.length ? validElements : null;
+}
+function setInternalsProperty$8(el, name, resolvedElements) {
+    if (name === 'aria-activedescendant') {
+        const [firstElement] = resolvedElements;
+        // eslint-disable-next-line no-param-reassign
+        el[name] = firstElement;
+    }
+    else {
+        // eslint-disable-next-line no-param-reassign
+        el[name] = resolvedElements;
+    }
+}
 let SetAttributesDirective$8 = class SetAttributesDirective extends i$2 {
     update(part, [attributes]) {
         const el = part.element;
+        const internals = el.internals ?? null;
         for (const [name, value] of Object.entries(attributes)) {
-            if (value != null)
-                el.setAttribute(name, value);
-            else
+            if (value == null) {
                 el.removeAttribute(name);
+            }
+            else {
+                const internalsPropertyName = ARIA_IDREF_ATTRIBUTES$8.get(name);
+                if (internalsPropertyName) {
+                    const resolvedElements = resolveAriaIdRefs$8(el, String(value));
+                    if (resolvedElements) {
+                        if (internals) {
+                            // Set on ElementInternals
+                            setInternalsProperty$8(internals, internalsPropertyName, resolvedElements);
+                        }
+                        else {
+                            // Set internals property on shadowdom item
+                            el.setAttribute(name, String(value));
+                            setInternalsProperty$8(el, internalsPropertyName, resolvedElements);
+                        }
+                    }
+                }
+                else {
+                    // Non-ARIA IDREF attributes: set normally
+                    el.setAttribute(name, String(value));
+                }
+            }
         }
         return null;
     }
@@ -10956,6 +11146,26 @@ let BaseComponent$A = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$A = LocalizeMixin$A(BaseComponent$A);
@@ -11388,7 +11598,7 @@ let FormControl$A = class FormControl extends BaseLocalizedComponent$A {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -11636,7 +11846,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -12292,6 +12502,26 @@ let BaseComponent$z = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$z = LocalizeMixin$z(BaseComponent$z);
@@ -12724,7 +12954,7 @@ let FormControl$z = class FormControl extends BaseLocalizedComponent$z {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -12972,7 +13202,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -12999,8 +13229,8 @@ var styles$R = i$6`::slotted(a) {
   --bsi-icon-default: var(--bsi-icon-secondary);
 }
 
-li::marker {
-  font-size: 0px;
+li {
+  list-style: none;
 }`;
 
 /**
@@ -13443,6 +13673,26 @@ let BaseComponent$y = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$y = LocalizeMixin$y(BaseComponent$y);
@@ -13875,7 +14125,7 @@ let FormControl$y = class FormControl extends BaseLocalizedComponent$y {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -14201,7 +14451,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -15268,6 +15518,26 @@ let BaseComponent$x = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$x = LocalizeMixin$x(BaseComponent$x);
@@ -15700,7 +15970,7 @@ let FormControl$x = class FormControl extends BaseLocalizedComponent$x {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -15948,7 +16218,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -16264,14 +16534,80 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
 };
 
+const ARIA_IDREF_ATTRIBUTES$7 = new Map([
+    ['aria-activedescendant', 'ariaActivedescendantElement'],
+    ['aria-controls', 'ariaControlsElements'],
+    ['aria-describedby', 'ariaDescribedByElements'],
+    ['aria-details', 'ariaDetailsElements'],
+    ['aria-errormessage', 'ariaErrormessageElements'],
+    ['aria-flowto', 'ariaFlowtoElements'],
+    ['aria-labelledby', 'ariaLabelledByElements'],
+    ['aria-owns', 'ariaOwnsElements'],
+]);
+function resolveAriaIdRefs$7(element, value) {
+    const ids = value
+        .trim()
+        .split(/\s+/)
+        .filter((id) => id.length > 0);
+    if (ids.length === 0)
+        return null;
+    const root = element.getRootNode();
+    let resolvedElements = [];
+    if (root instanceof ShadowRoot) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else if (root instanceof Document) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    if (resolvedElements.filter((el) => el !== null).length === 0) {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    const validElements = resolvedElements.filter((el) => el !== null);
+    return validElements.length === ids.length ? validElements : null;
+}
+function setInternalsProperty$7(el, name, resolvedElements) {
+    if (name === 'aria-activedescendant') {
+        const [firstElement] = resolvedElements;
+        // eslint-disable-next-line no-param-reassign
+        el[name] = firstElement;
+    }
+    else {
+        // eslint-disable-next-line no-param-reassign
+        el[name] = resolvedElements;
+    }
+}
 let SetAttributesDirective$7 = class SetAttributesDirective extends i$2 {
     update(part, [attributes]) {
         const el = part.element;
+        const internals = el.internals ?? null;
         for (const [name, value] of Object.entries(attributes)) {
-            if (value != null)
-                el.setAttribute(name, value);
-            else
+            if (value == null) {
                 el.removeAttribute(name);
+            }
+            else {
+                const internalsPropertyName = ARIA_IDREF_ATTRIBUTES$7.get(name);
+                if (internalsPropertyName) {
+                    const resolvedElements = resolveAriaIdRefs$7(el, String(value));
+                    if (resolvedElements) {
+                        if (internals) {
+                            // Set on ElementInternals
+                            setInternalsProperty$7(internals, internalsPropertyName, resolvedElements);
+                        }
+                        else {
+                            // Set internals property on shadowdom item
+                            el.setAttribute(name, String(value));
+                            setInternalsProperty$7(el, internalsPropertyName, resolvedElements);
+                        }
+                    }
+                }
+                else {
+                    // Non-ARIA IDREF attributes: set normally
+                    el.setAttribute(name, String(value));
+                }
+            }
         }
         return null;
     }
@@ -16639,6 +16975,26 @@ let BaseComponent$w = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$w = LocalizeMixin$w(BaseComponent$w);
@@ -17071,7 +17427,7 @@ let FormControl$w = class FormControl extends BaseLocalizedComponent$w {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -17319,7 +17675,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -17747,6 +18103,17 @@ let ItButton = ItButton_1 = class ItButton extends BaseComponent$w {
         this.internals = this.attachInternals();
         this._hasIcon = false;
         this._hasProgress = false;
+        // public setDescribedBy(element: Element | null): void {
+        //   const btn = this.shadowRoot?.querySelector('button');
+        //   if (!btn) return;
+        //   if ('ariaDescribedByElements' in Element.prototype) {
+        //     btn.ariaDescribedByElements = element ? [element] : null;
+        //   } else if (element?.id) {
+        //     btn?.setAttribute('aria-describedby', element.id);
+        //   } else {
+        //     btn?.removeAttribute('aria-describedby');
+        //   }
+        // }
         this._onKeyDown = (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -17805,20 +18172,6 @@ let ItButton = ItButton_1 = class ItButton extends BaseComponent$w {
     }
     focus() {
         this._nativeButton?.focus();
-    }
-    setDescribedBy(element) {
-        const btn = this.shadowRoot?.querySelector('button');
-        if (!btn)
-            return;
-        if ('ariaDescribedByElements' in Element.prototype) {
-            btn.ariaDescribedByElements = element ? [element] : null;
-        }
-        else if (element?.id) {
-            btn?.setAttribute('aria-describedby', element.id);
-        }
-        else {
-            btn?.removeAttribute('aria-describedby');
-        }
     }
     connectedCallback() {
         super.connectedCallback?.();
@@ -18347,6 +18700,26 @@ let BaseComponent$v = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$v = LocalizeMixin$v(BaseComponent$v);
@@ -18779,7 +19152,7 @@ let FormControl$v = class FormControl extends BaseLocalizedComponent$v {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -19027,7 +19400,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -19912,14 +20285,80 @@ ItCalloutMoreCollapse = __decorate$z([
     t$2('it-callout-more-collapse')
 ], ItCalloutMoreCollapse);
 
+const ARIA_IDREF_ATTRIBUTES$6 = new Map([
+    ['aria-activedescendant', 'ariaActivedescendantElement'],
+    ['aria-controls', 'ariaControlsElements'],
+    ['aria-describedby', 'ariaDescribedByElements'],
+    ['aria-details', 'ariaDetailsElements'],
+    ['aria-errormessage', 'ariaErrormessageElements'],
+    ['aria-flowto', 'ariaFlowtoElements'],
+    ['aria-labelledby', 'ariaLabelledByElements'],
+    ['aria-owns', 'ariaOwnsElements'],
+]);
+function resolveAriaIdRefs$6(element, value) {
+    const ids = value
+        .trim()
+        .split(/\s+/)
+        .filter((id) => id.length > 0);
+    if (ids.length === 0)
+        return null;
+    const root = element.getRootNode();
+    let resolvedElements = [];
+    if (root instanceof ShadowRoot) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else if (root instanceof Document) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    if (resolvedElements.filter((el) => el !== null).length === 0) {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    const validElements = resolvedElements.filter((el) => el !== null);
+    return validElements.length === ids.length ? validElements : null;
+}
+function setInternalsProperty$6(el, name, resolvedElements) {
+    if (name === 'aria-activedescendant') {
+        const [firstElement] = resolvedElements;
+        // eslint-disable-next-line no-param-reassign
+        el[name] = firstElement;
+    }
+    else {
+        // eslint-disable-next-line no-param-reassign
+        el[name] = resolvedElements;
+    }
+}
 let SetAttributesDirective$6 = class SetAttributesDirective extends i$2 {
     update(part, [attributes]) {
         const el = part.element;
+        const internals = el.internals ?? null;
         for (const [name, value] of Object.entries(attributes)) {
-            if (value != null)
-                el.setAttribute(name, value);
-            else
+            if (value == null) {
                 el.removeAttribute(name);
+            }
+            else {
+                const internalsPropertyName = ARIA_IDREF_ATTRIBUTES$6.get(name);
+                if (internalsPropertyName) {
+                    const resolvedElements = resolveAriaIdRefs$6(el, String(value));
+                    if (resolvedElements) {
+                        if (internals) {
+                            // Set on ElementInternals
+                            setInternalsProperty$6(internals, internalsPropertyName, resolvedElements);
+                        }
+                        else {
+                            // Set internals property on shadowdom item
+                            el.setAttribute(name, String(value));
+                            setInternalsProperty$6(el, internalsPropertyName, resolvedElements);
+                        }
+                    }
+                }
+                else {
+                    // Non-ARIA IDREF attributes: set normally
+                    el.setAttribute(name, String(value));
+                }
+            }
         }
         return null;
     }
@@ -20287,6 +20726,26 @@ let BaseComponent$u = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$u = LocalizeMixin$u(BaseComponent$u);
@@ -20752,7 +21211,7 @@ let FormControl$u = class FormControl extends BaseLocalizedComponent$u {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -21000,7 +21459,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -21890,6 +22349,26 @@ let BaseComponent$t = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$t = LocalizeMixin$t(BaseComponent$t);
@@ -22322,7 +22801,7 @@ let FormControl$t = class FormControl extends BaseLocalizedComponent$t {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -22570,7 +23049,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -22592,6 +23071,7 @@ const CARD_BORDER_COLORS = ['primary', 'secondary', 'success', 'danger', 'warnin
 const CARD_IMAGE_RATIOS = ['1x1', '4x3', '16x9', '21x9'];
 const CARD_SHADOWS = ['none', 'sm', 'md', 'lg'];
 const CARD_HEADING_LEVELS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+const CARD_HEADING_SIZES = ['sm', 'md'];
 
 var styles$I = i$6`@charset "UTF-8";
 .ratio {
@@ -24531,6 +25011,9 @@ let ItCard = class ItCard extends BaseComponent$t {
         if (this.headingLevel && !CARD_HEADING_LEVELS.includes(this.headingLevel)) {
             this.logger.warn(`Invalid heading-level value, falling back to default. Expected one of: ${CARD_HEADING_LEVELS.join(', ')}`);
         }
+        if (this.headingSize && !CARD_HEADING_SIZES.includes(this.headingSize)) {
+            this.logger.warn(`Invalid heading-size value, falling back to default. Expected one of: ${CARD_HEADING_SIZES.join(', ')}`);
+        }
     }
     getHeadingLevel() {
         if (CARD_HEADING_LEVELS.includes(this.headingLevel)) {
@@ -24599,15 +25082,19 @@ let ItCard = class ItCard extends BaseComponent$t {
             'it-card-title': this.variant !== 'profile' && this.variant !== 'location',
             'it-card-profile-name': this.variant === 'profile' || this.variant === 'location',
             'it-card-title-icon': hasTitleIcon,
-            h4: this.variant === 'inline-mini' ||
-                this.variant === 'inline-mini-reverse' ||
-                this.variant === 'profile' ||
-                this.variant === 'location',
-            h3: this.headingLevel !== 'h3' &&
-                !(this.variant === 'inline-mini' ||
-                    this.variant === 'inline-mini-reverse' ||
-                    this.variant === 'profile' ||
-                    this.variant === 'location'),
+            h4: this.headingSize === 'sm' ||
+                (this.headingSize === undefined &&
+                    (this.variant === 'inline-mini' ||
+                        this.variant === 'inline-mini-reverse' ||
+                        this.variant === 'profile' ||
+                        this.variant === 'location')),
+            h3: this.headingSize === 'md' ||
+                (this.headingSize === undefined &&
+                    this.headingLevel !== 'h3' &&
+                    !(this.variant === 'inline-mini' ||
+                        this.variant === 'inline-mini-reverse' ||
+                        this.variant === 'profile' ||
+                        this.variant === 'location')),
         });
         const headingTag = s$1(this.getHeadingLevel());
         const cardTitle = b `
@@ -24759,6 +25246,10 @@ __decorate$w([
     n$3({ type: String, attribute: 'heading-level' }),
     __metadata$w("design:type", String)
 ], ItCard.prototype, "headingLevel", void 0);
+__decorate$w([
+    n$3({ type: String, attribute: 'heading-size' }),
+    __metadata$w("design:type", String)
+], ItCard.prototype, "headingSize", void 0);
 __decorate$w([
     n$3({ type: String, attribute: 'it-class' }),
     __metadata$w("design:type", Object)
@@ -25193,6 +25684,26 @@ let BaseComponent$s = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$s = LocalizeMixin$s(BaseComponent$s);
@@ -25625,7 +26136,7 @@ let FormControl$s = class FormControl extends BaseLocalizedComponent$s {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -25873,7 +26384,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -26976,6 +27487,10 @@ it-icon {
   line-height: 0;
 }
 
+:host {
+  display: block;
+}
+
 it-carousel-slide {
   width: 100%;
 }
@@ -26985,10 +27500,10 @@ it-carousel-slide {
   vertical-align: bottom;
 }
 
-:host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__track {
+:host([arrows]) .it-carousel-wrapper:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__track {
   position: relative;
 }
-:host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrows {
+:host([arrows]) .it-carousel-wrapper:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrows {
   position: absolute;
   z-index: 1;
   display: flex;
@@ -26999,7 +27514,7 @@ it-carousel-slide {
   pointer-events: none;
   translate: 0 -50%;
 }
-:host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrow {
+:host([arrows]) .it-carousel-wrapper:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrow {
   display: grid;
   width: calc(8px * 5);
   height: calc(8px * 5);
@@ -27012,37 +27527,34 @@ it-carousel-slide {
   pointer-events: all;
   transition: background-color 0.2s ease;
 }
-:host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrow svg {
+:host([arrows]) .it-carousel-wrapper:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrow svg {
   display: block;
   width: calc(8px * 2);
   height: calc(8px * 2);
   fill: var(--bsi--color-white, #fff);
 }
-:host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrow.splide__arrow--prev {
-  rotate: 180deg;
-}
 @media (hover: hover) {
-  :host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrow:hover:not([disabled]) {
+  :host([arrows]) .it-carousel-wrapper:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrow:hover:not([disabled]) {
     background-color: color-mix(in srgb, var(--bsi-color-text-primary) 85%, black);
   }
 }
-:host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrow:focus-visible {
+:host([arrows]) .it-carousel-wrapper:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrow:focus-visible {
   outline: 2px solid var(--bsi-color-outline-focus);
   outline-offset: 2px;
 }
-:host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrow[disabled] {
+:host([arrows]) .it-carousel-wrapper:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrow[disabled] {
   background-color: hsl(210, 3%, 85%);
   cursor: not-allowed;
 }
 @media (min-width: 992px) {
-  :host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrows {
+  :host([arrows]) .it-carousel-wrapper:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrows {
     inset-inline-end: calc(8px * -6);
     inset-inline-start: calc(8px * -6);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrow {
+  :host([arrows]) .it-carousel-wrapper:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrow {
     transition: none;
   }
 }
@@ -27055,6 +27567,11 @@ it-carousel-slide {
   display: flex;
   justify-content: space-between;
   pointer-events: none;
+}
+@media (max-width: 767.98px) {
+  .splide__arrows {
+    padding-inline: 1rem;
+  }
 }
 .splide__arrows .splide__arrow {
   display: flex;
@@ -27083,7 +27600,7 @@ it-carousel-slide {
   align-items: baseline;
   justify-content: center;
   margin-top: 1rem;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .splide__toggle {
@@ -27113,10 +27630,23 @@ it-carousel-slide {
   margin-left: 0px;
 }
 
+.it-carousel-wrapper .it-header-block ::slotted(h2),
+.it-carousel-wrapper .it-header-block ::slotted(h3),
+.it-carousel-wrapper .it-header-block ::slotted(h4),
+.it-carousel-wrapper .it-header-block ::slotted(h5),
+.it-carousel-wrapper .it-header-block ::slotted(h6) {
+  padding-bottom: var(--bsi-carousel-pagination-spacing);
+  border-bottom: 1px solid var(--bsi-carousel-heading-border-color);
+  margin-bottom: 0;
+}
+
+:host([variant=gallery-sm]) .splide__pagination,
+:host([variant=gallery-lg]) .splide__pagination {
+  padding-top: 0;
+}
+
 .splide__pagination {
-  padding-left: 0;
-  margin-top: 16px !important;
-  margin-left: 0;
+  padding-top: 0.5rem;
 }
 .splide__pagination button {
   display: inline-block;
@@ -27125,7 +27655,6 @@ it-carousel-slide {
   padding: 0;
   border: none;
   border-radius: 50px !important;
-  margin: 0 8px;
   background: var(--bsi-color-background-subtle) !important;
   box-shadow: none;
   transition: all 0.3s;
@@ -30875,7 +31404,16 @@ let ItCarousel = class ItCarousel extends BaseLocalizedComponent$s {
             if (!this.wrapper)
                 return;
             const { configKey } = VARIANT_MAP[this.variant];
-            const baseConfig = CONFIGS[configKey];
+            const effectiveConfigKey = this.arrows && this.variant === 'columns'
+                ? 'it-carousel-landscape-abstract-three-cols-arrow-visible'
+                : configKey;
+            const baseConfig = CONFIGS[effectiveConfigKey];
+            // When arrows are explicitly enabled by the consumer, ensure no breakpoint
+            // can silently override them back to false — breakpoint configs only
+            // carry arrows:false as an opinionated default, not a hard constraint.
+            const breakpoints = this.arrows && baseConfig.breakpoints
+                ? Object.fromEntries(Object.entries(baseConfig.breakpoints).map(([bp, opts]) => [bp, { ...opts, arrows: true }]))
+                : baseConfig.breakpoints;
             const splideI18n = {
                 prev: this.$t('carousel_prev'),
                 next: this.$t('carousel_next'),
@@ -30892,6 +31430,7 @@ let ItCarousel = class ItCarousel extends BaseLocalizedComponent$s {
             };
             this._splide = new Splide(this.wrapper, {
                 ...baseConfig,
+                ...(breakpoints ? { breakpoints } : {}),
                 ...(this.type ? { type: this.type } : {}),
                 arrows: this.arrows,
                 ...(this.autoplay
@@ -30996,6 +31535,20 @@ let ItCarousel = class ItCarousel extends BaseLocalizedComponent$s {
         root.querySelectorAll('.splide__pagination__page').forEach((btn) => {
             btn.setAttribute('part', 'pagination-dot');
         });
+        // Splide adds role="region" to its root div on mount. The host element already
+        // carries role="region" with a proper accessible name (see connectedCallback and
+        // handleTitleSlotChange), so the inner div's landmark role is redundant and would
+        // cause a landmark-unique Axe violation. Demote it to a generic container.
+        this.wrapper?.setAttribute('role', 'presentation');
+    }
+    connectedCallback() {
+        super.connectedCallback?.();
+        // The host element is the landmark: it lives in the light DOM together with
+        // the slotted heading, so aria-labelledby can be resolved without
+        // crossing shadow boundaries (which some AT and static tools don't handle).
+        if (!this.hasAttribute('role')) {
+            this.setAttribute('role', 'region');
+        }
     }
     disconnectedCallback() {
         super.disconnectedCallback?.();
@@ -31012,7 +31565,10 @@ let ItCarousel = class ItCarousel extends BaseLocalizedComponent$s {
                 return;
             const id = this.generateId('it-carousel-title');
             _el.setAttribute('id', id);
-            this.wrapper.setAttribute('aria-labelledby', id);
+            // Set aria-labelledby on the host (light DOM) rather than on the inner
+            // shadow div, so the ID reference is resolved within the same tree and
+            // is visible to screen readers and static analysis tools alike.
+            this.setAttribute('aria-labelledby', id);
         });
     }
     _sectionClass() {
@@ -31032,8 +31588,7 @@ let ItCarousel = class ItCarousel extends BaseLocalizedComponent$s {
         return classes.join(' ');
     }
     render() {
-        // eslint-disable-next-line lit-a11y/no-redundant-role
-        return b `<div class=${this._sectionClass()} role="region">
+        return b `<div class=${this._sectionClass()}>
       <div class="it-header-block">
         <div class="it-header-block-title">
           <slot name="title" @slotchange=${this.handleTitleSlotChange}></slot>
@@ -31114,7 +31669,7 @@ __decorate$v([
     __metadata$v("design:type", HTMLSlotElement)
 ], ItCarousel.prototype, "mainSlot", void 0);
 __decorate$v([
-    e$3('div[role="region"]'),
+    e$3('.it-carousel-wrapper'),
     __metadata$v("design:type", HTMLElement)
 ], ItCarousel.prototype, "wrapper", void 0);
 __decorate$v([
@@ -31162,14 +31717,80 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
 };
 
+const ARIA_IDREF_ATTRIBUTES$5 = new Map([
+    ['aria-activedescendant', 'ariaActivedescendantElement'],
+    ['aria-controls', 'ariaControlsElements'],
+    ['aria-describedby', 'ariaDescribedByElements'],
+    ['aria-details', 'ariaDetailsElements'],
+    ['aria-errormessage', 'ariaErrormessageElements'],
+    ['aria-flowto', 'ariaFlowtoElements'],
+    ['aria-labelledby', 'ariaLabelledByElements'],
+    ['aria-owns', 'ariaOwnsElements'],
+]);
+function resolveAriaIdRefs$5(element, value) {
+    const ids = value
+        .trim()
+        .split(/\s+/)
+        .filter((id) => id.length > 0);
+    if (ids.length === 0)
+        return null;
+    const root = element.getRootNode();
+    let resolvedElements = [];
+    if (root instanceof ShadowRoot) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else if (root instanceof Document) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    if (resolvedElements.filter((el) => el !== null).length === 0) {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    const validElements = resolvedElements.filter((el) => el !== null);
+    return validElements.length === ids.length ? validElements : null;
+}
+function setInternalsProperty$5(el, name, resolvedElements) {
+    if (name === 'aria-activedescendant') {
+        const [firstElement] = resolvedElements;
+        // eslint-disable-next-line no-param-reassign
+        el[name] = firstElement;
+    }
+    else {
+        // eslint-disable-next-line no-param-reassign
+        el[name] = resolvedElements;
+    }
+}
 let SetAttributesDirective$5 = class SetAttributesDirective extends i$2 {
     update(part, [attributes]) {
         const el = part.element;
+        const internals = el.internals ?? null;
         for (const [name, value] of Object.entries(attributes)) {
-            if (value != null)
-                el.setAttribute(name, value);
-            else
+            if (value == null) {
                 el.removeAttribute(name);
+            }
+            else {
+                const internalsPropertyName = ARIA_IDREF_ATTRIBUTES$5.get(name);
+                if (internalsPropertyName) {
+                    const resolvedElements = resolveAriaIdRefs$5(el, String(value));
+                    if (resolvedElements) {
+                        if (internals) {
+                            // Set on ElementInternals
+                            setInternalsProperty$5(internals, internalsPropertyName, resolvedElements);
+                        }
+                        else {
+                            // Set internals property on shadowdom item
+                            el.setAttribute(name, String(value));
+                            setInternalsProperty$5(el, internalsPropertyName, resolvedElements);
+                        }
+                    }
+                }
+                else {
+                    // Non-ARIA IDREF attributes: set normally
+                    el.setAttribute(name, String(value));
+                }
+            }
         }
         return null;
     }
@@ -31537,6 +32158,26 @@ let BaseComponent$r = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$r = LocalizeMixin$r(BaseComponent$r);
@@ -31969,7 +32610,7 @@ let FormControl$r = class FormControl extends BaseLocalizedComponent$r {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -32217,7 +32858,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -34993,6 +35634,26 @@ let BaseComponent$q = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$q = LocalizeMixin$q(BaseComponent$q);
@@ -35425,7 +36086,7 @@ let FormControl$q = class FormControl extends BaseLocalizedComponent$q {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -35673,7 +36334,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -36399,6 +37060,26 @@ let BaseComponent$p = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$p = LocalizeMixin$p(BaseComponent$p);
@@ -36831,7 +37512,7 @@ let FormControl$p = class FormControl extends BaseLocalizedComponent$p {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -37079,7 +37760,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -38650,6 +39331,10 @@ let ItDropdownBase$1 = class ItDropdownBase extends BaseComponent$p {
         this.itAriaLabel = '';
         this.offset = null;
         this.noFlip = false;
+        /** When true, hides the expand (caret) icon next to the trigger label. Used e.g. by the avatar "+N" group balloon. */
+        this.hideExpandIcon = false;
+        /** When true, centres the popover arrow on the trigger instead of the fixed notch position. Used by avatar dropdowns. */
+        this.centerArrow = false;
         this._popoverOpen = false;
         this._buttonId = this.generateId('it-dropdown');
         this._menuId = this.generateId('it-dropdown-menu');
@@ -38776,6 +39461,7 @@ let ItDropdownBase$1 = class ItDropdownBase extends BaseComponent$p {
         ?open=${this._popoverOpen}
         offset=${o$2(this.offset)}
         ?no-flip=${this.noFlip}
+        ?center-arrow=${this.centerArrow}
         controlled
       >
         <it-button
@@ -38794,7 +39480,7 @@ let ItDropdownBase$1 = class ItDropdownBase extends BaseComponent$p {
           it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
           it-aria-controls=${this._popoverOpen ? this._menuId : A}
         >
-          ${this.alignment.startsWith('left')
+          ${this.alignment.startsWith('left') && !this.hideExpandIcon
             ? b `<it-icon
                 name="it-expand"
                 class="icon-expand left"
@@ -38805,7 +39491,7 @@ let ItDropdownBase$1 = class ItDropdownBase extends BaseComponent$p {
             : ''}
 
           <slot name="label">${this.label}</slot>
-          ${!this.alignment.startsWith('left')
+          ${!this.alignment.startsWith('left') && !this.hideExpandIcon
             ? b `<it-icon
                 name="it-expand"
                 class=${this.composeClass('icon-expand', {
@@ -38894,6 +39580,14 @@ __decorate$s([
     n$3({ type: Boolean, attribute: 'no-flip' }),
     __metadata$s("design:type", Boolean)
 ], ItDropdownBase$1.prototype, "noFlip", void 0);
+__decorate$s([
+    n$3({ type: Boolean, attribute: 'hide-expand-icon', reflect: true }),
+    __metadata$s("design:type", Boolean)
+], ItDropdownBase$1.prototype, "hideExpandIcon", void 0);
+__decorate$s([
+    n$3({ type: Boolean, attribute: 'center-arrow', reflect: true }),
+    __metadata$s("design:type", Boolean)
+], ItDropdownBase$1.prototype, "centerArrow", void 0);
 __decorate$s([
     r$G(),
     __metadata$s("design:type", Object)
@@ -39298,6 +39992,26 @@ let BaseComponent$o = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$o = LocalizeMixin$o(BaseComponent$o);
@@ -39730,7 +40444,7 @@ let FormControl$o = class FormControl extends BaseLocalizedComponent$o {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -39978,7 +40692,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -40652,6 +41366,26 @@ let BaseComponent$n = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$n = LocalizeMixin$n(BaseComponent$n);
@@ -41084,7 +41818,7 @@ let FormControl$n = class FormControl extends BaseLocalizedComponent$n {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -41332,7 +42066,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -41663,9 +42397,13 @@ let ItDimmer = class ItDimmer extends BaseComponent$n {
         return results;
     }
     /**
-     * Applica/rimuove `inert` sugli elementi slottati nel background slot.
-     * Necessario per Safari, che non rispetta `aria-hidden` sull'overlay
-     * e lascia interagibili gli elementi sotto il dimmer.
+     * Applica/rimuove `inert` e `aria-hidden` sugli elementi slottati nel background slot.
+     *
+     * - `inert`: blocca interazione da tastiera/mouse (necessario per Safari, che non rispetta
+     *   `aria-hidden` sull'overlay).
+     * - `aria-hidden`: nasconde l'elemento dall'albero di accessibilità via DOM tree (non flat
+     *   tree). Necessario per Firefox: `inert` da solo non propaga correttamente attraverso
+     *   le slot boundary nelle custom elements al primo caricamento della pagina.
      */
     _updateBackgroundInert() {
         const slot = this.shadowRoot?.querySelector('slot:not([name])');
@@ -41674,9 +42412,11 @@ let ItDimmer = class ItDimmer extends BaseComponent$n {
         for (const el of slot.assignedElements({ flatten: true })) {
             if (this.active) {
                 el.setAttribute('inert', '');
+                el.setAttribute('aria-hidden', 'true');
             }
             else {
                 el.removeAttribute('inert');
+                el.removeAttribute('aria-hidden');
             }
         }
     }
@@ -42114,6 +42854,26 @@ let BaseComponent$m = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$m = LocalizeMixin$m(BaseComponent$m);
@@ -42546,7 +43306,7 @@ let FormControl$m = class FormControl extends BaseLocalizedComponent$m {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -42794,7 +43554,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -43443,14 +44203,80 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
 };
 
+const ARIA_IDREF_ATTRIBUTES$4 = new Map([
+    ['aria-activedescendant', 'ariaActivedescendantElement'],
+    ['aria-controls', 'ariaControlsElements'],
+    ['aria-describedby', 'ariaDescribedByElements'],
+    ['aria-details', 'ariaDetailsElements'],
+    ['aria-errormessage', 'ariaErrormessageElements'],
+    ['aria-flowto', 'ariaFlowtoElements'],
+    ['aria-labelledby', 'ariaLabelledByElements'],
+    ['aria-owns', 'ariaOwnsElements'],
+]);
+function resolveAriaIdRefs$4(element, value) {
+    const ids = value
+        .trim()
+        .split(/\s+/)
+        .filter((id) => id.length > 0);
+    if (ids.length === 0)
+        return null;
+    const root = element.getRootNode();
+    let resolvedElements = [];
+    if (root instanceof ShadowRoot) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else if (root instanceof Document) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    if (resolvedElements.filter((el) => el !== null).length === 0) {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    const validElements = resolvedElements.filter((el) => el !== null);
+    return validElements.length === ids.length ? validElements : null;
+}
+function setInternalsProperty$4(el, name, resolvedElements) {
+    if (name === 'aria-activedescendant') {
+        const [firstElement] = resolvedElements;
+        // eslint-disable-next-line no-param-reassign
+        el[name] = firstElement;
+    }
+    else {
+        // eslint-disable-next-line no-param-reassign
+        el[name] = resolvedElements;
+    }
+}
 let SetAttributesDirective$4 = class SetAttributesDirective extends i$2 {
     update(part, [attributes]) {
         const el = part.element;
+        const internals = el.internals ?? null;
         for (const [name, value] of Object.entries(attributes)) {
-            if (value != null)
-                el.setAttribute(name, value);
-            else
+            if (value == null) {
                 el.removeAttribute(name);
+            }
+            else {
+                const internalsPropertyName = ARIA_IDREF_ATTRIBUTES$4.get(name);
+                if (internalsPropertyName) {
+                    const resolvedElements = resolveAriaIdRefs$4(el, String(value));
+                    if (resolvedElements) {
+                        if (internals) {
+                            // Set on ElementInternals
+                            setInternalsProperty$4(internals, internalsPropertyName, resolvedElements);
+                        }
+                        else {
+                            // Set internals property on shadowdom item
+                            el.setAttribute(name, String(value));
+                            setInternalsProperty$4(el, internalsPropertyName, resolvedElements);
+                        }
+                    }
+                }
+                else {
+                    // Non-ARIA IDREF attributes: set normally
+                    el.setAttribute(name, String(value));
+                }
+            }
         }
         return null;
     }
@@ -43818,6 +44644,26 @@ let BaseComponent$l = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$l = LocalizeMixin$l(BaseComponent$l);
@@ -44250,7 +45096,7 @@ let FormControl$l = class FormControl extends BaseLocalizedComponent$l {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -44498,7 +45344,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -49039,6 +49885,26 @@ let BaseComponent$k = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$k = LocalizeMixin$k(BaseComponent$k);
@@ -49471,7 +50337,7 @@ let FormControl$k = class FormControl extends BaseLocalizedComponent$k {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -49719,7 +50585,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -50536,6 +51402,10 @@ class ItDropdownBase extends BaseComponent$k {
         this.itAriaLabel = '';
         this.offset = null;
         this.noFlip = false;
+        /** When true, hides the expand (caret) icon next to the trigger label. Used e.g. by the avatar "+N" group balloon. */
+        this.hideExpandIcon = false;
+        /** When true, centres the popover arrow on the trigger instead of the fixed notch position. Used by avatar dropdowns. */
+        this.centerArrow = false;
         this._popoverOpen = false;
         this._buttonId = this.generateId('it-dropdown');
         this._menuId = this.generateId('it-dropdown-menu');
@@ -50662,6 +51532,7 @@ class ItDropdownBase extends BaseComponent$k {
         ?open=${this._popoverOpen}
         offset=${o$2(this.offset)}
         ?no-flip=${this.noFlip}
+        ?center-arrow=${this.centerArrow}
         controlled
       >
         <it-button
@@ -50680,7 +51551,7 @@ class ItDropdownBase extends BaseComponent$k {
           it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
           it-aria-controls=${this._popoverOpen ? this._menuId : A}
         >
-          ${this.alignment.startsWith('left')
+          ${this.alignment.startsWith('left') && !this.hideExpandIcon
             ? b `<it-icon
                 name="it-expand"
                 class="icon-expand left"
@@ -50691,7 +51562,7 @@ class ItDropdownBase extends BaseComponent$k {
             : ''}
 
           <slot name="label">${this.label}</slot>
-          ${!this.alignment.startsWith('left')
+          ${!this.alignment.startsWith('left') && !this.hideExpandIcon
             ? b `<it-icon
                 name="it-expand"
                 class=${this.composeClass('icon-expand', {
@@ -50780,6 +51651,14 @@ __decorate$n([
     n$3({ type: Boolean, attribute: 'no-flip' }),
     __metadata$n("design:type", Boolean)
 ], ItDropdownBase.prototype, "noFlip", void 0);
+__decorate$n([
+    n$3({ type: Boolean, attribute: 'hide-expand-icon', reflect: true }),
+    __metadata$n("design:type", Boolean)
+], ItDropdownBase.prototype, "hideExpandIcon", void 0);
+__decorate$n([
+    n$3({ type: Boolean, attribute: 'center-arrow', reflect: true }),
+    __metadata$n("design:type", Boolean)
+], ItDropdownBase.prototype, "centerArrow", void 0);
 __decorate$n([
     r$G(),
     __metadata$n("design:type", Object)
@@ -53737,14 +54616,80 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
 };
 
+const ARIA_IDREF_ATTRIBUTES$3 = new Map([
+    ['aria-activedescendant', 'ariaActivedescendantElement'],
+    ['aria-controls', 'ariaControlsElements'],
+    ['aria-describedby', 'ariaDescribedByElements'],
+    ['aria-details', 'ariaDetailsElements'],
+    ['aria-errormessage', 'ariaErrormessageElements'],
+    ['aria-flowto', 'ariaFlowtoElements'],
+    ['aria-labelledby', 'ariaLabelledByElements'],
+    ['aria-owns', 'ariaOwnsElements'],
+]);
+function resolveAriaIdRefs$3(element, value) {
+    const ids = value
+        .trim()
+        .split(/\s+/)
+        .filter((id) => id.length > 0);
+    if (ids.length === 0)
+        return null;
+    const root = element.getRootNode();
+    let resolvedElements = [];
+    if (root instanceof ShadowRoot) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else if (root instanceof Document) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    if (resolvedElements.filter((el) => el !== null).length === 0) {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    const validElements = resolvedElements.filter((el) => el !== null);
+    return validElements.length === ids.length ? validElements : null;
+}
+function setInternalsProperty$3(el, name, resolvedElements) {
+    if (name === 'aria-activedescendant') {
+        const [firstElement] = resolvedElements;
+        // eslint-disable-next-line no-param-reassign
+        el[name] = firstElement;
+    }
+    else {
+        // eslint-disable-next-line no-param-reassign
+        el[name] = resolvedElements;
+    }
+}
 let SetAttributesDirective$3 = class SetAttributesDirective extends i$2 {
     update(part, [attributes]) {
         const el = part.element;
+        const internals = el.internals ?? null;
         for (const [name, value] of Object.entries(attributes)) {
-            if (value != null)
-                el.setAttribute(name, value);
-            else
+            if (value == null) {
                 el.removeAttribute(name);
+            }
+            else {
+                const internalsPropertyName = ARIA_IDREF_ATTRIBUTES$3.get(name);
+                if (internalsPropertyName) {
+                    const resolvedElements = resolveAriaIdRefs$3(el, String(value));
+                    if (resolvedElements) {
+                        if (internals) {
+                            // Set on ElementInternals
+                            setInternalsProperty$3(internals, internalsPropertyName, resolvedElements);
+                        }
+                        else {
+                            // Set internals property on shadowdom item
+                            el.setAttribute(name, String(value));
+                            setInternalsProperty$3(el, internalsPropertyName, resolvedElements);
+                        }
+                    }
+                }
+                else {
+                    // Non-ARIA IDREF attributes: set normally
+                    el.setAttribute(name, String(value));
+                }
+            }
         }
         return null;
     }
@@ -54112,6 +55057,26 @@ let BaseComponent$j = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$j = LocalizeMixin$j(BaseComponent$j);
@@ -54544,7 +55509,7 @@ let FormControl$j = class FormControl extends BaseLocalizedComponent$j {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -54792,7 +55757,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -55587,6 +56552,26 @@ let BaseComponent$i = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$i = LocalizeMixin$i(BaseComponent$i);
@@ -55894,6 +56879,7 @@ class FocusTrapController {
                 }
             }
             else {
+                // eslint-disable-next-line no-console
                 console.warn("FocusTrap: missing 'initialFocus' callback, provide one");
             }
         });
@@ -56514,7 +57500,7 @@ let FormControl$i = class FormControl extends BaseLocalizedComponent$i {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -56840,7 +57826,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -58997,6 +59983,26 @@ let BaseComponent$h = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$h = LocalizeMixin$h(BaseComponent$h);
@@ -59429,7 +60435,7 @@ let FormControl$h = class FormControl extends BaseLocalizedComponent$h {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -59677,7 +60683,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -60518,6 +61524,26 @@ let BaseComponent$g = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$g = LocalizeMixin$g(BaseComponent$g);
@@ -60950,7 +61976,7 @@ let FormControl$g = class FormControl extends BaseLocalizedComponent$g {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -61198,7 +62224,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -62619,6 +63645,26 @@ let BaseComponent$f = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$f = LocalizeMixin$f(BaseComponent$f);
@@ -63051,7 +64097,7 @@ let FormControl$f = class FormControl extends BaseLocalizedComponent$f {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -63299,7 +64345,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -64958,6 +66004,26 @@ let BaseComponent$e = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$e = LocalizeMixin$e(BaseComponent$e);
@@ -65390,7 +66456,7 @@ let FormControl$e = class FormControl extends BaseLocalizedComponent$e {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -65638,7 +66704,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -67278,6 +68344,8 @@ let ItPopover = class ItPopover extends BaseComponent$e {
         this.placement = 'bottom-start';
         this.offset = 12;
         this.noFlip = false;
+        /** Centre the arrow on the trigger instead of the fixed notch position. Used by avatar dropdowns. */
+        this.centerArrow = false;
         this._onDocumentClick = (event) => {
             if (!this.open)
                 return;
@@ -67408,8 +68476,12 @@ let ItPopover = class ItPopover extends BaseComponent$e {
                     const contentRect = this._contentElement.getBoundingClientRect();
                     const triggerCenter = triggerRect.left + triggerRect.width / 2;
                     const arrowLeft = triggerCenter - contentRect.left - this._triggerElement.offsetWidth / 2 + 20;
+                    // When `centerArrow` is set (e.g. avatar dropdowns), centre the arrow
+                    // on the trigger using Floating UI's computed offset. Otherwise keep
+                    // the fixed notch position relied on by standard dropdowns.
+                    const left = this.centerArrow ? arrowX : arrowLeft;
                     Object.assign(this._arrowElement.style, {
-                        left: arrowX != null ? `${arrowLeft}px` : '',
+                        left: arrowX != null ? `${left}px` : '',
                         top: arrowY != null ? `${arrowY}px` : '',
                         right: '',
                         bottom: '',
@@ -67466,6 +68538,10 @@ __decorate$h([
     n$3({ type: Boolean, attribute: 'no-flip' }),
     __metadata$h("design:type", Boolean)
 ], ItPopover.prototype, "noFlip", void 0);
+__decorate$h([
+    n$3({ type: Boolean, attribute: 'center-arrow' }),
+    __metadata$h("design:type", Boolean)
+], ItPopover.prototype, "centerArrow", void 0);
 __decorate$h([
     e$3('slot[name="trigger"]'),
     __metadata$h("design:type", HTMLSlotElement)
@@ -67864,6 +68940,26 @@ let BaseComponent$d = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$d = LocalizeMixin$d(BaseComponent$d);
@@ -68296,7 +69392,7 @@ let FormControl$d = class FormControl extends BaseLocalizedComponent$d {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -68544,7 +69640,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -70401,8 +71497,8 @@ let ItTooltip = ItTooltip_1 = class ItTooltip extends BaseComponent$d {
     _cleanupDescribedBy() {
         if (!this._lastTrigger)
             return;
-        if ('setDescribedBy' in this._lastTrigger && typeof this._lastTrigger.setDescribedBy === 'function') {
-            this._lastTrigger.setDescribedBy(null);
+        if (this._lastTrigger.tagName.startsWith('IT-')) {
+            this._lastTrigger.removeAttribute('it-aria-describedby');
         }
         else {
             this._lastTrigger.removeAttribute('aria-describedby');
@@ -70447,8 +71543,8 @@ let ItTooltip = ItTooltip_1 = class ItTooltip extends BaseComponent$d {
         else {
             content.setAttribute('aria-hidden', 'true');
         }
-        if ('setDescribedBy' in trigger && typeof trigger.setDescribedBy === 'function') {
-            trigger.setDescribedBy(content);
+        if (trigger.tagName.startsWith('IT-')) {
+            trigger.setAttribute('it-aria-describedby', content.id);
         }
         else {
             trigger.setAttribute('aria-describedby', content.id);
@@ -72011,6 +73107,26 @@ let BaseComponent$c = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$c = LocalizeMixin$c(BaseComponent$c);
@@ -72443,7 +73559,7 @@ let FormControl$c = class FormControl extends BaseLocalizedComponent$c {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -72691,7 +73807,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -77189,6 +78305,26 @@ let BaseComponent$b = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$b = LocalizeMixin$b(BaseComponent$b);
@@ -77621,7 +78757,7 @@ let FormControl$b = class FormControl extends BaseLocalizedComponent$b {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -77869,7 +79005,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -78031,14 +79167,80 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
 };
 
+const ARIA_IDREF_ATTRIBUTES$2 = new Map([
+    ['aria-activedescendant', 'ariaActivedescendantElement'],
+    ['aria-controls', 'ariaControlsElements'],
+    ['aria-describedby', 'ariaDescribedByElements'],
+    ['aria-details', 'ariaDetailsElements'],
+    ['aria-errormessage', 'ariaErrormessageElements'],
+    ['aria-flowto', 'ariaFlowtoElements'],
+    ['aria-labelledby', 'ariaLabelledByElements'],
+    ['aria-owns', 'ariaOwnsElements'],
+]);
+function resolveAriaIdRefs$2(element, value) {
+    const ids = value
+        .trim()
+        .split(/\s+/)
+        .filter((id) => id.length > 0);
+    if (ids.length === 0)
+        return null;
+    const root = element.getRootNode();
+    let resolvedElements = [];
+    if (root instanceof ShadowRoot) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else if (root instanceof Document) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    if (resolvedElements.filter((el) => el !== null).length === 0) {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    const validElements = resolvedElements.filter((el) => el !== null);
+    return validElements.length === ids.length ? validElements : null;
+}
+function setInternalsProperty$2(el, name, resolvedElements) {
+    if (name === 'aria-activedescendant') {
+        const [firstElement] = resolvedElements;
+        // eslint-disable-next-line no-param-reassign
+        el[name] = firstElement;
+    }
+    else {
+        // eslint-disable-next-line no-param-reassign
+        el[name] = resolvedElements;
+    }
+}
 let SetAttributesDirective$2 = class SetAttributesDirective extends i$2 {
     update(part, [attributes]) {
         const el = part.element;
+        const internals = el.internals ?? null;
         for (const [name, value] of Object.entries(attributes)) {
-            if (value != null)
-                el.setAttribute(name, value);
-            else
+            if (value == null) {
                 el.removeAttribute(name);
+            }
+            else {
+                const internalsPropertyName = ARIA_IDREF_ATTRIBUTES$2.get(name);
+                if (internalsPropertyName) {
+                    const resolvedElements = resolveAriaIdRefs$2(el, String(value));
+                    if (resolvedElements) {
+                        if (internals) {
+                            // Set on ElementInternals
+                            setInternalsProperty$2(internals, internalsPropertyName, resolvedElements);
+                        }
+                        else {
+                            // Set internals property on shadowdom item
+                            el.setAttribute(name, String(value));
+                            setInternalsProperty$2(el, internalsPropertyName, resolvedElements);
+                        }
+                    }
+                }
+                else {
+                    // Non-ARIA IDREF attributes: set normally
+                    el.setAttribute(name, String(value));
+                }
+            }
         }
         return null;
     }
@@ -78406,6 +79608,26 @@ let BaseComponent$a = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$a = LocalizeMixin$a(BaseComponent$a);
@@ -78838,7 +80060,7 @@ let FormControl$a = class FormControl extends BaseLocalizedComponent$a {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -79086,7 +80308,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -80382,6 +81604,10 @@ select.is-invalid {
 }
 select.just-validate-success-field {
   border: 1px solid var(--bsi-color-border-success);
+}
+
+select {
+  line-height: 1.528;
 }`;
 
 let ItSelect = class ItSelect extends FormControl$a {
@@ -80975,6 +82201,26 @@ let BaseComponent$9 = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$9 = LocalizeMixin$9(BaseComponent$9);
@@ -81407,7 +82653,7 @@ let FormControl$9 = class FormControl extends BaseLocalizedComponent$9 {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -81655,7 +82901,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -84692,14 +85938,80 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
 };
 
+const ARIA_IDREF_ATTRIBUTES$1 = new Map([
+    ['aria-activedescendant', 'ariaActivedescendantElement'],
+    ['aria-controls', 'ariaControlsElements'],
+    ['aria-describedby', 'ariaDescribedByElements'],
+    ['aria-details', 'ariaDetailsElements'],
+    ['aria-errormessage', 'ariaErrormessageElements'],
+    ['aria-flowto', 'ariaFlowtoElements'],
+    ['aria-labelledby', 'ariaLabelledByElements'],
+    ['aria-owns', 'ariaOwnsElements'],
+]);
+function resolveAriaIdRefs$1(element, value) {
+    const ids = value
+        .trim()
+        .split(/\s+/)
+        .filter((id) => id.length > 0);
+    if (ids.length === 0)
+        return null;
+    const root = element.getRootNode();
+    let resolvedElements = [];
+    if (root instanceof ShadowRoot) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else if (root instanceof Document) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    if (resolvedElements.filter((el) => el !== null).length === 0) {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    const validElements = resolvedElements.filter((el) => el !== null);
+    return validElements.length === ids.length ? validElements : null;
+}
+function setInternalsProperty$1(el, name, resolvedElements) {
+    if (name === 'aria-activedescendant') {
+        const [firstElement] = resolvedElements;
+        // eslint-disable-next-line no-param-reassign
+        el[name] = firstElement;
+    }
+    else {
+        // eslint-disable-next-line no-param-reassign
+        el[name] = resolvedElements;
+    }
+}
 let SetAttributesDirective$1 = class SetAttributesDirective extends i$2 {
     update(part, [attributes]) {
         const el = part.element;
+        const internals = el.internals ?? null;
         for (const [name, value] of Object.entries(attributes)) {
-            if (value != null)
-                el.setAttribute(name, value);
-            else
+            if (value == null) {
                 el.removeAttribute(name);
+            }
+            else {
+                const internalsPropertyName = ARIA_IDREF_ATTRIBUTES$1.get(name);
+                if (internalsPropertyName) {
+                    const resolvedElements = resolveAriaIdRefs$1(el, String(value));
+                    if (resolvedElements) {
+                        if (internals) {
+                            // Set on ElementInternals
+                            setInternalsProperty$1(internals, internalsPropertyName, resolvedElements);
+                        }
+                        else {
+                            // Set internals property on shadowdom item
+                            el.setAttribute(name, String(value));
+                            setInternalsProperty$1(el, internalsPropertyName, resolvedElements);
+                        }
+                    }
+                }
+                else {
+                    // Non-ARIA IDREF attributes: set normally
+                    el.setAttribute(name, String(value));
+                }
+            }
         }
         return null;
     }
@@ -85067,6 +86379,26 @@ let BaseComponent$8 = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$8 = LocalizeMixin$8(BaseComponent$8);
@@ -85499,7 +86831,7 @@ let FormControl$8 = class FormControl extends BaseLocalizedComponent$8 {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -85747,7 +87079,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -86215,6 +87547,26 @@ let BaseComponent$7 = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$7 = LocalizeMixin$7(BaseComponent$7);
@@ -86647,7 +87999,7 @@ let FormControl$7 = class FormControl extends BaseLocalizedComponent$7 {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -86895,7 +88247,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -89001,6 +90353,26 @@ let BaseComponent$6 = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$6 = LocalizeMixin$6(BaseComponent$6);
@@ -89433,7 +90805,7 @@ let FormControl$6 = class FormControl extends BaseLocalizedComponent$6 {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -89759,7 +91131,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -90273,14 +91645,80 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
 };
 
+const ARIA_IDREF_ATTRIBUTES = new Map([
+    ['aria-activedescendant', 'ariaActivedescendantElement'],
+    ['aria-controls', 'ariaControlsElements'],
+    ['aria-describedby', 'ariaDescribedByElements'],
+    ['aria-details', 'ariaDetailsElements'],
+    ['aria-errormessage', 'ariaErrormessageElements'],
+    ['aria-flowto', 'ariaFlowtoElements'],
+    ['aria-labelledby', 'ariaLabelledByElements'],
+    ['aria-owns', 'ariaOwnsElements'],
+]);
+function resolveAriaIdRefs(element, value) {
+    const ids = value
+        .trim()
+        .split(/\s+/)
+        .filter((id) => id.length > 0);
+    if (ids.length === 0)
+        return null;
+    const root = element.getRootNode();
+    let resolvedElements = [];
+    if (root instanceof ShadowRoot) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else if (root instanceof Document) {
+        resolvedElements = ids.map((id) => root.getElementById(id));
+    }
+    else {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    if (resolvedElements.filter((el) => el !== null).length === 0) {
+        resolvedElements = ids.map((id) => document.getElementById(id));
+    }
+    const validElements = resolvedElements.filter((el) => el !== null);
+    return validElements.length === ids.length ? validElements : null;
+}
+function setInternalsProperty(el, name, resolvedElements) {
+    if (name === 'aria-activedescendant') {
+        const [firstElement] = resolvedElements;
+        // eslint-disable-next-line no-param-reassign
+        el[name] = firstElement;
+    }
+    else {
+        // eslint-disable-next-line no-param-reassign
+        el[name] = resolvedElements;
+    }
+}
 class SetAttributesDirective extends i$2 {
     update(part, [attributes]) {
         const el = part.element;
+        const internals = el.internals ?? null;
         for (const [name, value] of Object.entries(attributes)) {
-            if (value != null)
-                el.setAttribute(name, value);
-            else
+            if (value == null) {
                 el.removeAttribute(name);
+            }
+            else {
+                const internalsPropertyName = ARIA_IDREF_ATTRIBUTES.get(name);
+                if (internalsPropertyName) {
+                    const resolvedElements = resolveAriaIdRefs(el, String(value));
+                    if (resolvedElements) {
+                        if (internals) {
+                            // Set on ElementInternals
+                            setInternalsProperty(internals, internalsPropertyName, resolvedElements);
+                        }
+                        else {
+                            // Set internals property on shadowdom item
+                            el.setAttribute(name, String(value));
+                            setInternalsProperty(el, internalsPropertyName, resolvedElements);
+                        }
+                    }
+                }
+                else {
+                    // Non-ARIA IDREF attributes: set normally
+                    el.setAttribute(name, String(value));
+                }
+            }
         }
         return null;
     }
@@ -90648,6 +92086,26 @@ let BaseComponent$5 = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$5 = LocalizeMixin$5(BaseComponent$5);
@@ -91080,7 +92538,7 @@ let FormControl$5 = class FormControl extends BaseLocalizedComponent$5 {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -91328,7 +92786,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -92436,6 +93894,26 @@ let BaseComponent$4 = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$4 = LocalizeMixin$4(BaseComponent$4);
@@ -92868,7 +94346,7 @@ let FormControl$4 = class FormControl extends BaseLocalizedComponent$4 {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -93116,7 +94594,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -94020,6 +95498,26 @@ let BaseComponent$3 = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$3 = LocalizeMixin$3(BaseComponent$3);
@@ -94452,7 +95950,7 @@ let FormControl$3 = class FormControl extends BaseLocalizedComponent$3 {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -94700,7 +96198,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -97948,6 +99446,26 @@ let BaseComponent$2 = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$2 = LocalizeMixin$2(BaseComponent$2);
@@ -98380,7 +99898,7 @@ let FormControl$2 = class FormControl extends BaseLocalizedComponent$2 {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -98628,7 +100146,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -102096,6 +103614,26 @@ let BaseComponent$1 = class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 };
 const BaseLocalizedComponent$1 = LocalizeMixin$1(BaseComponent$1);
@@ -102528,7 +104066,7 @@ let FormControl$1 = class FormControl extends BaseLocalizedComponent$1 {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -102776,7 +104314,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
@@ -106811,10 +108349,6 @@ select.just-validate-success-field {
   display: inline-block;
 }
 
-.it-form__control {
-  display: none;
-}
-
 input.upload-avatar {
   position: absolute;
   z-index: 1;
@@ -106960,12 +108494,18 @@ let ItUploadAvatar = class ItUploadAvatar extends FormControl$1 {
         if (changedProperties.has('src') && !this._currentSrc) {
             this._currentSrc = this.src;
         }
-    }
-    updated(changedProperties) {
-        super.updated?.(changedProperties);
-        // Re-evaluate validity whenever the form value changes.
-        if (changedProperties.has('_currentFile') || changedProperties.has('_currentSrc')) {
-            this.handleValidationMessages();
+        // Keep the displayed validation message in sync with the value here (pre-render) rather
+        // than in updated(), so picking/clearing a file refreshes it without scheduling a second
+        // render — avoids Lit's "scheduled an update after an update completed" warning. The native
+        // `?required` attribute still drives checkValidity()/the constraint bubble. Guarded by
+        // `hasUpdated` because `inputElement` only exists once the first render has produced the DOM.
+        if (this.hasUpdated &&
+            !this.customValidation &&
+            (changedProperties.has('_currentFile') || changedProperties.has('_currentSrc'))) {
+            const hasValue = Boolean(this._currentFile || this._currentSrc);
+            const message = this.required && !hasValue ? this.$t('validityRequired') : '';
+            this.inputElement?.setCustomValidity(message);
+            this.validationMessage = message;
         }
     }
     _handleFileChange(e) {
@@ -106988,13 +108528,14 @@ let ItUploadAvatar = class ItUploadAvatar extends FormControl$1 {
             composed: true,
         }));
     }
-    // Forward wrapper clicks to the hidden file input.
-    // If the click already originated from the label (which has a `for` association), skip to
     render() {
         const labelText = this.$t('upload_avatar_label');
+        const fileInputLabel = this.required ? labelText : labelText;
         const overlayText = this.overlayLabel ?? this.$t('upload_avatar_overlay_label');
-        const proxyValue = this._currentSrc || this._currentFile?.name || '';
+        // A pre-filled `src` or a freshly selected file both satisfy `required`.
+        const hasValue = Boolean(this._currentFile || this._currentSrc);
         const isInvalid = this.formControlController.submittedOnce && this.validationMessage.length > 0;
+        const feedbackId = `invalid-feedback-${this._id}`;
         return b `
       <div class="avatar-upload-wrapper size-${this.size}">
         <it-avatar
@@ -107008,11 +108549,15 @@ let ItUploadAvatar = class ItUploadAvatar extends FormControl$1 {
         <div class="upload-avatar-container">
           <input
             type="file"
-            class="upload-avatar"
+            class="upload-avatar it-form__control"
             id="${this._id}"
             accept="${this.accept}"
             ?disabled="${this.disabled}"
-            aria-label="${labelText}"
+            ?required="${this.required && !hasValue}"
+            aria-label="${fileInputLabel}"
+            aria-required="${this.required ? 'true' : A}"
+            aria-invalid="${isInvalid ? 'true' : 'false'}"
+            aria-describedby="${o$2(isInvalid ? feedbackId : undefined)}"
             @change="${this._handleFileChange}"
           />
           <label part="overlay-label" for="${this._id}" class="it-upload-avatar-label-container" aria-hidden="true">
@@ -107026,17 +108571,8 @@ let ItUploadAvatar = class ItUploadAvatar extends FormControl$1 {
         </div>
       </div>
 
-      <!-- Hidden proxy input: drives native required/validity checking via FormControl base class -->
-      <input
-        type="text"
-        class="it-form__control"
-        .value="${proxyValue}"
-        ?required="${this.required}"
-        tabindex="-1"
-        aria-hidden="true"
-      />
-
       <div
+        id="${feedbackId}"
         class="invalid-feedback form-feedback form-text just-validate-error-label"
         role="alert"
         ?hidden=${!isInvalid}
@@ -108219,8 +109755,13 @@ blockquote.blockquote-card.dark .blockquote-footer,
   display: inline-block;
 }
 
-.it-form__control {
+.upload-dragdrop.loading .upload-dragdrop-select-wrap,
+.upload-dragdrop.success .upload-dragdrop-select-wrap {
   display: none;
+}
+
+.invalid-feedback:not([hidden]) {
+  display: block;
 }
 
 .upload-dragdrop-loading it-progress {
@@ -108244,7 +109785,14 @@ blockquote.blockquote-card.dark .blockquote-footer,
   display: flex;
   align-items: center;
   gap: var(--bsi-spacing-xxs, 8px);
+}
+
+.upload-dragdrop-text :is(h1, h2, h3, h4, h6) {
+  margin: 0;
+  color: var(--bsi-color-text-base);
 }`;
+
+const DRAG_DROP_HEADING_LEVELS = ['h2', 'h3', 'h4', 'h5', 'h6'];
 
 registerTranslation$1(translation$1$1);
 registerTranslation$1(translation$3);
@@ -108259,6 +109807,8 @@ let ItUploadDragDrop = class ItUploadDragDrop extends FormControl$1 {
             value: (el) => el._currentFile,
             assumeInteractionOn: ['it-change'],
         });
+        /** Heading level for the title element. Defaults to 'h5'; visual size stays at h5. */
+        this.headingLevel = 'h5';
         /** The currently selected File (null until file is chosen/dropped). */
         this._currentFile = null;
         this._state = 'idle';
@@ -108268,6 +109818,9 @@ let ItUploadDragDrop = class ItUploadDragDrop extends FormControl$1 {
         this._fileType = '';
         this._indeterminate = false;
         this._autoStarted = false;
+    }
+    getHeadingLevel() {
+        return DRAG_DROP_HEADING_LEVELS.includes(this.headingLevel) ? this.headingLevel : 'h5';
     }
     get _formClass() {
         return this.composeClass('upload-dragdrop', this._state === 'dragover' ? 'dragover' : '', this._state === 'loading' ? 'loading' : '', this._state === 'success' ? 'success' : '');
@@ -108421,6 +109974,11 @@ let ItUploadDragDrop = class ItUploadDragDrop extends FormControl$1 {
         const hasFile = this._fileName.length > 0;
         // Title: slot or default per state
         const titleText = hasFile ? this._fileName : this.$t('upload_dd_title');
+        const fileInputLabel = this.required ? this.$t('upload_label') : this.$t('upload_label');
+        const canSelect = this._state === 'idle' || this._state === 'dragover';
+        const isInvalid = this.formControlController.submittedOnce && this.validationMessage.length > 0;
+        const feedbackId = `invalid-feedback-${this._id}`;
+        const headingTag = s$1(this.getHeadingLevel());
         return b `
       <div class="upload-dragdrop-text">
         ${hasFile && this._fileWeight
@@ -108431,28 +109989,35 @@ let ItUploadDragDrop = class ItUploadDragDrop extends FormControl$1 {
               </p>
             `
             : A}
-        <h5>
+        ${u$2 `<${headingTag} class="h5">
           <slot name="title">${titleText}</slot>
-        </h5>
-        ${this._state === 'idle' || this._state === 'dragover'
+        </${headingTag}>`} ${canSelect
             ? b `
               <p>
                 <slot name="description">${this.$t('upload_dd_description')}</slot>
               </p>
-              <p>
-                <input
-                  type="file"
-                  class="upload-dragdrop-input"
-                  id="${this._id}"
-                  accept="${o$2(this.accept)}"
-                  ?disabled="${this.disabled}"
-                  aria-label="${this.$t('upload_label')}"
-                  @change="${this._onFileInputChange}"
-                />
-                <label for="${this._id}">${this.$t('upload_dd_select')}</label>
-              </p>
             `
             : A}
+        <!-- The file input is the form-control validity participant, so it must exist in every
+             state for the FormControl base class to read its validity. It is the real focusable
+             control native required/validity now anchors to (no hidden proxy). The select affordance
+             (label) and this wrapper are hidden via CSS in loading/success states. -->
+        <p class="upload-dragdrop-select-wrap">
+          <input
+            type="file"
+            class="upload-dragdrop-input it-form__control"
+            id="${this._id}"
+            accept="${o$2(this.accept)}"
+            ?disabled="${this.disabled}"
+            ?required="${this.required && !this._currentFile}"
+            aria-label="${fileInputLabel}"
+            aria-required="${this.required ? 'true' : A}"
+            aria-invalid="${isInvalid ? 'true' : 'false'}"
+            aria-describedby="${o$2(isInvalid ? feedbackId : undefined)}"
+            @change="${this._onFileInputChange}"
+          />
+          ${canSelect ? b `<label for="${this._id}">${this.$t('upload_dd_select')}</label>` : A}
+        </p>
         ${this._state === 'loading' ? b `<p>${this.$t('upload_dd_status_loading')}</p>` : A}
         ${this._state === 'success' ? b `<p>${this.$t('upload_dd_status_success')}</p>` : A}
       </div>
@@ -108461,6 +110026,7 @@ let ItUploadDragDrop = class ItUploadDragDrop extends FormControl$1 {
     render() {
         const statusText = this._getStatusText();
         const isInvalid = this.formControlController.submittedOnce && this.validationMessage.length > 0;
+        const feedbackId = `invalid-feedback-${this._id}`;
         return b `
       <div
         part="drop-zone"
@@ -108494,17 +110060,12 @@ let ItUploadDragDrop = class ItUploadDragDrop extends FormControl$1 {
         <div role="status" aria-live="polite" aria-atomic="true" class="visually-hidden">${statusText}</div>
       </div>
 
-      <!-- Hidden proxy input: drives native required/validity checking via FormControl base class -->
-      <input
-        type="text"
-        class="it-form__control"
-        .value="${this._currentFile?.name || ''}"
-        ?required="${this.required}"
-        tabindex="-1"
-        aria-hidden="true"
-      />
-
-      <div class="invalid-feedback form-feedback form-text just-validate-error-label" role="alert">
+      <div
+        id="${feedbackId}"
+        class="invalid-feedback form-feedback form-text just-validate-error-label"
+        role="alert"
+        ?hidden=${!isInvalid}
+      >
         ${isInvalid ? this.validationMessage : A}
       </div>
     `;
@@ -108523,6 +110084,10 @@ __decorate$1([
     n$3({ type: String }),
     __metadata$1("design:type", String)
 ], ItUploadDragDrop.prototype, "illustration", void 0);
+__decorate$1([
+    n$3({ type: String, attribute: 'heading-level' }),
+    __metadata$1("design:type", String)
+], ItUploadDragDrop.prototype, "headingLevel", void 0);
 __decorate$1([
     r$G(),
     __metadata$1("design:type", Object)
@@ -179221,6 +180786,26 @@ class BaseComponent extends i$3 {
         // generate internal _id
         const prefix = this.id?.length > 0 ? this.id : this.tagName.toLowerCase();
         this._id = this.generateId(prefix);
+        this.ariaAttributesObserver = new MutationObserver((mutations) => {
+            const shouldUpdate = mutations.some((mutation) => {
+                if (mutation.type !== 'attributes' || !mutation.attributeName) {
+                    return false;
+                }
+                return mutation.attributeName === 'it-role' || mutation.attributeName.startsWith('it-aria-');
+            });
+            if (shouldUpdate) {
+                this.requestUpdate();
+            }
+        });
+        this.ariaAttributesObserver.observe(this, {
+            attributes: true,
+            attributeOldValue: true,
+        });
+    }
+    disconnectedCallback() {
+        this.ariaAttributesObserver?.disconnect();
+        this.ariaAttributesObserver = undefined;
+        super.disconnectedCallback();
     }
 }
 const BaseLocalizedComponent = LocalizeMixin(BaseComponent);
@@ -179653,7 +181238,7 @@ class FormControl extends BaseLocalizedComponent {
         });
         // TODO: verificare se serve davvero con il fatto che usiamo form-controller
         // static formAssociated = true;
-        //   @property()
+        // @property()
         // internals = this.attachInternals();
         this._touched = false;
         /** The name of the input, submitted as a name/value pair with form data. */
@@ -179931,7 +181516,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-alpha.17',
+        version: '1.0.0-alpha.18',
     };
 }
 
