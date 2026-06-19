@@ -1,5 +1,16 @@
 # @italia/card
 
+## 1.0.0-alpha.18
+
+### Minor Changes
+
+- [#443](https://github.com/italia/dev-kit-italia/pull/443) [`2e97096`](https://github.com/italia/dev-kit-italia/commit/2e970961ebe5f2bfac050b445b81e88cdee75487) Thanks [@pnicolli](https://github.com/pnicolli)! - Added `heading-size` property to the card component
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
 ## 1.0.0-alpha.17
 
 ### Patch Changes

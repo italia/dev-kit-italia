@@ -1,5 +1,16 @@
 # @italia/select
 
+## 1.0.0-alpha.18
+
+### Patch Changes
+
+- [`4279133`](https://github.com/italia/dev-kit-italia/commit/42791332cab4e9fbe0bbae5dec23507f23b84354) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fixed select lineheight, because in real form is height was different from input
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
 ## 1.0.0-alpha.17
 
 ### Patch Changes
