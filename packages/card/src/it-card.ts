@@ -8,11 +8,13 @@ import {
   CARD_SHADOWS,
   CARD_VARIANTS,
   CARD_HEADING_LEVELS,
+  CARD_HEADING_SIZES,
   CardShadow,
   type CardBorderColor,
   type CardImageRatio,
   type CardVariant,
   type CardHeadingLevel,
+  type CardHeadingSize,
 } from './types.js';
 import styles from './card.scss';
 
@@ -40,6 +42,9 @@ export class ItCard extends BaseComponent {
 
   @property({ type: String, attribute: 'heading-level' })
   headingLevel: CardHeadingLevel = 'h3';
+
+  @property({ type: String, attribute: 'heading-size' })
+  headingSize?: CardHeadingSize;
 
   @property({ type: String, attribute: 'it-class' })
   itClass: string | undefined;
@@ -106,6 +111,11 @@ export class ItCard extends BaseComponent {
     if (this.headingLevel && !CARD_HEADING_LEVELS.includes(this.headingLevel)) {
       this.logger.warn(
         `Invalid heading-level value, falling back to default. Expected one of: ${CARD_HEADING_LEVELS.join(', ')}`,
+      );
+    }
+    if (this.headingSize && !CARD_HEADING_SIZES.includes(this.headingSize)) {
+      this.logger.warn(
+        `Invalid heading-size value, falling back to default. Expected one of: ${CARD_HEADING_SIZES.join(', ')}`,
       );
     }
   }
@@ -183,18 +193,22 @@ export class ItCard extends BaseComponent {
       'it-card-profile-name': this.variant === 'profile' || this.variant === 'location',
       'it-card-title-icon': hasTitleIcon,
       h4:
-        this.variant === 'inline-mini' ||
-        this.variant === 'inline-mini-reverse' ||
-        this.variant === 'profile' ||
-        this.variant === 'location',
+        this.headingSize === 'sm' ||
+        (this.headingSize === undefined &&
+          (this.variant === 'inline-mini' ||
+            this.variant === 'inline-mini-reverse' ||
+            this.variant === 'profile' ||
+            this.variant === 'location')),
       h3:
-        this.headingLevel !== 'h3' &&
-        !(
-          this.variant === 'inline-mini' ||
-          this.variant === 'inline-mini-reverse' ||
-          this.variant === 'profile' ||
-          this.variant === 'location'
-        ),
+        this.headingSize === 'md' ||
+        (this.headingSize === undefined &&
+          this.headingLevel !== 'h3' &&
+          !(
+            this.variant === 'inline-mini' ||
+            this.variant === 'inline-mini-reverse' ||
+            this.variant === 'profile' ||
+            this.variant === 'location'
+          )),
     });
 
     const headingTag = unsafeStatic(this.getHeadingLevel());

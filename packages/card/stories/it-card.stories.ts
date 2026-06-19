@@ -4,10 +4,14 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import {
   CARD_BORDER_COLORS,
   CARD_HEADING_LEVELS,
+  CARD_HEADING_SIZES,
+  CARD_IMAGE_RATIOS,
   CARD_VARIANTS,
   CARD_SHADOWS,
   type CardHeadingLevel,
+  type CardHeadingSize,
   type CardBorderColor,
+  type CardImageRatio,
   type CardVariant,
   type CardShadow,
 } from '../src/types.js';
@@ -15,8 +19,10 @@ import {
 interface CardProps {
   fullHeight?: boolean;
   variant: CardVariant;
+  ratio?: CardImageRatio;
   borderTop?: CardBorderColor;
   headingLevel?: CardHeadingLevel;
+  headingSize?: CardHeadingSize;
   shadow?: CardShadow;
   border?: '0';
   'actions-aria-label'?: string;
@@ -49,6 +55,12 @@ const meta = {
       description: 'Variante di layout della card',
       table: { defaultValue: { summary: 'default' } },
     },
+    ratio: {
+      control: 'select',
+      type: 'string',
+      options: [undefined, ...CARD_IMAGE_RATIOS],
+      description: "Rapporto d'aspetto dell'immagine della card.",
+    },
     borderTop: {
       name: 'border-top',
       control: 'select',
@@ -63,6 +75,14 @@ const meta = {
       options: CARD_HEADING_LEVELS,
       description:
         'Livello di heading da usare per il titolo della card. Se non specificato, viene usato h3. Vedi la sezione "Accessibilità" della documentazione per maggiori dettagli.',
+    },
+    headingSize: {
+      name: 'heading-size',
+      control: 'select',
+      type: 'string',
+      options: [undefined, ...CARD_HEADING_SIZES],
+      description:
+        'Dimensione visiva del titolo della card. Se "sm" applica la classe h4, se "md" applica la classe h3. Se non specificato, la dimensione è determinata dalla variante.',
     },
     shadow: {
       control: 'select',
@@ -87,23 +107,6 @@ const meta = {
       description:
         "Aggiunge classi custom alla card generata. Utile per impostare padding custom all'interno della Card.",
     },
-    // scrollLimit: {
-    //   name: 'scroll-limit',
-    //   control: 'number',
-    //   type: 'number',
-    //   description: "Posizione Y espressa in pixel alla quale far comparire l'elemento",
-    //   table: { defaultValue: { summary: '100' } },
-    // },
-    // borderColor: {
-    //   name: 'border-color',
-    //   control: 'text',
-    //   type: 'string',
-    //   defaultValue: 'white',
-    //   description: 'Colore del bordo',
-    //   table: {
-    //     defaultValue: { summary: 'Default: "white". Se è attivo l\'attributo "inverse", il default è "primary".' },
-    //   },
-    // },
   },
 } satisfies Meta<CardProps>;
 
@@ -142,6 +145,8 @@ export const EsempioInterattivo: Story = {
       ?full-height=${args.fullHeight}
       border-top=${ifDefined(args.borderTop)}
       heading-level=${ifDefined(args.headingLevel)}
+      heading-size=${ifDefined(args.headingSize)}
+      ratio=${ifDefined(args.ratio)}
       shadow=${ifDefined(args.shadow)}
       border=${ifDefined(args.border)}
       it-class=${ifDefined(args['it-class'])}
