@@ -21,6 +21,9 @@ export class ItPopover extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'no-flip' }) noFlip: boolean = false;
 
+  /** Centre the arrow on the trigger instead of the fixed notch position. Used by avatar dropdowns. */
+  @property({ type: Boolean, attribute: 'center-arrow' }) centerArrow: boolean = false;
+
   @query('slot[name="trigger"]') private _triggerSlot!: HTMLSlotElement;
 
   @query('slot[name="content"]') private _contentSlot!: HTMLSlotElement;
@@ -160,8 +163,13 @@ export class ItPopover extends BaseComponent {
           const triggerCenter = triggerRect.left + triggerRect.width / 2;
           const arrowLeft = triggerCenter - contentRect.left - this._triggerElement.offsetWidth / 2 + 20;
 
+          // When `centerArrow` is set (e.g. avatar dropdowns), centre the arrow
+          // on the trigger using Floating UI's computed offset. Otherwise keep
+          // the fixed notch position relied on by standard dropdowns.
+          const left = this.centerArrow ? arrowX : arrowLeft;
+
           Object.assign(this._arrowElement!.style, {
-            left: arrowX != null ? `${arrowLeft}px` : '',
+            left: arrowX != null ? `${left}px` : '',
 
             top: arrowY != null ? `${arrowY}px` : '',
             right: '',

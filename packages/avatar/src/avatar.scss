@@ -36,6 +36,43 @@ slot[name='extra-text']::slotted(*) {
   a .avatar:hover {
     text-decoration: none;
   }
+
+  .avatar-presence {
+    bottom: var(--bsi-avatar-dot-offset-top);
+  }
+
+  .avatar-presence,
+  .avatar-status {
+    box-sizing: border-box;
+  }
+}
+
+// Per-size dot overrides — mirror Bootstrap Italia's `.avatar.size-*` custom
+// properties. The presence/status dots are rendered as siblings of `.avatar`
+// (inside `.avatar-wrapper`), so they don't inherit the per-size values BSI
+// sets on `.avatar` itself. Re-declaring them on the host propagates the
+// correct offsets/sizes to the dots. See issue #431.
+:host([size='xs']),
+:host([size='sm']) {
+  --#{$prefix}avatar-dot-border-size: 1px;
+}
+
+:host([size='md']) {
+  --#{$prefix}avatar-dot-offset-right: -4px;
+}
+
+:host([size='lg']) {
+  --#{$prefix}avatar-dot-size: 14px;
+  --#{$prefix}avatar-dot-offset-right: -4px;
+}
+
+:host([size='xl']) {
+  --#{$prefix}avatar-dot-size: 16px;
+}
+
+:host([size='xxl']) {
+  --#{$prefix}avatar-dot-size: 20px;
+  --#{$prefix}avatar-dot-offset-right: 4px;
 }
 
 :host([type='text']) {
