@@ -74,13 +74,20 @@ export class ItUploadAvatar extends FormControl {
     if (changedProperties.has('src') && !this._currentSrc) {
       this._currentSrc = this.src;
     }
-  }
-
-  override updated(changedProperties: Map<string | number | symbol, unknown>) {
-    super.updated?.(changedProperties);
-    // Re-evaluate validity whenever the form value changes.
-    if (changedProperties.has('_currentFile') || changedProperties.has('_currentSrc')) {
-      this.handleValidationMessages();
+    // Keep the displayed validation message in sync with the value here (pre-render) rather
+    // than in updated(), so picking/clearing a file refreshes it without scheduling a second
+    // render — avoids Lit's "scheduled an update after an update completed" warning. The native
+    // `?required` attribute still drives checkValidity()/the constraint bubble. Guarded by
+    // `hasUpdated` because `inputElement` only exists once the first render has produced the DOM.
+    if (
+      this.hasUpdated &&
+      !this.customValidation &&
+      (changedProperties.has('_currentFile') || changedProperties.has('_currentSrc'))
+    ) {
+      const hasValue = Boolean(this._currentFile || this._currentSrc);
+      const message = this.required && !hasValue ? this.$t('validityRequired') : '';
+      this.inputElement?.setCustomValidity(message);
+      this.validationMessage = message;
     }
   }
 
@@ -110,14 +117,14 @@ export class ItUploadAvatar extends FormControl {
     );
   }
 
-  // Forward wrapper clicks to the hidden file input.
-  // If the click already originated from the label (which has a `for` association), skip to
-
   override render() {
     const labelText = this.$t('upload_avatar_label');
+    const fileInputLabel = this.required ? labelText : labelText;
     const overlayText = this.overlayLabel ?? this.$t('upload_avatar_overlay_label');
-    const proxyValue = this._currentSrc || this._currentFile?.name || '';
+    // A pre-filled `src` or a freshly selected file both satisfy `required`.
+    const hasValue = Boolean(this._currentFile || this._currentSrc);
     const isInvalid = this.formControlController.submittedOnce && this.validationMessage.length > 0;
+    const feedbackId = `invalid-feedback-${this._id}`;
 
     return html`
       <div class="avatar-upload-wrapper size-${this.size}">
@@ -132,11 +139,15 @@ export class ItUploadAvatar extends FormControl {
         <div class="upload-avatar-container">
           <input
             type="file"
-            class="upload-avatar"
+            class="upload-avatar it-form__control"
             id="${this._id!}"
             accept="${this.accept}"
             ?disabled="${this.disabled}"
-            aria-label="${labelText}"
+            ?required="${this.required && !hasValue}"
+            aria-label="${fileInputLabel}"
+            aria-required="${this.required ? 'true' : nothing}"
+            aria-invalid="${isInvalid ? 'true' : 'false'}"
+            aria-describedby="${ifDefined(isInvalid ? feedbackId : undefined)}"
             @change="${this._handleFileChange}"
           />
           <label part="overlay-label" for="${this._id!}" class="it-upload-avatar-label-container" aria-hidden="true">
@@ -150,17 +161,8 @@ export class ItUploadAvatar extends FormControl {
         </div>
       </div>
 
-      <!-- Hidden proxy input: drives native required/validity checking via FormControl base class -->
-      <input
-        type="text"
-        class="it-form__control"
-        .value="${proxyValue}"
-        ?required="${this.required}"
-        tabindex="-1"
-        aria-hidden="true"
-      />
-
       <div
+        id="${feedbackId}"
         class="invalid-feedback form-feedback form-text just-validate-error-label"
         role="alert"
         ?hidden=${!isInvalid}
