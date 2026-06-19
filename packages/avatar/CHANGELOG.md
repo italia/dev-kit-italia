@@ -1,5 +1,21 @@
 # @italia/avatar
 
+## 1.0.0-alpha.18
+
+### Minor Changes
+
+- [#437](https://github.com/italia/dev-kit-italia/pull/437) [`5cde271`](https://github.com/italia/dev-kit-italia/commit/5cde2712aad88ac8a16c69266e9c7f8826d11cf3) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fix avatar rendering differences vs Bootstrap Italia (#431):
+  - Presence/status dots now use the per-size dot offset/size, so they sit correctly on the circle edge instead of too far inward.
+  - The "+N" group balloon no longer shows the dropdown expand caret, keeping the number centred. Adds a `hide-expand-icon` property to `it-dropdown`.
+  - The avatar "+N" dropdown menu now centres its arrow on the trigger. Adds an opt-in `center-arrow` property to `it-dropdown` / `it-popover` (standard dropdowns keep the existing fixed notch position).
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
 ## 1.0.0-alpha.17
 
 ### Patch Changes

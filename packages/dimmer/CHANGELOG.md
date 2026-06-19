@@ -1,5 +1,16 @@
 # @italia/dimmer
 
+## 1.0.0-alpha.18
+
+### Patch Changes
+
+- [#438](https://github.com/italia/dev-kit-italia/pull/438) [`7c794fd`](https://github.com/italia/dev-kit-italia/commit/7c794fde49f70c8a42e63fa8d1123f14b4d52f21) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fixed browser-specific quirks with the accessibility trees
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
 ## 1.0.0-alpha.17
 
 ### Patch Changes

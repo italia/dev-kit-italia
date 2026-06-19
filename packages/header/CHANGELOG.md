@@ -1,5 +1,17 @@
 # @italia/header
 
+## 1.0.0-alpha.18
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`5cde271`](https://github.com/italia/dev-kit-italia/commit/5cde2712aad88ac8a16c69266e9c7f8826d11cf3)]:
+  - @italia/dropdown@1.0.0-alpha.18
+  - @italia/button@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+  - @italia/modal@1.0.0-alpha.18
+
 ## 1.0.0-alpha.17
 
 ### Patch Changes

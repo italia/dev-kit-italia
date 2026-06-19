@@ -1,5 +1,20 @@
 # @italia/upload
 
+## 1.0.0-alpha.18
+
+### Minor Changes
+
+- [#424](https://github.com/italia/dev-kit-italia/pull/424) [`23073ff`](https://github.com/italia/dev-kit-italia/commit/23073ff55d4f1606e723bdd42db7c64bc4c8a141) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Resolve a11y issues for it-upload-avatar and it-upload-drag-drop in form validation partecipation
+
+### Patch Changes
+
+- Updated dependencies [[`5cde271`](https://github.com/italia/dev-kit-italia/commit/5cde2712aad88ac8a16c69266e9c7f8826d11cf3)]:
+  - @italia/avatar@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+  - @italia/progress@1.0.0-alpha.18
+
 ## 1.0.0-alpha.17
 
 ### Patch Changes
