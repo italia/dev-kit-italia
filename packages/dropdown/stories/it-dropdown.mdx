@@ -39,16 +39,15 @@ Puoi specificare una variante tramite l'attributo `variant`, questa verrà appli
 
 ## Accessibilità
 
-Lo standard [WAI ARIA](https://www.w3.org/TR/wai-aria/) definisce un widget con proprietà [`role="menu"`](https://www.w3.org/TR/wai-aria/#menu), specifica per i menu applicativi con link o azioni.
+Per impostazione predefinita, il componente `it-dropdown` usa la semantica di una semplice lista HTML (`<ul>`/`<li>`), senza ruoli ARIA aggiuntivi. Questa è la scelta corretta nella maggior parte dei casi, in particolare quando il menu contiene link di navigazione o si trova all'interno di un elemento `<nav>` (ad es. header, megamenu).
 
-Questi menu possono contenere solo voci di menu, voci di menu di caselle di controllo, voci di menu dei pulsanti di opzione, gruppi di pulsanti di opzione e sottomenu.
+Lo standard [WAI ARIA](https://www.w3.org/TR/wai-aria/) definisce il [`role="menu"`](https://www.w3.org/TR/wai-aria/#menu) per i **menu applicativi** — ovvero menu che espongono comandi o azioni (come "Copia", "Taglia", "Incolla") in modo analogo ai menu di un'applicazione desktop. Puoi usarlo impostando l'attributo `it-role="menu"`, che assegna automaticamente il ruolo corretto anche agli elementi interni.
 
-I dropdown di **Dev Kit Italia** sono progettati per essere invece generici e applicabili a una varietà di situazioni.
-Per questo motivo, il componente `it-dropdown` ha come ruolo predefinito il ruolo `menu` e gestisce automaticamente il ruolo degli elementi interni, ma puoi modificare il ruolo del Dropdown generato da questo componente ad una semplice lista impostando l'attributo `it-role="list"`.
+> **Attenzione:** `role="menu"` non è adatto a menu di navigazione o a menu che contengono link a pagine. Non usarlo all'interno di un elemento `<nav>`.
 
 Questo componente comprende di base il supporto per la maggior parte delle interazioni standard del menu della tastiera, come la possibilità di spostarsi tra i singoli elementi `it-dropdown-item` usando i tasti freccia, e chiude il menu con il tasto ESC.
 
-Infine, dovrai inserire un'etichetta per il pulsante di attivazione del menu tramite l'attributo `label`, che verrà letta dagli screen reader.
+Dovrai inserire un'etichetta per il pulsante di attivazione del menu tramite l'attributo `label`, che verrà letta dagli screen reader.
 In alternativa, puoi omettere l'attributo `label` e aggiungere un attributo `it-aria-label` al componente `<it-dropdown>`.
 
 ## Varianti
@@ -137,3 +136,10 @@ Usa lo slot `prefix` per aggiungere agli elementi del menu un'icona illustrativa
 Aggiungi l'attributo `dark` al dropdown per ottenere la versione scura con colori primari invertiti.
 
 <Canvas of={Stories.MenuScuro} />
+
+### Menu azioni
+
+Usa `it-role="menu"` quando il dropdown espone comandi o azioni applicative (non link di navigazione).
+In questo caso il componente assegna automaticamente `role="menuitem"` agli elementi interni.
+
+<Canvas of={Stories.MenuAzioni} />

@@ -357,3 +357,17 @@ export const MenuScuro: Story = {
   argTypes: { ...disabledControls(['label', 'variant']) },
   decorators: [(Story) => html`<div style="${containerStyle}height:220px">${Story()}</div>`],
 };
+
+export const MenuAzioni: Story = {
+  render: (args) => html`
+    <it-dropdown label="Modifica" it-role="menu" variant=${args.variant}>
+      <it-dropdown-item>Copia</it-dropdown-item>
+      <it-dropdown-item>Taglia</it-dropdown-item>
+      <it-dropdown-item>Incolla</it-dropdown-item>
+      <it-dropdown-item separator></it-dropdown-item>
+      <it-dropdown-item>Elimina</it-dropdown-item>
+    </it-dropdown>
+  `,
+  argTypes: { ...disabledControls(['variant', 'itRole']) },
+  decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
+};

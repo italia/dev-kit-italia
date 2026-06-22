@@ -32,7 +32,7 @@ export class ItDropdownBase extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = false;
 
-  @property({ type: String, attribute: 'it-role' }) itRole: string = 'list';
+  @property({ type: String, attribute: 'it-role' }) itRole: 'list' | 'menu' | 'listbox' | 'tree' = 'list';
 
   @property({ type: String, attribute: 'it-aria-label' }) itAriaLabel: string = '';
 
@@ -191,7 +191,7 @@ export class ItDropdownBase extends BaseComponent {
         exportparts="focusable, icon, button, it-icon, it-button, dropdown-button, dropdown-icon-expand, popover-content"
         part="dropdown-popover"
         ?open=${this._popoverOpen}
-        offset=${ifDefined(this.offset)}
+        offset=${ifDefined(this.offset || undefined)}
         ?no-flip=${this.noFlip}
         ?center-arrow=${this.centerArrow}
         controlled
