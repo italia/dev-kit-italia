@@ -56051,7 +56051,10 @@ let ItHero = class ItHero extends BaseComponent$j {
     }
     _handleSlotBackgroundChange() {
         // Verifichiamo se l'array degli elementi assegnati è popolato
-        this._hasBackground = this._backgroundItems.length > 0;
+        const nextHasBackground = this._backgroundItems.length > 0;
+        if (this._hasBackground !== nextHasBackground) {
+            this._hasBackground = nextHasBackground;
+        }
     }
     _handleSlotTextChange(event) {
         const slot = event?.target ??
@@ -56059,9 +56062,12 @@ let ItHero = class ItHero extends BaseComponent$j {
             undefined;
         const textItems = slot?.assignedElements({ flatten: true }) ?? this._textItems ?? [];
         // Verifichiamo se l'array degli elementi assegnati è popolato
-        this._hasText = textItems.length > 0;
+        const nextHasText = textItems.length > 0;
+        if (this._hasText !== nextHasText) {
+            this._hasText = nextHasText;
+        }
         if (this.itAriaLabel) {
-            this._ariaLabelledBy = undefined;
+            this._labelledByEl = undefined;
             return;
         }
         let firstHeading = null;
@@ -56076,14 +56082,7 @@ let ItHero = class ItHero extends BaseComponent$j {
                 break;
             }
         }
-        if (!firstHeading) {
-            this._ariaLabelledBy = undefined;
-            return;
-        }
-        if (!firstHeading.id) {
-            firstHeading.id = this.generateId('hero-heading');
-        }
-        this._ariaLabelledBy = firstHeading.id;
+        this._labelledByEl = firstHeading ?? undefined;
     }
     firstUpdated() {
         this._handleSlotTextChange();
@@ -56093,15 +56092,31 @@ let ItHero = class ItHero extends BaseComponent$j {
             this._handleSlotTextChange();
         }
     }
+    updated() {
+        const section = this._sectionEl;
+        if (!section || !('ariaLabelledByElements' in section))
+            return;
+        // ariaLabelledByElements accepts element references directly, so the browser
+        // resolves the accessible name without requiring the ID to be in the same
+        // root — it works across shadow boundaries without IDREFs.
+        const nextLabelledBy = this._labelledByEl && !this.itAriaLabel ? [this._labelledByEl] : null;
+        const currentLabelledBy = section.ariaLabelledByElements;
+        const isSameLabelledBy = (nextLabelledBy === null && (!currentLabelledBy || currentLabelledBy.length === 0)) ||
+            (nextLabelledBy !== null &&
+                !!currentLabelledBy &&
+                currentLabelledBy.length === 1 &&
+                currentLabelledBy[0] === nextLabelledBy[0]);
+        if (!isSameLabelledBy) {
+            section.ariaLabelledByElements = nextLabelledBy;
+        }
+    }
     render() {
         const _hasOverlay = (this._hasBackground && this._hasText) || this.overlayColor;
-        const ariaLabelledBy = this.itAriaLabel ? undefined : this._ariaLabelledBy;
         return b `
       <section
         class="${this.composeClass('it-hero-wrapper', this.center ? 'it-text-centered' : '', _hasOverlay ? `it-overlay it-${this.overlayColor ?? 'dark'}` : '', this.overlap ? 'it-bottom-overlapping-content' : '')}"
         ${setAttributes$4(this._ariaAttributes)}
         aria-label=${o$2(this.itAriaLabel || undefined)}
-        aria-labelledby=${o$2(ariaLabelledBy)}
       >
         ${this._hasBackground
             ? b `
@@ -56135,10 +56150,6 @@ __decorate$m([
     __metadata$m("design:type", Object)
 ], ItHero.prototype, "_hasText", void 0);
 __decorate$m([
-    r$G(),
-    __metadata$m("design:type", String)
-], ItHero.prototype, "_ariaLabelledBy", void 0);
-__decorate$m([
     n$3({ type: Boolean, reflect: true }),
     __metadata$m("design:type", Object)
 ], ItHero.prototype, "center", void 0);
@@ -56162,6 +56173,10 @@ __decorate$m([
     o$4({ slot: 'text', flatten: true }),
     __metadata$m("design:type", Array)
 ], ItHero.prototype, "_textItems", void 0);
+__decorate$m([
+    e$3('section'),
+    __metadata$m("design:type", HTMLElement)
+], ItHero.prototype, "_sectionEl", void 0);
 ItHero = __decorate$m([
     t$2('it-hero')
 ], ItHero);
