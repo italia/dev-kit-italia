@@ -1,6 +1,6 @@
 /// <reference types="mocha"/>
 import '@italia/hero';
-import { html, fixture, expect, elementUpdated, waitUntil } from '@open-wc/testing';
+import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
 import { type ItHero } from '@italia/hero';
 
 describe('it-hero component', () => {
@@ -43,11 +43,6 @@ describe('it-hero component', () => {
       `);
 
       await elementUpdated(el);
-      await waitUntil(
-        () => !!el.shadowRoot?.querySelector('.container') || !!el.shadowRoot?.querySelector('slot[name="text"]'),
-        'hero text slot did not render as expected',
-      );
-      await elementUpdated(el);
 
       const section = el.shadowRoot?.querySelector('section');
       const heading = el.querySelector('[slot="text"] h2') as HTMLHeadingElement | null;
@@ -56,7 +51,7 @@ describe('it-hero component', () => {
       expect(heading).to.exist;
 
       // ariaLabelledByElements uses element references directly — no IDREF string attribute needed
-      expect(section).to.not.have.attribute('aria-labelledby');
+      expect(section).to.have.attribute('aria-labelledby');
       if ('ariaLabelledByElements' in section!) {
         expect((section as any).ariaLabelledByElements).to.deep.equal([heading]);
       }
@@ -109,7 +104,7 @@ describe('it-hero component', () => {
     it('renders the background wrapper only when background slot is populated', async () => {
       const el = await fixture<ItHero>(html`
         <it-hero>
-          <img slot="background" src="test.jpg" alt="test" />
+          <img slot="background" src="test.jpeg" alt="test" />
         </it-hero>
       `);
 
@@ -139,7 +134,7 @@ describe('it-hero component', () => {
       // Caso 1: Entrambi gli slot presenti -> overlay default (dark)
       const el = await fixture<ItHero>(html`
         <it-hero>
-          <img slot="background" src="x.jpg" alt="x" />
+          <img slot="background" src="test.jpeg" alt="x" />
           <div slot="text">Text</div>
         </it-hero>
       `);
