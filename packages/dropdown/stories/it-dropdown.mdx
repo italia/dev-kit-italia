@@ -41,9 +41,12 @@ Puoi specificare una variante tramite l'attributo `variant`, questa verrà appli
 
 Per impostazione predefinita, il componente `it-dropdown` usa la semantica di una semplice lista HTML (`<ul>`/`<li>`), senza ruoli ARIA aggiuntivi. Questa è la scelta corretta nella maggior parte dei casi, in particolare quando il menu contiene link di navigazione o si trova all'interno di un elemento `<nav>` (ad es. header, megamenu).
 
-Lo standard [WAI ARIA](https://www.w3.org/TR/wai-aria/) definisce il [`role="menu"`](https://www.w3.org/TR/wai-aria/#menu) per i **menu applicativi** — ovvero menu che espongono comandi o azioni (come "Copia", "Taglia", "Incolla") in modo analogo ai menu di un'applicazione desktop. Puoi usarlo impostando l'attributo `it-role="menu"`, che assegna automaticamente il ruolo corretto anche agli elementi interni.
+Lo standard [WAI ARIA](https://www.w3.org/TR/wai-aria/) definisce il [`role="menu"`](https://www.w3.org/TR/wai-aria/#menu) per i **menu applicativi**, ovvero menu che espongono comandi o azioni (come "Copia", "Taglia", "Incolla") in modo analogo ai menu di un'applicazione desktop. Puoi usarlo impostando l'attributo `it-role="menu"`, che assegna automaticamente il ruolo corretto anche agli elementi interni.
 
-> **Attenzione:** `role="menu"` non è adatto a menu di navigazione o a menu che contengono link a pagine. Non usarlo all'interno di un elemento `<nav>`.
+<it-callout variant="warning" heading-level="h3">
+  <span slot="title">Attenzione</span>
+  <p>`role="menu"` non è adatto a menu di navigazione o a menu che contengono link a pagine. Non usarlo all'interno di un elemento `<nav>`.</p>
+</it-callout>
 
 Questo componente comprende di base il supporto per la maggior parte delle interazioni standard del menu della tastiera, come la possibilità di spostarsi tra i singoli elementi `it-dropdown-item` usando i tasti freccia, e chiude il menu con il tasto ESC.
 
