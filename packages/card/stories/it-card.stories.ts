@@ -32,7 +32,7 @@ interface CardProps {
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Componenti/Card',
-  tags: ['a11y-ok', 'web-component', 'alpha'],
+  tags: ['a11y-ok', 'web-component', 'new'],
   component: 'it-card',
   parameters: {
     layout: 'padded',
