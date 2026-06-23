@@ -162,7 +162,7 @@ export class ItToolbarItem extends BaseComponent {
           href="${this.href}"
           class="${classes}"
           ?disabled="${this.disabled}"
-          ?aria-label="${this.itAriaLabel}"
+          it-aria-label="${ifDefined(this.itAriaLabel || undefined)}"
           aria-disabled="${ifDefined(this.disabled ? this.disabled : undefined)}"
           @click="${this.handleClick}"
           part="focusable toolbar-item-element"
@@ -176,7 +176,7 @@ export class ItToolbarItem extends BaseComponent {
       return html`<it-dropdown
         class="${classes}"
         ?disabled="${this.disabled}"
-        ?aria-label="${this.itAriaLabel}"
+        it-aria-label="${ifDefined(this.itAriaLabel || undefined)}"
         @click="${this.handleClick}"
         part="toolbar-item-element dropdown"
         exportparts="focusable, button, icon, icon:expand-icon, dropdown-icon-expand, dropdown-button, popover"
@@ -192,7 +192,7 @@ export class ItToolbarItem extends BaseComponent {
       <it-button
         class="${classes}"
         ?disabled="${this.disabled}"
-        ?aria-label="${this.itAriaLabel}"
+        it-aria-label="${ifDefined(this.itAriaLabel || undefined)}"
         @click="${this.handleClick}"
         part="toolbar-item-element"
         exportparts="focusable, button"

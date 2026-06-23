@@ -369,5 +369,5 @@ export const MenuAzioni: Story = {
     </it-dropdown>
   `,
   argTypes: { ...disabledControls(['variant', 'itRole']) },
-  decorators: [(Story) => html`<div style=${containerStyle}>${Story()}</div>`],
+  decorators: [(Story) => html`<div style="${containerStyle}height:250px">${Story()}</div>`],
 };
