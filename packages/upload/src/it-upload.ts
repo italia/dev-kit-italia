@@ -388,6 +388,10 @@ export class ItUpload extends FormControl {
     const showValidation = this.formControlController.submittedOnce;
     const isInvalid = showValidation && this.validationMessage.length > 0;
 
+    // Use the slotted label text as the input's accessible name so VoiceOver announces
+    // it correctly even though the <label> is aria-hidden (see below).
+    const accessibleName = this.label || labelText;
+
     return html`
       <div class="form-group">
         <input
@@ -399,11 +403,15 @@ export class ItUpload extends FormControl {
           accept="${ifDefined(this.accept)}"
           ?disabled="${this.disabled}"
           ?required="${this.required && this._files.length === 0}"
+          aria-label="${accessibleName}"
+          aria-required="${this.required ? 'true' : nothing}"
           aria-invalid="${isInvalid ? 'true' : 'false'}"
           aria-describedby="${ifDefined(isInvalid ? `invalid-feedback-${inputId}` : undefined)}"
           @change="${this._handleFileChange}"
         />
-        <label part="input-label" for="${inputId}">
+        <!-- aria-hidden removes this label from the AT tree so VoiceOver only visits the
+             file input above, not both. The accessible name is carried by aria-label instead. -->
+        <label part="input-label" for="${inputId}" aria-hidden="true">
           <slot name="icon">
             <it-icon
               name="${this.variant === 'gallery' ? 'it-plus' : 'it-upload'}"
