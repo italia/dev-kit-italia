@@ -40,10 +40,13 @@ utilities.$utilities: (
 
 @use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
-.upload[type='file'] + label {
+// Wrapped pattern (Scott O'Hara): input is inside the label, so BSI's adjacent-sibling
+// selectors (`input + label`) no longer match. We own all label styling here.
+// Ref: https://scottaohara.github.io/a11y_styled_form_controls/src/file-upload/
+label:has(.upload[type='file']) {
   display: flex;
   width: fit-content;
-  max-width: unset !important; // Override BSI's `label { max-width: 80% }` for the upload label, which needs to shrink to fit its content.
+  max-width: unset !important; // Override BSI's `label { max-width: 80% }`.
   align-items: center;
   gap: var(--#{$prefix}spacing-xxs, 8px);
 }
@@ -68,7 +71,7 @@ utilities.$utilities: (
 }
 
 :focus-visible,
-.upload:focus-visible + label,
+label:has(.upload[type='file']:focus-visible),
 .upload-dragdrop-input:focus-visible[type='file'] + label,
 .avatar-upload:focus-within:focus-visible {
   border-color: #000 !important;
@@ -77,6 +80,15 @@ utilities.$utilities: (
     0 0 0 5px $focus-outline-color-out !important;
   outline: 3px solid rgba(0, 0, 0, 0) !important;
   outline-offset: 3px !important;
+}
+
+// The bare :focus-visible rule above would apply to the 0.1px input itself when
+// it receives focus. Reset it so only the wrapping label shows the focus ring.
+.upload[type='file']:focus-visible {
+  border-color: initial !important;
+  box-shadow: none !important;
+  outline: none !important;
+  outline-offset: initial !important;
 }
 
 // Success state: check indicator + remove button grouped on the right
@@ -108,7 +120,7 @@ utilities.$utilities: (
   }
 }
 
-.upload-pictures-wall .upload[type='file'] + label {
+.upload-pictures-wall label:has(.upload[type='file']) {
   display: flex;
   flex-direction: column;
   align-items: center;
