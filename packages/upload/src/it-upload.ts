@@ -416,7 +416,7 @@ export class ItUpload extends FormControl {
             accept="${ifDefined(this.accept)}"
             ?disabled="${this.disabled}"
             ?required="${this.required && this._files.length === 0}"
-            aria-invalid="${isInvalid ? 'true' : 'false'}"
+            aria-invalid="${isInvalid ? 'true' : nothing}"
             aria-describedby="${ifDefined(isInvalid ? `invalid-feedback-${inputId}` : undefined)}"
             @change="${this._handleFileChange}"
           />
