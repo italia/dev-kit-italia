@@ -24,12 +24,14 @@ export class ItDropdownItem extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = false;
 
-  @property({ type: String, attribute: 'it-role' }) itRole?: string;
+  @property({ type: String, attribute: 'it-role' }) itRole?: 'menuitem' | 'option' | 'treeitem';
 
   @property({ type: Boolean, reflect: true }) disabled?: boolean;
 
   public getFocusableElement(): HTMLElement | null {
-    return this.shadowRoot?.querySelector('a, button') ?? null;
+    if (this.separator) return null;
+    const selector = this.href ? 'a, button' : 'li';
+    return this.shadowRoot?.querySelector(selector) ?? null;
   }
 
   handlePress(event: KeyboardEvent | MouseEvent) {
@@ -44,12 +46,22 @@ export class ItDropdownItem extends BaseComponent {
     const itemClasses = this.composeClass({
       dark: this.dark,
       fw: this.fullWidth,
+      'list-item dropdown-item': !this.href,
     });
 
-    const linkClasses = this.composeClass('list-item', 'dropdown-item', {
+    const itemRole = this.href && this.itRole ? 'none' : this.itRole;
+
+    const statusClasses = this.composeClass({
       disabled: this.disabled,
       active: this.active,
       large: this.large,
+    });
+
+    const isText = !this.itRole && !this.href;
+
+    const linkClasses = this.composeClass('list-item', 'dropdown-item', statusClasses);
+    const nonLinkClasses = this.composeClass(statusClasses, {
+      'dropdown-item-text': isText,
     });
 
     const content = html`
@@ -60,10 +72,13 @@ export class ItDropdownItem extends BaseComponent {
 
     return html`
       <li
-        role="${ifDefined(
-          this.itRole === 'menuitem' || this.itRole === 'option' || this.itRole === 'treeitem' ? 'none' : undefined,
-        )}"
+        role="${ifDefined(itemRole)}"
         class=${ifDefined(itemClasses || undefined)}
+        tabindex=${ifDefined(this.href ? undefined : '-1')}
+        part=${ifDefined(this.href ? undefined : 'focusable')}
+        @keydown=${this.href ? undefined : this.handlePress}
+        @click=${this.href ? undefined : this.handlePress}
+        aria-disabled=${ifDefined((this.disabled && !this.href) || undefined)}
       >
         ${this.href
           ? html`<a
@@ -76,7 +91,7 @@ export class ItDropdownItem extends BaseComponent {
               @click=${this.handlePress}
               ><span class="dropdown-item-link" part="dropdown-item-text">${content}</span></a
             >`
-          : html`<span class="dropdown-item-text" part="dropdown-item-text">${content}</span>`}
+          : html`<span class=${nonLinkClasses} part="dropdown-item-text">${content}</span>`}
       </li>
     `;
   }

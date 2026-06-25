@@ -3,6 +3,7 @@ import { BaseComponent, AriaKeyboardListController } from '@italia/globals';
 import { html, LitElement, nothing } from 'lit';
 import { /* customElement, */ property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { ItButton } from '@italia/button';
 import styles from './dropdown.scss';
 import { type ItDropdownItem } from './it-dropdown-item.js';
 
@@ -32,7 +33,7 @@ export class ItDropdownBase extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = false;
 
-  @property({ type: String, attribute: 'it-role' }) itRole: string = 'list';
+  @property({ type: String, attribute: 'it-role' }) itRole: 'list' | 'menu' | 'listbox' | 'tree' = 'list';
 
   @property({ type: String, attribute: 'it-aria-label' }) itAriaLabel: string = '';
 
@@ -108,12 +109,26 @@ export class ItDropdownBase extends BaseComponent {
     }
   }
 
-  protected _onTabKeyDown = (event: KeyboardEvent, items: Element[], active: ItDropdownItem, currentIndex: number) => {
+  protected _onTabKeyDown = (
+    event: KeyboardEvent,
+    items: Element[],
+    active: ItDropdownItem | ItButton,
+    currentIndex: number,
+  ) => {
+    function isTrigger(el: ItDropdownItem | ItButton): el is ItButton {
+      return currentIndex === -1;
+    }
     if (event.key === 'Tab') {
-      if (event.shiftKey && currentIndex === -1) {
-        this._popoverOpen = false;
+      if (isTrigger(active)) {
+        if (event.shiftKey) this._popoverOpen = false;
+        return;
       }
+      // if (event.shiftKey && currentIndex === -1) {
+      //   // from the trigger item
+      //   this._popoverOpen = false;
+      // }
       if (!event.shiftKey && currentIndex === items.length - 1) {
+        // from the last item
         this._popoverOpen = false;
       }
       if (active.ariaDisabled) {
@@ -124,13 +139,28 @@ export class ItDropdownBase extends BaseComponent {
         } else {
           this._ariaNav.handleKeyDown(new KeyboardEvent('keydown', { ...event, key: 'ArrowDown' }));
         }
+        if (!active.href) event.preventDefault();
+      }
+      if (!active.href) {
+        // when the dropdown items don't have an href they are not natively tabbable, handle manually
+        if (event.shiftKey && currentIndex > 0) {
+          event.preventDefault();
+          this._ariaNav.handleKeyDown(new KeyboardEvent('keydown', { ...event, key: 'ArrowUp' }));
+        }
+        if (!event.shiftKey && currentIndex < items.length - 1) {
+          event.preventDefault();
+          this._ariaNav.handleKeyDown(new KeyboardEvent('keydown', { ...event, key: 'ArrowDown' }));
+        }
+        if (!event.shiftKey && currentIndex === items.length - 1) {
+          this._triggerEl?.dispatchEvent(new KeyboardEvent('keydown', { ...event }));
+        }
       }
     }
   };
 
   protected _onKeyDown = (event: KeyboardEvent) => {
     const items = this._menuItems.map((item) => item.getFocusableElement()).filter((el) => !!el);
-    const active = this.getActiveElement<ItDropdownItem>();
+    const active = this.getActiveElement<ItDropdownItem | ItButton>();
 
     if (!active) return;
 
@@ -191,7 +221,7 @@ export class ItDropdownBase extends BaseComponent {
         exportparts="focusable, icon, button, it-icon, it-button, dropdown-button, dropdown-icon-expand, popover-content"
         part="dropdown-popover"
         ?open=${this._popoverOpen}
-        offset=${ifDefined(this.offset)}
+        offset=${ifDefined(this.offset || undefined)}
         ?no-flip=${this.noFlip}
         ?center-arrow=${this.centerArrow}
         controlled
