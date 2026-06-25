@@ -74,10 +74,10 @@
 
   // Date badge
   .pin-text {
-    border-radius: $border-radius;
+    border-radius: 40px;
     background: var(--#{$prefix}color-background-primary-deep);
     color: var(--#{$prefix}color-white, #fff);
-    font-family: $font-family-sans-serif;
+    font-family: var(--#{$prefix}font-mono);
     font-size: var(--#{$prefix}body-font-size);
     font-weight: 600;
     line-height: var(--#{$prefix}body-leading);

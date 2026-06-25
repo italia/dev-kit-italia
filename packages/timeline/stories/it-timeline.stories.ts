@@ -122,7 +122,7 @@ export const TimelineClassica: Story = {
     <it-timeline>
       <it-timeline-element variant="past" date="MAGGIO 2026" heading-level="h3">
         <it-icon slot="pin-icon" name="it-file"></it-icon>
-        <it-card>
+        <it-card heading-level="h4">
           <a slot="title" href="#">Titolo del contenuto</a>
           <figure slot="image" class="figure img-full">
             <img
@@ -140,7 +140,7 @@ export const TimelineClassica: Story = {
 
       <it-timeline-element variant="past" date="GIUGNO 2026" heading-level="h3">
         <it-icon slot="pin-icon" name="it-calendar"></it-icon>
-        <it-card>
+        <it-card heading-level="h4">
           <a slot="title" href="#">Titolo del contenuto</a>
           <span slot="text">
             Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
@@ -152,7 +152,7 @@ export const TimelineClassica: Story = {
 
       <it-timeline-element variant="current" date="LUGLIO 2026" heading-level="h3">
         <it-icon slot="pin-icon" name="it-check-circle"></it-icon>
-        <it-card>
+        <it-card heading-level="h4">
           <a slot="title" href="#">Titolo del contenuto</a>
           <span slot="text">
             Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
@@ -164,7 +164,7 @@ export const TimelineClassica: Story = {
 
       <it-timeline-element variant="current" date="LUGLIO 2026" heading-level="h3">
         <it-icon slot="pin-icon" name="it-check-circle"></it-icon>
-        <it-card>
+        <it-card heading-level="h4">
           <a slot="title" href="#">Titolo del contenuto</a>
           <span slot="text">
             Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
@@ -176,7 +176,7 @@ export const TimelineClassica: Story = {
 
       <it-timeline-element date="AGOSTO 2026" heading-level="h3">
         <it-icon slot="pin-icon" name="it-star-outline"></it-icon>
-        <it-card>
+        <it-card heading-level="h4">
           <a slot="title" href="#">Titolo del contenuto</a>
           <span slot="text">
             Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro
