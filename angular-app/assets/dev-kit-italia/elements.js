@@ -38428,7 +38428,10 @@ let ItDropdownItem = class ItDropdownItem extends BaseComponent$p {
         this.fullWidth = false;
     }
     getFocusableElement() {
-        return this.shadowRoot?.querySelector('a, button') ?? null;
+        if (this.separator)
+            return null;
+        const selector = this.href ? 'a, button' : 'li';
+        return this.shadowRoot?.querySelector(selector) ?? null;
     }
     handlePress(event) {
         if (this.disabled)
@@ -38441,11 +38444,18 @@ let ItDropdownItem = class ItDropdownItem extends BaseComponent$p {
         const itemClasses = this.composeClass({
             dark: this.dark,
             fw: this.fullWidth,
+            'list-item dropdown-item': !this.href,
         });
-        const linkClasses = this.composeClass('list-item', 'dropdown-item', {
+        const itemRole = this.href && this.itRole ? 'none' : this.itRole;
+        const statusClasses = this.composeClass({
             disabled: this.disabled,
             active: this.active,
             large: this.large,
+        });
+        const isText = !this.itRole && !this.href;
+        const linkClasses = this.composeClass('list-item', 'dropdown-item', statusClasses);
+        const nonLinkClasses = this.composeClass(statusClasses, {
+            'dropdown-item-text': isText,
         });
         const content = b `
       <slot name="prefix"></slot>
@@ -38454,8 +38464,13 @@ let ItDropdownItem = class ItDropdownItem extends BaseComponent$p {
     `;
         return b `
       <li
-        role="${o$2(this.itRole === 'menuitem' || this.itRole === 'option' || this.itRole === 'treeitem' ? 'none' : undefined)}"
+        role="${o$2(itemRole)}"
         class=${o$2(itemClasses || undefined)}
+        tabindex=${o$2(this.href ? undefined : '-1')}
+        part=${o$2(this.href ? undefined : 'focusable')}
+        @keydown=${this.href ? undefined : this.handlePress}
+        @click=${this.href ? undefined : this.handlePress}
+        aria-disabled=${o$2((this.disabled && !this.href) || undefined)}
       >
         ${this.href
             ? b `<a
@@ -38468,7 +38483,7 @@ let ItDropdownItem = class ItDropdownItem extends BaseComponent$p {
               @click=${this.handlePress}
               ><span class="dropdown-item-link" part="dropdown-item-text">${content}</span></a
             >`
-            : b `<span class="dropdown-item-text" part="dropdown-item-text">${content}</span>`}
+            : b `<span class=${nonLinkClasses} part="dropdown-item-text">${content}</span>`}
       </li>
     `;
     }
@@ -39353,11 +39368,21 @@ let ItDropdownBase$1 = class ItDropdownBase extends BaseComponent$p {
             this.setAttribute('data-it-aria-expanded', 'false');
         };
         this._onTabKeyDown = (event, items, active, currentIndex) => {
+            function isTrigger(el) {
+                return currentIndex === -1;
+            }
             if (event.key === 'Tab') {
-                if (event.shiftKey && currentIndex === -1) {
-                    this._popoverOpen = false;
+                if (isTrigger()) {
+                    if (event.shiftKey)
+                        this._popoverOpen = false;
+                    return;
                 }
+                // if (event.shiftKey && currentIndex === -1) {
+                //   // from the trigger item
+                //   this._popoverOpen = false;
+                // }
                 if (!event.shiftKey && currentIndex === items.length - 1) {
+                    // from the last item
                     this._popoverOpen = false;
                 }
                 if (active.ariaDisabled) {
@@ -39368,6 +39393,22 @@ let ItDropdownBase$1 = class ItDropdownBase extends BaseComponent$p {
                     }
                     else {
                         this._ariaNav.handleKeyDown(new KeyboardEvent('keydown', { ...event, key: 'ArrowDown' }));
+                    }
+                    if (!active.href)
+                        event.preventDefault();
+                }
+                if (!active.href) {
+                    // when the dropdown items don't have an href they are not natively tabbable, handle manually
+                    if (event.shiftKey && currentIndex > 0) {
+                        event.preventDefault();
+                        this._ariaNav.handleKeyDown(new KeyboardEvent('keydown', { ...event, key: 'ArrowUp' }));
+                    }
+                    if (!event.shiftKey && currentIndex < items.length - 1) {
+                        event.preventDefault();
+                        this._ariaNav.handleKeyDown(new KeyboardEvent('keydown', { ...event, key: 'ArrowDown' }));
+                    }
+                    if (!event.shiftKey && currentIndex === items.length - 1) {
+                        this._triggerEl?.dispatchEvent(new KeyboardEvent('keydown', { ...event }));
                     }
                 }
             }
@@ -39459,7 +39500,7 @@ let ItDropdownBase$1 = class ItDropdownBase extends BaseComponent$p {
         exportparts="focusable, icon, button, it-icon, it-button, dropdown-button, dropdown-icon-expand, popover-content"
         part="dropdown-popover"
         ?open=${this._popoverOpen}
-        offset=${o$2(this.offset)}
+        offset=${o$2(this.offset || undefined)}
         ?no-flip=${this.noFlip}
         ?center-arrow=${this.centerArrow}
         controlled
@@ -51424,11 +51465,21 @@ class ItDropdownBase extends BaseComponent$k {
             this.setAttribute('data-it-aria-expanded', 'false');
         };
         this._onTabKeyDown = (event, items, active, currentIndex) => {
+            function isTrigger(el) {
+                return currentIndex === -1;
+            }
             if (event.key === 'Tab') {
-                if (event.shiftKey && currentIndex === -1) {
-                    this._popoverOpen = false;
+                if (isTrigger()) {
+                    if (event.shiftKey)
+                        this._popoverOpen = false;
+                    return;
                 }
+                // if (event.shiftKey && currentIndex === -1) {
+                //   // from the trigger item
+                //   this._popoverOpen = false;
+                // }
                 if (!event.shiftKey && currentIndex === items.length - 1) {
+                    // from the last item
                     this._popoverOpen = false;
                 }
                 if (active.ariaDisabled) {
@@ -51439,6 +51490,22 @@ class ItDropdownBase extends BaseComponent$k {
                     }
                     else {
                         this._ariaNav.handleKeyDown(new KeyboardEvent('keydown', { ...event, key: 'ArrowDown' }));
+                    }
+                    if (!active.href)
+                        event.preventDefault();
+                }
+                if (!active.href) {
+                    // when the dropdown items don't have an href they are not natively tabbable, handle manually
+                    if (event.shiftKey && currentIndex > 0) {
+                        event.preventDefault();
+                        this._ariaNav.handleKeyDown(new KeyboardEvent('keydown', { ...event, key: 'ArrowUp' }));
+                    }
+                    if (!event.shiftKey && currentIndex < items.length - 1) {
+                        event.preventDefault();
+                        this._ariaNav.handleKeyDown(new KeyboardEvent('keydown', { ...event, key: 'ArrowDown' }));
+                    }
+                    if (!event.shiftKey && currentIndex === items.length - 1) {
+                        this._triggerEl?.dispatchEvent(new KeyboardEvent('keydown', { ...event }));
                     }
                 }
             }
@@ -51530,7 +51597,7 @@ class ItDropdownBase extends BaseComponent$k {
         exportparts="focusable, icon, button, it-icon, it-button, dropdown-button, dropdown-icon-expand, popover-content"
         part="dropdown-popover"
         ?open=${this._popoverOpen}
-        offset=${o$2(this.offset)}
+        offset=${o$2(this.offset || undefined)}
         ?no-flip=${this.noFlip}
         ?center-arrow=${this.centerArrow}
         controlled
@@ -89846,7 +89913,9 @@ let ItStepper = class ItStepper extends BaseLocalizedComponent$7 {
           <p class="text-muted mb-0 small"><strong>${this.saveTitle}</strong></p>
           <p class="text-muted mb-0 small">${this.saveDescription}</p>
         </div>
-        <it-button variant="secondary" outline type="button" @click=${this._handleSave}>${this.saveLabel}</it-button>
+        <it-button variant="secondary" outline type="button" @click=${this._handleSave} exportparts="focusable">
+          ${this.saveLabel}
+        </it-button>
       </div>
     `;
     }
@@ -93415,7 +93484,7 @@ let ItToolbarItem = class ItToolbarItem extends BaseComponent$5 {
           href="${this.href}"
           class="${classes}"
           ?disabled="${this.disabled}"
-          ?aria-label="${this.itAriaLabel}"
+          it-aria-label="${o$2(this.itAriaLabel || undefined)}"
           aria-disabled="${o$2(this.disabled ? this.disabled : undefined)}"
           @click="${this.handleClick}"
           part="focusable toolbar-item-element"
@@ -93428,7 +93497,7 @@ let ItToolbarItem = class ItToolbarItem extends BaseComponent$5 {
             return b `<it-dropdown
         class="${classes}"
         ?disabled="${this.disabled}"
-        ?aria-label="${this.itAriaLabel}"
+        it-aria-label="${o$2(this.itAriaLabel || undefined)}"
         @click="${this.handleClick}"
         part="toolbar-item-element dropdown"
         exportparts="focusable, button, icon, icon:expand-icon, dropdown-icon-expand, dropdown-button, popover"
@@ -93443,7 +93512,7 @@ let ItToolbarItem = class ItToolbarItem extends BaseComponent$5 {
       <it-button
         class="${classes}"
         ?disabled="${this.disabled}"
-        ?aria-label="${this.itAriaLabel}"
+        it-aria-label="${o$2(this.itAriaLabel || undefined)}"
         @click="${this.handleClick}"
         part="toolbar-item-element"
         exportparts="focusable, button"
