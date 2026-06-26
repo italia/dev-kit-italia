@@ -458,6 +458,118 @@ describe('ItAutocomplete', () => {
 
       expect(el._showAssistiveHint).to.be.false;
     });
+
+    it('hint is aria-hidden so it is not reachable as a standalone element (issue #43)', async () => {
+      const el = await fixture<ItAutocomplete>(html`
+        <it-autocomplete
+          .source="${[
+            { value: 'apple', label: 'Apple' },
+            { value: 'banana', label: 'Banana' },
+          ]}"
+        >
+          <span slot="label">Test</span>
+        </it-autocomplete>
+      `);
+
+      const hint = el.shadowRoot!.querySelector('[id$="-assistiveHint"]');
+      expect(hint).to.exist;
+      // aria-hidden prevents the second (duplicate) reading via element navigation...
+      expect(hint?.getAttribute('aria-hidden')).to.equal('true');
+
+      // ...while it is still announced once as the input's description
+      const input = el.shadowRoot!.querySelector('input') as HTMLInputElement;
+      const describedBy = input.getAttribute('aria-describedby') ?? '';
+      expect(describedBy).to.include('assistiveHint');
+    });
+  });
+
+  describe('Status Region (issue #43)', () => {
+    it('clears the status region after selecting an option', async () => {
+      const el = await fixture<ItAutocomplete>(html`
+        <it-autocomplete
+          .source="${[
+            { value: 'apple', label: 'Apple' },
+            { value: 'banana', label: 'Banana' },
+          ]}"
+        >
+          <span slot="label">Test</span>
+        </it-autocomplete>
+      `);
+
+      const input = el.shadowRoot!.querySelector('input') as HTMLInputElement;
+
+      input.value = 'a';
+      input.dispatchEvent(new Event('input'));
+      await el.updateComplete;
+
+      // Simulate that the debounced announcement had populated the status
+      (el as any)._currentStatusContent = '2 risultati disponibili';
+      await el.updateComplete;
+
+      input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }));
+      await el.updateComplete;
+      input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+      await el.updateComplete;
+
+      expect((el as any)._currentStatusContent).to.equal('');
+      const statusDiv = el.shadowRoot!.querySelector('[role="status"]');
+      expect(statusDiv?.textContent?.trim()).to.equal('');
+    });
+
+    it('clears the status region when the listbox is dismissed with Escape', async () => {
+      const el = await fixture<ItAutocomplete>(html`
+        <it-autocomplete
+          .source="${[
+            { value: 'apple', label: 'Apple' },
+            { value: 'banana', label: 'Banana' },
+          ]}"
+        >
+          <span slot="label">Test</span>
+        </it-autocomplete>
+      `);
+
+      const input = el.shadowRoot!.querySelector('input') as HTMLInputElement;
+
+      input.value = 'a';
+      input.dispatchEvent(new Event('input'));
+      await el.updateComplete;
+      (el as any)._currentStatusContent = '2 risultati disponibili';
+      await el.updateComplete;
+
+      input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+      await el.updateComplete;
+
+      expect((el as any)._currentStatusContent).to.equal('');
+    });
+
+    it('clears the status region when the query is reset below minLength', async () => {
+      const el = await fixture<ItAutocomplete>(html`
+        <it-autocomplete
+          min-length="2"
+          .source="${[
+            { value: 'apple', label: 'Apple' },
+            { value: 'banana', label: 'Banana' },
+          ]}"
+        >
+          <span slot="label">Test</span>
+        </it-autocomplete>
+      `);
+
+      const input = el.shadowRoot!.querySelector('input') as HTMLInputElement;
+
+      input.value = 'ap';
+      input.dispatchEvent(new Event('input'));
+      await el.updateComplete;
+      (el as any)._currentStatusContent = '1 risultato disponibile';
+      await el.updateComplete;
+
+      // Erase back below minLength
+      input.value = 'a';
+      input.dispatchEvent(new Event('input'));
+      await el.updateComplete;
+
+      expect((el as any)._currentStatusContent).to.equal('');
+    });
   });
 
   describe('Reactive Properties', () => {
