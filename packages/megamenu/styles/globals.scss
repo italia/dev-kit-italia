@@ -40,7 +40,7 @@ it-megamenu {
 
     p {
       font-size: var(--#{$prefix}label-font-size);
-      line-height: var(--#{$prefix}body-leading);
+      line-height: var(--#{$prefix}body-line-height);
     }
   }
 
@@ -61,6 +61,18 @@ it-megamenu {
     &::part(list-item) {
       position: unset;
       width: 100%;
+
+      &:focus-visible {
+        display: block; //to avoid safari shift on focus last column items
+      }
+    }
+
+    &::part(li) {
+      display: inline-block;
+      padding: 6px;
+      margin: -6px;
+      break-inside: avoid;
+      page-break-inside: avoid;
     }
   }
 

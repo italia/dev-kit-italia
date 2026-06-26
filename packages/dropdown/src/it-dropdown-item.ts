@@ -40,7 +40,7 @@ export class ItDropdownItem extends BaseComponent {
 
   override render() {
     if (this.separator) {
-      return html`<li><span class="divider" role="separator"></span></li>`;
+      return html`<li part="li"><span class="divider" role="separator"></span></li>`;
     }
 
     const itemClasses = this.composeClass({
@@ -75,7 +75,7 @@ export class ItDropdownItem extends BaseComponent {
         role="${ifDefined(itemRole)}"
         class=${ifDefined(itemClasses || undefined)}
         tabindex=${ifDefined(this.href ? undefined : '-1')}
-        part=${ifDefined(this.href ? undefined : 'focusable')}
+        part=${ifDefined(this.href ? 'li' : 'focusable li')}
         @keydown=${this.href ? undefined : this.handlePress}
         @click=${this.href ? undefined : this.handlePress}
         aria-disabled=${ifDefined((this.disabled && !this.href) || undefined)}
