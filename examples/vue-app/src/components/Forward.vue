@@ -5,9 +5,11 @@
     <section class="mb-5">
       <h2>Esempio base</h2>
       <p class="mb-4">Clicca sull'icona per scorrere automaticamente alla sezione di destinazione.</p>
-      <a href="#sezione-esempio" class="forward" aria-label="Vai a: Sezione di esempio" @click="handleForwardClick">
-        <it-icon name="it-expand" size="lg" color="primary"></it-icon>
-      </a>
+      <it-forward>
+        <a href="#sezione-esempio" class="forward" aria-label="Vai a: Sezione di esempio">
+          <it-icon name="it-expand" size="lg" color="primary"></it-icon>
+        </a>
+      </it-forward>
     </section>
 
     <div style="height: 100vh; background: linear-gradient(to bottom, #f0f6fc, #e6f0fa)">
@@ -33,11 +35,17 @@
     </div>
 
     <section class="my-5">
-      <h2>Seconda sezione</h2>
-      <p class="mb-4">Altro esempio di navigazione con Forward.</p>
-      <a href="#sezione-target" class="forward" aria-label="Vai a: Sezione target" @click="handleForwardClick">
-        <it-icon name="it-expand" size="lg" color="primary"></it-icon>
-      </a>
+      <h2>Navigazione personalizzata</h2>
+      <p class="mb-4">
+        L'evento `it-forward-navigate` è cancelable. Chiamando `event.preventDefault()` puoi intercettare lo
+        scorrimento e gestire la navigazione in autonomia, richiamando poi `navigateTo(target)` quando opportuno.
+      </p>
+      <it-forward @it-forward-navigate="onNavigate">
+        <a href="#sezione-target" class="forward" aria-label="Vai a: Sezione target">
+          <it-icon name="it-expand" size="lg" color="primary"></it-icon>
+        </a>
+      </it-forward>
+      <p class="mt-3" style="font-size: 0.9rem" role="status" aria-live="polite">{{ navigateStatus }}</p>
     </section>
 
     <div style="height: 120vh; background: linear-gradient(to bottom, #e6f0fa, #d1e7f7)">
@@ -60,20 +68,17 @@
 <script>
 export default {
   name: 'Forward',
+  data() {
+    return {
+      navigateStatus: '',
+    };
+  },
   methods: {
-    handleForwardClick(e) {
+    onNavigate(e) {
       e.preventDefault();
-      const targetId = e.currentTarget.getAttribute('href');
-      if (!targetId) return;
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        targetElement.scrollIntoView({
-          behavior: prefersReducedMotion ? 'auto' : 'smooth',
-          block: 'start',
-        });
-        targetElement.setAttribute('tabindex', '-1');
-        targetElement.focus({ preventScroll: true });
+      this.navigateStatus = `Navigazione intercettata verso "${e.detail.href}". Scorro io…`;
+      if (e.detail.target) {
+        e.currentTarget.navigateTo(e.detail.target);
       }
     },
   },

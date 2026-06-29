@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas, Controls } from '@storybook/addon-docs/blocks';
-import * as Stories from './alert.stories';
+import * as Stories from './it-alert.stories';
 
 <Meta of={Stories} />
 
@@ -21,11 +21,23 @@ Il componente Alert permette di creare messaggi di avviso contestuali che non in
 
 ## Anteprima del componente
 
-Gli alert sono disponibili in quattro tipologie diverse e sono adatti a qualsiasi lunghezza di testo.
+Gli alert sono disponibili in cinque varianti di colore e sono adatti a qualsiasi lunghezza di testo.
+
+Avvolgi il markup dell'alert nel componente `<it-alert>` e usa l'attributo `variant` per impostarne il colore (`primary`, `secondary`, `success`, `warning`, `danger`): la classe `.alert-{variant}` corretta viene applicata automaticamente all'elemento interno. In questo modo è sufficiente scrivere `<div class="alert">` senza ripetere manualmente la classe del colore.
+
+```html
+<it-alert variant="success">
+  <div class="alert">
+    <it-icon name="it-check-circle" class="alert-icon"></it-icon>Questo è un alert di tipo "success".
+  </div>
+</it-alert>
+```
 
 <Canvas of={Stories.Esempi} />
 
 ## Accessibilità
+
+Il componente `<it-alert>` imposta automaticamente `role="alert"` sull'elemento `.alert` interno (a meno che non sia già presente un `role` esplicito): non è quindi più necessario aggiungerlo a mano nel markup. Il ruolo `alert` definisce una _live region_ assertiva, che comunica il messaggio alle tecnologie assistive non appena viene mostrato.
 
 Il colore dell'alert trasmette un significato (errore, conferma, ecc.) che non viene però percepito da chi usa tecnologie assistive come i lettori di schermo. Assicurati quindi che le informazioni veicolate dal colore siano disponibili anche nel contenuto stesso, ad esempio nel testo visibile oppure con un testo aggiuntivo nascosto tramite la classe `.visually-hidden`.
 
@@ -49,30 +61,39 @@ Usa sempre i tag di intestazione in modo coerente con la gerarchia dei contenuti
 
 ## Chiusura
 
-Per permettere agli utenti di chiudere un alert:
+Per permettere agli utenti di chiudere un alert, avvolgi il markup dell'alert nel componente `<it-alert>`:
 
 - aggiungi il pulsante di chiusura e la classe `.alert-dismissible`, così il padding destro verrà adattato automaticamente e il pulsante con classe `.btn-close` si posizionerà correttamente;
 - usa l'elemento `<it-button>` per un comportamento corretto del pulsante di chiusura su tutti i dispositivi;
 - aggiungi le classi `.fade` e `.show` per animare l'alert alla chiusura.
 
-Questo è un esempio di implementazione del codice JavaScript necessario per la chiusura dell’alert. Puoi utilizzarlo così com’è o adattarlo alle tue esigenze.
+A differenza del passato **non è più necessario scrivere codice JavaScript**: il componente `<it-alert>` gestisce di default la chiusura. Al click sul pulsante `.btn-close` viene emesso l'evento `it-alert-close` e, se non annullato, l'alert viene rimosso dal DOM (con la dissolvenza prevista da `.fade`).
 
-```javascript
-function handleClose(event) {
-  const alertElement = event.target.closest('.alert');
-  if (alertElement) {
-    alertElement.classList.remove('show');
-    setTimeout(() => {
-      alertElement.remove();
-    }, 150);
-  }
-}
-
-document.querySelectorAll('.alert .btn-close').forEach(button => {
-  button.addEventListener('click', handleClose);
-});
+```html
+<it-alert variant="warning">
+  <div class="alert alert-dismissible fade show">
+    <strong>Attenzione</strong> Alcuni campi inseriti sono da controllare.
+    <it-button type="button" class="btn-close" it-aria-label="Chiudi avviso">
+      <it-icon name="it-close"></it-icon>
+    </it-button>
+  </div>
+</it-alert>
 ```
 
 Clicca sul pulsante in questo esempio per vedere il comportamento di chiusura dell'alert.
 
 <Canvas of={Stories.Chiusura} />
+
+### Logica di chiusura personalizzata
+
+L'evento `it-alert-close` è **cancelable**. Chiamando `event.preventDefault()` puoi intercettare la chiusura ed eseguire una logica personalizzata (ad esempio una conferma), richiamando poi il metodo pubblico `close()` quando opportuno:
+
+```js
+const alert = document.querySelector('it-alert');
+alert.addEventListener('it-alert-close', (e) => {
+  e.preventDefault(); // impedisce la rimozione di default
+  if (confirm('Vuoi davvero chiudere questo avviso?')) alert.close();
+});
+```
+
+<Canvas of={Stories.ChiusuraConLogicaPersonalizzata} />

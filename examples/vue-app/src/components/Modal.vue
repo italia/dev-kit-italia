@@ -3,6 +3,13 @@ function closeModal(event) {
   const modal = event.currentTarget.closest('it-modal');
   modal?.hide();
 }
+
+function onModalClose(event) {
+  event.preventDefault();
+  if (window.confirm('Vuoi davvero chiudere?')) {
+    event.currentTarget.hide();
+  }
+}
 </script>
 
 <template>
@@ -27,6 +34,16 @@ function closeModal(event) {
         <it-button slot="footer" variant="primary" @click="closeModal">Conferma</it-button>
       </it-modal>
     </div>
+  </section>
+
+  <section class="my-5">
+    <h2>Chiusura con conferma</h2>
+    <it-modal @it-modal-close="onModalClose">
+      <it-button variant="primary" slot="trigger">Apri modale con conferma</it-button>
+      <span slot="header">Conferma chiusura</span>
+      <p slot="content">Prova a chiudere la modale: verrà chiesta conferma prima di chiudere.</p>
+      <it-button slot="footer" variant="primary" @click="closeModal">Chiudi</it-button>
+    </it-modal>
   </section>
 
   <section class="my-5">

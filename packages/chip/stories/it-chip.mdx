@@ -31,7 +31,7 @@ Il componente `it-chip` si compone principalmente di una label testuale e, opzio
 
 - un **avatar** (immagine) a sinistra, tramite la proprietà `avatar`
 - un'**icona** inserita nello slot `icon`
-- un **pulsante di chiusura** nello slot `dismiss-button`, per le chip cancellabili/rimuovibili (la logica di rimozione è a carico dell'utilizzatore)
+- un **pulsante di chiusura** nello slot `dismiss-button`, per le chip cancellabili/rimuovibili (la rimozione è gestita di default dal componente e può essere sovrascritta)
 
 
 ## Accessibilità
@@ -96,18 +96,33 @@ L'icona viene ridimensionata automaticamente:
 ## Chip con chiusura
 
 
-La proprietà `dismissable` **non aggiunge automaticamente il pulsante**: dovrai fornire un `<it-button>` con `slot="dismiss-button"` e la logica di rimozione che preferisci.
+La proprietà `dismissable` **non aggiunge automaticamente il pulsante**: dovrai fornire un `<it-button>` con `slot="dismiss-button"`.
 
 L'icona di chiusura deve avere dimensione `sm` per rispettare le proporzioni.
 
-Il componente **non gestisce automaticamente la rimozione della chip**. Dovrai:
+Per abilitare una chip rimuovibile è quindi sufficiente:
 
 1. Impostare l'attributo `dismissable` sulla chip
 2. Inserire un `<it-button>` nello slot `dismiss-button`
-3. Aggiungere la tua logica JavaScript per gestire l'evento click/keydown
 
-Il codice dell'esempio gestisce la rimozione della chip sia via click che via tastiera (`Enter` o `Spazio`).
+Il componente **gestisce di default la rimozione**: al click sul pulsante (anche da tastiera con `Enter` o `Spazio`, tramite il pulsante nativo) la chip emette l'evento `it-chip-close` e, se non annullato, viene rimossa dal DOM, spostando il focus su una chip adiacente quando presente.
 <Canvas of={ChipStories.ChipConChiusura} />
+
+### Logica di rimozione personalizzata
+
+L'evento `it-chip-close` è **cancelable**. Chiamando `event.preventDefault()` puoi intercettare la rimozione ed eseguire la tua logica (ad esempio una conferma), richiamando poi il metodo pubblico `close()` quando opportuno:
+
+```js
+const chip = document.querySelector('it-chip');
+chip.addEventListener('it-chip-close', (e) => {
+  e.preventDefault(); // impedisce la rimozione di default
+  if (confirm('Rimuovere questa chip?')) chip.close();
+});
+```
+
+Clicca sul pulsante di chiusura in questo esempio: la rimozione avviene solo dopo la conferma.
+
+<Canvas of={ChipStories.ChiusuraConLogicaPersonalizzata} />
 
 ## Chip disabilitata
 

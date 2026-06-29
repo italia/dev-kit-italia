@@ -12,6 +12,14 @@ export class ModalComponent {
   );
 
   // eslint-disable-next-line class-methods-use-this
+  onModalClose(event: Event) {
+    event.preventDefault();
+    if (window.confirm('Vuoi davvero chiudere?')) {
+      (event.currentTarget as any).hide();
+    }
+  }
+
+  // eslint-disable-next-line class-methods-use-this
   closeModal(event: Event) {
     const target = event.currentTarget as HTMLElement;
     const modal = target.closest('it-modal') as any;

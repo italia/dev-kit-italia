@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const Modal = () => {
+  const confirmModalRef = useRef(null);
+
   const closeModal = (e) => {
     const modal = e.currentTarget.closest('it-modal');
     if (modal) {
       modal.hide();
     }
   };
+
+  useEffect(() => {
+    const el = confirmModalRef.current;
+    if (!el) return;
+    const onClose = (e) => {
+      e.preventDefault();
+      if (window.confirm('Vuoi davvero chiudere?')) el.hide();
+    };
+    el.addEventListener('it-modal-close', onClose);
+    return () => el.removeEventListener('it-modal-close', onClose);
+  }, []);
 
   return (
     <>
@@ -43,6 +56,20 @@ const Modal = () => {
             </it-button>
           </it-modal>
         </div>
+      </section>
+
+      <section className="my-5">
+        <h2>Chiusura con conferma</h2>
+        <it-modal ref={confirmModalRef} close-label="Chiudi finestra modale">
+          <it-button variant="primary" slot="trigger">
+            Apri modale con conferma
+          </it-button>
+          <span slot="header">Conferma chiusura</span>
+          <p slot="content">Prova a chiudere la modale: verrà chiesta conferma prima di chiudere.</p>
+          <it-button slot="footer" variant="primary" onClick={closeModal}>
+            Chiudi
+          </it-button>
+        </it-modal>
       </section>
 
       <section className="my-5">

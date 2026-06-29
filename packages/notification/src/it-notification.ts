@@ -1,4 +1,4 @@
-import { BaseLocalizedComponent } from '@italia/globals';
+import { BaseLocalizedComponent, dispatchCancelable } from '@italia/globals';
 import { html, PropertyValues } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
@@ -12,6 +12,7 @@ import {
   type NotificationFix,
   type NotificationHeadingLevel,
   type NotificationStatus,
+  type NotificationEventDetail,
 } from './types.js';
 import styles from './notification.scss';
 
@@ -21,6 +22,14 @@ import en from './locales/en.js';
 registerTranslation(it);
 registerTranslation(en);
 
+/**
+ * Componente Notification.
+ *
+ * @element it-notification
+ *
+ * @fires it-notification-show - Quando la notifica viene mostrata (cancelable: `preventDefault()` impedisce la comparsa)
+ * @fires it-notification-close - Quando la notifica viene chiusa (cancelable: `preventDefault()` impedisce la chiusura)
+ */
 @customElement('it-notification')
 export class ItNotification extends BaseLocalizedComponent {
   static styles = styles;
@@ -82,35 +91,39 @@ export class ItNotification extends BaseLocalizedComponent {
       return;
     }
 
-    this.isShown = true;
-    if (this.fade) this.isTransitioning = true;
+    // `it-notification-show` is cancelable: `preventDefault()` stops the notification
+    // from being shown.
+    dispatchCancelable<NotificationEventDetail>(this, 'it-notification-show', { notification: this }, () => {
+      this.isShown = true;
+      if (this.fade) this.isTransitioning = true;
 
-    const timeoutVal = timeout ?? this.timeout;
+      const timeoutVal = timeout ?? this.timeout;
 
-    this.container.style.display = 'block';
+      this.container.style.display = 'block';
 
-    if (this.fade) {
-      /**
-       * Trick to restart an element's animation
-       * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
-       */
-      // eslint-disable-next-line no-unused-expressions
-      this.offsetHeight;
-    }
+      if (this.fade) {
+        /**
+         * Trick to restart an element's animation
+         * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
+         */
+        // eslint-disable-next-line no-unused-expressions
+        this.offsetHeight;
+      }
 
-    this.isShown = true;
+      this.isShown = true;
 
-    setTimeout(
-      () => {
-        this.isTransitioning = false;
-        if (!this.dismissable && timeoutVal) {
-          setTimeout(() => {
-            this.hide();
-          }, timeoutVal);
-        }
-      },
-      this.fade ? ItNotification.TRANSITION_DURATION : 0,
-    );
+      setTimeout(
+        () => {
+          this.isTransitioning = false;
+          if (!this.dismissable && timeoutVal) {
+            setTimeout(() => {
+              this.hide();
+            }, timeoutVal);
+          }
+        },
+        this.fade ? ItNotification.TRANSITION_DURATION : 0,
+      );
+    });
   }
 
   public hide() {
@@ -118,16 +131,21 @@ export class ItNotification extends BaseLocalizedComponent {
       return;
     }
 
-    this.isShown = false;
-    if (this.fade) this.isTransitioning = true;
+    // `it-notification-close` is cancelable: `preventDefault()` keeps the notification
+    // visible (the consumer can dismiss it later by calling `hide()`). This covers the
+    // close button, the auto-dismiss timeout and any programmatic call.
+    dispatchCancelable<NotificationEventDetail>(this, 'it-notification-close', { notification: this }, () => {
+      this.isShown = false;
+      if (this.fade) this.isTransitioning = true;
 
-    setTimeout(
-      () => {
-        this.container.style.display = 'none';
-        this.isTransitioning = false;
-      },
-      this.fade ? ItNotification.TRANSITION_DURATION : 0,
-    );
+      setTimeout(
+        () => {
+          this.container.style.display = 'none';
+          this.isTransitioning = false;
+        },
+        this.fade ? ItNotification.TRANSITION_DURATION : 0,
+      );
+    });
   }
 
   protected getHeadingLevel(): NotificationHeadingLevel {

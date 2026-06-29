@@ -40,6 +40,17 @@
         </section>
 
         <section class="my-5">
+          <h2>Chiusura con conferma</h2>
+          <p>Prova a chiudere la modale: verrà chiesta conferma prima di chiudere.</p>
+          <it-modal id="modal-conferma">
+            <it-button variant="primary" slot="trigger">Apri modale con conferma</it-button>
+            <span slot="header">Conferma chiusura</span>
+            <p slot="content">Prova a chiudere la modale: verrà chiesta conferma prima di chiudere.</p>
+            <it-button slot="footer" variant="primary" id="modal-conferma-close">Chiudi</it-button>
+          </it-modal>
+        </section>
+
+        <section class="my-5">
           <h2>Con icona</h2>
           <it-modal variant="alert" close-label="Chiudi finestra modale">
             <it-button variant="primary" slot="trigger">Lancia la demo della modale</it-button>
@@ -451,6 +462,14 @@
           }
         });
       });
+    </script>
+    <script type="module">
+      const modal = document.getElementById('modal-conferma');
+      modal.addEventListener('it-modal-close', (e) => {
+        e.preventDefault();
+        if (confirm('Vuoi davvero chiudere?')) modal.hide();
+      });
+      document.getElementById('modal-conferma-close')?.addEventListener('click', () => modal.hide());
     </script>
   </body>
 </html>

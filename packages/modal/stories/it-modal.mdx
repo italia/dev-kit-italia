@@ -237,6 +237,16 @@ Il componente emette i seguenti eventi custom:
 - `it-modal-open`, quando la modale si apre;
 - `it-modal-close`, quando la modale si chiude.
 
+Entrambi gli eventi sono **cancelable**: il comportamento di default (apertura/chiusura) viene eseguito solo se l'evento non viene annullato. Chiamando `event.preventDefault()` puoi intercettare l'azione e, ad esempio, chiedere conferma prima di chiudere, eseguendo poi `hide()` quando opportuno:
+
+```js
+const modal = document.querySelector('it-modal');
+modal.addEventListener('it-modal-close', (e) => {
+  e.preventDefault(); // impedisce la chiusura di default
+  if (confirm('Vuoi davvero chiudere?')) modal.hide();
+});
+```
+
 
 ## Personalizzazione degli stili
 Per personalizzare stili, usa il selettore `::part` passando uno dei seguenti valori a seconda delle parti su cui vuoi agire:

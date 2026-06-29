@@ -7,39 +7,12 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ChipComponent {
-  handleDismiss(event: Event) {
-    const target = event.currentTarget as HTMLElement;
-    const chip = target.closest('it-chip');
-
-    // Controlla se la chip è disabilitata
-    if (chip?.hasAttribute('is-disabled')) {
-      event.preventDefault();
-      event.stopPropagation();
-      return;
-    }
-
-    if (chip) chip.remove();
-  }
-
-  handleKeyDown(event: KeyboardEvent) {
-    const target = event.currentTarget as HTMLElement;
-    const chip = target.closest('it-chip');
-
-    // Lascia passare Tab e Shift+Tab per la navigazione
-    if (event.key === 'Tab') {
-      return;
-    }
-
-    // Controlla se la chip è disabilitata per altri tasti
-    if (chip?.hasAttribute('is-disabled')) {
-      event.preventDefault();
-      event.stopPropagation();
-      return;
-    }
-
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      if (chip) chip.remove();
+  // eslint-disable-next-line class-methods-use-this
+  onChipClose(e: Event) {
+    e.preventDefault();
+    // eslint-disable-next-line no-alert
+    if (window.confirm('Rimuovere questa chip?')) {
+      (e.currentTarget as any).close();
     }
   }
 }

@@ -1,5 +1,5 @@
-import { Meta, Canvas, Description } from '@storybook/addon-docs/blocks';
-import * as ForwardStories from './forward.stories';
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as ForwardStories from './it-forward.stories';
 
 <Meta of={ForwardStories} />
 
@@ -18,7 +18,7 @@ Questo componente non possiede attributi, ma si basa su una struttura HTML prede
 <Canvas of={ForwardStories.EsempioBase} />
 ## Indicazioni generali
 
-Per attivare lo scorrimento automatico della pagina all'àncora indicata nell'attributo `href`, aggiungi al tag link la classe `.forward` e un semplice script JavaScript che gestisca l'evento di clic. Un esempio è fornito insieme all’esempio interattivo.
+Per attivare lo scorrimento automatico della pagina all'àncora indicata nell'attributo `href`, avvolgi nel componente `<it-forward>` un link con la classe `.forward`. **Non è più necessario scrivere codice JavaScript**: lo scorrimento fluido e lo spostamento del focus sulla destinazione sono gestiti di default dal componente.
 
 Fai attenzione a:
 - non usare più forward sulla stessa pagina;
@@ -47,8 +47,23 @@ Fai attenzione a:
   </div>
 </div>
 
+## Eventi e personalizzazione
+
+Il componente emette l'evento `it-forward-navigate`, **cancelable**. Chiamando `event.preventDefault()` puoi intercettare lo scorrimento e gestire la navigazione in autonomia (ad esempio integrandola con il routing di un framework). Nel `detail` dell'evento trovi l'`href` e l'elemento `target` di destinazione:
+
+```js
+const forward = document.querySelector('it-forward');
+forward.addEventListener('it-forward-navigate', (e) => {
+  e.preventDefault(); // impedisce lo scorrimento di default
+  // ...logica personalizzata, ad esempio:
+  if (e.detail.target) forward.navigateTo(e.detail.target);
+});
+```
+
+<Canvas of={ForwardStories.NavigazionePersonalizzata} />
+
 ## Accessibilità
 
 Per garantire l'accessibilità del componente Forward:
-- considera le preferenze di riduzione del movimento degli utenti. Lo script incluso negli esempi interattivi gestisce automaticamente questa impostazione, disabilitando l’animazione di scorrimento fluido se l’utente ha richiesto di ridurre il movimento;
+- considera le preferenze di riduzione del movimento degli utenti. Il componente gestisce automaticamente questa impostazione, disabilitando l’animazione di scorrimento fluido se l’utente ha richiesto di ridurre il movimento;
 - assicurati che il link sia chiaramente identificabile come tale e che il testo, o il testo di supporto, descriva in modo accurato la destinazione dello scorrimento.
