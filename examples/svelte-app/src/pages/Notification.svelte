@@ -6,6 +6,14 @@
   let notificationWarningRef;
   let notificationInfoRef;
   let notificationManualRef;
+  let confirmNotification;
+
+  function onNotificationClose(e) {
+    e.preventDefault();
+    if (window.confirm('Vuoi davvero chiudere la notifica?')) {
+      e.currentTarget.hide();
+    }
+  }
 
   function showNotification(ref) {
     if (ref) {
@@ -286,6 +294,23 @@
       <button class="btn btn-danger mt-3" on:click={showNotificationByTarget}>
         Mostra notifica di errore
       </button>
+    </div>
+  </div>
+</section>
+
+<!-- Sezione: Chiusura con conferma -->
+<section class="my-5">
+  <h2>Chiusura con conferma</h2>
+  <p>L'evento <code>it-notification-close</code> è annullabile: viene emesso prima della chiusura e può essere intercettato con <code>preventDefault()</code> per chiedere conferma all'utente.</p>
+
+  <div class="d-flex gap-3 flex-wrap">
+    <div>
+      <it-notification bind:this={confirmNotification} dismissable icon="it-warning-circle" status="warning"
+                       on:it-notification-close={onNotificationClose}>
+        <span slot="title">Chiusura con conferma</span>
+        <p>Clicca il pulsante di chiusura: verrà chiesta conferma prima di chiudere.</p>
+      </it-notification>
+      <button class="btn btn-warning mt-3" on:click={() => confirmNotification.show()}>Mostra notifica</button>
     </div>
   </div>
 </section>

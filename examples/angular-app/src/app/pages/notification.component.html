@@ -259,3 +259,20 @@
     </div>
   </div>
 </section>
+
+<!-- Sezione: Chiusura con conferma -->
+<section class="my-5">
+  <h2>Chiusura con conferma</h2>
+  <p>L'evento <code>it-notification-close</code> è annullabile: chiamando <code>event.preventDefault()</code> è possibile bloccare la chiusura predefinita e chiudere la notifica solo dopo una conferma.</p>
+
+  <div class="d-flex gap-3 flex-wrap">
+    <div>
+      <it-notification #confirmNotif dismissable icon="it-warning-circle" status="warning"
+                       (it-notification-close)="onNotificationClose($event)">
+        <span slot="title">Chiusura con conferma</span>
+        <p>Clicca il pulsante di chiusura: verrà chiesta conferma prima di chiudere.</p>
+      </it-notification>
+      <button class="btn btn-warning mt-3" (click)="showNotification(confirmNotif)">Mostra notifica</button>
+    </div>
+  </div>
+</section>
