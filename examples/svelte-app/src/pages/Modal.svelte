@@ -4,11 +4,15 @@
     modal?.hide();
   }
 
+  let _closing = false;
   function onModalClose(event) {
+    if (_closing) return;
     event.preventDefault();
-    if (window.confirm('Vuoi davvero chiudere?')) {
-      event.currentTarget.hide();
-    }
+    const alertEl = document.getElementById('modal-close-alert');
+    if (alertEl) alertEl.style.display = '';
+    _closing = true;
+    event.currentTarget.hide();
+    _closing = false;
   }
 </script>
 
@@ -36,13 +40,16 @@
 </section>
 
 <section class="my-5">
-  <h2>Chiusura con conferma</h2>
+  <h2>Chiusura con logica personalizzata</h2>
   <it-modal on:it-modal-close={onModalClose}>
-    <it-button variant="primary" slot="trigger">Apri modale con conferma</it-button>
-    <span slot="header">Conferma chiusura</span>
-    <p slot="content">Prova a chiudere la modale: verrà chiesta conferma prima di chiudere.</p>
+    <it-button variant="primary" slot="trigger">Apri modale</it-button>
+    <span slot="header">Chiusura con logica personalizzata</span>
+    <p slot="content">Prova a chiudere la modale: verrà eseguita una logica personalizzata prima della chiusura effettiva.</p>
     <it-button slot="footer" variant="primary" on:click={closeModal}>Chiudi</it-button>
   </it-modal>
+  <div id="modal-close-alert" class="alert alert-info" role="alert" style="display:none">
+    <strong>Operazione completata.</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </div>
 </section>
 
 <section class="my-5">

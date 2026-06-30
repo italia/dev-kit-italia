@@ -1,3 +1,27 @@
+<script>
+  let transferStatus = '';
+  let asyncStatus = '';
+
+  function onTransfer(e) {
+    if (e.detail.action === 'transfer' && e.detail.target.length > 3) {
+      e.preventDefault();
+      transferStatus = 'Limite di 3 elementi nel target raggiunto.';
+    } else {
+      transferStatus = '';
+    }
+  }
+
+  function onTransferAsync(e) {
+    const el = e.currentTarget;
+    e.preventDefault();
+    asyncStatus = 'Attendere conferma…';
+    setTimeout(() => {
+      el.commit(e.detail);
+      asyncStatus = '';
+    }, 1000);
+  }
+</script>
+
 <h1>Transfer</h1>
 
 <h2>Base</h2>
@@ -45,3 +69,23 @@
   <it-transfer-item value="y">Voce Y</it-transfer-item>
   <it-transfer-item value="z" target>Voce Z</it-transfer-item>
 </it-transfer>
+
+<h2>Evento cancelable: Limite di 3 elementi nel target</h2>
+<it-transfer name="transfer-max-items" on:it-transfer={onTransfer}>
+  <it-transfer-item value="a">Voce A</it-transfer-item>
+  <it-transfer-item value="b">Voce B</it-transfer-item>
+  <it-transfer-item value="c">Voce C</it-transfer-item>
+  <it-transfer-item value="d">Voce D</it-transfer-item>
+  <it-transfer-item value="e">Voce E</it-transfer-item>
+  <it-transfer-item value="f">Voce F</it-transfer-item>
+</it-transfer>
+<p role="status" aria-live="polite" style="margin-top: 1rem; color: #d32f2f;">{transferStatus}</p>
+
+<h2>Evento cancelable con ripresa asincrona</h2>
+<it-transfer name="transfer-async" on:it-transfer={onTransferAsync}>
+  <it-transfer-item value="a">Voce A</it-transfer-item>
+  <it-transfer-item value="b">Voce B</it-transfer-item>
+  <it-transfer-item value="c">Voce C</it-transfer-item>
+  <it-transfer-item value="d">Voce D</it-transfer-item>
+</it-transfer>
+<p role="status" aria-live="polite" style="margin-top: 1rem;">{asyncStatus}</p>

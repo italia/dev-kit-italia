@@ -7,11 +7,16 @@
  * out of the box while letting consumers intercept and override it:
  *
  * ```js
- * el.addEventListener('it-alert-close', async (e) => {
- *   e.preventDefault();              // block the default removal
- *   if (await confirm('Chiudere?')) e.target.close(); // run it later
+ * el.addEventListener('it-alert-close', (e) => {
+ *   e.preventDefault();                    // block the default removal
+ *   fetchConfirmation().then((ok) => {     // async logic runs after prevention
+ *     if (ok) e.target.close();
+ *   });
  * });
  * ```
+ *
+ * Note: `preventDefault()` must be called synchronously inside the listener.
+ * Async code can run afterward; call the component's public method when ready.
  *
  * @param host the element dispatching the event
  * @param name the event name (kebab-case, `it-` prefixed)

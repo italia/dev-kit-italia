@@ -12,7 +12,7 @@ export class ChipComponent {
     e.preventDefault();
     // eslint-disable-next-line no-alert
     if (window.confirm('Rimuovere questa chip?')) {
-      (e.currentTarget as any).close();
+      (e.currentTarget as HTMLElement & { close(): void }).close();
     }
   }
 }

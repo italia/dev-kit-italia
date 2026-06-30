@@ -124,6 +124,16 @@ Clicca sul pulsante di chiusura in questo esempio: la rimozione avviene solo dop
 
 <Canvas of={ChipStories.ChiusuraConLogicaPersonalizzata} />
 
+## Proprietà, Metodi, ed Eventi accessibili via JS
+
+Il componente espone i seguenti metodi e eventi accessibili via JavaScript.
+
+### Metodi
+- `close()` — rimuove la chip dal DOM, spostando il focus su una chip adiacente se presente.
+
+### Eventi
+- `it-chip-close` — emesso al click sul pulsante di rimozione. L'evento è cancellabile: chiamando `event.preventDefault()` si impedisce la rimozione automatica. Il `detail` contiene `chip`, riferimento all'elemento `it-chip` corrente.
+
 ## Chip disabilitata
 
 

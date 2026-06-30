@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
+import { ALERT_VARIANTS } from '../src/types.js';
 import '../src/it-alert.ts';
 
 const meta = {
@@ -9,10 +10,40 @@ const meta = {
   parameters: {
     layout: 'padded',
   },
+  args: {
+    variant: 'success',
+  },
+  argTypes: {
+    variant: {
+      control: 'select',
+      description: "Colore dell'alert.",
+      options: ALERT_VARIANTS,
+      table: { defaultValue: { summary: 'primary' } },
+    },
+  },
 } satisfies Meta;
 
 export default meta;
 type Story = StoryObj;
+
+export const EsempioInterattivo: Story = {
+  name: 'Esempio interattivo',
+  tags: ['!autodocs', '!dev'],
+  parameters: {
+    docs: {
+      canvas: {
+        sourceState: 'shown',
+      },
+    },
+  },
+  render: ({ variant }) => html`
+    <it-alert variant=${variant}>
+      <div class="alert">
+        <it-icon name="it-info-circle" class="alert-icon"></it-icon>Questo è un alert di tipo "<b>${variant}</b>".
+      </div>
+    </it-alert>
+  `,
+};
 
 export const Esempi: Story = {
   decorators: [(Story) => html`<div style="display:flex;flex-direction:column;gap:1rem">${Story()}</div>`],

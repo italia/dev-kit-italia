@@ -2,7 +2,7 @@ import { html } from 'lit';
 import { customElement, property, state, queryAssignedElements } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { BaseComponent, RovingTabindexController } from '@italia/globals';
+import { BaseComponent, RovingTabindexController, dispatchCancelable } from '@italia/globals';
 import type { ItTab } from './it-tab.js';
 import type { ItTabPanel } from './it-tab-panel.js';
 import type { TabPlacement, ItTabCloseEventDetail } from './types.js';
@@ -337,25 +337,13 @@ export class ItTabs extends BaseComponent {
     panelEl?.remove();
   }
 
-  /**
-   * Dispatcha `it-tab-close` (cancelable) e — se non viene chiamato `preventDefault()` —
-   * esegue la chiusura standard tramite `_executeClose`.
-   *
-   * Il consumer che chiama `e.preventDefault()` può poi invocare
-   * `itTabs.close(e.detail.panel)` per eseguire la chiusura standard.
-   */
   private _closeTabWithFocusShift(closingTab: ItTab, moveFocus: boolean): void {
-    const event = new CustomEvent<ItTabCloseEventDetail>('it-tab-close', {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: { panel: closingTab.panel, type: moveFocus ? 'keydown' : 'click' },
-    });
-    this.dispatchEvent(event);
-
-    if (!event.defaultPrevented) {
-      this._executeClose(closingTab, moveFocus);
-    }
+    dispatchCancelable<ItTabCloseEventDetail>(
+      this,
+      'it-tab-close',
+      { panel: closingTab.panel, type: moveFocus ? 'keydown' : 'click' },
+      () => this._executeClose(closingTab, moveFocus),
+    );
   }
 
   /**

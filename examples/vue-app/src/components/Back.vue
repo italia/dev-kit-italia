@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
-const backStatus = ref('');
+const router = useRouter();
 
 const onBack = (event) => {
   event.preventDefault();
-  backStatus.value = 'Navigazione indietro intercettata: la gestisce il tuo router.';
+  router.back();
 };
 </script>
 
@@ -53,6 +53,5 @@ const onBack = (event) => {
         <span>Torna indietro</span>
       </a>
     </it-back>
-    <p class="mt-3" style="font-size: 0.9rem" role="status" aria-live="polite">{{ backStatus }}</p>
   </section>
 </template>

@@ -11,12 +11,16 @@ export class ModalComponent {
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   );
 
-  // eslint-disable-next-line class-methods-use-this
+  private _closing = false;
+
   onModalClose(event: Event) {
+    if (this._closing) return;
     event.preventDefault();
-    if (window.confirm('Vuoi davvero chiudere?')) {
-      (event.currentTarget as any).hide();
-    }
+    const alertEl = document.getElementById('modal-close-alert');
+    if (alertEl) alertEl.style.display = '';
+    this._closing = true;
+    (event.currentTarget as any).hide();
+    this._closing = false;
   }
 
   // eslint-disable-next-line class-methods-use-this

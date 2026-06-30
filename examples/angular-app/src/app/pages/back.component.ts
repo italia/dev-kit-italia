@@ -1,4 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-back',
@@ -7,10 +8,10 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class BackComponent {
-  backStatus = '';
+  constructor(private location: Location) {}
 
   onBack(e: Event) {
     e.preventDefault();
-    this.backStatus = 'Navigazione indietro intercettata: la gestisce il tuo router.';
+    this.location.back();
   }
 }

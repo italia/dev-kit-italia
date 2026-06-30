@@ -1,5 +1,5 @@
 import { html, nothing } from 'lit';
-import { BaseComponent, dispatchCancelable } from '@italia/globals';
+import { BaseComponent, dispatchCancelable, focusableFallbackAncestor } from '@italia/globals';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import type { ItIcon } from '@italia/icon';
@@ -133,8 +133,10 @@ export class ItChip extends BaseComponent {
 
   private _removeWithFocusShift(): void {
     const adjacent = this._adjacentChip();
+    const fallback = !adjacent ? focusableFallbackAncestor(this) : null;
     this.remove();
     if (adjacent) ItChip._focusChip(adjacent);
+    else fallback?.focus();
   }
 
   private _adjacentChip(): ItChip | null {

@@ -64,3 +64,10 @@ Se vuoi implementare il componente come un pulsante, applica la classe `.go-back
 Se vuoi ottenere un pulsante con sola icona e senza testo, includi il testo alternativo per i lettori di schermo in un tag `<span>` con classe `.visually-hidden`.
 
 <Canvas of={BackStories.PulsanteSolaIcona} />
+
+## Proprietà, Metodi, ed Eventi accessibili via JS
+
+Il componente espone i seguenti eventi accessibili via JavaScript.
+
+### Eventi
+- `it-back-navigate` — emesso al click sul link o pulsante. L'evento è cancellabile: chiamando `event.preventDefault()` si impedisce `window.history.back()` e si può gestire la navigazione indietro secondo il router del proprio framework.

@@ -1,5 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
-import { BaseComponent, dispatchCancelable } from '@italia/globals';
+import { BaseComponent, dispatchCancelable, focusableFallbackAncestor } from '@italia/globals';
 import { ALERT_VARIANTS, type AlertVariant, type AlertCloseEventDetail } from './types.js';
 
 /** Durata (ms) dell'animazione di dissolvenza `.fade` di Bootstrap Italia. */
@@ -102,10 +102,12 @@ export class ItAlert extends BaseComponent {
   public close(): void {
     const alert = this._alert;
     const adjacent = this._adjacentAlert();
+    const fallback = !adjacent ? focusableFallbackAncestor(this) : null;
 
     if (!alert) {
       this.remove();
       if (adjacent) ItAlert._focusCloseButton(adjacent);
+      else fallback?.focus();
       return;
     }
 
@@ -115,6 +117,7 @@ export class ItAlert extends BaseComponent {
       this._closeTimer = null;
       this.remove();
       if (adjacent) ItAlert._focusCloseButton(adjacent);
+      else fallback?.focus();
     }, duration);
   }
 

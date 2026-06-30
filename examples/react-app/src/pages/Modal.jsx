@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 
 const Modal = () => {
-  const confirmModalRef = useRef(null);
 
   const closeModal = (e) => {
     const modal = e.currentTarget.closest('it-modal');
@@ -11,11 +10,17 @@ const Modal = () => {
   };
 
   useEffect(() => {
-    const el = confirmModalRef.current;
+    const el = document.getElementById('modal-custom-close');
     if (!el) return;
+    let _closing = false;
     const onClose = (e) => {
+      if (_closing) return;
       e.preventDefault();
-      if (window.confirm('Vuoi davvero chiudere?')) el.hide();
+      const alertEl = document.getElementById('modal-close-alert');
+      if (alertEl) alertEl.style.display = '';
+      _closing = true;
+      el.hide();
+      _closing = false;
     };
     el.addEventListener('it-modal-close', onClose);
     return () => el.removeEventListener('it-modal-close', onClose);
@@ -59,17 +64,20 @@ const Modal = () => {
       </section>
 
       <section className="my-5">
-        <h2>Chiusura con conferma</h2>
-        <it-modal ref={confirmModalRef} close-label="Chiudi finestra modale">
+        <h2>Chiusura con logica personalizzata</h2>
+        <it-modal id="modal-custom-close" close-label="Chiudi finestra modale">
           <it-button variant="primary" slot="trigger">
-            Apri modale con conferma
+            Apri modale
           </it-button>
-          <span slot="header">Conferma chiusura</span>
-          <p slot="content">Prova a chiudere la modale: verrà chiesta conferma prima di chiudere.</p>
+          <span slot="header">Chiusura con logica personalizzata</span>
+          <p slot="content">Prova a chiudere la modale: verrà eseguita una logica personalizzata prima della chiusura effettiva.</p>
           <it-button slot="footer" variant="primary" onClick={closeModal}>
             Chiudi
           </it-button>
         </it-modal>
+        <div id="modal-close-alert" className="alert alert-info" role="alert" style={{display: 'none'}}>
+          <strong>Operazione completata.</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
       </section>
 
       <section className="my-5">

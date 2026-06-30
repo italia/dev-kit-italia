@@ -12,7 +12,7 @@ export class AlertComponent {
     e.preventDefault();
     // eslint-disable-next-line no-alert
     if (window.confirm('Vuoi davvero chiudere questo avviso?')) {
-      (e.currentTarget as any).close();
+      (e.currentTarget as HTMLElement & { close(): void }).close();
     }
   }
 }

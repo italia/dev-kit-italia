@@ -1,19 +1,20 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Back = () => {
   const backRef = useRef(null);
-  const [status, setStatus] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const el = backRef.current;
     if (!el) return;
     const onNavigate = (e) => {
       e.preventDefault();
-      setStatus('Navigazione indietro intercettata: la gestisce il tuo router.');
+      navigate(-1);
     };
     el.addEventListener('it-back-navigate', onNavigate);
     return () => el.removeEventListener('it-back-navigate', onNavigate);
-  }, []);
+  }, [navigate]);
 
   return (
     <>
@@ -58,9 +59,6 @@ const Back = () => {
             <span>Torna indietro</span>
           </a>
         </it-back>
-        <p className="mt-3" style={{ fontSize: '0.9rem' }} role="status" aria-live="polite">
-          {status}
-        </p>
       </section>
     </>
   );

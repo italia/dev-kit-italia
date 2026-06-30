@@ -19,7 +19,14 @@ Il componente Alert permette di creare messaggi di avviso contestuali che non in
 - [Modal](/docs/componenti-modal--documentazione): avvisa l'utente di azioni necessarie da compiere.
 - [Notification](/docs/componenti-notification--documentazione): avvisi a comparsa temporanei in sovraimpressione sulla schermata.
 
-## Anteprima del componente
+## Anteprima e attributi del componente
+
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
+
+<Canvas of={Stories.EsempioInterattivo} />
+<Controls of={Stories.EsempioInterattivo} />
+
+## Varianti
 
 Gli alert sono disponibili in cinque varianti di colore e sono adatti a qualsiasi lunghezza di testo.
 
@@ -61,7 +68,7 @@ Usa sempre i tag di intestazione in modo coerente con la gerarchia dei contenuti
 
 ## Chiusura
 
-Per permettere agli utenti di chiudere un alert, avvolgi il markup dell'alert nel componente `<it-alert>`:
+Per permettere agli utenti di chiudere un alert:
 
 - aggiungi il pulsante di chiusura e la classe `.alert-dismissible`, così il padding destro verrà adattato automaticamente e il pulsante con classe `.btn-close` si posizionerà correttamente;
 - usa l'elemento `<it-button>` per un comportamento corretto del pulsante di chiusura su tutti i dispositivi;
@@ -97,3 +104,13 @@ alert.addEventListener('it-alert-close', (e) => {
 ```
 
 <Canvas of={Stories.ChiusuraConLogicaPersonalizzata} />
+
+## Proprietà, Metodi, ed Eventi accessibili via JS
+
+Il componente espone i seguenti metodi e eventi accessibili via JavaScript.
+
+### Metodi
+- `close()` — chiude l'alert con animazione di dissolvenza e lo rimuove dal DOM. Se presente, sposta il focus sul pulsante di chiusura dell'alert adiacente.
+
+### Eventi
+- `it-alert-close` — emesso al click sul pulsante di chiusura. L'evento è cancellabile: chiamando `event.preventDefault()` si impedisce la rimozione automatica. Il `detail` contiene `alert`, riferimento all'elemento `it-alert` corrente.
