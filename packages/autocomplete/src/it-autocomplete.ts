@@ -171,6 +171,7 @@ export class ItAutocomplete extends FormControl {
       this._isOpen = false;
       this._activeIndex = -1;
       this._listboxHasVisualFocus = false;
+      this._currentStatusContent = '';
     }
   }
 
@@ -232,7 +233,7 @@ export class ItAutocomplete extends FormControl {
     if (this._inputValue.length < this.minLength) {
       this._isOpen = false;
       this._filteredOptions = [];
-      this._announceStatus();
+      this._currentStatusContent = '';
       return;
     }
 
@@ -303,6 +304,7 @@ export class ItAutocomplete extends FormControl {
         this._isOpen = false;
         this._activeIndex = -1;
         this._listboxHasVisualFocus = false;
+        this._currentStatusContent = '';
         break;
       default:
         break;
@@ -324,6 +326,7 @@ export class ItAutocomplete extends FormControl {
     this._isOpen = false;
     this._activeIndex = -1;
     this._listboxHasVisualFocus = false;
+    this._currentStatusContent = '';
     this.inputElement.focus();
 
     this.dispatchEvent(new CustomEvent('it-change', { bubbles: true, composed: true, detail: { value: optionValue } }));
@@ -474,7 +477,9 @@ export class ItAutocomplete extends FormControl {
         </div>
 
         ${this._showAssistiveHint
-          ? html`<div id="${assistiveHintId}" class="visually-hidden">${this.$t('autocomplete_assistiveHint')}</div>`
+          ? html`<div id="${assistiveHintId}" aria-hidden="true" class="visually-hidden">
+              ${this.$t('autocomplete_assistiveHint')}
+            </div>`
           : nothing}
 
         <div id="${statusId}" role="status" aria-live="polite" aria-atomic="true" class="visually-hidden">

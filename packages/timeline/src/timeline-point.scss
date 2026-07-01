@@ -15,74 +15,22 @@
   margin: 0;
 }
 
+// ── Host = the list item row ──────────────────────────────────────────────────
+// The <it-timeline-point> host element IS the flex row. No wrapper div is
+// needed, so the element can correctly fulfil the role="listitem" it declares
+// without an extra div between the <ol>/<ul> and the row content.
 :host {
-  display: block;
-  font-family: $font-family-sans-serif;
-  font-size: var(--#{$prefix}body-font-size);
-  line-height: var(--#{$prefix}body-leading);
-}
-
-// ── Color mapping ─────────────────────────────────────────────────────────────
-// BSI sets --point-color inside .it-timeline-point-list which is in the shadow
-// root of <it-timeline>, not here. We define it on the class directly.
-.point-aside-primary,
-.timeline-point-primary {
-  --point-color: var(--#{$prefix}color-text-primary);
-}
-
-.point-aside-secondary,
-.timeline-point-secondary {
-  --point-color: var(--#{$prefix}color-text-secondary);
-}
-
-.point-aside-success,
-.timeline-point-success {
-  --point-color: var(--#{$prefix}color-text-success);
-}
-
-.point-aside-info,
-.timeline-point-info {
-  --point-color: var(--#{$prefix}color-text-info);
-}
-
-.point-aside-warning,
-.timeline-point-warning {
-  --point-color: var(--#{$prefix}color-text-warning);
-}
-
-.point-aside-danger,
-.timeline-point-danger {
-  --point-color: var(--#{$prefix}color-text-danger);
-}
-
-.point-aside-light,
-.timeline-point-light {
-  --point-color: var(--#{$prefix}color-text-light);
-}
-
-.point-aside-dark,
-.timeline-point-dark {
-  --point-color: var(--#{$prefix}color-text-dark);
-}
-
-.point-aside-black,
-.timeline-point-black {
-  --point-color: var(--#{$prefix}color-text-black);
-}
-
-.point-aside-white,
-.timeline-point-white {
-  --point-color: var(--#{$prefix}color-text-white);
-}
-
-// ── Row ───────────────────────────────────────────────────────────────────────
-.timeline-point {
   position: relative;
   display: flex;
   flex-wrap: var(--it-timeline-point-content-flex-wrap, nowrap);
   align-items: center;
   margin-bottom: var(--it-timeline-point-margin-bottom, $v-gap * 3);
+  font-family: $font-family-sans-serif;
+  font-size: var(--#{$prefix}body-font-size);
+  line-height: var(--#{$prefix}body-leading);
+  list-style: none; // Safari strips list semantics on list-style:none; role="list" on the <ol>/<ul> restores them
 
+  // Vertical line used by stack-mobile layout
   &::before {
     position: absolute;
     z-index: 1;
@@ -93,38 +41,77 @@
     background-color: var(--point-color, var(--#{$prefix}color-text-primary));
     content: var(--it-timeline-point-stack-mobile-after-content, none);
   }
+}
 
-  // Align-top variant
-  &.timeline-point-align-top {
-    align-items: flex-start;
+// ── Color mapping ─────────────────────────────────────────────────────────────
+// --point-color is declared on :host so it cascades into the shadow DOM children.
+:host([color='primary']) {
+  --point-color: var(--#{$prefix}color-text-primary);
+}
 
-    .point-aside {
-      align-self: stretch;
-      justify-content: flex-start;
-      padding-top: 0.5rem;
+:host([color='secondary']) {
+  --point-color: var(--#{$prefix}color-text-secondary);
+}
 
-      &::after {
-        // base: point-main only — or point-main + point-bottom (no point-top)
-        // dot centered on main = padding-top(0.5) + main-height(~2.75*1.1)/2 ≈ 2.6rem
-        top: 2.6rem; // layout-computed from padding-top + line-height; no BSI variable
-        transform: translateY(-5px);
-      }
+:host([color='success']) {
+  --point-color: var(--#{$prefix}color-text-success);
+}
 
-      // NOTE: :has() on a shadow element can't pierce to slotted light DOM children.
-      // All point-visual combinations are handled via :host(:has()) blocks below.
+:host([color='info']) {
+  --point-color: var(--#{$prefix}color-text-info);
+}
+
+:host([color='warning']) {
+  --point-color: var(--#{$prefix}color-text-warning);
+}
+
+:host([color='danger']) {
+  --point-color: var(--#{$prefix}color-text-danger);
+}
+
+:host([color='light']) {
+  --point-color: var(--#{$prefix}color-text-light);
+}
+
+:host([color='dark']) {
+  --point-color: var(--#{$prefix}color-text-dark);
+}
+
+:host([color='black']) {
+  --point-color: var(--#{$prefix}color-text-black);
+}
+
+:host([color='white']) {
+  --point-color: var(--#{$prefix}color-text-white);
+}
+
+// ── Align-top variant ─────────────────────────────────────────────────────────
+:host([align-top]) {
+  align-items: flex-start;
+
+  .point-aside {
+    align-self: stretch;
+    justify-content: flex-start;
+    padding-top: 0.5rem;
+
+    &::after {
+      // base: point-main only — or point-main + point-bottom (no point-top)
+      // dot centered on main = padding-top(0.5) + main-height(~2.75*1.1)/2 ≈ 2.6rem
+      top: 2.6rem; // layout-computed from padding-top + line-height; no BSI variable
+      transform: translateY(-5px);
     }
   }
+}
 
-  // Compact variant
-  &.timeline-point-xs {
-    .point-aside {
-      width: 3.5rem;
-      padding: 0.5rem 0.75rem 0.5rem 0; // 0.75rem has no clean $spacer fraction; no BSI variable
+// ── Compact variant ────────────────────────────────────────────────────────────
+:host([compact]) {
+  .point-aside {
+    width: 3.5rem;
+    padding: 0.5rem 0.75rem 0.5rem 0; // 0.75rem has no clean $spacer fraction; no BSI variable
 
-      @include media-breakpoint-down(md) {
-        width: 3rem;
-        padding: 0.5rem 0.5rem 0.5rem 0;
-      }
+    @include media-breakpoint-down(md) {
+      width: 3rem;
+      padding: 0.5rem 0.5rem 0.5rem 0;
     }
   }
 }
@@ -142,8 +129,8 @@
 //   has-point-top + has-point-bottom   → top: 3.5rem (same as top-only case)
 
 // point-top present (with or without point-bottom: same top value)
-:host([has-point-top]) {
-  .timeline-point.timeline-point-align-top .point-aside::after {
+:host([has-point-top][align-top]) {
+  .point-aside::after {
     top: 3.5rem; // layout-computed from padding-top + line-height; no BSI variable
 
     @include media-breakpoint-down(md) {
@@ -207,13 +194,13 @@
 // parent it-timeline has stack-mobile set, so :host([stack-mobile]) is reliable.
 @include media-breakpoint-down(md) {
   :host([stack-mobile]) {
-    .timeline-point .point-aside {
+    .point-aside {
       width: auto;
       flex-direction: row-reverse;
       padding-right: 0.5rem;
       padding-left: 2.5rem; // clears the $spacer * 2 vertical line + dot width; no BSI variable
 
-      // The row ::before takes over the vertical line role
+      // The host ::before takes over the vertical line role
       &::before {
         display: none;
       }
@@ -227,14 +214,16 @@
       }
     }
 
-    .timeline-point .point-content {
+    .point-content {
       flex: 1 1 100%;
       margin-top: #{$v-gap * 2};
       margin-left: 0;
     }
+  }
 
-    // align-top: dot stays at the top of the text block
-    .timeline-point.timeline-point-align-top .point-aside::after {
+  // align-top: dot stays at the top of the text block
+  :host([stack-mobile][align-top]) {
+    .point-aside::after {
       top: 2.6rem; // layout-computed from padding-top + line-height; no BSI variable
       right: auto;
       left: 1.75rem; // aligns dot to the $spacer * 2 vertical line; no BSI variable
@@ -267,8 +256,4 @@
   *:last-child {
     margin-bottom: 0 !important;
   }
-}
-
-.it-timeline-point-list .timeline-point .point-content > *:last-child {
-  margin-bottom: 0;
 }

@@ -119,7 +119,7 @@ export class ItTimeline extends BaseComponent {
     return staticHtml`
       <div class="it-timeline-wrapper">
         <div class="row">
-          <${tag} class="${classes}">
+          <${tag} class="${classes}" role="list">
             <slot @slotchange=${this._onSlotChange}></slot>
           </${tag}>
         </div>

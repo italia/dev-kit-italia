@@ -146,7 +146,7 @@ export class ItUploadAvatar extends FormControl {
             ?required="${this.required && !hasValue}"
             aria-label="${fileInputLabel}"
             aria-required="${this.required ? 'true' : nothing}"
-            aria-invalid="${isInvalid ? 'true' : 'false'}"
+            aria-invalid="${isInvalid ? 'true' : nothing}"
             aria-describedby="${ifDefined(isInvalid ? feedbackId : undefined)}"
             @change="${this._handleFileChange}"
           />
