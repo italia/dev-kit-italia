@@ -215,6 +215,10 @@
 }
 
 // IT-NAV-MODAL
+.it-header-center-wrapper {
+  flex-direction: row-reverse;
+}
+
 it-modal#it-nav-modal {
   --it-nav-modal-header-background: var(--#{$prefix}header-center-background);
   --it-nav-modal-header-text-color: var(--#{$prefix}header-center-text-color);
@@ -290,7 +294,9 @@ it-modal#it-nav-modal {
       width: 100%;
 
       &::part(button) {
-        --#{$prefix}btn-padding-x: var(--#{$prefix}navbar-link-padding-x);
+        --#{$prefix}btn-padding-x: calc(
+          var(--#{$prefix}navbar-link-padding-x) - var(--#{$prefix}navbar-link-border-size)
+        );
       }
 
       &::part(dropdown-popover) {
