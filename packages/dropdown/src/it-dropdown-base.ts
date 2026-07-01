@@ -105,7 +105,11 @@ export class ItDropdownBase extends BaseComponent {
       if (this.itRole === 'menu') item.itRole = 'menuitem';
       else if (this.itRole === 'listbox') item.itRole = 'option';
       else if (this.itRole === 'tree') item.itRole = 'treeitem';
-      else item.itRole = undefined;
+      else if (this.itRole === 'list') {
+        // set role to 'listitem' to fix axe tools alert, and force itRole to 'presentation' to avoid duplicate roles in the megamenu
+        item.itRole = 'presentation';
+        item.role = 'listitem';
+      } else item.itRole = undefined;
     }
   }
 

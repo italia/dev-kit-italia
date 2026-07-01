@@ -63,9 +63,6 @@ export class ItMegamenu extends ItDropdownBase {
     // disable full-width for dropdown items inside megamenu to let them inherit the width of their container and not stretch to the full width of the megamenu
     for (const item of this._menuItems) {
       item.fullWidth = false;
-      if (this.itRole === 'list') {
-        item.role = 'listitem';
-      }
     }
 
     this._syncClickCloseTargets();
