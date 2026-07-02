@@ -74,7 +74,7 @@ Per permettere agli utenti di chiudere un alert:
 - usa l'elemento `<it-button>` per un comportamento corretto del pulsante di chiusura su tutti i dispositivi;
 - aggiungi le classi `.fade` e `.show` per animare l'alert alla chiusura.
 
-A differenza del passato **non è più necessario scrivere codice JavaScript**: il componente `<it-alert>` gestisce di default la chiusura. Al click sul pulsante `.btn-close` viene emesso l'evento `it-alert-close` e, se non annullato, l'alert viene rimosso dal DOM (con la dissolvenza prevista da `.fade`).
+Il componente `<it-alert>` gestisce di default la chiusura: al click sul pulsante `.btn-close` viene emesso l'evento `it-alert-close` e, se non annullato, l'alert viene rimosso dal DOM (con la dissolvenza prevista da `.fade`).
 
 ```html
 <it-alert variant="warning">

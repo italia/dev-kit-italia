@@ -10,8 +10,10 @@
   "fixed": [
     [
       "@italia/accordion",
+      "@italia/alert",
       "@italia/autocomplete",
       "@italia/avatar",
+      "@italia/back",
       "@italia/back-to-top",
       "@italia/bottom-nav",
       "@italia/breadcrumbs",
@@ -25,6 +27,7 @@
       "@italia/dev-kit-italia",
       "@italia/dimmer",
       "@italia/dropdown",
+      "@italia/forward",
       "@italia/globals",
       "@italia/header",
       "@italia/hero",
