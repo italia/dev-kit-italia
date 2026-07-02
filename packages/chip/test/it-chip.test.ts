@@ -143,11 +143,10 @@ describe('it-chip component', () => {
           </it-chip>
         </div>
       `);
-      const group = wrapper.querySelector<HTMLElement>('#group')!;
       const chip = wrapper.querySelector<ItChip>('#only-chip')!;
       chip.close();
       expect(chip.isConnected).to.be.false;
-      expect(document.activeElement).to.equal(group);
+      expect(document.activeElement).to.equal(wrapper);
     });
   });
 
