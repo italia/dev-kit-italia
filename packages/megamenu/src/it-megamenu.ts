@@ -297,7 +297,9 @@ export class ItMegamenu extends ItDropdownBase {
                           <ul
                             class="link-list"
                             part="megamenu-link-list"
-                            style="columns: ${this.columns};"
+                            style="grid-template-rows: repeat(${Math.ceil(
+                              this._menuItems.length / this.columns,
+                            )}, auto);"
                             role=${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}
                           >
                             <slot @slotchange=${this._setChildrenProperties}></slot>

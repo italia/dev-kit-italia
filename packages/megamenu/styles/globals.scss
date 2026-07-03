@@ -57,25 +57,6 @@ it-megamenu {
     }
   }
 
-  it-dropdown-item {
-    &::part(list-item) {
-      position: unset;
-      width: 100%;
-
-      &:focus-visible {
-        display: block; //to avoid safari shift on focus last column items
-      }
-    }
-
-    &::part(li) {
-      display: inline-block;
-      padding: 6px;
-      margin: -6px;
-      break-inside: avoid;
-      page-break-inside: avoid;
-    }
-  }
-
   @include media-breakpoint-up(lg) {
     &[footer-position='right'] {
       [slot='footer'] {
