@@ -258,6 +258,10 @@ it-modal#it-nav-modal {
     position: unset; //per posizionare il bottone di chiusura sul backdrop
   }
 
+  &::part(modal-footer) {
+    display: none;
+  }
+
   .custom-navbar-toggler {
     --#{$prefix}icon-default: var(--#{$prefix}header-center-text-color);
     margin-top: 0;
