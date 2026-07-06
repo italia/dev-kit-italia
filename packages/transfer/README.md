@@ -1,4 +1,4 @@
-# <it-popover>
+# <it-transfer>
 
 This package is part of [dev-kit-italia](https://italia.github.io/dev-kit-italia), a Web Components kit for the **.italia** design-system.
 
