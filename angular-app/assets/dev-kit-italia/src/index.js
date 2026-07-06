@@ -8872,6 +8872,7 @@ let ItAutocomplete = class ItAutocomplete extends FormControl$u {
             this._isOpen = false;
             this._activeIndex = -1;
             this._listboxHasVisualFocus = false;
+            this._currentStatusContent = '';
         }
     }
     /**
@@ -8924,7 +8925,7 @@ let ItAutocomplete = class ItAutocomplete extends FormControl$u {
         if (this._inputValue.length < this.minLength) {
             this._isOpen = false;
             this._filteredOptions = [];
-            this._announceStatus();
+            this._currentStatusContent = '';
             return;
         }
         if (Array.isArray(this.source)) {
@@ -8996,6 +8997,7 @@ let ItAutocomplete = class ItAutocomplete extends FormControl$u {
                 this._isOpen = false;
                 this._activeIndex = -1;
                 this._listboxHasVisualFocus = false;
+                this._currentStatusContent = '';
                 break;
         }
     }
@@ -9013,6 +9015,7 @@ let ItAutocomplete = class ItAutocomplete extends FormControl$u {
         this._isOpen = false;
         this._activeIndex = -1;
         this._listboxHasVisualFocus = false;
+        this._currentStatusContent = '';
         this.inputElement.focus();
         this.dispatchEvent(new CustomEvent('it-change', { bubbles: true, composed: true, detail: { value: optionValue } }));
     }
@@ -9149,7 +9152,9 @@ let ItAutocomplete = class ItAutocomplete extends FormControl$u {
         </div>
 
         ${this._showAssistiveHint
-            ? html `<div id="${assistiveHintId}" class="visually-hidden">${this.$t('autocomplete_assistiveHint')}</div>`
+            ? html `<div id="${assistiveHintId}" aria-hidden="true" class="visually-hidden">
+              ${this.$t('autocomplete_assistiveHint')}
+            </div>`
             : nothing}
 
         <div id="${statusId}" role="status" aria-live="polite" aria-atomic="true" class="visually-hidden">
@@ -13925,6 +13930,7 @@ var styles$D = css`.breadcrumb {
 let ItBreadcrumbItem = class ItBreadcrumbItem extends BaseComponent$r {
     constructor() {
         super(...arguments);
+        this.elRole = 'listitem';
         this.current = false;
         this.separator = '/';
     }
@@ -13950,10 +13956,20 @@ let ItBreadcrumbItem = class ItBreadcrumbItem extends BaseComponent$r {
         });
         return hasCustomContent;
     }
+    updated(changedProps) {
+        if (changedProps.has('current')) {
+            if (this.current) {
+                this.setAttribute('aria-current', 'page');
+            }
+            else {
+                this.removeAttribute('aria-current');
+            }
+        }
+    }
     render() {
         if (!this.current)
             return html `
-        <li class="breadcrumb-item" part="breadcrumb-item">
+        <li class="breadcrumb-item" part="breadcrumb-item" role="presentation">
           <slot></slot>
           <span class="${this._getSeparatorClasses() ? '' : 'separator'}" aria-hidden="true"
             ><slot name="separator" part="separator">${this.separator}</slot></span
@@ -13961,13 +13977,17 @@ let ItBreadcrumbItem = class ItBreadcrumbItem extends BaseComponent$r {
         </li>
       `;
         return html `
-      <li class="breadcrumb-item active" aria-current="page" part="breadcrumb-item">
+      <li class="breadcrumb-item active" role="presentation" part="breadcrumb-item">
         <slot></slot>
       </li>
     `;
     }
 };
 ItBreadcrumbItem.styles = styles$D;
+__decorate$u([
+    property({ type: String, reflect: true, attribute: 'role' }),
+    __metadata$u("design:type", Object)
+], ItBreadcrumbItem.prototype, "elRole", void 0);
 __decorate$u([
     state(),
     __metadata$u("design:type", Object)
@@ -28024,6 +28044,11 @@ let ItDropdownBase$1 = class ItDropdownBase extends BaseComponent$k {
                 item.itRole = 'option';
             else if (this.itRole === 'tree')
                 item.itRole = 'treeitem';
+            else if (this.itRole === 'list') {
+                // set role to 'listitem' to fix axe tools alert, and force itRole to 'presentation' to avoid duplicate roles in the megamenu
+                item.itRole = 'presentation';
+                item.role = 'listitem';
+            }
             else
                 item.itRole = undefined;
         }
@@ -28863,14 +28888,15 @@ let ItDropdownItem = class ItDropdownItem extends BaseComponent$k {
     }
     render() {
         if (this.separator) {
-            return html `<li><span class="divider" role="separator"></span></li>`;
+            return html `<li part="li"><span class="divider" role="separator"></span></li>`;
         }
         const itemClasses = this.composeClass({
             dark: this.dark,
             fw: this.fullWidth,
             'list-item dropdown-item': !this.href,
         });
-        const itemRole = this.href && this.itRole ? 'none' : this.itRole;
+        const itemRole = this.href && this.itRole && this.itRole !== 'presentation' ? 'none' : this.itRole;
+        const hrefRole = this.href && this.itRole && this.itRole !== 'presentation' ? this.itRole : undefined;
         const statusClasses = this.composeClass({
             disabled: this.disabled,
             active: this.active,
@@ -28891,7 +28917,7 @@ let ItDropdownItem = class ItDropdownItem extends BaseComponent$k {
         role="${ifDefined(itemRole)}"
         class=${ifDefined(itemClasses || undefined)}
         tabindex=${ifDefined(this.href ? undefined : '-1')}
-        part=${ifDefined(this.href ? undefined : 'focusable')}
+        part=${ifDefined(this.href ? 'li' : 'focusable li')}
         @keydown=${this.href ? undefined : this.handlePress}
         @click=${this.href ? undefined : this.handlePress}
         aria-disabled=${ifDefined((this.disabled && !this.href) || undefined)}
@@ -28901,7 +28927,7 @@ let ItDropdownItem = class ItDropdownItem extends BaseComponent$k {
               class=${linkClasses}
               part="focusable list-item"
               href=${this.href}
-              role=${ifDefined(this.itRole)}
+              role=${ifDefined(hrefRole)}
               aria-disabled=${ifDefined(this.disabled || undefined)}
               @keydown=${this.handlePress}
               @click=${this.handlePress}
@@ -38204,6 +38230,11 @@ class ItDropdownBase extends BaseComponent$h {
                 item.itRole = 'option';
             else if (this.itRole === 'tree')
                 item.itRole = 'treeitem';
+            else if (this.itRole === 'list') {
+                // set role to 'listitem' to fix axe tools alert, and force itRole to 'presentation' to avoid duplicate roles in the megamenu
+                item.itRole = 'presentation';
+                item.role = 'listitem';
+            }
             else
                 item.itRole = undefined;
         }
@@ -40934,11 +40965,10 @@ var styles$p = css`.row {
     --bsi-dropdown-padding-y: var(--bsi-spacing-m);
     --bsi-dropdown-padding-x: var(--bsi-spacing-xs);
   }
-}
-:host .dropdown-menu .link-list-wrapper ul.link-list {
-  display: block;
-  column-gap: var(--bsi-spacing-s);
-  /* spazio tra colonne */
+  :host .dropdown-menu .link-list-wrapper ul.link-list {
+    display: grid;
+    grid-auto-flow: column;
+  }
 }`;
 
 /* eslint-disable lit-a11y/list */
@@ -41010,9 +41040,6 @@ let ItMegamenu = ItMegamenu_1 = class ItMegamenu extends ItDropdownBase {
         // disable full-width for dropdown items inside megamenu to let them inherit the width of their container and not stretch to the full width of the megamenu
         for (const item of this._menuItems) {
             item.fullWidth = false;
-            if (this.itRole === 'list') {
-                item.role = 'listitem';
-            }
         }
         this._syncClickCloseTargets();
     }
@@ -41197,7 +41224,7 @@ let ItMegamenu = ItMegamenu_1 = class ItMegamenu extends ItDropdownBase {
                           <ul
                             class="link-list"
                             part="megamenu-link-list"
-                            style="columns: ${this.columns};"
+                            style="grid-template-rows: repeat(${Math.ceil(this._menuItems.length / this.columns)}, auto);"
                             role=${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}
                           >
                             <slot @slotchange=${this._setChildrenProperties}></slot>
@@ -48430,6 +48457,10 @@ blockquote.blockquote-card.dark .blockquote-footer,
 }
 
 /* END copied from bsi reboot */
+.notification {
+  z-index: var(--bsi-notification-z-index, 2);
+}
+
 ::slotted(p) {
   margin-top: var(--bsi-spacing-xxs) !important;
   color: var(--bsi-notification-text-color);
@@ -48557,12 +48588,12 @@ let ItNotification = ItNotification_1 = class ItNotification extends BaseLocaliz
       <div
         class="${classes}"
         role="alert"
-        aria-labelledby="heading"
+        aria-labelledby=${`${this._id}-heading`}
         part="notification"
         aria-hidden="${ifDefined(this.isShown ? undefined : 'true')}"
       >
         ${html$1 `
-          <${headingTag} class=${headingClasses} id="heading" part="title">
+          <${headingTag} class=${headingClasses} id=${`${this._id}-heading`} part="title">
             ${this.icon
             ? html `<it-icon
                     class="icon me-2"
@@ -85764,14 +85795,32 @@ blockquote.blockquote-card.dark .blockquote-footer,
     display: flex !important;
   }
 }
-.upload[type=file] + label {
+label:has(.upload[type=file]) {
   display: flex;
+  overflow: hidden;
   width: fit-content;
   max-width: unset !important;
   align-items: center;
+  padding: var(--bsi-spacing-xs) var(--bsi-spacing-m);
+  border-radius: var(--bsi-form-control-border-radius);
+  margin-bottom: 0;
+  background-color: var(--bsi-color-background-primary);
+  color: var(--bsi-color-text-inverse);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
   gap: var(--bsi-spacing-xxs, 8px);
+  transition: background-color var(--bsi-transition-instant);
+}
+label:has(.upload[type=file]):hover {
+  background-color: var(--bsi-color-background-primary-hover);
 }
 
+@media (min-width: 576px) {
+  label:has(.upload[type=file]) {
+    font-size: var(--bsi-label-font-size-s);
+  }
+}
 :host([required]) .upload-required-feedback {
   display: block;
 }
@@ -85789,13 +85838,20 @@ blockquote.blockquote-card.dark .blockquote-footer,
 }
 
 :focus-visible,
-.upload:focus-visible + label,
+label:has(.upload[type=file]:focus-visible),
 .upload-dragdrop-input:focus-visible[type=file] + label,
 .avatar-upload:focus-within:focus-visible {
   border-color: #000 !important;
   box-shadow: 0 0 0 2px hsl(0, 0%, 100%), 0 0 0 5px hsl(0, 0%, 0%) !important;
   outline: 3px solid rgba(0, 0, 0, 0) !important;
   outline-offset: 3px !important;
+}
+
+.upload[type=file]:focus-visible {
+  border-color: initial !important;
+  box-shadow: none !important;
+  outline: none !important;
+  outline-offset: initial !important;
 }
 
 .upload-file-actions {
@@ -85823,11 +85879,23 @@ blockquote.blockquote-card.dark .blockquote-footer,
   line-height: 1;
 }
 
-.upload-pictures-wall .upload[type=file] + label {
+.upload-pictures-wall label:has(.upload[type=file]) {
   display: flex;
+  width: 128px;
+  height: 128px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  border: 2px dashed var(--bsi-color-border-primary);
+  border-radius: 0;
+  background-color: var(--bsi-color-border-primary-lighter);
+  color: var(--bsi-color-text-primary);
+  font-weight: 600;
+  transition: border-color var(--bsi-transition-instant);
+}
+.upload-pictures-wall label:has(.upload[type=file]):hover {
+  border: 2px dashed var(--bsi-color-border-primary-hover);
 }`;
 
 registerTranslation$1(translation$1$1);
@@ -86130,19 +86198,13 @@ let ItUpload = class ItUpload extends FormControl$1 {
         const isInvalid = showValidation && this.validationMessage.length > 0;
         return html `
       <div class="form-group">
-        <input
-          type="file"
-          class="upload it-form__control"
-          id="${inputId}"
-          name="${this.name}"
-          ?multiple="${this.multiple}"
-          accept="${ifDefined(this.accept)}"
-          ?disabled="${this.disabled}"
-          ?required="${this.required && this._files.length === 0}"
-          aria-invalid="${isInvalid ? 'true' : 'false'}"
-          aria-describedby="${ifDefined(isInvalid ? `invalid-feedback-${inputId}` : undefined)}"
-          @change="${this._handleFileChange}"
-        />
+        <!-- Wrapping pattern per Scott O'Hara "Styled File Uploads":
+             https://scottaohara.github.io/a11y_styled_form_controls/src/file-upload/
+             Input inside label instead of BSI's sibling pattern (0.1px ghost input +
+             styled adjacent label). BSI's pattern makes VoiceOver visit the ghost as a
+             confusing "small square group" before the real button. With wrapping, both
+             stops are logical: label text → file upload control. No JS needed — click
+             propagation to the file picker is handled natively by the label. -->
         <label part="input-label" for="${inputId}">
           <slot name="icon">
             <it-icon
@@ -86153,6 +86215,19 @@ let ItUpload = class ItUpload extends FormControl$1 {
             ></it-icon>
           </slot>
           <slot name="label">${labelText}</slot>
+          <input
+            type="file"
+            class="upload it-form__control"
+            id="${inputId}"
+            name="${this.name}"
+            ?multiple="${this.multiple}"
+            accept="${ifDefined(this.accept)}"
+            ?disabled="${this.disabled}"
+            ?required="${this.required && this._files.length === 0}"
+            aria-invalid="${isInvalid ? 'true' : nothing}"
+            aria-describedby="${ifDefined(isInvalid ? `invalid-feedback-${inputId}` : undefined)}"
+            @change="${this._handleFileChange}"
+          />
         </label>
 
         ${when(this.supportText, () => html `<small class="form-text">${this.supportText}</small>`)}
@@ -87823,7 +87898,7 @@ let ItUploadAvatar = class ItUploadAvatar extends FormControl$1 {
             ?required="${this.required && !hasValue}"
             aria-label="${fileInputLabel}"
             aria-required="${this.required ? 'true' : nothing}"
-            aria-invalid="${isInvalid ? 'true' : 'false'}"
+            aria-invalid="${isInvalid ? 'true' : nothing}"
             aria-describedby="${ifDefined(isInvalid ? feedbackId : undefined)}"
             @change="${this._handleFileChange}"
           />
@@ -89279,7 +89354,7 @@ let ItUploadDragDrop = class ItUploadDragDrop extends FormControl$1 {
             ?required="${this.required && !this._currentFile}"
             aria-label="${fileInputLabel}"
             aria-required="${this.required ? 'true' : nothing}"
-            aria-invalid="${isInvalid ? 'true' : 'false'}"
+            aria-invalid="${isInvalid ? 'true' : nothing}"
             aria-describedby="${ifDefined(isInvalid ? feedbackId : undefined)}"
             @change="${this._onFileInputChange}"
           />

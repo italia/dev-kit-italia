@@ -8423,6 +8423,7 @@ let ItAutocomplete = class ItAutocomplete extends FormControl$C {
             this._isOpen = false;
             this._activeIndex = -1;
             this._listboxHasVisualFocus = false;
+            this._currentStatusContent = '';
         }
     }
     /**
@@ -8475,7 +8476,7 @@ let ItAutocomplete = class ItAutocomplete extends FormControl$C {
         if (this._inputValue.length < this.minLength) {
             this._isOpen = false;
             this._filteredOptions = [];
-            this._announceStatus();
+            this._currentStatusContent = '';
             return;
         }
         if (Array.isArray(this.source)) {
@@ -8547,6 +8548,7 @@ let ItAutocomplete = class ItAutocomplete extends FormControl$C {
                 this._isOpen = false;
                 this._activeIndex = -1;
                 this._listboxHasVisualFocus = false;
+                this._currentStatusContent = '';
                 break;
         }
     }
@@ -8564,6 +8566,7 @@ let ItAutocomplete = class ItAutocomplete extends FormControl$C {
         this._isOpen = false;
         this._activeIndex = -1;
         this._listboxHasVisualFocus = false;
+        this._currentStatusContent = '';
         this.inputElement.focus();
         this.dispatchEvent(new CustomEvent('it-change', { bubbles: true, composed: true, detail: { value: optionValue } }));
     }
@@ -8700,7 +8703,9 @@ let ItAutocomplete = class ItAutocomplete extends FormControl$C {
         </div>
 
         ${this._showAssistiveHint
-            ? b `<div id="${assistiveHintId}" class="visually-hidden">${this.$t('autocomplete_assistiveHint')}</div>`
+            ? b `<div id="${assistiveHintId}" aria-hidden="true" class="visually-hidden">
+              ${this.$t('autocomplete_assistiveHint')}
+            </div>`
             : A}
 
         <div id="${statusId}" role="status" aria-live="polite" aria-atomic="true" class="visually-hidden">
@@ -16316,6 +16321,7 @@ var styles$P = i$6`.breadcrumb {
 let ItBreadcrumbItem = class ItBreadcrumbItem extends BaseComponent$x {
     constructor() {
         super(...arguments);
+        this.elRole = 'listitem';
         this.current = false;
         this.separator = '/';
     }
@@ -16341,10 +16347,20 @@ let ItBreadcrumbItem = class ItBreadcrumbItem extends BaseComponent$x {
         });
         return hasCustomContent;
     }
+    updated(changedProps) {
+        if (changedProps.has('current')) {
+            if (this.current) {
+                this.setAttribute('aria-current', 'page');
+            }
+            else {
+                this.removeAttribute('aria-current');
+            }
+        }
+    }
     render() {
         if (!this.current)
             return b `
-        <li class="breadcrumb-item" part="breadcrumb-item">
+        <li class="breadcrumb-item" part="breadcrumb-item" role="presentation">
           <slot></slot>
           <span class="${this._getSeparatorClasses() ? '' : 'separator'}" aria-hidden="true"
             ><slot name="separator" part="separator">${this.separator}</slot></span
@@ -16352,13 +16368,17 @@ let ItBreadcrumbItem = class ItBreadcrumbItem extends BaseComponent$x {
         </li>
       `;
         return b `
-      <li class="breadcrumb-item active" aria-current="page" part="breadcrumb-item">
+      <li class="breadcrumb-item active" role="presentation" part="breadcrumb-item">
         <slot></slot>
       </li>
     `;
     }
 };
 ItBreadcrumbItem.styles = styles$P;
+__decorate$B([
+    n$3({ type: String, reflect: true, attribute: 'role' }),
+    __metadata$B("design:type", Object)
+], ItBreadcrumbItem.prototype, "elRole", void 0);
 __decorate$B([
     r$G(),
     __metadata$B("design:type", Object)
@@ -38439,14 +38459,15 @@ let ItDropdownItem = class ItDropdownItem extends BaseComponent$p {
     }
     render() {
         if (this.separator) {
-            return b `<li><span class="divider" role="separator"></span></li>`;
+            return b `<li part="li"><span class="divider" role="separator"></span></li>`;
         }
         const itemClasses = this.composeClass({
             dark: this.dark,
             fw: this.fullWidth,
             'list-item dropdown-item': !this.href,
         });
-        const itemRole = this.href && this.itRole ? 'none' : this.itRole;
+        const itemRole = this.href && this.itRole && this.itRole !== 'presentation' ? 'none' : this.itRole;
+        const hrefRole = this.href && this.itRole && this.itRole !== 'presentation' ? this.itRole : undefined;
         const statusClasses = this.composeClass({
             disabled: this.disabled,
             active: this.active,
@@ -38467,7 +38488,7 @@ let ItDropdownItem = class ItDropdownItem extends BaseComponent$p {
         role="${o$2(itemRole)}"
         class=${o$2(itemClasses || undefined)}
         tabindex=${o$2(this.href ? undefined : '-1')}
-        part=${o$2(this.href ? undefined : 'focusable')}
+        part=${o$2(this.href ? 'li' : 'focusable li')}
         @keydown=${this.href ? undefined : this.handlePress}
         @click=${this.href ? undefined : this.handlePress}
         aria-disabled=${o$2((this.disabled && !this.href) || undefined)}
@@ -38477,7 +38498,7 @@ let ItDropdownItem = class ItDropdownItem extends BaseComponent$p {
               class=${linkClasses}
               part="focusable list-item"
               href=${this.href}
-              role=${o$2(this.itRole)}
+              role=${o$2(hrefRole)}
               aria-disabled=${o$2(this.disabled || undefined)}
               @keydown=${this.handlePress}
               @click=${this.handlePress}
@@ -39483,6 +39504,11 @@ let ItDropdownBase$1 = class ItDropdownBase extends BaseComponent$p {
                 item.itRole = 'option';
             else if (this.itRole === 'tree')
                 item.itRole = 'treeitem';
+            else if (this.itRole === 'list') {
+                // set role to 'listitem' to fix axe tools alert, and force itRole to 'presentation' to avoid duplicate roles in the megamenu
+                item.itRole = 'presentation';
+                item.role = 'listitem';
+            }
             else
                 item.itRole = undefined;
         }
@@ -51580,6 +51606,11 @@ class ItDropdownBase extends BaseComponent$k {
                 item.itRole = 'option';
             else if (this.itRole === 'tree')
                 item.itRole = 'treeitem';
+            else if (this.itRole === 'list') {
+                // set role to 'listitem' to fix axe tools alert, and force itRole to 'presentation' to avoid duplicate roles in the megamenu
+                item.itRole = 'presentation';
+                item.role = 'listitem';
+            }
             else
                 item.itRole = undefined;
         }
@@ -54310,11 +54341,10 @@ var styles$x = i$6`.row {
     --bsi-dropdown-padding-y: var(--bsi-spacing-m);
     --bsi-dropdown-padding-x: var(--bsi-spacing-xs);
   }
-}
-:host .dropdown-menu .link-list-wrapper ul.link-list {
-  display: block;
-  column-gap: var(--bsi-spacing-s);
-  /* spazio tra colonne */
+  :host .dropdown-menu .link-list-wrapper ul.link-list {
+    display: grid;
+    grid-auto-flow: column;
+  }
 }`;
 
 /* eslint-disable lit-a11y/list */
@@ -54386,9 +54416,6 @@ let ItMegamenu = ItMegamenu_1 = class ItMegamenu extends ItDropdownBase {
         // disable full-width for dropdown items inside megamenu to let them inherit the width of their container and not stretch to the full width of the megamenu
         for (const item of this._menuItems) {
             item.fullWidth = false;
-            if (this.itRole === 'list') {
-                item.role = 'listitem';
-            }
         }
         this._syncClickCloseTargets();
     }
@@ -54573,7 +54600,7 @@ let ItMegamenu = ItMegamenu_1 = class ItMegamenu extends ItDropdownBase {
                           <ul
                             class="link-list"
                             part="megamenu-link-list"
-                            style="columns: ${this.columns};"
+                            style="grid-template-rows: repeat(${Math.ceil(this._menuItems.length / this.columns)}, auto);"
                             role=${o$2(this.itRole !== 'list' ? this.itRole : undefined)}
                           >
                             <slot @slotchange=${this._setChildrenProperties}></slot>
@@ -63136,6 +63163,10 @@ blockquote.blockquote-card.dark .blockquote-footer,
 }
 
 /* END copied from bsi reboot */
+.notification {
+  z-index: var(--bsi-notification-z-index, 2);
+}
+
 ::slotted(p) {
   margin-top: var(--bsi-spacing-xxs) !important;
   color: var(--bsi-notification-text-color);
@@ -63263,12 +63294,12 @@ let ItNotification = ItNotification_1 = class ItNotification extends BaseLocaliz
       <div
         class="${classes}"
         role="alert"
-        aria-labelledby="heading"
+        aria-labelledby=${`${this._id}-heading`}
         part="notification"
         aria-hidden="${o$2(this.isShown ? undefined : 'true')}"
       >
         ${u$2 `
-          <${headingTag} class=${headingClasses} id="heading" part="title">
+          <${headingTag} class=${headingClasses} id=${`${this._id}-heading`} part="title">
             ${this.icon
             ? b `<it-icon
                     class="icon me-2"
@@ -96400,13 +96431,11 @@ var styles$a = i$6`*,
 }
 .it-timeline-point-list {
   padding-left: 0;
-}
-.it-timeline-point-list::marker {
-  font-size: 0px;
+  list-style: none;
 }
 
 ::slotted(it-timeline-point) {
-  display: block;
+  display: flex;
   width: 100%;
 }`;
 
@@ -96525,7 +96554,7 @@ let ItTimeline = class ItTimeline extends BaseComponent$3 {
         return u$2 `
       <div class="it-timeline-wrapper">
         <div class="row">
-          <${tag} class="${classes}">
+          <${tag} class="${classes}" role="list">
             <slot @slotchange=${this._onSlotChange}></slot>
           </${tag}>
         </div>
@@ -98550,10 +98579,10 @@ blockquote.blockquote-card.dark .blockquote-footer,
   height: 24px;
 }
 .it-pin-wrapper .pin-text {
-  border-radius: 4px;
+  border-radius: 40px;
   background: var(--bsi-color-background-primary-deep);
   color: var(--bsi-color-white, #fff);
-  font-family: "Titillium Web", "Titillium Sans Pro", Geneva, Tahoma, sans-serif;
+  font-family: var(--bsi-font-mono);
   font-size: var(--bsi-body-font-size);
   font-weight: 600;
   line-height: var(--bsi-body-leading);
@@ -98785,70 +98814,17 @@ var styles$8 = i$6`*,
 }
 
 :host {
-  display: block;
-  font-family: "Titillium Web", "Titillium Sans Pro", Geneva, Tahoma, sans-serif;
-  font-size: var(--bsi-body-font-size);
-  line-height: var(--bsi-body-leading);
-}
-
-.point-aside-primary,
-.timeline-point-primary {
-  --point-color: var(--bsi-color-text-primary);
-}
-
-.point-aside-secondary,
-.timeline-point-secondary {
-  --point-color: var(--bsi-color-text-secondary);
-}
-
-.point-aside-success,
-.timeline-point-success {
-  --point-color: var(--bsi-color-text-success);
-}
-
-.point-aside-info,
-.timeline-point-info {
-  --point-color: var(--bsi-color-text-info);
-}
-
-.point-aside-warning,
-.timeline-point-warning {
-  --point-color: var(--bsi-color-text-warning);
-}
-
-.point-aside-danger,
-.timeline-point-danger {
-  --point-color: var(--bsi-color-text-danger);
-}
-
-.point-aside-light,
-.timeline-point-light {
-  --point-color: var(--bsi-color-text-light);
-}
-
-.point-aside-dark,
-.timeline-point-dark {
-  --point-color: var(--bsi-color-text-dark);
-}
-
-.point-aside-black,
-.timeline-point-black {
-  --point-color: var(--bsi-color-text-black);
-}
-
-.point-aside-white,
-.timeline-point-white {
-  --point-color: var(--bsi-color-text-white);
-}
-
-.timeline-point {
   position: relative;
   display: flex;
   flex-wrap: var(--it-timeline-point-content-flex-wrap, nowrap);
   align-items: center;
   margin-bottom: var(--it-timeline-point-margin-bottom, 24px);
+  font-family: "Titillium Web", "Titillium Sans Pro", Geneva, Tahoma, sans-serif;
+  font-size: var(--bsi-body-font-size);
+  line-height: var(--bsi-body-leading);
+  list-style: none;
 }
-.timeline-point::before {
+:host::before {
   position: absolute;
   z-index: 1;
   top: var(--it-timeline-point-stack-mobile-after-top, 0);
@@ -98858,34 +98834,76 @@ var styles$8 = i$6`*,
   background-color: var(--point-color, var(--bsi-color-text-primary));
   content: var(--it-timeline-point-stack-mobile-after-content, none);
 }
-.timeline-point.timeline-point-align-top {
+
+:host([color=primary]) {
+  --point-color: var(--bsi-color-text-primary);
+}
+
+:host([color=secondary]) {
+  --point-color: var(--bsi-color-text-secondary);
+}
+
+:host([color=success]) {
+  --point-color: var(--bsi-color-text-success);
+}
+
+:host([color=info]) {
+  --point-color: var(--bsi-color-text-info);
+}
+
+:host([color=warning]) {
+  --point-color: var(--bsi-color-text-warning);
+}
+
+:host([color=danger]) {
+  --point-color: var(--bsi-color-text-danger);
+}
+
+:host([color=light]) {
+  --point-color: var(--bsi-color-text-light);
+}
+
+:host([color=dark]) {
+  --point-color: var(--bsi-color-text-dark);
+}
+
+:host([color=black]) {
+  --point-color: var(--bsi-color-text-black);
+}
+
+:host([color=white]) {
+  --point-color: var(--bsi-color-text-white);
+}
+
+:host([align-top]) {
   align-items: flex-start;
 }
-.timeline-point.timeline-point-align-top .point-aside {
+:host([align-top]) .point-aside {
   align-self: stretch;
   justify-content: flex-start;
   padding-top: 0.5rem;
 }
-.timeline-point.timeline-point-align-top .point-aside::after {
+:host([align-top]) .point-aside::after {
   top: 2.6rem;
   transform: translateY(-5px);
 }
-.timeline-point.timeline-point-xs .point-aside {
+
+:host([compact]) .point-aside {
   width: 3.5rem;
   padding: 0.5rem 0.75rem 0.5rem 0;
 }
 @media (max-width: 767.98px) {
-  .timeline-point.timeline-point-xs .point-aside {
+  :host([compact]) .point-aside {
     width: 3rem;
     padding: 0.5rem 0.5rem 0.5rem 0;
   }
 }
 
-:host([has-point-top]) .timeline-point.timeline-point-align-top .point-aside::after {
+:host([has-point-top][align-top]) .point-aside::after {
   top: 3.5rem;
 }
 @media (max-width: 767.98px) {
-  :host([has-point-top]) .timeline-point.timeline-point-align-top .point-aside::after {
+  :host([has-point-top][align-top]) .point-aside::after {
     top: 2.7rem;
   }
 }
@@ -98936,27 +98954,27 @@ var styles$8 = i$6`*,
 }
 
 @media (max-width: 767.98px) {
-  :host([stack-mobile]) .timeline-point .point-aside {
+  :host([stack-mobile]) .point-aside {
     width: auto;
     flex-direction: row-reverse;
     padding-right: 0.5rem;
     padding-left: 2.5rem;
   }
-  :host([stack-mobile]) .timeline-point .point-aside::before {
+  :host([stack-mobile]) .point-aside::before {
     display: none;
   }
-  :host([stack-mobile]) .timeline-point .point-aside::after {
+  :host([stack-mobile]) .point-aside::after {
     top: 50%;
     right: auto;
     left: 1.75rem;
     transform: translateY(-50%);
   }
-  :host([stack-mobile]) .timeline-point .point-content {
+  :host([stack-mobile]) .point-content {
     flex: 1 1 100%;
     margin-top: 16px;
     margin-left: 0;
   }
-  :host([stack-mobile]) .timeline-point.timeline-point-align-top .point-aside::after {
+  :host([stack-mobile][align-top]) .point-aside::after {
     top: 2.6rem;
     right: auto;
     left: 1.75rem;
@@ -98982,10 +99000,6 @@ var styles$8 = i$6`*,
 
 ::slotted([slot=content]) *:last-child {
   margin-bottom: 0 !important;
-}
-
-.it-timeline-point-list .timeline-point .point-content > *:last-child {
-  margin-bottom: 0;
 }`;
 
 /**
@@ -99108,21 +99122,13 @@ let ItTimelinePoint = class ItTimelinePoint extends BaseComponent$3 {
         this._updatePointVisualAriaHidden();
     }
     render() {
-        const itemClasses = this.composeClass('timeline-point', {
-            'timeline-point-align-top': this.alignTop,
-            'timeline-point-xs': this.compact,
-            [`timeline-point-${this.getColor()}`]: true,
-        });
-        const asideClasses = this.composeClass('point-aside', `point-aside-${this.getColor()}`);
         return b `
-      <div class="${itemClasses}" part="point">
-        <div class="${asideClasses}">
-          <slot name="date" @slotchange=${this._onAsideSlotChange}></slot>
-          <slot name="milestone" @slotchange=${this._onAsideSlotChange}></slot>
-        </div>
-        <div class="point-content">
-          <slot name="content"></slot>
-        </div>
+      <div class="point-aside">
+        <slot name="date" @slotchange=${this._onAsideSlotChange}></slot>
+        <slot name="milestone" @slotchange=${this._onAsideSlotChange}></slot>
+      </div>
+      <div class="point-content">
+        <slot name="content"></slot>
       </div>
     `;
     }
@@ -106581,14 +106587,32 @@ blockquote.blockquote-card.dark .blockquote-footer,
     display: flex !important;
   }
 }
-.upload[type=file] + label {
+label:has(.upload[type=file]) {
   display: flex;
+  overflow: hidden;
   width: fit-content;
   max-width: unset !important;
   align-items: center;
+  padding: var(--bsi-spacing-xs) var(--bsi-spacing-m);
+  border-radius: var(--bsi-form-control-border-radius);
+  margin-bottom: 0;
+  background-color: var(--bsi-color-background-primary);
+  color: var(--bsi-color-text-inverse);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
   gap: var(--bsi-spacing-xxs, 8px);
+  transition: background-color var(--bsi-transition-instant);
+}
+label:has(.upload[type=file]):hover {
+  background-color: var(--bsi-color-background-primary-hover);
 }
 
+@media (min-width: 576px) {
+  label:has(.upload[type=file]) {
+    font-size: var(--bsi-label-font-size-s);
+  }
+}
 :host([required]) .upload-required-feedback {
   display: block;
 }
@@ -106606,13 +106630,20 @@ blockquote.blockquote-card.dark .blockquote-footer,
 }
 
 :focus-visible,
-.upload:focus-visible + label,
+label:has(.upload[type=file]:focus-visible),
 .upload-dragdrop-input:focus-visible[type=file] + label,
 .avatar-upload:focus-within:focus-visible {
   border-color: #000 !important;
   box-shadow: 0 0 0 2px hsl(0, 0%, 100%), 0 0 0 5px hsl(0, 0%, 0%) !important;
   outline: 3px solid rgba(0, 0, 0, 0) !important;
   outline-offset: 3px !important;
+}
+
+.upload[type=file]:focus-visible {
+  border-color: initial !important;
+  box-shadow: none !important;
+  outline: none !important;
+  outline-offset: initial !important;
 }
 
 .upload-file-actions {
@@ -106640,11 +106671,23 @@ blockquote.blockquote-card.dark .blockquote-footer,
   line-height: 1;
 }
 
-.upload-pictures-wall .upload[type=file] + label {
+.upload-pictures-wall label:has(.upload[type=file]) {
   display: flex;
+  width: 128px;
+  height: 128px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  border: 2px dashed var(--bsi-color-border-primary);
+  border-radius: 0;
+  background-color: var(--bsi-color-border-primary-lighter);
+  color: var(--bsi-color-text-primary);
+  font-weight: 600;
+  transition: border-color var(--bsi-transition-instant);
+}
+.upload-pictures-wall label:has(.upload[type=file]):hover {
+  border: 2px dashed var(--bsi-color-border-primary-hover);
 }`;
 
 registerTranslation$1(translation$1$1);
@@ -106947,19 +106990,13 @@ let ItUpload = class ItUpload extends FormControl$1 {
         const isInvalid = showValidation && this.validationMessage.length > 0;
         return b `
       <div class="form-group">
-        <input
-          type="file"
-          class="upload it-form__control"
-          id="${inputId}"
-          name="${this.name}"
-          ?multiple="${this.multiple}"
-          accept="${o$2(this.accept)}"
-          ?disabled="${this.disabled}"
-          ?required="${this.required && this._files.length === 0}"
-          aria-invalid="${isInvalid ? 'true' : 'false'}"
-          aria-describedby="${o$2(isInvalid ? `invalid-feedback-${inputId}` : undefined)}"
-          @change="${this._handleFileChange}"
-        />
+        <!-- Wrapping pattern per Scott O'Hara "Styled File Uploads":
+             https://scottaohara.github.io/a11y_styled_form_controls/src/file-upload/
+             Input inside label instead of BSI's sibling pattern (0.1px ghost input +
+             styled adjacent label). BSI's pattern makes VoiceOver visit the ghost as a
+             confusing "small square group" before the real button. With wrapping, both
+             stops are logical: label text → file upload control. No JS needed — click
+             propagation to the file picker is handled natively by the label. -->
         <label part="input-label" for="${inputId}">
           <slot name="icon">
             <it-icon
@@ -106970,6 +107007,19 @@ let ItUpload = class ItUpload extends FormControl$1 {
             ></it-icon>
           </slot>
           <slot name="label">${labelText}</slot>
+          <input
+            type="file"
+            class="upload it-form__control"
+            id="${inputId}"
+            name="${this.name}"
+            ?multiple="${this.multiple}"
+            accept="${o$2(this.accept)}"
+            ?disabled="${this.disabled}"
+            ?required="${this.required && this._files.length === 0}"
+            aria-invalid="${isInvalid ? 'true' : A}"
+            aria-describedby="${o$2(isInvalid ? `invalid-feedback-${inputId}` : undefined)}"
+            @change="${this._handleFileChange}"
+          />
         </label>
 
         ${n$1(this.supportText, () => b `<small class="form-text">${this.supportText}</small>`)}
@@ -108640,7 +108690,7 @@ let ItUploadAvatar = class ItUploadAvatar extends FormControl$1 {
             ?required="${this.required && !hasValue}"
             aria-label="${fileInputLabel}"
             aria-required="${this.required ? 'true' : A}"
-            aria-invalid="${isInvalid ? 'true' : 'false'}"
+            aria-invalid="${isInvalid ? 'true' : A}"
             aria-describedby="${o$2(isInvalid ? feedbackId : undefined)}"
             @change="${this._handleFileChange}"
           />
@@ -110096,7 +110146,7 @@ let ItUploadDragDrop = class ItUploadDragDrop extends FormControl$1 {
             ?required="${this.required && !this._currentFile}"
             aria-label="${fileInputLabel}"
             aria-required="${this.required ? 'true' : A}"
-            aria-invalid="${isInvalid ? 'true' : 'false'}"
+            aria-invalid="${isInvalid ? 'true' : A}"
             aria-describedby="${o$2(isInvalid ? feedbackId : undefined)}"
             @change="${this._onFileInputChange}"
           />
