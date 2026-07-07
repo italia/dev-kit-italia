@@ -51,12 +51,11 @@ utilities.$utilities: (
     @include media-breakpoint-up(lg) {
       --#{$prefix}dropdown-padding-y: var(--#{$prefix}spacing-m);
       --#{$prefix}dropdown-padding-x: var(--#{$prefix}spacing-xs);
-    }
 
-    .link-list-wrapper ul.link-list {
-      display: block;
-      column-gap: var(--#{$prefix}spacing-s);
-      /* spazio tra colonne */
+      .link-list-wrapper ul.link-list {
+        display: grid;
+        grid-auto-flow: column;
+      }
     }
 
     // .it-heading-link-wrapper {

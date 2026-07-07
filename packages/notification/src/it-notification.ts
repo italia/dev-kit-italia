@@ -175,12 +175,12 @@ export class ItNotification extends BaseLocalizedComponent {
       <div
         class="${classes}"
         role="alert"
-        aria-labelledby="heading"
+        aria-labelledby=${`${this._id}-heading`}
         part="notification"
         aria-hidden="${ifDefined(this.isShown ? undefined : 'true')}"
       >
         ${staticHtml`
-          <${headingTag} class=${headingClasses} id="heading" part="title">
+          <${headingTag} class=${headingClasses} id=${`${this._id}-heading`} part="title">
             ${
               this.icon
                 ? html`<it-icon
