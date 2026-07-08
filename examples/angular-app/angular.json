@@ -23,14 +23,14 @@
               },
               {
                 "glob": "**/*",
-                "input": "../../packages/dev-kit-italia/dist/",
+                "input": "node_modules/@italia/dev-kit-italia/dist",
                 "output": "/assets/dev-kit-italia/"
               }
             ],
             "styles": [
-              "../../packages/dev-kit-italia/dist/fonts.css",
+              "node_modules/@italia/dev-kit-italia/dist/fonts.css",
               "src/styles.css",
-              "../../packages/dev-kit-italia/dist/styles.css"
+              "node_modules/@italia/dev-kit-italia/dist/styles.css"
             ]
           },
           "configurations": {
@@ -85,8 +85,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "../../packages/dev-kit-italia/dist/fonts.css",
-              "../../packages/dev-kit-italia/dist/styles.css"
+              "node_modules/@italia/dev-kit-italia/dist/fonts.css",
+              "node_modules/@italia/dev-kit-italia/dist/styles.css"
             ]
           }
         }
