@@ -3,6 +3,7 @@ import { BaseComponent, AriaKeyboardListController } from '@italia/globals';
 import { html, LitElement, nothing } from 'lit';
 import { /* customElement, */ property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { ItButton } from '@italia/button';
 import styles from './dropdown.scss';
 import { type ItDropdownItem } from './it-dropdown-item.js';
 
@@ -32,13 +33,19 @@ export class ItDropdownBase extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = false;
 
-  @property({ type: String, attribute: 'it-role' }) itRole: string = 'list';
+  @property({ type: String, attribute: 'it-role' }) itRole: 'list' | 'menu' | 'listbox' | 'tree' = 'list';
 
   @property({ type: String, attribute: 'it-aria-label' }) itAriaLabel: string = '';
 
   @property({ type: Number, attribute: 'offset' }) offset: number | null = null;
 
   @property({ type: Boolean, attribute: 'no-flip' }) noFlip: boolean = false;
+
+  /** When true, hides the expand (caret) icon next to the trigger label. Used e.g. by the avatar "+N" group balloon. */
+  @property({ type: Boolean, attribute: 'hide-expand-icon', reflect: true }) hideExpandIcon: boolean = false;
+
+  /** When true, centres the popover arrow on the trigger instead of the fixed notch position. Used by avatar dropdowns. */
+  @property({ type: Boolean, attribute: 'center-arrow', reflect: true }) centerArrow: boolean = false;
 
   @state() protected _popoverOpen = false;
 
@@ -98,16 +105,34 @@ export class ItDropdownBase extends BaseComponent {
       if (this.itRole === 'menu') item.itRole = 'menuitem';
       else if (this.itRole === 'listbox') item.itRole = 'option';
       else if (this.itRole === 'tree') item.itRole = 'treeitem';
-      else item.itRole = undefined;
+      else if (this.itRole === 'list') {
+        // set role to 'listitem' to fix axe tools alert, and force itRole to 'presentation' to avoid duplicate roles in the megamenu
+        item.itRole = 'presentation';
+        item.role = 'listitem';
+      } else item.itRole = undefined;
     }
   }
 
-  protected _onTabKeyDown = (event: KeyboardEvent, items: Element[], active: ItDropdownItem, currentIndex: number) => {
+  protected _onTabKeyDown = (
+    event: KeyboardEvent,
+    items: Element[],
+    active: ItDropdownItem | ItButton,
+    currentIndex: number,
+  ) => {
+    function isTrigger(el: ItDropdownItem | ItButton): el is ItButton {
+      return currentIndex === -1;
+    }
     if (event.key === 'Tab') {
-      if (event.shiftKey && currentIndex === -1) {
-        this._popoverOpen = false;
+      if (isTrigger(active)) {
+        if (event.shiftKey) this._popoverOpen = false;
+        return;
       }
+      // if (event.shiftKey && currentIndex === -1) {
+      //   // from the trigger item
+      //   this._popoverOpen = false;
+      // }
       if (!event.shiftKey && currentIndex === items.length - 1) {
+        // from the last item
         this._popoverOpen = false;
       }
       if (active.ariaDisabled) {
@@ -118,13 +143,28 @@ export class ItDropdownBase extends BaseComponent {
         } else {
           this._ariaNav.handleKeyDown(new KeyboardEvent('keydown', { ...event, key: 'ArrowDown' }));
         }
+        if (!active.href) event.preventDefault();
+      }
+      if (!active.href) {
+        // when the dropdown items don't have an href they are not natively tabbable, handle manually
+        if (event.shiftKey && currentIndex > 0) {
+          event.preventDefault();
+          this._ariaNav.handleKeyDown(new KeyboardEvent('keydown', { ...event, key: 'ArrowUp' }));
+        }
+        if (!event.shiftKey && currentIndex < items.length - 1) {
+          event.preventDefault();
+          this._ariaNav.handleKeyDown(new KeyboardEvent('keydown', { ...event, key: 'ArrowDown' }));
+        }
+        if (!event.shiftKey && currentIndex === items.length - 1) {
+          this._triggerEl?.dispatchEvent(new KeyboardEvent('keydown', { ...event }));
+        }
       }
     }
   };
 
   protected _onKeyDown = (event: KeyboardEvent) => {
     const items = this._menuItems.map((item) => item.getFocusableElement()).filter((el) => !!el);
-    const active = this.getActiveElement<ItDropdownItem>();
+    const active = this.getActiveElement<ItDropdownItem | ItButton>();
 
     if (!active) return;
 
@@ -185,8 +225,9 @@ export class ItDropdownBase extends BaseComponent {
         exportparts="focusable, icon, button, it-icon, it-button, dropdown-button, dropdown-icon-expand, popover-content"
         part="dropdown-popover"
         ?open=${this._popoverOpen}
-        offset=${ifDefined(this.offset)}
+        offset=${ifDefined(this.offset || undefined)}
         ?no-flip=${this.noFlip}
+        ?center-arrow=${this.centerArrow}
         controlled
       >
         <it-button
@@ -205,7 +246,7 @@ export class ItDropdownBase extends BaseComponent {
           it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
           it-aria-controls=${this._popoverOpen ? this._menuId : nothing}
         >
-          ${this.alignment.startsWith('left')
+          ${this.alignment.startsWith('left') && !this.hideExpandIcon
             ? html`<it-icon
                 name="it-expand"
                 class="icon-expand left"
@@ -216,7 +257,7 @@ export class ItDropdownBase extends BaseComponent {
             : ''}
 
           <slot name="label">${this.label}</slot>
-          ${!this.alignment.startsWith('left')
+          ${!this.alignment.startsWith('left') && !this.hideExpandIcon
             ? html`<it-icon
                 name="it-expand"
                 class=${this.composeClass('icon-expand', {

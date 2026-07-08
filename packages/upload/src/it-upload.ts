@@ -390,19 +390,13 @@ export class ItUpload extends FormControl {
 
     return html`
       <div class="form-group">
-        <input
-          type="file"
-          class="upload it-form__control"
-          id="${inputId}"
-          name="${this.name}"
-          ?multiple="${this.multiple}"
-          accept="${ifDefined(this.accept)}"
-          ?disabled="${this.disabled}"
-          ?required="${this.required && this._files.length === 0}"
-          aria-invalid="${isInvalid ? 'true' : 'false'}"
-          aria-describedby="${ifDefined(isInvalid ? `invalid-feedback-${inputId}` : undefined)}"
-          @change="${this._handleFileChange}"
-        />
+        <!-- Wrapping pattern per Scott O'Hara "Styled File Uploads":
+             https://scottaohara.github.io/a11y_styled_form_controls/src/file-upload/
+             Input inside label instead of BSI's sibling pattern (0.1px ghost input +
+             styled adjacent label). BSI's pattern makes VoiceOver visit the ghost as a
+             confusing "small square group" before the real button. With wrapping, both
+             stops are logical: label text → file upload control. No JS needed — click
+             propagation to the file picker is handled natively by the label. -->
         <label part="input-label" for="${inputId}">
           <slot name="icon">
             <it-icon
@@ -413,6 +407,19 @@ export class ItUpload extends FormControl {
             ></it-icon>
           </slot>
           <slot name="label">${labelText}</slot>
+          <input
+            type="file"
+            class="upload it-form__control"
+            id="${inputId}"
+            name="${this.name}"
+            ?multiple="${this.multiple}"
+            accept="${ifDefined(this.accept)}"
+            ?disabled="${this.disabled}"
+            ?required="${this.required && this._files.length === 0}"
+            aria-invalid="${isInvalid ? 'true' : nothing}"
+            aria-describedby="${ifDefined(isInvalid ? `invalid-feedback-${inputId}` : undefined)}"
+            @change="${this._handleFileChange}"
+          />
         </label>
 
         ${when(this.supportText, () => html`<small class="form-text">${this.supportText}</small>`)}

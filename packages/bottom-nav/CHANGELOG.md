@@ -1,5 +1,17 @@
 # @italia/bottom-nav
 
+## 1.0.0-alpha.18
+
+### Minor Changes
+
+- [#428](https://github.com/italia/dev-kit-italia/pull/428) [`7b28fbb`](https://github.com/italia/dev-kit-italia/commit/7b28fbb179cc20f7bb7cfbdb00a547807087891b) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Remove custom styling for li elements in nav
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/sticky@1.0.0-alpha.18
+
 ## 1.0.0-alpha.17
 
 ### Patch Changes

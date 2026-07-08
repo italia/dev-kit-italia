@@ -36,6 +36,10 @@ utilities.$utilities: (
 }
 /* END copied from bsi reboot */
 
+.notification {
+  z-index: var(--#{$prefix}notification-z-index, 2);
+}
+
 ::slotted(p) {
   margin-top: var(--#{$prefix}spacing-xxs) !important;
   color: var(--#{$prefix}notification-text-color);

@@ -82,17 +82,17 @@ export class ItButton extends BaseComponent {
     this._nativeButton?.focus();
   }
 
-  public setDescribedBy(element: Element | null): void {
-    const btn = this.shadowRoot?.querySelector('button');
-    if (!btn) return;
-    if ('ariaDescribedByElements' in Element.prototype) {
-      btn.ariaDescribedByElements = element ? [element] : null;
-    } else if (element?.id) {
-      btn?.setAttribute('aria-describedby', element.id);
-    } else {
-      btn?.removeAttribute('aria-describedby');
-    }
-  }
+  // public setDescribedBy(element: Element | null): void {
+  //   const btn = this.shadowRoot?.querySelector('button');
+  //   if (!btn) return;
+  //   if ('ariaDescribedByElements' in Element.prototype) {
+  //     btn.ariaDescribedByElements = element ? [element] : null;
+  //   } else if (element?.id) {
+  //     btn?.setAttribute('aria-describedby', element.id);
+  //   } else {
+  //     btn?.removeAttribute('aria-describedby');
+  //   }
+  // }
 
   private _onKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {

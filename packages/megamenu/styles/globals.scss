@@ -40,7 +40,7 @@ it-megamenu {
 
     p {
       font-size: var(--#{$prefix}label-font-size);
-      line-height: var(--#{$prefix}body-leading);
+      line-height: var(--#{$prefix}body-line-height);
     }
   }
 
@@ -54,13 +54,6 @@ it-megamenu {
     &:hover,
     &:focus {
       text-decoration: underline;
-    }
-  }
-
-  it-dropdown-item {
-    &::part(list-item) {
-      position: unset;
-      width: 100%;
     }
   }
 

@@ -1,7 +1,7 @@
 /* eslint-disable lit-a11y/list */
 import { BaseComponent, setAttributes } from '@italia/globals';
 import { html } from 'lit';
-import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
+import { customElement, property, query, queryAssignedElements, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { type OverlayColor } from './types.js';
 import styles from './hero.scss';
@@ -13,8 +13,6 @@ export class ItHero extends BaseComponent {
   @state() private _hasBackground = false;
 
   @state() private _hasText = false;
-
-  @state() private _ariaLabelledBy?: string;
 
   @property({ type: Boolean, reflect: true }) center = false;
 
@@ -28,9 +26,17 @@ export class ItHero extends BaseComponent {
 
   @queryAssignedElements({ slot: 'text', flatten: true }) private _textItems!: Array<HTMLElement>;
 
+  @query('section') private _sectionEl?: HTMLElement;
+
+  /** Direct reference to the heading element used to label the hero section. */
+  private _labelledByEl?: HTMLElement;
+
   private _handleSlotBackgroundChange() {
     // Verifichiamo se l'array degli elementi assegnati è popolato
-    this._hasBackground = this._backgroundItems.length > 0;
+    const nextHasBackground = this._backgroundItems.length > 0;
+    if (this._hasBackground !== nextHasBackground) {
+      this._hasBackground = nextHasBackground;
+    }
   }
 
   private _handleSlotTextChange(event?: Event) {
@@ -41,10 +47,13 @@ export class ItHero extends BaseComponent {
     const textItems = (slot?.assignedElements({ flatten: true }) as Array<HTMLElement>) ?? this._textItems ?? [];
 
     // Verifichiamo se l'array degli elementi assegnati è popolato
-    this._hasText = textItems.length > 0;
+    const nextHasText = textItems.length > 0;
+    if (this._hasText !== nextHasText) {
+      this._hasText = nextHasText;
+    }
 
     if (this.itAriaLabel) {
-      this._ariaLabelledBy = undefined;
+      this._labelledByEl = undefined;
       return;
     }
 
@@ -62,16 +71,7 @@ export class ItHero extends BaseComponent {
       }
     }
 
-    if (!firstHeading) {
-      this._ariaLabelledBy = undefined;
-      return;
-    }
-
-    if (!firstHeading.id) {
-      firstHeading.id = this.generateId('hero-heading');
-    }
-
-    this._ariaLabelledBy = firstHeading.id;
+    this._labelledByEl = firstHeading ?? undefined;
   }
 
   override firstUpdated() {
@@ -84,9 +84,29 @@ export class ItHero extends BaseComponent {
     }
   }
 
+  override updated() {
+    const section = this._sectionEl;
+    if (!section || !('ariaLabelledByElements' in section)) return;
+    // ariaLabelledByElements accepts element references directly, so the browser
+    // resolves the accessible name without requiring the ID to be in the same
+    // root — it works across shadow boundaries without IDREFs.
+    const nextLabelledBy = this._labelledByEl && !this.itAriaLabel ? [this._labelledByEl] : null;
+    const currentLabelledBy = (section as any).ariaLabelledByElements as HTMLElement[] | null;
+
+    const isSameLabelledBy =
+      (nextLabelledBy === null && (!currentLabelledBy || currentLabelledBy.length === 0)) ||
+      (nextLabelledBy !== null &&
+        !!currentLabelledBy &&
+        currentLabelledBy.length === 1 &&
+        currentLabelledBy[0] === nextLabelledBy[0]);
+
+    if (!isSameLabelledBy) {
+      (section as any).ariaLabelledByElements = nextLabelledBy;
+    }
+  }
+
   override render() {
     const _hasOverlay = (this._hasBackground && this._hasText) || this.overlayColor;
-    const ariaLabelledBy = this.itAriaLabel ? undefined : this._ariaLabelledBy;
 
     return html`
       <section
@@ -98,7 +118,6 @@ export class ItHero extends BaseComponent {
         )}"
         ${setAttributes(this._ariaAttributes)}
         aria-label=${ifDefined(this.itAriaLabel || undefined)}
-        aria-labelledby=${ifDefined(ariaLabelledBy)}
       >
         ${this._hasBackground
           ? html`

@@ -17,11 +17,6 @@
   display: inline-block;
 }
 
-// Hidden proxy input used by FormControl for required/validity — not visible to users.
-.it-form__control {
-  display: none;
-}
-
 // Override BSI's z-index: -1 which paints the input behind the stacking context,
 // making even the native focus ring invisible.
 // On mobile, BSI sets the input to 0.1px × 0.1px — iOS Safari will not open the

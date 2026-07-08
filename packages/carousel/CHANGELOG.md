@@ -1,5 +1,18 @@
 # @italia/carousel
 
+## 1.0.0-alpha.18
+
+### Minor Changes
+
+- [#423](https://github.com/italia/dev-kit-italia/pull/423) [`855df3c`](https://github.com/italia/dev-kit-italia/commit/855df3c81a5c9037d1b706ae123ecafb3eb5b3a3) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Update carousel Storybook, examples, resolved styling issues, fix unique landmarks violations
+
+### Patch Changes
+
+- Updated dependencies [[`2e97096`](https://github.com/italia/dev-kit-italia/commit/2e970961ebe5f2bfac050b445b81e88cdee75487)]:
+  - @italia/card@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+
 ## 1.0.0-alpha.17
 
 ### Patch Changes

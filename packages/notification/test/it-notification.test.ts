@@ -71,7 +71,9 @@ describe('<it-notification>', () => {
         </it-notification>
       `);
       const container = el.shadowRoot?.querySelector('[role="alert"]');
-      expect(container?.getAttribute('aria-labelledby')).to.equal('heading');
+      const labelledBy = container?.getAttribute('aria-labelledby');
+      expect(labelledBy).to.exist;
+      expect(el.shadowRoot?.querySelector(`#${labelledBy}`)).to.exist;
     });
 
     it('il container ha part="notification"', async () => {
@@ -158,7 +160,7 @@ describe('<it-notification>', () => {
             <span slot="title">Titolo</span>
           </it-notification>
         `);
-        const heading = el.shadowRoot?.querySelector(`${level}#heading`);
+        const heading = el.shadowRoot?.querySelector(`${level}[id$="-heading"]`);
         expect(heading).to.exist;
       });
     });
@@ -169,7 +171,7 @@ describe('<it-notification>', () => {
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const heading = el.shadowRoot?.querySelector('h2#heading');
+      const heading = el.shadowRoot?.querySelector('h2[id$="-heading"]');
       expect(heading).to.exist;
     });
   });
@@ -807,7 +809,9 @@ describe('<it-notification>', () => {
         </it-notification>
       `);
       const container = el.shadowRoot?.querySelector('[role="alert"]');
-      expect(container?.getAttribute('aria-labelledby')).to.equal('heading');
+      const labelledBy = container?.getAttribute('aria-labelledby');
+      expect(labelledBy).to.exist;
+      expect(el.shadowRoot?.querySelector(`#${labelledBy}`)).to.exist;
     });
 
     it('aria-hidden="true" quando non è mostrato', async () => {
@@ -839,7 +843,7 @@ describe('<it-notification>', () => {
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const heading = el.shadowRoot?.querySelector('#heading');
+      const heading = el.shadowRoot?.querySelector('[id$="-heading"]');
       expect(heading).to.exist;
     });
   });

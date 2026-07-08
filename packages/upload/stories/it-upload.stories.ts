@@ -6,7 +6,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { StoryFormControlMethodAndProps } from '@italia/globals';
 
 import type { AvatarSize } from '@italia/avatar';
-import type { UploadVariant } from '../src/types.js';
+import { DRAG_DROP_HEADING_LEVELS, type DragDropHeadingLevel, type UploadVariant } from '../src/types.js';
 import type { ItUpload } from '../src/it-upload.js';
 import type { ItUploadDragDrop } from '../src/it-upload-drag-drop.js';
 import i18nIT from '../src/locales/it.js';
@@ -191,6 +191,7 @@ interface UploadDragDropProps {
   illustration: string;
   disabled: boolean;
   required: boolean;
+  'heading-level': DragDropHeadingLevel;
 }
 
 const renderUpload = (params: Partial<UploadProps>) => html`
@@ -225,6 +226,7 @@ const renderUploadDragDrop = (params: Partial<UploadDragDropProps>) => html`
     accept="${ifDefined(params.accept || undefined)}"
     name="${ifDefined(params.name || undefined)}"
     illustration="${ifDefined(params.illustration || undefined)}"
+    heading-level="${ifDefined(params['heading-level'] || undefined)}"
     ?disabled="${params.disabled}"
     ?required="${params.required}"
   ></it-upload-drag-drop>
@@ -369,6 +371,7 @@ export const EsempioInterattivoDragDrop: Story = {
     illustration: '',
     disabled: false,
     required: false,
+    'heading-level': 'h3',
   },
   argTypes: {
     accept: {
@@ -378,6 +381,12 @@ export const EsempioInterattivoDragDrop: Story = {
     illustration: {
       description: 'URL illustrazione personalizzata. Se omesso viene usata quella predefinita.',
       control: 'text',
+    },
+    'heading-level': {
+      description: 'Livello del titolo semantico nella gerarchia della pagina. La dimensione visiva rimane h5.',
+      control: { type: 'select' },
+      options: DRAG_DROP_HEADING_LEVELS,
+      table: { defaultValue: { summary: 'h5' } },
     },
     disabled: {
       description: 'Disabilita il componente.',

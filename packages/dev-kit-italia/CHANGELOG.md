@@ -1,5 +1,60 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-alpha.18
+
+### Minor Changes
+
+- [#423](https://github.com/italia/dev-kit-italia/pull/423) [`855df3c`](https://github.com/italia/dev-kit-italia/commit/855df3c81a5c9037d1b706ae123ecafb3eb5b3a3) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Update carousel Storybook, examples, resolved styling issues, fix unique landmarks violations
+
+- [#370](https://github.com/italia/dev-kit-italia/pull/370) [`b6142ed`](https://github.com/italia/dev-kit-italia/commit/b6142ed9ec3fc22daca2810346aab846c04f1287) Thanks [@pnicolli](https://github.com/pnicolli)! - Added `it-stepper` component
+
+### Patch Changes
+
+- Updated dependencies [[`23073ff`](https://github.com/italia/dev-kit-italia/commit/23073ff55d4f1606e723bdd42db7c64bc4c8a141), [`5cde271`](https://github.com/italia/dev-kit-italia/commit/5cde2712aad88ac8a16c69266e9c7f8826d11cf3), [`855df3c`](https://github.com/italia/dev-kit-italia/commit/855df3c81a5c9037d1b706ae123ecafb3eb5b3a3), [`2e97096`](https://github.com/italia/dev-kit-italia/commit/2e970961ebe5f2bfac050b445b81e88cdee75487), [`7c794fd`](https://github.com/italia/dev-kit-italia/commit/7c794fde49f70c8a42e63fa8d1123f14b4d52f21), [`b6142ed`](https://github.com/italia/dev-kit-italia/commit/b6142ed9ec3fc22daca2810346aab846c04f1287), [`7b28fbb`](https://github.com/italia/dev-kit-italia/commit/7b28fbb179cc20f7bb7cfbdb00a547807087891b), [`4279133`](https://github.com/italia/dev-kit-italia/commit/42791332cab4e9fbe0bbae5dec23507f23b84354), [`51d3b5b`](https://github.com/italia/dev-kit-italia/commit/51d3b5b91fa6b39d227282c952e503696b0131ef)]:
+  - @italia/upload@1.0.0-alpha.18
+  - @italia/avatar@1.0.0-alpha.18
+  - @italia/dropdown@1.0.0-alpha.18
+  - @italia/popover@1.0.0-alpha.18
+  - @italia/carousel@1.0.0-alpha.18
+  - @italia/card@1.0.0-alpha.18
+  - @italia/dimmer@1.0.0-alpha.18
+  - @italia/stepper@1.0.0-alpha.18
+  - @italia/bottom-nav@1.0.0-alpha.18
+  - @italia/select@1.0.0-alpha.18
+  - @italia/section@1.0.0-alpha.18
+  - @italia/chip@1.0.0-alpha.18
+  - @italia/header@1.0.0-alpha.18
+  - @italia/megamenu@1.0.0-alpha.18
+  - @italia/accordion@1.0.0-alpha.18
+  - @italia/autocomplete@1.0.0-alpha.18
+  - @italia/back-to-top@1.0.0-alpha.18
+  - @italia/breadcrumbs@1.0.0-alpha.18
+  - @italia/button@1.0.0-alpha.18
+  - @italia/callout@1.0.0-alpha.18
+  - @italia/checkbox@1.0.0-alpha.18
+  - @italia/collapse@1.0.0-alpha.18
+  - @italia/hero@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+  - @italia/input@1.0.0-alpha.18
+  - @italia/modal@1.0.0-alpha.18
+  - @italia/navscroll@1.0.0-alpha.18
+  - @italia/notification@1.0.0-alpha.18
+  - @italia/pagination@1.0.0-alpha.18
+  - @italia/progress@1.0.0-alpha.18
+  - @italia/radio@1.0.0-alpha.18
+  - @italia/rating@1.0.0-alpha.18
+  - @italia/skiplinks@1.0.0-alpha.18
+  - @italia/sticky@1.0.0-alpha.18
+  - @italia/tabs@1.0.0-alpha.18
+  - @italia/timeline@1.0.0-alpha.18
+  - @italia/toggle@1.0.0-alpha.18
+  - @italia/thumbnav@1.0.0-alpha.18
+  - @italia/toolbar@1.0.0-alpha.18
+  - @italia/tooltip@1.0.0-alpha.18
+  - @italia/transfer@1.0.0-alpha.18
+  - @italia/video@1.0.0-alpha.18
+
 ## 1.0.0-alpha.17
 
 ### Minor Changes

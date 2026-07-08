@@ -1,5 +1,16 @@
 # @italia/rating
 
+## 1.0.0-alpha.18
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+  - @italia/radio@1.0.0-alpha.18
+
 ## 1.0.0-alpha.17
 
 ### Patch Changes

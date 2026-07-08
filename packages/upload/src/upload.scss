@@ -40,12 +40,39 @@ utilities.$utilities: (
 
 @use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
-.upload[type='file'] + label {
+// Wrapped pattern (Scott O'Hara): input is inside the label, so BSI's adjacent-sibling
+// selectors (`input + label`) no longer match. We own all label styling here — both
+// layout and the button appearance BSI's `.upload[type='file'] + label` used to provide.
+// Ref: https://scottaohara.github.io/a11y_styled_form_controls/src/file-upload/
+label:has(.upload[type='file']) {
   display: flex;
+
+  // Button appearance (ported from BSI `.upload[type='file'] + label`; the icon's
+  // white fill is handled by <it-icon color="inverse"> in its own shadow DOM).
+  overflow: hidden;
   width: fit-content;
-  max-width: unset !important; // Override BSI's `label { max-width: 80% }` for the upload label, which needs to shrink to fit its content.
+  max-width: unset !important; // Override BSI's `label { max-width: 80% }`.
   align-items: center;
+  padding: var(--#{$prefix}spacing-xs) var(--#{$prefix}spacing-m);
+  border-radius: var(--#{$prefix}form-control-border-radius);
+  margin-bottom: 0;
+  background-color: var(--#{$prefix}color-background-primary);
+  color: var(--#{$prefix}color-text-inverse);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
   gap: var(--#{$prefix}spacing-xxs, 8px);
+  transition: background-color var(--#{$prefix}transition-instant);
+
+  &:hover {
+    background-color: var(--#{$prefix}color-background-primary-hover);
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  label:has(.upload[type='file']) {
+    font-size: var(--#{$prefix}label-font-size-s);
+  }
 }
 
 // Invalid state on the upload label (mirrors just-validate styling)
@@ -68,7 +95,7 @@ utilities.$utilities: (
 }
 
 :focus-visible,
-.upload:focus-visible + label,
+label:has(.upload[type='file']:focus-visible),
 .upload-dragdrop-input:focus-visible[type='file'] + label,
 .avatar-upload:focus-within:focus-visible {
   border-color: #000 !important;
@@ -77,6 +104,15 @@ utilities.$utilities: (
     0 0 0 5px $focus-outline-color-out !important;
   outline: 3px solid rgba(0, 0, 0, 0) !important;
   outline-offset: 3px !important;
+}
+
+// The bare :focus-visible rule above would apply to the 0.1px input itself when
+// it receives focus. Reset it so only the wrapping label shows the focus ring.
+.upload[type='file']:focus-visible {
+  border-color: initial !important;
+  box-shadow: none !important;
+  outline: none !important;
+  outline-offset: initial !important;
 }
 
 // Success state: check indicator + remove button grouped on the right
@@ -108,11 +144,28 @@ utilities.$utilities: (
   }
 }
 
-.upload-pictures-wall .upload[type='file'] + label {
+.upload-pictures-wall label:has(.upload[type='file']) {
   display: flex;
+
+  // Dashed drop box (ported from BSI `.upload-pictures-wall .upload[type='file'] + label`).
+  // Overrides the base button appearance above. The blue `+` icon comes from
+  // <it-icon color="primary"> in its own shadow DOM.
+  width: 128px;
+  height: 128px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  border: 2px dashed var(--#{$prefix}color-border-primary);
+  border-radius: 0;
+  background-color: var(--#{$prefix}color-border-primary-lighter);
+  color: var(--#{$prefix}color-text-primary);
+  font-weight: 600;
+  transition: border-color var(--#{$prefix}transition-instant);
+
+  &:hover {
+    border: 2px dashed var(--#{$prefix}color-border-primary-hover);
+  }
   // This is in figma, it's not accessible, won't use
   // background-color: var(--#{$prefix}color-primary-lighter, #bfdfff);
 }

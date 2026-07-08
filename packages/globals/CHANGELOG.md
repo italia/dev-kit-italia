@@ -1,5 +1,13 @@
 # @italia/globals
 
+## 1.0.0-alpha.18
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.18
+
 ## 1.0.0-alpha.17
 
 ### Patch Changes

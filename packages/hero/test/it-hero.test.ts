@@ -1,6 +1,6 @@
 /// <reference types="mocha"/>
 import '@italia/hero';
-import { html, fixture, expect, elementUpdated, waitUntil } from '@open-wc/testing';
+import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
 import { type ItHero } from '@italia/hero';
 
 describe('it-hero component', () => {
@@ -35,7 +35,7 @@ describe('it-hero component', () => {
       expect(section?.getAttribute('aria-label')).to.equal(label);
     });
 
-    it('adds aria-labelledby when it-aria-label is not present and heading is in text slot', async () => {
+    it('sets ariaLabelledByElements on the section when a heading is in text slot', async () => {
       const el = await fixture<ItHero>(html`
         <it-hero>
           <div slot="text"><h2 id="hero-title">Titolo hero</h2></div>
@@ -43,24 +43,21 @@ describe('it-hero component', () => {
       `);
 
       await elementUpdated(el);
-      await waitUntil(
-        () => !!el.shadowRoot?.querySelector('.container') || !!el.shadowRoot?.querySelector('slot[name="text"]'),
-        'hero text slot did not render as expected',
-      );
-      await elementUpdated(el);
 
       const section = el.shadowRoot?.querySelector('section');
-      const textContainer = el.shadowRoot?.querySelector('.container');
       const heading = el.querySelector('[slot="text"] h2') as HTMLHeadingElement | null;
 
       expect(section).to.exist;
-      expect(textContainer).to.exist;
       expect(heading).to.exist;
-      expect(heading?.id).to.equal('hero-title');
-      expect(section?.getAttribute('aria-labelledby')).to.equal(heading?.id);
+
+      // ariaLabelledByElements uses element references directly — no IDREF string attribute needed
+      expect(section).to.have.attribute('aria-labelledby');
+      if ('ariaLabelledByElements' in section!) {
+        expect((section as any).ariaLabelledByElements).to.deep.equal([heading]);
+      }
     });
 
-    it('does not add aria-labelledby when it-aria-label is present', async () => {
+    it('does not set ariaLabelledByElements when it-aria-label is present', async () => {
       const el = await fixture<ItHero>(html`
         <it-hero it-aria-label="Hero accessibile">
           <div slot="text"><h3>Titolo hero</h3></div>
@@ -71,10 +68,13 @@ describe('it-hero component', () => {
 
       const section = el.shadowRoot?.querySelector('section');
       expect(section?.getAttribute('aria-label')).to.equal('Hero accessibile');
-      expect(section?.hasAttribute('aria-labelledby')).to.be.false;
+      expect(section).to.not.have.attribute('aria-labelledby');
+      if (section && 'ariaLabelledByElements' in section) {
+        expect((section as any).ariaLabelledByElements).to.be.null;
+      }
     });
 
-    it('removes aria-labelledby when it-aria-label is added dynamically', async () => {
+    it('clears ariaLabelledByElements when it-aria-label is added dynamically', async () => {
       const el = await fixture<ItHero>(html`
         <it-hero>
           <div slot="text"><h2 id="hero-dynamic-title">Titolo hero</h2></div>
@@ -84,13 +84,19 @@ describe('it-hero component', () => {
       await elementUpdated(el);
 
       const section = el.shadowRoot?.querySelector('section');
-      expect(section?.getAttribute('aria-labelledby')).to.equal('hero-dynamic-title');
+      const heading = el.querySelector('#hero-dynamic-title') as HTMLElement;
+
+      if (section && 'ariaLabelledByElements' in section) {
+        expect((section as any).ariaLabelledByElements).to.deep.equal([heading]);
+      }
 
       el.setAttribute('it-aria-label', 'Hero aggiornata');
       await elementUpdated(el);
 
       expect(section?.getAttribute('aria-label')).to.equal('Hero aggiornata');
-      expect(section?.hasAttribute('aria-labelledby')).to.be.false;
+      if (section && 'ariaLabelledByElements' in section) {
+        expect((section as any).ariaLabelledByElements).to.be.null;
+      }
     });
   });
 
@@ -98,7 +104,7 @@ describe('it-hero component', () => {
     it('renders the background wrapper only when background slot is populated', async () => {
       const el = await fixture<ItHero>(html`
         <it-hero>
-          <img slot="background" src="test.jpg" alt="test" />
+          <img slot="background" src="test.jpeg" alt="test" />
         </it-hero>
       `);
 
@@ -128,7 +134,7 @@ describe('it-hero component', () => {
       // Caso 1: Entrambi gli slot presenti -> overlay default (dark)
       const el = await fixture<ItHero>(html`
         <it-hero>
-          <img slot="background" src="x.jpg" alt="x" />
+          <img slot="background" src="test.jpeg" alt="x" />
           <div slot="text">Text</div>
         </it-hero>
       `);

@@ -221,6 +221,118 @@ describe('<it-card>', () => {
     });
   });
 
+  describe('property: headingSize', () => {
+    it('applies h4 CSS class to the title when heading-size is "sm"', async () => {
+      const el = await fixture<ItCard>(html`
+        <it-card heading-size="sm">
+          <span slot="title">Card Title</span>
+        </it-card>
+      `);
+
+      await elementUpdated(el);
+
+      const heading = el.shadowRoot?.querySelector('h3');
+      expect(heading).to.exist;
+      expect(heading?.classList.contains('h4')).to.be.true;
+      expect(heading?.classList.contains('h3')).to.be.false;
+    });
+
+    it('applies h3 CSS class to the title when heading-size is "md"', async () => {
+      const el = await fixture<ItCard>(html`
+        <it-card heading-size="md">
+          <span slot="title">Card Title</span>
+        </it-card>
+      `);
+
+      await elementUpdated(el);
+
+      const heading = el.shadowRoot?.querySelector('h3');
+      expect(heading).to.exist;
+      expect(heading?.classList.contains('h3')).to.be.true;
+      expect(heading?.classList.contains('h4')).to.be.false;
+    });
+
+    it('does not apply h4 or h3 CSS class to the title when heading-size is not set (default variant)', async () => {
+      const el = await fixture<ItCard>(html`
+        <it-card>
+          <span slot="title">Card Title</span>
+        </it-card>
+      `);
+
+      await elementUpdated(el);
+
+      const heading = el.shadowRoot?.querySelector('h3');
+      expect(heading).to.exist;
+      expect(heading?.classList.contains('h4')).to.be.false;
+      expect(heading?.classList.contains('h3')).to.be.false;
+    });
+
+    it('applies h4 CSS class when heading-size is "sm" on variant inline-mini (same result as default variant behavior)', async () => {
+      const el = await fixture<ItCard>(html`
+        <it-card variant="inline-mini" heading-size="sm">
+          <span slot="title">Card Title</span>
+        </it-card>
+      `);
+
+      await elementUpdated(el);
+
+      const heading = el.shadowRoot?.querySelector('h3');
+      expect(heading).to.exist;
+      expect(heading?.classList.contains('h4')).to.be.true;
+    });
+
+    it('overrides inline-mini variant h4 CSS class to h3 when heading-size is "md"', async () => {
+      const el = await fixture<ItCard>(html`
+        <it-card variant="inline-mini" heading-size="md">
+          <span slot="title">Card Title</span>
+        </it-card>
+      `);
+
+      await elementUpdated(el);
+
+      const heading = el.shadowRoot?.querySelector('h3');
+      expect(heading).to.exist;
+      expect(heading?.classList.contains('h3')).to.be.true;
+      expect(heading?.classList.contains('h4')).to.be.false;
+    });
+
+    it('applies h4 CSS class when heading-size is "sm" on default variant (overrides default absence of size class)', async () => {
+      const el = await fixture<ItCard>(html`
+        <it-card variant="default" heading-size="sm">
+          <span slot="title">Card Title</span>
+        </it-card>
+      `);
+
+      await elementUpdated(el);
+
+      const heading = el.shadowRoot?.querySelector('h3');
+      expect(heading).to.exist;
+      expect(heading?.classList.contains('h4')).to.be.true;
+      expect(heading?.classList.contains('h3')).to.be.false;
+    });
+
+    it('updates title CSS class when headingSize property changes dynamically', async () => {
+      const el = await fixture<ItCard>(html`
+        <it-card heading-size="sm">
+          <span slot="title">Card Title</span>
+        </it-card>
+      `);
+
+      await elementUpdated(el);
+
+      let heading = el.shadowRoot?.querySelector('h3');
+      expect(heading?.classList.contains('h4')).to.be.true;
+      expect(heading?.classList.contains('h3')).to.be.false;
+
+      el.headingSize = 'md';
+      await elementUpdated(el);
+
+      heading = el.shadowRoot?.querySelector('h3');
+      expect(heading?.classList.contains('h3')).to.be.true;
+      expect(heading?.classList.contains('h4')).to.be.false;
+    });
+  });
+
   describe('variant: default', () => {
     it('renders default card without variant-specific classes', async () => {
       const el = await fixture<ItCard>(html`

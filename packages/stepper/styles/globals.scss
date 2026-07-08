@@ -17,4 +17,8 @@ it-stepper-step:not(:defined) {
     font-weight: var(--#{$prefix}font-weight-solid);
     line-height: var(--#{$prefix}label-leading);
   }
+
+  it-stepper[dark] & [slot='label'] {
+    --#{$prefix}color-text-base: white;
+  }
 }

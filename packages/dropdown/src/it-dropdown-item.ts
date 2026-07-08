@@ -24,12 +24,14 @@ export class ItDropdownItem extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'full-width', reflect: true }) fullWidth = false;
 
-  @property({ type: String, attribute: 'it-role' }) itRole?: string;
+  @property({ type: String, attribute: 'it-role' }) itRole?: 'menuitem' | 'option' | 'treeitem' | 'presentation';
 
   @property({ type: Boolean, reflect: true }) disabled?: boolean;
 
   public getFocusableElement(): HTMLElement | null {
-    return this.shadowRoot?.querySelector('a, button') ?? null;
+    if (this.separator) return null;
+    const selector = this.href ? 'a, button' : 'li';
+    return this.shadowRoot?.querySelector(selector) ?? null;
   }
 
   handlePress(event: KeyboardEvent | MouseEvent) {
@@ -38,18 +40,28 @@ export class ItDropdownItem extends BaseComponent {
 
   override render() {
     if (this.separator) {
-      return html`<li><span class="divider" role="separator"></span></li>`;
+      return html`<li part="li"><span class="divider" role="separator"></span></li>`;
     }
 
     const itemClasses = this.composeClass({
       dark: this.dark,
       fw: this.fullWidth,
+      'list-item dropdown-item': !this.href,
     });
 
-    const linkClasses = this.composeClass('list-item', 'dropdown-item', {
+    const itemRole = this.href && this.itRole && this.itRole !== 'presentation' ? 'none' : this.itRole;
+    const hrefRole = this.href && this.itRole && this.itRole !== 'presentation' ? this.itRole : undefined;
+    const statusClasses = this.composeClass({
       disabled: this.disabled,
       active: this.active,
       large: this.large,
+    });
+
+    const isText = !this.itRole && !this.href;
+
+    const linkClasses = this.composeClass('list-item', 'dropdown-item', statusClasses);
+    const nonLinkClasses = this.composeClass(statusClasses, {
+      'dropdown-item-text': isText,
     });
 
     const content = html`
@@ -60,23 +72,26 @@ export class ItDropdownItem extends BaseComponent {
 
     return html`
       <li
-        role="${ifDefined(
-          this.itRole === 'menuitem' || this.itRole === 'option' || this.itRole === 'treeitem' ? 'none' : undefined,
-        )}"
+        role="${ifDefined(itemRole)}"
         class=${ifDefined(itemClasses || undefined)}
+        tabindex=${ifDefined(this.href ? undefined : '-1')}
+        part=${ifDefined(this.href ? 'li' : 'focusable li')}
+        @keydown=${this.href ? undefined : this.handlePress}
+        @click=${this.href ? undefined : this.handlePress}
+        aria-disabled=${ifDefined((this.disabled && !this.href) || undefined)}
       >
         ${this.href
           ? html`<a
               class=${linkClasses}
               part="focusable list-item"
               href=${this.href}
-              role=${ifDefined(this.itRole)}
+              role=${ifDefined(hrefRole)}
               aria-disabled=${ifDefined(this.disabled || undefined)}
               @keydown=${this.handlePress}
               @click=${this.handlePress}
               ><span class="dropdown-item-link" part="dropdown-item-text">${content}</span></a
             >`
-          : html`<span class="dropdown-item-text" part="dropdown-item-text">${content}</span>`}
+          : html`<span class=${nonLinkClasses} part="dropdown-item-text">${content}</span>`}
       </li>
     `;
   }

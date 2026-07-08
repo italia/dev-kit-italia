@@ -432,4 +432,56 @@ describe('<it-upload-drag-drop>', () => {
     await el.updateComplete;
     expect(el.disabled).to.be.true;
   });
+
+  // ── heading-level prop ────────────────────────────────────────────────────────
+
+  it('defaults to h5 heading tag', async () => {
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
+    await el.updateComplete;
+    const heading = el.shadowRoot!.querySelector('h5');
+    expect(heading).to.exist;
+  });
+
+  it('heading element has class h5 for visual sizing', async () => {
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
+    await el.updateComplete;
+    const heading = el.shadowRoot!.querySelector('h5');
+    expect(heading!.classList.contains('h5')).to.be.true;
+  });
+
+  it('heading-level="h2" renders an h2', async () => {
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop heading-level="h2"></it-upload-drag-drop>`);
+    await el.updateComplete;
+    expect(el.shadowRoot!.querySelector('h2')).to.exist;
+    expect(el.shadowRoot!.querySelector('h3')).to.not.exist;
+  });
+
+  it('heading-level="h4" renders an h4', async () => {
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop heading-level="h4"></it-upload-drag-drop>`);
+    await el.updateComplete;
+    expect(el.shadowRoot!.querySelector('h4')).to.exist;
+  });
+
+  it('invalid heading-level falls back to h5', async () => {
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
+    (el as any).headingLevel = 'h9';
+    await el.updateComplete;
+    expect(el.shadowRoot!.querySelector('h5')).to.exist;
+  });
+
+  // ── aria-required on visible file input ───────────────────────────────────────
+
+  it('file input has aria-required="true" when required', async () => {
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop required></it-upload-drag-drop>`);
+    await el.updateComplete;
+    const input = el.shadowRoot!.querySelector('input.upload-dragdrop-input');
+    expect(input!.getAttribute('aria-required')).to.equal('true');
+  });
+
+  it('file input has no aria-required when not required', async () => {
+    const el = await fixture<ItUploadDragDrop>(html`<it-upload-drag-drop></it-upload-drag-drop>`);
+    await el.updateComplete;
+    const input = el.shadowRoot!.querySelector('input.upload-dragdrop-input');
+    expect(input!.hasAttribute('aria-required')).to.be.false;
+  });
 });

@@ -33,6 +33,6 @@
   --#{$prefix}icon-default: var(--#{$prefix}icon-secondary);
 }
 
-li::marker {
-  font-size: 0px;
+li {
+  list-style: none;
 }

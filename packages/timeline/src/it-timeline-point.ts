@@ -140,22 +140,13 @@ export class ItTimelinePoint extends BaseComponent {
   }
 
   override render() {
-    const itemClasses = this.composeClass('timeline-point', {
-      'timeline-point-align-top': this.alignTop,
-      'timeline-point-xs': this.compact,
-      [`timeline-point-${this.getColor()}`]: true,
-    });
-    const asideClasses = this.composeClass('point-aside', `point-aside-${this.getColor()}`);
-
     return html`
-      <div class="${itemClasses}" part="point">
-        <div class="${asideClasses}">
-          <slot name="date" @slotchange=${this._onAsideSlotChange}></slot>
-          <slot name="milestone" @slotchange=${this._onAsideSlotChange}></slot>
-        </div>
-        <div class="point-content">
-          <slot name="content"></slot>
-        </div>
+      <div class="point-aside">
+        <slot name="date" @slotchange=${this._onAsideSlotChange}></slot>
+        <slot name="milestone" @slotchange=${this._onAsideSlotChange}></slot>
+      </div>
+      <div class="point-content">
+        <slot name="content"></slot>
       </div>
     `;
   }

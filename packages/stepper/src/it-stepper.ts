@@ -346,7 +346,9 @@ export class ItStepper extends BaseLocalizedComponent {
           <p class="text-muted mb-0 small"><strong>${this.saveTitle}</strong></p>
           <p class="text-muted mb-0 small">${this.saveDescription}</p>
         </div>
-        <it-button variant="secondary" outline type="button" @click=${this._handleSave}>${this.saveLabel}</it-button>
+        <it-button variant="secondary" outline type="button" @click=${this._handleSave} exportparts="focusable">
+          ${this.saveLabel}
+        </it-button>
       </div>
     `;
   }

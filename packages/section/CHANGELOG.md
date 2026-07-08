@@ -1,5 +1,14 @@
 # @italia/section
 
+## 1.0.0-alpha.18
+
+### Patch Changes
+
+- [#425](https://github.com/italia/dev-kit-italia/pull/425) [`51d3b5b`](https://github.com/italia/dev-kit-italia/commit/51d3b5b91fa6b39d227282c952e503696b0131ef) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fix: position and z-index for containers in it-section
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
 ## 1.0.0-alpha.17
 
 ### Patch Changes

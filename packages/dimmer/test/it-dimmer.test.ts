@@ -440,7 +440,7 @@ describe('it-dimmer', () => {
       expect(dimmer?.getAttribute('aria-hidden')).to.be.null;
     });
 
-    it('sets inert on background slot elements when active', async () => {
+    it('sets inert and aria-hidden on background slot elements when active', async () => {
       const el = await fixture<ItDimmer>(html`
         <it-dimmer>
           <div id="bg">Sfondo</div>
@@ -448,14 +448,16 @@ describe('it-dimmer', () => {
       `);
       const bg = el.querySelector('#bg')!;
       expect(bg.hasAttribute('inert')).to.be.false;
+      expect(bg.getAttribute('aria-hidden')).to.be.null;
 
       el.active = true;
       await el.updateComplete;
 
       expect(bg.hasAttribute('inert')).to.be.true;
+      expect(bg.getAttribute('aria-hidden')).to.equal('true');
     });
 
-    it('removes inert from background slot elements when hidden', async () => {
+    it('removes inert and aria-hidden from background slot elements when hidden', async () => {
       const el = await fixture<ItDimmer>(html`
         <it-dimmer active>
           <div id="bg">Sfondo</div>
@@ -464,11 +466,13 @@ describe('it-dimmer', () => {
       await el.updateComplete;
       const bg = el.querySelector('#bg')!;
       expect(bg.hasAttribute('inert')).to.be.true;
+      expect(bg.getAttribute('aria-hidden')).to.equal('true');
 
       el.active = false;
       await el.updateComplete;
 
       expect(bg.hasAttribute('inert')).to.be.false;
+      expect(bg.getAttribute('aria-hidden')).to.be.null;
     });
 
     it('has part="dimmable" on wrapper', async () => {

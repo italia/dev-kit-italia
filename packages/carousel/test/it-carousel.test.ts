@@ -1,7 +1,8 @@
 /* eslint-disable no-await-in-loop */
+/* eslint-disable no-promise-executor-return */
 /// <reference types="mocha" />
 
-import { expect, fixture, html, aTimeout, elementUpdated } from '@open-wc/testing';
+import { expect, fixture, html, elementUpdated } from '@open-wc/testing';
 import '../src/index.js';
 import type { ItCarousel } from '../src/it-carousel.js';
 import type { ItCarouselSlide } from '../src/it-carousel-slide.js';
@@ -10,8 +11,23 @@ import type { ItCarouselSlide } from '../src/it-carousel-slide.js';
 // Helpers
 // ---------------------------------------------------------------------------
 
-/** Short pause to let Splide finish mounting DOM mutations */
-const splideReady = () => aTimeout(50);
+const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+
+/**
+ * Wait for Splide to finish mounting and for the post-mount DOM mutations
+ * (`is-visible` classes, `inert`, `part` attributes) to settle.
+ *
+ * `_initSplide()` defers `splide.mount()` behind a `requestAnimationFrame`, and
+ * `_updateInert()` runs synchronously right after mount in that same frame. A
+ * flat `aTimeout(50)` *guesses* that the frame has fired, which races the rAF on
+ * slower / coverage-instrumented runs (Chromium CI) where rAF can be throttled
+ * past 50ms — producing intermittent failures. Chaining to two animation frames
+ * is load-independent: we resume only once that deferred frame has actually run.
+ */
+const splideReady = async () => {
+  await nextFrame();
+  await nextFrame();
+};
 
 // ---------------------------------------------------------------------------
 // it-carousel-slide
@@ -92,16 +108,14 @@ describe('it-carousel', () => {
   // ---------------------------------------------------------------------------
 
   describe('shadow DOM structure', () => {
-    it('renders a <div role="region"> as carousel root', async () => {
+    it('host element has role="region"', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel></it-carousel>`);
-      const root = el.shadowRoot?.querySelector('div[role="region"]');
-      expect(root).to.exist;
-      expect(root?.getAttribute('role')).to.equal('region');
+      expect(el.getAttribute('role')).to.equal('region');
     });
 
     it('root element always has "it-carousel-wrapper" and "splide" classes', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel></it-carousel>`);
-      const root = el.shadowRoot?.querySelector('div[role="region"]');
+      const root = el.shadowRoot?.querySelector('.it-carousel-wrapper');
       expect(root?.classList.contains('it-carousel-wrapper')).to.be.true;
       expect(root?.classList.contains('splide')).to.be.true;
     });
@@ -113,7 +127,7 @@ describe('it-carousel', () => {
     });
 
     it('renders title slot', async () => {
-      const el = await fixture<ItCarousel>(html`<it-carousel><h2 slot="title">Titolo test</h2></it-carousel>`);
+      const el = await fixture<ItCarousel>(html`<it-carousel><h3 slot="title">Titolo test</h3></it-carousel>`);
       const titleSlot = el.shadowRoot?.querySelector('slot[name="title"]');
       expect(titleSlot).to.exist;
     });
@@ -126,26 +140,26 @@ describe('it-carousel', () => {
   describe('section class — variant mapping', () => {
     it('variant "single" → it-carousel-landscape-abstract', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="single"></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract');
     });
 
     it('variant "columns" → it-carousel-landscape-abstract-three-cols', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="columns"></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
     });
 
     it('variant "gallery-sm" → it-carousel-landscape-abstract-three-cols + it-standard-image', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="gallery-sm"></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
       expect(cls).to.include('it-standard-image');
     });
 
     it('variant "gallery-lg" → it-carousel-landscape-abstract-three-cols + it-big-img', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="gallery-lg"></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
       expect(cls).to.include('it-big-img');
     });
@@ -158,14 +172,14 @@ describe('it-carousel', () => {
   describe('arrows modifier class', () => {
     it('columns + arrows → adds it-carousel-landscape-abstract-three-cols-arrow-visible', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="columns" arrows></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols-arrow-visible');
     });
 
     it('single + arrows → does NOT add arrow-visible modifier', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="single" arrows></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).not.to.include('arrow-visible');
     });
 
@@ -173,14 +187,14 @@ describe('it-carousel', () => {
       for (const variant of ['gallery-sm', 'gallery-lg'] as const) {
         // eslint-disable-next-line no-await-in-loop
         const el = await fixture<ItCarousel>(html`<it-carousel variant=${variant}></it-carousel>`);
-        const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+        const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
         expect(cls).to.include('it-full-carousel', `${variant} should always have it-full-carousel`);
       }
     });
 
     it('gallery-lg + arrows → does NOT add arrow-visible modifier', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="gallery-lg" arrows></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).not.to.include('arrow-visible');
     });
   });
@@ -192,19 +206,19 @@ describe('it-carousel', () => {
   describe('fullscreen class', () => {
     it('adds it-full-carousel when fullscreen=true', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel fullscreen></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).to.include('it-full-carousel');
     });
 
     it('does NOT add it-full-carousel when fullscreen=false', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).not.to.include('it-full-carousel');
     });
 
     it('fullscreen + variant + arrows all compose together', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel variant="columns" arrows fullscreen></it-carousel>`);
-      const cls = el.shadowRoot?.querySelector('div[role="region"]')?.className ?? '';
+      const cls = el.shadowRoot?.querySelector('.it-carousel-wrapper')?.className ?? '';
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols');
       expect(cls).to.include('it-carousel-landscape-abstract-three-cols-arrow-visible');
       expect(cls).to.include('it-full-carousel');
@@ -220,7 +234,7 @@ describe('it-carousel', () => {
     it('moves slotted it-carousel-slide elements into .splide__list', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>A</span></it-carousel-slide>
           <it-carousel-slide><span>B</span></it-carousel-slide>
         </it-carousel>
@@ -234,7 +248,7 @@ describe('it-carousel', () => {
     it('adopted slides get the splide__slide class', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>A</span></it-carousel-slide>
         </it-carousel>
       `);
@@ -246,7 +260,7 @@ describe('it-carousel', () => {
     it('does not throw when there are zero slides', async () => {
       let error: unknown;
       try {
-        await fixture<ItCarousel>(html`<it-carousel><h2 slot="title">T</h2></it-carousel>`);
+        await fixture<ItCarousel>(html`<it-carousel><h3 slot="title">T</h3></it-carousel>`);
         await splideReady();
       } catch (e) {
         error = e;
@@ -263,7 +277,7 @@ describe('it-carousel', () => {
     it('mounts Splide and renders pagination dots', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -279,7 +293,7 @@ describe('it-carousel', () => {
     it('does not render arrows when arrows=false', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -299,7 +313,7 @@ describe('it-carousel', () => {
     it('visible slides do NOT have inert', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -317,7 +331,7 @@ describe('it-carousel', () => {
       // perPage:1 ensures only one slide is visible at a time
       const el = await fixture<ItCarousel>(html`
         <it-carousel .config=${{ perPage: 1, type: 'slide' }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><a href="#">Link 1</a></it-carousel-slide>
           <it-carousel-slide><a href="#">Link 2</a></it-carousel-slide>
           <it-carousel-slide><a href="#">Link 3</a></it-carousel-slide>
@@ -351,7 +365,7 @@ describe('it-carousel', () => {
     it('autoplay=true renders .splide__controls with toggle', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel autoplay>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -366,7 +380,7 @@ describe('it-carousel', () => {
     // it('autoplay=true passes autoplay:"pause" to Splide (Splide sets aria-label on toggle)', async () => {
     //   const el = await fixture<ItCarousel>(html`
     //     <it-carousel autoplay>
-    //       <h2 slot="title">T</h2>
+    //       <h3 slot="title">T</h3>
     //       <it-carousel-slide><span>1</span></it-carousel-slide>
     //       <it-carousel-slide><span>2</span></it-carousel-slide>
     //     </it-carousel>
@@ -380,7 +394,7 @@ describe('it-carousel', () => {
     it('user config.autoplay overrides the prop (e.g. autoplay:true starts immediately)', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel autoplay .config=${{ autoplay: true }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -393,7 +407,7 @@ describe('it-carousel', () => {
     it('autoplay=false + no config → no toggle rendered', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -411,7 +425,7 @@ describe('it-carousel', () => {
     it('does not render toggle when autoplay is not set', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -423,7 +437,7 @@ describe('it-carousel', () => {
     it('renders .splide__controls wrapper with toggle inside when autoplay is enabled', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel .config=${{ autoplay: true, interval: 3000 }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -439,7 +453,7 @@ describe('it-carousel', () => {
     it('autoplay: pagination dots are rendered inside .splide__controls', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel .config=${{ autoplay: true, interval: 3000 }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -455,7 +469,7 @@ describe('it-carousel', () => {
     it('toggle button has part="autoplay-toggle"', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel .config=${{ autoplay: true }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -468,7 +482,7 @@ describe('it-carousel', () => {
     it('play SVG has class splide__toggle__play and part="autoplay-play"', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel .config=${{ autoplay: true }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -483,7 +497,7 @@ describe('it-carousel', () => {
     it('pause SVG has class splide__toggle__pause and part="autoplay-pause"', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel .config=${{ autoplay: true }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -498,7 +512,7 @@ describe('it-carousel', () => {
     it('Splide sets non-empty aria-label on toggle button', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel .config=${{ autoplay: true }}>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -518,7 +532,7 @@ describe('it-carousel', () => {
     it('pagination gets part="pagination-track" after mount', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -532,7 +546,7 @@ describe('it-carousel', () => {
     it('each pagination dot button gets part="pagination-dot"', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -549,7 +563,7 @@ describe('it-carousel', () => {
     it('no arrows parts when arrows=false', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -570,17 +584,18 @@ describe('it-carousel', () => {
     it('sets aria-labelledby on the root element when title slot contains a heading', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">Titolo accessibile</h2>
+          <h3 slot="title">Titolo accessibile</h3>
           <it-carousel-slide><span>S</span></it-carousel-slide>
         </it-carousel>
       `);
       await elementUpdated(el);
       await splideReady();
-      const rootEl = el.shadowRoot?.querySelector('div[role="region"]');
-      const labelledBy = rootEl?.getAttribute('aria-labelledby');
+      // aria-labelledby is now on the host element (light DOM) to avoid
+      // cross-shadow ID resolution issues with AT and static analysis tools.
+      const labelledBy = el.getAttribute('aria-labelledby');
       expect(labelledBy).to.be.a('string').and.not.be.empty;
       // The id should be set on the heading in the light DOM
-      const heading = el.querySelector('h2[slot="title"]');
+      const heading = el.querySelector('h3[slot="title"]');
       expect(heading?.getAttribute('id')).to.equal(labelledBy);
     });
 
@@ -593,8 +608,7 @@ describe('it-carousel', () => {
       `);
       await elementUpdated(el);
       await splideReady();
-      const rootEl = el.shadowRoot?.querySelector('div[role="region"]');
-      expect(rootEl?.hasAttribute('aria-labelledby')).to.be.false;
+      expect(el.hasAttribute('aria-labelledby')).to.be.false;
     });
   });
 
@@ -688,7 +702,7 @@ describe('it-carousel', () => {
     it('mounts Splide with overridden type=loop', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel type="loop">
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -703,7 +717,7 @@ describe('it-carousel', () => {
     it('mounts Splide with type=slide (no is-loop class)', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel type="slide">
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -723,7 +737,7 @@ describe('it-carousel', () => {
     it('accepts a config object and Splide mounts without errors', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>
@@ -743,7 +757,7 @@ describe('it-carousel', () => {
       // config.type = 'slide' should win over type='loop'
       const el = await fixture<ItCarousel>(html`
         <it-carousel type="loop">
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
           <it-carousel-slide><span>3</span></it-carousel-slide>
@@ -776,7 +790,7 @@ describe('it-carousel', () => {
     it('does not throw when disconnected after Splide mounted', async () => {
       const el = await fixture<ItCarousel>(html`
         <it-carousel>
-          <h2 slot="title">T</h2>
+          <h3 slot="title">T</h3>
           <it-carousel-slide><span>1</span></it-carousel-slide>
           <it-carousel-slide><span>2</span></it-carousel-slide>
         </it-carousel>

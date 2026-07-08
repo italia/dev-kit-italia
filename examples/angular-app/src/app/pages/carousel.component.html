@@ -1,10 +1,9 @@
 <h1>Carousel</h1>
 
 <!-- 1. Variante singola -->
-<section class="my-5">
-  <h2>Variante singola</h2>
+<div class="my-5">
   <it-carousel variant="single">
-    <h2 slot="title">Titolo carousel</h2>
+    <h2 slot="title">Variante singola</h2>
     @for (item of slides; track $index) {
       <it-carousel-slide>
         <it-card variant="inline">
@@ -21,13 +20,12 @@
       </it-carousel-slide>
     }
   </it-carousel>
-</section>
+</div>
 
 <!-- 2. Variante 3 colonne -->
-<section class="my-5">
-  <h2>Variante 3 colonne</h2>
+<div class="my-5">
   <it-carousel variant="columns">
-    <h2 slot="title">Titolo carousel</h2>
+    <h2 slot="title">Variante 3 colonne</h2>
     @for (item of slides; track $index) {
       <it-carousel-slide>
         <it-card full-height="">
@@ -47,11 +45,10 @@
       </it-carousel-slide>
     }
   </it-carousel>
-</section>
+</div>
 
 <!-- 3. Variante gallery small -->
-<section class="my-5">
-  <h2>Variante gallery small</h2>
+<div class="my-5">
   <it-carousel variant="gallery-sm">
     <h2 slot="title">Variante gallery small</h2>
     @for (item of slides; track $index) {
@@ -60,7 +57,7 @@
           <div class="img-responsive-wrapper">
             <div class="img-responsive">
               <div class="img-wrapper">
-                <img src="https://www.placeholderimage.eu/api/800/600" title="titolo immagine" alt="descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" title="titolo immagine" alt="descrizione immagine" />
               </div>
             </div>
           </div>
@@ -68,11 +65,10 @@
       </it-carousel-slide>
     }
   </it-carousel>
-</section>
+</div>
 
 <!-- 4. Variante gallery large -->
-<section class="my-5">
-  <h2>Variante gallery large</h2>
+<div class="my-5">
   <it-carousel variant="gallery-lg">
     <h2 slot="title">Variante gallery large</h2>
     @for (item of slides; track $index) {
@@ -81,7 +77,7 @@
           <div class="img-responsive-wrapper">
             <div class="img-responsive">
               <div class="img-wrapper">
-                <img src="https://www.placeholderimage.eu/api/800/600" title="titolo immagine" alt="descrizione immagine" />
+                <img src="https://picsum.photos/seed/city/800/600" title="titolo immagine" alt="descrizione immagine" />
               </div>
             </div>
           </div>
@@ -89,13 +85,12 @@
       </it-carousel-slide>
     }
   </it-carousel>
-</section>
+</div>
 
 <!-- 5. Con separatore tra le slide -->
-<section class="my-5">
-  <h2>Con separatore tra le slide</h2>
+<div class="my-5">
   <it-carousel variant="columns" separator>
-    <h2 slot="title">Titolo carousel</h2>
+    <h2 slot="title">Carousel con separatore</h2>
     @for (item of slides; track $index) {
       <it-carousel-slide>
         <it-card variant="inline">
@@ -112,14 +107,13 @@
       </it-carousel-slide>
     }
   </it-carousel>
-</section>
+</div>
 
 <!-- 6. Con frecce di navigazione -->
-<section class="my-5">
-  <h2>Con frecce di navigazione</h2>
+<div class="my-5">
   <div style="display: flex; flex-direction: column; gap: 4rem;">
     <it-carousel variant="columns" arrows>
-      <h2 slot="title">Titolo carousel</h2>
+      <h2 slot="title">Carousel 3 colonne con frecce</h2>
       @for (item of slides; track $index) {
         <it-carousel-slide>
           <it-card full-height="">
@@ -143,7 +137,7 @@
       }
     </it-carousel>
     <it-carousel variant="single" arrows>
-      <h2 slot="title">Titolo carousel</h2>
+      <h2 slot="title">Carousel singolo con frecce</h2>
       @for (item of slides; track $index) {
         <it-carousel-slide>
           <it-card full-height="">
@@ -167,13 +161,12 @@
       }
     </it-carousel>
   </div>
-</section>
+</div>
 
 <!-- 7. Fullscreen -->
-<section class="my-5">
-  <h2>Fullscreen</h2>
+<div class="my-5">
   <it-carousel variant="single" arrows fullscreen>
-    <h2 slot="title">Titolo carousel</h2>
+    <h2 slot="title">Carousel fullscreen</h2>
     @for (item of slides; track $index) {
       <it-carousel-slide>
         <it-card variant="inline">
@@ -190,11 +183,10 @@
       </it-carousel-slide>
     }
   </it-carousel>
-</section>
+</div>
 
 <!-- 8. Modalità di scorrimento -->
-<section class="my-5">
-  <h2>Modalità di scorrimento</h2>
+<div class="my-5">
   <div style="display: flex; flex-direction: column; gap: 4rem;">
     <it-carousel variant="single" type="loop">
       <h2 slot="title">Carousel con scorrimento in loop</h2>
@@ -269,11 +261,10 @@
       }
     </it-carousel>
   </div>
-</section>
+</div>
 
 <!-- 9. Autoplay -->
-<section class="my-5">
-  <h2>Autoplay</h2>
+<div class="my-5">
   <it-carousel variant="single" autoplay>
     <h2 slot="title">Carousel con autoplay</h2>
     @for (item of slides; track $index) {
@@ -292,16 +283,15 @@
       </it-carousel-slide>
     }
   </it-carousel>
-</section>
+</div>
 
 <!-- 10. Configurazione avanzata -->
-<section class="my-5">
-  <h2>Configurazione avanzata</h2>
+<div class="my-5">
   <it-carousel
     variant="columns"
-    config='{"type":"loop","autoplay":"pause","interval":3000,"pauseOnHover":true,"resetProgress":false,"perPage":2,"arrows":true,"gap":16,"padding":{"left":8,"right":8},"breakpoints":{"560":{"perPage":1,"gap":0,"padding":{"left":24,"right":24},"arrows":false},"768":{"perPage":2,"gap":0,"padding":{"left":0,"right":0},"arrows":false},"992":{"perPage":3,"gap":0,"padding":{"left":0,"right":0},"arrows":false}}}'
+    config='{"type":"loop","autoplay":"pause","interval":3000,"pauseOnHover":true,"resetProgress":false,"perPage":2,"arrows":true,"gap":16,"padding":{"left":8,"right":8},"breakpoints":{"560":{"perPage":1,"gap":0,"padding":{"left":24,"right":24},"arrows":false},"768":{"perPage":2,"gap":0,"padding":{"left":0,"right":0},"arrows":false},"992":{"perPage":2,"gap":0,"padding":{"left":0,"right":0},"arrows":false}}}'
   >
-    <h2 slot="title">Titolo carousel</h2>
+    <h2 slot="title">Configurazione avanzata Splide</h2>
     @for (item of slides; track $index) {
       <it-carousel-slide>
         <it-card full-height="">
@@ -324,4 +314,4 @@
       </it-carousel-slide>
     }
   </it-carousel>
-</section>
+</div>
