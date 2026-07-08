@@ -1,2 +1,0 @@
-import{Da as m,Va as t,Wa as n,kb as e}from"./chunk-CZWQANCY.js";import"./chunk-4CLCTAJ7.js";var a=class i{static \u0275fac=function(o){return new(o||i)};static \u0275cmp=m({type:i,selectors:[["app-home"]],decls:7,vars:0,template:function(o,l){o&1&&(t(0,"h1"),e(1,"Homepage"),n(),t(2,"p"),e(3," Benvenuto nell'applicazione di esempio Angular per l'utilizzo dei componenti di "),t(4,"strong"),e(5,"dev-kit-italia"),n(),e(6,`.
-`),n())},encapsulation:2})};export{a as HomeComponent};

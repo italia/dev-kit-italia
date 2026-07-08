@@ -1,2 +1,0 @@
-
-//# sourceMappingURL=full.js.map

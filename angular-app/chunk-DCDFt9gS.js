@@ -1,0 +1,2 @@
+import {D as Dy,T as Ta,C as Cv,w as wa,a as jd}from'./main-KT7JHEBJ.js';var a=class i{static \u0275fac=function(n){return new(n||i)};static \u0275cmp=Dy({type:i,selectors:[["app-video"]],decls:7,vars:0,consts:[[2,"width","600px","margin-left","auto","margin-right","auto"],[1,"mb-5"],["src","https://vjs.zencdn.net/v/oceans.webm"],["src","https://youtu.be/_0j7ZQ67KtY"]],template:function(n,p){n&1&&(Ta(0,"h1"),Cv(1,"Video"),wa(),Ta(2,"div",0)(3,"div",1),jd(4,"it-video",2),wa(),Ta(5,"div"),jd(6,"it-video",3),wa()());},encapsulation:2})};
+export{a as VideoComponent};

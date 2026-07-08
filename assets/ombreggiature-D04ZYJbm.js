@@ -1,0 +1,4 @@
+import{j as e,M as i,C as s}from"./blocks-B6hS5Cag.js";import{useMDXComponents as a}from"./index-BuMJafY_.js";import{S as r,V as l}from"./ombreggiature.stories-KXlmPlJn.js";import"./preload-helper-PPVm8Dsz.js";import"./iframe-CbN6PWjR.js";import"./organizzare-gli-spazi.helpers-BK7dnz1C.js";function n(t){const o={code:"code",h1:"h1",p:"p",...a(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(i,{of:r}),`
+`,e.jsx(o.h1,{id:"ombreggiature",children:"Ombreggiature"}),`
+`,e.jsxs(o.p,{children:["Nonostante le ombreggiature siano disabilitate in Bootstrap e siano attivabili soltanto attraverso l'utilizzo della variabile ",e.jsx(o.code,{children:"$enable-shadows"}),", è possibile aggiungere rapidamente un'ombreggiatura nella parte sottostante un elemento con le classi che seguono."]}),`
+`,e.jsx(s,{of:l})]})}function x(t={}){const{wrapper:o}={...a(),...t.components};return o?e.jsx(o,{...t,children:e.jsx(n,{...t})}):n(t)}export{x as default};
