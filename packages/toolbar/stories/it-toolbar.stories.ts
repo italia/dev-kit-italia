@@ -169,13 +169,13 @@ export const ToolbarConBadge: Story = {
           label-extended="da leggere"
         ></it-toolbar-item>
         <it-toolbar-item
-          label="Documenti"
-          icon="it-file"
+          label="Immagini"
+          icon="it-camera"
           href="#"
           badge="42"
           label-extended="da esaminare"
         ></it-toolbar-item>
-        <it-toolbar-item label="Immagini" icon="it-camera" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Documenti" icon="it-file" href="#"></it-toolbar-item>
         <it-toolbar-item label="Privacy" icon="it-locked" href="#"></it-toolbar-item>
         <it-toolbar-item disabled label="Preferiti" icon="it-star-outline" href="#"></it-toolbar-item>`,
     )}`,
@@ -199,13 +199,13 @@ export const ToolbarMediaSmallConBadge: Story = {
           label-extended="c'è 1 nuovo messaggio dal leggere"
         ></it-toolbar-item>
         <it-toolbar-item
-          label="Documenti"
-          icon="it-file"
+          label="Immagini"
+          icon="it-camera"
           href="#"
           badge="42"
           label-extended="ci sono 42 documenti da esaminare"
         ></it-toolbar-item>
-        <it-toolbar-item label="Immagini" icon="it-camera" href="#"></it-toolbar-item>
+        <it-toolbar-item label="Documenti" icon="it-file" href="#"></it-toolbar-item>
         <it-toolbar-item label="Privacy" icon="it-locked" href="#"></it-toolbar-item>
         <it-toolbar-item label="Preferiti" icon="it-star-outline" href="#"></it-toolbar-item>
         <it-toolbar-item disabled label="Download" icon="it-download" href="#"></it-toolbar-item>`,
