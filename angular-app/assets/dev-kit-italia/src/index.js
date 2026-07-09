@@ -48544,6 +48544,10 @@ let ItNotification = ItNotification_1 = class ItNotification extends BaseLocaliz
             this.offsetHeight;
         }
         this.isShown = true;
+        // Inject the flattened slot text into the dedicated live region so that
+        // NVDA/JAWS announce the notification (they do not resolve slotted content
+        // across the shadow boundary at announcement time).
+        this.updateComplete.then(() => this.announce());
         setTimeout(() => {
             this.isTransitioning = false;
             if (!this.dismissable && timeoutVal) {
@@ -48562,6 +48566,9 @@ let ItNotification = ItNotification_1 = class ItNotification extends BaseLocaliz
             this.isTransitioning = true;
         setTimeout(() => {
             this.container.style.display = 'none';
+            // Clear the live region so a subsequent show() re-announces even when
+            // the content is identical.
+            this.liveRegion.textContent = '';
             this.isTransitioning = false;
         }, this.fade ? ItNotification_1.TRANSITION_DURATION : 0);
     }
@@ -48570,6 +48577,18 @@ let ItNotification = ItNotification_1 = class ItNotification extends BaseLocaliz
             return this.headingLevel;
         }
         return 'h2';
+    }
+    getSlotText(name) {
+        const selector = name ? `slot[name="${name}"]` : 'slot:not([name])';
+        const slot = this.shadowRoot?.querySelector(selector);
+        return (slot?.assignedNodes({ flatten: true }) ?? [])
+            .map((node) => node.textContent?.trim() ?? '')
+            .filter(Boolean)
+            .join(' ')
+            .trim();
+    }
+    announce() {
+        this.liveRegion.textContent = [this.getSlotText('title'), this.getSlotText()].filter(Boolean).join('. ');
     }
     render() {
         const classes = this.composeClass('notification', {
@@ -48585,27 +48604,24 @@ let ItNotification = ItNotification_1 = class ItNotification extends BaseLocaliz
         });
         const headingTag = unsafeStatic(this.getHeadingLevel());
         return html `
-      <div
-        class="${classes}"
-        role="alert"
-        aria-labelledby=${`${this._id}-heading`}
-        part="notification"
-        aria-hidden="${ifDefined(this.isShown ? undefined : 'true')}"
-      >
-        ${html$1 `
-          <${headingTag} class=${headingClasses} id=${`${this._id}-heading`} part="title">
-            ${this.icon
+      <div role="alert" class="visually-hidden" part="live-region"></div>
+      <div class="${classes}" part="notification">
+        <div aria-hidden="true">
+          ${html$1 `
+            <${headingTag} class=${headingClasses} id=${`${this._id}-heading`} part="title">
+              ${this.icon
             ? html `<it-icon
-                    class="icon me-2"
-                    size="sm"
-                    color=${ifDefined(this.status ? NOTIFICATION_STATUS_COLORS[this.status] : undefined)}
-                    name="${this.icon}"
-                    align="none"
-                  ></it-icon>`
+                      class="icon me-2"
+                      size="sm"
+                      color=${ifDefined(this.status ? NOTIFICATION_STATUS_COLORS[this.status] : undefined)}
+                      name="${this.icon}"
+                      align="none"
+                    ></it-icon>`
             : ''}<slot name="title"></slot>
-          </${headingTag}>
-        `}
-        <slot></slot>
+            </${headingTag}>
+          `}
+          <slot></slot>
+        </div>
         ${this.dismissable
             ? html `
               <button type="button" class="btn notification-close" @click=${this.hide}>
@@ -48651,9 +48667,13 @@ __decorate$g([
     __metadata$g("design:type", Number)
 ], ItNotification.prototype, "timeout", void 0);
 __decorate$g([
-    query('[role="alert"]'),
+    query('[part="notification"]'),
     __metadata$g("design:type", HTMLElement)
 ], ItNotification.prototype, "container", void 0);
+__decorate$g([
+    query('[part="live-region"]'),
+    __metadata$g("design:type", HTMLElement)
+], ItNotification.prototype, "liveRegion", void 0);
 __decorate$g([
     state(),
     __metadata$g("design:type", Object)
@@ -68295,10 +68315,12 @@ li {
   transition-duration: 1s;
 }
 
+:host([active]) ::slotted(a),
 ::slotted(a.active) {
   pointer-events: none;
 }
 
+:host([active]) ::slotted(a)::after,
 ::slotted(a.active)::after {
   background: var(--bsi-color-background-primary);
   opacity: 0.6;
@@ -68307,15 +68329,24 @@ li {
 /**
  * Singolo elemento della Thumbnav.
  * Inserisce il contenuto (tipicamente un anchor con immagine) in un elemento `<li>`.
- * Lo stato attivo si gestisce aggiungendo la classe `active` all'anchor nello slot:
- * `<a href="#" class="ratio ratio-3x2 active"><img …></a>`
+ * Usa l'attributo `active` per indicare l'elemento corrente:
+ * `<it-thumbnav-item active><a href="#" class="ratio ratio-3x2"><img …></a></it-thumbnav-item>`
  */
 let ItThumbnavItem = class ItThumbnavItem extends BaseComponent$6 {
+    constructor() {
+        super(...arguments);
+        /** Indica l'elemento attivo/corrente nella navigazione. */
+        this.active = false;
+    }
     render() {
         return html `<li><slot></slot></li>`;
     }
 };
 ItThumbnavItem.styles = styles$b;
+__decorate$7([
+    property({ type: Boolean, reflect: true }),
+    __metadata$7("design:type", Object)
+], ItThumbnavItem.prototype, "active", void 0);
 ItThumbnavItem = __decorate$7([
     customElement('it-thumbnav-item')
 ], ItThumbnavItem);
@@ -74525,6 +74556,7 @@ var styles$7 = css`.toolbar {
 .toolbar {
   --bsi-toolbar-badge-size: 18px;
   --bsi-toolbar-badge-top: -4px;
+  box-sizing: border-box;
 }
 .toolbar.toolbar-small {
   --bsi-toolbar-badge-size: 8px;
@@ -74594,19 +74626,17 @@ let ItToolbar = class ItToolbar extends BaseComponent$4 {
                 item.removeAttribute('hide-badge');
             }
             if (item.divider) {
+                item.setAttribute('role', 'separator');
                 if (this.orientation === 'vertical') {
-                    item.setAttribute('it-aria-orientation', 'horizontal');
+                    item.setAttribute('aria-orientation', 'horizontal');
                 }
                 else {
-                    item.setAttribute('it-aria-orientation', 'vertical');
+                    item.setAttribute('aria-orientation', 'vertical');
                 }
-                return; // I divisori non devono ricevere altre modifiche
-            }
-            if (this.orientation === 'vertical') {
-                item.setAttribute('it-aria-orientation', 'vertical');
             }
             else {
-                item.removeAttribute('it-aria-orientation');
+                item.setAttribute('role', 'presentation');
+                item.removeAttribute('aria-orientation');
             }
         });
     }
@@ -74618,7 +74648,7 @@ let ItToolbar = class ItToolbar extends BaseComponent$4 {
         }, this.className);
         return html `
       <nav aria-label="${this.itAriaLabel}" part="toolbar-container" class="${navClasses}">
-        <ul part="toolbar-list">
+        <ul part="toolbar-list" role="toolbar" aria-orientation="${this.orientation}">
           <slot @slotchange="${this._onSlotChange}"></slot>
         </ul>
       </nav>
@@ -74668,9 +74698,10 @@ li.toolbar-divider {
   width: 1px;
   min-width: 1px;
   max-width: 1px;
-  height: 100%;
-  margin: 0;
+  height: 1.5rem;
+  align-self: stretch;
   background: var(--bsi-toolbar-divider-color);
+  margin-block: var(--bsi-toolbar-padding-y);
 }
 li.toolbar-divider[aria-orientation=horizontal] {
   width: 100%;
@@ -74836,10 +74867,6 @@ let ItToolbarItem = class ItToolbarItem extends BaseComponent$4 {
          * Whether the item has a dropdown
          */
         this.dropdown = false;
-        /**
-         * Orientation
-         */
-        this.itAriaOrientation = 'horizontal';
         this.handleClick = (event) => {
             if (this.disabled) {
                 event.preventDefault();
@@ -74848,6 +74875,12 @@ let ItToolbarItem = class ItToolbarItem extends BaseComponent$4 {
             }
             this.dispatchEvent(new CustomEvent('it-toolbar-item-click', { detail: { label: this.label }, bubbles: true, composed: true }));
         };
+    }
+    /**
+     * Orientation of the containing it-toolbar, used to decide the dropdown alignment
+     */
+    get toolbarOrientation() {
+        return this.closest('it-toolbar')?.orientation ?? null;
     }
     connectedCallback() {
         super.connectedCallback?.();
@@ -74913,7 +74946,7 @@ let ItToolbarItem = class ItToolbarItem extends BaseComponent$4 {
         part="toolbar-item-element dropdown"
         exportparts="focusable, button, icon, icon:expand-icon, dropdown-icon-expand, dropdown-button, popover"
         variant=""
-        alignment=${this.itAriaOrientation === 'vertical' ? 'right-start' : 'bottom-start'}
+        alignment=${this.toolbarOrientation === 'vertical' ? 'right-start' : 'bottom-start'}
       >
         <div slot="label">${this.renderItemContent()}</div>
         <slot name="items"></slot>
@@ -74936,11 +74969,12 @@ let ItToolbarItem = class ItToolbarItem extends BaseComponent$4 {
         const ariaAttributes = { ...this._ariaAttributes };
         delete ariaAttributes['aria-disabled']; // Rimuove aria-disabled se presente, gestito a livello di focusable element
         delete ariaAttributes['aria-label']; // Rimuove aria-label se presente, gestito a livello di focusable element
+        delete ariaAttributes['aria-orientation']; // Rimuove aria-orientation se presente, gestito a livello di it-toolbar-item
         return this.divider
             ? html `<li
           part="toolbar-item toolbar-divider"
           class="toolbar-divider"
-          role="separator"
+          role="none"
           ${setAttributes$1(ariaAttributes)}
         ></li>`
             : html ` <li role="none" part="toolbar-item" ${setAttributes$1(ariaAttributes)}>${this.renderTag()}</li>`;
@@ -74995,10 +75029,6 @@ __decorate$4([
     property({ type: Boolean, reflect: true }),
     __metadata$4("design:type", Object)
 ], ItToolbarItem.prototype, "dropdown", void 0);
-__decorate$4([
-    property({ type: String, reflect: true, attribute: 'it-aria-orientation' }),
-    __metadata$4("design:type", String)
-], ItToolbarItem.prototype, "itAriaOrientation", void 0);
 ItToolbarItem = __decorate$4([
     customElement('it-toolbar-item')
 ], ItToolbarItem);

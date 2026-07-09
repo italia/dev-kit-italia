@@ -1,2 +1,0 @@
-import {D as Dy,T as Ta,C as Cv,w as wa}from'./main-KT7JHEBJ.js';var a=class i{static \u0275fac=function(o){return new(o||i)};static \u0275cmp=Dy({type:i,selectors:[["app-home"]],decls:7,vars:0,template:function(o,l){o&1&&(Ta(0,"h1"),Cv(1,"Homepage"),wa(),Ta(2,"p"),Cv(3," Benvenuto nell'applicazione di esempio Angular per l'utilizzo dei componenti di "),Ta(4,"strong"),Cv(5,"dev-kit-italia"),wa(),Cv(6,`.
-`),wa());},encapsulation:2})};export{a as HomeComponent};

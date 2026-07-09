@@ -1,0 +1,2 @@
+import {h as hy,v as va,d as dv,E as Ea,F as Fd}from'./main-KWHDBE5H.js';var a=class i{static \u0275fac=function(n){return new(n||i)};static \u0275cmp=hy({type:i,selectors:[["app-video"]],decls:7,vars:0,consts:[[2,"width","600px","margin-left","auto","margin-right","auto"],[1,"mb-5"],["src","https://vjs.zencdn.net/v/oceans.webm"],["src","https://youtu.be/_0j7ZQ67KtY"]],template:function(n,p){n&1&&(va(0,"h1"),dv(1,"Video"),Ea(),va(2,"div",0)(3,"div",1),Fd(4,"it-video",2),Ea(),va(5,"div"),Fd(6,"it-video",3),Ea()());},encapsulation:2})};
+export{a as VideoComponent};
