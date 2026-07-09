@@ -24,8 +24,8 @@ const IMAGES = [
 const renderItems = (count = 3, firstActive = true) =>
   IMAGES.slice(0, count).map(
     (img, i) => html`
-      <it-thumbnav-item>
-        <a href="#" class="ratio ratio-3x2 ${i === 0 && firstActive ? 'active' : ''}">
+      <it-thumbnav-item ?active="${i === 0 && firstActive}">
+        <a href="#" class="ratio ratio-3x2">
           <img src="${img.src}" alt="${img.alt}" />
         </a>
       </it-thumbnav-item>
@@ -231,15 +231,18 @@ export const OverlayVerticaleRight: Story = {
 
 export const GrigliaFissa: Story = {
   name: 'Griglia a larghezza fissa',
+  parameters: { pageLayout: 'w-100' },
   render: () => html` <it-thumbnav fixed> ${renderItems(5)} </it-thumbnav> `,
 };
 
 export const GrigliaAutomatica3: Story = {
   name: 'Griglia automatica - 3 per riga',
+  parameters: { pageLayout: 'w-100' },
   render: () => html` <it-thumbnav auto="3"> ${renderItems(5)} </it-thumbnav> `,
 };
 
 export const GrigliaAutomatica5: Story = {
   name: 'Griglia automatica - 5 per riga',
+  parameters: { pageLayout: 'w-100' },
   render: () => html` <it-thumbnav auto="5"> ${renderItems(5)} </it-thumbnav> `,
 };

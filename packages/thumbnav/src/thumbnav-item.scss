@@ -51,11 +51,15 @@ li {
   transition-duration: 1s;
 }
 
-// Active state: full overlay using the primary colour
+// Active state: full overlay using the primary colour.
+// Preferred: use the `active` attribute on `it-thumbnav-item`.
+// Backward compat: `.active` class on the slotted anchor still works.
+:host([active]) ::slotted(a),
 ::slotted(a.active) {
   pointer-events: none;
 }
 
+:host([active]) ::slotted(a)::after,
 ::slotted(a.active)::after {
   background: var(--#{$prefix}color-background-primary);
   opacity: 0.6;

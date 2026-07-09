@@ -46,7 +46,15 @@ Inserisci nell'anchor la classe Bootstrap Italia `.ratio` per mantenere un rappo
 
 Se stai utilizzando il componente in un framework JS (React, Vue, Angular), utilizza il tag di navigazione del framework (ad esempio `<Link>` in React) al posto dell'anchor HTML, mantenendo la struttura interna con classe `.ratio` e immagine.
 
-Ricordati di assegnare la classe `.active` all'elemento `it-thumbnav-item` corrispondente alla pagina o immagine attiva, per indicarlo visivamente agli utenti.
+Usa l'attributo `active` sull'elemento `it-thumbnav-item` corrispondente alla pagina o immagine attiva, per indicarlo visivamente agli utenti.
+
+```html
+<it-thumbnav-item active>
+  <a href="#" class="ratio ratio-3x2">
+    <img src="…" alt="Visualizza immagine 1">
+  </a>
+</it-thumbnav-item>
+```
 
 
 ## Accessibilità
