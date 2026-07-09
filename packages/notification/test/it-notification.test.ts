@@ -54,26 +54,27 @@ describe('<it-notification>', () => {
       expect(el.timeout).to.equal(3000);
     });
 
-    it('il container ha role="alert"', async () => {
+    it('ha una live region dedicata con role="alert" vuota a riposo', async () => {
       const el = await fixture<ItNotification>(html`
         <it-notification>
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
-      expect(container).to.exist;
+      const liveRegion = el.shadowRoot?.querySelector('[part="live-region"]');
+      expect(liveRegion).to.exist;
+      expect(liveRegion?.getAttribute('role')).to.equal('alert');
+      expect(liveRegion?.classList.contains('visually-hidden')).to.be.true;
+      expect(liveRegion?.textContent?.trim()).to.equal('');
     });
 
-    it('il container ha aria-labelledby="heading"', async () => {
+    it('il contenuto visibile è aria-hidden per non essere annunciato due volte', async () => {
       const el = await fixture<ItNotification>(html`
         <it-notification>
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
-      const labelledBy = container?.getAttribute('aria-labelledby');
-      expect(labelledBy).to.exist;
-      expect(el.shadowRoot?.querySelector(`#${labelledBy}`)).to.exist;
+      const content = el.shadowRoot?.querySelector('[part="notification"] > [aria-hidden="true"]');
+      expect(content).to.exist;
     });
 
     it('il container ha part="notification"', async () => {
@@ -82,7 +83,7 @@ describe('<it-notification>', () => {
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
+      const container = el.shadowRoot?.querySelector('[part="notification"]');
       expect(container?.getAttribute('part')).to.equal('notification');
     });
 
@@ -92,7 +93,7 @@ describe('<it-notification>', () => {
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
+      const container = el.shadowRoot?.querySelector('[part="notification"]');
       expect(container?.classList.contains('fade')).to.be.true;
     });
 
@@ -102,19 +103,19 @@ describe('<it-notification>', () => {
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
+      const container = el.shadowRoot?.querySelector('[part="notification"]');
       expect(container?.classList.contains('show')).to.be.false;
     });
 
-    it('ha aria-hidden="true" quando non è mostrato', async () => {
+    it('la live region non è mai aria-hidden', async () => {
       const el = await fixture<ItNotification>(html`
         <it-notification>
           <span slot="title">Titolo</span>
         </it-notification>
       `);
       await el.updateComplete;
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
-      expect(container?.getAttribute('aria-hidden')).to.equal('true');
+      const liveRegion = el.shadowRoot?.querySelector('[part="live-region"]');
+      expect(liveRegion?.hasAttribute('aria-hidden')).to.be.false;
     });
 
     it('non mostra il pulsante di chiusura per default', async () => {
@@ -187,7 +188,7 @@ describe('<it-notification>', () => {
             <span slot="title">Titolo</span>
           </it-notification>
         `);
-        const container = el.shadowRoot?.querySelector('[role="alert"]');
+        const container = el.shadowRoot?.querySelector('[part="notification"]');
         expect(container?.classList.contains(status)).to.be.true;
       });
     });
@@ -198,7 +199,7 @@ describe('<it-notification>', () => {
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
+      const container = el.shadowRoot?.querySelector('[part="notification"]');
       expect(container?.classList.contains('success')).to.be.false;
       expect(container?.classList.contains('error')).to.be.false;
       expect(container?.classList.contains('warning')).to.be.false;
@@ -237,7 +238,7 @@ describe('<it-notification>', () => {
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
+      const container = el.shadowRoot?.querySelector('[part="notification"]');
       expect(container?.classList.contains('with-icon')).to.be.true;
     });
 
@@ -247,7 +248,7 @@ describe('<it-notification>', () => {
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
+      const container = el.shadowRoot?.querySelector('[part="notification"]');
       expect(container?.classList.contains('with-icon')).to.be.false;
     });
 
@@ -352,7 +353,7 @@ describe('<it-notification>', () => {
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
+      const container = el.shadowRoot?.querySelector('[part="notification"]');
       expect(container?.classList.contains('dismissable')).to.be.true;
     });
 
@@ -362,7 +363,7 @@ describe('<it-notification>', () => {
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
+      const container = el.shadowRoot?.querySelector('[part="notification"]');
       expect(container?.classList.contains('dismissable')).to.be.false;
     });
   });
@@ -377,7 +378,7 @@ describe('<it-notification>', () => {
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
+      const container = el.shadowRoot?.querySelector('[part="notification"]');
       expect(container?.classList.contains('fade')).to.be.true;
     });
 
@@ -387,7 +388,7 @@ describe('<it-notification>', () => {
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
+      const container = el.shadowRoot?.querySelector('[part="notification"]');
       expect(container?.classList.contains('fade')).to.be.false;
     });
   });
@@ -403,7 +404,7 @@ describe('<it-notification>', () => {
             <span slot="title">Titolo</span>
           </it-notification>
         `);
-        const container = el.shadowRoot?.querySelector('[role="alert"]');
+        const container = el.shadowRoot?.querySelector('[part="notification"]');
         expect(container?.classList.contains(`${pos}-fix`)).to.be.true;
       });
     });
@@ -414,7 +415,7 @@ describe('<it-notification>', () => {
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
+      const container = el.shadowRoot?.querySelector('[part="notification"]');
       (['top', 'bottom', 'left', 'right'] as const).forEach((pos) => {
         expect(container?.classList.contains(`${pos}-fix`)).to.be.false;
       });
@@ -445,7 +446,7 @@ describe('<it-notification>', () => {
       `);
       el.show();
       await el.updateComplete;
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
+      const container = el.shadowRoot?.querySelector('[part="notification"]');
       expect(container?.classList.contains('show')).to.be.true;
     });
 
@@ -457,20 +458,22 @@ describe('<it-notification>', () => {
       `);
       el.show();
       await el.updateComplete;
-      const container = el.shadowRoot?.querySelector('[role="alert"]') as HTMLElement;
+      const container = el.shadowRoot?.querySelector('[part="notification"]') as HTMLElement;
       expect(container?.style.display).to.equal('block');
     });
 
-    it('rimuove aria-hidden dopo show()', async () => {
+    it('popola la live region con il testo degli slot dopo show()', async () => {
       const el = await fixture<ItNotification>(html`
         <it-notification .fade=${false}>
           <span slot="title">Titolo</span>
+          <p>Contenuto della notifica</p>
         </it-notification>
       `);
       el.show();
       await el.updateComplete;
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
-      expect(container?.hasAttribute('aria-hidden')).to.be.false;
+      const liveRegion = el.shadowRoot?.querySelector('[part="live-region"]');
+      expect(liveRegion?.textContent).to.contain('Titolo');
+      expect(liveRegion?.textContent).to.contain('Contenuto della notifica');
     });
 
     it('non fa nulla se già mostrato', async () => {
@@ -604,7 +607,7 @@ describe('<it-notification>', () => {
       el.hide();
       await el.updateComplete;
 
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
+      const container = el.shadowRoot?.querySelector('[part="notification"]');
       expect(container?.classList.contains('show')).to.be.false;
     });
 
@@ -620,7 +623,7 @@ describe('<it-notification>', () => {
       el.hide();
       await aTimeout(50);
 
-      const container = el.shadowRoot?.querySelector('[role="alert"]') as HTMLElement;
+      const container = el.shadowRoot?.querySelector('[part="notification"]') as HTMLElement;
       expect(container?.style.display).to.equal('none');
     });
 
@@ -636,11 +639,11 @@ describe('<it-notification>', () => {
       el.hide();
       await aTimeout(250); // attende fine transizione hide (150ms) + margine
 
-      const container = el.shadowRoot?.querySelector('[role="alert"]') as HTMLElement;
+      const container = el.shadowRoot?.querySelector('[part="notification"]') as HTMLElement;
       expect(container?.style.display).to.equal('none');
     });
 
-    it('imposta aria-hidden="true" dopo hide()', async () => {
+    it('svuota la live region dopo hide()', async () => {
       const el = await fixture<ItNotification>(html`
         <it-notification .fade=${false}>
           <span slot="title">Titolo</span>
@@ -650,10 +653,10 @@ describe('<it-notification>', () => {
       await el.updateComplete;
 
       el.hide();
-      await el.updateComplete;
+      await aTimeout(50);
 
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
-      expect(container?.getAttribute('aria-hidden')).to.equal('true');
+      const liveRegion = el.shadowRoot?.querySelector('[part="live-region"]');
+      expect(liveRegion?.textContent?.trim()).to.equal('');
     });
 
     it('non fa nulla se non è mostrato', async () => {
@@ -687,7 +690,7 @@ describe('<it-notification>', () => {
       await aTimeout(250);
 
       // container display:none (prima hide completata)
-      const container = el.shadowRoot?.querySelector('[role="alert"]') as HTMLElement;
+      const container = el.shadowRoot?.querySelector('[part="notification"]') as HTMLElement;
       expect(container?.style.display).to.equal('none');
       expect(el.isTransitioning).to.be.false;
     });
@@ -757,7 +760,7 @@ describe('<it-notification>', () => {
 
       await aTimeout(50);
 
-      const container = el.shadowRoot?.querySelector('[role="alert"]') as HTMLElement;
+      const container = el.shadowRoot?.querySelector('[part="notification"]') as HTMLElement;
       expect(container?.style.display).to.equal('none');
     });
 
@@ -792,49 +795,44 @@ describe('<it-notification>', () => {
   // ACCESSIBILITÀ
   // ---------------------------------------------------------------------------
   describe('accessibilità', () => {
-    it('il container ha role="alert"', async () => {
+    it('la live region dedicata ha role="alert"', async () => {
       const el = await fixture<ItNotification>(html`
         <it-notification>
           <span slot="title">Titolo</span>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
-      expect(container?.getAttribute('role')).to.equal('alert');
+      const liveRegion = el.shadowRoot?.querySelector('[part="live-region"]');
+      expect(liveRegion?.getAttribute('role')).to.equal('alert');
     });
 
-    it('il container ha aria-labelledby="heading"', async () => {
+    it('la live region è vuota a riposo e annuncia il testo degli slot dopo show()', async () => {
       const el = await fixture<ItNotification>(html`
-        <it-notification>
+        <it-notification .fade=${false}>
           <span slot="title">Titolo</span>
+          <p>Messaggio</p>
         </it-notification>
       `);
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
-      const labelledBy = container?.getAttribute('aria-labelledby');
-      expect(labelledBy).to.exist;
-      expect(el.shadowRoot?.querySelector(`#${labelledBy}`)).to.exist;
-    });
+      const liveRegion = el.shadowRoot?.querySelector('[part="live-region"]');
+      expect(liveRegion?.textContent?.trim()).to.equal('');
 
-    it('aria-hidden="true" quando non è mostrato', async () => {
-      const el = await fixture<ItNotification>(html`
-        <it-notification>
-          <span slot="title">Titolo</span>
-        </it-notification>
-      `);
+      el.show();
       await el.updateComplete;
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
-      expect(container?.getAttribute('aria-hidden')).to.equal('true');
+      expect(liveRegion?.textContent).to.contain('Titolo');
+      expect(liveRegion?.textContent).to.contain('Messaggio');
     });
 
-    it('aria-hidden assente quando è mostrato', async () => {
+    it('il contenuto visibile è sempre aria-hidden (unica fonte annunciante)', async () => {
       const el = await fixture<ItNotification>(html`
         <it-notification .fade=${false}>
           <span slot="title">Titolo</span>
         </it-notification>
       `);
+      const content = el.shadowRoot?.querySelector('[part="notification"] > [aria-hidden="true"]');
+      expect(content).to.exist;
+
       el.show();
       await el.updateComplete;
-      const container = el.shadowRoot?.querySelector('[role="alert"]');
-      expect(container?.hasAttribute('aria-hidden')).to.be.false;
+      expect(content?.getAttribute('aria-hidden')).to.equal('true');
     });
 
     it('heading ha id="heading"', async () => {
