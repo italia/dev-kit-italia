@@ -94949,7 +94949,7 @@ let ItThumbnavItem = class ItThumbnavItem extends BaseComponent$4 {
         this.active = false;
     }
     render() {
-        return b `<li><slot></slot></li>`;
+        return b `<li role="presentation"><slot></slot></li>`;
     }
 };
 ItThumbnavItem.styles = styles$c;
@@ -95205,6 +95205,21 @@ let ItThumbnav = class ItThumbnav extends BaseComponent$4 {
         this.vertical = false;
         /** Larghezza fissa per ogni thumbnail (240px o 120px se `small`). */
         this.fixed = false;
+        this._setChildrenProperties = () => {
+            for (const item of this._items) {
+                item.role = 'listitem';
+            }
+        };
+    }
+    get _items() {
+        if (!this._slotEl)
+            return [];
+        return this._slotEl
+            .assignedElements({ flatten: true })
+            .filter((el) => el.tagName === 'IT-THUMBNAV-ITEM');
+    }
+    updated() {
+        this._setChildrenProperties();
     }
     render() {
         const effectiveVertical = this.vertical || this.position === 'left' || this.position === 'right';
@@ -95224,7 +95239,7 @@ let ItThumbnav = class ItThumbnav extends BaseComponent$4 {
             'thumb-nav-right': this.position === 'right',
         });
         return b `<ul class="${classes}" part="thumbnav" role="list">
-      <slot></slot>
+      <slot @slotchange=${this._setChildrenProperties}></slot>
     </ul>`;
     }
 };
@@ -95253,6 +95268,10 @@ __decorate$5([
     n$3({ type: String, reflect: true }),
     __metadata$5("design:type", String)
 ], ItThumbnav.prototype, "position", void 0);
+__decorate$5([
+    e$3('slot'),
+    __metadata$5("design:type", HTMLSlotElement)
+], ItThumbnav.prototype, "_slotEl", void 0);
 ItThumbnav = __decorate$5([
     t$2('it-thumbnav')
 ], ItThumbnav);

@@ -1,2 +1,0 @@
-import {h as hy,v as va,d as dv,E as Ea}from'./main-KWHDBE5H.js';var a=class i{static \u0275fac=function(o){return new(o||i)};static \u0275cmp=hy({type:i,selectors:[["app-home"]],decls:7,vars:0,template:function(o,l){o&1&&(va(0,"h1"),dv(1,"Homepage"),Ea(),va(2,"p"),dv(3," Benvenuto nell'applicazione di esempio Angular per l'utilizzo dei componenti di "),va(4,"strong"),dv(5,"dev-kit-italia"),Ea(),dv(6,`.
-`),Ea());},encapsulation:2})};export{a as HomeComponent};
