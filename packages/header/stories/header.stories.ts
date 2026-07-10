@@ -27,7 +27,7 @@ const meta = {
     breakpoint: {
       control: { type: 'number' },
       description: 'Larghezza in pixel sotto la quale si attiva la modalita mobile.',
-      table: { defaultValue: { summary: 991 } },
+      table: { defaultValue: { summary: '991' } },
     },
     openAriaLabel: {
       name: 'open-aria-label',
@@ -51,7 +51,7 @@ const meta = {
       name: 'hide-header-brand',
       control: { type: 'boolean' },
       description: 'Nasconde la fascia contente il brand, nell header della modale del menu su mobile.',
-      table: { defaultValue: { summary: false } },
+      table: { defaultValue: { summary: 'false' } },
     },
     modalHeaderTheme: {
       name: 'modal-header-theme',
@@ -72,9 +72,9 @@ const renderHeaderSlim = ({ accessButton = 'default', theme = 'default' } = {}) 
   if (accessButton === 'full') {
     renderAccessButton = html` <a href="#" class="btn btn-primary btn-icon btn-full">
       <span class="rounded-icon">
-        <it-icon name="it-user" color="primary" size="xs"></it-icon>
+        <it-icon name="it-user" color="primary" size="xs" label="Accedi all'area personale"></it-icon>
       </span>
-      <span class="d-none d-lg-block">Accedi all'area personale</span>
+      <span class="d-none d-lg-block" aria-hidden="true">Accedi all'area personale</span>
     </a>`;
   }
   return html` <div class="it-header-slim-wrapper${theme === 'light' ? ' theme-light' : ''}">
@@ -94,7 +94,12 @@ const renderHeaderSlim = ({ accessButton = 'default', theme = 'default' } = {}) 
               </nav>
             </div>
             <div class="it-header-slim-right-zone">
-              <it-dropdown label="ITA" size="sm" alignment="bottom-end">
+              <it-dropdown
+                label="ITA"
+                size="sm"
+                alignment="bottom-end"
+                it-aria-label="Selettore lingua. Lingua attiva: Italiano"
+              >
                 <it-dropdown-item href="#" active>
                   <span>ITA <span class="visually-hidden">selezionata</span></span>
                 </it-dropdown-item>
@@ -111,7 +116,6 @@ const renderHeaderSlim = ({ accessButton = 'default', theme = 'default' } = {}) 
   </div>`;
 };
 export const SlimHeader: Story = {
-  name: 'Slim Header',
   render: () => renderHeaderSlim(),
 };
 
@@ -287,7 +291,6 @@ const renderHeaderNav = ({ wrapperClassName = '' } = {}) =>
   </div>`;
 
 export const HeaderNav: Story = {
-  name: 'Header Nav',
   render: () => renderHeaderNav(),
 };
 
