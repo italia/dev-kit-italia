@@ -93,20 +93,6 @@ const meta: Meta<ThumbnnavProps> = {
   },
   parameters: {
     layout: 'padded',
-    a11y: {
-      config: {
-        rules: [
-          {
-            id: 'list',
-            enabled: false,
-          },
-          {
-            id: 'listitem',
-            enabled: false,
-          },
-        ],
-      },
-    },
     docs: {
       description: {
         component: `

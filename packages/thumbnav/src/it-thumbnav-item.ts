@@ -18,7 +18,7 @@ export class ItThumbnavItem extends BaseComponent {
   active = false;
 
   override render() {
-    return html`<li><slot></slot></li>`;
+    return html`<li role="presentation"><slot></slot></li>`;
   }
 }
 
