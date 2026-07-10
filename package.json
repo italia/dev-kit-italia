@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.1",
-    "@changesets/cli": "^2.29.5",
+    "@changesets/cli": "^2.31.0",
     "@chromatic-com/storybook": "^4.1.1",
     "@open-wc/eslint-config": "^12.0.3",
     "@storybook/addon-a11y": "^9.1.13",
