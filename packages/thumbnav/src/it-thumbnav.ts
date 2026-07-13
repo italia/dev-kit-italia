@@ -2,9 +2,10 @@
 /* eslint-disable lit-a11y/list */
 import { BaseComponent } from '@italia/globals';
 import { html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import type { ThumbnnavHoverEffect, ThumbnnavPosition, ThumbnnavAutoColumns } from './types.js';
+import type { ItThumbnavItem } from './it-thumbnav-item.js';
 import styles from './thumbnav.scss';
 
 /**
@@ -61,6 +62,25 @@ export class ItThumbnav extends BaseComponent {
   @property({ type: String, reflect: true })
   position?: ThumbnnavPosition;
 
+  @query('slot') private _slotEl!: HTMLSlotElement;
+
+  protected get _items(): ItThumbnavItem[] {
+    if (!this._slotEl) return [];
+    return this._slotEl
+      .assignedElements({ flatten: true })
+      .filter((el) => el.tagName === 'IT-THUMBNAV-ITEM') as ItThumbnavItem[];
+  }
+
+  protected _setChildrenProperties = () => {
+    for (const item of this._items) {
+      item.role = 'listitem';
+    }
+  };
+
+  protected override updated() {
+    this._setChildrenProperties();
+  }
+
   override render() {
     const effectiveVertical = this.vertical || this.position === 'left' || this.position === 'right';
     const classes = classMap({
@@ -80,7 +100,7 @@ export class ItThumbnav extends BaseComponent {
     });
 
     return html`<ul class="${classes}" part="thumbnav" role="list">
-      <slot></slot>
+      <slot @slotchange=${this._setChildrenProperties}></slot>
     </ul>`;
   }
 }

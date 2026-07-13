@@ -14,10 +14,10 @@ li {
     width: 1px;
     min-width: 1px; // fix for IE11
     max-width: 1px;
-    height: 100%;
-    margin: 0;
-
+    height: 1.5rem;
+    align-self: stretch;
     background: var(--#{$prefix}toolbar-divider-color);
+    margin-block: var(--#{$prefix}toolbar-padding-y);
 
     &[aria-orientation='horizontal'] {
       width: 100%;

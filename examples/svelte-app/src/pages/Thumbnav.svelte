@@ -13,11 +13,11 @@
 
   <section>
     <h2>Thumbnav base</h2>
-    <p>Il primo elemento ha la classe <code>active</code> per indicare lo stato selezionato.</p>
+    <p>Il primo elemento ha l'attributo <code>active</code> per indicare lo stato selezionato.</p>
     <it-thumbnav>
       {#each images.slice(0, 3) as img, i}
-        <it-thumbnav-item>
-          <a href="#" class="ratio ratio-3x2{i === 0 ? ' active' : ''}">
+        <it-thumbnav-item active={i === 0}>
+          <a href="#" class="ratio ratio-3x2">
             <img src={img.src} alt={img.alt} />
           </a>
         </it-thumbnav-item>
@@ -30,8 +30,8 @@
     <p>Aggiungi l'attributo <code>small</code> per ottenere thumbnail di dimensione ridotta (120px).</p>
     <it-thumbnav small>
       {#each images.slice(0, 3) as img, i}
-        <it-thumbnav-item>
-          <a href="#" class="ratio ratio-3x2{i === 0 ? ' active' : ''}">
+        <it-thumbnav-item active={i === 0}>
+          <a href="#" class="ratio ratio-3x2">
             <img src={img.src} alt={img.alt} />
           </a>
         </it-thumbnav-item>
@@ -44,8 +44,8 @@
     <p>Usa <code>hover="nozoom"</code> per disabilitare l'effetto di zoom al passaggio del mouse.</p>
     <it-thumbnav hover="nozoom">
       {#each images.slice(0, 3) as img, i}
-        <it-thumbnav-item>
-          <a href="#" class="ratio ratio-3x2{i === 0 ? ' active' : ''}">
+        <it-thumbnav-item active={i === 0}>
+          <a href="#" class="ratio ratio-3x2">
             <img src={img.src} alt={img.alt} />
           </a>
         </it-thumbnav-item>
@@ -58,8 +58,8 @@
     <p>Usa <code>hover="black"</code> per mostrare un overlay nero semitrasparente al passaggio del mouse.</p>
     <it-thumbnav hover="black">
       {#each images.slice(0, 3) as img, i}
-        <it-thumbnav-item>
-          <a href="#" class="ratio ratio-3x2{i === 0 ? ' active' : ''}">
+        <it-thumbnav-item active={i === 0}>
+          <a href="#" class="ratio ratio-3x2">
             <img src={img.src} alt={img.alt} />
           </a>
         </it-thumbnav-item>
@@ -72,8 +72,8 @@
     <p>Usa <code>hover="primary"</code> per mostrare un overlay di colore primary al passaggio del mouse.</p>
     <it-thumbnav hover="primary">
       {#each images.slice(0, 3) as img, i}
-        <it-thumbnav-item>
-          <a href="#" class="ratio ratio-3x2{i === 0 ? ' active' : ''}">
+        <it-thumbnav-item active={i === 0}>
+          <a href="#" class="ratio ratio-3x2">
             <img src={img.src} alt={img.alt} />
           </a>
         </it-thumbnav-item>
@@ -86,8 +86,8 @@
     <p>Aggiungi <code>vertical</code> per disporre le thumbnail in colonna.</p>
     <it-thumbnav vertical>
       {#each images.slice(0, 3) as img, i}
-        <it-thumbnav-item>
-          <a href="#" class="ratio ratio-3x2{i === 0 ? ' active' : ''}">
+        <it-thumbnav-item active={i === 0}>
+          <a href="#" class="ratio ratio-3x2">
             <img src={img.src} alt={img.alt} />
           </a>
         </it-thumbnav-item>
@@ -100,8 +100,8 @@
     <p>Usa <code>fixed</code> per assegnare a ogni thumbnail una larghezza fissa di 240px.</p>
     <it-thumbnav fixed>
       {#each images as img, i}
-        <it-thumbnav-item>
-          <a href="#" class="ratio ratio-3x2{i === 0 ? ' active' : ''}">
+        <it-thumbnav-item active={i === 0}>
+          <a href="#" class="ratio ratio-3x2">
             <img src={img.src} alt={img.alt} />
           </a>
         </it-thumbnav-item>
@@ -114,8 +114,8 @@
     <p>Usa <code>auto="3"</code> per distribuire le thumbnail su tutta la larghezza del contenitore in 3 colonne.</p>
     <it-thumbnav auto="3">
       {#each images as img, i}
-        <it-thumbnav-item>
-          <a href="#" class="ratio ratio-3x2{i === 0 ? ' active' : ''}">
+        <it-thumbnav-item active={i === 0}>
+          <a href="#" class="ratio ratio-3x2">
             <img src={img.src} alt={img.alt} />
           </a>
         </it-thumbnav-item>
@@ -127,8 +127,8 @@
     <h2>Griglia automatica — 5 per riga</h2>
     <it-thumbnav auto="5">
       {#each images as img, i}
-        <it-thumbnav-item>
-          <a href="#" class="ratio ratio-3x2{i === 0 ? ' active' : ''}">
+        <it-thumbnav-item active={i === 0}>
+          <a href="#" class="ratio ratio-3x2">
             <img src={img.src} alt={img.alt} />
           </a>
         </it-thumbnav-item>
@@ -147,8 +147,8 @@
       />
       <it-thumbnav position="bottom" small>
         {#each images.slice(0, 3) as img, i}
-          <it-thumbnav-item>
-            <a href="#" class="ratio ratio-3x2{i === 0 ? ' active' : ''}">
+          <it-thumbnav-item active={i === 0}>
+            <a href="#" class="ratio ratio-3x2">
               <img src={img.src} alt={img.alt} />
             </a>
           </it-thumbnav-item>
@@ -167,8 +167,8 @@
       />
       <it-thumbnav position="top" small>
         {#each images.slice(0, 3) as img, i}
-          <it-thumbnav-item>
-            <a href="#" class="ratio ratio-3x2{i === 0 ? ' active' : ''}">
+          <it-thumbnav-item active={i === 0}>
+            <a href="#" class="ratio ratio-3x2">
               <img src={img.src} alt={img.alt} />
             </a>
           </it-thumbnav-item>
@@ -187,8 +187,8 @@
       />
       <it-thumbnav position="left" small>
         {#each images.slice(0, 3) as img, i}
-          <it-thumbnav-item>
-            <a href="#" class="ratio ratio-3x2{i === 0 ? ' active' : ''}">
+          <it-thumbnav-item active={i === 0}>
+            <a href="#" class="ratio ratio-3x2">
               <img src={img.src} alt={img.alt} />
             </a>
           </it-thumbnav-item>
@@ -207,8 +207,8 @@
       />
       <it-thumbnav position="right" small>
         {#each images.slice(0, 3) as img, i}
-          <it-thumbnav-item>
-            <a href="#" class="ratio ratio-3x2{i === 0 ? ' active' : ''}">
+          <it-thumbnav-item active={i === 0}>
+            <a href="#" class="ratio ratio-3x2">
               <img src={img.src} alt={img.alt} />
             </a>
           </it-thumbnav-item>

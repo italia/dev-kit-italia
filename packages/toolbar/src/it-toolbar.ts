@@ -70,17 +70,15 @@ export class ItToolbar extends BaseComponent {
       }
 
       if (item.divider) {
+        item.setAttribute('role', 'separator');
         if (this.orientation === 'vertical') {
-          item.setAttribute('it-aria-orientation', 'horizontal');
+          item.setAttribute('aria-orientation', 'horizontal');
         } else {
-          item.setAttribute('it-aria-orientation', 'vertical');
+          item.setAttribute('aria-orientation', 'vertical');
         }
-        return; // I divisori non devono ricevere altre modifiche
-      }
-      if (this.orientation === 'vertical') {
-        item.setAttribute('it-aria-orientation', 'vertical');
       } else {
-        item.removeAttribute('it-aria-orientation');
+        item.setAttribute('role', 'presentation');
+        item.removeAttribute('aria-orientation');
       }
     });
   }
@@ -103,7 +101,7 @@ export class ItToolbar extends BaseComponent {
 
     return html`
       <nav aria-label="${this.itAriaLabel}" part="toolbar-container" class="${navClasses}">
-        <ul part="toolbar-list">
+        <ul part="toolbar-list" role="toolbar" aria-orientation="${this.orientation}">
           <slot @slotchange="${this._onSlotChange}"></slot>
         </ul>
       </nav>

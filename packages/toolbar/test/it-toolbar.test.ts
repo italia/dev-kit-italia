@@ -10,8 +10,8 @@ describe('Toolbar component', () => {
     it('default is accessible', async () => {
       const el = await fixture<ItToolbar>(html`
         <it-toolbar>
-          <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
+          <it-toolbar-item active label="Link 1" href="#"></it-toolbar-item>
+          <it-toolbar-item active label="Link 2" href="#"></it-toolbar-item>
         </it-toolbar>
       `);
       await expect(el).to.be.accessible();
@@ -21,10 +21,10 @@ describe('Toolbar component', () => {
       const el = await fixture<ItToolbar>(html`
         <div>
           <it-toolbar size="md" it-aria-label="Toolbar 1">
-            <li><a href="#">Link 1</a></li>
+            <it-toolbar-item active label="Link 1" href="#"></it-toolbar-item>
           </it-toolbar>
           <it-toolbar size="sm" it-aria-label="Toolbar 2">
-            <li><a href="#">Link 2</a></li>
+            <it-toolbar-item active label="Link 2" href="#"></it-toolbar-item>
           </it-toolbar>
         </div>
       `);
@@ -34,8 +34,8 @@ describe('Toolbar component', () => {
     it('vertical orientation is accessible', async () => {
       const el = await fixture<ItToolbar>(html`
         <it-toolbar orientation="vertical">
-          <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
+          <it-toolbar-item active label="Link 1" href="#"></it-toolbar-item>
+          <it-toolbar-item active label="Link 2" href="#"></it-toolbar-item>
         </it-toolbar>
       `);
       await expect(el).to.be.accessible();
@@ -44,9 +44,9 @@ describe('Toolbar component', () => {
     it.skip('with dividers is accessible', async () => {
       const el = await fixture<ItToolbar>(html`
         <it-toolbar>
-          <li><a href="#">Link 1</a></li>
-          <li class="toolbar-divider" role="separator" aria-orientation="vertical"><span></span></li>
-          <li><a href="#">Link 2</a></li>
+          <it-toolbar-item active label="Link 1" href="#"></it-toolbar-item>
+          <it-toolbar-item divider></it-toolbar-item>
+          <it-toolbar-item active label="Link 2" href="#"></it-toolbar-item>
         </it-toolbar>
       `);
       await expect(el).to.be.accessible();
@@ -55,8 +55,8 @@ describe('Toolbar component', () => {
     it('with custom aria label is accessible', async () => {
       const el = await fixture<ItToolbar>(html`
         <it-toolbar it-aria-label="Toolbar custom">
-          <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
+          <it-toolbar-item active label="Link 1" href="#"></it-toolbar-item>
+          <it-toolbar-item active label="Link 2" href="#"></it-toolbar-item>
         </it-toolbar>
       `);
       await expect(el).to.be.accessible();
@@ -130,8 +130,8 @@ describe('Toolbar component', () => {
     it('should render slotted content', async () => {
       const el = await fixture<ItToolbar>(html`
         <it-toolbar>
-          <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
+          <it-toolbar-item active label="Link 1" href="#"></it-toolbar-item>
+          <it-toolbar-item active label="Link 2" href="#"></it-toolbar-item>
         </it-toolbar>
       `);
       const slot = el.shadowRoot?.querySelector('slot');
