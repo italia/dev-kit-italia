@@ -117,4 +117,25 @@ describe('ItAlert', () => {
     `);
     expect(el.querySelector('.alert')!.classList.contains('alert-warning')).to.be.true;
   });
+
+  it('falls back to the nearest focusable element in the document when there is no adjacent alert and no tabindex wrapper', async () => {
+    // This is the realistic case: a standalone alert with no sibling alert and no
+    // author-provided tabindex ancestor (matches the framework examples).
+    const wrapper = await fixture<HTMLDivElement>(html`
+      <div>
+        <button id="elsewhere">Altrove nella pagina</button>
+        ${template}
+      </div>
+    `);
+    const el = wrapper.querySelector('it-alert') as ItAlert;
+    const closeBtn = el.querySelector<HTMLButtonElement>('.btn-close')!;
+    closeBtn.focus();
+    expect(document.activeElement).to.equal(closeBtn);
+
+    closeBtn.click();
+    await wait(200);
+
+    expect(el.isConnected).to.be.false;
+    expect(document.activeElement).to.equal(wrapper.querySelector('#elsewhere'));
+  });
 });

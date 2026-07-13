@@ -1,5 +1,10 @@
 import { customElement, property } from 'lit/decorators.js';
-import { BaseComponent, dispatchCancelable, focusableFallbackAncestor } from '@italia/globals';
+import {
+  BaseComponent,
+  dispatchCancelable,
+  focusableFallbackAncestor,
+  nearestFocusableInDocument,
+} from '@italia/globals';
 import { ALERT_VARIANTS, type AlertVariant, type AlertCloseEventDetail } from './types.js';
 
 /** Durata (ms) dell'animazione di dissolvenza `.fade` di Bootstrap Italia. */
@@ -102,7 +107,10 @@ export class ItAlert extends BaseComponent {
   public close(): void {
     const alert = this._alert;
     const adjacent = this._adjacentAlert();
-    const fallback = !adjacent ? focusableFallbackAncestor(this) : null;
+    // No adjacent alert of the same type: fall back to a tabindex-bearing ancestor,
+    // and if the author didn't provide one (the common case), to the nearest
+    // focusable element anywhere in the document — better than losing focus to <body>.
+    const fallback = !adjacent ? (focusableFallbackAncestor(this) ?? nearestFocusableInDocument(this)) : null;
 
     if (!alert) {
       this.remove();

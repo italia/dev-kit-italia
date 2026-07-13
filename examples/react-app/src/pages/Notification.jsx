@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 
 const Notification = () => {
   const notificationRef = useRef(null);
@@ -7,18 +7,6 @@ const Notification = () => {
   const notificationErrorRef = useRef(null);
   const notificationWarningRef = useRef(null);
   const notificationInfoRef = useRef(null);
-  const notificationConfirmRef = useRef(null);
-
-  useEffect(() => {
-    const el = notificationConfirmRef.current;
-    if (!el) return;
-    const onClose = (e) => {
-      e.preventDefault();
-      if (window.confirm('Vuoi davvero chiudere la notifica?')) el.hide();
-    };
-    el.addEventListener('it-notification-close', onClose);
-    return () => el.removeEventListener('it-notification-close', onClose);
-  }, []);
 
   const showNotification = (ref) => {
     if (ref.current) {
@@ -351,25 +339,6 @@ const Notification = () => {
               onClick={(e) => e.currentTarget.previousElementSibling.show()}
             >
               Mostra notifica di errore
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Sezione: Chiusura con conferma */}
-      <section className="my-5">
-        <h2>Chiusura con conferma</h2>
-        <div className="d-flex gap-3 flex-wrap">
-          <div>
-            <it-notification ref={notificationConfirmRef} dismissable icon="it-warning-circle" status="warning">
-              <span slot="title">Chiusura con conferma</span>
-              <p>Clicca il pulsante di chiusura: verrà chiesta conferma prima di chiudere.</p>
-            </it-notification>
-            <button
-              className="btn btn-warning mt-3"
-              onClick={() => showNotification(notificationConfirmRef)}
-            >
-              Mostra notifica
             </button>
           </div>
         </div>

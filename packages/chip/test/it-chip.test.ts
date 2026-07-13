@@ -148,6 +148,53 @@ describe('it-chip component', () => {
       expect(chip.isConnected).to.be.false;
       expect(document.activeElement).to.equal(wrapper);
     });
+
+    it('falls back to the nearest focusable element in the document when there is no sibling chip and no tabindex wrapper', async () => {
+      // This is the realistic case: a standalone chip with no sibling chip and no
+      // author-provided tabindex ancestor (matches the framework examples).
+      const wrapper = await fixture<HTMLElement>(html`
+        <div>
+          <button id="elsewhere">Altrove nella pagina</button>
+          <it-chip label="Only" dismissable id="only-chip">
+            <it-button slot="dismiss-button" it-aria-label="Remove">
+              <it-icon name="it-close" size="sm"></it-icon>
+            </it-button>
+          </it-chip>
+        </div>
+      `);
+      const chip = wrapper.querySelector<ItChip>('#only-chip')!;
+      const dismissBtn = chip.querySelector('[slot="dismiss-button"]') as HTMLElement;
+      dismissBtn.focus();
+
+      chip.close();
+
+      expect(chip.isConnected).to.be.false;
+      expect(document.activeElement).to.equal(wrapper.querySelector('#elsewhere'));
+    });
+
+    it('does not shift focus onto a non-dismissable (e.g. link) neighbor chip', async () => {
+      const wrapper = await fixture<HTMLElement>(html`
+        <div>
+          <button id="elsewhere">Altrove nella pagina</button>
+          <it-chip label="Download" dismissable id="download-chip">
+            <it-button slot="dismiss-button" it-aria-label="Remove">
+              <it-icon name="it-close" size="sm"></it-icon>
+            </it-button>
+          </it-chip>
+          <it-chip href="#" label="Preferiti" id="link-chip"></it-chip>
+        </div>
+      `);
+      const chip = wrapper.querySelector<ItChip>('#download-chip')!;
+      const linkChip = wrapper.querySelector<ItChip>('#link-chip')!;
+      const link = linkChip.shadowRoot?.querySelector('a');
+
+      chip.close();
+
+      expect(chip.isConnected).to.be.false;
+      expect(document.activeElement).to.not.equal(linkChip);
+      expect(document.activeElement).to.not.equal(link);
+      expect(document.activeElement).to.equal(wrapper.querySelector('#elsewhere'));
+    });
   });
 
   describe('extra sr label', () => {

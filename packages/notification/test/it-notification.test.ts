@@ -476,6 +476,22 @@ describe('<it-notification>', () => {
       expect(liveRegion?.textContent).to.contain('Contenuto della notifica');
     });
 
+    it('emette it-notification-show con detail.notification', async () => {
+      const el = await fixture<ItNotification>(html`
+        <it-notification .fade=${false}>
+          <span slot="title">Titolo</span>
+        </it-notification>
+      `);
+      let detailNotification: ItNotification | null = null;
+      el.addEventListener('it-notification-show', (e) => {
+        detailNotification = (e as CustomEvent).detail.notification;
+      });
+
+      el.show();
+
+      expect(detailNotification).to.equal(el);
+    });
+
     it('non fa nulla se già mostrato', async () => {
       const el = await fixture<ItNotification>(html`
         <it-notification .fade=${false}>
@@ -657,6 +673,79 @@ describe('<it-notification>', () => {
 
       const liveRegion = el.shadowRoot?.querySelector('[part="live-region"]');
       expect(liveRegion?.textContent?.trim()).to.equal('');
+    });
+
+    it('emette it-notification-close con detail.notification', async () => {
+      const el = await fixture<ItNotification>(html`
+        <it-notification .fade=${false}>
+          <span slot="title">Titolo</span>
+        </it-notification>
+      `);
+      el.show();
+      await el.updateComplete;
+
+      let detailNotification: ItNotification | null = null;
+      el.addEventListener('it-notification-close', (e) => {
+        detailNotification = (e as CustomEvent).detail.notification;
+      });
+
+      el.hide();
+
+      expect(detailNotification).to.equal(el);
+    });
+
+    it('ripristina il focus sul bottone che ha chiamato show(), senza bisogno di un wrapper con tabindex', async () => {
+      // This is the realistic case: a plain trigger button next to the notification,
+      // with no author-provided tabindex ancestor (matches the framework examples).
+      const wrapper = await fixture<HTMLDivElement>(html`
+        <div>
+          <button id="trigger">Mostra notifica</button>
+          <it-notification .fade=${false} dismissable>
+            <span slot="title">Titolo</span>
+          </it-notification>
+        </div>
+      `);
+      const trigger = wrapper.querySelector('#trigger') as HTMLButtonElement;
+      const el = wrapper.querySelector('it-notification') as ItNotification;
+
+      trigger.focus();
+      el.show();
+      await el.updateComplete;
+
+      const closeBtn = el.shadowRoot?.querySelector('.notification-close') as HTMLElement;
+      closeBtn.focus();
+      expect(el.shadowRoot?.activeElement).to.equal(closeBtn);
+
+      el.hide();
+      await aTimeout(50);
+
+      expect(document.activeElement).to.equal(trigger);
+    });
+
+    it("ricade sull'antenato focusabile più vicino se il trigger originale non è più nel DOM", async () => {
+      const wrapper = await fixture<HTMLDivElement>(html`
+        <div tabindex="0">
+          <button id="trigger">Mostra notifica</button>
+          <it-notification .fade=${false} dismissable>
+            <span slot="title">Titolo</span>
+          </it-notification>
+        </div>
+      `);
+      const trigger = wrapper.querySelector('#trigger') as HTMLButtonElement;
+      const el = wrapper.querySelector('it-notification') as ItNotification;
+
+      trigger.focus();
+      el.show();
+      await el.updateComplete;
+      trigger.remove();
+
+      const closeBtn = el.shadowRoot?.querySelector('.notification-close') as HTMLElement;
+      closeBtn.focus();
+
+      el.hide();
+      await aTimeout(50);
+
+      expect(document.activeElement).to.equal(wrapper);
     });
 
     it('non fa nulla se non è mostrato', async () => {

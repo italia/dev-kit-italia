@@ -260,23 +260,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Sezione: Chiusura con conferma -->
-  <section class="my-5">
-    <h2>Chiusura con conferma</h2>
-    <p>L'evento <code>it-notification-close</code> è annullabile: usando <code>preventDefault()</code> puoi chiedere conferma prima di chiudere la notifica.</p>
-
-    <div class="d-flex gap-3 flex-wrap">
-      <div>
-        <it-notification ref="confirmNotification" dismissable icon="it-warning-circle" status="warning"
-                         @it-notification-close="onNotificationClose">
-          <span slot="title">Chiusura con conferma</span>
-          <p>Clicca il pulsante di chiusura: verrà chiesta conferma prima di chiudere.</p>
-        </it-notification>
-        <button class="btn btn-warning mt-3" @click="showConfirmNotification">Mostra notifica</button>
-      </div>
-    </div>
-  </section>
 </template>
 
 <script>
@@ -299,17 +282,6 @@ export default {
       const notification = event.currentTarget.previousElementSibling;
       if (notification) {
         notification.show(timeout);
-      }
-    },
-    showConfirmNotification() {
-      if (this.$refs.confirmNotification) {
-        this.$refs.confirmNotification.show();
-      }
-    },
-    onNotificationClose(e) {
-      e.preventDefault();
-      if (window.confirm('Vuoi davvero chiudere la notifica?')) {
-        e.currentTarget.hide();
       }
     },
   },

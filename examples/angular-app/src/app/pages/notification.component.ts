@@ -15,16 +15,6 @@ export class NotificationComponent {
   @ViewChild('notificationInfoRef') notificationInfoRef: any;
   @ViewChild('notificationManualRef') notificationManualRef: any;
 
-  @ViewChild('confirmNotif') confirmNotif: any;
-
-  // eslint-disable-next-line class-methods-use-this
-  onNotificationClose(e: Event): void {
-    e.preventDefault();
-    if (window.confirm('Vuoi davvero chiudere la notifica?')) {
-      (e.currentTarget as any).hide();
-    }
-  }
-
   // eslint-disable-next-line class-methods-use-this
   showNotification(ref: any) {
     const el = ref?.nativeElement ?? ref;

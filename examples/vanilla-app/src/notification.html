@@ -279,28 +279,9 @@
             </div>
           </div>
         </section>
-
-        <!-- Sezione: Chiusura con conferma -->
-        <section class="my-5">
-          <h2>Chiusura con conferma</h2>
-          <p>Clicca il pulsante di chiusura: verrà chiesta conferma prima di chiudere.</p>
-          <it-notification id="notif-conferma" dismissable icon="it-warning-circle" status="warning">
-            <span slot="title">Chiusura con conferma</span>
-            <p>Clicca il pulsante di chiusura: verrà chiesta conferma prima di chiudere.</p>
-          </it-notification>
-          <button class="btn btn-warning mt-3" id="notif-conferma-show">Mostra notifica</button>
-        </section>
       </main>
       <footer id="app-footer"></footer>
     </div>
     <script type="module" src="/src/main.js"></script>
-    <script type="module">
-      const notif = document.getElementById('notif-conferma');
-      document.getElementById('notif-conferma-show')?.addEventListener('click', () => notif.show());
-      notif.addEventListener('it-notification-close', (e) => {
-        e.preventDefault();
-        if (confirm('Vuoi davvero chiudere la notifica?')) notif.hide();
-      });
-    </script>
   </body>
 </html>

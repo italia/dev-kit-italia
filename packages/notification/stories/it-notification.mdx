@@ -115,19 +115,17 @@ Puoi inoltre controllarne la chiusura dall'esterno programmaticamente, chiamando
 
 ### Eventi
 
-Il componente emette i seguenti eventi custom, entrambi **cancelable**:
+Il componente emette i seguenti eventi custom:
 
 - `it-notification-show`, quando la notifica viene mostrata;
 - `it-notification-close`, quando la notifica viene chiusa (click sul pulsante di chiusura, scomparsa automatica o chiamata a `hide()`).
 
-Il comportamento di default viene eseguito solo se l'evento non viene annullato. Chiamando `event.preventDefault()` puoi intercettare la chiusura ed eseguire una logica personalizzata, richiamando poi `hide()` quando opportuno:
+Sono utili per agganciare logica propria (es. analytics, log) a questi momenti:
 
 ```js
 const notification = document.querySelector('it-notification');
 notification.addEventListener('it-notification-close', (e) => {
-  e.preventDefault(); // impedisce la chiusura di default
   // ...logica personalizzata...
-  notification.hide(); // chiudi quando vuoi
 });
 ```
 

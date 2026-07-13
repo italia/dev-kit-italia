@@ -1,4 +1,4 @@
-import { BaseLocalizedComponent, dispatchCancelable } from '@italia/globals';
+import { BaseLocalizedComponent, focusableFallbackAncestor, nearestFocusableInDocument } from '@italia/globals';
 import { html, PropertyValues } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
@@ -27,8 +27,8 @@ registerTranslation(en);
  *
  * @element it-notification
  *
- * @fires it-notification-show - Quando la notifica viene mostrata (cancelable: `preventDefault()` impedisce la comparsa)
- * @fires it-notification-close - Quando la notifica viene chiusa (cancelable: `preventDefault()` impedisce la chiusura)
+ * @fires it-notification-show - Quando la notifica viene mostrata
+ * @fires it-notification-close - Quando la notifica viene chiusa (click sul pulsante di chiusura, scomparsa automatica o chiamata a `hide()`)
  */
 @customElement('it-notification')
 export class ItNotification extends BaseLocalizedComponent {
@@ -73,6 +73,11 @@ export class ItNotification extends BaseLocalizedComponent {
   @state()
   isTransitioning = false;
 
+  /** Element focused right before `show()` was called (e.g. the button that triggered it).
+   *  Restored on `hide()` if focus was left inside the notification (e.g. its close button),
+   *  since there is no author-provided trigger slot to fall back on like `it-modal` has. */
+  private _returnFocusTarget: HTMLElement | null = null;
+
   protected override updated(_changedProperties: PropertyValues): void {
     super.updated(_changedProperties);
 
@@ -94,44 +99,54 @@ export class ItNotification extends BaseLocalizedComponent {
       return;
     }
 
-    // `it-notification-show` is cancelable: `preventDefault()` stops the notification
-    // from being shown.
-    dispatchCancelable<NotificationEventDetail>(this, 'it-notification-show', { notification: this }, () => {
-      this.isShown = true;
-      if (this.fade) this.isTransitioning = true;
+    this.isShown = true;
+    if (this.fade) this.isTransitioning = true;
 
-      const timeoutVal = timeout ?? this.timeout;
+    const previouslyFocused = document.activeElement;
+    this._returnFocusTarget =
+      previouslyFocused && previouslyFocused !== document.body && previouslyFocused !== this
+        ? (previouslyFocused as HTMLElement)
+        : null;
 
-      this.container.style.display = 'block';
+    const timeoutVal = timeout ?? this.timeout;
 
-      if (this.fade) {
-        /**
-         * Trick to restart an element's animation
-         * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
-         */
-        // eslint-disable-next-line no-unused-expressions
-        this.offsetHeight;
-      }
+    this.container.style.display = 'block';
 
-      this.isShown = true;
+    if (this.fade) {
+      /**
+       * Trick to restart an element's animation
+       * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
+       */
+      // eslint-disable-next-line no-unused-expressions
+      this.offsetHeight;
+    }
 
-      // Inject the flattened slot text into the dedicated live region so that
-      // NVDA/JAWS announce the notification (they do not resolve slotted content
-      // across the shadow boundary at announcement time).
-      this.updateComplete.then(() => this.announce());
+    this.isShown = true;
 
-      setTimeout(
-        () => {
-          this.isTransitioning = false;
-          if (!this.dismissable && timeoutVal) {
-            setTimeout(() => {
-              this.hide();
-            }, timeoutVal);
-          }
-        },
-        this.fade ? ItNotification.TRANSITION_DURATION : 0,
-      );
-    });
+    // Inject the flattened slot text into the dedicated live region so that
+    // NVDA/JAWS announce the notification (they do not resolve slotted content
+    // across the shadow boundary at announcement time).
+    this.updateComplete.then(() => this.announce());
+
+    this.dispatchEvent(
+      new CustomEvent<NotificationEventDetail>('it-notification-show', {
+        bubbles: true,
+        composed: true,
+        detail: { notification: this },
+      }),
+    );
+
+    setTimeout(
+      () => {
+        this.isTransitioning = false;
+        if (!this.dismissable && timeoutVal) {
+          setTimeout(() => {
+            this.hide();
+          }, timeoutVal);
+        }
+      },
+      this.fade ? ItNotification.TRANSITION_DURATION : 0,
+    );
   }
 
   public hide() {
@@ -139,24 +154,41 @@ export class ItNotification extends BaseLocalizedComponent {
       return;
     }
 
-    // `it-notification-close` is cancelable: `preventDefault()` keeps the notification
-    // visible (the consumer can dismiss it later by calling `hide()`). This covers the
-    // close button, the auto-dismiss timeout and any programmatic call.
-    dispatchCancelable<NotificationEventDetail>(this, 'it-notification-close', { notification: this }, () => {
-      this.isShown = false;
-      if (this.fade) this.isTransitioning = true;
+    this.isShown = false;
+    if (this.fade) this.isTransitioning = true;
 
-      setTimeout(
-        () => {
-          this.container.style.display = 'none';
-          // Clear the live region so a subsequent show() re-announces even when
-          // the content is identical.
-          this.liveRegion.textContent = '';
-          this.isTransitioning = false;
-        },
-        this.fade ? ItNotification.TRANSITION_DURATION : 0,
-      );
-    });
+    this.dispatchEvent(
+      new CustomEvent<NotificationEventDetail>('it-notification-close', {
+        bubbles: true,
+        composed: true,
+        detail: { notification: this },
+      }),
+    );
+
+    setTimeout(
+      () => {
+        // The container is about to become display:none, which would otherwise silently
+        // drop focus to <body> if it currently holds it (e.g. right after a click on the
+        // close button). Restore it to whatever had focus before show() (e.g. the button
+        // that triggered it) — there is no author-provided trigger slot to target like
+        // it-modal has. Fall back to the nearest focusable ancestor (the it-alert/it-chip
+        // convention) if that element is gone.
+        if (this.shadowRoot?.activeElement) {
+          const target =
+            this._returnFocusTarget && this._returnFocusTarget.isConnected
+              ? this._returnFocusTarget
+              : (focusableFallbackAncestor(this) ?? nearestFocusableInDocument(this));
+          target?.focus();
+        }
+        this._returnFocusTarget = null;
+        this.container.style.display = 'none';
+        // Clear the live region so a subsequent show() re-announces even when
+        // the content is identical.
+        this.liveRegion.textContent = '';
+        this.isTransitioning = false;
+      },
+      this.fade ? ItNotification.TRANSITION_DURATION : 0,
+    );
   }
 
   protected getHeadingLevel(): NotificationHeadingLevel {

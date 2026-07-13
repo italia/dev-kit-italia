@@ -1,5 +1,10 @@
 import { html, nothing } from 'lit';
-import { BaseComponent, dispatchCancelable, focusableFallbackAncestor } from '@italia/globals';
+import {
+  BaseComponent,
+  dispatchCancelable,
+  focusableFallbackAncestor,
+  nearestFocusableInDocument,
+} from '@italia/globals';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import type { ItIcon } from '@italia/icon';
@@ -133,20 +138,27 @@ export class ItChip extends BaseComponent {
 
   private _removeWithFocusShift(): void {
     const adjacent = this._adjacentChip();
-    const fallback = !adjacent ? focusableFallbackAncestor(this) : null;
+    // No adjacent chip of the same type: fall back to a tabindex-bearing ancestor,
+    // and if the author didn't provide one (the common case), to the nearest
+    // focusable element anywhere in the document — better than losing focus to <body>.
+    const fallback = !adjacent ? (focusableFallbackAncestor(this) ?? nearestFocusableInDocument(this)) : null;
     this.remove();
     if (adjacent) ItChip._focusChip(adjacent);
     else fallback?.focus();
   }
 
   private _adjacentChip(): ItChip | null {
-    const isChip = (el: Element | null): el is ItChip => !!el && el.tagName.toLowerCase() === 'it-chip';
+    // Only a dismissable neighbor is an equivalent "next item to remove" — shifting
+    // focus onto a plain label or link chip just because it's spatially adjacent
+    // would steal focus onto an unrelated control the user never asked to interact with.
+    const isDismissableChip = (el: Element | null): el is ItChip =>
+      !!el && el.tagName.toLowerCase() === 'it-chip' && el.hasAttribute('dismissable');
     let el = this.nextElementSibling;
-    while (el && !isChip(el)) el = el.nextElementSibling;
-    if (isChip(el)) return el;
+    while (el && !isDismissableChip(el)) el = el.nextElementSibling;
+    if (isDismissableChip(el)) return el;
     el = this.previousElementSibling;
-    while (el && !isChip(el)) el = el.previousElementSibling;
-    return isChip(el) ? el : null;
+    while (el && !isDismissableChip(el)) el = el.previousElementSibling;
+    return isDismissableChip(el) ? el : null;
   }
 
   private static _focusChip(chip: ItChip): void {

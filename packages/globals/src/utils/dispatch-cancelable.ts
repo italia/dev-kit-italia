@@ -2,9 +2,12 @@
  * Dispatches a cancelable custom event and runs the provided default action
  * only if the consumer did not call `event.preventDefault()`.
  *
- * This is the shared convention used across components (Tabs, Modal, Notification,
- * Chip, Alert, Forward, Back) to provide a sensible default JavaScript behavior
- * out of the box while letting consumers intercept and override it:
+ * This is the shared convention used across components (Tabs, Modal, Chip, Alert,
+ * Forward, Back) to provide a sensible default JavaScript behavior out of the box
+ * while letting consumers intercept and override it. Notification deliberately does
+ * NOT use this: its show/close are always caller-initiated (no default markup-driven
+ * trigger to override), so there was no real use case for blocking them — see
+ * it-notification.ts for the plain (non-cancelable) events it fires instead.
  *
  * ```js
  * el.addEventListener('it-alert-close', (e) => {
