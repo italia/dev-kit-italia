@@ -1,5 +1,21 @@
 # @italia/dropdown
 
+## 1.0.0-alpha.19
+
+### Patch Changes
+
+- [#453](https://github.com/italia/dev-kit-italia/pull/453) [`b2a220e`](https://github.com/italia/dev-kit-italia/commit/b2a220e413a514220a54b9bd9ff93887bba7c378) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed megamenu styles, focus and a11y axe tools
+
+- [#463](https://github.com/italia/dev-kit-italia/pull/463) [`7b23069`](https://github.com/italia/dev-kit-italia/commit/7b230696944bd32070dbadcb94e039ba4b4b9f19) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fixed dropdown not closing on a second click of its trigger when nested inside another component's shadow DOM (e.g. `it-toolbar-item`'s toolbar dropdown)
+
+- [#447](https://github.com/italia/dev-kit-italia/pull/447) [`46dab26`](https://github.com/italia/dev-kit-italia/commit/46dab266b9a210d0a5680d231bced9f9945c5a13) Thanks [@pnicolli](https://github.com/pnicolli)! - Improved dropdown documentation
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+  - @italia/popover@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Minor Changes

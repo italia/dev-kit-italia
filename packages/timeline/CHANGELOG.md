@@ -1,5 +1,18 @@
 # @italia/timeline
 
+## 1.0.0-alpha.19
+
+### Patch Changes
+
+- [#451](https://github.com/italia/dev-kit-italia/pull/451) [`1229840`](https://github.com/italia/dev-kit-italia/commit/1229840fe4d205da7d4b114f87d95462f6dd8256) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fix multiple a11y issues in timeline (closes #71):
+  - Classic timeline examples: set `heading-level="h4"` on `it-card` inside `it-timeline-element heading-level="h3"` to restore correct heading hierarchy across all framework examples and Storybook docs
+  - Docs: fix accessibility callout that incorrectly referenced `it-breadcrumbs` instead of `it-timeline`
+  - Point-list: remove the extra `<div class="timeline-point">` wrapper from shadow DOM — the host element (`role="listitem"`) is now the flex row itself, removing a spurious div between the `ol`/`ul` and row content
+  - Point-list: add `role="list"` to the rendered `ol`/`ul` to preserve Safari list semantics after `list-style: none` (same fix as bottom-nav #428); replace the no-op `ol::marker` hack
+  - Classic timeline pin badge: pill border-radius and monospace font
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Patch Changes

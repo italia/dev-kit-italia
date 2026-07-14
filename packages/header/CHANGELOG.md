@@ -1,5 +1,22 @@
 # @italia/header
 
+## 1.0.0-alpha.19
+
+### Patch Changes
+
+- [#454](https://github.com/italia/dev-kit-italia/pull/454) [`231ec99`](https://github.com/italia/dev-kit-italia/commit/231ec99eb950292f5040793d419b49ae30943d1e) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed header mobile styles
+
+- [`812509a`](https://github.com/italia/dev-kit-italia/commit/812509a74574e01ff14b1c51232228381bfe6530) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed accessibility labels in header examples and stories
+
+- [#453](https://github.com/italia/dev-kit-italia/pull/453) [`b2a220e`](https://github.com/italia/dev-kit-italia/commit/b2a220e413a514220a54b9bd9ff93887bba7c378) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed megamenu styles, focus and a11y axe tools
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`b2a220e`](https://github.com/italia/dev-kit-italia/commit/b2a220e413a514220a54b9bd9ff93887bba7c378), [`7b23069`](https://github.com/italia/dev-kit-italia/commit/7b230696944bd32070dbadcb94e039ba4b4b9f19), [`46dab26`](https://github.com/italia/dev-kit-italia/commit/46dab266b9a210d0a5680d231bced9f9945c5a13)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/modal@1.0.0-alpha.19
+  - @italia/dropdown@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Patch Changes

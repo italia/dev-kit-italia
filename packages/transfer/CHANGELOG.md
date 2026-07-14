@@ -1,5 +1,18 @@
 # @italia/transfer
 
+## 1.0.0-alpha.19
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add `commit(detail)` method to `it-transfer`, applying a previously cancelled `it-transfer` event (move to target, move back to source, or reset) without re-dispatching it — enables async confirmation patterns (API calls, user prompts) after `event.preventDefault()`, with no bypass flag needed.
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Patch Changes

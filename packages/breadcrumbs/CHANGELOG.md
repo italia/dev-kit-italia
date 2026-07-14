@@ -1,5 +1,14 @@
 # @italia/breadcrumbs
 
+## 1.0.0-alpha.19
+
+### Patch Changes
+
+- [`5e0ecfc`](https://github.com/italia/dev-kit-italia/commit/5e0ecfc622bdafa22e471a5d7198d90a544260db) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed breadcrumbs items role
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Patch Changes
