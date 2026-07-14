@@ -1,0 +1,79 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as ForwardStories from './it-forward.stories';
+
+<Meta of={ForwardStories} />
+
+# Forward
+
+<description>Pulsante per scorrere rapidamente a un contenuto specifico su una pagina lunga.</description>
+
+## Cosa fa
+
+Il componente Forward crea link ancore che permettono di scorrere automaticamente la pagina fino a un contenuto specifico con un'animazione fluida. È particolarmente utile su pagine molto lunghe.
+
+[Approfondisci quando e come usare il componente Forward](https://designers.italia.it/design-system/componenti/forward/)
+
+## Anteprima e attributi del componente
+Questo componente non possiede attributi, ma si basa su una struttura HTML predefinita e riutilizzabile. Per vedere l'anteprima del codice, clicca su **Show code**.
+<Canvas of={ForwardStories.EsempioBase} />
+## Indicazioni generali
+
+Per attivare lo scorrimento automatico della pagina all’àncora indicata nell’attributo `href`, avvolgi nel componente `<it-forward>` un link con la classe `.forward`. **Non è più necessario scrivere codice JavaScript**: lo scorrimento fluido e lo spostamento del focus sulla destinazione sono gestiti di default dal componente.
+
+Fai attenzione a:
+- non usare più forward sulla stessa pagina;
+- mantenerne coerente la funzione se il componente è presente su più pagine dello stesso sito o servizio;
+- testarne il funzionamento, verificando che al completamento dell’azione nessun contenuto venga nascosto da elementi sticky o barre di navigazione.
+
+<div class="callout callout-primary">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Stili</span>
+    </div>
+    <p>
+      Se non stai utilizzando il bundle unico, assicurarti di avere importato tutti i fogli di stile necessari
+      da `bootstrap-italia`:
+
+
+      ```scss
+      @use ‘bootstrap-italia/src/scss/base/functions’ as *;
+      @use ‘bootstrap-italia/src/scss/base/config’ as *;
+      @use ‘bootstrap-italia/src/scss/base/variables’ as *;
+      @use ‘bootstrap-italia/src/scss/base/mixins’ as *;
+      @use ‘bootstrap-italia/src/scss/components/forward’ as *;
+      ```
+
+    </p>
+  </div>
+</div>
+
+## Accessibilità
+
+Per garantire l’accessibilità del componente Forward:
+- considera le preferenze di riduzione del movimento degli utenti. Il componente gestisce automaticamente questa impostazione, disabilitando l’animazione di scorrimento fluido se l’utente ha richiesto di ridurre il movimento;
+- assicurati che il link sia chiaramente identificabile come tale e che il testo, o il testo di supporto, descriva in modo accurato la destinazione dello scorrimento.
+
+## Eventi e personalizzazione
+
+Il componente emette l’evento `it-forward-navigate`, **cancelable**. Chiamando `event.preventDefault()` puoi intercettare lo scorrimento e gestire la navigazione in autonomia (ad esempio integrandola con il routing di un framework). Nel `detail` dell’evento trovi l’`href` e l’elemento `target` di destinazione:
+
+```js
+const forward = document.querySelector(‘it-forward’);
+forward.addEventListener(‘it-forward-navigate’, (e) => {
+  e.preventDefault(); // impedisce lo scorrimento di default
+  // ...logica personalizzata, ad esempio:
+  if (e.detail.target) forward.navigateTo(e.detail.target);
+});
+```
+
+<Canvas of={ForwardStories.NavigazionePersonalizzata} />
+
+## Proprietà, Metodi, ed Eventi accessibili via JS
+
+Il componente espone i seguenti metodi e eventi accessibili via JavaScript.
+
+### Metodi
+- `navigateTo(target: HTMLElement)` — scorre la pagina fino all’elemento `target` con animazione fluida (o istantaneamente se l’utente ha preferenze di riduzione del movimento).
+
+### Eventi
+- `it-forward-navigate` — emesso prima dello scorrimento. L’evento è cancellabile: chiamando `event.preventDefault()` si impedisce lo scorrimento di default. Il `detail` contiene `href` (string) e `target` (HTMLElement | null) con le coordinate della destinazione.

@@ -23,6 +23,19 @@
 </section>
 
 <section class="my-5">
+  <h2>Chiusura con logica personalizzata</h2>
+  <it-modal (it-modal-close)="onModalClose($event)">
+    <it-button variant="primary" slot="trigger">Apri modale</it-button>
+    <span slot="header">Chiusura con logica personalizzata</span>
+    <p slot="content">Prova a chiudere la modale: verrà eseguita una logica personalizzata prima della chiusura effettiva.</p>
+    <it-button slot="footer" variant="primary" (click)="closeModal($event)">Chiudi</it-button>
+  </it-modal>
+  <div id="modal-close-alert" class="alert alert-info" role="alert" style="display:none">
+    <strong>Operazione completata.</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </div>
+</section>
+
+<section class="my-5">
   <h2>Con icona</h2>
   <it-modal variant="alert" close-label="Chiudi finestra modale">
     <it-button variant="primary" slot="trigger">Lancia la demo della modale</it-button>

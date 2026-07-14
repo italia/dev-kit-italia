@@ -483,6 +483,78 @@ describe('it-modal', () => {
 
       expect(eventFired).to.be.true;
     });
+
+    it('it-modal-open is cancelable and carries detail.modal', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal disable-animation>
+          <span slot="header">Test</span>
+        </it-modal>
+      `);
+
+      let cancelable = false;
+      let detailModal: ItModal | null = null;
+      el.addEventListener('it-modal-open', (e) => {
+        cancelable = e.cancelable;
+        detailModal = (e as CustomEvent).detail.modal;
+      });
+
+      el.show();
+      await aTimeout(50);
+
+      expect(cancelable).to.be.true;
+      expect(detailModal).to.equal(el);
+    });
+
+    it('does not open when it-modal-open is prevented', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal disable-animation>
+          <span slot="header">Test</span>
+        </it-modal>
+      `);
+      el.addEventListener('it-modal-open', (e) => e.preventDefault());
+
+      el.show();
+      await aTimeout(50);
+
+      expect(el.open).to.not.be.true;
+    });
+
+    it('it-modal-close is cancelable and carries detail.modal', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal open disable-animation>
+          <span slot="header">Test</span>
+        </it-modal>
+      `);
+      await aTimeout(50);
+
+      let cancelable = false;
+      let detailModal: ItModal | null = null;
+      el.addEventListener('it-modal-close', (e) => {
+        cancelable = e.cancelable;
+        detailModal = (e as CustomEvent).detail.modal;
+      });
+
+      el.hide();
+      await aTimeout(50);
+
+      expect(cancelable).to.be.true;
+      expect(detailModal).to.equal(el);
+    });
+
+    it('does not close when it-modal-close is prevented', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal open disable-animation>
+          <span slot="header">Test</span>
+        </it-modal>
+      `);
+      await aTimeout(50);
+      el.addEventListener('it-modal-close', (e) => e.preventDefault());
+
+      el.hide();
+      await aTimeout(50);
+
+      expect(el.open).to.be.true;
+    });
   });
 
   describe('keyboard interaction (Escape)', () => {
@@ -907,6 +979,33 @@ describe('it-modal', () => {
       await aTimeout(50);
 
       expect(el.open).to.be.true;
+    });
+
+    it('restores focus to the trigger element after the modal closes', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal disable-animation>
+          <span slot="header">Test</span>
+          <it-button slot="trigger">Open</it-button>
+          <p slot="content">Content</p>
+        </it-modal>
+      `);
+      await el.updateComplete;
+      await aTimeout(100);
+
+      // Note: the modal reassigns the trigger's `id` (to `_triggerId`) once it wires up
+      // its listeners, so select by attribute rather than a test-authored id.
+      const trigger = el.querySelector('it-button[slot="trigger"]') as HTMLElement;
+      trigger.click();
+      await aTimeout(50);
+      expect(el.open).to.be.true;
+
+      el.hide();
+      // finishHide() defers the focus restore by 20ms to avoid a VoiceOver
+      // double-announcement (see it-modal.ts finishHide()).
+      await aTimeout(100);
+
+      expect(el.open).to.be.false;
+      expect(document.activeElement).to.equal(trigger);
     });
   });
 });

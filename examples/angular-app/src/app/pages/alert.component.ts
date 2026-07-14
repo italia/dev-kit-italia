@@ -7,13 +7,12 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AlertComponent {
-  handleClose(event: Event): void {
-    const alertElement = (event.target as HTMLElement).closest('.alert');
-    if (alertElement) {
-      alertElement.classList.remove('show');
-      setTimeout(() => {
-        alertElement.remove();
-      }, 150);
+  // eslint-disable-next-line class-methods-use-this
+  onAlertClose(e: Event): void {
+    e.preventDefault();
+    // eslint-disable-next-line no-alert
+    if (window.confirm('Vuoi davvero chiudere questo avviso?')) {
+      (e.currentTarget as HTMLElement & { close(): void }).close();
     }
   }
 }

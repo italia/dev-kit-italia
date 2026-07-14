@@ -1,32 +1,8 @@
 <script setup>
-const handleDismiss = (event) => {
-  const chip = event.currentTarget.closest('it-chip');
-  if (chip?.hasAttribute('is-disabled')) {
-    event.preventDefault();
-    event.stopPropagation();
-    return;
-  }
-  if (chip) chip.remove();
-};
-
-const handleKeyDown = (event) => {
-  const chip = event.currentTarget.closest('it-chip');
-
-  // Lascia passare Tab e Shift+Tab per la navigazione
-  if (event.key === 'Tab') {
-    return;
-  }
-
-  // Controlla se la chip è disabilitata per altri tasti
-  if (chip?.hasAttribute('is-disabled')) {
-    event.preventDefault();
-    event.stopPropagation();
-    return;
-  }
-
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault();
-    if (chip) chip.remove();
+const onChipClose = (event) => {
+  event.preventDefault();
+  if (window.confirm('Rimuovere questa chip?')) {
+    event.currentTarget.close();
   }
 };
 </script>
@@ -72,41 +48,33 @@ const handleKeyDown = (event) => {
     <h2>Chip con avatar</h2>
     <div class="flex p-0">
       <it-chip
-        label="Etichetta"
+        label="Mario Rossi"
         size="sm"
         variant="primary"
         avatar="https://randomuser.me/api/portraits/men/46.jpg"
-        avatar-alt="Avatar alt"
-        id="chip-dismissable"
+        avatar-alt="Mario Rossi"
+        dismissable
       >
         <it-button
           slot="dismiss-button"
-          icon
-          it-aria-label="Elimina etichetta"
-          disabled
-          it-aria-description="Puoi premere per eliminare la chip."
-          @click="handleDismiss"
-          @keydown="handleKeyDown"
+          it-aria-label="Rimuovi Mario Rossi"
+          it-aria-description="Puoi premere per rimuovere questo utente."
         >
           <it-icon name="it-close" size="sm"></it-icon>
         </it-button>
       </it-chip>
       <it-chip
-        label="Etichetta"
+        label="Anna Verdi"
         size="lg"
-        variant="primary"
-        avatar="https://randomuser.me/api/portraits/men/46.jpg"
-        avatar-alt="Avatar alt"
-        id="chip-dismissable"
+        variant="secondary"
+        avatar="https://randomuser.me/api/portraits/women/32.jpg"
+        avatar-alt="Anna Verdi"
+        dismissable
       >
         <it-button
           slot="dismiss-button"
-          icon
-          it-aria-label="Elimina etichetta"
-          disabled
-          it-aria-description="Puoi premere per eliminare la chip."
-          @click="handleDismiss"
-          @keydown="handleKeyDown"
+          it-aria-label="Rimuovi Anna Verdi"
+          it-aria-description="Puoi premere per rimuovere questo utente."
         >
           <it-icon name="it-close" size="sm"></it-icon>
         </it-button>
@@ -116,29 +84,42 @@ const handleKeyDown = (event) => {
 
   <section>
     <h2>Chip con chiusura</h2>
+    <p>La rimozione è gestita di default dal componente: non è necessario alcun handler manuale.</p>
     <div class="flex p-0">
-      <it-chip label="Rimuovibile" size="sm" variant="primary" dismissable id="chip-dismissable-1">
+      <it-chip label="Rimuovibile" size="sm" variant="primary" dismissable>
         <it-button
           slot="dismiss-button"
-          icon
           it-aria-label="Elimina chip"
           it-aria-description="Puoi premere per eliminare la chip."
-          @click="handleDismiss"
-          @keydown="handleKeyDown"
         >
           <it-icon name="it-close" size="sm"></it-icon>
         </it-button>
       </it-chip>
 
-      <it-chip label="Altra rimuovibile" size="sm" variant="danger" dismissable id="chip-dismissable-2">
+      <it-chip label="Altra rimuovibile" size="sm" variant="danger" dismissable>
         <it-button
           slot="dismiss-button"
-          icon
           it-aria-label="Elimina chip"
-          disabled
           it-aria-description="Puoi premere per eliminare la chip."
-          @click="handleDismiss"
-          @keydown="handleKeyDown"
+        >
+          <it-icon name="it-close" size="sm"></it-icon>
+        </it-button>
+      </it-chip>
+    </div>
+  </section>
+
+  <section>
+    <h2>Logica di rimozione personalizzata</h2>
+    <p>
+      L'evento `it-chip-close` è cancelable. Chiamando `event.preventDefault()` puoi intercettare la rimozione ed
+      eseguire una logica personalizzata, richiamando poi il metodo pubblico `close()` quando opportuno.
+    </p>
+    <div class="flex p-0">
+      <it-chip label="Etichetta" size="sm" variant="primary" dismissable @it-chip-close="onChipClose">
+        <it-button
+          slot="dismiss-button"
+          it-aria-label="Elimina etichetta"
+          it-aria-description="La rimozione richiede conferma."
         >
           <it-icon name="it-close" size="sm"></it-icon>
         </it-button>
@@ -152,12 +133,9 @@ const handleKeyDown = (event) => {
       <it-chip label="Etichetta" size="sm" variant="primary" dismissable is-disabled>
         <it-button
           slot="dismiss-button"
-          icon
           it-aria-label="Elimina etichetta"
           disabled
-          it-aria-description="Puoi premere per eliminare la chip."
-          @click="handleDismiss"
-          @keydown="handleKeyDown"
+          it-aria-description="Questa chip è disabilitata e non può essere rimossa."
         >
           <it-icon name="it-close" size="sm"></it-icon>
         </it-button>
@@ -172,11 +150,8 @@ const handleKeyDown = (event) => {
         <it-icon slot="icon" name="it-download" size="sm"></it-icon>
         <it-button
           slot="dismiss-button"
-          icon
           it-aria-label="Rimuovi download"
           it-aria-description="Puoi premere per rimuovere questa azione."
-          @click="handleDismiss"
-          @keydown="handleKeyDown"
         >
           <it-icon name="it-close" size="sm"></it-icon>
         </it-button>
@@ -185,70 +160,13 @@ const handleKeyDown = (event) => {
         <it-icon slot="icon" name="it-upload" size="sm"></it-icon>
         <it-button
           slot="dismiss-button"
-          icon
           it-aria-label="Rimuovi carica file"
           it-aria-description="Puoi premere per rimuovere questa azione."
-          @click="handleDismiss"
-          @keydown="handleKeyDown"
         >
           <it-icon name="it-close" size="sm"></it-icon>
         </it-button>
       </it-chip>
-      <it-chip label="Preferiti" size="sm" variant="warning">
-        <it-icon slot="icon" name="it-star-full" size="sm"></it-icon>
-      </it-chip>
-    </div>
-  </section>
-
-  <section>
-    <h2>Chip disabilitata</h2>
-    <div class="flex p-0">
-      <it-chip label="Etichetta" size="sm" variant="primary" dismissable is-disabled>
-        <it-button
-          slot="dismiss-button"
-          icon
-          it-aria-label="Elimina etichetta"
-          disabled
-          it-aria-description="Puoi premere per eliminare la chip."
-          @click="handleDismiss"
-          @keydown="handleKeyDown"
-        >
-          <it-icon name="it-close" size="sm"></it-icon>
-        </it-button>
-      </it-chip>
-    </div>
-  </section>
-
-  <section>
-    <h2>Chip con icona</h2>
-    <div class="flex p-0">
-      <it-chip label="Download" size="sm" variant="primary" dismissable>
-        <it-icon slot="icon" name="it-download" size="sm"></it-icon>
-        <it-button
-          slot="dismiss-button"
-          icon
-          it-aria-label="Rimuovi download"
-          it-aria-description="Puoi premere per rimuovere questa azione."
-          @click="handleDismiss"
-          @keydown="handleKeyDown"
-        >
-          <it-icon name="it-close" size="sm"></it-icon>
-        </it-button>
-      </it-chip>
-      <it-chip label="Carica file" size="lg" variant="success" dismissable>
-        <it-icon slot="icon" name="it-upload" size="sm"></it-icon>
-        <it-button
-          slot="dismiss-button"
-          icon
-          it-aria-label="Rimuovi carica file"
-          it-aria-description="Puoi premere per rimuovere questa azione."
-          @click="handleDismiss"
-          @keydown="handleKeyDown"
-        >
-          <it-icon name="it-close" size="sm"></it-icon>
-        </it-button>
-      </it-chip>
-      <it-chip label="Preferiti" size="sm" variant="warning">
+      <it-chip href="#" label="Preferiti" size="sm" variant="warning">
         <it-icon slot="icon" name="it-star-full" size="sm"></it-icon>
       </it-chip>
     </div>

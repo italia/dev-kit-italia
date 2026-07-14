@@ -1,6 +1,6 @@
 /* eslint-disable lit-a11y/anchor-is-valid */
 /* eslint-disable lit-a11y/no-aria-slot */
-import { FormControl, FormControlController } from '@italia/globals';
+import { FormControl, FormControlController, dispatchCancelable } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
 import { html } from 'lit';
 import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
@@ -195,21 +195,19 @@ export class ItTransfer extends FormControl {
     items: string[],
     nextSource: TransferItemData[],
     nextTarget: TransferItemData[],
-  ): boolean {
-    const detail: TransferEventDetail = {
-      action,
-      items,
-      source: nextSource.map((i) => i.value),
-      target: nextTarget.map((i) => i.value),
-    };
-    const event = new CustomEvent<TransferEventDetail>('it-transfer', {
-      detail,
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-    });
-    this.dispatchEvent(event);
-    return !event.defaultPrevented;
+    defaultAction: () => void,
+  ): void {
+    dispatchCancelable<TransferEventDetail>(
+      this,
+      'it-transfer',
+      {
+        action,
+        items,
+        source: nextSource.map((i) => i.value),
+        target: nextTarget.map((i) => i.value),
+      },
+      defaultAction,
+    );
   }
 
   /** Move checked source items to the target list. */
@@ -220,20 +218,18 @@ export class ItTransfer extends FormControl {
     const nextSource = this._sourceItems.filter((i) => !this._sourceChecked.has(i.value));
     const nextTarget = [...this._targetItems, ...moving];
 
-    if (
-      !this._dispatch(
-        'transfer',
-        moving.map((i) => i.value),
-        nextSource,
-        nextTarget,
-      )
-    )
-      return;
-
-    this._sourceItems = nextSource;
-    this._targetItems = nextTarget;
-    this._sourceChecked = new Set();
-    this._syncValue();
+    this._dispatch(
+      'transfer',
+      moving.map((i) => i.value),
+      nextSource,
+      nextTarget,
+      () => {
+        this._sourceItems = nextSource;
+        this._targetItems = nextTarget;
+        this._sourceChecked = new Set();
+        this._syncValue();
+      },
+    );
   }
 
   /** Move checked target items back to the source list. */
@@ -244,20 +240,18 @@ export class ItTransfer extends FormControl {
     const nextTarget = this._targetItems.filter((i) => !this._targetChecked.has(i.value));
     const nextSource = [...this._sourceItems, ...moving];
 
-    if (
-      !this._dispatch(
-        'backtransfer',
-        moving.map((i) => i.value),
-        nextSource,
-        nextTarget,
-      )
-    )
-      return;
-
-    this._sourceItems = nextSource;
-    this._targetItems = nextTarget;
-    this._targetChecked = new Set();
-    this._syncValue();
+    this._dispatch(
+      'backtransfer',
+      moving.map((i) => i.value),
+      nextSource,
+      nextTarget,
+      () => {
+        this._sourceItems = nextSource;
+        this._targetItems = nextTarget;
+        this._targetChecked = new Set();
+        this._syncValue();
+      },
+    );
   }
 
   /** Reset both lists to their initial state. */
@@ -265,10 +259,36 @@ export class ItTransfer extends FormControl {
     const nextSource = this._initialSource.slice();
     const nextTarget = this._initialTarget.slice();
 
-    if (!this._dispatch('reset', [], nextSource, nextTarget)) return;
+    this._dispatch('reset', [], nextSource, nextTarget, () => {
+      this._sourceItems = nextSource;
+      this._targetItems = nextTarget;
+      this._sourceChecked = new Set();
+      this._targetChecked = new Set();
+      this._syncValue();
+    });
+  }
 
-    this._sourceItems = nextSource;
-    this._targetItems = nextTarget;
+  /**
+   * Applies the proposed state from a previously cancelled `it-transfer` event,
+   * without re-dispatching the event.
+   *
+   * Use this after calling `event.preventDefault()` in an `it-transfer` listener
+   * to resume the action once your async logic (validation, confirmation, etc.) resolves:
+   *
+   * ```js
+   * el.addEventListener('it-transfer', async (e) => {
+   *   e.preventDefault();
+   *   const ok = await confirm('Procedere con il trasferimento?');
+   *   if (ok) el.commit(e.detail);
+   * });
+   * ```
+   */
+  commit(detail: TransferEventDetail): void {
+    const known = new Map<string, TransferItemData>(
+      [...this._sourceItems, ...this._targetItems].map((i) => [i.value, i]),
+    );
+    this._sourceItems = detail.source.flatMap((v) => (known.has(v) ? [known.get(v)!] : []));
+    this._targetItems = detail.target.flatMap((v) => (known.has(v) ? [known.get(v)!] : []));
     this._sourceChecked = new Set();
     this._targetChecked = new Set();
     this._syncValue();

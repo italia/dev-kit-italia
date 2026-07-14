@@ -23,22 +23,21 @@ Questo componente non possiede attributi, ma si basa su una struttura HTML prede
 
 ## Indicazioni generali
 
-La funzionalità "torna indietro", per garantire la massima compatibilità con ogni possibile framework JavaScript, deve essere implementata manualmente:
+Avvolgi nel componente `<it-back>` un link o un pulsante con la classe `.go-back`. Il componente implementa di default la funzionalità "torna indietro" tramite `window.history.back()`, che replica il comportamento del pulsante "Indietro" nativo del browser navigando indietro di una singola entry nello stack della cronologia.
 
-- se usi framework moderni come React (NextJS, Remix, TanStack, ecc.), Angular, Svelte o Vue.js, segui le indicazioni del framework stesso
-- se usi Javascript Vanilla, registra un event listener sull'elemento desiderato e invoca il metodo `window.history.back()` all'interno dell'handler dell'evento.
-
-Questo metodo consente di navigare indietro di una singola entry nello stack della cronologia del browser, replicando il comportamento del pulsante "Indietro" nativo del browser.
+`window.history.back()` è il comportamento predefinito adatto alla navigazione standard del browser. Se usi framework moderni con un proprio sistema di routing (React/NextJS, Remix, TanStack, Angular, Svelte, Vue.js, ecc.), puoi **sovrascrivere il comportamento** intercettando l'evento `it-back-navigate`:
 
 ```javascript
-const backButton = document.getElementById('backButton');
-backButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  window.history.back();
+const back = document.querySelector('it-back');
+back.addEventListener('it-back-navigate', (e) => {
+  e.preventDefault(); // impedisce window.history.back()
+  // ...naviga indietro secondo le indicazioni del tuo framework...
 });
 ```
 
-Tutti gli esempi hanno questa funzionalità implementata nel loro codice.
+<Canvas of={BackStories.NavigazionePersonalizzata} />
+
+Tutti gli esempi hanno la funzionalità di default già attiva.
 
 ## Accessibilità
 
@@ -46,7 +45,7 @@ Quando necessario, includi un testo alternativo per i lettori di schermo usando 
 
 ## Link
 
-Se vuoi implementare il componente come un link, aggiungi la classe `.go-back` al tag `<a>`.
+Se vuoi implementare il componente come un link, aggiungi la classe `.go-back` al tag `<a>` e avvolgilo in `<it-back>`.
 
 Per rendere il componente accessibile e navigabile da tastiera, specifica un valore per l'attributo `href`.
 
@@ -56,7 +55,7 @@ Per rendere il componente accessibile e navigabile da tastiera, specifica un val
 ## Pulsante
 
 
-Se vuoi implementare il componente come un pulsante, applica la classe `.go-back` al componente `<it-button>`.
+Se vuoi implementare il componente come un pulsante, applica la classe `.go-back` al componente `<it-button>` e avvolgilo in `<it-back>`.
 
 <Canvas of={BackStories.Pulsante} />
 
@@ -65,3 +64,10 @@ Se vuoi implementare il componente come un pulsante, applica la classe `.go-back
 Se vuoi ottenere un pulsante con sola icona e senza testo, includi il testo alternativo per i lettori di schermo in un tag `<span>` con classe `.visually-hidden`.
 
 <Canvas of={BackStories.PulsanteSolaIcona} />
+
+## Proprietà, Metodi, ed Eventi accessibili via JS
+
+Il componente espone i seguenti eventi accessibili via JavaScript.
+
+### Eventi
+- `it-back-navigate` — emesso al click sul link o pulsante. L'evento è cancellabile: chiamando `event.preventDefault()` si impedisce `window.history.back()` e si può gestire la navigazione indietro secondo il router del proprio framework.
