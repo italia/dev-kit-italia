@@ -1,7 +1,11 @@
 /// <reference types="mocha"/>
 
 import '@italia/toolbar';
-import { expect, fixture, html } from '@open-wc/testing';
+import '@italia/button';
+import '@italia/dropdown';
+import '@italia/popover';
+import { expect, fixture, html, oneEvent } from '@open-wc/testing';
+import { type LitElement } from 'lit';
 
 import { type ItToolbar } from '@italia/toolbar';
 
@@ -123,6 +127,34 @@ describe('Toolbar component', () => {
       const el = await fixture<ItToolbar>(html`<it-toolbar></it-toolbar>`);
       const nav = el.shadowRoot?.querySelector('nav');
       expect(nav?.classList.contains('toolbar')).to.be.true;
+    });
+  });
+
+  describe('dropdown item', () => {
+    it('toggles the dropdown open and closed on repeated trigger clicks (#430, #384)', async () => {
+      const el = await fixture<ItToolbar>(html`
+        <it-toolbar>
+          <it-toolbar-item dropdown label="Documenti" icon="it-file">
+            <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+          </it-toolbar-item>
+        </it-toolbar>
+      `);
+      const toolbarItem = el.querySelector('it-toolbar-item') as LitElement;
+      await toolbarItem.updateComplete;
+      const dropdown = toolbarItem.shadowRoot!.querySelector('it-dropdown') as LitElement;
+      await dropdown.updateComplete;
+      const button = (dropdown.shadowRoot!.querySelector('it-button') as LitElement).shadowRoot!.querySelector(
+        'button',
+      )!;
+      const popover = dropdown.shadowRoot!.querySelector('it-popover')!;
+
+      button.click();
+      await oneEvent(popover, 'it-popover-open');
+      expect(popover.hasAttribute('open')).to.be.true;
+
+      button.click();
+      await oneEvent(popover, 'it-popover-close');
+      expect(popover.hasAttribute('open')).to.be.false;
     });
   });
 

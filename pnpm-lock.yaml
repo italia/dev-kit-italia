@@ -2683,6 +2683,9 @@ importers:
       '@italia/icon':
         specifier: workspace:^
         version: link:../icon
+      '@italia/popover':
+        specifier: workspace:^
+        version: link:../popover
       '@italia/test-config':
         specifier: workspace:^
         version: link:../test-config
