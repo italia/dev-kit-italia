@@ -9,8 +9,6 @@ export const path = process.env.GH_PAGES_PATH + '/next-app/';
 
 I pattern di importazione mostrati nelle altre pagine di questa sezione (`import '@italia/dev-kit-italia/elements.js'` nel punto di ingresso) assumono un contesto **client-only**, cioè un'applicazione senza SSR. In un'app con SSR abilitato — Next.js App Router, SvelteKit, Nuxt, Angular Universal — quello stesso import va sostituito con uno dei pattern descritti in questa pagina. Vedi [issue #360](https://github.com/italia/dev-kit-italia/issues/360).
 
-<a href={path} title="Vai all'esempio di integrazione Next.js">Esempio di integrazione</a> - <a href="https://github.com/italia/dev-kit-italia/tree/main/examples/next-app" title="Vai al codice su GitHub">Codice GitHub</a>
-
 <div class="callout callout-warning">
   <div class="callout-inner">
     <div class="callout-title">
@@ -31,6 +29,8 @@ I pattern di importazione mostrati nelle altre pagine di questa sezione (`import
 Un vero SSR con Declarative Shadow DOM (markup interno dei componenti generato dal server, tramite `@lit-labs/ssr`) è in valutazione ma richiede fix lato kit non ancora completati: non è documentato qui.
 
 ## Next.js (App Router)
+
+<a href={path} title="Vai all'esempio di integrazione NextJS">Esempio di integrazione</a> - <a href="https://github.com/italia/dev-kit-italia/tree/main/examples/next-app" title="Vai al codice su GitHub">Codice GitHub</a>
 
 <div class="callout callout-warning">
   <div class="callout-inner">
@@ -66,6 +66,20 @@ Se invece il componente non ha contenuto slottato utile a livello server (es. lo
 import dynamic from 'next/dynamic';
 
 const ItButton = dynamic(() => import('./ItButton'), { ssr: false });
+```
+
+Infine, aggiungi le type declarations se necessario:
+
+```jsx
+// src/types/web-components.d.ts
+declare namespace JSX {
+  interface IntrinsicElements {
+    'my-web-component': React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLElement> & { value?: string },
+      HTMLElement
+    >
+  }
+}
 ```
 
 ## SvelteKit

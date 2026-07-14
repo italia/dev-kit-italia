@@ -1,21 +1,10 @@
-'use client';
-
-import { useEffect } from 'react';
-
-// The kit's elements.js registers Lit-based custom elements, which extend
-// HTMLElement at module load time. HTMLElement does not exist in Node, so the
-// import must be deferred to after mount (useEffect) instead of living at the
-// top of the module — even though this file is 'use client', a static
-// module-level import would still be evaluated during the server render.
-//
-// The custom-element markup below (including its slotted content) stays
-// static in the JSX, so the server still emits it: HTML-first, level 2 of
-// packages/dev-kit-italia/stories/frameworks/SSR.mdx.
+// Static custom-element markup (including slotted content) stays in the JSX, so
+// the server emits it as plain HTML: HTML-first, level 2 of the SSR guide
+// (packages/dev-kit-italia/stories/frameworks/SSR.mdx). The elements are
+// registered on the client once by KitElementsLoader in the root layout, which
+// upgrades this markup after mount — so this stays a plain server component with
+// no client-side import of its own.
 export default function KitDemo() {
-  useEffect(() => {
-    import('@italia/dev-kit-italia/elements.js');
-  }, []);
-
   return (
     <section>
       <h2>Componenti con markup lato server (HTML-first)</h2>
