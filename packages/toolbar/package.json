@@ -56,6 +56,7 @@
     "@italia/button": "workspace:^",
     "@italia/icon": "workspace:^",
     "@italia/dropdown": "workspace:^",
+    "@italia/popover": "workspace:^",
     "@open-wc/testing": "catalog:",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
