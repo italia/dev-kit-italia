@@ -114,6 +114,32 @@ const imageAvatars = [
     </div>
   </section>
 
+  <!-- Avatar come link con tooltip -->
+  <section>
+    <h2>Avatar come link con tooltip</h2>
+    <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap">
+      <it-tooltip placement="left">
+        <it-avatar
+          slot="trigger"
+          type="image"
+          src="https://randomuser.me/api/portraits/women/41.jpg"
+          alt="Anna Barbieri"
+          href="#"
+          avatar-title="Anna Barbieri"
+        />
+        <span slot="content"><strong>Anna Barbieri</strong><br /><em>Amministratore</em></span>
+      </it-tooltip>
+      <it-tooltip placement="top">
+        <it-avatar slot="trigger" type="text" text="Mario Rossi" href="#" avatar-title="Mario Rossi" />
+        <span slot="content"><strong>Mario Rossi</strong><br /><em>Editor</em></span>
+      </it-tooltip>
+      <it-tooltip placement="right">
+        <it-avatar slot="trigger" type="icon" icon="it-search" href="#" avatar-title="Cerca" />
+        <span slot="content"><strong>Cerca</strong><br /><em>Archivio notizie</em></span>
+      </it-tooltip>
+    </div>
+  </section>
+
   <!-- Comportamento presenza utente -->
   <section>
     <h2>Comportamento presenza utente</h2>

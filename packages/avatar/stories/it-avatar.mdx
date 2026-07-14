@@ -67,11 +67,22 @@ Per mostrare un'icona all'interno di un avatar, usa l'attributo `icon` valorizza
 
 Per associare un avatar a un'azione o un link, usa l'attributo `href` con relativo link o chiamata JavaScript.
 
-<div class="callout callout-warning"><div class="callout-inner"><div class="callout-title"><span class="text">Tooltip non ancora implementato</span></div>
-<p>La funzionalità tooltip per gli avatar con link è attualmente in fase di sviluppo.</p></div></div>
-
 <Canvas of={AvatarStories.AvatarLink} />
 
+## Avatar link con tooltip
+
+È possibile associare un tooltip con maggiori informazioni relative all'utente o all'azione associata utilizzando il [componente tooltip](/docs/componenti-tooltip--documentazione).
+
+Per farlo, avvolgi l'avatar in un componente `it-tooltip`: inserisci l'avatar nello slot `trigger` e il testo del tooltip nello slot `content`.
+
+```html
+<it-tooltip placement="left">
+	<it-avatar slot="trigger" src="..." alt="Anna Barbieri" href="#" avatar-title="Anna Barbieri"></it-avatar>
+	<span slot="content"><strong>Anna Barbieri</strong><br /><em>Amministratore</em></span>
+</it-tooltip>
+```
+
+<Canvas of={AvatarStories.AvatarLinkConTooltip} />
 
 ## Presenza utente
 

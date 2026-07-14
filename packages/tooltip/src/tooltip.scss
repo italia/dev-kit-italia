@@ -6,6 +6,11 @@
 @use 'bootstrap-italia/src/scss/base/transitions' as *;
 @use 'bootstrap-italia/src/scss/components/tooltip' as *;
 
+:host {
+  display: inline-flex;
+  align-items: center;
+}
+
 .tooltip {
   position: absolute;
   visibility: hidden;
