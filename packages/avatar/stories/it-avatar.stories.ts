@@ -485,10 +485,6 @@ export const AvatarLink: Story = {
       description: {
         story: `
 Per associare un avatar ad un'azione o un link, utilizzare l'attributo \`href\` con relativo link o chiamata JavaScript.
-
-<div class="callout callout-warning"><div class="callout-inner"><div class="callout-title"><span class="text">Tooltip non ancora implementato</span></div>
-<p>La funzionalità tooltip per gli avatar con link è attualmente in fase di sviluppo.</p></div></div>
-
 `,
       },
     },
@@ -522,6 +518,69 @@ Per associare un avatar ad un'azione o un link, utilizzare l'attributo \`href\` 
           href: '#',
           avatarTitle: 'Utente',
         })}
+      </div>
+    </div>
+  `,
+};
+
+export const AvatarLinkConTooltip: Story = {
+  name: 'Avatar link con tooltip',
+  argTypes: {
+    href: { table: { disable: true } },
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+È possibile associare un tooltip con maggiori informazioni relative all'utente o all'azione associata utilizzando il [componente tooltip](/docs/componenti-tooltip--documentazione).
+
+Per farlo, avvolgere l'avatar in un componente \`it-tooltip\`: inserire l'avatar nello slot \`trigger\` e il testo del tooltip nello slot \`content\`.
+
+\`\`\`html
+<it-tooltip placement="left">
+  <it-avatar slot="trigger" src="..." alt="Anna Barbieri" href="#" avatar-title="Anna Barbieri"></it-avatar>
+  <span slot="content"><strong>Anna Barbieri</strong><br /><em>Amministratore</em></span>
+</it-tooltip>
+\`\`\`
+`,
+      },
+    },
+  },
+  decorators: [(story) => html`<div style="padding:60px 0 20px;">${story()}</div>`],
+  render: () => html`
+    <div>
+      <div class="d-flex align-items-center gap-3 flex-wrap">
+        <it-tooltip placement="left">
+          ${renderComponent({
+            type: 'image',
+            src: 'https://randomuser.me/api/portraits/women/41.jpg',
+            alt: 'Anna Barbieri',
+            href: '#',
+            avatarTitle: 'Anna Barbieri',
+            slot: 'trigger',
+          })}
+          <span slot="content"><strong>Anna Barbieri</strong><br /><em>Amministratore</em></span>
+        </it-tooltip>
+        <it-tooltip placement="top">
+          ${renderComponent({
+            type: 'text',
+            text: 'Mario Rossi',
+            href: '#',
+            avatarTitle: 'Mario Rossi',
+            slot: 'trigger',
+          })}
+          <span slot="content"><strong>Mario Rossi</strong><br /><em>Editor</em></span>
+        </it-tooltip>
+        <it-tooltip placement="right">
+          ${renderComponent({
+            type: 'icon',
+            icon: 'it-search',
+            href: '#',
+            avatarTitle: 'Cerca',
+            slot: 'trigger',
+          })}
+          <span slot="content"><strong>Cerca</strong><br /><em>Archivio notizie</em></span>
+        </it-tooltip>
       </div>
     </div>
   `,
