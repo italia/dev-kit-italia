@@ -1,5 +1,91 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-alpha.19
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add alert component (`it-alert`)
+  - New light-DOM enhancer for Bootstrap Italia's `.alert` markup: auto-sets `role="alert"` and maps the `variant` attribute to the correct `alert-{variant}` class.
+  - Sensible default behavior: fade + remove on `.btn-close` click, via a cancelable `it-alert-close` event and a public `close()` method — call `event.preventDefault()` to intercept the close (e.g. async confirmation) and `close()` later.
+  - Stories/MDX updated to wrap alert examples in `<it-alert variant>` and document the auto role/variant mapping and its accessibility implications.
+  - Focus on close: shifts to an adjacent alert's close button when one exists; otherwise falls back to a `tabindex`-bearing ancestor, and now further falls back to the nearest focusable element anywhere in the document — the common case in practice, since most usages don't add that ancestor. Previously focus was silently lost to `<body>` in that case.
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add back component (`it-back`)
+  - New light-DOM enhancer providing a default `history.back()` on click of `.go-back`, via a cancelable `it-back-navigate` event — call `event.preventDefault()` to run custom navigation logic instead (e.g. integrating with a framework router).
+  - Framework examples (vanilla, react, vue, svelte, angular) updated to demonstrate router-integrated back navigation.
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add forward component (`it-forward`)
+  - New light-DOM enhancer providing a default smooth-scroll on link click, via a cancelable `it-forward-navigate` event — call `event.preventDefault()` to run custom navigation logic instead.
+  - Added an interactive "custom logic" canvas to the stories/MDX.
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - `it-chip` now removes itself by default when its dismiss button is clicked, via a cancelable `it-chip-close` event and a new public `close()` method — call `event.preventDefault()` to intercept the removal (e.g. async confirmation) and `close()` later.
+
+  Focus on close: shifts to an adjacent chip's dismiss button, but only if that neighbor is also `dismissable` — a plain label or link chip sitting next to it is no longer treated as an equivalent "next item to remove". Falls back to a `tabindex`-bearing ancestor, and now further to the nearest focusable element anywhere in the document when no such ancestor exists (the common case in practice) — previously focus was silently lost to `<body>` in that case.
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - `it-modal-open` and `it-modal-close` are now cancelable: calling `event.preventDefault()` stops the modal from opening/closing, so consumers can intercept the action and resume it later via `show()`/`hide()`. `toggle()` now delegates to `show()`/`hide()` so it respects the same cancellation.
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - `it-notification` now fires `it-notification-show` and `it-notification-close` custom events (not cancelable — show/close are always caller-initiated, so there was no real use case for blocking them). `it-notification-close` covers the close button, the auto-dismiss timeout and any programmatic `hide()` call.
+
+  Also fixed: dismissing a notification while focus is on its own close button no longer silently drops focus to `<body>`. Focus is restored to whatever was focused right before `show()` was called (typically the button that triggered it — there is no author-provided trigger slot to target like `it-modal` has), falling back to a `tabindex`-bearing ancestor and then to the nearest focusable element in the document if that original element is gone.
+
+- [#429](https://github.com/italia/dev-kit-italia/pull/429) [`97ad0e3`](https://github.com/italia/dev-kit-italia/commit/97ad0e3c888380d61ad3ad0680c875b65c4fa848) Thanks [@pnicolli](https://github.com/pnicolli)! - Renamed full.css to styles-for-migration.css
+
+- [#462](https://github.com/italia/dev-kit-italia/pull/462) [`1a8774e`](https://github.com/italia/dev-kit-italia/commit/1a8774eecc7eae5ef97ceb4cc93b0da273a68610) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added SSR documentation and a Next.js example app: how to avoid crashes and reach HTML-first hydration in Next.js, SvelteKit and other SSR frameworks (#360)
+
+- [#429](https://github.com/italia/dev-kit-italia/pull/429) [`97ad0e3`](https://github.com/italia/dev-kit-italia/commit/97ad0e3c888380d61ad3ad0680c875b65c4fa848) Thanks [@pnicolli](https://github.com/pnicolli)! - Added docs for migrating from bootstrap-italia
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add `commit(detail)` method to `it-transfer`, applying a previously cancelled `it-transfer` event (move to target, move back to source, or reset) without re-dispatching it — enables async confirmation patterns (API calls, user prompts) after `event.preventDefault()`, with no bypass flag needed.
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`aa77369`](https://github.com/italia/dev-kit-italia/commit/aa773695e73e24c05fe27db62a99b971f7fd3490), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`f9dd0a8`](https://github.com/italia/dev-kit-italia/commit/f9dd0a88f6ead92614b27a65bcbfc77553ab06c7), [`976ade9`](https://github.com/italia/dev-kit-italia/commit/976ade9c2cce7b54f97abf4f3e24129be7f626be), [`96498b1`](https://github.com/italia/dev-kit-italia/commit/96498b1918e1cd9a905e1388d8fd40e1d6d8c625), [`7d41b05`](https://github.com/italia/dev-kit-italia/commit/7d41b05d8ccf93a6096e1927bf3d0b14d647ee81), [`231ec99`](https://github.com/italia/dev-kit-italia/commit/231ec99eb950292f5040793d419b49ae30943d1e), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`5e0ecfc`](https://github.com/italia/dev-kit-italia/commit/5e0ecfc622bdafa22e471a5d7198d90a544260db), [`7f3551f`](https://github.com/italia/dev-kit-italia/commit/7f3551f6f2e015f0a7f4b252cdbc3859a8226903), [`1229840`](https://github.com/italia/dev-kit-italia/commit/1229840fe4d205da7d4b114f87d95462f6dd8256), [`812509a`](https://github.com/italia/dev-kit-italia/commit/812509a74574e01ff14b1c51232228381bfe6530), [`b2a220e`](https://github.com/italia/dev-kit-italia/commit/b2a220e413a514220a54b9bd9ff93887bba7c378), [`2cb911e`](https://github.com/italia/dev-kit-italia/commit/2cb911e970375e260010d5f1dd204eda5cab360a), [`7f3551f`](https://github.com/italia/dev-kit-italia/commit/7f3551f6f2e015f0a7f4b252cdbc3859a8226903), [`a413a25`](https://github.com/italia/dev-kit-italia/commit/a413a25137a6f483c171187e678748bb6c4c741a), [`7b23069`](https://github.com/italia/dev-kit-italia/commit/7b230696944bd32070dbadcb94e039ba4b4b9f19), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`10102b4`](https://github.com/italia/dev-kit-italia/commit/10102b4bd2a7fc90b0957858a54613898b309acb), [`46dab26`](https://github.com/italia/dev-kit-italia/commit/46dab266b9a210d0a5680d231bced9f9945c5a13), [`10102b4`](https://github.com/italia/dev-kit-italia/commit/10102b4bd2a7fc90b0957858a54613898b309acb)]:
+  - @italia/alert@1.0.0-alpha.19
+  - @italia/back@1.0.0-alpha.19
+  - @italia/forward@1.0.0-alpha.19
+  - @italia/notification@1.0.0-alpha.19
+  - @italia/chip@1.0.0-alpha.19
+  - @italia/toolbar@1.0.0-alpha.19
+  - @italia/hero@1.0.0-alpha.19
+  - @italia/autocomplete@1.0.0-alpha.19
+  - @italia/thumbnav@1.0.0-alpha.19
+  - @italia/header@1.0.0-alpha.19
+  - @italia/modal@1.0.0-alpha.19
+  - @italia/breadcrumbs@1.0.0-alpha.19
+  - @italia/tooltip@1.0.0-alpha.19
+  - @italia/timeline@1.0.0-alpha.19
+  - @italia/dropdown@1.0.0-alpha.19
+  - @italia/megamenu@1.0.0-alpha.19
+  - @italia/stepper@1.0.0-alpha.19
+  - @italia/avatar@1.0.0-alpha.19
+  - @italia/upload@1.0.0-alpha.19
+  - @italia/transfer@1.0.0-alpha.19
+  - @italia/navscroll@1.0.0-alpha.19
+  - @italia/accordion@1.0.0-alpha.19
+  - @italia/back-to-top@1.0.0-alpha.19
+  - @italia/bottom-nav@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/callout@1.0.0-alpha.19
+  - @italia/card@1.0.0-alpha.19
+  - @italia/carousel@1.0.0-alpha.19
+  - @italia/checkbox@1.0.0-alpha.19
+  - @italia/collapse@1.0.0-alpha.19
+  - @italia/dimmer@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+  - @italia/input@1.0.0-alpha.19
+  - @italia/pagination@1.0.0-alpha.19
+  - @italia/popover@1.0.0-alpha.19
+  - @italia/progress@1.0.0-alpha.19
+  - @italia/radio@1.0.0-alpha.19
+  - @italia/rating@1.0.0-alpha.19
+  - @italia/section@1.0.0-alpha.19
+  - @italia/select@1.0.0-alpha.19
+  - @italia/skiplinks@1.0.0-alpha.19
+  - @italia/sticky@1.0.0-alpha.19
+  - @italia/tabs@1.0.0-alpha.19
+  - @italia/toggle@1.0.0-alpha.19
+  - @italia/video@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Minor Changes

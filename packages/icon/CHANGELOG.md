@@ -1,5 +1,13 @@
 # @italia/icon
 
+## 1.0.0-alpha.19
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Patch Changes

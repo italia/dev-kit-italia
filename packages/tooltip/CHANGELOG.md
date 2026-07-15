@@ -1,5 +1,15 @@
 # @italia/tooltip
 
+## 1.0.0-alpha.19
+
+### Patch Changes
+
+- [#464](https://github.com/italia/dev-kit-italia/pull/464) [`7f3551f`](https://github.com/italia/dev-kit-italia/commit/7f3551f6f2e015f0a7f4b252cdbc3859a8226903) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fix `it-tooltip` host to use `display: inline-flex` instead of the browser default inline box, so it stays vertically aligned with sibling elements when used as a flex item (e.g. wrapping an `it-avatar` in a row of avatars).
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Patch Changes

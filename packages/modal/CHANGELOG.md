@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.0-alpha.19
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - `it-modal-open` and `it-modal-close` are now cancelable: calling `event.preventDefault()` stops the modal from opening/closing, so consumers can intercept the action and resume it later via `show()`/`hide()`. `toggle()` now delegates to `show()`/`hide()` so it respects the same cancellation.
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Patch Changes

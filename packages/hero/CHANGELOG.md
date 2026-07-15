@@ -1,5 +1,14 @@
 # @italia/hero
 
+## 1.0.0-alpha.19
+
+### Patch Changes
+
+- [#444](https://github.com/italia/dev-kit-italia/pull/444) [`976ade9`](https://github.com/italia/dev-kit-italia/commit/976ade9c2cce7b54f97abf4f3e24129be7f626be) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed a11y for aria-labelledby attribute
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Patch Changes
