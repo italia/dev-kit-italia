@@ -1,7 +1,7 @@
 {
   "name": "@italia/modal",
   "description": "Web component it-modal del Design system .italia",
-  "version": "1.0.0-alpha.19",
+  "version": "1.0.0-beta.0",
   "publishConfig": {
     "access": "public"
   },
