@@ -1,0 +1,4 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[5778],{5778:(e,h,l)=>{l.r(h),l.d(h,{default:()=>s});let s=`<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	<path d="M12,1.7L9.5,9.2H1.6L8,13.9l-2.4,7.6l6.4-4.7l6.4,4.7L16,13.9l6.4-4.7h-7.9L12,1.7z" />
+</svg>
+`}}]);

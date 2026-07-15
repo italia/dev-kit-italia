@@ -1,7 +1,9 @@
 import { registerTranslation } from '@italia/i18n/i18n.js';
 export * from '@italia/accordion';
+export * from '@italia/alert';
 export * from '@italia/autocomplete';
 export * from '@italia/avatar';
+export * from '@italia/back';
 export * from '@italia/back-to-top';
 export * from '@italia/breadcrumbs';
 export * from '@italia/button';
@@ -10,6 +12,7 @@ export * from '@italia/card';
 export * from '@italia/chip';
 export * from '@italia/dimmer';
 export * from '@italia/dropdown';
+export * from '@italia/forward';
 export * from '@italia/icon';
 export * from '@italia/input';
 export * from '@italia/megamenu';

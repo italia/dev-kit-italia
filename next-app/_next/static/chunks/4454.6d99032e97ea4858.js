@@ -1,0 +1,8 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[4454],{2073:(h,t,e)=>{e.r(t),e.d(t,{default:()=>i});let i=`<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	<path d="M4,2v14h3.7l1,2h6.6l1-2H20V2H4z M19,15h-3.3l-1,2H9.3l-1-2H5V3h14V15z" />
+	<polygon points="19,17 20,17 20,22 4,22 4,17 5,17 5,21 19,21" />
+	<rect x="7" y="5" width="10" height="1" />
+	<rect x="7" y="8" width="10" height="1" />
+	<rect x="7" y="11" width="10" height="1" />
+</svg>
+`}}]);
