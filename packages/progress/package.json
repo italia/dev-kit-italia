@@ -1,7 +1,7 @@
 {
   "name": "@italia/progress",
   "description": "Web component it-progress del Design system .italia con varianti bar, donut e spinner",
-  "version": "1.0.0-beta.20",
+  "version": "1.0.0-beta.0",
   "publishConfig": {
     "access": "public"
   },

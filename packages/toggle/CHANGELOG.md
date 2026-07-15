@@ -1,6 +1,6 @@
 # @italia/toggle
 
-## 1.0.0-beta.20
+## 1.0.0-beta.0
 
 ### Major Changes
 
@@ -9,9 +9,9 @@
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/checkbox@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
+  - @italia/checkbox@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
 
 ## 1.0.0-alpha.19
 

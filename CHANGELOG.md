@@ -2,7 +2,7 @@
 
 This changelog contains all changes from all packages in the monorepo.
 
-## 1.0.0-beta.20
+## 1.0.0-beta.0
 
 ### `accordion`
 
@@ -13,10 +13,10 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/button@1.0.0-beta.20
-  - @italia/collapse@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
+  - @italia/button@1.0.0-beta.0
+  - @italia/collapse@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
 
 ### `alert`
 
@@ -27,7 +27,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `autocomplete`
 
@@ -38,9 +38,9 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
 
 ### `avatar`
 
@@ -51,9 +51,9 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
 
 ### `back`
 
@@ -64,7 +64,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `back-to-top`
 
@@ -75,7 +75,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `bottom-nav`
 
@@ -86,8 +86,8 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
-  - @italia/sticky@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
+  - @italia/sticky@1.0.0-beta.0
 
 ### `breadcrumbs`
 
@@ -98,7 +98,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `button`
 
@@ -109,7 +109,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `callout`
 
@@ -120,8 +120,8 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/collapse@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
+  - @italia/collapse@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
 
 ### `card`
 
@@ -132,7 +132,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `carousel`
 
@@ -143,9 +143,9 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/card@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
+  - @italia/card@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
 
 ### `checkbox`
 
@@ -156,8 +156,8 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
 
 ### `chip`
 
@@ -168,10 +168,10 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/avatar@1.0.0-beta.20
-  - @italia/button@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
+  - @italia/avatar@1.0.0-beta.0
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
 
 ### `collapse`
 
@@ -182,7 +182,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `dev-kit-italia`
 
@@ -193,52 +193,52 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/accordion@1.0.0-beta.20
-  - @italia/alert@1.0.0-beta.20
-  - @italia/autocomplete@1.0.0-beta.20
-  - @italia/avatar@1.0.0-beta.20
-  - @italia/back@1.0.0-beta.20
-  - @italia/back-to-top@1.0.0-beta.20
-  - @italia/bottom-nav@1.0.0-beta.20
-  - @italia/breadcrumbs@1.0.0-beta.20
-  - @italia/button@1.0.0-beta.20
-  - @italia/callout@1.0.0-beta.20
-  - @italia/card@1.0.0-beta.20
-  - @italia/carousel@1.0.0-beta.20
-  - @italia/checkbox@1.0.0-beta.20
-  - @italia/chip@1.0.0-beta.20
-  - @italia/collapse@1.0.0-beta.20
-  - @italia/dimmer@1.0.0-beta.20
-  - @italia/dropdown@1.0.0-beta.20
-  - @italia/forward@1.0.0-beta.20
-  - @italia/header@1.0.0-beta.20
-  - @italia/hero@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
-  - @italia/input@1.0.0-beta.20
-  - @italia/megamenu@1.0.0-beta.20
-  - @italia/modal@1.0.0-beta.20
-  - @italia/navscroll@1.0.0-beta.20
-  - @italia/notification@1.0.0-beta.20
-  - @italia/pagination@1.0.0-beta.20
-  - @italia/popover@1.0.0-beta.20
-  - @italia/progress@1.0.0-beta.20
-  - @italia/radio@1.0.0-beta.20
-  - @italia/rating@1.0.0-beta.20
-  - @italia/section@1.0.0-beta.20
-  - @italia/select@1.0.0-beta.20
-  - @italia/skiplinks@1.0.0-beta.20
-  - @italia/stepper@1.0.0-beta.20
-  - @italia/sticky@1.0.0-beta.20
-  - @italia/tabs@1.0.0-beta.20
-  - @italia/thumbnav@1.0.0-beta.20
-  - @italia/timeline@1.0.0-beta.20
-  - @italia/toggle@1.0.0-beta.20
-  - @italia/toolbar@1.0.0-beta.20
-  - @italia/tooltip@1.0.0-beta.20
-  - @italia/transfer@1.0.0-beta.20
-  - @italia/upload@1.0.0-beta.20
-  - @italia/video@1.0.0-beta.20
+  - @italia/accordion@1.0.0-beta.0
+  - @italia/alert@1.0.0-beta.0
+  - @italia/autocomplete@1.0.0-beta.0
+  - @italia/avatar@1.0.0-beta.0
+  - @italia/back@1.0.0-beta.0
+  - @italia/back-to-top@1.0.0-beta.0
+  - @italia/bottom-nav@1.0.0-beta.0
+  - @italia/breadcrumbs@1.0.0-beta.0
+  - @italia/button@1.0.0-beta.0
+  - @italia/callout@1.0.0-beta.0
+  - @italia/card@1.0.0-beta.0
+  - @italia/carousel@1.0.0-beta.0
+  - @italia/checkbox@1.0.0-beta.0
+  - @italia/chip@1.0.0-beta.0
+  - @italia/collapse@1.0.0-beta.0
+  - @italia/dimmer@1.0.0-beta.0
+  - @italia/dropdown@1.0.0-beta.0
+  - @italia/forward@1.0.0-beta.0
+  - @italia/header@1.0.0-beta.0
+  - @italia/hero@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+  - @italia/input@1.0.0-beta.0
+  - @italia/megamenu@1.0.0-beta.0
+  - @italia/modal@1.0.0-beta.0
+  - @italia/navscroll@1.0.0-beta.0
+  - @italia/notification@1.0.0-beta.0
+  - @italia/pagination@1.0.0-beta.0
+  - @italia/popover@1.0.0-beta.0
+  - @italia/progress@1.0.0-beta.0
+  - @italia/radio@1.0.0-beta.0
+  - @italia/rating@1.0.0-beta.0
+  - @italia/section@1.0.0-beta.0
+  - @italia/select@1.0.0-beta.0
+  - @italia/skiplinks@1.0.0-beta.0
+  - @italia/stepper@1.0.0-beta.0
+  - @italia/sticky@1.0.0-beta.0
+  - @italia/tabs@1.0.0-beta.0
+  - @italia/thumbnav@1.0.0-beta.0
+  - @italia/timeline@1.0.0-beta.0
+  - @italia/toggle@1.0.0-beta.0
+  - @italia/toolbar@1.0.0-beta.0
+  - @italia/tooltip@1.0.0-beta.0
+  - @italia/transfer@1.0.0-beta.0
+  - @italia/upload@1.0.0-beta.0
+  - @italia/video@1.0.0-beta.0
 
 ### `dimmer`
 
@@ -249,9 +249,9 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/button@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
 
 ### `dropdown`
 
@@ -262,10 +262,10 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/button@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
-  - @italia/popover@1.0.0-beta.20
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+  - @italia/popover@1.0.0-beta.0
 
 ### `forward`
 
@@ -276,7 +276,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `globals`
 
@@ -287,7 +287,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/i18n@1.0.0-beta.20
+  - @italia/i18n@1.0.0-beta.0
 
 ### `header`
 
@@ -298,11 +298,11 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/button@1.0.0-beta.20
-  - @italia/dropdown@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
-  - @italia/modal@1.0.0-beta.20
+  - @italia/button@1.0.0-beta.0
+  - @italia/dropdown@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+  - @italia/modal@1.0.0-beta.0
 
 ### `hero`
 
@@ -313,7 +313,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `i18n`
 
@@ -330,7 +330,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `input`
 
@@ -341,9 +341,9 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
 
 ### `megamenu`
 
@@ -354,10 +354,10 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/button@1.0.0-beta.20
-  - @italia/dropdown@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
+  - @italia/button@1.0.0-beta.0
+  - @italia/dropdown@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
 
 ### `modal`
 
@@ -368,9 +368,9 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/button@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
 
 ### `navscroll`
 
@@ -381,10 +381,10 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/button@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
-  - @italia/modal@1.0.0-beta.20
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+  - @italia/modal@1.0.0-beta.0
 
 ### `notification`
 
@@ -395,8 +395,8 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
 
 ### `pagination`
 
@@ -407,7 +407,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `popover`
 
@@ -418,8 +418,8 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/button@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
 
 ### `progress`
 
@@ -430,7 +430,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `radio`
 
@@ -441,7 +441,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `rating`
 
@@ -452,10 +452,10 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
-  - @italia/radio@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+  - @italia/radio@1.0.0-beta.0
 
 ### `section`
 
@@ -466,7 +466,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `select`
 
@@ -477,9 +477,9 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
 
 ### `skiplinks`
 
@@ -490,7 +490,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `stepper`
 
@@ -501,10 +501,10 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/button@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
 
 ### `sticky`
 
@@ -515,7 +515,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `tabs`
 
@@ -526,8 +526,8 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
 
 ### `thumbnav`
 
@@ -538,7 +538,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `timeline`
 
@@ -549,7 +549,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `toggle`
 
@@ -560,9 +560,9 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/checkbox@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
+  - @italia/checkbox@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
 
 ### `toolbar`
 
@@ -573,7 +573,7 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
 
 ### `tooltip`
 
@@ -584,8 +584,8 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/button@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
 
 ### `transfer`
 
@@ -596,9 +596,9 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
 
 ### `upload`
 
@@ -609,11 +609,11 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/avatar@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
-  - @italia/progress@1.0.0-beta.20
+  - @italia/avatar@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+  - @italia/progress@1.0.0-beta.0
 
 ### `video`
 
@@ -624,11 +624,11 @@ This changelog contains all changes from all packages in the monorepo.
 ### Patch Changes
 
 - Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
-  - @italia/button@1.0.0-beta.20
-  - @italia/checkbox@1.0.0-beta.20
-  - @italia/globals@1.0.0-beta.20
-  - @italia/i18n@1.0.0-beta.20
-  - @italia/icon@1.0.0-beta.20
+  - @italia/button@1.0.0-beta.0
+  - @italia/checkbox@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
 
 ## 1.0.0-alpha.9
 
