@@ -7,7 +7,7 @@ export const path = process.env.GH_PAGES_PATH + '/next-app/';
 
 # SSR (Server-Side Rendering)
 
-I pattern di importazione mostrati nelle altre pagine di questa sezione (`import '@italia/dev-kit-italia/elements.js'` nel punto di ingresso) assumono un contesto **client-only**, cioè un'applicazione senza SSR. In un'app con SSR abilitato — Next.js App Router, SvelteKit, Nuxt, Angular Universal — quello stesso import va sostituito con uno dei pattern descritti in questa pagina. Vedi [issue #360](https://github.com/italia/dev-kit-italia/issues/360).
+I pattern di importazione mostrati nelle altre pagine di questa sezione (`import '@italia/dev-kit-italia/elements.js'` nel punto di ingresso) assumono un contesto **client-only**, cioè un'applicazione senza SSR. In un'app con SSR abilitato — Next.js App Router, SvelteKit, Nuxt, Angular SSR — quello stesso import va sostituito con uno dei pattern descritti in questa pagina. Vedi [issue #360](https://github.com/italia/dev-kit-italia/issues/360).
 
 <div class="callout callout-warning">
   <div class="callout-inner">
@@ -98,9 +98,9 @@ Stesso principio, con `onMount` al posto di `useEffect`:
 <it-button>Cliccami</it-button>
 ```
 
-## Altri framework SSR (Nuxt, Angular Universal, Remix, ...)
+## Altri framework SSR (Nuxt, Angular SSR, Remix, ...)
 
-Il principio è lo stesso ovunque: registra i componenti in un hook lato client (`onMounted` in Nuxt, un guard su `isPlatformBrowser` o `afterNextRender` in Angular Universal, `useEffect`/`ClientOnly` in Remix), e mantieni il markup con gli slot statico nel template così che il server lo emetta comunque.
+Il principio è lo stesso ovunque: registra i componenti in un hook lato client (`onMounted` in Nuxt, un guard su `isPlatformBrowser` o `afterNextRender` in Angular SSR, `useEffect`/`ClientOnly` in Remix), e mantieni il markup con gli slot statico nel template così che il server lo emetta comunque.
 
 ## Internazionalizzazione
 
