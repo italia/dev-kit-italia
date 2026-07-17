@@ -135,6 +135,31 @@ Per riportare il campo ad uno stato 'valido', è sufficiente impostare il messag
 <Description of={TransferStories.GestioneEventi} />
 <Canvas of={TransferStories.GestioneEventi} />
 
+## Evento annullabile
+
+<Canvas of={TransferStories.EventoAnnullabile} />
+
+Per riprendere l'azione dopo logica asincrona senza rischio di ricorsione, vedi [la sezione dedicata](#evento-annullabile-con-ripresa-asincrona) e il metodo `commit()`.
+
+## Evento annullabile con ripresa asincrona
+
+Quando il trasferimento deve attendere una logica asincrona (validazione remota, conferma dell'utente, ecc.), il pattern corretto è:
+
+1. Chiama `event.preventDefault()` nell'handler di `it-transfer` per bloccare l'azione;
+2. Esegui la tua logica asincrona;
+3. Chiama `el.commit(event.detail)` per applicare lo stato proposto dall'evento, senza rieseguire l'evento stesso.
+
+```js
+const el = document.querySelector('it-transfer');
+el.addEventListener('it-transfer', async (e) => {
+  e.preventDefault();
+  const ok = await fetchConfirmation(e.detail);
+  if (ok) el.commit(e.detail);
+});
+```
+
+<Canvas of={TransferStories.EventoAnnullabileConRipresa} />
+
 ## {TransferStories.I18n.name}
 
 <Description of={TransferStories.I18n} />

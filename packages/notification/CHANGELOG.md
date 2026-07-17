@@ -1,5 +1,35 @@
 # @italia/notification
 
+## 1.0.0-beta.0
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+
+## 1.0.0-alpha.19
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - `it-notification` now fires `it-notification-show` and `it-notification-close` custom events (not cancelable — show/close are always caller-initiated, so there was no real use case for blocking them). `it-notification-close` covers the close button, the auto-dismiss timeout and any programmatic `hide()` call.
+
+  Also fixed: dismissing a notification while focus is on its own close button no longer silently drops focus to `<body>`. Focus is restored to whatever was focused right before `show()` was called (typically the button that triggered it — there is no author-provided trigger slot to target like `it-modal` has), falling back to a `tabindex`-bearing ancestor and then to the nearest focusable element in the document if that original element is gone.
+
+### Patch Changes
+
+- [#457](https://github.com/italia/dev-kit-italia/pull/457) [`aa77369`](https://github.com/italia/dev-kit-italia/commit/aa773695e73e24c05fe27db62a99b971f7fd3490) Thanks [@pnicolli](https://github.com/pnicolli)! - Set default notification z-index
+
+- [`10102b4`](https://github.com/italia/dev-kit-italia/commit/10102b4bd2a7fc90b0957858a54613898b309acb) Thanks [@pnicolli](https://github.com/pnicolli)! - - Fixed notification announcements on NVDA and Jaws
+  - Improved announcements on several screen readers
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Patch Changes

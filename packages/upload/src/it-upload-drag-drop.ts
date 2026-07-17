@@ -1,5 +1,5 @@
 /* eslint-disable class-methods-use-this */
-import { FormControl, FormControlController } from '@italia/globals';
+import { FormControl, FormControlController, dispatchCancelable } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
 import { html, nothing } from 'lit';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
@@ -126,18 +126,11 @@ export class ItUploadDragDrop extends FormControl {
   private _onDragEnter(e: DragEvent) {
     this._preventEvent(e);
     if (this.disabled || this._state === 'success' || this._state === 'loading') return;
-    const cancelled = !this.dispatchEvent(
-      new CustomEvent('it-dd-start', {
-        cancelable: true,
-        bubbles: true,
-        composed: true,
-        detail: {},
-      }),
-    );
-    if (!cancelled) {
+    const event = dispatchCancelable(this, 'it-dd-start', {}, () => {
       this.start();
       this._autoStarted = true;
-    } else {
+    });
+    if (event.defaultPrevented) {
       this._state = 'dragover';
     }
   }
@@ -180,18 +173,10 @@ export class ItUploadDragDrop extends FormControl {
     this._fileType = this._extractFileType(file.name);
     this._autoStarted = false;
 
-    const dropCancelled = !this.dispatchEvent(
-      new CustomEvent('it-dd-drop', {
-        cancelable: true,
-        bubbles: true,
-        composed: true,
-        detail: { file, name: this.name, id: this.id },
-      }),
-    );
-    if (!dropCancelled) {
+    dispatchCancelable(this, 'it-dd-drop', { file, name: this.name, id: this.id }, () => {
       if (this._state !== 'loading') this.start();
       this._indeterminate = true;
-    }
+    });
 
     this.dispatchEvent(
       new CustomEvent('it-change', {
@@ -213,18 +198,10 @@ export class ItUploadDragDrop extends FormControl {
     this._fileType = this._extractFileType(file.name);
     input.value = '';
 
-    const dropCancelled = !this.dispatchEvent(
-      new CustomEvent('it-dd-drop', {
-        cancelable: true,
-        bubbles: true,
-        composed: true,
-        detail: { file, name: this.name, id: this.id },
-      }),
-    );
-    if (!dropCancelled) {
+    dispatchCancelable(this, 'it-dd-drop', { file, name: this.name, id: this.id }, () => {
       this.start();
       this._indeterminate = true;
-    }
+    });
 
     this.dispatchEvent(
       new CustomEvent('it-change', {

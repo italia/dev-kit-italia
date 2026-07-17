@@ -13,6 +13,20 @@ npm run dev
 
 Una volta avviato il server di sviluppo, l'applicazione sarà accessibile all'indirizzo [http://localhost:5173](http://localhost:5173).
 
+## Next.js
+
+Questa applicazione è generata con [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) (App Router) e usa l'esportazione statica di Next.js (`output: 'export'`). Per avviare l'applicazione di esempio:
+
+```bash
+cd next-app
+npm install
+npm run dev
+```
+
+Una volta avviato il server di sviluppo, l'applicazione sarà accessibile all'indirizzo [http://localhost:3000/next-app](http://localhost:3000/next-app).
+
+Questo esempio mostra come integrare i web component del kit in un contesto con rendering lato server senza causare crash in fase di build/prerendering, secondo i pattern documentati nella pagina Storybook "Framework/SSR".
+
 ## Angular
 
 Questa applicazione è generata e gestita con [Angular CLI](https://angular.io/cli).

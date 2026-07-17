@@ -1,5 +1,25 @@
 # @italia/breadcrumbs
 
+## 1.0.0-beta.0
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+## 1.0.0-alpha.19
+
+### Patch Changes
+
+- [`5e0ecfc`](https://github.com/italia/dev-kit-italia/commit/5e0ecfc622bdafa22e471a5d7198d90a544260db) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed breadcrumbs items role
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Patch Changes

@@ -84,6 +84,119 @@ describe('it-chip component', () => {
       expect(container?.classList.contains('chip-disabled')).to.be.true;
     });
   });
+  describe('focus shift on close', () => {
+    it('moves focus to the next it-chip sibling when one exists', async () => {
+      const container = await fixture<HTMLElement>(html`
+        <div>
+          <it-chip label="First" dismissable id="chip-a">
+            <it-button slot="dismiss-button" it-aria-label="Remove First">
+              <it-icon name="it-close" size="sm"></it-icon>
+            </it-button>
+          </it-chip>
+          <it-chip label="Second" dismissable id="chip-b">
+            <it-button slot="dismiss-button" it-aria-label="Remove Second">
+              <it-icon name="it-close" size="sm"></it-icon>
+            </it-button>
+          </it-chip>
+        </div>
+      `);
+      const chipA = container.querySelector<ItChip>('#chip-a')!;
+      const chipB = container.querySelector<ItChip>('#chip-b')!;
+      chipA.close();
+      expect(chipA.isConnected).to.be.false;
+      const btn = chipB.shadowRoot?.querySelector('slot[name="dismiss-button"]') as HTMLSlotElement | null;
+      const assignedBtn = btn?.assignedElements()[0] as HTMLElement | undefined;
+      expect(document.activeElement === assignedBtn || document.activeElement === chipB).to.be.true;
+    });
+
+    it('moves focus to the previous it-chip sibling when no next exists', async () => {
+      const container = await fixture<HTMLElement>(html`
+        <div>
+          <it-chip label="First" dismissable id="chip-a">
+            <it-button slot="dismiss-button" it-aria-label="Remove First">
+              <it-icon name="it-close" size="sm"></it-icon>
+            </it-button>
+          </it-chip>
+          <it-chip label="Second" dismissable id="chip-b">
+            <it-button slot="dismiss-button" it-aria-label="Remove Second">
+              <it-icon name="it-close" size="sm"></it-icon>
+            </it-button>
+          </it-chip>
+        </div>
+      `);
+      const chipA = container.querySelector<ItChip>('#chip-a')!;
+      const chipB = container.querySelector<ItChip>('#chip-b')!;
+      chipB.close();
+      expect(chipB.isConnected).to.be.false;
+      const btn = chipA.shadowRoot?.querySelector('slot[name="dismiss-button"]') as HTMLSlotElement | null;
+      const assignedBtn = btn?.assignedElements()[0] as HTMLElement | undefined;
+      expect(document.activeElement === assignedBtn || document.activeElement === chipA).to.be.true;
+    });
+
+    it('falls back to the nearest focusable ancestor when no sibling chip exists', async () => {
+      const wrapper = await fixture<HTMLElement>(html`
+        <div tabindex="0" id="group">
+          <it-chip label="Only" dismissable id="only-chip">
+            <it-button slot="dismiss-button" it-aria-label="Remove">
+              <it-icon name="it-close" size="sm"></it-icon>
+            </it-button>
+          </it-chip>
+        </div>
+      `);
+      const chip = wrapper.querySelector<ItChip>('#only-chip')!;
+      chip.close();
+      expect(chip.isConnected).to.be.false;
+      expect(document.activeElement).to.equal(wrapper);
+    });
+
+    it('falls back to the nearest focusable element in the document when there is no sibling chip and no tabindex wrapper', async () => {
+      // This is the realistic case: a standalone chip with no sibling chip and no
+      // author-provided tabindex ancestor (matches the framework examples).
+      const wrapper = await fixture<HTMLElement>(html`
+        <div>
+          <button id="elsewhere">Altrove nella pagina</button>
+          <it-chip label="Only" dismissable id="only-chip">
+            <it-button slot="dismiss-button" it-aria-label="Remove">
+              <it-icon name="it-close" size="sm"></it-icon>
+            </it-button>
+          </it-chip>
+        </div>
+      `);
+      const chip = wrapper.querySelector<ItChip>('#only-chip')!;
+      const dismissBtn = chip.querySelector('[slot="dismiss-button"]') as HTMLElement;
+      dismissBtn.focus();
+
+      chip.close();
+
+      expect(chip.isConnected).to.be.false;
+      expect(document.activeElement).to.equal(wrapper.querySelector('#elsewhere'));
+    });
+
+    it('does not shift focus onto a non-dismissable (e.g. link) neighbor chip', async () => {
+      const wrapper = await fixture<HTMLElement>(html`
+        <div>
+          <button id="elsewhere">Altrove nella pagina</button>
+          <it-chip label="Download" dismissable id="download-chip">
+            <it-button slot="dismiss-button" it-aria-label="Remove">
+              <it-icon name="it-close" size="sm"></it-icon>
+            </it-button>
+          </it-chip>
+          <it-chip href="#" label="Preferiti" id="link-chip"></it-chip>
+        </div>
+      `);
+      const chip = wrapper.querySelector<ItChip>('#download-chip')!;
+      const linkChip = wrapper.querySelector<ItChip>('#link-chip')!;
+      const link = linkChip.shadowRoot?.querySelector('a');
+
+      chip.close();
+
+      expect(chip.isConnected).to.be.false;
+      expect(document.activeElement).to.not.equal(linkChip);
+      expect(document.activeElement).to.not.equal(link);
+      expect(document.activeElement).to.equal(wrapper.querySelector('#elsewhere'));
+    });
+  });
+
   describe('extra sr label', () => {
     it('extra sr label is added if a11y-description provided', async () => {
       const el = await fixture<ItChip>(html`

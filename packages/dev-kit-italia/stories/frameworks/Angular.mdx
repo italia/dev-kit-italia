@@ -27,6 +27,17 @@ Dev Kit Italia si integra nativamente con Angular tramite i Custom Elements stan
   </div>
 </div>
 
+<div class="callout callout-primary">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">SSR</span>
+    </div>
+    <p>
+      Se usi Angular con SSR abilitato (Angular Universal), l'import statico di <code>elements.js</code> mostrato di seguito va adattato: consulta la guida dedicata a <a href="/docs/framework-ssr--documentazione">SSR</a>.
+    </p>
+  </div>
+</div>
+
 ## Installazione
 
 Installa il pacchetto nel tuo progetto Angular:
@@ -47,7 +58,7 @@ Nel punto di ingresso dell'applicazione (`main.ts`), importa i componenti e i fo
 // main.ts
 import '@italia/dev-kit-italia/elements.js';
 import '@italia/dev-kit-italia/fonts.css';
-import '@italia/dev-kit-italia/full.css';
+import '@italia/dev-kit-italia/styles.css';
 ```
 
 ## Utilizzo

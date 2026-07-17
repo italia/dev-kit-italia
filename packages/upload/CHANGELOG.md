@@ -1,5 +1,35 @@
 # @italia/upload
 
+## 1.0.0-beta.0
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/avatar@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+  - @italia/progress@1.0.0-beta.0
+
+## 1.0.0-alpha.19
+
+### Minor Changes
+
+- [#449](https://github.com/italia/dev-kit-italia/pull/449) [`a413a25`](https://github.com/italia/dev-kit-italia/commit/a413a25137a6f483c171187e678748bb6c4c741a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Rework markup and styles following https://scottaohara.github.io/a11y_styled_form_controls/src/file-upload/ instead of copying BSI approach
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`7f3551f`](https://github.com/italia/dev-kit-italia/commit/7f3551f6f2e015f0a7f4b252cdbc3859a8226903)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/avatar@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+  - @italia/progress@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Minor Changes

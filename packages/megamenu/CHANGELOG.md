@@ -1,5 +1,31 @@
 # @italia/megamenu
 
+## 1.0.0-beta.0
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/button@1.0.0-beta.0
+  - @italia/dropdown@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+## 1.0.0-alpha.19
+
+### Patch Changes
+
+- [#453](https://github.com/italia/dev-kit-italia/pull/453) [`b2a220e`](https://github.com/italia/dev-kit-italia/commit/b2a220e413a514220a54b9bd9ff93887bba7c378) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed megamenu styles, focus and a11y axe tools
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`b2a220e`](https://github.com/italia/dev-kit-italia/commit/b2a220e413a514220a54b9bd9ff93887bba7c378), [`7b23069`](https://github.com/italia/dev-kit-italia/commit/7b230696944bd32070dbadcb94e039ba4b4b9f19), [`46dab26`](https://github.com/italia/dev-kit-italia/commit/46dab266b9a210d0a5680d231bced9f9945c5a13)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/dropdown@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Patch Changes

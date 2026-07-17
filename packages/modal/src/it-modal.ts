@@ -1,5 +1,5 @@
 /* eslint-disable lit-a11y/click-events-have-key-events */
-import { BaseComponent, FocusTrapController, WindowManager } from '@italia/globals';
+import { BaseComponent, FocusTrapController, WindowManager, dispatchCancelable } from '@italia/globals';
 import { html, PropertyValues } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -17,8 +17,8 @@ import styles from './modal.scss';
  * @slot header-icon - Icona opzionale nell'header
  * @slot footer - Azioni del footer (pulsanti)
  *
- * @fires it-modal-open - Quando la modale si apre
- * @fires it-modal-close - Quando la modale si chiude
+ * @fires it-modal-open - Quando la modale si apre (cancelable: `preventDefault()` impedisce l'apertura)
+ * @fires it-modal-close - Quando la modale si chiude (cancelable: `preventDefault()` impedisce la chiusura)
  *
  * @prop {string} close-button-placement - Posizione del pulsante di chiusura: `header` (default) o `backdrop` (sopra lo sfondo scuro, utile per menu offcanvas)
  */
@@ -148,23 +148,29 @@ export class ItModal extends BaseComponent {
   public show(): void {
     if (this.open || this.isAnimating) return;
 
-    this._originalTrigger = this._triggerElement;
-    this.dispatchEvent(
-      new CustomEvent<ModalEventDetail>('it-modal-open', { detail: { modal: this }, bubbles: true, composed: true }),
-    );
-    this.open = true;
+    // `it-modal-open` is cancelable: calling `preventDefault()` stops the modal
+    // from opening (the consumer can open it later by calling `show()` again).
+    dispatchCancelable<ModalEventDetail>(this, 'it-modal-open', { modal: this }, () => {
+      this._originalTrigger = this._triggerElement;
+      this.open = true;
+    });
   }
 
   public hide(): void {
     if (!this.open || this.isAnimating) return;
-    this.dispatchEvent(
-      new CustomEvent<ModalEventDetail>('it-modal-close', { detail: { modal: this }, bubbles: true, composed: true }),
-    );
-    this._hideModal();
+    // `it-modal-close` is cancelable: calling `preventDefault()` keeps the modal
+    // open (the consumer can close it later by calling `hide()`).
+    dispatchCancelable<ModalEventDetail>(this, 'it-modal-close', { modal: this }, () => {
+      this._hideModal();
+    });
   }
 
   public toggle(): void {
-    this.open = !this.open;
+    if (this.open) {
+      this.hide();
+    } else {
+      this.show();
+    }
   }
 
   protected updated(changedProperties: PropertyValues): void {

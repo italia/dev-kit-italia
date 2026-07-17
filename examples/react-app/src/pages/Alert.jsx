@@ -1,15 +1,20 @@
-import React from 'react';
+import { useEffect, useRef } from 'react';
 
 const Alert = () => {
-  const handleClose = (event) => {
-    const alertElement = event.target.closest('.alert');
-    if (alertElement) {
-      alertElement.classList.remove('show');
-      setTimeout(() => {
-        alertElement.remove();
-      }, 150);
-    }
-  };
+  const alertRef = useRef(null);
+
+  useEffect(() => {
+    const el = alertRef.current;
+    if (!el) return;
+    const onClose = (e) => {
+      e.preventDefault();
+      if (window.confirm('Vuoi davvero chiudere questo avviso?')) {
+        el.close();
+      }
+    };
+    el.addEventListener('it-alert-close', onClose);
+    return () => el.removeEventListener('it-alert-close', onClose);
+  }, []);
 
   return (
     <>
@@ -23,66 +28,100 @@ const Alert = () => {
         <h2>Esempi</h2>
         <p>Gli avvisi sono disponibili in quattro tipologie diverse e sono adatti a qualsiasi lunghezza di testo.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div className="alert alert-primary" role="alert">
-            <it-icon name="it-info-circle" className="alert-icon"></it-icon>Questo è un alert di tipo "<b>primary</b>".
-          </div>
+          <it-alert variant="primary">
+            <div className="alert">
+              <it-icon name="it-info-circle" className="alert-icon"></it-icon>Questo è un alert di tipo "<b>primary</b>".
+            </div>
+          </it-alert>
 
-          <div className="alert alert-secondary" role="alert">
-            <it-icon name="it-info-circle" className="alert-icon"></it-icon>Questo è un alert di tipo "<b>secondary</b>
-            ".
-          </div>
+          <it-alert variant="secondary">
+            <div className="alert">
+              <it-icon name="it-info-circle" className="alert-icon"></it-icon>Questo è un alert di tipo "
+              <b>secondary</b>".
+            </div>
+          </it-alert>
 
-          <div className="alert alert-success" role="alert">
-            <it-icon name="it-check-circle" className="alert-icon"></it-icon>Questo è un alert di tipo "<b>success</b>".
-          </div>
+          <it-alert variant="success">
+            <div className="alert">
+              <it-icon name="it-check-circle" className="alert-icon"></it-icon>Questo è un alert di tipo "<b>success</b>
+              ".
+            </div>
+          </it-alert>
 
-          <div className="alert alert-warning" role="alert">
-            <it-icon name="it-info-circle" className="alert-icon"></it-icon>Questo è un alert di tipo "<b>warning</b>".
-          </div>
+          <it-alert variant="warning">
+            <div className="alert">
+              <it-icon name="it-info-circle" className="alert-icon"></it-icon>Questo è un alert di tipo "<b>warning</b>".
+            </div>
+          </it-alert>
 
-          <div className="alert alert-danger" role="alert">
-            <it-icon name="it-info-circle" className="alert-icon"></it-icon>Questo è un alert di tipo "<b>danger</b>".
-          </div>
+          <it-alert variant="danger">
+            <div className="alert">
+              <it-icon name="it-info-circle" className="alert-icon"></it-icon>Questo è un alert di tipo "<b>danger</b>".
+            </div>
+          </it-alert>
         </div>
       </section>
 
       <section>
         <h2>Link evidenziato</h2>
         <p>Usa la classe `.alert-link` per dare risalto ad un link all'interno dell'alert.</p>
-        <div className="alert alert-danger" role="alert">
-          Questo è un alert con un esempio di{' '}
-          <a href="#" className="alert-link">
-            link
-          </a>{' '}
-          evidenziato.
-        </div>
+        <it-alert variant="danger">
+          <div className="alert">
+            Questo è un alert con un esempio di{' '}
+            <a href="#" className="alert-link">
+              link
+            </a>{' '}
+            evidenziato.
+          </div>
+        </it-alert>
       </section>
 
       <section>
         <h2>Contenuto aggiuntivo</h2>
         <p>I messaggi di avviso possono avere del contenuto HTML aggiuntivo come intestazioni, paragrafi e divisori.</p>
-        <div className="alert alert-success" role="alert">
-          <h4 className="alert-heading">Avviso di successo!</h4>
-          <p>
-            Stai leggendo questo importante messaggio di avviso di successo. Questo testo di esempio sarà più lungo in
-            modo da poter vedere come funziona la spaziatura all'interno di un avviso con questo tipo di contenuto.
-          </p>
-          <hr />
-          <p className="mb-0">
-            Quando necessario, assicurati di inserire le utilità di margine per mantenere gli spazi equilibrati.
-          </p>
-        </div>
+        <it-alert variant="success">
+          <div className="alert">
+            <h4 className="alert-heading">Avviso di successo!</h4>
+            <p>
+              Stai leggendo questo importante messaggio di avviso di successo. Questo testo di esempio sarà più lungo in
+              modo da poter vedere come funziona la spaziatura all'interno di un avviso con questo tipo di contenuto.
+            </p>
+            <hr />
+            <p className="mb-0">
+              Quando necessario, assicurati di inserire le utilità di margine per mantenere gli spazi equilibrati.
+            </p>
+          </div>
+        </it-alert>
       </section>
 
       <section>
         <h2>Chiusura</h2>
         <p>È possibile eliminare qualsiasi avviso mediante un pulsante di chiusura.</p>
-        <div className="alert alert-warning alert-dismissible fade show" role="alert">
-          <strong>Attenzione</strong> Alcuni campi inseriti sono da controllare.
-          <it-button type="button" className="btn-close" it-aria-label="Chiudi avviso" onClick={handleClose}>
-            <it-icon name="it-close"></it-icon>
-          </it-button>
-        </div>
+        <it-alert variant="warning">
+          <div className="alert alert-dismissible fade show">
+            <strong>Attenzione</strong> Alcuni campi inseriti sono da controllare.
+            <it-button type="button" className="btn-close" it-aria-label="Chiudi avviso">
+              <it-icon name="it-close"></it-icon>
+            </it-button>
+          </div>
+        </it-alert>
+      </section>
+
+      <section>
+        <h2>Chiusura con logica personalizzata</h2>
+        <p>
+          L'evento `it-alert-close` è cancelable. Chiamando `event.preventDefault()` puoi intercettare la chiusura ed
+          eseguire una logica personalizzata (ad esempio una conferma), richiamando poi il metodo pubblico `close()`
+          quando opportuno.
+        </p>
+        <it-alert ref={alertRef} variant="warning">
+          <div className="alert alert-dismissible fade show">
+            <strong>Attenzione</strong> La chiusura richiede conferma.
+            <it-button type="button" className="btn-close" it-aria-label="Chiudi avviso">
+              <it-icon name="it-close"></it-icon>
+            </it-button>
+          </div>
+        </it-alert>
       </section>
     </>
   );

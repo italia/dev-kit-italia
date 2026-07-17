@@ -1,0 +1,107 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Code } from 'storybook/internal/components';
+
+<Meta title="Framework/SSR" />
+
+export const path = process.env.GH_PAGES_PATH + '/next-app/';
+
+# SSR (Server-Side Rendering)
+
+I pattern di importazione mostrati nelle altre pagine di questa sezione (`import '@italia/dev-kit-italia/elements.js'` nel punto di ingresso) assumono un contesto **client-only**, cioè un'applicazione senza SSR. In un'app con SSR abilitato — Next.js App Router, SvelteKit, Nuxt, Angular Universal — quello stesso import va sostituito con uno dei pattern descritti in questa pagina. Vedi [issue #360](https://github.com/italia/dev-kit-italia/issues/360).
+
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Attenzione</span>
+    </div>
+    <p>
+      Lit estende <code>HTMLElement</code> al caricamento del modulo. In Node <code>HTMLElement</code> non esiste, quindi importare <code>elements.js</code> a livello di modulo in un ambiente SSR causa un errore (tipicamente <code>HTMLElement is not defined</code>, a volte un hydration mismatch a seconda del framework e della versione).
+      In React, <code>'use client'</code> non basta a evitare il problema: protegge il componente dall'essere reso lato server, ma non impedisce che gli import a livello di modulo vengano comunque valutati server-side.
+    </p>
+  </div>
+</div>
+
+## Due livelli, oggi
+
+- **Evitare il crash** — il kit resta client-only: il server non genera il markup dei componenti, ma l'app non crasha. Non è SSR, ma è un punto di partenza sicuro.
+- **HTML-first + hydration** — il server genera comunque il tag custom element con il contenuto **slottato** nell'HTML, grazie all'approccio HTML-first già seguito dal kit. Il contenuto è visibile e indicizzabile anche prima che il componente venga idratato lato client. È il livello raggiungibile oggi con le patch di importazione qui sotto, **a condizione che il markup nello slot sia statico** e già presente nel render server-side — se viene popolato dinamicamente via JS dopo l'hydration, si ricade al livello precedente.
+
+Un vero SSR con Declarative Shadow DOM (markup interno dei componenti generato dal server, tramite `@lit-labs/ssr`) è in valutazione ma richiede fix lato kit non ancora completati: non è documentato qui.
+
+## Next.js (App Router)
+
+<a href={path} title="Vai all'esempio di integrazione NextJS">Esempio di integrazione</a> - <a href="https://github.com/italia/dev-kit-italia/tree/main/examples/next-app" title="Vai al codice su GitHub">Codice GitHub</a>
+
+<div class="callout callout-warning">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">Attenzione</span>
+    </div>
+    <p>
+      Con Next.js 16 il bundler di default è Turbopack, il cui parser CSS attualmente rifiuta con un errore bloccante una regola malformata presente in <code>styles.css</code> (ereditata da un bug di <code>bootstrap-italia</code>: <code>var(-bsi-spacing-inset-m)</code>, manca un trattino). In attesa della correzione a monte, usa webpack con <code>next dev --webpack</code> e <code>next build --webpack</code>: il suo parser CSS tollera la regola.
+    </p>
+  </div>
+</div>
+
+Isola l'import di `elements.js` in un componente client, differendolo a dopo il mount, e lascia il markup (inclusi gli slot) statico nel JSX così che il server lo generi comunque:
+
+```jsx
+// src/components/ItButton.jsx
+'use client';
+
+import { useEffect } from 'react';
+
+export default function ItButton({ children, ...props }) {
+  useEffect(() => {
+    import('@italia/dev-kit-italia/elements.js');
+  }, []);
+
+  return <it-button {...props}>{children}</it-button>;
+}
+```
+
+Se invece il componente non ha contenuto slottato utile a livello server (es. logica interamente client-side), è preferibile escluderlo del tutto dal render server con `next/dynamic` e `ssr: false`:
+
+```jsx
+import dynamic from 'next/dynamic';
+
+const ItButton = dynamic(() => import('./ItButton'), { ssr: false });
+```
+
+Infine, aggiungi le type declarations se necessario:
+
+```jsx
+// src/types/web-components.d.ts
+declare namespace JSX {
+  interface IntrinsicElements {
+    'my-web-component': React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLElement> & { value?: string },
+      HTMLElement
+    >
+  }
+}
+```
+
+## SvelteKit
+
+Stesso principio, con `onMount` al posto di `useEffect`:
+
+```svelte
+<script>
+  import { onMount } from 'svelte';
+
+  onMount(async () => {
+    await import('@italia/dev-kit-italia/elements.js');
+  });
+</script>
+
+<it-button>Cliccami</it-button>
+```
+
+## Altri framework SSR (Nuxt, Angular Universal, Remix, ...)
+
+Il principio è lo stesso ovunque: registra i componenti in un hook lato client (`onMounted` in Nuxt, un guard su `isPlatformBrowser` o `afterNextRender` in Angular Universal, `useEffect`/`ClientOnly` in Remix), e mantieni il markup con gli slot statico nel template così che il server lo emetta comunque.
+
+## Internazionalizzazione
+
+`registerTranslation` accede anch'esso ad API globali del browser: registra le traduzioni nello stesso hook client-only usato per l'import di `elements.js`, non a livello di modulo. Vedi la sezione "Internazionalizzazione" delle pagine [React](/docs/framework-react--documentazione) e [Svelte](/docs/framework-svelte--documentazione) per un esempio completo di questo pattern.

@@ -1,7 +1,7 @@
 {
   "name": "@italia/dev-kit-italia",
   "description": "Bundle dei web components del Design system .italia",
-  "version": "1.0.0-alpha.18",
+  "version": "1.0.0-beta.0",
   "publishConfig": {
     "access": "public"
   },
@@ -23,7 +23,7 @@
     ".": "./dist/src/index.js",
     "./elements.js": "./dist/elements.js",
     "./styles.css": "./dist/styles.css",
-    "./full.css": "./dist/full.css",
+    "./styles-for-migration.css": "./dist/styles-for-migration.css",
     "./fonts.css": "./dist/fonts.css"
   },
   "scripts": {
@@ -53,8 +53,10 @@
   ],
   "dependencies": {
     "@italia/accordion": "workspace:^",
+    "@italia/alert": "workspace:^",
     "@italia/autocomplete": "workspace:^",
     "@italia/avatar": "workspace:^",
+    "@italia/back": "workspace:^",
     "@italia/back-to-top": "workspace:^",
     "@italia/bottom-nav": "workspace:^",
     "@italia/breadcrumbs": "workspace:^",
@@ -67,6 +69,7 @@
     "@italia/collapse": "workspace:^",
     "@italia/dimmer": "workspace:^",
     "@italia/dropdown": "workspace:^",
+    "@italia/forward": "workspace:^",
     "@italia/header": "workspace:^",
     "@italia/hero": "workspace:^",
     "@italia/i18n": "workspace:^",

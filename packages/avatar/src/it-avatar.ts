@@ -1,4 +1,4 @@
-import { BaseLocalizedComponent } from '@italia/globals';
+import { BaseLocalizedComponent, setAttributes } from '@italia/globals';
 import { html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -356,6 +356,7 @@ export class ItAvatar extends BaseLocalizedComponent {
               class="${this.getAvatarWrapperClasses()}"
               title="${ifDefined(this.avatarTitle || this.text || undefined)}"
               part="avatar focusable"
+              ${setAttributes(this._ariaAttributes)}
             >
               ${avatarContent}
             </a>

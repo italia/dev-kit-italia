@@ -119,7 +119,12 @@ export const HeaderSticky: StoryObj = {
                       </nav>
                     </div>
                     <div class="it-header-slim-right-zone">
-                      <it-dropdown label="ITA" size="sm" alignment="bottom-end">
+                      <it-dropdown
+                        label="ITA"
+                        size="sm"
+                        alignment="bottom-end"
+                        it-aria-label="Selettore lingua. Lingua attiva: Italiano"
+                      >
                         <it-dropdown-item href="#" active>
                           <span>ITA <span class="visually-hidden">selezionata</span></span>
                         </it-dropdown-item>

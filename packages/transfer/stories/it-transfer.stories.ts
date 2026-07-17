@@ -247,11 +247,100 @@ const translation = ${JSON.stringify(i18nIT, null, 2)}
   },
 };
 
+export const EventoAnnullabile: Story = {
+  name: 'Evento annullabile',
+  parameters: {
+    docs: {
+      description: {
+        story: `L'evento \`it-transfer\` è annullabile. Chiamando \`event.preventDefault()\` puoi bloccare
+l'azione in corso (transfer, backtransfer, reset) ed eseguire una logica di validazione personalizzata.
+
+Questo esempio mostra come bloccare il trasferimento quando il numero di elementi nella lista di
+destinazione supererebbe il limite di 3 elementi.
+
+Per riprendere l'azione dopo logica asincrona (validazione remota, conferma dell'utente), usa il metodo pubblico \`commit(event.detail)\`.
+Vedi la sezione dedicata per un esempio completo.`,
+      },
+    },
+  },
+  render: () => html`
+    <div id="transfer-cancelable-example">
+      <it-transfer name="max-items-transfer">
+        <it-transfer-item value="a">Voce A</it-transfer-item>
+        <it-transfer-item value="b">Voce B</it-transfer-item>
+        <it-transfer-item value="c">Voce C</it-transfer-item>
+        <it-transfer-item value="d">Voce D</it-transfer-item>
+        <it-transfer-item value="e">Voce E</it-transfer-item>
+        <it-transfer-item value="f">Voce F</it-transfer-item>
+      </it-transfer>
+      <p role="status" aria-live="polite" style="margin-top: 1rem; color: #d32f2f;"></p>
+    </div>
+
+    <script>
+      const el = document.querySelector('#transfer-cancelable-example it-transfer');
+      const statusEl = document.querySelector('#transfer-cancelable-example p[role="status"]');
+
+      el.addEventListener('it-transfer', (e) => {
+        if (e.detail.action === 'transfer' && e.detail.target.length > 3) {
+          e.preventDefault();
+          statusEl.textContent = 'Limite di 3 elementi nel target raggiunto.';
+        } else {
+          statusEl.textContent = '';
+        }
+      });
+    </script>
+  `,
+};
+
+export const EventoAnnullabileConRipresa: Story = {
+  name: 'Evento annullabile con ripresa',
+  parameters: {
+    docs: {
+      description: {
+        story: `Chiama \`event.preventDefault()\` per bloccare l'azione, poi usa il metodo pubblico \`commit(event.detail)\` per applicarla in modo programmatico dopo la tua logica asincrona — senza rieseguire l'evento.`,
+      },
+    },
+  },
+  render: () => html`
+    <div id="transfer-resume-example">
+      <it-transfer name="resume-transfer">
+        <it-transfer-item value="a">Voce A</it-transfer-item>
+        <it-transfer-item value="b">Voce B</it-transfer-item>
+        <it-transfer-item value="c">Voce C</it-transfer-item>
+        <it-transfer-item value="d">Voce D</it-transfer-item>
+      </it-transfer>
+      <p role="status" aria-live="polite" id="transfer-resume-status" style="margin-top: 1rem;"></p>
+    </div>
+
+    <script>
+      const el2 = document.querySelector('#transfer-resume-example it-transfer');
+      const statusEl2 = document.querySelector('#transfer-resume-status');
+
+      el2.addEventListener('it-transfer', (e) => {
+        if (e.detail.action === 'transfer') {
+          e.preventDefault();
+          statusEl2.textContent = 'Attendere conferma…';
+          // Simula logica asincrona (es. chiamata API, conferma utente)
+          setTimeout(() => {
+            el2.commit(e.detail); // applica lo stato proposto senza rieseguire l'evento
+            statusEl2.textContent = '';
+          }, 4000);
+        }
+      });
+    </script>
+  `,
+};
+
 export const MetodiEPropPubblici: Story = {
   ...StoryFormControlMethodAndProps({
     componentName: 'it-transfer',
     otherProps: `|\`value\`| Array JSON dei valori degli elementi presenti nella lista destinazione. |`,
-    otherEvents: `|\`it-transfer\`| Emesso prima di ogni azione (transfer, backtransfer, reset). Annullabile con \`event.preventDefault()\`. Detail: \`{ action, items, source, target }\`. |`,
+    otherMethods: `|\`transfer()\`| Sposta gli elementi selezionati dalla lista sorgente alla lista destinazione. Equivale al click sul pulsante →. | - |
+|\`backtransfer()\`| Riporta gli elementi selezionati dalla lista destinazione alla lista sorgente. Equivale al click sul pulsante ←. | - |
+|\`reset()\`| Ripristina entrambe le liste allo stato iniziale. Equivale al click sul pulsante ↺. | - |
+|\`commit(detail)\`| Applica lo stato proposto da un evento \`it-transfer\` precedentemente annullato, senza rieseguire l'evento. Usare dopo \`event.preventDefault()\` per riprendere l'azione in modo programmatico. | detail: \`TransferEventDetail\` |`,
+    otherEvents: `|\`it-transfer\`| Emesso prima di ogni azione (transfer, backtransfer, reset). Annullabile con \`event.preventDefault()\`. Il \`detail\` contiene \`{ action, items, source, target }\` che descrive lo stato proposto. |
+|\`it-change\`| Emesso dopo ogni modifica delle liste. Il \`detail\` contiene \`{ value, el }\`. |`,
   }),
   tags: ['!dev'],
 };

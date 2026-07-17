@@ -1,12 +1,26 @@
 import { html, nothing } from 'lit';
-import { BaseComponent } from '@italia/globals';
+import {
+  BaseComponent,
+  dispatchCancelable,
+  focusableFallbackAncestor,
+  nearestFocusableInDocument,
+} from '@italia/globals';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import type { ItIcon } from '@italia/icon';
-import { ChipSize, ChipVariant } from './types.js';
+import { ChipSize, ChipVariant, type ChipCloseEventDetail } from './types.js';
 
 import styles from './chip.scss';
 
+/**
+ * Componente Chip.
+ *
+ * @element it-chip
+ *
+ * @slot dismiss-button - Pulsante di rimozione (richiesto quando `dismissable`)
+ *
+ * @fires it-chip-close - Quando si clicca il pulsante di rimozione (cancelable: `preventDefault()` impedisce la rimozione)
+ */
 @customElement('it-chip')
 export class ItChip extends BaseComponent {
   static styles = styles;
@@ -86,6 +100,75 @@ export class ItChip extends BaseComponent {
       );
     }
     this.updateIcon();
+  }
+
+  override connectedCallback(): void {
+    super.connectedCallback?.();
+    // Clicks on the slotted dismiss button bubble through the host (light DOM child),
+    // so a single host-level listener covers it without re-binding on every render.
+    this.addEventListener('click', this._onHostClick);
+  }
+
+  override disconnectedCallback(): void {
+    this.removeEventListener('click', this._onHostClick);
+    super.disconnectedCallback?.();
+  }
+
+  private _onHostClick = (event: MouseEvent): void => {
+    if (!this.dismissable) return;
+    const buttons = this.closeButton;
+    if (!buttons?.length) return;
+    const path = event.composedPath();
+    if (buttons.some((btn) => path.includes(btn))) {
+      this._requestClose();
+    }
+  };
+
+  private _requestClose(): void {
+    dispatchCancelable<ChipCloseEventDetail>(this, 'it-chip-close', { chip: this }, () => this._removeWithFocusShift());
+  }
+
+  /**
+   * Rimuove la chip dal DOM spostando il focus su una chip adiacente, se presente.
+   * Utile dopo aver intercettato `it-chip-close` con `preventDefault()`.
+   */
+  public close(): void {
+    this._removeWithFocusShift();
+  }
+
+  private _removeWithFocusShift(): void {
+    const adjacent = this._adjacentChip();
+    // No adjacent chip of the same type: fall back to a tabindex-bearing ancestor,
+    // and if the author didn't provide one (the common case), to the nearest
+    // focusable element anywhere in the document — better than losing focus to <body>.
+    const fallback = !adjacent ? (focusableFallbackAncestor(this) ?? nearestFocusableInDocument(this)) : null;
+    this.remove();
+    if (adjacent) ItChip._focusChip(adjacent);
+    else fallback?.focus();
+  }
+
+  private _adjacentChip(): ItChip | null {
+    // Only a dismissable neighbor is an equivalent "next item to remove" — shifting
+    // focus onto a plain label or link chip just because it's spatially adjacent
+    // would steal focus onto an unrelated control the user never asked to interact with.
+    const isDismissableChip = (el: Element | null): el is ItChip =>
+      !!el && el.tagName.toLowerCase() === 'it-chip' && el.hasAttribute('dismissable');
+    let el = this.nextElementSibling;
+    while (el && !isDismissableChip(el)) el = el.nextElementSibling;
+    if (isDismissableChip(el)) return el;
+    el = this.previousElementSibling;
+    while (el && !isDismissableChip(el)) el = el.previousElementSibling;
+    return isDismissableChip(el) ? el : null;
+  }
+
+  private static _focusChip(chip: ItChip): void {
+    const btn = chip.closeButton?.[0];
+    if (btn) {
+      btn.focus();
+      return;
+    }
+    const link = chip.shadowRoot?.querySelector<HTMLAnchorElement>('a');
+    link?.focus();
   }
 
   render() {

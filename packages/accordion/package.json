@@ -1,7 +1,7 @@
 {
   "name": "@italia/accordion",
   "description": "Web component it-accordion del Design system .italia",
-  "version": "1.0.0-alpha.18",
+  "version": "1.0.0-beta.0",
   "publishConfig": {
     "access": "public"
   },

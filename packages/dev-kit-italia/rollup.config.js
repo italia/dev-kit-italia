@@ -52,7 +52,7 @@ export default [
     ],
   },
   {
-    input: 'src/full.js',
+    input: 'src/styles-for-migration.js',
     output: {
       dir: 'dist',
       sourcemap: true,
@@ -74,7 +74,7 @@ export default [
         // flatten: false, // Mantiene la struttura interna
       }),
       scss({
-        fileName: 'full.css',
+        fileName: 'styles-for-migration.css',
         outputStyle: 'compressed',
         quietDeps: true,
         silenceDeprecations: ['import', 'if-function'],

@@ -1,20 +1,24 @@
 import { BaseComponent } from '@italia/globals';
 import { html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import styles from './thumbnav-item.scss';
 
 /**
  * Singolo elemento della Thumbnav.
  * Inserisce il contenuto (tipicamente un anchor con immagine) in un elemento `<li>`.
- * Lo stato attivo si gestisce aggiungendo la classe `active` all'anchor nello slot:
- * `<a href="#" class="ratio ratio-3x2 active"><img …></a>`
+ * Usa l'attributo `active` per indicare l'elemento corrente:
+ * `<it-thumbnav-item active><a href="#" class="ratio ratio-3x2"><img …></a></it-thumbnav-item>`
  */
 @customElement('it-thumbnav-item')
 export class ItThumbnavItem extends BaseComponent {
   static styles = styles;
 
+  /** Indica l'elemento attivo/corrente nella navigazione. */
+  @property({ type: Boolean, reflect: true })
+  active = false;
+
   override render() {
-    return html`<li><slot></slot></li>`;
+    return html`<li role="presentation"><slot></slot></li>`;
   }
 }
 

@@ -210,7 +210,11 @@ export class ItDropdownBase extends BaseComponent {
   }
 
   private _onDocumentClick = (event: MouseEvent) => {
-    if (this._popoverOpen && !this.contains(event.target as Node)) {
+    // Use composedPath() instead of event.target: when this dropdown is nested inside
+    // another shadow DOM host (e.g. it-toolbar-item), the target seen at the document
+    // level is retargeted to that outer host, so `this.contains(event.target)` would
+    // always be false and immediately close the dropdown right after opening it.
+    if (this._popoverOpen && !event.composedPath().includes(this)) {
       this._popoverOpen = false;
     }
   };

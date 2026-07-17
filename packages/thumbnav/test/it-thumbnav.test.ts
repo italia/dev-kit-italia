@@ -154,5 +154,18 @@ describe('ItThumbnav', () => {
       expect(ul?.tagName).to.equal('UL');
       expect(li?.tagName).to.equal('LI');
     });
+
+    it('exposes role="listitem" on the item host and role="presentation" on the inner li', async () => {
+      const el = await fixture(html`
+        <it-thumbnav>
+          <it-thumbnav-item><a href="#">Link</a></it-thumbnav-item>
+        </it-thumbnav>
+      `);
+      await elementUpdated(el);
+      const item = el.querySelector('it-thumbnav-item');
+      expect(item?.getAttribute('role')).to.equal('listitem');
+      const li = item?.shadowRoot?.querySelector('li');
+      expect(li?.getAttribute('role')).to.equal('presentation');
+    });
   });
 });

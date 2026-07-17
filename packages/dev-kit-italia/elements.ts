@@ -1,7 +1,9 @@
 import '@italia/accordion/it-accordion-item.js';
 import '@italia/accordion/it-accordion.js';
+import '@italia/alert/it-alert.js';
 import '@italia/autocomplete/it-autocomplete.js';
 import '@italia/avatar/it-avatar.js';
+import '@italia/back/it-back.js';
 import '@italia/back-to-top/it-back-to-top.js';
 import '@italia/bottom-nav/it-bottom-nav-item.js';
 import '@italia/bottom-nav/it-bottom-nav.js';
@@ -19,6 +21,7 @@ import '@italia/chip/it-chip.js';
 // import '@italia/collapse/it-collapse.js';
 import '@italia/dropdown/it-dropdown-item.js';
 import '@italia/dropdown/it-dropdown.js';
+import '@italia/forward/it-forward.js';
 import '@italia/header/it-header.js';
 import '@italia/dimmer/it-dimmer.js';
 import '@italia/icon/it-icon.js';

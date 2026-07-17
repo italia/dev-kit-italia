@@ -13,6 +13,7 @@
 .toolbar {
   --#{$prefix}toolbar-badge-size: 18px;
   --#{$prefix}toolbar-badge-top: -4px;
+  box-sizing: border-box;
 
   &.toolbar-small {
     --#{$prefix}toolbar-badge-size: 8px;

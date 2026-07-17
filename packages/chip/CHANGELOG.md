@@ -1,5 +1,35 @@
 # @italia/chip
 
+## 1.0.0-beta.0
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/avatar@1.0.0-beta.0
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+## 1.0.0-alpha.19
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - `it-chip` now removes itself by default when its dismiss button is clicked, via a cancelable `it-chip-close` event and a new public `close()` method — call `event.preventDefault()` to intercept the removal (e.g. async confirmation) and `close()` later.
+
+  Focus on close: shifts to an adjacent chip's dismiss button, but only if that neighbor is also `dismissable` — a plain label or link chip sitting next to it is no longer treated as an equivalent "next item to remove". Falls back to a `tabindex`-bearing ancestor, and now further to the nearest focusable element anywhere in the document when no such ancestor exists (the common case in practice) — previously focus was silently lost to `<body>` in that case.
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`7f3551f`](https://github.com/italia/dev-kit-italia/commit/7f3551f6f2e015f0a7f4b252cdbc3859a8226903)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/avatar@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Patch Changes

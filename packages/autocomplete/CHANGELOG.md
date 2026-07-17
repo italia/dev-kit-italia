@@ -1,5 +1,31 @@
 # @italia/autocomplete
 
+## 1.0.0-beta.0
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+## 1.0.0-alpha.19
+
+### Patch Changes
+
+- [#452](https://github.com/italia/dev-kit-italia/pull/452) [`96498b1`](https://github.com/italia/dev-kit-italia/commit/96498b1918e1cd9a905e1388d8fd40e1d6d8c625) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Addressed screen reader findings from issue #43
+  - The assistive hint is now `aria-hidden="true"`, so it is announced once as the input's description (via `aria-describedby`) instead of being read a second time as a standalone element when navigating by element.
+  - The `role="status"` live region is now reset to empty after an option is selected, when the query drops below `minLength`, and when the listbox is dismissed (Escape/Tab/click-outside), so a stale "N results available" message is no longer reachable after the field is no longer searching.
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
 ## 1.0.0-alpha.18
 
 ### Patch Changes

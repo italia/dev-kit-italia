@@ -1,7 +1,7 @@
 {
   "name": "@italia/toggle",
   "description": "Web component it-toggle del Design system .italia",
-  "version": "1.0.0-alpha.18",
+  "version": "1.0.0-beta.0",
   "publishConfig": {
     "access": "public"
   },

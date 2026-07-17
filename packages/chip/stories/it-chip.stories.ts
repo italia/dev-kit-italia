@@ -99,32 +99,15 @@ type Story = StoryObj<
   }
 >;
 
+// La rimozione della chip è gestita di default dal componente: al click sul pulsante
+// `slot="dismiss-button"` viene emesso l'evento cancelable `it-chip-close` e, se non
+// annullato, la chip viene rimossa dal DOM. Non è quindi necessario alcun handler manuale.
 const dismissTemplate = (label = 'Elimina etichetta', disabled = false, description = 'Aria description') => html`
   <it-button
     slot="dismiss-button"
     it-aria-label="${label}"
     ?disabled="${disabled}"
     it-aria-description="${description}"
-    @click=${(e: Event) => {
-      if (disabled) {
-        e.preventDefault();
-        e.stopPropagation();
-        return;
-      }
-      const chip = (e.currentTarget as HTMLElement).closest('it-chip');
-      if (chip) chip.remove();
-    }}
-    @keydown=${(e: KeyboardEvent) => {
-      if (disabled) {
-        e.preventDefault();
-        e.stopPropagation();
-        return;
-      }
-      if (e.key === 'Enter' || e.key === ' ') {
-        const chip = (e.currentTarget as HTMLElement).closest('it-chip');
-        if (chip) chip.remove();
-      }
-    }}
   >
     <it-icon name="it-close" size="sm"></it-icon>
   </it-button>
@@ -289,32 +272,70 @@ export const ChipConChiusura: Story = {
     <it-icon name="it-close" size="sm"></it-icon>
   </it-button>
 </it-chip>
-
-<script type="module">
-  const dismissButtons = document.querySelectorAll('it-chip#chip-dismissable [slot="dismiss-button"]');
-
-  dismissButtons.forEach((btn) => {
-    const removeChip = (e) => {
-      const chip = btn.closest('it-chip');
-      if (chip) chip.remove();
-    };
-
-    btn.addEventListener('click', removeChip);
-    btn.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        removeChip(e);
-      }
-    });
-  });
-</script>
-
 `,
         language: 'html',
       },
     },
   },
 };
+export const ChiusuraConLogicaPersonalizzata: Story = {
+  name: 'Logica di rimozione personalizzata',
+  tags: ['!autodocs', '!dev'],
+  parameters: {
+    docs: {
+      canvas: {
+        sourceState: 'shown',
+      },
+      source: {
+        code: `<it-chip
+  label="Etichetta"
+  size="sm"
+  variant="primary"
+  dismissable
+  id="chip-conferma"
+>
+  <it-button slot="dismiss-button" it-aria-label="Elimina etichetta">
+    <it-icon name="it-close" size="sm"></it-icon>
+  </it-button>
+</it-chip>
+
+<script type="module">
+  const chip = document.getElementById('chip-conferma');
+  chip.addEventListener('it-chip-close', (e) => {
+    e.preventDefault(); // impedisce la rimozione di default
+    if (confirm('Rimuovere questa chip?')) chip.close();
+  });
+</script>
+`,
+        language: 'html',
+      },
+    },
+  },
+  render: () => html`
+    <it-chip
+      label="Etichetta"
+      size="sm"
+      variant="primary"
+      dismissable
+      @it-chip-close=${(e: Event) => {
+        e.preventDefault();
+        // eslint-disable-next-line no-alert
+        if (window.confirm('Rimuovere questa chip?')) {
+          (e.currentTarget as HTMLElement & { close: () => void }).close();
+        }
+      }}
+    >
+      <it-button
+        slot="dismiss-button"
+        it-aria-label="Elimina etichetta"
+        it-aria-description="La rimozione richiede conferma."
+      >
+        <it-icon name="it-close" size="sm"></it-icon>
+      </it-button>
+    </it-chip>
+  `,
+};
+
 export const ChipDisabilitata: Story = {
   name: 'Chip disabilitata',
   args: {
