@@ -43,6 +43,8 @@ utilities.$utilities: (
     --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}spacing-xxs);
     --#{$prefix}dropdown-item-padding-y: var(--#{$prefix}spacing-xxs);
     --#{$prefix}dropdown-spacer: 0;
+    --#{$prefix}dropdown-border-width: 1px;
+    --#{$prefix}dropdown-border-color: var(--#{$prefix}color-border-subtle);
     left: 0 !important; //override dello stile definito da floating-ui
     width: 100%;
     background: var(--#{$prefix}megamenu-background-color, #fff);
@@ -56,6 +58,15 @@ utilities.$utilities: (
         display: grid;
         grid-auto-flow: column;
       }
+    }
+
+    .arrow {
+      top: -10px !important;
+      border-color: var(--#{$prefix}dropdown-border-color);
+      border-top-width: var(--#{$prefix}dropdown-border-width);
+      border-top-style: solid;
+      border-left-width: var(--#{$prefix}dropdown-border-width);
+      border-left-style: solid;
     }
 
     // .it-heading-link-wrapper {
