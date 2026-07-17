@@ -1,29 +1,11 @@
-# \<it-forward>
+# <it-forward>
 
-Web component _light DOM_ che aggiunge il comportamento di default di scorrimento fluido
-ai link "forward" del Design system .italia.
+This package is part of [dev-kit-italia](https://italia.github.io/dev-kit-italia), a Web Components kit for the **.italia** design-system.
 
-## Installation
+## Installation and usage
 
-```bash
-npm i @italia/forward
-```
+Most users want to install the full kit by installing [`@italia/dev-kit-italia`](https://npmjs.com/package/@italia/dev-kit-italia), but you have the option of installing this single Web Component separately if needed. Please find detailed installation and usage instructions in the [official documentation](https://italia.github.io/dev-kit-italia/?path=/docs/introduzione--documentazione).
 
-## Usage
+## Documentation
 
-```html
-<script type="module">
-  import '@italia/forward/it-forward.js';
-</script>
-
-<it-forward>
-  <a href="#sezione-di-esempio" class="forward" aria-label="Vai a: Sezione di esempio">
-    <it-icon name="it-expand" size="lg" color="primary"></it-icon>
-  </a>
-</it-forward>
-```
-
-Al click sul link, il componente scorre fluidamente fino alla sezione di destinazione e vi
-sposta il focus (rispettando le preferenze di riduzione del movimento). L'evento
-`it-forward-navigate` è cancelable: chiamando `event.preventDefault()` puoi sovrascrivere
-il comportamento di default.
+Find the usage instructions for this specific component in its [dedicated documentation page](https://italia.github.io/dev-kit-italia/?path=/docs/componenti-forward--documentazione).

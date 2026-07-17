@@ -1,30 +1,11 @@
-# \<it-alert>
+# <it-alert>
 
-Web component _light DOM_ che aggiunge il comportamento di default di chiusura agli alert del Design system .italia.
+This package is part of [dev-kit-italia](https://italia.github.io/dev-kit-italia), a Web Components kit for the **.italia** design-system.
 
-## Installation
+## Installation and usage
 
-```bash
-npm i @italia/alert
-```
+Most users want to install the full kit by installing [`@italia/dev-kit-italia`](https://npmjs.com/package/@italia/dev-kit-italia), but you have the option of installing this single Web Component separately if needed. Please find detailed installation and usage instructions in the [official documentation](https://italia.github.io/dev-kit-italia/?path=/docs/introduzione--documentazione).
 
-## Usage
+## Documentation
 
-```html
-<script type="module">
-  import '@italia/alert/it-alert.js';
-</script>
-
-<it-alert>
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Attenzione</strong> Alcuni campi inseriti sono da controllare.
-    <it-button type="button" class="btn-close" it-aria-label="Chiudi avviso">
-      <it-icon name="it-close"></it-icon>
-    </it-button>
-  </div>
-</it-alert>
-```
-
-Il click sul pulsante `.btn-close` chiude l'alert. L'evento `it-alert-close` è cancelable:
-chiamando `event.preventDefault()` puoi sovrascrivere il comportamento e chiudere l'alert
-in un secondo momento con il metodo pubblico `close()`.
+Find the usage instructions for this specific component in its [dedicated documentation page](https://italia.github.io/dev-kit-italia/?path=/docs/componenti-alert--documentazione).
