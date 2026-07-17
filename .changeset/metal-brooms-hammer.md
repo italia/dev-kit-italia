@@ -44,6 +44,9 @@
 '@italia/i18n': minor
 '@italia/icon': minor
 '@italia/tabs': minor
+'@italia/alert': minor
+'@italia/back': minor
+'@italia/forward': minor
 ---
 
 Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
