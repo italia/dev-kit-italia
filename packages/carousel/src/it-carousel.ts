@@ -264,6 +264,15 @@ export class ItCarousel extends BaseLocalizedComponent {
     // handleTitleSlotChange), so the inner div's landmark role is redundant and would
     // cause a landmark-unique Axe violation. Demote it to a generic container.
     this.wrapper?.setAttribute('role', 'presentation');
+    // Splide also sets aria-roledescription on the same div, but per the ARIA spec
+    // aria-roledescription has no effect (and shouldn't be used) on an element with
+    // role="presentation": the element is removed from the accessibility tree, so
+    // the roledescription would never be announced. Move it to the host, where the
+    // "region" landmark actually lives, for consistency with Bootstrap Italia.
+    this.wrapper?.removeAttribute('aria-roledescription');
+    if (!this.hasAttribute('aria-roledescription')) {
+      this.setAttribute('aria-roledescription', this.$t('carousel_carousel'));
+    }
   }
 
   override connectedCallback() {

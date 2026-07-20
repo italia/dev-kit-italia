@@ -113,6 +113,19 @@ describe('it-carousel', () => {
       expect(el.getAttribute('role')).to.equal('region');
     });
 
+    it('host element has aria-roledescription and the shadow wrapper does not', async () => {
+      const el = await fixture<ItCarousel>(
+        html`<it-carousel
+          ><h3 slot="title">Titolo</h3>
+          <div>Slide 1</div></it-carousel
+        >`,
+      );
+      await splideReady();
+      expect(el.getAttribute('aria-roledescription')).to.equal('carousel');
+      const wrapper = el.shadowRoot?.querySelector('.it-carousel-wrapper');
+      expect(wrapper?.hasAttribute('aria-roledescription')).to.be.false;
+    });
+
     it('root element always has "it-carousel-wrapper" and "splide" classes', async () => {
       const el = await fixture<ItCarousel>(html`<it-carousel></it-carousel>`);
       const root = el.shadowRoot?.querySelector('.it-carousel-wrapper');
