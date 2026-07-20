@@ -160,8 +160,6 @@
         height: 100%;
       }
 
-
-
       &::part(dropdown-button) {
         --#{$prefix}label-font-size: var(--#{$prefix}navbar-link-font-size);
         background-color: var(--#{$prefix}navbar-background); //to avoid color contrast issue from tools a11y checker
@@ -192,11 +190,16 @@
         }
       }
 
-      &[data-it-aria-expanded='true'] {
+      &[active]:not([data-it-aria-expanded='true']) {
         &::part(button) {
           --#{$prefix}navbar-link-border-color: var(--#{$prefix}navbar-link-active-border-color);
         }
       }
+      // &[data-it-aria-expanded='true'] {
+      //   &::part(button) {
+      //     //--#{$prefix}navbar-link-border-color: var(--#{$prefix}navbar-link-active-border-color);
+      //   }
+      // }
 
       @media (min-width: #{map.get($grid-breakpoints, lg)}) {
         &::part(button) {
