@@ -75,6 +75,7 @@ const preview: Preview = {
           ['Introduzione', '*'],
           'Componenti',
           'Framework',
+          ['SSR', '*'],
         ],
       },
     },
