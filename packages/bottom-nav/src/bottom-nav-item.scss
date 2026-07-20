@@ -18,18 +18,17 @@
 }
 
 ::slotted(a:hover) {
-  color: var(--#{$prefix}color-primary);
+  color: var(--#{$prefix}color-text-primary) !important;
   text-decoration: none !important;
 }
 
 :host([active]) ::slotted(a) {
-  color: var(--#{$prefix}color-primary);
+  color: var(--#{$prefix}color-text-primary) !important;
   --#{$prefix}icon-default: var(--#{$prefix}icon-primary);
 }
 
 :host ::slotted(a) {
   position: relative;
-  color: var(--#{$prefix}color-background-primary) !important;
   --#{$prefix}icon-default: var(--#{$prefix}icon-secondary);
 }
 
