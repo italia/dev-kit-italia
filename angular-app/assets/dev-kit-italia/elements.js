@@ -9237,12 +9237,8 @@ select.just-validate-success-field {
 .autocomplete__hint,
 .autocomplete__input {
   appearance: none;
-  border: 2px solid #0b0c0c;
-  border-radius: 0; /* Safari 10 on iOS adds implicit border rounding. */
   box-sizing: border-box;
   margin-bottom: 0; /* BUG: Safari 10 on macOS seems to add an implicit margin. */
-  line-height: 1.25;
-  height: 2.5rem;
   width: 100%;
 }
 
@@ -9251,15 +9247,12 @@ select.just-validate-success-field {
 }
 
 .autocomplete__hint {
+  color: var(--bsi-color-text-secondary);
   position: absolute;
 }
 
-.autocomplete__input--default {
-  padding: 5px;
-}
-
 .autocomplete__input--show-all-values {
-  padding: 5px 35px 5px 5px; /* Space for arrow. Other padding should match .autocomplete__input--default. */
+  padding: var(--bsi-spacing-xs) var(--bsi-spacing-xl) var(--bsi-spacing-xs) var(--bsi-spacing-xs); /* Space for arrow. Other padding should match .autocomplete__input--default. */
   cursor: pointer;
 }
 
@@ -9275,9 +9268,9 @@ select.just-validate-success-field {
 
 .autocomplete__menu {
   background-color: var(--bsi-color-background-inverse);
-  border: 2px solid #0b0c0c;
+  border: 1px solid var(--bsi-color-border-subtle);
   border-top: 0;
-  color: #0b0c0c;
+  color: var(--bsi-color-text-base);
   margin: 0;
   max-height: 342px;
   overflow-x: hidden;
@@ -9294,7 +9287,7 @@ select.just-validate-success-field {
 }
 
 .autocomplete__menu--overlay {
-  box-shadow: rgba(0, 0, 0, 0.256863) 0 2px 6px;
+  box-shadow: var(--bsi-elevation-low);
   left: 0;
   position: absolute;
   top: 100%;
@@ -9306,7 +9299,7 @@ select.just-validate-success-field {
 }
 
 .autocomplete__option {
-  border-bottom: solid #b1b4b6;
+  border-bottom: solid var(--bsi-color-border-subtle);
   border-width: 1px 0;
   cursor: pointer;
   display: block;
@@ -9326,14 +9319,14 @@ select.just-validate-success-field {
 }
 
 .autocomplete__option--odd {
-  background-color: #f3f2f1;
+  background-color: var(--bsi-color-background-primary-lighter);
 }
 
 .autocomplete__option--focused,
 .autocomplete__option:hover {
-  background-color: #1d70b8;
-  border-color: #1d70b8;
-  color: white;
+  background-color: var(--bsi-color-background-primary);
+  border-color: var(--bsi-color-border-primary);
+  color: var(--bsi-color-text-inverse);
   outline: none;
 }
 
@@ -9356,14 +9349,9 @@ select.just-validate-success-field {
   }
 }
 .autocomplete__option--no-results {
-  background-color: #f3f2f1;
-  color: #505a5f;
+  background-color: var(--bsi-color-background-primary-lighter);
+  color: var(--bsi-color-text-secondary);
   cursor: not-allowed;
-}
-
-.autocomplete__hint,
-.autocomplete__option {
-  padding: 5px;
 }
 
 .autocomplete__wrapper {
@@ -9380,7 +9368,7 @@ select.just-validate-success-field {
 }
 .autocomplete__wrapper .autocomplete__menu .autocomplete__hint,
 .autocomplete__wrapper .autocomplete__menu .autocomplete__option {
-  padding: var(--bsi-spacing-xs) var(--bsi-spacing-m);
+  padding: var(--bsi-spacing-xs) var(--bsi-spacing-s);
   background-color: var(--bsi-color-background-inverse);
   border: none;
   font-size: 0.875rem;
@@ -15822,18 +15810,17 @@ var styles$R = i$6`::slotted(a) {
 }
 
 ::slotted(a:hover) {
-  color: var(--bsi-color-primary);
+  color: var(--bsi-color-text-primary) !important;
   text-decoration: none !important;
 }
 
 :host([active]) ::slotted(a) {
-  color: var(--bsi-color-primary);
+  color: var(--bsi-color-text-primary) !important;
   --bsi-icon-default: var(--bsi-icon-primary);
 }
 
 :host ::slotted(a) {
   position: relative;
-  color: var(--bsi-color-background-primary) !important;
   --bsi-icon-default: var(--bsi-icon-secondary);
 }
 
@@ -17564,43 +17551,47 @@ var styles$Q = i$6`.bottom-nav {
   --bsi-bottom-nav-shadow-opacity: 0.18;
   --bsi-bottom-nav-shadow-transform: translateY(-50%) scalex(1.4) scaleY(0.12);
   --bsi-bottom-nav-shadow-background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 60%);
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+.bottom-nav {
   position: fixed;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  overflow: hidden;
   height: var(--bsi-bottom-nav-height);
+  overflow: hidden;
 }
 .bottom-nav:before {
-  content: "";
   position: absolute;
-  height: var(--bsi-bottom-nav-shadow-height);
-  width: 100%;
   top: var(--bsi-bottom-nav-shadow-top);
   z-index: 10;
-  background: var(--bsi-bottom-nav-shadow-background);
+  content: "";
+  width: 100%;
+  height: var(--bsi-bottom-nav-shadow-height);
   border-radius: 50%;
-  transform: var(--bsi-bottom-nav-shadow-transform);
   opacity: var(--bsi-bottom-nav-shadow-opacity);
+  background: var(--bsi-bottom-nav-shadow-background);
+  transform: var(--bsi-bottom-nav-shadow-transform);
 }
 .bottom-nav ul {
   position: absolute;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  width: 100%;
   z-index: 20;
-  background-color: var(--bsi-color-background-inverse);
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  padding: 0;
-  margin: 0;
+  justify-content: space-around;
+  width: 100%;
   height: var(--bsi-bottom-nav-list-height);
+  margin: 0;
+  padding: 0;
+  background-color: var(--bsi-color-background-inverse);
 }
 .bottom-nav ul li {
-  list-style-type: none;
   margin: var(--bsi-bottom-nav-item-margin);
+  list-style-type: none;
   text-align: center;
 }
 .bottom-nav a {
@@ -17624,9 +17615,9 @@ var styles$Q = i$6`.bottom-nav {
 }
 .bottom-nav .it-ico {
   position: relative;
-  font-size: var(--bsi-bottom-nav-icon-font-size);
   display: block;
   height: var(--bsi-bottom-nav-icon-height);
+  font-size: var(--bsi-bottom-nav-icon-font-size);
 }
 .bottom-nav .it-ico:before {
   margin-right: 0;
@@ -17636,21 +17627,21 @@ var styles$Q = i$6`.bottom-nav {
 }
 .bottom-nav .bottom-nav-badge,
 .bottom-nav .bottom-nav-alert {
-  display: block;
   position: absolute;
-  background-color: var(--bsi-bottom-nav-badge-bg);
+  display: block;
   border: 1px solid var(--bsi-bottom-nav-badge-border-color);
+  background-color: var(--bsi-bottom-nav-badge-bg);
 }
 .bottom-nav .bottom-nav-badge {
   top: 0;
   right: 0;
   min-width: 1.15rem;
-  line-height: 1;
-  padding: 4px 6px;
+  padding: var(--bsi-spacing-3xs);
+  border-radius: var(--bsi-bottom-nav-badge-radius);
   color: var(--bsi-bottom-nav-badge-color);
   font-size: var(--bsi-bottom-nav-badge-font-size);
-  border-radius: var(--bsi-bottom-nav-badge-radius);
-  font-style: normal;
+  font-style: var(--bsi-font-weight-solid);
+  line-height: 1;
 }
 .bottom-nav .bottom-nav-alert {
   top: 0;
@@ -17660,11 +17651,11 @@ var styles$Q = i$6`.bottom-nav {
   border-radius: var(--bsi-radius-circle);
 }
 .bottom-nav .bottom-nav-label {
+  display: block;
   margin-top: var(--bsi-bottom-nav-label-margin-top);
   font-size: var(--bsi-bottom-nav-label-font-size);
-  line-height: 1;
-  display: block;
   font-weight: var(--bsi-bottom-nav-label-font-weight);
+  line-height: 1;
 }
 
 .bottom-nav {
@@ -29161,6 +29152,7 @@ var styles$H = i$6`@keyframes splide-loading {
   --bsi-carousel-pagination-dot-size: 1rem;
   --bsi-carousel-pagination-dot-color: var(--bsi-color-background-subtle);
   --bsi-carousel-pagination-spacing: var(--bsi-spacing-m);
+  --bsi-carousel-pagination-height: var(--bsi-carousel-pagination-dot-size);
   --bsi-carousel-track-padding-top: var(--bsi-spacing-m);
 }
 
@@ -29235,7 +29227,7 @@ var styles$H = i$6`@keyframes splide-loading {
 }
 .it-carousel-wrapper.it-carousel-landscape-abstract-three-cols-arrow-visible .splide__arrows {
   position: absolute;
-  top: 50%;
+  top: calc(50% - var(--bsi-carousel-pagination-height));
   right: calc(-1 * var(--bsi-carousel-arrow-offset));
   left: calc(-1 * var(--bsi-carousel-arrow-offset));
   z-index: 1;
@@ -34163,6 +34155,15 @@ let ItCarousel = class ItCarousel extends BaseLocalizedComponent$t {
         // handleTitleSlotChange), so the inner div's landmark role is redundant and would
         // cause a landmark-unique Axe violation. Demote it to a generic container.
         this.wrapper?.setAttribute('role', 'presentation');
+        // Splide also sets aria-roledescription on the same div, but per the ARIA spec
+        // aria-roledescription has no effect (and shouldn't be used) on an element with
+        // role="presentation": the element is removed from the accessibility tree, so
+        // the roledescription would never be announced. Move it to the host, where the
+        // "region" landmark actually lives, for consistency with Bootstrap Italia.
+        this.wrapper?.removeAttribute('aria-roledescription');
+        if (!this.hasAttribute('aria-roledescription')) {
+            this.setAttribute('aria-roledescription', this.$t('carousel_carousel'));
+        }
     }
     connectedCallback() {
         super.connectedCallback?.();
@@ -40577,7 +40578,7 @@ var styles$D = i$6`.dropdown,
   --bsi-dropdown-border-color: transparent;
   --bsi-dropdown-border-radius: var(--bsi-radius-smooth);
   --bsi-dropdown-border-width: 0;
-  --bsi-dropdown-box-shadow: var(--bsi-elevation-medium);
+  --bsi-dropdown-box-shadow: var(--bsi-elevation-low);
   --bsi-dropdown-color: var(--bsi-color-text-base);
   --bsi-dropdown-divider-bg: var(--bsi-color-border-subtle);
   --bsi-dropdown-divider-margin-y: var(--bsi-spacing-xxs);
@@ -40637,7 +40638,7 @@ var styles$D = i$6`.dropdown,
   margin: 0;
   padding: var(--bsi-dropdown-padding-y) var(--bsi-dropdown-padding-x);
   border: var(--bsi-dropdown-border-width) solid var(--bsi-dropdown-border-color);
-  border-radius: 0 0 var(--bsi-dropdown-border-radius) var(--bsi-dropdown-border-radius);
+  border-radius: var(--bsi-dropdown-border-radius);
   background-color: var(--bsi-dropdown-background);
   color: var(--bsi-dropdown-color);
   list-style: none;
@@ -41402,7 +41403,7 @@ var styles$C = i$6`.dropdown,
   --bsi-dropdown-border-color: transparent;
   --bsi-dropdown-border-radius: var(--bsi-radius-smooth);
   --bsi-dropdown-border-width: 0;
-  --bsi-dropdown-box-shadow: var(--bsi-elevation-medium);
+  --bsi-dropdown-box-shadow: var(--bsi-elevation-low);
   --bsi-dropdown-color: var(--bsi-color-text-base);
   --bsi-dropdown-divider-bg: var(--bsi-color-border-subtle);
   --bsi-dropdown-divider-margin-y: var(--bsi-spacing-xxs);
@@ -41462,7 +41463,7 @@ var styles$C = i$6`.dropdown,
   margin: 0;
   padding: var(--bsi-dropdown-padding-y) var(--bsi-dropdown-padding-x);
   border: var(--bsi-dropdown-border-width) solid var(--bsi-dropdown-border-color);
-  border-radius: 0 0 var(--bsi-dropdown-border-radius) var(--bsi-dropdown-border-radius);
+  border-radius: var(--bsi-dropdown-border-radius);
   background-color: var(--bsi-dropdown-background);
   color: var(--bsi-dropdown-color);
   list-style: none;
@@ -42031,6 +42032,9 @@ var styles$C = i$6`.dropdown,
   padding: 0 var(--bsi-spacing-m);
 }
 
+.multiline .link-list li:not(:last-child) {
+  border-bottom: 1px solid var(--bsi-color-border-subtle);
+}
 .multiline .list-item-title-icon-wrapper {
   margin-bottom: var(--bsi-spacing-3xs);
 }
@@ -42038,6 +42042,7 @@ var styles$C = i$6`.dropdown,
   margin-right: 0;
 }
 .multiline .list-item-title {
+  margin-bottom: var(--bsi-spacing-xxs);
   font-size: var(--bsi-label-font-size);
 }
 @media (min-width: 992px) {
@@ -42046,18 +42051,13 @@ var styles$C = i$6`.dropdown,
   }
 }
 .multiline .list-item {
+  --bsi-linklist-item-spacing: var(--bsi-spacing-s);
   display: block;
 }
 .multiline p {
   margin-bottom: 0;
 }
 
-@media (min-width: 768px) {
-  .link-list-wrapper ul li a.large.icon-left,
-  .link-list-wrapper ul li a.large.icon-right {
-    --bsi-linklist-item-spacing: var(--bsi-spacing-s);
-  }
-}
 .dark,
 .theme-dark {
   --bsi-linklist-heading-color: var(--bsi-color-text-inverse);
@@ -42116,6 +42116,13 @@ it-popover[placement=left-start] .dropdown-menu,
 it-popover[placement=left] .dropdown-menu,
 it-popover[placement=left-end] .dropdown-menu {
   border-radius: var(--bsi-dropdown-border-radius);
+}
+
+it-popover[placement^=bottom] .dropdown-menu.show {
+  animation: dropdownFadeIn forwards var(--bsi-dropdown-animation-speed);
+}
+it-popover[placement^=top] .dropdown-menu.show, it-popover[placement^=left] .dropdown-menu.show, it-popover[placement^=right] .dropdown-menu.show {
+  animation: dropdownFadeInTop forwards var(--bsi-dropdown-animation-speed);
 }
 
 .dropdown-toggle .icon-expand.top {
@@ -42317,6 +42324,7 @@ let ItDropdownBase$1 = class ItDropdownBase extends BaseComponent$q {
         part="dropdown-popover"
         ?open=${this._popoverOpen}
         offset=${o$2(this.offset || undefined)}
+        cross-axis-offset=${this.alignment.startsWith('left') || this.alignment.startsWith('right') ? '10' : '0'}
         ?no-flip=${this.noFlip}
         ?center-arrow=${this.centerArrow}
         controlled
@@ -52540,10 +52548,10 @@ textarea.form-control-lg {
 
 .password-icon {
   position: absolute;
-  top: calc(var(--bsi-form-control-spacing) * 4.5);
+  top: calc(var(--bsi-form-control-spacing) * 3.75);
   right: var(--bsi-form-control-spacing);
   z-index: 10;
-  padding: 0 var(--bsi-spacing-xxs);
+  padding: var(--bsi-spacing-xxs);
   background-color: var(--bsi-form-control-background-color);
   cursor: pointer;
 }
@@ -52589,9 +52597,6 @@ textarea.form-control-lg {
 }
 .input-number input[type=number]::-ms-clear {
   display: none;
-}
-.input-number input[type=number]:not(:disabled) {
-  border-left: 1px solid var(--bsi-form-control-border-color);
 }
 .input-number input[type=number][readonly] ~ .input-group-text .input-number-add,
 .input-number input[type=number][readonly] ~ .input-group-text .input-number-sub {
@@ -54711,7 +54716,7 @@ var styles$1$1 = i$6`.dropdown,
   --bsi-dropdown-border-color: transparent;
   --bsi-dropdown-border-radius: var(--bsi-radius-smooth);
   --bsi-dropdown-border-width: 0;
-  --bsi-dropdown-box-shadow: var(--bsi-elevation-medium);
+  --bsi-dropdown-box-shadow: var(--bsi-elevation-low);
   --bsi-dropdown-color: var(--bsi-color-text-base);
   --bsi-dropdown-divider-bg: var(--bsi-color-border-subtle);
   --bsi-dropdown-divider-margin-y: var(--bsi-spacing-xxs);
@@ -54771,7 +54776,7 @@ var styles$1$1 = i$6`.dropdown,
   margin: 0;
   padding: var(--bsi-dropdown-padding-y) var(--bsi-dropdown-padding-x);
   border: var(--bsi-dropdown-border-width) solid var(--bsi-dropdown-border-color);
-  border-radius: 0 0 var(--bsi-dropdown-border-radius) var(--bsi-dropdown-border-radius);
+  border-radius: var(--bsi-dropdown-border-radius);
   background-color: var(--bsi-dropdown-background);
   color: var(--bsi-dropdown-color);
   list-style: none;
@@ -55340,6 +55345,9 @@ var styles$1$1 = i$6`.dropdown,
   padding: 0 var(--bsi-spacing-m);
 }
 
+.multiline .link-list li:not(:last-child) {
+  border-bottom: 1px solid var(--bsi-color-border-subtle);
+}
 .multiline .list-item-title-icon-wrapper {
   margin-bottom: var(--bsi-spacing-3xs);
 }
@@ -55347,6 +55355,7 @@ var styles$1$1 = i$6`.dropdown,
   margin-right: 0;
 }
 .multiline .list-item-title {
+  margin-bottom: var(--bsi-spacing-xxs);
   font-size: var(--bsi-label-font-size);
 }
 @media (min-width: 992px) {
@@ -55355,18 +55364,13 @@ var styles$1$1 = i$6`.dropdown,
   }
 }
 .multiline .list-item {
+  --bsi-linklist-item-spacing: var(--bsi-spacing-s);
   display: block;
 }
 .multiline p {
   margin-bottom: 0;
 }
 
-@media (min-width: 768px) {
-  .link-list-wrapper ul li a.large.icon-left,
-  .link-list-wrapper ul li a.large.icon-right {
-    --bsi-linklist-item-spacing: var(--bsi-spacing-s);
-  }
-}
 .dark,
 .theme-dark {
   --bsi-linklist-heading-color: var(--bsi-color-text-inverse);
@@ -55425,6 +55429,13 @@ it-popover[placement=left-start] .dropdown-menu,
 it-popover[placement=left] .dropdown-menu,
 it-popover[placement=left-end] .dropdown-menu {
   border-radius: var(--bsi-dropdown-border-radius);
+}
+
+it-popover[placement^=bottom] .dropdown-menu.show {
+  animation: dropdownFadeIn forwards var(--bsi-dropdown-animation-speed);
+}
+it-popover[placement^=top] .dropdown-menu.show, it-popover[placement^=left] .dropdown-menu.show, it-popover[placement^=right] .dropdown-menu.show {
+  animation: dropdownFadeInTop forwards var(--bsi-dropdown-animation-speed);
 }
 
 .dropdown-toggle .icon-expand.top {
@@ -55626,6 +55637,7 @@ class ItDropdownBase extends BaseComponent$k {
         part="dropdown-popover"
         ?open=${this._popoverOpen}
         offset=${o$2(this.offset || undefined)}
+        cross-axis-offset=${this.alignment.startsWith('left') || this.alignment.startsWith('right') ? '10' : '0'}
         ?no-flip=${this.noFlip}
         ?center-arrow=${this.centerArrow}
         controlled
@@ -58329,6 +58341,8 @@ var styles$x = i$6`.row {
   --bsi-dropdown-item-padding-x: var(--bsi-spacing-xxs);
   --bsi-dropdown-item-padding-y: var(--bsi-spacing-xxs);
   --bsi-dropdown-spacer: 0;
+  --bsi-dropdown-border-width: 1px;
+  --bsi-dropdown-border-color: var(--bsi-color-border-subtle);
   left: 0 !important;
   width: 100%;
   background: var(--bsi-megamenu-background-color, #fff);
@@ -58342,6 +58356,17 @@ var styles$x = i$6`.row {
     display: grid;
     grid-auto-flow: column;
   }
+}
+:host .dropdown-menu .arrow {
+  top: -10px !important;
+  border-color: var(--bsi-dropdown-border-color);
+  border-top-width: var(--bsi-dropdown-border-width);
+  border-top-style: solid;
+  border-left-width: var(--bsi-dropdown-border-width);
+  border-left-style: solid;
+}
+:host it-popover .dropdown-menu.show {
+  animation: none;
 }`;
 
 /* eslint-disable lit-a11y/list */
@@ -58549,7 +58574,7 @@ let ItMegamenu = ItMegamenu_1 = class ItMegamenu extends ItDropdownBase {
         <div
           slot="content"
           part="popover-content"
-          class="${this.composeClass('dropdown-menu megamenu', 'show-lg', {
+          class="${this.composeClass('dropdown-menu megamenu', 'shadow-lg', {
             show: this._popoverOpen,
             'full-width': this.fullWidth,
         })}"
@@ -72733,7 +72758,10 @@ let ItPopover = class ItPopover extends BaseComponent$e {
             computePosition$2(this._triggerElement, this._contentElement, {
                 placement: this.placement,
                 middleware: [
-                    offset$2(this.offset),
+                    offset$2({
+                        mainAxis: this.offset,
+                        crossAxis: this.crossAxisOffset,
+                    }),
                     flip$2({ mainAxis: !this.noFlip, crossAxis: !this.noFlip }),
                     shift$2({ padding: 8 }),
                     // Commentato perchè nella toolbar con dropdown che ha position absolute, vogliamo il min-width impostato da css con var(--bsi-dropdown-min-width)
@@ -72753,12 +72781,13 @@ let ItPopover = class ItPopover extends BaseComponent$e {
                 });
                 if (middlewareData.arrow) {
                     const { x: arrowX, y: arrowY } = middlewareData.arrow;
+                    const placementSide = placement.split('-')[0];
                     const staticSide = {
                         top: 'bottom',
                         right: 'left',
                         bottom: 'top',
                         left: 'right',
-                    }[placement.split('-')[0]];
+                    }[placementSide];
                     const triggerRect = this._triggerElement.getBoundingClientRect();
                     const contentRect = this._contentElement.getBoundingClientRect();
                     const triggerCenter = triggerRect.left + triggerRect.width / 2;
@@ -72766,10 +72795,12 @@ let ItPopover = class ItPopover extends BaseComponent$e {
                     // When `centerArrow` is set (e.g. avatar dropdowns), centre the arrow
                     // on the trigger using Floating UI's computed offset. Otherwise keep
                     // the fixed notch position relied on by standard dropdowns.
-                    const left = this.centerArrow ? arrowX : arrowLeft;
+                    const left = this.centerArrow ? arrowX : arrowLeft + (this.crossAxisOffset ?? 0);
+                    const isLeftOrRight = ['left', 'right'].includes(placementSide);
+                    const additionalOffsetTop = isLeftOrRight ? (this.crossAxisOffset ?? 0) : 0;
                     Object.assign(this._arrowElement.style, {
                         left: arrowX != null ? `${left}px` : '',
-                        top: arrowY != null ? `${arrowY}px` : '',
+                        top: arrowY != null ? `${arrowY + additionalOffsetTop}px` : '',
                         right: '',
                         bottom: '',
                         [staticSide]: `-8px`,
@@ -72821,6 +72852,10 @@ __decorate$h([
     n$3({ type: Number }),
     __metadata$h("design:type", Number)
 ], ItPopover.prototype, "offset", void 0);
+__decorate$h([
+    n$3({ type: Number, attribute: 'cross-axis-offset' }),
+    __metadata$h("design:type", Number)
+], ItPopover.prototype, "crossAxisOffset", void 0);
 __decorate$h([
     n$3({ type: Boolean, attribute: 'no-flip' }),
     __metadata$h("design:type", Boolean)
@@ -98962,6 +98997,10 @@ var styles$c = i$6`.thumb-nav {
   --bsi-thumb-nav-transition-duration: 0.4s;
   --bsi-thumb-nav-transition-duration-hover: 1s;
   --bsi-thumb-nav-transition-easing: cubic-bezier(0.15, 0.7, 0.36, 0.99);
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+.thumb-nav {
   display: flex;
   justify-content: center;
   margin: 0 calc(var(--bsi-thumb-nav-gap) * -1);
@@ -99191,6 +99230,10 @@ var styles$b = i$6`.thumb-nav {
   --bsi-thumb-nav-transition-duration: 0.4s;
   --bsi-thumb-nav-transition-duration-hover: 1s;
   --bsi-thumb-nav-transition-easing: cubic-bezier(0.15, 0.7, 0.36, 0.99);
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+.thumb-nav {
   display: flex;
   justify-content: center;
   margin: 0 calc(var(--bsi-thumb-nav-gap) * -1);
@@ -188891,6 +188934,8 @@ video::-webkit-media-text-track-display {
   --bsi-videoplayer-button-background: var(--bsi-color-background-primary);
   --bsi-videoplayer-control-background: var(--bsi-color-background-primary);
 }
+
+/* stylelint-disable-next-line no-duplicate-selectors */
 .vjs-theme-bootstrap-italia .vjs-big-play-button, .vjs-theme-bootstrap-italia:hover .vjs-big-play-button, .vjs-theme-bootstrap-italia.vjs-big-play-button:focus {
   background-color: var(--bsi-videoplayer-button-background);
 }
