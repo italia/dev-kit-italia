@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@italia/dev-kit-italia": "file:../../packages/dev-kit-italia",
-    "next": "16.2.10",
+    "next": "16.2.11",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   }
