@@ -19,6 +19,8 @@ export class ItPopover extends BaseComponent {
 
   @property({ type: Number }) offset: number = 12;
 
+  @property({ type: Number, attribute: 'cross-axis-offset' }) crossAxisOffset?: number;
+
   @property({ type: Boolean, attribute: 'no-flip' }) noFlip: boolean = false;
 
   /** Centre the arrow on the trigger instead of the fixed notch position. Used by avatar dropdowns. */
@@ -130,7 +132,10 @@ export class ItPopover extends BaseComponent {
       computePosition(this._triggerElement, this._contentElement, {
         placement: this.placement,
         middleware: [
-          offset(this.offset),
+          offset({
+            mainAxis: this.offset,
+            crossAxis: this.crossAxisOffset,
+          }),
           flip({ mainAxis: !this.noFlip, crossAxis: !this.noFlip }),
           shift({ padding: 8 }),
           // Commentato perchè nella toolbar con dropdown che ha position absolute, vogliamo il min-width impostato da css con var(--bsi-dropdown-min-width)
@@ -151,12 +156,13 @@ export class ItPopover extends BaseComponent {
 
         if (middlewareData.arrow) {
           const { x: arrowX, y: arrowY } = middlewareData.arrow;
+          const placementSide = placement.split('-')[0];
           const staticSide = {
             top: 'bottom',
             right: 'left',
             bottom: 'top',
             left: 'right',
-          }[placement.split('-')[0]];
+          }[placementSide];
 
           const triggerRect = this._triggerElement.getBoundingClientRect();
           const contentRect = this._contentElement.getBoundingClientRect();
@@ -166,12 +172,15 @@ export class ItPopover extends BaseComponent {
           // When `centerArrow` is set (e.g. avatar dropdowns), centre the arrow
           // on the trigger using Floating UI's computed offset. Otherwise keep
           // the fixed notch position relied on by standard dropdowns.
-          const left = this.centerArrow ? arrowX : arrowLeft;
+          const left = this.centerArrow ? arrowX : arrowLeft + (this.crossAxisOffset ?? 0);
+
+          const isLeftOrRight = ['left', 'right'].includes(placementSide);
+          const additionalOffsetTop = isLeftOrRight ? (this.crossAxisOffset ?? 0) : 0;
 
           Object.assign(this._arrowElement!.style, {
             left: arrowX != null ? `${left}px` : '',
 
-            top: arrowY != null ? `${arrowY}px` : '',
+            top: arrowY != null ? `${arrowY + additionalOffsetTop}px` : '',
             right: '',
             bottom: '',
             [staticSide as string]: `-8px`,

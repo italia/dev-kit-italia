@@ -230,6 +230,7 @@ export class ItDropdownBase extends BaseComponent {
         part="dropdown-popover"
         ?open=${this._popoverOpen}
         offset=${ifDefined(this.offset || undefined)}
+        cross-axis-offset=${this.alignment.startsWith('left') || this.alignment.startsWith('right') ? '10' : '0'}
         ?no-flip=${this.noFlip}
         ?center-arrow=${this.centerArrow}
         controlled

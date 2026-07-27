@@ -76,4 +76,8 @@ utilities.$utilities: (
     //   border-color: var( --#{$prefix}megamenu-content-border-color);
     // }
   }
+
+  it-popover .dropdown-menu.show {
+    animation: none;
+  }
 }
