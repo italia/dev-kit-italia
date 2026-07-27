@@ -1,4 +1,4 @@
-# <it-tabs>
+# <it-transfer>
 
 This package is part of [dev-kit-italia](https://italia.github.io/dev-kit-italia), a Web Components kit for the **.italia** design-system.
 
@@ -8,4 +8,4 @@ Most users want to install the full kit by installing [`@italia/dev-kit-italia`]
 
 ## Documentation
 
-Find the usage instructions for this specific component in its [dedicated documentation page](https://italia.github.io/dev-kit-italia/?path=/docs/componenti-tabs--documentazione).
+Find the usage instructions for this specific component in its [dedicated documentation page](https://italia.github.io/dev-kit-italia/?path=/docs/componenti-form-transfer--documentazione).

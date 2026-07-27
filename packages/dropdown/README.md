@@ -1,32 +1,11 @@
-# Dropdown Web Component
+# <it-dropdown>
 
-Questo package contiene il web component `<it-dropdown>`, conforme agli standard del progetto e con stili Bootstrap Italia.
+This package is part of [dev-kit-italia](https://italia.github.io/dev-kit-italia), a Web Components kit for the **.italia** design-system.
 
-## Installation
+## Installation and usage
 
-```bash
-npm i @italia/dropdown
-```
+Most users want to install the full kit by installing [`@italia/dev-kit-italia`](https://npmjs.com/package/@italia/dev-kit-italia), but you have the option of installing this single Web Component separately if needed. Please find detailed installation and usage instructions in the [official documentation](https://italia.github.io/dev-kit-italia/?path=/docs/introduzione--documentazione).
 
-## Usage
+## Documentation
 
-```
-<it-dropdown>
-  <button>Apri menu</button>
-  <ul popover>
-    <li><a href="/home">Home</a></li>
-    <li><a href="/about">Chi siamo</a></li>
-    <li><a href="/contatti">Contatti</a></li>
-  </ul>
-</it-dropdown>
-```
-
-## Sviluppo
-
-- Stili: solo SCSS, no CSS inline
-- Test: web-test-runner
-- Storie: Storybook
-
-## License
-
-Vedi LICENSE.
+Find the usage instructions for this specific component in its [dedicated documentation page](https://italia.github.io/dev-kit-italia/?path=/docs/componenti-dropdown--documentazione).
