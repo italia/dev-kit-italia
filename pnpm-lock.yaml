@@ -19,8 +19,8 @@ catalogs:
       specifier: ^0.9.0
       version: 0.9.0
     bootstrap-italia:
-      specifier: 3.0.0-beta.1
-      version: 3.0.0-beta.1
+      specifier: 3.0.0-beta.2
+      version: 3.0.0-beta.2
     design-tokens-italia:
       specifier: ^1.3.3
       version: 1.3.3
@@ -79,7 +79,7 @@ importers:
         version: 7.18.0(eslint@8.57.1)(typescript@5.9.3)
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       design-tokens-italia:
         specifier: 'catalog:'
         version: 1.3.3
@@ -175,7 +175,7 @@ importers:
         version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -282,7 +282,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -343,7 +343,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -447,7 +447,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -505,7 +505,7 @@ importers:
         version: link:../sticky
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -560,7 +560,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -615,7 +615,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -670,7 +670,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -728,7 +728,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -792,7 +792,7 @@ importers:
         version: 4.1.4
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -850,7 +850,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -905,7 +905,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -969,7 +969,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1178,7 +1178,7 @@ importers:
         version: 4.1.4
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       design-tokens-italia:
         specifier: 'catalog:'
         version: 1.3.3
@@ -1214,7 +1214,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1275,7 +1275,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1431,7 +1431,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1492,7 +1492,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1590,7 +1590,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1654,7 +1654,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1712,7 +1712,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1776,7 +1776,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1837,7 +1837,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1901,7 +1901,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1956,7 +1956,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: ^3.2.1
         version: 3.3.3
@@ -2017,7 +2017,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2078,7 +2078,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2139,7 +2139,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2200,7 +2200,7 @@ importers:
         version: link:../radio
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2252,7 +2252,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2310,7 +2310,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2368,7 +2368,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2426,7 +2426,7 @@ importers:
         version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2484,7 +2484,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2539,7 +2539,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2633,7 +2633,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2691,7 +2691,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2758,7 +2758,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2813,7 +2813,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2883,7 +2883,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2947,7 +2947,7 @@ importers:
         version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -3019,7 +3019,7 @@ importers:
         version: link:../progress
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -3074,7 +3074,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.1
+        version: 3.0.0-beta.2
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -3911,7 +3911,7 @@ packages:
     engines: {node: '>= 10.0.0'}
 
   '@popperjs/core@2.11.8':
-    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==, tarball: https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz}
 
   '@puppeteer/browsers@2.3.0':
     resolution: {integrity: sha512-ioXoq9gPxkss4MYhD+SFaU9p1IHFUX0ILAWFPyjGaBdjLsYAlZw6j1iLA0N/m12uVHLFDfSYNF7EQccjinIMDA==}
@@ -4232,7 +4232,7 @@ packages:
     resolution: {integrity: sha512-HLFeCYgz89uk22N5Qg3dvGvsv46B8GLvKKo1zKG4NybA8U2DiEO3w9lqGg29t/tfLRJpJ6iQxnVw4OnB7MoM9g==}
 
   '@types/bootstrap@5.2.11':
-    resolution: {integrity: sha512-69ykbLiNzQxi6Q/y/aYJLrlzI5QkLQjhIYW2U+cxujBxAmaBtmXKtxnFes59Ttfpt936as6xJU0dYnmVpcwIwg==}
+    resolution: {integrity: sha512-69ykbLiNzQxi6Q/y/aYJLrlzI5QkLQjhIYW2U+cxujBxAmaBtmXKtxnFes59Ttfpt936as6xJU0dYnmVpcwIwg==, tarball: https://registry.npmjs.org/@types/bootstrap/-/bootstrap-5.2.11.tgz}
 
   '@types/chai-dom@1.11.3':
     resolution: {integrity: sha512-EUEZI7uID4ewzxnU7DJXtyvykhQuwe+etJ1wwOiJyQRTH/ifMWKX+ghiXkxCUvNJ6IQDodf0JXhuP6zZcy2qXQ==}
@@ -4781,7 +4781,7 @@ packages:
     resolution: {integrity: sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==}
 
   animejs@3.2.2:
-    resolution: {integrity: sha512-Ao95qWLpDPXXM+WrmwcKbl6uNlC5tjnowlaRYtuVDHHoygjtIPfDUoK9NthrlZsQSKjZXlmji2TrBUAVbiH0LQ==}
+    resolution: {integrity: sha512-Ao95qWLpDPXXM+WrmwcKbl6uNlC5tjnowlaRYtuVDHHoygjtIPfDUoK9NthrlZsQSKjZXlmji2TrBUAVbiH0LQ==, tarball: https://registry.npmjs.org/animejs/-/animejs-3.2.2.tgz}
 
   ansi-colors@4.1.3:
     resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==, tarball: https://registry.npmjs.org/ansi-colors/-/ansi-colors-4.1.3.tgz}
@@ -4988,8 +4988,8 @@ packages:
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
 
-  bootstrap-italia@3.0.0-beta.1:
-    resolution: {integrity: sha512-R17xY+24FVkXm2YT3FBfxhOOMERft1vQHj6TZuX7uXD5vKUd3Xjv+QQt/2vMFf4aGsYmRPyt0lWt8sVapoGcAA==}
+  bootstrap-italia@3.0.0-beta.2:
+    resolution: {integrity: sha512-C9Q2uSkim9I3dTxx24NcN59IatlFRMNDSMe+7TR8azVXQpT5n3Ly+RzrvwCiGT0rzejxRtbPPuGF2ibC1kJOHw==, tarball: https://registry.npmjs.org/bootstrap-italia/-/bootstrap-italia-3.0.0-beta.2.tgz}
 
   brace-expansion@1.1.15:
     resolution: {integrity: sha512-EwOCDEex4quD37XhqM3omwtMoJjr//isUZz1JopUNWms+4Z2ViyM/k1YIRePpoVNnQhENnxtFjLaxNHrT7xIUg==}
@@ -5988,7 +5988,7 @@ packages:
     engines: {node: '>= 0.4'}
 
   graceful-fs@4.2.11:
-    resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
+    resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==, tarball: https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz}
 
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
@@ -6399,7 +6399,7 @@ packages:
     resolution: {integrity: sha512-zwOTdL3rFQ/lRdBnntKVOX6k5cKJwEc1HdilT71BWEu7J41gXIB2MRp+vxduPSwZJPWBxEzv4yH1wYLJGUHX4Q==}
 
   just-validate@4.3.0:
-    resolution: {integrity: sha512-9yS7ZnFk95vq+O7CAa7XZEJvZN5i6jTQWNhLwOjtgkSqiLxo7GZJhK8ViylP76fXPfHLs8tYWqi81XgxPF3OGA==}
+    resolution: {integrity: sha512-9yS7ZnFk95vq+O7CAa7XZEJvZN5i6jTQWNhLwOjtgkSqiLxo7GZJhK8ViylP76fXPfHLs8tYWqi81XgxPF3OGA==, tarball: https://registry.npmjs.org/just-validate/-/just-validate-4.3.0.tgz}
 
   keygrip@1.1.0:
     resolution: {integrity: sha512-iYSchDJ+liQ8iwbSI2QqsQOvqv58eJCEanyJPJi+Khyu8smkcKSFUCbPwzFcL7YVtZ6eONjqRX/38caJ7QjRAQ==}
@@ -6620,7 +6620,7 @@ packages:
     engines: {node: '>=4'}
 
   minimasonry@1.3.2:
-    resolution: {integrity: sha512-ygvf5JIR4NT1LbM6o8z1oz1icTkta72gXKwidvSqIVxuzVd/P21UI0Wbq1J+MStAu50Vvr8qWYNSz1W4uycqMQ==}
+    resolution: {integrity: sha512-ygvf5JIR4NT1LbM6o8z1oz1icTkta72gXKwidvSqIVxuzVd/P21UI0Wbq1J+MStAu50Vvr8qWYNSz1W4uycqMQ==, tarball: https://registry.npmjs.org/minimasonry/-/minimasonry-1.3.2.tgz}
 
   minimatch@10.2.5:
     resolution: {integrity: sha512-MULkVLfKGYDFYejP07QOurDLLQpcjk7Fw+7jXS2R2czRQzR56yHRveU5NDJEOviH+hETZKSkIk5c+T23GjFUMg==}
@@ -7932,7 +7932,7 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
   uuid@14.0.0:
-    resolution: {integrity: sha512-Qo+uWgilfSmAhXCMav1uYFynlQO7fMFiMVZsQqZRMIXp0O7rR7qjkj+cPvBHLgBqi960QCoo/PH2/6ZtVqKvrg==}
+    resolution: {integrity: sha512-Qo+uWgilfSmAhXCMav1uYFynlQO7fMFiMVZsQqZRMIXp0O7rR7qjkj+cPvBHLgBqi960QCoo/PH2/6ZtVqKvrg==, tarball: https://registry.npmjs.org/uuid/-/uuid-14.0.0.tgz}
     hasBin: true
 
   v8-to-istanbul@9.3.0:
@@ -10125,7 +10125,7 @@ snapshots:
 
   boolbase@1.0.0: {}
 
-  bootstrap-italia@3.0.0-beta.1:
+  bootstrap-italia@3.0.0-beta.2:
     dependencies:
       '@popperjs/core': 2.11.8
       '@splidejs/splide': 4.1.4
