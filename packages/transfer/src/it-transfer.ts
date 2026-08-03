@@ -497,11 +497,7 @@ export class ItTransfer extends FormControl {
 
         ${invalid
           ? html`
-              <div
-                role="alert"
-                id="invalid-feedback-${this._id}"
-                class="invalid-feedback form-feedback form-text just-validate-error-label"
-              >
+              <div role="alert" id="invalid-feedback-${this._id}" class="form-feedback text-danger">
                 ${validityMessage}
               </div>
             `

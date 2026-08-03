@@ -147,9 +147,6 @@ export class ItRadioGroup extends FormControl {
 
   private _updateInvalidState() {
     // Only show aria-invalid if validation has been triggered (ARIA best practice)
-    if (!this.formControlController.submittedOnce) {
-      return;
-    }
 
     const invalid = this.checkValidity() === false || !!this.validationMessage;
     if (invalid) this.setAttribute('aria-invalid', 'true');
@@ -183,7 +180,7 @@ export class ItRadioGroup extends FormControl {
 
       // Update message content and attributes
       messageEl.id = messageId;
-      messageEl.className = 'form-feedback just-validate-error-label';
+      messageEl.className = 'form-feedback text-danger';
       messageEl.setAttribute('role', 'alert');
       messageEl.removeAttribute('hidden');
 
@@ -389,7 +386,9 @@ export class ItRadioGroup extends FormControl {
     }
 
     // If validation message changed, update aria-invalid on group and children
-    if (changed.has('validationMessage')) {
+    // Skip on initial render: Lit reports all properties as "changed" on first update,
+    // which would mark a required-but-empty group invalid before validation is triggered.
+    if (changed.has('validationMessage') && this.formControlController.submittedOnce) {
       this._updateInvalidState();
     }
 
@@ -421,15 +420,11 @@ export class ItRadioGroup extends FormControl {
    * Render the component
    */
   render() {
-    const validityMessage = this.validationMessage;
-    const invalid = validityMessage?.length > 0 || (!this.customValidation && this?.checkValidity() === false);
-
     const groupWrapperClasses = this.composeClass(
       'it-radio-group',
       'it-form__control',
       this.inline && !this.grouped ? 'it-radio-group-inline' : '',
       this.grouped && !this.inline ? 'it-radio-group-stacked' : '',
-      invalid ? 'is-invalid' : '',
     );
 
     return html`<slot name="label" @slotchange=${this._handleLabelSlotChange}></slot>

@@ -123,7 +123,8 @@ export class ItUploadAvatar extends FormControl {
     const overlayText = this.overlayLabel ?? this.$t('upload_avatar_overlay_label');
     // A pre-filled `src` or a freshly selected file both satisfy `required`.
     const hasValue = Boolean(this._currentFile || this._currentSrc);
-    const isInvalid = this.formControlController.submittedOnce && this.validationMessage.length > 0;
+    const showValidation = this.formControlController.submittedOnce || this.customValidation;
+    const isInvalid = showValidation && this.validationMessage.length > 0;
     const feedbackId = `invalid-feedback-${this._id}`;
 
     return html`
@@ -144,6 +145,7 @@ export class ItUploadAvatar extends FormControl {
             accept="${this.accept}"
             ?disabled="${this.disabled}"
             ?required="${this.required && !hasValue}"
+            ?formNoValidate="${this.customValidation}"
             aria-label="${fileInputLabel}"
             aria-required="${this.required ? 'true' : nothing}"
             aria-invalid="${isInvalid ? 'true' : nothing}"
@@ -161,12 +163,7 @@ export class ItUploadAvatar extends FormControl {
         </div>
       </div>
 
-      <div
-        id="${feedbackId}"
-        class="invalid-feedback form-feedback form-text just-validate-error-label"
-        role="alert"
-        ?hidden=${!isInvalid}
-      >
+      <div id="${feedbackId}" class="form-feedback text-danger" role="alert" ?hidden=${!isInvalid}>
         ${isInvalid ? this.validationMessage : nothing}
       </div>
     `;

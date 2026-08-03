@@ -1,8 +1,10 @@
+@use 'sass:map';
 @use 'bootstrap-italia/src/scss/base/functions' as *;
 @use 'bootstrap-italia/src/scss/base/config' as *;
 @use 'bootstrap-italia/src/scss/base/variables' as *;
 @use 'bootstrap-italia/src/scss/base/mixins' as *;
 @use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
 @use 'bootstrap-italia/src/scss/base/reboot' as *;
 @use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
@@ -10,7 +12,11 @@
 @use 'bootstrap-italia/src/scss/forms/form-input-upload' as *;
 // @use 'bootstrap-italia/src/scss/forms/validation' as *;
 @use 'bootstrap-italia/src/scss/components/type' as *;
-@use 'bootstrap-italia/src/scss/forms/just-validate' as *;
+@use 'bootstrap-italia/src/scss/forms/form-validation' as *;
+
+utilities.$utilities: ('color': map.get(utilities.$utilities, 'color'));
+
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 :host {
   position: relative;
@@ -99,12 +105,6 @@ input.upload-avatar {
       }
     }
   }
-}
-
-// Counter BSI's form-validation-state mixin which sets .invalid-feedback { display: none }.
-// We control visibility via the HTML `hidden` attribute (?hidden in Lit) instead.
-.invalid-feedback:not([hidden]) {
-  display: block;
 }
 
 // Show focus ring ONLY for keyboard navigation (not when user hovers/clicks with mouse).

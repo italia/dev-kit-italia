@@ -3,9 +3,11 @@ import * as Stories from './it-navscroll.stories';
 
 <Meta of={Stories} />
 
-<Title/>
+<Title />
 
-<description>Lista di link con ancore per navigare velocemente a una sezione specifica della pagina in cui è contenuto.</description>
+<description>
+  Lista di link con ancore per navigare velocemente a una sezione specifica della pagina in cui è contenuto.
+</description>
 
 ## Cosa fa
 
@@ -14,6 +16,7 @@ Il componente Navscroll (`it-navscroll`), declinazione del [componente Sidebar](
 [Approfondisci come e quando usare il componente Navscroll](https://designers.italia.it/design-system/componenti/navscroll/)
 
 ### Alternative a questo componente
+
 - [Sidebar](?path=/docs/componenti-sidebar--documentazione): quando hai bisogno di una barra di navigazione laterale classica per navigare verso altre pagine o sezioni del sito.
 
 ## Anteprima e attributi del componente
@@ -38,12 +41,14 @@ Per configurare correttamente il componente `it-navscroll`:
 ## Accessibilità
 
 Per garantire un'esperienza accessibile:
+
 - inserisci il componente all'interno di un elemento `<aside>` per indicare chiaramente il suo ruolo di navigazione laterale;
 - inserisci l'attributo `aria-label` sull'elemento `<aside>` che contiene il componente `<it-navscroll>` per specificare meglio ai lettori di schermo di che cosa si tratta;
 - usa l'attributo `aria-disabled="true"` per i link disabilitati per garantire il corretto supporto alle tecnologie assistive.
 
 Per garantire una migliore esperienza di navigazione con gli screen reader, soprattutto per JAWS, inserisci in pagina un elemento con `aria-live="polite"` e `id="aria-navscroll-announcer"` che venga aggiornato con il titolo della sezione raggiunta dopo lo scroll:
-``` html
+
+```html
 <div id="aria-navscroll-announcer" aria-live="polite" aria-atomic="true" class="visually-hidden"></div>
 ```
 
@@ -56,11 +61,15 @@ Puoi posizionare una navscroll a sinistra o a destra, a seconda dell'ordine in c
 Puoi decidere di mostrare o meno una linea di separazione sulla navscroll, valorizzando opportunamente sul componente `<it-navscroll>` l'attributo `line-position`.
 
 ### A sinistra
+
 In questo esempio la navscroll è posizionata a sinistra con la linea di separazione impostata su `line-position="right"`.
+
 <Canvas of={Stories.DesktopOnLeft} />
 
 ### A destra
+
 In questo esempio la navscroll è posizionata a destra con la linea di separazione impostata su `line-position="left"`.
+
 <Canvas of={Stories.DesktopOnRight} />
 
 ## Posizionamento su mobile
@@ -79,17 +88,16 @@ Il posizionamento in fondo alla pagina è il default per il componente `<it-navs
 
 ### Posizionata in testa alla pagina
 
-Imposta l'attributo ``position="top"`` per mostrare il trigger di apertura della navscroll in testa alla pagina.
+Imposta l'attributo `position="top"` per mostrare il trigger di apertura della navscroll in testa alla pagina.
+
 <Canvas of={Stories.MobileTop} />
 
-
 ## Con barra di progresso
+
 Per mostrare la barra di progresso, aggiungi il componente `<it-progress>` all'interno del div con classe `link-list-wrapper`, assegnandogli la classe `class="it-navscroll-progressbar"`.
 
-
-
 ```html
- <it-progress type="bar" value="0" class="it-navscroll-progressbar" aria-label="Progress bar"></it-progress>
+<it-progress type="bar" value="0" class="it-navscroll-progressbar" aria-label="Progress bar"></it-progress>
 ```
 
 <Canvas of={Stories.Progress} />
@@ -99,17 +107,9 @@ Per mostrare la barra di progresso, aggiungi il componente `<it-progress>` all'i
 Puoi attivare la variante scura su desktop, su mobile o su entrambi.
 
 Per attivarla, usa l'attributo `dark-mode` con uno dei seguenti valori:
+
 - `mobile`, solo su mobile;
 - `desktop`, solo su desktop;
 - `always`, sia su desktop che su mobile.
 
 <Canvas of={Stories.DarkModeStory} />
-
-## Menu inline
-
-La classe distintiva del wrapper esterno è `.inline-menu`.
-
-I menu inline possono contenere [liste di link](?path=/docs/componenti-list--documentazione#liste-per-menu-di-navigazione) di ogni tipo. Nell'esempio trovi una lista di link collassabile.
-
-
-<Canvas of={Stories.MenuInline} />

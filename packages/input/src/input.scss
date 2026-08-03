@@ -21,7 +21,7 @@
 
 @use 'bootstrap-italia/src/scss/forms/input-group' as *;
 
-@use 'bootstrap-italia/src/scss/forms/just-validate' as *;
+@use 'bootstrap-italia/src/scss/forms/form-validation' as *;
 
 utilities.$utilities: (
   'position': map.merge(
@@ -93,7 +93,7 @@ utilities.$utilities: (
 @use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 .password-icon {
-  top: calc(var(--#{$prefix}form-control-spacing) * 5);
+  top: calc(var(--#{$prefix}form-control-spacing) * 3.75);
   --#{$prefix}icon-default: var(--#{$prefix}icon-primary);
 }
 

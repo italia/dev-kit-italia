@@ -13,7 +13,7 @@
 
 @use 'bootstrap-italia/src/scss/forms/forms' as *;
 @use 'bootstrap-italia/src/scss/forms/form-control' as *;
-@use 'bootstrap-italia/src/scss/forms/just-validate' as *;
+@use 'bootstrap-italia/src/scss/forms/form-validation' as *;
 
 // Import autocomplete styles from bootstrap-italia
 @use 'bootstrap-italia/src/scss/forms/accessible-autocomplete' as *;
@@ -39,7 +39,8 @@ utilities.$utilities: (
       (
         'values': none block,
       )
-    )
+    ),
+  'color': map.get(utilities.$utilities, 'color')
 );
 
 @use 'bootstrap-italia/src/scss/base/utilities/api' as *;
@@ -109,13 +110,6 @@ utilities.$utilities: (
     outline: 2px solid var(--#{$prefix}color-outline-focus);
     outline-offset: -2px;
   }
-}
-
-.invalid-feedback {
-  display: block;
-  margin-top: var(--#{$prefix}spacing-3xs);
-  color: var(--#{$prefix}color-text-danger);
-  font-size: var(--#{$prefix}label-font-size-xs);
 }
 
 .required {

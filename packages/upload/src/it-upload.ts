@@ -136,12 +136,14 @@ export class ItUpload extends FormControl {
   }
 
   private _validateFiles() {
-    if (this.required && this._files.length === 0) {
-      this.inputElement?.setCustomValidity(this.$t('validityRequired'));
-      this.validationMessage = this.$t('validityRequired');
-    } else {
-      this.inputElement?.setCustomValidity('');
-      this.validationMessage = '';
+    if (!this.customValidation) {
+      if (this.required && this._files.length === 0) {
+        this.inputElement?.setCustomValidity(this.$t('validityRequired'));
+        this.validationMessage = this.$t('validityRequired');
+      } else {
+        this.inputElement?.setCustomValidity('');
+        this.validationMessage = '';
+      }
     }
     this.formControlController.updateValidity();
   }
@@ -385,7 +387,7 @@ export class ItUpload extends FormControl {
     const inputId = this._id!;
     const labelText = this.variant === 'gallery' ? this.$t('upload_gallery_label') : this.$t('upload_label');
 
-    const showValidation = this.formControlController.submittedOnce;
+    const showValidation = this.formControlController.submittedOnce || this.customValidation;
     const isInvalid = showValidation && this.validationMessage.length > 0;
 
     return html`
@@ -416,6 +418,7 @@ export class ItUpload extends FormControl {
             accept="${ifDefined(this.accept)}"
             ?disabled="${this.disabled}"
             ?required="${this.required && this._files.length === 0}"
+            ?formNoValidate="${this.customValidation}"
             aria-invalid="${isInvalid ? 'true' : nothing}"
             aria-describedby="${ifDefined(isInvalid ? `invalid-feedback-${inputId}` : undefined)}"
             @change="${this._handleFileChange}"
@@ -424,12 +427,7 @@ export class ItUpload extends FormControl {
 
         ${when(this.supportText, () => html`<small class="form-text">${this.supportText}</small>`)}
 
-        <div
-          role="alert"
-          id="invalid-feedback-${inputId}"
-          class="invalid-feedback form-feedback form-text just-validate-error-label"
-          ?hidden=${!isInvalid}
-        >
+        <div role="alert" id="invalid-feedback-${inputId}" class="form-feedback text-danger" ?hidden=${!isInvalid}>
           ${isInvalid ? html`<span class="visually-hidden">${this.label}: </span>${this.validationMessage}` : nothing}
         </div>
       </div>

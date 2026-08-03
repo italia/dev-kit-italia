@@ -10,7 +10,7 @@
 @use 'bootstrap-italia/src/scss/forms/form-control' as *;
 @use 'bootstrap-italia/src/scss/forms/form-check' as *;
 @use 'bootstrap-italia/src/scss/forms/form-toggles' as *;
-@use 'bootstrap-italia/src/scss/forms/just-validate' as *;
+@use 'bootstrap-italia/src/scss/forms/form-validation' as *;
 
 ::part(checkbox) {
   &:focus:focus-visible {

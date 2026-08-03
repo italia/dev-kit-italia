@@ -14,7 +14,7 @@
 @use 'bootstrap-italia/src/scss/forms/form-control' as *;
 @use 'bootstrap-italia/src/scss/forms/form-input-upload' as *;
 
-@use 'bootstrap-italia/src/scss/forms/just-validate' as *;
+@use 'bootstrap-italia/src/scss/forms/form-validation' as *;
 @use 'bootstrap-italia/src/scss/components/type' as *;
 
 utilities.$utilities: (
@@ -35,7 +35,8 @@ utilities.$utilities: (
           0: 0,
         ),
       )
-    )
+    ),
+  'color': map.get(utilities.$utilities, 'color')
 );
 
 @use 'bootstrap-italia/src/scss/base/utilities/api' as *;

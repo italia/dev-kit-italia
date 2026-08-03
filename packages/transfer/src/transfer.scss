@@ -1,8 +1,10 @@
+@use 'sass:map';
 @use 'bootstrap-italia/src/scss/base/functions' as *;
 @use 'bootstrap-italia/src/scss/base/config' as *;
 @use 'bootstrap-italia/src/scss/base/variables' as *;
 @use 'bootstrap-italia/src/scss/base/mixins' as *;
 @use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
 @use 'bootstrap-italia/src/scss/base/reboot' as *;
 @use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
@@ -10,9 +12,13 @@
 @use 'bootstrap-italia/src/scss/forms/form-control' as *;
 @use 'bootstrap-italia/src/scss/forms/form-check' as *;
 @use 'bootstrap-italia/src/scss/forms/form-transfer' as *;
-@use 'bootstrap-italia/src/scss/forms/just-validate' as *;
+@use 'bootstrap-italia/src/scss/forms/form-validation' as *;
 
 @use 'bootstrap-italia/src/scss/components/grid' as *;
+
+utilities.$utilities: ('color': map.get(utilities.$utilities, 'color'));
+
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 // ── Custom properties ────────────────────────────────────────────────────────
 // These allow per-instance and theme-level overrides at runtime.
@@ -86,13 +92,5 @@
 .form-check {
   input:focus:not(:focus-visible) + label {
     box-shadow: none !important;
-  }
-}
-
-// ── Validation ────────────────────────────────────────────────────────────────
-.it-transfer {
-  .invalid-feedback {
-    display: block;
-    margin-top: $v-gap;
   }
 }

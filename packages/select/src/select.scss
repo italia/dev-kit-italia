@@ -1,17 +1,17 @@
+@use 'sass:map';
 @use 'bootstrap-italia/src/scss/base/functions' as *;
 @use 'bootstrap-italia/src/scss/base/variables' as *;
 @use 'bootstrap-italia/src/scss/base/mixins' as *;
 @use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
 @use 'bootstrap-italia/src/scss/base/reboot'; //per il font dentro agli input
 @use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
 @use 'bootstrap-italia/src/scss/forms/forms' as *;
 @use 'bootstrap-italia/src/scss/forms/form-control' as *;
-
 @use 'bootstrap-italia/src/scss/forms/form-select' as *;
+@use 'bootstrap-italia/src/scss/forms/form-validation' as *;
 
-@use 'bootstrap-italia/src/scss/forms/just-validate' as *;
+utilities.$utilities: ('color': map.get(utilities.$utilities, 'color'));
 
-select {
-  line-height: 1.528;
-}
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;

@@ -12,6 +12,10 @@ interface RatingProps {
   readOnly: boolean;
   required: boolean;
   maxElements: number;
+
+  form: string;
+  customValidation: boolean;
+  validityMessage: string;
 }
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
@@ -27,6 +31,9 @@ const meta = {
     required: false,
     icon: 'it-star-outline',
     maxElements: 5,
+    form: '',
+    customValidation: false,
+    validityMessage: '',
   },
   argTypes: {
     name: {
@@ -68,6 +75,25 @@ const meta = {
         'Numero massimo di elementi nel rating, per messaggi di supporto e accessibilità, modificare rispetto al default solo se si cambia il numero di elementi visualizzati rispetto al default di 5',
       table: { defaultValue: { summary: '5' } },
     },
+    form: {
+      control: 'text',
+      description:
+        "ID html del form a cui è associato il componente it-radio-group, se non si trova all'interno di una form ",
+    },
+    customValidation: {
+      name: 'custom-validation',
+      control: 'boolean',
+      type: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
+      description:
+        'Se la validazione del radio group è fatta esternamente (lato server o con plugin js - validazione custom), impostare questo attributo a `true`.',
+    },
+    validityMessage: {
+      name: 'validity-message',
+      control: 'text',
+      description:
+        "Messaggio da mostrare quando il radio group è invalido nel caso di validazione esterna (validazione custom). Se impostato a '' (stringa vuota) il campo viene considerato valido.",
+    },
   },
 } satisfies Meta<RatingProps>;
 
@@ -97,6 +123,9 @@ export const EsempioInterattivo: Story = {
       }}
       icon=${ifDefined(args.icon || undefined)}
       max-elements=${args.maxElements.toString()}
+      form="${ifDefined(args.form || undefined)}"
+      ?custom-validation="${args.customValidation}"
+      validity-message="${ifDefined(args.validityMessage || undefined)}"
     >
       <span slot="label">Valuta questo contenuto</span>
       <it-rating-item value="1" ?checked=${args.value === 1}>

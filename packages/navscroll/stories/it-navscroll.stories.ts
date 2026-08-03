@@ -14,7 +14,6 @@ interface NavscrollProps {
   'line-position': LinePosition;
   'dark-mode': DarkMode;
   _progress: boolean;
-  _inlineMenu: boolean;
   _uniqueStoryID: string;
 }
 
@@ -78,50 +77,6 @@ const getBody = (id: string, progress = true) =>
     </nav>
   </div>`;
 
-const getBodyInlineMenu = (id: string) =>
-  html`<div class="inline-menu">
-    <div class="link-list-wrapper">
-      <ul class="link-list">
-        <li>
-          <it-collapse>
-            <button class="list-item icon-right border-0 bg-transparent" slot="trigger">
-              <span class="list-item-title-icon-wrapper" slot="label">
-                <span class="list-item-title">Introduzione</span>
-                <it-icon name="it-expand" color="primary" class="left"></it-icon>
-              </span>
-            </button>
-            <ul slot="content" class="link-sublist collapse">
-              <li>
-                <a class="list-item" href="#p1_1${id}"><span>1.1 Elemento annidato </span></a>
-              </li>
-              <li>
-                <a class="list-item" href="#p1_2${id}"><span>1.2 Elemento annidato </span></a>
-              </li>
-              <li>
-                <a class="list-item" href="#p1_3${id}"><span>1.3 Elemento annidato </span></a>
-              </li>
-            </ul>
-          </it-collapse>
-        </li>
-        <li>
-          <it-collapse>
-            <button class="list-item icon-right border-0 bg-transparent" slot="trigger">
-              <span class="list-item-title-icon-wrapper" slot="label">
-                <span class="list-item-title">Seconda sezione</span>
-                <it-icon name="it-expand" color="primary" class="left"></it-icon>
-              </span>
-            </button>
-            <ul slot="content" class="link-sublist collapse">
-              <li>
-                <a class="list-item" href="#p2_1${id}"><span>2.1 Elemento annidato</span></a>
-              </li>
-            </ul>
-          </it-collapse>
-        </li>
-      </ul>
-    </div>
-  </div>`;
-
 // Renderizza il wc di default
 const renderComponent = (params: NavscrollProps) => {
   const uniqueStoryID = params._uniqueStoryID ?? '';
@@ -139,7 +94,7 @@ const renderComponent = (params: NavscrollProps) => {
           open-aria-label=${ifDefined(params['open-aria-label'])}
           back-label=${ifDefined(params['back-label'])}
         >
-          ${params._inlineMenu ? getBodyInlineMenu(uniqueStoryID) : getBody(uniqueStoryID, params._progress)}
+          ${getBody(uniqueStoryID, params._progress)}
         </it-navscroll>
       </aside>
       <main
@@ -418,17 +373,5 @@ export const DarkModeStory: Story = {
       'dark-mode': 'always',
       _progress: false,
       _uniqueStoryID: '-story5',
-    })}`,
-};
-
-export const MenuInline: Story = {
-  ...meta,
-  name: 'Menu inline',
-  render: (params) =>
-    html` ${renderComponent({
-      ...params,
-      _inlineMenu: true,
-      _progress: false,
-      _uniqueStoryID: '-story6',
     })}`,
 };
