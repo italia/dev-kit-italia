@@ -34,7 +34,7 @@ Per vedere esempi di notifiche interattive, fai riferimento agli [esempi della s
 
 Il componente usa un tag `h2` per il titolo delle notifiche come impostazione predefinita. Assicurati di impostare il tag `h` corretto a seconda del contesto in cui usi il componente, tramite l'attributo `heading-level`.
 
-Il componente gestisce automaticamente gli attributi `role` che `aria-hidden`, necessari per l’accessibilità.
+Il componente gestisce automaticamente gli attributi `role` e `aria-hidden`, necessari per l’accessibilità.
 
 ## Testo supplementare
 
@@ -80,7 +80,7 @@ Per impostazione predefinita, la notifica appare nell’angolo inferiore destro 
 
 ### Posizione fissa
 
-Se vuoi fissare la notifica a uno dei margini della finestra, valorizza l'attributo 'fix' con:
+Se vuoi fissare la notifica a uno dei margini della finestra, valorizza l'attributo `fix` con:
 
 - `top`, per fissarla in alto;
 - `bottom`, per fissarla in basso;
@@ -99,17 +99,15 @@ Puoi mostrare una notifica chiamando il metodo `show` su un elemento `it-notific
 
 Se **non** imposti l’attributo `dismissable`, la notifica si chiude automaticamente dopo un intervallo di tempo.
 
-Puoi passare un valore in millisecondi al metodo `show()` per definire la durata della notifica. Se non specifichi alcun valore, viene utilizzata una durata predefinita di 3000 millisecondi (3 secondi).
+La durata predefinita è di 3000 millisecondi (3 secondi). Per modificarla, passa un valore in millisecondi all'attributo `timeout` oppure al metodo `show()`.
 
 <Canvas of={Stories.Attivazione} />
 
 ### Notifiche a scomparsa manuale
 
-Se imposti l’attributo `dismissable`, la notifica non si chiude automaticamente e resta visibile fino alla chiusura manuale da parte dell'utente.
+Se imposti l’attributo `dismissable`, la notifica non si chiude automaticamente e resta visibile fino alla chiusura manuale da parte dell'utente. Il pulsante di chiusura interno alla notifica è già configurato per nasconderla.
 
-Il pulsante di chiusura interno alla notifica è già configurato per nasconderla.
-
-Puoi anche chiudere la notifica da altri elementi della pagina chiamando il metodo `hide()` sull’elemento it-notification.
+Puoi anche chiudere la notifica tramite altri elementi della pagina, chiamando il metodo `hide()` sull’elemento it-notification.
 
 
 <Canvas of={Stories.AttivazioneEdEliminazione} />
@@ -121,4 +119,4 @@ Per personalizzare gli stili, usa i selettori `::part` dedicati:
 - `notification`, per personalizzare il contenitore principale;
 - `title`, per personalizzare il titolo
 
-[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
