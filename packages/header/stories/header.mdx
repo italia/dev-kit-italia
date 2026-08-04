@@ -86,7 +86,7 @@ L'Header centrale mostra il logo dell’ente e la sua intestazione, i link ai so
 <Canvas of={HeaderStories.HeaderCenter} />
 
 ### Versione compatta
-Per utilizzare la versione più compatta in altezza dell’header centrale, aggiungi la classe `it-small-header` al tag `<div class="it-header-center-wrapper">`.
+Per utilizzare la versione più compatta in altezza dell’Header centrale, aggiungi la classe `it-small-header` al tag `<div class="it-header-center-wrapper">`.
 
 <Canvas of={HeaderStories.HeaderCenterCompact} />
 
@@ -116,10 +116,10 @@ Per modificare il tema dell’Header navigazione e impostarlo alla versione chia
 
 <br/>
 
-#### Header Nav standard (default)
+#### Header navigazione standard (default)
 <Canvas of={HeaderStories.HeaderNav} />
 
-#### Header Nav desktop chiara
+#### Header navigazione desktop chiaro
 <Canvas of={HeaderStories.HeaderNavDesktopLight} />
 
 ### Navigazione secondaria
@@ -164,35 +164,35 @@ Esempio:
 
 ### Comportamento su mobile (sotto il breakpoint)
 
-Quando la larghezza viewport scende sotto il valore di `breakpoint` (di default `991`), `<it-header>` passa dalla modalità inline a quella mobile e crea automaticamente una modale laterale (`it-modal`) che contiene una copia strutturata della navigazione.
+Quando la larghezza viewport scende sotto il valore di `breakpoint` default `991`, `<it-header>` passa dalla modalità inline a quella mobile e crea automaticamente una modale laterale (`it-modal`) che contiene una copia strutturata della navigazione.
 
 Durante questa transizione, il componente **clona** e inserisce nella modale questi elementi in questo ordine (se presenti):
 
-- il `brand wrapper` (`.it-brand-wrapper`) nello slot `header` della modale (se `hide-header-brand` non è attivo)
+- il `brand wrapper` (`.it-brand-wrapper`) nello slot `header` della modale (se `hide-header-brand` non è attivo);
 - il `nav` principale (`.it-header-navbar-wrapper nav`) con tutte le liste `.menu-wrapper > ul`:
-  - prima la lista principale
-  - poi eventuali liste successive (es: menu secondario) a cui aggiunge la classe `secondary`
-- il menu dell'Header Slim (`.it-header-slim-wrapper ul`), a cui assegna le classi `secondary header-slim-menu`
-- il blocco social (`.it-socials`)
+  - prima la lista principale;
+  - poi eventuali liste successive (es: menu secondario) a cui aggiunge la classe `secondary`.
+- il menu dello Slim header (`.it-header-slim-wrapper ul`), a cui assegna le classi `secondary header-slim-menu`;
+- il blocco social (`.it-socials`).
 
 L'ordine finale nel menu laterale è il seguente:
 
-1. header della modale con brand (se non nascosto)
-2. contenuto modale (`slot="content"`)
-3. dentro al contenuto: `nav.modal-nav`
-4. dentro al `nav.modal-nav`: liste del nav principale (in ordine), poi il menu dell'Header Slim
-5. in coda al contenuto: i social
+1. header della modale con brand (se non nascosto);
+2. contenuto modale (`slot="content"`);
+3. dentro al contenuto: `nav.modal-nav`;
+4. dentro al `nav.modal-nav`: liste del nav principale (in ordine), poi il menu dello Slim header;
+5. in coda al contenuto, i social.
 
 Questo comportamento è automatico: tornando sopra breakpoint, la modale viene rimossa e l'header torna alla composizione desktop originale.
 
 
-## Header Sticky
-Per rendere sticky l'header durante lo scroll della pagina, wrappa l'intera struttura con il componente `<it-sticky>`.
+## Header sticky
+Per rendere sticky l'header durante lo scroll della pagina, racchiudi l'intera struttura con il componente `<it-sticky>`.
 
-In questo caso la classe `.it-header-wrapper` (e `it-header-sticky`) va spostata su `<it-sticky>` — e **non** sul tag `<header>` interno:
+In questo caso, sposta le classi `.it-header-wrapper` e `it-header-sticky` su `<it-sticky>`, e **non** sul tag `<header>` interno.
 
 Ricordati di:
-- aggiungere l'attributo `sticky-class-name="is-sticky"` per applicare la classe `is-sticky` quando l'header diventa sticky, in modo da poter gestire eventuali stili specifici per questo stato.
+- aggiungere l'attributo `sticky-class-name="is-sticky"` per applicare la classe `is-sticky` quando l'header diventa sticky, in modo da poter gestire eventuali stili specifici per questo stato;
 - aggiungere l'attributo `trigger-selector` con l'`id` dell'`<it-header>` interno, in modo che lo sticky si attivi solo dopo che l'intero header ha superato il bordo superiore della viewport (e non immediatamente al primo pixel di scroll).
 
 Esempio:
