@@ -36,15 +36,15 @@ Se vuoi implementare un breakpoint personalizzato, assicurati di modificare anch
 
 
 ## Accessibilità
-L'header è un elemento fondamentale per la navigazione: presta particolare attenzione alla corretta semantica HTML, all'utilizzo delle etichette e degli attributi ARIA. Valida e testa sempre il risultato con gli utenti.
+L'header è un elemento fondamentale per la navigazione: presta particolare attenzione alla corretta semantica HTML, all'utilizzo delle etichette e degli attributi ARIA. Valida e testa sempre con gli utenti la soluzione adottata.
 
 Il titolo del sito, indicato come "Nome dell'Istituzione" negli esempi, è contenuto in un elemento `<div>` generico e non in un tag `<h1>`, per evitare conflitti con gli `<h1>` presenti nelle singole pagine.
 
 Se la homepage non presenta un titolo (ad esempio, quando il primo contenuto della pagina è una notizia in evidenza), inserisci un `<h1 class="visually-hidden">` nascosto visivamente tramite la classe `.visually-hidden`, così da renderlo disponibile ai lettori di schermo. Questa soluzione consente agli utenti che navigano da tastiera o tramite tecnologie assistive di raggiungere direttamente il titolo della pagina attraverso gli [skiplinks](?path=/docs/componenti-skiplinks--documentazione), evitando di dover attraversare i contenuti dell'Header.
 
 
-## Slim Header
-Lo Slim Header mostra un'intestazione, solitamente con riferimento all'ente di appartenenza del progetto o riferimenti utili, oltre ad un eventuale menu per il cambio lingua e l'accesso ad area riservata.
+## Slim header
+Lo Slim header mostra un'intestazione, solitamente l'indicazione dell'ente di appartenenza del progetto, un eventuale menu per il cambio lingua e il pulsante di accesso all'area riservata.
 
 Il cambio lingua è gestito con il componente `it-dropdown`.
 
@@ -52,10 +52,10 @@ Il cambio lingua è gestito con il componente `it-dropdown`.
 
 
 ### Zona destra con pulsante full-responsive
-Il pulsante di *action* situato nella zona destra dell'Header Slim (nell'elemento con classe `.it-header-slim-right-zone`), può essere sia un link sia un pulsante di tipo `<it-button>`.
+Il pulsante è situato nella zona destra dello Slim header, nell'elemento con classe `.it-header-slim-right-zone`. Può essere sia un link che un pulsante di tipo `<it-button>`.
 
-Per applicargli l'aspetto *full-responsive*, a seconda dei due casi puoi:
-- se un link, applicare la classe `.btn-full`:
+Per ottenere l'aspetto *full-responsive*:
+- se è un link, applica la classe `.btn-full`;
 ```html
 <a href="#" class="btn btn-primary btn-icon btn-full">
   <span class="rounded-icon">
@@ -64,7 +64,7 @@ Per applicargli l'aspetto *full-responsive*, a seconda dei due casi puoi:
   <span class="d-none d-lg-block">Accedi all'area personale</span>
 </a>
 ```
-- se è un componente di tipo `it-button` aggiungere l'attributo `full`:
+- se è un componente di tipo `it-button`, aggiungi l'attributo `full`.
 ```html
 <it-button variant="primary" full>
   <span class="rounded-icon">
@@ -76,39 +76,39 @@ Per applicargli l'aspetto *full-responsive*, a seconda dei due casi puoi:
 <Canvas of={HeaderStories.SlimHeaderActionFull} />
 
 ### Versione chiara
-Per cambiare tema all’Header Slim è sufficiente aggiungere la classe `theme-light` al tag`<div class="it-header-slim-wrapper">`.
+Per cambiare tema allo Slim header, aggiungi la classe `theme-light` al tag`<div class="it-header-slim-wrapper">`.
 
 <Canvas of={HeaderStories.SlimHeaderLight} />
 
-## Header Centrale
-L'Header Centrale mostra il logo dell’ente e la sua descrizione, i link aggiuntivi ai social media ed eventualmente l’accesso al motore di ricerca, se presente.
+## Header centrale
+L'Header centrale mostra il logo dell’ente e la sua intestazione, i link ai social media e l'icona per aprire la funzionalità di ricerca, se presente.
 
 <Canvas of={HeaderStories.HeaderCenter} />
 
 ### Versione compatta
-Per utilizzare la versione più compatta in altezza dell’header centrale, puoi aggiungere la classe `it-small-header` al tag `<div class="it-header-center-wrapper">`.
+Per utilizzare la versione più compatta in altezza dell’header centrale, aggiungi la classe `it-small-header` al tag `<div class="it-header-center-wrapper">`.
 
 <Canvas of={HeaderStories.HeaderCenterCompact} />
 
 ### Versione chiara
-Per cambiare tema all’header centrale puoi aggiungere la classe `theme-light` al tag `<div class="it-header-center-wrapper">`.
+Per cambiare tema all’Header centrale, aggiungi la classe `theme-light` al tag `<div class="it-header-center-wrapper">`.
 
 <Canvas of={HeaderStories.HeaderCenterLight} />
 
 
-## Header Nav
-L'Header Nav mostra il menu di navigazione principale del sito, e può essere costituito da semplici link, pulsanti con [Dropdown](?path=/docs/componenti-dropdown--documentazione) e [Megamenu](?path=/docs/componenti-megamenu--documentazione).
+## Header navigazione
+L'Header navigazione contiene il menu di navigazione principale del sito e può includere semplici link oppure pulsanti con [Dropdown](?path=/docs/componenti-dropdown--documentazione) e [Megamenu](?path=/docs/componenti-megamenu--documentazione).
 
 <Canvas of={HeaderStories.HeaderNav} />
 
 ### Temi colore disponibili
-I’Header Nav ha due temi colore:
-- uno di default uguale al **colore primario** del sito
-- un chiaro (“light”)
+L’Header navigazione ha due temi colore:
+- uno di default uguale al **colore primario** del sito;
+- uno chiaro (“light”).
 
-Su **mobile** lo stile del menu è sempre uguale, indifferentemente dal tema scelto: ha un **background bianco e testi e link di colore primario**.
+Su **mobile** lo stile del menu è sempre uguale, indipendentemente dal tema scelto: ha un **background bianco e testi e link di colore primario**.
 
-Per modificare il tema dell’Header Nav e impostarlo alla versione chiara, è sufficiente aggiungere la classe `theme-light` al tag `<nav class="it-header-navbar-wrapper">`:
+Per modificare il tema dell’Header navigazione e impostarlo alla versione chiara, aggiungi la classe `theme-light` al tag `<nav class="it-header-navbar-wrapper">`:
 
 ```html
 <nav class="it-header-navbar-wrapper theme-light">...</nav>
@@ -123,12 +123,12 @@ Per modificare il tema dell’Header Nav e impostarlo alla versione chiara, è s
 <Canvas of={HeaderStories.HeaderNavDesktopLight} />
 
 ### Navigazione secondaria
-Al menu di navigazione principale puoi aggiungere anche un menu di navigazione secondario includendo in `.menu-wrapper` una seconda lista `<ul>` con classe `.navbar-nav.navbar-secondary` e la stessa struttura dati della lista `.navbar-nav` principale.
+Per aggiungere un menu di navigazione secondaria, includi in `.menu-wrapper` una seconda lista `<ul>` con classe `.navbar-nav.navbar-secondary` e la stessa struttura dati della lista `.navbar-nav` principale.
 <Canvas of={HeaderStories.HeaderNavSecondary} />
 
-## Header Completa
+## Header completa
 
-L'anteprima mostra la struttura HTML statica dell'header completo. Per abilitare la **navigazione mobile interattiva** (menu burger) devi wrappare l'intera struttura con il componente `<it-header>`, che gestisce automaticamente la transizione tra layout desktop e mobile creando una modale di navigazione al di sotto del breakpoint configurato.
+L'anteprima mostra la struttura HTML statica dell'header completo. Per abilitare la **navigazione mobile interattiva** (menu burger), racchiudi l'intera struttura nel componente `<it-header>`. Il componente gestisce automaticamente la transizione tra il layout desktop e quello mobile, creando una modale di navigazione quando si raggiunge il breakpoint configurato.
 
 La classe `.it-header-wrapper` va applicata al tag `<header>` semantico interno a `<it-header>`:
 
