@@ -30,17 +30,17 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Informazioni generali
 
-Non è consigliato modificare il valore dell'attributo `breakpoint` del componente `<it-header>`, che di default è impostato a `lg` (992px), in quanto è stato studiato per adattarsi al meglio alla maggior parte dei siti della PA ed è coerente con le regole css di visibilità dei vari elementi che compongono l'header (es: il menu di navigazione principale è nascosto su schermi più piccoli di `lg`).
-Se vuoi implementare un breakpoint personalizzato, assicurati di modificare anche le regole css di visibilità dei vari elementi dell'header, in modo da mantenere una coerenza tra il breakpoint di attivazione del menu mobile e la visualizzazione degli elementi che lo compongono.
+L'attributo `breakpoint` del componente `<it-header>` ha come valore predefinito `lg` (992px). Mantieni questo valore per garantire un comportamento ottimale nella maggior parte dei siti della Pubblica Amministrazione e per preservare la coerenza con le regole CSS che gestiscono la visibilità degli elementi dell'header. Con una larghezza dello schermo inferiore a `lg`, l'header nasconde il menu di navigazione principale e utilizza la navigazione mobile.
+
+Se vuoi implementare un breakpoint personalizzato, assicurati di modificare anche le regole css di visibilità dei vari elementi dell'header. In questo modo manterrai coerenza tra il breakpoint di attivazione del menu mobile e la visualizzazione degli elementi che lo compongono.
 
 
 ## Accessibilità
-Considerando l'importanza dell'Header per la navigazione, si ricorda di porre particolare attenzione all'utilizzo della corretta semantica HTML, alle etichette e agli attributi ARIA, oltre a validare e testare sempre con utenti il risultato.
+L'header è un elemento fondamentale per la navigazione: presta particolare attenzione alla corretta semantica HTML, all'utilizzo delle etichette e degli attributi ARIA. Valida e testa sempre il risultato con gli utenti.
 
-Il titolo del sito, "Nome dell'Istituzione" negli esempi, è contenuto in un `<div>` generico e non un tag `<h1>` per evitare conflitti con gli `<h1>` presenti nelle singole pagine.
-Nel caso in cui la home page fosse priva di un titolo (es: il primo contenuto in pagina è una notizia in evidenza) si può inserire in pagina un `<h1 class="visually-hidden">` non visibile con l'apposita classe `.visually-hidden`, in modo che sia visibile ai lettori di schermo.
+Il titolo del sito, indicato come "Nome dell'Istituzione" negli esempi, è contenuto in un elemento `<div>` generico e non in un tag `<h1>`, per evitare conflitti con gli <h1> presenti nelle singole pagine.
 
-Questa soluzione sarà anche utile a dare focus direttamente al tag `<h1>` laddove siano presenti [skiplinks](?path=/docs/componenti-skiplinks--documentazione) che permettano agli utenti che navigano da tastiera o con tecnologie assistive di saltare i contenuti dell'Header.
+Se la homepage non presenta un titolo (ad esempio, quando il primo contenuto della pagina è una notizia in evidenza), inserisci un `<h1 class="visually-hidden">` nascosto visivamente tramite la classe `.visually-hidden`, così da renderlo disponibile ai lettori di schermo. Questa soluzione consente agli utenti che navigano da tastiera o tramite tecnologie assistive di raggiungere direttamente il titolo della pagina attraverso gli [skiplinks](?path=/docs/componenti-skiplinks--documentazione), evitando di dover attraversare i contenuti dell'Header.
 
 
 ## Slim Header
