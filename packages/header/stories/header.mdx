@@ -38,7 +38,7 @@ Se vuoi implementare un breakpoint personalizzato, assicurati di modificare anch
 ## Accessibilità
 L'header è un elemento fondamentale per la navigazione: presta particolare attenzione alla corretta semantica HTML, all'utilizzo delle etichette e degli attributi ARIA. Valida e testa sempre il risultato con gli utenti.
 
-Il titolo del sito, indicato come "Nome dell'Istituzione" negli esempi, è contenuto in un elemento `<div>` generico e non in un tag `<h1>`, per evitare conflitti con gli <h1> presenti nelle singole pagine.
+Il titolo del sito, indicato come "Nome dell'Istituzione" negli esempi, è contenuto in un elemento `<div>` generico e non in un tag `<h1>`, per evitare conflitti con gli `<h1>` presenti nelle singole pagine.
 
 Se la homepage non presenta un titolo (ad esempio, quando il primo contenuto della pagina è una notizia in evidenza), inserisci un `<h1 class="visually-hidden">` nascosto visivamente tramite la classe `.visually-hidden`, così da renderlo disponibile ai lettori di schermo. Questa soluzione consente agli utenti che navigano da tastiera o tramite tecnologie assistive di raggiungere direttamente il titolo della pagina attraverso gli [skiplinks](?path=/docs/componenti-skiplinks--documentazione), evitando di dover attraversare i contenuti dell'Header.
 
