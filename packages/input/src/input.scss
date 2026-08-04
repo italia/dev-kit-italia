@@ -93,7 +93,7 @@ utilities.$utilities: (
 @use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 .password-icon {
-  top: calc(var(--#{$prefix}form-control-spacing) * 3.75);
+  top: calc(var(--#{$prefix}form-control-spacing) * 4);
   --#{$prefix}icon-default: var(--#{$prefix}icon-primary);
 }
 
