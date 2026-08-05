@@ -5,11 +5,12 @@ import * as TabsStories from './it-tabs.stories';
 
 # Tabs
 
-<description>Contenitori con etichette per organizzare contenuti correlati in schede spearate all'interno della stessa sezione di pagina</description>
+<description>Contenitori con etichette per organizzare contenuti correlati in schede spearate all'interno della stessa sezione di pagina.</description>
 
 ## Cosa fa
 
-Il componente Tabs serve a raggruppare e organizzare contenuti di natura diversa ma correlati fra di loro, consentendo agli utenti di navigare tra insiemi di informazioni senza uscire dal contesto. Puoi usarlo su layout a pagina intera o all'interno di altre strutture quali ad esempio modali, schede e pannelli laterali.
+Il componente Tabs (`it-tabs`) organizza contenuti correlati in sezioni distinte e consente agli utenti di passare da una sezione all'altra senza uscire dal contesto della pagina. Puoi usarlo sia all'interno di un layout a pagina intera sia all'interno di altri componenti, come modali e pannelli laterali.
+
 
 [Approfondisci quando e come usare il componente Tabs](https://designers.italia.it/design-system/componenti/tabs/)
 
@@ -29,32 +30,44 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 Il componente Tabs è composto da tre elementi:
 
-- `it-tabs`: contenitore principale che gestisce selezione, ARIA e navigazione da tastiera;
-- `it-tab`: singola scheda trigger, assegnata allo `slot="tab"`. Testo o markup inseriti al suo interno rappresentano l'etichetta;
-- `it-tab-panel`: singolo pannello di contenuto; testo o markup inseriti al suo interno rappresentano il corpo della scheda.
+- `it-tabs`, il contenitore principale che gestisce la selezione delle schede, gli attributi ARIA e la navigazione da tastiera;
+- `it-tab`, la singola scheda trigger assegnata allo `slot="tab"`, con il testo o il markup dell'etichetta al suo interno;
+- `it-tab-panel`, il pannello con il testo o il markup del contenuto.
+
 
 Il collegamento tra trigger e pannello avviene tramite:
-- attributo `panel="nome"` su `it-tab`
-- attributo `name="nome"` su `it-tab-panel`
+- attributo `panel="nome"` su `it-tab`;
+- attributo `name="nome"` su `it-tab-panel`.
 
 **Assicurati che ogni coppia `it-tab`/`it-tab-panel` in pagina abbia un valore univoco per questi attributi.**
 
 ### Attributi del componente it-tab
-Puoi utilizzare l'attributo `disabled` su `it-tab` per disabilitare una scheda, rendendola non selezionabile e non raggiungibile da tastiera.
+Usa l'attributo `disabled` su `it-tab` per disabilitare una scheda e impedirne la selezione e la navigazione da tastiera.
 
-Puoi utilizzare l'attributo `active` su `it-tab` per impostare una scheda come attiva di default all'inizializzazione.
+Usa l'attributo `active` su `it-tab` per impostare la scheda che si attiva di default al caricamento del componente.
 
 ## Accessibilità
 
-Il componente implementa le specifiche del [WAI-ARIA Authoring Practices - Tabs with Automatic Activation](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/):
-Il componente gestisce automaticamente gli attributi ARIA necessari per l'accessibilità, tra cui:
-- `role="tablist"` sul contenitore, `role="tab"` sui trigger, `role="tabpanel"` sui pannelli;
-- `aria-selected` e roving tabindex su tastiera via frecce gestiti automaticamente;
-- `aria-controls` su ogni tab punta all'id del pannello associato;
-- `aria-labelledby` su ogni pannello punta all'id del bottone del tab corrispondente;
+
+
+
 - L'attributo `label` su `it-tabs` fornisce l'`aria-label` della tablist, **consigliato** in termini di accessibilità quando non è presente un'intestazione visiva adiacente. In tal caso, assegna un'id univoco all'intestazione e usa `aria-labelledby` su `it-tabs` per collegarla.
-- `aria-keyshortcuts` su ogni tab, dichiara le shortcut da tastiera supportate, che vengono lette dagli screen reader che supportano questo attributo ARIA all'accesso alla tablist. Indicazioni di fallback per screen reader che non supportano `aria-keyshortcuts` sono associate all'attributo `aria-description` del tab attivo, e lette all'accesso al pannello attivo.
-- `aria-description` con indicazioni di fallback per le shortcut da tastiera, lette da tutti gli screen reader all'accesso al pannello attivo. Il testo di questa descrizione è internazionalizzato e personalizzabile tramite la chiave `closeActiveTabHint`.
+
+
+
+
+
+Il componente implementa le specifiche [WAI-ARIA Authoring Practices - Tabs with Automatic Activation](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/) e gestisce automaticamente gli attributi ARIA necessari per garantire l'accessibilità, tra cui:
+
+- `role="tablist"` sul contenitore, `role="tab"` sulle schede e `role="tabpanel"` sui pannelli;
+- `aria-selected` e il *roving tabindex* per la navigazione da tastiera con i tasti freccia;
+- `aria-controls` su ogni scheda, associato all'`id` del pannello corrispondente;
+- `aria-labelledby` su ogni pannello, associato all'`id` del pulsante della scheda corrispondente;
+- `aria-keyshortcuts` su ogni scheda, che espone le scorciatoie da tastiera ai lettori di schermo che supportano questo attributo all'accesso alla tablist;
+- `aria-description`, che fornisce indicazioni di fallback per le scorciatoie da tastiera ai lettori di schemo che non supportano `aria-keyshortcuts`. Il testo è internazionalizzato e puoi personalizzarlo tramite la chiave `closeActiveTabHint`;
+- l'attributo `label` su `it-tabs` fornisce l'`aria-label` della tablist, **consigliato** in termini di accessibilità quando non è presente un'intestazione visiva adiacente. In tal caso, assegna un'id univoco all'intestazione e usa `aria-labelledby` su `it-tabs` per collegarla.
+
+
 <table>
 <thead>
 <tr>
