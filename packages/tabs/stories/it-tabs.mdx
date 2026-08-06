@@ -48,24 +48,15 @@ Usa l'attributo `active` su `it-tab` per impostare la scheda che si attiva di de
 
 ## Accessibilità
 
-
-
-
-- L'attributo `label` su `it-tabs` fornisce l'`aria-label` della tablist, **consigliato** in termini di accessibilità quando non è presente un'intestazione visiva adiacente. In tal caso, assegna un'id univoco all'intestazione e usa `aria-labelledby` su `it-tabs` per collegarla.
-
-
-
-
-
 Il componente implementa le specifiche [WAI-ARIA Authoring Practices - Tabs with Automatic Activation](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/) e gestisce automaticamente gli attributi ARIA necessari per garantire l'accessibilità, tra cui:
 
 - `role="tablist"` sul contenitore, `role="tab"` sulle schede e `role="tabpanel"` sui pannelli;
 - `aria-selected` e il *roving tabindex* per la navigazione da tastiera con i tasti freccia;
 - `aria-controls` su ogni scheda, associato all'`id` del pannello corrispondente;
 - `aria-labelledby` su ogni pannello, associato all'`id` del pulsante della scheda corrispondente;
+- `label` su `it-tabs`, che fornisce l'`aria-label` della tablist quando non c'è un'intestazione visibile;
 - `aria-keyshortcuts` su ogni scheda, che espone le scorciatoie da tastiera ai lettori di schermo che supportano questo attributo all'accesso alla tablist;
-- `aria-description`, che fornisce indicazioni di fallback per le scorciatoie da tastiera ai lettori di schemo che non supportano `aria-keyshortcuts`. Il testo è internazionalizzato e puoi personalizzarlo tramite la chiave `closeActiveTabHint`;
-- l'attributo `label` su `it-tabs` fornisce l'`aria-label` della tablist, **consigliato** in termini di accessibilità quando non è presente un'intestazione visiva adiacente. In tal caso, assegna un'id univoco all'intestazione e usa `aria-labelledby` su `it-tabs` per collegarla.
+- `aria-description`, che fornisce indicazioni di fallback per le scorciatoie da tastiera ai lettori di schemo che non supportano `aria-keyshortcuts`. Il testo è internazionalizzato e puoi personalizzarlo tramite la chiave `closeActiveTabHint`.
 
 
 <table>
@@ -97,41 +88,45 @@ Il componente implementa le specifiche [WAI-ARIA Authoring Practices - Tabs with
 
 <div class="callout callout-warning">
 <div class="callout-inner">
-<div class="callout-title"><span class="text">Attributo label</span></div>
-<p>Quando non è presente un'intestazione collegata ad `it-tabs` tramite `aria-labelledby` o un'intestazione, imposta sempre l'attributo <code>label</code> su <code>it-tabs</code> con una descrizione contestuale. Questo testo viene letto dagli screen reader all'accesso alla tablist.</p>
+<div class="callout-title"><span class="text">Nome accessibile della tablist</span></div>
+<p>La tablist deve sempre avere un nome accessibile. Se è presente un'intestazione visibile che descrive il gruppo di schede, collegala a `it-tabs` tramite `aria-labelledby`. Se invece non è presente un'intestazione, usa l'attributo `label`, che il componente utilizza automaticamente come nome accessibile della tablist.
+</p>
 </div>
 </div>
 
 ## Posizionamento e allineamento
 
-Il componente supporta diverse configurazioni di posizionamento e allineamento dei tab, controllate dall'attributo `placement`.
+Il componente supporta diverse configurazioni di posizionamento e allineamento dei tab, tramite l'attributo `placement`.
 
 ### Tab orizzontali in alto
 
-Se non valorizzi l'attributo `placement`, i tab orientati in orizzontale e sono dimensionati in base al contenuto.
+Per posizionare la tablist sopra il contenuto, non valorizzare l'attributo placement. I tab vengono disposti orizzontalmente e si adattando al contenuto.
 
 <Canvas of={TabsStories.TabOrizzontale} />
 
 ### Tab orizzontali in basso
 
-Utilizzando l'attributo `placement="bottom"`, la tablist si posiziona sotto il contenuto. Il bordo attivo si sposta dal basso all'alto.
+Per posizionare la tablist sotto il contenuto, usa l'attributo placement="bottom". Il bordo attivo si sposta dal basso all'alto.
 
 <Canvas of={TabsStories.PosizionamentoBasso} />
 
 ### Tab verticali a sinistra
 
-Utilizzando l'attributo `placement="start"`, la tablist verticale si posiziona a sinistra del contenuto.
+Per posizionare la tablist a sinistra del contenuto, usa l'attributo `placement="start"`.
 
 <Canvas of={TabsStories.PosizionamentoSinistra} />
 
 ### Tab verticali a destra
 
-Utilizzando l'attributo `placement="end"`, la tablist verticale si posiziona a destra del contenuto. Il bordo attivo si sposta sul lato sinistro.
+Per posizionare la tablist a destra del contenuto, usa l'attributo `placement="end"`. Il bordo attivo si sposta sul lato sinistro.
 
 <Canvas of={TabsStories.PosizionamentoDestra} />
 ### Larghezza tablist verticale
 
-Puoi controllare la larghezza delle tab verticali attraverso la custom property `--it-tabs-nav-size`, il cui default è `30%` . Questa custom property controlla il `flex-basis` della tablist nei layout verticali, e accetta qualsiasi valore CSS valido per `flex-basis`.
+Per modificare la larghezza della tablist nei layout verticali, usa la custom property `--it-tabs-nav-size`. Il valore predefinito è `30%`.
+
+La custom property controlla il valore di `flex-basis` della tablist e accetta qualsiasi valore CSS valido per questa proprietà.
+
 
 ```css
 it-tabs { --it-tabs-nav-size: 220px; }
@@ -142,7 +137,8 @@ it-tabs { --it-tabs-nav-size: 220px; }
 
 ## Tab verticali con sfondo
 
-Utilizzando l'attributo `vertical-background` in combinazione con un posizionamento a destra o sinistra, il tab selezionato mostra uno sfondo primario chiaro.
+Per applicare uno sfondo primario chiaro al tab selezionato nei layout verticali, usa l'attributo `vertical-background` in combinazione con un posizionamento a destra o a sinistra.
+
 
 <Canvas of={TabsStories.TabVerticaleConSfondo} />
 
@@ -150,17 +146,18 @@ Utilizzando l'attributo `vertical-background` in combinazione con un posizioname
 
 ## Tab a tutta larghezza
 
-Puoi utilizzare l'attributo `auto` per espandere i tab al fine di occupare l'intera larghezza disponibile. Su schermi molto piccoli, se le etichette superano la larghezza dello schermo, viene attivato lo scrolling orizzontale.
+Per espandere i tab fino a occupare tutta la larghezza disponibile, usa l'attributo `auto`. Su schermi molto piccoli, quando le etichette superano lo spazio disponibile, il componente attiva lo scorrimento orizzontale.
 
 <Canvas of={TabsStories.TabATuttaLarghezza} />
 
 ## Tab con icona
 
-Le etichette dei tab possono contenere icone, anche non associate a del testo.
+Le etichette dei tab possono contenere icone, anche senza testo visibile.
 
-In questo caso, ricordati sempre di associare un testo con classe `.visually-hidden` all'interno del tag del tab per garantire l'accessibilità agli screen reader, o di utilizzare l'attributo `label` del componente `it-icon`, se lo utilizzi come trigger senza testo visibile.
+Quando usi un'icona senza testo visibile, inserisci sempre un testo descrittivo con classe `.visually-hidden` all'interno del tab, così da fornire un'etichetta accessibile ai lettori di schermo. In alternativa, se utilizzi `it-icon` come trigger senza testo visibile, fornisci il testo descrittivo tramite l'attributo `label` del componente.
 
-Se vuoi variare la dimensione delle icone, utilizza l'attributo `size` di `it-icon` o personalizza la dimensione con CSS.
+Per modificare la dimensione delle icone, usa l'attributo `size` di `it-icon` oppure personalizzala tramite CSS.
+
 
 <Canvas of={TabsStories.TabConIcona} />
 
@@ -168,7 +165,7 @@ Se vuoi variare la dimensione delle icone, utilizza l'attributo `size` di `it-ic
 
 ## Tab con sfondo scuro
 
-Puoi utilizzare l'attributo `dark` per ottenere una tablist con sfondo scuro.
+Per applicare sfondo scuro alla tablist, usa l'attributo `dark`.
 
 <Canvas of={TabsStories.TabScuro} />
 
@@ -176,46 +173,49 @@ Puoi utilizzare l'attributo `dark` per ottenere una tablist con sfondo scuro.
 
 ## Effetto fade
 
-Puoi utilizzare l'attributo `fade` di `it-tabs` per fare in modo che i pannelli appaiano con un'animazione di dissolvenza al cambio tab.
+Per aggiungere un'animazione di dissolvenza al cambio tab, usa l'attributo `fade` di `it-tabs` per fare in modo che i pannelli appaiano con un'animazione di dissolvenza al cambio tab.
 
 <Canvas of={TabsStories.TabFade} />
 
 
-
 ## Tab tipo card
 
-Valorizzando l'attributo `cards`, i tab assumono un design "card".
+Per applicare lo stile card ai tab, usa l'attributo `cards`.
 
 <Canvas of={TabsStories.TabCard} />
 
 ## Tab card con pulsanti aggiungi/elimina
-Puoi utilizzare l'attributo `cards` in combinazione con `dismissible` per ottenere tab di tipo card con pulsante di chiusura integrato. In questo modo, ogni tab diventa rimovibile, e viene aggiunta una icona × all'interno di ogni `it-tab`.
 
-In questa configurazione, al click, al double tap da mobile o attraverso le shortcut da tastiera `Delete` e `Backspace` quando un tab è in focus, il tab emette l'evento cancellabile `it-tab-close` con `detail.panel` e, se non viene chiamato `preventDefault()`, **rimuove automaticamente** `it-tab` e `it-tab-panel` dal DOM.
+Per ottenere tab di tipo card rimovibili con pulsante di chiusura, usa l'attributo `cards` in combinazione con `dismissible`. Ogni it-tab includerà un'icona "×" per la chiusura.
+
+In questa configurazione, al clic, al double tap da mobile o attraverso le scorciatoie da tastiera `Delete` e `Backspace` con un tab in focus, il tab emette l'evento cancellabile `it-tab-close` con `detail.panel` e, se non viene chiamato `preventDefault()`, **rimuove automaticamente** `it-tab` e `it-tab-panel` dal DOM.
 
 Il focus si sposta sul tab adiacente (successivo o, se non esiste, precedente) prima della rimozione, seguendo il pattern WAI-ARIA APG.
+
 <Canvas of={TabsStories.TabCardConPulsanti} />
 
 ### Tab card con pulsanti aggiungi/elimina e logica personalizzata
-Puoi intercettare l'evento `it-tab-close` per implementare una logica personalizzata al momento della chiusura di un tab, ad esempio per mostrare una conferma modale prima di procedere con la rimozione. In questo caso, è importante chiamare `preventDefault()` sull'evento per bloccare la rimozione automatica, e gestire tu stesso la rimozione del tab in caso di conferma positiva da parte dell'utente.
+Puoi intercettare l'evento `it-tab-close` per implementare una logica personalizzata alla chiusura di un tab, ad esempio per mostrare una conferma modale prima di procedere con la rimozione. In questo caso, chiama `preventDefault()` sull'evento per bloccare la rimozione automatica e gestisci manualmente la rimozione del tab in caso di conferma positiva da parte dell'utente.
 
 Per aggiungere tab dinamicamente con logica personalizzata, puoi utilizzare un pulsante `it-button` con `slot="after-tablist"`, e gestire l'aggiunta di un tab con un event listener che esegue la tua logica e invoca il metodo pubblico `addTab(tab, panel)`esposto dal componente.
 
-Esplora l'esempio completo con logica personalizzata di conferma prima della chiusura e aggiunta dinamica di tab:
+Per aggiungere tab dinamicamente con logica personalizzata, usa un pulsante `it-button` con `slot="after-tablist"` e gestisci l'aggiunta del nuovo tab tramite un event listener. Questa configurazione esegue la tua logica e invoca il metodo pubblico `addTab(tab, panel)`esposto dal componente.
+
+Ecco un esempio completo con logica personalizzata di conferma prima della chiusura e aggiunta dinamica di tab:
 
 <Canvas of={TabsStories.TabCardConPulsantiCustomCloseJS} />
 
 
-## Proprietà, Metodi, ed Eventi accessibili via JS
+## Proprietà, metodi ed eventi accessibili via JS
 
 Il componente espone i seguenti metodi e eventi accessibili via JavaScript.
 
 ### Metodi
-- `close(panelId: string)` - chiude il tab con id corrispondente al `panelId` passato, disattivando il tab e nascondendo il pannello. Se il tab è già chiuso o non esiste, non fa nulla.
-- `addTab(tab: ItTab, panel: ItTabPanel)` - aggiunge dinamicamente un nuovo tab e pannello al componente. Il parametro `tab` è un elemento `it-tab` con attributo `slot="tab"` e `panel="nome"`, mentre `panel` è un elemento `it-tab-panel` con attributo `name="nome"`. Il metodo si occupa di inserire correttamente i nuovi elementi nel DOM e di aggiornare la logica di selezione.
+- `close(panelId: string)` chiude il tab con id corrispondente al `panelId` passato, disattivando il tab e nascondendo il pannello. Se il tab è già chiuso o non esiste, non fa nulla.
+- `addTab(tab: ItTab, panel: ItTabPanel)` aggiunge dinamicamente un nuovo tab e pannello al componente. Il parametro `tab` è un elemento `it-tab` con attributo `slot="tab"` e `panel="nome"`, mentre `panel` è un elemento `it-tab-panel` con attributo `name="nome"`. Il metodo si occupa di inserire correttamente i nuovi elementi nel DOM e di aggiornare la logica di selezione.
 
 ### Eventi
-- `it-tab-close` — emesso quando un tab con pulsante di chiusura viene chiuso tramite click, doppio tap da mobile o shortcut da tastiera. L'evento è cancellabile e contiene `detail.panel` con l'id del pannello associato al tab chiuso.
+- `it-tab-close`, emesso quando un tab con pulsante di chiusura viene chiuso tramite clic, doppio tap da mobile o shortcut da tastiera. L'evento è cancellabile e contiene `detail.panel` con l'id del pannello associato al tab chiuso.
 
 ## {TabsStories.I18n.name}
 <Description of={TabsStories.I18n}/>
