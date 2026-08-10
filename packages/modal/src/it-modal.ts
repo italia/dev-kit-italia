@@ -569,7 +569,6 @@ export class ItModal extends BaseComponent {
       >
         <div
           class="${classMap(this._modalBodyClasses)}"
-          role="document"
           @click="${this._handleDialogClick}"
           part="modal-content-wrapper"
         >

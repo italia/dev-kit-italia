@@ -965,7 +965,7 @@ describe('it-modal', () => {
       expect(label).to.equal('Custom Label');
     });
 
-    it('modal-dialog has role="document"', async () => {
+    it('modal-dialog carries no role', async () => {
       const el = await fixture<ItModal>(html`
         <it-modal open disable-animation>
           <span slot="header">Test</span>
@@ -973,8 +973,11 @@ describe('it-modal', () => {
       `);
       await aTimeout(50);
 
+      // `role="document"` was the ARIA 1.0 pattern for letting screen readers switch back to
+      // browse mode inside a dialog. With `aria-modal="true"` it is no longer needed, and NVDA
+      // announced it as "document" right after the dialog on entering the modal.
       const dialog = el.shadowRoot?.querySelector('.modal-dialog');
-      expect(dialog?.getAttribute('role')).to.equal('document');
+      expect(dialog?.hasAttribute('role')).to.be.false;
     });
 
     it('close button has accessible label', async () => {
