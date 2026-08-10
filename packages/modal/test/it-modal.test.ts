@@ -653,6 +653,46 @@ describe('it-modal', () => {
   });
 
   describe('focus trap', () => {
+    it('moves the initial focus inside the dialog, not on the dialog itself', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal open disable-animation>
+          <span slot="header">Test</span>
+          <p slot="content">Content</p>
+          <it-button slot="footer" id="btn1">Button 1</it-button>
+        </it-modal>
+      `);
+      await aTimeout(100);
+
+      const dialog = el.shadowRoot?.querySelector('[role="dialog"]') as HTMLElement;
+      const content = el.shadowRoot?.querySelector('.modal-content') as HTMLElement;
+
+      // NVDA doesn't announce the role of a dialog when focus lands on the dialog element
+      // itself (nvaccess/nvda#8620), so the entry point has to be a descendant.
+      expect(getDeepActiveElement()).to.equal(content);
+      expect(getDeepActiveElement()).to.not.equal(dialog);
+    });
+
+    it('wraps backwards from the entry point to the last focusable element', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal open disable-animation>
+          <span slot="header">Test</span>
+          <p slot="content">Content</p>
+          <it-button slot="footer" id="btn1">Button 1</it-button>
+          <it-button slot="footer" id="btn2">Button 2</it-button>
+        </it-modal>
+      `);
+      await aTimeout(100);
+
+      // The entry point is focusable but not tabbable, so it is not part of the cycle: going
+      // backwards from it has to wrap to the end instead of leaving the dialog.
+      pressKey(el, 'Tab', true);
+      await aTimeout(50);
+
+      const active = getDeepActiveElement();
+      const host = ((active?.getRootNode() as ShadowRoot)?.host as HTMLElement) ?? active;
+      expect(host).to.equal(el.querySelector('#btn2'));
+    });
+
     it('traps focus inside modal when open', async () => {
       const el = await fixture<ItModal>(html`
         <it-modal open disable-animation>
