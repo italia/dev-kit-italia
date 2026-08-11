@@ -66,6 +66,19 @@ it-popover[placement='left-end'] {
   }
 }
 
+.dropdown-menu.show {
+  // menu on bottom
+  it-popover[placement^='bottom'] & {
+    animation: dropdownFadeIn forwards var(--#{$prefix}dropdown-animation-speed);
+  }
+  // menu on top, left, right
+  it-popover[placement^='top'] &,
+  it-popover[placement^='left'] &,
+  it-popover[placement^='right'] & {
+    animation: dropdownFadeInTop forwards var(--#{$prefix}dropdown-animation-speed);
+  }
+}
+
 .dropdown-toggle {
   .icon-expand {
     &.top {

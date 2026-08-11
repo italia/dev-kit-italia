@@ -1,6 +1,8 @@
-# \i18n
+# `@italia/i18n`
 
-Questa micro-libreria senza dipendenze ha l’obiettivo di fornire un Reactive Controller leggero per condividere e applicare traduzioni all’interno di componenti personalizzati. Non è pensata per sostituire strumenti di i18n completi come i18next
+This zero-dependency micro-library provides a lightweight Reactive Controller for sharing and applying translations within custom elements. It is not intended to replace full-featured i18n tools such as i18next.
+
+It is the foundation of Web Components that need translations in [`@italia/dev-kit-italia`](https://italia.github.io/dev-kit-italia).
 
 ## Installation
 
@@ -37,7 +39,7 @@ Majority of use cases appear to favor a single language per page. However, multi
       $name: 'Italiano',
       $dir: 'ltr',
 
-      // le tue traduzioni
+      // your translations
       video_consent_accept: 'Accetto i cookie',
     },
     {
@@ -45,7 +47,7 @@ Majority of use cases appear to favor a single language per page. However, multi
       $name: 'English',
       $dir: 'ltr',
 
-      // le tue traduzioni
+      // your translations
       video_consent_accept: 'Accept',
     },
   );
@@ -199,59 +201,3 @@ Now you can import `MyLocalizeController` and get strongly typed translations wh
   - Intuitive API for custom element authors
   - Consumers only need to load the translations they want and set the `lang` attribute
 - Translations can be loaded up front or on demand
-
-## Linting and formatting
-
-To scan the project for linting and formatting errors, run
-
-```bash
-npm run lint
-```
-
-To automatically fix linting and formatting errors, run
-
-```bash
-npm run format
-```
-
-## Testing with Web Test Runner
-
-To execute a single test run:
-
-```bash
-npm run test
-```
-
-To run the tests in interactive watch mode run:
-
-```bash
-npm run test:watch
-```
-
-## Demoing with Storybook
-
-To run a local instance of Storybook for your component, run
-
-```bash
-npm run storybook
-```
-
-To build a production version of Storybook, run
-
-```bash
-npm run storybook:build
-```
-
-## Tooling configs
-
-For most of the tools, the configuration is in the `package.json` to reduce the amount of files in your project.
-
-If you customize the configuration a lot, you can consider moving them to individual files.
-
-## Local Demo with `web-dev-server`
-
-```bash
-npm start
-```
-
-To run a local development server that serves the basic demo located in `demo/index.html`

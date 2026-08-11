@@ -1,29 +1,11 @@
-# \<it-back>
+# <it-back>
 
-Web component _light DOM_ che aggiunge il comportamento di default "torna indietro"
-(`window.history.back()`) agli elementi `.go-back` del Design system .italia.
+This package is part of [dev-kit-italia](https://italia.github.io/dev-kit-italia), a Web Components kit for the **.italia** design-system.
 
-## Installation
+## Installation and usage
 
-```bash
-npm i @italia/back
-```
+Most users want to install the full kit by installing [`@italia/dev-kit-italia`](https://npmjs.com/package/@italia/dev-kit-italia), but you have the option of installing this single Web Component separately if needed. Please find detailed installation and usage instructions in the [official documentation](https://italia.github.io/dev-kit-italia/?path=/docs/introduzione--documentazione).
 
-## Usage
+## Documentation
 
-```html
-<script type="module">
-  import '@italia/back/it-back.js';
-</script>
-
-<it-back>
-  <a href="#" class="go-back">
-    <it-icon name="it-arrow-left" size="sm" color="primary"></it-icon>
-    <span>Torna indietro</span>
-  </a>
-</it-back>
-```
-
-Al click, il componente esegue `window.history.back()`. L'evento `it-back-navigate` è
-cancelable: chiamando `event.preventDefault()` puoi sovrascrivere il comportamento di
-default, ad esempio per gestire la navigazione con il router di un framework.
+Find the usage instructions for this specific component in its [dedicated documentation page](https://italia.github.io/dev-kit-italia/?path=/docs/componenti-back--documentazione).
