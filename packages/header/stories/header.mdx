@@ -172,26 +172,26 @@ Esempio:
 
 ### Comportamento su mobile (sotto il breakpoint)
 
-Quando la larghezza viewport scende sotto il valore di `breakpoint` (di default `991`), `<it-header>` passa dalla modalità inline a quella mobile e crea automaticamente una modale laterale (`it-modal`) che contiene una copia strutturata della navigazione.
+Quando la larghezza della viewport scende sotto il valore predefinito per l'attributo `breakpoint`, `<it-header>` passa dalla modalità inline a quella mobile. In automatico viene creata una modale laterale `<it-modal>`, contenente una copia del menu di navigazione.
 
-Durante questa transizione, il componente **clona** e inserisce nella modale questi elementi in questo ordine (se presenti):
+Durante la transizione, il componente clona e inserisce nella modale i seguenti elementi (se presenti) in ordine:
 
-- il `brand wrapper` (`.it-brand-wrapper`) nello slot `header` della modale (se `hide-header-brand` non è attivo)
-- il `nav` principale (`.it-header-navbar-wrapper nav`) con tutte le liste `.menu-wrapper > ul`:
-  - prima la lista principale
-  - poi eventuali liste successive (es: menu secondario) a cui aggiunge la classe `secondary`
-- il menu dell'Header Slim (`.it-header-slim-wrapper ul`), a cui assegna le classi `secondary header-slim-menu`
-- il blocco social (`.it-socials`)
+- `.it-brand-wrapper` nello slot `header` della modale, se l'attributo `hide-header-brand` non è attivo;
+- `.it-header-navbar-wrapper nav` che comprende:
+    - menu principale
+    - menu secondario (se presente), a cui viene aggiunta la classe `.secondary`
+- la lista di collegamenti presente in  `.it-header-slim-wrapper ul`, a cui vengono aggiunte le classi `secondary` e `header-slim-menu`.
+- il blocco social `.it-socials`
 
-L'ordine finale nel menu laterale è il seguente:
+Nel menu mobile quindi gli elementi sono ordinati in questo modo:
 
-1. header della modale con brand (se non nascosto)
-2. contenuto modale (`slot="content"`)
-3. dentro al contenuto: `nav.modal-nav`
-4. dentro al `nav.modal-nav`: liste del nav principale (in ordine), poi il menu dell'Header Slim
-5. in coda al contenuto: i social
+1. Header della modale con il brand, se visibile.
+2. Il contenuto della modale, nello slot `content`.
+3. All'interno del contenuto, `nav.modal-nav`.
+4. Dentro `nav.modal-nav`, le liste della navbar nell'ordine originale e a seguire i collegamenti presenti nell'header slim.
+5. La lista dei collegamenti social.
 
-Questo comportamento è automatico: tornando sopra breakpoint, la modale viene rimossa e l'header torna alla composizione desktop originale.
+Quando la viewport supera la dimensione prevista dall'attributo `breakpoint`, la modale viene rimossa.
 
 
 ## Header Sticky

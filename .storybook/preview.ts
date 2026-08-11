@@ -7,9 +7,51 @@ import HTMLParser from 'prettier-v2/parser-html';
 import { StoryWidth100 } from './it-decorators';
 import './elements';
 import { version } from '../packages/dev-kit-italia/package.json';
+import { addons } from 'storybook/preview-api';
+import { GLOBALS_UPDATED, SET_GLOBALS } from 'storybook/internal/core-events';
 
 const versionMatch = version.match(/^(\d+)\.(\d+)\.(\d+)(?:-(.+))?$/);
 const [, major, minor, patch, postfix] = versionMatch || ['', '1', '0', '0', ''];
+
+export const globalTypes = {
+  fontVariant: {
+    name: 'Font principale',
+    description: 'Variante del carattere Titillium usata',
+    defaultValue: 'web',
+    toolbar: {
+      icon: 'type',
+      items: [
+        { value: 'web', title: 'Titillium Web' },
+        { value: 'sans-pro', title: 'Titillium Sans Pro' },
+      ],
+      dynamicTitle: true,
+    },
+  },
+};
+
+// Gli @font-face di entrambe le varianti di Titillium sono caricati da main.scss:
+// qui basta marcare l'elemento <html> con la variante scelta, main.scss ridefinisce
+// --bsi-font-sans di conseguenza.
+const applyFontVariant = (variant?: string) => {
+  if (typeof document === 'undefined') return;
+  document.documentElement.setAttribute('data-font-variant', variant === 'sans-pro' ? 'sans-pro' : 'web');
+};
+
+// Applicata subito al caricamento del preview e a ogni cambio dalla toolbar: i
+// decorator non vengono eseguiti sulle pagine MDX di sola documentazione, quindi
+// non sono un punto di aggancio sufficiente.
+applyFontVariant();
+try {
+  const channel = addons.getChannel();
+  const onGlobals = ({ globals }: { globals?: Record<string, unknown> }) =>
+    applyFontVariant(globals?.fontVariant as string | undefined);
+  // SET_GLOBALS copre il primo caricamento (anche con ?globals=... nell'URL),
+  // GLOBALS_UPDATED i cambi successivi dalla toolbar.
+  channel.on(SET_GLOBALS, onGlobals);
+  channel.on(GLOBALS_UPDATED, onGlobals);
+} catch {
+  // canale non ancora disponibile (es. build statica): resta la variante di default
+}
 
 const preview: Preview = {
   parameters: {
@@ -95,6 +137,8 @@ export const decorators = [
         document.documentElement.lang = 'it'; // Cambia "it" con la lingua desiderata
       }
     }, 0); // Lascia tempo all'iframe di caricare
+
+    applyFontVariant(ctx.globals.fontVariant);
 
     const { pageLayout, wrapperClasses } = ctx.parameters;
 

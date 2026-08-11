@@ -24,7 +24,8 @@
     "./elements.js": "./dist/elements.js",
     "./styles.css": "./dist/styles.css",
     "./styles-for-migration.css": "./dist/styles-for-migration.css",
-    "./fonts.css": "./dist/fonts.css"
+    "./fonts.css": "./dist/fonts.css",
+    "./fonts-sans-pro.css": "./dist/fonts-sans-pro.css"
   },
   "scripts": {
     "build": "rollup --config rollup.config.js",

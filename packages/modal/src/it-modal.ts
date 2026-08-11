@@ -75,6 +75,8 @@ export class ItModal extends BaseComponent {
 
   @query('.modal-dialog') private _dialogElement!: HTMLElement;
 
+  @query('.modal-content') private _contentElement!: HTMLElement;
+
   private _titleId = '';
 
   private _triggerId = '';
@@ -120,7 +122,7 @@ export class ItModal extends BaseComponent {
     this._descriptionId = this.generateId('modal-description');
     this._focusTrap = new FocusTrapController(this, {
       getContainer: () => this._modalElement,
-      initialFocus: () => this._modalElement,
+      initialFocus: () => this._entryPoint(),
       getTrigger: () => this._triggerElement,
       onEscape: () => {
         this._safariMouseInteraction = false;
@@ -131,6 +133,20 @@ export class ItModal extends BaseComponent {
 
   connectedCallback(): void {
     super.connectedCallback?.();
+  }
+
+  /**
+   * Element the focus enters on when the modal opens.
+   *
+   * Deliberately not the `[role="dialog"]` element: NVDA doesn't announce the role when focus
+   * lands on the dialog element itself (nvaccess/nvda#8620), so the user is told the name of the
+   * modal but never that it is a dialog — unlike VoiceOver, JAWS and Narrator, which announce it.
+   * Entering on a descendant instead has the dialog announced as its ancestor, role included.
+   * `.modal-content` is a container and not a control, so its content is still read out after the
+   * announcement, exactly as it was when focus landed on the dialog.
+   */
+  private _entryPoint(): HTMLElement | null {
+    return this._contentElement ?? this._modalElement;
   }
 
   disconnectedCallback(): void {
@@ -551,16 +567,8 @@ export class ItModal extends BaseComponent {
         @click="${this._handleBackdropClick}"
         part="modal"
       >
-        <!-- TRICK SAFARI ENGINE -->
-        <div
-          id="safari-focus-anchor"
-          tabindex="-1"
-          aria-hidden="true"
-          style="position: absolute; width: 0; height: 0; outline: none;"
-        ></div>
         <div
           class="${classMap(this._modalBodyClasses)}"
-          role="document"
           @click="${this._handleDialogClick}"
           part="modal-content-wrapper"
         >
@@ -568,7 +576,7 @@ export class ItModal extends BaseComponent {
           <div class="visually-hidden" id="${this._descriptionId}">
             <slot name="description" @slotchange="${this._onHeaderSlotChange}">${this.modalDescription}</slot>
           </div>
-          <div class="modal-content" part="modal-content">
+          <div class="modal-content" tabindex="-1" part="modal-content">
             <div
               class="${hasHeader || (this.variant !== 'popconfirm' && !this.hideCloseButton) ? 'modal-header' : ''}"
               part="modal-header"

@@ -110,6 +110,34 @@ export default [
     ],
   },
   {
+    input: 'src/fonts-sans-pro.js',
+    output: {
+      dir: 'dist',
+      sourcemap: true,
+      format: 'esm',
+    },
+    plugins: [
+      resolve(),
+      copy({
+        targets: [
+          // gli assets di tutti i packages del monorepo
+          {
+            src: 'assets/fonts/*',
+            dest: 'dist/assets/fonts',
+            //            flatten: true,
+          },
+        ],
+        verbose: true,
+        copyOnce: false,
+        // flatten: false, // Mantiene la struttura interna
+      }),
+      scss({
+        fileName: 'fonts-sans-pro.css',
+        outputStyle: 'compressed',
+      }),
+    ],
+  },
+  {
     input: 'elements.ts',
     output: {
       dir: 'dist',
