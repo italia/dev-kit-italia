@@ -12,4 +12,4 @@
 '@italia/radio': patch
 ---
 
-Updated to bootstrap-italia 3.0.0-alpha.3
+Updated to bootstrap-italia 3.0.0-beta.4
