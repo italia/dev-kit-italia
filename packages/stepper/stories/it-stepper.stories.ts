@@ -86,7 +86,7 @@ const renderStepper = (args: StepperArgs, steps = headerSteps) => html`
 
 const meta: Meta<StepperArgs> = {
   title: 'Componenti/Stepper',
-  tags: ['alpha', 'web-component'],
+  tags: ['web-component', 'a11y-ok'],
   component: 'it-stepper' as unknown as keyof HTMLElementTagNameMap,
   args: {
     current: 1,

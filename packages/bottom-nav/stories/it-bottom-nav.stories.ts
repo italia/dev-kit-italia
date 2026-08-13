@@ -8,7 +8,7 @@ interface BottomNavProps {
 
 const meta = {
   title: 'Componenti/Bottomnav',
-  tags: ['new', 'web-component', 'a11y-ok'],
+  tags: ['web-component', 'a11y-ok'],
   component: 'it-bottom-nav',
   parameters: {
     docs: { excludeDecorators: true },

@@ -70,7 +70,7 @@ const renderComponent = (params: any) =>
 
 const meta = {
   title: 'Componenti/Form/Autocomplete',
-  tags: ['alpha', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-autocomplete',
   parameters: {
     layout: 'padded',

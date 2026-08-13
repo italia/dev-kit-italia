@@ -57,7 +57,7 @@ const renderComponent = (params: ProgressStoryProps) => {
 
 const meta = {
   title: 'Componenti/Progress',
-  tags: ['a11y-ok', 'web-component', 'alpha'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-progress',
   args: {
     type: 'bar',

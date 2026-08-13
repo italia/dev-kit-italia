@@ -47,7 +47,7 @@ const renderComponent = (args: ThumbnnavProps, count = 3) => html`
 
 const meta: Meta<ThumbnnavProps> = {
   title: 'Componenti/Thumbnav',
-  tags: ['a11y-ok', 'web-component', 'alpha'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-thumbnav',
   args: {
     small: false,

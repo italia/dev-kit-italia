@@ -116,7 +116,7 @@ const renderComponent = (params: any) => html`
 
 const meta: Meta<any> = {
   title: 'Componenti/Carousel',
-  tags: ['alpha', 'web-component', 'a11y-ok'],
+  tags: ['web-component', 'a11y-ok'],
   component: 'it-carousel',
   args: {
     arrows: false,

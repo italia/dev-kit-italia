@@ -45,7 +45,7 @@ const toggleModal = (event: Event) => {
 const meta = {
   title: 'Componenti/Modal',
   component: 'it-modal',
-  tags: ['alpha', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   parameters: {
     layout: 'fullscreen',
     docs: {
