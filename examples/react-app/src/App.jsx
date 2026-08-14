@@ -44,7 +44,7 @@ function AppContent() {
                     <li className="nav-item">
                       <it-megamenu label="Componenti" columns="6">
                         {AppRoutes.map((route) => (
-                          <MyDropdownItem key={route.path + 'link'} to={`/${route.path}`}>
+                          <MyDropdownItem key={route.path + 'link'} to={route.path}>
                             <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
                             {route.title}
                           </MyDropdownItem>
@@ -77,7 +77,7 @@ function AppContent() {
 
 function App() {
   return (
-    <BrowserRouter basename="react-app">
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <AppContent />
     </BrowserRouter>
   );
