@@ -13,6 +13,9 @@ export default defineConfig({
   base: ghPagesPath ? `${ghPagesPath}/react-app/` : '/react-app/',
   plugins: [react()],
   build: {
+    // lightningcss (default Vite 8/Rolldown) refuse valid selector per spec like 
+    // ::part(x):focus-visible:not(.btn) used by dev-kit-italia, so we use esbuild instead.
+    // https://github.com/parcel-bundler/lightningcss/issues/829
     cssMinify: "esbuild",
   },
   server: {
