@@ -1,10 +1,11 @@
 <script setup>
 import { computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { AppRoutes } from './routes';
 import Footer from './components/Footer.vue';
 
 const route = useRoute();
+const router = useRouter();
 const isFullHeaderPage = computed(() =>
   ['/header-complete-full-example', '/header-complete-full-sticky-example'].includes(route.path),
 );
@@ -27,10 +28,18 @@ const isFullHeaderPage = computed(() =>
                 <li class="nav-item">
                   <it-megamenu label="Componenti" columns="6">
                       <!-- DROPDOWN LINKS ITEMS -->
-                      <it-dropdown-item v-for="route in AppRoutes" :key="route.path" :href="route.path">
-                        <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary" ></it-icon>
-                        {{ route.name }}
-                      </it-dropdown-item>
+                      <router-link
+                        v-for="r in AppRoutes"
+                        :key="r.path"
+                        :to="r.path"
+                        custom
+                        v-slot="{ href, navigate }"
+                      >
+                        <it-dropdown-item :href="href" @click="navigate">
+                          <it-icon slot="prefix" name="it-arrow-right-triangle" size="sm" color="primary"></it-icon>
+                          {{ r.name }}
+                        </it-dropdown-item>
+                      </router-link>
                     </it-megamenu>
                 </li>
               </ul>
