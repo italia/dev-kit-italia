@@ -7,13 +7,17 @@ import { dirname, resolve } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// https://vite.dev/config/
+const ghPagesPath = process.env.GH_PAGES_PATH || '';
+
 export default defineConfig({
+  base: ghPagesPath ? `${ghPagesPath}/react-app/` : '/react-app/',
   plugins: [react()],
+  build: {
+    cssMinify: "esbuild",
+  },
   server: {
     fs: {
       allow: [
-        // consenti a Vite di leggere anche da qui
         resolve(__dirname, '../../packages/dev-kit-italia'),
         resolve(__dirname),
       ],
