@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useHref, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useHref, useLinkClickHandler, useLocation } from 'react-router-dom';
 import { AppRoutes } from './routes';
 import { Footer } from './components/Footer';
 import reactLogo from './assets/react.svg';
@@ -7,12 +7,7 @@ import './App.css';
 
 function MyDropdownItem({ to, children }) {
   const href = useHref(to);
-  const navigate = useNavigate();
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    navigate(to);
-  };
+  const handleClick = useLinkClickHandler(to);
 
   return (
     <it-dropdown-item href={href} onClick={handleClick}>
