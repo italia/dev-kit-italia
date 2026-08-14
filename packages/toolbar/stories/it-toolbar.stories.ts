@@ -41,7 +41,7 @@ const smallToolbarSlot = html`
 
 const meta = {
   title: 'Componenti/Toolbar',
-  tags: ['a11y-ok', 'web-component', 'alpha'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-toolbar',
   args: {
     size: 'lg',

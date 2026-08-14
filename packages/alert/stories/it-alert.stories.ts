@@ -6,7 +6,7 @@ import '../src/it-alert.ts';
 const meta = {
   title: 'Componenti/Alert',
   component: 'it-alert',
-  tags: ['new', 'web-component', 'a11y-ok'],
+  tags: ['web-component', 'a11y-ok'],
   parameters: {
     layout: 'padded',
   },

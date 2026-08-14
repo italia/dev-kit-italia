@@ -18,7 +18,7 @@ const meta = {
   title: 'Componenti/Megamenu',
   component: 'it-megamenu',
   parameters: { wrapperClasses: 'w100-layout megamenu-story-layout' },
-  tags: ['a11y-ok', 'web-component', 'alpha'],
+  tags: ['a11y-ok', 'web-component'],
   args: {
     label: 'Megamenu',
     disabled: false,

@@ -5,7 +5,7 @@ import '../src/it-forward.ts';
 const meta = {
   title: 'Componenti/Forward',
   component: 'it-forward',
-  tags: ['new', 'web-component', 'a11y-ok'],
+  tags: ['web-component', 'a11y-ok'],
 } satisfies Meta;
 
 export default meta;

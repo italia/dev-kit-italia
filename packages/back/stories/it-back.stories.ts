@@ -5,7 +5,7 @@ import '../src/it-back.ts';
 const meta = {
   title: 'Componenti/Back',
   component: 'it-back',
-  tags: ['new', 'web-component', 'a11y-ok'],
+  tags: ['web-component', 'a11y-ok'],
   parameters: {
     docs: {
       description: {

@@ -31,7 +31,7 @@ interface TimelinePointProps {
 
 const metaTimeline = {
   title: 'Componenti/Timeline',
-  tags: ['a11y-ok', 'web-component', 'alpha'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-timeline',
   parameters: {
     layout: 'padded',

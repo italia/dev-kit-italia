@@ -19,7 +19,7 @@ const defaultArgs = {
 };
 const meta = {
   title: 'Componenti/Header',
-  tags: ['alpha', 'web-component', 'a11y-ok'],
+  tags: ['web-component', 'a11y-ok'],
   parameters: {
     pageLayout: 'w-100',
   },
