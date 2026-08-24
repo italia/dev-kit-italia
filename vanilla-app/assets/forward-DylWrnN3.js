@@ -1,0 +1,1 @@
+import"./main-DJgCalIo.js";const a=document.getElementById("forward-custom");a.addEventListener("it-forward-navigate",t=>{t.preventDefault();const e=document.getElementById("forward-status");e&&(e.textContent=`Navigazione intercettata verso "${t.detail.href}". Scorro io…`),t.detail.target&&t.currentTarget.navigateTo(t.detail.target)});
