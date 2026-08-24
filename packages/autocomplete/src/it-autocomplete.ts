@@ -209,6 +209,7 @@ export class ItAutocomplete extends FormControl {
   }
 
   override updated(changedProps: Map<PropertyKey, unknown>) {
+    super.updated?.(changedProps);
     // Validazione standard FormControl
     if (changedProps.has('value')) {
       if (!this.customValidation && this.formControlController.submittedOnce) {
@@ -406,7 +407,7 @@ export class ItAutocomplete extends FormControl {
             type="text"
             class="${this.composeClass('form-control it-form__control', {
               'is-invalid': showValidation && this.invalid,
-              'just-validate-success-field': showValidation && !this.invalid,
+              'is-valid': showValidation && !this.invalid,
             })}"
             .value="${live(this._inputValue)}"
             placeholder="${this.placeholder}"
@@ -492,7 +493,7 @@ export class ItAutocomplete extends FormControl {
             >`
           : nothing}
         ${this.invalid && this.validationMessage
-          ? html`<div class="invalid-feedback" role="alert">${this.validationMessage}</div>`
+          ? html`<div class="form-feedback text-danger" role="alert">${this.validationMessage}</div>`
           : nothing}
       </div>
     `;

@@ -282,7 +282,7 @@ describe('<it-upload-avatar>', () => {
     await el.updateComplete;
     await el.updateComplete;
 
-    const feedback = el.shadowRoot!.querySelector('.invalid-feedback');
+    const feedback = el.shadowRoot!.querySelector('.form-feedback');
     expect(feedback).to.exist;
     expect(feedback!.hasAttribute('aria-hidden')).to.be.false;
     expect(feedback!.textContent?.trim()).to.have.length.greaterThan(0);
@@ -292,7 +292,7 @@ describe('<it-upload-avatar>', () => {
     const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar" required></it-upload-avatar>`);
     await el.updateComplete;
 
-    const feedback = el.shadowRoot!.querySelector('.invalid-feedback');
+    const feedback = el.shadowRoot!.querySelector('.form-feedback');
     expect(feedback).to.exist;
     expect(feedback!.hasAttribute('aria-hidden')).to.be.false;
     expect(feedback!.textContent?.trim()).to.equal('');

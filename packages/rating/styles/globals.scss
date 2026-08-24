@@ -2,13 +2,6 @@
 @use 'bootstrap-italia/src/scss/base/config' as *;
 @use 'bootstrap-italia/src/scss/base/variables' as *;
 
-.form-feedback.just-validate-error-label {
-  width: 100%;
-  margin-top: 0.25rem;
-  color: var(--#{$prefix}color-text-danger);
-  font-size: 0.75rem;
-}
-
 /* ========================================
    FOUC Styles - Flash of Unstyled Content
    ======================================== */

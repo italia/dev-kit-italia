@@ -136,7 +136,7 @@ export class ItSelect extends FormControl {
     const validityMessageRender = html`<div
       role="alert"
       id="invalid-feedback-${this._id}"
-      class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
+      class="form-feedback text-danger"
       ?hidden=${!(validityMessage?.length > 0)}
     >
       <span class="visually-hidden">${this.label}: </span>${validityMessage}
@@ -153,7 +153,7 @@ export class ItSelect extends FormControl {
       'form-control',
       this.size ? `form-control-${this.size}` : '',
       showValidation && invalid ? 'is-invalid' : '',
-      showValidation && !invalid && !this.readonly ? 'just-validate-success-field' : '',
+      showValidation && !invalid && !this.readonly ? 'is-valid' : '',
     );
 
     return html`

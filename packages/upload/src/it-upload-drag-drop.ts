@@ -232,7 +232,8 @@ export class ItUploadDragDrop extends FormControl {
     const titleText = hasFile ? this._fileName : this.$t('upload_dd_title');
     const fileInputLabel = this.required ? this.$t('upload_label') : this.$t('upload_label');
     const canSelect = this._state === 'idle' || this._state === 'dragover';
-    const isInvalid = this.formControlController.submittedOnce && this.validationMessage.length > 0;
+    const showValidation = this.formControlController.submittedOnce || this.customValidation;
+    const isInvalid = showValidation && this.validationMessage.length > 0;
     const feedbackId = `invalid-feedback-${this._id}`;
     const headingTag = unsafeStatic(this.getHeadingLevel());
 
@@ -267,6 +268,7 @@ export class ItUploadDragDrop extends FormControl {
             accept="${ifDefined(this.accept)}"
             ?disabled="${this.disabled}"
             ?required="${this.required && !this._currentFile}"
+            ?formNoValidate="${this.customValidation}"
             aria-label="${fileInputLabel}"
             aria-required="${this.required ? 'true' : nothing}"
             aria-invalid="${isInvalid ? 'true' : nothing}"
@@ -283,7 +285,8 @@ export class ItUploadDragDrop extends FormControl {
 
   override render() {
     const statusText = this._getStatusText();
-    const isInvalid = this.formControlController.submittedOnce && this.validationMessage.length > 0;
+    const showValidation = this.formControlController.submittedOnce || this.customValidation;
+    const isInvalid = showValidation && this.validationMessage.length > 0;
     const feedbackId = `invalid-feedback-${this._id}`;
 
     return html`
@@ -319,12 +322,7 @@ export class ItUploadDragDrop extends FormControl {
         <div role="status" aria-live="polite" aria-atomic="true" class="visually-hidden">${statusText}</div>
       </div>
 
-      <div
-        id="${feedbackId}"
-        class="invalid-feedback form-feedback form-text just-validate-error-label"
-        role="alert"
-        ?hidden=${!isInvalid}
-      >
+      <div id="${feedbackId}" class="form-feedback text-danger" role="alert" ?hidden=${!isInvalid}>
         ${isInvalid ? this.validationMessage : nothing}
       </div>
     `;

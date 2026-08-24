@@ -1,14 +1,20 @@
+@use 'sass:map';
 @use 'bootstrap-italia/src/scss/base/functions' as *;
 @use 'bootstrap-italia/src/scss/base/config' as *;
 @use 'bootstrap-italia/src/scss/base/variables' as *;
 @use 'bootstrap-italia/src/scss/base/mixins' as *;
 @use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
 @use 'bootstrap-italia/src/scss/base/reboot' as *;
 @use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
 @use 'bootstrap-italia/src/scss/forms/form-input-upload' as *;
-@use 'bootstrap-italia/src/scss/forms/just-validate' as *;
+@use 'bootstrap-italia/src/scss/forms/form-validation' as *;
 @use 'bootstrap-italia/src/scss/components/type' as *;
+
+utilities.$utilities: ('color': map.get(utilities.$utilities, 'color'));
+
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 :host {
   display: inline-block;
@@ -20,12 +26,6 @@
 .upload-dragdrop.loading .upload-dragdrop-select-wrap,
 .upload-dragdrop.success .upload-dragdrop-select-wrap {
   display: none;
-}
-
-// Counter BSI's form-validation-state mixin which sets .invalid-feedback { display: none }.
-// We control visibility via the HTML `hidden` attribute (?hidden in Lit) instead.
-.invalid-feedback:not([hidden]) {
-  display: block;
 }
 
 // The progress component is positioned inside .upload-dragdrop-loading.

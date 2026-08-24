@@ -1,13 +1,20 @@
+@use 'sass:map';
 @use 'bootstrap-italia/src/scss/base/functions' as *;
 @use 'bootstrap-italia/src/scss/base/variables' as *;
 @use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
 
 @use 'bootstrap-italia/src/scss/base/reboot'; //per gli stili di ::before e ::after
 @use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
 @use 'bootstrap-italia/src/scss/forms/forms' as *;
 @use 'bootstrap-italia/src/scss/forms/form-control' as *;
-@use 'bootstrap-italia/src/scss/forms/just-validate' as *;
+@use 'bootstrap-italia/src/scss/forms/form-validation' as *;
+
+utilities.$utilities: ('color': map.get(utilities.$utilities, 'color'));
+
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 :host {
   display: block;

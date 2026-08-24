@@ -19,8 +19,8 @@ catalogs:
       specifier: ^0.9.0
       version: 0.9.0
     bootstrap-italia:
-      specifier: 3.0.0-beta.2
-      version: 3.0.0-beta.2
+      specifier: 3.0.0-beta.4
+      version: 3.0.0-beta.4
     design-tokens-italia:
       specifier: ^1.3.3
       version: 1.3.3
@@ -79,7 +79,7 @@ importers:
         version: 7.18.0(eslint@8.57.1)(typescript@5.9.3)
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       design-tokens-italia:
         specifier: 'catalog:'
         version: 1.3.3
@@ -175,7 +175,7 @@ importers:
         version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -282,7 +282,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -343,7 +343,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -447,7 +447,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -505,7 +505,7 @@ importers:
         version: link:../sticky
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -560,7 +560,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -615,7 +615,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -670,7 +670,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -728,7 +728,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -792,7 +792,7 @@ importers:
         version: 4.1.4
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -850,7 +850,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -905,7 +905,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -969,7 +969,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1178,7 +1178,7 @@ importers:
         version: 4.1.4
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       design-tokens-italia:
         specifier: 'catalog:'
         version: 1.3.3
@@ -1214,7 +1214,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1275,7 +1275,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1431,7 +1431,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1492,7 +1492,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1590,7 +1590,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1654,7 +1654,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1712,7 +1712,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1776,7 +1776,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1837,7 +1837,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1901,7 +1901,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -1956,7 +1956,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: ^3.2.1
         version: 3.3.3
@@ -2017,7 +2017,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2078,7 +2078,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2139,7 +2139,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2200,7 +2200,7 @@ importers:
         version: link:../radio
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2252,7 +2252,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2310,7 +2310,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2368,7 +2368,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2426,7 +2426,7 @@ importers:
         version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2484,7 +2484,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2539,7 +2539,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2633,7 +2633,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2691,7 +2691,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2758,7 +2758,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2813,7 +2813,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2883,7 +2883,7 @@ importers:
         version: link:../globals
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -2947,7 +2947,7 @@ importers:
         version: link:../icon
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -3019,7 +3019,7 @@ importers:
         version: link:../progress
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -3074,7 +3074,7 @@ importers:
         version: link:../i18n
       bootstrap-italia:
         specifier: 'catalog:'
-        version: 3.0.0-beta.2
+        version: 3.0.0-beta.4
       lit:
         specifier: 'catalog:'
         version: 3.3.3
@@ -4988,8 +4988,8 @@ packages:
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
 
-  bootstrap-italia@3.0.0-beta.2:
-    resolution: {integrity: sha512-C9Q2uSkim9I3dTxx24NcN59IatlFRMNDSMe+7TR8azVXQpT5n3Ly+RzrvwCiGT0rzejxRtbPPuGF2ibC1kJOHw==, tarball: https://registry.npmjs.org/bootstrap-italia/-/bootstrap-italia-3.0.0-beta.2.tgz}
+  bootstrap-italia@3.0.0-beta.4:
+    resolution: {integrity: sha512-tGdxYg7Z92HG666KGrZSBq3axAChwoIpqtzqIucU4Yq7QReWv2dHHGiIJNfVyB2PYF7pO5mmLbgLn+svoG7JjA==, tarball: https://registry.npmjs.org/bootstrap-italia/-/bootstrap-italia-3.0.0-beta.4.tgz}
 
   brace-expansion@1.1.15:
     resolution: {integrity: sha512-EwOCDEex4quD37XhqM3omwtMoJjr//isUZz1JopUNWms+4Z2ViyM/k1YIRePpoVNnQhENnxtFjLaxNHrT7xIUg==}
@@ -10125,7 +10125,7 @@ snapshots:
 
   boolbase@1.0.0: {}
 
-  bootstrap-italia@3.0.0-beta.2:
+  bootstrap-italia@3.0.0-beta.4:
     dependencies:
       '@popperjs/core': 2.11.8
       '@splidejs/splide': 4.1.4
