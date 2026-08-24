@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/dev-kit-italia/vanilla-app/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Web Components - vanilla-app</title>
+    <script type="module" crossorigin src="/dev-kit-italia/vanilla-app/assets/transfer-5vCOW_0b.js"></script>
+    <link rel="modulepreload" crossorigin href="/dev-kit-italia/vanilla-app/assets/main-gdaVSTNW.js">
+    <link rel="stylesheet" crossorigin href="/dev-kit-italia/vanilla-app/assets/main-BNTJIYXP.css">
+  </head>
+  <body>
+    <div id="root">
+      <header id="app-header"></header>
+      <main class="container my-4">
+        <h1>Transfer</h1>
+
+        <h2>Base</h2>
+        <it-transfer name="transfer-base">
+          <it-transfer-item value="item1">Voce 1</it-transfer-item>
+          <it-transfer-item value="item2">Voce 2</it-transfer-item>
+          <it-transfer-item value="item3">Voce 3</it-transfer-item>
+          <it-transfer-item value="item4">Voce 4</it-transfer-item>
+          <it-transfer-item value="item5">Voce 5</it-transfer-item>
+          <it-transfer-item value="item6">Voce 6</it-transfer-item>
+        </it-transfer>
+
+        <h2>Con valori preimpostati</h2>
+        <it-transfer name="transfer-preset">
+          <it-transfer-item value="item7">Voce 7</it-transfer-item>
+          <it-transfer-item value="item8">Voce 8</it-transfer-item>
+          <it-transfer-item value="item9">Voce 9</it-transfer-item>
+          <it-transfer-item value="item10" target>Voce 10</it-transfer-item>
+          <it-transfer-item value="item11" target>Voce 11</it-transfer-item>
+          <it-transfer-item value="item12" target>Voce 12</it-transfer-item>
+        </it-transfer>
+
+        <h2>Etichette personalizzate</h2>
+        <it-transfer
+          name="transfer-labels"
+          source-label="Comuni disponibili"
+          target-label="Comuni selezionati"
+        >
+          <it-transfer-item value="rm">Roma</it-transfer-item>
+          <it-transfer-item value="mi">Milano</it-transfer-item>
+          <it-transfer-item value="na">Napoli</it-transfer-item>
+          <it-transfer-item value="to">Torino</it-transfer-item>
+        </it-transfer>
+
+        <h2>Con elemento non trasferibile</h2>
+        <it-transfer name="transfer-disabled-item">
+          <it-transfer-item value="a">Voce A</it-transfer-item>
+          <it-transfer-item value="b" disabled>Voce B (non trasferibile)</it-transfer-item>
+          <it-transfer-item value="c">Voce C</it-transfer-item>
+        </it-transfer>
+
+        <h2>Disabilitato</h2>
+        <it-transfer name="transfer-disabled" disabled>
+          <it-transfer-item value="x">Voce X</it-transfer-item>
+          <it-transfer-item value="y">Voce Y</it-transfer-item>
+          <it-transfer-item value="z" target>Voce Z</it-transfer-item>
+        </it-transfer>
+
+        <h2>Evento cancelable: Limite di 3 elementi nel target</h2>
+        <it-transfer name="transfer-max-items" id="transfer-cancel-example">
+          <it-transfer-item value="a">Voce A</it-transfer-item>
+          <it-transfer-item value="b">Voce B</it-transfer-item>
+          <it-transfer-item value="c">Voce C</it-transfer-item>
+          <it-transfer-item value="d">Voce D</it-transfer-item>
+          <it-transfer-item value="e">Voce E</it-transfer-item>
+          <it-transfer-item value="f">Voce F</it-transfer-item>
+        </it-transfer>
+        <p role="status" aria-live="polite" id="transfer-cancel-status"></p>
+
+
+        <h2>Evento cancelable con ripresa asincrona</h2>
+        <it-transfer name="transfer-async" id="transfer-async-example">
+          <it-transfer-item value="a">Voce A</it-transfer-item>
+          <it-transfer-item value="b">Voce B</it-transfer-item>
+          <it-transfer-item value="c">Voce C</it-transfer-item>
+          <it-transfer-item value="d">Voce D</it-transfer-item>
+        </it-transfer>
+        <p role="status" aria-live="polite" id="transfer-async-status" style="margin-top: 1rem;"></p>
+
+      </main>
+      <div id="app-footer"></div>
+      <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
+    </div>
+  </body>
+</html>

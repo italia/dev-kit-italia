@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/dev-kit-italia/vanilla-app/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Web Components - vanilla-app</title>
+    <script type="module" crossorigin src="/dev-kit-italia/vanilla-app/assets/main-gdaVSTNW.js"></script>
+    <link rel="stylesheet" crossorigin href="/dev-kit-italia/vanilla-app/assets/main-BNTJIYXP.css">
+  </head>
+  <body>
+    <div id="root">
+      <header id="app-header"></header>
+      <main class="container my-4">
+        <h1>List</h1>
+        <p>Lista di testi, link e altri elementi per presentare contenuti correlati o facilitare la navigazione.</p>
+
+        <section>
+          <h2>Cosa fa</h2>
+          <p>
+            Il componente list, in italiano lista, permette di raggruppare in una lista verticale una serie di contenuti
+            correlati.
+          </p>
+          <p>
+            <a href="https://designers.italia.it/design-system/componenti/list/" target="_blank" rel="noreferrer">
+              Approfondisci come e quando usare il componente List
+            </a>
+          </p>
+        </section>
+
+        <section>
+          <h2>Tipologie di lista</h2>
+          <p>
+            Le liste, costituite da tag <code>&lt;ul&gt;</code> con classe <code>.it-list</code> all'interno di un
+            wrapper con classe <code>.it-list-wrapper</code>, possono contenere testi, link, icone, avatar, immagini o
+            una combinazione di questi elementi.
+          </p>
+
+          <h3>Lista con avatar</h3>
+          <p>
+            Inserisci l'elemento <code>it-avatar</code> prima dell'elemento <code>.it-right-zone</code> che contiene il
+            testo.
+          </p>
+          <div class="it-list-wrapper">
+            <ul class="it-list">
+              <li>
+                <div class="list-item">
+                  <it-avatar
+                    type="image"
+                    size="md"
+                    src="https://randomuser.me/api/portraits/women/41.jpg"
+                    alt="Anna Barbieri"
+                    text="Anna Barbieri"
+                  ></it-avatar>
+                  <div class="it-right-zone">
+                    <span class="text">Testo</span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="list-item">
+                  <it-avatar
+                    type="image"
+                    size="md"
+                    src="https://randomuser.me/api/portraits/women/41.jpg"
+                    alt="Anna Barbieri"
+                    text="Anna Barbieri"
+                  ></it-avatar>
+                  <div class="it-right-zone">
+                    <span class="text">Link</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <div class="list-item">
+                  <it-avatar
+                    type="image"
+                    size="md"
+                    src="https://randomuser.me/api/portraits/women/41.jpg"
+                    alt="Anna Barbieri"
+                    text="Anna Barbieri"
+                  ></it-avatar>
+                  <div class="it-right-zone">
+                    <span class="text">Testo</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <h3>Lista con icona</h3>
+          <p>
+            Inserisci l'elemento <code>.it-rounded-icon</code> prima dell'elemento <code>.it-right-zone</code> che
+            contiene il testo.
+          </p>
+          <div class="it-list-wrapper">
+            <ul class="it-list">
+              <li>
+                <div class="list-item">
+                  <div class="it-rounded-icon">
+                    <it-icon name="it-folder"></it-icon>
+                  </div>
+                  <div class="it-right-zone">
+                    <span class="text">Testo</span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="list-item">
+                  <div class="it-rounded-icon">
+                    <it-icon name="it-folder"></it-icon>
+                  </div>
+                  <div class="it-right-zone">
+                    <span class="text">Link</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <div class="list-item">
+                  <div class="it-rounded-icon">
+                    <it-icon name="it-folder"></it-icon>
+                  </div>
+                  <div class="it-right-zone">
+                    <span class="text">Testo</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <h3>Lista con immagine</h3>
+          <p>
+            Inserisci l'elemento <code>.it-thumb</code> prima dell'elemento <code>.it-right-zone</code> che contiene il
+            testo. Ha una dimensione massima di <code>5rem</code> che corrispondono a <code>80px</code>.
+          </p>
+          <div class="it-list-wrapper">
+            <ul class="it-list">
+              <li>
+                <div class="list-item">
+                  <div class="it-thumb ratio ratio-16x9">
+                    <img src="https://placehold.co/400x300.png?text=thumb" alt="descrizione immagine" />
+                  </div>
+                  <div class="it-right-zone">
+                    <span class="text">Testo</span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="list-item">
+                  <div class="it-thumb ratio ratio-4x3">
+                    <img src="https://placehold.co/400x300.png?text=thumb" alt="descrizione immagine" />
+                  </div>
+                  <div class="it-right-zone">
+                    <span class="text">Link</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <div class="list-item">
+                  <div class="it-thumb ratio ratio-1x1">
+                    <img src="https://placehold.co/400x300.png?text=thumb" alt="descrizione immagine" />
+                  </div>
+                  <div class="it-right-zone">
+                    <span class="text">Testo</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Lista con azioni</h2>
+          <p>
+            Le liste con azioni hanno al loro interno icone o elementi interattivi da associare ad azioni specifiche.
+          </p>
+
+          <h3>Con freccia</h3>
+          <p>Inserisci l'elemento <code>it-icon</code> dopo l'elemento <code>.text</code> che contiene il testo.</p>
+          <div class="it-list-wrapper">
+            <ul class="it-list">
+              <li>
+                <a href="#" class="list-item">
+                  <div class="it-right-zone">
+                    <span class="text">Link</span>
+                    <it-icon name="it-chevron-right" color="primary" size="sm"></it-icon>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="list-item">
+                  <div class="it-right-zone">
+                    <span class="text">Link</span>
+                    <it-icon name="it-chevron-right" color="primary" size="sm"></it-icon>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <h3>Con azioni multiple</h3>
+          <p>Inserisci l'elemento <code>.it-multiple</code> dopo l'elemento <code>.text</code>.</p>
+          <div class="it-list-wrapper">
+            <ul class="it-list">
+              <li>
+                <div class="list-item">
+                  <div class="it-right-zone">
+                    <span class="text">Testo</span>
+                    <span class="it-multiple">
+                      <a href="#" aria-label="Testo - Azione 1">
+                        <it-icon name="it-code-circle" color="primary"></it-icon>
+                      </a>
+                      <a href="#" aria-label="Testo - Azione 2">
+                        <it-icon name="it-code-circle" color="primary"></it-icon>
+                      </a>
+                      <a href="#" aria-label="Testo - Azione 3">
+                        <it-icon name="it-code-circle" color="primary"></it-icon>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="list-item">
+                  <div class="it-right-zone">
+                    <a href="#"><span class="text">Link</span></a>
+                    <span class="it-multiple">
+                      <a href="#" aria-label="Link - Azione 1">
+                        <it-icon name="it-code-circle" color="primary"></it-icon>
+                      </a>
+                      <a href="#" aria-label="Link - Azione 2">
+                        <it-icon name="it-code-circle" color="primary"></it-icon>
+                      </a>
+                      <a href="#" aria-label="Link - Azione 3">
+                        <it-icon name="it-code-circle" color="primary"></it-icon>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="list-item">
+                  <div class="it-right-zone">
+                    <a href="#"><span class="text">Link</span></a>
+                    <span class="it-multiple">
+                      <a href="#" aria-label="Link - Azione 1">
+                        <it-icon name="it-code-circle" color="primary"></it-icon>
+                      </a>
+                      <a href="#" aria-label="Link - Azione 2">
+                        <it-icon name="it-code-circle" color="primary"></it-icon>
+                      </a>
+                      <a href="#" aria-label="Link - Azione 3">
+                        <it-icon name="it-code-circle" color="primary"></it-icon>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Altre varianti</h2>
+
+          <h3>Con metadata</h3>
+          <p>Inserisci l'elemento <code>.metadata</code> dopo l'elemento <code>.text</code>.</p>
+          <div class="it-list-wrapper">
+            <ul class="it-list">
+              <li>
+                <div class="list-item">
+                  <it-avatar
+                    type="image"
+                    size="md"
+                    src="https://randomuser.me/api/portraits/women/41.jpg"
+                    alt="Anna Barbieri"
+                    text="Anna Barbieri"
+                  ></it-avatar>
+                  <div class="it-right-zone">
+                    <span class="text">Testo</span>
+                    <span class="metadata">metadata testo</span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="list-item">
+                  <it-avatar
+                    type="image"
+                    size="md"
+                    src="https://randomuser.me/api/portraits/women/41.jpg"
+                    alt="Anna Barbieri"
+                    text="Anna Barbieri"
+                  ></it-avatar>
+                  <div class="it-right-zone">
+                    <span class="text">Testo</span>
+                    <span class="metadata"><a href="#">metadata link</a></span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="list-item">
+                  <it-avatar
+                    type="image"
+                    size="md"
+                    src="https://randomuser.me/api/portraits/women/41.jpg"
+                    alt="Anna Barbieri"
+                    text="Anna Barbieri"
+                  ></it-avatar>
+                  <div class="it-right-zone">
+                    <span class="text">Link</span>
+                    <span class="metadata">metadata testo</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <div class="list-item">
+                  <it-avatar
+                    type="image"
+                    size="md"
+                    src="https://randomuser.me/api/portraits/women/41.jpg"
+                    alt="Anna Barbieri"
+                    text="Anna Barbieri"
+                  ></it-avatar>
+                  <div class="it-right-zone">
+                    <a href="#"><span class="text">Link</span></a>
+                    <span class="metadata"><a href="#">metadata link</a></span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a class="list-item" href="#">
+                  <it-avatar
+                    type="image"
+                    size="md"
+                    src="https://randomuser.me/api/portraits/women/41.jpg"
+                    alt="Anna Barbieri"
+                    text="Anna Barbieri"
+                  ></it-avatar>
+                  <div class="it-right-zone">
+                    <span class="text">Link</span>
+                    <span class="metadata">metadata testo</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <h3>Con testo aggiuntivo, azioni multiple e metadata</h3>
+          <p>
+            Per avere una lista che permetta paragrafi di testo aggiuntivo per ogni elemento, utilizza un approccio con
+            titolo (heading) e paragrafo <code>&lt;p&gt;</code>, mantenendo la classe <code>.text</code> per l'elemento
+            titolo.
+          </p>
+          <div class="it-list-wrapper">
+            <ul class="it-list">
+              <li>
+                <div class="list-item">
+                  <div class="it-right-zone">
+                    <div>
+                      <h4 class="text m-0">Testo</h4>
+                      <p class="small m-0">Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <span class="it-multiple">
+                      <span class="metadata">metadata testo</span>
+                      <a href="#" aria-label="Testo - Azione 1">
+                        <it-icon color="primary" name="it-code-circle" label="Codice"></it-icon>
+                      </a>
+                      <a href="#" aria-label="Testo - Azione 2">
+                        <it-icon color="primary" name="it-code-circle" label="Codice"></it-icon>
+                      </a>
+                      <a href="#" aria-label="Testo - Azione 3">
+                        <it-icon color="primary" name="it-code-circle" label="Codice"></it-icon>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="list-item">
+                  <div class="it-right-zone">
+                    <div>
+                      <h4 class="text m-0">Testo</h4>
+                      <p class="small m-0">Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <span class="it-multiple">
+                      <span class="metadata"><a href="#">metadata link</a></span>
+                      <a href="#" aria-label="Testo 2 - Azione 1">
+                        <it-icon name="it-code-circle" label="Codice"></it-icon>
+                      </a>
+                      <a href="#" aria-label="Testo 2 - Azione 2">
+                        <it-icon name="it-code-circle" label="Codice"></it-icon>
+                      </a>
+                      <a href="#" aria-label="Testo 2 - Azione 3">
+                        <it-icon name="it-code-circle" label="Codice"></it-icon>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="list-item">
+                  <div class="it-right-zone">
+                    <div>
+                      <h4 class="text m-0"><a href="#">Link</a></h4>
+                      <p class="small m-0">Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <span class="it-multiple">
+                      <span class="metadata"><a href="#">metadata link</a></span>
+                      <a href="#" aria-label="Link - Azione 1">
+                        <it-icon name="it-code-circle" label="Codice"></it-icon>
+                      </a>
+                      <a href="#" aria-label="Link - Azione 2">
+                        <it-icon name="it-code-circle" label="Codice"></it-icon>
+                      </a>
+                      <a href="#" aria-label="Link - Azione 3">
+                        <it-icon name="it-code-circle" label="Codice"></it-icon>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="list-item">
+                  <div class="it-right-zone">
+                    <div>
+                      <h4 class="text m-0"><a href="#">Link</a></h4>
+                      <p class="small m-0">Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <span class="it-multiple">
+                      <span class="metadata">metadata testo</span>
+                      <a href="#" aria-label="Link - Azione 1">
+                        <it-icon name="it-code-circle" label="Codice"></it-icon>
+                      </a>
+                      <a href="#" aria-label="Link - Azione 2">
+                        <it-icon name="it-code-circle" label="Codice"></it-icon>
+                      </a>
+                      <a href="#" aria-label="Link - Azione 3">
+                        <it-icon name="it-code-circle" label="Codice"></it-icon>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Liste per menu di navigazione</h2>
+          <p>
+            Utilizza le liste per menu di navigazione, costituite da tag <code>&lt;ul&gt;</code> con classe
+            <code>.link-list</code> all'interno di un wrapper con classe <code>.link-list-wrapper</code>.
+          </p>
+
+          <h3>Linea singola</h3>
+          <div class="link-list-wrapper">
+            <ul class="link-list">
+              <li>
+                <a class="list-item" href="#"><span>Link lista 1</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 2</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 3</span></a>
+              </li>
+            </ul>
+          </div>
+
+          <h4>Elemento con stato attivo</h4>
+          <div class="link-list-wrapper">
+            <ul class="link-list">
+              <li>
+                <a class="list-item" href="#"><span>Link lista 1</span></a>
+              </li>
+              <li>
+                <a class="list-item active" href="#"><span>Link lista 2 attivo</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 3</span></a>
+              </li>
+            </ul>
+          </div>
+
+          <h4>Elemento con stato disabilitato</h4>
+          <div class="link-list-wrapper">
+            <ul class="link-list">
+              <li>
+                <a class="list-item" href="#"><span>Link lista 1</span></a>
+              </li>
+              <li>
+                <a class="list-item disabled" href="#" aria-disabled="true"><span>Link lista 2 disabilitato</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 3</span></a>
+              </li>
+            </ul>
+          </div>
+
+          <h4>Intestazione e divisore</h4>
+          <p>
+            L'intestazione e` costituita dall'elemento <code>.link-list-heading</code>. Il divisore e` costituito dal
+            tag <code>&lt;span&gt;</code> con classe <code>.divider</code> e attributo <code>role="separator"</code>.
+          </p>
+          <div class="link-list-wrapper">
+            <h4 class="link-list-heading">Intestazione</h4>
+            <ul class="link-list">
+              <li>
+                <a class="list-item" href="#"><span>Link lista 1</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 2</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 3</span></a>
+              </li>
+              <li><span class="divider" role="separator"></span></li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 4</span></a>
+              </li>
+            </ul>
+          </div>
+          <div class="link-list-wrapper">
+            <h4 class="link-list-heading"><a href="#">Intestazione con link</a></h4>
+            <ul class="link-list">
+              <li>
+                <a class="list-item" href="#"><span>Link lista 1</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 2</span></a>
+              </li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 3</span></a>
+              </li>
+              <li><span class="divider" role="separator"></span></li>
+              <li>
+                <a class="list-item" href="#"><span>Link lista 4</span></a>
+              </li>
+            </ul>
+          </div>
+
+          <h3>Dimensioni</h3>
+          <div class="link-list-wrapper">
+            <h4 class="link-list-heading">Intestazione</h4>
+            <ul class="link-list">
+              <li>
+                <a class="list-item large" href="#"><span>Link lista 1</span></a>
+              </li>
+              <li>
+                <a class="list-item large" href="#"><span>Link lista 2</span></a>
+              </li>
+              <li>
+                <a class="list-item large" href="#"><span>Link lista 3</span></a>
+              </li>
+              <li><span class="divider" role="separator"></span></li>
+              <li>
+                <a class="list-item large" href="#"><span>Link lista 4</span></a>
+              </li>
+            </ul>
+          </div>
+
+          <h3>Multiline con icona</h3>
+          <div class="link-list-wrapper multiline">
+            <ul class="link-list">
+              <li>
+                <a class="list-item active icon-right" href="#">
+                  <span class="list-item-title-icon-wrapper">
+                    <h4 class="list-item-title">Link lista 1 attivo</h4>
+                    <it-icon name="it-code-circle" color="primary" label="Codice"></it-icon>
+                  </span>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                </a>
+              </li>
+              <li><span class="divider" role="separator"></span></li>
+              <li>
+                <a class="list-item icon-right" href="#">
+                  <span class="list-item-title-icon-wrapper">
+                    <h4 class="list-item-title">Link lista 2</h4>
+                    <it-icon name="it-code-circle" color="primary" label="Codice"></it-icon>
+                  </span>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                </a>
+              </li>
+              <li><span class="divider"></span></li>
+              <li>
+                <a class="list-item disabled icon-right" href="#" aria-disabled="true">
+                  <span class="list-item-title-icon-wrapper">
+                    <h4 class="list-item-title">Link lista 3 disabilitato</h4>
+                    <it-icon name="it-code-circle" color="primary" label="Codice"></it-icon>
+                  </span>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                </a>
+              </li>
+              <li><span class="divider"></span></li>
+            </ul>
+          </div>
+
+          <h3>Lista con controlli</h3>
+          <p>
+            Le liste di link con controlli sono caratterizzate da icone a destra e sinistra del testo. Quella di destra
+            e` descrittiva mentre quella di sinistra puo` essere un'eventuale azione aggiuntiva da gestire in
+            JavaScript.
+          </p>
+
+          <h4>Azione primaria</h4>
+          <h5>Icona a sinistra</h5>
+          <div class="link-list-wrapper">
+            <ul class="link-list">
+              <li>
+                <a class="list-item active icon-left" href="#">
+                  <span class="list-item-title-icon-wrapper">
+                    <it-icon name="it-chevron-right" color="primary" label="Freccia destra"></it-icon>
+                    <span class="list-item-title">Link lista 1 attivo</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="list-item icon-left" href="#">
+                  <span class="list-item-title-icon-wrapper">
+                    <it-icon name="it-chevron-right" color="primary" label="Freccia destra"></it-icon>
+                    <span class="list-item-title">Link lista 2</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="list-item icon-left disabled" href="#" aria-disabled="true">
+                  <span class="list-item-title-icon-wrapper">
+                    <it-icon name="it-chevron-right" color="primary" label="Freccia destra"></it-icon>
+                    <span class="list-item-title">Link lista 3 disabilitato</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <h4>Azione secondaria</h4>
+          <h5>Icona a destra</h5>
+          <div class="link-list-wrapper">
+            <ul class="link-list">
+              <li>
+                <a class="list-item active icon-right" href="#">
+                  <span class="list-item-title-icon-wrapper">
+                    <span class="list-item-title">Link lista 1 attivo</span>
+                    <it-icon name="it-link" color="primary" size="sm" label="Link"></it-icon>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="list-item icon-right" href="#">
+                  <span class="list-item-title-icon-wrapper">
+                    <span class="list-item-title">Link lista 2</span>
+                    <it-icon name="it-link" color="primary" size="sm" label="Link"></it-icon>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="list-item icon-right disabled" href="#" aria-disabled="true">
+                  <span class="list-item-title-icon-wrapper">
+                    <span class="list-item-title">Link lista 3 disabilitato</span>
+                    <it-icon name="it-link" color="primary" size="sm" label="Link"></it-icon>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <h4>Azioni primaria e secondaria</h4>
+          <div class="link-list-wrapper">
+            <ul class="link-list">
+              <li>
+                <a class="list-item active icon-left" href="#">
+                  <span class="list-item-title-icon-wrapper">
+                    <it-icon name="it-link" color="primary" size="sm" label="Link"></it-icon>
+                    <span class="list-item-title">Link lista 1 attivo</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="list-item icon-left" href="#">
+                  <span class="list-item-title-icon-wrapper">
+                    <it-icon name="it-link" color="primary" size="sm" label="Link"></it-icon>
+                    <span class="list-item-title">Link lista 2</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="list-item disabled icon-right" href="#" aria-disabled="true">
+                  <span class="list-item-title-icon-wrapper">
+                    <span class="list-item-title">Link lista 3 disabilitato con icona a destra</span>
+                    <it-icon name="it-link" color="primary" size="sm" label="Link"></it-icon>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <h4>Lista con toggle</h4>
+          <div class="alert alert-warning" role="alert">
+            <it-icon name="it-warning-circle" color="warning" class="me-2"></it-icon>
+            <span class="font-sans-serif">
+              Questo caso d'uso e` in fase di sviluppo, sara` completo non appena sara` pronto il componente
+              <code>it-toggle</code>.
+            </span>
+          </div>
+          <div class="link-list-wrapper">
+            <ul class="link-list">
+              <li>
+                <div class="toggles">
+                  <label for="toggle1">
+                    Label per toggle
+                    <input type="checkbox" id="toggle1" />
+                    <span class="lever"></span>
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="toggles">
+                  <label for="toggle2">
+                    Label per toggle disabilitato
+                    <input type="checkbox" id="toggle2" disabled aria-disabled="true" />
+                    <span class="lever"></span>
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <h4>Lista con checkbox</h4>
+          <div class="link-list-wrapper">
+            <ul class="link-list">
+              <li>
+                <it-checkbox name="checkbox6" group checked>
+                  <span slot="label">Checkbox selezionato</span>
+                </it-checkbox>
+              </li>
+              <li>
+                <it-checkbox name="checkbox7" group>
+                  <span slot="label">Checkbox non selezionato</span>
+                </it-checkbox>
+              </li>
+              <li>
+                <it-checkbox name="checkbox8" group disabled>
+                  <span slot="label">Checkbox disabilitato non selezionato</span>
+                </it-checkbox>
+              </li>
+            </ul>
+          </div>
+
+          <h3>Liste annidate</h3>
+          <h4>Espansa</h4>
+          <div class="link-list-wrapper">
+            <ul class="link-list">
+              <li>
+                <a class="list-item large medium icon-right" href="#">
+                  <span class="list-item-title-icon-wrapper">
+                    <span class="list-item-title">Link lista 1</span>
+                    <it-icon name="it-link" color="primary" size="sm" label="Link"></it-icon>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="list-item large medium icon-right" href="#">
+                  <span class="list-item-title-icon-wrapper">
+                    <span class="list-item-title">Link lista 2</span>
+                    <it-icon name="it-link" color="primary" size="sm" label="Link"></it-icon>
+                  </span>
+                </a>
+                <ul class="link-sublist">
+                  <li>
+                    <a class="list-item" href="#"><span>Link lista 1</span></a>
+                  </li>
+                  <li>
+                    <a class="list-item" href="#"><span>Link lista 2</span></a>
+                  </li>
+                  <li>
+                    <a class="list-item" href="#"><span>Link lista 3</span></a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a class="list-item large medium icon-right" href="#">
+                  <span class="list-item-title-icon-wrapper">
+                    <span class="list-item-title">Link lista 3</span>
+                    <it-icon name="it-link" color="primary" size="sm" label="Link"></it-icon>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <h4>Collassabile</h4>
+          <div class="link-list-wrapper">
+            <ul class="link-list">
+              <li>
+                <it-collapse>
+                  <button class="list-item icon-right px-0 border-0 bg-transparent" slot="trigger">
+                    <span class="list-item-title-icon-wrapper" slot="label">
+                      <span class="list-item-title">Link lista 1</span>
+                      <it-icon name="it-expand" color="primary" class="left"></it-icon>
+                    </span>
+                  </button>
+                  <ul slot="content" class="link-sublist collapse">
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 1</span></a>
+                    </li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 2</span></a>
+                    </li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 3</span></a>
+                    </li>
+                  </ul>
+                </it-collapse>
+              </li>
+              <li>
+                <it-collapse>
+                  <button class="list-item icon-right px-0 border-0 bg-transparent" slot="trigger">
+                    <span class="list-item-title-icon-wrapper" slot="label">
+                      <span class="list-item-title">Link lista 2</span>
+                      <it-icon name="it-expand" color="primary" class="left"></it-icon>
+                    </span>
+                  </button>
+                  <ul slot="content" class="link-sublist collapse">
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 1</span></a>
+                    </li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 2</span></a>
+                    </li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 3</span></a>
+                    </li>
+                  </ul>
+                </it-collapse>
+              </li>
+              <li>
+                <it-collapse>
+                  <button class="list-item icon-right px-0 border-0 bg-transparent" slot="trigger">
+                    <span class="list-item-title-icon-wrapper" slot="label">
+                      <span class="list-item-title">Link lista 3</span>
+                      <it-icon name="it-expand" color="primary" class="left"></it-icon>
+                    </span>
+                  </button>
+                  <ul slot="content" class="link-sublist collapse">
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 1</span></a>
+                    </li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 2</span></a>
+                    </li>
+                    <li>
+                      <a class="list-item" href="#"><span>Link lista 3</span></a>
+                    </li>
+                  </ul>
+                </it-collapse>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+      <div id="app-footer"></div>
+    </div>
+  </body>
+</html>

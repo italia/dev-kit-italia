@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/dev-kit-italia/vanilla-app/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Web Components - vanilla-app</title>
+    <script type="module" crossorigin src="/dev-kit-italia/vanilla-app/assets/main-gdaVSTNW.js"></script>
+    <link rel="stylesheet" crossorigin href="/dev-kit-italia/vanilla-app/assets/main-BNTJIYXP.css">
+  </head>
+  <body>
+    <div id="root">
+      <header id="app-header"></header>
+      <main class="container my-4">
+        <h1>Select</h1>
+
+        <it-select name="select-input" placeholder="Seleziona un'opzione">
+          <span slot="label">Select semplice</span>
+          <option value="Value 1">Opzione 1</option>
+          <option value="Value 2">Opzione 2</option>
+          <option value="Value 3">Opzione 3</option>
+          <option value="Value 4">Opzione 4</option>
+          <option value="Value 5">Opzione 5</option>
+        </it-select>
+
+        <it-select name="select-multiple" multiple="" placeholder="Seleziona una o più opzioni">
+          <span slot="label">Select multipla</span>
+          <option value="Value 1">Opzione 1</option>
+          <option value="Value 2">Opzione 2</option>
+          <option value="Value 3">Opzione 3</option>
+          <option value="Value 4">Opzione 4</option>
+          <option value="Value 5">Opzione 5</option>
+        </it-select>
+
+        <it-select name="select-disabled" placeholder="Seleziona un'opzione" disabled>
+          <span slot="label">Select disabilitata</span>
+          <option value="Value 1">Opzione 1</option>
+          <option value="Value 2">Opzione 2</option>
+          <option value="Value 3">Opzione 3</option>
+          <option value="Value 4">Opzione 4</option>
+          <option value="Value 5">Opzione 5</option>
+        </it-select>
+
+        <it-select name="select-group" placeholder="Seleziona un'opzione">
+          <span slot="label">Select con gruppi</span>
+          <optgroup label="Gruppo 1">
+            <option value="1">Opzione 1</option>
+            <option value="2">Opzione 2</option>
+          </optgroup>
+          <optgroup label="Gruppo 2">
+            <option value="3">Opzione 3</option>
+            <option value="4">Opzione 4</option>
+          </optgroup>
+        </it-select>
+
+        <section>
+          Test per aria-controls.:
+          <form>
+            <it-select name="anno" placeholder="Seleziona un anno" it-aria-controls="results">
+              <span slot="label">Select semplice</span>
+              <option value="Value 1">Opzione 1</option>
+              <option value="Value 2">Opzione 2</option>
+              <option value="Value 3">Opzione 3</option>
+              <option value="Value 4">Opzione 4</option>
+              <option value="Value 5">Opzione 5</option>
+            </it-select>
+            <div id="results" aria-live="polite">results</div>
+          </form>
+        </section>
+      </main>
+      <div id="app-footer"></div>
+      <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
+    </div>
+
+  </body>
+</html>

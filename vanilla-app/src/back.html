@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/dev-kit-italia/vanilla-app/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Back - Test Web Components - vanilla-app</title>
+    <script type="module" crossorigin src="/dev-kit-italia/vanilla-app/assets/back-B8fVbfoj.js"></script>
+    <link rel="modulepreload" crossorigin href="/dev-kit-italia/vanilla-app/assets/main-gdaVSTNW.js">
+    <link rel="stylesheet" crossorigin href="/dev-kit-italia/vanilla-app/assets/main-BNTJIYXP.css">
+  </head>
+  <body>
+    <div id="root">
+      <header id="app-header"></header>
+      <main class="container my-4">
+        <h1>Back</h1>
+
+        <section class="mb-4">
+          <h2>Link</h2>
+          <it-back>
+            <a href="#" class="go-back">
+              <it-icon name="it-arrow-left" size="sm" color="primary"></it-icon>
+              <span>Torna indietro</span>
+            </a>
+          </it-back>
+        </section>
+
+        <section class="mb-4">
+          <h2>Pulsanti</h2>
+          <div class="d-flex gap-3 flex-wrap">
+            <it-back>
+              <it-button variant="primary" class="go-back">
+                <it-icon name="it-arrow-left" size="sm" color="inverse"></it-icon>
+                <span>Torna indietro</span>
+              </it-button>
+            </it-back>
+            <it-back>
+              <it-button variant="primary" class="go-back">
+                <it-icon name="it-arrow-up" size="sm" color="inverse"></it-icon>
+                <span>Torna indietro</span>
+              </it-button>
+            </it-back>
+          </div>
+        </section>
+
+        <section class="mb-4">
+          <h2>Navigazione personalizzata</h2>
+          <p>
+            L'evento `it-back-navigate` è cancelable. Chiamando `event.preventDefault()` impedisci
+            `window.history.back()` e puoi gestire la navigazione indietro secondo il router del tuo framework.
+          </p>
+          <it-back id="back-custom">
+            <a href="#" class="go-back">
+              <it-icon name="it-arrow-left" size="sm" color="primary"></it-icon>
+              <span>Torna indietro</span>
+            </a>
+          </it-back>
+          <p id="back-status" class="mt-3" style="font-size: 0.9rem" role="status" aria-live="polite"></p>
+        </section>
+      </main>
+      <div id="app-footer"></div>
+    </div>
+
+  </body>
+</html>

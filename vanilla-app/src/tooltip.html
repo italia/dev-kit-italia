@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/dev-kit-italia/vanilla-app/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tooltip - vanilla-app</title>
+    <script type="module" crossorigin src="/dev-kit-italia/vanilla-app/assets/main-gdaVSTNW.js"></script>
+    <link rel="stylesheet" crossorigin href="/dev-kit-italia/vanilla-app/assets/main-BNTJIYXP.css">
+  </head>
+  <body>
+    <div id="root">
+      <header id="app-header"></header>
+      <main class="container my-4">
+        <h1>Tooltip</h1>
+
+        <!-- Base -->
+        <section style="margin-bottom: 2rem">
+          <h2>Base</h2>
+          <div style="padding: 30px 0; text-align: center">
+            <it-tooltip placement="top">
+              <it-button slot="trigger" variant="primary">Mostra tooltip</it-button>
+              <span slot="content">Testo del tooltip</span>
+            </it-tooltip>
+          </div>
+        </section>
+
+        <!-- Su link e testo -->
+        <section style="margin-bottom: 2rem">
+          <h2>Su link e testo</h2>
+          <p style="max-width: 400px; line-height: 2">
+            Il tooltip può essere usato su qualsiasi elemento interattivo, come i
+            <it-tooltip placement="top">
+              <a slot="trigger" href="#" onclick="event.preventDefault()">link in una frase</a>
+              <span slot="content">Primo link con tooltip</span>
+            </it-tooltip>
+            di testo, per fornire informazioni contestuali senza occupare spazio nella pagina. Basta passare il mouse o
+            portare il focus su un
+            <it-tooltip placement="top">
+              <a slot="trigger" href="#" onclick="event.preventDefault()">elemento con tooltip</a>
+              <span slot="content">Secondo link con tooltip</span>
+            </it-tooltip>
+            per vedere l'etichetta comparire.
+          </p>
+        </section>
+
+        <!-- Posizione -->
+        <section style="margin-bottom: 2rem">
+          <h2>Posizione</h2>
+          <div style="display: grid; gap: .5rem; grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr; place-items: center">
+            <it-tooltip placement="bottom" style="grid-column: 2; grid-row: 1">
+              <it-button slot="trigger" variant="primary">Giù</it-button>
+              <span slot="content">Tooltip in basso</span>
+            </it-tooltip>
+            <it-tooltip placement="top" style="grid-column: 2; grid-row: 3">
+              <it-button slot="trigger" variant="primary">Su</it-button>
+              <span slot="content">Tooltip in alto</span>
+            </it-tooltip>
+            <it-tooltip placement="right" style="grid-column: 1; grid-row: 2">
+              <it-button slot="trigger" variant="primary">Destra</it-button>
+              <span slot="content">Tooltip a destra</span>
+            </it-tooltip>
+            <it-tooltip placement="left" style="grid-column: 3; grid-row: 2">
+              <it-button slot="trigger" variant="primary">Sinistra</it-button>
+              <span slot="content">Tooltip a sinistra</span>
+            </it-tooltip>
+          </div>
+        </section>
+
+        <!-- Testo formattato -->
+        <section style="margin-bottom: 2rem">
+          <h2>Testo formattato</h2>
+          <it-tooltip placement="right">
+            <it-button slot="trigger" variant="primary">Mostra tooltip</it-button>
+            <span slot="content"><em>Tooltip</em> <u>con</u> <strong>HTML</strong></span>
+          </it-tooltip>
+        </section>
+
+        <!-- Attivazione controllata -->
+        <section style="margin-bottom: 2rem">
+          <h2>Attivazione controllata</h2>
+          <div style="display: flex; gap: 1rem; align-items: flex-start; height: 70px">
+            <it-tooltip placement="bottom" controlled id="tooltip-controlled">
+              <it-button slot="trigger" variant="primary">Target</it-button>
+              <span slot="content">Tooltip controllato</span>
+            </it-tooltip>
+            <button class="btn btn-secondary" id="tooltip-show-btn">
+              Hover qui per mostrare il tooltip
+            </button>
+          </div>
+        </section>
+
+        <!-- Eventi -->
+        <section style="margin-bottom: 2rem">
+          <h2>Eventi</h2>
+          <it-tooltip placement="right" id="tooltip-eventi">
+            <it-button slot="trigger" variant="primary">Hover o focus</it-button>
+            <span slot="content">Tooltip con eventi</span>
+          </it-tooltip>
+        </section>
+      </main>
+      <div id="app-footer"></div>
+      <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
+    </div>
+
+  </body>
+</html>

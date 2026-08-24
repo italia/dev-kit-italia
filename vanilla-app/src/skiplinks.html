@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/dev-kit-italia/vanilla-app/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Web Components - vanilla-app</title>
+  <!-- Load compiled dev-kit CSS in <head> so styles are present even when JS is disabled -->
+  <!-- Local app styles so layout (#root etc.) is present without JS -->
+    <script type="module" crossorigin src="/dev-kit-italia/vanilla-app/assets/main-gdaVSTNW.js"></script>
+    <link rel="stylesheet" crossorigin href="/dev-kit-italia/vanilla-app/assets/main-BNTJIYXP.css">
+  </head>
+  <body>
+    <div id="root">
+      <header id="app-header"></header>
+      <main class="container my-4">
+        <h1>Skiplinks</h1>
+
+        <it-skiplinks it-aria-label="Vai a:">
+          <a href="#menu">Vai al menu</a>
+          <a href="#main-content">Vai al contenuto principale</a>
+          <a href="#satisfaction">Questa pagina ti è stata utile?</a>
+          <a href="#footer">Vai al piè di pagina</a>
+          <a href="https://form.agid.gov.it/view/xyz">Dichiarazione di accessibilità (link esterno su sito AgID</a>
+        </it-skiplinks>
+
+        <section>
+            <h2>Numero ridotto di skiplinks</h2>
+            <it-skiplinks>
+              <a href="#menu">Vai al menu</a>
+              <a href="#main-content">Vai al contenuto principale</a>
+            </it-skiplinks>
+        </section>
+      </main>
+      <div id="app-footer"></div>
+      <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
+    </div>
+
+  </body>
+</html>
