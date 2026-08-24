@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href=/angular-app/",
+    "build": "ng build --base-href=$GH_PAGES_PATH/angular-app/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
