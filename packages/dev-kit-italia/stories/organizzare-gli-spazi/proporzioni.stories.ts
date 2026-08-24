@@ -79,7 +79,7 @@ export const ProporzionePersonalizzata: Story = {
     pageLayout: 'w-100',
     docs: {
       source: {
-        code: `<div class="ratio ratio-example" style="--bs-aspect-ratio: 50%;">
+        code: `<div class="ratio ratio-example" style="--bsi-aspect-ratio: 50%;">
   <div>2x1</div>
 </div>`,
       },
@@ -87,7 +87,7 @@ export const ProporzionePersonalizzata: Story = {
   },
   render: () =>
     wrapExample(
-      html`<div class="ratio ratio-example" style="--bs-aspect-ratio: 50%;">
+      html`<div class="ratio ratio-example" style="--bsi-aspect-ratio: 50%;">
         <div>2x1</div>
       </div>`,
       { className: 'ratio-examples' },

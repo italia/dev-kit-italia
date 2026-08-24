@@ -39,7 +39,7 @@ Vengono fornite le seguenti proporzioni pre-impostate:
 
 Ogni classe `.ratio-*` include una variabile CSS nel selettore. Puoi fare un override di questa variabile per creare una proporzione custom _al volo_ facendo un rapido calcolo.
 
-Ad esempio, per creare una proporzione custom 2x1, utilizza il valore `--bs-aspect-ratio: 50%` sull'elemento `.ratio`.
+Ad esempio, per creare una proporzione custom 2x1, utilizza il valore `--bsi-aspect-ratio: 50%` sull'elemento `.ratio`.
 
 <Canvas of={Stories.ProporzionePersonalizzata} />
 
@@ -48,7 +48,7 @@ Questa variabile CSS rende semplice modificare la proporzione a seconda del brea
 ```scss
 .ratio-4x3 {
   @include media-breakpoint-up(md) {
-    --bs-aspect-ratio: 50%; // 2x1
+    --bsi-aspect-ratio: 50%; // 2x1
   }
 }
 ```
