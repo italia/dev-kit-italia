@@ -1,5 +1,21 @@
 # @italia/navscroll
 
+## 1.0.0-beta.1
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#485](https://github.com/italia/dev-kit-italia/pull/485) [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64) Thanks [@astagi](https://github.com/astagi)! - Updated to bootstrap-italia 3.0.0-beta.4
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4), [`7df75f1`](https://github.com/italia/dev-kit-italia/commit/7df75f1ae0665be7c11043737ca019bef83e696f), [`8583808`](https://github.com/italia/dev-kit-italia/commit/8583808a10437ff7dfc44a6ce5886315a7b35fa8)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/modal@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
 ## 1.0.0-beta.0
 
 ### Major Changes

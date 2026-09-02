@@ -1,5 +1,67 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-beta.1
+
+### Minor Changes
+
+- [#492](https://github.com/italia/dev-kit-italia/pull/492) [`aa3a85e`](https://github.com/italia/dev-kit-italia/commit/aa3a85ec712531758d312897eaa24d024c691b3c) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add Titillium Pro font support
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- [#485](https://github.com/italia/dev-kit-italia/pull/485) [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64) Thanks [@astagi](https://github.com/astagi)! - Updated to bootstrap-italia 3.0.0-beta.4
+
+- Updated dependencies [[`a8a5e6f`](https://github.com/italia/dev-kit-italia/commit/a8a5e6f3dafa23272bfc57b7df86349053722cee), [`0fe470c`](https://github.com/italia/dev-kit-italia/commit/0fe470c4d850586874c46efd84e7d0431c4b16fd), [`2cb1023`](https://github.com/italia/dev-kit-italia/commit/2cb102330500ebe596a93e361cc8342a56fa7a3e), [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4), [`7df75f1`](https://github.com/italia/dev-kit-italia/commit/7df75f1ae0665be7c11043737ca019bef83e696f), [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd), [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64), [`8583808`](https://github.com/italia/dev-kit-italia/commit/8583808a10437ff7dfc44a6ce5886315a7b35fa8)]:
+  - @italia/bottom-nav@1.0.0-beta.1
+  - @italia/carousel@1.0.0-beta.1
+  - @italia/dropdown@1.0.0-beta.1
+  - @italia/autocomplete@1.0.0-beta.1
+  - @italia/notification@1.0.0-beta.1
+  - @italia/back-to-top@1.0.0-beta.1
+  - @italia/breadcrumbs@1.0.0-beta.1
+  - @italia/pagination@1.0.0-beta.1
+  - @italia/accordion@1.0.0-beta.1
+  - @italia/navscroll@1.0.0-beta.1
+  - @italia/skiplinks@1.0.0-beta.1
+  - @italia/checkbox@1.0.0-beta.1
+  - @italia/collapse@1.0.0-beta.1
+  - @italia/megamenu@1.0.0-beta.1
+  - @italia/progress@1.0.0-beta.1
+  - @italia/thumbnav@1.0.0-beta.1
+  - @italia/timeline@1.0.0-beta.1
+  - @italia/transfer@1.0.0-beta.1
+  - @italia/callout@1.0.0-beta.1
+  - @italia/popover@1.0.0-beta.1
+  - @italia/section@1.0.0-beta.1
+  - @italia/stepper@1.0.0-beta.1
+  - @italia/toolbar@1.0.0-beta.1
+  - @italia/tooltip@1.0.0-beta.1
+  - @italia/avatar@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/dimmer@1.0.0-beta.1
+  - @italia/header@1.0.0-beta.1
+  - @italia/rating@1.0.0-beta.1
+  - @italia/select@1.0.0-beta.1
+  - @italia/sticky@1.0.0-beta.1
+  - @italia/toggle@1.0.0-beta.1
+  - @italia/upload@1.0.0-beta.1
+  - @italia/input@1.0.0-beta.1
+  - @italia/modal@1.0.0-beta.1
+  - @italia/radio@1.0.0-beta.1
+  - @italia/video@1.0.0-beta.1
+  - @italia/card@1.0.0-beta.1
+  - @italia/chip@1.0.0-beta.1
+  - @italia/hero@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+  - @italia/tabs@1.0.0-beta.1
+  - @italia/alert@1.0.0-beta.1
+  - @italia/back@1.0.0-beta.1
+  - @italia/forward@1.0.0-beta.1
+
 ## 1.0.0-beta.0
 
 ### Major Changes

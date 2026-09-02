@@ -1,5 +1,22 @@
 # @italia/carousel
 
+## 1.0.0-beta.1
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#470](https://github.com/italia/dev-kit-italia/pull/470) [`0fe470c`](https://github.com/italia/dev-kit-italia/commit/0fe470c4d850586874c46efd84e7d0431c4b16fd) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fixed `aria-roledescription` being set on the shadow DOM wrapper, where it had no effect since that element carries `role="presentation"`. It is now set on the host element instead, next to the `region` landmark.
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/card@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+
 ## 1.0.0-beta.0
 
 ### Major Changes

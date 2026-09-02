@@ -1,5 +1,21 @@
 # @italia/dropdown
 
+## 1.0.0-beta.1
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`2cb1023`](https://github.com/italia/dev-kit-italia/commit/2cb102330500ebe596a93e361cc8342a56fa7a3e) Thanks [@pnicolli](https://github.com/pnicolli)! - Added missing opening animation
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4), [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd), [`8583808`](https://github.com/italia/dev-kit-italia/commit/8583808a10437ff7dfc44a6ce5886315a7b35fa8)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/popover@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
 ## 1.0.0-beta.0
 
 ### Major Changes
