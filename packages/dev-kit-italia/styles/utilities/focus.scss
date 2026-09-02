@@ -37,7 +37,7 @@ p a {
     /* focus da mouse o script, esclusi anche i .btn */
     background: $focus-outline-color-in;
     box-shadow: none !important;
-    color: $link-color !important;
+    color: var(--#{$prefix}color-link) !important;
 
     outline: 3px $focus-outline-color-out solid !important;
     outline-offset: 0px !important;

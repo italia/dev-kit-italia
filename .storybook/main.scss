@@ -1,4 +1,5 @@
 @use '../packages/dev-kit-italia/styles/index';
+@use 'bootstrap-italia/src/scss/base/config' as *;
 @use 'bootstrap-italia/src/scss/components/callout' as *;
 
 // Nel bundle pubblicato si importa un solo file font (fonts.css oppure
@@ -19,10 +20,10 @@
 );
 
 // Con entrambi i @font-face registrati vince sempre Titillium Web, che è il
-// primo della lista in --bsi-font-sans: per l'anteprima di Titillium Sans Pro
+// primo della lista in --#{$prefix}font-sans: per l'anteprima di Titillium Sans Pro
 // ridefiniamo lo stack sull'elemento <html>.
 :root[data-font-variant='sans-pro'] {
-  --bsi-font-sans: 'Titillium Sans Pro', Geneva, Tahoma, sans-serif;
+  --#{$prefix}font-sans: 'Titillium Sans Pro', Geneva, Tahoma, sans-serif;
 }
 
 /*Video js font*/
