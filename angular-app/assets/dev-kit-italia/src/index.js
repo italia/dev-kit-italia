@@ -2441,7 +2441,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -3765,7 +3765,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -5850,7 +5850,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -7167,7 +7167,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -11962,7 +11962,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -12262,7 +12262,7 @@ a .avatar:hover p {
   --bsi-avatar-dot-border-color: var(--bsi-color-border-inverse);
   --bsi-avatar-dot-offset-right: 0;
   --bsi-avatar-dot-offset-top: 4px;
-  --bsi-avatar-dot-offset-bottom: 0;
+  --bsi-avatar-dot-offset-bottom: 8px;
 }
 :host a.avatar,
 :host a .avatar {
@@ -12273,7 +12273,7 @@ a .avatar:hover p {
   text-decoration: none;
 }
 :host .avatar-presence {
-  bottom: var(--bsi-avatar-dot-offset-top);
+  bottom: var(--bsi-avatar-dot-offset-bottom);
 }
 :host .avatar-presence,
 :host .avatar-status {
@@ -13949,7 +13949,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -15173,7 +15173,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -16617,7 +16617,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -18089,7 +18089,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -19623,7 +19623,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -21301,7 +21301,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -23362,7 +23362,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -26891,7 +26891,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -28482,7 +28482,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -30058,7 +30058,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -33179,7 +33179,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -34427,7 +34427,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -36217,7 +36217,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -41535,7 +41535,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -47405,7 +47405,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -48638,6 +48638,7 @@ let ItModal = class ItModal extends BaseComponent$g {
         this.closeLabel = '';
         this.disableAnimation = false;
         this.footerShadow = false;
+        this.defaultFocusClose = false;
         this._titleId = '';
         this._triggerId = '';
         this._descriptionId = '';
@@ -48725,7 +48726,7 @@ let ItModal = class ItModal extends BaseComponent$g {
      * announcement, exactly as it was when focus landed on the dialog.
      */
     _entryPoint() {
-        return this._contentElement ?? this._modalElement;
+        return this.defaultFocusClose ? this._closeButton : (this._contentElement ?? this._modalElement);
     }
     disconnectedCallback() {
         super.disconnectedCallback?.();
@@ -49170,6 +49171,10 @@ __decorate$i([
     __metadata$i("design:type", Object)
 ], ItModal.prototype, "footerShadow", void 0);
 __decorate$i([
+    property({ type: Boolean, attribute: 'default-focus-close', reflect: true }),
+    __metadata$i("design:type", Object)
+], ItModal.prototype, "defaultFocusClose", void 0);
+__decorate$i([
     query('[role="dialog"]'),
     __metadata$i("design:type", HTMLElement)
 ], ItModal.prototype, "_modalElement", void 0);
@@ -49197,6 +49202,10 @@ __decorate$i([
     query('.modal-content'),
     __metadata$i("design:type", HTMLElement)
 ], ItModal.prototype, "_contentElement", void 0);
+__decorate$i([
+    query('[part="close-button"]'),
+    __metadata$i("design:type", HTMLElement)
+], ItModal.prototype, "_closeButton", void 0);
 __decorate$i([
     state(),
     __metadata$i("design:type", Object)
@@ -50384,7 +50393,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -52076,7 +52085,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -54349,7 +54358,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -56796,7 +56805,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -58525,6 +58534,7 @@ let ItPopover = class ItPopover extends BaseComponent$c {
         if (!this._arrowElement) {
             this._arrowElement = document.createElement('div');
             this._arrowElement.className = 'arrow';
+            this._arrowElement.part = 'popover-arrow';
             this._contentElement.prepend(this._arrowElement);
         }
     }
@@ -58544,7 +58554,7 @@ let ItPopover = class ItPopover extends BaseComponent$c {
                     }),
                     flip$2({ mainAxis: !this.noFlip, crossAxis: !this.noFlip }),
                     shift$2({ padding: 8 }),
-                    // Commentato perchè nella toolbar con dropdown che ha position absolute, vogliamo il min-width impostato da css con var(--bsi-dropdown-min-width)
+                    // Commentato perchè nella toolbar con dropdown che ha position absolute, vogliamo il min-width impostato da css con var(--<prefix>dropdown-min-width)
                     // size({
                     //   apply({ rects, elements }) {
                     //     Object.assign(elements.floating.style, {
@@ -60858,7 +60868,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -65107,7 +65117,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -66410,7 +66420,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -67666,7 +67676,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -70643,7 +70653,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -72298,7 +72308,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -74061,7 +74071,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -79031,7 +79041,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -80929,7 +80939,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -84198,7 +84208,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -88527,7 +88537,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
@@ -89982,6 +89992,10 @@ textarea.form-control-lg {
   overflow: hidden;
 }
 
+.avatar-upload-wrapper {
+  position: relative;
+  display: inline-block;
+}
 .avatar-upload-wrapper .avatar-upload-icon {
   position: absolute;
   right: 4px;
@@ -89989,30 +90003,23 @@ textarea.form-control-lg {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
   border: 2px solid var(--bsi-color-border-inverse);
   border-radius: 50%;
   background: hsl(210, 6.2290689886%, 92.535%);
   pointer-events: none;
-}
-.avatar-upload-wrapper .avatar-upload-icon > svg {
-  width: 16px;
-  height: 16px;
+  z-index: 1;
 }
 .avatar-upload-wrapper.size-sm .avatar {
   width: 80px;
   height: 80px;
 }
 .avatar-upload-wrapper.size-sm .avatar-upload-icon {
-  right: 4px;
-  bottom: 6px;
-  width: 18px;
-  height: 18px;
-}
-.avatar-upload-wrapper.size-sm .avatar-upload-icon > svg {
-  width: 12px;
-  height: 12px;
+  right: 6px;
+  bottom: 8px;
+  width: 24px;
+  height: 24px;
 }
 
 .upload-dragdrop {
@@ -92088,6 +92095,10 @@ a .avatar:hover p {
   overflow: hidden;
 }
 
+.avatar-upload-wrapper {
+  position: relative;
+  display: inline-block;
+}
 .avatar-upload-wrapper .avatar-upload-icon {
   position: absolute;
   right: 4px;
@@ -92095,30 +92106,23 @@ a .avatar:hover p {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
   border: 2px solid var(--bsi-color-border-inverse);
   border-radius: 50%;
   background: hsl(210, 6.2290689886%, 92.535%);
   pointer-events: none;
-}
-.avatar-upload-wrapper .avatar-upload-icon > svg {
-  width: 16px;
-  height: 16px;
+  z-index: 1;
 }
 .avatar-upload-wrapper.size-sm .avatar {
   width: 80px;
   height: 80px;
 }
 .avatar-upload-wrapper.size-sm .avatar-upload-icon {
-  right: 4px;
-  bottom: 6px;
-  width: 18px;
-  height: 18px;
-}
-.avatar-upload-wrapper.size-sm .avatar-upload-icon > svg {
-  width: 12px;
-  height: 12px;
+  right: 6px;
+  bottom: 8px;
+  width: 24px;
+  height: 24px;
 }
 
 .upload-dragdrop {
@@ -93651,6 +93655,10 @@ progress {
   overflow: hidden;
 }
 
+.avatar-upload-wrapper {
+  position: relative;
+  display: inline-block;
+}
 .avatar-upload-wrapper .avatar-upload-icon {
   position: absolute;
   right: 4px;
@@ -93658,30 +93666,23 @@ progress {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
   border: 2px solid var(--bsi-color-border-inverse);
   border-radius: 50%;
   background: hsl(210, 6.2290689886%, 92.535%);
   pointer-events: none;
-}
-.avatar-upload-wrapper .avatar-upload-icon > svg {
-  width: 16px;
-  height: 16px;
+  z-index: 1;
 }
 .avatar-upload-wrapper.size-sm .avatar {
   width: 80px;
   height: 80px;
 }
 .avatar-upload-wrapper.size-sm .avatar-upload-icon {
-  right: 4px;
-  bottom: 6px;
-  width: 18px;
-  height: 18px;
-}
-.avatar-upload-wrapper.size-sm .avatar-upload-icon > svg {
-  width: 12px;
-  height: 12px;
+  right: 6px;
+  bottom: 8px;
+  width: 24px;
+  height: 24px;
 }
 
 .upload-dragdrop {
@@ -166217,7 +166218,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.0',
+        version: '1.0.0-beta.1',
     };
 }
 
