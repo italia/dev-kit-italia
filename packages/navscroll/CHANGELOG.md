@@ -1,5 +1,17 @@
 # @italia/navscroll
 
+## 1.0.0-beta.2
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+  - @italia/modal@1.0.0-beta.2
+
 ## 1.0.0-beta.1
 
 ### Minor Changes
