@@ -1,7 +1,7 @@
 {
   "name": "@italia/upload",
   "description": "Web components it-upload, it-upload-avatar, it-upload-drag-drop del Design system .italia",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "publishConfig": {
     "access": "public"
   },
