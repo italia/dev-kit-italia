@@ -108,7 +108,7 @@ const meta = {
     color: {
       control: 'text',
       description:
-        '<strong>Bar:</strong> default|success|info|warning|danger. <br/><br/><strong>Donut:</strong>  colore CSS della barra (default: `var(--bsi-secondary)`)<br/><br/><i>(solo per `type="bar"` e `type="donut"`)</i>',
+        '<strong>Bar:</strong> default|success|info|warning|danger. <br/><br/><strong>Donut:</strong> default|success|info|warning|danger, oppure un qualsiasi colore CSS<br/><br/><i>(solo per `type="bar"` e `type="donut"`)</i>',
       table: { defaultValue: { summary: 'default' } },
     },
 
@@ -237,6 +237,25 @@ export const Donut: Story = {
         <div class="text-center mb-3">Stato di avanzamento<br />(75%):</div>
         ${renderComponent({ ...params })}
       </div>
+    </div>
+  `,
+};
+
+export const ColoriDonut: Story = {
+  name: 'Donut: varianti di colore',
+  parameters: {
+    pageLayout: 'center',
+  },
+  render: () => html`
+    <div class="row">
+      ${['default', 'success', 'info', 'warning', 'danger'].map(
+        (color) => html`
+          <div class="col-auto px-4">
+            <div class="text-center mb-3">${color}</div>
+            <it-progress type="donut" value="75" color="${color}" it-aria-label="Caricamento - ${color}"></it-progress>
+          </div>
+        `,
+      )}
     </div>
   `,
 };
