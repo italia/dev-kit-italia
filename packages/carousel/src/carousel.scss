@@ -248,8 +248,8 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
   ::slotted(h4),
   ::slotted(h5),
   ::slotted(h6) {
-    padding-bottom: var(--bsi-carousel-pagination-spacing);
-    border-bottom: 1px solid var(--bsi-carousel-heading-border-color);
+    padding-bottom: var(--#{$prefix}carousel-pagination-spacing);
+    border-bottom: 1px solid var(--#{$prefix}carousel-heading-border-color);
     margin-bottom: 0;
   }
 }

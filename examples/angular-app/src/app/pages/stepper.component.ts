@@ -18,7 +18,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
       .stepper-variant-stack {
         display: flex;
         flex-direction: column;
-        gap: var(--bsi-spacing-xl);
+        gap: var(--bsi-spacing-xl, 2rem);
       }
     `,
   ],

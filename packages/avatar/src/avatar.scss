@@ -25,7 +25,7 @@ slot[name='extra-text']::slotted(*) {
   --#{$prefix}avatar-dot-border-color: var(--#{$prefix}color-border-inverse);
   --#{$prefix}avatar-dot-offset-right: 0;
   --#{$prefix}avatar-dot-offset-top: 4px;
-  --#{$prefix}avatar-dot-offset-bottom: 0;
+  --#{$prefix}avatar-dot-offset-bottom: 8px;
 
   a.avatar,
   a .avatar {
@@ -38,7 +38,7 @@ slot[name='extra-text']::slotted(*) {
   }
 
   .avatar-presence {
-    bottom: var(--bsi-avatar-dot-offset-top);
+    bottom: var(--#{$prefix}avatar-dot-offset-bottom);
   }
 
   .avatar-presence,
