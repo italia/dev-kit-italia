@@ -106,9 +106,11 @@ const meta = {
       table: { defaultValue: { summary: 'false' } },
     },
     color: {
-      control: 'text',
+      control: 'select',
+      // '#ff0000' is not a variant: it is there to show that the donut also takes a literal CSS color.
+      options: ['default', 'success', 'info', 'warning', 'danger', '#ff0000'],
       description:
-        '<strong>Bar:</strong> default|success|info|warning|danger. <br/><br/><strong>Donut:</strong> default|success|info|warning|danger, oppure un qualsiasi colore CSS<br/><br/><i>(solo per `type="bar"` e `type="donut"`)</i>',
+        '<strong>Bar:</strong> default|success|info|warning|danger. <br/><br/><strong>Donut:</strong> default|success|info|warning|danger, oppure un qualsiasi colore CSS (es. `#ff0000`)<br/><br/><i>(solo per `type="bar"` e `type="donut"`)</i>',
       table: { defaultValue: { summary: 'default' } },
     },
 
