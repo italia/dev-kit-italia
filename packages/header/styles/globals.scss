@@ -334,13 +334,13 @@ it-modal#it-nav-modal {
     it-megamenu {
       [slot='header'] {
         .nav-link {
-          --bsi-navbar-link-padding-x: 0;
-          --bsi-navbar-link-padding-y: 0;
+          --#{$prefix}navbar-link-padding-x: 0;
+          --#{$prefix}navbar-link-padding-y: 0;
         }
       }
 
       &::part(megamenu-link-list-wrapper) {
-        --bsi-spacing-s: 0;
+        --#{$prefix}spacing-s: 0;
       }
 
       &::part(megamenu-link-list) {
@@ -355,7 +355,7 @@ it-modal#it-nav-modal {
 
       [slot='footer'] {
         .it-footer-link {
-          margin-bottom: var(--bsi-spacing-m);
+          margin-bottom: var(--#{$prefix}spacing-m);
         }
       }
     }
@@ -384,8 +384,8 @@ it-modal#it-nav-modal {
         }
 
         a.nav-link {
-          border-left: var(--#{$prefix}navbar-link-border-size) solid;
           border-color: var(--#{$prefix}navbar-link-border-color);
+          border-left: var(--#{$prefix}navbar-link-border-size) solid;
         }
       }
 
@@ -420,10 +420,10 @@ it-modal#it-nav-modal {
     ul {
       display: flex;
       align-items: center;
-      gap: 0.65rem;
-      list-style-type: none;
       padding: 0;
       margin: var(--#{$prefix}spacing-xs) 0 0 0;
+      gap: 0.65rem;
+      list-style-type: none;
 
       it-icon::part(icon) {
         --#{$prefix}icon-size-m: var(--#{$prefix}icon-size-s);

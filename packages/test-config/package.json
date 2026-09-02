@@ -6,10 +6,12 @@
   "private": true,
   "exports": {
     "./utils": "./utils/index.js",
+    "./utils/css-prefix.js": "./utils/css-prefix.js",
     "./web-test-runner.config.js": "./web-test-runner.config.js"
   },
   "files": [
     "utils/index.js",
+    "utils/css-prefix.js",
     "web-test-runner.config.js"
   ],
   "scripts": {
