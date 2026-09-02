@@ -116,6 +116,7 @@ export class ItPopover extends BaseComponent {
     if (!this._arrowElement) {
       this._arrowElement = document.createElement('div');
       this._arrowElement.className = 'arrow';
+      this._arrowElement.part = 'popover-arrow';
       this._contentElement.prepend(this._arrowElement);
     }
   }
