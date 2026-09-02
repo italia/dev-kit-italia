@@ -20,7 +20,7 @@ $it-tab-prefix: 'it-tab';
   // Un valore own su :host batte SEMPRE il valore ereditato via flat tree dagli
   // antenati nella shadow di it-tabs (.nav-tabs-vertical, .nav-tabs-cards, .nav-dark).
   // Tutti i valori di default sono espressi come fallback nel punto di consumo:
-  //   border-bottom-width: var(--it-tab_bw-bottom, var(--bsi-tab-border-width))
+  //   border-bottom-width: var(--it-tab_bw-bottom, var(--#{$prefix}tab-border-width))
   // Cosi' .nav-tabs-vertical puo' impostare --it-tab_bw-bottom: 0 e avere effetto.
 
   // Stili base
@@ -44,7 +44,7 @@ $it-tab-prefix: 'it-tab';
   border-left-color: var(--#{$it-tab-prefix}_bc-left, transparent);
   appearance: none;
   background: var(--it-tab_bg, transparent);
-  // Fallback esplicito: --bsi-tab-text-color non e' inizializzato in :host
+  // Fallback esplicito: --#{$prefix}tab-text-color non e' inizializzato in :host
   // cosi' il valore ereditato da .nav-dark (via flat tree) puo' vincere.
   color: var(--#{$prefix}tab-text-color, var(--#{$prefix}color-text-secondary));
   cursor: pointer;
@@ -73,7 +73,7 @@ $it-tab-prefix: 'it-tab';
     --#{$prefix}tab-font-size: var(--#{$prefix}label-font-size-l);
   }
 
-  // Icona: --bsi-icon-default e' letto da .icon { fill: var(--bsi-icon-default) }
+  // Icona: --#{$prefix}icon-default e' letto da .icon { fill: var(--#{$prefix}icon-default) }
   // nella shadow SCSS di it-icon. Impostandolo su ::slotted(it-icon) (light DOM)
   // il valore eredita nella shadow di it-icon senza bisogno di ::part().
   ::slotted(it-icon) {

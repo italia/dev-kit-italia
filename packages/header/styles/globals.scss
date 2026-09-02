@@ -334,13 +334,13 @@ it-modal#it-nav-modal {
     it-megamenu {
       [slot='header'] {
         .nav-link {
-          --bsi-navbar-link-padding-x: 0;
-          --bsi-navbar-link-padding-y: 0;
+          --#{$prefix}navbar-link-padding-x: 0;
+          --#{$prefix}navbar-link-padding-y: 0;
         }
       }
 
       &::part(megamenu-link-list-wrapper) {
-        --bsi-spacing-s: 0;
+        --#{$prefix}spacing-s: 0;
       }
 
       &::part(megamenu-link-list) {
@@ -355,7 +355,7 @@ it-modal#it-nav-modal {
 
       [slot='footer'] {
         .it-footer-link {
-          margin-bottom: var(--bsi-spacing-m);
+          margin-bottom: var(--#{$prefix}spacing-m);
         }
       }
     }
