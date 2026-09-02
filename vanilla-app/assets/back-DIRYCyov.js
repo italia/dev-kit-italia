@@ -1,1 +1,0 @@
-import"./main-DEDY2efL.js";const a=document.getElementById("back-custom");a.addEventListener("it-back-navigate",e=>{e.preventDefault();const t=document.getElementById("back-status");t&&(t.textContent="Navigazione indietro intercettata: la gestisce il tuo router.")});
