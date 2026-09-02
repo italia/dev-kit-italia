@@ -157,6 +157,7 @@
       &,
       &::part(dropdown-popover),
       &::part(dropdown-button) {
+        width: 100%;
         height: 100%;
       }
 
@@ -177,6 +178,8 @@
         --#{$prefix}btn-padding-y: var(--#{$prefix}navbar-link-padding-y);
         --#{$prefix}btn-line-height: var(--#{$prefix}navbar-link-line-height);
         --#{$prefix}label-font-size: var(--#{$prefix}navbar-link-font-size);
+        width: 100%;
+        justify-content: flex-start;
         border-left: var(--#{$prefix}navbar-link-border-size) solid var(--#{$prefix}navbar-link-border-color);
 
         &:hover {
@@ -315,6 +318,10 @@ it-modal#it-nav-modal {
         // padding-left: var(--#{$prefix}navbar-link-padding-x);
       }
 
+      &::part(popover-arrow) {
+        display: none;
+      }
+
       it-dropdown-item {
         &:not([active]) {
           --#{$prefix}navbar-link-border-color: transparent;
@@ -325,6 +332,8 @@ it-modal#it-nav-modal {
         }
 
         &::part(list-item) {
+          width: 100%;
+          box-sizing: border-box;
           border-color: var(--#{$prefix}navbar-link-border-color);
           border-left: var(--#{$prefix}navbar-link-border-size) solid transparent;
         }
@@ -373,6 +382,7 @@ it-modal#it-nav-modal {
 
     ul.navbar-nav {
       width: 100%;
+      overflow: visible;
 
       &.secondary {
         --#{$prefix}navbar-link-font-weight: var(--#{$prefix}font-weight-base);
@@ -384,8 +394,9 @@ it-modal#it-nav-modal {
         }
 
         a.nav-link {
-          border-left: var(--#{$prefix}navbar-link-border-size) solid;
+          width: 100%;
           border-color: var(--#{$prefix}navbar-link-border-color);
+          border-left: var(--#{$prefix}navbar-link-border-size) solid;
         }
       }
 
