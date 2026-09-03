@@ -9,6 +9,11 @@ import type { ProgressBarColor, ProgressSpinnerSize, ProgressType } from './type
 import { ProgressDonut } from './utils/progress-donut.js';
 import styles from './it-progress.scss';
 
+/**
+ * @cssproperty [--it-progress-donut-color] - Colore dell'arco di avanzamento del donut. Impostato dalla
+ * variante `color` sul token di colore corrispondente; ridefiniscilo per personalizzare il solo donut.
+ * @cssproperty [--it-progress-donut-track-color] - Colore del cerchio di sfondo (traccia) del donut.
+ */
 @customElement('it-progress')
 export class ItProgress extends BaseComponent {
   static styles = styles;
@@ -138,8 +143,17 @@ export class ItProgress extends BaseComponent {
     this._donutContainer.setAttribute('aria-valuemax', '100');
     this._donutContainer.setAttribute('role', 'progressbar');
 
+    // The stroke color is applied via CSS, not through progressbar.js: it writes the color as an
+    // SVG presentation attribute, which cannot resolve the `var()` the design tokens need.
+    // Semantic variants map to their token in it-progress.scss; an arbitrary CSS color is fed to
+    // the same custom property here.
+    if (ItProgress._isBarColorVariant(this.color)) {
+      this._donutContainer.style.removeProperty('--it-progress-donut-color');
+    } else {
+      this._donutContainer.style.setProperty('--it-progress-donut-color', this.color);
+    }
+
     this._bar = await ProgressDonut.create(this._donutContainer, {
-      color: ItProgress._isBarColorVariant(this.color) ? 'var(--bsi-secondary)' : this.color,
       trailColor: this.trailColor,
       strokeWidth: this.strokeWidth,
       trailWidth: this.trailWidth,
