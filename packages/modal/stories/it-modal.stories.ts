@@ -18,6 +18,7 @@ interface ModalProps {
   'close-label': string;
   'disable-animation': boolean;
   'footer-shadow': boolean;
+  'default-focus-close': boolean;
   // Demo props
   triggerLabel: string;
   bodyContent: string;
@@ -67,6 +68,7 @@ const meta = {
     'close-button-placement': 'header',
     variant: '',
     'close-label': 'Chiudi finestra modale',
+    'default-focus-close': false,
     'disable-animation': false,
     'footer-shadow': false,
     triggerLabel: 'Apri modale',
@@ -130,6 +132,11 @@ const meta = {
       control: 'text',
       description: 'Etichetta accessibile per il pulsante di chiusura',
       table: { defaultValue: { summary: 'Chiudi finestra modale' } },
+    },
+    'default-focus-close': {
+      control: 'boolean',
+      description: "Forza il focus sul pulsante di chiusura all'apertura della modale",
+      table: { defaultValue: { summary: 'false' } },
     },
     'disable-animation': {
       control: 'boolean',

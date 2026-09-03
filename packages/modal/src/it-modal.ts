@@ -63,6 +63,8 @@ export class ItModal extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'footer-shadow', reflect: true }) footerShadow = false;
 
+  @property({ type: Boolean, attribute: 'default-focus-close', reflect: true }) defaultFocusClose = false;
+
   @query('[role="dialog"]') private _modalElement!: HTMLElement;
 
   @query('slot[name="trigger"]') private _triggerSlot!: HTMLSlotElement;
@@ -76,6 +78,8 @@ export class ItModal extends BaseComponent {
   @query('.modal-dialog') private _dialogElement!: HTMLElement;
 
   @query('.modal-content') private _contentElement!: HTMLElement;
+
+  @query('[part="close-button"]') private _closeButton!: HTMLElement;
 
   private _titleId = '';
 
@@ -146,7 +150,7 @@ export class ItModal extends BaseComponent {
    * announcement, exactly as it was when focus landed on the dialog.
    */
   private _entryPoint(): HTMLElement | null {
-    return this._contentElement ?? this._modalElement;
+    return this.defaultFocusClose ? this._closeButton : (this._contentElement ?? this._modalElement);
   }
 
   disconnectedCallback(): void {

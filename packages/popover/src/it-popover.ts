@@ -116,6 +116,7 @@ export class ItPopover extends BaseComponent {
     if (!this._arrowElement) {
       this._arrowElement = document.createElement('div');
       this._arrowElement.className = 'arrow';
+      this._arrowElement.part = 'popover-arrow';
       this._contentElement.prepend(this._arrowElement);
     }
   }
@@ -138,7 +139,7 @@ export class ItPopover extends BaseComponent {
           }),
           flip({ mainAxis: !this.noFlip, crossAxis: !this.noFlip }),
           shift({ padding: 8 }),
-          // Commentato perchè nella toolbar con dropdown che ha position absolute, vogliamo il min-width impostato da css con var(--bsi-dropdown-min-width)
+          // Commentato perchè nella toolbar con dropdown che ha position absolute, vogliamo il min-width impostato da css con var(--<prefix>dropdown-min-width)
           // size({
           //   apply({ rects, elements }) {
           //     Object.assign(elements.floating.style, {
