@@ -1,0 +1,54 @@
+---
+'@italia/accordion': patch
+'@italia/alert': patch
+'@italia/autocomplete': patch
+'@italia/avatar': patch
+'@italia/back': patch
+'@italia/back-to-top': patch
+'@italia/bottom-nav': patch
+'@italia/breadcrumbs': patch
+'@italia/button': patch
+'@italia/callout': patch
+'@italia/card': patch
+'@italia/carousel': patch
+'@italia/checkbox': patch
+'@italia/chip': patch
+'@italia/collapse': patch
+'@italia/dev-kit-italia': patch
+'@italia/dimmer': patch
+'@italia/dropdown': patch
+'@italia/forward': patch
+'@italia/globals': patch
+'@italia/header': patch
+'@italia/hero': patch
+'@italia/i18n': patch
+'@italia/icon': patch
+'@italia/input': patch
+'@italia/megamenu': patch
+'@italia/modal': patch
+'@italia/navscroll': patch
+'@italia/notification': patch
+'@italia/pagination': patch
+'@italia/popover': patch
+'@italia/progress': patch
+'@italia/radio': patch
+'@italia/rating': patch
+'@italia/section': patch
+'@italia/select': patch
+'@italia/skiplinks': patch
+'@italia/stepper': patch
+'@italia/sticky': patch
+'@italia/tabs': patch
+'@italia/test-config': patch
+'@italia/thumbnav': patch
+'@italia/timeline': patch
+'@italia/toggle': patch
+'@italia/toolbar': patch
+'@italia/tooltip': patch
+'@italia/transfer': patch
+'@italia/typescript-config': patch
+'@italia/upload': patch
+'@italia/video': patch
+---
+
+Fixed release packaging
