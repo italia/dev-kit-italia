@@ -1,5 +1,14 @@
 # @italia/progress
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- [#512](https://github.com/italia/dev-kit-italia/pull/512) [`90a6bbc`](https://github.com/italia/dev-kit-italia/commit/90a6bbc8ff111be3c8c842a3e81040cc5576ea0d) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fixed `it-progress[type="donut"]` ignoring the semantic `color` variants (`default`, `success`, `info`, `warning`, `danger`), which all collapsed onto the same color. Each variant now maps to the same design token the matching Progress Bar variant uses, and the resulting color is exposed as the `--it-progress-donut-color` custom property for per-instance customization
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
 ## 1.0.0-beta.2
 
 ### Patch Changes
