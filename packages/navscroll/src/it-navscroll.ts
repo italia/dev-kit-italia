@@ -492,10 +492,14 @@ export class ItNavscroll extends BaseComponent {
       const progress = Math.min(elapsed / duration, 1);
       const value = startY + distance * easeInOutSine(progress);
 
+      // `behavior: 'instant'` è obbligatorio: bootstrap-italia imposta
+      // `scroll-behavior: smooth` su :root, quindi ogni assegnazione di posizione
+      // farebbe partire una propria animazione nativa. Ne partirebbe una per frame
+      // e il browser inseguirebbe un bersaglio mobile, senza mai arrivarci.
       if (isScrollableContainer) {
-        container!.scrollTop = value;
+        container!.scrollTo({ top: value, behavior: 'instant' });
       } else {
-        window.scrollTo(0, value);
+        window.scrollTo({ top: value, behavior: 'instant' });
       }
 
       if (progress < 1) {
