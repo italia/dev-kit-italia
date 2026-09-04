@@ -5,12 +5,11 @@ import * as Stories from './it-notification.stories';
 
 <Title of={Stories} />
 
-<description>Messaggio di testo a comparsa per informare l'utente di eventi, aggiornamenti o azioni che richiedono la sua attenzione</description>
+<description>Messaggio di testo a comparsa per informare l'utente di eventi, aggiornamenti o azioni che richiedono la sua attenzione.</description>
 
 ## Cosa fa
 
-Usa il componente notification, in italiano notifica, per aggiornare l'utente su modifiche o aggiornamenti minori all'interno dell'applicazione.
-Questi messaggi temporanei appaiono in sovrimpressione e tendono a scomparire dopo pochi secondi, quindi potrebbero non essere sempre notati o letti attentamente.
+Il componente Notification (`it-notification`), mostra messaggi temporanei in sovrimpressione per informare l’utente su aggiornamenti, modifiche o azioni avvenute sul sito o servizio. Questi messaggi tendono a scomparire dopo pochi secondi, quindi potrebbero non essere sempre notati o letti attentamente.
 
 [Approfondisci come e quando usare il componente Notification](https://designers.italia.it/design-system/componenti/notifications/)
 
@@ -27,89 +26,89 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Indicazioni generali
 
-Lo stato naturale dell'elemento è invisibile.
-Gli esempi di questa pagina sono stati resi statici per facilitare un confronto fra le varie tipologie.
+Lo stato predefinito dell'elemento è invisibile. Gli esempi di questa pagina sono stati resi statici per facilitare un confronto fra le varie tipologie.
 
-Passa alla sezione [Attivazione tramite codice](#attivazione-tramite-codice) per vedere gli esempi di notifica funzionanti.
+Per vedere esempi di notifiche interattive, fai riferimento agli [esempi della sezione Attivazione tramite codice](#attivazione-tramite-codice).
 
 ## Accessibilità
 
-Il componente utilizza il tag `h2` per il titolo delle notifiche per impostazione predefinita.
-Utilizza il tag `h` corretto a seconda del contesto.
-Usa l'attributo `heading-level` per impostarlo.
+Il componente usa un tag `h2` per il titolo delle notifiche come impostazione predefinita. Assicurati di impostare il tag `h` corretto a seconda del contesto in cui usi il componente, tramite l'attributo `heading-level`.
 
-Il componente si occupa automaticamente di impostare e gestire gli attributi necessari per l'accessibilità, sia `role` che `aria-hidden`.
+Il componente gestisce automaticamente gli attributi `role` e `aria-hidden`, necessari per l’accessibilità.
 
 ## Testo supplementare
 
-Puoi aggiungere un breve testo al di sotto del titolo utilizzando un tag `<p>`.
+Per aggiungere un breve testo descrittivo al di sotto del titolo della notifica, usa un tag `<p>`.
 
 <Canvas of={Stories.ConMessaggio} />
 
 ## Pulsante di chiusura
 
-Le notifiche con pulsante di chiusura non vengono nascoste dopo un intervallo di tempo ma vengono chiuse solo quando si clicca sul rispettivo pulsante di chiusura.
+Le notifiche con pulsante di chiusura non scompaiono automaticamente, ma restano visibili finché l’utente non le chiude.
 
-Utilizza un attributo aggiuntivo `dismissable` per ottenere questo comportamento.
+Per aggiungere un pulsante di chiusura e abilitare questo comportamento, usa l'attributo `dismissable`.
 
 <Canvas of={Stories.Eliminabili} />
 
 ## Stati
 
-Alle notifiche possono essere applicati attributi aggiuntivi che ne determinano lo stato modificando il colore delle icone e del bordo.
-Utilizza l'attributo `status` con uno di questi valori:
+Puoi configurare lo stato della notifica per modificarne l’aspetto, inclusi colore dell’icona e bordo.
 
-* `success` - per messaggi di procedure andate a buon fine
-* `error` - per messaggi di errore
-* `info` - per info generiche
-* `warning` - per messaggi di precauzione
+Usa l'attributo `status` con uno di questi valori:
+
+* `success`, per messaggi elativi ad azioni completate correttamente;
+* `error`, per messaggi di errore;
+* `info`, per info generiche;
+* `warning`, per messaggi di avviso o precauzione.
 
 <Canvas of={Stories.Stati} />
 
 ## Posizione
 
-La posizione predefinita delle notifiche è nella parte destra inferiore della finestra.
-
-Utilizzando gli attributi aggiuntivi di posizione fissa elencati di seguito la notifica verrà posizionata a filo di uno dei margini indicati,
-modificando l'arrotondamento degli angoli di conseguenza.
+Puoi mostrare le notifiche in diverse posizioni della finestra tramite gli attributi di posizionamento del componente.
 
 <it-callout variant="warning" heading-level="h3">
   <span slot="title">Posizione su mobile</span>
-  <p>Questi attributi non influenzano il posizionamento su device mobile, in questo caso la Notification è sempre a piede della finestra e ne occupa tutta la larghezza</p>
+  <p>Su mobile, le notifiche appaiono sempre in basso e occupano tutta la larghezza della finestra.</p>
 </it-callout>
 
 ### Posizione predefinita
 
-Posizionamento predefinito della notifica.
+Per impostazione predefinita, la notifica appare nell’angolo inferiore destro della finestra.
 
 <Canvas of={Stories.PosizionePredefinita} />
 
 ### Posizione fissa
 
-Esempi delle quattro posizioni fisse possibili.
+Se vuoi fissare la notifica a uno dei margini della finestra, valorizza l'attributo `fix` con:
+
+- `top`, per fissarla in alto;
+- `bottom`, per fissarla in basso;
+- `left`, per fissarla a sinistra;
+- `right`, per fissarla a destra.
+
+Il componente adatta automaticamente il posizionamento e l’arrotondamento degli angoli in base al valore impostato.
 
 <Canvas of={Stories.PosizioneFissa} />
 
 ## Attivazione tramite codice
 
-Puoi mostrare una notifica chiamando il metodo `show` di un elemento `it-notification`.
-Puoi passare come parametro il valore in millisecondi di permanenza della notifica.
-Se non viene specificato viene usato il valore dell'attributo `timeout`, oppure viene usato il valore predefinito di 3 secondi.
-
-Trovi qui sotto due esempi su come usare le notifiche.
+Puoi mostrare una notifica chiamando il metodo `show` su un elemento `it-notification`.
 
 ### Notifiche a scomparsa automatica
 
-Questo è il comportamento di default che ottieni quando non imposti l'attributo `dismissable`.
+Se **non** imposti l’attributo `dismissable`, la notifica si chiude automaticamente dopo un intervallo di tempo.
+
+La durata predefinita è di 3000 millisecondi (3 secondi). Per modificarla, passa un valore in millisecondi all'attributo `timeout` oppure al metodo `show()`.
 
 <Canvas of={Stories.Attivazione} />
 
 ### Notifiche a scomparsa manuale
 
-Questo è un esempio di come rimuovere manualmente le notifiche quando imposti l'attributo `dismissable`.
-Il click sul pulsante di chiusura interno alla notifica è automaticamente configurato per nasconderla.
+Se imposti l’attributo `dismissable`, la notifica non si chiude automaticamente e resta visibile fino alla chiusura manuale da parte dell'utente. Il pulsante di chiusura interno alla notifica è già configurato per nasconderla.
 
-Puoi inoltre controllarne la chiusura dall'esterno programmaticamente, chiamando il metodo `hide` dell'elemento `it-notification`.
+Puoi anche chiudere la notifica tramite altri elementi della pagina, chiamando il metodo `hide()` sull’elemento it-notification.
+
 
 <Canvas of={Stories.AttivazioneEdEliminazione} />
 
@@ -131,9 +130,9 @@ notification.addEventListener('it-notification-close', (e) => {
 
 ## Personalizzazione degli stili
 
-Per personalizzare gli stili del componente puoi usare il selettore `::part` passando i seguenti valori:
+Per personalizzare gli stili, usa i selettori `::part` dedicati:
 
-- `notification` - per personalizzare il contenitore principale
-- `title` - per personalizzare il titolo
+- `notification`, per personalizzare il contenitore principale;
+- `title`, per personalizzare il titolo
 
-[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)

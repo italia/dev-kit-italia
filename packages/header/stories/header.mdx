@@ -5,17 +5,17 @@ import * as HeaderStories from './header.stories';
 
 # Header
 
-<description>Area di intestazione principale di un sito o servizio che presenta l'identità visiva e il menu di navigazione primaria</description>
+<description>Area di intestazione principale di un sito o servizio che presenta l'identità visiva e il menu di navigazione primaria.</description>
 
 ## Cosa fa
 
-Permette di gestire l'intestazione principale di un sito o servizio, e gestisce automaticamente la visualizzazione mobile/desktop dell'header, mostrando o nascondendo le parti che lo compongono a seconda della dimensione dello schermo.
+Il componente Header rappresenta l'intestazione principale di un sito o servizio. Ospita gli elementi di identità visiva e gli strumenti di navigazione che consentono agli utenti di orientarsi e riconoscere il servizio.
 
-L'header di un sito della Pubblica Amministrazione è solitamente composto da 3 elementi principali:
+Un header è composto da 3 elementi principali, che vengono mostrati o nascosti a seconda della dimensione dello schermo:
 
-- **Slim Header**: una sottile fascia dello stesso colore o, preferibilmente, di colore lievemente diverso rispetto al tema principale del sito, che mostra appartenenza e alcuni link funzionali con impatto globale o esterno al sito stesso.
-- **Header Centrale**: che identifica in modo chiaro il sito attraverso logo, testo e social, e può contenere un link per effettuare ricerche sul sito.
-- **Header Nav**: dedicato alla navigazione, visibile su schermi di grandi dimensioni e attraverso il classico pulsante di tipo "burger menu" su dispositivi mobili.
+- **Slim header**, una fascia sottile di colore lievemente diverso rispetto al tema principale del sito, che può contenere link secondari, la funzionalità di cambio lingua e il pulsante di accesso a un'area riservata;
+- **Header centrale**, raccoglie gli elementi identificativi del sito o servizio, come il logo e il titolo, oltre ai collegamenti ai social media e alla funzionalità di ricerca;
+- **Header nav**, contiene le voci di navigazione interna al sito e viene sostituito da un burger menu su dispositivi mobili.
 
 [Approfondisci quando e come usare il componente Header](https://designers.italia.it/design-system/componenti/header/)
 
@@ -30,21 +30,21 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Informazioni generali
 
-Non è consigliato modificare il valore dell'attributo `breakpoint` del componente `<it-header>`, che di default è impostato a `lg` (992px), in quanto è stato studiato per adattarsi al meglio alla maggior parte dei siti della PA ed è coerente con le regole css di visibilità dei vari elementi che compongono l'header (es: il menu di navigazione principale è nascosto su schermi più piccoli di `lg`).
-Se vuoi implementare un breakpoint personalizzato, assicurati di modificare anche le regole css di visibilità dei vari elementi dell'header, in modo da mantenere una coerenza tra il breakpoint di attivazione del menu mobile e la visualizzazione degli elementi che lo compongono.
+L'attributo `breakpoint` del componente `<it-header>` ha come valore predefinito `lg` (992px). Mantieni questo valore per garantire un comportamento ottimale nella maggior parte dei siti della Pubblica Amministrazione e per preservare la coerenza con le regole CSS che gestiscono la visibilità degli elementi dell'header. Con una larghezza dello schermo inferiore a `lg`, l'header nasconde il menu di navigazione principale e utilizza la navigazione mobile.
+
+Se vuoi implementare un breakpoint personalizzato, assicurati di modificare anche le regole css di visibilità dei vari elementi dell'header. In questo modo manterrai coerenza tra il breakpoint di attivazione del menu mobile e la visualizzazione degli elementi che lo compongono.
 
 
 ## Accessibilità
-Considerando l'importanza dell'Header per la navigazione, si ricorda di porre particolare attenzione all'utilizzo della corretta semantica HTML, alle etichette e agli attributi ARIA, oltre a validare e testare sempre con utenti il risultato.
+L'header è un elemento fondamentale per la navigazione: presta particolare attenzione alla corretta semantica HTML, all'utilizzo delle etichette e degli attributi ARIA. Valida e testa sempre con gli utenti la soluzione adottata.
 
-Il titolo del sito, "Nome dell'Istituzione" negli esempi, è contenuto in un `<div>` generico e non un tag `<h1>` per evitare conflitti con gli `<h1>` presenti nelle singole pagine.
-Nel caso in cui la home page fosse priva di un titolo (es: il primo contenuto in pagina è una notizia in evidenza) si può inserire in pagina un `<h1 class="visually-hidden">` non visibile con l'apposita classe `.visually-hidden`, in modo che sia visibile ai lettori di schermo.
+Il titolo del sito, indicato come "Nome dell'Istituzione" negli esempi, è contenuto in un elemento `<div>` generico e non in un tag `<h1>`, per evitare conflitti con gli `<h1>` presenti nelle singole pagine.
 
-Questa soluzione sarà anche utile a dare focus direttamente al tag `<h1>` laddove siano presenti [skiplinks](?path=/docs/componenti-skiplinks--documentazione) che permettano agli utenti che navigano da tastiera o con tecnologie assistive di saltare i contenuti dell'Header.
+Se la homepage non presenta un titolo (ad esempio, quando il primo contenuto della pagina è una notizia in evidenza), inserisci un `<h1 class="visually-hidden">` nascosto visivamente tramite la classe `.visually-hidden`, così da renderlo disponibile ai lettori di schermo. Questa soluzione consente agli utenti che navigano da tastiera o tramite tecnologie assistive di raggiungere direttamente il titolo della pagina attraverso gli [skiplinks](?path=/docs/componenti-skiplinks--documentazione), evitando di dover attraversare i contenuti dell'Header.
 
 
-## Slim Header
-Lo Slim Header mostra un'intestazione, solitamente con riferimento all'ente di appartenenza del progetto o riferimenti utili, oltre ad un eventuale menu per il cambio lingua e l'accesso ad area riservata.
+## Slim header
+Lo Slim header mostra un'intestazione, solitamente l'indicazione dell'ente di appartenenza del progetto, un eventuale menu per il cambio lingua e il pulsante di accesso all'area riservata.
 
 Il cambio lingua è gestito con il componente `it-dropdown`.
 
@@ -52,10 +52,10 @@ Il cambio lingua è gestito con il componente `it-dropdown`.
 
 
 ### Zona destra con pulsante full-responsive
-Il pulsante di *action* situato nella zona destra dell'Header Slim (nell'elemento con classe `.it-header-slim-right-zone`), può essere sia un link sia un pulsante di tipo `<it-button>`.
+Il pulsante è situato nella zona destra dello Slim header, nell'elemento con classe `.it-header-slim-right-zone`. Può essere sia un link che un pulsante di tipo `<it-button>`.
 
-Per applicargli l'aspetto *full-responsive*, a seconda dei due casi puoi:
-- se un link, applicare la classe `.btn-full`:
+Per ottenere l'aspetto *full-responsive*:
+- se è un link, applica la classe `.btn-full`;
 ```html
 <a href="#" class="btn btn-primary btn-icon btn-full">
   <span class="rounded-icon">
@@ -64,7 +64,7 @@ Per applicargli l'aspetto *full-responsive*, a seconda dei due casi puoi:
   <span class="d-none d-lg-block">Accedi all'area personale</span>
 </a>
 ```
-- se è un componente di tipo `it-button` aggiungere l'attributo `full`:
+- se è un componente di tipo `it-button`, aggiungi l'attributo `full`.
 ```html
 <it-button variant="primary" full>
   <span class="rounded-icon">
@@ -76,39 +76,39 @@ Per applicargli l'aspetto *full-responsive*, a seconda dei due casi puoi:
 <Canvas of={HeaderStories.SlimHeaderActionFull} />
 
 ### Versione chiara
-Per cambiare tema all’Header Slim è sufficiente aggiungere la classe `theme-light` al tag`<div class="it-header-slim-wrapper">`.
+Per cambiare tema allo Slim header, aggiungi la classe `theme-light` al tag`<div class="it-header-slim-wrapper">`.
 
 <Canvas of={HeaderStories.SlimHeaderLight} />
 
-## Header Centrale
-L'Header Centrale mostra il logo dell’ente e la sua descrizione, i link aggiuntivi ai social media ed eventualmente l’accesso al motore di ricerca, se presente.
+## Header centrale
+L'Header centrale mostra il logo dell’ente e la sua intestazione, i link ai social media e l'icona per aprire la funzionalità di ricerca, se presente.
 
 <Canvas of={HeaderStories.HeaderCenter} />
 
 ### Versione compatta
-Per utilizzare la versione più compatta in altezza dell’header centrale, puoi aggiungere la classe `it-small-header` al tag `<div class="it-header-center-wrapper">`.
+Per utilizzare la versione più compatta in altezza dell’Header centrale, aggiungi la classe `it-small-header` al tag `<div class="it-header-center-wrapper">`.
 
 <Canvas of={HeaderStories.HeaderCenterCompact} />
 
 ### Versione chiara
-Per cambiare tema all’header centrale puoi aggiungere la classe `theme-light` al tag `<div class="it-header-center-wrapper">`.
+Per cambiare tema all’Header centrale, aggiungi la classe `theme-light` al tag `<div class="it-header-center-wrapper">`.
 
 <Canvas of={HeaderStories.HeaderCenterLight} />
 
 
-## Header Nav
-L'Header Nav mostra il menu di navigazione principale del sito, e può essere costituito da semplici link, pulsanti con [Dropdown](?path=/docs/componenti-dropdown--documentazione) e [Megamenu](?path=/docs/componenti-megamenu--documentazione).
+## Header navigazione
+L'Header navigazione contiene il menu di navigazione principale del sito. Può includere semplici link oppure pulsanti con [Dropdown](?path=/docs/componenti-dropdown--documentazione) e [Megamenu](?path=/docs/componenti-megamenu--documentazione).
 
 <Canvas of={HeaderStories.HeaderNav} />
 
 ### Temi colore disponibili
-I’Header Nav ha due temi colore:
-- uno di default uguale al **colore primario** del sito
-- un chiaro (“light”)
+L’Header navigazione ha due temi colore:
+- uno di default uguale al **colore primario** del sito;
+- uno chiaro (“light”).
 
-Su **mobile** lo stile del menu è sempre uguale, indifferentemente dal tema scelto: ha un **background bianco e testi e link di colore primario**.
+Su **mobile** lo stile del menu è sempre uguale, indipendentemente dal tema scelto: ha un **background bianco e testi e link di colore primario**.
 
-Per modificare il tema dell’Header Nav e impostarlo alla versione chiara, è sufficiente aggiungere la classe `theme-light` al tag `<nav class="it-header-navbar-wrapper">`:
+Per modificare il tema dell’Header navigazione e impostarlo alla versione chiara, aggiungi la classe `theme-light` al tag `<nav class="it-header-navbar-wrapper">`:
 
 ```html
 <nav class="it-header-navbar-wrapper theme-light">...</nav>
@@ -116,19 +116,19 @@ Per modificare il tema dell’Header Nav e impostarlo alla versione chiara, è s
 
 <br/>
 
-#### Header Nav standard (default)
+#### Header navigazione standard (default)
 <Canvas of={HeaderStories.HeaderNav} />
 
-#### Header Nav desktop chiara
+#### Header navigazione desktop chiaro
 <Canvas of={HeaderStories.HeaderNavDesktopLight} />
 
 ### Navigazione secondaria
-Al menu di navigazione principale puoi aggiungere anche un menu di navigazione secondario includendo in `.menu-wrapper` una seconda lista `<ul>` con classe `.navbar-nav.navbar-secondary` e la stessa struttura dati della lista `.navbar-nav` principale.
+Per aggiungere un menu di navigazione secondaria, includi in `.menu-wrapper` una seconda lista `<ul>` con classe `.navbar-nav.navbar-secondary` e la stessa struttura dati della lista `.navbar-nav` principale.
 <Canvas of={HeaderStories.HeaderNavSecondary} />
 
-## Header Completa
+## Header completa
 
-L'anteprima mostra la struttura HTML statica dell'header completo. Per abilitare la **navigazione mobile interattiva** (menu burger) devi wrappare l'intera struttura con il componente `<it-header>`, che gestisce automaticamente la transizione tra layout desktop e mobile creando una modale di navigazione al di sotto del breakpoint configurato.
+L'anteprima mostra la struttura HTML statica dell'header completo. Per abilitare la **navigazione mobile interattiva** (menu burger), racchiudi l'intera struttura nel componente `<it-header>`. Il componente gestisce automaticamente la transizione tra il layout desktop e quello mobile, creando una modale di navigazione quando si raggiunge il breakpoint configurato.
 
 La classe `.it-header-wrapper` va applicata al tag `<header>` semantico interno a `<it-header>`:
 
@@ -148,17 +148,9 @@ Nella versione light è consigliabile aggiungere la classe `.it-shadow` al tag `
 <Canvas of={HeaderStories.HeaderFullLight} />
 
 
-### Tema dell'Header Centrale nella modale mobile
+### Tema della modale mobile
 
-Puoi usare l'attributo `modal-header-theme` sul componente `<it-header>` per forzare il tema della testata della modale di navigazione mobile.
-
-Di defualt, il tema della testata della modale coincide con il tema dell'Header Centrale, ma se vuoi forzare un tema specifico indipendentemente da quello dell'Header Centrale, puoi usare questo attributo.
-
-Valori supportati:
-- `dark`
-- `light`
-
-Se l'attributo non è valorizzato, il comportamento resta quello di default: il colore della testata della modale rimane coerente con il tema dell'Header Centrale.
+Di default, la testata della modale utilizza lo stesso tema dell'Header centrale. Se vuoi impostare un tema specifico, usa l'attributo `modal-header-theme` sul componente `<it-header>` con il valore `dark` o `light`.
 
 Esempio:
 
@@ -172,35 +164,35 @@ Esempio:
 
 ### Comportamento su mobile (sotto il breakpoint)
 
-Quando la larghezza della viewport scende sotto il valore predefinito per l'attributo `breakpoint`, `<it-header>` passa dalla modalità inline a quella mobile. In automatico viene creata una modale laterale `<it-modal>`, contenente una copia del menu di navigazione.
+Quando la larghezza viewport scende sotto il valore di `breakpoint` predefinito, `<it-header>` passa dalla modalità inline a quella mobile e crea automaticamente una modale laterale (`it-modal`) che contiene una copia strutturata della navigazione.
 
 Durante la transizione, il componente clona e inserisce nella modale i seguenti elementi (se presenti) in ordine:
 
-- `.it-brand-wrapper` nello slot `header` della modale, se l'attributo `hide-header-brand` non è attivo;
-- `.it-header-navbar-wrapper nav` che comprende:
-    - menu principale
-    - menu secondario (se presente), a cui viene aggiunta la classe `.secondary`
-- la lista di collegamenti presente in  `.it-header-slim-wrapper ul`, a cui vengono aggiunte le classi `secondary` e `header-slim-menu`.
-- il blocco social `.it-socials`
+- il `brand wrapper` (`.it-brand-wrapper`) nello slot `header` della modale (se `hide-header-brand` non è attivo);
+- il `nav` principale (`.it-header-navbar-wrapper nav`) con tutte le liste `.menu-wrapper > ul`:
+  - prima la lista principale;
+  - poi eventuali liste successive (es: menu secondario) a cui aggiunge la classe `secondary`.
+- il menu dello Slim header (`.it-header-slim-wrapper ul`), a cui assegna le classi `secondary header-slim-menu`;
+- il blocco social (`.it-socials`).
 
 Nel menu mobile quindi gli elementi sono ordinati in questo modo:
 
-1. Header della modale con il brand, se visibile.
-2. Il contenuto della modale, nello slot `content`.
-3. All'interno del contenuto, `nav.modal-nav`.
-4. Dentro `nav.modal-nav`, le liste della navbar nell'ordine originale e a seguire i collegamenti presenti nell'header slim.
-5. La lista dei collegamenti social.
+1. header della modale con brand (se non nascosto);
+2. contenuto modale (`slot="content"`);
+3. dentro al contenuto: `nav.modal-nav`;
+4. dentro al `nav.modal-nav`: liste del nav principale (in ordine), poi il menu dello Slim header;
+5. in coda al contenuto, i social.
 
 Quando la viewport supera la dimensione prevista dall'attributo `breakpoint`, la modale viene rimossa.
 
 
-## Header Sticky
-Per rendere sticky l'header durante lo scroll della pagina, wrappa l'intera struttura con il componente `<it-sticky>`.
+## Header sticky
+Per rendere sticky l'header durante lo scroll della pagina, racchiudi l'intera struttura con il componente `<it-sticky>`.
 
-In questo caso la classe `.it-header-wrapper` (e `it-header-sticky`) va spostata su `<it-sticky>` — e **non** sul tag `<header>` interno:
+In questo caso, sposta le classi `.it-header-wrapper` e `it-header-sticky` su `<it-sticky>`, e **non** sul tag `<header>` interno.
 
 Ricordati di:
-- aggiungere l'attributo `sticky-class-name="is-sticky"` per applicare la classe `is-sticky` quando l'header diventa sticky, in modo da poter gestire eventuali stili specifici per questo stato.
+- aggiungere l'attributo `sticky-class-name="is-sticky"` per applicare la classe `is-sticky` quando l'header diventa sticky, in modo da poter gestire eventuali stili specifici per questo stato;
 - aggiungere l'attributo `trigger-selector` con l'`id` dell'`<it-header>` interno, in modo che lo sticky si attivi solo dopo che l'intero header ha superato il bordo superiore della viewport (e non immediatamente al primo pixel di scroll).
 
 Esempio:
@@ -215,7 +207,7 @@ Esempio:
 </it-sticky>
 ```
 
-[Vai all'esempio per questa funzionalità](?path=/story/esempi-header--header-sticky)
+[Consulta un esempio di questa funzionalità](?path=/story/esempi-header--header-sticky)
 
-Per maggiori dettagli su come utilizzare il componente `it-sticky` e le sue funzionalità, consulta la [documentazione dedicata](?path=/docs/componenti-sticky--documentazione).
+[Approfondisci le specifiche del componente Sticky](?path=/docs/componenti-sticky--documentazione)
 
