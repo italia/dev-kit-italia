@@ -164,9 +164,9 @@ Esempio:
 
 ### Comportamento su mobile (sotto il breakpoint)
 
-Quando la larghezza viewport scende sotto il valore di `breakpoint` default `991`, `<it-header>` passa dalla modalità inline a quella mobile e crea automaticamente una modale laterale (`it-modal`) che contiene una copia strutturata della navigazione.
+Quando la larghezza viewport scende sotto il valore di `breakpoint` predefinito, `<it-header>` passa dalla modalità inline a quella mobile e crea automaticamente una modale laterale (`it-modal`) che contiene una copia strutturata della navigazione.
 
-Durante questa transizione, il componente **clona** e inserisce nella modale questi elementi in questo ordine (se presenti):
+Durante la transizione, il componente clona e inserisce nella modale i seguenti elementi (se presenti) in ordine:
 
 - il `brand wrapper` (`.it-brand-wrapper`) nello slot `header` della modale (se `hide-header-brand` non è attivo);
 - il `nav` principale (`.it-header-navbar-wrapper nav`) con tutte le liste `.menu-wrapper > ul`:
@@ -175,7 +175,7 @@ Durante questa transizione, il componente **clona** e inserisce nella modale que
 - il menu dello Slim header (`.it-header-slim-wrapper ul`), a cui assegna le classi `secondary header-slim-menu`;
 - il blocco social (`.it-socials`).
 
-L'ordine finale nel menu laterale è il seguente:
+Nel menu mobile quindi gli elementi sono ordinati in questo modo:
 
 1. header della modale con brand (se non nascosto);
 2. contenuto modale (`slot="content"`);
@@ -183,7 +183,7 @@ L'ordine finale nel menu laterale è il seguente:
 4. dentro al `nav.modal-nav`: liste del nav principale (in ordine), poi il menu dello Slim header;
 5. in coda al contenuto, i social.
 
-Questo comportamento è automatico: tornando sopra breakpoint, la modale viene rimossa e l'header torna alla composizione desktop originale.
+Quando la viewport supera la dimensione prevista dall'attributo `breakpoint`, la modale viene rimossa.
 
 
 ## Header sticky

@@ -1,3 +1,4 @@
+@use 'bootstrap-italia/src/scss/base/config' as *;
 it-toggle {
   --it-host-display: block;
   display: var(--it-host-display);

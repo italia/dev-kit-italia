@@ -93,7 +93,7 @@ describe('it-breadcrumbs component', () => {
 
       const listItem = currentItem.shadowRoot?.querySelector('li');
       expect(listItem?.classList.contains('active')).to.be.true;
-      expect(listItem?.getAttribute('aria-current')).to.equal('page');
+      expect(currentItem?.getAttribute('aria-current')).to.equal('page');
     });
 
     it('handles custom separators', async () => {

@@ -1,7 +1,11 @@
 /// <reference types="mocha"/>
 
 import '@italia/toolbar';
-import { expect, fixture, html } from '@open-wc/testing';
+import '@italia/button';
+import '@italia/dropdown';
+import '@italia/popover';
+import { expect, fixture, html, oneEvent } from '@open-wc/testing';
+import { type LitElement } from 'lit';
 
 import { type ItToolbar } from '@italia/toolbar';
 
@@ -10,8 +14,8 @@ describe('Toolbar component', () => {
     it('default is accessible', async () => {
       const el = await fixture<ItToolbar>(html`
         <it-toolbar>
-          <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
+          <it-toolbar-item active label="Link 1" href="#"></it-toolbar-item>
+          <it-toolbar-item active label="Link 2" href="#"></it-toolbar-item>
         </it-toolbar>
       `);
       await expect(el).to.be.accessible();
@@ -21,10 +25,10 @@ describe('Toolbar component', () => {
       const el = await fixture<ItToolbar>(html`
         <div>
           <it-toolbar size="md" it-aria-label="Toolbar 1">
-            <li><a href="#">Link 1</a></li>
+            <it-toolbar-item active label="Link 1" href="#"></it-toolbar-item>
           </it-toolbar>
           <it-toolbar size="sm" it-aria-label="Toolbar 2">
-            <li><a href="#">Link 2</a></li>
+            <it-toolbar-item active label="Link 2" href="#"></it-toolbar-item>
           </it-toolbar>
         </div>
       `);
@@ -34,8 +38,8 @@ describe('Toolbar component', () => {
     it('vertical orientation is accessible', async () => {
       const el = await fixture<ItToolbar>(html`
         <it-toolbar orientation="vertical">
-          <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
+          <it-toolbar-item active label="Link 1" href="#"></it-toolbar-item>
+          <it-toolbar-item active label="Link 2" href="#"></it-toolbar-item>
         </it-toolbar>
       `);
       await expect(el).to.be.accessible();
@@ -44,9 +48,9 @@ describe('Toolbar component', () => {
     it.skip('with dividers is accessible', async () => {
       const el = await fixture<ItToolbar>(html`
         <it-toolbar>
-          <li><a href="#">Link 1</a></li>
-          <li class="toolbar-divider" role="separator" aria-orientation="vertical"><span></span></li>
-          <li><a href="#">Link 2</a></li>
+          <it-toolbar-item active label="Link 1" href="#"></it-toolbar-item>
+          <it-toolbar-item divider></it-toolbar-item>
+          <it-toolbar-item active label="Link 2" href="#"></it-toolbar-item>
         </it-toolbar>
       `);
       await expect(el).to.be.accessible();
@@ -55,8 +59,8 @@ describe('Toolbar component', () => {
     it('with custom aria label is accessible', async () => {
       const el = await fixture<ItToolbar>(html`
         <it-toolbar it-aria-label="Toolbar custom">
-          <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
+          <it-toolbar-item active label="Link 1" href="#"></it-toolbar-item>
+          <it-toolbar-item active label="Link 2" href="#"></it-toolbar-item>
         </it-toolbar>
       `);
       await expect(el).to.be.accessible();
@@ -126,12 +130,40 @@ describe('Toolbar component', () => {
     });
   });
 
+  describe('dropdown item', () => {
+    it('toggles the dropdown open and closed on repeated trigger clicks (#430, #384)', async () => {
+      const el = await fixture<ItToolbar>(html`
+        <it-toolbar>
+          <it-toolbar-item dropdown label="Documenti" icon="it-file">
+            <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+          </it-toolbar-item>
+        </it-toolbar>
+      `);
+      const toolbarItem = el.querySelector('it-toolbar-item') as LitElement;
+      await toolbarItem.updateComplete;
+      const dropdown = toolbarItem.shadowRoot!.querySelector('it-dropdown') as LitElement;
+      await dropdown.updateComplete;
+      const button = (dropdown.shadowRoot!.querySelector('it-button') as LitElement).shadowRoot!.querySelector(
+        'button',
+      )!;
+      const popover = dropdown.shadowRoot!.querySelector('it-popover')!;
+
+      button.click();
+      await oneEvent(popover, 'it-popover-open');
+      expect(popover.hasAttribute('open')).to.be.true;
+
+      button.click();
+      await oneEvent(popover, 'it-popover-close');
+      expect(popover.hasAttribute('open')).to.be.false;
+    });
+  });
+
   describe('slot', () => {
     it('should render slotted content', async () => {
       const el = await fixture<ItToolbar>(html`
         <it-toolbar>
-          <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
+          <it-toolbar-item active label="Link 1" href="#"></it-toolbar-item>
+          <it-toolbar-item active label="Link 2" href="#"></it-toolbar-item>
         </it-toolbar>
       `);
       const slot = el.shadowRoot?.querySelector('slot');

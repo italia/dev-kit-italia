@@ -5,8 +5,8 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test Web Components - vanilla-app</title>
-    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
-    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+    <link rel="stylesheet" href="@italia/dev-kit-italia/fonts.css" />
+    <link rel="stylesheet" href="@italia/dev-kit-italia/styles.css" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
@@ -60,6 +60,54 @@
           <it-transfer-item value="y">Voce Y</it-transfer-item>
           <it-transfer-item value="z" target>Voce Z</it-transfer-item>
         </it-transfer>
+
+        <h2>Evento cancelable: Limite di 3 elementi nel target</h2>
+        <it-transfer name="transfer-max-items" id="transfer-cancel-example">
+          <it-transfer-item value="a">Voce A</it-transfer-item>
+          <it-transfer-item value="b">Voce B</it-transfer-item>
+          <it-transfer-item value="c">Voce C</it-transfer-item>
+          <it-transfer-item value="d">Voce D</it-transfer-item>
+          <it-transfer-item value="e">Voce E</it-transfer-item>
+          <it-transfer-item value="f">Voce F</it-transfer-item>
+        </it-transfer>
+        <p role="status" aria-live="polite" id="transfer-cancel-status"></p>
+
+        <script type="module">
+          const el = document.getElementById('transfer-cancel-example');
+          const statusEl = document.getElementById('transfer-cancel-status');
+
+          el.addEventListener('it-transfer', (e) => {
+            if (e.detail.action === 'transfer' && e.detail.target.length > 3) {
+              e.preventDefault();
+              statusEl.textContent = 'Limite di 3 elementi nel target raggiunto.';
+            } else {
+              statusEl.textContent = '';
+            }
+          });
+        </script>
+
+        <h2>Evento cancelable con ripresa asincrona</h2>
+        <it-transfer name="transfer-async" id="transfer-async-example">
+          <it-transfer-item value="a">Voce A</it-transfer-item>
+          <it-transfer-item value="b">Voce B</it-transfer-item>
+          <it-transfer-item value="c">Voce C</it-transfer-item>
+          <it-transfer-item value="d">Voce D</it-transfer-item>
+        </it-transfer>
+        <p role="status" aria-live="polite" id="transfer-async-status" style="margin-top: 1rem;"></p>
+
+        <script type="module">
+          const el = document.getElementById('transfer-async-example');
+          const statusEl = document.getElementById('transfer-async-status');
+
+          el.addEventListener('it-transfer', (e) => {
+            e.preventDefault();
+            statusEl.textContent = 'Attendere conferma…';
+            setTimeout(() => {
+              el.commit(e.detail);
+              statusEl.textContent = '';
+            }, 1000);
+          });
+        </script>
       </main>
       <div id="app-footer"></div>
       <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>

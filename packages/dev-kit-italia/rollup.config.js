@@ -27,7 +27,7 @@ export default [
     output: {
       dir: 'dist',
       sourcemap: true,
-      output: { file: 'styles.js', format: 'esm' },
+      format: 'esm',
     },
     plugins: [
       resolve(),
@@ -48,16 +48,15 @@ export default [
         fileName: 'styles.css',
         outputStyle: 'compressed',
         quietDeps: true,
-        silenceDeprecations: ['import'],
       }),
     ],
   },
   {
-    input: 'src/full.js',
+    input: 'src/styles-for-migration.js',
     output: {
       dir: 'dist',
       sourcemap: true,
-      output: { file: 'full.js', format: 'esm' },
+      format: 'esm',
     },
     plugins: [
       resolve(),
@@ -75,7 +74,7 @@ export default [
         // flatten: false, // Mantiene la struttura interna
       }),
       scss({
-        fileName: 'full.css',
+        fileName: 'styles-for-migration.css',
         outputStyle: 'compressed',
         quietDeps: true,
         silenceDeprecations: ['import', 'if-function'],
@@ -87,7 +86,7 @@ export default [
     output: {
       dir: 'dist',
       sourcemap: true,
-      output: { file: 'fonts.js', format: 'esm' },
+      format: 'esm',
     },
     plugins: [
       resolve(),
@@ -106,6 +105,34 @@ export default [
       }),
       scss({
         fileName: 'fonts.css',
+        outputStyle: 'compressed',
+      }),
+    ],
+  },
+  {
+    input: 'src/fonts-sans-pro.js',
+    output: {
+      dir: 'dist',
+      sourcemap: true,
+      format: 'esm',
+    },
+    plugins: [
+      resolve(),
+      copy({
+        targets: [
+          // gli assets di tutti i packages del monorepo
+          {
+            src: 'assets/fonts/*',
+            dest: 'dist/assets/fonts',
+            //            flatten: true,
+          },
+        ],
+        verbose: true,
+        copyOnce: false,
+        // flatten: false, // Mantiene la struttura interna
+      }),
+      scss({
+        fileName: 'fonts-sans-pro.css',
         outputStyle: 'compressed',
       }),
     ],

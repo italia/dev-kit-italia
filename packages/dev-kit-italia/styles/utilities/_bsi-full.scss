@@ -1,149 +1,148 @@
-// Imported from bsi 3.0.0-alpha.5
+// Imported from bsi 3.0.0-alpha.6
 // Customizations:
 // - removed focus
 
-@import 'design-tokens-italia/dist/css/variables';
+@forward 'design-tokens-italia/dist/css/variables';
 
-@import 'bootstrap-italia/src/scss/base/mixins/banner';
-@include bsBanner('');
+@forward 'bootstrap-italia/src/scss/base/mixins/banner';
 
 // Bootstrap Italia version
-@import 'bootstrap-italia/src/scss/base/version';
+@forward 'bootstrap-italia/src/scss/base/version';
 // ------------------------------
 
 // Functions
-@import 'bootstrap-italia/src/scss/base/functions';
+@forward 'bootstrap-italia/src/scss/base/functions';
 // ------------------------------
 
 // Variables
-@import 'bootstrap-italia/src/scss/base/variables';
+@forward 'bootstrap-italia/src/scss/base/variables';
 // ------------------------------
 
 // Functions, maps and mixins
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/mixins/focus';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/utilities';
+@forward 'bootstrap-italia/src/scss/base/mixins';
+@forward 'bootstrap-italia/src/scss/base/mixins/focus';
+@forward 'bootstrap-italia/src/scss/base/maps';
+@forward 'bootstrap-italia/src/scss/base/utilities';
 // ------------------------------
 
 // Layout
-@import 'bootstrap-italia/src/scss/base/root';
-@import 'bootstrap-italia/src/scss/base/reboot';
-@import 'bootstrap-italia/src/scss/base/containers';
-@import 'bootstrap-italia/src/scss/base/transitions';
+@forward 'bootstrap-italia/src/scss/base/root';
+@forward 'bootstrap-italia/src/scss/base/reboot';
+@forward 'bootstrap-italia/src/scss/base/containers';
+@forward 'bootstrap-italia/src/scss/base/transitions';
 // ------------------------------
 
 // Helpers & utilities
-@import 'bootstrap-italia/src/scss/base/helpers';
-@import 'bootstrap-italia/src/scss/base/utilities/api';
+@forward 'bootstrap-italia/src/scss/base/helpers';
+@forward 'bootstrap-italia/src/scss/base/utilities/api';
 // ------------------------------
 
 // Class utilities
-// @import 'bootstrap-italia/src/scss/utilities/focus';
-@import 'bootstrap-italia/src/scss/utilities/icons';
-@import 'bootstrap-italia/src/scss/utilities/colors';
+// @forward 'bootstrap-italia/src/scss/utilities/focus';
+@forward 'bootstrap-italia/src/scss/utilities/icons';
+@forward 'bootstrap-italia/src/scss/utilities/colors';
 // ------------------------------
 
 // Nav & Header
-@import 'bootstrap-italia/src/scss/components/nav';
-@import 'bootstrap-italia/src/scss/components/navbar';
-@import 'bootstrap-italia/src/scss/components/header';
-@import 'bootstrap-italia/src/scss/components/headerslim';
-// @import 'bootstrap-italia/src/scss/components/headerslimtheme';
-@import 'bootstrap-italia/src/scss/components/headercenter';
-// @import 'bootstrap-italia/src/scss/components/headercentertheme';
-// @import 'bootstrap-italia/src/scss/components/headernavbar';
-// @import 'bootstrap-italia/src/scss/components/headernavbartheme';
-// @import 'bootstrap-italia/src/scss/components/navigationtheme';
+@forward 'bootstrap-italia/src/scss/components/nav';
+@forward 'bootstrap-italia/src/scss/components/navbar';
+@forward 'bootstrap-italia/src/scss/components/header';
+@forward 'bootstrap-italia/src/scss/components/headerslim';
+// @forward 'bootstrap-italia/src/scss/components/headerslimtheme';
+@forward 'bootstrap-italia/src/scss/components/headercenter';
+// @forward 'bootstrap-italia/src/scss/components/headercentertheme';
+// @forward 'bootstrap-italia/src/scss/components/headernavbar';
+// @forward 'bootstrap-italia/src/scss/components/headernavbartheme';
+// @forward 'bootstrap-italia/src/scss/components/navigationtheme';
 // ------------------------------
 
 // Components
-@import 'bootstrap-italia/src/scss/components/avatar';
-@import 'bootstrap-italia/src/scss/components/code';
-@import 'bootstrap-italia/src/scss/components/figcaption';
-@import 'bootstrap-italia/src/scss/components/grid';
-@import 'bootstrap-italia/src/scss/components/gridlist';
-@import 'bootstrap-italia/src/scss/components/images';
-@import 'bootstrap-italia/src/scss/components/linklist';
-@import 'bootstrap-italia/src/scss/components/list';
-@import 'bootstrap-italia/src/scss/components/list-group';
-@import 'bootstrap-italia/src/scss/components/dropdown';
-@import 'bootstrap-italia/src/scss/components/megamenu';
-@import 'bootstrap-italia/src/scss/components/tables';
-@import 'bootstrap-italia/src/scss/components/type';
-@import 'bootstrap-italia/src/scss/components/breadcrumb';
-@import 'bootstrap-italia/src/scss/components/modal';
-@import 'bootstrap-italia/src/scss/components/accordion';
-@import 'bootstrap-italia/src/scss/components/carousel';
-// @import 'bootstrap-italia/src/scss/components/calendar'; Temporarily disabled because not used across the library
-@import 'bootstrap-italia/src/scss/components/alert';
-@import 'bootstrap-italia/src/scss/components/button-group';
-@import 'bootstrap-italia/src/scss/components/buttons';
-@import 'bootstrap-italia/src/scss/components/font';
-@import 'bootstrap-italia/src/scss/components/tab';
-@import 'bootstrap-italia/src/scss/components/cookiebar';
-@import 'bootstrap-italia/src/scss/components/hero';
-@import 'bootstrap-italia/src/scss/components/forward';
-@import 'bootstrap-italia/src/scss/components/back-to-top';
-@import 'bootstrap-italia/src/scss/components/offcanvas'; // Keep?
-@import 'bootstrap-italia/src/scss/components/navigation';
-@import 'bootstrap-italia/src/scss/components/skiplinks';
-@import 'bootstrap-italia/src/scss/components/affix';
-@import 'bootstrap-italia/src/scss/components/sidebar';
-@import 'bootstrap-italia/src/scss/components/bottomnav';
-@import 'bootstrap-italia/src/scss/components/navscroll';
-// @import 'bootstrap-italia/src/scss/components/navscrolltheme';
-@import 'bootstrap-italia/src/scss/components/callout';
-@import 'bootstrap-italia/src/scss/components/toolbar';
-@import 'bootstrap-italia/src/scss/components/sections';
-@import 'bootstrap-italia/src/scss/components/notifications';
-@import 'bootstrap-italia/src/scss/components/thumbnav';
-@import 'bootstrap-italia/src/scss/components/steppers';
-@import 'bootstrap-italia/src/scss/components/card';
-@import 'bootstrap-italia/src/scss/components/card-old'; // Keep till next major? (.card is deprecated)
-@import 'bootstrap-italia/src/scss/components/imgresponsive';
-@import 'bootstrap-italia/src/scss/components/overlay-panel';
-@import 'bootstrap-italia/src/scss/components/progress-donuts';
-@import 'bootstrap-italia/src/scss/components/progress-bars';
-@import 'bootstrap-italia/src/scss/components/progress-spinners';
-@import 'bootstrap-italia/src/scss/components/popover';
-@import 'bootstrap-italia/src/scss/components/tooltip';
-@import 'bootstrap-italia/src/scss/components/videoplayer';
-@import 'bootstrap-italia/src/scss/components/chips';
-@import 'bootstrap-italia/src/scss/components/rating';
-@import 'bootstrap-italia/src/scss/components/dimmer';
-@import 'bootstrap-italia/src/scss/components/accept-overlay';
-@import 'bootstrap-italia/src/scss/components/timeline';
-@import 'bootstrap-italia/src/scss/components/anchor';
-@import 'bootstrap-italia/src/scss/components/map';
-@import 'bootstrap-italia/src/scss/components/rating-list';
-@import 'bootstrap-italia/src/scss/components/badge';
-@import 'bootstrap-italia/src/scss/components/sticky';
-@import 'bootstrap-italia/src/scss/components/print';
-@import 'bootstrap-italia/src/scss/components/footer';
-@import 'bootstrap-italia/src/scss/components/page-scroll';
-@import 'bootstrap-italia/src/scss/components/pagination';
-@import 'bootstrap-italia/src/scss/components/placeholders'; // Keep?
-@import 'bootstrap-italia/src/scss/components/toasts';
+@forward 'bootstrap-italia/src/scss/components/avatar';
+@forward 'bootstrap-italia/src/scss/components/code';
+@forward 'bootstrap-italia/src/scss/components/figcaption';
+@forward 'bootstrap-italia/src/scss/components/grid';
+@forward 'bootstrap-italia/src/scss/components/gridlist';
+@forward 'bootstrap-italia/src/scss/components/images';
+@forward 'bootstrap-italia/src/scss/components/linklist';
+@forward 'bootstrap-italia/src/scss/components/list';
+@forward 'bootstrap-italia/src/scss/components/list-group';
+@forward 'bootstrap-italia/src/scss/components/dropdown';
+@forward 'bootstrap-italia/src/scss/components/megamenu';
+@forward 'bootstrap-italia/src/scss/components/tables';
+@forward 'bootstrap-italia/src/scss/components/type';
+@forward 'bootstrap-italia/src/scss/components/breadcrumb';
+@forward 'bootstrap-italia/src/scss/components/modal';
+@forward 'bootstrap-italia/src/scss/components/accordion';
+@forward 'bootstrap-italia/src/scss/components/carousel';
+// @forward 'bootstrap-italia/src/scss/components/calendar'; Temporarily disabled because not used across the library
+@forward 'bootstrap-italia/src/scss/components/alert';
+@forward 'bootstrap-italia/src/scss/components/button-group';
+@forward 'bootstrap-italia/src/scss/components/buttons';
+@forward 'bootstrap-italia/src/scss/components/font';
+@forward 'bootstrap-italia/src/scss/components/tab';
+@forward 'bootstrap-italia/src/scss/components/cookiebar';
+@forward 'bootstrap-italia/src/scss/components/hero';
+@forward 'bootstrap-italia/src/scss/components/forward';
+@forward 'bootstrap-italia/src/scss/components/back-to-top';
+@forward 'bootstrap-italia/src/scss/components/offcanvas'; // Keep?
+@forward 'bootstrap-italia/src/scss/components/navigation';
+@forward 'bootstrap-italia/src/scss/components/skiplinks';
+@forward 'bootstrap-italia/src/scss/components/affix';
+@forward 'bootstrap-italia/src/scss/components/sidebar';
+@forward 'bootstrap-italia/src/scss/components/bottomnav';
+@forward 'bootstrap-italia/src/scss/components/navscroll';
+// @forward 'bootstrap-italia/src/scss/components/navscrolltheme';
+@forward 'bootstrap-italia/src/scss/components/callout';
+@forward 'bootstrap-italia/src/scss/components/toolbar';
+@forward 'bootstrap-italia/src/scss/components/sections';
+@forward 'bootstrap-italia/src/scss/components/notifications';
+@forward 'bootstrap-italia/src/scss/components/thumbnav';
+@forward 'bootstrap-italia/src/scss/components/steppers';
+@forward 'bootstrap-italia/src/scss/components/card';
+@forward 'bootstrap-italia/src/scss/components/card-old'; // Keep till next major? (.card is deprecated)
+@forward 'bootstrap-italia/src/scss/components/imgresponsive';
+@forward 'bootstrap-italia/src/scss/components/overlay-panel';
+@forward 'bootstrap-italia/src/scss/components/progress-donuts';
+@forward 'bootstrap-italia/src/scss/components/progress-bars';
+@forward 'bootstrap-italia/src/scss/components/progress-spinners';
+@forward 'bootstrap-italia/src/scss/components/popover';
+@forward 'bootstrap-italia/src/scss/components/tooltip';
+@forward 'bootstrap-italia/src/scss/components/videoplayer';
+@forward 'bootstrap-italia/src/scss/components/chips';
+@forward 'bootstrap-italia/src/scss/components/rating';
+@forward 'bootstrap-italia/src/scss/components/dimmer';
+@forward 'bootstrap-italia/src/scss/components/accept-overlay';
+@forward 'bootstrap-italia/src/scss/components/timeline';
+@forward 'bootstrap-italia/src/scss/components/anchor';
+@forward 'bootstrap-italia/src/scss/components/map';
+@forward 'bootstrap-italia/src/scss/components/rating-list';
+@forward 'bootstrap-italia/src/scss/components/badge';
+@forward 'bootstrap-italia/src/scss/components/sticky';
+@forward 'bootstrap-italia/src/scss/components/print';
+@forward 'bootstrap-italia/src/scss/components/footer';
+@forward 'bootstrap-italia/src/scss/components/page-scroll';
+@forward 'bootstrap-italia/src/scss/components/pagination';
+@forward 'bootstrap-italia/src/scss/components/placeholders'; // Keep?
 // ------------------------------
 
 // Form
-@import 'bootstrap-italia/src/scss/forms/forms';
-// @import 'bootstrap-italia/src/scss/forms/labels';
-@import 'bootstrap-italia/src/scss/forms/form-control';
-// @import 'bootstrap-italia/src/scss/forms/form-check';
-// @import 'bootstrap-italia/src/scss/forms/form-range';
-// @import 'bootstrap-italia/src/scss/forms/floating-labels';
-@import 'bootstrap-italia/src/scss/forms/input-group';
-// @import 'bootstrap-italia/src/scss/forms/validation';
-@import 'bootstrap-italia/src/scss/forms/form-input-file';
-@import 'bootstrap-italia/src/scss/forms/form-input-number';
-@import 'bootstrap-italia/src/scss/forms/form-input-upload';
-@import 'bootstrap-italia/src/scss/forms/form-toggles';
-@import 'bootstrap-italia/src/scss/forms/form-password';
-// @import 'bootstrap-italia/src/scss/forms/form-select';
-@import 'bootstrap-italia/src/scss/forms/form-transfer';
-@import 'bootstrap-italia/src/scss/forms/accessible-autocomplete';
-@import 'bootstrap-italia/src/scss/forms/autocomplete';
-@import 'bootstrap-italia/src/scss/forms/just-validate';
+@forward 'bootstrap-italia/src/scss/forms/forms';
+// @forward 'bootstrap-italia/src/scss/forms/labels';
+@forward 'bootstrap-italia/src/scss/forms/form-control';
+@forward 'bootstrap-italia/src/scss/forms/form-validation';
+// @forward 'bootstrap-italia/src/scss/forms/form-check';
+// @forward 'bootstrap-italia/src/scss/forms/form-range';
+// @forward 'bootstrap-italia/src/scss/forms/floating-labels';
+@forward 'bootstrap-italia/src/scss/forms/input-group';
+// @forward 'bootstrap-italia/src/scss/forms/validation';
+@forward 'bootstrap-italia/src/scss/forms/form-input-file';
+@forward 'bootstrap-italia/src/scss/forms/form-input-number';
+@forward 'bootstrap-italia/src/scss/forms/form-input-upload';
+@forward 'bootstrap-italia/src/scss/forms/form-toggles';
+@forward 'bootstrap-italia/src/scss/forms/form-password';
+// @forward 'bootstrap-italia/src/scss/forms/form-select';
+@forward 'bootstrap-italia/src/scss/forms/form-transfer';
+@forward 'bootstrap-italia/src/scss/forms/accessible-autocomplete';
+@forward 'bootstrap-italia/src/scss/forms/autocomplete';
+
 // ------------------------------

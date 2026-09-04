@@ -13,7 +13,7 @@ interface HeroProps {
 
 const meta = {
   title: 'Componenti/Hero',
-  tags: ['alpha', 'web-component', 'a11y-ok'],
+  tags: ['web-component', 'a11y-ok'],
   component: 'it-hero',
   parameters: { pageLayout: 'w-100' },
   args: {

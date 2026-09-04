@@ -1,3 +1,7 @@
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+
 it-toolbar {
   --it-host-display: block;
 

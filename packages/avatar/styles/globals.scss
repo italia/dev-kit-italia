@@ -1,3 +1,5 @@
+@use 'bootstrap-italia/src/scss/base/config' as *;
+
 it-avatar {
   // @extend .avatar;
   position: relative;
@@ -69,7 +71,7 @@ it-avatar[size='xxl'] {
   --#{$prefix}avatar-size: 7rem;
 }
 
-it-avatar ~ span {
+it-avatar ~ span:not([slot]) {
   margin-left: var(--#{$prefix}spacing-xxs);
 }
 
@@ -111,7 +113,7 @@ ul.avatar-group-stacked {
 }
 
 ul li {
-  it-avatar ~ span {
+  it-avatar ~ span:not([slot]) {
     margin-left: var(--#{$prefix}spacing-xxs);
   }
 

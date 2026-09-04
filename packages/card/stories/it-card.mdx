@@ -5,11 +5,11 @@ import * as Stories from './it-card.stories';
 
 # Card
 
-<description>Aiutano a presentare un gruppo di contenuti correlati, come articoli o sezioni di un sito web e permettono di continuare la navigazione verso le rispettive pagine di dettaglio</description>
+<description>Aiutano a presentare un gruppo di contenuti correlati, come articoli o sezioni di un sito web e permettono di continuare la navigazione verso le rispettive pagine di dettaglio.</description>
 
 ## Cosa fa
 
-Le card sono contenitori flessibili e versatili per organizzare e presentare contenuti strutturati in modo coerente, adattabili a diversi contesti e necessità.
+Il componente Card (`it-card`) organizza e presenta contenuti strutturati in modo coerente, offrendo un contenitore flessibile e adattabile a diversi contesti e necessità.
 
 [Approfondisci come e quando usare il componente Card](https://designers.italia.it/design-system/componenti/card/)
 
@@ -22,62 +22,58 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Indicazioni generali
 
-- Rendi la card azionabile poiché è una sintesi di informazioni più dettagliate. Ogni card deve puntare a una pagina di dettaglio tramite link.
-- Includi contenuti unici, evitando di ripetere immagini o informazioni che sono presenti in altre card.
-- Non usare la card a scopo decorativo, creando un contorno per qualunque tipologia di contenuto.
-- Scegli immagini della dimensione corretta, assicurandoti che funzionino bene su qualsiasi dispositivo e dimensione.
-- Scrivi titoli concisi che stimolino l'interesse dell'utente ad approfondire il contenuto.
-- Usa la descrizione per contenuti secondari, non per informazioni essenziali, in quanto gli utenti potrebbero prestarvi minore attenzione.
+- Rendi la card cliccabile, collegandola a una pagina che approfondisce le informazioni.
+- Includi contenuti unici in ogni card, evitando di ripetere informazioni presenti già in altre.
+- Non usare le card a semplice scopo decorativo.
+- Scrivi titoli concisi che invoglino a approfondire e usa la descrizione per contenuti secondari.
+- Scegli immagini della dimensione corretta, assicurandoti che si visualizzino bene su qualsiasi dispositivo.
+
 
 ## Accessibilità
 
-Le card implementano diverse caratteristiche per garantire un’esperienza accessibile a tutte le persone,
-la maggior parte di esse sono implementato nel componente stesso,
-ma è importante che anche i contenuti inseriti nelle card siano accessibili.
+Il componente implementa automaticamente diverse caratteristiche per garantire l'accessibilità, ma è importante che anche i contenuti inseriti nelle card siano accessibili.
 
 ### Metadati e contenuti descrittivi
 
-Per migliorare la comprensione dei metadati da parte delle tecnologie assistive aggiungi testi descrittivi nascosti con `.visually-hidden` (es. “Categoria correlata: “, “Argomento correlato: “) o applicati con `aria-label` (es. “Argomenti correlati: “).
-Valuta attentamente se gli elementi come le liste (es. di contenuti affini, link secondari o una stessa lista di card) abbiano o meno bisogno di etichette `aria-label` o `aria-labelledby` per descriverne le finalità.
+Per migliorare la comprensione dei metadati da parte delle tecnologie assistive:
+- aggiungi testi descrittivi nascosti (ad esempio, “Categoria correlata: “, “Argomento correlato: “) con `.visually-hidden` o `aria-label`;
+- valuta attentamente se le liste di elementi (come contenuti affini, link secondari o più card) abbiano bisogno di etichette `aria-label` o `aria-labelledby` per descriverne le finalità.
 
 ### Icone e contenuti visivi
 
-Le icone nelle card possono avere diversi ruoli semantici:
+Imposta le **icone** in base al ruolo semantico:
 
-- Decorative: quando il significato è già chiaro dal contesto testuale, usa `aria-hidden="true"`.
-- Informative: quando comunicano informazioni aggiuntive (es. tipo di file, link esterno), aggiungi testo nascosto con `<span class="visually-hidden">` che descriva l'informazione se non già veicolata diversamente.
-- Funzionali: quando indicano un'azione o stato, assicurati che il significato sia comunicato anche testualmente.
+- se sono **decorative** (il significato è già chiaro dal contesto testuale), usa `aria-hidden="true"`;
+- se sono **informative** (comunicano informazioni aggiuntive, come il tipo di file o la presenza di un link esterno), aggiungi testo nascosto con `<span class="visually-hidden">` che descriva l'informazione se non già veicolata diversamente;
+- se sono **funzionali** (indicano un'azione o stato), assicurati che il significato sia comunicato anche testualmente.
 
-Per le immagini aggiungi una breve descrizione immagine (con l'attributo `alt="Breve descrizione."`) se ha senso nel contesto,
-marcale altrimenti come decorative lasciando l'attributo `alt` applicato ma vuoto.
+Per le **immagini**, usa l'attributo `alt`:
+- se il loro contenuto è funzionale alla comprensione delle informazioni, aggiungi una breve descrizione testuale: `alt="Breve descrizione."`; 
+- se sono puramente decorative, lascialo vuoto: `alt=""`.
 
 ### Collegamenti e navigazione
 
-Usa `a` per i collegamenti di navigazione e `button` per azioni nella stessa pagina.
-Per contenuti esterni, comunica chiaramente la destinazione, ad esempio con testo nascosto e icone appropriate.
-Privilegia il titolo come elemento principale di navigazione, evitando troppi collegamenti nella stessa card.
+- Usa `a` per i collegamenti di navigazione e `button` per azioni nella stessa pagina.
+- Segnala chiaramente la destinazione dei link esterni con testo nascosto e icone appropriate.
+- Usa i titoli come elementi principali di navigazione, evitando troppi collegamenti nella stessa card.
 
-Negli esempi non abbiamo usato il target del link per favorire la normale navigazione del browser.
-Se la pagina di destinazione si apre in una nuova tab o finestra, comunicalo in modo chiaro all'utente con un'icona di link esterno e un testo alternativo o nascosto per i lettori di schermo.
+Negli esempi non abbiamo usato il target del link per favorire la normale navigazione del browser. Se la pagina di destinazione si apre in una nuova tab o finestra, comunicalo in modo chiaro all'utente con un'icona di link esterno e un testo alternativo o nascosto per i lettori di schermo.
 
 ### Date e orari nelle card
 
-Quando presenti date e orari, usa l'elemento `time` con l'appropriato attributo `datetime`.
-Inserisci eventuali contenuti guida per lettori di schermo solo se realmente necessari per evitare il rumore,
-ad esempio `<span class="visually-hidden">Data evento:</span>`.
-Comunica chiaramente agli utenti quando una data ha il ruolo di "Scadenza" aggiungendo un testo adeguato oltre alla data stessa, come negli esempi che trovi nella sezione "Card per servizi e bandi".
-Non usare solo il colore (negli esempi `.text-warning`) per veicolare l'importanza dell'informazione.
-
-Poni particolare attenzione che non si crei confusione se nella card fosse presente anche la data di pubblicazione,
-in caso valuta di non mostrarla.
-
-Consigliamo, inoltre, di svolgere sempre test di usabilità anche con utenti che utilizzano tecnologie assistive.
+- Quando presenti date e orari, usa l'elemento `time` con l'appropriato attributo `datetime`.
+- Inserisci eventuali contenuti guida per lettori di schermo solo se realmente necessari per evitare il rumore, ad esempio `<span class="visually-hidden">Data evento:</span>`.
+- Comunica chiaramente agli utenti quando una data ha il ruolo di "Scadenza" aggiungendo un testo adeguato oltre alla data stessa, come negli esempi che trovi per la variante "Card per servizi e bandi".
+- Non usare solo il colore (negli esempi `.text-warning`) per veicolare l'importanza dell'informazione.
+- Se sono presenti altre date, valuta di nascondere la data di pubblicazione per non creare confusione.
+- Svolgi sempre test di usabilità anche con utenti che utilizzano tecnologie assistive.
 
 ### Gerarchia dei titoli
 
-Utilizza gli elementi di intestazione (`h2`, `h3`, etc.) appropriati per il contesto intorno alle card.
-Negli esempi abbiamo usato quasi sempre `h3` per le card editoriali e `h4` per quelle informative.
-Adatta la gerarchia alla struttura complessiva della tua pagina in modo da rispettare l'ordine.
+Usa il corretto livello di intestazione (`h2`, `h3`, ecc.) per il titolo delle card.
+
+Negli esempi abbiamo usato quasi sempre `h3` per le card editoriali e `h4` per quelle informative, ma ricorda di adattare il codice in base alla gerarchia dei contenuti sulle tue pagine.
+
 
 ### Contrasto e visibilità
 
@@ -91,191 +87,157 @@ Sono le classiche card con cui puoi comporre una sezione di copertina delle noti
 
 ### Card editoriali standard
 
-Esempi con descrizione e data di pubblicazione della scheda, con categoria oppure con argomenti (tag) di appartenenza, con e senza immagine.
+Queste card presentano titolo, descrizione, data di pubblicazione, categora o argomenti (tag). Possono essere con e senza immagine.
 
 La struttura dei metadati include:
 
-- Categorie nell'elemento `.it-card-taxonomy`
-- Tag/argomenti in liste quando sono più di uno
-- Date in elementi HTML semantici `time`, con il corretto attributo `datetime`
+- categorie nell'elemento `.it-card-taxonomy`;
+- argomenti (tag) in liste, quando sono più di uno;
+- date in elementi HTML semantici `time`, con il corretto attributo `datetime`.
 
 <Canvas of={Stories.EditorialiStandard} />
 
 ### Card editoriali featured
 
-Usa queste card per presentare contenuti di approfondimento, anche quelli ospitati su piattaforme terze.
-Se i contenuti sono su piattaforme terze, comunica chiaramente all'utente dove si trova il contenuto e che sta per uscire dal sito.
-Puoi aggiungere un'icona a fianco del titolo, usando la classe `.it-card-title-icon-wrapper` come negli esempi che seguono.
+Usa questa variante per presentare contenuti di approfondimento, anche ospitati su piattaforme terze.
 
-Per mostrare un sottotitolo sulle card, usa lo slot `subtitle`.
-
-Per indicare l'autore del contenuto, usa lo slot `signature`.
+- Quando le card mandano a piattaforme terze, comunica all'utente la destinazione e aggiungi un'icona a fianco del titolo con la classe `.it-card-title-icon-wrapper` per segnalare l'uscita dal sito.
+- Per mostrare un sottotitolo, usa lo slot `subtitle`.
+- Per indicare l'autore del contenuto, usa lo slot `signature`.
 
 <Canvas of={Stories.EditorialiFeatured} />
 
 ### Card inline
 
-Usa questa variante inline per evidenziare una o due card rispetto alle altre.
-Usa questa variante solo quando per il contenuto è disponibile un'immagine.
+Usa questa variante per mettere in evidenza alcune card principali rispetto alle altre. Funziona solo con card con immagini.
 
-Per ottenere la disposizione inline, usa l'attributo `variant="inline"`.
+- Per ottenere la disposizione inline, usa l'attributo `variant="inline"`.
+- Per invertire solamente l'ordine visivo tra destra e sinistra, usa invece l'attributo `variant="inline-reverse"`.
 
-La card inline è orizzontale su viewport medio-grandi.
-Su dispositivi piccoli o con ingrandimento elevato adotta una disposizione verticale simile alla card base.
-
-Per invertire solamente l'ordine visivo tra destra e sinistra, usa invece l'attributo `variant="inline-reverse"`.
+Su viewport medi e grandi la card si presenta in orizzontale, mentre su dispositivi piccoli o con ingrandimento elevato passa a disposizione verticale, simile alla card base.
 
 <Canvas of={Stories.CardInline} />
 
 #### Card inline mini
 
-Usa la variante mini delle card orizzontali per raggruppare in poco spazio card editoriali con contenuti correlati secondari.
-In ragione di ciò, la card mini non ha il corpo (slot `text`) e il footer (slot `footer`) è visibile solo se presente.
-La dimensione del titolo è ridotta per adattarsi a questo layout.
+Usa la variante mini per raggruppare in poco spazio card editoriali con contenuti correlati secondari. Questa variante presenta una dimensione ridotta per il titolo, non include il corpo (slot `text`) e il footer è visibile solo se presente (slot `footer`).
+
+Per ottenere la variante mini, usa l'attributo `variant="inline-mini"`.
 
 La variante mini rimane orizzontale anche in viewport piccole o viste ingrandite.
-Questa variante si ottiene applicando l'attributo `variant="inline-mini"`.
-
-Consigliamo di non aggiungere altri contenuti oltre al titolo (da mantenere breve),
-l'eventuale categoria o argomento principale e la data.
 
 <Canvas of={Stories.CardInlineMini} />
 
 ### Card per eventi
 
-Per mostrare la data o la durata di un evento in una card, aggiungili in un paragrafo all'inizio del corpo della card usando lo slot `subtitle`.
+Usa questa variante per mostrare contenuti relativi a eventi.
 
-Usa lo slot `actions` per creare uno spazio dedicato a collegamenti o pulsanti secondari, come negli esempi seguenti.
-Questa impostazione è utile quando il titolo della card porta a una pagina di approfondimento (ad esempio, la descrizione dettagliata dell'evento),
-ma si vuole dare accesso diretto e immediato all'azione principale (ad esempio, l'iscrizione all'evento).
-
-Per applicare il colore secondario ai collegamenti `a` inseriti nel corpo o nel footer della card, usa la classe `.it-card-link`.
+- Per mostrare la data o la durata di un evento, aggiungili in un paragrafo all'inizio del corpo della card usando lo slot `subtitle`.
+- Usa lo slot `actions` per collegamenti o pulsanti secondari, utile quando il titolo porta alla pagina di descrizione dell'evento ma vuoi dare accesso diretto all'azione principale (ad esempio, l'iscrizione all'evento).
+- Per applicare il colore secondario ai collegamenti `a` inseriti nel corpo o nel footer della card, usa la classe `.it-card-link`.
 
 <Canvas of={Stories.Eventi} />
 
 #### Card per eventi inline
 
-Per disporre le card eventi in orizzontale, usa la variante `inline`.
+- Per disporre le card eventi in orizzontale, usa la struttura della variante `inline`.
+- Per invertire solamente l'ordine visivo tra destra e sinistra, usa la struttura della variante `inline-reverse`.
 
-Per invertire l'ordine visivo, usa la variante `inline-reverse`.
 
 <Canvas of={Stories.EventiInline} />
 
-### Card per media (video, audio)
+### Card per media video e audio
 
-Usa queste varianti di card per presentare contenuti media come video o audio e rimandare alle relative pagine di dettaglio, anche se ospitate su piattaforme terze.
-Anche in questo caso, assicurati di comunicare all'utente la tipologia del contenuto e l'eventuale uscita dal sito stesso.
-Per farlo, puoi anche aggiungere un'icona a fianco del titolo, usando la classe `.it-card-title-icon-wrapper` come negli esempi che seguono.
+Usa queste varianti per presentare un'anteprima di contenuti video o audio e rimandare alle relative pagine di dettaglio, anche su piattaforme terze.
+
+Assicurati di comunicare all'utente la tipologia del contenuto e l'eventuale uscita dal sito stesso. Per farlo, puoi anche aggiungere un'icona a fianco del titolo, usando la classe `.it-card-title-icon-wrapper` come negli esempi.
 
 <Canvas of={Stories.Media} />
 
 #### Card per media video inline
 
-Per disporre le card media di tipo video in orizzontale, usa la variante `inline`.
-
-Usa le stesse regole delle card inline standard per struttura e inversione dell'ordine.
+Per disporre le card video in orizzontale o invertire l'ordine visivo tra sinistra e destra, usa la struttura e gli attributi della variante `inline`.
 
 <Canvas of={Stories.MediaVideoInline} />
 
 ## Card informative e di servizio
 
-Le card informative e di servizio sono utili a fornire un'anteprima per pagine di dettaglio di servizi e bandi,
-oppure per rappresentare documenti e altri tipi di allegati.
+Usa queste varianti per fornire un'anteprima per pagine di dettaglio di servizi e bandi, documenti o altri tipi di allegati.
 
 ### Card per servizi e bandi
 
-Consigliamo di usare alternativamente un breve testo descrittivo nello slot `text` o nello slot `subtitle` per descrivere il contesto della card.
-
-Per aggiungere indicazioni sullo stato del servizio o bando e un'eventuale data di scadenza, come negli esempi seguenti, puoi usare l'elemento footer:
-
-- per lo stato del servizio o bando, usa un componente [Chip](/docs/componenti-chip--documentazione)
-- per un'eventuale data di scadenza, usa la classe `.it-card-date` e un testo descrittivo.
-
-Per creare un ulteriore spazio dedicato a collegamenti o pulsanti secondari, come negli esempi seguenti, puoi usare lo slot `actions`.
-Questa impostazione è utile quando il titolo della card porta a una pagina di approfondimento (ad esempio, la descrizione dettagliata di un bando),
-ma si vuole dare accesso diretto e immediato all'azione principale (ad esempio, la candidatura al bando).
-
-Per applicare il colore secondario ai collegamenti `a` inseriti nel corpo o nel footer della card, usa la classe `.it-card-link`.
+- Usa un breve testo descrittivo nello slot `text` o nello slot `subtitle` per descrivere il contesto del contenuto della card.
+- Per fornire indicazioni sullo stato del servizio o del bando, usa un componente [Chip](/docs/componenti-chip--documentazione) nell'elemento `footer`.
+- Per indicare una data di scadenza, usa la classe `.it-card-date` e un testo descrittivo nell'elemento `footer`.
+- Usa lo slot `actions` per collegamenti o pulsanti secondari, utile quando il titolo porta alla pagina di approfondimento ma vuoi dare accesso diretto all'azione principale (ad esempio, la candidatura al bando).
+- Usa la classe `.it-card-link` per applicare il colore secondario ai collegamenti `a` inseriti nel corpo o nel footer della card.
 
 <Canvas of={Stories.ServiziEBandi} />
 
 ### Card per documenti e allegati
 
-Usa questa variante per presentare documenti e allegati.
-Puoi aggiungere un'icona a fianco del titolo, usando la classe `.it-card-title-icon-wrapper` come negli esempi che seguono.
-
-Per creare un ulteriore spazio dedicato a collegamenti o pulsanti secondari, come negli esempi seguenti, puoi usare lo slot `actions`.
-Questa impostazione è utile quando il titolo della card porta a una pagina di approfondimento (ad esempio, la descrizione dettagliata del documento),
-ma si vuole dare accesso diretto e immediato all'azione principale (ad esempio, scaricare il file sul proprio dispositivo).
+- Per aggiungere un'icona a fianco del titolo, usa la classe `.it-card-title-icon-wrapper`.
+- Usa lo slot `actions` per collegamenti o pulsanti secondari, utile quando il titolo porta alla pagina di approfondimento ma vuoi dare accesso diretto all'azione principale (ad esempio, scaricare il file).
 
 <Canvas of={Stories.DocumentiEAllegati} />
 
 ### Card per profili personali
 
-Usa questa variante per indicare schede personali o i relatori a un evento.
-Si attiva con l'attributo `variant="profile"`.
+Usa questa variante per rappresentare profili personali o i relatori di un evento.
 
-L'immagine di profilo sulla destra è visualizzata integrando il componente [Avatar](/docs/componenti-avatar--documentazione), si consiglia di usarlo nelle varianti di dimensioni `xl`.
-
-La lista di metadati del profilo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `dd`-`dt` raccolta in un `div` contenitore.
-
-Per un effetto decorativo, puoi usare l'attributo `border-top` (vedi le varianti di colore disponibili nella [tabella degli attributi](#anteprima-e-attributi-del-componente)).
-Non usare questo attributo per comunicare significato semantico, ma solo come eventuale elemento decorativo.
+- Attivala usando l'attributo `variant="profile"`.
+- Per un'immagine di profilo sulla destra, integra il componente [Avatar](/docs/componenti-avatar--documentazione), idealmente nelle varianti di dimensioni `xl`.
+- La lista di metadati del profilo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `dd`-`dt` raccolta in un `div` contenitore.
+- Per un effetto decorativo, usa l'attributo `border-top` e le [varianti di colore disponibili nella tabella degli attributi](#anteprima-e-attributi-del-componente).
 
 <Canvas of={Stories.ProfiliPersonali} />
 
 ### Card per luoghi
 
-Usa questa variante per presentare schede località.
-Si attiva con con l'attributo `variant="location"`.
+Usa questa variante per rappresentare dei luoghi.
 
-Per i luoghi puoi inserire un'immagine in uno slot `image` o un'icona sulla destra.
-Racchiudi l'icona in un `div` con classe `.it-card-profile-image-icon-wrapper` per l'allineamento corretto.
-
-La lista di metadati del luogo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `dd`-`dt` raccolta in un `div` contenitore.
-
-Puoi combinare un piede con eventuali collegamenti o dettagli della mappa usando lo slot `footer`.
+- Attivala usando l'attributo `variant="location"`.
+- Per aggiungere un'immagine, usa lo slot `image`.
+- Per aggiungere un'icona sulla destra e allinearla correttamente, racchiudila in un `div` con classe `.it-card-profile-image-icon-wrapper`.
+- La lista di metadati del luogo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `dd`-`dt` raccolta in un `div` contenitore.
+- Per eventuali collegamenti o dettagli della mappa, puoi usare lo slot `footer`.
 
 <Canvas of={Stories.Luoghi} />
 
 ### Card con liste di contenuti affini
 
-Per presentare liste di contenuti affini, puoi integrare liste strutturate di link nel corpo della card usando le classi `.list-group`.
+Usa questa variante quando vuoi facilitare l'accesso a contenuti importanti, come i correlati o gli approfondimenti di un argomento in evidenza o di un evento.
 
-Usa questa variante con moderazione e solo quando è necessario facilitare l'accesso ai contenuti in evidenza di un sito web, come ad esempio:
+- Integra liste strutturate di link nel corpo della card usando le classi `.list-group`.
+- Applica il colore primario o secondario alla lista dei link usando la classe `.it-card-link`.
+- Aggiungi link o pulsanti di servizio nello slot `footer`.
 
-- i contenuti correlati a un argomento in evidenza
-- le varie pagine di approfondimento correlate a un evento in evidenza.
 
 <it-callout variant="success" heading-level="h4">
-  <span slot="title">Accessibilità: lista link correlati</span>
-  <p>Valuta caso per caso l'applicazione di un'eventuale aria-label all'elemento `ul`, per permettere ai lettori di schermo di comprendere la natura di questi link.</p>
+  <span slot="title">Accessibilità dei link</span>
+  <p>Valuta se applicare un aria-label all'elemento `ul` per permettere ai lettori di schermo di comprendere la natura di questi link.</p>
 </it-callout>
 
-Valuta caso per caso l'uso del colore primario per la lista di link,
-oppure l'applicazione del colore secondario usando la classe dedicata `.it-card-link`.
 
-Puoi combinare questa impostazione con le funzionalità dello slot `footer` per ospitare link e pulsanti di servizio.
 
 <Canvas of={Stories.ListeDiContenutiAffini} />
 
 ## Card presentazione
 
-Le card presentazione sono utili per mettere in evidenza l'accesso rapido a contenuti chiave oppure permettere la presentazione di dati.
+Queste varianti sono utili per facilitare l'accesso a contenuti importanti oppure presentare dati.
 
 ### Card banner
 
-Usa la variante banner per presentare una sezione principale del sito, un servizio chiave, oppure permettere l'accesso rapido a una funzionalità.
-Attivala con l'attributo `variant="banner"`.
+Usa la variante banner per presentare e facilitare l'accesso a una sezione principale del sito, a un servizio importante o a una funzionalità.
 
-Per inserire l'icona inseriscila nello slot `image`.
+- Attivala con l'attributo `variant="banner"`.
+- Per inserire un'icona, usa lo slot `image`.
 
 <Canvas of={Stories.Banner} />
 
 #### Card banner con azione
 
-Per guidare verso un'azione specifica, usa lo slot `footer` per ospitare un pulsante o link.
-In questo caso, evita di collegare il titolo della card.
+Per guidare verso un'azione specifica, aggiungi un pulsante o un link nello slot `footer`, senza collegare il titolo della card.
 
 <Canvas of={Stories.BannerConAzione} />
 
@@ -287,21 +249,20 @@ Per mantenere il layout orizzontale anche su viewport piccole o fortemente ingra
 
 <Canvas of={Stories.BannerInline} />
 
-## Personalizzazioni e stili
-
-Alcuni attributi utili a personalizzare le card.
+## Personalizzazione del componente
 
 ### Bordi e ombre
 
 La configurazione base delle card prevede un bordo e un'ombra leggera.
-Per aumentare la separazione visiva dal contesto, puoi utilizzare ombre più evidenti impostando gli attributi come segue:
 
-- `shadow="sm"` - ombra leggera (è il valore predefinito)
-- `shadow="md"` - ombra media
-- `shadow="lg"` - ombra pronunciata
-- `shadow="none"` - nessuna ombra
+Per aumentare la separazione visiva dal contesto, puoi utilizzare ombre più evidenti con questi attributi:
 
-Quando utilizzi ombre più evidenti, puoi rimuovere il bordo se la distinzione dallo sfondo è sufficientemente chiara, impostando `border="0"`.
+- `shadow="sm"`, per ombra leggera (valore predefinito);
+- `shadow="md"`, per ombra media;
+- `shadow="lg"`, per ombra pronunciata;
+- `shadow="none"`, nessuna ombra.
+
+Quando usi ombre più evidenti e la distinzione dallo sfondo è sufficientemente chiara, puoi rimuovere il bordo impostando `border="0"`.
 
 <it-callout variant="success" heading-level="h4">
   <span slot="title">Accessibilità: contrasto con lo sfondo</span>
@@ -316,56 +277,54 @@ Per definire il rapporto tra altezza e larghezza delle immagini in tutte le card
 
 Le opzioni disponibili sono:
 
-- `ratio="1x1"` - rapporto quadrato
-- `ratio="4x3"` - rapporto classico
-- `ratio="16x9"` - rapporto widescreen
-- `ratio="21x9"` - rapporto cinematografico
+- `ratio="1x1"`, rapporto quadrato;
+- `ratio="4x3"`, rapporto classico;
+- `ratio="16x9"`, rapporto widescreen;
+- `ratio="21x9"`, rapporto cinematografico.
 
 Le varianti inline delle card hanno proporzioni immagini specifiche su desktop.
-Su dispositivi piccoli o con ingrandimento elevato (tranne le mini) usano il layout verticale con le proporzioni degli esempi seguenti.
+Su dispositivi piccoli o con ingrandimento elevato usano il layout verticale con le proporzioni presenti in questi esempi, ad eccezione della variante mini.
 
 <Canvas of={Stories.Immagini} />
 
 ### Altezze delle card
 
-Per la gestione delle altezze in caso di gruppi di card, l'impostazione di base è l’altezza basata sul contenuto.
+Per impostazione predefinita, l’altezza delle singole card nei gruppi è determinata dal loro contenuto, come negli esempi che precedono.
 
-Puoi cambiare questo comportamento per ogni card usando l'attributo `full-height` (altezza basata su tutto lo spazio disponibile) sull'elemento `<it-card>`.
-Questa impostazione è presente in diversi degli esempi che precedono.
-
-Il contenuto dello slot `footer` si allinea verticalmente al bordo inferiore come la data nell'esempio che segue.
+Per farla estendere su tutta l’altezza disponibile, usa l'attributo `full-height` sull'elemento `<it-card>`. Il contenuto dello slot `footer` si allinea verticalmente al bordo inferiore, come la data nell'esempio che segue.
 
 <Canvas of={Stories.AltezzaDelleCard} />
 
 ### Pulsanti a tutta larghezza su mobile
 
-Puoi personalizzare il comportamento dei pulsanti nell'area metadati della card per ottenere pulsanti a larghezza fluida su dispositivi mobili utilizzando le classi `.d-grid` e `.d-md-block`.
-Per maggiori informazioni sulla personalizzazione dei pulsanti, consulta la [documentazione sulle varianti di dimensioni dei buttons](/docs/componenti-button--documentazione#varianti-di-dimensione).
+Per ottenere pulsanti a larghezza fluida su dispositivi mobili, usa le classi `.d-grid` e `.d-md-block` nell'area metadati della card.
+
+Per maggiori informazioni, consulta la [documentazione sulle varianti di dimensioni dei button](/docs/componenti-button--documentazione#varianti-di-dimensione).
 
 <Canvas of={Stories.PulsantiMobile} />
 
-### Personalizzazione degli stili
+### Stili
 
-Per personalizzare gli stili del componente puoi usare il selettore `::part` passando i seguenti valori:
+Per personalizzare gli stili del componente, puoi usare il selettore `::part` con questi valori:
 
-- `title` - per personalizzare il titolo
-- `body` - per personalizzare il corpo
-- `subtitle` - per personalizzare il sottotitolo
-- `signature` - per personalizzare la porzione dell'autore
-- `text` - per personalizzare il testo
-- `footer` - per personalizzare il piede
-- `actions` - per personalizzare le azioni aggiuntive della card
-- `image-wrapper` - per personalizzare il contenitore dell'immagine
+- `title`, per il titolo;
+- `body`, per il corpo;
+- `subtitle`, per il sottotitolo;
+- `signature`, per l'autore;
+- `text`, per il testo;
+- `footer`, per il footer;
+- `actions`, per le azioni aggiuntive;
+- `image-wrapper`, per il contenitore dell'immagine.
 
-[Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
 
 ## Organizzazione e layout
 
 ### Uso di contenitori responsive
 
-Se il tuo layout di pagina lo permette ti consigliamo di comprendere ogni gruppo di card in contenitori responsive,
-usando le classi `.container-xl` oppure `.container-xxl` su un elemento `div` che contenga tutto il gruppo e il suo sistema di griglie.
-Così potrai sfruttare al massimo tutto lo spazio a disposizione in tutte le combinazioni di dimensioni della viewport e fattori di ingrandimento.
+Se il layout lo consente, racchiudi ogni gruppo di card in un contenitore responsive, usando le classi `.container-xl` o `.container-xxl` su un elemento `div` che includa l'intero gruppo e il suo sistema di griglie.
+
+In questo modo sfrutti al meglio lo spazio disponibile su tutte le dimensioni di viewport e livelli di ingrandimento. L’uso di contenitori con breakpoint fissi come `.container` può invece lasciare troppo spazio vuoto ai lati in alcune configurazioni.
 
 ```html
 <div class="container-xl">
@@ -374,11 +333,14 @@ Così potrai sfruttare al massimo tutto lo spazio a disposizione in tutte le com
 </div>
 ```
 
-Usando contenitori con breakpoint fissi `.container` potresti sprecare un eccessivo spazio vuoto a destra e sinistra in alcune combinazioni.
-
 ### Uso della griglia
 
-Usando le griglie puoi organizzare le card in righe e colonne con le classi `.row` e `.col-*` per definire il numero di colonne desiderate.
+Usa il sistema di griglie per organizzare le card in righe e colonne, tramite le classi `.row` e `.col-*`.
+
+La scelta del **numero di colonne dipende dal layout della pagina** e influisce sullo spazio disponibile per i contenuti. Bilancia quindi dimensioni e quantità di contenuto per garantire una buona leggibilità e un aspetto visivamente equilibrato a tutte le dimensioni di viewport e livelli di ingrandimento.
+
+In questi esempi abbiamo usato la combinazione `.col-12 col-md-6 col-lg-4` per ottenere 1 colonna su viewport piccole, 2 su viewport medie e 3 su viewport grandi.
+
 
 ```html
 <div class="container-xl">
@@ -392,12 +354,6 @@ Usando le griglie puoi organizzare le card in righe e colonne con le classi `.ro
   </div>
 </div>
 ```
-
-Negli esempi precedenti abbiamo usato per esempio `.col-12 col-md-6 col-lg-4` per ottenere 1 colonna su dispositivi piccoli o viewport strette, 2 colonne su viewport medie e 3 colonne su viewport grandi.
-Sono esempi puramente dimostrativi, **puoi usare qualsiasi combinazione** di colonne per ottenere il layout desiderato.
-
-La scelta del **numero di colonne** dipende dal layout della tua pagina e ha un **impatto sullo spazio interno** alla card per il contenuto.
-È importante quindi **bilanciare la dimensione** dei contenuti della card per garantire una buona leggibilità e un aspetto visivamente gradevole a tutte le dimensioni e/o fattori di ingrandimento della viewport.
 
 ### Liste per gruppi numerosi di card
 
@@ -422,42 +378,44 @@ Per **gruppi numerosi di card** (come pagine di listini, cataloghi, risultati di
 </div>
 ```
 
-Esempio di lista card:
+Esempio di lista di card:
 
 <Canvas of={Stories.ListeCardNumerose} />
 
 ### Uso di classi dedicate (per piccoli gruppi)
 
-Solo per piccoli gruppi di card (2-6 card) puoi inoltre usare `.it-card-group` per creare facilmente un layout responsive in un `div` contenitore.
-Di default il numero di colonne su desktop è impostato a 4.
+Per piccoli gruppi di card (2–6 elementi), puoi usare `.it-card-group` per creare facilmente un layout responsive all’interno di un `div` contenitore.
+
+Di default, il layout prevede 4 colonne su desktop.
+
 
 <Canvas of={Stories.ClassiDedicate} />
 
 #### Numero di colonne specifiche
 
-Usa `.it-card-group-N-cols`, dove modificando `N` si possono ottenere layout con 2 o 3 colonne su desktop.
+Per ottenere layout con 2 o 3 colonne su desktop, usa `.it-card-group-N-cols` sostituendo `N` con 2 o 3.
 
 <Canvas of={Stories.ClassiDedicateColonne} />
 
 #### Centrate orizzontalmente
 
-Usa `.it-card-group-center` per centrare orizzontalmente il gruppo di card all'interno del contenitore.
+Per centrare orizzontalmente il gruppo di card all'interno del contenitore, usa `.it-card-group-center`.
 
 <Canvas of={Stories.ClassiDedicateCentrate} />
 
-#### Uso di classi dedicate rispetto al contenitore (sperimentale)
+#### Responsive rispetto il contenitore (sperimentale)
 
-Gruppo di card che risponde a Container Queries attivabile usando la classe dedicata `.it-card-group-container-aware` per adattarsi responsive alla dimensione del contenitore invece che alla viewport.
-Ridimensiona la viewport o prova a visualizzare questa pagina su dispositivi di diverse dimensioni per apprezzare la differenza di approccio.
+Per far adattare un gruppo di card alla dimensione del contenitore tramite Container Queries, invece che alla viewport, usa la classe `.it-card-group-container-aware`.
 
-Le Container Queries sono una tecnologia CSS moderna supportata nella maggior parte dei browser recenti.
-Per i browser che non supportano questa funzionalità, si applica automaticamente un fallback basato su Media Queries standard.
+Ridimensiona la viewport o visualizza la pagina su dispositivi diversi per notare la differenza.
+
+Le Container Queries sono una tecnologia CSS moderna supportata dalla maggior parte dei browser recenti. Nei browser non compatibili viene applicato automaticamente un fallback basato su Media Queries standard.
 
 <Canvas of={Stories.ClassiDedicateContainer} />
 
 #### Confronto in colonne diverse
 
-Qui puoi esplorare come lo stesso gruppo di card "container-aware" si adatta a diverse larghezze di colonna, permettendo di realizzare layout complessi:
+In questo esempio puoi scoprire come lo stesso gruppo di card “container-aware” si adatta automaticamente a larghezze di colonna diverse, permettendo di creare layout complessi.
 
 <Canvas of={Stories.ClassiDedicateConfrontoColonne} />
 

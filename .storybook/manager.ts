@@ -64,6 +64,9 @@ addons.setConfig({
 
     fontBase: '"Titillium Web", Geneva, Tahoma, sans-serif',
   },
+  sidebar: {
+    collapsedRoots: ['organizzare-gli-spazi', 'organizzare-i-contenuti', 'componenti', 'framework'],
+  },
 
   tagBadges: [
     {

@@ -2,6 +2,1860 @@
 
 This changelog contains all changes from all packages in the monorepo.
 
+## 1.0.0-beta.2
+
+### `accordion`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/collapse@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+
+### `alert`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `autocomplete`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+
+### `avatar`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+
+### `back`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `back-to-top`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `bottom-nav`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+  - @italia/sticky@1.0.0-beta.2
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `button`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `callout`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/collapse@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+
+### `card`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `carousel`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/card@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+
+### `checkbox`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+
+### `chip`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/avatar@1.0.0-beta.2
+  - @italia/button@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+
+### `collapse`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/accordion@1.0.0-beta.2
+  - @italia/alert@1.0.0-beta.2
+  - @italia/autocomplete@1.0.0-beta.2
+  - @italia/avatar@1.0.0-beta.2
+  - @italia/back@1.0.0-beta.2
+  - @italia/back-to-top@1.0.0-beta.2
+  - @italia/bottom-nav@1.0.0-beta.2
+  - @italia/breadcrumbs@1.0.0-beta.2
+  - @italia/button@1.0.0-beta.2
+  - @italia/callout@1.0.0-beta.2
+  - @italia/card@1.0.0-beta.2
+  - @italia/carousel@1.0.0-beta.2
+  - @italia/checkbox@1.0.0-beta.2
+  - @italia/chip@1.0.0-beta.2
+  - @italia/collapse@1.0.0-beta.2
+  - @italia/dimmer@1.0.0-beta.2
+  - @italia/dropdown@1.0.0-beta.2
+  - @italia/forward@1.0.0-beta.2
+  - @italia/header@1.0.0-beta.2
+  - @italia/hero@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+  - @italia/input@1.0.0-beta.2
+  - @italia/megamenu@1.0.0-beta.2
+  - @italia/modal@1.0.0-beta.2
+  - @italia/navscroll@1.0.0-beta.2
+  - @italia/notification@1.0.0-beta.2
+  - @italia/pagination@1.0.0-beta.2
+  - @italia/popover@1.0.0-beta.2
+  - @italia/progress@1.0.0-beta.2
+  - @italia/radio@1.0.0-beta.2
+  - @italia/rating@1.0.0-beta.2
+  - @italia/section@1.0.0-beta.2
+  - @italia/select@1.0.0-beta.2
+  - @italia/skiplinks@1.0.0-beta.2
+  - @italia/stepper@1.0.0-beta.2
+  - @italia/sticky@1.0.0-beta.2
+  - @italia/tabs@1.0.0-beta.2
+  - @italia/thumbnav@1.0.0-beta.2
+  - @italia/timeline@1.0.0-beta.2
+  - @italia/toggle@1.0.0-beta.2
+  - @italia/toolbar@1.0.0-beta.2
+  - @italia/tooltip@1.0.0-beta.2
+  - @italia/transfer@1.0.0-beta.2
+  - @italia/upload@1.0.0-beta.2
+  - @italia/video@1.0.0-beta.2
+
+### `dimmer`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+
+### `dropdown`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+  - @italia/popover@1.0.0-beta.2
+
+### `forward`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `globals`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/i18n@1.0.0-beta.2
+
+### `header`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/dropdown@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+  - @italia/modal@1.0.0-beta.2
+
+### `hero`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `i18n`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+### `icon`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `input`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+
+### `megamenu`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/dropdown@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+
+### `modal`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+
+### `navscroll`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+  - @italia/modal@1.0.0-beta.2
+
+### `notification`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+
+### `pagination`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `popover`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+
+### `progress`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `radio`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `rating`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+  - @italia/radio@1.0.0-beta.2
+
+### `section`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `select`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+
+### `skiplinks`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `stepper`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+
+### `sticky`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `tabs`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+
+### `thumbnav`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `timeline`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `toggle`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/checkbox@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+
+### `toolbar`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+### `tooltip`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+
+### `transfer`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+
+### `upload`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/avatar@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+  - @italia/progress@1.0.0-beta.2
+
+### `video`
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/checkbox@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+
+## 1.0.0-beta.1
+
+### `accordion`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/collapse@1.0.0-beta.1
+  - @italia/globals@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `alert`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `autocomplete`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#485](https://github.com/italia/dev-kit-italia/pull/485) [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64) Thanks [@astagi](https://github.com/astagi)! - Updated to bootstrap-italia 3.0.0-beta.4
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `avatar`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `back`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `back-to-top`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `bottom-nav`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#473](https://github.com/italia/dev-kit-italia/pull/473) [`a8a5e6f`](https://github.com/italia/dev-kit-italia/commit/a8a5e6f3dafa23272bfc57b7df86349053722cee) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fixed active item text color in `it-bottom-nav-item` incorrectly applying to all items instead of only the active one
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/sticky@1.0.0-beta.1
+
+### `breadcrumbs`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `button`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `callout`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/collapse@1.0.0-beta.1
+  - @italia/globals@1.0.0-beta.1
+
+### `card`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `carousel`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#470](https://github.com/italia/dev-kit-italia/pull/470) [`0fe470c`](https://github.com/italia/dev-kit-italia/commit/0fe470c4d850586874c46efd84e7d0431c4b16fd) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fixed `aria-roledescription` being set on the shadow DOM wrapper, where it had no effect since that element carries `role="presentation"`. It is now set on the host element instead, next to the `region` landmark.
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/card@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+
+### `checkbox`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#485](https://github.com/italia/dev-kit-italia/pull/485) [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64) Thanks [@astagi](https://github.com/astagi)! - Updated to bootstrap-italia 3.0.0-beta.4
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+
+### `chip`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4), [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/avatar@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `collapse`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `dev-kit-italia`
+
+### Minor Changes
+
+- [#492](https://github.com/italia/dev-kit-italia/pull/492) [`aa3a85e`](https://github.com/italia/dev-kit-italia/commit/aa3a85ec712531758d312897eaa24d024c691b3c) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add Titillium Pro font support
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- [#485](https://github.com/italia/dev-kit-italia/pull/485) [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64) Thanks [@astagi](https://github.com/astagi)! - Updated to bootstrap-italia 3.0.0-beta.4
+
+- Updated dependencies [[`a8a5e6f`](https://github.com/italia/dev-kit-italia/commit/a8a5e6f3dafa23272bfc57b7df86349053722cee), [`0fe470c`](https://github.com/italia/dev-kit-italia/commit/0fe470c4d850586874c46efd84e7d0431c4b16fd), [`2cb1023`](https://github.com/italia/dev-kit-italia/commit/2cb102330500ebe596a93e361cc8342a56fa7a3e), [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4), [`7df75f1`](https://github.com/italia/dev-kit-italia/commit/7df75f1ae0665be7c11043737ca019bef83e696f), [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd), [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64), [`8583808`](https://github.com/italia/dev-kit-italia/commit/8583808a10437ff7dfc44a6ce5886315a7b35fa8)]:
+  - @italia/bottom-nav@1.0.0-beta.1
+  - @italia/carousel@1.0.0-beta.1
+  - @italia/dropdown@1.0.0-beta.1
+  - @italia/autocomplete@1.0.0-beta.1
+  - @italia/notification@1.0.0-beta.1
+  - @italia/back-to-top@1.0.0-beta.1
+  - @italia/breadcrumbs@1.0.0-beta.1
+  - @italia/pagination@1.0.0-beta.1
+  - @italia/accordion@1.0.0-beta.1
+  - @italia/navscroll@1.0.0-beta.1
+  - @italia/skiplinks@1.0.0-beta.1
+  - @italia/checkbox@1.0.0-beta.1
+  - @italia/collapse@1.0.0-beta.1
+  - @italia/megamenu@1.0.0-beta.1
+  - @italia/progress@1.0.0-beta.1
+  - @italia/thumbnav@1.0.0-beta.1
+  - @italia/timeline@1.0.0-beta.1
+  - @italia/transfer@1.0.0-beta.1
+  - @italia/callout@1.0.0-beta.1
+  - @italia/popover@1.0.0-beta.1
+  - @italia/section@1.0.0-beta.1
+  - @italia/stepper@1.0.0-beta.1
+  - @italia/toolbar@1.0.0-beta.1
+  - @italia/tooltip@1.0.0-beta.1
+  - @italia/avatar@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/dimmer@1.0.0-beta.1
+  - @italia/header@1.0.0-beta.1
+  - @italia/rating@1.0.0-beta.1
+  - @italia/select@1.0.0-beta.1
+  - @italia/sticky@1.0.0-beta.1
+  - @italia/toggle@1.0.0-beta.1
+  - @italia/upload@1.0.0-beta.1
+  - @italia/input@1.0.0-beta.1
+  - @italia/modal@1.0.0-beta.1
+  - @italia/radio@1.0.0-beta.1
+  - @italia/video@1.0.0-beta.1
+  - @italia/card@1.0.0-beta.1
+  - @italia/chip@1.0.0-beta.1
+  - @italia/hero@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+  - @italia/tabs@1.0.0-beta.1
+  - @italia/alert@1.0.0-beta.1
+  - @italia/back@1.0.0-beta.1
+  - @italia/forward@1.0.0-beta.1
+
+### `dimmer`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `dropdown`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`2cb1023`](https://github.com/italia/dev-kit-italia/commit/2cb102330500ebe596a93e361cc8342a56fa7a3e) Thanks [@pnicolli](https://github.com/pnicolli)! - Added missing opening animation
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4), [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd), [`8583808`](https://github.com/italia/dev-kit-italia/commit/8583808a10437ff7dfc44a6ce5886315a7b35fa8)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/popover@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `forward`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `globals`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/i18n@1.0.0-beta.1
+
+### `header`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- [#507](https://github.com/italia/dev-kit-italia/pull/507) [`8583808`](https://github.com/italia/dev-kit-italia/commit/8583808a10437ff7dfc44a6ce5886315a7b35fa8) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fix header on mobile. Make optional to focus on close button on modal open.
+
+- Updated dependencies [[`2cb1023`](https://github.com/italia/dev-kit-italia/commit/2cb102330500ebe596a93e361cc8342a56fa7a3e), [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4), [`7df75f1`](https://github.com/italia/dev-kit-italia/commit/7df75f1ae0665be7c11043737ca019bef83e696f), [`8583808`](https://github.com/italia/dev-kit-italia/commit/8583808a10437ff7dfc44a6ce5886315a7b35fa8)]:
+  - @italia/dropdown@1.0.0-beta.1
+  - @italia/globals@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/modal@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `hero`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `i18n`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### `icon`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `input`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#485](https://github.com/italia/dev-kit-italia/pull/485) [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64) Thanks [@astagi](https://github.com/astagi)! - Updated to bootstrap-italia 3.0.0-beta.4
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `megamenu`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`2cb1023`](https://github.com/italia/dev-kit-italia/commit/2cb102330500ebe596a93e361cc8342a56fa7a3e), [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/dropdown@1.0.0-beta.1
+  - @italia/globals@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `modal`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#495](https://github.com/italia/dev-kit-italia/pull/495) [`7df75f1`](https://github.com/italia/dev-kit-italia/commit/7df75f1ae0665be7c11043737ca019bef83e696f) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fix dialog role announcement in `it-modal` with NVDA
+  - The initial focus now enters on `.modal-content` instead of the `[role="dialog"]` element. NVDA doesn't announce the role when focus lands on the dialog element itself ([nvaccess/nvda#8620](https://github.com/nvaccess/nvda/issues/8620)): users were told the name of the modal but not that it was a dialog, while VoiceOver, JAWS and Narrator announced it correctly. Entering on a descendant has the dialog announced as its ancestor, role included. `.modal-content` is a container and not a control, so its content is still read out after the announcement, as it was before.
+  - This also covers the mobile menus of `it-header` and `it-navscroll`, which are `it-modal` instances.
+  - Removed `role="document"` from `.modal-dialog`. It was the ARIA 1.0 pattern for letting screen readers switch back to browse mode inside a dialog, superseded by `aria-modal="true"`, and NVDA announced it as "document" right after the dialog role on entering the modal.
+  - Removed `#safari-focus-anchor`: it had been left unused since the VoiceOver iOS workarounds moved to the timers in `FocusTrapController`.
+
+- [#507](https://github.com/italia/dev-kit-italia/pull/507) [`8583808`](https://github.com/italia/dev-kit-italia/commit/8583808a10437ff7dfc44a6ce5886315a7b35fa8) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fix header on mobile. Make optional to focus on close button on modal open.
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `navscroll`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#485](https://github.com/italia/dev-kit-italia/pull/485) [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64) Thanks [@astagi](https://github.com/astagi)! - Updated to bootstrap-italia 3.0.0-beta.4
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4), [`7df75f1`](https://github.com/italia/dev-kit-italia/commit/7df75f1ae0665be7c11043737ca019bef83e696f), [`8583808`](https://github.com/italia/dev-kit-italia/commit/8583808a10437ff7dfc44a6ce5886315a7b35fa8)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/modal@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `notification`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+
+### `pagination`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `popover`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- [#507](https://github.com/italia/dev-kit-italia/pull/507) [`8583808`](https://github.com/italia/dev-kit-italia/commit/8583808a10437ff7dfc44a6ce5886315a7b35fa8) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fix header on mobile. Make optional to focus on close button on modal open.
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+
+### `progress`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `radio`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#485](https://github.com/italia/dev-kit-italia/pull/485) [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64) Thanks [@astagi](https://github.com/astagi)! - Updated to bootstrap-italia 3.0.0-beta.4
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `rating`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#485](https://github.com/italia/dev-kit-italia/pull/485) [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64) Thanks [@astagi](https://github.com/astagi)! - Updated to bootstrap-italia 3.0.0-beta.4
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4), [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/radio@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `section`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `select`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#485](https://github.com/italia/dev-kit-italia/pull/485) [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64) Thanks [@astagi](https://github.com/astagi)! - Updated to bootstrap-italia 3.0.0-beta.4
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `skiplinks`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `stepper`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `sticky`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `tabs`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+
+### `thumbnav`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `timeline`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `toggle`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#485](https://github.com/italia/dev-kit-italia/pull/485) [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64) Thanks [@astagi](https://github.com/astagi)! - Updated to bootstrap-italia 3.0.0-beta.4
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4), [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64)]:
+  - @italia/checkbox@1.0.0-beta.1
+  - @italia/globals@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+
+### `toolbar`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
+### `tooltip`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+
+### `transfer`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#485](https://github.com/italia/dev-kit-italia/pull/485) [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64) Thanks [@astagi](https://github.com/astagi)! - Updated to bootstrap-italia 3.0.0-beta.4
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `upload`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- [#485](https://github.com/italia/dev-kit-italia/pull/485) [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64) Thanks [@astagi](https://github.com/astagi)! - Updated to bootstrap-italia 3.0.0-beta.4
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4), [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd)]:
+  - @italia/progress@1.0.0-beta.1
+  - @italia/globals@1.0.0-beta.1
+  - @italia/avatar@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+### `video`
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4), [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64)]:
+  - @italia/checkbox@1.0.0-beta.1
+  - @italia/globals@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+## 1.0.0-beta.0
+
+### `accordion`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/button@1.0.0-beta.0
+  - @italia/collapse@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+### `alert`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `autocomplete`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+### `avatar`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+### `back`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `back-to-top`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `bottom-nav`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+  - @italia/sticky@1.0.0-beta.0
+
+### `breadcrumbs`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `button`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `callout`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/collapse@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+
+### `card`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `carousel`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/card@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+
+### `checkbox`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+
+### `chip`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/avatar@1.0.0-beta.0
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+### `collapse`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `dev-kit-italia`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/accordion@1.0.0-beta.0
+  - @italia/alert@1.0.0-beta.0
+  - @italia/autocomplete@1.0.0-beta.0
+  - @italia/avatar@1.0.0-beta.0
+  - @italia/back@1.0.0-beta.0
+  - @italia/back-to-top@1.0.0-beta.0
+  - @italia/bottom-nav@1.0.0-beta.0
+  - @italia/breadcrumbs@1.0.0-beta.0
+  - @italia/button@1.0.0-beta.0
+  - @italia/callout@1.0.0-beta.0
+  - @italia/card@1.0.0-beta.0
+  - @italia/carousel@1.0.0-beta.0
+  - @italia/checkbox@1.0.0-beta.0
+  - @italia/chip@1.0.0-beta.0
+  - @italia/collapse@1.0.0-beta.0
+  - @italia/dimmer@1.0.0-beta.0
+  - @italia/dropdown@1.0.0-beta.0
+  - @italia/forward@1.0.0-beta.0
+  - @italia/header@1.0.0-beta.0
+  - @italia/hero@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+  - @italia/input@1.0.0-beta.0
+  - @italia/megamenu@1.0.0-beta.0
+  - @italia/modal@1.0.0-beta.0
+  - @italia/navscroll@1.0.0-beta.0
+  - @italia/notification@1.0.0-beta.0
+  - @italia/pagination@1.0.0-beta.0
+  - @italia/popover@1.0.0-beta.0
+  - @italia/progress@1.0.0-beta.0
+  - @italia/radio@1.0.0-beta.0
+  - @italia/rating@1.0.0-beta.0
+  - @italia/section@1.0.0-beta.0
+  - @italia/select@1.0.0-beta.0
+  - @italia/skiplinks@1.0.0-beta.0
+  - @italia/stepper@1.0.0-beta.0
+  - @italia/sticky@1.0.0-beta.0
+  - @italia/tabs@1.0.0-beta.0
+  - @italia/thumbnav@1.0.0-beta.0
+  - @italia/timeline@1.0.0-beta.0
+  - @italia/toggle@1.0.0-beta.0
+  - @italia/toolbar@1.0.0-beta.0
+  - @italia/tooltip@1.0.0-beta.0
+  - @italia/transfer@1.0.0-beta.0
+  - @italia/upload@1.0.0-beta.0
+  - @italia/video@1.0.0-beta.0
+
+### `dimmer`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+### `dropdown`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+  - @italia/popover@1.0.0-beta.0
+
+### `forward`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `globals`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/i18n@1.0.0-beta.0
+
+### `header`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/button@1.0.0-beta.0
+  - @italia/dropdown@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+  - @italia/modal@1.0.0-beta.0
+
+### `hero`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `i18n`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### `icon`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `input`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+### `megamenu`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/button@1.0.0-beta.0
+  - @italia/dropdown@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+### `modal`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+### `navscroll`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+  - @italia/modal@1.0.0-beta.0
+
+### `notification`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+
+### `pagination`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `popover`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+
+### `progress`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `radio`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `rating`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+  - @italia/radio@1.0.0-beta.0
+
+### `section`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `select`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+### `skiplinks`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `stepper`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+### `sticky`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `tabs`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+
+### `thumbnav`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `timeline`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `toggle`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/checkbox@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+
+### `toolbar`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+
+### `tooltip`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/button@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+
+### `transfer`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+### `upload`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/avatar@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+  - @italia/progress@1.0.0-beta.0
+
+### `video`
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/button@1.0.0-beta.0
+  - @italia/checkbox@1.0.0-beta.0
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
 ## 1.0.0-alpha.9
 
 ### `accordion`
@@ -2393,6 +4247,4818 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - @italia/icon@1.0.0-alpha.3
   - @italia/i18n@1.0.0-alpha.3
 
+## 1.0.0-alpha.19
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/collapse@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+### `alert`
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add alert component (`it-alert`)
+  - New light-DOM enhancer for Bootstrap Italia's `.alert` markup: auto-sets `role="alert"` and maps the `variant` attribute to the correct `alert-{variant}` class.
+  - Sensible default behavior: fade + remove on `.btn-close` click, via a cancelable `it-alert-close` event and a public `close()` method — call `event.preventDefault()` to intercept the close (e.g. async confirmation) and `close()` later.
+  - Stories/MDX updated to wrap alert examples in `<it-alert variant>` and document the auto role/variant mapping and its accessibility implications.
+  - Focus on close: shifts to an adjacent alert's close button when one exists; otherwise falls back to a `tabindex`-bearing ancestor, and now further falls back to the nearest focusable element anywhere in the document — the common case in practice, since most usages don't add that ancestor. Previously focus was silently lost to `<body>` in that case.
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `autocomplete`
+
+### Patch Changes
+
+- [#452](https://github.com/italia/dev-kit-italia/pull/452) [`96498b1`](https://github.com/italia/dev-kit-italia/commit/96498b1918e1cd9a905e1388d8fd40e1d6d8c625) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Addressed screen reader findings from issue #43
+  - The assistive hint is now `aria-hidden="true"`, so it is announced once as the input's description (via `aria-describedby`) instead of being read a second time as a standalone element when navigating by element.
+  - The `role="status"` live region is now reset to empty after an option is selected, when the query drops below `minLength`, and when the listbox is dismissed (Escape/Tab/click-outside), so a stale "N results available" message is no longer reachable after the field is no longer searching.
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+### `avatar`
+
+### Minor Changes
+
+- [#464](https://github.com/italia/dev-kit-italia/pull/464) [`7f3551f`](https://github.com/italia/dev-kit-italia/commit/7f3551f6f2e015f0a7f4b252cdbc3859a8226903) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add tooltip support for avatar links: wrap `it-avatar` in `it-tooltip` (using its `trigger`/`content` slots) to show contextual info on hover/focus, matching the Bootstrap Italia "Avatar link con tooltip" pattern.
+  - `it-avatar` now forwards `it-aria-*` attributes to its rendered `<a>`/`<div>`, so `it-tooltip` can wire up `aria-describedby` on the real link.
+  - Fixed `it-avatar ~ span` CSS rules that were unintentionally applying list-item spacing to any sibling `<span>`, including a tooltip's `slot="content"` element.
+  - Added a new, separate "Avatar link con tooltip" story/example section (kept distinct from the plain "Avatar con link" section) across Storybook and all framework examples.
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+### `back`
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add back component (`it-back`)
+  - New light-DOM enhancer providing a default `history.back()` on click of `.go-back`, via a cancelable `it-back-navigate` event — call `event.preventDefault()` to run custom navigation logic instead (e.g. integrating with a framework router).
+  - Framework examples (vanilla, react, vue, svelte, angular) updated to demonstrate router-integrated back navigation.
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/sticky@1.0.0-alpha.19
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- [`5e0ecfc`](https://github.com/italia/dev-kit-italia/commit/5e0ecfc622bdafa22e471a5d7198d90a544260db) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed breadcrumbs items role
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/collapse@1.0.0-alpha.19
+
+### `card`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/card@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+
+### `chip`
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - `it-chip` now removes itself by default when its dismiss button is clicked, via a cancelable `it-chip-close` event and a new public `close()` method — call `event.preventDefault()` to intercept the removal (e.g. async confirmation) and `close()` later.
+
+  Focus on close: shifts to an adjacent chip's dismiss button, but only if that neighbor is also `dismissable` — a plain label or link chip sitting next to it is no longer treated as an equivalent "next item to remove". Falls back to a `tabindex`-bearing ancestor, and now further to the nearest focusable element anywhere in the document when no such ancestor exists (the common case in practice) — previously focus was silently lost to `<body>` in that case.
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`7f3551f`](https://github.com/italia/dev-kit-italia/commit/7f3551f6f2e015f0a7f4b252cdbc3859a8226903)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/avatar@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `dev-kit-italia`
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add alert component (`it-alert`)
+  - New light-DOM enhancer for Bootstrap Italia's `.alert` markup: auto-sets `role="alert"` and maps the `variant` attribute to the correct `alert-{variant}` class.
+  - Sensible default behavior: fade + remove on `.btn-close` click, via a cancelable `it-alert-close` event and a public `close()` method — call `event.preventDefault()` to intercept the close (e.g. async confirmation) and `close()` later.
+  - Stories/MDX updated to wrap alert examples in `<it-alert variant>` and document the auto role/variant mapping and its accessibility implications.
+  - Focus on close: shifts to an adjacent alert's close button when one exists; otherwise falls back to a `tabindex`-bearing ancestor, and now further falls back to the nearest focusable element anywhere in the document — the common case in practice, since most usages don't add that ancestor. Previously focus was silently lost to `<body>` in that case.
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add back component (`it-back`)
+  - New light-DOM enhancer providing a default `history.back()` on click of `.go-back`, via a cancelable `it-back-navigate` event — call `event.preventDefault()` to run custom navigation logic instead (e.g. integrating with a framework router).
+  - Framework examples (vanilla, react, vue, svelte, angular) updated to demonstrate router-integrated back navigation.
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add forward component (`it-forward`)
+  - New light-DOM enhancer providing a default smooth-scroll on link click, via a cancelable `it-forward-navigate` event — call `event.preventDefault()` to run custom navigation logic instead.
+  - Added an interactive "custom logic" canvas to the stories/MDX.
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - `it-chip` now removes itself by default when its dismiss button is clicked, via a cancelable `it-chip-close` event and a new public `close()` method — call `event.preventDefault()` to intercept the removal (e.g. async confirmation) and `close()` later.
+
+  Focus on close: shifts to an adjacent chip's dismiss button, but only if that neighbor is also `dismissable` — a plain label or link chip sitting next to it is no longer treated as an equivalent "next item to remove". Falls back to a `tabindex`-bearing ancestor, and now further to the nearest focusable element anywhere in the document when no such ancestor exists (the common case in practice) — previously focus was silently lost to `<body>` in that case.
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - `it-modal-open` and `it-modal-close` are now cancelable: calling `event.preventDefault()` stops the modal from opening/closing, so consumers can intercept the action and resume it later via `show()`/`hide()`. `toggle()` now delegates to `show()`/`hide()` so it respects the same cancellation.
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - `it-notification` now fires `it-notification-show` and `it-notification-close` custom events (not cancelable — show/close are always caller-initiated, so there was no real use case for blocking them). `it-notification-close` covers the close button, the auto-dismiss timeout and any programmatic `hide()` call.
+
+  Also fixed: dismissing a notification while focus is on its own close button no longer silently drops focus to `<body>`. Focus is restored to whatever was focused right before `show()` was called (typically the button that triggered it — there is no author-provided trigger slot to target like `it-modal` has), falling back to a `tabindex`-bearing ancestor and then to the nearest focusable element in the document if that original element is gone.
+
+- [#429](https://github.com/italia/dev-kit-italia/pull/429) [`97ad0e3`](https://github.com/italia/dev-kit-italia/commit/97ad0e3c888380d61ad3ad0680c875b65c4fa848) Thanks [@pnicolli](https://github.com/pnicolli)! - Renamed full.css to styles-for-migration.css
+
+- [#462](https://github.com/italia/dev-kit-italia/pull/462) [`1a8774e`](https://github.com/italia/dev-kit-italia/commit/1a8774eecc7eae5ef97ceb4cc93b0da273a68610) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added SSR documentation and a Next.js example app: how to avoid crashes and reach HTML-first hydration in Next.js, SvelteKit and other SSR frameworks (#360)
+
+- [#429](https://github.com/italia/dev-kit-italia/pull/429) [`97ad0e3`](https://github.com/italia/dev-kit-italia/commit/97ad0e3c888380d61ad3ad0680c875b65c4fa848) Thanks [@pnicolli](https://github.com/pnicolli)! - Added docs for migrating from bootstrap-italia
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add `commit(detail)` method to `it-transfer`, applying a previously cancelled `it-transfer` event (move to target, move back to source, or reset) without re-dispatching it — enables async confirmation patterns (API calls, user prompts) after `event.preventDefault()`, with no bypass flag needed.
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`aa77369`](https://github.com/italia/dev-kit-italia/commit/aa773695e73e24c05fe27db62a99b971f7fd3490), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`f9dd0a8`](https://github.com/italia/dev-kit-italia/commit/f9dd0a88f6ead92614b27a65bcbfc77553ab06c7), [`976ade9`](https://github.com/italia/dev-kit-italia/commit/976ade9c2cce7b54f97abf4f3e24129be7f626be), [`96498b1`](https://github.com/italia/dev-kit-italia/commit/96498b1918e1cd9a905e1388d8fd40e1d6d8c625), [`7d41b05`](https://github.com/italia/dev-kit-italia/commit/7d41b05d8ccf93a6096e1927bf3d0b14d647ee81), [`231ec99`](https://github.com/italia/dev-kit-italia/commit/231ec99eb950292f5040793d419b49ae30943d1e), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`5e0ecfc`](https://github.com/italia/dev-kit-italia/commit/5e0ecfc622bdafa22e471a5d7198d90a544260db), [`7f3551f`](https://github.com/italia/dev-kit-italia/commit/7f3551f6f2e015f0a7f4b252cdbc3859a8226903), [`1229840`](https://github.com/italia/dev-kit-italia/commit/1229840fe4d205da7d4b114f87d95462f6dd8256), [`812509a`](https://github.com/italia/dev-kit-italia/commit/812509a74574e01ff14b1c51232228381bfe6530), [`b2a220e`](https://github.com/italia/dev-kit-italia/commit/b2a220e413a514220a54b9bd9ff93887bba7c378), [`2cb911e`](https://github.com/italia/dev-kit-italia/commit/2cb911e970375e260010d5f1dd204eda5cab360a), [`7f3551f`](https://github.com/italia/dev-kit-italia/commit/7f3551f6f2e015f0a7f4b252cdbc3859a8226903), [`a413a25`](https://github.com/italia/dev-kit-italia/commit/a413a25137a6f483c171187e678748bb6c4c741a), [`7b23069`](https://github.com/italia/dev-kit-italia/commit/7b230696944bd32070dbadcb94e039ba4b4b9f19), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`10102b4`](https://github.com/italia/dev-kit-italia/commit/10102b4bd2a7fc90b0957858a54613898b309acb), [`46dab26`](https://github.com/italia/dev-kit-italia/commit/46dab266b9a210d0a5680d231bced9f9945c5a13), [`10102b4`](https://github.com/italia/dev-kit-italia/commit/10102b4bd2a7fc90b0957858a54613898b309acb)]:
+  - @italia/alert@1.0.0-alpha.19
+  - @italia/back@1.0.0-alpha.19
+  - @italia/forward@1.0.0-alpha.19
+  - @italia/notification@1.0.0-alpha.19
+  - @italia/chip@1.0.0-alpha.19
+  - @italia/toolbar@1.0.0-alpha.19
+  - @italia/hero@1.0.0-alpha.19
+  - @italia/autocomplete@1.0.0-alpha.19
+  - @italia/thumbnav@1.0.0-alpha.19
+  - @italia/header@1.0.0-alpha.19
+  - @italia/modal@1.0.0-alpha.19
+  - @italia/breadcrumbs@1.0.0-alpha.19
+  - @italia/tooltip@1.0.0-alpha.19
+  - @italia/timeline@1.0.0-alpha.19
+  - @italia/dropdown@1.0.0-alpha.19
+  - @italia/megamenu@1.0.0-alpha.19
+  - @italia/stepper@1.0.0-alpha.19
+  - @italia/avatar@1.0.0-alpha.19
+  - @italia/upload@1.0.0-alpha.19
+  - @italia/transfer@1.0.0-alpha.19
+  - @italia/navscroll@1.0.0-alpha.19
+  - @italia/accordion@1.0.0-alpha.19
+  - @italia/back-to-top@1.0.0-alpha.19
+  - @italia/bottom-nav@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/callout@1.0.0-alpha.19
+  - @italia/card@1.0.0-alpha.19
+  - @italia/carousel@1.0.0-alpha.19
+  - @italia/checkbox@1.0.0-alpha.19
+  - @italia/collapse@1.0.0-alpha.19
+  - @italia/dimmer@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+  - @italia/input@1.0.0-alpha.19
+  - @italia/pagination@1.0.0-alpha.19
+  - @italia/popover@1.0.0-alpha.19
+  - @italia/progress@1.0.0-alpha.19
+  - @italia/radio@1.0.0-alpha.19
+  - @italia/rating@1.0.0-alpha.19
+  - @italia/section@1.0.0-alpha.19
+  - @italia/select@1.0.0-alpha.19
+  - @italia/skiplinks@1.0.0-alpha.19
+  - @italia/sticky@1.0.0-alpha.19
+  - @italia/tabs@1.0.0-alpha.19
+  - @italia/toggle@1.0.0-alpha.19
+  - @italia/video@1.0.0-alpha.19
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+### `dropdown`
+
+### Patch Changes
+
+- [#453](https://github.com/italia/dev-kit-italia/pull/453) [`b2a220e`](https://github.com/italia/dev-kit-italia/commit/b2a220e413a514220a54b9bd9ff93887bba7c378) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed megamenu styles, focus and a11y axe tools
+
+- [#463](https://github.com/italia/dev-kit-italia/pull/463) [`7b23069`](https://github.com/italia/dev-kit-italia/commit/7b230696944bd32070dbadcb94e039ba4b4b9f19) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fixed dropdown not closing on a second click of its trigger when nested inside another component's shadow DOM (e.g. `it-toolbar-item`'s toolbar dropdown)
+
+- [#447](https://github.com/italia/dev-kit-italia/pull/447) [`46dab26`](https://github.com/italia/dev-kit-italia/commit/46dab266b9a210d0a5680d231bced9f9945c5a13) Thanks [@pnicolli](https://github.com/pnicolli)! - Improved dropdown documentation
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+  - @italia/popover@1.0.0-alpha.19
+
+### `forward`
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add forward component (`it-forward`)
+  - New light-DOM enhancer providing a default smooth-scroll on link click, via a cancelable `it-forward-navigate` event — call `event.preventDefault()` to run custom navigation logic instead.
+  - Added an interactive "custom logic" canvas to the stories/MDX.
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `globals`
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add shared `dispatchCancelable`, `focusableFallbackAncestor` and `nearestFocusableInDocument` utilities. `dispatchCancelable` dispatches a cancelable custom event and only runs the provided default action if `preventDefault()` was not called — this is now the shared convention behind the cancelable events in `it-alert`, `it-back`, `it-forward`, `it-chip`, `it-modal` and `it-transfer`. `it-tabs` and `it-upload` were migrated internally to use it, with no behavior change. `focusableFallbackAncestor` is also used by `it-notification` to restore focus on dismiss (see its own changeset) even though `it-notification` does not use `dispatchCancelable` itself — its show/close are always caller-initiated, so there was no real case for making them cancelable.
+
+  `nearestFocusableInDocument` is a new true last-resort fallback used by `it-alert`, `it-chip` and `it-notification`: when a self-removing/self-hiding component has neither an adjacent same-type element nor a `tabindex`-bearing ancestor to target, it now searches the whole document for the nearest focusable element instead of silently losing focus to `<body>` — the common real-world case, since most usages don't add that ancestor.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.19
+
+### `header`
+
+### Patch Changes
+
+- [#454](https://github.com/italia/dev-kit-italia/pull/454) [`231ec99`](https://github.com/italia/dev-kit-italia/commit/231ec99eb950292f5040793d419b49ae30943d1e) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed header mobile styles
+
+- [`812509a`](https://github.com/italia/dev-kit-italia/commit/812509a74574e01ff14b1c51232228381bfe6530) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed accessibility labels in header examples and stories
+
+- [#453](https://github.com/italia/dev-kit-italia/pull/453) [`b2a220e`](https://github.com/italia/dev-kit-italia/commit/b2a220e413a514220a54b9bd9ff93887bba7c378) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed megamenu styles, focus and a11y axe tools
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`b2a220e`](https://github.com/italia/dev-kit-italia/commit/b2a220e413a514220a54b9bd9ff93887bba7c378), [`7b23069`](https://github.com/italia/dev-kit-italia/commit/7b230696944bd32070dbadcb94e039ba4b4b9f19), [`46dab26`](https://github.com/italia/dev-kit-italia/commit/46dab266b9a210d0a5680d231bced9f9945c5a13)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/modal@1.0.0-alpha.19
+  - @italia/dropdown@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+### `hero`
+
+### Patch Changes
+
+- [#444](https://github.com/italia/dev-kit-italia/pull/444) [`976ade9`](https://github.com/italia/dev-kit-italia/commit/976ade9c2cce7b54f97abf4f3e24129be7f626be) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed a11y for aria-labelledby attribute
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+### `megamenu`
+
+### Patch Changes
+
+- [#453](https://github.com/italia/dev-kit-italia/pull/453) [`b2a220e`](https://github.com/italia/dev-kit-italia/commit/b2a220e413a514220a54b9bd9ff93887bba7c378) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed megamenu styles, focus and a11y axe tools
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`b2a220e`](https://github.com/italia/dev-kit-italia/commit/b2a220e413a514220a54b9bd9ff93887bba7c378), [`7b23069`](https://github.com/italia/dev-kit-italia/commit/7b230696944bd32070dbadcb94e039ba4b4b9f19), [`46dab26`](https://github.com/italia/dev-kit-italia/commit/46dab266b9a210d0a5680d231bced9f9945c5a13)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/dropdown@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+### `modal`
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - `it-modal-open` and `it-modal-close` are now cancelable: calling `event.preventDefault()` stops the modal from opening/closing, so consumers can intercept the action and resume it later via `show()`/`hide()`. `toggle()` now delegates to `show()`/`hide()` so it respects the same cancellation.
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/modal@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+### `notification`
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - `it-notification` now fires `it-notification-show` and `it-notification-close` custom events (not cancelable — show/close are always caller-initiated, so there was no real use case for blocking them). `it-notification-close` covers the close button, the auto-dismiss timeout and any programmatic `hide()` call.
+
+  Also fixed: dismissing a notification while focus is on its own close button no longer silently drops focus to `<body>`. Focus is restored to whatever was focused right before `show()` was called (typically the button that triggered it — there is no author-provided trigger slot to target like `it-modal` has), falling back to a `tabindex`-bearing ancestor and then to the nearest focusable element in the document if that original element is gone.
+
+### Patch Changes
+
+- [#457](https://github.com/italia/dev-kit-italia/pull/457) [`aa77369`](https://github.com/italia/dev-kit-italia/commit/aa773695e73e24c05fe27db62a99b971f7fd3490) Thanks [@pnicolli](https://github.com/pnicolli)! - Set default notification z-index
+
+- [`10102b4`](https://github.com/italia/dev-kit-italia/commit/10102b4bd2a7fc90b0957858a54613898b309acb) Thanks [@pnicolli](https://github.com/pnicolli)! - - Fixed notification announcements on NVDA and Jaws
+  - Improved announcements on several screen readers
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+  - @italia/radio@1.0.0-alpha.19
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `stepper`
+
+### Patch Changes
+
+- [`2cb911e`](https://github.com/italia/dev-kit-italia/commit/2cb911e970375e260010d5f1dd204eda5cab360a) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed focus on save button and dark mode styles when js is disabled
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+
+### `thumbnav`
+
+### Minor Changes
+
+- [#450](https://github.com/italia/dev-kit-italia/pull/450) [`7d41b05`](https://github.com/italia/dev-kit-italia/commit/7d41b05d8ccf93a6096e1927bf3d0b14d647ee81) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add `active` prop to `it-thumbnav-item` and fix grid story layouts
+  - `it-thumbnav-item` now accepts an `active` boolean attribute/property to indicate the current item. The previous pattern of adding `.active` to the slotted anchor still works for backward compatibility.
+  - Fixed broken Storybook layout for the fixed-grid and auto-grid stories caused by `#storybook-root { width: fit-content }` — the three grid stories now use the `w-100` page layout so flex-basis percentages and fixed widths have a real container to reference.
+
+### Patch Changes
+
+- [`10102b4`](https://github.com/italia/dev-kit-italia/commit/10102b4bd2a7fc90b0957858a54613898b309acb) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed a11y false positives with element roles to clean up test results
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `timeline`
+
+### Patch Changes
+
+- [#451](https://github.com/italia/dev-kit-italia/pull/451) [`1229840`](https://github.com/italia/dev-kit-italia/commit/1229840fe4d205da7d4b114f87d95462f6dd8256) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fix multiple a11y issues in timeline (closes #71):
+  - Classic timeline examples: set `heading-level="h4"` on `it-card` inside `it-timeline-element heading-level="h3"` to restore correct heading hierarchy across all framework examples and Storybook docs
+  - Docs: fix accessibility callout that incorrectly referenced `it-breadcrumbs` instead of `it-timeline`
+  - Point-list: remove the extra `<div class="timeline-point">` wrapper from shadow DOM — the host element (`role="listitem"`) is now the flex row itself, removing a spurious div between the `ol`/`ul` and row content
+  - Point-list: add `role="list"` to the rendered `ol`/`ul` to preserve Safari list semantics after `list-style: none` (same fix as bottom-nav #428); replace the no-op `ol::marker` hack
+  - Classic timeline pin badge: pill border-radius and monospace font
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/checkbox@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+
+### `toolbar`
+
+### Patch Changes
+
+- [#455](https://github.com/italia/dev-kit-italia/pull/455) [`f9dd0a8`](https://github.com/italia/dev-kit-italia/commit/f9dd0a88f6ead92614b27a65bcbfc77553ab06c7) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fix a11y of toolbar role and listitem role
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+
+### `tooltip`
+
+### Patch Changes
+
+- [#464](https://github.com/italia/dev-kit-italia/pull/464) [`7f3551f`](https://github.com/italia/dev-kit-italia/commit/7f3551f6f2e015f0a7f4b252cdbc3859a8226903) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fix `it-tooltip` host to use `display: inline-flex` instead of the browser default inline box, so it stays vertically aligned with sibling elements when used as a flex item (e.g. wrapping an `it-avatar` in a row of avatars).
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+
+### `transfer`
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add `commit(detail)` method to `it-transfer`, applying a previously cancelled `it-transfer` event (move to target, move back to source, or reset) without re-dispatching it — enables async confirmation patterns (API calls, user prompts) after `event.preventDefault()`, with no bypass flag needed.
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+### `upload`
+
+### Minor Changes
+
+- [#449](https://github.com/italia/dev-kit-italia/pull/449) [`a413a25`](https://github.com/italia/dev-kit-italia/commit/a413a25137a6f483c171187e678748bb6c4c741a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Rework markup and styles following https://scottaohara.github.io/a11y_styled_form_controls/src/file-upload/ instead of copying BSI approach
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832), [`7f3551f`](https://github.com/italia/dev-kit-italia/commit/7f3551f6f2e015f0a7f4b252cdbc3859a8226903)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/avatar@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+  - @italia/progress@1.0.0-alpha.19
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/button@1.0.0-alpha.19
+  - @italia/checkbox@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+## 1.0.0-alpha.18
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.18
+  - @italia/collapse@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
+### `avatar`
+
+### Minor Changes
+
+- [#437](https://github.com/italia/dev-kit-italia/pull/437) [`5cde271`](https://github.com/italia/dev-kit-italia/commit/5cde2712aad88ac8a16c69266e9c7f8826d11cf3) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fix avatar rendering differences vs Bootstrap Italia (#431):
+  - Presence/status dots now use the per-size dot offset/size, so they sit correctly on the circle edge instead of too far inward.
+  - The "+N" group balloon no longer shows the dropdown expand caret, keeping the number centred. Adds a `hide-expand-icon` property to `it-dropdown`.
+  - The avatar "+N" dropdown menu now centres its arrow on the trigger. Adds an opt-in `center-arrow` property to `it-dropdown` / `it-popover` (standard dropdowns keep the existing fixed notch position).
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `bottom-nav`
+
+### Minor Changes
+
+- [#428](https://github.com/italia/dev-kit-italia/pull/428) [`7b28fbb`](https://github.com/italia/dev-kit-italia/commit/7b28fbb179cc20f7bb7cfbdb00a547807087891b) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Remove custom styling for li elements in nav
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/sticky@1.0.0-alpha.18
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+
+### `card`
+
+### Minor Changes
+
+- [#443](https://github.com/italia/dev-kit-italia/pull/443) [`2e97096`](https://github.com/italia/dev-kit-italia/commit/2e970961ebe5f2bfac050b445b81e88cdee75487) Thanks [@pnicolli](https://github.com/pnicolli)! - Added `heading-size` property to the card component
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `carousel`
+
+### Minor Changes
+
+- [#423](https://github.com/italia/dev-kit-italia/pull/423) [`855df3c`](https://github.com/italia/dev-kit-italia/commit/855df3c81a5c9037d1b706ae123ecafb3eb5b3a3) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Update carousel Storybook, examples, resolved styling issues, fix unique landmarks violations
+
+### Patch Changes
+
+- Updated dependencies [[`2e97096`](https://github.com/italia/dev-kit-italia/commit/2e970961ebe5f2bfac050b445b81e88cdee75487)]:
+  - @italia/card@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`5cde271`](https://github.com/italia/dev-kit-italia/commit/5cde2712aad88ac8a16c69266e9c7f8826d11cf3)]:
+  - @italia/avatar@1.0.0-alpha.18
+  - @italia/button@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `dev-kit-italia`
+
+### Minor Changes
+
+- [#423](https://github.com/italia/dev-kit-italia/pull/423) [`855df3c`](https://github.com/italia/dev-kit-italia/commit/855df3c81a5c9037d1b706ae123ecafb3eb5b3a3) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Update carousel Storybook, examples, resolved styling issues, fix unique landmarks violations
+
+- [#370](https://github.com/italia/dev-kit-italia/pull/370) [`b6142ed`](https://github.com/italia/dev-kit-italia/commit/b6142ed9ec3fc22daca2810346aab846c04f1287) Thanks [@pnicolli](https://github.com/pnicolli)! - Added `it-stepper` component
+
+### Patch Changes
+
+- Updated dependencies [[`23073ff`](https://github.com/italia/dev-kit-italia/commit/23073ff55d4f1606e723bdd42db7c64bc4c8a141), [`5cde271`](https://github.com/italia/dev-kit-italia/commit/5cde2712aad88ac8a16c69266e9c7f8826d11cf3), [`855df3c`](https://github.com/italia/dev-kit-italia/commit/855df3c81a5c9037d1b706ae123ecafb3eb5b3a3), [`2e97096`](https://github.com/italia/dev-kit-italia/commit/2e970961ebe5f2bfac050b445b81e88cdee75487), [`7c794fd`](https://github.com/italia/dev-kit-italia/commit/7c794fde49f70c8a42e63fa8d1123f14b4d52f21), [`b6142ed`](https://github.com/italia/dev-kit-italia/commit/b6142ed9ec3fc22daca2810346aab846c04f1287), [`7b28fbb`](https://github.com/italia/dev-kit-italia/commit/7b28fbb179cc20f7bb7cfbdb00a547807087891b), [`4279133`](https://github.com/italia/dev-kit-italia/commit/42791332cab4e9fbe0bbae5dec23507f23b84354), [`51d3b5b`](https://github.com/italia/dev-kit-italia/commit/51d3b5b91fa6b39d227282c952e503696b0131ef)]:
+  - @italia/upload@1.0.0-alpha.18
+  - @italia/avatar@1.0.0-alpha.18
+  - @italia/dropdown@1.0.0-alpha.18
+  - @italia/popover@1.0.0-alpha.18
+  - @italia/carousel@1.0.0-alpha.18
+  - @italia/card@1.0.0-alpha.18
+  - @italia/dimmer@1.0.0-alpha.18
+  - @italia/stepper@1.0.0-alpha.18
+  - @italia/bottom-nav@1.0.0-alpha.18
+  - @italia/select@1.0.0-alpha.18
+  - @italia/section@1.0.0-alpha.18
+  - @italia/chip@1.0.0-alpha.18
+  - @italia/header@1.0.0-alpha.18
+  - @italia/megamenu@1.0.0-alpha.18
+  - @italia/accordion@1.0.0-alpha.18
+  - @italia/autocomplete@1.0.0-alpha.18
+  - @italia/back-to-top@1.0.0-alpha.18
+  - @italia/breadcrumbs@1.0.0-alpha.18
+  - @italia/button@1.0.0-alpha.18
+  - @italia/callout@1.0.0-alpha.18
+  - @italia/checkbox@1.0.0-alpha.18
+  - @italia/collapse@1.0.0-alpha.18
+  - @italia/hero@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+  - @italia/input@1.0.0-alpha.18
+  - @italia/modal@1.0.0-alpha.18
+  - @italia/navscroll@1.0.0-alpha.18
+  - @italia/notification@1.0.0-alpha.18
+  - @italia/pagination@1.0.0-alpha.18
+  - @italia/progress@1.0.0-alpha.18
+  - @italia/radio@1.0.0-alpha.18
+  - @italia/rating@1.0.0-alpha.18
+  - @italia/skiplinks@1.0.0-alpha.18
+  - @italia/sticky@1.0.0-alpha.18
+  - @italia/tabs@1.0.0-alpha.18
+  - @italia/timeline@1.0.0-alpha.18
+  - @italia/toggle@1.0.0-alpha.18
+  - @italia/thumbnav@1.0.0-alpha.18
+  - @italia/toolbar@1.0.0-alpha.18
+  - @italia/tooltip@1.0.0-alpha.18
+  - @italia/transfer@1.0.0-alpha.18
+  - @italia/video@1.0.0-alpha.18
+
+### `dimmer`
+
+### Patch Changes
+
+- [#438](https://github.com/italia/dev-kit-italia/pull/438) [`7c794fd`](https://github.com/italia/dev-kit-italia/commit/7c794fde49f70c8a42e63fa8d1123f14b4d52f21) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fixed browser-specific quirks with the accessibility trees
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
+### `dropdown`
+
+### Minor Changes
+
+- [#437](https://github.com/italia/dev-kit-italia/pull/437) [`5cde271`](https://github.com/italia/dev-kit-italia/commit/5cde2712aad88ac8a16c69266e9c7f8826d11cf3) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fix avatar rendering differences vs Bootstrap Italia (#431):
+  - Presence/status dots now use the per-size dot offset/size, so they sit correctly on the circle edge instead of too far inward.
+  - The "+N" group balloon no longer shows the dropdown expand caret, keeping the number centred. Adds a `hide-expand-icon` property to `it-dropdown`.
+  - The avatar "+N" dropdown menu now centres its arrow on the trigger. Adds an opt-in `center-arrow` property to `it-dropdown` / `it-popover` (standard dropdowns keep the existing fixed notch position).
+
+### Patch Changes
+
+- Updated dependencies [[`5cde271`](https://github.com/italia/dev-kit-italia/commit/5cde2712aad88ac8a16c69266e9c7f8826d11cf3)]:
+  - @italia/popover@1.0.0-alpha.18
+  - @italia/button@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.18
+
+### `header`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`5cde271`](https://github.com/italia/dev-kit-italia/commit/5cde2712aad88ac8a16c69266e9c7f8826d11cf3)]:
+  - @italia/dropdown@1.0.0-alpha.18
+  - @italia/button@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+  - @italia/modal@1.0.0-alpha.18
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
+### `megamenu`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`5cde271`](https://github.com/italia/dev-kit-italia/commit/5cde2712aad88ac8a16c69266e9c7f8826d11cf3)]:
+  - @italia/dropdown@1.0.0-alpha.18
+  - @italia/button@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+  - @italia/modal@1.0.0-alpha.18
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `popover`
+
+### Minor Changes
+
+- [#437](https://github.com/italia/dev-kit-italia/pull/437) [`5cde271`](https://github.com/italia/dev-kit-italia/commit/5cde2712aad88ac8a16c69266e9c7f8826d11cf3) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fix avatar rendering differences vs Bootstrap Italia (#431):
+  - Presence/status dots now use the per-size dot offset/size, so they sit correctly on the circle edge instead of too far inward.
+  - The "+N" group balloon no longer shows the dropdown expand caret, keeping the number centred. Adds a `hide-expand-icon` property to `it-dropdown`.
+  - The avatar "+N" dropdown menu now centres its arrow on the trigger. Adds an opt-in `center-arrow` property to `it-dropdown` / `it-popover` (standard dropdowns keep the existing fixed notch position).
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+  - @italia/radio@1.0.0-alpha.18
+
+### `section`
+
+### Patch Changes
+
+- [#425](https://github.com/italia/dev-kit-italia/pull/425) [`51d3b5b`](https://github.com/italia/dev-kit-italia/commit/51d3b5b91fa6b39d227282c952e503696b0131ef) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fix: position and z-index for containers in it-section
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `select`
+
+### Patch Changes
+
+- [`4279133`](https://github.com/italia/dev-kit-italia/commit/42791332cab4e9fbe0bbae5dec23507f23b84354) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fixed select lineheight, because in real form is height was different from input
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `stepper`
+
+### Minor Changes
+
+- [#370](https://github.com/italia/dev-kit-italia/pull/370) [`b6142ed`](https://github.com/italia/dev-kit-italia/commit/b6142ed9ec3fc22daca2810346aab846c04f1287) Thanks [@pnicolli](https://github.com/pnicolli)! - Added `it-stepper` component
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+
+### `toolbar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
+### `upload`
+
+### Minor Changes
+
+- [#424](https://github.com/italia/dev-kit-italia/pull/424) [`23073ff`](https://github.com/italia/dev-kit-italia/commit/23073ff55d4f1606e723bdd42db7c64bc4c8a141) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Resolve a11y issues for it-upload-avatar and it-upload-drag-drop in form validation partecipation
+
+### Patch Changes
+
+- Updated dependencies [[`5cde271`](https://github.com/italia/dev-kit-italia/commit/5cde2712aad88ac8a16c69266e9c7f8826d11cf3)]:
+  - @italia/avatar@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+  - @italia/progress@1.0.0-alpha.18
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.18
+  - @italia/checkbox@1.0.0-alpha.18
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
+## 1.0.0-alpha.17
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/collapse@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/sticky@1.0.0-alpha.17
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+
+### `card`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/card@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.17
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `dev-kit-italia`
+
+### Minor Changes
+
+- [`be1fa1d`](https://github.com/italia/dev-kit-italia/commit/be1fa1d984353281e83c202293a351ac482fccb6) Thanks [@pnicolli](https://github.com/pnicolli)! - Upgraded bootstrap-italia to version 3.0.0-beta.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/accordion@1.0.0-alpha.17
+  - @italia/autocomplete@1.0.0-alpha.17
+  - @italia/avatar@1.0.0-alpha.17
+  - @italia/back-to-top@1.0.0-alpha.17
+  - @italia/bottom-nav@1.0.0-alpha.17
+  - @italia/breadcrumbs@1.0.0-alpha.17
+  - @italia/button@1.0.0-alpha.17
+  - @italia/callout@1.0.0-alpha.17
+  - @italia/card@1.0.0-alpha.17
+  - @italia/carousel@1.0.0-alpha.17
+  - @italia/checkbox@1.0.0-alpha.17
+  - @italia/chip@1.0.0-alpha.17
+  - @italia/collapse@1.0.0-alpha.17
+  - @italia/dimmer@1.0.0-alpha.17
+  - @italia/dropdown@1.0.0-alpha.17
+  - @italia/header@1.0.0-alpha.17
+  - @italia/hero@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+  - @italia/input@1.0.0-alpha.17
+  - @italia/megamenu@1.0.0-alpha.17
+  - @italia/modal@1.0.0-alpha.17
+  - @italia/navscroll@1.0.0-alpha.17
+  - @italia/notification@1.0.0-alpha.17
+  - @italia/pagination@1.0.0-alpha.17
+  - @italia/popover@1.0.0-alpha.17
+  - @italia/progress@1.0.0-alpha.17
+  - @italia/radio@1.0.0-alpha.17
+  - @italia/rating@1.0.0-alpha.17
+  - @italia/section@1.0.0-alpha.17
+  - @italia/select@1.0.0-alpha.17
+  - @italia/skiplinks@1.0.0-alpha.17
+  - @italia/sticky@1.0.0-alpha.17
+  - @italia/tabs@1.0.0-alpha.17
+  - @italia/timeline@1.0.0-alpha.17
+  - @italia/toggle@1.0.0-alpha.17
+  - @italia/thumbnav@1.0.0-alpha.17
+  - @italia/toolbar@1.0.0-alpha.17
+  - @italia/tooltip@1.0.0-alpha.17
+  - @italia/transfer@1.0.0-alpha.17
+  - @italia/upload@1.0.0-alpha.17
+  - @italia/video@1.0.0-alpha.17
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `dropdown`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+  - @italia/popover@1.0.0-alpha.17
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.17
+
+### `header`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/dropdown@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+  - @italia/modal@1.0.0-alpha.17
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `megamenu`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/dropdown@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+  - @italia/modal@1.0.0-alpha.17
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+  - @italia/radio@1.0.0-alpha.17
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+
+### `toolbar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+### `upload`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+  - @italia/progress@1.0.0-alpha.17
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.17
+  - @italia/checkbox@1.0.0-alpha.17
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+## 1.0.0-alpha.16
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.16
+  - @italia/collapse@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/sticky@1.0.0-alpha.16
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+
+### `card`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/card@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.16
+  - @italia/button@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `dev-kit-italia`
+
+### Minor Changes
+
+- [`22f9430`](https://github.com/italia/dev-kit-italia/commit/22f94308513ed418b1e988f56227fd740f266428) Thanks [@pnicolli](https://github.com/pnicolli)! - Added `w-33` and `w-66` classes. Added responsive variants for the `w-\*` classes.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/accordion@1.0.0-alpha.16
+  - @italia/autocomplete@1.0.0-alpha.16
+  - @italia/avatar@1.0.0-alpha.16
+  - @italia/back-to-top@1.0.0-alpha.16
+  - @italia/bottom-nav@1.0.0-alpha.16
+  - @italia/breadcrumbs@1.0.0-alpha.16
+  - @italia/button@1.0.0-alpha.16
+  - @italia/callout@1.0.0-alpha.16
+  - @italia/card@1.0.0-alpha.16
+  - @italia/carousel@1.0.0-alpha.16
+  - @italia/checkbox@1.0.0-alpha.16
+  - @italia/chip@1.0.0-alpha.16
+  - @italia/collapse@1.0.0-alpha.16
+  - @italia/dimmer@1.0.0-alpha.16
+  - @italia/dropdown@1.0.0-alpha.16
+  - @italia/header@1.0.0-alpha.16
+  - @italia/hero@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+  - @italia/input@1.0.0-alpha.16
+  - @italia/megamenu@1.0.0-alpha.16
+  - @italia/modal@1.0.0-alpha.16
+  - @italia/navscroll@1.0.0-alpha.16
+  - @italia/notification@1.0.0-alpha.16
+  - @italia/pagination@1.0.0-alpha.16
+  - @italia/popover@1.0.0-alpha.16
+  - @italia/progress@1.0.0-alpha.16
+  - @italia/radio@1.0.0-alpha.16
+  - @italia/rating@1.0.0-alpha.16
+  - @italia/section@1.0.0-alpha.16
+  - @italia/select@1.0.0-alpha.16
+  - @italia/skiplinks@1.0.0-alpha.16
+  - @italia/sticky@1.0.0-alpha.16
+  - @italia/tabs@1.0.0-alpha.16
+  - @italia/timeline@1.0.0-alpha.16
+  - @italia/toggle@1.0.0-alpha.16
+  - @italia/thumbnav@1.0.0-alpha.16
+  - @italia/toolbar@1.0.0-alpha.16
+  - @italia/tooltip@1.0.0-alpha.16
+  - @italia/transfer@1.0.0-alpha.16
+  - @italia/upload@1.0.0-alpha.16
+  - @italia/video@1.0.0-alpha.16
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+
+### `dropdown`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+  - @italia/popover@1.0.0-alpha.16
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.16
+
+### `header`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.16
+  - @italia/dropdown@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+  - @italia/modal@1.0.0-alpha.16
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+
+### `megamenu`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.16
+  - @italia/dropdown@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+  - @italia/modal@1.0.0-alpha.16
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+  - @italia/radio@1.0.0-alpha.16
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+
+### `toolbar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+
+### `upload`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+  - @italia/progress@1.0.0-alpha.16
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.16
+  - @italia/checkbox@1.0.0-alpha.16
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+
+## 1.0.0-alpha.15
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.15
+  - @italia/collapse@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+
+### `autocomplete`
+
+### Patch Changes
+
+- [`5a955c2`](https://github.com/italia/dev-kit-italia/commit/5a955c285a2a25d79e40d3058d6b45be6c44c82d) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - enable attribute it-aria-controls on it-autocomplete component
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/sticky@1.0.0-alpha.15
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+
+### `card`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/card@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.15
+  - @italia/button@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`5a955c2`](https://github.com/italia/dev-kit-italia/commit/5a955c285a2a25d79e40d3058d6b45be6c44c82d)]:
+  - @italia/autocomplete@1.0.0-alpha.15
+  - @italia/accordion@1.0.0-alpha.15
+  - @italia/avatar@1.0.0-alpha.15
+  - @italia/back-to-top@1.0.0-alpha.15
+  - @italia/bottom-nav@1.0.0-alpha.15
+  - @italia/breadcrumbs@1.0.0-alpha.15
+  - @italia/button@1.0.0-alpha.15
+  - @italia/callout@1.0.0-alpha.15
+  - @italia/card@1.0.0-alpha.15
+  - @italia/carousel@1.0.0-alpha.15
+  - @italia/checkbox@1.0.0-alpha.15
+  - @italia/chip@1.0.0-alpha.15
+  - @italia/collapse@1.0.0-alpha.15
+  - @italia/dimmer@1.0.0-alpha.15
+  - @italia/dropdown@1.0.0-alpha.15
+  - @italia/header@1.0.0-alpha.15
+  - @italia/hero@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+  - @italia/input@1.0.0-alpha.15
+  - @italia/megamenu@1.0.0-alpha.15
+  - @italia/modal@1.0.0-alpha.15
+  - @italia/navscroll@1.0.0-alpha.15
+  - @italia/notification@1.0.0-alpha.15
+  - @italia/pagination@1.0.0-alpha.15
+  - @italia/popover@1.0.0-alpha.15
+  - @italia/progress@1.0.0-alpha.15
+  - @italia/radio@1.0.0-alpha.15
+  - @italia/rating@1.0.0-alpha.15
+  - @italia/section@1.0.0-alpha.15
+  - @italia/select@1.0.0-alpha.15
+  - @italia/skiplinks@1.0.0-alpha.15
+  - @italia/sticky@1.0.0-alpha.15
+  - @italia/tabs@1.0.0-alpha.15
+  - @italia/timeline@1.0.0-alpha.15
+  - @italia/toggle@1.0.0-alpha.15
+  - @italia/thumbnav@1.0.0-alpha.15
+  - @italia/toolbar@1.0.0-alpha.15
+  - @italia/tooltip@1.0.0-alpha.15
+  - @italia/transfer@1.0.0-alpha.15
+  - @italia/upload@1.0.0-alpha.15
+  - @italia/video@1.0.0-alpha.15
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+
+### `dropdown`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+  - @italia/popover@1.0.0-alpha.15
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.15
+
+### `header`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.15
+  - @italia/dropdown@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+  - @italia/modal@1.0.0-alpha.15
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+
+### `megamenu`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.15
+  - @italia/dropdown@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+  - @italia/modal@1.0.0-alpha.15
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+  - @italia/radio@1.0.0-alpha.15
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+
+### `toolbar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+
+### `upload`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+  - @italia/progress@1.0.0-alpha.15
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.15
+  - @italia/checkbox@1.0.0-alpha.15
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+
+## 1.0.0-alpha.14
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.14
+  - @italia/collapse@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/sticky@1.0.0-alpha.14
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+
+### `card`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `carousel`
+
+### Patch Changes
+
+- [`49ecd58`](https://github.com/italia/dev-kit-italia/commit/49ecd5851d03ba0f02ab054488d5e651be28e80f) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fix it-carousel-slide width in single image variant
+
+- Updated dependencies []:
+  - @italia/card@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.14
+  - @italia/button@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`49ecd58`](https://github.com/italia/dev-kit-italia/commit/49ecd5851d03ba0f02ab054488d5e651be28e80f)]:
+  - @italia/carousel@1.0.0-alpha.14
+  - @italia/accordion@1.0.0-alpha.14
+  - @italia/autocomplete@1.0.0-alpha.14
+  - @italia/avatar@1.0.0-alpha.14
+  - @italia/back-to-top@1.0.0-alpha.14
+  - @italia/bottom-nav@1.0.0-alpha.14
+  - @italia/breadcrumbs@1.0.0-alpha.14
+  - @italia/button@1.0.0-alpha.14
+  - @italia/callout@1.0.0-alpha.14
+  - @italia/card@1.0.0-alpha.14
+  - @italia/checkbox@1.0.0-alpha.14
+  - @italia/chip@1.0.0-alpha.14
+  - @italia/collapse@1.0.0-alpha.14
+  - @italia/dimmer@1.0.0-alpha.14
+  - @italia/dropdown@1.0.0-alpha.14
+  - @italia/header@1.0.0-alpha.14
+  - @italia/hero@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+  - @italia/input@1.0.0-alpha.14
+  - @italia/megamenu@1.0.0-alpha.14
+  - @italia/modal@1.0.0-alpha.14
+  - @italia/navscroll@1.0.0-alpha.14
+  - @italia/notification@1.0.0-alpha.14
+  - @italia/pagination@1.0.0-alpha.14
+  - @italia/popover@1.0.0-alpha.14
+  - @italia/progress@1.0.0-alpha.14
+  - @italia/radio@1.0.0-alpha.14
+  - @italia/rating@1.0.0-alpha.14
+  - @italia/section@1.0.0-alpha.14
+  - @italia/select@1.0.0-alpha.14
+  - @italia/skiplinks@1.0.0-alpha.14
+  - @italia/sticky@1.0.0-alpha.14
+  - @italia/tabs@1.0.0-alpha.14
+  - @italia/timeline@1.0.0-alpha.14
+  - @italia/toggle@1.0.0-alpha.14
+  - @italia/thumbnav@1.0.0-alpha.14
+  - @italia/toolbar@1.0.0-alpha.14
+  - @italia/tooltip@1.0.0-alpha.14
+  - @italia/transfer@1.0.0-alpha.14
+  - @italia/upload@1.0.0-alpha.14
+  - @italia/video@1.0.0-alpha.14
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+
+### `dropdown`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+  - @italia/popover@1.0.0-alpha.14
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.14
+
+### `header`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.14
+  - @italia/dropdown@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+  - @italia/modal@1.0.0-alpha.14
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+
+### `megamenu`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.14
+  - @italia/dropdown@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+  - @italia/modal@1.0.0-alpha.14
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+  - @italia/radio@1.0.0-alpha.14
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+
+### `toolbar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+
+### `upload`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+  - @italia/progress@1.0.0-alpha.14
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.14
+  - @italia/checkbox@1.0.0-alpha.14
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+
+## 1.0.0-alpha.13
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.13
+  - @italia/collapse@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/sticky@1.0.0-alpha.13
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+
+### `card`
+
+### Minor Changes
+
+- [`a225c54`](https://github.com/italia/dev-kit-italia/commit/a225c54a737a3c31e489706e7aa4a9c7b5e1cce7) Thanks [@pnicolli](https://github.com/pnicolli)! - Added address line in location cards
+
+### Patch Changes
+
+- [`29c534c`](https://github.com/italia/dev-kit-italia/commit/29c534c4792a0bc3fd10d596b494e360713d2c25) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed variant 'location' to have border-top on footer
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a225c54`](https://github.com/italia/dev-kit-italia/commit/a225c54a737a3c31e489706e7aa4a9c7b5e1cce7), [`29c534c`](https://github.com/italia/dev-kit-italia/commit/29c534c4792a0bc3fd10d596b494e360713d2c25)]:
+  - @italia/card@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.13
+  - @italia/button@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a225c54`](https://github.com/italia/dev-kit-italia/commit/a225c54a737a3c31e489706e7aa4a9c7b5e1cce7), [`29c534c`](https://github.com/italia/dev-kit-italia/commit/29c534c4792a0bc3fd10d596b494e360713d2c25)]:
+  - @italia/card@1.0.0-alpha.13
+  - @italia/accordion@1.0.0-alpha.13
+  - @italia/autocomplete@1.0.0-alpha.13
+  - @italia/avatar@1.0.0-alpha.13
+  - @italia/back-to-top@1.0.0-alpha.13
+  - @italia/bottom-nav@1.0.0-alpha.13
+  - @italia/breadcrumbs@1.0.0-alpha.13
+  - @italia/button@1.0.0-alpha.13
+  - @italia/callout@1.0.0-alpha.13
+  - @italia/carousel@1.0.0-alpha.13
+  - @italia/checkbox@1.0.0-alpha.13
+  - @italia/chip@1.0.0-alpha.13
+  - @italia/collapse@1.0.0-alpha.13
+  - @italia/dimmer@1.0.0-alpha.13
+  - @italia/dropdown@1.0.0-alpha.13
+  - @italia/header@1.0.0-alpha.13
+  - @italia/hero@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+  - @italia/input@1.0.0-alpha.13
+  - @italia/megamenu@1.0.0-alpha.13
+  - @italia/modal@1.0.0-alpha.13
+  - @italia/navscroll@1.0.0-alpha.13
+  - @italia/notification@1.0.0-alpha.13
+  - @italia/pagination@1.0.0-alpha.13
+  - @italia/popover@1.0.0-alpha.13
+  - @italia/progress@1.0.0-alpha.13
+  - @italia/radio@1.0.0-alpha.13
+  - @italia/rating@1.0.0-alpha.13
+  - @italia/section@1.0.0-alpha.13
+  - @italia/select@1.0.0-alpha.13
+  - @italia/skiplinks@1.0.0-alpha.13
+  - @italia/sticky@1.0.0-alpha.13
+  - @italia/tabs@1.0.0-alpha.13
+  - @italia/timeline@1.0.0-alpha.13
+  - @italia/toggle@1.0.0-alpha.13
+  - @italia/thumbnav@1.0.0-alpha.13
+  - @italia/toolbar@1.0.0-alpha.13
+  - @italia/tooltip@1.0.0-alpha.13
+  - @italia/transfer@1.0.0-alpha.13
+  - @italia/upload@1.0.0-alpha.13
+  - @italia/video@1.0.0-alpha.13
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+
+### `dropdown`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+  - @italia/popover@1.0.0-alpha.13
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.13
+
+### `header`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.13
+  - @italia/dropdown@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+  - @italia/modal@1.0.0-alpha.13
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+
+### `megamenu`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.13
+  - @italia/dropdown@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+  - @italia/modal@1.0.0-alpha.13
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+  - @italia/radio@1.0.0-alpha.13
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+
+### `toolbar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+
+### `upload`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+  - @italia/progress@1.0.0-alpha.13
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.13
+  - @italia/checkbox@1.0.0-alpha.13
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+
+## 1.0.0-alpha.12
+
+### `accordion`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/collapse@1.0.0-alpha.12
+  - @italia/button@1.0.0-alpha.12
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+
+### `autocomplete`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- [`1943e3c`](https://github.com/italia/dev-kit-italia/commit/1943e3c959f5abc15caa4595ccf57ad4ff50a135) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed a11y
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+### `avatar`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+### `back-to-top`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `bottom-nav`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/sticky@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+
+### `breadcrumbs`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `button`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `callout`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/collapse@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+
+### `card`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- [`fe80563`](https://github.com/italia/dev-kit-italia/commit/fe8056309b71d74af3e9981429518850ff890f15) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fix last paragraph margin bottom and footer margin
+
+- [`2773adc`](https://github.com/italia/dev-kit-italia/commit/2773adc7e09b56e0bdfaf3be7ba866a83ab8b2b4) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added part="card" to customize card variables from outside
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `carousel`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156), [`fe80563`](https://github.com/italia/dev-kit-italia/commit/fe8056309b71d74af3e9981429518850ff890f15), [`2773adc`](https://github.com/italia/dev-kit-italia/commit/2773adc7e09b56e0bdfaf3be7ba866a83ab8b2b4)]:
+  - @italia/card@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+### `checkbox`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+### `chip`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/avatar@1.0.0-alpha.12
+  - @italia/button@1.0.0-alpha.12
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+
+### `collapse`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `dev-kit-italia`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- [#259](https://github.com/italia/dev-kit-italia/pull/259) [`2560d5d`](https://github.com/italia/dev-kit-italia/commit/2560d5d79a348e93ae038388bdd239cb35c49efc) Thanks [@Fupete](https://github.com/Fupete)! - Added version number in the docs
+
+- Updated dependencies [[`1943e3c`](https://github.com/italia/dev-kit-italia/commit/1943e3c959f5abc15caa4595ccf57ad4ff50a135), [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156), [`502aa3a`](https://github.com/italia/dev-kit-italia/commit/502aa3a7d760e6546153e64c6a23d96464a385db), [`fe80563`](https://github.com/italia/dev-kit-italia/commit/fe8056309b71d74af3e9981429518850ff890f15), [`2773adc`](https://github.com/italia/dev-kit-italia/commit/2773adc7e09b56e0bdfaf3be7ba866a83ab8b2b4)]:
+  - @italia/autocomplete@1.0.0-alpha.12
+  - @italia/notification@1.0.0-alpha.12
+  - @italia/back-to-top@1.0.0-alpha.12
+  - @italia/breadcrumbs@1.0.0-alpha.12
+  - @italia/bottom-nav@1.0.0-alpha.12
+  - @italia/pagination@1.0.0-alpha.12
+  - @italia/accordion@1.0.0-alpha.12
+  - @italia/navscroll@1.0.0-alpha.12
+  - @italia/skiplinks@1.0.0-alpha.12
+  - @italia/carousel@1.0.0-alpha.12
+  - @italia/checkbox@1.0.0-alpha.12
+  - @italia/collapse@1.0.0-alpha.12
+  - @italia/dropdown@1.0.0-alpha.12
+  - @italia/megamenu@1.0.0-alpha.12
+  - @italia/progress@1.0.0-alpha.12
+  - @italia/thumbnav@1.0.0-alpha.12
+  - @italia/timeline@1.0.0-alpha.12
+  - @italia/transfer@1.0.0-alpha.12
+  - @italia/callout@1.0.0-alpha.12
+  - @italia/popover@1.0.0-alpha.12
+  - @italia/section@1.0.0-alpha.12
+  - @italia/toolbar@1.0.0-alpha.12
+  - @italia/tooltip@1.0.0-alpha.12
+  - @italia/avatar@1.0.0-alpha.12
+  - @italia/button@1.0.0-alpha.12
+  - @italia/dimmer@1.0.0-alpha.12
+  - @italia/header@1.0.0-alpha.12
+  - @italia/rating@1.0.0-alpha.12
+  - @italia/select@1.0.0-alpha.12
+  - @italia/sticky@1.0.0-alpha.12
+  - @italia/toggle@1.0.0-alpha.12
+  - @italia/upload@1.0.0-alpha.12
+  - @italia/input@1.0.0-alpha.12
+  - @italia/modal@1.0.0-alpha.12
+  - @italia/radio@1.0.0-alpha.12
+  - @italia/video@1.0.0-alpha.12
+  - @italia/card@1.0.0-alpha.12
+  - @italia/chip@1.0.0-alpha.12
+  - @italia/hero@1.0.0-alpha.12
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/tabs@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+### `dimmer`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/button@1.0.0-alpha.12
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+
+### `dropdown`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/popover@1.0.0-alpha.12
+  - @italia/button@1.0.0-alpha.12
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.12
+
+### `header`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/dropdown@1.0.0-alpha.12
+  - @italia/button@1.0.0-alpha.12
+  - @italia/modal@1.0.0-alpha.12
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+
+### `hero`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `icon`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `input`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+### `megamenu`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/dropdown@1.0.0-alpha.12
+  - @italia/button@1.0.0-alpha.12
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+
+### `modal`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/button@1.0.0-alpha.12
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+
+### `navscroll`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/button@1.0.0-alpha.12
+  - @italia/modal@1.0.0-alpha.12
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+
+### `notification`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+### `pagination`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `popover`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/button@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+
+### `progress`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `radio`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `rating`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/radio@1.0.0-alpha.12
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+### `section`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `select`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+### `skiplinks`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- [`502aa3a`](https://github.com/italia/dev-kit-italia/commit/502aa3a7d760e6546153e64c6a23d96464a385db) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - fixed ul margin for skiplinks
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `sticky`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `tabs`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+### `thumbnav`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `timeline`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `toggle`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/checkbox@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+### `toolbar`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.12
+
+### `tooltip`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/button@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+
+### `transfer`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+### `upload`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/progress@1.0.0-alpha.12
+  - @italia/avatar@1.0.0-alpha.12
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+### `video`
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/checkbox@1.0.0-alpha.12
+  - @italia/button@1.0.0-alpha.12
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+## 1.0.0-alpha.11
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/collapse@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/sticky@1.0.0-alpha.11
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+
+### `card`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/card@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.11
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- [`60c9cd3`](https://github.com/italia/dev-kit-italia/commit/60c9cd347cfc6ef61b5bfc30be15e9d44bca8d5b) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed full css generation after latest bootstrap-italia upgrade.
+
+- Updated dependencies []:
+  - @italia/accordion@1.0.0-alpha.11
+  - @italia/autocomplete@1.0.0-alpha.11
+  - @italia/avatar@1.0.0-alpha.11
+  - @italia/back-to-top@1.0.0-alpha.11
+  - @italia/bottom-nav@1.0.0-alpha.11
+  - @italia/breadcrumbs@1.0.0-alpha.11
+  - @italia/button@1.0.0-alpha.11
+  - @italia/callout@1.0.0-alpha.11
+  - @italia/card@1.0.0-alpha.11
+  - @italia/carousel@1.0.0-alpha.11
+  - @italia/checkbox@1.0.0-alpha.11
+  - @italia/chip@1.0.0-alpha.11
+  - @italia/collapse@1.0.0-alpha.11
+  - @italia/dimmer@1.0.0-alpha.11
+  - @italia/dropdown@1.0.0-alpha.11
+  - @italia/header@1.0.0-alpha.11
+  - @italia/hero@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+  - @italia/input@1.0.0-alpha.11
+  - @italia/megamenu@1.0.0-alpha.11
+  - @italia/modal@1.0.0-alpha.11
+  - @italia/navscroll@1.0.0-alpha.11
+  - @italia/notification@1.0.0-alpha.11
+  - @italia/pagination@1.0.0-alpha.11
+  - @italia/popover@1.0.0-alpha.11
+  - @italia/progress@1.0.0-alpha.11
+  - @italia/radio@1.0.0-alpha.11
+  - @italia/rating@1.0.0-alpha.11
+  - @italia/section@1.0.0-alpha.11
+  - @italia/select@1.0.0-alpha.11
+  - @italia/skiplinks@1.0.0-alpha.11
+  - @italia/sticky@1.0.0-alpha.11
+  - @italia/tabs@1.0.0-alpha.11
+  - @italia/timeline@1.0.0-alpha.11
+  - @italia/toggle@1.0.0-alpha.11
+  - @italia/thumbnav@1.0.0-alpha.11
+  - @italia/toolbar@1.0.0-alpha.11
+  - @italia/tooltip@1.0.0-alpha.11
+  - @italia/transfer@1.0.0-alpha.11
+  - @italia/upload@1.0.0-alpha.11
+  - @italia/video@1.0.0-alpha.11
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `dropdown`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+  - @italia/popover@1.0.0-alpha.11
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.11
+
+### `header`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/dropdown@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+  - @italia/modal@1.0.0-alpha.11
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `megamenu`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/dropdown@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+  - @italia/modal@1.0.0-alpha.11
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+  - @italia/radio@1.0.0-alpha.11
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+
+### `toolbar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+### `upload`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+  - @italia/progress@1.0.0-alpha.11
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-alpha.11
+  - @italia/checkbox@1.0.0-alpha.11
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/collapse@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/sticky@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/collapse@1.0.0-alpha.10
+
+### `card`
+
+### Patch Changes
+
+- [#369](https://github.com/italia/dev-kit-italia/pull/369) [`381996d`](https://github.com/italia/dev-kit-italia/commit/381996d969682981ba0615641f7ac573be0a76c4) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added attribute it-class to it-card component to set additional custom classes on card. Updated hero docs"
+
+- [`fe786d5`](https://github.com/italia/dev-kit-italia/commit/fe786d58fec7212d612baa0b251885dd5ce07fe0) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed examples, and added attribute 'actions-aria-label'
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`381996d`](https://github.com/italia/dev-kit-italia/commit/381996d969682981ba0615641f7ac573be0a76c4), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fe786d5`](https://github.com/italia/dev-kit-italia/commit/fe786d58fec7212d612baa0b251885dd5ce07fe0)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/card@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/avatar@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- [#333](https://github.com/italia/dev-kit-italia/pull/333) [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toolbar component
+
+- Updated dependencies [[`88c1ad8`](https://github.com/italia/dev-kit-italia/commit/88c1ad8b49db4cec7167ba762fb82b0bd86e93fa), [`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`381996d`](https://github.com/italia/dev-kit-italia/commit/381996d969682981ba0615641f7ac573be0a76c4), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321), [`fe786d5`](https://github.com/italia/dev-kit-italia/commit/fe786d58fec7212d612baa0b251885dd5ce07fe0), [`88bdc22`](https://github.com/italia/dev-kit-italia/commit/88bdc22f0a1c2322bf5ebf3d1a7bfaa3fbc83f02)]:
+  - @italia/hero@1.0.0-alpha.10
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/card@1.0.0-alpha.10
+  - @italia/sticky@1.0.0-alpha.10
+  - @italia/dropdown@1.0.0-alpha.10
+  - @italia/megamenu@1.0.0-alpha.10
+  - @italia/popover@1.0.0-alpha.10
+  - @italia/header@1.0.0-alpha.10
+  - @italia/modal@1.0.0-alpha.10
+  - @italia/toolbar@1.0.0-alpha.10
+  - @italia/accordion@1.0.0-alpha.10
+  - @italia/autocomplete@1.0.0-alpha.10
+  - @italia/avatar@1.0.0-alpha.10
+  - @italia/back-to-top@1.0.0-alpha.10
+  - @italia/bottom-nav@1.0.0-alpha.10
+  - @italia/breadcrumbs@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/callout@1.0.0-alpha.10
+  - @italia/carousel@1.0.0-alpha.10
+  - @italia/checkbox@1.0.0-alpha.10
+  - @italia/chip@1.0.0-alpha.10
+  - @italia/collapse@1.0.0-alpha.10
+  - @italia/dimmer@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+  - @italia/input@1.0.0-alpha.10
+  - @italia/navscroll@1.0.0-alpha.10
+  - @italia/notification@1.0.0-alpha.10
+  - @italia/pagination@1.0.0-alpha.10
+  - @italia/progress@1.0.0-alpha.10
+  - @italia/radio@1.0.0-alpha.10
+  - @italia/rating@1.0.0-alpha.10
+  - @italia/section@1.0.0-alpha.10
+  - @italia/select@1.0.0-alpha.10
+  - @italia/skiplinks@1.0.0-alpha.10
+  - @italia/tabs@1.0.0-alpha.10
+  - @italia/timeline@1.0.0-alpha.10
+  - @italia/toggle@1.0.0-alpha.10
+  - @italia/thumbnav@1.0.0-alpha.10
+  - @italia/tooltip@1.0.0-alpha.10
+  - @italia/transfer@1.0.0-alpha.10
+  - @italia/upload@1.0.0-alpha.10
+  - @italia/video@1.0.0-alpha.10
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `dropdown`
+
+### Minor Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added offset property to chage offset position of dropdown menu
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- [#333](https://github.com/italia/dev-kit-italia/pull/333) [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toolbar component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/popover@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `globals`
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b)]:
+  - @italia/i18n@1.0.0-alpha.10
+
+### `header`
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321)]:
+  - @italia/dropdown@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/modal@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `hero`
+
+### Patch Changes
+
+- [`88c1ad8`](https://github.com/italia/dev-kit-italia/commit/88c1ad8b49db4cec7167ba762fb82b0bd86e93fa) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed section aria-label and examples markup
+
+- [#369](https://github.com/italia/dev-kit-italia/pull/369) [`381996d`](https://github.com/italia/dev-kit-italia/commit/381996d969682981ba0615641f7ac573be0a76c4) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added attribute it-class to it-card component to set additional custom classes on card. Updated hero docs"
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `i18n`
+
+### Patch Changes
+
+- [#374](https://github.com/italia/dev-kit-italia/pull/374) [`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed window undefined
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `megamenu`
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- [`88bdc22`](https://github.com/italia/dev-kit-italia/commit/88bdc22f0a1c2322bf5ebf3d1a7bfaa3fbc83f02) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fix megamenu items width and fouc styles
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a), [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321)]:
+  - @italia/dropdown@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `modal`
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/modal@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `popover`
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- [#333](https://github.com/italia/dev-kit-italia/pull/333) [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toolbar component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+  - @italia/radio@1.0.0-alpha.10
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `sticky`
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - fixed sticky to prevent flapping on scroll
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/checkbox@1.0.0-alpha.10
+
+### `toolbar`
+
+### Patch Changes
+
+- [#333](https://github.com/italia/dev-kit-italia/pull/333) [`fd4d575`](https://github.com/italia/dev-kit-italia/commit/fd4d5757a716a1d266328b4e53f5180154720321) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Added it-toolbar component
+
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
+### `upload`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/avatar@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+  - @italia/progress@1.0.0-alpha.10
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/button@1.0.0-alpha.10
+  - @italia/checkbox@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
 ## 1.0.0-alpha.1
 
 ### `timeline`
@@ -2811,4 +9477,66 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Posizionamento: center, left, right
 - Focus trap e gestione tastiera
 - Eventi: it-modal-show, it-modal-shown, it-modal-hide, it-modal-hidden
+
+## [1.0.0-alpha.6] - Initial Release
+
+### `toolbar`
+
+### Added
+
+- New `it-toolbar` web component for navigation menus with icon-based items
+- Support for three size variants:
+  - `lg` (large, default): Shows labels and icons
+  - `md` (medium): Hides labels visually, uses `.visually-hidden` spans for accessibility
+  - `sm` (small): Hides labels visually, uses `.visually-hidden` spans for accessibility
+- Support for two orientation variants:
+  - `horizontal` (default): Items arranged in a row
+  - `vertical`: Items arranged in a column
+- Badge support for notifications and unread content indicators
+- Divider support for grouping logical menu sections
+- Active state support via `.active` CSS class on items
+- Disabled state support via `.disabled` class and `disabled` attribute
+- Full WCAG 2.1 AA accessibility compliance
+- Complete Storybook documentation with multiple story examples
+- Comprehensive test suite covering accessibility and properties
+- Example implementations for all supported frameworks:
+  - React
+  - Angular
+  - Vue
+  - Svelte
+  - Vanilla JavaScript
+
+### Features
+
+- Accessible navigation component following Bootstrap Italia design system
+- Responsive design that adapts to container width
+- Dark mode support via `dark` attribute
+- Customizable aria-label via `it-aria-label` attribute
+- Slot-based content model for flexible item structure
+- CSS part exposure for styling via `::part()` pseudo-elements:
+  - `toolbar-container`: Main nav element
+  - `toolbar-list`: The ul element
+
+### Documentation
+
+- MDX documentation file with examples and usage guidelines
+- README with installation and usage instructions
+- References to Designers Italia and Bootstrap Italia design documentation
+
+### Files Created
+
+- `/packages/toolbar/src/it-toolbar.ts` - Main component
+- `/packages/toolbar/src/types.ts` - TypeScript types
+- `/packages/toolbar/src/index.ts` - Module exports
+- `/packages/toolbar/src/toolbar.scss` - Placeholder for styles (FOUC prevention not implemented)
+- `/packages/toolbar/stories/it-toolbar.stories.ts` - Storybook stories
+- `/packages/toolbar/stories/it-toolbar.mdx` - Storybook documentation
+- `/packages/toolbar/test/it-toolbar.test.ts` - Test suite
+- `/packages/toolbar/package.json` - Package configuration
+- Configuration files (tsconfig.json, rollup.config.js, web-test-runner.config.js)
+- `/examples/react-app/src/pages/Toolbar.jsx` - React example
+- `/examples/angular-app/src/app/pages/toolbar.component.ts|html` - Angular example
+- `/examples/vue-app/src/pages/Toolbar.vue` - Vue example
+- `/examples/svelte-app/src/pages/Toolbar.svelte` - Svelte example
+- `/examples/vanilla-app/src/toolbar.html` - Vanilla JavaScript example
 

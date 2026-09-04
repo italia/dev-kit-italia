@@ -1,5 +1,122 @@
 # @italia/globals
 
+## 1.0.0-beta.2
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/i18n@1.0.0-beta.2
+
+## 1.0.0-beta.1
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/i18n@1.0.0-beta.1
+
+## 1.0.0-beta.0
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/i18n@1.0.0-beta.0
+
+## 1.0.0-alpha.19
+
+### Minor Changes
+
+- [#456](https://github.com/italia/dev-kit-italia/pull/456) [`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add shared `dispatchCancelable`, `focusableFallbackAncestor` and `nearestFocusableInDocument` utilities. `dispatchCancelable` dispatches a cancelable custom event and only runs the provided default action if `preventDefault()` was not called — this is now the shared convention behind the cancelable events in `it-alert`, `it-back`, `it-forward`, `it-chip`, `it-modal` and `it-transfer`. `it-tabs` and `it-upload` were migrated internally to use it, with no behavior change. `focusableFallbackAncestor` is also used by `it-notification` to restore focus on dismiss (see its own changeset) even though `it-notification` does not use `dispatchCancelable` itself — its show/close are always caller-initiated, so there was no real case for making them cancelable.
+
+  `nearestFocusableInDocument` is a new true last-resort fallback used by `it-alert`, `it-chip` and `it-notification`: when a self-removing/self-hiding component has neither an adjacent same-type element nor a `tabindex`-bearing ancestor to target, it now searches the whole document for the nearest focusable element instead of silently losing focus to `<body>` — the common real-world case, since most usages don't add that ancestor.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.19
+
+## 1.0.0-alpha.18
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.18
+
+## 1.0.0-alpha.17
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.17
+
+## 1.0.0-alpha.16
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.16
+
+## 1.0.0-alpha.15
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.15
+
+## 1.0.0-alpha.14
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.14
+
+## 1.0.0-alpha.13
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.13
+
+## 1.0.0-alpha.12
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.12
+
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- [#94](https://github.com/italia/dev-kit-italia/pull/94) [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Added header component
+
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b)]:
+  - @italia/i18n@1.0.0-alpha.10
+
 ## 1.0.0-alpha.9
 
 ### Minor Changes

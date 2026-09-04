@@ -225,7 +225,7 @@ export class ItCheckboxGroupBase extends FormControl {
     const validityMessageRender = html`<div
       role="alert"
       id="${errorId}"
-      class="form-feedback just-validate-error-label"
+      class="form-feedback text-danger"
       ?hidden=${!(validityMessage?.length > 0)}
     >
       <span class="visually-hidden">${this._label?.[0]?.textContent || ''}: </span>

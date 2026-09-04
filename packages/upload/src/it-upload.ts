@@ -136,12 +136,14 @@ export class ItUpload extends FormControl {
   }
 
   private _validateFiles() {
-    if (this.required && this._files.length === 0) {
-      this.inputElement?.setCustomValidity(this.$t('validityRequired'));
-      this.validationMessage = this.$t('validityRequired');
-    } else {
-      this.inputElement?.setCustomValidity('');
-      this.validationMessage = '';
+    if (!this.customValidation) {
+      if (this.required && this._files.length === 0) {
+        this.inputElement?.setCustomValidity(this.$t('validityRequired'));
+        this.validationMessage = this.$t('validityRequired');
+      } else {
+        this.inputElement?.setCustomValidity('');
+        this.validationMessage = '';
+      }
     }
     this.formControlController.updateValidity();
   }
@@ -385,24 +387,18 @@ export class ItUpload extends FormControl {
     const inputId = this._id!;
     const labelText = this.variant === 'gallery' ? this.$t('upload_gallery_label') : this.$t('upload_label');
 
-    const showValidation = this.formControlController.submittedOnce;
+    const showValidation = this.formControlController.submittedOnce || this.customValidation;
     const isInvalid = showValidation && this.validationMessage.length > 0;
 
     return html`
       <div class="form-group">
-        <input
-          type="file"
-          class="upload it-form__control"
-          id="${inputId}"
-          name="${this.name}"
-          ?multiple="${this.multiple}"
-          accept="${ifDefined(this.accept)}"
-          ?disabled="${this.disabled}"
-          ?required="${this.required && this._files.length === 0}"
-          aria-invalid="${isInvalid ? 'true' : 'false'}"
-          aria-describedby="${ifDefined(isInvalid ? `invalid-feedback-${inputId}` : undefined)}"
-          @change="${this._handleFileChange}"
-        />
+        <!-- Wrapping pattern per Scott O'Hara "Styled File Uploads":
+             https://scottaohara.github.io/a11y_styled_form_controls/src/file-upload/
+             Input inside label instead of BSI's sibling pattern (0.1px ghost input +
+             styled adjacent label). BSI's pattern makes VoiceOver visit the ghost as a
+             confusing "small square group" before the real button. With wrapping, both
+             stops are logical: label text → file upload control. No JS needed — click
+             propagation to the file picker is handled natively by the label. -->
         <label part="input-label" for="${inputId}">
           <slot name="icon">
             <it-icon
@@ -413,16 +409,25 @@ export class ItUpload extends FormControl {
             ></it-icon>
           </slot>
           <slot name="label">${labelText}</slot>
+          <input
+            type="file"
+            class="upload it-form__control"
+            id="${inputId}"
+            name="${this.name}"
+            ?multiple="${this.multiple}"
+            accept="${ifDefined(this.accept)}"
+            ?disabled="${this.disabled}"
+            ?required="${this.required && this._files.length === 0}"
+            ?formNoValidate="${this.customValidation}"
+            aria-invalid="${isInvalid ? 'true' : nothing}"
+            aria-describedby="${ifDefined(isInvalid ? `invalid-feedback-${inputId}` : undefined)}"
+            @change="${this._handleFileChange}"
+          />
         </label>
 
         ${when(this.supportText, () => html`<small class="form-text">${this.supportText}</small>`)}
 
-        <div
-          role="alert"
-          id="invalid-feedback-${inputId}"
-          class="invalid-feedback form-feedback form-text just-validate-error-label"
-          ?hidden=${!isInvalid}
-        >
+        <div role="alert" id="invalid-feedback-${inputId}" class="form-feedback text-danger" ?hidden=${!isInvalid}>
           ${isInvalid ? html`<span class="visually-hidden">${this.label}: </span>${this.validationMessage}` : nothing}
         </div>
       </div>

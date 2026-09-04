@@ -1,9 +1,10 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
 
-@import 'bootstrap-italia/src/scss/components/thumbnav';
+@use 'bootstrap-italia/src/scss/components/thumbnav' as *;
 
 // The host element IS the flex item inside .thumb-nav
 :host {
@@ -50,11 +51,15 @@ li {
   transition-duration: 1s;
 }
 
-// Active state: full overlay using the primary colour
+// Active state: full overlay using the primary colour.
+// Preferred: use the `active` attribute on `it-thumbnav-item`.
+// Backward compat: `.active` class on the slotted anchor still works.
+:host([active]) ::slotted(a),
 ::slotted(a.active) {
   pointer-events: none;
 }
 
+:host([active]) ::slotted(a)::after,
 ::slotted(a.active)::after {
   background: var(--#{$prefix}color-background-primary);
   opacity: 0.6;

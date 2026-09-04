@@ -7,17 +7,47 @@ import { Code } from 'storybook/internal/components';
 
 È necessario anche includere i file relativi ai caratteri tipografici referenziati nel CSS della libreria. L’inclusione dei font può avvenire includendo il bundle fornito dal pacchetto `@italia/dev-kit-italia`, oppure utilizzando CSS.
 
+Dev Kit Italia include tre famiglie di caratteri tipografici:
+
+- **Titillium** (Web o Sans Pro): font principale sans-serif per interfacce e testi brevi
+- **Lora**: font serif per contenuti editoriali e testi lunghi
+- **Roboto Mono**: font monospace per codice, dati tabulari e numeri
+
+## Titillium: il font principale
+
+Dev Kit Italia include due varianti del carattere sans-serif Titillium con licenza aperta:
+
+- **Titillium Web**: versione originale e default, è il carattere di riferimento del Design system .italia ([storia del font Titillium e crediti](https://nta.accademiadiurbino.it/titillium/)).
+- **Titillium Sans Pro**: evoluzione del Titillium Web con supporto linguistico esteso e scrittura matematica ([repository Titillium Sans Pro e crediti](https://github.com/chialab/titillium_pro/tree/main)).
+
+Per scegliere quale delle due varianti usare come font principale, importa uno dei due file CSS dei font disponibili nel bundle: sono equivalenti, contengono entrambi Lora e Roboto Mono, e differiscono solo per la variante di Titillium inclusa. Non serve nessuna configurazione aggiuntiva: la tipografia della libreria usa già di default il carattere sans-serif disponibile, quindi importando solo uno dei due file il browser userà automaticamente la variante di Titillium presente.
+
+- `fonts.css`: Titillium Web (default) + Lora + Roboto Mono
+- `fonts-sans-pro.css`: Titillium Sans Pro + Lora + Roboto Mono
+
+Non importare entrambi i file insieme: se sono presenti i `@font-face` di entrambe le varianti, viene sempre applicata Titillium Web, che è la prima della lista di fallback.
+
+Usa il selettore font nella toolbar di Storybook (in alto) per esplorare la resa delle due varianti su tutta la documentazione, in tempo reale.
+
+Ulteriori informazioni sull'uso dei font nella scheda [Tipografia](/docs/organizzare-i-contenuti-tipografia--documentazione).
+
 ## Carica via bundle
 
-È disponibile il bundle dei font, includibile con:
+È disponibile il bundle dei font relativo alla variante di Titillium scelta, includibile con:
 
 ```html
+<!-- Titillium Web (default) -->
 <link rel="stylesheet" href="dev-kit-italia/fonts.css" />
+
+<!-- oppure, Titillium Sans Pro -->
+<link rel="stylesheet" href="dev-kit-italia/fonts-sans-pro.css" />
 ```
 
 ## Carica via CSS
 
-È possibile caricare i font via CSS. Per semplicità abbiamo utilizzato la sintassi SCSS in modo da utilizzare una variabile per specificare il percorso `$font-path` dove trovare i file dei font.
+È possibile caricare i font via CSS. Per semplicità abbiamo utilizzato la sintassi SCSS in modo da utilizzare una variabile per specificare il percorso `$font-path` dove trovare i file dei font. Include il blocco `@font-face` di Lora e Roboto Mono insieme a **una sola** delle due varianti di Titillium.
+
+### Titillium Web (per `fonts.css`)
 
 ```css
 $font-path: './assets/fonts';
@@ -178,6 +208,94 @@ $font-path: './assets/fonts';
       url('#{$font-path}/Titillium_Web/titillium-web-v10-latin-ext_latin-600italic.svg#TitilliumWeb') format('svg'); /* Legacy iOS */
 }
 
+```
+
+### Titillium Sans Pro (per `fonts-sans-pro.css`)
+
+```css
+$font-path: './assets/fonts';
+
+/* Titillium Sans Pro - Light 300 */
+@font-face {
+  font-display: swap;
+  font-family: 'Titillium Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src:
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Light.woff2') format('woff2'),
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Light.woff') format('woff');
+}
+
+/* Titillium Sans Pro - Regular 400 */
+@font-face {
+  font-display: swap;
+  font-family: 'Titillium Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Regular.woff2') format('woff2'),
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Regular.woff') format('woff');
+}
+
+/* Titillium Sans Pro - Italic 400 */
+@font-face {
+  font-display: swap;
+  font-family: 'Titillium Sans Pro';
+  font-style: italic;
+  font-weight: 400;
+  src:
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Italic.woff2') format('woff2'),
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Italic.woff') format('woff');
+}
+
+/* Titillium Sans Pro - Semibold 600 */
+@font-face {
+  font-display: swap;
+  font-family: 'Titillium Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src:
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Semibold.woff2') format('woff2'),
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Semibold.woff') format('woff');
+}
+
+/* Titillium Sans Pro - Semibold Italic 600 */
+@font-face {
+  font-display: swap;
+  font-family: 'Titillium Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+  src:
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-SemiboldItalic.woff2') format('woff2'),
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-SemiboldItalic.woff') format('woff');
+}
+
+/* Titillium Sans Pro - Bold 700 */
+@font-face {
+  font-display: swap;
+  font-family: 'Titillium Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Bold.woff2') format('woff2'),
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-Bold.woff') format('woff');
+}
+
+/* Titillium Sans Pro - Bold Italic 700 */
+@font-face {
+  font-display: swap;
+  font-family: 'Titillium Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  src:
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-BoldItalic.woff2') format('woff2'),
+    url('#{$font-path}/Titillium_Sans_Pro/TitilliumSansPro-BoldItalic.woff') format('woff');
+}
+```
+
+### Lora e Roboto Mono (in entrambi i file)
+
+```css
 /* Lora:400,700 */
 
 /* lora-regular - latin-ext_latin */

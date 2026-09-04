@@ -1,18 +1,11 @@
 <script lang="ts">
-  function handleForwardClick(e: MouseEvent) {
+  let forwardStatus = '';
+
+  function onNavigate(e: CustomEvent<{ href: string; target: HTMLElement | null }>) {
     e.preventDefault();
-    const link = e.currentTarget as HTMLAnchorElement;
-    const targetId = link.getAttribute('href');
-    if(!targetId) return;
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      targetElement.scrollIntoView({
-        behavior: prefersReducedMotion ? 'auto' : 'smooth',
-        block: 'start',
-      });
-      targetElement.setAttribute('tabindex', '-1');
-      targetElement.focus({ preventScroll: true });
+    forwardStatus = `Navigazione intercettata verso "${e.detail.href}". Scorro io…`;
+    if (e.detail.target) {
+      (e.currentTarget as HTMLElement & { navigateTo: (t: HTMLElement) => void }).navigateTo(e.detail.target);
     }
   }
 </script>
@@ -23,9 +16,11 @@
   <section class="mb-5">
     <h2>Esempio base</h2>
     <p class="mb-4">Clicca sull'icona per scorrere automaticamente alla sezione di destinazione.</p>
-    <a href="#sezione-esempio" class="forward" aria-label="Vai a: Sezione di esempio" on:click={handleForwardClick}>
-      <it-icon name="it-expand" size="lg" color="primary"></it-icon>
-    </a>
+    <it-forward>
+      <a href="#sezione-esempio" class="forward" aria-label="Vai a: Sezione di esempio">
+        <it-icon name="it-expand" size="lg" color="primary"></it-icon>
+      </a>
+    </it-forward>
   </section>
 
   <div style="height: 100vh; background: linear-gradient(to bottom, #f0f6fc, #e6f0fa);">
@@ -53,9 +48,11 @@
   <section class="my-5">
     <h2>Seconda sezione</h2>
     <p class="mb-4">Altro esempio di navigazione con Forward.</p>
-    <a href="#sezione-target" class="forward" aria-label="Vai a: Sezione target" on:click={handleForwardClick}>
-      <it-icon name="it-expand" size="lg" color="primary"></it-icon>
-    </a>
+    <it-forward>
+      <a href="#sezione-target" class="forward" aria-label="Vai a: Sezione target">
+        <it-icon name="it-expand" size="lg" color="primary"></it-icon>
+      </a>
+    </it-forward>
   </section>
 
   <div style="height: 120vh; background: linear-gradient(to bottom, #e6f0fa, #d1e7f7);">
@@ -70,6 +67,34 @@
     <p>
       Nulla est ullamco ut irure incididunt nulla Lorem Lorem minim irure officia enim reprehenderit. Magna duis labore
       cillum sint adipisicing exercitation ipsum.
+    </p>
+  </div>
+
+  <section class="my-5">
+    <h2>Navigazione personalizzata</h2>
+    <p class="mb-4">
+      L'evento <code>it-forward-navigate</code> è cancelable: chiamando <code>preventDefault()</code> puoi intercettare
+      lo scorrimento e gestire la navigazione in autonomia, richiamando poi <code>navigateTo(target)</code>.
+    </p>
+    <it-forward on:it-forward-navigate={onNavigate}>
+      <a href="#sezione-custom" class="forward" aria-label="Vai a: Sezione personalizzata">
+        <it-icon name="it-expand" size="lg" color="primary"></it-icon>
+      </a>
+    </it-forward>
+    <p class="mt-3" style="font-size:0.9rem" role="status" aria-live="polite">{forwardStatus}</p>
+  </section>
+
+  <div style="height: 100vh; background: linear-gradient(to bottom, #d1e7f7, #f0f6fc);">
+    <div class="container py-5">
+      <h3>Contenuto intermedio</h3>
+      <p>Questo contenuto separa il link Forward dalla sezione di destinazione personalizzata.</p>
+    </div>
+  </div>
+
+  <div id="sezione-custom" class="container my-5 py-5" style="background: #d4edda; border-radius: 8px;">
+    <h2>Sezione personalizzata</h2>
+    <p>
+      Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam.
     </p>
   </div>
 </div>

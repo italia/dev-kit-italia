@@ -112,6 +112,22 @@ Puoi anche chiudere la notifica tramite altri elementi della pagina, chiamando i
 
 <Canvas of={Stories.AttivazioneEdEliminazione} />
 
+### Eventi
+
+Il componente emette i seguenti eventi custom:
+
+- `it-notification-show`, quando la notifica viene mostrata;
+- `it-notification-close`, quando la notifica viene chiusa (click sul pulsante di chiusura, scomparsa automatica o chiamata a `hide()`).
+
+Sono utili per agganciare logica propria (es. analytics, log) a questi momenti:
+
+```js
+const notification = document.querySelector('it-notification');
+notification.addEventListener('it-notification-close', (e) => {
+  // ...logica personalizzata...
+});
+```
+
 ## Personalizzazione degli stili
 
 Per personalizzare gli stili, usa i selettori `::part` dedicati:

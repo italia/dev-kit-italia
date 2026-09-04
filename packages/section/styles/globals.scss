@@ -1,12 +1,13 @@
-@import 'bootstrap-italia/src/scss/components/grid';
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/utilities/colors';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/containers' as *;
+@use 'bootstrap-italia/src/scss/components/grid' as *;
+@use 'bootstrap-italia/src/scss/utilities/colors' as *;
 
-@import 'bootstrap-italia/src/scss/components/sections';
-@import 'bootstrap-italia/src/scss/components/imgresponsive';
+@use 'bootstrap-italia/src/scss/components/sections' as *;
+@use 'bootstrap-italia/src/scss/components/imgresponsive' as *;
 
 .img-responsive-wrapper {
   position: absolute;
@@ -27,6 +28,14 @@
 
 it-section .container {
   @extend .container;
+}
+
+it-section .container-xxl,
+it-section .container-xl,
+it-section .container-lg,
+it-section .container-md,
+it-section .container-sm,
+it-section .container {
   position: relative;
   z-index: 2;
 }

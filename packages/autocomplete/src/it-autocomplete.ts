@@ -171,6 +171,7 @@ export class ItAutocomplete extends FormControl {
       this._isOpen = false;
       this._activeIndex = -1;
       this._listboxHasVisualFocus = false;
+      this._currentStatusContent = '';
     }
   }
 
@@ -208,6 +209,7 @@ export class ItAutocomplete extends FormControl {
   }
 
   override updated(changedProps: Map<PropertyKey, unknown>) {
+    super.updated?.(changedProps);
     // Validazione standard FormControl
     if (changedProps.has('value')) {
       if (!this.customValidation && this.formControlController.submittedOnce) {
@@ -232,7 +234,7 @@ export class ItAutocomplete extends FormControl {
     if (this._inputValue.length < this.minLength) {
       this._isOpen = false;
       this._filteredOptions = [];
-      this._announceStatus();
+      this._currentStatusContent = '';
       return;
     }
 
@@ -303,6 +305,7 @@ export class ItAutocomplete extends FormControl {
         this._isOpen = false;
         this._activeIndex = -1;
         this._listboxHasVisualFocus = false;
+        this._currentStatusContent = '';
         break;
       default:
         break;
@@ -324,6 +327,7 @@ export class ItAutocomplete extends FormControl {
     this._isOpen = false;
     this._activeIndex = -1;
     this._listboxHasVisualFocus = false;
+    this._currentStatusContent = '';
     this.inputElement.focus();
 
     this.dispatchEvent(new CustomEvent('it-change', { bubbles: true, composed: true, detail: { value: optionValue } }));
@@ -378,12 +382,18 @@ export class ItAutocomplete extends FormControl {
 
   render() {
     const showValidation = this.formControlController.submittedOnce || this.customValidation;
-    const inputId = this.id || this.generateId('it-autocomplete');
+    const inputId = `${this.id || this.generateId('it-autocomplete')}-input`;
     const labelId = `${inputId}-label`;
     const listboxId = `${inputId}-listbox`;
     const assistiveHintId = `${inputId}-assistiveHint`;
     const statusId = `${inputId}-status-a`;
     const status = this._getStatusAnnouncement();
+
+    const ariaControls =
+      [this._isOpen && this._filteredOptions.length > 0 ? listboxId : undefined, this.getAttribute('it-aria-controls')]
+        .filter(Boolean)
+        .join(' ') || undefined;
+
     return html`
       <div class="form-group autocomplete-wrapper">
         <label id="${labelId}" for="${inputId}" class="${this.composeClass({ 'visually-hidden': this.labelHidden })}">
@@ -397,7 +407,7 @@ export class ItAutocomplete extends FormControl {
             type="text"
             class="${this.composeClass('form-control it-form__control', {
               'is-invalid': showValidation && this.invalid,
-              'just-validate-success-field': showValidation && !this.invalid,
+              'is-valid': showValidation && !this.invalid,
             })}"
             .value="${live(this._inputValue)}"
             placeholder="${this.placeholder}"
@@ -408,7 +418,7 @@ export class ItAutocomplete extends FormControl {
             aria-invalid=${ifDefined(this.invalid ? 'true' : undefined)}
             role="combobox"
             aria-autocomplete="list"
-            aria-controls="${listboxId}"
+            aria-controls=${ifDefined(ariaControls)}
             aria-expanded="${this._isOpen ? 'true' : 'false'}"
             aria-haspopup="listbox"
             aria-labelledby="${labelId}"
@@ -468,7 +478,9 @@ export class ItAutocomplete extends FormControl {
         </div>
 
         ${this._showAssistiveHint
-          ? html`<div id="${assistiveHintId}" class="visually-hidden">${this.$t('autocomplete_assistiveHint')}</div>`
+          ? html`<div id="${assistiveHintId}" aria-hidden="true" class="visually-hidden">
+              ${this.$t('autocomplete_assistiveHint')}
+            </div>`
           : nothing}
 
         <div id="${statusId}" role="status" aria-live="polite" aria-atomic="true" class="visually-hidden">
@@ -476,12 +488,12 @@ export class ItAutocomplete extends FormControl {
         </div>
 
         ${this.supportText
-          ? html`<small id="${inputId}-support" class="form-text text-muted"
+          ? html`<small id="${inputId}-support" class="form-text"
               ><slot name="support-text">${this.supportText}</slot></small
             >`
           : nothing}
         ${this.invalid && this.validationMessage
-          ? html`<div class="invalid-feedback" role="alert">${this.validationMessage}</div>`
+          ? html`<div class="form-feedback text-danger" role="alert">${this.validationMessage}</div>`
           : nothing}
       </div>
     `;

@@ -1,8 +1,14 @@
 // Stili globali per @italia/timeline
 // Da importare nell'applicazione host tramite dev-kit-italia/styles/index.scss
 
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+
 // Bootstrap Italia timeline component styles
-@import 'bootstrap-italia/src/scss/components/timeline';
+@use 'bootstrap-italia/src/scss/components/timeline' as *;
 
 // Queste classi sono nei figli slottati di <it-timeline-point> (light DOM).
 // Il CSS del shadow root non può raggiungerle (limit ::slotted ai figli diretti),

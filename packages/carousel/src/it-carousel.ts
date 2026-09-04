@@ -69,7 +69,7 @@ export class ItCarousel extends BaseLocalizedComponent {
   @queryAssignedElements({})
   mainSlot!: HTMLSlotElement;
 
-  @query('div[role="region"]')
+  @query('.it-carousel-wrapper')
   wrapper!: HTMLElement;
 
   @query('.splide__list')
@@ -120,7 +120,20 @@ export class ItCarousel extends BaseLocalizedComponent {
     requestAnimationFrame(() => {
       if (!this.wrapper) return;
       const { configKey } = VARIANT_MAP[this.variant];
-      const baseConfig = CONFIGS[configKey];
+      const effectiveConfigKey =
+        this.arrows && this.variant === 'columns'
+          ? 'it-carousel-landscape-abstract-three-cols-arrow-visible'
+          : configKey;
+      const baseConfig = CONFIGS[effectiveConfigKey];
+      // When arrows are explicitly enabled by the consumer, ensure no breakpoint
+      // can silently override them back to false — breakpoint configs only
+      // carry arrows:false as an opinionated default, not a hard constraint.
+      const breakpoints =
+        this.arrows && baseConfig.breakpoints
+          ? Object.fromEntries(
+              Object.entries(baseConfig.breakpoints).map(([bp, opts]) => [bp, { ...opts, arrows: true }]),
+            )
+          : baseConfig.breakpoints;
       const splideI18n = {
         prev: this.$t('carousel_prev'),
         next: this.$t('carousel_next'),
@@ -138,6 +151,7 @@ export class ItCarousel extends BaseLocalizedComponent {
 
       this._splide = new Splide(this.wrapper, {
         ...baseConfig,
+        ...(breakpoints ? { breakpoints } : {}),
         ...(this.type ? { type: this.type } : {}),
         arrows: this.arrows,
         ...(this.autoplay
@@ -245,6 +259,30 @@ export class ItCarousel extends BaseLocalizedComponent {
     root.querySelectorAll('.splide__pagination__page').forEach((btn) => {
       btn.setAttribute('part', 'pagination-dot');
     });
+    // Splide adds role="region" to its root div on mount. The host element already
+    // carries role="region" with a proper accessible name (see connectedCallback and
+    // handleTitleSlotChange), so the inner div's landmark role is redundant and would
+    // cause a landmark-unique Axe violation. Demote it to a generic container.
+    this.wrapper?.setAttribute('role', 'presentation');
+    // Splide also sets aria-roledescription on the same div, but per the ARIA spec
+    // aria-roledescription has no effect (and shouldn't be used) on an element with
+    // role="presentation": the element is removed from the accessibility tree, so
+    // the roledescription would never be announced. Move it to the host, where the
+    // "region" landmark actually lives, for consistency with Bootstrap Italia.
+    this.wrapper?.removeAttribute('aria-roledescription');
+    if (!this.hasAttribute('aria-roledescription')) {
+      this.setAttribute('aria-roledescription', this.$t('carousel_carousel'));
+    }
+  }
+
+  override connectedCallback() {
+    super.connectedCallback?.();
+    // The host element is the landmark: it lives in the light DOM together with
+    // the slotted heading, so aria-labelledby can be resolved without
+    // crossing shadow boundaries (which some AT and static tools don't handle).
+    if (!this.hasAttribute('role')) {
+      this.setAttribute('role', 'region');
+    }
   }
 
   override disconnectedCallback() {
@@ -264,7 +302,10 @@ export class ItCarousel extends BaseLocalizedComponent {
       if (!_el.tagName.match(/H[1-6]/)) return;
       const id = this.generateId('it-carousel-title');
       _el.setAttribute('id', id);
-      this.wrapper.setAttribute('aria-labelledby', id);
+      // Set aria-labelledby on the host (light DOM) rather than on the inner
+      // shadow div, so the ID reference is resolved within the same tree and
+      // is visible to screen readers and static analysis tools alike.
+      this.setAttribute('aria-labelledby', id);
     });
   }
 
@@ -284,8 +325,7 @@ export class ItCarousel extends BaseLocalizedComponent {
   }
 
   override render() {
-    // eslint-disable-next-line lit-a11y/no-redundant-role
-    return html`<div class=${this._sectionClass()} role="region">
+    return html`<div class=${this._sectionClass()}>
       <div class="it-header-block">
         <div class="it-header-block-title">
           <slot name="title" @slotchange=${this.handleTitleSlotChange}></slot>

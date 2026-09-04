@@ -18,6 +18,7 @@ interface ModalProps {
   'close-label': string;
   'disable-animation': boolean;
   'footer-shadow': boolean;
+  'default-focus-close': boolean;
   // Demo props
   triggerLabel: string;
   bodyContent: string;
@@ -45,7 +46,7 @@ const toggleModal = (event: Event) => {
 const meta = {
   title: 'Componenti/Modal',
   component: 'it-modal',
-  tags: ['alpha', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   parameters: {
     layout: 'fullscreen',
     docs: {
@@ -67,6 +68,7 @@ const meta = {
     'close-button-placement': 'header',
     variant: '',
     'close-label': 'Chiudi finestra modale',
+    'default-focus-close': false,
     'disable-animation': false,
     'footer-shadow': false,
     triggerLabel: 'Apri modale',
@@ -130,6 +132,11 @@ const meta = {
       control: 'text',
       description: 'Etichetta accessibile per il pulsante di chiusura',
       table: { defaultValue: { summary: 'Chiudi finestra modale' } },
+    },
+    'default-focus-close': {
+      control: 'boolean',
+      description: "Forza il focus sul pulsante di chiusura all'apertura della modale",
+      table: { defaultValue: { summary: 'false' } },
     },
     'disable-animation': {
       control: 'boolean',
@@ -654,4 +661,80 @@ export const AttivazioneViaJS: Story = {
       <it-button slot="footer" variant="primary" @click="${toggleModal}">Conferma</it-button>
     </it-modal>
   `,
+};
+
+export const ChiusuraConConferma: Story = {
+  name: 'Chiusura con logica personalizzata',
+  parameters: {
+    docs: {
+      description: {
+        story: `L'evento \`it-modal-close\` è **cancelable**. Chiamando \`event.preventDefault()\` puoi intercettare la chiusura, eseguire una logica personalizzata — in questo esempio viene mostrato un messaggio informativo — e poi richiamare \`hide()\` per chiudere effettivamente la modale. Lo stesso schema si applica a \`it-modal-open\`.`,
+      },
+      source: {
+        code: `<it-modal id="modal-custom-close">
+  <it-button variant="primary" slot="trigger">Apri modale</it-button>
+  <span slot="header">Chiusura con logica personalizzata</span>
+  <p slot="content">Prova a chiudere la modale: verrà eseguita una logica personalizzata prima della chiusura effettiva.</p>
+  <it-button slot="footer" variant="primary" id="modal-custom-close-footer">Chiudi</it-button>
+</it-modal>
+
+<div id="modal-close-alert" class="alert alert-info" role="alert" style="display:none">
+  <strong>Operazione completata.</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</div>
+
+<script type="module">
+  const modal = document.getElementById('modal-custom-close');
+  const alertEl = document.getElementById('modal-close-alert');
+  let _closing = false;
+
+  modal.addEventListener('it-modal-close', (e) => {
+    if (_closing) return;
+    e.preventDefault();
+    alertEl.style.display = '';
+    _closing = true;
+    modal.hide();
+    _closing = false;
+  });
+
+  document.getElementById('modal-custom-close-footer')
+    ?.addEventListener('click', () => modal.hide());
+</script>`,
+      },
+    },
+  },
+  render: () => {
+    let _closing = false;
+    return html`
+      <it-modal
+        id="modal-custom-close"
+        @it-modal-close=${(e: Event) => {
+          if (_closing) return;
+          e.preventDefault();
+          const alertEl = document.getElementById('modal-close-alert');
+          if (alertEl) alertEl.style.display = '';
+          _closing = true;
+          (e.currentTarget as HTMLElement & { hide(): void }).hide();
+          _closing = false;
+        }}
+      >
+        <it-button variant="primary" slot="trigger">Apri modale</it-button>
+        <span slot="header">Chiusura con logica personalizzata</span>
+        <p slot="content">
+          Prova a chiudere la modale: verrà eseguita una logica personalizzata prima della chiusura effettiva.
+        </p>
+        <it-button
+          slot="footer"
+          variant="primary"
+          @click=${(e: Event) => {
+            (e.currentTarget as HTMLElement).closest<HTMLElement & { hide(): void }>('it-modal')?.hide();
+          }}
+          >Chiudi</it-button
+        >
+      </it-modal>
+      <div id="modal-close-alert" class="alert alert-info" role="alert" style="display:none">
+        <strong>Operazione completata.</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </div>
+    `;
+  },
 };

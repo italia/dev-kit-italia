@@ -21,7 +21,7 @@
           <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -124,7 +124,7 @@
           <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -148,7 +148,7 @@
             ></a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -177,7 +177,7 @@
             ></a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -218,7 +218,7 @@
           <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -242,7 +242,7 @@
             ></a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -271,7 +271,7 @@
             ></a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -300,7 +300,7 @@
             ></a>
             <figure slot="image" class="figure img-full">
               <img
-                src="https://placeholderimage.eu/api/city/800/600"
+                src="https://picsum.photos/seed/city/800/600"
                 alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
               />
             </figure>
@@ -341,7 +341,7 @@
           <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>
@@ -355,7 +355,7 @@
     <h2>Configurazione avanzata</h2>
     <it-carousel
       variant="columns"
-      config='{"type":"loop","autoplay":"pause","interval":3000,"pauseOnHover":true,"resetProgress":false,"perPage":2,"arrows":true,"gap":16,"padding":{"left":8,"right":8},"breakpoints":{"560":{"perPage":1,"gap":0,"padding":{"left":24,"right":24},"arrows":false},"768":{"perPage":2,"gap":0,"padding":{"left":0,"right":0},"arrows":false},"992":{"perPage":3,"gap":0,"padding":{"left":0,"right":0},"arrows":false}}}'
+      config='{"type":"loop","autoplay":"pause","interval":3000,"pauseOnHover":true,"resetProgress":false,"perPage":2,"arrows":true,"gap":16,"padding":{"left":8,"right":8},"breakpoints":{"560":{"perPage":1,"gap":0,"padding":{"left":24,"right":24},"arrows":false},"768":{"perPage":2,"gap":0,"padding":{"left":0,"right":0},"arrows":false},"992":{"perPage":2,"gap":0,"padding":{"left":0,"right":0},"arrows":false}}}'
     >
       <h2 slot="title">Titolo carousel</h2>
       <it-carousel-slide v-for="i in 6" :key="i">
@@ -367,7 +367,7 @@
           ></a>
           <figure slot="image" class="figure img-full">
             <img
-              src="https://placeholderimage.eu/api/city/800/600"
+              src="https://picsum.photos/seed/city/800/600"
               alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
             />
           </figure>

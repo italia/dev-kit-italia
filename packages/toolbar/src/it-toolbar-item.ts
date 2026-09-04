@@ -95,10 +95,11 @@ export class ItToolbarItem extends BaseComponent {
   dropdown = false;
 
   /**
-   * Orientation
+   * Orientation of the containing it-toolbar, used to decide the dropdown alignment
    */
-  @property({ type: String, reflect: true, attribute: 'it-aria-orientation' })
-  itAriaOrientation: 'horizontal' | 'vertical' = 'horizontal';
+  private get toolbarOrientation(): string | null {
+    return this.closest('it-toolbar')?.orientation ?? null;
+  }
 
   connectedCallback() {
     super.connectedCallback?.();
@@ -162,7 +163,7 @@ export class ItToolbarItem extends BaseComponent {
           href="${this.href}"
           class="${classes}"
           ?disabled="${this.disabled}"
-          ?aria-label="${this.itAriaLabel}"
+          it-aria-label="${ifDefined(this.itAriaLabel || undefined)}"
           aria-disabled="${ifDefined(this.disabled ? this.disabled : undefined)}"
           @click="${this.handleClick}"
           part="focusable toolbar-item-element"
@@ -176,12 +177,12 @@ export class ItToolbarItem extends BaseComponent {
       return html`<it-dropdown
         class="${classes}"
         ?disabled="${this.disabled}"
-        ?aria-label="${this.itAriaLabel}"
+        it-aria-label="${ifDefined(this.itAriaLabel || undefined)}"
         @click="${this.handleClick}"
         part="toolbar-item-element dropdown"
         exportparts="focusable, button, icon, icon:expand-icon, dropdown-icon-expand, dropdown-button, popover"
         variant=""
-        alignment=${this.itAriaOrientation === 'vertical' ? 'right-start' : 'bottom-start'}
+        alignment=${this.toolbarOrientation === 'vertical' ? 'right-start' : 'bottom-start'}
       >
         <div slot="label">${this.renderItemContent()}</div>
         <slot name="items"></slot>
@@ -192,7 +193,7 @@ export class ItToolbarItem extends BaseComponent {
       <it-button
         class="${classes}"
         ?disabled="${this.disabled}"
-        ?aria-label="${this.itAriaLabel}"
+        it-aria-label="${ifDefined(this.itAriaLabel || undefined)}"
         @click="${this.handleClick}"
         part="toolbar-item-element"
         exportparts="focusable, button"
@@ -206,12 +207,12 @@ export class ItToolbarItem extends BaseComponent {
     const ariaAttributes: Record<string, string> = { ...this._ariaAttributes };
     delete ariaAttributes['aria-disabled']; // Rimuove aria-disabled se presente, gestito a livello di focusable element
     delete ariaAttributes['aria-label']; // Rimuove aria-label se presente, gestito a livello di focusable element
-
+    delete ariaAttributes['aria-orientation']; // Rimuove aria-orientation se presente, gestito a livello di it-toolbar-item
     return this.divider
       ? html`<li
           part="toolbar-item toolbar-divider"
           class="toolbar-divider"
-          role="separator"
+          role="none"
           ${setAttributes(ariaAttributes)}
         ></li>`
       : html` <li role="none" part="toolbar-item" ${setAttributes(ariaAttributes)}>${this.renderTag()}</li>`;

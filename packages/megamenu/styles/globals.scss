@@ -1,3 +1,7 @@
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+
 it-megamenu {
   --it-fouc-bg: var(--#{$prefix}navbar-background, var(--it-fouc-bg));
   --it-fouc-color: var(--#{$prefix}navbar-link-color, var(--it-fouc-color));
@@ -36,7 +40,7 @@ it-megamenu {
 
     p {
       font-size: var(--#{$prefix}label-font-size);
-      line-height: var(--#{$prefix}body-leading);
+      line-height: var(--#{$prefix}body-line-height);
     }
   }
 
@@ -50,13 +54,6 @@ it-megamenu {
     &:hover,
     &:focus {
       text-decoration: underline;
-    }
-  }
-
-  it-dropdown-item {
-    &::part(list-item) {
-      position: unset;
-      width: 100%;
     }
   }
 

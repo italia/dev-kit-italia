@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modal - Dev Kit Italia</title>
-    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
-    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+    <link rel="stylesheet" href="@italia/dev-kit-italia/fonts.css" />
+    <link rel="stylesheet" href="@italia/dev-kit-italia/styles.css" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
@@ -36,6 +36,20 @@
               <it-button slot="footer" variant="outline-primary" class="close-modal">Annulla</it-button>
               <it-button slot="footer" variant="primary" class="close-modal">Conferma</it-button>
             </it-modal>
+          </div>
+        </section>
+
+        <section class="my-5">
+          <h2>Chiusura con logica personalizzata</h2>
+          <p>L'evento <code>it-modal-close</code> è cancelable: la chiusura viene intercettata, viene mostrato un messaggio informativo e la modale viene chiusa programmaticamente.</p>
+          <it-modal id="modal-custom-close">
+            <it-button variant="primary" slot="trigger">Apri modale</it-button>
+            <span slot="header">Chiusura con logica personalizzata</span>
+            <p slot="content">Prova a chiudere la modale: verrà eseguita una logica personalizzata prima della chiusura effettiva.</p>
+            <it-button slot="footer" variant="primary" id="modal-custom-close-footer">Chiudi</it-button>
+          </it-modal>
+          <div id="modal-close-alert" class="alert alert-info" role="alert" style="display:none">
+            <strong>Operazione completata.</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </div>
         </section>
 
@@ -451,6 +465,22 @@
           }
         });
       });
+    </script>
+    <script type="module">
+      const modal = document.getElementById('modal-custom-close');
+      const alertEl = document.getElementById('modal-close-alert');
+      let _closing = false;
+
+      modal.addEventListener('it-modal-close', (e) => {
+        if (_closing) return;
+        e.preventDefault();
+        alertEl.style.display = '';
+        _closing = true;
+        modal.hide();
+        _closing = false;
+      });
+
+      document.getElementById('modal-custom-close-footer').addEventListener('click', () => modal.hide());
     </script>
   </body>
 </html>

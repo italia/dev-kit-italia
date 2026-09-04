@@ -5,14 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=./",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@italia/dev-kit-italia": "file:../../packages/dev-kit-italia"
   },
   "devDependencies": {
-    "vite": "^7.3.2"
+    "vite": "^7.3.6"
   },
   "packageManager": "npm@11.6.2"
 }

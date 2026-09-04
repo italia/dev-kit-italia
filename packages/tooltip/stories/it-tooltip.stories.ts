@@ -12,7 +12,7 @@ type Story = StoryObj<TooltipArgs>;
 const meta = {
   title: 'Componenti/Tooltip',
   component: 'it-tooltip',
-  tags: ['alpha', 'web-component', 'a11y-ok'],
+  tags: ['web-component', 'a11y-ok'],
   parameters: {
     layout: 'padded',
   },

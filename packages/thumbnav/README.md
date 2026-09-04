@@ -1,42 +1,11 @@
-# it-thumbnav
+# <it-thumbnav>
 
-Web component Thumbnav del Design System .italia
+This package is part of [dev-kit-italia](https://italia.github.io/dev-kit-italia), a Web Components kit for the **.italia** design-system.
 
-Componente di navigazione con immagini thumbnail.
+## Installation and usage
 
-## Installazione
+Most users want to install the full kit by installing [`@italia/dev-kit-italia`](https://npmjs.com/package/@italia/dev-kit-italia), but you have the option of installing this single Web Component separately if needed. Please find detailed installation and usage instructions in the [official documentation](https://italia.github.io/dev-kit-italia/?path=/docs/introduzione--documentazione).
 
-```bash
-npm install @italia/thumbnav
-```
+## Documentation
 
-## Utilizzo
-
-```html
-<it-thumbnav>
-  <it-thumbnav-item>
-    <a href="#" class="ratio ratio-3x2">
-      <img src="..." alt="Visualizza immagine 1">
-    </a>
-  </it-thumbnav-item>
-</it-thumbnav>
-```
-
-## Attributi
-
-### it-thumbnav
-
-- `small` (boolean): Thumbnail di dimensione ridotta (120px invece di 240px)
-- `vertical` (boolean): Disposizione verticale
-- `fixed` (boolean): Larghezza fissa per ogni thumbnail
-- `hover` (string): Effetto hover - `nozoom`, `black`, `primary`
-- `auto` (number): Griglia automatica - numero di colonne (2-5)
-- `position` (string): Posizione in overlay - `bottom`, `top`, `left`, `right`
-
-## Documentazione
-
-Visita la [documentazione ufficiale](https://designers.italia.it/design-system/componenti/thumbnav/) per dettagli completi sull'utilizzo del componente.
-
-## Licenza
-
-BSD 3-Clause License
+Find the usage instructions for this specific component in its [dedicated documentation page](https://italia.github.io/dev-kit-italia/?path=/docs/componenti-thumbnav--documentazione).

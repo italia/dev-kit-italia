@@ -70,7 +70,7 @@ const renderComponent = (params: any) =>
 
 const meta = {
   title: 'Componenti/Form/Autocomplete',
-  tags: ['alpha', 'a11y-ok', 'web-component'],
+  tags: ['a11y-ok', 'web-component'],
   component: 'it-autocomplete',
   parameters: {
     layout: 'padded',
@@ -1252,7 +1252,7 @@ export const GestioneEventi: Story = {
 };
 
 export const MetodiEPropPubblici: Story = {
-  name: 'Proprietà, Metodi, ed Eventi accessibili via js',
+  name: 'Proprietà, metodi ed eventi accessibili via JS',
   tags: ['!dev'],
   render: () => html`<div class="hide-preview"></div>`,
   parameters: {
@@ -1260,7 +1260,7 @@ export const MetodiEPropPubblici: Story = {
     docs: {
       description: {
         story: `
-Il componente espone delle proprietà, metodi, ed eventi, utili per eventuali interazioni via js.
+Il componente espone delle proprietà, metodi, ed eventi, utili per eventuali interazioni via JavaScript.
 
 
 
@@ -1289,7 +1289,7 @@ Il componente espone delle proprietà, metodi, ed eventi, utili per eventuali in
 |\`it-click\`| Quando l'utente fa click sull'input dell'autocomplete |
 |\`it-focus\`| Quando l'input riceve il focus (focus) |
 |\`it-change\`| Quando il valore dell’input viene modificato e il browser emette \`change\` |
-|\`invalid\`| Emesso dal browser quando la validazione fallisce.|
+|\`invalid\`| Emesso dal browser quando la validazione fallisce|
 
 `,
       },

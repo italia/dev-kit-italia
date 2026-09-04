@@ -1,0 +1,9 @@
+@use './fonts/titillium-sans-pro' with (
+  $font-path: './assets/fonts'
+);
+@use './fonts/roboto' with (
+  $font-path: './assets/fonts'
+);
+@use './fonts/lora' with (
+  $font-path: './assets/fonts'
+);

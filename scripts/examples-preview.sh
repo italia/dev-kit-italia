@@ -10,15 +10,19 @@ cd ./examples/vue-app && npm ci && npm run build
 cd ../..
 cd ./examples/vanilla-app && npm ci && npm run build
 cd ../..
+cd ./examples/next-app && npm ci && npm run build
+cd ../..
 
 rm -rf ./storybook-static/svelte-app/
 rm -rf ./storybook-static/vue-app/
 rm -rf ./storybook-static/react-app/
 rm -rf ./storybook-static/angular-app/
 rm -rf ./storybook-static/vanilla-app/
+rm -rf ./storybook-static/next-app/
 
 cp -R ./examples/svelte-app/dist ./storybook-static/svelte-app/
 cp -R ./examples/vue-app/dist ./storybook-static/vue-app/
 cp -R ./examples/vanilla-app/dist ./storybook-static/vanilla-app/
 cp -R ./examples/react-app/dist ./storybook-static/react-app/
 cp -R ./examples/angular-app/dist/angular-app/browser ./storybook-static/angular-app/
+cp -R ./examples/next-app/out ./storybook-static/next-app/

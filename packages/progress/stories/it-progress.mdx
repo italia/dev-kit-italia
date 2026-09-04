@@ -81,6 +81,28 @@ Usa la variante `donut` per mostrare lo stato di avanzamento di un'operazione at
 
 <Canvas of={ProgressStories.Donut} />
 
+### Colori
+
+L'attributo `color` accetta le stesse varianti semantiche della bar (`default`, `success`, `info`, `warning`,
+`danger`), che usano gli stessi token di colore: a parità di variante, bar e donut hanno lo stesso colore.
+
+<Canvas of={ProgressStories.ColoriDonut} />
+
+Oltre alle varianti, `color` accetta un qualsiasi colore CSS (es. `color="#ff0000"`).
+
+Per personalizzare il colore puoi:
+
+- ridefinire i token Bootstrap Italia (es. `--bsi-color-background-success`) nel tuo foglio di stile: la
+  modifica vale per tutti i componenti, donut e bar compresi;
+- impostare la custom property `--it-progress-donut-color` sul componente, per cambiare il colore del solo
+  donut senza toccare i token:
+
+```css
+it-progress[type='donut'] {
+  --it-progress-donut-color: #ff0000;
+}
+```
+
 
 ## Spinner
 

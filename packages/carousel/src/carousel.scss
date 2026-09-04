@@ -1,16 +1,21 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
+@use 'bootstrap-italia/src/scss/base/mixins/focus' as *;
+@use 'bootstrap-italia/src/scss/components/carousel' as *;
+@use 'bootstrap-italia/src/scss/base/reboot';
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
+@use 'bootstrap-italia/src/scss/components/imgresponsive' as *;
+@use 'bootstrap-italia/src/scss/base/containers' as *;
+@use '@italia/card/styles/globals';
 
-@import 'bootstrap-italia/src/scss/components/carousel';
+utilities.$utilities: ('border-color': map.merge(map.get(utilities.$utilities, 'border-color'), ()));
 
-$utilities: (
-  'border-color': map-merge(map-get($utilities, 'border-color'), ()),
-);
-
-@import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 // ----------------------------------------------------
 // ShadowDOM and cross composing issues monkey patches
@@ -26,12 +31,6 @@ $utilities: (
 // max-height: 600px (.figure.img-full)	No BSI variable
 // 85% in color-mix(...)	CSS function parameter, not a SCSS context
 // ----------------------------------------------------
-@import 'bootstrap-italia/src/scss/base/reboot';
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
-@import 'bootstrap-italia/src/scss/components/imgresponsive';
-@import 'bootstrap-italia/src/scss/base/containers';
-@import '@italia/card/styles/globals';
-
 :focus-visible,
 button:focus-visible,
 ::part(focusable):focus-visible,
@@ -40,7 +39,7 @@ button:focus-visible,
 .upload-dragdrop-input:focus-visible[type='file'] + label,
 .avatar-upload:focus-within:focus-visible,
 .rating input:focus-visible + label svg {
-  @extend %focus;
+  @include focus;
 }
 
 [tabindex='-1']:focus:not(:focus-visible) {
@@ -50,7 +49,7 @@ button:focus-visible,
 
 :focus:not(:focus-visible):not(.btn),
 ::part(focusable):focus-visible:not(.btn) {
-  @extend %focusmouse;
+  @include focusmouse;
 }
 
 p a {
@@ -58,7 +57,7 @@ p a {
     /* focus da mouse o script, esclusi anche i .btn */
     background: $focus-outline-color-in;
     box-shadow: none !important;
-    color: var(--#{$prefix}-color-link) !important;
+    color: var(--#{$prefix}color-link) !important;
 
     outline: 3px $focus-outline-color-out solid !important;
     outline-offset: 0px !important;
@@ -67,6 +66,14 @@ p a {
 
 it-icon {
   line-height: 0;
+}
+
+:host {
+  display: block;
+}
+
+it-carousel-slide {
+  width: 100%;
 }
 // ---------------------------------------------------------------------------
 // Generic arrow styles for variants where BSI has no `-arrow-visible` class.
@@ -85,7 +92,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
   vertical-align: bottom;
 }
 
-:host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) {
+:host([arrows]) .it-carousel-wrapper:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) {
   // The track is position:relative via Splide; arrows sit on top of it.
   .splide__track {
     position: relative;
@@ -121,11 +128,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
       display: block;
       width: $_arrow-icon-size;
       height: $_arrow-icon-size;
-      fill: var(--#{$prefix}-color-white, #fff);
-    }
-
-    &.splide__arrow--prev {
-      rotate: 180deg;
+      fill: var(--#{$prefix}color-text-inverse, #fff);
     }
 
     @media (hover: hover) {
@@ -145,7 +148,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     }
   }
 
-  @media (min-width: #{map-get($grid-breakpoints, lg)}) {
+  @media (min-width: #{map.get($grid-breakpoints, lg)}) {
     .splide__arrows {
       inset-inline-end: $_arrow-offset-lg;
       inset-inline-start: $_arrow-offset-lg;
@@ -154,7 +157,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :host([arrows]) section:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) {
+  :host([arrows]) .it-carousel-wrapper:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) {
     .splide__arrow {
       transition: none;
     }
@@ -171,6 +174,10 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
   justify-content: space-between;
   pointer-events: none;
 
+  @media (max-width: #{map.get($grid-breakpoints, md) - 0.02px}) {
+    padding-inline: $spacer;
+  }
+
   .splide__arrow {
     display: flex;
     width: $v-gap * 5;
@@ -185,7 +192,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     svg {
       width: $v-gap * 2;
       height: $v-gap * 2;
-      fill: var(--#{$prefix}-color-white, #fff);
+      fill: var(--#{$prefix}color-text-inverse, #fff);
     }
 
     &.splide__arrow--prev {
@@ -203,7 +210,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
   align-items: baseline;
   justify-content: center;
   margin-top: $spacer;
-  gap: $spacer * 0.5;
+  gap: $spacer;
 }
 
 .splide__toggle {
@@ -235,10 +242,27 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
   }
 }
 
+.it-carousel-wrapper .it-header-block {
+  ::slotted(h2),
+  ::slotted(h3),
+  ::slotted(h4),
+  ::slotted(h5),
+  ::slotted(h6) {
+    padding-bottom: var(--#{$prefix}carousel-pagination-spacing);
+    border-bottom: 1px solid var(--#{$prefix}carousel-heading-border-color);
+    margin-bottom: 0;
+  }
+}
+
+:host([variant='gallery-sm']),
+:host([variant='gallery-lg']) {
+  .splide__pagination {
+    padding-top: 0;
+  }
+}
+
 .splide__pagination {
-  padding-left: 0;
-  margin-top: $v-gap * 2 !important; // override bsi's default margin
-  margin-left: 0;
+  padding-top: $spacer * 0.5;
 
   button {
     display: inline-block;
@@ -247,7 +271,6 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     padding: 0;
     border: none;
     border-radius: 50px !important;
-    margin: 0 $v-gap;
     background: var(--#{$prefix}color-background-subtle) !important;
     box-shadow: none;
     transition: all 0.3s;

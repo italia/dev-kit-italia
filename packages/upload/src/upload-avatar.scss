@@ -1,24 +1,26 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/reboot';
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
+@use 'bootstrap-italia/src/scss/base/reboot' as *;
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
-@import 'bootstrap-italia/src/scss/components/avatar';
-@import 'bootstrap-italia/src/scss/forms/form-input-upload';
-@import 'bootstrap-italia/src/scss/forms/validation';
-@import 'bootstrap-italia/src/scss/components/type';
-@import 'bootstrap-italia/src/scss/forms/just-validate';
+@use 'bootstrap-italia/src/scss/components/avatar' as *;
+@use 'bootstrap-italia/src/scss/forms/form-input-upload' as *;
+// @use 'bootstrap-italia/src/scss/forms/validation' as *;
+@use 'bootstrap-italia/src/scss/components/type' as *;
+@use 'bootstrap-italia/src/scss/forms/form-validation' as *;
+
+utilities.$utilities: ('color': map.get(utilities.$utilities, 'color'));
+
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 :host {
   position: relative;
   display: inline-block;
-}
-
-// Hidden proxy input used by FormControl for required/validity — not visible to users.
-.it-form__control {
-  display: none;
 }
 
 // Override BSI's z-index: -1 which paints the input behind the stacking context,
@@ -105,12 +107,6 @@ input.upload-avatar {
   }
 }
 
-// Counter BSI's form-validation-state mixin which sets .invalid-feedback { display: none }.
-// We control visibility via the HTML `hidden` attribute (?hidden in Lit) instead.
-.invalid-feedback:not([hidden]) {
-  display: block;
-}
-
 // Show focus ring ONLY for keyboard navigation (not when user hovers/clicks with mouse).
 // At desktop the overlay itself is the visual focus indicator; the ring is redundant on hover
 // and clips awkwardly alongside the semi-transparent overlay (see :focus-within + :hover state).
@@ -146,7 +142,7 @@ input.upload-avatar {
     left: 0;
     width: 100%;
     height: 60%;
-    background-color: var(--bsi-overlay-background-primary-muted);
+    background-color: var(--#{$prefix}overlay-background-primary-muted);
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.15s;

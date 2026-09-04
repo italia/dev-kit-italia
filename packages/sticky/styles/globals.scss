@@ -1,4 +1,4 @@
-@import 'bootstrap-italia/src/scss/components/sticky';
+@use 'bootstrap-italia/src/scss/components/sticky' as *;
 
 it-sticky {
   display: block;

@@ -273,15 +273,15 @@ export class ItHeader extends BaseComponent {
     }
 
     // aggiungo la modale in pagina
-    const prependTarget =
+    const appendTarget =
       this.headerCenterWrapper ||
       this.menuNav ||
       this.brandWrapper ||
       this.headerSlimMenu ||
       this.socialsWrapper ||
       this;
-    if (!prependTarget.contains(this.modalEl)) {
-      prependTarget.prepend(this.modalEl);
+    if (!appendTarget.contains(this.modalEl)) {
+      appendTarget.appendChild(this.modalEl);
     }
   }
 
@@ -311,6 +311,7 @@ export class ItHeader extends BaseComponent {
 
   private createModal() {
     const modal = document.createElement('it-modal');
+    modal.setAttribute('default-focus-close', 'true');
     modal.setAttribute('position', 'left');
     modal.setAttribute('scrollable', 'true');
     modal.setAttribute('close-label', this.closeAriaLabel);

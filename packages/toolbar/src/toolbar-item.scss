@@ -1,7 +1,8 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins/visually-hidden';
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins/visually-hidden' as *;
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
 li {
   // border: 1px solid red;
@@ -13,10 +14,10 @@ li {
     width: 1px;
     min-width: 1px; // fix for IE11
     max-width: 1px;
-    height: 100%;
-    margin: 0;
-
+    height: 1.5rem;
+    align-self: stretch;
     background: var(--#{$prefix}toolbar-divider-color);
+    margin-block: var(--#{$prefix}toolbar-padding-y);
 
     &[aria-orientation='horizontal'] {
       width: 100%;

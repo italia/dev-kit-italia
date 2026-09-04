@@ -6,7 +6,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { StoryFormControlMethodAndProps } from '@italia/globals';
 
 import type { AvatarSize } from '@italia/avatar';
-import type { UploadVariant } from '../src/types.js';
+import { DRAG_DROP_HEADING_LEVELS, type DragDropHeadingLevel, type UploadVariant } from '../src/types.js';
 import type { ItUpload } from '../src/it-upload.js';
 import type { ItUploadDragDrop } from '../src/it-upload-drag-drop.js';
 import i18nIT from '../src/locales/it.js';
@@ -174,6 +174,8 @@ interface UploadProps {
   disabled: boolean;
   required: boolean;
   'auto-success': boolean;
+  'custom-validation': boolean;
+  'validity-message': string;
 }
 
 interface UploadAvatarProps {
@@ -183,6 +185,8 @@ interface UploadAvatarProps {
   name: string;
   disabled: boolean;
   required: boolean;
+  'custom-validation': boolean;
+  'validity-message': string;
 }
 
 interface UploadDragDropProps {
@@ -191,6 +195,9 @@ interface UploadDragDropProps {
   illustration: string;
   disabled: boolean;
   required: boolean;
+  'heading-level': DragDropHeadingLevel;
+  'custom-validation': boolean;
+  'validity-message': string;
 }
 
 const renderUpload = (params: Partial<UploadProps>) => html`
@@ -204,6 +211,8 @@ const renderUpload = (params: Partial<UploadProps>) => html`
     ?disabled="${params.disabled}"
     ?required="${params.required}"
     ?auto-success="${params['auto-success']}"
+    ?custom-validation="${params['custom-validation']}"
+    validity-message="${ifDefined(params['validity-message'] || undefined)}"
   >
     <span slot="label">${i18nIT.upload_label}</span>
   </it-upload>
@@ -217,6 +226,8 @@ const renderUploadAvatar = (params: Partial<UploadAvatarProps>) => html`
     name="${ifDefined(params.name || undefined)}"
     ?disabled="${params.disabled}"
     ?required="${params.required}"
+    ?custom-validation="${params['custom-validation']}"
+    validity-message="${ifDefined(params['validity-message'] || undefined)}"
   ></it-upload-avatar>
 `;
 
@@ -225,8 +236,11 @@ const renderUploadDragDrop = (params: Partial<UploadDragDropProps>) => html`
     accept="${ifDefined(params.accept || undefined)}"
     name="${ifDefined(params.name || undefined)}"
     illustration="${ifDefined(params.illustration || undefined)}"
+    heading-level="${ifDefined(params['heading-level'] || undefined)}"
     ?disabled="${params.disabled}"
     ?required="${params.required}"
+    ?custom-validation="${params['custom-validation']}"
+    validity-message="${ifDefined(params['validity-message'] || undefined)}"
   ></it-upload-drag-drop>
 `;
 
@@ -266,6 +280,8 @@ export const EsempioInterattivoUpload: Story = {
     disabled: false,
     required: false,
     'auto-success': true,
+    'custom-validation': false,
+    'validity-message': '',
   },
   argTypes: {
     variant: {
@@ -307,6 +323,15 @@ export const EsempioInterattivoUpload: Story = {
       control: 'boolean',
       table: { defaultValue: { summary: 'false' } },
     },
+    'custom-validation': {
+      description: 'Attiva la validazione personalizzata. Se abilitato, disabilita la validazione nativa del browser.',
+      control: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    'validity-message': {
+      description: 'Messaggio di validazione personalizzato da mostrare quando custom-validation è attivo.',
+      control: 'text',
+    },
   },
   parameters: {
     docs: {
@@ -325,6 +350,8 @@ export const EsempioInterattivoAvatar: Story = {
     size: 'xxl' as AvatarSize,
     disabled: false,
     required: false,
+    'custom-validation': false,
+    'validity-message': '',
   },
   argTypes: {
     src: {
@@ -352,6 +379,15 @@ export const EsempioInterattivoAvatar: Story = {
       control: 'boolean',
       table: { defaultValue: { summary: 'false' } },
     },
+    'custom-validation': {
+      description: 'Attiva la validazione personalizzata. Se abilitato, disabilita la validazione nativa del browser.',
+      control: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    'validity-message': {
+      description: 'Messaggio di validazione personalizzato da mostrare quando custom-validation è attivo.',
+      control: 'text',
+    },
   },
   parameters: {
     docs: {
@@ -369,6 +405,9 @@ export const EsempioInterattivoDragDrop: Story = {
     illustration: '',
     disabled: false,
     required: false,
+    'heading-level': 'h3',
+    'custom-validation': false,
+    'validity-message': '',
   },
   argTypes: {
     accept: {
@@ -379,6 +418,12 @@ export const EsempioInterattivoDragDrop: Story = {
       description: 'URL illustrazione personalizzata. Se omesso viene usata quella predefinita.',
       control: 'text',
     },
+    'heading-level': {
+      description: 'Livello del titolo semantico nella gerarchia della pagina. La dimensione visiva rimane h5.',
+      control: { type: 'select' },
+      options: DRAG_DROP_HEADING_LEVELS,
+      table: { defaultValue: { summary: 'h5' } },
+    },
     disabled: {
       description: 'Disabilita il componente.',
       control: 'boolean',
@@ -388,6 +433,15 @@ export const EsempioInterattivoDragDrop: Story = {
       description: 'Rende il campo obbligatorio nella validazione del form.',
       control: 'boolean',
       table: { defaultValue: { summary: 'false' } },
+    },
+    'custom-validation': {
+      description: 'Attiva la validazione personalizzata. Se abilitato, disabilita la validazione nativa del browser.',
+      control: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    'validity-message': {
+      description: 'Messaggio di validazione personalizzato da mostrare quando custom-validation è attivo.',
+      control: 'text',
     },
   },
   parameters: {

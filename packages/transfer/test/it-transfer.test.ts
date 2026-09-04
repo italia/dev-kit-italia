@@ -164,6 +164,115 @@ describe('<it-transfer>', () => {
     expect(targetCount(el)).to.equal(0);
   });
 
+  it('commit() applies a previously cancelled transfer detail without re-dispatching', async () => {
+    const el = await defaultFixture();
+    await elementUpdated(el);
+
+    let capturedDetail: any = null;
+    el.addEventListener('it-transfer', (e: any) => {
+      e.preventDefault();
+      capturedDetail = e.detail;
+    });
+
+    checkItem(el, 'source', 0); // check "a"
+    el.transfer();
+    await elementUpdated(el);
+
+    // still blocked
+    expect(sourceCount(el)).to.equal(3);
+    expect(targetCount(el)).to.equal(0);
+
+    // now apply via commit
+    el.commit(capturedDetail);
+    await elementUpdated(el);
+
+    expect(JSON.parse(el.value)).to.deep.equal(['a']);
+    expect(sourceCount(el)).to.equal(2);
+    expect(targetCount(el)).to.equal(1);
+  });
+
+  it('commit() does not fire another it-transfer event', async () => {
+    const el = await defaultFixture();
+    await elementUpdated(el);
+
+    let fireCount = 0;
+    let capturedDetail: any = null;
+    el.addEventListener('it-transfer', (e: any) => {
+      fireCount += 1;
+      e.preventDefault();
+      capturedDetail = e.detail;
+    });
+
+    checkItem(el, 'source', 0);
+    el.transfer();
+    await elementUpdated(el);
+
+    el.commit(capturedDetail);
+    await elementUpdated(el);
+
+    expect(fireCount).to.equal(1); // only the original transfer, not commit
+  });
+
+  it('commit() works for backtransfer detail', async () => {
+    const el = await fixture<ItTransfer>(html`
+      <it-transfer name="items">
+        <it-transfer-item value="a" target>Alpha</it-transfer-item>
+        <it-transfer-item value="b" target>Beta</it-transfer-item>
+        <it-transfer-item value="c">Gamma</it-transfer-item>
+      </it-transfer>
+    `);
+    await elementUpdated(el);
+
+    let capturedDetail: any = null;
+    el.addEventListener('it-transfer', (e: any) => {
+      e.preventDefault();
+      capturedDetail = e.detail;
+    });
+
+    checkItem(el, 'target', 0); // check "a"
+    el.backtransfer();
+    await elementUpdated(el);
+
+    el.commit(capturedDetail);
+    await elementUpdated(el);
+
+    expect(JSON.parse(el.value)).to.deep.equal(['b']);
+    expect(targetCount(el)).to.equal(1);
+    expect(sourceCount(el)).to.equal(2);
+  });
+
+  it('commit() works for reset detail', async () => {
+    const el = await fixture<ItTransfer>(html`
+      <it-transfer name="items">
+        <it-transfer-item value="a">Alpha</it-transfer-item>
+        <it-transfer-item value="b" target>Beta</it-transfer-item>
+      </it-transfer>
+    `);
+    await elementUpdated(el);
+
+    checkItem(el, 'source', 0);
+    el.transfer();
+    await elementUpdated(el);
+    expect(targetCount(el)).to.equal(2);
+
+    let capturedDetail: any = null;
+    el.addEventListener('it-transfer', (e: any) => {
+      e.preventDefault();
+      capturedDetail = e.detail;
+    });
+
+    el.reset();
+    await elementUpdated(el);
+    expect(targetCount(el)).to.equal(2); // still blocked
+
+    el.commit(capturedDetail);
+    await elementUpdated(el);
+
+    expect(el.value).to.equal('["b"]');
+    expect(sourceCount(el)).to.equal(1);
+    expect(targetCount(el)).to.equal(1);
+  });
+
   it('it-change event fires after transfer with the updated value', async () => {
     const el = await defaultFixture();
     await elementUpdated(el);

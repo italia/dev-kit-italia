@@ -1,5 +1,159 @@
 # @italia/avatar
 
+## 1.0.0-beta.2
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+
+## 1.0.0-beta.1
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
+## 1.0.0-beta.0
+
+### Major Changes
+
+- [#465](https://github.com/italia/dev-kit-italia/pull/465) [`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024) Thanks [@astagi](https://github.com/astagi)! - Beta release
+
+### Patch Changes
+
+- Updated dependencies [[`3cfe4eb`](https://github.com/italia/dev-kit-italia/commit/3cfe4ebcbb253b7b81f17d99a864d7a3bfe8b024)]:
+  - @italia/globals@1.0.0-beta.0
+  - @italia/i18n@1.0.0-beta.0
+  - @italia/icon@1.0.0-beta.0
+
+## 1.0.0-alpha.19
+
+### Minor Changes
+
+- [#464](https://github.com/italia/dev-kit-italia/pull/464) [`7f3551f`](https://github.com/italia/dev-kit-italia/commit/7f3551f6f2e015f0a7f4b252cdbc3859a8226903) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Add tooltip support for avatar links: wrap `it-avatar` in `it-tooltip` (using its `trigger`/`content` slots) to show contextual info on hover/focus, matching the Bootstrap Italia "Avatar link con tooltip" pattern.
+  - `it-avatar` now forwards `it-aria-*` attributes to its rendered `<a>`/`<div>`, so `it-tooltip` can wire up `aria-describedby` on the real link.
+  - Fixed `it-avatar ~ span` CSS rules that were unintentionally applying list-item spacing to any sibling `<span>`, including a tooltip's `slot="content"` element.
+  - Added a new, separate "Avatar link con tooltip" story/example section (kept distinct from the plain "Avatar con link" section) across Storybook and all framework examples.
+
+### Patch Changes
+
+- Updated dependencies [[`b672540`](https://github.com/italia/dev-kit-italia/commit/b6725406bdc4faf9d0642150b409295751d15832)]:
+  - @italia/globals@1.0.0-alpha.19
+  - @italia/i18n@1.0.0-alpha.19
+  - @italia/icon@1.0.0-alpha.19
+
+## 1.0.0-alpha.18
+
+### Minor Changes
+
+- [#437](https://github.com/italia/dev-kit-italia/pull/437) [`5cde271`](https://github.com/italia/dev-kit-italia/commit/5cde2712aad88ac8a16c69266e9c7f8826d11cf3) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fix avatar rendering differences vs Bootstrap Italia (#431):
+  - Presence/status dots now use the per-size dot offset/size, so they sit correctly on the circle edge instead of too far inward.
+  - The "+N" group balloon no longer shows the dropdown expand caret, keeping the number centred. Adds a `hide-expand-icon` property to `it-dropdown`.
+  - The avatar "+N" dropdown menu now centres its arrow on the trigger. Adds an opt-in `center-arrow` property to `it-dropdown` / `it-popover` (standard dropdowns keep the existing fixed notch position).
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.18
+  - @italia/i18n@1.0.0-alpha.18
+  - @italia/icon@1.0.0-alpha.18
+
+## 1.0.0-alpha.17
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.17
+  - @italia/i18n@1.0.0-alpha.17
+  - @italia/icon@1.0.0-alpha.17
+
+## 1.0.0-alpha.16
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.16
+  - @italia/i18n@1.0.0-alpha.16
+  - @italia/icon@1.0.0-alpha.16
+
+## 1.0.0-alpha.15
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.15
+  - @italia/i18n@1.0.0-alpha.15
+  - @italia/icon@1.0.0-alpha.15
+
+## 1.0.0-alpha.14
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.14
+  - @italia/i18n@1.0.0-alpha.14
+  - @italia/icon@1.0.0-alpha.14
+
+## 1.0.0-alpha.13
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.13
+  - @italia/i18n@1.0.0-alpha.13
+  - @italia/icon@1.0.0-alpha.13
+
+## 1.0.0-alpha.12
+
+### Minor Changes
+
+- [#346](https://github.com/italia/dev-kit-italia/pull/346) [`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156) Thanks [@pnicolli](https://github.com/pnicolli)! - Refactoring to migrate from old sass imports to new use/forward syntax. Removed several silenced warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`ff9981d`](https://github.com/italia/dev-kit-italia/commit/ff9981d4ec7414bcb717c31d3c026c5fc20fa156)]:
+  - @italia/icon@1.0.0-alpha.12
+  - @italia/globals@1.0.0-alpha.12
+  - @italia/i18n@1.0.0-alpha.12
+
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-alpha.11
+  - @italia/i18n@1.0.0-alpha.11
+  - @italia/icon@1.0.0-alpha.11
+
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`900b2f7`](https://github.com/italia/dev-kit-italia/commit/900b2f75dccf49d05325443f50f6215ad2f6d18b), [`a1bc1fb`](https://github.com/italia/dev-kit-italia/commit/a1bc1fb60b4adf11507d455e18a4fd900d41fe5a)]:
+  - @italia/i18n@1.0.0-alpha.10
+  - @italia/globals@1.0.0-alpha.10
+  - @italia/icon@1.0.0-alpha.10
+
 ## 1.0.0-alpha.9
 
 ### Patch Changes

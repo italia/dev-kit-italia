@@ -52,7 +52,7 @@ const InlineCard = () => (
     </time>
     <figure slot="image" className="figure img-full">
       <img
-        src="https://placeholderimage.eu/api/city/800/600"
+        src="https://picsum.photos/seed/city/800/600"
         alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
       />
     </figure>
@@ -69,7 +69,7 @@ const CardWithImage = () => (
     </a>
     <figure slot="image" className="figure img-full">
       <img
-        src="https://placeholderimage.eu/api/city/800/600"
+        src="https://picsum.photos/seed/city/800/600"
         alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
       />
     </figure>
@@ -260,7 +260,7 @@ const Carousel = () => (
       <h2>Configurazione avanzata</h2>
       <it-carousel
         variant="columns"
-        config='{"type":"loop","autoplay":"pause","interval":3000,"pauseOnHover":true,"resetProgress":false,"perPage":2,"arrows":true,"gap":16,"padding":{"left":8,"right":8},"breakpoints":{"560":{"perPage":1,"gap":0,"padding":{"left":24,"right":24},"arrows":false},"768":{"perPage":2,"gap":0,"padding":{"left":0,"right":0},"arrows":false},"992":{"perPage":3,"gap":0,"padding":{"left":0,"right":0},"arrows":false}}}'
+        config='{"type":"loop","autoplay":"pause","interval":3000,"pauseOnHover":true,"resetProgress":false,"perPage":2,"arrows":true,"gap":16,"padding":{"left":8,"right":8},"breakpoints":{"560":{"perPage":1,"gap":0,"padding":{"left":24,"right":24},"arrows":false},"768":{"perPage":2,"gap":0,"padding":{"left":0,"right":0},"arrows":false},"992":{"perPage":2,"gap":0,"padding":{"left":0,"right":0},"arrows":false}}}'
       >
         <h2 slot="title">Titolo carousel</h2>
         {slides.map((_, i) => (

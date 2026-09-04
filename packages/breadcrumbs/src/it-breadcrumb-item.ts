@@ -1,6 +1,6 @@
 import { BaseComponent } from '@italia/globals';
 import { html } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import styles from './breadcrumb-item.scss';
 
 /**
@@ -13,6 +13,8 @@ import styles from './breadcrumb-item.scss';
 @customElement('it-breadcrumb-item')
 export class ItBreadcrumbItem extends BaseComponent {
   static styles = styles;
+
+  @property({ type: String, reflect: true, attribute: 'role' }) elRole = 'listitem';
 
   @state() private current = false;
 
@@ -46,10 +48,20 @@ export class ItBreadcrumbItem extends BaseComponent {
     return hasCustomContent;
   }
 
+  updated(changedProps: Map<string, any>) {
+    if (changedProps.has('current')) {
+      if (this.current) {
+        this.setAttribute('aria-current', 'page');
+      } else {
+        this.removeAttribute('aria-current');
+      }
+    }
+  }
+
   override render() {
     if (!this.current)
       return html`
-        <li class="breadcrumb-item" part="breadcrumb-item">
+        <li class="breadcrumb-item" part="breadcrumb-item" role="presentation">
           <slot></slot>
           <span class="${this._getSeparatorClasses() ? '' : 'separator'}" aria-hidden="true"
             ><slot name="separator" part="separator">${this.separator}</slot></span
@@ -57,7 +69,7 @@ export class ItBreadcrumbItem extends BaseComponent {
         </li>
       `;
     return html`
-      <li class="breadcrumb-item active" aria-current="page" part="breadcrumb-item">
+      <li class="breadcrumb-item active" role="presentation" part="breadcrumb-item">
         <slot></slot>
       </li>
     `;

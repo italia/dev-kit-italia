@@ -101,7 +101,7 @@ export class ItCheckboxBase extends FormControl {
     const inputClasses = this.composeClass(
       'it-form__control',
       invalid ? 'is-invalid' : '',
-      !invalid && this._touched ? 'just-validate-success-field' : '',
+      !invalid && this._touched ? 'is-valid' : '',
       this.indeterminate ? 'semi-checked' : '',
     );
 
@@ -153,7 +153,7 @@ export class ItCheckboxBase extends FormControl {
     return html`<div
       role="alert"
       id="invalid-feedback-${this._id}"
-      class="invalid-feedback form-feedback form-text form-feedback just-validate-error-label"
+      class="form-feedback text-danger"
       ?hidden=${!(validityMessage?.length > 0)}
     >
       <span class="visually-hidden"><slot name="label"></slot>: </span>${validityMessage}

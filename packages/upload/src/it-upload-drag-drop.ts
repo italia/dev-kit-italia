@@ -1,7 +1,8 @@
 /* eslint-disable class-methods-use-this */
-import { FormControl, FormControlController } from '@italia/globals';
+import { FormControl, FormControlController, dispatchCancelable } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
 import { html, nothing } from 'lit';
+import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -9,6 +10,7 @@ import it from './locales/it.js';
 import en from './locales/en.js';
 import styles from './upload-drag-drop.scss';
 import { formatSize } from './utils.js';
+import { type DragDropHeadingLevel, DRAG_DROP_HEADING_LEVELS } from './types.js';
 
 registerTranslation(it);
 registerTranslation(en);
@@ -41,6 +43,10 @@ export class ItUploadDragDrop extends FormControl {
   @property({ type: String })
   illustration?: string;
 
+  /** Heading level for the title element. Defaults to 'h5'; visual size stays at h5. */
+  @property({ type: String, attribute: 'heading-level' })
+  headingLevel: DragDropHeadingLevel = 'h5';
+
   /** The currently selected File (null until file is chosen/dropped). */
   @state()
   private _currentFile: File | null = null;
@@ -64,6 +70,10 @@ export class ItUploadDragDrop extends FormControl {
   private _indeterminate = false;
 
   private _autoStarted = false;
+
+  protected getHeadingLevel(): DragDropHeadingLevel {
+    return DRAG_DROP_HEADING_LEVELS.includes(this.headingLevel) ? this.headingLevel : 'h5';
+  }
 
   private get _formClass(): string {
     return this.composeClass(
@@ -116,18 +126,11 @@ export class ItUploadDragDrop extends FormControl {
   private _onDragEnter(e: DragEvent) {
     this._preventEvent(e);
     if (this.disabled || this._state === 'success' || this._state === 'loading') return;
-    const cancelled = !this.dispatchEvent(
-      new CustomEvent('it-dd-start', {
-        cancelable: true,
-        bubbles: true,
-        composed: true,
-        detail: {},
-      }),
-    );
-    if (!cancelled) {
+    const event = dispatchCancelable(this, 'it-dd-start', {}, () => {
       this.start();
       this._autoStarted = true;
-    } else {
+    });
+    if (event.defaultPrevented) {
       this._state = 'dragover';
     }
   }
@@ -170,18 +173,10 @@ export class ItUploadDragDrop extends FormControl {
     this._fileType = this._extractFileType(file.name);
     this._autoStarted = false;
 
-    const dropCancelled = !this.dispatchEvent(
-      new CustomEvent('it-dd-drop', {
-        cancelable: true,
-        bubbles: true,
-        composed: true,
-        detail: { file, name: this.name, id: this.id },
-      }),
-    );
-    if (!dropCancelled) {
+    dispatchCancelable(this, 'it-dd-drop', { file, name: this.name, id: this.id }, () => {
       if (this._state !== 'loading') this.start();
       this._indeterminate = true;
-    }
+    });
 
     this.dispatchEvent(
       new CustomEvent('it-change', {
@@ -203,18 +198,10 @@ export class ItUploadDragDrop extends FormControl {
     this._fileType = this._extractFileType(file.name);
     input.value = '';
 
-    const dropCancelled = !this.dispatchEvent(
-      new CustomEvent('it-dd-drop', {
-        cancelable: true,
-        bubbles: true,
-        composed: true,
-        detail: { file, name: this.name, id: this.id },
-      }),
-    );
-    if (!dropCancelled) {
+    dispatchCancelable(this, 'it-dd-drop', { file, name: this.name, id: this.id }, () => {
       this.start();
       this._indeterminate = true;
-    }
+    });
 
     this.dispatchEvent(
       new CustomEvent('it-change', {
@@ -243,6 +230,12 @@ export class ItUploadDragDrop extends FormControl {
 
     // Title: slot or default per state
     const titleText = hasFile ? this._fileName : this.$t('upload_dd_title');
+    const fileInputLabel = this.required ? this.$t('upload_label') : this.$t('upload_label');
+    const canSelect = this._state === 'idle' || this._state === 'dragover';
+    const showValidation = this.formControlController.submittedOnce || this.customValidation;
+    const isInvalid = showValidation && this.validationMessage.length > 0;
+    const feedbackId = `invalid-feedback-${this._id}`;
+    const headingTag = unsafeStatic(this.getHeadingLevel());
 
     return html`
       <div class="upload-dragdrop-text">
@@ -254,28 +247,36 @@ export class ItUploadDragDrop extends FormControl {
               </p>
             `
           : nothing}
-        <h5>
+        ${staticHtml`<${headingTag} class="h5">
           <slot name="title">${titleText}</slot>
-        </h5>
-        ${this._state === 'idle' || this._state === 'dragover'
+        </${headingTag}>`} ${canSelect
           ? html`
               <p>
                 <slot name="description">${this.$t('upload_dd_description')}</slot>
               </p>
-              <p>
-                <input
-                  type="file"
-                  class="upload-dragdrop-input"
-                  id="${this._id!}"
-                  accept="${ifDefined(this.accept)}"
-                  ?disabled="${this.disabled}"
-                  aria-label="${this.$t('upload_label')}"
-                  @change="${this._onFileInputChange}"
-                />
-                <label for="${this._id!}">${this.$t('upload_dd_select')}</label>
-              </p>
             `
           : nothing}
+        <!-- The file input is the form-control validity participant, so it must exist in every
+             state for the FormControl base class to read its validity. It is the real focusable
+             control native required/validity now anchors to (no hidden proxy). The select affordance
+             (label) and this wrapper are hidden via CSS in loading/success states. -->
+        <p class="upload-dragdrop-select-wrap">
+          <input
+            type="file"
+            class="upload-dragdrop-input it-form__control"
+            id="${this._id!}"
+            accept="${ifDefined(this.accept)}"
+            ?disabled="${this.disabled}"
+            ?required="${this.required && !this._currentFile}"
+            ?formNoValidate="${this.customValidation}"
+            aria-label="${fileInputLabel}"
+            aria-required="${this.required ? 'true' : nothing}"
+            aria-invalid="${isInvalid ? 'true' : nothing}"
+            aria-describedby="${ifDefined(isInvalid ? feedbackId : undefined)}"
+            @change="${this._onFileInputChange}"
+          />
+          ${canSelect ? html`<label for="${this._id!}">${this.$t('upload_dd_select')}</label>` : nothing}
+        </p>
         ${this._state === 'loading' ? html`<p>${this.$t('upload_dd_status_loading')}</p>` : nothing}
         ${this._state === 'success' ? html`<p>${this.$t('upload_dd_status_success')}</p>` : nothing}
       </div>
@@ -284,7 +285,9 @@ export class ItUploadDragDrop extends FormControl {
 
   override render() {
     const statusText = this._getStatusText();
-    const isInvalid = this.formControlController.submittedOnce && this.validationMessage.length > 0;
+    const showValidation = this.formControlController.submittedOnce || this.customValidation;
+    const isInvalid = showValidation && this.validationMessage.length > 0;
+    const feedbackId = `invalid-feedback-${this._id}`;
 
     return html`
       <div
@@ -319,17 +322,7 @@ export class ItUploadDragDrop extends FormControl {
         <div role="status" aria-live="polite" aria-atomic="true" class="visually-hidden">${statusText}</div>
       </div>
 
-      <!-- Hidden proxy input: drives native required/validity checking via FormControl base class -->
-      <input
-        type="text"
-        class="it-form__control"
-        .value="${this._currentFile?.name || ''}"
-        ?required="${this.required}"
-        tabindex="-1"
-        aria-hidden="true"
-      />
-
-      <div class="invalid-feedback form-feedback form-text just-validate-error-label" role="alert">
+      <div id="${feedbackId}" class="form-feedback text-danger" role="alert" ?hidden=${!isInvalid}>
         ${isInvalid ? this.validationMessage : nothing}
       </div>
     `;

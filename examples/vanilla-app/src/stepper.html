@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stepper - vanilla-app</title>
+    <link rel="stylesheet" href="@italia/dev-kit-italia/fonts.css" />
+    <link rel="stylesheet" href="@italia/dev-kit-italia/styles.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>
+      .stepper-examples {
+        display: flex;
+        flex-direction: column;
+        gap: var(--bsi-spacing-xl, 2rem);
+      }
+
+      .stepper-variant-stack {
+        display: flex;
+        flex-direction: column;
+        gap: var(--bsi-spacing-xl, 2rem);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <header id="app-header"></header>
+      <main class="container my-4 stepper-examples">
+        <h1>Stepper</h1>
+
+        <section>
+          <h2>Solo testo</h2>
+          <it-stepper current="1" header-variant="text">
+            <it-stepper-step icon="it-calendar">
+              <span slot="label">Primo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 1</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-lock">
+              <span slot="label">Secondo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 2</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-settings">
+              <span slot="label">Terzo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 3</p></div>
+            </it-stepper-step>
+          </it-stepper>
+        </section>
+
+        <section>
+          <h2>Testo e icone</h2>
+          <it-stepper current="1" header-variant="icons">
+            <it-stepper-step icon="it-calendar">
+              <span slot="label">Primo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 1</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-lock">
+              <span slot="label">Secondo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 2</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-settings">
+              <span slot="label">Terzo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 3</p></div>
+            </it-stepper-step>
+          </it-stepper>
+        </section>
+
+        <section>
+          <h2>Testo e numeri</h2>
+          <it-stepper current="1" header-variant="numbers">
+            <it-stepper-step icon="it-calendar">
+              <span slot="label">Primo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 1</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-lock">
+              <span slot="label">Secondo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 2</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-settings">
+              <span slot="label">Terzo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 3</p></div>
+            </it-stepper-step>
+          </it-stepper>
+        </section>
+
+        <section>
+          <h2>Navigazione degli step</h2>
+          <it-stepper current="1" prev-label="Precedente" next-label="Successivo">
+            <it-stepper-step icon="it-calendar">
+              <span slot="label">Primo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 1</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-lock">
+              <span slot="label">Secondo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 2</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-settings">
+              <span slot="label">Terzo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 3</p></div>
+            </it-stepper-step>
+          </it-stepper>
+        </section>
+
+        <section>
+          <h2>Progress bar</h2>
+          <it-stepper current="1" mobile-progress="bar" mobile-progress-on-desktop>
+            <it-stepper-step icon="it-calendar">
+              <span slot="label">Primo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 1</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-lock">
+              <span slot="label">Secondo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 2</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-settings">
+              <span slot="label">Terzo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 3</p></div>
+            </it-stepper-step>
+          </it-stepper>
+        </section>
+
+        <section>
+          <h2>Pallini</h2>
+          <it-stepper current="1" mobile-progress="dots" mobile-progress-on-desktop>
+            <it-stepper-step icon="it-calendar">
+              <span slot="label">Primo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 1</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-lock">
+              <span slot="label">Secondo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 2</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-settings">
+              <span slot="label">Terzo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 3</p></div>
+            </it-stepper-step>
+          </it-stepper>
+        </section>
+
+        <section>
+          <h2>Salva</h2>
+          <it-stepper current="1" save-label="Salva" save-title="Vuoi salvare il progresso?" save-description="Potrai riprendere il flusso da questo punto in poi.">
+            <it-stepper-step icon="it-calendar">
+              <span slot="label">Primo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 1</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-lock">
+              <span slot="label">Secondo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 2</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-settings">
+              <span slot="label">Terzo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 3</p></div>
+            </it-stepper-step>
+          </it-stepper>
+        </section>
+
+        <section>
+          <h2>Conferma</h2>
+          <it-stepper current="1" show-confirm confirm-label="Conferma">
+            <it-stepper-step icon="it-calendar">
+              <span slot="label">Primo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 1</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-lock">
+              <span slot="label">Secondo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 2</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-settings">
+              <span slot="label">Terzo contenuto</span>
+              <div class="p-5 text-center border bg-light"><p class="m-0">Contenuto dello step 3</p></div>
+            </it-stepper-step>
+          </it-stepper>
+        </section>
+
+        <section class="bg-dark p-4">
+          <h2 class="text-white">Sfondo scuro</h2>
+          <it-stepper current="1" dark>
+            <it-stepper-step icon="it-calendar">
+              <span slot="label">Primo contenuto</span>
+              <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step 1</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-lock">
+              <span slot="label">Secondo contenuto</span>
+              <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step 2</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-settings">
+              <span slot="label">Terzo contenuto</span>
+              <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step 3</p></div>
+            </it-stepper-step>
+          </it-stepper>
+        </section>
+
+        <section class="stepper-variant-stack bg-dark p-4">
+          <h2 class="text-white">Sfondo scuro - varianti intestazione</h2>
+          <it-stepper current="1" dark header-variant="text">
+            <it-stepper-step icon="it-calendar">
+              <span slot="label">Primo contenuto</span>
+              <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step 1</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-lock">
+              <span slot="label">Secondo contenuto</span>
+              <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step 2</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-settings">
+              <span slot="label">Terzo contenuto</span>
+              <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step 3</p></div>
+            </it-stepper-step>
+          </it-stepper>
+          <it-stepper current="1" dark header-variant="icons">
+            <it-stepper-step icon="it-calendar">
+              <span slot="label">Primo contenuto</span>
+              <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step 1</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-lock">
+              <span slot="label">Secondo contenuto</span>
+              <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step 2</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-settings">
+              <span slot="label">Terzo contenuto</span>
+              <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step 3</p></div>
+            </it-stepper-step>
+          </it-stepper>
+          <it-stepper current="1" dark header-variant="numbers">
+            <it-stepper-step icon="it-calendar">
+              <span slot="label">Primo contenuto</span>
+              <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step 1</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-lock">
+              <span slot="label">Secondo contenuto</span>
+              <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step 2</p></div>
+            </it-stepper-step>
+            <it-stepper-step icon="it-settings">
+              <span slot="label">Terzo contenuto</span>
+              <div class="p-5 text-center border text-white"><p class="m-0">Contenuto dello step 3</p></div>
+            </it-stepper-step>
+          </it-stepper>
+        </section>
+      </main>
+      <div id="app-footer"></div>
+      <it-back-to-top it-aria-label="Torna su"></it-back-to-top>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module">
+      document.addEventListener('it-stepper-change', (event) => console.info(event.type, event.detail));
+      document.addEventListener('it-stepper-save', (event) => console.info(event.type, event.detail));
+      document.addEventListener('it-stepper-confirm', (event) => console.info(event.type, event.detail));
+    </script>
+  </body>
+</html>

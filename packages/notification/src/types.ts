@@ -12,3 +12,13 @@ export const NOTIFICATION_STATUS_COLORS: Record<NotificationStatus, string> = {
 
 export const NOTIFICATION_FIX = ['top', 'bottom', 'left', 'right'] as const;
 export type NotificationFix = (typeof NOTIFICATION_FIX)[number];
+
+/**
+ * Detail degli eventi `it-notification-show` / `it-notification-close`.
+ * Entrambi gli eventi sono cancelable: `event.preventDefault()` impedisce
+ * rispettivamente la comparsa e la chiusura della notifica.
+ */
+export interface NotificationEventDetail {
+  /** Riferimento all'elemento notifica */
+  notification: HTMLElement;
+}

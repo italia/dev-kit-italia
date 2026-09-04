@@ -1,4 +1,4 @@
-import { BaseLocalizedComponent } from '@italia/globals';
+import { BaseLocalizedComponent, setAttributes } from '@italia/globals';
 import { html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -12,6 +12,21 @@ import en from './locales/en.js';
 
 registerTranslation(it);
 registerTranslation(en);
+
+// Avatar dropdowns (e.g. the "+N" group balloon) must not show the expand
+// caret — it pushes the label off-centre. Mirrors Bootstrap Italia, where the
+// avatar dropdown is a bare btn-dropdown with no caret. The "+N" trigger is a
+// tiny circle, so the popover arrow is centred on it rather than using the
+// fixed notch position standard dropdowns rely on. See issue #431.
+const onDropdownSlotChange = (event: Event) => {
+  const slot = event.target as HTMLSlotElement;
+  slot.assignedElements().forEach((el) => {
+    if (el.tagName.toLowerCase() === 'it-dropdown') {
+      el.setAttribute('hide-expand-icon', '');
+      el.setAttribute('center-arrow', '');
+    }
+  });
+};
 
 @customElement('it-avatar')
 export class ItAvatar extends BaseLocalizedComponent {
@@ -148,12 +163,10 @@ export class ItAvatar extends BaseLocalizedComponent {
     // Icone di default per i diversi stati di presenza
     let presenceIcon = '';
     switch (this.presence) {
-      case 'active':
-        presenceIcon = 'it-check';
-        break;
       case 'busy':
         presenceIcon = 'it-minus';
         break;
+      case 'active':
       case 'hidden':
         presenceIcon = '';
         break;
@@ -267,7 +280,9 @@ export class ItAvatar extends BaseLocalizedComponent {
     const content = html`
       ${autoType === 'image' ? this.renderImage() : nothing} ${autoType === 'text' ? this.renderText() : nothing}
       ${autoType === 'icon' ? this.renderIcon() : nothing}
-      ${autoType === 'dropdown' ? html`<slot name="avatar-dropdown-content"></slot>` : nothing}
+      ${autoType === 'dropdown'
+        ? html`<slot name="avatar-dropdown-content" @slotchange="${onDropdownSlotChange}"></slot>`
+        : nothing}
     `;
 
     return content;
@@ -341,6 +356,7 @@ export class ItAvatar extends BaseLocalizedComponent {
               class="${this.getAvatarWrapperClasses()}"
               title="${ifDefined(this.avatarTitle || this.text || undefined)}"
               part="avatar focusable"
+              ${setAttributes(this._ariaAttributes)}
             >
               ${avatarContent}
             </a>

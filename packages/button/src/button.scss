@@ -1,27 +1,30 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
+@use 'bootstrap-italia/src/scss/components/buttons' as *;
 
-@import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
-
-//ovveride utilities: get only needed utilities
-$utilities: (
-  'display': map-merge(
-      map-get($utilities, 'display'),
+utilities.$utilities: (
+  'display': map.merge(
+      map.get(utilities.$utilities, 'display'),
       (
         'values': block,
       )
     ),
-  'width': map-merge(
-      map-get($utilities, 'width'),
+  'width': map.merge(
+      map.get(utilities.$utilities, 'width'),
       (
         'values': (
           100: 100%,
         ),
       )
-    ),
+    )
 );
+
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 // cursor pointer. Same code from 'bootstrap-italia/src/scss/base/reboot':
 button,
@@ -36,10 +39,6 @@ button,
     }
   }
 }
-
-@import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
-
-@import 'bootstrap-italia/src/scss/components/buttons';
 
 //se viene rimossa la definizione rounded-icon-size in bs-italia per btn-xs, allora serve questa regola:
 // .btn-xs {

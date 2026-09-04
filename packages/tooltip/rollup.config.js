@@ -20,7 +20,6 @@ export default {
       options: {
         loadPaths: ['node_modules'],
         quietDeps: true,
-        silenceDeprecations: ['import'],
       },
     }),
   ],

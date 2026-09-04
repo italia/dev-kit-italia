@@ -1,6 +1,41 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 const Transfer = () => {
+  const transferCancelRef = useRef(null);
+  const [transferStatus, setTransferStatus] = useState('');
+  const transferAsyncRef = useRef(null);
+  const [asyncStatus, setAsyncStatus] = useState('');
+
+  useEffect(() => {
+    const el = transferCancelRef.current;
+    if (!el) return;
+    const onTransfer = (e) => {
+      if (e.detail.action === 'transfer' && e.detail.target.length > 3) {
+        e.preventDefault();
+        setTransferStatus('Limite di 3 elementi nel target raggiunto.');
+      } else {
+        setTransferStatus('');
+      }
+    };
+    el.addEventListener('it-transfer', onTransfer);
+    return () => el.removeEventListener('it-transfer', onTransfer);
+  }, []);
+
+  useEffect(() => {
+    const el = transferAsyncRef.current;
+    if (!el) return;
+    const onTransfer = (e) => {
+      e.preventDefault();
+      setAsyncStatus('Attendere conferma…');
+      setTimeout(() => {
+        el.commit(e.detail);
+        setAsyncStatus('');
+      }, 1000);
+    };
+    el.addEventListener('it-transfer', onTransfer);
+    return () => el.removeEventListener('it-transfer', onTransfer);
+  }, []);
+
   return (
     <>
       <h1>Transfer</h1>
@@ -50,6 +85,30 @@ const Transfer = () => {
         <it-transfer-item value="y">Voce Y</it-transfer-item>
         <it-transfer-item value="z" target={true}>Voce Z</it-transfer-item>
       </it-transfer>
+
+      <h2>Evento cancelable: Limite di 3 elementi nel target</h2>
+      <it-transfer ref={transferCancelRef} name="transfer-max-items">
+        <it-transfer-item value="a">Voce A</it-transfer-item>
+        <it-transfer-item value="b">Voce B</it-transfer-item>
+        <it-transfer-item value="c">Voce C</it-transfer-item>
+        <it-transfer-item value="d">Voce D</it-transfer-item>
+        <it-transfer-item value="e">Voce E</it-transfer-item>
+        <it-transfer-item value="f">Voce F</it-transfer-item>
+      </it-transfer>
+      <p role="status" aria-live="polite" style={{ marginTop: '1rem', color: '#d32f2f' }}>
+        {transferStatus}
+      </p>
+
+      <h2>Evento cancelable con ripresa asincrona</h2>
+      <it-transfer ref={transferAsyncRef} name="transfer-async">
+        <it-transfer-item value="a">Voce A</it-transfer-item>
+        <it-transfer-item value="b">Voce B</it-transfer-item>
+        <it-transfer-item value="c">Voce C</it-transfer-item>
+        <it-transfer-item value="d">Voce D</it-transfer-item>
+      </it-transfer>
+      <p role="status" aria-live="polite" style={{ marginTop: '1rem' }}>
+        {asyncStatus}
+      </p>
     </>
   );
 };

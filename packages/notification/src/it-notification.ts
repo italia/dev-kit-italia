@@ -1,4 +1,4 @@
-import { BaseLocalizedComponent } from '@italia/globals';
+import { BaseLocalizedComponent, focusableFallbackAncestor, nearestFocusableInDocument } from '@italia/globals';
 import { html, PropertyValues } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
@@ -12,6 +12,7 @@ import {
   type NotificationFix,
   type NotificationHeadingLevel,
   type NotificationStatus,
+  type NotificationEventDetail,
 } from './types.js';
 import styles from './notification.scss';
 
@@ -21,6 +22,14 @@ import en from './locales/en.js';
 registerTranslation(it);
 registerTranslation(en);
 
+/**
+ * Componente Notification.
+ *
+ * @element it-notification
+ *
+ * @fires it-notification-show - Quando la notifica viene mostrata
+ * @fires it-notification-close - Quando la notifica viene chiusa (click sul pulsante di chiusura, scomparsa automatica o chiamata a `hide()`)
+ */
 @customElement('it-notification')
 export class ItNotification extends BaseLocalizedComponent {
   static styles = styles;
@@ -52,14 +61,22 @@ export class ItNotification extends BaseLocalizedComponent {
   @property({ type: Number })
   timeout: number = 3000;
 
-  @query('[role="alert"]')
+  @query('[part="notification"]')
   container!: HTMLElement;
+
+  @query('[part="live-region"]')
+  liveRegion!: HTMLElement;
 
   @state()
   isShown = false;
 
   @state()
   isTransitioning = false;
+
+  /** Element focused right before `show()` was called (e.g. the button that triggered it).
+   *  Restored on `hide()` if focus was left inside the notification (e.g. its close button),
+   *  since there is no author-provided trigger slot to fall back on like `it-modal` has. */
+  private _returnFocusTarget: HTMLElement | null = null;
 
   protected override updated(_changedProperties: PropertyValues): void {
     super.updated(_changedProperties);
@@ -85,6 +102,12 @@ export class ItNotification extends BaseLocalizedComponent {
     this.isShown = true;
     if (this.fade) this.isTransitioning = true;
 
+    const previouslyFocused = document.activeElement;
+    this._returnFocusTarget =
+      previouslyFocused && previouslyFocused !== document.body && previouslyFocused !== this
+        ? (previouslyFocused as HTMLElement)
+        : null;
+
     const timeoutVal = timeout ?? this.timeout;
 
     this.container.style.display = 'block';
@@ -99,6 +122,19 @@ export class ItNotification extends BaseLocalizedComponent {
     }
 
     this.isShown = true;
+
+    // Inject the flattened slot text into the dedicated live region so that
+    // NVDA/JAWS announce the notification (they do not resolve slotted content
+    // across the shadow boundary at announcement time).
+    this.updateComplete.then(() => this.announce());
+
+    this.dispatchEvent(
+      new CustomEvent<NotificationEventDetail>('it-notification-show', {
+        bubbles: true,
+        composed: true,
+        detail: { notification: this },
+      }),
+    );
 
     setTimeout(
       () => {
@@ -121,9 +157,34 @@ export class ItNotification extends BaseLocalizedComponent {
     this.isShown = false;
     if (this.fade) this.isTransitioning = true;
 
+    this.dispatchEvent(
+      new CustomEvent<NotificationEventDetail>('it-notification-close', {
+        bubbles: true,
+        composed: true,
+        detail: { notification: this },
+      }),
+    );
+
     setTimeout(
       () => {
+        // The container is about to become display:none, which would otherwise silently
+        // drop focus to <body> if it currently holds it (e.g. right after a click on the
+        // close button). Restore it to whatever had focus before show() (e.g. the button
+        // that triggered it) — there is no author-provided trigger slot to target like
+        // it-modal has. Fall back to the nearest focusable ancestor (the it-alert/it-chip
+        // convention) if that element is gone.
+        if (this.shadowRoot?.activeElement) {
+          const target =
+            this._returnFocusTarget && this._returnFocusTarget.isConnected
+              ? this._returnFocusTarget
+              : (focusableFallbackAncestor(this) ?? nearestFocusableInDocument(this));
+          target?.focus();
+        }
+        this._returnFocusTarget = null;
         this.container.style.display = 'none';
+        // Clear the live region so a subsequent show() re-announces even when
+        // the content is identical.
+        this.liveRegion.textContent = '';
         this.isTransitioning = false;
       },
       this.fade ? ItNotification.TRANSITION_DURATION : 0,
@@ -135,6 +196,20 @@ export class ItNotification extends BaseLocalizedComponent {
       return this.headingLevel;
     }
     return 'h2';
+  }
+
+  protected getSlotText(name?: string): string {
+    const selector = name ? `slot[name="${name}"]` : 'slot:not([name])';
+    const slot = this.shadowRoot?.querySelector<HTMLSlotElement>(selector);
+    return (slot?.assignedNodes({ flatten: true }) ?? [])
+      .map((node) => node.textContent?.trim() ?? '')
+      .filter(Boolean)
+      .join(' ')
+      .trim();
+  }
+
+  protected announce(): void {
+    this.liveRegion.textContent = [this.getSlotText('title'), this.getSlotText()].filter(Boolean).join('. ');
   }
 
   override render() {
@@ -154,29 +229,26 @@ export class ItNotification extends BaseLocalizedComponent {
     const headingTag = unsafeStatic(this.getHeadingLevel());
 
     return html`
-      <div
-        class="${classes}"
-        role="alert"
-        aria-labelledby="heading"
-        part="notification"
-        aria-hidden="${ifDefined(this.isShown ? undefined : 'true')}"
-      >
-        ${staticHtml`
-          <${headingTag} class=${headingClasses} id="heading" part="title">
-            ${
-              this.icon
-                ? html`<it-icon
-                    class="icon me-2"
-                    size="sm"
-                    color=${ifDefined(this.status ? NOTIFICATION_STATUS_COLORS[this.status] : undefined)}
-                    name="${this.icon}"
-                    align="none"
-                  ></it-icon>`
-                : ''
-            }<slot name="title"></slot>
-          </${headingTag}>
-        `}
-        <slot></slot>
+      <div role="alert" class="visually-hidden" part="live-region"></div>
+      <div class="${classes}" part="notification">
+        <div aria-hidden="true">
+          ${staticHtml`
+            <${headingTag} class=${headingClasses} id=${`${this._id}-heading`} part="title">
+              ${
+                this.icon
+                  ? html`<it-icon
+                      class="icon me-2"
+                      size="sm"
+                      color=${ifDefined(this.status ? NOTIFICATION_STATUS_COLORS[this.status] : undefined)}
+                      name="${this.icon}"
+                      align="none"
+                    ></it-icon>`
+                  : ''
+              }<slot name="title"></slot>
+            </${headingTag}>
+          `}
+          <slot></slot>
+        </div>
         ${this.dismissable
           ? html`
               <button type="button" class="btn notification-close" @click=${this.hide}>

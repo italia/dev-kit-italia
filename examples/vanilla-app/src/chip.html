@@ -5,8 +5,8 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test Web Components - vanilla-app</title>
-    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
-    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+    <link rel="stylesheet" href="@italia/dev-kit-italia/fonts.css" />
+    <link rel="stylesheet" href="@italia/dev-kit-italia/styles.css" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
@@ -15,10 +15,9 @@
       <main class="container my-4">
         <h1>Chip</h1>
 
-        <it-chip label="Etichetta" size="sm" variant="primary"></it-chip>
         <section>
           <h2>Varianti di colore</h2>
-          <div class="flex p-0">
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
             <it-chip label="Etichetta" size="sm" variant="primary"></it-chip>
             <it-chip label="Etichetta" size="sm" variant="secondary"></it-chip>
             <it-chip label="Etichetta" size="sm" variant="success"></it-chip>
@@ -28,65 +27,53 @@
         </section>
 
         <section>
-          <h2>Varianti di colore link</h2>
-          <div class="flex p-0">
-            <it-chip label="Etichetta" size="sm" variant="primary" href="#"></it-chip>
-            <it-chip label="Etichetta" size="sm" variant="secondary" href="#"></it-chip>
-            <it-chip label="Etichetta" size="sm" variant="success" href="#"></it-chip>
-            <it-chip label="Etichetta" size="sm" variant="danger" href="#"></it-chip>
-            <it-chip label="Etichetta" size="sm" variant="warning" href="#"></it-chip>
-          </div>
-        </section>
-
-        <section>
           <h2>Varianti di dimensione</h2>
-          <div class="flex p-0">
-            <it-chip label="Etichetta" size="sm" variant=""></it-chip>
-            <it-chip label="Etichetta" size="lg" variant=""></it-chip>
-            <it-chip label="Etichetta" size="sm" variant="" href="#"></it-chip>
-            <it-chip label="Etichetta" size="lg" variant="" href="#"></it-chip>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+            <it-chip label="Etichetta" size="sm" variant="" dismissable>
+              <it-button slot="dismiss-button" it-aria-label="Elimina etichetta">
+                <it-icon name="it-close" size="sm"></it-icon>
+              </it-button>
+            </it-chip>
+            <it-chip label="Etichetta" size="lg" variant="" dismissable>
+              <it-button slot="dismiss-button" it-aria-label="Elimina etichetta">
+                <it-icon name="it-close" size="sm"></it-icon>
+              </it-button>
+            </it-chip>
           </div>
         </section>
 
         <section>
           <h2>Chip con avatar</h2>
-          <div class="flex p-0">
-            <it-chip label="Etichetta" size="sm" variant="primary" avatar="https://randomuser.me/api/portraits/men/46.jpg" avatar-alt="Avatar alt" id="chip-dismissable">
-              <it-button slot="dismiss-button" icon it-aria-label="Elimina etichetta" disabled it-aria-description="Puoi premere per eliminare la chip." data-click="handleDismiss" data-keydown="handleKeyDown">
+          <div class="d-flex gap-2 flex-wrap align-items-center">
+            <it-chip
+              label="Mario Rossi"
+              size="sm"
+              variant="primary"
+              avatar="https://randomuser.me/api/portraits/men/46.jpg"
+              avatar-alt="Mario Rossi"
+              dismissable
+            >
+              <it-button
+                slot="dismiss-button"
+                it-aria-label="Rimuovi Mario Rossi"
+                it-aria-description="Puoi premere per rimuovere questo utente."
+              >
                 <it-icon name="it-close" size="sm"></it-icon>
               </it-button>
             </it-chip>
-
-            <it-chip label="Etichetta" size="lg" variant="primary" avatar="https://randomuser.me/api/portraits/men/46.jpg" avatar-alt="Avatar alt" id="chip-dismissable-lg">
-              <it-button slot="dismiss-button" icon it-aria-label="Elimina etichetta" disabled it-aria-description="Puoi premere per eliminare la chip." data-click="handleDismiss" data-keydown="handleKeyDown">
-                <it-icon name="it-close" size="sm"></it-icon>
-              </it-button>
-            </it-chip>
-          </div>
-        </section>
-
-        <section>
-          <h2>Chip con chiusura</h2>
-          <div class="flex p-0">
-            <it-chip label="Rimuovibile" size="sm" variant="primary" dismissable id="chip-dismissable-1">
-              <it-button slot="dismiss-button" icon it-aria-label="Elimina chip" it-aria-description="Puoi premere per eliminare la chip." data-click="handleDismiss" data-keydown="handleKeyDown">
-                <it-icon name="it-close" size="sm"></it-icon>
-              </it-button>
-            </it-chip>
-
-            <it-chip label="Altra rimuovibile" size="sm" variant="danger" dismissable id="chip-dismissable-2">
-              <it-button slot="dismiss-button" icon it-aria-label="Elimina chip" disabled it-aria-description="Puoi premere per eliminare la chip." data-click="handleDismiss" data-keydown="handleKeyDown">
-                <it-icon name="it-close" size="sm"></it-icon>
-              </it-button>
-            </it-chip>
-          </div>
-        </section>
-
-        <section>
-          <h2>Chip disabilitata</h2>
-          <div class="flex p-0">
-            <it-chip label="Etichetta" size="sm" variant="primary" dismissable is-disabled>
-              <it-button slot="dismiss-button" icon it-aria-label="Elimina etichetta" disabled it-aria-description="Puoi premere per eliminare la chip." data-click="handleDismiss" data-keydown="handleKeyDown">
+            <it-chip
+              label="Anna Verdi"
+              size="lg"
+              variant="secondary"
+              avatar="https://randomuser.me/api/portraits/women/32.jpg"
+              avatar-alt="Anna Verdi"
+              dismissable
+            >
+              <it-button
+                slot="dismiss-button"
+                it-aria-label="Rimuovi Anna Verdi"
+                it-aria-description="Puoi premere per rimuovere questo utente."
+              >
                 <it-icon name="it-close" size="sm"></it-icon>
               </it-button>
             </it-chip>
@@ -95,23 +82,84 @@
 
         <section>
           <h2>Chip con icona</h2>
-          <div class="flex p-0">
+          <div class="d-flex gap-2 flex-wrap align-items-center">
             <it-chip label="Download" size="sm" variant="primary" dismissable>
-              <it-icon slot="icon" name="it-download" size="sm"></it-icon>
-              <it-button slot="dismiss-button" icon it-aria-label="Rimuovi download" it-aria-description="Puoi premere per rimuovere questa azione." data-click="handleDismiss" data-keydown="handleKeyDown">
+              <it-icon slot="icon" name="it-download"></it-icon>
+              <it-button
+                slot="dismiss-button"
+                it-aria-label="Rimuovi download"
+                it-aria-description="Puoi premere per rimuovere questa azione."
+              >
                 <it-icon name="it-close" size="sm"></it-icon>
               </it-button>
             </it-chip>
-
             <it-chip label="Carica file" size="lg" variant="success" dismissable>
-              <it-icon slot="icon" name="it-upload" size="sm"></it-icon>
-              <it-button slot="dismiss-button" icon it-aria-label="Rimuovi carica file" it-aria-description="Puoi premere per rimuovere questa azione." data-click="handleDismiss" data-keydown="handleKeyDown">
+              <it-icon slot="icon" name="it-upload"></it-icon>
+              <it-button
+                slot="dismiss-button"
+                it-aria-label="Rimuovi carica file"
+                it-aria-description="Puoi premere per rimuovere questa azione."
+              >
                 <it-icon name="it-close" size="sm"></it-icon>
               </it-button>
             </it-chip>
+            <it-chip href="#" label="Preferiti" size="sm" variant="warning">
+              <it-icon slot="icon" name="it-star-full"></it-icon>
+            </it-chip>
+          </div>
+        </section>
 
-            <it-chip label="Preferiti" size="sm" variant="warning">
-              <it-icon slot="icon" name="it-star-full" size="sm"></it-icon>
+        <section>
+          <h2>Chip con chiusura</h2>
+          <p>
+            La rimozione è gestita di default dal componente: al click sul pulsante `slot="dismiss-button"` la chip
+            viene rimossa dal DOM. Non è necessario alcun handler manuale.
+          </p>
+          <div class="d-flex gap-2 flex-wrap align-items-center">
+            <it-chip label="Etichetta" size="sm" variant="primary" dismissable>
+              <it-button
+                slot="dismiss-button"
+                it-aria-label="Elimina etichetta"
+                it-aria-description="Puoi premere per eliminare la chip."
+              >
+                <it-icon name="it-close" size="sm"></it-icon>
+              </it-button>
+            </it-chip>
+          </div>
+        </section>
+
+        <section>
+          <h2>Chip disabilitata</h2>
+          <div class="d-flex gap-2 flex-wrap align-items-center">
+            <it-chip label="Etichetta" size="sm" variant="primary" dismissable is-disabled>
+              <it-button
+                slot="dismiss-button"
+                it-aria-label="Elimina etichetta"
+                disabled
+                it-aria-description="Questa chip è disabilitata e non può essere rimossa."
+              >
+                <it-icon name="it-close" size="sm"></it-icon>
+              </it-button>
+            </it-chip>
+          </div>
+        </section>
+
+        <section>
+          <h2>Logica di rimozione personalizzata</h2>
+          <p>
+            L'evento `it-chip-close` è cancelable. Chiamando `event.preventDefault()` puoi intercettare la rimozione ed
+            eseguire una logica personalizzata (ad esempio una conferma), richiamando poi il metodo pubblico `close()`
+            quando opportuno.
+          </p>
+          <div class="d-flex gap-2 flex-wrap align-items-center">
+            <it-chip label="Etichetta" size="sm" variant="primary" dismissable id="chip-conferma">
+              <it-button
+                slot="dismiss-button"
+                it-aria-label="Elimina etichetta"
+                it-aria-description="La rimozione richiede conferma."
+              >
+                <it-icon name="it-close" size="sm"></it-icon>
+              </it-button>
             </it-chip>
           </div>
         </section>
@@ -120,9 +168,13 @@
       <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
     </div>
 
-
     <script type="module" src="/src/main.js"></script>
-    <script type="module" src="/src/js/chip.js"></script>
-
+    <script type="module">
+      const chip = document.getElementById('chip-conferma');
+      chip.addEventListener('it-chip-close', (e) => {
+        e.preventDefault();
+        if (confirm('Rimuovere questa chip?')) e.currentTarget.close();
+      });
+    </script>
   </body>
 </html>

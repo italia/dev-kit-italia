@@ -1,15 +1,8 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/forms/form-validation' as *;
 
-.form-feedback {
-  width: 100%;
-  margin-top: 0.25rem;
-  font-size: 0.75rem;
-
-  &.just-validate-error-label {
-    color: var(--#{$prefix}color-text-danger);
-  }
-}
 /* ========================================
    FOUC Styles - Flash of Unstyled Content
    ======================================== */

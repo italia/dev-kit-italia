@@ -1,5 +1,5 @@
 /* eslint-disable lit-a11y/click-events-have-key-events */
-import { BaseComponent, FocusTrapController, WindowManager } from '@italia/globals';
+import { BaseComponent, FocusTrapController, WindowManager, dispatchCancelable } from '@italia/globals';
 import { html, PropertyValues } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -17,8 +17,8 @@ import styles from './modal.scss';
  * @slot header-icon - Icona opzionale nell'header
  * @slot footer - Azioni del footer (pulsanti)
  *
- * @fires it-modal-open - Quando la modale si apre
- * @fires it-modal-close - Quando la modale si chiude
+ * @fires it-modal-open - Quando la modale si apre (cancelable: `preventDefault()` impedisce l'apertura)
+ * @fires it-modal-close - Quando la modale si chiude (cancelable: `preventDefault()` impedisce la chiusura)
  *
  * @prop {string} close-button-placement - Posizione del pulsante di chiusura: `header` (default) o `backdrop` (sopra lo sfondo scuro, utile per menu offcanvas)
  */
@@ -63,6 +63,8 @@ export class ItModal extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'footer-shadow', reflect: true }) footerShadow = false;
 
+  @property({ type: Boolean, attribute: 'default-focus-close', reflect: true }) defaultFocusClose = false;
+
   @query('[role="dialog"]') private _modalElement!: HTMLElement;
 
   @query('slot[name="trigger"]') private _triggerSlot!: HTMLSlotElement;
@@ -74,6 +76,10 @@ export class ItModal extends BaseComponent {
   @query('.modal-backdrop') private _backdropElement!: HTMLElement;
 
   @query('.modal-dialog') private _dialogElement!: HTMLElement;
+
+  @query('.modal-content') private _contentElement!: HTMLElement;
+
+  @query('[part="close-button"]') private _closeButton!: HTMLElement;
 
   private _titleId = '';
 
@@ -120,7 +126,7 @@ export class ItModal extends BaseComponent {
     this._descriptionId = this.generateId('modal-description');
     this._focusTrap = new FocusTrapController(this, {
       getContainer: () => this._modalElement,
-      initialFocus: () => this._modalElement,
+      initialFocus: () => this._entryPoint(),
       getTrigger: () => this._triggerElement,
       onEscape: () => {
         this._safariMouseInteraction = false;
@@ -131,6 +137,20 @@ export class ItModal extends BaseComponent {
 
   connectedCallback(): void {
     super.connectedCallback?.();
+  }
+
+  /**
+   * Element the focus enters on when the modal opens.
+   *
+   * Deliberately not the `[role="dialog"]` element: NVDA doesn't announce the role when focus
+   * lands on the dialog element itself (nvaccess/nvda#8620), so the user is told the name of the
+   * modal but never that it is a dialog — unlike VoiceOver, JAWS and Narrator, which announce it.
+   * Entering on a descendant instead has the dialog announced as its ancestor, role included.
+   * `.modal-content` is a container and not a control, so its content is still read out after the
+   * announcement, exactly as it was when focus landed on the dialog.
+   */
+  private _entryPoint(): HTMLElement | null {
+    return this.defaultFocusClose ? this._closeButton : (this._contentElement ?? this._modalElement);
   }
 
   disconnectedCallback(): void {
@@ -148,23 +168,29 @@ export class ItModal extends BaseComponent {
   public show(): void {
     if (this.open || this.isAnimating) return;
 
-    this._originalTrigger = this._triggerElement;
-    this.dispatchEvent(
-      new CustomEvent<ModalEventDetail>('it-modal-open', { detail: { modal: this }, bubbles: true, composed: true }),
-    );
-    this.open = true;
+    // `it-modal-open` is cancelable: calling `preventDefault()` stops the modal
+    // from opening (the consumer can open it later by calling `show()` again).
+    dispatchCancelable<ModalEventDetail>(this, 'it-modal-open', { modal: this }, () => {
+      this._originalTrigger = this._triggerElement;
+      this.open = true;
+    });
   }
 
   public hide(): void {
     if (!this.open || this.isAnimating) return;
-    this.dispatchEvent(
-      new CustomEvent<ModalEventDetail>('it-modal-close', { detail: { modal: this }, bubbles: true, composed: true }),
-    );
-    this._hideModal();
+    // `it-modal-close` is cancelable: calling `preventDefault()` keeps the modal
+    // open (the consumer can close it later by calling `hide()`).
+    dispatchCancelable<ModalEventDetail>(this, 'it-modal-close', { modal: this }, () => {
+      this._hideModal();
+    });
   }
 
   public toggle(): void {
-    this.open = !this.open;
+    if (this.open) {
+      this.hide();
+    } else {
+      this.show();
+    }
   }
 
   protected updated(changedProperties: PropertyValues): void {
@@ -545,16 +571,8 @@ export class ItModal extends BaseComponent {
         @click="${this._handleBackdropClick}"
         part="modal"
       >
-        <!-- TRICK SAFARI ENGINE -->
-        <div
-          id="safari-focus-anchor"
-          tabindex="-1"
-          aria-hidden="true"
-          style="position: absolute; width: 0; height: 0; outline: none;"
-        ></div>
         <div
           class="${classMap(this._modalBodyClasses)}"
-          role="document"
           @click="${this._handleDialogClick}"
           part="modal-content-wrapper"
         >
@@ -562,7 +580,7 @@ export class ItModal extends BaseComponent {
           <div class="visually-hidden" id="${this._descriptionId}">
             <slot name="description" @slotchange="${this._onHeaderSlotChange}">${this.modalDescription}</slot>
           </div>
-          <div class="modal-content" part="modal-content">
+          <div class="modal-content" tabindex="-1" part="modal-content">
             <div
               class="${hasHeader || (this.variant !== 'popconfirm' && !this.hideCloseButton) ? 'modal-header' : ''}"
               part="modal-header"

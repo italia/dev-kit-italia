@@ -1,20 +1,30 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/reboot';
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
+@use 'bootstrap-italia/src/scss/base/reboot' as *;
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
-@import 'bootstrap-italia/src/scss/forms/form-input-upload';
-@import 'bootstrap-italia/src/scss/forms/just-validate';
-@import 'bootstrap-italia/src/scss/components/type';
+@use 'bootstrap-italia/src/scss/forms/form-input-upload' as *;
+@use 'bootstrap-italia/src/scss/forms/form-validation' as *;
+@use 'bootstrap-italia/src/scss/components/type' as *;
+
+utilities.$utilities: ('color': map.get(utilities.$utilities, 'color'));
+
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 :host {
   display: inline-block;
 }
 
-// Hidden proxy input used by FormControl for required/validity — not visible to users.
-.it-form__control {
+// The file input is the form-control validity participant and must stay in the DOM in every
+// state, but the "select from device" affordance only makes sense before a file is chosen.
+// Hide its wrapper once a file is loading/uploaded (the input is no longer required there).
+.upload-dragdrop.loading .upload-dragdrop-select-wrap,
+.upload-dragdrop.success .upload-dragdrop-select-wrap {
   display: none;
 }
 
@@ -49,4 +59,13 @@
   display: flex;
   align-items: center;
   gap: var(--#{$prefix}spacing-xxs, 8px);
+}
+
+// BSI's form-input-upload only styles `h5` inside .upload-dragdrop-text.
+// When heading-level is set to anything else, apply the same base rules.
+.upload-dragdrop-text {
+  :is(h1, h2, h3, h4, h6) {
+    margin: 0;
+    color: var(--#{$prefix}color-text-base);
+  }
 }

@@ -1,9 +1,10 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/components/toolbar';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/components/toolbar' as *;
 
-@import 'bootstrap-italia/src/scss/base/mixins/visually-hidden';
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@use 'bootstrap-italia/src/scss/base/mixins/visually-hidden' as *;
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
 :host {
   display: block;
@@ -12,6 +13,7 @@
 .toolbar {
   --#{$prefix}toolbar-badge-size: 18px;
   --#{$prefix}toolbar-badge-top: -4px;
+  box-sizing: border-box;
 
   &.toolbar-small {
     --#{$prefix}toolbar-badge-size: 8px;

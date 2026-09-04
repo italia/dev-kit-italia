@@ -1,32 +1,8 @@
 <script>
-  function handleDismiss(event) {
-    const chip = event.currentTarget.closest('it-chip');
-    if (chip?.hasAttribute('is-disabled')) {
-      event.preventDefault();
-      event.stopPropagation();
-      return;
-    }
-    if (chip) chip.remove();
-  }
-
-  function handleKeyDown(event) {
-    const chip = event.currentTarget.closest('it-chip');
-
-    // Lascia passare Tab e Shift+Tab per la navigazione
-    if (event.key === 'Tab') {
-      return;
-    }
-
-    // Controlla se la chip è disabilitata per altri tasti
-    if (chip?.hasAttribute('is-disabled')) {
-      event.preventDefault();
-      event.stopPropagation();
-      return;
-    }
-
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      if (chip) chip.remove();
+  function onChipClose(e) {
+    e.preventDefault();
+    if (window.confirm('Rimuovere questa chip?')) {
+      e.currentTarget.close();
     }
   }
 </script>
@@ -71,41 +47,35 @@
   <h2>Chip con avatar</h2>
   <div class="flex p-0">
     <it-chip
-      label="Etichetta"
+      label="Mario Rossi"
       size="sm"
       variant="primary"
       avatar="https://randomuser.me/api/portraits/men/46.jpg"
-      avatar-alt="Avatar alt"
-      id="chip-dismissable"
+      avatar-alt="Mario Rossi"
+      dismissable
     >
       <it-button
         slot="dismiss-button"
         icon
-        it-aria-label="Elimina etichetta"
-        disabled
-        it-aria-description="Puoi premere per eliminare la chip."
-        on:click={handleDismiss}
-        on:keydown={handleKeyDown}
+        it-aria-label="Rimuovi Mario Rossi"
+        it-aria-description="Puoi premere per rimuovere questo utente."
       >
         <it-icon name="it-close" size="sm"></it-icon>
       </it-button>
     </it-chip>
     <it-chip
-      label="Etichetta"
+      label="Anna Verdi"
       size="lg"
-      variant="primary"
-      avatar="https://randomuser.me/api/portraits/men/46.jpg"
-      avatar-alt="Avatar alt"
-      id="chip-dismissable"
+      variant="secondary"
+      avatar="https://randomuser.me/api/portraits/women/32.jpg"
+      avatar-alt="Anna Verdi"
+      dismissable
     >
       <it-button
         slot="dismiss-button"
         icon
-        it-aria-label="Elimina etichetta"
-        disabled
-        it-aria-description="Puoi premere per eliminare la chip."
-        on:click={handleDismiss}
-        on:keydown={handleKeyDown}
+        it-aria-label="Rimuovi Anna Verdi"
+        it-aria-description="Puoi premere per rimuovere questo utente."
       >
         <it-icon name="it-close" size="sm"></it-icon>
       </it-button>
@@ -115,6 +85,7 @@
 
 <section>
   <h2>Chip con chiusura</h2>
+  <p>La rimozione è gestita di default dal componente: non è necessario alcun handler manuale.</p>
   <div class="flex p-0">
     <it-chip label="Rimuovibile" size="sm" variant="primary" dismissable id="chip-dismissable-1">
       <it-button
@@ -122,8 +93,6 @@
         icon
         it-aria-label="Elimina chip"
         it-aria-description="Puoi premere per eliminare la chip."
-        on:click={handleDismiss}
-        on:keydown={handleKeyDown}
       >
         <it-icon name="it-close" size="sm"></it-icon>
       </it-button>
@@ -134,10 +103,27 @@
         slot="dismiss-button"
         icon
         it-aria-label="Elimina chip"
-        disabled
         it-aria-description="Puoi premere per eliminare la chip."
-        on:click={handleDismiss}
-        on:keydown={handleKeyDown}
+      >
+        <it-icon name="it-close" size="sm"></it-icon>
+      </it-button>
+    </it-chip>
+  </div>
+</section>
+
+<section>
+  <h2>Logica di rimozione personalizzata</h2>
+  <p>
+    L'evento <code>it-chip-close</code> è cancelable: chiamando <code>preventDefault()</code> puoi intercettare la
+    rimozione ed eseguire una logica personalizzata, richiamando poi il metodo pubblico <code>close()</code>.
+  </p>
+  <div class="flex p-0">
+    <it-chip label="Etichetta" size="sm" variant="primary" dismissable on:it-chip-close={onChipClose}>
+      <it-button
+        slot="dismiss-button"
+        icon
+        it-aria-label="Elimina etichetta"
+        it-aria-description="La rimozione richiede conferma."
       >
         <it-icon name="it-close" size="sm"></it-icon>
       </it-button>
@@ -154,9 +140,7 @@
         icon
         it-aria-label="Elimina etichetta"
         disabled
-        it-aria-description="Puoi premere per eliminare la chip."
-        on:click={handleDismiss}
-        on:keydown={handleKeyDown}
+        it-aria-description="Questa chip è disabilitata e non può essere rimossa."
       >
         <it-icon name="it-close" size="sm"></it-icon>
       </it-button>
@@ -174,8 +158,6 @@
         icon
         it-aria-label="Rimuovi download"
         it-aria-description="Puoi premere per rimuovere questa azione."
-        on:click={handleDismiss}
-        on:keydown={handleKeyDown}
       >
         <it-icon name="it-close" size="sm"></it-icon>
       </it-button>
@@ -187,8 +169,6 @@
         icon
         it-aria-label="Rimuovi carica file"
         it-aria-description="Puoi premere per rimuovere questa azione."
-        on:click={handleDismiss}
-        on:keydown={handleKeyDown}
       >
         <it-icon name="it-close" size="sm"></it-icon>
       </it-button>

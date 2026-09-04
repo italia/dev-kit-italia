@@ -1,52 +1,61 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/reboot'; //per il font dentro agli input
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
+@use 'bootstrap-italia/src/scss/base/reboot'; //per il font dentro agli input
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
-@import 'bootstrap-italia/src/scss/components/buttons';
-@import 'bootstrap-italia/src/scss/components/grid';
-@import 'bootstrap-italia/src/scss/components/progress-bars';
-@import 'bootstrap-italia/src/scss/components/type';
+@use 'bootstrap-italia/src/scss/components/buttons' as *;
+@use 'bootstrap-italia/src/scss/components/grid' as *;
+@use 'bootstrap-italia/src/scss/components/progress-bars' as *;
+@use 'bootstrap-italia/src/scss/components/type' as *;
 
-@import 'bootstrap-italia/src/scss/forms/forms';
-@import 'bootstrap-italia/src/scss/forms/form-control';
+@use 'bootstrap-italia/src/scss/forms/forms' as *;
+@use 'bootstrap-italia/src/scss/forms/form-control' as *;
 
-@import 'bootstrap-italia/src/scss/forms/form-password';
-@import 'bootstrap-italia/src/scss/forms/form-input-number';
+@use 'bootstrap-italia/src/scss/forms/form-password' as *;
+@use 'bootstrap-italia/src/scss/forms/form-input-number' as *;
 
-@import 'bootstrap-italia/src/scss/forms/input-group';
+@use 'bootstrap-italia/src/scss/forms/input-group' as *;
 
-@import 'bootstrap-italia/src/scss/forms/just-validate';
+@use 'bootstrap-italia/src/scss/forms/form-validation' as *;
 
-@import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
-//ovveride utilities: get only needed utilities
-$utilities: (
-  'position': map-merge(
-      map-get($utilities, 'position'),
+utilities.$utilities: (
+  'position': map.merge(
+      map.get(utilities.$utilities, 'position'),
       (
         'values': absolute,
       )
     ),
-  'width': map-merge(
-      map-get($utilities, 'width'),
+  'width': map.merge(
+      map.get(utilities.$utilities, 'width'),
       (
         'values': (
           100: 100%,
         ),
       )
     ),
-  'margin': map-merge(
-      map-get($utilities, 'margin'),
+  'margin': map.merge(
+      map.get(utilities.$utilities, 'margin'),
       (
         'values': (
           0: 0,
         ),
       )
     ),
-  'background-color': map-merge(
-      map-get($utilities, 'background-color'),
+  'padding-top': map.merge(
+      map.get(utilities.$utilities, 'padding-top'),
+      (
+        'values': (
+          0: 0,
+        ),
+      )
+    ),
+  'background-color': map.merge(
+      map.get(utilities.$utilities, 'background-color'),
       (
         'values': (
           'muted': $color-background-muted,
@@ -56,34 +65,35 @@ $utilities: (
         ),
       )
     ),
-  'border-start': map-get($utilities, 'border-start'),
-  'border-end': map-get($utilities, 'border-end'),
-  'border-color': map-merge(
-      map-get($utilities, 'border-color'),
+  'border-start': map.get(utilities.$utilities, 'border-start'),
+  'border-end': map.get(utilities.$utilities, 'border-end'),
+  'border-color': map.merge(
+      map.get(utilities.$utilities, 'border-color'),
       (
         'values': white,
       )
     ),
-  'color': map-get($utilities, 'color'),
-  'display': map-merge(
-      map-get($utilities, 'display'),
+  'color': map.get(utilities.$utilities, 'color'),
+  'display': map.merge(
+      map.get(utilities.$utilities, 'display'),
       (
         'values': none,
       )
     ),
-  'flex': map-merge(
-      map-get($utilities, 'flex-direction'),
+  'flex-direction': map.merge(
+      map.get(utilities.$utilities, 'flex-direction'),
       (
         'values': (
           'column': column,
         ),
       )
-    ),
+    )
 );
-@import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
+
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 .password-icon {
-  top: calc(var(--#{$prefix}form-control-spacing) * 5);
+  top: calc(var(--#{$prefix}form-control-spacing) * 4);
   --#{$prefix}icon-default: var(--#{$prefix}icon-primary);
 }
 

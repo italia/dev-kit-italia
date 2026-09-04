@@ -1,10 +1,11 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
 
-@import 'bootstrap-italia/src/scss/components/accordion';
-@import 'bootstrap-italia/src/scss/components/type';
+@use 'bootstrap-italia/src/scss/components/accordion' as *;
+@use 'bootstrap-italia/src/scss/components/type' as *;
 
 :host {
   --#{$prefix}accordion-btn-icon-width: 1.5rem;

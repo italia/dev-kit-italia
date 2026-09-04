@@ -1,6 +1,9 @@
-$font-path: './assets/fonts';
-
-@import './fonts/titillium-web';
-@import './fonts/titillium-sans-pro';
-@import './fonts/roboto';
-@import './fonts/lora';
+@use './fonts/titillium-web' with (
+  $font-path: './assets/fonts'
+);
+@use './fonts/roboto' with (
+  $font-path: './assets/fonts'
+);
+@use './fonts/lora' with (
+  $font-path: './assets/fonts'
+);

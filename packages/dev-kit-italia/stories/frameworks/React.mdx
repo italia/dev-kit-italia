@@ -3,9 +3,13 @@ import { Code } from 'storybook/internal/components';
 
 <Meta title="Framework/React" />
 
+export const path = process.env.GH_PAGES_PATH + '/react-app/';
+
 # React
 
 Dev Kit Italia si integra nativamente con React tramite i Custom Elements standard del browser. I componenti si usano direttamente nel JSX senza wrapper aggiuntivi.
+
+<a href={path} title="Vai all'esempio di integrazione React">Esempio di integrazione</a> - <a href="https://github.com/italia/dev-kit-italia/tree/main/examples/react-app" title="Vai al codice su GitHub">Codice GitHub</a>
 
 <div class="callout callout-warning">
   <div class="callout-inner">
@@ -15,6 +19,17 @@ Dev Kit Italia si integra nativamente con React tramite i Custom Elements standa
     <p>
       Per il funzionamento corretto dei web components in React, è necessario avere una versione
       <strong>React >= 19.0.0</strong>.
+    </p>
+  </div>
+</div>
+
+<div class="callout callout-primary">
+  <div class="callout-inner">
+    <div class="callout-title">
+      <span class="text">SSR</span>
+    </div>
+    <p>
+      Se usi React all'interno di un framework con SSR abilitato (es. Next.js App Router), l'import statico di <code>elements.js</code> mostrato di seguito va adattato: consulta la guida dedicata a <a href="/docs/framework-ssr--documentazione">SSR</a>.
     </p>
   </div>
 </div>
@@ -39,7 +54,7 @@ Nel punto di ingresso dell'applicazione (`main.jsx`), importa i componenti e i f
 // main.jsx
 import '@italia/dev-kit-italia/elements.js';
 import '@italia/dev-kit-italia/fonts.css';
-import '@italia/dev-kit-italia/full.css';
+import '@italia/dev-kit-italia/styles.css';
 ```
 
 ## Utilizzo

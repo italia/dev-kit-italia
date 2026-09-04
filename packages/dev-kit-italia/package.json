@@ -1,7 +1,7 @@
 {
   "name": "@italia/dev-kit-italia",
   "description": "Bundle dei web components del Design system .italia",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-beta.2",
   "publishConfig": {
     "access": "public"
   },
@@ -23,8 +23,9 @@
     ".": "./dist/src/index.js",
     "./elements.js": "./dist/elements.js",
     "./styles.css": "./dist/styles.css",
-    "./full.css": "./dist/full.css",
-    "./fonts.css": "./dist/fonts.css"
+    "./styles-for-migration.css": "./dist/styles-for-migration.css",
+    "./fonts.css": "./dist/fonts.css",
+    "./fonts-sans-pro.css": "./dist/fonts-sans-pro.css"
   },
   "scripts": {
     "build": "rollup --config rollup.config.js",
@@ -53,8 +54,10 @@
   ],
   "dependencies": {
     "@italia/accordion": "workspace:^",
+    "@italia/alert": "workspace:^",
     "@italia/autocomplete": "workspace:^",
     "@italia/avatar": "workspace:^",
+    "@italia/back": "workspace:^",
     "@italia/back-to-top": "workspace:^",
     "@italia/bottom-nav": "workspace:^",
     "@italia/breadcrumbs": "workspace:^",
@@ -67,6 +70,7 @@
     "@italia/collapse": "workspace:^",
     "@italia/dimmer": "workspace:^",
     "@italia/dropdown": "workspace:^",
+    "@italia/forward": "workspace:^",
     "@italia/header": "workspace:^",
     "@italia/hero": "workspace:^",
     "@italia/i18n": "workspace:^",
@@ -84,12 +88,13 @@
     "@italia/section": "workspace:^",
     "@italia/select": "workspace:^",
     "@italia/skiplinks": "workspace:^",
+    "@italia/stepper": "workspace:^",
     "@italia/sticky": "workspace:^",
-    "@italia/toolbar": "workspace:^",
-    "@italia/thumbnav": "workspace:^",
     "@italia/tabs": "workspace:^",
+    "@italia/thumbnav": "workspace:^",
     "@italia/timeline": "workspace:^",
     "@italia/toggle": "workspace:^",
+    "@italia/toolbar": "workspace:^",
     "@italia/tooltip": "workspace:^",
     "@italia/transfer": "workspace:^",
     "@italia/upload": "workspace:^",

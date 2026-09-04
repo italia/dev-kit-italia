@@ -9,21 +9,14 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 export class ForwardComponent {
   title = 'Forward';
 
-  // eslint-disable-next-line class-methods-use-this
-  handleForwardClick(event: Event) {
-    event.preventDefault();
-    const link = event.currentTarget as HTMLAnchorElement;
-    const targetId = link.getAttribute('href');
-    if (!targetId) return;
-    const targetElement = document.querySelector(targetId) as HTMLElement;
-    if (targetElement) {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      targetElement.scrollIntoView({
-        behavior: prefersReducedMotion ? 'auto' : 'smooth',
-        block: 'start',
-      });
-      targetElement.setAttribute('tabindex', '-1');
-      targetElement.focus({ preventScroll: true });
+  forwardStatus = '';
+
+  onNavigate(e: Event) {
+    e.preventDefault();
+    const detail = (e as CustomEvent).detail;
+    this.forwardStatus = `Navigazione intercettata verso "${detail.href}". Scorro io…`;
+    if (detail.target) {
+      (e.currentTarget as any).navigateTo(detail.target);
     }
   }
 }

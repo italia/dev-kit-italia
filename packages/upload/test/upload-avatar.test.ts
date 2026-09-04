@@ -282,7 +282,7 @@ describe('<it-upload-avatar>', () => {
     await el.updateComplete;
     await el.updateComplete;
 
-    const feedback = el.shadowRoot!.querySelector('.invalid-feedback');
+    const feedback = el.shadowRoot!.querySelector('.form-feedback');
     expect(feedback).to.exist;
     expect(feedback!.hasAttribute('aria-hidden')).to.be.false;
     expect(feedback!.textContent?.trim()).to.have.length.greaterThan(0);
@@ -292,9 +292,25 @@ describe('<it-upload-avatar>', () => {
     const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar" required></it-upload-avatar>`);
     await el.updateComplete;
 
-    const feedback = el.shadowRoot!.querySelector('.invalid-feedback');
+    const feedback = el.shadowRoot!.querySelector('.form-feedback');
     expect(feedback).to.exist;
     expect(feedback!.hasAttribute('aria-hidden')).to.be.false;
     expect(feedback!.textContent?.trim()).to.equal('');
+  });
+
+  // ── aria-required on visible file input ───────────────────────────────────────
+
+  it('file input has aria-required="true" when required', async () => {
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar" required></it-upload-avatar>`);
+    await el.updateComplete;
+    const input = el.shadowRoot!.querySelector('input[type="file"]')!;
+    expect(input.getAttribute('aria-required')).to.equal('true');
+  });
+
+  it('file input has no aria-required when not required', async () => {
+    const el = await fixture<ItUploadAvatar>(html`<it-upload-avatar name="avatar"></it-upload-avatar>`);
+    await el.updateComplete;
+    const input = el.shadowRoot!.querySelector('input[type="file"]')!;
+    expect(input.hasAttribute('aria-required')).to.be.false;
   });
 });

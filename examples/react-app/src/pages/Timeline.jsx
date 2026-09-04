@@ -20,13 +20,13 @@ const Timeline = () => {
         <it-timeline>
           <it-timeline-element variant="past" date="MAGGIO 2026" heading-level="h3">
             <it-icon slot="pin-icon" name="it-file"></it-icon>
-            <it-card>
+            <it-card heading-level="h4">
               <a slot="title" href="#">
                 Titolo del contenuto
               </a>
               <figure slot="image" className="figure img-full">
                 <img
-                  src="https://placeholderimage.eu/api/city/800/600"
+                  src="https://picsum.photos/seed/city/800/600"
                   alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
                 />
               </figure>
@@ -42,7 +42,7 @@ const Timeline = () => {
 
           <it-timeline-element variant="past" date="GIUGNO 2026" heading-level="h3">
             <it-icon slot="pin-icon" name="it-calendar"></it-icon>
-            <it-card>
+            <it-card heading-level="h4">
               <a slot="title" href="#">
                 Titolo del contenuto
               </a>
@@ -58,7 +58,7 @@ const Timeline = () => {
 
           <it-timeline-element variant="current" date="LUGLIO 2026" heading-level="h3">
             <it-icon slot="pin-icon" name="it-check-circle"></it-icon>
-            <it-card>
+            <it-card heading-level="h4">
               <a slot="title" href="#">
                 Titolo del contenuto
               </a>
@@ -74,7 +74,7 @@ const Timeline = () => {
 
           <it-timeline-element variant="current" date="LUGLIO 2026" heading-level="h3">
             <it-icon slot="pin-icon" name="it-check-circle"></it-icon>
-            <it-card>
+            <it-card heading-level="h4">
               <a slot="title" href="#">
                 Titolo del contenuto
               </a>
@@ -90,7 +90,7 @@ const Timeline = () => {
 
           <it-timeline-element date="AGOSTO 2026" heading-level="h3">
             <it-icon slot="pin-icon" name="it-star-outline"></it-icon>
-            <it-card>
+            <it-card heading-level="h4">
               <a slot="title" href="#">
                 Titolo del contenuto
               </a>
@@ -472,7 +472,7 @@ const Timeline = () => {
               </time>
               <figure slot="image" className="figure img-full">
                 <img
-                  src="https://placeholderimage.eu/api/city/800/600"
+                  src="https://picsum.photos/seed/city/800/600"
                   alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
                 />
               </figure>
@@ -493,7 +493,7 @@ const Timeline = () => {
               </a>
               <figure slot="image" className="figure img-full">
                 <img
-                  src="https://placeholderimage.eu/api/city/800/600"
+                  src="https://picsum.photos/seed/city/800/600"
                   alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
                 />
               </figure>

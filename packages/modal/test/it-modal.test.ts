@@ -483,6 +483,78 @@ describe('it-modal', () => {
 
       expect(eventFired).to.be.true;
     });
+
+    it('it-modal-open is cancelable and carries detail.modal', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal disable-animation>
+          <span slot="header">Test</span>
+        </it-modal>
+      `);
+
+      let cancelable = false;
+      let detailModal: ItModal | null = null;
+      el.addEventListener('it-modal-open', (e) => {
+        cancelable = e.cancelable;
+        detailModal = (e as CustomEvent).detail.modal;
+      });
+
+      el.show();
+      await aTimeout(50);
+
+      expect(cancelable).to.be.true;
+      expect(detailModal).to.equal(el);
+    });
+
+    it('does not open when it-modal-open is prevented', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal disable-animation>
+          <span slot="header">Test</span>
+        </it-modal>
+      `);
+      el.addEventListener('it-modal-open', (e) => e.preventDefault());
+
+      el.show();
+      await aTimeout(50);
+
+      expect(el.open).to.not.be.true;
+    });
+
+    it('it-modal-close is cancelable and carries detail.modal', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal open disable-animation>
+          <span slot="header">Test</span>
+        </it-modal>
+      `);
+      await aTimeout(50);
+
+      let cancelable = false;
+      let detailModal: ItModal | null = null;
+      el.addEventListener('it-modal-close', (e) => {
+        cancelable = e.cancelable;
+        detailModal = (e as CustomEvent).detail.modal;
+      });
+
+      el.hide();
+      await aTimeout(50);
+
+      expect(cancelable).to.be.true;
+      expect(detailModal).to.equal(el);
+    });
+
+    it('does not close when it-modal-close is prevented', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal open disable-animation>
+          <span slot="header">Test</span>
+        </it-modal>
+      `);
+      await aTimeout(50);
+      el.addEventListener('it-modal-close', (e) => e.preventDefault());
+
+      el.hide();
+      await aTimeout(50);
+
+      expect(el.open).to.be.true;
+    });
   });
 
   describe('keyboard interaction (Escape)', () => {
@@ -581,6 +653,46 @@ describe('it-modal', () => {
   });
 
   describe('focus trap', () => {
+    it('moves the initial focus inside the dialog, not on the dialog itself', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal open disable-animation>
+          <span slot="header">Test</span>
+          <p slot="content">Content</p>
+          <it-button slot="footer" id="btn1">Button 1</it-button>
+        </it-modal>
+      `);
+      await aTimeout(100);
+
+      const dialog = el.shadowRoot?.querySelector('[role="dialog"]') as HTMLElement;
+      const content = el.shadowRoot?.querySelector('.modal-content') as HTMLElement;
+
+      // NVDA doesn't announce the role of a dialog when focus lands on the dialog element
+      // itself (nvaccess/nvda#8620), so the entry point has to be a descendant.
+      expect(getDeepActiveElement()).to.equal(content);
+      expect(getDeepActiveElement()).to.not.equal(dialog);
+    });
+
+    it('wraps backwards from the entry point to the last focusable element', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal open disable-animation>
+          <span slot="header">Test</span>
+          <p slot="content">Content</p>
+          <it-button slot="footer" id="btn1">Button 1</it-button>
+          <it-button slot="footer" id="btn2">Button 2</it-button>
+        </it-modal>
+      `);
+      await aTimeout(100);
+
+      // The entry point is focusable but not tabbable, so it is not part of the cycle: going
+      // backwards from it has to wrap to the end instead of leaving the dialog.
+      pressKey(el, 'Tab', true);
+      await aTimeout(50);
+
+      const active = getDeepActiveElement();
+      const host = ((active?.getRootNode() as ShadowRoot)?.host as HTMLElement) ?? active;
+      expect(host).to.equal(el.querySelector('#btn2'));
+    });
+
     it('traps focus inside modal when open', async () => {
       const el = await fixture<ItModal>(html`
         <it-modal open disable-animation>
@@ -853,7 +965,7 @@ describe('it-modal', () => {
       expect(label).to.equal('Custom Label');
     });
 
-    it('modal-dialog has role="document"', async () => {
+    it('modal-dialog carries no role', async () => {
       const el = await fixture<ItModal>(html`
         <it-modal open disable-animation>
           <span slot="header">Test</span>
@@ -861,8 +973,11 @@ describe('it-modal', () => {
       `);
       await aTimeout(50);
 
+      // `role="document"` was the ARIA 1.0 pattern for letting screen readers switch back to
+      // browse mode inside a dialog. With `aria-modal="true"` it is no longer needed, and NVDA
+      // announced it as "document" right after the dialog on entering the modal.
       const dialog = el.shadowRoot?.querySelector('.modal-dialog');
-      expect(dialog?.getAttribute('role')).to.equal('document');
+      expect(dialog?.hasAttribute('role')).to.be.false;
     });
 
     it('close button has accessible label', async () => {
@@ -907,6 +1022,33 @@ describe('it-modal', () => {
       await aTimeout(50);
 
       expect(el.open).to.be.true;
+    });
+
+    it('restores focus to the trigger element after the modal closes', async () => {
+      const el = await fixture<ItModal>(html`
+        <it-modal disable-animation>
+          <span slot="header">Test</span>
+          <it-button slot="trigger">Open</it-button>
+          <p slot="content">Content</p>
+        </it-modal>
+      `);
+      await el.updateComplete;
+      await aTimeout(100);
+
+      // Note: the modal reassigns the trigger's `id` (to `_triggerId`) once it wires up
+      // its listeners, so select by attribute rather than a test-authored id.
+      const trigger = el.querySelector('it-button[slot="trigger"]') as HTMLElement;
+      trigger.click();
+      await aTimeout(50);
+      expect(el.open).to.be.true;
+
+      el.hide();
+      // finishHide() defers the focus restore by 20ms to avoid a VoiceOver
+      // double-announcement (see it-modal.ts finishHide()).
+      await aTimeout(100);
+
+      expect(el.open).to.be.false;
+      expect(document.activeElement).to.equal(trigger);
     });
   });
 });

@@ -1,3 +1,7 @@
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins/focus' as *;
+
 /*
 MEMO:
 - :focus --> sia da tastiera, sia da mouse
@@ -16,7 +20,7 @@ button:focus-visible,
 .upload-dragdrop-input:focus-visible[type='file'] + label,
 .avatar-upload:focus-within:focus-visible,
 .rating input:focus-visible + label svg {
-  @extend %focus;
+  @include focus;
 }
 
 [tabindex='-1']:focus:not(:focus-visible) {
@@ -26,7 +30,7 @@ button:focus-visible,
 
 :focus:not(:focus-visible):not(.btn):not(it-tab):not(it-tab-panel),
 ::part(focusable):focus-visible:not(.btn) {
-  @extend %focusmouse;
+  @include focusmouse;
 }
 
 p a {
@@ -34,7 +38,7 @@ p a {
     /* focus da mouse o script, esclusi anche i .btn */
     background: $focus-outline-color-in;
     box-shadow: none !important;
-    color: $link-color !important;
+    color: var(--#{$prefix}color-link) !important;
 
     outline: 3px $focus-outline-color-out solid !important;
     outline-offset: 0px !important;
@@ -77,7 +81,7 @@ p a {
 
 .form-check {
   .toggles label:has(input[type='checkbox']:focus-visible) {
-    @extend %focus;
+    @include focus;
 
     input,
     .lever {
@@ -88,7 +92,7 @@ p a {
   }
 
   .toggles label:has(input[type='checkbox']:focus:not(:focus-visible)) {
-    @extend %focusmouse;
+    @include focusmouse;
   }
 
   &.form-check-group {
@@ -102,8 +106,7 @@ p a {
 
 .bg-dark .btn,
 .back-to-top.dark {
-  &:focus-visible,
-  &%focus {
+  &:focus-visible {
     box-shadow:
       0 0 0 2px $focus-outline-color-out,
       0 0 0 5px $focus-outline-color-in !important;

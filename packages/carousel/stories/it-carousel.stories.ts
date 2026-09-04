@@ -22,7 +22,7 @@ const renderSimpleCard = (image?: boolean, variant?: string, index?: string) => 
       <time slot="footer" class="it-card-date" datetime="2026-04-22"> 22 aprile 2026 </time>
       <figure slot="image" class="figure img-full">
         <img
-          src="https://placeholderimage.eu/api/city/800/600"
+          src="https://picsum.photos/seed/city/800/600"
           alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
         />
       </figure>
@@ -37,7 +37,7 @@ const renderSimpleCard = (image?: boolean, variant?: string, index?: string) => 
     ${image
       ? html`<figure slot="image" class="figure img-full">
           <img
-            src="https://placeholderimage.eu/api/city/800/600"
+            src="https://picsum.photos/seed/city/800/600"
             alt="${index}. Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
           />
         </figure>`
@@ -83,7 +83,7 @@ const renderSlide = (
           <div class="img-responsive">
             <div class="img-wrapper">
               <img
-                src="https://www.placeholderimage.eu/api/800/600"
+                src="https://picsum.photos/800/600"
                 title="titolo immagine ${index}"
                 alt="descrizione immagine ${index}"
               />
@@ -116,7 +116,7 @@ const renderComponent = (params: any) => html`
 
 const meta: Meta<any> = {
   title: 'Componenti/Carousel',
-  tags: ['alpha', 'web-component', 'a11y-ok'],
+  tags: ['web-component', 'a11y-ok'],
   component: 'it-carousel',
   args: {
     arrows: false,
@@ -224,6 +224,7 @@ export const EsempioInterattivo: Story = {
 export const VarianteSingola: Story = {
   name: 'Variante singola',
   args: {
+    title: 'Variante singola',
     cardOptions: {
       type: 'inline',
     },
@@ -242,6 +243,7 @@ export const Variante3Colonne: Story = {
   args: {
     variant: 'columns',
     arrows: false,
+    title: 'Variante 3 colonne',
     cardOptions: {
       type: 'simpleCard',
     },
@@ -258,6 +260,20 @@ export const VarianteGallerySM: Story = {
     },
     title: 'Variante gallery small',
   },
+  parameters: {
+    layout: 'fullscreen',
+  },
+  decorators: [
+    (story) => {
+      if (!document.head.querySelector('#gallery-sm-fix')) {
+        const s = document.createElement('style');
+        s.id = 'gallery-sm-fix';
+        s.textContent = '#storybook-root{width:100%!important}';
+        document.head.appendChild(s);
+      }
+      return html`<div style="max-width:1400px;margin:0 auto;">${story()}</div>`;
+    },
+  ],
   render: (args) => renderComponent(args),
 };
 export const VarianteGalleryLG: Story = {
@@ -287,7 +303,7 @@ export const VarianteGalleryLG: Story = {
         s.textContent = '#storybook-root{width:100%!important}';
         document.head.appendChild(s);
       }
-      return html`<div style="overflow:hidden;width:100%;">${story()}</div>`;
+      return html`<div style="max-width:1400px;margin:0 auto;overflow:hidden;">${story()}</div>`;
     },
   ],
   render: (args) => renderComponent(args),
@@ -303,7 +319,8 @@ export const ConFrecce1: Story = {
   },
   render: (args) => html`
     <div style="display: flex; flex-direction: column; gap: 4rem;">
-      ${renderComponent(args)} ${renderComponent({ ...args, variant: 'single' })}
+      ${renderComponent({ ...args, title: 'Carousel 3 colonne con frecce' })}
+      ${renderComponent({ ...args, variant: 'single', title: 'Carousel singolo con frecce' })}
     </div>
   `,
 };
@@ -313,6 +330,7 @@ export const Fullscreen: Story = {
     variant: 'single',
     arrows: true,
     fullscreen: true,
+    title: 'Carousel fullscreen',
     cardOptions: {
       type: 'inline',
     },
@@ -325,6 +343,7 @@ export const Separator: Story = {
   args: {
     variant: 'columns',
     separator: true,
+    title: 'Carousel con separatore',
     cardOptions: {
       type: 'inline',
     },
@@ -373,6 +392,7 @@ export const ConfigurazioneAvanzata: Story = {
   name: 'Configurazione avanzata di Splide',
   args: {
     variant: 'columns',
+    title: 'Configurazione avanzata Splide',
     cardOptions: {
       type: 'cardWithImage',
     },
@@ -400,7 +420,7 @@ export const ConfigurazioneAvanzata: Story = {
           arrows: false,
         },
         992: {
-          perPage: 3,
+          perPage: 2,
           gap: 0,
           padding: { left: 0, right: 0 },
           arrows: false,

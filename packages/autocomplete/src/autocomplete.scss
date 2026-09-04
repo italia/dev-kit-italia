@@ -1,47 +1,49 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/reboot';
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
+@use 'bootstrap-italia/src/scss/base/reboot' as *;
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
 
-@import 'bootstrap-italia/src/scss/components/grid';
-@import 'bootstrap-italia/src/scss/components/type';
+@use 'bootstrap-italia/src/scss/components/grid' as *;
+@use 'bootstrap-italia/src/scss/components/type' as *;
 
-@import 'bootstrap-italia/src/scss/forms/forms';
-@import 'bootstrap-italia/src/scss/forms/form-control';
-@import 'bootstrap-italia/src/scss/forms/just-validate';
+@use 'bootstrap-italia/src/scss/forms/forms' as *;
+@use 'bootstrap-italia/src/scss/forms/form-control' as *;
+@use 'bootstrap-italia/src/scss/forms/form-validation' as *;
 
 // Import autocomplete styles from bootstrap-italia
-@import 'bootstrap-italia/src/scss/forms/accessible-autocomplete';
-@import 'bootstrap-italia/src/scss/forms/autocomplete';
+@use 'bootstrap-italia/src/scss/forms/accessible-autocomplete' as *;
+@use 'bootstrap-italia/src/scss/forms/autocomplete' as *;
 
-@import 'bootstrap-italia/src/scss/base/utilities';
-
-$utilities: (
-  'position': map-merge(
-      map-get($utilities, 'position'),
+utilities.$utilities: (
+  'position': map.merge(
+      map.get(utilities.$utilities, 'position'),
       (
         'values': absolute relative,
       )
     ),
-  'width': map-merge(
-      map-get($utilities, 'width'),
+  'width': map.merge(
+      map.get(utilities.$utilities, 'width'),
       (
         'values': (
           100: 100%,
         ),
       )
     ),
-  'display': map-merge(
-      map-get($utilities, 'display'),
+  'display': map.merge(
+      map.get(utilities.$utilities, 'display'),
       (
         'values': none block,
       )
     ),
+  'color': map.get(utilities.$utilities, 'color')
 );
 
-@import 'bootstrap-italia/src/scss/base/utilities/api';
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 // Custom styles for web component
 :host {
@@ -99,19 +101,15 @@ $utilities: (
   &.active {
     background-color: var(--#{$prefix}color-background-primary-lighter);
     color: var(--#{$prefix}color-text-primary);
+    font-weight: bold;
+    outline: 2px solid var(--#{$prefix}color-outline-focus);
+    outline-offset: -2px;
   }
 
   &:focus {
     outline: 2px solid var(--#{$prefix}color-outline-focus);
     outline-offset: -2px;
   }
-}
-
-.invalid-feedback {
-  display: block;
-  margin-top: var(--#{$prefix}spacing-3xs);
-  color: var(--#{$prefix}color-text-danger);
-  font-size: var(--#{$prefix}label-font-size-xs);
 }
 
 .required {

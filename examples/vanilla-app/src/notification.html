@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notification - Test Web Components - vanilla-app</title>
     <!-- Load compiled dev-kit CSS in <head> so styles are present even when JS is disabled -->
-    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
-    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+    <link rel="stylesheet" href="@italia/dev-kit-italia/fonts.css" />
+    <link rel="stylesheet" href="@italia/dev-kit-italia/styles.css" />
     <!-- Local app styles so layout (#root etc.) is present without JS -->
     <link rel="stylesheet" href="/src/style.css" />
   </head>
@@ -23,13 +23,13 @@
           <h2>Con messaggio</h2>
           <div class="d-flex gap-3 flex-wrap">
             <div>
+              <button class="btn btn-primary mt-3" onclick="document.getElementById('notif1').show()">
+                Mostra notifica
+              </button>
               <it-notification id="notif1" icon="it-info-circle" status="info">
                 <span slot="title">Titolo della notifica</span>
                 <p>Testo descrittivo della notifica che fornisce informazioni all'utente.</p>
               </it-notification>
-              <button class="btn btn-primary mt-3" onclick="document.getElementById('notif1').show()">
-                Mostra notifica
-              </button>
             </div>
           </div>
         </section>
@@ -40,13 +40,13 @@
           <p>Le notifiche eliminabili non vengono nascoste dopo un intervallo di tempo ma vengono chiuse solo quando si clicca sul pulsante di chiusura.</p>
           <div class="d-flex gap-3 flex-wrap">
             <div>
+              <button class="btn btn-primary mt-3" onclick="document.getElementById('notif2').show()">
+                Mostra notifica dismissable
+              </button>
               <it-notification id="notif2" icon="it-check-circle" status="success" dismissable>
                 <span slot="title">Operazione completata</span>
                 <p>La tua azione è stata eseguita con successo.</p>
               </it-notification>
-              <button class="btn btn-primary mt-3" onclick="document.getElementById('notif2').show()">
-                Mostra notifica dismissable
-              </button>
             </div>
           </div>
         </section>
@@ -56,43 +56,43 @@
           <h2>Stati (success, error, warning, info)</h2>
           <div class="d-flex gap-3 flex-wrap">
             <div>
+              <button class="btn btn-success mt-3" onclick="document.getElementById('notif3').show()">
+                Mostra notifica di successo
+              </button>
               <it-notification id="notif3" icon="it-check-circle" status="success">
                 <span slot="title">Successo</span>
                 <p>L'operazione è stata completata con successo.</p>
               </it-notification>
-              <button class="btn btn-success mt-3" onclick="document.getElementById('notif3').show()">
-                Mostra notifica di successo
-              </button>
             </div>
 
             <div>
+              <button class="btn btn-danger mt-3" onclick="document.getElementById('notif4').show()">
+                Mostra notifica di errore
+              </button>
               <it-notification id="notif4" icon="it-error" status="error">
                 <span slot="title">Errore</span>
                 <p>Si è verificato un errore durante l'operazione.</p>
               </it-notification>
-              <button class="btn btn-danger mt-3" onclick="document.getElementById('notif4').show()">
-                Mostra notifica di errore
-              </button>
             </div>
 
             <div>
+              <button class="btn btn-warning mt-3" onclick="document.getElementById('notif5').show()">
+                Mostra notifica di avviso
+              </button>
               <it-notification id="notif5" icon="it-warning-circle" status="warning">
                 <span slot="title">Attenzione</span>
                 <p>Si prega di prestare attenzione a questo avviso importante.</p>
               </it-notification>
-              <button class="btn btn-warning mt-3" onclick="document.getElementById('notif5').show()">
-                Mostra notifica di avviso
-              </button>
             </div>
 
             <div>
+              <button class="btn btn-info mt-3" onclick="document.getElementById('notif6').show()">
+                Mostra notifica di informazione
+              </button>
               <it-notification id="notif6" icon="it-info-circle" status="info">
                 <span slot="title">Informazione</span>
                 <p>Ecco un'informazione utile per te.</p>
               </it-notification>
-              <button class="btn btn-info mt-3" onclick="document.getElementById('notif6').show()">
-                Mostra notifica di informazione
-              </button>
             </div>
           </div>
         </section>
@@ -104,43 +104,43 @@
 
           <div class="d-flex gap-3 flex-wrap">
             <div>
+              <button class="btn btn-outline-primary" onclick="this.nextElementSibling.show()">
+                Mostra in alto
+              </button>
               <it-notification icon="it-info-circle" status="info" fix="top">
                 <span slot="title">Notifica in alto</span>
                 <p>Questa notifica è posizionata in alto.</p>
               </it-notification>
-              <button class="btn btn-outline-primary" onclick="this.previousElementSibling.show()">
-                Mostra in alto
-              </button>
             </div>
 
             <div>
+              <button class="btn btn-outline-primary" onclick="this.nextElementSibling.show()">
+                Mostra in basso
+              </button>
               <it-notification icon="it-info-circle" status="info" fix="bottom">
                 <span slot="title">Notifica in basso</span>
                 <p>Questa notifica è posizionata in basso.</p>
               </it-notification>
-              <button class="btn btn-outline-primary" onclick="this.previousElementSibling.show()">
-                Mostra in basso
-              </button>
             </div>
 
             <div>
+              <button class="btn btn-outline-primary" onclick="this.nextElementSibling.show()">
+                Mostra a sinistra
+              </button>
               <it-notification icon="it-info-circle" status="info" fix="left">
                 <span slot="title">Notifica a sinistra</span>
                 <p>Questa notifica è posizionata a sinistra.</p>
               </it-notification>
-              <button class="btn btn-outline-primary" onclick="this.previousElementSibling.show()">
-                Mostra a sinistra
-              </button>
             </div>
 
             <div>
+              <button class="btn btn-outline-primary" onclick="this.nextElementSibling.show()">
+                Mostra a destra
+              </button>
               <it-notification icon="it-info-circle" status="info" fix="right">
                 <span slot="title">Notifica a destra</span>
                 <p>Questa notifica è posizionata a destra.</p>
               </it-notification>
-              <button class="btn btn-outline-primary" onclick="this.previousElementSibling.show()">
-                Mostra a destra
-              </button>
             </div>
           </div>
         </section>
@@ -152,23 +152,23 @@
 
           <div class="d-flex gap-3 flex-wrap">
             <div>
+              <button class="btn btn-primary mt-3" onclick="this.nextElementSibling.show(2000)">
+                Mostra (2s)
+              </button>
               <it-notification icon="it-check-circle" status="success">
                 <span slot="title">Notifica con timeout di 2 secondi</span>
                 <p>Questa notifica scomparirà dopo 2 secondi.</p>
               </it-notification>
-              <button class="btn btn-primary mt-3" onclick="this.previousElementSibling.show(2000)">
-                Mostra (2s)
-              </button>
             </div>
 
             <div>
+              <button class="btn btn-primary mt-3" onclick="this.nextElementSibling.show(5000)">
+                Mostra (5s)
+              </button>
               <it-notification icon="it-check-circle" status="success">
                 <span slot="title">Notifica con timeout di 5 secondi</span>
                 <p>Questa notifica scomparirà dopo 5 secondi.</p>
               </it-notification>
-              <button class="btn btn-primary mt-3" onclick="this.previousElementSibling.show(5000)">
-                Mostra (5s)
-              </button>
             </div>
           </div>
         </section>
@@ -180,13 +180,13 @@
 
           <div class="d-flex gap-3 flex-wrap">
             <div>
+              <button class="btn btn-warning mt-3" onclick="document.getElementById('notif7').show()">
+                Mostra notifica
+              </button>
               <it-notification id="notif7" dismissable icon="it-warning-circle" status="warning">
                 <span slot="title">Notifica con chiusura manuale</span>
                 <p>Clicca il pulsante per chiudere la notifica.</p>
               </it-notification>
-              <button class="btn btn-warning mt-3" onclick="document.getElementById('notif7').show()">
-                Mostra notifica
-              </button>
             </div>
           </div>
         </section>
@@ -198,23 +198,23 @@
 
           <div class="d-flex gap-3 flex-wrap">
             <div>
+              <button class="btn btn-outline-primary mt-3" onclick="this.nextElementSibling.show()">
+                Mostra con h3
+              </button>
               <it-notification icon="it-info-circle" status="info" heading-level="h3">
                 <span slot="title">Notifica con h3</span>
                 <p>Questa notifica usa h3 come tag di intestazione.</p>
               </it-notification>
-              <button class="btn btn-outline-primary mt-3" onclick="this.previousElementSibling.show()">
-                Mostra con h3
-              </button>
             </div>
 
             <div>
+              <button class="btn btn-outline-primary mt-3" onclick="this.nextElementSibling.show()">
+                Mostra con h4
+              </button>
               <it-notification icon="it-info-circle" status="info" heading-level="h4">
                 <span slot="title">Notifica con h4</span>
                 <p>Questa notifica usa h4 come tag di intestazione.</p>
               </it-notification>
-              <button class="btn btn-outline-primary mt-3" onclick="this.previousElementSibling.show()">
-                Mostra con h4
-              </button>
             </div>
           </div>
         </section>
@@ -226,13 +226,13 @@
 
           <div class="d-flex gap-3 flex-wrap">
             <div>
+              <button class="btn btn-outline-primary mt-3" onclick="document.getElementById('notifFade').show()">
+                Mostra senza animazione
+              </button>
               <it-notification id="notifFade" icon="it-info-circle" status="info">
                 <span slot="title">Notifica senza fade</span>
                 <p>Questa notifica appare e scompare senza animazione.</p>
               </it-notification>
-              <button class="btn btn-outline-primary mt-3" onclick="document.getElementById('notifFade').show()">
-                Mostra senza animazione
-              </button>
             </div>
           </div>
         </section>
@@ -247,6 +247,9 @@
 
           <div class="d-flex gap-3 flex-wrap">
             <div>
+              <button class="btn btn-success mt-3" onclick="this.nextElementSibling.show()">
+                Mostra notifica combinata
+              </button>
               <it-notification
                 icon="it-check-circle"
                 status="success"
@@ -257,12 +260,12 @@
                 <span slot="title">Successo con opzioni avanzate</span>
                 <p>Questa notifica combina status success, dismissable, posizione top e h3 heading.</p>
               </it-notification>
-              <button class="btn btn-success mt-3" onclick="this.previousElementSibling.show()">
-                Mostra notifica combinata
-              </button>
             </div>
 
             <div>
+              <button class="btn btn-danger mt-3" onclick="this.nextElementSibling.show()">
+                Mostra notifica di errore
+              </button>
               <it-notification
                 icon="it-error"
                 status="error"
@@ -273,9 +276,6 @@
                 <span slot="title">Errore con opzioni avanzate</span>
                 <p>Questa notifica combina status error, dismissable, posizione bottom e h4 heading.</p>
               </it-notification>
-              <button class="btn btn-danger mt-3" onclick="this.previousElementSibling.show()">
-                Mostra notifica di errore
-              </button>
             </div>
           </div>
         </section>

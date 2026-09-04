@@ -44,7 +44,7 @@ Se utilizzi framework come React, Angular, Svelte o Vue, segui le convenzioni de
       Alcune classi provenienti da Boostrap Italia sono usate all'interno del link (`bottom-nav-label`, `bottom-nav-badge`, `bottom-nav-alert`, `.icon`). Queste classi si trovano nel light DOM e non possono essere raggiunte dal shadow DOM del componente. Se non stai utilizzando il bundle completo, includi il foglio di stile globale nel tuo progetto per applicare questi stili:
 
 ```scss
-@import '@italia/bottom-nav/styles/globals';
+@use '@italia/bottom-nav/styles/globals' as *;
 ```
 
     </p>

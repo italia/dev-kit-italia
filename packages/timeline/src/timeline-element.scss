@@ -1,10 +1,11 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
 
-@import 'bootstrap-italia/src/scss/components/grid';
-@import 'bootstrap-italia/src/scss/components/type';
+@use 'bootstrap-italia/src/scss/components/grid' as *;
+@use 'bootstrap-italia/src/scss/components/type' as *;
 // BSI timeline variables used below:
 // $timeline-padding, $timeline-content-padding, $timeline-content-padding-reverse
 // $timeline-pin-circle-size, $timeline-pin-circle-border, $timeline-pin-size
@@ -73,10 +74,10 @@
 
   // Date badge
   .pin-text {
-    border-radius: $border-radius;
+    border-radius: 40px;
     background: var(--#{$prefix}color-background-primary-deep);
     color: var(--#{$prefix}color-white, #fff);
-    font-family: $font-family-sans-serif;
+    font-family: var(--#{$prefix}font-mono);
     font-size: var(--#{$prefix}body-font-size);
     font-weight: 600;
     line-height: var(--#{$prefix}body-leading);

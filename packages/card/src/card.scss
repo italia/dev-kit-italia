@@ -1,35 +1,40 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/utilities'; //all utilities from bsi
-@import 'bootstrap-italia/src/scss/base/helpers/ratio';
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
+@use 'bootstrap-italia/src/scss/base/helpers/ratio' as *;
 
-@import 'bootstrap-italia/src/scss/components/card';
-@import 'bootstrap-italia/src/scss/components/type';
+@use 'bootstrap-italia/src/scss/components/card' as *;
+@use 'bootstrap-italia/src/scss/components/type' as *;
 
-//ovveride utilities: get only needed utilities
-$utilities: (
-  'rounded': map-merge(
-      map-get($utilities, 'rounded'),
+utilities.$utilities: (
+  'rounded': map.merge(
+      map.get(utilities.$utilities, 'rounded'),
       (
         values: (
-          null: map-get(map-get(map-get($utilities, 'rounded'), 'values'), null),
+          null: map.get(map.get(map.get(utilities.$utilities, 'rounded'), 'values'), null),
         ),
       )
     ),
-  'display': map-merge(
-      map-get($utilities, 'display'),
+  'display': map.merge(
+      map.get(utilities.$utilities, 'display'),
       (
         values: none,
       )
     ),
-  'shadow': map-get($utilities, 'shadow'),
-  'border': map-get($utilities, 'border'),
-  'padding': map-get($utilities, 'padding'),
-  'padding-x': map-get($utilities, 'padding-x'),
-  'padding-y': map-get($utilities, 'padding-y'),
+  'shadow': map.get(utilities.$utilities, 'shadow'),
+  'border': map.get(utilities.$utilities, 'border'),
+  'border-top': map.get(utilities.$utilities, 'border-top'),
+  'padding': map.get(utilities.$utilities, 'padding'),
+  'padding-x': map.get(utilities.$utilities, 'padding-x'),
+  'padding-y': map.get(utilities.$utilities, 'padding-y'),
+  'padding-top': map.get(utilities.$utilities, 'padding-top')
 );
+
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 /**
  * Copied from bsi reboot
@@ -43,6 +48,10 @@ $utilities: (
 p {
   margin-top: 0;
   margin-bottom: var(--#{$prefix}paragraph-spacing);
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 address {
@@ -104,7 +113,7 @@ dl {
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: flex-end;
-  margin-top: var(--#{$prefix}card-spacing-y);
+  // margin-top: var(--#{$prefix}card-spacing-y);
   color: var(--#{$prefix}card-footer-text-color);
   gap: var(--#{$prefix}card-spacing-y);
 }
@@ -113,4 +122,13 @@ dl {
   flex-grow: 1;
 }
 
-@import 'bootstrap-italia/src/scss/base/utilities/api'; //use $utilities
+.it-card-place-type {
+  margin-top: 0.25rem;
+}
+
+.it-card-place-address {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}

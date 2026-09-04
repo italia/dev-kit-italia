@@ -8,11 +8,13 @@ import {
   CARD_SHADOWS,
   CARD_VARIANTS,
   CARD_HEADING_LEVELS,
+  CARD_HEADING_SIZES,
   CardShadow,
   type CardBorderColor,
   type CardImageRatio,
   type CardVariant,
   type CardHeadingLevel,
+  type CardHeadingSize,
 } from './types.js';
 import styles from './card.scss';
 
@@ -41,6 +43,9 @@ export class ItCard extends BaseComponent {
   @property({ type: String, attribute: 'heading-level' })
   headingLevel: CardHeadingLevel = 'h3';
 
+  @property({ type: String, attribute: 'heading-size' })
+  headingSize?: CardHeadingSize;
+
   @property({ type: String, attribute: 'it-class' })
   itClass: string | undefined;
 
@@ -52,6 +57,9 @@ export class ItCard extends BaseComponent {
 
   @queryAssignedElements({ slot: 'subtitle' })
   _subtitleElements!: HTMLElement[];
+
+  @queryAssignedElements({ slot: 'address' })
+  _addressElements!: HTMLElement[];
 
   @queryAssignedElements({ slot: 'signature' })
   _signatureElements!: HTMLElement[];
@@ -105,6 +113,11 @@ export class ItCard extends BaseComponent {
         `Invalid heading-level value, falling back to default. Expected one of: ${CARD_HEADING_LEVELS.join(', ')}`,
       );
     }
+    if (this.headingSize && !CARD_HEADING_SIZES.includes(this.headingSize)) {
+      this.logger.warn(
+        `Invalid heading-size value, falling back to default. Expected one of: ${CARD_HEADING_SIZES.join(', ')}`,
+      );
+    }
   }
 
   protected getHeadingLevel(): CardHeadingLevel {
@@ -154,6 +167,7 @@ export class ItCard extends BaseComponent {
     const shadowClass = CARD_SHADOWS.includes(this.shadow) ? `shadow-${this.shadow}` : 'shadow-sm';
     const borderClass = this.border === '0' ? 'border-0' : 'border';
     const hasSubtitle = this._subtitleElements.length > 0;
+    const hasAddress = this._addressElements.length > 0;
     const hasSignature = this._signatureElements.length > 0;
     const hasText = this._textElements.length > 0;
     const hasBody = this._bodyElements.length > 0 || hasText || hasSubtitle || hasSignature;
@@ -179,18 +193,22 @@ export class ItCard extends BaseComponent {
       'it-card-profile-name': this.variant === 'profile' || this.variant === 'location',
       'it-card-title-icon': hasTitleIcon,
       h4:
-        this.variant === 'inline-mini' ||
-        this.variant === 'inline-mini-reverse' ||
-        this.variant === 'profile' ||
-        this.variant === 'location',
+        this.headingSize === 'sm' ||
+        (this.headingSize === undefined &&
+          (this.variant === 'inline-mini' ||
+            this.variant === 'inline-mini-reverse' ||
+            this.variant === 'profile' ||
+            this.variant === 'location')),
       h3:
-        this.headingLevel !== 'h3' &&
-        !(
-          this.variant === 'inline-mini' ||
-          this.variant === 'inline-mini-reverse' ||
-          this.variant === 'profile' ||
-          this.variant === 'location'
-        ),
+        this.headingSize === 'md' ||
+        (this.headingSize === undefined &&
+          this.headingLevel !== 'h3' &&
+          !(
+            this.variant === 'inline-mini' ||
+            this.variant === 'inline-mini-reverse' ||
+            this.variant === 'profile' ||
+            this.variant === 'location'
+          )),
     });
 
     const headingTag = unsafeStatic(this.getHeadingLevel());
@@ -241,7 +259,7 @@ export class ItCard extends BaseComponent {
 
     const cardFooter = hasFooter
       ? html`
-          <footer class="it-card-footer" part="footer">
+          <footer class="it-card-footer ${this.variant === 'location' ? 'border-top pt-3' : ''}" part="footer">
             <slot name="footer" @slotchange=${this.handleSlotChange}></slot>
           </footer>
         `
@@ -262,7 +280,7 @@ export class ItCard extends BaseComponent {
 
     if (this.variant === 'profile') {
       return html`
-        <article class="${classes}">
+        <article class="${classes}" part="card">
           <div class="it-card-profile-header">
             <div class="it-card-profile-content">
               ${cardTitle}
@@ -282,7 +300,7 @@ export class ItCard extends BaseComponent {
     }
     if (this.variant === 'location') {
       return html`
-        <article class="${classes}">
+        <article class="${classes}" part="card">
           <div class="it-card-profile-header">
             <div class="it-card-profile">
               ${cardTitle}
@@ -293,6 +311,13 @@ export class ItCard extends BaseComponent {
                     </p>
                   `
                 : html`<slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>`}
+              ${hasAddress
+                ? html`
+                    <p class="it-card-place-address" part="address">
+                      <slot name="address" @slotchange=${this.handleSlotChange}></slot>
+                    </p>
+                  `
+                : html`<slot name="address" @slotchange=${this.handleSlotChange}></slot>`}
             </div>
             ${cardImage}
           </div>
@@ -302,13 +327,15 @@ export class ItCard extends BaseComponent {
     }
     if (isInline) {
       return html`
-        <article class="${classes}">
+        <article class="${classes}" part="card">
           <div class="it-card-inline-content">${cardTitle}${cardBody}${cardFooter}${cardActions}</div>
           ${cardImage}
         </article>
       `;
     }
-    return html` <article class="${classes}">${cardTitle}${cardImage}${cardBody}${cardFooter}${cardActions}</article> `;
+    return html`
+      <article class="${classes}" part="card">${cardTitle}${cardImage}${cardBody}${cardFooter}${cardActions}</article>
+    `;
   }
 }
 

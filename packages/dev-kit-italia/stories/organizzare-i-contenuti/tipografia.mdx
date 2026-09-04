@@ -20,7 +20,7 @@ Bootstrap Italia include tre famiglie di caratteri tipografici per garantire leg
 - **Lora**: font serif per contenuti editoriali e testi lunghi
 - **Roboto Mono**: font monospace per codice, dati tabulari e numeri
 
-Per informazioni su come caricare i font (via JavaScript, CSS o bundle) e scegliere tra le varianti Titillium Web e Titillium Sans Pro, consulta la [**pagina dedicata Font**](https://bootstrap-italia-git-3x-dip-trasformazione-digitale.vercel.app/docs/come-iniziare/font/).
+Per informazioni su come caricare i font (via CSS o bundle) e scegliere tra le varianti Titillium Web e Titillium Sans Pro, consulta la [**pagina dedicata Font**](/docs/font--documentazione).
 
 ### Titillium (font principale)
 
@@ -28,7 +28,7 @@ Bootstrap Italia supporta due varianti del carattere Titillium:
 - **Titillium Web** (default): versione originale e carattere di riferimento del Design system .italia
 - **Titillium Sans Pro**: evoluzione con supporto linguistico esteso e simboli matematici.
 
-Nella documentazione puoi esplorare la resa delle due versioni usando il selettore "Font principale" nella barra laterale.
+Nella documentazione puoi esplorare la resa delle due versioni usando il selettore font nella barra laterale.
 
 Il font Titillium è utilizzato di default, per cui di norma non è necessario applicarlo esplicitamente. In caso si renda necessario è possibile utilizzare la classe `.font-sans-serif`.
 
@@ -72,14 +72,47 @@ sono disponibili anche classi di tipo `.h1`, `.h2`, `.h3`, `.h4`, `.h5`, `.h6`.
 
 Queste le dimensioni nel dettaglio (dimensione del testo, peso del font e interlinea):
 
-| Intestazione | Mobile | Schermo > 576px |
-| --- | --- | --- |
-| h1 | 40px (2.5rem); font-weight: 700; line-height: 1.2 | 48px (3rem); font-weight: 700; line-height: 1.2 |
-| h2 | 32px (2rem); font-weight: 700; line-height: 1.2 | 40px (2.5rem); font-weight: 700; line-height: 1.2 |
-| h3 | 28px (1.75rem); font-weight: 700; line-height: 1.2 | 32px (2rem); font-weight: 700; line-height: 1.2 |
-| h4 | 24px (1.5rem); font-weight: 600; line-height: 1.2 | 28px (1.75rem); font-weight: 600; line-height: 1.2 |
-| h5 | 20px (1.25rem); font-weight: 600; line-height: 1.2 | 24px (1.5rem); font-weight: 600; line-height: 1.2 |
-| h6 | 16px (1rem); font-weight: 600; line-height: 1.2 | 18px (1.125rem); font-weight: 600; line-height: 1.2 |
+<table>
+  <thead>
+    <tr>
+      <th>Intestazione</th>
+      <th>Mobile</th>
+      <th>{'Schermo > 576px'}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>h1</code></td>
+      <td>40px (2.5rem); font-weight: 700; line-height: 1.2</td>
+      <td>48px (3rem); font-weight: 700; line-height: 1.2</td>
+    </tr>
+    <tr>
+      <td><code>h2</code></td>
+      <td>32px (2rem); font-weight: 700; line-height: 1.2</td>
+      <td>40px (2.5rem); font-weight: 700; line-height: 1.2</td>
+    </tr>
+    <tr>
+      <td><code>h3</code></td>
+      <td>28px (1.75rem); font-weight: 700; line-height: 1.2</td>
+      <td>32px (2rem); font-weight: 700; line-height: 1.2</td>
+    </tr>
+    <tr>
+      <td><code>h4</code></td>
+      <td>24px (1.5rem); font-weight: 600; line-height: 1.2</td>
+      <td>28px (1.75rem); font-weight: 600; line-height: 1.2</td>
+    </tr>
+    <tr>
+      <td><code>h5</code></td>
+      <td>20px (1.25rem); font-weight: 600; line-height: 1.2</td>
+      <td>24px (1.5rem); font-weight: 600; line-height: 1.2</td>
+    </tr>
+    <tr>
+      <td><code>h6</code></td>
+      <td>16px (1rem); font-weight: 600; line-height: 1.2</td>
+      <td>18px (1.125rem); font-weight: 600; line-height: 1.2</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Intestazione in evidenza
 
@@ -91,13 +124,13 @@ grande.
 
 <Canvas of={Stories.IntestazioneH1InEvidenza} />
 
- 
+
 
 ## Paragrafi
 
 Il semplice paragrafo prevede una dimensione del testo di
 `16px/1rem` su dispositivi mobili e `18px/1.125rem` su schermi con dimensioni
-maggiori di 576px. 
+maggiori di 576px.
 
 L'interlinea è impostata con il rapporto di  `1.5`.
 
@@ -198,7 +231,7 @@ Aggiungendo un'ulteriore classe `.dark` si ottiene un Blockquote card scuro.
 ## Liste
 
 Rimuovi il predefinito `list-style` e il margine sinistro sugli elementi
-elenco (solo per i figli diretti). **Questo si applica solo agli elementi della 
+elenco (solo per i figli diretti). **Questo si applica solo agli elementi della
 lista che sono figli diretti**, il che significa che dovrai aggiungere la classe
 per tutti gli elenchi annidati.
 

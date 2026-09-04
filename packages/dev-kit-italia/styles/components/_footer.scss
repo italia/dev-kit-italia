@@ -1,6 +1,7 @@
-@import 'bootstrap-italia/src/scss/components/footer';
-@import 'bootstrap-italia/src/scss/components/list';
-@import 'bootstrap-italia/src/scss/components/headercenter';
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/components/footer' as *;
+@use 'bootstrap-italia/src/scss/components/list' as *;
+@use 'bootstrap-italia/src/scss/components/headercenter' as *;
 
 .it-footer-main .it-brand-wrapper ::part(icon) {
   width: var(--#{$prefix}footer-brand-icon-size);

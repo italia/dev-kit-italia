@@ -14,7 +14,7 @@ export default {
     typescript({ tsconfig: './tsconfig.build.json', module: 'NodeNext' }),
     litScss({
       minify: process.env.NODE_ENV === 'production',
-      options: { loadPaths: ['node_modules'], silenceDeprecations: ['import'] },
+      options: { loadPaths: ['node_modules'] },
     }),
   ],
   external: [/^lit(\/|$)/],

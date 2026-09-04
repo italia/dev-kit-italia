@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     '@storybook/addon-docs',
     '@storybook/addon-a11y',
     'storybook-addon-tag-badges',
+    'storybook-version',
   ],
   framework: {
     name: '@storybook/web-components-vite',
@@ -20,15 +21,13 @@ const config: StorybookConfig = {
     config.css = config.css || {};
     config.css.preprocessorOptions = config.css.preprocessorOptions || {};
     config.css.preprocessorOptions.scss = {
-      // Modificare gli import ora significherebbe una riscrittura pesante di bootstrap-italia.
-      silenceDeprecations: [
-        'import',
-        'global-builtin',
-        'function-units',
-        'color-functions',
-        'mixed-decls',
-        'abs-percent',
-      ],
+      silenceDeprecations: ['if-function'],
+    };
+    config.define = {
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+        GH_PAGES_PATH: JSON.stringify(process.env.GH_PAGES_PATH || '').replace(/\"/g, '')
+      }
     };
 
     // console.log('OptimizeDeps include:', config.optimizeDeps?.include);

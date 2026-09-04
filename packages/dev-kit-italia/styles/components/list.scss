@@ -1,3 +1,6 @@
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+
 .it-list-wrapper .it-list .list-item it-avatar {
   flex-shrink: 0;
   margin-right: var(--#{$prefix}icon-spacing);

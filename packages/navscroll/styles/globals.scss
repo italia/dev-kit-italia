@@ -1,3 +1,5 @@
+@use 'bootstrap-italia/src/scss/base/config' as *;
+
 it-navscroll {
   --it-host-display: block;
 
@@ -54,18 +56,6 @@ it-navscroll {
       --#{$prefix}color-link-hover: #fff;
       --#{$prefix}color-text-muted: #fff;
       --#{$prefix}icon-primary: var(--#{$prefix}icon-inverse);
-    }
-  }
-
-  .inline-menu {
-    > .link-list-wrapper {
-      > ul.link-list {
-        > li {
-          .list-item {
-            padding: var(--#{$prefix}navscroll-item-spacing);
-          }
-        }
-      }
     }
   }
 }

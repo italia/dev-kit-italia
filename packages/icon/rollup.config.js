@@ -12,6 +12,7 @@ export default {
     dir: 'dist',
     sourcemap: true,
     entryFileNames: 'src/[name].js',
+    chunkFileNames: 'src/[name]-[hash].js',
   },
   plugins: [
     resolve(),
@@ -24,7 +25,6 @@ export default {
       options: {
         loadPaths: ['node_modules'],
         quietDeps: true,
-        silenceDeprecations: ['import'],
       },
     }),
     copy({

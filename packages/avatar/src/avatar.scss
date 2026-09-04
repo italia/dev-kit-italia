@@ -1,10 +1,11 @@
 // Avatar styles based on Bootstrap Italia
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
-@import 'bootstrap-italia/src/scss/base/helpers/visually-hidden';
-@import 'bootstrap-italia/src/scss/components/avatar';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/helpers/visually-hidden' as *;
+@use 'bootstrap-italia/src/scss/components/avatar' as *;
 
 slot[name='extra-text']::slotted(*) {
   @extend .extra-text;
@@ -24,7 +25,7 @@ slot[name='extra-text']::slotted(*) {
   --#{$prefix}avatar-dot-border-color: var(--#{$prefix}color-border-inverse);
   --#{$prefix}avatar-dot-offset-right: 0;
   --#{$prefix}avatar-dot-offset-top: 4px;
-  --#{$prefix}avatar-dot-offset-bottom: 0;
+  --#{$prefix}avatar-dot-offset-bottom: 8px;
 
   a.avatar,
   a .avatar {
@@ -35,9 +36,50 @@ slot[name='extra-text']::slotted(*) {
   a .avatar:hover {
     text-decoration: none;
   }
+
+  .avatar-presence {
+    bottom: var(--#{$prefix}avatar-dot-offset-bottom);
+  }
+
+  .avatar-presence,
+  .avatar-status {
+    box-sizing: border-box;
+  }
 }
 
-:host([type='text']) {
+// Per-size dot overrides — mirror Bootstrap Italia's `.avatar.size-*` custom
+// properties. The presence/status dots are rendered as siblings of `.avatar`
+// (inside `.avatar-wrapper`), so they don't inherit the per-size values BSI
+// sets on `.avatar` itself. Re-declaring them on the host propagates the
+// correct offsets/sizes to the dots. See issue #431.
+:host([size='xs']),
+:host([size='sm']) {
+  --#{$prefix}avatar-dot-border-size: 1px;
+}
+
+:host([size='md']) {
+  --#{$prefix}avatar-dot-offset-right: -4px;
+}
+
+:host([size='lg']) {
+  --#{$prefix}avatar-dot-size: 14px;
+  --#{$prefix}avatar-dot-offset-right: -4px;
+}
+
+:host([size='xl']) {
+  --#{$prefix}avatar-dot-size: 16px;
+}
+
+:host([size='xxl']) {
+  --#{$prefix}avatar-dot-size: 20px;
+  --#{$prefix}avatar-dot-offset-right: 4px;
+}
+
+// Solo per gli avatar di testo non interattivi: con `href` l'avatar è un link,
+// quindi deve restare cliccabile e ricevere gli eventi mouse (es. hover del tooltip).
+// `href` è riflesso e vale '' quando non è impostato, da qui il doppio selettore.
+:host([type='text']:not([href])),
+:host([type='text'][href='']) {
   cursor: default;
   pointer-events: none;
 }

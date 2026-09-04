@@ -5,8 +5,8 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test Web Components - vanilla-app</title>
-    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/fonts.css" />
-    <link rel="stylesheet" href="/node_modules/@italia/dev-kit-italia/dist/styles.css" />
+    <link rel="stylesheet" href="@italia/dev-kit-italia/fonts.css" />
+    <link rel="stylesheet" href="@italia/dev-kit-italia/styles.css" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
@@ -76,7 +76,7 @@
               </it-checkbox>
             </it-checkbox-group>
 
-            <it-radio-group name="gruppo1" required>
+            <it-radio-group name="gruppo1" required class="mb-4">
               <span slot="label">Gruppo di radio</span>
               <it-radio id="radio1" value="opzione1">
                 <span slot="label">Radio di esempio 1</span>
@@ -88,7 +88,6 @@
                 <span slot="label">Radio di esempio 3</span>
               </it-radio>
             </it-radio-group>
-
 
             <it-toggle-group required group name="animali-toggle" class="mb-4" value='["gatto","topo"]'>
               <span slot="legend">Animali preferiti - Gruppo di toggle</span>
@@ -103,9 +102,7 @@
               </it-toggle>
             </it-toggle-group>
 
-
-
-            <it-select name="select-input" placeholder="Seleziona un'opzione" required>
+            <it-select name="select-input" placeholder="Seleziona un'opzione" required class="mb-4">
               <span slot="label">Select semplice</span>
               <option value="Value 1">Opzione 1</option>
               <option value="Value 2">Opzione 2</option>
@@ -114,21 +111,18 @@
               <option value="Value 5">Opzione 5</option>
             </it-select>
 
-            <it-transfer name="transfer-form" required>
+            <it-transfer name="transfer-form" required class="mb-4">
               <it-transfer-item value="item1">Voce 1</it-transfer-item>
               <it-transfer-item value="item2">Voce 2</it-transfer-item>
               <it-transfer-item value="item3">Voce 3</it-transfer-item>
               <it-transfer-item value="item4">Voce 4</it-transfer-item>
             </it-transfer>
 
-            <it-toggle id="toggle1" name="toggle1"><span slot="label">Toggle isolato</span></it-toggle>
+            <it-toggle id="toggle1" name="toggle1" class="mb-4"><span slot="label">Toggle isolato</span></it-toggle>
 
-            <it-input
-              id="messaggio-basic"
-              name="messaggio"
-              type="textarea"
-              support-text="Inserisci il tuo messaggio"
-            ><span slot="label">Messaggio</span></it-input>
+            <it-input id="messaggio-basic" name="messaggio" type="textarea" support-text="Inserisci il tuo messaggio"
+              ><span slot="label">Messaggio</span></it-input
+            >
 
             <it-checkbox
               id="privacy-basic"
@@ -169,40 +163,24 @@
                 placeholder="Seleziona una regione..."
                 source='[{"value":"abruzzo","label":"Abruzzo"},{"value":"basilicata","label":"Basilicata"},{"value":"calabria","label":"Calabria"},{"value":"campania","label":"Campania"},{"value":"emilia-romagna","label":"Emilia Romagna"},{"value":"friuli-venezia-giulia","label":"Friuli Venezia Giulia"},{"value":"lazio","label":"Lazio"},{"value":"liguria","label":"Liguria"},{"value":"lombardia","label":"Lombardia"},{"value":"marche","label":"Marche"},{"value":"molise","label":"Molise"},{"value":"piemonte","label":"Piemonte"},{"value":"puglia","label":"Puglia"},{"value":"sardegna","label":"Sardegna"},{"value":"sicilia","label":"Sicilia"},{"value":"toscana","label":"Toscana"},{"value":"trentino-alto-adige","label":"Trentino Alto Adige"},{"value":"umbria","label":"Umbria"},{"value":"valle-aosta","label":"Valle d&apos;Aosta"},{"value":"veneto","label":"Veneto"}]'
               >
-                <span slot="label">Regione</span>
+                <span slot="label">Regione (autocomplete)</span>
               </it-autocomplete>
             </div>
 
             <div class="mb-4">
-              <it-upload
-                id="allegati-basic"
-                name="allegati"
-                required
-                multiple
-                accept="image/*,.pdf"
-                auto-success
-              >
+              <it-upload id="allegati-basic" name="allegati" required multiple accept="image/*,.pdf" auto-success>
                 <span slot="label">Allega documenti</span>
               </it-upload>
             </div>
 
             <div class="mb-4">
               <p class="fw-semibold mb-1">Foto profilo (obbligatoria)</p>
-              <it-upload-avatar
-                id="avatar-basic"
-                name="foto-profilo"
-                required
-                alt="Mario Rossi"
-              ></it-upload-avatar>
+              <it-upload-avatar id="avatar-basic" name="foto-profilo" required alt="Mario Rossi"></it-upload-avatar>
             </div>
 
             <div class="mb-4">
               <p class="fw-semibold mb-1">Documento (trascina o seleziona, obbligatorio)</p>
-              <it-upload-drag-drop
-                id="documento-basic"
-                name="documento"
-                required
-              ></it-upload-drag-drop>
+              <it-upload-drag-drop id="documento-basic" name="documento" required></it-upload-drag-drop>
             </div>
 
             <it-button type="submit" variant="primary" block> Invia </it-button>
@@ -263,35 +241,19 @@
               </it-autocomplete>
             </div>
             <div class="mb-4">
-              <it-upload
-                id="allegati-custom"
-                name="allegati"
-                required
-                multiple
-                accept="image/*,.pdf"
-                auto-success
-              >
+              <it-upload id="allegati-custom" name="allegati" required multiple accept="image/*,.pdf" auto-success>
                 <span slot="label">Allega documenti</span>
               </it-upload>
             </div>
 
             <div class="mb-4">
               <p class="fw-semibold mb-1">Foto profilo (obbligatoria)</p>
-              <it-upload-avatar
-                id="avatar-custom"
-                name="foto-profilo"
-                required
-                alt="Mario Rossi"
-              ></it-upload-avatar>
+              <it-upload-avatar id="avatar-custom" name="foto-profilo" required alt="Mario Rossi"></it-upload-avatar>
             </div>
 
             <div class="mb-4">
               <p class="fw-semibold mb-1">Documento (trascina o seleziona, obbligatorio)</p>
-              <it-upload-drag-drop
-                id="documento-custom"
-                name="documento"
-                required
-              ></it-upload-drag-drop>
+              <it-upload-drag-drop id="documento-custom" name="documento" required></it-upload-drag-drop>
             </div>
 
             <it-button type="submit" variant="primary" block> Invia </it-button>
@@ -299,7 +261,7 @@
         </section>
       </main>
       <div id="app-footer"></div>
-<it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
+      <it-back-to-top it-aria-label="Torna su" border></it-back-to-top>
     </div>
 
     <script type="module" src="/src/main.js"></script>

@@ -1,7 +1,8 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
 // No BSI component imports here — their selectors need ancestors (.it-timeline-wrapper,
 // .it-timeline-point-list > .timeline-point) that live in child shadow roots,
 // unreachable from this shadow root. We write all rules ourselves.
@@ -117,17 +118,16 @@
   }
 }
 
-// Point-list host
+// Point-list: remove default ol/ul indent; list markers are suppressed via
+// list-style:none on the slotted items (the host itself is the flex row).
 .it-timeline-point-list {
   padding-left: 0;
-
-  &::marker {
-    font-size: 0px;
-  }
+  list-style: none;
 }
 
-// Slotted points take full width
+// Slotted points take full width; display:flex is declared on :host in
+// timeline-point.scss — keep these two in sync.
 ::slotted(it-timeline-point) {
-  display: block;
+  display: flex;
   width: 100%;
 }

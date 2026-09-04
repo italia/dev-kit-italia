@@ -1,23 +1,22 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
+@use 'sass:map';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
+@use 'bootstrap-italia/src/scss/base/utilities';
+@use 'bootstrap-italia/src/scss/utilities/icons' as *;
 
-@import 'bootstrap-italia/src/scss/base/utilities';
-
-@import 'bootstrap-italia/src/scss/utilities/icons';
-
-$utilities: (
-  'align': map-merge(
-      map-get($utilities, 'align'),
+utilities.$utilities: (
+  'align': map.merge(
+      map.get(utilities.$utilities, 'align'),
       (
         values: top middle bottom,
       )
     ),
-  'background-color': map-get($utilities, 'background-color'),
+  'background-color': map.get(utilities.$utilities, 'background-color')
 );
 
-@import 'bootstrap-italia/src/scss/base/utilities/api';
+@use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
 :host {
   display: inline-block;

@@ -1,7 +1,8 @@
-@import 'bootstrap-italia/src/scss/base/functions';
-@import 'bootstrap-italia/src/scss/base/variables';
-@import 'bootstrap-italia/src/scss/base/mixins';
-@import 'bootstrap-italia/src/scss/base/maps';
+@use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
+@use 'bootstrap-italia/src/scss/base/variables' as *;
+@use 'bootstrap-italia/src/scss/base/mixins' as *;
+@use 'bootstrap-italia/src/scss/base/maps' as *;
 
 // The BSI `.bottom-nav a` selector cannot reach slotted `<a>` elements due to
 // shadow boundary. Re-implement the link styles using ::slotted().
@@ -17,21 +18,20 @@
 }
 
 ::slotted(a:hover) {
-  color: var(--#{$prefix}color-primary);
+  color: var(--#{$prefix}color-text-primary) !important;
   text-decoration: none !important;
 }
 
 :host([active]) ::slotted(a) {
-  color: var(--#{$prefix}color-primary);
+  color: var(--#{$prefix}color-text-primary) !important;
   --#{$prefix}icon-default: var(--#{$prefix}icon-primary);
 }
 
 :host ::slotted(a) {
   position: relative;
-  color: var(--#{$prefix}color-background-primary) !important;
   --#{$prefix}icon-default: var(--#{$prefix}icon-secondary);
 }
 
-li::marker {
-  font-size: 0px;
+li {
+  list-style: none;
 }
