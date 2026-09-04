@@ -78,6 +78,8 @@ export class ItNavscroll extends BaseComponent {
 
   private activeTarget: string | null = null; // voce di menu attiva in questo momento
 
+  private isAutoScrolling = false; // true mentre è in corso lo scroll animato dopo un click
+
   createRenderRoot() {
     // nav deve restare nel light DOM
     return this;
@@ -252,6 +254,27 @@ export class ItNavscroll extends BaseComponent {
     return this.scrollContainer === document.documentElement ? window.scrollY : this.scrollContainer.scrollTop;
   }
 
+  /**
+   * Posizione di una sezione nello spazio di scroll del container.
+   *
+   * Non si può usare `offsetTop`: è relativo all'`offsetParent`, quindi qualunque
+   * antenato posizionato fra la sezione e il container falsa la misura. Capita di
+   * default con <it-section>, che sposta il contenuto dentro `.section-content`
+   * (`position: relative`) e azzera così l'offsetTop di tutte le sezioni.
+   *
+   * `getBoundingClientRect()` è sempre relativo al viewport: sommando lo scroll
+   * corrente si ottiene la stessa scala usata da `scrollToElement()`.
+   */
+  private getSectionTop(section: HTMLElement) {
+    const rect = section.getBoundingClientRect();
+
+    if (this.scrollContainer === document.documentElement) {
+      return rect.top + window.scrollY;
+    }
+
+    return rect.top - this.scrollContainer.getBoundingClientRect().top + this.scrollContainer.scrollTop;
+  }
+
   private initContainers() {
     // Cerco il main referenziato
     const targetContainer = this.for ? document.querySelector(this.for)! : (document.scrollingElement as HTMLElement);
@@ -337,6 +360,10 @@ export class ItNavscroll extends BaseComponent {
   }
 
   private scrollHandler() {
+    // Durante lo scroll animato la voce attiva è già stata decisa dal click:
+    // le posizioni intermedie la sovrascriverebbero con la sezione sbagliata.
+    if (this.isAutoScrolling) return;
+
     const links = Array.from(this.navEl.querySelectorAll('a[href^="#"]'));
     const sections = links
       .map((link) => document.getElementById(link.getAttribute('href')!.slice(1)))
@@ -344,20 +371,15 @@ export class ItNavscroll extends BaseComponent {
 
     if (!sections.length) return;
 
-    const scrollTop = this.scrollContainer?.scrollTop;
+    const scrollTop = this.scrollContainerTop;
     const viewportHeight = this.scrollContainer.clientHeight;
 
     let currentSection: HTMLElement | null = null;
 
     for (const section of sections) {
-      const sectionTop = section.offsetTop;
+      const sectionTop = this.getSectionTop(section);
 
       // se la sezione supera il 25% del viewport del container
-      // console.log(
-      //   { scrollTop, viewportHeight, sectionTop },
-      //   'scrollTop + viewportHeight * 0.25 >= sectionTop=',
-      //   scrollTop + viewportHeight * 0.25 >= sectionTop,
-      // );
       if (scrollTop + viewportHeight * 0.25 >= sectionTop) {
         currentSection = section;
       } else {
@@ -451,8 +473,17 @@ export class ItNavscroll extends BaseComponent {
         })()
       : targetEl.getBoundingClientRect().top + targetOffset;
 
-    const distance = targetY - startY;
+    // Senza clamp l'animazione punta a una posizione irraggiungibile per la prima e
+    // l'ultima sezione: il browser la satura e il punto d'arrivo non è quello atteso.
+    const maxScroll = isScrollableContainer
+      ? container!.scrollHeight - container!.clientHeight
+      : document.documentElement.scrollHeight - window.innerHeight;
+    const clampedTargetY = Math.min(Math.max(targetY, 0), Math.max(maxScroll, 0));
+
+    const distance = clampedTargetY - startY;
     const startTime = performance.now();
+
+    this.isAutoScrolling = true;
 
     const easeInOutSine = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
 
@@ -470,6 +501,11 @@ export class ItNavscroll extends BaseComponent {
       if (progress < 1) {
         requestAnimationFrame(step);
       } else {
+        // Lo scroll finale emette ancora un evento: si riabilita lo scrollspy
+        // solo dopo che è stato processato, altrimenti riscrive la voce attiva.
+        requestAnimationFrame(() => {
+          this.isAutoScrolling = false;
+        });
         callback?.();
       }
     };
