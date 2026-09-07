@@ -296,6 +296,11 @@ it-modal#it-nav-modal {
       flex-direction: column;
     }
 
+    .nav-link:focus-visible,
+    *::part(focusable):focus-visible {
+      border-left-color: transparent !important;
+    }
+
     it-dropdown,
     it-megamenu {
       width: 100%;
