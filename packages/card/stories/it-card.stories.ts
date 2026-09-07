@@ -1066,7 +1066,10 @@ export const ListeDiContenutiAffini: Story = {
         <it-card full-height ratio="21x9">
           <a slot="title" href="#">Titolo evento</a>
           <figure slot="image" class="figure img-full">
-            <img src="https://picsum.photos/seed/monument/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto.">
+            <img
+              src="https://picsum.photos/seed/monument/800/600"
+              alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+            />
           </figure>
           <span slot="subtitle">Dal 17 al 22 novembre</span>
           <span slot="text">Descrizione breve dell'evento in poche righe non troncate.</span>
