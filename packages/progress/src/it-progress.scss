@@ -23,3 +23,46 @@ utilities.$utilities: ('background-color': map.get(utilities.$utilities, 'backgr
 .progress-donut-wrapper::before {
   background: var(--it-progress-donut-track-color, var(--#{$prefix}color-background-secondary-lighter));
 }
+
+// Semantic color variants for the donut.
+//
+// Progress Donut has no semantic variants upstream in Bootstrap Italia: its `color` option
+// only accepts a literal CSS color, which progressbar.js applies as the `stroke` presentation
+// attribute on the generated path. Presentation attributes do not support `var()`, so the
+// variant -> token mapping cannot be done in TypeScript; it lives here instead, where `$prefix`
+// is interpolated at build time.
+//
+// Both the variants and an arbitrary CSS color go through --it-progress-donut-color, which is
+// therefore also the customization hook from outside the shadow DOM (a page rule on the host
+// element wins over these `:host` declarations). Overriding the Bootstrap Italia tokens
+// themselves works too, and keeps `bar` and `donut` in sync.
+//
+// Tokens are the same ones the Progress Bar variants resolve to, so `bar` and `donut` render
+// identically for a given variant. `info` has no dedicated background token: upstream
+// `$info: $secondary`, hence `bg-info` on the bar is also the secondary color.
+$donut-color-variants: (
+  'default': 'color-background-secondary',
+  'info': 'color-background-secondary',
+  'success': 'color-background-success',
+  'warning': 'color-background-warning',
+  'danger': 'color-background-danger',
+);
+
+// `color` defaults to `default`, but Lit does not reflect initial property values,
+// so the attribute is absent until the variant is changed.
+:host {
+  --it-progress-donut-color: var(--#{$prefix}#{map.get($donut-color-variants, 'default')});
+}
+
+@each $variant, $token in $donut-color-variants {
+  :host([color='#{$variant}']) {
+    --it-progress-donut-color: var(--#{$prefix}#{$token});
+  }
+}
+
+// The first path is the trail (hidden by Bootstrap Italia, the track is drawn by
+// `.progress-donut-wrapper::before`); the progress path follows it.
+.progress-donut svg path:not(:first-child),
+.progress-donut svg path:only-child {
+  stroke: var(--it-progress-donut-color);
+}

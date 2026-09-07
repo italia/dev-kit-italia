@@ -75,7 +75,11 @@ slot[name='extra-text']::slotted(*) {
   --#{$prefix}avatar-dot-offset-right: 4px;
 }
 
-:host([type='text']) {
+// Solo per gli avatar di testo non interattivi: con `href` l'avatar è un link,
+// quindi deve restare cliccabile e ricevere gli eventi mouse (es. hover del tooltip).
+// `href` è riflesso e vale '' quando non è impostato, da qui il doppio selettore.
+:host([type='text']:not([href])),
+:host([type='text'][href='']) {
   cursor: default;
   pointer-events: none;
 }
