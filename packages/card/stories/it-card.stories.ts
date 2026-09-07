@@ -1086,7 +1086,7 @@ export const ListeDiContenutiAffini: Story = {
         </it-card>
       </div>
       <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
-        <it-card full-height">
+        <it-card full-height>
           <a slot="title" href="#">Argomento X</a>
           <span slot="text">Descrizione breve dell'argomento in poche righe non troncate.</span>
           <ul slot="body" class="list-group list-group-flush" aria-label="Contenuti in evidenza:">
