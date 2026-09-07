@@ -302,7 +302,7 @@ export class ItCard extends BaseComponent {
       return html`
         <article class="${classes}" part="card">
           <div class="it-card-profile-header">
-            <div class="it-card-profile">
+            <div class="it-card-profile-content">
               ${cardTitle}
               ${hasSubtitle
                 ? html`
