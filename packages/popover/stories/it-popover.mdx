@@ -9,7 +9,7 @@ import * as PopoverStories from './it-popover.stories';
 
 ## Cosa fa
 
-Il componente Popover (`it-popover`) visualizza contenuti in overlay posizionati dinamicamente rispetto a un elemento trigger.
+Il componente Popover (`<it-popover>`) visualizza contenuti in overlay posizionati dinamicamente rispetto a un elemento trigger.
 Utilizza [Floating UI](https://floating-ui.com/) per il posizionamento intelligente e si adatta automaticamente allo spazio disponibile.
 
 Il componente implementa le buone pratiche UX definite da [Polaris (Shopify)](https://polaris.shopify.com/components/overlays/popover), [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/popovers) e [Material Design](https://m3.material.io/).
@@ -75,7 +75,7 @@ Il posizionamento si adatta automaticamente allo spazio disponibile.
 
 Per aggiungere un'icona in testa al titolo e un link in coda al contenuto:
 - includi l'icona nell'elemento usato come intestazione (ad esempio, l'elemento `<h4>` nell'esempio), subito prima del vero e proprio titolo;
-- inserisci il link dopo il contenuto testuale, con classe `popover-inner-link`.
+- inserisci il link dopo il contenuto testuale, con classe `.popover-inner-link`.
 
 <Canvas of={PopoverStories.ConIconaELink} />
 
@@ -90,7 +90,7 @@ Valuta anche l'utilizzo di un [Tooltip](/docs/componenti-tooltip--documentazione
 
 ### Attivazione tramite hover e focus
 
-Per implementare l'attivazione su hover ti serve un riferimento al pulsante `trigger` e al componente `it-popover` stesso nel tuo codice JavaScript.
+Per implementare l'attivazione su hover ti serve un riferimento al pulsante `trigger` e al componente `<it-popover>` stesso nel tuo codice JavaScript.
 
 ```javascript
 const trigger = document.querySelector('it-button[slot="trigger"]');

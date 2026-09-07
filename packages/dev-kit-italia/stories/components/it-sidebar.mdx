@@ -35,7 +35,7 @@ Per garantire un'esperienza accessibile, assicurati di:
 - indicare sempre **visivamente** la pagina corrente, usando la classe `.active` sul link corrispondente;
 - indicare sempre **alle tecnologie assistive** la pagina corrente, usando l'attributo `aria-current="page"` sul link corrispondente;
 - segnalare i link disabilitati alle tecnologie assistive, usando l'attributo `aria-disabled="true"`;
-- usare il componente `it-collapse` per le liste collassabili, che gestisce automaticamente gli attributi ARIA necessari (`aria-expanded`, `aria-controls`, `role`);
+- usare il componente `<it-collapse>` per le liste collassabili, che gestisce automaticamente gli attributi ARIA necessari (`aria-expanded`, `aria-controls`, `role`);
 - disabilitare via JavaScript la navigazione dei link/collapse disabilitati per evitare comportamenti inattesi: le diverse varianti forniscono un'implementazione di esempio.
 
 
@@ -61,9 +61,9 @@ Per creare una sidebar con linea separatrice a sinistra, aggiungi la classe `.it
 
 Una sidebar può contenere una lista di link primaria annidata, tramite la classe `.link-sublist` per le sotto-liste espanse.
 
-Per rendere collassabili le sottosezioni della sidebar, usa il componente `it-collapse` integrato nelle liste di navigazione. Il componente `it-collapse` permette di espandere e comprimere le sottosezioni in modo interattivo, migliorando l'esperienza di navigazione su sidebar con molte voci.
+Per rendere collassabili le sottosezioni della sidebar, usa il componente `<it-collapse>` integrato nelle liste di navigazione. Il componente `<it-collapse>` permette di espandere e comprimere le sottosezioni in modo interattivo, migliorando l'esperienza di navigazione su sidebar con molte voci.
 
-Consulta la [documentazione del componente Collapse](/docs/componenti-collapse--documentazione) per maggiori dettagli sull'uso di `it-collapse`.
+Consulta la [documentazione del componente Collapse](/docs/componenti-collapse--documentazione) per maggiori dettagli sull'uso di `<it-collapse>`.
 
 <Canvas of={SidebarStories.SidebarAnnidata} />
 

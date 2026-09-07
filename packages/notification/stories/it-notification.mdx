@@ -34,7 +34,7 @@ Passa alla sezione [Attivazione tramite codice](#attivazione-tramite-codice) per
 
 ## Accessibilità
 
-Il componente utilizza il tag `h2` per il titolo delle notifiche per impostazione predefinita.
+Il componente utilizza il tag `<h2>` per il titolo delle notifiche per impostazione predefinita.
 Utilizza il tag `h` corretto a seconda del contesto.
 Usa l'attributo `heading-level` per impostarlo.
 
@@ -92,7 +92,7 @@ Esempi delle quattro posizioni fisse possibili.
 
 ## Attivazione tramite codice
 
-Puoi mostrare una notifica chiamando il metodo `show` di un elemento `it-notification`.
+Puoi mostrare una notifica chiamando il metodo `show` di un elemento `<it-notification>`.
 Puoi passare come parametro il valore in millisecondi di permanenza della notifica.
 Se non viene specificato viene usato il valore dell'attributo `timeout`, oppure viene usato il valore predefinito di 3 secondi.
 
@@ -109,7 +109,7 @@ Questo è il comportamento di default che ottieni quando non imposti l'attributo
 Questo è un esempio di come rimuovere manualmente le notifiche quando imposti l'attributo `dismissable`.
 Il click sul pulsante di chiusura interno alla notifica è automaticamente configurato per nasconderla.
 
-Puoi inoltre controllarne la chiusura dall'esterno programmaticamente, chiamando il metodo `hide` dell'elemento `it-notification`.
+Puoi inoltre controllarne la chiusura dall'esterno programmaticamente, chiamando il metodo `hide` dell'elemento `<it-notification>`.
 
 <Canvas of={Stories.AttivazioneEdEliminazione} />
 

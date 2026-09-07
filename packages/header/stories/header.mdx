@@ -46,7 +46,7 @@ Questa soluzione sarà anche utile a dare focus direttamente al tag `<h1>` laddo
 ## Slim Header
 Lo Slim Header mostra un'intestazione, solitamente con riferimento all'ente di appartenenza del progetto o riferimenti utili, oltre ad un eventuale menu per il cambio lingua e l'accesso ad area riservata.
 
-Il cambio lingua è gestito con il componente `it-dropdown`.
+Il cambio lingua è gestito con il componente `<it-dropdown>`.
 
 <Canvas of={HeaderStories.SlimHeader} />
 
@@ -64,7 +64,7 @@ Per applicargli l'aspetto *full-responsive*, a seconda dei due casi puoi:
   <span class="d-none d-lg-block">Accedi all'area personale</span>
 </a>
 ```
-- se è un componente di tipo `it-button` aggiungere l'attributo `full`:
+- se è un componente di tipo `<it-button>` aggiungere l'attributo `full`:
 ```html
 <it-button variant="primary" full>
   <span class="rounded-icon">
@@ -76,7 +76,7 @@ Per applicargli l'aspetto *full-responsive*, a seconda dei due casi puoi:
 <Canvas of={HeaderStories.SlimHeaderActionFull} />
 
 ### Versione chiara
-Per cambiare tema all’Header Slim è sufficiente aggiungere la classe `theme-light` al tag`<div class="it-header-slim-wrapper">`.
+Per cambiare tema all’Header Slim è sufficiente aggiungere la classe `.theme-light` al tag`<div class="it-header-slim-wrapper">`.
 
 <Canvas of={HeaderStories.SlimHeaderLight} />
 
@@ -86,12 +86,12 @@ L'Header Centrale mostra il logo dell’ente e la sua descrizione, i link aggiun
 <Canvas of={HeaderStories.HeaderCenter} />
 
 ### Versione compatta
-Per utilizzare la versione più compatta in altezza dell’header centrale, puoi aggiungere la classe `it-small-header` al tag `<div class="it-header-center-wrapper">`.
+Per utilizzare la versione più compatta in altezza dell’header centrale, puoi aggiungere la classe `.it-small-header` al tag `<div class="it-header-center-wrapper">`.
 
 <Canvas of={HeaderStories.HeaderCenterCompact} />
 
 ### Versione chiara
-Per cambiare tema all’header centrale puoi aggiungere la classe `theme-light` al tag `<div class="it-header-center-wrapper">`.
+Per cambiare tema all’header centrale puoi aggiungere la classe `.theme-light` al tag `<div class="it-header-center-wrapper">`.
 
 <Canvas of={HeaderStories.HeaderCenterLight} />
 
@@ -108,7 +108,7 @@ I’Header Nav ha due temi colore:
 
 Su **mobile** lo stile del menu è sempre uguale, indifferentemente dal tema scelto: ha un **background bianco e testi e link di colore primario**.
 
-Per modificare il tema dell’Header Nav e impostarlo alla versione chiara, è sufficiente aggiungere la classe `theme-light` al tag `<nav class="it-header-navbar-wrapper">`:
+Per modificare il tema dell’Header Nav e impostarlo alla versione chiara, è sufficiente aggiungere la classe `.theme-light` al tag `<nav class="it-header-navbar-wrapper">`:
 
 ```html
 <nav class="it-header-navbar-wrapper theme-light">...</nav>
@@ -180,7 +180,7 @@ Durante la transizione, il componente clona e inserisce nella modale i seguenti 
 - `.it-header-navbar-wrapper nav` che comprende:
     - menu principale
     - menu secondario (se presente), a cui viene aggiunta la classe `.secondary`
-- la lista di collegamenti presente in  `.it-header-slim-wrapper ul`, a cui vengono aggiunte le classi `secondary` e `header-slim-menu`.
+- la lista di collegamenti presente in  `.it-header-slim-wrapper ul`, a cui vengono aggiunte le classi `.secondary` e `.header-slim-menu`.
 - il blocco social `.it-socials`
 
 Nel menu mobile quindi gli elementi sono ordinati in questo modo:
@@ -197,10 +197,10 @@ Quando la viewport supera la dimensione prevista dall'attributo `breakpoint`, la
 ## Header Sticky
 Per rendere sticky l'header durante lo scroll della pagina, wrappa l'intera struttura con il componente `<it-sticky>`.
 
-In questo caso la classe `.it-header-wrapper` (e `it-header-sticky`) va spostata su `<it-sticky>` — e **non** sul tag `<header>` interno:
+In questo caso la classe `.it-header-wrapper` (e `.it-header-sticky`) va spostata su `<it-sticky>` — e **non** sul tag `<header>` interno:
 
 Ricordati di:
-- aggiungere l'attributo `sticky-class-name="is-sticky"` per applicare la classe `is-sticky` quando l'header diventa sticky, in modo da poter gestire eventuali stili specifici per questo stato.
+- aggiungere l'attributo `sticky-class-name="is-sticky"` per applicare la classe `.is-sticky` quando l'header diventa sticky, in modo da poter gestire eventuali stili specifici per questo stato.
 - aggiungere l'attributo `trigger-selector` con l'`id` dell'`<it-header>` interno, in modo che lo sticky si attivi solo dopo che l'intero header ha superato il bordo superiore della viewport (e non immediatamente al primo pixel di scroll).
 
 Esempio:
@@ -217,5 +217,5 @@ Esempio:
 
 [Vai all'esempio per questa funzionalità](?path=/story/esempi-header--header-sticky)
 
-Per maggiori dettagli su come utilizzare il componente `it-sticky` e le sue funzionalità, consulta la [documentazione dedicata](?path=/docs/componenti-sticky--documentazione).
+Per maggiori dettagli su come utilizzare il componente `<it-sticky>` e le sue funzionalità, consulta la [documentazione dedicata](?path=/docs/componenti-sticky--documentazione).
 
