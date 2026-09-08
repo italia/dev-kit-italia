@@ -2,6 +2,519 @@
 
 This changelog contains all changes from all packages in the monorepo.
 
+## 1.0.0-beta.3
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/collapse@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
+### `alert`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
+### `avatar`
+
+### Patch Changes
+
+- [#511](https://github.com/italia/dev-kit-italia/pull/511) [`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fixed text avatars with `href` being unclickable and not triggering mouse interactions (e.g. a wrapping `it-tooltip` opened only on focus, not on hover): `pointer-events: none` is now limited to non-interactive text avatars
+
+- [#511](https://github.com/italia/dev-kit-italia/pull/511) [`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Replaced hardcoded `--bsi-` custom property names with the interpolated `$prefix`, so styles keep working with a custom Bootstrap Italia prefix. Also fixed the avatar presence dot reading `--#{$prefix}avatar-dot-offset-top` instead of `--#{$prefix}avatar-dot-offset-bottom` (default aligned to `8px`, as in Bootstrap Italia)
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
+### `back`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+  - @italia/sticky@1.0.0-beta.3
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+
+### `card`
+
+### Patch Changes
+
+- [#516](https://github.com/italia/dev-kit-italia/pull/516) [`fdae554`](https://github.com/italia/dev-kit-italia/commit/fdae554af8d39c72123b2d4dc9d47b8d930c2743) Thanks [@Fupete](https://github.com/Fupete)! - Fixed card profile content class
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `carousel`
+
+### Patch Changes
+
+- [#511](https://github.com/italia/dev-kit-italia/pull/511) [`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Replaced hardcoded `--bsi-` custom property names with the interpolated `$prefix`, so styles keep working with a custom Bootstrap Italia prefix. Also fixed the avatar presence dot reading `--#{$prefix}avatar-dot-offset-top` instead of `--#{$prefix}avatar-dot-offset-bottom` (default aligned to `8px`, as in Bootstrap Italia)
+
+- Updated dependencies [[`fdae554`](https://github.com/italia/dev-kit-italia/commit/fdae554af8d39c72123b2d4dc9d47b8d930c2743)]:
+  - @italia/card@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+
+### `chip`
+
+### Patch Changes
+
+- [#511](https://github.com/italia/dev-kit-italia/pull/511) [`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Replaced hardcoded `--bsi-` custom property names with the interpolated `$prefix`, so styles keep working with a custom Bootstrap Italia prefix. Also fixed the avatar presence dot reading `--#{$prefix}avatar-dot-offset-top` instead of `--#{$prefix}avatar-dot-offset-bottom` (default aligned to `8px`, as in Bootstrap Italia)
+
+- Updated dependencies [[`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529), [`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529)]:
+  - @italia/avatar@1.0.0-beta.3
+  - @italia/button@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529), [`9294912`](https://github.com/italia/dev-kit-italia/commit/92949120525f2486434b2ca56a9a784e61e1c9d6), [`078b02a`](https://github.com/italia/dev-kit-italia/commit/078b02a34bf2b2f31ffe4ec5ab56abb5a5cf15db), [`eecc42d`](https://github.com/italia/dev-kit-italia/commit/eecc42da2ea24f68fbf39b406e3fab2af1073b97), [`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529), [`90a6bbc`](https://github.com/italia/dev-kit-italia/commit/90a6bbc8ff111be3c8c842a3e81040cc5576ea0d), [`bbd57df`](https://github.com/italia/dev-kit-italia/commit/bbd57df519e38f7a1f986fb588fd3c5dff15b5ad), [`bbd57df`](https://github.com/italia/dev-kit-italia/commit/bbd57df519e38f7a1f986fb588fd3c5dff15b5ad), [`fdae554`](https://github.com/italia/dev-kit-italia/commit/fdae554af8d39c72123b2d4dc9d47b8d930c2743)]:
+  - @italia/avatar@1.0.0-beta.3
+  - @italia/header@1.0.0-beta.3
+  - @italia/pagination@1.0.0-beta.3
+  - @italia/navscroll@1.0.0-beta.3
+  - @italia/carousel@1.0.0-beta.3
+  - @italia/chip@1.0.0-beta.3
+  - @italia/upload@1.0.0-beta.3
+  - @italia/progress@1.0.0-beta.3
+  - @italia/stepper@1.0.0-beta.3
+  - @italia/card@1.0.0-beta.3
+  - @italia/accordion@1.0.0-beta.3
+  - @italia/alert@1.0.0-beta.3
+  - @italia/autocomplete@1.0.0-beta.3
+  - @italia/back@1.0.0-beta.3
+  - @italia/back-to-top@1.0.0-beta.3
+  - @italia/bottom-nav@1.0.0-beta.3
+  - @italia/breadcrumbs@1.0.0-beta.3
+  - @italia/button@1.0.0-beta.3
+  - @italia/callout@1.0.0-beta.3
+  - @italia/checkbox@1.0.0-beta.3
+  - @italia/collapse@1.0.0-beta.3
+  - @italia/dimmer@1.0.0-beta.3
+  - @italia/dropdown@1.0.0-beta.3
+  - @italia/forward@1.0.0-beta.3
+  - @italia/hero@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+  - @italia/input@1.0.0-beta.3
+  - @italia/megamenu@1.0.0-beta.3
+  - @italia/modal@1.0.0-beta.3
+  - @italia/notification@1.0.0-beta.3
+  - @italia/popover@1.0.0-beta.3
+  - @italia/radio@1.0.0-beta.3
+  - @italia/rating@1.0.0-beta.3
+  - @italia/section@1.0.0-beta.3
+  - @italia/select@1.0.0-beta.3
+  - @italia/skiplinks@1.0.0-beta.3
+  - @italia/sticky@1.0.0-beta.3
+  - @italia/tabs@1.0.0-beta.3
+  - @italia/timeline@1.0.0-beta.3
+  - @italia/toggle@1.0.0-beta.3
+  - @italia/thumbnav@1.0.0-beta.3
+  - @italia/toolbar@1.0.0-beta.3
+  - @italia/tooltip@1.0.0-beta.3
+  - @italia/transfer@1.0.0-beta.3
+  - @italia/video@1.0.0-beta.3
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
+### `dropdown`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+  - @italia/popover@1.0.0-beta.3
+
+### `forward`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-beta.3
+
+### `header`
+
+### Patch Changes
+
+- [#519](https://github.com/italia/dev-kit-italia/pull/519) [`9294912`](https://github.com/italia/dev-kit-italia/commit/92949120525f2486434b2ca56a9a784e61e1c9d6) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed navabar link border color on mobile
+
+- [#511](https://github.com/italia/dev-kit-italia/pull/511) [`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Replaced hardcoded `--bsi-` custom property names with the interpolated `$prefix`, so styles keep working with a custom Bootstrap Italia prefix. Also fixed the avatar presence dot reading `--#{$prefix}avatar-dot-offset-top` instead of `--#{$prefix}avatar-dot-offset-bottom` (default aligned to `8px`, as in Bootstrap Italia)
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/dropdown@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+  - @italia/modal@1.0.0-beta.3
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
+### `megamenu`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/dropdown@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
+### `navscroll`
+
+### Patch Changes
+
+- [#522](https://github.com/italia/dev-kit-italia/pull/522) [`eecc42d`](https://github.com/italia/dev-kit-italia/commit/eecc42da2ea24f68fbf39b406e3fab2af1073b97) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fixed the scrollspy marking the wrong menu entry as active, and the animated scroll overshooting on the first and last section.
+
+  The active section was measured with `offsetTop`, which is relative to the nearest positioned ancestor rather than to the scroll container. Any positioned wrapper in between falsified it — including the one `it-section` produces by default, since bootstrap-italia styles `.section-content` as `position: relative`, zeroing the `offsetTop` of every section and leaving the last menu entry permanently active. Section positions are now measured against the scroll container, the same way `scrollToElement()` already did.
+
+  The animated scroll after a click now sets each frame's position with `behavior: 'instant'`. bootstrap-italia sets `scroll-behavior: smooth` on `:root`, so every frame of the animation used to start its own native smooth scroll: the browser chased a moving target, never reached it, and kept easing long after the animation had finished — the click landed hundreds of pixels short and the page drifted for seconds.
+
+  The scroll events emitted during that animation no longer overwrite the entry the click had just selected, and the animation target is clamped to the scrollable range.
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+  - @italia/modal@1.0.0-beta.3
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+
+### `pagination`
+
+### Patch Changes
+
+- [#517](https://github.com/italia/dev-kit-italia/pull/517) [`078b02a`](https://github.com/italia/dev-kit-italia/commit/078b02a34bf2b2f31ffe4ec5ab56abb5a5cf15db) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed pagination items role to expose a valid list structure in the accessibility tree
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+
+### `progress`
+
+### Patch Changes
+
+- [#512](https://github.com/italia/dev-kit-italia/pull/512) [`90a6bbc`](https://github.com/italia/dev-kit-italia/commit/90a6bbc8ff111be3c8c842a3e81040cc5576ea0d) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fixed `it-progress[type="donut"]` ignoring the semantic `color` variants (`default`, `success`, `info`, `warning`, `danger`), which all collapsed onto the same color. Each variant now maps to the same design token the matching Progress Bar variant uses, and the resulting color is exposed as the `--it-progress-donut-color` custom property for per-instance customization
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+  - @italia/radio@1.0.0-beta.3
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `stepper`
+
+### Minor Changes
+
+- [#523](https://github.com/italia/dev-kit-italia/pull/523) [`bbd57df`](https://github.com/italia/dev-kit-italia/commit/bbd57df519e38f7a1f986fb588fd3c5dff15b5ad) Thanks [@deodorhunter](https://github.com/deodorhunter)! - **Stepper: allow blocking progress when the step form is invalid**
+  - New `next-disabled` attribute on `it-stepper`: disables the "Next" button as well as "Confirm" (which previously lacked a `?disabled` binding and could not be disabled externally). It is combined via OR with automatic disabling at sequence boundaries; the "Back" button is unaffected.
+  - `it-stepper-change` is now cancelable when triggered by clicking the "Next" button: calling `preventDefault()` blocks the step change, allowing the consumer to display errors with `reportValidity()` or execute asynchronous checks. When emitted by the public `next()` / `prev()` methods, it remains non-cancelable so consumers cannot lock themselves inside their own listener. It continues to not be emitted when directly setting `current`.
+  - `it-stepper-confirm` remains non-cancelable by design: it has no default behavior to block (it does not advance the step), so the consumer already has full control over what happens on confirmation. To prevent confirmation, use `next-disabled`.
+  - New exported type: `StepperChangeEventDetail`.
+  - Stories, MDX documentation, and the example apps updated with both approaches.
+
+- [#523](https://github.com/italia/dev-kit-italia/pull/523) [`bbd57df`](https://github.com/italia/dev-kit-italia/commit/bbd57df519e38f7a1f986fb588fd3c5dff15b5ad) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Exposed the stepper nav arrows as CSS parts
+  - The `it-icon` elements inside the "Indietro" and "Avanti" buttons now forward their `icon` part as `prev-icon` and `next-icon`, so consumers can style them with `it-stepper::part(next-icon)`. They were previously unreachable: `it-icon` exposes its svg as `icon`, but a part only reaches the tree that holds the element — the stepper's shadow root — and no `exportparts` forwarded it out to the page. The only lever left to consumers was the `--bsi-icon-size-s` custom property, which inherits across the shadow boundary but only controls size.
+  - The two names are distinct because the header check marks and the per-step icons are `it-icon` elements too: forwarding them all as `icon` would let a single consumer rule hit every one of them.
+  - Documented all of the stepper's parts with `@csspart`, which were previously unlisted: `stepper`, `header`, `header-list`, `content`, `nav`, `progress`, `dots`, `save`, `focusable`, plus the two new ones.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+
+### `toolbar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
+### `upload`
+
+### Patch Changes
+
+- [#511](https://github.com/italia/dev-kit-italia/pull/511) [`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Replaced hardcoded `--bsi-` custom property names with the interpolated `$prefix`, so styles keep working with a custom Bootstrap Italia prefix. Also fixed the avatar presence dot reading `--#{$prefix}avatar-dot-offset-top` instead of `--#{$prefix}avatar-dot-offset-bottom` (default aligned to `8px`, as in Bootstrap Italia)
+
+- Updated dependencies [[`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529), [`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529), [`90a6bbc`](https://github.com/italia/dev-kit-italia/commit/90a6bbc8ff111be3c8c842a3e81040cc5576ea0d)]:
+  - @italia/avatar@1.0.0-beta.3
+  - @italia/progress@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/checkbox@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
 ## 1.0.0-beta.2
 
 ### `accordion`
