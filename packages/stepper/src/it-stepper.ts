@@ -88,6 +88,18 @@ registerTranslation(en);
  *   Non annullabile: non ha un comportamento di default da bloccare (non avanza lo
  *   step), quindi il consumer controlla già interamente cosa succede alla conferma.
  *   Per impedire la conferma usare `next-disabled`.
+ *
+ * @csspart stepper     - The stepper's root container.
+ * @csspart header      - The header holding the list of steps.
+ * @csspart header-list - The steps `ul` inside the header.
+ * @csspart content     - The area hosting the active step's content.
+ * @csspart nav         - The navigation bar with the "back"/"next" buttons.
+ * @csspart progress    - The textual progress indicator shown on mobile.
+ * @csspart dots        - The dotted progress indicator shown on mobile.
+ * @csspart save        - The area holding the "save" button.
+ * @csspart focusable   - The native `button` inside each navigation and save button.
+ * @csspart prev-icon   - The arrow inside the "back" button.
+ * @csspart next-icon   - The arrow inside the "next" button.
  */
 @customElement('it-stepper')
 export class ItStepper extends BaseLocalizedComponent {
@@ -476,7 +488,13 @@ export class ItStepper extends BaseLocalizedComponent {
             ?disabled=${isPrevDisabled}
             @click=${this.prev}
           >
-            <it-icon class="icon" name="it-chevron-left" color=${this.dark ? 'inverse' : 'primary'} size="sm"></it-icon>
+            <it-icon
+              class="icon"
+              name="it-chevron-left"
+              color=${this.dark ? 'inverse' : 'primary'}
+              size="sm"
+              exportparts="icon: prev-icon"
+            ></it-icon>
             ${this.prevLabel || this.$t('back')}
           </it-button>
 
@@ -511,6 +529,7 @@ export class ItStepper extends BaseLocalizedComponent {
                     name="it-chevron-right"
                     color=${this.dark ? 'primary' : 'inverse'}
                     size="sm"
+                    exportparts="icon: next-icon"
                   ></it-icon>
                 </it-button>
               `}

@@ -321,9 +321,7 @@ describe('<it-stepper>', () => {
   });
 
   it('renders icon elements in the header for the icons variant', async () => {
-    const el = await fixture<ItStepper>(html`
-      <it-stepper header-variant="icons">${renderSteps()}</it-stepper>
-    `);
+    const el = await fixture<ItStepper>(html` <it-stepper header-variant="icons">${renderSteps()}</it-stepper> `);
     await waitForStepper(el);
 
     const headerItems = el.shadowRoot?.querySelectorAll('.steppers-header li');
@@ -383,11 +381,9 @@ describe('<it-stepper>', () => {
 
   it('renders save title and description in the save area', async () => {
     const el = await fixture<ItStepper>(html`
-      <it-stepper
-        save-label="Salva"
-        save-title="Bozza salvata"
-        save-description="Le modifiche saranno conservate"
-      >${renderSteps()}</it-stepper>
+      <it-stepper save-label="Salva" save-title="Bozza salvata" save-description="Le modifiche saranno conservate"
+        >${renderSteps()}</it-stepper
+      >
     `);
     await waitForStepper(el);
 
@@ -434,15 +430,35 @@ describe('<it-stepper>', () => {
     await expect(base).to.be.accessible();
 
     const numbered = await fixture<ItStepper>(html`
-      <it-stepper
-        current="1"
-        header-variant="numbers"
-        mobile-progress="dots"
-        prev-label="Indietro"
-        next-label="Avanti"
-      >${renderSteps()}</it-stepper>
+      <it-stepper current="1" header-variant="numbers" mobile-progress="dots" prev-label="Indietro" next-label="Avanti"
+        >${renderSteps()}</it-stepper
+      >
     `);
     await waitForStepper(numbered);
     await expect(numbered).to.be.accessible();
+  });
+
+  it('forwards the nav arrows as the prev-icon and next-icon parts', async () => {
+    const el = await fixture<ItStepper>(html`
+      <it-stepper current="1" prev-label="Indietro" next-label="Avanti">${renderSteps()}</it-stepper>
+    `);
+    await waitForStepper(el);
+
+    const prevIcon = el.shadowRoot!.querySelector('.steppers-btn-prev it-icon')!;
+    const nextIcon = el.shadowRoot!.querySelector('.steppers-btn-next it-icon')!;
+
+    // `it-icon` exposes its svg as part `icon`, but that only reaches the tree holding
+    // the element — this shadow root. Without forwarding, a consumer has no selector
+    // that gets to the arrows at all.
+    expect(prevIcon.getAttribute('exportparts')).to.equal('icon: prev-icon');
+    expect(nextIcon.getAttribute('exportparts')).to.equal('icon: next-icon');
+
+    // Distinct names on purpose: the header check marks are `it-icon` too, so a shared
+    // `icon` part would make one consumer rule hit all of them.
+    const headerIcons = el.shadowRoot!.querySelectorAll('.steppers-header it-icon');
+    expect(headerIcons.length).to.be.greaterThan(0);
+    headerIcons.forEach((icon) => {
+      expect(icon.getAttribute('exportparts')).to.equal(null);
+    });
   });
 });
