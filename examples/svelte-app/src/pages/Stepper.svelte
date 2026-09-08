@@ -1,13 +1,53 @@
 <script>
+  import { onMount } from 'svelte';
+
   const steps = [
     { label: 'Primo contenuto', icon: 'it-calendar' },
     { label: 'Secondo contenuto', icon: 'it-lock' },
     { label: 'Terzo contenuto', icon: 'it-settings' },
   ];
 
+  let stepperFormEl;
+  let notificationFormEl;
+
   function logStepperEvent(event) {
     console.info(event.type, event.detail);
   }
+
+  onMount(() => {
+    const stepper = stepperFormEl;
+    const notification = notificationFormEl;
+    if (!stepper || !notification) return;
+
+    const form = stepper.querySelector('form');
+    if (!form) return;
+
+    const isFirstStepInvalid = (step) => step === 0 && !form.checkValidity();
+
+    const handleFormChange = () => {
+      stepper.nextDisabled = isFirstStepInvalid(stepper.current);
+    };
+
+    const handleStepChange = (event) => {
+      const { step } = event.detail;
+      stepper.showConfirm = step >= stepper.querySelectorAll('it-stepper-step').length - 1;
+      stepper.nextDisabled = isFirstStepInvalid(step);
+    };
+
+    const handleConfirm = () => notification.show();
+
+    handleFormChange();
+
+    form.addEventListener('it-input', handleFormChange);
+    stepper.addEventListener('it-stepper-change', handleStepChange);
+    stepper.addEventListener('it-stepper-confirm', handleConfirm);
+
+    return () => {
+      form.removeEventListener('it-input', handleFormChange);
+      stepper.removeEventListener('it-stepper-change', handleStepChange);
+      stepper.removeEventListener('it-stepper-confirm', handleConfirm);
+    };
+  });
 </script>
 
 <div
@@ -117,6 +157,31 @@
         </it-stepper-step>
       {/each}
     </it-stepper>
+  </section>
+
+  <section>
+    <h2>Validazione del form nello step</h2>
+    <it-stepper bind:this={stepperFormEl} confirm-label="Conferma" next-disabled>
+      <it-stepper-step icon="it-pencil">
+        <span slot="label">Dati personali</span>
+        <div class="p-5 border bg-light">
+          <form>
+            <it-input required name="nome" placeholder="Inserisci il nome">
+              <span slot="label">Nome</span>
+            </it-input>
+          </form>
+        </div>
+      </it-stepper-step>
+      <it-stepper-step icon="it-check">
+        <span slot="label">Conferma</span>
+        <div class="p-5 text-center border bg-light">
+          <p class="m-0">Riepilogo dei dati inseriti</p>
+        </div>
+      </it-stepper-step>
+    </it-stepper>
+    <it-notification bind:this={notificationFormEl} status="success" dismissable class="mt-3">
+      <span slot="title">Procedura confermata</span>I dati inseriti sono stati salvati.
+    </it-notification>
   </section>
 
   <section class="bg-dark p-4">
