@@ -1,5 +1,29 @@
 # @italia/stepper
 
+## 1.0.0-beta.3
+
+### Minor Changes
+
+- [#523](https://github.com/italia/dev-kit-italia/pull/523) [`bbd57df`](https://github.com/italia/dev-kit-italia/commit/bbd57df519e38f7a1f986fb588fd3c5dff15b5ad) Thanks [@deodorhunter](https://github.com/deodorhunter)! - **Stepper: allow blocking progress when the step form is invalid**
+  - New `next-disabled` attribute on `it-stepper`: disables the "Next" button as well as "Confirm" (which previously lacked a `?disabled` binding and could not be disabled externally). It is combined via OR with automatic disabling at sequence boundaries; the "Back" button is unaffected.
+  - `it-stepper-change` is now cancelable when triggered by clicking the "Next" button: calling `preventDefault()` blocks the step change, allowing the consumer to display errors with `reportValidity()` or execute asynchronous checks. When emitted by the public `next()` / `prev()` methods, it remains non-cancelable so consumers cannot lock themselves inside their own listener. It continues to not be emitted when directly setting `current`.
+  - `it-stepper-confirm` remains non-cancelable by design: it has no default behavior to block (it does not advance the step), so the consumer already has full control over what happens on confirmation. To prevent confirmation, use `next-disabled`.
+  - New exported type: `StepperChangeEventDetail`.
+  - Stories, MDX documentation, and the example apps updated with both approaches.
+
+- [#523](https://github.com/italia/dev-kit-italia/pull/523) [`bbd57df`](https://github.com/italia/dev-kit-italia/commit/bbd57df519e38f7a1f986fb588fd3c5dff15b5ad) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Exposed the stepper nav arrows as CSS parts
+  - The `it-icon` elements inside the "Indietro" and "Avanti" buttons now forward their `icon` part as `prev-icon` and `next-icon`, so consumers can style them with `it-stepper::part(next-icon)`. They were previously unreachable: `it-icon` exposes its svg as `icon`, but a part only reaches the tree that holds the element — the stepper's shadow root — and no `exportparts` forwarded it out to the page. The only lever left to consumers was the `--bsi-icon-size-s` custom property, which inherits across the shadow boundary but only controls size.
+  - The two names are distinct because the header check marks and the per-step icons are `it-icon` elements too: forwarding them all as `icon` would let a single consumer rule hit every one of them.
+  - Documented all of the stepper's parts with `@csspart`, which were previously unlisted: `stepper`, `header`, `header-list`, `content`, `nav`, `progress`, `dots`, `save`, `focusable`, plus the two new ones.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
 ## 1.0.0-beta.2
 
 ### Patch Changes

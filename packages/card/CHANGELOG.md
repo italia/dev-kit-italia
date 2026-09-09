@@ -1,5 +1,14 @@
 # @italia/card
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- [#516](https://github.com/italia/dev-kit-italia/pull/516) [`fdae554`](https://github.com/italia/dev-kit-italia/commit/fdae554af8d39c72123b2d4dc9d47b8d930c2743) Thanks [@Fupete](https://github.com/Fupete)! - Fixed card profile content class
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
 ## 1.0.0-beta.2
 
 ### Patch Changes

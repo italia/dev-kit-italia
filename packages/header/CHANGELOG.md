@@ -1,5 +1,20 @@
 # @italia/header
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- [#519](https://github.com/italia/dev-kit-italia/pull/519) [`9294912`](https://github.com/italia/dev-kit-italia/commit/92949120525f2486434b2ca56a9a784e61e1c9d6) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed navabar link border color on mobile
+
+- [#511](https://github.com/italia/dev-kit-italia/pull/511) [`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Replaced hardcoded `--bsi-` custom property names with the interpolated `$prefix`, so styles keep working with a custom Bootstrap Italia prefix. Also fixed the avatar presence dot reading `--#{$prefix}avatar-dot-offset-top` instead of `--#{$prefix}avatar-dot-offset-bottom` (default aligned to `8px`, as in Bootstrap Italia)
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/dropdown@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+  - @italia/modal@1.0.0-beta.3
+
 ## 1.0.0-beta.2
 
 ### Patch Changes
