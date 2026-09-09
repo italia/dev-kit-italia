@@ -2127,7 +2127,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -4035,7 +4035,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -5296,7 +5296,7 @@ __decorate$J([
  * @param defaultAction the behavior executed when the event is not prevented
  * @returns the dispatched event (inspect `defaultPrevented` if needed)
  */
-function dispatchCancelable$7(host, name, detail, defaultAction) {
+function dispatchCancelable$8(host, name, detail, defaultAction) {
     const event = new CustomEvent(name, {
         bubbles: true,
         composed: true,
@@ -5377,7 +5377,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -5464,7 +5464,7 @@ let ItAlert = ItAlert_1 = class ItAlert extends BaseComponent$F {
         return this.querySelector('.btn-close, [data-bs-dismiss="alert"]');
     }
     _requestClose() {
-        dispatchCancelable$7(this, 'it-alert-close', { alert: this }, () => this.close());
+        dispatchCancelable$8(this, 'it-alert-close', { alert: this }, () => this.close());
     }
     /**
      * Chiude l'alert applicando l'animazione di dissolvenza e rimuovendolo dal DOM.
@@ -6630,7 +6630,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -11425,7 +11425,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -11766,7 +11766,8 @@ a .avatar:hover p {
   --bsi-avatar-dot-offset-right: 4px;
 }
 
-:host([type=text]) {
+:host([type=text]:not([href])),
+:host([type=text][href=""]) {
   cursor: default;
   pointer-events: none;
 }
@@ -13306,7 +13307,7 @@ __decorate$G([
  * @param defaultAction the behavior executed when the event is not prevented
  * @returns the dispatched event (inspect `defaultPrevented` if needed)
  */
-function dispatchCancelable$6(host, name, detail, defaultAction) {
+function dispatchCancelable$7(host, name, detail, defaultAction) {
     const event = new CustomEvent(name, {
         bubbles: true,
         composed: true,
@@ -13324,7 +13325,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -13350,7 +13351,7 @@ let ItBack = class ItBack extends BaseComponent$C {
                 return;
             // Evita la navigazione del link (es. href="#") prima di gestire l'azione.
             event.preventDefault();
-            dispatchCancelable$6(this, 'it-back-navigate', {}, () => {
+            dispatchCancelable$7(this, 'it-back-navigate', {}, () => {
                 window.history.back();
             });
         };
@@ -14548,7 +14549,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -15904,7 +15905,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -17152,7 +17153,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -18923,7 +18924,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -20395,7 +20396,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -22120,7 +22121,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -24179,7 +24180,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -25769,7 +25770,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -27901,7 +27902,7 @@ let ItCard = class ItCard extends BaseComponent$u {
             return b `
         <article class="${classes}" part="card">
           <div class="it-card-profile-header">
-            <div class="it-card-profile">
+            <div class="it-card-profile-content">
               ${cardTitle}
               ${hasSubtitle
                 ? b `
@@ -29104,7 +29105,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -30199,7 +30200,7 @@ p a:focus:not(:focus-visible):not(.btn) {
   /* focus da mouse o script, esclusi anche i .btn */
   background: hsl(0, 0%, 100%);
   box-shadow: none !important;
-  color: var(--bsi--color-link) !important;
+  color: var(--bsi-color-link) !important;
   outline: 3px hsl(0, 0%, 0%) solid !important;
   outline-offset: 0px !important;
 }
@@ -30252,7 +30253,7 @@ it-carousel-slide {
   display: block;
   width: calc(8px * 2);
   height: calc(8px * 2);
-  fill: var(--bsi--color-white, #fff);
+  fill: var(--bsi-color-text-inverse, #fff);
 }
 @media (hover: hover) {
   :host([arrows]) .it-carousel-wrapper:not(.it-carousel-landscape-abstract-three-cols-arrow-visible) .splide__arrow:hover:not([disabled]) {
@@ -30307,7 +30308,7 @@ it-carousel-slide {
 .splide__arrows .splide__arrow svg {
   width: 16px;
   height: 16px;
-  fill: var(--bsi--color-white, #fff);
+  fill: var(--bsi-color-text-inverse, #fff);
 }
 .splide__arrows .splide__arrow.splide__arrow--prev {
   transform: rotate(180deg);
@@ -35588,7 +35589,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -39313,7 +39314,7 @@ __decorate$u([
  * @param defaultAction the behavior executed when the event is not prevented
  * @returns the dispatched event (inspect `defaultPrevented` if needed)
  */
-function dispatchCancelable$5(host, name, detail, defaultAction) {
+function dispatchCancelable$6(host, name, detail, defaultAction) {
     const event = new CustomEvent(name, {
         bubbles: true,
         composed: true,
@@ -39394,7 +39395,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -39679,7 +39680,7 @@ let ItChip = ItChip_1 = class ItChip extends BaseComponent$r {
         super.disconnectedCallback?.();
     }
     _requestClose() {
-        dispatchCancelable$5(this, 'it-chip-close', { chip: this }, () => this._removeWithFocusShift());
+        dispatchCancelable$6(this, 'it-chip-close', { chip: this }, () => this._removeWithFocusShift());
     }
     /**
      * Rimuove la chip dal DOM spostando il focus su una chip adiacente, se presente.
@@ -40897,7 +40898,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -43912,7 +43913,7 @@ __decorate$s([
  * @param defaultAction the behavior executed when the event is not prevented
  * @returns the dispatched event (inspect `defaultPrevented` if needed)
  */
-function dispatchCancelable$4(host, name, detail, defaultAction) {
+function dispatchCancelable$5(host, name, detail, defaultAction) {
     const event = new CustomEvent(name, {
         bubbles: true,
         composed: true,
@@ -43930,7 +43931,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -43959,7 +43960,7 @@ let ItForward = ItForward_1 = class ItForward extends BaseComponent$p {
             event.preventDefault();
             const href = link.getAttribute('href') ?? '';
             const target = ItForward_1._resolveTarget(href);
-            dispatchCancelable$4(this, 'it-forward-navigate', { href, target }, () => {
+            dispatchCancelable$5(this, 'it-forward-navigate', { href, target }, () => {
                 if (target)
                     this._scrollToTarget(target);
             });
@@ -45090,7 +45091,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -46465,7 +46466,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -47953,7 +47954,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -49743,7 +49744,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -54973,7 +54974,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -60226,7 +60227,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -62257,7 +62258,7 @@ __decorate$l([
  * @param defaultAction the behavior executed when the event is not prevented
  * @returns the dispatched event (inspect `defaultPrevented` if needed)
  */
-function dispatchCancelable$3(host, name, detail, defaultAction) {
+function dispatchCancelable$4(host, name, detail, defaultAction) {
     const event = new CustomEvent(name, {
         bubbles: true,
         composed: true,
@@ -62353,7 +62354,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -63692,7 +63693,7 @@ let ItModal = class ItModal extends BaseComponent$i {
             return;
         // `it-modal-open` is cancelable: calling `preventDefault()` stops the modal
         // from opening (the consumer can open it later by calling `show()` again).
-        dispatchCancelable$3(this, 'it-modal-open', { modal: this }, () => {
+        dispatchCancelable$4(this, 'it-modal-open', { modal: this }, () => {
             this._originalTrigger = this._triggerElement;
             this.open = true;
         });
@@ -63702,7 +63703,7 @@ let ItModal = class ItModal extends BaseComponent$i {
             return;
         // `it-modal-close` is cancelable: calling `preventDefault()` keeps the modal
         // open (the consumer can close it later by calling `hide()`).
-        dispatchCancelable$3(this, 'it-modal-close', { modal: this }, () => {
+        dispatchCancelable$4(this, 'it-modal-close', { modal: this }, () => {
             this._hideModal();
         });
     }
@@ -65249,7 +65250,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -65292,6 +65293,7 @@ let ItNavscroll = class ItNavscroll extends BaseComponent$h {
         this.darkMode = null;
         this.mode = 'inline'; // Modalità di visualizzazione corrente, a seconda che siamo su desktop o mobile
         this.activeTarget = null; // voce di menu attiva in questo momento
+        this.isAutoScrolling = false; // true mentre è in corso lo scroll animato dopo un click
         this.onMediaChange = (e) => {
             this.updateMode(e.matches);
         };
@@ -65439,6 +65441,24 @@ let ItNavscroll = class ItNavscroll extends BaseComponent$h {
     get scrollContainerTop() {
         return this.scrollContainer === document.documentElement ? window.scrollY : this.scrollContainer.scrollTop;
     }
+    /**
+     * Posizione di una sezione nello spazio di scroll del container.
+     *
+     * Non si può usare `offsetTop`: è relativo all'`offsetParent`, quindi qualunque
+     * antenato posizionato fra la sezione e il container falsa la misura. Capita di
+     * default con <it-section>, che sposta il contenuto dentro `.section-content`
+     * (`position: relative`) e azzera così l'offsetTop di tutte le sezioni.
+     *
+     * `getBoundingClientRect()` è sempre relativo al viewport: sommando lo scroll
+     * corrente si ottiene la stessa scala usata da `scrollToElement()`.
+     */
+    getSectionTop(section) {
+        const rect = section.getBoundingClientRect();
+        if (this.scrollContainer === document.documentElement) {
+            return rect.top + window.scrollY;
+        }
+        return rect.top - this.scrollContainer.getBoundingClientRect().top + this.scrollContainer.scrollTop;
+    }
     initContainers() {
         // Cerco il main referenziato
         const targetContainer = this.for ? document.querySelector(this.for) : document.scrollingElement;
@@ -65512,23 +65532,22 @@ let ItNavscroll = class ItNavscroll extends BaseComponent$h {
         this.scrollHandler();
     }
     scrollHandler() {
+        // Durante lo scroll animato la voce attiva è già stata decisa dal click:
+        // le posizioni intermedie la sovrascriverebbero con la sezione sbagliata.
+        if (this.isAutoScrolling)
+            return;
         const links = Array.from(this.navEl.querySelectorAll('a[href^="#"]'));
         const sections = links
             .map((link) => document.getElementById(link.getAttribute('href').slice(1)))
             .filter(Boolean);
         if (!sections.length)
             return;
-        const scrollTop = this.scrollContainer?.scrollTop;
+        const scrollTop = this.scrollContainerTop;
         const viewportHeight = this.scrollContainer.clientHeight;
         let currentSection = null;
         for (const section of sections) {
-            const sectionTop = section.offsetTop;
+            const sectionTop = this.getSectionTop(section);
             // se la sezione supera il 25% del viewport del container
-            // console.log(
-            //   { scrollTop, viewportHeight, sectionTop },
-            //   'scrollTop + viewportHeight * 0.25 >= sectionTop=',
-            //   scrollTop + viewportHeight * 0.25 >= sectionTop,
-            // );
             if (scrollTop + viewportHeight * 0.25 >= sectionTop) {
                 currentSection = section;
             }
@@ -65606,23 +65625,39 @@ let ItNavscroll = class ItNavscroll extends BaseComponent$h {
                 return targetRect.top - containerRect.top + targetOffset;
             })()
             : targetEl.getBoundingClientRect().top + targetOffset;
-        const distance = targetY - startY;
+        // Senza clamp l'animazione punta a una posizione irraggiungibile per la prima e
+        // l'ultima sezione: il browser la satura e il punto d'arrivo non è quello atteso.
+        const maxScroll = isScrollableContainer
+            ? container.scrollHeight - container.clientHeight
+            : document.documentElement.scrollHeight - window.innerHeight;
+        const clampedTargetY = Math.min(Math.max(targetY, 0), Math.max(maxScroll, 0));
+        const distance = clampedTargetY - startY;
         const startTime = performance.now();
+        this.isAutoScrolling = true;
         const easeInOutSine = (t) => -(Math.cos(Math.PI * t) - 1) / 2;
         const step = (currentTime) => {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
             const value = startY + distance * easeInOutSine(progress);
+            // `behavior: 'instant'` è obbligatorio: bootstrap-italia imposta
+            // `scroll-behavior: smooth` su :root, quindi ogni assegnazione di posizione
+            // farebbe partire una propria animazione nativa. Ne partirebbe una per frame
+            // e il browser inseguirebbe un bersaglio mobile, senza mai arrivarci.
             if (isScrollableContainer) {
-                container.scrollTop = value;
+                container.scrollTo({ top: value, behavior: 'instant' });
             }
             else {
-                window.scrollTo(0, value);
+                window.scrollTo({ top: value, behavior: 'instant' });
             }
             if (progress < 1) {
                 requestAnimationFrame(step);
             }
             else {
+                // Lo scroll finale emette ancora un evento: si riabilita lo scrollspy
+                // solo dopo che è stato processato, altrimenti riscrive la voce attiva.
+                requestAnimationFrame(() => {
+                    this.isAutoScrolling = false;
+                });
                 callback?.();
             }
         };
@@ -66853,7 +66888,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -69038,7 +69073,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -69429,6 +69464,7 @@ progress {
 let ItPaginationItem = class ItPaginationItem extends BaseComponent$f {
     constructor() {
         super(...arguments);
+        this.elRole = 'listitem';
         this.page = '';
         this.current = false;
         this.disabled = false;
@@ -69489,7 +69525,7 @@ let ItPaginationItem = class ItPaginationItem extends BaseComponent$f {
         // La classe 'page-item' va sul contenitore LI per Bootstrap
         const liClasses = this.composeClass('page-item', this.current && 'active', this.disabled && 'disabled');
         return b `
-      <li class="${liClasses}">
+      <li class="${liClasses}" role="presentation">
         <slot @slotchange="${this.handleSlotChange}"></slot>
       </li>
     `;
@@ -69497,6 +69533,10 @@ let ItPaginationItem = class ItPaginationItem extends BaseComponent$f {
 };
 ItPaginationItem.styles = styles$s;
 ItPaginationItem.shadowRootOptions = { ...BaseComponent$f.shadowRootOptions, delegatesFocus: true };
+__decorate$i([
+    n$3({ type: String, reflect: true, attribute: 'role' }),
+    __metadata$i("design:type", Object)
+], ItPaginationItem.prototype, "elRole", void 0);
 __decorate$i([
     n$3({ type: String, reflect: true }),
     __metadata$i("design:type", Object)
@@ -71397,7 +71437,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -74344,7 +74384,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -76441,8 +76481,9 @@ class ProgressDonut {
     }
     static async create(container, config) {
         const CircleConstructor = await this._loadCircleConstructor();
+        // `color` is intentionally not set: the progress stroke is colored via CSS
+        // (--it-progress-donut-color) so that design tokens can be resolved.
         const bar = new CircleConstructor(container, {
-            color: config.color,
             trailColor: config.trailColor,
             strokeWidth: config.strokeWidth,
             trailWidth: config.trailWidth,
@@ -77191,9 +77232,43 @@ progress {
 
 .progress-donut-wrapper::before {
   background: var(--it-progress-donut-track-color, var(--bsi-color-background-secondary-lighter));
+}
+
+:host {
+  --it-progress-donut-color: var(--bsi-color-background-secondary);
+}
+
+:host([color=default]) {
+  --it-progress-donut-color: var(--bsi-color-background-secondary);
+}
+
+:host([color=info]) {
+  --it-progress-donut-color: var(--bsi-color-background-secondary);
+}
+
+:host([color=success]) {
+  --it-progress-donut-color: var(--bsi-color-background-success);
+}
+
+:host([color=warning]) {
+  --it-progress-donut-color: var(--bsi-color-background-warning);
+}
+
+:host([color=danger]) {
+  --it-progress-donut-color: var(--bsi-color-background-danger);
+}
+
+.progress-donut svg path:not(:first-child),
+.progress-donut svg path:only-child {
+  stroke: var(--it-progress-donut-color);
 }`;
 
 var ItProgress_1;
+/**
+ * @cssproperty [--it-progress-donut-color] - Colore dell'arco di avanzamento del donut. Impostato dalla
+ * variante `color` sul token di colore corrispondente; ridefiniscilo per personalizzare il solo donut.
+ * @cssproperty [--it-progress-donut-track-color] - Colore del cerchio di sfondo (traccia) del donut.
+ */
 let ItProgress = ItProgress_1 = class ItProgress extends BaseComponent$v {
     constructor() {
         super(...arguments);
@@ -77284,8 +77359,17 @@ let ItProgress = ItProgress_1 = class ItProgress extends BaseComponent$v {
         this._donutContainer.setAttribute('aria-valuemin', '0');
         this._donutContainer.setAttribute('aria-valuemax', '100');
         this._donutContainer.setAttribute('role', 'progressbar');
+        // The stroke color is applied via CSS, not through progressbar.js: it writes the color as an
+        // SVG presentation attribute, which cannot resolve the `var()` the design tokens need.
+        // Semantic variants map to their token in it-progress.scss; an arbitrary CSS color is fed to
+        // the same custom property here.
+        if (ItProgress_1._isBarColorVariant(this.color)) {
+            this._donutContainer.style.removeProperty('--it-progress-donut-color');
+        }
+        else {
+            this._donutContainer.style.setProperty('--it-progress-donut-color', this.color);
+        }
         this._bar = await ProgressDonut.create(this._donutContainer, {
-            color: ItProgress_1._isBarColorVariant(this.color) ? 'var(--bsi-secondary)' : this.color,
             trailColor: this.trailColor,
             strokeWidth: this.strokeWidth,
             trailWidth: this.trailWidth,
@@ -78516,7 +78600,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -83691,7 +83775,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -84994,7 +85078,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -87720,7 +87804,7 @@ __decorate$a([
  * @param defaultAction the behavior executed when the event is not prevented
  * @returns the dispatched event (inspect `defaultPrevented` if needed)
  */
-function dispatchCancelable$2(host, name, detail, defaultAction) {
+function dispatchCancelable$3(host, name, detail, defaultAction) {
     const event = new CustomEvent(name, {
         bubbles: true,
         composed: true,
@@ -87738,7 +87822,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -90543,7 +90627,7 @@ let ItTransfer = class ItTransfer extends FormControl$9 {
     }
     // ── Actions ───────────────────────────────────────────────────────────────
     _dispatch(action, items, nextSource, nextTarget, defaultAction) {
-        dispatchCancelable$2(this, 'it-transfer', {
+        dispatchCancelable$3(this, 'it-transfer', {
             action,
             items,
             source: nextSource.map((i) => i.value),
@@ -92034,7 +92118,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -93202,7 +93286,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -93281,6 +93365,49 @@ __decorate$8([
 ItStepperStep = __decorate$8([
     t$2('it-stepper-step')
 ], ItStepperStep);
+
+/**
+ * Dispatches a cancelable custom event and runs the provided default action
+ * only if the consumer did not call `event.preventDefault()`.
+ *
+ * This is the shared convention used across components (Tabs, Modal, Chip, Alert,
+ * Forward, Back) to provide a sensible default JavaScript behavior out of the box
+ * while letting consumers intercept and override it. Notification deliberately does
+ * NOT use this: its show/close are always caller-initiated (no default markup-driven
+ * trigger to override), so there was no real use case for blocking them — see
+ * it-notification.ts for the plain (non-cancelable) events it fires instead.
+ *
+ * ```js
+ * el.addEventListener('it-alert-close', (e) => {
+ *   e.preventDefault();                    // block the default removal
+ *   fetchConfirmation().then((ok) => {     // async logic runs after prevention
+ *     if (ok) e.target.close();
+ *   });
+ * });
+ * ```
+ *
+ * Note: `preventDefault()` must be called synchronously inside the listener.
+ * Async code can run afterward; call the component's public method when ready.
+ *
+ * @param host the element dispatching the event
+ * @param name the event name (kebab-case, `it-` prefixed)
+ * @param detail the event `detail` payload
+ * @param defaultAction the behavior executed when the event is not prevented
+ * @returns the dispatched event (inspect `defaultPrevented` if needed)
+ */
+function dispatchCancelable$2(host, name, detail, defaultAction) {
+    const event = new CustomEvent(name, {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail,
+    });
+    host.dispatchEvent(event);
+    if (!event.defaultPrevented) {
+        defaultAction();
+    }
+    return event;
+}
 
 var styles$f = i$6`@charset "UTF-8";
 .visually-hidden,
@@ -94551,12 +94678,68 @@ registerTranslation$7(translation$a);
  * </it-stepper>
  * ```
  *
+ * ## Validazione del form nello step
+ *
+ * Quando uno step contiene un form si può impedire l'avanzamento in due modi,
+ * usabili anche insieme:
+ *
+ * 1. `next-disabled` disabilita il pulsante "Avanti"/"Conferma" finché il form
+ *    non è valido;
+ * 2. `it-stepper-change`, se originato dal click su "Avanti", è annullabile:
+ *    `preventDefault()` blocca il cambio di step, lasciando al consumer la
+ *    possibilità di mostrare gli errori dei campi.
+ *
+ * ```js
+ * const stepper = document.querySelector('it-stepper');
+ * const form = stepper.querySelector('form');
+ *
+ * // 1. disabilita finché il form non è valido
+ * form.addEventListener('it-input', () => {
+ *   stepper.nextDisabled = !form.checkValidity();
+ * });
+ *
+ * // 2. oppure blocca al click e mostra gli errori
+ * stepper.addEventListener('it-stepper-change', (e) => {
+ *   if (e.detail.step > e.detail.prevStep && !form.checkValidity()) {
+ *     e.preventDefault();
+ *     form.requestSubmit();
+ *   }
+ * });
+ * ```
+ *
+ * I componenti di form del design kit non mostrano i bubble nativi del browser
+ * (`reportValidity()` restituisce il booleano corretto ma non produce nulla a
+ * schermo): i messaggi sono renderizzati inline dal singolo controllo e restano
+ * nascosti finché il form non è stato inviato almeno una volta. `requestSubmit()`
+ * serve proprio a questo — l'invio viene bloccato dal controller quando il form
+ * non è valido, quindi non naviga.
+ *
  * @slot - Slot di default per gli elementi `it-stepper-step`.
  *
  * @fires it-stepper-change - Emesso quando lo step attivo cambia.
- *   `detail.step` contiene il nuovo indice (0-based), `detail.prevStep` quello precedente.
+ *   `detail.step` contiene il nuovo indice (0-based), `detail.prevStep` quello precedente
+ *   (vedi {@link StepperChangeEventDetail}).
+ *   È annullabile **solo** quando è originato dal click sul pulsante "Avanti":
+ *   in quel caso `preventDefault()` impedisce il cambio di step. Emesso dai metodi
+ *   pubblici `next()` / `prev()` non è annullabile e `preventDefault()` non ha effetto.
+ *   Non viene emesso quando si imposta direttamente la proprietà `current`.
  * @fires it-stepper-save - Emesso quando l'utente clicca il pulsante "Salva".
  * @fires it-stepper-confirm - Emesso quando l'utente clicca il pulsante "Conferma".
+ *   Non annullabile: non ha un comportamento di default da bloccare (non avanza lo
+ *   step), quindi il consumer controlla già interamente cosa succede alla conferma.
+ *   Per impedire la conferma usare `next-disabled`.
+ *
+ * @csspart stepper     - The stepper's root container.
+ * @csspart header      - The header holding the list of steps.
+ * @csspart header-list - The steps `ul` inside the header.
+ * @csspart content     - The area hosting the active step's content.
+ * @csspart nav         - The navigation bar with the "back"/"next" buttons.
+ * @csspart progress    - The textual progress indicator shown on mobile.
+ * @csspart dots        - The dotted progress indicator shown on mobile.
+ * @csspart save        - The area holding the "save" button.
+ * @csspart focusable   - The native `button` inside each navigation and save button.
+ * @csspart prev-icon   - The arrow inside the "back" button.
+ * @csspart next-icon   - The arrow inside the "next" button.
  */
 let ItStepper = class ItStepper extends BaseLocalizedComponent$7 {
     constructor() {
@@ -94586,6 +94769,16 @@ let ItStepper = class ItStepper extends BaseLocalizedComponent$7 {
         this.mobileProgress = '';
         /** Mostra progress bar o pallini anche a desktop, comportamento utile per anteprime e documentazione. */
         this.mobileProgressOnDesktop = false;
+        /**
+         * Disabilita il pulsante "Avanti" (o "Conferma", quando `show-confirm` è attivo).
+         * Da usare quando lo step corrente contiene un form non valido o con campi
+         * obbligatori mancanti. Viene combinato in OR con la disabilitazione
+         * automatica ai limiti della sequenza.
+         *
+         * Il pulsante "Indietro" non è influenzato: è sempre possibile tornare
+         * al passo precedente anche da uno step non valido.
+         */
+        this.nextDisabled = false;
         /**
          * Mostra il pulsante "Conferma" al posto del pulsante "Avanti".
          * Utile per l'ultimo step o per step che richiedono conferma esplicita su mobile.
@@ -94641,19 +94834,43 @@ let ItStepper = class ItStepper extends BaseLocalizedComponent$7 {
             this.requestUpdate();
         }
     }
-    _goToStep(nextStep) {
+    _goToStep(nextStep, { cancelable = false } = {}) {
         const prevStep = this._currentIndex;
         const step = this._clampIndex(nextStep);
         if (step === prevStep)
             return;
+        const detail = { step, prevStep };
+        if (cancelable) {
+            dispatchCancelable$2(this, 'it-stepper-change', detail, () => {
+                this.current = step;
+            });
+            return;
+        }
         this.current = step;
         this.dispatchEvent(new CustomEvent('it-stepper-change', {
-            detail: { step, prevStep },
+            detail,
             bubbles: true,
             composed: true,
         }));
     }
-    /** Avanza al prossimo step, se disponibile. */
+    /**
+     * Gestisce il click sul pulsante "Avanti": emette `it-stepper-change` in forma
+     * annullabile, così il consumer può bloccare l'avanzamento (es. form non valido).
+     * Il metodo pubblico `next()` resta invece sempre incondizionato.
+     */
+    _handleNext() {
+        // `it-button` con `disabled` non disabilita il `<button>` nativo: applica solo
+        // `pointer-events: none` e `aria-disabled`, quindi il pulsante resta
+        // attivabile da tastiera. Il controllo va rifatto qui.
+        if (this.nextDisabled)
+            return;
+        this._goToStep(this._currentIndex + 1, { cancelable: true });
+    }
+    /**
+     * Avanza al prossimo step, se disponibile.
+     * Non annullabile: l'evento `it-stepper-change` emesso da questo metodo non
+     * può essere bloccato con `preventDefault()`.
+     */
     next() {
         this._goToStep(this._currentIndex + 1);
     }
@@ -94662,6 +94879,10 @@ let ItStepper = class ItStepper extends BaseLocalizedComponent$7 {
         this._goToStep(this._currentIndex - 1);
     }
     _handleConfirm() {
+        // Vedi la nota in `_handleNext`: il pulsante disabilitato è comunque
+        // attivabile da tastiera, quindi lo stato va verificato anche qui.
+        if (this.nextDisabled)
+            return;
         this.dispatchEvent(new CustomEvent('it-stepper-confirm', { bubbles: true, composed: true }));
     }
     _handleSave() {
@@ -94805,7 +95026,7 @@ let ItStepper = class ItStepper extends BaseLocalizedComponent$7 {
             'mobile-progress-on-desktop': this.mobileProgressOnDesktop,
         });
         const isPrevDisabled = this._currentIndex <= 0;
-        const isNextDisabled = this._currentIndex >= this._maxNavigableIndex;
+        const isNextDisabled = this.nextDisabled || this._currentIndex >= this._maxNavigableIndex;
         return b `
       <div class=${stepperClasses} part="stepper">
         <div class="steppers-header mb-3" part="header">
@@ -94828,7 +95049,13 @@ let ItStepper = class ItStepper extends BaseLocalizedComponent$7 {
             ?disabled=${isPrevDisabled}
             @click=${this.prev}
           >
-            <it-icon class="icon" name="it-chevron-left" color=${this.dark ? 'inverse' : 'primary'} size="sm"></it-icon>
+            <it-icon
+              class="icon"
+              name="it-chevron-left"
+              color=${this.dark ? 'inverse' : 'primary'}
+              size="sm"
+              exportparts="icon: prev-icon"
+            ></it-icon>
             ${this.prevLabel || this.$t('back')}
           </it-button>
 
@@ -94841,6 +95068,7 @@ let ItStepper = class ItStepper extends BaseLocalizedComponent$7 {
                   size="sm"
                   class="steppers-btn-confirm"
                   exportparts="focusable"
+                  ?disabled=${this.nextDisabled}
                   @click=${this._handleConfirm}
                 >
                   ${this.confirmLabel || this.$t('confirm')}
@@ -94854,7 +95082,7 @@ let ItStepper = class ItStepper extends BaseLocalizedComponent$7 {
                   class="steppers-btn-next"
                   exportparts="focusable"
                   ?disabled=${isNextDisabled}
-                  @click=${this.next}
+                  @click=${this._handleNext}
                 >
                   ${this.nextLabel || this.$t('next')}
                   <it-icon
@@ -94862,6 +95090,7 @@ let ItStepper = class ItStepper extends BaseLocalizedComponent$7 {
                     name="it-chevron-right"
                     color=${this.dark ? 'primary' : 'inverse'}
                     size="sm"
+                    exportparts="icon: next-icon"
                   ></it-icon>
                 </it-button>
               `}
@@ -94904,6 +95133,10 @@ __decorate$8([
     n$3({ type: String, attribute: 'confirm-label' }),
     __metadata$8("design:type", String)
 ], ItStepper.prototype, "confirmLabel", void 0);
+__decorate$8([
+    n$3({ type: Boolean, reflect: true, attribute: 'next-disabled' }),
+    __metadata$8("design:type", Object)
+], ItStepper.prototype, "nextDisabled", void 0);
 __decorate$8([
     n$3({ type: Boolean, attribute: 'show-confirm' }),
     __metadata$8("design:type", Object)
@@ -96088,7 +96321,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -97743,7 +97976,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -99550,7 +99783,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -101192,7 +101425,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -105115,7 +105348,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -109305,7 +109538,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
@@ -186904,7 +187137,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.2',
+        version: '1.0.0-beta.3',
     };
 }
 
