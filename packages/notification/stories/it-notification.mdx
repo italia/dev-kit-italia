@@ -32,7 +32,7 @@ Per vedere esempi di notifiche interattive, fai riferimento agli [esempi della s
 
 ## Accessibilità
 
-Il componente usa un tag `h2` per il titolo delle notifiche come impostazione predefinita. Assicurati di impostare il tag `h` corretto a seconda del contesto in cui usi il componente, tramite l'attributo `heading-level`.
+Il componente usa un tag `<h2>` per il titolo delle notifiche come impostazione predefinita. Assicurati di impostare il tag `h` corretto a seconda del contesto in cui usi il componente, tramite l'attributo `heading-level`.
 
 Il componente gestisce automaticamente gli attributi `role` e `aria-hidden`, necessari per l’accessibilità.
 
@@ -93,7 +93,7 @@ Il componente adatta automaticamente il posizionamento e l’arrotondamento degl
 
 ## Attivazione tramite codice
 
-Puoi mostrare una notifica chiamando il metodo `show` su un elemento `it-notification`.
+Puoi mostrare una notifica chiamando il metodo `show` su un elemento `<it-notification>`.
 
 ### Notifiche a scomparsa automatica
 
@@ -108,7 +108,6 @@ La durata predefinita è di 3000 millisecondi (3 secondi). Per modificarla, pass
 Se imposti l’attributo `dismissable`, la notifica non si chiude automaticamente e resta visibile fino alla chiusura manuale da parte dell'utente. Il pulsante di chiusura interno alla notifica è già configurato per nasconderla.
 
 Puoi anche chiudere la notifica tramite altri elementi della pagina, chiamando il metodo `hide()` sull’elemento it-notification.
-
 
 <Canvas of={Stories.AttivazioneEdEliminazione} />
 

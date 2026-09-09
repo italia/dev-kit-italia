@@ -9,8 +9,8 @@ import * as Stories from './it-stepper.stories';
 
 ## Cosa fa
 
-Il componente `it-stepper` mostra lo stato di avanzamento di una procedura composta da più passaggi logici.
-Ogni passaggio viene definito con un elemento `it-stepper-step` inserito all'interno del componente.
+Il componente `<it-stepper>` mostra lo stato di avanzamento di una procedura composta da più passaggi logici.
+Ogni passaggio viene definito con un elemento `<it-stepper-step>` inserito all'interno del componente.
 
 Lo stepper è composto da intestazione, area contenuto e navigazione.
 Puoi mostrare tutte le aree insieme oppure nasconderne alcune quando devi riprodurre solo l'intestazione, solo l'avanzamento o un flusso con salvataggio e conferma.
@@ -51,7 +51,7 @@ La variante predefinita (`text`) mostra l'etichetta di ciascun passo e il suo st
 ### Testo e icone
 
 La variante `icons` mostra un'icona prima dell'etichetta di ciascun passo.
-Per ogni `it-stepper-step` puoi specificare il nome dell'icona tramite l'attributo `icon`, ad esempio `it-calendar`, `it-lock` o `it-settings`.
+Per ogni `<it-stepper-step>` puoi specificare il nome dell'icona tramite l'attributo `icon`, ad esempio `it-calendar`, `it-lock` o `it-settings`.
 
 <Canvas of={Stories.TestoEIcone} />
 

@@ -9,7 +9,7 @@ import * as Stories from './it-card.stories';
 
 ## Cosa fa
 
-Il componente Card (`it-card`) organizza e presenta contenuti strutturati in modo coerente, offrendo un contenitore flessibile e adattabile a diversi contesti e necessità.
+Il componente Card (`<it-card>`) organizza e presenta contenuti strutturati in modo coerente, offrendo un contenitore flessibile e adattabile a diversi contesti e necessità.
 
 [Approfondisci come e quando usare il componente Card](https://designers.italia.it/design-system/componenti/card/)
 
@@ -53,7 +53,7 @@ Per le **immagini**, usa l'attributo `alt`:
 
 ### Collegamenti e navigazione
 
-- Usa `a` per i collegamenti di navigazione e `button` per azioni nella stessa pagina.
+- Usa `<a>` per i collegamenti di navigazione e `<button>` per azioni nella stessa pagina.
 - Segnala chiaramente la destinazione dei link esterni con testo nascosto e icone appropriate.
 - Usa i titoli come elementi principali di navigazione, evitando troppi collegamenti nella stessa card.
 
@@ -61,7 +61,7 @@ Negli esempi non abbiamo usato il target del link per favorire la normale naviga
 
 ### Date e orari nelle card
 
-- Quando presenti date e orari, usa l'elemento `time` con l'appropriato attributo `datetime`.
+- Quando presenti date e orari, usa l'elemento `<time>` con l'appropriato attributo `datetime`.
 - Inserisci eventuali contenuti guida per lettori di schermo solo se realmente necessari per evitare il rumore, ad esempio `<span class="visually-hidden">Data evento:</span>`.
 - Comunica chiaramente agli utenti quando una data ha il ruolo di "Scadenza" aggiungendo un testo adeguato oltre alla data stessa, come negli esempi che trovi per la variante "Card per servizi e bandi".
 - Non usare solo il colore (negli esempi `.text-warning`) per veicolare l'importanza dell'informazione.
@@ -70,9 +70,9 @@ Negli esempi non abbiamo usato il target del link per favorire la normale naviga
 
 ### Gerarchia dei titoli
 
-Usa il corretto livello di intestazione (`h2`, `h3`, ecc.) per il titolo delle card.
+Usa il corretto livello di intestazione (`<h2>`, `<h3>`, ecc.) per il titolo delle card.
 
-Negli esempi abbiamo usato quasi sempre `h3` per le card editoriali e `h4` per quelle informative, ma ricorda di adattare il codice in base alla gerarchia dei contenuti sulle tue pagine.
+Negli esempi abbiamo usato quasi sempre `<h3>` per le card editoriali e `<h4>` per quelle informative, ma ricorda di adattare il codice in base alla gerarchia dei contenuti sulle tue pagine.
 
 
 ### Contrasto e visibilità
@@ -93,7 +93,7 @@ La struttura dei metadati include:
 
 - categorie nell'elemento `.it-card-taxonomy`;
 - argomenti (tag) in liste, quando sono più di uno;
-- date in elementi HTML semantici `time`, con il corretto attributo `datetime`.
+- date in elementi HTML semantici `<time>`, con il corretto attributo `datetime`.
 
 <Canvas of={Stories.EditorialiStandard} />
 
@@ -134,7 +134,7 @@ Usa questa variante per mostrare contenuti relativi a eventi.
 
 - Per mostrare la data o la durata di un evento, aggiungili in un paragrafo all'inizio del corpo della card usando lo slot `subtitle`.
 - Usa lo slot `actions` per collegamenti o pulsanti secondari, utile quando il titolo porta alla pagina di descrizione dell'evento ma vuoi dare accesso diretto all'azione principale (ad esempio, l'iscrizione all'evento).
-- Per applicare il colore secondario ai collegamenti `a` inseriti nel corpo o nel footer della card, usa la classe `.it-card-link`.
+- Per applicare il colore secondario ai collegamenti `<a>` inseriti nel corpo o nel footer della card, usa la classe `.it-card-link`.
 
 <Canvas of={Stories.Eventi} />
 
@@ -170,7 +170,7 @@ Usa queste varianti per fornire un'anteprima per pagine di dettaglio di servizi 
 - Per fornire indicazioni sullo stato del servizio o del bando, usa un componente [Chip](/docs/componenti-chip--documentazione) nell'elemento `footer`.
 - Per indicare una data di scadenza, usa la classe `.it-card-date` e un testo descrittivo nell'elemento `footer`.
 - Usa lo slot `actions` per collegamenti o pulsanti secondari, utile quando il titolo porta alla pagina di approfondimento ma vuoi dare accesso diretto all'azione principale (ad esempio, la candidatura al bando).
-- Usa la classe `.it-card-link` per applicare il colore secondario ai collegamenti `a` inseriti nel corpo o nel footer della card.
+- Usa la classe `.it-card-link` per applicare il colore secondario ai collegamenti `<a>` inseriti nel corpo o nel footer della card.
 
 <Canvas of={Stories.ServiziEBandi} />
 
@@ -187,7 +187,7 @@ Usa questa variante per rappresentare profili personali o i relatori di un event
 
 - Attivala usando l'attributo `variant="profile"`.
 - Per un'immagine di profilo sulla destra, integra il componente [Avatar](/docs/componenti-avatar--documentazione), idealmente nelle varianti di dimensioni `xl`.
-- La lista di metadati del profilo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `dd`-`dt` raccolta in un `div` contenitore.
+- La lista di metadati del profilo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `<dd>`-`<dt>` raccolta in un `<div>` contenitore.
 - Per un effetto decorativo, usa l'attributo `border-top` e le [varianti di colore disponibili nella tabella degli attributi](#anteprima-e-attributi-del-componente).
 
 <Canvas of={Stories.ProfiliPersonali} />
@@ -198,8 +198,8 @@ Usa questa variante per rappresentare dei luoghi.
 
 - Attivala usando l'attributo `variant="location"`.
 - Per aggiungere un'immagine, usa lo slot `image`.
-- Per aggiungere un'icona sulla destra e allinearla correttamente, racchiudila in un `div` con classe `.it-card-profile-image-icon-wrapper`.
-- La lista di metadati del luogo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `dd`-`dt` raccolta in un `div` contenitore.
+- Per aggiungere un'icona sulla destra e allinearla correttamente, racchiudila in un `<div>` con classe `.it-card-profile-image-icon-wrapper`.
+- La lista di metadati del luogo è costruita utilizzando liste descrittive `.it-card-description-list` con ogni coppia di item `<dd>`-`<dt>` raccolta in un `<div>` contenitore.
 - Per eventuali collegamenti o dettagli della mappa, puoi usare lo slot `footer`.
 
 <Canvas of={Stories.Luoghi} />
@@ -215,7 +215,7 @@ Usa questa variante quando vuoi facilitare l'accesso a contenuti importanti, com
 
 <it-callout variant="success" heading-level="h4">
   <span slot="title">Accessibilità dei link</span>
-  <p>Valuta se applicare un aria-label all'elemento `ul` per permettere ai lettori di schermo di comprendere la natura di questi link.</p>
+  <p>Valuta se applicare un aria-label all'elemento `<ul>` per permettere ai lettori di schermo di comprendere la natura di questi link.</p>
 </it-callout>
 
 
@@ -322,7 +322,7 @@ Per personalizzare gli stili del componente, puoi usare il selettore `::part` co
 
 ### Uso di contenitori responsive
 
-Se il layout lo consente, racchiudi ogni gruppo di card in un contenitore responsive, usando le classi `.container-xl` o `.container-xxl` su un elemento `div` che includa l'intero gruppo e il suo sistema di griglie.
+Se il layout lo consente, racchiudi ogni gruppo di card in un contenitore responsive, usando le classi `.container-xl` o `.container-xxl` su un elemento `<div>` che includa l'intero gruppo e il suo sistema di griglie.
 
 In questo modo sfrutti al meglio lo spazio disponibile su tutte le dimensioni di viewport e livelli di ingrandimento. L’uso di contenitori con breakpoint fissi come `.container` può invece lasciare troppo spazio vuoto ai lati in alcune configurazioni.
 
@@ -384,7 +384,7 @@ Esempio di lista di card:
 
 ### Uso di classi dedicate (per piccoli gruppi)
 
-Per piccoli gruppi di card (2–6 elementi), puoi usare `.it-card-group` per creare facilmente un layout responsive all’interno di un `div` contenitore.
+Per piccoli gruppi di card (2–6 elementi), puoi usare `.it-card-group` per creare facilmente un layout responsive all’interno di un `<div>` contenitore.
 
 Di default, il layout prevede 4 colonne su desktop.
 

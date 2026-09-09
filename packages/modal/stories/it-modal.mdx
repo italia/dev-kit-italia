@@ -40,7 +40,7 @@ Il componente `<it-modal>` è composto dai seguenti slot:
 - `content` (**obbligatorio**), per inserire il contenuto principale della modale;
 - `footer`, per le azioni della modale come pulsanti di conferma o cancellazione ed eventuali elementi aggiuntivi.
 
-Inserisci il trigger per l'apertura della modale nello slot `trigger`, come mostrato negli esempi con il componente `it-button`.
+Inserisci il trigger per l'apertura della modale nello slot `trigger`, come mostrato negli esempi con il componente `<it-button>`.
 
 Definisci il titolo della modale tramite lo slot `header` o l’attributo `modal-title`. Se non vuoi mostrare un titolo, fornisci un’etichetta accessibile tramite l’attributo it-aria-label.
 
@@ -56,7 +56,7 @@ Imposta manualmente nello slot `footer` eventuali azioni di conferma, cancellazi
       Il componente espone i metodi pubblici `show()`, `hide()` e `toggle()`, rispettivamente per aprire/chiudere la modale e commutarne lo stato via codice.
     </p>
     <p class="font-weight-bold">
-      <strong>Non è necessaria l'implementazione via JS per l'apertura della modale, in quanto il componente gestisce automaticamente l'apertura al click dell'`it-button` o del pulsante inserito nello slot `trigger`, ma è possibile implementare un'apertura manuale via JS qualora fosse necessario, ad esempio in caso di trigger non convenzionali o per esigenze specifiche di interazione e/o logiche di business.</strong>
+      <strong>Non è necessaria l'implementazione via JS per l'apertura della modale, in quanto il componente gestisce automaticamente l'apertura al click dell'`<it-button>` o del pulsante inserito nello slot `trigger`, ma è possibile implementare un'apertura manuale via JS qualora fosse necessario, ad esempio in caso di trigger non convenzionali o per esigenze specifiche di interazione e/o logiche di business.</strong>
     </p>
     <p class="font-weight-bold">
     Al fine di garantire la completa compatibilità con tutti i moderni framework Javascript,
@@ -87,7 +87,7 @@ Imposta manualmente nello slot `footer` eventuali azioni di conferma, cancellazi
 
 ## Accessibilità
 
-Il componente `it-modal`:
+Il componente `<it-modal>`:
 - implementa le specifiche ARIA [WAI-ARIA Authoring Practices 1.1 dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog/) e gestisce automaticamente gli attributi ARIA necessari per garantire l'accessibilità della modale;
 - rispetta le preferenze di riduzione del movimento impostate dall'utente a livello di sistema operativo, disabilitando le animazioni se l'impostazione è rilevata a livello di browser;
 - gestisce automaticamente il focus all'interno della modale quando viene aperta, spostandolo sul primo elemento interattivo disponibile e ciclando poi il focus all'interno della modale stessa attraverso una focus trap;
@@ -103,10 +103,10 @@ Il componente supporta la chiusura della modale tramite il tasto ESC e/o cliccan
 Il focus viene ripristinato sull'elemento di trigger una volta che la modale viene chiusa.
 
 Per realizzare modali accessibili a tutti gli utenti, assicurati di:
-- popolare lo slot `trigger` esclusivamente con elementi interattivi semanticamente corretti, come `it-button`, `button` o che supportino il ruolo di button.
+- popolare lo slot `trigger` esclusivamente con elementi interattivi semanticamente corretti, come `<it-button>`, `<button>` o che supportino il ruolo di button.
 - popolare lo slot `header` o uno tra gli attributi `modal-title` e `it-aria-label` per fornire un'etichetta accessibile alla modale. Se non vuoi mostrare il titolo, devi usare l'attributo `it-aria-label`;
 - in caso di contenuti che includono strutture semantiche (come liste, tabelle, paragrafi multipli), non valorizzare l'attributo `modal-description` e/o non inserire contenuto nello slot `description`. ([Approfondisci ruoli, stati e proprietà WAI-ARIA](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/#wai-ariaroles,states,andproperties));
-- includi sempre un pulsante di chiusura della modale tramite l'attributo `close-button`, o implementalo manualmente nello slot `footer` tramite un pulsante `it-button`.
+- includi sempre un pulsante di chiusura della modale tramite l'attributo `close-button`, o implementalo manualmente nello slot `footer` tramite un pulsante `<it-button>`.
 
 ## Con pulsante di chiusura
 
@@ -139,7 +139,7 @@ Il componente `<it-modal>` offre alcune varianti predefinite per adattarsi a div
 
 ### Modale con icona
 
-Per dare enfasi visiva, puoi aggiungere un'icona nell'header inserendo un componente `it-icon` nello slot `header-icon`. Valorizza l'attributo `variation` con valore `alert` per ottenere il layout corretto.
+Per dare enfasi visiva, puoi aggiungere un'icona nell'header inserendo un componente `<it-icon>` nello slot `header-icon`. Valorizza l'attributo `variation` con valore `alert` per ottenere il layout corretto.
 
 <Canvas of={Stories.ConIcona} />
 

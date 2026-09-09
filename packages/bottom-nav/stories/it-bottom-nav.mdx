@@ -25,23 +25,23 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Indicazioni generali
 
-Il componente `it-bottom-nav` è il contenitore principale e include uno o più elementi `it-bottom-nav-item`.
+Il componente `<it-bottom-nav>` è il contenitore principale e include uno o più elementi `<it-bottom-nav-item>`.
 
-Il componente `it-bottom-nav-item` è una singola voce di navigazione e va sempre usato come figlio di `it-bottom-nav`.
+Il componente `<it-bottom-nav-item>` è una singola voce di navigazione e va sempre usato come figlio di `<it-bottom-nav>`.
 
-Ogni `it-bottom-nav-item` espone uno **slot default** in cui inserire il link di navigazione:
+Ogni `<it-bottom-nav-item>` espone uno **slot default** in cui inserire il link di navigazione:
 - inserisci un link `<a href="...">` con al suo interno un'icona e uno `<span class="bottom-nav-label">` per l'etichetta;
-- aggiungi l'attributo `active` a `it-bottom-nav-item` per indicare la voce attiva;
+- aggiungi l'attributo `active` a `<it-bottom-nav-item>` per indicare la voce attiva;
 - il componente imposta automaticamente `aria-current="page"` sul link della voce attiva.
 
-Se utilizzi framework come React, Angular, Svelte o Vue, segui le convenzioni del framework per gestire la navigazione e lo stato attivo, assicurandoti di applicare l'attributo `active` all'elemento `it-bottom-nav-item` corrispondente alla pagina corrente.
+Se utilizzi framework come React, Angular, Svelte o Vue, segui le convenzioni del framework per gestire la navigazione e lo stato attivo, assicurandoti di applicare l'attributo `active` all'elemento `<it-bottom-nav-item>` corrispondente alla pagina corrente.
 <div class="callout callout-primary">
   <div class="callout-inner">
     <div class="callout-title">
       <span class="text">Stili</span>
     </div>
     <p>
-      Alcune classi provenienti da Boostrap Italia sono usate all'interno del link (`bottom-nav-label`, `bottom-nav-badge`, `bottom-nav-alert`, `.icon`). Queste classi si trovano nel light DOM e non possono essere raggiunte dal shadow DOM del componente. Se non stai utilizzando il bundle completo, includi il foglio di stile globale nel tuo progetto per applicare questi stili:
+      Alcune classi provenienti da Boostrap Italia sono usate all'interno del link (`.bottom-nav-label`, `.bottom-nav-badge`, `.bottom-nav-alert`, `.icon`). Queste classi si trovano nel light DOM e non possono essere raggiunte dal shadow DOM del componente. Se non stai utilizzando il bundle completo, includi il foglio di stile globale nel tuo progetto per applicare questi stili:
 
 ```scss
 @use '@italia/bottom-nav/styles/globals' as *;

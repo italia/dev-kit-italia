@@ -32,19 +32,19 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 Il componente Accordion è composto da due elementi:
 
-- `it-accordion`: contenitore che raggruppa più elementi richiudibili;
-- `it-accordion-item`: singolo elemento richiudibile all'interno dell'accordion.
+- `<it-accordion>`: contenitore che raggruppa più elementi richiudibili;
+- `<it-accordion-item>`: singolo elemento richiudibile all'interno dell'accordion.
 
 ## Elemento richiudibile
 
-`it-accordion-item` rappresenta il singolo elemento richiudibile all'interno dell'accordion.
+`<it-accordion-item>` rappresenta il singolo elemento richiudibile all'interno dell'accordion.
 
-Ogni `it-accordion-item` utilizza due slot distinti per definire intestazione e contenuto:
+Ogni `<it-accordion-item>` utilizza due slot distinti per definire intestazione e contenuto:
 
 - `slot="heading"`: **obbligatorio**, il testo da mostrare nell'header dell'elemento;
 - `slot="content"`: **obbligatorio**, il contenuto da mostrare o nascondere.
 
-Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente `it-accordion-item`. Per vedere come cambia il codice, clicca su **Show code**.
+Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente `<it-accordion-item>`. Per vedere come cambia il codice, clicca su **Show code**.
 
 <Canvas of={AccordionStories.AccordionItem} />
 <Controls of={AccordionStories.AccordionItem} />
@@ -73,7 +73,7 @@ Per abilitare la modalità esclusiva, assegna all'attributo `mode` il valore `si
 
 Gli elementi dell'accordion possono mostrare uno sfondo primario quando la sezione corrispondente è attiva (aperta).
 
-Per applicare lo sfondo primario agli elementi attivi, imposta l'attributo `background-active` sull'elemento `it-accordion`.
+Per applicare lo sfondo primario agli elementi attivi, imposta l'attributo `background-active` sull'elemento `<it-accordion>`.
 
 <Canvas of={AccordionStories.HeaderAttivi} />
 
@@ -81,7 +81,7 @@ Per applicare lo sfondo primario agli elementi attivi, imposta l'attributo `back
 
 Gli elementi dell'accordion possono mostrare uno sfondo primario al passaggio del mouse.
 
-Per applicare lo sfondo primario agli elementi al passaggio del mouse, imposta l'attributo `background-hover` sull'elemento `it-accordion`.
+Per applicare lo sfondo primario agli elementi al passaggio del mouse, imposta l'attributo `background-hover` sull'elemento `<it-accordion>`.
 
 <Canvas of={AccordionStories.HoverDegliHeader} />
 

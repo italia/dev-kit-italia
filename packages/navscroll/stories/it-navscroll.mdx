@@ -11,7 +11,7 @@ import * as Stories from './it-navscroll.stories';
 
 ## Cosa fa
 
-Il componente Navscroll (`it-navscroll`), declinazione del [componente Sidebar](?path=/docs/componenti-sidebar--documentazione), è una barra di navigazione laterale che, tramite una lista di ancore, permette di creare un indice utile a saltare velocemente alle sezioni e ai contenuti presenti su una stessa pagina.
+Il componente Navscroll (`<it-navscroll>`), declinazione del [componente Sidebar](?path=/docs/componenti-sidebar--documentazione), è una barra di navigazione laterale che, tramite una lista di ancore, permette di creare un indice utile a saltare velocemente alle sezioni e ai contenuti presenti su una stessa pagina.
 
 [Approfondisci come e quando usare il componente Navscroll](https://designers.italia.it/design-system/componenti/navscroll/)
 
@@ -30,9 +30,9 @@ Restringi la larghezza della finestra per vedere cosa succede su dispositivi mob
 
 ## Indicazioni generali
 
-Per configurare correttamente il componente `it-navscroll`:
+Per configurare correttamente il componente `<it-navscroll>`:
 
-- definisci le sezioni di pagina con intestazioni semantiche in ordine corretto (`h2`, `h3`, ecc.);
+- definisci le sezioni di pagina con intestazioni semantiche in ordine corretto (`<h2>`, `<h3>`, ecc.);
 - aggiungi nel componente voci di navigazione sintetiche e corrispondenti ai titoli di sezione su pagina;
 - aggiungi per ogni link l’attributo `href` con il valore dell’id relativo all’elemento correlato in pagina, `href="#idElemento"`;
 - posiziona il componente a destra o a sinistra del contenuto principale della pagina;
@@ -94,7 +94,7 @@ Imposta l'attributo `position="top"` per mostrare il trigger di apertura della n
 
 ## Con barra di progresso
 
-Per mostrare la barra di progresso, aggiungi il componente `<it-progress>` all'interno del div con classe `link-list-wrapper`, assegnandogli la classe `class="it-navscroll-progressbar"`.
+Per mostrare la barra di progresso, aggiungi il componente `<it-progress>` all'interno del `<div>` con classe `.link-list-wrapper`, assegnandogli la classe `.it-navscroll-progressbar`.
 
 ```html
 <it-progress type="bar" value="0" class="it-navscroll-progressbar" aria-label="Progress bar"></it-progress>

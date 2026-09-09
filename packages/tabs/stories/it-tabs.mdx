@@ -30,21 +30,21 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 Il componente Tabs è composto da tre elementi:
 
-- `it-tabs`, il contenitore principale che gestisce la selezione delle schede, gli attributi ARIA e la navigazione da tastiera;
-- `it-tab`, la singola scheda trigger assegnata allo `slot="tab"`, con il testo o il markup dell'etichetta al suo interno;
-- `it-tab-panel`, il pannello con il testo o il markup del contenuto.
+- `<it-tabs>`, il contenitore principale che gestisce la selezione delle schede, gli attributi ARIA e la navigazione da tastiera;
+- `<it-tab>`, la singola scheda trigger assegnata allo `slot="tab"`, con il testo o il markup dell'etichetta al suo interno;
+- `<it-tab-panel>`, il pannello con il testo o il markup del contenuto.
 
 
 Il collegamento tra trigger e pannello avviene tramite:
-- attributo `panel="nome"` su `it-tab`;
-- attributo `name="nome"` su `it-tab-panel`.
+- attributo `panel="nome"` su `<it-tab>`;
+- attributo `name="nome"` su `<it-tab-panel>`.
 
-**Assicurati che ogni coppia `it-tab`/`it-tab-panel` in pagina abbia un valore univoco per questi attributi.**
+**Assicurati che ogni coppia `<it-tab>`/`<it-tab-panel>` in pagina abbia un valore univoco per questi attributi.**
 
 ### Attributi del componente it-tab
-Usa l'attributo `disabled` su `it-tab` per disabilitare una scheda e impedirne la selezione e la navigazione da tastiera.
+Usa l'attributo `disabled` su `<it-tab>` per disabilitare una scheda e impedirne la selezione e la navigazione da tastiera.
 
-Usa l'attributo `active` su `it-tab` per impostare la scheda che si attiva di default al caricamento del componente.
+Usa l'attributo `active` su `<it-tab>` per impostare la scheda che si attiva di default al caricamento del componente.
 
 ## Accessibilità
 
@@ -54,7 +54,7 @@ Il componente implementa le specifiche [WAI-ARIA Authoring Practices - Tabs with
 - `aria-selected` e il *roving tabindex* per la navigazione da tastiera con i tasti freccia;
 - `aria-controls` su ogni scheda, associato all'`id` del pannello corrispondente;
 - `aria-labelledby` su ogni pannello, associato all'`id` del pulsante della scheda corrispondente;
-- `label` su `it-tabs`, che fornisce l'`aria-label` della tablist quando non c'è un'intestazione visibile;
+- `label` su `<it-tabs>`, che fornisce l'`aria-label` della tablist quando non c'è un'intestazione visibile;
 - `aria-keyshortcuts` su ogni scheda, che espone le scorciatoie da tastiera ai lettori di schermo che supportano questo attributo all'accesso alla tablist;
 - `aria-description`, che fornisce indicazioni di fallback per le scorciatoie da tastiera ai lettori di schemo che non supportano `aria-keyshortcuts`. Il testo è internazionalizzato e puoi personalizzarlo tramite la chiave `closeActiveTabHint`.
 
@@ -89,7 +89,7 @@ Il componente implementa le specifiche [WAI-ARIA Authoring Practices - Tabs with
 <div class="callout callout-warning">
 <div class="callout-inner">
 <div class="callout-title"><span class="text">Nome accessibile della tablist</span></div>
-<p>La tablist deve sempre avere un nome accessibile. Se è presente un'intestazione visibile che descrive il gruppo di schede, collegala a `it-tabs` tramite `aria-labelledby`. Se invece non è presente un'intestazione, usa l'attributo `label`, che il componente utilizza automaticamente come nome accessibile della tablist.</p>
+<p>La tablist deve sempre avere un nome accessibile. Se è presente un'intestazione visibile che descrive il gruppo di schede, collegala a `<it-tabs>` tramite `aria-labelledby`. Se invece non è presente un'intestazione, usa l'attributo <code>label</code>, che il componente utilizza automaticamente come nome accessibile della tablist.</p>
 </div>
 </div>
 
@@ -153,9 +153,9 @@ Per espandere i tab fino a occupare tutta la larghezza disponibile, usa l'attrib
 
 Le etichette dei tab possono contenere icone, anche senza testo visibile.
 
-Quando usi un'icona senza testo visibile, inserisci sempre un testo descrittivo con classe `.visually-hidden` all'interno del tab, così da fornire un'etichetta accessibile ai lettori di schermo. In alternativa, se utilizzi `it-icon` come trigger senza testo visibile, fornisci il testo descrittivo tramite l'attributo `label` del componente.
+Quando usi un'icona senza testo visibile, inserisci sempre un testo descrittivo con classe `.visually-hidden` all'interno del tab, così da fornire un'etichetta accessibile ai lettori di schermo. In alternativa, se utilizzi `<it-icon>` come trigger senza testo visibile, fornisci il testo descrittivo tramite l'attributo `label` del componente.
 
-Per modificare la dimensione delle icone, usa l'attributo `size` di `it-icon` oppure personalizzala tramite CSS.
+Per modificare la dimensione delle icone, usa l'attributo `size` di `<it-icon>` oppure personalizzala tramite CSS.
 
 
 <Canvas of={TabsStories.TabConIcona} />
@@ -172,7 +172,7 @@ Per applicare sfondo scuro alla tablist, usa l'attributo `dark`.
 
 ## Effetto fade
 
-Per aggiungere un'animazione di dissolvenza al cambio tab, usa l'attributo `fade` di `it-tabs` per fare in modo che i pannelli appaiano con un'animazione di dissolvenza al cambio tab.
+Per aggiungere un'animazione di dissolvenza al cambio tab, usa l'attributo `fade` di `<it-tabs>` per fare in modo che i pannelli appaiano con un'animazione di dissolvenza al cambio tab.
 
 <Canvas of={TabsStories.TabFade} />
 
@@ -187,7 +187,7 @@ Per applicare lo stile card ai tab, usa l'attributo `cards`.
 
 Per ottenere tab di tipo card rimovibili con pulsante di chiusura, usa l'attributo `cards` in combinazione con `dismissible`. Ogni it-tab includerà un'icona "×" per la chiusura.
 
-In questa configurazione, al clic, al double tap da mobile o attraverso le scorciatoie da tastiera `Delete` e `Backspace` con un tab in focus, il tab emette l'evento cancellabile `it-tab-close` con `detail.panel` e, se non viene chiamato `preventDefault()`, **rimuove automaticamente** `it-tab` e `it-tab-panel` dal DOM.
+In questa configurazione, al clic, al double tap da mobile o attraverso le scorciatoie da tastiera `Delete` e `Backspace` con un tab in focus, il tab emette l'evento cancellabile `it-tab-close` con `detail.panel` e, se non viene chiamato `preventDefault()`, **rimuove automaticamente** `<it-tab>` e `<it-tab-panel>` dal DOM.
 
 Il focus si sposta sul tab adiacente (successivo o, se non esiste, precedente) prima della rimozione, seguendo il pattern WAI-ARIA APG.
 
@@ -196,7 +196,7 @@ Il focus si sposta sul tab adiacente (successivo o, se non esiste, precedente) p
 ### Tab card con pulsanti aggiungi/elimina e logica personalizzata
 Puoi intercettare l'evento `it-tab-close` per implementare una logica personalizzata alla chiusura di un tab, ad esempio per mostrare una conferma modale prima di procedere con la rimozione. In questo caso, chiama `preventDefault()` sull'evento per bloccare la rimozione automatica e gestisci manualmente la rimozione del tab in caso di conferma positiva da parte dell'utente.
 
-Per aggiungere tab dinamicamente con logica personalizzata, puoi utilizzare un pulsante `it-button` con `slot="after-tablist"`, e gestire l'aggiunta di un tab con un event listener che esegue la tua logica e invoca il metodo pubblico `addTab(tab, panel)`esposto dal componente.
+Per aggiungere tab dinamicamente con logica personalizzata, puoi utilizzare un pulsante `<it-button>` con `slot="after-tablist"`, e gestire l'aggiunta di un tab con un event listener che esegue la tua logica e invoca il metodo pubblico `addTab(tab, panel)`esposto dal componente.
 
 Per aggiungere tab dinamicamente con logica personalizzata, usa un pulsante `it-button` con `slot="after-tablist"` e gestisci l'aggiunta del nuovo tab tramite un event listener. Questa configurazione esegue la tua logica e invoca il metodo pubblico `addTab(tab, panel)`esposto dal componente.
 
@@ -211,7 +211,7 @@ Il componente espone i seguenti metodi e eventi accessibili via JavaScript.
 
 ### Metodi
 - `close(panelId: string)` chiude il tab con id corrispondente al `panelId` passato, disattivando il tab e nascondendo il pannello. Se il tab è già chiuso o non esiste, non fa nulla.
-- `addTab(tab: ItTab, panel: ItTabPanel)` aggiunge dinamicamente un nuovo tab e pannello al componente. Il parametro `tab` è un elemento `it-tab` con attributo `slot="tab"` e `panel="nome"`, mentre `panel` è un elemento `it-tab-panel` con attributo `name="nome"`. Il metodo si occupa di inserire correttamente i nuovi elementi nel DOM e di aggiornare la logica di selezione.
+- `addTab(tab: ItTab, panel: ItTabPanel)` aggiunge dinamicamente un nuovo tab e pannello al componente. Il parametro `tab` è un elemento `<it-tab>` con attributo `slot="tab"` e `panel="nome"`, mentre `panel` è un elemento `<it-tab-panel>` con attributo `name="nome"`. Il metodo si occupa di inserire correttamente i nuovi elementi nel DOM e di aggiornare la logica di selezione.
 
 ### Eventi
 - `it-tab-close`, emesso quando un tab con pulsante di chiusura viene chiuso tramite clic, doppio tap da mobile o shortcut da tastiera. L'evento è cancellabile e contiene `detail.panel` con l'id del pannello associato al tab chiuso.
