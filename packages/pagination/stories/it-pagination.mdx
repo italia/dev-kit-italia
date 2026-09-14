@@ -90,6 +90,12 @@ Per mostrare del testo come pulsante di navigazione, usa gli slot `prev` e `next
 
 <Canvas of={PaginationStories.ConNavigazioneTestuale} />
 
+## Elemento disabilitato
+
+Per disabilitare un elemento di paginazione (ad esempio per una pagina temporaneamente non raggiungibile), aggiungi l'attributo `disabled` a `it-pagination-item`. L'elemento assume uno stato visivo disabilitato, non è più interattivo e viene aggiunto l'attributo `aria-disabled="true"` al link al suo interno.
+
+<Canvas of={PaginationStories.ConElementoDisabilitato} />
+
 ## Modalità responsive
 
 In modalità responsive (attiva di default), su schermi di piccole dimensioni, il componente nasconde gli elementi di paginazione non attivi e mostra soltanto l'elemento della pagina corrente.
