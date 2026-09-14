@@ -1,5 +1,14 @@
 # @italia/callout
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+
 ## 1.0.0-beta.2
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @italia/thumbnav
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
 ## 1.0.0-beta.2
 
 ### Patch Changes
