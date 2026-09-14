@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- [#517](https://github.com/italia/dev-kit-italia/pull/517) [`078b02a`](https://github.com/italia/dev-kit-italia/commit/078b02a34bf2b2f31ffe4ec5ab56abb5a5cf15db) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed pagination items role to expose a valid list structure in the accessibility tree
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
 ## 1.0.0-beta.2
 
 ### Patch Changes
