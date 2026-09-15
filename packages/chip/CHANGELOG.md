@@ -1,5 +1,17 @@
 # @italia/chip
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- [#511](https://github.com/italia/dev-kit-italia/pull/511) [`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Replaced hardcoded `--bsi-` custom property names with the interpolated `$prefix`, so styles keep working with a custom Bootstrap Italia prefix. Also fixed the avatar presence dot reading `--#{$prefix}avatar-dot-offset-top` instead of `--#{$prefix}avatar-dot-offset-bottom` (default aligned to `8px`, as in Bootstrap Italia)
+
+- Updated dependencies [[`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529), [`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529)]:
+  - @italia/avatar@1.0.0-beta.3
+  - @italia/button@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
 ## 1.0.0-beta.2
 
 ### Patch Changes

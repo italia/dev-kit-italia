@@ -1,10 +1,10 @@
 import { html, nothing, type PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { BaseLocalizedComponent } from '@italia/globals';
+import { BaseLocalizedComponent, dispatchCancelable } from '@italia/globals';
 import { registerTranslation } from '@italia/i18n';
 import type { ItStepperStep } from './it-stepper-step.js';
-import type { StepperHeaderVariant, StepperMobileProgress } from './types.js';
+import type { StepperChangeEventDetail, StepperHeaderVariant, StepperMobileProgress } from './types.js';
 import styles from './stepper.scss';
 
 import it from './locales/it.js';
@@ -38,12 +38,68 @@ registerTranslation(en);
  * </it-stepper>
  * ```
  *
+ * ## Validazione del form nello step
+ *
+ * Quando uno step contiene un form si può impedire l'avanzamento in due modi,
+ * usabili anche insieme:
+ *
+ * 1. `next-disabled` disabilita il pulsante "Avanti"/"Conferma" finché il form
+ *    non è valido;
+ * 2. `it-stepper-change`, se originato dal click su "Avanti", è annullabile:
+ *    `preventDefault()` blocca il cambio di step, lasciando al consumer la
+ *    possibilità di mostrare gli errori dei campi.
+ *
+ * ```js
+ * const stepper = document.querySelector('it-stepper');
+ * const form = stepper.querySelector('form');
+ *
+ * // 1. disabilita finché il form non è valido
+ * form.addEventListener('it-input', () => {
+ *   stepper.nextDisabled = !form.checkValidity();
+ * });
+ *
+ * // 2. oppure blocca al click e mostra gli errori
+ * stepper.addEventListener('it-stepper-change', (e) => {
+ *   if (e.detail.step > e.detail.prevStep && !form.checkValidity()) {
+ *     e.preventDefault();
+ *     form.requestSubmit();
+ *   }
+ * });
+ * ```
+ *
+ * I componenti di form del design kit non mostrano i bubble nativi del browser
+ * (`reportValidity()` restituisce il booleano corretto ma non produce nulla a
+ * schermo): i messaggi sono renderizzati inline dal singolo controllo e restano
+ * nascosti finché il form non è stato inviato almeno una volta. `requestSubmit()`
+ * serve proprio a questo — l'invio viene bloccato dal controller quando il form
+ * non è valido, quindi non naviga.
+ *
  * @slot - Slot di default per gli elementi `it-stepper-step`.
  *
  * @fires it-stepper-change - Emesso quando lo step attivo cambia.
- *   `detail.step` contiene il nuovo indice (0-based), `detail.prevStep` quello precedente.
+ *   `detail.step` contiene il nuovo indice (0-based), `detail.prevStep` quello precedente
+ *   (vedi {@link StepperChangeEventDetail}).
+ *   È annullabile **solo** quando è originato dal click sul pulsante "Avanti":
+ *   in quel caso `preventDefault()` impedisce il cambio di step. Emesso dai metodi
+ *   pubblici `next()` / `prev()` non è annullabile e `preventDefault()` non ha effetto.
+ *   Non viene emesso quando si imposta direttamente la proprietà `current`.
  * @fires it-stepper-save - Emesso quando l'utente clicca il pulsante "Salva".
  * @fires it-stepper-confirm - Emesso quando l'utente clicca il pulsante "Conferma".
+ *   Non annullabile: non ha un comportamento di default da bloccare (non avanza lo
+ *   step), quindi il consumer controlla già interamente cosa succede alla conferma.
+ *   Per impedire la conferma usare `next-disabled`.
+ *
+ * @csspart stepper     - The stepper's root container.
+ * @csspart header      - The header holding the list of steps.
+ * @csspart header-list - The steps `ul` inside the header.
+ * @csspart content     - The area hosting the active step's content.
+ * @csspart nav         - The navigation bar with the "back"/"next" buttons.
+ * @csspart progress    - The textual progress indicator shown on mobile.
+ * @csspart dots        - The dotted progress indicator shown on mobile.
+ * @csspart save        - The area holding the "save" button.
+ * @csspart focusable   - The native `button` inside each navigation and save button.
+ * @csspart prev-icon   - The arrow inside the "back" button.
+ * @csspart next-icon   - The arrow inside the "next" button.
  */
 @customElement('it-stepper')
 export class ItStepper extends BaseLocalizedComponent {
@@ -95,6 +151,18 @@ export class ItStepper extends BaseLocalizedComponent {
   /** Etichetta del pulsante "Conferma". */
   @property({ type: String, attribute: 'confirm-label' })
   confirmLabel?: string;
+
+  /**
+   * Disabilita il pulsante "Avanti" (o "Conferma", quando `show-confirm` è attivo).
+   * Da usare quando lo step corrente contiene un form non valido o con campi
+   * obbligatori mancanti. Viene combinato in OR con la disabilitazione
+   * automatica ai limiti della sequenza.
+   *
+   * Il pulsante "Indietro" non è influenzato: è sempre possibile tornare
+   * al passo precedente anche da uno step non valido.
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'next-disabled' })
+  nextDisabled = false;
 
   /**
    * Mostra il pulsante "Conferma" al posto del pulsante "Avanti".
@@ -178,22 +246,49 @@ export class ItStepper extends BaseLocalizedComponent {
     }
   }
 
-  private _goToStep(nextStep: number) {
+  private _goToStep(nextStep: number, { cancelable = false } = {}) {
     const prevStep = this._currentIndex;
     const step = this._clampIndex(nextStep);
     if (step === prevStep) return;
 
+    const detail: StepperChangeEventDetail = { step, prevStep };
+
+    if (cancelable) {
+      dispatchCancelable(this, 'it-stepper-change', detail, () => {
+        this.current = step;
+      });
+      return;
+    }
+
     this.current = step;
     this.dispatchEvent(
       new CustomEvent('it-stepper-change', {
-        detail: { step, prevStep },
+        detail,
         bubbles: true,
         composed: true,
       }),
     );
   }
 
-  /** Avanza al prossimo step, se disponibile. */
+  /**
+   * Gestisce il click sul pulsante "Avanti": emette `it-stepper-change` in forma
+   * annullabile, così il consumer può bloccare l'avanzamento (es. form non valido).
+   * Il metodo pubblico `next()` resta invece sempre incondizionato.
+   */
+  private _handleNext() {
+    // `it-button` con `disabled` non disabilita il `<button>` nativo: applica solo
+    // `pointer-events: none` e `aria-disabled`, quindi il pulsante resta
+    // attivabile da tastiera. Il controllo va rifatto qui.
+    if (this.nextDisabled) return;
+
+    this._goToStep(this._currentIndex + 1, { cancelable: true });
+  }
+
+  /**
+   * Avanza al prossimo step, se disponibile.
+   * Non annullabile: l'evento `it-stepper-change` emesso da questo metodo non
+   * può essere bloccato con `preventDefault()`.
+   */
   public next() {
     this._goToStep(this._currentIndex + 1);
   }
@@ -204,6 +299,10 @@ export class ItStepper extends BaseLocalizedComponent {
   }
 
   private _handleConfirm() {
+    // Vedi la nota in `_handleNext`: il pulsante disabilitato è comunque
+    // attivabile da tastiera, quindi lo stato va verificato anche qui.
+    if (this.nextDisabled) return;
+
     this.dispatchEvent(new CustomEvent('it-stepper-confirm', { bubbles: true, composed: true }));
   }
 
@@ -365,7 +464,7 @@ export class ItStepper extends BaseLocalizedComponent {
       'mobile-progress-on-desktop': this.mobileProgressOnDesktop,
     });
     const isPrevDisabled = this._currentIndex <= 0;
-    const isNextDisabled = this._currentIndex >= this._maxNavigableIndex;
+    const isNextDisabled = this.nextDisabled || this._currentIndex >= this._maxNavigableIndex;
 
     return html`
       <div class=${stepperClasses} part="stepper">
@@ -389,7 +488,13 @@ export class ItStepper extends BaseLocalizedComponent {
             ?disabled=${isPrevDisabled}
             @click=${this.prev}
           >
-            <it-icon class="icon" name="it-chevron-left" color=${this.dark ? 'inverse' : 'primary'} size="sm"></it-icon>
+            <it-icon
+              class="icon"
+              name="it-chevron-left"
+              color=${this.dark ? 'inverse' : 'primary'}
+              size="sm"
+              exportparts="icon: prev-icon"
+            ></it-icon>
             ${this.prevLabel || this.$t('back')}
           </it-button>
 
@@ -402,6 +507,7 @@ export class ItStepper extends BaseLocalizedComponent {
                   size="sm"
                   class="steppers-btn-confirm"
                   exportparts="focusable"
+                  ?disabled=${this.nextDisabled}
                   @click=${this._handleConfirm}
                 >
                   ${this.confirmLabel || this.$t('confirm')}
@@ -415,7 +521,7 @@ export class ItStepper extends BaseLocalizedComponent {
                   class="steppers-btn-next"
                   exportparts="focusable"
                   ?disabled=${isNextDisabled}
-                  @click=${this.next}
+                  @click=${this._handleNext}
                 >
                   ${this.nextLabel || this.$t('next')}
                   <it-icon
@@ -423,6 +529,7 @@ export class ItStepper extends BaseLocalizedComponent {
                     name="it-chevron-right"
                     color=${this.dark ? 'primary' : 'inverse'}
                     size="sm"
+                    exportparts="icon: next-icon"
                   ></it-icon>
                 </it-button>
               `}

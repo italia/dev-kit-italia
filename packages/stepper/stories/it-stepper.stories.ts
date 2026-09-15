@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { STEPPER_HEADER_VARIANTS, STEPPER_MOBILE_PROGRESS } from '../src/types.js';
+import { STEPPER_HEADER_VARIANTS, STEPPER_MOBILE_PROGRESS, type StepperChangeEventDetail } from '../src/types.js';
+import type { ItStepper } from '../src/it-stepper.js';
 
 interface StepperArgs {
   current: number;
@@ -16,6 +17,7 @@ interface StepperArgs {
   'save-label'?: string;
   'save-title'?: string;
   'save-description'?: string;
+  'next-disabled'?: boolean;
 }
 
 type Story = StoryObj<StepperArgs>;
@@ -70,6 +72,7 @@ const renderStepper = (args: StepperArgs, steps = headerSteps) => html`
     save-label=${ifDefined(args['save-label'] || undefined)}
     save-title=${ifDefined(args['save-title'] || undefined)}
     save-description=${ifDefined(args['save-description'] || undefined)}
+    ?next-disabled=${args['next-disabled']}
   >
     ${steps.map(
       (step, i) => html`
@@ -101,6 +104,7 @@ const meta: Meta<StepperArgs> = {
     'save-label': '',
     'save-title': '',
     'save-description': '',
+    'next-disabled': false,
   },
   argTypes: {
     current: {
@@ -178,6 +182,12 @@ const meta: Meta<StepperArgs> = {
       name: 'save-description',
       table: { defaultValue: { summary: '' } },
     },
+    'next-disabled': {
+      control: 'boolean',
+      description: 'Disabilita il pulsante "Avanti" e il pulsante "Conferma" (se `show-confirm` è attivo).',
+      name: 'next-disabled',
+      table: { defaultValue: { summary: 'false' } },
+    },
   },
   parameters: {
     pageLayout: 'w-100',
@@ -245,6 +255,212 @@ export const Salva: Story = {
 export const Conferma: Story = {
   args: { 'show-confirm': true, 'confirm-label': 'Conferma' },
   render: (args) => renderStepper(args),
+};
+
+const validationSteps = (extra: unknown = '') => html`
+  <it-stepper-step icon="it-pencil">
+    <span slot="label">Dati personali</span>
+    <div class="p-5 border bg-light">
+      <form>
+        <it-input required name="nome" placeholder="Inserisci il nome">
+          <span slot="label">Nome</span>
+        </it-input>
+      </form>
+      ${extra}
+    </div>
+  </it-stepper-step>
+  <it-stepper-step icon="it-check">
+    <span slot="label">Conferma</span>
+    <div class="p-5 text-center border bg-light">
+      <p class="m-0">Riepilogo dei dati inseriti</p>
+    </div>
+  </it-stepper-step>
+`;
+
+const confirmNotification = html`
+  <it-notification status="success" dismissable class="mt-3">
+    <span slot="title">Procedura confermata</span>
+    I dati inseriti sono stati salvati.
+  </it-notification>
+`;
+
+const stepperOf = (event: Event) => event.currentTarget as ItStepper;
+
+/**
+ * Lo stepper non riconosce da sé l'ultimo passo: `show-confirm` va attivato
+ * dal consumer, così "Conferma" sostituisce "Avanti" solo alla fine del flusso.
+ */
+const isLastStep = (stepper: ItStepper, step: number) => step >= stepper.querySelectorAll('it-stepper-step').length - 1;
+
+/** Il form è nel primo passo: solo lì l'avanzamento va bloccato. */
+const isFirstStepInvalid = (stepper: ItStepper, step: number) => {
+  const form = stepper.querySelector('form');
+  return step === 0 && !!form && !form.checkValidity();
+};
+
+const notifyConfirm = (event: Event) => {
+  const notification = stepperOf(event).parentElement?.querySelector('it-notification');
+  (notification as (HTMLElement & { show?: () => void }) | null)?.show?.();
+};
+
+/**
+ * Approccio 1: tiene `next-disabled` allineato alla validità del form.
+ * Il form è raggiunto da `it-stepper` perché `it-input` propaga l'evento
+ * (`bubbles` + `composed`).
+ */
+const syncNextDisabled = (event: Event) => {
+  const stepper = stepperOf(event);
+  stepper.nextDisabled = isFirstStepInvalid(stepper, stepper.current);
+};
+
+const syncOnStepChange = (event: CustomEvent<StepperChangeEventDetail>) => {
+  const stepper = stepperOf(event);
+  stepper.showConfirm = isLastStep(stepper, event.detail.step);
+  stepper.nextDisabled = isFirstStepInvalid(stepper, event.detail.step);
+};
+
+/** Markup condiviso dagli snippet copiabili delle due storie di validazione. */
+const validationSourceMarkup = (notificationId: string) => `  <it-stepper-step icon="it-pencil">
+    <span slot="label">Dati personali</span>
+    <div class="p-5 border bg-light">
+      <form>
+        <it-input required name="nome" placeholder="Inserisci il nome">
+          <span slot="label">Nome</span>
+        </it-input>
+      </form>
+    </div>
+  </it-stepper-step>
+  <it-stepper-step icon="it-check">
+    <span slot="label">Conferma</span>
+    <div class="p-5 text-center border bg-light">
+      <p class="m-0">Riepilogo dei dati inseriti</p>
+    </div>
+  </it-stepper-step>
+</it-stepper>
+
+<it-notification id="${notificationId}" status="success" dismissable class="mt-3">
+  <span slot="title">Procedura confermata</span>
+  I dati inseriti sono stati salvati.
+</it-notification>`;
+
+export const FormValidazione: Story = {
+  name: 'Validazione del form nello step',
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      canvas: { sourceState: 'shown' },
+      description: {
+        story: `Il pulsante resta disabilitato finché il campo obbligatorio non è compilato.
+
+Lo stepper non riconosce da sé l'ultimo passo: \`show-confirm\` viene attivato dallo script, così "Conferma" sostituisce "Avanti" solo alla fine del flusso.`,
+      },
+      source: {
+        code: `<it-stepper id="validazione" confirm-label="Conferma" next-disabled>
+${validationSourceMarkup('validazione-esito')}
+
+<script type="module">
+  const stepper = document.getElementById('validazione');
+  const notification = document.getElementById('validazione-esito');
+  const form = stepper.querySelector('form');
+
+  // Il form è nel primo passo: solo lì l'avanzamento va bloccato.
+  const nonValido = (step) => step === 0 && !form.checkValidity();
+
+  const aggiornaStato = (step) => {
+    stepper.nextDisabled = nonValido(step);
+    // "Conferma" solo sull'ultimo passo.
+    stepper.showConfirm = step >= stepper.querySelectorAll('it-stepper-step').length - 1;
+  };
+
+  form.addEventListener('it-input', () => aggiornaStato(stepper.current));
+  stepper.addEventListener('it-stepper-change', (e) => aggiornaStato(e.detail.step));
+  stepper.addEventListener('it-stepper-confirm', () => notification.show());
+</script>`,
+      },
+    },
+  },
+  render: () => html`
+    <div>
+      <it-stepper
+        confirm-label="Conferma"
+        next-disabled
+        @it-input=${syncNextDisabled}
+        @it-stepper-change=${syncOnStepChange}
+        @it-stepper-confirm=${notifyConfirm}
+      >
+        ${validationSteps()}
+      </it-stepper>
+      ${confirmNotification}
+    </div>
+  `,
+};
+
+/**
+ * Approccio 2: il pulsante resta attivo e l'avanzamento viene bloccato al click.
+ *
+ * I componenti di form del design kit non mostrano i messaggi nativi del
+ * browser: ogni controllo rende il proprio messaggio in linea, nascosto fino al
+ * primo invio del form. Per farli comparire si usa `form.requestSubmit()`, che
+ * il form intercetta bloccando l'invio quando i campi non sono validi.
+ */
+const vetoInvalidStep = (event: CustomEvent<StepperChangeEventDetail>) => {
+  const stepper = stepperOf(event);
+
+  // Blocca solo l'avanzamento, mai il ritorno al passo precedente.
+  if (event.detail.step > event.detail.prevStep && isFirstStepInvalid(stepper, event.detail.prevStep)) {
+    event.preventDefault();
+    stepper.querySelector('form')?.requestSubmit();
+    return;
+  }
+
+  stepper.showConfirm = isLastStep(stepper, event.detail.step);
+};
+
+export const FormValidazioneEvento: Story = {
+  name: 'Validazione con evento cancelabile',
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      canvas: { sourceState: 'shown' },
+      description: {
+        story: `Il pulsante resta attivo: l'avanzamento viene annullato al click con \`preventDefault()\` e \`requestSubmit()\` fa comparire i messaggi dei campi non compilati.
+
+Come nell'esempio precedente, \`show-confirm\` viene attivato dallo script solo sull'ultimo passo.`,
+      },
+      source: {
+        code: `<it-stepper id="validazione-evento" confirm-label="Conferma">
+${validationSourceMarkup('validazione-evento-esito')}
+
+<script type="module">
+  const stepper = document.getElementById('validazione-evento');
+  const notification = document.getElementById('validazione-evento-esito');
+  const form = stepper.querySelector('form');
+
+  stepper.addEventListener('it-stepper-change', (e) => {
+    // Solo in avanti, e solo dal passo che contiene il form.
+    if (e.detail.step > e.detail.prevStep && e.detail.prevStep === 0 && !form.checkValidity()) {
+      e.preventDefault();
+      form.requestSubmit(); // mostra i messaggi dei campi, senza inviare nulla
+      return;
+    }
+
+    // "Conferma" solo sull'ultimo passo.
+    stepper.showConfirm = e.detail.step >= stepper.querySelectorAll('it-stepper-step').length - 1;
+  });
+
+  stepper.addEventListener('it-stepper-confirm', () => notification.show());
+</script>`,
+      },
+    },
+  },
+  render: () => html`
+    <div>
+      <it-stepper confirm-label="Conferma" @it-stepper-change=${vetoInvalidStep} @it-stepper-confirm=${notifyConfirm}>
+        ${validationSteps(html`<p class="mt-3 mb-0 text-muted">Clicca "Avanti" per vedere gli errori del form.</p>`)}
+      </it-stepper>
+      ${confirmNotification}
+    </div>
+  `,
 };
 
 export const SfondoScuro: Story = {

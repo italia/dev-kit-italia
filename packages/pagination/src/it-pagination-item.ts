@@ -9,6 +9,8 @@ export class ItPaginationItem extends BaseComponent {
 
   static shadowRootOptions = { ...BaseComponent.shadowRootOptions, delegatesFocus: true };
 
+  @property({ type: String, reflect: true, attribute: 'role' }) elRole = 'listitem';
+
   @property({ type: String, reflect: true })
   page = '';
 
@@ -82,7 +84,7 @@ export class ItPaginationItem extends BaseComponent {
     const liClasses = this.composeClass('page-item', this.current && 'active', this.disabled && 'disabled');
 
     return html`
-      <li class="${liClasses}">
+      <li class="${liClasses}" role="presentation">
         <slot @slotchange="${this.handleSlotChange}"></slot>
       </li>
     `;

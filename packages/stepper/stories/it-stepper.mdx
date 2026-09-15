@@ -35,6 +35,7 @@ Per vedere come cambia il codice, clicca su **Show code**.
 - Per la variante `numbers`, il testo nascosto include il numero dello step insieme allo stato, ad esempio "Confermato Step 1".
 - Progress bar e pallini usano il totale effettivo dei passi e comunicano lo stato corrente alle tecnologie assistive.
 - I pulsanti di navigazione vengono disabilitati quando si raggiunge il primo o l'ultimo passo disponibile.
+- Il pulsante disabilitato tramite `next-disabled` espone `aria-disabled`, ma non spiega il motivo del blocco: abbinalo a un messaggio visibile, oppure blocca l'avanzamento al click per far comparire i messaggi dei singoli campi, che usano `role="alert"`.
 
 ## Intestazione
 
@@ -69,6 +70,10 @@ Le etichette possono essere personalizzate tramite gli attributi `prev-label` e 
 Puoi navigare anche via JavaScript tramite i metodi pubblici `next()` e `prev()`, oppure modificando l'attributo `current`.
 Ogni cambio di step emette un evento `it-stepper-change` con `detail.step` e `detail.prevStep`.
 
+Quando è originato dal click sul pulsante "Avanti", l'evento è annullabile: `preventDefault()` impedisce il cambio di passo.
+Emesso dai metodi `next()` e `prev()` non è annullabile, e non viene emesso affatto se modifichi direttamente `current`.
+Vedi [Validazione del form nello step](#validazione-del-form-nello-step) per l'uso più comune.
+
 <Canvas of={Stories.Navigazione} />
 
 ### Progress bar
@@ -98,9 +103,95 @@ Il titolo e la descrizione dell'area possono essere personalizzati tramite `save
 ## Conferma
 
 Aggiungi l'attributo `show-confirm` per sostituire il pulsante "Avanti" con il pulsante "Conferma".
-Quando l'utente clicca sul pulsante, il componente emette l'evento `it-stepper-confirm`.
+Quando l'utente clicca sul pulsante, il componente emette l'evento `it-stepper-confirm`: il componente non compie altre azioni, quindi cosa accade alla conferma è interamente a carico del consumer.
+
+L'attributo non viene attivato automaticamente sull'ultimo passo: se vuoi che "Conferma" compaia solo alla fine del flusso, imposta `show-confirm` in base allo step attivo.
+Vedi [Validazione del form nello step](#validazione-del-form-nello-step) per un esempio completo.
 
 <Canvas of={Stories.Conferma} />
+
+## Validazione del form nello step
+
+Quando un passo contiene un form, puoi impedire che l'utente avanzi finché i campi obbligatori non sono compilati.
+Sono disponibili due approcci, utilizzabili anche insieme.
+
+Il pulsante "Indietro" non viene mai bloccato: si può sempre tornare al passo precedente da un form non valido.
+
+Negli esempi che seguono `show-confirm` viene attivato solo sull'ultimo passo, come descritto in [Conferma](#conferma): lo stepper non riconosce da sé la fine del flusso.
+
+```js
+const stepper = document.querySelector('it-stepper');
+
+stepper.addEventListener('it-stepper-change', (e) => {
+  const ultimo = stepper.querySelectorAll('it-stepper-step').length - 1;
+  stepper.showConfirm = e.detail.step >= ultimo;
+});
+```
+
+### Disabilitare il pulsante
+
+L'attributo `next-disabled` disabilita il pulsante "Avanti", oppure "Conferma" quando è attivo `show-confirm`: è anche l'unico modo per bloccare la conferma, che non ha un comportamento predefinito da annullare.
+Tienilo allineato alla validità del form ascoltando l'evento `it-input`, che i componenti di form propagano fino allo stepper.
+
+```js
+const stepper = document.querySelector('it-stepper');
+const form = stepper.querySelector('form');
+
+// Il form è nel primo passo: solo lì l'avanzamento va bloccato.
+const nonValido = (step) => step === 0 && !form.checkValidity();
+
+const aggiornaStato = () => {
+  stepper.nextDisabled = nonValido(stepper.current);
+};
+
+aggiornaStato();
+form.addEventListener('it-input', aggiornaStato);
+stepper.addEventListener('it-stepper-change', (e) => {
+  stepper.nextDisabled = nonValido(e.detail.step);
+});
+```
+
+<Canvas of={Stories.FormValidazione} />
+
+### Bloccare l'avanzamento al click
+
+In alternativa il pulsante resta attivo e l'avanzamento viene annullato al click, mostrando all'utente quali campi mancano.
+Usa l'evento `it-stepper-change`, che è annullabile quando è originato dal click su "Avanti".
+
+I componenti di form del design kit non mostrano i messaggi nativi del browser: ogni controllo rende il proprio messaggio in linea, nascosto fino al primo invio del form.
+Per farli comparire chiama `requestSubmit()`, che il form intercetta segnalando i campi non validi senza inviare nulla.
+Verifica prima con `checkValidity()`, altrimenti un form valido verrebbe inviato davvero.
+
+```js
+const stepper = document.querySelector('it-stepper');
+const form = stepper.querySelector('form');
+
+stepper.addEventListener('it-stepper-change', (e) => {
+  // Solo in avanti, e solo dal passo che contiene il form.
+  if (e.detail.step > e.detail.prevStep && e.detail.prevStep === 0 && !form.checkValidity()) {
+    e.preventDefault();
+    form.requestSubmit();
+  }
+});
+```
+
+<Canvas of={Stories.FormValidazioneEvento} />
+
+### Validazione asincrona
+
+`preventDefault()` va chiamato in modo sincrono dentro il listener.
+Per un controllo lato server annulla subito l'avanzamento e chiama `next()` al termine della verifica: il metodo pubblico non è annullabile, quindi non viene intercettato di nuovo dal listener.
+
+```js
+stepper.addEventListener('it-stepper-change', (e) => {
+  if (e.detail.step <= e.detail.prevStep) return;
+
+  e.preventDefault();
+  validaSulServer(form).then((valido) => {
+    if (valido) stepper.next();
+  });
+});
+```
 
 ## Sfondo scuro
 
@@ -111,6 +202,29 @@ L'attributo `dark` attiva la variante per sfondo scuro.
 Le varianti dell'intestazione sono disponibili anche su sfondo scuro.
 
 <Canvas of={Stories.SfondoScuroVarianti} />
+
+## Proprietà, metodi ed eventi accessibili via JS
+
+Il componente espone le seguenti proprietà, metodi e eventi accessibili via JavaScript.
+
+### Proprietà
+
+- `current`, indice (0-based) del passo attivo. Modificarlo naviga direttamente a quel passo, senza emettere `it-stepper-change`.
+- `nextDisabled`, disabilita il pulsante "Avanti", oppure "Conferma" quando `showConfirm` è attivo.
+- `showConfirm`, sostituisce il pulsante "Avanti" con "Conferma". Non viene attivato automaticamente sull'ultimo passo.
+
+### Metodi
+
+- `next()`, avanza al passo successivo, se disponibile. L'evento `it-stepper-change` che ne deriva non è cancellabile.
+- `prev()`, torna al passo precedente, se disponibile. Anche in questo caso l'evento non è cancellabile.
+
+### Eventi
+
+Tutti gli eventi sono configurati con `bubbles: true` e `composed: true`.
+
+- `it-stepper-change`, emesso quando cambia il passo attivo. Nel `detail` contiene `{ step: number, prevStep: number }`, rispettivamente il nuovo indice e quello precedente. È cancellabile solo quando è originato dal click sul pulsante "Avanti": in quel caso `event.preventDefault()` impedisce il cambio di passo. Non viene emesso se modifichi direttamente `current`.
+- `it-stepper-save`, emesso al click sul pulsante "Salva". Non ha `detail`.
+- `it-stepper-confirm`, emesso al click sul pulsante "Conferma". Non ha `detail` e non è cancellabile: il componente non compie alcuna azione predefinita alla conferma, quindi non c'è nulla da impedire. Per bloccare la conferma usa `nextDisabled`.
 
 ## Personalizzazione degli stili
 

@@ -704,4 +704,52 @@ describe('it-pagination', () => {
       expect(visibleItems.length).to.be.at.most(5);
     });
   });
+
+  describe('accessibility', () => {
+    it('exposes a valid list structure in the accessibility tree', async () => {
+      const el = await fixture<ItPagination>(html`
+        <it-pagination value="3" it-aria-label="Navigazione pagine">
+          <a href="#" slot="prev"><span class="visually-hidden">Pagina precedente</span></a>
+          <it-pagination-item page="1"><a href="#">1</a></it-pagination-item>
+          <it-pagination-item page="2"><a href="#">2</a></it-pagination-item>
+          <it-pagination-item page="3"><a href="#">3</a></it-pagination-item>
+          <a href="#" slot="next"><span class="visually-hidden">Pagina successiva</span></a>
+        </it-pagination>
+      `);
+
+      await el.updateComplete;
+
+      await expect(el).to.be.accessible();
+
+      el.querySelectorAll('it-pagination-item').forEach((item) => {
+        expect(item.getAttribute('role')).to.equal('listitem');
+        expect(item.shadowRoot!.querySelector('li')!.getAttribute('role')).to.equal('presentation');
+      });
+    });
+
+    it('is accessible in simple mode', async () => {
+      const el = await fixture<ItPagination>(html`
+        <it-pagination value="2" total="10" simple-mode it-aria-label="Navigazione pagine">
+          <it-pagination-item page="1"><a href="#">1</a></it-pagination-item>
+          <it-pagination-item page="2"><a href="#">2</a></it-pagination-item>
+        </it-pagination>
+      `);
+
+      await el.updateComplete;
+      await expect(el).to.be.accessible();
+    });
+
+    it('is accessible with ellipsis (more mode)', async () => {
+      const el = await fixture<ItPagination>(html`
+        <it-pagination value="5" total="20" visible-pages="3" it-aria-label="Navigazione pagine">
+          ${[1, 2, 3, 4, 5, 6, 7].map(
+            (page) => html`<it-pagination-item page="${page}"><a href="#">${page}</a></it-pagination-item>`,
+          )}
+        </it-pagination>
+      `);
+
+      await el.updateComplete;
+      await expect(el).to.be.accessible();
+    });
+  });
 });

@@ -296,6 +296,11 @@ it-modal#it-nav-modal {
       flex-direction: column;
     }
 
+    .nav-link:focus-visible,
+    *::part(focusable):focus-visible {
+      border-left-color: transparent !important;
+    }
+
     it-dropdown,
     it-megamenu {
       width: 100%;
@@ -381,22 +386,21 @@ it-modal#it-nav-modal {
     }
 
     ul.navbar-nav {
-      width: 100%;
       overflow: visible;
+      width: 100%;
 
       &.secondary {
         --#{$prefix}navbar-link-font-weight: var(--#{$prefix}font-weight-base);
       }
 
       li {
-        &.active {
-          --#{$prefix}navbar-link-border-color: var(--#{$prefix}navbar-link-active-border-color);
-        }
-
         a.nav-link {
           width: 100%;
-          border-color: var(--#{$prefix}navbar-link-border-color);
-          border-left: var(--#{$prefix}navbar-link-border-size) solid;
+          border-left: var(--#{$prefix}navbar-link-border-size) solid var(--#{$prefix}navbar-link-border-color);
+        }
+
+        &.active {
+          --#{$prefix}navbar-link-border-color: var(--#{$prefix}navbar-link-active-border-color);
         }
       }
 
