@@ -17,11 +17,12 @@ utilities.$utilities: ('background-color': map.get(utilities.$utilities, 'backgr
 
 @use 'bootstrap-italia/src/scss/base/utilities/api' as *;
 
-// Allow the track background circle color to be overridden from outside the shadow DOM
-// via CSS custom property. Used by it-upload-drag-drop to show the illustration image
-// through the track area (set --it-progress-donut-track-color: transparent on the host).
+// Allow the track background circle color to be overridden from outside the shadow DOM.
+// Uses a dedicated property name (not --it-progress-donut-track-color, which BSI's own
+// progress-donuts.scss reassigns unconditionally on .progress-donut-wrapper, making it
+// unusable as an external override point). Used by it-upload-drag-drop.
 .progress-donut-wrapper::before {
-  background: var(--it-progress-donut-track-color, var(--#{$prefix}color-background-secondary-lighter));
+  background: var(--it-progress-donut-track-color-override, var(--#{$prefix}progress-donut-track-color));
 }
 
 // Semantic color variants for the donut.
