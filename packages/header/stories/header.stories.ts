@@ -347,6 +347,10 @@ export const HeaderNavSecondary: Story = {
 export const HeaderFull: Story = {
   name: 'Header completo',
   args: defaultArgs,
+  parameters: {
+    layout: 'fullscreen',
+    pageLayout: 'header-full',
+  },
   render: (args) =>
     html`<it-header
       .breakpoint=${args.breakpoint}
@@ -362,6 +366,10 @@ export const HeaderFull: Story = {
 export const HeaderFullLight: Story = {
   name: 'Header completo - Versione chiara',
   args: defaultArgs,
+  parameters: {
+    layout: 'fullscreen',
+    pageLayout: 'header-full',
+  },
   render: () =>
     html`<it-header
       .breakpoint=${defaultArgs.breakpoint}
