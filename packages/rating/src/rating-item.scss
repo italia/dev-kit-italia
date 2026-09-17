@@ -23,7 +23,7 @@
 
 /* Focus ring - mostra quando l'item è focalizzato via tastiera */
 :host(:focus-visible) #star {
-  border-radius: var(--#{$prefix}radius-xs);
+  border-radius: 50%;
   box-shadow:
     0 0 0 2px $focus-outline-color-in,
     0 0 0 5px $focus-outline-color-out !important;
