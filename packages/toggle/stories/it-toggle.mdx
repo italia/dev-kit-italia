@@ -8,7 +8,7 @@ import * as Stories from './it-toggle.stories';
 <description>Pulsante di tipo 'interruttore' che permette di alternare tra due stati e semplificare la gestione di opzioni o impostazioni.</description>
 
 ## Cosa fa
-Il componente Toggle (`it-toggle`) permette all'utente di attivare o disattivare una singola opzione attraverso un'interfaccia di tipo interruttore a levetta, visivamente più intuitiva di una semplice checkbox per questo tipo di interazione.
+Il componente Toggle (`<it-toggle>`) permette all'utente di attivare o disattivare una singola opzione attraverso un'interfaccia di tipo interruttore a levetta, visivamente più intuitiva di una semplice checkbox per questo tipo di interazione.
 
 È un'opzione utile per permettere di modificare velocemente le impostazioni di un account o le preferenze di un servizio, soprattutto quando lo spazio a disposizione è poco, come sui dispositivi mobile.
 
@@ -63,7 +63,7 @@ Questi attributi sono:
 
 Inserisci l'etichetta del gruppo in un elemento con attributo `slot="legend"` all'interno di `<it-toggle-group>`.
 
-Quando utilizzi il componente `it-toggle-group` in un form, il modo corretto per estrarre il valore del campo al submit via JS è:
+Quando utilizzi il componente `<it-toggle-group>` in un form, il modo corretto per estrarre il valore del campo al submit via JS è:
 
 ```js
 const formData = new FormData(document.getElementById('form'));

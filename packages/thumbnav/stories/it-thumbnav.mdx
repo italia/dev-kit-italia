@@ -29,8 +29,8 @@ L'attributo `position` non ha effetto in questa anteprima: richiede una struttur
 ## Indicazioni generali
 Il componente Thumbnav è composto da due elementi:
 
-- `it-thumbnav`: contenitore che raggruppa le thumbnail e gestisce il layout;
-- `it-thumbnav-item`: singolo elemento, che accetta nello slot un anchor con immagine.
+- `<it-thumbnav>`: contenitore che raggruppa le thumbnail e gestisce il layout;
+- `<it-thumbnav-item>`: singolo elemento, che accetta nello slot un anchor con immagine.
 
 Inserisci nell'anchor la classe Bootstrap Italia `.ratio` per mantenere un rapporto d'aspetto consistente:
 
@@ -46,7 +46,7 @@ Inserisci nell'anchor la classe Bootstrap Italia `.ratio` per mantenere un rappo
 
 Se stai utilizzando il componente in un framework JS (React, Vue, Angular), utilizza il tag di navigazione del framework (ad esempio `<Link>` in React) al posto dell'anchor HTML, mantenendo la struttura interna con classe `.ratio` e immagine.
 
-Usa l'attributo `active` sull'elemento `it-thumbnav-item` corrispondente alla pagina o immagine attiva, per indicarlo visivamente agli utenti.
+Usa l'attributo `active` sull'elemento `<it-thumbnav-item>` corrispondente alla pagina o immagine attiva, per indicarlo visivamente agli utenti.
 
 ```html
 <it-thumbnav-item active>
@@ -70,14 +70,14 @@ Al fine di garantire un'esperienza accessibile a tutti gli utenti, assicurati di
       <span class="text">Nota sui test di accessibilità</span>
     </div>
     <p>
-      Axe e altri strumenti di analisi statica possono segnalare falsi positivi quando analizzano il componente `it-thumbnav` a causa del limitato supporto per i Web Components. La struttura accessibile effettiva è corretta, come confermato dall'Accessibility Tree e dai test manuali con screen reader.
+      Axe e altri strumenti di analisi statica possono segnalare falsi positivi quando analizzano il componente `<it-thumbnav>` a causa del limitato supporto per i Web Components. La struttura accessibile effettiva è corretta, come confermato dall'Accessibility Tree e dai test manuali con screen reader.
     </p>
   </div>
 </div>
 
 ## Versione small
 
-Aggiungi l'attributo `small` al contenitore `it-thumbnav` per ottenere thumbnail di dimensione ridotta (120px invece di 240px).
+Aggiungi l'attributo `small` al contenitore `<it-thumbnav>` per ottenere thumbnail di dimensione ridotta (120px invece di 240px).
 
 <Canvas of={Stories.VersioneSmall} />
 
