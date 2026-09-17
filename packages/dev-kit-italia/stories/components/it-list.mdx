@@ -28,7 +28,7 @@ Le liste, costituite da tag `<ul>` con classe `.it-list` all'interno di un wrapp
 
 ### Lista con avatar
 
-Per aggiungere un avatar, inserisci l'elemento `it-avatar` prima dell'elemento `.it-right-zone` che contiene il testo.
+Per aggiungere un avatar, inserisci l'elemento `<it-avatar>` prima dell'elemento `.it-right-zone` che contiene il testo.
 
 <Canvas of={ListStories.ListaConAvatar} />
 
@@ -52,7 +52,7 @@ Le liste con azioni presentano icone o elementi interattivi associati all'azione
 
 ### Con freccia
 
-Per aggiungere una freccia, inserisci l'elemento `it-icon` dopo l'elemento `.text` che contiene il testo.
+Per aggiungere una freccia, inserisci l'elemento `<it-icon>` dopo l'elemento `.text` che contiene il testo.
 
 <Canvas of={ListStories.ListaConFreccia} />
 
@@ -119,8 +119,8 @@ Puoi aggiungere un'icona (a destra o sinistra del testo) e un abstract per ogni 
 
 Per includere un'icona, aggiungi al tag `<a>` una delle seguenti classi:
 
-- `icon-right`, per posizionare l'icona a destra del testo;
-- `icon-left`, per posizionare l'icona a sinistra del testo.
+- `.icon-right`, per posizionare l'icona a destra del testo;
+- `.icon-left`, per posizionare l'icona a sinistra del testo.
 
 Puoi inserire [l'icona necessaria](/docs/componenti-icon--documentazione) all'interno del tag `<span class="list-item-title-icon-wrapper">`, subito dopo o prima dello `<span class="list-item-title">` contenente il testo.
 

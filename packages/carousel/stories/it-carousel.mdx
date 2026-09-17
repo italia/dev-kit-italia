@@ -8,7 +8,7 @@ import * as Stories from './it-carousel.stories';
 <description>Componente di presentazione per scorrere orizzontalmente una sequenza di elementi, immagini o diapositive di testo.</description>
 
 ## Cosa fa
-Il componente Carousel (`it-carousel`) mostra contenuti correlati che non possono essere visualizzati tutti insieme, permettendo di sfogliarli orizzontalmente.
+Il componente Carousel (`<it-carousel>`) mostra contenuti correlati che non possono essere visualizzati tutti insieme, permettendo di sfogliarli orizzontalmente.
 
 È utile per eventi, notizie o servizi in evidenza, ma evita di usarlo per contenuti critici, perché alcuni utenti potrebbero non notarli.
 
@@ -24,12 +24,12 @@ Per comprendere appieno le funzionalità del componente e delle sue varianti, co
 <Controls of={Stories.EsempioInterattivo} />
 
 ## Indicazioni generali
-Il componente `it-carousel` consente di creare una sequenza orizzontale di qualsiasi elemento HTML (card, immagini, video, ecc.).
+Il componente `<it-carousel>` consente di creare una sequenza orizzontale di qualsiasi elemento HTML (card, immagini, video, ecc.).
 
 Per implementarlo correttamente:
 - usa il tag `<it-carousel>` come wrapper principale;
 - inserisci ogni elemento "slide" all'interno di un elemento `<it-carousel-slide>`, nello slot di default;
-- fornisci un'intestazione nello slot `title` usando un elemento `h` (`h2`–`h6`).
+- fornisci un'intestazione nello slot `title` usando un elemento `h` (`<h2>`–`<h6>`).
 
 Il componente espone i seguenti attributi:
 - `variant`, per selezionare la variante di layout;
@@ -40,10 +40,10 @@ Il componente espone i seguenti attributi:
 - `config`, oggetto per personalizzazioni avanzate che estende le opzioni offerte da Splide, passato come stringa JSON nell'attributo.
 
 ## Accessibilità
-Il componente `it-carousel` integra Splide.js e segue le specifiche [W3C Carousel Design Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/). Per tutte le funzionalità di accessibilità offerte dalla libreria, [consulta la documentazione di Splide](https://splidejs.com/guides/accessibility).
+Il componente `<it-carousel>` integra Splide.js e segue le specifiche [W3C Carousel Design Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/). Per tutte le funzionalità di accessibilità offerte dalla libreria, [consulta la documentazione di Splide](https://splidejs.com/guides/accessibility).
 
 - Il wrapper principale usa `role="region"` per permettere agli utenti di lettori di schermo di individuare e saltare rapidamente alla sezione.
-- Puoi assegnare un nome accessibile automaticamente: inserendo un elemento `h` (`h2`-`h6`) nello slot `title`. Il componente genera un ID univoco e lo collega al carousel tramite `aria-labelledby`. Se vuoi nascondere l'intestazione visivamente, puoi utilizzare la classe `visually-hidden` sull'elemento di intestazione.
+- Puoi assegnare un nome accessibile automaticamente: inserendo un elemento `h` (`<h2>`-`<h6>`) nello slot `title`. Il componente genera un ID univoco e lo collega al carousel tramite `aria-labelledby`. Se vuoi nascondere l'intestazione visivamente, puoi utilizzare la classe `.visually-hidden` sull'elemento di intestazione.
 - Tutti le slide non visibili hanno l'attributo `inert`, così gli utenti che navigano con la tastiera non finiscono su elementi nascosti.
 - I controlli (frecce e paginazione) sono realizzati con elementi `<button>` nativi. Durante la transizione, il componente rimuove preventivamente le restrizioni di focus dalla slide di destinazione per permettere alle tecnologie assistive di seguirne il contenuto.
 - Con autoplay attivo, viene fornito un pulsante Play/Pausa. Per impostazione predefinita, il carousel è in modalità pausa: movimento e animazioni sono disabilitati durante hover, focus o se l'utente ha scelto di ridurre le animazioni nelle impostazioni del sistema operativo o del browser.
@@ -56,7 +56,7 @@ Per garantire un'esperienza utente ottimale ed accessibile:
 - assicurati che il carousel non interferisca con altri elementi interattivi sulla pagina;
 - imposta una velocità di transizione adeguata per permettere alle persone di assimilare le informazioni;
 - verifica che le immagini o i contenuti siano di alta qualità, chiaramente visibili su tutti i dispositivi e che includano testo alternativo descrittivo;
-- fornisci sempre un'intestazione chiara e descrittiva dello scopo e dei contenuti del carousel. Se l'intestazione è puramente decorativa, nascondila visivamente usando la classe `visually-hidden`.
+- fornisci sempre un'intestazione chiara e descrittiva dello scopo e dei contenuti del carousel. Se l'intestazione è puramente decorativa, nascondila visivamente usando la classe `.visually-hidden`.
 
 ### Live region (`aria-live`) e comportamento con gli screen reader
 
@@ -254,7 +254,7 @@ Il componente espone i seguenti metodi e eventi accessibili via JavaScript.
 
 
 ## Personalizzazione degli stili
-Per personalizzare l'aspetto di `it-carousel` dall'esterno dello shadow DOM, usa il selettore `::part()` sui seguenti part esposti dal componente:
+Per personalizzare l'aspetto di `<it-carousel>` dall'esterno dello shadow DOM, usa il selettore `::part()` sui seguenti part esposti dal componente:
 
 - `arrows`, per il wrapper che contiene i pulsanti freccia (prev/next);
 - `arrow-prev`, per il pulsante "precedente";
