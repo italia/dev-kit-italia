@@ -9,7 +9,7 @@ import * as CalloutStories from './it-callout.stories';
 
 ## Cosa fa
 
-Il componente Callout (`it-callout`) è un contenitore che evidenzia parti del testo che richiedono particolare attenzione, come messaggi di errore, avvertimenti e suggerimenti.
+Il componente Callout (`<it-callout>`) è un contenitore che evidenzia parti del testo che richiedono particolare attenzione, come messaggi di errore, avvertimenti e suggerimenti.
 
 [Approfondisci quando e come usare il componente Callout](https://designers.italia.it/design-system/componenti/callout/)
 
@@ -48,7 +48,7 @@ Per garantire una corretta gerarchia dei contenuti, usa l'attributo `heading-lev
 
 Il valore predefinito è `h2`. Assicurati di scegliere il livello corretto per mantenere una struttura gerarchica logica del documento.
 
-Se l'icona comunica un'informazione non presente nel testo (ad esempio, allarme o conferma), usa l'attributo `label` di `it-icon` per fornire una descrizione accessibile agli screen reader. [Approfondisci l'accessibilità delle icone](/docs/componenti-icon--docs#accessibilità)
+Se l'icona comunica un'informazione non presente nel testo (ad esempio, allarme o conferma), usa l'attributo `label` di `<it-icon>` per fornire una descrizione accessibile agli screen reader. [Approfondisci l'accessibilità delle icone](/docs/componenti-icon--docs#accessibilità)
 
 
 
@@ -100,7 +100,7 @@ Usa l'attributo <code>highlight</code> in combinazione con l'attributo <code>var
 
 Il callout **approfondimento** ha uno stile visivo differente ed è indicato per contenuti testuali più estesi, spesso accompagnati da sezioni richiudibili (collapse) e link di download.
 
-- Usa l'attributo <code>callout-more</code> di `it-callout` per applicare lo stile di approfondimento.
+- Usa l'attributo <code>callout-more</code> di `<it-callout>` per applicare lo stile di approfondimento.
 
 - Usa il componente `<it-callout-more>` nello slot `more-content` per aggiungere sezioni richiudibili.
 
@@ -117,13 +117,13 @@ Il callout **approfondimento** ha uno stile visivo differente ed è indicato per
 
 Per personalizzare gli stili, puoi usare questi selettori `::part` dedicati e queste proprietà CSS personalizzabili.
 
-#### Selettori di `it-callout`
+#### Selettori di `<it-callout>`
 
 - `::part(callout)`, per l'elemento contenitore principale del callout;
 - `::part(inner)`, per il contenitore interno del callout;
 - `::part(title)`, per l'elemento titolo del callout.
 
-#### Selettori di `it-callout-more` (approfondimento)
+#### Selettori di `<it-callout-more>` (approfondimento)
 
 - `::part(trigger)`, per il pulsante espandi/collassa;
 - `::part(extra)`, per il contenitore per contenuti extra (ad esempio, un link di download);

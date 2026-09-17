@@ -170,7 +170,11 @@ export class ItCard extends BaseComponent {
     const hasAddress = this._addressElements.length > 0;
     const hasSignature = this._signatureElements.length > 0;
     const hasText = this._textElements.length > 0;
-    const hasBody = this._bodyElements.length > 0 || hasText || hasSubtitle || hasSignature;
+    const hasBody =
+      this._bodyElements.length > 0 ||
+      hasText ||
+      (hasSubtitle && this.variant !== 'profile' && this.variant !== 'location') ||
+      hasSignature;
     const hasImage = this._imageElements.length > 0;
     const hasFooter = this._footerElements.length > 0;
     const hasActions = this._actionsElements.length > 0;
