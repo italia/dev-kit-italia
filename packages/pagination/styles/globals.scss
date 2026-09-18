@@ -120,7 +120,7 @@ a.page-link:not(.disabled):hover {
 }
 
 a.page-link[aria-disabled] {
-  --#{$prefix}pagination-link-color: var(--#{$prefix}pagination-disabled-color);
+  --#{$prefix}pagination-link-color: var(--#{$prefix}color-text-disabled);
   cursor: not-allowed;
 
   it-icon::part(icon) {

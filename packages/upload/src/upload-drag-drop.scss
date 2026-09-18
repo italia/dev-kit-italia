@@ -39,7 +39,9 @@ utilities.$utilities: ('color': map.get(utilities.$utilities, 'color'));
     // BSI's .progress-donut-wrapper::before is a light-colored ring that obstructs the
     // illustration behind the overlay. Make it transparent so the image shows through.
     // The white center circle (::after on the same wrapper) is kept as-is for text legibility.
-    --it-progress-donut-track-color: transparent;
+    // Uses -override because --it-progress-donut-track-color collides with BSI's own
+    // internal default-computation property of the same name (see it-progress.scss).
+    --it-progress-donut-track-color-override: transparent;
   }
 }
 

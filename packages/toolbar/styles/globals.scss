@@ -36,7 +36,7 @@ it-toolbar {
       &::part(toolbar-item) {
         position: relative;
         align-items: center;
-        margin: var(--#{$prefix}toolbar-item-margin-y) 0;
+        margin: var(--#{$prefix}toolbar-vertical-item-margin-y) var(--#{$prefix}toolbar-vertical-item-margin-x);
       }
 
       &::part(dropdown-button) {
