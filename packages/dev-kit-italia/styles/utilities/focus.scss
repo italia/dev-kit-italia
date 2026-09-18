@@ -18,9 +18,13 @@ button:focus-visible,
 .it-carousel-wrapper .splide__pagination button:focus-visible,
 .upload:focus-visible + label,
 .upload-dragdrop-input:focus-visible[type='file'] + label,
-.avatar-upload:focus-within:focus-visible,
-.rating input:focus-visible + label svg {
+.avatar-upload:focus-within:focus-visible {
   @include focus;
+}
+
+.rating input:focus-visible + label {
+  @include focus;
+  border-radius: 50%;
 }
 
 [tabindex='-1']:focus:not(:focus-visible) {

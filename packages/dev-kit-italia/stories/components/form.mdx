@@ -25,7 +25,7 @@ Strutture più complesse possono essere costruite usando il sistema a griglia, d
 La classe `.row` ne assicura una corretta spaziatura. Questa classe deve essere applicata ad un elemento html contenitore (ad esempio un `<div>`).
 
 Si può scegliere di dare una dimensione ad una colonna, ad esempio dandogli una classe `.col-md-6` per ottenere una certo design dal breakpoint `md` in su, mentre le restanti colonne con classe `.col-md` si divideranno il resto dello spazio.
-La classe `.col-md*` può essere applicata sia ad un tag html che fa da contenitore (ad esempio un `div`), sia al componente di input stesso (ad esempio su `<it-input class="col-md-6">`).
+La classe `.col-md*` può essere applicata sia ad un tag html che fa da contenitore (ad esempio un `<div>`), sia al componente di input stesso (ad esempio su `<it-input class="col-md-6">`).
 
 <Canvas of={Stories.DimensionamentoColonne} />
 
@@ -34,7 +34,7 @@ La classe `.col-md*` può essere applicata sia ad un tag html che fa da contenit
 L’esempio seguente usa una delle [utilità di flexbox](https://italia.github.io/bootstrap-italia/docs/organizzare-gli-spazi/flex/) per centrare verticalmente dal breakpoint `lg` in su il contenuto e cambiando `.col` con `.col-auto` in modo che le colonne occupino solo lo spazio necessario.
 In altre parole, la colonna si dimensiona in base al contenuto.
 
-È possibile usarlo anche quando sono presenti altre colonne con dimensioni specifiche (es.: `col-sm-3`).
+È possibile usarlo anche quando sono presenti altre colonne con dimensioni specifiche (es.: `.col-sm-3`).
 
 <Canvas of={Stories.Autodimensionamento} />
 

@@ -260,25 +260,39 @@ table.docblock-argstable {
   }
 }
 
-//w-100 layout
-.w100-layout {
+//w-100 and header-full layout
+.w100-layout,
+.header-full-layout {
   width: 100%;
 }
 
 #storybook-root:has(.w100-layout) {
-  width: 80%;
+  width: 100%;
+
+  @media (min-width: 900px) {
+    width: 80%;
+  }
+}
+
+#storybook-root:has(.header-full-layout) {
+  width: 100%;
+  padding: 0;
 }
 
 .docs-story div[scale='1'],
 .innerZoomElementWrapper {
-  &:has(.w100-layout) {
+  &:has(.w100-layout),
+  &:has(.header-full-layout) {
     display: block !important;
     width: 100% !important;
   }
 }
 
-.docs-story div[scale='1']:has(.w100-layout) {
-  margin-bottom: 2rem;
+.docs-story div[scale='1'] {
+  &:has(.w100-layout),
+  &:has(.header-full-layout) {
+    margin-bottom: 2rem;
+  }
 }
 //------------
 

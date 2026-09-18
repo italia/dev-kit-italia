@@ -8,7 +8,7 @@ import * as Stories from './it-toolbar.stories';
 <description>Menu di navigazione a icone che può contenere link, pulsanti e dropdown</description>
 
 ## Cosa fa
-Il componente `it-toolbar` è un elemento contenitore di link, pulsanti o dropdown.
+Il componente `<it-toolbar>` è un elemento contenitore di link, pulsanti o dropdown.
 È particolarmente utile per realizzare applicazioni molto specifiche, come ad esempio dashboard o strumenti di monitoraggio.
 Consiste in un elenco `<ul>` con tanti elementi `<li>` quante sono le voci richieste.
 Occupa tutta la larghezza del suo contenitore, adattandosi di conseguenza, e può essere di tre dimensioni diverse: grande, media e piccola per meglio adattarsi allo spazio disponibile.
@@ -23,15 +23,15 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 <Controls of={Stories.EsempioInterattivo} />
 
-### Anteprima e attributi del componente `it-toolbar-item`
-Ogni elemento della toolbar, deve essere un componente `it-toolbar-item` che rappresenta un link, un pulsante o un dropdown. Puoi personalizzare ogni elemento modificando i suoi attributi.
+### Anteprima e attributi del componente `<it-toolbar-item>`
+Ogni elemento della toolbar, deve essere un componente `<it-toolbar-item>` che rappresenta un link, un pulsante o un dropdown. Puoi personalizzare ogni elemento modificando i suoi attributi.
 <Canvas of={Stories.ToolbarItemBase} />
 <Controls of={Stories.ToolbarItemBase} />
 
-### Eventi click di `it-toolbar-item`
-Se `it-toolbar-item` viene renderizzato come pulsante, il componente genera internamente un `it-button` nello shadow DOM. Gli attributi inline del tipo `onclick` non vengono forwardati automaticamente a quell'elemento interno.
+### Eventi click di `<it-toolbar-item>`
+Se `<it-toolbar-item>` viene renderizzato come pulsante, il componente genera internamente un `<it-button>` nello shadow DOM. Gli attributi inline del tipo `onclick` non vengono forwardati automaticamente a quell'elemento interno.
 
-Per intercettare l'azione di click, aggancia il listener direttamente a `it-toolbar-item` oppure ascolta l'evento custom `it-toolbar-item-click`, emesso dal componente in bubbling.
+Per intercettare l'azione di click, aggancia il listener direttamente a `<it-toolbar-item>` oppure ascolta l'evento custom `it-toolbar-item-click`, emesso dal componente in bubbling.
 
 ```html
 <it-toolbar-item label="Messaggi" icon="it-comment"></it-toolbar-item>
@@ -50,7 +50,7 @@ Per intercettare l'azione di click, aggancia il listener direttamente a `it-tool
 ```
 
 ## Accessibilità
-I componenti `it-toolbar` e `it-toolbar-item` sono progettati per essere accessibili e conformi agli standard di accessibilità.
+I componenti `<it-toolbar>` e `<it-toolbar-item>` sono progettati per essere accessibili e conformi agli standard di accessibilità.
 
 Ecco alcune linee guida per garantire che il tuo utilizzo del componente sia accessibile:
 - **Etichette chiare**: Assicurati che ogni elemento all'interno della toolbar (che non sia un elemento divisorio) abbia un'etichetta chiara e descrittiva.
@@ -59,7 +59,7 @@ Ecco alcune linee guida per garantire che il tuo utilizzo del componente sia acc
 
   Se le etichette sono nascoste tramite l'attributo `hide-label` assicurati di fornire una descrizione accessibile tramite gli attributi `label`, `it-aria-label` ed eventualmente `label-extended`.
 
-- Se un elemento della toolbar mostra un badge, imposta sempre l'attributo `label-extended` sul componente `it-toolbar-item` per fornire una descrizione più dettagliata del badge ai lettori di schermo.
+- Se un elemento della toolbar mostra un badge, imposta sempre l'attributo `label-extended` sul componente `<it-toolbar-item>` per fornire una descrizione più dettagliata del badge ai lettori di schermo.
 
 ## Varianti di dimensione
 
@@ -111,7 +111,7 @@ Il componente `<it-toolbar-item>` si occuperà di gestire autonomamente gli attr
 
 I Badge possono essere utilizzati per contenere numeri al fine di indicare, ad esempio, contenuti non letti.
 
-Utilizza l'attributo `badge` sul componente `it-toolbar-item` per specificare il numero da visualizzare all'interno del badge.
+Utilizza l'attributo `badge` sul componente `<it-toolbar-item>` per specificare il numero da visualizzare all'interno del badge.
 
 Utilizza l'attributo `label-extended` per fornire una descrizione più dettagliata del badge ai lettori di schermo.
 
@@ -136,8 +136,8 @@ Aggiungi l'attributo `dropdown` al componente `<it-toolbar-item>` per trasformar
 </it-toolbar-item>
 ```
 
-Se aggiungi la classe `no-expand` al componente `<it-toolbar-item>`, l'icona di espansione del menu non verrà mostrata. Questo è utile quando hai un menu del tipo `altro` o `more` il cui simbolo di espansione è già implicito nell'icona stessa e quindi l'icona di espansione risulterebbe ridondante.
-(Negli esempi sottostanti, nell'elemento 'Altro' è stata rimossa l'icona di espansione del menu tramite la classe `no-expand`).
+Se aggiungi la classe `.no-expand` al componente `<it-toolbar-item>`, l'icona di espansione del menu non verrà mostrata. Questo è utile quando hai un menu del tipo `altro` o `more` il cui simbolo di espansione è già implicito nell'icona stessa e quindi l'icona di espansione risulterebbe ridondante.
+(Negli esempi sottostanti, nell'elemento 'Altro' è stata rimossa l'icona di espansione del menu tramite la classe `.no-expand`).
 
 ### Toolbar grande con dropdown
 <Canvas of={Stories.ToolbarDropdown} />
@@ -172,12 +172,12 @@ Il componente `<it-toolbar-item>` emette i seguenti eventi custom:
 
 Per la personalizzazione degli stili puoi usare i selettori `::part` dedicati.
 
-### Selettori di `it-toolbar`
+### Selettori di `<it-toolbar>`
 
 - `::part(toolbar-container)` — elemento `<nav>` contenitore della toolbar
 - `::part(toolbar-list)` — elemento `<ul>` della lista degli item
 
-### Selettori di `it-toolbar-item`
+### Selettori di `<it-toolbar-item>`
 
 - `::part(toolbar-item)` — elemento `<li>` wrapper di ogni voce
 - `::part(toolbar-divider)` — aggiunto insieme a `toolbar-item` quando l'elemento è un divisore
