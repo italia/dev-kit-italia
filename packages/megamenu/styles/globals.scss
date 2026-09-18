@@ -44,6 +44,18 @@ it-megamenu {
     }
   }
 
+  // Area cliccabile/focusabile estesa a tutta la riga. Il combinatore `>` esclude
+  // la variante multi-CTA, dove i link sono annidati in un `.d-flex` e già
+  // dimensionati da `.flex-grow-1`. I wrapper `.it-heading-link-wrapper` /
+  // `.it-footer-link-wrapper` usati da bootstrap-italia vivono nello shadow root
+  // di `it-megamenu`, quindi qui si aggancia agli elementi slottati.
+  [slot='header'] > .it-heading-link,
+  [slot='footer'] > .it-footer-link {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+
   .it-heading-link,
   .it-footer-link {
     font-size: var(--#{$prefix}heading-6-font-size);
