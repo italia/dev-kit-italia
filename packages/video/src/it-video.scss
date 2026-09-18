@@ -15,9 +15,8 @@
 }
 
 .acceptoverlay {
-  --#{$prefix}acceptoverlay-color-text: #fff;
-  --#{$prefix}form-control-label-color: #fff;
-  --#{$prefix}form-checkbox-border-color: #fff;
+  --#{$prefix}form-control-label-color: var(--#{$prefix}acceptoverlay-label-color);
+  --#{$prefix}form-checkbox-border-color: var(--#{$prefix}acceptoverlay-label-border-color);
 
   a {
     color: var(--#{$prefix}acceptoverlay-color-text);
