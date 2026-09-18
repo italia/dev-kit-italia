@@ -1,5 +1,8 @@
 # @italia/i18n
 
+## 1.0.0-beta.4
+- Aggiornamento della versione
+
 ## 1.0.0-beta.3
 
 ## 1.0.0-beta.2

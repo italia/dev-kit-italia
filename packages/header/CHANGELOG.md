@@ -1,5 +1,17 @@
 # @italia/header
 
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`039dd40`](https://github.com/italia/dev-kit-italia/commit/039dd40d29704ea240a39684339f08d791343f17)]:
+  - @italia/modal@1.0.0-beta.4
+  - @italia/button@1.0.0-beta.4
+  - @italia/dropdown@1.0.0-beta.4
+  - @italia/globals@1.0.0-beta.4
+  - @italia/icon@1.0.0-beta.4
+
 ## 1.0.0-beta.3
 
 ### Patch Changes

@@ -1,5 +1,18 @@
 # @italia/upload
 
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- [#541](https://github.com/italia/dev-kit-italia/pull/541) [`8669f5f`](https://github.com/italia/dev-kit-italia/commit/8669f5f9c08cba6e6e948ad4b432c11c4e10fa32) Thanks [@Fupete](https://github.com/Fupete)! - Correct gallery drop-box background token
+
+- Updated dependencies [[`be11291`](https://github.com/italia/dev-kit-italia/commit/be1129144c64c851b61f94963f3dba6f499c7947)]:
+  - @italia/avatar@1.0.0-beta.4
+  - @italia/globals@1.0.0-beta.4
+  - @italia/i18n@1.0.0-beta.4
+  - @italia/icon@1.0.0-beta.4
+  - @italia/progress@1.0.0-beta.4
+
 ## 1.0.0-beta.3
 
 ### Patch Changes

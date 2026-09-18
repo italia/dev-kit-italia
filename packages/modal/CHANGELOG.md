@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- [#542](https://github.com/italia/dev-kit-italia/pull/542) [`039dd40`](https://github.com/italia/dev-kit-italia/commit/039dd40d29704ea240a39684339f08d791343f17) Thanks [@Fupete](https://github.com/Fupete)! - Remove redundant Sass-literal backdrop reimplementation
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.4
+  - @italia/globals@1.0.0-beta.4
+  - @italia/icon@1.0.0-beta.4
+
 ## 1.0.0-beta.3
 
 ### Patch Changes

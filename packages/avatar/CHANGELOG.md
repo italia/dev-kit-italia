@@ -1,5 +1,18 @@
 # @italia/avatar
 
+## 1.0.0-beta.4
+
+### Minor Changes
+
+- [#540](https://github.com/italia/dev-kit-italia/pull/540) [`be11291`](https://github.com/italia/dev-kit-italia/commit/be1129144c64c851b61f94963f3dba6f499c7947) Thanks [@Fupete](https://github.com/Fupete)! - Sostituiti i valori hardcoded con var(--#{$prefix}avatar-dot-offset-\*, fallback), fallback esplicito perché questo file vive fuori dallo shadow root di it-avatar
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.4
+  - @italia/i18n@1.0.0-beta.4
+  - @italia/icon@1.0.0-beta.4
+
 ## 1.0.0-beta.3
 
 ### Patch Changes

@@ -1,5 +1,59 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- [#546](https://github.com/italia/dev-kit-italia/pull/546) [`8f7a790`](https://github.com/italia/dev-kit-italia/commit/8f7a790596f735820f655985fda86bedae73d9b1) Thanks [@Fupete](https://github.com/Fupete)! - Circular focus ring on star buttons (align with BSI #1946)
+
+- Updated dependencies [[`039dd40`](https://github.com/italia/dev-kit-italia/commit/039dd40d29704ea240a39684339f08d791343f17), [`be11291`](https://github.com/italia/dev-kit-italia/commit/be1129144c64c851b61f94963f3dba6f499c7947), [`87eca73`](https://github.com/italia/dev-kit-italia/commit/87eca737952002a470045e1abd302a0708a01dc2), [`8f7a790`](https://github.com/italia/dev-kit-italia/commit/8f7a790596f735820f655985fda86bedae73d9b1), [`c33e8d8`](https://github.com/italia/dev-kit-italia/commit/c33e8d8f9fb2cfc4f094993d228823f2be926952), [`8669f5f`](https://github.com/italia/dev-kit-italia/commit/8669f5f9c08cba6e6e948ad4b432c11c4e10fa32), [`f43dd5a`](https://github.com/italia/dev-kit-italia/commit/f43dd5a4b7c20a892909312351b3961f5e16cf4b)]:
+  - @italia/modal@1.0.0-beta.4
+  - @italia/avatar@1.0.0-beta.4
+  - @italia/tabs@1.0.0-beta.4
+  - @italia/rating@1.0.0-beta.4
+  - @italia/toolbar@1.0.0-beta.4
+  - @italia/upload@1.0.0-beta.4
+  - @italia/card@1.0.0-beta.4
+  - @italia/chip@1.0.0-beta.4
+  - @italia/accordion@1.0.0-beta.4
+  - @italia/alert@1.0.0-beta.4
+  - @italia/autocomplete@1.0.0-beta.4
+  - @italia/back@1.0.0-beta.4
+  - @italia/back-to-top@1.0.0-beta.4
+  - @italia/bottom-nav@1.0.0-beta.4
+  - @italia/breadcrumbs@1.0.0-beta.4
+  - @italia/button@1.0.0-beta.4
+  - @italia/callout@1.0.0-beta.4
+  - @italia/carousel@1.0.0-beta.4
+  - @italia/checkbox@1.0.0-beta.4
+  - @italia/collapse@1.0.0-beta.4
+  - @italia/dimmer@1.0.0-beta.4
+  - @italia/dropdown@1.0.0-beta.4
+  - @italia/forward@1.0.0-beta.4
+  - @italia/header@1.0.0-beta.4
+  - @italia/hero@1.0.0-beta.4
+  - @italia/i18n@1.0.0-beta.4
+  - @italia/icon@1.0.0-beta.4
+  - @italia/input@1.0.0-beta.4
+  - @italia/megamenu@1.0.0-beta.4
+  - @italia/navscroll@1.0.0-beta.4
+  - @italia/notification@1.0.0-beta.4
+  - @italia/pagination@1.0.0-beta.4
+  - @italia/popover@1.0.0-beta.4
+  - @italia/progress@1.0.0-beta.4
+  - @italia/radio@1.0.0-beta.4
+  - @italia/section@1.0.0-beta.4
+  - @italia/select@1.0.0-beta.4
+  - @italia/skiplinks@1.0.0-beta.4
+  - @italia/stepper@1.0.0-beta.4
+  - @italia/sticky@1.0.0-beta.4
+  - @italia/timeline@1.0.0-beta.4
+  - @italia/toggle@1.0.0-beta.4
+  - @italia/thumbnav@1.0.0-beta.4
+  - @italia/tooltip@1.0.0-beta.4
+  - @italia/transfer@1.0.0-beta.4
+  - @italia/video@1.0.0-beta.4
+
 ## 1.0.0-beta.3
 
 ### Patch Changes
