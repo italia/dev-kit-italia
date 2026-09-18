@@ -12,7 +12,7 @@ import * as AvatarStories from './it-avatar.stories';
 ## Cosa fa
 
 
-Il componente Avatar (`it-avatar`) permette di rappresentare una persona, il suo stato e le sue azioni in contesti di interazione.
+Il componente Avatar (`<it-avatar>`) permette di rappresentare una persona, il suo stato e le sue azioni in contesti di interazione.
 
 Può essere utile, ad esempio, per indicare l'autore di un testo, il proprio profilo in un'area riservata e le persone che hanno interagito con un contenuto.
 
@@ -73,7 +73,7 @@ Per associare un avatar a un'azione o un link, usa l'attributo `href` con relati
 
 È possibile associare un tooltip con maggiori informazioni relative all'utente o all'azione associata utilizzando il [componente tooltip](/docs/componenti-tooltip--documentazione).
 
-Per farlo, avvolgi l'avatar in un componente `it-tooltip`: inserisci l'avatar nello slot `trigger` e il testo del tooltip nello slot `content`.
+Per farlo, avvolgi l'avatar in un componente `<it-tooltip>`: inserisci l'avatar nello slot `trigger` e il testo del tooltip nello slot `content`.
 
 ```html
 <it-tooltip placement="left">
@@ -180,12 +180,12 @@ Per visualizzare una lista orizzontale di avatar parzialmente sovrapposti, racch
 
 Puoi utilizzare avatar di dimensione `sm` o `md` all'interno della lista.
 
-Per mostrare ulteriori avatar in un menu a discesa, usa `it-avatar` con `type="dropdown"`.
+Per mostrare ulteriori avatar in un menu a discesa, usa `<it-avatar>` con `type="dropdown"`.
 
 L'avatar dropdown eredita automaticamente la dimensione dal gruppo e può contenere una lista di avatar con nomi nel menu.
 
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità del dropdown</span></div>
-<p>Usa l'attributo `it-aria-label` sul componente `it-dropdown` per fornire una descrizione completa agli screen reader. L'aria-label deve contenere sia il testo visibile che la sua spiegazione, ad esempio: `it-aria-label="Visualizza altri 4 utenti"`. In questo modo uno screen reader leggerà l'intera descrizione fornendo il contesto completo all'utente.</p></div></div>
+<p>Usa l'attributo `it-aria-label` sul componente `<it-dropdown>` per fornire una descrizione completa agli screen reader. L'aria-label deve contenere sia il testo visibile che la sua spiegazione, ad esempio: `it-aria-label="Visualizza altri 4 utenti"`. In questo modo uno screen reader leggerà l'intera descrizione fornendo il contesto completo all'utente.</p></div></div>
 
 <Canvas of={AvatarStories.AvatarSovrapposti} />
 ### Avatar sovrapposti - varianti di dimensione

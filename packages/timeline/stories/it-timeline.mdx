@@ -32,7 +32,7 @@ Segui queste indicazioni per garantire l'accessibilità del componente:
       <span class="text">Nota sui test di accessibilità</span>
     </div>
     <p>
-      Axe e altri strumenti di analisi statica possono segnalare falsi positivi quando analizzano il componente `it-timeline` a causa del limitato supporto per i Web Components. La struttura accessibile effettiva è corretta, come confermato dall'Accessibility Tree e dai test manuali con screen reader.
+      Axe e altri strumenti di analisi statica possono segnalare falsi positivi quando analizzano il componente `<it-timeline>` a causa del limitato supporto per i Web Components. La struttura accessibile effettiva è corretta, come confermato dall'Accessibility Tree e dai test manuali con screen reader.
     </p>
   </div>
 </div>
@@ -107,7 +107,7 @@ La sezione laterale è rappresentata dagli `slot="milestone"` e `slot="time"`, e
 - `.point-main` — elemento principale (obbligatorio, es. giorno, numero step, icona milestone)
 - `.point-bottom` — elemento inferiore (opzionale, es. mese, frazione, label)
 
-Questi elementi vanno inseriti in un elemento (negli esempi uno `span`) con classe `.point-visual`. Per rendere il contenuto accessibile,  ricordati di:
+Questi elementi vanno inseriti in un elemento (negli esempi uno `<span>`) con classe `.point-visual`. Per rendere il contenuto accessibile,  ricordati di:
 
 - Utilizzare sempre un elemento `<time>` con attributo `datetime` per le date
 - Aggiungere `<span class="visually-hidden">` **obbligatoriamente** per contenuti non temporali, __opzionalmente__ per date, al fine di fornire una descrizione testuale completa ai lettori di schermo.
@@ -147,7 +147,7 @@ Puoi utilizzare i contenitori posizionali per presentare informazioni diverse da
 
 #### Traguardi con icone
 
-Puoi utilizzare  un'icona `it-icon` nel contenitore `.point-main` per rappresentare milestone o stati, accompagnata da eventuali micro-testi nei contenitori `.point-top` e `.point-bottom`.
+Puoi utilizzare  un'icona `<it-icon>` nel contenitore `.point-main` per rappresentare milestone o stati, accompagnata da eventuali micro-testi nei contenitori `.point-top` e `.point-bottom`.
 
 <Canvas of={Stories.PointListMilestoneIcone} />
 
@@ -161,7 +161,7 @@ Se non viene specificato, il colore di default è `primary`.
 
 Puoi anche avere punti con colori diversi all'interno della stessa timeline specificando l'attributo `color` solo sui punti desiderati.
 
-In questo caso, gli elementi `it-timeline-point` senza l'attributo `color` prenderanno il colore di default `primary` o il valore assegnato all'attributo `color` dell'elemento `it-timeline`, mentre i punti con l'attributo `color` prenderanno il colore specificato
+In questo caso, gli elementi `<it-timeline-point>` senza l'attributo `color` prenderanno il colore di default `primary` o il valore assegnato all'attributo `color` dell'elemento `<it-timeline>`, mentre i punti con l'attributo `color` prenderanno il colore specificato
 
 <Canvas of={Stories.PointListVariantiColore} />
 

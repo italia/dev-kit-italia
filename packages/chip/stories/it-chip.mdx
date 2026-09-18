@@ -27,7 +27,7 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Informazioni generali
 
-Il componente `it-chip` si compone principalmente di una label testuale e, opzionalmente, di:
+Il componente `<it-chip>` si compone principalmente di una label testuale e, opzionalmente, di:
 
 - un **avatar** (immagine) a sinistra, tramite la proprietà `avatar`
 - un'**icona** inserita nello slot `icon`
@@ -86,7 +86,7 @@ L'avatar viene ridimensionato automaticamente in base alla dimensione della chip
 ## Chip con icona
 
 
-Le chip possono includere un'icona utilizzando lo slot `icon` con il componente `it-icon`.
+Le chip possono includere un'icona utilizzando lo slot `icon` con il componente `<it-icon>`.
 
 L'icona viene ridimensionata automaticamente:
 - Chip `sm` imposta la dimensione dell'icona a `xs`
@@ -132,7 +132,7 @@ Il componente espone i seguenti metodi e eventi accessibili via JavaScript.
 - `close()` — rimuove la chip dal DOM, spostando il focus su una chip adiacente se presente.
 
 ### Eventi
-- `it-chip-close` — emesso al click sul pulsante di rimozione. L'evento è cancellabile: chiamando `event.preventDefault()` si impedisce la rimozione automatica. Il `detail` contiene `chip`, riferimento all'elemento `it-chip` corrente.
+- `it-chip-close` — emesso al click sul pulsante di rimozione. L'evento è cancellabile: chiamando `event.preventDefault()` si impedisce la rimozione automatica. Il `detail` contiene `chip`, riferimento all'elemento `<it-chip>` corrente.
 
 ## Chip disabilitata
 
@@ -144,7 +144,7 @@ Usa l'attributo `is-disabled` per disabilitare una chip. La chip disabilitata no
 
 Per la personalizzazione degli stili puoi usare i selettori `::part` dedicati:
 
-- `::part(chip)` - elemento chip (div o a, a seconda della presenza di `href`)
+- `::part(chip)` - elemento chip (`<div>` o `<a>`, a seconda della presenza di `href`)
 - `::part(focusable)` - presente solo quando la chip è un link (`href` valorizzato)
 
 [Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
