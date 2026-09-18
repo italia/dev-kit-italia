@@ -1,0 +1,2 @@
+import{K as Sy,j as Ma,mt as _v,ut as _a}from"./chunk-C-qWBSFy.js";var a=class i{static ɵfac=function(o){return new(o||i)};static ɵcmp=Sy({type:i,selectors:[[`app-home`]],decls:7,vars:0,template:function(o,l){o&1&&(_a(0,`h1`),_v(1,`Homepage`),Ma(),_a(2,`p`),_v(3,` Benvenuto nell'applicazione di esempio Angular per l'utilizzo dei componenti di `),_a(4,`strong`),_v(5,`dev-kit-italia`),Ma(),_v(6,`.
+`),Ma())},encapsulation:2})};export{a as HomeComponent};

@@ -2441,7 +2441,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -3765,7 +3765,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -5850,7 +5850,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -7167,7 +7167,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -11962,7 +11962,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -13950,7 +13950,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -15174,7 +15174,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -16618,7 +16618,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -18090,7 +18090,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -19624,7 +19624,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -21302,7 +21302,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -23363,7 +23363,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -25376,7 +25376,10 @@ let ItCard = class ItCard extends BaseComponent$o {
         const hasAddress = this._addressElements.length > 0;
         const hasSignature = this._signatureElements.length > 0;
         const hasText = this._textElements.length > 0;
-        const hasBody = this._bodyElements.length > 0 || hasText || hasSubtitle || hasSignature;
+        const hasBody = this._bodyElements.length > 0 ||
+            hasText ||
+            (hasSubtitle && this.variant !== 'profile' && this.variant !== 'location') ||
+            hasSignature;
         const hasImage = this._imageElements.length > 0;
         const hasFooter = this._footerElements.length > 0;
         const hasActions = this._actionsElements.length > 0;
@@ -26892,7 +26895,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -28483,7 +28486,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -30059,7 +30062,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -33180,7 +33183,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -34428,7 +34431,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -36218,7 +36221,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -41536,7 +41539,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -47406,7 +47409,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -48533,16 +48536,6 @@ blockquote.blockquote-card.dark .blockquote-footer,
 :host(:not([open])) .modal,
 :host(:not([open])) .modal-backdrop {
   display: none !important;
-}
-
-.modal-backdrop {
-  position: fixed;
-  z-index: 1050;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: hsl(0, 0%, 0%);
 }
 
 .modal {
@@ -50394,7 +50387,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -52120,7 +52113,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -54393,7 +54386,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -56845,7 +56838,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -60952,7 +60945,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -65201,7 +65194,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -66504,7 +66497,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -67760,7 +67753,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -70886,7 +70879,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -72541,7 +72534,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -74304,7 +74297,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -79274,7 +79267,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -79931,7 +79924,6 @@ let ItToolbarItem = class ItToolbarItem extends BaseComponent$4 {
         const ariaAttributes = { ...this._ariaAttributes };
         delete ariaAttributes['aria-disabled']; // Rimuove aria-disabled se presente, gestito a livello di focusable element
         delete ariaAttributes['aria-label']; // Rimuove aria-label se presente, gestito a livello di focusable element
-        delete ariaAttributes['aria-orientation']; // Rimuove aria-orientation se presente, gestito a livello di it-toolbar-item
         return this.divider
             ? html `<li
           part="toolbar-item toolbar-divider"
@@ -81172,7 +81164,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -84441,7 +84433,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -88770,7 +88762,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
@@ -91156,7 +91148,7 @@ label:has(.upload[type=file]:focus-visible),
   padding: 0;
   border: 2px dashed var(--bsi-color-border-primary);
   border-radius: 0;
-  background-color: var(--bsi-color-border-primary-lighter);
+  background-color: var(--bsi-color-background-primary-lighter);
   color: var(--bsi-color-text-primary);
   font-weight: 600;
   transition: border-color var(--bsi-transition-instant);
@@ -101158,11 +101150,22 @@ function requireConventions () {
 		XMLNS: 'http://www.w3.org/2000/xmlns/',
 	});
 
+	//[4]   	NameStartChar	   ::=   	":" | [A-Z] | "_" | [a-z] | [#xC0-#xD6] | [#xD8-#xF6] | [#xF8-#x2FF] | [#x370-#x37D] | [#x37F-#x1FFF] | [#x200C-#x200D] | [#x2070-#x218F] | [#x2C00-#x2FEF] | [#x3001-#xD7FF] | [#xF900-#xFDCF] | [#xFDF0-#xFFFD] | [#x10000-#xEFFFF]
+	//[4a]   	NameChar	   ::=   	NameStartChar | "-" | "." | [0-9] | #xB7 | [#x0300-#x036F] | [#x203F-#x2040]
+	//[5]   	Name	   ::=   	NameStartChar (NameChar)*
+	var nameStartChar = /[A-Z_a-z\xC0-\xD6\xD8-\xF6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/;//\u10000-\uEFFFF
+	var nameChar = new RegExp("[\\-\\.0-9"+nameStartChar.source.slice(1,-1)+"\\u00B7\\u0300-\\u036F\\u203F-\\u2040]");
+	var tagNamePattern = new RegExp('^'+nameStartChar.source+nameChar.source+'*(?:\:'+nameStartChar.source+nameChar.source+'*)?$');
+	//var tagNamePattern = /^[a-zA-Z_][\w\-\.]*(?:\:[a-zA-Z_][\w\-\.]*)?$/
+
 	conventions.assign = assign;
 	conventions.find = find;
 	conventions.freeze = freeze;
 	conventions.MIME_TYPE = MIME_TYPE;
 	conventions.NAMESPACE = NAMESPACE;
+	conventions.nameStartChar = nameStartChar;
+	conventions.nameChar = nameChar;
+	conventions.tagNamePattern = tagNamePattern;
 	return conventions;
 }
 
@@ -101175,6 +101178,7 @@ function requireDom () {
 
 	var find = conventions.find;
 	var NAMESPACE = conventions.NAMESPACE;
+	var tagNamePattern = conventions.tagNamePattern;
 
 	/**
 	 * A prerequisite for `[].filter`, to drop elements that are empty
@@ -101406,6 +101410,13 @@ function requireDom () {
 	 * used for attributes or DocumentType entities
 	 */
 	function NamedNodeMap() {
+		// nodeName -> Attr membership index; lets the parse-time de-duplication in
+		// setNamedItem resolve an existing attribute in O(1) instead of scanning the
+		// list, so building an element with M attributes costs O(M) rather than O(M^2).
+		// The numbered entries and length remain the sole authority for attribute order.
+		// Object.create(null) so an attribute named __proto__ or constructor is an
+		// ordinary key.
+		this._nameIndex = Object.create(null);
 	}
 	function _findNodeIndex(list,node){
 		var i = list.length;
@@ -101414,12 +101425,27 @@ function requireDom () {
 		}
 	}
 
+	function _nnmIndexAdd(list, attr) {
+		list._nameIndex[attr.nodeName] = attr;
+	}
+	function _nnmIndexRemove(list, attr) {
+		// Only drop the entry if it still points at this attribute; a replacement with
+		// a different nodeName may already have re-keyed it.
+		if (list._nameIndex[attr.nodeName] === attr) {
+			delete list._nameIndex[attr.nodeName];
+		}
+	}
+
 	function _addNamedNode(el,list,newAttr,oldAttr){
 		if(oldAttr){
 			list[_findNodeIndex(list,oldAttr)] = newAttr;
+			// oldAttr leaves the list; drop its index entry (its nodeName may differ
+			// from newAttr's when the replacement came via setNamedItemNS).
+			_nnmIndexRemove(list, oldAttr);
 		}else {
 			list[list.length++] = newAttr;
 		}
+		_nnmIndexAdd(list, newAttr);
 		if(el){
 			newAttr.ownerElement = el;
 			var doc = el.ownerDocument;
@@ -101438,6 +101464,7 @@ function requireDom () {
 				list[i] = list[++i];
 			}
 			list.length = lastIndex;
+			_nnmIndexRemove(list, attr);
 			if(el){
 				var doc = el.ownerDocument;
 				if(doc){
@@ -101471,7 +101498,11 @@ function requireDom () {
 			if(el && el!=this._ownerElement){
 				throw new DOMException(INUSE_ATTRIBUTE_ERR);
 			}
-			var oldAttr = this.getNamedItem(attr.nodeName);
+			// Resolve any existing attribute with the same nodeName through the O(1)
+			// membership index rather than an O(M) scan — this is the parse-dedup hot
+			// path (setAttributeNode per attribute during parse). Absent -> undefined,
+			// matching getNamedItem's contract.
+			var oldAttr = this._nameIndex[attr.nodeName];
 			_addNamedNode(this._ownerElement,this,attr,oldAttr);
 			return oldAttr;
 		},
@@ -101704,9 +101735,38 @@ function requireDom () {
 					while (child) {
 						var next = child.nextSibling;
 						if (next !== null && next.nodeType === TEXT_NODE && child.nodeType === TEXT_NODE) {
-							node.removeChild(next);
-							child.appendData(next.data);
-							// Do not advance child: re-check new nextSibling for another text run
+							// Merge the whole run of adjacent text nodes at once: gather the
+							// following text siblings' data, unlink them in a single pass, and
+							// re-index the child list a single time. Per-sibling `removeChild`
+							// (each an O(K) re-index) plus per-sibling `appendData` (each an O(K)
+							// string rebuild) is O(K^2) over a long run of single-character text
+							// nodes; this keeps it O(K). The first text node of the run survives
+							// and carries the concatenated data, preserving node identity and
+							// locator semantics.
+							var tail = [];
+							var sibling = next;
+							while (sibling !== null && sibling.nodeType === TEXT_NODE) {
+								tail.push(sibling.data);
+								sibling = sibling.nextSibling;
+							}
+							// `sibling` is now the first non-text node after the run, or null.
+							var removed = child.nextSibling;
+							while (removed !== sibling) {
+								var following = removed.nextSibling;
+								removed.parentNode = null;
+								removed.previousSibling = null;
+								removed.nextSibling = null;
+								removed = following;
+							}
+							child.nextSibling = sibling;
+							if (sibling !== null) {
+								sibling.previousSibling = child;
+							} else {
+								node.lastChild = child;
+							}
+							child.appendData(tail.join('')); // single O(K) string rebuild
+							_onUpdateChild(node.ownerDocument, node); // single O(K) re-index
+							child = sibling;
 						} else {
 							child = next;
 						}
@@ -102517,8 +102577,10 @@ function requireDom () {
 		 * - it does not do any input validation on the arguments and doesn't throw "InvalidCharacterError".
 		 *
 		 * Note: When the resulting document is serialized with `requireWellFormed: true`, the
-		 * serializer throws with code `INVALID_STATE_ERR` if `.data` contains `?>` (W3C DOM Parsing
-		 * §3.2.1.7). Without that option the data is emitted verbatim.
+		 * serializer throws with code `INVALID_STATE_ERR` if `.target` is not a valid XML `NCName`
+		 * (a `Name` with no colon) or is an ASCII case-insensitive match for `"xml"`, or if `.data`
+		 * contains `?>` (W3C DOM Parsing §3.2.1.7). Without that option the target and data are
+		 * emitted verbatim.
 		 *
 		 * @param {string} target
 		 * @param {string} data
@@ -102543,7 +102605,27 @@ function requireDom () {
 			node.specified = true;
 			return node;
 		},
+		/**
+		 * Creates an EntityReference object, serialized as `&name;`.
+		 *
+		 * The `name` is validated against the XML `Name` production at creation time; an invalid name
+		 * throws a `DOMException` with code `INVALID_CHARACTER_ERR`. When the resulting node is
+		 * serialized with `requireWellFormed: true`, the serializer re-validates `nodeName` and throws
+		 * a `DOMException` with code `INVALID_STATE_ERR` if a later `nodeName` mutation made it invalid;
+		 * without that option the name is emitted verbatim.
+		 *
+		 * Note: xmldom does not expand entities — the parser resolves entity references inline and never
+		 * constructs `EntityReference` nodes, so this method is the only producer.
+		 *
+		 * @param {string} name The name of the entity to reference.
+		 * @returns {EntityReference}
+		 * @throws {DOMException} With code `INVALID_CHARACTER_ERR` when `name` is not a valid XML `Name`.
+		 * @see https://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-392B75AE
+		 */
 		createEntityReference :	function(name){
+			if (!tagNamePattern.test(name)) {
+				throw new DOMException(INVALID_CHARACTER_ERR, 'not a valid xml name "' + name + '"');
+			}
 			var node = new EntityReference();
 			node.ownerDocument	= this;
 			node.nodeName	= name;
@@ -102755,15 +102837,16 @@ function requireDom () {
 	/**
 	 * Represents a DocumentType node (the `<!DOCTYPE ...>` declaration).
 	 *
-	 * `publicId`, `systemId`, and `internalSubset` are plain own-property assignments.
+	 * `name`, `publicId`, `systemId`, and `internalSubset` are plain own-property assignments.
 	 * xmldom does not enforce the `readonly` constraint declared by the WHATWG DOM spec —
 	 * direct property writes succeed silently. Values are serialized verbatim when
 	 * `requireWellFormed` is false (the default). When the serializer is invoked with
 	 * `requireWellFormed: true` (via the 4th-parameter options object), it validates each
-	 * field and throws `DOMException` with code `INVALID_STATE_ERR` on invalid values.
+	 * field — including `name`, which is checked against the XML `Name` production — and throws
+	 * `DOMException` with code `INVALID_STATE_ERR` on invalid values.
 	 *
 	 * @class
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/DocumentType MDN
+	 * @see https://developer.mozilla.org/docs/Web/API/DocumentType MDN
 	 */
 	function DocumentType() {
 	}	DocumentType.prototype.nodeType = DOCUMENT_TYPE_NODE;
@@ -102777,6 +102860,20 @@ function requireDom () {
 	}	Entity.prototype.nodeType = ENTITY_NODE;
 	_extends(Entity,Node);
 
+	/**
+	 * Represents an EntityReference node, serialized as `&nodeName;`.
+	 *
+	 * `nodeName` is the referenced entity's name, stored verbatim. When serialized with
+	 * `requireWellFormed: true`, the serializer validates `nodeName` against the XML `Name` production
+	 * and throws a `DOMException` with code `INVALID_STATE_ERR` if it does not match; without that
+	 * option the name is emitted verbatim between `&` and `;`.
+	 *
+	 * Note: xmldom does not expand entities — the parser resolves entity references inline and never
+	 * constructs `EntityReference` nodes, so the only producer is `Document.createEntityReference`.
+	 *
+	 * @class
+	 * @see https://www.w3.org/TR/xml/#NT-Name
+	 */
 	function EntityReference() {
 	}	EntityReference.prototype.nodeType = ENTITY_REFERENCE_NODE;
 	_extends(EntityReference,Node);
@@ -102814,14 +102911,20 @@ function requireDom () {
 	 * @returns {string}
 	 * @throws {DOMException}
 	 * With code `INVALID_STATE_ERR` when `requireWellFormed` is `true` and:
+	 * - an Element's qualified name (including any namespace prefix) is not a valid XML QName,
+	 * - an attribute's qualified name (including a synthesized `xmlns:` namespace declaration) is
+	 *   not a valid XML QName,
 	 * - a CDATASection node's data contains `"]]>"`,
 	 * - a Comment node's data contains `"-->"` (bare `"--"` does not throw on this branch),
-	 * - a ProcessingInstruction's data contains `"?>"`,
+	 * - a ProcessingInstruction's target is not a valid XML `NCName` (a `Name` with no colon) or is
+	 *   an ASCII case-insensitive match for `"xml"`, or its data contains `"?>"`,
+	 * - a DocumentType's `name` is not a valid XML `Name` (XML 1.0 production [5]),
 	 * - a DocumentType's `publicId` is non-empty and does not match the XML `PubidLiteral`
 	 *   production,
 	 * - a DocumentType's `systemId` is non-empty and does not match the XML `SystemLiteral`
-	 *   production, or
-	 * - a DocumentType's `internalSubset` contains `"]>"`.
+	 *   production,
+	 * - a DocumentType's `internalSubset` contains `"]>"`, or
+	 * - an EntityReference's `nodeName` is not a valid XML `Name` (XML 1.0 production [5]).
 	 * Note: xmldom does not enforce `readonly` on DocumentType fields — direct property
 	 * writes succeed and are covered by the serializer-level checks above.
 	 * @see https://html.spec.whatwg.org/#dom-xmlserializer-serializetostring
@@ -102895,7 +102998,10 @@ function requireDom () {
 	 * @see https://www.w3.org/TR/xml11/#AVNormalize
 	 * @see https://w3c.github.io/DOM-Parsing/#serializing-an-element-s-attributes
 	 */
-	function addSerializedAttribute(buf, qualifiedName, value) {
+	function addSerializedAttribute(buf, qualifiedName, value, requireWellFormed) {
+		if (requireWellFormed && !tagNamePattern.test(qualifiedName)) {
+			throw new DOMException(INVALID_STATE_ERR, 'The attribute name "' + qualifiedName + '" is not a valid XML QName');
+		}
 		buf.push(' ', qualifiedName, '="', value.replace(/[<>&"\t\n\r]/g, _xmlEncoder), '"');
 	}
 
@@ -102961,6 +103067,9 @@ function requireDom () {
 							}
 						}
 
+						if (requireWellFormed && !tagNamePattern.test(prefixedNodeName)) {
+							throw new DOMException(INVALID_STATE_ERR, 'The element name "' + prefixedNodeName + '" is not a valid XML QName');
+						}
 						buf.push('<', prefixedNodeName);
 
 						// Build a fresh namespace snapshot for this element's children.
@@ -102980,7 +103089,7 @@ function requireDom () {
 							if (needNamespaceDefine(attr, html, childNs)) {
 								var attrPrefix = attr.prefix || '';
 								var uri = attr.namespaceURI;
-								addSerializedAttribute(buf, attrPrefix ? 'xmlns:' + attrPrefix : 'xmlns', uri);
+								addSerializedAttribute(buf, attrPrefix ? 'xmlns:' + attrPrefix : 'xmlns', uri, requireWellFormed);
 								childNs.push({ prefix: attrPrefix, namespace: uri });
 							}
 							// Apply nodeFilter and serialize the attribute.
@@ -102989,7 +103098,7 @@ function requireDom () {
 								if (typeof filteredAttr === 'string') {
 									buf.push(filteredAttr);
 								} else {
-									addSerializedAttribute(buf, filteredAttr.name, filteredAttr.value);
+									addSerializedAttribute(buf, filteredAttr.name, filteredAttr.value, requireWellFormed);
 								}
 							}
 						}
@@ -102998,7 +103107,7 @@ function requireDom () {
 						if (nodeName === prefixedNodeName && needNamespaceDefine(n, html, childNs)) {
 							var nodePrefix = n.prefix || '';
 							var uri = n.namespaceURI;
-							addSerializedAttribute(buf, nodePrefix ? 'xmlns:' + nodePrefix : 'xmlns', uri);
+							addSerializedAttribute(buf, nodePrefix ? 'xmlns:' + nodePrefix : 'xmlns', uri, requireWellFormed);
 							childNs.push({ prefix: nodePrefix, namespace: uri });
 						}
 
@@ -103031,7 +103140,7 @@ function requireDom () {
 						return { ns: ns.slice(), isHTML: html, tag: null };
 
 					case ATTRIBUTE_NODE:
-						addSerializedAttribute(buf, n.name, n.value);
+						addSerializedAttribute(buf, n.name, n.value, requireWellFormed);
 						return null;
 
 					case TEXT_NODE:
@@ -103070,6 +103179,9 @@ function requireDom () {
 
 					case DOCUMENT_TYPE_NODE:
 						if (requireWellFormed) {
+							if (!tagNamePattern.test(n.name)) {
+								throw new DOMException(INVALID_STATE_ERR, 'The doctype name "' + n.name + '" is not a valid XML Name');
+							}
 							if (n.publicId && !/^("[\x20\r\na-zA-Z0-9\-()+,.\/:=?;!*#@$_%']*"|'[\x20\r\na-zA-Z0-9\-()+,.\/:=?;!*#@$_%'"]*')$/.test(n.publicId)) {
 								throw new DOMException(INVALID_STATE_ERR, 'DocumentType publicId is not a valid PubidLiteral');
 							}
@@ -103101,13 +103213,27 @@ function requireDom () {
 						return null;
 
 					case PROCESSING_INSTRUCTION_NODE:
-						if (requireWellFormed && n.data.indexOf('?>') !== -1) {
-							throw new DOMException(INVALID_STATE_ERR, 'The ProcessingInstruction data contains "?>"');
+						if (requireWellFormed) {
+							if (!tagNamePattern.test(n.target) || n.target.indexOf(':') !== -1 || n.target.toLowerCase() === 'xml') {
+								throw new DOMException(
+									INVALID_STATE_ERR,
+									'The processing instruction target "' + n.target + '" is not a valid XML NCName or is reserved'
+								);
+							}
+							if (n.data.indexOf('?>') !== -1) {
+								throw new DOMException(INVALID_STATE_ERR, 'The ProcessingInstruction data contains "?>"');
+							}
 						}
 						buf.push('<?', n.target, ' ', n.data, '?>');
 						return null;
 
 					case ENTITY_REFERENCE_NODE:
+						if (requireWellFormed && !tagNamePattern.test(n.nodeName)) {
+							throw new DOMException(
+								INVALID_STATE_ERR,
+								'The entity reference name "' + n.nodeName + '" is not a valid XML Name'
+							);
+						}
 						buf.push('&', n.nodeName, ';');
 						return null;
 
@@ -105488,14 +105614,8 @@ function requireSax () {
 	if (hasRequiredSax) return sax;
 	hasRequiredSax = 1;
 	var NAMESPACE = requireConventions().NAMESPACE;
+	var tagNamePattern = requireConventions().tagNamePattern;
 
-	//[4]   	NameStartChar	   ::=   	":" | [A-Z] | "_" | [a-z] | [#xC0-#xD6] | [#xD8-#xF6] | [#xF8-#x2FF] | [#x370-#x37D] | [#x37F-#x1FFF] | [#x200C-#x200D] | [#x2070-#x218F] | [#x2C00-#x2FEF] | [#x3001-#xD7FF] | [#xF900-#xFDCF] | [#xFDF0-#xFFFD] | [#x10000-#xEFFFF]
-	//[4a]   	NameChar	   ::=   	NameStartChar | "-" | "." | [0-9] | #xB7 | [#x0300-#x036F] | [#x203F-#x2040]
-	//[5]   	Name	   ::=   	NameStartChar (NameChar)*
-	var nameStartChar = /[A-Z_a-z\xC0-\xD6\xD8-\xF6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/;//\u10000-\uEFFFF
-	var nameChar = new RegExp("[\\-\\.0-9"+nameStartChar.source.slice(1,-1)+"\\u00B7\\u0300-\\u036F\\u203F-\\u2040]");
-	var tagNamePattern = new RegExp('^'+nameStartChar.source+nameChar.source+'*(?:\:'+nameStartChar.source+nameChar.source+'*)?$');
-	//var tagNamePattern = /^[a-zA-Z_][\w\-\.]*(?:\:[a-zA-Z_][\w\-\.]*)?$/
 	//var handlers = 'resolveEntity,getExternalSubset,characters,endDocument,endElement,endPrefixMapping,ignorableWhitespace,processingInstruction,setDocumentLocator,skippedEntity,startDocument,startElement,startPrefixMapping,notationDecl,unparsedEntityDecl,error,fatalError,warning,attributeDecl,elementDecl,externalEntityDecl,internalEntityDecl,comment,endCDATA,endDTD,endEntity,startCDATA,startDTD,startEntity'.split(',')
 
 	//S_TAG,	S_ATTR,	S_EQ,	S_ATTR_NOQUOT_VALUE
@@ -105606,7 +105726,13 @@ function requireSax () {
 				switch(source.charAt(tagStart+1)){
 				case '/':
 					var end = source.indexOf('>',tagStart+3);
-					var tagName = source.substring(tagStart + 2, end).replace(/[ \t\n\r]+$/g, '');
+					// Anchored trailing-whitespace trim. The former `/[ \t\n\r]+$/g` backtracked
+					// quadratically on a name shaped `whitespace-run + non-whitespace char`
+					// (an end tag `</   …   x>`): from every start position it extended `[ws]+`
+					// to the end and then failed the `$` anchor. This anchored form matches the
+					// whole string once and captures everything up to the last non-whitespace
+					// character, so it trims in linear time with byte-identical output.
+					var tagName = source.substring(tagStart + 2, end).replace(/^([\s\S]*?[^ \t\n\r])?[ \t\n\r]*$/, '$1');
 					var config = parseStack.pop();
 					if(end<0){
 
@@ -105617,6 +105743,14 @@ function requireSax () {
 		        		tagName = tagName.replace(/[\s<].*/,'');
 		        		errorHandler.error("end tag name: "+tagName+' maybe not complete');
 		        		end = tagStart+1+tagName.length;
+					}else if(/[ \t\n\r]/.test(tagName) && tagNamePattern.test(tagName.split(/[ \t\n\r]/)[0])){
+						// The XML `ETag` production is `'</' Name S? '>'`: only optional whitespace may follow
+						// the `Name`. A valid `Name` followed by whitespace and non-whitespace residue (e.g.
+						// `</a\nbogus>` or `</a bogus>`) is not well-formed, but historically it was silently
+						// accepted (the malformed end tag ignored, the residue dropped, the element left on the
+						// stack). Report it as a recoverable `error` (which a custom errorHandler may escalate to
+						// fatal) while keeping the existing recovery so the parsed DOM stays byte-identical.
+						errorHandler.error('end tag name is followed by whitespace and trailing content: "'+tagName+'"');
 					}
 					var localNSMap = config.localNSMap;
 					var endMatch = config.tagName == tagName;
@@ -105740,6 +105874,15 @@ function requireSax () {
 		var s = S_TAG;//status
 		while(true){
 			var c = source.charAt(p);
+			if (s === S_TAG && c === '<') {
+				// A `<` can never occur inside a tag name. Without this guard the scan runs
+				// on to the next `>` (or EOF) before the tag name is rejected, so a document
+				// with many `<` inside a malformed tag makes each one-character recovery step
+				// re-scan to the distant `>` — O(n^2). Stopping at the `<` keeps each recovery
+				// step bounded. The candidate scanned so far is reported raw, consistent with
+				// the sibling invalid-tag-name throw below.
+				throw new Error('unexpected < in tag name: ' + source.slice(start, p));
+			}
 			switch(c){
 			case '=':
 				if(s === S_ATTR){//attrName
@@ -105932,9 +106075,13 @@ function requireSax () {
 			if(nsPrefix !== false){//hack!!
 				if(localNSMap == null){
 					localNSMap = {};
-					//console.log(currentNSMap,0)
-					_copy(currentNSMap,currentNSMap={});
-					//console.log(currentNSMap,1)
+					// Derive the child scope's namespace map by prototype-chain inheritance
+					// instead of a flat copy: lookups inherit ancestor prefixes transparently,
+					// so a document nesting N scopes retains O(N) map entries rather than
+					// sum(1..N) = O(N^2). localNSMap stays a flat own-only record of the
+					// prefixes declared at THIS element, so own-property enumeration
+					// (endPrefixMapping below) still reports only local declarations.
+					currentNSMap = Object.create(currentNSMap);
 				}
 				currentNSMap[nsPrefix] = localNSMap[nsPrefix] = value;
 				a.uri = NAMESPACE.XMLNS;
@@ -166451,7 +166598,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.3',
+        version: '1.0.0-beta.4',
     };
 }
 
