@@ -1,5 +1,17 @@
 # @italia/tabs
 
+## 1.0.0-beta.4
+
+### Minor Changes
+
+- [#548](https://github.com/italia/dev-kit-italia/pull/548) [`87eca73`](https://github.com/italia/dev-kit-italia/commit/87eca737952002a470045e1abd302a0708a01dc2) Thanks [@deodorhunter](https://github.com/deodorhunter)! - it-tabs border bottom extension when not fullwidth
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.4
+  - @italia/i18n@1.0.0-beta.4
+
 ## 1.0.0-beta.3
 
 ### Patch Changes
