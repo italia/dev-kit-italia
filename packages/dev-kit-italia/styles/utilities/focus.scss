@@ -1,6 +1,7 @@
 @use 'bootstrap-italia/src/scss/base/config' as *;
 @use 'bootstrap-italia/src/scss/base/variables' as *;
 @use 'bootstrap-italia/src/scss/base/mixins/focus' as *;
+@use 'bootstrap-italia/src/scss/base/mixins/breakpoints' as *;
 
 /*
 MEMO:
@@ -124,5 +125,26 @@ p a {
       border: 3px solid $focus-outline-color-out !important;
       box-shadow: none !important;
     }
+  }
+}
+
+// Le voci di dropdown occupano tutta la larghezza del menu: il ring outward
+// verrebbe tagliato dall'overflow del contenitore, quindi si usa un ring inset.
+// Equivalente a `.dropdown-menu .dropdown-item.list-item` di bootstrap-italia.
+it-dropdown-item::part(list-item):focus-visible {
+  box-shadow:
+    inset 0 0 0 3px var(--#{$prefix}color-outline-focus),
+    inset 0 0 0 5px var(--#{$prefix}color-border-inverse) !important;
+  outline-offset: -3px !important;
+}
+
+// Stesso motivo per le voci della navbar mobile, che a tutta larghezza toccano
+// i bordi del modale. Su desktop resta il ring outward.
+@include media-breakpoint-down(lg) {
+  .navbar-collapsable .navbar-nav li .nav-link:focus-visible {
+    box-shadow:
+      inset 0 0 0 3px var(--#{$prefix}color-outline-focus),
+      inset 0 0 0 5px var(--#{$prefix}color-border-inverse) !important;
+    outline-offset: -3px !important;
   }
 }
