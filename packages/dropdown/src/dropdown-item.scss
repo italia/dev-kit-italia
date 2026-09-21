@@ -58,12 +58,12 @@ li span,
   // List item active state
   &.active {
     span {
-      color: var(--#{$prefix}color-text-primary-active);
+      color: var(--#{$prefix}color-link-active);
     }
 
     // TODO is this needed?
     .icon {
-      color: var(--#{$prefix}color-icon-primary-active);
+      fill: var(--#{$prefix}icon-primary-active);
     }
   }
 
