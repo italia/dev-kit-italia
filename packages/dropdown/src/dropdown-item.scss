@@ -11,6 +11,13 @@
   display: block;
 }
 
+:host,
+:host *,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
 :host li,
 :host li a {
   &:focus-visible {
