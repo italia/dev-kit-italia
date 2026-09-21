@@ -249,7 +249,7 @@ export class ItMegamenu extends ItDropdownBase {
         <div
           slot="content"
           part="popover-content"
-          class="${this.composeClass('dropdown-menu megamenu', 'shadow-lg', {
+          class="${this.composeClass('dropdown-menu megamenu', {
             show: this._popoverOpen,
             'full-width': this.fullWidth,
           })}"
