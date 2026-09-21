@@ -1,5 +1,14 @@
 # @italia/card
 
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- [#543](https://github.com/italia/dev-kit-italia/pull/543) [`f43dd5a`](https://github.com/italia/dev-kit-italia/commit/f43dd5a4b7c20a892909312351b3961f5e16cf4b) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed card body rendering even if empty in profile and location variants
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.4
+
 ## 1.0.0-beta.3
 
 ### Patch Changes

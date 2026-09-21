@@ -1,5 +1,17 @@
 # @italia/rating
 
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- [#546](https://github.com/italia/dev-kit-italia/pull/546) [`8f7a790`](https://github.com/italia/dev-kit-italia/commit/8f7a790596f735820f655985fda86bedae73d9b1) Thanks [@Fupete](https://github.com/Fupete)! - Circular focus ring on star buttons (align with BSI #1946)
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.4
+  - @italia/i18n@1.0.0-beta.4
+  - @italia/icon@1.0.0-beta.4
+  - @italia/radio@1.0.0-beta.4
+
 ## 1.0.0-beta.3
 
 ### Patch Changes
