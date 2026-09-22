@@ -7,6 +7,15 @@ import styles from './popover.scss';
 
 type PopoverPlacement = Placement;
 
+// Design-system default for --bsi-popover-notch-size (1.125rem @ 16px root
+// font-size) and for --bsi-popover-notch-offset (see :host in
+// it-popover.scss). There's no way to query a custom property's "default"
+// at runtime, only its current value, so these are the reference baseline
+// the compensation math is measured against — kept in sync by hand with
+// the :host defaults.
+const DEFAULT_NOTCH_SIZE_PX = 18;
+const DEFAULT_NOTCH_OFFSET_PX = -8;
+
 @customElement('it-popover')
 export class ItPopover extends BaseComponent {
   static styles = styles;
@@ -189,13 +198,15 @@ export class ItPopover extends BaseComponent {
           // flush against the panel edge whatever those consumer tokens end up
           // set to.
           const notchOffsetDefault =
-            parseFloat(getComputedStyle(this._arrowElement!).getPropertyValue('--bsi-popover-notch-offset')) || -8;
+            parseFloat(getComputedStyle(this._arrowElement!).getPropertyValue('--bsi-popover-notch-offset')) ||
+            DEFAULT_NOTCH_OFFSET_PX;
+
           const arrowComputedStyle = getComputedStyle(this._arrowElement!);
           const borderProp =
             `border${staticSide[0].toUpperCase()}${staticSide.slice(1)}Width` as keyof CSSStyleDeclaration;
           const staticSideBorderWidth = parseFloat(arrowComputedStyle[borderProp] as string) || 0;
-          const notchSize = parseFloat(arrowComputedStyle.width) || 18;
-          const notchSizeCompensation = (notchSize - 18) / 2;
+          const notchSize = parseFloat(arrowComputedStyle.width) || DEFAULT_NOTCH_SIZE_PX;
+          const notchSizeCompensation = (notchSize - DEFAULT_NOTCH_SIZE_PX) / 2;
           const staticSideOffset = notchOffsetDefault - staticSideBorderWidth - notchSizeCompensation;
 
           Object.assign(this._arrowElement!.style, {
