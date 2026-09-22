@@ -329,6 +329,8 @@ it-modal#it-nav-modal {
         position: unset !important;
         min-width: unset !important;
         --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}navbar-link-padding-x);
+        border-left: 0;
+        border-right: 0;
         // padding-left: var(--#{$prefix}navbar-link-padding-x);
       }
 
