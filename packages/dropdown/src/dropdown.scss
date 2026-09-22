@@ -23,7 +23,12 @@
     z-index: -1;
     width: var(--#{$prefix}dropdown-notch-base-size);
     height: var(--#{$prefix}dropdown-notch-base-size);
+    border-color: var(--#{$prefix}dropdown-border-color);
     border-radius: var(--#{$prefix}dropdown-border-radius);
+    border-top-width: var(--#{$prefix}dropdown-border-width);
+    border-top-style: solid;
+    border-left-width: var(--#{$prefix}dropdown-border-width);
+    border-left-style: solid;
     background-color: var(--#{$prefix}dropdown-background);
   }
 
