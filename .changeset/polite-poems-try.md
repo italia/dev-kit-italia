@@ -11,6 +11,10 @@ Fix mobile menu border and focus state regressions
   bootstrap-italia fix (bootstrap-italia#1949).
 - `@italia/megamenu`: removed the dead `.shadow-lg` class from the
   trigger content markup, mirroring the same removal on the BSI side.
+- `@italia/dropdown`: the popover arrow had no border of its own, so a
+  bordered dropdown panel (also from bootstrap-italia#1949) would show
+  with a borderless arrow. Added the same border-top/border-left treatment
+  already used by `@italia/megamenu`'s arrow.
 - `@italia/header`: keyboard focus on a dropdown/megamenu trigger no
   longer hides the active-state border color — the mobile-nav focus rule
   was forcing a fixed transparent color instead of respecting the
