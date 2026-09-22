@@ -181,18 +181,22 @@ export class ItPopover extends BaseComponent {
           const additionalOffsetTop = isLeftOrRight ? (this.crossAxisOffset ?? 0) : 0;
 
           // The arrow's border (if any) is set by the consumer's CSS keyed off
-          // data-side, above. Compensate the fixed -8px notch offset for the
-          // border width and for the notch growing/shrinking from its 1.125rem
-          // (18px) default, so the point stays flush against the panel edge
-          // whatever --bsi-popover-notch-size / --bsi-dropdown-border-width end
-          // up set to.
+          // data-side, above; its size comes from whatever notch-size token the
+          // consumer uses (dropdown/megamenu each have their own). Compensate
+          // --bsi-popover-notch-offset — the arrow's own default distance from
+          // the panel edge — for that border width and for the notch size
+          // deviating from its 1.125rem (18px) default, so the point stays
+          // flush against the panel edge whatever those consumer tokens end up
+          // set to.
+          const notchOffsetDefault =
+            parseFloat(getComputedStyle(this._arrowElement!).getPropertyValue('--bsi-popover-notch-offset')) || -8;
           const arrowComputedStyle = getComputedStyle(this._arrowElement!);
           const borderProp =
             `border${staticSide[0].toUpperCase()}${staticSide.slice(1)}Width` as keyof CSSStyleDeclaration;
           const staticSideBorderWidth = parseFloat(arrowComputedStyle[borderProp] as string) || 0;
           const notchSize = parseFloat(arrowComputedStyle.width) || 18;
           const notchSizeCompensation = (notchSize - 18) / 2;
-          const staticSideOffset = -8 - staticSideBorderWidth - notchSizeCompensation;
+          const staticSideOffset = notchOffsetDefault - staticSideBorderWidth - notchSizeCompensation;
 
           Object.assign(this._arrowElement!.style, {
             left: arrowX != null ? `${left}px` : '',
