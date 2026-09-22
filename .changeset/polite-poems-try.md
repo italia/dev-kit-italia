@@ -31,3 +31,8 @@ Fix mobile menu border and focus state regressions
   longer hides the active-state border color — the mobile-nav focus rule
   was forcing a fixed transparent color instead of respecting the
   active/inactive state.
+- `@italia/header`: a plain dropdown nav item inside the mobile menu
+  modal showed a border on all four sides instead of only top/bottom,
+  once bootstrap-italia#1949 gives the dropdown panel a default border
+  — now trimmed to match the same navbar-only treatment already applied
+  to `@italia/megamenu`'s panel.
