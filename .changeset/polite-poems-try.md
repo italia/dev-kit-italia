@@ -1,6 +1,7 @@
 ---
 "@italia/header": patch
 "@italia/megamenu": patch
+"@italia/dropdown": patch
 ---
 
 Fix mobile menu border and focus state regressions
