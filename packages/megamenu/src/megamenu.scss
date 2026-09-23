@@ -43,14 +43,20 @@ utilities.$utilities: (
     --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}spacing-xxs);
     --#{$prefix}dropdown-item-padding-y: var(--#{$prefix}spacing-xxs);
     --#{$prefix}dropdown-spacer: 0;
-    --#{$prefix}dropdown-border-width: 1px;
-    --#{$prefix}dropdown-border-color: var(--#{$prefix}color-border-subtle);
-    left: 0 !important; //override dello stile definito da floating-ui
+    left: 0 !important;
     width: 100%;
     background: var(--#{$prefix}megamenu-background-color, #fff);
 
-    // Extra padding on large devices only
+    @include media-breakpoint-down(lg) {
+      --#{$prefix}dropdown-border-width: 1px;
+      --#{$prefix}dropdown-border-color: var(--#{$prefix}color-border-subtle);
+      border-right: 0;
+      border-left: 0;
+    }
+
     @include media-breakpoint-up(lg) {
+      --#{$prefix}dropdown-border-width: 1px;
+      --#{$prefix}dropdown-border-color: var(--#{$prefix}color-border-subtle);
       --#{$prefix}dropdown-padding-y: var(--#{$prefix}spacing-m);
       --#{$prefix}dropdown-padding-x: var(--#{$prefix}spacing-xs);
 

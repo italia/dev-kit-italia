@@ -298,7 +298,7 @@ it-modal#it-nav-modal {
 
     .nav-link:focus-visible,
     *::part(focusable):focus-visible {
-      border-left-color: transparent !important;
+      border-left-color: var(--#{$prefix}navbar-link-border-color) !important;
     }
 
     it-dropdown::part(button):focus-visible,
@@ -329,6 +329,8 @@ it-modal#it-nav-modal {
         position: unset !important;
         min-width: unset !important;
         --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}navbar-link-padding-x);
+        border-left: 0;
+        border-right: 0;
         // padding-left: var(--#{$prefix}navbar-link-padding-x);
       }
 
