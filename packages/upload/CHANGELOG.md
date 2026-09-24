@@ -1,5 +1,18 @@
 # @italia/upload
 
+## 1.0.0-beta.5
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- Updated dependencies [[`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd)]:
+  - @italia/progress@1.0.0-beta.5
+  - @italia/avatar@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
 ## 1.0.0-beta.4
 
 ### Patch Changes
