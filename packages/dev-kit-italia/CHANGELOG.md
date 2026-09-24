@@ -1,5 +1,59 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-beta.5
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - Allineamento a bootstrap-italia#1914: ring di focus inset sulle voci di dropdown e sulla navbar mobile, link heading/footer del megamenu a tutta larghezza
+
+- Updated dependencies [[`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd), [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd), [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd)]:
+  - @italia/header@1.0.0-beta.5
+  - @italia/megamenu@1.0.0-beta.5
+  - @italia/bottom-nav@1.0.0-beta.5
+  - @italia/card@1.0.0-beta.5
+  - @italia/dropdown@1.0.0-beta.5
+  - @italia/pagination@1.0.0-beta.5
+  - @italia/progress@1.0.0-beta.5
+  - @italia/stepper@1.0.0-beta.5
+  - @italia/tabs@1.0.0-beta.5
+  - @italia/toolbar@1.0.0-beta.5
+  - @italia/upload@1.0.0-beta.5
+  - @italia/video@1.0.0-beta.5
+  - @italia/popover@1.0.0-beta.5
+  - @italia/accordion@1.0.0-beta.5
+  - @italia/alert@1.0.0-beta.5
+  - @italia/autocomplete@1.0.0-beta.5
+  - @italia/avatar@1.0.0-beta.5
+  - @italia/back@1.0.0-beta.5
+  - @italia/back-to-top@1.0.0-beta.5
+  - @italia/breadcrumbs@1.0.0-beta.5
+  - @italia/button@1.0.0-beta.5
+  - @italia/callout@1.0.0-beta.5
+  - @italia/carousel@1.0.0-beta.5
+  - @italia/checkbox@1.0.0-beta.5
+  - @italia/chip@1.0.0-beta.5
+  - @italia/collapse@1.0.0-beta.5
+  - @italia/dimmer@1.0.0-beta.5
+  - @italia/forward@1.0.0-beta.5
+  - @italia/hero@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+  - @italia/input@1.0.0-beta.5
+  - @italia/modal@1.0.0-beta.5
+  - @italia/navscroll@1.0.0-beta.5
+  - @italia/notification@1.0.0-beta.5
+  - @italia/radio@1.0.0-beta.5
+  - @italia/rating@1.0.0-beta.5
+  - @italia/section@1.0.0-beta.5
+  - @italia/select@1.0.0-beta.5
+  - @italia/skiplinks@1.0.0-beta.5
+  - @italia/sticky@1.0.0-beta.5
+  - @italia/timeline@1.0.0-beta.5
+  - @italia/toggle@1.0.0-beta.5
+  - @italia/thumbnav@1.0.0-beta.5
+  - @italia/tooltip@1.0.0-beta.5
+  - @italia/transfer@1.0.0-beta.5
+
 ## 1.0.0-beta.4
 
 ### Patch Changes

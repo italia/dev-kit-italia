@@ -1,5 +1,15 @@
 # @italia/input
 
+## 1.0.0-beta.5
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
 ## 1.0.0-beta.4
 
 ### Patch Changes

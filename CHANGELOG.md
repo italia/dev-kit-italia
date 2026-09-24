@@ -2,6 +2,625 @@
 
 This changelog contains all changes from all packages in the monorepo.
 
+## 1.0.0-beta.5
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.5
+  - @italia/collapse@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
+### `alert`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
+### `back`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `bottom-nav`
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+  - @italia/sticky@1.0.0-beta.5
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+
+### `card`
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd)]:
+  - @italia/card@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-beta.5
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - Allineamento a bootstrap-italia#1914: ring di focus inset sulle voci di dropdown e sulla navbar mobile, link heading/footer del megamenu a tutta larghezza
+
+- Updated dependencies [[`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd), [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd), [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd)]:
+  - @italia/header@1.0.0-beta.5
+  - @italia/megamenu@1.0.0-beta.5
+  - @italia/bottom-nav@1.0.0-beta.5
+  - @italia/card@1.0.0-beta.5
+  - @italia/dropdown@1.0.0-beta.5
+  - @italia/pagination@1.0.0-beta.5
+  - @italia/progress@1.0.0-beta.5
+  - @italia/stepper@1.0.0-beta.5
+  - @italia/tabs@1.0.0-beta.5
+  - @italia/toolbar@1.0.0-beta.5
+  - @italia/upload@1.0.0-beta.5
+  - @italia/video@1.0.0-beta.5
+  - @italia/popover@1.0.0-beta.5
+  - @italia/accordion@1.0.0-beta.5
+  - @italia/alert@1.0.0-beta.5
+  - @italia/autocomplete@1.0.0-beta.5
+  - @italia/avatar@1.0.0-beta.5
+  - @italia/back@1.0.0-beta.5
+  - @italia/back-to-top@1.0.0-beta.5
+  - @italia/breadcrumbs@1.0.0-beta.5
+  - @italia/button@1.0.0-beta.5
+  - @italia/callout@1.0.0-beta.5
+  - @italia/carousel@1.0.0-beta.5
+  - @italia/checkbox@1.0.0-beta.5
+  - @italia/chip@1.0.0-beta.5
+  - @italia/collapse@1.0.0-beta.5
+  - @italia/dimmer@1.0.0-beta.5
+  - @italia/forward@1.0.0-beta.5
+  - @italia/hero@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+  - @italia/input@1.0.0-beta.5
+  - @italia/modal@1.0.0-beta.5
+  - @italia/navscroll@1.0.0-beta.5
+  - @italia/notification@1.0.0-beta.5
+  - @italia/radio@1.0.0-beta.5
+  - @italia/rating@1.0.0-beta.5
+  - @italia/section@1.0.0-beta.5
+  - @italia/select@1.0.0-beta.5
+  - @italia/skiplinks@1.0.0-beta.5
+  - @italia/sticky@1.0.0-beta.5
+  - @italia/timeline@1.0.0-beta.5
+  - @italia/toggle@1.0.0-beta.5
+  - @italia/thumbnav@1.0.0-beta.5
+  - @italia/tooltip@1.0.0-beta.5
+  - @italia/transfer@1.0.0-beta.5
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
+### `dropdown`
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - Fix mobile menu border and focus state regressions
+  - `@italia/megamenu`: the panel border was always fully shown regardless
+    of breakpoint; it now shows a border on every side from `lg` up, and
+    only on the top/bottom edges on mobile, matching the upcoming
+    bootstrap-italia fix (bootstrap-italia#1949).
+  - `@italia/megamenu`: removed the dead `.shadow-lg` class from the
+    trigger content markup, mirroring the same removal on the BSI side.
+  - `@italia/popover`: the arrow is always rotated 45deg regardless of
+    placement, so which pair of sides is visually exposed depends on
+    which side of the trigger the popover ends up placed on — that
+    information was previously discarded after positioning. Now exposed
+    as a `data-side` attribute on the arrow element so consumers can
+    style its border correctly per placement, and the fixed notch offset
+    now compensates for a consumer-added border and for the notch size
+    deviating from its default, so the arrow stays flush against the
+    panel edge.
+  - `@italia/dropdown`: the popover arrow had no border of its own, so a
+    bordered dropdown panel (also from bootstrap-italia#1949) would show
+    with a borderless arrow. Uses the new `data-side` attribute from
+    `@italia/popover` to apply the correct border sides for every
+    placement (bottom/top/left/right), not just the default one.
+  - `@italia/header`: keyboard focus on a dropdown/megamenu trigger no
+    longer hides the active-state border color — the mobile-nav focus rule
+    was forcing a fixed transparent color instead of respecting the
+    active/inactive state.
+  - `@italia/header`: a plain dropdown nav item inside the mobile menu
+    modal showed a border on all four sides instead of only top/bottom,
+    once bootstrap-italia#1949 gives the dropdown panel a default border
+    — now trimmed to match the same navbar-only treatment already applied
+    to `@italia/megamenu`'s panel.
+
+- Updated dependencies [[`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd)]:
+  - @italia/popover@1.0.0-beta.5
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
+### `forward`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-beta.5
+
+### `header`
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - Allineamento a bootstrap-italia#1914: ring di focus inset sulle voci di dropdown e sulla navbar mobile, link heading/footer del megamenu a tutta larghezza
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - Fix mobile menu border and focus state regressions
+  - `@italia/megamenu`: the panel border was always fully shown regardless
+    of breakpoint; it now shows a border on every side from `lg` up, and
+    only on the top/bottom edges on mobile, matching the upcoming
+    bootstrap-italia fix (bootstrap-italia#1949).
+  - `@italia/megamenu`: removed the dead `.shadow-lg` class from the
+    trigger content markup, mirroring the same removal on the BSI side.
+  - `@italia/popover`: the arrow is always rotated 45deg regardless of
+    placement, so which pair of sides is visually exposed depends on
+    which side of the trigger the popover ends up placed on — that
+    information was previously discarded after positioning. Now exposed
+    as a `data-side` attribute on the arrow element so consumers can
+    style its border correctly per placement, and the fixed notch offset
+    now compensates for a consumer-added border and for the notch size
+    deviating from its default, so the arrow stays flush against the
+    panel edge.
+  - `@italia/dropdown`: the popover arrow had no border of its own, so a
+    bordered dropdown panel (also from bootstrap-italia#1949) would show
+    with a borderless arrow. Uses the new `data-side` attribute from
+    `@italia/popover` to apply the correct border sides for every
+    placement (bottom/top/left/right), not just the default one.
+  - `@italia/header`: keyboard focus on a dropdown/megamenu trigger no
+    longer hides the active-state border color — the mobile-nav focus rule
+    was forcing a fixed transparent color instead of respecting the
+    active/inactive state.
+  - `@italia/header`: a plain dropdown nav item inside the mobile menu
+    modal showed a border on all four sides instead of only top/bottom,
+    once bootstrap-italia#1949 gives the dropdown panel a default border
+    — now trimmed to match the same navbar-only treatment already applied
+    to `@italia/megamenu`'s panel.
+
+- Updated dependencies [[`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd), [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd)]:
+  - @italia/dropdown@1.0.0-beta.5
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+  - @italia/modal@1.0.0-beta.5
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
+### `megamenu`
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - Allineamento a bootstrap-italia#1914: ring di focus inset sulle voci di dropdown e sulla navbar mobile, link heading/footer del megamenu a tutta larghezza
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - Fix mobile menu border and focus state regressions
+  - `@italia/megamenu`: the panel border was always fully shown regardless
+    of breakpoint; it now shows a border on every side from `lg` up, and
+    only on the top/bottom edges on mobile, matching the upcoming
+    bootstrap-italia fix (bootstrap-italia#1949).
+  - `@italia/megamenu`: removed the dead `.shadow-lg` class from the
+    trigger content markup, mirroring the same removal on the BSI side.
+  - `@italia/popover`: the arrow is always rotated 45deg regardless of
+    placement, so which pair of sides is visually exposed depends on
+    which side of the trigger the popover ends up placed on — that
+    information was previously discarded after positioning. Now exposed
+    as a `data-side` attribute on the arrow element so consumers can
+    style its border correctly per placement, and the fixed notch offset
+    now compensates for a consumer-added border and for the notch size
+    deviating from its default, so the arrow stays flush against the
+    panel edge.
+  - `@italia/dropdown`: the popover arrow had no border of its own, so a
+    bordered dropdown panel (also from bootstrap-italia#1949) would show
+    with a borderless arrow. Uses the new `data-side` attribute from
+    `@italia/popover` to apply the correct border sides for every
+    placement (bottom/top/left/right), not just the default one.
+  - `@italia/header`: keyboard focus on a dropdown/megamenu trigger no
+    longer hides the active-state border color — the mobile-nav focus rule
+    was forcing a fixed transparent color instead of respecting the
+    active/inactive state.
+  - `@italia/header`: a plain dropdown nav item inside the mobile menu
+    modal showed a border on all four sides instead of only top/bottom,
+    once bootstrap-italia#1949 gives the dropdown panel a default border
+    — now trimmed to match the same navbar-only treatment already applied
+    to `@italia/megamenu`'s panel.
+
+- Updated dependencies [[`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd), [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd)]:
+  - @italia/dropdown@1.0.0-beta.5
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+  - @italia/modal@1.0.0-beta.5
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+
+### `pagination`
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `popover`
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - Fix mobile menu border and focus state regressions
+  - `@italia/megamenu`: the panel border was always fully shown regardless
+    of breakpoint; it now shows a border on every side from `lg` up, and
+    only on the top/bottom edges on mobile, matching the upcoming
+    bootstrap-italia fix (bootstrap-italia#1949).
+  - `@italia/megamenu`: removed the dead `.shadow-lg` class from the
+    trigger content markup, mirroring the same removal on the BSI side.
+  - `@italia/popover`: the arrow is always rotated 45deg regardless of
+    placement, so which pair of sides is visually exposed depends on
+    which side of the trigger the popover ends up placed on — that
+    information was previously discarded after positioning. Now exposed
+    as a `data-side` attribute on the arrow element so consumers can
+    style its border correctly per placement, and the fixed notch offset
+    now compensates for a consumer-added border and for the notch size
+    deviating from its default, so the arrow stays flush against the
+    panel edge.
+  - `@italia/dropdown`: the popover arrow had no border of its own, so a
+    bordered dropdown panel (also from bootstrap-italia#1949) would show
+    with a borderless arrow. Uses the new `data-side` attribute from
+    `@italia/popover` to apply the correct border sides for every
+    placement (bottom/top/left/right), not just the default one.
+  - `@italia/header`: keyboard focus on a dropdown/megamenu trigger no
+    longer hides the active-state border color — the mobile-nav focus rule
+    was forcing a fixed transparent color instead of respecting the
+    active/inactive state.
+  - `@italia/header`: a plain dropdown nav item inside the mobile menu
+    modal showed a border on all four sides instead of only top/bottom,
+    once bootstrap-italia#1949 gives the dropdown panel a default border
+    — now trimmed to match the same navbar-only treatment already applied
+    to `@italia/megamenu`'s panel.
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+
+### `progress`
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+  - @italia/radio@1.0.0-beta.5
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `stepper`
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `tabs`
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+
+### `toolbar`
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
+### `upload`
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- Updated dependencies [[`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd)]:
+  - @italia/progress@1.0.0-beta.5
+  - @italia/avatar@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
+### `video`
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.5
+  - @italia/checkbox@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
 ## 1.0.0-beta.4
 
 ### `accordion`
