@@ -1,5 +1,14 @@
 # Changelog - Toolbar Component
 
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- [#536](https://github.com/italia/dev-kit-italia/pull/536) [`c33e8d8`](https://github.com/italia/dev-kit-italia/commit/c33e8d8f9fb2cfc4f094993d228823f2be926952) Thanks [@Fupete](https://github.com/Fupete)! - fix(toolbar-item): don't clear aria-orientation on the divider
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.4
+
 ## 1.0.0-beta.3
 
 ### Patch Changes

@@ -7,6 +7,15 @@ import styles from './popover.scss';
 
 type PopoverPlacement = Placement;
 
+// Design-system default for --bsi-popover-notch-size (1.125rem @ 16px root
+// font-size) and for --bsi-popover-notch-offset (see :host in
+// it-popover.scss). There's no way to query a custom property's "default"
+// at runtime, only its current value, so these are the reference baseline
+// the compensation math is measured against — kept in sync by hand with
+// the :host defaults.
+const DEFAULT_NOTCH_SIZE_PX = 18;
+const DEFAULT_NOTCH_OFFSET_PX = -8;
+
 @customElement('it-popover')
 export class ItPopover extends BaseComponent {
   static styles = styles;
@@ -158,12 +167,14 @@ export class ItPopover extends BaseComponent {
         if (middlewareData.arrow) {
           const { x: arrowX, y: arrowY } = middlewareData.arrow;
           const placementSide = placement.split('-')[0];
-          const staticSide = {
+          const staticSide = ({
             top: 'bottom',
             right: 'left',
             bottom: 'top',
             left: 'right',
-          }[placementSide];
+          }[placementSide] ?? 'top') as string;
+
+          this._arrowElement!.dataset.side = placementSide;
 
           const triggerRect = this._triggerElement.getBoundingClientRect();
           const contentRect = this._contentElement.getBoundingClientRect();
@@ -178,13 +189,32 @@ export class ItPopover extends BaseComponent {
           const isLeftOrRight = ['left', 'right'].includes(placementSide);
           const additionalOffsetTop = isLeftOrRight ? (this.crossAxisOffset ?? 0) : 0;
 
+          // The arrow's border (if any) is set by the consumer's CSS keyed off
+          // data-side, above; its size comes from whatever notch-size token the
+          // consumer uses (dropdown/megamenu each have their own). Compensate
+          // --bsi-popover-notch-offset — the arrow's own default distance from
+          // the panel edge — for that border width and for the notch size
+          // deviating from its 1.125rem (18px) default, so the point stays
+          // flush against the panel edge whatever those consumer tokens end up
+          // set to.
+          const notchOffsetDefault =
+            parseFloat(getComputedStyle(this._arrowElement!).getPropertyValue('--bsi-popover-notch-offset')) ||
+            DEFAULT_NOTCH_OFFSET_PX;
+
+          const arrowComputedStyle = getComputedStyle(this._arrowElement!);
+          const borderProp =
+            `border${staticSide[0].toUpperCase()}${staticSide.slice(1)}Width` as keyof CSSStyleDeclaration;
+          const staticSideBorderWidth = parseFloat(arrowComputedStyle[borderProp] as string) || 0;
+          const notchSize = parseFloat(arrowComputedStyle.width) || DEFAULT_NOTCH_SIZE_PX;
+          const notchSizeCompensation = (notchSize - DEFAULT_NOTCH_SIZE_PX) / 2;
+          const staticSideOffset = notchOffsetDefault - staticSideBorderWidth - notchSizeCompensation;
+
           Object.assign(this._arrowElement!.style, {
             left: arrowX != null ? `${left}px` : '',
-
             top: arrowY != null ? `${arrowY + additionalOffsetTop}px` : '',
             right: '',
             bottom: '',
-            [staticSide as string]: `-8px`,
+            [staticSide]: `${staticSideOffset}px`,
             position: 'absolute',
             transform: 'rotate(45deg)',
           });

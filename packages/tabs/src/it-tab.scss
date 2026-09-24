@@ -86,7 +86,7 @@ $it-tab-prefix: 'it-tab';
 // in it-tabs.scss su .nav-dark per mantenerle bianche su sfondo scuro.
 // In light mode i fallback usano i token di hover standard BSI.
 :host(:hover) {
-  --#{$prefix}tab-text-color: var(--it-tab_hover-text-color, var(--#{$prefix}color-text-secondary-hover));
+  --#{$prefix}tab-text-color: var(--it-tab_hover-text-color, var(--#{$prefix}color-link-secondary-hover));
   --#{$prefix}tab-icon-color: var(--it-tab_hover-icon-color, var(--#{$prefix}icon-secondary-hover));
   // Ripristina opacità piena in dark mode (batte l'ereditato 0.75 con OWN value).
   --it-tab_opacity: 1;
