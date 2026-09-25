@@ -90,3 +90,8 @@
 ::slotted(h6) {
   margin-bottom: 0;
 }
+
+::slotted(p) {
+  font-family: var(--#{$prefix}dimmer-body-font-family);
+  font-size: var(--#{$prefix}dimmer-body-font-size);
+}
