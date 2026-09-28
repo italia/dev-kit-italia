@@ -1,4 +1,4 @@
 :HL["/dev-kit-italia/next-app/_next/static/css/24c6811dfa0249d5.css","style"]
-:HL["/dev-kit-italia/next-app/_next/static/css/74cfbdae2b3ceea5.css","style"]
+:HL["/dev-kit-italia/next-app/_next/static/css/c82cf7b09cf35ee6.css","style"]
 :HL["/dev-kit-italia/next-app/_next/static/css/cf70c1c597fe864a.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"_not-found","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"wrGKAmf-hmlhblteTA97m"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"_not-found","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"FlmqFi-kO5OV8Fd9gMVpf"}
