@@ -9,6 +9,9 @@
 @use 'bootstrap-italia/src/scss/components/accept-overlay' as *;
 
 .acceptoverlayable {
+  // A definite width is required: with `width: auto`, the `min-height: 450px` set on `.show`
+  // is transferred through the aspect-ratio into a min-width of 800px, overflowing on small screens.
+  width: 100%;
   // Check the Heads up! section in the documentation
   // https://sass-lang.com/documentation/modules/list/#slash
   aspect-ratio: list.slash(16, 9);
