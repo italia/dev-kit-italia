@@ -2,6 +2,488 @@
 
 This changelog contains all changes from all packages in the monorepo.
 
+## 1.0.0-beta.6
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.6
+  - @italia/collapse@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+### `alert`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+### `back`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+  - @italia/sticky@1.0.0-beta.6
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+
+### `card`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/card@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-beta.6
+  - @italia/button@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`cbe423d`](https://github.com/italia/dev-kit-italia/commit/cbe423d4793ff2916f59ccf00ac2fb2e6d264484)]:
+  - @italia/modal@1.0.0-beta.6
+  - @italia/accordion@1.0.0-beta.6
+  - @italia/alert@1.0.0-beta.6
+  - @italia/autocomplete@1.0.0-beta.6
+  - @italia/avatar@1.0.0-beta.6
+  - @italia/back@1.0.0-beta.6
+  - @italia/back-to-top@1.0.0-beta.6
+  - @italia/bottom-nav@1.0.0-beta.6
+  - @italia/breadcrumbs@1.0.0-beta.6
+  - @italia/button@1.0.0-beta.6
+  - @italia/callout@1.0.0-beta.6
+  - @italia/card@1.0.0-beta.6
+  - @italia/carousel@1.0.0-beta.6
+  - @italia/checkbox@1.0.0-beta.6
+  - @italia/chip@1.0.0-beta.6
+  - @italia/collapse@1.0.0-beta.6
+  - @italia/dimmer@1.0.0-beta.6
+  - @italia/dropdown@1.0.0-beta.6
+  - @italia/forward@1.0.0-beta.6
+  - @italia/header@1.0.0-beta.6
+  - @italia/hero@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+  - @italia/input@1.0.0-beta.6
+  - @italia/megamenu@1.0.0-beta.6
+  - @italia/navscroll@1.0.0-beta.6
+  - @italia/notification@1.0.0-beta.6
+  - @italia/pagination@1.0.0-beta.6
+  - @italia/popover@1.0.0-beta.6
+  - @italia/progress@1.0.0-beta.6
+  - @italia/radio@1.0.0-beta.6
+  - @italia/rating@1.0.0-beta.6
+  - @italia/section@1.0.0-beta.6
+  - @italia/select@1.0.0-beta.6
+  - @italia/skiplinks@1.0.0-beta.6
+  - @italia/stepper@1.0.0-beta.6
+  - @italia/sticky@1.0.0-beta.6
+  - @italia/tabs@1.0.0-beta.6
+  - @italia/timeline@1.0.0-beta.6
+  - @italia/toggle@1.0.0-beta.6
+  - @italia/thumbnav@1.0.0-beta.6
+  - @italia/toolbar@1.0.0-beta.6
+  - @italia/tooltip@1.0.0-beta.6
+  - @italia/transfer@1.0.0-beta.6
+  - @italia/upload@1.0.0-beta.6
+  - @italia/video@1.0.0-beta.6
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+### `dropdown`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+  - @italia/popover@1.0.0-beta.6
+
+### `forward`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-beta.6
+
+### `header`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`cbe423d`](https://github.com/italia/dev-kit-italia/commit/cbe423d4793ff2916f59ccf00ac2fb2e6d264484)]:
+  - @italia/modal@1.0.0-beta.6
+  - @italia/button@1.0.0-beta.6
+  - @italia/dropdown@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+### `megamenu`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.6
+  - @italia/dropdown@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+### `modal`
+
+### Patch Changes
+
+- [`cbe423d`](https://github.com/italia/dev-kit-italia/commit/cbe423d4793ff2916f59ccf00ac2fb2e6d264484) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed focus styles on Safari
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`cbe423d`](https://github.com/italia/dev-kit-italia/commit/cbe423d4793ff2916f59ccf00ac2fb2e6d264484)]:
+  - @italia/modal@1.0.0-beta.6
+  - @italia/button@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+  - @italia/radio@1.0.0-beta.6
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `stepper`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+
+### `toolbar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+### `upload`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+  - @italia/progress@1.0.0-beta.6
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.6
+  - @italia/checkbox@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
 ## 1.0.0-beta.5
 
 ### `accordion`

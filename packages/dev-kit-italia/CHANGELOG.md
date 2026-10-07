@@ -1,5 +1,58 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-beta.6
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`cbe423d`](https://github.com/italia/dev-kit-italia/commit/cbe423d4793ff2916f59ccf00ac2fb2e6d264484)]:
+  - @italia/modal@1.0.0-beta.6
+  - @italia/accordion@1.0.0-beta.6
+  - @italia/alert@1.0.0-beta.6
+  - @italia/autocomplete@1.0.0-beta.6
+  - @italia/avatar@1.0.0-beta.6
+  - @italia/back@1.0.0-beta.6
+  - @italia/back-to-top@1.0.0-beta.6
+  - @italia/bottom-nav@1.0.0-beta.6
+  - @italia/breadcrumbs@1.0.0-beta.6
+  - @italia/button@1.0.0-beta.6
+  - @italia/callout@1.0.0-beta.6
+  - @italia/card@1.0.0-beta.6
+  - @italia/carousel@1.0.0-beta.6
+  - @italia/checkbox@1.0.0-beta.6
+  - @italia/chip@1.0.0-beta.6
+  - @italia/collapse@1.0.0-beta.6
+  - @italia/dimmer@1.0.0-beta.6
+  - @italia/dropdown@1.0.0-beta.6
+  - @italia/forward@1.0.0-beta.6
+  - @italia/header@1.0.0-beta.6
+  - @italia/hero@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+  - @italia/input@1.0.0-beta.6
+  - @italia/megamenu@1.0.0-beta.6
+  - @italia/navscroll@1.0.0-beta.6
+  - @italia/notification@1.0.0-beta.6
+  - @italia/pagination@1.0.0-beta.6
+  - @italia/popover@1.0.0-beta.6
+  - @italia/progress@1.0.0-beta.6
+  - @italia/radio@1.0.0-beta.6
+  - @italia/rating@1.0.0-beta.6
+  - @italia/section@1.0.0-beta.6
+  - @italia/select@1.0.0-beta.6
+  - @italia/skiplinks@1.0.0-beta.6
+  - @italia/stepper@1.0.0-beta.6
+  - @italia/sticky@1.0.0-beta.6
+  - @italia/tabs@1.0.0-beta.6
+  - @italia/timeline@1.0.0-beta.6
+  - @italia/toggle@1.0.0-beta.6
+  - @italia/thumbnav@1.0.0-beta.6
+  - @italia/toolbar@1.0.0-beta.6
+  - @italia/tooltip@1.0.0-beta.6
+  - @italia/transfer@1.0.0-beta.6
+  - @italia/upload@1.0.0-beta.6
+  - @italia/video@1.0.0-beta.6
+
 ## 1.0.0-beta.5
 
 ### Patch Changes
