@@ -1,5 +1,14 @@
 # @italia/bottom-nav
 
+## 1.0.0-beta.6
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+  - @italia/sticky@1.0.0-beta.6
+
 ## 1.0.0-beta.5
 
 ### Patch Changes
