@@ -205,21 +205,6 @@ export class ItModal extends BaseComponent {
         else this._hideModal();
       }
     }
-    if (changedProperties.has('_safariMouseInteraction')) {
-      let realButton: HTMLElement | null = this._triggerElement;
-      if (realButton?.tagName.toLowerCase() === 'it-button') {
-        realButton = this._triggerElement?.shadowRoot?.querySelector('button')!;
-      }
-      if (!realButton) return;
-      // Fix Safari: se l'interazione è da mouse, rimuovi outline e box-shadow forzati per evitare il doppio focus ring
-      if (this._safariMouseInteraction) {
-        realButton.style.setProperty('outline', '0', 'important');
-        realButton.style.setProperty('box-shadow', 'none', 'important');
-      } else {
-        realButton.style.removeProperty('outline');
-        realButton.style.removeProperty('box-shadow');
-      }
-    }
   }
 
   private _applyInert(): void {
