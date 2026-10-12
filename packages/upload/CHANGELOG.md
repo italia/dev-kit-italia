@@ -1,5 +1,17 @@
 # @italia/upload
 
+## 1.0.0-beta.6
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+  - @italia/progress@1.0.0-beta.6
+
 ## 1.0.0-beta.5
 
 ### Patch Changes
