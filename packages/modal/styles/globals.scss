@@ -31,3 +31,10 @@ it-modal {
   box-shadow: none !important;
   outline: 0 !important;
 }
+
+// Last element of the modal content has no bottom margin:
+// the spacing towards footer and border is provided by the modal body padding
+it-modal > [slot='content'],
+it-modal > [slot='content'] > :last-child {
+  margin-bottom: 0;
+}
