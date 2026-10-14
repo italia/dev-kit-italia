@@ -2,6 +2,7 @@
 // These styles affect elements outside the shadow DOM
 
 @use 'bootstrap-italia/src/scss/base/functions' as *;
+@use 'bootstrap-italia/src/scss/base/config' as *;
 @use 'bootstrap-italia/src/scss/base/variables' as *;
 
 // Body scroll lock when modal is open
@@ -30,4 +31,16 @@ it-modal {
 *:focus:not(:focus-visible) {
   box-shadow: none !important;
   outline: 0 !important;
+}
+
+// Last element of the modal content has no bottom margin:
+// the spacing towards footer and border is provided by the modal body padding
+it-modal > [slot='content'],
+it-modal > [slot='content'] > :last-child {
+  margin-bottom: 0;
+}
+
+// Popconfirm: confirmation text stays at 16px from sm up, as in UI Kit Italia
+it-modal[variant='popconfirm'] {
+  --#{$prefix}body-font-size: 1rem;
 }
