@@ -107,7 +107,6 @@ utilities.$utilities: (
 
 .modal-footer {
   flex-shrink: 0;
-  padding-top: var(--#{$prefix}modal-padding);
 }
 
 .modal-dialog-scrollable {
