@@ -1,5 +1,25 @@
 # @italia/carousel
 
+## 1.0.0-beta.6
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/card@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+
+## 1.0.0-beta.5
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd)]:
+  - @italia/card@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+
 ## 1.0.0-beta.4
 
 ### Patch Changes

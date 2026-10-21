@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.0.0-beta.6
+
+### Patch Changes
+
+- [`cbe423d`](https://github.com/italia/dev-kit-italia/commit/cbe423d4793ff2916f59ccf00ac2fb2e6d264484) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed focus styles on Safari
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+## 1.0.0-beta.5
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
 ## 1.0.0-beta.4
 
 ### Patch Changes

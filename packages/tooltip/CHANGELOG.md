@@ -1,5 +1,23 @@
 # @italia/tooltip
 
+## 1.0.0-beta.6
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+
+## 1.0.0-beta.5
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+
 ## 1.0.0-beta.4
 
 ### Patch Changes
