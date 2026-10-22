@@ -12,5 +12,5 @@
 
 it-video {
   display: block;
-  min-width: var(--it-videojs-default-width, 300px);
+  min-width: min(var(--it-videojs-default-width, 300px), 100%);
 }
