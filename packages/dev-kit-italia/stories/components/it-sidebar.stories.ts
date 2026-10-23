@@ -63,7 +63,7 @@ export const SidebarSemplice: Story = {
     <aside class="sidebar-wrapper" aria-labelledby="header">
       <h3 id="header">Header</h3>
       <div class="sidebar-linklist-wrapper">
-        <nav aria-label="Navigazione laterale principale" class="link-list-wrapper">
+        <nav aria-label="Pagine della sezione" class="link-list-wrapper">
           <ul class="link-list">
             <li>
               <a class="list-item medium active" aria-current="page" href="#">
@@ -88,7 +88,7 @@ export const SidebarSemplice: Story = {
           </ul>
       </div>
       <div class="sidebar-linklist-wrapper linklist-secondary">
-        <nav aria-label="Navigazione laterale secondaria" class="link-list-wrapper">
+        <nav aria-label="Link secondari" class="link-list-wrapper">
           <ul class="link-list">
             <li>
               <a class="list-item" href="#">
@@ -122,7 +122,7 @@ export const SidebarConIcone: Story = {
     <aside class="sidebar-wrapper" aria-labelledby="header">
       <h3 id="header">Header</h3>
       <div class="sidebar-linklist-wrapper">
-        <nav aria-label="Navigazione laterale principale" class="link-list-wrapper">
+        <nav aria-label="Pagine della sezione" class="link-list-wrapper">
           <ul class="link-list">
             <li>
               <a class="list-item medium active icon-left" aria-current="page" href="#">
@@ -152,7 +152,7 @@ export const SidebarConIcone: Story = {
         </nav>
       </div>
       <div class="sidebar-linklist-wrapper linklist-secondary">
-        <nav aria-label="Navigazione laterale secondaria" class="link-list-wrapper">
+        <nav aria-label="Link secondari" class="link-list-wrapper">
           <ul class="link-list">
             <li>
               <a class="list-item icon-left" href="#">
@@ -186,7 +186,7 @@ export const SidebarLineaDestra: Story = {
     <aside class="sidebar-wrapper it-line-right-side" aria-labelledby="header">
       <h3 id="header">Header</h3>
       <div class="sidebar-linklist-wrapper">
-        <nav aria-label="Navigazione laterale principale" class="link-list-wrapper">
+        <nav aria-label="Pagine della sezione" class="link-list-wrapper">
           <ul class="link-list">
             <li>
               <a class="list-item medium active" aria-current="page" href="#">
@@ -212,7 +212,7 @@ export const SidebarLineaDestra: Story = {
         </nav>
       </div>
       <div class="sidebar-linklist-wrapper linklist-secondary">
-        <nav aria-label="Navigazione laterale secondaria" class="link-list-wrapper">
+        <nav aria-label="Link secondari" class="link-list-wrapper">
           <ul class="link-list">
             <li>
               <a class="list-item" href="#">
@@ -246,7 +246,7 @@ export const SidebarLineaSinistra: Story = {
     <aside class="sidebar-wrapper it-line-left-side" aria-labelledby="header">
       <h3 id="header">Header</h3>
       <div class="sidebar-linklist-wrapper">
-        <nav aria-label="Navigazione laterale principale" class="link-list-wrapper">
+        <nav aria-label="Pagine della sezione" class="link-list-wrapper">
           <ul class="link-list">
             <li>
               <a class="list-item medium active" aria-current="page" href="#">
@@ -272,7 +272,7 @@ export const SidebarLineaSinistra: Story = {
         </nav>
       </div>
       <div class="sidebar-linklist-wrapper linklist-secondary">
-        <nav aria-label="Navigazione laterale secondaria" class="link-list-wrapper">
+        <nav aria-label="Link secondari" class="link-list-wrapper">
           <ul class="link-list">
             <li>
               <a class="list-item" href="#">
@@ -306,7 +306,7 @@ export const SidebarAnnidata: Story = {
     <aside class="sidebar-wrapper" aria-labelledby="header">
       <h3 id="header">Header</h3>
       <div class="sidebar-linklist-wrapper">
-        <nav aria-label="Navigazione laterale principale" class="link-list-wrapper">
+        <nav aria-label="Pagine della sezione" class="link-list-wrapper">
           <ul class="link-list">
             <li>
               <it-collapse as="a" variant="none" size="sm">
@@ -385,7 +385,7 @@ export const SidebarAnnidata: Story = {
         </nav>
       </div>
       <div class="sidebar-linklist-wrapper linklist-secondary">
-        <nav aria-label="Navigazione laterale secondaria" class="link-list-wrapper">
+        <nav aria-label="Link secondari" class="link-list-wrapper">
           <ul class="link-list">
             <li>
               <a class="list-item" href="#">
@@ -419,7 +419,7 @@ export const SidebarTemaScuro: Story = {
     <aside class="sidebar-wrapper theme-dark" aria-labelledby="header">
       <h3 id="header">Header</h3>
       <div class="sidebar-linklist-wrapper">
-        <nav aria-label="Navigazione laterale principale" class="link-list-wrapper">
+        <nav aria-label="Pagine della sezione" class="link-list-wrapper">
           <ul class="link-list">
             <li>
               <it-collapse as="a" variant="none" size="sm">
@@ -500,7 +500,7 @@ export const SidebarTemaScuro: Story = {
         </nav>
       </div>
       <div class="sidebar-linklist-wrapper linklist-secondary">
-        <nav aria-label="Navigazione laterale secondaria" class="link-list-wrapper">
+        <nav aria-label="Link secondari" class="link-list-wrapper">
           <ul class="link-list">
             <li>
               <a class="list-item" href="#">
