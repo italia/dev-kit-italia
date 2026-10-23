@@ -60,8 +60,8 @@ export const SidebarSemplice: Story = {
   name: 'Sidebar semplice',
 
   render: () => html`
-    <aside class="sidebar-wrapper" aria-labelledby="header">
-      <h3 id="header">Header</h3>
+    <aside class="sidebar-wrapper" aria-labelledby="sidebar-semplice-titolo">
+      <h3 id="sidebar-semplice-titolo">Header</h3>
       <div class="sidebar-linklist-wrapper">
         <nav aria-label="Pagine della sezione" class="link-list-wrapper">
           <ul class="link-list">
@@ -119,8 +119,8 @@ export const SidebarSemplice: Story = {
 export const SidebarConIcone: Story = {
   name: 'Sidebar con icone',
   render: () => html`
-    <aside class="sidebar-wrapper" aria-labelledby="header">
-      <h3 id="header">Header</h3>
+    <aside class="sidebar-wrapper" aria-labelledby="sidebar-icone-titolo">
+      <h3 id="sidebar-icone-titolo">Header</h3>
       <div class="sidebar-linklist-wrapper">
         <nav aria-label="Pagine della sezione" class="link-list-wrapper">
           <ul class="link-list">
@@ -183,8 +183,8 @@ export const SidebarConIcone: Story = {
 export const SidebarLineaDestra: Story = {
   name: 'Sidebar con linea a destra',
   render: () => html`
-    <aside class="sidebar-wrapper it-line-right-side" aria-labelledby="header">
-      <h3 id="header">Header</h3>
+    <aside class="sidebar-wrapper it-line-right-side" aria-labelledby="sidebar-linea-destra-titolo">
+      <h3 id="sidebar-linea-destra-titolo">Header</h3>
       <div class="sidebar-linklist-wrapper">
         <nav aria-label="Pagine della sezione" class="link-list-wrapper">
           <ul class="link-list">
@@ -243,8 +243,8 @@ export const SidebarLineaDestra: Story = {
 export const SidebarLineaSinistra: Story = {
   name: 'Sidebar con linea a sinistra',
   render: () => html`
-    <aside class="sidebar-wrapper it-line-left-side" aria-labelledby="header">
-      <h3 id="header">Header</h3>
+    <aside class="sidebar-wrapper it-line-left-side" aria-labelledby="sidebar-linea-sinistra-titolo">
+      <h3 id="sidebar-linea-sinistra-titolo">Header</h3>
       <div class="sidebar-linklist-wrapper">
         <nav aria-label="Pagine della sezione" class="link-list-wrapper">
           <ul class="link-list">
@@ -303,8 +303,8 @@ export const SidebarLineaSinistra: Story = {
 export const SidebarAnnidata: Story = {
   name: 'Sidebar annidata',
   render: () => html`
-    <aside class="sidebar-wrapper" aria-labelledby="header">
-      <h3 id="header">Header</h3>
+    <aside class="sidebar-wrapper" aria-labelledby="sidebar-annidata-titolo">
+      <h3 id="sidebar-annidata-titolo">Header</h3>
       <div class="sidebar-linklist-wrapper">
         <nav aria-label="Pagine della sezione" class="link-list-wrapper">
           <ul class="link-list">
@@ -416,8 +416,8 @@ export const SidebarAnnidata: Story = {
 export const SidebarTemaScuro: Story = {
   name: 'Sidebar tema scuro',
   render: () => html`
-    <aside class="sidebar-wrapper theme-dark" aria-labelledby="header">
-      <h3 id="header">Header</h3>
+    <aside class="sidebar-wrapper theme-dark" aria-labelledby="sidebar-scura-titolo">
+      <h3 id="sidebar-scura-titolo">Header</h3>
       <div class="sidebar-linklist-wrapper">
         <nav aria-label="Pagine della sezione" class="link-list-wrapper">
           <ul class="link-list">
