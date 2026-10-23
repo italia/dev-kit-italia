@@ -39,7 +39,9 @@ Puoi specificare una variante tramite l'attributo `variant`, questa verrà appli
 
 ## Accessibilità
 
-Per impostazione predefinita, il componente `<it-dropdown>` usa la semantica di una semplice lista HTML (`<ul>`/`<li>`), senza ruoli ARIA aggiuntivi. Questa è la scelta corretta nella maggior parte dei casi, in particolare quando il menu contiene link di navigazione o si trova all'interno di un elemento `<nav>` (ad es. header, megamenu).
+Per impostazione predefinita, il componente `<it-dropdown>` usa la semantica di una semplice lista HTML (`<ul>`/`<li>`). Questa è la scelta corretta nella maggior parte dei casi, in particolare quando il menu contiene link di navigazione o si trova all'interno di un elemento `<nav>` (ad es. header, megamenu).
+
+Il componente imposta in modo esplicito `role="list"` sull'elemento `<ul>`, così la semantica di lista è garantita su **Safari e VoiceOver (macOS/iOS)** anche quando il dropdown non si trova dentro un elemento `<nav>`.
 
 Lo standard [WAI ARIA](https://www.w3.org/TR/wai-aria/) definisce il [`role="menu"`](https://www.w3.org/TR/wai-aria/#menu) per i **menu applicativi**, ovvero menu che espongono comandi o azioni (come "Copia", "Taglia", "Incolla") in modo analogo ai menu di un'applicazione desktop. Puoi usarlo impostando l'attributo `it-role="menu"`, che assegna automaticamente il ruolo corretto anche agli elementi interni.
 
