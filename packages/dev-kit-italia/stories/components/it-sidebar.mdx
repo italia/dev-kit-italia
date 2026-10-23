@@ -5,7 +5,7 @@ import * as SidebarStories from './it-sidebar.stories';
 
 <Title />
 
-<description>Barra di navigazione laterale che include liste di link diretti o annidati.</description>
+<description>Barra di navigazione secondaria, include liste di link e liste di link annidate.</description>
 
 ## Cosa fa
 
@@ -28,10 +28,13 @@ Questo componente non possiede attributi, ma si basa su una struttura HTML prede
 ## Accessibilità
 
 Il componente Sidebar segue le migliori pratiche di accessibilità e garantisce una navigazione intuitiva e fruibile per tutte le persone.
-Viene implementato come una lista di navigazione all'interno di un elemento `<aside>`, che indica chiaramente il suo ruolo di navigazione laterale.
+Negli esempi `.sidebar-wrapper` è un elemento `<aside>`, con il titolo come nome tramite `aria-labelledby`: usalo se nella pagina la sidebar è un contenuto complementare.
 
 Per garantire un'esperienza accessibile, assicurati di:
 
+- usare un `<nav>` per ogni lista di link (`.link-list-wrapper`) e, quando nella pagina ci sono più `<nav>`, dare a ciascuno un `aria-label` distinto che ne indichi la funzione;
+- non inserire il titolo come elemento `<li>`, perché verrebbe contato tra gli elementi della lista: posizionarlo prima della lista, all'inizio di `.sidebar-wrapper` come negli esempi, oppure dentro il `<nav>` della lista, usandolo come nome del `<nav>` tramite `aria-labelledby` al posto di `aria-label`;
+- assegnare al titolo un `id` unico nella pagina quando è usato come nome tramite `aria-labelledby`;
 - indicare sempre **visivamente** la pagina corrente, usando la classe `.active` sul link corrispondente;
 - indicare sempre **alle tecnologie assistive** la pagina corrente, usando l'attributo `aria-current="page"` sul link corrispondente;
 - segnalare i link disabilitati alle tecnologie assistive, usando l'attributo `aria-disabled="true"`;
