@@ -26,6 +26,13 @@ Il componente List, in italiano lista, raggruppa in una lista verticale una seri
 
 Le liste, costituite da tag `<ul>` con classe `.it-list` all'interno di un wrapper con classe `.it-list-wrapper`, possono contenere testi, link, icone, avatar, immagini o una combinazione di questi elementi.
 
+<it-callout variant="success" heading-level="h3">
+  <span slot="title">Accessibilità e semantica delle liste</span>
+  <p>A causa di un comportamento noto di WebKit, applicare <code>list-style-type: none;</code> a un elemento <code>&lt;ul&gt;</code> o <code>&lt;ol&gt;</code> (necessario per nascondere i marcatori visivi) ne rimuove la semantica di lista per le tecnologie assistive su <strong>Safari e VoiceOver</strong> (macOS/iOS): gli elementi vengono letti in sequenza, senza indicarne il conteggio o la posizione.</p>
+  <p>Per ripristinarla, se l'elemento non si trova già all'interno di un <code>&lt;nav&gt;</code> (dove Safari conserva la semantica di lista e il landmark fornisce già un contesto di navigazione), è consigliato aggiungere l'attributo <code>role="list"</code> all'elemento <code>&lt;ul&gt;</code> o <code>&lt;ol&gt;</code> interessato.</p>
+  <p>Questa indicazione riguarda in particolare le <a href="#liste-per-menu-di-navigazione">liste per menu di navigazione</a>, ma vale in generale per qualunque lista personalizzata che rimuova lo stile nativo dei marcatori.</p>
+</it-callout>
+
 ### Lista con avatar
 
 Per aggiungere un avatar, inserisci l'elemento `<it-avatar>` prima dell'elemento `.it-right-zone` che contiene il testo.
