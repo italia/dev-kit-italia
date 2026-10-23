@@ -848,7 +848,7 @@ export const LinkListAnnidataCollassabile: Story = {
                 <it-icon name="it-expand" color="primary"></it-icon>
               </span>
             </button>
-            <ul slot="content" class="link-sublist collapse">
+            <ul slot="content" class="link-sublist">
               <li>
                 <a class="list-item" href="#"><span>Link lista 1</span></a>
               </li>
@@ -869,7 +869,7 @@ export const LinkListAnnidataCollassabile: Story = {
                 <it-icon name="it-expand" color="primary"></it-icon>
               </span>
             </button>
-            <ul slot="content" class="link-sublist collapse">
+            <ul slot="content" class="link-sublist">
               <li>
                 <a class="list-item" href="#"><span>Link lista 1</span></a>
               </li>
@@ -890,7 +890,7 @@ export const LinkListAnnidataCollassabile: Story = {
                 <it-icon name="it-expand" color="primary"></it-icon>
               </span>
             </button>
-            <ul slot="content" class="link-sublist collapse">
+            <ul slot="content" class="link-sublist">
               <li>
                 <a class="list-item" href="#"><span>Link lista 1</span></a>
               </li>
