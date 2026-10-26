@@ -144,7 +144,12 @@ Per dare enfasi visiva, puoi aggiungere un'icona nell'header inserendo un compon
 <Canvas of={Stories.ConIcona} />
 
 ### Modale con liste di link
-Per inserire liste di link all’interno della modale, valorizza l'attributo `variation` con valore `link-list`.
+Per inserire liste di link all’interno della modale, valorizza l'attributo `variant` con valore `link-list`.
+
+<it-callout variant="success" heading-level="h4">
+  <span slot="title">Accessibilità lista di link</span>
+  <p>Su <strong>Safari e VoiceOver (macOS/iOS)</strong>, se la lista di link <code>.link-list</code> non si trova dentro un elemento <code>&lt;nav&gt;</code>, potrebbe non avere la semantica di lista. In questo caso, se i test ne confermano l'utilità, puoi ripristinarla aggiungendo l'attributo <code>role="list"</code> all'elemento <code>&lt;ul&gt;</code>.</p>
+</it-callout>
 
 <Canvas of={Stories.ConLinkList} />
 
