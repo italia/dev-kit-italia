@@ -1,3 +1,4 @@
+/* eslint-disable lit-a11y/no-redundant-role */
 import { html, nothing, type PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -411,7 +412,7 @@ export class ItStepper extends BaseLocalizedComponent {
     const total = this._stepCount;
 
     return html`
-      <ul class="steppers-dots" part="dots">
+      <ul class="steppers-dots" part="dots" role="list">
         ${Array.from({ length: total }, (_, i) => i).map(
           (i) => html`
             <li class=${this._getDotClass(i)} aria-current=${ifDefined(i === currentIndex ? 'step' : undefined)}>
@@ -469,7 +470,7 @@ export class ItStepper extends BaseLocalizedComponent {
     return html`
       <div class=${stepperClasses} part="stepper">
         <div class="steppers-header mb-3" part="header">
-          <ul part="header-list">
+          <ul part="header-list" role="list">
             ${this._steps.map((step, i) => this._renderHeaderItem(step, i))}
           </ul>
           ${this._renderMobileIndex()}

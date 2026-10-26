@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "@italia/dev-kit-italia": "file:../../packages/dev-kit-italia",
-    "vue": "^3.5.18",
+    "vue": "^3.5.43",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.7",
     "esbuild": "^0.28.2",
-    "vite": "^8.0.16"
+    "vite": "^8.3.5"
   },
   "packageManager": "npm@11.6.2"
 }
