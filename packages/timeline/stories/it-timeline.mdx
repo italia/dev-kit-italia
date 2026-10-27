@@ -86,7 +86,7 @@ Il pin ha tre varianti di colore controllate tramite l'attributo `variant`:
 
 ## Timeline Point list
 
-La variante point list permette la rappresentazione di una sequenza di eventi o informazioni in maniera più compatta rispetto alla timeline classica. È particolarmente indicata per presentare una breve sequenza di cose da fare e scadenze temporali.
+La variante point list permette la rappresentazione di una sequenza di eventi o informazioni in maniera più compatta rispetto alla timeline classica. È particolarmente utile per presentare una breve sequenza di cose da fare e scadenze temporali.
 
 
 ### Anteprima e attributi del componente
@@ -157,30 +157,30 @@ Per visualizzare un'icona, usa `it-icon` nel contenitore `.point-main` e accompa
 
 Per personalizzare il colore della sezione laterale, modifica l'attributo `color` di `<it-timeline-point>`. I valori disponibili sono quelli del Design system Italia: `primary`, `secondary`, `success`, `danger`, `warning`, `info` e `dark`.
 
-Se non specificato, il colore di default è `primary`.
+Se non specifichi un colore, viene utilizzato `primary` oppure il colore impostato sull'elemento <it-timeline>, se diverso da `primary`.
 
 <Canvas of={Stories.PointListVariantiColoreFull} />
 
-Puoi anche avere punti con colori diversi all'interno della stessa timeline specificando l'attributo `color` solo sui punti desiderati.
-
-In questo caso, gli elementi `it-timeline-point` senza l'attributo `color` prenderanno il colore di default `primary` o il valore assegnato all'attributo `color` dell'elemento `it-timeline`, mentre i punti con l'attributo `color` prenderanno il colore specificato
+Puoi anche usare colori diversi all'interno della stessa timeline, specificando l'attributo `color` solo sui punti che vuoi personalizzare.
 
 <Canvas of={Stories.PointListVariantiColore} />
 
 ### Timeline stile servizi pubblici
 
-Puoi creare un layout ottimizzato per presentare scadenze e procedure amministrative utilizzando come contenuto slottato nello slot `content` card semplici con data in evidenza e descrizione breve, e sfruttando la sezione laterale per evidenziare la data di scadenza o il numero di giorni mancanti alla scadenza.
+Per presentare scadenze di procedure amministrative, usa nello slot `content` delle card semplici con data o giorni in evidenza e descrizione breve. 
 
-Puoi fissare verticalmente il punto dell'elenco all'inizio del contenuto usa l'attributo `align-top` sull'elemento `<it-timeline-point>`. Nell'esempio è applicata all'ultimo punto elenco particolarmente lungo.
+Per fissare verticalmente il punto dell'elenco all'inizio del contenuto, usa l'attributo `align-top` sull'elemento `<it-timeline-point>`. In questo esempio, l'attributo è applicato all'ultimo punto elenco.
 
 <Canvas of={Stories.PointListServiziPubblici} />
 
 ### Esempio complesso con card complete
 
-Di seguito un esempio che integra card nel contenuto della timeline.
+Puoi integrare nello slot `content` della timeline anche card complete.
 
-Per fissare verticalmente il punto dell'elenco all'inizio del contenuto usa l'attributo `align-top` sull'elemento `<it-timeline-point>`. Nell'esempio è applicato a tutti i punti in elenco essendo particolarmente lunghi nei contenuti.
+In questi casi, fai attenzione a:
 
-Nota bene: usa l'attributo `stack-mobile` sull'elemento `<it-timeline variant="point-list">` per permettere su mobile di disporre verticalmente la sezione laterale in alto al contenuto, ottimizzando lo spazio per card complesse a risoluzioni mobile. In questo caso è bene che il contenuto sia sempre raccolto in elementi di tipo card o almeno con un fondale colorato per sovrastare gerarchicamente la linea.
+- posizionare su mobile la sezione laterale sopra il contenuto, usando l'attributo `stack-mobile` su `<it-timeline variant="point-list">`;
+- distinguere le card dalla linea della timeline, usando uno sfondo o un elemento di tipo card;
+- fissare verticalmente il punto dell'elenco all'inizio dei contenuti, usando l'attributo `align-top` sull'elemento `<it-timeline-point>` (specialmente quando nelle card hai contenuti particolarmente lunghi).
 
 <Canvas of={Stories.PointListComplessa} />
