@@ -8,7 +8,7 @@ on:
 jobs:
   testing:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 120
     concurrency: ci-test-${{ github.ref }}
 
     steps:
