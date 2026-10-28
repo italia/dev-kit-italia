@@ -103,7 +103,7 @@ Il componente `<it-toolbar-item>` gestirà autonomamente gli attributi per l'acc
 
 <Canvas of={Stories.ToolbarConDivisori} />
 
-## Con badge
+## Toolbar con badge
 
 Puoi usare dei badge sugli elementi della toolbar per indicare notifiche, cambi di sistema o contenuti non letti.
 
@@ -114,15 +114,18 @@ Puoi usare dei badge sugli elementi della toolbar per indicare notifiche, cambi 
 <Canvas of={Stories.ToolbarConBadge} />
 
 ### Toolbar media e piccola con badge
-Nelle versioni media e piccola della toolbar (`<it-toolbar size="md">` e `<it-toolbar size="sm">`), i Badge non contengono numeri ma possono essere usati come alert generici. Il numero dei contenuti non letti o nuovi va indicato nell'attributo `label-extended` riservato agli screen reader.
+Nelle varianti media (`<it-toolbar size="md">`) e piccola (`<it-toolbar size="sm">`), puoi usare i badge per segnalare notifiche generiche, poiché le dimensioni ridotte non consentono di mostrare numeri. 
+
+Ricorda, però, di comunicare il numero dei contatori ai lettori di schermo tramite l'attributo `label-extended`.
 
 <Canvas of={Stories.ToolbarMediaSmallConBadge} />
 
 
 ## Toolbar con dropdown
-All’interno della Toolbar è possibile implementare dei pulsanti dropdown con relativo sottomenù.
+Per una toolbar con pulsanti dropdown e relativi sottomenu:
 
-Aggiungi l'attributo `dropdown` al componente `<it-toolbar-item>` per trasformarlo in un elemento dropdown. Le voci del menu di tipo `<it-dropdown-item>` vanno inserite nello slot dedicato `items` in questo modo:
+1. aggiungi l'attributo `dropdown` agli elementi `<it-toolbar-item>`;
+2. inserisci le voci di tipo `<it-dropdown-item>` nello slot `items`.
 
 ```html
 <it-toolbar-item dropdown label="Dropdown">
@@ -131,8 +134,7 @@ Aggiungi l'attributo `dropdown` al componente `<it-toolbar-item>` per trasformar
 </it-toolbar-item>
 ```
 
-Se aggiungi la classe `.no-expand` al componente `<it-toolbar-item>`, l'icona di espansione del menu non verrà mostrata. Questo è utile quando hai un menu del tipo `altro` o `more` il cui simbolo di espansione è già implicito nell'icona stessa e quindi l'icona di espansione risulterebbe ridondante.
-(Negli esempi sottostanti, nell'elemento 'Altro' è stata rimossa l'icona di espansione del menu tramite la classe `.no-expand`).
+Per nascondere l'icona di espansione del menu, aggiungi la classe `.no-expand` al componente `<it-toolbar-item>`. Questa opzione è utile per voci come "Altro" o "More", le cui icone suggeriscono già la presenza di un sottomenu.
 
 ### Toolbar grande con dropdown
 <Canvas of={Stories.ToolbarDropdown} />
@@ -145,7 +147,7 @@ Se aggiungi la classe `.no-expand` al componente `<it-toolbar-item>`, l'icona di
 
 ## Toolbar verticale
 
-Applicando l'attributo `orientation="vertical"` alla Toolbar gli elementi vengono visualizzati in colonna.
+Per visualizzare gli elementi della toolbar in colonna, applica l'attributo `orientation="vertical"`.
 
 <Canvas of={Stories.ToolbarVertical} />
 
@@ -155,18 +157,18 @@ Applicando l'attributo `orientation="vertical"` alla Toolbar gli elementi vengon
 ### Toolbar piccola verticale
 <Canvas of={Stories.ToolbarSmallVertical} />
 
-## Proprietà, metodi ed eventi accessibili via js
+## Proprietà, metodi ed eventi accessibili via JS
 
 Il componente `<it-toolbar-item>` espone le seguenti proprietà, metodi ed eventi accessibili via JavaScript.
 
 ### Eventi
 Il componente `<it-toolbar-item>` emette l'evento custom `it-toolbar-item-click` quando l'elemento viene cliccato. L'evento fornisce il dettaglio dell'elemento cliccato (`event.detail`).
 
-È utile soprattuto quando l'elemento renderizza un bottone sul quale è necessario definire un comportamento custom al click.
+È utile soprattuto quando l'elemento renderizza un pulsante sul quale è necessario definire un comportamento custom al click.
 
 ## Personalizzazione degli stili
 
-Per la personalizzazione degli stili puoi usare i selettori `::part` dedicati.
+Per personalizzare degli stili del componente, puoi usare i selettori `::part` dedicati.
 
 ### Selettori di it-toolbar
 
