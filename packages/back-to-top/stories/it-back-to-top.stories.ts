@@ -134,12 +134,14 @@ const ScrollToTopTemplate = (params: BackToTopProps, context: { viewMode: string
       : '';
 
   return html` <div style="${wrapperStyle}">
-    ${context.viewMode === 'story'
-      ? html` <div class="py-4" style="width:300px; margin-left: auto; margin-right:auto;">
-          <p><strong>Scrolla il contenuto sottostante per veder apparire il pulsante.</strong></p>
-          ${exampleText}
-        </div>`
-      : ''}
+    ${
+      context.viewMode === 'story'
+        ? html` <div class="py-4" style="width:300px; margin-left: auto; margin-right:auto;">
+            <p><strong>Scrolla il contenuto sottostante per veder apparire il pulsante.</strong></p>
+            ${exampleText}
+          </div>`
+        : ''
+    }
     ${renderComponent({
       ...params,
     })}

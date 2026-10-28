@@ -125,11 +125,13 @@ export class ItVideo extends BaseLocalizedComponent {
 
     return renderable
       ? html`<div part="videoplayer-wrapper">
-          ${isYoutube
-            ? html`<div id="${this.videoId}" class="video-js" part="videoplayer"></div>`
-            : html`<video id="${this.videoId}" class="video-js" part="videoplayer">
-                <source src="${this.src}" type="${this.type}" />
-              </video>`}
+          ${
+            isYoutube
+              ? html`<div id="${this.videoId}" class="video-js" part="videoplayer"></div>`
+              : html`<video id="${this.videoId}" class="video-js" part="videoplayer">
+                  <source src="${this.src}" type="${this.type}" />
+                </video>`
+          }
           <slot></slot>
         </div>`
       : '';

@@ -211,11 +211,13 @@ export class ItTab extends BaseLocalizedComponent {
   render() {
     return html`
       <slot></slot>
-      ${this.dismissible
-        ? html`<span class="it-tab-close" aria-hidden="true" @click=${this._handleCloseClick}>
-            <it-icon name="it-close"></it-icon>
-          </span>`
-        : ''}
+      ${
+        this.dismissible
+          ? html`<span class="it-tab-close" aria-hidden="true" @click=${this._handleCloseClick}>
+              <it-icon name="it-close"></it-icon>
+            </span>`
+          : ''
+      }
     `;
   }
 }

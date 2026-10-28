@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: Install playwright browsers
         shell: bash

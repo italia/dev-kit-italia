@@ -115,17 +115,19 @@ export class ItSection extends BaseComponent {
 
     return html`
       <section id="${this.sectionId}" class="${classMap(wrapperClasses)}" part="section">
-        ${this.image
-          ? html`
-              <div class="img-responsive-wrapper">
-                <div class="img-responsive">
-                  <div class="img-wrapper">
-                    <img src="${this.image}" alt="" aria-hidden="true" />
+        ${
+          this.image
+            ? html`
+                <div class="img-responsive-wrapper">
+                  <div class="img-responsive">
+                    <div class="img-wrapper">
+                      <img src="${this.image}" alt="" aria-hidden="true" />
+                    </div>
                   </div>
                 </div>
-              </div>
-            `
-          : null}
+              `
+            : null
+        }
       </section>
     `;
   }

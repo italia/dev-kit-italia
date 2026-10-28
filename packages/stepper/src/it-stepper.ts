@@ -353,7 +353,8 @@ export class ItStepper extends BaseLocalizedComponent {
             <it-icon class="icon steppers-success" name="it-check" aria-hidden="true"></it-icon>
             <span class="visually-hidden">${this.$t('confirmed')} ${this.$t('step')} ${index + 1}</span>
           `
-        : html`<span class="visually-hidden">${isActive ? this.$t('active') : ''} ${this.$t('step')} </span>${index + 1}`;
+        : html`<span class="visually-hidden">${isActive ? this.$t('active') : ''} ${this.$t('step')} </span
+            >${index + 1}`;
 
       return html`
         <li class=${liClasses} aria-current=${ifDefined(isActive ? 'step' : undefined)}>
@@ -500,40 +501,42 @@ export class ItStepper extends BaseLocalizedComponent {
           </it-button>
 
           ${this._renderProgressIndicator()}
-          ${this.showConfirm
-            ? html`
-                <it-button
-                  type="button"
-                  variant="primary"
-                  size="sm"
-                  class="steppers-btn-confirm"
-                  exportparts="focusable"
-                  ?disabled=${this.nextDisabled}
-                  @click=${this._handleConfirm}
-                >
-                  ${this.confirmLabel || this.$t('confirm')}
-                </it-button>
-              `
-            : html`
-                <it-button
-                  type="button"
-                  variant="primary"
-                  size="sm"
-                  class="steppers-btn-next"
-                  exportparts="focusable"
-                  ?disabled=${isNextDisabled}
-                  @click=${this._handleNext}
-                >
-                  ${this.nextLabel || this.$t('next')}
-                  <it-icon
-                    class="icon"
-                    name="it-chevron-right"
-                    color=${this.dark ? 'primary' : 'inverse'}
+          ${
+            this.showConfirm
+              ? html`
+                  <it-button
+                    type="button"
+                    variant="primary"
                     size="sm"
-                    exportparts="icon: next-icon"
-                  ></it-icon>
-                </it-button>
-              `}
+                    class="steppers-btn-confirm"
+                    exportparts="focusable"
+                    ?disabled=${this.nextDisabled}
+                    @click=${this._handleConfirm}
+                  >
+                    ${this.confirmLabel || this.$t('confirm')}
+                  </it-button>
+                `
+              : html`
+                  <it-button
+                    type="button"
+                    variant="primary"
+                    size="sm"
+                    class="steppers-btn-next"
+                    exportparts="focusable"
+                    ?disabled=${isNextDisabled}
+                    @click=${this._handleNext}
+                  >
+                    ${this.nextLabel || this.$t('next')}
+                    <it-icon
+                      class="icon"
+                      name="it-chevron-right"
+                      color=${this.dark ? 'primary' : 'inverse'}
+                      size="sm"
+                      exportparts="icon: next-icon"
+                    ></it-icon>
+                  </it-button>
+                `
+          }
         </nav>
         ${this._renderSaveArea()}
       </div>

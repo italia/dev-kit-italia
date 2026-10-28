@@ -45,8 +45,7 @@ export interface StickyOptions {
 declare global {
   // eslint-disable-next-line no-var, vars-on-top
   var __itStickyState:
-    | { activeFixedTopStickies: StickyElement[]; activeFixedBottomStickies: StickyElement[] }
-    | undefined;
+    { activeFixedTopStickies: StickyElement[]; activeFixedBottomStickies: StickyElement[] } | undefined;
 }
 
 globalThis.__itStickyState ??= {

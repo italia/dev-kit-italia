@@ -207,13 +207,15 @@ export class ItDimmer extends BaseComponent {
       <div class="dimmable" part="dimmable">
         <div class="${classMap(this._dimmerClasses)}" aria-hidden="${this.active ? nothing : 'true'}" part="dimmer">
           <div class="dimmer-inner" part="dimmer-inner">
-            ${this.iconName
-              ? html`
-                  <div class="dimmer-icon" part="dimmer-icon">
-                    <it-icon name="${this.iconName}" size="lg" color="white"></it-icon>
-                  </div>
-                `
-              : ''}
+            ${
+              this.iconName
+                ? html`
+                    <div class="dimmer-icon" part="dimmer-icon">
+                      <it-icon name="${this.iconName}" size="lg" color="white"></it-icon>
+                    </div>
+                  `
+                : ''
+            }
             <slot name="content" @slotchange="${this._onContentSlotChange}" part="content"></slot>
           </div>
         </div>
