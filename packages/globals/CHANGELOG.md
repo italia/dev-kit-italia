@@ -1,5 +1,13 @@
 # @italia/globals
 
+## 1.0.0-beta.7
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-beta.7
+
 ## 1.0.0-beta.6
 
 ### Patch Changes
