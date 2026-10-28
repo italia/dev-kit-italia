@@ -4,5 +4,4 @@ export interface AutocompleteOption {
 }
 
 export type AutocompleteSource =
-  | AutocompleteOption[]
-  | ((query: string, callback: (results: AutocompleteOption[]) => void) => void);
+  AutocompleteOption[] | ((query: string, callback: (results: AutocompleteOption[]) => void) => void);

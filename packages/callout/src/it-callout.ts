@@ -20,12 +20,7 @@ export class ItCallout extends BaseComponent {
   @property({ type: Boolean, reflect: true, attribute: 'big-text' }) bigText = false;
 
   @property({ type: String, reflect: true, attribute: 'heading-level' }) headingLevel:
-    | 'h1'
-    | 'h2'
-    | 'h3'
-    | 'h4'
-    | 'h5'
-    | 'h6' = 'h2';
+    'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' = 'h2';
 
   @query('slot[name="title"]') private _titleSlot!: HTMLSlotElement;
 

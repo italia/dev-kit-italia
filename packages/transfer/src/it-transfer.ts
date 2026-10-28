@@ -495,13 +495,15 @@ export class ItTransfer extends FormControl {
           </div>
         </div>
 
-        ${invalid
-          ? html`
-              <div role="alert" id="invalid-feedback-${this._id}" class="form-feedback text-danger">
-                ${validityMessage}
-              </div>
-            `
-          : ''}
+        ${
+          invalid
+            ? html`
+                <div role="alert" id="invalid-feedback-${this._id}" class="form-feedback text-danger">
+                  ${validityMessage}
+                </div>
+              `
+            : ''
+        }
       </div>
 
       <!-- Hidden slot to read it-transfer-item children -->

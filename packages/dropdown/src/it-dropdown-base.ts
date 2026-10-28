@@ -251,29 +251,33 @@ export class ItDropdownBase extends BaseComponent {
           it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
           it-aria-controls=${this._popoverOpen ? this._menuId : nothing}
         >
-          ${this.alignment.startsWith('left') && !this.hideExpandIcon
-            ? html`<it-icon
-                name="it-expand"
-                class="icon-expand left"
-                size="sm"
-                exportparts="icon"
-                part="dropdown-icon-expand"
-              ></it-icon>`
-            : ''}
+          ${
+            this.alignment.startsWith('left') && !this.hideExpandIcon
+              ? html`<it-icon
+                  name="it-expand"
+                  class="icon-expand left"
+                  size="sm"
+                  exportparts="icon"
+                  part="dropdown-icon-expand"
+                ></it-icon>`
+              : ''
+          }
 
           <slot name="label">${this.label}</slot>
-          ${!this.alignment.startsWith('left') && !this.hideExpandIcon
-            ? html`<it-icon
-                name="it-expand"
-                class=${this.composeClass('icon-expand', {
-                  right: this.alignment.startsWith('right'),
-                  top: this.alignment.startsWith('top'),
-                })}
-                exportparts="icon"
-                part="dropdown-icon-expand"
-                size="sm"
-              ></it-icon>`
-            : ''}
+          ${
+            !this.alignment.startsWith('left') && !this.hideExpandIcon
+              ? html`<it-icon
+                  name="it-expand"
+                  class=${this.composeClass('icon-expand', {
+                    right: this.alignment.startsWith('right'),
+                    top: this.alignment.startsWith('top'),
+                  })}
+                  exportparts="icon"
+                  part="dropdown-icon-expand"
+                  size="sm"
+                ></it-icon>`
+              : ''
+          }
         </it-button>
         <div
           slot="content"
