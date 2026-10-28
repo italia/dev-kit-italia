@@ -8,13 +8,13 @@ import * as Stories from './it-toolbar.stories';
 <description>Menu di navigazione a icone che può contenere link, pulsanti e dropdown.</description>
 
 ## Cosa fa
-Il componente `<it-toolbar>` crea una barra di navigazione con link, pulsanti o dropdown, utile soprattutto per realizzare dashboard o strumenti di monitoraggio.
+Il componente Toolbar (`<it-toolbar>`) crea una barra di navigazione con link, pulsanti o dropdown, utile soprattutto per realizzare dashboard o strumenti di monitoraggio.
 
 Consiste in un elenco `<ul>` con tanti elementi `<li>` quante sono le voci richieste. Occupa tutta la larghezza del suo contenitore e si adatta allo spazio disponibile.
 
 [Approfondisci come e quando usare il componente Toolbar](https://designers.italia.it/design-system/componenti/toolbar/)
 
-## Anteprima e attributi del componente
+## Anteprima e attributi di it-toolbar
 
 Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
 
@@ -22,13 +22,13 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 <Controls of={Stories.EsempioInterattivo} />
 
-### Anteprima e attributi del componente it-toolbar-item
-Ogni elemento della toolbar, deve essere un componente `<it-toolbar-item>` che rappresenta un link, un pulsante o un dropdown. Puoi personalizzare ogni elemento modificando i suoi attributi.
+### Anteprima e attributi di it-toolbar-item
+Ogni elemento della toolbar deve essere un componente `<it-toolbar-item>` e può rappresentare un link, un pulsante o un dropdown. Puoi personalizzare ogni elemento modificando i suoi attributi.
 <Canvas of={Stories.ToolbarItemBase} />
 <Controls of={Stories.ToolbarItemBase} />
 
-### Eventi click di it-toolbar-item
-Se `<it-toolbar-item>` viene renderizzato come pulsante, il componente genera internamente un `<it-button>` nello shadow DOM. Gli attributi inline del tipo `onclick` non vengono applicati automaticamente a quell'elemento interno.
+### Eventi clic di it-toolbar-item
+Se `<it-toolbar-item>` viene renderizzato come pulsante, il componente genera internamente un `<it-button>` nello shadow DOM. Gli attributi inline del tipo `onclick` non vengono applicati automaticamente al pulsante interno.
 
 Per intercettare l'azione di clic, aggancia il listener direttamente a `<it-toolbar-item>` oppure ascolta l'evento custom `it-toolbar-item-click`, emesso dal componente in bubbling.
 
@@ -49,16 +49,14 @@ Per intercettare l'azione di clic, aggancia il listener direttamente a `<it-tool
 ```
 
 ## Accessibilità
-I componenti `<it-toolbar>` e `<it-toolbar-item>` sono progettati per essere accessibili e conformi agli standard di accessibilità.
+I componenti `<it-toolbar>` e `<it-toolbar-item>` sono progettati per essere conformi agli standard di accessibilità.
 
-Ecco alcune linee guida per garantire che il tuo utilizzo del componente sia accessibile:
-- **Etichette chiare**: Assicurati che ogni elemento all'interno della toolbar (che non sia un elemento divisorio) abbia un'etichetta chiara e descrittiva.
+Per garantire la massima accesibilità, assicurati di:
 
-  Utilizza testo visibile impostando l'attributo dedicato `label` ed eventualmente testo aggiuntivo per i soli lettori di schermo tramite l'attributo `label-extended`.
-
-  Se le etichette sono nascoste tramite l'attributo `hide-label` assicurati di fornire una descrizione accessibile tramite gli attributi `label`, `it-aria-label` ed eventualmente `label-extended`.
-
-- Se un elemento della toolbar mostra un badge, imposta sempre l'attributo `label-extended` sul componente `<it-toolbar-item>` per fornire una descrizione più dettagliata del badge ai lettori di schermo.
+- includere una **etichetta chiara, descrittiva e visibile** per ogni elemento interno alla toolbar, ad esclusione dei divisori, tramite l'attributo `label`;
+- aggiungere eventuale **testo aggiuntivo per lettori di schermo** tramite l'attributo `label-extended`;
+- fornire una **descrizione accessibile per le etichette nascoste (`hide-label`)**, tramite gli attributi `label`, `it-aria-label` ed eventualmente `label-extended`;
+- nel caso di elementi che mostrano badge, impostare l'attributo `label-extended` sul componente `<it-toolbar-item>` per fornire una descrizione più dettagliata ai lettori di schermo.
 
 ## Varianti di dimensione
 
