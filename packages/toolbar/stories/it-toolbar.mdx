@@ -5,13 +5,12 @@ import * as Stories from './it-toolbar.stories';
 
 # Toolbar
 
-<description>Menu di navigazione a icone che può contenere link, pulsanti e dropdown</description>
+<description>Menu di navigazione a icone che può contenere link, pulsanti e dropdown.</description>
 
 ## Cosa fa
-Il componente `<it-toolbar>` è un elemento contenitore di link, pulsanti o dropdown.
-È particolarmente utile per realizzare applicazioni molto specifiche, come ad esempio dashboard o strumenti di monitoraggio.
-Consiste in un elenco `<ul>` con tanti elementi `<li>` quante sono le voci richieste.
-Occupa tutta la larghezza del suo contenitore, adattandosi di conseguenza, e può essere di tre dimensioni diverse: grande, media e piccola per meglio adattarsi allo spazio disponibile.
+Il componente `<it-toolbar>` crea una barra di navigazione con link, pulsanti o dropdown, utile soprattutto per realizzare dashboard o strumenti di monitoraggio.
+
+Consiste in un elenco `<ul>` con tanti elementi `<li>` quante sono le voci richieste. Occupa tutta la larghezza del suo contenitore e si adatta allo spazio disponibile.
 
 [Approfondisci come e quando usare il componente Toolbar](https://designers.italia.it/design-system/componenti/toolbar/)
 
@@ -23,15 +22,15 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 <Controls of={Stories.EsempioInterattivo} />
 
-### Anteprima e attributi del componente `<it-toolbar-item>`
+### Anteprima e attributi del componente <it-toolbar-item>
 Ogni elemento della toolbar, deve essere un componente `<it-toolbar-item>` che rappresenta un link, un pulsante o un dropdown. Puoi personalizzare ogni elemento modificando i suoi attributi.
 <Canvas of={Stories.ToolbarItemBase} />
 <Controls of={Stories.ToolbarItemBase} />
 
-### Eventi click di `<it-toolbar-item>`
-Se `<it-toolbar-item>` viene renderizzato come pulsante, il componente genera internamente un `<it-button>` nello shadow DOM. Gli attributi inline del tipo `onclick` non vengono forwardati automaticamente a quell'elemento interno.
+### Eventi click di <it-toolbar-item>
+Se `<it-toolbar-item>` viene renderizzato come pulsante, il componente genera internamente un `<it-button>` nello shadow DOM. Gli attributi inline del tipo `onclick` non vengono applicati automaticamente a quell'elemento interno.
 
-Per intercettare l'azione di click, aggancia il listener direttamente a `<it-toolbar-item>` oppure ascolta l'evento custom `it-toolbar-item-click`, emesso dal componente in bubbling.
+Per intercettare l'azione di clic, aggancia il listener direttamente a `<it-toolbar-item>` oppure ascolta l'evento custom `it-toolbar-item-click`, emesso dal componente in bubbling.
 
 ```html
 <it-toolbar-item label="Messaggi" icon="it-comment"></it-toolbar-item>
@@ -63,7 +62,7 @@ Ecco alcune linee guida per garantire che il tuo utilizzo del componente sia acc
 
 ## Varianti di dimensione
 
-La Toolbar si adatta automaticamente in larghezza al suo contenitore. Per ottimizzare lo spazio disponibile l'elemento è fornito in tre versioni: grande, media e piccola.
+La toolbar si adatta automaticamente in larghezza al suo contenitore. Per ottimizzare lo spazio disponibile l'elemento è fornito in tre versioni: grande, media e piccola.
 
 ### Toolbar grande
 
@@ -165,29 +164,30 @@ Applicando l'attributo `orientation="vertical"` alla Toolbar gli elementi vengon
 Il componente `<it-toolbar-item>` espone le seguenti proprietà, metodi ed eventi accessibili via JavaScript.
 
 ### Eventi
-Il componente `<it-toolbar-item>` emette i seguenti eventi custom:
-- `it-toolbar-item-click`, quando l'elemento viene cliccato. L'evento fornisce il dettaglio dell'elemento cliccato (`event.detail`). E'utile soprattuto quando l'elemento renderizza un bottone sul quale è necessario definire un comportamento custom al click.
+Il componente `<it-toolbar-item>` emette l'evento custom `it-toolbar-item-click` quando l'elemento viene cliccato. L'evento fornisce il dettaglio dell'elemento cliccato (`event.detail`).
+
+È utile soprattuto quando l'elemento renderizza un bottone sul quale è necessario definire un comportamento custom al click.
 
 ## Personalizzazione degli stili
 
 Per la personalizzazione degli stili puoi usare i selettori `::part` dedicati.
 
-### Selettori di `<it-toolbar>`
+### Selettori di <it-toolbar>
 
-- `::part(toolbar-container)` — elemento `<nav>` contenitore della toolbar
-- `::part(toolbar-list)` — elemento `<ul>` della lista degli item
+- `::part(toolbar-container)`, elemento `<nav>` contenitore della toolbar.
+- `::part(toolbar-list)`, elemento `<ul>` della lista degli item.
 
-### Selettori di `<it-toolbar-item>`
+### Selettori di <it-toolbar-item>
 
-- `::part(toolbar-item)` — elemento `<li>` wrapper di ogni voce
-- `::part(toolbar-divider)` — aggiunto insieme a `toolbar-item` quando l'elemento è un divisore
-- `::part(toolbar-item-element)` — elemento interno della voce (link, bottone o dropdown)
-- `::part(focusable)` — elemento su cui cade il focus (link o bottone interno)
-- `::part(button)` — bottone interno (solo variante pulsante e dropdown)
-- `::part(icon)` — icona dell'elemento
-- `::part(expand-icon)` — icona di espansione del dropdown (solo variante `dropdown`)
-- `::part(badge-wrapper)` — contenitore del badge
-- `::part(badge)` — elemento `<span>` del badge
+- `::part(toolbar-item)`, elemento `<li>` wrapper di ogni voce.
+- `::part(toolbar-divider)`, aggiunto insieme a `toolbar-item` quando l'elemento è un divisore.
+- `::part(toolbar-item-element)`, elemento interno della voce (link, bottone o dropdown).
+- `::part(focusable)`, elemento su cui cade il focus (link o bottone interno).
+- `::part(button)`, bottone interno (solo variante pulsante e dropdown).
+- `::part(icon)`, icona dell'elemento.
+- `::part(expand-icon)`, icona di espansione del dropdown (solo variante `dropdown`).
+- `::part(badge-wrapper)`, contenitore del badge.
+- `::part(badge)`, elemento `<span>` del badge.
 
 [Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
 
