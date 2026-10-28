@@ -311,6 +311,7 @@ export class ItHeader extends BaseComponent {
 
   private createModal() {
     const modal = document.createElement('it-modal');
+    modal.setAttribute('default-focus-close', 'true');
     modal.setAttribute('position', 'left');
     modal.setAttribute('scrollable', 'true');
     modal.setAttribute('close-label', this.closeAriaLabel);

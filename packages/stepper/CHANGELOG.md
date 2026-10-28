@@ -1,5 +1,91 @@
 # @italia/stepper
 
+## 1.0.0-beta.6
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+## 1.0.0-beta.5
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.4
+  - @italia/globals@1.0.0-beta.4
+  - @italia/i18n@1.0.0-beta.4
+  - @italia/icon@1.0.0-beta.4
+
+## 1.0.0-beta.3
+
+### Minor Changes
+
+- [#523](https://github.com/italia/dev-kit-italia/pull/523) [`bbd57df`](https://github.com/italia/dev-kit-italia/commit/bbd57df519e38f7a1f986fb588fd3c5dff15b5ad) Thanks [@deodorhunter](https://github.com/deodorhunter)! - **Stepper: allow blocking progress when the step form is invalid**
+  - New `next-disabled` attribute on `it-stepper`: disables the "Next" button as well as "Confirm" (which previously lacked a `?disabled` binding and could not be disabled externally). It is combined via OR with automatic disabling at sequence boundaries; the "Back" button is unaffected.
+  - `it-stepper-change` is now cancelable when triggered by clicking the "Next" button: calling `preventDefault()` blocks the step change, allowing the consumer to display errors with `reportValidity()` or execute asynchronous checks. When emitted by the public `next()` / `prev()` methods, it remains non-cancelable so consumers cannot lock themselves inside their own listener. It continues to not be emitted when directly setting `current`.
+  - `it-stepper-confirm` remains non-cancelable by design: it has no default behavior to block (it does not advance the step), so the consumer already has full control over what happens on confirmation. To prevent confirmation, use `next-disabled`.
+  - New exported type: `StepperChangeEventDetail`.
+  - Stories, MDX documentation, and the example apps updated with both approaches.
+
+- [#523](https://github.com/italia/dev-kit-italia/pull/523) [`bbd57df`](https://github.com/italia/dev-kit-italia/commit/bbd57df519e38f7a1f986fb588fd3c5dff15b5ad) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Exposed the stepper nav arrows as CSS parts
+  - The `it-icon` elements inside the "Indietro" and "Avanti" buttons now forward their `icon` part as `prev-icon` and `next-icon`, so consumers can style them with `it-stepper::part(next-icon)`. They were previously unreachable: `it-icon` exposes its svg as `icon`, but a part only reaches the tree that holds the element — the stepper's shadow root — and no `exportparts` forwarded it out to the page. The only lever left to consumers was the `--bsi-icon-size-s` custom property, which inherits across the shadow boundary but only controls size.
+  - The two names are distinct because the header check marks and the per-step icons are `it-icon` elements too: forwarding them all as `icon` would let a single consumer rule hit every one of them.
+  - Documented all of the stepper's parts with `@csspart`, which were previously unlisted: `stepper`, `header`, `header-list`, `content`, `nav`, `progress`, `dots`, `save`, `focusable`, plus the two new ones.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+
+## 1.0.0-beta.2
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+
+## 1.0.0-beta.1
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
 ## 1.0.0-beta.0
 
 ### Major Changes

@@ -6,4 +6,5 @@
 
 :host {
   --#{$prefix}dropdown-background: var(--#{$prefix}color-background-inverse);
+  --#{$prefix}popover-notch-offset: -8px;
 }

@@ -27,8 +27,8 @@ L'attributo `position` non ha effetto in questa anteprima perché richiede una s
 ## Indicazioni generali
 Il componente Thumbnav è composto da due elementi:
 
-- `it-thumbnav`, il contenitore che raggruppa le miniature e gestisce il layout;
-- `it-thumbnav-item`, il singolo elemento che contiene nello slot un anchor con immagine.
+- `<it-thumbnav>`: il contenitore che raggruppa le miniature e gestisce il layout;
+- `<it-thumbnav-item>`: il singolo elemento che contiene nello slot un anchor con immagine.
 
 Inserisci nell'anchor la classe Bootstrap Italia `.ratio` per mantenere un rapporto d'aspetto consistente:
 
@@ -44,7 +44,7 @@ Inserisci nell'anchor la classe Bootstrap Italia `.ratio` per mantenere un rappo
 
 Se utilizzi il componente in un framework JavaScript (React, Vue, Angular), usa il tag di navigazione previsto dal framework al posto dell'anchor HTML (ad esempio `<Link>` in React) e mantieni la struttura interna con la classe `.ratio` e l'immagine.
 
-Per segnalare agli utenti quale miniatura è attiva, usa l'attributo `active` sull'elemento `it-thumbnav-item` corrispondente.
+Per segnalare agli utenti quale miniatura è attiva, usa l'attributo `active` sull'elemento `<it-thumbnav-item>` corrispondente alla pagina o immagine attiva.
 
 ```html
 <it-thumbnav-item active>
@@ -68,7 +68,7 @@ Per garantire un'esperienza accessibile anche a chi usa tecnologie assistive:
       <span class="text">Test di accessibilità con strumenti di analisi statica</span>
     </div>
     <p>
-      Axe e strumenti simili possono segnalare falsi positivi quando analizzano il componente `it-thumbnav`, a causa del supporto limitato per Web Components. L'accessibilità del componente è comunque confermata dall'Accessibility Tree e dai test manuali con lettori di schermo.
+      Axe e strumenti simili di analisi statica possono segnalare falsi positivi quando analizzano il componente `it-thumbnav`, a causa del supporto limitato per Web Components. L'accessibilità del componente è comunque confermata dall'Accessibility Tree e dai test manuali con lettori di schermo.
     </p>
   </div>
 </div>

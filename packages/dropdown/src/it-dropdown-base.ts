@@ -290,7 +290,7 @@ export class ItDropdownBase extends BaseComponent {
             <ul
               id=${this._menuId}
               class="link-list"
-              role=${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}
+              role=${this.itRole}
               @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
               aria-orientation=${ifDefined(this.fullWidth ? 'horizontal' : undefined)}
             >

@@ -1,5 +1,59 @@
 # Changelog - Toolbar Component
 
+## 1.0.0-beta.6
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+## 1.0.0-beta.5
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- [#536](https://github.com/italia/dev-kit-italia/pull/536) [`c33e8d8`](https://github.com/italia/dev-kit-italia/commit/c33e8d8f9fb2cfc4f094993d228823f2be926952) Thanks [@Fupete](https://github.com/Fupete)! - fix(toolbar-item): don't clear aria-orientation on the divider
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.4
+
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+## 1.0.0-beta.2
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+## 1.0.0-beta.1
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
 ## 1.0.0-beta.0
 
 ### Major Changes

@@ -1,6 +1,7 @@
 /// <reference types="mocha"/>
 
 import { expect, fixture, html } from '@open-wc/testing';
+import { CSS_PREFIX } from '@italia/test-config/utils/css-prefix.js';
 import type { ItCallout } from '@italia/callout';
 import '@italia/icon';
 import '@italia/callout';
@@ -139,14 +140,14 @@ describe('ItCallout', () => {
 
       // Verifica che la CSS variable sia impostata correttamente
       const styles = getComputedStyle(el);
-      const textSize = styles.getPropertyValue('--bsi-callout-text-size').trim();
+      const textSize = styles.getPropertyValue(`--${CSS_PREFIX}callout-text-size`).trim();
       expect(textSize).to.equal('18px');
 
       // Se la prop viene tolta, la CSS variable torna al default
       el.bigText = false;
       await el.updateComplete;
       const updatedStyles = getComputedStyle(el);
-      const defaultTextSize = updatedStyles.getPropertyValue('--bsi-callout-text-size').trim();
+      const defaultTextSize = updatedStyles.getPropertyValue(`--${CSS_PREFIX}callout-text-size`).trim();
       expect(defaultTextSize).to.equal('16px');
     });
 
@@ -348,7 +349,7 @@ describe('ItCallout', () => {
 
       // Check CSS variable is set on host
       const styles = getComputedStyle(el);
-      const textSize = styles.getPropertyValue('--bsi-callout-text-size').trim();
+      const textSize = styles.getPropertyValue(`--${CSS_PREFIX}callout-text-size`).trim();
       expect(textSize).to.equal('18px');
     });
 
@@ -375,7 +376,7 @@ describe('ItCallout', () => {
 
       // Verifica che it-callout-more applichi la CSS variable corretta
       const styles = getComputedStyle(calloutMore!);
-      const textSize = styles.getPropertyValue('--bsi-callout-text-size').trim();
+      const textSize = styles.getPropertyValue(`--${CSS_PREFIX}callout-text-size`).trim();
       expect(textSize).to.equal('18px');
     });
   });

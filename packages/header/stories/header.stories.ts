@@ -70,9 +70,13 @@ type Story = StoryObj<HeaderStoryArgs>;
 const renderHeaderSlim = ({ accessButton = 'default', theme = 'default' } = {}) => {
   let renderAccessButton = html`<it-button variant="primary" size="xs">Accedi</it-button>`;
   if (accessButton === 'full') {
-    renderAccessButton = html` <a href="#" class="btn btn-primary btn-icon btn-full">
+    renderAccessButton = html` <a
+      href="#"
+      class="btn btn-primary btn-icon btn-full"
+      aria-label="Accedi all'area personale"
+    >
       <span class="rounded-icon">
-        <it-icon name="it-user" color="primary" size="xs" label="Accedi all'area personale"></it-icon>
+        <it-icon name="it-user" color="primary" size="xs"></it-icon>
       </span>
       <span class="d-none d-lg-block" aria-hidden="true">Accedi all'area personale</span>
     </a>`;
@@ -343,6 +347,10 @@ export const HeaderNavSecondary: Story = {
 export const HeaderFull: Story = {
   name: 'Header completo',
   args: defaultArgs,
+  parameters: {
+    layout: 'fullscreen',
+    pageLayout: 'header-full',
+  },
   render: (args) =>
     html`<it-header
       .breakpoint=${args.breakpoint}
@@ -358,6 +366,10 @@ export const HeaderFull: Story = {
 export const HeaderFullLight: Story = {
   name: 'Header completo - Versione chiara',
   args: defaultArgs,
+  parameters: {
+    layout: 'fullscreen',
+    pageLayout: 'header-full',
+  },
   render: () =>
     html`<it-header
       .breakpoint=${defaultArgs.breakpoint}

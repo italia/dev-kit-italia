@@ -36,8 +36,8 @@ Il componente è composto da tre parti principali:
 
 Il componente Transfer è composto da due elementi:
 
-- `it-transfer`: il contenitore principale che gestisce la logica e l'integrazione con il form;
-- `it-transfer-item`: il singolo elemento trasferibile, da inserire come figlio diretto di `it-transfer`.
+- `<it-transfer>`: il contenitore principale che gestisce la logica e l'integrazione con il form;
+- `<it-transfer-item>`: il singolo elemento trasferibile, da inserire come figlio diretto di `<it-transfer>`.
 
 ```html
 <it-transfer name="my-field">
@@ -48,12 +48,12 @@ Il componente Transfer è composto da due elementi:
 
 ### Singolo elemento trasferibile
 
-`it-transfer-item` rappresenta il singolo elemento che può essere spostato tra le due liste, ed espone i seguenti attributi:
+`<it-transfer-item>` rappresenta il singolo elemento che può essere spostato tra le due liste, ed espone i seguenti attributi:
 - `value`: il valore univoco dell'elemento, che viene inviato nel form se l'elemento è presente nella lista destinazione;
 - `disabled`: se impostato, l'elemento non può essere trasferito;
 - `target`: se impostato, l'elemento parte già nella lista destinazione al caricamento.
 
-Il testo all'interno di `it-transfer-item` rappresenta l'etichetta visualizzata per l'elemento: questa può essere inserita nello slot di default, come testo semplice.
+Il testo all'interno di `<it-transfer-item>` rappresenta l'etichetta visualizzata per l'elemento: questa può essere inserita nello slot di default, come testo semplice.
 
 ## Accessibilità
 
@@ -67,7 +67,7 @@ Il componente Transfer implementa le seguenti specifiche per garantire un'esperi
 
 ## Con valori preimpostati
 
-Puoi impostare elementi nella lista destinazione al caricamento aggiungendo l'attributo `target` agli `it-transfer-item` desiderati.
+Puoi impostare elementi nella lista destinazione al caricamento aggiungendo l'attributo `target` agli `<it-transfer-item>` desiderati.
 
 <Canvas of={TransferStories.ConValoriPreimpostati} />
 
@@ -81,19 +81,19 @@ Il testo di queste etichette è importante per l'accessibilità, in quanto viene
 
 ## Elemento singolo non trasferibile
 
-Puoi rendere un singolo elemento non trasferibile con l'attributo `disabled` sull'`it-transfer-item`.
+Puoi rendere un singolo elemento non trasferibile con l'attributo `disabled` sull'`<it-transfer-item>`.
 
 <Canvas of={TransferStories.ElementoDisabilitato} />
 
 ## Stato disabilitato
 
-Impostando l'attributo `disabled` su `it-transfer`, l'intero componente viene disabilitato: le checkbox e i pulsanti non sono interagibili.
+Impostando l'attributo `disabled` su `<it-transfer>`, l'intero componente viene disabilitato: le checkbox e i pulsanti non sono interagibili.
 
 <Canvas of={TransferStories.Disabilitato} />
 
 ## Integrazione con il form
 
-Il componente `it-transfer` si integra nativamente con i form HTML. Il valore inviato alla sottomissione è un array JSON dei valori (`value`) degli elementi presenti nella lista destinazione.
+Il componente `<it-transfer>` si integra nativamente con i form HTML. Il valore inviato alla sottomissione è un array JSON dei valori (`value`) degli elementi presenti nella lista destinazione.
 
 **Esempio di valore nel form:**
 ```
@@ -171,19 +171,19 @@ el.addEventListener('it-transfer', async (e) => {
 
 ## Personalizzazione degli stili
 
-Per personalizzare l'aspetto del componente `it-transfer` dall'esterno dello shadow DOM puoi utilizzare il selettore `::part()` sui seguenti part esposti dal componente:
+Per personalizzare l'aspetto del componente `<it-transfer>` dall'esterno dello shadow DOM puoi utilizzare il selettore `::part()` sui seguenti part esposti dal componente:
 
-- `base` — il `div` radice che avvolge l'intero componente.
+- `base` — il `<div>` radice che avvolge l'intero componente.
 - `row` — la riga Bootstrap che affianca le due liste e la colonna dei pulsanti.
 - `source-col` — la colonna che contiene la lista sorgente (sinistra).
 - `buttons-col` — la colonna centrale che contiene i pulsanti di azione.
 - `target-col` — la colonna che contiene la lista destinazione (destra).
-- `source-wrapper` — il `div` della lista sorgente con bordo e intestazione (è anche il nodo `role="group"`).
-- `target-wrapper` — il `div` della lista destinazione con bordo e intestazione (è anche il nodo `role="group"`).
+- `source-wrapper` — il `<div>` della lista sorgente con bordo e intestazione (è anche il nodo `role="group"`).
+- `target-wrapper` — il `<div>` della lista destinazione con bordo e intestazione (è anche il nodo `role="group"`).
 - `header` — l'intestazione di ciascuna lista, contenente la checkbox "seleziona tutto" e il contatore degli elementi. Presente in entrambe le liste.
 - `scroll` — l'area a scorrimento verticale contenente le checkbox degli elementi. Presente in entrambe le liste.
-- `group` — il `div` interno che raggruppa le singole checkbox degli elementi. Presente in entrambe le liste.
-- `buttons` — il `div` che raggruppa i tre pulsanti di azione (trasferisci, ritrasferisci, ripristina).
+- `group` — il `<div>` interno che raggruppa le singole checkbox degli elementi. Presente in entrambe le liste.
+- `buttons` — il `<div>` che raggruppa i tre pulsanti di azione (trasferisci, ritrasferisci, ripristina).
 - `forward-button` — il pulsante che sposta gli elementi selezionati dalla lista sorgente alla lista destinazione.
 - `back-button` — il pulsante che riporta gli elementi selezionati dalla lista destinazione alla lista sorgente.
 - `reset-button` — il pulsante che ripristina entrambe le liste allo stato iniziale.

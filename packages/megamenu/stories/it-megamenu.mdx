@@ -9,9 +9,9 @@ import * as Stories from './it-megamenu.stories';
 
 ## Cosa fa
 
-Il componente Megamenu (`it-megamenu`) implementa un sottomenu con elenchi di link e informazioni correlate per semplificare la navigazione di una sezione di un sito.
+Il componente Megamenu (`<it-megamenu>`) implementa un sottomenu con elenchi di link e informazioni correlate per semplificare la navigazione di una sezione di un sito.
 
-Il megamenu è una estensione del componente `it-dropdown` per la navbar `<nav>` del sito.
+Il megamenu è una estensione del componente `<it-dropdown>` per la navbar `<nav>` del sito.
 
 [Approfondisci quando e come usare il componente Megamenu](https://designers.italia.it/design-system/componenti/megamenu/)
 
@@ -27,15 +27,15 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 - Usa i megamenu solo per la navigazione principale del sito e con moderazione, testando sempre la loro efficacia con gli utenti.
 
-- Per una corretta gestione del megamenu su mobile, è necessario che il componente sia inserito all'interno del componente `<it-header>`. Per maggiori dettagli, su come includere `it-megamenu` nell'header, consulta la [documentazione del componente Header](?path=/docs/componenti-header--documentazione).
+- Per una corretta gestione del megamenu su mobile, è necessario che il componente sia inserito all'interno del componente `<it-header>`. Per maggiori dettagli, su come includere `<it-megamenu>` nell'header, consulta la [documentazione del componente Header](?path=/docs/componenti-header--documentazione).
 
 - Puoi accostare più megamenu nella navbar per dare accesso a sezioni diverse del sito.
 
 - Usa il megamenu con parsimonia per via della sua natura di interazione complessa, testando sempre la sua efficacia con gli utenti.
 
-- Un link con classe `active` indica la sezione corrente.
+- Un link con classe `.active` indica la sezione corrente.
 
-- Un elemento `<it-dropdown-item>` interno al megamenu con classe `active` indica la pagina corrente.
+- Un elemento `<it-dropdown-item>` interno al megamenu con classe `.active` indica la pagina corrente.
 
 
 Il componente `<it-megamenu>` espone i seguenti slot:
@@ -66,14 +66,14 @@ La variante base può contenere liste di voci di navigazione organizzate su più
 ## Con link “Esplora la sezione”
 Come nella variante completa, puoi aggiungere un link **“Esplora la sezione X”** come primo link.
 
-Un link `it-heading-link` con classe `active` indica la sezione corrente del sito.
+Un link `.it-heading-link` con classe `.active` indica la sezione corrente del sito.
 
 <Canvas of={Stories.MegamenuEsploraSezione} />
 
 ## Con link “Esplora tutti”
 Nel caso le voci da mostrare fossero numerose, puoi aggiungere un link **“Esplora tutti i contenuti Y”** che porta a una lista completa.
 
-Un link `it-footer-link` con classe `active` indica la sezione corrente del sito.
+Un link `.it-footer-link` con classe `.active` indica la sezione corrente del sito.
 
 <Canvas of={Stories.MegamenuEsploraTutti} />
 

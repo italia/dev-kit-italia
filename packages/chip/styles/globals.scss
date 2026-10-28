@@ -46,7 +46,7 @@ it-chip:not(:defined) {
     order: 1;
     font-size: var(--it-chip-fouc-font-size);
     font-weight: var(--it-font-weight-semibold);
-    line-height: var(--bsi-font-leading-5);
+    line-height: var(--#{$prefix}font-leading-5);
   }
 
   it-button,

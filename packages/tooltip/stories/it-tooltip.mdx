@@ -9,7 +9,7 @@ import * as TooltipStories from './it-tooltip.stories';
 
 ## Cosa fa
 
-Il componente Tooltip (`it-tooltip`) visualizza una breve etichetta testuale in overlay, posizionata dinamicamente rispetto a un elemento trigger.
+Il componente Tooltip (`<it-tooltip>`) visualizza una breve etichetta testuale in overlay, posizionata dinamicamente rispetto a un elemento trigger.
 Utilizza [Floating UI](https://floating-ui.com/) per il posizionamento intelligente e si adatta automaticamente allo spazio disponibile.
 
 A differenza del Popover, il Tooltip è pensato per contenuti brevissimi (una frase o poche parole) e si attiva automaticamente al passaggio del mouse o al focus da tastiera, senza richiedere un click.
@@ -32,7 +32,7 @@ Per vedere come cambia il codice, clicca su **Show code**.
 ## Indicazioni generali
 
 Il tooltip si attiva automaticamente al passaggio del mouse (`mouseenter`) o al focus da tastiera (`focusin`) su qualsiasi elemento interattivo inserito nello slot `trigger`.
-È adatto sia per `it-button` che per elementi nativi come `<button>` o `<a>`.
+È adatto sia per `<it-button>` che per elementi nativi come `<button>` o `<a>`.
 
 <Canvas of={TooltipStories.SuLink} />
 

@@ -72,13 +72,13 @@ export class ItToolbar extends BaseComponent {
       if (item.divider) {
         item.setAttribute('role', 'separator');
         if (this.orientation === 'vertical') {
-          item.setAttribute('aria-orientation', 'horizontal');
+          item.setAttribute('it-aria-orientation', 'horizontal');
         } else {
-          item.setAttribute('aria-orientation', 'vertical');
+          item.setAttribute('it-aria-orientation', 'vertical');
         }
       } else {
         item.setAttribute('role', 'presentation');
-        item.removeAttribute('aria-orientation');
+        item.removeAttribute('it-aria-orientation');
       }
     });
   }

@@ -9,7 +9,7 @@ import * as Stories from './it-sticky.stories';
 
 ## Cosa fa
 
-Il componente Sticky (`it-sticky`) mantiene un elemento visibile mentre l'utente scorre la pagina. Questo è particolarmente utile per menu di navigazione, call-to-action importanti, pulsanti di contatto o supporto che devono sempre rimanere accessibili.
+Il componente Sticky (`<it-sticky>`) mantiene un elemento visibile mentre l'utente scorre la pagina. Questo è particolarmente utile per menu di navigazione, call-to-action importanti, pulsanti di contatto o supporto che devono sempre rimanere accessibili.
 
 [Approfondisci quando e come usare il componente Sticky](https://designers.italia.it/design-system/componenti/sticky/)
 
@@ -102,7 +102,7 @@ Quando ci sono più componenti sticky sulla pagina, puoi impilarli l'uno sull'al
 ## Position bottom
 
 Impostando `position="bottom"` insieme a `position-type="fixed"`, l'elemento viene agganciato al bordo inferiore del viewport **immediatamente al caricamento della pagina**, senza attendere lo scroll.
-Questo è il comportamento usato internamente da `it-bottom-nav`.
+Questo è il comportamento usato internamente da `<it-bottom-nav>`.
 
 Aggiungendo l'attributo `stackable` è possibile sovrapporre più barre fisse in fondo, che si impileranno verso l'alto in ordine di connessione al DOM.
 
@@ -115,7 +115,7 @@ Aggiungendo l'attributo `stackable` è possibile sovrapporre più barre fisse in
 
 ### Eventi
 
-Il componente `it-sticky` emette questi eventi custom:
+Il componente `<it-sticky>` emette questi eventi custom:
 
 - **it-sticky-on**, quando l'elemento diventa sticky;
 - **it-sticky-off**, quando l'elemento smette di essere sticky.

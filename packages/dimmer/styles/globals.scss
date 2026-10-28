@@ -70,3 +70,9 @@ it-dimmer .dimmer-buttons {
     }
   }
 }
+
+it-dimmer p[slot='content'],
+it-dimmer [slot='content'] p {
+  font-family: var(--#{$prefix}dimmer-body-font-family);
+  font-size: var(--#{$prefix}dimmer-body-font-size);
+}

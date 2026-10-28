@@ -19,6 +19,6 @@ it-stepper-step:not(:defined) {
   }
 
   it-stepper[dark] & [slot='label'] {
-    --#{$prefix}color-text-base: white;
+    --#{$prefix}color-text-base: var(--#{$prefix}color-text-inverse);
   }
 }

@@ -1,5 +1,74 @@
 # @italia/carousel
 
+## 1.0.0-beta.6
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/card@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/i18n@1.0.0-beta.6
+
+## 1.0.0-beta.5
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd)]:
+  - @italia/card@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/i18n@1.0.0-beta.5
+
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`f43dd5a`](https://github.com/italia/dev-kit-italia/commit/f43dd5a4b7c20a892909312351b3961f5e16cf4b)]:
+  - @italia/card@1.0.0-beta.4
+  - @italia/globals@1.0.0-beta.4
+  - @italia/i18n@1.0.0-beta.4
+
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- [#511](https://github.com/italia/dev-kit-italia/pull/511) [`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Replaced hardcoded `--bsi-` custom property names with the interpolated `$prefix`, so styles keep working with a custom Bootstrap Italia prefix. Also fixed the avatar presence dot reading `--#{$prefix}avatar-dot-offset-top` instead of `--#{$prefix}avatar-dot-offset-bottom` (default aligned to `8px`, as in Bootstrap Italia)
+
+- Updated dependencies [[`fdae554`](https://github.com/italia/dev-kit-italia/commit/fdae554af8d39c72123b2d4dc9d47b8d930c2743)]:
+  - @italia/card@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/i18n@1.0.0-beta.3
+
+## 1.0.0-beta.2
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/card@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/i18n@1.0.0-beta.2
+
+## 1.0.0-beta.1
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#470](https://github.com/italia/dev-kit-italia/pull/470) [`0fe470c`](https://github.com/italia/dev-kit-italia/commit/0fe470c4d850586874c46efd84e7d0431c4b16fd) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fixed `aria-roledescription` being set on the shadow DOM wrapper, where it had no effect since that element carries `role="presentation"`. It is now set on the host element instead, next to the `region` landmark.
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/card@1.0.0-beta.1
+  - @italia/i18n@1.0.0-beta.1
+
 ## 1.0.0-beta.0
 
 ### Major Changes

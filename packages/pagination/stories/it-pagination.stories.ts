@@ -211,6 +211,39 @@ export const ConNavigazioneTestuale: Story = {
   `,
 };
 
+export const ConElementoDisabilitato: Story = {
+  name: 'Con elemento disabilitato',
+  render: () => html`
+    <it-pagination value="1">
+      <a href="#" slot="prev">
+        <it-icon name="it-chevron-left"></it-icon>
+        <span class="visually-hidden">Pagina precedente</span>
+      </a>
+
+      <it-pagination-item page="1">
+        <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>1</a>
+      </it-pagination-item>
+      <it-pagination-item page="2">
+        <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>2</a>
+      </it-pagination-item>
+      <it-pagination-item page="3">
+        <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>3</a>
+      </it-pagination-item>
+      <it-pagination-item page="4" disabled>
+        <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>4</a>
+      </it-pagination-item>
+      <it-pagination-item page="5">
+        <a href="#"><span class="d-inline-block d-sm-none">Pagina </span>5</a>
+      </it-pagination-item>
+
+      <a href="#" slot="next">
+        <it-icon name="it-chevron-right"></it-icon>
+        <span class="visually-hidden">Pagina successiva</span>
+      </a>
+    </it-pagination>
+  `,
+};
+
 export const AllineamentoStart: Story = {
   name: 'Allineamento a sinistra',
   render: () => html`

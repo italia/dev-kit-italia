@@ -207,7 +207,6 @@ export class ItToolbarItem extends BaseComponent {
     const ariaAttributes: Record<string, string> = { ...this._ariaAttributes };
     delete ariaAttributes['aria-disabled']; // Rimuove aria-disabled se presente, gestito a livello di focusable element
     delete ariaAttributes['aria-label']; // Rimuove aria-label se presente, gestito a livello di focusable element
-    delete ariaAttributes['aria-orientation']; // Rimuove aria-orientation se presente, gestito a livello di it-toolbar-item
     return this.divider
       ? html`<li
           part="toolbar-item toolbar-divider"

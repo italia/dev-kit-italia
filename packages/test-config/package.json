@@ -1,15 +1,17 @@
 {
   "name": "@italia/test-config",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.2",
   "description": "",
   "type": "module",
   "private": true,
   "exports": {
     "./utils": "./utils/index.js",
+    "./utils/css-prefix.js": "./utils/css-prefix.js",
     "./web-test-runner.config.js": "./web-test-runner.config.js"
   },
   "files": [
     "utils/index.js",
+    "utils/css-prefix.js",
     "web-test-runner.config.js"
   ],
   "scripts": {

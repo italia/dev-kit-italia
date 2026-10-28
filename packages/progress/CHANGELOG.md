@@ -1,5 +1,59 @@
 # @italia/progress
 
+## 1.0.0-beta.6
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.6
+
+## 1.0.0-beta.5
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - fix: disconnected token/property regressions found by the BSI #1888 audit (refs #524)
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.5
+
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.4
+
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- [#512](https://github.com/italia/dev-kit-italia/pull/512) [`90a6bbc`](https://github.com/italia/dev-kit-italia/commit/90a6bbc8ff111be3c8c842a3e81040cc5576ea0d) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fixed `it-progress[type="donut"]` ignoring the semantic `color` variants (`default`, `success`, `info`, `warning`, `danger`), which all collapsed onto the same color. Each variant now maps to the same design token the matching Progress Bar variant uses, and the resulting color is exposed as the `--it-progress-donut-color` custom property for per-instance customization
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.3
+
+## 1.0.0-beta.2
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/globals@1.0.0-beta.2
+
+## 1.0.0-beta.1
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4)]:
+  - @italia/globals@1.0.0-beta.1
+
 ## 1.0.0-beta.0
 
 ### Major Changes

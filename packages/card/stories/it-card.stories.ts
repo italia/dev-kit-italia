@@ -1,3 +1,4 @@
+/* eslint-disable lit-a11y/no-redundant-role */
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -1054,7 +1055,7 @@ export const ListeDiContenutiAffini: Story = {
             />
           </figure>
           <span slot="text">Descrizione breve dell'argomento in poche righe non troncate.</span>
-          <ul slot="body" class="list-group list-group-flush" aria-label="Contenuti in evidenza:">
+          <ul slot="body" class="list-group list-group-flush" role="list" aria-label="Contenuti in evidenza:">
             <li class="list-group-item"><a href="#">Titolo notizia affine</a></li>
             <li class="list-group-item"><a href="#">Titolo media affine</a></li>
             <li class="list-group-item"><a href="#">Altro titolo scheda affine</a></li>
@@ -1066,11 +1067,14 @@ export const ListeDiContenutiAffini: Story = {
         <it-card full-height ratio="21x9">
           <a slot="title" href="#">Titolo evento</a>
           <figure slot="image" class="figure img-full">
-            <img src="https://picsum.photos/seed/monument/800/600" alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto.">
+            <img
+              src="https://picsum.photos/seed/monument/800/600"
+              alt="Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+            />
           </figure>
           <span slot="subtitle">Dal 17 al 22 novembre</span>
           <span slot="text">Descrizione breve dell'evento in poche righe non troncate.</span>
-          <ul slot="body" class="list-group list-group-flush" aria-label="Contenuti in evidenza:">
+          <ul slot="body" class="list-group list-group-flush" role="list" aria-label="Contenuti in evidenza:">
             <li class="list-group-item"><a href="#">Gli artisti</a></li>
             <li class="list-group-item"><a href="#">Il luogo</a></li>
             <li class="list-group-item"><a href="#">Il programma dettagliato</a></li>
@@ -1086,10 +1090,10 @@ export const ListeDiContenutiAffini: Story = {
         </it-card>
       </div>
       <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
-        <it-card full-height">
+        <it-card full-height>
           <a slot="title" href="#">Argomento X</a>
           <span slot="text">Descrizione breve dell'argomento in poche righe non troncate.</span>
-          <ul slot="body" class="list-group list-group-flush" aria-label="Contenuti in evidenza:">
+          <ul slot="body" class="list-group list-group-flush" role="list" aria-label="Contenuti in evidenza:">
             <li class="list-group-item"><a href="#" class="it-card-link">Titolo notizia affine</a></li>
             <li class="list-group-item"><a href="#" class="it-card-link">Titolo media affine</a></li>
             <li class="list-group-item"><a href="#" class="it-card-link">Altro titolo scheda affine</a></li>
@@ -1370,7 +1374,7 @@ export const ListeCardNumerose: Story = {
   name: 'Liste per gruppi numerosi di card',
   argTypes: { ...disabledControls() },
   render: () => html`
-    <ul class="it-card-list row" aria-label="Risultati della ricerca: ">
+    <ul class="it-card-list row" role="list" aria-label="Risultati della ricerca: ">
       <li class="col-12 col-md-6 col-lg-4 mb-3 mb-md-4">
         <it-card>
           <a slot="title" href="#">Primo risultato</a>

@@ -163,6 +163,128 @@ describe('<it-stepper>', () => {
     expect(prevButton.disabled).to.be.true;
   });
 
+  it('disables the next button via next-disabled and re-enables it when cleared', async () => {
+    const el = await fixture<ItStepper>(html`<it-stepper current="0" next-disabled>${renderSteps()}</it-stepper>`);
+    await waitForStepper(el);
+
+    const nextButton = el.shadowRoot?.querySelector('.steppers-btn-next') as ItButton;
+    expect(nextButton.disabled).to.be.true;
+
+    el.nextDisabled = false;
+    await waitForStepper(el);
+    expect(nextButton.disabled).to.be.false;
+  });
+
+  it('keeps the next button disabled at the last step even when next-disabled is false', async () => {
+    const el = await fixture<ItStepper>(html`<it-stepper current="2">${renderSteps()}</it-stepper>`);
+    await waitForStepper(el);
+
+    const nextButton = el.shadowRoot?.querySelector('.steppers-btn-next') as ItButton;
+    expect(el.nextDisabled).to.be.false;
+    expect(nextButton.disabled).to.be.true;
+  });
+
+  it('disables the confirm button via next-disabled', async () => {
+    const el = await fixture<ItStepper>(html`
+      <it-stepper current="2" show-confirm next-disabled>${renderSteps()}</it-stepper>
+    `);
+    await waitForStepper(el);
+
+    const confirmButton = el.shadowRoot?.querySelector('.steppers-btn-confirm') as ItButton;
+    expect(confirmButton.disabled).to.be.true;
+  });
+
+  it('does not emit it-stepper-confirm while next-disabled is set', async () => {
+    const el = await fixture<ItStepper>(html`
+      <it-stepper current="2" show-confirm next-disabled>${renderSteps()}</it-stepper>
+    `);
+    await waitForStepper(el);
+
+    let confirmed = false;
+    el.addEventListener('it-stepper-confirm', () => {
+      confirmed = true;
+    });
+
+    (el.shadowRoot?.querySelector('.steppers-btn-confirm') as ItButton).click();
+    await waitForStepper(el);
+    expect(confirmed).to.be.false;
+
+    el.nextDisabled = false;
+    await waitForStepper(el);
+    (el.shadowRoot?.querySelector('.steppers-btn-confirm') as ItButton).click();
+    await waitForStepper(el);
+    expect(confirmed).to.be.true;
+  });
+
+  it('does not advance when the next button is clicked while next-disabled is set', async () => {
+    const el = await fixture<ItStepper>(html`<it-stepper current="0" next-disabled>${renderSteps()}</it-stepper>`);
+    await waitForStepper(el);
+
+    (el.shadowRoot?.querySelector('.steppers-btn-next') as ItButton).click();
+    await waitForStepper(el);
+
+    expect(el.current).to.equal(0);
+  });
+
+  it('emits a cancelable it-stepper-change when the next button is clicked', async () => {
+    const el = await fixture<ItStepper>(html`<it-stepper current="0">${renderSteps()}</it-stepper>`);
+    await waitForStepper(el);
+
+    const changeEvent = oneEvent(el, 'it-stepper-change') as Promise<CustomEvent>;
+    (el.shadowRoot?.querySelector('.steppers-btn-next') as ItButton).click();
+
+    const event = await changeEvent;
+    expect(event.cancelable).to.be.true;
+    expect(event.detail).to.deep.equal({ step: 1, prevStep: 0 });
+
+    await waitForStepper(el);
+    expect(el.current).to.equal(1);
+  });
+
+  it('blocks the step change when the next click event is prevented', async () => {
+    const el = await fixture<ItStepper>(html`<it-stepper current="0">${renderSteps()}</it-stepper>`);
+    await waitForStepper(el);
+
+    el.addEventListener('it-stepper-change', (event) => event.preventDefault());
+    (el.shadowRoot?.querySelector('.steppers-btn-next') as ItButton).click();
+    await waitForStepper(el);
+
+    expect(el.current).to.equal(0);
+    const steps = Array.from(el.querySelectorAll('it-stepper-step')) as ItStepperStep[];
+    expect(steps[0].active).to.be.true;
+    expect(steps[1].active).to.be.false;
+    expect(steps[1].confirmed).to.be.false;
+  });
+
+  it('emits a non-cancelable it-stepper-change from the public next and prev methods', async () => {
+    const el = await fixture<ItStepper>(html`<it-stepper current="1">${renderSteps()}</it-stepper>`);
+    await waitForStepper(el);
+
+    el.addEventListener('it-stepper-change', (event) => event.preventDefault());
+
+    const nextEvent = oneEvent(el, 'it-stepper-change') as Promise<CustomEvent>;
+    el.next();
+    expect((await nextEvent).cancelable).to.be.false;
+    await waitForStepper(el);
+    expect(el.current).to.equal(2);
+
+    el.prev();
+    await waitForStepper(el);
+    expect(el.current).to.equal(1);
+  });
+
+  it('allows going back while next-disabled is set', async () => {
+    const el = await fixture<ItStepper>(html`<it-stepper current="1" next-disabled>${renderSteps()}</it-stepper>`);
+    await waitForStepper(el);
+
+    const prevButton = el.shadowRoot?.querySelector('.steppers-btn-prev') as ItButton;
+    expect(prevButton.disabled).to.not.be.ok;
+
+    prevButton.click();
+    await waitForStepper(el);
+    expect(el.current).to.equal(0);
+  });
+
   it('renders header variants with the expected state text', async () => {
     const el = await fixture<ItStepper>(html`
       <it-stepper current="1" header-variant="numbers">${renderSteps()}</it-stepper>
@@ -199,9 +321,7 @@ describe('<it-stepper>', () => {
   });
 
   it('renders icon elements in the header for the icons variant', async () => {
-    const el = await fixture<ItStepper>(html`
-      <it-stepper header-variant="icons">${renderSteps()}</it-stepper>
-    `);
+    const el = await fixture<ItStepper>(html` <it-stepper header-variant="icons">${renderSteps()}</it-stepper> `);
     await waitForStepper(el);
 
     const headerItems = el.shadowRoot?.querySelectorAll('.steppers-header li');
@@ -261,11 +381,9 @@ describe('<it-stepper>', () => {
 
   it('renders save title and description in the save area', async () => {
     const el = await fixture<ItStepper>(html`
-      <it-stepper
-        save-label="Salva"
-        save-title="Bozza salvata"
-        save-description="Le modifiche saranno conservate"
-      >${renderSteps()}</it-stepper>
+      <it-stepper save-label="Salva" save-title="Bozza salvata" save-description="Le modifiche saranno conservate"
+        >${renderSteps()}</it-stepper
+      >
     `);
     await waitForStepper(el);
 
@@ -312,15 +430,35 @@ describe('<it-stepper>', () => {
     await expect(base).to.be.accessible();
 
     const numbered = await fixture<ItStepper>(html`
-      <it-stepper
-        current="1"
-        header-variant="numbers"
-        mobile-progress="dots"
-        prev-label="Indietro"
-        next-label="Avanti"
-      >${renderSteps()}</it-stepper>
+      <it-stepper current="1" header-variant="numbers" mobile-progress="dots" prev-label="Indietro" next-label="Avanti"
+        >${renderSteps()}</it-stepper
+      >
     `);
     await waitForStepper(numbered);
     await expect(numbered).to.be.accessible();
+  });
+
+  it('forwards the nav arrows as the prev-icon and next-icon parts', async () => {
+    const el = await fixture<ItStepper>(html`
+      <it-stepper current="1" prev-label="Indietro" next-label="Avanti">${renderSteps()}</it-stepper>
+    `);
+    await waitForStepper(el);
+
+    const prevIcon = el.shadowRoot!.querySelector('.steppers-btn-prev it-icon')!;
+    const nextIcon = el.shadowRoot!.querySelector('.steppers-btn-next it-icon')!;
+
+    // `it-icon` exposes its svg as part `icon`, but that only reaches the tree holding
+    // the element — this shadow root. Without forwarding, a consumer has no selector
+    // that gets to the arrows at all.
+    expect(prevIcon.getAttribute('exportparts')).to.equal('icon: prev-icon');
+    expect(nextIcon.getAttribute('exportparts')).to.equal('icon: next-icon');
+
+    // Distinct names on purpose: the header check marks are `it-icon` too, so a shared
+    // `icon` part would make one consumer rule hit all of them.
+    const headerIcons = el.shadowRoot!.querySelectorAll('.steppers-header it-icon');
+    expect(headerIcons.length).to.be.greaterThan(0);
+    headerIcons.forEach((icon) => {
+      expect(icon.getAttribute('exportparts')).to.equal(null);
+    });
   });
 });

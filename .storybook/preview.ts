@@ -4,7 +4,7 @@ import './main.scss';
 import './storybook-styles.scss';
 import prettier from 'prettier-v2';
 import HTMLParser from 'prettier-v2/parser-html';
-import { StoryWidth100 } from './it-decorators';
+import { StoryHeader, StoryWidth100 } from './it-decorators';
 import './elements';
 import { version } from '../packages/dev-kit-italia/package.json';
 import { addons } from 'storybook/preview-api';
@@ -159,6 +159,9 @@ export const decorators = [
       //   );
       case 'w-100':
         return StoryWidth100(Story, ctx);
+
+      case 'header-full':
+        return StoryHeader(Story, ctx);
 
       default:
         // In the default case, don't apply a layout

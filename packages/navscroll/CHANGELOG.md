@@ -1,5 +1,84 @@
 # @italia/navscroll
 
+## 1.0.0-beta.6
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`cbe423d`](https://github.com/italia/dev-kit-italia/commit/cbe423d4793ff2916f59ccf00ac2fb2e6d264484)]:
+  - @italia/modal@1.0.0-beta.6
+  - @italia/button@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+## 1.0.0-beta.5
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+  - @italia/modal@1.0.0-beta.5
+
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`039dd40`](https://github.com/italia/dev-kit-italia/commit/039dd40d29704ea240a39684339f08d791343f17)]:
+  - @italia/modal@1.0.0-beta.4
+  - @italia/button@1.0.0-beta.4
+  - @italia/globals@1.0.0-beta.4
+  - @italia/icon@1.0.0-beta.4
+
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- [#522](https://github.com/italia/dev-kit-italia/pull/522) [`eecc42d`](https://github.com/italia/dev-kit-italia/commit/eecc42da2ea24f68fbf39b406e3fab2af1073b97) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Fixed the scrollspy marking the wrong menu entry as active, and the animated scroll overshooting on the first and last section.
+
+  The active section was measured with `offsetTop`, which is relative to the nearest positioned ancestor rather than to the scroll container. Any positioned wrapper in between falsified it — including the one `it-section` produces by default, since bootstrap-italia styles `.section-content` as `position: relative`, zeroing the `offsetTop` of every section and leaving the last menu entry permanently active. Section positions are now measured against the scroll container, the same way `scrollToElement()` already did.
+
+  The animated scroll after a click now sets each frame's position with `behavior: 'instant'`. bootstrap-italia sets `scroll-behavior: smooth` on `:root`, so every frame of the animation used to start its own native smooth scroll: the browser chased a moving target, never reached it, and kept easing long after the animation had finished — the click landed hundreds of pixels short and the page drifted for seconds.
+
+  The scroll events emitted during that animation no longer overwrite the entry the click had just selected, and the animation target is clamped to the scrollable range.
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+  - @italia/modal@1.0.0-beta.3
+
+## 1.0.0-beta.2
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+  - @italia/modal@1.0.0-beta.2
+
+## 1.0.0-beta.1
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [#485](https://github.com/italia/dev-kit-italia/pull/485) [`25deaa0`](https://github.com/italia/dev-kit-italia/commit/25deaa012849ae26ba05f2ebb87532e64b1a5c64) Thanks [@astagi](https://github.com/astagi)! - Updated to bootstrap-italia 3.0.0-beta.4
+
+- Updated dependencies [[`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4), [`7df75f1`](https://github.com/italia/dev-kit-italia/commit/7df75f1ae0665be7c11043737ca019bef83e696f), [`8583808`](https://github.com/italia/dev-kit-italia/commit/8583808a10437ff7dfc44a6ce5886315a7b35fa8)]:
+  - @italia/globals@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/modal@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
 ## 1.0.0-beta.0
 
 ### Major Changes

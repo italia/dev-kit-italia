@@ -1,5 +1,4 @@
 export type ProgressDonutConfig = {
-  color: string;
   trailColor: string;
   strokeWidth: number;
   trailWidth: number;
@@ -44,8 +43,9 @@ export class ProgressDonut {
   static async create(container: HTMLElement, config: ProgressDonutConfig) {
     const CircleConstructor = await this._loadCircleConstructor();
 
+    // `color` is intentionally not set: the progress stroke is colored via CSS
+    // (--it-progress-donut-color) so that design tokens can be resolved.
     const bar = new CircleConstructor(container, {
-      color: config.color,
       trailColor: config.trailColor,
       strokeWidth: config.strokeWidth,
       trailWidth: config.trailWidth,

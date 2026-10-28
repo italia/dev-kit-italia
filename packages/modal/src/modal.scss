@@ -70,17 +70,6 @@ utilities.$utilities: (
   }
 }
 
-// Assicura che il backdrop copra tutta la viewport
-.modal-backdrop {
-  position: fixed;
-  z-index: $zindex-modal-backdrop;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: $modal-backdrop-bg;
-}
-
 // Modal container
 .modal {
   position: fixed;

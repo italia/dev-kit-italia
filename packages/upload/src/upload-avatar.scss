@@ -142,7 +142,7 @@ input.upload-avatar {
     left: 0;
     width: 100%;
     height: 60%;
-    background-color: var(--bsi-overlay-background-primary-muted);
+    background-color: var(--#{$prefix}overlay-background-primary-muted);
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.15s;

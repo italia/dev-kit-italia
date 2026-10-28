@@ -23,8 +23,37 @@
     z-index: -1;
     width: var(--#{$prefix}dropdown-notch-base-size);
     height: var(--#{$prefix}dropdown-notch-base-size);
+    border-color: var(--#{$prefix}dropdown-border-color);
     border-radius: var(--#{$prefix}dropdown-border-radius);
     background-color: var(--#{$prefix}dropdown-background);
+
+    &[data-side='bottom'] {
+      border-top-width: var(--#{$prefix}dropdown-border-width);
+      border-top-style: solid;
+      border-left-width: var(--#{$prefix}dropdown-border-width);
+      border-left-style: solid;
+    }
+
+    &[data-side='top'] {
+      border-right-width: var(--#{$prefix}dropdown-border-width);
+      border-right-style: solid;
+      border-bottom-width: var(--#{$prefix}dropdown-border-width);
+      border-bottom-style: solid;
+    }
+
+    &[data-side='left'] {
+      border-top-width: var(--#{$prefix}dropdown-border-width);
+      border-top-style: solid;
+      border-right-width: var(--#{$prefix}dropdown-border-width);
+      border-right-style: solid;
+    }
+
+    &[data-side='right'] {
+      border-bottom-width: var(--#{$prefix}dropdown-border-width);
+      border-bottom-style: solid;
+      border-left-width: var(--#{$prefix}dropdown-border-width);
+      border-left-style: solid;
+    }
   }
 
   @if $dropdown-padding-y == 0 {

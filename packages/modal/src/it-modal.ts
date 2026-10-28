@@ -63,6 +63,8 @@ export class ItModal extends BaseComponent {
 
   @property({ type: Boolean, attribute: 'footer-shadow', reflect: true }) footerShadow = false;
 
+  @property({ type: Boolean, attribute: 'default-focus-close', reflect: true }) defaultFocusClose = false;
+
   @query('[role="dialog"]') private _modalElement!: HTMLElement;
 
   @query('slot[name="trigger"]') private _triggerSlot!: HTMLSlotElement;
@@ -76,6 +78,8 @@ export class ItModal extends BaseComponent {
   @query('.modal-dialog') private _dialogElement!: HTMLElement;
 
   @query('.modal-content') private _contentElement!: HTMLElement;
+
+  @query('[part="close-button"]') private _closeButton!: HTMLElement;
 
   private _titleId = '';
 
@@ -146,7 +150,7 @@ export class ItModal extends BaseComponent {
    * announcement, exactly as it was when focus landed on the dialog.
    */
   private _entryPoint(): HTMLElement | null {
-    return this._contentElement ?? this._modalElement;
+    return this.defaultFocusClose ? this._closeButton : (this._contentElement ?? this._modalElement);
   }
 
   disconnectedCallback(): void {
@@ -199,21 +203,6 @@ export class ItModal extends BaseComponent {
       if (this.open !== undefined) {
         if (this.open) this._showModal();
         else this._hideModal();
-      }
-    }
-    if (changedProperties.has('_safariMouseInteraction')) {
-      let realButton: HTMLElement | null = this._triggerElement;
-      if (realButton?.tagName.toLowerCase() === 'it-button') {
-        realButton = this._triggerElement?.shadowRoot?.querySelector('button')!;
-      }
-      if (!realButton) return;
-      // Fix Safari: se l'interazione è da mouse, rimuovi outline e box-shadow forzati per evitare il doppio focus ring
-      if (this._safariMouseInteraction) {
-        realButton.style.setProperty('outline', '0', 'important');
-        realButton.style.setProperty('box-shadow', 'none', 'important');
-      } else {
-        realButton.style.removeProperty('outline');
-        realButton.style.removeProperty('box-shadow');
       }
     }
   }

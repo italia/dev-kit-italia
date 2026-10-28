@@ -621,9 +621,6 @@ export const LinkListMultilineIcona: Story = {
           </a>
         </li>
         <li>
-          <span class="divider"></span>
-        </li>
-        <li>
           <a class="list-item icon-right" href="#">
             <span class="list-item-title-icon-wrapper">
               <h4 class="list-item-title">Link lista 2</h4>
@@ -633,9 +630,6 @@ export const LinkListMultilineIcona: Story = {
           </a>
         </li>
         <li>
-          <span class="divider"></span>
-        </li>
-        <li>
           <a class="list-item disabled icon-right" href="#" aria-disabled="true">
             <span class="list-item-title-icon-wrapper">
               <h4 class="list-item-title">Link lista 3 disabilitato</h4>
@@ -643,9 +637,6 @@ export const LinkListMultilineIcona: Story = {
             </span>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit…</p>
           </a>
-        </li>
-        <li>
-          <span class="divider"></span>
         </li>
       </ul>
     </div>
@@ -854,10 +845,10 @@ export const LinkListAnnidataCollassabile: Story = {
             <button class="list-item icon-right px-0 border-0 bg-transparent" slot="trigger">
               <span class="list-item-title-icon-wrapper" slot="label">
                 <span class="list-item-title">Link lista 1</span>
-                <it-icon name="it-expand" color="primary" class="left"></it-icon>
+                <it-icon name="it-expand" color="primary"></it-icon>
               </span>
             </button>
-            <ul slot="content" class="link-sublist collapse">
+            <ul slot="content" class="link-sublist">
               <li>
                 <a class="list-item" href="#"><span>Link lista 1</span></a>
               </li>
@@ -875,10 +866,10 @@ export const LinkListAnnidataCollassabile: Story = {
             <button class="list-item icon-right px-0 border-0 bg-transparent" slot="trigger">
               <span class="list-item-title-icon-wrapper" slot="label">
                 <span class="list-item-title">Link lista 2</span>
-                <it-icon name="it-expand" color="primary" class="left"></it-icon>
+                <it-icon name="it-expand" color="primary"></it-icon>
               </span>
             </button>
-            <ul slot="content" class="link-sublist collapse">
+            <ul slot="content" class="link-sublist">
               <li>
                 <a class="list-item" href="#"><span>Link lista 1</span></a>
               </li>
@@ -896,10 +887,10 @@ export const LinkListAnnidataCollassabile: Story = {
             <button class="list-item icon-right px-0 border-0 bg-transparent" slot="trigger">
               <span class="list-item-title-icon-wrapper" slot="label">
                 <span class="list-item-title">Link lista 3</span>
-                <it-icon name="it-expand" color="primary" class="left"></it-icon>
+                <it-icon name="it-expand" color="primary"></it-icon>
               </span>
             </button>
-            <ul slot="content" class="link-sublist collapse">
+            <ul slot="content" class="link-sublist">
               <li>
                 <a class="list-item" href="#"><span>Link lista 1</span></a>
               </li>

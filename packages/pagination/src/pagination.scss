@@ -14,35 +14,17 @@ $pagination-color: var(--#{$prefix}color-link);
 
 // Define CSS custom properties at :host level so they inherit to it-pagination-item
 :host {
-  --#{$prefix}pagination-padding-x: #{$pagination-padding-x};
-  --#{$prefix}pagination-padding-y: #{$pagination-padding-y};
-  @include rfs($pagination-font-size, --#{$prefix}pagination-font-size);
   --#{$prefix}pagination-color: #{$pagination-color};
-  --#{$prefix}pagination-bg: #{$pagination-bg};
-  --#{$prefix}pagination-border-width: 0;
-  --#{$prefix}pagination-border-color: #{$pagination-border-color};
-  --#{$prefix}pagination-border-radius: #{$pagination-border-radius};
-  --#{$prefix}pagination-hover-color: #{$pagination-hover-color};
-  --#{$prefix}pagination-hover-bg: #{$pagination-hover-bg};
-  --#{$prefix}pagination-hover-border-color: #{$pagination-hover-border-color};
-  --#{$prefix}pagination-focus-color: #{$pagination-focus-color};
-  --#{$prefix}pagination-focus-bg: #{$pagination-focus-bg};
-  --#{$prefix}pagination-focus-box-shadow: #{$pagination-focus-box-shadow};
-  --#{$prefix}pagination-active-color: #{$pagination-active-color};
-  --#{$prefix}pagination-active-bg: #{$pagination-active-bg};
-  --#{$prefix}pagination-active-border-color: #{$pagination-active-border-color};
-  --#{$prefix}pagination-disabled-color: #{$pagination-disabled-color};
-  --#{$prefix}pagination-disabled-bg: #{$pagination-disabled-bg};
-  --#{$prefix}pagination-disabled-border-color: #{$pagination-disabled-border-color};
   --#{$prefix}pagination-padding-x: var(--#{$prefix}spacing-s);
   --#{$prefix}pagination-padding-y: var(--#{$prefix}spacing-xxs);
   --#{$prefix}pagination-link-color: var(--#{$prefix}color-link);
   --#{$prefix}pagination-background: transparent;
   --#{$prefix}pagination-border-width: 2px;
   --#{$prefix}pagination-border-color: transparent;
-  --#{$prefix}pagination-border-radius: 4px;
+  --#{$prefix}pagination-border-radius: var(--#{$prefix}radius-smooth);
   --#{$prefix}pagination-item-size: 3rem;
   --#{$prefix}pagination-font-size: var(--#{$prefix}label-font-size);
+
   display: flex;
   @include list-unstyled();
   width: 100%;

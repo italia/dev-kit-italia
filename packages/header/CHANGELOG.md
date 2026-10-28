@@ -1,5 +1,120 @@
 # @italia/header
 
+## 1.0.0-beta.6
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`cbe423d`](https://github.com/italia/dev-kit-italia/commit/cbe423d4793ff2916f59ccf00ac2fb2e6d264484)]:
+  - @italia/modal@1.0.0-beta.6
+  - @italia/button@1.0.0-beta.6
+  - @italia/dropdown@1.0.0-beta.6
+  - @italia/globals@1.0.0-beta.6
+  - @italia/icon@1.0.0-beta.6
+
+## 1.0.0-beta.5
+
+### Patch Changes
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - Allineamento a bootstrap-italia#1914: ring di focus inset sulle voci di dropdown e sulla navbar mobile, link heading/footer del megamenu a tutta larghezza
+
+- [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd) Thanks [@astagi](https://github.com/astagi)! - Fix mobile menu border and focus state regressions
+  - `@italia/megamenu`: the panel border was always fully shown regardless
+    of breakpoint; it now shows a border on every side from `lg` up, and
+    only on the top/bottom edges on mobile, matching the upcoming
+    bootstrap-italia fix (bootstrap-italia#1949).
+  - `@italia/megamenu`: removed the dead `.shadow-lg` class from the
+    trigger content markup, mirroring the same removal on the BSI side.
+  - `@italia/popover`: the arrow is always rotated 45deg regardless of
+    placement, so which pair of sides is visually exposed depends on
+    which side of the trigger the popover ends up placed on — that
+    information was previously discarded after positioning. Now exposed
+    as a `data-side` attribute on the arrow element so consumers can
+    style its border correctly per placement, and the fixed notch offset
+    now compensates for a consumer-added border and for the notch size
+    deviating from its default, so the arrow stays flush against the
+    panel edge.
+  - `@italia/dropdown`: the popover arrow had no border of its own, so a
+    bordered dropdown panel (also from bootstrap-italia#1949) would show
+    with a borderless arrow. Uses the new `data-side` attribute from
+    `@italia/popover` to apply the correct border sides for every
+    placement (bottom/top/left/right), not just the default one.
+  - `@italia/header`: keyboard focus on a dropdown/megamenu trigger no
+    longer hides the active-state border color — the mobile-nav focus rule
+    was forcing a fixed transparent color instead of respecting the
+    active/inactive state.
+  - `@italia/header`: a plain dropdown nav item inside the mobile menu
+    modal showed a border on all four sides instead of only top/bottom,
+    once bootstrap-italia#1949 gives the dropdown panel a default border
+    — now trimmed to match the same navbar-only treatment already applied
+    to `@italia/megamenu`'s panel.
+
+- Updated dependencies [[`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd), [`20d29c0`](https://github.com/italia/dev-kit-italia/commit/20d29c0fac02c40192bde02125efad723785d1cd)]:
+  - @italia/dropdown@1.0.0-beta.5
+  - @italia/button@1.0.0-beta.5
+  - @italia/globals@1.0.0-beta.5
+  - @italia/icon@1.0.0-beta.5
+  - @italia/modal@1.0.0-beta.5
+
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`039dd40`](https://github.com/italia/dev-kit-italia/commit/039dd40d29704ea240a39684339f08d791343f17)]:
+  - @italia/modal@1.0.0-beta.4
+  - @italia/button@1.0.0-beta.4
+  - @italia/dropdown@1.0.0-beta.4
+  - @italia/globals@1.0.0-beta.4
+  - @italia/icon@1.0.0-beta.4
+
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- [#519](https://github.com/italia/dev-kit-italia/pull/519) [`9294912`](https://github.com/italia/dev-kit-italia/commit/92949120525f2486434b2ca56a9a784e61e1c9d6) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fixed navabar link border color on mobile
+
+- [#511](https://github.com/italia/dev-kit-italia/pull/511) [`fe1096d`](https://github.com/italia/dev-kit-italia/commit/fe1096da6e0eced4506f28dad21bf1b927016529) Thanks [@deodorhunter](https://github.com/deodorhunter)! - Replaced hardcoded `--bsi-` custom property names with the interpolated `$prefix`, so styles keep working with a custom Bootstrap Italia prefix. Also fixed the avatar presence dot reading `--#{$prefix}avatar-dot-offset-top` instead of `--#{$prefix}avatar-dot-offset-bottom` (default aligned to `8px`, as in Bootstrap Italia)
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.3
+  - @italia/dropdown@1.0.0-beta.3
+  - @italia/globals@1.0.0-beta.3
+  - @italia/icon@1.0.0-beta.3
+  - @italia/modal@1.0.0-beta.3
+
+## 1.0.0-beta.2
+
+### Patch Changes
+
+- [`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed release packaging
+
+- Updated dependencies [[`87c09ca`](https://github.com/italia/dev-kit-italia/commit/87c09ca0e1d8ffc77344e5bfb30bf6d4a3a7b59d)]:
+  - @italia/button@1.0.0-beta.2
+  - @italia/dropdown@1.0.0-beta.2
+  - @italia/globals@1.0.0-beta.2
+  - @italia/icon@1.0.0-beta.2
+  - @italia/modal@1.0.0-beta.2
+
+## 1.0.0-beta.1
+
+### Minor Changes
+
+- [#458](https://github.com/italia/dev-kit-italia/pull/458) [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4) Thanks [@pnicolli](https://github.com/pnicolli)! - Unified the README file of all components packages, made special packages more consistent (i18n, globals, dev-kit-italia)
+
+### Patch Changes
+
+- [`aa6a485`](https://github.com/italia/dev-kit-italia/commit/aa6a485dbcad232a000c6c8d852d6fca539cf3dd) Thanks [@pnicolli](https://github.com/pnicolli)! - Use $prefix from bsi scss config properly everywhere
+
+- [#507](https://github.com/italia/dev-kit-italia/pull/507) [`8583808`](https://github.com/italia/dev-kit-italia/commit/8583808a10437ff7dfc44a6ce5886315a7b35fa8) Thanks [@giuliaghisini](https://github.com/giuliaghisini)! - Fix header on mobile. Make optional to focus on close button on modal open.
+
+- Updated dependencies [[`2cb1023`](https://github.com/italia/dev-kit-italia/commit/2cb102330500ebe596a93e361cc8342a56fa7a3e), [`1fd9fda`](https://github.com/italia/dev-kit-italia/commit/1fd9fdab8e3f2e9c7ba799e233306e66832835d4), [`7df75f1`](https://github.com/italia/dev-kit-italia/commit/7df75f1ae0665be7c11043737ca019bef83e696f), [`8583808`](https://github.com/italia/dev-kit-italia/commit/8583808a10437ff7dfc44a6ce5886315a7b35fa8)]:
+  - @italia/dropdown@1.0.0-beta.1
+  - @italia/globals@1.0.0-beta.1
+  - @italia/button@1.0.0-beta.1
+  - @italia/modal@1.0.0-beta.1
+  - @italia/icon@1.0.0-beta.1
+
 ## 1.0.0-beta.0
 
 ### Major Changes
