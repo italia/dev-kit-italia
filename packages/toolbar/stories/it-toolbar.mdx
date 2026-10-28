@@ -27,7 +27,7 @@ Ogni elemento della toolbar, deve essere un componente `<it-toolbar-item>` che r
 <Canvas of={Stories.ToolbarItemBase} />
 <Controls of={Stories.ToolbarItemBase} />
 
-### Eventi click di <it-toolbar-item>
+### Eventi click di it-toolbar-item
 Se `<it-toolbar-item>` viene renderizzato come pulsante, il componente genera internamente un `<it-button>` nello shadow DOM. Gli attributi inline del tipo `onclick` non vengono applicati automaticamente a quell'elemento interno.
 
 Per intercettare l'azione di clic, aggancia il listener direttamente a `<it-toolbar-item>` oppure ascolta l'evento custom `it-toolbar-item-click`, emesso dal componente in bubbling.
@@ -172,12 +172,12 @@ Il componente `<it-toolbar-item>` emette l'evento custom `it-toolbar-item-click`
 
 Per la personalizzazione degli stili puoi usare i selettori `::part` dedicati.
 
-### Selettori di <it-toolbar>
+### Selettori di it-toolbar
 
 - `::part(toolbar-container)`, elemento `<nav>` contenitore della toolbar.
 - `::part(toolbar-list)`, elemento `<ul>` della lista degli item.
 
-### Selettori di <it-toolbar-item>
+### Selettori di it-toolbar-item
 
 - `::part(toolbar-item)`, elemento `<li>` wrapper di ogni voce.
 - `::part(toolbar-divider)`, aggiunto insieme a `toolbar-item` quando l'elemento è un divisore.
