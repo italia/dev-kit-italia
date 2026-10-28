@@ -60,23 +60,23 @@ Per garantire la massima accesibilità, assicurati di:
 
 ## Varianti di dimensione
 
-La toolbar si adatta automaticamente in larghezza al suo contenitore. Per ottimizzare lo spazio disponibile l'elemento è fornito in tre versioni: grande, media e piccola.
+La toolbar si adatta automaticamente alla larghezza del contenitore. Per ottimizzare lo spazio, è disponibile in 3 dimensioni: grande, media e piccola.
 
 ### Toolbar grande
 
-La versione predefinita dell'elemento è quella con icone grandi e label.
+La variante predefinita della toolbar presenta icone grandi ed etichette visibili.
 
 <Canvas of={Stories.ToolbarGrande} />
 
 ### Toolbar media
 
-Applicando l'attributo `size="md"` alla Toolbar si ottiene una versione di dimensioni medie. In questo caso le label, vengono automaticamente nascoste visivamente dal componente tramite la classe `.visually-hidden`, per rendere disponibile la descrizione agli screen reader.
+Imposta l'attributo `size="md"` su `<it-toolbar>` per la variante di dimensioni medie. Le etichette vengono nascoste visivamente tramite la classe `.visually-hidden`, ma restano disponibili ai lettori di schermo.
 
 <Canvas of={Stories.ToolbarMedia} />
 
 ### Toolbar piccola
 
-Applicando l'attributo `size="sm"` alla Toolbar si ottiene la versione più piccola. Anche in questo caso le label, vengono automaticamente nascoste visivamente dal componente tramite la classe `.visually-hidden`, per rendere disponibile la descrizione agli screen reader.
+Imposta l'attributo size="sm" su `<it-toolbar>` per la variante più compatta. Anche in questo caso, le etichette vengono nascoste visivamente tramite la classe `.visually-hidden`, ma restano disponibili ai lettori di schermo.
 
 <Canvas of={Stories.ToolbarPiccola} />
 
@@ -84,33 +84,31 @@ Applicando l'attributo `size="sm"` alla Toolbar si ottiene la versione più picc
 
 ### Elemento attivo
 
-Puoi rendere attivo un elemento della Toolbar aggiungendo l'attributo `active` all'elemento `<it-toolbar-item>`.
+Per attivare un elemento della toolbar, aggiungi l'attributo `active` a `<it-toolbar-item>`.
 
 
 ### Elemento disabilitato
 
-Puoi disabilitare un elemento della Toolbar aggiungendo l'attributo `disabled` all'elemento `<it-toolbar-item>`.
+Per disabilitare un elemento della toolbar, aggiungi l'attributo `disabled` a `<it-toolbar-item>`.
 
-Agli elementi disabilitati verranno applicati automaticamente dal componente `<it-toolbar-item>` alcuni accorgimenti relativi all'accessibilità:
-- ai link (`<a>`) verranno aggiunti automaticamente gli attributi HTML `disabled` e `aria-disabled="true"`.
-- al pulsante (`<it-button>`) verrà aggiunto automaticamente l'attributo `disabled` che di conseguenza imposta l'attributo `aria-disabled="true"` al `<button>` generato.
-
+Agli elementi disabilitati, il componente `<it-toolbar-item>` applicherà automaticamente:
+- gli attributi HTML `disabled` e `aria-disabled="true"` ai link (`<a>`);
+- l'attributo `disabled` ai pulsanti (`<it-button>`), che imposta a sua volta automaticamente `disabled` e `aria-disabled="true"` sul `<button>` generato.
 
 ## Divisori
 
-Puoi aggiungere degli elementi divisori fra gli elementi inserendo un elemento di tipo `<it-toolbar-item divider></it-toolbar-item>`
+Per aggiungere divisori, inserisci un elemento di tipo `<it-toolbar-item divider></it-toolbar-item>`.
 
-Il componente `<it-toolbar-item>` si occuperà di gestire autonomamente gli attributi per l'accessiblità dell'elemento divisorio.
+Il componente `<it-toolbar-item>` gestirà autonomamente gli attributi per l'accessiblità dell'elemento divisorio.
 
 <Canvas of={Stories.ToolbarConDivisori} />
 
 ## Con badge
 
-I Badge possono essere utilizzati per contenere numeri al fine di indicare, ad esempio, contenuti non letti.
+Puoi usare dei badge sugli elementi della toolbar per indicare notifiche, cambi di sistema o contenuti non letti.
 
-Utilizza l'attributo `badge` sul componente `<it-toolbar-item>` per specificare il numero da visualizzare all'interno del badge.
-
-Utilizza l'attributo `label-extended` per fornire una descrizione più dettagliata del badge ai lettori di schermo.
+- Usa l'attributo `badge` sul componente `<it-toolbar-item>` per specificare il numero da visualizzare all'interno del badge.
+- Aggiungi una descrizione testuale per i lettori di schermo, usando l'attributo `label-extended`.
 
 
 <Canvas of={Stories.ToolbarConBadge} />
