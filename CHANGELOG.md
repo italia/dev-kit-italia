@@ -2,6 +2,492 @@
 
 This changelog contains all changes from all packages in the monorepo.
 
+## 1.0.0-beta.7
+
+### `accordion`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.7
+  - @italia/collapse@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
+### `alert`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
+### `back`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+  - @italia/sticky@1.0.0-beta.7
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `callout`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+
+### `card`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `carousel`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/card@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-beta.7
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- [#572](https://github.com/italia/dev-kit-italia/pull/572) [`6052952`](https://github.com/italia/dev-kit-italia/commit/605295289a03497f233c9a5531b83f72c16c5982) Thanks [@Fupete](https://github.com/Fupete)! - Docs: list semantics in Safari/VoiceOver aligned with Bootstrap Italia (Card, Dropdown, List, Modal, Sidebar examples and accessibility notes) (#571)
+
+- Updated dependencies [[`6052952`](https://github.com/italia/dev-kit-italia/commit/605295289a03497f233c9a5531b83f72c16c5982), [`5df652e`](https://github.com/italia/dev-kit-italia/commit/5df652e4063521667eaf983f83d2f9faed4c9cfd), [`6052952`](https://github.com/italia/dev-kit-italia/commit/605295289a03497f233c9a5531b83f72c16c5982), [`150967e`](https://github.com/italia/dev-kit-italia/commit/150967e89aa3f80190e3196cb213b17a23c9a6ad)]:
+  - @italia/dropdown@1.0.0-beta.7
+  - @italia/dimmer@1.0.0-beta.7
+  - @italia/stepper@1.0.0-beta.7
+  - @italia/video@1.0.0-beta.7
+  - @italia/accordion@1.0.0-beta.7
+  - @italia/alert@1.0.0-beta.7
+  - @italia/autocomplete@1.0.0-beta.7
+  - @italia/avatar@1.0.0-beta.7
+  - @italia/back@1.0.0-beta.7
+  - @italia/back-to-top@1.0.0-beta.7
+  - @italia/bottom-nav@1.0.0-beta.7
+  - @italia/breadcrumbs@1.0.0-beta.7
+  - @italia/button@1.0.0-beta.7
+  - @italia/callout@1.0.0-beta.7
+  - @italia/card@1.0.0-beta.7
+  - @italia/carousel@1.0.0-beta.7
+  - @italia/checkbox@1.0.0-beta.7
+  - @italia/chip@1.0.0-beta.7
+  - @italia/collapse@1.0.0-beta.7
+  - @italia/forward@1.0.0-beta.7
+  - @italia/header@1.0.0-beta.7
+  - @italia/hero@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+  - @italia/input@1.0.0-beta.7
+  - @italia/megamenu@1.0.0-beta.7
+  - @italia/modal@1.0.0-beta.7
+  - @italia/navscroll@1.0.0-beta.7
+  - @italia/notification@1.0.0-beta.7
+  - @italia/pagination@1.0.0-beta.7
+  - @italia/popover@1.0.0-beta.7
+  - @italia/progress@1.0.0-beta.7
+  - @italia/radio@1.0.0-beta.7
+  - @italia/rating@1.0.0-beta.7
+  - @italia/section@1.0.0-beta.7
+  - @italia/select@1.0.0-beta.7
+  - @italia/skiplinks@1.0.0-beta.7
+  - @italia/sticky@1.0.0-beta.7
+  - @italia/tabs@1.0.0-beta.7
+  - @italia/timeline@1.0.0-beta.7
+  - @italia/toggle@1.0.0-beta.7
+  - @italia/thumbnav@1.0.0-beta.7
+  - @italia/toolbar@1.0.0-beta.7
+  - @italia/tooltip@1.0.0-beta.7
+  - @italia/transfer@1.0.0-beta.7
+  - @italia/upload@1.0.0-beta.7
+
+### `dimmer`
+
+### Patch Changes
+
+- [#553](https://github.com/italia/dev-kit-italia/pull/553) [`5df652e`](https://github.com/italia/dev-kit-italia/commit/5df652e4063521667eaf983f83d2f9faed4c9cfd) Thanks [@Fupete](https://github.com/Fupete)! - Apply body font-family/font-size to slotted content
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
+### `dropdown`
+
+### Patch Changes
+
+- [#572](https://github.com/italia/dev-kit-italia/pull/572) [`6052952`](https://github.com/italia/dev-kit-italia/commit/605295289a03497f233c9a5531b83f72c16c5982) Thanks [@Fupete](https://github.com/Fupete)! - Set `role="list"` explicitly on the dropdown `<ul>` when `it-role` is `list`, restoring list semantics in Safari/VoiceOver.
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+  - @italia/popover@1.0.0-beta.7
+
+### `forward`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-beta.7
+
+### `header`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`6052952`](https://github.com/italia/dev-kit-italia/commit/605295289a03497f233c9a5531b83f72c16c5982)]:
+  - @italia/dropdown@1.0.0-beta.7
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+  - @italia/modal@1.0.0-beta.7
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `input`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
+### `megamenu`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`6052952`](https://github.com/italia/dev-kit-italia/commit/605295289a03497f233c9a5531b83f72c16c5982)]:
+  - @italia/dropdown@1.0.0-beta.7
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+  - @italia/modal@1.0.0-beta.7
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+
+### `pagination`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `radio`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `rating`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+  - @italia/radio@1.0.0-beta.7
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `stepper`
+
+### Patch Changes
+
+- [#572](https://github.com/italia/dev-kit-italia/pull/572) [`6052952`](https://github.com/italia/dev-kit-italia/commit/605295289a03497f233c9a5531b83f72c16c5982) Thanks [@Fupete](https://github.com/Fupete)! - Set `role="list"` explicitly on the header list and on the dots indicator, restoring list semantics in Safari/VoiceOver.
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `tabs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+
+### `toolbar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+
+### `transfer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
+### `upload`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+  - @italia/progress@1.0.0-beta.7
+
+### `video`
+
+### Patch Changes
+
+- [#557](https://github.com/italia/dev-kit-italia/pull/557) [`150967e`](https://github.com/italia/dev-kit-italia/commit/150967e89aa3f80190e3196cb213b17a23c9a6ad) Thanks [@pnicolli](https://github.com/pnicolli)! - Fixed it-video overflowing its container on small screens: the accept overlay (third-party embeds) and the player's 300px min-width are now capped to the available width
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.7
+  - @italia/checkbox@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
 ## 1.0.0-beta.6
 
 ### `accordion`
