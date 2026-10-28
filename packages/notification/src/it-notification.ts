@@ -249,14 +249,16 @@ export class ItNotification extends BaseLocalizedComponent {
           `}
           <slot></slot>
         </div>
-        ${this.dismissable
-          ? html`
-              <button type="button" class="btn notification-close" @click=${this.hide}>
-                <it-icon class="icon" name="it-close"></it-icon>
-                <span class="visually-hidden">${this.$t('notification_close_label')}</span>
-              </button>
-            `
-          : ''}
+        ${
+          this.dismissable
+            ? html`
+                <button type="button" class="btn notification-close" @click=${this.hide}>
+                  <it-icon class="icon" name="it-close"></it-icon>
+                  <span class="visually-hidden">${this.$t('notification_close_label')}</span>
+                </button>
+              `
+            : ''
+        }
       </div>
     `;
   }

@@ -49,13 +49,15 @@ const renderVariant = (args: ButtonProps, defaultText: string) => {
       ...args,
       slot: slot ?? defaultText,
     })}
-    ${args.variant !== 'link'
-      ? renderDefault({
-          ...args,
-          slot: slot ?? `${defaultText} outline`,
-          outline: true,
-        })
-      : ''}
+    ${
+      args.variant !== 'link'
+        ? renderDefault({
+            ...args,
+            slot: slot ?? `${defaultText} outline`,
+            outline: true,
+          })
+        : ''
+    }
   </div>`;
 };
 

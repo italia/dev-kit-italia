@@ -223,28 +223,32 @@ export class ItMegamenu extends ItDropdownBase {
           it-aria-haspopup="${this.itRole === 'list' ? 'true' : this.itRole}"
           it-aria-controls=${this._popoverOpen ? this._menuId : nothing}
         >
-          ${this.alignment.startsWith('left')
-            ? html`<it-icon
-                name="it-expand"
-                class="icon-expand left"
-                size="xs"
-                exportparts="icon"
-                part="dropdown-icon-expand"
-              ></it-icon>`
-            : ''}
+          ${
+            this.alignment.startsWith('left')
+              ? html`<it-icon
+                  name="it-expand"
+                  class="icon-expand left"
+                  size="xs"
+                  exportparts="icon"
+                  part="dropdown-icon-expand"
+                ></it-icon>`
+              : ''
+          }
           ${this.label}
-          ${!this.alignment.startsWith('left')
-            ? html`<it-icon
-                name="it-expand"
-                class=${this.composeClass('icon-expand', {
-                  right: this.alignment.startsWith('right'),
-                  top: this.alignment.startsWith('top'),
-                })}
-                exportparts="icon"
-                part="dropdown-icon-expand"
-                size="xs"
-              ></it-icon>`
-            : ''}
+          ${
+            !this.alignment.startsWith('left')
+              ? html`<it-icon
+                  name="it-expand"
+                  class=${this.composeClass('icon-expand', {
+                    right: this.alignment.startsWith('right'),
+                    top: this.alignment.startsWith('top'),
+                  })}
+                  exportparts="icon"
+                  part="dropdown-icon-expand"
+                  size="xs"
+                ></it-icon>`
+              : ''
+          }
         </it-button>
         <div
           slot="content"
@@ -261,19 +265,21 @@ export class ItMegamenu extends ItDropdownBase {
         >
           <div class="megamenu-content" part="megamenu-content">
             <div class="row">
-              ${this._hasDescription
-                ? html`
-                    <div class="col-xs-12 col-lg-4 px-0">
-                      <div class="row">
-                        <div class="col-12 it-vertical it-description pb-lg-3">
-                          <div class="description-content px-3 px-lg-4 ps-sm-5 ms-lg-3">
-                            <slot name="description" @slotchange=${this._handleSlotDescriptionChange}></slot>
+              ${
+                this._hasDescription
+                  ? html`
+                      <div class="col-xs-12 col-lg-4 px-0">
+                        <div class="row">
+                          <div class="col-12 it-vertical it-description pb-lg-3">
+                            <div class="description-content px-3 px-lg-4 ps-sm-5 ms-lg-3">
+                              <slot name="description" @slotchange=${this._handleSlotDescriptionChange}></slot>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  `
-                : html` <slot name="description" @slotchange=${this._handleSlotDescriptionChange}></slot> `}
+                    `
+                  : html` <slot name="description" @slotchange=${this._handleSlotDescriptionChange}></slot> `
+              }
               <div
                 class="${this.composeClass('col-12', {
                   'col-lg-8': this._hasDescription || this.footerPosition === 'right',
@@ -281,33 +287,37 @@ export class ItMegamenu extends ItDropdownBase {
               >
                 <!-- HEADER PLACEHOLDER -->
 
-                ${this._hasHeader
-                  ? html`
-                      <div class="it-heading-link-wrapper" part="megamenu-header">
-                        <slot name="header" @slotchange=${this._onSlotHeaderChange}></slot>
-                      </div>
-                    `
-                  : html`<slot name="header" @slotchange=${this._onSlotHeaderChange}></slot>`}
+                ${
+                  this._hasHeader
+                    ? html`
+                        <div class="it-heading-link-wrapper" part="megamenu-header">
+                          <slot name="header" @slotchange=${this._onSlotHeaderChange}></slot>
+                        </div>
+                      `
+                    : html`<slot name="header" @slotchange=${this._onSlotHeaderChange}></slot>`
+                }
 
                 <!-- LINKS -->
-                ${this._menuItems.length > 0
-                  ? html` <div class="row">
-                      <div class="col-12">
-                        <div class="link-list-wrapper" part="megamenu-link-list-wrapper">
-                          <ul
-                            class="link-list"
-                            part="megamenu-link-list"
-                            style="grid-template-rows: repeat(${Math.ceil(
-                              this._menuItems.length / this.columns,
-                            )}, auto);"
-                            role=${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}
-                          >
-                            <slot @slotchange=${this._setChildrenProperties}></slot>
-                          </ul>
+                ${
+                  this._menuItems.length > 0
+                    ? html` <div class="row">
+                        <div class="col-12">
+                          <div class="link-list-wrapper" part="megamenu-link-list-wrapper">
+                            <ul
+                              class="link-list"
+                              part="megamenu-link-list"
+                              style="grid-template-rows: repeat(${Math.ceil(
+                                this._menuItems.length / this.columns,
+                              )}, auto);"
+                              role=${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}
+                            >
+                              <slot @slotchange=${this._setChildrenProperties}></slot>
+                            </ul>
+                          </div>
                         </div>
-                      </div>
-                    </div>`
-                  : html`<slot @slotchange=${this._setChildrenProperties}></slot>`}
+                      </div>`
+                    : html`<slot @slotchange=${this._setChildrenProperties}></slot>`
+                }
               </div>
 
               <!-- FOOTER -->
@@ -316,20 +326,22 @@ export class ItMegamenu extends ItDropdownBase {
                   'col-lg-4 px-0': this.footerPosition === 'right',
                 })}"
               >
-                ${this._hasFooter
-                  ? html`
-                      <div
-                        class="${this.composeClass('', {
-                          'text-end': this.footerAlign === 'right',
-                          'it-footer-link-wrapper': this.footerPosition !== 'right',
-                          'it-footer-link-wrapper-vertical': this.footerPosition === 'right',
-                        })}"
-                        part="megamenu-footer"
-                      >
-                        <slot name="footer" @slotchange=${this._onSlotFooterChange}></slot>
-                      </div>
-                    `
-                  : html`<slot name="footer" @slotchange=${this._onSlotFooterChange}></slot>`}
+                ${
+                  this._hasFooter
+                    ? html`
+                        <div
+                          class="${this.composeClass('', {
+                            'text-end': this.footerAlign === 'right',
+                            'it-footer-link-wrapper': this.footerPosition !== 'right',
+                            'it-footer-link-wrapper-vertical': this.footerPosition === 'right',
+                          })}"
+                          part="megamenu-footer"
+                        >
+                          <slot name="footer" @slotchange=${this._onSlotFooterChange}></slot>
+                        </div>
+                      `
+                    : html`<slot name="footer" @slotchange=${this._onSlotFooterChange}></slot>`
+                }
               </div>
             </div>
           </div>

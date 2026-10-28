@@ -239,23 +239,28 @@ export class ItUploadDragDrop extends FormControl {
 
     return html`
       <div class="upload-dragdrop-text">
-        ${hasFile && this._fileWeight
-          ? html`
-              <p class="upload-dragdrop-weight">
-                <it-icon name="it-file" size="xs" aria-hidden="true" color="secondary"></it-icon>
-                <span>${this._fileType ? `${this._fileType} ` : ''}(${this._fileWeight})</span>
-              </p>
-            `
-          : nothing}
+        ${
+          hasFile && this._fileWeight
+            ? html`
+                <p class="upload-dragdrop-weight">
+                  <it-icon name="it-file" size="xs" aria-hidden="true" color="secondary"></it-icon>
+                  <span>${this._fileType ? `${this._fileType} ` : ''}(${this._fileWeight})</span>
+                </p>
+              `
+            : nothing
+        }
         ${staticHtml`<${headingTag} class="h5">
           <slot name="title">${titleText}</slot>
-        </${headingTag}>`} ${canSelect
-          ? html`
-              <p>
-                <slot name="description">${this.$t('upload_dd_description')}</slot>
-              </p>
-            `
-          : nothing}
+        </${headingTag}>`}
+        ${
+          canSelect
+            ? html`
+                <p>
+                  <slot name="description">${this.$t('upload_dd_description')}</slot>
+                </p>
+              `
+            : nothing
+        }
         <!-- The file input is the form-control validity participant, so it must exist in every
              state for the FormControl base class to read its validity. It is the real focusable
              control native required/validity now anchors to (no hidden proxy). The select affordance
