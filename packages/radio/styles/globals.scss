@@ -47,14 +47,14 @@ it-radio:not(:defined) {
 it-radio-group:not(:defined) {
   display: flex !important;
   flex-direction: column;
-  margin-bottom: var(--#{$prefix}spacing-md, 16px);
+  margin-bottom: var(--#{$prefix}spacing-s, 16px);
 
   /* Show slotted label with proper group label styling */
 
   & > [slot='label'] {
     margin-bottom: 1rem;
     color: var(--#{$prefix}form-control-label-color, #5c6f82);
-    font-size: var(--#{$prefix}label-sm, 14px);
+    font-size: var(--#{$prefix}label-font-size-s, 14px);
     font-weight: var(--#{$prefix}font-weight-solid, 600);
   }
   /* Inline variant - label on top, radios in a row below */
@@ -63,16 +63,16 @@ it-radio-group:not(:defined) {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    row-gap: var(--#{$prefix}spacing-s, 16px);
 
     & > [slot='label'] {
       width: 100%;
+      margin-bottom: 0; // the row-gap already separates the label from the radios
     }
 
     /* Override to show radios in a row after the label */
     it-radio:not(:defined) {
       display: inline-flex !important;
-      margin-right: 1rem;
-      margin-bottom: 0;
     }
   }
   /* If  grouped, keep the reverse layout */
@@ -111,5 +111,17 @@ it-radio-group:defined {
   &::before,
   &::after {
     content: none !important;
+  }
+}
+
+/* Inline group: spacing as in Bootstrap Italia (.form-check-inline in
+   forms/forms). it-radio-group sets `inline` on its radios as a
+   property, not as an attribute, so :host([inline]) in radio.scss does
+   not match them. */
+it-radio-group[inline] it-radio {
+  margin-bottom: 0;
+
+  &:not(:last-child) {
+    margin-right: var(--#{$prefix}spacing-m);
   }
 }

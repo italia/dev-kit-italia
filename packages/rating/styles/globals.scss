@@ -21,14 +21,14 @@ it-rating-item:not(:defined) {
 it-rating:not(:defined) {
   display: flex !important;
   flex-direction: row-reverse;
-  margin-bottom: var(--#{$prefix}spacing-md, 16px);
+  margin-bottom: var(--#{$prefix}spacing-s, 16px);
 
   /* Show slotted label with proper group label styling */
 
   & > [slot='label'] {
     margin: 0 var(--#{$prefix}spacing-xs);
     color: var(--#{$prefix}form-control-label-color, #5c6f82);
-    font-size: var(--#{$prefix}label-sm, 14px);
+    font-size: var(--#{$prefix}label-font-size-s, 14px);
     font-weight: var(--#{$prefix}font-weight-solid, 600);
   }
 
