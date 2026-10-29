@@ -1,6 +1,7 @@
 ---
 "@italia/checkbox": patch
 "@italia/radio": patch
+"@italia/rating": patch
 "@italia/toggle": patch
 "@italia/transfer": patch
 ---

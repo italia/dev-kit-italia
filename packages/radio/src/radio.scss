@@ -42,7 +42,7 @@
   width: 100%;
   // Use CSS custom property from parent group if set (for success state), otherwise use default
   color: var(--it-radio-label-color, var(--#{$prefix}form-control-label-color));
-  font-size: var(--#{$prefix}label-sm);
+  font-size: var(--#{$prefix}label-font-size);
   font-weight: var(--#{$prefix}font-weight-solid);
   @media (min-width: 576px) {
     font-size: var(--#{$prefix}label-font-size-l);

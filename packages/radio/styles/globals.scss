@@ -47,14 +47,14 @@ it-radio:not(:defined) {
 it-radio-group:not(:defined) {
   display: flex !important;
   flex-direction: column;
-  margin-bottom: var(--#{$prefix}spacing-md, 16px);
+  margin-bottom: var(--#{$prefix}spacing-s, 16px);
 
   /* Show slotted label with proper group label styling */
 
   & > [slot='label'] {
     margin-bottom: 1rem;
     color: var(--#{$prefix}form-control-label-color, #5c6f82);
-    font-size: var(--#{$prefix}label-sm, 14px);
+    font-size: var(--#{$prefix}label-font-size-s, 14px);
     font-weight: var(--#{$prefix}font-weight-solid, 600);
   }
   /* Inline variant - label on top, radios in a row below */
@@ -63,7 +63,7 @@ it-radio-group:not(:defined) {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    row-gap: var(--#{$prefix}spacing-s);
+    row-gap: var(--#{$prefix}spacing-s, 16px);
 
     & > [slot='label'] {
       width: 100%;
