@@ -29,15 +29,15 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 Il componente è composto da tre parti principali:
 
-- **Lista sorgente** (sinistra): gli elementi disponibili tra cui scegliere;
-- **Pulsanti di azione** (centro): per trasferire, ritrasferire e ripristinare;
-- **Lista destinazione** (destra): gli elementi selezionati.
+- **lista sorgente** (sinistra), ovvero la lista degli elementi disponibili tra cui scegliere;
+- **pulsanti di azione** (centro), per trasferire, ritrasferire e ripristinare;
+- **lista di destinazione** (destra), ovvero la lista degli elementi selezionati.
 
 
 Il componente Transfer è composto da due elementi:
 
-- `<it-transfer>`: il contenitore principale che gestisce la logica e l'integrazione con il form;
-- `<it-transfer-item>`: il singolo elemento trasferibile, da inserire come figlio diretto di `<it-transfer>`.
+- `<it-transfer>`, il contenitore principale che gestisce la logica e l'integrazione con un form;
+- `<it-transfer-item>`, il singolo elemento trasferibile, da inserire come figlio diretto di `<it-transfer>`.
 
 ```html
 <it-transfer name="my-field">
@@ -49,9 +49,9 @@ Il componente Transfer è composto da due elementi:
 ### Singolo elemento trasferibile
 
 `<it-transfer-item>` rappresenta il singolo elemento che può essere spostato tra le due liste, ed espone i seguenti attributi:
-- `value`: il valore univoco dell'elemento, che viene inviato nel form se l'elemento è presente nella lista destinazione;
-- `disabled`: se impostato, l'elemento non può essere trasferito;
-- `target`: se impostato, l'elemento parte già nella lista destinazione al caricamento.
+- `value`, il valore univoco dell'elemento, che viene inviato nel form se l'elemento è presente nella lista destinazione;
+- `disabled`, che se impostato impedisce all'elemento di essere trasferito;
+- `target`, che se impostato mostra l'elemento già nella lista di destinazione al caricamento.
 
 Il testo all'interno di `<it-transfer-item>` rappresenta l'etichetta visualizzata per l'elemento: questa può essere inserita nello slot di default, come testo semplice.
 
