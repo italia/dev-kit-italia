@@ -28,5 +28,5 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--#{$prefix}spacing-s);
+  row-gap: var(--#{$prefix}spacing-s);
 }
