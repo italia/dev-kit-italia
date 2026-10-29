@@ -19,7 +19,8 @@ button:focus-visible,
 .it-carousel-wrapper .splide__pagination button:focus-visible,
 .upload:focus-visible + label,
 .upload-dragdrop-input:focus-visible[type='file'] + label,
-.avatar-upload:focus-within:focus-visible {
+.avatar-upload:focus-within:focus-visible,
+.btn-check:focus-visible + .btn {
   @include focus;
 }
 
