@@ -318,10 +318,7 @@ export const SfondoScuro: Story = {
         story: `
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Trasmettere significato alle tecnologie assistive</span></div>
 <p>
-L’uso del colore per aggiungere un significato fornisce solo un’indicazione visiva, che non sarà trasmesso agli utenti di tecnologie assistive –
-come gli screen reader.
-Assicurati che le informazioni denotate dal colore siano rese disponibili anche dal contenuto stesso (es.: il testo
-visibile), o siano incluse attraverso mezzi alternativi, come testo aggiuntivo nascosto con la classe <code>.visually-hidden</code>.</p></div></div>`,
+L’uso del colore per trasmettere significato (conferma, alert, errore) è un'indicazione visiva che non viene trasmessa tramite tecnologie assistive. Assicurati di includere questa informazione nel testo visibile del contenuto stesso o come testo aggiuntivo nascosto con la classe <code>.visually-hidden</code>.</p></div></div>`,
       },
     },
   },
