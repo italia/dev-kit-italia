@@ -5,39 +5,39 @@ import * as Stories from './it-upload.stories';
 
 # Upload
 
-<description>Elementi dei form dedicati al caricamento file</description>
+<description>Campo per la selezione e il caricamento di file.</description>
 
 ## Cosa fa
 
-Il componente Upload consente l'upload di file attraverso diverse modalità: lista verticale, anteprima immagini, gallery, avatar, o drag & drop.
+Il componente Upload (`<it-upload>`) permette di caricare uno o più file tramite selezione o drag & drop, mostrando l'anteprima delle immagini e gli stati di avanzamento.
 
 [Approfondisci come e quando usare il componente Upload](https://designers.italia.it/design-system/componenti/upload/)
 
 ## Indicazioni generali
 
-Il Kit offre tre componenti distinti che coprono i principali casi d'uso per l'upload di file:
+Scegli tra 3 componenti distinti in base alle esigenze di caricamento e funzionalità:
 
-- `<it-upload>` — lista verticale dei file caricati, con supporto per anteprima immagini e variante gallery. Adatto a form che richiedono l'allegato di uno o più documenti.
-- `<it-upload-avatar>` — caricamento e anteprima immediata di una foto profilo circolare. Ideale per sezioni di impostazioni account o profilo utente.
-- `<it-upload-drag-drop>` — area di trascinamento per il caricamento di un singolo file, con stati di progresso gestibili via JavaScript. Adatto a flussi che richiedono un'esperienza di upload più guidata.
+- `<it-upload>` mostra una lista verticale dei file caricati con anteprima immagini, ideale per form che richiedono uno o più allegati;
+- `<it-upload-avatar>` crea il campo di caricamento di una foto profilo circolare e mostra la relativa anteprima, ideale per impostazioni account o profilo utente;
+- `<it-upload-drag-drop>` predisponde un'area di trascinamento per il caricamento di file, adatto a flussi che richiedono un'esperienza più guidata.
 
-Ognuno dei tre componenti delega la selezione dei file a un `<input type="file">` nativo, accessibile da tastiera e compatibile con le tecnologie assistive. In `<it-upload-avatar>` e `<it-upload-drag-drop>` l'input è nascosto visivamente ma rimane accessibile agli screen reader tramite l'etichetta ARIA associata.
+Ognuno dei tre componenti delega la selezione dei file a un `<input type="file">` nativo, accessibile da tastiera e compatibile con le tecnologie assistive. In `<it-upload-avatar>` e `<it-upload-drag-drop>` l'input è nascosto visivamente ma rimane accessibile ai lettori di schermo tramite l'etichetta ARIA associata.
 
-Tutti e tre i componenti partecipano alla validazione nativa HTML: aggiungi l'attributo `required` per rendere il campo obbligatorio all'interno di un `<form>`. Assegna sempre un `name` significativo per identificare il campo nei dati del form.
+Tutti e tre i componenti supportano la validazione nativa HTML: aggiungi l'attributo `required` per rendere il campo obbligatorio all'interno di un `<form>`. Assegna sempre un `name` significativo per identificare il campo nei dati del form.
 
-Gli attributi condivisi dai tre componenti sono:
-- `name` — nome del campo, inviato con il valore nella sottomissione del form.
-- `required` — rende il campo obbligatorio; in assenza di un file selezionato il form non può essere inviato.
-- `disabled` — disabilita il componente e ne impedisce l'interazione.
-- `accept` — limita i tipi di file accettati (es. `"image/*"`, `".pdf,.docx"`).
+Gli attributi condivisi dai 3 componenti sono:
+- `name`, identifica il nome del campo, inviato con il valore nella sottomissione del form;
+- `required`, rende il campo obbligatorio;
+- `disabled`, disabilita il componente e ne impedisce l'interazione;
+- `accept`, limita i tipi di file accettati (ad esempio, `"image/*"`, `".pdf,.docx"`).
 
-Per `<it-upload>`, fornisci sempre un'etichetta nello slot `label` (`<span slot="label">Carica documenti</span>`): il componente la usa come testo del pulsante e come nome accessibile del campo.
+Per `<it-upload>`, includi sempre un'etichetta nello slot `label` (`<span slot="label">Carica documenti</span>`): il componente la usa come testo del pulsante e come nome accessibile del campo.
 
-Se vuoi modificare l'icona del pulsante di `<it-upload>`, usa un componente `<it-icon>` nello slot `icon` per sostituire l'icona predefinita con una a tua scelta.
+Se vuoi modificare l'icona del pulsante di `<it-upload>`, usa un componente `<it-icon>` di tua scelta nello slot `icon` per sostituire l'icona predefinita.
 
 ## Accessibilità
 
-I tre componenti Upload sono progettati per supportare la navigazione da tastiera, gli screen reader e le best practice ARIA.
+I 3 componenti Upload sono progettati per supportare la navigazione da tastiera, gli screen reader e le best practice ARIA.
 
 In particolare:
 - In `<it-upload>`, il testo dello slot `label` è usato sia come etichetta visibile sia come nome accessibile dell'input nativo. Il componente emette un avviso in console se l'etichetta manca.
@@ -50,16 +50,16 @@ Per garantire l'accessibilità dei componenti Upload, segui queste linee guida:
 - Usa l'attributo `support-text` di `<it-upload>` per informare l'utente sui requisiti del campo (formati accettati, dimensione massima) prima dell'interazione.
 - Per `<it-upload-drag-drop>`, completa sempre il ciclo di caricamento via JavaScript (progresso, successo o errore): lo stato viene comunicato esplicitamente anche agli utenti di screen reader.
 
-## Upload con lista di file
+## Variante Lista file
 
 Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente. Per vedere come cambia il codice, clicca su **Show code**.
 
 <Canvas of={Stories.EsempioInterattivoUpload} />
 <Controls of={Stories.EsempioInterattivoUpload} />
 
-## Con anteprima delle immagini
+## Con anteprima immagini
 
-Aggiungi `image-preview` per sostituire l'icona generica che rappresenta un file con un'anteprima thumbnail delle immagini caricate: è consigliato quando il campo accetta prevalentemente immagini.
+Aggiungi `#image-preview` per sostituire l'icona generica che rappresenta un file con un'anteprima thumbnail delle immagini caricate: è consigliato quando il campo accetta prevalentemente immagini.
 
 Il componente ottimizza la visualizzazione delle immagini anche quando queste non hanno proporzione quadrata, si consiglia comunque di utilizzare immagini dal peso contenuto.
 
@@ -71,7 +71,7 @@ Usa i metodi `addFile()`, `setFileStatus()` e `setFileThumbnail()` per gestire l
 
 <Canvas of={Stories.UploadConStatoFile} />
 
-### Upload Gallery
+## Variante Gallery
 
 Con `variant="gallery"` le foto caricate vengono visualizzate in una griglia a "pictures wall", ideale per gestire upload multipli di immagini.
 
@@ -79,7 +79,7 @@ Anche in questo caso, nonostante il componente ottimizzi la visualizzazione dell
 
 <Canvas of={Stories.UploadGallery} />
 
-## Upload con Avatar
+## Variante Avatar
 
 Questo elemento combina la visualizzazione dell’immagine Avatar con l’input tipo file per permettere l’upload di una nuova immagine.
 
@@ -96,7 +96,7 @@ Puoi scegliere tra due dimensioni tramite l'attributo `size`: `xxl` (standard) e
 
 <Canvas of={Stories.UploadConAvatar} />
 
-## Upload Drag & Drop
+## Variante Drag & Drop
 
 Usa `<it-upload-drag-drop>` per proporre un'area di trascinamento dedicata dove l'utente può caricare un file trascinandolo sull'area, oppure tramite il link di selezione manuale.
 
