@@ -110,17 +110,15 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 <Canvas of={Stories.EsempioInterattivoDragDrop} />
 <Controls of={Stories.EsempioInterattivoDragDrop} />
 
-### Gestione automatica e manuale dello stato
+### Gestione dello stato
 
-Il componente supporta due modalità per gestire il caricamento.
-
-**Modalità automatica (consigliata per casi semplici** 
+#### Modalità automatica (per casi semplici)
 
 Il componente gestisce automaticamente l'avvio e lo stato indeterminato:
 - al completamento del **dragenter**, emette l'evento annullabile `it-dd-start`. Se non prevenuto, chiama `start()` e mostra l'indicatore di progresso indeterminato;
 - al completamento del **drop** (o selezione da file input), emette l'evento annullabile `it-dd-drop`. Se non prevenuto, chiama `start()` e attiva la visualizzazione indeterminata.
 
-**Modalità manuale (per scenari complessi)** 
+#### Modalità manuale (per scenari complessi)
 
 Puoi gestire direttamente ogni fase del processo di caricamento:
 - ascolta gli eventi `it-dd-start` e `it-dd-drop`;
@@ -169,14 +167,15 @@ Per `<it-upload-avatar>`, se `src` è già valorizzato, il requisito è soddisfa
 <Description of={Stories.UploadFormIntegrazione} />
 <Canvas of={Stories.UploadFormIntegrazione} />
 
-## Proprietà, Metodi, ed Eventi accessibili via JS
-### `<it-upload>`
+## Proprietà, metodi ed eventi accessibili via JS
+
+### it-upload
 <Description of={Stories.MetodiEPropUpload} />
 
-### `<it-upload-avatar>`
+### it-upload-avatar
 <Description of={Stories.MetodiEPropAvatar} />
 
-### `<it-upload-drag-drop>`
+### it-upload-drag-drop
 <Description of={Stories.MetodiEPropDragDrop} />
 
 ## i18n
