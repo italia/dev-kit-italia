@@ -351,7 +351,7 @@ export const ConIcona: Story = {
     docs: {
       description: {
         story: `
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità delle icone</span></div>
 <p>
 Le icone sono decorative per impostazione predefinita. Se un'icona ha un significato o una funzione propria, usa correttamente gli attributi \`label\`, \`role\` e \`aria-hidden\` sul componente \`<it-icon>\`. [Approfondisci sulla documentazione di it-icon](?path=/docs/componenti-icon--documentazione)</p></div></div>
 `,
