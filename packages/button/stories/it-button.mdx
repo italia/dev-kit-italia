@@ -8,7 +8,7 @@ import * as Stories from './it-button.stories';
 <description>Pulsante con etichetta di testo o icona che al clic inizia un'azione o un evento.</description>
 
 ## Cosa fa
-Il componente `<it-button>` genera pulsanti per avviare un’azione o un evento.
+Il componente Button (`<it-button>`) genera pulsanti per avviare un’azione o un evento.
 Non dovrebbero essere usati per attivare la navigazione verso altre pagine o link esterni.
 
 [Approfondisci come e quando usare il componente Button](https://designers.italia.it/design-system/componenti/buttons/)
@@ -24,17 +24,15 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 ## Accessibilità
 
 
-- Le classi `.btn` e `.btn-` danno agli elementi html l’aspetto visivo di un pulsante. Anche elementi `<a>` o `<span>` possono subire questa trasformazione provocando discrepanza tra ciò che si rappresenta e la funzione semantica dell’elemento.
-Questo può provocare complesse problematiche di accessibilità.
+- Fai attenzone quando usi le classi `.btn` e `.btn-`: queste applicano agli elementi HTML l'aspetto visivo di un pulsante, indipendentemente dalla loro funzione semantica, creando una discrepanza tra aspetto e significato che può generare problemi di accessibilità.
 
-- Dove il click sul pulsante non genera un cambio di pagina utilizza esclusivamente il componente `<it-button>`.
-Qualora non fosse possibile, è necessario applicare in modo appropriato l’attributo `role="button"` su elementi `<a>` o `<span>` per trasmetterne lo scopo alle tecnologie assistive.
+- Se l'azione del pulsante non provoca un cambio di pagina, usa esclusivamente il componente `<it-button>`. Se non puoi farlo, usa elementi `<a>` o `<span>` con attributo `role="button"` per comunicarne la funzione alle tecnologie assistive.
 
-- Quando si utilizza l'attributo `disabled` è consigliato usare anche l'attributo `it-aria-describedby` (o un elemento all'interno di `<it-button>` con classe `.sr-only`) per informare tramite gli screen-reader il motivo per il quale il pulsante è disabilitato.
+- Quando usi l'attributo `disabled`, apllica sempre anche l'attributo `it-aria-describedby` (o un elemento all'interno di `<it-button>` con classe `.sr-only`) per comunicare tramite lettori di schermo il motivo per il quale il pulsante è disabilitato.
 
 #### Attributi ARIA
 
-Tutti gli attributi `it-aria-*` passati a `<it-button>` vengono applicati al pulsante generato come attributi `aria-*`.
+Tutti gli attributi `it-aria-*` passati a `<it-button>` vengono applicati al pulsante come attributi `aria-*`.
 Anche l'attributo `it-role` viene passato al pulsante come attributo `role`.
 
 
@@ -49,9 +47,10 @@ Questi stili provengono da Bootstrap Italia e usano nomenclature consistenti con
 
 ## Varianti di dimensione
 
-Valorizza l'attributo `size` con:
-- `lg` per la dimensione grande;
-- `xs` per la dimensione piccola.
+Di default l'attributo `size` è impostato `sm`. Puoi cambiarlo con:
+
+- `lg` per la dimensione più grande;
+- `xs` per la dimensione più piccola.
 
 Per adattare i pulsanti a tutta l'ampiezza del loro contenitore, usa l'attributo `block`.
 
@@ -80,23 +79,23 @@ Per le altre varianti di colore non sono previsti cambiamenti di tonalità.
 
 ## Con icona
 
-Gli stili per il pulsante con icona vengono applicati automaticamente quando nel light DOM è presente un elemento `<it-icon>`.
+Puoi inserire un’icona all’interno di un elemento `<it-button>`. Il componente applica automaticamente gli stili dedicati quando nel light DOM è presente un elemento `<it-icon>`.
 
-Quando inserisci un’icona all’interno di un elemento `<it-button>`, devi inserire il testo del pulsante all’interno di un tag `<span/>` per garantire un perfetto allineamento ed una corretta spaziatura tra l’icona e lo stesso testo.
+Inserisci il testo del pulsante all’interno di un tag `<span/>` per garantire il corretto allineamento e la spaziatura tra il testo e l'icona.
 
-Puoi posizionare l'icona a sinistra o a destra del testo, a seconda della posizione in cui viene inserita all’interno del pulsante.
+In base a dove inserisci l'elemento `<it-icon>` all’interno del pulsante, l'icona può essere visualizzata a sinistra o a destra del testo.
 
 <Description of={Stories.ConIcona}/>
 
 <Canvas of={Stories.ConIcona} />
 
 ### Dimensione dell'icona
-- Nei pulsanti di dimensione `lg` o default (`sm`), usa l'attributo `size="sm"` sull'icona.
-- Nei pulsanti di dimensione `xs`, usa l'attributo `size="xs"` sull'icona .
+- Nei pulsanti di dimensione `sm` (default) o `lg` (grande), usa l'attributo `size="sm"` sull'icona.
+- Nei pulsanti di dimensione `xs` (piccola), usa l'attributo `size="xs"` sull'icona .
 
 ### Icona con contorno circolare
-Inserisci l'icona all'interno di uno elemento con classe `.rounded-icon` per poter avere il contorno circolare.
-In questo caso, la dimensione dell'icona deve sempre essere  `xs`, quindi `<it-icon>` deve avere sempre l'attributo `size="xs"`.
+Per un'icona con contorno contorno circolare, inseriscila all'interno di un elemento con classe `.rounded-icon`.
+La dimensione dell'icona deve sempre essere  `xs`, quindi `<it-icon>` deve avere sempre l'attributo `size="xs"`.
 
 
 <Canvas of={Stories.ConIconaCerchiata} />
