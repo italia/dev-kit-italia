@@ -1,5 +1,17 @@
 # @italia/rating
 
+## 1.0.0-beta.7
+
+### Patch Changes
+
+- [#578](https://github.com/italia/dev-kit-italia/pull/578) [`c28041f`](https://github.com/italia/dev-kit-italia/commit/c28041f2fcd8abb1ac5372165984e690d3d92ffb) Thanks [@Fupete](https://github.com/Fupete)! - Rimossi gli import di `forms/form-check` di Bootstrap Italia, che sovrascrivevano gli stili v3: niente più sfondo bianco quadrato dietro il cerchio di `it-radio`. Spacing degli inline di `it-checkbox` e `it-radio` allineato a BSI: 24px tra le voci, nessun margine dopo l'ultima, 16px tra le righe che vanno a capo.
+
+- Updated dependencies [[`c28041f`](https://github.com/italia/dev-kit-italia/commit/c28041f2fcd8abb1ac5372165984e690d3d92ffb), [`f5b0ce2`](https://github.com/italia/dev-kit-italia/commit/f5b0ce2018d102915276c7c9af88947d3a65b565)]:
+  - @italia/radio@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
 ## 1.0.0-beta.6
 
 ### Patch Changes
