@@ -8,12 +8,11 @@
 
 @use 'bootstrap-italia/src/scss/forms/forms' as *;
 @use 'bootstrap-italia/src/scss/forms/form-control' as *;
-@use 'bootstrap-italia/src/scss/forms/form-check' as *;
 @use 'bootstrap-italia/src/scss/forms/form-validation' as *;
 
 ::slotted([slot='label']) {
   display: block;
-  padding: 0 var(--#{$prefix}form-input-spacing-x);
+  padding: 0;
   margin-bottom: var(--#{$prefix}spacing-s);
   background-color: rgba(0, 0, 0, 0);
   color: var(--#{$prefix}form-control-text-color);
@@ -29,5 +28,5 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--#{$prefix}spacing-s);
+  row-gap: var(--#{$prefix}spacing-s);
 }

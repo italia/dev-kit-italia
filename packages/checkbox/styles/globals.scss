@@ -1,10 +1,19 @@
+@use 'bootstrap-italia/src/scss/base/config' as *;
+
 it-checkbox {
   --it-host-display: block;
   display: var(--it-host-display);
 
   &[inline] {
     --it-host-display: inline-block;
-    margin-right: 1rem;
+    
+    &:not(:last-child) {
+      margin-right: var(--#{$prefix}spacing-m);
+    }
+  }
+
+  &[inline] + &[inline] {
+    margin-top: var(--#{$prefix}spacing-s);
   }
 
   &:not(:defined) {

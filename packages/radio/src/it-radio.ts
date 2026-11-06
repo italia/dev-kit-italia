@@ -225,7 +225,7 @@ export class ItRadio extends BaseComponent {
     // #input = container, #button = visual circle
     const inputRender = html`
       <div id="input" part="input"></div>
-      <span id="button" part="button" class="form-check-input"></span>
+      <span id="button" part="button"></span>
     `;
 
     return inputRender;
