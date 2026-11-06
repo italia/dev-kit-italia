@@ -1,5 +1,17 @@
 # @italia/stepper
 
+## 1.0.0-beta.7
+
+### Patch Changes
+
+- [#572](https://github.com/italia/dev-kit-italia/pull/572) [`6052952`](https://github.com/italia/dev-kit-italia/commit/605295289a03497f233c9a5531b83f72c16c5982) Thanks [@Fupete](https://github.com/Fupete)! - Set `role="list"` explicitly on the header list and on the dots indicator, restoring list semantics in Safari/VoiceOver.
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/i18n@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
 ## 1.0.0-beta.6
 
 ### Patch Changes
