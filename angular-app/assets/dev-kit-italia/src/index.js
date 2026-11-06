@@ -337,11 +337,11 @@ var styles$I = css`@charset "UTF-8";
   --bsi-accordion-border-width: 0;
   --bsi-accordion-body-padding-x: var(--bsi-spacing-m);
   --bsi-accordion-body-padding-y: var(--bsi-spacing-s);
-  --bsi-accordion-btn-active-icon: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='rgb(0, 91.8, 183.6)'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>"));
+  --bsi-accordion-btn-active-icon: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='rgb(0%, 36%, 72%)'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>"));
   --bsi-accordion-btn-bg: var(--bsi-accordion-background);
   --bsi-accordion-btn-color: var(--bsi-color-text-primary);
   --bsi-accordion-btn-focus-border-color: hsl(210, 17%, 44%);
-  --bsi-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+  --bsi-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(0%, 40%, 80%, 0.25);
   --bsi-accordion-btn-icon: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='hsl(0, 0%, 10%)'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>"));
   --bsi-accordion-btn-icon-transform: rotate(-180deg);
   --bsi-accordion-btn-icon-transition: transform 0.2s ease-in-out;
@@ -2442,7 +2442,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -3766,7 +3766,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -3887,6 +3887,33 @@ var styles$H = css`.btn {
 .btn:disabled:hover,
 .btn.disabled:hover {
   cursor: not-allowed;
+}
+
+.btn-check {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  width: auto;
+  pointer-events: none;
+}
+.btn-check + .btn {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.btn-check[disabled] + .btn, .btn-check:disabled + .btn {
+  pointer-events: none;
+  opacity: var(--bsi-btn-disabled-opacity);
+}
+
+.form-check .btn-check + .btn {
+  padding: var(--bsi-btn-padding-y) var(--bsi-btn-padding-x);
+  font-size: var(--bsi-btn-font-size);
+}
+.form-check .btn-check + .btn::before, .form-check .btn-check + .btn::after {
+  content: none;
+}
+
+.btn-check + .btn .icon {
+  fill: var(--bsi-btn-text-color);
 }
 
 .btn-primary,
@@ -4051,6 +4078,45 @@ a.btn-outline-danger:hover {
 a.btn-outline-danger:active {
   --bsi-btn-outline-border-color: var(--bsi-color-border-danger-active);
   --bsi-btn-text-color: var(--bsi-color-text-danger-active);
+}
+
+.btn-check:checked + .btn-primary,
+.btn-check:checked + .btn-outline-primary {
+  --bsi-btn-background: var(--bsi-color-background-primary-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-primary-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-secondary,
+.btn-check:checked + .btn-outline-secondary {
+  --bsi-btn-background: var(--bsi-color-background-secondary-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-secondary-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-success,
+.btn-check:checked + .btn-outline-success {
+  --bsi-btn-background: var(--bsi-color-background-success-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-success-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-warning,
+.btn-check:checked + .btn-outline-warning {
+  --bsi-btn-background: var(--bsi-color-background-warning-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-warning-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-danger,
+.btn-check:checked + .btn-outline-danger {
+  --bsi-btn-background: var(--bsi-color-background-danger-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-danger-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn .icon {
+  fill: var(--bsi-icon-inverse);
 }
 
 .bg-dark .btn-link {
@@ -5854,7 +5920,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -7171,7 +7237,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -9235,7 +9301,7 @@ input::file-selector-button {
   }
 }
 input:hover:not(:disabled):not([readonly])::file-selector-button {
-  background-color: rgb(242.25, 242.25, 242.25);
+  background-color: rgb(95%, 95%, 95%);
 }
 input[type=file] {
   overflow: hidden;
@@ -9257,7 +9323,7 @@ select {
 select:focus {
   border-color: hsl(210, 17%, 44%);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0%, 40%, 80%, 0.25);
 }
 select[multiple], select[size]:not([size="1"]) {
   padding-right: 0.75rem;
@@ -9504,6 +9570,13 @@ input::-webkit-datetime-edit {
   border-radius: var(--bsi-radius-rounded);
   transition: all var(--bsi-transition-instant) ease-out;
 }
+.form-check input[type=radio] + label::after {
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-width: 0;
+}
 .form-check input[type=radio]:not(:checked) + label::after, .form-check input[type=radio]:not(:checked) + label::before {
   border-color: var(--bsi-form-checkbox-border-color);
 }
@@ -9515,7 +9588,7 @@ input::-webkit-datetime-edit {
   z-index: 0;
   border-color: var(--bsi-form-checked-color);
   background-color: var(--bsi-form-checked-color);
-  transform: scale(0.64);
+  transform: none;
 }
 .form-check input[type=radio]:checked + label::before {
   border-color: var(--bsi-form-checked-color);
@@ -9563,6 +9636,9 @@ input::-webkit-datetime-edit {
 }
 .form-check.form-check-group input[type=radio]:checked + label::before {
   right: 0;
+}
+.form-check.form-check-group input[type=radio] + label::after {
+  right: 4px;
 }
 .form-check.form-check-group input.semi-checked:not(:checked) + label::before {
   right: 4px;
@@ -9723,17 +9799,20 @@ button:has(~ .is-invalid),
   padding-right: calc(1.5em + 0.75rem + var(--bsi-form-control-spacing) + 1rem) !important;
 }
 
-.was-validated &:valid,
+.was-validated .form-control:valid,
+.was-validated select:valid,
 .is-valid {
   border-color: var(--bsi-color-border-success) !important;
   background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="%23008055" xmlns="http://www.w3.org/2000/svg"><path d="M9.6,16.9L4,11.4l0.8-0.7l4.8,4.8l8.5-8.4l0.7,0.7L9.6,16.9z" /></svg>');
 }
-.was-validated &:valid ~ .warning-feedback,
+.was-validated .form-control:valid ~ .warning-feedback,
+.was-validated select:valid ~ .warning-feedback,
 .is-valid ~ .warning-feedback {
   display: block;
 }
 
-.was-validated &:invalid,
+.was-validated .form-control:invalid,
+.was-validated select:invalid,
 .is-invalid {
   border-color: var(--bsi-color-border-danger) !important;
   background-image: url('data:image/svg+xml,<svg width="24" fill="%23cc334d" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.7,12l6.7,6.6l-0.8,0.8L12,12.7l-6.6,6.7l-0.8-0.8l6.7-6.6L4.6,5.4l0.8-0.8l6.6,6.7l6.6-6.7l0.8,0.8L12.7,12z" /></svg>');
@@ -10619,10 +10698,7 @@ let ItAutocomplete = class ItAutocomplete extends FormControl$w {
             aria-expanded="${this._isOpen ? 'true' : 'false'}"
             aria-haspopup="listbox"
             aria-labelledby="${labelId}"
-            aria-describedby="${[
-            this.supportText ? `${inputId}-support` : '',
-            this._showAssistiveHint ? assistiveHintId : '',
-        ]
+            aria-describedby="${[this.supportText ? `${inputId}-support` : '', this._showAssistiveHint ? assistiveHintId : '']
             .filter(Boolean)
             .join(' ') || nothing}"
             aria-activedescendant=${ifDefined(this._activeIndex >= 0 ? `${inputId}-option-${this._activeIndex}` : undefined)}
@@ -10635,45 +10711,45 @@ let ItAutocomplete = class ItAutocomplete extends FormControl$w {
 
           ${this._isOpen && this._filteredOptions.length > 0
             ? html `<ul
-                id="${listboxId}"
-                class="autocomplete-listbox"
-                part="autocomplete-list"
-                role="listbox"
-                aria-label="${this.$t('autocomplete_listboxLabel')}"
-              >
-                ${this._filteredOptions.map((option, index) => {
+                  id="${listboxId}"
+                  class="autocomplete-listbox"
+                  part="autocomplete-list"
+                  role="listbox"
+                  aria-label="${this.$t('autocomplete_listboxLabel')}"
+                >
+                  ${this._filteredOptions.map((option, index) => {
                 const position = `${index + 1} ${this.$t('autocomplete_of')} ${this._filteredOptions.length}`;
                 const ariaLabel = index === this._activeIndex
                     ? `${option.label}, ${position}, ${this.$t('autocomplete_option_selected')}`
                     : `${option.label}, ${position}`;
                 return html `<li
-                    id="${inputId}-option-${index}"
-                    role="option"
-                    part="autocomplete-option"
-                    tabindex="-1"
-                    aria-selected="${index === this._activeIndex ? 'true' : 'false'}"
-                    aria-posinset="${index + 1}"
-                    aria-setsize="${this._filteredOptions.length}"
-                    aria-label="${ariaLabel}"
-                    class="autocomplete-option ${classMap({ active: index === this._activeIndex })}"
-                    @click="${() => this._handleOptionClick(option.value)}"
-                    @keydown="${(e) => this._handleOptionKeyDown(e, option.value)}"
-                    @mouseenter="${() => this._handleOptionHover(index)}"
-                  >
-                    <span>${option.label}</span>
-                    ${index === this._activeIndex
+                      id="${inputId}-option-${index}"
+                      role="option"
+                      part="autocomplete-option"
+                      tabindex="-1"
+                      aria-selected="${index === this._activeIndex ? 'true' : 'false'}"
+                      aria-posinset="${index + 1}"
+                      aria-setsize="${this._filteredOptions.length}"
+                      aria-label="${ariaLabel}"
+                      class="autocomplete-option ${classMap({ active: index === this._activeIndex })}"
+                      @click="${() => this._handleOptionClick(option.value)}"
+                      @keydown="${(e) => this._handleOptionKeyDown(e, option.value)}"
+                      @mouseenter="${() => this._handleOptionHover(index)}"
+                    >
+                      <span>${option.label}</span>
+                      ${index === this._activeIndex
                     ? html `<span class="visually-hidden">, ${this.$t('autocomplete_option_selected')}</span>`
                     : nothing}
-                  </li>`;
+                    </li>`;
             })}
-              </ul>`
+                </ul>`
             : nothing}
         </div>
 
         ${this._showAssistiveHint
             ? html `<div id="${assistiveHintId}" aria-hidden="true" class="visually-hidden">
-              ${this.$t('autocomplete_assistiveHint')}
-            </div>`
+                ${this.$t('autocomplete_assistiveHint')}
+              </div>`
             : nothing}
 
         <div id="${statusId}" role="status" aria-live="polite" aria-atomic="true" class="visually-hidden">
@@ -10682,8 +10758,8 @@ let ItAutocomplete = class ItAutocomplete extends FormControl$w {
 
         ${this.supportText
             ? html `<small id="${inputId}-support" class="form-text"
-              ><slot name="support-text">${this.supportText}</slot></small
-            >`
+                ><slot name="support-text">${this.supportText}</slot></small
+              >`
             : nothing}
         ${this.invalid && this.validationMessage
             ? html `<div class="form-feedback text-danger" role="alert">${this.validationMessage}</div>`
@@ -11964,7 +12040,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -13952,7 +14028,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -15176,7 +15252,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -16620,7 +16696,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -18100,7 +18176,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -18218,6 +18294,33 @@ var styles$B = css`.btn {
 .btn:disabled:hover,
 .btn.disabled:hover {
   cursor: not-allowed;
+}
+
+.btn-check {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  width: auto;
+  pointer-events: none;
+}
+.btn-check + .btn {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.btn-check[disabled] + .btn, .btn-check:disabled + .btn {
+  pointer-events: none;
+  opacity: var(--bsi-btn-disabled-opacity);
+}
+
+.form-check .btn-check + .btn {
+  padding: var(--bsi-btn-padding-y) var(--bsi-btn-padding-x);
+  font-size: var(--bsi-btn-font-size);
+}
+.form-check .btn-check + .btn::before, .form-check .btn-check + .btn::after {
+  content: none;
+}
+
+.btn-check + .btn .icon {
+  fill: var(--bsi-btn-text-color);
 }
 
 .btn-primary,
@@ -18382,6 +18485,45 @@ a.btn-outline-danger:hover {
 a.btn-outline-danger:active {
   --bsi-btn-outline-border-color: var(--bsi-color-border-danger-active);
   --bsi-btn-text-color: var(--bsi-color-text-danger-active);
+}
+
+.btn-check:checked + .btn-primary,
+.btn-check:checked + .btn-outline-primary {
+  --bsi-btn-background: var(--bsi-color-background-primary-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-primary-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-secondary,
+.btn-check:checked + .btn-outline-secondary {
+  --bsi-btn-background: var(--bsi-color-background-secondary-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-secondary-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-success,
+.btn-check:checked + .btn-outline-success {
+  --bsi-btn-background: var(--bsi-color-background-success-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-success-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-warning,
+.btn-check:checked + .btn-outline-warning {
+  --bsi-btn-background: var(--bsi-color-background-warning-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-warning-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-danger,
+.btn-check:checked + .btn-outline-danger {
+  --bsi-btn-background: var(--bsi-color-background-danger-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-danger-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn .icon {
+  fill: var(--bsi-icon-inverse);
 }
 
 .bg-dark .btn-link {
@@ -19637,7 +19779,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -21311,7 +21453,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -21432,6 +21574,33 @@ var styles$y = css`.btn {
 .btn:disabled:hover,
 .btn.disabled:hover {
   cursor: not-allowed;
+}
+
+.btn-check {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  width: auto;
+  pointer-events: none;
+}
+.btn-check + .btn {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.btn-check[disabled] + .btn, .btn-check:disabled + .btn {
+  pointer-events: none;
+  opacity: var(--bsi-btn-disabled-opacity);
+}
+
+.form-check .btn-check + .btn {
+  padding: var(--bsi-btn-padding-y) var(--bsi-btn-padding-x);
+  font-size: var(--bsi-btn-font-size);
+}
+.form-check .btn-check + .btn::before, .form-check .btn-check + .btn::after {
+  content: none;
+}
+
+.btn-check + .btn .icon {
+  fill: var(--bsi-btn-text-color);
 }
 
 .btn-primary,
@@ -21596,6 +21765,45 @@ a.btn-outline-danger:hover {
 a.btn-outline-danger:active {
   --bsi-btn-outline-border-color: var(--bsi-color-border-danger-active);
   --bsi-btn-text-color: var(--bsi-color-text-danger-active);
+}
+
+.btn-check:checked + .btn-primary,
+.btn-check:checked + .btn-outline-primary {
+  --bsi-btn-background: var(--bsi-color-background-primary-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-primary-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-secondary,
+.btn-check:checked + .btn-outline-secondary {
+  --bsi-btn-background: var(--bsi-color-background-secondary-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-secondary-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-success,
+.btn-check:checked + .btn-outline-success {
+  --bsi-btn-background: var(--bsi-color-background-success-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-success-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-warning,
+.btn-check:checked + .btn-outline-warning {
+  --bsi-btn-background: var(--bsi-color-background-warning-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-warning-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-danger,
+.btn-check:checked + .btn-outline-danger {
+  --bsi-btn-background: var(--bsi-color-background-danger-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-danger-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn .icon {
+  fill: var(--bsi-icon-inverse);
 }
 
 .bg-dark .btn-link {
@@ -23375,7 +23583,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -25382,24 +25590,24 @@ let ItCard = class ItCard extends BaseComponent$o {
           <div class="it-card-body" part="body">
             ${hasSubtitle && this.variant !== 'profile' && this.variant !== 'location'
                 ? html `
-                  <p class="it-card-subtitle" part="subtitle">
-                    <slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>
-                  </p>
-                `
+                    <p class="it-card-subtitle" part="subtitle">
+                      <slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>
+                    </p>
+                  `
                 : html `<slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>`}
             ${hasSignature
                 ? html `
-                  <address class="it-card-signature" part="signature">
-                    <slot name="signature" @slotchange=${this.handleSlotChange}></slot>
-                  </address>
-                `
+                    <address class="it-card-signature" part="signature">
+                      <slot name="signature" @slotchange=${this.handleSlotChange}></slot>
+                    </address>
+                  `
                 : html `<slot name="signature" @slotchange=${this.handleSlotChange}></slot>`}
             ${hasText
                 ? html `
-                  <p class="it-card-text" part="text">
-                    <slot name="text" @slotchange=${this.handleSlotChange}></slot>
-                  </p>
-                `
+                    <p class="it-card-text" part="text">
+                      <slot name="text" @slotchange=${this.handleSlotChange}></slot>
+                    </p>
+                  `
                 : html `<slot name="text" @slotchange=${this.handleSlotChange}></slot>`}
             <slot name="body" @slotchange=${this.handleSlotChange}></slot>
           </div>
@@ -25437,10 +25645,10 @@ let ItCard = class ItCard extends BaseComponent$o {
               ${cardTitle}
               ${hasSubtitle
                 ? html `
-                    <p class="it-card-profile-role" part="subtitle">
-                      <slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>
-                    </p>
-                  `
+                      <p class="it-card-profile-role" part="subtitle">
+                        <slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>
+                      </p>
+                    `
                 : html `<slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>`}
             </div>
             ${cardImage}
@@ -25457,17 +25665,17 @@ let ItCard = class ItCard extends BaseComponent$o {
               ${cardTitle}
               ${hasSubtitle
                 ? html `
-                    <p class="it-card-place-type" part="subtitle">
-                      <slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>
-                    </p>
-                  `
+                      <p class="it-card-place-type" part="subtitle">
+                        <slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>
+                      </p>
+                    `
                 : html `<slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>`}
               ${hasAddress
                 ? html `
-                    <p class="it-card-place-address" part="address">
-                      <slot name="address" @slotchange=${this.handleSlotChange}></slot>
-                    </p>
-                  `
+                      <p class="it-card-place-address" part="address">
+                        <slot name="address" @slotchange=${this.handleSlotChange}></slot>
+                      </p>
+                    `
                 : html `<slot name="address" @slotchange=${this.handleSlotChange}></slot>`}
             </div>
             ${cardImage}
@@ -26850,7 +27058,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -27204,13 +27412,13 @@ let ItChip = ItChip_1 = class ItChip extends BaseComponent$n {
       <slot name="icon"></slot>
       ${this.avatar
             ? html `
-            <it-avatar
-              size="${avatarSize}"
-              src="${this.avatar}"
-              alt="${this.avatarAlt}"
-              style="height: ${avatarHeight}"
-            ></it-avatar>
-          `
+              <it-avatar
+                size="${avatarSize}"
+                src="${this.avatar}"
+                alt="${this.avatarAlt}"
+                style="height: ${avatarHeight}"
+              ></it-avatar>
+            `
             : null}
       <span class="chip-label">${this.label}</span>
       <slot name="dismiss-button"></slot>
@@ -28443,7 +28651,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -28811,10 +29019,10 @@ let ItDimmer = class ItDimmer extends BaseComponent$m {
           <div class="dimmer-inner" part="dimmer-inner">
             ${this.iconName
             ? html `
-                  <div class="dimmer-icon" part="dimmer-icon">
-                    <it-icon name="${this.iconName}" size="lg" color="white"></it-icon>
-                  </div>
-                `
+                    <div class="dimmer-icon" part="dimmer-icon">
+                      <it-icon name="${this.iconName}" size="lg" color="white"></it-icon>
+                    </div>
+                  `
             : ''}
             <slot name="content" @slotchange="${this._onContentSlotChange}" part="content"></slot>
           </div>
@@ -30019,7 +30227,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -30137,8 +30345,7 @@ var styles$t = css`.dropdown,
 
 .dropdown-menu {
   --bsi-dropdown-notch-offset: calc(
-  var(--bsi-dropdown-notch-position-y) - var(--bsi-dropdown-border-width) -
-    (var(--bsi-dropdown-notch-base-size) - 1.125rem) / 2
+    var(--bsi-dropdown-notch-position-y) - var(--bsi-dropdown-border-width) - (var(--bsi-dropdown-notch-base-size) - 1.125rem) / 2
   );
   position: absolute;
   z-index: var(--bsi-dropdown-zindex);
@@ -31070,26 +31277,26 @@ let ItDropdownBase$1 = class ItDropdownBase extends BaseComponent$l {
         >
           ${this.alignment.startsWith('left') && !this.hideExpandIcon
             ? html `<it-icon
-                name="it-expand"
-                class="icon-expand left"
-                size="sm"
-                exportparts="icon"
-                part="dropdown-icon-expand"
-              ></it-icon>`
+                  name="it-expand"
+                  class="icon-expand left"
+                  size="sm"
+                  exportparts="icon"
+                  part="dropdown-icon-expand"
+                ></it-icon>`
             : ''}
 
           <slot name="label">${this.label}</slot>
           ${!this.alignment.startsWith('left') && !this.hideExpandIcon
             ? html `<it-icon
-                name="it-expand"
-                class=${this.composeClass('icon-expand', {
+                  name="it-expand"
+                  class=${this.composeClass('icon-expand', {
                 right: this.alignment.startsWith('right'),
                 top: this.alignment.startsWith('top'),
             })}
-                exportparts="icon"
-                part="dropdown-icon-expand"
-                size="sm"
-              ></it-icon>`
+                  exportparts="icon"
+                  part="dropdown-icon-expand"
+                  size="sm"
+                ></it-icon>`
             : ''}
         </it-button>
         <div
@@ -31107,7 +31314,7 @@ let ItDropdownBase$1 = class ItDropdownBase extends BaseComponent$l {
             <ul
               id=${this._menuId}
               class="link-list"
-              role=${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}
+              role=${this.itRole}
               @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
               aria-orientation=${ifDefined(this.fullWidth ? 'horizontal' : undefined)}
             >
@@ -31253,8 +31460,7 @@ var styles$s = css`.dropdown,
 
 .dropdown-menu {
   --bsi-dropdown-notch-offset: calc(
-  var(--bsi-dropdown-notch-position-y) - var(--bsi-dropdown-border-width) -
-    (var(--bsi-dropdown-notch-base-size) - 1.125rem) / 2
+    var(--bsi-dropdown-notch-position-y) - var(--bsi-dropdown-border-width) - (var(--bsi-dropdown-notch-base-size) - 1.125rem) / 2
   );
   position: absolute;
   z-index: var(--bsi-dropdown-zindex);
@@ -31928,15 +32134,15 @@ let ItDropdownItem = class ItDropdownItem extends BaseComponent$l {
       >
         ${this.href
             ? html `<a
-              class=${linkClasses}
-              part="focusable list-item"
-              href=${this.href}
-              role=${ifDefined(hrefRole)}
-              aria-disabled=${ifDefined(this.disabled || undefined)}
-              @keydown=${this.handlePress}
-              @click=${this.handlePress}
-              ><span class="dropdown-item-link" part="dropdown-item-text">${content}</span></a
-            >`
+                class=${linkClasses}
+                part="focusable list-item"
+                href=${this.href}
+                role=${ifDefined(hrefRole)}
+                aria-disabled=${ifDefined(this.disabled || undefined)}
+                @keydown=${this.handlePress}
+                @click=${this.handlePress}
+                ><span class="dropdown-item-link" part="dropdown-item-text">${content}</span></a
+              >`
             : html `<span class=${nonLinkClasses} part="dropdown-item-text">${content}</span>`}
       </li>
     `;
@@ -33204,7 +33410,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -34452,190 +34658,190 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
 const registry = {
-    'it-android-square': () => import('../it-android-square-CS9Jm6D6-CS9Jm6D6.js'),
-    'it-android': () => import('../it-android-CM_jremm-CM_jremm.js'),
-    'it-apple-square': () => import('../it-apple-square-CGes5mXG-CGes5mXG.js'),
-    'it-apple': () => import('../it-apple-Bkz6a5Zc-Bkz6a5Zc.js'),
-    'it-arrow-down-circle': () => import('../it-arrow-down-circle-I6jWec3x-I6jWec3x.js'),
-    'it-arrow-down-triangle': () => import('../it-arrow-down-triangle-CC_2NjvY-CC_2NjvY.js'),
-    'it-arrow-down': () => import('../it-arrow-down-CKDXUv8J-CKDXUv8J.js'),
-    'it-arrow-left-circle': () => import('../it-arrow-left-circle-BMrwkBri-BMrwkBri.js'),
-    'it-arrow-left-triangle': () => import('../it-arrow-left-triangle-IBF7HkHH-IBF7HkHH.js'),
-    'it-arrow-left': () => import('../it-arrow-left-CnfHkuCJ-CnfHkuCJ.js'),
-    'it-arrow-right-circle': () => import('../it-arrow-right-circle-Dif3sPcx-Dif3sPcx.js'),
-    'it-arrow-right-triangle': () => import('../it-arrow-right-triangle-BR3Mqigv-BR3Mqigv.js'),
-    'it-arrow-right': () => import('../it-arrow-right-CPIsiurT-CPIsiurT.js'),
-    'it-arrow-up-circle': () => import('../it-arrow-up-circle-DQI0chwo-DQI0chwo.js'),
-    'it-arrow-up-triangle': () => import('../it-arrow-up-triangle-DSciwQX--DSciwQX-.js'),
-    'it-arrow-up': () => import('../it-arrow-up-dUp-1v9b-dUp-1v9b.js'),
-    'it-ban': () => import('../it-ban-DKV99_48-DKV99_48.js'),
-    'it-behance': () => import('../it-behance-Bw2eUGN3-Bw2eUGN3.js'),
-    'it-bluesky': () => import('../it-bluesky-DB-QLs0s-DB-QLs0s.js'),
-    'it-bookmark': () => import('../it-bookmark-DRcxVOiN-DRcxVOiN.js'),
-    'it-box': () => import('../it-box-Bvr_uX3S-Bvr_uX3S.js'),
-    'it-burger': () => import('../it-burger-Epx3OLvi-Epx3OLvi.js'),
-    'it-calendar': () => import('../it-calendar-Di65OfV4-Di65OfV4.js'),
-    'it-camera': () => import('../it-camera-BVrBWjh3-BVrBWjh3.js'),
-    'it-car': () => import('../it-car-DYwyDx_7-DYwyDx_7.js'),
-    'it-card': () => import('../it-card-DlgFWqB6-DlgFWqB6.js'),
-    'it-cart': () => import('../it-cart-BEcPRn__-BEcPRn__.js'),
-    'it-chart-line': () => import('../it-chart-line-4YM-ohES-4YM-ohES.js'),
-    'it-check-circle': () => import('../it-check-circle-DtEh4Q_G-DtEh4Q_G.js'),
-    'it-check': () => import('../it-check-M1SFvWw8-M1SFvWw8.js'),
-    'it-chevron-left': () => import('../it-chevron-left-hMTkyhUn-hMTkyhUn.js'),
-    'it-chevron-right': () => import('../it-chevron-right-Ca_EBQ4S-Ca_EBQ4S.js'),
-    'it-clip': () => import('../it-clip-C-wpX-gK-C-wpX-gK.js'),
-    'it-clock': () => import('../it-clock-BBelwG_8-BBelwG_8.js'),
-    'it-close-big': () => import('../it-close-big-DLY08syf-DLY08syf.js'),
-    'it-close-circle': () => import('../it-close-circle-Bz9ccZnJ-Bz9ccZnJ.js'),
-    'it-close': () => import('../it-close-D7B7LVFn-D7B7LVFn.js'),
-    'it-code-circle': () => import('../it-code-circle-Bo0lZs8T-Bo0lZs8T.js'),
-    'it-collapse': () => import('../it-collapse-PVvRxrrA-PVvRxrrA.js'),
-    'it-comment': () => import('../it-comment-ew-oPZ0O-ew-oPZ0O.js'),
-    'it-copy': () => import('../it-copy-C9mYMxcE-C9mYMxcE.js'),
-    'it-delete': () => import('../it-delete-JdkbrC5q-JdkbrC5q.js'),
-    'it-designers-italia': () => import('../it-designers-italia-BquhP1XE-BquhP1XE.js'),
-    'it-download': () => import('../it-download-CIWVmTiT-CIWVmTiT.js'),
-    'it-error': () => import('../it-error-C6RzCrv3-C6RzCrv3.js'),
-    'it-exchange-circle': () => import('../it-exchange-circle-Dl-gcRZl-Dl-gcRZl.js'),
-    'it-expand': () => import('../it-expand-CVSATaS2-CVSATaS2.js'),
-    'it-external-link': () => import('../it-external-link-DeszhEEB-DeszhEEB.js'),
-    'it-facebook-square': () => import('../it-facebook-square-DhAz4P8U-DhAz4P8U.js'),
-    'it-facebook': () => import('../it-facebook-D4eNOYV--D4eNOYV-.js'),
-    'it-figma-square': () => import('../it-figma-square-DRDd1bDV-DRDd1bDV.js'),
-    'it-figma': () => import('../it-figma-BHeUAd7p-BHeUAd7p.js'),
-    'it-file-audio': () => import('../it-file-audio-c2VLUgEY-c2VLUgEY.js'),
-    'it-file-compressed': () => import('../it-file-compressed-DF8mz05j-DF8mz05j.js'),
-    'it-file-csv': () => import('../it-file-csv-CHdojhBR-CHdojhBR.js'),
-    'it-file-docx': () => import('../it-file-docx-CXGFuiKk-CXGFuiKk.js'),
-    'it-file-image': () => import('../it-file-image-BrOk2t6d-BrOk2t6d.js'),
-    'it-file-json': () => import('../it-file-json-DnhfKPBa-DnhfKPBa.js'),
-    'it-file-odp': () => import('../it-file-odp-DdKkgd58-DdKkgd58.js'),
-    'it-file-ods': () => import('../it-file-ods-DuVXPo_8-DuVXPo_8.js'),
-    'it-file-odt': () => import('../it-file-odt-Dbxvp-bG-Dbxvp-bG.js'),
-    'it-file-pdf-ext': () => import('../it-file-pdf-ext-DO_SA473-DO_SA473.js'),
-    'it-file-pdf': () => import('../it-file-pdf-8_4e44it-8_4e44it.js'),
-    'it-file-ppt': () => import('../it-file-ppt-Cx0XFUZP-Cx0XFUZP.js'),
-    'it-file-sheet': () => import('../it-file-sheet-CrbDVFo5-CrbDVFo5.js'),
-    'it-file-signed': () => import('../it-file-signed-KcQZtXBY-KcQZtXBY.js'),
-    'it-file-slides': () => import('../it-file-slides-BE94TT_B-BE94TT_B.js'),
-    'it-file-txt': () => import('../it-file-txt-CdS__v4e-CdS__v4e.js'),
-    'it-file-video': () => import('../it-file-video-Cm3zB3xV-Cm3zB3xV.js'),
-    'it-file-xlsx': () => import('../it-file-xlsx-MecbsS6S-MecbsS6S.js'),
-    'it-file-xml': () => import('../it-file-xml-Ny6qQM_8-Ny6qQM_8.js'),
-    'it-file': () => import('../it-file-fsLJd0Pg-fsLJd0Pg.js'),
-    'it-files': () => import('../it-files-D1x1LCc1-D1x1LCc1.js'),
-    'it-flag': () => import('../it-flag-BObBtSEJ-BObBtSEJ.js'),
-    'it-flickr-square': () => import('../it-flickr-square-BO5mtyle-BO5mtyle.js'),
-    'it-flickr': () => import('../it-flickr-D_Xc7aak-D_Xc7aak.js'),
-    'it-folder': () => import('../it-folder-m3tmzGKL-m3tmzGKL.js'),
-    'it-fullscreen': () => import('../it-fullscreen-NgS52jcd-NgS52jcd.js'),
-    'it-funnel': () => import('../it-funnel-DdtPUA_7-DdtPUA_7.js'),
-    'it-github': () => import('../it-github-BBz_ZPtW-BBz_ZPtW.js'),
-    'it-google': () => import('../it-google-UyXDW-u9-UyXDW-u9.js'),
-    'it-hearing': () => import('../it-hearing-Dv-YIhHz-Dv-YIhHz.js'),
-    'it-help-circle': () => import('../it-help-circle-CqKEgxIV-CqKEgxIV.js'),
-    'it-help': () => import('../it-help-B2GBYXDO-B2GBYXDO.js'),
-    'it-horn': () => import('../it-horn-rZQXlrnR-rZQXlrnR.js'),
-    'it-inbox': () => import('../it-inbox-Do6dhOGi-Do6dhOGi.js'),
-    'it-info-circle': () => import('../it-info-circle-Czj5d2bm-Czj5d2bm.js'),
-    'it-instagram': () => import('../it-instagram-D5aR_L0n-D5aR_L0n.js'),
-    'it-key': () => import('../it-key-DRxrET50-DRxrET50.js'),
-    'it-less-circle': () => import('../it-less-circle-CP6-Al2M-CP6-Al2M.js'),
-    'it-link': () => import('../it-link-DE90eaAg-DE90eaAg.js'),
-    'it-linkedin-square': () => import('../it-linkedin-square-CHqrDMYp-CHqrDMYp.js'),
-    'it-linkedin': () => import('../it-linkedin-BGNYnn0o-BGNYnn0o.js'),
-    'it-list': () => import('../it-list-DJYxqMCK-DJYxqMCK.js'),
-    'it-lock': () => import('../it-lock-1vI5M-7l-1vI5M-7l.js'),
-    'it-locked': () => import('../it-locked-8cfuMzH6-8cfuMzH6.js'),
-    'it-logout': () => import('../it-logout-CwWjiFyD-CwWjiFyD.js'),
-    'it-mail-open': () => import('../it-mail-open-BbMHGxsT-BbMHGxsT.js'),
-    'it-mail': () => import('../it-mail-aPRyWnwz-aPRyWnwz.js'),
-    'it-map-marker-circle': () => import('../it-map-marker-circle-BRInhN1h-BRInhN1h.js'),
-    'it-map-marker-minus': () => import('../it-map-marker-minus-71sRe33Y-71sRe33Y.js'),
-    'it-map-marker-plus': () => import('../it-map-marker-plus-DsPwjQir-DsPwjQir.js'),
-    'it-map-marker': () => import('../it-map-marker-2gjZoBr1-2gjZoBr1.js'),
-    'it-mastodon-square': () => import('../it-mastodon-square-Grmy2Lm2-Grmy2Lm2.js'),
-    'it-mastodon': () => import('../it-mastodon-lQtt7SD1-lQtt7SD1.js'),
-    'it-maximize-alt': () => import('../it-maximize-alt-Bdz1MdNo-Bdz1MdNo.js'),
-    'it-maximize': () => import('../it-maximize-DXZ6_N3P-DXZ6_N3P.js'),
-    'it-medium-square': () => import('../it-medium-square-DzZD0mmH-DzZD0mmH.js'),
-    'it-medium': () => import('../it-medium-CAfBjUKV-CAfBjUKV.js'),
-    'it-minimize': () => import('../it-minimize-Bnj0BCG7-Bnj0BCG7.js'),
-    'it-minus-circle': () => import('../it-minus-circle-B2Dm1NC0-B2Dm1NC0.js'),
-    'it-minus': () => import('../it-minus-om5K6FiB-om5K6FiB.js'),
-    'it-moodle-square': () => import('../it-moodle-square-BQ_Px3eS-BQ_Px3eS.js'),
-    'it-moodle': () => import('../it-moodle-BIb2p6B_-BIb2p6B_.js'),
-    'it-more-actions': () => import('../it-more-actions-VCET7Nzo-VCET7Nzo.js'),
-    'it-more-items': () => import('../it-more-items-CjovIzea-CjovIzea.js'),
-    'it-note': () => import('../it-note-DxrmfuMN-DxrmfuMN.js'),
-    'it-open-source': () => import('../it-open-source-DygkL3Z7-DygkL3Z7.js'),
-    'it-pa': () => import('../it-pa-Bjb3z3oj-Bjb3z3oj.js'),
-    'it-password-invisible': () => import('../it-password-invisible-fQJ_pVqB-fQJ_pVqB.js'),
-    'it-password-visible': () => import('../it-password-visible-BZcXU4UE-BZcXU4UE.js'),
-    'it-pencil': () => import('../it-pencil-B9KD83Hb-B9KD83Hb.js'),
-    'it-piattaforme': () => import('../it-piattaforme-BiUeZjZk-BiUeZjZk.js'),
-    'it-pin': () => import('../it-pin-CBTHMlE9-CBTHMlE9.js'),
-    'it-pinterest-square': () => import('../it-pinterest-square-B-BdBicd-B-BdBicd.js'),
-    'it-pinterest': () => import('../it-pinterest-0F51VxFX-0F51VxFX.js'),
-    'it-plug': () => import('../it-plug-CnDTrLiy-CnDTrLiy.js'),
-    'it-plus-circle': () => import('../it-plus-circle-C1wQTarW-C1wQTarW.js'),
-    'it-plus': () => import('../it-plus-D7lUBn02-D7lUBn02.js'),
-    'it-presentation': () => import('../it-presentation-C4DFyb-F-C4DFyb-F.js'),
-    'it-print': () => import('../it-print-BvyiWATf-BvyiWATf.js'),
-    'it-quora-square': () => import('../it-quora-square-DYqmziCW-DYqmziCW.js'),
-    'it-quora': () => import('../it-quora-LkQaQgf2-LkQaQgf2.js'),
-    'it-reddit-square': () => import('../it-reddit-square-B9a0sndl-B9a0sndl.js'),
-    'it-reddit': () => import('../it-reddit-Tn9ltgVI-Tn9ltgVI.js'),
-    'it-refresh': () => import('../it-refresh-CB-7YV0I-CB-7YV0I.js'),
-    'it-restore': () => import('../it-restore-DkeYhSeS-DkeYhSeS.js'),
-    'it-rss-square': () => import('../it-rss-square-CtNRGa74-CtNRGa74.js'),
-    'it-rss': () => import('../it-rss-CapSBFW--CapSBFW-.js'),
-    'it-search': () => import('../it-search-CKFFxM_L-CKFFxM_L.js'),
-    'it-settings': () => import('../it-settings-BchWbTHI-BchWbTHI.js'),
-    'it-share': () => import('../it-share-DgOA3Wso-DgOA3Wso.js'),
-    'it-sign': () => import('../it-sign-DoP7_q98-DoP7_q98.js'),
-    'it-slack-square': () => import('../it-slack-square-BXBOWOLY-BXBOWOLY.js'),
-    'it-slack': () => import('../it-slack-hrDBK_3P-hrDBK_3P.js'),
-    'it-snapchat-square': () => import('../it-snapchat-square-hHmKZJWy-hHmKZJWy.js'),
-    'it-snapchat': () => import('../it-snapchat-BDeuRQfJ-BDeuRQfJ.js'),
-    'it-software': () => import('../it-software-Bvhe0OD1-Bvhe0OD1.js'),
-    'it-spotify': () => import('../it-spotify-huUslGt0-huUslGt0.js'),
-    'it-stackexchange-square': () => import('../it-stackexchange-square-DSV7_t57-DSV7_t57.js'),
-    'it-stackexchange': () => import('../it-stackexchange-WH3VXoQV-WH3VXoQV.js'),
-    'it-stackoverflow-square': () => import('../it-stackoverflow-square-gafES6I4-gafES6I4.js'),
-    'it-stackoverflow': () => import('../it-stackoverflow-D4G4nErK-D4G4nErK.js'),
-    'it-star-full': () => import('../it-star-full-socWfZ0W-socWfZ0W.js'),
-    'it-star-outline': () => import('../it-star-outline-Dz_EpxwQ-Dz_EpxwQ.js'),
-    'it-team-digitale': () => import('../it-team-digitale-ncXJjVKG-ncXJjVKG.js'),
-    'it-telegram': () => import('../it-telegram-CNKQnUwD-CNKQnUwD.js'),
-    'it-telephone': () => import('../it-telephone-D0NcEsYy-D0NcEsYy.js'),
-    'it-threads-square': () => import('../it-threads-square-CwHWnDpr-CwHWnDpr.js'),
-    'it-threads': () => import('../it-threads-wlVUHQza-wlVUHQza.js'),
-    'it-tiktok-square': () => import('../it-tiktok-square-ahuKH2qk-ahuKH2qk.js'),
-    'it-tiktok': () => import('../it-tiktok-D0Im3Kkm-D0Im3Kkm.js'),
-    'it-tool': () => import('../it-tool-C3q_ZzJH-C3q_ZzJH.js'),
-    'it-twitter-square': () => import('../it-twitter-square-C_Nk75cD-C_Nk75cD.js'),
-    'it-twitter': () => import('../it-twitter-DuX6O0aB-DuX6O0aB.js'),
-    'it-unlocked': () => import('../it-unlocked-Bl8RZaWi-Bl8RZaWi.js'),
-    'it-upload': () => import('../it-upload-CdyNmsJ7-CdyNmsJ7.js'),
-    'it-user': () => import('../it-user-BReKDtFr-BReKDtFr.js'),
-    'it-video': () => import('../it-video-mJ-BeKle-mJ-BeKle.js'),
-    'it-vimeo-square': () => import('../it-vimeo-square-Cy2PlOfw-Cy2PlOfw.js'),
-    'it-vimeo': () => import('../it-vimeo-DW2ZVUA5-DW2ZVUA5.js'),
-    'it-warning-circle': () => import('../it-warning-circle-ClB3FCc8-ClB3FCc8.js'),
-    'it-warning': () => import('../it-warning--LtOG5CH--LtOG5CH.js'),
-    'it-whatsapp-square': () => import('../it-whatsapp-square-BiLM645v-BiLM645v.js'),
-    'it-whatsapp': () => import('../it-whatsapp-Bqr384Z7-Bqr384Z7.js'),
-    'it-wifi': () => import('../it-wifi-DdFKxT8d-DdFKxT8d.js'),
-    'it-youtube': () => import('../it-youtube-n895nR0E-n895nR0E.js'),
-    'it-zoom-in': () => import('../it-zoom-in-B2zZU9BC-B2zZU9BC.js'),
-    'it-zoom-out': () => import('../it-zoom-out-C3SGugZ1-C3SGugZ1.js')
+    'it-android-square': () => import('../it-android-square-CpS5XOGd-CK8uOeob.js'),
+    'it-android': () => import('../it-android-4amiI2Eu-DfiUsirk.js'),
+    'it-apple-square': () => import('../it-apple-square-CgAgjLSg-CoiVgPl1.js'),
+    'it-apple': () => import('../it-apple-Dk3ldK1q-CYEuSxpI.js'),
+    'it-arrow-down-circle': () => import('../it-arrow-down-circle-Cbiz4WTT-DHZNTIUQ.js'),
+    'it-arrow-down-triangle': () => import('../it-arrow-down-triangle-nKPznjxz-O55v3Uqf.js'),
+    'it-arrow-down': () => import('../it-arrow-down-COtxW5Vd-B92t9rRH.js'),
+    'it-arrow-left-circle': () => import('../it-arrow-left-circle-BoKEXRtw-CL62WKUD.js'),
+    'it-arrow-left-triangle': () => import('../it-arrow-left-triangle-chlJd_AZ-BesDw9e_.js'),
+    'it-arrow-left': () => import('../it-arrow-left-Di6N6pvK-CIWPojae.js'),
+    'it-arrow-right-circle': () => import('../it-arrow-right-circle-BKgUn8jH-CoKGs-eJ.js'),
+    'it-arrow-right-triangle': () => import('../it-arrow-right-triangle-Dujp0n0A-CKhThIFl.js'),
+    'it-arrow-right': () => import('../it-arrow-right-DFRSSmGM-B0QgmA3_.js'),
+    'it-arrow-up-circle': () => import('../it-arrow-up-circle-wvXfJloM-ZzmOFhTm.js'),
+    'it-arrow-up-triangle': () => import('../it-arrow-up-triangle-nChe6IJ4-CiSivogZ.js'),
+    'it-arrow-up': () => import('../it-arrow-up-Ddd8ee9x-D2H-t4e6.js'),
+    'it-ban': () => import('../it-ban-CeT9W1L_-WsgtO3tE.js'),
+    'it-behance': () => import('../it-behance-MrI-49ME-BjfLeOyL.js'),
+    'it-bluesky': () => import('../it-bluesky-95E9JewL-Mp-glEaX.js'),
+    'it-bookmark': () => import('../it-bookmark-CAl4ou7P-Bsc5_y2b.js'),
+    'it-box': () => import('../it-box-DCqLakmn-D-dBL_hG.js'),
+    'it-burger': () => import('../it-burger-CB_Gy6nx-D6NqLhoW.js'),
+    'it-calendar': () => import('../it-calendar-CxHE5bus-BpFcdNie.js'),
+    'it-camera': () => import('../it-camera-CD46tAdD-Dhi_E1yZ.js'),
+    'it-car': () => import('../it-car-z4Z8uXKV-Dcmc_ov4.js'),
+    'it-card': () => import('../it-card-D97loyDI-CqVfA6ek.js'),
+    'it-cart': () => import('../it-cart-Ddx2BYbH-vpg-xQGb.js'),
+    'it-chart-line': () => import('../it-chart-line-DfbPDnxK-DHDsS_XA.js'),
+    'it-check-circle': () => import('../it-check-circle-c5XFqEe7-D2Zs29n6.js'),
+    'it-check': () => import('../it-check-Dkzmo0RQ-B2C0etfB.js'),
+    'it-chevron-left': () => import('../it-chevron-left-Bm9BcF7J-AxmuruHn.js'),
+    'it-chevron-right': () => import('../it-chevron-right-Cn0sks98-DDQm60r7.js'),
+    'it-clip': () => import('../it-clip-Cd2t7sKf-Cn6offn0.js'),
+    'it-clock': () => import('../it-clock-CJtCDmjS-BkmvfMzy.js'),
+    'it-close-big': () => import('../it-close-big-De-BmHyS-CWOs_B8l.js'),
+    'it-close-circle': () => import('../it-close-circle-aQQgo7ty-BpGzUobN.js'),
+    'it-close': () => import('../it-close-CsfKcBuQ-CotCS0vo.js'),
+    'it-code-circle': () => import('../it-code-circle-DNU6af3f-CX988XZ2.js'),
+    'it-collapse': () => import('../it-collapse-BHosIv0q-C5g5aqam.js'),
+    'it-comment': () => import('../it-comment-Cc0b5kBP-CqVH4f8s.js'),
+    'it-copy': () => import('../it-copy-Dqm5n4eG-B7aE7Y-c.js'),
+    'it-delete': () => import('../it-delete-CuYNNaot-CnesY8M0.js'),
+    'it-designers-italia': () => import('../it-designers-italia-CSnPUTS5-CalHZivx.js'),
+    'it-download': () => import('../it-download-BSIzN5dK-B5AiiA7v.js'),
+    'it-error': () => import('../it-error-Dh7wiSJj-Ct0-ZjPn.js'),
+    'it-exchange-circle': () => import('../it-exchange-circle-HXDBkiTi-CDdBY22l.js'),
+    'it-expand': () => import('../it-expand-CW1jdWy2-CQ0dRzg5.js'),
+    'it-external-link': () => import('../it-external-link-DGINc-L0-BfmFLbL0.js'),
+    'it-facebook-square': () => import('../it-facebook-square-Bm1K8yvK-BSj3H9bU.js'),
+    'it-facebook': () => import('../it-facebook-DtdrWGgM-CUrVN5PR.js'),
+    'it-figma-square': () => import('../it-figma-square-Br44a1V2-BRPoZviB.js'),
+    'it-figma': () => import('../it-figma-C4OJgKBg-DhwBDL6z.js'),
+    'it-file-audio': () => import('../it-file-audio-BB4ttJBK-Db2o61op.js'),
+    'it-file-compressed': () => import('../it-file-compressed-BO_l07o4-DjMm2HkW.js'),
+    'it-file-csv': () => import('../it-file-csv-C0A0usyi-xe4Er4th.js'),
+    'it-file-docx': () => import('../it-file-docx-CAGHF-k8-ZWUFELbH.js'),
+    'it-file-image': () => import('../it-file-image-BN4eUHzL-CsKf9-kW.js'),
+    'it-file-json': () => import('../it-file-json-BbGLpEJy-BqTSmERG.js'),
+    'it-file-odp': () => import('../it-file-odp-e49VAT3H-DfinRA4U.js'),
+    'it-file-ods': () => import('../it-file-ods-BShzgoem-CsOjV8_w.js'),
+    'it-file-odt': () => import('../it-file-odt-BIktuRgy-ClPsSDu4.js'),
+    'it-file-pdf-ext': () => import('../it-file-pdf-ext-BAXMDiO7-DAsSvfJk.js'),
+    'it-file-pdf': () => import('../it-file-pdf-CpIQ2m2_-CBLPmHc9.js'),
+    'it-file-ppt': () => import('../it-file-ppt-ILqDfo8d-Z9eF7Oea.js'),
+    'it-file-sheet': () => import('../it-file-sheet-1npnSGsW-ukRCPW4Q.js'),
+    'it-file-signed': () => import('../it-file-signed-BFet0YH6-BAVeFo1W.js'),
+    'it-file-slides': () => import('../it-file-slides-xZzfan9s-CTmAsqh8.js'),
+    'it-file-txt': () => import('../it-file-txt-Dwxt6GUM-CW7Zy9Hx.js'),
+    'it-file-video': () => import('../it-file-video-BKrw1EtY-ZKuvPpqf.js'),
+    'it-file-xlsx': () => import('../it-file-xlsx-FIXOk5fY-DqiEEEyA.js'),
+    'it-file-xml': () => import('../it-file-xml-B0fqMsTP-C63EDLj1.js'),
+    'it-file': () => import('../it-file-DpqsdmYj-DHCsI--Z.js'),
+    'it-files': () => import('../it-files-CJYB3ggR-NLzkmE0r.js'),
+    'it-flag': () => import('../it-flag-Cp65-3W2-Du1AF8PS.js'),
+    'it-flickr-square': () => import('../it-flickr-square-C_rLCKHN-C2SdRvaE.js'),
+    'it-flickr': () => import('../it-flickr-Dh0XyjGs-CXb1lUik.js'),
+    'it-folder': () => import('../it-folder-DDGNznxs-x44ZFM7M.js'),
+    'it-fullscreen': () => import('../it-fullscreen-BVZPVp_0-DGXVxyQF.js'),
+    'it-funnel': () => import('../it-funnel-DqrO86x3-BZM_SfE-.js'),
+    'it-github': () => import('../it-github-vl97kOU7-B9gHDbdG.js'),
+    'it-google': () => import('../it-google-eJ_dVy6y-Ce3xT0Ke.js'),
+    'it-hearing': () => import('../it-hearing-BgVXTFhP-DDG1oHMb.js'),
+    'it-help-circle': () => import('../it-help-circle-qKMVfoE2-BHQ9W4H6.js'),
+    'it-help': () => import('../it-help-CVdY_ycm-gwz39jNl.js'),
+    'it-horn': () => import('../it-horn-CTcBiGnl-CiEjxDEO.js'),
+    'it-inbox': () => import('../it-inbox-BPeb_Iya-ByTzfKhT.js'),
+    'it-info-circle': () => import('../it-info-circle-CXNrPMvX-Be7GmATY.js'),
+    'it-instagram': () => import('../it-instagram-B8XxMZmA-Crdc9XPz.js'),
+    'it-key': () => import('../it-key-gpLAQbaY-CzrApVUW.js'),
+    'it-less-circle': () => import('../it-less-circle-BrWsC-xZ-DBO-M9z6.js'),
+    'it-link': () => import('../it-link-S0LykZxk-A4SGLTBc.js'),
+    'it-linkedin-square': () => import('../it-linkedin-square-DOiCRisO-D21r0ST6.js'),
+    'it-linkedin': () => import('../it-linkedin-D5DZwkqa-B9BzDOn7.js'),
+    'it-list': () => import('../it-list-bqfhmfyj-CLfL6cwF.js'),
+    'it-lock': () => import('../it-lock-DREeARA0-oEjI91WK.js'),
+    'it-locked': () => import('../it-locked-BqJjFuF4-THMHwMld.js'),
+    'it-logout': () => import('../it-logout-C7Xc9yPI-hpr0OP2x.js'),
+    'it-mail-open': () => import('../it-mail-open-BM1F7Iwc-DMRB83Hc.js'),
+    'it-mail': () => import('../it-mail-mqgtb7z2-BlbVR_qY.js'),
+    'it-map-marker-circle': () => import('../it-map-marker-circle-DJoJeis4-Mj9rF6rH.js'),
+    'it-map-marker-minus': () => import('../it-map-marker-minus-BihBQrGV-Ctkgh4W_.js'),
+    'it-map-marker-plus': () => import('../it-map-marker-plus-Cgf_4wfm-eSOJtKgP.js'),
+    'it-map-marker': () => import('../it-map-marker-Dl1Ed7hF-DLLNAKro.js'),
+    'it-mastodon-square': () => import('../it-mastodon-square-BJB7eKke-CFVxsjux.js'),
+    'it-mastodon': () => import('../it-mastodon-klHdw9WR-DoVlTEeM.js'),
+    'it-maximize-alt': () => import('../it-maximize-alt-D9KU5zH1-DzhaXLXK.js'),
+    'it-maximize': () => import('../it-maximize-CpbMtxQC-rDALV-h-.js'),
+    'it-medium-square': () => import('../it-medium-square-BYMnEUTm-Bo4-WafD.js'),
+    'it-medium': () => import('../it-medium-5RLFGRGb-q523M6Ll.js'),
+    'it-minimize': () => import('../it-minimize-ChGlUVNC-D_fXcmJ7.js'),
+    'it-minus-circle': () => import('../it-minus-circle-CLmPXikK-CBB-cp8O.js'),
+    'it-minus': () => import('../it-minus-CI9c8Dgo-DCjpmvTq.js'),
+    'it-moodle-square': () => import('../it-moodle-square-Dqr14Mx_-BNxgM65m.js'),
+    'it-moodle': () => import('../it-moodle-Bs-8B5iH-CptTFmU1.js'),
+    'it-more-actions': () => import('../it-more-actions-d_BwlqxX-rODrS24A.js'),
+    'it-more-items': () => import('../it-more-items-CsKouP2N-0J7Mpk-u.js'),
+    'it-note': () => import('../it-note-CNBMzha0-DZqPJvRo.js'),
+    'it-open-source': () => import('../it-open-source-BYqNtZdn-DdcfhOjn.js'),
+    'it-pa': () => import('../it-pa-pVmFEGX4-VI4HDd40.js'),
+    'it-password-invisible': () => import('../it-password-invisible-DRBb-gXv-CGIqBBUM.js'),
+    'it-password-visible': () => import('../it-password-visible-CC6zrUzE-DSwoKnCO.js'),
+    'it-pencil': () => import('../it-pencil-BnrJMJ0h-CN-joXg9.js'),
+    'it-piattaforme': () => import('../it-piattaforme-CvbQP_uO-BxLg0ES_.js'),
+    'it-pin': () => import('../it-pin-Cb_qfiB2-DBfaIfh7.js'),
+    'it-pinterest-square': () => import('../it-pinterest-square-C0Vaut-D-BIh9AnJS.js'),
+    'it-pinterest': () => import('../it-pinterest-CGvs9i4i-DiU0MbMY.js'),
+    'it-plug': () => import('../it-plug-9Mksd65m-BtGgKvdw.js'),
+    'it-plus-circle': () => import('../it-plus-circle-BYSsVL2n-F0Yg9mTO.js'),
+    'it-plus': () => import('../it-plus-g5hBIQwn-DZwEuXi9.js'),
+    'it-presentation': () => import('../it-presentation-CiFni_KJ-D-8eh3LV.js'),
+    'it-print': () => import('../it-print-CJdIVIzk-wSFAhtLw.js'),
+    'it-quora-square': () => import('../it-quora-square-RJ9b9qVe-C6QTP1hW.js'),
+    'it-quora': () => import('../it-quora-XI05EOlI-kpz6VaQM.js'),
+    'it-reddit-square': () => import('../it-reddit-square-BWFZKyup-Be0u45vk.js'),
+    'it-reddit': () => import('../it-reddit-DHk0R1e1-BqrYmTsx.js'),
+    'it-refresh': () => import('../it-refresh-C8Q_qRIa-DVZzL38w.js'),
+    'it-restore': () => import('../it-restore-Dm38X8EE-B1ySB_fD.js'),
+    'it-rss-square': () => import('../it-rss-square-CRPzyhTn-CSOt2RqC.js'),
+    'it-rss': () => import('../it-rss-ag3U2lGR-BD3yEvbR.js'),
+    'it-search': () => import('../it-search-DXBOovBq-C140NoMQ.js'),
+    'it-settings': () => import('../it-settings-Cfj8Nk40-CxsH6Z2H.js'),
+    'it-share': () => import('../it-share-BVgLU3Ui-BVRkjs1_.js'),
+    'it-sign': () => import('../it-sign-D5XZzNAo-BOAAAPXq.js'),
+    'it-slack-square': () => import('../it-slack-square-CCMWpCBA-DStKlV5u.js'),
+    'it-slack': () => import('../it-slack-B5F44qC--_wnSdoHH.js'),
+    'it-snapchat-square': () => import('../it-snapchat-square-kTV8i2p8-Bf0TUfYB.js'),
+    'it-snapchat': () => import('../it-snapchat-Bw8i5dA6-DD3v5T0y.js'),
+    'it-software': () => import('../it-software-C0T2Fd4o-9CVn7oxo.js'),
+    'it-spotify': () => import('../it-spotify-DLpvURZ1-C5dGY_ww.js'),
+    'it-stackexchange-square': () => import('../it-stackexchange-square-BhmfCesx-Bm0YqllX.js'),
+    'it-stackexchange': () => import('../it-stackexchange-DS-WwRuB-C1Aoc2yw.js'),
+    'it-stackoverflow-square': () => import('../it-stackoverflow-square-Dew6j43k-bUb8MI82.js'),
+    'it-stackoverflow': () => import('../it-stackoverflow-jsQttZ84-Drl65Hae.js'),
+    'it-star-full': () => import('../it-star-full-Ny5rDeSa-CFANiBg6.js'),
+    'it-star-outline': () => import('../it-star-outline-BGOc-kQ--B4rWyBmn.js'),
+    'it-team-digitale': () => import('../it-team-digitale-C9IIu_nG-YwTcafpm.js'),
+    'it-telegram': () => import('../it-telegram-CxL5rMlT-DqVl3lnh.js'),
+    'it-telephone': () => import('../it-telephone-C2zUPU9h-CvtWBxTk.js'),
+    'it-threads-square': () => import('../it-threads-square-BCNSIBOH-Bicr9Mh-.js'),
+    'it-threads': () => import('../it-threads-DJlYzui3-Djhz37JA.js'),
+    'it-tiktok-square': () => import('../it-tiktok-square-DzakQdtP-DG2epPHT.js'),
+    'it-tiktok': () => import('../it-tiktok--fu2lJae-uF15aJUv.js'),
+    'it-tool': () => import('../it-tool-YTxKGspd-DCgFIj7A.js'),
+    'it-twitter-square': () => import('../it-twitter-square-BQtDdwbf-CwaX6TVe.js'),
+    'it-twitter': () => import('../it-twitter-Bu6WDmZ5-7a5Z-tqu.js'),
+    'it-unlocked': () => import('../it-unlocked-DYuTEdCg-BNCW_9yw.js'),
+    'it-upload': () => import('../it-upload-DtGTvAHK-BHTtMnIn.js'),
+    'it-user': () => import('../it-user-C16t-oaf-C4INytS5.js'),
+    'it-video': () => import('../it-video-DZzmW3Ji-CgfnpsT5.js'),
+    'it-vimeo-square': () => import('../it-vimeo-square-Bx3T5Tc_-C0mrnh87.js'),
+    'it-vimeo': () => import('../it-vimeo-BlIBiDEK-o4kpX18N.js'),
+    'it-warning-circle': () => import('../it-warning-circle-B2I9cgT5-RzIB498r.js'),
+    'it-warning': () => import('../it-warning-DXUfLadp-COHy5ODL.js'),
+    'it-whatsapp-square': () => import('../it-whatsapp-square-C6W35Zpb-Def0TGtX.js'),
+    'it-whatsapp': () => import('../it-whatsapp-C2weR1nJ-CHPCUFUU.js'),
+    'it-wifi': () => import('../it-wifi-CWTdQmH8-BjexiF3l.js'),
+    'it-youtube': () => import('../it-youtube-BBY_Iy9N-Bta2YDKg.js'),
+    'it-zoom-in': () => import('../it-zoom-in-DX2730Zt-B-yhQPZb.js'),
+    'it-zoom-out': () => import('../it-zoom-out-BfV6az8i-gdhNqap9.js')
 };
 /**
  * Get a dynamic icon loader by name.
@@ -36242,7 +36448,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -36846,6 +37052,33 @@ progress {
   cursor: not-allowed;
 }
 
+.btn-check {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  width: auto;
+  pointer-events: none;
+}
+.btn-check + .btn {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.btn-check[disabled] + .btn, .btn-check:disabled + .btn {
+  pointer-events: none;
+  opacity: var(--bsi-btn-disabled-opacity);
+}
+
+.form-check .btn-check + .btn {
+  padding: var(--bsi-btn-padding-y) var(--bsi-btn-padding-x);
+  font-size: var(--bsi-btn-font-size);
+}
+.form-check .btn-check + .btn::before, .form-check .btn-check + .btn::after {
+  content: none;
+}
+
+.btn-check + .btn .icon {
+  fill: var(--bsi-btn-text-color);
+}
+
 .btn-primary,
 a.btn-primary {
   --bsi-btn-text-color: var(--bsi-color-text-inverse);
@@ -37008,6 +37241,45 @@ a.btn-outline-danger:hover {
 a.btn-outline-danger:active {
   --bsi-btn-outline-border-color: var(--bsi-color-border-danger-active);
   --bsi-btn-text-color: var(--bsi-color-text-danger-active);
+}
+
+.btn-check:checked + .btn-primary,
+.btn-check:checked + .btn-outline-primary {
+  --bsi-btn-background: var(--bsi-color-background-primary-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-primary-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-secondary,
+.btn-check:checked + .btn-outline-secondary {
+  --bsi-btn-background: var(--bsi-color-background-secondary-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-secondary-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-success,
+.btn-check:checked + .btn-outline-success {
+  --bsi-btn-background: var(--bsi-color-background-success-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-success-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-warning,
+.btn-check:checked + .btn-outline-warning {
+  --bsi-btn-background: var(--bsi-color-background-warning-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-warning-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-danger,
+.btn-check:checked + .btn-outline-danger {
+  --bsi-btn-background: var(--bsi-color-background-danger-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-danger-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn .icon {
+  fill: var(--bsi-icon-inverse);
 }
 
 .bg-dark .btn-link {
@@ -38911,7 +39183,7 @@ input::file-selector-button {
   }
 }
 input:hover:not(:disabled):not([readonly])::file-selector-button {
-  background-color: rgb(242.25, 242.25, 242.25);
+  background-color: rgb(95%, 95%, 95%);
 }
 input[type=file] {
   overflow: hidden;
@@ -38933,7 +39205,7 @@ select {
 select:focus {
   border-color: hsl(210, 17%, 44%);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0%, 40%, 80%, 0.25);
 }
 select[multiple], select[size]:not([size="1"]) {
   padding-right: 0.75rem;
@@ -39180,6 +39452,13 @@ input::-webkit-datetime-edit {
   border-radius: var(--bsi-radius-rounded);
   transition: all var(--bsi-transition-instant) ease-out;
 }
+.form-check input[type=radio] + label::after {
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-width: 0;
+}
 .form-check input[type=radio]:not(:checked) + label::after, .form-check input[type=radio]:not(:checked) + label::before {
   border-color: var(--bsi-form-checkbox-border-color);
 }
@@ -39191,7 +39470,7 @@ input::-webkit-datetime-edit {
   z-index: 0;
   border-color: var(--bsi-form-checked-color);
   background-color: var(--bsi-form-checked-color);
-  transform: scale(0.64);
+  transform: none;
 }
 .form-check input[type=radio]:checked + label::before {
   border-color: var(--bsi-form-checked-color);
@@ -39239,6 +39518,9 @@ input::-webkit-datetime-edit {
 }
 .form-check.form-check-group input[type=radio]:checked + label::before {
   right: 0;
+}
+.form-check.form-check-group input[type=radio] + label::after {
+  right: 4px;
 }
 .form-check.form-check-group input.semi-checked:not(:checked) + label::before {
   right: 4px;
@@ -39558,7 +39840,7 @@ textarea.form-control-lg {
   border-bottom-right-radius: 0;
 }
 .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
-  margin-left: 0;
+  margin-left: -0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -39603,17 +39885,20 @@ button:has(~ .is-invalid),
   padding-right: calc(1.5em + 0.75rem + var(--bsi-form-control-spacing) + 1rem) !important;
 }
 
-.was-validated &:valid,
+.was-validated .form-control:valid,
+.was-validated select:valid,
 .is-valid {
   border-color: var(--bsi-color-border-success) !important;
   background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="%23008055" xmlns="http://www.w3.org/2000/svg"><path d="M9.6,16.9L4,11.4l0.8-0.7l4.8,4.8l8.5-8.4l0.7,0.7L9.6,16.9z" /></svg>');
 }
-.was-validated &:valid ~ .warning-feedback,
+.was-validated .form-control:valid ~ .warning-feedback,
+.was-validated select:valid ~ .warning-feedback,
 .is-valid ~ .warning-feedback {
   display: block;
 }
 
-.was-validated &:invalid,
+.was-validated .form-control:invalid,
+.was-validated select:invalid,
 .is-invalid {
   border-color: var(--bsi-color-border-danger) !important;
   background-image: url('data:image/svg+xml,<svg width="24" fill="%23cc334d" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.7,12l6.7,6.6l-0.8,0.8L12,12.7l-6.6,6.7l-0.8-0.8l6.7-6.6L4.6,5.4l0.8-0.8l6.6,6.7l6.6-6.7l0.8,0.8L12.7,12z" /></svg>');
@@ -40098,13 +40383,13 @@ let ItInput = ItInput_1 = class ItInput extends FormControl$i {
                 <div class="suggestion">
                   ${isMet
                     ? html ` <svg
-                        class="icon icon-xs me-1"
-                        aria-label="${this.$t('passwordSuggestionMetLabel')}"
-                        viewBox="0 0 24 24"
-                        style="width: 1em; height: 1em;"
-                      >
-                        <path d="M9.6 16.9 4 11.4l.8-.7 4.8 4.8 8.5-8.4.7.7-9.2 9.1z"></path>
-                      </svg>`
+                          class="icon icon-xs me-1"
+                          aria-label="${this.$t('passwordSuggestionMetLabel')}"
+                          viewBox="0 0 24 24"
+                          style="width: 1em; height: 1em;"
+                        >
+                          <path d="M9.6 16.9 4 11.4l.8-.7 4.8 4.8 8.5-8.4.7.7-9.2 9.1z"></path>
+                        </svg>`
                     : nothing}
                   <span>${sugg.text(this._getPasswordConfig())}</span>
                 </div>
@@ -41556,7 +41841,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -41674,8 +41959,7 @@ var styles$1$1 = css`.dropdown,
 
 .dropdown-menu {
   --bsi-dropdown-notch-offset: calc(
-  var(--bsi-dropdown-notch-position-y) - var(--bsi-dropdown-border-width) -
-    (var(--bsi-dropdown-notch-base-size) - 1.125rem) / 2
+    var(--bsi-dropdown-notch-position-y) - var(--bsi-dropdown-border-width) - (var(--bsi-dropdown-notch-base-size) - 1.125rem) / 2
   );
   position: absolute;
   z-index: var(--bsi-dropdown-zindex);
@@ -42607,26 +42891,26 @@ class ItDropdownBase extends BaseComponent$h {
         >
           ${this.alignment.startsWith('left') && !this.hideExpandIcon
             ? html `<it-icon
-                name="it-expand"
-                class="icon-expand left"
-                size="sm"
-                exportparts="icon"
-                part="dropdown-icon-expand"
-              ></it-icon>`
+                  name="it-expand"
+                  class="icon-expand left"
+                  size="sm"
+                  exportparts="icon"
+                  part="dropdown-icon-expand"
+                ></it-icon>`
             : ''}
 
           <slot name="label">${this.label}</slot>
           ${!this.alignment.startsWith('left') && !this.hideExpandIcon
             ? html `<it-icon
-                name="it-expand"
-                class=${this.composeClass('icon-expand', {
+                  name="it-expand"
+                  class=${this.composeClass('icon-expand', {
                 right: this.alignment.startsWith('right'),
                 top: this.alignment.startsWith('top'),
             })}
-                exportparts="icon"
-                part="dropdown-icon-expand"
-                size="sm"
-              ></it-icon>`
+                  exportparts="icon"
+                  part="dropdown-icon-expand"
+                  size="sm"
+                ></it-icon>`
             : ''}
         </it-button>
         <div
@@ -42644,7 +42928,7 @@ class ItDropdownBase extends BaseComponent$h {
             <ul
               id=${this._menuId}
               class="link-list"
-              role=${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}
+              role=${this.itRole}
               @keydown=${{ handleEvent: this._onKeyDown, capture: true }}
               aria-orientation=${ifDefined(this.fullWidth ? 'horizontal' : undefined)}
             >
@@ -45541,25 +45825,25 @@ let ItMegamenu = ItMegamenu_1 = class ItMegamenu extends ItDropdownBase {
         >
           ${this.alignment.startsWith('left')
             ? html `<it-icon
-                name="it-expand"
-                class="icon-expand left"
-                size="xs"
-                exportparts="icon"
-                part="dropdown-icon-expand"
-              ></it-icon>`
+                  name="it-expand"
+                  class="icon-expand left"
+                  size="xs"
+                  exportparts="icon"
+                  part="dropdown-icon-expand"
+                ></it-icon>`
             : ''}
           ${this.label}
           ${!this.alignment.startsWith('left')
             ? html `<it-icon
-                name="it-expand"
-                class=${this.composeClass('icon-expand', {
+                  name="it-expand"
+                  class=${this.composeClass('icon-expand', {
                 right: this.alignment.startsWith('right'),
                 top: this.alignment.startsWith('top'),
             })}
-                exportparts="icon"
-                part="dropdown-icon-expand"
-                size="xs"
-              ></it-icon>`
+                  exportparts="icon"
+                  part="dropdown-icon-expand"
+                  size="xs"
+                ></it-icon>`
             : ''}
         </it-button>
         <div
@@ -45579,16 +45863,16 @@ let ItMegamenu = ItMegamenu_1 = class ItMegamenu extends ItDropdownBase {
             <div class="row">
               ${this._hasDescription
             ? html `
-                    <div class="col-xs-12 col-lg-4 px-0">
-                      <div class="row">
-                        <div class="col-12 it-vertical it-description pb-lg-3">
-                          <div class="description-content px-3 px-lg-4 ps-sm-5 ms-lg-3">
-                            <slot name="description" @slotchange=${this._handleSlotDescriptionChange}></slot>
+                      <div class="col-xs-12 col-lg-4 px-0">
+                        <div class="row">
+                          <div class="col-12 it-vertical it-description pb-lg-3">
+                            <div class="description-content px-3 px-lg-4 ps-sm-5 ms-lg-3">
+                              <slot name="description" @slotchange=${this._handleSlotDescriptionChange}></slot>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  `
+                    `
             : html ` <slot name="description" @slotchange=${this._handleSlotDescriptionChange}></slot> `}
               <div
                 class="${this.composeClass('col-12', {
@@ -45599,28 +45883,28 @@ let ItMegamenu = ItMegamenu_1 = class ItMegamenu extends ItDropdownBase {
 
                 ${this._hasHeader
             ? html `
-                      <div class="it-heading-link-wrapper" part="megamenu-header">
-                        <slot name="header" @slotchange=${this._onSlotHeaderChange}></slot>
-                      </div>
-                    `
+                        <div class="it-heading-link-wrapper" part="megamenu-header">
+                          <slot name="header" @slotchange=${this._onSlotHeaderChange}></slot>
+                        </div>
+                      `
             : html `<slot name="header" @slotchange=${this._onSlotHeaderChange}></slot>`}
 
                 <!-- LINKS -->
                 ${this._menuItems.length > 0
             ? html ` <div class="row">
-                      <div class="col-12">
-                        <div class="link-list-wrapper" part="megamenu-link-list-wrapper">
-                          <ul
-                            class="link-list"
-                            part="megamenu-link-list"
-                            style="grid-template-rows: repeat(${Math.ceil(this._menuItems.length / this.columns)}, auto);"
-                            role=${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}
-                          >
-                            <slot @slotchange=${this._setChildrenProperties}></slot>
-                          </ul>
+                        <div class="col-12">
+                          <div class="link-list-wrapper" part="megamenu-link-list-wrapper">
+                            <ul
+                              class="link-list"
+                              part="megamenu-link-list"
+                              style="grid-template-rows: repeat(${Math.ceil(this._menuItems.length / this.columns)}, auto);"
+                              role=${ifDefined(this.itRole !== 'list' ? this.itRole : undefined)}
+                            >
+                              <slot @slotchange=${this._setChildrenProperties}></slot>
+                            </ul>
+                          </div>
                         </div>
-                      </div>
-                    </div>`
+                      </div>`
             : html `<slot @slotchange=${this._setChildrenProperties}></slot>`}
               </div>
 
@@ -45632,17 +45916,17 @@ let ItMegamenu = ItMegamenu_1 = class ItMegamenu extends ItDropdownBase {
               >
                 ${this._hasFooter
             ? html `
-                      <div
-                        class="${this.composeClass('', {
+                        <div
+                          class="${this.composeClass('', {
                 'text-end': this.footerAlign === 'right',
                 'it-footer-link-wrapper': this.footerPosition !== 'right',
                 'it-footer-link-wrapper-vertical': this.footerPosition === 'right',
             })}"
-                        part="megamenu-footer"
-                      >
-                        <slot name="footer" @slotchange=${this._onSlotFooterChange}></slot>
-                      </div>
-                    `
+                          part="megamenu-footer"
+                        >
+                          <slot name="footer" @slotchange=${this._onSlotFooterChange}></slot>
+                        </div>
+                      `
             : html `<slot name="footer" @slotchange=${this._onSlotFooterChange}></slot>`}
               </div>
             </div>
@@ -47481,7 +47765,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -47547,6 +47831,9 @@ var styles$o = css`@charset "UTF-8";
   padding: var(--bsi-modal-padding);
   color: var(--bsi-color-text-base);
 }
+.modal-body > :last-child {
+  margin-bottom: 0;
+}
 
 .modal-content {
   position: relative;
@@ -47585,8 +47872,12 @@ var styles$o = css`@charset "UTF-8";
   flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
-  padding: var(--bsi-modal-padding) var(--bsi-modal-padding) 0;
+  padding: var(--bsi-modal-padding) var(--bsi-modal-padding) calc(var(--bsi-modal-padding) - var(--bsi-spacing-xxs));
   border-bottom: var(--bsi-modal-header-border-width) solid var(--bsi-modal-header-border-color);
+}
+
+.modal-header + .modal-body {
+  padding-top: var(--bsi-spacing-xxs);
 }
 
 .modal-footer {
@@ -47604,6 +47895,7 @@ var styles$o = css`@charset "UTF-8";
   border-bottom-left-radius: var(--bsi-modal-inner-border-radius);
 }
 .modal-footer.modal-footer-shadow {
+  padding-top: calc(var(--bsi-modal-padding) - var(--bsi-spacing-xxs));
   box-shadow: 0 15px 25px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -47786,19 +48078,19 @@ var styles$o = css`@charset "UTF-8";
 .modal.it-dialog-link-list .modal-dialog .modal-content .modal-header {
   --bsi-modal-header-border-color: var(--bsi-color-border-subtle);
   --bsi-modal-header-border-width: 1px;
-  padding-bottom: var(--bsi-modal-padding);
+}
+.modal.it-dialog-link-list .modal-dialog .modal-content .modal-body {
+  padding-top: var(--bsi-modal-padding);
 }
 .modal.it-dialog-link-list .modal-dialog .modal-content .modal-body .link-list-wrapper .link-list {
   margin-bottom: 0;
-  padding-bottom: var(--bsi-modal-padding);
 }
 .modal.popconfirm-modal .modal-dialog {
   margin-right: auto;
   margin-left: auto;
 }
 .modal.popconfirm-modal .modal-dialog .modal-body p {
-  font-size: var(--bsi-caption-font-size);
-  line-height: var(--bsi-caption-leading);
+  --bsi-body-font-size: 1rem;
 }
 .modal.popconfirm-modal .modal-dialog .modal-footer {
   justify-content: flex-start;
@@ -47818,14 +48110,12 @@ var styles$o = css`@charset "UTF-8";
 }
 .modal.it-dialog-scrollable .modal-dialog .modal-content .modal-header {
   flex-shrink: 0;
-  padding-bottom: var(--bsi-modal-padding);
 }
 .modal.it-dialog-scrollable .modal-dialog .modal-content .modal-body {
-  padding-top: 0;
   overflow-y: auto;
 }
 .modal.it-dialog-scrollable .modal-dialog .modal-content .modal-footer {
-  padding-top: var(--bsi-modal-padding);
+  padding-top: calc(var(--bsi-modal-padding) - var(--bsi-spacing-xxs));
   flex-shrink: 0;
 }
 .modal.it-dialog-scrollable .modal-dialog.modal-dialog-left {
@@ -48645,7 +48935,6 @@ blockquote.blockquote-card.dark .blockquote-footer,
 
 .modal-footer {
   flex-shrink: 0;
-  padding-top: var(--bsi-modal-padding);
 }
 
 .modal-dialog-scrollable {
@@ -49134,8 +49423,8 @@ let ItModal = class ItModal extends BaseComponent$g {
               <slot name="header-icon"></slot>
               ${hasHeader
             ? html `<h2 id="${this._titleId}" class="modal-title">
-                    <slot name="header" @slotchange="${this._onHeaderSlotChange}">${this.modalTitle}</slot>
-                  </h2>`
+                      <slot name="header" @slotchange="${this._onHeaderSlotChange}">${this.modalTitle}</slot>
+                    </h2>`
             : html `<div><slot name="header" @slotchange="${this._onHeaderSlotChange}"></slot></div>`}
               ${this.closeButtonPlacement === 'header' ? this._renderCloseButton() : ''}
             </div>
@@ -50442,7 +50731,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -52168,7 +52457,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -53208,11 +53497,11 @@ let ItNotification = ItNotification_1 = class ItNotification extends BaseLocaliz
         </div>
         ${this.dismissable
             ? html `
-              <button type="button" class="btn notification-close" @click=${this.hide}>
-                <it-icon class="icon" name="it-close"></it-icon>
-                <span class="visually-hidden">${this.$t('notification_close_label')}</span>
-              </button>
-            `
+                <button type="button" class="btn notification-close" @click=${this.hide}>
+                  <it-icon class="icon" name="it-close"></it-icon>
+                  <span class="visually-hidden">${this.$t('notification_close_label')}</span>
+                </button>
+              `
             : ''}
       </div>
     `;
@@ -54444,7 +54733,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -56876,7 +57165,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -56977,12 +57266,12 @@ function getOppositePlacement$1(placement) {
   return oppositeSideMap$1[side] + placement.slice(side.length);
 }
 function expandPaddingObject$1(padding) {
+  var _padding$top, _padding$right, _padding$bottom, _padding$left;
   return {
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    ...padding
+    top: (_padding$top = padding.top) != null ? _padding$top : 0,
+    right: (_padding$right = padding.right) != null ? _padding$right : 0,
+    bottom: (_padding$bottom = padding.bottom) != null ? _padding$bottom : 0,
+    left: (_padding$left = padding.left) != null ? _padding$left : 0
   };
 }
 function getPaddingObject$1(padding) {
@@ -57057,13 +57346,9 @@ function computeCoordsFromPlacement$1(_ref, placement, rtl) {
         y: reference.y
       };
   }
-  switch (getAlignment$1(placement)) {
-    case 'start':
-      coords[alignmentAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
-      break;
-    case 'end':
-      coords[alignmentAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
-      break;
+  const alignment = getAlignment$1(placement);
+  if (alignment) {
+    coords[alignmentAxis] += commonAlign * (alignment === 'end' ? 1 : -1) * (rtl && isVertical ? -1 : 1);
   }
   return coords;
 }
@@ -57112,10 +57397,7 @@ async function detectOverflow$1(state, options) {
     height: rects.floating.height
   } : rects.reference;
   const offsetParent = await (platform.getOffsetParent == null ? void 0 : platform.getOffsetParent(elements.floating));
-  const offsetScale = (await (platform.isElement == null ? void 0 : platform.isElement(offsetParent))) ? (await (platform.getScale == null ? void 0 : platform.getScale(offsetParent))) || {
-    x: 1,
-    y: 1
-  } : {
+  const offsetScale = (await (platform.isElement == null ? void 0 : platform.isElement(offsetParent))) && (await (platform.getScale == null ? void 0 : platform.getScale(offsetParent))) || {
     x: 1,
     y: 1
   };
@@ -57288,17 +57570,16 @@ const arrow$1$1 = options => ({
 
     // Make sure the arrow doesn't overflow the floating element if the center
     // point is outside the floating element's bounds.
-    const min$1$1 = minPadding;
     const max = clientSize - arrowDimensions[length] - maxPadding;
     const center = clientSize / 2 - arrowDimensions[length] / 2 + centerToReference;
-    const offset = clamp$2(min$1$1, center, max);
+    const offset = clamp$2(minPadding, center, max);
 
     // If the reference is small enough that the arrow's padding causes it to
     // to point to nothing for an aligned placement, adjust the offset of the
     // floating element itself. To ensure `shift()` continues to take action,
     // a single reset is performed when this is true.
-    const shouldAddOffset = !middlewareData.arrow && getAlignment$1(placement) != null && center !== offset && rects.reference[length] / 2 - (center < min$1$1 ? minPadding : maxPadding) - arrowDimensions[length] / 2 < 0;
-    const alignmentOffset = shouldAddOffset ? center < min$1$1 ? center - min$1$1 : center - max : 0;
+    const shouldAddOffset = !middlewareData.arrow && getAlignment$1(placement) != null && center !== offset && rects.reference[length] / 2 - (center < minPadding ? minPadding : maxPadding) - arrowDimensions[length] / 2 < 0;
+    const alignmentOffset = shouldAddOffset ? center < minPadding ? center - minPadding : center - max : 0;
     return {
       [axis]: coords[axis] + alignmentOffset,
       data: {
@@ -57572,23 +57853,16 @@ const shift$1$1 = function (options) {
         y
       };
       const overflow = await platform.detectOverflow(state, detectOverflowOptions);
-      const crossAxis = getSideAxis$1(getSide$1(placement));
+      const crossAxis = getSideAxis$1(placement);
       const mainAxis = getOppositeAxis$1(crossAxis);
       let mainAxisCoord = coords[mainAxis];
       let crossAxisCoord = coords[crossAxis];
+      const clampCoord = (axis, coord) => clamp$2(coord + overflow[axis === 'y' ? 'top' : 'left'], coord, coord - overflow[axis === 'y' ? 'bottom' : 'right']);
       if (checkMainAxis) {
-        const minSide = mainAxis === 'y' ? 'top' : 'left';
-        const maxSide = mainAxis === 'y' ? 'bottom' : 'right';
-        const min = mainAxisCoord + overflow[minSide];
-        const max = mainAxisCoord - overflow[maxSide];
-        mainAxisCoord = clamp$2(min, mainAxisCoord, max);
+        mainAxisCoord = clampCoord(mainAxis, mainAxisCoord);
       }
       if (checkCrossAxis) {
-        const minSide = crossAxis === 'y' ? 'top' : 'left';
-        const maxSide = crossAxis === 'y' ? 'bottom' : 'right';
-        const min = crossAxisCoord + overflow[minSide];
-        const max = crossAxisCoord - overflow[maxSide];
-        crossAxisCoord = clamp$2(min, crossAxisCoord, max);
+        crossAxisCoord = clampCoord(crossAxis, crossAxisCoord);
       }
       const limitedCoords = limiter.fn({
         ...state,
@@ -57745,7 +58019,7 @@ function getParentNode$1(node) {
 function getNearestOverflowAncestor$1(node) {
   const parentNode = getParentNode$1(node);
   if (isLastTraversableNode$1(parentNode)) {
-    return node.ownerDocument ? node.ownerDocument.body : node.body;
+    return (node.ownerDocument || node).body;
   }
   if (isHTMLElement$1(parentNode) && isOverflowElement$1(parentNode)) {
     return parentNode;
@@ -57842,10 +58116,7 @@ function shouldAddVisualOffsets$1(element, isFixed, floatingOffsetParent) {
   if (isFixed === void 0) {
     isFixed = false;
   }
-  if (!floatingOffsetParent || isFixed && floatingOffsetParent !== getWindow$1(element)) {
-    return false;
-  }
-  return isFixed;
+  return !!floatingOffsetParent && isFixed && floatingOffsetParent === getWindow$1(element);
 }
 
 function getBoundingClientRect$2(element, includeScale, isFixedStrategy, offsetParent) {
@@ -57872,12 +58143,12 @@ function getBoundingClientRect$2(element, includeScale, isFixedStrategy, offsetP
   let y = (clientRect.top + visualOffsets.y) / scale.y;
   let width = clientRect.width / scale.x;
   let height = clientRect.height / scale.y;
-  if (domElement) {
+  if (domElement && offsetParent) {
     const win = getWindow$1(domElement);
-    const offsetWin = offsetParent && isElement$1(offsetParent) ? getWindow$1(offsetParent) : offsetParent;
+    const offsetWin = isElement$1(offsetParent) ? getWindow$1(offsetParent) : offsetParent;
     let currentWin = win;
     let currentIFrame = getFrameElement$1(currentWin);
-    while (currentIFrame && offsetParent && offsetWin !== currentWin) {
+    while (currentIFrame && offsetWin !== currentWin) {
       const iframeScale = getScale$1(currentIFrame);
       const iframeRect = currentIFrame.getBoundingClientRect();
       const css = getComputedStyle$1$1(currentIFrame);
@@ -57941,7 +58212,7 @@ function convertOffsetParentRelativeRectToViewportRelativeRect$1(_ref) {
   let scale = createCoords$1(1);
   const offsets = createCoords$1(0);
   const isOffsetParentAnElement = isHTMLElement$1(offsetParent);
-  if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+  if (isOffsetParentAnElement || !isFixed) {
     if (getNodeName$1(offsetParent) !== 'body' || isOverflowElement$1(documentElement)) {
       scroll = getNodeScroll$1(offsetParent);
     }
@@ -57962,18 +58233,17 @@ function convertOffsetParentRelativeRectToViewportRelativeRect$1(_ref) {
 }
 
 function getClientRects$1(element) {
-  return Array.from(element.getClientRects());
+  return element.getClientRects ? Array.from(element.getClientRects()) : [];
 }
 
 // Gets the entire size of the scrollable document area, even extending outside
 // of the `<html>` and `<body>` rect bounds if horizontally scrollable.
-function getDocumentRect$1(element) {
-  const html = getDocumentElement$1(element);
-  const scroll = getNodeScroll$1(element);
-  const body = element.ownerDocument.body;
+function getDocumentRect$1(html) {
+  const scroll = getNodeScroll$1(html);
+  const body = html.ownerDocument.body;
   const width = max$1(html.scrollWidth, html.clientWidth, body.scrollWidth, body.clientWidth);
   const height = max$1(html.scrollHeight, html.clientHeight, body.scrollHeight, body.clientHeight);
-  let x = -scroll.scrollLeft + getWindowScrollBarX$1(element);
+  let x = -scroll.scrollLeft + getWindowScrollBarX$1(html);
   const y = -scroll.scrollTop;
   if (getComputedStyle$1$1(body).direction === 'rtl') {
     x += max$1(html.clientWidth, body.clientWidth) - width;
@@ -57990,7 +58260,11 @@ function getDocumentRect$1(element) {
 // calculation is affected by unusual styles.
 // Most scrollbars leave 15-18px of space.
 const SCROLLBAR_MAX$1 = 25;
-function getViewportRect$1(element, strategy) {
+function getViewportRect$1(element, strategy, rootBoundary) {
+  if (rootBoundary === void 0) {
+    rootBoundary = 'viewport';
+  }
+  const isLayoutViewport = rootBoundary === 'layoutViewport';
   const win = getWindow$1(element);
   const html = getDocumentElement$1(element);
   const visualViewport = win.visualViewport;
@@ -57999,31 +58273,42 @@ function getViewportRect$1(element, strategy) {
   let x = 0;
   let y = 0;
   if (visualViewport) {
-    width = visualViewport.width;
-    height = visualViewport.height;
-    const visualViewportBased = isWebKit$1();
-    if (!visualViewportBased || visualViewportBased && strategy === 'fixed') {
-      x = visualViewport.offsetLeft;
-      y = visualViewport.offsetTop;
+    // Client coordinates are relative to the layout viewport, except in
+    // WebKit with an `absolute` strategy, where they are relative to the
+    // visual viewport.
+    const layoutRelativeClientCoords = !isWebKit$1() || strategy === 'fixed';
+    if (isLayoutViewport) {
+      if (!layoutRelativeClientCoords) {
+        x = -visualViewport.offsetLeft;
+        y = -visualViewport.offsetTop;
+      }
+    } else {
+      width = visualViewport.width;
+      height = visualViewport.height;
+      if (layoutRelativeClientCoords) {
+        x = visualViewport.offsetLeft;
+        y = visualViewport.offsetTop;
+      }
     }
   }
   const windowScrollbarX = getWindowScrollBarX$1(html);
-  // <html> `overflow: hidden` + `scrollbar-gutter: stable` reduces the
-  // visual width of the <html> but this is not considered in the size
-  // of `html.clientWidth`.
+  // `scrollbar-gutter: stable` on the <html> reserves gutter space that shrinks
+  // the visual width but isn't reflected in `html.clientWidth`, so subtract it.
+  // Only the inline-end (right) gutter can hold the scrollbar; `both-edges` also
+  // reserves an empty inline-start gutter that clips nothing, so exclude just
+  // the one scrollbar-side gutter — halve the measured (two-gutter) total. A
+  // left-side scrollbar (`windowScrollbarX > 0`) is already handled by
+  // `getHTMLOffset`/`visualViewport.width`; skip it here.
   if (windowScrollbarX <= 0) {
     const doc = html.ownerDocument;
     const body = doc.body;
     const bodyStyles = getComputedStyle(body);
     const bodyMarginInline = doc.compatMode === 'CSS1Compat' ? parseFloat(bodyStyles.marginLeft) + parseFloat(bodyStyles.marginRight) || 0 : 0;
-    const clippingStableScrollbarWidth = Math.abs(html.clientWidth - body.clientWidth - bodyMarginInline);
-    if (clippingStableScrollbarWidth <= SCROLLBAR_MAX$1) {
-      width -= clippingStableScrollbarWidth;
+    const reservedWidth = Math.abs(html.clientWidth - body.clientWidth - bodyMarginInline);
+    const gutter = getComputedStyle(html).scrollbarGutter === 'stable both-edges' ? reservedWidth / 2 : reservedWidth;
+    if (gutter <= SCROLLBAR_MAX$1) {
+      width -= gutter;
     }
-  } else if (windowScrollbarX <= SCROLLBAR_MAX$1) {
-    // If the <body> scrollbar is on the left, the width needs to be extended
-    // by the scrollbar amount so there isn't extra space on the right.
-    width += windowScrollbarX;
   }
   return {
     width,
@@ -58038,7 +58323,7 @@ function getInnerBoundingClientRect$1(element, strategy) {
   const clientRect = getBoundingClientRect$2(element, true, strategy === 'fixed');
   const top = clientRect.top + element.clientTop;
   const left = clientRect.left + element.clientLeft;
-  const scale = isHTMLElement$1(element) ? getScale$1(element) : createCoords$1(1);
+  const scale = getScale$1(element);
   const width = element.clientWidth * scale.x;
   const height = element.clientHeight * scale.y;
   const x = left * scale.x;
@@ -58052,8 +58337,8 @@ function getInnerBoundingClientRect$1(element, strategy) {
 }
 function getClientRectFromClippingAncestor$1(element, clippingAncestor, strategy) {
   let rect;
-  if (clippingAncestor === 'viewport') {
-    rect = getViewportRect$1(element, strategy);
+  if (clippingAncestor === 'viewport' || clippingAncestor === 'layoutViewport') {
+    rect = getViewportRect$1(element, strategy, clippingAncestor);
   } else if (clippingAncestor === 'document') {
     rect = getDocumentRect$1(getDocumentElement$1(element));
   } else if (isElement$1(clippingAncestor)) {
@@ -58069,13 +58354,6 @@ function getClientRectFromClippingAncestor$1(element, clippingAncestor, strategy
   }
   return rectToClientRect$1(rect);
 }
-function hasFixedPositionAncestor$1(element, stopNode) {
-  const parentNode = getParentNode$1(element);
-  if (parentNode === stopNode || !isElement$1(parentNode) || isLastTraversableNode$1(parentNode)) {
-    return false;
-  }
-  return getComputedStyle$1$1(parentNode).position === 'fixed' || hasFixedPositionAncestor$1(parentNode, stopNode);
-}
 
 // A "clipping ancestor" is an `overflow` element with the characteristic of
 // clipping (or hiding) child elements. This returns all clipping ancestors
@@ -58086,7 +58364,7 @@ function getClippingElementAncestors$1(element, cache) {
     return cachedResult;
   }
   let result = getOverflowAncestors$1(element, [], false).filter(el => isElement$1(el) && getNodeName$1(el) !== 'body');
-  let currentContainingBlockComputedStyle = null;
+  let lastKeptComputedStyle = null;
   const elementIsFixed = getComputedStyle$1$1(element).position === 'fixed';
   let currentNode = elementIsFixed ? getParentNode$1(element) : element;
 
@@ -58094,16 +58372,20 @@ function getClippingElementAncestors$1(element, cache) {
   while (isElement$1(currentNode) && !isLastTraversableNode$1(currentNode)) {
     const computedStyle = getComputedStyle$1$1(currentNode);
     const currentNodeIsContaining = isContainingBlock$1(currentNode);
-    if (!currentNodeIsContaining && computedStyle.position === 'fixed') {
-      currentContainingBlockComputedStyle = null;
-    }
-    const shouldDropCurrentNode = elementIsFixed ? !currentNodeIsContaining && !currentContainingBlockComputedStyle : !currentNodeIsContaining && computedStyle.position === 'static' && !!currentContainingBlockComputedStyle && (currentContainingBlockComputedStyle.position === 'absolute' || currentContainingBlockComputedStyle.position === 'fixed') || isOverflowElement$1(currentNode) && !currentNodeIsContaining && hasFixedPositionAncestor$1(element, currentNode);
+    // Position of the containing block chain below the current node. A fixed
+    // element whose containing block hasn't been found yet is a fixed chain.
+    const lastPosition = lastKeptComputedStyle ? lastKeptComputedStyle.position : elementIsFixed ? 'fixed' : '';
+
+    // A non-containing ancestor does not clip the element when the chain
+    // below it escapes it: a fixed chain escapes all ancestors up to the
+    // next containing block, an absolute chain escapes static ancestors.
+    const shouldDropCurrentNode = !currentNodeIsContaining && (lastPosition === 'fixed' || lastPosition === 'absolute' && computedStyle.position === 'static');
     if (shouldDropCurrentNode) {
       // Drop non-containing blocks.
       result = result.filter(ancestor => ancestor !== currentNode);
     } else {
-      // Record last containing block for next iteration.
-      currentContainingBlockComputedStyle = computedStyle;
+      // The kept node carries the chain position for the next iteration.
+      lastKeptComputedStyle = computedStyle;
     }
     currentNode = getParentNode$1(currentNode);
   }
@@ -58163,13 +58445,7 @@ function getRectRelativeToOffsetParent$1(element, offsetParent, strategy) {
     scrollTop: 0
   };
   const offsets = createCoords$1(0);
-
-  // If the <body> scrollbar appears on the left (e.g. RTL systems). Use
-  // Firefox with layout.scrollbar.side = 3 in about:config to test this.
-  function setLeftRTLScrollbarOffset() {
-    offsets.x = getWindowScrollBarX$1(documentElement);
-  }
-  if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+  if (isOffsetParentAnElement || !isFixed) {
     if (getNodeName$1(offsetParent) !== 'body' || isOverflowElement$1(documentElement)) {
       scroll = getNodeScroll$1(offsetParent);
     }
@@ -58177,12 +58453,13 @@ function getRectRelativeToOffsetParent$1(element, offsetParent, strategy) {
       const offsetRect = getBoundingClientRect$2(offsetParent, true, isFixed, offsetParent);
       offsets.x = offsetRect.x + offsetParent.clientLeft;
       offsets.y = offsetRect.y + offsetParent.clientTop;
-    } else if (documentElement) {
-      setLeftRTLScrollbarOffset();
     }
   }
-  if (isFixed && !isOffsetParentAnElement && documentElement) {
-    setLeftRTLScrollbarOffset();
+
+  // If the <body> scrollbar appears on the left (e.g. RTL systems). Use
+  // Firefox with layout.scrollbar.side = 3 in about:config to test this.
+  if (!isOffsetParentAnElement && documentElement) {
+    offsets.x = getWindowScrollBarX$1(documentElement);
   }
   const htmlOffset = documentElement && !isOffsetParentAnElement && !isFixed ? getHTMLOffset$1(documentElement, scroll) : createCoords$1(0);
   const x = rect.left + scroll.scrollLeft - offsets.x - htmlOffset.x;
@@ -58282,7 +58559,7 @@ function rectsAreEqual$1(a, b) {
 }
 
 // https://samthor.au/2021/observing-dom/
-function observeMove$1(element, onMove) {
+function observeMove$1(element, onMove, ancestorResize) {
   let io = null;
   let timeoutId;
   const root = getDocumentElement$1(element);
@@ -58325,29 +58602,28 @@ function observeMove$1(element, onMove) {
     let isFirstUpdate = true;
     function handleObserve(entries) {
       const ratio = entries[0].intersectionRatio;
+
+      // The entry is a snapshot, so the reference may have moved since the
+      // intersection was computed (under performance constraints, or between
+      // consecutive frames of a multi-frame layout shift). The reported ratio
+      // and the observed area are stale in that case and cannot be trusted to
+      // detect subsequent movement, so refresh regardless of the ratio.
+      if (!rectsAreEqual$1(elementRectForRootMargin, element.getBoundingClientRect())) {
+        return refresh();
+      }
       if (ratio !== threshold) {
         if (!isFirstUpdate) {
           return refresh();
         }
         if (!ratio) {
-          // If the reference is clipped, the ratio is 0. Throttle the refresh
-          // to prevent an infinite loop of updates.
+          // If the reference is clipped in place, the ratio is 0. Throttle
+          // the refresh to prevent an infinite loop of updates.
           timeoutId = setTimeout(() => {
             refresh(false, 1e-7);
           }, 1000);
         } else {
           refresh(false, ratio);
         }
-      }
-      if (ratio === 1 && !rectsAreEqual$1(elementRectForRootMargin, element.getBoundingClientRect())) {
-        // It's possible that even though the ratio is reported as 1, the
-        // element is not actually fully within the IntersectionObserver's root
-        // area anymore. This can happen under performance constraints. This may
-        // be a bug in the browser's IntersectionObserver implementation. To
-        // work around this, we compare the element's bounding rect now with
-        // what it was at the time we created the IntersectionObserver. If they
-        // are not equal then the element moved, so we refresh.
-        refresh();
       }
       isFirstUpdate = false;
     }
@@ -58365,8 +58641,18 @@ function observeMove$1(element, onMove) {
     }
     io.observe(element);
   }
+  const win = getWindow$1(element);
+  // The window is a resize ancestor, so when `ancestorResize` is enabled its
+  // listener already runs the update on resize. Here we only need to rebuild
+  // the `IntersectionObserver` for the new root size, skipping a redundant
+  // update. When `ancestorResize` is disabled, this becomes the sole update.
+  const handleResize = () => refresh(ancestorResize);
+  win.addEventListener('resize', handleResize);
   refresh(true);
-  return cleanup;
+  return () => {
+    win.removeEventListener('resize', handleResize);
+    cleanup();
+  };
 }
 
 /**
@@ -58391,12 +58677,10 @@ function autoUpdate$1(reference, floating, update, options) {
   const referenceEl = unwrapElement$1(reference);
   const ancestors = ancestorScroll || ancestorResize ? [...(referenceEl ? getOverflowAncestors$1(referenceEl) : []), ...(floating ? getOverflowAncestors$1(floating) : [])] : [];
   ancestors.forEach(ancestor => {
-    ancestorScroll && ancestor.addEventListener('scroll', update, {
-      passive: true
-    });
+    ancestorScroll && ancestor.addEventListener('scroll', update);
     ancestorResize && ancestor.addEventListener('resize', update);
   });
-  const cleanupIo = referenceEl && layoutShift ? observeMove$1(referenceEl, update) : null;
+  const cleanupIo = referenceEl && layoutShift ? observeMove$1(referenceEl, update, ancestorResize) : null;
   let reobserveFrame = -1;
   let resizeObserver = null;
   if (elementResize) {
@@ -58490,11 +58774,9 @@ const computePosition$2 = (reference, floating, options) => {
   // multiple lifecycle resets re-use the same result. It only lives for a
   // single call. If other functions become expensive, we can add them as well.
   const cache = new Map();
-  const mergedOptions = {
-    platform: platform$1,
-    ...options
-  };
+  const mergedOptions = options != null ? options : {};
   const platformWithCache = {
+    ...platform$1,
     ...mergedOptions.platform,
     _c: cache
   };
@@ -58835,11 +59117,11 @@ class ProgressDonut {
     }
     static async _loadCircleConstructor() {
         try {
-            const mod = await import('../circle-Bg60O9ff-DNRR23A4.js').then(function (n) { return n.c; });
+            const mod = await import('../circle-DWSSn-ak-LMLKgD7j.js').then(function (n) { return n.c; });
             return mod.default ?? mod;
         }
         catch {
-            const mod = await import('../progressbar-BQAe9TjI-Cy8jlHo4.js').then(function (n) { return n.p; });
+            const mod = await import('../progressbar-s1tTOXOv-BI-JUM4y.js').then(function (n) { return n.p; });
             return (mod.default ?? mod).Circle;
         }
     }
@@ -59764,9 +60046,9 @@ let ItProgress = ItProgress_1 = class ItProgress extends BaseComponent$q {
       >
         ${this.double
             ? html `
-              <div class="progress-spinner-inner"></div>
-              <div class="progress-spinner-inner"></div>
-            `
+                <div class="progress-spinner-inner"></div>
+                <div class="progress-spinner-inner"></div>
+              `
             : ''}
       </div>
     `;
@@ -61004,7 +61286,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -61391,7 +61673,7 @@ input::file-selector-button {
   }
 }
 input:hover:not(:disabled):not([readonly])::file-selector-button {
-  background-color: rgb(242.25, 242.25, 242.25);
+  background-color: rgb(95%, 95%, 95%);
 }
 input[type=file] {
   overflow: hidden;
@@ -61413,7 +61695,7 @@ select {
 select:focus {
   border-color: hsl(210, 17%, 44%);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0%, 40%, 80%, 0.25);
 }
 select[multiple], select[size]:not([size="1"]) {
   padding-right: 0.75rem;
@@ -61660,6 +61942,13 @@ input::-webkit-datetime-edit {
   border-radius: var(--bsi-radius-rounded);
   transition: all var(--bsi-transition-instant) ease-out;
 }
+.form-check input[type=radio] + label::after {
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-width: 0;
+}
 .form-check input[type=radio]:not(:checked) + label::after, .form-check input[type=radio]:not(:checked) + label::before {
   border-color: var(--bsi-form-checkbox-border-color);
 }
@@ -61671,7 +61960,7 @@ input::-webkit-datetime-edit {
   z-index: 0;
   border-color: var(--bsi-form-checked-color);
   background-color: var(--bsi-form-checked-color);
-  transform: scale(0.64);
+  transform: none;
 }
 .form-check input[type=radio]:checked + label::before {
   border-color: var(--bsi-form-checked-color);
@@ -61719,6 +62008,9 @@ input::-webkit-datetime-edit {
 }
 .form-check.form-check-group input[type=radio]:checked + label::before {
   right: 0;
+}
+.form-check.form-check-group input[type=radio] + label::after {
+  right: 4px;
 }
 .form-check.form-check-group input.semi-checked:not(:checked) + label::before {
   right: 4px;
@@ -61844,117 +62136,6 @@ textarea.form-control-lg {
   height: calc(1.5em + 1rem);
 }
 
-.form-check-reverse {
-  padding-right: 1.5em;
-  padding-left: 0;
-  text-align: right;
-}
-.form-check-reverse .form-check-input {
-  float: right;
-  margin-right: -1.5em;
-  margin-left: 0;
-}
-
-.form-check-input {
-  width: 1em;
-  height: 1em;
-  margin-top: 0.25em;
-  vertical-align: top;
-  background-color: hsl(0, 0%, 100%);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  appearance: none;
-  print-color-adjust: exact;
-}
-.form-check-input[type=checkbox] {
-  border-radius: 0.25em;
-}
-.form-check-input[type=radio] {
-  border-radius: 50%;
-}
-.form-check-input:active {
-  filter: brightness(90%);
-}
-.form-check-input:focus {
-  border-color: hsl(210, 17%, 44%);
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
-}
-.form-check-input:checked {
-  background-color: hsl(210, 100%, 40%);
-  border-color: hsl(210, 100%, 40%);
-}
-.form-check-input:checked[type=checkbox] {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='hsl(0, 0%, 100%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>"));
-}
-.form-check-input:checked[type=radio] {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='hsl(0, 0%, 100%)'/></svg>"));
-}
-.form-check-input[type=checkbox]:indeterminate {
-  background-color: hsl(210, 100%, 40%);
-  border-color: hsl(210, 100%, 40%);
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='hsl(0, 0%, 100%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>"));
-}
-.form-check-input:disabled {
-  pointer-events: none;
-  filter: none;
-  opacity: 0.5;
-}
-.form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
-  cursor: default;
-  opacity: 0.5;
-}
-
-.form-switch {
-  padding-left: 2.5em;
-}
-.form-switch .form-check-input {
-  width: 2em;
-  margin-left: -2.5em;
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba(0, 0, 0, 0.25)'/></svg>"));
-  background-position: left center;
-  border-radius: 2em;
-  transition: background-position 0.15s ease-in-out;
-}
-@media (prefers-reduced-motion: reduce) {
-  .form-switch .form-check-input {
-    transition: none;
-  }
-}
-.form-switch .form-check-input:focus {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='hsl(210, 17%, 44%)'/></svg>"));
-}
-.form-switch .form-check-input:checked {
-  background-position: right center;
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='hsl(0, 0%, 100%)'/></svg>"));
-}
-.form-switch.form-check-reverse {
-  padding-right: 2.5em;
-  padding-left: 0;
-}
-.form-switch.form-check-reverse .form-check-input {
-  margin-right: -2.5em;
-  margin-left: 0;
-}
-
-.form-check-inline {
-  display: inline-block;
-  margin-right: 1rem;
-}
-
-.btn-check {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  pointer-events: none;
-}
-.btn-check[disabled] + .btn, .btn-check:disabled + .btn {
-  pointer-events: none;
-  filter: none;
-  opacity: 0.65;
-}
-
 .form-feedback {
   width: 100%;
   margin-top: 0.25rem;
@@ -61990,17 +62171,20 @@ button:has(~ .is-invalid),
   padding-right: calc(1.5em + 0.75rem + var(--bsi-form-control-spacing) + 1rem) !important;
 }
 
-.was-validated &:valid,
+.was-validated .form-control:valid,
+.was-validated select:valid,
 .is-valid {
   border-color: var(--bsi-color-border-success) !important;
   background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="%23008055" xmlns="http://www.w3.org/2000/svg"><path d="M9.6,16.9L4,11.4l0.8-0.7l4.8,4.8l8.5-8.4l0.7,0.7L9.6,16.9z" /></svg>');
 }
-.was-validated &:valid ~ .warning-feedback,
+.was-validated .form-control:valid ~ .warning-feedback,
+.was-validated select:valid ~ .warning-feedback,
 .is-valid ~ .warning-feedback {
   display: block;
 }
 
-.was-validated &:invalid,
+.was-validated .form-control:invalid,
+.was-validated select:invalid,
 .is-invalid {
   border-color: var(--bsi-color-border-danger) !important;
   background-image: url('data:image/svg+xml,<svg width="24" fill="%23cc334d" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.7,12l6.7,6.6l-0.8,0.8L12,12.7l-6.6,6.7l-0.8-0.8l6.7-6.6L4.6,5.4l0.8-0.8l6.6,6.7l6.6-6.7l0.8,0.8L12.7,12z" /></svg>');
@@ -62057,7 +62241,6 @@ textarea.form-control {
   display: flex;
   width: fit-content;
   align-items: center;
-  padding: var(--bsi-form-input-padding-y) var(--bsi-form-input-padding-x);
   cursor: pointer;
 }
 
@@ -62065,7 +62248,7 @@ textarea.form-control {
   display: block;
   width: 100%;
   color: var(--it-radio-label-color, var(--bsi-form-control-label-color));
-  font-size: var(--bsi-label-sm);
+  font-size: var(--bsi-label-font-size);
   font-weight: var(--bsi-font-weight-solid);
 }
 @media (min-width: 576px) {
@@ -62116,10 +62299,10 @@ textarea.form-control {
 #button::after {
   position: absolute;
   z-index: -1;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
   border-width: 0;
   border-style: solid;
   border-color: transparent;
@@ -62146,10 +62329,9 @@ textarea.form-control {
 }
 :host([aria-checked=true]) #button::after {
   z-index: 0;
-  border-width: 2px;
   border-color: var(--bsi-form-checked-color);
   background-color: var(--bsi-form-checked-color);
-  transform: scale(0.64);
+  transform: none;
 }
 
 :host([aria-disabled=true]) .radio-control {
@@ -62357,7 +62539,7 @@ let ItRadio = class ItRadio extends BaseComponent$b {
         // #input = container, #button = visual circle
         const inputRender = html `
       <div id="input" part="input"></div>
-      <span id="button" part="button" class="form-check-input"></span>
+      <span id="button" part="button"></span>
     `;
         return inputRender;
     }
@@ -63009,7 +63191,7 @@ input::file-selector-button {
   }
 }
 input:hover:not(:disabled):not([readonly])::file-selector-button {
-  background-color: rgb(242.25, 242.25, 242.25);
+  background-color: rgb(95%, 95%, 95%);
 }
 input[type=file] {
   overflow: hidden;
@@ -63031,7 +63213,7 @@ select {
 select:focus {
   border-color: hsl(210, 17%, 44%);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0%, 40%, 80%, 0.25);
 }
 select[multiple], select[size]:not([size="1"]) {
   padding-right: 0.75rem;
@@ -63278,6 +63460,13 @@ input::-webkit-datetime-edit {
   border-radius: var(--bsi-radius-rounded);
   transition: all var(--bsi-transition-instant) ease-out;
 }
+.form-check input[type=radio] + label::after {
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-width: 0;
+}
 .form-check input[type=radio]:not(:checked) + label::after, .form-check input[type=radio]:not(:checked) + label::before {
   border-color: var(--bsi-form-checkbox-border-color);
 }
@@ -63289,7 +63478,7 @@ input::-webkit-datetime-edit {
   z-index: 0;
   border-color: var(--bsi-form-checked-color);
   background-color: var(--bsi-form-checked-color);
-  transform: scale(0.64);
+  transform: none;
 }
 .form-check input[type=radio]:checked + label::before {
   border-color: var(--bsi-form-checked-color);
@@ -63337,6 +63526,9 @@ input::-webkit-datetime-edit {
 }
 .form-check.form-check-group input[type=radio]:checked + label::before {
   right: 0;
+}
+.form-check.form-check-group input[type=radio] + label::after {
+  right: 4px;
 }
 .form-check.form-check-group input.semi-checked:not(:checked) + label::before {
   right: 4px;
@@ -63462,117 +63654,6 @@ textarea.form-control-lg {
   height: calc(1.5em + 1rem);
 }
 
-.form-check-reverse {
-  padding-right: 1.5em;
-  padding-left: 0;
-  text-align: right;
-}
-.form-check-reverse .form-check-input {
-  float: right;
-  margin-right: -1.5em;
-  margin-left: 0;
-}
-
-.form-check-input {
-  width: 1em;
-  height: 1em;
-  margin-top: 0.25em;
-  vertical-align: top;
-  background-color: hsl(0, 0%, 100%);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  appearance: none;
-  print-color-adjust: exact;
-}
-.form-check-input[type=checkbox] {
-  border-radius: 0.25em;
-}
-.form-check-input[type=radio] {
-  border-radius: 50%;
-}
-.form-check-input:active {
-  filter: brightness(90%);
-}
-.form-check-input:focus {
-  border-color: hsl(210, 17%, 44%);
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
-}
-.form-check-input:checked {
-  background-color: hsl(210, 100%, 40%);
-  border-color: hsl(210, 100%, 40%);
-}
-.form-check-input:checked[type=checkbox] {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='hsl(0, 0%, 100%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>"));
-}
-.form-check-input:checked[type=radio] {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='hsl(0, 0%, 100%)'/></svg>"));
-}
-.form-check-input[type=checkbox]:indeterminate {
-  background-color: hsl(210, 100%, 40%);
-  border-color: hsl(210, 100%, 40%);
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='hsl(0, 0%, 100%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>"));
-}
-.form-check-input:disabled {
-  pointer-events: none;
-  filter: none;
-  opacity: 0.5;
-}
-.form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
-  cursor: default;
-  opacity: 0.5;
-}
-
-.form-switch {
-  padding-left: 2.5em;
-}
-.form-switch .form-check-input {
-  width: 2em;
-  margin-left: -2.5em;
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba(0, 0, 0, 0.25)'/></svg>"));
-  background-position: left center;
-  border-radius: 2em;
-  transition: background-position 0.15s ease-in-out;
-}
-@media (prefers-reduced-motion: reduce) {
-  .form-switch .form-check-input {
-    transition: none;
-  }
-}
-.form-switch .form-check-input:focus {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='hsl(210, 17%, 44%)'/></svg>"));
-}
-.form-switch .form-check-input:checked {
-  background-position: right center;
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='hsl(0, 0%, 100%)'/></svg>"));
-}
-.form-switch.form-check-reverse {
-  padding-right: 2.5em;
-  padding-left: 0;
-}
-.form-switch.form-check-reverse .form-check-input {
-  margin-right: -2.5em;
-  margin-left: 0;
-}
-
-.form-check-inline {
-  display: inline-block;
-  margin-right: 1rem;
-}
-
-.btn-check {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  pointer-events: none;
-}
-.btn-check[disabled] + .btn, .btn-check:disabled + .btn {
-  pointer-events: none;
-  filter: none;
-  opacity: 0.65;
-}
-
 .form-feedback {
   width: 100%;
   margin-top: 0.25rem;
@@ -63608,17 +63689,20 @@ button:has(~ .is-invalid),
   padding-right: calc(1.5em + 0.75rem + var(--bsi-form-control-spacing) + 1rem) !important;
 }
 
-.was-validated &:valid,
+.was-validated .form-control:valid,
+.was-validated select:valid,
 .is-valid {
   border-color: var(--bsi-color-border-success) !important;
   background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="%23008055" xmlns="http://www.w3.org/2000/svg"><path d="M9.6,16.9L4,11.4l0.8-0.7l4.8,4.8l8.5-8.4l0.7,0.7L9.6,16.9z" /></svg>');
 }
-.was-validated &:valid ~ .warning-feedback,
+.was-validated .form-control:valid ~ .warning-feedback,
+.was-validated select:valid ~ .warning-feedback,
 .is-valid ~ .warning-feedback {
   display: block;
 }
 
-.was-validated &:invalid,
+.was-validated .form-control:invalid,
+.was-validated select:invalid,
 .is-invalid {
   border-color: var(--bsi-color-border-danger) !important;
   background-image: url('data:image/svg+xml,<svg width="24" fill="%23cc334d" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.7,12l6.7,6.6l-0.8,0.8L12,12.7l-6.6,6.7l-0.8-0.8l6.7-6.6L4.6,5.4l0.8-0.8l6.6,6.7l6.6-6.7l0.8,0.8L12.7,12z" /></svg>');
@@ -63655,7 +63739,7 @@ textarea.form-control {
 
 ::slotted([slot=label]) {
   display: block;
-  padding: 0 var(--bsi-form-input-spacing-x);
+  padding: 0;
   margin-bottom: var(--bsi-spacing-s);
   background-color: rgba(0, 0, 0, 0);
   color: var(--bsi-form-control-text-color);
@@ -63671,7 +63755,7 @@ textarea.form-control {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--bsi-spacing-s);
+  row-gap: var(--bsi-spacing-s);
 }`;
 
 /**
@@ -65255,7 +65339,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -65355,14 +65439,14 @@ let ItSection = class ItSection extends BaseComponent$a {
       <section id="${this.sectionId}" class="${classMap(wrapperClasses)}" part="section">
         ${this.image
             ? html `
-              <div class="img-responsive-wrapper">
-                <div class="img-responsive">
-                  <div class="img-wrapper">
-                    <img src="${this.image}" alt="" aria-hidden="true" />
+                <div class="img-responsive-wrapper">
+                  <div class="img-responsive">
+                    <div class="img-wrapper">
+                      <img src="${this.image}" alt="" aria-hidden="true" />
+                    </div>
                   </div>
                 </div>
-              </div>
-            `
+              `
             : null}
       </section>
     `;
@@ -66558,7 +66642,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -66619,19 +66703,19 @@ let ItSkiplinks = class ItSkiplinks extends BaseComponent$9 {
       <slot @slotchange=${this._onSlotChange}></slot>
       ${this.links.length > 2
             ? html `
-            <nav class="skiplinks" role="navigation" ${setAttributes$3(this._ariaAttributes)}>
-              <ul part="skiplinks-list">
-                ${this.links.map((link) => html `
-                    <li class="visually-hidden-focusable">
-                      <a href=${link.href}>${link.text}</a>
-                    </li>
-                  `)}
-              </ul>
-            </nav>
-          `
+              <nav class="skiplinks" role="navigation" ${setAttributes$3(this._ariaAttributes)}>
+                <ul part="skiplinks-list">
+                  ${this.links.map((link) => html `
+                      <li class="visually-hidden-focusable">
+                        <a href=${link.href}>${link.text}</a>
+                      </li>
+                    `)}
+                </ul>
+              </nav>
+            `
             : html `<div class="skiplinks">
-            ${this.links.map((link) => html ` <a href=${link.href} class="visually-hidden-focusable">${link.text}</a> `)}
-          </div>`}
+              ${this.links.map((link) => html ` <a href=${link.href} class="visually-hidden-focusable">${link.text}</a> `)}
+            </div>`}
     `;
     }
 };
@@ -67814,7 +67898,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -69368,7 +69452,8 @@ let ItStepper = class ItStepper extends BaseLocalizedComponent$8 {
             <it-icon class="icon steppers-success" name="it-check" aria-hidden="true"></it-icon>
             <span class="visually-hidden">${this.$t('confirmed')} ${this.$t('step')} ${index + 1}</span>
           `
-                : html `<span class="visually-hidden">${isActive ? this.$t('active') : ''} ${this.$t('step')} </span>${index + 1}`;
+                : html `<span class="visually-hidden">${isActive ? this.$t('active') : ''} ${this.$t('step')} </span
+            >${index + 1}`;
             return html `
         <li class=${liClasses} aria-current=${ifDefined(isActive ? 'step' : undefined)}>
           <span class="steppers-number">${numberContent}</span>
@@ -69418,7 +69503,7 @@ let ItStepper = class ItStepper extends BaseLocalizedComponent$8 {
         const currentIndex = this._currentIndex;
         const total = this._stepCount;
         return html `
-      <ul class="steppers-dots" part="dots">
+      <ul class="steppers-dots" part="dots" role="list">
         ${Array.from({ length: total }, (_, i) => i).map((i) => html `
             <li class=${this._getDotClass(i)} aria-current=${ifDefined(i === currentIndex ? 'step' : undefined)}>
               <span class="visually-hidden"
@@ -69475,7 +69560,7 @@ let ItStepper = class ItStepper extends BaseLocalizedComponent$8 {
         return html `
       <div class=${stepperClasses} part="stepper">
         <div class="steppers-header mb-3" part="header">
-          <ul part="header-list">
+          <ul part="header-list" role="list">
             ${this._steps.map((step, i) => this._renderHeaderItem(step, i))}
           </ul>
           ${this._renderMobileIndex()}
@@ -69507,38 +69592,38 @@ let ItStepper = class ItStepper extends BaseLocalizedComponent$8 {
           ${this._renderProgressIndicator()}
           ${this.showConfirm
             ? html `
-                <it-button
-                  type="button"
-                  variant="primary"
-                  size="sm"
-                  class="steppers-btn-confirm"
-                  exportparts="focusable"
-                  ?disabled=${this.nextDisabled}
-                  @click=${this._handleConfirm}
-                >
-                  ${this.confirmLabel || this.$t('confirm')}
-                </it-button>
-              `
-            : html `
-                <it-button
-                  type="button"
-                  variant="primary"
-                  size="sm"
-                  class="steppers-btn-next"
-                  exportparts="focusable"
-                  ?disabled=${isNextDisabled}
-                  @click=${this._handleNext}
-                >
-                  ${this.nextLabel || this.$t('next')}
-                  <it-icon
-                    class="icon"
-                    name="it-chevron-right"
-                    color=${this.dark ? 'primary' : 'inverse'}
+                  <it-button
+                    type="button"
+                    variant="primary"
                     size="sm"
-                    exportparts="icon: next-icon"
-                  ></it-icon>
-                </it-button>
-              `}
+                    class="steppers-btn-confirm"
+                    exportparts="focusable"
+                    ?disabled=${this.nextDisabled}
+                    @click=${this._handleConfirm}
+                  >
+                    ${this.confirmLabel || this.$t('confirm')}
+                  </it-button>
+                `
+            : html `
+                  <it-button
+                    type="button"
+                    variant="primary"
+                    size="sm"
+                    class="steppers-btn-next"
+                    exportparts="focusable"
+                    ?disabled=${isNextDisabled}
+                    @click=${this._handleNext}
+                  >
+                    ${this.nextLabel || this.$t('next')}
+                    <it-icon
+                      class="icon"
+                      name="it-chevron-right"
+                      color=${this.dark ? 'primary' : 'inverse'}
+                      size="sm"
+                      exportparts="icon: next-icon"
+                    ></it-icon>
+                  </it-button>
+                `}
         </nav>
         ${this._renderSaveArea()}
       </div>
@@ -70933,7 +71018,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -72588,7 +72673,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -74365,7 +74450,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -74751,7 +74836,7 @@ input::file-selector-button {
   }
 }
 input:hover:not(:disabled):not([readonly])::file-selector-button {
-  background-color: rgb(242.25, 242.25, 242.25);
+  background-color: rgb(95%, 95%, 95%);
 }
 input[type=file] {
   overflow: hidden;
@@ -74773,7 +74858,7 @@ select {
 select:focus {
   border-color: hsl(210, 17%, 44%);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0%, 40%, 80%, 0.25);
 }
 select[multiple], select[size]:not([size="1"]) {
   padding-right: 0.75rem;
@@ -75020,6 +75105,13 @@ input::-webkit-datetime-edit {
   border-radius: var(--bsi-radius-rounded);
   transition: all var(--bsi-transition-instant) ease-out;
 }
+.form-check input[type=radio] + label::after {
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-width: 0;
+}
 .form-check input[type=radio]:not(:checked) + label::after, .form-check input[type=radio]:not(:checked) + label::before {
   border-color: var(--bsi-form-checkbox-border-color);
 }
@@ -75031,7 +75123,7 @@ input::-webkit-datetime-edit {
   z-index: 0;
   border-color: var(--bsi-form-checked-color);
   background-color: var(--bsi-form-checked-color);
-  transform: scale(0.64);
+  transform: none;
 }
 .form-check input[type=radio]:checked + label::before {
   border-color: var(--bsi-form-checked-color);
@@ -75079,6 +75171,9 @@ input::-webkit-datetime-edit {
 }
 .form-check.form-check-group input[type=radio]:checked + label::before {
   right: 0;
+}
+.form-check.form-check-group input[type=radio] + label::after {
+  right: 4px;
 }
 .form-check.form-check-group input.semi-checked:not(:checked) + label::before {
   right: 4px;
@@ -75204,117 +75299,6 @@ textarea.form-control-lg {
   height: calc(1.5em + 1rem);
 }
 
-.form-check-reverse {
-  padding-right: 1.5em;
-  padding-left: 0;
-  text-align: right;
-}
-.form-check-reverse .form-check-input {
-  float: right;
-  margin-right: -1.5em;
-  margin-left: 0;
-}
-
-.form-check-input {
-  width: 1em;
-  height: 1em;
-  margin-top: 0.25em;
-  vertical-align: top;
-  background-color: hsl(0, 0%, 100%);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  appearance: none;
-  print-color-adjust: exact;
-}
-.form-check-input[type=checkbox] {
-  border-radius: 0.25em;
-}
-.form-check-input[type=radio] {
-  border-radius: 50%;
-}
-.form-check-input:active {
-  filter: brightness(90%);
-}
-.form-check-input:focus {
-  border-color: hsl(210, 17%, 44%);
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
-}
-.form-check-input:checked {
-  background-color: hsl(210, 100%, 40%);
-  border-color: hsl(210, 100%, 40%);
-}
-.form-check-input:checked[type=checkbox] {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='hsl(0, 0%, 100%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>"));
-}
-.form-check-input:checked[type=radio] {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='hsl(0, 0%, 100%)'/></svg>"));
-}
-.form-check-input[type=checkbox]:indeterminate {
-  background-color: hsl(210, 100%, 40%);
-  border-color: hsl(210, 100%, 40%);
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='hsl(0, 0%, 100%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>"));
-}
-.form-check-input:disabled {
-  pointer-events: none;
-  filter: none;
-  opacity: 0.5;
-}
-.form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
-  cursor: default;
-  opacity: 0.5;
-}
-
-.form-switch {
-  padding-left: 2.5em;
-}
-.form-switch .form-check-input {
-  width: 2em;
-  margin-left: -2.5em;
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba(0, 0, 0, 0.25)'/></svg>"));
-  background-position: left center;
-  border-radius: 2em;
-  transition: background-position 0.15s ease-in-out;
-}
-@media (prefers-reduced-motion: reduce) {
-  .form-switch .form-check-input {
-    transition: none;
-  }
-}
-.form-switch .form-check-input:focus {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='hsl(210, 17%, 44%)'/></svg>"));
-}
-.form-switch .form-check-input:checked {
-  background-position: right center;
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='hsl(0, 0%, 100%)'/></svg>"));
-}
-.form-switch.form-check-reverse {
-  padding-right: 2.5em;
-  padding-left: 0;
-}
-.form-switch.form-check-reverse .form-check-input {
-  margin-right: -2.5em;
-  margin-left: 0;
-}
-
-.form-check-inline {
-  display: inline-block;
-  margin-right: 1rem;
-}
-
-.btn-check {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  pointer-events: none;
-}
-.btn-check[disabled] + .btn, .btn-check:disabled + .btn {
-  pointer-events: none;
-  filter: none;
-  opacity: 0.65;
-}
-
 .form-feedback {
   width: 100%;
   margin-top: 0.25rem;
@@ -75350,17 +75334,20 @@ button:has(~ .is-invalid),
   padding-right: calc(1.5em + 0.75rem + var(--bsi-form-control-spacing) + 1rem) !important;
 }
 
-.was-validated &:valid,
+.was-validated .form-control:valid,
+.was-validated select:valid,
 .is-valid {
   border-color: var(--bsi-color-border-success) !important;
   background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="%23008055" xmlns="http://www.w3.org/2000/svg"><path d="M9.6,16.9L4,11.4l0.8-0.7l4.8,4.8l8.5-8.4l0.7,0.7L9.6,16.9z" /></svg>');
 }
-.was-validated &:valid ~ .warning-feedback,
+.was-validated .form-control:valid ~ .warning-feedback,
+.was-validated select:valid ~ .warning-feedback,
 .is-valid ~ .warning-feedback {
   display: block;
 }
 
-.was-validated &:invalid,
+.was-validated .form-control:invalid,
+.was-validated select:invalid,
 .is-invalid {
   border-color: var(--bsi-color-border-danger) !important;
   background-image: url('data:image/svg+xml,<svg width="24" fill="%23cc334d" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.7,12l6.7,6.6l-0.8,0.8L12,12.7l-6.6,6.7l-0.8-0.8l6.7-6.6L4.6,5.4l0.8-0.8l6.6,6.7l6.6-6.7l0.8,0.8L12.7,12z" /></svg>');
@@ -76060,7 +76047,7 @@ input::file-selector-button {
   }
 }
 input:hover:not(:disabled):not([readonly])::file-selector-button {
-  background-color: rgb(242.25, 242.25, 242.25);
+  background-color: rgb(95%, 95%, 95%);
 }
 input[type=file] {
   overflow: hidden;
@@ -76082,7 +76069,7 @@ select {
 select:focus {
   border-color: hsl(210, 17%, 44%);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0%, 40%, 80%, 0.25);
 }
 select[multiple], select[size]:not([size="1"]) {
   padding-right: 0.75rem;
@@ -76329,6 +76316,13 @@ input::-webkit-datetime-edit {
   border-radius: var(--bsi-radius-rounded);
   transition: all var(--bsi-transition-instant) ease-out;
 }
+.form-check input[type=radio] + label::after {
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-width: 0;
+}
 .form-check input[type=radio]:not(:checked) + label::after, .form-check input[type=radio]:not(:checked) + label::before {
   border-color: var(--bsi-form-checkbox-border-color);
 }
@@ -76340,7 +76334,7 @@ input::-webkit-datetime-edit {
   z-index: 0;
   border-color: var(--bsi-form-checked-color);
   background-color: var(--bsi-form-checked-color);
-  transform: scale(0.64);
+  transform: none;
 }
 .form-check input[type=radio]:checked + label::before {
   border-color: var(--bsi-form-checked-color);
@@ -76388,6 +76382,9 @@ input::-webkit-datetime-edit {
 }
 .form-check.form-check-group input[type=radio]:checked + label::before {
   right: 0;
+}
+.form-check.form-check-group input[type=radio] + label::after {
+  right: 4px;
 }
 .form-check.form-check-group input.semi-checked:not(:checked) + label::before {
   right: 4px;
@@ -76511,117 +76508,6 @@ textarea.form-control-lg {
 }
 .form-control-color.form-control-lg {
   height: calc(1.5em + 1rem);
-}
-
-.form-check-reverse {
-  padding-right: 1.5em;
-  padding-left: 0;
-  text-align: right;
-}
-.form-check-reverse .form-check-input {
-  float: right;
-  margin-right: -1.5em;
-  margin-left: 0;
-}
-
-.form-check-input {
-  width: 1em;
-  height: 1em;
-  margin-top: 0.25em;
-  vertical-align: top;
-  background-color: hsl(0, 0%, 100%);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  appearance: none;
-  print-color-adjust: exact;
-}
-.form-check-input[type=checkbox] {
-  border-radius: 0.25em;
-}
-.form-check-input[type=radio] {
-  border-radius: 50%;
-}
-.form-check-input:active {
-  filter: brightness(90%);
-}
-.form-check-input:focus {
-  border-color: hsl(210, 17%, 44%);
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
-}
-.form-check-input:checked {
-  background-color: hsl(210, 100%, 40%);
-  border-color: hsl(210, 100%, 40%);
-}
-.form-check-input:checked[type=checkbox] {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='hsl(0, 0%, 100%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>"));
-}
-.form-check-input:checked[type=radio] {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='hsl(0, 0%, 100%)'/></svg>"));
-}
-.form-check-input[type=checkbox]:indeterminate {
-  background-color: hsl(210, 100%, 40%);
-  border-color: hsl(210, 100%, 40%);
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='hsl(0, 0%, 100%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>"));
-}
-.form-check-input:disabled {
-  pointer-events: none;
-  filter: none;
-  opacity: 0.5;
-}
-.form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
-  cursor: default;
-  opacity: 0.5;
-}
-
-.form-switch {
-  padding-left: 2.5em;
-}
-.form-switch .form-check-input {
-  width: 2em;
-  margin-left: -2.5em;
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba(0, 0, 0, 0.25)'/></svg>"));
-  background-position: left center;
-  border-radius: 2em;
-  transition: background-position 0.15s ease-in-out;
-}
-@media (prefers-reduced-motion: reduce) {
-  .form-switch .form-check-input {
-    transition: none;
-  }
-}
-.form-switch .form-check-input:focus {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='hsl(210, 17%, 44%)'/></svg>"));
-}
-.form-switch .form-check-input:checked {
-  background-position: right center;
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='hsl(0, 0%, 100%)'/></svg>"));
-}
-.form-switch.form-check-reverse {
-  padding-right: 2.5em;
-  padding-left: 0;
-}
-.form-switch.form-check-reverse .form-check-input {
-  margin-right: -2.5em;
-  margin-left: 0;
-}
-
-.form-check-inline {
-  display: inline-block;
-  margin-right: 1rem;
-}
-
-.btn-check {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  pointer-events: none;
-}
-.btn-check[disabled] + .btn, .btn-check:disabled + .btn {
-  pointer-events: none;
-  filter: none;
-  opacity: 0.65;
 }
 
 .toggles {
@@ -76762,17 +76648,20 @@ button:has(~ .is-invalid),
   padding-right: calc(1.5em + 0.75rem + var(--bsi-form-control-spacing) + 1rem) !important;
 }
 
-.was-validated &:valid,
+.was-validated .form-control:valid,
+.was-validated select:valid,
 .is-valid {
   border-color: var(--bsi-color-border-success) !important;
   background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="%23008055" xmlns="http://www.w3.org/2000/svg"><path d="M9.6,16.9L4,11.4l0.8-0.7l4.8,4.8l8.5-8.4l0.7,0.7L9.6,16.9z" /></svg>');
 }
-.was-validated &:valid ~ .warning-feedback,
+.was-validated .form-control:valid ~ .warning-feedback,
+.was-validated select:valid ~ .warning-feedback,
 .is-valid ~ .warning-feedback {
   display: block;
 }
 
-.was-validated &:invalid,
+.was-validated .form-control:invalid,
+.was-validated select:invalid,
 .is-invalid {
   border-color: var(--bsi-color-border-danger) !important;
   background-image: url('data:image/svg+xml,<svg width="24" fill="%23cc334d" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.7,12l6.7,6.6l-0.8,0.8L12,12.7l-6.6,6.7l-0.8-0.8l6.7-6.6L4.6,5.4l0.8-0.8l6.6,6.7l6.6-6.7l0.8,0.8L12.7,12z" /></svg>');
@@ -77251,7 +77140,7 @@ input::file-selector-button {
   }
 }
 input:hover:not(:disabled):not([readonly])::file-selector-button {
-  background-color: rgb(242.25, 242.25, 242.25);
+  background-color: rgb(95%, 95%, 95%);
 }
 input[type=file] {
   overflow: hidden;
@@ -77273,7 +77162,7 @@ select {
 select:focus {
   border-color: hsl(210, 17%, 44%);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0%, 40%, 80%, 0.25);
 }
 select[multiple], select[size]:not([size="1"]) {
   padding-right: 0.75rem;
@@ -77520,6 +77409,13 @@ input::-webkit-datetime-edit {
   border-radius: var(--bsi-radius-rounded);
   transition: all var(--bsi-transition-instant) ease-out;
 }
+.form-check input[type=radio] + label::after {
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-width: 0;
+}
 .form-check input[type=radio]:not(:checked) + label::after, .form-check input[type=radio]:not(:checked) + label::before {
   border-color: var(--bsi-form-checkbox-border-color);
 }
@@ -77531,7 +77427,7 @@ input::-webkit-datetime-edit {
   z-index: 0;
   border-color: var(--bsi-form-checked-color);
   background-color: var(--bsi-form-checked-color);
-  transform: scale(0.64);
+  transform: none;
 }
 .form-check input[type=radio]:checked + label::before {
   border-color: var(--bsi-form-checked-color);
@@ -77579,6 +77475,9 @@ input::-webkit-datetime-edit {
 }
 .form-check.form-check-group input[type=radio]:checked + label::before {
   right: 0;
+}
+.form-check.form-check-group input[type=radio] + label::after {
+  right: 4px;
 }
 .form-check.form-check-group input.semi-checked:not(:checked) + label::before {
   right: 4px;
@@ -77739,17 +77638,20 @@ button:has(~ .is-invalid),
   padding-right: calc(1.5em + 0.75rem + var(--bsi-form-control-spacing) + 1rem) !important;
 }
 
-.was-validated &:valid,
+.was-validated .form-control:valid,
+.was-validated select:valid,
 .is-valid {
   border-color: var(--bsi-color-border-success) !important;
   background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="%23008055" xmlns="http://www.w3.org/2000/svg"><path d="M9.6,16.9L4,11.4l0.8-0.7l4.8,4.8l8.5-8.4l0.7,0.7L9.6,16.9z" /></svg>');
 }
-.was-validated &:valid ~ .warning-feedback,
+.was-validated .form-control:valid ~ .warning-feedback,
+.was-validated select:valid ~ .warning-feedback,
 .is-valid ~ .warning-feedback {
   display: block;
 }
 
-.was-validated &:invalid,
+.was-validated .form-control:invalid,
+.was-validated select:invalid,
 .is-invalid {
   border-color: var(--bsi-color-border-danger) !important;
   background-image: url('data:image/svg+xml,<svg width="24" fill="%23cc334d" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.7,12l6.7,6.6l-0.8,0.8L12,12.7l-6.6,6.7l-0.8-0.8l6.7-6.6L4.6,5.4l0.8-0.8l6.6,6.7l6.6-6.7l0.8,0.8L12.7,12z" /></svg>');
@@ -79338,7 +79240,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -79549,10 +79451,10 @@ var styles$7 = css`.toolbar {
   box-shadow: none;
 }
 .toolbar .btn-dropdown:not(.disabled).active:focus {
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0%, 40%, 80%, 0.25);
 }
 .toolbar .btn-dropdown:focus {
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0%, 40%, 80%, 0.25);
 }
 
 .visually-hidden,
@@ -81227,7 +81129,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -81328,12 +81230,12 @@ function getOppositePlacement(placement) {
   return oppositeSideMap[side] + placement.slice(side.length);
 }
 function expandPaddingObject(padding) {
+  var _padding$top, _padding$right, _padding$bottom, _padding$left;
   return {
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    ...padding
+    top: (_padding$top = padding.top) != null ? _padding$top : 0,
+    right: (_padding$right = padding.right) != null ? _padding$right : 0,
+    bottom: (_padding$bottom = padding.bottom) != null ? _padding$bottom : 0,
+    left: (_padding$left = padding.left) != null ? _padding$left : 0
   };
 }
 function getPaddingObject(padding) {
@@ -81408,13 +81310,9 @@ function computeCoordsFromPlacement(_ref, placement, rtl) {
         y: reference.y
       };
   }
-  switch (getAlignment(placement)) {
-    case 'start':
-      coords[alignmentAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
-      break;
-    case 'end':
-      coords[alignmentAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
-      break;
+  const alignment = getAlignment(placement);
+  if (alignment) {
+    coords[alignmentAxis] += commonAlign * (alignment === 'end' ? 1 : -1) * (rtl && isVertical ? -1 : 1);
   }
   return coords;
 }
@@ -81463,10 +81361,7 @@ async function detectOverflow(state, options) {
     height: rects.floating.height
   } : rects.reference;
   const offsetParent = await (platform.getOffsetParent == null ? void 0 : platform.getOffsetParent(elements.floating));
-  const offsetScale = (await (platform.isElement == null ? void 0 : platform.isElement(offsetParent))) ? (await (platform.getScale == null ? void 0 : platform.getScale(offsetParent))) || {
-    x: 1,
-    y: 1
-  } : {
+  const offsetScale = (await (platform.isElement == null ? void 0 : platform.isElement(offsetParent))) && (await (platform.getScale == null ? void 0 : platform.getScale(offsetParent))) || {
     x: 1,
     y: 1
   };
@@ -81639,17 +81534,16 @@ const arrow$1 = options => ({
 
     // Make sure the arrow doesn't overflow the floating element if the center
     // point is outside the floating element's bounds.
-    const min$1 = minPadding;
     const max = clientSize - arrowDimensions[length] - maxPadding;
     const center = clientSize / 2 - arrowDimensions[length] / 2 + centerToReference;
-    const offset = clamp$1(min$1, center, max);
+    const offset = clamp$1(minPadding, center, max);
 
     // If the reference is small enough that the arrow's padding causes it to
     // to point to nothing for an aligned placement, adjust the offset of the
     // floating element itself. To ensure `shift()` continues to take action,
     // a single reset is performed when this is true.
-    const shouldAddOffset = !middlewareData.arrow && getAlignment(placement) != null && center !== offset && rects.reference[length] / 2 - (center < min$1 ? minPadding : maxPadding) - arrowDimensions[length] / 2 < 0;
-    const alignmentOffset = shouldAddOffset ? center < min$1 ? center - min$1 : center - max : 0;
+    const shouldAddOffset = !middlewareData.arrow && getAlignment(placement) != null && center !== offset && rects.reference[length] / 2 - (center < minPadding ? minPadding : maxPadding) - arrowDimensions[length] / 2 < 0;
+    const alignmentOffset = shouldAddOffset ? center < minPadding ? center - minPadding : center - max : 0;
     return {
       [axis]: coords[axis] + alignmentOffset,
       data: {
@@ -81923,23 +81817,16 @@ const shift$1 = function (options) {
         y
       };
       const overflow = await platform.detectOverflow(state, detectOverflowOptions);
-      const crossAxis = getSideAxis(getSide(placement));
+      const crossAxis = getSideAxis(placement);
       const mainAxis = getOppositeAxis(crossAxis);
       let mainAxisCoord = coords[mainAxis];
       let crossAxisCoord = coords[crossAxis];
+      const clampCoord = (axis, coord) => clamp$1(coord + overflow[axis === 'y' ? 'top' : 'left'], coord, coord - overflow[axis === 'y' ? 'bottom' : 'right']);
       if (checkMainAxis) {
-        const minSide = mainAxis === 'y' ? 'top' : 'left';
-        const maxSide = mainAxis === 'y' ? 'bottom' : 'right';
-        const min = mainAxisCoord + overflow[minSide];
-        const max = mainAxisCoord - overflow[maxSide];
-        mainAxisCoord = clamp$1(min, mainAxisCoord, max);
+        mainAxisCoord = clampCoord(mainAxis, mainAxisCoord);
       }
       if (checkCrossAxis) {
-        const minSide = crossAxis === 'y' ? 'top' : 'left';
-        const maxSide = crossAxis === 'y' ? 'bottom' : 'right';
-        const min = crossAxisCoord + overflow[minSide];
-        const max = crossAxisCoord - overflow[maxSide];
-        crossAxisCoord = clamp$1(min, crossAxisCoord, max);
+        crossAxisCoord = clampCoord(crossAxis, crossAxisCoord);
       }
       const limitedCoords = limiter.fn({
         ...state,
@@ -82096,7 +81983,7 @@ function getParentNode(node) {
 function getNearestOverflowAncestor(node) {
   const parentNode = getParentNode(node);
   if (isLastTraversableNode(parentNode)) {
-    return node.ownerDocument ? node.ownerDocument.body : node.body;
+    return (node.ownerDocument || node).body;
   }
   if (isHTMLElement(parentNode) && isOverflowElement(parentNode)) {
     return parentNode;
@@ -82193,10 +82080,7 @@ function shouldAddVisualOffsets(element, isFixed, floatingOffsetParent) {
   if (isFixed === void 0) {
     isFixed = false;
   }
-  if (!floatingOffsetParent || isFixed && floatingOffsetParent !== getWindow(element)) {
-    return false;
-  }
-  return isFixed;
+  return !!floatingOffsetParent && isFixed && floatingOffsetParent === getWindow(element);
 }
 
 function getBoundingClientRect$1(element, includeScale, isFixedStrategy, offsetParent) {
@@ -82223,12 +82107,12 @@ function getBoundingClientRect$1(element, includeScale, isFixedStrategy, offsetP
   let y = (clientRect.top + visualOffsets.y) / scale.y;
   let width = clientRect.width / scale.x;
   let height = clientRect.height / scale.y;
-  if (domElement) {
+  if (domElement && offsetParent) {
     const win = getWindow(domElement);
-    const offsetWin = offsetParent && isElement(offsetParent) ? getWindow(offsetParent) : offsetParent;
+    const offsetWin = isElement(offsetParent) ? getWindow(offsetParent) : offsetParent;
     let currentWin = win;
     let currentIFrame = getFrameElement(currentWin);
-    while (currentIFrame && offsetParent && offsetWin !== currentWin) {
+    while (currentIFrame && offsetWin !== currentWin) {
       const iframeScale = getScale(currentIFrame);
       const iframeRect = currentIFrame.getBoundingClientRect();
       const css = getComputedStyle$1(currentIFrame);
@@ -82292,7 +82176,7 @@ function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
   let scale = createCoords(1);
   const offsets = createCoords(0);
   const isOffsetParentAnElement = isHTMLElement(offsetParent);
-  if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+  if (isOffsetParentAnElement || !isFixed) {
     if (getNodeName(offsetParent) !== 'body' || isOverflowElement(documentElement)) {
       scroll = getNodeScroll(offsetParent);
     }
@@ -82313,18 +82197,17 @@ function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
 }
 
 function getClientRects(element) {
-  return Array.from(element.getClientRects());
+  return element.getClientRects ? Array.from(element.getClientRects()) : [];
 }
 
 // Gets the entire size of the scrollable document area, even extending outside
 // of the `<html>` and `<body>` rect bounds if horizontally scrollable.
-function getDocumentRect(element) {
-  const html = getDocumentElement(element);
-  const scroll = getNodeScroll(element);
-  const body = element.ownerDocument.body;
+function getDocumentRect(html) {
+  const scroll = getNodeScroll(html);
+  const body = html.ownerDocument.body;
   const width = max(html.scrollWidth, html.clientWidth, body.scrollWidth, body.clientWidth);
   const height = max(html.scrollHeight, html.clientHeight, body.scrollHeight, body.clientHeight);
-  let x = -scroll.scrollLeft + getWindowScrollBarX(element);
+  let x = -scroll.scrollLeft + getWindowScrollBarX(html);
   const y = -scroll.scrollTop;
   if (getComputedStyle$1(body).direction === 'rtl') {
     x += max(html.clientWidth, body.clientWidth) - width;
@@ -82341,7 +82224,11 @@ function getDocumentRect(element) {
 // calculation is affected by unusual styles.
 // Most scrollbars leave 15-18px of space.
 const SCROLLBAR_MAX = 25;
-function getViewportRect(element, strategy) {
+function getViewportRect(element, strategy, rootBoundary) {
+  if (rootBoundary === void 0) {
+    rootBoundary = 'viewport';
+  }
+  const isLayoutViewport = rootBoundary === 'layoutViewport';
   const win = getWindow(element);
   const html = getDocumentElement(element);
   const visualViewport = win.visualViewport;
@@ -82350,31 +82237,42 @@ function getViewportRect(element, strategy) {
   let x = 0;
   let y = 0;
   if (visualViewport) {
-    width = visualViewport.width;
-    height = visualViewport.height;
-    const visualViewportBased = isWebKit();
-    if (!visualViewportBased || visualViewportBased && strategy === 'fixed') {
-      x = visualViewport.offsetLeft;
-      y = visualViewport.offsetTop;
+    // Client coordinates are relative to the layout viewport, except in
+    // WebKit with an `absolute` strategy, where they are relative to the
+    // visual viewport.
+    const layoutRelativeClientCoords = !isWebKit() || strategy === 'fixed';
+    if (isLayoutViewport) {
+      if (!layoutRelativeClientCoords) {
+        x = -visualViewport.offsetLeft;
+        y = -visualViewport.offsetTop;
+      }
+    } else {
+      width = visualViewport.width;
+      height = visualViewport.height;
+      if (layoutRelativeClientCoords) {
+        x = visualViewport.offsetLeft;
+        y = visualViewport.offsetTop;
+      }
     }
   }
   const windowScrollbarX = getWindowScrollBarX(html);
-  // <html> `overflow: hidden` + `scrollbar-gutter: stable` reduces the
-  // visual width of the <html> but this is not considered in the size
-  // of `html.clientWidth`.
+  // `scrollbar-gutter: stable` on the <html> reserves gutter space that shrinks
+  // the visual width but isn't reflected in `html.clientWidth`, so subtract it.
+  // Only the inline-end (right) gutter can hold the scrollbar; `both-edges` also
+  // reserves an empty inline-start gutter that clips nothing, so exclude just
+  // the one scrollbar-side gutter — halve the measured (two-gutter) total. A
+  // left-side scrollbar (`windowScrollbarX > 0`) is already handled by
+  // `getHTMLOffset`/`visualViewport.width`; skip it here.
   if (windowScrollbarX <= 0) {
     const doc = html.ownerDocument;
     const body = doc.body;
     const bodyStyles = getComputedStyle(body);
     const bodyMarginInline = doc.compatMode === 'CSS1Compat' ? parseFloat(bodyStyles.marginLeft) + parseFloat(bodyStyles.marginRight) || 0 : 0;
-    const clippingStableScrollbarWidth = Math.abs(html.clientWidth - body.clientWidth - bodyMarginInline);
-    if (clippingStableScrollbarWidth <= SCROLLBAR_MAX) {
-      width -= clippingStableScrollbarWidth;
+    const reservedWidth = Math.abs(html.clientWidth - body.clientWidth - bodyMarginInline);
+    const gutter = getComputedStyle(html).scrollbarGutter === 'stable both-edges' ? reservedWidth / 2 : reservedWidth;
+    if (gutter <= SCROLLBAR_MAX) {
+      width -= gutter;
     }
-  } else if (windowScrollbarX <= SCROLLBAR_MAX) {
-    // If the <body> scrollbar is on the left, the width needs to be extended
-    // by the scrollbar amount so there isn't extra space on the right.
-    width += windowScrollbarX;
   }
   return {
     width,
@@ -82389,7 +82287,7 @@ function getInnerBoundingClientRect(element, strategy) {
   const clientRect = getBoundingClientRect$1(element, true, strategy === 'fixed');
   const top = clientRect.top + element.clientTop;
   const left = clientRect.left + element.clientLeft;
-  const scale = isHTMLElement(element) ? getScale(element) : createCoords(1);
+  const scale = getScale(element);
   const width = element.clientWidth * scale.x;
   const height = element.clientHeight * scale.y;
   const x = left * scale.x;
@@ -82403,8 +82301,8 @@ function getInnerBoundingClientRect(element, strategy) {
 }
 function getClientRectFromClippingAncestor(element, clippingAncestor, strategy) {
   let rect;
-  if (clippingAncestor === 'viewport') {
-    rect = getViewportRect(element, strategy);
+  if (clippingAncestor === 'viewport' || clippingAncestor === 'layoutViewport') {
+    rect = getViewportRect(element, strategy, clippingAncestor);
   } else if (clippingAncestor === 'document') {
     rect = getDocumentRect(getDocumentElement(element));
   } else if (isElement(clippingAncestor)) {
@@ -82420,13 +82318,6 @@ function getClientRectFromClippingAncestor(element, clippingAncestor, strategy) 
   }
   return rectToClientRect(rect);
 }
-function hasFixedPositionAncestor(element, stopNode) {
-  const parentNode = getParentNode(element);
-  if (parentNode === stopNode || !isElement(parentNode) || isLastTraversableNode(parentNode)) {
-    return false;
-  }
-  return getComputedStyle$1(parentNode).position === 'fixed' || hasFixedPositionAncestor(parentNode, stopNode);
-}
 
 // A "clipping ancestor" is an `overflow` element with the characteristic of
 // clipping (or hiding) child elements. This returns all clipping ancestors
@@ -82437,7 +82328,7 @@ function getClippingElementAncestors(element, cache) {
     return cachedResult;
   }
   let result = getOverflowAncestors(element, [], false).filter(el => isElement(el) && getNodeName(el) !== 'body');
-  let currentContainingBlockComputedStyle = null;
+  let lastKeptComputedStyle = null;
   const elementIsFixed = getComputedStyle$1(element).position === 'fixed';
   let currentNode = elementIsFixed ? getParentNode(element) : element;
 
@@ -82445,16 +82336,20 @@ function getClippingElementAncestors(element, cache) {
   while (isElement(currentNode) && !isLastTraversableNode(currentNode)) {
     const computedStyle = getComputedStyle$1(currentNode);
     const currentNodeIsContaining = isContainingBlock(currentNode);
-    if (!currentNodeIsContaining && computedStyle.position === 'fixed') {
-      currentContainingBlockComputedStyle = null;
-    }
-    const shouldDropCurrentNode = elementIsFixed ? !currentNodeIsContaining && !currentContainingBlockComputedStyle : !currentNodeIsContaining && computedStyle.position === 'static' && !!currentContainingBlockComputedStyle && (currentContainingBlockComputedStyle.position === 'absolute' || currentContainingBlockComputedStyle.position === 'fixed') || isOverflowElement(currentNode) && !currentNodeIsContaining && hasFixedPositionAncestor(element, currentNode);
+    // Position of the containing block chain below the current node. A fixed
+    // element whose containing block hasn't been found yet is a fixed chain.
+    const lastPosition = lastKeptComputedStyle ? lastKeptComputedStyle.position : elementIsFixed ? 'fixed' : '';
+
+    // A non-containing ancestor does not clip the element when the chain
+    // below it escapes it: a fixed chain escapes all ancestors up to the
+    // next containing block, an absolute chain escapes static ancestors.
+    const shouldDropCurrentNode = !currentNodeIsContaining && (lastPosition === 'fixed' || lastPosition === 'absolute' && computedStyle.position === 'static');
     if (shouldDropCurrentNode) {
       // Drop non-containing blocks.
       result = result.filter(ancestor => ancestor !== currentNode);
     } else {
-      // Record last containing block for next iteration.
-      currentContainingBlockComputedStyle = computedStyle;
+      // The kept node carries the chain position for the next iteration.
+      lastKeptComputedStyle = computedStyle;
     }
     currentNode = getParentNode(currentNode);
   }
@@ -82514,13 +82409,7 @@ function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
     scrollTop: 0
   };
   const offsets = createCoords(0);
-
-  // If the <body> scrollbar appears on the left (e.g. RTL systems). Use
-  // Firefox with layout.scrollbar.side = 3 in about:config to test this.
-  function setLeftRTLScrollbarOffset() {
-    offsets.x = getWindowScrollBarX(documentElement);
-  }
-  if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+  if (isOffsetParentAnElement || !isFixed) {
     if (getNodeName(offsetParent) !== 'body' || isOverflowElement(documentElement)) {
       scroll = getNodeScroll(offsetParent);
     }
@@ -82528,12 +82417,13 @@ function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
       const offsetRect = getBoundingClientRect$1(offsetParent, true, isFixed, offsetParent);
       offsets.x = offsetRect.x + offsetParent.clientLeft;
       offsets.y = offsetRect.y + offsetParent.clientTop;
-    } else if (documentElement) {
-      setLeftRTLScrollbarOffset();
     }
   }
-  if (isFixed && !isOffsetParentAnElement && documentElement) {
-    setLeftRTLScrollbarOffset();
+
+  // If the <body> scrollbar appears on the left (e.g. RTL systems). Use
+  // Firefox with layout.scrollbar.side = 3 in about:config to test this.
+  if (!isOffsetParentAnElement && documentElement) {
+    offsets.x = getWindowScrollBarX(documentElement);
   }
   const htmlOffset = documentElement && !isOffsetParentAnElement && !isFixed ? getHTMLOffset(documentElement, scroll) : createCoords(0);
   const x = rect.left + scroll.scrollLeft - offsets.x - htmlOffset.x;
@@ -82633,7 +82523,7 @@ function rectsAreEqual(a, b) {
 }
 
 // https://samthor.au/2021/observing-dom/
-function observeMove(element, onMove) {
+function observeMove(element, onMove, ancestorResize) {
   let io = null;
   let timeoutId;
   const root = getDocumentElement(element);
@@ -82676,29 +82566,28 @@ function observeMove(element, onMove) {
     let isFirstUpdate = true;
     function handleObserve(entries) {
       const ratio = entries[0].intersectionRatio;
+
+      // The entry is a snapshot, so the reference may have moved since the
+      // intersection was computed (under performance constraints, or between
+      // consecutive frames of a multi-frame layout shift). The reported ratio
+      // and the observed area are stale in that case and cannot be trusted to
+      // detect subsequent movement, so refresh regardless of the ratio.
+      if (!rectsAreEqual(elementRectForRootMargin, element.getBoundingClientRect())) {
+        return refresh();
+      }
       if (ratio !== threshold) {
         if (!isFirstUpdate) {
           return refresh();
         }
         if (!ratio) {
-          // If the reference is clipped, the ratio is 0. Throttle the refresh
-          // to prevent an infinite loop of updates.
+          // If the reference is clipped in place, the ratio is 0. Throttle
+          // the refresh to prevent an infinite loop of updates.
           timeoutId = setTimeout(() => {
             refresh(false, 1e-7);
           }, 1000);
         } else {
           refresh(false, ratio);
         }
-      }
-      if (ratio === 1 && !rectsAreEqual(elementRectForRootMargin, element.getBoundingClientRect())) {
-        // It's possible that even though the ratio is reported as 1, the
-        // element is not actually fully within the IntersectionObserver's root
-        // area anymore. This can happen under performance constraints. This may
-        // be a bug in the browser's IntersectionObserver implementation. To
-        // work around this, we compare the element's bounding rect now with
-        // what it was at the time we created the IntersectionObserver. If they
-        // are not equal then the element moved, so we refresh.
-        refresh();
       }
       isFirstUpdate = false;
     }
@@ -82716,8 +82605,18 @@ function observeMove(element, onMove) {
     }
     io.observe(element);
   }
+  const win = getWindow(element);
+  // The window is a resize ancestor, so when `ancestorResize` is enabled its
+  // listener already runs the update on resize. Here we only need to rebuild
+  // the `IntersectionObserver` for the new root size, skipping a redundant
+  // update. When `ancestorResize` is disabled, this becomes the sole update.
+  const handleResize = () => refresh(ancestorResize);
+  win.addEventListener('resize', handleResize);
   refresh(true);
-  return cleanup;
+  return () => {
+    win.removeEventListener('resize', handleResize);
+    cleanup();
+  };
 }
 
 /**
@@ -82742,12 +82641,10 @@ function autoUpdate(reference, floating, update, options) {
   const referenceEl = unwrapElement(reference);
   const ancestors = ancestorScroll || ancestorResize ? [...(referenceEl ? getOverflowAncestors(referenceEl) : []), ...(floating ? getOverflowAncestors(floating) : [])] : [];
   ancestors.forEach(ancestor => {
-    ancestorScroll && ancestor.addEventListener('scroll', update, {
-      passive: true
-    });
+    ancestorScroll && ancestor.addEventListener('scroll', update);
     ancestorResize && ancestor.addEventListener('resize', update);
   });
-  const cleanupIo = referenceEl && layoutShift ? observeMove(referenceEl, update) : null;
+  const cleanupIo = referenceEl && layoutShift ? observeMove(referenceEl, update, ancestorResize) : null;
   let reobserveFrame = -1;
   let resizeObserver = null;
   if (elementResize) {
@@ -82841,11 +82738,9 @@ const computePosition = (reference, floating, options) => {
   // multiple lifecycle resets re-use the same result. It only lives for a
   // single call. If other functions become expensive, we can add them as well.
   const cache = new Map();
-  const mergedOptions = {
-    platform,
-    ...options
-  };
+  const mergedOptions = options != null ? options : {};
   const platformWithCache = {
+    ...platform,
     ...mergedOptions.platform,
     _c: cache
   };
@@ -84496,7 +84391,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -84895,7 +84790,7 @@ input::file-selector-button {
   }
 }
 input:hover:not(:disabled):not([readonly])::file-selector-button {
-  background-color: rgb(242.25, 242.25, 242.25);
+  background-color: rgb(95%, 95%, 95%);
 }
 input[type=file] {
   overflow: hidden;
@@ -84917,7 +84812,7 @@ select {
 select:focus {
   border-color: hsl(210, 17%, 44%);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0%, 40%, 80%, 0.25);
 }
 select[multiple], select[size]:not([size="1"]) {
   padding-right: 0.75rem;
@@ -85164,6 +85059,13 @@ input::-webkit-datetime-edit {
   border-radius: var(--bsi-radius-rounded);
   transition: all var(--bsi-transition-instant) ease-out;
 }
+.form-check input[type=radio] + label::after {
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-width: 0;
+}
 .form-check input[type=radio]:not(:checked) + label::after, .form-check input[type=radio]:not(:checked) + label::before {
   border-color: var(--bsi-form-checkbox-border-color);
 }
@@ -85175,7 +85077,7 @@ input::-webkit-datetime-edit {
   z-index: 0;
   border-color: var(--bsi-form-checked-color);
   background-color: var(--bsi-form-checked-color);
-  transform: scale(0.64);
+  transform: none;
 }
 .form-check input[type=radio]:checked + label::before {
   border-color: var(--bsi-form-checked-color);
@@ -85223,6 +85125,9 @@ input::-webkit-datetime-edit {
 }
 .form-check.form-check-group input[type=radio]:checked + label::before {
   right: 0;
+}
+.form-check.form-check-group input[type=radio] + label::after {
+  right: 4px;
 }
 .form-check.form-check-group input.semi-checked:not(:checked) + label::before {
   right: 4px;
@@ -85346,117 +85251,6 @@ textarea.form-control-lg {
 }
 .form-control-color.form-control-lg {
   height: calc(1.5em + 1rem);
-}
-
-.form-check-reverse {
-  padding-right: 1.5em;
-  padding-left: 0;
-  text-align: right;
-}
-.form-check-reverse .form-check-input {
-  float: right;
-  margin-right: -1.5em;
-  margin-left: 0;
-}
-
-.form-check-input {
-  width: 1em;
-  height: 1em;
-  margin-top: 0.25em;
-  vertical-align: top;
-  background-color: hsl(0, 0%, 100%);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  appearance: none;
-  print-color-adjust: exact;
-}
-.form-check-input[type=checkbox] {
-  border-radius: 0.25em;
-}
-.form-check-input[type=radio] {
-  border-radius: 50%;
-}
-.form-check-input:active {
-  filter: brightness(90%);
-}
-.form-check-input:focus {
-  border-color: hsl(210, 17%, 44%);
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
-}
-.form-check-input:checked {
-  background-color: hsl(210, 100%, 40%);
-  border-color: hsl(210, 100%, 40%);
-}
-.form-check-input:checked[type=checkbox] {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='hsl(0, 0%, 100%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>"));
-}
-.form-check-input:checked[type=radio] {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='hsl(0, 0%, 100%)'/></svg>"));
-}
-.form-check-input[type=checkbox]:indeterminate {
-  background-color: hsl(210, 100%, 40%);
-  border-color: hsl(210, 100%, 40%);
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='hsl(0, 0%, 100%)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>"));
-}
-.form-check-input:disabled {
-  pointer-events: none;
-  filter: none;
-  opacity: 0.5;
-}
-.form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
-  cursor: default;
-  opacity: 0.5;
-}
-
-.form-switch {
-  padding-left: 2.5em;
-}
-.form-switch .form-check-input {
-  width: 2em;
-  margin-left: -2.5em;
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba(0, 0, 0, 0.25)'/></svg>"));
-  background-position: left center;
-  border-radius: 2em;
-  transition: background-position 0.15s ease-in-out;
-}
-@media (prefers-reduced-motion: reduce) {
-  .form-switch .form-check-input {
-    transition: none;
-  }
-}
-.form-switch .form-check-input:focus {
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='hsl(210, 17%, 44%)'/></svg>"));
-}
-.form-switch .form-check-input:checked {
-  background-position: right center;
-  background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='hsl(0, 0%, 100%)'/></svg>"));
-}
-.form-switch.form-check-reverse {
-  padding-right: 2.5em;
-  padding-left: 0;
-}
-.form-switch.form-check-reverse .form-check-input {
-  margin-right: -2.5em;
-  margin-left: 0;
-}
-
-.form-check-inline {
-  display: inline-block;
-  margin-right: 1rem;
-}
-
-.btn-check {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  pointer-events: none;
-}
-.btn-check[disabled] + .btn, .btn-check:disabled + .btn {
-  pointer-events: none;
-  filter: none;
-  opacity: 0.65;
 }
 
 .it-transfer-wrapper {
@@ -85604,17 +85398,20 @@ button:has(~ .is-invalid),
   padding-right: calc(1.5em + 0.75rem + var(--bsi-form-control-spacing) + 1rem) !important;
 }
 
-.was-validated &:valid,
+.was-validated .form-control:valid,
+.was-validated select:valid,
 .is-valid {
   border-color: var(--bsi-color-border-success) !important;
   background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="%23008055" xmlns="http://www.w3.org/2000/svg"><path d="M9.6,16.9L4,11.4l0.8-0.7l4.8,4.8l8.5-8.4l0.7,0.7L9.6,16.9z" /></svg>');
 }
-.was-validated &:valid ~ .warning-feedback,
+.was-validated .form-control:valid ~ .warning-feedback,
+.was-validated select:valid ~ .warning-feedback,
 .is-valid ~ .warning-feedback {
   display: block;
 }
 
-.was-validated &:invalid,
+.was-validated .form-control:invalid,
+.was-validated select:invalid,
 .is-invalid {
   border-color: var(--bsi-color-border-danger) !important;
   background-image: url('data:image/svg+xml,<svg width="24" fill="%23cc334d" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.7,12l6.7,6.6l-0.8,0.8L12,12.7l-6.6,6.7l-0.8-0.8l6.7-6.6L4.6,5.4l0.8-0.8l6.6,6.7l6.6-6.7l0.8,0.8L12.7,12z" /></svg>');
@@ -87562,10 +87359,10 @@ let ItTransfer = class ItTransfer extends FormControl$2 {
 
         ${invalid
             ? html `
-              <div role="alert" id="invalid-feedback-${this._id}" class="form-feedback text-danger">
-                ${validityMessage}
-              </div>
-            `
+                <div role="alert" id="invalid-feedback-${this._id}" class="form-feedback text-danger">
+                  ${validityMessage}
+                </div>
+              `
             : ''}
       </div>
 
@@ -88826,7 +88623,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -89316,6 +89113,33 @@ progress {
   cursor: not-allowed;
 }
 
+.btn-check {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  width: auto;
+  pointer-events: none;
+}
+.btn-check + .btn {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.btn-check[disabled] + .btn, .btn-check:disabled + .btn {
+  pointer-events: none;
+  opacity: var(--bsi-btn-disabled-opacity);
+}
+
+.form-check .btn-check + .btn {
+  padding: var(--bsi-btn-padding-y) var(--bsi-btn-padding-x);
+  font-size: var(--bsi-btn-font-size);
+}
+.form-check .btn-check + .btn::before, .form-check .btn-check + .btn::after {
+  content: none;
+}
+
+.btn-check + .btn .icon {
+  fill: var(--bsi-btn-text-color);
+}
+
 .btn-primary,
 a.btn-primary {
   --bsi-btn-text-color: var(--bsi-color-text-inverse);
@@ -89480,6 +89304,45 @@ a.btn-outline-danger:active {
   --bsi-btn-text-color: var(--bsi-color-text-danger-active);
 }
 
+.btn-check:checked + .btn-primary,
+.btn-check:checked + .btn-outline-primary {
+  --bsi-btn-background: var(--bsi-color-background-primary-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-primary-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-secondary,
+.btn-check:checked + .btn-outline-secondary {
+  --bsi-btn-background: var(--bsi-color-background-secondary-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-secondary-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-success,
+.btn-check:checked + .btn-outline-success {
+  --bsi-btn-background: var(--bsi-color-background-success-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-success-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-warning,
+.btn-check:checked + .btn-outline-warning {
+  --bsi-btn-background: var(--bsi-color-background-warning-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-warning-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn-danger,
+.btn-check:checked + .btn-outline-danger {
+  --bsi-btn-background: var(--bsi-color-background-danger-active);
+  --bsi-btn-outline-border-color: var(--bsi-color-border-danger-active);
+  --bsi-btn-text-color: var(--bsi-color-text-inverse);
+}
+
+.btn-check:checked + .btn .icon {
+  fill: var(--bsi-icon-inverse);
+}
+
 .bg-dark .btn-link {
   --bsi-btn-text-color: var(--bsi-color-text-inverse);
 }
@@ -89638,7 +89501,7 @@ input::file-selector-button {
   }
 }
 input:hover:not(:disabled):not([readonly])::file-selector-button {
-  background-color: rgb(242.25, 242.25, 242.25);
+  background-color: rgb(95%, 95%, 95%);
 }
 input[type=file] {
   overflow: hidden;
@@ -89660,7 +89523,7 @@ select {
 select:focus {
   border-color: hsl(210, 17%, 44%);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0%, 40%, 80%, 0.25);
 }
 select[multiple], select[size]:not([size="1"]) {
   padding-right: 0.75rem;
@@ -89907,6 +89770,13 @@ input::-webkit-datetime-edit {
   border-radius: var(--bsi-radius-rounded);
   transition: all var(--bsi-transition-instant) ease-out;
 }
+.form-check input[type=radio] + label::after {
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-width: 0;
+}
 .form-check input[type=radio]:not(:checked) + label::after, .form-check input[type=radio]:not(:checked) + label::before {
   border-color: var(--bsi-form-checkbox-border-color);
 }
@@ -89918,7 +89788,7 @@ input::-webkit-datetime-edit {
   z-index: 0;
   border-color: var(--bsi-form-checked-color);
   background-color: var(--bsi-form-checked-color);
-  transform: scale(0.64);
+  transform: none;
 }
 .form-check input[type=radio]:checked + label::before {
   border-color: var(--bsi-form-checked-color);
@@ -89966,6 +89836,9 @@ input::-webkit-datetime-edit {
 }
 .form-check.form-check-group input[type=radio]:checked + label::before {
   right: 0;
+}
+.form-check.form-check-group input[type=radio] + label::after {
+  right: 4px;
 }
 .form-check.form-check-group input.semi-checked:not(:checked) + label::before {
   right: 4px;
@@ -90563,17 +90436,20 @@ button:has(~ .is-invalid),
   padding-right: calc(1.5em + 0.75rem + var(--bsi-form-control-spacing) + 1rem) !important;
 }
 
-.was-validated &:valid,
+.was-validated .form-control:valid,
+.was-validated select:valid,
 .is-valid {
   border-color: var(--bsi-color-border-success) !important;
   background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="%23008055" xmlns="http://www.w3.org/2000/svg"><path d="M9.6,16.9L4,11.4l0.8-0.7l4.8,4.8l8.5-8.4l0.7,0.7L9.6,16.9z" /></svg>');
 }
-.was-validated &:valid ~ .warning-feedback,
+.was-validated .form-control:valid ~ .warning-feedback,
+.was-validated select:valid ~ .warning-feedback,
 .is-valid ~ .warning-feedback {
   display: block;
 }
 
-.was-validated &:invalid,
+.was-validated .form-control:invalid,
+.was-validated select:invalid,
 .is-invalid {
   border-color: var(--bsi-color-border-danger) !important;
   background-image: url('data:image/svg+xml,<svg width="24" fill="%23cc334d" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.7,12l6.7,6.6l-0.8,0.8L12,12.7l-6.6,6.7l-0.8-0.8l6.7-6.6L4.6,5.4l0.8-0.8l6.6,6.7l6.6-6.7l0.8,0.8L12.7,12z" /></svg>');
@@ -92963,17 +92839,20 @@ button:has(~ .is-invalid),
   padding-right: calc(1.5em + 0.75rem + var(--bsi-form-control-spacing) + 1rem) !important;
 }
 
-.was-validated &:valid,
+.was-validated .form-control:valid,
+.was-validated select:valid,
 .is-valid {
   border-color: var(--bsi-color-border-success) !important;
   background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="%23008055" xmlns="http://www.w3.org/2000/svg"><path d="M9.6,16.9L4,11.4l0.8-0.7l4.8,4.8l8.5-8.4l0.7,0.7L9.6,16.9z" /></svg>');
 }
-.was-validated &:valid ~ .warning-feedback,
+.was-validated .form-control:valid ~ .warning-feedback,
+.was-validated select:valid ~ .warning-feedback,
 .is-valid ~ .warning-feedback {
   display: block;
 }
 
-.was-validated &:invalid,
+.was-validated .form-control:invalid,
+.was-validated select:invalid,
 .is-invalid {
   border-color: var(--bsi-color-border-danger) !important;
   background-image: url('data:image/svg+xml,<svg width="24" fill="%23cc334d" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.7,12l6.7,6.6l-0.8,0.8L12,12.7l-6.6,6.7l-0.8-0.8l6.7-6.6L4.6,5.4l0.8-0.8l6.6,6.7l6.6-6.7l0.8,0.8L12.7,12z" /></svg>');
@@ -94226,17 +94105,20 @@ button:has(~ .is-invalid),
   padding-right: calc(1.5em + 0.75rem + var(--bsi-form-control-spacing) + 1rem) !important;
 }
 
-.was-validated &:valid,
+.was-validated .form-control:valid,
+.was-validated select:valid,
 .is-valid {
   border-color: var(--bsi-color-border-success) !important;
   background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="%23008055" xmlns="http://www.w3.org/2000/svg"><path d="M9.6,16.9L4,11.4l0.8-0.7l4.8,4.8l8.5-8.4l0.7,0.7L9.6,16.9z" /></svg>');
 }
-.was-validated &:valid ~ .warning-feedback,
+.was-validated .form-control:valid ~ .warning-feedback,
+.was-validated select:valid ~ .warning-feedback,
 .is-valid ~ .warning-feedback {
   display: block;
 }
 
-.was-validated &:invalid,
+.was-validated .form-control:invalid,
+.was-validated select:invalid,
 .is-invalid {
   border-color: var(--bsi-color-border-danger) !important;
   background-image: url('data:image/svg+xml,<svg width="24" fill="%23cc334d" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.7,12l6.7,6.6l-0.8,0.8L12,12.7l-6.6,6.7l-0.8-0.8l6.7-6.6L4.6,5.4l0.8-0.8l6.6,6.7l6.6-6.7l0.8,0.8L12.7,12z" /></svg>');
@@ -94899,20 +94781,21 @@ let ItUploadDragDrop = class ItUploadDragDrop extends FormControl$1 {
       <div class="upload-dragdrop-text">
         ${hasFile && this._fileWeight
             ? html `
-              <p class="upload-dragdrop-weight">
-                <it-icon name="it-file" size="xs" aria-hidden="true" color="secondary"></it-icon>
-                <span>${this._fileType ? `${this._fileType} ` : ''}(${this._fileWeight})</span>
-              </p>
-            `
+                <p class="upload-dragdrop-weight">
+                  <it-icon name="it-file" size="xs" aria-hidden="true" color="secondary"></it-icon>
+                  <span>${this._fileType ? `${this._fileType} ` : ''}(${this._fileWeight})</span>
+                </p>
+              `
             : nothing}
         ${html$1 `<${headingTag} class="h5">
           <slot name="title">${titleText}</slot>
-        </${headingTag}>`} ${canSelect
+        </${headingTag}>`}
+        ${canSelect
             ? html `
-              <p>
-                <slot name="description">${this.$t('upload_dd_description')}</slot>
-              </p>
-            `
+                <p>
+                  <slot name="description">${this.$t('upload_dd_description')}</slot>
+                </p>
+              `
             : nothing}
         <!-- The file input is the form-control validity participant, so it must exist in every
              state for the FormControl base class to read its validity. It is the real focusable
@@ -106711,7 +106594,7 @@ function requireLib () {
 
 var libExports = requireLib();
 
-/*! @name mpd-parser @version 1.3.1 @license Apache-2.0 */
+/*! @name mpd-parser @version 1.4.0 @license Apache-2.0 */
 
 const isObject$1 = obj => {
   return !!obj && typeof obj === 'object';
@@ -107747,6 +107630,13 @@ const formatVideoPlaylist = ({
 
   if (attributes.frameRate) {
     playlist.attributes['FRAME-RATE'] = attributes.frameRate;
+  } // qualityRanking is inversely related to quality (higher value = lower quality)
+  // so SCORE is calculated as 1/(qualityRanking+1) (higher SCORE = higher quality)
+  // The +1 ensures we avoid division by zero when qualityRanking is 0
+
+
+  if (attributes.qualityRanking !== undefined) {
+    playlist.attributes.SCORE = 1 / (attributes.qualityRanking + 1);
   }
 
   if (attributes.contentProtection) {
@@ -108687,6 +108577,34 @@ const parsers = {
   },
 
   /**
+   * Specifies the quality ranking of the representation relative to others in the same
+   * adaptation set. This is inversely related to quality - higher values represent
+   * lower quality content (e.g., 1 = highest quality, 10 = lowest quality).
+   *
+   * @param {string} value
+   *        value of the attribute as a string
+   *
+   * @return {number}
+   *         The parsed qualityRanking
+   */
+  qualityRanking(value) {
+    return parseInt(value, 10);
+  },
+
+  /**
+   * Alias for qualityRanking to handle lowercase attribute names from HTML DOM.
+   *
+   * @param {string} value
+   *        value of the attribute as a string
+   *
+   * @return {number}
+   *         The parsed qualityRanking
+   */
+  qualityranking(value) {
+    return parseInt(value, 10);
+  },
+
+  /**
    * Default parser for all other attributes. Acts as a no-op and just returns the value
    * as a string
    *
@@ -108699,6 +108617,16 @@ const parsers = {
     return value;
   }
 
+};
+/**
+ * Maps lowercase attribute names to their camelCase equivalents for internal use.
+ * HTML DOM converts attributes to lowercase, but we want to maintain camelCase
+ * naming conventions in the parsed output. XML parsers like xmldom preserve
+ * the original casing.
+ */
+
+const attributeNameMap = {
+  qualityranking: 'qualityRanking'
 };
 /**
  * Gets all the attributes and values of the provided node, parses attributes with known
@@ -108717,7 +108645,8 @@ const parseAttributes = el => {
 
   return from(el.attributes).reduce((a, e) => {
     const parseFn = parsers[e.name] || parsers.DEFAULT;
-    a[e.name] = parseFn(e.value);
+    const attributeName = attributeNameMap[e.name] || e.name;
+    a[attributeName] = parseFn(e.value);
     return a;
   }, {});
 };
@@ -109990,7 +109919,9 @@ var CONSTANTS = {
   // moov string literal in hex
   'moov': toUint8([0x6D, 0x6F, 0x6F, 0x76]),
   // moof string literal in hex
-  'moof': toUint8([0x6D, 0x6F, 0x6F, 0x66])
+  'moof': toUint8([0x6D, 0x6F, 0x6F, 0x66]),
+  // "WEBVTT" string literal in hex
+  'vtt': toUint8([0x57, 0x45, 0x42, 0x56, 0x54, 0x54])
 };
 var _isLikely = {
   aac: function aac(bytes) {
@@ -110056,6 +109987,10 @@ var _isLikely = {
     return bytesMatch(bytes, CONSTANTS.ac3, {
       offset: offset
     });
+  },
+  // Must be checked before ts. The sorting of isLikelyTypes ensures this.
+  vtt: function vtt(bytes) {
+    return bytesMatch(bytes, CONSTANTS.vtt);
   },
   ts: function ts(bytes) {
     if (bytes.length < 189 && bytes.length >= 1) {
@@ -110212,7 +110147,7 @@ var clockExports = requireClock();
 
 /**
  * @license
- * Video.js 8.23.7 <http://videojs.com/>
+ * Video.js 8.24.2 <http://videojs.com/>
  * Copyright 2010-present Video.js contributors
  * Available under Apache License Version 2.0
  * <https://github.com/videojs/video.js/blob/main/LICENSE>
@@ -110223,7 +110158,7 @@ var clockExports = requireClock();
  */
 
 
-var version$6 = "8.23.7";
+var version$6 = "8.24.2";
 
 /**
  * An Object that contains lifecycle hooks as keys which point to an array
@@ -121184,6 +121119,10 @@ class PosterImage extends ClickableComponent {
    */
   constructor(player, options) {
     super(player, options);
+    const {
+      mainContent
+    } = options && options.playerOptions || {};
+    this.isMainContent = mainContent;
     this.update();
     this.update_ = e => this.update(e);
     player.on('posterchange', this.update_);
@@ -121286,7 +121225,8 @@ class PosterImage extends ClickableComponent {
         // Don't want poster to be tabbable.
         tabIndex: -1
       }, {}, createEl('img', {
-        loading: 'lazy',
+        loading: this.isMainContent ? 'eager' : 'lazy',
+        fetchPriority: this.isMainContent ? 'high' : 'auto',
         crossOrigin: this.crossOrigin()
       }, {
         alt: ''
@@ -121311,7 +121251,17 @@ class PosterImage extends ClickableComponent {
     if (!this.player_.controls()) {
       return;
     }
-    if (this.player_.tech(true)) {
+
+    // On Microsoft Edge, moving focus to the <video> (tech) element as playback
+    // starts prevents a protected (DRM/EME) video surface from being presented:
+    // audio plays but the frame stays black until a later repaint or focus change.
+    // Focus the control-bar play toggle instead of the tech on Edge. See
+    // https://github.com/videojs/video.js/issues/6270.
+    const cb = this.player_.getChild('controlBar');
+    const playToggle = cb && cb.getChild('playToggle');
+    if (IS_EDGE) {
+      (playToggle || this.player_).focus();
+    } else if (this.player_.tech(true)) {
       this.player_.tech(true).focus();
     }
     if (this.player_.paused()) {
@@ -122008,17 +121958,28 @@ class BigPlayButton extends Button {
    */
   handleClick(event) {
     const playPromise = this.player_.play();
+    const cb = this.player_.getChild('controlBar');
+    const playToggle = cb && cb.getChild('playToggle');
 
     // exit early if tapped or clicked via the mouse
     if (event.type === 'tap' || this.mouseused_ && 'clientX' in event && 'clientY' in event) {
       silencePromise(playPromise);
-      if (this.player_.tech(true)) {
+
+      // On Microsoft Edge, moving focus to the <video> (tech) element as playback
+      // starts prevents a protected (DRM/EME) video surface from being presented:
+      // audio plays but the frame stays black until a later repaint or focus change.
+      // Focus the control-bar play toggle instead of the tech on Edge, mirroring the
+      // keyboard branch below. This is the pointer-path counterpart to the fix for
+      // https://github.com/videojs/video.js/issues/6270 (#6318/#6508 redirected only
+      // the keyboard path; the mouse/tap tech.focus() survived and regressed on
+      // Chromium Edge with hardware-accelerated DRM).
+      if (IS_EDGE) {
+        (playToggle || this.player_).focus();
+      } else if (this.player_.tech(true)) {
         this.player_.tech(true).focus();
       }
       return;
     }
-    const cb = this.player_.getChild('controlBar');
-    const playToggle = cb && cb.getChild('playToggle');
     if (!playToggle) {
       this.player_.tech(true).focus();
       return;
@@ -122163,7 +122124,7 @@ Component$1.registerComponent('CloseButton', CloseButton);
  * @file play-toggle.js
  */
 
-/** @import Player from './player' */
+/** @import Player from '../player' */
 
 /**
  * Button to toggle between play and pause.
@@ -122730,7 +122691,7 @@ Component$1.registerComponent('RemainingTimeDisplay', RemainingTimeDisplay);
  * @file live-display.js
  */
 
-/** @import Player from './player' */
+/** @import Player from '../player' */
 
 // TODO - Future make it click to snap to live
 
@@ -122806,7 +122767,7 @@ Component$1.registerComponent('LiveDisplay', LiveDisplay);
  * @file seek-to-live.js
  */
 
-/** @import Player from './player' */
+/** @import Player from '../player' */
 
 /**
  * Displays the live indicator when duration is Infinity.
@@ -124463,7 +124424,7 @@ Component$1.registerComponent('ProgressControl', ProgressControl);
  * @file picture-in-picture-toggle.js
  */
 
-/** @import Player from './player' */
+/** @import Player from '../player' */
 
 /**
  * Toggle Picture-in-Picture mode
@@ -124605,7 +124566,7 @@ Component$1.registerComponent('PictureInPictureToggle', PictureInPictureToggle);
  * @file fullscreen-toggle.js
  */
 
-/** @import Player from './player' */
+/** @import Player from '../player' */
 
 /**
  * Toggle fullscreen video
@@ -125297,7 +125258,7 @@ const checkMuteSupport = function (self, player) {
  * @file mute-toggle.js
  */
 
-/** @import Player from './player' */
+/** @import Player from '../player' */
 
 /**
  * A button component for muting the audio.
@@ -126405,7 +126366,7 @@ Component$1.registerComponent('MenuButton', MenuButton);
  * @file track-button.js
  */
 
-/** @import Player from './player' */
+/** @import Player from '../player' */
 
 /**
  * The base class for buttons that toggle specific  track types (e.g. subtitles).
@@ -126431,16 +126392,47 @@ class TrackButton extends MenuButton {
     if (!tracks) {
       return;
     }
-    const updateHandler = bind_(this, this.update);
-    tracks.addEventListener('removetrack', updateHandler);
-    tracks.addEventListener('addtrack', updateHandler);
-    tracks.addEventListener('labelchange', updateHandler);
-    this.player_.on('ready', updateHandler);
-    this.player_.on('dispose', function () {
-      tracks.removeEventListener('removetrack', updateHandler);
-      tracks.removeEventListener('addtrack', updateHandler);
-      tracks.removeEventListener('labelchange', updateHandler);
-    });
+    this.updateHandler_ = bind_(this, this.update);
+    this.cleanupHandler_ = bind_(this, this.cleanupTrackListeners_);
+    tracks.addEventListener('removetrack', this.updateHandler_);
+    tracks.addEventListener('addtrack', this.updateHandler_);
+    tracks.addEventListener('labelchange', this.updateHandler_);
+    this.player_.on('ready', this.updateHandler_);
+    this.player_.on('dispose', this.cleanupHandler_);
+  }
+
+  /**
+   * Remove all track list event listeners without triggering a full dispose.
+   * Used as the player 'dispose' handler and called by dispose() before super.
+   *
+   * @private
+   */
+  cleanupTrackListeners_() {
+    if (!this.updateHandler_) {
+      return;
+    }
+    const tracks = this.options_.tracks;
+    if (tracks) {
+      tracks.removeEventListener('removetrack', this.updateHandler_);
+      tracks.removeEventListener('addtrack', this.updateHandler_);
+      tracks.removeEventListener('labelchange', this.updateHandler_);
+    }
+    if (this.player_) {
+      this.player_.off('ready', this.updateHandler_);
+      this.player_.off('dispose', this.cleanupHandler_);
+    }
+    this.updateHandler_ = null;
+    this.cleanupHandler_ = null;
+  }
+
+  /**
+   * Dispose of the Component and remove all event listeners.
+   *
+   * @override
+   */
+  dispose() {
+    this.cleanupTrackListeners_();
+    super.dispose();
   }
 }
 Component$1.registerComponent('TrackButton', TrackButton);
@@ -127630,7 +127622,7 @@ class AudioTrackMenuItem extends MenuItem {
   createEl(type, props, attrs) {
     const el = super.createEl(type, props, attrs);
     const parentSpan = el.querySelector('.vjs-menu-item-text');
-    if (['main-desc', 'descriptions'].indexOf(this.options_.track.kind) >= 0) {
+    if (['main-desc', 'descriptions', 'description'].indexOf(this.options_.track.kind) >= 0) {
       parentSpan.appendChild(createEl('span', {
         className: 'vjs-icon-placeholder'
       }, {
@@ -128167,7 +128159,7 @@ ErrorDisplay.prototype.options_ = Object.assign({}, ModalDialog.prototype.option
 });
 Component$1.registerComponent('ErrorDisplay', ErrorDisplay);
 
-/** @import Player from './player' */
+/** @import Player from '../player' */
 /** @import { ContentDescriptor } from  '../utils/dom' */
 
 /**
@@ -128233,7 +128225,7 @@ class TextTrackSelect extends Component$1 {
 }
 Component$1.registerComponent('TextTrackSelect', TextTrackSelect);
 
-/** @import Player from './player' */
+/** @import Player from '../player' */
 /** @import { ContentDescriptor } from '../utils/dom' */
 
 /**
@@ -128351,7 +128343,7 @@ class TextTrackFieldset extends Component$1 {
 }
 Component$1.registerComponent('TextTrackFieldset', TextTrackFieldset);
 
-/** @import Player from './player' */
+/** @import Player from '../player' */
 /** @import { ContentDescriptor } from  '../utils/dom' */
 
 /**
@@ -128438,7 +128430,7 @@ class TextTrackSettingsColors extends Component$1 {
 }
 Component$1.registerComponent('TextTrackSettingsColors', TextTrackSettingsColors);
 
-/** @import Player from './player' */
+/** @import Player from '../player' */
 /** @import { ContentDescriptor } from  '../utils/dom' */
 
 /**
@@ -135774,13 +135766,13 @@ class Player extends Component$1 {
   }
 
   /**
-   * Set or get the current MediaError
+   * Set, clear, or get the current MediaError
    *
    * @fires Player#error
    *
-   * @param  {MediaError|string|number} [err]
+   * @param  {MediaError|string|number|null} [err]
    *         A MediaError or a string/number to be turned
-   *         into a MediaError
+   *         into a MediaError. Pass `null` to clear the current error state.
    *
    * @return {MediaError|null|undefined}
    *         - The current MediaError when getting (or null)
@@ -136515,7 +136507,7 @@ class Player extends Component$1 {
     if (breakpoints === undefined) {
       return Object.assign(this.breakpoints_);
     }
-    this.breakpoint_ = '';
+    this.removeCurrentBreakpoint_();
     this.breakpoints_ = Object.assign({}, DEFAULT_BREAKPOINTS, breakpoints);
 
     // When breakpoint definitions change, we need to update the currently
@@ -138435,7 +138427,7 @@ videojs.registerPlugin('qualityLevels', qualityLevels);
 // Include the version number.
 qualityLevels.VERSION = version$5;
 
-/*! @name @videojs/http-streaming @version 3.17.3 @license Apache-2.0 */
+/*! @name @videojs/http-streaming @version 3.17.5 @license Apache-2.0 */
 
 /**
  * @file resolve-url.js - Handling how URLs are resolved and manipulated
@@ -157474,7 +157466,7 @@ class SourceUpdater extends videojs.EventTarget {
     pushQueue({
       type,
       sourceUpdater: this,
-      action: actions.abort(type),
+      action: actions.abort(),
       name: 'abort'
     });
   }
@@ -164288,9 +164280,9 @@ const initPlugin = function (player, options) {
 const reloadSourceOnError = function (options) {
   initPlugin(this, options);
 };
-var version$4 = "3.17.3";
+var version$4 = "3.17.5";
 var version$3 = "7.1.0";
-var version$2 = "1.3.1";
+var version$2 = "1.4.0";
 var version$1 = "7.2.0";
 var version = "4.0.2";
 const Vhs = {
@@ -166666,7 +166658,7 @@ if (typeof window !== 'undefined') {
     window._itAnalytics = window._itAnalytics || {};
     window._itAnalytics = {
         ...window._itAnalytics,
-        version: '1.0.0-beta.6',
+        version: '1.0.0-beta.7',
     };
 }
 
@@ -168240,8 +168232,8 @@ body.vjs-pip-window .video-js {
 .video-js:hover .vjs-big-play-button,
 .video-js .vjs-big-play-button:focus {
   border-color: #fff;
-  background-color: rgb(114.9141509434, 132.7028301887, 159.3858490566);
-  background-color: rgba(114.9141509434, 132.7028301887, 159.3858490566, 0.5);
+  background-color: rgb(45.064372919%, 52.0403255642%, 62.504254532%);
+  background-color: rgba(45.064372919%, 52.0403255642%, 62.504254532%, 0.5);
   transition: all 0s;
 }
 
@@ -168348,8 +168340,8 @@ body.vjs-pip-window .video-js {
 .vjs-menu li.vjs-menu-item:focus,
 .vjs-menu li.vjs-menu-item:hover,
 .js-focus-visible .vjs-menu li.vjs-menu-item:hover {
-  background-color: rgb(114.9141509434, 132.7028301887, 159.3858490566);
-  background-color: rgba(114.9141509434, 132.7028301887, 159.3858490566, 0.5);
+  background-color: rgb(45.064372919%, 52.0403255642%, 62.504254532%);
+  background-color: rgba(45.064372919%, 52.0403255642%, 62.504254532%, 0.5);
 }
 
 .vjs-menu li.vjs-selected,
@@ -168648,11 +168640,11 @@ body.vjs-pip-window .video-js {
 }
 
 .video-js .vjs-load-progress {
-  background: rgba(114.9141509434, 132.7028301887, 159.3858490566, 0.5);
+  background: rgba(45.064372919%, 52.0403255642%, 62.504254532%, 0.5);
 }
 
 .video-js .vjs-load-progress div {
-  background: rgba(114.9141509434, 132.7028301887, 159.3858490566, 0.75);
+  background: rgba(45.064372919%, 52.0403255642%, 62.504254532%, 0.75);
 }
 
 .video-js .vjs-time-tooltip {
@@ -168728,8 +168720,8 @@ body.vjs-pip-window .video-js {
   -webkit-user-select: none;
   /* Non-prefixed version, currently supported by Chrome and Opera */
   user-select: none;
-  background-color: rgb(114.9141509434, 132.7028301887, 159.3858490566);
-  background-color: rgba(114.9141509434, 132.7028301887, 159.3858490566, 0.5);
+  background-color: rgb(45.064372919%, 52.0403255642%, 62.504254532%);
+  background-color: rgba(45.064372919%, 52.0403255642%, 62.504254532%, 0.5);
 }
 
 .video-js .vjs-slider.disabled {
@@ -169261,19 +169253,19 @@ video::-webkit-media-text-track-display {
 }
 @keyframes vjs-spinner-fade {
   0% {
-    border-top-color: rgb(114.9141509434, 132.7028301887, 159.3858490566);
+    border-top-color: rgb(45.064372919%, 52.0403255642%, 62.504254532%);
   }
   20% {
-    border-top-color: rgb(114.9141509434, 132.7028301887, 159.3858490566);
+    border-top-color: rgb(45.064372919%, 52.0403255642%, 62.504254532%);
   }
   35% {
     border-top-color: white;
   }
   60% {
-    border-top-color: rgb(114.9141509434, 132.7028301887, 159.3858490566);
+    border-top-color: rgb(45.064372919%, 52.0403255642%, 62.504254532%);
   }
   100% {
-    border-top-color: rgb(114.9141509434, 132.7028301887, 159.3858490566);
+    border-top-color: rgb(45.064372919%, 52.0403255642%, 62.504254532%);
   }
 }
 .video-js.vjs-audio-only-mode .vjs-captions-button {
@@ -169317,6 +169309,7 @@ video::-webkit-media-text-track-display {
   margin-bottom: -0.1em;
 }
 
+.video-js .vjs-audio-button + .vjs-menu .vjs-description-menu-item .vjs-menu-item-text .vjs-icon-placeholder:before,
 .video-js .vjs-audio-button + .vjs-menu .vjs-descriptions-menu-item .vjs-menu-item-text .vjs-icon-placeholder:before,
 .video-js .vjs-audio-button + .vjs-menu .vjs-main-desc-menu-item .vjs-menu-item-text .vjs-icon-placeholder:before {
   font-family: VideoJS;
@@ -169440,7 +169433,7 @@ video::-webkit-media-text-track-display {
 .vjs-track-settings-controls button:active {
   outline-style: solid;
   outline-width: medium;
-  background-image: linear-gradient(0deg, #fff 88%, rgb(114.9141509434, 132.7028301887, 159.3858490566) 100%);
+  background-image: linear-gradient(0deg, #fff 88%, rgb(45.064372919%, 52.0403255642%, 62.504254532%) 100%);
 }
 
 .vjs-track-settings-controls button:hover {
@@ -169449,7 +169442,7 @@ video::-webkit-media-text-track-display {
 
 .vjs-track-settings-controls button {
   background-color: #fff;
-  background-image: linear-gradient(-180deg, #fff 88%, rgb(114.9141509434, 132.7028301887, 159.3858490566) 100%);
+  background-image: linear-gradient(-180deg, #fff 88%, rgb(45.064372919%, 52.0403255642%, 62.504254532%) 100%);
   color: #2B333F;
   cursor: pointer;
   border-radius: 2px;
@@ -169646,6 +169639,8 @@ video::-webkit-media-text-track-display {
   --bsi-acceptoverlay-background-color: var(
     --bsi-overlay-background-primary-muted
   );
+  --bsi-acceptoverlay-body-font-family: var(--bsi-font-serif);
+  --bsi-acceptoverlay-body-font-size: var(--bsi-body-font-size);
   --bsi-acceptoverlay-color-text: var(--bsi-color-text-inverse);
   --bsi-acceptoverlay-label-color: var(--bsi-color-text-inverse);
   --bsi-acceptoverlay-label-border-color: var(--bsi-color-border-inverse);
@@ -169719,6 +169714,8 @@ video::-webkit-media-text-track-display {
 }
 .acceptoverlay p {
   text-align: justify;
+  font-family: var(--bsi-acceptoverlay-body-font-family);
+  font-size: var(--bsi-acceptoverlay-body-font-size);
 }
 .acceptoverlay .acceptoverlay-inner {
   width: 100%;
@@ -169780,6 +169777,7 @@ video::-webkit-media-text-track-display {
 }
 
 .acceptoverlayable {
+  width: 100%;
   aspect-ratio: 16 / 9;
 }
 
@@ -169929,8 +169927,8 @@ let ItVideo = class ItVideo extends BaseLocalizedComponent {
           ${isYoutube
                 ? html `<div id="${this.videoId}" class="video-js" part="videoplayer"></div>`
                 : html `<video id="${this.videoId}" class="video-js" part="videoplayer">
-                <source src="${this.src}" type="${this.type}" />
-              </video>`}
+                  <source src="${this.src}" type="${this.type}" />
+                </video>`}
           <slot></slot>
         </div>`
             : '';
