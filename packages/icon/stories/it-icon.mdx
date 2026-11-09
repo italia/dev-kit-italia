@@ -25,9 +25,9 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Accessibilità
 
-Per impostazione predefinita, le icone sono considerate decorative. Il componente aggiunge automaticamente gli attributi `role="presentation"` e `aria-hidden="true"` all'elemento SVG, in modo che le tecnologie assistive le ignorino.
+Per impostazione predefinita, le icone sono **decorative**. Il componente aggiunge automaticamente gli attributi `role="presentation"` e `aria-hidden="true"` all'elemento SVG, in modo che le tecnologie assistive le ignorino.
 
-Se invece valorizzi l'attributo `label`, il componente inserisce un elemento `<title>` all'interno dell'SVG, lo collega tramite `aria-labelledby` e imposta `role="img"`. In questo modo, i lettori di schermo possono leggere la descrizione dell'icona.
+Se hai bisogno che i lettori di schermo leggano la descrizione dell'icona, valorizza l'attributo `label` con il testo: il componente inserisce un elemento `<title>` all'interno dell'SVG, lo collega tramite `aria-labelledby` e imposta `role="img"`.
 
 ## Varianti di colore
 
@@ -50,13 +50,13 @@ Per cambiare l'allineamento dell'icona all'interno di un elemento, usa l'attribu
 
 ## Spaziatura
 
-Per creare attorno all'icona un padding proporzionale alla dimensione dell'icona stessa, applica l'attributo `padded` al `<it-icon>`.
+Per creare attorno all'icona un padding proporzionale alla dimensione dell'icona stessa, applica l'attributo `padded` a `<it-icon>`.
 
 <Canvas of={Stories.Spaziatura} />
 
 ## Icone disponibili
 
-Tutte le icone SVG disponibili nel Design system Italia. Puoi cercare un'icona per nome e cliccarla per copiarne il nome identificativo da usare nell'attributo `name`.
+Cerca tra le icone SVG disponibili nel Design system Italia e cliccaci sopra per copiare l'identificativo da usare nell'attributo `name` di `<it-icon>`.
 
 <Canvas of={Stories.IconeDisponibili} />
 
