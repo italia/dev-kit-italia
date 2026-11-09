@@ -16,7 +16,7 @@ Le chip possono essere parte di un gruppo (set) e permettere selezione, deselezi
 
 ### Alternative a questo componente
 - [Badge](/docs/componenti-badge--documentazione): per singole etichette statiche o quantitative (ad esempio numero notifiche).
-- [Button](/docs/componenti-button--documentazione): per azioni che non coinvolgono scelte o filtri
+- [Button](/docs/componenti-button--documentazione): per azioni che non coinvolgono scelte o filtri.
 
 ## Anteprima e attributi del componente
 
@@ -27,11 +27,11 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Informazioni generali
 
-Il componente `<it-chip>` è composto principalmente da un'etichetta testuale e, opzionalmente, di:
+Il componente `<it-chip>` è composto principalmente da un'etichetta testuale e, opzionalmente, da:
 
 - un **avatar** (immagine) a sinistra, tramite la proprietà `avatar`;
-- un'**icona** inserita nello slot `icon`;
-- un **pulsante di chiusura** nello slot `dismiss-button`, per le chip rimovibili. La rimozione è gestita automaticamente dal componente e può essere sovrascritta.
+- un'**icona**, inserita nello slot `icon`;
+- un **pulsante di chiusura**, inserito nello slot `dismiss-button`. La rimozione è gestita automaticamente dal componente e può essere sovrascritta.
 
 
 ## Accessibilità
@@ -45,16 +45,16 @@ Le chip supportano:
 
 ## Varianti di colore
 
-Le varianti di colore di una chip sono: `primary`, `secondary`, `success`, `danger`, `warning`. Per cambiare il colore, usa l'attributo `variant`.
+Le varianti di colore di una chip sono: `primary` (blu), `secondary` (grigio), `success` (verde), `danger` (rosso), `warning` (marrone). Per cambiare il colore, usa l'attributo `variant`.
 
 <Canvas of={ChipStories.VariantiColore} />
 
 ## Varianti di dimensione
 
 
-Le chip sono disponibili in due dimensioni: `sm` (small, predefinita) e `lg` (large).
+Le chip sono disponibili in due dimensioni: `sm` (small, predefinita) e `lg` (large). La dimensione influisce sull'altezza della chip e sulla dimensione degli elementi che contiene (icone, avatar).
 
-Usa l'attributo `size` per impostare la dimensione desiderata. La dimensione influisce sull'altezza della chip e sulla dimensione degli elementi che contiene (icone, avatar).
+Usa l'attributo `size` per impostare la dimensione desiderata.
 
 <Canvas of={ChipStories.VariantiDimensione} />
 
@@ -64,7 +64,7 @@ Usa l'attributo `size` per impostare la dimensione desiderata. La dimensione inf
 Per rendere una chip cliccabile come link, usa l'attributo `href` con l'URL di destinazione. La chip verrà renderizzata come elemento `<a>` anziché `<div>`.
 <Canvas of={ChipStories.VarianteConLink} />
 
-## Chip link colorate
+### Chip link colorate
 
 
 Combinando l'attributo `href` con l'attributo `variant`, puoi creare chip cliccabili con diverse varianti di colore.
@@ -98,7 +98,6 @@ Il componente adatta automaticamente la dimensione dell'icona a quella della chi
 ## Chip con chiusura
 
 Per rendere una chip rimovibile, imposta la proprietà `dismissable` e inserisci un componente `<it-button>` con `slot="dismiss-button"`. La proprietà dismissable non aggiunge automaticamente il pulsante di chiusura.
-
 
 Imposta la dimensione dell'icona di chiusura su `sm` per mantenere le proporzioni corrette.
 
@@ -136,7 +135,7 @@ Il componente espone questi metodi e eventi accessibili via JavaScript.
 ## Chip disabilitata
 
 
-Per disabilitare una chip, usa l'attributo `is-disabled`. La chip disabilitata non sarà cliccabile e il pulsante di chiusura, se presente, sarà anch'esso disabilitato.
+Per disabilitare una chip, usa l'attributo `is-disabled`. Anche il pulsante di chiusura, se presente, verrà disabilitato.
 <Canvas of={ChipStories.ChipDisabilitata} />
 
 ## Personalizzazione degli stili
