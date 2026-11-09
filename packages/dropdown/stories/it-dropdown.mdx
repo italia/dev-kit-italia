@@ -5,22 +5,21 @@ import * as Stories from './it-dropdown.stories';
 
 <Title of={Stories} />
 
-<description>Elenco di azioni o link a comparsa per risparmiare spazio e organizzare opzioni in modo compatto e coerente</description>
+<description>Elenco di azioni o link a comparsa per risparmiare spazio e organizzare opzioni in modo compatto e coerente.</description>
 
 ## Cosa fa
 
-Il componente dropdown, chiamato anche menu a tendina, offre una navigazione veloce al contenuto desiderato, permettendo agli utenti di risparmiare tempo e accedere direttamente a specifici contenuti.
-È utile quindi per creare menu contestuali tramite un elenco di link o azioni.
+Il componente Dropdown (`<it-dropdown>`) crea un menu a tendina con elenchi di azioni o link, per facilitare una navigazione diretta e veloce ai contenuti desiderati.
 
 [Approfondisci quando e come usare il componente Dropdown](https://designers.italia.it/design-system/componenti/dropdown/)
 
 ### Alternative a questo componente
 
-Per permettere all'utente di esprimere scelte tra più elementi in un modulo ([Form](/docs/componenti-form--documentazione)) usa i componenti dedicati:
--  [Select](/docs/componenti-form-select--documentazione): per selezionare un'opzione da una lista predefinita di valori.
-- [Autocomplete](/docs/componenti-form-autocomplete--documentazione): per selezionare un'opzione da un elenco di scelte più ampio, con la possibilità di filtrare le opzioni digitando.
- - [Radio button](/docs/componenti-form-radio--documentazione): per selezionare una singola opzione da un insieme limitato di scelte visibili tutte insieme, da preferire se è necessario che l'utente sia consapevole di tutte le opzioni e se il numero di scelte è limitato.
- - [Checkbox](/docs/componenti-form-checkbox--documentazione): per selezionare una o più opzioni da un insieme limitato di scelte visibili tutte insieme, da preferire se è necessario che l'utente sia consapevole di tutte le opzioni quando la modalità di scelta è multipla.
+Nel contesto di un modulo ([Form](/docs/componenti-form--documentazione)) usa invece:
+- [Select](/docs/componenti-form-select--documentazione), per permettere la selezione di un opzione da una lista predefinita di valori tramite un menu a tendina;
+- [Autocomplete](/docs/componenti-form-autocomplete--documentazione), per permettere il filtraggio automatico delle opzioni di selezione quando si inizia a digitare una parola chiave;
+- [Radio button](/docs/componenti-form-radio--documentazione), per permettere la selezione di una singola opzione da un insieme limitato di scelte visibili tutte insieme (utile quando l'utente devere esser consapevole di tutte le opzioni e se il numero di opzioni è limitato).
+- [Checkbox](/docs/componenti-form-checkbox--documentazione): per selezionare una o più opzioni da un insieme limitato di scelte visibili tutte insieme (utile quando l'utente deve essere consapevole di tutte le opzioni e quando la modalità di scelta è multipla).
 
 
 
@@ -33,75 +32,69 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Informazioni generali
 
-Per la creazione di un Dropdown usa il componente `<it-dropdown>` e inserisci al suo interno uno o più `<it-dropdown-item>`.
-Dovrai specificare l'etichetta del menu tramite l'attributo `label`.
-Puoi specificare una variante tramite l'attributo `variant`, questa verrà applicata al pulsante di attivazione del menu.
+Per impostare il menu a tendina, inserisci uno o più `<it-dropdown-item>` all'interno di `<it-dropdown>` e specifica l'etichetta del menu tramite l'attributo `label`.
+
+Per personalizzare l'aspetto del pulsante di apertura, specifica una variante tramite l'attributo `variant`.
 
 ## Accessibilità
 
-Per impostazione predefinita, il componente `<it-dropdown>` usa la semantica di una semplice lista HTML (`<ul>`/`<li>`). Questa è la scelta corretta nella maggior parte dei casi, in particolare quando il menu contiene link di navigazione o si trova all'interno di un elemento `<nav>` (ad es. header, megamenu).
+- Per impostazione predefinita, il componente `<it-dropdown>` usa la semantica di una semplice lista HTML (`<ul>`/`<li>`). Questo è particolarmente importante quando il menu contiene link di navigazione o si trova all'interno di un elemento `<nav>` (è il caso, ad esempio, di headere megamenu).
 
-Il componente imposta in modo esplicito `role="list"` sull'elemento `<ul>`, così la semantica di lista è garantita su **Safari e VoiceOver (macOS/iOS)** anche quando il dropdown non si trova dentro un elemento `<nav>`.
+- Il componente assegna automaticamente `role="list"` all'elemento `<ul>`, così da garantire la semantica di lista su **Safari e VoiceOver (macOS/iOS)** anche quando non si trova dentro un elemento `<nav>`.
 
-Lo standard [WAI ARIA](https://www.w3.org/TR/wai-aria/) definisce il [`role="menu"`](https://www.w3.org/TR/wai-aria/#menu) per i **menu applicativi**, ovvero menu che espongono comandi o azioni (come "Copia", "Taglia", "Incolla") in modo analogo ai menu di un'applicazione desktop. Puoi usarlo impostando l'attributo `it-role="menu"`, che assegna automaticamente il ruolo corretto anche agli elementi interni.
+- Il componente supporta `role="menu"` per i **menu applicativi** (menu con comandi o azioni come "copia", "taglia", "incolla") come da [standard WAI ARIA](https://www.w3.org/TR/wai-aria/#menu). Quando imposti l'attribuo `it-role="menu"`, lo stesso ruolo viene assegnato automaticamente anche agli elementi interni.
 
 <it-callout variant="warning" heading-level="h3">
-  <span slot="title">Attenzione</span>
+  <span slot="title">Ruoli </span>
   <p><code>role="menu"</code> non è adatto a menu di navigazione o a menu che contengono link a pagine. Non usarlo all'interno di un elemento <code>&lt;nav&gt;</code>.</p>
 </it-callout>
 
-Questo componente comprende di base il supporto per la maggior parte delle interazioni standard del menu della tastiera, come la possibilità di spostarsi tra i singoli elementi `<it-dropdown-item>` usando i tasti freccia, e chiude il menu con il tasto ESC.
+- Il componente supporta la navigazione da tastiera: uso dei tasti freccia per spostarsi tra i singoli elementi `<it-dropdown-item>` e chiusura del menu tramite tasto ESC.
 
-Dovrai inserire un'etichetta per il pulsante di attivazione del menu tramite l'attributo `label`, che verrà letta dagli screen reader.
-In alternativa, puoi omettere l'attributo `label` e aggiungere un attributo `it-aria-label` al componente `<it-dropdown>`.
+- L'etichetta testuale del pulsante di apertura del menu, contenuta nell' attributo `label`, è accessibile ai lettori di schermo. Se ometti l'attributo `label`, fornisci un'etichetta accessibile tramite l'attributo `it-aria-label`.
 
-## Varianti
+## Varianti di colore
 
-Ovviamente sono disponibili [tutte le varianti](/docs/componenti-button--documentazione#varianti-di-colore) già presenti per i pulsanti: `primary`, `secondary`, `success`, `danger` (oltre a `warning`, `light`, `link`). Qui un esempio con alcune di esse.
+Un dropdown può avere [le stesse varianti di colore di un pulsante](/docs/componenti-button--documentazione#varianti-di-colore): `primary`, `secondary`, `success`, `danger`, `warning`, `light`, `link`.
 
 <Canvas of={Stories.Varianti} />
 
 ## Posizionamento
 
-Per aprire le voci di menu in direzioni diverse, usa l'attributo `alignment` con i valori:
+Per far aprire le voci di menu in direzioni diverse, usa l'attributo `alignment` con i valori:
 
-- `top`
-- `right`
-- `bottom`
-- `left`
-- `top-start`
-- `top-end`
-- `right-start`
-- `right-end`
-- `bottom-start`
-- `bottom-end`
-- `left-start`
-- `left-end`
+- `top`;
+- `right`;
+- `bottom`;
+- `left`;
+- `top-start`;
+- `top-end`;
+- `right-start`;
+- `right-end`;
+- `bottom-start`;
+- `bottom-end`;
+- `left-start`;
+- `left-end`.
 
-I valori `top`, `right`, `bottom`, `left` aprono il menu in posizione centrata rispetto al pulsante;
-quelli con `-start` / `-end` permettono un allineamento più preciso.
+I valori `top`, `right`, `bottom`, `left` aprono il menu in posizione centrata rispetto al pulsante. Quelli con `-start` / `-end` permettono un allineamento più preciso.
 
 <Canvas of={Stories.Posizionamento} />
 
 ## Menu disabilitato
 
-Aggiungi l'attributo `disabled` sul tag `<it-dropdown>` per disabilitare completamente il menu.
+Per disabilitare completamente il menu, aggiungi l'attributo `disabled` sul tag `<it-dropdown>`.
 
 <Canvas of={Stories.MenuDisabilitato} />
 
-## Dropdown menu
+## Menu con voci attive
 
-Puoi personalizzare le voci del menu che viene aperto al click.
-
-### Menu voci attive
-
-Aggiungi l'attributo `active` agli elementi da mostrare come attivi. Per accessibilità viene aggiunto automaticamente il testo nascosto "attivo" in coda al contenuto.
+Aggiungi l'attributo `active` agli elementi da mostrare come attivi. Per accessibilità, viene aggiunto automaticamente il testo nascosto "attivo" in coda al contenuto.
 
 <Canvas of={Stories.MenuVociAttive} />
 
-### Menu voci disabilitate
+### Menu con voci disabilitate
 
-Per rendere non selezionabili alcune voci aggiungi `disabled` agli elementi `<it-dropdown-item>` interessati.
+Per impedire la selezione di alcune voci, aggiungi `disabled` agli elementi `<it-dropdown-item>` interessati.
 
 <Canvas of={Stories.MenuVociDisabilitate} />
 
@@ -119,32 +112,32 @@ Usa l'attributo `large` su una voce per aumentarne la dimensione.
 
 ### Menu a tutta larghezza
 
-Usa l'attributo `full-width` per espandere il menu alla larghezza del contenitore.
-Le voci vengono disposte orizzontalmente se lo spazio lo consente.
+Usa l'attributo `full-width` per espandere il menu alla larghezza del suo contenitore.
+Le voci vengono disposte orizzontalmente, se lo spazio lo consente.
 
 <Canvas of={Stories.MenuATuttaLarghezza} />
 
 ### Menu con icona a destra
 
-Usa lo slot `suffix` per aggiungere agli elementi del menu un'icona illustrativa allineata a destra.
+Usa lo slot `suffix` sugli elementi del menu per aggiungere un'icona a destra dell'etichetta.
 
 <Canvas of={Stories.MenuIconaDestra} />
 
 ### Menu con icona a sinistra
 
-Usa lo slot `prefix` per aggiungere agli elementi del menu un'icona illustrativa allineata a sinistra.
+Usa lo slot `prefix` sugli elementi del menu per aggiungere un'icona a sinistra dell'etichetta.
 
 <Canvas of={Stories.MenuIconaSinistra} />
 
 ### Menu dark
 
-Aggiungi l'attributo `dark` al dropdown per ottenere la versione scura con colori primari invertiti.
+Per ottenere la versione scura con colori primari invertiti, aggiungi l'attributo `dark` al dropdown.
 
 <Canvas of={Stories.MenuScuro} />
 
 ### Menu azioni
 
 Usa `it-role="menu"` quando il dropdown espone comandi o azioni applicative (non link di navigazione).
-In questo caso il componente assegna automaticamente `role="menuitem"` agli elementi interni.
+In questo caso, il componente assegna automaticamente `role="menuitem"` agli elementi interni.
 
 <Canvas of={Stories.MenuAzioni} />
