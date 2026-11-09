@@ -18,7 +18,7 @@ Il componente Dropdown (`<it-dropdown>`) crea un menu a tendina con elenchi di a
 Nel contesto di un modulo ([Form](/docs/componenti-form--documentazione)) usa invece:
 - [Select](/docs/componenti-form-select--documentazione), per permettere la selezione di un opzione da una lista predefinita di valori tramite un menu a tendina;
 - [Autocomplete](/docs/componenti-form-autocomplete--documentazione), per permettere il filtraggio automatico delle opzioni di selezione quando si inizia a digitare una parola chiave;
-- [Radio button](/docs/componenti-form-radio--documentazione), per permettere la selezione di una singola opzione da un insieme limitato di scelte visibili tutte insieme (utile quando l'utente devere esser consapevole di tutte le opzioni e se il numero di opzioni è limitato).
+- [Radio button](/docs/componenti-form-radio--documentazione), per permettere la selezione di una singola opzione da un insieme limitato di scelte visibili tutte insieme (utile quando l'utente devere esser consapevole di tutte le opzioni e se il numero di opzioni è limitato);
 - [Checkbox](/docs/componenti-form-checkbox--documentazione): per selezionare una o più opzioni da un insieme limitato di scelte visibili tutte insieme (utile quando l'utente deve essere consapevole di tutte le opzioni e quando la modalità di scelta è multipla).
 
 
@@ -92,50 +92,50 @@ Aggiungi l'attributo `active` agli elementi da mostrare come attivi. Per accessi
 
 <Canvas of={Stories.MenuVociAttive} />
 
-### Menu con voci disabilitate
+## Menu con voci disabilitate
 
 Per impedire la selezione di alcune voci, aggiungi `disabled` agli elementi `<it-dropdown-item>` interessati.
 
 <Canvas of={Stories.MenuVociDisabilitate} />
 
-### Menu con intestazioni e separatori
+## Menu con intestazioni e separatori
 
 Puoi inserire un'intestazione usando un elemento con `slot="header"` e dividere le sezioni con un elemento `<it-dropdown-item separator>`.
 
 <Canvas of={Stories.MenuIntestazioniSeparatori} />
 
-### Menu con voci grandi
+## Menu con voci grandi
 
 Usa l'attributo `large` su una voce per aumentarne la dimensione.
 
 <Canvas of={Stories.MenuVociGrandi} />
 
-### Menu a tutta larghezza
+## Menu a tutta larghezza
 
 Usa l'attributo `full-width` per espandere il menu alla larghezza del suo contenitore.
 Le voci vengono disposte orizzontalmente, se lo spazio lo consente.
 
 <Canvas of={Stories.MenuATuttaLarghezza} />
 
-### Menu con icona a destra
+## Menu con icona a destra
 
 Usa lo slot `suffix` sugli elementi del menu per aggiungere un'icona a destra dell'etichetta.
 
 <Canvas of={Stories.MenuIconaDestra} />
 
-### Menu con icona a sinistra
+## Menu con icona a sinistra
 
 Usa lo slot `prefix` sugli elementi del menu per aggiungere un'icona a sinistra dell'etichetta.
 
 <Canvas of={Stories.MenuIconaSinistra} />
 
-### Menu dark
+## Menu dark
 
 Per ottenere la versione scura con colori primari invertiti, aggiungi l'attributo `dark` al dropdown.
 
 <Canvas of={Stories.MenuScuro} />
 
-### Menu azioni
+## Menu azioni
 
 Usa `it-role="menu"` quando il dropdown espone comandi o azioni applicative (non link di navigazione).
 In questo caso, il componente assegna automaticamente `role="menuitem"` agli elementi interni.
