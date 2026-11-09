@@ -5,59 +5,59 @@ import * as Stories from './form.stories';
 
 # Form
 
-<description>Campi input aggregati per la raccolta di dati e la configurazione di opzioni</description>
+<description>Contenitore di campi input aggregati per la raccolta di dati e la configurazione di opzioni.</description>
 
 ## Cosa fa
-Il componente form, o modulo, è un involucro (wrapper) che permette di raggruppare e impaginare campi input correlati per l'invio di informazioni o la configurazione di opzioni.
-
-Le persone possono inviare il form quando tutti i campi obbligatori sono compilati e i dati sono validi rispetto al formato richiesto dallo specifico campo.
+Il componente Form raggruppa campi input correlati in un modulo, utile per l'invio di informazioni o la configurazione di opzioni. Puoi subordinare l'invio del modulo alla compilazione di tutti i campi obbligatori e alla validazione dei dati secondo formati specifici.
 
 [Approfondisci come e quando usare il componente Form](https://designers.italia.it/design-system/componenti/form/)
 
 ## Organizzazione dei campi
 
-Nella visualizzazione predefinita di un form gli elementi sono distribuiti verticalmente, ma è possibile utilizzare classi aggiuntive per variare questo tipo di layout.
-(Bootstrap Italia applica automaticamente a tutti i form `display: block` e `width: 100%`.)
+Gli elementi del form sono disposti in verticale per impostazione predefinita. Puoi modificare questo layout usando classi aggiuntive.
 
+Bootstrap Italia applica automaticamente a tutti i form le proprietà `display: block` e `width: 100%`.
 
-### Dimensionamento delle colonne
-Strutture più complesse possono essere costruite usando il sistema a griglia, da utilizzare per layout che richiedono più colonne, larghezze diverse e opzioni di allineamento aggiuntive.
-La classe `.row` ne assicura una corretta spaziatura. Questa classe deve essere applicata ad un elemento html contenitore (ad esempio un `<div>`).
+### Dimensionamento delle colonne in layout complessi
 
-Si può scegliere di dare una dimensione ad una colonna, ad esempio dandogli una classe `.col-md-6` per ottenere una certo design dal breakpoint `md` in su, mentre le restanti colonne con classe `.col-md` si divideranno il resto dello spazio.
-La classe `.col-md*` può essere applicata sia ad un tag html che fa da contenitore (ad esempio un `<div>`), sia al componente di input stesso (ad esempio su `<it-input class="col-md-6">`).
+Per creare layout più complessi, con più colonne, larghezze diverse e opzioni di allineamento particolari, puoi utilizzare il sistema a griglia.
+
+- Applica la classe `.row` all'elemento HTML contenitore (ad esempio, un `<div>`) per gestire correttamente la spaziatura tra gli elementi.
+
+- Puoi assegnare una larghezza specifica a una colonna con l'attributo `.col-md-*` (ad esempio, con `.col-md-6` per farle occupare metà dello spazio disponibile a partire dal breakpoint `md` di 768px in poi). Le restanti colonne con classe `.col-md` si divideranno lo spazio rimanente.
+
+- Puoi applicare la classi `.col-md-*` sia a un elemento HTML contenitore (ad esempio, un `<div>`), sia direttamente a un campo input (ad esempio, `<it-input class="col-md-6">`).
 
 <Canvas of={Stories.DimensionamentoColonne} />
 
 ### Autodimensionamento
 
-L’esempio seguente usa una delle [utilità di flexbox](https://italia.github.io/bootstrap-italia/docs/organizzare-gli-spazi/flex/) per centrare verticalmente dal breakpoint `lg` in su il contenuto e cambiando `.col` con `.col-auto` in modo che le colonne occupino solo lo spazio necessario.
-In altre parole, la colonna si dimensiona in base al contenuto.
+Per far ridimensionare automaticamente le colonne in base al contenuto, puoi usare le [classi CSS Flexbox](https://italia.github.io/bootstrap-italia/docs/organizzare-gli-spazi/flex/). Puoi usarle anche in combinazione con colonne di dimensioni specifiche. 
 
-È possibile usarlo anche quando sono presenti altre colonne con dimensioni specifiche (es.: `.col-sm-3`).
+Nell’esempio, la classe CSS Flexbox ha centrato il contenuto verticalmente dal breakpoint `lg` in poi e cambiato `.col` con `.col-auto` per far occupare alle colonne solo lo spazio necessario.
 
 <Canvas of={Stories.Autodimensionamento} />
 
 ## Disabilitare un campo
 
-Aggiungi l’attributo booleano `disabled` su un campo della form per impedire le interazioni dell’utente e renderlo più chiaro.
+Aggiungi `disabled` su un campo del form per disabilitarlo.
 
 <Canvas of={Stories.DisabilitazioneCampi} />
 
 ## Validazione
-Di base, i componenti che implementano widget utilizzabili nelle form, come ad esempio `<it-input>`, forniscono la validazione standard del browser a seconda del tipo di campo e/o degli attributi `minlength`, `maxlength`, `pattern` e `required`.
+I componenti per i campi di un from (ad esempio, `<it-input>`) supportano la validazione standard del browser a seconda del tipo di campo e/o degli attributi `minlength`, `maxlength`, `pattern` e `required`.
 
 ### Validazione custom
 
-In alternativa, è possibile eseguire una propria validazione (lato server, o con js), impostando l' attributo `custom-validation="true"`. In questo modo la validazione di default effettuata internamente al componente è disabilitata.
+Per personalizzare la validazione di un campo (lato server o con JS), imposta l' attributo `custom-validation="true"`. La validazione predefinita del componente verrà disabilitata.
 
-Nel caso il campo non sia valido, è necessario invalidare il campo impostando il messaggio di errore da visualizzare attraverso l'attributo `validity-message="Messaggio di errore"`.
+Ricorda di impostare un messaggio di errore chiaro e conciso attraverso l'attributo `validity-message="Messaggio di errore"`.
 
 <Canvas of={Stories.Validazione} />
 
-### Validazione via js
+### Validazione via JS
 
-È possibile implementare una propria validazione via JS, intercettando gli eventi emessi dai componenti:
+Per implementare una validazione personalizzata via JS, intercetta gli eventi emessi dai componenti:
 
 ```js
  window.addEventListener('DOMContentLoaded', () => {
@@ -88,13 +88,23 @@ Nel caso il campo non sia valido, è necessario invalidare il campo impostando i
 ```
 
 <br/><br/>
-#### Esempio di validazione via JS con plugin JustValidate
+#### Esempio di validazione via JS con plug-in JustValidate
 
-Ecco qui un esempio di implementazione della validazione con il plugin [JustValidate](https://just-validate.dev/).
+In questo esempio la validazione è stata implementata con il [plug-in JustValidate](https://just-validate.dev/).
 
 <Canvas of={Stories.EsempioJustValidate} />
 
 
-## Tipologie di campi
+## Campi per form
 
-I singoli campi di tipo `<it-input>`, `<it-checkbox>`, `<it-radio>`, `<it-toggle>`, ecc. sono trattati in pagine separate della documentazione.
+- [Autocomplete](/docs/componenti-form-autocomplete--documentazione) (<it-autocomplete>)
+- [Checkbox] (`<it-checkbox>`)
+- [Datepicker] (`<it-input>` con `type="date"`)
+- [Input] (`<it-input>`)
+- [Number input] (`<it-input>` con `type="number"`)
+- [Radio button] (`<it-radio>`)
+- [Select] (<it-select>)
+- [Timepicker] (`<it-input>` con `type="time"`)
+- [Toggle] (`<it-toggle>`)
+- [Transfer] (`<it-transfer>`)
+- [Upload] (`<it-upload>`, `<it-upload-avatar>`, `<it-upload-drag-drop>`)
