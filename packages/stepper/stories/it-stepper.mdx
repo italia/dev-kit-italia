@@ -103,11 +103,11 @@ Puoi personalizzare il titolo e la descrizione dell'area tramite `save-title` e 
 
 ## Conferma
 
-Aggiungi l'attributo `show-confirm` per sostituire il pulsante Avanti con il pulsante Conferma.
+Aggiungi l'attributo `show-confirm` per sostituire il pulsante *Avanti* con il pulsante *Conferma*.
 
-Quando l'utente clicca su Conferma, il componente emette l'evento `it-stepper-confirm`, senza eseguire altre azioni. Devi quindi definire la logica da eseguire in risposta all'evento, in base alle esigenze del tuo flusso.
+Quando l'utente clicca su *Conferma*, il componente emette l'evento `it-stepper-confirm`, senza eseguire altre azioni. Devi quindi definire la logica da eseguire in risposta all'evento, in base alle esigenze del tuo flusso.
 
-L'attributo non si attiva automaticamente nell'ultimo step. Se vuoi mostrare il pulsante Conferma solo alla fine del flusso, gestisci dinamicamente `show-confirm` in base allo step attivo.
+L'attributo non si attiva automaticamente nell'ultimo step. Se vuoi mostrare il pulsante *Conferma* solo alla fine del flusso, gestisci dinamicamente `show-confirm` in base allo step attivo.
 
 
 Per un esempio completo, [approfondisci come funziona la validazione di un form nello step](#validazione-del-form-nello-step].
@@ -118,7 +118,7 @@ Per un esempio completo, [approfondisci come funziona la validazione di un form 
 
 Se uno step contiene un form, puoi impedire il passaggio allo step successivo finché l'utente non ha completato tutti i campi obbligatori nel formato richiesto. Puoi farlo con due approcci, anche usandoli insieme.
 
-Il pulsante Indietro, invece, deve rimanere sempre attivo, così l'utente ha sempre una via di uscita.
+Il pulsante *Indietro* deve rimanere sempre attivo, così l'utente ha sempre una via di uscita.
 
 In questi esempi, `show-confirm` viene attivato solo sull'ultimo step per indicare allo stepper la fine del flusso.
 
@@ -133,7 +133,7 @@ stepper.addEventListener('it-stepper-change', (e) => {
 
 ### Disabilitare il pulsante
 
-Usa l'attributo `next-disabled` per disabilitare i pulsanti Avanti e Conferma. 
+Usa l'attributo `next-disabled` per disabilitare i pulsanti *Avanti* e *Conferma*. 
 
 Questo è anche l'unico metodo per impedire l'invio del form in caso di errori di compilazione, poiché l'evento di conferma (invio) non può essere annullato.
 
@@ -161,8 +161,8 @@ stepper.addEventListener('it-stepper-change', (e) => {
 
 ### Bloccare l'avanzamento al clic
 
-Puoi anche lasciare attivo il pulsante Avanti e impedire il passaggio allo step successivo solo dopo il clic, evidenziando all'utente i campi da completare o con errori.
-Usa l'evento `it-stepper-change`, che è annullabile quando è originato dal click su "Avanti".
+Puoi anche lasciare attivo il pulsante *Avanti* e impedire il passaggio allo step successivo solo dopo il clic, evidenziando all'utente i campi da completare o con errori.
+Usa l'evento `it-stepper-change`, che è annullabile quando è originato dal clic su *Avanti*.
 
 I componenti form del design system non mostrano i messaggi nativi del browser. Ogni controllo gestisce il proprio messaggio di errore in linea, inizialmente nascosto e visibile solo dopo il primo invio del form.
 
@@ -218,8 +218,8 @@ Il componente espone le seguenti proprietà, metodi e eventi accessibili via Jav
 ### Proprietà
 
 - `current`, indice (0-based) del passo attivo. Modificarlo naviga direttamente a quel passo, senza emettere `it-stepper-change`.
-- `nextDisabled`, disabilita il pulsante "Avanti", oppure "Conferma" quando `showConfirm` è attivo.
-- `showConfirm`, sostituisce il pulsante "Avanti" con "Conferma". Non viene attivato automaticamente sull'ultimo passo.
+- `nextDisabled`, disabilita il pulsante *Avanti*, oppure *Conferma* quando `showConfirm` è attivo.
+- `showConfirm`, sostituisce il pulsante *Avanti* con *Conferma*. Non viene attivato automaticamente sull'ultimo passo.
 
 ### Metodi
 
@@ -230,9 +230,9 @@ Il componente espone le seguenti proprietà, metodi e eventi accessibili via Jav
 
 Tutti gli eventi sono configurati con `bubbles: true` e `composed: true`.
 
-- `it-stepper-change`, emesso quando cambia il passo attivo. Nel `detail` contiene `{ step: number, prevStep: number }`, rispettivamente il nuovo indice e quello precedente. È cancellabile solo quando è originato dal clic sul pulsante "Avanti": in quel caso `event.preventDefault()` impedisce il cambio di step. Non viene emesso se modifichi direttamente `current`.
-- `it-stepper-save`, emesso al clic sul pulsante "Salva". Non ha `detail`.
-- `it-stepper-confirm`, emesso al clic sul pulsante "Conferma". Non ha `detail` e non è cancellabile: il componente non compie alcuna azione predefinita alla conferma, quindi non c'è nulla da impedire. Per bloccare la conferma usa `nextDisabled`.
+- `it-stepper-change`, emesso quando cambia il passo attivo. Nel `detail` contiene `{ step: number, prevStep: number }`, rispettivamente il nuovo indice e quello precedente. È cancellabile solo quando è originato dal clic sul pulsante *Avanti*: in quel caso `event.preventDefault()` impedisce il cambio di step. Non viene emesso se modifichi direttamente `current`.
+- `it-stepper-save`, emesso al clic sul pulsante *Salva*. Non ha `detail`.
+- `it-stepper-confirm`, emesso al clic sul pulsante *Conferma*. Non ha `detail` e non è cancellabile: il componente non compie alcuna azione predefinita alla conferma, quindi non c'è nulla da impedire. Per bloccare la conferma usa `nextDisabled`.
 
 ## Personalizzazione degli stili
 
