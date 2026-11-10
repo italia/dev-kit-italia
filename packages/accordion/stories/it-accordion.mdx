@@ -9,7 +9,7 @@ import * as AccordionStories from './it-accordion.stories';
 
 ## Cosa fa
 
-Il componente Accordion permette di espandere e collassare delle sezioni con contenuti molto lunghi e non principali, raggruppandole in una unica interfaccia. L’intestazione delle sezioni dà una panoramica dei contenuti e permette all’utente di scegliere quali leggere.
+Il componente Accordion (`<it-accordion>`) permette di espandere e collassare delle sezioni con contenuti molto lunghi e non principali, raggruppandole in un layout più compatto. L’intestazione delle sezioni dà una panoramica dei contenuti e permette all’utente di scegliere quali approfondire.
 
 Il componente Accordion è basato su [Collapse](?path=/docs/componenti-collapse--documentazione).
 
@@ -19,7 +19,7 @@ Il componente Accordion è basato su [Collapse](?path=/docs/componenti-collapse-
 
 - [Collapse](?path=/docs/componenti-collapse--documentazione): visivamente meno prominente, utile quando ci sono una o due sezioni di contenuti brevi meno importanti.
 
-- Tabs: mostrano i contenuti senza spingere altre sezioni verso il fondo della pagina e sono utili quando l'utente deve passare velocemente da una sezone all'altra.
+- [Tabs](?path=/docs/componenti-tabs--documentazione): mostrano i contenuti senza spingere altre sezioni verso il fondo della pagina e sono utili quando l'utente deve passare velocemente da una sezone all'altra.
 
 ## Anteprima e attributi del componente
 
@@ -32,8 +32,8 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 Il componente Accordion è composto da due elementi:
 
-- `<it-accordion>`: contenitore che raggruppa più elementi richiudibili;
-- `<it-accordion-item>`: singolo elemento richiudibile all'interno dell'accordion.
+- `<it-accordion>`, il contenitore che raggruppa più elementi richiudibili;
+- `<it-accordion-item>`, il singolo elemento richiudibile all'interno dell'accordion.
 
 ## Elemento richiudibile
 
@@ -41,8 +41,8 @@ Il componente Accordion è composto da due elementi:
 
 Ogni `<it-accordion-item>` utilizza due slot distinti per definire intestazione e contenuto:
 
-- `slot="heading"`: **obbligatorio**, il testo da mostrare nell'header dell'elemento;
-- `slot="content"`: **obbligatorio**, il contenuto da mostrare o nascondere.
+- `slot="heading"` (**obbligatorio**), il testo da mostrare nell'header dell'elemento;
+- `slot="content"` (**obbligatorio**), il contenuto da mostrare o nascondere.
 
 Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto e il comportamento del componente `<it-accordion-item>`. Per vedere come cambia il codice, clicca su **Show code**.
 
@@ -111,9 +111,9 @@ Usa questo approccio solo quando strettamente necessario: dal punto di vista del
 
 ## Personalizzazione degli stili
 
-Per personalizzare gli stili, puoi usare i selettori `::part` dedicati:
+Per personalizzare gli stili, puoi usare questi selettori `::part`:
 
-- `::part(trigger)` - elemento trigger di ogni sezione;
-- `::part(content)` - elemento contenitore del corpo di ogni sezione.
+- `::part(trigger)`, per l'elemento trigger di ogni sezione;
+- `::part(content)`, per l'elemento contenitore del corpo di ogni sezione.
 
 [Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
