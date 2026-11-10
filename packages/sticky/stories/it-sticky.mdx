@@ -9,7 +9,7 @@ import * as Stories from './it-sticky.stories';
 
 ## Cosa fa
 
-Il componente Sticky (`<it-sticky>`) mantiene un elemento visibile mentre l'utente scorre la pagina. Questo è particolarmente utile per menu di navigazione, call-to-action importanti, pulsanti di contatto o supporto che devono sempre rimanere accessibili.
+Il componente Sticky (`<it-sticky>`) mantiene un elemento visibile mentre l'utente scorre la pagina. È particolarmente utile per menu di navigazione, call-to-action importanti, pulsanti di contatto o supporto che devono rimanere sempre accessibili.
 
 [Approfondisci quando e come usare il componente Sticky](https://designers.italia.it/design-system/componenti/sticky/)
 
@@ -29,7 +29,7 @@ Il componente `<it-sticky>` consente di mantenere visibile un elemento della pag
 Per applicare il comportamento sticky a un elemento o contenuto, racchiudilo all'interno del tag `<it-sticky>`.
 Il componente gestisce in autonomia anche casi avanzati, come elementi impilabili o con padding e classi personalizzate, attraverso specifiche proprietà.
 
-Consulta [questa pagina di esempio](?path=/story/esempi-sticky--single-sticky) per comprenderne appieno il comportamento di un componente sticky.
+[Consulta un esempio interattivo del componente](?path=/story/esempi-sticky--single-sticky) per comprenderne appieno il comportamento.
 
 ## Accessibilità
 Per garantire un'esperienza accessibile:
@@ -41,7 +41,7 @@ Per garantire un'esperienza accessibile:
 
 Per definire un offset in pixel tra l'elemento e il margine superiore, imposta la proprietà `padding-top`.
 
-[Vai all'esempio per questa funzionalità](?path=/story/esempi-sticky--padded-sticky)
+[Vai all'esempio interattivo](?path=/story/esempi-sticky--padded-sticky)
 
 <Canvas of={Stories.TopOffset} />
 
@@ -51,7 +51,7 @@ Il componente assegna di default all'elemento da fissare la proprietà CSS `posi
 
 Puoi modificare la posizione dell'elemento, usa l'attributo `position-type:"fixed"`.
 
-[Vai all'esempio per questa funzionalità](?path=/story/esempi-sticky--fixed-sticky)
+[Vai all'esempio interattivo](?path=/story/esempi-sticky--fixed-sticky)
 
 <Canvas of={Stories.Fixed} />
 
@@ -59,7 +59,7 @@ Puoi modificare la posizione dell'elemento, usa l'attributo `position-type:"fixe
 
 Per personalizzare lo stile dell'elemento quando è sticky o fixed, usa la proprietà `sticky-class-name`. Tutte le classi CSS che inserisci in questo attributo verranno aggiunte all'elemento quando diventa sticky e rimosse quando torna normale.
 
-[Vai all'esempio per questa funzionalità](?path=/story/esempi-sticky--fixed-sticky-classname)
+[Vai all'esempio interattivo](?path=/story/esempi-sticky--fixed-sticky-classname)
 
 <Canvas of={Stories.CustomClass} />
 
@@ -93,9 +93,9 @@ Utile per sincronizzare l'attivazione dello sticky con la scomparsa di un elemen
 
 Quando ci sono più componenti sticky sulla pagina, puoi impilarli l'uno sull'altro utilizzando l'attributo `stackable`.
 
-[Vai all'esempio per questa funzionalità](?path=/story/esempi-sticky--stackable-sticky)
+[Vai all'esempio interattivo](?path=/story/esempi-sticky--stackable-sticky)
 
-[Vai all'esempio per questa funzionalità con media query e breakpoint](?path=/story/esempi-sticky--stackable-sticky-resize)
+[Vai all'esempio interattivo con media query e breakpoint](?path=/story/esempi-sticky--stackable-sticky-resize)
 
 <Canvas of={Stories.Stackable} />
 
@@ -106,12 +106,12 @@ Questo è il comportamento usato internamente da `<it-bottom-nav>`.
 
 Aggiungendo l'attributo `stackable` è possibile sovrapporre più barre fisse in fondo, che si impileranno verso l'alto in ordine di connessione al DOM.
 
-[Vai all'esempio per questa funzionalità](?path=/story/esempi-sticky--fixed-bottom-sticky)
+[Vai all'esempio interattivo](?path=/story/esempi-sticky--fixed-bottom-sticky)
 
 <Canvas of={Stories.FixedBottom} />
 
 
-## Proprietà, metodi ed eventi accessibili via js
+## Proprietà, metodi ed eventi accessibili via JS
 
 ### Eventi
 
