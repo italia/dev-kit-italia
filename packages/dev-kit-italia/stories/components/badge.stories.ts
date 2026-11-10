@@ -116,7 +116,7 @@ export const Link: Story = {
   parameters: {
     docs: {
       description: {
-        story: `Per trasformare badge in un link, aggiungi una delle classi contestuali \`.badge-*\` all’elemento . In questo modo, il badge risponderà agli stati hover e focus.
+        story: `Per trasformare un badge in un link, aggiungi una delle classi contestuali \`.badge-*\` all’elemento . In questo modo, il badge risponderà agli stati hover e focus.
 `,
       },
     },
