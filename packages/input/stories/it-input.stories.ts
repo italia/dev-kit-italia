@@ -249,7 +249,7 @@ const meta = {
     docs: {
       description: {
         component: `
-<Description>Campi per l'inserimento di dati testuali e numerici, in forma libera o in formati specifici, all'interno di un form</Description>
+<Description>Campi per l'inserimento di dati testuali e numerici, in forma libera o in formati specifici, all'interno di un form.</Description>
 
 Per il corretto funzionamento degli elementi di tipo \`<it-input>\` è di fondamentale importanza l’utilizzo uno degli appositi attributi \`type\` (ad esempio, "email" per l’inserimento di indirizzi email o "number" per informazioni numeriche), in modo da sfruttare i controlli nativi dei browser più recenti come la verifica dell’email, l’utilizzo di metodo di input numerico ed altro.
 
@@ -383,7 +383,7 @@ export const IconeOPulsanti: Story = {
   parameters: {
     docs: {
       description: {
-        story: `<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità delle icone</span></div><p>Nel caso in cui l’icona è semanticamente rilevante e non spiegata dal testo che la segue, devi passare al componente \`<it-icon>\` l'attributo \`label\` che ne spieghi il significato (nel formato \`<it-icon .... label="Significato dell'icona"/>\`)</p></div></div>`,
+        story: `<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità delle icone</span></div><p>Per le icone semanticamente rilevanti (non decorative) che non vengono spiegate con testo visibile, aggiungi un testo di spiegazione con l'attributo \`label\`, seguendo il formato \`<it-icon .... label="Significato dell'icona"/>\`.</p></div></div>`,
       },
     },
   },
