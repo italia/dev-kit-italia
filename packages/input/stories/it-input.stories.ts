@@ -402,18 +402,22 @@ export const Dimensioni: Story = {
   parameters: {
     docs: {
       description: {
-        story: `L'input di base ha una dimensione media che non necessita di alcuna classe aggiuntiva.
+        story: `L'input ha **dimensione media** \`md`\ come **predefinita**.
 
-Per modificare questa dimensione, puoi utilizzare l'attributo \`size\` il cui valore può essere \`sm\` oppure \`lg\`.
+Per modificare la dimensione, cambia il valore di \`size\` in:
 
-Per modificare invece la dimensione dell’icona, puoi utilizzare l'attributo \`size\` sull'icona in questo modo:
+- \`sm\` per la dimensione piccola;
+- \`lg\` per la dimensione grande.
+
+
+Per modificare invece la dimensione dell’icona, usa l'attributo \`size\` sull'icona e passa il valore desiderato.
 <table>
 <thead>
   <tr><th>Dimensione input</th><th>Attributo size (di it-input)</th><th>Dimensione icona</th></tr>
 </thead>
 <tbody>
   <tr><td>Grande</td><td>\`lg\`</td><td>\`md\`</td></tr>
-  <tr><td>Base (default)</td><td></td><td>\`sm\`</td></tr>
+  <tr><td>Media / base (prefefinita)</td><td></td><td>\`sm\`</td></tr>
   <tr><td>Piccola</td><td>\`sm\`</td><td>\`xs\`</td></tr>
 </tbody>
 </table>
