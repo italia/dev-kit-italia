@@ -577,9 +577,9 @@ export const GestioneEventi: Story = {
   parameters: {
     docs: {
       description: {
-        story: `È possibile gestire gli eventi di \`it-input\`, \`it-blur\`, \`it-change\`, \`it-focus\`, \`it-click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
+        story: `Gestendo gli eventi di \`it-input\`, \`it-blur\`, \`it-change\`, \`it-focus\` e \`it-click\` puoi personalizzare le impostazioni e il funzionamento del componente, come modificare il tipo di validazione o gestire l'aggiornamento di altri campi.
 <br/><br/>
-È sufficiente aggiungere un event listener al componente \`<it-input>\` per intercettare gli eventi desiderati. Ad esempio, per gestire l'evento di input, è possibile utilizzare il seguente codice:
+Aggiungi un event listener al componente \`<it-input>\` per intercettare gli eventi che ti interessano. Ad esempio, per gestire l'evento di input, puoi usare questo codice:
 
 \`\`\`js
 document.querySelector('it-input#event-input-example').addEventListener('it-input', (event) => {
@@ -588,7 +588,7 @@ document.querySelector('it-input#event-input-example').addEventListener('it-inpu
 });
 \`\`\`
 
-Il componente, emette anche un evento di tipo \`it-input-ready\` quando l'input è pronto e caricato nel DOM:
+Il componente emette anche un evento di tipo \`it-input-ready\` quando l'input è pronto e caricato nel DOM:
 
 \`\`\`js
 document.querySelector('it-input#event-input-example').addEventListener('it-input-ready', (event) => {
