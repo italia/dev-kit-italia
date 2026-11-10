@@ -42,7 +42,7 @@ export const Dimensione: Story = {
 
 export const BottoniELink: Story = {
   ...meta,
-  name: 'Bottoni e link',
+  name: 'Pulsanti e link',
   parameters: {
     docs: {
       description: {
@@ -93,7 +93,7 @@ Le varianti di colore corrispondono agli stessi status disponibili per il compon
 
 export const Arrotondato: Story = {
   ...meta,
-  name: 'Badges arrotondati',
+  name: 'Badge arrotondati',
   parameters: {
     docs: {
       description: {
