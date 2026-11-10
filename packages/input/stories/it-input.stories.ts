@@ -402,7 +402,7 @@ export const Dimensioni: Story = {
   parameters: {
     docs: {
       description: {
-        story: `L'input ha **dimensione media** \`md`\ come **predefinita**.
+        story: `L'input ha **dimensione media** \`md\` come **predefinita**.
 
 Per modificare la dimensione, cambia il valore di \`size\` in:
 
