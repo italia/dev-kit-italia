@@ -16,15 +16,12 @@ Il componente Timeline (`<it-timeline>`) organizza e presenta una sequenza crono
 
 ## Accessibilità
 
-Segui queste indicazioni per garantire l'accessibilità del componente:
-
 - **Per punti non temporali**: usa un `<div>` nello slot `milestone` e usa `<span class="visually-hidden">` per descrivere il contenuto in linguaggio naturale seguendo l'ordine visivo (es. "Categoria AB, passo 1 di 3").
 
 - **Gerarchia delle intestazioni**: imposta l'attributo `heading-level` su `<it-timeline-element>` per assegnare al titolo di ogni elemento il livello corretto in base alla gerarchia della pagina. Se usi una card nello slot dei contenuti, imposta `heading-level` anche su `<it-card>`.
 
 - **Punti temporali**: usa l'elemento semantico `<time>` con l'attributo `datetime` in formato ISO (ad esempio, 2025-10-14). Aggiungi uno `<span class="visually-hidden">` con la data scritta per esteso.
 
-- **Punti non temporali**: usa un `<div>` nello slot `milestone` e aggiungi uno `<span class="visually-hidden">` che descriva il contenuto in linguaggio naturale, rispettando l'ordine visivo (ad esempio, «Categoria AB, passo 1 di 3»).
 
 
 <div class="callout callout-warning">
