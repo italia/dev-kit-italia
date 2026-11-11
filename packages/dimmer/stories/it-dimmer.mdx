@@ -9,7 +9,7 @@ import * as Stories from './it-dimmer.stories';
 
 ## Cosa fa
 
-Il componente Dimmer (`it-dimmer`) oscura una porzione della pagina per portare l’attenzione dell’utente su contenuti o azioni mostrati in sovrapposizione all’interfaccia.
+Il componente Dimmer (`<it-dimmer>`) oscura una porzione della pagina per portare l’attenzione dell’utente su contenuti o azioni mostrati in sovrapposizione all’interfaccia.
 
 [Approfondisci quando e come usare il componente Dimmer](https://designers.italia.it/design-system/componenti/dimmer/)
 
@@ -107,7 +107,7 @@ Il componente espone metodi ed eventi utili per eventuali interazioni via JavaSc
 
 ### Metodi
 
-Il componente espone i seguenti metodi pubblici per la gestione programmatica:
+Il componente espone questi metodi pubblici per la gestione programmatica:
 
 - `show()`, mostra il dimmer;
 - `hide()`, nasconde il dimmer;
@@ -125,7 +125,7 @@ dimmerEl.toggle(); // alterna
 
 ### Eventi
 
-Il componente emette i seguenti eventi custom:
+Il componente emette questi eventi custom:
 
 - `it-dimmer-show`, quando il dimmer diventa visibile;
 - `it-dimmer-hide`, quando il dimmer viene nascosto.
@@ -144,7 +144,7 @@ dimmerEl.addEventListener('it-dimmer-hide', (e) => {
 
 ## Personalizzazione degli stili
 
-Per personalizzare gli stili, usa i selettori `::part` dedicati:
+Per personalizzare gli stili, usa questi selettori `::part`:
 
 - `::part(dimmable)`, per il wrapper che racchiude l'intero componente;
 - `::part(dimmer)`, per l'elemento overlay;
