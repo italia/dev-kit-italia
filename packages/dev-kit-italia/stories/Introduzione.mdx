@@ -5,21 +5,17 @@ import { Code } from 'storybook/internal/components';
 
 <div className="mb-4">
   <h1 className="visually-hidden">Dev Kit Italia</h1>
+  <p className="lead mb-5">I Web components del Design system .italia</p>
   <div>
     <img src="./logo.png" width="500px" alt=".italia dev kit" />
   </div>
-  <p className="lead mb-5">I Web components del Design system .italia</p>
-<it-callout variant="warning" heading-level="h3">
+
+<it-callout variant="warning" heading-level="h2">
+<it-icon slot="icon" size="md" name="it-warning-circle"></it-icon>
 <span slot="title">Risorsa in lavorazione</span>
 <p>Questo repository e i relativi pacchetti sono ancora in lavorazione. Ne sconsigliamo l'utilizzo in ambienti di produzione.</p>
 </it-callout>
 
-  <p className="lead mb-5">
-    <b>⚠️ Attenzione: questo repository e i relativi pacchetti sono in lavorazione.<br
-      />Attualmente sono pubblicati per permetterne lo sviluppo, non sono consigliati per l'utilizzo in ambienti di
-      produzione.</b>
-  </p>
-</div>
 
 ## Cos'è Dev Kit Italia
 
@@ -36,20 +32,20 @@ L'uso dei Web Components permette di:
 
 ## Come iniziare
 
-Per iniziare, è sufficiente installare il pacchetto `npm` attraverso il seguente comando:
+1. Installa il pacchetto `npm` con questo comando:
 
 ```bash
 npm install @italia/dev-kit-italia
 ```
 
-e importare le risorse necessarie nel vostro progetto così:
+2. Importa le risorse necessarie nel tuo progetto:
 
 ```javascript
 import '@italia/dev-kit-italia/fonts.css';
 import '@italia/dev-kit-italia/styles.css';
 import '@italia/dev-kit-italia/elements.js';
 
-// Pronti a utilizzare i Web Components!
+// Pronti a utilizzare i Web components!
 return (
   <div>
     <it-button ...></it-button>
@@ -57,8 +53,7 @@ return (
 )
 ```
 
-Come alternativa, puoi installare i singoli pacchetti dei Web Components.
-Anche in questo caso dovrai importare il file CSS generale.
+In alternativa, puoi installare i singoli pacchetti dei Web components. Anche in questo caso dovrai importare il file CSS generale.
 
 ```bash
 npm install @italia/button @italia/dev-kit-italia
