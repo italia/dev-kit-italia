@@ -668,7 +668,7 @@ export const TabCardConPulsantiCustomCloseJS: Story = {
 };
 
 export const I18n: Story = {
-  name: 'i18n',
+  name: 'Traduzioni e internazionalizzazione (i18n)',
   tags: ['!dev'],
   render: () => html`<div class="hide-preview"></div>`,
   parameters: {
