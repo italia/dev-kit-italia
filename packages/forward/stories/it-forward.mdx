@@ -68,12 +68,12 @@ forward.addEventListener(‘it-forward-navigate’, (e) => {
 
 <Canvas of={ForwardStories.NavigazionePersonalizzata} />
 
-## Proprietà, Metodi, ed Eventi accessibili via JS
+## Proprietà, metodi ed eventi accessibili via JS
 
-Il componente espone i seguenti metodi e eventi accessibili via JavaScript.
+Il componente espone questi metodi ed eventi accessibili via JavaScript.
 
 ### Metodi
-- `navigateTo(target: HTMLElement)` — scorre la pagina fino all’elemento `target` con animazione fluida (o istantaneamente se l’utente ha preferenze di riduzione del movimento).
+- `navigateTo(target: HTMLElement)`, scorre la pagina fino all’elemento `target` con animazione fluida (o istantaneamente se l’utente ha preferenze di riduzione del movimento).
 
 ### Eventi
-- `it-forward-navigate` — emesso prima dello scorrimento. L’evento è cancellabile: chiamando `event.preventDefault()` si impedisce lo scorrimento di default. Il `detail` contiene `href` (string) e `target` (HTMLElement | null) con le coordinate della destinazione.
+- `it-forward-navigate`, emesso prima dello scorrimento. L’evento è cancellabile: chiamando `event.preventDefault()` si impedisce lo scorrimento di default. Il `detail` contiene `href` (string) e `target` (HTMLElement | null) con le coordinate della destinazione.
