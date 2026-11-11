@@ -12,7 +12,7 @@ import * as Stories from './it-video.stories';
 Il componente `<it-video>` consente di incorporare video all’interno delle pagine web, offrendo un lettore video accessibile e rispettoso della privacy degli utenti.
 Supporta sia la riproduzione di video ospitati localmente che l’incorporamento di video da piattaforme esterne come YouTube, garantendo un’esperienza utente coerente e personalizzabile.
 
-Questo componente utilizza la libreria [Video.js](https://videojs.com/) per implementare funzionalità avanzate come il supporto a diversi formati video, la personalizzazione dell’interfaccia utente e l’integrazione con API esterne.
+Questo componente utilizza la [libreria Video.js](https://videojs.com/) per implementare funzionalità avanzate come il supporto a diversi formati video, la personalizzazione dell’interfaccia utente e l’integrazione con API esterne.
 
 [Approfondisci come e quando usare il componente Video player](https://designers.italia.it/design-system/componenti/video-player/)
 
@@ -23,7 +23,7 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Indicazioni generali
 - Per aggiungere un video, usa il componente `<it-video />` e i relativi attributi per gestirne la sorgente e le opzioni del video player. 
-- Usa l'attributo `options` personalizzare il comportamento, l’aspetto e le funzionalità del player usando le [opzioni di Video.js](https://videojs.com/guides/options/).
+- Usa l'attributo `options` personalizzare il comportamento, l’aspetto e le funzionalità del player con le [opzioni di Video.js](https://videojs.com/guides/options/).
 - Usa l'attributo `translations` per definire le traduzioni del player diverse dalla lingua italiana o per sovrascrivere le traduzioni italiane preimpostate.
 
 ### Font per le icone del player
@@ -71,7 +71,8 @@ In particolare:
 ## Con trascrizione
 Per aggiungere una trascrizione al video, usa il componente `<it-accordion>` come elemento figlio del componente `<it-video>`. All'interno dell'accordion, puoi inserire il testo della trascrizione del video.
 
-[Vai alla documentazione di Accordion](?path=/docs/componenti-accordion--documentazione) per maggiori dettagli su come utilizzarlo.
+[Approfondisci la documentazione del componente Accordion](?path=/docs/componenti-accordion--documentazione)
+
 <Canvas of={Stories.ConTrascrizione} />
 
 ## Sottotitoli, didascalie, capitoli e descrizioni
