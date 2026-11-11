@@ -164,7 +164,7 @@ export const ImmagineDiAnteprima: Story = {
         story: `
 Per aggiungere un’immagine di anteprima come copertina al video, usa l’attributo \`poster\` inizializzato con l'url dell’anteprima.
 
-<div class="callout callout-warning"><div class="callout-inner"><div class="callout-title"><span class="text">Attenzione</span></div>
+<div class="callout callout-warning"><div class="callout-inner"><div class="callout-title"><span class="text">Proporzioni delle immagini</span></div>
 <p>Le immagini caricate come copertina devono rispettare la stessa \`aspect ratio\` del video per una corretta visualizzazione.
 </p></div></div>
 
