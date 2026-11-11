@@ -34,7 +34,7 @@ Per garantire la massima flessibilità e compatibilità con diversi framework, i
 
 All'interno di ogni `<it-pagination-item>`, puoi inserire un link (ad esempio un elemento `<a>`) per gestire la navigazione tra le pagine: se stai usando un framework come React, NextJS, Angular o Vue.js, puoi integrare i componenti di routing del framework all'interno degli elementi `<it-pagination-item>`. Segui le indicazioni del framework che stai usando per gestire la navigazione tra le pagine e/o integrare il tuo sistema di paginazione.
 
-Il componente `<it-pagination>` supporta i seguenti slot:
+Il componente `<it-pagination>` supporta questi slot:
 
 - **default**, per gli elementi `<it-pagination-item>`;
 - **prev**, per il pulsante/link di navigazione alla pagina precedente;
@@ -43,7 +43,7 @@ Il componente `<it-pagination>` supporta i seguenti slot:
 - **jump-to-page**, per un eventuale campo di salto a una pagina specifica;
 - **total**, per mostrare il numero totale di pagine.
 
-Il componente `<it-pagination-item>` supporta i seguenti attributi:
+Il componente `<it-pagination-item>` supporta questi attributi:
 - `page` (**obbligatorio**), numero della pagina rappresentata dall'elemento;
 - `current` (opzionale), indica se l'elemento rappresenta la pagina corrente;
 - `disabled` (opzionale), indica se l'elemento è disabilitato.
@@ -60,7 +60,7 @@ Il componente `<it-pagination>` è progettato per essere accessibile e conforme 
 - i link di navigazione alla pagina precedente o successiva sono disabilitati quando l'utente si trova all'inizio o alla fine della paginazione, assumono uno stato visivo disabilitato e viene aggiunto l'attributo `aria-disabled="true"`;
 - eventuali separatori o ellissi utilizzati per indicare pagine non visualizzate non sono interattivi e non sono inclusi nella tabulazione.
 
-Per garantire la massma accesibilità, ricordati di:
+Per garantire la massima accesibilità, ricordati di:
 - fornire etichette significative per i link di navigazione alla pagina precedente e successiva quando utilizzi gli slot `prev` e `next`;
 - fornire sempre un link semanticamente valido all'interno di ogni elemento `<it-pagination-item>`;
 - valorizzare sempre l'attributo `it-aria-label` sull'elemento `<it-pagination>` per descrivere il contesto della paginazione (ad esempio "Paginazione articoli", "Paginazione risultati di ricerca", ecc.).
@@ -163,7 +163,7 @@ Per gestire l'allineamento del componente `<it-pagination>`, usa gli attributi:
 
 <Canvas of={PaginationStories.AllineamentoEnd} />
 
-## Proprietà, metodi ed eventi accessibili via js
+## Proprietà, metodi ed eventi accessibili via JS
 
 Il componente espone le seguenti proprietà, metodi ed eventi accessibili via JavaScript.
 ### Eventi
@@ -171,7 +171,7 @@ Il componente emette i seguenti eventi custom:
 - `it-pagination-change`, quando la pagina corrente cambia. L'evento fornisce il numero della nuova pagina selezionata nel dettaglio dell'evento (`event.detail`).
 
 ## Personalizzazione degli stili
-Per personalizzare gli stili, usa i selettori `::part` dedicati di `<it-pagination>`:
+Per personalizzare gli stili, usa questi selettori `::part`:
 - `::part(pagination-list)`, per lo stile dell'elemento `<ul>` che contiene gli elementi di paginazione;
 - `::part(current-page-simple-mode)`, per lo stile dell'elemento che rappresenta la pagina corrente in modalità simple;
 - `::part(total-pages-simple-mode)`, per lo stile dell'elemento che rappresenta il numero totale di pagine in modalità simple.
