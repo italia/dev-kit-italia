@@ -142,12 +142,6 @@ li span,
 
   // Icon left inside list item
   &.icon-left {
-    .icon {
-      left: 0;
-      flex-shrink: 0;
-      margin-right: var(--#{$prefix}spacing-xxs);
-    }
-
     p {
       width: 100%;
     }
@@ -190,7 +184,7 @@ li span,
     justify-content: space-between;
 
     .list-item-title {
-      margin-right: var(--#{$prefix}spacing-xxs);
+      margin-right: var(--#{$prefix}icon-spacing);
     }
   }
 
@@ -247,4 +241,18 @@ li span,
   display: flex;
   align-items: center;
   white-space: normal;
+}
+
+// Icons passed through the prefix/suffix slots: same icon–text distance
+// as Bootstrap Italia (icon-spacing). The suffix icon sits on the right edge;
+// its padding keeps the minimum distance from long labels.
+::slotted([slot='prefix']) {
+  flex-shrink: 0;
+  margin-right: var(--#{$prefix}icon-spacing);
+}
+
+::slotted([slot='suffix']) {
+  flex-shrink: 0;
+  padding-left: var(--#{$prefix}icon-spacing);
+  margin-left: auto;
 }
