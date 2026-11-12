@@ -942,7 +942,7 @@ export const MetodiEPropDragDrop: Story = {
 };
 
 export const I18n: Story = {
-  name: 'Traduzioni e internazionalizzazione (i18n)',
+  name: 'Internazionalizzazione (i18n)',
   tags: ['!dev'],
   render: () => html`<div class="hide-preview"></div>`,
   parameters: {
@@ -950,7 +950,7 @@ export const I18n: Story = {
     docs: {
       description: {
         story: `
-Per questi componenti sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+Per questi componenti sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/internazionalizzazione-i18n--documentazione).
 
 \`\`\`js
 const translation = ${JSON.stringify(i18nIT, null, 2)}

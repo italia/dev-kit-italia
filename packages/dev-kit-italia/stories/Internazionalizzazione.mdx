@@ -1,16 +1,17 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { Code } from 'storybook/internal/components';
 
-<Meta title="i18n - Internazionalizzazione" />
+<Meta title="Internazionalizzazione (i18n)" />
 
-# Internazionalizzazione
+# Internazionalizzazione (i18n)
 
-L'internazionalizzazione dei componenti si basa sul package indipendente @italia/i18n. L'unica lingua fornita di default è l'italiano.<br/>
-Se vi è necessità di avere traduzioni in altre lingue, è compito dello sviluppatore implementarle.
+L'internazionalizzazione dei componenti si basa sul package indipendente **@italia/i18n**.
 
-## Cambio di lingua
+Per impostazione predefinita, è disponibile solo la lingua italiana. Se vuoi supportare altre lingue, devi aggiungere le relative traduzioni.
 
-Per cambiare la lingua corrente a livello di sito, è sufficiente modificare l'attributo `lang` sull'elemento `<html>`. Le modifiche a `<html lang>` attivano automaticamente l’aggiornamento di tutti i componenti localizzati:
+## Cambiare la lingua
+
+Per cambiare la lingua corrente a livello di sito, modifica l'attributo `lang` sull'elemento `<html>`. Le modifiche a `<html lang>` attivano automaticamente l’aggiornamento di tutti i componenti localizzati:
 
 ```html
 <html lang="en">
@@ -18,7 +19,7 @@ Per cambiare la lingua corrente a livello di sito, è sufficiente modificare l'a
 </html>
 ```
 
-È inoltre possibile cambiare la lingua solo per una parte dei componenti presenti in pagina, passando l'attributo `lang` ad ogni singolo componente:
+Puoi cambiare la lingua anche soltanto per una parte dei componenti presenti in pagina, passando l'attributo `lang` ad ogni singolo componente:
 
 ```html
 <html lang="it">
@@ -29,7 +30,7 @@ Per cambiare la lingua corrente a livello di sito, è sufficiente modificare l'a
 </html>
 ```
 
-## Creazione delle traduzioni
+## Creare le traduzioni
 
 Ogni traduzione deve estendere il tipo `Translation` e includere le proprietà meta con il prefisso `$`, più eventuali termini addizionali:
 
@@ -63,7 +64,7 @@ import es from './es';
 registerTranslation(en, es);
 ```
 
-È inoltre possibile registrare le traduzioni dinamicamente in risposta alle modifiche della lingua:
+Puoi inoltre registrare le traduzioni dinamicamente in risposta alle modifiche della lingua:
 
 ```ts
 async function changeLanguage(lang) {
@@ -74,7 +75,7 @@ async function changeLanguage(lang) {
 }
 ```
 
-Se si vuole definire e localizzare un proprio componente, e abilitare su di esso le traduzioni, questo deve estendere `BaseLocalizedComponent` di `@italia/globals`:
+Se stai sviluppando un componente personalizzato e vuoi usare le funzionalità di internazionalizzazione, estendi la classe `BaseLocalizedComponent` di `@italia/globals` e registra le traduzioni delle lingue che vuoi supportare tramite `registerTranslation()`:
 
 ```ts
 import { registerTranslation } from '@italia/i18n';
@@ -111,9 +112,9 @@ export class MyElement extends BaseLocalizedComponent {
 }
 ```
 
-## Uso del bundle globale
+## Usare il bundle globale
 
-La libreria di internazionalizzazione è già inclusa nel bundle globale `@italia/dev-kit-italia`. Pertanto sarà sufficiente fare:
+La libreria di internazionalizzazione è già inclusa nel bundle globale `@italia/dev-kit-italia`. Ti basterà eseguire:
 
 ```html
 <html lang="it">
@@ -142,7 +143,7 @@ La libreria di internazionalizzazione è già inclusa nel bundle globale `@itali
 </html>
 ```
 
-## Uso di bundle specifici
+## Usare bundle specifici
 
 Se vuoi importare solamente alcuni componenti nella tua applicazione, puoi fare:
 

@@ -325,7 +325,7 @@ export const I18n: Story = {
     docs: {
       description: {
         story: `
-Oltre all'attributo \`translations\` che permette di modificare le traduzioni interne al player, sono disponibili ulteriori stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+Oltre all'attributo \`translations\` che permette di modificare le traduzioni interne al player, sono disponibili ulteriori stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/internazionalizzazione-i18n--documentazione).
 
 \`\`\`js
 const translation = ${JSON.stringify(i18nIT, null, 2)}
