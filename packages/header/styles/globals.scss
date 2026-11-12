@@ -152,6 +152,13 @@
       --#{$prefix}icon-size-s: var(--#{$prefix}icon-size-xs);
     }
 
+    // Text-to-chevron distance in nav toggles: 8px as Bootstrap Italia
+    // (.nav-link.dropdown-toggle svg), not the 12px button icon-spacing.
+    it-dropdown::part(button),
+    it-megamenu::part(button) {
+      --#{$prefix}icon-spacing: var(--#{$prefix}spacing-xxs);
+    }
+
     it-dropdown,
     it-megamenu {
       &,
