@@ -5,37 +5,34 @@ import * as FooterStories from './footer.stories';
 
 # Footer
 
-<description>Menu di navigazione secondaria posto in fondo alle pagine per presentare contenuti supplementari come contatti, informazioni legali e link alle sezioni di un sito</description>
+<description>Menu di navigazione secondaria posto in fondo alle pagine per presentare contenuti supplementari come contatti, informazioni legali e link alle sezioni di un sito.</description>
 
 
 
 ## Cosa fa
-Il Footer (piè di pagina) è una sezione che contiene tutte le informazioni inerenti al sito web e alla società o organizzazione che rappresenta.
+Il componente Footer crea una senzione *piè di pagina* con tutte le informazioni sul sito web e sull'organizzazione.
 
-Per una Pubblica Amministrazione potrebbe contenere tutte i riferimenti ai vari **servizi**, a varie **pagine utili** alla cittadinanza, riferimenti alla **privacy**, il collegamento alla **Dichiarazione di accessibilità sul form AgID** e informazioni su come **contattare** l’amministrazione.
-
-Potrebbe anche contenere riferimenti alle pagine social dell’amministrazione.
-
+È utile per fornire un accesso diretto e agevole a **informazioni amministrative e legali** (come note legali, informativa privacy, informativa cookie e dichiarazione di accessibilità) e alle **modalità di contatto** (indirizzo, telefono, email, PEC e profili social).
 
 [Approfondisci quando e come usare il componente Footer](https://designers.italia.it/design-system/componenti/footer/)
 
 ## Indicazioni generali
 
-Le composizioni mostrate sfruttano le classi di bootstrap-italia affiancate ai web components forniti dal kit.
+Le composizioni mostrate sfruttano le classi di Bootstrap Italia affiancate ai Web Components forniti da questo kit.
 
 **Se non usi il pacchetto completo di Dev Kit Italia (`@italia/dev-kit-italia`), ricordati di importare tutti i CSS.**
 
 ## Footer completo
 
-Nel footer completo sono presenti i seguenti elementi:
+Nel footer completo sono presenti questi elementi:
 
-- **Logo** dell’ente con nome e tagline;
-- **Sezioni di primo livello** e relative sotto-sezioni; il nome della sezione è un link che porta alla pagina principale della sezione;
-- **Contatti** dell’ente;
-- **Link utili** (Media policy, Note legali, Privacy policy, Mappa del sito);
-- **Dichiarazione di accessibilità** (link esterno su form AgID);
-- **Profili Social** dell’ente;
-- **Iscrizione Newsletter** (opzionale).
+- **logo** dell’ente con **nome** e **tagline**;
+- i **link alle sezioni di primo livello e relative sottopagine**;
+- i **contatti** dell’ente;
+- i **link a contenuti legali o di supporto** (Media policy, Note legali, Informativa privacy, Informativa cookie, Mappa del sito);
+- la **dichiarazione di accessibilità** (link esterno su form AgID);
+- i link ai **profili social** dell’ente;
+- il **campo di iscrizione alla newsletter** (opzionale).
 
 <Canvas of={FooterStories.FooterCompleto} />
 

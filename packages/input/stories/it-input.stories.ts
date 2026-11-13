@@ -249,7 +249,7 @@ const meta = {
     docs: {
       description: {
         component: `
-<Description>Campi per l'inserimento di dati testuali e numerici, in forma libera o in formati specifici, all'interno di un form</Description>
+<Description>Campi per l'inserimento di dati testuali e numerici, in forma libera o in formati specifici, all'interno di un form.</Description>
 
 Per il corretto funzionamento degli elementi di tipo \`<it-input>\` è di fondamentale importanza l’utilizzo uno degli appositi attributi \`type\` (ad esempio, "email" per l’inserimento di indirizzi email o "number" per informazioni numeriche), in modo da sfruttare i controlli nativi dei browser più recenti come la verifica dell’email, l’utilizzo di metodo di input numerico ed altro.
 
@@ -383,7 +383,7 @@ export const IconeOPulsanti: Story = {
   parameters: {
     docs: {
       description: {
-        story: `<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità delle icone</span></div><p>Nel caso in cui l’icona è semanticamente rilevante e non spiegata dal testo che la segue, devi passare al componente \`<it-icon>\` l'attributo \`label\` che ne spieghi il significato (nel formato \`<it-icon .... label="Significato dell'icona"/>\`)</p></div></div>`,
+        story: `<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità delle icone</span></div><p>Per le icone semanticamente rilevanti (non decorative) che non vengono spiegate con testo visibile, aggiungi un testo di spiegazione con l'attributo \`label\`, seguendo il formato \`<it-icon .... label="Significato dell'icona"/>\`.</p></div></div>`,
       },
     },
   },
@@ -402,18 +402,22 @@ export const Dimensioni: Story = {
   parameters: {
     docs: {
       description: {
-        story: `L'input di base ha una dimensione media che non necessita di alcuna classe aggiuntiva.
+        story: `L'input ha **dimensione media** \`md\` come **predefinita**.
 
-Per modificare questa dimensione, puoi utilizzare l'attributo \`size\` il cui valore può essere \`sm\` oppure \`lg\`.
+Per modificare la dimensione, cambia il valore di \`size\` in:
 
-Per modificare invece la dimensione dell’icona, puoi utilizzare l'attributo \`size\` sull'icona in questo modo:
+- \`sm\` per la dimensione piccola;
+- \`lg\` per la dimensione grande.
+
+
+Per modificare invece la dimensione dell’icona, usa l'attributo \`size\` sull'icona e passa il valore desiderato.
 <table>
 <thead>
   <tr><th>Dimensione input</th><th>Attributo size (di it-input)</th><th>Dimensione icona</th></tr>
 </thead>
 <tbody>
   <tr><td>Grande</td><td>\`lg\`</td><td>\`md\`</td></tr>
-  <tr><td>Base (default)</td><td></td><td>\`sm\`</td></tr>
+  <tr><td>Media / base (prefefinita)</td><td></td><td>\`sm\`</td></tr>
   <tr><td>Piccola</td><td>\`sm\`</td><td>\`xs\`</td></tr>
 </tbody>
 </table>
@@ -573,9 +577,9 @@ export const GestioneEventi: Story = {
   parameters: {
     docs: {
       description: {
-        story: `È possibile gestire gli eventi di \`it-input\`, \`it-blur\`, \`it-change\`, \`it-focus\`, \`it-click\` per effettuare operazioni personalizzate, come la validazione esterna o l'aggiornamento di altri campi.
+        story: `Gestendo gli eventi di \`it-input\`, \`it-blur\`, \`it-change\`, \`it-focus\` e \`it-click\` puoi personalizzare le impostazioni e il funzionamento del componente, come modificare il tipo di validazione o gestire l'aggiornamento di altri campi.
 <br/><br/>
-È sufficiente aggiungere un event listener al componente \`<it-input>\` per intercettare gli eventi desiderati. Ad esempio, per gestire l'evento di input, è possibile utilizzare il seguente codice:
+Aggiungi un event listener al componente \`<it-input>\` per intercettare gli eventi che ti interessano. Ad esempio, per gestire l'evento di input, puoi usare questo codice:
 
 \`\`\`js
 document.querySelector('it-input#event-input-example').addEventListener('it-input', (event) => {
@@ -584,7 +588,7 @@ document.querySelector('it-input#event-input-example').addEventListener('it-inpu
 });
 \`\`\`
 
-Il componente, emette anche un evento di tipo \`it-input-ready\` quando l'input è pronto e caricato nel DOM:
+Il componente emette anche un evento di tipo \`it-input-ready\` quando l'input è pronto e caricato nel DOM:
 
 \`\`\`js
 document.querySelector('it-input#event-input-example').addEventListener('it-input-ready', (event) => {
@@ -629,7 +633,7 @@ export const I18n: Story = {
     docs: {
       description: {
         story: `
-Per questo componente sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+Per questo componente sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/internazionalizzazione-i18n--documentazione).
 
 \`\`\`js
 const translation = ${JSON.stringify(i18nIT, null, 2)}

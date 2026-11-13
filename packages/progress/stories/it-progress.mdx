@@ -12,7 +12,7 @@ Indicatori di stato attivo e di avanzamento di un’operazione.
 
 Il componente Progress indicator (`<it-progress>`) mostra lo stato di avanzamento o di elaborazione di un'operazione, come il caricamento di un file o l’invio dei dati di un modulo.
 
-Può essere usato in tre modalità, tramite l'attributo `type`:
+Può essere usato in 3 modalità, tramite l'attributo `type`:
 
 - `bar`, barra di avanzamento lineare;
 - `donut`, avanzamento circolare;
@@ -62,11 +62,11 @@ Se l'operazione non ha percentuale di avanzamento, usa la variante indeterminata
 
 ### Colori
 
-Puoi modificare il colore della barra di avanzamento usando l'attributo `color` con i seguenti valori:
-- `success`,
-- `info`,
-- `warning`,
-- `danger`.
+Puoi modificare il colore della barra di avanzamento usando l'attributo `color` con questi valori:
+- `success` (verde),
+- `info` (grigio),
+- `warning` (marrone),
+- `danger` (rosso).
 
 <Canvas of={ProgressStories.Colori} />
 
@@ -95,7 +95,7 @@ Per personalizzare il colore puoi:
 - ridefinire i token Bootstrap Italia (es. `--bsi-color-background-success`) nel tuo foglio di stile: la
   modifica vale per tutti i componenti, donut e bar compresi;
 - impostare la custom property `--it-progress-donut-color` sul componente, per cambiare il colore del solo
-  donut senza toccare i token:
+  donut senza toccare i token.
 
 ```css
 it-progress[type='donut'] {
@@ -127,12 +127,12 @@ La variante double dello spinner mostra due cerchi concentrici che ruotano in se
 <Canvas of={ProgressStories.SpinnerDoppio} />
 
 
-## Personalizzazione degli stili
+## Personalizzare dgli stili
 
-Per personalizzare gli stili del componente, usa i selettori `::part`:
+Usa questi selettori `::part` per personalizzare gli stili del componente:
 
 - `::part(progress)` e `::part(progress-bar)` per la variante `bar`;
 - `::part(donut-wrapper)` e `::part(donut)` per la variante `donut`;
 - `::part(spinner)` per la variante `spinner`.
 
-[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
+[Vai alla guida sul selettore part](/docs/personalizzare-i-componenti--documentazione#selettore-part)

@@ -214,7 +214,7 @@ const renderUpload = (params: Partial<UploadProps>) => html`
     ?custom-validation="${params['custom-validation']}"
     validity-message="${ifDefined(params['validity-message'] || undefined)}"
   >
-    <span slot="label">${i18nIT.upload_label}</span>
+    <span slot="label">${IT.upload_label}</span>
   </it-upload>
 `;
 
@@ -909,7 +909,7 @@ export const MetodiEPropAvatar: Story = {
 |\`alt\`| Testo alternativo per l'immagine avatar. |
 |\`size\`| Dimensione del componente: \`xxl\` (standard) oppure \`xl\` (piccola). |
 |\`accept\`| Tipi di file accettati (default: \`image/*\`). |
-|\`overlay-label\`| Testo dell'overlay al passaggio del mouse / focus. Default: "Aggiorna" (i18n). |
+|\`overlay-label\`| Testo dell'overlay al passaggio del mouse / focus. Default: "Aggiorna" (). |
 |\`files\`| Array di sola lettura: contiene il file selezionato (\`UploadFile[]\`). |`,
 
     otherMethods: '',
@@ -942,7 +942,7 @@ export const MetodiEPropDragDrop: Story = {
 };
 
 export const I18n: Story = {
-  name: 'i18n',
+  name: 'Internazionalizzazione (i18n)',
   tags: ['!dev'],
   render: () => html`<div class="hide-preview"></div>`,
   parameters: {
@@ -950,7 +950,7 @@ export const I18n: Story = {
     docs: {
       description: {
         story: `
-Per questi componenti sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+Per questi componenti sono disponibili alcune stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/internazionalizzazione-i18n--documentazione).
 
 \`\`\`js
 const translation = ${JSON.stringify(i18nIT, null, 2)}

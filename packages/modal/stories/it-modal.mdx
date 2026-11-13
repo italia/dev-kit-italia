@@ -15,7 +15,7 @@ Usa le modali con moderazione: un uso eccessivo interrompe il normale flusso di 
 [Approfondisci quando e come usare il componente Modal](https://designers.italia.it/design-system/componenti/modal/)
 
 ### Alternative a questo componente
-- Tooltip (in lavorazione) e [Popover](/docs/componenti-popover--documentazione): per spiegare una funzione specifica o fornire informazioni aggiuntive, sono meno invasive di una finestra modale e si possono attivare in diversi modi.
+- [Tooltip](/docs/componenti-tooltip--documentazione) e [Popover](/docs/componenti-popover--documentazione): per spiegare una funzione specifica o fornire informazioni aggiuntive, sono meno invasive di una finestra modale e si possono attivare in diversi modi.
 
 
 ## Anteprima e attributi del componente
@@ -226,18 +226,18 @@ La modale si chiuderà solo tramite il pulsante di chiusura, tramite altre azion
 
 <Canvas of={Stories.BackdropStatico} />
 
-## Proprietà, metodi ed eventi accessibili via js
-Il componente espone dei metodi ed eventi utili per eventuali interazioni via js.
+## Proprietà, metodi ed eventi accessibili via JS
+Il componente espone dei metodi ed eventi utili per eventuali interazioni via JavaScript.
 ### Metodi
 
-Il componente espone i seguenti metodi pubblici:
+Il componente espone questi metodi pubblici:
 -  `show()`, apre la modale;
 -  `hide()`, chiude la modale;
 -  `toggle()`, alterna lo stato.
 <Canvas of={Stories.AttivazioneViaJS} />
 
 ### Eventi
-Il componente emette i seguenti eventi custom:
+Il componente emette questi eventi custom:
 
 - `it-modal-open`, quando la modale si apre;
 - `it-modal-close`, quando la modale si chiude.
@@ -260,8 +260,10 @@ modal.addEventListener('it-modal-close', (e) => {
 
 <Canvas of={Stories.ChiusuraConConferma} />
 
-## Personalizzazione degli stili
-Per personalizzare stili, usa il selettore `::part` passando uno dei seguenti valori a seconda delle parti su cui vuoi agire:
+## Personalizzare il componente
+
+Per personalizzare gli stili del componente, usa il selettore `::part` con questi valori a seconda delle parti su cui vuoi agire:
+
 -  `::part(modal)`;
 -  `::part(modal-content-wrapper)`;
 -  `::part(modal-content)`;
@@ -269,4 +271,4 @@ Per personalizzare stili, usa il selettore `::part` passando uno dei seguenti va
 -  `::part(modal-body)`;
 -  `::part(modal-footer)`.
 
-[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+[Vai alla guida sul selettore part](/docs/personalizzare-i-componenti--documentazione#selettore-part)

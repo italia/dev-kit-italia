@@ -5,7 +5,7 @@ import * as BreadcrumbsStories from './it-breadcrumbs.stories';
 
 # Breadcrumbs
 
-<description>Indicatori di un percorso di navigazione gerarchico che aiuta gli utenti a comprendere la loro posizione all'interno di un sito e a tornare facilmente ai livelli precedenti</description>
+<description>Indicatori di un percorso di navigazione gerarchico che aiuta gli utenti a comprendere la loro posizione all'interno di un sito e a tornare facilmente ai livelli precedenti.</description>
 
 
 ## Cosa fa
@@ -30,7 +30,7 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l’aspet
 Il componente `<it-breadcrumbs>` è il contenitore principale delle breadcrumbs e include uno o più elementi `<it-breadcrumb-item>`.
 Il componente `<it-breadcrumb-item>` è un singolo elemento breadcrumb e va sempre usato come figlio di `<it-breadcrumbs>`.
 
-Il componente `<it-breadcrumb-item>` espone i seguenti slot:
+Il componente `<it-breadcrumb-item>` espone questi slot:
 - **default**, per ogni singola voce delle breadcrumbs. Inserisci un normale link `<a>`, eventualmente accompagnato da altri elementi inline;
 - **separator**, per l'elemento separatore personalizzato (ad esempio un'icona).
 
@@ -98,13 +98,13 @@ Aggiungi l'attributo `dark` per utilizzare la versione delle breadcrumbs su sfon
 
 <Canvas of={BreadcrumbsStories.Sfondo} />
 
-## Personalizzazione degli stili
+## Personalizzare il componente
 
-Per personalizzare gli stili, puoi usare i selettori `::part` dedicati:
+Puoi usare questi selettori `::part` per personalizzare gli stili del componente:
 
 - `::part(breadcrumbs-container)`, per l'elemento `<nav>` che contiene le breadcrumbs;
 - `::part(breadcrumbs)`, per l'elemento `<ol>` che contiene le voci;
 - `::part(breadcrumb-item)`, per ogni singolo elemento `<li>` della lista;
 - `::part(separator)`, per l'elemento usato come separatore tra le voci.
 
-[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
+[Vai alla guida sul selettore part](/docs/personalizzare-i-componenti--documentazione#selettore-part)

@@ -5,14 +5,13 @@ import * as TooltipStories from './it-tooltip.stories';
 
 <Title of={TooltipStories} />
 
-<description>Breve messaggio a comparsa per fornire spiegazioni contestuali e suggerimenti</description>
+<description>Breve messaggio a comparsa per fornire spiegazioni contestuali e suggerimenti.</description>
 
 ## Cosa fa
 
-Il componente Tooltip (`<it-tooltip>`) visualizza una breve etichetta testuale in overlay, posizionata dinamicamente rispetto a un elemento trigger.
-Utilizza [Floating UI](https://floating-ui.com/) per il posizionamento intelligente e si adatta automaticamente allo spazio disponibile.
+Il componente Tooltip (`<it-tooltip>`) visualizza una breve etichetta testuale in overlay, posizionata dinamicamente rispetto a un elemento trigger. Si attiva automaticamente al passaggio del mouse o al focus da tastiera, senza bisogno di fare clic.
 
-A differenza del Popover, il Tooltip è pensato per contenuti brevissimi (una frase o poche parole) e si attiva automaticamente al passaggio del mouse o al focus da tastiera, senza richiedere un click.
+Utilizza [Floating UI](https://floating-ui.com/) per il posizionamento intelligente e si adatta automaticamente allo spazio disponibile.
 
 [Approfondisci quando e come usare il componente Tooltip](https://designers.italia.it/design-system/componenti/tooltip/)
 
@@ -40,21 +39,17 @@ Il tooltip si attiva automaticamente al passaggio del mouse (`mouseenter`) o al 
 
 Il componente implementa le seguenti funzionalità per garantire l'accessibilità:
 
-- **attributi ARIA**: gestisce automaticamente `role="tooltip"` sul pannello e `aria-describedby` sul trigger;
-- **navigazione da tastiera**: supporta la chiusura con `Esc` quando il tooltip è aperto tramite focus;
-- **stato nascosto**: imposta `aria-hidden="true"` sul pannello quando il tooltip non è visibile;
-- **nessun focus steal**: il tooltip non sposta il focus quando viene mostrato.
+- **attributi ARIA**, gestisce automaticamente `role="tooltip"` sul pannello e `aria-describedby` sul trigger;
+- **navigazione da tastiera**, supporta la chiusura con `Esc` quando il tooltip è aperto tramite focus;
+- **stato nascosto**, imposta `aria-hidden="true"` sul pannello quando il tooltip non è visibile;
+- **nessun focus steal**, il tooltip non sposta il focus quando viene mostrato.
 
-I tooltip di Dev Kit Italia restano visibili quando il puntatore si sposta dal trigger al tooltip stesso,
-migliorando così la conformità al criterio [WCAG 2.1 **1.4.13 - Content on Hover or Focus**](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html).
-Per gli utenti da tastiera il requisito è già soddisfatto tramite la gestione del focus.
+I tooltip restano visibili quando il puntatore viene spostato dal trigger al tooltip stesso, in conformità al criterio [WCAG 2.1 1.4.13 - Content on Hover or Focus](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html). Per gli utenti da tastiera il requisito è già soddisfatto tramite la gestione del focus.
 
 <it-callout variant="warning" heading-level="h3">
-<span slot="title">Attenzione</span>
-<p>È importante usare come `trigger` solo elementi HTML che sono tradizionalmente attivabili da tastiera e interattivi (link, pulsanti o elementi di form).</p>
-<p>Sebbene arbitrariamente gli elementi HTML (come `<span>`) possano essere resi attivabili tramite l'attributo `tabindex="0"`,
-ciò aggiungerà interruzioni di tabulazioni potenzialmente dannose per gli utenti che usano la tastiera per navigare.
-Inoltre, la maggior parte delle tecnologie assistive in questa situazione non annuncia il tooltip come ci si potrebbe invece attendere.</p>
+<span slot="title">Accessibilità dell'elemento trigger</span>
+<p>Usa come `trigger` solo elementi HTML interattivi e che possono essere attivati da tastiera, come link, pulsanti ed elementi di form.</p>
+<p>Evita di rendere interattivi elementi che non lo sono nativamente (come, ad esempio, `<span>` aggiungendo `tabindex="0"`). Questo crea tappe aggiuntive nella navigazione da tastiera e può rendere più difficile raggiungere gli altri elementi della pagina.Inoltre, le tecnologie assistive potrebbero non annunciare il tooltip correttamente.</p>
 </it-callout>
 
 ## Posizione
@@ -67,8 +62,9 @@ Il posizionamento si adatta automaticamente allo spazio disponibile.
 
 ## Codice HTML personalizzato
 
-Puoi inserire codice HTML personalizzato nello slot `content`.
-Non è consigliato inserire elementi interattivi, valuta l'uso di [Popover](/docs/componenti-popover--documentazione) per casi d'uso più complessi.
+Puoi inserire codice HTML personalizzato nello slot `content`, ma evita di inserire elementi interattivi.
+
+Per casi d'uso più complessi, valuta l'uso del componente [Popover](/docs/componenti-popover--documentazione).
 
 <Canvas of={TooltipStories.TestoFormattato} />
 
@@ -81,7 +77,7 @@ Per controllarne lo stato, richiama i metodi `showTooltip()`, `hideTooltip()` o 
 
 ## Metodi ed eventi
 
-Puoi controllare programmaticamente il tooltip utilizzando i seguenti metodi:
+Puoi controllare programmaticamente il tooltip utilizzando questi metodi:
 
 ```javascript
 const tooltip = document.querySelector('it-tooltip');

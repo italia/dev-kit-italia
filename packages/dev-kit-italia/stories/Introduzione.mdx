@@ -7,50 +7,49 @@ import { Code } from 'storybook/internal/components';
   <h1 className="visually-hidden">Dev Kit Italia</h1>
   <div>
     <img src="./logo.png" width="500px" alt=".italia dev kit" />
+    <p className="lead mb-5">I Web Components nativi HTML del Design system .italia per sviluppare le interfacce dei servizi digitali della Pubblica Amministrazione.</p>
   </div>
-  <p className="lead mb-5">Dev Kit Italia è un set di Web components che implementa il Design system .italia e i componenti presenti su [UI Kit
-    Italia](https://github.com/italia/design-ui-kit).</p>
-  <p className="lead mb-5">
-    <b>⚠️ Attenzione: questo repository e i relativi pacchetti sono in lavorazione.<br
-      />Attualmente sono pubblicati per permetterne lo sviluppo, non sono consigliati per l'utilizzo in ambienti di
-      produzione.</b>
-  </p>
 </div>
 
-## Il progetto
+<it-callout variant="warning" heading-level="h2">
+<it-icon slot="icon" size="md" name="it-warning-circle"></it-icon>
+<span slot="title">In fase **beta**</span>
+<p>Questi componenti e i relativi pacchetti sono ancora in lavorazione. Ne sconsigliamo l'utilizzo in ambienti di produzione.</p>
+<a href="https://github.com/italia/dev-kit-italia" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>Partecipa allo sviluppo su GitHub<it-icon name="it-arrow-right" size="sm" color="primary"></it-icon></a>
+</it-callout>
 
-Dev Kit Italia è un progetto open source che raccoglie strumenti, componenti e risorse per sviluppare interfacce coerenti con il Design System **.italia**.
 
-### Obiettivo
+## Cos'è Dev Kit Italia
 
-Il suo obiettivo è semplificare la creazione di siti e applicazioni della Pubblica Amministrazione, offrendo componenti pronti all’uso, con documentazione chiara e linee guida condivise.
+Dev Kit Italia è una risorsa *open source* che offre **Web Components nativi HTML**, pronti all'uso, per sviluppare interfacce per i servizi digitali della Pubblica Amministrazione. 
 
-Il progetto nasce per evolvere le attuali librerie di sviluppo (come Bootstrap Italia, React Kit e Angular Kit) verso un sistema basato su **web component** nativi HTML, più flessibile, duraturo e indipendente dai framework.
-Questo approccio permette di:
+Questo kit si basa sul [Design system Italia](https://designers.italia.it/design-system/) ed evolve le attuali librerie di sviluppo [Bootstrap Italia](https://italia.github.io/bootstrap-italia/), [Design React Kit](https://italia.github.io/design-react-kit/latest/?path=/docs/documentazione-welcome--documentazione) e [Design Angular Kit](https://italia.github.io/design-angular-kit) verso un sistema più flessibile, duraturo e indipendente.
+
+L'uso dei Web Components permette di:
 
 - usare gli stessi componenti in **qualsiasi ambiente** di sviluppo;
 - **ridurre** la manutenzione del codice e il **debito tecnico**;
 - garantire **accessibilità** (WCAG 2.2) e uniformità visiva;
 - facilitare la **personalizzazione** tramite design token integrati.
 
-In sintesi, Dev Kit Italia punta a rendere più facile e sostenibile lo sviluppo di siti e servizi pubblici digitali, offrendo strumenti moderni e aperti a chiunque voglia contribuire o creare esperienze utente di qualità.
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>Scopri di più sui Web Components (in inglese)<it-icon name="it-external-link" size="sm" color="primary"></it-icon></a>
 
 ## Come iniziare
 
-Per iniziare, è sufficiente installare il pacchetto `npm` attraverso il seguente comando:
+1. Installa il pacchetto `npm` con questo comando:
 
 ```bash
 npm install @italia/dev-kit-italia
 ```
 
-e importare le risorse necessarie nel vostro progetto così:
+2. Importa le risorse necessarie nel tuo progetto:
 
 ```javascript
 import '@italia/dev-kit-italia/fonts.css';
 import '@italia/dev-kit-italia/styles.css';
 import '@italia/dev-kit-italia/elements.js';
 
-// Pronti a utilizzare i Web Components!
+// Pronti a utilizzare i Web components!
 return (
   <div>
     <it-button ...></it-button>
@@ -58,8 +57,7 @@ return (
 )
 ```
 
-Come alternativa, è possibile installare i singoli pacchetti dei Web Components.
-Sarà comunque necessario importare il file CSS generale come mostrato sopra.
+In alternativa, puoi installare i singoli pacchetti dei componenti. Anche in questo caso dovrai importare il file CSS generale.
 
 ```bash
 npm install @italia/button @italia/dev-kit-italia
@@ -79,6 +77,7 @@ return (
 
 ## Licenza
 
-Il progetto è distribuito con licenza BSD-3 (consultabile nel file [LICENSE](https://github.com/italia/dev-kit-italia/blob/main/LICENSE)),
-un modello ancora più permissivo della classica licenza GPL, in quanto consente di modificare e ridistribuire
-questo software secondo varie modalità, anche di tipo closed-source.
+Il progetto è distribuito con [licenza BSD-3](https://github.com/italia/dev-kit-italia/blob/main/LICENSE). 
+
+Questa licenza, rispetto la classica GPL, consente di modificare e ridistribuire il software in varie modalità, anche di tipo *closed-source*.
+

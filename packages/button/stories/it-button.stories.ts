@@ -318,12 +318,9 @@ export const SfondoScuro: Story = {
     docs: {
       description: {
         story: `
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Trasmettere significato alle tecnologie assistive</span></div>
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Significato dei colori per gli utenti di tecnologie assistive</span></div>
 <p>
-L’uso del colore per aggiungere un significato fornisce solo un’indicazione visiva, che non sarà trasmesso agli utenti di tecnologie assistive –
-come gli screen reader.
-Assicurati che le informazioni denotate dal colore siano rese disponibili anche dal contenuto stesso (es.: il testo
-visibile), o siano incluse attraverso mezzi alternativi, come testo aggiuntivo nascosto con la classe <code>.visually-hidden</code>.</p></div></div>`,
+L’uso del colore per trasmettere significato (conferma, alert, errore) è un'indicazione visiva che non viene trasmessa tramite tecnologie assistive. Assicurati di includere questa informazione nel testo visibile del contenuto stesso o come testo aggiuntivo nascosto con la classe <code>.visually-hidden</code>.</p></div></div>`,
       },
     },
   },
@@ -356,9 +353,9 @@ export const ConIcona: Story = {
     docs: {
       description: {
         story: `
-<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità</span></div>
+<div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità delle icone</span></div>
 <p>
-Le icone sono di default puramente decorative. Nel caso in cui l'icona non debba essere un elemento decorativo, è necessario utilizzare correttamente gli attributi \`label\`, \`role\` e \`aria-hidden\` sul componente \`<it-icon>\`. Per maggiori dettagli visita la [guida dedicata](?path=/docs/componenti-icon--documentazione) al componente \`<it-icon>\`.</p></div></div>
+Le icone sono decorative per impostazione predefinita. Se un'icona ha un significato o una funzione propria, usa correttamente gli attributi \`label\`, \`role\` e \`aria-hidden\` sul componente \`<it-icon>\`. [Approfondisci sulla documentazione di it-icon](?path=/docs/componenti-icon--documentazione)</p></div></div>
 `,
       },
     },

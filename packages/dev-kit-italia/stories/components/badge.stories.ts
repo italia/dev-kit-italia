@@ -42,7 +42,7 @@ export const Dimensione: Story = {
 
 export const BottoniELink: Story = {
   ...meta,
-  name: 'Bottoni e link',
+  name: 'Pulsanti e link',
   parameters: {
     docs: {
       description: {
@@ -93,7 +93,7 @@ Le varianti di colore corrispondono agli stessi status disponibili per il compon
 
 export const Arrotondato: Story = {
   ...meta,
-  name: 'Badges arrotondati',
+  name: 'Badge arrotondati',
   parameters: {
     docs: {
       description: {
@@ -116,7 +116,7 @@ export const Link: Story = {
   parameters: {
     docs: {
       description: {
-        story: `Per trasformare badge in un link, aggiungi una delle classi contestuali \`.badge-*\` all’elemento . In questo modo, il badge risponderà agli stati hover e focus.
+        story: `Per trasformare un badge in un link, aggiungi una delle classi contestuali \`.badge-*\` all’elemento . In questo modo, il badge risponderà agli stati hover e focus.
 `,
       },
     },

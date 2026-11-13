@@ -5,15 +5,13 @@ import * as Stories from './it-stepper.stories';
 
 # Stepper
 
-<description>Elementi di navigazione che mostrano l'avanzamento dell'utente all'interno di una procedura complessa e permettono di navigare tra i vari passaggi di interazione</description>
+<description>Elementi di navigazione che mostrano l'avanzamento dell'utente all'interno di una procedura complessa e permettono di navigare tra i vari passaggi di interazione.</description>
 
 ## Cosa fa
 
-Il componente `<it-stepper>` mostra lo stato di avanzamento di una procedura composta da più passaggi logici.
-Ogni passaggio viene definito con un elemento `<it-stepper-step>` inserito all'interno del componente.
+Il componente Stepper (`<it-stepper>`) mostra lo stato di avanzamento di una procedura composta da più passaggi. Ogni passaggio è rappresentato da un elemento step `<it-stepper-step>` inserito all'interno del componente.
 
-Lo stepper è composto da intestazione, area contenuto e navigazione.
-Puoi mostrare tutte le aree insieme oppure nasconderne alcune quando devi riprodurre solo l'intestazione, solo l'avanzamento o un flusso con salvataggio e conferma.
+Lo stepper è composto da intestazione, area contenuto e navigazione. Puoi mostrare tutte queste parti insieme o nascondere cioè che non ti serve, ad esempio se vuoi mostrare solo l'intestazione, solo l'avanzamento o un flusso con salvataggio e conferma.
 
 [Approfondisci come e quando usare il componente Stepper](https://designers.italia.it/design-system/componenti/steppers/)
 
@@ -28,66 +26,69 @@ Per vedere come cambia il codice, clicca su **Show code**.
 
 ## Accessibilità
 
-- L'area contenuto utilizza `aria-live="polite"` per notificare i lettori di schermo quando cambia lo step attivo.
-- Il passo attivo espone `aria-current="step"` nell'intestazione e nei pallini.
-- I passi confermati includono testo nascosto per screen reader con stato "Confermato".
-- Il passo attivo include testo nascosto con stato "Attivo".
-- Per la variante `numbers`, il testo nascosto include il numero dello step insieme allo stato, ad esempio "Confermato Step 1".
-- Progress bar e pallini usano il totale effettivo dei passi e comunicano lo stato corrente alle tecnologie assistive.
-- I pulsanti di navigazione vengono disabilitati quando si raggiunge il primo o l'ultimo passo disponibile.
-- Il pulsante disabilitato tramite `next-disabled` espone `aria-disabled`, ma non spiega il motivo del blocco: abbinalo a un messaggio visibile, oppure blocca l'avanzamento al click per far comparire i messaggi dei singoli campi, che usano `role="alert"`.
+- L'area contenuto usa `aria-live="polite"` per notificare i lettori di schermo quando cambia lo step attivo.
+- Lo step attivo espone `aria-current="step"` nell'intestazione e nei pallini.
+- Gli step confermati includono testo nascosto per lettori di schermo con stato "Confermato".
+- Lo step attivo include testo nascosto con stato "Attivo".
+- Per la variante `numbers`, il testo nascosto include il numero dello step insieme allo stato (ad esempio "Confermato Step 1").
+- Barra di progresso e pallini usano il totale effettivo degli step e comunicano lo stato corrente alle tecnologie assistive.
+- I pulsanti di navigazione vengono disabilitati quando si raggiunge il primo o l'ultimo step disponibile.
+- Il pulsante disabilitato tramite `next-disabled` espone `aria-disabled`, ma non spiega il motivo del blocco: abbinalo a un messaggio visibile, oppure blocca l'avanzamento al clic per far comparire i messaggi dei singoli campi che usano `role="alert"`.
 
 ## Intestazione
 
-L'intestazione può essere personalizzata tramite l'attributo `header-variant`.
-Sono disponibili tre varianti.
+Puoi personalizzare l'intestazione con una delle 3 varianti disponibili tramite l'attributo `header-variant`.
 
 ### Solo testo
 
-La variante predefinita (`text`) mostra l'etichetta di ciascun passo e il suo stato.
+La variante predefinita (`text`) mostra l'etichetta di ciascuno step e il suo stato.
 
 <Canvas of={Stories.SoloTesto} />
 
 ### Testo e icone
 
-La variante `icons` mostra un'icona prima dell'etichetta di ciascun passo.
-Per ogni `<it-stepper-step>` puoi specificare il nome dell'icona tramite l'attributo `icon`, ad esempio `it-calendar`, `it-lock` o `it-settings`.
+La variante `icons` mostra un'icona prima dell'etichetta di ciascuno step.
+
+Per impostare l'icona da visualizzare, specificane il nome/codice (ad esempio, `it-calendar`, `it-lock` o `it-settings`) nell'attributo `icon` di `<it-stepper-step>`.
 
 <Canvas of={Stories.TestoEIcone} />
 
 ### Testo e numeri
 
-La variante `numbers` mostra il numero ordinale del passo all'interno di un cerchio.
-I passi confermati mostrano una spunta al posto del numero.
+La variante `numbers` mostra il numero ordinale dello step all'interno di un cerchio.
+Gli step confermati mostrano una spunta al posto del numero.
 
 <Canvas of={Stories.TestoENumeri} />
 
 ## Navigazione degli step
 
-La barra di navigazione contiene i pulsanti "Indietro" e "Avanti".
-Le etichette possono essere personalizzate tramite gli attributi `prev-label` e `next-label`.
+La barra di navigazione contiene i pulsanti "Indietro" e "Avanti". Puoi personalizzare le etichette tramite gli attributi `prev-label` e `next-label`.
 
-Puoi navigare anche via JavaScript tramite i metodi pubblici `next()` e `prev()`, oppure modificando l'attributo `current`.
-Ogni cambio di step emette un evento `it-stepper-change` con `detail.step` e `detail.prevStep`.
+Puoi gestire la navigazione anche via JavaScript tramite i metodi pubblici `next()` e `prev()`, oppure modificando l'attributo `current`.
 
-Quando è originato dal click sul pulsante "Avanti", l'evento è annullabile: `preventDefault()` impedisce il cambio di passo.
-Emesso dai metodi `next()` e `prev()` non è annullabile, e non viene emesso affatto se modifichi direttamente `current`.
-Vedi [Validazione del form nello step](#validazione-del-form-nello-step) per l'uso più comune.
+Ogni cambio di step emette un evento `it-stepper-change` con `detail.step` e `detail.prevStep`. Il comportamento dell'evento varia in base a come avviene il cambio di step:
+
+- se il cambio avviene tramite clic sul pulsante «Avanti», l'evento è annullabile e puoi usare `preventDefault()` per impedire il passaggio allo step successivo;
+- se il cambio avviene tramite i metodi `next()` e `prev()`, l'evento non è annullabile;
+- se modifichi direttamente l'attributo `current`, l'evento non viene emesso.
+
+[Approfondisci anche come funziona la validazione di un form nello step](#validazione-del-form-nello-step)
 
 <Canvas of={Stories.Navigazione} />
 
-### Progress bar
+### Barra di progresso
 
 Imposta `mobile-progress="bar"` per mostrare una barra di progresso tra i pulsanti di navigazione.
-Per impostazione predefinita l'indicatore segue il comportamento Bootstrap Italia ed è visibile solo su mobile.
-Per modificare questa impostazione e mostrare l'indicatore su qualsiasi schermo, imposta l'attributo `mobile-progress-on-desktop`.
+
+La barra segue il comportamento Bootstrap Italia ed è visibile solo su mobile. Per mostrarla su qualsiasi dispositivo, imposta l'attributo `mobile-progress-on-desktop`.
 
 <Canvas of={Stories.ProgressBar} />
 
 ### Pallini
 
-Imposta `mobile-progress="dots"` per mostrare dei pallini indicatori tra i pulsanti di navigazione.
-I pallini completati vengono evidenziati e il pallino corrente espone testo accessibile.
+Imposta `mobile-progress="dots"` per mostrare dei pallini indicatori di progresso tra i pulsanti di navigazione.
+
+I  pallini degli step completati vengono evidenziati e il pallino dello step corrente espone testo accessibile.
 
 <Canvas of={Stories.Pallini} />
 
@@ -96,28 +97,30 @@ I pallini completati vengono evidenziati e il pallino corrente espone testo acce
 Per aggiungere un'area di salvataggio sotto la barra di navigazione, usa l'attributo `save-label`.
 Quando l'utente clicca sul pulsante di salvataggio, il componente emette l'evento `it-stepper-save`.
 
-Il titolo e la descrizione dell'area possono essere personalizzati tramite `save-title` e `save-description`.
+Puoi personalizzare il titolo e la descrizione dell'area tramite `save-title` e `save-description`.
 
 <Canvas of={Stories.Salva} />
 
 ## Conferma
 
-Aggiungi l'attributo `show-confirm` per sostituire il pulsante "Avanti" con il pulsante "Conferma".
-Quando l'utente clicca sul pulsante, il componente emette l'evento `it-stepper-confirm`: il componente non compie altre azioni, quindi cosa accade alla conferma è interamente a carico del consumer.
+Aggiungi l'attributo `show-confirm` per sostituire il pulsante *Avanti* con il pulsante *Conferma*.
 
-L'attributo non viene attivato automaticamente sull'ultimo passo: se vuoi che "Conferma" compaia solo alla fine del flusso, imposta `show-confirm` in base allo step attivo.
-Vedi [Validazione del form nello step](#validazione-del-form-nello-step) per un esempio completo.
+Quando l'utente clicca su *Conferma*, il componente emette l'evento `it-stepper-confirm`, senza eseguire altre azioni. Devi quindi definire la logica da eseguire in risposta all'evento, in base alle esigenze del tuo flusso.
+
+L'attributo non si attiva automaticamente nell'ultimo step. Se vuoi mostrare il pulsante *Conferma* solo alla fine del flusso, gestisci dinamicamente `show-confirm` in base allo step attivo.
+
+
+Per un esempio completo, [approfondisci come funziona la validazione di un form nello step](#validazione-del-form-nello-step].
 
 <Canvas of={Stories.Conferma} />
 
-## Validazione del form nello step
+## Validazione di un form nello step
 
-Quando un passo contiene un form, puoi impedire che l'utente avanzi finché i campi obbligatori non sono compilati.
-Sono disponibili due approcci, utilizzabili anche insieme.
+Se uno step contiene un form, puoi impedire il passaggio allo step successivo finché l'utente non ha completato tutti i campi obbligatori nel formato richiesto. Puoi farlo con due approcci, anche usandoli insieme.
 
-Il pulsante "Indietro" non viene mai bloccato: si può sempre tornare al passo precedente da un form non valido.
+Il pulsante *Indietro* deve rimanere sempre attivo, così l'utente ha sempre una via di uscita.
 
-Negli esempi che seguono `show-confirm` viene attivato solo sull'ultimo passo, come descritto in [Conferma](#conferma): lo stepper non riconosce da sé la fine del flusso.
+In questi esempi, `show-confirm` viene attivato solo sull'ultimo step per indicare allo stepper la fine del flusso.
 
 ```js
 const stepper = document.querySelector('it-stepper');
@@ -130,8 +133,11 @@ stepper.addEventListener('it-stepper-change', (e) => {
 
 ### Disabilitare il pulsante
 
-L'attributo `next-disabled` disabilita il pulsante "Avanti", oppure "Conferma" quando è attivo `show-confirm`: è anche l'unico modo per bloccare la conferma, che non ha un comportamento predefinito da annullare.
-Tienilo allineato alla validità del form ascoltando l'evento `it-input`, che i componenti di form propagano fino allo stepper.
+Usa l'attributo `next-disabled` per disabilitare i pulsanti *Avanti* e *Conferma*. 
+
+Questo è anche l'unico metodo per impedire l'invio del form in caso di errori di compilazione, poiché l'evento di conferma (invio) non può essere annullato.
+
+Per mantenere lo stato del pulsante sincronizzato con la validità del form, ascolta l'evento `it-input` che i componenti del form propagano fino allo stepper.
 
 ```js
 const stepper = document.querySelector('it-stepper');
@@ -153,14 +159,14 @@ stepper.addEventListener('it-stepper-change', (e) => {
 
 <Canvas of={Stories.FormValidazione} />
 
-### Bloccare l'avanzamento al click
+### Bloccare l'avanzamento al clic
 
-In alternativa il pulsante resta attivo e l'avanzamento viene annullato al click, mostrando all'utente quali campi mancano.
-Usa l'evento `it-stepper-change`, che è annullabile quando è originato dal click su "Avanti".
+Puoi anche lasciare attivo il pulsante *Avanti* e impedire il passaggio allo step successivo solo dopo il clic, evidenziando all'utente i campi da completare o con errori.
+Usa l'evento `it-stepper-change`, che è annullabile quando è originato dal clic su *Avanti*.
 
-I componenti di form del design kit non mostrano i messaggi nativi del browser: ogni controllo rende il proprio messaggio in linea, nascosto fino al primo invio del form.
-Per farli comparire chiama `requestSubmit()`, che il form intercetta segnalando i campi non validi senza inviare nulla.
-Verifica prima con `checkValidity()`, altrimenti un form valido verrebbe inviato davvero.
+I componenti form del design system non mostrano i messaggi nativi del browser. Ogni controllo gestisce il proprio messaggio di errore in linea, inizialmente nascosto e visibile solo dopo il primo invio del form.
+
+Per mostrare i messaggi di errore, verifica la validità del form con `checkValidity()` e, se il form non è valido, chiama requestSubmit(). In questo modo vengono segnalati i campi da correggere senza inviare i dati.
 
 ```js
 const stepper = document.querySelector('it-stepper');
@@ -179,8 +185,10 @@ stepper.addEventListener('it-stepper-change', (e) => {
 
 ### Validazione asincrona
 
-`preventDefault()` va chiamato in modo sincrono dentro il listener.
-Per un controllo lato server annulla subito l'avanzamento e chiama `next()` al termine della verifica: il metodo pubblico non è annullabile, quindi non viene intercettato di nuovo dal listener.
+Chiama preventDefault() in modo sincrono all'interno del listener dell'evento.
+
+Per eseguire una validazione lato server, annulla subito l'avanzamento e richiama `next()` al termine della verifica con esito positivo. Il metodo pubblico non genera un evento annullabile, quindi non attiva nuovamente il blocco gestito dal listener.
+
 
 ```js
 stepper.addEventListener('it-stepper-change', (e) => {
@@ -195,7 +203,7 @@ stepper.addEventListener('it-stepper-change', (e) => {
 
 ## Sfondo scuro
 
-L'attributo `dark` attiva la variante per sfondo scuro.
+Usa l'attributo `dark` per la variante con sfondo scuro.
 
 <Canvas of={Stories.SfondoScuro} />
 
@@ -210,8 +218,8 @@ Il componente espone le seguenti proprietà, metodi e eventi accessibili via Jav
 ### Proprietà
 
 - `current`, indice (0-based) del passo attivo. Modificarlo naviga direttamente a quel passo, senza emettere `it-stepper-change`.
-- `nextDisabled`, disabilita il pulsante "Avanti", oppure "Conferma" quando `showConfirm` è attivo.
-- `showConfirm`, sostituisce il pulsante "Avanti" con "Conferma". Non viene attivato automaticamente sull'ultimo passo.
+- `nextDisabled`, disabilita il pulsante *Avanti*, oppure *Conferma* quando `showConfirm` è attivo.
+- `showConfirm`, sostituisce il pulsante *Avanti* con *Conferma*. Non viene attivato automaticamente sull'ultimo passo.
 
 ### Metodi
 
@@ -222,22 +230,23 @@ Il componente espone le seguenti proprietà, metodi e eventi accessibili via Jav
 
 Tutti gli eventi sono configurati con `bubbles: true` e `composed: true`.
 
-- `it-stepper-change`, emesso quando cambia il passo attivo. Nel `detail` contiene `{ step: number, prevStep: number }`, rispettivamente il nuovo indice e quello precedente. È cancellabile solo quando è originato dal click sul pulsante "Avanti": in quel caso `event.preventDefault()` impedisce il cambio di passo. Non viene emesso se modifichi direttamente `current`.
-- `it-stepper-save`, emesso al click sul pulsante "Salva". Non ha `detail`.
-- `it-stepper-confirm`, emesso al click sul pulsante "Conferma". Non ha `detail` e non è cancellabile: il componente non compie alcuna azione predefinita alla conferma, quindi non c'è nulla da impedire. Per bloccare la conferma usa `nextDisabled`.
+- `it-stepper-change`, emesso quando cambia il passo attivo. Nel `detail` contiene `{ step: number, prevStep: number }`, rispettivamente il nuovo indice e quello precedente. È cancellabile solo quando è originato dal clic sul pulsante *Avanti*: in quel caso `event.preventDefault()` impedisce il cambio di step. Non viene emesso se modifichi direttamente `current`.
+- `it-stepper-save`, emesso al clic sul pulsante *Salva*. Non ha `detail`.
+- `it-stepper-confirm`, emesso al clic sul pulsante *Conferma*. Non ha `detail` e non è cancellabile: il componente non compie alcuna azione predefinita alla conferma, quindi non c'è nulla da impedire. Per bloccare la conferma usa `nextDisabled`.
 
-## Personalizzazione degli stili
+## Personalizzare il componente
 
 Il componente usa gli stili e le variabili tokenizzate di Bootstrap Italia.
-Per personalizzazioni locali puoi usare il selettore `::part` con questi valori:
 
-- `stepper` - contenitore principale.
-- `header` - area intestazione.
-- `header-list` - lista degli step nell'intestazione.
-- `content` - area contenuto.
-- `nav` - navigazione.
-- `progress` - progress bar mobile.
-- `dots` - pallini mobile.
-- `save` - area di salvataggio.
+Per personalizzazioni locali, puoi usare il selettore `::part` con questi valori:
 
-[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
+- `stepper`, per il contenitore principale;
+- `header`, per l'area di intestazione;
+- `header-list`, per la lista degli step nell'intestazione;
+- `content`, per l'area di contenuto;
+- `nav`, per la navigazione;
+- `progress`, per la barra di progresso mobile;
+- `dots`, per i pallini indicatori di progesso mobile;
+- `save`, per l'area di salvataggio.
+
+[Vai alla guida sul selettore part](/docs/personalizzare-i-componenti--documentazione#selettore-part)

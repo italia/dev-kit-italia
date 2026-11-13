@@ -1,24 +1,33 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
-<Meta title="Accessibilità" />
+<Meta title="Verificare l'accessibilità" />
 
-# Accessibilità
+# Verificare l'accessibilità
 
-Questa guida estende il [fondamento Accessibilità del design system .italia](https://designers.italia.it/design-system/fondamenti/accessibilita/) documentando come si comportano alcuni dei principali strumenti di verifica automatica su pagine realizzate con i web component Dev Kit Italia. In Dev Kit Italia coesistono componenti implementati come web component e altri come documentazione HTML: i primi richiedono accortezze specifiche nella verifica dell'accessibilità, che è appunto l'oggetto di questa guida.
+Il Dev Kit Italia segue le **buone pratiche WAI-ARIA** e **WCAG 2.2**, ma l'accessibilità delle soluzioni che sviluppi dipende anche da come implementi i componenti e dal loro comportamento nel contesto d'uso.
 
-Dev Kit Italia adotta per i web component un [approccio HTML-first con slot](/?path=/docs/documentazione-tecnica--documentazione): il contenuto significativo vive nel light DOM, il componente lo proietta nel shadow DOM e l'accessibility tree del browser lo espone alle tecnologie assistive. Alcuni strumenti di verifica attraversano correttamente il shadow DOM, altri lo ignorano, altri producono falsi positivi.
+Per verificare l'accessibilità in modo affidabile, **combina sempre test automatici con verifiche manuali**, coinvolgendo esperti di accessibilità e utenti reali. Alcuni tool automatici, infatti, non riescono a leggere i contenuti dei componenti nello [Shadow DOM](/?path=/docs/specifiche-tecniche--documentazione#shadow-dom-vs-light-dom) e possono restituire risultati scorretti.
 
-I tool automatici rilevano solo una parte degli errori di accessibilità: molti criteri WCAG richiedono valutazione umana. I controlli manuali sono sempre necessari e per flussi critici è indispensabile coinvolgere esperti di accessibilità e, ove necessario, utenti reali. Vedi la sezione [Verifiche manuali](#verifiche-manuali) per le indicazioni specifiche sui web component.
+  <a href="https://designers.italia.it/design-system/fondamenti/accessibilita/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>Approfondisci sul design system<it-icon name="it-arrow-right" size="sm" color="primary" aria-hidden="true"></it-icon></a>
 
-I contenuti che seguono fanno riferimento ai tool testati al momento della stesura (axe-core v4.11.1, Siteimprove v2.0, ARC Toolkit v5.7.10, WAVE 3.2.7.1, MAUVE++ 4.0.2) su questi componenti: Accordion, Breadcrumbs, Button, Callout, Card, Checkbox, Chip, Dropdown, Hero, Input, Modal, Radio button, Select. La [pagina di test](https://italia.github.io/design-jekyll-devkit-theme/test-a11y/) e i contenuti di questa guida potranno essere integrate nel tempo con nuovi componenti, casi di test e tool aggiuntivi.
+<div className="row">
+  <it-callout variant="primary" highlight="" heading-level="h2">
+    <it-icon slot="icon" size="md" name="it-info-circle"></it-icon>
+    <span slot="title">Validità delle informazioni</span>
+    <p>Le informazioni su questa pagina fanno riferimento ai tool **axe-core v4.11.1**, **Siteimprove v2.0**, **ARC Toolkit v5.7.10**, **WAVE 3.2.7.1**, **MAUVE++ 4.0.2** testati su questi componenti: **Accordion**, **Breadcrumbs**, **Button**, **Callout**, **Card**, **Checkbox**, **Chip**, **Dropdown**, **Hero**, **Input**, **Modal**, **Radio button**, **Select**.</p>
+  </it-callout>
+</div>
 
-Feedback e contributi: [apri una segnalazione](https://github.com/italia/dev-kit-italia/issues) su `italia/dev-kit-italia`.
 
 ---
 
-## Tool consigliati
+## Test con tool automatici
 
-I principali tool di verifica automatica hanno comportamenti molto diversi tra loro su web component che usano shadow DOM come quelli di Dev Kit Italia. La tabella seguente riassume alcuni dei comportamenti osservati sulla pagina di test.
+I principali tool di verifica automatica hanno comportamenti molto diversi tra loro sui web components che usano shadow DOM.
+
+Tra quelli testati, **axe-core** è il tool più affidabile: classifica correttamente sia i casi implementati bene sia gli errori reali. Per una copertura più ampia durante lo sviluppo, combinalo con **pa11y con axe runner** e/o **Siteimprove**.
+
+ Questa tabella riassume alcuni dei comportamenti osservati sulla <a href="https://italia.github.io/design-jekyll-devkit-theme/test-a11y/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}> pagina di test<span className="visually-hidden"> (link esterno, si apre in una nuova scheda)</span><it-icon name="it-external-link" size="sm" color="primary" aria-hidden="true" style={{ transform: 'translateY(-2px)' }}></it-icon></a>.
 
 <table>
   <thead>
@@ -83,8 +92,6 @@ I principali tool di verifica automatica hanno comportamenti molto diversi tra l
   </tbody>
 </table>
 
-Tra i tool testati, **axe-core** è quello più affidabile, classificando correttamente sia i casi implementati bene sia gli errori reali. Per una copertura più ampia durante lo sviluppo, combinarlo con **pa11y con axe runner** e/o **Siteimprove**.
-
 ### Per CLI e CI/CD
 
 ```bash
@@ -106,6 +113,22 @@ Esempio di configurazione `.pa11yci`:
   ]
 }
 ```
+---
+
+## Test automatici in Storybook
+
+Storybook integra strumenti di verifica automatica dell'accessibilità per le singole varianti dei componenti.
+
+### Plugin axe
+
+I risultati delle verifiche del plugin axe sono disponibili nel tab *Accessibility* della storia.
+
+### @web/test-runner con a11ySnapshot
+
+Complementare al plugin axe, permetterà di verificare programmaticamente:
+- Accessibility tree effettivo
+- Navigazione da tastiera con eventi nativi
+- Stati dinamici post-interazione
 
 Aggiungere all'ignore list gli eventuali falsi positivi se documentati, ad esempio `list` per i breadcrumbs. Verificare periodicamente caso per caso che le regole ignorate siano effettivamente falsi positivi.
 
@@ -113,9 +136,11 @@ Aggiungere all'ignore list gli eventuali falsi positivi se documentati, ad esemp
 
 ## Slot obbligatori
 
-Quando uno slot che alimenta un elemento semantico non è popolato, il componente genera un nodo accessibile con nome vuoto nell'accessibility tree — un heading `""` o una label `""`. Il kit segnala il problema nella console del browser (esempio di messaggio: `[it-card] no title slot content found`). Questi warning di sviluppo vanno trattati come errori in CI.
+Quando uno slot che alimenta un elemento semantico non è popolato, il componente genera un nodo accessibile con nome vuoto nell'accessibility tree: un heading `""` o una label `""`. 
 
-Esempi con slot obbligatori non popolati:
+Il kit segnala il problema nella console del browser con un messaggio (ad esempio, `[it-card] no title slot content found`). Questi avvisi di sviluppo vanno trattati come errori in CI.
+
+### Esempi con slot obbligatori non popolati
 
 <table>
   <thead>
@@ -196,7 +221,7 @@ Nella configurazione attuale produce quindi un numero elevato di falsi positivi,
 
 `list` e `listitem` segnalati su `<it-breadcrumbs>`. L'accessibility tree è corretto. Falso positivo documentato nella storia del componente al [paragrafo Accessibilità](/?path=/docs/componenti-breadcrumbs--documentazione#accessibilità).
 
-### `<it-carousel>`: live region (`aria-live`) e comportamento nei screen reader
+### it-carousel: live region (aria-live) e comportamento nei screen reader
 
 Il supporto all'`aria-live` region è incostante tra combinazioni di screen reader, sistemi operativi e browser (es. VoiceOver + Chrome/Firefox su macOS non funziona). Non costituisce una violazione WCAG: l'attributo è opzionale per la specifica W3C e il feedback primario è garantito dal pattern `role="tablist"` del componente. Dettagli e tabella di compatibilità nella storia del componente al [paragrafo Accessibilità](/?path=/docs/componenti-carousel--documentazione#accessibilità).
 
@@ -247,33 +272,23 @@ Mobile:
 1. **Console browser**: durante lo sviluppo, Dev Kit segnala gli slot vuoti obbligatori con warning specifici
 2. **Tab Accessibility di Chrome DevTools**: selezionare l'elemento semantico nel shadow DOM del componente (es. `<h3>` dentro `<it-card>`). Verificare `Name`, `Role` e attributi ARIA
 
----
-
-## Verifiche automatiche in Storybook
-
-Storybook integra strumenti di verifica automatica dell'accessibilità per le singole varianti dei componenti.
-
-### Plugin axe
-
-I risultati delle verifiche del plugin axe sono disponibili nel tab "Accessibility" della storia.
-
-### @web/test-runner con a11ySnapshot
-
-Complementare al plugin axe, permetterà di verificare programmaticamente:
-- Accessibility tree effettivo
-- Navigazione da tastiera con eventi nativi
-- Stati dinamici post-interazione
 
 ---
 
 ## Riferimenti
 
-- [Fondamento Accessibilità di design system .italia](https://designers.italia.it/design-system/fondamenti/accessibilita/)
-- [axe-core](https://github.com/dequelabs/axe-core)
-- [pa11y](https://pa11y.org/)
-- [Open Web Components — testing](https://open-wc.org/docs/testing/testing-package/)
-- [Cross-root ARIA Delegation — proposta W3C](https://github.com/leobalter/cross-root-aria-delegation)
-- [Shadow DOM and accessibility: the trouble with ARIA](https://nolanlawson.com/2022/11/28/shadow-dom-and-accessibility-the-trouble-with-aria/) — Nolan Lawson
-- [How Shadow DOM and accessibility are in conflict](https://alice.pages.igalia.com/blog/how-shadow-dom-and-accessibility-are-in-conflict/) — Alice Boxhall (Igalia)
-- [Testing Accessibility with Shadow Roots](https://dev.to/westbrook/testing-accessibility-with-shadow-roots-55cm) — Westbrook Johnson (Adobe Spectrum)
-- [Testing Web Components with @web/test-runner](https://open-wc.org/blog/testing-web-components-with-web-test-runner/) — Open Web Components
+- <a href="https://designers.italia.it/design-system/fondamenti/accessibilita/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>Fondamento Accessibilità - Design system Italia<it-icon name="it-arrow-right" size="sm" color="primary" aria-hidden="true"></it-icon></a>
+- <a href="https://github.com/dequelabs/axe-core" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>axe-core<span className="visually-hidden"> (link esterno, si apre in una nuova scheda)</span><it-icon name="it-external-link" size="sm" color="primary" aria-hidden="true" style={{ transform: 'translateY(-2px)' }}></it-icon></a>
+- <a href="https://pa11y.org/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>pa11y<span className="visually-hidden"> (link esterno, si apre in una nuova scheda)</span><it-icon name="it-external-link" size="sm" color="primary" aria-hidden="true" style={{ transform: 'translateY(-2px)' }}></it-icon></a>
+- <a href="https://open-wc.org/docs/testing/testing-package/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>Open Web Components - testing<span className="visually-hidden"> (link esterno, si apre in una nuova scheda)</span><it-icon name="it-external-link" size="sm" color="primary" aria-hidden="true" style={{ transform: 'translateY(-2px)' }}></it-icon></a>
+- <a href="https://github.com/leobalter/cross-root-aria-delegation" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>Cross-root ARIA Delegation - proposta W3C<span className="visually-hidden"> (link esterno, si apre in una nuova scheda)</span><it-icon name="it-external-link" size="sm" color="primary" aria-hidden="true" style={{ transform: 'translateY(-2px)' }}></it-icon></a>
+- <a href="https://nolanlawson.com/2022/11/28/shadow-dom-and-accessibility-the-trouble-with-aria/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>Shadow DOM and accessibility: the trouble with ARIA - Nolan Lawson<span className="visually-hidden"> (link esterno, si apre in una nuova scheda)</span><it-icon name="it-external-link" size="sm" color="primary" aria-hidden="true" style={{ transform: 'translateY(-2px)' }}></it-icon></a>
+- <a href="https://alice.pages.igalia.com/blog/how-shadow-dom-and-accessibility-are-in-conflict/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>How Shadow DOM and accessibility are in conflict - Alice Boxhall (Igalia)<span className="visually-hidden"> (link esterno, si apre in una nuova scheda)</span><it-icon name="it-external-link" size="sm" color="primary" aria-hidden="true" style={{ transform: 'translateY(-2px)' }}></it-icon></a>
+- <a href="https://dev.to/westbrook/testing-accessibility-with-shadow-roots-55cm" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>Testing Accessibility with Shadow Roots - Westbrook Johnson (Adobe Spectrum)<span className="visually-hidden"> (link esterno, si apre in una nuova scheda)</span><it-icon name="it-external-link" size="sm" color="primary" aria-hidden="true" style={{ transform: 'translateY(-2px)' }}></it-icon></a>
+- <a href="https://open-wc.org/blog/testing-web-components-with-web-test-runner/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>Testing Web Components with @web/test-runner - Open Web Components<span className="visually-hidden"> (link esterno, si apre in una nuova scheda)</span><it-icon name="it-external-link" size="sm" color="primary" aria-hidden="true" style={{ transform: 'translateY(-2px)' }}></it-icon></a>
+
+---
+
+## Feedback e contributi
+
+<a href="https://github.com/italia/dev-kit-italia/issues" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>Apri una segnalazione sul repository GitHub italia/dev-kit-italia<it-icon name="it-arrow-right" size="sm" color="primary" aria-hidden="true"></it-icon></a>

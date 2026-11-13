@@ -164,7 +164,7 @@ export const ImmagineDiAnteprima: Story = {
         story: `
 Per aggiungere un’immagine di anteprima come copertina al video, usa l’attributo \`poster\` inizializzato con l'url dell’anteprima.
 
-<div class="callout callout-warning"><div class="callout-inner"><div class="callout-title"><span class="text">Attenzione</span></div>
+<div class="callout callout-warning"><div class="callout-inner"><div class="callout-title"><span class="text">Proporzioni delle immagini</span></div>
 <p>Le immagini caricate come copertina devono rispettare la stessa \`aspect ratio\` del video per una corretta visualizzazione.
 </p></div></div>
 
@@ -238,15 +238,15 @@ export const GestirePiuTracceAudio: Story = {
         story: `
 Usare più tracce audio in un video può migliorare l'accessibilità del contenuto, ad esempio aggiungendo tracce audio descrittive per le persone non vedenti o tracce audio in lingue diverse.
 
+Per tutte le opzioni disponibili, [consulta la documentazione di VideoJS](https://videojs.com/guides/options/).
+
 <div class="callout callout-info"><div class="callout-inner"><div class="callout-title"><span class="text">Formati supportati</span></div>
-<p>Video.js offre un’implementazione cross-browser delle tracce audio, a condizione che la tecnologia di riproduzione le supporti. Poiché la riproduzione multi-traccia in formato MP4 è supportata solo da Safari, l'uso dei formati HLS e/o DASH è l'unica soluzione per offrire audio multi-traccia cross-browser.
+<p>Video.js offre l'implementazione cross-browser delle tracce audio, a condizione che la tecnologia di riproduzione le supporti. Poiché la riproduzione multi-traccia in formato MP4 è supportata solo da Safari, l'uso dei formati HLS e/o DASH è l'unica soluzione per offrire audio multi-traccia in modalità cross-browser.
 
 <a href="https://videojs.com/guides/audio-tracks/">Approfondisci la guida di Video.js sulle tracce audio</a></p>
 </div></div>
 
-Per tutte le opzioni disponibili, [consulta la documentazione di VideoJS](https://videojs.com/guides/options/)
-
-Di seguito un esempio in formato HLS multilingua:
+Di seguito un esempio in **formato HLS multilingua**:
 `,
       },
     },
@@ -325,7 +325,7 @@ export const I18n: Story = {
     docs: {
       description: {
         story: `
-Oltre all'attributo \`translations\` che permette di modificare le traduzioni interne al player, sono disponibili ulteriori stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/i18n-internazionalizzazione--documentazione).
+Oltre all'attributo \`translations\` che permette di modificare le traduzioni interne al player, sono disponibili ulteriori stringhe traducibili tramite l'[utility di internazionalizzazione](/docs/internazionalizzazione-i18n--documentazione).
 
 \`\`\`js
 const translation = ${JSON.stringify(i18nIT, null, 2)}

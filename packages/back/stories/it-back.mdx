@@ -9,7 +9,7 @@ import * as BackStories from './it-back.stories';
 
 ## Cosa fa
 
-Il componente Back permette all’utente di tornare alla pagina precedente, risultando particolarmente utile nei processi a più step, come la compilazione di una richiesta di un servizio o di un questionario. Puoi implementarlo come link o pulsante.
+Il componente Back (`<it-back>`) crea un link o un pulsante per tornare alla pagina precedente. È utile nei processi a più step, come la richiesta di un servizio o la compilazione di un questionario.
 
 [Approfondisci quando e come usare il componente Back](https://designers.italia.it/design-system/componenti/back/)
 
@@ -65,9 +65,9 @@ Se vuoi ottenere un pulsante con sola icona e senza testo, includi il testo alte
 
 <Canvas of={BackStories.PulsanteSolaIcona} />
 
-## Proprietà, Metodi, ed Eventi accessibili via JS
+## Proprietà, metodi ed eventi accessibili via JS
 
-Il componente espone i seguenti eventi accessibili via JavaScript.
+Il componente espone questi eventi accessibili via JavaScript.
 
 ### Eventi
-- `it-back-navigate` — emesso al click sul link o pulsante. L'evento è cancellabile: chiamando `event.preventDefault()` si impedisce `window.history.back()` e si può gestire la navigazione indietro secondo il router del proprio framework.
+- `it-back-navigate`, emesso al clic sul link o pulsante. L'evento è cancellabile: chiamando `event.preventDefault()` si impedisce `window.history.back()` e si può gestire la navigazione indietro secondo il router del proprio framework.

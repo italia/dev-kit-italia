@@ -9,7 +9,7 @@ import * as TabsStories from './it-tabs.stories';
 
 ## Cosa fa
 
-Il componente Tabs (`it-tabs`) organizza contenuti correlati in sezioni distinte e consente agli utenti di passare da una sezione all'altra senza uscire dal contesto della pagina. Puoi usarlo sia all'interno di un layout a pagina intera sia all'interno di altri componenti, come modali e pannelli laterali.
+Il componente Tabs (`<it-tabs>`) organizza contenuti correlati in sezioni distinte e consente agli utenti di passare da una sezione all'altra senza uscire dal contesto della pagina. Puoi usarlo sia all'interno di un layout a pagina intera sia all'interno di altri componenti, come modali e pannelli laterali.
 
 
 [Approfondisci quando e come usare il componente Tabs](https://designers.italia.it/design-system/componenti/tabs/)
@@ -207,7 +207,7 @@ Ecco un esempio completo con logica personalizzata di conferma prima della chius
 
 ## Proprietà, metodi ed eventi accessibili via JS
 
-Il componente espone i seguenti metodi e eventi accessibili via JavaScript.
+Il componente espone questi metodi ed eventi accessibili via JavaScript.
 
 ### Metodi
 - `close(panelId: string)` chiude il tab con id corrispondente al `panelId` passato, disattivando il tab e nascondendo il pannello. Se il tab è già chiuso o non esiste, non fa nulla.
@@ -219,11 +219,11 @@ Il componente espone i seguenti metodi e eventi accessibili via JavaScript.
 ## {TabsStories.I18n.name}
 <Description of={TabsStories.I18n}/>
 
-## Personalizzazione degli stili
+## Personalizzare il componente
 
-Per personalizzare gli stili, puoi usare i selettori `::part` dedicati:
+Usa questi selettori `::part` per personalizzare gli stili del componente:
 
-- `it-tab::part(trigger)` - scheda trigger;
-- `it-tab-panel::part(panel)` - contenitore del corpo di ogni pannello.
+- `it-tab::part(trigger)`, per la scheda trigger;
+- `it-tab-panel::part(panel)`, per il contenitore del corpo di ogni pannello.
 
-[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
+[Vai alla guida sul selettore part](/docs/personalizzare-i-componenti--documentazione#selettore-part)

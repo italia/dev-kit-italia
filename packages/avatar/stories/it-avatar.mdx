@@ -7,7 +7,7 @@ import * as AvatarStories from './it-avatar.stories';
 
 # Avatar
 
-<description>Rappresentazione grafica di un utente per identificare visivamente la persona online</description>
+<description>Rappresentazione grafica di un utente per identificare visivamente la persona online.</description>
 
 ## Cosa fa
 
@@ -26,17 +26,17 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 ## Accessibilità
 
-Il componente Avatar implementa automaticamente le seguenti caratteristiche di accessibilità:
+Un avatar implementa automaticamente le seguenti caratteristiche di accessibilità:
 
 - supporto attributi ARIA;
 - gestione di testo alternativo per immagini;
 - stato e presenza comunicati tramite attributi;
-- testo per screen reader nelle varianti testuali e icona.
+- testo per lettori di schermo nelle varianti testuali e icona.
 
 
 ## Avatar con immagine
 
-Il componente Avatar ridimensiona automaticamente l'immagine adattandola al formato circolare e centrandola. Ti consigliamo in ogni caso di usare immagini delle dimensioni corrette.
+Un avatar ridimensiona automaticamente l'immagine adattandola al formato circolare e centrandola. Ti consigliamo in ogni caso di usare immagini delle dimensioni corrette.
 <div class="callout callout-success"><div class="callout-inner"><div class="callout-title"><span class="text">Accessibilità delle immagini</span></div>
 <p>Per ragioni di accessibilità, inserisci il nome dell'utente associato all'avatar all'interno dell'attributo `alt` dell'immagine.</p></div></div>
 
@@ -53,7 +53,7 @@ Oltre ai colori di default, puoi utilizzare uno sfondo a scelta fra:
 
 In questi casi il testo sarà di colore bianco.
 
-Un avatar con testo conterrà uno `<span class="visually-hidden">Nome Utente</span>` contenente il nome dell'utente, utile alle tecnologie assistive.
+Un avatar con testo conterrà uno `<span class="visually-hidden">Nome Utente</span>` con il nome dell'utente, utile alle tecnologie assistive.
 
 <Canvas of={AvatarStories.AvatarConTesto} />
 
@@ -71,7 +71,7 @@ Per associare un avatar a un'azione o un link, usa l'attributo `href` con relati
 
 ## Avatar link con tooltip
 
-È possibile associare un tooltip con maggiori informazioni relative all'utente o all'azione associata utilizzando il [componente tooltip](/docs/componenti-tooltip--documentazione).
+È possibile associare un tooltip con maggiori informazioni relative all'utente o all'azione associata utilizzando il [componente Tooltip](/docs/componenti-tooltip--documentazione).
 
 Per farlo, avvolgi l'avatar in un componente `<it-tooltip>`: inserisci l'avatar nello slot `trigger` e il testo del tooltip nello slot `content`.
 
@@ -117,7 +117,7 @@ Per personalizzare l'indicatore di presenza usa lo **`slot="presence"`**:
 }
 ```
 
-Le traduzioni dei nomi degli stati sono gestite automaticamente tramite il [sistema @italia/i18n](/docs/i18n-internazionalizzazione--documentazione).
+Le traduzioni dei nomi degli stati sono gestite automaticamente tramite il [sistema @italia/i18n](/docs/internazionalizzazione-i18n--documentazione).
 
 <Canvas of={AvatarStories.ComportamentoPresenzaUtente} />
 
@@ -154,7 +154,7 @@ Per personalizzare l'indicatore di stato usa lo **`slot="status"`**:
 }
 ```
 
-Le traduzioni sono gestite automaticamente tramite il [sistema @italia/i18n](/docs/i18n-internazionalizzazione--documentazione).
+Le traduzioni sono gestite automaticamente tramite il [sistema @italia/i18n](/docs/internazionalizzazione-i18n--documentazione).
 
 <Canvas of={AvatarStories.ComportamentoStatusUtente} />
 
@@ -174,7 +174,7 @@ Questa impostazione è particolarmente utile per creare liste di utenti con info
 
 <Canvas of={AvatarStories.GruppiAvatarConTesto} />
 
-## Gruppi di avatar - Avatar Sovrapposti
+## Gruppi di avatar - Avatar sovrapposti
 
 Per visualizzare una lista orizzontale di avatar parzialmente sovrapposti, racchiudili in una lista di tipo `<ul>` con classe `.avatar-group-stacked`. In questo tipo di gruppo puoi anche inserire dei dropdown per racchiudere ulteriori elementi avatar.
 
@@ -204,14 +204,14 @@ Per il nome puoi usare i tag `<h3>` o `<h4>` tramite lo slot. Per il testo estes
 <Canvas of={AvatarStories.AvatarConTestoAggiuntivo} />
 
 
-## Personalizzazione degli stili
+## Personalizzare il componente
 
-Per personalizzare gli stili, puoi usare il selettore `::part` passando il valore `avatar`.
+Puoi usare il selettore `::part` passando il valore `avatar` per personalizzare gli stili del componente.
 
 Altri valori disponibili per il selettore part per i vari slot esposti dal componente sono:
 - `presence`, target dello slot dell'indicatore di presenza;
 - `status`, target dello slot dell'indicatore di stato;
 - `extra-text`, target dello slot dell'testo aggiuntivo.
 
-[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
+[Vai alla guida sul selettore part](/docs/personalizzare-i-componenti--documentazione#selettore-part)
 
