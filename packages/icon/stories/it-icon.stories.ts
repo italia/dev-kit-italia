@@ -114,7 +114,7 @@ export const PersonalizzazioneDegliStili: Story = {
         story: `
 Per la personalizzazione degli stili si può usare il selettore \`::part\` passando il valore \`icon\`.
 
-[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+[Vai alla guida sul selettore part](/docs/personalizzare-i-componenti--documentazione#selettore-part).
 `,
       },
     },
