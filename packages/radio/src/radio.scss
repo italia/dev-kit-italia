@@ -24,8 +24,9 @@
    - fallback: anche quando host ha semplicemente :focus (utile per alcuni casi) */
 :host(:focus-visible) .radio-control {
   box-shadow:
-    0 0 0 2px $focus-outline-color-in,
-    0 0 0 5px $focus-outline-color-out !important;
+    0 0 0 var(--#{$prefix}focus-inner-width) var(--#{$prefix}focus-inner-color),
+    0 0 0 calc(var(--#{$prefix}focus-inner-width) + var(--#{$prefix}focus-outer-width))
+      var(--#{$prefix}focus-outer-color) !important;
   /* assicurati che il controllo non abbia outline propio che interferisca */
   outline: none;
 }

@@ -297,11 +297,12 @@ it-modal#it-nav-modal {
 
     it-dropdown::part(button):focus-visible,
     it-megamenu::part(button):focus-visible {
-      transition: none !important;
       box-shadow:
-        inset 0 0 0 3px var(--#{$prefix}color-outline-focus),
-        inset 0 0 0 5px var(--#{$prefix}color-border-inverse) !important;
-      outline-offset: -3px !important;
+        inset 0 0 0 var(--#{$prefix}focus-outer-width) var(--#{$prefix}focus-outer-color),
+        inset 0 0 0 calc(var(--#{$prefix}focus-inner-width) + var(--#{$prefix}focus-outer-width))
+          var(--#{$prefix}focus-inner-color) !important;
+      outline-offset: calc(var(--#{$prefix}focus-outer-width) * -1) !important;
+      transition: none !important;
     }
 
     it-dropdown,
@@ -322,9 +323,9 @@ it-modal#it-nav-modal {
       &::part(popover-content) {
         position: unset !important;
         min-width: unset !important;
-        --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}navbar-link-padding-x);
-        border-left: 0;
         border-right: 0;
+        border-left: 0;
+        --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}navbar-link-padding-x);
         // padding-left: var(--#{$prefix}navbar-link-padding-x);
       }
 
