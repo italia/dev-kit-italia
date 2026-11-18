@@ -80,18 +80,20 @@ export class ItDropdownItem extends BaseComponent {
         @click=${this.href ? undefined : this.handlePress}
         aria-disabled=${ifDefined((this.disabled && !this.href) || undefined)}
       >
-        ${this.href
-          ? html`<a
-              class=${linkClasses}
-              part="focusable list-item"
-              href=${this.href}
-              role=${ifDefined(hrefRole)}
-              aria-disabled=${ifDefined(this.disabled || undefined)}
-              @keydown=${this.handlePress}
-              @click=${this.handlePress}
-              ><span class="dropdown-item-link" part="dropdown-item-text">${content}</span></a
-            >`
-          : html`<span class=${nonLinkClasses} part="dropdown-item-text">${content}</span>`}
+        ${
+          this.href
+            ? html`<a
+                class=${linkClasses}
+                part="focusable list-item"
+                href=${this.href}
+                role=${ifDefined(hrefRole)}
+                aria-disabled=${ifDefined(this.disabled || undefined)}
+                @keydown=${this.handlePress}
+                @click=${this.handlePress}
+                ><span class="dropdown-item-link" part="dropdown-item-text">${content}</span></a
+              >`
+            : html`<span class=${nonLinkClasses} part="dropdown-item-text">${content}</span>`
+        }
       </li>
     `;
   }

@@ -176,9 +176,11 @@ export class ItAvatar extends BaseLocalizedComponent {
 
     return html`
       <div class="${this.getPresenceClasses()}">
-        ${presenceIcon
-          ? html`<it-icon name="${presenceIcon}" size="xs" variant="white" class="presence-icon"></it-icon>`
-          : nothing}
+        ${
+          presenceIcon
+            ? html`<it-icon name="${presenceIcon}" size="xs" variant="white" class="presence-icon"></it-icon>`
+            : nothing
+        }
         <span class="visually-hidden">${presenceLabel}: ${presenceText}</span>
       </div>
     `;
@@ -208,9 +210,11 @@ export class ItAvatar extends BaseLocalizedComponent {
 
     return html`
       <div class="${this.getStatusClasses()}">
-        ${statusIcon
-          ? html`<it-icon name="${statusIcon}" size="xs" variant="white" class="status-icon"></it-icon>`
-          : nothing}
+        ${
+          statusIcon
+            ? html`<it-icon name="${statusIcon}" size="xs" variant="white" class="status-icon"></it-icon>`
+            : nothing
+        }
         <span class="visually-hidden">${statusLabel}: ${statusText}</span>
       </div>
     `;
@@ -280,9 +284,11 @@ export class ItAvatar extends BaseLocalizedComponent {
     const content = html`
       ${autoType === 'image' ? this.renderImage() : nothing} ${autoType === 'text' ? this.renderText() : nothing}
       ${autoType === 'icon' ? this.renderIcon() : nothing}
-      ${autoType === 'dropdown'
-        ? html`<slot name="avatar-dropdown-content" @slotchange="${onDropdownSlotChange}"></slot>`
-        : nothing}
+      ${
+        autoType === 'dropdown'
+          ? html`<slot name="avatar-dropdown-content" @slotchange="${onDropdownSlotChange}"></slot>`
+          : nothing
+      }
     `;
 
     return content;

@@ -271,16 +271,18 @@ export class ItInput extends FormControl {
               const isMet = sugg.test(this.value, this._getPasswordConfig());
               return html`
                 <div class="suggestion">
-                  ${isMet
-                    ? html` <svg
-                        class="icon icon-xs me-1"
-                        aria-label="${this.$t('passwordSuggestionMetLabel')}"
-                        viewBox="0 0 24 24"
-                        style="width: 1em; height: 1em;"
-                      >
-                        <path d="M9.6 16.9 4 11.4l.8-.7 4.8 4.8 8.5-8.4.7.7-9.2 9.1z"></path>
-                      </svg>`
-                    : nothing}
+                  ${
+                    isMet
+                      ? html` <svg
+                          class="icon icon-xs me-1"
+                          aria-label="${this.$t('passwordSuggestionMetLabel')}"
+                          viewBox="0 0 24 24"
+                          style="width: 1em; height: 1em;"
+                        >
+                          <path d="M9.6 16.9 4 11.4l.8-.7 4.8 4.8 8.5-8.4.7.7-9.2 9.1z"></path>
+                        </svg>`
+                      : nothing
+                  }
                   <span>${sugg.text(this._getPasswordConfig())}</span>
                 </div>
               `;

@@ -1,5 +1,16 @@
 # @italia/dimmer
 
+## 1.0.0-beta.7
+
+### Patch Changes
+
+- [#553](https://github.com/italia/dev-kit-italia/pull/553) [`5df652e`](https://github.com/italia/dev-kit-italia/commit/5df652e4063521667eaf983f83d2f9faed4c9cfd) Thanks [@Fupete](https://github.com/Fupete)! - Apply body font-family/font-size to slotted content
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
 ## 1.0.0-beta.6
 
 ### Patch Changes

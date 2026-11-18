@@ -74,9 +74,13 @@ export class ItHeader extends BaseComponent {
       this.hideHeaderBrand = true;
     }
 
-    if (
-      !(this.headerCenterWrapper || this.headerSlimMenu || this.brandWrapper || this.socialsWrapper || this.menuNav)
-    ) {
+    if (!(
+      this.headerCenterWrapper ||
+      this.headerSlimMenu ||
+      this.brandWrapper ||
+      this.socialsWrapper ||
+      this.menuNav
+    )) {
       this.logger.error('<it-header> could not initialize wrappers.');
       return;
     }

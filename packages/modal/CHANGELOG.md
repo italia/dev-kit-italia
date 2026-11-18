@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.0-beta.7
+
+### Patch Changes
+
+- [#563](https://github.com/italia/dev-kit-italia/pull/563) [`0a87d67`](https://github.com/italia/dev-kit-italia/commit/0a87d671ff088b3af02ffd9569bc9df0fe77ddef) Thanks [@Fupete](https://github.com/Fupete)! - Align modal spacing with Bootstrap Italia and UI Kit Italia: the footer `padding-top` override is removed (now handled by Bootstrap Italia per variant), the bottom margin of the last element of the `content` slot is reset, and the popconfirm text stays at 16px on all breakpoints.
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
 ## 1.0.0-beta.6
 
 ### Patch Changes

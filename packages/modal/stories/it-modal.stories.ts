@@ -308,16 +308,16 @@ export const Popconfirm: Story = {
       <it-modal variant="popconfirm">
         <it-button variant="primary" slot="trigger">Popconfirm basico</it-button>
         <p slot="content">Breve messaggio di conferma inserito nella modale</p>
-        <it-button slot="footer" variant="outline-primary" @click="${closeModal}">Azione 1</it-button>
-        <it-button slot="footer" variant="primary" @click="${closeModal}">Azione 2</it-button>
+        <it-button slot="footer" variant="primary" size="xs" @click="${closeModal}">Azione 1</it-button>
+        <it-button slot="footer" variant="outline-secondary" size="xs" @click="${closeModal}">Azione 2</it-button>
       </it-modal>
 
       <it-modal variant="popconfirm">
         <it-button variant="primary" slot="trigger">Popconfirm con header</it-button>
         <span slot="header">Titolo modale</span>
         <p slot="content">Breve messaggio di conferma inserito nella modale</p>
-        <it-button slot="footer" variant="outline-primary" @click="${closeModal}">Azione 1</it-button>
-        <it-button slot="footer" variant="primary" @click="${closeModal}">Azione 2</it-button>
+        <it-button slot="footer" variant="primary" size="xs" @click="${closeModal}">Azione 1</it-button>
+        <it-button slot="footer" variant="outline-secondary" size="xs" @click="${closeModal}">Azione 2</it-button>
       </it-modal>
     </div>
   `,

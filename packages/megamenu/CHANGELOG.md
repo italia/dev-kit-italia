@@ -1,5 +1,16 @@
 # @italia/megamenu
 
+## 1.0.0-beta.7
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`6052952`](https://github.com/italia/dev-kit-italia/commit/605295289a03497f233c9a5531b83f72c16c5982)]:
+  - @italia/dropdown@1.0.0-beta.7
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
 ## 1.0.0-beta.6
 
 ### Patch Changes

@@ -249,12 +249,14 @@ export class ItProgress extends BaseComponent {
         aria-valuemin="0"
         aria-valuemax="100"
       >
-        ${this.double
-          ? html`
-              <div class="progress-spinner-inner"></div>
-              <div class="progress-spinner-inner"></div>
-            `
-          : ''}
+        ${
+          this.double
+            ? html`
+                <div class="progress-spinner-inner"></div>
+                <div class="progress-spinner-inner"></div>
+              `
+            : ''
+        }
       </div>
     `;
   }

@@ -145,9 +145,9 @@ const renderComponent = (params: ChipProps & { withIcon?: boolean; withDismissBu
       avatar-alt="${ifDefined(avatarAlt || undefined)}"
       a11y-description="${a11yDescription}"
       ?id="${id}"
-      >${withIcon ? iconTemplate(variant ?? '', size ?? 'sm') : nothing}${dismissable && withDismissButton
-        ? dismissTemplate('I am dismissable', isDisabled)
-        : nothing}</it-chip
+      >${withIcon ? iconTemplate(variant ?? '', size ?? 'sm') : nothing}${
+        dismissable && withDismissButton ? dismissTemplate('I am dismissable', isDisabled) : nothing
+      }</it-chip
     >
   `;
 };

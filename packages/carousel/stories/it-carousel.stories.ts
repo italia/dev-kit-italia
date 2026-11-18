@@ -34,14 +34,16 @@ const renderSimpleCard = (image?: boolean, variant?: string, index?: string) => 
         <it-icon color="primary" name="it-video" label="Tipo: Video"></it-icon>
       </div>
     </a>
-    ${image
-      ? html`<figure slot="image" class="figure img-full">
-          <img
-            src="https://picsum.photos/seed/city/800/600"
-            alt="${index}. Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
-          />
-        </figure>`
-      : nothing}
+    ${
+      image
+        ? html`<figure slot="image" class="figure img-full">
+            <img
+              src="https://picsum.photos/seed/city/800/600"
+              alt="${index}. Breve descrizione immagine se ha senso nel contesto, marcare altrimenti come decorativa lasciando l'alt applicato ma vuoto."
+            />
+          </figure>`
+        : nothing
+    }
     <span slot="text">
       Questo è un testo breve che riassume il contenuto della pagina di destinazione in massimo tre o quattro righe,
       senza troncamento.

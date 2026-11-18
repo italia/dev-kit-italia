@@ -8,7 +8,6 @@
 
 @use 'bootstrap-italia/src/scss/forms/forms' as *;
 @use 'bootstrap-italia/src/scss/forms/form-control' as *;
-@use 'bootstrap-italia/src/scss/forms/form-check' as *;
 @use 'bootstrap-italia/src/scss/forms/form-validation' as *;
 
 :host {
@@ -35,7 +34,6 @@
   display: flex;
   width: fit-content;
   align-items: center;
-  padding: var(--#{$prefix}form-input-padding-y) var(--#{$prefix}form-input-padding-x);
   cursor: pointer;
 }
 
@@ -44,7 +42,7 @@
   width: 100%;
   // Use CSS custom property from parent group if set (for success state), otherwise use default
   color: var(--it-radio-label-color, var(--#{$prefix}form-control-label-color));
-  font-size: var(--#{$prefix}label-sm);
+  font-size: var(--#{$prefix}label-font-size);
   font-weight: var(--#{$prefix}font-weight-solid);
   @media (min-width: 576px) {
     font-size: var(--#{$prefix}label-font-size-l);
@@ -97,10 +95,11 @@
   &::after {
     position: absolute;
     z-index: -1;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
+    // 12x12 centered in the 20x20 circle, as in UI Kit Italia
+    top: 4px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
     border-width: 0;
     border-style: solid;
     border-color: transparent;
@@ -135,10 +134,9 @@
 
   &::after {
     z-index: 0;
-    border-width: 2px;
     border-color: var(--#{$prefix}form-checked-color);
     background-color: var(--#{$prefix}form-checked-color);
-    transform: scale(0.64);
+    transform: none;
   }
 }
 

@@ -67,8 +67,6 @@
 
 // HEADER CENTER
 .it-brand-wrapper {
-  --#{$prefix}header-brand-spacing: 0;
-
   it-icon {
     &:not(:defined) {
       &,
@@ -274,10 +272,6 @@ it-modal#it-nav-modal {
     &::part(button) {
       --#{$prefix}btn-text-color: var(--#{$prefix}header-center-text-color);
     }
-  }
-
-  .it-brand-wrapper {
-    --#{$prefix}header-brand-spacing: 0;
   }
 
   //NAV

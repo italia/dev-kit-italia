@@ -436,11 +436,13 @@ export const ToolbarItemBase: ToolbarItemStory = {
         label-extended="${ifDefined(args.labelExtended)}"
         ?divider="${args.divider}"
         ?dropdown="${args.dropdown}"
-        >${args.dropdown
-          ? html` <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
-              <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
-              <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>`
-          : ''}</it-toolbar-item
+        >${
+          args.dropdown
+            ? html` <it-dropdown-item slot="items" href="#">Azione 1</it-dropdown-item>
+                <it-dropdown-item slot="items" href="#">Azione 2</it-dropdown-item>
+                <it-dropdown-item slot="items" href="#">Azione 3</it-dropdown-item>`
+            : ''
+        }</it-toolbar-item
       ></it-toolbar
     >`,
 };

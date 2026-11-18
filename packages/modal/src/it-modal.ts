@@ -50,8 +50,7 @@ export class ItModal extends BaseComponent {
   @property({ type: Boolean, attribute: 'hide-close-button', reflect: true }) hideCloseButton = false;
 
   @property({ type: String, attribute: 'close-button-placement', reflect: true }) closeButtonPlacement:
-    | 'header'
-    | 'backdrop' = 'header';
+    'header' | 'backdrop' = 'header';
 
   @property({ type: String, reflect: true }) variant?: ModalVariant;
 
@@ -571,11 +570,13 @@ export class ItModal extends BaseComponent {
               part="modal-header"
             >
               <slot name="header-icon"></slot>
-              ${hasHeader
-                ? html`<h2 id="${this._titleId}" class="modal-title">
-                    <slot name="header" @slotchange="${this._onHeaderSlotChange}">${this.modalTitle}</slot>
-                  </h2>`
-                : html`<div><slot name="header" @slotchange="${this._onHeaderSlotChange}"></slot></div>`}
+              ${
+                hasHeader
+                  ? html`<h2 id="${this._titleId}" class="modal-title">
+                      <slot name="header" @slotchange="${this._onHeaderSlotChange}">${this.modalTitle}</slot>
+                    </h2>`
+                  : html`<div><slot name="header" @slotchange="${this._onHeaderSlotChange}"></slot></div>`
+              }
               ${this.closeButtonPlacement === 'header' ? this._renderCloseButton() : ''}
             </div>
             <div class="modal-body" tabindex="${enableFocusContent ? '0' : '-1'}" part="focusable modal-body">

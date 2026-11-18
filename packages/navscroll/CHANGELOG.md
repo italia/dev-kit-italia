@@ -1,5 +1,16 @@
 # @italia/navscroll
 
+## 1.0.0-beta.7
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`0a87d67`](https://github.com/italia/dev-kit-italia/commit/0a87d671ff088b3af02ffd9569bc9df0fe77ddef)]:
+  - @italia/modal@1.0.0-beta.7
+  - @italia/button@1.0.0-beta.7
+  - @italia/globals@1.0.0-beta.7
+  - @italia/icon@1.0.0-beta.7
+
 ## 1.0.0-beta.6
 
 ### Patch Changes

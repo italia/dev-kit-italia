@@ -194,16 +194,18 @@ export class ItChip extends BaseComponent {
     const content = html`
       ${this.a11yDescription ? html`<span class="visually-hidden">${this.a11yDescription}</span>` : nothing}
       <slot name="icon"></slot>
-      ${this.avatar
-        ? html`
-            <it-avatar
-              size="${avatarSize}"
-              src="${this.avatar}"
-              alt="${this.avatarAlt}"
-              style="height: ${avatarHeight}"
-            ></it-avatar>
-          `
-        : null}
+      ${
+        this.avatar
+          ? html`
+              <it-avatar
+                size="${avatarSize}"
+                src="${this.avatar}"
+                alt="${this.avatarAlt}"
+                style="height: ${avatarHeight}"
+              ></it-avatar>
+            `
+          : null
+      }
       <span class="chip-label">${this.label}</span>
       <slot name="dismiss-button"></slot>
     `;

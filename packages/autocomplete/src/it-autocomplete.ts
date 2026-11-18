@@ -422,12 +422,11 @@ export class ItAutocomplete extends FormControl {
             aria-expanded="${this._isOpen ? 'true' : 'false'}"
             aria-haspopup="listbox"
             aria-labelledby="${labelId}"
-            aria-describedby="${[
-              this.supportText ? `${inputId}-support` : '',
-              this._showAssistiveHint ? assistiveHintId : '',
-            ]
-              .filter(Boolean)
-              .join(' ') || nothing}"
+            aria-describedby="${
+              [this.supportText ? `${inputId}-support` : '', this._showAssistiveHint ? assistiveHintId : '']
+                .filter(Boolean)
+                .join(' ') || nothing
+            }"
             aria-activedescendant=${ifDefined(
               this._activeIndex >= 0 ? `${inputId}-option-${this._activeIndex}` : undefined,
             )}
@@ -438,63 +437,73 @@ export class ItAutocomplete extends FormControl {
             @focus="${this._handleFocus}"
           />
 
-          ${this._isOpen && this._filteredOptions.length > 0
-            ? html`<ul
-                id="${listboxId}"
-                class="autocomplete-listbox"
-                part="autocomplete-list"
-                role="listbox"
-                aria-label="${this.$t('autocomplete_listboxLabel')}"
-              >
-                ${this._filteredOptions.map((option, index) => {
-                  const position = `${index + 1} ${this.$t('autocomplete_of')} ${this._filteredOptions.length}`;
-                  const ariaLabel =
-                    index === this._activeIndex
-                      ? `${option.label}, ${position}, ${this.$t('autocomplete_option_selected')}`
-                      : `${option.label}, ${position}`;
+          ${
+            this._isOpen && this._filteredOptions.length > 0
+              ? html`<ul
+                  id="${listboxId}"
+                  class="autocomplete-listbox"
+                  part="autocomplete-list"
+                  role="listbox"
+                  aria-label="${this.$t('autocomplete_listboxLabel')}"
+                >
+                  ${this._filteredOptions.map((option, index) => {
+                    const position = `${index + 1} ${this.$t('autocomplete_of')} ${this._filteredOptions.length}`;
+                    const ariaLabel =
+                      index === this._activeIndex
+                        ? `${option.label}, ${position}, ${this.$t('autocomplete_option_selected')}`
+                        : `${option.label}, ${position}`;
 
-                  return html`<li
-                    id="${inputId}-option-${index}"
-                    role="option"
-                    part="autocomplete-option"
-                    tabindex="-1"
-                    aria-selected="${index === this._activeIndex ? 'true' : 'false'}"
-                    aria-posinset="${index + 1}"
-                    aria-setsize="${this._filteredOptions.length}"
-                    aria-label="${ariaLabel}"
-                    class="autocomplete-option ${classMap({ active: index === this._activeIndex })}"
-                    @click="${() => this._handleOptionClick(option.value)}"
-                    @keydown="${(e: KeyboardEvent) => this._handleOptionKeyDown(e, option.value)}"
-                    @mouseenter="${() => this._handleOptionHover(index)}"
-                  >
-                    <span>${option.label}</span>
-                    ${index === this._activeIndex
-                      ? html`<span class="visually-hidden">, ${this.$t('autocomplete_option_selected')}</span>`
-                      : nothing}
-                  </li>`;
-                })}
-              </ul>`
-            : nothing}
+                    return html`<li
+                      id="${inputId}-option-${index}"
+                      role="option"
+                      part="autocomplete-option"
+                      tabindex="-1"
+                      aria-selected="${index === this._activeIndex ? 'true' : 'false'}"
+                      aria-posinset="${index + 1}"
+                      aria-setsize="${this._filteredOptions.length}"
+                      aria-label="${ariaLabel}"
+                      class="autocomplete-option ${classMap({ active: index === this._activeIndex })}"
+                      @click="${() => this._handleOptionClick(option.value)}"
+                      @keydown="${(e: KeyboardEvent) => this._handleOptionKeyDown(e, option.value)}"
+                      @mouseenter="${() => this._handleOptionHover(index)}"
+                    >
+                      <span>${option.label}</span>
+                      ${
+                        index === this._activeIndex
+                          ? html`<span class="visually-hidden">, ${this.$t('autocomplete_option_selected')}</span>`
+                          : nothing
+                      }
+                    </li>`;
+                  })}
+                </ul>`
+              : nothing
+          }
         </div>
 
-        ${this._showAssistiveHint
-          ? html`<div id="${assistiveHintId}" aria-hidden="true" class="visually-hidden">
-              ${this.$t('autocomplete_assistiveHint')}
-            </div>`
-          : nothing}
+        ${
+          this._showAssistiveHint
+            ? html`<div id="${assistiveHintId}" aria-hidden="true" class="visually-hidden">
+                ${this.$t('autocomplete_assistiveHint')}
+              </div>`
+            : nothing
+        }
 
         <div id="${statusId}" role="status" aria-live="polite" aria-atomic="true" class="visually-hidden">
           ${status}
         </div>
 
-        ${this.supportText
-          ? html`<small id="${inputId}-support" class="form-text"
-              ><slot name="support-text">${this.supportText}</slot></small
-            >`
-          : nothing}
-        ${this.invalid && this.validationMessage
-          ? html`<div class="form-feedback text-danger" role="alert">${this.validationMessage}</div>`
-          : nothing}
+        ${
+          this.supportText
+            ? html`<small id="${inputId}-support" class="form-text"
+                ><slot name="support-text">${this.supportText}</slot></small
+              >`
+            : nothing
+        }
+        ${
+          this.invalid && this.validationMessage
+            ? html`<div class="form-feedback text-danger" role="alert">${this.validationMessage}</div>`
+            : nothing
+        }
       </div>
     `;
   }

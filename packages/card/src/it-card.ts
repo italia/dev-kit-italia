@@ -230,27 +230,33 @@ export class ItCard extends BaseComponent {
     const cardBody = hasBody
       ? html`
           <div class="it-card-body" part="body">
-            ${hasSubtitle && this.variant !== 'profile' && this.variant !== 'location'
-              ? html`
-                  <p class="it-card-subtitle" part="subtitle">
-                    <slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>
-                  </p>
-                `
-              : html`<slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>`}
-            ${hasSignature
-              ? html`
-                  <address class="it-card-signature" part="signature">
-                    <slot name="signature" @slotchange=${this.handleSlotChange}></slot>
-                  </address>
-                `
-              : html`<slot name="signature" @slotchange=${this.handleSlotChange}></slot>`}
-            ${hasText
-              ? html`
-                  <p class="it-card-text" part="text">
-                    <slot name="text" @slotchange=${this.handleSlotChange}></slot>
-                  </p>
-                `
-              : html`<slot name="text" @slotchange=${this.handleSlotChange}></slot>`}
+            ${
+              hasSubtitle && this.variant !== 'profile' && this.variant !== 'location'
+                ? html`
+                    <p class="it-card-subtitle" part="subtitle">
+                      <slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>
+                    </p>
+                  `
+                : html`<slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>`
+            }
+            ${
+              hasSignature
+                ? html`
+                    <address class="it-card-signature" part="signature">
+                      <slot name="signature" @slotchange=${this.handleSlotChange}></slot>
+                    </address>
+                  `
+                : html`<slot name="signature" @slotchange=${this.handleSlotChange}></slot>`
+            }
+            ${
+              hasText
+                ? html`
+                    <p class="it-card-text" part="text">
+                      <slot name="text" @slotchange=${this.handleSlotChange}></slot>
+                    </p>
+                  `
+                : html`<slot name="text" @slotchange=${this.handleSlotChange}></slot>`
+            }
             <slot name="body" @slotchange=${this.handleSlotChange}></slot>
           </div>
         `
@@ -288,13 +294,15 @@ export class ItCard extends BaseComponent {
           <div class="it-card-profile-header">
             <div class="it-card-profile-content">
               ${cardTitle}
-              ${hasSubtitle
-                ? html`
-                    <p class="it-card-profile-role" part="subtitle">
-                      <slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>
-                    </p>
-                  `
-                : html`<slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>`}
+              ${
+                hasSubtitle
+                  ? html`
+                      <p class="it-card-profile-role" part="subtitle">
+                        <slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>
+                      </p>
+                    `
+                  : html`<slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>`
+              }
             </div>
             ${cardImage}
           </div>
@@ -308,20 +316,24 @@ export class ItCard extends BaseComponent {
           <div class="it-card-profile-header">
             <div class="it-card-profile-content">
               ${cardTitle}
-              ${hasSubtitle
-                ? html`
-                    <p class="it-card-place-type" part="subtitle">
-                      <slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>
-                    </p>
-                  `
-                : html`<slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>`}
-              ${hasAddress
-                ? html`
-                    <p class="it-card-place-address" part="address">
-                      <slot name="address" @slotchange=${this.handleSlotChange}></slot>
-                    </p>
-                  `
-                : html`<slot name="address" @slotchange=${this.handleSlotChange}></slot>`}
+              ${
+                hasSubtitle
+                  ? html`
+                      <p class="it-card-place-type" part="subtitle">
+                        <slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>
+                      </p>
+                    `
+                  : html`<slot name="subtitle" @slotchange=${this.handleSlotChange}></slot>`
+              }
+              ${
+                hasAddress
+                  ? html`
+                      <p class="it-card-place-address" part="address">
+                        <slot name="address" @slotchange=${this.handleSlotChange}></slot>
+                      </p>
+                    `
+                  : html`<slot name="address" @slotchange=${this.handleSlotChange}></slot>`
+              }
             </div>
             ${cardImage}
           </div>

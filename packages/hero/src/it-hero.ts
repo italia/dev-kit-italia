@@ -119,24 +119,28 @@ export class ItHero extends BaseComponent {
         ${setAttributes(this._ariaAttributes)}
         aria-label=${ifDefined(this.itAriaLabel || undefined)}
       >
-        ${this._hasBackground
-          ? html`
-              <div class="img-responsive-wrapper" part="img-responsive-wrapper">
-                <div class="img-responsive">
-                  <div class="img-wrapper">
-                    <slot name="background" @slotchange=${this._handleSlotBackgroundChange}></slot>
+        ${
+          this._hasBackground
+            ? html`
+                <div class="img-responsive-wrapper" part="img-responsive-wrapper">
+                  <div class="img-responsive">
+                    <div class="img-wrapper">
+                      <slot name="background" @slotchange=${this._handleSlotBackgroundChange}></slot>
+                    </div>
                   </div>
                 </div>
-              </div>
-            `
-          : html` <slot name="background" @slotchange=${this._handleSlotBackgroundChange}></slot> `}
-        ${this._hasText
-          ? html`
-              <div class="container" part="text-container">
-                <slot name="text" @slotchange=${this._handleSlotTextChange}></slot>
-              </div>
-            `
-          : html` <slot name="text" @slotchange=${this._handleSlotTextChange}></slot> `}
+              `
+            : html` <slot name="background" @slotchange=${this._handleSlotBackgroundChange}></slot> `
+        }
+        ${
+          this._hasText
+            ? html`
+                <div class="container" part="text-container">
+                  <slot name="text" @slotchange=${this._handleSlotTextChange}></slot>
+                </div>
+              `
+            : html` <slot name="text" @slotchange=${this._handleSlotTextChange}></slot> `
+        }
       </section>
     `;
   }

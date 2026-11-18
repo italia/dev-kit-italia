@@ -20,11 +20,13 @@ interface NavscrollProps {
 const getBody = (id: string, progress = true) =>
   html`<div class="link-list-wrapper">
     <h3>Header</h3>
-    ${progress
-      ? html`
-          <it-progress type="bar" value="0" class="it-navscroll-progressbar" aria-label="Progress bar"></it-progress>
-        `
-      : html``}
+    ${
+      progress
+        ? html`
+            <it-progress type="bar" value="0" class="it-navscroll-progressbar" aria-label="Progress bar"></it-progress>
+          `
+        : html``
+    }
     <nav>
       <ul class="link-list">
         <li class="nav-item">
