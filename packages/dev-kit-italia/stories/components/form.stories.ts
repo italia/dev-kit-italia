@@ -101,7 +101,7 @@ export const Validazione: Story = {
   render: () =>
     html` <form action="/prova">
       <div class="row">
-        <it-input class="col-md-6" id="email" type="email" placeholder="Validazione prefefinita">
+        <it-input class="col-md-6" id="email" type="email" placeholder="Validazione predefinita">
           <span slot="label">E-mail</span>
         </it-input>
         <it-input

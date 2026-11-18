@@ -19,7 +19,7 @@ Scegli tra 3 componenti distinti in base alle esigenze di caricamento e funziona
 
 - `<it-upload>` mostra una lista verticale dei file caricati con anteprima immagini, ideale per form che richiedono uno o più allegati;
 - `<it-upload-avatar>` crea il campo di caricamento di una foto profilo circolare e mostra la relativa anteprima, ideale per impostazioni account o profilo utente;
-- `<it-upload-drag-drop>` predisponde un'area di trascinamento per il caricamento di file, adatto a flussi che richiedono un'esperienza più guidata.
+- `<it-upload-drag-drop>` predispone un'area di trascinamento per il caricamento di file, adatto a flussi che richiedono un'esperienza più guidata.
 
 Questi componenti delegano la selezione dei file a un `<input type="file">` nativo, accessibile da tastiera e compatibile con le tecnologie assistive. In `<it-upload-avatar>` e `<it-upload-drag-drop>` l'input è nascosto visivamente ma rimane accessibile ai lettori di schermo tramite l'etichetta ARIA associata.
 
@@ -189,10 +189,10 @@ Puoi personalizzare lo stile interno dei componenti con il selettore `::part`.
 Per **it-upload**, usa:
 - `input-label`, per il pulsante/etichetta "Carica file" (elemento `<label>` associato all'input);
 - `file-remove-button`, per il pulsante di rimozione dei file caricati nella variante Lista verticale;
-- `gallery-remove-button`, per pulsante di rimozione delle immagini nella variante Gallery.
+- `gallery-remove-button`, per il pulsante di rimozione delle immagini nella variante Gallery.
 
 Per **it-upload-avatar**, usa:
-- `overlay-label`, per 'etichetta che appare in overlay sopra l'avatar al passaggio del mouse / focus.
+- `overlay-label`, per l'etichetta che appare in overlay sopra l'avatar al passaggio del mouse / focus.
 
 Per **it-upload-drag-drop**, usa:
 - `drop-zone`, per l'area di trascinamento principale (il `<div role="region">`).

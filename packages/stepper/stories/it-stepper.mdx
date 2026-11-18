@@ -11,7 +11,7 @@ import * as Stories from './it-stepper.stories';
 
 Il componente Stepper (`<it-stepper>`) mostra lo stato di avanzamento di una procedura composta da più passaggi. Ogni passaggio è rappresentato da un elemento step `<it-stepper-step>` inserito all'interno del componente.
 
-Lo stepper è composto da intestazione, area contenuto e navigazione. Puoi mostrare tutte queste parti insieme o nascondere cioè che non ti serve, ad esempio se vuoi mostrare solo l'intestazione, solo l'avanzamento o un flusso con salvataggio e conferma.
+Lo stepper è composto da intestazione, area contenuto e navigazione. Puoi mostrare tutte queste parti insieme o nascondere ciò che non ti serve, ad esempio se vuoi mostrare solo l'intestazione, solo l'avanzamento o un flusso con salvataggio e conferma.
 
 [Approfondisci come e quando usare il componente Stepper](https://designers.italia.it/design-system/componenti/steppers/)
 
@@ -166,7 +166,7 @@ Usa l'evento `it-stepper-change`, che è annullabile quando è originato dal cli
 
 I componenti form del kit non mostrano i messaggi nativi del browser. Ogni controllo gestisce il proprio messaggio di errore in linea, inizialmente nascosto e visibile solo dopo il primo invio del form.
 
-Per mostrare i messaggi di errore, verifica la validità del form con `checkValidity()` e, se il form non è valido, chiama requestSubmit(). In questo modo vengono segnalati i campi da correggere senza inviare i dati.
+Per mostrare i messaggi di errore, verifica la validità del form con `checkValidity()` e, se il form non è valido, chiama `requestSubmit()`. In questo modo vengono segnalati i campi da correggere senza inviare i dati.
 
 ```js
 const stepper = document.querySelector('it-stepper');
@@ -185,7 +185,7 @@ stepper.addEventListener('it-stepper-change', (e) => {
 
 ### Validazione asincrona
 
-Chiama preventDefault() in modo sincrono all'interno del listener dell'evento.
+Chiama `preventDefault()` in modo sincrono all'interno del listener dell'evento.
 
 Per eseguire una validazione lato server, annulla subito l'avanzamento e richiama `next()` al termine della verifica con esito positivo. Il metodo pubblico non genera un evento annullabile, quindi non attiva nuovamente il blocco gestito dal listener.
 
@@ -246,7 +246,7 @@ Per personalizzazioni locali, puoi usare il selettore `::part` con questi valori
 - `content`, per l'area di contenuto;
 - `nav`, per la navigazione;
 - `progress`, per la barra di progresso mobile;
-- `dots`, per i pallini indicatori di progesso mobile;
+- `dots`, per i pallini indicatori di progresso mobile;
 - `save`, per l'area di salvataggio.
 
 [Vai alla guida sul selettore part](/docs/personalizzare-i-componenti--documentazione#selettore-part)

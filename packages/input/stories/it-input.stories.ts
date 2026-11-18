@@ -417,7 +417,7 @@ Per modificare invece la dimensione dell’icona, usa l'attributo \`size\` sull'
 </thead>
 <tbody>
   <tr><td>Grande</td><td>\`lg\`</td><td>\`md\`</td></tr>
-  <tr><td>Media / base (prefefinita)</td><td></td><td>\`sm\`</td></tr>
+  <tr><td>Media / base (predefinita)</td><td></td><td>\`sm\`</td></tr>
   <tr><td>Piccola</td><td>\`sm\`</td><td>\`xs\`</td></tr>
 </tbody>
 </table>
