@@ -72,7 +72,7 @@ Ogni cambio di step emette un evento `it-stepper-change` con `detail.step` e `de
 - se il cambio avviene tramite i metodi `next()` e `prev()`, l'evento non è annullabile;
 - se modifichi direttamente l'attributo `current`, l'evento non viene emesso.
 
-[Approfondisci anche come funziona la validazione di un form nello step](#validazione-del-form-nello-step)
+[Approfondisci anche come funziona la validazione di un form nello step](#validazione-di-un-form-nello-step)
 
 <Canvas of={Stories.Navigazione} />
 
@@ -110,7 +110,7 @@ Quando l'utente clicca su *Conferma*, il componente emette l'evento `it-stepper-
 L'attributo non si attiva automaticamente nell'ultimo step. Se vuoi mostrare il pulsante *Conferma* solo alla fine del flusso, gestisci dinamicamente `show-confirm` in base allo step attivo.
 
 
-Per un esempio completo, [approfondisci come funziona la validazione di un form nello step](#validazione-del-form-nello-step].
+Per un esempio completo, [approfondisci come funziona la validazione di un form nello step](#validazione-di-un-form-nello-step).
 
 <Canvas of={Stories.Conferma} />
 
