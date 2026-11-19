@@ -121,7 +121,7 @@ export const PersonalizzareGliStili: Story = {
       canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
       description: {
         story: `
-Usa usare il selettore \`::part\` passando il valore \`section\` per personalizzare il componente. [Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
+Usa il selettore \`::part\` passando il valore \`section\` per personalizzare il componente. [Vai alla guida sul selettore part](/docs/personalizzare-i-componenti--documentazione#selettore-part)
 
 Quando si organizzano i contenuti usando le classi della griglia, non serve aggiungere spazio ai lati. Se proprio necessario, puoi aggiungere spazio laterale usando la variabile \`--#{$prefix}section-padding-x\`.
 

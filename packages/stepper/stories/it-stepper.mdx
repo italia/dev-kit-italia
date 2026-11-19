@@ -11,7 +11,7 @@ import * as Stories from './it-stepper.stories';
 
 Il componente Stepper (`<it-stepper>`) mostra lo stato di avanzamento di una procedura composta da più passaggi. Ogni passaggio è rappresentato da un elemento step `<it-stepper-step>` inserito all'interno del componente.
 
-Lo stepper è composto da intestazione, area contenuto e navigazione. Puoi mostrare tutte queste parti insieme o nascondere cioè che non ti serve, ad esempio se vuoi mostrare solo l'intestazione, solo l'avanzamento o un flusso con salvataggio e conferma.
+Lo stepper è composto da intestazione, area contenuto e navigazione. Puoi mostrare tutte queste parti insieme o nascondere ciò che non ti serve, ad esempio se vuoi mostrare solo l'intestazione, solo l'avanzamento o un flusso con salvataggio e conferma.
 
 [Approfondisci come e quando usare il componente Stepper](https://designers.italia.it/design-system/componenti/steppers/)
 
@@ -72,7 +72,7 @@ Ogni cambio di step emette un evento `it-stepper-change` con `detail.step` e `de
 - se il cambio avviene tramite i metodi `next()` e `prev()`, l'evento non è annullabile;
 - se modifichi direttamente l'attributo `current`, l'evento non viene emesso.
 
-[Approfondisci anche come funziona la validazione di un form nello step](#validazione-del-form-nello-step)
+[Approfondisci anche come funziona la validazione di un form nello step](#validazione-di-un-form-nello-step)
 
 <Canvas of={Stories.Navigazione} />
 
@@ -110,7 +110,7 @@ Quando l'utente clicca su *Conferma*, il componente emette l'evento `it-stepper-
 L'attributo non si attiva automaticamente nell'ultimo step. Se vuoi mostrare il pulsante *Conferma* solo alla fine del flusso, gestisci dinamicamente `show-confirm` in base allo step attivo.
 
 
-Per un esempio completo, [approfondisci come funziona la validazione di un form nello step](#validazione-del-form-nello-step].
+Per un esempio completo, [approfondisci come funziona la validazione di un form nello step](#validazione-di-un-form-nello-step).
 
 <Canvas of={Stories.Conferma} />
 
@@ -118,7 +118,7 @@ Per un esempio completo, [approfondisci come funziona la validazione di un form 
 
 Se uno step contiene un form, puoi impedire il passaggio allo step successivo finché l'utente non ha completato tutti i campi obbligatori nel formato richiesto. Puoi farlo con due approcci, anche usandoli insieme.
 
-Il pulsante *Indietro* deve rimanere sempre attivo, così l'utente ha sempre una via di uscita.
+La validazione non blocca mai il pulsante *Indietro*: l'utente può sempre tornare allo step precedente.
 
 In questi esempi, `show-confirm` viene attivato solo sull'ultimo step per indicare allo stepper la fine del flusso.
 
@@ -135,7 +135,7 @@ stepper.addEventListener('it-stepper-change', (e) => {
 
 Usa l'attributo `next-disabled` per disabilitare i pulsanti *Avanti* e *Conferma*. 
 
-Questo è anche l'unico metodo per impedire l'invio del form in caso di errori di compilazione, poiché l'evento di conferma (invio) non può essere annullato.
+È anche l'unico modo per bloccare la conferma, perché l'evento `it-stepper-confirm` non ha un comportamento predefinito da annullare.
 
 Per mantenere lo stato del pulsante sincronizzato con la validità del form, ascolta l'evento `it-input` che i componenti del form propagano fino allo stepper.
 
@@ -164,9 +164,9 @@ stepper.addEventListener('it-stepper-change', (e) => {
 Puoi anche lasciare attivo il pulsante *Avanti* e impedire il passaggio allo step successivo solo dopo il clic, evidenziando all'utente i campi da completare o con errori.
 Usa l'evento `it-stepper-change`, che è annullabile quando è originato dal clic su *Avanti*.
 
-I componenti form del design system non mostrano i messaggi nativi del browser. Ogni controllo gestisce il proprio messaggio di errore in linea, inizialmente nascosto e visibile solo dopo il primo invio del form.
+I componenti form del kit non mostrano i messaggi nativi del browser. Ogni controllo gestisce il proprio messaggio di errore in linea, inizialmente nascosto e visibile solo dopo il primo invio del form.
 
-Per mostrare i messaggi di errore, verifica la validità del form con `checkValidity()` e, se il form non è valido, chiama requestSubmit(). In questo modo vengono segnalati i campi da correggere senza inviare i dati.
+Per mostrare i messaggi di errore, verifica la validità del form con `checkValidity()` e, se il form non è valido, chiama `requestSubmit()`. In questo modo vengono segnalati i campi da correggere senza inviare i dati.
 
 ```js
 const stepper = document.querySelector('it-stepper');
@@ -185,7 +185,7 @@ stepper.addEventListener('it-stepper-change', (e) => {
 
 ### Validazione asincrona
 
-Chiama preventDefault() in modo sincrono all'interno del listener dell'evento.
+Chiama `preventDefault()` in modo sincrono all'interno del listener dell'evento.
 
 Per eseguire una validazione lato server, annulla subito l'avanzamento e richiama `next()` al termine della verifica con esito positivo. Il metodo pubblico non genera un evento annullabile, quindi non attiva nuovamente il blocco gestito dal listener.
 
@@ -246,7 +246,7 @@ Per personalizzazioni locali, puoi usare il selettore `::part` con questi valori
 - `content`, per l'area di contenuto;
 - `nav`, per la navigazione;
 - `progress`, per la barra di progresso mobile;
-- `dots`, per i pallini indicatori di progesso mobile;
+- `dots`, per i pallini indicatori di progresso mobile;
 - `save`, per l'area di salvataggio.
 
 [Vai alla guida sul selettore part](/docs/personalizzare-i-componenti--documentazione#selettore-part)

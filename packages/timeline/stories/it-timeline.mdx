@@ -30,7 +30,7 @@ Il componente Timeline (`<it-timeline>`) organizza e presenta una sequenza crono
       <span class="text">Test di accessibilità con strumenti di analisi statica</span>
     </div>
     <p>
-      Axe e strumenti simili possono segnalare falsi positivi quando analizzano il componente `it-timeline`, a causa del supporto limitato per Web Components. L'accessibilità del componente è comunque confermata dall'Accessibility Tree e dai test manuali con lettori di schermo.
+      Axe e strumenti simili possono segnalare falsi positivi quando analizzano il componente `it-timeline`, a causa del supporto limitato per Web Components. La struttura accessibile è comunque corretta, come confermato dall'Accessibility Tree e dai test manuali con lettori di schermo.
     </p>
   </div>
 </div>
@@ -99,12 +99,12 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 Il componente nella variante point list è composto da:
 
 - `<it-timeline variant="point-list">`, il contenitore lista (renderizza `<ol>` o `<ul>`);
-- `<it-timeline-point>`,il singolo punto della lista, il cui contenuto deve essere inserito nello slot `content`.
+- `<it-timeline-point>`, il singolo punto della lista, il cui contenuto deve essere inserito nello slot `content`.
 
 La sezione laterale è rappresentata dagli `slot="milestone"` e `slot="time"`, e visualizza informazioni in tre posizioni verticali tramite classi posizionali nei contenuti dello slot `date` o `milestone`:
 
 - `.point-top` (opzionale), per l'elemento superiore (ad esempio, anno, categoria, versione);
-- `.point-main`(obbligatorio), per l'elemento principale (ad esempio, giorno, numero step, icona milestone);
+- `.point-main` (obbligatorio), per l'elemento principale (ad esempio, giorno, numero step, icona milestone);
 - `.point-bottom` (opzionale), per l'elemento inferiore (ad esempio, mese, frazione, label).
 
 Questi elementi vanno inseriti in un elemento con classe `.point-visual` (negli esempi uno `span`). Per rendere il contenuto accessibile, ricordati di:
@@ -136,7 +136,7 @@ Per rendere il blocco aside compatto su desktop come su mobile, applica l'attrib
 
 ### Traguardi e milestone
 
-Per presentare informazioni diverse dalle date nella sezione laterare, usa lo slot `milestone` al posto di `date`.
+Per presentare informazioni diverse dalle date nella sezione laterale, usa lo slot `milestone` al posto di `date`.
 
 #### Traguardi con numeri e sigle
 

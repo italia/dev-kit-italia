@@ -34,7 +34,7 @@ Un transfer presenta in interfaccia 3 parti principali:
 - **lista di destinazione** (destra), ovvero la lista degli elementi selezionati.
 
 
-Un tranfer è composto da 2 elementi:
+Un transfer è composto da 2 elementi:
 
 - `<it-transfer>`, il contenitore principale che gestisce la logica e l'integrazione con un form;
 - `<it-transfer-item>`, il singolo elemento trasferibile, da inserire come figlio diretto di `<it-transfer>`.
@@ -88,7 +88,7 @@ Per rendere un singolo elemento non trasferibile, usa l'attributo `disabled` su 
 
 ## Stato disabilitato
 
-Per disabilitare l'intero componente, impostando l'attributo `disabled` su `<it-transfer>`. L'utente non potrà interagire con le e checkbox e i pulsanti.
+Per disabilitare l'intero componente, imposta l'attributo `disabled` su `<it-transfer>`: l'utente non potrà interagire con le checkbox e i pulsanti.
 
 <Canvas of={TransferStories.Disabilitato} />
 
@@ -117,7 +117,7 @@ Per gli altri errori di validazione, il componente mostra i messaggi nativi del 
 
 ### Validazione esterna (custom)
 
-Puoi gestire la validazione del campo esternamente, ad esempio tramite JavaScript o lato server, impostando l'attributo custom-validation="true". In questo modo, disabiliti la validazione predefinita del browser gestita dal componente.
+Puoi gestire la validazione del campo esternamente, ad esempio tramite JavaScript o lato server, impostando l'attributo `custom-validation="true"`. In questo modo, disabiliti la validazione predefinita del browser gestita dal componente.
 
 #### Campo invalido
 

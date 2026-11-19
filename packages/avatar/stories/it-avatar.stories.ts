@@ -175,7 +175,7 @@ export const PersonalizzazioneDegliStili: Story = {
       canvas: { hidden: true, sourceState: 'none' },
       description: {
         story: `
-Per la personalizzazione degli stili si può usare il selettore \`::part\` passando il valore \`avatar\`. [Vedi qui la guida dettagliata](/docs/personalizzazione-degli-stili--documentazione#selettore-part).
+Per la personalizzazione degli stili si può usare il selettore \`::part\` passando il valore \`avatar\`. [Vedi qui la guida dettagliata](/docs/personalizzare-i-componenti--documentazione#selettore-part).
 \nAltri valori disponibili per il selettore part per i vari slot esposti dal componente sono:
 - \`presence\`: target dello slot dell'indicatore di presenza.
 - \`status\`: target dello slot dell'indicatore di stato.

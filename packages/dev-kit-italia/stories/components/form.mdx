@@ -24,9 +24,9 @@ Per creare layout più complessi, con più colonne, larghezze diverse e opzioni 
 
 - Applica la classe `.row` all'elemento HTML contenitore (ad esempio, un `<div>`) per gestire correttamente la spaziatura tra gli elementi.
 
-- Puoi assegnare una larghezza specifica a una colonna con l'attributo `.col-md-*` (ad esempio, con `.col-md-6` per farle occupare metà dello spazio disponibile a partire dal breakpoint `md` di 768px in poi). Le restanti colonne con classe `.col-md` si divideranno lo spazio rimanente.
+- Puoi assegnare una larghezza specifica a una colonna con la classe `.col-md-*` (ad esempio, con `.col-md-6` per farle occupare metà dello spazio disponibile a partire dal breakpoint `md` di 768px in poi). Le restanti colonne con classe `.col-md` si divideranno lo spazio rimanente.
 
-- Puoi applicare la classi `.col-md-*` sia a un elemento HTML contenitore (ad esempio, un `<div>`), sia direttamente a un campo input (ad esempio, `<it-input class="col-md-6">`).
+- Puoi applicare le classi `.col-md-*` sia a un elemento HTML contenitore (ad esempio, un `<div>`), sia direttamente a un campo input (ad esempio, `<it-input class="col-md-6">`).
 
 <Canvas of={Stories.DimensionamentoColonne} />
 
@@ -45,11 +45,11 @@ Aggiungi `disabled` su un campo del form per disabilitarlo.
 <Canvas of={Stories.DisabilitazioneCampi} />
 
 ## Validazione
-I componenti per i campi di un from (ad esempio, `<it-input>`) supportano la validazione standard del browser a seconda del tipo di campo e/o degli attributi `minlength`, `maxlength`, `pattern` e `required`.
+I componenti per i campi di un form (ad esempio, `<it-input>`) supportano la validazione standard del browser a seconda del tipo di campo e/o degli attributi `minlength`, `maxlength`, `pattern` e `required`.
 
 ### Validazione custom
 
-Per personalizzare la validazione di un campo (lato server o con JS), imposta l' attributo `custom-validation="true"`. La validazione predefinita del componente verrà disabilitata.
+Per personalizzare la validazione di un campo (lato server o con JS), imposta l'attributo `custom-validation="true"`. La validazione predefinita del componente verrà disabilitata.
 
 Ricorda di impostare un messaggio di errore chiaro e conciso attraverso l'attributo `validity-message="Messaggio di errore"`.
 
@@ -101,7 +101,7 @@ In questo esempio la validazione è stata implementata con il [plug-in JustValid
 - [Checkbox](/docs/componenti-form-checkbox--documentazione) (`<it-checkbox>`)
 - [Datepicker](/docs/componenti-form-datepicker--documentazione) (`<it-input>` con `type="date"`)
 - [Input](/docs/componenti-form-input--documentazione) (`<it-input>`)
-- [Number input](/docs/componenti-number-input--documentazione) (`<it-input>` con `type="number"`)
+- [Number input](/docs/componenti-form-number-input--documentazione) (`<it-input>` con `type="number"`)
 - [Radio button](/docs/componenti-form-radio-button--documentazione) (`<it-radio>`)
 - [Select](/docs/componenti-form-select--documentazione) (`<it-select>`)
 - [Timepicker](/docs/componenti-form-timepicker--documentazione) (`<it-input>` con `type="time"`)

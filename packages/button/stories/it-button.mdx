@@ -24,11 +24,11 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 ## Accessibilità
 
 
-- Fai attenzone quando usi le classi `.btn` e `.btn-`: queste applicano agli elementi HTML l'aspetto visivo di un pulsante, indipendentemente dalla loro funzione semantica. Questa discrepanza tra aspetto e significato può generare problemi di accessibilità.
+- Fai attenzione quando usi le classi `.btn` e `.btn-`: queste applicano agli elementi HTML l'aspetto visivo di un pulsante, indipendentemente dalla loro funzione semantica. Questa discrepanza tra aspetto e significato può generare problemi di accessibilità.
 
 - Se l'azione del pulsante non provoca un cambio di pagina, usa esclusivamente il componente `<it-button>`. Se non puoi farlo, usa elementi `<a>` o `<span>` con attributo `role="button"` per comunicarne la funzione alle tecnologie assistive.
 
-- Quando usi l'attributo `disabled`, apllica sempre anche l'attributo `it-aria-describedby` (o un elemento all'interno di `<it-button>` con classe `.sr-only`) per comunicare tramite lettori di schermo il motivo per il quale il pulsante è disabilitato.
+- Quando usi l'attributo `disabled`, applica sempre anche l'attributo `it-aria-describedby` (o un elemento all'interno di `<it-button>` con classe `.sr-only`) per comunicare tramite lettori di schermo il motivo per il quale il pulsante è disabilitato.
 
 #### Attributi ARIA
 
@@ -47,7 +47,7 @@ Questi stili provengono da Bootstrap Italia e usano nomenclature consistenti con
 
 ## Varianti di dimensione
 
-Di default l'attributo `size` è impostato `sm`. Puoi cambiarlo con:
+La dimensione predefinita corrisponde a `sm`, non serve specificarla. Puoi cambiarla con:
 
 - `lg` per la dimensione più grande;
 - `xs` per la dimensione più piccola.
@@ -70,7 +70,7 @@ I pulsanti possono essere di diverso tipo: semplici `button`, pulsanti di tipo `
 
 ## Sfondo scuro
 
-Su sfondo scuro, le varianti `primary`, `secondary` e `link` assumono un aspetto diverso dall'originale per garantirne l'acessibilità.
+Su sfondo scuro, le varianti `primary`, `secondary` e `link` assumono un aspetto diverso dall'originale per garantirne l'accessibilità.
 Per le altre varianti di colore non sono previsti cambiamenti di tonalità.
 
 <Description of={Stories.SfondoScuro}/>
@@ -94,14 +94,14 @@ In base a dove inserisci l'elemento `<it-icon>` all’interno del pulsante, l'ic
 - Nei pulsanti di dimensione `xs` (piccola), usa l'attributo `size="xs"` sull'icona .
 
 ### Icona con contorno circolare
-Per un'icona con contorno contorno circolare, inseriscila all'interno di un elemento con classe `.rounded-icon`.
+Per un'icona con contorno circolare, inseriscila all'interno di un elemento con classe `.rounded-icon`.
 La dimensione dell'icona deve sempre essere  `xs`, quindi `<it-icon>` deve avere sempre l'attributo `size="xs"`.
 
 
 <Canvas of={Stories.ConIconaCerchiata} />
 
 
-## Personalizzare degli stili
+## Personalizzare il componente
 
 Usa il selettore `::part` passando il valore `button` per personalizzare gli stili del componente.
 
