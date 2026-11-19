@@ -1,14 +1,11 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { Code } from 'storybook/internal/components';
 
-<Meta title="Documentazione tecnica" />
+<Meta title="Specifiche tecniche" />
 
-# Documentazione tecnica del progetto Dev Kit Italia
+# Specifiche tecniche
 
-In questa pagina sono descritte le scelte tecniche e le linee guida adottate per la realizzazione della libreria
-**Dev Kit Italia** basata su **Lit** e organizzata in **monorepo**.
-
-L'obiettivo è fornire una base scalabile,
+Dev Kit Italia è una libreria basata su **Lit** e organizzata in **monorepo**. L'obiettivo di progettazione è stato fornire una base scalabile,
 manutenibile e pronta per l'espansione futura.
 
 ## Stack tecnologico
@@ -22,7 +19,7 @@ manutenibile e pronta per l'espansione futura.
 
 Open Web Components fornisce strumenti e convenzioni standardizzate per sviluppare Web Components in modo coerente, scalabile e manutenibile.
 
-**Vantaggi principali:**
+### Vantaggi principali
 
 - <strong>Avvio rapido con best practice consolidate</strong>: include generatori di progetto (`npm @open-wc`) che
   integrano configurazioni moderne (es. Vite, TypeScript, testing).
@@ -81,7 +78,7 @@ L'implementazione di default utilizza **shadow DOM** per:
 - Isolamento del markup interno
 
 pertanto il funzionamento e il rendering dei componenti è garantito esclusivamente con
-javascript abilitato (non è supportato js disabilitato).
+JavaScript abilitato (non è supportato JavaScript disabilitato).
 
 Tuttavia, in alcuni casi specifici (soprattutto legati all'accessibilità), può essere utilizzato il light DOM.
 
@@ -99,7 +96,7 @@ Usare **shadow DOM** di default. Usare **light DOM** solo nei casi in cui ci sia
 ## Migrazione da Bootstrap Italia
 
 I progetti che utilizzano **Bootstrap Italia** possono migrare progressivamente verso i nuovi **Web Components**, seguendo la [guida
-all'upgrade dedicata](/docs/migrazione--documentazione#migrazione-da-bootstrap-italia).
+all'upgrade dedicata](/docs/migrare-da-bootstrap-italia--documentazione#migrazione-da-bootstrap-italia).
 
 Vantaggi della migrazione a Web Components:
 

@@ -112,8 +112,8 @@ export const EsempioInterattivo: Story = {
   render: (args) => html`<div class="p-4" style="background-color: #e9ecef;">${renderSection(args)}</div>`,
 };
 
-export const PersonalizzazioneDegliStili: Story = {
-  name: 'Personalizzazione degli stili',
+export const PersonalizzareGliStili: Story = {
+  name: 'Personalizzare gli stili',
   tags: ['!dev'],
   parameters: {
     viewMode: 'docs', // assicura che si apra la tab Docs anziché Canvas
@@ -121,7 +121,7 @@ export const PersonalizzazioneDegliStili: Story = {
       canvas: { hidden: true, sourceState: 'none' }, // nasconde solo il canvas nella docs page
       description: {
         story: `
-Per la personalizzazione degli stili puoi usare il selettore \`::part\` passando il valore \`section\`. [Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
+Usa usare il selettore \`::part\` passando il valore \`section\` per personalizzare il componente. [Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
 
 Quando si organizzano i contenuti usando le classi della griglia, non serve aggiungere spazio ai lati. Se proprio necessario, puoi aggiungere spazio laterale usando la variabile \`--#{$prefix}section-padding-x\`.
 

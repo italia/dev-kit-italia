@@ -9,7 +9,7 @@ import * as Stories from './it-notification.stories';
 
 ## Cosa fa
 
-Il componente Notification (`it-notification`), mostra messaggi temporanei in sovrimpressione per informare l’utente su aggiornamenti, modifiche o azioni avvenute sul sito o servizio. Questi messaggi tendono a scomparire dopo pochi secondi, quindi potrebbero non essere sempre notati o letti attentamente.
+Il componente Notification (`<it-notification>`), mostra messaggi temporanei in sovrimpressione per informare l’utente su aggiornamenti, modifiche o azioni avvenute sul sito o servizio. Questi messaggi tendono a scomparire dopo pochi secondi, quindi potrebbero non essere sempre notati o letti attentamente.
 
 [Approfondisci come e quando usare il componente Notification](https://designers.italia.it/design-system/componenti/notifications/)
 
@@ -127,11 +127,11 @@ notification.addEventListener('it-notification-close', (e) => {
 });
 ```
 
-## Personalizzazione degli stili
+## Personalizzare il componente
 
-Per personalizzare gli stili, usa i selettori `::part` dedicati:
+Usa questi selettori `::part` per personalizzare gli stili del componente:
 
-- `notification`, per personalizzare il contenitore principale;
-- `title`, per personalizzare il titolo
+- `notification`, per il contenitore principale;
+- `title`, per il titolo.
 
-[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
+[Vai alla guida sul selettore part](/docs/personalizzare-i-componenti--documentazione#selettore-part)

@@ -9,7 +9,7 @@ import * as Stories from './it-alert.stories';
 
 ## Cosa fa
 
-Il componente Alert permette di creare messaggi di avviso contestuali che non interrompono il flusso di navigazione. Questi messaggi sono utili per **errori o problemi tecnici**, **conferme di completamento**, **eventi importanti** come scadenze e imprevisti.
+Il componente Alert (`<it-alert>`) permette di creare messaggi di avviso contestuali che non interrompono il flusso di navigazione. Questi messaggi sono utili per **errori o problemi tecnici**, **conferme di completamento**, **eventi importanti** come scadenze e imprevisti.
 
 [Approfondisci come e quando usare il componente Alert](https://designers.italia.it/design-system/componenti/alert/)
 
@@ -59,9 +59,9 @@ Per dare risalto a un link all'interno dell'alert, usa la classe `.alert-link`.
 
 ## Contenuto aggiuntivo
 
-Puoi aggiungere elementi HTML all'interno di un alert, come intestazioni, paragrafi e divisori.
+All'interno di un alert puoi aggiungere elementi HTML come intestazioni, paragrafi e divisori.
 
-**Nota bene**: nell'esempio è stata usata l'intestazione `<h4>` soltanto a scopo dimostrativo.
+**Nota bene**: nell'esempio abbiamo usato l'intestazione `<h4>` soltanto a scopo dimostrativo.
 Usa sempre i tag di intestazione in modo coerente con la gerarchia dei contenuti della pagina che stai creando.
 
 <Canvas of={Stories.ContenutoAggiuntivo} />
@@ -105,12 +105,12 @@ alert.addEventListener('it-alert-close', (e) => {
 
 <Canvas of={Stories.ChiusuraConLogicaPersonalizzata} />
 
-## Proprietà, Metodi, ed Eventi accessibili via JS
+## Proprietà, metodi ed eventi accessibili via JS
 
-Il componente espone i seguenti metodi e eventi accessibili via JavaScript.
+Il componente espone questi metodi e eventi accessibili via JavaScript.
 
 ### Metodi
-- `close()` — chiude l'alert con animazione di dissolvenza e lo rimuove dal DOM. Se presente, sposta il focus sul pulsante di chiusura dell'alert adiacente.
+- `close()`, chiude l'alert con animazione di dissolvenza e lo rimuove dal DOM. Se presente, sposta il focus sul pulsante di chiusura dell'alert adiacente.
 
 ### Eventi
-- `it-alert-close` — emesso al click sul pulsante di chiusura. L'evento è cancellabile: chiamando `event.preventDefault()` si impedisce la rimozione automatica. Il `detail` contiene `alert`, riferimento all'elemento `<it-alert>` corrente.
+- `it-alert-close`, emesso al click sul pulsante di chiusura. L'evento è cancellabile: chiamando `event.preventDefault()` si impedisce la rimozione automatica. Il `detail` contiene `alert`, riferimento all'elemento `<it-alert>` corrente.

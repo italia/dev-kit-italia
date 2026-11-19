@@ -75,7 +75,7 @@ export const Autodimensionamento: Story = {
         <it-input class="col-md-6 col-lg-auto" id="nome" label-hidden placeholder="Nome e cognome">
           <span slot="label">Nome e cognome</span>
         </it-input>
-        <it-input class="col-md-6 col-lg-auto" id="username" label-hidden placeholder="username">
+        <it-input class="col-md-6 col-lg-auto" id="username" label-hidden placeholder="Username">
           <span slot="label">Username</span><span slot="icon">@</span>
         </it-input>
         <div class="col-6 col-md-3 col-lg-auto">
@@ -90,7 +90,7 @@ export const DisabilitazioneCampi: Story = {
   name: 'Disabilitazione di campi',
   render: () =>
     html` <form>
-      <it-input id="nome" label-hidden placeholder="Esempio input disabilitato" disabled>
+      <it-input id="nome" label-hidden placeholder="Input disabilitato" disabled>
         <span slot="label">Esempio input disabilitato</span>
       </it-input>
     </form>`,
@@ -101,7 +101,7 @@ export const Validazione: Story = {
   render: () =>
     html` <form action="/prova">
       <div class="row">
-        <it-input class="col-md-6" id="email" type="email" placeholder="Validazione di default">
+        <it-input class="col-md-6" id="email" type="email" placeholder="Validazione prefefinita">
           <span slot="label">E-mail</span>
         </it-input>
         <it-input

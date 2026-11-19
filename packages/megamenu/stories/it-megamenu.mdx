@@ -40,10 +40,10 @@ Modifica gli attributi nella tabella per personalizzare in tempo reale l'aspetto
 
 Il componente `<it-megamenu>` espone i seguenti slot:
 
-- **(default)**, per il contenuto principale, ovvero l'area contenente i link principali del megamenu tramite elementi `<it-dropdown-item>`, viene inserito direttamente nel componente;
-- **slot="header"**, per l'intestazione del megamenu, visualizzata sopra i link principali. Può contenere un link alla sezione principale del menu. Il markup html deve essere come quello nell'esempio del Megamenu completo;
-- **slot="footer"**, per il footer del megamenu, visualizzato sotto i link principali. Può contenere un link alla sezione principale del menu o altri link in evidenza. Puoi anche posizionarlo sulla parte destra tramite l'apposito attributo sul `<it-megamenu>`;
-- **slot="description"**, per contenuti aggiuntivi opzionali, visualizzati a sinistra dei link principali. Può contenere una immagine e del testo. Il markup HTML deve essere come quello nell'esempio del megamenu completo.
+- `(default)`, per il contenuto principale, ovvero l'area contenente i link principali del megamenu tramite elementi `<it-dropdown-item>`, viene inserito direttamente nel componente;
+- `slot="header"`, per l'intestazione del megamenu, visualizzata sopra i link principali. Può contenere un link alla sezione principale del menu. Il markup html deve essere come quello nell'esempio del Megamenu completo;
+- `slot="footer"`, per il footer del megamenu, visualizzato sotto i link principali. Può contenere un link alla sezione principale del menu o altri link in evidenza. Puoi anche posizionarlo sulla parte destra tramite l'apposito attributo sul `<it-megamenu>`;
+- `slot="description"`, per contenuti aggiuntivi opzionali, visualizzati a sinistra dei link principali. Può contenere una immagine e del testo. Il markup HTML deve essere come quello nell'esempio del megamenu completo.
 
 ## Accessibilità
 Il megamenu è un componente della navigazione principale del sito che richiede particolari attenzioni di accessibilità:
@@ -91,11 +91,12 @@ Usa l'attributo `footer-position="right"` per posizionare i link call to action 
 <Canvas of={Stories.MegamenuCTARight} />
 
 
-## Personalizzazione degli stili
+## Prsonalizzare gli stili
 
-Per personalizzare gli stili, puoi usare i selettori `::part` dedicati:
+Usa questi selettori `::part` per personalizzare gli stili del componente:
+
 - `::part(button)`, per l'elemento trigger;
 - `::part(icon)`, per l'icona del bottone trigger;
 - `::part(megamenu-content)`, per il contenitore del megamenu.
 
-[Vai alla guida sul selettore part](/docs/personalizzazione-degli-stili--documentazione#selettore-part)
+[Vai alla guida sul selettore part](/docs/personalizzare-i-componenti--documentazione#selettore-part)

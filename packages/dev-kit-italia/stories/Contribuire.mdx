@@ -4,7 +4,15 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Come contribuire
 
-Per installare la libreria e avviare Storybook in locale, è necessario avere installato [Node.js](https://nodejs.org/) e [pnpm](https://pnpm.io/).
+Puoi contribuire allo sviluppo di Dev Kit Italia testando la libreria nel tuo ambiente di lavoro, verificandone l'integrazione con diversi framework JavaScript e segnalando eventuali problemi o proponendo miglioramenti tramite GitHub.
+
+<a href="https://github.com/italia/dev-kit-italia" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>Vai al repository GitHub italia/dev-kit-italia<it-icon name="it-arrow-right" size="sm" color="primary" aria-hidden="true"></it-icon></a>
+
+---
+
+## Installare la libreria in locale
+
+Per installare la libreria e avviare Storybook in locale, devi aver installato <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>Node.js<span className="visually-hidden"> (link esterno, si apre in una nuova scheda)</span><it-icon name="it-external-link" size="sm" color="primary" aria-hidden="true" style={{ transform: 'translateY(-2px)' }}></it-icon></a> e <a href="https://pnpm.io/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>pnpm<span className="visually-hidden"> (link esterno, si apre in una nuova scheda)</span><it-icon name="it-external-link" size="sm" color="primary" aria-hidden="true" style={{ transform: 'translateY(-2px)' }}></it-icon></a>.
 
 Per installare le dipendenze:
 
@@ -24,7 +32,7 @@ Per avviare Storybook in locale:
 pnpm storybook
 ```
 
-**Durante lo sviluppo:**
+### Durante lo sviluppo
 
 - Documentazione/Storie e tipi: si aggiornano automaticamente ✨
 - Componenti: puoi ricompilare il solo package modificato
@@ -37,7 +45,7 @@ pnpm build --filter=@italia/button
 
 ## Testare l'integrazione in altri framework JS
 
-Si consiglia di partire creando un progetto di esempio utilizzando il framework desiderato e importando i Web Components da Dev Kit Italia.
+1. Crea un progetto di esempio con il framework desiderato:
 
 ```bash
 # Esegui questo comando
@@ -45,13 +53,13 @@ npm create vite@latest test-app
 # Poi segui il prompt!
 ```
 
-Dopo aver creato il progetto, è possibile installare Dev Kit Italia come dipendenza:
+2. Dopo aver creato il progetto, installa Dev Kit Italia come dipendenza:
 
 ```bash
 npm install @italia/dev-kit-italia
 ```
 
-A questo punto bisogna importare i Web Components nel progetto:
+3. Importa i componenti nel progetto:
 
 ```javascript
 import '@italia/dev-kit-italia/fonts.css';
@@ -66,8 +74,7 @@ return (
 )
 ```
 
-Come alternativa, è possibile installare i singoli pacchetti dei Web Components.
-Sarà comunque necessario importare il file CSS generale come mostrato sopra.
+Come alternativa, puoi installare i singoli pacchetti dei componenti. Dovrai comunque importare il file CSS generale come mostrato sopra.
 
 ```bash
 npm install @italia/button @italia/dev-kit-italia
@@ -87,18 +94,18 @@ return (
 
 ## Applicazioni predefinite per il testing
 
-All'interno di questo progetto, sotto alla cartella `/examples` sono gia disponibili alcune applicazioni create con i framework **Angular**, **React**, **Svelte** e **Vue** che consentono di testare l'attuale versione della libreria (o del branch corrente).
+Nella cartella `/examples` trovi alcune applicazioni create con i framework **Angular**, **React**, **Svelte** e **Vue** con cui puoi testare l'attuale versione della libreria (o del branch corrente).
 
 ### Come testare
 
-1. compilare sempre la versione corrente della libreria posizionandosi nella root con
+1. Compila sempre la versione corrente della libreria posizionandoti nella root con:
 
 ```bash
 pnpm install # Per installare tutte le dipendeze dei vari packages
 pnpm build
 ```
 
-2. posizionarsi nella cartella del framework che si vuole testare. Ad esempio se vogliamo testare il framework React (oppure Vue, o Svelte):
+2. Posizionati nella cartella del framework che vuoi testare. Ad esempio, per testare il framework React (oppure Vue o Svelte):
 
 ```bash
 cd examples/react-app
@@ -106,7 +113,7 @@ npm install # Per copiare nella node_modules la versione compilata di dev-kit-it
 npm run dev
 ```
 
-Se invece si vuole testare l'app Angular, è necessario fare:
+Se invece vuoi testare l'app Angular, esegui:
 
 ```bash
 cd examples/angular-app
