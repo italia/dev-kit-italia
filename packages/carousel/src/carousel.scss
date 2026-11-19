@@ -55,11 +55,11 @@ button:focus-visible,
 p a {
   &:focus:not(:focus-visible):not(.btn) {
     /* focus da mouse o script, esclusi anche i .btn */
-    background: $focus-outline-color-in;
+    background: var(--#{$prefix}focus-inner-color);
     box-shadow: none !important;
     color: var(--#{$prefix}color-link) !important;
 
-    outline: 3px $focus-outline-color-out solid !important;
+    outline: var(--#{$prefix}focus-outer-width) solid var(--#{$prefix}focus-outer-color) !important;
     outline-offset: 0px !important;
   }
 }
