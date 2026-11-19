@@ -246,5 +246,8 @@ li span,
 .list-item > .dropdown-item-link {
   display: flex;
   align-items: center;
-  white-space: normal;
+  // Items keep to one line, as in Bootstrap Italia, so the panel grows with
+  // its longest item. The megamenu, whose items sit in fixed-width columns,
+  // opts into wrapping through this property.
+  white-space: var(--#{$prefix}dropdown-item-white-space, nowrap);
 }
