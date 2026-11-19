@@ -16,7 +16,7 @@ if (typeof window !== 'undefined') {
   window._itAnalytics = window._itAnalytics || {};
   window._itAnalytics = {
     ...window._itAnalytics,
-    version: '1.0.0-beta.7',
+    version: '1.0.0-beta.8',
   };
 }
 
