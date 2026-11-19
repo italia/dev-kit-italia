@@ -1,5 +1,58 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-beta.8
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies [[`6c808b5`](https://github.com/italia/dev-kit-italia/commit/6c808b56981f4efc9313a8c0902a0c42c9fab43e)]:
+  - @italia/dropdown@1.0.0-beta.8
+  - @italia/megamenu@1.0.0-beta.8
+  - @italia/accordion@1.0.0-beta.8
+  - @italia/alert@1.0.0-beta.8
+  - @italia/autocomplete@1.0.0-beta.8
+  - @italia/avatar@1.0.0-beta.8
+  - @italia/back@1.0.0-beta.8
+  - @italia/back-to-top@1.0.0-beta.8
+  - @italia/bottom-nav@1.0.0-beta.8
+  - @italia/breadcrumbs@1.0.0-beta.8
+  - @italia/button@1.0.0-beta.8
+  - @italia/callout@1.0.0-beta.8
+  - @italia/card@1.0.0-beta.8
+  - @italia/carousel@1.0.0-beta.8
+  - @italia/checkbox@1.0.0-beta.8
+  - @italia/chip@1.0.0-beta.8
+  - @italia/collapse@1.0.0-beta.8
+  - @italia/dimmer@1.0.0-beta.8
+  - @italia/forward@1.0.0-beta.8
+  - @italia/header@1.0.0-beta.8
+  - @italia/hero@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+  - @italia/input@1.0.0-beta.8
+  - @italia/modal@1.0.0-beta.8
+  - @italia/navscroll@1.0.0-beta.8
+  - @italia/notification@1.0.0-beta.8
+  - @italia/pagination@1.0.0-beta.8
+  - @italia/popover@1.0.0-beta.8
+  - @italia/progress@1.0.0-beta.8
+  - @italia/radio@1.0.0-beta.8
+  - @italia/rating@1.0.0-beta.8
+  - @italia/section@1.0.0-beta.8
+  - @italia/select@1.0.0-beta.8
+  - @italia/skiplinks@1.0.0-beta.8
+  - @italia/stepper@1.0.0-beta.8
+  - @italia/sticky@1.0.0-beta.8
+  - @italia/tabs@1.0.0-beta.8
+  - @italia/timeline@1.0.0-beta.8
+  - @italia/toggle@1.0.0-beta.8
+  - @italia/thumbnav@1.0.0-beta.8
+  - @italia/toolbar@1.0.0-beta.8
+  - @italia/tooltip@1.0.0-beta.8
+  - @italia/transfer@1.0.0-beta.8
+  - @italia/upload@1.0.0-beta.8
+  - @italia/video@1.0.0-beta.8
+
 ## 1.0.0-beta.7
 
 ### Patch Changes
