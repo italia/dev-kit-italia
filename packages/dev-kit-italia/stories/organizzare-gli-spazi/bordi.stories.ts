@@ -90,6 +90,32 @@ export const VariantiDiColore: Story = {
     ),
 };
 
+export const Opacita: Story = {
+  name: 'Opacità',
+  tags: ['!dev'],
+  parameters: {
+    pageLayout: 'w-100',
+    docs: {
+      source: {
+        code: `<span class="border border-primary"></span>
+<span class="border border-primary border-opacity-75"></span>
+<span class="border border-primary border-opacity-50"></span>
+<span class="border border-primary border-opacity-25"></span>
+<span class="border border-primary border-opacity-10"></span>`,
+      },
+    },
+  },
+  render: () =>
+    wrapExample(
+      html`<span class="border border-primary"></span>
+        <span class="border border-primary border-opacity-75"></span>
+        <span class="border border-primary border-opacity-50"></span>
+        <span class="border border-primary border-opacity-25"></span>
+        <span class="border border-primary border-opacity-10"></span>`,
+      { className: 'bd-example-border-utils' },
+    ),
+};
+
 export const Arrotondati: Story = {
   name: 'Arrotondati',
   tags: ['!dev'],
