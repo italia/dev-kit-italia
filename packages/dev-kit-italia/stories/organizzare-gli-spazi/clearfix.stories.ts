@@ -17,7 +17,7 @@ export const SenzaClearfix: Story = {
     pageLayout: 'w-100',
     docs: {
       source: {
-        code: `<div class="neutral-2-bg p-2">
+        code: `<div class="p-2" style="background-color: var(--bsi-color-background-muted)">
   <button type="button" class="btn btn-secondary float-start">Pulsante con float a sinistra</button>
   <button type="button" class="btn btn-secondary float-end">Pulsante con float a destra</button>
 </div>`,
@@ -26,7 +26,7 @@ export const SenzaClearfix: Story = {
   },
   render: () =>
     wrapExample(
-      html`<div class="neutral-2-bg p-2">
+      html`<div class="p-2" style="background-color: var(--bsi-color-background-muted)">
         <button type="button" class="btn btn-secondary float-start">Pulsante con float a sinistra</button>
         <button type="button" class="btn btn-secondary float-end">Pulsante con float a destra</button>
       </div>`,
@@ -41,7 +41,7 @@ export const Base: Story = {
     pageLayout: 'w-100',
     docs: {
       source: {
-        code: `<div class="neutral-2-bg p-2 clearfix">
+        code: `<div class="p-2 clearfix" style="background-color: var(--bsi-color-background-muted)">
   <button type="button" class="btn btn-secondary float-start">Pulsante con float a sinistra</button>
   <button type="button" class="btn btn-secondary float-end">Pulsante con float a destra</button>
 </div>`,
@@ -50,7 +50,7 @@ export const Base: Story = {
   },
   render: () =>
     wrapExample(
-      html`<div class="neutral-2-bg p-2 clearfix">
+      html`<div class="p-2 clearfix" style="background-color: var(--bsi-color-background-muted)">
         <button type="button" class="btn btn-secondary float-start">Pulsante con float a sinistra</button>
         <button type="button" class="btn btn-secondary float-end">Pulsante con float a destra</button>
       </div>`,

@@ -38,9 +38,9 @@ export class ItSection extends BaseComponent {
     if (!contentWrapper) return;
 
     if (this.inverse || this.variant === 'emphasis' || this.variant === 'primary') {
-      contentWrapper.classList.add('white-color');
+      contentWrapper.classList.add('text-white');
     } else {
-      contentWrapper.classList.remove('white-color');
+      contentWrapper.classList.remove('text-white');
     }
   }
 
@@ -56,7 +56,7 @@ export class ItSection extends BaseComponent {
     const contentWrapper = document.createElement('div');
     contentWrapper.classList.add('section-content');
     if (this.inverse) {
-      contentWrapper.classList.add('white-color');
+      contentWrapper.classList.add('text-white');
     }
 
     // Move all child nodes (except section) into the wrapper
