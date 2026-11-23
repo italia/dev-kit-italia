@@ -33,7 +33,7 @@ describe('<it-section>', () => {
   it('applies inverse class to section-content', async () => {
     const el = await fixture(html`<it-section inverse><h2>Inverse</h2></it-section>`);
     const content = el.querySelector('.section-content');
-    expect(content?.classList.contains('white-color')).to.be.true;
+    expect(content?.classList.contains('text-white')).to.be.true;
   });
 
   it('renders slot content correctly', async () => {

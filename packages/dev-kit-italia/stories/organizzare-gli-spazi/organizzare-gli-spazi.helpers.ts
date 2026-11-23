@@ -104,10 +104,6 @@ const helperStyles = html`<style>
     left: calc(30% + 1.25rem);
   }
 
-  .dki-organizzare-gli-spazi-example .neutral-2-bg {
-    background-color: #e9ecef;
-  }
-
   .dki-organizzare-gli-spazi-example .ratio-example {
     display: inline-flex;
     justify-content: center;

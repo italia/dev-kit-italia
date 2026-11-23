@@ -47,14 +47,14 @@ Per ancorare un elemento alla parte **alta** della pagina è sufficiente applica
       <div class="affix-example container border bg-white mb-4">
         <div class="row">
           <div class="col-6 col-md-3 p-2 affix-parent">
-            <div class="neutral-1-bg-a7 p-3 mb-1">
-              <p class="mb-0 white-color">Lorem ipsum</p>
+            <div class="bg-secondary p-3 mb-1">
+              <p class="mb-0 text-white">Lorem ipsum</p>
             </div>
-            <div class="neutral-1-bg-a7 p-3 mb-1">
-              <p class="mb-0 white-color">Dolor sit</p>
+            <div class="bg-secondary p-3 mb-1">
+              <p class="mb-0 text-white">Dolor sit</p>
             </div>
-            <div class="primary-bg p-3 affix-top">
-              <p class="mb-0 white-color">Affix top</p>
+            <div class="bg-primary p-3 affix-top">
+              <p class="mb-0 text-white">Affix top</p>
             </div>
           </div>
           <div class="col-6 col-md-9 p-2">
@@ -94,8 +94,8 @@ Per ancorare un elemento alla parte **alta** della pagina è sufficiente applica
 
       <h4 class="h6">Esempio 2:</h4>
       <div class="affix-example container affix-parent border bg-white">
-        <div class="primary-bg p-3 mb-1 text-center affix-top">
-          <p class="mb-0 white-color">Affix top</p>
+        <div class="bg-primary p-3 mb-1 text-center affix-top">
+          <p class="mb-0 text-white">Affix top</p>
         </div>
         <div class="row p-5">
           <p class="h3">Orci varius natoque penatibus et magnis</p>
@@ -147,20 +147,20 @@ Per ancorare un elemento alla parte **bassa** della pagina è sufficiente applic
         </p>
         <div class="row">
           <div class="col-6 col-md-3 p-2 affix-parent">
-            <div class="neutral-1-bg-a7 p-3 mb-1">
-              <p class="mb-0 white-color">Lorem ipsum</p>
+            <div class="bg-secondary p-3 mb-1">
+              <p class="mb-0 text-white">Lorem ipsum</p>
             </div>
-            <div class="neutral-1-bg-a7 p-3 mb-1">
-              <p class="mb-0 white-color">Dolor sit</p>
+            <div class="bg-secondary p-3 mb-1">
+              <p class="mb-0 text-white">Dolor sit</p>
             </div>
-            <div class="neutral-1-bg-a7 p-3 mb-1">
-              <p class="mb-0 white-color">Lorem ipsum</p>
+            <div class="bg-secondary p-3 mb-1">
+              <p class="mb-0 text-white">Lorem ipsum</p>
             </div>
-            <div class="neutral-1-bg-a7 p-3 mb-1">
-              <p class="mb-0 white-color">Dolor sit</p>
+            <div class="bg-secondary p-3 mb-1">
+              <p class="mb-0 text-white">Dolor sit</p>
             </div>
-            <div class="primary-bg p-3 affix-bottom">
-              <p class="mb-0 white-color">Affix bottom</p>
+            <div class="bg-primary p-3 affix-bottom">
+              <p class="mb-0 text-white">Affix bottom</p>
             </div>
           </div>
           <div class="col-6 col-md-9 p-2">
@@ -222,8 +222,8 @@ Per ancorare un elemento alla parte **bassa** della pagina è sufficiente applic
             parturient montes, nascetur ridiculus mus. Vivamus lacinia dictum dui, non condimentum nisi consectetur.
           </p>
         </div>
-        <div class="primary-bg p-3 mb-1 text-center affix-bottom">
-          <p class="mb-0 white-color">Affix bottom</p>
+        <div class="bg-primary p-3 mb-1 text-center affix-bottom">
+          <p class="mb-0 text-white">Affix bottom</p>
         </div>
       </div>`,
 };
