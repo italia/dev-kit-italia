@@ -1,7 +1,7 @@
 /// <reference types="mocha"/>
 
 import '@italia/card';
-import { fixture, html, expect, elementUpdated } from '@open-wc/testing';
+import { fixture, html, expect, elementUpdated, waitUntil } from '@open-wc/testing';
 import type { ItCard } from '@italia/card';
 
 describe('<it-card>', () => {
@@ -1051,7 +1051,15 @@ describe('<it-card>', () => {
         </it-card>
       `);
 
-      await elementUpdated(el);
+      // The wrappers render only after the slotchange of each slot, which in
+      // WebKit can arrive after the first update: wait for them explicitly.
+      await waitUntil(
+        () =>
+          ['.it-card-body', '.it-card-subtitle', '.it-card-signature', '.it-card-text'].every(
+            (selector) => el.shadowRoot?.querySelector(selector) !== null,
+          ),
+        'card body wrappers not rendered',
+      );
 
       const cardBody = el.shadowRoot?.querySelector('.it-card-body');
       const subtitle = el.shadowRoot?.querySelector('.it-card-subtitle');
