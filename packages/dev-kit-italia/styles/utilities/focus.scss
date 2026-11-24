@@ -3,6 +3,19 @@
 @use 'bootstrap-italia/src/scss/base/mixins/focus' as *;
 @use 'bootstrap-italia/src/scss/base/mixins/breakpoints' as *;
 
+// Anello di focus: regola globale ed eccezioni (light DOM).
+// Colori e spessori: custom property --bsi-focus-* di bootstrap-italia (root.scss).
+// Mixin focus e focusmouse: bootstrap-italia/src/scss/base/mixins/_focus.scss.
+// Le regole globali non entrano nello shadow DOM: questi componenti disegnano
+// l'anello nel proprio SCSS, sulle stesse custom property:
+// - accordion, callout (callout-more-collapse), pagination, transfer
+// - radio, rating (rating-item), upload (upload, upload-avatar, upload-drag-drop)
+// - tabs (it-tab, it-tab-panel; colori invertiti su .nav-dark in it-tabs)
+// - carousel (copia locale delle regole globali)
+// - header (styles/globals.scss: voci di dropdown e megamenu nel menu mobile)
+// - campi nativi dei componenti form: regola input/textarea in
+//   bootstrap-italia/src/scss/forms/_forms.scss, caricata nello shadow DOM
+
 /*
 MEMO:
 - :focus --> sia da tastiera, sia da mouse
@@ -42,11 +55,11 @@ button:focus-visible,
 p a {
   &:focus:not(:focus-visible):not(.btn) {
     /* focus da mouse o script, esclusi anche i .btn */
-    background: $focus-outline-color-in;
+    background: var(--#{$prefix}focus-inner-color);
     box-shadow: none !important;
     color: var(--#{$prefix}color-link) !important;
 
-    outline: 3px $focus-outline-color-out solid !important;
+    outline: var(--#{$prefix}focus-outer-width) solid var(--#{$prefix}focus-outer-color) !important;
     outline-offset: 0px !important;
   }
 }
@@ -57,8 +70,9 @@ p a {
 .shadow-lg {
   &:focus-visible {
     box-shadow:
-      0 0 0 2px $focus-outline-color-in,
-      0 0 0 5px $focus-outline-color-out !important;
+      0 0 0 var(--#{$prefix}focus-inner-width) var(--#{$prefix}focus-inner-color),
+      0 0 0 calc(var(--#{$prefix}focus-inner-width) + var(--#{$prefix}focus-outer-width))
+        var(--#{$prefix}focus-outer-color) !important;
   }
 }
 
@@ -114,8 +128,10 @@ p a {
 .back-to-top.dark {
   &:focus-visible {
     box-shadow:
-      0 0 0 2px $focus-outline-color-out,
-      0 0 0 5px $focus-outline-color-in !important;
+      // Inverse ring for dark backgrounds: same widths, colors swapped
+      0 0 0 var(--#{$prefix}focus-inner-width) var(--#{$prefix}focus-outer-color),
+      0 0 0 calc(var(--#{$prefix}focus-inner-width) + var(--#{$prefix}focus-outer-width))
+        var(--#{$prefix}focus-inner-color) !important;
   }
 }
 
@@ -123,7 +139,7 @@ p a {
   .autocomplete__hint,
   .autocomplete__option {
     &:focus {
-      border: 3px solid $focus-outline-color-out !important;
+      border: var(--#{$prefix}focus-outer-width) solid var(--#{$prefix}focus-outer-color) !important;
       box-shadow: none !important;
     }
   }
@@ -134,9 +150,10 @@ p a {
 // Equivalente a `.dropdown-menu .dropdown-item.list-item` di bootstrap-italia.
 it-dropdown-item::part(list-item):focus-visible {
   box-shadow:
-    inset 0 0 0 3px var(--#{$prefix}color-outline-focus),
-    inset 0 0 0 5px var(--#{$prefix}color-border-inverse) !important;
-  outline-offset: -3px !important;
+    inset 0 0 0 var(--#{$prefix}focus-outer-width) var(--#{$prefix}focus-outer-color),
+    inset 0 0 0 calc(var(--#{$prefix}focus-inner-width) + var(--#{$prefix}focus-outer-width))
+      var(--#{$prefix}focus-inner-color) !important;
+  outline-offset: calc(var(--#{$prefix}focus-outer-width) * -1) !important;
 }
 
 // Stesso motivo per le voci della navbar mobile, che a tutta larghezza toccano
@@ -144,8 +161,9 @@ it-dropdown-item::part(list-item):focus-visible {
 @include media-breakpoint-down(lg) {
   .navbar-collapsable .navbar-nav li .nav-link:focus-visible {
     box-shadow:
-      inset 0 0 0 3px var(--#{$prefix}color-outline-focus),
-      inset 0 0 0 5px var(--#{$prefix}color-border-inverse) !important;
-    outline-offset: -3px !important;
+      inset 0 0 0 var(--#{$prefix}focus-outer-width) var(--#{$prefix}focus-outer-color),
+      inset 0 0 0 calc(var(--#{$prefix}focus-inner-width) + var(--#{$prefix}focus-outer-width))
+        var(--#{$prefix}focus-inner-color) !important;
+    outline-offset: calc(var(--#{$prefix}focus-outer-width) * -1) !important;
   }
 }

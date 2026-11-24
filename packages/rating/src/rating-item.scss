@@ -25,8 +25,9 @@
 :host(:focus-visible) #star {
   border-radius: 50%;
   box-shadow:
-    0 0 0 2px $focus-outline-color-in,
-    0 0 0 5px $focus-outline-color-out !important;
+    0 0 0 var(--#{$prefix}focus-inner-width) var(--#{$prefix}focus-inner-color),
+    0 0 0 calc(var(--#{$prefix}focus-inner-width) + var(--#{$prefix}focus-outer-width))
+      var(--#{$prefix}focus-outer-color) !important;
   outline: none;
 }
 

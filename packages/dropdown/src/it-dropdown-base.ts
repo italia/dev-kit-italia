@@ -37,7 +37,10 @@ export class ItDropdownBase extends BaseComponent {
 
   @property({ type: String, attribute: 'it-aria-label' }) itAriaLabel: string = '';
 
-  @property({ type: Number, attribute: 'offset' }) offset: number | null = null;
+  /** Distance in px between the trigger and the panel. 12 is where the caret's
+   * point meets the trigger, as in Bootstrap Italia; use 0 for a panel flush
+   * against the navbar. */
+  @property({ type: Number, attribute: 'offset' }) offset: number = 12;
 
   @property({ type: Boolean, attribute: 'no-flip' }) noFlip: boolean = false;
 
@@ -229,7 +232,7 @@ export class ItDropdownBase extends BaseComponent {
         exportparts="focusable, icon, button, it-icon, it-button, dropdown-button, dropdown-icon-expand, popover-content"
         part="dropdown-popover"
         ?open=${this._popoverOpen}
-        offset=${ifDefined(this.offset || undefined)}
+        offset=${ifDefined(this.offset ?? undefined)}
         cross-axis-offset=${this.alignment.startsWith('left') || this.alignment.startsWith('right') ? '10' : '0'}
         ?no-flip=${this.noFlip}
         ?center-arrow=${this.centerArrow}
