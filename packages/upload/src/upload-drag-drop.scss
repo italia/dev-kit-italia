@@ -49,11 +49,12 @@ utilities.$utilities: ('color': map.get(utilities.$utilities, 'color'));
 .upload:focus-visible + label,
 .upload-dragdrop-input:focus-visible[type='file'] + label,
 .avatar-upload:focus-within:focus-visible {
-  border-color: #000 !important;
+  border-color: var(--#{$prefix}focus-outer-color) !important;
   box-shadow:
-    0 0 0 2px $focus-outline-color-in,
-    0 0 0 5px $focus-outline-color-out !important;
-  outline: 3px solid rgba(0, 0, 0, 0) !important;
+    0 0 0 var(--#{$prefix}focus-inner-width) var(--#{$prefix}focus-inner-color),
+    0 0 0 calc(var(--#{$prefix}focus-inner-width) + var(--#{$prefix}focus-outer-width))
+      var(--#{$prefix}focus-outer-color) !important;
+  outline: var(--#{$prefix}focus-outer-width) solid transparent !important;
   outline-offset: 3px !important;
 }
 
