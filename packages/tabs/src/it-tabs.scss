@@ -181,6 +181,11 @@ $it-tab-prefix: 'it-tab';
   --#{$it-tab-prefix}_active-bc-right: var(--#{$prefix}color-border-inverse);
   --#{$it-tab-prefix}_active-bc-bottom: var(--#{$prefix}color-border-inverse);
   --#{$it-tab-prefix}_active-bc-left: var(--#{$prefix}color-border-inverse);
+
+  // Anello di focus invertito su sfondo scuro: stessi spessori, colori scambiati
+  // (chiaro sul bordo, scuro dentro), come .nav-dark in bootstrap-italia.
+  --#{$it-tab-prefix}_focus-edge-color: var(--#{$prefix}focus-inner-color);
+  --#{$it-tab-prefix}_focus-inside-color: var(--#{$prefix}focus-outer-color);
 }
 
 // Variante: cards.

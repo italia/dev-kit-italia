@@ -112,9 +112,10 @@ input.upload-avatar {
 // and clips awkwardly alongside the semi-transparent overlay (see :focus-within + :hover state).
 .avatar-upload-wrapper:focus-within:not(:hover) {
   box-shadow:
-    0 0 0 2px $focus-outline-color-in,
-    0 0 0 5px $focus-outline-color-out !important;
-  outline: 3px solid rgba(0, 0, 0, 0) !important;
+    0 0 0 var(--#{$prefix}focus-inner-width) var(--#{$prefix}focus-inner-color),
+    0 0 0 calc(var(--#{$prefix}focus-inner-width) + var(--#{$prefix}focus-outer-width))
+      var(--#{$prefix}focus-outer-color) !important;
+  outline: var(--#{$prefix}focus-outer-width) solid transparent !important;
   outline-offset: 3px !important;
 }
 
@@ -123,7 +124,7 @@ input.upload-avatar {
 // sibling — not a descendant — so the BSI rule never fires. Override with the correct selector.
 @include media-breakpoint-up(xl) {
   .upload-avatar:focus-visible + label {
-    box-shadow: 0 0 0 2px $focus-outline-color-in !important;
+    box-shadow: 0 0 0 var(--#{$prefix}focus-inner-width) var(--#{$prefix}focus-inner-color) !important;
     outline: none !important;
   }
 

@@ -42,6 +42,8 @@ utilities.$utilities: (
 
     --#{$prefix}dropdown-item-padding-x: var(--#{$prefix}spacing-xxs);
     --#{$prefix}dropdown-item-padding-y: var(--#{$prefix}spacing-xxs);
+    // Megamenu items sit in fixed-width columns, so they wrap.
+    --#{$prefix}dropdown-item-white-space: normal;
     --#{$prefix}dropdown-spacer: 0;
     left: 0 !important;
     width: 100%;

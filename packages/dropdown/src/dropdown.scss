@@ -9,6 +9,10 @@
 
 .dropdown-menu {
   z-index: 11;
+  // The panel distance is owned by it-popover's offset. Bootstrap Italia's
+  // open animation also ends on a margin-top of this size, which would be
+  // added on top of it, so here the animation only fades.
+  --#{$prefix}dropdown-vertical-shift: 0;
 
   &::before {
     content: none;
