@@ -2,6 +2,513 @@
 
 This changelog contains all changes from all packages in the monorepo.
 
+## 1.0.0-beta.8
+
+### `accordion`
+
+### Patch Changes
+
+- [#601](https://github.com/italia/dev-kit-italia/pull/601) [`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1) Thanks [@Fupete](https://github.com/Fupete)! - Focus rings now read the bootstrap-italia `--bsi-focus-*` custom properties (inner and outer ring color and width) instead of the Sass variables `$focus-outline-color-in`/`-out`, which bootstrap-italia removes, and of values written by hand. Tabs use the inset ring of bootstrap-italia (3px outer ring on the edge, 2px inner ring inside) with colors swapped and full opacity on `.nav-dark`. The callout toggle read a custom property that does not exist (`--bsi-focus-outline-color`) and now reads the outer ring color. Requires the bootstrap-italia version that adds the `--bsi-focus-*` properties.
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.8
+  - @italia/collapse@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+
+### `alert`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `autocomplete`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+
+### `avatar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+
+### `back`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `back-to-top`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `bottom-nav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+  - @italia/sticky@1.0.0-beta.8
+
+### `breadcrumbs`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `button`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `callout`
+
+### Patch Changes
+
+- [#601](https://github.com/italia/dev-kit-italia/pull/601) [`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1) Thanks [@Fupete](https://github.com/Fupete)! - Focus rings now read the bootstrap-italia `--bsi-focus-*` custom properties (inner and outer ring color and width) instead of the Sass variables `$focus-outline-color-in`/`-out`, which bootstrap-italia removes, and of values written by hand. Tabs use the inset ring of bootstrap-italia (3px outer ring on the edge, 2px inner ring inside) with colors swapped and full opacity on `.nav-dark`. The callout toggle read a custom property that does not exist (`--bsi-focus-outline-color`) and now reads the outer ring color. Requires the bootstrap-italia version that adds the `--bsi-focus-*` properties.
+
+- Updated dependencies []:
+  - @italia/collapse@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+
+### `card`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `carousel`
+
+### Patch Changes
+
+- [#601](https://github.com/italia/dev-kit-italia/pull/601) [`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1) Thanks [@Fupete](https://github.com/Fupete)! - Focus rings now read the bootstrap-italia `--bsi-focus-*` custom properties (inner and outer ring color and width) instead of the Sass variables `$focus-outline-color-in`/`-out`, which bootstrap-italia removes, and of values written by hand. Tabs use the inset ring of bootstrap-italia (3px outer ring on the edge, 2px inner ring inside) with colors swapped and full opacity on `.nav-dark`. The callout toggle read a custom property that does not exist (`--bsi-focus-outline-color`) and now reads the outer ring color. Requires the bootstrap-italia version that adds the `--bsi-focus-*` properties.
+
+- Updated dependencies []:
+  - @italia/card@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+
+### `checkbox`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+
+### `chip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-beta.8
+  - @italia/button@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+
+### `collapse`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `dev-kit-italia`
+
+### Patch Changes
+
+- [#611](https://github.com/italia/dev-kit-italia/pull/611) [`35efdcb`](https://github.com/italia/dev-kit-italia/commit/35efdcb28425e2d545c53da0f36a9afc7ba82423) Thanks [@Fupete](https://github.com/Fupete)! - Update bootstrap-italia to v3.0.0-beta.9. It includes breaking changes that reach Dev Kit Italia: Sass focus variables removed, renamed `--bsi-*` custom properties (state properties, dropdown notch), removed classes and tokens. See the [bootstrap-italia release notes](https://github.com/italia/bootstrap-italia/releases/tag/v3.0.0-beta.9).
+
+- [#601](https://github.com/italia/dev-kit-italia/pull/601) [`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1) Thanks [@Fupete](https://github.com/Fupete)! - Focus rings now read the bootstrap-italia `--bsi-focus-*` custom properties (inner and outer ring color and width) instead of the Sass variables `$focus-outline-color-in`/`-out`, which bootstrap-italia removes, and of values written by hand. Tabs use the inset ring of bootstrap-italia (3px outer ring on the edge, 2px inner ring inside) with colors swapped and full opacity on `.nav-dark`. The callout toggle read a custom property that does not exist (`--bsi-focus-outline-color`) and now reads the outer ring color. Requires the bootstrap-italia version that adds the `--bsi-focus-*` properties.
+
+- Updated dependencies [[`6c808b5`](https://github.com/italia/dev-kit-italia/commit/6c808b56981f4efc9313a8c0902a0c42c9fab43e), [`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1), [`eda6782`](https://github.com/italia/dev-kit-italia/commit/eda6782c9afc8eb58a0f670ada558fb7a6c03a97)]:
+  - @italia/dropdown@1.0.0-beta.8
+  - @italia/megamenu@1.0.0-beta.8
+  - @italia/accordion@1.0.0-beta.8
+  - @italia/callout@1.0.0-beta.8
+  - @italia/carousel@1.0.0-beta.8
+  - @italia/header@1.0.0-beta.8
+  - @italia/pagination@1.0.0-beta.8
+  - @italia/radio@1.0.0-beta.8
+  - @italia/rating@1.0.0-beta.8
+  - @italia/tabs@1.0.0-beta.8
+  - @italia/transfer@1.0.0-beta.8
+  - @italia/upload@1.0.0-beta.8
+  - @italia/input@1.0.0-beta.8
+  - @italia/alert@1.0.0-beta.8
+  - @italia/autocomplete@1.0.0-beta.8
+  - @italia/avatar@1.0.0-beta.8
+  - @italia/back@1.0.0-beta.8
+  - @italia/back-to-top@1.0.0-beta.8
+  - @italia/bottom-nav@1.0.0-beta.8
+  - @italia/breadcrumbs@1.0.0-beta.8
+  - @italia/button@1.0.0-beta.8
+  - @italia/card@1.0.0-beta.8
+  - @italia/checkbox@1.0.0-beta.8
+  - @italia/chip@1.0.0-beta.8
+  - @italia/collapse@1.0.0-beta.8
+  - @italia/dimmer@1.0.0-beta.8
+  - @italia/forward@1.0.0-beta.8
+  - @italia/hero@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+  - @italia/modal@1.0.0-beta.8
+  - @italia/navscroll@1.0.0-beta.8
+  - @italia/notification@1.0.0-beta.8
+  - @italia/popover@1.0.0-beta.8
+  - @italia/progress@1.0.0-beta.8
+  - @italia/section@1.0.0-beta.8
+  - @italia/select@1.0.0-beta.8
+  - @italia/skiplinks@1.0.0-beta.8
+  - @italia/stepper@1.0.0-beta.8
+  - @italia/sticky@1.0.0-beta.8
+  - @italia/timeline@1.0.0-beta.8
+  - @italia/toggle@1.0.0-beta.8
+  - @italia/thumbnav@1.0.0-beta.8
+  - @italia/toolbar@1.0.0-beta.8
+  - @italia/tooltip@1.0.0-beta.8
+  - @italia/video@1.0.0-beta.8
+
+### `dimmer`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+
+### `dropdown`
+
+### Patch Changes
+
+- [#597](https://github.com/italia/dev-kit-italia/pull/597) [`6c808b5`](https://github.com/italia/dev-kit-italia/commit/6c808b56981f4efc9313a8c0902a0c42c9fab43e) Thanks [@Fupete](https://github.com/Fupete)! - Fix the dropdown panel's distance and width.
+
+  The distance between trigger and panel was about twice what it should be: an `offset` of `0` was discarded as falsy, so a panel meant to sit flush against the navbar kept the default distance, and Bootstrap Italia's open animation ended on a `margin-top` that was added to the offset instead of replacing it. The default offset is now 12px, where the caret’s point meets the trigger, and the animation no longer shifts the panel.
+
+  Dropdown items no longer wrap, so the panel grows with its longest item as it does in Bootstrap Italia, instead of staying at its minimum width. Wrapping was introduced for the megamenu, whose items sit in fixed-width columns, but applied to every dropdown because both share the item's styles; the megamenu
+  now opts into it on its own.
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+  - @italia/popover@1.0.0-beta.8
+
+### `forward`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `globals`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/i18n@1.0.0-beta.8
+
+### `header`
+
+### Patch Changes
+
+- [#601](https://github.com/italia/dev-kit-italia/pull/601) [`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1) Thanks [@Fupete](https://github.com/Fupete)! - Focus rings now read the bootstrap-italia `--bsi-focus-*` custom properties (inner and outer ring color and width) instead of the Sass variables `$focus-outline-color-in`/`-out`, which bootstrap-italia removes, and of values written by hand. Tabs use the inset ring of bootstrap-italia (3px outer ring on the edge, 2px inner ring inside) with colors swapped and full opacity on `.nav-dark`. The callout toggle read a custom property that does not exist (`--bsi-focus-outline-color`) and now reads the outer ring color. Requires the bootstrap-italia version that adds the `--bsi-focus-*` properties.
+
+- Updated dependencies [[`6c808b5`](https://github.com/italia/dev-kit-italia/commit/6c808b56981f4efc9313a8c0902a0c42c9fab43e)]:
+  - @italia/dropdown@1.0.0-beta.8
+  - @italia/button@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+  - @italia/modal@1.0.0-beta.8
+
+### `hero`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `icon`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `input`
+
+### Patch Changes
+
+- [#599](https://github.com/italia/dev-kit-italia/pull/599) [`eda6782`](https://github.com/italia/dev-kit-italia/commit/eda6782c9afc8eb58a0f670ada558fb7a6c03a97) Thanks [@Fupete](https://github.com/Fupete)! - Password toggle: removed the fixed `top` override and made the icon a block, so the toggle follows the positioning of Bootstrap Italia (italia/bootstrap-italia#2019) and stays centered on the field with any font.
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+
+### `megamenu`
+
+### Patch Changes
+
+- [#597](https://github.com/italia/dev-kit-italia/pull/597) [`6c808b5`](https://github.com/italia/dev-kit-italia/commit/6c808b56981f4efc9313a8c0902a0c42c9fab43e) Thanks [@Fupete](https://github.com/Fupete)! - Fix the dropdown panel's distance and width.
+
+  The distance between trigger and panel was about twice what it should be: an `offset` of `0` was discarded as falsy, so a panel meant to sit flush against the navbar kept the default distance, and Bootstrap Italia's open animation ended on a `margin-top` that was added to the offset instead of replacing it. The default offset is now 12px, where the caret’s point meets the trigger, and the animation no longer shifts the panel.
+
+  Dropdown items no longer wrap, so the panel grows with its longest item as it does in Bootstrap Italia, instead of staying at its minimum width. Wrapping was introduced for the megamenu, whose items sit in fixed-width columns, but applied to every dropdown because both share the item's styles; the megamenu
+  now opts into it on its own.
+
+- Updated dependencies [[`6c808b5`](https://github.com/italia/dev-kit-italia/commit/6c808b56981f4efc9313a8c0902a0c42c9fab43e)]:
+  - @italia/dropdown@1.0.0-beta.8
+  - @italia/button@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+
+### `modal`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+
+### `navscroll`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+  - @italia/modal@1.0.0-beta.8
+
+### `notification`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+
+### `pagination`
+
+### Patch Changes
+
+- [#601](https://github.com/italia/dev-kit-italia/pull/601) [`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1) Thanks [@Fupete](https://github.com/Fupete)! - Focus rings now read the bootstrap-italia `--bsi-focus-*` custom properties (inner and outer ring color and width) instead of the Sass variables `$focus-outline-color-in`/`-out`, which bootstrap-italia removes, and of values written by hand. Tabs use the inset ring of bootstrap-italia (3px outer ring on the edge, 2px inner ring inside) with colors swapped and full opacity on `.nav-dark`. The callout toggle read a custom property that does not exist (`--bsi-focus-outline-color`) and now reads the outer ring color. Requires the bootstrap-italia version that adds the `--bsi-focus-*` properties.
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `popover`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+
+### `progress`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `radio`
+
+### Patch Changes
+
+- [#601](https://github.com/italia/dev-kit-italia/pull/601) [`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1) Thanks [@Fupete](https://github.com/Fupete)! - Focus rings now read the bootstrap-italia `--bsi-focus-*` custom properties (inner and outer ring color and width) instead of the Sass variables `$focus-outline-color-in`/`-out`, which bootstrap-italia removes, and of values written by hand. Tabs use the inset ring of bootstrap-italia (3px outer ring on the edge, 2px inner ring inside) with colors swapped and full opacity on `.nav-dark`. The callout toggle read a custom property that does not exist (`--bsi-focus-outline-color`) and now reads the outer ring color. Requires the bootstrap-italia version that adds the `--bsi-focus-*` properties.
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `rating`
+
+### Patch Changes
+
+- [#601](https://github.com/italia/dev-kit-italia/pull/601) [`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1) Thanks [@Fupete](https://github.com/Fupete)! - Focus rings now read the bootstrap-italia `--bsi-focus-*` custom properties (inner and outer ring color and width) instead of the Sass variables `$focus-outline-color-in`/`-out`, which bootstrap-italia removes, and of values written by hand. Tabs use the inset ring of bootstrap-italia (3px outer ring on the edge, 2px inner ring inside) with colors swapped and full opacity on `.nav-dark`. The callout toggle read a custom property that does not exist (`--bsi-focus-outline-color`) and now reads the outer ring color. Requires the bootstrap-italia version that adds the `--bsi-focus-*` properties.
+
+- Updated dependencies [[`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1)]:
+  - @italia/radio@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+
+### `section`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `select`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+
+### `skiplinks`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `stepper`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+
+### `sticky`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `tabs`
+
+### Patch Changes
+
+- [#601](https://github.com/italia/dev-kit-italia/pull/601) [`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1) Thanks [@Fupete](https://github.com/Fupete)! - Focus rings now read the bootstrap-italia `--bsi-focus-*` custom properties (inner and outer ring color and width) instead of the Sass variables `$focus-outline-color-in`/`-out`, which bootstrap-italia removes, and of values written by hand. Tabs use the inset ring of bootstrap-italia (3px outer ring on the edge, 2px inner ring inside) with colors swapped and full opacity on `.nav-dark`. The callout toggle read a custom property that does not exist (`--bsi-focus-outline-color`) and now reads the outer ring color. Requires the bootstrap-italia version that adds the `--bsi-focus-*` properties.
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+
+### `thumbnav`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `timeline`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `toggle`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/checkbox@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+
+### `toolbar`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+
+### `tooltip`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+
+### `transfer`
+
+### Patch Changes
+
+- [#601](https://github.com/italia/dev-kit-italia/pull/601) [`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1) Thanks [@Fupete](https://github.com/Fupete)! - Focus rings now read the bootstrap-italia `--bsi-focus-*` custom properties (inner and outer ring color and width) instead of the Sass variables `$focus-outline-color-in`/`-out`, which bootstrap-italia removes, and of values written by hand. Tabs use the inset ring of bootstrap-italia (3px outer ring on the edge, 2px inner ring inside) with colors swapped and full opacity on `.nav-dark`. The callout toggle read a custom property that does not exist (`--bsi-focus-outline-color`) and now reads the outer ring color. Requires the bootstrap-italia version that adds the `--bsi-focus-*` properties.
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+
+### `upload`
+
+### Patch Changes
+
+- [#601](https://github.com/italia/dev-kit-italia/pull/601) [`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1) Thanks [@Fupete](https://github.com/Fupete)! - Focus rings now read the bootstrap-italia `--bsi-focus-*` custom properties (inner and outer ring color and width) instead of the Sass variables `$focus-outline-color-in`/`-out`, which bootstrap-italia removes, and of values written by hand. Tabs use the inset ring of bootstrap-italia (3px outer ring on the edge, 2px inner ring inside) with colors swapped and full opacity on `.nav-dark`. The callout toggle read a custom property that does not exist (`--bsi-focus-outline-color`) and now reads the outer ring color. Requires the bootstrap-italia version that adds the `--bsi-focus-*` properties.
+
+- Updated dependencies []:
+  - @italia/avatar@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+  - @italia/progress@1.0.0-beta.8
+
+### `video`
+
+### Patch Changes
+
+- Aggiornamento della versione
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.8
+  - @italia/checkbox@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+
 ## 1.0.0-beta.7
 
 ### `accordion`

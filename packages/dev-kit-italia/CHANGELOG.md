@@ -1,5 +1,61 @@
 # @italia/dev-kit-italia
 
+## 1.0.0-beta.8
+
+### Patch Changes
+
+- [#611](https://github.com/italia/dev-kit-italia/pull/611) [`35efdcb`](https://github.com/italia/dev-kit-italia/commit/35efdcb28425e2d545c53da0f36a9afc7ba82423) Thanks [@Fupete](https://github.com/Fupete)! - Update bootstrap-italia to v3.0.0-beta.9. It includes breaking changes that reach Dev Kit Italia: Sass focus variables removed, renamed `--bsi-*` custom properties (state properties, dropdown notch), removed classes and tokens. See the [bootstrap-italia release notes](https://github.com/italia/bootstrap-italia/releases/tag/v3.0.0-beta.9).
+
+- [#601](https://github.com/italia/dev-kit-italia/pull/601) [`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1) Thanks [@Fupete](https://github.com/Fupete)! - Focus rings now read the bootstrap-italia `--bsi-focus-*` custom properties (inner and outer ring color and width) instead of the Sass variables `$focus-outline-color-in`/`-out`, which bootstrap-italia removes, and of values written by hand. Tabs use the inset ring of bootstrap-italia (3px outer ring on the edge, 2px inner ring inside) with colors swapped and full opacity on `.nav-dark`. The callout toggle read a custom property that does not exist (`--bsi-focus-outline-color`) and now reads the outer ring color. Requires the bootstrap-italia version that adds the `--bsi-focus-*` properties.
+
+- Updated dependencies [[`6c808b5`](https://github.com/italia/dev-kit-italia/commit/6c808b56981f4efc9313a8c0902a0c42c9fab43e), [`030358a`](https://github.com/italia/dev-kit-italia/commit/030358a907dc0529774fa251e57115d48dc6cbe1), [`eda6782`](https://github.com/italia/dev-kit-italia/commit/eda6782c9afc8eb58a0f670ada558fb7a6c03a97)]:
+  - @italia/dropdown@1.0.0-beta.8
+  - @italia/megamenu@1.0.0-beta.8
+  - @italia/accordion@1.0.0-beta.8
+  - @italia/callout@1.0.0-beta.8
+  - @italia/carousel@1.0.0-beta.8
+  - @italia/header@1.0.0-beta.8
+  - @italia/pagination@1.0.0-beta.8
+  - @italia/radio@1.0.0-beta.8
+  - @italia/rating@1.0.0-beta.8
+  - @italia/tabs@1.0.0-beta.8
+  - @italia/transfer@1.0.0-beta.8
+  - @italia/upload@1.0.0-beta.8
+  - @italia/input@1.0.0-beta.8
+  - @italia/alert@1.0.0-beta.8
+  - @italia/autocomplete@1.0.0-beta.8
+  - @italia/avatar@1.0.0-beta.8
+  - @italia/back@1.0.0-beta.8
+  - @italia/back-to-top@1.0.0-beta.8
+  - @italia/bottom-nav@1.0.0-beta.8
+  - @italia/breadcrumbs@1.0.0-beta.8
+  - @italia/button@1.0.0-beta.8
+  - @italia/card@1.0.0-beta.8
+  - @italia/checkbox@1.0.0-beta.8
+  - @italia/chip@1.0.0-beta.8
+  - @italia/collapse@1.0.0-beta.8
+  - @italia/dimmer@1.0.0-beta.8
+  - @italia/forward@1.0.0-beta.8
+  - @italia/hero@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+  - @italia/modal@1.0.0-beta.8
+  - @italia/navscroll@1.0.0-beta.8
+  - @italia/notification@1.0.0-beta.8
+  - @italia/popover@1.0.0-beta.8
+  - @italia/progress@1.0.0-beta.8
+  - @italia/section@1.0.0-beta.8
+  - @italia/select@1.0.0-beta.8
+  - @italia/skiplinks@1.0.0-beta.8
+  - @italia/stepper@1.0.0-beta.8
+  - @italia/sticky@1.0.0-beta.8
+  - @italia/timeline@1.0.0-beta.8
+  - @italia/toggle@1.0.0-beta.8
+  - @italia/thumbnav@1.0.0-beta.8
+  - @italia/toolbar@1.0.0-beta.8
+  - @italia/tooltip@1.0.0-beta.8
+  - @italia/video@1.0.0-beta.8
+
 ## 1.0.0-beta.7
 
 ### Patch Changes

@@ -1,5 +1,22 @@
 # @italia/dropdown
 
+## 1.0.0-beta.8
+
+### Patch Changes
+
+- [#597](https://github.com/italia/dev-kit-italia/pull/597) [`6c808b5`](https://github.com/italia/dev-kit-italia/commit/6c808b56981f4efc9313a8c0902a0c42c9fab43e) Thanks [@Fupete](https://github.com/Fupete)! - Fix the dropdown panel's distance and width.
+
+  The distance between trigger and panel was about twice what it should be: an `offset` of `0` was discarded as falsy, so a panel meant to sit flush against the navbar kept the default distance, and Bootstrap Italia's open animation ended on a `margin-top` that was added to the offset instead of replacing it. The default offset is now 12px, where the caret’s point meets the trigger, and the animation no longer shifts the panel.
+
+  Dropdown items no longer wrap, so the panel grows with its longest item as it does in Bootstrap Italia, instead of staying at its minimum width. Wrapping was introduced for the megamenu, whose items sit in fixed-width columns, but applied to every dropdown because both share the item's styles; the megamenu
+  now opts into it on its own.
+
+- Updated dependencies []:
+  - @italia/button@1.0.0-beta.8
+  - @italia/globals@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+  - @italia/popover@1.0.0-beta.8
+
 ## 1.0.0-beta.7
 
 ### Patch Changes

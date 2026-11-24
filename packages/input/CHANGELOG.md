@@ -1,5 +1,16 @@
 # @italia/input
 
+## 1.0.0-beta.8
+
+### Patch Changes
+
+- [#599](https://github.com/italia/dev-kit-italia/pull/599) [`eda6782`](https://github.com/italia/dev-kit-italia/commit/eda6782c9afc8eb58a0f670ada558fb7a6c03a97) Thanks [@Fupete](https://github.com/Fupete)! - Password toggle: removed the fixed `top` override and made the icon a block, so the toggle follows the positioning of Bootstrap Italia (italia/bootstrap-italia#2019) and stays centered on the field with any font.
+
+- Updated dependencies []:
+  - @italia/globals@1.0.0-beta.8
+  - @italia/i18n@1.0.0-beta.8
+  - @italia/icon@1.0.0-beta.8
+
 ## 1.0.0-beta.7
 
 ### Patch Changes
