@@ -1,6 +1,6 @@
 :HL["/dev-kit-italia/next-app/_next/static/css/24c6811dfa0249d5.css","style"]
-:HL["/dev-kit-italia/next-app/_next/static/css/b40b10a0d213267f.css","style"]
+:HL["/dev-kit-italia/next-app/_next/static/css/fc8c826dd8cc0987.css","style"]
 :HL["/dev-kit-italia/next-app/_next/static/css/cf70c1c597fe864a.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"_not-found","h":64,"c":"$Q2"}]]
-0:{"b":"J3vC93nqpOxGlZGphGL4R","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
+0:{"b":"b7JVXV_1OpYAOhDLx421w","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
