@@ -45,6 +45,7 @@ export default [
         // flatten: false, // Mantiene la struttura interna
       }),
       scss({
+        failOnError: true,
         fileName: 'styles.css',
         outputStyle: 'compressed',
         quietDeps: true,
@@ -74,6 +75,7 @@ export default [
         // flatten: false, // Mantiene la struttura interna
       }),
       scss({
+        failOnError: true,
         fileName: 'styles-for-migration.css',
         outputStyle: 'compressed',
         quietDeps: true,
@@ -104,6 +106,7 @@ export default [
         // flatten: false, // Mantiene la struttura interna
       }),
       scss({
+        failOnError: true,
         fileName: 'fonts.css',
         outputStyle: 'compressed',
       }),
@@ -132,6 +135,7 @@ export default [
         // flatten: false, // Mantiene la struttura interna
       }),
       scss({
+        failOnError: true,
         fileName: 'fonts-sans-pro.css',
         outputStyle: 'compressed',
       }),
