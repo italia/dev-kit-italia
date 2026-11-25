@@ -11,10 +11,44 @@
     z-index: -1;
     width: var(--#{$prefix}popover-notch-size);
     height: var(--#{$prefix}popover-notch-size);
-    border-width: calc(var(--#{$prefix}popover-notch-size) * 0.5) var(--#{$prefix}popover-arrow-height, 1rem)
-      calc(var(--#{$prefix}popover-notch-size) * 0.5) 0;
-    border-color: transparent;
+    border: 0 solid var(--#{$prefix}popover-border-color);
     background-color: var(--#{$prefix}popover-bg);
     pointer-events: none;
+
+    // The arrow is a square rotated by 45deg: only the two sides facing away
+    // from the panel get the panel border. it-popover sets data-side and
+    // compensates the arrow offset for the border width.
+    &[data-side='bottom'] {
+      border-top-width: var(--#{$prefix}popover-border-width);
+      border-left-width: var(--#{$prefix}popover-border-width);
+    }
+
+    &[data-side='top'] {
+      border-right-width: var(--#{$prefix}popover-border-width);
+      border-bottom-width: var(--#{$prefix}popover-border-width);
+    }
+
+    &[data-side='left'] {
+      border-top-width: var(--#{$prefix}popover-border-width);
+      border-right-width: var(--#{$prefix}popover-border-width);
+    }
+
+    &[data-side='right'] {
+      border-bottom-width: var(--#{$prefix}popover-border-width);
+      border-left-width: var(--#{$prefix}popover-border-width);
+    }
+  }
+
+  // it-icon draws its svg in its own shadow DOM, out of reach of the
+  // Bootstrap Italia rules for the icons of the header and of the inner
+  // link. The svg reads --icon-default, which is inherited through the
+  // shadow boundary: set here, it gives the same colors with no attribute
+  // on the icon. An explicit color="..." on it-icon still wins.
+  .popover-header it-icon {
+    --#{$prefix}icon-default: var(--#{$prefix}icon-primary);
+  }
+
+  a.popover-inner-link it-icon {
+    --#{$prefix}icon-default: currentColor;
   }
 }

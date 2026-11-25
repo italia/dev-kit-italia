@@ -80,6 +80,13 @@ export const Base: Story = {
       </div>
     </it-popover>
   `,
+  // The docs preview clips what overflows it and the open popover takes no
+  // room in the layout: leave space on every side, so each placement chosen
+  // from the controls fits.
+  decorators: [
+    (Story) =>
+      html`<div style="display:flex;align-items:center;justify-content:center;min-height:300px">${Story()}</div>`,
+  ],
   tags: ['!autodocs', '!dev'],
 };
 
@@ -118,7 +125,7 @@ export const Posizione: Story = {
       </div>
     </it-popover>
   `,
-  decorators: [(Story) => html`<div style="display:grid;gap:.5rem;grid:1fr 1fr 1fr/1fr 1fr 1fr;">${Story()}</div>`],
+  decorators: [(Story) => html`<div style="display:grid;gap:1rem;grid:1fr 1fr 1fr/1fr 1fr 1fr;">${Story()}</div>`],
   argTypes: { ...disabledControls() },
 };
 
@@ -142,7 +149,7 @@ export const ConIconaELink: Story = {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.
             <a href="#" class="popover-inner-link" @click=${handleLinkClick}>
               Leggi tutto
-              <it-icon name="it-arrow-right" size="xs" color="primary"></it-icon>
+              <it-icon name="it-arrow-right" size="sm"></it-icon>
             </a>
           </div>
         </div>
