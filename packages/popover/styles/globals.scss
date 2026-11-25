@@ -38,4 +38,17 @@
       border-left-width: var(--#{$prefix}popover-border-width);
     }
   }
+
+  // it-icon draws its svg in its own shadow DOM, out of reach of the
+  // Bootstrap Italia rules for the icons of the header and of the inner
+  // link. The svg reads --icon-default, which is inherited through the
+  // shadow boundary: set here, it gives the same colors with no attribute
+  // on the icon. An explicit color="..." on it-icon still wins.
+  .popover-header it-icon {
+    --#{$prefix}icon-default: var(--#{$prefix}icon-primary);
+  }
+
+  a.popover-inner-link it-icon {
+    --#{$prefix}icon-default: currentColor;
+  }
 }

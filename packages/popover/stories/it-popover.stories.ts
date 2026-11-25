@@ -142,7 +142,7 @@ export const ConIconaELink: Story = {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel finibus augue.
             <a href="#" class="popover-inner-link" @click=${handleLinkClick}>
               Leggi tutto
-              <it-icon name="it-arrow-right" size="xs" color="primary"></it-icon>
+              <it-icon name="it-arrow-right" size="sm"></it-icon>
             </a>
           </div>
         </div>
