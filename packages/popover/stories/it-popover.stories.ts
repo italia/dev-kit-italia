@@ -80,6 +80,13 @@ export const Base: Story = {
       </div>
     </it-popover>
   `,
+  // The docs preview clips what overflows it and the open popover takes no
+  // room in the layout: leave space on every side, so each placement chosen
+  // from the controls fits.
+  decorators: [
+    (Story) =>
+      html`<div style="display:flex;align-items:center;justify-content:center;min-height:300px">${Story()}</div>`,
+  ],
   tags: ['!autodocs', '!dev'],
 };
 
@@ -118,7 +125,7 @@ export const Posizione: Story = {
       </div>
     </it-popover>
   `,
-  decorators: [(Story) => html`<div style="display:grid;gap:.5rem;grid:1fr 1fr 1fr/1fr 1fr 1fr;">${Story()}</div>`],
+  decorators: [(Story) => html`<div style="display:grid;gap:1rem;grid:1fr 1fr 1fr/1fr 1fr 1fr;">${Story()}</div>`],
   argTypes: { ...disabledControls() },
 };
 
