@@ -22,9 +22,9 @@ utilities.$utilities: ('color': map.get(utilities.$utilities, 'color'));
 // ── Custom properties ────────────────────────────────────────────────────────
 // These allow per-instance and theme-level overrides at runtime.
 :host {
-  --it-transfer-border: #{$transfer-border};
-  --it-transfer-height: #{$transfer-height};
-  --it-transfer-header-color: #{$transfer-descr-color};
+  --it-transfer-border: 1px solid var(--#{$prefix}color-border-subtle);
+  --it-transfer-height: 240px;
+  --it-transfer-header-color: hsl(210, 25%, 35.2%);
   --it-transfer-btn-size: #{$v-gap * 5};
   --it-transfer-btn-active-color: var(--#{$prefix}color-text-primary);
   display: block;
@@ -60,7 +60,7 @@ utilities.$utilities: ('color': map.get(utilities.$utilities, 'color'));
   }
 
   it-icon::part(icon) {
-    fill: $transfer-header-line-color;
+    fill: var(--#{$prefix}color-border-subtle);
   }
 
   &.active {

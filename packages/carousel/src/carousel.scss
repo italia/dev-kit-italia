@@ -143,7 +143,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     }
 
     &[disabled] {
-      background-color: $gray-disabled;
+      background-color: var(--#{$prefix}color-background-disabled);
       cursor: not-allowed;
     }
   }
@@ -200,7 +200,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     }
 
     &[disabled] {
-      background: $gray-disabled !important;
+      background: var(--#{$prefix}color-background-disabled) !important;
     }
   }
 }
@@ -295,7 +295,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
       bottom: 0;
       display: block;
       width: 1px;
-      background-color: $neutral-2; // Missing in the UI kit
+      background-color: hsl(210, 32.2033898305%, 92.625%); // Missing in the UI kit
       content: '';
     }
   }

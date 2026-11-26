@@ -79,7 +79,7 @@
   position: relative;
   display: inline-block;
 
-  --#{$prefix}dropdown-animation-speed: #{$dropdown-menu-animation-speed};
+  --#{$prefix}dropdown-animation-speed: 0.3s;
   --#{$prefix}icon-default: currentColor;
 }
 
