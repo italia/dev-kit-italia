@@ -47,11 +47,6 @@ button:focus-visible,
   box-shadow: none !important;
 }
 
-:focus:not(:focus-visible):not(.btn),
-::part(focusable):focus-visible:not(.btn) {
-  @include focusmouse;
-}
-
 p a {
   &:focus:not(:focus-visible):not(.btn) {
     /* focus da mouse o script, esclusi anche i .btn */
