@@ -57,7 +57,7 @@
     border-radius: 50%;
     margin-right: $v-gap * 2;
     background: var(--#{$prefix}color-white, #fff);
-    box-shadow: $card-shadow;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
 
     svg {
       width: $timeline-pin-size;

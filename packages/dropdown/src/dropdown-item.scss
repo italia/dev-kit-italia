@@ -7,7 +7,7 @@
 @use 'bootstrap-italia/src/scss/components/dropdown' as *;
 
 :host {
-  --#{$prefix}dropdown-animation-speed: #{$dropdown-menu-animation-speed};
+  --#{$prefix}dropdown-animation-speed: 0.3s;
   display: block;
 }
 
