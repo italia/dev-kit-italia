@@ -143,7 +143,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     }
 
     &[disabled] {
-      background-color: hsl(210, 3%, 85%);
+      background-color: var(--#{$prefix}color-background-disabled);
       cursor: not-allowed;
     }
   }
@@ -200,7 +200,7 @@ $_arrow-icon-size: calc(#{$v-gap} * 2);
     }
 
     &[disabled] {
-      background: hsl(210, 3%, 85%) !important;
+      background: var(--#{$prefix}color-background-disabled) !important;
     }
   }
 }
